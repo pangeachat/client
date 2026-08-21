@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Koreksyon otomatik nan lang sib ou a",
     "autocorrectAndroidDialogBody": "Lè w ap tape nan yon chat, klavye w ap chanje nan lang sib ou a epi l ap korije òtograf nan lang sa a.",
     "autocorrectAndroidFallbackTitle": "Si klavye w la pa ofri lang sib ou a, enstale Gboard epi ajoute lang nan la:",
+    "resendInSeconds": "Voye ankò ({seconds})",
     "openKeyboardSettings": "Louvri Anviwònman Klavye",
     "keyboardPromptAddKeyboardMessage": "Ajoute yon klavye pou lang sib ou pou koreksyon otomatik la mache.",
     "keyboardPromptAddKeyboardAction": "Ajoute Klavye",

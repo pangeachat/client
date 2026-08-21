@@ -10516,6 +10516,7 @@
     "autocorrectAndroidDialogTitle": "目標言語の自動修正",
     "autocorrectAndroidDialogBody": "チャットで入力すると、キーボードが目標言語に切り替わり、その言語でスペルが修正されます。",
     "autocorrectAndroidFallbackTitle": "キーボードが目標言語に対応していない場合は、Gboardをインストールして言語を追加してください。",
+    "resendInSeconds": "再送信 ({seconds})",
     "openKeyboardSettings": "キーボード設定を開く",
     "keyboardPromptAddKeyboardMessage": "オートコレクトを有効にするには、学習言語のキーボードを追加してください。",
     "keyboardPromptAddKeyboardAction": "キーボードを追加",

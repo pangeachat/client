@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "אויטאָקאָרעקט אין דיין ציל שפּראַך",
     "autocorrectAndroidDialogBody": "ווען איר טיפּט אין אַ שמועס, וועט דיין קלאַוויאַטור באַשטימען צו דיין ציל שפּראַך און קאָרעקטירן אויסלייג אין יענער שפּראַך.",
     "autocorrectAndroidFallbackTitle": "אויב דיין קלאַוויאַטור אָפפערט נישט דיין ציל שפּראַך, אינסטאַליר Gboard און לייג צו די שפּראַך דאָרט:",
+    "resendInSeconds": "ווידערשיקן ({seconds})",
     "openKeyboardSettings": "עפֿן קלאַוויאַטור סעטטינגס",
     "keyboardPromptAddKeyboardMessage": "לייגט צו אַ קלאַוויאַטור פֿאַר אייער צילשפּראַך כּדי אױטאָקאָרעקט זאָל אַרבעטן.",
     "keyboardPromptAddKeyboardAction": "לייגט צו קלאַוויאַטור",

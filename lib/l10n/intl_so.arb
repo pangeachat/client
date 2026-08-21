@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Sixitaanka tooska ah ee luqaddaada bartilmaameedka ah",
     "autocorrectAndroidDialogBody": "Markaad ku qorto sheekeysi, kiiboodhkaagu wuxuu u wareegi doonaa luqaddaada bartilmaameedka ah wuxuuna sixi doonaa higgaadda luqaddaas.",
     "autocorrectAndroidFallbackTitle": "Haddii kiiboodhkaagu uusan bixin luqaddaada bartilmaameedka ah, rakib Gboard oo ku dar luqadda halkaas:",
+    "resendInSeconds": "Dib u dir ({seconds})",
     "openKeyboardSettings": "Fur Goobaha Kiiboodhka",
     "keyboardPromptAddKeyboardMessage": "Ku dar kiiboodhka luqadda aad bartay si autocorrect-ku u shaqeeyo.",
     "keyboardPromptAddKeyboardAction": "Ku dar Kiiboodhka",

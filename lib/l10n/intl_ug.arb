@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "نىشان تىلىڭىزدىكى ئاپتوماتىك تۈزىتىش",
     "autocorrectAndroidDialogBody": "پارىڭىڭىزغا يازغاندا، كۇنۇپكا تاختىڭىز نىشان تىلىڭىزغا ئالماشتۇرۇلىدۇ ھەمدە شۇ تىلدىكى ئىملا خاتالىقىنى تۈزىتىدۇ.",
     "autocorrectAndroidFallbackTitle": "ئەگەر كۇنۇپكا تاختىڭىز نىشان تىلىڭىزنى تەمىنلىمىسە، Gboard نى قاچىلاپ، شۇ يەرگە تىل قوشۇڭ:",
+    "resendInSeconds": "قايتا ئەۋەتىش ({seconds})",
     "openKeyboardSettings": "كۇنۇپكا تاختىسى تەڭشەكلىرىنى ئېچىڭ",
     "keyboardPromptAddKeyboardMessage": "ئاپتوماتىك تۈزىتىش ئىقتىدارىنى ئىشلىتىش ئۈچۈن نىشان تىلىڭىزنىڭ كۇنۇپكا تاختىسىنى قوشۇڭ.",
     "keyboardPromptAddKeyboardAction": "كۇنۇپكا تاختىسى قوشۇش",

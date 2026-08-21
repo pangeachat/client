@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "ແກ້ໄຂອັດຕະໂນມັດໃນພາສາເປົ້າໝາຍຂອງທ່ານ",
     "autocorrectAndroidDialogBody": "ເມື່ອທ່ານພິມໃນການສົນທະນາ, ແປ້ນພິມຂອງທ່ານຈະປ່ຽນເປັນພາສາເປົ້າໝາຍຂອງທ່ານ ແລະ ແກ້ໄຂການສະກົດຄຳໃນພາສານັ້ນ.",
     "autocorrectAndroidFallbackTitle": "ຖ້າແປ້ນພິມຂອງທ່ານບໍ່ຮອງຮັບພາສາເປົ້າໝາຍຂອງທ່ານ, ໃຫ້ຕິດຕັ້ງ Gboard ແລະ ເພີ່ມພາສານັ້ນຢູ່ບ່ອນນັ້ນ:",
+    "resendInSeconds": "ສົ່ງຄືນໃໝ່ ({seconds})",
     "openKeyboardSettings": "ເປີດການຕັ້ງຄ່າແປ້ນພິມ",
     "keyboardPromptAddKeyboardMessage": "ເພີ່ມແປ້ນພິມສຳລັບພາສາເປົ້າໝາຍຂອງທ່ານເພື່ອໃຫ້ການແກ້ໄຂອັດຕະໂນມັດເຮັດວຽກ.",
     "keyboardPromptAddKeyboardAction": "ເພີ່ມແປ້ນພິມ",

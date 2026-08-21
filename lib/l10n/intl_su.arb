@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Autocorrect dina basa target anjeun",
     "autocorrectAndroidDialogBody": "Nalika anjeun ngetik dina obrolan, kibor anjeun bakal robah kana basa target anjeun sarta ngabenerkeun éjahan dina basa éta.",
     "autocorrectAndroidFallbackTitle": "Upami kibor anjeun henteu nawiskeun basa target anjeun, pasang Gboard sareng tambihan basa éta di dinya:",
+    "resendInSeconds": "Kirim deui ({seconds})",
     "openKeyboardSettings": "Buka Setélan Kibor",
     "keyboardPromptAddKeyboardMessage": "Tambihkeun kibor pikeun basa target anjeun supados autocorrect tiasa dianggo.",
     "keyboardPromptAddKeyboardAction": "Tambihkeun Kibor",

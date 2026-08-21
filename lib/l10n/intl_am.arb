@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "በዒላማ ቋንቋዎ ራስ-አርም",
     "autocorrectAndroidDialogBody": "በውይይት ውስጥ ሲተይቡ፣ የቁልፍ ሰሌዳዎ ወደ ዒላማ ቋንቋዎ ይቀየራል እና በዚያ ቋንቋ የፊደል አጻጻፍን ያርማል።",
     "autocorrectAndroidFallbackTitle": "የቁልፍ ሰሌዳዎ ዒላማ ቋንቋዎን የማያቀርብ ከሆነ፣ Gboardን ይጫኑ እና ቋንቋውን እዚያ ያክሉ፦",
+    "resendInSeconds": "እንደገና ላክ ({seconds})",
     "openKeyboardSettings": "የቁልፍ ሰሌዳ ቅንብሮችን ክፈት",
     "keyboardPromptAddKeyboardMessage": "ራስ-አስተካካዩ እንዲሰራ ለምትማሩት ቋንቋ የቁልፍ ሰሌዳ ያክሉ።",
     "keyboardPromptAddKeyboardAction": "የቁልፍ ሰሌዳ ያክሉ",

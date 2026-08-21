@@ -10048,6 +10048,7 @@
     "autocorrectAndroidDialogTitle": "Hedef dilinizde otomatik düzeltme",
     "autocorrectAndroidDialogBody": "Bir sohbette yazdığınızda, klavyeniz hedef dilinize geçecek ve yazım hatalarını o dilde düzeltecektir.",
     "autocorrectAndroidFallbackTitle": "Klavyeniz hedef dilinizi sunmuyorsa, Gboard'u yükleyin ve dili oraya ekleyin:",
+    "resendInSeconds": "Tekrar gönder ({seconds})",
     "openKeyboardSettings": "Klavye Ayarlarını Aç",
     "keyboardPromptAddKeyboardMessage": "Otomatik düzeltmenin çalışması için hedef diliniz için bir klavye ekleyin.",
     "keyboardPromptAddKeyboardAction": "Klavye Ekle",

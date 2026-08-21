@@ -9747,6 +9747,7 @@
     "autocorrectAndroidDialogTitle": "Autocorrectie in je doeltaal",
     "autocorrectAndroidDialogBody": "Wanneer je typt in een chat, schakelt je toetsenbord over naar je doeltaal en corrigeert de spelling in die taal.",
     "autocorrectAndroidFallbackTitle": "Als je toetsenbord je doeltaal niet aanbiedt, installeer dan Gboard en voeg de taal daar toe:",
+    "resendInSeconds": "Opnieuw verzenden ({seconds})",
     "openKeyboardSettings": "Toetsenbordinstellingen openen",
     "keyboardPromptAddKeyboardMessage": "Voeg een toetsenbord toe voor je doeltaal, zodat autocorrectie werkt.",
     "keyboardPromptAddKeyboardAction": "Toetsenbord toevoegen",

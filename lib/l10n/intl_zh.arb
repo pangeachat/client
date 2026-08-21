@@ -9747,6 +9747,7 @@
     "autocorrectAndroidDialogTitle": "目标语言自动更正",
     "autocorrectAndroidDialogBody": "在聊天中输入时，键盘将切换到您的目标语言并更正该语言的拼写。",
     "autocorrectAndroidFallbackTitle": "如果您的键盘不提供目标语言，请安装 Gboard 并在其中添加该语言：",
+    "resendInSeconds": "重新发送 ({seconds})",
     "openKeyboardSettings": "打开键盘设置",
     "keyboardPromptAddKeyboardMessage": "为您的目标语言添加键盘，以便自动更正功能正常运行。",
     "keyboardPromptAddKeyboardAction": "添加键盘",

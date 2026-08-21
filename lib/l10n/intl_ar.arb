@@ -10053,6 +10053,7 @@
     "autocorrectAndroidDialogTitle": "التصحيح التلقائي بلغتك المستهدفة",
     "autocorrectAndroidDialogBody": "عند الكتابة في الدردشة، ستتحول لوحة المفاتيح إلى لغتك المستهدفة وتصحح الأخطاء الإملائية في تلك اللغة.",
     "autocorrectAndroidFallbackTitle": "إذا كانت لوحة المفاتيح لا توفر لغتك المستهدفة، فقم بتثبيت Gboard وأضف اللغة هناك:",
+    "resendInSeconds": "إعادة الإرسال خلال ({seconds})",
     "openKeyboardSettings": "فتح إعدادات لوحة المفاتيح",
     "keyboardPromptAddKeyboardMessage": "أضف لوحة مفاتيح للغتك المستهدفة ليعمل التصحيح التلقائي.",
     "keyboardPromptAddKeyboardAction": "إضافة لوحة مفاتيح",

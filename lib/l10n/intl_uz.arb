@@ -9751,6 +9751,7 @@
     "autocorrectAndroidDialogTitle": "Maqsadli tilingizda avtomatik tuzatish",
     "autocorrectAndroidDialogBody": "Suhbatda yozganingizda, klaviaturangiz maqsadli tilingizga o'tadi va imloni shu tilda to'g'irlaydi.",
     "autocorrectAndroidFallbackTitle": "Agar klaviaturangiz maqsadli tilingizni taklif qilmasa, Gboard'ni o'rnating va tilni u yerga qo'shing:",
+    "resendInSeconds": "Qayta yuborish ({seconds})",
     "openKeyboardSettings": "Klaviatura sozlamalarini ochish",
     "keyboardPromptAddKeyboardMessage": "Avtokorreksiya ishlashi uchun maqsadli tilingiz uchun klaviatura qoʻshing.",
     "keyboardPromptAddKeyboardAction": "Klaviatura qoʻshish",

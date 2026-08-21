@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Автоматска корекција на целниот јазик",
     "autocorrectAndroidDialogBody": "Кога пишувате во разговор, вашата тастатура ќе се префрли на целниот јазик и ќе го коригира правописот на тој јазик.",
     "autocorrectAndroidFallbackTitle": "Ако вашата тастатура не го нуди целниот јазик, инсталирајте Gboard и додајте го јазикот таму:",
+    "resendInSeconds": "Повторно испрати ({seconds})",
     "openKeyboardSettings": "Отвори поставки за тастатура",
     "keyboardPromptAddKeyboardMessage": "Додадете тастатура за вашиот целен јазик за да работи автоматската корекција.",
     "keyboardPromptAddKeyboardAction": "Додај тастатура",

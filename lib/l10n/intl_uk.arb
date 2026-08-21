@@ -9747,6 +9747,7 @@
     "autocorrectAndroidDialogTitle": "Автовиправлення цільовою мовою",
     "autocorrectAndroidDialogBody": "Коли ви друкуєте в чаті, клавіатура перемикається на цільову мову та виправляє орфографію цією мовою.",
     "autocorrectAndroidFallbackTitle": "Якщо ваша клавіатура не пропонує цільову мову, встановіть Gboard і додайте мову там:",
+    "resendInSeconds": "Надіслати повторно через ({seconds})",
     "openKeyboardSettings": "Відкрити налаштування клавіатури",
     "keyboardPromptAddKeyboardMessage": "Додайте клавіатуру для цільової мови, щоб працював автовиправлення.",
     "keyboardPromptAddKeyboardAction": "Додати клавіатуру",

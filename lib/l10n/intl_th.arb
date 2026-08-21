@@ -10379,6 +10379,7 @@
     "autocorrectAndroidDialogTitle": "การแก้ไขอัตโนมัติในภาษาเป้าหมายของคุณ",
     "autocorrectAndroidDialogBody": "เมื่อคุณพิมพ์ในแชท แป้นพิมพ์ของคุณจะเปลี่ยนเป็นภาษาเป้าหมายและแก้ไขการสะกดในภาษานั้น",
     "autocorrectAndroidFallbackTitle": "หากแป้นพิมพ์ของคุณไม่มีภาษาเป้าหมาย ให้ติดตั้ง Gboard และเพิ่มภาษาที่นั่น:",
+    "resendInSeconds": "ส่งอีกครั้งใน ({seconds})",
     "openKeyboardSettings": "เปิดการตั้งค่าแป้นพิมพ์",
     "keyboardPromptAddKeyboardMessage": "เพิ่มแป้นพิมพ์สำหรับภาษาเป้าหมายของคุณ เพื่อให้การแก้ไขอัตโนมัติทำงานได้",
     "keyboardPromptAddKeyboardAction": "เพิ่มแป้นพิมพ์",

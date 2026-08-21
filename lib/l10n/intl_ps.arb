@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "ستاسو په هدف ژبه کې اتوماتیک سمون",
     "autocorrectAndroidDialogBody": "کله چې تاسو په چټ کې ټایپ کوئ، ستاسو کیبورډ به ستاسو هدف ژبې ته بدل شي او په هغې ژبې کې به املا سمه کړي.",
     "autocorrectAndroidFallbackTitle": "که ستاسو کیبورډ ستاسو هدف ژبه نه وړاندې کوي، Gboard نصب کړئ او ژبه هلته اضافه کړئ:",
+    "resendInSeconds": "بیا استول ({seconds})",
     "openKeyboardSettings": "د کیبورډ تنظیمات خلاص کړئ",
     "keyboardPromptAddKeyboardMessage": "د خپلې موخې ژبې لپاره کیبورډ اضافه کړئ ترڅو اتومات سمون کار وکړي.",
     "keyboardPromptAddKeyboardAction": "کیبورډ اضافه کړئ",

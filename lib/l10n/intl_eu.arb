@@ -9747,6 +9747,7 @@
     "autocorrectAndroidDialogTitle": "Zuzenketa automatikoa zure xede-hizkuntzan",
     "autocorrectAndroidDialogBody": "Txat batean idazten duzunean, teklatua zure xede-hizkuntzara aldatuko da eta hizkuntza horretako ortografia zuzenduko du.",
     "autocorrectAndroidFallbackTitle": "Zure teklatuak xede-hizkuntza eskaintzen ez badu, instalatu Gboard eta gehitu hizkuntza bertan:",
+    "resendInSeconds": "Berriro bidali ({seconds})",
     "openKeyboardSettings": "Ireki teklatuaren ezarpenak",
     "keyboardPromptAddKeyboardMessage": "Gehitu teklatua zure xede-hizkuntzarako, zuzenketa automatikoa funtziona dezan.",
     "keyboardPromptAddKeyboardAction": "Gehitu teklatua",

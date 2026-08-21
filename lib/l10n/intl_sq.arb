@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Autokorrektimi në gjuhën tuaj të synuar",
     "autocorrectAndroidDialogBody": "Kur shkruani në një bisedë, tastiera juaj do të kalojë në gjuhën tuaj të synuar dhe do të korrigjojë drejtshkrimin në atë gjuhë.",
     "autocorrectAndroidFallbackTitle": "Nëse tastiera juaj nuk ofron gjuhën tuaj të synuar, instaloni Gboard dhe shtoni gjuhën atje:",
+    "resendInSeconds": "Rikërko ({seconds})",
     "openKeyboardSettings": "Hap Cilësimet e Tastierës",
     "keyboardPromptAddKeyboardMessage": "Shto një tastierë për gjuhën tënde të synuar, që të funksionojë korrigjimi automatik.",
     "keyboardPromptAddKeyboardAction": "Shto tastierë",

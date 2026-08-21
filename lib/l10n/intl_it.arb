@@ -9820,6 +9820,7 @@
     "autocorrectAndroidDialogTitle": "Correzione automatica nella lingua di destinazione",
     "autocorrectAndroidDialogBody": "Quando digiti in una chat, la tastiera passerà alla lingua di destinazione e correggerà l'ortografia in quella lingua.",
     "autocorrectAndroidFallbackTitle": "Se la tastiera non offre la lingua di destinazione, installa Gboard e aggiungi la lingua lì:",
+    "resendInSeconds": "Invia di nuovo ({seconds})",
     "openKeyboardSettings": "Apri Impostazioni Tastiera",
     "keyboardPromptAddKeyboardMessage": "Aggiungi una tastiera per la lingua che stai imparando, così la correzione automatica funzionerà.",
     "keyboardPromptAddKeyboardAction": "Aggiungi tastiera",

@@ -10379,6 +10379,7 @@
     "autocorrectAndroidDialogTitle": "आपकी लक्ष्य भाषा में स्वतः सुधार",
     "autocorrectAndroidDialogBody": "जब आप चैट में टाइप करते हैं, तो आपका कीबोर्ड आपकी लक्ष्य भाषा में बदल जाएगा और उस भाषा में वर्तनी को सही करेगा।",
     "autocorrectAndroidFallbackTitle": "यदि आपका कीबोर्ड आपकी लक्ष्य भाषा प्रदान नहीं करता है, तो Gboard इंस्टॉल करें और वहां भाषा जोड़ें:",
+    "resendInSeconds": "पुनः भेजें ({seconds})",
     "openKeyboardSettings": "कीबोर्ड सेटिंग खोलें",
     "keyboardPromptAddKeyboardMessage": "अपनी लक्ष्य भाषा के लिए एक कीबोर्ड जोड़ें ताकि स्वतः सुधार काम कर सके।",
     "keyboardPromptAddKeyboardAction": "कीबोर्ड जोड़ें",

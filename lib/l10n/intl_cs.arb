@@ -10241,6 +10241,7 @@
     "autocorrectAndroidDialogTitle": "Automatické opravy v cílovém jazyce",
     "autocorrectAndroidDialogBody": "Když píšete do chatu, klávesnice se přepne na váš cílový jazyk a bude v něm opravovat pravopis.",
     "autocorrectAndroidFallbackTitle": "Pokud vaše klávesnice nenabízí váš cílový jazyk, nainstalujte Gboard a přidejte jazyk tam:",
+    "resendInSeconds": "Znovu odeslat ({seconds})",
     "openKeyboardSettings": "Otevřít nastavení klávesnice",
     "keyboardPromptAddKeyboardMessage": "Přidejte klávesnici pro váš cílový jazyk, aby fungovala automatická oprava.",
     "keyboardPromptAddKeyboardAction": "Přidat klávesnici",

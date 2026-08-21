@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Fa'asa'oga otometi i lau gagana e a'oa'oina",
     "autocorrectAndroidDialogBody": "A e taina i se talatalanoaga, o le a fesuia'i lau piano i lau gagana e a'oa'oina ma fa'asa'o le sipelaga i lena gagana.",
     "autocorrectAndroidFallbackTitle": "Afai e le ofoina mai e lau piano lau gagana e a'oa'oina, fa'apipi'i le Gboard ma fa'aopoopo le gagana iina:",
+    "resendInSeconds": "Toe lafo ({seconds})",
     "openKeyboardSettings": "Tatala Fa'atonuga o le Piano",
     "keyboardPromptAddKeyboardMessage": "Fa'aopoopo se piano mo lau gagana e a'oa'oina ina ia galue le autocorrect.",
     "keyboardPromptAddKeyboardAction": "Fa'aopoopo le Piano",

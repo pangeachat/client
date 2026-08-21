@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Autocorrect mumutauro wako waunoda",
     "autocorrectAndroidDialogBody": "Paunonyora muchat, keyboard yako ichachinja kuenda kumutauro wako waunoda uye kugadzirisa zviperengo mumutauro iwoyo.",
     "autocorrectAndroidFallbackTitle": "Kana keyboard yako isingapi mutauro wako waunoda, isa Gboard uye wedzera mutauro ikoko:",
+    "resendInSeconds": "Tumira zvakare ({seconds})",
     "openKeyboardSettings": "Vhura Zvirongwa zveKibhodhi",
     "keyboardPromptAddKeyboardMessage": "Wedzera kiibhodhi yemutauro wako waunoda kuti autocorrect ishande.",
     "keyboardPromptAddKeyboardAction": "Wedzera Kiibhodhi",

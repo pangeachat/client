@@ -9747,6 +9747,7 @@
     "autocorrectAndroidDialogTitle": "Correção automática no seu idioma de destino",
     "autocorrectAndroidDialogBody": "Ao digitar em um chat, seu teclado mudará para o idioma de destino e corrigirá a ortografia nesse idioma.",
     "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o idioma de destino, instale o Gboard e adicione o idioma lá:",
+    "resendInSeconds": "Reenviar ({seconds})",
     "openKeyboardSettings": "Abrir configurações do teclado",
     "keyboardPromptAddKeyboardMessage": "Adicione um teclado para o seu idioma de destino para que a correção automática funcione.",
     "keyboardPromptAddKeyboardAction": "Adicionar Teclado",

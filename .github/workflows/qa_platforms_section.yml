@@ -1,0 +1,61 @@
+name: QA platform section
+
+# Guarantees every issue carries the TESTING PLATFORMS checklist that
+# issue_to_test_check.yaml reads at close time to decide which
+# `needs … testing` labels to apply.
+#
+# This lives here rather than in .github/ISSUE_TEMPLATE/ because bug_report.md,
+# feature_request.md and other.md are canonically owned by pangeachat/workflows
+# and re-synced weekly — a local edit there would reopen a drift PR every Monday.
+# Injecting also covers issues opened from a repo-specific template or none.
+#
+# Design: .github/instructions/qa-labeling.instructions.md
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+
+jobs:
+  ensure_section:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure the TESTING PLATFORMS checklist is present
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          set -euo pipefail
+
+          MARKER='<!-- pangea-qa-platforms -->'
+          BODY=$(gh issue view "$NUMBER" --json body -q .body | tr -d '\r')
+
+          # Idempotency, and a belt-and-braces loop guard. Edits made with
+          # GITHUB_TOKEN don't retrigger workflows, so the recursion can't
+          # actually happen today — but the marker check means it still
+          # couldn't if that ever changed, and it is what makes re-adding on
+          # `edited` safe when someone removes the section by hand.
+          if printf '%s' "$BODY" | grep -qF "$MARKER"; then
+            echo "Section present on #$NUMBER. Nothing to do."
+            exit 0
+          fi
+
+          {
+            printf '%s\n' "$BODY"
+            printf '\n%s\n' "$MARKER"
+            printf -- '---\n'
+            printf '%s\n' '**TESTING PLATFORMS**'
+            printf '%s\n' '> Filled in by the developer whose PR closes this issue — not by the issue author.'
+            printf '%s\n' '> Which platforms to pick: `.github/instructions/qa-labeling.instructions.md`'
+            printf '%s\n' '- [ ] **Evaluated** — I have determined which platforms this needs testing on'
+            printf '%s\n' '- [ ] Web'
+            printf '%s\n' '- [ ] Android'
+            printf '%s\n' '- [ ] iOS'
+            printf '%s\n' '- [ ] iPad'
+          } > "$RUNNER_TEMP/body.md"
+
+          gh issue edit "$NUMBER" --body-file "$RUNNER_TEMP/body.md"
+          echo "Appended TESTING PLATFORMS section to #$NUMBER."

@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "તમારી લક્ષ્ય ભાષામાં સ્વતઃ સુધારણા",
     "autocorrectAndroidDialogBody": "જ્યારે તમે ચેટમાં ટાઇપ કરો છો, ત્યારે તમારું કીબોર્ડ તમારી લક્ષ્ય ભાષામાં બદલાઈ જશે અને તે ભાષામાં જોડણી સુધારશે.",
     "autocorrectAndroidFallbackTitle": "જો તમારું કીબોર્ડ તમારી લક્ષ્ય ભાષા પ્રદાન કરતું નથી, તો Gboard ઇન્સ્ટોલ કરો અને ત્યાં ભાષા ઉમેરો:",
+    "resendInSeconds": "ફરીથી મોકલો ({seconds})",
     "openKeyboardSettings": "કીબોર્ડ સેટિંગ્સ ખોલો",
     "keyboardPromptAddKeyboardMessage": "તમારી ટાર્ગેટ ભાષા માટે કીબોર્ડ ઉમેરો જેથી સ્વતઃ સુધારણા કામ કરે.",
     "keyboardPromptAddKeyboardAction": "કીબોર્ડ ઉમેરો",

@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Худкор ислоҳкунӣ бо забони мақсадноки шумо",
     "autocorrectAndroidDialogBody": "Вақте ки шумо дар чат чоп мекунед, клавиатураи шумо ба забони мақсадноки шумо мегузарад ва имлоро бо он забон ислоҳ мекунад.",
     "autocorrectAndroidFallbackTitle": "Агар клавиатураи шумо забони мақсадноки шуморо пешниҳод накунад, Gboard-ро насб кунед ва забонро дар он ҷо илова кунед:",
+    "resendInSeconds": "Дубора ирсол кунед ({seconds})",
     "openKeyboardSettings": "Танзимоти клавиатураро кушоед",
     "keyboardPromptAddKeyboardMessage": "Барои забони мақсадноки худ клавиатура илова кунед, то ки ислоҳи худкор кор кунад.",
     "keyboardPromptAddKeyboardAction": "Клавиатура илова кунед",

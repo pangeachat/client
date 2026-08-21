@@ -10379,6 +10379,7 @@
     "autocorrectAndroidDialogTitle": "Autochorreção na sua língua-alvo",
     "autocorrectAndroidDialogBody": "Quando você digita em um bate-papo, seu teclado mudará para o seu idioma-alvo e corrigirá a ortografia nesse idioma.",
     "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o seu idioma-alvo, instale o Gboard e adicione o idioma lá:",
+    "resendInSeconds": "Athsheol ({seconds})",
     "openKeyboardSettings": "Oscail Socruithe an Mhéarchláir",
     "keyboardPromptAddKeyboardMessage": "Cuir méarchlár le haghaidh do theanga sprice leis ionas go n-oibreoidh an ceartú uathoibríoch.",
     "keyboardPromptAddKeyboardAction": "Cuir Méarchlár Leis",

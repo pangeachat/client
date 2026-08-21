@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "നംꯁꯤꯡগী ৱାঙुलোনদা ৱା-ꯁਹੀ",
     "autocorrectAndroidDialogBody": "നങ് ചാറ്റ് അമদা ടൈപ് തौदा, നംꯁിംങ്ഗി കീബോർഡ് നംസിംങ്ഗി ৱാങ്ഗുലോൺഡാ ലേങ്‌ഗനി അമദി അദൂം ৱാങ്ഗുലോൺഡാ സ്പെല്ലിംഗ് ശരി തൗഗനി.",
     "autocorrectAndroidFallbackTitle": "നംസിംങ്ഗി കീബോർഡ് നംസിംങ്ഗി ৱാങ്ഗുലോൺ പീദ്രബ്ദി, Gboard ഇൻസ്റ്റോൾ തൗവി അമദി അദൂം ৱാങ്ഗുലോൺ അദൂംദാ ഹാപ്ചിൻബിയു:",
+    "resendInSeconds": "হন্না থা (সেকেন্ড {seconds})",
     "openKeyboardSettings": "Keyboard Settings Hangba",
     "keyboardPromptAddKeyboardMessage": "नाओगी লোনগীদমক কীবোর্ড অমা থম্নু, মসিনা অটোকরেক্ট থবক তৌবা ঙমগনি।",
     "keyboardPromptAddKeyboardAction": "কীবোর্ড থম্নু",

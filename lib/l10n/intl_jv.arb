@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Autocorrect ing basa targetmu",
     "autocorrectAndroidDialogBody": "Nalika ngetik ing obrolan, keyboard-mu bakal ganti menyang basa targetmu lan mbenerake ejaan ing basa kasebut.",
     "autocorrectAndroidFallbackTitle": "Yen keyboard-mu ora nawakake basa targetmu, instal Gboard lan tambahake basa kasebut ing kana:",
+    "resendInSeconds": "Kirim maneh ({seconds})",
     "openKeyboardSettings": "Setelan Papan Ketik Dibukak",
     "keyboardPromptAddKeyboardMessage": "Tambah keyboard kanggo basa sing arep disinaoni supaya autocorrect bisa digunakake.",
     "keyboardPromptAddKeyboardAction": "Tambah Keyboard",

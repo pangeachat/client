@@ -9734,6 +9734,7 @@
     "autocorrectAndroidDialogTitle": "Autokorrektur in Ihrer Zielsprache",
     "autocorrectAndroidDialogBody": "Wenn Sie in einem Chat tippen, wechselt Ihre Tastatur zu Ihrer Zielsprache und korrigiert die Rechtschreibung in dieser Sprache.",
     "autocorrectAndroidFallbackTitle": "Wenn Ihre Tastatur Ihre Zielsprache nicht anbietet, installieren Sie Gboard und fügen Sie die Sprache dort hinzu:",
+    "resendInSeconds": "Erneut senden ({seconds})",
     "openKeyboardSettings": "Tastatureinstellungen öffnen",
     "keyboardPromptAddKeyboardMessage": "Füge eine Tastatur für deine Zielsprache hinzu, damit die Autokorrektur funktioniert.",
     "keyboardPromptAddKeyboardAction": "Tastatur hinzufügen",

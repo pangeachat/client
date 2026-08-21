@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "तपाईंको लक्षित भाषामा स्वतः सच्याउने",
     "autocorrectAndroidDialogBody": "जब तपाईं च्याटमा टाइप गर्नुहुन्छ, तपाईंको किबोर्ड तपाईंको लक्षित भाषामा स्विच हुनेछ र त्यो भाषामा हिज्जे सच्याउनेछ।",
     "autocorrectAndroidFallbackTitle": "यदि तपाईंको किबोर्डले तपाईंको लक्षित भाषा प्रदान गर्दैन भने, Gboard स्थापना गर्नुहोस् र त्यहाँ भाषा थप्नुहोस्:",
+    "resendInSeconds": "पुन: पठाउनुहोस् ({seconds})",
     "openKeyboardSettings": "किबोर्ड सेटिङहरू खोल्नुहोस्",
     "keyboardPromptAddKeyboardMessage": "तपाईंको लक्षित भाषाको लागि किबोर्ड थप्नुहोस् ताकि स्वतः सच्याउने काम गरोस्।",
     "keyboardPromptAddKeyboardAction": "किबोर्ड थप्नुहोस्",

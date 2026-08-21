@@ -10667,6 +10667,7 @@
     "autocorrectAndroidDialogTitle": "Autokorrektur på dit målsprog",
     "autocorrectAndroidDialogBody": "Når du skriver i en chat, skifter dit tastatur til dit målsprog og retter stavefejl på det sprog.",
     "autocorrectAndroidFallbackTitle": "Hvis dit tastatur ikke tilbyder dit målsprog, skal du installere Gboard og tilføje sproget der:",
+    "resendInSeconds": "Send igen ({seconds})",
     "openKeyboardSettings": "Åbn tastaturindstillinger",
     "keyboardPromptAddKeyboardMessage": "Tilføj et tastatur til dit målsprog, så autokorrektur virker.",
     "keyboardPromptAddKeyboardAction": "Tilføj tastatur",

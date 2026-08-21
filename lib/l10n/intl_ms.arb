@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Autocorreksi dalam bahasa sasaran anda",
     "autocorrectAndroidDialogBody": "Apabila anda menaip dalam sembang, papan kekunci anda akan bertukar kepada bahasa sasaran anda dan membetulkan ejaan dalam bahasa tersebut.",
     "autocorrectAndroidFallbackTitle": "Jika papan kekunci anda tidak menawarkan bahasa sasaran anda, pasang Gboard dan tambah bahasa di sana:",
+    "resendInSeconds": "Hantar semula ({seconds})",
     "openKeyboardSettings": "Buka Tetapan Papan Kekunci",
     "keyboardPromptAddKeyboardMessage": "Tambah papan kekunci untuk bahasa sasaran anda supaya pembetulan automatik berfungsi.",
     "keyboardPromptAddKeyboardAction": "Tambah Papan Kekunci",

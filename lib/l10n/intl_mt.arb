@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Autocorrect fil-lingwa fil-mira tiegħek",
     "autocorrectAndroidDialogBody": "Meta tittajpja fi chat, it-tastiera tiegħek tinbidel għal-lingwa fil-mira tiegħek u tikkoreġi l-ortografija f'dik il-lingwa.",
     "autocorrectAndroidFallbackTitle": "Jekk it-tastiera tiegħek ma toffrix il-lingwa fil-mira tiegħek, installa Gboard u żid il-lingwa hemmhekk:",
+    "resendInSeconds": "Erġa' ibgħat ({seconds})",
     "openKeyboardSettings": "Iftaħ is-Settings tat-Tastiera",
     "keyboardPromptAddKeyboardMessage": "Żid tastiera għal-lingwa fil-mira tiegħek biex taħdem il-korrezzjoni awtomatika.",
     "keyboardPromptAddKeyboardAction": "Żid Tastiera",

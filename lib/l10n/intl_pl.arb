@@ -9832,6 +9832,7 @@
     "autocorrectAndroidDialogTitle": "Autokorekta w języku docelowym",
     "autocorrectAndroidDialogBody": "Gdy piszesz na czacie, klawiatura przełączy się na język docelowy i poprawi pisownię w tym języku.",
     "autocorrectAndroidFallbackTitle": "Jeśli Twoja klawiatura nie oferuje języka docelowego, zainstaluj Gboard i dodaj tam język:",
+    "resendInSeconds": "Wyślij ponownie ({seconds})",
     "openKeyboardSettings": "Otwórz ustawienia klawiatury",
     "keyboardPromptAddKeyboardMessage": "Dodaj klawiaturę dla języka docelowego, aby autokorekta działała.",
     "keyboardPromptAddKeyboardAction": "Dodaj klawiaturę",

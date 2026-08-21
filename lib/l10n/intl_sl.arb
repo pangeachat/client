@@ -10692,6 +10692,7 @@
     "autocorrectAndroidDialogTitle": "Samodejni popravek v vašem ciljnem jeziku",
     "autocorrectAndroidDialogBody": "Ko tipkate v klepetu, se bo tipkovnica preklopila na vaš ciljni jezik in popravljala črkovanje v tem jeziku.",
     "autocorrectAndroidFallbackTitle": "Če vaša tipkovnica ne ponuja vašega ciljnega jezika, namestite Gboard in dodajte jezik tam:",
+    "resendInSeconds": "Ponovno pošlji ({seconds})",
     "openKeyboardSettings": "Odpri nastavitve tipkovnice",
     "keyboardPromptAddKeyboardMessage": "Dodajte tipkovnico za ciljni jezik, da bo samodejni popravek deloval.",
     "keyboardPromptAddKeyboardAction": "Dodaj tipkovnico",

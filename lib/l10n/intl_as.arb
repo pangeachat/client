@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "আপোনাৰ লক্ষ্য ভাষাত স্বয়ংক্ৰিয় সংশোধন",
     "autocorrectAndroidDialogBody": "আপুনি যেতিয়া এটা চাটত টাইপ কৰে, আপোনাৰ কিব'ৰ্ড আপোনাৰ লক্ষ্য ভাষালৈ সলনি হ'ব আৰু সেই ভাষাত বানান শুদ্ধ কৰিব।",
     "autocorrectAndroidFallbackTitle": "যদি আপোনাৰ কিব'ৰ্ডে আপোনাৰ লক্ষ্য ভাষা আগবঢ়োৱা নাই, Gboard ইনষ্টল কৰক আৰু তাত ভাষা যোগ কৰক:",
+    "resendInSeconds": "পুনৰ পঠাওক ({seconds})",
     "openKeyboardSettings": "কী-ব’ৰ্ড ছেটিংছ খোলক",
     "keyboardPromptAddKeyboardMessage": "আপোনাৰ লক্ষ্য ভাষাৰ বাবে এটা কিব'ৰ্ড যোগ কৰক যাতে স্বয়ংক্ৰিয় সংশোধন কাম কৰে।",
     "keyboardPromptAddKeyboardAction": "কিব'ৰ্ড যোগ কৰক",

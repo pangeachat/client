@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
+import 'package:fluffychat/features/languages/context_language_switch_target.dart';
+import 'package:fluffychat/features/languages/language_flag_chip.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_constants.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_label.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
@@ -25,6 +28,14 @@ class ActivityDropdownHeader extends StatelessWidget {
   /// No-goals fallback: replaces the star summary with a centered title.
   final String? title;
 
+  /// This session's target language. The left slot — opposite the chevron —
+  /// carries it as a switch when it isn't what the learner is learning: the
+  /// one offer to switch a running session has, since it has no Start or
+  /// Join button to attach one to (activities.instructions.md). Left null
+  /// (the plain reserved slot) everywhere [ActivityDropdownHeader] renders
+  /// outside a live session.
+  final LanguageModel? contentLanguage;
+
   const ActivityDropdownHeader({
     super.key,
     required this.goals,
@@ -33,6 +44,7 @@ class ActivityDropdownHeader extends StatelessWidget {
     this.activeGoalId,
     this.subtitle,
     this.title,
+    this.contentLanguage,
   });
 
   @override
@@ -91,7 +103,25 @@ class ActivityDropdownHeader extends StatelessWidget {
             ),
             child: Row(
               children: [
-                const SizedBox(width: GoalHeaderConstants.chevronSlot),
+                SizedBox(
+                  width: GoalHeaderConstants.chevronSlot,
+                  child: ContextLanguageSwitchTarget(
+                    contentLanguage: contentLanguage,
+                    builder: (context, canSwitch) => !canSwitch
+                        ? const SizedBox.shrink()
+                        : LanguageFlagChip(
+                            language: contentLanguage,
+                            langCode: contentLanguage!.langCode,
+                            width: GoalHeaderConstants.chevronSlot,
+                            height: 16.0,
+                            fontSize: 8.0,
+                            radius: 2.0,
+                            borderWidth: 1.0,
+                            alwaysShowCode: false,
+                            tintColor: Theme.of(context).colorScheme.tertiary,
+                          ),
+                  ),
+                ),
                 Expanded(child: Center(child: center)),
                 const SizedBox(
                   width: GoalHeaderConstants.chevronSlot,

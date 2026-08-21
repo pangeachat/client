@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Ndozighie onwe ya n'asụsụ ị na-amụ",
     "autocorrectAndroidDialogBody": "Mgbe ị na-ede ihe na nkata, ahụigodo gị ga-agbanwe gaa n'asụsụ ị na-amụ ma dozie mkpoputa n'asụsụ ahụ.",
     "autocorrectAndroidFallbackTitle": "Ọ bụrụ na ahụigodo gị anaghị enye asụsụ ị na-amụ, wụnye Gboard ma tinye asụsụ ahụ ebe ahụ:",
+    "resendInSeconds": "Zipụgharịa ({seconds})",
     "openKeyboardSettings": "Mepee Ntọala Ahụigwe",
     "keyboardPromptAddKeyboardMessage": "Tinye ahụigodo maka asụsụ ịchọrọ ka mmezi akpaaka wee rụọ ọrụ.",
     "keyboardPromptAddKeyboardAction": "Tinye Ahụigodo",

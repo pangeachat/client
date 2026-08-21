@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Hoʻoponopono ʻakomi ma kāu ʻōlelo i manaʻo ai",
     "autocorrectAndroidDialogBody": "Ke paʻi ʻoe ma ke kamaʻilio, e hoʻololi kāu papa kī i kāu ʻōlelo i manaʻo ai a e hoʻoponopono i ka pela ʻana ma ia ʻōlelo.",
     "autocorrectAndroidFallbackTitle": "Inā ʻaʻole hāʻawi kāu papa kī i kāu ʻōlelo i manaʻo ai, e hoʻouka iā Gboard a hoʻohui i ka ʻōlelo ma laila:",
+    "resendInSeconds": "Hoʻouna hou ({seconds})",
     "openKeyboardSettings": "E wehe i nā hoʻonohonoho papa kī",
     "keyboardPromptAddKeyboardMessage": "Hoʻohui i kahi kīpē no kāu ʻōlelo i manaʻo ʻia i hana pono ka hoʻoponopono ʻana.",
     "keyboardPromptAddKeyboardAction": "Hoʻohui Kīpē",

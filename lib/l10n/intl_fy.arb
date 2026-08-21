@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Autokorreksje yn dyn doeltaal",
     "autocorrectAndroidDialogBody": "As jo yn in petear typst, sil dyn toetseboerd oerskeakelje nei dyn doeltaal en de stavering yn dy taal korrizjearje.",
     "autocorrectAndroidFallbackTitle": "As dyn toetseboerd dyn doeltaal net oanbiedt, ynstallearje dan Gboard en foegje de taal dêr ta:",
+    "resendInSeconds": "Op 'e nij ferstjoere ({seconds})",
     "openKeyboardSettings": "Toetseboerdyntellingen iepenje",
     "keyboardPromptAddKeyboardMessage": "Foegje in toetseboerd ta foar jo doeltaal, sadat autokorreksje wurket.",
     "keyboardPromptAddKeyboardAction": "Toetseboerd tafoegje",

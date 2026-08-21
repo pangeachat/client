@@ -10528,6 +10528,7 @@
     "autocorrectAndroidDialogTitle": "Automatinis taisymas jūsų mokomąja kalba",
     "autocorrectAndroidDialogBody": "Kai rašote pokalbyje, klaviatūra persijungs į jūsų mokomąją kalbą ir taisys rašybą ta kalba.",
     "autocorrectAndroidFallbackTitle": "Jei jūsų klaviatūra nepasiūlo jūsų mokomosios kalbos, įdiekite „Gboard“ ir pridėkite kalbą ten:",
+    "resendInSeconds": "Siųsti iš naujo ({seconds})",
     "openKeyboardSettings": "Atidaryti klaviatūros nustatymus",
     "keyboardPromptAddKeyboardMessage": "Pridėkite tikslinės kalbos klaviatūrą, kad veiktų automatinis taisymas.",
     "keyboardPromptAddKeyboardAction": "Pridėti klaviatūrą",

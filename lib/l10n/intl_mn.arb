@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Таны сурч буй хэл дээрх автоматаар засах тохиргоо",
     "autocorrectAndroidDialogBody": "Та чат дээр бичих үед таны гар утасны гар нь таны сурч буй хэл рүү шилжиж, тухайн хэл дээрх үсгийн алдааг засна.",
     "autocorrectAndroidFallbackTitle": "Хэрэв таны гар утасны гар нь таны сурч буй хэлийг санал болгохгүй бол Gboard-г суулгаж, тэнд хэлээ нэмнэ үү:",
+    "resendInSeconds": "Дахин илгээх ({seconds})",
     "openKeyboardSettings": "Гарын тохиргоог нээх",
     "keyboardPromptAddKeyboardMessage": "Автоматаар засах функцийг ашиглахын тулд сурах хэлнийхээ гарыг нэмнэ үү.",
     "keyboardPromptAddKeyboardAction": "Гар нэмэх",

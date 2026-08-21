@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Мақсатты тіліңіздегі автотүзету",
     "autocorrectAndroidDialogBody": "Чатта теру кезінде пернетақтаңыз мақсатты тіліңізге ауысады және сол тілдегі емлені түзетеді.",
     "autocorrectAndroidFallbackTitle": "Егер пернетақтаңызда мақсатты тіліңіз болмаса, Gboard орнатып, тілді сонда қосыңыз:",
+    "resendInSeconds": "Қайта жіберу ({seconds})",
     "openKeyboardSettings": "Пернетақта параметрлерін ашу",
     "keyboardPromptAddKeyboardMessage": "Автотүзету жұмыс істеуі үшін мақсатты тіліңізге арналған пернетақтаны қосыңыз.",
     "keyboardPromptAddKeyboardAction": "Пернетақтаны қосу",

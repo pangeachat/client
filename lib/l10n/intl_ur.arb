@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "آپ کی ہدف کی زبان میں خودکار تصحیح",
     "autocorrectAndroidDialogBody": "جب آپ کسی چیٹ میں ٹائپ کرتے ہیں، تو آپ کا کی بورڈ آپ کی ہدف کی زبان میں تبدیل ہو جائے گا اور اس زبان میں ہجے کی تصحیح کرے گا۔",
     "autocorrectAndroidFallbackTitle": "اگر آپ کا کی بورڈ آپ کی ہدف کی زبان پیش نہیں کرتا ہے، تو Gboard انسٹال کریں اور وہاں زبان شامل کریں:",
+    "resendInSeconds": "دوبارہ بھیجیں ({seconds})",
     "openKeyboardSettings": "کی بورڈ کی ترتیبات کھولیں",
     "keyboardPromptAddKeyboardMessage": "آٹو کریکٹ کے کام کرنے کے لیے اپنی ہدف زبان کے لیے ایک کی بورڈ شامل کریں۔",
     "keyboardPromptAddKeyboardAction": "کی بورڈ شامل کریں",

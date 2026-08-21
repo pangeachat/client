@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Àtúnṣe-gbogbo-ara nínú èdè tí o fẹ́ kọ́",
     "autocorrectAndroidDialogBody": "Nígbàtí o bá ń tẹ́kì nínú ìfọ̀rọ̀wéránṣẹ́, kíbọ́ọ̀dù rẹ yóò yí sí èdè tí o fẹ́ kọ́, yóò sì tún àṣìṣe ìkọ̀wé ṣe nínú èdè náà.",
     "autocorrectAndroidFallbackTitle": "Tí kíbọ́ọ̀dù rẹ kò bá ní èdè tí o fẹ́ kọ́, fi Gboard sori ẹ̀rọ rẹ, kí o sì fi èdè náà kún un níbẹ̀:",
+    "resendInSeconds": "Tun ránṣẹ́ ({seconds})",
     "openKeyboardSettings": "Ṣí Àwọn Ètò Bọ́tíìnì",
     "keyboardPromptAddKeyboardMessage": "Fi keyboard kún un fún èdè tí ò ń kọ́, kí autocorrect lè ṣiṣẹ́.",
     "keyboardPromptAddKeyboardAction": "Fi Keyboard Kún Un",

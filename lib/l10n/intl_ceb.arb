@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Autocorrect sa imong target nga pinulongan",
     "autocorrectAndroidDialogBody": "Kung mag-type ka sa chat, ang imong keyboard mobalhin sa imong target nga pinulongan ug mokorektar sa spelling niana nga pinulongan.",
     "autocorrectAndroidFallbackTitle": "Kung ang imong keyboard dili mohatag sa imong target nga pinulongan, i-install ang Gboard ug idugang ang pinulongan didto:",
+    "resendInSeconds": "Ipadala pag-usab ({seconds})",
     "openKeyboardSettings": "Ablihi ang Mga Setting sa Keyboard",
     "keyboardPromptAddKeyboardMessage": "Pagdugang og keyboard para sa imong target nga pinulongan aron molihok ang autocorrect.",
     "keyboardPromptAddKeyboardAction": "Pagdugang og Keyboard",

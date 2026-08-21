@@ -10692,6 +10692,7 @@
     "autocorrectAndroidDialogTitle": "Aŭtomata korekto en via cellingvo",
     "autocorrectAndroidDialogBody": "Kiam vi tajpas en babilejo, via klavaro ŝanĝos al via cellingvo kaj korektos literumadon en tiu lingvo.",
     "autocorrectAndroidFallbackTitle": "Se via klavaro ne ofertas vian cellingvon, instalu Gboard kaj aldonu la lingvon tie:",
+    "resendInSeconds": "Sendu denove ({seconds})",
     "openKeyboardSettings": "Malfermi Klavarajn Agordojn",
     "keyboardPromptAddKeyboardMessage": "Aldonu klavaron por via cellingvo, por ke aŭtomata korekto funkciu.",
     "keyboardPromptAddKeyboardAction": "Aldoni Klavaron",

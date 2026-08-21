@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Masahihisho ya kiotomatiki katika lugha unayolenga",
     "autocorrectAndroidDialogBody": "Unapoandika kwenye gumzo, kibodi chako kitabadilika hadi lugha unayolenga na kusahihisha tahajia katika lugha hiyo.",
     "autocorrectAndroidFallbackTitle": "Ikiwa kibodi chako hakitoi lugha unayolenga, sakinisha Gboard na uongeze lugha hapo:",
+    "resendInSeconds": "Tuma tena baada ya sekunde {seconds}",
     "openKeyboardSettings": "Fungua Mipangilio ya Kibodi",
     "keyboardPromptAddKeyboardMessage": "Ongeza kibodi kwa lugha unayolenga ili kusahihisha kiotomatiki kufanye kazi.",
     "keyboardPromptAddKeyboardAction": "Ongeza Kibodi",

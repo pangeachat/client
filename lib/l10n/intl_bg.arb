@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Автокорекция на целевия език",
     "autocorrectAndroidDialogBody": "Когато пишете в чат, клавиатурата ви ще превключи на целевия език и ще коригира правописа на този език.",
     "autocorrectAndroidFallbackTitle": "Ако клавиатурата ви не предлага целевия език, инсталирайте Gboard и добавете езика там:",
+    "resendInSeconds": "Изпрати отново ({seconds})",
     "openKeyboardSettings": "Отваряне на настройките на клавиатурата",
     "keyboardPromptAddKeyboardMessage": "Добавете клавиатура за целевия език, за да работи автоматичната корекция.",
     "keyboardPromptAddKeyboardAction": "Добавяне на клавиатура",

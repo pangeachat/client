@@ -91,13 +91,19 @@ extension UiaRequestManager on MatrixState {
                         currentRegisrationUsername == null) {
                       return;
                     }
-                    currentSendAttempt++;
+                    // A repeat request carrying the same send attempt is
+                    // treated by the homeserver as the same request and mails
+                    // nothing, so the number advances only once a send has
+                    // succeeded — a failed resend leaves it where it was and
+                    // the next tap retries rather than burning an attempt.
+                    final nextSendAttempt = currentSendAttempt + 1;
                     currentThreepidCreds = await client.requestTokenToRegister(
                       currentClientSecret,
                       currentRegistrationEmail!,
                       currentRegisrationUsername!,
-                      currentSendAttempt,
+                      nextSendAttempt,
                     );
+                    currentSendAttempt = nextSendAttempt;
                   },
                 ),
               )) {

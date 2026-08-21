@@ -7039,6 +7039,7 @@
     "autocorrectAndroidDialogTitle": "Tự động sửa lỗi bằng ngôn ngữ mục tiêu của bạn",
     "autocorrectAndroidDialogBody": "Khi bạn nhập tin nhắn trong cuộc trò chuyện, bàn phím của bạn sẽ chuyển sang ngôn ngữ mục tiêu và sửa lỗi chính tả bằng ngôn ngữ đó.",
     "autocorrectAndroidFallbackTitle": "Nếu bàn phím của bạn không hỗ trợ ngôn ngữ mục tiêu, hãy cài đặt Gboard và thêm ngôn ngữ đó tại đây:",
+    "resendInSeconds": "Gửi lại ({seconds})",
     "openKeyboardSettings": "Mở Cài đặt Bàn phím",
     "keyboardPromptAddKeyboardMessage": "Thêm bàn phím cho ngôn ngữ bạn muốn học để tính năng tự động sửa lỗi hoạt động.",
     "keyboardPromptAddKeyboardAction": "Thêm bàn phím",

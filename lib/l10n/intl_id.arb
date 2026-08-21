@@ -9820,6 +9820,7 @@
     "autocorrectAndroidDialogTitle": "Koreksi Otomatis dalam Bahasa Target Anda",
     "autocorrectAndroidDialogBody": "Saat Anda mengetik di obrolan, keyboard Anda akan beralih ke bahasa target Anda dan mengoreksi ejaan dalam bahasa tersebut.",
     "autocorrectAndroidFallbackTitle": "Jika keyboard Anda tidak menawarkan bahasa target Anda, instal Gboard dan tambahkan bahasa di sana:",
+    "resendInSeconds": "Kirim ulang ({seconds})",
     "openKeyboardSettings": "Buka Pengaturan Papan Ketik",
     "keyboardPromptAddKeyboardMessage": "Tambahkan papan ketik untuk bahasa target Anda agar koreksi otomatis berfungsi.",
     "keyboardPromptAddKeyboardAction": "Tambahkan Papan Ketik",

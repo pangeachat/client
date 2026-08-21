@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "ڕاستکردنەوەی خۆکار لە زمانی ئامانجەکەتدا",
     "autocorrectAndroidDialogBody": "کاتێک لە چاتێکدا دەنووسیت، کیبۆردەکەت دەگۆڕێت بۆ زمانی ئامانجەکەت و هەڵەی ڕێنووسی لەو زمانەدا ڕاست دەکاتەوە.",
     "autocorrectAndroidFallbackTitle": "ئەگەر کیبۆردەکەت زمانی ئامانجەکەت پێشکەش نەکرد، Gboard دابمەزرێنە و زمانەکە لەوێ زیاد بکە:",
+    "resendInSeconds": "دووبارە بنێرەوە ({seconds})",
     "openKeyboardSettings": "کردنەوەی ڕێکخستنەکانی کیبۆرد",
     "keyboardPromptAddKeyboardMessage": "کیبۆردێک بۆ زمانی مەبەستەکەت زیاد بکە بۆ ئەوەی ڕاستکردنەوەی خۆکارانە کار بکات.",
     "keyboardPromptAddKeyboardAction": "زیادکردنی کیبۆرد",

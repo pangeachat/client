@@ -9784,6 +9784,7 @@
     "autocorrectAndroidDialogTitle": "Automaattinen korjaus kohdekielelläsi",
     "autocorrectAndroidDialogBody": "Kun kirjoitat keskusteluun, näppäimistösi vaihtaa kohdekieleesi ja korjaa kirjoitusvirheet kyseisellä kielellä.",
     "autocorrectAndroidFallbackTitle": "Jos näppäimistösi ei tarjoa kohdekieltäsi, asenna Gboard ja lisää kieli sinne:",
+    "resendInSeconds": "Lähetä uudelleen ({seconds})",
     "openKeyboardSettings": "Avaa näppäimistöasetukset",
     "keyboardPromptAddKeyboardMessage": "Lisää kohdekielesi näppäimistö, jotta automaattinen korjaus toimii.",
     "keyboardPromptAddKeyboardAction": "Lisää näppäimistö",

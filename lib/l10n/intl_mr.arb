@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "तुमच्या लक्ष्यित भाषेमध्ये स्वयं-दुरुस्ती",
     "autocorrectAndroidDialogBody": "जेव्हा तुम्ही चॅटमध्ये टाइप करता, तेव्हा तुमचे कीबोर्ड तुमच्या लक्ष्यित भाषेमध्ये बदलेल आणि त्या भाषेतील स्पेलिंग दुरुस्त करेल.",
     "autocorrectAndroidFallbackTitle": "तुमच्या कीबोर्डमध्ये तुमची लक्ष्यित भाषा उपलब्ध नसल्यास, Gboard स्थापित करा आणि तेथे भाषा जोडा:",
+    "resendInSeconds": "पुन्हा पाठवा ({seconds})",
     "openKeyboardSettings": "कीबोर्ड सेटिंग्ज उघडा",
     "keyboardPromptAddKeyboardMessage": "तुमच्या लक्ष्य भाषेसाठी कीबोर्ड जोडा, जेणेकरून स्वयं-दुरुस्ती (autocorrect) काम करेल.",
     "keyboardPromptAddKeyboardAction": "कीबोर्ड जोडा",

@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Максаттуу тилиңиздеги автооңдоо",
     "autocorrectAndroidDialogBody": "Чатка тергениңизде, клавиатураңыз максаттуу тилиңизге которулуп, ошол тилдеги орфографияны оңдойт.",
     "autocorrectAndroidFallbackTitle": "Эгер клавиатураңыз максаттуу тилиңизди сунуштабаса, Gboard орнотуп, тилди ошол жерден кошуңуз:",
+    "resendInSeconds": "Кайра жөнөтүү ({seconds})",
     "openKeyboardSettings": "Баскычтоп жөндөөлөрүн ачуу",
     "keyboardPromptAddKeyboardMessage": "Автооңдоо иштеши үчүн максаттуу тилиңизге баскычтоп кошуңуз.",
     "keyboardPromptAddKeyboardAction": "Баскычтоп кошуу",

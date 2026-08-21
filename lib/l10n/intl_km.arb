@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "ការកែស្វ័យប្រវត្តិជាភាសាគោលដៅរបស់អ្នក",
     "autocorrectAndroidDialogBody": "នៅពេលអ្នកវាយបញ្ចូលក្នុងការជជែក ក្ដារចុចរបស់អ្នកនឹងប្ដូរទៅជាភាសាគោលដៅរបស់អ្នក ហើយកែអក្ខរាវិរុទ្ធជាភាសានោះ។",
     "autocorrectAndroidFallbackTitle": "ប្រសិនបើក្ដារចុចរបស់អ្នកមិនផ្ដល់ភាសាគោលដៅរបស់អ្នកទេ សូមដំឡើង Gboard ហើយបន្ថែមភាសានៅទីនោះ៖",
+    "resendInSeconds": "ផ្ញើ​ម្ដង​ទៀត ({seconds})",
     "openKeyboardSettings": "បើកការកំណត់ក្ដារចុច",
     "keyboardPromptAddKeyboardMessage": "បន្ថែម​ក្ដារចុច​សម្រាប់​ភាសា​គោលដៅ​របស់​អ្នក ដើម្បី​ឲ្យ​ការ​កែ​ដោយ​ស្វ័យប្រវត្តិ​ដំណើរការ។",
     "keyboardPromptAddKeyboardAction": "បន្ថែម​ក្ដារចុច",

@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Emendatio automatica in lingua quam discis",
     "autocorrectAndroidDialogBody": "Cum in colloquio scribis, claviatura tua ad linguam quam discis mutabit et orthographiam in illa lingua emendabit.",
     "autocorrectAndroidFallbackTitle": "Si claviatura tua linguam quam discis non offert, Gboard institue et linguam illic adde:",
+    "resendInSeconds": "Iterum mitte ({seconds})",
     "openKeyboardSettings": "Aperi Claviaturae Optiones",
     "keyboardPromptAddKeyboardMessage": "Claviaturae linguae tuae additae sunt, ut correctio automatica operetur.",
     "keyboardPromptAddKeyboardAction": "Adde Claviaturam",

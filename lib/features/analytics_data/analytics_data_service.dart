@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
@@ -142,6 +143,17 @@ class AnalyticsDataService {
   Future<void> _initDatabase(Client client) async {
     _invalidateCaches();
 
+    // #8525: pairs with the _closeDatabase crumb. Reopening REPLACES
+    // _analyticsClient without closing the outgoing one, so a later
+    // closed-store failure can also mean "a previous instance's connection
+    // went away"; the crumb trail is what distinguishes the two.
+    Sentry.addBreadcrumb(
+      Breadcrumb(
+        message: 'AnalyticsDataService._initDatabase',
+        data: {'replacedExisting': _analyticsClient != null},
+      ),
+    );
+
     final database = await analyticsDatabaseBuilder(
       "${client.clientName}_analytics",
     );
@@ -279,6 +291,9 @@ class AnalyticsDataService {
 
   Future<void> reinitialize() async {
     Logs().i("Reinitializing analytics database.");
+    Sentry.addBreadcrumb(
+      Breadcrumb(message: 'AnalyticsDataService.reinitialize'),
+    );
     initError = null;
     initCompleter = Completer<void>();
     _clearLocalCaches();
@@ -317,6 +332,15 @@ class AnalyticsDataService {
   }
 
   Future<void> _closeDatabase() async {
+    // Breadcrumb the close itself. #8525: a closed store poisons every later
+    // analytics write, and the only way to tell an orderly teardown from a
+    // close we did not initiate is whether this crumb precedes the failure.
+    Sentry.addBreadcrumb(
+      Breadcrumb(
+        message: 'AnalyticsDataService._closeDatabase',
+        data: {'hadDatabase': _analyticsClient != null},
+      ),
+    );
     await _analyticsClient?.database.delete();
     _analyticsClient = null;
     _clearLocalCaches();
@@ -683,15 +707,19 @@ class AnalyticsDataService {
         );
       } else {
         await MatrixState.pangeaController.userController.addXPOffset(offset);
-        await updateXPOffset(
-          MatrixState
-              .pangeaController
-              .userController
-              .publicProfile!
-              .analytics
-              .xpOffset!,
-          language,
-        );
+        // Mirrors whatever the public profile ended up holding. Null when the
+        // offset was not applied there — nothing loaded yet, or a profile
+        // belonging to another account (#8531) — and the local copy must then
+        // stay put too, rather than drifting away from the published one.
+        final xpOffset = MatrixState
+            .pangeaController
+            .userController
+            .publicProfile
+            ?.analytics
+            .xpOffset;
+        if (xpOffset != null) {
+          await updateXPOffset(xpOffset, language);
+        }
       }
     }
 

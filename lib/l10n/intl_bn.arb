@@ -10375,6 +10375,7 @@
     "autocorrectAndroidDialogTitle": "আপনার লক্ষ্য ভাষায় স্বয়ংক্রিয় সংশোধন",
     "autocorrectAndroidDialogBody": "আপনি যখন চ্যাটে টাইপ করবেন, আপনার কীবোর্ড আপনার লক্ষ্য ভাষায় পরিবর্তিত হবে এবং সেই ভাষায় বানান সংশোধন করবে।",
     "autocorrectAndroidFallbackTitle": "যদি আপনার কীবোর্ড আপনার লক্ষ্য ভাষা অফার না করে, তাহলে Gboard ইনস্টল করুন এবং সেখানে ভাষা যোগ করুন:",
+    "resendInSeconds": "পুনরায় পাঠান ({seconds})",
     "openKeyboardSettings": "কিবোর্ড সেটিংস খুলুন",
     "keyboardPromptAddKeyboardMessage": "আপনার লক্ষ্য ভাষার জন্য একটি কীবোর্ড যোগ করুন যাতে স্বয়ংক্রিয় সংশোধন কাজ করে।",
     "keyboardPromptAddKeyboardAction": "কীবোর্ড যোগ করুন",

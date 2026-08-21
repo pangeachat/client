@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Gyaran kai a harshen da kake so",
     "autocorrectAndroidDialogBody": "Idan ka rubuta a cikin taɗi, madanninka zai canza zuwa harshen da kake so kuma ya gyara kuskuren rubutu a cikin wannan harshen.",
     "autocorrectAndroidFallbackTitle": "Idan madanninka bai ba da harshen da kake so ba, shigar da Gboard kuma ƙara harshen a can:",
+    "resendInSeconds": "Sake aikawa ({seconds})",
     "openKeyboardSettings": "Bude Saitunan Allon Madanni",
     "keyboardPromptAddKeyboardMessage": "Ƙara madannai don yaren da kake so don gyaran kai ya yi aiki.",
     "keyboardPromptAddKeyboardAction": "Ƙara Madannai",

@@ -10696,6 +10696,7 @@
     "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
     "autocorrectAndroidDialogBody": "Kada kucate u ćaskanju, vaša tastatura će se prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
     "autocorrectAndroidFallbackTitle": "Ako vaša tastatura ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:",
+    "resendInSeconds": "Ponovo pošalji ({seconds})",
     "openKeyboardSettings": "Otvori podešavanja tastature",
     "keyboardPromptAddKeyboardMessage": "Dodajte tastaturu za ciljni jezik da bi automatska ispravka radila.",
     "keyboardPromptAddKeyboardAction": "Dodaj tastaturu",

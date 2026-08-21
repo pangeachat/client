@@ -9747,6 +9747,7 @@
     "autocorrectAndroidDialogTitle": "Automātiskā korekcija jūsu mērķa valodā",
     "autocorrectAndroidDialogBody": "Kad rakstīsiet tērzēšanā, tastatūra pārslēgsies uz jūsu mērķa valodu un labos pareizrakstību šajā valodā.",
     "autocorrectAndroidFallbackTitle": "Ja jūsu tastatūra nepiedāvā jūsu mērķa valodu, instalējiet Gboard un pievienojiet valodu tur:",
+    "resendInSeconds": "Sūtīt atkārtoti ({seconds})",
     "openKeyboardSettings": "Atvērt tastatūras iestatījumus",
     "keyboardPromptAddKeyboardMessage": "Pievienojiet tastatūru mērķa valodai, lai darbotos automātiskā korekcija.",
     "keyboardPromptAddKeyboardAction": "Pievienot tastatūru",

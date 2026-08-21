@@ -10183,6 +10183,7 @@
     "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
     "autocorrectAndroidDialogBody": "Kada tipkate u chatu, vaša će se tipkovnica prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
     "autocorrectAndroidFallbackTitle": "Ako vaša tipkovnica ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:",
+    "resendInSeconds": "Ponovno pošalji ({seconds})",
     "openKeyboardSettings": "Otvori postavke tipkovnice",
     "keyboardPromptAddKeyboardMessage": "Dodajte tipkovnicu za ciljni jezik kako bi automatska ispravka radila.",
     "keyboardPromptAddKeyboardAction": "Dodaj tipkovnicu",

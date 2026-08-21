@@ -114,6 +114,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// finishes, so a queued rebuild reads the closing service rather than
   /// creating a fresh one that would outlive the account and leak.
   final Map<String, Future<void>> _disposingServices = {};
+
+  /// Client names currently unwinding from a `loggedOut` event: from the
+  /// moment the state change is observed until the client has been removed
+  /// from [Matrix.clients] and its subscriptions cancelled ([_registerSubs]'s
+  /// `loggedOut` branch below). That teardown awaits unrelated async work
+  /// (e.g. the analytics update in `handleLoginStateChange`) before it even
+  /// starts, so `client.isLogged() == false` alone does not prove the client
+  /// is safe to hand back to a new login — [getLoginClient] must never reuse
+  /// one still in this set, or the new login silently loses its
+  /// `onLoginStateChanged` listener and the login dialog never closes
+  /// (#8514).
+  final Set<String> _clientsTearingDown = {};
   // Pangea#
   SharedPreferences get store => widget.store;
 
@@ -260,8 +272,25 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   AudioPlayer? audioPlayer;
   final ValueNotifier<String?> voiceMessageEventId = ValueNotifier(null);
 
+  /// Whether [getLoginClient] would hand back the current [client] instead
+  /// of creating a fresh login candidate. Exposed for tests; see
+  /// [_clientsTearingDown].
+  @visibleForTesting
+  bool get canReuseClientForLogin =>
+      widget.clients.isNotEmpty &&
+      !client.isLogged() &&
+      !_clientsTearingDown.contains(client.clientName);
+
+  /// Test-only: marks [clientName] as unwinding a `loggedOut` event, exactly
+  /// as the listener installed by [_registerSubs] does before its async
+  /// teardown — lets tests exercise the [getLoginClient] race guard without
+  /// a live `loggedOut` stream event (#8514).
+  @visibleForTesting
+  void markClientTearingDownForTest(String clientName) =>
+      _clientsTearingDown.add(clientName);
+
   Future<Client> getLoginClient() async {
-    if (widget.clients.isNotEmpty && !client.isLogged()) {
+    if (canReuseClientForLogin) {
       return client;
     }
     final candidate = _loginClientCandidate ??=
@@ -274,15 +303,25 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
               .first
               .then((_) async {
                 // #Pangea
+                // The `client` getter (and anything handleLoginStateChange
+                // reads through it, e.g. PangeaController._onLogin) must
+                // resolve to THIS candidate before handleLoginStateChange
+                // runs — added to Matrix.clients and made active first.
+                // Otherwise, on a fresh single-account login, Matrix.clients
+                // is still empty at this point and `client` falls back to
+                // the previous (already logged-out, torn-down) account, so
+                // _onLogin's network calls hang against a dead client and
+                // the login dialog never closes (#8514).
+                if (!widget.clients.contains(_loginClientCandidate)) {
+                  widget.clients.add(_loginClientCandidate!);
+                }
+                setActiveClient(_loginClientCandidate);
                 await MatrixState.pangeaController.handleLoginStateChange(
                   LoginState.loggedIn,
                   _loginClientCandidate!.userID,
                   context,
                 );
                 // Pangea#
-                if (!widget.clients.contains(_loginClientCandidate)) {
-                  widget.clients.add(_loginClientCandidate!);
-                }
                 ClientManager.addClientNameToStore(
                   _loginClientCandidate!.clientName,
                   store,
@@ -530,6 +569,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       state,
     ) async {
       // #Pangea
+      // Mark BEFORE the handleLoginStateChange await below, which can take a
+      // while (e.g. the analytics update) — getLoginClient must refuse to
+      // reuse this client for the whole unwind, not just once teardown
+      // itself starts (#8514).
+      if (state == LoginState.loggedOut) {
+        _clientsTearingDown.add(c.clientName);
+      }
       // A failure reporting the state change (e.g. Firebase analytics) must NOT
       // skip the loggedOut teardown below — otherwise the account's services +
       // subscriptions (and its dosage tracker) leak on logout.
@@ -550,6 +596,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         ClientManager.removeClientNameFromStore(c.clientName, store);
         // #Pangea
         // InitWithRestoreExtension.deleteSessionBackup(name);
+        _clientsTearingDown.remove(c.clientName);
         // Pangea#
       }
       if (loggedInWithMultipleClients && state != LoginState.loggedIn) {

@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Ukulungisa okuzenzakalelayo ngolimi olufundayo",
     "autocorrectAndroidDialogBody": "Uma uthayipha engxoxweni, ikhibhodi yakho izoshintshela olimini olufundayo futhi ilungise amaphutha esipelingi ngalolo limi.",
     "autocorrectAndroidFallbackTitle": "Uma ikhibhodi yakho ingalunikezi ulimi olufundayo, faka i-Gboard bese wengeza ulimi lapho:",
+    "resendInSeconds": "Phinda uthumele ({seconds})",
     "openKeyboardSettings": "Vula Izilungiselelo Zekhibhodi",
     "keyboardPromptAddKeyboardMessage": "Faka ikhibhodi yolimi oluqondile ukuze i-autocorrect isebenze.",
     "keyboardPromptAddKeyboardAction": "Faka Ikhibhodi",

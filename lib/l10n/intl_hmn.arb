@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Kho lus tsis yog rau koj hom lus",
     "autocorrectAndroidDialogBody": "Thaum koj ntaus ntawv hauv kev sib tham, koj lub keyboard yuav hloov mus rau koj hom lus thiab kho cov lus tsis yog hauv hom lus ntawd.",
     "autocorrectAndroidFallbackTitle": "Yog tias koj lub keyboard tsis muaj koj hom lus, nruab Gboard thiab ntxiv hom lus ntawd rau hauv:",
+    "resendInSeconds": "Xa dua ({seconds})",
     "openKeyboardSettings": "Qhib Chaw Teeb Tsa Keyboard",
     "keyboardPromptAddKeyboardMessage": "Ntxiv ib lub keyboard rau koj hom lus kom autocorrect ua haujlwm.",
     "keyboardPromptAddKeyboardAction": "Ntxiv Keyboard",

@@ -10647,6 +10647,7 @@
     "autocorrectAndroidDialogTitle": "ავტოკორექცია თქვენს სამიზნე ენაზე",
     "autocorrectAndroidDialogBody": "როდესაც ჩატში წერთ, თქვენი კლავიატურა გადაერთვება თქვენს სამიზნე ენაზე და შეასწორებს მართლწერას ამ ენაზე.",
     "autocorrectAndroidFallbackTitle": "თუ თქვენი კლავიატურა არ გთავაზობთ თქვენს სამიზნე ენას, დააინსტალირეთ Gboard და დაამატეთ ენა იქ:",
+    "resendInSeconds": "ხელახლა გაგზავნა ({seconds})",
     "openKeyboardSettings": "კლავიატურის პარამეტრების გახსნა",
     "keyboardPromptAddKeyboardMessage": "დაამატეთ კლავიატურა თქვენი სამიზნე ენისთვის, რათა ავტოკორექციამ იმუშაოს.",
     "keyboardPromptAddKeyboardAction": "კლავიატურის დამატება",

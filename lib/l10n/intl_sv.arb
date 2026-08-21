@@ -10265,6 +10265,7 @@
     "autocorrectAndroidDialogTitle": "Autokorrigering på ditt målspråk",
     "autocorrectAndroidDialogBody": "När du skriver i en chatt växlar tangentbordet till ditt målspråk och korrigerar stavningen på det språket.",
     "autocorrectAndroidFallbackTitle": "Om ditt tangentbord inte erbjuder ditt målspråk, installera Gboard och lägg till språket där:",
+    "resendInSeconds": "Skicka igen ({seconds})",
     "openKeyboardSettings": "Öppna tangentbordsinställningar",
     "keyboardPromptAddKeyboardMessage": "Lägg till ett tangentbord för ditt målspråk så att autokorrigeringen fungerar.",
     "keyboardPromptAddKeyboardAction": "Lägg till tangentbord",

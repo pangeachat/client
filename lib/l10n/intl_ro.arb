@@ -10479,6 +10479,7 @@
     "autocorrectAndroidDialogTitle": "Corectare automată în limba țintă",
     "autocorrectAndroidDialogBody": "Când scrii într-un chat, tastatura ta va comuta la limba țintă și va corecta ortografia în acea limbă.",
     "autocorrectAndroidFallbackTitle": "Dacă tastatura ta nu oferă limba țintă, instalează Gboard și adaugă limba acolo:",
+    "resendInSeconds": "Retrimite ({seconds})",
     "openKeyboardSettings": "Deschide Setările Tastaturii",
     "keyboardPromptAddKeyboardMessage": "Adaugă o tastatură pentru limba țintă, astfel încât corectarea automată să funcționeze.",
     "keyboardPromptAddKeyboardAction": "Adaugă tastatură",

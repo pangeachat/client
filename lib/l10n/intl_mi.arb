@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Whakatikatika-aunoa i tō reo whāinga",
     "autocorrectAndroidDialogBody": "Ka patopato koe i roto i te kōrerorero, ka huri tō papapātuhi ki tō reo whāinga, ā, ka whakatika i te takikupu i taua reo.",
     "autocorrectAndroidFallbackTitle": "Ki te kore tō papapātuhi e tuku i tō reo whāinga, tāutahia a Gboard ka tāpiri i te reo ki reira:",
+    "resendInSeconds": "Tukua anō ({seconds})",
     "openKeyboardSettings": "Whakatuwheratia ngā Tautuhinga Papapātuhi",
     "keyboardPromptAddKeyboardMessage": "Tāpirihia he papapātuhi mō tō reo whāinga kia mahi ai te whakatikatika-aunoa.",
     "keyboardPromptAddKeyboardAction": "Tāpiri Papapātuhi",

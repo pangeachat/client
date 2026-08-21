@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଭାଷାରେ ସ୍ୱତଃ ସଂଶୋଧନ",
     "autocorrectAndroidDialogBody": "ଯେତେବେଳେ ଆପଣ ଏକ ଚାଟ୍‌ରେ ଟାଇପ୍ କରନ୍ତି, ଆପଣଙ୍କ କୀବୋର୍ଡ୍ ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଭାଷାକୁ ବଦଳିଯିବ ଏବଂ ସେହି ଭାଷାରେ ବନାନ ସଂଶୋଧନ କରିବ।",
     "autocorrectAndroidFallbackTitle": "ଯଦି ଆପଣଙ୍କ କୀବୋର୍ଡ୍ ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଭାଷା ପ୍ରଦାନ କରୁନାହିଁ, ତେବେ Gboard ଇନଷ୍ଟଲ୍ କରନ୍ତୁ ଏବଂ ସେଠାରେ ଭାଷା ଯୋଡନ୍ତୁ:",
+    "resendInSeconds": "ପୁନଃ ପଠାନ୍ତୁ ({seconds})",
     "openKeyboardSettings": "କୀବୋର୍ଡ ସେଟିଙ୍ଗ୍ସ ଖୋଲନ୍ତୁ",
     "keyboardPromptAddKeyboardMessage": "ଆପଣଙ୍କ ଟାର୍ଗେଟ୍ ଭାଷା ପାଇଁ ଏକ କୀବୋର୍ଡ୍ ଯୋଡ଼ନ୍ତୁ ଯାହାଦ୍ୱାରା ଅଟୋକରେକ୍ଟ କାମ କରିବ।",
     "keyboardPromptAddKeyboardAction": "କୀବୋର୍ଡ୍ ଯୋଡ଼ନ୍ତୁ",

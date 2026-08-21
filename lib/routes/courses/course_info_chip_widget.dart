@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/languages/context_language_switch_target.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -13,6 +15,11 @@ class CourseInfoChip extends StatelessWidget {
   final double? iconSize;
   final EdgeInsets? padding;
 
+  /// Overrides both the icon and text color — the language chip uses this to
+  /// signal a mismatch with the learner's target language
+  /// (profile.instructions.md, "Switching from context").
+  final Color? color;
+
   const CourseInfoChip({
     super.key,
     required this.icon,
@@ -20,6 +27,7 @@ class CourseInfoChip extends StatelessWidget {
     required this.fontSize,
     required this.iconSize,
     this.padding,
+    this.color,
   });
 
   @override
@@ -30,8 +38,11 @@ class CourseInfoChip extends StatelessWidget {
         spacing: 4.0,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: iconSize),
-          Text(text, style: TextStyle(fontSize: fontSize)),
+          Icon(icon, size: iconSize, color: color),
+          Text(
+            text,
+            style: TextStyle(fontSize: fontSize, color: color),
+          ),
         ],
       ),
     );
@@ -126,16 +137,20 @@ class CourseInfoChipsState extends State<CourseInfoChips> {
       spacing: 8.0,
       runSpacing: 8.0,
       children: [
-        Semantics(
-          label: outline.quest.targetLanguageFullDisplay,
-          child: ExcludeSemantics(
-            child: CourseInfoChip(
-              icon: Icons.language,
-              text: outline.quest.targetLanguageDisplay,
-              fontSize: widget.fontSize,
-              iconSize: widget.iconSize,
-              padding: widget.padding,
-            ),
+        // Doubles as the switch to this course's language when it isn't the
+        // learner's target (profile.instructions.md, "Switching from
+        // context").
+        ContextLanguageSwitchTarget(
+          contentLanguage: PLanguageStore.byLangCode(
+            outline.quest.targetLanguage,
+          ),
+          builder: (context, canSwitch) => CourseInfoChip(
+            icon: Icons.language,
+            text: outline.quest.targetLanguageDisplay,
+            fontSize: widget.fontSize,
+            iconSize: widget.iconSize,
+            padding: widget.padding,
+            color: canSwitch ? Theme.of(context).colorScheme.tertiary : null,
           ),
         ),
         CourseInfoChip(

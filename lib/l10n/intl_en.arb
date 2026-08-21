@@ -4494,6 +4494,15 @@
     "clickOnEmailLinkDesc": "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.",
     "didntReceiveEmail": "Didn't receive the email?",
     "resend": "Resend",
+    "resendInSeconds": "Resend ({seconds})",
+    "@resendInSeconds": {
+        "type": "text",
+        "placeholders": {
+            "seconds": {
+                "type": "int"
+            }
+        }
+    },
     "suggestedVocab": "Suggested vocab",
     "myGender": "My gender",
     "profile": "Profile",
@@ -4504,6 +4513,24 @@
     "enableEmailNotifications": "Enable email notifications",
     "learningAnalytics": "Learning analytics",
     "searchLanguagesHint": "Search languages",
+    "switchLanguageChipLabel": "Switch to {language}",
+    "@switchLanguageChipLabel": {
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "languageDropdownLevel": "Level {level}",
+    "@languageDropdownLevel": {
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "whatAreYouLearning": "What are you learning?",
+    "languageSwitcherBaseLanguageLabel": "Your base language",
     "alreadySpeak": "I already speak...",
     "welcomeBackLogin": "Welcome back! You previously signed in with {platform}.",
     "@welcomeBackLogin": {

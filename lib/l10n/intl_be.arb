@@ -9761,6 +9761,7 @@
     "autocorrectAndroidDialogTitle": "Аўтавыпраўленне на вашай мэтавай мове",
     "autocorrectAndroidDialogBody": "Калі вы друкуеце ў чаце, ваша клавіятура пераключыцца на мэтавую мову і выправіць арфаграфію на гэтай мове.",
     "autocorrectAndroidFallbackTitle": "Калі ваша клавіятура не прапануе мэтавую мову, усталюйце Gboard і дадайце мову там:",
+    "resendInSeconds": "Адправіць паўторна праз ({seconds})",
     "openKeyboardSettings": "Адкрыць налады клавіятуры",
     "keyboardPromptAddKeyboardMessage": "Дадайце клавіятуру для мэтавай мовы, каб працаваў аўтавыпраўленне.",
     "keyboardPromptAddKeyboardAction": "Дадаць клавіятуру",

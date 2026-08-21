@@ -10683,6 +10683,7 @@
     "autocorrectAndroidDialogTitle": "Autocorrection in tu lingua de destination",
     "autocorrectAndroidDialogBody": "Quando tu scribe in un chat, tu claviero cambiara a tu lingua de destination e corrigera le orthographia in ille lingua.",
     "autocorrectAndroidFallbackTitle": "Si tu claviero non offere tu lingua de destination, installa Gboard e adde le lingua ibi:",
+    "resendInSeconds": "Re-inviar ({seconds})",
     "openKeyboardSettings": "Aperi le Preferentias del Claviero",
     "keyboardPromptAddKeyboardMessage": "Adde un claviero pro tu lingua de scopo a fin que le autocorrection functiona.",
     "keyboardPromptAddKeyboardAction": "Adder Claviero",

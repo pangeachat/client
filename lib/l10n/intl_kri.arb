@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Autocorrect na yu tɔŋ we yu de lan",
     "autocorrectAndroidDialogBody": "Tɛm we yu de rayt na chat, yu keyboard go chenj to yu tɔŋ we yu de lan ɛn kɔrɛkt spɛlin na dat tɔŋ.",
     "autocorrectAndroidFallbackTitle": "If yu keyboard nɔ gɛt yu tɔŋ we yu de lan, instɔl Gboard ɛn ad di tɔŋ de:",
+    "resendInSeconds": "Send bak ({seconds})",
     "openKeyboardSettings": "Open Keyboard Setin dɛm",
     "keyboardPromptAddKeyboardMessage": "Put in wan keyboard fɔ yu target langwej so autocorrect go wok.",
     "keyboardPromptAddKeyboardAction": "Put in Keyboard",

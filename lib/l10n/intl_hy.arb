@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Ավտոուղղումը ձեր թիրախ լեզվով",
     "autocorrectAndroidDialogBody": "Երբ հաղորդագրություն եք գրում, ձեր ստեղնաշարը կանցնի ձեր թիրախ լեզվին և կուղղի ուղղագրությունը այդ լեզվով։",
     "autocorrectAndroidFallbackTitle": "Եթե ձեր ստեղնաշարը չի առաջարկում ձեր թիրախ լեզուն, տեղադրեք Gboard-ը և ավելացրեք լեզուն այնտեղ՝",
+    "resendInSeconds": "Կրկին ուղարկել ({seconds})",
     "openKeyboardSettings": "Բացել ստեղնաշարի կարգավորումները",
     "keyboardPromptAddKeyboardMessage": "Ավելացրեք ստեղնաշար ձեր թիրախ լեզվի համար, որպեսզի ավտոուղղումն աշխատի։",
     "keyboardPromptAddKeyboardAction": "Ավելացնել ստեղնաշար",

@@ -2151,6 +2151,7 @@
     "autocorrectAndroidDialogTitle": "Sjálfvirk leiðrétting á markmálinu þínu",
     "autocorrectAndroidDialogBody": "Þegar þú skrifar í spjalli mun lyklaborðið þitt skipta yfir í markmálið þitt og leiðrétta stafsetningu á því máli.",
     "autocorrectAndroidFallbackTitle": "Ef lyklaborðið þitt býður ekki upp á markmálið þitt skaltu setja upp Gboard og bæta málinu við þar:",
+    "resendInSeconds": "Senda aftur ({seconds})",
     "openKeyboardSettings": "Opna lyklaborðsstillingar",
     "keyboardPromptAddKeyboardMessage": "Bættu við lyklaborði fyrir tungumálið sem þú ert að læra svo sjálfvirk leiðrétting virki.",
     "keyboardPromptAddKeyboardAction": "Bæta við lyklaborði",

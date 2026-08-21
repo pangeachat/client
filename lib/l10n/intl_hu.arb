@@ -9850,6 +9850,7 @@
     "autocorrectAndroidDialogTitle": "Automatikus javítás a célnyelven",
     "autocorrectAndroidDialogBody": "Amikor csevegésben gépel, a billentyűzet átvált a célnyelvre, és azon a nyelven javítja a helyesírást.",
     "autocorrectAndroidFallbackTitle": "Ha a billentyűzete nem kínálja fel a célnyelvet, telepítse a Gboardot, és adja hozzá ott a nyelvet:",
+    "resendInSeconds": "Újraküldés ({seconds})",
     "openKeyboardSettings": "Billentyűzetbeállítások megnyitása",
     "keyboardPromptAddKeyboardMessage": "Adj hozzá billentyűzetet a célnyelvedhez, hogy működjön az automatikus javítás.",
     "keyboardPromptAddKeyboardAction": "Billentyűzet hozzáadása",
