@@ -150,6 +150,12 @@ commissioned for it.
   ([`PangeaController`](../../lib/pangea/common/controllers/pangea_controller.dart)),
   the one choke point every level write passes through — onboarding's picker,
   learning settings, the bot dialog, and a course join alike.
+- **A profile write reaches exactly one stream.** `UserController` routes an
+  update that changed a language to `languageStream` and everything else to
+  `settingsUpdateStream` — never both. A user property that can change in the
+  same write as a language (CEFR does: the course-code onboarding step sets
+  language and level together) therefore has to be emitted from **both**
+  listeners, or the paths that bundle them go unreported.
 - **A user property is invisible in reporting until it is registered** as a
   USER-scoped custom dimension in the devops `analytics/ga-config.yaml` spec
   (see its ga-analytics-sync doc) for **both** properties. Emitting it from the

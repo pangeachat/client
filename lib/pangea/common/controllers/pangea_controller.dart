@@ -208,9 +208,22 @@ class PangeaController {
   }
 
   Future<void> _onLanguageUpdate(LanguageUpdate update) async {
+    // Both languages come off the update, which carries them already resolved.
+    // `baseLang` is the L1 and `targetLang` the L2 (see [LanguageUpdate]) — this
+    // was reporting the L1 as `target_language`, so every language change wrote
+    // the learner's OWN language into the dimension that is supposed to say
+    // what they are learning.
     GoogleAnalytics.setUserProperties(
-      targetLanguage: update.baseLang.langCode,
-      sourceLanguage: userController.profile.userSettings.sourceLanguage ?? '',
+      targetLanguage: update.targetLang.langCode,
+      sourceLanguage: update.baseLang.langCode,
+    );
+    // A profile write that changes a language routes HERE and not to
+    // settingsUpdateStream ([UserController._onProfileUpdate] picks one), and
+    // the course-code onboarding step writes both languages and the CEFR level
+    // in a single update — so without this, the one path that sets a learner's
+    // level from their course would never report it.
+    GoogleAnalytics.updateUserCefrLevel(
+      userController.profile.userSettings.cefrLevel.string,
     );
 
     final exclude = [
