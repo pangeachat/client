@@ -11,6 +11,7 @@ import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/analytics_data/analytics_database.dart';
 import 'package:fluffychat/features/analytics_data/analytics_settings_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
@@ -238,6 +239,25 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     try {
       await _updateAnalytics(lang);
       await dataService.clearLocalAnalytics(lang.langCodeShort);
+    } on AnalyticsDatabaseClosedException catch (err, s) {
+      // The store is gone and this instance cannot revive it, so every later
+      // tick would fail identically. Stop the timer rather than let a dead
+      // database generate one Sentry event every 5 minutes for the life of
+      // the session (#8525) — that loop is what made this look like hundreds
+      // of incidents instead of one.
+      _periodicTimer?.cancel();
+      _periodicTimer = null;
+      // Transient by nature: teardown racing an in-flight flush. Reported
+      // once per session, at warning, per the severity policy in
+      // repos-and-error-handling.instructions.md.
+      ErrorHandler.logErrorOnce(
+        key: "analytics-update-database-closed",
+        e: err,
+        m: "Analytics update stopped: analytics store closed",
+        s: s,
+        data: {"l2Override": l2Override},
+        level: SentryLevel.warning,
+      );
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
