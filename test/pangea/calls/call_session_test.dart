@@ -241,17 +241,28 @@ void main() {
     session.endCall();
   });
 
-  test('ending releases the session exactly once, immediately', () async {
-    final (session, _, released) = await build();
-    session.endCall();
-    expect(session.isOver, isTrue, reason: 'the outcome latch is immediate');
-    expect(released, [session]);
-  });
+  test(
+    'ending latches immediately and hands the session over exactly once',
+    () async {
+      final (session, _, released) = await build();
+      session.endCall();
+      expect(session.isOver, isTrue, reason: 'the outcome latch is immediate');
+      // The HANDOVER is deliberately not synchronous. Release runs from inside
+      // the call's own listener walk, and the holder disposes the call on
+      // release -- disposing a notifier mid-notification corrupts its listener
+      // bookkeeping (a RangeError deep in notifyListeners, seen live). So the
+      // latch is instant, the handover is a microtask later.
+      expect(released, isEmpty, reason: 'not from inside the notification');
+      await pumpEventQueue();
+      expect(released, [session]);
+    },
+  );
 
   test('a view detaching after disposal is absorbed, not a crash', () async {
     final (session, _, released) = await build();
     session.attachPresenter();
     session.endCall();
+    await pumpEventQueue();
     expect(released, [session]);
     session.dispose();
     // The global tile and chat host detach on unmount, which happens AFTER the

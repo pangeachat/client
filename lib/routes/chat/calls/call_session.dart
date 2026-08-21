@@ -403,7 +403,15 @@ class CallSession extends ChangeNotifier {
     _tick?.cancel();
     _tick = null;
     _notify();
-    _onReleased(this);
+    // Handed over only once the current notification has unwound. This runs
+    // FROM the call's own listener walk (outcome -> _onCallChanged -> here),
+    // and the holder's release disposes the call -- disposing a notifier while
+    // it is still walking its listener list corrupts its bookkeeping, and the
+    // wreckage surfaces later as a RangeError inside notifyListeners. The same
+    // rule the roster teardown in _unwind already states, applied to the one
+    // other place a notifier's death is triggered from inside its own
+    // notification.
+    scheduleMicrotask(() => _onReleased(this));
   }
 
   bool _disposing = false;

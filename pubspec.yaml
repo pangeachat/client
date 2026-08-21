@@ -199,6 +199,11 @@ flutter:
 # 2. Always link an (upstream?) issue
 # 3. Explain how and when this can be removed (overrides must be temporarily)
 dependency_overrides:
+  # LOCAL ONLY -- must NOT be committed. Points at the patched matrix-dart-sdk
+  # worktree (fix/delayed-event-lifecycle) so E2E runs against the SDK we will
+  # actually ship; the pin moves when the fork branch is pushed.
+  matrix:
+    path: /Users/balla/PangeaChat/matrix-dart-sdk/.claude/worktrees/delayed-events
   # To fix 16kb compatiblity in PlayStore. It is fixed in main branch but
   # not yet published:
   # https://github.com/google/webcrypto.dart/issues/207
