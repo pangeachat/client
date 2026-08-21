@@ -232,6 +232,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     if (existing != null) {
       if (existing.isFailed) {
         existing.dismissFailed();
+      } else if (existing.isOver) {
+        // Between the outcome latch and the deferred handover there is a
+        // one-microtask window in which a FINISHED session is still held here.
+        // It renders nothing, so expanding it would swallow the new call with
+        // no error anywhere. It is stepped over -- but NOT disposed: this
+        // branch can run from inside the old call's own notification, and its
+        // pending release microtask is the one place its disposal is safe.
+        activeCall.value = null;
       } else {
         existing.expand();
         return;
