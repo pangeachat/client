@@ -113,7 +113,17 @@ class PangeaCallCapturePlugin :
    * that is a better outcome than failing a call over it.
    */
   private fun attach(): Boolean {
-    if (attachedTo != null) return true
+    // REFUSED, not claimed. Answering true here handed a STALE caller -- a
+    // start retry that a stop had overtaken while a new recording attached --
+    // a success it did not own; its cleanup then detached the new recording's
+    // live tap. The Dart service owns attachment strictly singly (it never
+    // starts over a tap it has not released), so an attach finding one already
+    // present is always the stale caller, and refusing it is what keeps its
+    // cleanup empty-handed and the live recording untouched.
+    if (attachedTo != null) {
+      Log.w("PangeaCallCapture", "attach: refused, a tap is already attached")
+      return false
+    }
     // OUR engine's instance first; the global only as a fallback for the
     // unexpected. Named nulls, not a silent false: "no tap" cost a device test
     // its recordings, and WHICH link is missing decides the fix.
