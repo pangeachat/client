@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import 'package:fluffychat/features/keyboards/keyboard_language_repo.dart';
+
 /// Which rung of the keyboard-setup ladder to show above the composer. See
 /// target-language-keyboard.instructions.md, "The prompt ladder": getting
 /// equipped is two steps on iOS, one on Android, and each step is shown only
@@ -21,13 +23,22 @@ enum KeyboardPromptStep {
 /// from [KeyboardLanguageRepo], [ObservedKeyboardStore], and the platform.
 KeyboardPromptStep? resolveKeyboardPromptStep({
   required TargetPlatform platform,
-  required bool hasMatchingKeyboard,
+  required KeyboardDetection detection,
   required bool hasObservedKeyboard,
 }) {
-  if (!hasMatchingKeyboard) return KeyboardPromptStep.addKeyboard;
-  // Android's composer already redirects the keyboard itself — there is
-  // nothing left to walk the learner through.
-  if (platform != TargetPlatform.iOS) return null;
-  if (!hasObservedKeyboard) return KeyboardPromptStep.switchKeyboard;
-  return null;
+  switch (detection) {
+    // Detection is advisory: when the platform tells us nothing usable we
+    // stay silent rather than guess. Treating unknown as "equipped" would
+    // send iOS on to the switch-keyboard step, which is a prompt, not
+    // silence.
+    case KeyboardDetection.unknown:
+      return null;
+    case KeyboardDetection.missing:
+      return KeyboardPromptStep.addKeyboard;
+    case KeyboardDetection.matching:
+      // Android's composer already redirects the keyboard itself — there is
+      // nothing left to walk the learner through.
+      if (platform != TargetPlatform.iOS) return null;
+      return hasObservedKeyboard ? null : KeyboardPromptStep.switchKeyboard;
+  }
 }

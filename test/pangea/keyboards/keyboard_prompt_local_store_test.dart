@@ -101,4 +101,52 @@ void main() {
       );
     });
   });
+
+  // A synchronous read that beats hydration returns the cold-start value, so
+  // callers that can await must await `ready` first — otherwise a dismissed
+  // prompt reappears and an observed keyboard reads as unobserved.
+  group('hydration', () {
+    test('ObservedKeyboardStore.ready loads persisted state', () async {
+      SharedPreferences.setMockInitialValues({
+        'keyboard_prompt_observed_languages': ['es'],
+      });
+      ObservedKeyboardStore.resetForTesting();
+
+      expect(ObservedKeyboardStore.hasObservedKeyboard('es'), isFalse);
+      await ObservedKeyboardStore.ready;
+      expect(ObservedKeyboardStore.hasObservedKeyboard('es'), isTrue);
+    });
+
+    test('KeyboardPromptDismissalStore.ready loads persisted state', () async {
+      SharedPreferences.setMockInitialValues({
+        'keyboard_prompt_dismissed_steps': ['addKeyboard:es'],
+      });
+      KeyboardPromptDismissalStore.resetForTesting();
+
+      expect(
+        KeyboardPromptDismissalStore.isDismissed(
+          KeyboardPromptStep.addKeyboard,
+          'es',
+        ),
+        isFalse,
+      );
+      await KeyboardPromptDismissalStore.ready;
+      expect(
+        KeyboardPromptDismissalStore.isDismissed(
+          KeyboardPromptStep.addKeyboard,
+          'es',
+        ),
+        isTrue,
+      );
+    });
+
+    test('ready is reused rather than reloading on every call', () async {
+      SharedPreferences.setMockInitialValues({});
+      ObservedKeyboardStore.resetForTesting();
+
+      final first = ObservedKeyboardStore.ready;
+      expect(identical(first, ObservedKeyboardStore.ready), isTrue);
+      await first;
+    });
+  });
 }

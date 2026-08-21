@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/features/keyboards/keyboard_language_repo.dart';
@@ -18,10 +20,34 @@ abstract final class ObservedKeyboardStore {
   static const _prefsKey = 'keyboard_prompt_observed_languages';
 
   static Set<String> _observed = {};
+  static Future<void>? _hydration;
+  static bool _hydrated = false;
 
-  static Future<void> initialize() async {
+  static Future<void> initialize() => _hydration = _hydrate();
+
+  /// Whether the on-disk state is already in memory, so a caller can skip
+  /// awaiting [ready] on the hot path once startup has hydrated it.
+  static bool get isHydrated => _hydrated;
+
+  /// Completes once the on-disk state is in memory. Callers that can await —
+  /// the composer banner, profile initialization — must do so before reading,
+  /// or a dismissed prompt reappears and an observed keyboard reads as
+  /// unobserved for as long as the read beats the load.
+  static Future<void> get ready => _hydration ??= _hydrate();
+
+  static Future<void> _hydrate() async {
     final prefs = await SharedPreferences.getInstance();
     _observed = (prefs.getStringList(_prefsKey) ?? []).toSet();
+    _hydrated = true;
+  }
+
+  /// Returns the store to its cold-start state so a test can exercise a read
+  /// that races hydration.
+  @visibleForTesting
+  static void resetForTesting() {
+    _hydration = null;
+    _observed = {};
+    _hydrated = false;
   }
 
   static bool hasObservedKeyboard(String? languageCode) {
@@ -51,10 +77,31 @@ abstract final class KeyboardPromptDismissalStore {
   static const _prefsKey = 'keyboard_prompt_dismissed_steps';
 
   static Set<String> _dismissed = {};
+  static Future<void>? _hydration;
+  static bool _hydrated = false;
 
-  static Future<void> initialize() async {
+  static Future<void> initialize() => _hydration = _hydrate();
+
+  /// See [ObservedKeyboardStore.isHydrated].
+  static bool get isHydrated => _hydrated;
+
+  /// Completes once the on-disk state is in memory — see
+  /// [ObservedKeyboardStore.ready] for why reads must await it.
+  static Future<void> get ready => _hydration ??= _hydrate();
+
+  static Future<void> _hydrate() async {
     final prefs = await SharedPreferences.getInstance();
     _dismissed = (prefs.getStringList(_prefsKey) ?? []).toSet();
+    _hydrated = true;
+  }
+
+  /// Returns the store to its cold-start state — see
+  /// [ObservedKeyboardStore.resetForTesting].
+  @visibleForTesting
+  static void resetForTesting() {
+    _hydration = null;
+    _dismissed = {};
+    _hydrated = false;
   }
 
   static bool isDismissed(KeyboardPromptStep step, String? languageCode) {

@@ -34,6 +34,11 @@ class LearningSettingsViewModel extends ChangeNotifier {
   Timer? _textDebounce;
   late final List<StreamSubscription> _profileListeners;
   bool _hasResetTooltips = false;
+
+  /// Whether this page's pending autocorrect choice is null because a target
+  /// language change cleared it, rather than because the learner chose it.
+  /// Only the former is restored if the language selection round-trips back.
+  bool _autocorrectClearedByLanguageChange = false;
   bool _hasKnownGoodVoice = false;
   bool _disposed = false;
 
@@ -184,6 +189,12 @@ class LearningSettingsViewModel extends ChangeNotifier {
   }
 
   void updateToolSetting(ToolSetting toolSetting, bool value) {
+    // A deliberate toggle supersedes any clearing a pending language change
+    // did, so a later round trip back to the saved language keeps this choice
+    // rather than restoring the saved one.
+    if (toolSetting == ToolSetting.enableAutocorrect) {
+      _autocorrectClearedByLanguageChange = false;
+    }
     // Only the changed toggle is passed; copyWith keeps the rest untouched,
     // which matters for autocorrect — passing its resolved value back would
     // turn a never-chosen null into this device's platform default.
@@ -247,22 +258,31 @@ class LearningSettingsViewModel extends ChangeNotifier {
     }
 
     if (targetLanguage != null && targetLanguage != selectedTargetLanguage) {
+      // A device autocorrect choice made for one target language says nothing
+      // about the next (target-language-keyboard.instructions.md), so a
+      // pending language change clears it for this page's live preview —
+      // UserController.updateProfile enforces the same rule on save.
+      final saved = MatrixState.pangeaController.userController.profile;
+      final choice = Profile.pendingAutocorrectChoice(
+        savedLanguage: saved.userSettings.targetLanguage,
+        savedChoice: saved.toolSettings.enableAutocorrectChoice,
+        pendingChoice: _updatedProfile.toolSettings.enableAutocorrectChoice,
+        selectedLanguage: targetLanguage.langCode,
+        clearedByLanguageChange: _autocorrectClearedByLanguageChange,
+      );
+      _autocorrectClearedByLanguageChange =
+          targetLanguage.langCode != saved.userSettings.targetLanguage;
       updated = _updatedProfile.copyWith(
         userSettings: _updatedProfile.userSettings.copyWith(
           targetLanguage: targetLanguage.langCode,
           voice: null,
           setVoiceNull: true,
         ),
-        // A device autocorrect choice made for one target language says
-        // nothing about the next (target-language-keyboard.instructions.md).
-        // UserController.updateProfile enforces this on save too, but doing
-        // it here as well keeps this page's live preview in sync with the
-        // freshly picked language rather than showing the previous
-        // language's stale choice until Save.
         toolSettings: _updatedProfile.toolSettings.copyWith(
           audioWords: true,
           audioChoices: true,
-          setEnableAutocorrectNull: true,
+          enableAutocorrect: choice,
+          setEnableAutocorrectNull: choice == null,
         ),
       );
     }

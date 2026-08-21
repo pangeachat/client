@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/keyboards/keyboard_language_repo.dart';
 import 'package:fluffychat/features/keyboards/keyboard_prompt_step.dart';
 
 void main() {
@@ -10,7 +11,7 @@ void main() {
       expect(
         resolveKeyboardPromptStep(
           platform: TargetPlatform.android,
-          hasMatchingKeyboard: false,
+          detection: KeyboardDetection.missing,
           hasObservedKeyboard: false,
         ),
         KeyboardPromptStep.addKeyboard,
@@ -21,7 +22,7 @@ void main() {
       expect(
         resolveKeyboardPromptStep(
           platform: TargetPlatform.iOS,
-          hasMatchingKeyboard: false,
+          detection: KeyboardDetection.missing,
           hasObservedKeyboard: false,
         ),
         KeyboardPromptStep.addKeyboard,
@@ -32,7 +33,7 @@ void main() {
       expect(
         resolveKeyboardPromptStep(
           platform: TargetPlatform.android,
-          hasMatchingKeyboard: true,
+          detection: KeyboardDetection.matching,
           hasObservedKeyboard: false,
         ),
         isNull,
@@ -43,7 +44,7 @@ void main() {
       expect(
         resolveKeyboardPromptStep(
           platform: TargetPlatform.iOS,
-          hasMatchingKeyboard: true,
+          detection: KeyboardDetection.matching,
           hasObservedKeyboard: false,
         ),
         KeyboardPromptStep.switchKeyboard,
@@ -54,7 +55,7 @@ void main() {
       expect(
         resolveKeyboardPromptStep(
           platform: TargetPlatform.iOS,
-          hasMatchingKeyboard: true,
+          detection: KeyboardDetection.matching,
           hasObservedKeyboard: true,
         ),
         isNull,
@@ -65,11 +66,31 @@ void main() {
       expect(
         resolveKeyboardPromptStep(
           platform: TargetPlatform.macOS,
-          hasMatchingKeyboard: true,
+          detection: KeyboardDetection.matching,
           hasObservedKeyboard: false,
         ),
         isNull,
       );
     });
+
+    // Detection is advisory — an unreadable device must produce silence, not
+    // a guess. iOS is the trap: treating unknown as "equipped" resolves to
+    // the switch-keyboard step, which is a prompt.
+    for (final platform in [
+      TargetPlatform.iOS,
+      TargetPlatform.android,
+      TargetPlatform.macOS,
+    ]) {
+      test('unknown detection stays silent on $platform', () {
+        expect(
+          resolveKeyboardPromptStep(
+            platform: platform,
+            detection: KeyboardDetection.unknown,
+            hasObservedKeyboard: false,
+          ),
+          isNull,
+        );
+      });
+    }
   });
 }

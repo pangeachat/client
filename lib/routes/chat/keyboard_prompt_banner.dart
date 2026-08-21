@@ -44,6 +44,14 @@ class KeyboardPromptBannerState extends State<KeyboardPromptBanner>
   Timer? _pollTimer;
   String? _polledLanguageCode;
 
+  /// Bumped whenever a resolve or a poll is superseded. Cancelling a
+  /// [Timer] does not cancel a callback already suspended at an await, and
+  /// neither does starting a newer [_refresh], so every async continuation
+  /// re-checks its generation before touching state — otherwise a stale
+  /// callback can clear the step belonging to a newer target language.
+  int _refreshGeneration = 0;
+  int _pollGeneration = 0;
+
   @override
   void initState() {
     super.initState();
@@ -69,7 +77,10 @@ class KeyboardPromptBannerState extends State<KeyboardPromptBanner>
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     widget.composerFocusNode.removeListener(_onFocusChange);
-    _pollTimer?.cancel();
+    // Bumps both generations as well as cancelling the timer, so any
+    // continuation still suspended at an await is a no-op.
+    _refreshGeneration++;
+    _stopPolling();
     super.dispose();
   }
 
@@ -82,26 +93,52 @@ class KeyboardPromptBannerState extends State<KeyboardPromptBanner>
   }
 
   void _onFocusChange() {
-    if (widget.composerFocusNode.hasFocus) _refresh();
+    if (widget.composerFocusNode.hasFocus) {
+      _refresh();
+      return;
+    }
+    // The prompt speaks to the keyboard the learner is about to type with,
+    // so it has no business being on screen — or polling — once the composer
+    // is not focused.
+    _clear();
+  }
+
+  void _clear() {
+    _refreshGeneration++;
+    _stopPolling();
+    if (mounted && _step != null) setState(() => _step = null);
   }
 
   Future<void> _refresh() async {
-    final languageCode = widget.targetLanguageCode();
-    if (languageCode == null) {
-      _stopPolling();
-      if (mounted && _step != null) setState(() => _step = null);
+    // Covers the unfocused-resume path too: didChangeAppLifecycleState fires
+    // for every resume, whether or not the composer holds focus.
+    if (!widget.composerFocusNode.hasFocus) {
+      _clear();
       return;
     }
 
-    final hasKeyboard = await KeyboardLanguageRepo.hasMatchingKeyboard(
-      languageCode,
-    );
-    // The target language may have changed while that call was in flight.
-    if (!mounted || widget.targetLanguageCode() != languageCode) return;
+    final languageCode = widget.targetLanguageCode();
+    if (languageCode == null) {
+      _clear();
+      return;
+    }
+
+    final generation = ++_refreshGeneration;
+    // Reading either store before it has loaded resurrects a dismissed
+    // prompt and reads an observed keyboard as unobserved. Only a cold start
+    // pays for the wait; once startup has hydrated them this is a plain
+    // synchronous check.
+    if (!ObservedKeyboardStore.isHydrated ||
+        !KeyboardPromptDismissalStore.isHydrated) {
+      await ObservedKeyboardStore.ready;
+      await KeyboardPromptDismissalStore.ready;
+    }
+    final detection = await KeyboardLanguageRepo.detect(languageCode);
+    if (!_stillCurrent(generation, languageCode)) return;
 
     final step = resolveKeyboardPromptStep(
       platform: defaultTargetPlatform,
-      hasMatchingKeyboard: hasKeyboard,
+      detection: detection,
       hasObservedKeyboard: ObservedKeyboardStore.hasObservedKeyboard(
         languageCode,
       ),
@@ -116,8 +153,17 @@ class KeyboardPromptBannerState extends State<KeyboardPromptBanner>
     final shown =
         step != null &&
         !KeyboardPromptDismissalStore.isDismissed(step, languageCode);
-    if (mounted) setState(() => _step = shown ? step : null);
+    setState(() => _step = shown ? step : null);
   }
+
+  /// Whether an async continuation may still act: not disposed, not
+  /// superseded by a newer refresh, still the same target language, and the
+  /// composer still focused.
+  bool _stillCurrent(int generation, String languageCode) =>
+      mounted &&
+      generation == _refreshGeneration &&
+      widget.targetLanguageCode() == languageCode &&
+      widget.composerFocusNode.hasFocus;
 
   /// While the "switch to it" step is showing, polls the live keyboard mode
   /// so the step clears itself the moment the learner taps the globe key —
@@ -125,21 +171,38 @@ class KeyboardPromptBannerState extends State<KeyboardPromptBanner>
   void _startPolling(String languageCode) {
     if (_pollTimer != null && _polledLanguageCode == languageCode) return;
     _stopPolling();
+    final generation = _pollGeneration;
     _polledLanguageCode = languageCode;
     _pollTimer = Timer.periodic(const Duration(seconds: 2), (_) async {
       final current = await KeyboardLanguages.getCurrentInputModeLanguage();
+      // This tick may have been suspended at the await while the learner
+      // changed target language. Cancelling the timer cannot undo that, and
+      // the generation alone is not enough — the replacement poll may not
+      // have started yet — so the language it was started for has to still
+      // be the current one.
+      if (!_pollStillCurrent(generation, languageCode)) return;
       if (current == null) return;
       if (primaryLanguageSubtag(current) !=
           primaryLanguageSubtag(languageCode)) {
         return;
       }
       await ObservedKeyboardStore.markObserved(languageCode);
+      if (!_pollStillCurrent(generation, languageCode)) return;
       _stopPolling();
-      if (mounted) setState(() => _step = null);
+      setState(() => _step = null);
     });
   }
 
+  /// The poll equivalent of [_stillCurrent] — see the ordering note in
+  /// [_startPolling] for why the language check carries the weight here.
+  bool _pollStillCurrent(int generation, String languageCode) =>
+      mounted &&
+      generation == _pollGeneration &&
+      widget.targetLanguageCode() == languageCode &&
+      widget.composerFocusNode.hasFocus;
+
   void _stopPolling() {
+    _pollGeneration++;
     _pollTimer?.cancel();
     _pollTimer = null;
     _polledLanguageCode = null;

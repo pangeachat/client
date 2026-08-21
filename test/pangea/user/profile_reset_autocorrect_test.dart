@@ -88,4 +88,65 @@ void main() {
       expect(result.userSettings.targetLanguage, 'es');
     });
   });
+
+  // The settings page previews a language change before Save. The round trip
+  // is what needs care: select another language, come back, and the choice
+  // cleared on the way out has to return or it is what gets persisted.
+  group('Profile.pendingAutocorrectChoice', () {
+    bool? choice({
+      String? savedLanguage = 'fr',
+      bool? savedChoice = false,
+      bool? pendingChoice,
+      String? selectedLanguage,
+      bool clearedByLanguageChange = false,
+    }) => Profile.pendingAutocorrectChoice(
+      savedLanguage: savedLanguage,
+      savedChoice: savedChoice,
+      pendingChoice: pendingChoice,
+      selectedLanguage: selectedLanguage,
+      clearedByLanguageChange: clearedByLanguageChange,
+    );
+
+    test('selecting a different language clears the choice', () {
+      expect(choice(selectedLanguage: 'es', pendingChoice: false), isNull);
+    });
+
+    test('returning to the saved language restores the cleared choice', () {
+      expect(
+        choice(
+          selectedLanguage: 'fr',
+          pendingChoice: null,
+          clearedByLanguageChange: true,
+        ),
+        isFalse,
+      );
+    });
+
+    test('a restored null saved choice stays null', () {
+      expect(
+        choice(
+          savedChoice: null,
+          selectedLanguage: 'fr',
+          pendingChoice: null,
+          clearedByLanguageChange: true,
+        ),
+        isNull,
+      );
+    });
+
+    test('a deliberate toggle survives re-selecting the saved language', () {
+      expect(
+        choice(
+          selectedLanguage: 'fr',
+          pendingChoice: true,
+          clearedByLanguageChange: false,
+        ),
+        isTrue,
+      );
+    });
+
+    test('a first-ever target language selection clears', () {
+      expect(choice(savedLanguage: null, selectedLanguage: 'es'), isNull);
+    });
+  });
 }

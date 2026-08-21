@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/features/keyboards/**,lib/routes/chat/composer_keyboard_context.dart,lib/routes/chat/input_bar.dart,lib/routes/settings/settings_learning/enable_autocorrect_dialog.dart,lib/routes/settings/settings_learning/autocorrect_settings_tile.dart,pangea_packages/text_input_context/**"
+applyTo: "lib/features/keyboards/**,lib/routes/chat/chat_input_bar.dart,lib/routes/chat/composer_keyboard_context.dart,lib/routes/chat/input_bar.dart,lib/routes/chat/keyboard_prompt_banner.dart,lib/routes/settings/settings_learning/enable_autocorrect_dialog.dart,lib/routes/settings/settings_learning/autocorrect_settings_tile.dart,pangea_packages/keyboard_languages/**,pangea_packages/text_input_context/**"
 description: "Getting the learner typing in their target language — how each platform's keyboard is pointed at the L2, what we can detect about the learner's keyboards, and the two-step prompt for a missing or unused one."
 ---
 

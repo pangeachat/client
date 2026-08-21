@@ -530,6 +530,29 @@ class Profile {
     );
   }
 
+  /// The autocorrect choice a settings page should show while a target
+  /// language selection is still pending Save.
+  ///
+  /// A pending change to a different language clears the choice, matching
+  /// what [resetAutocorrectIfLanguageChanged] will do on save. The case that
+  /// needs care is the round trip: selecting another language and then
+  /// coming back before Save leaves the language unchanged overall, so a
+  /// choice cleared on the way out has to come back, or the cleared value is
+  /// what gets persisted and a choice the learner never revisited is
+  /// silently lost. [clearedByLanguageChange] distinguishes that from a
+  /// choice the learner deliberately toggled this session, which is left
+  /// alone.
+  static bool? pendingAutocorrectChoice({
+    required String? savedLanguage,
+    required bool? savedChoice,
+    required bool? pendingChoice,
+    required String? selectedLanguage,
+    required bool clearedByLanguageChange,
+  }) {
+    if (selectedLanguage != savedLanguage) return null;
+    return clearedByLanguageChange ? savedChoice : pendingChoice;
+  }
+
   Profile copyWith({
     UserSettings? userSettings,
     UserToolSettings? toolSettings,
