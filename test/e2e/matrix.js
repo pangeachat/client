@@ -102,19 +102,29 @@ function countType(events, type) {
   return events.filter((e) => e.type === type).length;
 }
 
-/// Did this account publish a call membership in the room? The server-side
-/// proof that an Answer click actually landed.
-async function hasMembership(token, roomId, userId) {
+/// How many LIVE call memberships this account has in the room.
+///
+/// Only non-expired ones count. Every login creates a new device, and a leave
+/// only removes the entry for the device doing the leaving, so the state
+/// accumulates entries from every past session. Counting them all made a
+/// perfectly good hangup look like it had failed -- the stale entries are all
+/// long expired, which is exactly how the SDK itself filters them.
+async function liveMemberships(token, roomId, userId) {
   try {
     const st = await api(
       `/_matrix/client/v3/rooms/${encodeURIComponent(roomId)}/state/com.famedly.call.member/${encodeURIComponent(userId)}`,
       { token },
     );
-    const mems = st.memberships;
-    return Array.isArray(mems) && mems.length > 0;
+    const mems = Array.isArray(st.memberships) ? st.memberships : [];
+    const now = Date.now();
+    return mems.filter((m) => typeof m.expires_ts === 'number' && m.expires_ts > now).length;
   } catch (_) {
-    return false;
+    return 0;
   }
 }
 
-module.exports = { api, login, hasMembership, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };
+async function hasMembership(token, roomId, userId) {
+  return (await liveMemberships(token, roomId, userId)) > 0;
+}
+
+module.exports = { api, login, hasMembership, liveMemberships, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };

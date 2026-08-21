@@ -52,6 +52,37 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
   throw new Error('could not open the room: the call controls never appeared');
 }
 
+/// Re-opens the room if the app has drifted away from it.
+///
+/// The router re-resolves its own route once the initial sync finishes and can
+/// land back on the activity map minutes after the room was opened. Checking
+/// once at startup is therefore not enough: every scenario re-asserts the room
+/// is actually on screen before it touches anything.
+async function ensureRoom(p, roomLocalpart) {
+  if (await ui.hasLabel(p.page, 'Call')) return;
+  console.log(`   (${p.name} drifted off the room; reopening)`);
+  await openRoom(p.page, roomLocalpart);
+}
+
+/// Performs an action until the SERVER says it happened.
+///
+/// The banner and the call panel are clicked by position, and a click can land
+/// a moment before the control is painted or while the app is mid-rebuild. A
+/// single click plus a fixed sleep makes the whole suite timing-sensitive and
+/// produces failures that look like product bugs. Retrying against a
+/// server-side predicate removes the timing question entirely: it either
+/// happened, or it genuinely did not.
+async function actUntil(label, act, confirmed, { tries = 6, gap = 2500 } = {}) {
+  for (let i = 1; i <= tries; i++) {
+    if (await confirmed()) return true;
+    await act();
+    await wait(gap);
+    if (await confirmed()) return true;
+    if (i < tries) console.log(`   (${label}: not confirmed yet, retry ${i}/${tries - 1})`);
+  }
+  return await confirmed();
+}
+
 /// Everything in the room from this moment on. Scenarios assert on the DELTA,
 /// so a room with history behaves the same as an empty one.
 async function mark(token, roomId) {
@@ -92,4 +123,4 @@ function report() {
   return failed.length;
 }
 
-module.exports = { openParticipant, openRoom, mark, since, compare, check, report, results, ui, mx, wait, APP };
+module.exports = { openParticipant, openRoom, ensureRoom, actUntil, mark, since, compare, check, report, results, ui, mx, wait, APP };

@@ -29,6 +29,51 @@ async function assertSymmetric(scenario, A, B, markA, markB) {
   return c;
 }
 
+/// The precondition for every scenario that places a call: the ring must have
+/// actually reached the room. Asserting it separately is what tells a broken
+/// decline apart from a call that never rang in the first place.
+/// Places a call and PROVES it rang, retrying the click.
+///
+/// A single click plus a fixed sleep is a race: it can land while the app is
+/// rebuilding after the previous call's teardown and simply do nothing, with no
+/// error anywhere. Retrying against the ring event makes the scenario
+/// deterministic and keeps a genuine failure to ring a real failure.
+async function placeCall(scenario, caller, markId, roomLocalpart) {
+  const rang = await h.actUntil(
+    'place call',
+    async () => {
+      await h.ensureRoom(caller, roomLocalpart);
+      await ui.clickLabel(caller.page, 'Call', { exact: true }).catch(() => {});
+    },
+    async () => (await h.since(caller.token, ROOM_ID, markId)).some(
+      (e) => e.type === mx.RING && e.sender === caller.userId,
+    ),
+    { tries: 4, gap: 4000 },
+  );
+  if (!rang) {
+    const f = `/tmp/callweb/FAIL-place-${scenario.replace(/[^a-z]+/gi, '-')}.png`;
+    await caller.page.screenshot({ path: f }).catch(() => {});
+    console.log(`   (screenshot: ${f}; labels: ${JSON.stringify(await ui.labels(caller.page))})`);
+  }
+  h.check(scenario, 'placing a call rang the other side', rang, 'no ring event ever reached the room');
+  return rang;
+}
+
+async function assertRang(scenario, caller, markId) {
+  const evs = await h.since(caller.token, ROOM_ID, markId);
+  const rs = evs.filter((e) => e.type === mx.RING && e.sender === caller.userId);
+  if (rs.length !== 1) {
+    // Evidence, not guesswork: a failing scenario leaves a screenshot behind.
+    const f = `/tmp/callweb/FAIL-${scenario.replace(/[^a-z]+/gi, '-')}-${caller.name}.png`;
+    await caller.page.screenshot({ path: f }).catch(() => {});
+    console.log(`   (screenshot: ${f}; labels: ${JSON.stringify(await ui.labels(caller.page))})`);
+  }
+  const rings = evs.filter((e) => e.type === mx.RING && e.sender === caller.userId);
+  h.check(scenario, 'the ring reached the room', rings.length === 1,
+    `${rings.length} rings. Caller's events since mark: ${JSON.stringify(evs.filter((e) => e.sender === caller.userId).map((e) => e.type))}`);
+  return rings.length === 1;
+}
+
 function noPageErrors(scenario, p) {
   h.check(scenario, `${p.name} had no unhandled errors`, p.errors.length === 0, JSON.stringify(p.errors.slice(0, 3)));
 }
@@ -44,20 +89,27 @@ async function run() {
     {
       const s = 'answer then caller hangs up';
       console.log(`\n[${s}]`);
+      await h.ensureRoom(A, ROOM_LOCALPART); await h.ensureRoom(B, ROOM_LOCALPART);
       const mA = await h.mark(A.token, ROOM_ID), mB = await h.mark(B.token, ROOM_ID);
       await ui.clickLabel(A.page, 'Call', { exact: true });
       await wait(5000);
       // The banner is not in the accessibility tree, so it is clicked by
       // position -- and the click is PROVEN by the membership it must produce.
-      await ui.clickBanner(B.page, 'answer');
-      await wait(9000);
-      const joined = await mx.hasMembership(B.token, ROOM_ID, B.userId);
-      h.check(s, 'answering actually joined the call', joined, 'no call membership for the callee: the Answer click did not land');
+      const joined = await h.actUntil(
+        'answer',
+        () => ui.clickBanner(B.page, 'answer'),
+        () => mx.hasMembership(B.token, ROOM_ID, B.userId),
+      );
+      h.check(s, 'answering actually joined the call', joined, 'the callee never published a call membership');
+      await wait(6000);
       {
-        await ui.clickPanel(A.page, 'hangup');
-        await wait(9000);
-        const stillIn = await mx.hasMembership(A.token, ROOM_ID, A.userId);
-        h.check(s, 'hanging up actually left the call', !stillIn, 'the caller still holds a membership: the Hang up click did not land');
+        const left = await h.actUntil(
+          'hangup',
+          () => ui.clickPanel(A.page, 'hangup'),
+          async () => !(await mx.hasMembership(A.token, ROOM_ID, A.userId)),
+        );
+        h.check(s, 'hanging up actually left the call', left, 'the caller still holds a live membership');
+        await wait(6000);
       }
       const c = await assertSymmetric(s, A, B, mA, mB);
       const answered = c.aCards.filter((x) => x.answered);
@@ -69,13 +121,19 @@ async function run() {
     {
       const s = 'callee declines';
       console.log(`\n[${s}]`);
+      await h.ensureRoom(A, ROOM_LOCALPART); await h.ensureRoom(B, ROOM_LOCALPART);
       const mA = await h.mark(A.token, ROOM_ID), mB = await h.mark(B.token, ROOM_ID);
-      await ui.clickLabel(A.page, 'Call', { exact: true });
-      await wait(5000);
-      {
-        await ui.clickBanner(B.page, 'decline');
-        await wait(10000);
-      }
+      await placeCall(s, A, mA, ROOM_LOCALPART);
+      const declined = await h.actUntil(
+        'decline',
+        () => ui.clickBanner(B.page, 'decline'),
+        async () => (await h.since(B.token, ROOM_ID, mB)).some(
+          (e) => e.type === mx.DECLINE && e.sender === B.userId,
+        ),
+      );
+      h.check(s, 'declining actually sent a decline', declined, 'the callee never sent a decline event');
+      // The caller needs to notice the decline, tear down and write the card.
+      await wait(12000);
       const c = await assertSymmetric(s, A, B, mA, mB);
       const dec = c.aCards.filter((x) => x.declined);
       h.check(s, 'exactly one declined card', dec.length === 1, `got ${dec.length}: ${JSON.stringify(c.aCards.map((x) => x.label))}`);
@@ -90,6 +148,7 @@ async function run() {
     {
       const s = 'redial immediately after hanging up';
       console.log(`\n[${s}]`);
+      await h.ensureRoom(A, ROOM_LOCALPART); await h.ensureRoom(B, ROOM_LOCALPART);
       const mA = await h.mark(A.token, ROOM_ID), mB = await h.mark(B.token, ROOM_ID);
       await ui.clickLabel(A.page, 'Call', { exact: true });
       await wait(4000);
@@ -112,10 +171,13 @@ async function run() {
     {
       const s = 'nobody answers';
       console.log(`\n[${s}]`);
+      await h.ensureRoom(A, ROOM_LOCALPART); await h.ensureRoom(B, ROOM_LOCALPART);
       const mA = await h.mark(A.token, ROOM_ID), mB = await h.mark(B.token, ROOM_ID);
-      await ui.clickLabel(A.page, 'Call', { exact: true });
-      // Ring lifetime is 30s; wait it out without touching the callee.
-      await wait(42000);
+      await placeCall(s, A, mA, ROOM_LOCALPART);
+      // Ring lifetime is 30s. Wait it out WITHOUT navigating either client --
+      // reopening a room mid-call reloads the page and cancels the very call
+      // being measured, which is why this scenario reported no card at all.
+      await wait(46000);
       const c = await assertSymmetric(s, A, B, mA, mB);
       const missed = c.aCards.filter((x) => !x.answered && !x.declined);
       h.check(s, 'exactly one missed card', missed.length === 1, `got ${missed.length}: ${JSON.stringify(c.aCards.map((x) => x.label))}`);

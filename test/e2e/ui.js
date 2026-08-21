@@ -35,13 +35,21 @@ async function findRect(page, label, { exact = false } = {}) {
       const nodes = Array.from(
         document.querySelectorAll('flt-semantics[aria-label]'),
       );
-      const hit = nodes.find((e) => {
+      const matches = nodes.filter((e) => {
         const l = e.getAttribute('aria-label') || '';
-        return exact ? l === label : l.toLowerCase().includes(label.toLowerCase());
+        const ok = exact ? l === label : l.toLowerCase().includes(label.toLowerCase());
+        if (!ok) return false;
+        const r = e.getBoundingClientRect();
+        return r.width > 0 && r.height > 0;
       });
-      if (!hit) return null;
+      if (!matches.length) return null;
+      // A real control, in preference to anything else carrying the same label.
+      // An IconButton's TOOLTIP repeats its label, so once the pointer has
+      // rested on the call button a second node with aria-label "Call" exists --
+      // and clicking that one does nothing at all. That is what made the second
+      // call in a session silently fail to place.
+      const hit = matches.find((e) => e.getAttribute('role') === 'button') || matches[0];
       const r = hit.getBoundingClientRect();
-      if (r.width === 0 || r.height === 0) return null;
       return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
     },
     label,
@@ -97,13 +105,27 @@ const BANNER = {
   message: { x: 443, y: 126 },
 };
 
+const BANNER_LABELS = { answer: 'Answer', decline: 'Decline', message: 'Message' };
+
+/// Same rule as the panel: label first, confirmed position as the fallback,
+/// and the caller proves on the server that it landed.
 async function clickBanner(page, which) {
+  const label = BANNER_LABELS[which];
+  if (label) {
+    const r = await findRect(page, label);
+    if (r) {
+      await page.mouse.click(r.x, r.y);
+      return 'label';
+    }
+  }
   const p = BANNER[which];
   if (!p) throw new Error('unknown banner control: ' + which);
   await page.mouse.click(p.x, p.y);
+  return 'position';
 }
 
 module.exports.BANNER = BANNER;
+module.exports.BANNER_LABELS = BANNER_LABELS;
 module.exports.clickBanner = clickBanner;
 
 // The in-pane call panel. Same reasoning as BANNER: its controls carry
@@ -118,11 +140,32 @@ const PANEL = {
   fullscreen: { x: 797, y: 104 },
 };
 
+const PANEL_LABELS = {
+  hangup: 'Hang up',
+  mute: 'Mute',
+  camera: 'Turn camera on',
+  minimize: 'Minimize call',
+  fullscreen: 'Full screen',
+};
+
+/// Prefers the accessibility label; falls back to the confirmed position only
+/// if the control is genuinely not in the tree. Either way the caller asserts
+/// the OUTCOME on the server, so a miss can never pass quietly.
 async function clickPanel(page, which) {
+  const label = PANEL_LABELS[which];
+  if (label) {
+    const r = await findRect(page, label);
+    if (r) {
+      await page.mouse.click(r.x, r.y);
+      return 'label';
+    }
+  }
   const p = PANEL[which];
   if (!p) throw new Error('unknown panel control: ' + which);
   await page.mouse.click(p.x, p.y);
+  return 'position';
 }
 
 module.exports.PANEL = PANEL;
+module.exports.PANEL_LABELS = PANEL_LABELS;
 module.exports.clickPanel = clickPanel;

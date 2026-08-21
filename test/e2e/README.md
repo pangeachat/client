@@ -45,12 +45,26 @@ assertion that the action actually happened: answering must produce a call
 membership, declining must produce a decline event, hanging up must remove the
 membership. A click that misses fails loudly instead of quietly passing.
 
+## What it has already caught
+
+- A call card whose send failed staying in one client's local timeline for ever
+  (fixed, 3cefe105a2) -- found by diffing both participants' timelines.
+- Every ring transaction id being sent TWICE, the second silently swallowed by
+  the homeserver's dedup so the callee never rang (fixed, 70eb5a2a8b) -- found
+  because the caller showed "Ringing..." while the server's access log showed
+  the ring PUT returning 200 with [0 dbevts].
+- A regression introduced WHILE fixing the above: a guard added to startCall
+  caused a null dereference that stopped the second call in a session from
+  placing at all. Caught here and reverted (175e32c51b) before it could ship.
+
 ## Known gaps
 
-- The hang-up coordinate is taken from the RINGING panel; the connected panel
-  places its controls differently, so `hangup` currently misses once a call is
-  up. The assertion catches it, which is the point, but it needs a second set of
-  coordinates.
+- OPEN BUG, reproducible: after a call that was ANSWERED, the caller's next call
+  places nothing at all -- no membership, no ring -- while the call button sits
+  there and the screen stays idle. `scenarios.js` fails on it at
+  "placing a call rang the other side". A plain ring-then-hangup call does NOT
+  reproduce it, so the answered path leaves something behind. Not yet root
+  caused.
 - Scenarios still to add: glare, reload while ringing, callee busy, caller
   cancels, second device, video, connect failure.
 - Both clients log "Unexpected token '<'" -- something fetches a path that the
