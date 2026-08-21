@@ -91,12 +91,9 @@ class PostEchoCancellationTap implements CallAudioTap {
     // given up on with the warning below -- each refusal is logged, so a retry
     // can never quietly paper over a real absence.
     bool attached = false;
-    for (final delay in const [
-      Duration.zero,
-      Duration(seconds: 1),
-      Duration(seconds: 3),
-    ]) {
-      if (delay != Duration.zero) await Future.delayed(delay);
+    const delays = [Duration.zero, Duration(seconds: 1), Duration(seconds: 3)];
+    for (var i = 0; i < delays.length; i++) {
+      if (delays[i] != Duration.zero) await Future.delayed(delays[i]);
       try {
         attached = await capture.start();
       } catch (e, s) {
@@ -104,7 +101,11 @@ class PostEchoCancellationTap implements CallAudioTap {
         attached = false;
       }
       if (attached) break;
-      Logs().w('The call audio tap refused to attach; retrying');
+      // "Retrying" only when a retry is actually coming; the final refusal is
+      // the warning below, not a promise that never happens.
+      if (i < delays.length - 1) {
+        Logs().w('The call audio tap refused to attach; retrying');
+      }
     }
     if (!attached) {
       Logs().w('No call audio tap on this device; nothing will be recorded');
