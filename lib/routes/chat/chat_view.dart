@@ -90,19 +90,33 @@ class ChatView extends StatelessWidget {
               : Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.videocam_outlined),
-                      tooltip: L10n.of(context).startVideoCall,
-                      onPressed: () => Matrix.of(
-                        context,
-                      ).startCall(controller.room, video: true),
+                    // Labelled explicitly. An IconButton's tooltip is not
+                    // reaching the accessibility tree in this build, so these
+                    // reach a screen reader as two unnamed buttons -- and an
+                    // end-to-end test cannot find them by anything but their
+                    // pixel position, which is how the call harness came to be
+                    // clicking empty space after a layout change.
+                    Semantics(
+                      button: true,
+                      label: L10n.of(context).startVideoCall,
+                      child: IconButton(
+                        icon: const Icon(Icons.videocam_outlined),
+                        tooltip: L10n.of(context).startVideoCall,
+                        onPressed: () => Matrix.of(
+                          context,
+                        ).startCall(controller.room, video: true),
+                      ),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.call_outlined),
-                      tooltip: L10n.of(context).startCall,
-                      onPressed: () => Matrix.of(
-                        context,
-                      ).startCall(controller.room, video: false),
+                    Semantics(
+                      button: true,
+                      label: L10n.of(context).startCall,
+                      child: IconButton(
+                        icon: const Icon(Icons.call_outlined),
+                        tooltip: L10n.of(context).startCall,
+                        onPressed: () => Matrix.of(
+                          context,
+                        ).startCall(controller.room, video: false),
+                      ),
                     ),
                   ],
                 ),

@@ -436,18 +436,28 @@ class _CallButton extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Opacity(
-          opacity: disabled ? 0.4 : 1,
-          child: Material(
-            color: background,
-            shape: const CircleBorder(),
-            child: InkWell(
-              customBorder: const CircleBorder(),
-              onTap: onPressed,
-              child: SizedBox(
-                width: size,
-                height: size,
-                child: Icon(icon, color: foreground, size: large ? 30 : 24),
+        // Labelled on the CONTROL, not only beside it. The caption below is a
+        // separate widget, so without this the button itself reaches a screen
+        // reader unnamed -- and an end-to-end test can only find it by pixel
+        // position, which is what made the call harness silently useless once
+        // the layout moved.
+        Semantics(
+          button: true,
+          enabled: !disabled,
+          label: label,
+          child: Opacity(
+            opacity: disabled ? 0.4 : 1,
+            child: Material(
+              color: background,
+              shape: const CircleBorder(),
+              child: InkWell(
+                customBorder: const CircleBorder(),
+                onTap: onPressed,
+                child: SizedBox(
+                  width: size,
+                  height: size,
+                  child: Icon(icon, color: foreground, size: large ? 30 : 24),
+                ),
               ),
             ),
           ),

@@ -477,8 +477,22 @@ class CallService {
     // back the FIRST call's ring, and a decline of that one — long since sent —
     // marks the new call as turned down. A decline landing on the wrong call has
     // been paid for twice already.
+    //
+    // The counter is NOT enough on its own. It lives on this service, so a page
+    // reload or an app restart begins again at one -- and the membership event
+    // id is reused whenever a join finds a membership already standing. The two
+    // together then rebuild a transaction id this account has ALREADY used, the
+    // homeserver recognises it, hands back the original ring and writes nothing.
+    // The callee's phone never rings, while the caller sits through the full
+    // lifetime and records a missed call. Measured on a live server: every ring
+    // id was being sent exactly twice, the second creating no event at all.
+    //
+    // The moment of sending is what makes it unrepeatable, and it is taken once
+    // here rather than per attempt, so the retry below still asks for the same
+    // event rather than ringing twice.
     final txid = _lastRingTxid =
-        'pangea.call.ring.$membershipEventId.${++_ringSeq}';
+        'pangea.call.ring.$membershipEventId.${++_ringSeq}'
+        '.${DateTime.now().microsecondsSinceEpoch}';
     final content = CallNotification(
       membershipEventId: membershipEventId,
       senderDeviceId: client.deviceID!,

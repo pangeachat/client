@@ -555,6 +555,69 @@ void main() {
       reason: 'nothing may be built for an account that has gone',
     );
   });
+  group('the ring transaction id', () {
+    // A homeserver deduplicates by transaction id: a repeat returns the ORIGINAL
+    // event and writes nothing. A repeated ring id therefore means the callee's
+    // phone never rings, while the caller sits through the whole lifetime and
+    // records a missed call. Measured on a live server before this was fixed,
+    // every ring id was being sent exactly twice.
+    Future<CallService> service() async {
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(
+          user: '@test:fakeServer.notExisting',
+        ),
+        deviceId: 'GHTYAJCE',
+      );
+      return CallService(client);
+    }
+
+    test(
+      'is never reused, even by a fresh service on the same membership',
+      () async {
+        // A page reload builds a new CallService, so its ring counter starts at
+        // one again -- and the membership event id is reused whenever a join
+        // finds a membership already standing. Counter plus membership alone
+        // therefore rebuilds an id this account has already used.
+        final first = await service();
+        final second = await service();
+        const membership = r'$the-same-membership';
+
+        await first.ring(
+          _TxidRoom(id: '!r:fakeServer.notExisting', client: first.client),
+          membershipEventId: membership,
+          video: false,
+        );
+        await second.ring(
+          _TxidRoom(id: '!r:fakeServer.notExisting', client: second.client),
+          membershipEventId: membership,
+          video: false,
+        );
+
+        expect(
+          second.debugLastRingTxidForTest,
+          isNot(equals(first.debugLastRingTxidForTest)),
+          reason: 'a reused ring id is silently swallowed by the homeserver',
+        );
+      },
+    );
+
+    test('is the same across the retry of one ring', () async {
+      // The retry must ask for the SAME event, or a send whose response was
+      // merely lost would ring the other side a second time.
+      final calls = await service();
+      final room = _TxidRoom(
+        id: '!r:fakeServer.notExisting',
+        client: calls.client,
+      );
+      await calls.ring(room, membershipEventId: r'$m', video: false);
+      expect(room.txids, isNotEmpty);
+      expect(room.txids.toSet().length, 1, reason: 'one id for one ring');
+    });
+  });
+
   group('a leave that throws after the membership is already gone', () {
     // `GroupCallSession.leave()` writes the emptied membership FIRST and only
     // then does its own teardown. When a later step throws, the peer has
@@ -741,6 +804,28 @@ void main() {
       expect(await service.ringsMissed(), isEmpty);
     });
   });
+}
+
+/// A room that accepts any send and remembers the transaction ids used.
+class _TxidRoom extends Room {
+  _TxidRoom({required super.id, required super.client});
+
+  final List<String?> txids = [];
+
+  @override
+  Future<String?> sendEvent(
+    Map<String, dynamic> content, {
+    String type = EventTypes.Message,
+    String? txid,
+    Event? inReplyTo,
+    String? editEventId,
+    String? threadRootEventId,
+    String? threadLastEventId,
+    bool displayPendingEvent = true,
+  }) async {
+    txids.add(txid);
+    return '\$ring';
+  }
 }
 
 /// A backend whose release throws, so `leave()` fails at a step that runs
