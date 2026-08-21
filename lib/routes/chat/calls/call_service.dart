@@ -566,7 +566,51 @@ class CallService {
           alreadyJoined: isBusy,
         ),
       )
-      .where((ring) => ring.shouldRing(DateTime.now()));
+      .where(_worthRinging);
+
+  /// Whether a notification should raise a prompt, saying so out loud when it
+  /// should not.
+  ///
+  /// A ring dropped here leaves NO trace otherwise: the caller still rings out
+  /// and still writes a missed-call card, so the room shows a call that the
+  /// callee's screen never mentioned. That is indistinguishable, from the
+  /// outside, from the notification never arriving -- which is what made this
+  /// class of bug so hard to place.
+  bool _worthRinging(IncomingCallNotification ring) {
+    final now = DateTime.now();
+    if (ring.shouldRing(now)) return true;
+    // ONLY the busy case. Everything else a ring can fail on — expired, not a
+    // ring, our own, naming no call — is ordinary traffic and says nothing
+    // surprising. Being busy is the one where a real call reached this device
+    // and was dropped anyway, leaving the caller to write a missed-call card
+    // for a prompt that never appeared.
+    //
+    // Nothing here may throw: this runs inside a stream predicate, where an
+    // error would take the ring stream down and stop the account receiving
+    // calls at all. Only fields already parsed by shouldRing are read.
+    try {
+      // Busy must be the SOLE reason. Every other predicate of shouldRing is
+      // required to pass here, or an expired or nameless ring that happens to
+      // arrive while busy would be reported as suppressed by busy, and send the
+      // next person reading this log after the wrong thing.
+      final onlyBusy =
+          ring.alreadyJoined &&
+          ring.isCall &&
+          ring.isRing &&
+          ring.event.senderId != client.userID &&
+          ring.membershipEventId != null &&
+          !ring.hasExpiredBy(now);
+      if (onlyBusy) {
+        Logs().i(
+          'Not ringing for ${ring.event.eventId} in ${ring.event.room.id}: '
+          'this account reads as being in a call',
+        );
+      }
+    } catch (_) {
+      // A diagnostic is never worth a dropped call.
+    }
+    return false;
+  }
 
   /// Turns down the call [notification] announced, telling its caller.
   ///

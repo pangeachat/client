@@ -888,14 +888,22 @@ class ActiveCall extends ChangeNotifier {
 
   /// Unwinds whatever is up, and never gives up partway.
   ///
-  /// **Membership is retracted first**, not last. It is the only part of
-  /// teardown the peer can see, and everything after it is local work that can
-  /// be slow — flushing a recording waits on chunk delivery. Unwinding in strict
-  /// reverse would leave this device advertised as a participant for as long as
-  /// an upload took, so the peer would see someone who had already hung up.
+  /// The order, and why it is this and not strict reverse:
   ///
-  /// The rest still runs in reverse. Recording stops before media is released,
-  /// because the tap lives on the track that releasing it destroys.
+  /// 1. The membership is REMEMBERED, so late audio can still be anchored to
+  ///    this call once the session is gone.
+  /// 2. Media release and the LOCAL recorder stop run side by side. Releasing
+  ///    the media is what tells the peer we have gone — they read presence from
+  ///    the SFU, not from the membership — so nothing in the recording teardown
+  ///    may hold it up.
+  /// 3. The membership is retracted. Nobody is waiting on it by now, and it is
+  ///    the one step a later attempt can retry.
+  /// 4. ONLY THEN is the recording settled. Everything it waits for is choreo
+  ///    speech-to-text, and by this point that holds nothing the learner can
+  ///    see: the call has already been given back, so the next call can be
+  ///    placed and an incoming ring is no longer suppressed. Settling before
+  ///    the retract is what used to keep this account reading as busy for as
+  ///    long as a transcription took.
   ///
   /// Every step is isolated: a recording that fails to flush must not leave the
   /// microphone open, and a socket that fails to close must not leave the
@@ -944,10 +952,10 @@ class ActiveCall extends ChangeNotifier {
     // exactly when a device that joined one already under way needs it.
     _rememberMembership();
 
-    // Drained unconditionally and BEFORE retracting. A device displaced moments
-    // before the hangup has a stop still unwinding while [_capturing] is already
-    // false, so waiting only when it is true would let teardown finish — and the
-    // call be written — while that flush was still running.
+    // Cleared unconditionally, whatever [_capturing] says. A device displaced
+    // moments before the hangup has a stop still unwinding while [_capturing] is
+    // already false, so acting only when it is true would leave that stretch
+    // believing it was still wanted.
     _wanted = false;
 
     // The peer stops hearing us HERE, and NOTHING in the recording teardown may
@@ -968,14 +976,30 @@ class ActiveCall extends ChangeNotifier {
     }();
 
     // The recorder teardown, running WITH the media release rather than before
-    // it. The handover is drained first so a reconcile in flight is not cut off
-    // mid-flush, then the tap comes off and the chunker's buffered audio — which
-    // lives in the capture service, not the LiveKit room, so the media release
-    // does not take it — is flushed.
+    // it. The tap comes off and the chunker's buffered audio — which lives in
+    // the capture service, not the LiveKit room, so the media release does not
+    // take it — is flushed.
+    //
+    // The handover is NOT drained here. It is only given an error handler above
+    // and awaited by nobody: a reconcile already inside a settling stop would
+    // otherwise put choreo back on the critical path, which is the whole thing
+    // this ordering exists to avoid. Nothing can restart recording once stop()
+    // has bumped the capture session, and a flush still running is still
+    // awaited — by finish(), whose stop joins the same in-flight one.
     //
     // Caught inside the closure, not left on a bare future: it can complete with
     // an error while the media release is being awaited, and a future with no
     // handler in that window surfaces as an unhandled async error.
+    // Attached HERE, before any await below. The handover is no longer drained
+    // on the critical path, and a future that completes with an error while
+    // nothing is awaiting it surfaces as an unhandled async error.
+    final drainingHandover = _handover.then<void>(
+      (_) {},
+      onError: (Object e, StackTrace s) {
+        Logs().w('The recorder handover did not settle', e, s);
+      },
+    );
+
     final stoppingRecorder = () async {
       // stop() FIRST, before draining the handover. A reconcile's capture.start
       // still in flight — this device was elected to record at the very moment
@@ -986,13 +1010,14 @@ class ActiveCall extends ChangeNotifier {
       // handover afterwards lets it settle; nothing can restart it, _wanted is
       // already false.
       try {
-        await capture.stop();
+        // WITHOUT settling the deliveries. They go to choreo, and a call is
+        // over when the microphone and the membership are released, never when
+        // a transcription answers. capture.finish() below waits for the very
+        // same chunks with a far longer bound, so nothing is abandoned.
+        await capture.stop(settleDeliveries: false);
       } catch (e, s) {
         Logs().e('Could not flush the call recording', e, s);
       }
-      try {
-        await _handover;
-      } catch (_) {}
     }();
 
     await releasingMedia;
@@ -1010,8 +1035,18 @@ class ActiveCall extends ChangeNotifier {
     // refuses, so it costs nothing to do it once the devices are free.
     await _releaseCall();
 
-    // Last, with the devices already released: tell the recording the call is
-    // over and let what is in flight land.
+    // Drained, never awaited, and only now that the call has been given back.
+    // Nothing can restart recording by this point -- _wanted is false and the
+    // stop above bumped the capture session -- so this is pure cleanup, and a
+    // capture.start() that hung would otherwise hold the transcripts, and the
+    // analytics credited from them, behind it for as long as it hung.
+    unawaited(drainingHandover);
+
+    // Last, with the devices and the membership already released: tell the
+    // recording the call is over and let what is in flight land. This is the
+    // ONLY wait on choreo in the whole teardown, and by now it holds nothing
+    // the learner can see -- the call has already been given back, so the next
+    // call can be placed and an incoming ring is no longer suppressed.
     try {
       await capture.finish();
     } catch (e, s) {

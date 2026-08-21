@@ -301,8 +301,25 @@ class FakeCapture extends CallCaptureService {
     _recording = !attachesNothing;
   }
 
+  /// Whether each stop was asked to wait for deliveries, in order. A list, not
+  /// a single value: finish() also stops without settling, so recording only
+  /// the LAST one cannot tell teardown's choice from finish's.
+  final List<bool> stopSettledDeliveries = [];
+
+  /// The stop in flight, so a second caller JOINS the first rather than
+  /// returning while it is still unwinding -- which is what the real service
+  /// does (`_stopped ??= _stop()`). Without modelling that here, a fake stop
+  /// that had already set `_recording = false` let a later caller straight
+  /// through, and teardown looked finished while a flush was still running.
+  Future<void>? _stopping;
+
   @override
-  Future<void> stop() async {
+  Future<void> stop({bool settleDeliveries = true}) async {
+    stopSettledDeliveries.add(settleDeliveries);
+    await (_stopping ??= _stop().whenComplete(() => _stopping = null));
+  }
+
+  Future<void> _stop() async {
     // Silent when there is nothing to stop, as the real one is. Tracing it
     // regardless made teardown look like it was stopping a recording that had
     // never started.
@@ -315,7 +332,8 @@ class FakeCapture extends CallCaptureService {
 
   @override
   Future<void> finish() async {
-    await stop();
+    // Without settling, as the real one does: finish is the caller that settles.
+    await stop(settleDeliveries: false);
     trace('capture.finish');
   }
 }
@@ -1431,6 +1449,25 @@ void main() {
       capture.holdStop!.complete();
       await hangingUp;
       expect(torn, isTrue);
+    });
+
+    test('hanging up asks the recorder not to wait for choreo', () async {
+      // The one place this is decided. Teardown must release the microphone and
+      // the membership without waiting on a transcription, because until the
+      // membership is back this account reads as busy -- which refuses the next
+      // call AND silently swallows an incoming ring.
+      final (call, calls, _, capture) = await build();
+      calls.remotePresent = true;
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+
+      await call.hangUp();
+
+      expect(
+        capture.stopSettledDeliveries.first,
+        isFalse,
+        reason: 'teardown must not hold the call open for choreo',
+      );
     });
 
     test('a start that threw is retried by the next election', () async {

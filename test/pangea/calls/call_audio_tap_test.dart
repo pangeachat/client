@@ -34,7 +34,7 @@ class FakeCapture extends PangeaCallCapture {
   final List<String> teardown = [];
 
   @override
-  Future<void> stop() async {
+  Future<void> stop({bool settleDeliveries = true}) async {
     teardown.add('stop');
     // Deferred on purpose. A stop that completes synchronously cannot tell a
     // detach that was awaited from one that was merely started.
@@ -171,5 +171,5 @@ class _OrderingCapture extends PangeaCallCapture {
   }
 
   @override
-  Future<void> stop() async {}
+  Future<void> stop({bool settleDeliveries = true}) async {}
 }

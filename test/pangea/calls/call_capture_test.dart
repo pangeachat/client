@@ -161,6 +161,49 @@ void main() {
       await s.stop();
     });
 
+    test('a hangup stop does not wait for choreo, a handover stop does', () async {
+      // The transcripts go to choreo. A call is over when the microphone and
+      // the membership are released, never when a transcription answers --
+      // and waiting for one held the account's ONE call open long after the
+      // learner hung up. That refused the next call, and silently swallowed an
+      // INCOMING ring, because a ring arriving while this account reads as busy
+      // is dropped from the stream and never replayed.
+      final s = service();
+      await s.start(track);
+      sink.block = Completer<void>();
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await pumpEventQueue();
+
+      var teardownDone = false;
+      unawaited(
+        s.stop(settleDeliveries: false).then((_) => teardownDone = true),
+      );
+      await pumpEventQueue();
+      expect(
+        teardownDone,
+        isTrue,
+        reason: 'a hangup may not wait on a delivery that is still running',
+      );
+
+      // The handover path still waits: it is about to START recording again,
+      // and letting it run over a stretch still flushing is what the wait is
+      // there to prevent.
+      var handoverDone = false;
+      unawaited(s.stop().then((_) => handoverDone = true));
+      await pumpEventQueue();
+      expect(
+        handoverDone,
+        isFalse,
+        reason: 'a handover stop still settles what it handed over',
+      );
+
+      sink.block!.complete();
+      await pumpEventQueue();
+      expect(handoverDone, isTrue);
+    });
+
     test('a tap that throws leaves nothing started', () async {
       // Recording it as started would refuse every later attempt with "already
       // running", costing the call its analytics for a failure that may have

@@ -383,8 +383,40 @@ class CallCaptureService {
   /// by an await lets both past.
   Future<void>? _stopped;
 
-  Future<void> stop() =>
-      _stopped ??= _stop().whenComplete(() => _stopped = null);
+  /// Ends this stretch of recording.
+  ///
+  /// [settleDeliveries] waits, briefly, for chunks already handed to the sink.
+  /// Teardown passes false: the transcripts go to choreo, and a call is over
+  /// when the microphone and the membership are released, never when a
+  /// transcription answers. Waiting here held the account's one call open for
+  /// as long as choreo took -- which refused the next call and, worse, silently
+  /// swallowed an INCOMING ring, because a ring that arrives while this account
+  /// reads as busy is dropped from the stream and never replayed.
+  ///
+  /// Nothing is abandoned by skipping it: [finish] awaits the very same futures
+  /// straight afterwards with a far longer bound, and every delivery keeps its
+  /// own retry path regardless.
+  ///
+  /// Only the LOCAL stop is shared between callers. Two of them may want
+  /// different settling -- a recorder handover wants it, a hangup does not --
+  /// and a memoised whole would have made the second caller inherit the first's
+  /// choice, which is how a hangup came to wait out a handover's drain.
+  Future<void> stop({bool settleDeliveries = true}) async {
+    await (_stopped ??= _stop().whenComplete(() => _stopped = null));
+    if (settleDeliveries) await _settle(_settleDeliveriesWithin);
+  }
+
+  /// Waits for what has already been handed to the sink, bounded.
+  ///
+  /// The bound applies to the WAITING, never to the audio: each delivery keeps
+  /// its own retry path, and nothing here truncates or drops a chunk.
+  Future<void> _settle(Duration within) async {
+    try {
+      await Future.wait(List.of(_inFlight)).timeout(within);
+    } catch (e, s) {
+      Logs().w('Chunks were still on their way when recording settled', e, s);
+    }
+  }
 
   Future<void> _stop() async {
     // Checked against the taps as well as the chunker: a call can be attached
@@ -430,20 +462,6 @@ class CallCaptureService {
       // call numbers on from here.
       _nextIndex = chunker.nextIndex;
     }
-
-    // Waited for, so a stop does not abandon audio already handed over — but
-    // BOUNDED. A delivery retries for up to a minute and a half, and holding
-    // the stop open for all of it also holds open the next START: a recorder
-    // handover back to this device could not begin until an unrelated upload
-    // had finished, and everything the learner said in that window was never
-    // captured at all. Whatever is still going when this gives up is not
-    // dropped — closing the sink waits for it again, and closing is what the
-    // END of a call does.
-    try {
-      await Future.wait(List.of(_inFlight)).timeout(_settleDeliveriesWithin);
-    } catch (e, s) {
-      Logs().w('Chunks were still on their way when recording stopped', e, s);
-    }
   }
 
   /// Ends the call's recording for good.
@@ -461,7 +479,11 @@ class CallCaptureService {
   Future<void>? _finishing;
 
   Future<void> _finish() async {
-    await stop();
+    // Without settling: this is the one caller that is ABOUT to settle, with a
+    // far longer bound. Letting stop settle first would serve a ten second wait
+    // and then a two minute one back to back, for the same futures, delaying
+    // the transcripts and the analytics credited from them for no reason.
+    await stop(settleDeliveries: false);
     if (_finished) return;
     // Everything still on its way — but BOUNDED, like every other wait in a
     // call's life. The bound applies to the WAITING, never to the audio: each
