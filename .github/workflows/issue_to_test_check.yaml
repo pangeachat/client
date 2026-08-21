@@ -5,9 +5,74 @@ on:
     types: [opened, edited, closed]
 
 jobs:
+  # Resolves which `needs … testing` labels this issue should get on close,
+  # from the TESTING PLATFORMS checklist that qa_platforms_section.yml injects.
+  # Every unclear case resolves to all four — see
+  # .github/instructions/qa-labeling.instructions.md.
+  compute_labels:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: read
+    outputs:
+      labels: ${{ steps.parse.outputs.labels }}
+    steps:
+      - name: Resolve label set from the platform checklist
+        id: parse
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          set -euo pipefail
+
+          ALL='needs android testing,needs iOS testing,needs iPad testing,needs web testing'
+          MARKER='<!-- pangea-qa-platforms -->'
+
+          emit() {
+            echo "labels=$1" >> "$GITHUB_OUTPUT"
+            echo "Resolved label set: $1"
+            exit 0
+          }
+
+          BODY=$(gh issue view "$NUMBER" --json body -q .body | tr -d '\r')
+
+          # No section at all — issues opened before this shipped, or a body
+          # the injector hasn't reached yet.
+          printf '%s' "$BODY" | grep -qF "$MARKER" || emit "$ALL"
+
+          # Everything from the marker down. awk/index rather than a sed
+          # address so the marker's punctuation needs no regex escaping.
+          SECTION=$(printf '%s\n' "$BODY" | awk -v m="$MARKER" 'index($0, m) { f = 1 } f')
+
+          # Nobody evaluated it — the safe default, and what the qa_scope check
+          # warns about on the PR.
+          printf '%s' "$SECTION" \
+            | grep -qE '^[[:space:]]*-[[:space:]]*\[[xX]\][[:space:]]*\*\*Evaluated\*\*' \
+            || emit "$ALL"
+
+          PICKED=""
+          pick() {
+            printf '%s' "$SECTION" \
+              | grep -qiE "^[[:space:]]*-[[:space:]]*\[[xX]\][[:space:]]*$1[[:space:]]*$" \
+              && PICKED="${PICKED:+$PICKED,}$2" || true
+          }
+
+          pick 'Web'     'needs web testing'
+          pick 'Android' 'needs android testing'
+          pick 'iOS'     'needs iOS testing'
+          pick 'iPad'    'needs iPad testing'
+
+          # Evaluated with nothing ticked is an explicit statement that no
+          # human verification is needed. Accountability sits with whoever
+          # ticked it; the issue's edit history records who.
+          [ -n "$PICKED" ] || emit 'does not need testing'
+
+          emit "$PICKED"
+
   process:
-    uses: pangeachat/workflows/.github/workflows/reusable-issue-to-test-check.yaml@main
+    needs: compute_labels
+    uses: pangeachat/workflows/.github/workflows/reusable-issue-to-test-check.yaml@a02f9792e74b0a406612be47549e3c3c5194632b # main
     permissions:
       issues: write
     with:
-      needs_testing_labels: 'needs iOS testing,needs android testing,needs web testing,needs iPad testing'
+      needs_testing_labels: ${{ needs.compute_labels.outputs.labels }}
