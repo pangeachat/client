@@ -77,6 +77,8 @@ class PangeaCallCapturePlugin :
     methodChannel = null
     eventChannel?.setStreamHandler(null)
     eventChannel = null
+    // The engine this capture belonged to is going away with it.
+    webrtcInOurEngine = null
   }
 
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
@@ -122,17 +124,24 @@ class PangeaCallCapturePlugin :
         "PangeaCallCapture",
         "attach: sharedSingleton was replaced after registration " +
           "(captured=" + System.identityHashCode(captured) +
-          " global=" + System.identityHashCode(global) + "); using the captured instance",
+          " global=" + System.identityHashCode(global) + ")" +
+          if (captured != null) "; preferring the captured instance" else "; only the global exists",
       )
     }
-    val plugin = captured ?: global
-    if (plugin == null) {
-      Log.w("PangeaCallCapture", "attach: no FlutterWebRTCPlugin instance at all")
-      return false
-    }
-    val controller = plugin.audioProcessingController
+    // What is actually needed is an INITIALIZED processing factory. The
+    // captured instance is the best candidate for this engine's, but there is
+    // no API to prove ownership -- so the rule is semantic, not positional:
+    // prefer the captured instance's controller, fall back to the global's,
+    // and fail only when neither is initialized. A wrongly-captured foreign
+    // instance therefore degrades to the old behaviour instead of pinning a
+    // dead one over a live one.
+    val controller = captured?.audioProcessingController
+      ?: global?.audioProcessingController
     if (controller == null) {
-      Log.w("PangeaCallCapture", "attach: audioProcessingController is null (factory not initialized in this engine yet)")
+      Log.w(
+        "PangeaCallCapture",
+        "attach: no initialized audioProcessingController in either the captured or the global instance",
+      )
       return false
     }
     controller.capturePostProcessing.addProcessor(frames)

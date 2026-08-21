@@ -93,7 +93,11 @@ android {
             applicationIdSuffix = ".debug"
         }
         release {
-            signingConfig = signingConfigs.getByName("release")
+            // LOCAL TEST ONLY -- not for commit. The store keys live in CI;
+            // a device-test release build signs with the debug key and keeps
+            // the .debug package so it installs alongside the store app.
+            signingConfig = signingConfigs.getByName("debug")
+            applicationIdSuffix = ".debug"
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
