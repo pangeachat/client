@@ -232,14 +232,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     if (existing != null) {
       if (existing.isFailed) {
         existing.dismissFailed();
-      } else if (existing.isOver) {
-        // Finished, but still held here. Nothing renders it -- the chat host
-        // and the floating tile both stand down once a call is over -- so
-        // expanding it would show the learner nothing and silently swallow
-        // the call they just asked for. Every later press would do the same,
-        // with no error anywhere: the call button simply stops working.
-        activeCall.value = null;
-        existing.dispose();
       } else {
         existing.expand();
         return;
