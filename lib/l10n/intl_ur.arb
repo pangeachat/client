@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-20 14:15:54.651041",
+    "@@last_modified": "2026-08-21 09:39:41.780173",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "آپ کی ہدف کی زبان میں خودکار تصحیح",
     "autocorrectAndroidDialogBody": "جب آپ کسی چیٹ میں ٹائپ کرتے ہیں، تو آپ کا کی بورڈ آپ کی ہدف کی زبان میں تبدیل ہو جائے گا اور اس زبان میں ہجے کی تصحیح کرے گا۔",
     "autocorrectAndroidFallbackTitle": "اگر آپ کا کی بورڈ آپ کی ہدف کی زبان پیش نہیں کرتا ہے، تو Gboard انسٹال کریں اور وہاں زبان شامل کریں:",
-    "resendInSeconds": "دوبارہ بھیجیں ({seconds})"
+    "resendInSeconds": "دوبارہ بھیجیں ({seconds})",
+    "mapLevelFallbackNotice": "ابھی تک کوئی {selected} سرگرمیاں نہیں ہیں — اس کے بجائے {shown} دکھا رہا ہے۔"
 }

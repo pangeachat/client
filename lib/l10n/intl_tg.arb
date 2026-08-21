@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-20 14:15:54.400216",
+    "@@last_modified": "2026-08-21 09:39:41.411562",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Худкор ислоҳкунӣ бо забони мақсадноки шумо",
     "autocorrectAndroidDialogBody": "Вақте ки шумо дар чат чоп мекунед, клавиатураи шумо ба забони мақсадноки шумо мегузарад ва имлоро бо он забон ислоҳ мекунад.",
     "autocorrectAndroidFallbackTitle": "Агар клавиатураи шумо забони мақсадноки шуморо пешниҳод накунад, Gboard-ро насб кунед ва забонро дар он ҷо илова кунед:",
-    "resendInSeconds": "Дубора ирсол кунед ({seconds})"
+    "resendInSeconds": "Дубора ирсол кунед ({seconds})",
+    "mapLevelFallbackNotice": "Ҳанӯз ягон фаъолияти {selected} вуҷуд надорад — ба ҷои он {shown} нишон дода мешавад."
 }

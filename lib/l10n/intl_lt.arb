@@ -2970,7 +2970,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-20 14:15:51.959013",
+    "@@last_modified": "2026-08-21 09:39:37.486908",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10538,5 +10538,6 @@
     "autocorrectAndroidDialogTitle": "Automatinis taisymas jūsų mokomąja kalba",
     "autocorrectAndroidDialogBody": "Kai rašote pokalbyje, klaviatūra persijungs į jūsų mokomąją kalbą ir taisys rašybą ta kalba.",
     "autocorrectAndroidFallbackTitle": "Jei jūsų klaviatūra nepasiūlo jūsų mokomosios kalbos, įdiekite „Gboard“ ir pridėkite kalbą ten:",
-    "resendInSeconds": "Siųsti iš naujo ({seconds})"
+    "resendInSeconds": "Siųsti iš naujo ({seconds})",
+    "mapLevelFallbackNotice": "Kol kas nėra {selected} veiklų – vietoj jų rodoma {shown}."
 }

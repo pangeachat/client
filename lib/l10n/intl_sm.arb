@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-20 14:15:53.837921",
+    "@@last_modified": "2026-08-21 09:39:40.781309",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Fa'asa'oga otometi i lau gagana e a'oa'oina",
     "autocorrectAndroidDialogBody": "A e taina i se talatalanoaga, o le a fesuia'i lau piano i lau gagana e a'oa'oina ma fa'asa'o le sipelaga i lena gagana.",
     "autocorrectAndroidFallbackTitle": "Afai e le ofoina mai e lau piano lau gagana e a'oa'oina, fa'apipi'i le Gboard ma fa'aopoopo le gagana iina:",
-    "resendInSeconds": "Toe lafo ({seconds})"
+    "resendInSeconds": "Toe lafo ({seconds})",
+    "mapLevelFallbackNotice": "E leai ni gaioiga {selected} i le taimi nei — o loʻo faʻaalia {shown} nai lo lena."
 }

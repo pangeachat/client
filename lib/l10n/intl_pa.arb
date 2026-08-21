@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-20 14:15:52.814391",
+    "@@last_modified": "2026-08-21 09:39:39.844277",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "ਤੁਹਾਡੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਵਿੱਚ ਸਵੈ-ਸੁਧਾਰ",
     "autocorrectAndroidDialogBody": "ਜਦੋਂ ਤੁਸੀਂ ਚੈਟ ਵਿੱਚ ਟਾਈਪ ਕਰਦੇ ਹੋ, ਤਾਂ ਤੁਹਾਡਾ ਕੀਬੋਰਡ ਤੁਹਾਡੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਵਿੱਚ ਬਦਲ ਜਾਵੇਗਾ ਅਤੇ ਉਸ ਭਾਸ਼ਾ ਵਿੱਚ ਸਪੈਲਿੰਗ ਨੂੰ ਠੀਕ ਕਰੇਗਾ।",
     "autocorrectAndroidFallbackTitle": "ਜੇਕਰ ਤੁਹਾਡਾ ਕੀਬੋਰਡ ਤੁਹਾਡੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਦੀ ਪੇਸ਼ਕਸ਼ ਨਹੀਂ ਕਰਦਾ ਹੈ, ਤਾਂ Gboard ਸਥਾਪਤ ਕਰੋ ਅਤੇ ਉੱਥੇ ਭਾਸ਼ਾ ਸ਼ਾਮਲ ਕਰੋ:",
-    "resendInSeconds": "ਮੁੜ ਭੇਜੋ ({seconds})"
+    "resendInSeconds": "ਮੁੜ ਭੇਜੋ ({seconds})",
+    "mapLevelFallbackNotice": "ਹਾਲੇ ਕੋਈ {selected} ਗਤੀਵਿਧੀਆਂ ਨਹੀਂ ਹਨ — ਇਸਦੀ ਬਜਾਏ {shown} ਦਿਖਾ ਰਿਹਾ ਹੈ।"
 }

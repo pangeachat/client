@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-20 14:15:49.841793",
+    "@@last_modified": "2026-08-21 09:39:35.269151",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "તમારી લક્ષ્ય ભાષામાં સ્વતઃ સુધારણા",
     "autocorrectAndroidDialogBody": "જ્યારે તમે ચેટમાં ટાઇપ કરો છો, ત્યારે તમારું કીબોર્ડ તમારી લક્ષ્ય ભાષામાં બદલાઈ જશે અને તે ભાષામાં જોડણી સુધારશે.",
     "autocorrectAndroidFallbackTitle": "જો તમારું કીબોર્ડ તમારી લક્ષ્ય ભાષા પ્રદાન કરતું નથી, તો Gboard ઇન્સ્ટોલ કરો અને ત્યાં ભાષા ઉમેરો:",
-    "resendInSeconds": "ફરીથી મોકલો ({seconds})"
+    "resendInSeconds": "ફરીથી મોકલો ({seconds})",
+    "mapLevelFallbackNotice": "હજુ સુધી કોઈ {selected} પ્રવૃત્તિઓ નથી — તેના બદલે {shown} બતાવી રહ્યા છીએ."
 }

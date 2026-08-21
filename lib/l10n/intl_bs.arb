@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-20 14:15:48.466232",
+    "@@last_modified": "2026-08-21 09:39:32.878419",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
     "autocorrectAndroidDialogBody": "Kada kucate u chatu, vaša tastatura će se prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
     "autocorrectAndroidFallbackTitle": "Ako vaša tastatura ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:",
-    "resendInSeconds": "Ponovo pošalji ({seconds})"
+    "resendInSeconds": "Ponovo pošalji ({seconds})",
+    "mapLevelFallbackNotice": "Još nema {selected} aktivnosti — umjesto toga prikazuje se {shown}."
 }

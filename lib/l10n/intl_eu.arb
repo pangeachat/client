@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-20 14:15:49.490735",
+    "@@last_modified": "2026-08-21 09:39:34.817746",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9757,5 +9757,6 @@
     "autocorrectAndroidDialogTitle": "Zuzenketa automatikoa zure xede-hizkuntzan",
     "autocorrectAndroidDialogBody": "Txat batean idazten duzunean, teklatua zure xede-hizkuntzara aldatuko da eta hizkuntza horretako ortografia zuzenduko du.",
     "autocorrectAndroidFallbackTitle": "Zure teklatuak xede-hizkuntza eskaintzen ez badu, instalatu Gboard eta gehitu hizkuntza bertan:",
-    "resendInSeconds": "Berriro bidali ({seconds})"
+    "resendInSeconds": "Berriro bidali ({seconds})",
+    "mapLevelFallbackNotice": "Oraindik ez dago {selected} jarduerarik; {shown} erakusten da horren ordez."
 }

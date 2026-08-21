@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 14:15:48.272497",
+    "@@last_modified": "2026-08-21 09:39:32.887322",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10385,5 +10385,6 @@
     "autocorrectAndroidDialogTitle": "আপনার লক্ষ্য ভাষায় স্বয়ংক্রিয় সংশোধন",
     "autocorrectAndroidDialogBody": "আপনি যখন চ্যাটে টাইপ করবেন, আপনার কীবোর্ড আপনার লক্ষ্য ভাষায় পরিবর্তিত হবে এবং সেই ভাষায় বানান সংশোধন করবে।",
     "autocorrectAndroidFallbackTitle": "যদি আপনার কীবোর্ড আপনার লক্ষ্য ভাষা অফার না করে, তাহলে Gboard ইনস্টল করুন এবং সেখানে ভাষা যোগ করুন:",
-    "resendInSeconds": "পুনরায় পাঠান ({seconds})"
+    "resendInSeconds": "পুনরায় পাঠান ({seconds})",
+    "mapLevelFallbackNotice": "এখনও কোনো {selected} কার্যকলাপ নেই — পরিবর্তে {shown} দেখানো হচ্ছে।"
 }

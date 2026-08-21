@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-20 14:15:50.141880",
+    "@@last_modified": "2026-08-21 09:39:35.643420",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9860,5 +9860,6 @@
     "autocorrectAndroidDialogTitle": "Automatikus javítás a célnyelven",
     "autocorrectAndroidDialogBody": "Amikor csevegésben gépel, a billentyűzet átvált a célnyelvre, és azon a nyelven javítja a helyesírást.",
     "autocorrectAndroidFallbackTitle": "Ha a billentyűzete nem kínálja fel a célnyelvet, telepítse a Gboardot, és adja hozzá ott a nyelvet:",
-    "resendInSeconds": "Újraküldés ({seconds})"
+    "resendInSeconds": "Újraküldés ({seconds})",
+    "mapLevelFallbackNotice": "Még nincsenek {selected} tevékenységek – helyette ezeket a {shown} tevékenységeket mutatjuk."
 }

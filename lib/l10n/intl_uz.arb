@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-20 14:15:55.087681",
+    "@@last_modified": "2026-08-21 09:39:41.895742",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9761,5 +9761,6 @@
     "autocorrectAndroidDialogTitle": "Maqsadli tilingizda avtomatik tuzatish",
     "autocorrectAndroidDialogBody": "Suhbatda yozganingizda, klaviaturangiz maqsadli tilingizga o'tadi va imloni shu tilda to'g'irlaydi.",
     "autocorrectAndroidFallbackTitle": "Agar klaviaturangiz maqsadli tilingizni taklif qilmasa, Gboard'ni o'rnating va tilni u yerga qo'shing:",
-    "resendInSeconds": "Qayta yuborish ({seconds})"
+    "resendInSeconds": "Qayta yuborish ({seconds})",
+    "mapLevelFallbackNotice": "Hali {selected} faoliyat yoʻq — buning oʻrniga {shown} koʻrsatilmoqda."
 }

@@ -5124,5 +5124,16 @@
             }
         }
     },
-    "inviteAFriend": "Invite a friend"
+    "inviteAFriend": "Invite a friend",
+    "mapLevelFallbackNotice": "No {selected} activities yet — showing {shown} instead.",
+    "@mapLevelFallbackNotice": {
+        "placeholders": {
+            "selected": {
+                "type": "String"
+            },
+            "shown": {
+                "type": "String"
+            }
+        }
+    }
 }

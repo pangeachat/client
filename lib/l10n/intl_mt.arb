@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-20 14:15:52.561800",
+    "@@last_modified": "2026-08-21 09:39:38.351197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Autocorrect fil-lingwa fil-mira tiegħek",
     "autocorrectAndroidDialogBody": "Meta tittajpja fi chat, it-tastiera tiegħek tinbidel għal-lingwa fil-mira tiegħek u tikkoreġi l-ortografija f'dik il-lingwa.",
     "autocorrectAndroidFallbackTitle": "Jekk it-tastiera tiegħek ma toffrix il-lingwa fil-mira tiegħek, installa Gboard u żid il-lingwa hemmhekk:",
-    "resendInSeconds": "Erġa' ibgħat ({seconds})"
+    "resendInSeconds": "Erġa' ibgħat ({seconds})",
+    "mapLevelFallbackNotice": "Għad m'hemmx attivitajiet {selected} — qed nuru {shown} minflok."
 }

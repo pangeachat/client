@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 14:15:54.093888",
+    "@@last_modified": "2026-08-21 09:39:40.974992",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10706,5 +10706,6 @@
     "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
     "autocorrectAndroidDialogBody": "Kada kucate u ćaskanju, vaša tastatura će se prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
     "autocorrectAndroidFallbackTitle": "Ako vaša tastatura ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:",
-    "resendInSeconds": "Ponovo pošalji ({seconds})"
+    "resendInSeconds": "Ponovo pošalji ({seconds})",
+    "mapLevelFallbackNotice": "Još nema {selected} aktivnosti — umesto toga prikazuje se {shown}."
 }

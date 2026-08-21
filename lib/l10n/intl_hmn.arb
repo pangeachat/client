@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-20 14:15:50.083146",
+    "@@last_modified": "2026-08-21 09:39:35.647592",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Kho lus tsis yog rau koj hom lus",
     "autocorrectAndroidDialogBody": "Thaum koj ntaus ntawv hauv kev sib tham, koj lub keyboard yuav hloov mus rau koj hom lus thiab kho cov lus tsis yog hauv hom lus ntawd.",
     "autocorrectAndroidFallbackTitle": "Yog tias koj lub keyboard tsis muaj koj hom lus, nruab Gboard thiab ntxiv hom lus ntawd rau hauv:",
-    "resendInSeconds": "Xa dua ({seconds})"
+    "resendInSeconds": "Xa dua ({seconds})",
+    "mapLevelFallbackNotice": "Tsis muaj {selected} kev ua ub no tseem — tab tom qhia {shown} es."
 }

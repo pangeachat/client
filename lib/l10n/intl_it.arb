@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 14:15:50.601625",
+    "@@last_modified": "2026-08-21 09:39:35.899032",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9830,5 +9830,6 @@
     "autocorrectAndroidDialogTitle": "Correzione automatica nella lingua di destinazione",
     "autocorrectAndroidDialogBody": "Quando digiti in una chat, la tastiera passerà alla lingua di destinazione e correggerà l'ortografia in quella lingua.",
     "autocorrectAndroidFallbackTitle": "Se la tastiera non offre la lingua di destinazione, installa Gboard e aggiungi la lingua lì:",
-    "resendInSeconds": "Invia di nuovo ({seconds})"
+    "resendInSeconds": "Invia di nuovo ({seconds})",
+    "mapLevelFallbackNotice": "Nessuna attività {selected} ancora — mostro invece {shown}."
 }

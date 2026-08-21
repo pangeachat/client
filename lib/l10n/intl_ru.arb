@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-20 14:15:53.304279",
+    "@@last_modified": "2026-08-21 09:39:39.845534",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10729,5 +10729,6 @@
     "autocorrectAndroidDialogTitle": "Автокоррекция на целевом языке",
     "autocorrectAndroidDialogBody": "Когда вы печатаете в чате, клавиатура переключится на ваш целевой язык и будет исправлять орфографию на этом языке.",
     "autocorrectAndroidFallbackTitle": "Если ваша клавиатура не предлагает целевой язык, установите Gboard и добавьте язык там:",
-    "resendInSeconds": "Отправить повторно через ({seconds})"
+    "resendInSeconds": "Отправить повторно через ({seconds})",
+    "mapLevelFallbackNotice": "Пока нет {selected} активностей — вместо них показываются {shown}."
 }
