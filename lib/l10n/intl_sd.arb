@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-20 14:15:53.534280",
+    "@@last_modified": "2026-08-21 09:39:40.357964",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "توهان جي ٽارگيٽ ٻولي ۾ خودڪار درستي",
     "autocorrectAndroidDialogBody": "جڏهن توهان چيٽ ۾ ٽائيپ ڪندا، توهان جو ڪيبورڊ توهان جي ٽارگيٽ ٻولي ۾ تبديل ٿي ويندو ۽ ان ٻولي ۾ اسپيلنگ درست ڪندو.",
     "autocorrectAndroidFallbackTitle": "جيڪڏهن توهان جو ڪيبورڊ توهان جي ٽارگيٽ ٻولي پيش نٿو ڪري، Gboard انسٽال ڪريو ۽ اتي ٻولي شامل ڪريو:",
-    "resendInSeconds": "ٻيهر موڪليو ({seconds})"
+    "resendInSeconds": "ٻيهر موڪليو ({seconds})",
+    "mapLevelFallbackNotice": "اڃا تائين ڪا به {selected} سرگرمي ناهي — ان جي بدران {shown} ڏيکاريو پيو وڃي."
 }

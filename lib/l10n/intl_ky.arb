@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-20 14:15:51.322054",
+    "@@last_modified": "2026-08-21 09:39:37.461546",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Максаттуу тилиңиздеги автооңдоо",
     "autocorrectAndroidDialogBody": "Чатка тергениңизде, клавиатураңыз максаттуу тилиңизге которулуп, ошол тилдеги орфографияны оңдойт.",
     "autocorrectAndroidFallbackTitle": "Эгер клавиатураңыз максаттуу тилиңизди сунуштабаса, Gboard орнотуп, тилди ошол жерден кошуңуз:",
-    "resendInSeconds": "Кайра жөнөтүү ({seconds})"
+    "resendInSeconds": "Кайра жөнөтүү ({seconds})",
+    "mapLevelFallbackNotice": "Азырынча {selected} иш-чаралар жок — анын ордуна {shown} көрсөтүлүүдө."
 }

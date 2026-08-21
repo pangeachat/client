@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-20 14:15:53.773331",
+    "@@last_modified": "2026-08-21 09:39:40.739828",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Autocorrect mumutauro wako waunoda",
     "autocorrectAndroidDialogBody": "Paunonyora muchat, keyboard yako ichachinja kuenda kumutauro wako waunoda uye kugadzirisa zviperengo mumutauro iwoyo.",
     "autocorrectAndroidFallbackTitle": "Kana keyboard yako isingapi mutauro wako waunoda, isa Gboard uye wedzera mutauro ikoko:",
-    "resendInSeconds": "Tumira zvakare ({seconds})"
+    "resendInSeconds": "Tumira zvakare ({seconds})",
+    "mapLevelFallbackNotice": "Hapana {selected} zviitiko parizvino — tichiratidza {shown} panzvimbo."
 }

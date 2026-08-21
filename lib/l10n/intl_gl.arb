@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-20 14:15:49.576645",
+    "@@last_modified": "2026-08-21 09:39:34.692139",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9757,5 +9757,6 @@
     "autocorrectAndroidDialogTitle": "Corrección automática no teu idioma de destino",
     "autocorrectAndroidDialogBody": "Cando escribas nun chat, o teu teclado cambiará ao teu idioma de destino e corrixirá a ortografía nese idioma.",
     "autocorrectAndroidFallbackTitle": "Se o teu teclado non ofrece o teu idioma de destino, instala Gboard e engade o idioma alí:",
-    "resendInSeconds": "Reenviar ({seconds})"
+    "resendInSeconds": "Reenviar ({seconds})",
+    "mapLevelFallbackNotice": "Aínda non hai actividades {selected} — mostrándose {shown} no seu lugar."
 }

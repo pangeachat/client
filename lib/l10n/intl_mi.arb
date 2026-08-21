@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-20 14:15:51.963842",
+    "@@last_modified": "2026-08-21 09:39:38.475596",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Whakatikatika-aunoa i tō reo whāinga",
     "autocorrectAndroidDialogBody": "Ka patopato koe i roto i te kōrerorero, ka huri tō papapātuhi ki tō reo whāinga, ā, ka whakatika i te takikupu i taua reo.",
     "autocorrectAndroidFallbackTitle": "Ki te kore tō papapātuhi e tuku i tō reo whāinga, tāutahia a Gboard ka tāpiri i te reo ki reira:",
-    "resendInSeconds": "Tukua anō ({seconds})"
+    "resendInSeconds": "Tukua anō ({seconds})",
+    "mapLevelFallbackNotice": "Kāore anō kia puta he mahi {selected} — e whakaatu ana i te {shown} hei utu."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-20 14:15:48.330968",
+    "@@last_modified": "2026-08-21 09:39:32.933641",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Outokorreksie in jou doeltaal",
     "autocorrectAndroidDialogBody": "Wanneer jy in 'n klets tik, sal jou sleutelbord na jou doeltaal oorskakel en spelling in daardie taal korrigeer.",
     "autocorrectAndroidFallbackTitle": "As jou sleutelbord nie jou doeltaal aanbied nie, installeer Gboard en voeg die taal daar by:",
-    "resendInSeconds": "Herstuur ({seconds})"
+    "resendInSeconds": "Herstuur ({seconds})",
+    "mapLevelFallbackNotice": "Nog geen {selected} aktiwiteite nie — wys eerder {shown}."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-20 14:15:52.219272",
+    "@@last_modified": "2026-08-21 09:39:36.120364",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Ավտոուղղումը ձեր թիրախ լեզվով",
     "autocorrectAndroidDialogBody": "Երբ հաղորդագրություն եք գրում, ձեր ստեղնաշարը կանցնի ձեր թիրախ լեզվին և կուղղի ուղղագրությունը այդ լեզվով։",
     "autocorrectAndroidFallbackTitle": "Եթե ձեր ստեղնաշարը չի առաջարկում ձեր թիրախ լեզուն, տեղադրեք Gboard-ը և ավելացրեք լեզուն այնտեղ՝",
-    "resendInSeconds": "Կրկին ուղարկել ({seconds})"
+    "resendInSeconds": "Կրկին ուղարկել ({seconds})",
+    "mapLevelFallbackNotice": "Դեռևս չկան {selected} ակտիվություններ. փոխարենը ցուցադրվում է {shown}։"
 }

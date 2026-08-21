@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-20 14:15:50.612029",
+    "@@last_modified": "2026-08-21 09:39:35.978385",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Sjálfvirk leiðrétting á markmálinu þínu",
     "autocorrectAndroidDialogBody": "Þegar þú skrifar í spjalli mun lyklaborðið þitt skipta yfir í markmálið þitt og leiðrétta stafsetningu á því máli.",
     "autocorrectAndroidFallbackTitle": "Ef lyklaborðið þitt býður ekki upp á markmálið þitt skaltu setja upp Gboard og bæta málinu við þar:",
-    "resendInSeconds": "Senda aftur ({seconds})"
+    "resendInSeconds": "Senda aftur ({seconds})",
+    "mapLevelFallbackNotice": "Engin {selected} virkni ennþá — sýni {shown} í staðinn."
 }

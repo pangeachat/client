@@ -3096,7 +3096,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-20 14:15:49.983398",
+    "@@last_modified": "2026-08-21 09:39:44.495741",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10389,5 +10389,6 @@
     "autocorrectAndroidDialogTitle": "आपकी लक्ष्य भाषा में स्वतः सुधार",
     "autocorrectAndroidDialogBody": "जब आप चैट में टाइप करते हैं, तो आपका कीबोर्ड आपकी लक्ष्य भाषा में बदल जाएगा और उस भाषा में वर्तनी को सही करेगा।",
     "autocorrectAndroidFallbackTitle": "यदि आपका कीबोर्ड आपकी लक्ष्य भाषा प्रदान नहीं करता है, तो Gboard इंस्टॉल करें और वहां भाषा जोड़ें:",
-    "resendInSeconds": "पुनः भेजें ({seconds})"
+    "resendInSeconds": "पुनः भेजें ({seconds})",
+    "mapLevelFallbackNotice": "अभी तक कोई {selected} गतिविधियां नहीं हैं — इसके बजाय {shown} दिखाया जा रहा है।"
 }

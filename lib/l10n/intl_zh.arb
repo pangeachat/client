@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-20 14:15:55.326023",
+    "@@last_modified": "2026-08-21 09:39:42.393259",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9757,5 +9757,6 @@
     "autocorrectAndroidDialogTitle": "目标语言自动更正",
     "autocorrectAndroidDialogBody": "在聊天中输入时，键盘将切换到您的目标语言并更正该语言的拼写。",
     "autocorrectAndroidFallbackTitle": "如果您的键盘不提供目标语言，请安装 Gboard 并在其中添加该语言：",
-    "resendInSeconds": "重新发送 ({seconds})"
+    "resendInSeconds": "重新发送 ({seconds})",
+    "mapLevelFallbackNotice": "暂无{selected}活动，显示{shown}。"
 }

@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
+import 'package:fluffychat/features/user/user_constants.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart';
@@ -95,6 +96,19 @@ class GoogleAnalytics {
 
   static void updateUserSubscriptionStatus(bool subscribed) {
     analytics?.setUserProperty(name: 'subscribed', value: "$subscribed");
+  }
+
+  /// The learner's self-declared CEFR level, as the `user_cefr` user property
+  /// (the same key the request layer sends — [UserConstants.cefrLevel]).
+  ///
+  /// Set at session start AND on every profile write, because the level is
+  /// chosen DURING onboarding: a session-start-only property would record the
+  /// A1 profile default for exactly the new users whose real level we are
+  /// trying to see. Nothing else in the client reports the level, so without
+  /// this the size of each level's cohort — Pre-A1 above all, whose content
+  /// gap this measures — is unknowable.
+  static void updateUserCefrLevel(String cefrLevel) {
+    analytics?.setUserProperty(name: UserConstants.cefrLevel, value: cefrLevel);
   }
 
   static void setUserProperties({

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-20 14:15:54.721846",
+    "@@last_modified": "2026-08-21 09:39:41.557637",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10058,5 +10058,6 @@
     "autocorrectAndroidDialogTitle": "Hedef dilinizde otomatik düzeltme",
     "autocorrectAndroidDialogBody": "Bir sohbette yazdığınızda, klavyeniz hedef dilinize geçecek ve yazım hatalarını o dilde düzeltecektir.",
     "autocorrectAndroidFallbackTitle": "Klavyeniz hedef dilinizi sunmuyorsa, Gboard'u yükleyin ve dili oraya ekleyin:",
-    "resendInSeconds": "Tekrar gönder ({seconds})"
+    "resendInSeconds": "Tekrar gönder ({seconds})",
+    "mapLevelFallbackNotice": "Henüz {selected} aktivite yok — bunun yerine {shown} gösteriliyor."
 }

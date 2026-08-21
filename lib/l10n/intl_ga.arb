@@ -3566,7 +3566,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-20 14:15:49.626219",
+    "@@last_modified": "2026-08-21 09:39:34.813264",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9768,5 +9768,6 @@
     "autocorrectAndroidDialogTitle": "Ceartú uathoibríoch i do sprioctheanga",
     "autocorrectAndroidDialogBody": "Nuair a chlóscríobhann tú i gcomhrá, aistreoidh do mhéarchlár chuig do sprioctheanga agus ceartóidh sé an litriú sa teanga sin.",
     "autocorrectAndroidFallbackTitle": "Mura dtugann do mhéarchlár do sprioctheanga, suiteáil Gboard agus cuir an teanga leis ansin:",
-    "resendInSeconds": "Seol arís ({seconds})"
+    "resendInSeconds": "Seol arís ({seconds})",
+    "mapLevelFallbackNotice": "Níl aon ghníomhaíocht {selected} ann fós — ag taispeáint {shown} ina ionad."
 }

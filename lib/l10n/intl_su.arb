@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-20 14:15:54.197454",
+    "@@last_modified": "2026-08-21 09:39:41.051589",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Autocorrect dina basa target anjeun",
     "autocorrectAndroidDialogBody": "Nalika anjeun ngetik dina obrolan, kibor anjeun bakal robah kana basa target anjeun sarta ngabenerkeun éjahan dina basa éta.",
     "autocorrectAndroidFallbackTitle": "Upami kibor anjeun henteu nawiskeun basa target anjeun, pasang Gboard sareng tambihan basa éta di dinya:",
-    "resendInSeconds": "Kirim deui ({seconds})"
+    "resendInSeconds": "Kirim deui ({seconds})",
+    "mapLevelFallbackNotice": "Tacan aya kagiatan {selected} — nembongkeun {shown} baé."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-20 14:15:48.300508",
+    "@@last_modified": "2026-08-21 09:39:33.074059",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "আপোনাৰ লক্ষ্য ভাষাত স্বয়ংক্ৰিয় সংশোধন",
     "autocorrectAndroidDialogBody": "আপুনি যেতিয়া এটা চাটত টাইপ কৰে, আপোনাৰ কিব'ৰ্ড আপোনাৰ লক্ষ্য ভাষালৈ সলনি হ'ব আৰু সেই ভাষাত বানান শুদ্ধ কৰিব।",
     "autocorrectAndroidFallbackTitle": "যদি আপোনাৰ কিব'ৰ্ডে আপোনাৰ লক্ষ্য ভাষা আগবঢ়োৱা নাই, Gboard ইনষ্টল কৰক আৰু তাত ভাষা যোগ কৰক:",
-    "resendInSeconds": "পুনৰ পঠাওক ({seconds})"
+    "resendInSeconds": "পুনৰ পঠাওক ({seconds})",
+    "mapLevelFallbackNotice": "এতিয়ালৈকে কোনো {selected} কাৰ্যকলাপ নাই — ইয়াৰ পৰিৱৰ্তে {shown} দেখুওৱা হৈছে।"
 }

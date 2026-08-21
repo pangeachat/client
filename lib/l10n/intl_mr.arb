@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-20 14:15:52.144959",
+    "@@last_modified": "2026-08-21 09:39:38.315030",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "तुमच्या लक्ष्यित भाषेमध्ये स्वयं-दुरुस्ती",
     "autocorrectAndroidDialogBody": "जेव्हा तुम्ही चॅटमध्ये टाइप करता, तेव्हा तुमचे कीबोर्ड तुमच्या लक्ष्यित भाषेमध्ये बदलेल आणि त्या भाषेतील स्पेलिंग दुरुस्त करेल.",
     "autocorrectAndroidFallbackTitle": "तुमच्या कीबोर्डमध्ये तुमची लक्ष्यित भाषा उपलब्ध नसल्यास, Gboard स्थापित करा आणि तेथे भाषा जोडा:",
-    "resendInSeconds": "पुन्हा पाठवा ({seconds})"
+    "resendInSeconds": "पुन्हा पाठवा ({seconds})",
+    "mapLevelFallbackNotice": "अद्याप कोणतीही {selected} अ‍ॅक्टिव्हिटी नाही — त्याऐवजी {shown} दाखवत आहे."
 }

@@ -97,6 +97,9 @@ class PangeaController {
       sourceLanguage: userController.profile.userSettings.sourceLanguage ?? '',
       userType: isTeacher ? 'teacher' : 'learner',
     );
+    GoogleAnalytics.updateUserCefrLevel(
+      userController.profile.userSettings.cefrLevel.string,
+    );
 
     try {
       final emailNotificationsStatus = await client.emailNotificationsStatus;
@@ -159,6 +162,10 @@ class PangeaController {
     _settingsSubscription = userController.settingsUpdateStream.stream.listen((
       update,
     ) async {
+      // Every path that writes the level — onboarding's picker, learning
+      // settings, the bot dialog, a course join — lands here, so this is the
+      // one place the analytics mirror can't drift from the profile.
+      GoogleAnalytics.updateUserCefrLevel(update.userSettings.cefrLevel.string);
       await matrixState.client.updateBotOptions(update.userSettings);
       await userController.updatePublicProfile();
     });

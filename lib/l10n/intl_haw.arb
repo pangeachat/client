@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-20 14:15:49.988232",
+    "@@last_modified": "2026-08-21 09:39:35.397838",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Hoʻoponopono ʻakomi ma kāu ʻōlelo i manaʻo ai",
     "autocorrectAndroidDialogBody": "Ke paʻi ʻoe ma ke kamaʻilio, e hoʻololi kāu papa kī i kāu ʻōlelo i manaʻo ai a e hoʻoponopono i ka pela ʻana ma ia ʻōlelo.",
     "autocorrectAndroidFallbackTitle": "Inā ʻaʻole hāʻawi kāu papa kī i kāu ʻōlelo i manaʻo ai, e hoʻouka iā Gboard a hoʻohui i ka ʻōlelo ma laila:",
-    "resendInSeconds": "Hoʻouna hou ({seconds})"
+    "resendInSeconds": "Hoʻouna hou ({seconds})",
+    "mapLevelFallbackNotice": "ʻAʻohe hana {selected} i kēia manawa — ke hōʻike nei i {shown} ma kahi."
 }

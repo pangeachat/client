@@ -588,7 +588,9 @@ class WorldMapController extends State<WorldMap>
           );
 
           if (!mounted) return;
-          setState(() {});
+          // Same as the world load: a fresh set decides whether the chosen
+          // level has content, so re-resolve before the pins render.
+          setState(_resolveCefrFallback);
 
           _fitToContext(debounce: debounceFit);
 
@@ -642,7 +644,12 @@ class WorldMapController extends State<WorldMap>
       );
     } finally {
       if (mounted) {
-        setState(() => _loadingPins = false);
+        setState(() {
+          _loadingPins = false;
+          // A fresh set can add (or remove) content at the chosen level, so the
+          // fallback is re-resolved against it before anything renders.
+          _resolveCefrFallback();
+        });
         // Fresh pins change what the narrow empty-view card should show (a
         // zoom-out can bring matches into view); loading START deliberately
         // doesn't tick — the card holds steady through a refetch instead of
@@ -655,8 +662,27 @@ class WorldMapController extends State<WorldMap>
   /// Apply a filter mutation: rebuild this State (the map and the wide
   /// overlay) and tick [viewRevision] for the shell-built narrow surfaces.
   void _mutateFilter(VoidCallback mutate) {
-    setState(mutate);
+    setState(() {
+      mutate();
+      _resolveCefrFallback();
+    });
     viewRevision.value++;
+  }
+
+  /// Re-resolve the Level pill's fallback over the loaded set — run after every
+  /// filter mutation AND after every pin load, the two things that can change
+  /// whether the chosen level has content. Candidates are the renderable pins
+  /// passing everything except the level term, so a fallback only ever names a
+  /// level the learner can actually see (world-map.instructions.md, "Empty
+  /// levels fall back to the nearest one with content").
+  void _resolveCefrFallback() {
+    _filterState.resolveCefrFallback(
+      _pinsManager.filteredPins(
+        (c) =>
+            c.point != null &&
+            _filterState.matchesIgnoringPills(c, applyLanguage: isWorld),
+      ),
+    );
   }
 
   void setQuery(String q) => _mutateFilter(() => _filterState.setQuery(q));

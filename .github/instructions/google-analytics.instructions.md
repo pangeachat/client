@@ -130,6 +130,31 @@ reporting:
   drift — the analytics twin of the routing rule that only `WorkspaceNav`
   writes URLs.
 
+## User properties
+
+A handful of **user-scoped** properties ride the learner rather than an event —
+`target_language`, `source_language`, `user_type`, `subscribed`,
+`client_version`, and `user_cefr` (the learner's self-declared CEFR level, the
+same key the request layer sends as `UserConstants.cefrLevel`). They answer
+"who is this cohort", which the event stream cannot: `user_cefr` exists so the
+size of each level's cohort — Pre-A1 above all, whose activity-content gap
+drove it ([world-map.instructions.md](world-map.instructions.md), "Empty levels
+fall back to the nearest one with content") — is measurable before content is
+commissioned for it.
+
+- **A property whose value is chosen DURING onboarding must be re-emitted on
+  change, not only at session start.** CEFR is picked in onboarding, after the
+  profile already exists at its A1 default, so a start-only write would record
+  A1 for exactly the new learners the property is meant to observe. `user_cefr`
+  is therefore emitted at session start *and* from the profile-update stream
+  ([`PangeaController`](../../lib/pangea/common/controllers/pangea_controller.dart)),
+  the one choke point every level write passes through — onboarding's picker,
+  learning settings, the bot dialog, and a course join alike.
+- **A user property is invisible in reporting until it is registered** as a
+  USER-scoped custom dimension in the devops `analytics/ga-config.yaml` spec
+  (see its ga-analytics-sync doc) for **both** properties. Emitting it from the
+  client is half the change; the spec entry is the other half.
+
 ## Attribution
 
 The client URL path is always '/', with no fragment (see [deep-linking](../../../.github/.github/instructions/deep-linking.instructions.md)). Web attribution params (utm_*, gclid) belong in the query string, where GA's web layer reads them at page load. The router reads the path and its own token params, so attribution never collides with routing or its no-loose-params rule. Link producers put attribution in the query string. No in-app code consumes

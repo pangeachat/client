@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-20 14:15:54.099625",
+    "@@last_modified": "2026-08-21 09:39:40.748831",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "Sixitaanka tooska ah ee luqaddaada bartilmaameedka ah",
     "autocorrectAndroidDialogBody": "Markaad ku qorto sheekeysi, kiiboodhkaagu wuxuu u wareegi doonaa luqaddaada bartilmaameedka ah wuxuuna sixi doonaa higgaadda luqaddaas.",
     "autocorrectAndroidFallbackTitle": "Haddii kiiboodhkaagu uusan bixin luqaddaada bartilmaameedka ah, rakib Gboard oo ku dar luqadda halkaas:",
-    "resendInSeconds": "Dib u dir ({seconds})"
+    "resendInSeconds": "Dib u dir ({seconds})",
+    "mapLevelFallbackNotice": "Weli ma jiraan waxqabadyo {selected} ah — waxaan ku tusaynaa {shown} beddelkeeda."
 }

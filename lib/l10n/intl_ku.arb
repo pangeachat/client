@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-20 14:15:51.419488",
+    "@@last_modified": "2026-08-21 09:39:37.591222",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2153,5 +2153,6 @@
     "autocorrectAndroidDialogTitle": "ڕاستکردنەوەی خۆکار لە زمانی ئامانجەکەتدا",
     "autocorrectAndroidDialogBody": "کاتێک لە چاتێکدا دەنووسیت، کیبۆردەکەت دەگۆڕێت بۆ زمانی ئامانجەکەت و هەڵەی ڕێنووسی لەو زمانەدا ڕاست دەکاتەوە.",
     "autocorrectAndroidFallbackTitle": "ئەگەر کیبۆردەکەت زمانی ئامانجەکەت پێشکەش نەکرد، Gboard دابمەزرێنە و زمانەکە لەوێ زیاد بکە:",
-    "resendInSeconds": "دووبارە بنێرەوە ({seconds})"
+    "resendInSeconds": "دووبارە بنێرەوە ({seconds})",
+    "mapLevelFallbackNotice": "هێشتا هیچ چالاکییەکی {selected} نییە — لەبری ئەوە {shown} نیشان دەدرێت."
 }
