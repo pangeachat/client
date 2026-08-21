@@ -57,14 +57,29 @@ membership. A click that misses fails loudly instead of quietly passing.
   caused a null dereference that stopped the second call in a session from
   placing at all. Caught here and reverted (175e32c51b) before it could ship.
 
+## Scenario coverage
+
+Nine scenarios, every action proven on the server, both timelines diffed:
+answer/hangup, decline, immediate redial, ring-out (no answer), video call,
+quick reply (message + decline + caller receives the text), caller-gives-up,
+reload-while-ringing (the D1 replay, answered after a mid-ring reload), and
+glare (simultaneous calls -> exactly one card).
+
+Between scenarios both clients RELOAD (`harness.recover`): with semantics
+enabled, the Flutter web engine's semantics click pipeline does not reliably
+survive a call panel's teardown -- later clicks die inside the engine's
+ClickDebouncer with a null-state error before any app code runs. Verified
+semantics-specific: the same flows driven by raw coordinates with semantics off
+work, which is why ordinary users never see it. Real users of assistive
+technology WOULD -- filed as a known accessibility issue rather than fixed here,
+because the corruption is inside the engine.
+
 ## Known gaps
 
-- OPEN BUG, reproducible: after a call that was ANSWERED, the caller's next call
-  places nothing at all -- no membership, no ring -- while the call button sits
-  there and the screen stays idle. `scenarios.js` fails on it at
-  "placing a call rang the other side". A plain ring-then-hangup call does NOT
-  reproduce it, so the answered path leaves something behind. Not yet root
-  caused.
+- The former "next call after an answered call places nothing" bug is resolved:
+  it was the engine semantics pipeline (see above), plus two real product bugs
+  it was masking -- the reused ring transaction id (70eb5a2a8b) and the
+  finished-session release window (c784e7c5d6 + the startCall step-over).
 - Scenarios still to add: glare, reload while ringing, callee busy, caller
   cancels, second device, video, connect failure.
 - Both clients log "Unexpected token '<'" -- something fetches a path that the

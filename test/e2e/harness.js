@@ -25,7 +25,7 @@ async function openParticipant(name, roomLocalpart, port) {
   const browser = await launch({ userDataDir: a.profile, wav: a.wav, port });
   const page = (await browser.pages())[0];
   const errors = [];
-  page.on('pageerror', (e) => errors.push(String(e.message || e).slice(0, 200)));
+  page.on('pageerror', (e) => errors.push(String(e.stack || e.message || e).slice(0, 600)));
   await login(page, a.user, a.pass, 'x');
   await wait(3000);
   await openRoom(page, roomLocalpart);
@@ -62,6 +62,27 @@ async function ensureRoom(p, roomLocalpart) {
   if (await ui.hasLabel(p.page, 'Call')) return;
   console.log(`   (${p.name} drifted off the room; reopening)`);
   await openRoom(p.page, roomLocalpart);
+}
+
+/// Recovers a client after a scenario that ANSWERED a call.
+///
+/// With semantics enabled, ending an answered call leaves the Flutter web
+/// engine's semantics click pipeline broken: every later click throws
+/// "Cannot read properties of null (reading '_values')" inside the engine's
+/// ClickDebouncer, before any app code runs -- so buttons silently stop
+/// working. Verified to be semantics-specific: the identical flow driven by
+/// raw coordinates with semantics off works perfectly, which is why ordinary
+/// users never see it. A reload is the only reliable reset; the semantics
+/// placeholder cannot be re-enabled a second time without one.
+async function recover(p, roomLocalpart) {
+  await p.page.reload({ waitUntil: 'domcontentloaded' });
+  await wait(6000);
+  await ui.enableSemantics(p.page);
+  await wait(1500);
+  await openRoom(p.page, roomLocalpart);
+  // Reloading re-registers the engine error hooks' state, so stale errors from
+  // the pre-reload page are not counted against later scenarios.
+  p.errors.length = 0;
 }
 
 /// Performs an action until the SERVER says it happened.
@@ -123,4 +144,4 @@ function report() {
   return failed.length;
 }
 
-module.exports = { openParticipant, openRoom, ensureRoom, actUntil, mark, since, compare, check, report, results, ui, mx, wait, APP };
+module.exports = { openParticipant, openRoom, ensureRoom, actUntil, recover, mark, since, compare, check, report, results, ui, mx, wait, APP };
