@@ -135,6 +135,13 @@ class PangeaCallCapturePlugin :
     // and fail only when neither is initialized. A wrongly-captured foreign
     // instance therefore degrades to the old behaviour instead of pinning a
     // dead one over a live one.
+    //
+    // The remaining theoretical wrong pick -- a FOREIGN instance that was both
+    // captured at our registration AND initialized -- would require another
+    // engine to have run WebRTC's initialize before the main app engine
+    // registered its plugins. No engine in this app does WebRTC work at all
+    // outside the main one, so that pick is accepted as unreachable rather
+    // than guarded with machinery that could not verify ownership anyway.
     val controller = captured?.audioProcessingController
       ?: global?.audioProcessingController
     if (controller == null) {
