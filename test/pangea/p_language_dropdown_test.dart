@@ -133,7 +133,7 @@ void main() {
 
   setUp(() {
     // Each test starts from no analytics; individual tests opt in.
-    MatrixState.pangeaController.userController.publicProfile = null;
+    MatrixState.pangeaController.userController.setPublicProfile(null);
   });
 
   /// Builds the dropdown and opens its menu. Every flag it needs is already
@@ -176,15 +176,16 @@ void main() {
   testWidgets(
     'sorts analytics languages to the top, alphabetically below the rule',
     (tester) async {
-      MatrixState.pangeaController.userController.publicProfile =
-          PublicProfileModel(
-            analytics: AnalyticsProfileModel(
-              languageAnalytics: {
-                spanish: LanguageAnalyticsProfileEntry(4, 0),
-                french: LanguageAnalyticsProfileEntry(7, 0),
-              },
-            ),
-          );
+      MatrixState.pangeaController.userController.setPublicProfile(
+        PublicProfileModel(
+          analytics: AnalyticsProfileModel(
+            languageAnalytics: {
+              spanish: LanguageAnalyticsProfileEntry(4, 0),
+              french: LanguageAnalyticsProfileEntry(7, 0),
+            },
+          ),
+        ),
+      );
 
       await openDropdown(tester);
 
@@ -221,12 +222,13 @@ void main() {
   testWidgets('leaves the base-language list unaffected by analytics', (
     tester,
   ) async {
-    MatrixState.pangeaController.userController.publicProfile =
-        PublicProfileModel(
-          analytics: AnalyticsProfileModel(
-            languageAnalytics: {french: LanguageAnalyticsProfileEntry(7, 0)},
-          ),
-        );
+    MatrixState.pangeaController.userController.setPublicProfile(
+      PublicProfileModel(
+        analytics: AnalyticsProfileModel(
+          languageAnalytics: {french: LanguageAnalyticsProfileEntry(7, 0)},
+        ),
+      ),
+    );
 
     await openDropdown(tester, isL2List: false);
 
@@ -241,15 +243,16 @@ void main() {
       // LanguageModel.shouldShowFlag is false for it — the row must not fall
       // to LanguageFlagChip's own two-letter code badge, which reads as
       // squished next to every other row's full circle or real flag.
-      MatrixState.pangeaController.userController.publicProfile =
-          PublicProfileModel(
-            analytics: AnalyticsProfileModel(
-              languageAnalytics: {
-                spanish: LanguageAnalyticsProfileEntry(15, 0),
-                spanishMexico: LanguageAnalyticsProfileEntry(3, 0),
-              },
-            ),
-          );
+      MatrixState.pangeaController.userController.setPublicProfile(
+        PublicProfileModel(
+          analytics: AnalyticsProfileModel(
+            languageAnalytics: {
+              spanish: LanguageAnalyticsProfileEntry(15, 0),
+              spanishMexico: LanguageAnalyticsProfileEntry(3, 0),
+            },
+          ),
+        ),
+      );
 
       await openDropdown(tester);
 
