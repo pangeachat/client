@@ -84,12 +84,27 @@ class PostEchoCancellationTap implements CallAudioTap {
           Logs().w('The call audio tap reported an error', e, s),
     );
 
-    bool attached;
-    try {
-      attached = await capture.start();
-    } catch (e, s) {
-      Logs().e('Could not attach the call audio tap', e, s);
-      attached = false;
+    // Retried briefly: the processing factory is created during WebRTC's own
+    // initialization, and the first call of a session can reach here moments
+    // before that finishes. Two short retries cover the race; a device where
+    // the tap is genuinely unavailable still answers false three times and is
+    // given up on with the warning below -- each refusal is logged, so a retry
+    // can never quietly paper over a real absence.
+    bool attached = false;
+    for (final delay in const [
+      Duration.zero,
+      Duration(seconds: 1),
+      Duration(seconds: 3),
+    ]) {
+      if (delay != Duration.zero) await Future.delayed(delay);
+      try {
+        attached = await capture.start();
+      } catch (e, s) {
+        Logs().e('Could not attach the call audio tap', e, s);
+        attached = false;
+      }
+      if (attached) break;
+      Logs().w('The call audio tap refused to attach; retrying');
     }
     if (!attached) {
       Logs().w('No call audio tap on this device; nothing will be recorded');

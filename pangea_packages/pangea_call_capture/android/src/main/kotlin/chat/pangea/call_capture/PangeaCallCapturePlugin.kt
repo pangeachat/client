@@ -48,6 +48,9 @@ class PangeaCallCapturePlugin :
   /// Held from the moment we attach. Looking it up again to detach would leave
   /// the processor registered if the plugin had gone in between — still being
   /// called, with nothing left that could take it off.
+  /** The WebRTC plugin instance registered into the same engine as this one. */
+  private var webrtcInOurEngine: FlutterWebRTCPlugin? = null
+
   private var attachedTo: AudioProcessingController? = null
 
   override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
@@ -57,6 +60,15 @@ class PangeaCallCapturePlugin :
     eventChannel = EventChannel(binding.binaryMessenger, EVENT_CHANNEL).also {
       it.setStreamHandler(this)
     }
+    // The WebRTC plugin registered into THIS engine, captured while the global
+    // still points at it. flutter_webrtc publishes itself only through a static
+    // sharedSingleton that every new instance overwrites in its CONSTRUCTOR --
+    // so any later engine (a notification action, a background isolate) leaves
+    // the global pointing at an instance whose factory never initializes, and
+    // reading it at attach time found a null controller on a live call. Plugin
+    // registration order within one engine is deterministic and flutter_webrtc
+    // precedes this plugin, so the capture here is the right instance.
+    webrtcInOurEngine = FlutterWebRTCPlugin.sharedSingleton
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
@@ -100,8 +112,29 @@ class PangeaCallCapturePlugin :
    */
   private fun attach(): Boolean {
     if (attachedTo != null) return true
-    val controller = FlutterWebRTCPlugin.sharedSingleton?.audioProcessingController
-      ?: return false
+    // OUR engine's instance first; the global only as a fallback for the
+    // unexpected. Named nulls, not a silent false: "no tap" cost a device test
+    // its recordings, and WHICH link is missing decides the fix.
+    val captured = webrtcInOurEngine
+    val global = FlutterWebRTCPlugin.sharedSingleton
+    if (captured !== global) {
+      Log.w(
+        "PangeaCallCapture",
+        "attach: sharedSingleton was replaced after registration " +
+          "(captured=" + System.identityHashCode(captured) +
+          " global=" + System.identityHashCode(global) + "); using the captured instance",
+      )
+    }
+    val plugin = captured ?: global
+    if (plugin == null) {
+      Log.w("PangeaCallCapture", "attach: no FlutterWebRTCPlugin instance at all")
+      return false
+    }
+    val controller = plugin.audioProcessingController
+    if (controller == null) {
+      Log.w("PangeaCallCapture", "attach: audioProcessingController is null (factory not initialized in this engine yet)")
+      return false
+    }
     controller.capturePostProcessing.addProcessor(frames)
     attachedTo = controller
     return true
