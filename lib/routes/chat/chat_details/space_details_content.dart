@@ -225,20 +225,6 @@ class _CourseCardBody extends StatelessWidget {
         enabled: room.isRoomAdmin,
       ),
       ButtonDetails(
-        title: l10n.teacherModeTitle,
-        description: l10n.teacherModeDesc,
-        icon: const Icon(Icons.school_outlined, size: 30.0),
-        onPressed: () => showFutureLoadingDialog(
-          context: context,
-          future: () => room.setTeacherMode(
-            room.teacherMode.copyWith(enabled: !room.isTeacherMode),
-          ),
-        ),
-        enabled: room.isRoomAdmin,
-        isToggle: true,
-        value: room.isTeacherMode,
-      ),
-      ButtonDetails(
         title: l10n.starsToUnlockObjectiveTitle,
         description: l10n.starsToUnlockObjectiveDesc,
         icon: const Icon(Icons.star_outline, size: 30.0),
