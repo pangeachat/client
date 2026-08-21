@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_empty_view_card.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
+import 'package:fluffychat/routes/world/world_map_level_fallback_notice.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 /// The single-column floating search bar riding above the nav widget
@@ -51,6 +52,13 @@ class MobileSearchBar extends StatefulWidget {
   /// live (greyed below it).
   final bool Function()? canZoomOut;
 
+  /// The live Level-pill filter ([WorldMapController.filter]) — a builder for
+  /// the same reason the others are — read only for the level-fallback notice
+  /// ([WorldMapLevelFallbackNotice]): whether the map is standing a
+  /// neighbouring level in for the one the learner chose. Null in a scope
+  /// without the notice.
+  final WorldMapFilter Function()? filter;
+
   /// The card's levers: clear every pill to "All …" / step the camera out one
   /// zoom level.
   final VoidCallback? onWidenSearch;
@@ -80,6 +88,7 @@ class MobileSearchBar extends StatefulWidget {
     this.onRestore,
     this.emptyVerdict,
     this.canZoomOut,
+    this.filter,
     this.onWidenSearch,
     this.onZoomOut,
     this.viewRevision,
@@ -158,6 +167,12 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
     final searching = _controller.text.trim().isNotEmpty;
 
     final verdict = widget.emptyVerdict?.call() ?? MapEmptyVerdict.none;
+    final filter = widget.filter?.call();
+    // Same precedence as the wide overlay: the empty-view card is the more
+    // urgent message and owns the slot whenever both would apply.
+    final levelFallback = verdict == MapEmptyVerdict.none
+        ? filter?.cefrFallback
+        : null;
 
     return Semantics(
       label: l10n.searchActivitiesLabel,
@@ -181,6 +196,16 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
                 canZoomOut: widget.canZoomOut?.call() ?? false,
                 onWidenSearch: () => widget.onWidenSearch?.call(),
                 onZoomOut: () => widget.onZoomOut?.call(),
+              ),
+            ),
+            const SizedBox(height: 8),
+          ],
+          if (levelFallback != null) ...[
+            Align(
+              alignment: Alignment.centerRight,
+              child: WorldMapLevelFallbackNotice(
+                selected: filter?.cefrLevel,
+                fallback: levelFallback,
               ),
             ),
             const SizedBox(height: 8),

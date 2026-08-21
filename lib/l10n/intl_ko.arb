@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 15:18:48.946116",
+    "@@last_modified": "2026-08-21 09:39:36.755787",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9941,6 +9941,7 @@
     "autocorrectAndroidDialogBody": "채팅을 입력할 때 키보드가 학습 언어로 전환되고 해당 언어로 맞춤법을 교정합니다.",
     "autocorrectAndroidFallbackTitle": "키보드에서 학습 언어를 지원하지 않는 경우 Gboard를 설치하고 언어를 추가하세요.",
     "resendInSeconds": "재전송 ({seconds})",
+    "mapLevelFallbackNotice": "{selected} 활동이 아직 없습니다. 대신 {shown}을(를) 표시합니다.",
     "openKeyboardSettings": "키보드 설정 열기",
     "keyboardPromptAddKeyboardMessage": "자동 고침이 작동하도록 목표 언어용 키보드를 추가하세요.",
     "keyboardPromptAddKeyboardAction": "키보드 추가",

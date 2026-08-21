@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-20 15:18:54.496370",
+    "@@last_modified": "2026-08-21 09:39:41.557637",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10049,6 +10049,7 @@
     "autocorrectAndroidDialogBody": "Bir sohbette yazdığınızda, klavyeniz hedef dilinize geçecek ve yazım hatalarını o dilde düzeltecektir.",
     "autocorrectAndroidFallbackTitle": "Klavyeniz hedef dilinizi sunmuyorsa, Gboard'u yükleyin ve dili oraya ekleyin:",
     "resendInSeconds": "Tekrar gönder ({seconds})",
+    "mapLevelFallbackNotice": "Henüz {selected} aktivite yok — bunun yerine {shown} gösteriliyor.",
     "openKeyboardSettings": "Klavye Ayarlarını Aç",
     "keyboardPromptAddKeyboardMessage": "Otomatik düzeltmenin çalışması için hedef diliniz için bir klavye ekleyin.",
     "keyboardPromptAddKeyboardAction": "Klavye Ekle",

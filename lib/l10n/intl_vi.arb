@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 15:18:55.236480",
+    "@@last_modified": "2026-08-21 09:39:41.838171",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7040,6 +7040,7 @@
     "autocorrectAndroidDialogBody": "Khi bạn nhập tin nhắn trong cuộc trò chuyện, bàn phím của bạn sẽ chuyển sang ngôn ngữ mục tiêu và sửa lỗi chính tả bằng ngôn ngữ đó.",
     "autocorrectAndroidFallbackTitle": "Nếu bàn phím của bạn không hỗ trợ ngôn ngữ mục tiêu, hãy cài đặt Gboard và thêm ngôn ngữ đó tại đây:",
     "resendInSeconds": "Gửi lại ({seconds})",
+    "mapLevelFallbackNotice": "Chưa có hoạt động {selected} nào — thay vào đó hiển thị {shown}.",
     "openKeyboardSettings": "Mở Cài đặt Bàn phím",
     "keyboardPromptAddKeyboardMessage": "Thêm bàn phím cho ngôn ngữ bạn muốn học để tính năng tự động sửa lỗi hoạt động.",
     "keyboardPromptAddKeyboardAction": "Thêm bàn phím",

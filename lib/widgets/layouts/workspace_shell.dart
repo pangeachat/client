@@ -605,6 +605,11 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             // tap, a pin load after zooming out).
             emptyVerdict: () => mapController.emptyVerdict,
             canZoomOut: () => mapController.canZoomOut,
+            // Drives the level-fallback notice: when the chosen Level pill has
+            // no content, the map matches the nearest level that does and says
+            // so here (world-map.instructions.md, "Empty levels fall back to
+            // the nearest one with content").
+            filter: () => mapController.filter,
             onWidenSearch: mapController.widenFilters,
             // Resets to the whole-world view (all the way out, centered over
             // the fullest window of matching pins, #8121) — the map's World

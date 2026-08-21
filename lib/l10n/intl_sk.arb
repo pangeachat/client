@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-20 15:18:53.382071",
+    "@@last_modified": "2026-08-21 09:39:40.451619",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10693,6 +10693,7 @@
     "autocorrectAndroidDialogBody": "Keď píšete v chate, klávesnica sa prepne na váš cieľový jazyk a opraví pravopis v tomto jazyku.",
     "autocorrectAndroidFallbackTitle": "Ak vaša klávesnica neponúka váš cieľový jazyk, nainštalujte si Gboard a pridajte tam jazyk:",
     "resendInSeconds": "Znova odoslať o ({seconds})",
+    "mapLevelFallbackNotice": "Zatiaľ žiadne aktivity {selected} – namiesto toho sa zobrazujú {shown}.",
     "openKeyboardSettings": "Otvoriť nastavenia klávesnice",
     "keyboardPromptAddKeyboardMessage": "Pridajte si klávesnicu pre váš cieľový jazyk, aby fungovala automatická oprava.",
     "keyboardPromptAddKeyboardAction": "Pridať klávesnicu",

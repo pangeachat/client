@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 15:18:46.848550",
+    "@@last_modified": "2026-08-21 09:39:35.282354",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10662,6 +10662,7 @@
     "autocorrectAndroidDialogBody": "כשאתה מקליד בצ'אט, המקלדת שלך תעבור לשפת היעד שלך ותתקן שגיאות כתיב בשפה זו.",
     "autocorrectAndroidFallbackTitle": "אם המקלדת שלך לא מציעה את שפת היעד שלך, התקן את Gboard והוסף את השפה שם:",
     "resendInSeconds": "שלח שוב בעוד ({seconds})",
+    "mapLevelFallbackNotice": "אין פעילויות {selected} עדיין – מציג {shown} במקום.",
     "openKeyboardSettings": "פתח הגדרות מקלדת",
     "keyboardPromptAddKeyboardMessage": "הוסף מקלדת לשפת היעד שלך כדי שהתיקון האוטומטי יעבוד.",
     "keyboardPromptAddKeyboardAction": "הוסף מקלדת",

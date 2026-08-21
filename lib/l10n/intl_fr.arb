@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-20 15:18:45.611633",
+    "@@last_modified": "2026-08-21 09:39:34.649518",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10103,6 +10103,7 @@
     "autocorrectAndroidDialogBody": "Lorsque vous tapez dans un chat, votre clavier basculera vers votre langue cible et corrigera l'orthographe dans cette langue.",
     "autocorrectAndroidFallbackTitle": "Si votre clavier n'offre pas votre langue cible, installez Gboard et ajoutez la langue là :",
     "resendInSeconds": "Renvoyer dans ({seconds})",
+    "mapLevelFallbackNotice": "Aucune activité {selected} pour l'instant — affichage des activités {shown} à la place.",
     "openKeyboardSettings": "Ouvrir les paramètres du clavier",
     "keyboardPromptAddKeyboardMessage": "Ajoutez un clavier pour votre langue cible afin que la correction automatique fonctionne.",
     "keyboardPromptAddKeyboardAction": "Ajouter un clavier",

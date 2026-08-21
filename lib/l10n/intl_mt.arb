@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-20 15:18:51.696063",
+    "@@last_modified": "2026-08-21 09:39:38.351197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2152,6 +2152,7 @@
     "autocorrectAndroidDialogBody": "Meta tittajpja fi chat, it-tastiera tiegħek tinbidel għal-lingwa fil-mira tiegħek u tikkoreġi l-ortografija f'dik il-lingwa.",
     "autocorrectAndroidFallbackTitle": "Jekk it-tastiera tiegħek ma toffrix il-lingwa fil-mira tiegħek, installa Gboard u żid il-lingwa hemmhekk:",
     "resendInSeconds": "Erġa' ibgħat ({seconds})",
+    "mapLevelFallbackNotice": "Għad m'hemmx attivitajiet {selected} — qed nuru {shown} minflok.",
     "openKeyboardSettings": "Iftaħ is-Settings tat-Tastiera",
     "keyboardPromptAddKeyboardMessage": "Żid tastiera għal-lingwa fil-mira tiegħek biex taħdem il-korrezzjoni awtomatika.",
     "keyboardPromptAddKeyboardAction": "Żid Tastiera",

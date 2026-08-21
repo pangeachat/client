@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-20 15:18:47.218519",
+    "@@last_modified": "2026-08-21 09:39:35.361317",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10184,6 +10184,7 @@
     "autocorrectAndroidDialogBody": "Kada tipkate u chatu, vaša će se tipkovnica prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
     "autocorrectAndroidFallbackTitle": "Ako vaša tipkovnica ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:",
     "resendInSeconds": "Ponovno pošalji ({seconds})",
+    "mapLevelFallbackNotice": "Još nema aktivnosti za {selected} — umjesto toga prikazuje se {shown}.",
     "openKeyboardSettings": "Otvori postavke tipkovnice",
     "keyboardPromptAddKeyboardMessage": "Dodajte tipkovnicu za ciljni jezik kako bi automatska ispravka radila.",
     "keyboardPromptAddKeyboardAction": "Dodaj tipkovnicu",

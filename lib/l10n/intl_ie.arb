@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-20 15:18:48.132194",
+    "@@last_modified": "2026-08-21 09:39:36.115963",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10380,6 +10380,7 @@
     "autocorrectAndroidDialogBody": "Quando você digita em um bate-papo, seu teclado mudará para o seu idioma-alvo e corrigirá a ortografia nesse idioma.",
     "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o seu idioma-alvo, instale o Gboard e adicione o idioma lá:",
     "resendInSeconds": "Athsheol ({seconds})",
+    "mapLevelFallbackNotice": "Níor cuireadh aon ghníomhaíochtaí {selected} leis fós — tá {shown} á thaispeáint ina ionad.",
     "openKeyboardSettings": "Oscail Socruithe an Mhéarchláir",
     "keyboardPromptAddKeyboardMessage": "Cuir méarchlár le haghaidh do theanga sprice leis ionas go n-oibreoidh an ceartú uathoibríoch.",
     "keyboardPromptAddKeyboardAction": "Cuir Méarchlár Leis",

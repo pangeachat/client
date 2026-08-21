@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-20 15:18:49.253444",
+    "@@last_modified": "2026-08-21 09:39:36.866610",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2152,6 +2152,7 @@
     "autocorrectAndroidDialogBody": "Tɛm we yu de rayt na chat, yu keyboard go chenj to yu tɔŋ we yu de lan ɛn kɔrɛkt spɛlin na dat tɔŋ.",
     "autocorrectAndroidFallbackTitle": "If yu keyboard nɔ gɛt yu tɔŋ we yu de lan, instɔl Gboard ɛn ad di tɔŋ de:",
     "resendInSeconds": "Send bak ({seconds})",
+    "mapLevelFallbackNotice": "No {selected} aktivitis yet — de sho {shown} insted.",
     "openKeyboardSettings": "Open Keyboard Setin dɛm",
     "keyboardPromptAddKeyboardMessage": "Put in wan keyboard fɔ yu target langwej so autocorrect go wok.",
     "keyboardPromptAddKeyboardAction": "Put in Keyboard",

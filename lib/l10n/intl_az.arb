@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-20 15:18:47.373427",
+    "@@last_modified": "2026-08-21 09:39:33.044762",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2152,6 +2152,7 @@
     "autocorrectAndroidDialogBody": "Söhbətdə yazarkən klaviaturanız hədəf dilinizə keçəcək və həmin dildə orfoqrafiyanı düzəldəcək.",
     "autocorrectAndroidFallbackTitle": "Əgər klaviaturanız hədəf dilinizi təklif etmirsə, Gboard-u quraşdırın və dili oraya əlavə edin:",
     "resendInSeconds": "Yenidən göndər ({seconds})",
+    "mapLevelFallbackNotice": "Hələ heç bir {selected} fəaliyyəti yoxdur — əvəzinə {shown} göstərilir.",
     "openKeyboardSettings": "Klaviatura Ayarlarını Aç",
     "keyboardPromptAddKeyboardMessage": "Avtokorrektin işləməsi üçün hədəf diliniz üçün klaviatura əlavə edin.",
     "keyboardPromptAddKeyboardAction": "Klaviatura əlavə et",

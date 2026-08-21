@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 15:18:51.730461",
+    "@@last_modified": "2026-08-21 09:39:38.801796",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9805,6 +9805,7 @@
     "autocorrectAndroidDialogBody": "Når du skriver i en chat, vil tastaturet bytte til målspråket ditt og korrigere stavemåten på det språket.",
     "autocorrectAndroidFallbackTitle": "Hvis tastaturet ditt ikke tilbyr målspråket ditt, installer Gboard og legg til språket der:",
     "resendInSeconds": "Send på nytt om ({seconds})",
+    "mapLevelFallbackNotice": "Ingen {selected}-aktiviteter ennå – viser {shown} i stedet.",
     "openKeyboardSettings": "Åpne tastaturinnstillinger",
     "keyboardPromptAddKeyboardMessage": "Legg til et tastatur for målspråket ditt, slik at autokorrektur fungerer.",
     "keyboardPromptAddKeyboardAction": "Legg til tastatur",

@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-20 15:18:44.292795",
+    "@@last_modified": "2026-08-21 09:39:33.918998",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2152,6 +2152,7 @@
     "autocorrectAndroidDialogBody": "Pan fyddwch chi'n teipio mewn sgwrs, bydd eich bysellfwrdd yn newid i'ch iaith darged ac yn cywiro sillafu yn yr iaith honno.",
     "autocorrectAndroidFallbackTitle": "Os nad yw eich bysellfwrdd yn cynnig eich iaith darged, gosodwch Gboard ac ychwanegwch yr iaith yno:",
     "resendInSeconds": "Ail-anfon ({seconds})",
+    "mapLevelFallbackNotice": "Dim gweithgareddau {selected} eto — yn dangos {shown} yn lle hynny.",
     "openKeyboardSettings": "Agor Gosodiadau Bysellfwrdd",
     "keyboardPromptAddKeyboardMessage": "Ychwanegwch fysellfwrdd ar gyfer eich iaith darged fel bod awto-gywiro'n gweithio.",
     "keyboardPromptAddKeyboardAction": "Ychwanegu Bysellfwrdd",

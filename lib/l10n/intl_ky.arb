@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-20 15:18:49.726559",
+    "@@last_modified": "2026-08-21 09:39:37.461546",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2152,6 +2152,7 @@
     "autocorrectAndroidDialogBody": "Чатка тергениңизде, клавиатураңыз максаттуу тилиңизге которулуп, ошол тилдеги орфографияны оңдойт.",
     "autocorrectAndroidFallbackTitle": "Эгер клавиатураңыз максаттуу тилиңизди сунуштабаса, Gboard орнотуп, тилди ошол жерден кошуңуз:",
     "resendInSeconds": "Кайра жөнөтүү ({seconds})",
+    "mapLevelFallbackNotice": "Азырынча {selected} иш-чаралар жок — анын ордуна {shown} көрсөтүлүүдө.",
     "openKeyboardSettings": "Баскычтоп жөндөөлөрүн ачуу",
     "keyboardPromptAddKeyboardMessage": "Автооңдоо иштеши үчүн максаттуу тилиңизге баскычтоп кошуңуз.",
     "keyboardPromptAddKeyboardAction": "Баскычтоп кошуу",

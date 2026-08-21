@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
 import 'package:fluffychat/routes/world/world_map_empty_view_card.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
+import 'package:fluffychat/routes/world/world_map_level_fallback_notice.dart';
 
 /// Coverage for the single-column floating search bar
 /// (routing.instructions.md → Single-column search bar): the presentational
@@ -28,6 +30,7 @@ void main() {
     Listenable? viewRevision,
     bool minimized = false,
     VoidCallback? onRestore,
+    WorldMapFilter Function()? filter,
   }) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -48,6 +51,7 @@ void main() {
               onWidenSearch: onWidenSearch,
               onZoomOut: onZoomOut,
               viewRevision: viewRevision,
+              filter: filter,
             ),
           ),
         ),
@@ -119,6 +123,53 @@ void main() {
 
     await pumpBar(tester, emptyVerdict: () => MapEmptyVerdict.none);
     expect(find.byType(WorldMapEmptyViewCard), findsNothing);
+  });
+
+  testWidgets('a level fallback rides above the bar and names both levels', (
+    tester,
+  ) async {
+    const fallback = WorldMapFilter(
+      cefrFilter: {LanguageLevelTypeEnum.preA1},
+      cefrFallback: LanguageLevelTypeEnum.a1,
+    );
+    await pumpBar(
+      tester,
+      emptyVerdict: () => MapEmptyVerdict.none,
+      filter: () => fallback,
+    );
+    expect(find.byType(WorldMapLevelFallbackNotice), findsOneWidget);
+    final noticeY = tester
+        .getTopLeft(find.byType(WorldMapLevelFallbackNotice))
+        .dy;
+    expect(noticeY, lessThan(tester.getTopLeft(find.byType(TextField)).dy));
+
+    // An honoured level says nothing.
+    await pumpBar(
+      tester,
+      emptyVerdict: () => MapEmptyVerdict.none,
+      filter: () =>
+          const WorldMapFilter(cefrFilter: {LanguageLevelTypeEnum.a1}),
+    );
+    expect(find.byType(WorldMapLevelFallbackNotice), findsNothing);
+  });
+
+  testWidgets('the empty-view card outranks the fallback notice', (
+    tester,
+  ) async {
+    await pumpBar(
+      tester,
+      emptyVerdict: () => MapEmptyVerdict.filtersHideMatches,
+      filter: () => const WorldMapFilter(
+        cefrFilter: {LanguageLevelTypeEnum.preA1},
+        cefrFallback: LanguageLevelTypeEnum.a1,
+      ),
+    );
+    expect(find.byType(WorldMapEmptyViewCard), findsOneWidget);
+    expect(
+      find.byType(WorldMapLevelFallbackNotice),
+      findsNothing,
+      reason: 'a map with nothing on it is the more urgent message',
+    );
   });
 
   testWidgets('off-screen matches: Zoom out fires, no Widen offered', (

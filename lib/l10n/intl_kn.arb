@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-20 15:18:49.055346",
+    "@@last_modified": "2026-08-21 09:39:36.775732",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2152,6 +2152,7 @@
     "autocorrectAndroidDialogBody": "ನೀವು ಚಾಟ್‌ನಲ್ಲಿ ಟೈಪ್ ಮಾಡುವಾಗ, ನಿಮ್ಮ ಕೀಬೋರ್ಡ್ ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಗೆ ಬದಲಾಗುತ್ತದೆ ಮತ್ತು ಆ ಭಾಷೆಯಲ್ಲಿ ಕಾಗುಣಿತವನ್ನು ಸರಿಪಡಿಸುತ್ತದೆ.",
     "autocorrectAndroidFallbackTitle": "ನಿಮ್ಮ ಕೀಬೋರ್ಡ್ ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಯನ್ನು ನೀಡದಿದ್ದರೆ, Gboard ಅನ್ನು ಸ್ಥಾಪಿಸಿ ಮತ್ತು ಅಲ್ಲಿ ಭಾಷೆಯನ್ನು ಸೇರಿಸಿ:",
     "resendInSeconds": "ಮತ್ತೆ ಕಳುಹಿಸಿ ({seconds})",
+    "mapLevelFallbackNotice": "ಯಾವುದೇ {selected} ಚಟುವಟಿಕೆಗಳು ಇನ್ನೂ ಇಲ್ಲ — ಬದಲಿಗೆ {shown} ತೋರಿಸಲಾಗುತ್ತಿದೆ.",
     "openKeyboardSettings": "ಕೀಬೋರ್ಡ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ತೆರೆಯಿರಿ",
     "keyboardPromptAddKeyboardMessage": "ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಗೆ ಕೀಬೋರ್ಡ್ ಸೇರಿಸಿ ಇದರಿಂದ ಸ್ವಯಂ ತಿದ್ದುಪಡಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ.",
     "keyboardPromptAddKeyboardAction": "ಕೀಬೋರ್ಡ್ ಸೇರಿಸಿ",

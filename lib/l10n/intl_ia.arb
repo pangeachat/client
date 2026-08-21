@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-20 15:18:47.804414",
+    "@@last_modified": "2026-08-21 09:39:38.955966",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10684,6 +10684,7 @@
     "autocorrectAndroidDialogBody": "Quando tu scribe in un chat, tu claviero cambiara a tu lingua de destination e corrigera le orthographia in ille lingua.",
     "autocorrectAndroidFallbackTitle": "Si tu claviero non offere tu lingua de destination, installa Gboard e adde le lingua ibi:",
     "resendInSeconds": "Re-inviar ({seconds})",
+    "mapLevelFallbackNotice": "Ancora nulle activitates de {selected} — monstrante {shown} in su loco.",
     "openKeyboardSettings": "Aperi le Preferentias del Claviero",
     "keyboardPromptAddKeyboardMessage": "Adde un claviero pro tu lingua de scopo a fin que le autocorrection functiona.",
     "keyboardPromptAddKeyboardAction": "Adder Claviero",

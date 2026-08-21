@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-20 15:18:56.556653",
+    "@@last_modified": "2026-08-21 09:39:42.421440",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2152,6 +2152,7 @@
     "autocorrectAndroidDialogBody": "Xa uchwetheza kwincoko, ikhibhodi yakho iya kutshintshela kulwimi olufundayo kwaye ilungise upelo ngolwimi olo.",
     "autocorrectAndroidFallbackTitle": "Ukuba ikhibhodi yakho ayiluniki ulwimi olufundayo, faka iGboard kwaye ulongeze ulwimi apho:",
     "resendInSeconds": "Phinda uthumele ({seconds})",
+    "mapLevelFallbackNotice": "Akukho misebenzi ye-{selected} okwangoku — endaweni yoko kuboniswa i-{shown}.",
     "openKeyboardSettings": "Vula Useto Lwebhodi yezitshixo",
     "keyboardPromptAddKeyboardMessage": "Yongeza ikhibhodi yolwimi ekujoliswe kulo ukuze kusebenze ukulungisa okuzenzekelayo.",
     "keyboardPromptAddKeyboardAction": "Yongeza iKhibhodi",

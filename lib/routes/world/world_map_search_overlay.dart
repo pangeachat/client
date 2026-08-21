@@ -7,6 +7,7 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 import 'package:fluffychat/routes/world/world_map_empty_view_card.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_filter_bar.dart';
+import 'package:fluffychat/routes/world/world_map_level_fallback_notice.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
@@ -192,6 +193,14 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                   canZoomOut: widget.canZoomOut,
                   onWidenSearch: widget.onWidenSearch,
                   onZoomOut: widget.onZoomOut,
+                ),
+              ] else if (widget.filter.cefrFallback != null) ...[
+                // Only once the map has something on it: an empty view is the
+                // more urgent message and owns the slot when both apply.
+                const SizedBox(height: 8),
+                WorldMapLevelFallbackNotice(
+                  selected: widget.filter.cefrLevel,
+                  fallback: widget.filter.cefrFallback,
                 ),
               ],
             ],

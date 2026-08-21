@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 15:18:52.440745",
+    "@@last_modified": "2026-08-21 09:39:40.042910",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9748,6 +9748,7 @@
     "autocorrectAndroidDialogBody": "Ao digitar em um chat, seu teclado mudará para o idioma de destino e corrigirá a ortografia nesse idioma.",
     "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o idioma de destino, instale o Gboard e adicione o idioma lá:",
     "resendInSeconds": "Reenviar ({seconds})",
+    "mapLevelFallbackNotice": "Nenhuma atividade de {selected} ainda — mostrando {shown} em vez disso.",
     "openKeyboardSettings": "Abrir configurações do teclado",
     "keyboardPromptAddKeyboardMessage": "Adicione um teclado para o seu idioma de destino para que a correção automática funcione.",
     "keyboardPromptAddKeyboardAction": "Adicionar Teclado",

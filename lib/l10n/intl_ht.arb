@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-20 15:18:47.533971",
+    "@@last_modified": "2026-08-21 09:39:35.396736",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2152,6 +2152,7 @@
     "autocorrectAndroidDialogBody": "Lè w ap tape nan yon chat, klavye w ap chanje nan lang sib ou a epi l ap korije òtograf nan lang sa a.",
     "autocorrectAndroidFallbackTitle": "Si klavye w la pa ofri lang sib ou a, enstale Gboard epi ajoute lang nan la:",
     "resendInSeconds": "Voye ankò ({seconds})",
+    "mapLevelFallbackNotice": "Pa gen aktivite {selected} ankò — n ap montre {shown} pito.",
     "openKeyboardSettings": "Louvri Anviwònman Klavye",
     "keyboardPromptAddKeyboardMessage": "Ajoute yon klavye pou lang sib ou pou koreksyon otomatik la mache.",
     "keyboardPromptAddKeyboardAction": "Ajoute Klavye",

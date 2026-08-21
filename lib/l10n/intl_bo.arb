@@ -2920,7 +2920,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-20 15:18:44.235296",
+    "@@last_modified": "2026-08-21 09:39:33.259545",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9359,6 +9359,7 @@
     "autocorrectAndroidDialogBody": "ཁྱེད་ཀྱིས་ཁ་བརྡ་ནང་ཡིག་འབྲི་སྐབས། ཁྱེད་ཀྱི་ལྕགས་པར་དམིགས་ཡུལ་སྐད་ཡིག་ལ་བསྒྱུར་ནས་སྐད་ཡིག་དེ་ནང་ཡིག་ནོར་བཅོས་བསྒྱུར་བྱེད་ངེས་རེད།",
     "autocorrectAndroidFallbackTitle": "གལ་ཏེ་ཁྱེད་ཀྱི་ལྕགས་པར་གྱིས་ཁྱེད་ཀྱི་དམིགས་ཡུལ་སྐད་ཡིག་མི་འདོན་ན། Gboard སྒྲིག་འཇུག་བྱས་ནས་སྐད་ཡིག་དེ་ནང་འདིར་ཁ་སྣོན་བྱེད་རོགས།",
     "resendInSeconds": "བསྐྱར་དུ་གཏོང་ ({seconds})",
+    "mapLevelFallbackNotice": "ད་ལྟ་ {selected} བྱེད་སྒོ་མི་འདུག དེའི་ཚབ་ཏུ་ {shown} བསྟན་ཡོད།",
     "openKeyboardSettings": "མཐེབ་གཞོང་སྒྲིག་སྟངས་ཁ་ཕྱེ།",
     "keyboardPromptAddKeyboardMessage": "རང་གི་དམིགས་ཡུལ་སྐད་ཡིག་ལ་མཐེབ་གཞོང་ཞིག་སྣོན་པ་དང་། དེ་ལྟར་བྱས་ན་རང་འགུལ་ཡོ་བསྲང་གིས་ལས་ཀ་བྱེད་ཐུབ།",
     "keyboardPromptAddKeyboardAction": "མཐེབ་གཞོང་སྣོན་པ།",

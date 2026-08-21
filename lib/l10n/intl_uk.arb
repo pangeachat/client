@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-20 15:18:54.964410",
+    "@@last_modified": "2026-08-21 09:39:41.668067",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9748,6 +9748,7 @@
     "autocorrectAndroidDialogBody": "Коли ви друкуєте в чаті, клавіатура перемикається на цільову мову та виправляє орфографію цією мовою.",
     "autocorrectAndroidFallbackTitle": "Якщо ваша клавіатура не пропонує цільову мову, встановіть Gboard і додайте мову там:",
     "resendInSeconds": "Надіслати повторно через ({seconds})",
+    "mapLevelFallbackNotice": "Ще немає занять {selected} — замість них показано {shown}.",
     "openKeyboardSettings": "Відкрити налаштування клавіатури",
     "keyboardPromptAddKeyboardMessage": "Додайте клавіатуру для цільової мови, щоб працював автовиправлення.",
     "keyboardPromptAddKeyboardAction": "Додати клавіатуру",

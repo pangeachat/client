@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-20 15:18:49.091638",
+    "@@last_modified": "2026-08-21 09:39:36.813438",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2152,6 +2152,7 @@
     "autocorrectAndroidDialogBody": "នៅពេលអ្នកវាយបញ្ចូលក្នុងការជជែក ក្ដារចុចរបស់អ្នកនឹងប្ដូរទៅជាភាសាគោលដៅរបស់អ្នក ហើយកែអក្ខរាវិរុទ្ធជាភាសានោះ។",
     "autocorrectAndroidFallbackTitle": "ប្រសិនបើក្ដារចុចរបស់អ្នកមិនផ្ដល់ភាសាគោលដៅរបស់អ្នកទេ សូមដំឡើង Gboard ហើយបន្ថែមភាសានៅទីនោះ៖",
     "resendInSeconds": "ផ្ញើ​ម្ដង​ទៀត ({seconds})",
+    "mapLevelFallbackNotice": "មិនទាន់មានសកម្មភាព {selected} នៅឡើយទេ — បង្ហាញ {shown} ជំនួសវិញ។",
     "openKeyboardSettings": "បើកការកំណត់ក្ដារចុច",
     "keyboardPromptAddKeyboardMessage": "បន្ថែម​ក្ដារចុច​សម្រាប់​ភាសា​គោលដៅ​របស់​អ្នក ដើម្បី​ឲ្យ​ការ​កែ​ដោយ​ស្វ័យប្រវត្តិ​ដំណើរការ។",
     "keyboardPromptAddKeyboardAction": "បន្ថែម​ក្ដារចុច",

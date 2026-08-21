@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-20 15:18:52.486629",
+    "@@last_modified": "2026-08-21 09:39:39.956875",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9833,6 +9833,7 @@
     "autocorrectAndroidDialogBody": "Gdy piszesz na czacie, klawiatura przełączy się na język docelowy i poprawi pisownię w tym języku.",
     "autocorrectAndroidFallbackTitle": "Jeśli Twoja klawiatura nie oferuje języka docelowego, zainstaluj Gboard i dodaj tam język:",
     "resendInSeconds": "Wyślij ponownie ({seconds})",
+    "mapLevelFallbackNotice": "Brak aktywności {selected} — zamiast tego pokazano {shown}.",
     "openKeyboardSettings": "Otwórz ustawienia klawiatury",
     "keyboardPromptAddKeyboardMessage": "Dodaj klawiaturę dla języka docelowego, aby autokorekta działała.",
     "keyboardPromptAddKeyboardAction": "Dodaj klawiaturę",

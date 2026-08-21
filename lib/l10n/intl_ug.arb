@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-20 15:18:55.834736",
+    "@@last_modified": "2026-08-21 09:39:41.841538",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2152,6 +2152,7 @@
     "autocorrectAndroidDialogBody": "پارىڭىڭىزغا يازغاندا، كۇنۇپكا تاختىڭىز نىشان تىلىڭىزغا ئالماشتۇرۇلىدۇ ھەمدە شۇ تىلدىكى ئىملا خاتالىقىنى تۈزىتىدۇ.",
     "autocorrectAndroidFallbackTitle": "ئەگەر كۇنۇپكا تاختىڭىز نىشان تىلىڭىزنى تەمىنلىمىسە، Gboard نى قاچىلاپ، شۇ يەرگە تىل قوشۇڭ:",
     "resendInSeconds": "قايتا ئەۋەتىش ({seconds})",
+    "mapLevelFallbackNotice": "تېخى {selected} پائالىيەت يوق — ئەكسىچە {shown} كۆرسىتىلدى.",
     "openKeyboardSettings": "كۇنۇپكا تاختىسى تەڭشەكلىرىنى ئېچىڭ",
     "keyboardPromptAddKeyboardMessage": "ئاپتوماتىك تۈزىتىش ئىقتىدارىنى ئىشلىتىش ئۈچۈن نىشان تىلىڭىزنىڭ كۇنۇپكا تاختىسىنى قوشۇڭ.",
     "keyboardPromptAddKeyboardAction": "كۇنۇپكا تاختىسى قوشۇش",

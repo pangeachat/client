@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-20 15:18:48.421441",
+    "@@last_modified": "2026-08-21 09:39:35.978385",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2152,6 +2152,7 @@
     "autocorrectAndroidDialogBody": "Þegar þú skrifar í spjalli mun lyklaborðið þitt skipta yfir í markmálið þitt og leiðrétta stafsetningu á því máli.",
     "autocorrectAndroidFallbackTitle": "Ef lyklaborðið þitt býður ekki upp á markmálið þitt skaltu setja upp Gboard og bæta málinu við þar:",
     "resendInSeconds": "Senda aftur ({seconds})",
+    "mapLevelFallbackNotice": "Engin {selected} virkni ennþá — sýni {shown} í staðinn.",
     "openKeyboardSettings": "Opna lyklaborðsstillingar",
     "keyboardPromptAddKeyboardMessage": "Bættu við lyklaborði fyrir tungumálið sem þú ert að læra svo sjálfvirk leiðrétting virki.",
     "keyboardPromptAddKeyboardAction": "Bæta við lyklaborði",

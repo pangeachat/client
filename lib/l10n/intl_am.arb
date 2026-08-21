@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-20 15:18:43.759224",
+    "@@last_modified": "2026-08-21 09:39:32.886286",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2152,6 +2152,7 @@
     "autocorrectAndroidDialogBody": "በውይይት ውስጥ ሲተይቡ፣ የቁልፍ ሰሌዳዎ ወደ ዒላማ ቋንቋዎ ይቀየራል እና በዚያ ቋንቋ የፊደል አጻጻፍን ያርማል።",
     "autocorrectAndroidFallbackTitle": "የቁልፍ ሰሌዳዎ ዒላማ ቋንቋዎን የማያቀርብ ከሆነ፣ Gboardን ይጫኑ እና ቋንቋውን እዚያ ያክሉ፦",
     "resendInSeconds": "እንደገና ላክ ({seconds})",
+    "mapLevelFallbackNotice": "እስካሁን ምንም {selected} እንቅስቃሴዎች የሉም — በምትኩ {shown} ይታያል።",
     "openKeyboardSettings": "የቁልፍ ሰሌዳ ቅንብሮችን ክፈት",
     "keyboardPromptAddKeyboardMessage": "ራስ-አስተካካዩ እንዲሰራ ለምትማሩት ቋንቋ የቁልፍ ሰሌዳ ያክሉ።",
     "keyboardPromptAddKeyboardAction": "የቁልፍ ሰሌዳ ያክሉ",

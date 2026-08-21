@@ -95,6 +95,14 @@ enum LanguageLevelTypeEnum {
     }
   }
 
+  /// The compact CEFR code used wherever the level is shown as a chip or in a
+  /// short sentence — the map's Level pill and its fallback notice. `PREA1`
+  /// reads as `Pre-A1`; every other level is its own code. The dropdown
+  /// entries use the fuller ACTFL+CEFR [title] instead (e.g. "Novice Mid
+  /// (A1)").
+  String get shortLabel =>
+      this == LanguageLevelTypeEnum.preA1 ? 'Pre-A1' : string;
+
   String title(BuildContext context) {
     final L10n copy = L10n.of(context);
     switch (this) {
@@ -133,6 +141,29 @@ enum LanguageLevelTypeEnum {
       case LanguageLevelTypeEnum.c2:
         return copy.languageLevelC2Desc;
     }
+  }
+
+  /// The level in [available] closest to [target] — the map's fallback when the
+  /// learner picks a level no activity carries. Returns null when [available]
+  /// is empty (nothing to fall back to) or already contains [target] (no
+  /// fallback needed). Ties resolve **downward**: with content one level above
+  /// and one below, the easier one is the safer thing to hand a learner who
+  /// asked for something below both.
+  static LanguageLevelTypeEnum? nearestTo(
+    LanguageLevelTypeEnum target,
+    Set<LanguageLevelTypeEnum> available,
+  ) {
+    if (available.isEmpty || available.contains(target)) return null;
+    final sorted = available.toList()
+      ..sort((a, b) {
+        final byDistance = (a.storageInt - target.storageInt).abs().compareTo(
+          (b.storageInt - target.storageInt).abs(),
+        );
+        return byDistance != 0
+            ? byDistance
+            : a.storageInt.compareTo(b.storageInt);
+      });
+    return sorted.first;
   }
 
   static Set<LanguageLevelTypeEnum> bandAtOrBelow(
