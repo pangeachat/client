@@ -707,15 +707,19 @@ class AnalyticsDataService {
         );
       } else {
         await MatrixState.pangeaController.userController.addXPOffset(offset);
-        await updateXPOffset(
-          MatrixState
-              .pangeaController
-              .userController
-              .publicProfile!
-              .analytics
-              .xpOffset!,
-          language,
-        );
+        // Mirrors whatever the public profile ended up holding. Null when the
+        // offset was not applied there — nothing loaded yet, or a profile
+        // belonging to another account (#8531) — and the local copy must then
+        // stay put too, rather than drifting away from the published one.
+        final xpOffset = MatrixState
+            .pangeaController
+            .userController
+            .publicProfile
+            ?.analytics
+            .xpOffset;
+        if (xpOffset != null) {
+          await updateXPOffset(xpOffset, language);
+        }
       }
     }
 

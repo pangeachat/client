@@ -125,8 +125,10 @@ void main() {
       ).toJson(),
     );
     final controller = PangeaController(matrixState: _FakeMatrixState(client));
-    controller.userController.publicProfile = PublicProfileModel(
-      analytics: AnalyticsProfileModel(languageAnalytics: languageAnalytics),
+    controller.userController.setPublicProfile(
+      PublicProfileModel(
+        analytics: AnalyticsProfileModel(languageAnalytics: languageAnalytics),
+      ),
     );
     MatrixState.pangeaController = controller;
   }
