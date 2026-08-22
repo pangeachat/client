@@ -1341,6 +1341,49 @@ void main() {
       expect(service.callHoldByAnother(room, r'$ours'), CallHold.over);
     });
 
+    // The person who CALLED us was already in the call while our phone rang,
+    // so their membership is older than our answer. A floor set at our own
+    // join threw it away and read the caller -- sitting in the call, waiting
+    // -- as nobody, which withdrew the Return offer the instant it appeared
+    // and cleared the breadcrumb with it.
+    test('the caller, who joined before we answered, still counts', () async {
+      final weJoined = DateTime.now().subtract(const Duration(minutes: 1));
+      final theyJoined = weJoined.subtract(const Duration(seconds: 12));
+      final (service, room) = await withState([
+        MatrixEvent(
+          type: EventTypes.GroupCallMember,
+          content: {
+            'memberships': [
+              {
+                'call_id': 'x',
+                'expires_ts': DateTime.now()
+                    .add(const Duration(hours: 1))
+                    .millisecondsSinceEpoch,
+              },
+            ],
+          },
+          senderId: '@friend:fakeServer.notExisting',
+          eventId: r'$theirs',
+          originServerTs: theyJoined,
+          stateKey: 'DEV_@friend:fakeServer.notExisting',
+        ),
+      ]);
+      expect(
+        service.callHoldByAnother(room, r'$ours', notBefore: weJoined),
+        CallHold.over,
+        reason: 'a floor at our own join is what caused the bug',
+      );
+      expect(
+        service.callHoldByAnother(
+          room,
+          r'$ours',
+          notBefore: CallService.callFloorFrom(weJoined),
+        ),
+        CallHold.held,
+        reason: 'one ring lifetime earlier admits the caller',
+      );
+    });
+
     test('their live membership is the call still being held', () async {
       final (service, room) = await withState([
         MatrixEvent(

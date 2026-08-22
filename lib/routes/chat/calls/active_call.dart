@@ -560,7 +560,7 @@ class ActiveCall extends ChangeNotifier {
     if (cached != null) return cached;
     final written = calls.membershipWrittenAt(room, anchor);
     if (written == null) return null;
-    return _stateFloorAt = written.subtract(CallNotification.lifetime);
+    return _stateFloorAt = CallService.callFloorFrom(written);
   }
 
   DateTime? _stateFloorAt;
@@ -1231,10 +1231,27 @@ class ActiveCall extends ChangeNotifier {
       final String? membershipId;
       if (rejoinAnchor != null) {
         // The call already has an identity: the membership this account wrote
-        // when it first joined, still live in the room's state -- it is what
-        // offered the rejoin. Re-announcing would mint a new anchor for a call
-        // that already has one, and every surface keyed on it would split.
-        membershipId = _membershipEventId = rejoinAnchor;
+        // when it first joined -- it is what offered the rejoin. Re-announcing
+        // over a LIVE one would mint a new anchor for a call that already has
+        // one, and every surface keyed on it would split.
+        //
+        // Unless that membership is no longer standing. A device that crashed
+        // leaves the SERVER to retract it, and once that delayed leave fires
+        // there is nothing of ours in the room's state at all: we would rejoin
+        // the SFU publishing no membership, and the other side -- which now
+        // reads an empty list as a departure, correctly -- would sit out its
+        // grace and hang up on somebody who was right there. So the anchor is
+        // reused only while it is real, and otherwise we announce ourselves
+        // again. Nothing splits in that case: a session that died without
+        // retracting never wrote a card to split from.
+        final anchorStands = calls.membershipEventIsCurrent(
+          room,
+          calls.client.userID ?? '',
+          rejoinAnchor,
+        );
+        membershipId = _membershipEventId = anchorStands
+            ? rejoinAnchor
+            : await calls.announce();
         // The call's clock continues from when this device first joined it,
         // not from this moment: a rejoin is the same call, and restarting at
         // zero made the two sides disagree about how long they had been

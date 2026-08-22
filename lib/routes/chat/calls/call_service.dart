@@ -902,6 +902,19 @@ class CallService {
       callHoldByAnother(room, ownMembershipEventId, notBefore: notBefore) !=
       CallHold.over;
 
+  /// The earliest a membership can have been written and still belong to the
+  /// call this device joined at [ourJoin].
+  ///
+  /// One ring lifetime earlier, because the person who CALLED us was already
+  /// in the call while our phone was ringing -- their membership is older than
+  /// our answer by however long we took to pick up, and a floor set at our own
+  /// join throws it away. That is not hypothetical: it read the caller, who
+  /// was sitting in the call waiting, as nobody, and withdrew the Return offer
+  /// the moment it appeared. A ring cannot outlive its lifetime, so nothing
+  /// older than that can belong to the call it invited us to.
+  static DateTime? callFloorFrom(DateTime? ourJoin) =>
+      ourJoin?.subtract(CallNotification.lifetime);
+
   /// Whether anybody ELSE is still holding the call our membership belongs to.
   ///
   /// Three answers, for the third time in this file and for the same reason:

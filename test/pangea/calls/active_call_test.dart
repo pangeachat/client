@@ -32,6 +32,18 @@ class FakeCalls extends CallService {
   /// list can lag that by its whole retention window.
   bool peerMembershipPresent = true;
 
+  /// Whether the membership a rejoin was offered against is still standing.
+  /// False is the crashed-device case, where the server's delayed leave has
+  /// already emptied it.
+  bool anchorStillCurrent = true;
+
+  @override
+  bool membershipEventIsCurrent(
+    matrix.Room room,
+    String userId,
+    String eventId,
+  ) => anchorStillCurrent;
+
   /// Set when a test needs the third answer: state that has not synced yet,
   /// which is neither presence nor departure.
   PeerPresence? peerPresenceOverride;
@@ -1727,6 +1739,36 @@ void main() {
       expect(call.placedCall, isFalse);
       expect(trace.steps, isNot(contains('ring')));
       expect(trace.steps, isNot(contains('announce')));
+    });
+
+    // The crashed-device case. Our membership was not retracted by us -- the
+    // SERVER did it, when the delayed leave it was holding ran out -- so the
+    // anchor the breadcrumb points at is gone. Rejoining on it published
+    // nothing, and the other side, which reads an empty list as a departure,
+    // sat out its grace and hung up on somebody who was right there.
+    test('a rejoin whose membership the server already retracted announces '
+        'itself again', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      calls.anchorStillCurrent = false;
+
+      await call.start(
+        roomStub(calls.client),
+        video: false,
+        rejoinAnchor: r'$original-membership',
+        rejoinSince: DateTime.now().subtract(const Duration(minutes: 2)),
+      );
+
+      expect(trace.steps, contains('announce'));
+      expect(trace.steps, isNot(contains('ring')), reason: 'still a rejoin');
+      expect(
+        call.callStartedAt!.isBefore(
+          DateTime.now().subtract(const Duration(seconds: 90)),
+        ),
+        isTrue,
+        reason: 'the clock still continues the call it returned to',
+      );
     });
 
     test('a peer who never comes back means a quiet leave', () async {

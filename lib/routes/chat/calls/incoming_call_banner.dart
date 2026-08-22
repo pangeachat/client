@@ -282,7 +282,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     if (service.callHoldByAnother(
           offer.room,
           offer.membershipEventId,
-          notBefore: offer.since,
+          notBefore: CallService.callFloorFrom(offer.since),
         ) !=
         CallHold.over) {
       return;
@@ -380,7 +380,16 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
                 against.membershipEventId,
               ) ??
               against.since;
-    if (since != null && !ring.sentAt.isAfter(since)) return false;
+    // ORDERED by the server's stamp, not the sender's. `sentAt` prefers the
+    // caller's own clock while it is within the skew allowance, which is
+    // right for deciding when a ring EXPIRES -- the lifetime is the sender's
+    // promise -- and wrong for putting a ring in sequence against a
+    // membership the server stamped. A caller ten seconds slow could
+    // otherwise have a genuinely new ring read as older than the call it was
+    // interrupting, leaving a dead Return offer up and the new call silent.
+    if (since != null && !ring.event.originServerTs.isAfter(since)) {
+      return false;
+    }
     final named = ring.membershipEventId;
     if (named == null) return false;
     return _service?.membershipEventIsCurrent(
@@ -463,8 +472,19 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     if (service == null) return;
     final room = ring.event.room;
     final sentAt = ring.sentAt;
-    // Not checked immediately: nothing written after this ring can exist yet,
-    // and asking now only invites a stale answer.
+    // Checked NOW as well as on every change. The reasoning for not checking
+    // immediately held only for a LIVE ring, where nothing written after it
+    // can exist yet -- but a ring recovered from the timeline at startup can
+    // be minutes old, and the other device may have answered it long before
+    // this one came back. Without the immediate look, no new event ever
+    // fires and the replayed prompt goes on offering to answer a call that
+    // was answered elsewhere. The check is harmless on a live ring: it looks
+    // for a membership written AFTER the ring, and there is none.
+    if (service.answeredOnAnotherDevice(room, sentAt)) {
+      matrix.Logs().i('Already answered on another device; not ringing here');
+      _dismiss();
+      return;
+    }
     _siblingAnswered = service.ownPresenceChanges(room).listen((_) {
       if (!mounted || _ringing?.event.eventId != ring.event.eventId) return;
       if (!service.answeredOnAnotherDevice(room, sentAt)) return;
