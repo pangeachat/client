@@ -467,18 +467,26 @@ class ActiveCall extends ChangeNotifier {
   /// late retraction is not a decision anyone made. The window separates the
   /// two without either side needing a new message.
   ///
-  /// Ten seconds, and the number is derived rather than guessed. The SDK asks
-  /// the homeserver to apply the delayed leave 18s after the last restart, and
-  /// restarts it every 4s, so the EARLIEST a server-written retraction can
-  /// appear is about 14s after a device stopped heartbeating. Anything under
-  /// that cannot be the server's. The old four seconds was measured from when
-  /// WE received the retraction rather than when it was written, so a sync
-  /// that took five seconds to deliver a hangup turned it back into a vanish
-  /// -- the fake "reconnecting" again, this time caused by the network rather
-  /// than the code. Ten leaves room for slow delivery and still cannot reach
-  /// the server's own retraction, and it stays well inside [peerGraceWindow]
-  /// so a genuine vanish is unaffected.
-  static const endedDeliberatelyWithin = Duration(seconds: 10);
+  /// Thirteen seconds, and the number is derived rather than guessed. The SDK
+  /// asks the homeserver to apply the delayed leave 18s after the last
+  /// restart, and restarts it every 4s, so the EARLIEST a server-written
+  /// retraction can appear is about 14s after a device stopped heartbeating.
+  /// Anything sooner cannot be the server's, so thirteen is as much room for
+  /// slow delivery as can be taken without ever mistaking the server's
+  /// cleanup for a decision -- and it stays inside [peerGraceWindow], so a
+  /// genuine vanish is unaffected.
+  ///
+  /// The original four seconds was chosen for how quickly a hangup normally
+  /// arrives, not for what it had to be distinguished FROM, and any sync
+  /// slower than that turned a hangup back into a vanish -- the fake
+  /// "reconnecting" again, caused by the network this time rather than by
+  /// the code.
+  /// The residual, stated plainly: this is measured from when WE saw them
+  /// leave the SFU, because nothing local can tell a retraction written at
+  /// their departure and delivered late from one written late and delivered
+  /// at once. A sync slower than this degrades to the ordinary grace, which
+  /// is the behaviour we had before and costs at most seven more seconds.
+  static const endedDeliberatelyWithin = Duration(seconds: 13);
 
   /// When the peer was first seen to be gone, or null while they are here.
   DateTime? _peerLeftAt;

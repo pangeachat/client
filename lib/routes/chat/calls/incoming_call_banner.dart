@@ -373,13 +373,21 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // return to it was thrown away. Our membership event's `origin_server_ts`
     // says the same thing as the crumb in the ring's domain, and the crumb is
     // the fallback for an offer whose event has aged out of state.
+    // Server time or nothing. The crumb's own timestamp is this device's
+    // clock, and ordering it against a server-stamped ring compares two
+    // different clocks -- a device two minutes fast then read a genuinely new
+    // ring as older than the call it was interrupting, so the new call never
+    // rang and a dead offer stayed up. When our membership has aged out of
+    // state there is no server-domain anchor to order against, and there is
+    // also nothing left to protect: an offer whose own membership is gone
+    // cannot outrank a live ring, so the ring wins.
     final since = against == null
         ? null
         : _service?.membershipWrittenAt(
-                against.room,
-                against.membershipEventId,
-              ) ??
-              against.since;
+            against.room,
+            against.membershipEventId,
+          );
+    if (against != null && since == null) return true;
     // ORDERED by the server's stamp, not the sender's. `sentAt` prefers the
     // caller's own clock while it is within the skew allowance, which is
     // right for deciding when a ring EXPIRES -- the lifetime is the sender's
