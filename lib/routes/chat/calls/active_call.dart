@@ -463,10 +463,22 @@ class ActiveCall extends ChangeNotifier {
   ///
   /// A deliberate hangup retracts as it leaves, so the two arrive together. A
   /// device that merely vanished retracts nothing -- the SERVER eventually
-  /// does it for them, seconds later, when their heartbeat stops, and that
+  /// does it for them, when the delayed leave it registered runs out, and that
   /// late retraction is not a decision anyone made. The window separates the
   /// two without either side needing a new message.
-  static const endedDeliberatelyWithin = Duration(seconds: 4);
+  ///
+  /// Ten seconds, and the number is derived rather than guessed. The SDK asks
+  /// the homeserver to apply the delayed leave 18s after the last restart, and
+  /// restarts it every 4s, so the EARLIEST a server-written retraction can
+  /// appear is about 14s after a device stopped heartbeating. Anything under
+  /// that cannot be the server's. The old four seconds was measured from when
+  /// WE received the retraction rather than when it was written, so a sync
+  /// that took five seconds to deliver a hangup turned it back into a vanish
+  /// -- the fake "reconnecting" again, this time caused by the network rather
+  /// than the code. Ten leaves room for slow delivery and still cannot reach
+  /// the server's own retraction, and it stays well inside [peerGraceWindow]
+  /// so a genuine vanish is unaffected.
+  static const endedDeliberatelyWithin = Duration(seconds: 10);
 
   /// When the peer was first seen to be gone, or null while they are here.
   DateTime? _peerLeftAt;

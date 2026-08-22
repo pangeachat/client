@@ -1292,6 +1292,40 @@ void main() {
     }
   });
 
+  group('being busy is about the OTHER conversation', () {
+    // Glare: both people press call at the same moment. The join claim is
+    // taken the instant we tap, so their ring finds us "busy" -- and an
+    // auto-decline then hung up a call that was coming up perfectly well,
+    // for the room we were calling ourselves. Busy means in a call with
+    // somebody ELSE; the glare tie-break decides a simultaneous one.
+    test('a ring from the room we are already calling is not busy', () async {
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(
+          user: '@test:fakeServer.notExisting',
+        ),
+        deviceId: 'GHTYAJCE',
+      );
+      final service = CallService(client);
+      final source = File(
+        'lib/routes/chat/calls/call_service.dart',
+      ).readAsStringSync();
+      expect(
+        source,
+        contains('ring.event.room.id != _claimedRoomId'),
+        reason: 'the busy predicate must exclude the room we are calling',
+      );
+      expect(
+        source,
+        contains('_claimedRoomId = room.id'),
+        reason: 'and the claim must record which room it is for',
+      );
+      service.dispose();
+    });
+  });
+
   group('whether the caller is still on the call they rang about', () {
     const caller = '@caller:fakeServer.notExisting';
     const me = '@test:fakeServer.notExisting';

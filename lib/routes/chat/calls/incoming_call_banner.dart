@@ -251,25 +251,39 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
   void _watchOffer(RejoinOffer offer) {
     _offerWatch?.cancel();
+    // Checked once NOW, not only on the first tick five seconds from here. An
+    // offer raised from a breadcrumb at startup is a guess about a call that
+    // may already be over, and for those five seconds Return was a live
+    // button into an empty room.
+    _withdrawIfOver(offer);
+    if (_rejoin == null) return;
     _offerWatch = Timer.periodic(const Duration(seconds: 5), (_) {
       if (!mounted || _rejoin == null) {
         _offerWatch?.cancel();
         _offerWatch = null;
         return;
       }
-      final service = _service;
-      if (service == null) return;
-      if (service.callStillHeldByAnother(
-        offer.room,
-        offer.membershipEventId,
-        notBefore: offer.since,
-      )) {
-        return;
-      }
-      matrix.Logs().i('The call to return to is over; withdrawing the offer');
-      unawaited(CallBreadcrumb.clear());
-      _clearOffer();
+      _withdrawIfOver(offer);
     });
+  }
+
+  /// Takes the offer down if nobody is holding the call any more.
+  ///
+  /// Level triggered: the room's own state answers it, and the crumb goes
+  /// with the offer so a later reload cannot raise the same dead call again.
+  void _withdrawIfOver(RejoinOffer offer) {
+    final service = _service;
+    if (service == null) return;
+    if (service.callStillHeldByAnother(
+      offer.room,
+      offer.membershipEventId,
+      notBefore: offer.since,
+    )) {
+      return;
+    }
+    matrix.Logs().i('The call to return to is over; withdrawing the offer');
+    unawaited(CallBreadcrumb.clear());
+    _clearOffer();
   }
 
   /// Declining the way back: the call ENDS.
@@ -345,7 +359,21 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// own past (it rang, we answered, we died), and only one sent after is a
   /// genuine new call.
   bool _ringIsLive(IncomingCallNotification ring, RejoinOffer? against) {
-    final since = against?.since;
+    // Compared in ONE clock domain. `ring.sentAt` is the sender's, snapped to
+    // the server's when the two disagree; the breadcrumb's `since` is this
+    // device's own. Comparing them directly made the answer depend on how far
+    // this device's clock had drifted -- ten seconds slow was enough to read
+    // the call's OWN original ring as newer than the call, so the offer to
+    // return to it was thrown away. Our membership event's `origin_server_ts`
+    // says the same thing as the crumb in the ring's domain, and the crumb is
+    // the fallback for an offer whose event has aged out of state.
+    final since = against == null
+        ? null
+        : _service?.membershipWrittenAt(
+                against.room,
+                against.membershipEventId,
+              ) ??
+              against.since;
     if (since != null && !ring.sentAt.isAfter(since)) return false;
     final named = ring.membershipEventId;
     if (named == null) return false;

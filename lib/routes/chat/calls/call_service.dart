@@ -62,6 +62,16 @@ class CallService {
   /// nothing holds a handle to.
   bool _joining = false;
 
+  /// The room this account's one call claim is FOR.
+  ///
+  /// Busy means "in a call with somebody else". A ring from the room we are
+  /// already calling is not somebody else -- it is the same conversation,
+  /// arriving as glare when both people press call at the same moment -- and
+  /// auto-declining it as busy hung up a call that was coming up perfectly
+  /// well. Kept alongside the claim rather than derived, because it has to be
+  /// answerable while the join is still in flight.
+  String? _claimedRoomId;
+
   /// The in-flight retract, so concurrent callers await one attempt.
   Future<bool>? _retracting;
 
@@ -172,6 +182,7 @@ class CallService {
       throw const AlreadyInACall();
     }
     _joining = true;
+    _claimedRoomId = room.id;
     final attempt = ++_joinAttempt;
     // Before anything is fetched. A leave still in flight from the last call
     // holds this room's session, and starting over the top of it means the new
@@ -610,6 +621,9 @@ class CallService {
       // next person reading this log after the wrong thing.
       final onlyBusy =
           ring.alreadyJoined &&
+          // Not for the room we are already calling: that ring is the other
+          // half of a simultaneous call, and the glare tie-break decides it.
+          ring.event.room.id != _claimedRoomId &&
           ring.isCall &&
           ring.isRing &&
           ring.event.senderId != client.userID &&
@@ -1465,7 +1479,10 @@ class CallService {
       // Released only when the membership was actually taken back. Keeping a
       // session whose leave failed is what gives a later attempt something to
       // retry WITH; a new call is not blocked by it, because join discards it.
-      if (!_abandonedMembership) _current = null;
+      if (!_abandonedMembership) {
+        _current = null;
+        _claimedRoomId = null;
+      }
       _retracting = null;
     }
   }();
