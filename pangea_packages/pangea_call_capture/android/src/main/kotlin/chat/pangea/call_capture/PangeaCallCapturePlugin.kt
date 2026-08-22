@@ -42,6 +42,17 @@ class PangeaCallCapturePlugin :
   private var eventChannel: EventChannel? = null
   private var events: EventChannel.EventSink? = null
 
+  /**
+   * Batches that arrived before the Dart listener was installed.
+   *
+   * The Dart side subscribes only once it owns the attach — the order that
+   * makes a stale, overtaken subscription impossible — which leaves a gap
+   * between the first batch and the sink arriving. The opening of the call
+   * lands here instead of being dropped, and [onListen] hands it over in
+   * order. Main-thread only, like everything else that touches [events].
+   */
+  private val pendingForListener = ArrayDeque<Pair<ByteArray, Int>>()
+
   private val handler = Handler(Looper.getMainLooper())
   private val frames = PostEchoCancellationFrames(::deliver)
 
@@ -99,10 +110,19 @@ class PangeaCallCapturePlugin :
 
   override fun onListen(arguments: Any?, sink: EventChannel.EventSink?) {
     events = sink
+    if (sink == null) return
+    while (pendingForListener.isNotEmpty()) {
+      val (pcm, rate) = pendingForListener.removeFirst()
+      sink.success(mapOf("pcm" to pcm, "sampleRate" to rate))
+      frames.handedOn(pcm)
+    }
   }
 
   override fun onCancel(arguments: Any?) {
     events = null
+    // Whatever nobody came for must not open the next recording as though the
+    // learner had just said it.
+    pendingForListener.clear()
   }
 
   /**
@@ -204,7 +224,15 @@ class PangeaCallCapturePlugin :
    */
   private fun deliver(pcm: ByteArray, sampleRateHz: Int) {
     handler.post {
-      events?.success(mapOf("pcm" to pcm, "sampleRate" to sampleRateHz))
+      val sink = events
+      if (sink == null) {
+        // Held for the listener that is on its way, not dropped: the buffer is
+        // NOT handed back while it waits, so the spare set's own bound caps
+        // how much can ever sit here.
+        pendingForListener.addLast(pcm to sampleRateHz)
+        return@post
+      }
+      sink.success(mapOf("pcm" to pcm, "sampleRate" to sampleRateHz))
       // Returned only once it has actually gone. The channel copies the bytes as
       // it sends them, so the buffer is free to be filled again from here.
       frames.handedOn(pcm)

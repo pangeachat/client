@@ -90,17 +90,31 @@ class PangeaCallCapture {
           onError: _shared.addError,
         );
         return null;
-      });
+      })
+          // Absorbed so the chain stays alive. Every listen and cancel queues
+          // on this one future; left failed, it would fail every one of them
+          // for the rest of the app's life, and no call would record again.
+          .catchError(_settlingFailed);
     },
     onCancel: () async {
       _settling = _settling.then((_) {
         final sub = _platformSub;
         _platformSub = null;
         return sub?.cancel();
-      });
+      }).catchError(_settlingFailed);
       await _settling;
     },
   );
 
   Stream<CallAudioFrame> get frames => _shared.stream;
+
+  /// One failed platform listen or cancel is that operation lost, and it is
+  /// logged by the caller that notices the silence; it must never be every
+  /// FUTURE operation lost too.
+  static Null _settlingFailed(Object error, StackTrace stack) {
+    // Deliberately swallowed after surfacing to listeners where possible: the
+    // controller may have nobody left to tell, and the chain must settle.
+    if (_shared.hasListener) _shared.addError(error, stack);
+    return null;
+  }
 }
