@@ -448,7 +448,7 @@ class CallSession extends ChangeNotifier {
             writeTimelineEvent: _writesTheCall,
             callerId: identity.caller,
             callKey: identity.key,
-            anchorEventId: notificationEventId ?? call.membershipEventId,
+            anchorEventId: notificationEventId ?? call.callAnchorId,
           )
           .catchError((Object e, StackTrace s) {
             Logs().e('Could not put the call in the timeline', e, s);
@@ -592,7 +592,7 @@ class CallSession extends ChangeNotifier {
               writeTimelineEvent: _writesTheCall,
               callerId: identity.caller,
               callKey: identity.key,
-              anchorEventId: notificationEventId ?? call.membershipEventId,
+              anchorEventId: notificationEventId ?? call.callAnchorId,
             );
           })
           .catchError((Object e, StackTrace s) {
@@ -615,7 +615,7 @@ class CallSession extends ChangeNotifier {
     peerAlsoPlaced: call.peerAlsoPlaced,
     myUserId: _myUserId,
     peerUserId: _peerUserId ?? call.peerRingSenderId,
-    ownMembershipId: call.membershipEventId,
+    ownMembershipId: call.callAnchorId,
     peerRingMembershipId: call.peerRingMembershipId,
     callerMembershipEventId: callerMembershipEventId,
   );

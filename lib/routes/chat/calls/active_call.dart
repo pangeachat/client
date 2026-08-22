@@ -253,6 +253,20 @@ class ActiveCall extends ChangeNotifier {
   /// Asked again if announcing did not see it in time. That wait is deliberately
   /// short so a caller is never left hanging, but by the time a call is over the
   /// membership has long since arrived.
+  /// The membership that IDENTIFIES this call, as opposed to the one that is
+  /// currently live.
+  ///
+  /// They are the same thing except after a rejoin, where the returning
+  /// process must publish a fresh membership -- that is what renews the
+  /// refresh and the delayed leave -- while the call it returned to keeps the
+  /// identity it already had. Everything keyed on the call itself (its card,
+  /// the speech credited to it) uses this, so a reload does not split one
+  /// call into two records; everything about being present right now uses
+  /// [membershipEventId].
+  String? get callAnchorId => _rejoinAnchorId ?? membershipEventId;
+
+  String? _rejoinAnchorId;
+
   String? get membershipEventId {
     final known = _membershipEventId;
     if (known != null) return known;
@@ -1286,14 +1300,21 @@ class ActiveCall extends ChangeNotifier {
         // reused only while it is real, and otherwise we announce ourselves
         // again. Nothing splits in that case: a session that died without
         // retracting never wrote a card to split from.
-        final anchorStands = calls.membershipEventIsCurrent(
-          room,
-          calls.client.userID ?? '',
-          rejoinAnchor,
-        );
-        membershipId = _membershipEventId = anchorStands
-            ? rejoinAnchor
-            : await calls.announce();
+        // ALWAYS announced, even when the old membership is still standing.
+        // Announcing is not just how the room learns we are here -- it is
+        // what enters the RTC session, which owns the membership refresh and
+        // the delayed leave the homeserver will apply if we stop
+        // heartbeating. Reusing a standing membership skipped all of that:
+        // the returning process published nothing and refreshed nothing,
+        // while the DEAD process's delayed leave was still pending on the
+        // server. Return worked, the two of them talked, and eighteen
+        // seconds later the server retracted a membership nobody was renewing
+        // and the other side hung up on a call that was live.
+        //
+        // The call keeps the identity it already had: the fresh membership is
+        // who we are NOW, the anchor is which call this is.
+        _rejoinAnchorId = rejoinAnchor;
+        membershipId = _membershipEventId = await calls.announce();
         // The call's clock continues from when this device first joined it,
         // not from this moment: a rejoin is the same call, and restarting at
         // zero made the two sides disagree about how long they had been

@@ -774,7 +774,15 @@ class CallService {
       if (state.senderId != callerId) continue;
       final memberships = state.content['memberships'];
       if (memberships is! List) continue;
-      if (deviceId != null && !_belongsToDevice(state, memberships, deviceId)) {
+      // A device filter cannot be applied to an EMPTY list: there is no
+      // membership left to carry a device id, and the state key does not
+      // always name one. An empty list is that sender holding nothing at
+      // all, which answers the question for every device they have -- and
+      // skipping it as "not this device" turned a retraction back into
+      // silence, which is the one reading that means nothing.
+      if (memberships.isNotEmpty &&
+          deviceId != null &&
+          !_belongsToDevice(state, memberships, deviceId)) {
         continue;
       }
       sawTheirs = true;
@@ -1212,11 +1220,19 @@ class CallService {
           // Against the DEVICE that rang, for the reason the live watcher
           // uses it: another of their devices with a stale membership would
           // otherwise revive a ring its owner had already cancelled.
-          if (!callerStillInCall(
-            room,
-            ring.event.senderId,
-            deviceId: ring.senderDeviceId,
-          )) {
+          //
+          // Suppressed only on the answer that says they are GONE. This scan
+          // runs at cold start, when room state is exactly what has not
+          // loaded yet, and collapsing "cannot see" into "not there" dropped
+          // live incoming calls: the caller rang on, the callee saw nothing,
+          // and it was written down as a missed call. The ring's own lifetime
+          // is the safety bound on being wrong the other way.
+          if (callerPresence(
+                room,
+                ring.event.senderId,
+                deviceId: ring.senderDeviceId,
+              ) ==
+              PeerPresence.gone) {
             continue;
           }
           missed.add(ring);

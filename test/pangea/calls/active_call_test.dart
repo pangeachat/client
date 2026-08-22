@@ -1730,12 +1730,21 @@ void main() {
       );
 
       expect(call.stage, CallStage.connected);
-      expect(trace.steps, isNot(contains('ring')));
-      expect(trace.steps, isNot(contains('announce')));
+      expect(trace.steps, isNot(contains('ring')), reason: 'never rings');
+      // It DOES announce. Announcing is how the returning process enters the
+      // RTC session, which owns the membership refresh and the delayed leave;
+      // without it the dead process's delayed leave still fires and the other
+      // side hangs up on a call that is live. What makes it a rejoin rather
+      // than a new call is that it does not ring and did not place anything.
+      expect(trace.steps, contains('announce'));
       expect(call.placedCall, isFalse);
-      // The call keeps the identity it already had: the membership written
-      // when it was first joined, not something minted for the re-entry.
-      expect(call.membershipEventId, r'$original-membership');
+      // The call keeps the IDENTITY it already had -- the membership written
+      // when it was first joined -- while the membership that is live is the
+      // fresh one, because that is the one whose refresh and delayed leave
+      // the returning process owns. Conflating the two either splits one call
+      // into two records or leaves nobody renewing the membership.
+      expect(call.callAnchorId, r'$original-membership');
+      expect(call.membershipEventId, r'$membership');
       expect(call.rejoinedCall, isTrue);
     });
 
@@ -1754,8 +1763,11 @@ void main() {
       );
 
       expect(call.placedCall, isFalse);
-      expect(trace.steps, isNot(contains('ring')));
-      expect(trace.steps, isNot(contains('announce')));
+      expect(
+        trace.steps,
+        isNot(contains('ring')),
+        reason: 'the empty roster must not turn a rejoin into a new call',
+      );
     });
 
     // The crashed-device case. Our membership was not retracted by us -- the
