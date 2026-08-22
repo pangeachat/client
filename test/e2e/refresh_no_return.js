@@ -57,6 +57,11 @@ async function pageText(page) {
     talking = /\b\d:\d\d\b/.test(t) && !/Ringing/i.test(t);
     if (!talking) await wait(1500);
   }
+  if (!talking) {
+    const t = await pageText(A.page);
+    console.log('   A page text: ' + t.slice(0, 300).replace(/\n/g, ' | '));
+    console.log("   A's account:"); aLog.slice(-25).forEach((l) => console.log('     ', l));
+  }
   h.check('no-return', 'the call genuinely connected before the kill', talking,
     'A never showed a ticking timer');
   if (!talking) { h.report(); process.exit(2); }

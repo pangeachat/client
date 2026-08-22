@@ -184,7 +184,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       // caller's CURRENT membership is a live call and keeps the screen; the
       // offer for that room is dead and is not shown. Only a STALE ring --
       // the replay of this account's own call's past -- gives way.
-      if (_ringIsLive(showing)) return;
+      if (_ringIsLive(showing, offer)) return;
       setState(() {
         _rejoin = offer;
         _showRing(null);
@@ -233,10 +233,19 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// Both sources have to apply the same rules — a replayed ring that skipped
   /// the redial rule, or the account check, would put up a prompt the live path
   /// would have refused.
-  /// Whether [ring] offers a call that still exists: it names the caller's
-  /// CURRENT membership. A replayed ring from before a reload names one that
-  /// has since been rewritten or retracted; a live redial names a fresh one.
-  bool _ringIsLive(IncomingCallNotification ring) {
+  /// Whether [ring] offers a call that still exists AND is not the very call
+  /// [against] would return to.
+  ///
+  /// Two tests, both needed. The membership test alone is not enough: while
+  /// the peer holds their place for our return, their membership -- and so
+  /// the ORIGINAL ring of the call we were in -- still reads current, and it
+  /// would beat the offer to rejoin itself. The breadcrumb knows when this
+  /// device was in the call; a ring sent before that moment is that call's
+  /// own past (it rang, we answered, we died), and only one sent after is a
+  /// genuine new call.
+  bool _ringIsLive(IncomingCallNotification ring, RejoinOffer? against) {
+    final since = against?.since;
+    if (since != null && !ring.sentAt.isAfter(since)) return false;
     final named = ring.membershipEventId;
     if (named == null) return false;
     return _service?.membershipEventIsCurrent(
@@ -260,7 +269,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // offer would return to is over). A ring naming an older membership is
     // this account's own call's past, and the offer wins.
     if (_rejoin?.room.id == ring.event.room.id) {
-      if (!_ringIsLive(ring)) return;
+      if (!_ringIsLive(ring, _rejoin)) return;
       setState(() => _rejoin = null);
     }
     // Never one already turned down.

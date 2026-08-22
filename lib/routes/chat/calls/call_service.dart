@@ -1216,5 +1216,16 @@ class RejoinOffer {
   /// new one for a call that already has one.
   final String membershipEventId;
 
-  const RejoinOffer({required this.room, required this.membershipEventId});
+  /// When this device was IN the call, from its breadcrumb. Null for offers
+  /// recovered from the membership fallback. The arbitration line for rings
+  /// in the same room: one sent BEFORE this moment belongs to the very call
+  /// being offered back -- it rang, we answered, we died -- while one sent
+  /// after is a genuine new call, which wins.
+  final DateTime? since;
+
+  const RejoinOffer({
+    required this.room,
+    required this.membershipEventId,
+    this.since,
+  });
 }
