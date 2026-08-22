@@ -279,10 +279,23 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // which is precisely when this offer is raised -- and withdrawing on it
     // took down the offer, and the breadcrumb behind it, for a call that was
     // alive and waiting.
+    // The floor comes from OUR membership's server timestamp, never from the
+    // breadcrumb: the crumb is this device's own clock, and the memberships
+    // being filtered are the server's. A device two minutes fast would set a
+    // floor two minutes into the future of everything in the room, skip the
+    // peer's still-live membership as "before this call", and clear a Return
+    // offer while the other person was sitting in the call waiting. With no
+    // server-domain anchor there is no floor at all -- the cost is that a
+    // stale membership from an earlier call can keep a dead offer up a little
+    // longer, which the next tick retires, and the join itself leaves quietly
+    // if the room turns out to be empty. Erring towards keeping an offer is
+    // the cheap mistake; erring towards destroying a live one is not.
     if (service.callHoldByAnother(
           offer.room,
           offer.membershipEventId,
-          notBefore: CallService.callFloorFrom(offer.since),
+          notBefore: CallService.callFloorFrom(
+            service.membershipWrittenAt(offer.room, offer.membershipEventId),
+          ),
         ) !=
         CallHold.over) {
       return;

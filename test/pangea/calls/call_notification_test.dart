@@ -13,6 +13,32 @@ void main() {
   // allowance, and using it to order a ring against anything the server
   // stamped compares two clocks. It is right for a lifetime and wrong for a
   // sequence, so the two readings have separate names and this holds the line.
+  // The same rule for the other direction: a staleness floor filters events
+  // the SERVER stamped, so it may only be built from a server timestamp. The
+  // breadcrumb's `since` is this device's own clock, and using it as a floor
+  // put a fast device's floor two minutes into the future of everything in
+  // the room -- which read a live peer as gone and cleared a Return offer
+  // while the other person was still waiting in the call.
+  test('staleness floors are built from server time, never the breadcrumb', () {
+    final files = Directory(
+      'lib/routes/chat/calls',
+    ).listSync().whereType<File>().where((f) => f.path.endsWith('.dart'));
+    final offenders = <String>[];
+    for (final file in files) {
+      for (final line in file.readAsStringSync().split('\n')) {
+        if (line.trimLeft().startsWith('//')) continue;
+        if (line.contains('notBefore:') && line.contains('since')) {
+          offenders.add('\${file.path}: \$line');
+        }
+      }
+    }
+    expect(
+      offenders,
+      isEmpty,
+      reason: 'derive floors from membershipWrittenAt',
+    );
+  });
+
   test('ordering uses the server stamp, never the sender\'s', () {
     final source = Directory(
       'lib/routes/chat/calls',
