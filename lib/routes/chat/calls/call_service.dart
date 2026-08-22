@@ -1090,8 +1090,20 @@ class CallService {
       // Only a room that is KNOWN to be too old is skipped. A room whose last
       // event has not been worked out yet is still opened: treating unknown as
       // old would silently drop the call this whole method exists to recover.
-      final last = room.lastEvent;
-      if (last != null && last.originServerTs.isBefore(cutoff)) continue;
+      // No cheap freshness pre-filter here, and there cannot be one built on
+      // `lastEvent`: that getter only reports the event types a room LIST can
+      // display, and a call notification is not one of them. So in the very
+      // rooms this scan exists for -- where a ring is the newest thing that
+      // happened -- `lastEvent` reports the last ordinary message instead,
+      // which in a room people mostly CALL in can be hours old. The filter
+      // then skipped exactly the room holding the ring, and a learner who
+      // reloaded while their phone was ringing was never offered the call
+      // again. A pre-filter that cannot see the thing being searched for is
+      // not an optimisation, it is a silent miss.
+      //
+      // The cost is one timeline load per direct chat at startup, bounded by
+      // how many direct chats the learner has. If that ever matters, the
+      // answer is a filter the SERVER applies, not a blind local guess.
       // Call membership is state, and a room the learner has not opened is
       // loaded only partially. Without this the caller would read as absent —
       // and an absent caller is taken as a call already over, which would
