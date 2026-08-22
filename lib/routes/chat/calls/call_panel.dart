@@ -138,12 +138,20 @@ class CallPanel extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Avatar(
-          mxContent: peer?.avatarUrl,
-          name:
-              peer?.calcDisplayname() ?? session.room.getLocalizedDisplayname(),
-          size: 108,
-          showPresence: false,
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Avatar(
+              mxContent: peer?.avatarUrl,
+              name:
+                  peer?.calcDisplayname() ??
+                  session.room.getLocalizedDisplayname(),
+              size: 108,
+              showPresence: false,
+            ),
+            if (session.peerMuted)
+              Positioned(right: -2, bottom: -2, child: _MuteBadge()),
+          ],
         ),
         const SizedBox(height: 20),
         Text(
@@ -177,6 +185,8 @@ class CallPanel extends StatelessWidget {
     fit: StackFit.expand,
     children: [
       lk.VideoTrackRenderer(tracks.first),
+      if (session.peerMuted)
+        const Positioned(left: 14, top: 72, child: _MuteBadge()),
       if (tracks.length > 1)
         Positioned(
           right: 16,
@@ -473,6 +483,32 @@ class _CallButton extends StatelessWidget {
           style: const TextStyle(color: Colors.white70, fontSize: 12),
         ),
       ],
+    );
+  }
+}
+
+/// The corner statement that the other person cannot be heard.
+///
+/// The standard badge every calling product shows; without it, a muted peer
+/// is indistinguishable from a broken connection, and the learner talks into
+/// a silence they cannot explain.
+class _MuteBadge extends StatelessWidget {
+  const _MuteBadge();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    return Semantics(
+      label: l10n.callPeerMuted,
+      liveRegion: true,
+      child: Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(
+          color: Colors.black.withValues(alpha: 0.65),
+          shape: BoxShape.circle,
+        ),
+        child: const Icon(Icons.mic_off, size: 18, color: Colors.white),
+      ),
     );
   }
 }

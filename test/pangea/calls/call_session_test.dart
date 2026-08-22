@@ -434,5 +434,36 @@ void main() {
       expect(winner.caller, '@a:s');
       expect(loser.caller, '@a:s', reason: 'the card names the winner');
     });
+
+    test(
+      'the sub-millisecond glare: both derived joiners still share a key',
+      () {
+        // Each side saw the other in the SFU before deciding, so neither
+        // placed -- and neither fast-writes. The shared key is what lets the
+        // survivor path write the card that used to go missing entirely.
+        final a = CallSession.resolveCallIdentity(
+          placed: false,
+          peerAlsoPlaced: true,
+          myUserId: '@a:s',
+          peerUserId: '@b:s',
+          ownMembershipId: r'$a-membership',
+          peerRingMembershipId: r'$b-membership',
+          callerMembershipEventId: null,
+        );
+        final b = CallSession.resolveCallIdentity(
+          placed: false,
+          peerAlsoPlaced: true,
+          myUserId: '@b:s',
+          peerUserId: '@a:s',
+          ownMembershipId: r'$b-membership',
+          peerRingMembershipId: r'$a-membership',
+          callerMembershipEventId: null,
+        );
+        expect(a.key, r'$a-membership');
+        expect(b.key, r'$a-membership', reason: 'one call, one key');
+        expect(a.caller, '@a:s');
+        expect(b.caller, '@a:s');
+      },
+    );
   });
 }

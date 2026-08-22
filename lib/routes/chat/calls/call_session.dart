@@ -174,6 +174,7 @@ class CallSession extends ChangeNotifier {
   Object? get error => call.error;
   bool get isReconnecting => call.isReconnecting;
   bool get peerReconnecting => call.peerReconnecting;
+  bool get peerMuted => call.peerMuted;
   bool get hadPeer => call.hadPeer;
   bool get placedCall => call.placedCall;
   DateTime? get talkStartedAt => call.talkStartedAt;
@@ -518,14 +519,23 @@ class CallSession extends ChangeNotifier {
     required String? peerRingMembershipId,
     required String? callerMembershipEventId,
   }) {
-    if (!placed) {
+    // peerAlsoPlaced with placed=false is the SUB-MILLISECOND glare: each
+    // side saw the other already in the SFU before deciding, so each derived
+    // itself a joiner -- and each also saw the other's simultaneous ring,
+    // which is the only way this flag turns on without placing. Neither is a
+    // fast-path writer then, so without a key here the call went missing
+    // from the conversation entirely; with the same tie-break as the placed
+    // glare, both sides share a key and the SURVIVOR path writes the card.
+    if (!placed && !peerAlsoPlaced) {
       return (key: callerMembershipEventId, caller: peerUserId);
     }
-    if (!peerAlsoPlaced) {
+    if (placed && !peerAlsoPlaced) {
       return (key: ownMembershipId, caller: myUserId);
     }
     if (myUserId == null || peerUserId == null) {
-      return (key: ownMembershipId, caller: myUserId);
+      return placed
+          ? (key: ownMembershipId, caller: myUserId)
+          : (key: callerMembershipEventId, caller: peerUserId);
     }
     return myUserId.compareTo(peerUserId) < 0
         ? (key: ownMembershipId, caller: myUserId)

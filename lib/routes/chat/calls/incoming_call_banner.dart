@@ -9,6 +9,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_quick_replies.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/ring_player.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -24,13 +25,23 @@ class IncomingCallBanner extends StatefulWidget {
   /// route resolves.
   final Widget? child;
 
-  const IncomingCallBanner({required this.child, super.key});
+  /// Tests hand in a player with a fake sound; the app builds the real one.
+  final RingPlayer? ringPlayerOverride;
+
+  const IncomingCallBanner({
+    required this.child,
+    this.ringPlayerOverride,
+    super.key,
+  });
 
   @override
   State<IncomingCallBanner> createState() => _IncomingCallBannerState();
 }
 
 class _IncomingCallBannerState extends State<IncomingCallBanner> {
+  /// The one hand that touches the ring sound. Injected in tests.
+  late final RingPlayer _ringPlayer = widget.ringPlayerOverride ?? RingPlayer();
+
   StreamSubscription<IncomingCallNotification>? _rings;
   StreamSubscription<matrix.Event>? _ownDeclines;
   StreamSubscription<void>? _callerGone;
@@ -46,6 +57,22 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   ValueNotifier<Object?>? _activeCall;
 
   String? _listeningTo;
+
+  /// The ONLY assignment to [_ringing], so the ring sound can never disagree
+  /// with the prompt on screen: the loop starts when a ring shows, restarts
+  /// when a redial replaces it, and stops on EVERY way a prompt goes --
+  /// dismissal, decline, answer, lifetime, caller-gone, account switch, and
+  /// a rejoin offer taking the same room. A test greps this file for direct
+  /// assignments; this setter must stay the only one.
+  void _showRing(IncomingCallNotification? ring) {
+    final previous = _ringing;
+    _ringing = ring;
+    if (ring != null) {
+      _ringPlayer.play(ring.event.eventId);
+    } else if (previous != null) {
+      _ringPlayer.stop(previous.event.eventId);
+    }
+  }
 
   /// Notification event ids the learner has turned down.
   ///
@@ -83,7 +110,9 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _listeningTo = account;
     _service = matrixState.callService;
     // A prompt belonging to the account we just left is not this one's.
-    if (_ringing != null) setState(() => _ringing = null);
+    if (_ringing != null) setState(() => _showRing(null));
+    // Whatever was ringing belonged to the account we just left.
+    _ringPlayer.stopAll();
 
     _rings = matrixState.callService.incomingRings.listen(
       (ring) => _offer(ring, account),
@@ -145,13 +174,20 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // Re-checked: the scan awaited network, and a call may have started since.
     if (service.isBusy || offers.isEmpty) return;
     final offer = offers.first;
-    setState(() {
-      _rejoin = offer;
-      // For the SAME room, the rejoin wins over a replayed ring: this account
-      // was IN that call, so the stale ring is the same call's past — showing
-      // both would offer the learner their own call as something to answer.
-      if (_ringing?.event.room.id == offer.room.id) _ringing = null;
-    });
+    final showing = _ringing;
+    if (showing != null && showing.event.room.id == offer.room.id) {
+      // The same-room rule again, from the other side: a ring that names the
+      // caller's CURRENT membership is a live call and keeps the screen; the
+      // offer for that room is dead and is not shown. Only a STALE ring --
+      // the replay of this account's own call's past -- gives way.
+      if (_ringIsLive(showing)) return;
+      setState(() {
+        _rejoin = offer;
+        _showRing(null);
+      });
+      return;
+    }
+    setState(() => _rejoin = offer);
   }
 
   void _acceptRejoin(RejoinOffer offer) {
@@ -191,10 +227,27 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// Both sources have to apply the same rules — a replayed ring that skipped
   /// the redial rule, or the account check, would put up a prompt the live path
   /// would have refused.
+  /// Whether [ring] offers a call that still exists: it names the caller's
+  /// CURRENT membership. A replayed ring from before a reload names one that
+  /// has since been rewritten or retracted; a live redial names a fresh one.
+  bool _ringIsLive(IncomingCallNotification ring) {
+    final current = _service?.currentMembershipEventIdOf(
+      ring.event.room,
+      ring.event.senderId,
+    );
+    return current != null && current == ring.membershipEventId;
+  }
+
   void _offer(IncomingCallNotification ring, String account) {
-    // A standing rejoin offer for the same room wins over any ring for it:
-    // that ring is this account's own call's past.
-    if (_rejoin?.room.id == ring.event.room.id) return;
+    // Same room as a standing rejoin offer: one rule, by evidence. A ring
+    // naming the caller's CURRENT membership is a live call happening NOW --
+    // it wins, and the offer goes (the caller has moved on, so the call the
+    // offer would return to is over). A ring naming an older membership is
+    // this account's own call's past, and the offer wins.
+    if (_rejoin?.room.id == ring.event.room.id) {
+      if (!_ringIsLive(ring)) return;
+      setState(() => _rejoin = null);
+    }
     // Checked against the account this subscription was made for. Cancelling
     // does not unqueue what has already been handed over, so a ring for the
     // account the learner just left could still raise a prompt here — and
@@ -219,7 +272,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       // as they would on a phone.
       if (showing.event.room.id != ring.event.room.id) return;
     }
-    setState(() => _ringing = ring);
+    setState(() => _showRing(ring));
     _watchForGiveUp(ring);
   }
 
@@ -274,6 +327,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _callerGone?.cancel();
     _stillRinging?.cancel();
     _activeCall?.removeListener(_onActiveCallChanged);
+    _ringPlayer.stopAll();
     super.dispose();
   }
 
@@ -282,7 +336,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _stillRinging = null;
     _callerGone?.cancel();
     _callerGone = null;
-    if (mounted) setState(() => _ringing = null);
+    if (mounted) setState(() => _showRing(null));
   }
 
   /// Turns the call down and tells the caller, so their phone stops ringing.

@@ -3607,6 +3607,7 @@
     "callExitFullscreen": "Exit full screen",
     "callReconnecting": "Reconnecting...",
     "callReturn": "Return",
+    "callPeerMuted": "Muted",
     "callReturnOffer": "You were in a call before the app reloaded",
     "callPeerReconnecting": "{name} reconnecting...",
     "@callPeerReconnecting": {

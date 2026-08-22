@@ -715,6 +715,24 @@ class CallService {
     return false;
   }
 
+  /// The state event currently carrying [userId]'s live membership, or null.
+  ///
+  /// The discriminator between a STALE ring (replayed from before a reload,
+  /// pointing at a membership that has since been rewritten or emptied) and a
+  /// LIVE one: a caller's ring names their membership event, and only a ring
+  /// naming their CURRENT one is offering a call that still exists.
+  String? currentMembershipEventIdOf(Room room, String userId) {
+    final memberStates = room.states[EventTypes.GroupCallMember];
+    if (memberStates == null) return null;
+    for (final state in memberStates.values) {
+      if (state is! Event) continue;
+      if (state.senderId != userId) continue;
+      final memberships = state.content['memberships'];
+      if (memberships is List && memberships.isNotEmpty) return state.eventId;
+    }
+    return null;
+  }
+
   /// Fires whenever [callerId]'s call membership in [room] is rewritten.
   ///
   /// The signal a ringing device watches to notice the caller has given up.

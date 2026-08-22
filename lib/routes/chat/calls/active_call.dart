@@ -431,8 +431,20 @@ class ActiveCall extends ChangeNotifier {
 
   bool _wasRecovering = false;
 
+  /// Whether the peer can currently be heard, per the roster's rule.
+  bool get peerMuted => _roster?.peerMuted ?? false;
+
+  bool _wasPeerMuted = false;
+
   void _onParticipantsChanged() {
     if (_ending) return;
+
+    // The badge is presence-adjacent state: repaint on its transitions.
+    final muted = _roster?.peerMuted ?? false;
+    if (muted != _wasPeerMuted) {
+      _wasPeerMuted = muted;
+      if (!_disposed) notifyListeners();
+    }
 
     // Surfaced, not merely tolerated. The roster already freezes its picture
     // while the connection recovers; the screen needs to SAY so, or the learner

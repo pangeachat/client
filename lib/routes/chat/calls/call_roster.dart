@@ -67,6 +67,20 @@ class CallParticipant {
   String toString() => 'CallParticipant($userId, $deviceId)';
 }
 
+/// One remote participant's audio publications, by identity.
+@immutable
+class RemoteAudioState {
+  final String identity;
+  final int audioPublications;
+  final int mutedAudioPublications;
+
+  const RemoteAudioState({
+    required this.identity,
+    required this.audioPublications,
+    required this.mutedAudioPublications,
+  });
+}
+
 /// Who is in the call right now, according to the SFU.
 ///
 /// **Read as state, never accumulated from events.** A participant who was
@@ -109,6 +123,19 @@ class CallRoster extends ChangeNotifier {
   @protected
   Iterable<String> get remoteIdentities => _room.remoteParticipants.keys;
 
+  /// Each remote participant's audio publications, as counts. Overridden in
+  /// tests for the same reason as [remoteIdentities].
+  @protected
+  Iterable<RemoteAudioState> get remoteAudio =>
+      _room.remoteParticipants.entries.map((entry) {
+        final audio = entry.value.audioTrackPublications;
+        return RemoteAudioState(
+          identity: entry.key,
+          audioPublications: audio.length,
+          mutedAudioPublications: audio.where((p) => p.muted).length,
+        );
+      });
+
   @protected
   bool get roomConnected =>
       _room.connectionState == lk.ConnectionState.connected;
@@ -130,6 +157,30 @@ class CallRoster extends ChangeNotifier {
   /// This is what makes a call a conversation rather than one person alone in a
   /// room, and what tells the caller their call was answered.
   bool get hasPeer => _participants.any((p) => p.userId != myUserId);
+
+  /// Whether the person on the other end cannot currently be heard.
+  ///
+  /// Over the PEER USER'S participants only: the remote list also carries this
+  /// account's own sibling devices, and a muted second phone of MINE must
+  /// never paint the peer as muted. True iff the peer has at least one audio
+  /// publication and every one of them is muted -- one audible device means
+  /// they can be heard, and no publications at all is "no signal yet", which
+  /// is not a statement about their microphone.
+  bool get peerMuted => _peerMuted;
+
+  bool _peerMuted = false;
+
+  bool _readPeerMuted() {
+    var publications = 0;
+    var muted = 0;
+    for (final state in remoteAudio) {
+      final who = CallParticipant.parse(state.identity, myUserId: myUserId);
+      if (who.userId == myUserId) continue;
+      publications += state.audioPublications;
+      muted += state.mutedAudioPublications;
+    }
+    return publications > 0 && muted == publications;
+  }
 
   /// This account's OTHER devices in the call.
   ///
@@ -178,9 +229,16 @@ class CallRoster extends ChangeNotifier {
     final next = remoteIdentities
         .map((id) => CallParticipant.parse(id, myUserId: myUserId))
         .toSet();
+    // Level-triggered like the list itself: re-read whole on every
+    // notification, so a missed mute event costs one repaint, not the truth.
+    final nextMuted = _readPeerMuted();
+    final mutedChanged = nextMuted != _peerMuted;
+    _peerMuted = nextMuted;
     // Notified on reconnection even when the list is unchanged, because the
     // frozen window ended and listeners gated on connectedness need to know.
-    if (wasConnected && setEquals(next, _participants)) return;
+    if (wasConnected && !mutedChanged && setEquals(next, _participants)) {
+      return;
+    }
     _participants = next;
     notifyListeners();
   }
