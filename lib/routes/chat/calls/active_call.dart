@@ -240,6 +240,12 @@ class ActiveCall extends ChangeNotifier {
   /// dialog was still up -- and is owed a retry at the first post-grant step.
   bool _foregroundPending = false;
 
+  /// Whether THIS call is the one the service runs for. A start skipped by
+  /// the busy check never claims it -- and only the claimant may stop it,
+  /// or a refused second call's teardown would strip the live call of its
+  /// background protection.
+  bool _foregroundClaimed = false;
+
   /// What the notification shows. Threaded from the session, which knows the
   /// peer; the call itself only knows the room.
   String foregroundLabel = '';
@@ -266,6 +272,7 @@ class ActiveCall extends ChangeNotifier {
   Future<void> _startForeground({required bool video}) async {
     final foreground = _foreground;
     if (foreground == null) return;
+    _foregroundClaimed = true;
     try {
       final started = await foreground.start(
         peer: foregroundLabel,
@@ -1154,12 +1161,16 @@ class ActiveCall extends ChangeNotifier {
     _noteTalkEnded();
     // Where every teardown path converges, including failures -- pairing the
     // stop with the start in one owner is what makes a start with no stop
-    // impossible.
-    unawaited(
-      _foreground?.stop().catchError((Object e, StackTrace s) {
-        Logs().w('Could not stop the call foreground service', e, s);
-      }),
-    );
+    // impossible. Only when this call CLAIMED the service: a start skipped
+    // by the busy check belongs to no service, and stopping here anyway
+    // would take down the live call's.
+    if (_foregroundClaimed) {
+      unawaited(
+        _foreground?.stop().catchError((Object e, StackTrace s) {
+          Logs().w('Could not stop the call foreground service', e, s);
+        }),
+      );
+    }
     unawaited(_declines?.cancel());
     _declines = null;
     unawaited(_peerRings?.cancel());

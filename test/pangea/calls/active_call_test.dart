@@ -406,6 +406,12 @@ class FakeForeground extends CallForegroundControl {
 
   @override
   Future<void> setCamera(bool on) async => trace('fgs.camera($on)');
+
+  @override
+  void onAction(void Function(String action) handle) {}
+
+  @override
+  void clearActionHandler() {}
 }
 
 /// Only [addAudioRenderer] is ever reached, and the recorder is faked here, so
@@ -1382,6 +1388,12 @@ void main() {
       await call.start(roomStub(calls.client), video: false);
       expect(call.stage, CallStage.failed);
       expect(trace.steps.where((s) => s.startsWith('fgs.start')), isEmpty);
+
+      // And its teardown must not stop the LIVE call's service either: it
+      // never claimed the service, so it has no claim to end.
+      call.dispose();
+      await pumpEventQueue();
+      expect(trace.steps, isNot(contains('fgs.stop')));
     });
 
     test('a call started with video escalates the service type', () async {
