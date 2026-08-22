@@ -58,26 +58,47 @@ class PangeaCallCapture {
   /// and last listener, giving real reference counting that also survives
   /// everyone leaving and a later call listening afresh.
   static StreamSubscription<dynamic>? _platformSub;
+
+  /// The previous platform cancel, still in flight.
+  ///
+  /// A new first-listener can arrive while the last-listener's cancel is still
+  /// travelling to the platform; opening a fresh subscription right away lets
+  /// the OLD cancel land afterwards and clear the native sink under the new
+  /// one -- the same single-sink failure this stream exists to prevent, moved
+  /// across a listener gap. Every listen therefore queues behind the cancel
+  /// before it. The cost is a few first frames dropped into a null native sink
+  /// while the deferred listen lands -- milliseconds of leading silence; the
+  /// alternative was a live recording going silent for good.
+  static Future<void> _settling = Future.value();
+
   static final StreamController<CallAudioFrame> _shared =
       StreamController<CallAudioFrame>.broadcast(
     onListen: () {
-      _platformSub = _frames.receiveBroadcastStream().listen(
-        (event) {
-          final map = event as Map;
-          _shared.add(
-            CallAudioFrame(
-              pcm16: map['pcm'] as Uint8List,
-              sampleRate: map['sampleRate'] as int,
-            ),
-          );
-        },
-        onError: _shared.addError,
-      );
+      _settling = _settling.then((_) {
+        // Everyone may already have left while this waited its turn.
+        if (!_shared.hasListener) return null;
+        _platformSub = _frames.receiveBroadcastStream().listen(
+          (event) {
+            final map = event as Map;
+            _shared.add(
+              CallAudioFrame(
+                pcm16: map['pcm'] as Uint8List,
+                sampleRate: map['sampleRate'] as int,
+              ),
+            );
+          },
+          onError: _shared.addError,
+        );
+        return null;
+      });
     },
     onCancel: () async {
-      final sub = _platformSub;
-      _platformSub = null;
-      await sub?.cancel();
+      _settling = _settling.then((_) {
+        final sub = _platformSub;
+        _platformSub = null;
+        return sub?.cancel();
+      });
+      await _settling;
     },
   );
 
