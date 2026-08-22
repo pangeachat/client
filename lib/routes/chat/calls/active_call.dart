@@ -468,6 +468,7 @@ class ActiveCall extends ChangeNotifier {
     final room = _room;
     final anchor = _membershipEventId;
     if (room == null || anchor == null || _ending) return;
+    Logs().i('Leaving the call breadcrumb for ${room.id}');
     unawaited(CallBreadcrumb.drop(roomId: room.id, membershipEventId: anchor));
   }
 
@@ -599,6 +600,11 @@ class ActiveCall extends ChangeNotifier {
     final room = _room;
     if (room == null) return;
     _membershipEventId = calls.membershipEventIdIn(room);
+    // The third breadcrumb site, for the ordering the other two cannot
+    // cover: an announce whose echo timed out returns null, and the anchor
+    // only ever arrives HERE, later, from state -- with the peer long since
+    // noted. The drop fires wherever the LAST of its two facts lands.
+    if (_membershipEventId != null && _peerArrived) _dropBreadcrumb();
   }
 
   /// Declines seen before this call knew which notification was its own.
