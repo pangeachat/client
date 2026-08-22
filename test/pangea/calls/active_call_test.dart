@@ -26,6 +26,12 @@ class Trace {
 }
 
 class FakeCalls extends CallService {
+  /// Whether the account already holds a call, for the start-entry read.
+  bool busy = false;
+
+  @override
+  bool get isBusy => busy;
+
   final Trace trace;
 
   /// The SFU's roster, which is now the only source of presence. The knobs
@@ -1363,6 +1369,19 @@ void main() {
         reason: 'the entry attempt plus the post-connect retry',
       );
       await call.hangUp();
+    });
+
+    test('a start the account will refuse never touches the service', () async {
+      // The service is the LIVE call's; a second start is about to be
+      // refused with AlreadyInACall, and firing the service first would
+      // overwrite the standing call's notification with this one's name.
+      final (call, calls, _) = await withForeground();
+      calls.busy = true;
+      calls.joinError = const AlreadyInACall();
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.stage, CallStage.failed);
+      expect(trace.steps.where((s) => s.startsWith('fgs.start')), isEmpty);
     });
 
     test('a call started with video escalates the service type', () async {

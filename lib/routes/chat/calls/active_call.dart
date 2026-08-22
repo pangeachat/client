@@ -803,7 +803,14 @@ class ActiveCall extends ChangeNotifier {
     // service type is satisfied here and not necessarily later. When the
     // permission dialog is still up this returns unstarted, and the retry
     // below runs at the first moment that is by construction post-grant.
-    unawaited(_startForeground(video: video));
+    //
+    // NOT when the account is already in a call: the join below will refuse
+    // this start, and the service is the LIVE call's -- a refused start that
+    // touched it would overwrite that call's notification with this one's
+    // name. The same busy check join performs, read early for the same
+    // answer. (The service itself also ignores a START while running, which
+    // covers the sub-millisecond double-start this read cannot see.)
+    if (!calls.isBusy) unawaited(_startForeground(video: video));
     // Subscribed before anything else, but only when PLACING. Two people
     // calling at the same moment is decided by seeing the other's ring, and the
     // window this has to cover starts when ours does — not when our media

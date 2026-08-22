@@ -106,6 +106,14 @@ class CallForegroundService : Service() {
   override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
     when (intent?.action) {
       ACTION_START -> {
+        if (running) {
+          // Already someone's call. Two starts can only race like this in
+          // the sub-millisecond double-start whose loser is about to be
+          // refused the join claim -- its label must not overwrite the
+          // standing call's. Every legitimate sequential start is preceded
+          // by the previous call's stop in its teardown.
+          return START_NOT_STICKY
+        }
         peer = intent.getStringExtra(EXTRA_PEER) ?: ""
         if (promote(camera = false)) {
           running = true
