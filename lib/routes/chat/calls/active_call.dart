@@ -1299,6 +1299,10 @@ class ActiveCall extends ChangeNotifier {
   @override
   void dispose() {
     _disposed = true;
+    // The session that installed the action handler clears it in its own
+    // dispose; cleared here TOO so the invariant is local -- a disposed call
+    // leaves no process-global closure behind, whoever owned it.
+    clearForegroundActions();
     unawaited(hangUp());
     super.dispose();
   }
