@@ -120,6 +120,20 @@ the answer button), and a teardown check must WAIT out the peer grace rather
 than sampling once (the first version reported a product failure that was
 only its own impatience).
 
+## Seeing what the learner sees (device_ui.js, device_summary.js)
+
+Two things only a picture can settle. `device_ui.js` mutes the peer from the
+laptop and screenshots the phone -- the mic-slash badge on their avatar --
+and `device_summary.js` lets the LAPTOP hang up, then samples the phone's
+screen right through the grace lapse so the ended-call summary is caught in
+its three-second window without a single blind tap.
+
+Do NOT drive the phone by guessed coordinates outside these controls: the
+call has two layouts (the full panel, and the global tile once it is
+minimised behind another screen) whose buttons sit in completely different
+places, and a miss lands somewhere real -- a stray tap once opened the
+vocabulary drawer, and a stray BACK left the app entirely.
+
 ## Known gaps
 
 - The former "next call after an answered call places nothing" bug is resolved:
