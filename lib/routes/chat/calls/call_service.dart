@@ -802,11 +802,30 @@ class CallService {
 
   String? _callIdForTest;
 
-  bool peerLiveInCurrentCall(Room room, String peerId, {DateTime? notBefore}) {
+  /// Kept for callers that only need "assume present unless proven otherwise".
+  /// Anything that acts on a DEPARTURE should read
+  /// [peerPresenceInCurrentCall] instead, because it can tell a retraction
+  /// from a silence and those two mean opposite things.
+  bool peerLiveInCurrentCall(Room room, String peerId, {DateTime? notBefore}) =>
+      peerPresenceInCurrentCall(room, peerId, notBefore: notBefore) !=
+      PeerPresence.gone;
+
+  /// What the room's state says about [peerId] being in the call we are on.
+  ///
+  /// Three answers, not two, because "they retracted" and "they have not said
+  /// anything yet" are opposites and the boolean above collapses them. Reading
+  /// a retraction as silence is what made a deliberate hangup look like a
+  /// crash; reading silence as a retraction would end calls that had only just
+  /// begun, since state lags a join by seconds.
+  PeerPresence peerPresenceInCurrentCall(
+    Room room,
+    String peerId, {
+    DateTime? notBefore,
+  }) {
     final callId = _current?.groupCallId ?? _callIdForTest;
-    if (callId == null) return true;
+    if (callId == null) return PeerPresence.unknown;
     final states = room.states[EventTypes.GroupCallMember];
-    if (states == null) return true;
+    if (states == null) return PeerPresence.unknown;
     final now = DateTime.now().millisecondsSinceEpoch;
     var sawTheirState = false;
     for (final state in states.values) {
@@ -835,13 +854,13 @@ class CallService {
         if (m is! Map) continue;
         if (m['call_id'] != callId) continue;
         final expires = m['expires_ts'];
-        if (expires is! int) return true;
-        if (expires > now) return true;
+        if (expires is! int) return PeerPresence.live;
+        if (expires > now) return PeerPresence.live;
       }
     }
     // Nothing live of theirs for THIS call. If they wrote state at all, that
     // is them gone; if they never did, we genuinely cannot tell.
-    return !sawTheirState;
+    return sawTheirState ? PeerPresence.gone : PeerPresence.unknown;
   }
 
   /// Whether the call our [ownMembershipEventId] belongs to is still being
@@ -1114,7 +1133,16 @@ class CallService {
         for (final ring in rings) {
           if (!ring.shouldRing(now)) continue;
           if (declined.contains(ring.event.eventId)) continue;
-          if (!callerStillInCall(room, ring.event.senderId)) continue;
+          // Against the DEVICE that rang, for the reason the live watcher
+          // uses it: another of their devices with a stale membership would
+          // otherwise revive a ring its owner had already cancelled.
+          if (!callerStillInCall(
+            room,
+            ring.event.senderId,
+            deviceId: ring.senderDeviceId,
+          )) {
+            continue;
+          }
           missed.add(ring);
         }
       } catch (e, s) {
@@ -1518,6 +1546,20 @@ class AlreadyInACall implements Exception {
 }
 
 /// A call this device can offer to return to after a reload.
+/// What room state says about somebody being in the call we are on.
+enum PeerPresence {
+  /// A membership of theirs for this call is standing and unexpired.
+  live,
+
+  /// They wrote state and none of it puts them in this call -- a retraction,
+  /// or a membership that has expired. Positive evidence of a departure.
+  gone,
+
+  /// They have written nothing we can see. Not evidence of anything: state
+  /// lags a join by seconds, and a room can hold nothing of theirs at all.
+  unknown,
+}
+
 class RejoinOffer {
   final Room room;
 

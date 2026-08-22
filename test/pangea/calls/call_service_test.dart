@@ -1236,6 +1236,27 @@ void main() {
       },
     );
 
+    // "They retracted" and "they have not said anything yet" are opposites,
+    // and the boolean read collapses them. Collapsing them is what let a
+    // retraction be treated as silence one layer up: an ANSWERER whose first
+    // sight of the caller's state is the retraction had never seen them live,
+    // so the transition rule swallowed it and started a 20-second grace.
+    test('a retraction and a silence are different answers', () async {
+      final (retracted, room1) = await withRawPeerMemberships([]);
+      retracted.adoptCallIdForTest('this-call');
+      expect(
+        retracted.peerPresenceInCurrentCall(room1, peer),
+        PeerPresence.gone,
+      );
+
+      final (silent, room2) = await withPeerState([]);
+      silent.adoptCallIdForTest('this-call');
+      expect(
+        silent.peerPresenceInCurrentCall(room2, peer),
+        PeerPresence.unknown,
+      );
+    });
+
     test('a peer with no state at all is the only no opinion', () async {
       final (service, room) = await withPeerState([]);
       service.adoptCallIdForTest('this-call');

@@ -508,11 +508,25 @@ class ActiveCall extends ChangeNotifier {
     final room = _room;
     final peer = _peerUserId;
     if (room == null || peer == null) return false;
-    if (calls.peerLiveInCurrentCall(room, peer, notBefore: _stateFloor(room))) {
-      _peerMembershipSeen = true;
-      return false;
+    switch (calls.peerPresenceInCurrentCall(
+      room,
+      peer,
+      notBefore: _stateFloor(room),
+    )) {
+      case PeerPresence.live:
+        _peerMembershipSeen = true;
+        return false;
+      case PeerPresence.gone:
+        // A retraction speaks for itself. Requiring that we had SEEN them live
+        // first was the transition rule doing too much work: it exists so that
+        // state which has not synced yet cannot read as a departure, and an
+        // empty membership list is not unsynced state -- it is the departure,
+        // written down. An answerer whose first sight of the caller's state is
+        // the retraction was still sent into a 20-second grace by it.
+        return true;
+      case PeerPresence.unknown:
+        return _peerMembershipSeen;
     }
-    return _peerMembershipSeen;
   }
 
   /// The earliest a membership can have been written and still belong to THIS
@@ -1534,6 +1548,25 @@ class ActiveCall extends ChangeNotifier {
         Logs().e('Could not release the call media', e, s);
       }
     }();
+
+    // The retraction goes out ALONGSIDE the media release, not behind the
+    // recorder teardown. It is not bookkeeping any more: it is the only thing
+    // that tells the other side this was a HANGUP and not a crash, and they
+    // decide that within seconds of seeing us leave the SFU. Behind a tap
+    // detach that is allowed five seconds, the retraction could arrive after
+    // they had already given up and started waiting for us to come back --
+    // the exact fake "reconnecting" this branch exists to remove. It still
+    // does not go BEFORE the media release, because that ordering left them
+    // hearing a learner who had already hung up.
+    //
+    // The anchor is read first: once the retraction lands, the membership can
+    // no longer be matched to this call.
+    _rememberMembership();
+    unawaited(
+      _releaseCall().catchError((Object e, StackTrace s) {
+        Logs().w('Could not give the call back', e, s);
+      }),
+    );
 
     // The recorder teardown, running WITH the media release rather than before
     // it. The tap comes off and the chunker's buffered audio — which lives in

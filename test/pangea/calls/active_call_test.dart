@@ -32,12 +32,18 @@ class FakeCalls extends CallService {
   /// list can lag that by its whole retention window.
   bool peerMembershipPresent = true;
 
+  /// Set when a test needs the third answer: state that has not synced yet,
+  /// which is neither presence nor departure.
+  PeerPresence? peerPresenceOverride;
+
   @override
-  bool peerLiveInCurrentCall(
+  PeerPresence peerPresenceInCurrentCall(
     matrix.Room room,
     String peerId, {
     DateTime? notBefore,
-  }) => peerMembershipPresent;
+  }) =>
+      peerPresenceOverride ??
+      (peerMembershipPresent ? PeerPresence.live : PeerPresence.gone);
 
   /// Whether the account already holds a call, for the start-entry read.
   bool busy = false;
@@ -746,6 +752,37 @@ void main() {
     );
   });
 
+  group('a retraction that is the FIRST state we ever see of them', () {
+    // The answerer's hardest case: the caller is already in the SFU when we
+    // join, and their Matrix state has not reached us yet -- so we never see
+    // them "live" in state at all. Then they hang up, and the first state we
+    // ever see for them is the retraction. Requiring a prior sighting before
+    // believing a departure swallowed exactly this, and the answerer waited
+    // out a 20-second grace for someone who had already gone.
+    test('is believed without having seen them live first', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      // Their state has not synced: neither presence nor departure.
+      calls.peerPresenceOverride = PeerPresence.unknown;
+      await call.start(roomStub(calls.client), video: false, answering: true);
+      expect(call.stage, CallStage.connected);
+
+      // They hang up. The retraction is the first thing we ever see.
+      calls.peerPresenceOverride = PeerPresence.gone;
+      calls.remotePresent = false;
+      await calls.participantsBecome([calls.client.deviceID!]);
+      await call.tickReelectionForTest();
+
+      expect(
+        call.peerReconnecting,
+        isFalse,
+        reason: 'a retraction is a departure, whoever saw what first',
+      );
+      expect(call.stage, CallStage.ended);
+    });
+  });
+
   group('a decline that arrives before the ring has returned', () {
     // The subscription is deliberately older than the id it matches, so a
     // busy line can answer before our own send does. Remembering only THAT it
@@ -982,14 +1019,26 @@ void main() {
         'capture.start',
         'announce',
         'media.dispose',
-        'capture.stop',
         'retract',
+        'capture.stop',
         'capture.finish',
       ], reason: 'the recording is flushed even on a failed call');
     });
   });
 
   group('hanging up', () {
+    // The order is the contract, and each position was paid for:
+    //   media.dispose  first, so the peer stops hearing a learner who has
+    //                  hung up -- nothing in the recording teardown may
+    //                  delay it.
+    //   retract        immediately after, because it is the ONLY thing that
+    //                  tells the other side this was deliberate rather than
+    //                  a crash, and they decide that within seconds. Behind
+    //                  the recorder teardown -- a tap detach is allowed five
+    //                  -- it could arrive after they had already started
+    //                  waiting for someone who was never coming back.
+    //   capture.stop   with the devices already free.
+    //   capture.finish last, the only wait on the transcription service.
     test('unwinds in reverse', () async {
       final (call, calls, _, _) = await build();
       // A call has to have somebody on it to be recorded: nothing is
@@ -1001,8 +1050,8 @@ void main() {
 
       expect(trace.steps, [
         'media.dispose',
-        'capture.stop',
         'retract',
+        'capture.stop',
         'capture.finish',
       ]);
       expect(call.stage, CallStage.ended);
@@ -1018,8 +1067,8 @@ void main() {
       await Future.wait([call.hangUp(), call.hangUp()]);
       expect(trace.steps, [
         'media.dispose',
-        'capture.stop',
         'retract',
+        'capture.stop',
         'capture.finish',
       ]);
     });
@@ -1037,8 +1086,8 @@ void main() {
 
       expect(trace.steps, [
         'media.dispose',
-        'capture.stop',
         'retract',
+        'capture.stop',
         'capture.finish',
       ]);
       expect(call.stage, CallStage.ended);
@@ -1114,8 +1163,8 @@ void main() {
 
       expect(trace.steps, [
         'media.dispose',
-        'capture.stop',
         'retract',
+        'capture.stop',
         'capture.finish',
       ], reason: 'a stuck socket must not strand the rest of teardown');
       expect(call.stage, CallStage.ended);
@@ -1188,8 +1237,8 @@ void main() {
 
     expect(trace.steps, [
       'media.dispose',
-      'capture.stop',
       'retract',
+      'capture.stop',
       'capture.finish',
     ]);
     expect(call.stage, CallStage.ended);
