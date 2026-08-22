@@ -44,24 +44,42 @@ class PangeaCallCapture {
 
   /// The frames themselves.
   ///
-  /// ONE platform subscription, shared by every listener. Each call to
-  /// receiveBroadcastStream makes its own platform subscription, and the
-  /// native side holds a single sink slot whose onCancel clears it
-  /// unconditionally -- so two concurrent listeners (a stale, overtaken start
-  /// still winding down beside the live recording) let the stale one's cancel
-  /// clear the LIVE recording's sink, and every frame after that was dropped
-  /// in silence. A single shared broadcast stream is reference-counted by
-  /// Dart: the platform subscription ends only when the LAST listener goes.
-  static final Stream<CallAudioFrame> _sharedFrames = _frames
-      .receiveBroadcastStream()
-      .map((event) {
-        final map = event as Map;
-        return CallAudioFrame(
-          pcm16: map['pcm'] as Uint8List,
-          sampleRate: map['sampleRate'] as int,
-        );
-      })
-      .asBroadcastStream();
+  /// ONE platform subscription, shared by every listener, opened on the first
+  /// and closed on the last. Each receiveBroadcastStream call makes its own
+  /// platform subscription, and the native side holds a single sink slot whose
+  /// onCancel clears it unconditionally -- so two concurrent listeners (a
+  /// stale, overtaken start winding down beside the live recording) let the
+  /// stale one's cancel clear the LIVE recording's sink, and every frame after
+  /// that was dropped in silence.
+  ///
+  /// A broadcast CONTROLLER rather than asBroadcastStream: the latter pins its
+  /// source for ever once listened, which would hold the native sink open for
+  /// the life of the app. The controller's onListen/onCancel fire on the first
+  /// and last listener, giving real reference counting that also survives
+  /// everyone leaving and a later call listening afresh.
+  static StreamSubscription<dynamic>? _platformSub;
+  static final StreamController<CallAudioFrame> _shared =
+      StreamController<CallAudioFrame>.broadcast(
+    onListen: () {
+      _platformSub = _frames.receiveBroadcastStream().listen(
+        (event) {
+          final map = event as Map;
+          _shared.add(
+            CallAudioFrame(
+              pcm16: map['pcm'] as Uint8List,
+              sampleRate: map['sampleRate'] as int,
+            ),
+          );
+        },
+        onError: _shared.addError,
+      );
+    },
+    onCancel: () async {
+      final sub = _platformSub;
+      _platformSub = null;
+      await sub?.cancel();
+    },
+  );
 
-  Stream<CallAudioFrame> get frames => _sharedFrames;
+  Stream<CallAudioFrame> get frames => _shared.stream;
 }
