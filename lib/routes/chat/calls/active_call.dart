@@ -839,8 +839,10 @@ class ActiveCall extends ChangeNotifier {
       }
       if (video && _foreground != null) {
         // Camera site (a): a call STARTED with video opens its camera inside
-        // connect, never through the toggle.
-        unawaited(_foreground.setCamera(true));
+        // connect, never through the toggle. Through the guarded seam, like
+        // site (b): a platform refusal is a log line, never an unhandled
+        // async error.
+        unawaited(setForegroundCamera(true));
       }
 
       _track = media.publishedAudio;

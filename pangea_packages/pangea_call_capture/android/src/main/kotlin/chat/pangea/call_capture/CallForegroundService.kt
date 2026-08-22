@@ -52,7 +52,18 @@ class CallForegroundService : Service() {
     @Volatile
     var onAction: ((String) -> Unit)? = null
 
+    /**
+     * The one platform gate. startForegroundService, notification channels
+     * and typed promotion all arrived in O; on the handful of API 24-25
+     * devices the app still admits, the service simply does not exist --
+     * the same clean degrade as a refused permission, on devices whose
+     * background freezer is also far gentler.
+     */
+    private val supported: Boolean
+      get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+
     fun start(context: Context, peer: String, video: Boolean): Boolean {
+      if (!supported) return false
       // The MICROPHONE type requires the permission at startForeground time;
       // asking the system first turns a SecurityException into a clean false
       // the caller can retry after the grant.
@@ -71,12 +82,14 @@ class CallForegroundService : Service() {
     }
 
     fun stop(context: Context) {
+      if (!supported) return
       context.startService(
         Intent(context, CallForegroundService::class.java).setAction(ACTION_STOP),
       )
     }
 
     fun setTypes(context: Context, camera: Boolean) {
+      if (!supported) return
       context.startService(
         Intent(context, CallForegroundService::class.java)
           .setAction(ACTION_SET_TYPES)
