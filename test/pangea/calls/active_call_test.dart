@@ -181,7 +181,7 @@ class FakeCalls extends CallService {
             'rel_type': 'm.reference',
             'event_id': ringedNotificationId ?? '\$notification',
           },
-          if (reason != null) CallService.declineReasonField: reason,
+          CallService.declineReasonField: ?reason,
         },
         eventId: '\$d',
         senderId: '@peer:server',
