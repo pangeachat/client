@@ -1116,18 +1116,111 @@ void main() {
   });
 
   group('when the other person leaves', () {
-    test('the call ends rather than holding a microphone open', () async {
-      final (call, calls, _, _) = await build();
+    // The transition table under test, row by row. A vanished peer gets the
+    // SFU's departure timeout to come back; the old behaviour — routing every
+    // absence into the same immediate hangUp — is exactly what these used to
+    // pin, and a mid-call browser refresh killed the call for both sides.
+
+    Future<(ActiveCall, FakeCalls, FakeCapture)> connectedCall() async {
+      final (call, calls, _, capture) = await build();
       calls.devicesInCall = [calls.client.deviceID!];
       calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
       expect(call.stage, CallStage.connected);
+      return (call, calls, capture);
+    }
+
+    test('their place is held instead of the call ending', () async {
+      final (call, calls, _) = await connectedCall();
 
       calls.remotePresent = false;
       await calls.participantsBecome([calls.client.deviceID!]);
 
+      expect(call.stage, CallStage.connected, reason: 'grace, not gone');
+      expect(call.peerReconnecting, isTrue);
+      expect(
+        trace.steps,
+        isNot(contains('retract')),
+        reason: 'nothing torn down while their return is possible',
+      );
+    });
+
+    test('the microphone captures nothing while nobody can hear it', () async {
+      final (call, calls, _) = await connectedCall();
+      expect(trace.steps, contains('capture.start'));
+
+      calls.remotePresent = false;
+      await calls.participantsBecome([calls.client.deviceID!]);
+
+      // The latched _peerArrived alone used to satisfy the election, so the
+      // recording ran on into an empty call. Presence is live now.
+      expect(call.peerReconnecting, isTrue);
+      expect(trace.steps, contains('capture.stop'));
+    });
+
+    test('the peer coming back resumes the call', () async {
+      final (call, calls, _) = await connectedCall();
+
+      calls.remotePresent = false;
+      await calls.participantsBecome([calls.client.deviceID!]);
+      expect(call.peerReconnecting, isTrue);
+      final stops = trace.steps.where((s) => s == 'capture.stop').length;
+
+      calls.remotePresent = true;
+      await calls.participantsBecome([calls.client.deviceID!]);
+
+      expect(call.peerReconnecting, isFalse);
+      expect(call.stage, CallStage.connected);
+      // Recording resumes for the resumed conversation.
+      expect(
+        trace.steps.where((s) => s == 'capture.start').length,
+        greaterThan(stops > 0 ? 1 : 0),
+      );
+    });
+
+    test('time they spent vanished is not talking time', () async {
+      final (call, calls, _) = await connectedCall();
+
+      calls.remotePresent = false;
+      await calls.participantsBecome([calls.client.deviceID!]);
+      final paused = call.talkDuration;
+      // The clock is paused: real time passes, the sum does not move.
+      await Future<void>.delayed(const Duration(milliseconds: 120));
+      expect(call.talkDuration, paused);
+
+      calls.remotePresent = true;
+      await calls.participantsBecome([calls.client.deviceID!]);
+      await call.hangUp();
+      // Both talking stretches counted, the 120ms hole between them not.
+      expect(call.talkDuration, lessThan(const Duration(milliseconds: 120)));
+    });
+
+    test('the grace running out ends it as a call that happened', () async {
+      final (call, calls, _) = await connectedCall();
+
+      calls.remotePresent = false;
+      await calls.participantsBecome([calls.client.deviceID!]);
+      expect(call.peerReconnecting, isTrue);
+
+      await call.peerGraceLapseForTest();
+
       expect(call.stage, CallStage.ended);
+      expect(call.hadPeer, isTrue, reason: 'answered, not missed');
+      expect(call.wasDeclined, isFalse);
       expect(trace.steps, contains('retract'));
+    });
+
+    test('hanging up during the grace ends it immediately', () async {
+      final (call, calls, _) = await connectedCall();
+
+      calls.remotePresent = false;
+      await calls.participantsBecome([calls.client.deviceID!]);
+      expect(call.peerReconnecting, isTrue);
+
+      await call.hangUp();
+
+      expect(call.stage, CallStage.ended);
+      expect(call.peerReconnecting, isFalse, reason: 'the wait died with it');
     });
 
     test('a peer who has not answered yet does not end it', () async {
@@ -1140,42 +1233,40 @@ void main() {
       await calls.participantsBecome([calls.client.deviceID!]);
 
       expect(call.stage, CallStage.connected, reason: 'still ringing out');
+      expect(call.peerReconnecting, isFalse, reason: 'grace is post-answer');
     });
 
-    test('a peer who crashes without a leave event still ends the call', () async {
+    test('a peer who crashes without a leave event gets the same grace', () async {
       // A membership lapses on a timer, not an event, so a crashed peer fires no
-      // participant change. The periodic re-check is what notices they are gone
-      // and stops holding the microphone open.
-      final (call, calls, _, _) = await build();
-      calls.devicesInCall = [calls.client.deviceID!];
-      calls.remotePresent = true;
-      await call.start(roomStub(calls.client), video: false);
-      expect(call.stage, CallStage.connected);
+      // participant change. The periodic re-check is what notices they are gone;
+      // a crash IS the case most worth a grace, since their app may relaunch.
+      final (call, calls, _) = await connectedCall();
 
       // The peer's membership expires; NO participant event fires.
       calls.remotePresent = false;
       await call.tickReelectionForTest();
 
       expect(
-        call.stage,
-        CallStage.ended,
-        reason: 'the periodic check caught it',
+        call.peerReconnecting,
+        isTrue,
+        reason: 'the check armed the grace',
       );
+      await call.peerGraceLapseForTest();
+      expect(call.stage, CallStage.ended);
     });
 
-    test('a peer arriving then leaving ends it', () async {
-      final (call, calls, _, _) = await build();
-      calls.devicesInCall = [calls.client.deviceID!];
-      calls.remotePresent = false;
-      await call.start(roomStub(calls.client), video: false);
+    test('our own connection gone for good still ends it at once', () async {
+      // The grace is for THEIR absence over OUR healthy connection. With our
+      // own session dead and not recovering there is nothing to wait in.
+      final (call, calls, _) = await connectedCall();
 
-      calls.remotePresent = true;
-      await calls.participantsBecome([calls.client.deviceID!]);
-      expect(call.stage, CallStage.connected);
-
+      calls.roster!.connected = false;
+      calls.roster!.recovering = false;
       calls.remotePresent = false;
       await calls.participantsBecome([calls.client.deviceID!]);
+
       expect(call.stage, CallStage.ended);
+      expect(call.peerReconnecting, isFalse);
     });
   });
 

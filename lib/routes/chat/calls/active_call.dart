@@ -258,7 +258,11 @@ class ActiveCall extends ChangeNotifier {
     // alone still reads as somebody being there. Either way the words went
     // nowhere, and crediting them would put speech in a learner's analytics
     // that no one ever heard.
-    _wanted = elected && _peerArrived && (_roster?.isConnected ?? false);
+    _wanted =
+        elected &&
+        _peerArrived &&
+        (_roster?.hasPeer ?? false) &&
+        (_roster?.isConnected ?? false);
     // Handovers are serialised. A device can be displaced and reinstated faster
     // than a flush completes, and starting a new recording while the previous
     // stop is still unwinding would let that stop cancel the new tap and close
@@ -314,15 +318,69 @@ class ActiveCall extends ChangeNotifier {
   /// of that is time anybody spent talking.
   DateTime? _talkEndedAt;
 
+  /// Talking time is SEGMENTS, not one start/end pair. The peer can drop and
+  /// return within the grace window, and a single pair cannot say "paused
+  /// across the gap": clearing the end swallows the gap into the total, and
+  /// keeping it freezes the clock for good. Closed stretches accumulate here;
+  /// [_segmentOpenedAt] is the one still running, if any.
+  final List<Duration> _closedTalk = [];
+  DateTime? _segmentOpenedAt;
+
+  /// Counts the running segment into [_closedTalk]. Safe to call when none is
+  /// open — ending a call that is already in the grace pause closes nothing.
+  void _closeTalkSegment() {
+    final from = _segmentOpenedAt;
+    _segmentOpenedAt = null;
+    if (from != null) _closedTalk.add(DateTime.now().difference(from));
+  }
+
+  /// The grace this call extends a vanished peer before concluding they are
+  /// gone. Matched to LiveKit's departureTimeout default: that is how long the
+  /// SFU actually keeps their place, and a "reconnecting" shown past the point
+  /// return is possible would be a lie.
+  static const peerGraceWindow = Duration(seconds: 20);
+
+  Timer? _peerGrace;
+
+  /// Whether the peer has vanished mid-call and is being waited for.
+  bool get peerReconnecting => _peerGrace != null;
+
+  /// The grace ran out with nobody back. The call HAPPENED — it was answered
+  /// and talked on — so it ends as a call, not as a miss.
+  void _peerGraceLapsed() {
+    _peerGrace = null;
+    if (_ending) return;
+    Logs().i('The other participant did not return; ending the call');
+    unawaited(hangUp());
+  }
+
+  /// Fires the grace lapse now instead of after twenty real seconds, for the
+  /// same reason [waitForPeerTimeoutForTest] exists.
+  @visibleForTesting
+  Future<void> peerGraceLapseForTest() async {
+    final grace = _peerGrace;
+    if (grace == null || !grace.isActive) return;
+    grace.cancel();
+    _peerGraceLapsed();
+    await _hangUp;
+  }
+
   bool get _peerArrived => _talkStartedAt != null;
 
   /// Notes that somebody is on the other end. Every route to that fact goes
-  /// through here, so the moment is always recorded with it.
-  void _notePeerPresent() => _talkStartedAt ??= DateTime.now();
+  /// through here, so the moment is always recorded with it — and a talking
+  /// segment is open from it, the first or one resumed after a grace pause.
+  void _notePeerPresent() {
+    _talkStartedAt ??= DateTime.now();
+    _segmentOpenedAt ??= DateTime.now();
+  }
 
   /// Notes that the talking is over. Called as the call starts to end rather
   /// than when it has finished ending.
-  void _noteTalkEnded() => _talkEndedAt ??= DateTime.now();
+  void _noteTalkEnded() {
+    _talkEndedAt ??= DateTime.now();
+    _closeTalkSegment();
+  }
 
   Timer? _waitingForPeer;
 
@@ -374,21 +432,37 @@ class ActiveCall extends ChangeNotifier {
     final peerHere = _roster?.hasPeer ?? false;
     if (peerHere) {
       final firstArrival = !_peerArrived;
+      final returned = _peerGrace != null;
+      _peerGrace?.cancel();
+      _peerGrace = null;
       _notePeerPresent();
       _waitingForPeer?.cancel();
       _waitingForPeer = null;
       // The screen decides whether this was a real call from this, so it has to
-      // hear about it — the stage does not change when someone answers.
-      if (firstArrival && !_disposed) notifyListeners();
+      // hear about it — the stage does not change when someone answers, nor
+      // when they make it back inside the grace.
+      if ((firstArrival || returned) && !_disposed) notifyListeners();
       // Taken here as well, because this runs throughout the call while the
       // teardown read happens once. A membership whose echo was still on its
       // way at that single moment left a device with nothing to anchor its
       // analytics to, and every word its learner spoke was dropped.
       _rememberMembership();
+    } else if (_peerArrived && (_roster?.isConnected ?? false)) {
+      // Vanished, while our own connection is fine — a refresh, a crash, a
+      // network hole on their side. The SFU keeps their place for its
+      // departure timeout, so for exactly that long this is "reconnecting",
+      // not "over". The talking clock pauses, and the election below stops
+      // the microphone: whatever is said now, nobody can hear.
+      if (_peerGrace == null) {
+        Logs().i('The other participant dropped; holding their place');
+        _closeTalkSegment();
+        _peerGrace = Timer(peerGraceWindow, _peerGraceLapsed);
+        if (!_disposed) notifyListeners();
+      }
     } else if (_peerArrived) {
-      // In a direct message there is nobody else to wait for. Staying would hold
-      // a microphone open for a conversation that has ended, and the learner
-      // would have to notice and hang up on silence.
+      // Gone AND our own connection is gone for good — the roster only shows
+      // an empty list disconnected once recovery is over. There is no one to
+      // wait for and no session to wait in.
       Logs().i('The other participant left; ending the call');
       unawaited(hangUp());
       return;
@@ -523,10 +597,19 @@ class ActiveCall extends ChangeNotifier {
   /// when they arrived and when the call began to end. The screen only sees
   /// stage changes, and the last of those lands after teardown — so measuring
   /// there charged the conversation for the flush and the upload that follow it.
+  ///
+  /// The sum of the closed segments plus the one still running. Time the peer
+  /// spent vanished inside the grace window is nobody talking, and it is not
+  /// counted — the card, the ticking timer and the summary all read this same
+  /// sum, so no surface can disagree about how long the conversation was.
   Duration get talkDuration {
-    final from = _talkStartedAt;
-    if (from == null) return Duration.zero;
-    return (_talkEndedAt ?? DateTime.now()).difference(from);
+    var total = Duration.zero;
+    for (final segment in _closedTalk) {
+      total += segment;
+    }
+    final open = _segmentOpenedAt;
+    if (open != null) total += DateTime.now().difference(open);
+    return total;
   }
 
   CallStage get stage => _stage;
@@ -925,6 +1008,8 @@ class ActiveCall extends ChangeNotifier {
     _peerRings = null;
     _waitingForPeer?.cancel();
     _waitingForPeer = null;
+    _peerGrace?.cancel();
+    _peerGrace = null;
     // A decline waiting out its grace when teardown arrives still happened.
     // Only the WAIT is abandoned, not the fact — otherwise a decline landing in
     // the last moment before the call gives up on its own is written as nobody

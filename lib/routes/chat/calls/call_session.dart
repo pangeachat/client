@@ -161,6 +161,7 @@ class CallSession extends ChangeNotifier {
   CallStage get stage => call.stage;
   Object? get error => call.error;
   bool get isReconnecting => call.isReconnecting;
+  bool get peerReconnecting => call.peerReconnecting;
   bool get hadPeer => call.hadPeer;
   bool get placedCall => call.placedCall;
   DateTime? get talkStartedAt => call.talkStartedAt;

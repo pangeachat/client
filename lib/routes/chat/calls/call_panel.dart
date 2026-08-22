@@ -247,6 +247,11 @@ class CallPanel extends StatelessWidget {
 String callStatusLine(L10n l10n, CallSession session) {
   if (session.isFailed) return callFailureLine(l10n, session.error);
   if (session.isReconnecting) return l10n.callReconnecting;
+  if (session.peerReconnecting) {
+    return l10n.callPeerReconnecting(
+      session.peer?.calcDisplayname() ?? l10n.user,
+    );
+  }
   switch (session.stage) {
     case CallStage.connecting:
       return session.placedCall ? l10n.callRinging : l10n.callConnecting;
@@ -276,11 +281,11 @@ String callFailureLine(L10n l10n, Object? error) {
   return l10n.callFailed;
 }
 
-Duration _elapsed(CallSession session) {
-  final since = session.talkStartedAt;
-  if (since == null) return Duration.zero;
-  return DateTime.now().difference(since);
-}
+Duration _elapsed(CallSession session) =>
+    // The session's own segmented sum, the same one the card and the summary
+    // read. Measuring from the start timestamp here counted time the peer
+    // spent vanished in the grace window, and the surfaces disagreed.
+    session.talkDuration;
 
 /// `M:SS`, or `H:MM:SS` past an hour.
 String formatCallDuration(Duration d) {

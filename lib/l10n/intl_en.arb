@@ -3606,6 +3606,12 @@
     "callFullscreen": "Full screen",
     "callExitFullscreen": "Exit full screen",
     "callReconnecting": "Reconnecting...",
+    "callPeerReconnecting": "{name} reconnecting...",
+    "@callPeerReconnecting": {
+        "placeholders": {
+            "name": {}
+        }
+    },
     "callFailedBusy": "You are already in a call",
     "callFailedService": "The calling service refused the connection",
     "callFailedNoFocus": "Calling is not available on this server",
