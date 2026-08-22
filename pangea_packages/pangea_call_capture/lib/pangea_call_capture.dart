@@ -43,12 +43,25 @@ class PangeaCallCapture {
   Future<void> stop() => _control.invokeMethod<void>('stop');
 
   /// The frames themselves.
-  Stream<CallAudioFrame> get frames =>
-      _frames.receiveBroadcastStream().map((event) {
+  ///
+  /// ONE platform subscription, shared by every listener. Each call to
+  /// receiveBroadcastStream makes its own platform subscription, and the
+  /// native side holds a single sink slot whose onCancel clears it
+  /// unconditionally -- so two concurrent listeners (a stale, overtaken start
+  /// still winding down beside the live recording) let the stale one's cancel
+  /// clear the LIVE recording's sink, and every frame after that was dropped
+  /// in silence. A single shared broadcast stream is reference-counted by
+  /// Dart: the platform subscription ends only when the LAST listener goes.
+  static final Stream<CallAudioFrame> _sharedFrames = _frames
+      .receiveBroadcastStream()
+      .map((event) {
         final map = event as Map;
         return CallAudioFrame(
           pcm16: map['pcm'] as Uint8List,
           sampleRate: map['sampleRate'] as int,
         );
-      });
+      })
+      .asBroadcastStream();
+
+  Stream<CallAudioFrame> get frames => _sharedFrames;
 }
