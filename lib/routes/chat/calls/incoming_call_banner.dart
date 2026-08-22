@@ -249,6 +249,30 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     });
   }
 
+  /// Declining the way back: the call ENDS.
+  ///
+  /// Dismissing used to only hide the banner, leaving our membership standing
+  /// -- so the other person sat watching their reconnecting window run out
+  /// for someone who had already decided not to return. Saying no is an
+  /// answer, and it travels.
+  void _endFromOffer(RejoinOffer offer) {
+    final service = _service;
+    unawaited(CallBreadcrumb.clear());
+    _offerWatch?.cancel();
+    _offerWatch = null;
+    setState(() => _rejoin = null);
+    if (service == null) return;
+    unawaited(
+      service.abandonCall(offer.room, offer.membershipEventId).catchError((
+        Object e,
+        StackTrace s,
+      ) {
+        matrix.Logs().w('Could not end the call from the return offer', e, s);
+        return false;
+      }),
+    );
+  }
+
   void _acceptRejoin(RejoinOffer offer) {
     // Consumed: the rejoined call manages its own trace from here.
     unawaited(CallBreadcrumb.clear());
@@ -547,12 +571,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
                   key: ValueKey(rejoin.membershipEventId),
                   offer: rejoin,
                   onReturn: () => _acceptRejoin(rejoin),
-                  onDismiss: () {
-                    // Declined: the trace goes too, or the same offer would
-                    // stand back up on the next reload inside its age bound.
-                    unawaited(CallBreadcrumb.clear());
-                    setState(() => _rejoin = null);
-                  },
+                  onEnd: () => _endFromOffer(rejoin),
                 ),
               ),
             ),
@@ -840,12 +859,12 @@ class _CircleAction extends StatelessWidget {
 class _ReturnCard extends StatelessWidget {
   final RejoinOffer offer;
   final VoidCallback onReturn;
-  final VoidCallback onDismiss;
+  final VoidCallback onEnd;
 
   const _ReturnCard({
     required this.offer,
     required this.onReturn,
-    required this.onDismiss,
+    required this.onEnd,
     super.key,
   });
 
@@ -922,12 +941,14 @@ class _ReturnCard extends StatelessWidget {
             // HOVER does, and the grey box swallows the card. FilledButton
             // and IconButton each bring one, which is exactly what appeared
             // over this banner on hover.
+            // Red, and it MEANS it: the other person is waiting out their
+            // reconnecting window, and this tells them the answer.
             _FlatAction(
-              icon: Icons.close,
-              label: l10n.close,
-              onPressed: onDismiss,
-              background: Colors.white.withValues(alpha: 0.10),
-              foreground: theme.colorScheme.onSurface,
+              icon: Icons.call_end,
+              label: l10n.callHangUp,
+              onPressed: onEnd,
+              background: const Color(0xFFD32F2F),
+              foreground: Colors.white,
             ),
             const SizedBox(width: 8),
             _FlatAction(

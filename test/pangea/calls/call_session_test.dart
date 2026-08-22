@@ -21,6 +21,13 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_resp
 class _FakeCalls extends CallService {
   _FakeCalls(super.client);
 
+  /// When this device's original membership was written, for a rejoin.
+  DateTime? membershipWrittenAtValue;
+
+  @override
+  DateTime? membershipWrittenAt(matrix.Room room, String eventId) =>
+      membershipWrittenAtValue;
+
   bool retracted = false;
 
   @override
@@ -469,6 +476,54 @@ void main() {
         );
         await pumpEventQueue();
         expect(released.length, lessThanOrEqualTo(1));
+      },
+    );
+  });
+
+  group('the clock both people read', () {
+    test(
+      'a rejoined session continues the call, it does not restart it',
+      () async {
+        // A learner who refreshed watched 0:00 while the other side read 4:12 --
+        // one call, two answers. The rejoin carries the call's own start.
+        final client = await _bareClient();
+        final calls = _FakeCalls(client);
+        calls.membershipWrittenAtValue = DateTime.now().subtract(
+          const Duration(minutes: 4, seconds: 12),
+        );
+        final media = _FakeMedia();
+        final session = CallSession.start(
+          room: matrix.Room(id: '!r:server', client: client),
+          video: false,
+          callService: calls,
+          transcribe: (request) async =>
+              SpeechToTextResponseModel(results: const []),
+          userL1: 'en',
+          userL2: 'es',
+          analytics: (eventId, uses, language) async {},
+          onReleased: (_) {},
+          rejoinAnchor: r'$original-membership',
+          mediaOverride: media,
+          captureOverride: CallCaptureService(sink: _NullSink()),
+        );
+        await pumpEventQueue();
+        final roster = media.fakeRoster!;
+        roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+        roster.recompute();
+        await pumpEventQueue();
+
+        final shown = DateTime.now().difference(session.callStartedAt!);
+        expect(
+          shown.inSeconds,
+          greaterThan(240),
+          reason: 'the clock reads where the call actually is',
+        );
+        // The CARD is a different quantity and must not inherit the gap.
+        expect(
+          session.talkDuration,
+          lessThan(const Duration(seconds: 5)),
+          reason: 'talk time is what anyone could hear, not wall clock',
+        );
       },
     );
   });

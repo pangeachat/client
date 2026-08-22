@@ -218,6 +218,7 @@ class CallSession extends ChangeNotifier {
   bool get hadPeer => call.hadPeer;
   bool get placedCall => call.placedCall;
   DateTime? get talkStartedAt => call.talkStartedAt;
+  DateTime? get callStartedAt => call.callStartedAt;
   Duration get talkDuration => call.talkDuration;
 
   /// The other person in this direct message, for the name and face on screen.

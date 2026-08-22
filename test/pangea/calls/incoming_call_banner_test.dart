@@ -362,6 +362,40 @@ void main() {
       }
     }
 
+    testWidgets('the return card offers a way OUT, not just a way back', (
+      tester,
+    ) async {
+      // Dismissing used to only hide the banner, leaving our membership
+      // standing while the other person watched their reconnecting window
+      // run down for someone who had already decided not to return.
+      final room = directChat();
+      final state = await pumpAsProduction(tester);
+      state.rejoinOffer.value = RejoinOffer(
+        room: room,
+        membershipEventId: r'$anchor',
+        since: DateTime.now(),
+      );
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 50));
+
+      expect(
+        find.descendant(
+          of: find.byKey(const ValueKey(r'$anchor')),
+          matching: find.byIcon(Icons.call_end),
+        ),
+        findsOneWidget,
+        reason: 'saying no is an answer, and it has to be reachable',
+      );
+      expect(
+        find.descendant(
+          of: find.byKey(const ValueKey(r'$anchor')),
+          matching: find.byIcon(Icons.call),
+        ),
+        findsOneWidget,
+        reason: 'and so is coming back',
+      );
+    });
+
     testWidgets('the return card risks no grey box', (tester) async {
       final room = directChat();
       final state = await pumpAsProduction(tester);

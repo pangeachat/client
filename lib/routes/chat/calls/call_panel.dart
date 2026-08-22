@@ -337,6 +337,25 @@ class CallPanel extends StatelessWidget {
 /// so no two surfaces can disagree about the same call.
 String callStatusLine(L10n l10n, CallSession session) {
   if (session.isFailed) return callFailureLine(l10n, session.error);
+  // A call that is OVER outranks anything it was doing on the way out. The
+  // reconnecting flags used to be read first, so a call that ended while a
+  // peer's grace was open still read "reconnecting" -- on a phone, minutes
+  // after the other side hung up, which is the same false promise the grace
+  // itself was fixed for.
+  switch (session.stage) {
+    case CallStage.ended:
+      return l10n.callEnded;
+    case CallStage.declined:
+      if (session.peerWasBusy) {
+        return l10n.callPeerBusy(session.peer?.calcDisplayname() ?? l10n.user);
+      }
+      return l10n.callDeclinedByPeer;
+    case CallStage.failed:
+      return callFailureLine(l10n, session.error);
+    case CallStage.connecting:
+    case CallStage.connected:
+      break;
+  }
   if (session.isReconnecting) return l10n.callReconnecting;
   if (session.peerReconnecting) {
     return l10n.callPeerReconnecting(
@@ -375,11 +394,18 @@ String callFailureLine(L10n l10n, Object? error) {
   return l10n.callFailed;
 }
 
-Duration _elapsed(CallSession session) =>
-    // The session's own segmented sum, the same one the card and the summary
-    // read. Measuring from the start timestamp here counted time the peer
-    // spent vanished in the grace window, and the surfaces disagreed.
-    session.talkDuration;
+Duration _elapsed(CallSession session) {
+  // The CALL's clock, counted from when it began -- which a rejoined session
+  // carries over, so both people read the same number instead of one of them
+  // restarting at zero after a refresh. Deliberately NOT talkDuration: that
+  // is the segmented time anyone could actually be heard, which is the right
+  // answer for the card and the analytics and the wrong one for a timer that
+  // is supposed to match the other person's screen.
+  final began = session.callStartedAt;
+  if (began == null) return session.talkDuration;
+  final elapsed = DateTime.now().difference(began);
+  return elapsed.isNegative ? Duration.zero : elapsed;
+}
 
 /// `M:SS`, or `H:MM:SS` past an hour.
 String formatCallDuration(Duration d) {

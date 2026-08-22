@@ -836,6 +836,54 @@ class CallService {
     return false;
   }
 
+  /// Leaves a call this device is no longer joined to.
+  ///
+  /// After a reload the session is gone but the membership it wrote is still
+  /// standing, and the other person is watching their grace run down. Saying
+  /// "no, I am not coming back" has to retract that membership, or they wait
+  /// out the whole window for someone who already decided. Writes the state
+  /// key the membership event itself carries, because that is the only way
+  /// to name it without a session to ask.
+  Future<bool> abandonCall(Room room, String ownMembershipEventId) async {
+    final states = room.states[EventTypes.GroupCallMember];
+    if (states == null) return false;
+    for (final state in states.values) {
+      if (state is! Event) continue;
+      if (state.eventId != ownMembershipEventId) continue;
+      final stateKey = state.stateKey;
+      if (stateKey == null) return false;
+      try {
+        await client.setRoomStateWithKey(
+          room.id,
+          EventTypes.GroupCallMember,
+          stateKey,
+          {'memberships': <Map<String, Object?>>[]},
+        );
+        return true;
+      } catch (e, s) {
+        Logs().w('Could not leave the call we were offered back', e, s);
+        return false;
+      }
+    }
+    return false;
+  }
+
+  /// When the membership event [eventId] was written, if it is still in the
+  /// room's state.
+  ///
+  /// What a rejoined session uses to keep the call's clock running. Rejoining
+  /// started the timer at zero, so a learner who refreshed watched 0:00 while
+  /// the other side read 4:12 -- the same call, two answers.
+  DateTime? membershipWrittenAt(Room room, String eventId) {
+    final states = room.states[EventTypes.GroupCallMember];
+    if (states == null) return null;
+    for (final state in states.values) {
+      if (state is! Event) continue;
+      if (state.eventId == eventId) return state.originServerTs;
+    }
+    return null;
+  }
+
   /// Whether [eventId] is one of [userId]'s CURRENT membership state events.
   ///
   /// The discriminator between a STALE ring (replayed from before a reload,

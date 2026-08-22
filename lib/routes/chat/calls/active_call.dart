@@ -462,7 +462,7 @@ class ActiveCall extends ChangeNotifier {
   /// notifications are welcome, but the truth is re-derived on this tick too --
   /// which is also what ends a call whose peer crashed without a leave event, a
   /// guarantee the tests asserted while production had only the SFU's events.
-  static const presenceRecheck = Duration(seconds: 5);
+  static const presenceRecheck = Duration(seconds: 2);
 
   Timer? _peerGrace;
 
@@ -550,7 +550,19 @@ class ActiveCall extends ChangeNotifier {
   /// Notes that somebody is on the other end. Every route to that fact goes
   /// through here, so the moment is always recorded with it — and a talking
   /// segment is open from it, the first or one resumed after a grace pause.
+  /// When the CALL began, as opposed to when this session did.
+  ///
+  /// The clock on screen counts from here, so a rejoined session carries on
+  /// from where the call actually is instead of restarting at zero -- both
+  /// people watching one call should read the same number. Distinct from
+  /// [talkDuration], which is the segmented time anyone was actually able to
+  /// hear, and is what the card and the analytics use.
+  DateTime? get callStartedAt => _callStartedAt;
+
+  DateTime? _callStartedAt;
+
   void _notePeerPresent() {
+    _callStartedAt ??= DateTime.now();
     final firstArrival = _talkStartedAt == null;
     _talkStartedAt ??= DateTime.now();
     _segmentOpenedAt ??= DateTime.now();
@@ -1113,6 +1125,11 @@ class ActiveCall extends ChangeNotifier {
         // offered the rejoin. Re-announcing would mint a new anchor for a call
         // that already has one, and every surface keyed on it would split.
         membershipId = _membershipEventId = rejoinAnchor;
+        // The call's clock continues from when this device first joined it,
+        // not from this moment: a rejoin is the same call, and restarting at
+        // zero made the two sides disagree about how long they had been
+        // talking. Falls back to now when the event has aged out of state.
+        _callStartedAt = calls.membershipWrittenAt(room, rejoinAnchor);
       } else {
         membershipId = _membershipEventId = await calls.announce();
       }
