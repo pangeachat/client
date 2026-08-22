@@ -328,8 +328,14 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   }
 
   void _acceptRejoin(RejoinOffer offer) {
-    // Consumed: the rejoined call manages its own trace from here.
-    unawaited(CallBreadcrumb.clear());
+    // The breadcrumb is NOT cleared here. It is the only durable record that
+    // this device was in a call, and rejoining can fail -- a token request, a
+    // focus lookup or the SFU connect can all miss. Clearing it first threw
+    // away the retry path before knowing whether it was needed, and the
+    // failed-call screen only offers Close, so the learner was left with a
+    // peer still waiting in a call they could no longer reach. The rejoined
+    // call owns it from here: it re-drops the crumb once it is up, and erases
+    // it on a clean teardown.
     _clearOffer();
     if (!mounted) return;
     Matrix.of(context).startCall(
@@ -633,16 +639,39 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // moment someone tapped answer — and answering did nothing at all. The SFU
     // is the rendezvous point: join it, and let presence decide from there
     // whether anyone is actually on the other end.
-    Matrix.of(context).startCall(
-      ring.event.room,
-      video: ring.isVideo,
-      // Anchors this side's speaking analytics: the answering device does not
-      // write the call to the timeline, the caller does.
-      notificationEventId: ring.event.eventId,
-      // The caller's own membership, named by their ring: the call's SHARED
-      // identity, which every card for this call is stamped with.
-      callerMembershipEventId: ring.membershipEventId,
-    );
+    try {
+      Matrix.of(context).startCall(
+        ring.event.room,
+        video: ring.isVideo,
+        // Anchors this side's speaking analytics: the answering device does
+        // not write the call to the timeline, the caller does.
+        notificationEventId: ring.event.eventId,
+        // The caller's own membership, named by their ring: the call's SHARED
+        // identity, which every card for this call is stamped with.
+        callerMembershipEventId: ring.membershipEventId,
+      );
+    } on AlreadyInACall {
+      // A call is live on ANOTHER account of this app. The answer cannot
+      // happen, and the prompt is already down -- so TELL the caller rather
+      // than leaving them ringing into nothing until they time out and write
+      // a missed call.
+      matrix.Logs().w('Answering while another account is on a call');
+      final service = _service;
+      if (service != null) {
+        unawaited(() async {
+          try {
+            await service.decline(
+              ring.event.room,
+              notificationEventId: ring.event.eventId,
+              reason: CallService.declineBusy,
+            );
+          } catch (e, s) {
+            matrix.Logs().w('Could not turn down a call we cannot take', e, s);
+          }
+        }());
+      }
+      return;
+    }
     // The call lives in its own chat's pane, so answering also goes there.
     // Through the app's router directly: this banner is mounted above it.
     final router = FluffyChatApp.router;

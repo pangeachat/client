@@ -65,7 +65,7 @@ const ROOM_ID = ROOM + ':pangea.localhost';
     await wait(1500);
   }
   console.log(`   ${frames.length} frames captured: /tmp/callweb/SUM-*.png`);
-  h.check('summary', 'the phone left the call on its own', 
+  h.check('summary', 'the phone left the call on its own',
     !(await mx.hasMembership(B.token, ROOM_ID, B.userId)), 'still in the call');
   await A.browser.close();
   h.report();
