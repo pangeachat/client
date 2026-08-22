@@ -259,7 +259,11 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       }
       final service = _service;
       if (service == null) return;
-      if (service.callStillHeldByAnother(offer.room, offer.membershipEventId)) {
+      if (service.callStillHeldByAnother(
+        offer.room,
+        offer.membershipEventId,
+        notBefore: offer.since,
+      )) {
         return;
       }
       matrix.Logs().i('The call to return to is over; withdrawing the offer');
@@ -453,10 +457,19 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     if (service == null) return;
     final room = ring.event.room;
     final callerId = ring.event.senderId;
-    var wasPresent = service.callerStillInCall(room, callerId);
+    final callerDevice = ring.senderDeviceId;
+    var wasPresent = service.callerStillInCall(
+      room,
+      callerId,
+      deviceId: callerDevice,
+    );
     _callerGone = service.callerPresenceChanges(room, callerId).listen((_) {
       if (!mounted || _ringing?.event.eventId != ring.event.eventId) return;
-      final present = service.callerStillInCall(room, callerId);
+      final present = service.callerStillInCall(
+        room,
+        callerId,
+        deviceId: callerDevice,
+      );
       if (present) {
         wasPresent = true;
         return;

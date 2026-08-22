@@ -731,15 +731,51 @@ class CallService {
   /// Matched on the state event's SENDER rather than its state key, because the
   /// key has three shapes across MSC3757 and per-device variants and only the
   /// sender is the same in all of them.
-  bool callerStillInCall(Room room, String callerId) {
+  ///
+  /// Answered against the DEVICE that placed the ring when the ring says which
+  /// one, because "does this user hold a membership anywhere in this room" is
+  /// not the question. A caller with a second device that CRASHED in an
+  /// earlier call leaves a non-empty membership standing for minutes, and it
+  /// kept the prompt ringing after the calling device had retracted -- so the
+  /// callee could answer a call that had already been cancelled. Falls back to
+  /// the user-wide read when the ring names no device, which is the behaviour
+  /// this had before.
+  bool callerStillInCall(Room room, String callerId, {String? deviceId}) {
     final memberStates = room.states[EventTypes.GroupCallMember];
     if (memberStates == null) return false;
     for (final state in memberStates.values) {
       if (state.senderId != callerId) continue;
       final memberships = state.content['memberships'];
-      if (memberships is List && memberships.isNotEmpty) return true;
+      if (memberships is! List) continue;
+      if (deviceId != null && !_belongsToDevice(state, memberships, deviceId)) {
+        continue;
+      }
+      if (memberships.isNotEmpty) return true;
     }
     return false;
+  }
+
+  /// Whether a member state event is the work of one particular device.
+  ///
+  /// The membership's own `device_id` first; the state key only as a fallback,
+  /// because the key has three shapes across MSC3757 and the per-device
+  /// variants and matching it is guesswork where the field is not.
+  bool _belongsToDevice(
+    StrippedStateEvent state,
+    List<Object?> memberships,
+    String deviceId,
+  ) {
+    var sawDeviceField = false;
+    for (final m in memberships) {
+      if (m is! Map) continue;
+      final id = m['device_id'];
+      if (id is String) {
+        sawDeviceField = true;
+        if (id == deviceId) return true;
+      }
+    }
+    if (sawDeviceField) return false;
+    return state.stateKey?.contains(deviceId) ?? false;
   }
 
   /// Whether [peerId] still holds a LIVE membership in the call this device
@@ -822,7 +858,11 @@ class CallService {
   /// call-scoped and expiry-aware, for the reason [peerLiveInCurrentCall]
   /// states: a room accumulates a membership per device, and the broad read
   /// answers "yes" for ever.
-  bool callStillHeldByAnother(Room room, String ownMembershipEventId) {
+  bool callStillHeldByAnother(
+    Room room,
+    String ownMembershipEventId, {
+    DateTime? notBefore,
+  }) {
     final states = room.states[EventTypes.GroupCallMember];
     if (states == null) return false;
     final me = client.userID;
@@ -840,6 +880,16 @@ class CallService {
     for (final state in states.values) {
       if (state is! Event) continue;
       if (state.senderId == me) continue;
+      // Nothing written before this call began can prove it is still being
+      // held. The reload this offer exists for is exactly when our own event
+      // has been emptied, so the call-scoped filter below goes quiet -- and
+      // with the call id being the room id, another device's membership left
+      // standing by a crash in an EARLIER call then read as somebody still on
+      // this one, and the Return offer invited the learner into an empty room
+      // until that stale membership expired.
+      if (notBefore != null && state.originServerTs.isBefore(notBefore)) {
+        continue;
+      }
       final memberships = state.content['memberships'];
       if (memberships is! List) continue;
       for (final m in memberships) {

@@ -1246,6 +1246,93 @@ void main() {
       );
     });
   });
+  group('whether the caller is still on the call they rang about', () {
+    const caller = '@caller:fakeServer.notExisting';
+    const me = '@test:fakeServer.notExisting';
+    var seq = 0;
+
+    /// A caller with two devices: a tablet that crashed in an earlier call and
+    /// left a membership standing, and the phone that placed THIS ring and has
+    /// since retracted.
+    Future<(CallService, Room)> withCallerDevices({
+      required bool phoneStillIn,
+    }) async {
+      final roomId = '!ring${seq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                state: [
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: const {
+                      'memberships': [
+                        {'call_id': 'x', 'device_id': 'TABLET'},
+                      ],
+                    },
+                    senderId: caller,
+                    eventId: '\$tablet',
+                    originServerTs: DateTime.now(),
+                    stateKey: '_${caller}_TABLET',
+                  ),
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: {
+                      'memberships': phoneStillIn
+                          ? const [
+                              {'call_id': 'x', 'device_id': 'PHONE'},
+                            ]
+                          : const <Object?>[],
+                    },
+                    senderId: caller,
+                    eventId: '\$phone',
+                    originServerTs: DateTime.now(),
+                    stateKey: '_${caller}_PHONE',
+                  ),
+                ],
+              ),
+            },
+          ),
+        ),
+      );
+      return (CallService(client), client.getRoomById(roomId)!);
+    }
+
+    test(
+      'a crashed second device cannot keep a cancelled ring alive',
+      () async {
+        final (service, room) = await withCallerDevices(phoneStillIn: false);
+        expect(
+          service.callerStillInCall(room, caller),
+          isTrue,
+          reason: 'the user-wide read still sees the stale tablet',
+        );
+        expect(
+          service.callerStillInCall(room, caller, deviceId: 'PHONE'),
+          isFalse,
+          reason: 'the device that rang has retracted, so the ring is over',
+        );
+      },
+    );
+
+    test('the device that rang, still in the call, keeps ringing', () async {
+      final (service, room) = await withCallerDevices(phoneStillIn: true);
+      expect(
+        service.callerStillInCall(room, caller, deviceId: 'PHONE'),
+        isTrue,
+      );
+    });
+  });
+
   group('whether a standing return offer still means anything', () {
     const me = '@test:fakeServer.notExisting';
     const peer = '@friend:fakeServer.notExisting';
