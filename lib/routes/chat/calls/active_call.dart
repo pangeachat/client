@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart' hide Room;
 import 'package:pangea_call_capture/pangea_call_capture.dart'
     show CallForegroundControl;
 
+import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
@@ -240,11 +241,17 @@ class ActiveCall extends ChangeNotifier {
   /// dialog was still up -- and is owed a retry at the first post-grant step.
   bool _foregroundPending = false;
 
-  /// Whether THIS call is the one the service runs for. A start skipped by
-  /// the busy check never claims it -- and only the claimant may stop it,
-  /// or a refused second call's teardown would strip the live call of its
-  /// background protection.
+  /// Whether THIS call is the one the service runs for -- the PLATFORM'S
+  /// answer, not this side's guess: the native start adjudicates on the one
+  /// thread every start arrives on, so of two racing calls exactly one hears
+  /// yes. Only the claimant may stop the service, or a refused second call's
+  /// teardown would strip the live call of its background protection.
   bool _foregroundClaimed = false;
+
+  /// The action-handler claim, for the same reason on the Dart side: the
+  /// handler slot is global, and an old session disposing late must not
+  /// clear the one a new call installed.
+  int? _actionEpoch;
 
   /// What the notification shows. Threaded from the session, which knows the
   /// peer; the call itself only knows the room.
@@ -262,22 +269,27 @@ class ActiveCall extends ChangeNotifier {
 
   /// Hands notification actions to whoever owns the call's controls.
   void foregroundActions(void Function(String action) handle) =>
-      _foreground?.onAction(handle);
+      _actionEpoch = _foreground?.onAction(handle);
 
-  /// Releases the action handler. The channel handler is process-global and
-  /// closes over its session; left set, it retains a disposed session until
-  /// the next call replaces it.
-  void clearForegroundActions() => _foreground?.clearActionHandler();
+  /// Releases the action handler -- only the claim this call holds. The slot
+  /// is process-global and last-writer-wins; a session held for its summary
+  /// disposes AFTER the next call installed its handler, and clearing
+  /// unconditionally would strip that call of its notification buttons.
+  void clearForegroundActions() {
+    final epoch = _actionEpoch;
+    if (epoch != null) _foreground?.clearActionHandler(epoch);
+    _actionEpoch = null;
+  }
 
   Future<void> _startForeground({required bool video}) async {
     final foreground = _foreground;
     if (foreground == null) return;
-    _foregroundClaimed = true;
     try {
       final started = await foreground.start(
         peer: foregroundLabel,
         video: video,
       );
+      _foregroundClaimed = started;
       _foregroundPending = !started;
     } catch (e, s) {
       // The service is the call's survival in the background, never its
@@ -442,8 +454,21 @@ class ActiveCall extends ChangeNotifier {
   /// through here, so the moment is always recorded with it — and a talking
   /// segment is open from it, the first or one resumed after a grace pause.
   void _notePeerPresent() {
+    final firstArrival = _talkStartedAt == null;
     _talkStartedAt ??= DateTime.now();
     _segmentOpenedAt ??= DateTime.now();
+    if (firstArrival) _dropBreadcrumb();
+  }
+
+  /// Leaves the reload trace once this is a conversation with an identity.
+  ///
+  /// Retried from the announce path because the first arrival can precede
+  /// the membership echo; whichever lands second writes it.
+  void _dropBreadcrumb() {
+    final room = _room;
+    final anchor = _membershipEventId;
+    if (room == null || anchor == null || _ending) return;
+    unawaited(CallBreadcrumb.drop(roomId: room.id, membershipEventId: anchor));
   }
 
   /// Notes that the talking is over. Called as the call starts to end rather
@@ -934,6 +959,7 @@ class ActiveCall extends ChangeNotifier {
         membershipId = _membershipEventId = await calls.announce();
       }
       _abandonIfEnding();
+      if (_peerArrived) _dropBreadcrumb();
 
       // Ring the other side, if we are the one placing the call. A timeline
       // event, so it reaches them via push even if their app was closed —
@@ -1171,6 +1197,10 @@ class ActiveCall extends ChangeNotifier {
         }),
       );
     }
+    // The clean teardown erases the reload trace; only a death that never
+    // ran this line leaves it standing, which is exactly what makes it the
+    // signal.
+    unawaited(CallBreadcrumb.clear());
     unawaited(_declines?.cancel());
     _declines = null;
     unawaited(_peerRings?.cancel());

@@ -50,6 +50,9 @@ async function pageText(page) {
   // ticking timer on A's page is A's own statement that its roster saw B.
   let talking = false;
   for (let i = 0; i < 20 && !talking; i++) {
+    // The router can drift A off the room minutes after login; the call
+    // panel lives in the room's pane, so bring it back before sampling.
+    if (i > 0 && i % 4 === 0) await h.ensureRoom(A, ROOM).catch(() => {});
     const t = await pageText(A.page);
     talking = /\b\d:\d\d\b/.test(t) && !/Ringing/i.test(t);
     if (!talking) await wait(1500);

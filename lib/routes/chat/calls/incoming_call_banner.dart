@@ -8,6 +8,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_quick_replies.dart';
+import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/ring_player.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -194,6 +195,8 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   }
 
   void _acceptRejoin(RejoinOffer offer) {
+    // Consumed: the rejoined call manages its own trace from here.
+    unawaited(CallBreadcrumb.clear());
     setState(() => _rejoin = null);
     if (!mounted) return;
     Matrix.of(context).startCall(
@@ -434,7 +437,12 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
                   key: ValueKey(rejoin.membershipEventId),
                   offer: rejoin,
                   onReturn: () => _acceptRejoin(rejoin),
-                  onDismiss: () => setState(() => _rejoin = null),
+                  onDismiss: () {
+                    // Declined: the trace goes too, or the same offer would
+                    // stand back up on the next reload inside its age bound.
+                    unawaited(CallBreadcrumb.clear());
+                    setState(() => _rejoin = null);
+                  },
                 ),
               ),
             ),

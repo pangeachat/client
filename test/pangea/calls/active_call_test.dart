@@ -401,6 +401,8 @@ class FakeForeground extends CallForegroundControl {
     return startReturns;
   }
 
+  int _epoch = 0;
+
   @override
   Future<void> stop() async => trace('fgs.stop');
 
@@ -408,10 +410,10 @@ class FakeForeground extends CallForegroundControl {
   Future<void> setCamera(bool on) async => trace('fgs.camera($on)');
 
   @override
-  void onAction(void Function(String action) handle) {}
+  int onAction(void Function(String action) handle) => ++_epoch;
 
   @override
-  void clearActionHandler() {}
+  void clearActionHandler(int epoch) {}
 }
 
 /// Only [addAudioRenderer] is ever reached, and the recorder is faked here, so

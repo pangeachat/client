@@ -51,12 +51,20 @@ async function rawMembership(token, userId) {
   // The app logs its call lifecycle to the console; that is A's own account
   // of why anything happened, captured for the post-mortem.
   const aLog = [];
+  const bLog = [];
   A.page.on('console', (m) => {
     const t = m.text();
     if (/call|Call|participant|grace|reconnect|leave|hang/i.test(t)) {
       aLog.push(`[+${Math.round((Date.now() - t0) / 1000)}s] ` + t.slice(0, 180));
     }
   });
+  const wireB = () => B.page.on('console', (m) => {
+    const t = m.text();
+    if (/call|Call|return|rejoin|offer|Error|error|Exception|room list/i.test(t)) {
+      bLog.push(`[+${Math.round((Date.now() - t0) / 1000)}s] ` + t.slice(0, 200));
+    }
+  });
+  wireB();
   const t0 = Date.now();
 
   console.log('[2] A places, B answers');
@@ -77,6 +85,7 @@ async function rawMembership(token, userId) {
   console.log('[3] B hard-reloads mid-call');
   const reloadAt = Date.now();
   await B.page.reload({ waitUntil: 'domcontentloaded' });
+  wireB();
 
   // THE GRACE, watched rather than sampled once: the SFU takes its own time
   // (up to ~15s of signal-reconnect grace) to declare B gone, and only THEN
@@ -123,6 +132,10 @@ async function rawMembership(token, userId) {
     const t = await pageText(B.page);
     offered = /Return/.test(t) && /call before the app reloaded|Return/.test(t);
     if (!offered) await wait(1500);
+  }
+  if (!offered) {
+    console.log("   B's own account (console):");
+    bLog.slice(-40).forEach((l) => console.log('     ', l));
   }
   h.check('refresh', 'B is offered a Return to its call', offered,
     `no Return banner; B membership live=${bMembershipAtScan}; text: ` +

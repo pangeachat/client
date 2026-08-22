@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/pangea_voip_delegate.dart';
@@ -851,6 +852,23 @@ class CallService {
       Logs().w('Could not wait for the room list', e, s);
     }
     if (_disposed) return const [];
+
+    // The breadcrumb FIRST. On a server with working delayed events, a dead
+    // device's membership is retracted within seconds of its heartbeat
+    // stopping -- racing, and often beating, this very scan. The breadcrumb
+    // is the call's own local trace: written when it became a conversation,
+    // erased only by its clean teardown, refresh-proof and answerable only
+    // to its own age bound. Membership remains the fallback for a device
+    // whose local storage did not survive.
+    final crumb = await CallBreadcrumb.read();
+    if (crumb != null) {
+      final room = client.getRoomById(crumb.roomId);
+      if (room != null && room.isDirectChat) {
+        return [
+          RejoinOffer(room: room, membershipEventId: crumb.membershipEventId),
+        ];
+      }
+    }
     final me = client.userID;
     final device = client.deviceID;
     if (me == null || device == null) return const [];

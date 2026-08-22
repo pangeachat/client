@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:matrix/matrix.dart';
@@ -810,6 +811,8 @@ void main() {
   });
   group('offering a return to a call after a reload', () {
     const roomId = '!wascalling:fakeServer.notExisting';
+
+    setUp(() => SharedPreferences.setMockInitialValues({}));
     const peer = '@friend:fakeServer.notExisting';
     const me = '@test:fakeServer.notExisting';
 
@@ -864,6 +867,33 @@ void main() {
       );
       return client;
     }
+
+    test('the breadcrumb outranks the membership scan', () async {
+      // On a delayed-events server the membership can be retracted seconds
+      // after the reload -- racing this very scan. The call's own local
+      // trace answers to nothing but its age.
+      SharedPreferences.setMockInitialValues({
+        'pangea.call.breadcrumb':
+            '{"roomId":"$roomId","membershipEventId":"\$from-crumb",'
+            '"at":${DateTime.now().millisecondsSinceEpoch}}',
+      });
+      final service = CallService(await clientWithOwnMembership(live: false));
+      final offers = await service.rejoinOffers();
+      expect(offers, hasLength(1));
+      expect(offers.single.membershipEventId, r'$from-crumb');
+    });
+
+    test('a crumb for an unknown room falls back to the scan', () async {
+      SharedPreferences.setMockInitialValues({
+        'pangea.call.breadcrumb':
+            '{"roomId":"!gone:server","membershipEventId":"\$x",'
+            '"at":${DateTime.now().millisecondsSinceEpoch}}',
+      });
+      final service = CallService(await clientWithOwnMembership(live: true));
+      final offers = await service.rejoinOffers();
+      expect(offers, hasLength(1));
+      expect(offers.single.membershipEventId, r'$own-membership');
+    });
 
     test('a live membership of this device is offered back', () async {
       final service = CallService(await clientWithOwnMembership(live: true));
