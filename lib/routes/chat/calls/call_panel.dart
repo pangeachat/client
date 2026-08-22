@@ -29,6 +29,7 @@ class CallPanel extends StatelessWidget {
     return ListenableBuilder(
       listenable: session,
       builder: (context, _) {
+        if (session.showingSummary) return _summary(context, l10n, theme);
         final tracks = session.videoTracks();
         return Material(
           // Its own dark surface: every calling product darkens the call
@@ -88,6 +89,86 @@ class CallPanel extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  /// The moment after: who it was, that it ended, and how long it lasted.
+  ///
+  /// Held for three seconds (or an X) before the panel goes -- a call that
+  /// vanishes the instant it ends reads as a drop, and the duration is the
+  /// one fact the learner looks for. The same segmented sum every other
+  /// surface reads, so no two of them can disagree.
+  Widget _summary(BuildContext context, L10n l10n, ThemeData theme) {
+    final peer = session.peer;
+    final name =
+        peer?.calcDisplayname() ?? session.room.getLocalizedDisplayname();
+    return Material(
+      color: const Color(0xFF14131A),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          _voiceBackdrop(theme),
+          SafeArea(
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Semantics(
+                    label: l10n.close,
+                    button: true,
+                    child: IconButton(
+                      icon: const Icon(Icons.close, color: Colors.white),
+                      onPressed: session.dismissSummary,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Avatar(
+                            mxContent: peer?.avatarUrl,
+                            name: name,
+                            size: 108,
+                            showPresence: false,
+                          ),
+                          const SizedBox(height: 20),
+                          Text(
+                            name,
+                            style: theme.textTheme.headlineSmall?.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 14),
+                          Text(
+                            l10n.callEnded,
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              color: Colors.white70,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            formatCallDuration(session.talkDuration),
+                            style: theme.textTheme.headlineMedium?.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 48),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 

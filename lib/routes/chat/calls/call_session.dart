@@ -314,7 +314,14 @@ class CallSession extends ChangeNotifier {
       // it must not wait for teardown and transcription behind it.
       _writeCard();
       _finishRecording();
-      _release();
+      // An ended conversation earns a moment on screen; everything else --
+      // declined, missed, torn down unanswered -- goes at once, as it always
+      // did. Teardown itself is never held by any of this.
+      if (outcome == CallOutcome.ended && call.hadPeer) {
+        _finishWithSummary();
+      } else {
+        _release();
+      }
       return;
     }
     if (call.stage == CallStage.connected) _reachedCall = true;
@@ -553,22 +560,68 @@ class CallSession extends ChangeNotifier {
     return me.compareTo(peer) < 0;
   }
 
+  /// When the summary screen dismisses itself.
+  static const summaryLifetime = Duration(seconds: 3);
+
+  /// When the call ended, for the summary. Null until it has.
+  DateTime? get endedAt => _endedAt;
+  DateTime? _endedAt;
+
+  /// Whether the summary screen is on: the call is over and its handover to
+  /// the holder is being held while the learner reads what happened.
+  bool get showingSummary => _over && !_handedOver && _summaryHold != null;
+
+  bool _handedOver = false;
+  Timer? _summaryHold;
+
   void _release() {
+    _finish();
+    _handover();
+  }
+
+  /// Latches the end. From here [isOver] is true, so the busy-claim is free
+  /// and a new call steps over this session; only the visual handover waits.
+  void _finish() {
     if (_over) return;
     _over = true;
+    _endedAt = DateTime.now();
     _tick?.cancel();
     _tick = null;
     _notify();
-    // Handed over only once the current notification has unwound. This runs
-    // FROM the call's own listener walk (outcome -> _onCallChanged -> here),
-    // and the holder's release disposes the call -- disposing a notifier while
-    // it is still walking its listener list corrupts its bookkeeping, and the
-    // wreckage surfaces later as a RangeError inside notifyListeners. The same
-    // rule the roster teardown in _unwind already states, applied to the one
-    // other place a notifier's death is triggered from inside its own
-    // notification.
+  }
+
+  /// Hands the finished session to the holder.
+  ///
+  /// Deferred a microtask always: this can run FROM the call's own listener
+  /// walk (outcome -> _onCallChanged -> here), and the holder's release
+  /// disposes the call -- disposing a notifier while it is still walking its
+  /// listener list corrupts its bookkeeping, and the wreckage surfaces later
+  /// as a RangeError inside notifyListeners. The same rule the roster
+  /// teardown in _unwind already states.
+  void _handover() {
+    if (_handedOver) return;
+    _handedOver = true;
+    _summaryHold?.cancel();
+    _summaryHold = null;
     scheduleMicrotask(() => _onReleased(this));
   }
+
+  /// Ends the session but keeps the screen for a moment: avatar, name, "call
+  /// ended", how long it was. Only for a call that WAS a conversation --
+  /// [ActiveCall.hadPeer], the code's real somebody-was-here latch, never the
+  /// stage, which reads connected while still waiting for an answer.
+  /// Declined, failed and missed calls release at once, exactly as before.
+  void _finishWithSummary() {
+    if (_over) return;
+    _finish();
+    _summaryHold = Timer(summaryLifetime, _handover);
+    _notify();
+  }
+
+  /// The X on the summary. Also the path a redial takes: startCall steps over
+  /// an isOver session, and its replacement of the holder's value releases
+  /// this one through [dispose], which converges on [_handover].
+  void dismissSummary() => _handover();
 
   bool _disposing = false;
 
@@ -592,6 +645,10 @@ class CallSession extends ChangeNotifier {
     _disposing = true;
     call.removeListener(_onCallChanged);
     _tick?.cancel();
+    // A summary still holding its 3s when the holder discards the session --
+    // logout, a redial stepping over -- must not fire into a disposed one.
+    _summaryHold?.cancel();
+    _summaryHold = null;
     _finishRecording();
     // ActiveCall.dispose hangs up (idempotent), so a session discarded by its
     // holder — logout, app teardown — can never leave a call running headless.

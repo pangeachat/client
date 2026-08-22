@@ -19,6 +19,19 @@ class TestRoster extends CallRoster {
   @override
   Iterable<String> get remoteIdentities => identities;
 
+  /// identity -> (publications, muted). Unlisted identities have none.
+  Map<String, (int, int)> audio = {};
+
+  @override
+  Iterable<RemoteAudioState> get remoteAudio => identities.map((id) {
+    final (pubs, muted) = audio[id] ?? (0, 0);
+    return RemoteAudioState(
+      identity: id,
+      audioPublications: pubs,
+      mutedAudioPublications: muted,
+    );
+  });
+
   @override
   bool get roomConnected => connected;
 
@@ -254,6 +267,49 @@ void main() {
       expect(notifications, settled);
       // Re-disposal in tearDown must stay safe.
       roster = TestRoster(room: room, myUserId: me);
+    });
+  });
+  group('whether the peer can be heard', () {
+    test('shows muted only when every peer publication is muted', () {
+      roster.identities = {'$peer:PHONE', '$peer:LAPTOP'};
+      roster.audio = {'$peer:PHONE': (1, 1), '$peer:LAPTOP': (1, 0)};
+      roster.recompute();
+      expect(roster.peerMuted, isFalse, reason: 'one audible device suffices');
+
+      roster.audio = {'$peer:PHONE': (1, 1), '$peer:LAPTOP': (1, 1)};
+      roster.recompute();
+      expect(roster.peerMuted, isTrue);
+
+      roster.audio = {'$peer:PHONE': (1, 0), '$peer:LAPTOP': (1, 1)};
+      roster.recompute();
+      expect(roster.peerMuted, isFalse, reason: 'unmute clears the badge');
+    });
+
+    test('no publications is no signal, not muted', () {
+      roster.identities = {'$peer:PHONE'};
+      roster.audio = {'$peer:PHONE': (0, 0)};
+      roster.recompute();
+      expect(roster.peerMuted, isFalse);
+    });
+
+    test("this account's own muted sibling never paints the peer muted", () {
+      roster.identities = {'$me:OTHERPHONE', '$peer:PHONE'};
+      roster.audio = {'$me:OTHERPHONE': (1, 1), '$peer:PHONE': (1, 0)};
+      roster.recompute();
+      expect(roster.peerMuted, isFalse);
+    });
+
+    test('a mute change alone notifies listeners', () {
+      roster.identities = {'$peer:PHONE'};
+      roster.audio = {'$peer:PHONE': (1, 0)};
+      roster.recompute();
+      final before = notifications;
+
+      // Same participants, only the mute flag moved.
+      roster.audio = {'$peer:PHONE': (1, 1)};
+      roster.recompute();
+      expect(notifications, greaterThan(before), reason: 'the badge repaints');
+      expect(roster.peerMuted, isTrue);
     });
   });
 }

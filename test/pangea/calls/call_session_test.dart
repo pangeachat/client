@@ -378,6 +378,101 @@ void main() {
     });
   });
 
+  group('the ended-call summary', () {
+    Future<(CallSession, List<CallSession>)> answeredThenEnded() async {
+      final client = await _bareClient();
+      final released = <CallSession>[];
+      final media = _FakeMedia();
+      final session = CallSession.start(
+        room: _RecordingRoom(id: '!r:server', client: client),
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: released.add,
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      final roster = media.fakeRoster!;
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+      roster.recompute();
+      await pumpEventQueue();
+      session.endCall();
+      await pumpEventQueue();
+      return (session, released);
+    }
+
+    test(
+      'an answered call holds a summary; the busy claim is already free',
+      () async {
+        final (session, released) = await answeredThenEnded();
+        expect(session.showingSummary, isTrue);
+        expect(
+          session.isOver,
+          isTrue,
+          reason: 'a redial must be able to step over the held session',
+        );
+        expect(released, isEmpty, reason: 'the handover is what waits');
+        expect(session.endedAt, isNotNull);
+        session.dismissSummary();
+        await pumpEventQueue();
+        expect(released, hasLength(1));
+      },
+    );
+
+    test('the summary dismisses itself after its lifetime', () async {
+      final (session, released) = await answeredThenEnded();
+      expect(session.showingSummary, isTrue);
+      await Future<void>.delayed(
+        CallSession.summaryLifetime + const Duration(milliseconds: 300),
+      );
+      await pumpEventQueue();
+      expect(released, hasLength(1), reason: 'the 3s timer handed it over');
+      expect(session.showingSummary, isFalse);
+    });
+
+    test('a call nobody answered releases at once, as before', () async {
+      final client = await _bareClient();
+      final released = <CallSession>[];
+      final session = CallSession.start(
+        room: _RecordingRoom(id: '!r:server', client: client),
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: released.add,
+        mediaOverride: _FakeMedia(),
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      session.endCall();
+      await pumpEventQueue();
+      expect(session.showingSummary, isFalse, reason: 'no conversation to sum');
+      expect(released, hasLength(1));
+    });
+
+    test(
+      'disposal before the timer fires neither crashes nor double-releases',
+      () async {
+        final (session, released) = await answeredThenEnded();
+        expect(session.showingSummary, isTrue);
+        session.dispose();
+        await Future<void>.delayed(
+          CallSession.summaryLifetime + const Duration(milliseconds: 300),
+        );
+        await pumpEventQueue();
+        expect(released.length, lessThanOrEqualTo(1));
+      },
+    );
+  });
+
   group('the call identity every writer shares', () {
     test('a plain call: the placer, keyed by its own membership', () {
       final id = CallSession.resolveCallIdentity(

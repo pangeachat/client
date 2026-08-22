@@ -41,7 +41,11 @@ class _ChatCallHostState extends State<ChatCallHost> {
   /// for this host's room.
   CallSession? get _mine {
     final session = _sessions?.value;
-    if (session == null || session.isOver) return null;
+    // A session holding its ended-summary still presents; everything else
+    // that is over does not.
+    if (session == null || (session.isOver && !session.showingSummary)) {
+      return null;
+    }
     return session.room.id == widget.roomId ? session : null;
   }
 
@@ -85,7 +89,9 @@ class _ChatCallHostState extends State<ChatCallHost> {
     return ListenableBuilder(
       listenable: session,
       builder: (context, _) {
-        if (session.isOver) return const SizedBox.shrink();
+        if (session.isOver && !session.showingSummary) {
+          return const SizedBox.shrink();
+        }
         // In fullscreen the GLOBAL host paints the panel over the whole app;
         // painting it here too would stack two copies.
         if (session.fullscreen) return const SizedBox.shrink();

@@ -35,7 +35,10 @@ class GlobalCallTile extends StatelessWidget {
             ListenableBuilder(
               listenable: session,
               builder: (context, _) {
-                if (session.isOver) return const SizedBox.shrink();
+                // The summary is the one part of "over" that still shows.
+                if (session.isOver && !session.showingSummary) {
+                  return const SizedBox.shrink();
+                }
                 // Fullscreen covers the whole app from HERE, wherever the user
                 // is — the in-chat host stands down while it is on.
                 if (session.fullscreen) {
