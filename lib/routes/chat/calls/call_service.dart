@@ -715,22 +715,26 @@ class CallService {
     return false;
   }
 
-  /// The state event currently carrying [userId]'s live membership, or null.
+  /// Whether [eventId] is one of [userId]'s CURRENT membership state events.
   ///
   /// The discriminator between a STALE ring (replayed from before a reload,
-  /// pointing at a membership that has since been rewritten or emptied) and a
-  /// LIVE one: a caller's ring names their membership event, and only a ring
-  /// naming their CURRENT one is offering a call that still exists.
-  String? currentMembershipEventIdOf(Room room, String userId) {
+  /// naming a membership that has since been rewritten or emptied) and a LIVE
+  /// one. Asked this way round -- "is the ring's event still current" --
+  /// because a sender can hold SEVERAL state keys (per-device and legacy
+  /// shapes), and picking "the" current one would compare the ring against
+  /// whichever the map yielded first; a live ring must match whichever entry
+  /// is genuinely its own.
+  bool membershipEventIsCurrent(Room room, String userId, String eventId) {
     final memberStates = room.states[EventTypes.GroupCallMember];
-    if (memberStates == null) return null;
+    if (memberStates == null) return false;
     for (final state in memberStates.values) {
       if (state is! Event) continue;
       if (state.senderId != userId) continue;
+      if (state.eventId != eventId) continue;
       final memberships = state.content['memberships'];
-      if (memberships is List && memberships.isNotEmpty) return state.eventId;
+      if (memberships is List && memberships.isNotEmpty) return true;
     }
-    return null;
+    return false;
   }
 
   /// Fires whenever [callerId]'s call membership in [room] is rewritten.

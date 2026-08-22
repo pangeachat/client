@@ -118,3 +118,50 @@ class PangeaCallCapture {
     return null;
   }
 }
+
+/// Keeps a call alive while the app is in the background. Android only:
+/// every other platform this app ships on either has no freezer (web,
+/// desktop) or handles calls through its own machinery (iOS CallKit,
+/// tracked separately).
+///
+/// [start] returns false when the service could not run -- the microphone
+/// permission not yet granted, most likely; the caller retries at its next
+/// guaranteed-post-grant moment. A refusal never fails the call: the service
+/// is the call's survival in the background, not its existence.
+class CallForegroundControl {
+  static const MethodChannel _control =
+      MethodChannel('pangea.chat/call_capture');
+
+  const CallForegroundControl();
+
+  Future<bool> start({required String peer, required bool video}) async =>
+      await _control.invokeMethod<bool>('fgs_start', {
+        'peer': peer,
+        'video': video,
+      }) ??
+      false;
+
+  Future<void> stop() => _control.invokeMethod<void>('fgs_stop');
+
+  /// Adds or removes the CAMERA service type. Idempotent; camera only ever
+  /// under a granted camera permission (checked on the platform side, the
+  /// single seam).
+  Future<void> setCamera(bool on) =>
+      _control.invokeMethod<void>('fgs_camera', {'on': on});
+
+  /// Hands notification actions ("hangup", "mute") to the call.
+  ///
+  /// One handler at a time, on the shared control channel; the platform side
+  /// only ever calls "action" into Dart, so this cannot collide with the
+  /// capture verbs, which all flow the other way.
+  void onAction(void Function(String action) handle) {
+    _control.setMethodCallHandler((call) async {
+      if (call.method == 'action' && call.arguments is String) {
+        handle(call.arguments as String);
+      }
+      return null;
+    });
+  }
+
+  void clearActionHandler() => _control.setMethodCallHandler(null);
+}

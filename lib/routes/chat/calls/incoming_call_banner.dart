@@ -111,7 +111,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _service = matrixState.callService;
     // A prompt belonging to the account we just left is not this one's.
     if (_ringing != null) setState(() => _showRing(null));
-    // Whatever was ringing belonged to the account we just left.
+    // Both prompts belonged to the account we just left: a Return offer
+    // surviving the switch would rejoin the OLD account's call over the new
+    // account's connection.
+    if (_rejoin != null) setState(() => _rejoin = null);
     _ringPlayer.stopAll();
 
     _rings = matrixState.callService.incomingRings.listen(
@@ -231,14 +234,23 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// CURRENT membership. A replayed ring from before a reload names one that
   /// has since been rewritten or retracted; a live redial names a fresh one.
   bool _ringIsLive(IncomingCallNotification ring) {
-    final current = _service?.currentMembershipEventIdOf(
-      ring.event.room,
-      ring.event.senderId,
-    );
-    return current != null && current == ring.membershipEventId;
+    final named = ring.membershipEventId;
+    if (named == null) return false;
+    return _service?.membershipEventIsCurrent(
+          ring.event.room,
+          ring.event.senderId,
+          named,
+        ) ??
+        false;
   }
 
   void _offer(IncomingCallNotification ring, String account) {
+    // Checked against the account this subscription was made for, BEFORE any
+    // state is touched. Cancelling does not unqueue what has already been
+    // handed over, so a ring for the account the learner just left could
+    // still land here — and besides answering with the wrong account, it
+    // must not clear this account's offer or setState after dispose.
+    if (!mounted || _listeningTo != account) return;
     // Same room as a standing rejoin offer: one rule, by evidence. A ring
     // naming the caller's CURRENT membership is a live call happening NOW --
     // it wins, and the offer goes (the caller has moved on, so the call the
@@ -248,12 +260,6 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       if (!_ringIsLive(ring)) return;
       setState(() => _rejoin = null);
     }
-    // Checked against the account this subscription was made for. Cancelling
-    // does not unqueue what has already been handed over, so a ring for the
-    // account the learner just left could still raise a prompt here — and
-    // answering it would start a call in the old account's room using the new
-    // account's connection.
-    if (!mounted || _listeningTo != account) return;
     // Never one already turned down.
     if (_declined.contains(ring.event.eventId)) return;
     final showing = _ringing;

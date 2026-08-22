@@ -1,10 +1,15 @@
 import 'dart:async';
+import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart';
 
 import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' as matrix show Event, Room, User;
 import 'package:matrix/matrix.dart' show Logs;
+import 'package:permission_handler/permission_handler.dart';
+
+import 'package:pangea_call_capture/pangea_call_capture.dart'
+    show CallForegroundControl;
 
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
@@ -83,6 +88,25 @@ class CallSession extends ChangeNotifier {
        _peerUserId = peerUserId,
        _onReleased = onReleased {
     _camera = videoRequested;
+    // What the ongoing-call notification says. The call only knows the room;
+    // the session knows who the conversation is with.
+    call.foregroundLabel =
+        peer?.calcDisplayname() ?? room.getLocalizedDisplayname();
+    // The notification's buttons act on THIS session, through the same
+    // controls the screen uses -- one mute path, one hangup path.
+    _foregroundActions();
+    // Android 13+ shows no notification without this. Asked at call start --
+    // the moment its value is self-evident -- and a refusal costs only the
+    // visible chip: the foreground service, which is the actual survival
+    // mechanism, runs either way.
+    if (!kIsWeb && Platform.isAndroid) {
+      unawaited(
+        Permission.notification.request().catchError((Object e) {
+          Logs().w('Could not ask for the notification permission: $e');
+          return PermissionStatus.denied;
+        }),
+      );
+    }
     call.addListener(_onCallChanged);
     call.start(
       room,
@@ -111,6 +135,7 @@ class CallSession extends ChangeNotifier {
     String? callerMembershipEventId,
     @visibleForTesting CallMedia? mediaOverride,
     @visibleForTesting CallCaptureService? captureOverride,
+    @visibleForTesting CallForegroundControl? foregroundOverride,
   }) {
     final media = mediaOverride ?? CallMedia();
     final transcripts = CallTranscriptSink(
@@ -134,6 +159,13 @@ class CallSession extends ChangeNotifier {
         calls: callService,
         media: media,
         capture: captureOverride ?? CallCaptureService(sink: transcripts),
+        // Android's background survival; every other platform passes null
+        // and the call behaves exactly as before.
+        foreground:
+            foregroundOverride ??
+            (!kIsWeb && Platform.isAndroid
+                ? const CallForegroundControl()
+                : null),
       ),
       record: record,
       myUserId: callService.client.userID,
@@ -231,6 +263,21 @@ class CallSession extends ChangeNotifier {
     _notify();
   }
 
+  /// Routes the ongoing-call notification's buttons into this session,
+  /// through the SAME paths the on-screen buttons use -- one mute, one
+  /// hangup, wherever they come from.
+  void _foregroundActions() {
+    call.foregroundActions((action) {
+      if (_disposing || _over) return;
+      switch (action) {
+        case 'hangup':
+          endCall();
+        case 'mute':
+          unawaited(toggleMute());
+      }
+    });
+  }
+
   Future<void> toggleMute() async {
     final next = !_muted;
     // The recorder gate goes up BEFORE muting and comes down only AFTER an
@@ -261,6 +308,10 @@ class CallSession extends ChangeNotifier {
       Logs().w('Could not turn the camera ${next ? 'on' : 'off'}', e, s);
       return;
     }
+    // Camera site (b): the toggle, both directions, only after the change
+    // actually took. Site (a) -- a call STARTED with video -- lives where the
+    // camera opens, inside the call's own connect step.
+    unawaited(call.setForegroundCamera(next));
     // Only if the camera actually came on: turning it on the instant the call
     // ends is a refused no-op that does not throw, and latching on the request
     // alone wrote an ending voice call as a video call. The live connection is

@@ -43,6 +43,10 @@ android {
 }
 
 dependencies {
+    // CallStyle and the compat notification builder for the foreground call
+    // service. The app already ships androidx.core; api scope is unnecessary.
+    implementation 'androidx.core:core:1.13.1'
+
     // The audio processing controller this reads from belongs to the WebRTC
     // plugin. It is already a dependency of the app; declaring it compileOnly
     // keeps this package from pinning its version.

@@ -10,6 +10,8 @@ import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
+import 'package:pangea_call_capture/pangea_call_capture.dart'
+    show CallForegroundControl;
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
@@ -379,6 +381,25 @@ class FakeRoster extends CallRoster {
     disposed = true;
     super.dispose();
   }
+}
+
+/// The Android foreground service, without Android.
+class FakeForeground extends CallForegroundControl {
+  final Trace trace;
+  bool startReturns;
+  FakeForeground(this.trace, {this.startReturns = true});
+
+  @override
+  Future<bool> start({required String peer, required bool video}) async {
+    trace('fgs.start(video: $video)');
+    return startReturns;
+  }
+
+  @override
+  Future<void> stop() async => trace('fgs.stop');
+
+  @override
+  Future<void> setCamera(bool on) async => trace('fgs.camera($on)');
 }
 
 /// Only [addAudioRenderer] is ever reached, and the recorder is faked here, so
@@ -1267,6 +1288,94 @@ void main() {
 
       expect(call.stage, CallStage.ended);
       expect(call.peerReconnecting, isFalse);
+    });
+  });
+
+  group('the background-survival service', () {
+    Future<(ActiveCall, FakeCalls, FakeForeground)> withForeground({
+      bool startReturns = true,
+    }) async {
+      final calls = FakeCalls(await bareClient(), trace);
+      final media = FakeMedia(trace, hasTrack: true);
+      final fgs = FakeForeground(trace, startReturns: startReturns);
+      final roster = FakeRoster(
+        room: media.room,
+        myUserId: calls.client.userID ?? '',
+      );
+      media.fakeRoster = roster;
+      calls.roster = roster;
+      final call = ActiveCall(
+        calls: calls,
+        media: media,
+        capture: FakeCapture(trace),
+        foreground: fgs,
+      );
+      return (call, calls, fgs);
+    }
+
+    test('starts before anything is awaited, and stops in teardown', () async {
+      final (call, calls, _) = await withForeground();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+
+      final startAt = trace.steps.indexOf('fgs.start(video: false)');
+      final joinAt = trace.steps.indexOf('join');
+      expect(startAt, isNot(-1));
+      expect(
+        startAt,
+        lessThan(joinAt),
+        reason:
+            'the earliest guaranteed-foreground moment is before the '
+            'first network await, or Android may already consider us '
+            'background',
+      );
+
+      await call.hangUp();
+      expect(trace.steps, contains('fgs.stop'));
+    });
+
+    test('a failed call still stops the service', () async {
+      final (call, calls, _) = await withForeground();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.joinError = StateError('no focus');
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.stage, CallStage.failed);
+      expect(
+        trace.steps,
+        contains('fgs.stop'),
+        reason: 'every teardown path converges in _unwind',
+      );
+    });
+
+    test('a refused start is retried once media proves the grant', () async {
+      // The service cannot run before the microphone permission exists; media
+      // connecting IS the proof the dialog was answered.
+      final (call, calls, fgs) = await withForeground(startReturns: false);
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      fgsRetriesAfterGrant() =>
+          trace.steps.where((s) => s == 'fgs.start(video: false)').length;
+      await call.start(roomStub(calls.client), video: false);
+      expect(
+        fgsRetriesAfterGrant(),
+        2,
+        reason: 'the entry attempt plus the post-connect retry',
+      );
+      await call.hangUp();
+    });
+
+    test('a call started with video escalates the service type', () async {
+      final (call, calls, _) = await withForeground();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: true);
+      expect(
+        trace.steps,
+        contains('fgs.camera(true)'),
+        reason: 'site (a): the camera opened inside connect',
+      );
+      await call.hangUp();
     });
   });
 

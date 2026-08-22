@@ -27,6 +27,10 @@ void main() {
 
   Future<Client> bareClient() async => Client(
     'call-service-test',
+    // The app's real client registers call membership as important state
+    // (client_manager.dart), which is what keeps it in memory for rooms the
+    // user has not opened. The reads under test assume exactly that.
+    importantStateEvents: {EventTypes.GroupCallMember},
     httpClient: FakeMatrixApi(),
     database: await MatrixSdkDatabase.init(
       'call-service-test',
@@ -890,6 +894,48 @@ void main() {
         await clientWithOwnMembership(live: true, deviceId: 'OTHERPHONE'),
       );
       expect(await service.rejoinOffers(), isEmpty);
+    });
+
+    test('a ring is live only for the exact state event it names', () async {
+      // A sender can hold several membership state keys (per-device and
+      // legacy shapes). The discriminator must match the ring's OWN event,
+      // not whichever non-empty entry the map yields first.
+      final client = await clientWithOwnMembership(live: true);
+      final service = CallService(client);
+      final room = client.getRoomById(roomId)!;
+      // A second, stale-but-non-empty state under another key.
+      room.setState(
+        Event(
+          type: EventTypes.GroupCallMember,
+          content: {
+            'memberships': [
+              {
+                'call_id': 'old-call',
+                'device_id': 'OLDDEV',
+                'expires_ts': DateTime.now().millisecondsSinceEpoch + 300000,
+              },
+            ],
+          },
+          senderId: me,
+          eventId: r'$old-key-state',
+          originServerTs: DateTime.now(),
+          room: room,
+          stateKey: me,
+        ),
+      );
+      expect(
+        service.membershipEventIsCurrent(room, me, r'$own-membership'),
+        isTrue,
+      );
+      expect(
+        service.membershipEventIsCurrent(room, me, r'$old-key-state'),
+        isTrue,
+        reason: 'that entry is also genuinely current state',
+      );
+      expect(
+        service.membershipEventIsCurrent(room, me, r'$replaced-long-ago'),
+        isFalse,
+      );
     });
   });
 }

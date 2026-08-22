@@ -1,5 +1,6 @@
 package chat.pangea.call_capture
 
+import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -40,6 +41,7 @@ class PangeaCallCapturePlugin :
 
   private var methodChannel: MethodChannel? = null
   private var eventChannel: EventChannel? = null
+  private var appContext: Context? = null
   private var events: EventChannel.EventSink? = null
 
   /**
@@ -65,8 +67,16 @@ class PangeaCallCapturePlugin :
   private var attachedTo: AudioProcessingController? = null
 
   override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+    appContext = binding.applicationContext
     methodChannel = MethodChannel(binding.binaryMessenger, METHOD_CHANNEL).also {
       it.setMethodCallHandler(this)
+    }
+    // Notification actions land in the service; the call lives in Dart. The
+    // bridge posts to the main thread because the channel may only be used
+    // there, and it is cleared on detach so an action with no engine alive is
+    // dropped rather than crashed on.
+    CallForegroundService.onAction = { action ->
+      handler.post { methodChannel?.invokeMethod("action", action) }
     }
     eventChannel = EventChannel(binding.binaryMessenger, EVENT_CHANNEL).also {
       it.setStreamHandler(this)
@@ -83,6 +93,8 @@ class PangeaCallCapturePlugin :
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+    CallForegroundService.onAction = null
+    appContext = null
     detach()
     methodChannel?.setMethodCallHandler(null)
     methodChannel = null
@@ -103,6 +115,30 @@ class PangeaCallCapturePlugin :
         // conversation was still on its way — and the caller stops listening on
         // that reply.
         handler.post { result.success(null) }
+      }
+      "fgs_start" -> {
+        val context = appContext
+        if (context == null) {
+          result.success(false)
+        } else {
+          result.success(
+            CallForegroundService.start(
+              context,
+              call.argument<String>("peer") ?: "",
+              call.argument<Boolean>("video") ?: false,
+            ),
+          )
+        }
+      }
+      "fgs_stop" -> {
+        appContext?.let { CallForegroundService.stop(it) }
+        result.success(null)
+      }
+      "fgs_camera" -> {
+        appContext?.let {
+          CallForegroundService.setTypes(it, call.argument<Boolean>("on") ?: false)
+        }
+        result.success(null)
       }
       else -> result.notImplemented()
     }

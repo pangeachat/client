@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:livekit_client/livekit_client.dart' show AudioTrack;
 import 'package:matrix/matrix.dart' as matrix show Room;
 import 'package:matrix/matrix.dart' hide Room;
+import 'package:pangea_call_capture/pangea_call_capture.dart'
+    show CallForegroundControl;
 
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
@@ -223,7 +225,54 @@ class ActiveCall extends ChangeNotifier {
     return _membershipEventId = calls.membershipEventIdIn(room);
   }
 
-  ActiveCall({required this.calls, required this.media, required this.capture});
+  ActiveCall({
+    required this.calls,
+    required this.media,
+    required this.capture,
+    CallForegroundControl? foreground,
+  }) : _foreground = foreground;
+
+  /// The Android foreground service that keeps the call alive off-screen.
+  /// Null on every platform that needs none.
+  final CallForegroundControl? _foreground;
+
+  /// Whether the service refused the first start -- the microphone permission
+  /// dialog was still up -- and is owed a retry at the first post-grant step.
+  bool _foregroundPending = false;
+
+  /// What the notification shows. Threaded from the session, which knows the
+  /// peer; the call itself only knows the room.
+  String foregroundLabel = '';
+
+  /// Adds or removes the CAMERA type on the running service. Safe to call on
+  /// any platform; a call without the service ignores it.
+  Future<void> setForegroundCamera(bool on) async {
+    try {
+      await _foreground?.setCamera(on);
+    } catch (e, s) {
+      Logs().w('Could not update the call service camera type', e, s);
+    }
+  }
+
+  /// Hands notification actions to whoever owns the call's controls.
+  void foregroundActions(void Function(String action) handle) =>
+      _foreground?.onAction(handle);
+
+  Future<void> _startForeground({required bool video}) async {
+    final foreground = _foreground;
+    if (foreground == null) return;
+    try {
+      final started = await foreground.start(
+        peer: foregroundLabel,
+        video: video,
+      );
+      _foregroundPending = !started;
+    } catch (e, s) {
+      // The service is the call's survival in the background, never its
+      // existence. A platform refusal costs that survival, not the call.
+      Logs().w('Could not start the call foreground service', e, s);
+    }
+  }
 
   /// Gates the recording to match the microphone button. Muting stops LiveKit
   /// publishing to the peer; this stops the recorder capturing too, which on
@@ -743,6 +792,13 @@ class ActiveCall extends ChangeNotifier {
     _room = room;
     _rejoining = rejoinAnchor != null;
     _startedAt = DateTime.now();
+    // At the EARLIEST guaranteed-foreground moment, strictly before the first
+    // await: the app is on screen right now because the user just started or
+    // answered this call, and Android's while-in-use rule for the microphone
+    // service type is satisfied here and not necessarily later. When the
+    // permission dialog is still up this returns unstarted, and the retry
+    // below runs at the first moment that is by construction post-grant.
+    unawaited(_startForeground(video: video));
     // Subscribed before anything else, but only when PLACING. Two people
     // calling at the same moment is decided by seeing the other's ring, and the
     // window this has to cover starts when ours does — not when our media
@@ -770,6 +826,17 @@ class ActiveCall extends ChangeNotifier {
       _abandonIfEnding();
 
       await _step(() => media.connect(grant, video: video));
+      if (_foregroundPending) {
+        // Media connected, so the microphone permission is granted -- the
+        // dialog that refused the first start has been answered.
+        _foregroundPending = false;
+        unawaited(_startForeground(video: video));
+      }
+      if (video && _foreground != null) {
+        // Camera site (a): a call STARTED with video opens its camera inside
+        // connect, never through the toggle.
+        unawaited(_foreground.setCamera(true));
+      }
 
       _track = media.publishedAudio;
       if (_track == null) {
@@ -1071,6 +1138,14 @@ class ActiveCall extends ChangeNotifier {
   Future<void> _unwind() async {
     _ending = true;
     _noteTalkEnded();
+    // Where every teardown path converges, including failures -- pairing the
+    // stop with the start in one owner is what makes a start with no stop
+    // impossible.
+    unawaited(
+      _foreground?.stop().catchError((Object e, StackTrace s) {
+        Logs().w('Could not stop the call foreground service', e, s);
+      }),
+    );
     unawaited(_declines?.cancel());
     _declines = null;
     unawaited(_peerRings?.cancel());
@@ -1083,6 +1158,12 @@ class ActiveCall extends ChangeNotifier {
     // Only the WAIT is abandoned, not the fact — otherwise a decline landing in
     // the last moment before the call gives up on its own is written as nobody
     // answering, when somebody did answer: they said no.
+    //
+    // The CARD may already state plain "ended": it is written the instant the
+    // outcome latches, which is before this line runs when the user's own
+    // hangup overtakes the decline's grace. Accepted: the window is under
+    // 1.5s, both things genuinely happened, and preferring the hangup the
+    // user themselves performed is at least as true as the decline.
     if (_decliding != null && !_peerArrived) _declinedByPeer = true;
     _decliding?.cancel();
     _decliding = null;
