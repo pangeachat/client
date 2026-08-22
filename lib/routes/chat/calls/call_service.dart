@@ -748,12 +748,13 @@ class CallService {
   /// Deliberately narrower than [callerStillInCall], which answers "does this
   /// user claim a place in any call here" and is right for deciding whether a
   /// RINGING call still has a caller. This one decides whether a peer has
-  /// LEFT the call in progress, and for that both extra conditions are load
-  /// bearing: a room accumulates a membership state event per device, so an
-  /// old key from an earlier call keeps reading non-empty long after that
-  /// call ended -- on a real phone that stale row made a departed peer look
-  /// present for ever -- and an expired entry is a device that stopped
-  /// renewing, which is not a participant either.
+  /// LEFT the call in progress.
+  ///
+  /// EXPIRY is what does the work. The call id is the ROOM id by design --
+  /// one direct message holds one live call -- so matching on it separates
+  /// rooms, not calls, and a room accumulates a membership state event per
+  /// device that keeps reading non-empty long after its call ended. Only a
+  /// membership still being renewed belongs to somebody who is still here.
   ///
   /// Answers true when it cannot tell (no call of our own to compare
   /// against): the caller treats that as "no opinion" and falls back to the
@@ -920,32 +921,28 @@ class CallService {
   /// appearing for that call from a device that is not this one -- no new
   /// message, and it cannot be faked by a stale row because it is scoped to
   /// the call the ring names and to memberships that have not expired.
-  bool answeredOnAnotherDevice(Room room, String callerMembershipEventId) {
+  bool answeredOnAnotherDevice(Room room, DateTime ringSentAt) {
     final me = client.userID;
     final myDevice = client.deviceID;
     if (me == null || myDevice == null) return false;
     final states = room.states[EventTypes.GroupCallMember];
     if (states == null) return false;
-    // Which call the ring is FOR, read from the membership event it names.
-    String? callId;
-    for (final state in states.values) {
-      if (state is! Event) continue;
-      if (state.eventId != callerMembershipEventId) continue;
-      final memberships = state.content['memberships'];
-      if (memberships is! List) continue;
-      for (final m in memberships) {
-        if (m is Map && m['call_id'] is String) callId = m['call_id'] as String;
-      }
-    }
-    if (callId == null) return false;
     final now = DateTime.now().millisecondsSinceEpoch;
     for (final state in states.values) {
+      if (state is! Event) continue;
       if (state.senderId != me) continue;
+      // WRITTEN AFTER THE RING. The call id cannot answer this question: it
+      // is the ROOM id by design -- one direct message holds one live call --
+      // so every call this room has ever had shares it, and every browser
+      // login leaves another device's row behind. Matching on the id alone
+      // read those old rows as "somebody answered" and dismissed incoming
+      // rings the instant they arrived, which made calls unanswerable.
+      // A membership written after the ring went out cannot be stale.
+      if (!state.originServerTs.isAfter(ringSentAt)) continue;
       final memberships = state.content['memberships'];
       if (memberships is! List) continue;
       for (final m in memberships) {
         if (m is! Map) continue;
-        if (m['call_id'] != callId) continue;
         if (m['device_id'] == myDevice) continue;
         final expires = m['expires_ts'];
         if (expires is! int || expires > now) return true;

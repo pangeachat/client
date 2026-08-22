@@ -404,16 +404,14 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   void _watchSiblings(IncomingCallNotification ring) {
     _siblingAnswered?.cancel();
     final service = _service;
-    final named = ring.membershipEventId;
-    if (service == null || named == null) return;
+    if (service == null) return;
     final room = ring.event.room;
-    if (service.answeredOnAnotherDevice(room, named)) {
-      _dismiss();
-      return;
-    }
+    final sentAt = ring.sentAt;
+    // Not checked immediately: nothing written after this ring can exist yet,
+    // and asking now only invites a stale answer.
     _siblingAnswered = service.ownPresenceChanges(room).listen((_) {
       if (!mounted || _ringing?.event.eventId != ring.event.eventId) return;
-      if (!service.answeredOnAnotherDevice(room, named)) return;
+      if (!service.answeredOnAnotherDevice(room, sentAt)) return;
       matrix.Logs().i('Answered on another device; this one stops ringing');
       _dismiss();
     });

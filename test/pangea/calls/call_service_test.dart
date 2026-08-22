@@ -1183,12 +1183,16 @@ void main() {
     const peer = '@friend:fakeServer.notExisting';
     var seq = 0;
 
-    /// [myMemberships] may use the sentinel 'THIS' for the device id: the
-    /// fake homeserver assigns the real one at login, and a test that
-    /// hardcoded its own guess proved nothing about "our own device".
-    Future<(CallService, Room)> roomWith(
-      List<Map<String, Object?>> myMemberships, {
-      String callerCallId = 'the-call',
+    /// The ring goes out at [ringAt]; our other device's membership is
+    /// written at [siblingWroteAt]. The call id is the ROOM id in this app,
+    /// so ONLY that ordering can tell a sibling answering THIS call from the
+    /// rows every earlier call in the room left behind.
+    Future<(CallService, Room, DateTime)> roomWith({
+      required Duration siblingWroteAgo,
+      required Duration ringSentAgo,
+      required bool siblingPresent,
+      bool siblingIsThisDevice = false,
+      bool siblingExpired = false,
     }) async {
       final roomId = '!twodev${seq++}:fakeServer.notExisting';
       final client = await bareClient();
@@ -1198,10 +1202,10 @@ void main() {
         identifier: AuthenticationUserIdentifier(user: me),
         deviceId: 'THISPHONE',
       );
-      myMemberships = [
-        for (final m in myMemberships)
-          {...m, if (m['device_id'] == 'THIS') 'device_id': client.deviceID!},
-      ];
+      final now = DateTime.now();
+      final expires = siblingExpired
+          ? now.subtract(const Duration(minutes: 10)).millisecondsSinceEpoch
+          : now.add(const Duration(minutes: 5)).millisecondsSinceEpoch;
       await client.handleSync(
         SyncUpdate(
           nextBatch: 'batch',
@@ -1209,91 +1213,102 @@ void main() {
             join: {
               roomId: JoinedRoomUpdate(
                 state: [
-                  // The caller's own membership -- the event their ring names.
+                  if (siblingPresent)
+                    MatrixEvent(
+                      type: EventTypes.GroupCallMember,
+                      content: {
+                        'memberships': [
+                          {
+                            'call_id': roomId,
+                            'device_id': siblingIsThisDevice
+                                ? client.deviceID!
+                                : 'OTHERPHONE',
+                            'expires_ts': expires,
+                          },
+                        ],
+                      },
+                      senderId: me,
+                      eventId: r'$sibling',
+                      originServerTs: now.subtract(siblingWroteAgo),
+                      stateKey: 'OTHERPHONE_$me',
+                    ),
                   MatrixEvent(
                     type: EventTypes.GroupCallMember,
                     content: {
                       'memberships': [
                         {
-                          'call_id': callerCallId,
+                          'call_id': roomId,
                           'device_id': 'CALLERDEV',
-                          'expires_ts': DateTime.now()
-                              .add(const Duration(minutes: 5))
-                              .millisecondsSinceEpoch,
+                          'expires_ts': expires,
                         },
                       ],
                     },
                     senderId: peer,
-                    eventId: r'$caller-membership',
-                    originServerTs: DateTime.now(),
+                    eventId: r'$caller',
+                    originServerTs: now.subtract(ringSentAgo),
                     stateKey: 'CALLERDEV_$peer',
                   ),
-                  if (myMemberships.isNotEmpty)
-                    MatrixEvent(
-                      type: EventTypes.GroupCallMember,
-                      content: {'memberships': myMemberships},
-                      senderId: me,
-                      eventId: r'$my-membership',
-                      originServerTs: DateTime.now(),
-                      stateKey: 'OTHERPHONE_$me',
-                    ),
                 ],
               ),
             },
           ),
         ),
       );
-      return (CallService(client), client.getRoomById(roomId)!);
+      return (
+        CallService(client),
+        client.getRoomById(roomId)!,
+        now.subtract(ringSentAgo),
+      );
     }
 
-    int soon() =>
-        DateTime.now().add(const Duration(minutes: 5)).millisecondsSinceEpoch;
-
-    test('answering on the other phone stops this one ringing', () async {
-      final (service, room) = await roomWith([
-        {
-          'call_id': 'the-call',
-          'device_id': 'OTHERPHONE',
-          'expires_ts': soon(),
-        },
-      ]);
-      expect(
-        service.answeredOnAnotherDevice(room, r'$caller-membership'),
-        isTrue,
+    test('a sibling that joined AFTER the ring stops this device', () async {
+      final (service, room, ringAt) = await roomWith(
+        ringSentAgo: const Duration(seconds: 20),
+        siblingWroteAgo: const Duration(seconds: 5),
+        siblingPresent: true,
       );
+      expect(service.answeredOnAnotherDevice(room, ringAt), isTrue);
+    });
+
+    test('a row left by an EARLIER call does not', () async {
+      // The regression this pins: the call id is the room id, so an old
+      // membership matched it perfectly and every incoming ring was
+      // dismissed the instant it arrived -- calls became unanswerable.
+      final (service, room, ringAt) = await roomWith(
+        ringSentAgo: const Duration(seconds: 10),
+        siblingWroteAgo: const Duration(minutes: 30),
+        siblingPresent: true,
+      );
+      expect(service.answeredOnAnotherDevice(room, ringAt), isFalse);
     });
 
     test('nobody of ours in the call means this one keeps ringing', () async {
-      final (service, room) = await roomWith(const []);
-      expect(
-        service.answeredOnAnotherDevice(room, r'$caller-membership'),
-        isFalse,
+      final (service, room, ringAt) = await roomWith(
+        ringSentAgo: const Duration(seconds: 10),
+        siblingWroteAgo: Duration.zero,
+        siblingPresent: false,
       );
-    });
-
-    test('our membership in a DIFFERENT call is not this call', () async {
-      // A leftover row from an earlier call must not silence a live ring.
-      final (service, room) = await roomWith([
-        {
-          'call_id': 'older-call',
-          'device_id': 'OTHERPHONE',
-          'expires_ts': soon(),
-        },
-      ]);
-      expect(
-        service.answeredOnAnotherDevice(room, r'$caller-membership'),
-        isFalse,
-      );
+      expect(service.answeredOnAnotherDevice(room, ringAt), isFalse);
     });
 
     test('our OWN device joining is not "somebody else answered"', () async {
-      final (service, room) = await roomWith([
-        {'call_id': 'the-call', 'device_id': 'THIS', 'expires_ts': soon()},
-      ]);
-      expect(
-        service.answeredOnAnotherDevice(room, r'$caller-membership'),
-        isFalse,
+      final (service, room, ringAt) = await roomWith(
+        ringSentAgo: const Duration(seconds: 20),
+        siblingWroteAgo: const Duration(seconds: 5),
+        siblingPresent: true,
+        siblingIsThisDevice: true,
       );
+      expect(service.answeredOnAnotherDevice(room, ringAt), isFalse);
+    });
+
+    test('an expired sibling membership is nobody', () async {
+      final (service, room, ringAt) = await roomWith(
+        ringSentAgo: const Duration(seconds: 20),
+        siblingWroteAgo: const Duration(seconds: 5),
+        siblingPresent: true,
+        siblingExpired: true,
+      );
+      expect(service.answeredOnAnotherDevice(room, ringAt), isFalse);
     });
   });
 }

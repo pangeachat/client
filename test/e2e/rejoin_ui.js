@@ -51,15 +51,60 @@ async function connect(A, B, mA) {
 
   console.log('[1] a call, then B refreshes and returns');
   if (!(await connect(A, B, mA))) { console.log('FAIL: never connected'); h.report(); process.exit(2); }
+
+  // PROVE the call is really up before refreshing anything. A run that
+  // refreshes a call that never connected goes on to report the product
+  // broken for a precondition it failed to meet itself.
+  let live = false;
+  for (let i = 0; i < 20 && !live; i++) {
+    const [aIn, bIn, aText] = await Promise.all([
+      mx.hasMembership(A.token, ROOM_ID, A.userId),
+      mx.hasMembership(B.token, ROOM_ID, B.userId),
+      text(A.page),
+    ]);
+    live = aIn && bIn && clockSeconds(aText) >= 0 && !/Ringing/i.test(aText);
+    if (!live) await wait(2000);
+  }
+  h.check('rejoin', 'the call is genuinely up before the refresh', live,
+    'never reached a two-sided, ticking call');
+  if (!live) { h.report(); process.exit(2); }
+
   await wait(40000);                       // long enough that 0:0x is unmistakable
   await B.page.reload({ waitUntil: 'domcontentloaded' });
-  await wait(14000);
+
+  // And wait for B to actually BE somewhere: a hard reload with the service
+  // worker purged takes its time, and an empty page answers every question
+  // with "no".
+  let alive = false;
+  for (let i = 0; i < 30 && !alive; i++) {
+    alive = (await text(B.page)).trim().length > 0;
+    if (!alive) await wait(2000);
+  }
+  h.check('rejoin', 'B came back up after the reload', alive, 'B stayed blank');
+
+  // Diagnostics before judging: is the crumb there, is A still in the call,
+  // and what does B's own log say about the scan?
+  const crumb = await B.page.evaluate(
+    () => window.localStorage.getItem('flutter.pangea.call.breadcrumb'));
+  console.log('   B breadcrumb after reload:', crumb);
+  console.log('   A still in the call:',
+    await mx.hasMembership(A.token, ROOM_ID, A.userId));
+  const bLog = [];
+  B.page.on('console', (m) => {
+    const t = m.text();
+    if (/Rejoin offer|ReturnCard|withdraw|breadcrumb|call to return/i.test(t)) bLog.push(t.slice(0, 160));
+  });
 
   let offered = false;
   for (let i = 0; i < 10 && !offered; i++) {
     offered = await ui.hasLabel(B.page, 'Return').catch(() => false) ||
       /Return/.test(await text(B.page));
     if (!offered) await wait(1500);
+  }
+  if (!offered) {
+    console.log('   B page text:', (await text(B.page)).slice(0, 200).replace(/\n/g, ' | '));
+    console.log('   B console:', bLog.slice(-8).join(' || ') || '(nothing)');
+    console.log('   A in call now:', await mx.hasMembership(A.token, ROOM_ID, A.userId));
   }
   h.check('rejoin', 'B is offered the way back', offered, 'no Return banner');
 
