@@ -3,7 +3,7 @@ package chat.pangea.call_capture
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import java.util.concurrent.ArrayBlockingQueue
+import java.util.concurrent.ConcurrentLinkedQueue
 import com.cloudwebrtc.webrtc.FlutterWebRTCPlugin
 import com.cloudwebrtc.webrtc.audio.AudioProcessingAdapter
 import com.cloudwebrtc.webrtc.audio.AudioProcessingController
@@ -195,6 +195,12 @@ class PangeaCallCapturePlugin :
    * order it was captured. Sending the last of it directly — because detaching
    * happens on this very thread — would have put it ahead of batches already
    * waiting, which is worse than the delay it avoided.
+   *
+   * The post itself takes the main queue's lock, briefly, on the capture
+   * thread. That is the floor, not an oversight: the channel may only be
+   * written from the main thread, so SOME handoff to it must exist, and any
+   * intermediate thread would need its own wakeup — a lock by another name.
+   * It happens once per batch, ten times a second, not per frame.
    */
   private fun deliver(pcm: ByteArray, sampleRateHz: Int) {
     handler.post {
@@ -274,8 +280,15 @@ internal class PostEchoCancellationFrames(
    * audio may be waiting: when none is free the audio is dropped rather than
    * queued, because a lost stretch of transcript is recoverable and a call that
    * exhausts the device is not.
+   *
+   * Lock-free on purpose. This queue is polled on the module's capture thread,
+   * which has ten milliseconds to return; a blocking queue shares one lock with
+   * the main thread's offer in [handedOn], and the main thread being preempted
+   * while holding it would stall capture for as long as the scheduler pleases.
+   * The bound does not need the queue to enforce it: [created] already caps how
+   * many buffers exist at all.
    */
-  private val spares = ArrayBlockingQueue<ByteArray>(MAX_PENDING_BATCHES)
+  private val spares = ConcurrentLinkedQueue<ByteArray>()
 
   override fun initialize(sampleRateHz: Int, numChannels: Int) {
     onRate(sampleRateHz)
@@ -344,7 +357,12 @@ internal class PostEchoCancellationFrames(
       if (filled + 2 > batch.size) flush()
       // The module's scale is already that of a signed 16-bit sample, so this
       // rounds rather than rescales.
-      val sample = buffer.getFloat(i * 4).roundToInt().coerceIn(-32768, 32767)
+      val raw = buffer.getFloat(i * 4)
+      // NaN would THROW from roundToInt, on the capture thread, killing the
+      // recording over one corrupt sample; it becomes silence instead. The
+      // infinities need no branch: roundToInt saturates them and the clamp
+      // brings them into range.
+      val sample = if (raw.isNaN()) 0 else raw.roundToInt().coerceIn(-32768, 32767)
       batch[filled++] = (sample and 0xff).toByte()
       batch[filled++] = ((sample shr 8) and 0xff).toByte()
     }
