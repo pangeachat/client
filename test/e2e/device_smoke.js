@@ -27,14 +27,31 @@ const ROOM_ID = ROOM + ':pangea.localhost';
   console.log('   rang:', rang);
   if (!rang) process.exit(2);
 
-  console.log('[4] phone answers (tap, proven by membership)');
+  console.log('[4] phone answers (tap, proven by a FRESH membership)');
   await wait(4000);
+  // NOT bare hasMembership: a call the phone got stuck in earlier leaves a
+  // live, heartbeating membership behind, and that stale row answered this
+  // check for a call the phone never picked up -- the run then "passed" the
+  // answer step and failed everything after it, looking like a product bug.
+  // The membership must be one written SINCE this call's ring.
+  const answeredAt = Date.now();
+  const freshlyJoined = async () => {
+    const evs = await h.since(A.token, ROOM_ID, mA);
+    const joinedNow = evs.some(
+      (e) => e.type === 'com.famedly.call.member' &&
+        e.sender === B.userId &&
+        Array.isArray(e.content?.memberships) &&
+        e.content.memberships.length > 0,
+    );
+    return joinedNow && (await mx.hasMembership(B.token, ROOM_ID, B.userId));
+  };
   const joined = await h.actUntil(
     'phone answer',
     async () => { await d.tap(d.BANNER.answer.x, d.BANNER.answer.y); },
-    () => mx.hasMembership(B.token, ROOM_ID, B.userId),
+    freshlyJoined,
     { tries: 5, gap: 3000 },
   );
+  console.log(`   (answer confirmed in ${Math.round((Date.now() - answeredAt) / 1000)}s)`);
   console.log('   phone joined:', joined);
   if (!joined) {
     await d.screenshot('/tmp/callweb/P9-noanswer.png');

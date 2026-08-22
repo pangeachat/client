@@ -345,6 +345,7 @@ class ActiveCall extends ChangeNotifier {
         elected &&
         _peerArrived &&
         (_roster?.hasPeer ?? false) &&
+        !_peerMembershipGone &&
         // Never while their return is in doubt: presence during a grace may be
         // the SFU's echo of someone already gone, and audio recorded into that
         // is audio nobody heard.
@@ -454,6 +455,37 @@ class ActiveCall extends ChangeNotifier {
 
   /// When the peer was first seen again during a grace, null if not yet.
   DateTime? _peerBackSince;
+
+  /// Who the peer is, learned from the roster while they were visibly here.
+  /// Needed to ask the ROOM about them once the SFU stops being trustworthy.
+  String? _peerUserId;
+
+  /// Whether the SFU's claim that the peer is present can be believed.
+  ///
+  /// It cannot, on its own. The SFU keeps a departed participant for its
+  /// departure timeout, and a reconnect of OUR connection re-lists them from
+  /// that retention -- on a real phone the list then never dropped them
+  /// again, so a call whose peer had hung up stayed open indefinitely, with
+  /// a live microphone. Their Matrix membership is the authority in the
+  /// other direction: leaving RETRACTS it, and a peer who has retracted is
+  /// gone no matter who the SFU still lists. (A crash retracts nothing, so
+  /// this filter stays quiet there and the roster remains in charge.)
+  /// Whether their membership has ever been SEEN, so its absence means
+  /// something. Strictly transition-based, the same rule the ringing banner
+  /// states: room state can lag a join by seconds, and reading "not synced
+  /// yet" as "left" would end calls that had only just begun.
+  bool _peerMembershipSeen = false;
+
+  bool get _peerMembershipGone {
+    final room = _room;
+    final peer = _peerUserId;
+    if (room == null || peer == null) return false;
+    if (calls.callerStillInCall(room, peer)) {
+      _peerMembershipSeen = true;
+      return false;
+    }
+    return _peerMembershipSeen;
+  }
 
   Timer? _presenceClock;
 
@@ -600,7 +632,18 @@ class ActiveCall extends ChangeNotifier {
     // holds its last picture while the connection is down, so a reconnect —
     // which empties and refills the participant list — does not read as the
     // other person hanging up.
-    final peerHere = _roster?.hasPeer ?? false;
+    final rosterHasPeer = _roster?.hasPeer ?? false;
+    if (rosterHasPeer && _peerUserId == null) {
+      final me = calls.client.userID;
+      for (final p in _roster?.participants ?? const {}) {
+        if (p.userId != me && p.userId.isNotEmpty) {
+          _peerUserId = p.userId;
+          break;
+        }
+      }
+    }
+    // A peer the room says has left is not here, whatever the SFU reports.
+    final peerHere = rosterHasPeer && !_peerMembershipGone;
     if (peerHere && _peerGrace != null) {
       // Seen again mid-grace. NOT believed yet: the SFU re-reports a departed
       // participant inside its own retention window, and taking that echo for

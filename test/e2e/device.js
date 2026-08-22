@@ -37,7 +37,16 @@ async function screenshot(path) {
   return path;
 }
 
-async function tap(x, y) { await adb('shell', 'input', 'tap', String(x), String(y)); }
+/// Taps, after making sure something is actually there to tap.
+///
+/// The screen sleeping mid-run is indistinguishable, from the server's side,
+/// from a product that ignores the answer button: the taps land on a dark
+/// panel and nothing happens. Every tap therefore wakes the device first --
+/// cheap, and it removes a whole class of phantom failure.
+async function tap(x, y) {
+  await adb('shell', 'input', 'keyevent', 'KEYCODE_WAKEUP').catch(() => {});
+  await adb('shell', 'input', 'tap', String(x), String(y));
+}
 
 // Banner control positions on THIS device (960x2142), calibrated from a
 // screenshot of a live ring and verified by the server-side outcome each run.
