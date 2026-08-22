@@ -103,6 +103,23 @@ place-the-call PRELUDE flakes when run back-to-back after other scenarios
 (the ring event never reaches the room; the same steps pass standalone).
 Run it first, or standalone, until the prelude flake is traced.
 
+## The P4 device scenarios
+
+`device_p4.js` proves the Android foreground service end to end: answer,
+check the service is foreground with its ongoing-call notification, press
+HOME, hold sixty seconds off screen (the window the old build died in),
+confirm the call and its recording survive, return, hang up from the GLOBAL
+CALL TILE -- the minimised control that is actually on screen by then -- and
+wait for the service and notification to go. `device_notif_action.js` drives
+the notification's own Hang Up from the shade, because "the button exists"
+is not the claim worth testing.
+
+Two traps this pair paid for, now designed out: taps must WAKE the device
+first (a sleeping screen swallows them and reads as a product that ignores
+the answer button), and a teardown check must WAIT out the peer grace rather
+than sampling once (the first version reported a product failure that was
+only its own impatience).
+
 ## Known gaps
 
 - The former "next call after an answered call places nothing" bug is resolved:
