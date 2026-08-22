@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 /// One finished call, drawn in the timeline.
 ///
@@ -19,7 +20,13 @@ import 'package:fluffychat/routes/chat/calls/call_record.dart';
 class CallTimelineEvent extends StatelessWidget {
   final Event event;
 
-  const CallTimelineEvent(this.event, {super.key});
+  /// The surrounding timeline, for the first-per-key rule below. Required so
+  /// no call site can forget it exists; nullable because a card can render
+  /// where no timeline is at hand (a preview, a test) -- there the rule
+  /// simply cannot run and the card draws.
+  final Timeline? timeline;
+
+  const CallTimelineEvent(this.event, {required this.timeline, super.key});
 
   /// Whether this account placed the call.
   ///
@@ -46,6 +53,43 @@ class CallTimelineEvent extends StatelessWidget {
   /// it cannot disagree about what a duration is.
   Duration get _duration => CallRecord.durationOf(event.content);
 
+  /// Whether another card for the SAME call precedes this one.
+  ///
+  /// Matrix transaction ids dedup PER DEVICE, so two devices writing the same
+  /// call -- the writer and the survivor racing across the settle window --
+  /// cannot be collapsed by the server. The idempotency lives HERE instead,
+  /// per the idempotent-receiver rule: every writer stamps the call's shared
+  /// key, and only the FIRST card per key in timeline order is drawn. Order is
+  /// origin_server_ts with the event id as the final tie-break, so every
+  /// client picks the same one. Keyless cards -- older clients, calls whose
+  /// identity was never learned -- always draw, exactly as before.
+  bool get _duplicateOfEarlier {
+    final t = timeline;
+    return t != null && isDuplicateOfEarlier(event, t.events);
+  }
+
+  /// The rule itself, pure so it can be pinned directly: [event] is a
+  /// duplicate iff some other sent call card in [all] carries the same key
+  /// and sorts earlier -- origin_server_ts first, event id as the final
+  /// tie-break, so every client picks the same survivor of a double-write.
+  @visibleForTesting
+  static bool isDuplicateOfEarlier(Event event, Iterable<Event> all) {
+    final key = event.content[CallRecord.callKeyField];
+    if (key is! String) return false;
+    for (final other in all) {
+      if (identical(other, event) || other.eventId == event.eventId) continue;
+      if (other.type != PangeaEventTypes.call) continue;
+      if (other.content[CallRecord.callKeyField] != key) continue;
+      if (other.status.isError) continue;
+      final byTime = other.originServerTs.compareTo(event.originServerTs);
+      if (byTime < 0 ||
+          (byTime == 0 && other.eventId.compareTo(event.eventId) < 0)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   /// Whether this card ever reached the homeserver.
   ///
   /// A send that failed is not dropped by the SDK: it keeps the optimistic echo
@@ -62,6 +106,7 @@ class CallTimelineEvent extends StatelessWidget {
     // failed is the record of it, and a record only one side holds is worse
     // than no record -- it reads as an extra call that never took place.
     if (_neverSent) return const SizedBox.shrink();
+    if (_duplicateOfEarlier) return const SizedBox.shrink();
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
     final missed = !_answered && !_declined;

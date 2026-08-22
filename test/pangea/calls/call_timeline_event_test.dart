@@ -52,7 +52,9 @@ void main() {
         locale: const Locale('en'),
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
-        home: Scaffold(body: CallTimelineEvent(event)),
+        // No surrounding timeline here: the dedup rule has its own suite, and
+        // these tests are about how ONE card reads.
+        home: Scaffold(body: CallTimelineEvent(event, timeline: null)),
       ),
     );
     // The localisations delegate resolves asynchronously; without this the

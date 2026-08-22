@@ -95,7 +95,28 @@ function card(ev, viewerId) {
 }
 
 function cardsIn(events, viewerId) {
-  return events.filter((e) => e.type === CALL).map((e) => card(e, viewerId));
+  // The renderer's first-per-key rule, mirrored: only the FIRST card per
+  // call_key in timeline order counts (origin_server_ts, event id as final
+  // tie-break). A writer and a survivor racing across the settle window can
+  // both post; the product renders one, so the harness counts one. Keyless
+  // cards always count, as they always rendered.
+  const all = events.filter((e) => e.type === CALL);
+  const firstPerKey = new Map();
+  for (const e of all) {
+    const key = e.content && e.content.call_key;
+    if (typeof key !== 'string') continue;
+    const cur = firstPerKey.get(key);
+    if (!cur) { firstPerKey.set(key, e); continue; }
+    const byTime = (cur.origin_server_ts || 0) - (e.origin_server_ts || 0);
+    if (byTime > 0 || (byTime === 0 && cur.event_id > e.event_id)) firstPerKey.set(key, e);
+  }
+  return all
+    .filter((e) => {
+      const key = e.content && e.content.call_key;
+      if (typeof key !== 'string') return true;
+      return firstPerKey.get(key) === e;
+    })
+    .map((e) => card(e, viewerId));
 }
 
 function countType(events, type) {

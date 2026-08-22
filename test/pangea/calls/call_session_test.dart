@@ -10,6 +10,8 @@ import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart';
+import 'package:fluffychat/routes/chat/calls/call_record.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
@@ -268,5 +270,169 @@ void main() {
     // The global tile and chat host detach on unmount, which happens AFTER the
     // holder disposed the session on the ordinary path of a call ending.
     session.detachPresenter();
+  });
+  group('the survivor card', () {
+    /// An ANSWERED call on the side that does not write: the ring names the
+    /// caller's membership, the peer is present, and the writer -- the other
+    /// side -- may or may not get its card out before dying.
+    Future<(CallSession, _RecordingRoom, _FakeMedia)> answeredCall() async {
+      final client = await _bareClient();
+      // A DIRECT chat, so the peer resolves: the survivor names the caller.
+      client.accountData['m.direct'] = matrix.BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@friend:fakeServer.notExisting': ['!r:server'],
+        },
+      );
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final media = _FakeMedia();
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        notificationEventId: r'$ring',
+        callerMembershipEventId: r'$caller-membership',
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      final roster = media.fakeRoster!;
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+      roster.recompute();
+      await pumpEventQueue();
+      return (session, room, media);
+    }
+
+    test('the writer dying leaves the survivor to write the card', () async {
+      final (session, room, _) = await answeredCall();
+      session.timelineEventsOverride = () async => const [];
+      session.endCall();
+      await pumpEventQueue();
+      expect(room.sent, isEmpty, reason: 'the answerer never fast-writes');
+
+      await session.survivorCheckNowForTest();
+
+      expect(room.sent, hasLength(1), reason: 'the survivor card');
+      final card = room.sent.single;
+      expect(card[CallRecord.callKeyField], r'$caller-membership');
+      expect(card['answered'], isTrue);
+      expect(card['declined'], isFalse);
+      expect(card['caller'], '@friend:fakeServer.notExisting');
+    });
+
+    test("the writer's card arriving means the survivor stays quiet", () async {
+      final (session, room, _) = await answeredCall();
+      final client = room.client;
+      session.timelineEventsOverride = () async => [
+        matrix.Event(
+          type: PangeaEventTypes.call,
+          content: {CallRecord.callKeyField: r'$caller-membership'},
+          senderId: '@friend:fakeServer.notExisting',
+          eventId: r'$their-card',
+          originServerTs: DateTime.now(),
+          room: matrix.Room(id: '!r:server', client: client),
+        ),
+      ];
+      session.endCall();
+      await pumpEventQueue();
+
+      await session.survivorCheckNowForTest();
+
+      expect(room.sent, isEmpty, reason: 'their card exists; nothing to add');
+    });
+
+    test('a call that never had a peer schedules no survivor', () async {
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        notificationEventId: r'$ring',
+        callerMembershipEventId: r'$caller-membership',
+        mediaOverride: _FakeMedia(),
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      session.timelineEventsOverride = () async => const [];
+      session.endCall();
+      await pumpEventQueue();
+
+      await session.survivorCheckNowForTest();
+
+      // A survivor writing a missed or declined outcome would be fabricating
+      // one it cannot know; only the caller decides those.
+      expect(room.sent, isEmpty);
+    });
+  });
+
+  group('the call identity every writer shares', () {
+    test('a plain call: the placer, keyed by its own membership', () {
+      final id = CallSession.resolveCallIdentity(
+        placed: true,
+        peerAlsoPlaced: false,
+        myUserId: '@me:s',
+        peerUserId: '@peer:s',
+        ownMembershipId: r'$mine',
+        peerRingMembershipId: null,
+        callerMembershipEventId: null,
+      );
+      expect(id.key, r'$mine');
+      expect(id.caller, '@me:s');
+    });
+
+    test('the answerer: keyed by the ring, the caller named', () {
+      final id = CallSession.resolveCallIdentity(
+        placed: false,
+        peerAlsoPlaced: false,
+        myUserId: '@me:s',
+        peerUserId: '@peer:s',
+        ownMembershipId: r'$mine',
+        peerRingMembershipId: null,
+        callerMembershipEventId: r'$theirs',
+      );
+      expect(id.key, r'$theirs');
+      expect(id.caller, '@peer:s');
+    });
+
+    test('glare: BOTH sides stamp the tie-break winner, not themselves', () {
+      // '@a' beats '@b'. The winner keys by its own membership; the loser by
+      // the membership the winner's simultaneous ring named. `placedCall ?
+      // me : peer` here would have named the LOSER on the loser's card.
+      final winner = CallSession.resolveCallIdentity(
+        placed: true,
+        peerAlsoPlaced: true,
+        myUserId: '@a:s',
+        peerUserId: '@b:s',
+        ownMembershipId: r'$a-membership',
+        peerRingMembershipId: r'$b-membership',
+        callerMembershipEventId: null,
+      );
+      final loser = CallSession.resolveCallIdentity(
+        placed: true,
+        peerAlsoPlaced: true,
+        myUserId: '@b:s',
+        peerUserId: '@a:s',
+        ownMembershipId: r'$b-membership',
+        peerRingMembershipId: r'$a-membership',
+        callerMembershipEventId: null,
+      );
+      expect(winner.key, r'$a-membership');
+      expect(loser.key, r'$a-membership', reason: 'one call, one key');
+      expect(winner.caller, '@a:s');
+      expect(loser.caller, '@a:s', reason: 'the card names the winner');
+    });
   });
 }

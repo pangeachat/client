@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 import 'package:livekit_client/livekit_client.dart' as lk;
-import 'package:matrix/matrix.dart' as matrix show Room, User;
+import 'package:matrix/matrix.dart' as matrix show Event, Room, User;
 import 'package:matrix/matrix.dart' show Logs;
 
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
@@ -34,6 +34,11 @@ class CallSession extends ChangeNotifier {
 
   /// The ring this device answered, when answering. Null when placing.
   final String? notificationEventId;
+
+  /// The CALLER's membership event id, carried by the ring this device
+  /// answered. Null when placing (the caller's own echo stands in) and null
+  /// on sessions that never saw a ring.
+  final String? callerMembershipEventId;
 
   final CallMedia media;
   final ActiveCall call;
@@ -72,6 +77,7 @@ class CallSession extends ChangeNotifier {
     required String? peerUserId,
     required void Function(CallSession) onReleased,
     String? rejoinAnchor,
+    this.callerMembershipEventId,
   }) : _record = record,
        _myUserId = myUserId,
        _peerUserId = peerUserId,
@@ -102,6 +108,7 @@ class CallSession extends ChangeNotifier {
     required void Function(CallSession) onReleased,
     String? notificationEventId,
     String? rejoinAnchor,
+    String? callerMembershipEventId,
     @visibleForTesting CallMedia? mediaOverride,
     @visibleForTesting CallCaptureService? captureOverride,
   }) {
@@ -133,6 +140,7 @@ class CallSession extends ChangeNotifier {
       peerUserId: room.directChatMatrixID,
       onReleased: onReleased,
       rejoinAnchor: rejoinAnchor,
+      callerMembershipEventId: callerMembershipEventId,
     );
   }
 
@@ -334,6 +342,7 @@ class CallSession extends ChangeNotifier {
   void _writeCard() {
     if (_cardStarted || !_mattered) return;
     _cardStarted = true;
+    final identity = _callIdentity;
     unawaited(
       _record
           .writeCard(
@@ -342,12 +351,98 @@ class CallSession extends ChangeNotifier {
             answered: call.hadPeer,
             declined: call.wasDeclined,
             writeTimelineEvent: _writesTheCall,
-            callerId: call.placedCall ? _myUserId : _peerUserId,
+            callerId: identity.caller,
+            callKey: identity.key,
             anchorEventId: notificationEventId ?? call.membershipEventId,
           )
           .catchError((Object e, StackTrace s) {
             Logs().e('Could not put the call in the timeline', e, s);
           }),
+    );
+    _scheduleSurvivorCheck(identity);
+  }
+
+  /// How long the survivor waits for the writer's card to arrive before
+  /// concluding the writer died with it. Long enough for an ordinary write and
+  /// a slow sync; the cost of waiting is only how late a rare recovered card
+  /// appears.
+  static const _survivorSettle = Duration(seconds: 15);
+
+  /// Writes the card the WRITER never did.
+  ///
+  /// A call answered and talked on, whose writer died before its hangup wrote
+  /// the card (a crashed browser, a killed tab), left no trace at all in the
+  /// conversation. The surviving non-writer waits out the settle, re-reads
+  /// the timeline, and writes a card carrying only what THIS side observed --
+  /// but only for calls it saw ANSWERED (a survivor can never fabricate a
+  /// missed/declined outcome), only with a ring- or glare-provenanced key (a
+  /// rejoined session's anchor may be its own membership, the wrong key), and
+  /// stamped with the same shared key so the renderer collapses the rare race
+  /// where both raced to write.
+  /// What the survivor timer will check, kept so a test can run the check
+  /// without waiting out the settle.
+  ({String key, String? caller})? _survivorPending;
+
+  /// Runs the scheduled survivor check now instead of after the settle.
+  /// Fifteen seconds of real time in a test proves nothing the check's own
+  /// logic does not.
+  @visibleForTesting
+  Future<void> survivorCheckNowForTest() async {
+    final pending = _survivorPending;
+    if (pending == null) return;
+    await _survivorCheck(pending.key, pending.caller);
+  }
+
+  void _scheduleSurvivorCheck(({String? key, String? caller}) identity) {
+    final key = identity.key;
+    if (_writesTheCall || !call.hadPeer || call.rejoinedCall || key == null) {
+      return;
+    }
+    _survivorPending = (key: key, caller: identity.caller);
+    Timer(_survivorSettle, () {
+      unawaited(
+        _survivorCheck(key, identity.caller).catchError((
+          Object e,
+          StackTrace s,
+        ) {
+          Logs().w('The survivor card check failed', e, s);
+        }),
+      );
+    });
+  }
+
+  /// The room's current timeline events, as one read. A seam because the
+  /// SDK's Timeline cannot be constructed outside it, and the survivor rule
+  /// -- check, then write -- deserves tests that do not depend on the fake
+  /// server's paging.
+  @visibleForTesting
+  Future<List<matrix.Event>> Function()? timelineEventsOverride;
+
+  Future<List<matrix.Event>> _timelineEvents() async {
+    final override = timelineEventsOverride;
+    if (override != null) return override();
+    final timeline = await room.getTimeline();
+    try {
+      return List.of(timeline.events);
+    } finally {
+      timeline.cancelSubscriptions();
+    }
+  }
+
+  Future<void> _survivorCheck(String key, String? caller) async {
+    final events = await _timelineEvents();
+    final already = events.any(
+      (e) =>
+          e.type == PangeaEventTypes.call &&
+          e.content[CallRecord.callKeyField] == key,
+    );
+    if (already) return;
+    Logs().i('No card arrived for this call; the survivor writes it');
+    await _record.writeSurvivorCard(
+      duration: call.talkDuration,
+      video: _usedVideo,
+      callKey: key,
+      callerId: caller,
     );
   }
 
@@ -375,13 +470,15 @@ class CallSession extends ChangeNotifier {
             // it, and writes the card itself only if that earlier attempt had
             // failed outright.
 
+            final identity = _callIdentity;
             return _record.finish(
               duration: call.talkDuration,
               video: _usedVideo,
               answered: call.hadPeer,
               declined: call.wasDeclined,
               writeTimelineEvent: _writesTheCall,
-              callerId: call.placedCall ? _myUserId : _peerUserId,
+              callerId: identity.caller,
+              callKey: identity.key,
               anchorEventId: notificationEventId ?? call.membershipEventId,
             );
           })
@@ -389,6 +486,50 @@ class CallSession extends ChangeNotifier {
             Logs().e('Could not finish the call recording', e, s);
           }),
     );
+  }
+
+  /// The call's shared identity and the caller its card names.
+  ///
+  /// ONE resolver for every writer -- fast path, finish, survivor -- so no
+  /// two of them can disagree. The key is the CALLER's membership event id:
+  /// the caller holds it as its own echo, the callee from the ring it
+  /// answered, and on glare the tie-break winner's id is the key -- the loser
+  /// learned it from the winner's simultaneous ring. The caller field names
+  /// the same tie-break winner; `placedCall ? me : peer` would, on glare,
+  /// name the LOSER on the loser's card.
+  ({String? key, String? caller}) get _callIdentity => resolveCallIdentity(
+    placed: call.placedCall,
+    peerAlsoPlaced: call.peerAlsoPlaced,
+    myUserId: _myUserId,
+    peerUserId: _peerUserId ?? call.peerRingSenderId,
+    ownMembershipId: call.membershipEventId,
+    peerRingMembershipId: call.peerRingMembershipId,
+    callerMembershipEventId: callerMembershipEventId,
+  );
+
+  /// The rule itself, pure so the glare arms can be pinned directly.
+  @visibleForTesting
+  static ({String? key, String? caller}) resolveCallIdentity({
+    required bool placed,
+    required bool peerAlsoPlaced,
+    required String? myUserId,
+    required String? peerUserId,
+    required String? ownMembershipId,
+    required String? peerRingMembershipId,
+    required String? callerMembershipEventId,
+  }) {
+    if (!placed) {
+      return (key: callerMembershipEventId, caller: peerUserId);
+    }
+    if (!peerAlsoPlaced) {
+      return (key: ownMembershipId, caller: myUserId);
+    }
+    if (myUserId == null || peerUserId == null) {
+      return (key: ownMembershipId, caller: myUserId);
+    }
+    return myUserId.compareTo(peerUserId) < 0
+        ? (key: ownMembershipId, caller: myUserId)
+        : (key: peerRingMembershipId, caller: peerUserId);
   }
 
   /// Whether this device writes the call to the room. The placer writes it;

@@ -341,6 +341,9 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       // Anchors this side's speaking analytics: the answering device does not
       // write the call to the timeline, the caller does.
       notificationEventId: ring.event.eventId,
+      // The caller's own membership, named by their ring: the call's SHARED
+      // identity, which every card for this call is stamped with.
+      callerMembershipEventId: ring.membershipEventId,
     );
     // The call lives in its own chat's pane, so answering also goes there.
     // Through the app's router directly: this banner is mounted above it.

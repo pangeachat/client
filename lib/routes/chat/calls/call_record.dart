@@ -30,9 +30,16 @@ class CallRecord {
   final CallTranscriptSink transcripts;
   final String roomId;
 
-  /// The call's timeline event, once written. Kept so a retry credits against
-  /// the same event rather than posting a second call.
-  String? _eventId;
+  /// The card actually written to the timeline by THIS device, once it has
+  /// been. Split from [_anchorId] deliberately: on the side that does not
+  /// write, analytics still need an event to credit against, and folding both
+  /// meanings into one field made "analytics anchored" read as "the card
+  /// exists" -- which blocked the survivor write before it started.
+  String? _cardEventId;
+
+  /// What analytics credit against: the card if this device wrote it, the
+  /// ring notification it answered with otherwise.
+  String? _anchorId;
 
   /// One transaction id for every attempt at writing this call.
   ///
@@ -88,23 +95,26 @@ class CallRecord {
     required bool writeTimelineEvent,
     String? anchorEventId,
     String? callerId,
+    String? callKey,
   }) async {
-    if (_eventId != null || _credited) return;
+    if (_anchorId != null || _cardEventId != null || _credited) return;
     if (!writeTimelineEvent) {
       // The answering side posts no card; its analytics anchor to the ring it
-      // was called with, which it already holds.
-      _eventId = anchorEventId;
+      // was called with, which it already holds. The card slot stays empty --
+      // that emptiness is what lets the survivor path act later.
+      _anchorId = anchorEventId;
       return;
     }
-    for (var attempt = 0; attempt < 3 && _eventId == null; attempt++) {
+    for (var attempt = 0; attempt < 3 && _cardEventId == null; attempt++) {
       if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
       try {
-        _eventId = await _write(
+        _cardEventId = await _write(
           duration: duration,
           video: video,
           answered: answered,
           declined: declined,
           callerId: callerId,
+          callKey: callKey,
         );
       } catch (e, s) {
         Logs().w(
@@ -115,8 +125,50 @@ class CallRecord {
         );
       }
     }
-    if (_eventId == null) {
+    if (_cardEventId == null) {
       Logs().e('Gave up putting the call in the timeline');
+    } else {
+      _anchorId ??= _cardEventId;
+    }
+  }
+
+  /// Writes the card a dead writer never did.
+  ///
+  /// Run by the surviving NON-writer after the settle window, only when no
+  /// card carrying this call's key has appeared. Deliberately indifferent to
+  /// [_credited]: analytics were anchored to the ring long before, and having
+  /// been credited is not the same fact as the card existing. Its own txid --
+  /// Matrix transaction ids dedup PER DEVICE, so reusing the writer's could
+  /// never collapse against it anyway; the renderer's first-per-key rule is
+  /// what makes the rare double-write invisible.
+  Future<void> writeSurvivorCard({
+    required Duration duration,
+    required bool video,
+    required String callKey,
+    String? callerId,
+  }) async {
+    if (_cardEventId != null) return;
+    for (var attempt = 0; attempt < 3 && _cardEventId == null; attempt++) {
+      if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
+      try {
+        _cardEventId = await _write(
+          duration: duration,
+          video: video,
+          // Only for calls this side saw ANSWERED -- the caller decides
+          // missed/declined outcomes, and a survivor writing one would be
+          // fabricating an outcome it cannot know.
+          answered: true,
+          declined: false,
+          callerId: callerId,
+          callKey: callKey,
+        );
+      } catch (e, s) {
+        Logs().w(
+          'The survivor card write failed (attempt ${attempt + 1})',
+          e,
+          s,
+        );
+      }
     }
   }
 
@@ -128,6 +180,7 @@ class CallRecord {
     bool writeTimelineEvent = true,
     String? anchorEventId,
     String? callerId,
+    String? callKey,
   }) async {
     if (_credited) return;
     // Concurrent callers join the in-flight attempt rather than being dropped.
@@ -151,6 +204,7 @@ class CallRecord {
               writeTimelineEvent: writeTimelineEvent,
               anchorEventId: anchorEventId,
               callerId: callerId,
+              callKey: callKey,
             );
           } catch (e, s) {
             // Caught here rather than around each step, so a failure is visible
@@ -180,17 +234,19 @@ class CallRecord {
     required bool writeTimelineEvent,
     required String? anchorEventId,
     required String? callerId,
+    required String? callKey,
   }) async {
     // Written once. A retry after the analytics failed must credit against the
     // call already in the timeline, not add another one.
-    final eventId = _eventId ??= writeTimelineEvent
-        ? await _write(
+    final eventId = _anchorId ??= writeTimelineEvent
+        ? (_cardEventId ??= await _write(
             duration: duration,
             video: video,
             answered: answered,
             declined: declined,
             callerId: callerId,
-          )
+            callKey: callKey,
+          ))
         : anchorEventId;
     if (eventId == null) {
       // Nothing to anchor the uses to, and an unanchored use cannot be traced
@@ -273,12 +329,17 @@ class CallRecord {
     return video ? 'Video call ($stamp)' : 'Voice call ($stamp)';
   }
 
+  /// The one field the renderer's first-per-key rule reads, and the one every
+  /// writer of a card stamps. Kept as a constant so no path can misspell it.
+  static const callKeyField = 'call_key';
+
   Future<String?> _write({
     required Duration duration,
     required bool video,
     required bool answered,
     required bool declined,
     required String? callerId,
+    required String? callKey,
   }) async {
     try {
       return await sendEvent(<String, dynamic>{
@@ -312,6 +373,13 @@ class CallRecord {
         // not — the analyser suggests this form, and it has been reported as a
         // compile error twice by review.
         'caller': ?callerId,
+        // The call's SHARED identity: the caller's membership event id, known
+        // to both sides (the caller as its own echo, the callee from its
+        // ring). It is what lets two devices' cards for one call be told
+        // apart from two calls -- the renderer draws only the first card per
+        // key. Absent on calls whose identity was never learned; those render
+        // unconditionally, as they always did.
+        callKeyField: ?callKey,
       }, _txid);
     } catch (e, s) {
       Logs().e('Could not write the call to the room', e, s);

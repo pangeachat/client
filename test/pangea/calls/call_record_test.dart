@@ -405,4 +405,99 @@ void main() {
           });
     });
   });
+  group('the survivor card', () {
+    test(
+      'a non-writer that already credited analytics can still write it',
+      () async {
+        // The old single _eventId slot made "analytics anchored" read as "the
+        // card exists", which blocked the survivor before it started.
+        final r = record(await sinkWith(() => spokenWord('hola')));
+        await r.finish(
+          duration: const Duration(seconds: 30),
+          video: false,
+          writeTimelineEvent: false,
+          anchorEventId: r'$ring',
+        );
+        expect(
+          recorded,
+          hasLength(1),
+          reason: 'analytics credited to the ring',
+        );
+        expect(written, isEmpty, reason: 'the non-writer posted no card');
+
+        await r.writeSurvivorCard(
+          duration: const Duration(seconds: 30),
+          video: false,
+          callKey: r'$caller-membership',
+          callerId: '@caller:server',
+        );
+
+        expect(written, hasLength(1));
+        expect(written.single[CallRecord.callKeyField], r'$caller-membership');
+        expect(written.single['answered'], isTrue);
+        expect(written.single['declined'], isFalse);
+        expect(written.single['caller'], '@caller:server');
+      },
+    );
+
+    test(
+      'a device that already wrote its card never survivor-writes',
+      () async {
+        final r = record(await sinkWith(() => spokenWord('hola')));
+        await r.writeCard(
+          duration: const Duration(seconds: 30),
+          video: false,
+          answered: true,
+          declined: false,
+          writeTimelineEvent: true,
+          callKey: r'$key',
+        );
+        expect(written, hasLength(1));
+
+        await r.writeSurvivorCard(
+          duration: const Duration(seconds: 30),
+          video: false,
+          callKey: r'$key',
+        );
+        expect(written, hasLength(1), reason: 'one card per device, ever');
+      },
+    );
+
+    test('every writer stamps the same key field', () async {
+      final r = record(await sinkWith(() => spokenWord('hola')));
+      await r.writeCard(
+        duration: const Duration(seconds: 5),
+        video: false,
+        answered: true,
+        declined: false,
+        writeTimelineEvent: true,
+        callKey: r'$key',
+        callerId: '@me:server',
+      );
+      expect(written.single[CallRecord.callKeyField], r'$key');
+
+      final r2 = record(await sinkWith(() => spokenWord('hola')));
+      await r2.finish(
+        duration: const Duration(seconds: 5),
+        video: false,
+        callKey: r'$key2',
+      );
+      expect(written.last[CallRecord.callKeyField], r'$key2');
+    });
+
+    test(
+      'a call whose identity was never learned is written keyless',
+      () async {
+        final r = record(await sinkWith(() => spokenWord('hola')));
+        await r.writeCard(
+          duration: const Duration(seconds: 5),
+          video: false,
+          answered: true,
+          declined: false,
+          writeTimelineEvent: true,
+        );
+        expect(written.single.containsKey(CallRecord.callKeyField), isFalse);
+      },
+    );
+  });
 }

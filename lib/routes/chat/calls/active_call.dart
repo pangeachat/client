@@ -170,6 +170,10 @@ class ActiveCall extends ChangeNotifier {
     }
     _peerAlsoPlaced = true;
     _peerRingSenderId = event.senderId;
+    // Their ring names THEIR membership -- on glare, whichever side loses the
+    // tie-break stamps the winner's membership as the call's identity, and
+    // this is the only place the loser ever learns it.
+    _peerRingMembershipId = ring.membershipEventId;
   }
 
   /// Whether the other person was calling us at the same moment we called them.
@@ -188,6 +192,12 @@ class ActiveCall extends ChangeNotifier {
   String? get peerRingSenderId => _peerRingSenderId;
 
   String? _peerRingSenderId;
+
+  /// The membership event the peer's simultaneous ring pointed at, when there
+  /// was one. The glare loser's route to the call's shared identity.
+  String? get peerRingMembershipId => _peerRingMembershipId;
+
+  String? _peerRingMembershipId;
 
   String? _membershipEventId;
 

@@ -183,7 +183,7 @@ class Message extends StatelessWidget {
       }
 
       if (event.type == PangeaEventTypes.call) {
-        return CallTimelineEvent(event);
+        return CallTimelineEvent(event, timeline: timeline);
       }
 
       // return StateMessage(event, onExpand: onExpand, isCollapsed: isCollapsed);
