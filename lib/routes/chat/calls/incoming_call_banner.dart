@@ -457,6 +457,12 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       // call; the cost is that a second caller during a call goes unanswered,
       // as they would on a phone.
       if (showing.event.room.id != ring.event.room.id) return;
+      // A redial replaces the ring it redials -- but only FORWARDS. The
+      // startup replay hands rings over newest-first, so without this the
+      // older one arrived second and overwrote the live redial, and the
+      // learner then answered a call that was already over: the wrong
+      // notification id, pointed at a membership nobody is holding.
+      if (ring.orderedAt.isBefore(showing.orderedAt)) return;
     }
     setState(() => _showRing(ring));
     _watchForGiveUp(ring);

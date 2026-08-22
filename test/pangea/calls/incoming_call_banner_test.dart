@@ -93,18 +93,19 @@ void main() {
 
   /// Built by the sender's own serialiser, so this cannot drift from the shape
   /// a real ring actually has.
-  Event ring(Room room, {String id = '\$ring'}) => Event(
-    type: PangeaEventTypes.callNotification,
-    content: const CallNotification(
-      membershipEventId: '\$membership',
-      senderDeviceId: 'CALLERDEVICE',
-      video: false,
-    ).toContent(DateTime.now()),
-    senderId: caller,
-    eventId: id,
-    originServerTs: DateTime.now(),
-    room: room,
-  );
+  Event ring(Room room, {String id = '\$ring', Duration age = Duration.zero}) =>
+      Event(
+        type: PangeaEventTypes.callNotification,
+        content: const CallNotification(
+          membershipEventId: '\$membership',
+          senderDeviceId: 'CALLERDEVICE',
+          video: false,
+        ).toContent(DateTime.now().subtract(age)),
+        senderId: caller,
+        eventId: id,
+        originServerTs: DateTime.now().subtract(age),
+        room: room,
+      );
 
   /// A decline sent by THIS account — from another of its devices, which is
   /// what answering on a second phone looks like from here.
@@ -183,6 +184,33 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('\$redial')), findsOneWidget);
       expect(find.byKey(const ValueKey('\$ring')), findsNothing);
+    });
+  });
+
+  group('two rings for one room, replayed out of order', () {
+    // The startup replay hands rings over newest-first, so the OLDER one
+    // arrives second. Letting any same-room ring replace the one on screen
+    // meant a cancelled first attempt overwrote the live redial, and the
+    // learner then answered a call that was already over -- the wrong
+    // notification id, pointed at a membership nobody holds.
+    testWidgets('the older one cannot take the screen', (tester) async {
+      final room = directChat();
+      await pumpBanner(tester);
+
+      client.onTimelineEvent.add(ring(room, id: '\$redial'));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('\$redial')), findsOneWidget);
+
+      client.onTimelineEvent.add(
+        ring(room, id: '\$stale', age: const Duration(seconds: 20)),
+      );
+      await tester.pumpAndSettle();
+      expect(
+        find.byKey(const ValueKey('\$redial')),
+        findsOneWidget,
+        reason: 'the live redial keeps the screen',
+      );
+      expect(find.byKey(const ValueKey('\$stale')), findsNothing);
     });
   });
 
