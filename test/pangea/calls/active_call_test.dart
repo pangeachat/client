@@ -1270,6 +1270,88 @@ void main() {
     });
   });
 
+  group('returning to a call after a reload', () {
+    test('a rejoin never rings and never announces a new call', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      // The peer is still on the call the reload interrupted.
+      calls.remotePresent = true;
+
+      await call.start(
+        roomStub(calls.client),
+        video: false,
+        rejoinAnchor: r'$original-membership',
+      );
+
+      expect(call.stage, CallStage.connected);
+      expect(trace.steps, isNot(contains('ring')));
+      expect(trace.steps, isNot(contains('announce')));
+      expect(call.placedCall, isFalse);
+      // The call keeps the identity it already had: the membership written
+      // when it was first joined, not something minted for the re-entry.
+      expect(call.membershipEventId, r'$original-membership');
+      expect(call.rejoinedCall, isTrue);
+    });
+
+    test('an empty room at rejoin does not read as placing a call', () async {
+      // The peer may have dropped in the same window. An empty roster used to
+      // be the definition of "placing" — a rejoin ringing the peer for their
+      // own call's past is the failure this pins against.
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = false;
+
+      await call.start(
+        roomStub(calls.client),
+        video: false,
+        rejoinAnchor: r'$original-membership',
+      );
+
+      expect(call.placedCall, isFalse);
+      expect(trace.steps, isNot(contains('ring')));
+      expect(trace.steps, isNot(contains('announce')));
+    });
+
+    test('a peer who never comes back means a quiet leave', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = false;
+
+      await call.start(
+        roomStub(calls.client),
+        video: false,
+        rejoinAnchor: r'$original-membership',
+      );
+      expect(call.stage, CallStage.connected, reason: 'joined, waiting');
+
+      // The bounded wait lapses with the roster still empty.
+      await call.waitForPeerTimeoutForTest();
+
+      expect(call.stage, CallStage.ended);
+      expect(call.hadPeer, isFalse, reason: 'nobody was ever on this rejoin');
+      expect(trace.steps, contains('retract'), reason: 'left cleanly');
+    });
+
+    test('the peer arriving during the wait resumes the call', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = false;
+
+      await call.start(
+        roomStub(calls.client),
+        video: false,
+        rejoinAnchor: r'$original-membership',
+      );
+
+      calls.remotePresent = true;
+      await calls.participantsBecome([calls.client.deviceID!]);
+
+      expect(call.hadPeer, isTrue);
+      expect(call.stage, CallStage.connected);
+      expect(trace.steps, contains('capture.start'), reason: 'recording again');
+    });
+  });
+
   group('when the other person declines', () {
     test('the caller stops ringing and is told why', () async {
       // Ringing at someone who has already said no is what every other calling

@@ -227,6 +227,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     Room room, {
     required bool video,
     String? notificationEventId,
+    String? rejoinMembershipEventId,
   }) {
     final existing = activeCall.value;
     if (existing != null) {
@@ -250,6 +251,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       room: room,
       video: video,
       notificationEventId: notificationEventId,
+      rejoinAnchor: rejoinMembershipEventId,
       callService: callService,
       // The repo answers with a Result; the sink's contract is a value or a
       // throw, and it already treats a throw as "this chunk's words are lost".

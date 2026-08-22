@@ -71,6 +71,7 @@ class CallSession extends ChangeNotifier {
     required String? myUserId,
     required String? peerUserId,
     required void Function(CallSession) onReleased,
+    String? rejoinAnchor,
   }) : _record = record,
        _myUserId = myUserId,
        _peerUserId = peerUserId,
@@ -83,6 +84,7 @@ class CallSession extends ChangeNotifier {
       // Being rung is what makes this an answer. Derived from the room it
       // would be wrong exactly when the caller had already given up.
       answering: notificationEventId != null,
+      rejoinAnchor: rejoinAnchor,
     );
   }
 
@@ -99,6 +101,7 @@ class CallSession extends ChangeNotifier {
     required CallAnalyticsSink analytics,
     required void Function(CallSession) onReleased,
     String? notificationEventId,
+    String? rejoinAnchor,
     @visibleForTesting CallMedia? mediaOverride,
     @visibleForTesting CallCaptureService? captureOverride,
   }) {
@@ -129,6 +132,7 @@ class CallSession extends ChangeNotifier {
       myUserId: callService.client.userID,
       peerUserId: room.directChatMatrixID,
       onReleased: onReleased,
+      rejoinAnchor: rejoinAnchor,
     );
   }
 

@@ -804,6 +804,94 @@ void main() {
       expect(await service.ringsMissed(), isEmpty);
     });
   });
+  group('offering a return to a call after a reload', () {
+    const roomId = '!wascalling:fakeServer.notExisting';
+    const peer = '@friend:fakeServer.notExisting';
+    const me = '@test:fakeServer.notExisting';
+
+    Future<Client> clientWithOwnMembership({
+      required bool live,
+      String deviceId = 'GHTYAJCE',
+    }) async {
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      final expires = DateTime.now()
+          .add(live ? const Duration(minutes: 5) : const Duration(minutes: -30))
+          .millisecondsSinceEpoch;
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                state: [
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: {
+                      'memberships': [
+                        {
+                          'call_id': 'call-id',
+                          'device_id': deviceId,
+                          'expires_ts': expires,
+                        },
+                      ],
+                    },
+                    senderId: me,
+                    eventId: r'$own-membership',
+                    originServerTs: DateTime.now(),
+                    stateKey: '${deviceId}_$me',
+                  ),
+                ],
+              ),
+            },
+          ),
+        ),
+      );
+      client.accountData['m.direct'] = BasicEvent(
+        type: 'm.direct',
+        content: {
+          peer: [roomId],
+        },
+      );
+      return client;
+    }
+
+    test('a live membership of this device is offered back', () async {
+      final service = CallService(await clientWithOwnMembership(live: true));
+      final offers = await service.rejoinOffers();
+      expect(offers, hasLength(1));
+      expect(offers.single.room.id, roomId);
+      // The offer carries the call's standing identity: the membership event
+      // this account wrote when it first joined, which the rejoined session
+      // uses as its anchor instead of minting a new one.
+      expect(offers.single.membershipEventId, r'$own-membership');
+      expect(
+        service.voipConstructed,
+        isFalse,
+        reason:
+            'the scan runs at every app start; VoIP() scans every room and '
+            'can fire call handlers on construction, and an account that was '
+            'not in a call must never pay that',
+      );
+    });
+
+    test('an expired membership offers nothing', () async {
+      final service = CallService(await clientWithOwnMembership(live: false));
+      expect(await service.rejoinOffers(), isEmpty);
+    });
+
+    test("another device's membership is not this one's to resume", () async {
+      final service = CallService(
+        await clientWithOwnMembership(live: true, deviceId: 'OTHERPHONE'),
+      );
+      expect(await service.rejoinOffers(), isEmpty);
+    });
+  });
 }
 
 /// A room that accepts any send and remembers the transaction ids used.

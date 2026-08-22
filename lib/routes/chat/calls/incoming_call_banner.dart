@@ -37,6 +37,14 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   CallService? _service;
   Timer? _stillRinging;
   IncomingCallNotification? _ringing;
+
+  /// A call this device was on before a reload, offered back to the learner.
+  RejoinOffer? _rejoin;
+
+  /// Watched so a call starting ANYWHERE clears the rejoin offer: the join
+  /// claim is one-per-account, so whatever started owns it now.
+  ValueNotifier<Object?>? _activeCall;
+
   String? _listeningTo;
 
   /// Notification event ids the learner has turned down.
@@ -99,6 +107,64 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // Without this, refreshing the page while the phone was ringing lost the
     // call outright, with no way left to answer it.
     unawaited(_replayMissed(matrixState, account));
+
+    // And a call this DEVICE was on when the reload happened is offered back.
+    _activeCall?.removeListener(_onActiveCallChanged);
+    _activeCall = matrixState.activeCall;
+    _activeCall?.addListener(_onActiveCallChanged);
+    unawaited(_offerRejoin(matrixState, account));
+  }
+
+  /// A call starting anywhere in the app takes the one join claim this account
+  /// has, so a standing rejoin offer is for a call that can no longer be
+  /// rejoined first — it goes.
+  void _onActiveCallChanged() {
+    if (_activeCall?.value == null || _rejoin == null) return;
+    if (mounted) setState(() => _rejoin = null);
+  }
+
+  /// Offers a return to the call a reload interrupted.
+  ///
+  /// The membership is only the OFFER: whether the call still exists is
+  /// decided by the join itself, which waits briefly for the peer and leaves
+  /// quietly if the room is empty. Never auto-joined — a microphone opens on a
+  /// tap or not at all.
+  Future<void> _offerRejoin(MatrixState matrixState, String account) async {
+    final service = matrixState.callService;
+    // An active session suppresses the offer outright: the learner is already
+    // in whatever call matters most.
+    if (service.isBusy) return;
+    final List<RejoinOffer> offers;
+    try {
+      offers = await service.rejoinOffers();
+    } catch (e, s) {
+      matrix.Logs().w('Could not look for a call to return to', e, s);
+      return;
+    }
+    if (!mounted || _listeningTo != account) return;
+    // Re-checked: the scan awaited network, and a call may have started since.
+    if (service.isBusy || offers.isEmpty) return;
+    final offer = offers.first;
+    setState(() {
+      _rejoin = offer;
+      // For the SAME room, the rejoin wins over a replayed ring: this account
+      // was IN that call, so the stale ring is the same call's past — showing
+      // both would offer the learner their own call as something to answer.
+      if (_ringing?.event.room.id == offer.room.id) _ringing = null;
+    });
+  }
+
+  void _acceptRejoin(RejoinOffer offer) {
+    setState(() => _rejoin = null);
+    if (!mounted) return;
+    Matrix.of(context).startCall(
+      offer.room,
+      video: false,
+      rejoinMembershipEventId: offer.membershipEventId,
+    );
+    final router = FluffyChatApp.router;
+    final uri = router.routeInformationProvider.value.uri;
+    router.go(WorkspaceNav.openRoomById(uri, offer.room.id));
   }
 
   /// Puts back a ring that arrived while this device was not listening.
@@ -126,6 +192,9 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// the redial rule, or the account check, would put up a prompt the live path
   /// would have refused.
   void _offer(IncomingCallNotification ring, String account) {
+    // A standing rejoin offer for the same room wins over any ring for it:
+    // that ring is this account's own call's past.
+    if (_rejoin?.room.id == ring.event.room.id) return;
     // Checked against the account this subscription was made for. Cancelling
     // does not unqueue what has already been handed over, so a ring for the
     // account the learner just left could still raise a prompt here — and
@@ -204,6 +273,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _ownDeclines?.cancel();
     _callerGone?.cancel();
     _stillRinging?.cancel();
+    _activeCall?.removeListener(_onActiveCallChanged);
     super.dispose();
   }
 
@@ -282,9 +352,30 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   @override
   Widget build(BuildContext context) {
     final ringing = _ringing;
+    final rejoin = _rejoin;
     return Stack(
       children: [
         widget.child ?? const SizedBox.shrink(),
+        // A live ring outranks the offer to return: someone is calling NOW.
+        // The offer keeps its state and comes back if the ring resolves.
+        if (ringing == null && rejoin != null)
+          Positioned(
+            top: MediaQuery.of(context).padding.top + 12,
+            left: 12,
+            right: 12,
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 440),
+                child: _ReturnCard(
+                  key: ValueKey(rejoin.membershipEventId),
+                  offer: rejoin,
+                  onReturn: () => _acceptRejoin(rejoin),
+                  onDismiss: () => setState(() => _rejoin = null),
+                ),
+              ),
+            ),
+          ),
         if (ringing != null)
           Positioned(
             top: MediaQuery.of(context).padding.top + 12,
@@ -558,4 +649,99 @@ class _CircleAction extends StatelessWidget {
       ),
     ),
   );
+}
+
+/// The offer to return to a call a reload interrupted.
+///
+/// Deliberately quieter than the ring card: nothing is ringing. It states the
+/// fact and offers the way back; the tap is what finds out whether the call is
+/// still there, and a call that is not is left as quietly as it was offered.
+class _ReturnCard extends StatelessWidget {
+  final RejoinOffer offer;
+  final VoidCallback onReturn;
+  final VoidCallback onDismiss;
+
+  const _ReturnCard({
+    required this.offer,
+    required this.onReturn,
+    required this.onDismiss,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final l10n = L10n.of(context);
+    final peerId = offer.room.directChatMatrixID;
+    final peer = peerId == null
+        ? null
+        : offer.room.unsafeGetUserFromMemoryOrFallback(peerId);
+    final name =
+        peer?.calcDisplayname() ?? offer.room.getLocalizedDisplayname();
+
+    // The same decorated box as the ring card, for the same web-renderer
+    // reason: a clipped, elevated Material repaints grey on hover there.
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerHigh,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.4),
+            blurRadius: 24,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
+        child: Row(
+          children: [
+            Avatar(
+              mxContent: peer?.avatarUrl,
+              name: name,
+              size: 44,
+              showPresence: false,
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    name,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    l10n.callReturnOffer,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 8),
+            IconButton(
+              onPressed: onDismiss,
+              icon: const Icon(Icons.close),
+              tooltip: l10n.close,
+            ),
+            FilledButton.icon(
+              onPressed: onReturn,
+              icon: const Icon(Icons.call, size: 18),
+              label: Text(l10n.callReturn),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

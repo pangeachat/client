@@ -397,6 +397,16 @@ class ActiveCall extends ChangeNotifier {
   /// takes their presence to reach us.
   static const _joinWithin = Duration(seconds: 10);
 
+  /// How long a rejoin waits before concluding the call it re-entered is over.
+  /// Bounded well inside the SFU's room retention: past that the peer cannot
+  /// still be waiting for us anyway.
+  static const _rejoinWithin = Duration(seconds: 5);
+
+  bool _rejoining = false;
+
+  /// Whether this session re-entered a call rather than starting one.
+  bool get rejoinedCall => _rejoining;
+
   /// Fires the give-up now instead of after the wait. Sixty seconds of real
   /// time in a test proves nothing the timer's own logic does not.
   @visibleForTesting
@@ -664,11 +674,23 @@ class ActiveCall extends ChangeNotifier {
   /// [answering] is ground truth from the call site: this device was rung, so
   /// it is joining whatever the state of the room looks like. Everything else
   /// is derived, because no other call site can know.
+  ///
+  /// [rejoinAnchor] makes this a RE-ENTRY into a call this account was already
+  /// on before a reload: the original membership event id, which stays the
+  /// call's identity. A rejoin never rings, never announces a new call, and
+  /// waits only briefly for the peer -- if the roster stays empty the call was
+  /// over, and it leaves as quietly as it came.
   Future<void> start(
     matrix.Room room, {
     required bool video,
     bool answering = false,
-  }) => _starting = _start(room, video: video, answering: answering);
+    String? rejoinAnchor,
+  }) => _starting = _start(
+    room,
+    video: video,
+    answering: answering,
+    rejoinAnchor: rejoinAnchor,
+  );
 
   /// Runs one step of coming up, and gives up if a hangup has landed.
   ///
@@ -694,8 +716,10 @@ class ActiveCall extends ChangeNotifier {
     matrix.Room room, {
     required bool video,
     required bool answering,
+    String? rejoinAnchor,
   }) async {
     _room = room;
+    _rejoining = rejoinAnchor != null;
     _startedAt = DateTime.now();
     // Subscribed before anything else, but only when PLACING. Two people
     // calling at the same moment is decided by seeing the other's ring, and the
@@ -705,7 +729,9 @@ class ActiveCall extends ChangeNotifier {
     // stream, inside the glare window of a quick answer — is not evidence the
     // peer "also placed". Listening for it there just set a flag on the wrong
     // side of the call.
-    if (!answering) {
+    // A rejoin has no glare to detect either: the call already exists, and
+    // the only ring this stream could carry for it is the original one's past.
+    if (!answering && rejoinAnchor == null) {
       _peerRings = calls.ringsIn(room).listen(_onPeerRing);
     }
     try {
@@ -757,7 +783,12 @@ class ActiveCall extends ChangeNotifier {
       // it makes a SECOND DEVICE of the same account, and anyone joining a call
       // already under way, write a card of their own, which are the ordinary
       // cases rather than a sub-millisecond overlap.
-      final placing = !answering && roster.participants.isEmpty;
+      // A rejoin is never placing, however empty the room looks by the time we
+      // get back: the call it re-enters was already placed, and reading an
+      // empty roster as "new call" here would ring the peer for their own
+      // call's past.
+      final placing =
+          !answering && rejoinAnchor == null && roster.participants.isEmpty;
       _placed = placing;
 
       // Read before anything is awaited. A peer who was already here can leave
@@ -782,7 +813,16 @@ class ActiveCall extends ChangeNotifier {
       // a hangup landing inside the announce threw after the id had come back
       // but before it was kept, and a device with no ring of its own then had
       // nothing to anchor its learner's words to.
-      final membershipId = _membershipEventId = await calls.announce();
+      final String? membershipId;
+      if (rejoinAnchor != null) {
+        // The call already has an identity: the membership this account wrote
+        // when it first joined, still live in the room's state -- it is what
+        // offered the rejoin. Re-announcing would mint a new anchor for a call
+        // that already has one, and every surface keyed on it would split.
+        membershipId = _membershipEventId = rejoinAnchor;
+      } else {
+        membershipId = _membershipEventId = await calls.announce();
+      }
       _abandonIfEnding();
 
       // Ring the other side, if we are the one placing the call. A timeline
@@ -834,8 +874,15 @@ class ActiveCall extends ChangeNotifier {
         // Someone answering a call has somebody to answer; if nobody is there,
         // the caller has already gone and waiting a full minute only holds the
         // microphone open in an empty call. Someone placing one is waiting for
-        // an answer, which is what the longer wait is for.
-        final wait = answering ? _joinWithin : _answerWithin;
+        // an answer, which is what the longer wait is for. A rejoin waits the
+        // shortest of all: the peer is either still on the call or the call is
+        // over, and membership cannot say which -- the roster is the truth the
+        // tap went in to read.
+        final wait = rejoinAnchor != null
+            ? _rejoinWithin
+            : answering
+            ? _joinWithin
+            : _answerWithin;
         _waitingForPeer = Timer(wait, () {
           if (_ending || _peerArrived) return;
           Logs().i('Nobody joined the call; ending it');

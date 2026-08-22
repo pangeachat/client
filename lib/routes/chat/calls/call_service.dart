@@ -802,6 +802,68 @@ class CallService {
     return missed;
   }
 
+  /// Calls this DEVICE was still on when it was last alive.
+  ///
+  /// A live, unexpired call membership of our own in a direct room is the
+  /// trace a mid-call reload leaves behind. It is the OFFER heuristic only --
+  /// membership is never liveness in this codebase, and its age says nothing
+  /// about when the reload happened, because it is written at call START. The
+  /// truth about whether the call still exists is the join itself: the rejoin
+  /// waits briefly for the peer in the SFU roster and leaves quietly if the
+  /// room is empty.
+  /// The slack the SDK gives an expiry before believing it, so a device slow
+  /// to renew is not read as gone. Mirrored here because this scan reads the
+  /// raw state on purpose -- see below.
+  static const _expiryBuffer = Duration(minutes: 1);
+
+  Future<List<RejoinOffer>> rejoinOffers() async {
+    if (_disposed) return const [];
+    final me = client.userID;
+    final device = client.deviceID;
+    if (me == null || device == null) return const [];
+    final horizon = DateTime.now()
+        .subtract(_expiryBuffer)
+        .millisecondsSinceEpoch;
+    final offers = <RejoinOffer>[];
+    for (final room in client.rooms) {
+      if (!room.isDirectChat) continue;
+      // Membership is state, and a room the learner has not opened is loaded
+      // only partially -- without this the membership this scan exists to find
+      // reads as absent.
+      try {
+        await room.postLoad();
+      } catch (e, s) {
+        Logs().w('Could not load the state of ${room.id}', e, s);
+      }
+      // Raw state, NOT the SDK's membership helper: that helper needs VoIP,
+      // and VoIP() is not inert -- it scans every joined room and can fire
+      // call handlers on construction. This scan runs at every app start, and
+      // an account that was not in a call must not pay that. Matched on the
+      // state event's SENDER, like every other membership read here, because
+      // the state key has three shapes and only the sender is common to all.
+      final memberStates = room.states[EventTypes.GroupCallMember];
+      if (memberStates == null) continue;
+      for (final state in memberStates.values) {
+        // Stripped state carries no event id, and the id IS the offer's value:
+        // it is the call's standing identity, handed to the rejoined session.
+        if (state is! Event) continue;
+        if (state.senderId != me) continue;
+        final memberships = state.content['memberships'];
+        if (memberships is! List) continue;
+        final mine = memberships.any((m) {
+          if (m is! Map) return false;
+          if (m['device_id'] != device) return false;
+          final expires = m['expires_ts'];
+          return expires is int && expires >= horizon;
+        });
+        if (!mine) continue;
+        offers.add(RejoinOffer(room: room, membershipEventId: state.eventId));
+        break;
+      }
+    }
+    return offers;
+  }
+
   /// The notification a decline points back at, or null if it points at nothing.
   String? declineTarget(Event event) => _declineRefersTo(event);
 
@@ -1092,4 +1154,16 @@ class AlreadyInACall implements Exception {
 
   @override
   String toString() => 'This account is already in a call';
+}
+
+/// A call this device can offer to return to after a reload.
+class RejoinOffer {
+  final Room room;
+
+  /// This device's own live membership event: the call's standing identity,
+  /// carried into the rejoined session as its anchor rather than minting a
+  /// new one for a call that already has one.
+  final String membershipEventId;
+
+  const RejoinOffer({required this.room, required this.membershipEventId});
 }
