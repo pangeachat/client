@@ -294,6 +294,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // this account's own call's past, and the offer wins.
     if (_rejoin?.room.id == ring.event.room.id) {
       if (!_ringIsLive(ring, _rejoin)) return;
+      // The trace goes with the offer: a genuine newer call for this room
+      // means the old one is finished, and a crumb left standing would
+      // resurrect its dead Return offer on a reload inside the age bound.
+      unawaited(CallBreadcrumb.clear());
       setState(() => _rejoin = null);
     }
     // Never one already turned down.
