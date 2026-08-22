@@ -258,6 +258,11 @@ class ActiveCall extends ChangeNotifier {
   void foregroundActions(void Function(String action) handle) =>
       _foreground?.onAction(handle);
 
+  /// Releases the action handler. The channel handler is process-global and
+  /// closes over its session; left set, it retains a disposed session until
+  /// the next call replaces it.
+  void clearForegroundActions() => _foreground?.clearActionHandler();
+
   Future<void> _startForeground({required bool video}) async {
     final foreground = _foreground;
     if (foreground == null) return;

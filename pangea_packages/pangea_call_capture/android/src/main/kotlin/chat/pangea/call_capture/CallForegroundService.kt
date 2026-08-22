@@ -94,8 +94,16 @@ class CallForegroundService : Service() {
     when (intent?.action) {
       ACTION_START -> {
         peer = intent.getStringExtra(EXTRA_PEER) ?: ""
-        promote(camera = false)
-        running = true
+        if (promote(camera = false)) {
+          running = true
+        } else {
+          // A service started with startForegroundService MUST reach
+          // startForeground or STOP within the system's timeout; swallowing
+          // the failure and idling here is the one thing that turns a
+          // refused promotion into a system kill. Stopping is the clean
+          // degrade: no service, and the call itself never depended on one.
+          stopSelf()
+        }
       }
       ACTION_SET_TYPES -> {
         // Idempotent by construction: promoting again with the same types is
@@ -124,7 +132,7 @@ class CallForegroundService : Service() {
     return START_NOT_STICKY
   }
 
-  private fun promote(camera: Boolean) {
+  private fun promote(camera: Boolean): Boolean {
     val cameraGranted =
       checkSelfPermission(android.Manifest.permission.CAMERA) ==
         PackageManager.PERMISSION_GRANTED
@@ -132,17 +140,19 @@ class CallForegroundService : Service() {
     val types =
       ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE or
         (if (withCamera) ServiceInfo.FOREGROUND_SERVICE_TYPE_CAMERA else 0)
-    try {
+    return try {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
         startForeground(NOTIFICATION_ID, notification(), types)
       } else {
         startForeground(NOTIFICATION_ID, notification())
       }
+      true
     } catch (e: Exception) {
       // Recording the call is worth a service; the call is worth more. A
       // refusal here (a policy change, a race with backgrounding) must never
-      // take the call down with it.
+      // take the call down with it -- the caller decides whether to stop.
       Log.w("PangeaCall", "Could not promote the call service: $e")
+      false
     }
   }
 

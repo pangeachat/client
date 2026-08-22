@@ -438,6 +438,13 @@ class CallSession extends ChangeNotifier {
   /// rejoined session's anchor may be its own membership, the wrong key), and
   /// stamped with the same shared key so the renderer collapses the rare race
   /// where both raced to write.
+  ///
+  /// ACCEPTED GAP, stated not hidden: if BOTH sides reload and rejoin, both
+  /// sessions are provenance-blind and neither writes -- that call leaves no
+  /// card. A rejoiner cannot know post-reload whether it originally placed,
+  /// and guessing writes a card under the wrong key, which is worse than a
+  /// missing one. The server-side reconciler (filed follow-up) is the real
+  /// answer for double-crash shapes.
   /// What the survivor timer will check, kept so a test can run the check
   /// without waiting out the settle.
   ({String key, String? caller})? _survivorPending;
@@ -695,6 +702,7 @@ class CallSession extends ChangeNotifier {
     if (_disposing) return;
     _disposing = true;
     call.removeListener(_onCallChanged);
+    call.clearForegroundActions();
     _tick?.cancel();
     // A summary still holding its 3s when the holder discards the session --
     // logout, a redial stepping over -- must not fire into a disposed one.
