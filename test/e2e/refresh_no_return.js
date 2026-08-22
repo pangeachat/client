@@ -17,11 +17,34 @@ async function pageText(page) {
   catch { return ''; }
 }
 
+async function connectedCall(A, B, attempt) {
+  console.log(`[2${attempt > 1 ? '*' : ''}] A places, B answers (attempt ${attempt})`);
+  const mA = await h.mark(A.token, ROOM_ID);
+  const rang = await h.actUntil('place',
+    async () => { await h.ensureRoom(A, ROOM); await ui.clickLabel(A.page, 'Call', { exact: true }).catch(() => {}); },
+    async () => (await h.since(A.token, ROOM_ID, mA)).some((e) => e.type === mx.RING && e.sender === A.userId),
+    { tries: 3, gap: 4000 });
+  if (!rang) return null;
+  await wait(3500);
+  const joined = await h.actUntil('answer',
+    async () => { await ui.clickBanner(B.page, 'answer'); },
+    () => mx.hasMembership(B.token, ROOM_ID, B.userId),
+    { tries: 5, gap: 3000 });
+  if (!joined) return null;
+  let talking = false;
+  for (let i = 0; i < 14 && !talking; i++) {
+    if (i > 0 && i % 4 === 0) await h.ensureRoom(A, ROOM).catch(() => {});
+    const t = await pageText(A.page);
+    talking = /\b\d:\d\d\b/.test(t) && !/Ringing/i.test(t) && !/No answer\s*$/.test(t.trim());
+    if (!talking) await wait(1500);
+  }
+  return talking ? mA : null;
+}
+
 (async () => {
   console.log('[1] open both participants');
   const A = await h.openParticipant('learner', ROOM, 9721);
   const B = await h.openParticipant('calltester', ROOM, 9722);
-  const mA = await h.mark(A.token, ROOM_ID);
   const aLog = [];
   const t0 = Date.now();
   A.page.on('console', (m) => {
@@ -31,40 +54,23 @@ async function pageText(page) {
     }
   });
 
-  console.log('[2] A places, B answers, 6s of talk');
-  const rang = await h.actUntil('place',
-    async () => { await h.ensureRoom(A, ROOM); await ui.clickLabel(A.page, 'Call', { exact: true }).catch(() => {}); },
-    async () => (await h.since(A.token, ROOM_ID, mA)).some((e) => e.type === mx.RING && e.sender === A.userId),
-    { tries: 3, gap: 4000 });
-  if (!rang) { console.log('FAIL: never rang'); process.exit(2); }
-  await wait(3500);
-  const joined = await h.actUntil('answer',
-    async () => { await ui.clickBanner(B.page, 'answer'); },
-    () => mx.hasMembership(B.token, ROOM_ID, B.userId),
-    { tries: 5, gap: 3000 });
-  if (!joined) { console.log('FAIL: B never joined'); process.exit(2); }
-
-  // PROVE the talk connected before killing B: membership alone lands before
-  // the SFU join completes, and a B killed mid-connect leaves A still
-  // "ringing" -- a different scenario entirely (it ends as No answer). The
-  // ticking timer on A's page is A's own statement that its roster saw B.
-  let talking = false;
-  for (let i = 0; i < 20 && !talking; i++) {
-    // The router can drift A off the room minutes after login; the call
-    // panel lives in the room's pane, so bring it back before sampling.
-    if (i > 0 && i % 4 === 0) await h.ensureRoom(A, ROOM).catch(() => {});
-    const t = await pageText(A.page);
-    talking = /\b\d:\d\d\b/.test(t) && !/Ringing/i.test(t);
-    if (!talking) await wait(1500);
+  // PROVE the talk connected before killing B, with one full retry: the
+  // place/answer prelude can flake (router drift, a click racing a rebuild),
+  // and the thing under test here is the GRACE, not the prelude.
+  let mA = await connectedCall(A, B, 1);
+  if (!mA) {
+    await ui.clickPanel(A.page, 'hangup').catch(() => {});
+    await wait(6000);
+    mA = await connectedCall(A, B, 2);
   }
-  if (!talking) {
+  if (!mA) {
     const t = await pageText(A.page);
     console.log('   A page text: ' + t.slice(0, 300).replace(/\n/g, ' | '));
     console.log("   A's account:"); aLog.slice(-25).forEach((l) => console.log('     ', l));
   }
-  h.check('no-return', 'the call genuinely connected before the kill', talking,
-    'A never showed a ticking timer');
-  if (!talking) { h.report(); process.exit(2); }
+  h.check('no-return', 'the call genuinely connected before the kill', !!mA,
+    'A never showed a ticking timer, twice');
+  if (!mA) { h.report(); process.exit(2); }
   await wait(5000);
 
   console.log('[3] B dies for good (browser closed)');

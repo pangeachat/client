@@ -92,6 +92,17 @@ evidence is the call card plus the phone's own capture log lines.
   render). On a failed outcome the scenario screenshots the phone so the
   calibration is corrected from evidence.
 
+## Refresh scenarios (refresh_midcall.js, refresh_no_return.js)
+
+The mid-call-reload pair. `refresh_midcall` is the flagship: grace on the
+surviving side, the Return offer on the reloaded side, tap, resumption
+proven by a 25s soak, no re-ring, one card -- stable at 9/9.
+`refresh_no_return` proves the grace end-to-end (reconnecting shown, ~20s
+grace measured, self-end, answered card): it has run 5/5 green, but its
+place-the-call PRELUDE flakes when run back-to-back after other scenarios
+(the ring event never reaches the room; the same steps pass standalone).
+Run it first, or standalone, until the prelude flake is traced.
+
 ## Known gaps
 
 - The former "next call after an answered call places nothing" bug is resolved:
