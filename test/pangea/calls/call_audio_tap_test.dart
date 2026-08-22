@@ -130,9 +130,14 @@ void main() {
       expect(platform.watching, isFalse);
     });
 
-    test('listens before asking the platform to start', () async {
-      // The other order drops whatever arrives in between, which on a busy
-      // device is the opening words of the call.
+    test('listens only AFTER the platform attach is owned', () async {
+      // The reverse of the ordering this test used to pin. The frame stream is
+      // SHARED, so a subscription taken before attach belongs to nobody -- and
+      // a stale, overtaken open() sleeping in its retry went on feeding the
+      // same pipeline beside the live recording, double-counting the opening
+      // of the next call. Subscribing only once the attach is owned costs the
+      // few frames between the attach answer and the listen; feeding audio
+      // into analytics twice is the thing that must be impossible.
       var listeningWhenStarted = false;
       final platform = _OrderingCapture(() => listeningWhenStarted = true);
 
@@ -140,7 +145,29 @@ void main() {
         capture: platform,
       ).open(_noTrack, (_, _) {});
 
-      expect(listeningWhenStarted, isTrue);
+      expect(
+        listeningWhenStarted,
+        isFalse,
+        reason: 'nothing may listen before the attach is owned',
+      );
+      expect(
+        platform.watching,
+        isTrue,
+        reason: 'and the owned attach is being listened to afterwards',
+      );
+    });
+
+    test('a refused attach leaves no subscription behind', () async {
+      final platform = FakeCapture(attaches: false);
+      final detach = await PostEchoCancellationTap(
+        capture: platform,
+      ).open(_noTrack, (_, _) {});
+      expect(detach, isNull);
+      expect(
+        platform.watching,
+        isFalse,
+        reason: 'a stale listener beside a later live one is the defect',
+      );
     });
   });
 }
@@ -169,6 +196,8 @@ class _OrderingCapture extends PangeaCallCapture {
     if (_frames.hasListener) onStart();
     return true;
   }
+
+  bool get watching => _frames.hasListener;
 
   @override
   Future<void> stop({bool settleDeliveries = true}) async {}

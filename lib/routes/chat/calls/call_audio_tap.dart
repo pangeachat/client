@@ -76,14 +76,6 @@ class PostEchoCancellationTap implements CallAudioTap {
 
   @override
   Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
-    // Subscribed before the platform side is asked to attach, so no frame can be
-    // produced before something is listening for it.
-    final subscription = capture.frames.listen(
-      (frame) => onFrames(_samplesOf(frame.pcm16), frame.sampleRate),
-      onError: (Object e, StackTrace s) =>
-          Logs().w('The call audio tap reported an error', e, s),
-    );
-
     // Retried briefly: the processing factory is created during WebRTC's own
     // initialization, and the first call of a session can reach here moments
     // before that finishes. Two short retries cover the race; a device where
@@ -109,9 +101,22 @@ class PostEchoCancellationTap implements CallAudioTap {
     }
     if (!attached) {
       Logs().w('No call audio tap on this device; nothing will be recorded');
-      await subscription.cancel();
       return null;
     }
+
+    // Subscribed only AFTER the attach is owned. The frame stream is shared, so
+    // a subscription taken before attach belonged to nobody -- and a stale,
+    // overtaken open() sleeping in the retry above would have gone on feeding
+    // the SAME onFrames pipeline beside the live recording's own listener,
+    // chunking the opening seconds of the next call twice. The cost of the
+    // reorder is the few frames the platform delivers between the attach
+    // answer and this listen -- milliseconds -- against audio that was being
+    // double-counted into a learner's analytics.
+    final subscription = capture.frames.listen(
+      (frame) => onFrames(_samplesOf(frame.pcm16), frame.sampleRate),
+      onError: (Object e, StackTrace s) =>
+          Logs().w('The call audio tap reported an error', e, s),
+    );
 
     // Returned rather than fired and forgotten: the caller awaits this before it
     // considers the recording stopped, and a detach that is still running is a
