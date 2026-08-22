@@ -1073,6 +1073,60 @@ void main() {
       return (CallService(client), client.getRoomById(roomId)!);
     }
 
+    /// A peer with two devices: a tablet that CRASHED in an earlier call and
+    /// left an unexpired membership standing, and a phone that has since
+    /// joined this call and hung up, retracting as it went.
+    Future<(CallService, Room)> withStaleAndFresh() async {
+      final roomId = '!stale${roomSeq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      final old = DateTime.now().subtract(const Duration(hours: 1));
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                state: [
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: {
+                      'memberships': [
+                        {
+                          'call_id': 'this-call',
+                          'expires_ts': DateTime.now()
+                              .add(const Duration(hours: 3))
+                              .millisecondsSinceEpoch,
+                        },
+                      ],
+                    },
+                    senderId: peer,
+                    eventId: '\$tablet',
+                    originServerTs: old,
+                    stateKey: 'TABLET_$peer',
+                  ),
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: const {'memberships': <Object?>[]},
+                    senderId: peer,
+                    eventId: '\$phone',
+                    originServerTs: DateTime.now(),
+                    stateKey: 'PHONE_$peer',
+                  ),
+                ],
+              ),
+            },
+          ),
+        ),
+      );
+      return (CallService(client), client.getRoomById(roomId)!);
+    }
+
     int inFuture() =>
         DateTime.now().add(const Duration(minutes: 5)).millisecondsSinceEpoch;
     int inPast() => DateTime.now()
@@ -1152,6 +1206,32 @@ void main() {
           service.peerLiveInCurrentCall(room, peer),
           isTrue,
           reason: 'their other device is still in the call',
+        );
+      },
+    );
+
+    // The layer under the retraction rule: the call id IS the room id, so a
+    // membership another of their devices left standing when it CRASHED in an
+    // earlier call is indistinguishable from a live one, and it outvoted the
+    // retraction the device they were actually using had just written.
+    test(
+      'a crashed device from an earlier call cannot outvote a retraction',
+      () async {
+        final (service, room) = await withStaleAndFresh();
+        service.adoptCallIdForTest('this-call');
+        expect(
+          service.peerLiveInCurrentCall(room, peer),
+          isTrue,
+          reason: 'without a floor the stale membership still reads as live',
+        );
+        expect(
+          service.peerLiveInCurrentCall(
+            room,
+            peer,
+            notBefore: DateTime.now().subtract(const Duration(minutes: 2)),
+          ),
+          isFalse,
+          reason: 'state older than this call cannot speak for it',
         );
       },
     );

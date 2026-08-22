@@ -236,6 +236,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     required bool video,
     String? notificationEventId,
     String? rejoinMembershipEventId,
+    DateTime? rejoinSince,
     String? callerMembershipEventId,
   }) {
     final existing = activeCall.value;
@@ -261,6 +262,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       video: video,
       notificationEventId: notificationEventId,
       rejoinAnchor: rejoinMembershipEventId,
+      rejoinSince: rejoinSince,
       callerMembershipEventId: callerMembershipEventId,
       callService: callService,
       // The repo answers with a Result; the sink's contract is a value or a

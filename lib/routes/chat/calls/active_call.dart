@@ -508,12 +508,36 @@ class ActiveCall extends ChangeNotifier {
     final room = _room;
     final peer = _peerUserId;
     if (room == null || peer == null) return false;
-    if (calls.peerLiveInCurrentCall(room, peer)) {
+    if (calls.peerLiveInCurrentCall(room, peer, notBefore: _stateFloor(room))) {
       _peerMembershipSeen = true;
       return false;
     }
     return _peerMembershipSeen;
   }
+
+  /// The earliest a membership can have been written and still belong to THIS
+  /// call, in server time.
+  ///
+  /// Our own membership is the anchor: nobody can have joined the call we are
+  /// on more than one ring lifetime before we did, because the ring that
+  /// invited us would have expired first. Anything older is a leftover of an
+  /// earlier call -- and since the call id is the room id, a leftover is
+  /// indistinguishable from a live membership without this.
+  ///
+  /// Null until our own membership has been written, which is the honest
+  /// answer then: with no anchor there is nothing to measure staleness
+  /// against, and the read falls back to expiry alone.
+  DateTime? _stateFloor(matrix.Room room) {
+    final anchor = _membershipEventId;
+    if (anchor == null) return null;
+    final cached = _stateFloorAt;
+    if (cached != null) return cached;
+    final written = calls.membershipWrittenAt(room, anchor);
+    if (written == null) return null;
+    return _stateFloorAt = written.subtract(CallNotification.lifetime);
+  }
+
+  DateTime? _stateFloorAt;
 
   Timer? _presenceClock;
 
@@ -988,11 +1012,13 @@ class ActiveCall extends ChangeNotifier {
     required bool video,
     bool answering = false,
     String? rejoinAnchor,
+    DateTime? rejoinSince,
   }) => _starting = _start(
     room,
     video: video,
     answering: answering,
     rejoinAnchor: rejoinAnchor,
+    rejoinSince: rejoinSince,
   );
 
   /// Runs one step of coming up, and gives up if a hangup has landed.
@@ -1020,6 +1046,7 @@ class ActiveCall extends ChangeNotifier {
     required bool video,
     required bool answering,
     String? rejoinAnchor,
+    DateTime? rejoinSince,
   }) async {
     _room = room;
     _rejoining = rejoinAnchor != null;
@@ -1071,7 +1098,9 @@ class ActiveCall extends ChangeNotifier {
         _foregroundPending = false;
         unawaited(_startForeground(video: video));
       }
-      if (video && _foreground != null) {
+      // Not when the camera never opened: the ongoing-call notification
+      // would advertise a video call that is running on audio.
+      if (video && !media.cameraFailed && _foreground != null) {
         // Camera site (a): a call STARTED with video opens its camera inside
         // connect, never through the toggle. Through the guarded seam, like
         // site (b): a platform refusal is a log line, never an unhandled
@@ -1156,8 +1185,17 @@ class ActiveCall extends ChangeNotifier {
         // The call's clock continues from when this device first joined it,
         // not from this moment: a rejoin is the same call, and restarting at
         // zero made the two sides disagree about how long they had been
-        // talking. Falls back to now when the event has aged out of state.
-        _callStartedAt = calls.membershipWrittenAt(room, rejoinAnchor);
+        // talking.
+        //
+        // The breadcrumb's own timestamp first, because it was written by THIS
+        // device's clock -- the same clock the timer subtracts from. The
+        // membership's `origin_server_ts` is the server's, so a device two
+        // minutes off the server read two minutes into a thirty-second call
+        // while the other side still read thirty seconds. Server time is the
+        // fallback, for an offer recovered from state with no breadcrumb
+        // behind it, and now is the fallback to that.
+        _callStartedAt =
+            rejoinSince ?? calls.membershipWrittenAt(room, rejoinAnchor);
       } else {
         membershipId = _membershipEventId = await calls.announce();
       }

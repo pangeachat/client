@@ -766,7 +766,7 @@ class CallService {
 
   String? _callIdForTest;
 
-  bool peerLiveInCurrentCall(Room room, String peerId) {
+  bool peerLiveInCurrentCall(Room room, String peerId, {DateTime? notBefore}) {
     final callId = _current?.groupCallId ?? _callIdForTest;
     if (callId == null) return true;
     final states = room.states[EventTypes.GroupCallMember];
@@ -777,6 +777,18 @@ class CallService {
       if (state.senderId != peerId) continue;
       final memberships = state.content['memberships'];
       if (memberships is! List) continue;
+      // State older than this call cannot speak for it. The call id is the
+      // room id, so a membership another of their devices left standing when
+      // it CRASHED in an earlier call looks exactly like a live one here, and
+      // it outvoted the retraction their current device had just written --
+      // the hangup read as a vanish again, one layer further down. Nothing in
+      // this call can have been written before [notBefore], so anything that
+      // was belongs to a call that is over.
+      if (notBefore != null &&
+          state is Event &&
+          state.originServerTs.isBefore(notBefore)) {
+        continue;
+      }
       // A list they actually WROTE is an answer, including an empty one.
       // Hanging up rewrites this event to `memberships: []`, so treating the
       // empty list as "no opinion" read a deliberate departure as a vanish

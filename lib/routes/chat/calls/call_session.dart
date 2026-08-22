@@ -86,6 +86,7 @@ class CallSession extends ChangeNotifier {
     required String? peerUserId,
     required void Function(CallSession) onReleased,
     String? rejoinAnchor,
+    DateTime? rejoinSince,
     this.callerMembershipEventId,
     this.tonesOverride,
   }) : _record = record,
@@ -120,6 +121,7 @@ class CallSession extends ChangeNotifier {
       // would be wrong exactly when the caller had already given up.
       answering: notificationEventId != null,
       rejoinAnchor: rejoinAnchor,
+      rejoinSince: rejoinSince,
     );
   }
 
@@ -137,6 +139,7 @@ class CallSession extends ChangeNotifier {
     required void Function(CallSession) onReleased,
     String? notificationEventId,
     String? rejoinAnchor,
+    DateTime? rejoinSince,
     String? callerMembershipEventId,
     @visibleForTesting RingPlayer? tonesOverride,
     @visibleForTesting CallMedia? mediaOverride,
@@ -178,6 +181,7 @@ class CallSession extends ChangeNotifier {
       peerUserId: room.directChatMatrixID,
       onReleased: onReleased,
       rejoinAnchor: rejoinAnchor,
+      rejoinSince: rejoinSince,
       callerMembershipEventId: callerMembershipEventId,
       tonesOverride: tonesOverride,
     );
@@ -372,6 +376,12 @@ class CallSession extends ChangeNotifier {
 
   void _onCallChanged() {
     _latchVideo();
+    // The button reflects the camera the user HAS, not the one they asked
+    // for. A video call whose camera was refused -- by a browser policy, or
+    // by the user answering no to the prompt -- comes up on audio, and
+    // leaving the control switched on meant the first press turned OFF a
+    // camera that had never come on.
+    if (_camera && media.cameraFailed) _camera = false;
     // The outcome is latched the instant the call's fate is decided, seconds
     // before the stage catches up — this is what makes hanging up feel
     // immediate on both sides.

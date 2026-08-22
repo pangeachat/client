@@ -299,6 +299,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       offer.room,
       video: false,
       rejoinMembershipEventId: offer.membershipEventId,
+      rejoinSince: offer.since,
     );
     final router = FluffyChatApp.router;
     final uri = router.routeInformationProvider.value.uri;

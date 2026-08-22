@@ -85,6 +85,13 @@ class _FakeRoster extends CallRoster {
 class _FakeMedia extends CallMedia {
   _FakeRoster? fakeRoster;
 
+  /// A camera that refuses to open, as a blocked web host or a denied prompt
+  /// produces: the call still comes up, on audio.
+  bool refuseCamera = false;
+
+  @override
+  bool get cameraFailed => refuseCamera;
+
   @override
   Future<void> connect(CallToken grant, {required bool video}) async {}
 
@@ -480,7 +487,95 @@ void main() {
     );
   });
 
+  group('a video call whose camera never opened', () {
+    test('does not claim the camera is on', () async {
+      final client = await _bareClient();
+      final calls = _FakeCalls(client);
+      final media = _FakeMedia()..refuseCamera = true;
+      final session = CallSession.start(
+        room: matrix.Room(id: '!cam:server', client: client),
+        video: true,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      expect(
+        session.cameraOn,
+        isFalse,
+        reason: 'the control must show the camera the call actually has',
+      );
+    });
+
+    test('a camera that did open is still reported on', () async {
+      final client = await _bareClient();
+      final calls = _FakeCalls(client);
+      final session = CallSession.start(
+        room: matrix.Room(id: '!cam2:server', client: client),
+        video: true,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: _FakeMedia(),
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      expect(session.cameraOn, isTrue);
+    });
+  });
+
   group('the clock both people read', () {
+    // The breadcrumb was written by THIS device's clock, and the timer
+    // subtracts from that same clock. `origin_server_ts` is the SERVER's: a
+    // device two minutes off it read two minutes into a thirty-second call
+    // while the other side still read thirty seconds.
+    test('the breadcrumb clock wins over the server clock', () async {
+      final client = await _bareClient();
+      final calls = _FakeCalls(client);
+      // What the server would say -- wrong by two minutes on this device.
+      calls.membershipWrittenAtValue = DateTime.now().subtract(
+        const Duration(minutes: 2, seconds: 30),
+      );
+      final media = _FakeMedia();
+      final session = CallSession.start(
+        room: matrix.Room(id: '!clock:server', client: client),
+        video: false,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        rejoinAnchor: r'$original-membership',
+        rejoinSince: DateTime.now().subtract(const Duration(seconds: 30)),
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      final roster = media.fakeRoster!;
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+      roster.recompute();
+      await pumpEventQueue();
+
+      final shown = DateTime.now().difference(session.callStartedAt!);
+      expect(
+        shown.inSeconds,
+        closeTo(30, 3),
+        reason: 'the device that wrote the crumb reads its own clock',
+      );
+    });
+
     test(
       'a rejoined session continues the call, it does not restart it',
       () async {
