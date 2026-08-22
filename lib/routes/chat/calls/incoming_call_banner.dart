@@ -216,6 +216,37 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     }
     matrix.Logs().i('Rejoin offer shown for ${offer.room.id}');
     setState(() => _rejoin = offer);
+    _watchOffer(offer);
+  }
+
+  /// Watches a standing offer and withdraws it once the call is over.
+  ///
+  /// The offer is a promise that there is something to return to. Nothing was
+  /// re-checking it, so the banner sat there long after both sides had hung
+  /// up -- an invitation into an empty room. Level triggered: the room's own
+  /// state answers it, and the crumb goes with the offer so a later reload
+  /// cannot raise the same dead call again.
+  Timer? _offerWatch;
+
+  void _watchOffer(RejoinOffer offer) {
+    _offerWatch?.cancel();
+    _offerWatch = Timer.periodic(const Duration(seconds: 5), (_) {
+      if (!mounted || _rejoin == null) {
+        _offerWatch?.cancel();
+        _offerWatch = null;
+        return;
+      }
+      final service = _service;
+      if (service == null) return;
+      if (service.callStillHeldByAnother(offer.room, offer.membershipEventId)) {
+        return;
+      }
+      matrix.Logs().i('The call to return to is over; withdrawing the offer');
+      unawaited(CallBreadcrumb.clear());
+      _offerWatch?.cancel();
+      _offerWatch = null;
+      setState(() => _rejoin = null);
+    });
   }
 
   void _acceptRejoin(RejoinOffer offer) {
@@ -373,6 +404,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _callerGone?.cancel();
     _stillRinging?.cancel();
     _activeCall?.removeListener(_onActiveCallChanged);
+    _offerWatch?.cancel();
     _ringPlayer.stopAll();
     super.dispose();
   }
@@ -848,26 +880,101 @@ class _ReturnCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            // Semantics, NEVER a Tooltip -- the same rule the round call
-            // actions above state. This banner is mounted above the router's
-            // Navigator, so nothing here has an Overlay ancestor, and a
-            // Tooltip's "No Overlay widget found" takes down the whole banner
-            // subtree: on a real phone that meant a ringing call could not be
-            // answered at all, because the ring card is in this same Stack.
-            Semantics(
-              button: true,
+            // Both controls are built the way the round call actions above
+            // are, and for the two reasons this file already states. NEVER a
+            // Tooltip: this banner is mounted above the router's Navigator,
+            // so nothing here has an Overlay ancestor, and the throw takes
+            // the whole banner down -- including the ring card beside it. And
+            // never a Material that carries elevation or a clip: on the
+            // CanvasKit web renderer such a Material repaints its region as
+            // an opaque grey rectangle the moment a child changes, which a
+            // HOVER does, and the grey box swallows the card. FilledButton
+            // and IconButton each bring one, which is exactly what appeared
+            // over this banner on hover.
+            _FlatAction(
+              icon: Icons.close,
               label: l10n.close,
-              child: IconButton(
-                onPressed: onDismiss,
-                icon: const Icon(Icons.close),
-              ),
+              onPressed: onDismiss,
+              background: Colors.white.withValues(alpha: 0.10),
+              foreground: theme.colorScheme.onSurface,
             ),
-            FilledButton.icon(
+            const SizedBox(width: 8),
+            _FlatAction(
+              icon: Icons.call,
+              label: l10n.callReturn,
               onPressed: onReturn,
-              icon: const Icon(Icons.call, size: 18),
-              label: Text(l10n.callReturn),
+              background: theme.colorScheme.primary,
+              foreground: theme.colorScheme.onPrimary,
+              showLabel: true,
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+/// A banner control with no elevation and no clip.
+///
+/// The rule this file keeps relearning: on the CanvasKit web renderer a
+/// Material that carries elevation or a clip repaints its whole region as an
+/// opaque grey rectangle whenever a child changes -- and a hover is a child
+/// changing. Material's own buttons (FilledButton, IconButton) each bring
+/// one, so the banner builds its controls from a flat Material and an InkWell
+/// instead, exactly as the round answer and decline actions do. The label a
+/// screen reader needs rides on Semantics, never a Tooltip: there is no
+/// Overlay above the router for one to live in.
+class _FlatAction extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onPressed;
+  final Color background;
+  final Color foreground;
+  final bool showLabel;
+
+  const _FlatAction({
+    required this.icon,
+    required this.label,
+    required this.onPressed,
+    required this.background,
+    required this.foreground,
+    this.showLabel = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Semantics(
+      button: true,
+      label: label,
+      child: Material(
+        // No elevation, no clipBehavior: both are the grey box.
+        color: background,
+        shape: const StadiumBorder(),
+        child: InkWell(
+          customBorder: const StadiumBorder(),
+          onTap: onPressed,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: showLabel ? 16 : 10,
+              vertical: 10,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(icon, size: 18, color: foreground),
+                if (showLabel) ...[
+                  const SizedBox(width: 8),
+                  Text(
+                    label,
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: foreground,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
         ),
       ),
     );

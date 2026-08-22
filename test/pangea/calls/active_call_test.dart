@@ -1333,14 +1333,15 @@ void main() {
     test(
       'a peer the room says has LEFT is gone, whatever the SFU lists',
       () async {
-        // The device failure, exactly. LiveKit keeps a departed participant for
-        // its departure timeout and re-lists them when OUR connection
-        // reconnects -- on the phone the list then never dropped them again, so
-        // the call stayed open for good with a live microphone. Their
-        // membership retraction is the authority the SFU cannot override.
+        // The device failure. LiveKit keeps a departed participant for its
+        // departure timeout and re-lists them when OUR connection reconnects;
+        // on the phone the list then never dropped them again, and the call
+        // stayed open for good with a live microphone. The room's retraction
+        // is the authority the SFU cannot override -- and because a
+        // retraction IS the other person ending the call, it ends here at
+        // once rather than promising a reconnection nobody will make.
         final (call, calls, _) = await connectedCall();
 
-        // They hang up: membership retracted, and the SFU still lists them.
         // A tick while they are genuinely here: their membership is SEEN, so
         // its later absence means something (the transition rule -- room
         // state lags a join, and "not synced yet" must never read as "left").
@@ -1349,27 +1350,13 @@ void main() {
         calls.peerMembershipPresent = false;
         await call.tickReelectionForTest();
 
-        expect(
-          call.peerReconnecting,
-          isTrue,
-          reason: 'their absence is believed even while the SFU lists them',
-        );
-        // And the echo persisting for the whole retention window must not
-        // resurrect them -- the confirmation window alone could not tell.
-        await call.confirmPeerReturnForTest();
-        expect(
-          call.peerReconnecting,
-          isTrue,
-          reason: 'a retracted peer cannot be confirmed back by presence',
-        );
-        expect(
-          trace.steps.where((s) => s == 'capture.start').length,
-          1,
-          reason: 'and the microphone stays off',
-        );
-
-        await call.peerGraceLapseForTest();
         expect(call.stage, CallStage.ended);
+        expect(
+          call.peerReconnecting,
+          isFalse,
+          reason: 'no window is held open for a call they ended',
+        );
+        expect(call.hadPeer, isTrue);
       },
     );
 

@@ -443,6 +443,19 @@ class ActiveCall extends ChangeNotifier {
   /// against a twenty-second window.
   static const peerReturnConfirmed = Duration(seconds: 3);
 
+  /// How close to their departure a membership retraction still counts as
+  /// "they pressed end".
+  ///
+  /// A deliberate hangup retracts as it leaves, so the two arrive together. A
+  /// device that merely vanished retracts nothing -- the SERVER eventually
+  /// does it for them, seconds later, when their heartbeat stops, and that
+  /// late retraction is not a decision anyone made. The window separates the
+  /// two without either side needing a new message.
+  static const endedDeliberatelyWithin = Duration(seconds: 4);
+
+  /// When the peer was first seen to be gone, or null while they are here.
+  DateTime? _peerLeftAt;
+
   /// How often the call re-reads presence on its OWN clock.
   ///
   /// The state machine must never depend on an event that may not come. Roster
@@ -662,6 +675,7 @@ class ActiveCall extends ChangeNotifier {
       _peerGrace?.cancel();
       _peerGrace = null;
       _peerBackSince = null;
+      _peerLeftAt = null;
       _notePeerPresent();
       _waitingForPeer?.cancel();
       _waitingForPeer = null;
@@ -675,11 +689,27 @@ class ActiveCall extends ChangeNotifier {
       // analytics to, and every word its learner spoke was dropped.
       _rememberMembership();
     } else if (_peerArrived && (_roster?.isConnected ?? false)) {
-      // Vanished, while our own connection is fine — a refresh, a crash, a
-      // network hole on their side. The SFU keeps their place for its
-      // departure timeout, so for exactly that long this is "reconnecting",
-      // not "over". The talking clock pauses, and the election below stops
-      // the microphone: whatever is said now, nobody can hear.
+      // They are not here, and our own connection is fine. WHY they went
+      // decides everything, and there are only two answers.
+      //
+      // They pressed end. Their client retracts its membership as it goes, so
+      // the retraction lands with the departure -- and a call the other
+      // person deliberately ended is OVER. Showing "reconnecting" then is a
+      // promise nobody is coming to keep.
+      //
+      // Or they vanished: a refresh, a crash, a network hole. Nothing
+      // retracted, so their membership is still standing, and for the SFU's
+      // departure window this really is "reconnecting" -- they can come back,
+      // and the Return offer on their side exists to bring them.
+      _peerLeftAt ??= DateTime.now();
+      final leftDeliberately =
+          _peerMembershipGone &&
+          DateTime.now().difference(_peerLeftAt!) <= endedDeliberatelyWithin;
+      if (leftDeliberately) {
+        Logs().i('The other participant ended the call; ending it here too');
+        unawaited(hangUp());
+        return;
+      }
       if (_peerGrace == null) {
         Logs().i('The other participant dropped; holding their place');
         _closeTalkSegment();

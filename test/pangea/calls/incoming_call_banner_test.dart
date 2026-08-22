@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -294,6 +295,130 @@ void main() {
       await tester.pump(const Duration(milliseconds: 50));
       return tester.state<MatrixState>(find.byType(_TestMatrix));
     }
+
+    /// The three rules this banner keeps relearning, asserted on the real
+    /// widget tree rather than trusted to review.
+    ///
+    /// On the CanvasKit web renderer a Material carrying elevation or a clip
+    /// repaints its whole region as an opaque grey rectangle whenever a child
+    /// changes -- and a hover is a child changing; a Tooltip brings an
+    /// overlay that does the same, and up here it has no Overlay to live in
+    /// at all. Every grey-box report against this banner (quick replies, the
+    /// answer controls, and now the return offer) has been one of these.
+    void expectNoGreyBoxRisk(WidgetTester tester, Finder scope) {
+      expect(
+        find.descendant(of: scope, matching: find.byType(Tooltip)),
+        findsNothing,
+        reason: 'a Tooltip paints grey on hover, and has no Overlay here',
+      );
+      expect(
+        find.descendant(of: scope, matching: find.byType(AnimatedSize)),
+        findsNothing,
+        reason: 'its clip repaints grey on any hover',
+      );
+      final materials = tester
+          .widgetList<Material>(
+            find.descendant(of: scope, matching: find.byType(Material)),
+          )
+          .toList();
+      // The convention itself, because the states that go grey are not
+      // reachable in a widget test: Material's own buttons animate elevation
+      // and manage a clip on hover, and every grey-box report against this
+      // banner has come from one of them. The banner builds flat controls
+      // instead -- a plain Material with an InkWell -- so their ABSENCE is
+      // the thing worth asserting.
+      // Named precisely: these carry the elevation (and IconButton the ink
+      // clip and a tooltip slot) that the grey box comes from. TextButton is
+      // deliberately absent -- it brings neither, and the quick replies have
+      // shipped on it since the earlier grey was fixed by removing the
+      // clipped, elevated Material around them.
+      for (final forbidden in [
+        find.byType(FilledButton),
+        find.byType(ElevatedButton),
+        find.byType(IconButton),
+      ]) {
+        expect(
+          find.descendant(of: scope, matching: forbidden),
+          findsNothing,
+          reason:
+              'Material buttons animate elevation and a clip on hover, which '
+              'is the grey box; build the control flat, as _FlatAction and '
+              '_CircleAction do',
+        );
+      }
+      for (final m in materials) {
+        // ELEVATION is the trigger, and elevation WITH a clip is the reported
+        // failure verbatim: "a clipped, elevated Material repaints its whole
+        // clip region as an opaque grey rectangle". A plain clip with no
+        // elevation is just a rounded avatar and has never gone grey, so the
+        // rule stays on the thing that actually breaks.
+        expect(
+          m.elevation,
+          0.0,
+          reason:
+              'an elevated Material repaints its region grey on hover; '
+              'clipBehavior=${m.clipBehavior}',
+        );
+      }
+    }
+
+    testWidgets('the return card risks no grey box', (tester) async {
+      final room = directChat();
+      final state = await pumpAsProduction(tester);
+      state.rejoinOffer.value = RejoinOffer(
+        room: room,
+        membershipEventId: r'$anchor',
+        since: DateTime.now(),
+      );
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 50));
+
+      expectNoGreyBoxRisk(tester, find.byKey(const ValueKey(r'$anchor')));
+    });
+
+    testWidgets('the ring card risks no grey box either', (tester) async {
+      final room = directChat();
+      await pumpAsProduction(tester);
+      client.onTimelineEvent.add(ring(room));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 50));
+
+      expectNoGreyBoxRisk(tester, find.byKey(const ValueKey(r'$ring')));
+    });
+
+    testWidgets('hovering the return card changes nothing structural', (
+      tester,
+    ) async {
+      // The report was "I hovered and the grey thing came up". A widget test
+      // cannot see the renderer's grey, but it CAN prove the hover produces
+      // no exception and no new elevated or clipped Material -- which is what
+      // the grey actually is.
+      final room = directChat();
+      final state = await pumpAsProduction(tester);
+      state.rejoinOffer.value = RejoinOffer(
+        room: room,
+        membershipEventId: r'$anchor',
+        since: DateTime.now(),
+      );
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 50));
+
+      final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+      await gesture.addPointer(location: Offset.zero);
+      addTearDown(gesture.removePointer);
+      for (final target in [
+        find.byIcon(Icons.call),
+        find.byIcon(Icons.close),
+        find.byKey(const ValueKey(r'$anchor')),
+      ]) {
+        if (target.evaluate().isEmpty) continue;
+        await gesture.moveTo(tester.getCenter(target));
+        await tester.pump();
+        await tester.pump(const Duration(milliseconds: 120));
+        expect(tester.takeException(), isNull);
+        expectNoGreyBoxRisk(tester, find.byKey(const ValueKey(r'$anchor')));
+      }
+    });
 
     testWidgets('the return offer renders with no Overlay in scope', (
       tester,

@@ -764,6 +764,52 @@ class CallService {
     return !sawAnyOfTheirs ? true : false;
   }
 
+  /// Whether the call our [ownMembershipEventId] belongs to is still being
+  /// held by somebody ELSE.
+  ///
+  /// What decides whether a standing "Return to call" offer still means
+  /// anything. An offer is a promise that there is something to return to,
+  /// and once the other person has gone the promise is false -- on a real
+  /// phone that banner sat there long after the call was over, inviting the
+  /// learner into an empty room.
+  ///
+  /// Reads the call id out of OUR own membership event, then asks whether any
+  /// other user holds a live membership for that same call. Deliberately
+  /// call-scoped and expiry-aware, for the reason [peerLiveInCurrentCall]
+  /// states: a room accumulates a membership per device, and the broad read
+  /// answers "yes" for ever.
+  bool callStillHeldByAnother(Room room, String ownMembershipEventId) {
+    final states = room.states[EventTypes.GroupCallMember];
+    if (states == null) return false;
+    final me = client.userID;
+    String? callId;
+    for (final state in states.values) {
+      if (state is! Event) continue;
+      if (state.eventId != ownMembershipEventId) continue;
+      final memberships = state.content['memberships'];
+      if (memberships is! List) continue;
+      for (final m in memberships) {
+        if (m is Map && m['call_id'] is String) callId = m['call_id'] as String;
+      }
+    }
+    // Our own event no longer names a call: nothing to return to.
+    if (callId == null) return false;
+    final now = DateTime.now().millisecondsSinceEpoch;
+    for (final state in states.values) {
+      if (state is! Event) continue;
+      if (state.senderId == me) continue;
+      final memberships = state.content['memberships'];
+      if (memberships is! List) continue;
+      for (final m in memberships) {
+        if (m is! Map) continue;
+        if (m['call_id'] != callId) continue;
+        final expires = m['expires_ts'];
+        if (expires is! int || expires > now) return true;
+      }
+    }
+    return false;
+  }
+
   /// Whether [eventId] is one of [userId]'s CURRENT membership state events.
   ///
   /// The discriminator between a STALE ring (replayed from before a reload,
