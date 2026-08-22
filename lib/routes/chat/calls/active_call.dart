@@ -613,7 +613,29 @@ class ActiveCall extends ChangeNotifier {
 
   DateTime? _callStartedAt;
 
+  /// Who the other person is, learned at the same moment we learn that
+  /// somebody IS there.
+  ///
+  /// These two facts have to travel together. The identity used to be derived
+  /// only inside the roster-change handler, and an ANSWERER starts with the
+  /// caller already in the roster -- so the first change it ever sees can be
+  /// the caller LEAVING, with `rosterHasPeer` already false and the id never
+  /// learned. Every read that needs to know whether the peer retracted then
+  /// answers "no peer, no opinion", and a deliberate hangup went back to
+  /// costing the answerer a 20-second grace.
+  void _learnPeerIdentity() {
+    if (_peerUserId != null) return;
+    final me = calls.client.userID;
+    for (final p in _roster?.participants ?? const {}) {
+      if (p.userId != me && p.userId.isNotEmpty) {
+        _peerUserId = p.userId;
+        return;
+      }
+    }
+  }
+
   void _notePeerPresent() {
+    _learnPeerIdentity();
     _callStartedAt ??= DateTime.now();
     final firstArrival = _talkStartedAt == null;
     _talkStartedAt ??= DateTime.now();
@@ -710,15 +732,7 @@ class ActiveCall extends ChangeNotifier {
     // which empties and refills the participant list — does not read as the
     // other person hanging up.
     final rosterHasPeer = _roster?.hasPeer ?? false;
-    if (rosterHasPeer && _peerUserId == null) {
-      final me = calls.client.userID;
-      for (final p in _roster?.participants ?? const {}) {
-        if (p.userId != me && p.userId.isNotEmpty) {
-          _peerUserId = p.userId;
-          break;
-        }
-      }
-    }
+    if (rosterHasPeer) _learnPeerIdentity();
     // A peer the room says has left is not here, whatever the SFU reports.
     final peerHere = rosterHasPeer && !_peerMembershipGone;
     if (peerHere && _peerGrace != null) {
@@ -815,7 +829,11 @@ class ActiveCall extends ChangeNotifier {
   /// decline can arrive while the ring's own send is still returning. Dropping
   /// it would leave the caller sitting through the full ring having already
   /// been turned down.
-  final Set<String> _declinedBefore = {};
+  /// Kept with its REASON, not just its existence: a busy line that beat the
+  /// ring's own send used to replay as an ordinary decline, so the caller was
+  /// told they had been turned down when the truth was the other line was
+  /// engaged -- no engaged tone, and the wrong line in their history.
+  final Map<String, Object?> _declinedBefore = {};
 
   /// A decline seen in the room, matched against our own call HERE rather than
   /// when subscribing.
@@ -831,7 +849,7 @@ class ActiveCall extends ChangeNotifier {
       // sent with a stable id and tried twice, so losing that id is rare — and
       // when it happens the caller rings out instead of being told, which is a
       // far smaller price than a call that hangs itself up.
-      _declinedBefore.add(target);
+      _declinedBefore[target] = event.content[CallService.declineReasonField];
       return;
     }
     if (target != ours) return;
@@ -839,9 +857,16 @@ class ActiveCall extends ChangeNotifier {
     // turning it down sends none. Kept apart because the caller's screen and
     // their history should not read "they turned you down" when the truth is
     // that their line was busy.
-    final reason = event.content[CallService.declineReasonField];
-    if (reason == CallService.declineBusy) _peerWasBusy = true;
+    _noteDeclineReason(event.content[CallService.declineReasonField]);
     _onDeclined();
+  }
+
+  /// A device that could not take the call said so with a reason; a person
+  /// turning it down sends none. Kept apart because the caller's screen and
+  /// their history should not read "they turned you down" when the truth is
+  /// that their line was busy.
+  void _noteDeclineReason(Object? reason) {
+    if (reason == CallService.declineBusy) _peerWasBusy = true;
   }
 
   /// Whether the decline came from a device already in another call.
@@ -852,7 +877,9 @@ class ActiveCall extends ChangeNotifier {
   /// Replays a decline that arrived before this call had an id to match it to.
   void _catchUpOnDeclines() {
     final ours = _notificationId;
-    if (ours != null && _declinedBefore.remove(ours)) _onDeclined();
+    if (ours == null || !_declinedBefore.containsKey(ours)) return;
+    _noteDeclineReason(_declinedBefore.remove(ours));
+    _onDeclined();
   }
 
   /// How long a decline waits to see whether somebody answers anyway.

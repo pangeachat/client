@@ -169,8 +169,10 @@ class FakeCalls extends CallService {
     await pumpEventQueue();
   }
 
-  /// The other person turning down the call this device rang.
-  Future<void> peerDeclines() async {
+  /// The other person turning down the call this device rang. [reason] is
+  /// what a DEVICE says when it cannot take the call, as opposed to a person
+  /// choosing not to.
+  Future<void> peerDeclines({String? reason}) async {
     _declines.add(
       Event(
         type: 'decline',
@@ -179,6 +181,7 @@ class FakeCalls extends CallService {
             'rel_type': 'm.reference',
             'event_id': ringedNotificationId ?? '\$notification',
           },
+          if (reason != null) CallService.declineReasonField: reason,
         },
         eventId: '\$d',
         senderId: '@peer:server',
@@ -709,6 +712,79 @@ void main() {
       await call.waitForPeerTimeoutForTest();
       expect(call.stage, CallStage.ended, reason: 'and now it is running');
     });
+  });
+
+  group('answering a call whose caller is already in the room', () {
+    // The answerer's very first roster snapshot already has the caller in it,
+    // so the first CHANGE it sees can be the caller leaving. The peer's
+    // identity used to be derived only on a change where they were present,
+    // so it was never learned -- and every read that asks whether they
+    // retracted answered "no peer, no opinion", turning a deliberate hangup
+    // back into a 20-second wait for someone who had already gone.
+    test(
+      'a hangup by that caller ends the call at once, not after the grace',
+      () async {
+        final (call, calls, _, _) = await build();
+        calls.devicesInCall = [calls.client.deviceID!];
+        calls.remotePresent = true;
+        await call.start(roomStub(calls.client), video: false, answering: true);
+        expect(call.stage, CallStage.connected);
+
+        // They hang up: the roster drops them AND their membership is retracted.
+        calls.peerMembershipPresent = false;
+        calls.remotePresent = false;
+        await calls.participantsBecome([calls.client.deviceID!]);
+        await call.tickReelectionForTest();
+
+        expect(
+          call.peerReconnecting,
+          isFalse,
+          reason: 'a retraction is a departure, not a disconnection',
+        );
+        expect(call.stage, CallStage.ended);
+      },
+    );
+  });
+
+  group('a decline that arrives before the ring has returned', () {
+    // The subscription is deliberately older than the id it matches, so a
+    // busy line can answer before our own send does. Remembering only THAT it
+    // happened lost the reason, and the caller was told they had been turned
+    // down when the truth was the other line was engaged: no engaged tone, and
+    // the wrong line in their history.
+    test('is replayed with the reason it carried', () async {
+      final (call, calls, _, _) = await build();
+      calls.holdRing = Completer<void>();
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+
+      await calls.peerDeclines(reason: CallService.declineBusy);
+      expect(call.peerWasBusy, isFalse, reason: 'nothing to match it to yet');
+
+      calls.holdRing!.complete();
+      await starting;
+      await pumpEventQueue();
+      expect(
+        call.peerWasBusy,
+        isTrue,
+        reason: 'the reason has to survive the wait for our own ring id',
+      );
+    });
+
+    test(
+      'a person turning it down still reads as an ordinary decline',
+      () async {
+        final (call, calls, _, _) = await build();
+        calls.holdRing = Completer<void>();
+        final starting = call.start(roomStub(calls.client), video: false);
+        await pumpEventQueue();
+        await calls.peerDeclines();
+        calls.holdRing!.complete();
+        await starting;
+        await pumpEventQueue();
+        expect(call.peerWasBusy, isFalse);
+      },
+    );
   });
 
   group('bringing a call up', () {
