@@ -201,6 +201,13 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       // offer for that room is dead and is not shown. Only a STALE ring --
       // the replay of this account's own call's past -- gives way.
       if (_ringIsLive(showing, offer)) return;
+      // The full dismissal, not only the prompt: the ring being replaced has
+      // its lifetime timer and caller-presence watch armed, and leaving them
+      // running leaked the subscription until the next ring came along.
+      _stillRinging?.cancel();
+      _stillRinging = null;
+      _callerGone?.cancel();
+      _callerGone = null;
       setState(() {
         _rejoin = offer;
         _showRing(null);

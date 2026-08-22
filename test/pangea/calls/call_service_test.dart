@@ -881,6 +881,10 @@ void main() {
       final offers = await service.rejoinOffers();
       expect(offers, hasLength(1));
       expect(offers.single.membershipEventId, r'$from-crumb');
+      // The crumb's written-at rides along: it is the arbitration line that
+      // tells the call's own replayed ring from a genuine redial. A crumb
+      // offer without it silently loses that distinction.
+      expect(offers.single.since, isNotNull);
     });
 
     test('a crumb for an unknown room falls back to the scan', () async {

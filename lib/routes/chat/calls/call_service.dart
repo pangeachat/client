@@ -863,9 +863,18 @@ class CallService {
     final crumb = await CallBreadcrumb.read();
     if (crumb != null) {
       final room = client.getRoomById(crumb.roomId);
-      if (room != null && room.isDirectChat) {
+      // Deliberately NOT re-checked as a direct chat: only a direct-chat call
+      // ever writes the crumb, and m.direct lives in account data that may
+      // not have loaded this early in the boot -- re-deriving the writer's
+      // guarantee here made the offer vanish on exactly the starts it exists
+      // for. The room merely has to exist.
+      if (room != null) {
         return [
-          RejoinOffer(room: room, membershipEventId: crumb.membershipEventId),
+          RejoinOffer(
+            room: room,
+            membershipEventId: crumb.membershipEventId,
+            since: crumb.at,
+          ),
         ];
       }
     }
