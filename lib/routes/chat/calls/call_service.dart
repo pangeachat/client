@@ -891,13 +891,32 @@ class CallService {
   /// call-scoped and expiry-aware, for the reason [peerLiveInCurrentCall]
   /// states: a room accumulates a membership per device, and the broad read
   /// answers "yes" for ever.
+  /// Kept for callers that only need "assume the call is still there unless
+  /// proven otherwise". Anything that WITHDRAWS an offer must read
+  /// [callHoldByAnother] instead, for the reason stated there.
   bool callStillHeldByAnother(
+    Room room,
+    String ownMembershipEventId, {
+    DateTime? notBefore,
+  }) =>
+      callHoldByAnother(room, ownMembershipEventId, notBefore: notBefore) !=
+      CallHold.over;
+
+  /// Whether anybody ELSE is still holding the call our membership belongs to.
+  ///
+  /// Three answers, for the third time in this file and for the same reason:
+  /// "nobody is holding it" and "we cannot see any call state yet" are
+  /// opposites, and a boolean makes them the same. This read runs at STARTUP,
+  /// against a client that is still filling in room state, and a withdrawal
+  /// on the second answer takes down the offer -- and the breadcrumb behind
+  /// it -- for a call that is alive and waiting.
+  CallHold callHoldByAnother(
     Room room,
     String ownMembershipEventId, {
     DateTime? notBefore,
   }) {
     final states = room.states[EventTypes.GroupCallMember];
-    if (states == null) return false;
+    if (states == null || states.isEmpty) return CallHold.unknown;
     final me = client.userID;
     String? callId;
     for (final state in states.values) {
@@ -935,10 +954,12 @@ class CallService {
         // there is only one call to be on.
         if (callId != null && m['call_id'] != callId) continue;
         final expires = m['expires_ts'];
-        if (expires is! int || expires > now) return true;
+        if (expires is! int || expires > now) return CallHold.held;
       }
     }
-    return false;
+    // Somebody else's state is here and none of it holds this call. That is
+    // an answer; an empty room state map, above, is not.
+    return CallHold.over;
   }
 
   /// Leaves a call this device is no longer joined to.
@@ -1575,6 +1596,19 @@ class AlreadyInACall implements Exception {
 }
 
 /// A call this device can offer to return to after a reload.
+/// What room state says about anybody else still holding a call here.
+enum CallHold {
+  /// Somebody else's membership for this call is standing and unexpired.
+  held,
+
+  /// Their state is here and none of it holds this call.
+  over,
+
+  /// No call state to read yet. Not evidence of anything, and in particular
+  /// not evidence that the call the breadcrumb points at has ended.
+  unknown,
+}
+
 /// What room state says about somebody being in the call we are on.
 enum PeerPresence {
   /// A membership of theirs for this call is standing and unexpired.

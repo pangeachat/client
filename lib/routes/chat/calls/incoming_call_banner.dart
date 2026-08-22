@@ -274,11 +274,17 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   void _withdrawIfOver(RejoinOffer offer) {
     final service = _service;
     if (service == null) return;
-    if (service.callStillHeldByAnother(
-      offer.room,
-      offer.membershipEventId,
-      notBefore: offer.since,
-    )) {
+    // Only on the answer that says the call is OVER. "No call state to read
+    // yet" is the state of the world for the first moments after a reload --
+    // which is precisely when this offer is raised -- and withdrawing on it
+    // took down the offer, and the breadcrumb behind it, for a call that was
+    // alive and waiting.
+    if (service.callHoldByAnother(
+          offer.room,
+          offer.membershipEventId,
+          notBefore: offer.since,
+        ) !=
+        CallHold.over) {
       return;
     }
     matrix.Logs().i('The call to return to is over; withdrawing the offer');

@@ -1292,6 +1292,79 @@ void main() {
     }
   });
 
+  group('whether anybody else still holds the call', () {
+    const me = '@test:fakeServer.notExisting';
+    var seq = 0;
+
+    Future<(CallService, Room)> withState(List<MatrixEvent> state) async {
+      final roomId = '!hold${seq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch',
+          rooms: RoomsUpdate(join: {roomId: JoinedRoomUpdate(state: state)}),
+        ),
+      );
+      return (CallService(client), client.getRoomById(roomId)!);
+    }
+
+    // The offer is raised in the first moments after a reload, which is
+    // exactly when the client has not filled in room state yet. Reading that
+    // silence as "the call is over" withdrew the offer -- and cleared the
+    // breadcrumb behind it -- for a call that was alive and waiting.
+    test('no call state yet is not the same as nobody holding it', () async {
+      final (service, room) = await withState([]);
+      expect(
+        service.callHoldByAnother(room, r'$ours'),
+        CallHold.unknown,
+        reason: 'nothing has been read; that is not an answer',
+      );
+    });
+
+    test('their state, holding nothing, is the call being over', () async {
+      final (service, room) = await withState([
+        MatrixEvent(
+          type: EventTypes.GroupCallMember,
+          content: const {'memberships': <Object?>[]},
+          senderId: '@friend:fakeServer.notExisting',
+          eventId: r'$theirs',
+          originServerTs: DateTime.now(),
+          stateKey: 'DEV_@friend:fakeServer.notExisting',
+        ),
+      ]);
+      expect(service.callHoldByAnother(room, r'$ours'), CallHold.over);
+    });
+
+    test('their live membership is the call still being held', () async {
+      final (service, room) = await withState([
+        MatrixEvent(
+          type: EventTypes.GroupCallMember,
+          content: {
+            'memberships': [
+              {
+                'call_id': 'x',
+                'expires_ts': DateTime.now()
+                    .add(const Duration(hours: 1))
+                    .millisecondsSinceEpoch,
+              },
+            ],
+          },
+          senderId: '@friend:fakeServer.notExisting',
+          eventId: r'$theirs',
+          originServerTs: DateTime.now(),
+          stateKey: 'DEV_@friend:fakeServer.notExisting',
+        ),
+      ]);
+      expect(service.callHoldByAnother(room, r'$ours'), CallHold.held);
+    });
+  });
+
   group('being busy is about the OTHER conversation', () {
     // Glare: both people press call at the same moment. The join claim is
     // taken the instant we tap, so their ring finds us "busy" -- and an
