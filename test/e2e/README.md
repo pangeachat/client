@@ -74,6 +74,24 @@ work, which is why ordinary users never see it. Real users of assistive
 technology WOULD -- filed as a known accessibility issue rather than fixed here,
 because the corruption is inside the engine.
 
+## The phone participant (device.js)
+
+`device.js` adds a REAL Android phone to the harness, driven over adb, with
+the same philosophy as the browser side: taps are proven by server outcomes
+(membership written, decline sent, audio uploaded), never by pixels alone.
+`device_smoke.js` is the standing scenario: the laptop places the call, the
+phone answers, 55 seconds of talk crosses the 45s chunk boundary, and the
+evidence is the call card plus the phone's own capture log lines.
+
+- `PHONE_SERIAL` / `ADB` env vars point it at a different device or sdk.
+- A fingerprint lock cannot be driven from adb. The harness DETECTS the
+  keyguard and fails with "ask the user to unlock it" instead of letting
+  every later step fail mysteriously. Keep the screen on across installs:
+  `adb shell svc power stayon true` plus a periodic KEYCODE_WAKEUP.
+- Banner tap positions in `BANNER` are calibrated to one device (960x2142
+  render). On a failed outcome the scenario screenshots the phone so the
+  calibration is corrected from evidence.
+
 ## Known gaps
 
 - The former "next call after an answered call places nothing" bug is resolved:
