@@ -1193,25 +1193,31 @@ void main() {
       expect(trace.steps, contains('capture.stop'));
     });
 
-    test('the peer coming back resumes the call', () async {
-      final (call, calls, _) = await connectedCall();
+    test(
+      'the peer coming back resumes the call, once it is believed',
+      () async {
+        // The return is confirmed rather than taken at first sight -- see the
+        // SFU-echo test below for the device failure that bought that rule.
+        final (call, calls, _) = await connectedCall();
 
-      calls.remotePresent = false;
-      await calls.participantsBecome([calls.client.deviceID!]);
-      expect(call.peerReconnecting, isTrue);
-      final stops = trace.steps.where((s) => s == 'capture.stop').length;
+        calls.remotePresent = false;
+        await calls.participantsBecome([calls.client.deviceID!]);
+        expect(call.peerReconnecting, isTrue);
+        final stops = trace.steps.where((s) => s == 'capture.stop').length;
 
-      calls.remotePresent = true;
-      await calls.participantsBecome([calls.client.deviceID!]);
+        calls.remotePresent = true;
+        await calls.participantsBecome([calls.client.deviceID!]);
+        await call.confirmPeerReturnForTest();
 
-      expect(call.peerReconnecting, isFalse);
-      expect(call.stage, CallStage.connected);
-      // Recording resumes for the resumed conversation.
-      expect(
-        trace.steps.where((s) => s == 'capture.start').length,
-        greaterThan(stops > 0 ? 1 : 0),
-      );
-    });
+        expect(call.peerReconnecting, isFalse);
+        expect(call.stage, CallStage.connected);
+        // Recording resumes for the resumed conversation.
+        expect(
+          trace.steps.where((s) => s == 'capture.start').length,
+          greaterThan(stops > 0 ? 1 : 0),
+        );
+      },
+    );
 
     test('time they spent vanished is not talking time', () async {
       final (call, calls, _) = await connectedCall();
@@ -1244,6 +1250,76 @@ void main() {
       expect(call.wasDeclined, isFalse);
       expect(trace.steps, contains('retract'));
     });
+
+    test(
+      "the SFU's echo of a departed peer does not cancel the grace",
+      () async {
+        // THE DEVICE BUG, pinned. The SFU holds a departed participant for its
+        // own departure timeout and can re-report them; taking that for a
+        // return cancelled the grace, and since nothing changed afterwards the
+        // call hung open for good -- microphone live, membership heartbeating,
+        // nobody there. A return must survive peerReturnConfirmed.
+        final (call, calls, _) = await connectedCall();
+
+        calls.remotePresent = false;
+        await calls.participantsBecome([calls.client.deviceID!]);
+        expect(call.peerReconnecting, isTrue);
+
+        // The echo: present again, immediately.
+        calls.remotePresent = true;
+        await calls.participantsBecome([calls.client.deviceID!]);
+        expect(
+          call.peerReconnecting,
+          isTrue,
+          reason:
+              'an unconfirmed sighting must not cancel the only bounded '
+              'thing in this machine',
+        );
+        expect(
+          trace.steps.where((s) => s == 'capture.start').length,
+          1,
+          reason: 'and it must not restart the microphone either',
+        );
+
+        // The echo dies again, as a real departure does.
+        calls.remotePresent = false;
+        await calls.participantsBecome([calls.client.deviceID!]);
+        expect(call.peerReconnecting, isTrue, reason: 'the grace runs on');
+
+        await call.peerGraceLapseForTest();
+        expect(
+          call.stage,
+          CallStage.ended,
+          reason: 'bounded, whatever the SFU said',
+        );
+      },
+    );
+
+    test(
+      'a peer who really returns resumes once their presence holds',
+      () async {
+        final (call, calls, _) = await connectedCall();
+
+        calls.remotePresent = false;
+        await calls.participantsBecome([calls.client.deviceID!]);
+        expect(call.peerReconnecting, isTrue);
+
+        calls.remotePresent = true;
+        await calls.participantsBecome([calls.client.deviceID!]);
+        expect(call.peerReconnecting, isTrue, reason: 'not yet believed');
+
+        // Still there when we look again, past the confirmation window.
+        await call.confirmPeerReturnForTest();
+
+        expect(call.peerReconnecting, isFalse);
+        expect(call.stage, CallStage.connected);
+        expect(
+          trace.steps.where((s) => s == 'capture.start').length,
+          greaterThan(1),
+          reason: 'recording resumes for the resumed conversation',
+        );
+      },
+    );
 
     test('hanging up during the grace ends it immediately', () async {
       final (call, calls, _) = await connectedCall();

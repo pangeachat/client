@@ -345,6 +345,10 @@ class ActiveCall extends ChangeNotifier {
         elected &&
         _peerArrived &&
         (_roster?.hasPeer ?? false) &&
+        // Never while their return is in doubt: presence during a grace may be
+        // the SFU's echo of someone already gone, and audio recorded into that
+        // is audio nobody heard.
+        _peerGrace == null &&
         (_roster?.isConnected ?? false);
     // Handovers are serialised. A device can be displaced and reinstated faster
     // than a flush completes, and starting a new recording while the previous
@@ -377,7 +381,11 @@ class ActiveCall extends ChangeNotifier {
       } else {
         await capture.stop();
         _capturing = false;
-        Logs().i('Another device of this account is recording this call');
+        Logs().i(
+          _peerGrace != null
+              ? 'Recording paused: waiting to see whether they come back'
+              : 'Another device of this account is recording this call',
+        );
       }
     } catch (e, s) {
       // Recording is not the call. A tap that will not open, or will not close,
@@ -423,7 +431,39 @@ class ActiveCall extends ChangeNotifier {
   /// return is possible would be a lie.
   static const peerGraceWindow = Duration(seconds: 20);
 
+  /// How long the peer must STAY present before their return counts.
+  ///
+  /// The SFU holds a departed participant for its own departure timeout, and
+  /// that retention can be re-reported to us -- on our own reconnect, or as a
+  /// late update -- as though they were back. On a real device that echo
+  /// cancelled the grace, and because nothing changed afterwards the call hung
+  /// open for good: microphone live, membership heartbeating, nobody there. A
+  /// return is believed only once it has survived this long, which is nothing
+  /// against a twenty-second window.
+  static const peerReturnConfirmed = Duration(seconds: 3);
+
+  /// How often the call re-reads presence on its OWN clock.
+  ///
+  /// The state machine must never depend on an event that may not come. Roster
+  /// notifications are welcome, but the truth is re-derived on this tick too --
+  /// which is also what ends a call whose peer crashed without a leave event, a
+  /// guarantee the tests asserted while production had only the SFU's events.
+  static const presenceRecheck = Duration(seconds: 5);
+
   Timer? _peerGrace;
+
+  /// When the peer was first seen again during a grace, null if not yet.
+  DateTime? _peerBackSince;
+
+  Timer? _presenceClock;
+
+  void _startPresenceClock() {
+    _presenceClock?.cancel();
+    _presenceClock = Timer.periodic(presenceRecheck, (_) {
+      if (_ending || _disposed) return;
+      _onParticipantsChanged();
+    });
+  }
 
   /// Whether the peer has vanished mid-call and is being waited for.
   bool get peerReconnecting => _peerGrace != null;
@@ -435,6 +475,18 @@ class ActiveCall extends ChangeNotifier {
     if (_ending) return;
     Logs().i('The other participant did not return; ending the call');
     unawaited(hangUp());
+  }
+
+  /// Ages a pending return past its confirmation window and re-reads
+  /// presence, as the call's own clock does a few seconds later.
+  @visibleForTesting
+  Future<void> confirmPeerReturnForTest() async {
+    final since = _peerBackSince;
+    if (since != null) {
+      _peerBackSince = since.subtract(peerReturnConfirmed * 2);
+    }
+    _onParticipantsChanged();
+    await _handover;
   }
 
   /// Fires the grace lapse now instead of after twenty real seconds, for the
@@ -549,11 +601,24 @@ class ActiveCall extends ChangeNotifier {
     // which empties and refills the participant list — does not read as the
     // other person hanging up.
     final peerHere = _roster?.hasPeer ?? false;
+    if (peerHere && _peerGrace != null) {
+      // Seen again mid-grace. NOT believed yet: the SFU re-reports a departed
+      // participant inside its own retention window, and taking that echo for
+      // a return cancelled the one bounded thing in this machine. The clock
+      // brings us back to check.
+      final backSince = _peerBackSince ??= DateTime.now();
+      if (DateTime.now().difference(backSince) < peerReturnConfirmed) {
+        _electRecorder();
+        return;
+      }
+    }
+    if (!peerHere) _peerBackSince = null;
     if (peerHere) {
       final firstArrival = !_peerArrived;
       final returned = _peerGrace != null;
       _peerGrace?.cancel();
       _peerGrace = null;
+      _peerBackSince = null;
       _notePeerPresent();
       _waitingForPeer?.cancel();
       _waitingForPeer = null;
@@ -909,6 +974,9 @@ class ActiveCall extends ChangeNotifier {
       final roster = media.roster(myUserId: calls.client.userID ?? '');
       _roster = roster;
       roster.addListener(_onParticipantsChanged);
+      // And the call's own clock beside the roster's events, so no state can
+      // be reached that only a missing event would have moved us out of.
+      _startPresenceClock();
 
       // Placing or joining. Someone who was RUNG is answering, whatever the room
       // looks like by the time they get there — deriving that would make a
@@ -1215,6 +1283,8 @@ class ActiveCall extends ChangeNotifier {
     _waitingForPeer = null;
     _peerGrace?.cancel();
     _peerGrace = null;
+    _presenceClock?.cancel();
+    _presenceClock = null;
     // A decline waiting out its grace when teardown arrives still happened.
     // Only the WAIT is abandoned, not the fact — otherwise a decline landing in
     // the last moment before the call gives up on its own is written as nobody
