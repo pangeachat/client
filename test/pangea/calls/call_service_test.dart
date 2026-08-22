@@ -972,6 +972,110 @@ void main() {
       );
     });
   });
+  group('whether a peer is still live in the call we are on', () {
+    const peer = '@friend:fakeServer.notExisting';
+    const me = '@test:fakeServer.notExisting';
+
+    // A room per test. The ffi ':memory:' database is shared between clients
+    // in one file, so a fixed room id carried the PREVIOUS test's membership
+    // state into the next one -- and this group is precisely about reading
+    // stale state correctly.
+    var roomSeq = 0;
+
+    Future<(CallService, Room)> withPeerState(
+      List<Map<String, Object?>> memberships,
+    ) async {
+      final roomId = '!incall${roomSeq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                state: [
+                  for (var i = 0; i < memberships.length; i++)
+                    MatrixEvent(
+                      type: EventTypes.GroupCallMember,
+                      content: {
+                        'memberships': [memberships[i]],
+                      },
+                      senderId: peer,
+                      eventId: '\$state$i',
+                      originServerTs: DateTime.now(),
+                      // A state key per device, which is how a room comes to
+                      // hold several of one user's memberships.
+                      stateKey:
+                          'DEV$i'
+                          '_$peer',
+                    ),
+                ],
+              ),
+            },
+          ),
+        ),
+      );
+      return (CallService(client), client.getRoomById(roomId)!);
+    }
+
+    int inFuture() =>
+        DateTime.now().add(const Duration(minutes: 5)).millisecondsSinceEpoch;
+    int inPast() => DateTime.now()
+        .subtract(const Duration(minutes: 5))
+        .millisecondsSinceEpoch;
+
+    test('no call of our own means no opinion', () async {
+      final (service, room) = await withPeerState([
+        {'call_id': 'other', 'expires_ts': inFuture()},
+      ]);
+      expect(
+        service.peerLiveInCurrentCall(room, peer),
+        isTrue,
+        reason: 'nothing to compare against; the SFU stays in charge',
+      );
+    });
+
+    test(
+      "a stale membership from an EARLIER call does not keep them alive",
+      () async {
+        // The device failure: the room holds one membership per device from
+        // every call this session, and the broad "any non-empty" read saw a
+        // departed peer as present for ever.
+        final (service, room) = await withPeerState([
+          {'call_id': 'older-call', 'expires_ts': inFuture()},
+          {'call_id': 'this-call', 'expires_ts': inPast()},
+        ]);
+        service.adoptCallIdForTest('this-call');
+        expect(service.peerLiveInCurrentCall(room, peer), isFalse);
+      },
+    );
+
+    test('a live membership for THIS call keeps them present', () async {
+      final (service, room) = await withPeerState([
+        {'call_id': 'this-call', 'expires_ts': inFuture()},
+      ]);
+      service.adoptCallIdForTest('this-call');
+      expect(service.peerLiveInCurrentCall(room, peer), isTrue);
+    });
+
+    test('a peer who never wrote one for this call is no opinion', () async {
+      final (service, room) = await withPeerState([
+        {'call_id': 'older-call', 'expires_ts': inFuture()},
+      ]);
+      service.adoptCallIdForTest('this-call');
+      expect(
+        service.peerLiveInCurrentCall(room, peer),
+        isTrue,
+        reason: 'their state may simply not have synced yet',
+      );
+    });
+  });
 }
 
 /// A room that accepts any send and remembers the transaction ids used.

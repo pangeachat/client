@@ -480,7 +480,7 @@ class ActiveCall extends ChangeNotifier {
     final room = _room;
     final peer = _peerUserId;
     if (room == null || peer == null) return false;
-    if (calls.callerStillInCall(room, peer)) {
+    if (calls.peerLiveInCurrentCall(room, peer)) {
       _peerMembershipSeen = true;
       return false;
     }

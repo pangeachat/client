@@ -32,7 +32,7 @@ class FakeCalls extends CallService {
   bool peerMembershipPresent = true;
 
   @override
-  bool callerStillInCall(matrix.Room room, String callerId) =>
+  bool peerLiveInCurrentCall(matrix.Room room, String peerId) =>
       peerMembershipPresent;
 
   /// Whether the account already holds a call, for the start-entry read.

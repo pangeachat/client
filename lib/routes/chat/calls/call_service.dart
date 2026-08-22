@@ -716,6 +716,54 @@ class CallService {
     return false;
   }
 
+  /// Whether [peerId] still holds a LIVE membership in the call this device
+  /// is on.
+  ///
+  /// Deliberately narrower than [callerStillInCall], which answers "does this
+  /// user claim a place in any call here" and is right for deciding whether a
+  /// RINGING call still has a caller. This one decides whether a peer has
+  /// LEFT the call in progress, and for that both extra conditions are load
+  /// bearing: a room accumulates a membership state event per device, so an
+  /// old key from an earlier call keeps reading non-empty long after that
+  /// call ended -- on a real phone that stale row made a departed peer look
+  /// present for ever -- and an expired entry is a device that stopped
+  /// renewing, which is not a participant either.
+  ///
+  /// Answers true when it cannot tell (no call of our own to compare
+  /// against): the caller treats that as "no opinion" and falls back to the
+  /// SFU, which is the pre-existing behaviour.
+  /// Pins the call id these reads compare against, for tests that cannot
+  /// stand up a real group call session.
+  @visibleForTesting
+  void adoptCallIdForTest(String callId) => _callIdForTest = callId;
+
+  String? _callIdForTest;
+
+  bool peerLiveInCurrentCall(Room room, String peerId) {
+    final callId = _current?.groupCallId ?? _callIdForTest;
+    if (callId == null) return true;
+    final states = room.states[EventTypes.GroupCallMember];
+    if (states == null) return true;
+    final now = DateTime.now().millisecondsSinceEpoch;
+    var sawAnyOfTheirs = false;
+    for (final state in states.values) {
+      if (state.senderId != peerId) continue;
+      final memberships = state.content['memberships'];
+      if (memberships is! List) continue;
+      for (final m in memberships) {
+        if (m is! Map) continue;
+        if (m['call_id'] != callId) continue;
+        sawAnyOfTheirs = true;
+        final expires = m['expires_ts'];
+        if (expires is! int) return true;
+        if (expires > now) return true;
+      }
+    }
+    // Nothing of theirs for THIS call: either they never wrote one (we cannot
+    // tell -- no opinion) or they retracted it (they left).
+    return !sawAnyOfTheirs ? true : false;
+  }
+
   /// Whether [eventId] is one of [userId]'s CURRENT membership state events.
   ///
   /// The discriminator between a STALE ring (replayed from before a reload,
