@@ -848,10 +848,19 @@ class _ReturnCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            IconButton(
-              onPressed: onDismiss,
-              icon: const Icon(Icons.close),
-              tooltip: l10n.close,
+            // Semantics, NEVER a Tooltip -- the same rule the round call
+            // actions above state. This banner is mounted above the router's
+            // Navigator, so nothing here has an Overlay ancestor, and a
+            // Tooltip's "No Overlay widget found" takes down the whole banner
+            // subtree: on a real phone that meant a ringing call could not be
+            // answered at all, because the ring card is in this same Stack.
+            Semantics(
+              button: true,
+              label: l10n.close,
+              child: IconButton(
+                onPressed: onDismiss,
+                icon: const Icon(Icons.close),
+              ),
             ),
             FilledButton.icon(
               onPressed: onReturn,

@@ -55,6 +55,21 @@ const ROOM_ID = ROOM + ':pangea.localhost';
   const cards = mx.cardsIn(evs, A.userId);
   console.log('   cards:', JSON.stringify(cards.map((c) => [c.label, c.durationMs])));
 
+  // THE regression check the device bought: the phone's own side must END,
+  // not hang open on a stale echo of the peer who left. Proven three ways --
+  // its Matrix membership retracted, its foreground service gone, and its
+  // own log saying why.
+  let phoneEnded = false;
+  for (let i = 0; i < 12 && !phoneEnded; i++) {
+    const [stillIn, svc] = await Promise.all([
+      mx.hasMembership(B.token, ROOM_ID, B.userId),
+      d.adb('shell', 'dumpsys', 'activity', 'services', 'chat.pangea.call_capture').catch(() => ''),
+    ]);
+    phoneEnded = !stillIn && !/isForeground=true/.test(svc);
+    if (!phoneEnded) await wait(5000);
+  }
+  console.log('   phone ended its own side:', phoneEnded);
+
   const log = await d.logcatDump();
   const capture = log.split('\n').filter((l) => /flutter/i.test(l) && /record|captur|chunk|tap|elect|speech|upload/i.test(l));
   console.log('   phone capture-related log lines:', capture.length);

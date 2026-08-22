@@ -11,6 +11,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
+import 'package:fluffychat/routes/chat/calls/call_service.dart'
+    show RejoinOffer;
 import 'package:fluffychat/routes/chat/calls/incoming_call_banner.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -263,4 +265,70 @@ void main() {
     });
   });
 
+  group('mounted where the app really mounts it', () {
+    /// Production puts this banner in MaterialApp's BUILDER, above the
+    /// router's Navigator -- so nothing inside it has an Overlay ancestor.
+    /// Every earlier test pumped it under a Scaffold, which does have one,
+    /// and that difference hid a crash that reached a real phone: a Tooltip
+    /// in the return card threw "No Overlay widget found", the whole banner
+    /// subtree failed, and because the RING card lives in the same Stack, an
+    /// incoming call could not be answered at all.
+    Future<MatrixState> pumpAsProduction(WidgetTester tester) async {
+      await tester.pumpWidget(
+        _TestMatrix(
+          clients: [client],
+          store: store,
+          child: MaterialApp(
+            locale: const Locale('en'),
+            localizationsDelegates: L10n.localizationsDelegates,
+            supportedLocales: L10n.supportedLocales,
+            builder: (context, child) =>
+                IncomingCallBanner(child: child ?? const SizedBox.shrink()),
+            home: const Scaffold(body: SizedBox.shrink()),
+          ),
+        ),
+      );
+      // Twice: the banner subscribes in a post-frame callback, so a ring
+      // sent before that frame has run reaches nobody.
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 50));
+      return tester.state<MatrixState>(find.byType(_TestMatrix));
+    }
+
+    testWidgets('the return offer renders with no Overlay in scope', (
+      tester,
+    ) async {
+      final room = directChat();
+      final state = await pumpAsProduction(tester);
+
+      state.rejoinOffer.value = RejoinOffer(
+        room: room,
+        membershipEventId: r'$anchor',
+        since: DateTime.now(),
+      );
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 50));
+
+      expect(
+        tester.takeException(),
+        isNull,
+        reason:
+            'anything that needs an Overlay takes the whole banner down, '
+            'including the ring card beside it',
+      );
+      expect(find.byKey(const ValueKey(r'$anchor')), findsOneWidget);
+    });
+
+    testWidgets('a ring renders with no Overlay in scope', (tester) async {
+      final room = directChat();
+      await pumpAsProduction(tester);
+
+      client.onTimelineEvent.add(ring(room));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 50));
+
+      expect(tester.takeException(), isNull);
+      expect(find.byKey(const ValueKey(r'$ring')), findsOneWidget);
+    });
+  });
 }
