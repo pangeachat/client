@@ -3608,6 +3608,12 @@
     "callReconnecting": "Reconnecting...",
     "callReturn": "Return",
     "callPeerMuted": "Muted",
+    "callPeerBusy": "{name} is on another call",
+    "@callPeerBusy": {
+        "placeholders": {
+            "name": {}
+        }
+    },
     "callReturnOffer": "You were in a call before the app reloaded",
     "callPeerReconnecting": "{name} reconnecting...",
     "@callPeerReconnecting": {

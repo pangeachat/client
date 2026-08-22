@@ -11,6 +11,8 @@ class _FakeSound implements RingSound {
   Future<void> start() async => log.add('start');
   @override
   Future<void> stop() async => log.add('stop');
+  @override
+  Future<void> busy() async => log.add('busy');
 }
 
 void main() {
@@ -60,6 +62,19 @@ void main() {
     p.stopAll();
     await pumpEventQueue();
     expect(sound.log, ['start', 'stop']);
+    expect(p.playingForTest, isNull);
+  });
+
+  test('the engaged tone silences any ringing first', () async {
+    // A caller hearing their own ringback under the busy note learns
+    // nothing; the tone has to arrive on its own.
+    final sound = _FakeSound();
+    final p = RingPlayer(sound: sound);
+    p.play(r'$ring');
+    await pumpEventQueue();
+    p.busy();
+    await pumpEventQueue();
+    expect(sound.log, ['start', 'stop', 'busy']);
     expect(p.playingForTest, isNull);
   });
 

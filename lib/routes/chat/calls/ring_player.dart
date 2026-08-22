@@ -9,6 +9,10 @@ import 'package:matrix/matrix.dart' show Logs;
 abstract class RingSound {
   Future<void> start();
   Future<void> stop();
+
+  /// The short double note a caller hears when the other line is busy. Not a
+  /// loop: it says one thing and stops.
+  Future<void> busy();
 }
 
 /// The bundled ringtone, looped.
@@ -56,6 +60,26 @@ class AssetRingSound implements RingSound {
       await _player.stop();
     } catch (_) {}
   }
+
+  @override
+  Future<void> busy() async {
+    try {
+      await _configure();
+      // Twice, briefly: the engaged tone every phone system has trained
+      // people to recognise, built from the notification asset this app
+      // already ships rather than a new file nobody has heard.
+      final beeper = AudioPlayer();
+      await beeper.setReleaseMode(ReleaseMode.stop);
+      for (var i = 0; i < 2; i++) {
+        await beeper.play(AssetSource('sounds/notification.ogg'));
+        await Future<void>.delayed(const Duration(milliseconds: 450));
+      }
+      await beeper.dispose();
+    } catch (e) {
+      // A tone is a courtesy; the words on screen are the message.
+      Logs().i('Busy tone not played: $e');
+    }
+  }
 }
 
 /// Rings for exactly as long as one prompt is on screen.
@@ -90,6 +114,13 @@ class RingPlayer {
     if (_playingFor != ringId) return;
     _playingFor = null;
     unawaited(_sound.stop());
+  }
+
+  /// The engaged tone, once. Whatever was ringing stops first: a caller
+  /// hearing their own ringback over the busy note learns nothing.
+  void busy() {
+    stopAll();
+    unawaited(_sound.busy());
   }
 
   /// Stops whatever is ringing. For dispose and account switches.

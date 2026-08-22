@@ -771,8 +771,19 @@ class ActiveCall extends ChangeNotifier {
       return;
     }
     if (target != ours) return;
+    // A device that could not take the call said so with a reason; a person
+    // turning it down sends none. Kept apart because the caller's screen and
+    // their history should not read "they turned you down" when the truth is
+    // that their line was busy.
+    final reason = event.content[CallService.declineReasonField];
+    if (reason == CallService.declineBusy) _peerWasBusy = true;
     _onDeclined();
   }
+
+  /// Whether the decline came from a device already in another call.
+  bool get peerWasBusy => _peerWasBusy;
+
+  bool _peerWasBusy = false;
 
   /// Replays a decline that arrived before this call had an id to match it to.
   void _catchUpOnDeclines() {

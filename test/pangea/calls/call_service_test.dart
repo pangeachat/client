@@ -1076,6 +1076,124 @@ void main() {
       );
     });
   });
+  group('a second device of the same account', () {
+    const me = '@test:fakeServer.notExisting';
+    const peer = '@friend:fakeServer.notExisting';
+    var seq = 0;
+
+    /// [myMemberships] may use the sentinel 'THIS' for the device id: the
+    /// fake homeserver assigns the real one at login, and a test that
+    /// hardcoded its own guess proved nothing about "our own device".
+    Future<(CallService, Room)> roomWith(
+      List<Map<String, Object?>> myMemberships, {
+      String callerCallId = 'the-call',
+    }) async {
+      final roomId = '!twodev${seq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'THISPHONE',
+      );
+      myMemberships = [
+        for (final m in myMemberships)
+          {...m, if (m['device_id'] == 'THIS') 'device_id': client.deviceID!},
+      ];
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                state: [
+                  // The caller's own membership -- the event their ring names.
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: {
+                      'memberships': [
+                        {
+                          'call_id': callerCallId,
+                          'device_id': 'CALLERDEV',
+                          'expires_ts': DateTime.now()
+                              .add(const Duration(minutes: 5))
+                              .millisecondsSinceEpoch,
+                        },
+                      ],
+                    },
+                    senderId: peer,
+                    eventId: r'$caller-membership',
+                    originServerTs: DateTime.now(),
+                    stateKey: 'CALLERDEV_$peer',
+                  ),
+                  if (myMemberships.isNotEmpty)
+                    MatrixEvent(
+                      type: EventTypes.GroupCallMember,
+                      content: {'memberships': myMemberships},
+                      senderId: me,
+                      eventId: r'$my-membership',
+                      originServerTs: DateTime.now(),
+                      stateKey: 'OTHERPHONE_$me',
+                    ),
+                ],
+              ),
+            },
+          ),
+        ),
+      );
+      return (CallService(client), client.getRoomById(roomId)!);
+    }
+
+    int soon() =>
+        DateTime.now().add(const Duration(minutes: 5)).millisecondsSinceEpoch;
+
+    test('answering on the other phone stops this one ringing', () async {
+      final (service, room) = await roomWith([
+        {
+          'call_id': 'the-call',
+          'device_id': 'OTHERPHONE',
+          'expires_ts': soon(),
+        },
+      ]);
+      expect(
+        service.answeredOnAnotherDevice(room, r'$caller-membership'),
+        isTrue,
+      );
+    });
+
+    test('nobody of ours in the call means this one keeps ringing', () async {
+      final (service, room) = await roomWith(const []);
+      expect(
+        service.answeredOnAnotherDevice(room, r'$caller-membership'),
+        isFalse,
+      );
+    });
+
+    test('our membership in a DIFFERENT call is not this call', () async {
+      // A leftover row from an earlier call must not silence a live ring.
+      final (service, room) = await roomWith([
+        {
+          'call_id': 'older-call',
+          'device_id': 'OTHERPHONE',
+          'expires_ts': soon(),
+        },
+      ]);
+      expect(
+        service.answeredOnAnotherDevice(room, r'$caller-membership'),
+        isFalse,
+      );
+    });
+
+    test('our OWN device joining is not "somebody else answered"', () async {
+      final (service, room) = await roomWith([
+        {'call_id': 'the-call', 'device_id': 'THIS', 'expires_ts': soon()},
+      ]);
+      expect(
+        service.answeredOnAnotherDevice(room, r'$caller-membership'),
+        isFalse,
+      );
+    });
+  });
 }
 
 /// A room that accepts any send and remembers the transaction ids used.

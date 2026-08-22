@@ -620,6 +620,18 @@ class CallService {
           'Not ringing for ${ring.event.eventId} in ${ring.event.room.id}: '
           'this account reads as being in a call',
         );
+        // And TELL them. Suppressing the ring in silence left the caller
+        // listening to nothing until the ring timed out, and then wrote it
+        // in their history as a call nobody answered -- when the truth is
+        // that the line was busy. The decline goes back at once, carrying
+        // the reason, so their screen can say so and stop.
+        unawaited(
+          decline(
+            ring.event.room,
+            notificationEventId: ring.event.eventId,
+            reason: declineBusy,
+          ),
+        );
       }
     } catch (_) {
       // A diagnostic is never worth a dropped call.
@@ -631,11 +643,25 @@ class CallService {
   ///
   /// Points back at the notification event, per MSC4310, so the caller matches
   /// the decline to the exact call they rang rather than to the room.
-  Future<void> decline(Room room, {required String notificationEventId}) async {
+  /// The reason a decline carries, when there is one worth carrying.
+  ///
+  /// A person saying no and a device that CANNOT take the call are different
+  /// facts, and the caller deserves the difference: one is "they turned you
+  /// down", the other is "they are on another call". Absent on an ordinary
+  /// decline, so older clients and older events read exactly as before.
+  static const declineReasonField = 'reason';
+  static const declineBusy = 'busy';
+
+  Future<void> decline(
+    Room room, {
+    required String notificationEventId,
+    String? reason,
+  }) async {
     try {
       await room.sendEvent({
         'msgtype': PangeaEventTypes.callDecline,
         'body': '',
+        declineReasonField: ?reason,
         'm.relates_to': {
           'rel_type': 'm.reference',
           'event_id': notificationEventId,
@@ -831,6 +857,59 @@ class CallService {
     }
     return false;
   }
+
+  /// Whether ANOTHER device of this account has joined the call [ring] is
+  /// for.
+  ///
+  /// A phone and a laptop both ring. Answering on one has to stop the other,
+  /// and nothing said so: a decline is not sent when you ANSWER, so the
+  /// second device went on offering a call that had already been picked up
+  /// until its ring simply timed out. The evidence is our own membership
+  /// appearing for that call from a device that is not this one -- no new
+  /// message, and it cannot be faked by a stale row because it is scoped to
+  /// the call the ring names and to memberships that have not expired.
+  bool answeredOnAnotherDevice(Room room, String callerMembershipEventId) {
+    final me = client.userID;
+    final myDevice = client.deviceID;
+    if (me == null || myDevice == null) return false;
+    final states = room.states[EventTypes.GroupCallMember];
+    if (states == null) return false;
+    // Which call the ring is FOR, read from the membership event it names.
+    String? callId;
+    for (final state in states.values) {
+      if (state is! Event) continue;
+      if (state.eventId != callerMembershipEventId) continue;
+      final memberships = state.content['memberships'];
+      if (memberships is! List) continue;
+      for (final m in memberships) {
+        if (m is Map && m['call_id'] is String) callId = m['call_id'] as String;
+      }
+    }
+    if (callId == null) return false;
+    final now = DateTime.now().millisecondsSinceEpoch;
+    for (final state in states.values) {
+      if (state.senderId != me) continue;
+      final memberships = state.content['memberships'];
+      if (memberships is! List) continue;
+      for (final m in memberships) {
+        if (m is! Map) continue;
+        if (m['call_id'] != callId) continue;
+        if (m['device_id'] == myDevice) continue;
+        final expires = m['expires_ts'];
+        if (expires is! int || expires > now) return true;
+      }
+    }
+    return false;
+  }
+
+  /// Fires whenever this account's OWN call membership in [room] changes --
+  /// which is how a device learns that another of its siblings answered.
+  Stream<void> ownPresenceChanges(Room room) => client.onRoomState.stream.where(
+    (update) =>
+        update.roomId == room.id &&
+        update.state.type == EventTypes.GroupCallMember &&
+        update.state.senderId == client.userID,
+  );
 
   /// Fires whenever [callerId]'s call membership in [room] is rewritten.
   ///

@@ -15,6 +15,7 @@ import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
+import 'package:fluffychat/routes/chat/calls/ring_player.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -39,6 +40,9 @@ class CallSession extends ChangeNotifier {
 
   /// The ring this device answered, when answering. Null when placing.
   final String? notificationEventId;
+
+  /// Tests hand in a player with a fake sound; the app builds the real one.
+  final RingPlayer? tonesOverride;
 
   /// The CALLER's membership event id, carried by the ring this device
   /// answered. Null when placing (the caller's own echo stands in) and null
@@ -83,6 +87,7 @@ class CallSession extends ChangeNotifier {
     required void Function(CallSession) onReleased,
     String? rejoinAnchor,
     this.callerMembershipEventId,
+    this.tonesOverride,
   }) : _record = record,
        _myUserId = myUserId,
        _peerUserId = peerUserId,
@@ -133,6 +138,7 @@ class CallSession extends ChangeNotifier {
     String? notificationEventId,
     String? rejoinAnchor,
     String? callerMembershipEventId,
+    @visibleForTesting RingPlayer? tonesOverride,
     @visibleForTesting CallMedia? mediaOverride,
     @visibleForTesting CallCaptureService? captureOverride,
     @visibleForTesting CallForegroundControl? foregroundOverride,
@@ -173,6 +179,7 @@ class CallSession extends ChangeNotifier {
       onReleased: onReleased,
       rejoinAnchor: rejoinAnchor,
       callerMembershipEventId: callerMembershipEventId,
+      tonesOverride: tonesOverride,
     );
   }
 
@@ -207,6 +214,7 @@ class CallSession extends ChangeNotifier {
   bool get isReconnecting => call.isReconnecting;
   bool get peerReconnecting => call.peerReconnecting;
   bool get peerMuted => call.peerMuted;
+  bool get peerWasBusy => call.peerWasBusy;
   bool get hadPeer => call.hadPeer;
   bool get placedCall => call.placedCall;
   DateTime? get talkStartedAt => call.talkStartedAt;
@@ -262,6 +270,12 @@ class CallSession extends ChangeNotifier {
     _presenters--;
     _notify();
   }
+
+  /// The caller-side tones. Separate from the banner's ringtone: that one
+  /// belongs to whoever is being called, this one to whoever is calling.
+  late final RingPlayer _tones = tonesOverride ?? RingPlayer();
+
+  bool _busyToned = false;
 
   /// Routes the ongoing-call notification's buttons into this session,
   /// through the SAME paths the on-screen buttons use -- one mute, one
@@ -361,6 +375,13 @@ class CallSession extends ChangeNotifier {
     // before the stage catches up — this is what makes hanging up feel
     // immediate on both sides.
     final outcome = call.outcome;
+    if (outcome == CallOutcome.declined && call.peerWasBusy && !_busyToned) {
+      // Once, and only for a line that was busy: the engaged tone is the
+      // half of "they are on another call" that reaches someone who is not
+      // looking at the screen.
+      _busyToned = true;
+      _tones.busy();
+    }
     if (outcome == CallOutcome.ended || outcome == CallOutcome.declined) {
       // The card FIRST and immediately: everything it states is known now, and
       // it must not wait for teardown and transcription behind it.

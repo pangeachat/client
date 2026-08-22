@@ -365,6 +365,34 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       if (mounted && _ringing?.event.eventId == ring.event.eventId) _dismiss();
     });
     _watchCaller(ring);
+    _watchSiblings(ring);
+  }
+
+  /// Stops this device ringing the moment ANOTHER of our devices answers.
+  ///
+  /// Answering sends no decline -- it is not a refusal -- so nothing used to
+  /// tell the other phone, and it went on offering a call that had already
+  /// been picked up until its ring timed out. Our own membership appearing
+  /// for that call from a different device is the evidence, and it needs no
+  /// new message.
+  StreamSubscription<void>? _siblingAnswered;
+
+  void _watchSiblings(IncomingCallNotification ring) {
+    _siblingAnswered?.cancel();
+    final service = _service;
+    final named = ring.membershipEventId;
+    if (service == null || named == null) return;
+    final room = ring.event.room;
+    if (service.answeredOnAnotherDevice(room, named)) {
+      _dismiss();
+      return;
+    }
+    _siblingAnswered = service.ownPresenceChanges(room).listen((_) {
+      if (!mounted || _ringing?.event.eventId != ring.event.eventId) return;
+      if (!service.answeredOnAnotherDevice(room, named)) return;
+      matrix.Logs().i('Answered on another device; this one stops ringing');
+      _dismiss();
+    });
   }
 
   /// Stops the prompt the moment the caller gives up.
@@ -405,6 +433,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _stillRinging?.cancel();
     _activeCall?.removeListener(_onActiveCallChanged);
     _offerWatch?.cancel();
+    _siblingAnswered?.cancel();
     _ringPlayer.stopAll();
     super.dispose();
   }
@@ -414,6 +443,8 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _stillRinging = null;
     _callerGone?.cancel();
     _callerGone = null;
+    _siblingAnswered?.cancel();
+    _siblingAnswered = null;
     if (mounted) setState(() => _showRing(null));
   }
 

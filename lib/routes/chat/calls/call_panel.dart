@@ -354,6 +354,9 @@ String callStatusLine(L10n l10n, CallSession session) {
     case CallStage.ended:
       return l10n.callEnded;
     case CallStage.declined:
+      if (session.peerWasBusy) {
+        return l10n.callPeerBusy(session.peer?.calcDisplayname() ?? l10n.user);
+      }
       return l10n.callDeclinedByPeer;
   }
 }
