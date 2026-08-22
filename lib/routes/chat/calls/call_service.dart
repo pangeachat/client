@@ -840,6 +840,17 @@ class CallService {
 
   Future<List<RejoinOffer>> rejoinOffers() async {
     if (_disposed) return const [];
+    // The scan runs once, at startup -- exactly when the client is still
+    // reading its room list out of the database after the reload this scan
+    // exists for. Racing that load and losing returned an empty room list
+    // and no offer, nondeterministically. Waiting is cheap and bounded: the
+    // load is local.
+    try {
+      await client.roomsLoading;
+    } catch (e, s) {
+      Logs().w('Could not wait for the room list', e, s);
+    }
+    if (_disposed) return const [];
     final me = client.userID;
     final device = client.deviceID;
     if (me == null || device == null) return const [];
