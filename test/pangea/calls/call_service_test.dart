@@ -1246,6 +1246,31 @@ void main() {
       );
     });
   });
+  // Both scans run ONCE, at startup, which is exactly when the client is still
+  // reading its room list out of the database after the reload they exist for.
+  // Losing that race means iterating no rooms at all: the rejoin scan silently
+  // offers nothing, and the missed-ring scan leaves a learner who reloaded
+  // while their phone was ringing with no way to answer. An empty room list is
+  // indistinguishable from nothing to find, so neither failure says anything.
+  test('every startup scan waits for the room list first', () {
+    final source = File(
+      'lib/routes/chat/calls/call_service.dart',
+    ).readAsStringSync();
+    for (final scan in [
+      'Future<List<RejoinOffer>> rejoinOffers()',
+      'Future<List<IncomingCallNotification>> ringsMissed()',
+    ]) {
+      final at = source.indexOf(scan);
+      expect(at, isNot(-1), reason: '$scan has been renamed; update this pin');
+      final body = source.substring(at, at + 1400);
+      expect(
+        body,
+        contains('await client.roomsLoading'),
+        reason: '$scan must wait for the room list before it reads any room',
+      );
+    }
+  });
+
   group('whether the caller is still on the call they rang about', () {
     const caller = '@caller:fakeServer.notExisting';
     const me = '@test:fakeServer.notExisting';

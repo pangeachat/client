@@ -1051,6 +1051,18 @@ class CallService {
   /// now, this account did not already turn it down, and the caller is still
   /// there — a ring whose caller has gone is a call that is already over.
   Future<List<IncomingCallNotification>> ringsMissed() async {
+    // The same wait the rejoin scan makes, for the same reason and the same
+    // race: this runs once at startup, which is exactly when the client is
+    // still reading its room list out of the database after the reload this
+    // scan exists for. Losing that race means iterating NO rooms and finding
+    // no ring -- so a learner who reloads while their phone is ringing is
+    // never offered the call again, and the caller rings out. Silent, because
+    // an empty room list is indistinguishable from nobody calling.
+    try {
+      await client.roomsLoading;
+    } catch (e, s) {
+      Logs().w('Could not wait for the room list', e, s);
+    }
     final now = DateTime.now();
     final cutoff = now.subtract(CallNotification.maxLifetime);
     final missed = <IncomingCallNotification>[];
