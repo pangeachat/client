@@ -52,8 +52,15 @@ class TrackRendererTap implements CallAudioTap {
 
   @override
   Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+    // The rate REQUESTED below and the rate the audio actually arrives at are
+    // two different facts, and only the second one describes the samples. On
+    // the web the renderer builds an AudioContext at the requested rate and
+    // then reports whatever rate the browser really gave it -- browsers are
+    // free to refuse, and the fallback is 48 kHz. Labelling 48 kHz audio as
+    // 16 kHz does not fail loudly; it just transcribes as gibberish. So the
+    // rate that travels with the audio is the frame's own, never ours.
     final cancel = track.addAudioRenderer(
-      onFrame: (frame) => onFrames(pcmOfFrame(frame), sampleRate),
+      onFrame: (frame) => deliver(frame, onFrames),
       options: AudioRendererOptions(
         sampleRate: sampleRate,
         channels: channels,
@@ -62,6 +69,11 @@ class TrackRendererTap implements CallAudioTap {
     );
     return () => cancel();
   }
+
+  /// What a delivered frame becomes. Named so the rate rule above can be
+  /// tested without standing up a real SFU track.
+  static void deliver(AudioFrame frame, CallAudioFrames onFrames) =>
+      onFrames(pcmOfFrame(frame), frame.sampleRate);
 }
 
 /// Android's post-echo-cancellation tap.

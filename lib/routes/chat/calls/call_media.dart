@@ -89,15 +89,33 @@ class CallMedia {
     // be on the call and to be heard. Audio coming up before video, including
     // while a camera permission prompt is still open, is how every calling
     // product connects; the recording also needs the audio track first. A
-    // camera that then fails throws out of here and tears the whole call down,
-    // releasing this microphone with it — the guard below the enableCamera call.
+    // camera that then fails is handled below, and does not take the call
+    // with it.
     await enableMicrophone(true);
     if (_released) return _releaseWhatOpened();
 
     if (!video) return;
-    await enableCamera(true);
+    // A call fails only when the CALL cannot happen. No microphone is no
+    // call, so that throw stands; a camera that will not open is a degraded
+    // call, not a failed one, and letting it throw here tore down a working
+    // audio conversation over a blocked camera. Two real ways to hit it:
+    // `Permissions-Policy: camera=()` on the web hosts, and a user who denies
+    // the camera prompt after accepting the microphone.
+    try {
+      await enableCamera(true);
+    } catch (e, s) {
+      _cameraFailed = true;
+      Logs().w('The camera would not open; continuing with audio only', e, s);
+    }
     if (_released) return _releaseWhatOpened();
   }
+
+  /// Whether the camera refused to open on a call that asked for video.
+  ///
+  /// Read by the UI so a video call that came up without a picture can say so
+  /// rather than looking like a silent failure.
+  bool get cameraFailed => _cameraFailed;
+  bool _cameraFailed = false;
 
   /// Releases anything a step finished opening after teardown had already run.
   ///

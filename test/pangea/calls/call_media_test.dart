@@ -10,6 +10,7 @@ class RecordingMedia extends CallMedia {
   bool releaseDuringConnect = false;
   bool releaseDuringMic = false;
   bool releaseDuringCamera = false;
+  bool cameraThrows = false;
   int disconnects = 0;
 
   @override
@@ -30,6 +31,7 @@ class RecordingMedia extends CallMedia {
   @override
   Future<void> enableCamera(bool on) async {
     steps.add('camera:$on');
+    if (cameraThrows) throw StateError('camera blocked by policy');
     if (releaseDuringCamera) {
       releaseDuringCamera = false;
       await disconnect();
@@ -51,6 +53,24 @@ void main() {
     final media = RecordingMedia();
     await media.connect(grant, video: true);
     expect(media.steps, ['connect', 'mic:true', 'camera:true']);
+  });
+
+  // `Permissions-Policy: camera=()` on the web hosts, or a denied camera
+  // prompt, must cost the picture and nothing else. Letting the throw out of
+  // connect() tore down a working audio call.
+  test('a camera that will not open leaves the call up, audio and all',
+      () async {
+    final media = RecordingMedia()..cameraThrows = true;
+    await media.connect(grant, video: true);
+    expect(media.steps, ['connect', 'mic:true', 'camera:true']);
+    expect(media.disconnects, 0, reason: 'the call must not be torn down');
+    expect(media.cameraFailed, isTrue, reason: 'the UI has to be able to say so');
+  });
+
+  test('a call whose camera came up reports no camera failure', () async {
+    final media = RecordingMedia();
+    await media.connect(grant, video: true);
+    expect(media.cameraFailed, isFalse);
   });
 
   test('a voice call publishes no camera', () async {

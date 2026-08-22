@@ -2,7 +2,8 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:livekit_client/livekit_client.dart' show AudioTrack;
+import 'package:livekit_client/livekit_client.dart'
+    show AudioFormat, AudioFrame, AudioTrack;
 import 'package:pangea_call_capture/pangea_call_capture.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
@@ -56,6 +57,42 @@ class FakeCapture extends PangeaCallCapture {
 }
 
 void main() {
+  group('the rate a frame is labelled with', () {
+    // The browser is free to refuse the rate we ask an AudioContext for, and
+    // the renderer then reports the rate it really got (48 kHz by default).
+    // Labelling those samples 16 kHz because 16 kHz is what we requested is
+    // silent corruption: the audio transcribes as gibberish.
+    test('is the rate the frame arrived at, not the rate we asked for', () {
+      const tap = TrackRendererTap(sampleRate: 16000, channels: 1);
+      int? reported;
+      TrackRendererTap.deliver(
+        AudioFrame(
+          sampleRate: 48000,
+          channels: 1,
+          data: Uint8List.fromList([0, 0, 1, 0]),
+          format: AudioFormat.Int16,
+        ),
+        (samples, rate) => reported = rate,
+      );
+      expect(tap.sampleRate, 16000, reason: 'we still REQUEST 16 kHz');
+      expect(reported, 48000, reason: 'but we report what actually arrived');
+    });
+
+    test('a browser that honours the request reports that rate', () {
+      int? reported;
+      TrackRendererTap.deliver(
+        AudioFrame(
+          sampleRate: 16000,
+          channels: 1,
+          data: Uint8List.fromList([0, 0]),
+          format: AudioFormat.Int16,
+        ),
+        (samples, rate) => reported = rate,
+      );
+      expect(reported, 16000);
+    });
+  });
+
   group('the tap Android records through', () {
     test('delivers samples and the rate they were captured at', () async {
       final platform = FakeCapture();
