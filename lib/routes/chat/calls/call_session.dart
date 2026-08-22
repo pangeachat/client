@@ -497,7 +497,18 @@ class CallSession extends ChangeNotifier {
 
   void _scheduleSurvivorCheck(({String? key, String? caller}) identity) {
     final key = identity.key;
-    if (_writesTheCall || !call.hadPeer || call.rejoinedCall || key == null) {
+    // Also when nobody ever arrived, IF we stood aside because we believed
+    // they were calling too. A caller whose app dies between ringing and
+    // being answered leaves a membership that still reads as "calling", so a
+    // call back can look like glare -- and if the tie-break then hands the
+    // writing to a device that is dead, the attempt vanishes from the
+    // conversation entirely. This is the same mechanism as a writer dying
+    // mid-call, and it covers the same failure.
+    final couldHaveBeenTheirs = call.hadPeer || call.peerAlsoPlaced;
+    if (_writesTheCall ||
+        !couldHaveBeenTheirs ||
+        call.rejoinedCall ||
+        key == null) {
       return;
     }
     _survivorPending = (key: key, caller: identity.caller);

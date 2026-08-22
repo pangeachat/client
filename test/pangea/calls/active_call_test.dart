@@ -36,12 +36,18 @@ class FakeCalls extends CallService {
   /// "they rang, gave up, and their ring is still valid" case.
   bool callerHoldsMembership = true;
 
+  /// Set when a test needs the third answer for the CALLER: their state has
+  /// not synced, which is neither calling nor gone.
+  PeerPresence? callerPresenceOverride;
+
   @override
-  bool callerStillInCall(
+  PeerPresence callerPresence(
     matrix.Room room,
     String callerId, {
     String? deviceId,
-  }) => callerHoldsMembership;
+  }) =>
+      callerPresenceOverride ??
+      (callerHoldsMembership ? PeerPresence.live : PeerPresence.gone);
 
   /// Whether the membership a rejoin was offered against is still standing.
   /// False is the crashed-device case, where the server's delayed leave has
@@ -2475,6 +2481,27 @@ void main() {
     // the glare and the other did not, they both wrote the call, and the
     // conversation carried two cards for one call. Nothing here reads their
     // clock at all now.
+    // Their ring is a timeline event and their membership is room state; the
+    // two arrive independently, and the ring routinely wins. Requiring the
+    // state to be there ALREADY meant a ring that beat it was dropped and
+    // never revisited: neither side saw the glare, both wrote the call, and
+    // the conversation carried it twice.
+    test('a ring that beats their membership state is still glare', () async {
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      calls.remotePresent = true;
+      await pumpEventQueue();
+      // Nothing of theirs has synced yet: neither presence nor absence.
+      calls.callerPresenceOverride = PeerPresence.unknown;
+
+      await calls.peerAlsoCalls();
+      expect(
+        call.peerAlsoPlaced,
+        isTrue,
+        reason: 'silence from room state is not proof they are not calling',
+      );
+    });
+
     test('a caller whose clock is hours out is still glare', () async {
       final (call, calls, _, _) = await build();
       await call.start(roomStub(calls.client), video: false);

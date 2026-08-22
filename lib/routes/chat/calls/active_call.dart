@@ -189,11 +189,12 @@ class ActiveCall extends ChangeNotifier {
     // gave up is not.
     final room = _room;
     if (room != null &&
-        !calls.callerStillInCall(
-          room,
-          event.senderId,
-          deviceId: ring.senderDeviceId,
-        )) {
+        calls.callerPresence(
+              room,
+              event.senderId,
+              deviceId: ring.senderDeviceId,
+            ) ==
+            PeerPresence.gone) {
       return;
     }
     _peerAlsoPlaced = true;

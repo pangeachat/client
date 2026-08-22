@@ -754,9 +754,22 @@ class CallService {
   /// callee could answer a call that had already been cancelled. Falls back to
   /// the user-wide read when the ring names no device, which is the behaviour
   /// this had before.
-  bool callerStillInCall(Room room, String callerId, {String? deviceId}) {
+  bool callerStillInCall(Room room, String callerId, {String? deviceId}) =>
+      callerPresence(room, callerId, deviceId: deviceId) == PeerPresence.live;
+
+  /// The same question with the third answer kept.
+  ///
+  /// The boolean above is right where a MISSING caller should simply leave
+  /// things as they are -- the ring watcher only acts on a transition it has
+  /// seen. Anywhere a decision turns on the caller NOT being there, use this:
+  /// room state lags a join by seconds, and "their state has not arrived yet"
+  /// is not "they are not calling".
+  PeerPresence callerPresence(Room room, String callerId, {String? deviceId}) {
     final memberStates = room.states[EventTypes.GroupCallMember];
-    if (memberStates == null) return false;
+    if (memberStates == null || memberStates.isEmpty) {
+      return PeerPresence.unknown;
+    }
+    var sawTheirs = false;
     for (final state in memberStates.values) {
       if (state.senderId != callerId) continue;
       final memberships = state.content['memberships'];
@@ -764,9 +777,12 @@ class CallService {
       if (deviceId != null && !_belongsToDevice(state, memberships, deviceId)) {
         continue;
       }
-      if (memberships.isNotEmpty) return true;
+      sawTheirs = true;
+      if (memberships.isNotEmpty) return PeerPresence.live;
     }
-    return false;
+    // They wrote state and it holds nothing: they have gone. Nothing of
+    // theirs at all: we simply cannot see yet.
+    return sawTheirs ? PeerPresence.gone : PeerPresence.unknown;
   }
 
   /// Whether a member state event is the work of one particular device.

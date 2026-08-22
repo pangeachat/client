@@ -752,6 +752,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     return _disposingServices[clientName] ??= () async {
       try {
         _activityAutoSaveServices[clientName]?.dispose();
+        // The CALL first, and not just the service. Disposing the service
+        // retracts this account's MatrixRTC membership, which is bookkeeping;
+        // the LiveKit connection, the microphone, the recorder and Android's
+        // ongoing-call notification all belong to the session. Logging out
+        // while on a call left every one of them running -- the other person
+        // could still hear a learner who had signed out, and the phone still
+        // showed a call in progress for an account that was gone.
+        final live = activeCall.value;
+        if (live != null && live.room.client.clientName == clientName) {
+          activeCall.value = null;
+          live.dispose();
+        }
         await _callServices[clientName]?.dispose();
         await _analyticsServices[clientName]?.dispose();
       } finally {

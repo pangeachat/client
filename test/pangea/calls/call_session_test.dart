@@ -31,6 +31,38 @@ class _FakeCalls extends CallService {
 
   bool retracted = false;
 
+  /// Their ring, for the case where both sides call at once.
+  final _rings = StreamController<matrix.Event>.broadcast();
+
+  @override
+  Stream<matrix.Event> ringsIn(matrix.Room room) => _rings.stream;
+
+  /// The peer calling us at the same moment we call them.
+  Future<void> peerAlsoCalls(matrix.Room room) async {
+    _rings.add(
+      matrix.Event(
+        type: PangeaEventTypes.callNotification,
+        content: {
+          'application': {
+            'type': 'm.call',
+            'notification_type': 'ring',
+            'sender_ts': DateTime.now().millisecondsSinceEpoch,
+            'lifetime': 30000,
+          },
+          'm.relates_to': {
+            'rel_type': 'm.reference',
+            'event_id': r'$their-membership',
+          },
+        },
+        eventId: r'$their-ring',
+        senderId: '@friend:fakeServer.notExisting',
+        originServerTs: DateTime.now(),
+        room: room,
+      ),
+    );
+    await pumpEventQueue();
+  }
+
   @override
   int get joinAttempt => 0;
 
@@ -58,13 +90,17 @@ class _FakeCalls extends CallService {
   }) async => '\$notification';
 
   @override
-  Stream<matrix.Event> ringsIn(matrix.Room room) => const Stream.empty();
-
-  @override
   Stream<matrix.Event> declinesIn(matrix.Room room) => const Stream.empty();
 
   @override
   String? declineTarget(matrix.Event event) => null;
+
+  @override
+  PeerPresence callerPresence(
+    matrix.Room room,
+    String callerId, {
+    String? deviceId,
+  }) => PeerPresence.live;
 
   @override
   void abandonJoin(int attempt) {}
@@ -361,6 +397,54 @@ void main() {
       await pumpEventQueue();
       return (session, room, media);
     }
+
+    // A caller whose app dies between ringing and being answered leaves a
+    // membership that still reads as "calling", so a call back can look like
+    // glare. If the tie-break then hands the writing to that dead device, the
+    // attempt used to vanish from the conversation entirely: the survivor
+    // check only ran for calls somebody had actually joined.
+    test(
+      'an attempt the other side was never alive to write is still written',
+      () async {
+        final client = await _bareClient();
+        client.accountData['m.direct'] = matrix.BasicEvent(
+          type: 'm.direct',
+          content: {
+            '@friend:fakeServer.notExisting': ['!r:server'],
+          },
+        );
+        final room = _RecordingRoom(id: '!r:server', client: client);
+        final calls = _FakeCalls(client);
+        final session = CallSession.start(
+          room: room,
+          video: false,
+          callService: calls,
+          transcribe: (request) async =>
+              SpeechToTextResponseModel(results: const []),
+          userL1: 'en',
+          userL2: 'es',
+          analytics: (eventId, uses, language) async {},
+          onReleased: (_) {},
+          mediaOverride: _FakeMedia(),
+          captureOverride: CallCaptureService(sink: _NullSink()),
+        );
+        await pumpEventQueue();
+        // Their ring lands while we are placing ours: glare, as far as we can
+        // tell. Nobody ever joins.
+        await calls.peerAlsoCalls(room);
+        await pumpEventQueue();
+        session.timelineEventsOverride = () async => const [];
+        session.endCall();
+        await pumpEventQueue();
+
+        await session.survivorCheckNowForTest();
+        expect(
+          room.sent,
+          hasLength(1),
+          reason: 'a real attempt has to leave a trace even so',
+        );
+      },
+    );
 
     test('the writer dying leaves the survivor to write the card', () async {
       final (session, room, _) = await answeredCall();
