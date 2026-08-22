@@ -145,6 +145,7 @@ class CallSession extends ChangeNotifier {
     @visibleForTesting CallMedia? mediaOverride,
     @visibleForTesting CallCaptureService? captureOverride,
     @visibleForTesting CallForegroundControl? foregroundOverride,
+    @visibleForTesting CallRecord? recordOverride,
   }) {
     final media = mediaOverride ?? CallMedia();
     final transcripts = CallTranscriptSink(
@@ -152,13 +153,15 @@ class CallSession extends ChangeNotifier {
       userL1: userL1,
       userL2: userL2,
     );
-    final record = CallRecord(
-      roomId: room.id,
-      transcripts: transcripts,
-      sendEvent: (content, txid) =>
-          room.sendEvent(content, type: PangeaEventTypes.call, txid: txid),
-      analytics: analytics,
-    );
+    final record =
+        recordOverride ??
+        CallRecord(
+          roomId: room.id,
+          transcripts: transcripts,
+          sendEvent: (content, txid) =>
+              room.sendEvent(content, type: PangeaEventTypes.call, txid: txid),
+          analytics: analytics,
+        );
     return CallSession._(
       room: room,
       videoRequested: video,

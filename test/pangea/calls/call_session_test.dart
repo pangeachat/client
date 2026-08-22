@@ -12,6 +12,7 @@ import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
@@ -80,6 +81,44 @@ class _FakeRoster extends CallRoster {
 
   @override
   bool get roomConnected => connected;
+}
+
+/// Records what the session asked the timeline for. Nothing in the suite
+/// checked that a finished call writes its card at all -- the record's own
+/// tests cover HOW a card is written, not WHETHER the session writes one --
+/// and a browser run found a completed call that left no trace.
+class _SpyRecord extends CallRecord {
+  _SpyRecord()
+    : super(
+        roomId: '!r:server',
+        transcripts: CallTranscriptSink(
+          transcribe: (_) async => SpeechToTextResponseModel(results: const []),
+          userL1: 'en',
+          userL2: 'es',
+        ),
+        sendEvent: (content, txid) async => '\$sent',
+        analytics: (eventId, uses, language) async {},
+      );
+
+  final cards = <({bool answered, bool declined, bool write})>[];
+
+  @override
+  Future<void> writeCard({
+    required Duration duration,
+    required bool video,
+    required bool answered,
+    required bool declined,
+    required bool writeTimelineEvent,
+    String? anchorEventId,
+    String? callerId,
+    String? callKey,
+  }) async {
+    cards.add((
+      answered: answered,
+      declined: declined,
+      write: writeTimelineEvent,
+    ));
+  }
 }
 
 class _FakeMedia extends CallMedia {
@@ -485,6 +524,46 @@ void main() {
         expect(released.length, lessThanOrEqualTo(1));
       },
     );
+  });
+
+  group('a finished call always leaves a card', () {
+    // The record's own tests cover HOW a card is written. Nothing checked
+    // that the SESSION writes one, and a browser run found a call both sides
+    // agreed had happened, answered and hung up, with no card on either side.
+    test('an answered call that is hung up writes exactly one', () async {
+      final client = await _bareClient();
+      final calls = _FakeCalls(client);
+      final media = _FakeMedia();
+      final spy = _SpyRecord();
+      final session = CallSession.start(
+        room: matrix.Room(id: '!card:server', client: client),
+        video: false,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+        recordOverride: spy,
+      );
+      await pumpEventQueue();
+      final roster = media.fakeRoster!;
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+      roster.recompute();
+      await pumpEventQueue();
+
+      session.endCall();
+      await pumpEventQueue();
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+      await pumpEventQueue();
+
+      expect(spy.cards.length, 1, reason: 'one call, one card');
+      expect(spy.cards.single.answered, isTrue);
+      expect(spy.cards.single.declined, isFalse);
+    });
   });
 
   group('a video call whose camera never opened', () {
