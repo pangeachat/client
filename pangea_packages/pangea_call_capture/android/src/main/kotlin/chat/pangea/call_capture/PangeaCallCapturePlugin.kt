@@ -130,12 +130,16 @@ class PangeaCallCapturePlugin :
     val captured = webrtcInOurEngine
     val global = FlutterWebRTCPlugin.sharedSingleton
     if (captured !== global) {
+      // Logged AFTER selection would be a lie in the other direction; instead
+      // the message states only the fact (the swap) and the selection below
+      // logs nothing -- the controller source is implied by which branch
+      // produced a non-null controller, and a wrong claim here misled the
+      // exact diagnostics this fix depends on.
       Log.w(
         "PangeaCallCapture",
         "attach: sharedSingleton was replaced after registration " +
           "(captured=" + System.identityHashCode(captured) +
-          " global=" + System.identityHashCode(global) + ")" +
-          if (captured != null) "; preferring the captured instance" else "; only the global exists",
+          " global=" + System.identityHashCode(global) + ")",
       )
     }
     // What is actually needed is an INITIALIZED processing factory. The
