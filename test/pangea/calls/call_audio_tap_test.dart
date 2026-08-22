@@ -2,11 +2,12 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:livekit_client/livekit_client.dart'
-    show AudioFormat, AudioFrame, AudioTrack;
 import 'package:pangea_call_capture/pangea_call_capture.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
+
+import 'package:livekit_client/livekit_client.dart'
+    show AudioFormat, AudioFrame, AudioTrack;
 
 /// A platform side that can be made to behave the ways a real one does.
 class FakeCapture extends PangeaCallCapture {

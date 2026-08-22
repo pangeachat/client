@@ -46,6 +46,14 @@ class RecordingMedia extends CallMedia {
   }
 }
 
+/// Calls the REAL capture steps, so the guard that decides whether a step
+/// silently did nothing is the thing under test. An unconnected LiveKit room
+/// has no local participant, which is exactly the state being guarded.
+class RealSteps extends CallMedia {
+  Future<void> mic(bool on) => enableMicrophone(on);
+  Future<void> cam(bool on) => enableCamera(on);
+}
+
 void main() {
   const grant = CallToken(jwt: 'jwt', url: 'ws://sfu');
 
@@ -58,19 +66,48 @@ void main() {
   // `Permissions-Policy: camera=()` on the web hosts, or a denied camera
   // prompt, must cost the picture and nothing else. Letting the throw out of
   // connect() tore down a working audio call.
-  test('a camera that will not open leaves the call up, audio and all',
-      () async {
-    final media = RecordingMedia()..cameraThrows = true;
-    await media.connect(grant, video: true);
-    expect(media.steps, ['connect', 'mic:true', 'camera:true']);
-    expect(media.disconnects, 0, reason: 'the call must not be torn down');
-    expect(media.cameraFailed, isTrue, reason: 'the UI has to be able to say so');
-  });
+  test(
+    'a camera that will not open leaves the call up, audio and all',
+    () async {
+      final media = RecordingMedia()..cameraThrows = true;
+      await media.connect(grant, video: true);
+      expect(media.steps, ['connect', 'mic:true', 'camera:true']);
+      expect(media.disconnects, 0, reason: 'the call must not be torn down');
+      expect(
+        media.cameraFailed,
+        isTrue,
+        reason: 'the UI has to be able to say so',
+      );
+    },
+  );
 
   test('a call whose camera came up reports no camera failure', () async {
     final media = RecordingMedia();
     await media.connect(grant, video: true);
     expect(media.cameraFailed, isFalse);
+  });
+
+  // The silent failure this replaces: `room.localParticipant?.setMicrophone`
+  // returned as though the microphone had been published when there was no
+  // participant to publish through, so the call connected and rang with this
+  // side unable to be heard.
+  test(
+    'turning the microphone on with nothing to publish through fails loudly',
+    () {
+      expect(RealSteps().mic(true), throwsA(isA<StateError>()));
+    },
+  );
+
+  test(
+    'turning the camera on with nothing to publish through fails loudly',
+    () {
+      expect(RealSteps().cam(true), throwsA(isA<StateError>()));
+    },
+  );
+
+  test('turning a device OFF with nothing to release is a no-op', () async {
+    await RealSteps().mic(false);
+    await RealSteps().cam(false);
   });
 
   test('a voice call publishes no camera', () async {

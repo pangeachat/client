@@ -6,9 +6,9 @@ import 'package:matrix/matrix.dart' as matrix show Event, Logs, Room, User;
 
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_quick_replies.dart';
-import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/ring_player.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -122,7 +122,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // Both prompts belonged to the account we just left: a Return offer
     // surviving the switch would rejoin the OLD account's call over the new
     // account's connection.
-    if (_rejoin != null) setState(() => _rejoin = null);
+    _clearOffer();
     _ringPlayer.stopAll();
 
     _rings = matrixState.callService.incomingRings.listen(
@@ -161,7 +161,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// rejoined first — it goes.
   void _onActiveCallChanged() {
     if (_activeCall?.value == null || _rejoin == null) return;
-    if (mounted) setState(() => _rejoin = null);
+    _clearOffer();
   }
 
   /// Offers a return to the call a reload interrupted.
@@ -208,15 +208,36 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       _stillRinging = null;
       _callerGone?.cancel();
       _callerGone = null;
-      setState(() {
-        _rejoin = offer;
-        _showRing(null);
-      });
+      _showOffer(offer, replacingRing: true);
       return;
     }
     matrix.Logs().i('Rejoin offer shown for ${offer.room.id}');
-    setState(() => _rejoin = offer);
+    _showOffer(offer);
+  }
+
+  /// The ONE way a return offer goes up.
+  ///
+  /// Every offer is a promise that there is something to return to, and the
+  /// watcher is what keeps the promise honest. One path -- the one that
+  /// replaces a stale ring for the same room -- assigned the offer directly
+  /// and armed nothing, so that banner could outlive the call it pointed at
+  /// for ever. Assigning `_rejoin` anywhere but here is the bug; there is no
+  /// second way to raise one.
+  void _showOffer(RejoinOffer offer, {bool replacingRing = false}) {
+    setState(() {
+      _rejoin = offer;
+      if (replacingRing) _showRing(null);
+    });
     _watchOffer(offer);
+  }
+
+  /// The ONE way it comes down, watcher and all.
+  void _clearOffer() {
+    _offerWatch?.cancel();
+    _offerWatch = null;
+    if (_rejoin == null) return;
+    _rejoin = null;
+    if (mounted) setState(() {});
   }
 
   /// Watches a standing offer and withdraws it once the call is over.
@@ -243,9 +264,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       }
       matrix.Logs().i('The call to return to is over; withdrawing the offer');
       unawaited(CallBreadcrumb.clear());
-      _offerWatch?.cancel();
-      _offerWatch = null;
-      setState(() => _rejoin = null);
+      _clearOffer();
     });
   }
 
@@ -258,9 +277,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   void _endFromOffer(RejoinOffer offer) {
     final service = _service;
     unawaited(CallBreadcrumb.clear());
-    _offerWatch?.cancel();
-    _offerWatch = null;
-    setState(() => _rejoin = null);
+    _clearOffer();
     if (service == null) return;
     unawaited(
       service.abandonCall(offer.room, offer.membershipEventId).catchError((
@@ -276,7 +293,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   void _acceptRejoin(RejoinOffer offer) {
     // Consumed: the rejoined call manages its own trace from here.
     unawaited(CallBreadcrumb.clear());
-    setState(() => _rejoin = null);
+    _clearOffer();
     if (!mounted) return;
     Matrix.of(context).startCall(
       offer.room,
@@ -353,7 +370,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       // means the old one is finished, and a crumb left standing would
       // resurrect its dead Return offer on a reload inside the age bound.
       unawaited(CallBreadcrumb.clear());
-      setState(() => _rejoin = null);
+      _clearOffer();
     }
     // Never one already turned down.
     if (_declined.contains(ring.event.eventId)) return;

@@ -772,23 +772,28 @@ class CallService {
     final states = room.states[EventTypes.GroupCallMember];
     if (states == null) return true;
     final now = DateTime.now().millisecondsSinceEpoch;
-    var sawAnyOfTheirs = false;
+    var sawTheirState = false;
     for (final state in states.values) {
       if (state.senderId != peerId) continue;
       final memberships = state.content['memberships'];
       if (memberships is! List) continue;
+      // A list they actually WROTE is an answer, including an empty one.
+      // Hanging up rewrites this event to `memberships: []`, so treating the
+      // empty list as "no opinion" read a deliberate departure as a vanish
+      // and made the other side sit through a 20-second grace for someone who
+      // had already gone. No opinion means never having seen them write one.
+      sawTheirState = true;
       for (final m in memberships) {
         if (m is! Map) continue;
         if (m['call_id'] != callId) continue;
-        sawAnyOfTheirs = true;
         final expires = m['expires_ts'];
         if (expires is! int) return true;
         if (expires > now) return true;
       }
     }
-    // Nothing of theirs for THIS call: either they never wrote one (we cannot
-    // tell -- no opinion) or they retracted it (they left).
-    return !sawAnyOfTheirs ? true : false;
+    // Nothing live of theirs for THIS call. If they wrote state at all, that
+    // is them gone; if they never did, we genuinely cannot tell.
+    return !sawTheirState;
   }
 
   /// Whether the call our [ownMembershipEventId] belongs to is still being

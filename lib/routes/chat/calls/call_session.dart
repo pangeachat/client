@@ -8,17 +8,17 @@ import 'package:matrix/matrix.dart' as matrix show Event, Room, User;
 import 'package:matrix/matrix.dart' show Logs;
 import 'package:permission_handler/permission_handler.dart';
 
-import 'package:pangea_call_capture/pangea_call_capture.dart'
-    show CallForegroundControl;
-
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
-import 'package:fluffychat/routes/chat/calls/ring_player.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
+import 'package:fluffychat/routes/chat/calls/ring_player.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+
+import 'package:pangea_call_capture/pangea_call_capture.dart'
+    show CallForegroundControl;
 
 /// One call, owned ABOVE the widget tree.
 ///

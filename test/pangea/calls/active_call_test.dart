@@ -10,12 +10,13 @@ import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
-import 'package:pangea_call_capture/pangea_call_capture.dart'
-    show CallForegroundControl;
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+
+import 'package:pangea_call_capture/pangea_call_capture.dart'
+    show CallForegroundControl;
 
 /// Records the order every step ran in, which is the property under test: the
 /// call comes up in one order and down in the reverse, and the failure paths
@@ -402,11 +403,16 @@ class FakeRoster extends CallRoster {
 class FakeForeground extends CallForegroundControl {
   final Trace trace;
   bool startReturns;
+
+  /// Held open so a test can hang up WHILE the platform is still answering.
+  Completer<void>? holdStart;
   FakeForeground(this.trace, {this.startReturns = true});
 
   @override
   Future<bool> start({required String peer, required bool video}) async {
     trace('fgs.start(video: $video)');
+    final hold = holdStart;
+    if (hold != null) await hold.future;
     return startReturns;
   }
 
@@ -1441,6 +1447,32 @@ void main() {
       );
       return (call, calls, fgs);
     }
+
+    // The leak this pins shut: the start is fired unawaited, so a hangup can
+    // land while the platform is still answering. Teardown read the claim as
+    // false, skipped the stop, and the ongoing-call service outlived the call.
+    test('a start that lands after teardown stops itself', () async {
+      final (call, calls, fgs) = await withForeground();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      fgs.holdStart = Completer<void>();
+
+      await call.start(roomStub(calls.client), video: false);
+      await call.hangUp();
+      expect(
+        trace.steps,
+        isNot(contains('fgs.stop')),
+        reason: 'nothing has claimed the service yet',
+      );
+
+      fgs.holdStart!.complete();
+      await pumpEventQueue();
+      expect(
+        trace.steps,
+        contains('fgs.stop'),
+        reason: 'the late start must take itself down',
+      );
+    });
 
     test('starts before anything is awaited, and stops in teardown', () async {
       final (call, calls, _) = await withForeground();

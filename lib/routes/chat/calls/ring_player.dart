@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
+
+import 'package:audioplayers/audioplayers.dart';
 import 'package:matrix/matrix.dart' show Logs;
 
 /// The looping sound itself, behind a seam so the keyed lifecycle can be

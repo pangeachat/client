@@ -143,12 +143,29 @@ class CallMedia {
   // instead of through these one-liners, which is not warranted for a failure
   // this narrow. Recorded so it is a known limitation, not a surprise.
   @protected
-  Future<void> enableMicrophone(bool on) async => room.localParticipant
-      ?.setMicrophoneEnabled(on, audioCaptureOptions: microphone);
+  Future<void> enableMicrophone(bool on) async => _publishingAs(
+    on,
+  )?.setMicrophoneEnabled(on, audioCaptureOptions: microphone);
 
   @protected
   Future<void> enableCamera(bool on) async =>
-      room.localParticipant?.setCameraEnabled(on);
+      _publishingAs(on)?.setCameraEnabled(on);
+
+  /// The participant a capture change acts through, or null when there is
+  /// nothing to act on and that is fine.
+  ///
+  /// Turning a device ON must PROVE it had something to turn on: `?.` on a
+  /// missing local participant returned as though the microphone had been
+  /// published when nothing had, and the call went on to connect and ring
+  /// with this side unable to be heard. Turning one OFF may find nothing --
+  /// muting a call that has already ended releases a device that is already
+  /// released, which is a no-op, not a failure.
+  LocalParticipant? _publishingAs(bool on) {
+    final local = room.localParticipant;
+    if (local != null) return local;
+    if (!on) return null;
+    throw StateError('No local participant to publish through');
+  }
 
   Future<void> setMicrophoneEnabled(bool on) =>
       _setCapture(enableMicrophone, on);

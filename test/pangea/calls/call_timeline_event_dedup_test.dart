@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
@@ -37,7 +36,7 @@ void main() {
       'msgtype': PangeaEventTypes.call,
       'body': 'Voice call',
       'answered': true,
-      if (key != null) CallRecord.callKeyField: key,
+      CallRecord.callKeyField: ?key,
     },
     senderId: '@a:server',
     eventId: id,

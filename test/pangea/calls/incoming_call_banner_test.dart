@@ -12,13 +12,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
-import 'package:fluffychat/routes/chat/calls/call_service.dart'
-    show RejoinOffer;
 import 'package:fluffychat/routes/chat/calls/incoming_call_banner.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
+
+import 'package:fluffychat/routes/chat/calls/call_service.dart'
+    show RejoinOffer;
 
 /// Skips `initMatrix()` — push, notification listeners and the Pangea
 /// controller are all irrelevant here and none of them stand up under

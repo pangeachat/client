@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -76,6 +75,27 @@ void main() {
     await pumpEventQueue();
     expect(sound.log, ['start', 'stop', 'busy']);
     expect(p.playingForTest, isNull);
+  });
+
+  test('the banner raises and drops a return offer in exactly two places', () {
+    // Same class as the prompt above. One path -- replacing a stale ring for
+    // the same room -- assigned the offer directly and armed no watcher, so
+    // that banner could outlive the call it pointed at for ever; four of the
+    // clear sites left the watcher running on a withdrawn offer. _showOffer
+    // and _clearOffer are the only two places allowed to touch it.
+    final source = File(
+      'lib/routes/chat/calls/incoming_call_banner.dart',
+    ).readAsStringSync();
+    final assignments = RegExp(
+      r'_rejoin\s*=(?![=>])',
+    ).allMatches(source).length;
+    expect(
+      assignments,
+      2,
+      reason:
+          'offers go up through _showOffer and come down through '
+          '_clearOffer, which is what guarantees the watcher',
+    );
   });
 
   test('the banner assigns its prompt in exactly one place', () {

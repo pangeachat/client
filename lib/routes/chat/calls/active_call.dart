@@ -5,8 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:livekit_client/livekit_client.dart' show AudioTrack;
 import 'package:matrix/matrix.dart' as matrix show Room;
 import 'package:matrix/matrix.dart' hide Room;
-import 'package:pangea_call_capture/pangea_call_capture.dart'
-    show CallForegroundControl;
 
 import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
@@ -15,6 +13,9 @@ import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
+
+import 'package:pangea_call_capture/pangea_call_capture.dart'
+    show CallForegroundControl;
 
 /// How a call finished, latched the moment ending BEGINS rather than when
 /// teardown completes.
@@ -291,6 +292,20 @@ class ActiveCall extends ChangeNotifier {
       );
       _foregroundClaimed = started;
       _foregroundPending = !started;
+      // Reconciled after the step, exactly as the media connect does, and for
+      // the same reason: this start was fired unawaited, so a hangup landing
+      // while the platform was still answering cannot stop it. Teardown had
+      // already read the claim as false and skipped the stop, and the service
+      // -- ongoing notification and all -- outlived the call that started it.
+      if (started && (_ending || _disposed)) {
+        _foregroundClaimed = false;
+        _foregroundPending = false;
+        unawaited(
+          _foreground?.stop().catchError((Object e, StackTrace s) {
+            Logs().w('Could not stop the late call foreground service', e, s);
+          }),
+        );
+      }
     } catch (e, s) {
       // The service is the call's survival in the background, never its
       // existence. A platform refusal costs that survival, not the call.
@@ -557,6 +572,19 @@ class ActiveCall extends ChangeNotifier {
   /// people watching one call should read the same number. Distinct from
   /// [talkDuration], which is the segmented time anyone was actually able to
   /// hear, and is what the card and the analytics use.
+  ///
+  /// Stamped from THIS device's clock at the moment it first sees the other
+  /// person, which leaves the two sides apart by however differently the SFU
+  /// delivered that one roster change -- measured at well under a second, and
+  /// self-correcting in that neither side's number drifts afterwards.
+  /// Anchoring to the membership event's `origin_server_ts` instead was
+  /// considered and rejected: it would make the two sides agree on the START
+  /// but not on the ELAPSED time, because each still subtracts it from its own
+  /// clock, so two devices whose clocks differ by a minute would read a minute
+  /// apart -- trading a sub-second, bounded difference for an unbounded one.
+  /// The rejoin path is the exception and uses the server timestamp anyway,
+  /// because there the alternative is restarting at zero, which is worse than
+  /// any skew.
   DateTime? get callStartedAt => _callStartedAt;
 
   DateTime? _callStartedAt;

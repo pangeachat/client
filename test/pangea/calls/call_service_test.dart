@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:matrix/matrix.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
@@ -983,8 +983,9 @@ void main() {
     var roomSeq = 0;
 
     Future<(CallService, Room)> withPeerState(
-      List<Map<String, Object?>> memberships,
-    ) async {
+      List<Map<String, Object?>> memberships, {
+      bool alsoRetractedDevice = false,
+    }) async {
       final roomId = '!incall${roomSeq++}:fakeServer.notExisting';
       final client = await bareClient();
       await client.login(
@@ -1015,6 +1016,54 @@ void main() {
                           'DEV$i'
                           '_$peer',
                     ),
+                  // A second device of theirs that has hung up, for the case
+                  // where one device leaves and another stays.
+                  if (alsoRetractedDevice)
+                    MatrixEvent(
+                      type: EventTypes.GroupCallMember,
+                      content: const {'memberships': <Object?>[]},
+                      senderId: peer,
+                      eventId: '\$retracted',
+                      originServerTs: DateTime.now(),
+                      stateKey: 'GONE_$peer',
+                    ),
+                ],
+              ),
+            },
+          ),
+        ),
+      );
+      return (CallService(client), client.getRoomById(roomId)!);
+    }
+
+    /// A peer whose member event carries [memberships] verbatim -- including
+    /// the empty list a hangup writes.
+    Future<(CallService, Room)> withRawPeerMemberships(
+      List<Object?> memberships,
+    ) async {
+      final roomId = '!retract${roomSeq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                state: [
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: {'memberships': memberships},
+                    senderId: peer,
+                    eventId: '\$raw',
+                    originServerTs: DateTime.now(),
+                    stateKey: 'DEV0_$peer',
+                  ),
                 ],
               ),
             },
@@ -1064,15 +1113,56 @@ void main() {
       expect(service.peerLiveInCurrentCall(room, peer), isTrue);
     });
 
-    test('a peer who never wrote one for this call is no opinion', () async {
-      final (service, room) = await withPeerState([
-        {'call_id': 'older-call', 'expires_ts': inFuture()},
-      ]);
+    test(
+      'state that names no live membership for this call is them gone',
+      () async {
+        final (service, room) = await withPeerState([
+          {'call_id': 'older-call', 'expires_ts': inFuture()},
+        ]);
+        service.adoptCallIdForTest('this-call');
+        expect(
+          service.peerLiveInCurrentCall(room, peer),
+          isFalse,
+          reason: 'they wrote state, and none of it is this call',
+        );
+      },
+    );
+
+    // Hanging up rewrites the member event to an EMPTY memberships list. That
+    // retraction is the only evidence the other side gets that the departure
+    // was deliberate; reading it as "no opinion" made a hangup look like a
+    // crash and cost the peer a 20-second grace nobody was coming back from.
+    test(
+      'a peer who hung up has retracted, and a retraction is an answer',
+      () async {
+        final (service, room) = await withRawPeerMemberships([]);
+        service.adoptCallIdForTest('this-call');
+        expect(service.peerLiveInCurrentCall(room, peer), isFalse);
+      },
+    );
+
+    test(
+      'one device retracting does not remove a peer still on another',
+      () async {
+        final (service, room) = await withPeerState([
+          {'call_id': 'this-call', 'expires_ts': inFuture()},
+        ], alsoRetractedDevice: true);
+        service.adoptCallIdForTest('this-call');
+        expect(
+          service.peerLiveInCurrentCall(room, peer),
+          isTrue,
+          reason: 'their other device is still in the call',
+        );
+      },
+    );
+
+    test('a peer with no state at all is the only no opinion', () async {
+      final (service, room) = await withPeerState([]);
       service.adoptCallIdForTest('this-call');
       expect(
         service.peerLiveInCurrentCall(room, peer),
         isTrue,
-        reason: 'their state may simply not have synced yet',
+        reason: 'nothing written means their join may not have synced yet',
       );
     });
   });
