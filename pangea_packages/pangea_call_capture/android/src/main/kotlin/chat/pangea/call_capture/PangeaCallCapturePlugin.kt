@@ -42,6 +42,9 @@ class PangeaCallCapturePlugin :
   private var methodChannel: MethodChannel? = null
   private var eventChannel: EventChannel? = null
   private var appContext: Context? = null
+
+  /// Whether THIS engine's instance holds the notification-action bridge.
+  private var ownsActionBridge = false
   private var events: EventChannel.EventSink? = null
 
   /**
@@ -71,13 +74,14 @@ class PangeaCallCapturePlugin :
     methodChannel = MethodChannel(binding.binaryMessenger, METHOD_CHANNEL).also {
       it.setMethodCallHandler(this)
     }
-    // Notification actions land in the service; the call lives in Dart. The
-    // bridge posts to the main thread because the channel may only be used
-    // there, and it is cleared on detach so an action with no engine alive is
-    // dropped rather than crashed on.
-    CallForegroundService.onAction = { action ->
-      handler.post { methodChannel?.invokeMethod("action", action) }
-    }
+    // Deliberately NOT claiming the notification-action bridge here. It is a
+    // process-wide static, and EVERY engine's plugin instance runs this --
+    // a later one (a notification action, a background isolate) would take
+    // it and forward into an engine whose Dart side has no call, where the
+    // action simply vanished. On a real phone the notification's Hang Up did
+    // nothing for exactly that reason. The engine that has a call CLAIMS the
+    // bridge instead, through 'fgs_claim_actions' below: ownership belongs to
+    // the side that can actually serve it. (Same rule the audio tap learned.)
     eventChannel = EventChannel(binding.binaryMessenger, EVENT_CHANNEL).also {
       it.setStreamHandler(this)
     }
@@ -93,7 +97,12 @@ class PangeaCallCapturePlugin :
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-    CallForegroundService.onAction = null
+    // Only OUR claim, never someone else's: clearing unconditionally would
+    // silence a live call's notification when a background engine detaches.
+    if (ownsActionBridge) {
+      CallForegroundService.onAction = null
+      ownsActionBridge = false
+    }
     appContext = null
     detach()
     methodChannel?.setMethodCallHandler(null)
@@ -129,6 +138,17 @@ class PangeaCallCapturePlugin :
             ),
           )
         }
+      }
+      "fgs_claim_actions" -> {
+        // This engine has the call, so this engine takes the bridge.
+        ownsActionBridge = true
+        CallForegroundService.onAction = { action ->
+          handler.post {
+            Log.i("PangeaCallCapture", "forwarding notification action: $action")
+            methodChannel?.invokeMethod("action", action)
+          }
+        }
+        result.success(null)
       }
       "fgs_stop" -> {
         appContext?.let { CallForegroundService.stop(it) }

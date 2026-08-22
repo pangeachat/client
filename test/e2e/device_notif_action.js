@@ -10,9 +10,21 @@ const ROOM = '!HgavfyvZrMpYhLFMLt';
 const ROOM_ID = ROOM + ':pangea.localhost';
 
 (async () => {
+  // A CLEAN slate first. A call left over from a previous run keeps a live
+  // membership, and a bare membership check then "proves" an answer that
+  // never happened -- the run goes on to test nothing at all.
+  const B = await mx.login('calltester', 'calltesterpass');
+  if (await mx.hasMembership(B.token, ROOM_ID, B.userId)) {
+    console.log('   (a call is still live on the phone; clearing it)');
+    await d.adb('shell', 'am', 'force-stop', d.PKG).catch(() => {});
+    for (let i = 0; i < 30; i++) {
+      if (!(await mx.hasMembership(B.token, ROOM_ID, B.userId))) break;
+      await wait(5000);
+    }
+    console.log('   cleared:', !(await mx.hasMembership(B.token, ROOM_ID, B.userId)));
+  }
   await d.ensureAwakeAndForeground();
   const A = await h.openParticipant('learner', ROOM, 9751);
-  const B = await mx.login('calltester', 'calltesterpass');
   const mA = await h.mark(A.token, ROOM_ID);
 
   const rang = await h.actUntil('place',
@@ -21,9 +33,18 @@ const ROOM_ID = ROOM + ':pangea.localhost';
     { tries: 3, gap: 4000 });
   if (!rang) { console.log('FAIL: never rang'); process.exit(2); }
   await wait(4000);
+  // Proven by a membership written SINCE this call's ring, never a bare one.
   const joined = await h.actUntil('answer',
     async () => { await d.tap(d.BANNER.answer.x, d.BANNER.answer.y); },
-    () => mx.hasMembership(B.token, ROOM_ID, B.userId),
+    async () => {
+      const evs = await h.since(A.token, ROOM_ID, mA);
+      return evs.some(
+        (e) => e.type === 'com.famedly.call.member' &&
+          e.sender === B.userId &&
+          Array.isArray(e.content?.memberships) &&
+          e.content.memberships.length > 0,
+      );
+    },
     { tries: 5, gap: 3000 });
   h.check('notif', 'phone answered', joined, 'never joined');
   if (!joined) process.exit(2);
@@ -32,6 +53,16 @@ const ROOM_ID = ROOM + ':pangea.localhost';
   console.log('[background, then end the call FROM THE NOTIFICATION]');
   await d.adb('shell', 'input', 'keyevent', 'KEYCODE_HOME');
   await wait(3000);
+  // The service must actually be up before the shade is worth opening.
+  let svcUp = false;
+  for (let i = 0; i < 8 && !svcUp; i++) {
+    const svc = await d.adb('shell', 'dumpsys', 'activity', 'services', 'chat.pangea.call_capture').catch(() => '');
+    svcUp = /isForeground=true/.test(svc);
+    if (!svcUp) await wait(2000);
+  }
+  h.check('notif', 'the call service is running to be acted on', svcUp,
+    'no foreground service, so there is no notification to tap');
+
   await d.adb('shell', 'cmd', 'statusbar', 'expand-notifications');
   await wait(2500);
   await d.screenshot('/tmp/callweb/notif-shade.png');

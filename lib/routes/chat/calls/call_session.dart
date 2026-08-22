@@ -268,6 +268,7 @@ class CallSession extends ChangeNotifier {
   /// hangup, wherever they come from.
   void _foregroundActions() {
     call.foregroundActions((action) {
+      Logs().i('Call notification action: $action');
       if (_disposing || _over) return;
       switch (action) {
         case 'hangup':

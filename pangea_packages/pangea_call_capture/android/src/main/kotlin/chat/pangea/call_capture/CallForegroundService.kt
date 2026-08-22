@@ -62,8 +62,20 @@ class CallForegroundService : Service() {
     private val supported: Boolean
       get() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
 
+    /**
+     * Whether a call already owns the service. Adjudicated HERE, on the main
+     * thread every start() call arrives on, so two racing starts get two
+     * different answers -- and the answer IS the claim the Dart side records.
+     * Cleared by the owner's stop and by the service's own death, whichever
+     * comes first.
+     */
+    @Volatile
+    var active = false
+      private set
+
     fun start(context: Context, peer: String, video: Boolean): Boolean {
       if (!supported) return false
+      if (active) return false
       // The MICROPHONE type requires the permission at startForeground time;
       // asking the system first turns a SecurityException into a clean false
       // the caller can retry after the grant.
@@ -78,11 +90,13 @@ class CallForegroundService : Service() {
         .putExtra(EXTRA_PEER, peer)
         .putExtra(EXTRA_VIDEO, video)
       context.startForegroundService(intent)
+      active = true
       return true
     }
 
     fun stop(context: Context) {
       if (!supported) return
+      active = false
       context.startService(
         Intent(context, CallForegroundService::class.java).setAction(ACTION_STOP),
       )
@@ -102,6 +116,14 @@ class CallForegroundService : Service() {
   private var running = false
 
   override fun onBind(intent: Intent?): IBinder? = null
+
+  override fun onDestroy() {
+    // Whatever killed the service -- the owner's stop, a refused promotion,
+    // a system restart with nothing to do -- the claim dies with it, or the
+    // next call's start would be refused for a service that no longer runs.
+    active = false
+    super.onDestroy()
+  }
 
   override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
     when (intent?.action) {
@@ -138,7 +160,15 @@ class CallForegroundService : Service() {
         stopSelf()
       }
       ACTION_HANGUP, ACTION_MUTE -> {
-        onAction?.invoke(if (intent.action == ACTION_HANGUP) "hangup" else "mute")
+        val listener = onAction
+        // Logged with whether anyone is listening: a claim that never
+        // happened is otherwise indistinguishable from a button that does
+        // nothing, which is exactly how this went unnoticed until a phone.
+        Log.i(
+          "PangeaCall",
+          "notification action ${intent.action}; listener=${listener != null}",
+        )
+        listener?.invoke(if (intent.action == ACTION_HANGUP) "hangup" else "mute")
         // A hangup from the notification tears the call down, and the call's
         // own teardown stops this service; nothing more to do here.
       }

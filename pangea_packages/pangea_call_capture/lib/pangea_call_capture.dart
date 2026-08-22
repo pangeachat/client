@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 /// One stretch of this device's own outbound call audio.
@@ -149,19 +150,46 @@ class CallForegroundControl {
   Future<void> setCamera(bool on) =>
       _control.invokeMethod<void>('fgs_camera', {'on': on});
 
-  /// Hands notification actions ("hangup", "mute") to the call.
+  /// The current handler's epoch. The handler slot is process-global and
+  /// last-writer-wins; the epoch is what stops an OLD call's teardown --
+  /// a session held for its ended-summary, disposing late -- from clearing
+  /// the handler a NEW call has since installed.
+  static int _actionEpoch = 0;
+
+  /// Hands notification actions ("hangup", "mute") to the call. Returns the
+  /// claim to pass back to [clearActionHandler].
   ///
   /// One handler at a time, on the shared control channel; the platform side
   /// only ever calls "action" into Dart, so this cannot collide with the
   /// capture verbs, which all flow the other way.
-  void onAction(void Function(String action) handle) {
+  int onAction(void Function(String action) handle) {
+    final epoch = ++_actionEpoch;
+    // Tell the platform that THIS engine is the one with the call, so the
+    // notification's buttons are forwarded here. The bridge is a static on
+    // the service; without a claim the last engine to start owns it, and on
+    // a real phone that was a background isolate with no call, where every
+    // Hang Up silently vanished.
+    unawaited(
+      _control.invokeMethod<void>('fgs_claim_actions').catchError((Object e) {
+        // This package deliberately depends on nothing but Flutter, so the
+        // app's logger is not available here; a refused claim costs the
+        // notification's buttons, never the call.
+        debugPrint('Could not claim the call notification actions: $e');
+      }),
+    );
     _control.setMethodCallHandler((call) async {
       if (call.method == 'action' && call.arguments is String) {
         handle(call.arguments as String);
       }
       return null;
     });
+    return epoch;
   }
 
-  void clearActionHandler() => _control.setMethodCallHandler(null);
+  /// Clears the handler IF [epoch] still owns it. A later call's install
+  /// moved the epoch on, and its handler is not this caller's to clear.
+  void clearActionHandler(int epoch) {
+    if (epoch != _actionEpoch) return;
+    _control.setMethodCallHandler(null);
+  }
 }
