@@ -32,6 +32,17 @@ class FakeCalls extends CallService {
   /// list can lag that by its whole retention window.
   bool peerMembershipPresent = true;
 
+  /// Whether the device that rang is still holding a call. False is the
+  /// "they rang, gave up, and their ring is still valid" case.
+  bool callerHoldsMembership = true;
+
+  @override
+  bool callerStillInCall(
+    matrix.Room room,
+    String callerId, {
+    String? deviceId,
+  }) => callerHoldsMembership;
+
   /// Whether the membership a rejoin was offered against is still standing.
   /// False is the crashed-device case, where the server's delayed leave has
   /// already emptied it.
@@ -2458,6 +2469,26 @@ void main() {
       expect(call.peerAlsoPlaced, isTrue);
     });
 
+    // The failure a skew allowance cannot fix: glare used to compare OUR local
+    // start against a timestamp from THEIR device (or from the server), so a
+    // device two minutes out fell outside a three-second window. One side saw
+    // the glare and the other did not, they both wrote the call, and the
+    // conversation carried two cards for one call. Nothing here reads their
+    // clock at all now.
+    test('a caller whose clock is hours out is still glare', () async {
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      calls.remotePresent = true;
+      await pumpEventQueue();
+
+      await calls.peerAlsoCalls(age: const Duration(hours: -2));
+      expect(
+        call.peerAlsoPlaced,
+        isTrue,
+        reason: 'their ring reached us as we began; their clock is not ours',
+      );
+    });
+
     test('a ring placed later is a new call of theirs, not this one', () async {
       // A ring sent well after this call began belongs to a call they placed
       // while we were already in one. Counted, this side believes the other
@@ -2470,8 +2501,12 @@ void main() {
       await pumpEventQueue();
       expect(call.hadPeer, isTrue);
 
-      // A negative age is a timestamp in the future: sent well after we began.
-      await calls.peerAlsoCalls(age: const Duration(seconds: -30));
+      // Their ring REACHES us thirty seconds after we began, which is how a
+      // call they placed while we were already in one actually arrives.
+      // (Backdating our start is the same thing measured from the other end,
+      // and does not need the test to wait thirty seconds.)
+      call.backdateStartForTest(const Duration(seconds: 30));
+      await calls.peerAlsoCalls();
       expect(call.peerAlsoPlaced, isFalse);
     });
 
@@ -2531,7 +2566,11 @@ void main() {
       // and it is missing from the conversation.
       final (call, calls, _, _) = await build();
       await call.start(roomStub(calls.client), video: false);
-      // Sent twenty seconds ago and still well inside its lifetime.
+      // Sent twenty seconds ago and still well inside its lifetime -- but
+      // they hung up, so the device that rang holds no call any more. That,
+      // not the timestamp, is what tells the two apart: an old ring and a
+      // fresh one arrive the same way.
+      calls.callerHoldsMembership = false;
       await calls.peerAlsoCalls(age: const Duration(seconds: 20));
       expect(call.peerAlsoPlaced, isFalse);
     });

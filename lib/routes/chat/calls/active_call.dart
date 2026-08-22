@@ -164,15 +164,37 @@ class ActiveCall extends ChangeNotifier {
     // back, or a new one placed while we were already in this — and counting
     // either made a side stand aside from writing a call nobody else was
     // writing, so the call was missing from the conversation.
+    //
+    // Measured in ONE clock, and that clock is ours. Glare is not really a
+    // question about when the two rings were STAMPED -- it is "did their ring
+    // reach us while we were placing ours", and both halves of that are
+    // observable here without asking anybody else's clock: `_startedAt` is
+    // when we began, and now is when their ring arrived. Comparing our local
+    // start against a timestamp from their device, or from the server, is a
+    // comparison across clocks that no skew allowance can make sound: a
+    // device two minutes fast fell outside a three-second window, so ONE side
+    // saw the glare and the other did not, and a single call was written to
+    // the room twice.
     final began = _startedAt;
-    if (began != null) {
-      // Ordered, not dated: their clock is not ours, and the glare window is
-      // three seconds wide.
-      final sent = ring.orderedAt;
-      if (sent.isBefore(began.subtract(_glareWindow)) ||
-          sent.isAfter(began.add(_glareWindow))) {
-        return;
-      }
+    if (began != null && DateTime.now().isAfter(began.add(_glareWindow))) {
+      return;
+    }
+    // And EVIDENCE, not just timing: the device that rang is still holding a
+    // call. Arrival time alone cannot tell a ring sent a moment ago from one
+    // sent twenty seconds ago and delivered now -- a call of theirs that
+    // already ended stays valid for its whole lifetime, and counting it made
+    // this side stand aside from writing a call the other side was not
+    // writing either. Their membership answers it without reference to any
+    // clock: somebody mid-call is still in the room's state, somebody who
+    // gave up is not.
+    final room = _room;
+    if (room != null &&
+        !calls.callerStillInCall(
+          room,
+          event.senderId,
+          deviceId: ring.senderDeviceId,
+        )) {
+      return;
     }
     _peerAlsoPlaced = true;
     _peerRingSenderId = event.senderId;
@@ -180,6 +202,15 @@ class ActiveCall extends ChangeNotifier {
     // tie-break stamps the winner's membership as the call's identity, and
     // this is the only place the loser ever learns it.
     _peerRingMembershipId = ring.membershipEventId;
+  }
+
+  /// Moves this call's start back, so a test can put a ring's ARRIVAL late
+  /// without waiting for the clock. Glare is judged on when their ring
+  /// reached us relative to when we began, and both are local.
+  @visibleForTesting
+  void backdateStartForTest(Duration by) {
+    final began = _startedAt;
+    if (began != null) _startedAt = began.subtract(by);
   }
 
   /// Whether the other person was calling us at the same moment we called them.
