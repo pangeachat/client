@@ -22,6 +22,14 @@ const ACCOUNTS = {
 /// One participant: a browser, a page, and an API token for assertions.
 async function openParticipant(name, roomLocalpart, port) {
   const a = ACCOUNTS[name];
+  // The flutter service worker in a persisted profile serves the PREVIOUS
+  // build on reload -- every "regression" it manufactures looks exactly like
+  // a product bug in whatever changed last. Purging the SW store (login
+  // lives in localStorage/IndexedDB and survives) makes each run test the
+  // bundle actually on disk.
+  try {
+    require('fs').rmSync(`${a.profile}/Default/Service Worker`, { recursive: true, force: true });
+  } catch (_) {}
   const browser = await launch({ userDataDir: a.profile, wav: a.wav, port });
   const page = (await browser.pages())[0];
   const errors = [];

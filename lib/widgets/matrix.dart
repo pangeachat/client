@@ -217,6 +217,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// session itself owns the call's lifecycle, so navigation never touches it.
   final ValueNotifier<call_ui.CallSession?> activeCall = ValueNotifier(null);
 
+  /// The standing offer to return to a call a reload interrupted.
+  ///
+  /// App-level state like [activeCall], NOT banner-widget state: the banner
+  /// can be re-instantiated around it (theme, locale, lock-screen rebuilds),
+  /// and an offer held in one instance's setState died invisible while
+  /// another instance rendered. One notifier, read by whichever is live.
+  final ValueNotifier<RejoinOffer?> rejoinOffer = ValueNotifier(null);
+
   /// Places or answers a call in [room], or brings the existing one back up.
   ///
   /// One call at a time is already the service's rule ([AlreadyInACall]); this

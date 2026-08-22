@@ -23,13 +23,29 @@ async function pageText(page) {
 }
 
 async function clickReturn(page) {
-  // The Return button is a real button in the overlay; click it by its
-  // rendered text via the browser, not by coordinates.
+  // Semantics labels first -- innerText does not carry aria-labels, which is
+  // where Flutter surfaces button text -- then any DOM node whose text or
+  // label says Return.
+  const r = await ui.findRect(page, 'Return');
+  if (r) { await page.mouse.click(r.x, r.y); return true; }
   return page.evaluate(() => {
-    const nodes = [...document.querySelectorAll('flt-semantics, [role=button], button')];
-    const hit = nodes.find((n) => /(^|\s)Return(\s|$)/.test(n.textContent || ''));
+    const nodes = [...document.querySelectorAll('flt-semantics, [role=button], button, [aria-label]')];
+    const hit = nodes.find((n) =>
+      /(^|\s)Return(\s|$)/.test(n.textContent || '') ||
+      /(^|\s)Return(\s|$)/.test(n.getAttribute && (n.getAttribute('aria-label') || '')));
     if (hit) { hit.click(); return true; }
     return false;
+  });
+}
+
+/// Whether the Return offer is on screen, read every way the page can say it.
+async function returnOffered(page) {
+  if (await ui.hasLabel(page, 'Return').catch(() => false)) return true;
+  return page.evaluate(() => {
+    const text = document.body.innerText || '';
+    if (/Return/.test(text)) return true;
+    return [...document.querySelectorAll('[aria-label]')].some((n) =>
+      /Return/.test(n.getAttribute('aria-label') || ''));
   });
 }
 
@@ -58,12 +74,17 @@ async function rawMembership(token, userId) {
       aLog.push(`[+${Math.round((Date.now() - t0) / 1000)}s] ` + t.slice(0, 180));
     }
   });
-  const wireB = () => B.page.on('console', (m) => {
+  let bWired = false;
+  const wireB = () => {
+    if (bWired) return; // a second wire doubles every line
+    bWired = true;
+    return B.page.on('console', (m) => {
     const t = m.text();
     if (/call|Call|return|rejoin|offer|Error|error|Exception|room list/i.test(t)) {
       bLog.push(`[+${Math.round((Date.now() - t0) / 1000)}s] ` + t.slice(0, 200));
     }
   });
+  };
   wireB();
   const t0 = Date.now();
 
@@ -83,9 +104,14 @@ async function rawMembership(token, userId) {
   await wait(4000);
 
   console.log('[3] B hard-reloads mid-call');
+  const crumbBefore = await B.page.evaluate(
+    () => window.localStorage.getItem('flutter.pangea.call.breadcrumb'));
+  console.log('   breadcrumb before reload:', crumbBefore);
+  const lsKeys = await B.page.evaluate(
+    () => Object.keys(window.localStorage).filter((k) => !/token|session|olm|pickle/i.test(k)).slice(0, 40));
+  console.log('   B localStorage keys:', JSON.stringify(lsKeys));
   const reloadAt = Date.now();
   await B.page.reload({ waitUntil: 'domcontentloaded' });
-  wireB();
 
   // THE GRACE, watched rather than sampled once: the SFU takes its own time
   // (up to ~15s of signal-reconnect grace) to declare B gone, and only THEN
@@ -127,11 +153,18 @@ async function rawMembership(token, userId) {
   const bMembershipAtScan = await mx.hasMembership(B.token, ROOM_ID, B.userId);
   console.log(`   B membership still live at +${Math.round((Date.now() - reloadAt) / 1000)}s: ${bMembershipAtScan}`);
 
+  const crumbAfter = await B.page.evaluate(
+    () => window.localStorage.getItem('flutter.pangea.call.breadcrumb'));
+  console.log('   breadcrumb after reload:', crumbAfter);
   let offered = false;
   for (let i = 0; i < 10 && !offered; i++) {
-    const t = await pageText(B.page);
-    offered = /Return/.test(t) && /call before the app reloaded|Return/.test(t);
+    offered = await returnOffered(B.page);
     if (!offered) await wait(1500);
+  }
+  if (!offered) {
+    const shot = '/tmp/callweb/B-no-return.png';
+    await B.page.screenshot({ path: shot }).catch(() => {});
+    console.log('   screenshot:', shot);
   }
   if (!offered) {
     console.log("   B's own account (console):");

@@ -51,7 +51,14 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   IncomingCallNotification? _ringing;
 
   /// A call this device was on before a reload, offered back to the learner.
-  RejoinOffer? _rejoin;
+  ///
+  /// Held on [MatrixState] rather than here: this State can be re-created
+  /// around the app (locale, lock, theme rebuilds), and widget-local offer
+  /// state died invisible in a detached instance while another rendered.
+  ValueNotifier<RejoinOffer?>? _rejoinStore;
+
+  RejoinOffer? get _rejoin => _rejoinStore?.value;
+  set _rejoin(RejoinOffer? value) => _rejoinStore?.value = value;
 
   /// Watched so a call starting ANYWHERE clears the rejoin offer: the join
   /// claim is one-per-account, so whatever started owns it now.
@@ -145,6 +152,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _activeCall?.removeListener(_onActiveCallChanged);
     _activeCall = matrixState.activeCall;
     _activeCall?.addListener(_onActiveCallChanged);
+    _rejoinStore = matrixState.rejoinOffer;
     unawaited(_offerRejoin(matrixState, account));
   }
 
@@ -164,9 +172,13 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// tap or not at all.
   Future<void> _offerRejoin(MatrixState matrixState, String account) async {
     final service = matrixState.callService;
+    matrix.Logs().i('Rejoin offer scan starting');
     // An active session suppresses the offer outright: the learner is already
     // in whatever call matters most.
-    if (service.isBusy) return;
+    if (service.isBusy) {
+      matrix.Logs().i('Rejoin offer scan: account already busy');
+      return;
+    }
     final List<RejoinOffer> offers;
     try {
       offers = await service.rejoinOffers();
@@ -174,6 +186,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       matrix.Logs().w('Could not look for a call to return to', e, s);
       return;
     }
+    matrix.Logs().i(
+      'Rejoin offer scan: ${offers.length} offer(s); '
+      'mounted=$mounted stillThisAccount=${_listeningTo == account}',
+    );
     if (!mounted || _listeningTo != account) return;
     // Re-checked: the scan awaited network, and a call may have started since.
     if (service.isBusy || offers.isEmpty) return;
@@ -191,6 +207,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       });
       return;
     }
+    matrix.Logs().i('Rejoin offer shown for ${offer.room.id}');
     setState(() => _rejoin = offer);
   }
 
@@ -427,7 +444,17 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   @override
   Widget build(BuildContext context) {
     final ringing = _ringing;
-    final rejoin = _rejoin;
+    return ValueListenableBuilder<RejoinOffer?>(
+      valueListenable: _rejoinStore ?? ValueNotifier<RejoinOffer?>(null),
+      builder: (context, rejoin, _) => _buildStack(context, ringing, rejoin),
+    );
+  }
+
+  Widget _buildStack(
+    BuildContext context,
+    IncomingCallNotification? ringing,
+    RejoinOffer? rejoin,
+  ) {
     return Stack(
       children: [
         widget.child ?? const SizedBox.shrink(),
@@ -750,6 +777,7 @@ class _ReturnCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    matrix.Logs().i('ReturnCard building for ${offer.room.id}');
     final theme = Theme.of(context);
     final l10n = L10n.of(context);
     final peerId = offer.room.directChatMatrixID;
