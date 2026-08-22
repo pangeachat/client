@@ -145,6 +145,18 @@ class IncomingCallNotification {
 
   DateTime get expiresAt => sentAt.add(lifetime);
 
+  /// When this ring happened, for putting events in ORDER.
+  ///
+  /// Not [sentAt], which is the sender's own account of when they rang and is
+  /// preferred while it is within the skew allowance. That is the right
+  /// reading for a LIFETIME -- how long the caller promised to wait is the
+  /// caller's statement -- and the wrong one for sequencing this ring against
+  /// anything the server stamped, because the two are different clocks. Every
+  /// bug of that shape found so far has been the same mistake: a caller ten
+  /// seconds fast made a new ring look older than the call it interrupted,
+  /// and a sibling's answer look older than the ring it answered.
+  DateTime get orderedAt => event.originServerTs;
+
   /// Whether this ring has run out.
   ///
   /// Read against THIS device's clock, which is what the proposal prescribes —

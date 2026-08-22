@@ -166,7 +166,9 @@ class ActiveCall extends ChangeNotifier {
     // writing, so the call was missing from the conversation.
     final began = _startedAt;
     if (began != null) {
-      final sent = ring.sentAt;
+      // Ordered, not dated: their clock is not ours, and the glare window is
+      // three seconds wide.
+      final sent = ring.orderedAt;
       if (sent.isBefore(began.subtract(_glareWindow)) ||
           sent.isAfter(began.add(_glareWindow))) {
         return;

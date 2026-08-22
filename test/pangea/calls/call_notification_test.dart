@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -6,6 +8,31 @@ import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 void main() {
+  // Five review rounds found the same mistake in five places: `sentAt` is the
+  // SENDER's account of when they rang, preferred while it is within the skew
+  // allowance, and using it to order a ring against anything the server
+  // stamped compares two clocks. It is right for a lifetime and wrong for a
+  // sequence, so the two readings have separate names and this holds the line.
+  test('ordering uses the server stamp, never the sender\'s', () {
+    final source = Directory(
+      'lib/routes/chat/calls',
+    ).listSync().whereType<File>().where((f) => f.path.endsWith('.dart'));
+    final offenders = <String>[];
+    for (final file in source) {
+      if (file.path.endsWith('call_notification.dart')) continue;
+      final text = file.readAsStringSync();
+      for (final line in text.split('\n')) {
+        if (line.trimLeft().startsWith('//')) continue;
+        if (line.contains('.sentAt')) offenders.add('\${file.path}: \$line');
+      }
+    }
+    expect(
+      offenders,
+      isEmpty,
+      reason: 'outside the notification itself, order by orderedAt',
+    );
+  });
+
   setUpAll(sqfliteFfiInit);
 
   late Client client;

@@ -365,9 +365,8 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// own past (it rang, we answered, we died), and only one sent after is a
   /// genuine new call.
   bool _ringIsLive(IncomingCallNotification ring, RejoinOffer? against) {
-    // Compared in ONE clock domain. `ring.sentAt` is the sender's, snapped to
-    // the server's when the two disagree; the breadcrumb's `since` is this
-    // device's own. Comparing them directly made the answer depend on how far
+    // Compared in ONE clock domain, through `orderedAt`; the breadcrumb's
+    // `since` is this device's own clock. Comparing them directly made the answer depend on how far
     // this device's clock had drifted -- ten seconds slow was enough to read
     // the call's OWN original ring as newer than the call, so the offer to
     // return to it was thrown away. Our membership event's `origin_server_ts`
@@ -395,7 +394,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // membership the server stamped. A caller ten seconds slow could
     // otherwise have a genuinely new ring read as older than the call it was
     // interrupting, leaving a dead Return offer up and the new call silent.
-    if (since != null && !ring.event.originServerTs.isAfter(since)) {
+    if (since != null && !ring.orderedAt.isAfter(since)) {
       return false;
     }
     final named = ring.membershipEventId;
@@ -479,7 +478,9 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     final service = _service;
     if (service == null) return;
     final room = ring.event.room;
-    final sentAt = ring.sentAt;
+    // Ordered against membership timestamps, which are the server's, so this
+    // has to be the server's too.
+    final sentAt = ring.orderedAt;
     // Checked NOW as well as on every change. The reasoning for not checking
     // immediately held only for a LIVE ring, where nothing written after it
     // can exist yet -- but a ring recovered from the timeline at startup can
