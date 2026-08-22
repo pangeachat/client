@@ -1076,6 +1076,108 @@ void main() {
       );
     });
   });
+  group('whether a standing return offer still means anything', () {
+    const me = '@test:fakeServer.notExisting';
+    const peer = '@friend:fakeServer.notExisting';
+    var n = 0;
+
+    Future<(CallService, Room)> room({
+      required bool ourEventStillNamesTheCall,
+      required bool peerStillHolding,
+    }) async {
+      final roomId = '!offer${n++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      final soon = DateTime.now()
+          .add(const Duration(minutes: 5))
+          .millisecondsSinceEpoch;
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                state: [
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: {
+                      'memberships': ourEventStillNamesTheCall
+                          ? [
+                              {
+                                'call_id': 'the-call',
+                                'device_id': 'GHTYAJCE',
+                                'expires_ts': soon,
+                              },
+                            ]
+                          : <Map<String, Object?>>[],
+                    },
+                    senderId: me,
+                    eventId: r'$mine',
+                    originServerTs: DateTime.now(),
+                    stateKey: 'GHTYAJCE_$me',
+                  ),
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: {
+                      'memberships': peerStillHolding
+                          ? [
+                              {
+                                'call_id': 'the-call',
+                                'device_id': 'THEIRS',
+                                'expires_ts': soon,
+                              },
+                            ]
+                          : <Map<String, Object?>>[],
+                    },
+                    senderId: peer,
+                    eventId: r'$theirs',
+                    originServerTs: DateTime.now(),
+                    stateKey: 'THEIRS_$peer',
+                  ),
+                ],
+              ),
+            },
+          ),
+        ),
+      );
+      return (CallService(client), client.getRoomById(roomId)!);
+    }
+
+    test(
+      'the offer stands while the other person is still on the call',
+      () async {
+        final (service, r) = await room(
+          ourEventStillNamesTheCall: true,
+          peerStillHolding: true,
+        );
+        expect(service.callStillHeldByAnother(r, r'\$mine'), isTrue);
+      },
+    );
+
+    test('it stands even when OUR membership was already retracted', () async {
+      // The reload this offer exists for is exactly when the server empties
+      // our entry; requiring it withdrew the offer the instant it appeared.
+      final (service, r) = await room(
+        ourEventStillNamesTheCall: false,
+        peerStillHolding: true,
+      );
+      expect(service.callStillHeldByAnother(r, r'\$mine'), isTrue);
+    });
+
+    test('it goes once nobody else is holding the call', () async {
+      final (service, r) = await room(
+        ourEventStillNamesTheCall: true,
+        peerStillHolding: false,
+      );
+      expect(service.callStillHeldByAnother(r, r'\$mine'), isFalse);
+    });
+  });
+
   group('a second device of the same account', () {
     const me = '@test:fakeServer.notExisting';
     const peer = '@friend:fakeServer.notExisting';

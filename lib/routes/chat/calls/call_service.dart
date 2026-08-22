@@ -818,8 +818,6 @@ class CallService {
         if (m is Map && m['call_id'] is String) callId = m['call_id'] as String;
       }
     }
-    // Our own event no longer names a call: nothing to return to.
-    if (callId == null) return false;
     final now = DateTime.now().millisecondsSinceEpoch;
     for (final state in states.values) {
       if (state is! Event) continue;
@@ -828,7 +826,13 @@ class CallService {
       if (memberships is! List) continue;
       for (final m in memberships) {
         if (m is! Map) continue;
-        if (m['call_id'] != callId) continue;
+        // Call-scoped WHEN WE CAN: our own membership event names the call,
+        // but the reload this offer exists for is exactly when the server may
+        // already have emptied it -- and requiring it then withdrew the offer
+        // the instant it appeared. Without a call id, "somebody else is still
+        // on a call in this room" is the honest answer, and in a direct chat
+        // there is only one call to be on.
+        if (callId != null && m['call_id'] != callId) continue;
         final expires = m['expires_ts'];
         if (expires is! int || expires > now) return true;
       }
