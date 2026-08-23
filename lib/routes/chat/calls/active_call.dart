@@ -950,6 +950,68 @@ class ActiveCall extends ChangeNotifier {
     // only ever arrives HERE, later, from state -- with the peer long since
     // noted. The drop fires wherever the LAST of its two facts lands.
     if (_membershipEventId != null && _peerArrived) _dropBreadcrumb();
+    _ringOnceTheAnchorArrives();
+  }
+
+  /// Watches for a membership whose echo was late, so the ring can still go.
+  Timer? _lateRing;
+
+  void _watchForALateAnchor() {
+    _lateRing?.cancel();
+    var tries = 0;
+    _lateRing = Timer.periodic(const Duration(seconds: 2), (timer) {
+      tries++;
+      final room = _room;
+      if (_ending || _disposed || _rangOut || room == null || tries > 8) {
+        timer.cancel();
+        _lateRing = null;
+        return;
+      }
+      _membershipEventId ??= calls.membershipEventIdIn(room);
+      if (_membershipEventId == null) return;
+      timer.cancel();
+      _lateRing = null;
+      _ringOnceTheAnchorArrives();
+    });
+  }
+
+  /// Runs the late-anchor check now, for tests.
+  @visibleForTesting
+  void lookForALateAnchorNow() {
+    final room = _room;
+    if (room == null) return;
+    _membershipEventId ??= calls.membershipEventIdIn(room);
+    _ringOnceTheAnchorArrives();
+  }
+
+  /// Rings the call that could not ring yet.
+  ///
+  /// The ring must name our membership, and the wait for that id is bounded
+  /// so a caller is never left hanging -- but when the echo simply arrives
+  /// late, the ring used to be skipped outright: the callee's phone never
+  /// rang, no push went out, and the caller sat through the answer timeout
+  /// for a call the other person was never told about. The id lands here,
+  /// later, and this is where the ring catches up.
+  void _ringOnceTheAnchorArrives() {
+    if (!_placed || _ending || _disposed) return;
+    if (_notificationId != null || _rangOut) return;
+    final room = _room;
+    final anchor = _membershipEventId;
+    if (room == null || anchor == null) return;
+    _rangOut = true;
+    Logs().w('The membership arrived late; ringing now');
+    unawaited(() async {
+      try {
+        _notificationId = await calls.ring(
+          room,
+          membershipEventId: anchor,
+          video: _isVideoCall,
+        );
+        _catchUpOnDeclines();
+      } catch (e, s) {
+        Logs().w('Could not ring after the membership arrived', e, s);
+      }
+    }());
   }
 
   /// Declines seen before this call knew which notification was its own.
@@ -1394,6 +1456,11 @@ class ActiveCall extends ChangeNotifier {
       // that gap — the caller would then sit through the whole ring instead of
       // being told they were turned down.
       _declines = calls.declinesIn(room).listen(_onDeclineEvent);
+      // The echo can simply be late. Skipping the ring outright meant the
+      // callee's phone never rang and the caller waited out the answer
+      // timeout for a call nobody was told about; this keeps looking for the
+      // id and rings the moment it lands.
+      if (placing && membershipId == null) _watchForALateAnchor();
       if (placing && membershipId != null) {
         // Remembered as an ATTEMPT, separately from the id coming back. Both
         // send responses can time out while the event itself lands — their
@@ -1629,6 +1696,8 @@ class ActiveCall extends ChangeNotifier {
     _peerRings = null;
     _waitingForPeer?.cancel();
     _waitingForPeer = null;
+    _lateRing?.cancel();
+    _lateRing = null;
     _peerGrace?.cancel();
     _peerGrace = null;
     _presenceClock?.cancel();

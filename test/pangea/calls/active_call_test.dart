@@ -733,6 +733,35 @@ void main() {
     });
   });
 
+  group('a membership whose echo is late', () {
+    // The ring must name our membership, and the wait for that id is bounded
+    // so a caller is never left hanging. When the echo merely arrives LATE,
+    // skipping the ring outright meant the callee's phone never rang, no push
+    // went out, and the caller sat through the answer timeout for a call the
+    // other person was never told about.
+    test('still rings, once the id arrives', () async {
+      final (call, calls, _, _) = await build();
+      calls.membershipId = null; // announce comes back with nothing
+      calls.roomMembershipId = null; // and state has not caught up either
+      calls.remotePresent = false;
+
+      await call.start(roomStub(calls.client), video: false);
+      expect(
+        trace.steps,
+        isNot(contains('ring')),
+        reason: 'there is nothing to name the ring after yet',
+      );
+
+      // The echo lands: state now knows our membership.
+      calls.roomMembershipId = r'$late-membership';
+      call.lookForALateAnchorNow();
+      await pumpEventQueue();
+
+      expect(trace.steps, contains('ring'));
+      expect(call.rangOut, isTrue);
+    });
+  });
+
   group('waiting for an answer', () {
     test('does not start the clock before they have been rung', () async {
       final (call, calls, _, _) = await build();
