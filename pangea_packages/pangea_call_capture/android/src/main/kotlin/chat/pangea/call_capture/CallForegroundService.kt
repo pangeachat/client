@@ -168,6 +168,12 @@ class CallForegroundService : Service() {
   override fun onBind(intent: Intent?): IBinder? = null
 
   override fun onDestroy() {
+    // Whatever route brought the service down -- a refused promotion, a
+    // system kill, the owner's stop -- nothing may be left on the phone
+    // claiming a call is in progress.
+    runCatching {
+      getSystemService(NotificationManager::class.java).cancel(NOTIFICATION_ID)
+    }
     // Whatever killed the service -- the owner's stop, a refused promotion,
     // a system restart with nothing to do -- the claim dies with it, or the
     // next call's start would be refused for a service that no longer runs.
@@ -248,6 +254,13 @@ class CallForegroundService : Service() {
         }
         running = false
         stopForeground(STOP_FOREGROUND_REMOVE)
+        // And cancelled outright. STOP_FOREGROUND_REMOVE only takes down a
+        // notification the SERVICE owns -- the one it was promoted with --
+        // and the adopt path re-posts this id through the notification
+        // manager to change the name on it, which the service does not own.
+        // The call then ended and left an ongoing-call notification on the
+        // phone with no service and no call behind it.
+        getSystemService(NotificationManager::class.java).cancel(NOTIFICATION_ID)
         stopSelf()
       }
       ACTION_HANGUP, ACTION_MUTE -> {
