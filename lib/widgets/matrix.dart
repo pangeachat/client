@@ -251,15 +251,19 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // branch can run from inside the old call's own notification, and its
         // pending release microtask is the one place its disposal is safe.
         activeCall.value = null;
-      } else if (existing.room.client != room.client) {
-        // A live call on ANOTHER account. Expanding it here answered nothing
-        // and declined nothing: the prompt had already been dismissed, so the
-        // caller rang out and wrote a missed call while this learner sat
-        // looking at an unrelated call on a different account. One call at a
-        // time is right; silently swallowing the second one is not.
+      } else if (existing.room.client != room.client ||
+          existing.room.id != room.id) {
+        // A live call somewhere ELSE -- another account, or another room on
+        // this one. Expanding it and returning answered nothing and declined
+        // nothing: the prompt had already been dismissed, so the caller rang
+        // out and wrote a missed call while this learner sat looking at an
+        // unrelated call. One call at a time is right; silently swallowing
+        // the second one is not, and the callers differ on what to do about
+        // it -- answering declines as busy, pressing Call just brings the
+        // live call forward -- so this says what happened and lets them
+        // decide.
         Logs().w(
-          'Refusing a call on ${room.client.clientName}: '
-          '${existing.room.client.clientName} is already on one',
+          'Refusing a call in ${room.id}: already on one in ${existing.room.id}',
         );
         existing.expand();
         throw const AlreadyInACall();

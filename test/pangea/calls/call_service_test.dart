@@ -1491,6 +1491,42 @@ void main() {
     });
   });
 
+  group('whether a ring in a room could be for us', () {
+    // `isDirectChat` reads m.direct account data, which at cold start -- woken
+    // by a call, or reloaded while one is ringing -- has not necessarily
+    // loaded. Treating "not known to be a DM" as "not a DM" dropped real calls
+    // at the one moment they matter, and the live ring stream never
+    // redelivers.
+    test('a two-person room qualifies before m.direct has loaded', () async {
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(
+          user: '@test:fakeServer.notExisting',
+        ),
+        deviceId: 'GHTYAJCE',
+      );
+      final room = Room(
+        id: '!pair:fakeServer.notExisting',
+        client: client,
+        summary: RoomSummary.fromJson({'m.joined_member_count': 2}),
+      );
+      expect(room.isDirectChat, isFalse, reason: 'no account data yet');
+      expect(CallService.couldRingHere(room), isTrue);
+    });
+
+    test('a group room does not', () async {
+      final client = await bareClient();
+      final room = Room(
+        id: '!group:fakeServer.notExisting',
+        client: client,
+        summary: RoomSummary.fromJson({'m.joined_member_count': 7}),
+      );
+      expect(CallService.couldRingHere(room), isFalse);
+    });
+  });
+
   group('whether the caller is still on the call they rang about', () {
     const caller = '@caller:fakeServer.notExisting';
     const me = '@test:fakeServer.notExisting';

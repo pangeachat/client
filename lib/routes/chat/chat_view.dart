@@ -19,6 +19,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_card.da
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_popup_menu.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_stats_menu.dart';
+import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/chat_call_host.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_list_tile.dart';
@@ -36,6 +37,21 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 import '../../utils/stream_extension.dart';
+
+/// Starts a call from the room's own header.
+///
+/// A call already running somewhere else refuses rather than swallowing this
+/// one, so that ANSWERING a ring for another room can decline it as busy.
+/// Pressing Call is the other intent: there is nothing to tell the other side,
+/// and the useful thing is simply to show the call already in progress --
+/// which the refusal has already brought forward.
+void _startCall(BuildContext context, Room room, {required bool video}) {
+  try {
+    Matrix.of(context).startCall(room, video: video);
+  } on AlreadyInACall {
+    Logs().i('Already on a call; showing that one instead');
+  }
+}
 
 class ChatView extends StatelessWidget {
   final ChatController controller;
@@ -102,9 +118,8 @@ class ChatView extends StatelessWidget {
                       child: IconButton(
                         icon: const Icon(Icons.videocam_outlined),
                         tooltip: L10n.of(context).startVideoCall,
-                        onPressed: () => Matrix.of(
-                          context,
-                        ).startCall(controller.room, video: true),
+                        onPressed: () =>
+                            _startCall(context, controller.room, video: true),
                       ),
                     ),
                     Semantics(
@@ -113,9 +128,8 @@ class ChatView extends StatelessWidget {
                       child: IconButton(
                         icon: const Icon(Icons.call_outlined),
                         tooltip: L10n.of(context).startCall,
-                        onPressed: () => Matrix.of(
-                          context,
-                        ).startCall(controller.room, video: false),
+                        onPressed: () =>
+                            _startCall(context, controller.room, video: false),
                       ),
                     ),
                   ],

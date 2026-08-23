@@ -338,15 +338,23 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // it on a clean teardown.
     _clearOffer();
     if (!mounted) return;
-    Matrix.of(context).startCall(
-      offer.room,
-      // The call comes back as what it WAS. Returning always as audio left a
-      // video call with the camera off and the other person's picture gone
-      // for good.
-      video: offer.video,
-      rejoinMembershipEventId: offer.membershipEventId,
-      rejoinSince: offer.since,
-    );
+    try {
+      Matrix.of(context).startCall(
+        offer.room,
+        // The call comes back as what it WAS. Returning always as audio left
+        // a video call with the camera off and the other person's picture
+        // gone for good.
+        video: offer.video,
+        rejoinMembershipEventId: offer.membershipEventId,
+        rejoinSince: offer.since,
+      );
+    } on AlreadyInACall {
+      // A call started somewhere else while this offer was on screen. The one
+      // in progress wins and has already been brought forward; there is
+      // nobody to tell, because a return is not a ring.
+      matrix.Logs().i('Cannot return: this account is already on a call');
+      return;
+    }
     final router = FluffyChatApp.router;
     final uri = router.routeInformationProvider.value.uri;
     router.go(WorkspaceNav.openRoomById(uri, offer.room.id));
@@ -654,11 +662,11 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
         callerMembershipEventId: ring.membershipEventId,
       );
     } on AlreadyInACall {
-      // A call is live on ANOTHER account of this app. The answer cannot
-      // happen, and the prompt is already down -- so TELL the caller rather
-      // than leaving them ringing into nothing until they time out and write
-      // a missed call.
-      matrix.Logs().w('Answering while another account is on a call');
+      // A call is live somewhere else -- another account, or another room on
+      // this one. The answer cannot happen, and the prompt is already down --
+      // so TELL the caller rather than leaving them ringing into nothing
+      // until they time out and write a missed call.
+      matrix.Logs().w('Answering while already on a call elsewhere');
       final service = _service;
       if (service != null) {
         unawaited(() async {

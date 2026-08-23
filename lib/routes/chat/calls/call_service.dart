@@ -580,7 +580,7 @@ class CallService {
       .where(
         (event) =>
             event.type == PangeaEventTypes.callNotification &&
-            event.room.isDirectChat,
+            couldRingHere(event.room),
       )
       .map(
         (event) => IncomingCallNotification(
@@ -843,6 +843,18 @@ class CallService {
   void adoptCallIdForTest(String callId) => _callIdForTest = callId;
 
   String? _callIdForTest;
+
+  /// Whether a ring in this room could be a 1:1 call for us.
+  ///
+  /// `isDirectChat` reads `m.direct` account data, which at cold start -- the
+  /// app woken by a call, or reloaded while one is ringing -- has not
+  /// necessarily loaded yet. Treating "not known to be a DM" as "not a DM"
+  /// dropped real calls at exactly the moment they matter, and the live ring
+  /// stream never redelivers. A room with two people in it is a direct call
+  /// whatever the account data has managed to say so far, and the member
+  /// count comes from the room summary, which is there from the first sync.
+  static bool couldRingHere(Room room) =>
+      room.isDirectChat || room.summary.mJoinedMemberCount == 2;
 
   /// Kept for callers that only need "assume present unless proven otherwise".
   /// Anything that acts on a DEPARTURE should read
@@ -1180,7 +1192,7 @@ class CallService {
     final cutoff = now.subtract(CallNotification.maxLifetime);
     final missed = <IncomingCallNotification>[];
     for (final room in client.rooms) {
-      if (!room.isDirectChat) continue;
+      if (!couldRingHere(room)) continue;
       // Only a room that is KNOWN to be too old is skipped. A room whose last
       // event has not been worked out yet is still opened: treating unknown as
       // old would silently drop the call this whole method exists to recover.
@@ -1330,7 +1342,7 @@ class CallService {
         .millisecondsSinceEpoch;
     final offers = <RejoinOffer>[];
     for (final room in client.rooms) {
-      if (!room.isDirectChat) continue;
+      if (!couldRingHere(room)) continue;
       // Membership is state, and a room the learner has not opened is loaded
       // only partially -- without this the membership this scan exists to find
       // reads as absent.
