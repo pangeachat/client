@@ -730,6 +730,53 @@ void main() {
     });
   });
 
+  group('the summary that follows a call', () {
+    // Reported from the phone: the timer ran to 1:08, the call ended, and the
+    // summary said 0:14. It was showing the segmented talk time, which after
+    // a rejoin counts only the stretch since returning -- so the number the
+    // learner had just been watching vanished.
+    test(
+      'shows the length of the CALL, not the stretch since a rejoin',
+      () async {
+        final client = await _bareClient();
+        final calls = _FakeCalls(client);
+        final media = _FakeMedia();
+        final session = CallSession.start(
+          room: matrix.Room(id: '!sum:server', client: client),
+          video: false,
+          callService: calls,
+          transcribe: (request) async =>
+              SpeechToTextResponseModel(results: const []),
+          userL1: 'en',
+          userL2: 'es',
+          analytics: (eventId, uses, language) async {},
+          onReleased: (_) {},
+          rejoinAnchor: r'$original-membership',
+          // Returned to a call that began a minute and eight seconds ago.
+          rejoinSince: DateTime.now().subtract(const Duration(seconds: 68)),
+          mediaOverride: media,
+          captureOverride: CallCaptureService(sink: _NullSink()),
+        );
+        await pumpEventQueue();
+        final roster = media.fakeRoster!;
+        roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+        roster.recompute();
+        await pumpEventQueue();
+
+        expect(
+          session.callDuration.inSeconds,
+          closeTo(68, 4),
+          reason: 'the summary follows the clock the learner was watching',
+        );
+        expect(
+          session.call.talkDuration.inSeconds,
+          lessThan(20),
+          reason: 'the talk time really is only the stretch since returning',
+        );
+      },
+    );
+  });
+
   group('the clock both people read', () {
     // The breadcrumb was written by THIS device's clock, and the timer
     // subtracts from that same clock. `origin_server_ts` is the SERVER's: a

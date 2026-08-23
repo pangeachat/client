@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_panel.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart';
@@ -50,17 +51,35 @@ class _ChatCallHostState extends State<ChatCallHost> {
   }
 
   void _onSessionChanged() {
-    final mine = _mine;
     // Presence is registered from the fact of PRESENTING, not from being
     // mounted: a chat that is open but not the call's room presents nothing.
-    if (mine != null && !identical(_attachedTo, mine)) {
-      _attachedTo?.detachPresenter();
-      _attachedTo = mine..attachPresenter();
-    } else if (mine == null && _attachedTo != null) {
-      _attachedTo?.detachPresenter();
-      _attachedTo = null;
+    //
+    // AFTER the frame, never during it. Attaching notifies the session, and a
+    // notification raised while a frame is being built does not reach the
+    // widgets that frame has already built -- the global tile builds a few
+    // milliseconds before this runs, so it never learned that a presenter had
+    // appeared. It stayed on screen above the call panel for the whole call,
+    // showing the state it saw at that first build: "Connecting", while the
+    // panel beside it counted the minutes.
+    void settle() {
+      final now = _mine;
+      if (now != null && !identical(_attachedTo, now)) {
+        _attachedTo?.detachPresenter();
+        _attachedTo = now..attachPresenter();
+      } else if (now == null && _attachedTo != null) {
+        _attachedTo?.detachPresenter();
+        _attachedTo = null;
+      }
+      if (mounted) setState(() {});
     }
-    if (mounted) setState(() {});
+
+    final phase = SchedulerBinding.instance.schedulerPhase;
+    if (phase == SchedulerPhase.persistentCallbacks ||
+        phase == SchedulerPhase.midFrameMicrotasks) {
+      SchedulerBinding.instance.addPostFrameCallback((_) => settle());
+      return;
+    }
+    settle();
   }
 
   @override

@@ -678,6 +678,22 @@ class CallSession extends ChangeNotifier {
   DateTime? get endedAt => _endedAt;
   DateTime? _endedAt;
 
+  /// How long the CALL lasted, for the summary that follows it.
+  ///
+  /// The same clock the timer on screen was counting, so the number the
+  /// learner watched reach 1:08 is the number they are shown a second later.
+  /// [ActiveCall.talkDuration] is the segmented time anyone could actually be
+  /// heard -- right for the card and the analytics, and wrong here: after a
+  /// rejoin it counts only the stretch since returning, so a call the learner
+  /// had just watched run to 1:08 ended with a summary reading 0:14.
+  Duration get callDuration {
+    final began = callStartedAt;
+    if (began == null) return call.talkDuration;
+    final until = _endedAt ?? DateTime.now();
+    final span = until.difference(began);
+    return span.isNegative ? call.talkDuration : span;
+  }
+
   /// Whether the summary screen is on: the call is over and its handover to
   /// the holder is being held while the learner reads what happened.
   bool get showingSummary => _over && !_handedOver && _summaryHold != null;

@@ -152,7 +152,7 @@ class CallPanel extends StatelessWidget {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            formatCallDuration(session.talkDuration),
+                            formatCallDuration(session.callDuration),
                             style: theme.textTheme.headlineMedium?.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.w500,
