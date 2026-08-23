@@ -303,8 +303,13 @@ class ActiveCall extends ChangeNotifier {
   int? _actionEpoch;
 
   /// What the notification shows. Threaded from the session, which knows the
-  /// peer; the call itself only knows the room.
+  /// peer; the call itself only knows the room. The other two are the text
+  /// the PLATFORM renders -- the notification's mute button and the name of
+  /// its channel in system settings -- which the package cannot translate
+  /// itself, so the app hands them over in the learner's language.
   String foregroundLabel = '';
+  String foregroundMuteLabel = '';
+  String foregroundChannelName = '';
 
   /// This call's claim on the ongoing-call service: the generation the
   /// platform issued when it started, carried back on every later
@@ -346,6 +351,8 @@ class ActiveCall extends ChangeNotifier {
       final generation = await foreground.start(
         peer: foregroundLabel,
         video: video,
+        muteLabel: foregroundMuteLabel,
+        channelName: foregroundChannelName,
       );
       final started = generation != 0;
       _foregroundGeneration = generation;

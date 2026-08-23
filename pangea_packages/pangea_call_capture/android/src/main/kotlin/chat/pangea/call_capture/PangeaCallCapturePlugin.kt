@@ -150,6 +150,8 @@ class PangeaCallCapturePlugin :
               context,
               call.argument<String>("peer") ?: "",
               call.argument<Boolean>("video") ?: false,
+              call.argument<String>("mute") ?: "",
+              call.argument<String>("channel") ?: "",
             ),
           )
         }

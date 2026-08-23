@@ -210,8 +210,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// Unlike [analyticsDataService] this needs no closing-account guard:
   /// [disposeAccountServices] removes the entry, and a service created after
   /// that point owns nothing that could outlive the account.
-  CallService callServiceFor(String clientName) => _callServices[clientName] ??=
-      CallService(widget.clients.firstWhere((c) => c.clientName == clientName));
+  CallService callServiceFor(String clientName) =>
+      _callServices[clientName] ??= CallService(
+        // The same last-resort the [client] getter keeps: a single-account
+        // logout empties `clients` while widgets are still building against
+        // it, and a service that throws `Bad state: No element` from a
+        // rebuild takes the whole route down. An account on its way out
+        // resolves to itself; every live account still wins on name.
+        widget.clients.firstWhere(
+          (c) => c.clientName == clientName,
+          orElse: () => client,
+        ),
+      );
 
   /// The one call this app is in, if any. Panels and tiles listen here; the
   /// session itself owns the call's lifecycle, so navigation never touches it.
@@ -285,6 +295,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       rejoinSince: rejoinSince,
       callerMembershipEventId: callerMembershipEventId,
       callService: callServiceFor(room.client.clientName),
+      // The two strings Android renders for the ongoing call. They can only
+      // come from here: the plugin has no translations, and the session has
+      // no context.
+      platformLabels: (
+        mute: L10n.of(context).callMute,
+        channel: L10n.of(context).callOngoingChannel,
+      ),
       // The repo answers with a Result; the sink's contract is a value or a
       // throw, and it already treats a throw as "this chunk's words are lost".
       transcribe: (request) async {
@@ -899,6 +916,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     for (final name in {
       ..._analyticsServices.keys,
       ..._activityAutoSaveServices.keys,
+      ..._callServices.keys,
     }) {
       unawaited(disposeAccountServices(name));
     }

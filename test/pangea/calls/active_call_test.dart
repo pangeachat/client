@@ -465,9 +465,22 @@ class FakeForeground extends CallForegroundControl {
   /// with another call's claim is exactly the bug the generation exists for.
   int lastGeneration = 0;
 
+  /// The text the platform would render, recorded so a call that passed
+  /// English on a Hindi phone is a test failure rather than something only a
+  /// screenshot would catch.
+  String lastMuteLabel = '';
+  String lastChannelName = '';
+
   @override
-  Future<int> start({required String peer, required bool video}) async {
+  Future<int> start({
+    required String peer,
+    required bool video,
+    required String muteLabel,
+    required String channelName,
+  }) async {
     trace('fgs.start(video: $video)');
+    lastMuteLabel = muteLabel;
+    lastChannelName = channelName;
     final hold = holdStart;
     if (hold != null) await hold.future;
     if (!startReturns) return 0;

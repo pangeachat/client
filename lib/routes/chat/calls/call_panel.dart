@@ -113,13 +113,10 @@ class CallPanel extends StatelessWidget {
               children: [
                 Align(
                   alignment: Alignment.topRight,
-                  child: Semantics(
-                    label: l10n.close,
-                    button: true,
-                    child: IconButton(
-                      icon: const Icon(Icons.close, color: Colors.white),
-                      onPressed: session.dismissSummary,
-                    ),
+                  child: IconButton(
+                    tooltip: l10n.close,
+                    icon: const Icon(Icons.close, color: Colors.white),
+                    onPressed: session.dismissSummary,
                   ),
                 ),
                 Expanded(
@@ -190,26 +187,20 @@ class CallPanel extends StatelessWidget {
   Widget _topBar(L10n l10n) => Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      Semantics(
-        label: l10n.callMinimize,
-        button: true,
-        child: IconButton(
-          icon: const Icon(Icons.expand_more, color: Colors.white),
-          onPressed: session.minimize,
-        ),
+      IconButton(
+        tooltip: l10n.callMinimize,
+        icon: const Icon(Icons.expand_more, color: Colors.white),
+        onPressed: session.minimize,
       ),
-      Semantics(
-        label: session.fullscreen
+      IconButton(
+        tooltip: session.fullscreen
             ? l10n.callExitFullscreen
             : l10n.callFullscreen,
-        button: true,
-        child: IconButton(
-          icon: Icon(
-            session.fullscreen ? Icons.fullscreen_exit : Icons.fullscreen,
-            color: Colors.white,
-          ),
-          onPressed: session.toggleFullscreen,
+        icon: Icon(
+          session.fullscreen ? Icons.fullscreen_exit : Icons.fullscreen,
+          color: Colors.white,
         ),
+        onPressed: session.toggleFullscreen,
       ),
     ],
   );
@@ -501,7 +492,13 @@ class CallMiniTile extends StatelessWidget {
                   Semantics(
                     label: session.muted ? l10n.callUnmute : l10n.callMute,
                     button: true,
+                    // a11y-ignore: the name is on the Semantics above. This
+                    // tile also renders from GlobalCallTile, which sits above
+                    // the router and so has no Overlay ancestor -- a Tooltip
+                    // there throws, and one in the banner stopped calls being
+                    // answered at all.
                     child: IconButton(
+                      // a11y-ignore: named by the Semantics above
                       visualDensity: VisualDensity.compact,
                       icon: Icon(
                         session.muted ? Icons.mic_off : Icons.mic,
@@ -518,7 +515,10 @@ class CallMiniTile extends StatelessWidget {
                   Semantics(
                     label: l10n.callHangUp,
                     button: true,
+                    // a11y-ignore: as above -- named by the Semantics, and no
+                    // Overlay above the router for a Tooltip to use.
                     child: IconButton(
+                      // a11y-ignore: named by the Semantics above
                       visualDensity: VisualDensity.compact,
                       icon: const Icon(
                         Icons.call_end,

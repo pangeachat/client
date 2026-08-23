@@ -49,6 +49,12 @@ class CallSession extends ChangeNotifier {
   /// on sessions that never saw a ring.
   final String? callerMembershipEventId;
 
+  /// The two strings the ANDROID platform renders for an ongoing call: the
+  /// notification's mute button, and the channel's name in system settings.
+  /// The plugin cannot translate them, so they are handed in from where a
+  /// BuildContext exists. Null on every other platform, and in tests.
+  final ({String mute, String channel})? platformLabels;
+
   final CallMedia media;
   final ActiveCall call;
   final CallRecord _record;
@@ -88,6 +94,7 @@ class CallSession extends ChangeNotifier {
     String? rejoinAnchor,
     DateTime? rejoinSince,
     this.callerMembershipEventId,
+    this.platformLabels,
     this.tonesOverride,
   }) : _record = record,
        _myUserId = myUserId,
@@ -98,6 +105,8 @@ class CallSession extends ChangeNotifier {
     // the session knows who the conversation is with.
     call.foregroundLabel =
         peer?.calcDisplayname() ?? room.getLocalizedDisplayname();
+    call.foregroundMuteLabel = platformLabels?.mute ?? '';
+    call.foregroundChannelName = platformLabels?.channel ?? '';
     // The notification's buttons act on THIS session, through the same
     // controls the screen uses -- one mute path, one hangup path.
     _foregroundActions();
@@ -141,6 +150,7 @@ class CallSession extends ChangeNotifier {
     String? rejoinAnchor,
     DateTime? rejoinSince,
     String? callerMembershipEventId,
+    ({String mute, String channel})? platformLabels,
     @visibleForTesting RingPlayer? tonesOverride,
     @visibleForTesting CallMedia? mediaOverride,
     @visibleForTesting CallCaptureService? captureOverride,
@@ -186,6 +196,7 @@ class CallSession extends ChangeNotifier {
       rejoinAnchor: rejoinAnchor,
       rejoinSince: rejoinSince,
       callerMembershipEventId: callerMembershipEventId,
+      platformLabels: platformLabels,
       tonesOverride: tonesOverride,
     );
   }

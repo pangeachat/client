@@ -142,10 +142,23 @@ class CallForegroundControl {
   /// could be applied to the next: the hop from here to the platform is a
   /// queue, so a camera update or a stop from a call that has ended can
   /// arrive after the following call has started.
-  Future<int> start({required String peer, required bool video}) async =>
+  /// [muteLabel] and [channelName] are the two pieces of text the platform
+  /// shows that this package cannot localize itself: the button on the
+  /// ongoing-call notification, and the name of its channel in the system's
+  /// notification settings. They come from the app's own translations, so a
+  /// learner reading their phone in Hindi is not shown an English button on
+  /// every call.
+  Future<int> start({
+    required String peer,
+    required bool video,
+    required String muteLabel,
+    required String channelName,
+  }) async =>
       await _control.invokeMethod<int>('fgs_start', {
         'peer': peer,
         'video': video,
+        'mute': muteLabel,
+        'channel': channelName,
       }) ??
       0;
 

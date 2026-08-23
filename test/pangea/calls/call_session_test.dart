@@ -11,6 +11,8 @@ import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart';
+import 'package:pangea_call_capture/pangea_call_capture.dart'
+    show CallForegroundControl;
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
@@ -224,6 +226,30 @@ class _HangingCapture extends CallCaptureService {
 
   @override
   Future<void> finish() => Completer<void>().future;
+}
+
+/// Records what the app hands the platform to render.
+class _LabelSpyForeground extends CallForegroundControl {
+  const _LabelSpyForeground(this.seen);
+
+  final List<({String mute, String channel})> seen;
+
+  @override
+  Future<int> start({
+    required String peer,
+    required bool video,
+    required String muteLabel,
+    required String channelName,
+  }) async {
+    seen.add((mute: muteLabel, channel: channelName));
+    return 1;
+  }
+
+  @override
+  Future<void> stop({required int generation}) async {}
+
+  @override
+  Future<void> setCamera(bool on, {required int generation}) async {}
 }
 
 class _NullSink implements CallAudioSink {
@@ -573,6 +599,35 @@ void main() {
       // one it cannot know; only the caller decides those.
       expect(room.sent, isEmpty);
     });
+  });
+
+  // The ongoing-call notification is drawn by Android, which has none of the
+  // app's translations. Its mute button and its channel name therefore have
+  // to be handed over, and a call that forgets shows a learner reading their
+  // phone in Hindi an English button on every call.
+  test('the platform is given the labels in the learner\'s language', () async {
+    final client = await _bareClient();
+    final seen = <({String mute, String channel})>[];
+    CallSession.start(
+      room: _RecordingRoom(id: '!r:server', client: client),
+      video: false,
+      callService: _FakeCalls(client),
+      transcribe: (request) async =>
+          SpeechToTextResponseModel(results: const []),
+      userL1: 'en',
+      userL2: 'es',
+      analytics: (eventId, uses, language) async {},
+      onReleased: (_) {},
+      platformLabels: (mute: 'Mute-hi', channel: 'Channel-hi'),
+      mediaOverride: _FakeMedia(),
+      captureOverride: CallCaptureService(sink: _NullSink()),
+      foregroundOverride: _LabelSpyForeground(seen),
+    );
+    await pumpEventQueue();
+
+    expect(seen, isNotEmpty, reason: 'the service was never started');
+    expect(seen.single.mute, 'Mute-hi');
+    expect(seen.single.channel, 'Channel-hi');
   });
 
   group('the ended-call summary', () {

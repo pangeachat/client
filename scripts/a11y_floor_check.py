@@ -14,8 +14,10 @@ Modes:
   a11y_floor_check.py              scan the whole lib/ tree (the CI gate)
   a11y_floor_check.py --diff BASE  scan only lines added vs BASE (default origin/main)
 
-Put `// a11y-ignore: <reason>` on the constructor line to suppress a genuine false
-positive (for example an image wrapped by an ancestor ExcludeSemantics).
+Put `// a11y-ignore: <reason>` on the constructor line, or anywhere inside that
+constructor's own arguments, to suppress a genuine false positive (for example an
+image wrapped by an ancestor ExcludeSemantics, or a control whose accessible name
+is on a Semantics wrapper because a Tooltip has no Overlay to render into).
 """
 
 import glob
@@ -119,6 +121,13 @@ def main():
             m = pat.search(text)
             if m:
                 block = arg_block(src, i, m.end() - 1)
+                # The marker counts anywhere in the constructor's own argument
+                # block, not only on the line the constructor opens on: `dart
+                # format` moves a trailing comment down into the block, so a
+                # marker written the documented way did not survive the
+                # formatter the repo also enforces.
+                if "a11y-ignore" in block:
+                    continue
                 if not any(p in block for p in params):
                     violations.append((path, i + 1, msg, text.strip()[:80]))
 

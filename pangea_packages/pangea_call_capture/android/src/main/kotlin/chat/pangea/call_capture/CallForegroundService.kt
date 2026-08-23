@@ -98,13 +98,21 @@ class CallForegroundService : Service() {
     private var generation = 0
 
     const val EXTRA_GEN = "chat.pangea.call.GEN"
+    const val EXTRA_MUTE = "mute"
+    const val EXTRA_CHANNEL = "channel"
 
     /// Returns the GENERATION this call owns, or 0 if the service was
     /// refused. The caller keeps it and hands it back on every later
     /// instruction, so an instruction issued by one call can never be applied
     /// to the next: the Dart hop is itself a queue, and stamping on arrival
     /// read whichever generation had started by then.
-    fun start(context: Context, peer: String, video: Boolean): Int {
+    fun start(
+      context: Context,
+      peer: String,
+      video: Boolean,
+      mute: String,
+      channel: String,
+    ): Int {
       if (!supported) return 0
       if (active) return 0
       // The MICROPHONE type requires the permission at startForeground time;
@@ -121,6 +129,8 @@ class CallForegroundService : Service() {
         .setAction(ACTION_START)
         .putExtra(EXTRA_PEER, peer)
         .putExtra(EXTRA_VIDEO, video)
+        .putExtra(EXTRA_MUTE, mute)
+        .putExtra(EXTRA_CHANNEL, channel)
         .putExtra(EXTRA_GEN, generation)
       context.startForegroundService(intent)
       active = true
@@ -159,6 +169,11 @@ class CallForegroundService : Service() {
   }
 
   private var peer: String = ""
+
+  // Supplied by the app in the learner's language; the English is only what
+  // an older caller that sends neither would get.
+  private var muteLabel: String = ""
+  private var channelName: String = ""
   private var running = false
 
   /// The generation this instance is serving, so a stop issued for an older
@@ -199,11 +214,15 @@ class CallForegroundService : Service() {
           // start() and never sends an intent at all.
           servingGeneration = gen
           peer = intent.getStringExtra(EXTRA_PEER) ?: peer
+          muteLabel = intent.getStringExtra(EXTRA_MUTE) ?: muteLabel
+          channelName = intent.getStringExtra(EXTRA_CHANNEL) ?: channelName
           getSystemService(NotificationManager::class.java)
             .notify(NOTIFICATION_ID, notification())
           return START_NOT_STICKY
         }
         peer = intent.getStringExtra(EXTRA_PEER) ?: ""
+        muteLabel = intent.getStringExtra(EXTRA_MUTE) ?: ""
+        channelName = intent.getStringExtra(EXTRA_CHANNEL) ?: ""
         servingGeneration = gen
         if (promote(camera = false)) {
           running = true
@@ -327,7 +346,7 @@ class CallForegroundService : Service() {
     manager.createNotificationChannel(
       NotificationChannel(
         CHANNEL_ID,
-        "Ongoing call",
+        channelName.ifEmpty { "Ongoing call" },
         // High importance is what keeps the chip visible; the channel plays
         // no sound -- the call itself is the sound.
         NotificationManager.IMPORTANCE_HIGH,
@@ -366,7 +385,7 @@ class CallForegroundService : Service() {
       )
       .addAction(
         android.R.drawable.ic_lock_silent_mode,
-        "Mute",
+        muteLabel.ifEmpty { "Mute" },
         action(ACTION_MUTE),
       )
       .setContentIntent(open)

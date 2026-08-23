@@ -99,7 +99,18 @@ class IncomingCallNotification {
   /// Whether the sender asked for an audible ring rather than a quiet notice.
   bool get isRing => _application?['notification_type'] == 'ring';
 
-  bool get isVideo => _application?['m.call.intent'] == 'video';
+  bool get isVideo => videoFromContent(event.content);
+
+  /// Whether a ring asked for video, read straight from event content.
+  ///
+  /// The push handler has no session and no notification object -- only the
+  /// raw event -- and the intent key belongs in one place, so a notification
+  /// arriving on a locked phone cannot come to a different conclusion from
+  /// the banner.
+  static bool videoFromContent(Map<String, Object?> content) {
+    final application = content['application'];
+    return application is Map && application['m.call.intent'] == 'video';
+  }
 
   /// The device that placed the call, or null if the sender did not say.
   String? get senderDeviceId {

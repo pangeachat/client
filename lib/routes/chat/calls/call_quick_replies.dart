@@ -49,7 +49,12 @@ class CallQuickReplyList extends StatelessWidget {
             Semantics(
               label: l10n.back,
               button: true,
+              // a11y-ignore: named by the Semantics above. This card is part
+              // of the incoming-call banner, which lives above the router: a
+              // Tooltip has no Overlay to render into there, and the one that
+              // was tried greyed the card on CanvasKit and broke answering.
               child: IconButton(
+                // a11y-ignore: named by the Semantics above
                 onPressed: onBack,
                 icon: const Icon(Icons.arrow_back, size: 20),
                 visualDensity: VisualDensity.compact,

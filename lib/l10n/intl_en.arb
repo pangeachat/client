@@ -3593,6 +3593,7 @@
     "callEnded": "Call ended",
     "callHangUp": "Hang up",
     "callMute": "Mute",
+    "callOngoingChannel": "Ongoing call",
     "callUnmute": "Unmute",
     "callCameraOn": "Turn camera on",
     "callCameraOff": "Turn camera off",
@@ -3612,14 +3613,18 @@
     "callPeerBusy": "{name} is on another call",
     "@callPeerBusy": {
         "placeholders": {
-            "name": {}
+            "name": {
+                "type": "String"
+            }
         }
     },
     "callReturnOffer": "You were in a call before the app reloaded",
     "callPeerReconnecting": "{name} reconnecting...",
     "@callPeerReconnecting": {
         "placeholders": {
-            "name": {}
+            "name": {
+                "type": "String"
+            }
         }
     },
     "callFailedBusy": "You are already in a call",
