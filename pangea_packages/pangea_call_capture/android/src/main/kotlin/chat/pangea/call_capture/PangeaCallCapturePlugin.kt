@@ -35,6 +35,13 @@ class PangeaCallCapturePlugin :
   FlutterPlugin, MethodChannel.MethodCallHandler, EventChannel.StreamHandler {
 
   private companion object {
+    /// The most recent notification-action claim. Static, because the bridge
+    /// it guards is static: only the engine whose claim still matches may
+    /// release it.
+    @Volatile
+    @JvmStatic
+    var currentActionClaim = 0
+
     const val METHOD_CHANNEL = "pangea.chat/call_capture"
     const val EVENT_CHANNEL = "pangea.chat/call_capture/frames"
   }
@@ -43,8 +50,15 @@ class PangeaCallCapturePlugin :
   private var eventChannel: EventChannel? = null
   private var appContext: Context? = null
 
-  /// Whether THIS engine's instance holds the notification-action bridge.
-  private var ownsActionBridge = false
+  /// The bridge claim THIS engine holds, or 0 for none.
+  ///
+  /// A number rather than a boolean, and adjudicated against the static
+  /// counter below, because the bridge itself is static while the flag was
+  /// per-instance: an engine that claimed it, was superseded by a newer
+  /// engine, and only then detached still answered "yes, mine" -- and cleared
+  /// the live call's handler on its way out, so the notification's buttons
+  /// went dead. A claim can only be released by whoever still holds it.
+  private var actionClaim = 0
   private var events: EventChannel.EventSink? = null
 
   /**
@@ -99,10 +113,11 @@ class PangeaCallCapturePlugin :
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     // Only OUR claim, never someone else's: clearing unconditionally would
     // silence a live call's notification when a background engine detaches.
-    if (ownsActionBridge) {
+    if (actionClaim != 0 && actionClaim == currentActionClaim) {
       CallForegroundService.onAction = null
-      ownsActionBridge = false
+      currentActionClaim = 0
     }
+    actionClaim = 0
     appContext = null
     detach()
     methodChannel?.setMethodCallHandler(null)
@@ -140,8 +155,10 @@ class PangeaCallCapturePlugin :
         }
       }
       "fgs_claim_actions" -> {
-        // This engine has the call, so this engine takes the bridge.
-        ownsActionBridge = true
+        // This engine has the call, so this engine takes the bridge -- and
+        // takes the claim WITH it, so a superseded engine detaching later
+        // cannot clear a handler that is no longer its own.
+        actionClaim = ++currentActionClaim
         CallForegroundService.onAction = { action ->
           handler.post {
             Log.i("PangeaCallCapture", "forwarding notification action: $action")

@@ -84,6 +84,21 @@ class CallForegroundService : Service() {
     var active = false
       private set
 
+    /**
+     * Which call the service is serving, counted up on every start.
+     *
+     * A stop and the next start race whenever somebody redials straight after
+     * hanging up: the stop clears [active] and QUEUES its intent, so the new
+     * start is permitted and queues behind it. Without a generation on each
+     * intent the queued stop then tore down a service the new call had
+     * already been told it owned, and that call went into the background with
+     * no protection at all. A stop only stops the generation it was issued
+     * for.
+     */
+    private var generation = 0
+
+    const val EXTRA_GEN = "chat.pangea.call.GEN"
+
     fun start(context: Context, peer: String, video: Boolean): Boolean {
       if (!supported) return false
       if (active) return false
@@ -96,10 +111,12 @@ class CallForegroundService : Service() {
       ) {
         return false
       }
+      generation++
       val intent = Intent(context, CallForegroundService::class.java)
         .setAction(ACTION_START)
         .putExtra(EXTRA_PEER, peer)
         .putExtra(EXTRA_VIDEO, video)
+        .putExtra(EXTRA_GEN, generation)
       context.startForegroundService(intent)
       active = true
       return true
@@ -109,7 +126,9 @@ class CallForegroundService : Service() {
       if (!supported) return
       active = false
       context.startService(
-        Intent(context, CallForegroundService::class.java).setAction(ACTION_STOP),
+        Intent(context, CallForegroundService::class.java)
+          .setAction(ACTION_STOP)
+          .putExtra(EXTRA_GEN, generation),
       )
     }
 
@@ -126,6 +145,10 @@ class CallForegroundService : Service() {
   private var peer: String = ""
   private var running = false
 
+  /// The generation this instance is serving, so a stop issued for an older
+  /// call cannot take down a newer one.
+  private var servingGeneration = 0
+
   override fun onBind(intent: Intent?): IBinder? = null
 
   override fun onDestroy() {
@@ -139,15 +162,27 @@ class CallForegroundService : Service() {
   override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
     when (intent?.action) {
       ACTION_START -> {
+        val gen = intent.getIntExtra(EXTRA_GEN, 0)
         if (running) {
-          // Already someone's call. Two starts can only race like this in
-          // the sub-millisecond double-start whose loser is about to be
-          // refused the join claim -- its label must not overwrite the
-          // standing call's. Every legitimate sequential start is preceded
-          // by the previous call's stop in its teardown.
+          // A service that is still up, handed to a NEW call. start() refuses
+          // while the claim is held, so reaching here means the previous
+          // owner had already called stop and its intent is merely still in
+          // the queue -- this call legitimately owns the service now. It
+          // ADOPTS it: the notification takes the new name, and the serving
+          // generation moves, which is what makes the queued stop below
+          // recognise itself as stale.
+          //
+          // The sub-millisecond double-start the old comment worried about
+          // cannot get here: the loser is refused by the `active` gate in
+          // start() and never sends an intent at all.
+          servingGeneration = gen
+          peer = intent.getStringExtra(EXTRA_PEER) ?: peer
+          getSystemService(NotificationManager::class.java)
+            .notify(NOTIFICATION_ID, notification())
           return START_NOT_STICKY
         }
         peer = intent.getStringExtra(EXTRA_PEER) ?: ""
+        servingGeneration = gen
         if (promote(camera = false)) {
           running = true
         } else {
@@ -172,6 +207,16 @@ class CallForegroundService : Service() {
         if (running) promote(camera = intent.getBooleanExtra(EXTRA_VIDEO, false))
       }
       ACTION_STOP -> {
+        // Only the call this stop was issued for. A redial straight after a
+        // hangup queues its start behind this stop, and the new call adopts
+        // the running service above -- so a stop that still names the old
+        // generation would tear down a call that had just been told it was
+        // protected.
+        val gen = intent.getIntExtra(EXTRA_GEN, 0)
+        if (gen != 0 && servingGeneration != 0 && gen != servingGeneration) {
+          Log.i("PangeaCall", "ignoring a stale stop for generation $gen")
+          return START_NOT_STICKY
+        }
         running = false
         stopForeground(STOP_FOREGROUND_REMOVE)
         stopSelf()
