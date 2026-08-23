@@ -429,6 +429,8 @@ void main() {
           duration: const Duration(seconds: 30),
           video: false,
           callKey: r'$caller-membership',
+          answered: true,
+          declined: false,
           callerId: '@caller:server',
         );
 
@@ -437,6 +439,23 @@ void main() {
         expect(written.single['answered'], isTrue);
         expect(written.single['declined'], isFalse);
         expect(written.single['caller'], '@caller:server');
+      },
+    );
+
+    test(
+      'the survivor writes the outcome it is given, never an assumption',
+      () async {
+        final r = record(await sinkWith(() => spokenWord('hola')));
+        await r.writeSurvivorCard(
+          duration: Duration.zero,
+          video: false,
+          callKey: r'$nobody-came',
+          answered: false,
+          declined: false,
+          callerId: '@caller:server',
+        );
+        expect(written.single['answered'], isFalse);
+        expect(written.single['declined'], isFalse);
       },
     );
 
@@ -458,6 +477,8 @@ void main() {
           duration: const Duration(seconds: 30),
           video: false,
           callKey: r'$key',
+          answered: true,
+          declined: false,
         );
         expect(written, hasLength(1), reason: 'one card per device, ever');
       },

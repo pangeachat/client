@@ -62,6 +62,12 @@ class _ChatCallHostState extends State<ChatCallHost> {
     // showing the state it saw at that first build: "Connecting", while the
     // panel beside it counted the minutes.
     void settle() {
+      // Deferring means this can arrive after the host is gone -- the learner
+      // left the chat between the frame and its callback. dispose() has
+      // already detached by then, and attaching from here would leave a
+      // presenter nobody owns: the global tile would stand down for a panel
+      // that no longer exists, and the live call would have no UI anywhere.
+      if (!mounted) return;
       final now = _mine;
       if (now != null && !identical(_attachedTo, now)) {
         _attachedTo?.detachPresenter();

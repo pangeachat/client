@@ -491,6 +491,59 @@ void main() {
       expect(room.sent, isEmpty, reason: 'their card exists; nothing to add');
     });
 
+    test('the survivor never invents an answered call', () async {
+      // A caller whose app dies mid-ring leaves a membership that still reads
+      // as calling, so a call BACK looks like glare: peerAlsoPlaced turns on,
+      // the tie-break hands the writing to the dead device, and this side
+      // takes the survivor path -- for a call nobody ever joined. Writing
+      // that as answered puts "Voice call" in the conversation for a ring
+      // that was never picked up.
+      final client = await _bareClient();
+      client.accountData['m.direct'] = matrix.BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@friend:fakeServer.notExisting': ['!r:server'],
+        },
+      );
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final calls = _FakeCalls(client);
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        // We PLACED this one: no ring came in, so there is nothing to answer.
+        notificationEventId: null,
+        callerMembershipEventId: null,
+        mediaOverride: _FakeMedia(),
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      await calls.peerAlsoCalls(room);
+      expect(
+        session.hadPeer,
+        isFalse,
+        reason: 'nobody ever joined; the roster stayed empty',
+      );
+
+      session.timelineEventsOverride = () async => const [];
+      session.endCall();
+      await pumpEventQueue();
+      await session.survivorCheckNowForTest();
+
+      expect(room.sent, hasLength(1), reason: 'the attempt is still recorded');
+      expect(
+        room.sent.single['answered'],
+        isFalse,
+        reason: 'nobody answered it, and the survivor may not pretend they did',
+      );
+    });
+
     test('a call that never had a peer schedules no survivor', () async {
       final client = await _bareClient();
       final room = _RecordingRoom(id: '!r:server', client: client);

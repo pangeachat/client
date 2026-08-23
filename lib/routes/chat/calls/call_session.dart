@@ -561,6 +561,12 @@ class CallSession extends ChangeNotifier {
       duration: call.talkDuration,
       video: _usedVideo,
       callKey: key,
+      // What THIS side saw. The survivor path also covers the case where
+      // nobody ever arrived -- a call back that looked like glare because the
+      // other app died mid-ring -- and calling that answered would invent a
+      // conversation out of a ring nobody picked up.
+      answered: call.hadPeer,
+      declined: call.wasDeclined,
       callerId: caller,
     );
   }

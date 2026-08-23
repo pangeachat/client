@@ -145,6 +145,8 @@ class CallRecord {
     required Duration duration,
     required bool video,
     required String callKey,
+    required bool answered,
+    required bool declined,
     String? callerId,
   }) async {
     if (_cardEventId != null) return;
@@ -154,11 +156,14 @@ class CallRecord {
         _cardEventId = await _write(
           duration: duration,
           video: video,
-          // Only for calls this side saw ANSWERED -- the caller decides
-          // missed/declined outcomes, and a survivor writing one would be
-          // fabricating an outcome it cannot know.
-          answered: true,
-          declined: false,
+          // The outcome this side actually saw, never an assumption. Hard-
+          // coding "answered" here read every recovered call as a
+          // conversation, including the ones where nobody ever arrived: a
+          // caller whose app dies mid-ring leaves a membership that makes a
+          // call BACK look like glare, and the survivor then wrote "Voice
+          // call" for a call that never connected.
+          answered: answered,
+          declined: declined,
           callerId: callerId,
           callKey: callKey,
         );

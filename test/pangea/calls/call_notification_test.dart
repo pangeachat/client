@@ -39,6 +39,51 @@ void main() {
     );
   });
 
+  // A deferred callback outlives the widget that queued it. The learner can
+  // leave the chat between the frame and its callback, and the host attaching
+  // itself as the call's presenter from there leaves a presenter nobody owns:
+  // the global tile stands down for a panel that no longer exists and the
+  // live call has no UI anywhere. Every deferral in this folder answers the
+  // same question first -- am I still here.
+  test('every deferred callback checks it is still mounted', () {
+    final files = Directory(
+      'lib/routes/chat/calls',
+    ).listSync().whereType<File>().where((f) => f.path.endsWith('.dart'));
+    final offenders = <String>[];
+    for (final file in files) {
+      final lines = file.readAsStringSync().split('\n');
+      for (var i = 0; i < lines.length; i++) {
+        final line = lines[i];
+        if (line.trimLeft().startsWith('//')) continue;
+        if (!line.contains('addPostFrameCallback')) continue;
+        // The guard sits either in an inline body right here, or at the top
+        // of the function the callback names.
+        var guarded = lines
+            .skip(i)
+            .take(8)
+            .any((l) => l.contains('if (!mounted) return'));
+        final arrow = line.indexOf('=>');
+        if (!guarded && arrow >= 0) {
+          final rest = line.substring(arrow + 2).trim();
+          final name = rest.split('(').first.trim();
+          final at = lines.indexWhere((l) => l.contains('$name() {'));
+          guarded =
+              at >= 0 &&
+              lines
+                  .skip(at)
+                  .take(12)
+                  .any((l) => l.contains('if (!mounted) return'));
+        }
+        if (!guarded) offenders.add('${file.path}:${i + 1}');
+      }
+    }
+    expect(
+      offenders,
+      isEmpty,
+      reason: 'a post-frame callback must not act on a disposed widget',
+    );
+  });
+
   test('ordering uses the server stamp, never the sender\'s', () {
     final source = Directory(
       'lib/routes/chat/calls',
