@@ -137,7 +137,11 @@ class CallForegroundService : Service() {
       context.startService(
         Intent(context, CallForegroundService::class.java)
           .setAction(ACTION_SET_TYPES)
-          .putExtra(EXTRA_VIDEO, camera),
+          .putExtra(EXTRA_VIDEO, camera)
+          // Stamped when it is SENT: an ending call that turns its camera off
+          // as it goes must not strip the camera type from the video call
+          // that replaced it.
+          .putExtra(EXTRA_GEN, generation),
       )
     }
   }
@@ -204,6 +208,19 @@ class CallForegroundService : Service() {
         // Idempotent by construction: promoting again with the same types is
         // a no-op notification update. Camera only ever under a granted
         // camera permission -- checked here, the single seam.
+        //
+        // And only for the call that asked. A call turning its camera off on
+        // the way out would otherwise strip the camera type from the video
+        // call that replaced it, leaving Android's protection describing
+        // media that is no longer what is running.
+        val typesGen = intent.getIntExtra(EXTRA_GEN, 0)
+        if (typesGen != 0 &&
+          servingGeneration != 0 &&
+          typesGen != servingGeneration
+        ) {
+          Log.i("PangeaCall", "ignoring a stale type change for $typesGen")
+          return START_NOT_STICKY
+        }
         if (running) promote(camera = intent.getBooleanExtra(EXTRA_VIDEO, false))
       }
       ACTION_STOP -> {
@@ -222,6 +239,17 @@ class CallForegroundService : Service() {
         stopSelf()
       }
       ACTION_HANGUP, ACTION_MUTE -> {
+        // Only for the call whose notification carried it. A queued Hang Up
+        // from the previous call would otherwise end the one that replaced
+        // it, seconds after the user placed it.
+        val actionGen = intent.getIntExtra(EXTRA_GEN, 0)
+        if (actionGen != 0 &&
+          servingGeneration != 0 &&
+          actionGen != servingGeneration
+        ) {
+          Log.i("PangeaCall", "ignoring a stale ${intent.action} for $actionGen")
+          return START_NOT_STICKY
+        }
         val listener = onAction
         // Logged with whether anyone is listening: a claim that never
         // happened is otherwise indistinguishable from a button that does
@@ -281,10 +309,17 @@ class CallForegroundService : Service() {
       ).apply { setSound(null, null) },
     )
 
+    // Stamped with the call this notification is FOR. A Hang Up tapped while
+    // the main thread is busy can land after that call ended and the next one
+    // began, and an unstamped one then hung up a call nobody had touched.
+    // FLAG_UPDATE_CURRENT is what lets the stamp move when the notification
+    // is re-posted for a call that adopted the service.
     fun action(action: String): PendingIntent = PendingIntent.getService(
       this,
       action.hashCode(),
-      Intent(this, CallForegroundService::class.java).setAction(action),
+      Intent(this, CallForegroundService::class.java)
+        .setAction(action)
+        .putExtra(EXTRA_GEN, servingGeneration),
       PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
     )
 
