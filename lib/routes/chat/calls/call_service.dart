@@ -859,6 +859,7 @@ class CallService {
     Room room,
     String peerId, {
     DateTime? notBefore,
+    DateTime? goneAfter,
   }) {
     final callId = _current?.groupCallId ?? _callIdForTest;
     if (callId == null) return PeerPresence.unknown;
@@ -887,6 +888,18 @@ class CallService {
       // empty list as "no opinion" read a deliberate departure as a vanish
       // and made the other side sit through a 20-second grace for someone who
       // had already gone. No opinion means never having seen them write one.
+      //
+      // But only a departure written since WE joined can be a departure from
+      // THIS call. Presence may predate our join -- the person who called us
+      // was here first -- while a retraction cannot: it ends the call that was
+      // live when it was written. Counting an older one meant a redial moments
+      // after hanging up read the PREVIOUS call's retraction as this call's,
+      // and the answerer tore down a call that had just connected.
+      if (goneAfter != null &&
+          state is Event &&
+          state.originServerTs.isBefore(goneAfter)) {
+        continue;
+      }
       sawTheirState = true;
       for (final m in memberships) {
         if (m is! Map) continue;

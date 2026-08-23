@@ -1257,6 +1257,31 @@ void main() {
       );
     });
 
+    // A redial moments after hanging up: the PREVIOUS call's retraction is
+    // still the newest thing they wrote, and reading it as this call's
+    // departure tore down a call that had just connected.
+    test(
+      'a retraction from before we joined is not this call ending',
+      () async {
+        final (service, room) = await withRawPeerMemberships([]);
+        service.adoptCallIdForTest('this-call');
+        expect(
+          service.peerPresenceInCurrentCall(room, peer),
+          PeerPresence.gone,
+          reason: 'with no floor it is simply the newest thing they wrote',
+        );
+        expect(
+          service.peerPresenceInCurrentCall(
+            room,
+            peer,
+            goneAfter: DateTime.now().add(const Duration(seconds: 1)),
+          ),
+          PeerPresence.unknown,
+          reason: 'it predates our join, so it ended some earlier call',
+        );
+      },
+    );
+
     test('a peer with no state at all is the only no opinion', () async {
       final (service, room) = await withPeerState([]);
       service.adoptCallIdForTest('this-call');

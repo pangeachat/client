@@ -108,6 +108,12 @@ extension PangeaEvent on Event {
       // told the learner nothing and buried the last real message. The CALL
       // CARD below is the thing worth previewing.
       EventTypes.GroupCallMember,
+      // The ring and the decline are plumbing too, and they arrive while the
+      // learner is looking at the list. Neither has a body worth reading --
+      // the CALL CARD below is what says what happened, and it lands moments
+      // later.
+      PangeaEventTypes.callNotification,
+      PangeaEventTypes.callDecline,
     }.contains(type)) {
       return false;
     }

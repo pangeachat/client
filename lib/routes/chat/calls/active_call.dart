@@ -595,7 +595,12 @@ class ActiveCall extends ChangeNotifier {
     switch (calls.peerPresenceInCurrentCall(
       room,
       peer,
+      // Two floors, because the two answers are not symmetrical. Presence may
+      // predate our join by a ring's lifetime -- whoever called us was here
+      // first. A DEPARTURE may not: only a retraction written since we joined
+      // can be a departure from this call.
       notBefore: _stateFloor(room),
+      goneAfter: _ourJoinAt(room),
     )) {
       case PeerPresence.live:
         _peerMembershipSeen = true;
@@ -625,6 +630,15 @@ class ActiveCall extends ChangeNotifier {
   /// Null until our own membership has been written, which is the honest
   /// answer then: with no anchor there is nothing to measure staleness
   /// against, and the read falls back to expiry alone.
+  /// When THIS device joined the call, in server time.
+  DateTime? _ourJoinAt(matrix.Room room) {
+    final anchor = _membershipEventId;
+    if (anchor == null) return null;
+    return _ourJoinAtValue ??= calls.membershipWrittenAt(room, anchor);
+  }
+
+  DateTime? _ourJoinAtValue;
+
   DateTime? _stateFloor(matrix.Room room) {
     final anchor = _membershipEventId;
     if (anchor == null) return null;

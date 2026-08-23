@@ -70,6 +70,7 @@ class FakeCalls extends CallService {
     matrix.Room room,
     String peerId, {
     DateTime? notBefore,
+    DateTime? goneAfter,
   }) =>
       peerPresenceOverride ??
       (peerMembershipPresent ? PeerPresence.live : PeerPresence.gone);
