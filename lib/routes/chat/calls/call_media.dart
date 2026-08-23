@@ -175,8 +175,22 @@ class CallMedia {
       final late = room.localParticipant;
       if (late != null) return late;
     }
-    throw StateError('No local participant to publish through');
+    // Loud, but not fatal. The silent `?.` this replaced was wrong because it
+    // reported success for a step that never happened; throwing instead was
+    // wrong in the other direction, and the browser suite proved it within
+    // the hour -- three scenarios where answering published no membership,
+    // because a failure here aborts the connect before the room is ever told
+    // we joined. A call nobody can hear is bad; a call that refuses to exist
+    // is worse, and the flag lets the UI say which one this is.
+    Logs().w('No local participant to publish through; nothing was opened');
+    _captureRefused = true;
+    return null;
   }
+
+  /// Whether a capture device could not be opened because there was nothing
+  /// to open it through. Read by the UI so a call with no microphone says so.
+  bool get captureRefused => _captureRefused;
+  bool _captureRefused = false;
 
   Future<void> setMicrophoneEnabled(bool on) =>
       _setCapture(enableMicrophone, on);

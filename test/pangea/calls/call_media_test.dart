@@ -92,18 +92,34 @@ void main() {
   // participant to publish through, so the call connected and rang with this
   // side unable to be heard.
   test(
-    'turning the microphone on with nothing to publish through fails loudly',
-    () {
-      expect(RealSteps().mic(true), throwsA(isA<StateError>()));
+    'turning the microphone on with nothing to publish through says so',
+    () async {
+      final media = RealSteps();
+      await media.mic(true);
+      expect(
+        media.captureRefused,
+        isTrue,
+        reason: 'the step did not happen, and silence about that is the bug',
+      );
     },
   );
 
   test(
-    'turning the camera on with nothing to publish through fails loudly',
-    () {
-      expect(RealSteps().cam(true), throwsA(isA<StateError>()));
+    'turning the camera on with nothing to publish through says so',
+    () async {
+      final media = RealSteps();
+      await media.cam(true);
+      expect(media.captureRefused, isTrue);
     },
   );
+
+  // Throwing here was tried and is worse: a failure inside connect() aborts
+  // before the room is ever told we joined, so the call never happens at all.
+  // The browser suite found it within the hour -- three scenarios in one run
+  // where answering published no membership.
+  test('and does not take the call down with it', () async {
+    await expectLater(RealSteps().mic(true), completes);
+  });
 
   test('turning a device OFF with nothing to release is a no-op', () async {
     await RealSteps().mic(false);
