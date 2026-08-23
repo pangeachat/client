@@ -361,6 +361,22 @@ class ActiveCall extends ChangeNotifier {
     }
   }
 
+  /// The platform saying the ongoing-call service never actually started.
+  ///
+  /// `start()` has to answer before Android runs the service's own start
+  /// command -- that is what `startForegroundService` means -- so its success
+  /// is "asked for", not "running". When the promotion is then refused the
+  /// service stops itself, and without this the call went into the background
+  /// believing it was protected by something that had already gone. Giving the
+  /// claim back also re-arms the retry: the next moment the app is
+  /// legitimately in the foreground, it asks again.
+  void foregroundRefused() {
+    if (!_foregroundClaimed && !_foregroundPending) return;
+    Logs().w('The call foreground service refused to start; not protected');
+    _foregroundClaimed = false;
+    _foregroundPending = true;
+  }
+
   /// Gates the recording to match the microphone button. Muting stops LiveKit
   /// publishing to the peer; this stops the recorder capturing too, which on
   /// Android it otherwise would — the tap there is upstream of the publish mute.

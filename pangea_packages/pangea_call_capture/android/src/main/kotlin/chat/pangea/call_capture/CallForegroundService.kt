@@ -38,6 +38,17 @@ class CallForegroundService : Service() {
     const val ACTION_SET_TYPES = "chat.pangea.call.SET_TYPES"
     const val ACTION_HANGUP = "chat.pangea.call.HANGUP"
     const val ACTION_MUTE = "chat.pangea.call.MUTE"
+
+    /**
+     * Reported to Dart when the service could NOT promote itself.
+     *
+     * start() has to answer before onStartCommand runs -- that is how
+     * startForegroundService works -- so its `true` means "asked for", not
+     * "running". Left unsaid, Dart latched a claim on a service that had
+     * already stopped itself, and the call went into the background believing
+     * it was protected when nothing was protecting it.
+     */
+    const val ACTION_FAILED = "chat.pangea.call.PROMOTION_FAILED"
     const val EXTRA_PEER = "peer"
     const val EXTRA_VIDEO = "video"
     const val CHANNEL_ID = "pangea_ongoing_call"
@@ -145,6 +156,12 @@ class CallForegroundService : Service() {
           // the failure and idling here is the one thing that turns a
           // refused promotion into a system kill. Stopping is the clean
           // degrade: no service, and the call itself never depended on one.
+          //
+          // And SAID so: Dart's claim was taken when start() returned, which
+          // is before this ran, so without this it goes on believing the call
+          // is protected in the background by a service that has just stopped.
+          active = false
+          onAction?.invoke("promotion-failed")
           stopSelf()
         }
       }

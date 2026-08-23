@@ -1631,6 +1631,31 @@ void main() {
       );
     });
 
+    // `startForegroundService` answers before Android runs the service's own
+    // start command, so a success there means "asked for", not "running". A
+    // refused promotion stops the service, and the call used to go into the
+    // background believing it was protected by something already gone.
+    test('a refused promotion gives the claim back', () async {
+      final (call, calls, fgs) = await withForeground();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      expect(trace.steps, contains('fgs.start(video: false)'));
+
+      // The platform reports, after the fact, that it never came up.
+      call.foregroundRefused();
+      await call.hangUp();
+
+      expect(
+        trace.steps,
+        isNot(contains('fgs.stop')),
+        reason:
+            'there is nothing to stop, and stopping could take down a '
+            'service another call legitimately owns',
+      );
+      expect(fgs.startReturns, isTrue);
+    });
+
     test('starts before anything is awaited, and stops in teardown', () async {
       final (call, calls, _) = await withForeground();
       calls.devicesInCall = [calls.client.deviceID!];

@@ -297,6 +297,8 @@ class CallSession extends ChangeNotifier {
           endCall();
         case 'mute':
           unawaited(toggleMute());
+        case 'promotion-failed':
+          call.foregroundRefused();
       }
     });
   }
