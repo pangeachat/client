@@ -143,13 +143,13 @@ class CallMedia {
   // instead of through these one-liners, which is not warranted for a failure
   // this narrow. Recorded so it is a known limitation, not a surprise.
   @protected
-  Future<void> enableMicrophone(bool on) async => _publishingAs(
+  Future<void> enableMicrophone(bool on) async => (await _publishingAs(
     on,
-  )?.setMicrophoneEnabled(on, audioCaptureOptions: microphone);
+  ))?.setMicrophoneEnabled(on, audioCaptureOptions: microphone);
 
   @protected
   Future<void> enableCamera(bool on) async =>
-      _publishingAs(on)?.setCameraEnabled(on);
+      (await _publishingAs(on))?.setCameraEnabled(on);
 
   /// The participant a capture change acts through, or null when there is
   /// nothing to act on and that is fine.
@@ -160,10 +160,21 @@ class CallMedia {
   /// with this side unable to be heard. Turning one OFF may find nothing --
   /// muting a call that has already ended releases a device that is already
   /// released, which is a no-op, not a failure.
-  LocalParticipant? _publishingAs(bool on) {
-    final local = room.localParticipant;
-    if (local != null) return local;
+  Future<LocalParticipant?> _publishingAs(bool on) async {
+    final ready = room.localParticipant;
+    if (ready != null) return ready;
     if (!on) return null;
+    // Waited for, briefly, before being called a failure. The participant
+    // appears as part of connecting, and asking a beat too early is a race
+    // rather than an error -- turning that race into a throw failed whole
+    // calls that were coming up perfectly well. A participant that never
+    // arrives is still a failure, and still says so.
+    for (var i = 0; i < 20; i++) {
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+      if (_released) return null;
+      final late = room.localParticipant;
+      if (late != null) return late;
+    }
     throw StateError('No local participant to publish through');
   }
 
