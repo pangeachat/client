@@ -6,6 +6,8 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat_list/open_roles_indicator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -84,6 +86,21 @@ class ChatListItemSubtitle extends StatelessWidget {
 
     final event = room.lastEvent;
     if (event == null) return Text(L10n.of(context).emptyChat, style: style);
+    if (event.type == PangeaEventTypes.call) {
+      // The same words the card in the conversation uses, so the list and the
+      // conversation agree. Left to the SDK this reads "User sent a
+      // pangea.call event".
+      return Text(
+        callPreviewLine(
+          L10n.of(context),
+          event,
+          outgoing: event.senderId == room.client.userID,
+        ),
+        style: style,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+      );
+    }
     if (!_showPangeaContent(event)) {
       return FutureBuilder(
         future: event.calcLocalizedBody(

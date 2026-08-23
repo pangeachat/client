@@ -176,6 +176,14 @@ abstract class ClientManager {
         PangeaEventTypes.activityPlan,
         PangeaEventTypes.activitySummary,
         EventTypes.RoomMember,
+        // A finished call is the newest thing that happened in that room, and
+        // the chat list should say so. Without this the card can never become
+        // the room's last event: hiding the membership plumbing stopped the
+        // list reading "sent a com.famedly.call.member event", but left
+        // "No messages yet" on a room where two people had just talked. The
+        // card carries a plain body -- "Voice call (0:13)", "Missed call",
+        // "Call declined" -- written for exactly this line.
+        PangeaEventTypes.call,
       },
       // Pangea#
     );

@@ -17,6 +17,31 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 /// The same event is read from both sides of a direct message, so direction is
 /// derived per viewer: the account that placed the call sees it as outgoing, the
 /// other as incoming.
+/// What the CHAT LIST says about a room whose newest event is a call.
+///
+/// The same words the card in the conversation uses, so the list and the
+/// conversation agree. Hiding the membership plumbing stopped the list
+/// reading "sent a com.famedly.call.member event", but on its own it left
+/// "No messages yet" on a room where two people had just talked -- and the
+/// SDK's own fallback for an unknown message type is no better ("User sent a
+/// pangea.call event"). A call is worth a line of its own.
+String callPreviewLine(L10n l10n, Event event, {required bool outgoing}) {
+  final declined = event.content['declined'] == true;
+  final answered = event.content['answered'] == true;
+  final video = event.content['video'] == true;
+  if (declined) {
+    return outgoing ? l10n.callHistoryDeclined : l10n.callHistoryYouDeclined;
+  }
+  if (!answered) {
+    if (outgoing) return l10n.callHistoryNoAnswer;
+    return video ? l10n.callHistoryMissedVideoCall : l10n.callHistoryMissedCall;
+  }
+  final label = video ? l10n.callHistoryVideoCall : l10n.callHistoryVoiceCall;
+  final duration = CallRecord.durationOf(event.content);
+  if (duration == Duration.zero) return label;
+  return '$label · ${CallTimelineEvent.formatDuration(duration)}';
+}
+
 class CallTimelineEvent extends StatelessWidget {
   final Event event;
 
@@ -142,7 +167,7 @@ class CallTimelineEvent extends StatelessWidget {
                 ),
                 if (connected) ...[
                   Text(
-                    '  ${_formatDuration(_duration)}',
+                    '  ${formatDuration(_duration)}',
                     style: theme.textTheme.bodySmall?.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
@@ -180,7 +205,7 @@ class CallTimelineEvent extends StatelessWidget {
 
   /// `M:SS`, or `H:MM:SS` once a call runs past an hour. Seconds are always two
   /// digits so the colon does not jump around as a call ticks over.
-  static String _formatDuration(Duration d) {
+  static String formatDuration(Duration d) {
     final seconds = d.inSeconds;
     final s = (seconds % 60).toString().padLeft(2, '0');
     final m = (seconds ~/ 60) % 60;

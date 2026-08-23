@@ -1,8 +1,12 @@
+import 'package:flutter/material.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
+import 'package:fluffychat/routes/chat_list/chat_list_item_subtitle.dart';
 import '../get_test_client.dart';
 
 /// What the chat LIST shows for a room a call happened in.
@@ -44,5 +48,81 @@ void main() {
 
   test('the call CARD is', () {
     expect(of(PangeaEventTypes.call).isVisibleLastEvent, isTrue);
+  });
+
+  // Being eligible as a last event is only half of it. Left to the SDK the
+  // list then reads "User sent a pangea.call event", which is worse than the
+  // "No messages yet" it replaced. The list says what the conversation says.
+  Event card({
+    bool answered = true,
+    bool declined = false,
+    bool video = false,
+    int durationMs = 8000,
+    String sender = '@a:server',
+  }) => Event(
+    type: PangeaEventTypes.call,
+    content: {
+      'caller': sender,
+      'answered': answered,
+      'declined': declined,
+      'video': video,
+      'duration_ms': durationMs,
+    },
+    senderId: sender,
+    eventId: r'$card',
+    originServerTs: DateTime.now(),
+    room: Room(id: '!r:server', client: client),
+  );
+
+  Future<String> preview(WidgetTester tester, Event event) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: ChatListItemSubtitle(
+            room: event.room,
+            style: const TextStyle(),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    return tester.widget<Text>(find.byType(Text)).data!;
+  }
+
+  testWidgets('an answered call reads as a call, with its length', (
+    tester,
+  ) async {
+    final event = card();
+    event.room.lastEvent = event;
+    expect(await preview(tester, event), 'Voice call · 0:08');
+  });
+
+  testWidgets('a missed call reads as missed, not as an event', (tester) async {
+    final event = card(answered: false, durationMs: 0);
+    event.room.lastEvent = event;
+    final text = await preview(tester, event);
+    expect(text, 'Missed call');
+    expect(text, isNot(contains('pangea.call')));
+  });
+
+  testWidgets('a declined call, and the caller reads the other half', (
+    tester,
+  ) async {
+    final theirs = card(answered: false, declined: true);
+    theirs.room.lastEvent = theirs;
+    expect(await preview(tester, theirs), 'You declined this call');
+
+    final mine = card(answered: false, declined: true, sender: client.userID!);
+    mine.room.lastEvent = mine;
+    expect(await preview(tester, mine), 'Call declined');
+  });
+
+  testWidgets('a video call says so', (tester) async {
+    final event = card(video: true, durationMs: 62000);
+    event.room.lastEvent = event;
+    expect(await preview(tester, event), 'Video call · 1:02');
   });
 }
