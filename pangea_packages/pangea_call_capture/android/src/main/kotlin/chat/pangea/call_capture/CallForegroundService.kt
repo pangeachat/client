@@ -258,7 +258,15 @@ class CallForegroundService : Service() {
           Log.i("PangeaCall", "ignoring a stale type change for $typesGen")
           return START_NOT_STICKY
         }
-        if (running) promote(camera = intent.getBooleanExtra(EXTRA_VIDEO, false))
+        // A refused type change is a refusal like any other. Ignoring the
+        // false left a video call whose service still described microphone
+        // only -- Android protecting media that is not what is running, and
+        // Dart believing the promotion had happened.
+        if (running &&
+          !promote(camera = intent.getBooleanExtra(EXTRA_VIDEO, false))
+        ) {
+          onAction?.invoke("promotion-failed")
+        }
       }
       ACTION_STOP -> {
         // Only the call this stop was issued for. A redial straight after a

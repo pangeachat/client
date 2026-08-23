@@ -1799,18 +1799,65 @@ void main() {
       await call.start(roomStub(calls.client), video: false);
       expect(trace.steps, contains('fgs.start(video: false)'));
 
-      // The platform reports, after the fact, that it never came up.
+      // The platform reports, after the fact, that it never came up -- and
+      // says no again when asked. Nothing is running, so teardown has nothing
+      // to stop, and stopping anyway could take down a service another call
+      // legitimately owns.
+      fgs.startReturns = false;
       call.foregroundRefused();
+      await pumpEventQueue();
       await call.hangUp();
 
+      expect(trace.steps, isNot(contains(startsWith('fgs.stop'))));
+    });
+
+    test('a refusal whose retry succeeds is stopped like any other', () async {
+      final (call, calls, fgs) = await withForeground();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+
+      // The retry comes up. The claim is real again, so teardown owes the
+      // platform a stop -- and it must carry the generation the RETRY was
+      // given, not the one the refused attempt held.
+      call.foregroundRefused();
+      await pumpEventQueue();
+      final retried = fgs.lastGeneration;
+      await call.hangUp();
+
+      expect(trace.steps, contains('fgs.stop(gen: $retried)'));
+    });
+
+    test('a refusal mid-call asks again, once', () async {
+      // The platform answers start() before it runs the service, so a refusal
+      // can land at any second of the call -- including long after the one
+      // checkpoint that used to be the only retry. A call refused at second
+      // thirty went into a pocket believing it was protected.
+      final (call, calls, fgs) = await withForeground();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      final startsAfterJoin = trace.steps
+          .where((s) => s.startsWith('fgs.start'))
+          .length;
+
+      call.foregroundRefused();
+      await pumpEventQueue();
       expect(
-        trace.steps,
-        isNot(contains(startsWith('fgs.stop'))),
-        reason:
-            'there is nothing to stop, and stopping could take down a '
-            'service another call legitimately owns',
+        trace.steps.where((s) => s.startsWith('fgs.start')).length,
+        startsAfterJoin + 1,
+        reason: 'the refusal was not answered with another attempt',
       );
-      expect(fgs.startReturns, isTrue);
+
+      // And only once: a refusal from the background will not have changed
+      // its mind a millisecond later, and a loop is a battery drain.
+      call.foregroundRefused();
+      await pumpEventQueue();
+      expect(
+        trace.steps.where((s) => s.startsWith('fgs.start')).length,
+        startsAfterJoin + 1,
+      );
+      await call.hangUp();
     });
 
     test('starts before anything is awaited, and stops in teardown', () async {

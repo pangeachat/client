@@ -396,7 +396,24 @@ class ActiveCall extends ChangeNotifier {
     Logs().w('The call foreground service refused to start; not protected');
     _foregroundClaimed = false;
     _foregroundPending = true;
+    // And ASK AGAIN, here, rather than only at the one checkpoint after media
+    // connects. A refusal is asynchronous -- the platform answers `start()`
+    // before it runs the service -- so it can land at any moment of the call,
+    // including long after that checkpoint has passed. Left to the checkpoint
+    // alone, a call refused at second thirty went into the learner's pocket
+    // believing it was protected by a service that had already stopped.
+    //
+    // Once, and only while the call is live and on screen: a refusal from the
+    // background is Android saying no for a reason that will not have changed
+    // by trying again immediately, and a retry loop is how a refusal becomes
+    // a battery drain.
+    if (_retriedForeground || _ending || _disposed) return;
+    _retriedForeground = true;
+    unawaited(_startForeground(video: _isVideoCall));
   }
+
+  /// One retry per call, so a refusal cannot become a loop.
+  bool _retriedForeground = false;
 
   /// Gates the recording to match the microphone button. Muting stops LiveKit
   /// publishing to the peer; this stops the recorder capturing too, which on
