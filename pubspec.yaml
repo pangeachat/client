@@ -123,7 +123,7 @@ dependencies:
   get_storage: ^2.1.1
   in_app_purchase: ^3.3.0
   jwt_decode: ^0.3.1
-  material_symbols_icons: ^4.2928.1  # >=4.2928.0 dropped IconData subclassing (final in Flutter 3.44+)
+  material_symbols_icons: ^4.2741.0
   open_file: ^3.3.2
   sentry_flutter: ^9.17.0
   shimmer: ^3.0.0
