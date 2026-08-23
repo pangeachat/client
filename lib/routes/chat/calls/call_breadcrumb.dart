@@ -13,7 +13,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// heartbeat stopping, racing -- and often beating -- the startup scan. The
 /// breadcrumb answers to nobody's timer but its own age bound.
 class CallBreadcrumb {
-  static const _key = 'pangea.call.breadcrumb';
+  /// One trace PER ACCOUNT. A learner signed into two accounts has two
+  /// independent calls to return to, and a single global key made them one:
+  /// the second account's clean teardown erased the first account's way back
+  /// to a call somebody was still sitting in.
+  static String keyFor(String account) => 'pangea.call.breadcrumb.$account';
 
   /// How old a breadcrumb may be and still offer a return. Generous against
   /// the SFU's ~20s room retention plus a slow app start; the tap-time join
@@ -42,6 +46,7 @@ class CallBreadcrumb {
   });
 
   static Future<void> drop({
+    required String account,
     required String roomId,
     required String membershipEventId,
     bool video = false,
@@ -49,7 +54,7 @@ class CallBreadcrumb {
     try {
       final store = await SharedPreferences.getInstance();
       await store.setString(
-        _key,
+        keyFor(account),
         jsonEncode({
           'roomId': roomId,
           'membershipEventId': membershipEventId,
@@ -65,10 +70,10 @@ class CallBreadcrumb {
   }
 
   /// The clean-teardown erase. A breadcrumb that survives is the signal.
-  static Future<void> clear() async {
+  static Future<void> clear(String account) async {
     try {
       final store = await SharedPreferences.getInstance();
-      await store.remove(_key);
+      await store.remove(keyFor(account));
     } catch (e, s) {
       Logs().w('Could not clear the call breadcrumb', e, s);
     }
@@ -76,10 +81,11 @@ class CallBreadcrumb {
 
   /// The breadcrumb, if one is standing and young enough. An expired one is
   /// cleared on the way out -- it must not resurface on the next start.
-  static Future<CallBreadcrumb?> read() async {
+  static Future<CallBreadcrumb?> read(String account) async {
+    final key = keyFor(account);
     try {
       final store = await SharedPreferences.getInstance();
-      final raw = store.getString(_key);
+      final raw = store.getString(key);
       if (raw == null) return null;
       final json = jsonDecode(raw);
       if (json is! Map) return null;
@@ -87,7 +93,7 @@ class CallBreadcrumb {
       final membership = json['membershipEventId'];
       final at = json['at'];
       if (roomId is! String || membership is! String || at is! int) {
-        await store.remove(_key);
+        await store.remove(key);
         return null;
       }
       final crumb = CallBreadcrumb(
@@ -97,7 +103,7 @@ class CallBreadcrumb {
         at: DateTime.fromMillisecondsSinceEpoch(at),
       );
       if (DateTime.now().difference(crumb.at) > maxAge) {
-        await store.remove(_key);
+        await store.remove(key);
         return null;
       }
       return crumb;

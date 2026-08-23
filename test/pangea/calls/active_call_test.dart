@@ -751,6 +751,7 @@ void main() {
     test('keeps the breadcrumb, so returning can be tried again', () async {
       SharedPreferences.setMockInitialValues({});
       await CallBreadcrumb.drop(
+        account: 'active-call-test',
         roomId: '!r:server',
         membershipEventId: r'$original-membership',
       );
@@ -766,7 +767,7 @@ void main() {
       expect(call.stage, CallStage.failed);
       await pumpEventQueue();
       expect(
-        await CallBreadcrumb.read(),
+        await CallBreadcrumb.read('active-call-test'),
         isNotNull,
         reason: 'the way back must outlive a failed attempt to take it',
       );
@@ -778,11 +779,15 @@ void main() {
       calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
       await pumpEventQueue();
-      expect(await CallBreadcrumb.read(), isNotNull, reason: 'dropped on join');
+      expect(
+        await CallBreadcrumb.read('active-call-test'),
+        isNotNull,
+        reason: 'dropped on join',
+      );
 
       await call.hangUp();
       await pumpEventQueue();
-      expect(await CallBreadcrumb.read(), isNull);
+      expect(await CallBreadcrumb.read('active-call-test'), isNull);
     });
   });
 

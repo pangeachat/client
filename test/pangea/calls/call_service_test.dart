@@ -873,7 +873,7 @@ void main() {
       // after the reload -- racing this very scan. The call's own local
       // trace answers to nothing but its age.
       SharedPreferences.setMockInitialValues({
-        'pangea.call.breadcrumb':
+        'pangea.call.breadcrumb.call-service-test':
             '{"roomId":"$roomId","membershipEventId":"\$from-crumb",'
             '"at":${DateTime.now().millisecondsSinceEpoch}}',
       });
@@ -889,7 +889,7 @@ void main() {
 
     test('a crumb for an unknown room falls back to the scan', () async {
       SharedPreferences.setMockInitialValues({
-        'pangea.call.breadcrumb':
+        'pangea.call.breadcrumb.call-service-test':
             '{"roomId":"!gone:server","membershipEventId":"\$x",'
             '"at":${DateTime.now().millisecondsSinceEpoch}}',
       });

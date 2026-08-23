@@ -1315,7 +1315,7 @@ class CallService {
     // erased only by its clean teardown, refresh-proof and answerable only
     // to its own age bound. Membership remains the fallback for a device
     // whose local storage did not survive.
-    final crumb = await CallBreadcrumb.read();
+    final crumb = await CallBreadcrumb.read(client.clientName);
     if (crumb != null) {
       final room = client.getRoomById(crumb.roomId);
       // Deliberately NOT re-checked as a direct chat: only a direct-chat call

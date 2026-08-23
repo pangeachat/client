@@ -790,6 +790,7 @@ class ActiveCall extends ChangeNotifier {
     Logs().i('Leaving the call breadcrumb for ${room.id}');
     unawaited(
       CallBreadcrumb.drop(
+        account: room.client.clientName,
         roomId: room.id,
         membershipEventId: anchor,
         // So a return brings the call back as what it was, camera and all.
@@ -1716,7 +1717,10 @@ class ActiveCall extends ChangeNotifier {
     // Read from the OUTCOME, not the stage: the stage becomes failed after
     // this teardown, and the outcome is decided before it, precisely so the
     // screen can say what went wrong straight away.
-    if (_outcome != CallOutcome.failed) unawaited(CallBreadcrumb.clear());
+    final crumbAccount = _room?.client.clientName;
+    if (_outcome != CallOutcome.failed && crumbAccount != null) {
+      unawaited(CallBreadcrumb.clear(crumbAccount));
+    }
     unawaited(_declines?.cancel());
     _declines = null;
     unawaited(_peerRings?.cancel());

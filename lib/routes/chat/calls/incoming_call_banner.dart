@@ -305,7 +305,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       return;
     }
     matrix.Logs().i('The call to return to is over; withdrawing the offer');
-    unawaited(CallBreadcrumb.clear());
+    unawaited(CallBreadcrumb.clear(offer.room.client.clientName));
     _clearOffer();
   }
 
@@ -317,7 +317,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// answer, and it travels.
   void _endFromOffer(RejoinOffer offer) {
     final service = _service;
-    unawaited(CallBreadcrumb.clear());
+    unawaited(CallBreadcrumb.clear(offer.room.client.clientName));
     _clearOffer();
     if (service == null) return;
     unawaited(
@@ -458,7 +458,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       // The trace goes with the offer: a genuine newer call for this room
       // means the old one is finished, and a crumb left standing would
       // resurrect its dead Return offer on a reload inside the age bound.
-      unawaited(CallBreadcrumb.clear());
+      unawaited(CallBreadcrumb.clear(ring.event.room.client.clientName));
       _clearOffer();
     }
     // Never one already turned down.
