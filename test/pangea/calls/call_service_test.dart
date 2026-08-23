@@ -1260,6 +1260,30 @@ void main() {
     // A redial moments after hanging up: the PREVIOUS call's retraction is
     // still the newest thing they wrote, and reading it as this call's
     // departure tore down a call that had just connected.
+    // The caller joined BEFORE we answered, so their live membership is older
+    // than our join. Gating the whole event on the departure floor skipped it,
+    // presence fell to "cannot see", and the remembered sighting turned that
+    // into "gone" -- calls died two seconds after being answered, which only
+    // the browser suite could see.
+    test(
+      'their live membership counts even though it predates our join',
+      () async {
+        final (service, room) = await withPeerState([
+          {'call_id': 'this-call', 'expires_ts': inFuture()},
+        ]);
+        service.adoptCallIdForTest('this-call');
+        expect(
+          service.peerPresenceInCurrentCall(
+            room,
+            peer,
+            goneAfter: DateTime.now().add(const Duration(minutes: 1)),
+          ),
+          PeerPresence.live,
+          reason: 'the departure floor must not hide their presence',
+        );
+      },
+    );
+
     test(
       'a retraction from before we joined is not this call ending',
       () async {

@@ -889,18 +889,12 @@ class CallService {
       // and made the other side sit through a 20-second grace for someone who
       // had already gone. No opinion means never having seen them write one.
       //
-      // But only a departure written since WE joined can be a departure from
-      // THIS call. Presence may predate our join -- the person who called us
-      // was here first -- while a retraction cannot: it ends the call that was
-      // live when it was written. Counting an older one meant a redial moments
-      // after hanging up read the PREVIOUS call's retraction as this call's,
-      // and the answerer tore down a call that had just connected.
-      if (goneAfter != null &&
-          state is Event &&
-          state.originServerTs.isBefore(goneAfter)) {
-        continue;
-      }
-      sawTheirState = true;
+      // PRESENCE is read first, and from every event that passed the
+      // staleness floor. The caller joined before we answered, so their live
+      // membership is older than our join -- gating the whole event on the
+      // departure floor below skipped it, presence fell to "cannot see", and
+      // the remembered sighting turned that into "gone". Calls died two
+      // seconds after being answered.
       for (final m in memberships) {
         if (m is! Map) continue;
         if (m['call_id'] != callId) continue;
@@ -908,6 +902,17 @@ class CallService {
         if (expires is! int) return PeerPresence.live;
         if (expires > now) return PeerPresence.live;
       }
+      // Only a departure written since WE joined can be a departure from THIS
+      // call. Presence may predate our join; a retraction cannot, because it
+      // ends the call that was live when it was written. Counting an older one
+      // meant a redial moments after hanging up read the PREVIOUS call's
+      // retraction as this call's.
+      if (goneAfter != null &&
+          state is Event &&
+          state.originServerTs.isBefore(goneAfter)) {
+        continue;
+      }
+      sawTheirState = true;
     }
     // Nothing live of theirs for THIS call. If they wrote state at all, that
     // is them gone; if they never did, we genuinely cannot tell.
