@@ -143,7 +143,7 @@ class PangeaCallCapturePlugin :
       "fgs_start" -> {
         val context = appContext
         if (context == null) {
-          result.success(false)
+          result.success(0)
         } else {
           result.success(
             CallForegroundService.start(
@@ -168,12 +168,18 @@ class PangeaCallCapturePlugin :
         result.success(null)
       }
       "fgs_stop" -> {
-        appContext?.let { CallForegroundService.stop(it) }
+        appContext?.let {
+          CallForegroundService.stop(it, call.argument<Int>("gen") ?: 0)
+        }
         result.success(null)
       }
       "fgs_camera" -> {
         appContext?.let {
-          CallForegroundService.setTypes(it, call.argument<Boolean>("on") ?: false)
+          CallForegroundService.setTypes(
+            it,
+            call.argument<Boolean>("on") ?: false,
+            call.argument<Int>("gen") ?: 0,
+          )
         }
         result.success(null)
       }

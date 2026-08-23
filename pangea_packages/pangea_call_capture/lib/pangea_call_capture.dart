@@ -134,20 +134,32 @@ class CallForegroundControl {
 
   const CallForegroundControl();
 
-  Future<bool> start({required String peer, required bool video}) async =>
-      await _control.invokeMethod<bool>('fgs_start', {
+  /// Starts the ongoing-call service and returns the GENERATION this call
+  /// owns, or 0 if the platform refused.
+  ///
+  /// The number is the call's claim on the service, and every later
+  /// instruction carries it back. Without it, an instruction from one call
+  /// could be applied to the next: the hop from here to the platform is a
+  /// queue, so a camera update or a stop from a call that has ended can
+  /// arrive after the following call has started.
+  Future<int> start({required String peer, required bool video}) async =>
+      await _control.invokeMethod<int>('fgs_start', {
         'peer': peer,
         'video': video,
       }) ??
-      false;
+      0;
 
-  Future<void> stop() => _control.invokeMethod<void>('fgs_stop');
+  Future<void> stop({required int generation}) =>
+      _control.invokeMethod<void>('fgs_stop', {'gen': generation});
 
   /// Adds or removes the CAMERA service type. Idempotent; camera only ever
   /// under a granted camera permission (checked on the platform side, the
   /// single seam).
-  Future<void> setCamera(bool on) =>
-      _control.invokeMethod<void>('fgs_camera', {'on': on});
+  Future<void> setCamera(bool on, {required int generation}) =>
+      _control.invokeMethod<void>('fgs_camera', {
+        'on': on,
+        'gen': generation,
+      });
 
   /// The current handler's epoch. The handler slot is process-global and
   /// last-writer-wins; the epoch is what stops an OLD call's teardown --

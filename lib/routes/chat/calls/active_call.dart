@@ -306,11 +306,18 @@ class ActiveCall extends ChangeNotifier {
   /// peer; the call itself only knows the room.
   String foregroundLabel = '';
 
+  /// This call's claim on the ongoing-call service: the generation the
+  /// platform issued when it started, carried back on every later
+  /// instruction so none of them can land on the following call.
+  int _foregroundGeneration = 0;
+
   /// Adds or removes the CAMERA type on the running service. Safe to call on
   /// any platform; a call without the service ignores it.
   Future<void> setForegroundCamera(bool on) async {
+    final generation = _foregroundGeneration;
+    if (generation == 0) return;
     try {
-      await _foreground?.setCamera(on);
+      await _foreground?.setCamera(on, generation: generation);
     } catch (e, s) {
       Logs().w('Could not update the call service camera type', e, s);
     }
@@ -334,10 +341,14 @@ class ActiveCall extends ChangeNotifier {
     final foreground = _foreground;
     if (foreground == null) return;
     try {
-      final started = await foreground.start(
+      // The generation IS the claim: this call's ticket to instruct the
+      // service later. Zero means the platform refused.
+      final generation = await foreground.start(
         peer: foregroundLabel,
         video: video,
       );
+      final started = generation != 0;
+      _foregroundGeneration = generation;
       _foregroundClaimed = started;
       _foregroundPending = !started;
       // Reconciled after the step, exactly as the media connect does, and for
@@ -349,7 +360,10 @@ class ActiveCall extends ChangeNotifier {
         _foregroundClaimed = false;
         _foregroundPending = false;
         unawaited(
-          _foreground?.stop().catchError((Object e, StackTrace s) {
+          _foreground?.stop(generation: generation).catchError((
+            Object e,
+            StackTrace s,
+          ) {
             Logs().w('Could not stop the late call foreground service', e, s);
           }),
         );
@@ -1681,7 +1695,10 @@ class ActiveCall extends ChangeNotifier {
     // would take down the live call's.
     if (_foregroundClaimed) {
       unawaited(
-        _foreground?.stop().catchError((Object e, StackTrace s) {
+        _foreground?.stop(generation: _foregroundGeneration).catchError((
+          Object e,
+          StackTrace s,
+        ) {
           Logs().w('Could not stop the call foreground service', e, s);
         }),
       );

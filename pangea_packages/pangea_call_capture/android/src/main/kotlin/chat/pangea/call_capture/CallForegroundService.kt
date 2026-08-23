@@ -99,9 +99,14 @@ class CallForegroundService : Service() {
 
     const val EXTRA_GEN = "chat.pangea.call.GEN"
 
-    fun start(context: Context, peer: String, video: Boolean): Boolean {
-      if (!supported) return false
-      if (active) return false
+    /// Returns the GENERATION this call owns, or 0 if the service was
+    /// refused. The caller keeps it and hands it back on every later
+    /// instruction, so an instruction issued by one call can never be applied
+    /// to the next: the Dart hop is itself a queue, and stamping on arrival
+    /// read whichever generation had started by then.
+    fun start(context: Context, peer: String, video: Boolean): Int {
+      if (!supported) return 0
+      if (active) return 0
       // The MICROPHONE type requires the permission at startForeground time;
       // asking the system first turns a SecurityException into a clean false
       // the caller can retry after the grant.
@@ -109,7 +114,7 @@ class CallForegroundService : Service() {
         context.checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) !=
         PackageManager.PERMISSION_GRANTED
       ) {
-        return false
+        return 0
       }
       generation++
       val intent = Intent(context, CallForegroundService::class.java)
@@ -119,29 +124,36 @@ class CallForegroundService : Service() {
         .putExtra(EXTRA_GEN, generation)
       context.startForegroundService(intent)
       active = true
-      return true
+      return generation
     }
 
-    fun stop(context: Context) {
+    fun stop(context: Context, gen: Int) {
       if (!supported) return
+      // Only the owner may release the claim. A stop from an older call must
+      // not free the service for a start that is racing it.
+      if (gen != 0 && gen != generation) {
+        Log.i("PangeaCall", "ignoring a stop from generation $gen")
+        return
+      }
       active = false
       context.startService(
         Intent(context, CallForegroundService::class.java)
           .setAction(ACTION_STOP)
-          .putExtra(EXTRA_GEN, generation),
+          .putExtra(EXTRA_GEN, gen),
       )
     }
 
-    fun setTypes(context: Context, camera: Boolean) {
+    fun setTypes(context: Context, camera: Boolean, gen: Int) {
       if (!supported) return
       context.startService(
         Intent(context, CallForegroundService::class.java)
           .setAction(ACTION_SET_TYPES)
           .putExtra(EXTRA_VIDEO, camera)
-          // Stamped when it is SENT: an ending call that turns its camera off
-          // as it goes must not strip the camera type from the video call
-          // that replaced it.
-          .putExtra(EXTRA_GEN, generation),
+          // The CALLER's generation, carried from its start. Stamping the
+          // current one here read whichever call had started by the time this
+          // crossed from Dart, so an ending call could strip the camera type
+          // from the video call that replaced it.
+          .putExtra(EXTRA_GEN, gen),
       )
     }
   }

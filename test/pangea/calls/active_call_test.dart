@@ -460,21 +460,29 @@ class FakeForeground extends CallForegroundControl {
   Completer<void>? holdStart;
   FakeForeground(this.trace, {this.startReturns = true});
 
+  /// The generation handed out by the last start, so the fake can check that
+  /// later instructions carry the SAME one back -- an instruction stamped
+  /// with another call's claim is exactly the bug the generation exists for.
+  int lastGeneration = 0;
+
   @override
-  Future<bool> start({required String peer, required bool video}) async {
+  Future<int> start({required String peer, required bool video}) async {
     trace('fgs.start(video: $video)');
     final hold = holdStart;
     if (hold != null) await hold.future;
-    return startReturns;
+    if (!startReturns) return 0;
+    return lastGeneration = lastGeneration + 1;
   }
 
   int _epoch = 0;
 
   @override
-  Future<void> stop() async => trace('fgs.stop');
+  Future<void> stop({required int generation}) async =>
+      trace('fgs.stop(gen: $generation)');
 
   @override
-  Future<void> setCamera(bool on) async => trace('fgs.camera($on)');
+  Future<void> setCamera(bool on, {required int generation}) async =>
+      trace('fgs.camera($on, gen: $generation)');
 
   @override
   int onAction(void Function(String action) handle) => ++_epoch;
@@ -1728,7 +1736,7 @@ void main() {
       await call.hangUp();
       expect(
         trace.steps,
-        isNot(contains('fgs.stop')),
+        isNot(contains(startsWith('fgs.stop'))),
         reason: 'nothing has claimed the service yet',
       );
 
@@ -1736,7 +1744,7 @@ void main() {
       await pumpEventQueue();
       expect(
         trace.steps,
-        contains('fgs.stop'),
+        contains(startsWith('fgs.stop')),
         reason: 'the late start must take itself down',
       );
     });
@@ -1745,6 +1753,27 @@ void main() {
     // start command, so a success there means "asked for", not "running". A
     // refused promotion stops the service, and the call used to go into the
     // background believing it was protected by something already gone.
+    // The instruction has to name the call that issued it. The hop from Dart
+    // to the platform is a queue: a camera update or a stop sent by a call
+    // that has ended can arrive after the NEXT call has started, and an
+    // unstamped one was then applied to that call -- stripping the camera
+    // type from a live video call, or stopping a service it had just been
+    // told it owned.
+    test('every instruction carries the claim its start was given', () async {
+      final (call, calls, fgs) = await withForeground();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      final issued = fgs.lastGeneration;
+      expect(issued, isNot(0), reason: 'the platform accepted the service');
+
+      await call.setForegroundCamera(true);
+      await call.hangUp();
+
+      expect(trace.steps, contains('fgs.camera(true, gen: $issued)'));
+      expect(trace.steps, contains('fgs.stop(gen: $issued)'));
+    });
+
     test('a refused promotion gives the claim back', () async {
       final (call, calls, fgs) = await withForeground();
       calls.devicesInCall = [calls.client.deviceID!];
@@ -1758,7 +1787,7 @@ void main() {
 
       expect(
         trace.steps,
-        isNot(contains('fgs.stop')),
+        isNot(contains(startsWith('fgs.stop'))),
         reason:
             'there is nothing to stop, and stopping could take down a '
             'service another call legitimately owns',
@@ -1785,7 +1814,7 @@ void main() {
       );
 
       await call.hangUp();
-      expect(trace.steps, contains('fgs.stop'));
+      expect(trace.steps, contains(startsWith('fgs.stop')));
     });
 
     test('a failed call still stops the service', () async {
@@ -1796,7 +1825,7 @@ void main() {
       expect(call.stage, CallStage.failed);
       expect(
         trace.steps,
-        contains('fgs.stop'),
+        contains(startsWith('fgs.stop')),
         reason: 'every teardown path converges in _unwind',
       );
     });
@@ -1834,7 +1863,7 @@ void main() {
       // never claimed the service, so it has no claim to end.
       call.dispose();
       await pumpEventQueue();
-      expect(trace.steps, isNot(contains('fgs.stop')));
+      expect(trace.steps, isNot(contains(startsWith('fgs.stop'))));
     });
 
     test('a call started with video escalates the service type', () async {
@@ -1844,7 +1873,7 @@ void main() {
       await call.start(roomStub(calls.client), video: true);
       expect(
         trace.steps,
-        contains('fgs.camera(true)'),
+        contains(startsWith('fgs.camera(true')),
         reason: 'site (a): the camera opened inside connect',
       );
       await call.hangUp();
