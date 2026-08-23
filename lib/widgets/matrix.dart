@@ -269,6 +269,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       }
     }
     final user = pangeaController.userController;
+    // The services this call will use, resolved from the call's OWN account
+    // rather than from whichever account happens to be active later.
+    final accountName = room.client.clientName;
+    final callAccount = analyticsServiceFor(accountName);
     activeCall.value = call_ui.CallSession.start(
       room: room,
       video: video,
@@ -276,7 +280,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       rejoinAnchor: rejoinMembershipEventId,
       rejoinSince: rejoinSince,
       callerMembershipEventId: callerMembershipEventId,
-      callService: callService,
+      callService: callServiceFor(room.client.clientName),
       // The repo answers with a Result; the sink's contract is a value or a
       // throw, and it already treats a throw as "this chunk's words are lost".
       transcribe: (request) async {
@@ -289,8 +293,27 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       },
       userL1: user.userL1Code ?? LanguageKeys.unknownLanguage,
       userL2: user.userL2Code ?? LanguageKeys.unknownLanguage,
-      analytics: (eventId, uses, language) => analyticsDataService.updateService
-          .addAnalytics(eventId, uses, language),
+      // Bound to the account that OWNS this call, captured now. Both of
+      // these used to be read through the active-account getters at the
+      // moment the recording finished, which is minutes later and after the
+      // learner may have switched accounts -- so one learner's spoken words
+      // could be credited to another's analytics. The call's own room names
+      // its account; nothing about that changes while the call runs.
+      analytics: (eventId, uses, language) async {
+        // Null once that account has been disposed -- logged out mid-call, or
+        // torn down while the transcription was still landing. Its analytics
+        // have nowhere to go, and the ACTIVE account's service is the one
+        // place they must not go.
+        final service = callAccount ?? analyticsServiceFor(accountName);
+        if (service == null) {
+          Logs().w(
+            'No analytics service left for $accountName; call speech '
+            'from that account is not being credited anywhere',
+          );
+          return;
+        }
+        await service.updateService.addAnalytics(eventId, uses, language);
+      },
       onReleased: (session) {
         if (activeCall.value == session) activeCall.value = null;
         session.dispose();
