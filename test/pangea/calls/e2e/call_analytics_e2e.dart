@@ -29,11 +29,19 @@ import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 
-const _choreo = 'http://localhost:8012';
-const _synapse = 'http://localhost:8008';
-const _fixture =
-    '/Users/balla/PangeaChat/2-step-choreographer/app/handlers/'
-    'speech_to_text/streaming/__tests__/deepgram_raw_fixtures/source/en_short.wav';
+// Where the local stack is, and which recording to send through it. All three
+// come from the environment: the fixture lives in the choreographer repo,
+// whose path is nobody else's to guess, and hard-coding one made this file
+// runnable on exactly one machine.
+const _choreo = String.fromEnvironment(
+  'CHOREO_URL',
+  defaultValue: 'http://localhost:8002',
+);
+const _synapse = String.fromEnvironment(
+  'SYNAPSE_URL',
+  defaultValue: 'http://localhost:8008',
+);
+const _fixture = String.fromEnvironment('CALL_E2E_WAV');
 
 var _calls = 0;
 
@@ -61,6 +69,12 @@ void main() {
     'a real recording becomes real speaking analytics',
     () async {
       print('call analytics end-to-end (LIVE — this spends money)\n');
+      if (_fixture.isEmpty) {
+        fail(
+          'pass the recording to send: '
+          '--dart-define=CALL_E2E_WAV=/path/to/a/16-bit-pcm.wav',
+        );
+      }
 
       final token = await _login();
       final samples = _samplesOf(_fixture);

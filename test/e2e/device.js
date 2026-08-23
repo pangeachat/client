@@ -7,8 +7,16 @@ const { execFile } = require('child_process');
 const { promisify } = require('util');
 const run = promisify(execFile);
 const ADB = process.env.ADB || `${process.env.HOME}/Library/Android/sdk/platform-tools/adb`;
-const SERIAL = process.env.PHONE_SERIAL || '56091FDAP001N3';
-const PKG = 'com.talktolearn.chat.debug';
+// Whose phone, and which build. Both come from the environment: a serial and
+// a package baked in here are one person's rig, and the next person's run
+// fails with "device not found" rather than a missing setting.
+const SERIAL = process.env.PHONE_SERIAL;
+const PKG = process.env.PHONE_PKG || 'com.talktolearn.chat';
+if (!SERIAL) {
+  throw new Error(
+    'set PHONE_SERIAL to the device you are testing on (adb devices), '
+    + 'and PHONE_PKG if your build carries an applicationIdSuffix');
+}
 
 async function adb(...args) {
   const { stdout } = await run(ADB, ['-s', SERIAL, ...args], { maxBuffer: 64 * 1024 * 1024 });
