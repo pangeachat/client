@@ -4,16 +4,32 @@
 const h = require('./harness');
 const { ui, mx, wait } = h;
 
-const ROOM_LOCALPART = '!HgavfyvZrMpYhLFMLt';
-const ROOM_ID = ROOM_LOCALPART + ':pangea.localhost';
+// The room and the accounts are LOCAL-STACK fixtures rather than constants of
+// the product; config.js says which env vars move them.
+const { room: ROOM_LOCALPART, roomId: ROOM_ID, shot } = h.cfg;
 
 /// Both sides must end up with the SAME events. Any asymmetry is a bug: a room
 /// is shared, so a row one person has and the other does not is by definition
 /// wrong.
-async function assertSymmetric(scenario, A, B, markA, markB) {
-  const evA = await h.since(A.token, ROOM_ID, markA);
-  const evB = await h.since(B.token, ROOM_ID, markB);
-  const c = h.compare(evA, A.userId, evB, B.userId);
+async function assertSymmetric(scenario, A, B, markA, markB, { wantCards = 0 } = {}) {
+  // Polled, not sampled once. The card is written the moment the call's fate
+  // is decided, but it still has to reach the server and come back down sync,
+  // and reading a single moment made the FIRST scenario of a run fail about
+  // half the time -- always the first, which is the run that is also doing
+  // its initial sync. Waiting a little says which it was: a card that never
+  // came, or a card that had not arrived yet.
+  let evA = await h.since(A.token, ROOM_ID, markA);
+  let evB = await h.since(B.token, ROOM_ID, markB);
+  let c = h.compare(evA, A.userId, evB, B.userId);
+  for (let i = 0; i < 10 && c.aCards.length < wantCards; i++) {
+    await h.wait(2000);
+    evA = await h.since(A.token, ROOM_ID, markA);
+    evB = await h.since(B.token, ROOM_ID, markB);
+    c = h.compare(evA, A.userId, evB, B.userId);
+    if (c.aCards.length >= wantCards) {
+      console.log(`   (the card took ${(i + 1) * 2}s to land)`);
+    }
+  }
   h.check(scenario, 'both sides received the same events', c.onlyA.length === 0 && c.onlyB.length === 0,
     `only ${A.name}: ${JSON.stringify(c.onlyA)}  only ${B.name}: ${JSON.stringify(c.onlyB)}`);
   h.check(scenario, 'both sides have the same number of call cards', c.aCards.length === c.bCards.length,
@@ -51,7 +67,7 @@ async function placeCall(scenario, caller, markId, roomLocalpart) {
     { tries: 4, gap: 4000 },
   );
   if (!rang) {
-    const f = `/tmp/callweb/FAIL-place-${scenario.replace(/[^a-z]+/gi, '-')}.png`;
+    const f = shot(`FAIL-place-${scenario.replace(/[^a-z]+/gi, '-')}.png`);
     await caller.page.screenshot({ path: f }).catch(() => {});
     console.log(`   (screenshot: ${f}; labels: ${JSON.stringify(await ui.labels(caller.page))})`);
   }
@@ -64,7 +80,7 @@ async function assertRang(scenario, caller, markId) {
   const rs = evs.filter((e) => e.type === mx.RING && e.sender === caller.userId);
   if (rs.length !== 1) {
     // Evidence, not guesswork: a failing scenario leaves a screenshot behind.
-    const f = `/tmp/callweb/FAIL-${scenario.replace(/[^a-z]+/gi, '-')}-${caller.name}.png`;
+    const f = shot(`FAIL-${scenario.replace(/[^a-z]+/gi, '-')}-${caller.name}.png`);
     await caller.page.screenshot({ path: f }).catch(() => {});
     console.log(`   (screenshot: ${f}; labels: ${JSON.stringify(await ui.labels(caller.page))})`);
   }
@@ -77,6 +93,8 @@ async function assertRang(scenario, caller, markId) {
 function noPageErrors(scenario, p) {
   h.check(scenario, `${p.name} had no unhandled errors`, p.errors.length === 0, JSON.stringify(p.errors.slice(0, 3)));
 }
+
+h.refuseIfAnotherRunIsLive();
 
 async function run() {
   console.log('opening two clients...');
@@ -111,7 +129,7 @@ async function run() {
         h.check(s, 'hanging up actually left the call', left, 'the caller still holds a live membership');
         await wait(6000);
       }
-      const c = await assertSymmetric(s, A, B, mA, mB);
+      const c = await assertSymmetric(s, A, B, mA, mB, { wantCards: 1 });
       const answered = c.aCards.filter((x) => x.answered);
       h.check(s, 'exactly one answered card', answered.length === 1, `got ${answered.length}: ${JSON.stringify(c.aCards.map((x) => x.label))}`);
       if (answered[0]) h.check(s, 'the caller is recorded as the caller', answered[0].caller === A.userId, answered[0].caller);
@@ -301,20 +319,45 @@ async function run() {
       await placeCall(s, A, mA, ROOM_LOCALPART);
       // The reload happens MID-RING; D1 replays the ring from the timeline
       // after the page comes back, and the answer must still work.
+      //
+      // Against the clock, deliberately: a ring lives 30s and a reload costs
+      // most of it, so the window to answer in is what is left. Without this
+      // the check could not tell a product that refuses a REPLAYED ring from
+      // one that correctly refuses an EXPIRED one, and it reported the second
+      // as the first.
+      const ringAt = Date.now();
       await h.recover(B, ROOM_LOCALPART);
-      const joined = await h.actUntil(
-        'answer after reload', () => ui.clickBanner(B.page, 'answer'),
-        () => mx.hasMembership(B.token, ROOM_ID, B.userId),
-        { tries: 5, gap: 3000 },
-      );
-      h.check(s, 'the replayed ring could be answered', joined, 'no membership after reload');
+      const leftMs = 30000 - (Date.now() - ringAt);
+      const tries = Math.max(1, Math.min(5, Math.floor(leftMs / 3000)));
+      console.log(`   ${Math.round(leftMs / 1000)}s of ring left after the reload; ${tries} attempt(s)`);
+      const joined = leftMs < 4000
+        ? null
+        : await h.actUntil(
+            'answer after reload', () => ui.clickBanner(B.page, 'answer'),
+            () => mx.hasMembership(B.token, ROOM_ID, B.userId),
+            { tries, gap: 3000 },
+          );
+      if (leftMs < 4000) {
+        h.skipped(s, 'the replayed ring could be answered',
+          'the ring expired during the reload itself');
+      } else {
+        h.check(s, 'the replayed ring could be answered', joined, 'no membership after reload');
+      }
       await wait(5000);
       await h.actUntil('hangup', () => ui.clickPanel(A.page, 'hangup'),
         async () => !(await mx.hasMembership(A.token, ROOM_ID, A.userId)));
       await wait(8000);
       const c = await assertSymmetric(s, A, B, mA, mB);
       const ans = c.aCards.filter((x) => x.answered);
-      h.check(s, 'the call is recorded as answered', ans.length === 1, JSON.stringify(c.aCards.map((x) => x.label)));
+      // Only meaningful if the answer landed: a ring that expired mid-reload
+      // is correctly recorded as no answer.
+      if (joined) {
+        h.check(s, 'the call is recorded as answered', ans.length === 1,
+          JSON.stringify(c.aCards.map((x) => x.label)));
+      } else if (leftMs < 4000) {
+        h.skipped(s, 'the call is recorded as answered',
+          'nothing was answered, so there is no answered card to expect');
+      }
     }
 
     // ---------------------------------------------------------------- 9

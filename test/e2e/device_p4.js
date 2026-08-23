@@ -8,8 +8,9 @@ const h = require('./harness');
 const d = require('./device');
 const { ui, mx, wait } = h;
 
-const ROOM = process.env.CALL_ROOM || '!HgavfyvZrMpYhLFMLt';
-const ROOM_ID = ROOM + ':pangea.localhost';
+// The room and the accounts are LOCAL-STACK fixtures rather than constants of
+// the product; config.js says which env vars move them.
+const { room: ROOM, roomId: ROOM_ID, accounts, shot, shotsDir } = h.cfg;
 
 async function dump(what) {
   return d.adb('shell', 'dumpsys', ...what.split(' ')).catch(() => '');
@@ -22,7 +23,7 @@ async function dump(what) {
 
   console.log('[2] laptop places, phone answers');
   const A = await h.openParticipant('learner', ROOM, 9731);
-  const B = await mx.login('calltester', 'calltesterpass');
+  const B = await mx.login(accounts.calltester.user, accounts.calltester.pass);
   const mA = await h.mark(A.token, ROOM_ID);
   const rang = await h.actUntil('place',
     async () => { await h.ensureRoom(A, ROOM); await ui.clickLabel(A.page, 'Call', { exact: true }).catch(() => {}); },
@@ -35,7 +36,7 @@ async function dump(what) {
     () => mx.hasMembership(B.token, ROOM_ID, B.userId),
     { tries: 5, gap: 3000 });
   h.check('p4', 'phone answered the call', joined, 'phone never joined');
-  if (!joined) { await d.screenshot('/tmp/callweb/P4-noanswer.png'); process.exit(2); }
+  if (!joined) { await d.screenshot(shot('P4-noanswer.png')); process.exit(2); }
   await wait(6000);
 
   console.log('[3] the foreground service is running, with its notification');
@@ -78,16 +79,38 @@ async function dump(what) {
 
   console.log('[5] the phone kept RECORDING while backgrounded');
   const log = await d.logcatDump();
+  // NOTE on the instrument: a release build only forwards warnings and
+  // errors to logcat, so the recorder's own "Recording this call on this
+  // device" line -- logged at info -- never appears there. Grepping for it
+  // reported "not recording" for a call that was recording perfectly well.
+  // The check below therefore only fails on a tap failure, which IS logged
+  // at warning level; proving that audio was captured needs the transcript
+  // at the other end, which this scenario does not reach.
   const recording = /Recording this call on this device/.test(log);
   const noTap = /No call audio tap on this device/.test(log);
-  h.check('p4', 'the phone is recording, with no tap failure', recording && !noTap,
-    `recording=${recording} tapFailure=${noTap}`);
+  // An empty or unreadable log is not evidence of anything, and passing on it
+  // is how this step came to prove nothing at all: `!noTap` is true when the
+  // dump failed, when the buffer had rolled, and when the app never ran.
+  const readable = log.length > 0 && /PangeaCall|flutter|chat\.pangea/i.test(log);
+  if (!readable) {
+    h.skipped('p4', 'the recorder reported no tap failure',
+      'logcat came back with nothing from this app -- the dump proves neither way');
+  } else {
+    h.check('p4', 'the recorder reported no tap failure', !noTap,
+      'a tap failure was logged');
+  }
+  if (readable && !recording) {
+    h.skipped('p4', 'the phone was recording',
+      'a release build does not forward the info log that says so; the '
+      + 'transcript at the other end is what proves it, and this scenario '
+      + 'does not reach it');
+  }
 
   console.log('[6] returning to the app, then hanging up from the phone');
   await d.adb('shell', 'monkey', '-p', d.PKG, '-c', 'android.intent.category.LAUNCHER', '1').catch(() => {});
   await wait(4000);
-  await d.screenshot('/tmp/callweb/P4-back-in-call.png');
-  console.log('   screenshot: /tmp/callweb/P4-back-in-call.png');
+  await d.screenshot(shot('P4-back-in-call.png'));
+  console.log(`   screenshot: ${shotsDir}/P4-back-in-call.png`);
 
   // Hang up from the GLOBAL CALL TILE, which is what the app shows once the
   // call is minimised behind another screen -- its red button, not a guessed
@@ -95,7 +118,7 @@ async function dump(what) {
   // a screenshot of that tile and, as everywhere here, believed only because
   // the server outcome is checked afterwards.)
   await h.actUntil('phone hangup',
-    async () => { await d.tap(872, 233); },
+    async () => { await d.tapControl('tileHangup'); },
     async () => !(await mx.hasMembership(B.token, ROOM_ID, B.userId)),
     { tries: 5, gap: 4000 });
 
@@ -119,8 +142,8 @@ async function dump(what) {
   h.check('p4', 'exactly one card, answered', cards.length === 1 && cards[0].answered !== false,
     JSON.stringify(cards.map((c) => [c.label, c.durationMs, c.answered])));
 
-  require('fs').writeFileSync('/tmp/callweb/P4-phone.log', log);
-  console.log('   full phone log: /tmp/callweb/P4-phone.log');
+  require('fs').writeFileSync(shot('P4-phone.log'), log);
+  console.log(`   full phone log: ${shotsDir}/P4-phone.log`);
   await A.browser.close();
   h.report();
 })().catch((e) => { console.error('FAILED', e); process.exit(1); });

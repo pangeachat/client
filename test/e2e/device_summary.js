@@ -8,11 +8,12 @@ const fs = require('fs');
 const h = require('./harness');
 const d = require('./device');
 const { ui, mx, wait } = h;
-const ROOM = '!HgavfyvZrMpYhLFMLt';
-const ROOM_ID = ROOM + ':pangea.localhost';
+// The room and the accounts are LOCAL-STACK fixtures rather than constants of
+// the product; config.js says which env vars move them.
+const { room: ROOM, roomId: ROOM_ID, accounts, shot, shotsDir } = h.cfg;
 
 (async () => {
-  const B = await mx.login('calltester', 'calltesterpass');
+  const B = await mx.login(accounts.calltester.user, accounts.calltester.pass);
   if (await mx.hasMembership(B.token, ROOM_ID, B.userId)) {
     await d.adb('shell', 'am', 'force-stop', d.PKG).catch(() => {});
     for (let i = 0; i < 24; i++) {
@@ -49,13 +50,13 @@ const ROOM_ID = ROOM + ':pangea.localhost';
   const until = Date.now() + 45000;
   let i = 0;
   while (Date.now() < until) {
-    const path = `/tmp/callweb/SUM-${String(i++).padStart(2, '0')}.png`;
+    const path = shot(`SUM-${String(i++).padStart(2, '0')}.png`);
     await d.screenshot(path).catch(() => {});
     frames.push({ path, size: fs.existsSync(path) ? fs.statSync(path).size : 0 });
     if (!(await mx.hasMembership(B.token, ROOM_ID, B.userId))) {
       // Ended: keep sampling a few more seconds to catch the summary.
       for (let k = 0; k < 4; k++) {
-        const p2 = `/tmp/callweb/SUM-${String(i++).padStart(2, '0')}.png`;
+        const p2 = shot(`SUM-${String(i++).padStart(2, '0')}.png`);
         await d.screenshot(p2).catch(() => {});
         frames.push({ path: p2, size: fs.existsSync(p2) ? fs.statSync(p2).size : 0 });
         await wait(1200);
@@ -64,7 +65,7 @@ const ROOM_ID = ROOM + ':pangea.localhost';
     }
     await wait(1500);
   }
-  console.log(`   ${frames.length} frames captured: /tmp/callweb/SUM-*.png`);
+  console.log(`   ${frames.length} frames captured: ${shotsDir}/SUM-*.png`);
   h.check('summary', 'the phone left the call on its own',
     !(await mx.hasMembership(B.token, ROOM_ID, B.userId)), 'still in the call');
   await A.browser.close();

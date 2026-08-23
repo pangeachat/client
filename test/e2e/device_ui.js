@@ -3,11 +3,12 @@
 const h = require('./harness');
 const d = require('./device');
 const { ui, mx, wait } = h;
-const ROOM = '!HgavfyvZrMpYhLFMLt';
-const ROOM_ID = ROOM + ':pangea.localhost';
+// The room and the accounts are LOCAL-STACK fixtures rather than constants of
+// the product; config.js says which env vars move them.
+const { room: ROOM, roomId: ROOM_ID, accounts, shot, shotsDir } = h.cfg;
 
 (async () => {
-  const B = await mx.login('calltester', 'calltesterpass');
+  const B = await mx.login(accounts.calltester.user, accounts.calltester.pass);
   if (await mx.hasMembership(B.token, ROOM_ID, B.userId)) {
     await d.adb('shell', 'am', 'force-stop', d.PKG).catch(() => {});
     for (let i = 0; i < 24; i++) {
@@ -40,18 +41,18 @@ const ROOM_ID = ROOM + ':pangea.localhost';
   console.log('[1] the LAPTOP mutes -- the phone must show it');
   await ui.clickPanel(A.page, 'mute').catch(() => {});
   await wait(6000);
-  await d.screenshot('/tmp/callweb/UI-peer-muted.png');
-  console.log('   screenshot: /tmp/callweb/UI-peer-muted.png');
+  await d.screenshot(shot('UI-peer-muted.png'));
+  console.log(`   screenshot: ${shotsDir}/UI-peer-muted.png`);
 
   console.log('[2] unmute, then the PHONE hangs up -- the summary must show');
   await ui.clickPanel(A.page, 'mute').catch(() => {});
   await wait(4000);
-  await d.tap(872, 233);           // the global tile's hangup
+  await d.tapControl('tileHangup');
   await wait(1200);
-  await d.screenshot('/tmp/callweb/UI-summary.png');
-  console.log('   screenshot: /tmp/callweb/UI-summary.png');
+  await d.screenshot(shot('UI-summary.png'));
+  console.log(`   screenshot: ${shotsDir}/UI-summary.png`);
   await wait(4000);
-  await d.screenshot('/tmp/callweb/UI-after-summary.png');
+  await d.screenshot(shot('UI-after-summary.png'));
 
   const ended = await h.actUntil('ended', async () => {},
     async () => !(await mx.hasMembership(B.token, ROOM_ID, B.userId)), { tries: 6, gap: 4000 });

@@ -6,17 +6,16 @@
 const { execFile } = require('child_process');
 const { promisify } = require('util');
 const run = promisify(execFile);
-const ADB = process.env.ADB || `${process.env.HOME}/Library/Android/sdk/platform-tools/adb`;
-// Whose phone, and which build. Both come from the environment: a serial and
-// a package baked in here are one person's rig, and the next person's run
-// fails with "device not found" rather than a missing setting.
-const SERIAL = process.env.PHONE_SERIAL;
-const PKG = process.env.PHONE_PKG || 'com.talktolearn.chat';
-if (!SERIAL) {
-  throw new Error(
-    'set PHONE_SERIAL to the device you are testing on (adb devices), '
-    + 'and PHONE_PKG if your build carries an applicationIdSuffix');
-}
+// Whose phone, and which build. Both come from config.js, which reads them
+// from the environment: a serial and a package baked in here are one person's
+// rig, and the next person's run fails with "device not found" rather than
+// with the setting they were missing. Reading the serial here rather than
+// lazily is deliberate -- only the device scenarios require this file, and
+// they should refuse at the top rather than half way through a call.
+const cfg = require('./config');
+const ADB = cfg.phone.adb;
+const PKG = cfg.phone.pkg;
+const SERIAL = cfg.phone.serial();
 
 async function adb(...args) {
   const { stdout } = await run(ADB, ['-s', SERIAL, ...args], { maxBuffer: 64 * 1024 * 1024 });
@@ -66,7 +65,42 @@ const BANNER = {
   message: { x: 353, y: 436 },
 };
 
+// The rest of the controls the scenarios tap, at the same calibration and
+// under the same rule: a position is never believed, only the server outcome
+// that follows it is. They live here rather than inline in five scenarios
+// because they are a fact about a 960x2142 PHONE, not about the product --
+// and a number repeated in five files is a number that gets recalibrated in
+// four of them.
+//
+// To recalibrate: run the scenario, open the screenshot it takes just before
+// the tap, and read the centre of the control off it. Every one of these was
+// derived that way; `returnToCall` in particular was moved once because the
+// old point sat on the control's top edge and missed about half the time.
+const TAP = {
+  // The Return-to-your-call offer, raised after the app is relaunched.
+  returnToCall: { x: 784, y: 260 },
+  // Hang up on the phone's own in-call panel.
+  hangup: { x: 480, y: 1830 },
+  // The camera toggle, to the right of Hang up on that same panel.
+  camera: { x: 665, y: 1830 },
+  // Hang up on the GLOBAL CALL TILE -- the minimised control that is what is
+  // actually on screen once the call is behind another route. A different
+  // layout entirely from the panel above, which is why guessing between them
+  // is how a stray tap once opened the vocabulary drawer.
+  tileHangup: { x: 872, y: 233 },
+  // The chat list, in the bottom navigation.
+  chatList: { x: 371, y: 1984 },
+};
+
+/// Taps a NAMED control, from either table. Named rather than numbered so a
+/// recalibration happens once and a reader can tell what was aimed at.
+async function tapControl(name) {
+  const p = TAP[name] || BANNER[name];
+  if (!p) throw new Error(`no calibrated position for "${name}"`);
+  return tap(p.x, p.y);
+}
+
 async function logcatClear() { await adb('logcat', '-c'); }
 async function logcatDump() { return adb('logcat', '-d', '-v', 'time'); }
 
-module.exports = { adb, ensureAwakeAndForeground, screenshot, tap, BANNER, logcatClear, logcatDump, PKG, SERIAL };
+module.exports = { adb, ensureAwakeAndForeground, screenshot, tap, tapControl, BANNER, TAP, logcatClear, logcatDump, PKG, SERIAL };

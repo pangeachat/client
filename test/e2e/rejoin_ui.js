@@ -8,8 +8,9 @@
 const h = require('./harness');
 const { ui, mx, wait } = h;
 
-const ROOM = process.env.CALL_ROOM || '!HgavfyvZrMpYhLFMLt';
-const ROOM_ID = ROOM + ':pangea.localhost';
+// The room and the accounts are LOCAL-STACK fixtures rather than constants of
+// the product; config.js says which env vars move them.
+const { room: ROOM, roomId: ROOM_ID } = h.cfg;
 
 async function text(page) {
   try { return await page.evaluate(() => document.body.innerText || ''); }
@@ -17,9 +18,49 @@ async function text(page) {
 }
 
 /// The call clock as seconds, read off whichever surface shows it.
-function clockSeconds(pageText) {
-  const m = pageText.match(/\b(\d+):(\d{2})\b/);
-  return m ? Number(m[1]) * 60 + Number(m[2]) : -1;
+/// Every M:SS on the page, in order.
+///
+/// The room's timeline is full of them: every past call leaves a card reading
+/// "Voice call 0:13". Taking the first match read a CARD and called it the
+/// call timer -- it never moved, so a frozen number passed for a running one
+/// and a rejoin that restarted the clock would have passed too.
+function allClocks(pageText) {
+  return [...(pageText || '').matchAll(/\b(\d+):(\d{2})\b/g)]
+    .map((m) => Number(m[1]) * 60 + Number(m[2]));
+}
+
+/// Makes sure the call is SHOWING before anything tries to read its timer.
+///
+/// A call whose room was re-opened keeps running but collapses to a tile, and
+/// a tile has no clock. A scenario that read the page then found only the
+/// timeline's "Voice call 0:13" cards -- frozen numbers that pass for a
+/// running one.
+async function ensurePanel(page) {
+  if (await ui.hasLabel(page, 'Hang up').catch(() => false)) return true;
+  await ui.clickPanel(page, 'fullscreen').catch(() => {});
+  await wait(1500);
+  return ui.hasLabel(page, 'Hang up').catch(() => false);
+}
+
+/// The one that is actually RUNNING, proved by watching it move.
+///
+/// A card cannot tick; the call timer cannot help it. Nothing else on the
+/// page tells them apart reliably, and asking the DOM which subtree is the
+/// panel breaks whenever the panel moves.
+async function liveClock(page, { gap = 3200 } = {}) {
+  const before = allClocks(await text(page));
+  await wait(gap);
+  const after = allClocks(await text(page));
+  for (let i = 0; i < Math.min(before.length, after.length); i++) {
+    const moved = after[i] - before[i];
+    if (moved >= 2 && moved <= 8) return after[i];
+  }
+  // The lists can shift when a card appears mid-read; fall back to any value
+  // that is present after and advanced from SOME earlier value.
+  for (const v of after) {
+    if (before.some((b) => v - b >= 2 && v - b <= 8)) return v;
+  }
+  return -1;
 }
 
 async function clickByText(page, label) {
@@ -44,9 +85,17 @@ async function connect(A, B, mA) {
     () => mx.hasMembership(B.token, ROOM_ID, B.userId), { tries: 5, gap: 3000 });
 }
 
+h.refuseIfAnotherRunIsLive();
+
 (async () => {
   const A = await h.openParticipant('learner', ROOM, 9811);
   const B = await h.openParticipant('calltester', ROOM, 9812);
+  const bLogAll = [];
+  B.page.on('console', (m) => {
+    const t = m.text();
+    if (/PROBE|breadcrumb|Rejoin|Return|announce|membership/i.test(t)) bLogAll.push(t.slice(0, 220));
+  });
+  B.page.on('pageerror', (e) => bLogAll.push('PAGEERROR ' + String(e.message).slice(0, 180)));
   let mA = await h.mark(A.token, ROOM_ID);
 
   console.log('[1] a call, then B refreshes and returns');
@@ -62,7 +111,9 @@ async function connect(A, B, mA) {
       mx.hasMembership(B.token, ROOM_ID, B.userId),
       text(A.page),
     ]);
-    live = aIn && bIn && clockSeconds(aText) >= 0 && !/Ringing/i.test(aText);
+    if (aIn && bIn) await ensurePanel(A.page);
+    live =
+      aIn && bIn && !/Ringing/i.test(aText) && (await liveClock(A.page)) >= 0;
     if (!live) await wait(2000);
   }
   h.check('rejoin', 'the call is genuinely up before the refresh', live,
@@ -70,17 +121,30 @@ async function connect(A, B, mA) {
   if (!live) { h.report(); process.exit(2); }
 
   await wait(40000);                       // long enough that 0:0x is unmistakable
-  await B.page.reload({ waitUntil: 'domcontentloaded' });
 
-  // And wait for B to actually BE somewhere: a hard reload with the service
-  // worker purged takes its time, and an empty page answers every question
-  // with "no".
-  let alive = false;
-  for (let i = 0; i < 30 && !alive; i++) {
-    alive = (await text(B.page)).trim().length > 0;
-    if (!alive) await wait(2000);
-  }
+  // The crumb is what makes a return possible. Read it BEFORE the reload:
+  // a null here is the app failing to drop it, which is a different bug
+  // from the reload failing to find it.
+  const crumbBefore = await B.page.evaluate(
+    () => window.localStorage.getItem('flutter.pangea.call.breadcrumb'));
+  console.log('   B breadcrumb BEFORE reload:', crumbBefore);
+  console.log('   B in call before reload:', await mx.hasMembership(B.token, ROOM_ID, B.userId));
+
+  // Reload the way a user does -- and wake the semantics tree back up, or
+  // every read after this point is blind.
+  const alive = await h.wake(B.page);
   h.check('rejoin', 'B came back up after the reload', alive, 'B stayed blank');
+  if (!alive) {
+    const diag = await B.page.evaluate(() => ({
+      keys: Object.keys(window.localStorage).length,
+      hasCrumb: !!window.localStorage.getItem('flutter.pangea.call.breadcrumb'),
+      glass: !!document.querySelector('flt-glass-pane'),
+      semantics: !!document.querySelector('flt-semantics-host'),
+      ready: document.readyState,
+    })).catch((e) => ({ err: String(e).slice(0, 120) }));
+    console.log('   B diag:', JSON.stringify(diag));
+    console.log('   B console:', bLogAll.slice(-8).join(' || ') || '(nothing)');
+  }
 
   // Diagnostics before judging: is the crumb there, is A still in the call,
   // and what does B's own log say about the scan?
@@ -106,17 +170,20 @@ async function connect(A, B, mA) {
     console.log('   B console:', bLog.slice(-8).join(' || ') || '(nothing)');
     console.log('   A in call now:', await mx.hasMembership(A.token, ROOM_ID, A.userId));
   }
+  console.log('   B app log:', bLogAll.slice(-10).join('\n      ') || '(nothing)');
   h.check('rejoin', 'B is offered the way back', offered, 'no Return banner');
 
   if (offered) {
     for (let i = 0; i < 5; i++) { if (await clickByText(B.page, 'Return')) break; await wait(1200); }
     await wait(9000);
-    const secs = clockSeconds(await text(B.page));
+    await ensurePanel(B.page);
+    const secs = await liveClock(B.page);
     console.log(`   B's clock after returning: ${secs}s`);
     h.check('rejoin', "the returned clock continues the call, it does not restart", secs > 35,
       `showed ${secs}s for a call already about a minute old`);
 
-    const aSecs = clockSeconds(await text(A.page));
+    await ensurePanel(A.page);
+    const aSecs = await liveClock(A.page);
     console.log(`   A's clock: ${aSecs}s`);
     h.check('rejoin', 'both sides read about the same clock',
       aSecs > 0 && secs > 0 && Math.abs(aSecs - secs) <= 15,
@@ -135,7 +202,7 @@ async function connect(A, B, mA) {
   mA = await h.mark(A.token, ROOM_ID);
   if (await connect(A, B, mA)) {
     await wait(12000);
-    await B.page.reload({ waitUntil: 'domcontentloaded' });
+    await h.wake(B.page);
     await wait(14000);
     let back = false;
     for (let i = 0; i < 10 && !back; i++) {

@@ -10,8 +10,9 @@
 const h = require('./harness');
 const { ui, mx, wait } = h;
 
-const ROOM = process.env.CALL_ROOM || '!HgavfyvZrMpYhLFMLt';
-const ROOM_ID = ROOM + ':pangea.localhost';
+// The room and the accounts are LOCAL-STACK fixtures rather than constants of
+// the product; config.js says which env vars move them.
+const { room: ROOM, roomId: ROOM_ID, shot, shotsDir } = h.cfg;
 
 /// The biggest run of near-identical mid-grey pixels in the banner's band.
 ///
@@ -107,8 +108,8 @@ async function greyBlock(page, band, { selfTest = false } = {}) {
     `worst was ${worst} grey pixels while hovering ${worstAt} (baseline ${base.grey})`);
 
   if (blewUp) {
-    await B.page.screenshot({ path: '/tmp/callweb/GREY-hover.png' });
-    console.log('   screenshot: /tmp/callweb/GREY-hover.png');
+    await B.page.screenshot({ path: shot('GREY-hover.png') });
+    console.log(`   screenshot: ${shotsDir}/GREY-hover.png`);
   }
 
   await ui.clickPanel(A.page, 'hangup').catch(() => {});

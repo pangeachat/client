@@ -6,14 +6,15 @@
 const h = require('./harness');
 const d = require('./device');
 const { ui, mx, wait } = h;
-const ROOM = '!HgavfyvZrMpYhLFMLt';
-const ROOM_ID = ROOM + ':pangea.localhost';
+// The room and the accounts are LOCAL-STACK fixtures rather than constants of
+// the product; config.js says which env vars move them.
+const { room: ROOM, roomId: ROOM_ID, accounts, shot, shotsDir } = h.cfg;
 
 (async () => {
   // A CLEAN slate first. A call left over from a previous run keeps a live
   // membership, and a bare membership check then "proves" an answer that
   // never happened -- the run goes on to test nothing at all.
-  const B = await mx.login('calltester', 'calltesterpass');
+  const B = await mx.login(accounts.calltester.user, accounts.calltester.pass);
   if (await mx.hasMembership(B.token, ROOM_ID, B.userId)) {
     console.log('   (a call is still live on the phone; clearing it)');
     await d.adb('shell', 'am', 'force-stop', d.PKG).catch(() => {});
@@ -65,8 +66,8 @@ const ROOM_ID = ROOM + ':pangea.localhost';
 
   await d.adb('shell', 'cmd', 'statusbar', 'expand-notifications');
   await wait(2500);
-  await d.screenshot('/tmp/callweb/notif-shade.png');
-  console.log('   shade screenshot: /tmp/callweb/notif-shade.png');
+  await d.screenshot(shot('notif-shade.png'));
+  console.log(`   shade screenshot: ${shotsDir}/notif-shade.png`);
 
   // The hangup action sits in our notification's action row. Its position is
   // read from the screenshot; the OUTCOME is what proves the tap.

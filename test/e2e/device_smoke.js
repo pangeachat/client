@@ -4,8 +4,9 @@
 const h = require('./harness');
 const d = require('./device');
 const { ui, mx, wait } = h;
-const ROOM = '!HgavfyvZrMpYhLFMLt';
-const ROOM_ID = ROOM + ':pangea.localhost';
+// The room and the accounts are LOCAL-STACK fixtures rather than constants of
+// the product; config.js says which env vars move them.
+const { room: ROOM, roomId: ROOM_ID, accounts, shot, shotsDir } = h.cfg;
 
 (async () => {
   console.log('[1] phone: wake + app foreground');
@@ -14,7 +15,7 @@ const ROOM_ID = ROOM + ':pangea.localhost';
 
   console.log('[2] laptop: open room as learner');
   const A = await h.openParticipant('learner', ROOM, 9701);
-  const B = await mx.login('calltester', 'calltesterpass');
+  const B = await mx.login(accounts.calltester.user, accounts.calltester.pass);
 
   const mA = await h.mark(A.token, ROOM_ID);
   console.log('[3] laptop places the call');
@@ -54,8 +55,8 @@ const ROOM_ID = ROOM + ':pangea.localhost';
   console.log(`   (answer confirmed in ${Math.round((Date.now() - answeredAt) / 1000)}s)`);
   console.log('   phone joined:', joined);
   if (!joined) {
-    await d.screenshot('/tmp/callweb/P9-noanswer.png');
-    console.log('   screenshot: /tmp/callweb/P9-noanswer.png');
+    await d.screenshot(shot('P9-noanswer.png'));
+    console.log(`   screenshot: ${shotsDir}/P9-noanswer.png`);
     process.exit(2);
   }
 
@@ -91,8 +92,8 @@ const ROOM_ID = ROOM + ':pangea.localhost';
   const capture = log.split('\n').filter((l) => /flutter/i.test(l) && /record|captur|chunk|tap|elect|speech|upload/i.test(l));
   console.log('   phone capture-related log lines:', capture.length);
   capture.slice(0, 25).forEach((l) => console.log('    ', l.slice(0, 190)));
-  require('fs').writeFileSync('/tmp/callweb/P9-phone-call.log', log);
-  console.log('   full phone log: /tmp/callweb/P9-phone-call.log');
+  require('fs').writeFileSync(shot('P9-phone-call.log'), log);
+  console.log(`   full phone log: ${shotsDir}/P9-phone-call.log`);
 
   await A.browser.close();
 })().catch((e) => { console.error('FAILED', e.message); process.exit(1); });

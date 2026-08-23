@@ -6,7 +6,9 @@
 //
 // Flutter ships a hidden semantics placeholder; clicking it turns on a real DOM
 // accessibility tree, so elements can be found by their label instead.
-const { wait } = require('../lib_login');
+// Defined here rather than imported, because login.js drives this file:
+// the other direction would be a require cycle.
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function enableSemantics(page) {
   const r = await page.evaluate(() => {
@@ -83,7 +85,7 @@ async function hasLabel(page, label) {
   return (await findRect(page, label)) !== null;
 }
 
-module.exports = { enableSemantics, labels, findRect, waitForLabel, clickLabel, hasLabel };
+module.exports = { wait, enableSemantics, labels, findRect, waitForLabel, clickLabel, hasLabel };
 
 // ---------------------------------------------------------------------------
 // The incoming-call banner.

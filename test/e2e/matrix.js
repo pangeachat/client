@@ -3,7 +3,7 @@
 // The point of the harness is to compare what the two participants' timelines
 // actually contain. Reading that from Matrix means a scenario can be checked
 // exactly, and means a UI change cannot quietly stop the check from working.
-const HS = process.env.PROBE_HS || 'http://localhost:8008';
+const HS = require('./config').homeserver;
 
 async function api(path, { token, method = 'GET', body } = {}) {
   const res = await fetch(HS + path, {

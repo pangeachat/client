@@ -1,49 +1,195 @@
 # Call end-to-end harness
 
-Drives two real browsers against the local stack and asserts what BOTH
-participants end up with. It exists because unit tests and code review are
-structurally blind to the two things that kept breaking: what a SECOND client
-sees, and whether a whole flow works.
+Drives two real browsers -- and, for some scenarios, a real Android phone --
+against a local stack, and asserts what BOTH participants end up with. It
+exists because unit tests and code review are structurally blind to the two
+things that kept breaking: what a SECOND client sees, and whether a whole flow
+works.
+
+## What you need installed
+
+| | |
+|---|---|
+| Node 18 or newer | `matrix.js` calls the client-server API through the global `fetch`. |
+| Google Chrome | A real install. puppeteer-core ships no browser; `CHROME` points at a different one, and `browser.js` fails immediately with that message if the path does not exist. |
+| `puppeteer-core` | `cd client/test/e2e && npm install`. It is declared in this folder's `package.json`, so the install lands in `test/e2e/node_modules`. |
+| `adb` | Only for the `device_*.js` scenarios. Found via `ADB`, then `ANDROID_HOME` / `ANDROID_SDK_ROOT`, then the usual SDK locations, then `PATH`. |
+
+## What has to be running
+
+A local stack with the two test accounts on it, and the web build being served:
+
+    cd client
+    flutter build web --release && cp .env build/web/.env
+    python3 ../local-dev/spa_server.py build/web 8091
+
+The harness expects, on that stack:
+
+- Synapse answering at `PROBE_HS` (default `http://localhost:8008`).
+- The app served at `APP_URL` (default `http://localhost:8091`).
+- Two accounts, `learner` and `calltester`, that already exist and already
+  share a room.
+- `CALL_ROOM` naming that room's localpart. The default,
+  `!HgavfyvZrMpYhLFMLt`, is a fixture of one local stack, not a constant of
+  the product -- a stack seeded differently sets its own.
+
+`config.js` holds every one of these, and nothing else in the folder hardcodes
+them:
+
+| Variable | Default | What it is |
+|---|---|---|
+| `APP_URL` | `http://localhost:8091` | where the web build is served |
+| `PROBE_HS` | `http://localhost:8008` | the homeserver the assertions read |
+| `CALL_SERVER_NAME` | `pangea.localhost` | appended to the room localpart |
+| `CALL_ROOM` | `!HgavfyvZrMpYhLFMLt` | the room the two accounts share |
+| `CALL_LEARNER_USER` / `CALL_LEARNER_PASS` | `learner` / `learnerpass` | the caller |
+| `CALL_CALLTESTER_USER` / `CALL_CALLTESTER_PASS` | `calltester` / `calltesterpass` | the callee |
+| `CALL_WORK_DIR` | `$TMPDIR/callweb` | Chrome profiles and fake-microphone audio |
+| `CALL_SHOT_DIR` | `$CALL_WORK_DIR/shots` | every screenshot and captured log |
+| `CALL_CALLER_WAV` / `CALL_CALLEE_WAV` | `$CALL_WORK_DIR/caller.wav`, `callee.wav` | what the fake microphones play |
+| `CHROME` | the macOS app bundle path | the browser to drive |
+| `PHONE_SERIAL` | *none -- throws* | which phone (`adb devices`) |
+| `PHONE_PKG` | `com.talktolearn.chat` | add the suffix if your build carries one |
+| `ADB` | resolved from the SDK, else `PATH` | the adb binary |
+
+The wav files are optional: without them Chrome uses a generated tone and says
+so once. Point them at real speech before judging anything that transcribes a
+call.
 
 ## Running
 
-Needs the local stack up, a web build served, and puppeteer-core.
+Every scenario is its own process, started from the client root:
 
-    cd client && flutter build web --release && cp .env build/web/.env
-    python3 ../local-dev/spa_server.py build/web 8091
-    node test/e2e/scenarios.js          # APP_URL / PROBE_HS override the defaults
+    cd client
+    node test/e2e/scenarios.js            # the nine-scenario browser suite
+    node test/e2e/refresh_midcall.js      # one scenario
 
-Two Chrome profiles with fake microphones are reused between runs; a stale one
-is the usual cause of "browser is already running".
+`scenarios.js` runs its nine in a fixed order in one process and has no filter;
+the standalone files below are the per-scenario entry points. Run them one at
+a time: two suites driving the same two accounts fight over the same room, and
+the app looks broken ("the call controls never appeared") when in truth another
+run just took the room away. `scenarios.js`, `rejoin_ui.js`, `device_four.js`,
+`device_redial.js`, `device_rejoin_summary.js` and `device_video.js` refuse to
+start while another run is alive; the rest do not check yet.
+
+The whole browser set, sequentially, stopping at the first failure:
+
+    cd client
+    for s in refresh_no_return scenarios refresh_midcall rejoin_ui grey_hover; do
+      node test/e2e/$s.js || break
+    done
+
+Screenshots, captured logcat, and failure evidence all land in
+`$CALL_SHOT_DIR`; the scenarios print the path they wrote.
+
+Two Chrome profiles are reused between runs, so a login survives. A stale one
+is the usual cause of "browser is already running"; `unstick.js` (below) is
+for the other stale-profile failure, where a profile is parked in onboarding.
+
+## The scenarios
+
+Browser only:
+
+| File | What it proves |
+|---|---|
+| `scenarios.js` | Nine flows, every action proven on the server and both timelines diffed: answer/hangup, decline, immediate redial, nobody answers, video call answered, quick reply (message + decline, and the caller receives the text), caller gives up, callee reloads while ringing and can still answer, and glare (both call at the same moment -> exactly one card). |
+| `refresh_midcall.js` | A mid-call refresh, both sides of it: the surviving side holds the vanished peer's place, the refreshed side is offered its call back, the Return works, the call resumes, no re-ring, one card. |
+| `refresh_no_return.js` | The same grace when the peer never comes back: reconnecting is shown, the grace lapses, the survivor ends the call itself, and it is written as a call that HAPPENED rather than a miss. |
+| `rejoin_ui.js` | The four review fixes browser-to-browser: a rejoined clock continues rather than restarting, nothing still claims "reconnecting" after the other side ends, the Return banner's red end ends the call for both, and the chat list previews the call. |
+| `grey_hover.js` | The CanvasKit grey box: hovers every control on a live ring and fails if a large flat grey block appears that was not there before. |
+
+Physical Android phone required (all of these; each needs `PHONE_SERIAL`):
+
+| File | What it proves |
+|---|---|
+| `device_smoke.js` | The standing laptop-to-phone scenario: the phone answers, 55 seconds of talk crosses the 45s chunk boundary, and the evidence is the call card plus the phone's own capture log. |
+| `device_p4.js` | The call survives the app leaving the screen: foreground service up with its ongoing-call notification, sixty seconds off screen, back, then hung up from the global call tile, and the service and notification go. |
+| `device_notif_action.js` | The ongoing-call notification's own Hang Up, driven from the real shade and proven by the membership going away. |
+| `device_redial.js` | A redial the instant after hanging up keeps its own foreground service and notification, and survives 25s backgrounded -- the stop of the previous call must not tear down the new one. |
+| `device_video.js` | A video call, and the camera toggle adding and removing the CAMERA foreground-service type for THIS call. |
+| `device_rejoin_ui.js` | The four review fixes with the phone as the rejoining side: its app is killed and relaunched, which is what a refresh is to a browser. |
+| `device_four.js` | The same rejoin judged only by things that cannot lie -- the server for what happened, screenshots for what was on screen -- plus ending the call from the phone ending it for the laptop too. |
+| `device_rejoin_summary.js` | After a return, the summary must report the length of the CALL, not of the segment since returning. Twelve frames of the summary are kept, and read by eye. |
+| `device_ui.js` | Two things only a picture settles: the peer's mute badge on their avatar, and the moment after a call. |
+| `device_summary.js` | The ended-call summary caught in its three-second window without a blind tap: the laptop hangs up, the phone's grace lapses, and the screen is sampled right through it. |
+
+Not a scenario:
+
+| File | |
+|---|---|
+| `unstick.js` | A tool. Walks a profile out of the onboarding wizard and proves the room opens afterwards. `node test/e2e/unstick.js calltester`. |
+
+## Known flakiness, and what the files do about it
+
+- **`refresh_no_return.js`'s prelude.** Placing and answering the call before
+  the kill can flake (router drift, a click racing a rebuild). The file
+  retries the prelude once and checks it separately, so a flaky prelude
+  reports as a flaky prelude rather than as a broken grace.
+- **Scenario 8, callee reloads while ringing.** A ring lives 30 seconds and a
+  reload costs most of it. If the ring expires during the reload itself the
+  scenario prints INCONCLUSIVE and skips the answered-card check, because a
+  product that correctly refuses an EXPIRED ring must not be recorded as one
+  that refuses a REPLAYED one.
+- **The first card of a run.** A card is written the moment a call's fate is
+  decided but still has to reach the server and come back down sync. Reading
+  once failed about half the time on the FIRST scenario of a run -- the one
+  also doing its initial sync -- so `assertSymmetric` polls for it.
+- **Reading the phone's screen.** A Flutter app only publishes its
+  accessibility tree once something asks for it, and the first uiautomator
+  dump after a relaunch routinely comes back empty; `device_rejoin_ui.js`
+  retries. The app's home animates continuously, so the dump never reaches
+  idle there at all -- `device_four.js` and `device_rejoin_summary.js` use
+  screenshots instead and are read by eye.
+- **Phone tap positions are calibrated to one device** (960x2142), in
+  `device.js`'s `BANNER` and `TAP` tables. On another handset they miss --
+  and because every tap is followed by a server-side check, that shows up as
+  a clean failure plus a screenshot to recalibrate from, not as a pass.
 
 ## The rules it is built on
 
 **Assert from the server, never from the canvas.** `matrix.js` logs in as both
-accounts over the client-server API, reads both timelines, parses the call cards
-with the same direction logic the UI uses, and diffs them. A room is shared, so a
-row one participant has and the other does not is by definition a bug -- that
-check is what found the ghost-card bug, where a failed send left a card in one
-client's local timeline for ever.
+accounts over the client-server API, reads both timelines, parses the call
+cards with the same direction logic the UI uses, and diffs them. A room is
+shared, so a row one participant has and the other does not is by definition a
+bug -- that check is what found the ghost-card bug, where a failed send left a
+card in one client's local timeline for ever.
 
 **Navigate by URL, and prove it worked.** `harness.openRoom` goes to
 `/?left=chats,room:<localpart>` and then waits for a control that only exists
-inside a chat, retrying and finally throwing. The app can resolve its own route
-after login and land back on the activity map; without the check the harness
-would drive the map and report nothing.
+inside a chat, retrying -- clearing the route, then clicking the conversation
+in the chat list the way a person would -- and finally throwing. The app can
+resolve its own route after login and land back on the activity map; without
+the check the harness would drive the map and report nothing.
 
-**Never let a missed click look like a pass.** The previous harness clicked fixed
-points like (680,126) and rotted silently -- after a layout change it clicked
-empty space and still "passed" a flow it was no longer exercising.
+**Never let a missed click look like a pass.** The harness this replaced
+clicked fixed points like (680,126), and rotted silently: after a layout change
+it clicked empty space and still "passed" a flow it was no longer exercising.
+The login did the same thing -- six fixed coordinates and a macOS-only
+select-all -- and `login.js` now reads the screen instead, finding the form's
+own inputs and finishing only when the form is gone.
 
 Flutter's accessibility tree covers only part of this app: the chat header's
 call buttons are reachable by label, but the ring banner and the in-call panel
-are NOT in the tree at all (verified by dumping every `flt-semantics` node while
-a ring was on screen and confirming against a screenshot that the banner was
-plainly visible with none of its controls represented). Those are therefore
-clicked by position -- and EVERY such click is followed by a server-side
-assertion that the action actually happened: answering must produce a call
-membership, declining must produce a decline event, hanging up must remove the
-membership. A click that misses fails loudly instead of quietly passing.
+are NOT in the tree at all (verified by dumping every `flt-semantics` node
+while a ring was on screen and confirming against a screenshot that the banner
+was plainly visible with none of its controls represented). Those are clicked
+by position -- and EVERY such click is followed by a server-side assertion that
+the action actually happened: answering must produce a call membership,
+declining must produce a decline event, hanging up must remove the membership.
+
+**Reload through `harness.wake`, never by hand.** Flutter web only publishes a
+semantics tree once its placeholder has been clicked, and a reload throws that
+away with the rest of the document. A scenario that reloads and then reads text
+sees an empty page for ever and reports the product broken.
+
+**Reload between scenarios** (`harness.recover`). With semantics enabled, the
+Flutter web engine's semantics click pipeline does not reliably survive a call
+panel's teardown -- later clicks die inside the engine's ClickDebouncer with a
+null-state error before any app code runs. Verified semantics-specific: the
+same flows driven by raw coordinates with semantics off work, which is why
+ordinary users never see it. Real users of assistive technology WOULD -- filed
+as a known accessibility issue rather than fixed here, because the corruption
+is inside the engine.
 
 ## What it has already caught
 
@@ -55,92 +201,5 @@ membership. A click that misses fails loudly instead of quietly passing.
   the ring PUT returning 200 with [0 dbevts].
 - A regression introduced WHILE fixing the above: a guard added to startCall
   caused a null dereference that stopped the second call in a session from
-  placing at all. Caught here and reverted (175e32c51b) before it could ship.
-
-## Scenario coverage
-
-Nine scenarios, every action proven on the server, both timelines diffed:
-answer/hangup, decline, immediate redial, ring-out (no answer), video call,
-quick reply (message + decline + caller receives the text), caller-gives-up,
-reload-while-ringing (the D1 replay, answered after a mid-ring reload), and
-glare (simultaneous calls -> exactly one card).
-
-Between scenarios both clients RELOAD (`harness.recover`): with semantics
-enabled, the Flutter web engine's semantics click pipeline does not reliably
-survive a call panel's teardown -- later clicks die inside the engine's
-ClickDebouncer with a null-state error before any app code runs. Verified
-semantics-specific: the same flows driven by raw coordinates with semantics off
-work, which is why ordinary users never see it. Real users of assistive
-technology WOULD -- filed as a known accessibility issue rather than fixed here,
-because the corruption is inside the engine.
-
-## The phone participant (device.js)
-
-`device.js` adds a REAL Android phone to the harness, driven over adb, with
-the same philosophy as the browser side: taps are proven by server outcomes
-(membership written, decline sent, audio uploaded), never by pixels alone.
-`device_smoke.js` is the standing scenario: the laptop places the call, the
-phone answers, 55 seconds of talk crosses the 45s chunk boundary, and the
-evidence is the call card plus the phone's own capture log lines.
-
-- `PHONE_SERIAL` / `ADB` env vars point it at a different device or sdk.
-- A fingerprint lock cannot be driven from adb. The harness DETECTS the
-  keyguard and fails with "ask the user to unlock it" instead of letting
-  every later step fail mysteriously. Keep the screen on across installs:
-  `adb shell svc power stayon true` plus a periodic KEYCODE_WAKEUP.
-- Banner tap positions in `BANNER` are calibrated to one device (960x2142
-  render). On a failed outcome the scenario screenshots the phone so the
-  calibration is corrected from evidence.
-
-## Refresh scenarios (refresh_midcall.js, refresh_no_return.js)
-
-The mid-call-reload pair. `refresh_midcall` is the flagship: grace on the
-surviving side, the Return offer on the reloaded side, tap, resumption
-proven by a 25s soak, no re-ring, one card -- stable at 9/9.
-`refresh_no_return` proves the grace end-to-end (reconnecting shown, ~20s
-grace measured, self-end, answered card): it has run 5/5 green, but its
-place-the-call PRELUDE flakes when run back-to-back after other scenarios
-(the ring event never reaches the room; the same steps pass standalone).
-Run it first, or standalone, until the prelude flake is traced.
-
-## The P4 device scenarios
-
-`device_p4.js` proves the Android foreground service end to end: answer,
-check the service is foreground with its ongoing-call notification, press
-HOME, hold sixty seconds off screen (the window the old build died in),
-confirm the call and its recording survive, return, hang up from the GLOBAL
-CALL TILE -- the minimised control that is actually on screen by then -- and
-wait for the service and notification to go. `device_notif_action.js` drives
-the notification's own Hang Up from the shade, because "the button exists"
-is not the claim worth testing.
-
-Two traps this pair paid for, now designed out: taps must WAKE the device
-first (a sleeping screen swallows them and reads as a product that ignores
-the answer button), and a teardown check must WAIT out the peer grace rather
-than sampling once (the first version reported a product failure that was
-only its own impatience).
-
-## Seeing what the learner sees (device_ui.js, device_summary.js)
-
-Two things only a picture can settle. `device_ui.js` mutes the peer from the
-laptop and screenshots the phone -- the mic-slash badge on their avatar --
-and `device_summary.js` lets the LAPTOP hang up, then samples the phone's
-screen right through the grace lapse so the ended-call summary is caught in
-its three-second window without a single blind tap.
-
-Do NOT drive the phone by guessed coordinates outside these controls: the
-call has two layouts (the full panel, and the global tile once it is
-minimised behind another screen) whose buttons sit in completely different
-places, and a miss lands somewhere real -- a stray tap once opened the
-vocabulary drawer, and a stray BACK left the app entirely.
-
-## Known gaps
-
-- The former "next call after an answered call places nothing" bug is resolved:
-  it was the engine semantics pipeline (see above), plus two real product bugs
-  it was masking -- the reused ring transaction id (70eb5a2a8b) and the
-  finished-session release window (c784e7c5d6 + the startCall step-over).
-- Scenarios still to add: glare, reload while ringing, callee busy, caller
-  cancels, second device, video, connect failure.
-- Both clients log "Unexpected token '<'" -- something fetches a path that the
-  SPA server answers with index.html. Not yet traced.
+  placing at all. Caught here and reverted (175e32c51b) before it could ship,
+  and fixed properly in c784e7c5d6.

@@ -12,8 +12,9 @@
 const h = require('./harness');
 const { ui, mx, wait } = h;
 
-const ROOM = process.env.CALL_ROOM || '!HgavfyvZrMpYhLFMLt';
-const ROOM_ID = ROOM + ':pangea.localhost';
+// The room and the accounts are LOCAL-STACK fixtures rather than constants of
+// the product; config.js says which env vars move them.
+const { room: ROOM, roomId: ROOM_ID, shot } = h.cfg;
 
 /// The page's full visible text -- the banner is plain DOM for puppeteer even
 /// when semantics does not list it.
@@ -111,7 +112,7 @@ async function rawMembership(token, userId) {
     () => Object.keys(window.localStorage).filter((k) => !/token|session|olm|pickle/i.test(k)).slice(0, 40));
   console.log('   B localStorage keys:', JSON.stringify(lsKeys));
   const reloadAt = Date.now();
-  await B.page.reload({ waitUntil: 'domcontentloaded' });
+  await h.wake(B.page);
 
   // THE GRACE, watched rather than sampled once: the SFU takes its own time
   // (up to ~15s of signal-reconnect grace) to declare B gone, and only THEN
@@ -162,9 +163,9 @@ async function rawMembership(token, userId) {
     if (!offered) await wait(1500);
   }
   if (!offered) {
-    const shot = '/tmp/callweb/B-no-return.png';
-    await B.page.screenshot({ path: shot }).catch(() => {});
-    console.log('   screenshot:', shot);
+    const file = shot('B-no-return.png');
+    await B.page.screenshot({ path: file }).catch(() => {});
+    console.log('   screenshot:', file);
   }
   if (!offered) {
     console.log("   B's own account (console):");

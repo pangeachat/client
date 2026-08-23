@@ -11,20 +11,37 @@ const h = require('./harness');
 const d = require('./device');
 const { ui, mx, wait } = h;
 
-const ROOM = process.env.CALL_ROOM || '!HgavfyvZrMpYhLFMLt';
-const ROOM_ID = ROOM + ':pangea.localhost';
+// The room and the accounts are LOCAL-STACK fixtures rather than constants of
+// the product; config.js says which env vars move them.
+const { room: ROOM, roomId: ROOM_ID, accounts, shot } = h.cfg;
 
-async function phoneText() {
+async function phoneText({ tries = 6 } = {}) {
   // The screen's own words, read through the accessibility tree the app
   // publishes; screenshots are kept for anything this cannot say.
-  const dump = await d.adb('shell', 'uiautomator', 'dump', '/sdcard/ui.xml').catch(() => '');
-  if (!/dumped/i.test(dump)) return '';
-  const xml = await d.adb('shell', 'cat', '/sdcard/ui.xml').catch(() => '');
-  return (xml.match(/text="([^"]*)"/g) || []).map((m) => m.slice(6, -1)).filter(Boolean).join(' | ');
+  //
+  // RETRIED, because a Flutter app only publishes that tree once an
+  // accessibility client asks for it, and the first dump after a relaunch
+  // routinely comes back empty. Reading once and believing it reported the
+  // Return banner missing while a screenshot taken in the same second showed
+  // it plainly on screen -- the product was right and the instrument was
+  // blind, which is the more expensive way to be wrong.
+  for (let i = 0; i < tries; i++) {
+    const dump = await d.adb('shell', 'uiautomator', 'dump', '/sdcard/ui.xml').catch(() => '');
+    if (/dumped/i.test(dump)) {
+      const xml = await d.adb('shell', 'cat', '/sdcard/ui.xml').catch(() => '');
+      const text = (xml.match(/text="([^"]*)"/g) || [])
+        .map((m) => m.slice(6, -1))
+        .filter(Boolean)
+        .join(' | ');
+      if (text.trim()) return text;
+    }
+    await wait(2000);
+  }
+  return '';
 }
 
 (async () => {
-  const B = await mx.login('calltester', 'calltesterpass');
+  const B = await mx.login(accounts.calltester.user, accounts.calltester.pass);
   if (await mx.hasMembership(B.token, ROOM_ID, B.userId)) {
     await d.adb('shell', 'am', 'force-stop', d.PKG).catch(() => {});
     for (let i = 0; i < 24; i++) {
@@ -61,7 +78,7 @@ async function phoneText() {
   await wait(3000);
   await d.adb('shell', 'monkey', '-p', d.PKG, '-c', 'android.intent.category.LAUNCHER', '1').catch(() => {});
   await wait(14000);
-  await d.screenshot('/tmp/callweb/UI4-return-offer.png');
+  await d.screenshot(shot('UI4-return-offer.png'));
 
   const offered = await phoneText();
   h.check('ui4', 'the Return offer is there after the relaunch',
@@ -69,9 +86,9 @@ async function phoneText() {
 
   // FIX 3 first, on a SECOND call later; this call tests the clock.
   console.log('[tap Return; the clock must continue, not restart]');
-  await d.tap(760, 218);           // the offer's Return control
+  await d.tapControl('returnToCall');
   await wait(9000);
-  await d.screenshot('/tmp/callweb/UI4-after-return.png');
+  await d.screenshot(shot('UI4-after-return.png'));
   const back = await phoneText();
   const clock = (back.match(/\b(\d+):(\d\d)\b/) || [])[0];
   console.log('   phone clock after returning:', clock ?? '(none seen)');
@@ -82,7 +99,7 @@ async function phoneText() {
   console.log('[the laptop ends the call; the phone must not say reconnecting]');
   await ui.clickPanel(A.page, 'hangup').catch(() => {});
   await wait(12000);
-  await d.screenshot('/tmp/callweb/UI4-after-remote-end.png');
+  await d.screenshot(shot('UI4-after-remote-end.png'));
   const ended = await phoneText();
   h.check('ui4', 'the phone does not claim reconnecting after the other side ends',
     !/reconnect/i.test(ended), `phone text: ${ended.slice(0, 200)}`);
@@ -90,7 +107,7 @@ async function phoneText() {
   console.log('[the chat list must preview the call, not the membership event]');
   await d.adb('shell', 'input', 'keyevent', 'KEYCODE_BACK').catch(() => {});
   await wait(4000);
-  await d.screenshot('/tmp/callweb/UI4-chat-list.png');
+  await d.screenshot(shot('UI4-chat-list.png'));
   const list = await phoneText();
   h.check('ui4', 'the chat list never shows the raw member event',
     !/famedly\.call\.member/i.test(list), `list text: ${list.slice(0, 240)}`);

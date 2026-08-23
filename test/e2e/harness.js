@@ -7,19 +7,53 @@
 // The previous harness did the opposite of both and rotted silently: its fixed
 // clicks landed on empty space after a layout change, so it "passed" a call flow
 // it was no longer exercising. Every check here fails loudly instead.
-const { launch } = require('../lib');
-const { login, wait } = require('../lib_login');
+const { launch } = require('./browser');
+const { login, wait } = require('./login');
 const ui = require('./ui');
 const mx = require('./matrix');
+const cfg = require('./config');
 
-const APP = process.env.APP_URL || 'http://localhost:8091';
-
-const ACCOUNTS = {
-  learner: { user: 'learner', pass: 'learnerpass', profile: '/tmp/callweb/learner-profile', wav: '/tmp/caller.wav' },
-  calltester: { user: 'calltester', pass: 'calltesterpass', profile: '/tmp/callweb/calltester-profile', wav: '/tmp/callee.wav' },
-};
+const APP = cfg.appUrl;
+const ACCOUNTS = cfg.accounts;
 
 /// One participant: a browser, a page, and an API token for assertions.
+/// Refuses to run two scenario processes at once.
+///
+/// Two suites driving the SAME two accounts fight over the same rooms and the
+/// same Chrome profiles, and the symptom is nothing like the cause: the app
+/// looks broken ("the call controls never appeared", "no ring reached the
+/// room") when in truth another run just took the room away. Killing the
+/// browsers between runs is not enough -- the node process that drives them
+/// has to be gone too.
+function refuseIfAnotherRunIsLive() {
+  const { execSync } = require('child_process');
+  let out = '';
+  try {
+    // Matched on the FILE NAME with any path in front of it. The pattern used
+    // to assume the scenario was started from inside this folder; run as
+    // `node test/e2e/scenarios.js` from the repo root it matched nothing at
+    // all, and a guard that never fires is worse than no guard, because
+    // everyone believes it is watching.
+    out = execSync(
+      'pgrep -f "node ([^ ]*/)?(scenarios|rejoin_ui|refresh_[a-z_]+|grey_hover'
+        + '|list_preview|device[a-z_0-9]*)\\.js" || true',
+      { encoding: 'utf8' },
+    );
+  } catch (_) {
+    return;
+  }
+  // Our own pid, and the shell pgrep runs in -- whose command line contains
+  // the pattern itself.
+  const mine = new Set([process.pid, process.ppid]);
+  const others = out.split('\n').filter((p) => p.trim() && !mine.has(Number(p)));
+  if (others.length) {
+    throw new Error(
+      `another scenario run is still live (pids ${others.join(', ')}); ` +
+        'stop it before starting this one, or the two will fight over the room',
+    );
+  }
+}
+
 async function openParticipant(name, roomLocalpart, port) {
   const a = ACCOUNTS[name];
   // The flutter service worker in a persisted profile serves the PREVIOUS
@@ -34,7 +68,10 @@ async function openParticipant(name, roomLocalpart, port) {
   const page = (await browser.pages())[0];
   const errors = [];
   page.on('pageerror', (e) => errors.push(String(e.stack || e.message || e).slice(0, 600)));
-  await login(page, a.user, a.pass, 'x');
+  // Tagged by participant: one shared tag meant the second login's
+  // screenshots overwrote the first's, and the evidence for a failure was
+  // whichever browser happened to fail last.
+  await login(page, a.user, a.pass, name);
   await wait(3000);
   await openRoom(page, roomLocalpart);
   const session = await mx.login(a.user, a.pass);
@@ -50,11 +87,40 @@ async function openParticipant(name, roomLocalpart, port) {
 /// control that only exists inside a chat, and fails loudly if it never comes.
 async function openRoom(page, roomLocalpart, attempts = 4) {
   for (let i = 1; i <= attempts; i++) {
+    // Cleared first on a retry: the app restores whatever route it was last
+    // on, and a profile left sitting on a settings page just swallowed the
+    // deep link four times in a row and reported the product broken. Going
+    // to the root and letting it settle puts it somewhere the link can work
+    // from.
+    if (i > 1) {
+      await page.goto(`${APP}/`, { waitUntil: 'domcontentloaded' });
+      await wait(3000);
+      await page.keyboard.press('Escape').catch(() => {});
+    }
     await page.goto(`${APP}/?left=chats,room:${roomLocalpart}`, { waitUntil: 'domcontentloaded' });
     await wait(i === 1 ? 6500 : 4000);
     await ui.enableSemantics(page);
     await wait(1500);
     if (await ui.hasLabel(page, 'Call')) return;
+    // The deep link does not always land, and the app then sits on the chat
+    // LIST with the conversation right there. Clicking it is what a person
+    // would do, and it is far more reliable than reloading the same link
+    // again: a row is recognisable by its timestamp.
+    const row = await page.evaluate(() => {
+      const hit = [...document.querySelectorAll('flt-semantics[aria-label]')]
+        .find((e) => /\d{1,2}:\d{2}\s?(AM|PM)/i.test(e.getAttribute('aria-label') || ''));
+      if (!hit) return null;
+      const r = hit.getBoundingClientRect();
+      if (!r.width || !r.height) return null;
+      return { x: r.x + r.width / 2, y: r.y + r.height / 2, label: hit.getAttribute('aria-label') };
+    });
+    if (row) {
+      await page.mouse.click(row.x, row.y);
+      await wait(3500);
+      await ui.enableSemantics(page);
+      await wait(1200);
+      if (await ui.hasLabel(page, 'Call')) return;
+    }
     console.log(`   (room did not open, attempt ${i}/${attempts}; on screen: ${JSON.stringify(await ui.labels(page))})`);
   }
   throw new Error('could not open the room: the call controls never appeared');
@@ -70,6 +136,30 @@ async function ensureRoom(p, roomLocalpart) {
   if (await ui.hasLabel(p.page, 'Call')) return;
   console.log(`   (${p.name} drifted off the room; reopening)`);
   await openRoom(p.page, roomLocalpart);
+}
+
+/// Reloads a page the way a user does, and WAKES it up again.
+///
+/// Flutter web only publishes a semantics tree once the placeholder has been
+/// clicked, and a reload throws that away with the rest of the document. A
+/// scenario that reloads and then reads text sees an empty page forever and
+/// reports the product broken -- which is exactly what happened to the rejoin
+/// checks: they spent a minute waiting for text that could never arrive, and
+/// by the time they looked, the grace they meant to test had already expired.
+/// So no scenario reloads by hand; they all come through here.
+async function wake(page, { timeout = 45000 } = {}) {
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  const deadline = Date.now() + timeout;
+  await wait(5000);
+  while (Date.now() < deadline) {
+    await ui.enableSemantics(page);
+    const text = await page
+      .evaluate(() => document.body.innerText || '')
+      .catch(() => '');
+    if (text.trim().length > 0) return true;
+    await wait(2000);
+  }
+  return false;
 }
 
 /// Recovers a client after a scenario that ANSWERED a call.
@@ -144,12 +234,33 @@ function check(scenario, name, pass, detail) {
   console.log(`   ${pass ? 'PASS' : 'FAIL'}  ${name}${pass ? '' : '  -> ' + detail}`);
 }
 
+/// A scenario that could not judge itself this run.
+///
+/// Not a pass and not a failure: a ring that expired before the reload
+/// finished has nothing left to answer, and asserting either way would be
+/// making it up. It has to reach the SUMMARY though -- a run where a scenario
+/// asserted nothing read as fully green, and the only trace was a line of
+/// console output nobody scrolls back to.
+const inconclusive = [];
+function skipped(scenario, name, why) {
+  inconclusive.push({ scenario, name, why });
+  console.log(`   SKIP  ${name}  -> ${why}`);
+}
+
 function report() {
   const failed = results.filter((r) => !r.pass);
   console.log('\n================ SUMMARY ================');
   console.log(`checks: ${results.length}   passed: ${results.length - failed.length}   FAILED: ${failed.length}`);
   failed.forEach((f) => console.log(`  FAIL [${f.scenario}] ${f.name}: ${f.detail}`));
+  if (inconclusive.length) {
+    console.log(`INCONCLUSIVE: ${inconclusive.length} -- these proved nothing this run`);
+    inconclusive.forEach((s) => console.log(`  SKIP [${s.scenario}] ${s.name}: ${s.why}`));
+  }
   return failed.length;
 }
 
-module.exports = { openParticipant, openRoom, ensureRoom, actUntil, recover, mark, since, compare, check, report, results, ui, mx, wait, APP };
+module.exports = {
+  wake, refuseIfAnotherRunIsLive, openParticipant, openRoom, ensureRoom, actUntil,
+  recover, mark, since, compare, check, skipped, report, results, inconclusive,
+  ui, mx, wait, cfg, APP,
+};
