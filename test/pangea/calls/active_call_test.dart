@@ -32,6 +32,14 @@ class FakeCalls extends CallService {
   /// list can lag that by its whole retention window.
   bool peerMembershipPresent = true;
 
+  /// When this device's own membership was written. A device that is IN a
+  /// call can always date its own join, and a departure is only measured
+  /// against that.
+  DateTime? ourJoinAt = DateTime.now().subtract(const Duration(seconds: 5));
+
+  @override
+  DateTime? membershipWrittenAt(matrix.Room room, String eventId) => ourJoinAt;
+
   /// Whether the device that rang is still holding a call. False is the
   /// "they rang, gave up, and their ring is still valid" case.
   bool callerHoldsMembership = true;
@@ -789,6 +797,33 @@ void main() {
     // ever see for them is the retraction. Requiring a prior sighting before
     // believing a departure swallowed exactly this, and the answerer waited
     // out a 20-second grace for someone who had already gone.
+    // ...but not before we can date our own join. Until then the newest thing
+    // the peer wrote is the retraction that ended the LAST call, which on a
+    // redial is seconds old -- and acting on it tore down calls two seconds
+    // after they were answered. The browser suite caught that; nothing in
+    // this file could, because the fake always knew when we joined.
+    test('but not before this device can date its own join', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      calls.ourJoinAt = null; // our membership is not readable yet
+      calls.peerPresenceOverride = PeerPresence.unknown;
+      await call.start(roomStub(calls.client), video: false, answering: true);
+      expect(call.stage, CallStage.connected);
+
+      // The previous call's retraction, still the newest thing they wrote.
+      calls.peerPresenceOverride = PeerPresence.gone;
+      calls.remotePresent = false;
+      await calls.participantsBecome([calls.client.deviceID!]);
+      await call.tickReelectionForTest();
+
+      expect(
+        call.stage,
+        isNot(CallStage.ended),
+        reason: 'an undateable departure must not end a call that just began',
+      );
+    });
+
     test('is believed without having seen them live first', () async {
       final (call, calls, _, _) = await build();
       calls.devicesInCall = [calls.client.deviceID!];

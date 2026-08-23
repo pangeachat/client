@@ -606,6 +606,13 @@ class ActiveCall extends ChangeNotifier {
         _peerMembershipSeen = true;
         return false;
       case PeerPresence.gone:
+        // Only once we can date our OWN join. Until then there is no floor to
+        // measure a departure against, and the newest thing the peer wrote is
+        // the retraction that ended the LAST call -- which is seconds old on a
+        // redial or a call back. Acting on it tore down calls two seconds
+        // after they were answered, and it is the same rule as the floor
+        // itself: presence may predate our join, a departure may not.
+        if (_ourJoinAt(room) == null) return _peerMembershipSeen;
         // A retraction speaks for itself. Requiring that we had SEEN them live
         // first was the transition rule doing too much work: it exists so that
         // state which has not synced yet cannot read as a departure, and an
