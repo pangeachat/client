@@ -1,11 +1,55 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/authentication/email_address_policy.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 
-class RegistrationEmailPopup extends StatelessWidget {
+class RegistrationEmailPopup extends StatefulWidget {
   final Future<void> Function() onResendEmail;
   const RegistrationEmailPopup({super.key, required this.onResendEmail});
+
+  @override
+  State<RegistrationEmailPopup> createState() => RegistrationEmailPopupState();
+}
+
+class RegistrationEmailPopupState extends State<RegistrationEmailPopup> {
+  /// Seconds until the resend control is live again. Zero means it is enabled.
+  /// It counts down from the moment of the tap rather than from the reply, so
+  /// it is also the in-flight guard.
+  final ValueNotifier<int> secondsUntilResend = ValueNotifier(0);
+
+  Timer? _countdown;
+
+  @override
+  void dispose() {
+    _countdown?.cancel();
+    secondsUntilResend.dispose();
+    super.dispose();
+  }
+
+  Future<void> resendEmail() async {
+    if (secondsUntilResend.value > 0) return;
+    _startCountdown();
+    try {
+      await widget.onResendEmail();
+    } catch (_) {
+      // A send that never happened should not cost the learner the wait.
+      _countdown?.cancel();
+      secondsUntilResend.value = 0;
+      rethrow;
+    }
+  }
+
+  void _startCountdown() {
+    secondsUntilResend.value = EmailAddressPolicy.resendCooldown.inSeconds;
+    _countdown?.cancel();
+    _countdown = Timer.periodic(const Duration(seconds: 1), (timer) {
+      secondsUntilResend.value--;
+      if (secondsUntilResend.value <= 0) timer.cancel();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,9 +127,16 @@ class RegistrationEmailPopup extends StatelessWidget {
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          TextButton(
-                            onPressed: onResendEmail,
-                            child: Text(l10n.resend),
+                          ValueListenableBuilder(
+                            valueListenable: secondsUntilResend,
+                            builder: (context, seconds, _) => TextButton(
+                              onPressed: seconds > 0 ? null : resendEmail,
+                              child: Text(
+                                seconds > 0
+                                    ? l10n.resendInSeconds(seconds)
+                                    : l10n.resend,
+                              ),
+                            ),
                           ),
                         ],
                       ),

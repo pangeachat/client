@@ -1,497 +1,68 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
-import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
-import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
-import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
-import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/spaces/space_gone_gate.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/course_ping_constants.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
-import 'package:fluffychat/routes/chat/chat_details/pangea_room_details.dart';
+import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
+import 'package:fluffychat/routes/chat/chat_details/chat_details_content.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
-import 'package:fluffychat/routes/settings/settings.dart';
-import 'package:fluffychat/utils/chat_download_provider.dart';
-import 'package:fluffychat/utils/file_selector.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
-import 'package:fluffychat/utils/navigation_util.dart';
-import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
-import 'package:fluffychat/widgets/announcing_snackbar.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/local_notifications_extension.dart';
+import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-// #Pangea
-// Pangea#
-
-enum AliasActions { copy, delete, setCanonical }
-
-class ChatDetails extends StatefulWidget {
+/// The shared room-details entry: resolves the room, shows the gone/left
+/// error state, and rebuilds on this room's state updates. Everything
+/// rendered is split by room type — a space renders [SpaceDetails] (the
+/// course page), any other room renders [ChatDetailsContent].
+class ChatDetails extends StatelessWidget {
   final String roomId;
-  final Widget? embeddedCloseButton;
-  // #Pangea
+
+  /// The hosting panel's close control. Required: the gone/left error state
+  /// below renders its own chrome and must carry it (#8322).
+  final Widget embeddedCloseButton;
+
+  /// The course-page section from the course token (spaces only).
   final SpaceSettingsTabs? activeTab;
-  // Pangea#
+
+  /// Whether [activeTab]'s full subpage ("See all") is pushed over the
+  /// course card, from the course token's `<section>/all` param.
+  final bool expandedSection;
 
   const ChatDetails({
     super.key,
     required this.roomId,
-    this.embeddedCloseButton,
-    // #Pangea
+    required this.embeddedCloseButton,
     this.activeTab,
-    // Pangea#
+    this.expandedSection = false,
   });
 
   @override
-  ChatDetailsController createState() => ChatDetailsController();
-}
-
-// #Pangea
-// class ChatDetailsController extends State<ChatDetails> {
-class ChatDetailsController extends State<ChatDetails>
-    with ChatDownloadProvider {
-  bool loadingCourseInfo = true;
-  bool loadingCourseSummary = true;
-
-  late CourseInfoSummariesModel roomSummariesModel;
-  late final QuestObjectivesLoader _objectivesProvider;
-
-  /// A ping can land WHILE the course page is open — nothing remounts then,
-  /// so re-run the ping capture when this course's timeline gains one.
-  StreamSubscription? _coursePingSub;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _objectivesProvider = QuestObjectivesLoader(
-      client: Matrix.of(context).client,
-    );
-
-    final room = Matrix.of(context).client.getRoomById(widget.roomId);
-    roomSummariesModel = CourseInfoSummariesModel(
-      {},
-      activitiesToCompleteOverride: room?.teacherMode.activitiesToUnlockTopic,
-    );
-
-    _objectivesProvider.loadOutline(
-      _questId,
-      pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
-      courseRoomId: widget.roomId,
-    );
-    _loadSummaries();
-
-    if (room != null && room.isSpace) {
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        _handleCoursePing();
-
-        if (!mounted) return;
-        await SpaceGoneGate.maybeShowDialog(context, widget.roomId);
-
-        if (!mounted) return;
-        Matrix.of(context).showEnableNotificationsDialog(context);
-      });
-
-      _coursePingSub = room.client.onSync.stream
-          .where((sync) {
-            final events = sync.rooms?.join?[widget.roomId]?.timeline?.events;
-            return events?.any(
-                  (e) =>
-                      e.content[CoursePingConstants.coursePingActivityId]
-                          is String &&
-                      e.content[CoursePingConstants.coursePingRoomId] is String,
-                ) ??
-                false;
-          })
-          .listen((_) => _handleCoursePing());
-
-      // A deletion or kick while this space is open arrives as a leave sync
-      _spaceGoneSubscription = Matrix.of(context).client.onSync.stream
-          .where((s) => s.rooms?.leave?.containsKey(widget.roomId) ?? false)
-          .listen((_) {
-            if (mounted) SpaceGoneGate.maybeShowDialog(context, widget.roomId);
-          });
-    }
-  }
-
-  StreamSubscription? _spaceGoneSubscription;
-
-  @override
-  void didUpdateWidget(covariant ChatDetails oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.roomId != widget.roomId) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) SpaceGoneGate.maybeShowDialog(context, widget.roomId);
-      });
-      _handleCoursePing();
-      _objectivesProvider.loadOutline(
-        _questId,
-        pinnedActivitiesByObjective: _pinnedActivitiesByObjective,
-        courseRoomId: widget.roomId,
-      );
-      _loadSummaries();
+  Widget build(BuildContext context) {
+    final room = Matrix.of(context).client.getRoomById(roomId);
+    if (room == null || room.membership == Membership.leave) {
+      return RoomUnavailablePanel(closeButton: embeddedCloseButton);
     }
 
-    if (widget.activeTab == SpaceSettingsTabs.course &&
-        oldWidget.activeTab != SpaceSettingsTabs.course) {
-      _loadSummaries();
-    }
-  }
-
-  @override
-  void dispose() {
-    _coursePingSub?.cancel();
-    _spaceGoneSubscription?.cancel();
-    _objectivesProvider.dispose();
-    super.dispose();
-  }
-
-  bool displaySettings = false;
-
-  void toggleDisplaySettings() =>
-      setState(() => displaySettings = !displaySettings);
-
-  String? get roomId => widget.roomId;
-
-  String? get _questId =>
-      Matrix.of(context).client.getRoomById(widget.roomId)?.coursePlan?.uuid;
-
-  /// The course's per-Mission activity pin (org quests doc, client#7748) —
-  /// null when unset, which is the unrestricted default.
-  Map<String, List<String>>? get _pinnedActivitiesByObjective => Matrix.of(
-    context,
-  ).client.getRoomById(widget.roomId)?.teacherMode.pinnedActivitiesByObjective;
-
-  QuestObjectivesLoader get objectivesProvider => _objectivesProvider;
-
-  void setDisplaynameAction() async {
-    final room = Matrix.of(context).client.getRoomById(roomId!)!;
-    final input = await showTextInputDialog(
-      context: context,
-      // #Pangea
-      // title: L10n.of(context).changeTheNameOfTheGroup,
-      title: room.isSpace
-          ? L10n.of(context).changeTheNameOfTheClass
-          : L10n.of(context).changeTheNameOfTheChat,
-      maxLength: 64,
-      // Pangea#
-      okLabel: L10n.of(context).ok,
-      cancelLabel: L10n.of(context).cancel,
-      initialText: room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
-    );
-    if (input == null) return;
-    final success = await showFutureLoadingDialog(
-      context: context,
-      future: () => room.setName(input),
-    );
-    if (success.error == null) {
-      // #Pangea
-      ScaffoldMessenger.of(context).showSnackBarAnnounced(
-        SnackBar(content: Text(L10n.of(context).displaynameHasBeenChanged)),
-      );
-      // Pangea#
-    }
-  }
-
-  void setTopicAction() async {
-    final room = Matrix.of(context).client.getRoomById(roomId!)!;
-    final input = await showTextInputDialog(
-      context: context,
-      title: L10n.of(context).setChatDescription,
-      okLabel: L10n.of(context).ok,
-      cancelLabel: L10n.of(context).cancel,
-      hintText: L10n.of(context).noChatDescriptionYet,
-      initialText: room.topic,
-      minLines: 4,
-      maxLines: 8,
-    );
-    if (input == null) return;
-    // #Pangea
-    await showFutureLoadingDialog(
-      context: context,
-      future: () => room.setDescription(input),
-    );
-    // final success = await showFutureLoadingDialog(
-    //   context: context,
-    //   future: () => room.setDescription(input),
-    // );
-    // if (success.error == null) {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(content: Text(L10n.of(context).chatDescriptionHasBeenChanged)),
-    //   );
-    // }
-    // Pangea#
-  }
-
-  void setAvatarAction() async {
-    final room = Matrix.of(context).client.getRoomById(roomId!);
-    final actions = [
-      if (PlatformInfos.isMobile)
-        AdaptiveModalAction(
-          value: AvatarAction.camera,
-          label: L10n.of(context).openCamera,
-          isDefaultAction: true,
-          icon: const Icon(Icons.camera_alt_outlined),
-        ),
-      AdaptiveModalAction(
-        value: AvatarAction.file,
-        label: L10n.of(context).openGallery,
-        icon: const Icon(Icons.photo_outlined),
-      ),
-      if (room?.avatar != null)
-        AdaptiveModalAction(
-          value: AvatarAction.remove,
-          label: L10n.of(context).delete,
-          isDestructive: true,
-          icon: const Icon(Icons.delete_outlined),
-        ),
-    ];
-    final action = actions.length == 1
-        ? actions.single.value
-        : await showModalActionPopup<AvatarAction>(
-            context: context,
-            title: L10n.of(context).editRoomAvatar,
-            cancelLabel: L10n.of(context).cancel,
-            actions: actions,
-          );
-    if (action == null) return;
-    if (action == AvatarAction.remove) {
-      await showFutureLoadingDialog(
-        context: context,
-        future: () => room!.setAvatar(null),
-      );
-      return;
-    }
-    MatrixFile file;
-    if (PlatformInfos.isMobile) {
-      final result = await ImagePicker().pickImage(
-        source: action == AvatarAction.camera
-            ? ImageSource.camera
-            : ImageSource.gallery,
-        imageQuality: 50,
-      );
-      if (result == null) return;
-      file = MatrixFile(bytes: await result.readAsBytes(), name: result.path);
-    } else {
-      final picked = await selectFiles(
-        context,
-        allowMultiple: false,
-        type: FileType.image,
-      );
-      final pickedFile = picked.firstOrNull;
-      if (pickedFile == null) return;
-      file = MatrixFile(
-        bytes: await pickedFile.readAsBytes(),
-        name: pickedFile.name,
-      );
-    }
-    await showFutureLoadingDialog(
-      context: context,
-      future: () => room!.setAvatar(file),
-    );
-  }
-
-  Future<void> _handleCoursePing() async {
-    final room = Matrix.of(context).client.getRoomById(widget.roomId);
-    if (room == null) return;
-
-    final event = await room.unreadCoursePingEvent;
-    if (event == null) {
-      // Back on the course with no unread ping left: this course's badge
-      // pass (course plan card, session tile) is over. See #8319.
-      CoursePingBadgeCache.clearForCourse(room.id);
-      return;
-    }
-
-    // Stash the pinged activity/session BEFORE setting the read marker — the
-    // badges render from this cache for the rest of the visit, while the
-    // marker makes the next visit start clean.
-    final activityId = event.content[CoursePingConstants.coursePingActivityId];
-    final sessionRoomId = event.content[CoursePingConstants.coursePingRoomId];
-    if (activityId is String && sessionRoomId is String) {
-      CoursePingBadgeCache.set((
-        courseId: room.id,
-        activityId: activityId,
-        sessionRoomId: sessionRoomId,
-      ));
-    }
-
-    try {
-      await room.setReadMarker(event.eventId);
-    } catch (_) {}
-  }
-
-  // #Pangea
-  Future<void> setRoomCapacity() async {
-    if (roomId == null) return;
-    final Room? room = Matrix.of(context).client.getRoomById(roomId!);
-    if (room == null) return;
-
-    final input = await showTextInputDialog(
-      context: context,
-      title: L10n.of(context).chatCapacity,
-      message: L10n.of(context).chatCapacityExplanation,
-      okLabel: L10n.of(context).ok,
-      cancelLabel: L10n.of(context).cancel,
-      initialText: ((room.capacity != null) ? '${room.capacity}' : ''),
-      keyboardType: TextInputType.number,
-      maxLength: 3,
-      validator: (value) {
-        if (value.isEmpty ||
-            int.tryParse(value) == null ||
-            int.parse(value) < 0) {
-          return L10n.of(context).enterNumber;
-        }
-        if (int.parse(value) < (room.summary.mJoinedMemberCount ?? 1)) {
-          return L10n.of(
-            context,
-          ).chatCapacitySetTooLow(room.summary.mJoinedMemberCount ?? 1);
-        }
-        return null;
-      },
-    );
-    if (input == null || input.isEmpty || int.tryParse(input) == null) {
-      return;
-    }
-
-    final newCapacity = int.parse(input);
-    final success = await showFutureLoadingDialog(
-      context: context,
-      future: () => room.updateRoomCapacity(newCapacity),
-    );
-    if (success.error == null) {
-      ScaffoldMessenger.of(context).showSnackBarAnnounced(
-        SnackBar(content: Text(L10n.of(context).chatCapacityHasBeenChanged)),
-      );
-      setState(() {});
-    }
-  }
-
-  Future<void> addGroupChat() async {
-    final activeSpace = Matrix.of(context).client.getRoomById(roomId!);
-    if (activeSpace == null || !activeSpace.isSpace) return;
-
-    final groupName = await showTextInputDialog(
-      context: context,
-      title: L10n.of(context).createGroup,
-      hintText: L10n.of(context).groupName,
-      minLines: 1,
-      maxLines: 1,
-      maxLength: 64,
-      validator: (text) {
-        if (text.isEmpty) {
-          return L10n.of(context).pleaseChoose;
-        }
-        return null;
-      },
-      okLabel: L10n.of(context).create,
-      cancelLabel: L10n.of(context).cancel,
-    );
-    if (groupName == null) return;
-
-    final resp = await showFutureLoadingDialog<String>(
-      context: context,
-      future: () async {
-        final newRoomId = await Matrix.of(context).client.createPangeaGroupChat(
-          groupName,
-          initialState: [
-            await Matrix.of(context).client.generateCustomJoinRules(
-              JoinRules.knockRestricted,
-              allowRoomId: roomId,
+    // Rate-limited: loading a course's member list ingests the /members
+    // response as one state update PER MEMBER, and unthrottled that rebuilt
+    // the whole page once per member — the participants preview visibly
+    // reshuffled while its level-sorted order settled. The first event still
+    // emits immediately, so single updates (a rename, a topic edit) render
+    // without delay.
+    return StreamBuilder(
+      stream: room.client.onRoomState.stream
+          .where((update) => update.roomId == room.id)
+          .rateLimit(const Duration(seconds: 1)),
+      builder: (context, snapshot) => room.isSpace
+          ? SpaceDetails(
+              room: room,
+              embeddedCloseButton: embeddedCloseButton,
+              activeTab: activeTab,
+              expandedSection: expandedSection,
+            )
+          : ChatDetailsContent(
+              room: room,
+              embeddedCloseButton: embeddedCloseButton,
             ),
-          ],
-          powerLevelContentOverride: RoomDefaults.defaultPowerLevelsContent(),
-        );
-
-        try {
-          await activeSpace.addToSpace(newRoomId);
-          final room = Matrix.of(context).client.getRoomById(newRoomId);
-          if (room != null && room.spaceParents.isEmpty) {
-            await Matrix.of(context).client
-                .waitForRoomInSync(newRoomId)
-                .timeout(Duration(seconds: 10));
-          }
-          return newRoomId;
-        } catch (e, s) {
-          ErrorHandler.logError(
-            e: e,
-            s: s,
-            data: {'newRoomId': newRoomId, 'spaceId': roomId},
-            level: e is TimeoutException
-                ? SentryLevel.warning
-                : SentryLevel.error,
-          );
-
-          if (e is TimeoutException) {
-            return newRoomId;
-          } else {
-            rethrow;
-          }
-        }
-      },
     );
-
-    if (resp.isError || resp.result == null || !mounted) return;
-    NavigationUtil.goToSpaceRoute(resp.result, ['invite'], context);
   }
-
-  Future<void> _loadSummaries() async {
-    try {
-      final client = Matrix.of(context).client;
-      final room = client.getRoomById(roomId!);
-      if (room == null || !room.isSpace) return;
-
-      if (mounted) setState(() => loadingCourseSummary = true);
-      final roomIds = room.spaceChildren
-          .map((c) => c.roomId)
-          .whereType<String>()
-          .toList();
-
-      final roomSummariesResponse = await client.loadRoomSummaries(
-        roomIds,
-        l1Code: MatrixState.pangeaController.userController.userL1Code,
-      );
-
-      roomSummariesModel = CourseInfoSummariesModel(
-        roomSummariesResponse,
-        activitiesToCompleteOverride: room.teacherMode.activitiesToUnlockTopic,
-      );
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "message": "Failed to load activity summaries",
-          "roomId": roomId,
-        },
-      );
-    } finally {
-      if (mounted) setState(() => loadingCourseSummary = false);
-    }
-  }
-  // Pangea#
-
-  static const fixedWidth = 360.0;
-
-  @override
-  // #Pangea
-  Widget build(BuildContext context) => PangeaRoomDetailsView(this);
-  // Widget build(BuildContext context) => ChatDetailsView(this);
-  // Pangea#
 }

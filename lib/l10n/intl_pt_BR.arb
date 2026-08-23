@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:14.457604",
+    "@@last_modified": "2026-08-21 09:39:40.042910",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -3359,9 +3359,7 @@
     "enableAutocorrectPopupTitle": "Adicione seu teclado de idioma alvo indo em:",
     "enableAutocorrectPopupSteps": "  • Configurações\n  • Geral\n  • Teclado\n  • Teclados\n  • Adicionar Novo Teclado",
     "enableAutocorrectPopupDescription": "Depois que o idioma for selecionado, você pode clicar no pequeno ícone do globo na parte inferior esquerda do seu teclado para ativar o teclado recém-instalado.",
-    "downloadGboardTitle": "Baixe o Gboard da Google Play Store para ativar autocorreção e outros recursos do teclado:",
     "downloadGboardSteps": " • Baixar Gboard\n  • Abrir o aplicativo\n  • Idiomas\n  • Adicionar teclado\n  • Selecionar idioma\n  • Selecionar tipo de teclado\n  • Concluído",
-    "downloadGboardDescription": "Depois que o idioma for selecionado, você pode clicar no pequeno ícone do globo na parte inferior esquerda do seu teclado para ativar o teclado recém-instalado.",
     "enableAutocorrectWarning": "Atenção! É necessário adicionar o teclado do idioma alvo",
     "displayName": "Nome de exibição",
     "leaveRoomDescription": "Você está prestes a sair deste chat. Outros usuários verão que você saiu do chat.",
@@ -5580,15 +5578,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9737,6 +9727,9 @@
     "pingedActivity": "Atividade mencionada",
     "appInTargetLanguageStaysInBaseLanguage": "(Esta configuração permanece no seu idioma nativo para que você possa sempre encontrá-la.)",
     "usernameTakenPleaseChooseAnother": "Esse nome de usuário já está em uso. Por favor, escolha outro.",
+    "allParticipants": "Todos os participantes",
+    "seeFullCoursePlan": "Ver plano de curso completo",
+    "catchUp": "Recuperar",
     "messageLanguageIs": "Esta mensagem está definida para {language}.",
     "updateMessageLanguage": "Clique aqui para mudar o idioma da mensagem.",
     "messageLanguage": "Idioma da mensagem",
@@ -9746,5 +9739,24 @@
     "unlockTranslations": "Desbloquear traduções",
     "unlockEmojiMode": "Desbloquear modo emoji",
     "unlockMessagePractice": "Desbloquear prática de mensagens",
-    "unlockWritingAssistance": "Desbloquear assistência de escrita"
+    "unlockWritingAssistance": "Desbloquear assistência de escrita",
+    "courseSectionTeaching": "Ensinando",
+    "courseSectionLearning": "Aprendendo",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
+    "showMore": "Mostrar mais",
+    "showLess": "Mostrar menos",
+    "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}",
+    "markAllRead": "Marcar tudo como lido",
+    "usersAreTryingToJoinCourse": "Usuários estão tentando entrar no seu curso",
+    "denyAllUsers": "Recusar todos os usuários",
+    "denyAllKnocksDescription": "Estes usuários serão rejeitados do curso. Eles podem tentar entrar novamente a qualquer momento.",
+    "courseNameHint": "Nome do curso",
+    "typeCourseCodeToConfirm": "Para confirmar, digite o código do curso {code} abaixo.",
+    "typeCourseNameToConfirm": "Para confirmar, digite o nome do curso {name} abaixo.",
+    "inviteAFriend": "Convidar um amigo",
+    "autocorrectAndroidDialogTitle": "Correção automática no seu idioma de destino",
+    "autocorrectAndroidDialogBody": "Ao digitar em um chat, seu teclado mudará para o idioma de destino e corrigirá a ortografia nesse idioma.",
+    "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o idioma de destino, instale o Gboard e adicione o idioma lá:",
+    "resendInSeconds": "Reenviar ({seconds})",
+    "mapLevelFallbackNotice": "Nenhuma atividade de {selected} ainda — mostrando {shown} em vez disso."
 }

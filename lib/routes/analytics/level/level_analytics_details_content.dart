@@ -72,7 +72,7 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: isColumnMode ? 24 : 16,
                                 fontWeight: FontWeight.w900,
-                                color: AppConfig.gold,
+                                color: AppConfig.goldByTheme(context),
                               ),
                             ),
                           ],
@@ -82,7 +82,7 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                           style: TextStyle(
                             fontSize: isColumnMode ? 24 : 16,
                             fontWeight: FontWeight.w900,
-                            color: AppConfig.gold,
+                            color: AppConfig.goldByTheme(context),
                           ),
                         ),
                       ],

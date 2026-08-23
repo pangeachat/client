@@ -59,6 +59,13 @@ abstract class PRoutes {
   /// [chatsList]; `/rooms/:roomid` is the deliberately-kept room shape ([room]).
   static const String rooms = '/rooms';
 
+  /// The DM invite link's route root — `/invite_user/:userID`, the third
+  /// inbound URL contract, which resolves through its own redirect-only route
+  /// (routes.dart) rather than a `LegacyRedirects` fold. Written by
+  /// `dmInvitePath` and read back by `dmInviteUserIdFor` (user_id_url.dart);
+  /// never a nav target for in-app code.
+  static const String dmInvite = '/invite_user';
+
   // ---- builders -------------------------------------------------------
 
   /// One joined course (a Matrix space) — `/courses/:spaceid` (bare localpart).

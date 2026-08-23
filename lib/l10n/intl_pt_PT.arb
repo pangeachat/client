@@ -2350,9 +2350,7 @@
     "enableAutocorrectPopupTitle": "Adicione o teclado do seu idioma de destino indo para:",
     "enableAutocorrectPopupSteps": "  • Definições\n  • Geral\n  • Teclado\n  • Teclados\n  • Adicionar novo teclado",
     "enableAutocorrectPopupDescription": "Depois de selecionar o idioma, pode clicar no pequeno ícone do globo na parte inferior esquerda do seu teclado para ativar o teclado recentemente instalado.",
-    "downloadGboardTitle": "Baixe o Gboard da Google Play Store para ativar a correção automática e outros recursos do teclado:",
     "downloadGboardSteps": " • Baixar Gboard\n  • Abrir o aplicativo\n  • Idiomas\n  • Adicionar teclado\n  • Selecionar idioma\n  • Selecionar tipo de teclado\n  • Concluído",
-    "downloadGboardDescription": "Depois de selecionar o idioma, pode clicar no pequeno ícone do globo na parte inferior esquerda do seu teclado para ativar o teclado recentemente instalado.",
     "enableAutocorrectWarning": "Atenção! É necessário adicionar o teclado do seu idioma de destino",
     "displayName": "Nome de exibição",
     "leaveRoomDescription": "Está prestes a sair deste chat. Outros utilizadores verão que saiu do chat.",
@@ -2564,7 +2562,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-17 09:31:06.559373",
+    "@@last_modified": "2026-08-21 09:39:40.016851",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6317,15 +6315,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10654,6 +10644,9 @@
     "pingedActivity": "Atividade com ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Esta definição permanece no seu idioma nativo para que a possa encontrar sempre.)",
     "usernameTakenPleaseChooseAnother": "Este nome de utilizador já está em uso. Por favor, escolha outro.",
+    "allParticipants": "Todos os participantes",
+    "seeFullCoursePlan": "Ver plano de curso completo",
+    "catchUp": "Recuperar",
     "messageLanguageIs": "Esta mensagem está definida para {language}.",
     "updateMessageLanguage": "Clique aqui para alterar o idioma da mensagem.",
     "messageLanguage": "Idioma da mensagem",
@@ -10663,5 +10656,24 @@
     "unlockTranslations": "Desbloquear traduções",
     "unlockEmojiMode": "Desbloquear modo emoji",
     "unlockMessagePractice": "Desbloquear prática de mensagens",
-    "unlockWritingAssistance": "Desbloquear assistência de escrita"
+    "unlockWritingAssistance": "Desbloquear assistência de escrita",
+    "courseSectionTeaching": "Ensino",
+    "courseSectionLearning": "Aprendizagem",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
+    "showMore": "Mostrar mais",
+    "showLess": "Mostrar menos",
+    "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}",
+    "markAllRead": "Marcar tudo como lido",
+    "usersAreTryingToJoinCourse": "Os utilizadores estão a tentar aderir ao seu curso",
+    "denyAllUsers": "Recusar todos os utilizadores",
+    "denyAllKnocksDescription": "Estes utilizadores serão rejeitados do curso. Poderão tentar aderir novamente a qualquer momento.",
+    "courseNameHint": "Nome do curso",
+    "typeCourseCodeToConfirm": "Para confirmar, digite o código do curso {code} abaixo.",
+    "typeCourseNameToConfirm": "Para confirmar, digite o nome do curso {name} abaixo.",
+    "inviteAFriend": "Convidar um amigo",
+    "autocorrectAndroidDialogTitle": "Correção automática na sua língua-alvo",
+    "autocorrectAndroidDialogBody": "Quando escrever numa conversa, o seu teclado mudará para a sua língua-alvo e corrigirá a ortografia nessa língua.",
+    "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer a sua língua-alvo, instale o Gboard e adicione a língua lá:",
+    "resendInSeconds": "Reenviar ({seconds})",
+    "mapLevelFallbackNotice": "Ainda não há atividades {selected} — a mostrar {shown} em vez disso."
 }

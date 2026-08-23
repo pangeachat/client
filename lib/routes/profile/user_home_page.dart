@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:mime/mime.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/user/own_profile_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/preset_avatar_picker.dart';
@@ -104,7 +105,7 @@ class _UserHomePageState extends State<UserHomePage> {
     if (action == AvatarAction.remove) {
       final success = await showFutureLoadingDialog(
         context: context,
-        future: () => matrix.client.setAvatar(null),
+        future: () => matrix.client.setOwnAvatar(null),
       );
       if (success.error == null) {
         updateProfileFuture();
@@ -116,11 +117,7 @@ class _UserHomePageState extends State<UserHomePage> {
       if (url == null) return;
       final success = await showFutureLoadingDialog(
         context: context,
-        future: () => matrix.client.setProfileField(
-          matrix.client.userID!,
-          'avatar_url',
-          {'avatar_url': url.toString()},
-        ),
+        future: () => matrix.client.setOwnAvatarUrl(url),
       );
       if (success.error == null) {
         updateProfileFuture();
@@ -161,7 +158,7 @@ class _UserHomePageState extends State<UserHomePage> {
 
     final success = await showFutureLoadingDialog(
       context: context,
-      future: () => matrix.client.setAvatar(file),
+      future: () => matrix.client.setOwnAvatar(file),
     );
     if (success.error == null) {
       updateProfileFuture();
@@ -185,11 +182,7 @@ class _UserHomePageState extends State<UserHomePage> {
     final matrix = Matrix.of(context);
     final success = await showFutureLoadingDialog(
       context: context,
-      future: () => matrix.client.setProfileField(
-        matrix.client.userID!,
-        'displayname',
-        {'displayname': input},
-      ),
+      future: () => matrix.client.setOwnDisplayName(input),
     );
     if (success.error == null) {
       updateProfileFuture();

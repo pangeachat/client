@@ -6,12 +6,12 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
+import 'package:fluffychat/pangea/spaces/course_role_groups.dart';
 import 'package:fluffychat/routes/courses/add_course_options.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_list.dart';
+import 'package:fluffychat/routes/world/left_panel/course_section_header.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -44,7 +44,7 @@ class CoursesHubPanel extends StatelessWidget {
             .where((s) => s.hasRoomUpdate)
             .rateLimit(const Duration(seconds: 1)),
         builder: (context, _) {
-          final courses = client.sortedCourses(l10n);
+          final groups = client.coursesByRole(l10n);
           return Column(
             children: [
               PanelHeader(
@@ -53,11 +53,11 @@ class CoursesHubPanel extends StatelessWidget {
                 // With courses present, the three add-course actions ride the
                 // header as right-justified icons; when empty they stay as full
                 // buttons in the body below (the empty state).
-                trailing: courses.isEmpty
+                trailing: groups.courseCount == 0
                     ? null
                     : const AddCourseHeaderActions(),
               ),
-              Expanded(child: LeftPanelCoursesListView(courses: courses)),
+              Expanded(child: LeftPanelCoursesListView(groups: groups)),
             ],
           );
         },
@@ -66,14 +66,37 @@ class CoursesHubPanel extends StatelessWidget {
   }
 }
 
+/// Sections the learner has collapsed in the Courses hub. Device-local view
+/// state — never in the URL — that outlives the panel (it rebuilds on every
+/// sync and reopens often) but not the app, like the mobile widget's
+/// most-recent course shortcut. See routing.instructions.md.
+final Set<CourseRoleGroup> _collapsedSections = {};
+
 /// The scrollable body of [CoursesHubPanel]: a tile per invited or joined
 /// course (matching nav rail behavior on course selection), and — only when the
 /// learner has none yet — the "Add new course" divider and the full-width
 /// add-course buttons as the empty state (#7172).
-class LeftPanelCoursesListView extends StatelessWidget {
-  final List<Room> courses;
+///
+/// When the learner both administers and takes courses, the tiles sit under
+/// collapsible **Invited** / **Teaching** / **Learning** section headers so a
+/// long list can be scanned by role (#8425). A learner holding one role sees
+/// the flat list — no headers at all.
+class LeftPanelCoursesListView extends StatefulWidget {
+  final CourseRoleGroups groups;
 
-  const LeftPanelCoursesListView({super.key, required this.courses});
+  const LeftPanelCoursesListView({super.key, required this.groups});
+
+  @override
+  State<LeftPanelCoursesListView> createState() =>
+      _LeftPanelCoursesListViewState();
+}
+
+class _LeftPanelCoursesListViewState extends State<LeftPanelCoursesListView> {
+  void _toggleSection(CourseRoleGroup group) {
+    setState(() {
+      if (!_collapsedSections.remove(group)) _collapsedSections.add(group);
+    });
+  }
 
   /// Open joined courses, or open popup for invited courses
   Future<void> onTapCourse(BuildContext context, Room course) async {
@@ -82,15 +105,10 @@ class LeftPanelCoursesListView extends StatelessWidget {
 
     if (!{Membership.invite, Membership.leave}.contains(membership)) {
       context.go(
-        WorkspaceNav.openCourseSection(
-          uri,
-          course.id,
-          keepRoom: false,
-          // Same as the web rail: a badged course opens on the Chats tab —
-          // where the knock notification lives — instead of the Course Plan
-          // default, every time, until the knock is accepted or denied (#8139).
-          tab: course.knockingUsers.isNotEmpty ? SpaceSettingsTabs.chat : null,
-        ),
+        // No section param even for a knock-badged course: knocks surface in
+        // the Catch up card at the top of the page (#8357), which a
+        // scroll-to-Chats would skip right past.
+        WorkspaceNav.openCourseSection(uri, course.id, keepRoom: false),
       );
       return;
     }
@@ -116,6 +134,31 @@ class LeftPanelCoursesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
+    final groups = widget.groups;
+
+    // The tiles actually shown, plus a header above each section's first tile.
+    // A collapsed section contributes only its header, so headers are keyed by
+    // the visible index they precede (see AddCourseTileList.sectionHeaders).
+    final courses = <Room>[];
+    final sectionHeaders = <int, List<Widget>>{};
+    if (groups.isGrouped) {
+      for (final section in groups.sections) {
+        final collapsed = _collapsedSections.contains(section.group);
+        sectionHeaders
+            .putIfAbsent(courses.length, () => [])
+            .add(
+              CourseSectionHeader(
+                title: section.group.title(l10n),
+                count: section.rooms.length,
+                collapsed: collapsed,
+                onTap: () => _toggleSection(section.group),
+              ),
+            );
+        if (!collapsed) courses.addAll(section.rooms);
+      }
+    } else {
+      courses.addAll(groups.ordered);
+    }
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -125,7 +168,8 @@ class LeftPanelCoursesListView extends StatelessWidget {
         child: AddCourseTileList(
           content: courses.map((c) => RoomAddCourseTileContent(c)).toList(),
           onTap: (index) => onTapCourse(context, courses[index]),
-          extraContent: courses.isEmpty
+          sectionHeaders: sectionHeaders,
+          extraContent: groups.courseCount == 0
               ? [
                   const SizedBox(height: 4.0),
                   // "Add new course" section divider + the full add-course buttons.

@@ -61,6 +61,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
 import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
@@ -160,7 +161,9 @@ class ChatPage extends StatelessWidget {
   final String? eventId;
 
   // #Pangea
-  final Widget? backButton;
+  /// The hosting panel's close control. Required: the room-gone state below
+  /// renders its own chrome and must carry it (#7746, #8322).
+  final Widget backButton;
   // Pangea#
 
   const ChatPage({
@@ -169,7 +172,7 @@ class ChatPage extends StatelessWidget {
     this.eventId,
     this.shareItems,
     // #Pangea
-    this.backButton,
+    required this.backButton,
     // Pangea#
   });
 
@@ -188,21 +191,9 @@ class ChatPage extends StatelessWidget {
     }
 
     if (room == null) {
-      // if (room == null) {
-      // Pangea#
-      return Scaffold(
-        appBar: AppBar(leading: backButton),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              L10n.of(context).youAreNoLongerParticipatingInThisChat,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      );
+      return RoomUnavailablePanel(closeButton: backButton);
     }
+    // Pangea#
 
     return ChatPageWithRoom(
       key: Key('chat_page_${roomId}_$eventId'),
@@ -1284,22 +1275,30 @@ class ChatController extends State<ChatPageWithRoom>
         // .then((_) {
         //   _setReadMarkerFuture = null;
         // });
-        .then((_) {
-          _setReadMarkerFuture = null;
-        })
+        // One report, through the one sink: severity, the fingerprint and
+        // the UnsubscribedException guard are all applied in [ErrorHandler]
+        // (repos-and-error-handling.instructions.md § The contract), so a
+        // direct `Sentry.captureException` here both double-reported and
+        // opted out of them. `e` is passed unwrapped — the old
+        // `PangeaWarningError("...$e")` stringified the failure and destroyed
+        // the type the sink reads. What was a `where` tag rides in `data`.
         .catchError((e, s) {
           ErrorHandler.logError(
-            e: PangeaWarningError("Failed to set read marker: $e"),
+            e: e,
             s: s,
-            data: {'eventId': eventId, 'roomId': roomId},
-          );
-          Sentry.captureException(
-            e,
-            stackTrace: s,
-            withScope: (scope) {
-              scope.setTag('where', 'setReadMarker');
+            data: {
+              'where': 'setReadMarker',
+              'eventId': eventId,
+              'roomId': roomId,
             },
           );
+        })
+        // Cleared on both paths, not just success. The field is the in-flight
+        // guard read at the top of this method, so leaving it set after a
+        // failure disabled read markers for the rest of this controller's
+        // life — one dropped request and the chat stopped marking read.
+        .whenComplete(() {
+          _setReadMarkerFuture = null;
         });
     // Pangea#
     if (eventId == null || eventId == timeline.room.lastEvent?.eventId) {
@@ -1922,12 +1921,13 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    // Best-effort dosage envelope for the voice send — the ONE client call site
-    // speaking needs (#104). NO DURATION CROSSES THE WIRE: the server reads
-    // `info.duration` out of the `m.audio` event it already fetches by id to
-    // verify the use's claimed room, and today discards. What the server cannot
-    // derive is that the message EXISTS: nothing enumerates a room's timeline,
-    // so it learns of a voice message only through a client-originated row.
+    // Best-effort dosage envelope for the voice send — the EXISTENCE half of
+    // speaking (#104). It reports only that the message exists (and, via the
+    // reporter below, that `voice_send` coverage may be declared): nothing
+    // enumerates a room's timeline, so this client-originated row is the only way
+    // the server learns a voice message happened at all. The DURATION half rides
+    // a separate, capability-gated `voice_messages` row emitted just after this
+    // (see the recordVoiceMessage call below).
     //
     // The other such row is a `pvm` construct use, and that has two holes this
     // envelope is immune to — a message whose tokens are all unsavable produces
@@ -1963,6 +1963,27 @@ class ChatController extends State<ChatPageWithRoom>
       onEnvelopeSettled: DosageAudioSignals.voiceSendReporter(
         userId: capturedClientUserId,
       ),
+    );
+
+    // The DURATION half of speaking (admin-dash-api#150 / #104). For a DM / 1:1 /
+    // bot room the server's OTHER populate path — a teacher-token read of the
+    // course session room's `m.audio` — cannot see this message, so the
+    // `content.info.duration` the client holds right here (`duration`, the same
+    // value embedded in `info` above) is the ONLY place that magnitude exists.
+    // Reported on the SAME audio-signals lane as a `voice_messages` row keyed by
+    // the SAME `m.audio` event id ([eventId]) the envelope above and the `pvm`
+    // uses carry, so the server dedups on `(sender, msg_id)` and never
+    // double-counts against the Matrix-resolved path. Capability-gated
+    // (Environment.dosageVoiceMessagesEnabled) so it can never post the field to
+    // a server that predates #150. Synchronous + allocation-only; the POST is
+    // unawaited on the analytics heartbeat, exactly like the envelope above, so
+    // the send path never waits on it.
+    DosageAudioSignals.recordVoiceMessage(
+      msgId: eventId,
+      roomId: capturedRoomId,
+      durationMs: duration,
+      userId: capturedClientUserId,
+      accessToken: capturedRoom.client.accessToken,
     );
 
     // The voice note is on the wire, so the learner is in a spoken exchange:
@@ -3301,23 +3322,9 @@ class ChatController extends State<ChatPageWithRoom>
       context: context,
       future: () async {
         clearSelectedEvents();
-        await MatrixState.pangeaController.userController.updateProfile((
-          profile,
-        ) {
-          final baseLangShort = profile.userSettings.sourceLanguage
-              ?.split('-')
-              .first;
-
-          if (baseLangShort != null && baseLangShort == target.langCodeShort) {
-            throw IdenticalLanguageException();
-          }
-
-          return profile.copyWith(
-            userSettings: profile.userSettings.copyWith(
-              targetLanguage: target.langCode,
-            ),
-          );
-        }, waitForDataInSync: true);
+        await MatrixState.pangeaController.userController.updateTargetLanguage(
+          target,
+        );
       },
     );
     if (resp.isError) return;

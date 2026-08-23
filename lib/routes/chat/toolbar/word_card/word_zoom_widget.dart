@@ -22,6 +22,7 @@ import 'package:fluffychat/routes/chat/toolbar/word_card/lemma_meaning_display.d
 import 'package:fluffychat/routes/chat/toolbar/word_card/lemma_reaction_picker.dart';
 import 'package:fluffychat/routes/chat/toolbar/word_card/message_unsubscribed_card.dart';
 import 'package:fluffychat/routes/chat/toolbar/word_card/token_feedback_button.dart';
+import 'package:fluffychat/utils/text_scaler_extension.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -94,7 +95,7 @@ class WordZoomWidget extends StatelessWidget {
             .showSubscriptionGatedContent
         ? MessageUnsubscribedCard(token: token, onClose: onClose)
         : Container(
-            height: AppConfig.toolbarMaxHeight - 8,
+            height: AppConfig.scaledToolbarMaxHeight(context) - 8,
             padding: const EdgeInsets.all(12.0),
             constraints: BoxConstraints(
               maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
@@ -124,6 +125,10 @@ class WordZoomWidget extends StatelessWidget {
                             LanguageModel.unknown,
                         pos: pos,
                         morph: morph,
+                        // The message this word was tapped in, where the card
+                        // was opened from a message at all. The analytics and
+                        // style-example hosts pass no event and are roomless.
+                        roomId: event?.room.id,
                         style: const TextStyle(fontSize: 14.0),
                         maxLines: 2,
                         reloadNotifier: reloadNotifier,
@@ -166,7 +171,7 @@ class WordZoomWidget extends StatelessWidget {
             ),
             borderRadius: const BorderRadius.all(Radius.circular(25)),
           ),
-          height: AppConfig.toolbarMaxHeight,
+          height: AppConfig.scaledToolbarMaxHeight(context),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -250,8 +255,11 @@ class _WordCardHeaderState extends State<_WordCardHeader>
   Widget build(BuildContext context) {
     final showRestore = _blocked && widget.enableRestore;
 
+    // The word itself is 28pt text, so the header slot has to grow with the
+    // device text size or the word is clipped by its own row
+    // (accessibility.instructions.md, Text scaling).
     return SizedBox(
-      height: 40.0,
+      height: 40.0 * MediaQuery.textScalerOf(context).factorAt(28.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

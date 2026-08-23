@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-17 09:31:27.336730",
+    "@@last_modified": "2026-08-21 09:39:40.451619",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -2193,9 +2193,7 @@
     "enableAutocorrectPopupTitle": "Pridajte klávesnicu cieľového jazyka prechádzaním do:",
     "enableAutocorrectPopupSteps": "  • Nastavenia\n  • Všeobecné\n  • Klávesnica\n  • Klávesnice\n  • Pridať novú klávesnicu",
     "enableAutocorrectPopupDescription": "Po výbere jazyka môžete kliknúť na malú ikonu glóbusu v ľavom spodnom rohu klávesnice na aktiváciu novozaloženej klávesnice.",
-    "downloadGboardTitle": "Stiahnite si Gboard z Obchodu Google Play na povolenie automatickej korekcie a ďalších funkcií klávesnice:",
     "downloadGboardSteps": " • Stiahnite si Gboard\n  • Otvorte aplikáciu\n  • Jazyky\n  • Pridať klávesnicu\n  • Vybrať jazyk\n  • Vybrať typ klávesnice\n  • Hotovo",
-    "downloadGboardDescription": "Po výbere jazyka môžete kliknúť na malú ikonu glóbusu v ľavom spodnom rohu klávesnice na aktiváciu novozaloženej klávesnice.",
     "enableAutocorrectWarning": "Varovanie! Vyžaduje pridanie klávesnice cieľového jazyka",
     "displayName": "Zobrazované meno",
     "leaveRoomDescription": "Chystáte sa opustiť tento chat. Ostatní používatelia uvidia, že ste opustili chat.",
@@ -6334,15 +6332,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10682,6 +10672,9 @@
     "pingedActivity": "Aktivita s upozornením",
     "appInTargetLanguageStaysInBaseLanguage": "(Toto nastavenie zostane vo vašom rodnom jazyku, aby ste ho vždy našli.)",
     "usernameTakenPleaseChooseAnother": "Toto používateľské meno je už obsadené. Vyberte si iné.",
+    "allParticipants": "Všetci účastníci",
+    "seeFullCoursePlan": "Zobraziť celý plán kurzu",
+    "catchUp": "Dohnať",
     "messageLanguageIs": "Tento text je nastavený na jazyk {language}.",
     "updateMessageLanguage": "Kliknutím sem zmeníte jazyk správy.",
     "messageLanguage": "Jazyk správy",
@@ -10691,5 +10684,24 @@
     "unlockTranslations": "Odomknúť preklady",
     "unlockEmojiMode": "Odomknúť režim emoji",
     "unlockMessagePractice": "Odomknúť precvičovanie správ",
-    "unlockWritingAssistance": "Odomknúť pomoc pri písaní"
+    "unlockWritingAssistance": "Odomknúť pomoc pri písaní",
+    "courseSectionTeaching": "Výučba",
+    "courseSectionLearning": "Učenie",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurz} other{{count} kurzov}}",
+    "showMore": "Zobraziť viac",
+    "showLess": "Zobraziť menej",
+    "countNewMessages": "{count, plural, =1{1 nová správa} other{{count} nových správ}}",
+    "markAllRead": "Označiť všetko ako prečítané",
+    "usersAreTryingToJoinCourse": "Používatelia sa snažia pripojiť k vášmu kurzu",
+    "denyAllUsers": "Odmietnuť všetkých používateľov",
+    "denyAllKnocksDescription": "Títo používatelia budú z kurzu odmietnutí. Môžu sa kedykoľvek pokúsiť znova pripojiť.",
+    "courseNameHint": "Názov kurzu",
+    "typeCourseCodeToConfirm": "Pre potvrdenie zadajte kód kurzu {code} nižšie.",
+    "typeCourseNameToConfirm": "Pre potvrdenie zadajte názov kurzu {name} nižšie.",
+    "inviteAFriend": "Pozvať priateľa",
+    "autocorrectAndroidDialogTitle": "Automatické opravy v cieľovom jazyku",
+    "autocorrectAndroidDialogBody": "Keď píšete v chate, klávesnica sa prepne na váš cieľový jazyk a opraví pravopis v tomto jazyku.",
+    "autocorrectAndroidFallbackTitle": "Ak vaša klávesnica neponúka váš cieľový jazyk, nainštalujte si Gboard a pridajte tam jazyk:",
+    "resendInSeconds": "Znova odoslať o ({seconds})",
+    "mapLevelFallbackNotice": "Zatiaľ žiadne aktivity {selected} – namiesto toho sa zobrazujú {shown}."
 }

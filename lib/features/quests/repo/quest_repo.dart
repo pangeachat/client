@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
@@ -33,6 +34,31 @@ class MissingQuestException implements Exception {
   String toString() =>
       'MissingQuestException: quest plan not found in CMS (confirmed 404)';
 }
+
+/// Severity for a course outline that failed to resolve during the objective
+/// cache rebuild. [MissingQuestException] is a state this repo already
+/// classified benign — [quest] returns it without reporting, and the course
+/// panel renders it as a known state — so re-reporting it at `error`
+/// re-severitized a handled condition (CLIENT-DQC, #8094). It still reports at
+/// `warning` (once per course per session) because a dropped course blanks
+/// relevance banding with no other visible signal. Everything else keeps
+/// `error`: the outline read failing for any other reason is real breakage.
+///
+/// [RateLimitedException] never reaches this function: [reportCourseOutlineFailure]
+/// short-circuits on it before computing a level at all, because
+/// [activityReadPause] already reported that suppression once for this
+/// activation (client#8507) — deciding a severity here would just be for a
+/// report that never happens.
+///
+/// Lives beside the exception it classifies, not at a call site: BOTH rebuild
+/// reporters — the world map's and the course panel's — share one throttle key,
+/// so whichever runs first is the one that reports. While only the map applied
+/// this rule, that race decided the severity: the same missing quest arrived at
+/// `warning` or at `error` depending on which surface the learner opened first
+/// (#8470). Severity is a property of the failure, decided in the repo layer
+/// (repos-and-error-handling.instructions.md § Severity policy).
+SentryLevel courseOutlineErrorLevel(Object error) =>
+    error is MissingQuestException ? SentryLevel.warning : SentryLevel.error;
 
 /// The single home of the per-course activity-pin rule (org quests doc,
 /// client#7748): which of a Mission's [available] activity ids count when the
@@ -204,14 +230,21 @@ class QuestRepo {
   /// activities when [courseRoomId] names a course the caller has joined.
   ///
   /// Returns a [RateLimitedException] WITHOUT asking while
-  /// [activityReadPause] is running, and without reporting: the 429 that
-  /// started the pause was already captured once, and a second event for our
-  /// own deliberate suppression would be noise, not signal.
+  /// [activityReadPause] is running. The 429 that started the pause was
+  /// already captured once, so the suppression itself reports separately
+  /// at `info` via [RateLimitPause.reportSuppressionOnce] — once per
+  /// activation, not once per suppressed read (client#8507).
   static Future<Result<List<Map<String, dynamic>>>> _questActivityEntries(
     String questId, {
     String? courseRoomId,
   }) async {
-    if (activityReadPause.isPaused) return Result.error(RateLimitedException());
+    if (activityReadPause.isPaused) {
+      activityReadPause.reportSuppressionOnce({
+        'quest_id': questId,
+        'course_room_id': ?courseRoomId,
+      });
+      return Result.error(RateLimitedException());
+    }
     try {
       final uri = Uri.parse(PApiUrls.questActivities(questId)).replace(
         queryParameters: {

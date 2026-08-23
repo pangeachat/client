@@ -154,6 +154,15 @@ class ActivityPanelToken extends PanelToken<ActivityTokenParam> {
 class CoursePanelToken extends PanelToken<CourseDetailsTokenParam> {
   const CoursePanelToken([CourseDetailsTokenParam? param])
     : super(PanelTypesEnum.course, param);
+
+  @override
+  CoursePanelToken? get popped {
+    final param = this.param;
+    if (param == null || !param.isPushed) return null;
+    final poppedParam = param.poppedParam;
+    if (poppedParam == null) return null;
+    return CoursePanelToken(poppedParam);
+  }
 }
 
 class CoursePagePanelToken extends PanelToken<RoomSubpageTokenParam> {

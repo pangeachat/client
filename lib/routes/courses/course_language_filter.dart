@@ -25,21 +25,27 @@ class CourseLanguageFilter extends StatelessWidget {
       value: value != null && langs.contains(value) ? value : null,
       onChanged: onChanged,
       items: langs,
+      // Flexible so the language name wraps inside the dropdown instead of
+      // overflowing its row once the device text size scales it up.
       displayname: (v) => Row(
         children: [
-          LanguageDisplayNamePostfixWidget(
-            v,
-            style: DefaultTextStyle.of(context).style,
-            iconSize: 18.0,
-            spacing: 6.0,
+          Flexible(
+            child: LanguageDisplayNamePostfixWidget(
+              v,
+              style: DefaultTextStyle.of(context).style,
+              iconSize: 18.0,
+              spacing: 6.0,
+            ),
           ),
         ],
       ),
       selectedItemBuilder: (v) => Row(
         children: [
-          Text(
-            v.getDisplayName(l10n),
-            style: DefaultTextStyle.of(context).style,
+          Flexible(
+            child: Text(
+              v.getDisplayName(l10n),
+              style: DefaultTextStyle.of(context).style,
+            ),
           ),
         ],
       ),

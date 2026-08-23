@@ -6,7 +6,8 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
-import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
@@ -17,6 +18,7 @@ import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/morph_selection.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_exercise_memo.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_choice.dart';
@@ -37,6 +39,12 @@ class PracticeController with ChangeNotifier {
   }
 
   PracticeExerciseModel? _activity;
+
+  /// Exercises already generated for this message, so a learner who leaves a
+  /// word and comes back to it sees the exercise they were looking at rather
+  /// than a reshuffled one. Scoped to this controller: it is created with the
+  /// message's practice and dies with it.
+  final PracticeExerciseMemo _memo = PracticeExerciseMemo();
 
   /// Choice content the user flagged as wrong via practice feedback, by
   /// construct. Fed into exercise requests so regenerated exercises steer
@@ -259,12 +267,16 @@ class PracticeController with ChangeNotifier {
         useCase: TtsUseCase.choices,
         pos: token.pos,
         morph: token.morph.map((k, v) => MapEntry(k.name, v)),
-        // Drill audio played back after an answer. The room is available here
-        // (`pangeaMessageEvent.room.id`); what is missing is a category — the
-        // four that exist are all about a message being read, not a practice
-        // token being spoken.
-        listening: const DosageListeningMeasurement.notMeasured(
-          DosageListeningExemption.awaitingCategory,
+        // Listening category 6 (#104): audio a DRILL played — here, the token
+        // spoken back once an answer has been given.
+        //
+        // Not a word tap: the learner asked for an exercise, not for this word.
+        // A fresh probe per call: it holds a running measurement.
+        listening: DosageTtsListeningProbe(
+          category: DosageListeningCategory.practiceAudio,
+          roomId: pangeaMessageEvent.room.id,
+          userId: () => pangeaMessageEvent.room.client.userID,
+          accessToken: () => pangeaMessageEvent.room.client.accessToken,
         ),
       );
     }
@@ -293,12 +305,19 @@ class PracticeController with ChangeNotifier {
   Future<Result<PracticeExerciseModel>> fetchActivityModel(
     PracticeTarget target,
   ) async {
+    final memoized = _memo.read(target);
+    if (memoized != null) {
+      _activity = memoized;
+      return Result.value(memoized);
+    }
+
     final result = await PracticeRepo.getPracticeExercise(
       _buildExerciseRequest(target),
       messageInfo: pangeaMessageEvent.event.content,
     );
     if (result.isValue) {
       _activity = result.result;
+      _memo.write(target, result.result!);
     }
 
     return result;
@@ -306,8 +325,8 @@ class PracticeController with ChangeNotifier {
 
   /// Send user feedback on served lemma content (a wrong emoji or meaning)
   /// to the lemma dictionary endpoint, which regenerates the shared row and
-  /// overwrites the lemma cache. On success, the cached exercise for [target]
-  /// is invalidated so the next fetch rebuilds it from corrected content.
+  /// overwrites the lemma cache. On success, the exercise memoized for
+  /// [target] is dropped so the next fetch rebuilds it from corrected content.
   ///
   /// [priorContent] is the content as displayed, used as feedback context if
   /// the lemma cache has expired. [flaggedChoice] is the exact choice content
@@ -347,7 +366,7 @@ class PracticeController with ChangeNotifier {
     }
 
     _flaggedChoices[cId] = flaggedChoice;
-    await PracticeRepo.invalidate(_buildExerciseRequest(target));
+    _memo.remove(target);
     _activity = null;
     return Result.value((prior: prior, updated: updated));
   }

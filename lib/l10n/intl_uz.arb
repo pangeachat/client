@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-17 09:31:26.323734",
+    "@@last_modified": "2026-08-21 09:39:41.895742",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3364,9 +3364,7 @@
     "enableAutocorrectPopupTitle": "Maqsadli til klaviaturasini qo'shish uchun quyidagiga o'ting:",
     "enableAutocorrectPopupSteps": "  • Sozlamalar\n  • Umumiy\n  • Klaviatura\n  • Klaviaturalar\n  • Yangi klaviatura qo'shish",
     "enableAutocorrectPopupDescription": "Til tanlangandan so'ng, klaviaturangizning pastki chap tomonidagi kichik dunyo ikonkasini bosib, yangi o'rnatilgan klaviaturani faollashtirishingiz mumkin.",
-    "downloadGboardTitle": "Gboard-ni Google Play Store-dan yuklab oling va avtomatik to'g'rilash hamda boshqa klaviatura funksiyalarini yoqing:",
     "downloadGboardSteps": " • Gboard-ni yuklab oling\n  • Ilovani oching\n  • Tillar\n  • Klaviatura qo'shish\n  • Tilni tanlang\n  • Klaviatura turini tanlang\n  • Tayyor",
-    "downloadGboardDescription": "Til tanlangandan so'ng, klaviaturangizning pastki chap tomonidagi kichik dunyo ikonkasini bosib, yangi o'rnatilgan klaviaturani faollashtirishingiz mumkin.",
     "enableAutocorrectWarning": "Ogohlantirish! Maqsadli til klaviaturasini qo'shishni talab qiladi",
     "displayName": "Ko'rsatish nomi",
     "leaveRoomDescription": "Siz bu chatdan chiqmoqdasiz. Boshqa foydalanuvchilar siz chatdan chiqganingizni ko'radilar.",
@@ -5944,15 +5942,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9741,6 +9731,9 @@
     "pingedActivity": "Faoliyat ping qilingan",
     "appInTargetLanguageStaysInBaseLanguage": "(Bu sozlama har doim topishingiz uchun ona tilingizda qoladi.)",
     "usernameTakenPleaseChooseAnother": "Bu foydalanuvchi nomi band. Iltimos, boshqasini tanlang.",
+    "allParticipants": "Barcha ishtirokchilar",
+    "seeFullCoursePlan": "Toʻliq kurs rejasini koʻrish",
+    "catchUp": "Yetib oling",
     "messageLanguageIs": "Bu xabar {language} tiliga oʻrnatilgan.",
     "updateMessageLanguage": "Xabar tilini oʻzgartirish uchun shu yerni bosing.",
     "messageLanguage": "Xabar tili",
@@ -9750,5 +9743,24 @@
     "unlockTranslations": "Tarjimalarni ochish",
     "unlockEmojiMode": "Emoji rejimini ochish",
     "unlockMessagePractice": "Xabarlar amaliyotini ochish",
-    "unlockWritingAssistance": "Yozish yordamini ochish"
+    "unlockWritingAssistance": "Yozish yordamini ochish",
+    "courseSectionTeaching": "Oʻqitish",
+    "courseSectionLearning": "Oʻrganish",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurs}}",
+    "showMore": "Koʻproq koʻrsatish",
+    "showLess": "Kamroq koʻrsatish",
+    "countNewMessages": "{count, plural, =1{1 ta yangi xabar} other{{count} ta yangi xabar}}",
+    "markAllRead": "Barchasini oʻqilgan deb belgilash",
+    "usersAreTryingToJoinCourse": "Foydalanuvchilar kursingizga qo‘shilishga harakat qilmoqda",
+    "denyAllUsers": "Barcha foydalanuvchilarni rad etish",
+    "denyAllKnocksDescription": "Bu foydalanuvchilar kursdan rad etiladi. Ular istalgan vaqtda qayta qo‘shilishga urinishlari mumkin.",
+    "courseNameHint": "Kurs nomi",
+    "typeCourseCodeToConfirm": "Tasdiqlash uchun, quyida {code} kurs kodini kiriting.",
+    "typeCourseNameToConfirm": "Tasdiqlash uchun, quyida {name} kurs nomini kiriting.",
+    "inviteAFriend": "Do‘stni taklif qilish",
+    "autocorrectAndroidDialogTitle": "Maqsadli tilingizda avtomatik tuzatish",
+    "autocorrectAndroidDialogBody": "Suhbatda yozganingizda, klaviaturangiz maqsadli tilingizga o'tadi va imloni shu tilda to'g'irlaydi.",
+    "autocorrectAndroidFallbackTitle": "Agar klaviaturangiz maqsadli tilingizni taklif qilmasa, Gboard'ni o'rnating va tilni u yerga qo'shing:",
+    "resendInSeconds": "Qayta yuborish ({seconds})",
+    "mapLevelFallbackNotice": "Hali {selected} faoliyat yoʻq — buning oʻrniga {shown} koʻrsatilmoqda."
 }

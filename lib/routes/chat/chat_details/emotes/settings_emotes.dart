@@ -24,14 +24,15 @@ class EmotesSettings extends StatefulWidget {
   final String? roomId;
 
   /// world_v2: the host course panel's leading affordance (`←` back to the
-  /// card) for the `course:emotes` push, replacing the route-pop [BackButton].
-  /// See `routing.instructions.md`.
-  final Widget? embeddedCloseButton;
+  /// card) for the `course:emotes` push. Required: the room-gone error state
+  /// renders its own chrome and must carry it (#8322, #8327). See
+  /// `routing.instructions.md`.
+  final Widget embeddedCloseButton;
 
   const EmotesSettings({
     required this.roomId,
     super.key,
-    this.embeddedCloseButton,
+    required this.embeddedCloseButton,
   });
 
   @override

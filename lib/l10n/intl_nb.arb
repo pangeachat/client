@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:59.139830",
+    "@@last_modified": "2026-08-21 09:39:38.801796",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3260,9 +3260,7 @@
     "enableAutocorrectPopupTitle": "Legg til tastaturet for målspråket ditt ved å gå til:",
     "enableAutocorrectPopupSteps": "  • Innstillinger\n  • Generelt\n  • Tastatur\n  • Tastaturer\n  • Legg til nytt tastatur",
     "enableAutocorrectPopupDescription": "Når språket er valgt, kan du klikke på det lille globus-ikonet nederst til venstre på tastaturet for å aktivere det nylig installerte tastaturet.",
-    "downloadGboardTitle": "Last ned Gboard fra Google Play Store for å aktivere autokorrektur og andre tastaturfunksjoner:",
     "downloadGboardSteps": " • Last ned Gboard\n  • Åpne appen\n  • Språk\n  • Legg til tastatur\n  • Velg språk\n  • Velg tastaturtype\n  • Ferdig",
-    "downloadGboardDescription": "Når språket er valgt, kan du klikke på det lille globus-ikonet nederst til venstre på tastaturet for å aktivere det nylig installerte tastaturet.",
     "enableAutocorrectWarning": "Advarsel! Krever at du legger til tastaturet for målspråket ditt",
     "displayName": "Visningsnavn",
     "leaveRoomDescription": "Du er i ferd med å forlate denne chatten. Andre brukere vil se at du har forlatt chatten.",
@@ -5625,15 +5623,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9794,6 +9784,9 @@
     "pingedActivity": "Pinget aktivitet",
     "appInTargetLanguageStaysInBaseLanguage": "(Denne innstillingen forblir på morsmålet ditt, slik at du alltid kan finne den.)",
     "usernameTakenPleaseChooseAnother": "Det brukernavnet er allerede tatt. Velg et annet.",
+    "allParticipants": "Alle deltakere",
+    "seeFullCoursePlan": "Se fullstendig kursplan",
+    "catchUp": "Ta igjen",
     "messageLanguageIs": "Denne meldingen er satt til {language}.",
     "updateMessageLanguage": "Klikk her for å endre meldingens språk.",
     "messageLanguage": "Meldingsspråk",
@@ -9803,5 +9796,24 @@
     "unlockTranslations": "Lås opp oversettelser",
     "unlockEmojiMode": "Lås opp emoji-modus",
     "unlockMessagePractice": "Lås opp meldingsøvelse",
-    "unlockWritingAssistance": "Lås opp skrivehjelp"
+    "unlockWritingAssistance": "Lås opp skrivehjelp",
+    "courseSectionTeaching": "Undervisning",
+    "courseSectionLearning": "Læring",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurs}}",
+    "showMore": "Vis mer",
+    "showLess": "Vis mindre",
+    "countNewMessages": "{count, plural, =1{1 ny melding} other{{count} nye meldinger}}",
+    "markAllRead": "Merk alle som lest",
+    "usersAreTryingToJoinCourse": "Brukere prøver å bli med i kurset ditt",
+    "denyAllUsers": "Avvis alle brukere",
+    "denyAllKnocksDescription": "Disse brukerne vil bli avvist fra kurset. De kan prøve å bli med igjen når som helst.",
+    "courseNameHint": "Kursnavn",
+    "typeCourseCodeToConfirm": "For å bekrefte, skriv inn kurskoden {code} nedenfor.",
+    "typeCourseNameToConfirm": "For å bekrefte, skriv inn kursnavnet {name} nedenfor.",
+    "inviteAFriend": "Inviter en venn",
+    "autocorrectAndroidDialogTitle": "Autokorrektur på målspråket ditt",
+    "autocorrectAndroidDialogBody": "Når du skriver i en chat, vil tastaturet bytte til målspråket ditt og korrigere stavemåten på det språket.",
+    "autocorrectAndroidFallbackTitle": "Hvis tastaturet ditt ikke tilbyr målspråket ditt, installer Gboard og legg til språket der:",
+    "resendInSeconds": "Send på nytt om ({seconds})",
+    "mapLevelFallbackNotice": "Ingen {selected}-aktiviteter ennå – viser {shown} i stedet."
 }

@@ -95,7 +95,10 @@ the shareable standalone activity link (`/<uuid>`) and the course join link
 [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds
 into their `activity` / `addcourse:private/<code>` tokens before render. The
 third, the DM invite link (`/invite_user/<id>`), resolves through its own route
-rather than a fold — see [Ids in URLs](#ids-in-urls). All are just app URLs the
+rather than a fold — a redirect-only route that lands on the world map with
+the chat list open, from where the shell opens the DM and lands the user in it
+(#8436) — see
+[Ids in URLs](#ids-in-urls). All are just app URLs the
 SPA serves directly; the older `/join_with_link` and `/join` join-link
 spellings are retired.
 
@@ -513,6 +516,19 @@ browse public) ride the panel header as compact right-justified icons, so the
 joined-course list keeps the vertical space; when the learner is in no courses
 yet they drop to full-width buttons in the body as the empty state.
 
+**The Courses hub groups by role — only when the learner holds both.** A
+learner who both administers courses and takes courses sees the list split
+into **Teaching** (courses where they hold admin power, ≥ 100 — the same signal
+as the knock badge; there is no separate teacher role) and **Learning** (every
+other joined course), each alphabetical, with pending invites in their own
+**Invited** group ahead of both (an invite's role is unknown until join, so it
+is never sorted as teaching). Section headers carry the count and collapse on
+tap; collapsed state is device-local view state, never in the URL, and resets
+with the app. **A learner who holds only one role sees no headers at all** —
+the flat invited-first alphabetical list — so the split appears only where it
+helps (#8425). Applies on web and narrow alike; content-fit counts the header
+rows. The mobile course shortcut is a single avatar and does not carry role.
+
 **The chats sheet header carries its actions**: an expanding **search
 toggle** (an icon; tapping it reveals the filter field, autofocused — the
 field is not always-on because vertical space is the sheet's scarce resource)
@@ -700,7 +716,7 @@ behaves the same on mobile and desktop.
 | A settings page (learning, style, security, …) | a settings-menu row | right | open panel (detail) beside the menu, folding only under width pressure — same fit test as a course management page |
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
-| Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — joined-course tiles plus the add-course options (start-my-own / browse / enter-code) |
+| Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — joined-course tiles plus the add-course options (start-my-own / browse / enter-code); tiles sit under Invited / Teaching / Learning headers when the learner holds both roles ([grouping rule](#single-column-bottom-nav)) |
 | Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (the nav widget's cavity at half height on narrow, pin visible above), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card; with no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
 
 ### One live session at a time
@@ -770,7 +786,10 @@ versa; a live chat on the left is independent and stays open.
 ### The navigation rail
 
 Pinned to the top-left of the map on web. Top to bottom: **World** (home),
-**Chats**, **Courses**, then one avatar per joined course. Selecting a section
+**Chats**, **Courses**, then one avatar per joined course in the Courses hub's
+order — invited, then teaching, then learning — with a hairline between the
+groups whenever the hub shows its section headers (the [grouping
+rule](#single-column-bottom-nav)), so the rail mirrors the list. Selecting a section
 from it *replaces* the open left-column panels (see
 [Panels are independent](#panels-are-independent)). On a narrow screen the rail
 is replaced by the

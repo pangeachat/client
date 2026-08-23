@@ -9,6 +9,7 @@ import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
 void showSubscribedSnackbar(BuildContext context) {
   final Widget text = RichText(
+    textScaler: MediaQuery.textScalerOf(context),
     text: TextSpan(
       children: [
         TextSpan(

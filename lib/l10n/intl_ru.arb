@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-17 09:31:07.705310",
+    "@@last_modified": "2026-08-21 09:39:39.845534",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -3955,9 +3955,7 @@
     "enableAutocorrectPopupTitle": "Добавьте клавиатуру целевого языка, перейдя в:",
     "enableAutocorrectPopupSteps": "  • Настройки\n  • Общие\n  • Клавиатура\n  • Клавиатуры\n  • Добавить новую клавиатуру",
     "enableAutocorrectPopupDescription": "После выбора языка вы можете нажать на маленькую иконку глобуса в левом нижнем углу клавиатуры, чтобы активировать недавно установленную клавиатуру.",
-    "downloadGboardTitle": "Скачайте Gboard из Google Play, чтобы включить автокорректировку и другие функции клавиатуры:",
     "downloadGboardSteps": " • Скачайте Gboard\n  • Откройте приложение\n  • Языки\n  • Добавить клавиатуру\n  • Выберите язык\n  • Выберите тип клавиатуры\n  • Готово",
-    "downloadGboardDescription": "После выбора языка вы можете нажать на маленькую иконку глобуса в левом нижнем углу клавиатуры, чтобы активировать недавно установленную клавиатуру.",
     "enableAutocorrectWarning": "Внимание! Требуется добавить клавиатуру целевого языка",
     "displayName": "Отображаемое имя",
     "leaveRoomDescription": "Вы собираетесь покинуть этот чат. Другие пользователи увидят, что вы покинули чат.",
@@ -6369,15 +6367,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10709,6 +10699,9 @@
     "pingedActivity": "Активность с упоминанием",
     "appInTargetLanguageStaysInBaseLanguage": "(Эта настройка останется на вашем родном языке, чтобы вы всегда могли ее найти.)",
     "usernameTakenPleaseChooseAnother": "Это имя пользователя уже занято. Выберите другое.",
+    "allParticipants": "Все участники",
+    "seeFullCoursePlan": "Посмотреть полный план курса",
+    "catchUp": "Наверстать упущенное",
     "messageLanguageIs": "Язык этого сообщения: {language}.",
     "updateMessageLanguage": "Нажмите здесь, чтобы изменить язык сообщения.",
     "messageLanguage": "Язык сообщения",
@@ -10718,5 +10711,24 @@
     "unlockTranslations": "Разблокировать переводы",
     "unlockEmojiMode": "Разблокировать режим эмодзи",
     "unlockMessagePractice": "Разблокировать практику сообщений",
-    "unlockWritingAssistance": "Разблокировать помощь в написании"
+    "unlockWritingAssistance": "Разблокировать помощь в написании",
+    "courseSectionTeaching": "Преподавание",
+    "courseSectionLearning": "Изучение",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсов}}",
+    "showMore": "Показать больше",
+    "showLess": "Показать меньше",
+    "countNewMessages": "{count, plural, =1{1 новое сообщение} other{{count} новых сообщений}}",
+    "markAllRead": "Отметить все как прочитанное",
+    "usersAreTryingToJoinCourse": "Пользователи пытаются присоединиться к вашему курсу",
+    "denyAllUsers": "Отклонить всех пользователей",
+    "denyAllKnocksDescription": "Эти пользователи будут отклонены от курса. Они могут попытаться присоединиться снова в любое время.",
+    "courseNameHint": "Название курса",
+    "typeCourseCodeToConfirm": "Для подтверждения введите код курса {code} ниже.",
+    "typeCourseNameToConfirm": "Для подтверждения введите название курса {name} ниже.",
+    "inviteAFriend": "Пригласить друга",
+    "autocorrectAndroidDialogTitle": "Автокоррекция на целевом языке",
+    "autocorrectAndroidDialogBody": "Когда вы печатаете в чате, клавиатура переключится на ваш целевой язык и будет исправлять орфографию на этом языке.",
+    "autocorrectAndroidFallbackTitle": "Если ваша клавиатура не предлагает целевой язык, установите Gboard и добавьте язык там:",
+    "resendInSeconds": "Отправить повторно через ({seconds})",
+    "mapLevelFallbackNotice": "Пока нет {selected} активностей — вместо них показываются {shown}."
 }

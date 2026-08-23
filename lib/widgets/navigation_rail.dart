@@ -15,7 +15,6 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
@@ -77,7 +76,8 @@ class SpacesNavigationRail extends StatelessWidget {
                   .where((s) => s.hasRoomUpdate)
                   .rateLimit(const Duration(seconds: 1)),
               builder: (context, _) {
-                final allSpaces = client.sortedCourses(L10n.of(context));
+                final groups = client.coursesByRole(L10n.of(context));
+                final sections = groups.sections;
 
                 return AnimatedContainer(
                   width: naviRailWidth,
@@ -198,19 +198,28 @@ class SpacesNavigationRail extends StatelessWidget {
                               label: L10n.of(context).joinedCourseListLabel,
                               child: Column(
                                 children: [
-                                  // 4. The course spaces you're in.
-                                  for (final space in allSpaces)
-                                    _SpaceItem(
-                                      space: space,
-                                      iconWidth: largeIconWidth,
-                                      naviRailWidth: naviRailWidth,
-                                      // Highlight the course avatar only while the course
-                                      // IS the open section — not merely because `?c=`
-                                      // persists under a chat/room (routing decision 5).
-                                      selected:
-                                          section == AppSection.courses &&
-                                          activeSpaceId == space.id,
-                                    ),
+                                  // 4. The course spaces you're in — in the
+                                  // Courses hub's order (invited · teaching ·
+                                  // learning), with a hairline between groups
+                                  // when the hub shows sections, so the rail
+                                  // mirrors the list (#8425).
+                                  for (final group in sections) ...[
+                                    if (groups.isGrouped &&
+                                        group != sections.first)
+                                      const _RailGroupDivider(),
+                                    for (final space in group.rooms)
+                                      _SpaceItem(
+                                        space: space,
+                                        iconWidth: largeIconWidth,
+                                        naviRailWidth: naviRailWidth,
+                                        // Highlight the course avatar only while the course
+                                        // IS the open section — not merely because `?c=`
+                                        // persists under a chat/room (routing decision 5).
+                                        selected:
+                                            section == AppSection.courses &&
+                                            activeSpaceId == space.id,
+                                      ),
+                                  ],
                                 ],
                               ),
                             ),
@@ -251,15 +260,10 @@ class _SpaceItem extends StatelessWidget {
       context.go(
         // A left-nav click replaces the open left panels rather than stacking
         // beside them (drop any open room/section). See routing.instructions.md.
-        WorkspaceNav.openCourseSection(
-          uri,
-          space.id,
-          keepRoom: false,
-          // While users are knocking, land the admin on the Chats tab — where
-          // the knock notification lives — instead of the Course Plan default,
-          // every time, until the knock is accepted or denied (#8139).
-          tab: space.knockingUsers.isNotEmpty ? SpaceSettingsTabs.chat : null,
-        ),
+        // No section param even for a knock-badged course: knocks surface in
+        // the Catch up card at the top of the page (#8357), which a
+        // scroll-to-Chats would skip right past.
+        WorkspaceNav.openCourseSection(uri, space.id, keepRoom: false),
       );
       return;
     }
@@ -309,6 +313,28 @@ class _SpaceItem extends StatelessWidget {
           hasKnockingUsers: knockingUsers.isNotEmpty,
         ),
         naviRailWidth: naviRailWidth,
+      ),
+    );
+  }
+}
+
+/// The hairline between the rail's course groups (invited · teaching ·
+/// learning) — the rail's mirror of the Courses hub's section headers, shown
+/// only when the hub shows sections (#8425). Purely visual: the groups have no
+/// label here, so it is excluded from semantics.
+class _RailGroupDivider extends StatelessWidget {
+  const _RailGroupDivider();
+
+  @override
+  Widget build(BuildContext context) {
+    return ExcludeSemantics(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 24.0),
+        child: Divider(
+          height: 1.0,
+          thickness: 1.0,
+          color: Theme.of(context).colorScheme.outlineVariant,
+        ),
       ),
     );
   }

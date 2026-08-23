@@ -8,6 +8,7 @@ import 'package:mime/mime.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/authentication/p_logout.dart';
+import 'package:fluffychat/features/user/own_profile_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -61,11 +62,7 @@ class SettingsController extends State<Settings> {
     final matrix = Matrix.of(context);
     final success = await showFutureLoadingDialog(
       context: context,
-      future: () => matrix.client.setProfileField(
-        matrix.client.userID!,
-        'displayname',
-        {'displayname': input},
-      ),
+      future: () => matrix.client.setOwnDisplayName(input),
     );
     if (success.error == null) {
       updateProfile();
@@ -132,7 +129,7 @@ class SettingsController extends State<Settings> {
     if (action == AvatarAction.remove) {
       final success = await showFutureLoadingDialog(
         context: context,
-        future: () => matrix.client.setAvatar(null),
+        future: () => matrix.client.setOwnAvatar(null),
       );
       if (success.error == null) {
         updateProfile();
@@ -173,7 +170,7 @@ class SettingsController extends State<Settings> {
     // Pangea#
     final success = await showFutureLoadingDialog(
       context: context,
-      future: () => matrix.client.setAvatar(file),
+      future: () => matrix.client.setOwnAvatar(file),
     );
     if (success.error == null) {
       updateProfile();

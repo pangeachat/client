@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:22.677700",
+    "@@last_modified": "2026-08-21 09:39:41.119106",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -2994,9 +2994,7 @@
     "enableAutocorrectPopupTitle": "Lägg till ditt tangentbord för målspråket genom att gå till:",
     "enableAutocorrectPopupSteps": "  • Inställningar\n  • Allmänt\n  • Tangentbord\n  • Tangentbord\n  • Lägg till nytt tangentbord",
     "enableAutocorrectPopupDescription": "När språket är valt kan du klicka på den lilla globikonen längst ner till vänster på ditt tangentbord för att aktivera det nyinstallerade tangentbordet.",
-    "downloadGboardTitle": "Ladda ner Gboard från Google Play Store för att aktivera autocorrect och andra tangentbordsfunktioner:",
     "downloadGboardSteps": " • Ladda ner Gboard\n  • Öppna appen\n  • Språk\n  • Lägg till tangentbord\n  • Välj språk\n  • Välj tangentbordstyp\n  • Klart",
-    "downloadGboardDescription": "När språket är valt kan du klicka på den lilla globikonen längst ner till vänster på ditt tangentbord för att aktivera det nyinstallerade tangentbordet.",
     "enableAutocorrectWarning": "Varning! Kräver att du lägger till ditt tangentbord för målspråket",
     "displayName": "Visningsnamn",
     "leaveRoomDescription": "Du är på väg att lämna denna chatt. Andra användare kommer att se att du har lämnat chatten.",
@@ -5907,15 +5905,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10255,6 +10245,9 @@
     "pingedActivity": "Pingad aktivitet",
     "appInTargetLanguageStaysInBaseLanguage": "(Denna inställning förblir på ditt modersmål så att du alltid kan hitta den.)",
     "usernameTakenPleaseChooseAnother": "Användarnamnet är redan upptaget. Välj ett annat.",
+    "allParticipants": "Alla deltagare",
+    "seeFullCoursePlan": "Se hela kursplanen",
+    "catchUp": "Kom ikapp",
     "messageLanguageIs": "Detta meddelande är inställt på {language}.",
     "updateMessageLanguage": "Klicka här för att ändra meddelandets språk.",
     "messageLanguage": "Meddelandespråk",
@@ -10264,5 +10257,24 @@
     "unlockTranslations": "Lås upp översättningar",
     "unlockEmojiMode": "Lås upp emojiläge",
     "unlockMessagePractice": "Lås upp meddelandeövning",
-    "unlockWritingAssistance": "Lås upp skrivhjälp"
+    "unlockWritingAssistance": "Lås upp skrivhjälp",
+    "courseSectionTeaching": "Undervisning",
+    "courseSectionLearning": "Inlärning",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurser}}",
+    "showMore": "Visa mer",
+    "showLess": "Visa mindre",
+    "countNewMessages": "{count, plural, =1{1 nytt meddelande} other{{count} nya meddelanden}}",
+    "markAllRead": "Markera alla som lästa",
+    "usersAreTryingToJoinCourse": "Användare försöker gå med i din kurs",
+    "denyAllUsers": "Neka alla användare",
+    "denyAllKnocksDescription": "Dessa användare kommer att avvisas från kursen. De kan försöka gå med igen när som helst.",
+    "courseNameHint": "Kursnamn",
+    "typeCourseCodeToConfirm": "För att bekräfta, skriv in kurskoden {code} nedan.",
+    "typeCourseNameToConfirm": "För att bekräfta, skriv in kursnamnet {name} nedan.",
+    "inviteAFriend": "Bjud in en vän",
+    "autocorrectAndroidDialogTitle": "Autokorrigering på ditt målspråk",
+    "autocorrectAndroidDialogBody": "När du skriver i en chatt växlar tangentbordet till ditt målspråk och korrigerar stavningen på det språket.",
+    "autocorrectAndroidFallbackTitle": "Om ditt tangentbord inte erbjuder ditt målspråk, installera Gboard och lägg till språket där:",
+    "resendInSeconds": "Skicka igen ({seconds})",
+    "mapLevelFallbackNotice": "Inga {selected} aktiviteter än – visar {shown} istället."
 }

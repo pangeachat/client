@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:sqflite_common/sqflite.dart';
 import 'package:synchronized/synchronized.dart';
 
@@ -23,6 +24,22 @@ import 'package:matrix/src/database/database_file_storage_stub.dart'
     if (dart.library.io) 'package:matrix/src/database/database_file_storage_io.dart';
 import 'package:matrix/src/database/indexeddb_box.dart'
     if (dart.library.io) 'package:matrix/src/database/sqflite_box.dart';
+
+/// Thrown when a caller reaches [AnalyticsDatabase] after its store has been
+/// closed or deleted. The store cannot be revived in place — the owning
+/// service has to build a new [AnalyticsDatabase] — so a caller that catches
+/// this should stop retrying rather than back off and try the same instance
+/// again.
+class AnalyticsDatabaseClosedException implements Exception {
+  final String databaseName;
+
+  const AnalyticsDatabaseClosedException(this.databaseName);
+
+  @override
+  String toString() =>
+      'AnalyticsDatabaseClosedException: analytics store "$databaseName" is '
+      'closed; the owning service must reinitialize before it can be used';
+}
 
 class AnalyticsDatabase with DatabaseFileStorage {
   final String name;
@@ -104,6 +121,20 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
   final _lock = Lock();
 
+  bool _isClosed = false;
+
+  /// Whether this instance's store has been closed or deleted.
+  ///
+  /// Every box operation runs against a single cached connection — on web,
+  /// one `IDBDatabase` held by the SDK's `BoxCollection`. Once that connection
+  /// closes there is no per-call recovery: every subsequent operation throws.
+  /// Callers read this instead of discovering it one exception at a time.
+  ///
+  /// Set both by [delete] (a close we initiate) and by [_transaction] when it
+  /// sees a closed-store failure (a close initiated elsewhere — see
+  /// [_isClosedStoreError]).
+  bool get isClosed => _isClosed;
+
   Future<void> open() async {
     _collection = await BoxCollection.open(
       name,
@@ -144,6 +175,17 @@ class AnalyticsDatabase with DatabaseFileStorage {
   }
 
   Future<void> delete() async {
+    // Latched BEFORE the await, not after: `deleteDatabase` closes the
+    // connection as its first step, so anything that reaches a box during the
+    // delete is already doomed. Marking it up front turns that window into an
+    // AnalyticsDatabaseClosedException instead of a raw store error.
+    _isClosed = true;
+    Sentry.addBreadcrumb(
+      Breadcrumb(
+        message: 'AnalyticsDatabase.delete: closing analytics store',
+        data: {'database': name},
+      ),
+    );
     await _collection.deleteDatabase(
       database?.path ?? name,
       sqfliteFactory ?? idbFactory,
@@ -176,8 +218,47 @@ class AnalyticsDatabase with DatabaseFileStorage {
     _derivedStatsBox.clearQuickAccessCache();
   }
 
-  Future<T> _transaction<T>(Future<T> Function() action) {
-    return _lock.synchronized(action);
+  /// A closed store fails the same way for every caller, so the check and the
+  /// latch live here rather than at each call site.
+  Future<T> _transaction<T>(Future<T> Function() action) async {
+    if (_isClosed) throw AnalyticsDatabaseClosedException(name);
+
+    try {
+      return await _lock.synchronized(action);
+    } catch (e) {
+      if (!_isClosedStoreError(e)) rethrow;
+
+      // A close we did not initiate — the store was still live as far as this
+      // instance knew. Latch it so the next caller fails fast instead of
+      // issuing another doomed request, and leave a breadcrumb recording that
+      // this instance learned about the close from a failure rather than from
+      // delete().
+      _isClosed = true;
+      Sentry.addBreadcrumb(
+        Breadcrumb(
+          message:
+              'AnalyticsDatabase: store closed externally; latched as closed',
+          data: {'database': name, 'error': e.toString()},
+          level: SentryLevel.warning,
+        ),
+      );
+      throw AnalyticsDatabaseClosedException(name);
+    }
+  }
+
+  /// Whether [e] is the store reporting that its connection is gone.
+  ///
+  /// Matched on the message rather than the type: on web this originates as a
+  /// JS `DOMException` crossing the dart2js boundary, so there is no Dart type
+  /// to catch. The strings are the browser's own and are stable across
+  /// engines — `InvalidStateError` is the DOM name for operating on a closed
+  /// or closing `IDBDatabase`, and sqflite's equivalent says the database is
+  /// closed. Anything else is a real failure and must keep propagating.
+  static bool _isClosedStoreError(Object e) {
+    final message = e.toString();
+    return message.contains('InvalidStateError') ||
+        message.contains('database_closed') ||
+        message.contains('DatabaseException(database is closed)');
   }
 
   Box<Map> _aggBox(ConstructTypeEnum type, bool local) =>

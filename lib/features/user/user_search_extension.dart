@@ -12,7 +12,7 @@ extension UserSearchExtension on Client {
       searchText = "@$searchText";
     }
     if (!searchText.contains(":")) {
-      searchText = "$searchText:${Environment.homeServer}";
+      searchText = "$searchText:${Environment.userSearchDomain}";
     }
     return searchUserDirectory(searchText, limit: limit);
   }

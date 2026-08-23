@@ -10,7 +10,7 @@ import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
 import 'package:just_audio/just_audio.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/common/utils/strip_emojis.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -21,6 +21,7 @@ import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_repo.
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_repo.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_request_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_response_model.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_device_utterance.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_disabled_popup.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_routing.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
@@ -94,16 +95,54 @@ class TtsController {
       StreamController<TtsLoadingEvent>.broadcast();
 
   static AudioPlayer? audioPlayer;
-  static VoidCallback? _onStop;
   static _AudioRequest? _currentRequest;
   static int _requestCounter = 0;
   static int? _activeRequestId;
+
+  /// The device utterance currently in flight, from the moment the plugin is
+  /// asked to speak until it is known to have ended. The plugin's handlers
+  /// are installed once and route to whatever is here, so each request hears
+  /// only its own utterance's events — no per-request handler swap, and no
+  /// previous request's callback fired by mistake.
+  static TtsDeviceUtterance? _deviceUtterance;
+  static bool _deviceHandlersInstalled = false;
+
+  /// How long the device engine has to report a start before the utterance is
+  /// treated as failed. Long enough for a network voice (Chrome's Google
+  /// voices fetch audio before `start` fires) to load on an ordinary
+  /// connection; short enough that a stuck plugin does not leave a tapped
+  /// word marked playing indefinitely. Tunable; overridable in tests.
+  @visibleForTesting
+  static Duration deviceStartTimeout = const Duration(seconds: 3);
+
+  /// How long `_stop` waits for the engine to confirm it stopped an in-flight
+  /// utterance before issuing the next one. The web plugin ignores `speak`
+  /// while it still believes the previous utterance is playing, and the
+  /// browser confirms a cancel asynchronously — a next word issued inside that
+  /// gap is silently dropped. Real confirmations arrive within milliseconds;
+  /// the cap only bounds the wait when none ever comes.
+  @visibleForTesting
+  static Duration stopSettleTimeout = const Duration(milliseconds: 300);
 
   static bool _isCurrentRequestId(int requestId) =>
       _activeRequestId == requestId;
 
   static void _log(String message, String tid) {
     debugPrint('[TTS-DEBUG] [$tid] $message');
+  }
+
+  /// Wire the plugin's callbacks to the in-flight [_deviceUtterance]. Once per
+  /// process; the plugin holds a single handler per event.
+  static void _ensureDeviceHandlers() {
+    if (_deviceHandlersInstalled) return;
+    _deviceHandlersInstalled = true;
+    _tts.setStartHandler(() => _deviceUtterance?.onEngineStart());
+    _tts.setCompletionHandler(() => _deviceUtterance?.onEngineComplete());
+    _tts.setCancelHandler(() => _deviceUtterance?.onEngineCancel());
+    _tts.setErrorHandler((message) {
+      _onError(message);
+      _deviceUtterance?.onEngineError(message);
+    });
   }
 
   static TextToSpeechRequestModel _request(
@@ -227,6 +266,12 @@ class TtsController {
 
   static Future<void> _stop() async {
     try {
+      // Mark the in-flight utterance BEFORE the engine is told to stop, so the
+      // cancel it reports back is read as one we asked for — not as an engine
+      // failure to rescue.
+      final inFlight = _deviceUtterance;
+      inFlight?.requestStop();
+
       // return type is dynamic but apparent its supposed to be 1
       // https://pub.dev/packages/flutter_tts
       final result = await (_tts.stop());
@@ -236,6 +281,20 @@ class TtsController {
         error_handler.ErrorHandler.logError(
           m: 'Unexpected result from tts.stop',
           data: {'result': result},
+        );
+      }
+
+      // Let the engine confirm the stop before anyone issues the next
+      // utterance. Resolves the stopped request's own await (its onStop and
+      // measurement follow), and on the web resets the plugin's state so the
+      // next `speak` is not silently ignored. Bounded: a confirmation that
+      // never comes must not hold up the next word — and must not leave the
+      // stopped request awaiting forever either, so it is settled on what is
+      // known (heard if it started, cancelled if not).
+      if (inFlight != null && !inFlight.engineHasEnded) {
+        await inFlight.engineEnded.timeout(
+          stopSettleTimeout,
+          onTimeout: inFlight.onStopUnconfirmed,
         );
       }
     } catch (e, s) {
@@ -312,21 +371,33 @@ class TtsController {
     /// message-read-aloud.instructions.md.
     bool allowChoreoPlay = true,
 
-    /// REQUIRED: whether this playback counts as listening, and as what.
+    /// REQUIRED: the open measurement for this playback.
     ///
-    /// Every call here plays target-language audio at a learner, so every call is
-    /// listening — and the served figure is a TOTAL, so a path that measures
+    /// Every call here plays target-language audio at a learner, so every call
+    /// is listening — and the served figure is a TOTAL, so a path that measures
     /// nothing shortens the headline number rather than leaving a hole in a
-    /// slice. Making this required is what stops the next read-aloud path from
-    /// undercounting silently: it cannot compile without saying, in one word,
-    /// either which category it is or why it is exempt.
+    /// slice. Optional instrumentation would make forgetting it the default: a
+    /// new read-aloud path would compile, analyze clean, pass every behavioural
+    /// test, and silently shorten a teacher-visible total. Required is what
+    /// turns that omission into a compile error, which is the only form of the
+    /// rule that survives the next person who has never read this file.
     ///
-    /// This entry point cannot decide it. One `tryToSpeak` serves automatic
+    /// **Why a probe and not a bare category.** Naming a category is not enough
+    /// to be measured: a measurement also has to be opened before playback and
+    /// closed after it, in a `finally`, without awaiting anything. Taking a
+    /// category and leaving the bracketing to the caller would leave exactly the
+    /// hole this closes — a site that names a category and still counts nothing.
+    /// So the caller hands over a probe it has already built, and the bracketing
+    /// happens once, centrally, here.
+    ///
+    /// This entry point cannot build one. A single `tryToSpeak` serves automatic
     /// read-aloud, toolbar-open read-aloud, word taps and choice taps, and it
-    /// takes neither a room nor an event id — only the CALLER knows which kind of
-    /// listening it is asking for. So the caller builds the probe and this
-    /// method does the bracketing, which is the half that is easy to forget.
-    required DosageListeningMeasurement listening,
+    /// takes neither a room nor an event id — only the CALLER knows the category
+    /// and the room. Build a FRESH probe per call: it holds a running
+    /// measurement.
+    ///
+    /// Design: docs/research/104-speaking-listening-minutes-v2.md, D-V2-1.
+    required DosageTtsListeningProbe listening,
   }) async {
     final requestId = ++_requestCounter;
     // The measurement for THIS call. Bracketed here rather than at each call
@@ -337,14 +408,15 @@ class TtsController {
     // the call banks a near-zero interval for audio nobody heard. The
     // start/abort pair below brackets a route that was actually asked to play,
     // and only that.
-    final probe = listening.probe;
     // Deliberately NOT latched: start and abort are paired PER ROUTE, so a
     // backend failure that falls back to the device is start/abort/start/end —
-    // one banked interval, the failed one discarded. A latch would suppress the
-    // device route's start and leave the meter running from the failed attempt.
-    void guarded(VoidCallback? callback, String name) {
+    // one banked interval, the failed one discarded — and a device failure
+    // rescued by the backend is the same shape the other way round. A latch
+    // would suppress the second route's start and leave the meter running from
+    // the failed attempt.
+    void guarded(VoidCallback callback, String name) {
       try {
-        callback?.call();
+        callback();
       } catch (e, s) {
         error_handler.ErrorHandler.logError(
           e: e,
@@ -355,9 +427,9 @@ class TtsController {
     }
 
     void reportPlaybackStarted() =>
-        guarded(probe?.started, 'onPlaybackStarted');
+        guarded(listening.started, 'onPlaybackStarted');
     void reportPlaybackAborted() =>
-        guarded(probe?.aborted, 'onPlaybackAborted');
+        guarded(listening.aborted, 'onPlaybackAborted');
 
     final strippedText = stripEmojis(text);
     final request = _AudioRequest(
@@ -379,20 +451,12 @@ class TtsController {
 
     await _stop();
 
-    final prevOnStop = _onStop;
-    _onStop = onStop;
-
     // On web, network voices (e.g. "Google Deutsch") load asynchronously and may
     // be absent from the initial list, so refresh each call. See
     // word-text-to-speech.instructions.md.
     if (_availableLangCodes.isEmpty || kIsWeb) {
       await setAvailableLanguages();
     }
-
-    _tts.setErrorHandler((message) {
-      _onError(message);
-      prevOnStop?.call();
-    });
 
     onStart?.call();
 
@@ -440,7 +504,7 @@ class TtsController {
       // buffer and returns — and it emits nothing when playback never started.
       // Guarded like the other two, so telemetry can never surface to the
       // learner.
-      guarded(probe?.finish, 'listening.finish');
+      guarded(listening.finish, 'listening.finish');
     }
   }
 
@@ -571,7 +635,7 @@ class TtsController {
             voice: selection.voice,
             onPlaybackStarted: onPlaybackStarted,
           );
-          if (!rescued) onPlaybackAborted?.call();
+          if (rescued != TtsDeviceOutcome.played) onPlaybackAborted?.call();
         } else if (!success) {
           _log(
             'tryToSpeak: no device fallback '
@@ -580,7 +644,7 @@ class TtsController {
           );
         }
       } else {
-        final played = await _speakFromDevice(
+        final outcome = await _speakFromDevice(
           text,
           langCode,
           [token],
@@ -590,7 +654,46 @@ class TtsController {
           voice: selection.voice,
           onPlaybackStarted: onPlaybackStarted,
         );
-        if (!played) onPlaybackAborted?.call();
+        // Anything but audio heard: drop whatever interval the device opened
+        // BEFORE a rescue opens its own.
+        if (outcome != TtsDeviceOutcome.played) onPlaybackAborted?.call();
+
+        // The mirror of the backend→device fallback above. Only a FAILURE is
+        // rescued — the engine never produced audio and nobody asked it to
+        // stop. A cancel (the learner tapped stop, a later tap superseded
+        // this one) asked for silence and gets it.
+        final allowRescue = TtsRouting.allowBackendRescue(
+          allowChoreoPlay: allowChoreoPlay,
+          isSubscribed: isSubscribed,
+        );
+        if (outcome == TtsDeviceOutcome.failed &&
+            allowRescue &&
+            _isCurrentRequestId(requestId)) {
+          _log('tryToSpeak: speaking from backend on device failure', tid);
+          final rescued = await _speakFromChoreo(
+            text,
+            langCode,
+            [token],
+            requestId: requestId,
+            targetID: targetID,
+            // The device already had its turn; there is nothing left to race
+            // the backend against, so it gets the full deadline.
+            timeout: TtsRouting.backendTimeout(
+              hasPhoneme: false,
+              hasVoice: false,
+            ),
+            tid: tid,
+            speed: speed,
+            onPlaybackStarted: onPlaybackStarted,
+          );
+          if (!rescued) onPlaybackAborted?.call();
+        } else if (outcome == TtsDeviceOutcome.failed) {
+          _log(
+            'tryToSpeak: no backend rescue '
+            '(allowed=$allowRescue current=${_isCurrentRequestId(requestId)})',
+            tid,
+          );
+        }
       }
     } else if (targetID != null && context != null) {
       TtsDisabledPopup.show(context, targetID, gate);
@@ -599,7 +702,18 @@ class TtsController {
     onStop?.call();
   }
 
-  static Future<bool> _speakFromDevice(
+  /// Speak [text] on the device engine and report how it ended.
+  ///
+  /// Always resolves. The plugin's `speak` future alone is not enough to wait
+  /// on: it never resolves on the web when the utterance errors (which is how
+  /// Chrome reports an interruption), nor on iOS when a later `stop` drops it.
+  /// So the utterance is settled by whichever comes first — the engine's
+  /// completion/cancel/error handler, the speak future, or the start
+  /// watchdog — and the outcome says whether audio was heard
+  /// ([TtsDeviceOutcome.played]), silence was asked for
+  /// ([TtsDeviceOutcome.cancelled]) or the engine failed to play at all
+  /// ([TtsDeviceOutcome.failed], eligible for backend rescue).
+  static Future<TtsDeviceOutcome> _speakFromDevice(
     String text,
     String langCode,
     List<PangeaTokenText> tokens,
@@ -614,9 +728,11 @@ class TtsController {
   }) async {
     if (!_isCurrentRequestId(requestId)) {
       _log('Skipping device playback for superseded request', tid);
-      return false;
+      return TtsDeviceOutcome.cancelled;
     }
 
+    _ensureDeviceHandlers();
+    final utterance = TtsDeviceUtterance(startTimeout: deviceStartTimeout);
     try {
       _log(
         'Speaking from device: $text, langCode: $langCode, voice: ${voice?['name']}',
@@ -637,18 +753,67 @@ class TtsController {
         }
       }
       _tts.setSpeechRate(setSpeed);
-      // Device audio starts here. `awaitSpeakCompletion(true)` is set, so the
-      // await below resolves at playback END — the pair brackets the elapsed
-      // wall clock a listening measurement needs.
+
+      // A stop may have arrived during the awaits above; do not hand the
+      // engine an utterance nobody wants any more.
+      if (!_isCurrentRequestId(requestId)) {
+        _log('Request superseded during device setup', tid);
+        return TtsDeviceOutcome.cancelled;
+      }
+
+      // Device audio starts here. Installed as the in-flight utterance right
+      // before `speak`, so the handlers route this engine's events here and
+      // as few stale events from the previous utterance as possible.
+      _deviceUtterance = utterance;
+      utterance.arm();
       onPlaybackStarted?.call();
-      await Future(() => (_tts.speak(text)));
-      _log('Audio playback from device completed', tid);
-      return true;
+      // Not awaited directly: on the web this future never resolves when the
+      // utterance errors, and on iOS it never resolves when a later stop
+      // drops it. It is one of three signals that settle the utterance.
+      unawaited(
+        Future(() => _tts.speak(text)).then(
+          (_) => utterance.onSpeakReturned(),
+          onError: (Object e, StackTrace s) {
+            _log('Error playing audio from device: $e', tid);
+            error_handler.ErrorHandler.logError(
+              e: e,
+              s: s,
+              data: {'text': text},
+            );
+            utterance.onSpeakThrew();
+          },
+        ),
+      );
+      final outcome = await utterance.outcome;
+      _log(
+        'Device playback ended: ${outcome.name} '
+        '(started=${utterance.started} stopRequested=${utterance.stopRequested} '
+        'engineEnded=${utterance.engineHasEnded})',
+        tid,
+      );
+
+      // A failure the engine has not itself closed (the start watchdog fired,
+      // or `speak` returned before any event): tell the engine to drop the
+      // utterance so it cannot start after we have moved on — the rescue
+      // would otherwise play over it — and let it confirm, so the stale event
+      // lands here rather than on the next utterance.
+      if (outcome == TtsDeviceOutcome.failed && !utterance.engineHasEnded) {
+        utterance.requestStop();
+        await _tts.stop();
+        await utterance.engineEnded.timeout(
+          stopSettleTimeout,
+          onTimeout: () {},
+        );
+      }
+      return outcome;
     } catch (e, s) {
       _log('Error playing audio from device: $e', tid);
       debugger(when: kDebugMode);
       error_handler.ErrorHandler.logError(e: e, s: s, data: {'text': text});
-      return false;
+      return TtsDeviceOutcome.failed;
+    } finally {
+      utterance.dispose();
+      if (identical(_deviceUtterance, utterance)) _deviceUtterance = null;
     }
   }
 

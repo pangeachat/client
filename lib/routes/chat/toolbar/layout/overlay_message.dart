@@ -238,12 +238,15 @@ class OverlayMessage extends StatelessWidget {
                     color: textColor.withAlpha(164),
                     size: 14,
                   ),
-                  Text(
-                    displayEvent.originServerTs.localizedTimeShort(context),
-                    textScaler: TextScaler.noScaling,
-                    style: TextStyle(
-                      color: textColor.withAlpha(164),
-                      fontSize: 11,
+                  // Flexible: the timestamp scales with the device text size
+                  // now, and this row is inside the bubble's width budget.
+                  Flexible(
+                    child: Text(
+                      displayEvent.originServerTs.localizedTimeShort(context),
+                      style: TextStyle(
+                        color: textColor.withAlpha(164),
+                        fontSize: 11,
+                      ),
                     ),
                   ),
                 ],
@@ -422,7 +425,6 @@ class _MessageSelectModeContent extends StatelessWidget {
                 Flexible(
                   child: Text(
                     value,
-                    textScaler: TextScaler.noScaling,
                     style: style.copyWith(fontStyle: FontStyle.italic),
                   ),
                 ),
@@ -513,7 +515,6 @@ class _MessageBubbleTranscription extends StatelessWidget {
                     const SizedBox(width: 8),
                     Text(
                       L10n.of(context).transcriptionFailed,
-                      textScaler: TextScaler.noScaling,
                       style: style.copyWith(fontStyle: FontStyle.italic),
                     ),
                   ],

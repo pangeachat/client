@@ -322,4 +322,43 @@ void main() {
       expect(back.points, 0);
     });
   });
+
+  group('OneConstructUse.toJson timeStamp is absolute UTC', () {
+    // The construct-use timeStamp must ride the wire as an ABSOLUTE UTC instant
+    // (…Z), never a naive local wall-clock string. The server's analytics
+    // ts_parsed reads a zoneless stamp AS UTC, so a naive local stamp shifted
+    // every non-UTC user's analytics by their device offset and de-corroborated
+    // engagement spans. These pin the .toUtc() so the regression cannot return.
+    test(
+      'serializes a local DateTime as an absolute UTC instant (ends with Z)',
+      () {
+        // A LOCAL wall-clock instant (isUtc == false), like DateTime.now() at the
+        // call sites — the discriminating case, since toUtc() adds the zone.
+        final local = DateTime(2026, 8, 18, 14, 22, 27);
+        expect(local.isUtc, isFalse);
+
+        final wire =
+            use(lemma: 'casa', ts: local).toJson()['timeStamp'] as String;
+
+        // Zone-carrying UTC, not a zoneless local string: FAILS if the emitter
+        // drops .toUtc() (a naive local string has no trailing Z).
+        expect(
+          wire.endsWith('Z'),
+          isTrue,
+          reason: 'timeStamp must be UTC (…Z)',
+        );
+        expect(DateTime.parse(wire).isUtc, isTrue);
+        // No instant is lost: the UTC wire value is the SAME moment as the local one.
+        expect(DateTime.parse(wire).isAtSameMomentAs(local), isTrue);
+      },
+    );
+
+    test('round-trips through fromJson to the same instant', () {
+      final local = DateTime(2026, 8, 18, 14, 22, 27, 611);
+      final back = OneConstructUse.fromJson(
+        use(lemma: 'casa', ts: local).toJson(),
+      );
+      expect(back.timeStamp.isAtSameMomentAs(local), isTrue);
+    });
+  });
 }

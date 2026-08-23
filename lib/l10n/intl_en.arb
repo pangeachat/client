@@ -109,6 +109,60 @@
         "type": "String",
         "placeholders": {}
     },
+    "allParticipants": "All participants",
+    "@allParticipants": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "catchUp": "Catch up",
+    "@catchUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showMore": "Show more",
+    "@showMore": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showLess": "Show less",
+    "@showLess": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "markAllRead": "Mark all read",
+    "@markAllRead": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "usersAreTryingToJoinCourse": "Users are trying to join your course",
+    "@usersAreTryingToJoinCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "denyAllUsers": "Deny all users",
+    "@denyAllUsers": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "denyAllKnocksDescription": "These users will be rejected from the course. They may attempt to join again at any time.",
+    "@denyAllKnocksDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "countNewMessages": "{count, plural, =1{1 new message} other{{count} new messages}}",
+    "@countNewMessages": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "seeFullCoursePlan": "See full course plan",
+    "@seeFullCoursePlan": {
+        "type": "String",
+        "placeholders": {}
+    },
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},
     "commandHint_googly": "Send some googly eyes",
@@ -3688,9 +3742,10 @@
     "enableAutocorrectPopupTitle": "Add your target language keyboard by going to:",
     "enableAutocorrectPopupSteps": "  • Settings\n  • General\n  • Keyboard\n  • Keyboards\n  • Add New Keyboard",
     "enableAutocorrectPopupDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
-    "downloadGboardTitle": "Download Gboard from the Google Play Store to enable autocorrect and other keyboard features:",
+    "autocorrectAndroidDialogTitle": "Autocorrect in your target language",
+    "autocorrectAndroidDialogBody": "When you type in a chat, your keyboard will switch to your target language and correct spelling in that language.",
+    "autocorrectAndroidFallbackTitle": "If your keyboard doesn't offer your target language, install Gboard and add the language there:",
     "downloadGboardSteps": " • Download Gboard\n  • Open app\n  • Languages\n  • Add keyboard\n  • Select Language\n  • Select keyboard type\n  • Done",
-    "downloadGboardDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
     "enableAutocorrectWarning": "Warning! Requires adding your target language keyboard",
     "displayName": "Display name",
     "leaveRoomDescription": "You're about to leave this chat. Other users will see that you have left the chat.",
@@ -4497,6 +4552,15 @@
     "clickOnEmailLinkDesc": "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.",
     "didntReceiveEmail": "Didn't receive the email?",
     "resend": "Resend",
+    "resendInSeconds": "Resend ({seconds})",
+    "@resendInSeconds": {
+        "type": "text",
+        "placeholders": {
+            "seconds": {
+                "type": "int"
+            }
+        }
+    },
     "suggestedVocab": "Suggested vocab",
     "myGender": "My gender",
     "profile": "Profile",
@@ -4507,6 +4571,24 @@
     "enableEmailNotifications": "Enable email notifications",
     "learningAnalytics": "Learning analytics",
     "searchLanguagesHint": "Search languages",
+    "switchLanguageChipLabel": "Switch to {language}",
+    "@switchLanguageChipLabel": {
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "languageDropdownLevel": "Level {level}",
+    "@languageDropdownLevel": {
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "whatAreYouLearning": "What are you learning?",
+    "languageSwitcherBaseLanguageLabel": "Your base language",
     "alreadySpeak": "I already speak...",
     "welcomeBackLogin": "Welcome back! You previously signed in with {platform}.",
     "@welcomeBackLogin": {
@@ -4959,7 +5041,7 @@
     "inProgressLabel": "Previously completed",
     "availableLabel": "Create activity",
     "chatSearchPageLabel": "Chat search page",
-    "selectImageLabel": "Select image", 
+    "selectImageLabel": "Select image",
     "userSearchTagsLabel": "Search in...",
     "courseDetails": "Course details",
     "objective": "Objective",
@@ -5068,6 +5150,48 @@
     "@formLabel": {
         "placeholders": {
             "name": {
+                "type": "String"
+            }
+        }
+    },
+    "courseSectionTeaching": "Teaching",
+    "courseSectionLearning": "Learning",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 course} other{{count} courses}}",
+    "@courseSectionLabel": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            },
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "courseNameHint": "Course name",
+    "typeCourseCodeToConfirm": "To confirm, type the course code {code} below.",
+    "@typeCourseCodeToConfirm": {
+        "placeholders": {
+            "code": {
+                "type": "String"
+            }
+        }
+    },
+    "typeCourseNameToConfirm": "To confirm, type the course name {name} below.",
+    "@typeCourseNameToConfirm": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "inviteAFriend": "Invite a friend",
+    "mapLevelFallbackNotice": "No {selected} activities yet — showing {shown} instead.",
+    "@mapLevelFallbackNotice": {
+        "placeholders": {
+            "selected": {
+                "type": "String"
+            },
+            "shown": {
                 "type": "String"
             }
         }

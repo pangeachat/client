@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:21.244406",
+    "@@last_modified": "2026-08-21 09:39:41.275192",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -3269,9 +3269,7 @@
     "enableAutocorrectPopupTitle": "உங்கள் இலக்கு மொழி விசைப்பலகையை சேர்க்க கீழே செல்லவும்:",
     "enableAutocorrectPopupSteps": "  • அமைப்புகள்\n  • பொது\n  • விசைப்பலகை\n  • விசைப்பலகைகள்\n  • புதிய விசைப்பலகையைச் சேர்க்கவும்",
     "enableAutocorrectPopupDescription": "மொழி தேர்வு செய்யப்பட்ட பின், உங்கள் விசைப்பலகையின் கீழே இடது பக்கத்தில் உள்ள சிறிய உலகக் குறியீட்டை கிளிக் செய்து புதிய நிறுவப்பட்ட விசைப்பலகையை செயல்படுத்தலாம்.",
-    "downloadGboardTitle": "Google Play Store-இலிருந்து Gboard-ஐ பதிவிறக்கம் செய்து தானாக சரிசெய்யும் மற்றும் மற்ற விசைப்பலகை அம்சங்களை இயக்கு:",
     "downloadGboardSteps": " • Gboard-ஐ பதிவிறக்கம் செய்க\n  • பயன்பாட்டைத் திறக்கவும்\n  • மொழிகள்\n  • விசைப்பலகையைச் சேர்க்கவும்\n  • மொழியை தேர்வு செய்யவும்\n  • விசைப்பலகை வகையை தேர்வு செய்யவும்\n  • முடி",
-    "downloadGboardDescription": "மொழி தேர்வு செய்யப்பட்ட பின், உங்கள் விசைப்பலகையின் கீழே உள்ள சிறிய உலகக் குறியீட்டை கிளிக் செய்து புதிய நிறுவப்பட்ட விசைப்பலகையை செயல்படுத்தலாம்.",
     "enableAutocorrectWarning": "எச்சரிக்கை! உங்கள் இலக்கு மொழி விசைப்பலகையைச் சேர்க்க வேண்டும்",
     "displayName": "காட்சி பெயர்",
     "leaveRoomDescription": "இந்த உரையாடலை நீங்கள் விட்டு செல்லப் போகிறீர்கள். மற்ற பயனர்கள் நீங்கள் விட்டு சென்றதை காண்பார்கள்.",
@@ -5491,15 +5489,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9829,6 +9819,9 @@
     "pingedActivity": "பிங் செய்யப்பட்ட செயல்பாடு",
     "appInTargetLanguageStaysInBaseLanguage": "(இந்த அமைப்பு உங்கள் தாய்மொழியிலேயே இருக்கும், எனவே நீங்கள் அதை எப்போதும் கண்டறியலாம்.)",
     "usernameTakenPleaseChooseAnother": "அந்தப் பயனர் பெயர் ஏற்கனவே எடுக்கப்பட்டது. வேறு ஒன்றைத் தேர்ந்தெடுக்கவும்.",
+    "allParticipants": "அனைத்து பங்கேற்பாளர்களும்",
+    "seeFullCoursePlan": "முழு பாடத்திட்டத்தையும் காண்க",
+    "catchUp": "பின்தங்கியவற்றைப் பார்க்கவும்",
     "messageLanguageIs": "இந்தச் செய்தியின் மொழி {language} என அமைக்கப்பட்டுள்ளது.",
     "updateMessageLanguage": "செய்தியின் மொழியை மாற்ற இங்கே கிளிக் செய்யவும்.",
     "messageLanguage": "செய்தி மொழி",
@@ -9838,5 +9831,24 @@
     "unlockTranslations": "மொழிபெயர்ப்புகளைத் திறக்கவும்",
     "unlockEmojiMode": "எமோஜி பயன்முறையைத் திறக்கவும்",
     "unlockMessagePractice": "செய்திப் பயிற்சியைத் திறக்கவும்",
-    "unlockWritingAssistance": "எழுத்து உதவியைத் திறக்கவும்"
+    "unlockWritingAssistance": "எழுத்து உதவியைத் திறக்கவும்",
+    "courseSectionTeaching": "கற்பித்தல்",
+    "courseSectionLearning": "கற்றல்",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 பாடம்} other{{count} பாடங்கள்}}",
+    "showMore": "மேலும் காட்டு",
+    "showLess": "குறைவாக காட்டு",
+    "countNewMessages": "{count, plural, =1{1 புதிய செய்தி} other{{count} புதிய செய்திகள்}}",
+    "markAllRead": "அனைத்தையும் படித்ததாகக் குறி",
+    "usersAreTryingToJoinCourse": "பயனர்கள் உங்கள் பாடத்திட்டத்தில் சேர முயற்சிக்கிறார்கள்",
+    "denyAllUsers": "அனைத்து பயனர்களையும் மறுக்கவும்",
+    "denyAllKnocksDescription": "இந்த பயனர்கள் பாடத்திட்டத்திலிருந்து நிராகரிக்கப்படுவார்கள். அவர்கள் எந்த நேரத்திலும் மீண்டும் சேர முயற்சி செய்யலாம்.",
+    "courseNameHint": "பாடநெறி பெயர்",
+    "typeCourseCodeToConfirm": "உறுதிப்படுத்த, கீழே {code} என்ற பாடநெறி குறியீட்டை உள்ளிடவும்.",
+    "typeCourseNameToConfirm": "உறுதிப்படுத்த, கீழே {name} என்ற பாடநெறி பெயரை உள்ளிடவும்.",
+    "inviteAFriend": "நண்பரை அழைக்கவும்",
+    "autocorrectAndroidDialogTitle": "உங்கள் இலக்கு மொழியில் தானியங்கு திருத்தம்",
+    "autocorrectAndroidDialogBody": "நீங்கள் ஒரு அரட்டையில் தட்டச்சு செய்யும்போது, உங்கள் விசைப்பலகை உங்கள் இலக்கு மொழிக்கு மாறி, அந்த மொழியில் எழுத்துப்பிழையை சரிசெய்யும்.",
+    "autocorrectAndroidFallbackTitle": "உங்கள் விசைப்பலகை உங்கள் இலக்கு மொழியை வழங்கவில்லை என்றால், Gboard ஐ நிறுவி, அங்கு மொழியைச் சேர்க்கவும்:",
+    "resendInSeconds": "மீண்டும் அனுப்பு ({seconds})",
+    "mapLevelFallbackNotice": "இதுவரை {selected} செயல்பாடுகள் இல்லை — அதற்குப் பதிலாக {shown} காட்டப்படுகிறது."
 }

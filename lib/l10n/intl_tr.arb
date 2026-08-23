@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-17 09:31:25.476196",
+    "@@last_modified": "2026-08-21 09:39:41.557637",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -3178,9 +3178,7 @@
     "enableAutocorrectPopupTitle": "Hedef dil klavyenizi eklemek için şu adımları izleyin:",
     "enableAutocorrectPopupSteps": "  • Ayarlar\n  • Genel\n  • Klavye\n  • Klavyeler\n  • Yeni Klavye Ekle",
     "enableAutocorrectPopupDescription": "Dil seçildikten sonra, klavyenizin sol alt köşesindeki küçük dünya simgesine tıklayarak yeni yüklenen klavyeyi etkinleştirebilirsiniz.",
-    "downloadGboardTitle": "Otomatik düzeltme ve diğer klavye özelliklerini etkinleştirmek için Gboard'u Google Play Store'dan indirin:",
     "downloadGboardSteps": " • Gboard'u İndir\n  • Uygulamayı Aç\n  • Diller\n  • Klavye Ekle\n  • Dil Seç\n  • Klavye Türünü Seç\n  • Bitti",
-    "downloadGboardDescription": "Dil seçildikten sonra, klavyenizin sol alt köşesindeki küçük dünya simgesine tıklayarak yeni yüklenen klavyeyi etkinleştirebilirsiniz.",
     "enableAutocorrectWarning": "Uyarı! Hedef dil klavyenizi eklemeniz gerekiyor",
     "displayName": "Görünen isim",
     "leaveRoomDescription": "Bu sohbette ayrılmak üzeresiniz. Diğer kullanıcılar sizin ayrıldığınızı görecek.",
@@ -5690,15 +5688,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10038,6 +10028,9 @@
     "pingedActivity": "Etkinlik pinglendi",
     "appInTargetLanguageStaysInBaseLanguage": "(Bu ayar, her zaman bulabilmeniz için ana dilinizde kalır.)",
     "usernameTakenPleaseChooseAnother": "Bu kullanıcı adı zaten alınmış. Lütfen başka bir tane seçin.",
+    "allParticipants": "Tüm katılımcılar",
+    "seeFullCoursePlan": "Tüm ders planını gör",
+    "catchUp": "Yakala",
     "messageLanguageIs": "Bu mesaj {language} olarak ayarlandı.",
     "updateMessageLanguage": "Mesajın dilini değiştirmek için buraya tıklayın.",
     "messageLanguage": "Mesaj dili",
@@ -10047,5 +10040,24 @@
     "unlockTranslations": "Çevirilerin kilidini aç",
     "unlockEmojiMode": "Emoji modunun kilidini aç",
     "unlockMessagePractice": "Mesaj pratiğinin kilidini aç",
-    "unlockWritingAssistance": "Yazma yardımının kilidini aç"
+    "unlockWritingAssistance": "Yazma yardımının kilidini aç",
+    "courseSectionTeaching": "Öğretim",
+    "courseSectionLearning": "Öğrenim",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurs}}",
+    "showMore": "Daha fazla göster",
+    "showLess": "Daha az göster",
+    "countNewMessages": "{count, plural, =1{1 yeni mesaj} other{{count} yeni mesaj}}",
+    "markAllRead": "Tümünü okundu olarak işaretle",
+    "usersAreTryingToJoinCourse": "Kullanıcılar kursunuza katılmaya çalışıyor",
+    "denyAllUsers": "Tüm kullanıcıları reddet",
+    "denyAllKnocksDescription": "Bu kullanıcılar kurstan reddedilecektir. İstediğiniz zaman tekrar katılmayı deneyebilirler.",
+    "courseNameHint": "Kurs adı",
+    "typeCourseCodeToConfirm": "Onaylamak için aşağıdaki alana {code} kurs kodunu yazın.",
+    "typeCourseNameToConfirm": "Onaylamak için aşağıdaki alana {name} kurs adını yazın.",
+    "inviteAFriend": "Bir arkadaşını davet et",
+    "autocorrectAndroidDialogTitle": "Hedef dilinizde otomatik düzeltme",
+    "autocorrectAndroidDialogBody": "Bir sohbette yazdığınızda, klavyeniz hedef dilinize geçecek ve yazım hatalarını o dilde düzeltecektir.",
+    "autocorrectAndroidFallbackTitle": "Klavyeniz hedef dilinizi sunmuyorsa, Gboard'u yükleyin ve dili oraya ekleyin:",
+    "resendInSeconds": "Tekrar gönder ({seconds})",
+    "mapLevelFallbackNotice": "Henüz {selected} aktivite yok — bunun yerine {shown} gösteriliyor."
 }

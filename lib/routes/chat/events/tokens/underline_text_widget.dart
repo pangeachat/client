@@ -40,7 +40,17 @@ class UnderlineText extends StatelessWidget {
       ],
     );
 
-    final richText = RichText(textDirection: textDirection, text: span);
+    // RichText and TextPainter both default to TextScaler.noScaling, so the
+    // device text size reaches neither unless it is passed explicitly. The
+    // underline is painted from a separate layout of the same span, so the
+    // two must be given the same scaler or every underline lands off its word.
+    final textScaler = MediaQuery.textScalerOf(context);
+
+    final richText = RichText(
+      textDirection: textDirection,
+      text: span,
+      textScaler: textScaler,
+    );
     final color = underlineColor ?? Colors.transparent;
 
     // A fully transparent underline draws nothing — the common case for
@@ -55,6 +65,7 @@ class UnderlineText extends StatelessWidget {
         underlineColor: color,
         underlineHeight: underlineHeight,
         gap: gap,
+        textScaler: textScaler,
       ),
       child: richText,
     );
@@ -67,6 +78,7 @@ class _UnderlinePainter extends CustomPainter {
   final Color underlineColor;
   final double underlineHeight;
   final double gap;
+  final TextScaler textScaler;
 
   _UnderlinePainter({
     required this.span,
@@ -74,11 +86,16 @@ class _UnderlinePainter extends CustomPainter {
     required this.underlineColor,
     required this.underlineHeight,
     required this.gap,
+    required this.textScaler,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
-    final textPainter = TextPainter(text: span, textDirection: textDirection);
+    final textPainter = TextPainter(
+      text: span,
+      textDirection: textDirection,
+      textScaler: textScaler,
+    );
 
     textPainter.layout(maxWidth: size.width);
 
@@ -104,6 +121,7 @@ class _UnderlinePainter extends CustomPainter {
     return oldDelegate.span != span ||
         oldDelegate.underlineColor != underlineColor ||
         oldDelegate.gap != gap ||
-        oldDelegate.underlineHeight != underlineHeight;
+        oldDelegate.underlineHeight != underlineHeight ||
+        oldDelegate.textScaler != textScaler;
   }
 }

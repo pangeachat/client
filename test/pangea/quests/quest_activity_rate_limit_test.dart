@@ -100,6 +100,60 @@ void main() {
       expect(activities.isPaused, isTrue);
       expect(other.isPaused, isFalse);
     });
+
+    group('reportSuppressionOnce', () {
+      // client#8507: reporting every suppressed read would spend the Sentry
+      // event budget as fast as the reads that got suppressed (a camera pan
+      // alone can hit this dozens of times); reporting once per app session
+      // would go silent across a whole session of intermittent 429s. The
+      // return value is the seam: whether THIS call actually reported.
+      test('does nothing, and reports false, when not paused', () {
+        final pause = RateLimitPause();
+        expect(pause.reportSuppressionOnce({}), isFalse);
+      });
+
+      test('reports true the first time it is called for an activation', () {
+        final pause = RateLimitPause();
+        pause.recordFailure(http(429));
+        expect(pause.reportSuppressionOnce({}), isTrue);
+      });
+
+      test('every further call during the SAME activation reports false', () {
+        final pause = RateLimitPause(const Duration(seconds: 60));
+        pause.recordFailure(http(429));
+        expect(pause.reportSuppressionOnce({'call': 1}), isTrue);
+        expect(pause.reportSuppressionOnce({'call': 2}), isFalse);
+        expect(pause.reportSuppressionOnce({'call': 3}), isFalse);
+      });
+
+      test(
+        'a fresh 429 after the window lapses re-arms it for a new report',
+        () {
+          final pause = RateLimitPause(const Duration(seconds: 60));
+          pause.recordFailure(http(429));
+          expect(pause.reportSuppressionOnce({'call': 1}), isTrue);
+
+          clock = clock.add(const Duration(seconds: 61));
+          expect(pause.isPaused, isFalse);
+
+          pause.recordFailure(http(429));
+          expect(pause.reportSuppressionOnce({'call': 2}), isTrue);
+        },
+      );
+
+      test('reset clears the report gate along with the pause', () {
+        final pause = RateLimitPause();
+        pause.recordFailure(http(429));
+        expect(pause.reportSuppressionOnce({}), isTrue);
+        pause.reset();
+
+        // Without the reset also clearing `_lastReportedUntil`, a 429 that
+        // happens to land the pause on the exact same `_until` it reported
+        // before would silently stay gated shut.
+        pause.recordFailure(http(429));
+        expect(pause.reportSuppressionOnce({}), isTrue);
+      });
+    });
   });
 
   group('QuestRepo.questActivityCards', () {
@@ -164,19 +218,25 @@ void main() {
       // nothing.
       QuestRepo.activityReadPause.recordFailure(http(429));
 
-      expect(await ActivityMapRepo.bboxPins(bounds: bounds), isNull);
+      expect(
+        (await ActivityMapRepo.bboxPins(bounds: bounds)).error,
+        isA<RateLimitedException>(),
+      );
     });
 
-    test('returns null, never an empty list, when suppressed', () async {
-      // Null means "we did not ask"; an empty list means "the viewport has no
-      // activities". Conflating them blanks the map for the whole pause, which
-      // is exactly the silent-empty failure #8360's TO TEST guards against.
+    test('errors, never an empty list, when suppressed', () async {
+      // An error means "we did not ask"; an empty list means "the viewport has
+      // no activities". Conflating them blanks the map for the whole pause,
+      // which is exactly the silent-empty failure #8360's TO TEST guards
+      // against. Since #8473 the "we did not ask" answer is a typed
+      // [RateLimitedException] on the Result rather than a bare null, so the
+      // same distinction now rides the one channel every other repo uses.
       QuestRepo.activityReadPause.recordFailure(http(429));
 
-      final pins = await ActivityMapRepo.bboxPins(bounds: bounds);
-      expect(pins, isNull);
+      final result = await ActivityMapRepo.bboxPins(bounds: bounds);
+      expect(result.error, isA<RateLimitedException>());
       expect(
-        pins,
+        result.result,
         isNot(const <QuestActivityCard>[]),
         reason: 'an empty list here would blank the map for the whole pause',
       );

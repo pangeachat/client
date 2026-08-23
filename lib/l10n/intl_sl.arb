@@ -1604,9 +1604,7 @@
     "enableAutocorrectPopupTitle": "Dodajte tipkovnico za ciljni jezik tako, da greste na:",
     "enableAutocorrectPopupSteps": "  • Nastavitve\n  • Splošno\n  • Tipkovnica\n  • Tipkovnice\n  • Dodaj novo tipkovnico",
     "enableAutocorrectPopupDescription": "Ko je jezik izbran, lahko kliknete na majhno ikono zemljevide na spodnjem levem delu tipkovnice, da aktivirate novo nameščeno tipkovnico.",
-    "downloadGboardTitle": "Prenesite Gboard iz trgovine Google Play, da omogočite samodejno popravljanje in druge funkcije tipkovnice:",
     "downloadGboardSteps": " • Prenesi Gboard\n  • Odpri aplikacijo\n  • Jezik\n  • Dodaj tipkovnico\n  • Izberi jezik\n  • Izberi vrsto tipkovnice\n  • Končano",
-    "downloadGboardDescription": "Ko je jezik izbran, lahko kliknete majhno ikono zemeljske globus na spodnjem levem delu vaše tipkovnice, da aktivirate novo nameščeno tipkovnico.",
     "enableAutocorrectWarning": "Opozorilo! Potrebno je dodati tipkovnico ciljanega jezika",
     "displayName": "Prikazno ime",
     "leaveRoomDescription": "Približujete se izstopu iz tega klepeta. Drugi uporabniki bodo videli, da ste zapustili klepet.",
@@ -1807,7 +1805,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-17 09:31:14.370047",
+    "@@last_modified": "2026-08-21 09:39:40.709898",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6334,15 +6332,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10682,6 +10672,9 @@
     "pingedActivity": "Dejavnost pinga",
     "appInTargetLanguageStaysInBaseLanguage": "(Ta nastavitev ostane v vašem maternem jeziku, da jo lahko vedno najdete.)",
     "usernameTakenPleaseChooseAnother": "To uporabniško ime je že zasedeno. Izberite drugo.",
+    "allParticipants": "Vsi udeleženci",
+    "seeFullCoursePlan": "Oglejte si celoten načrt tečaja",
+    "catchUp": "Nadaljuj",
     "messageLanguageIs": "Jezik sporočila je nastavljen na {language}.",
     "updateMessageLanguage": "Kliknite tukaj za spremembo jezika sporočila.",
     "messageLanguage": "Jezik sporočila",
@@ -10691,5 +10684,24 @@
     "unlockTranslations": "Odkleni prevode",
     "unlockEmojiMode": "Odkleni način emoji",
     "unlockMessagePractice": "Odkleni vajo sporočil",
-    "unlockWritingAssistance": "Odkleni pomoč pri pisanju"
+    "unlockWritingAssistance": "Odkleni pomoč pri pisanju",
+    "courseSectionTeaching": "Poučevanje",
+    "courseSectionLearning": "Učenje",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 tečaj} other{{count} tečajev}}",
+    "showMore": "Pokaži več",
+    "showLess": "Pokaži manj",
+    "countNewMessages": "{count, plural, =1{1 novo sporočilo} other{{count} novih sporočil}}",
+    "markAllRead": "Označi vse kot prebrano",
+    "usersAreTryingToJoinCourse": "Uporabniki se poskušajo pridružiti vašemu tečaju",
+    "denyAllUsers": "Zavrni vse uporabnike",
+    "denyAllKnocksDescription": "Ti uporabniki bodo zavrnjeni iz tečaja. Lahko se poskusijo znova pridružiti kadar koli.",
+    "courseNameHint": "Ime tečaja",
+    "typeCourseCodeToConfirm": "Za potrditev spodaj vnesite kodo tečaja {code}.",
+    "typeCourseNameToConfirm": "Za potrditev spodaj vnesite ime tečaja {name}.",
+    "inviteAFriend": "Povabi prijatelja",
+    "autocorrectAndroidDialogTitle": "Samodejni popravek v vašem ciljnem jeziku",
+    "autocorrectAndroidDialogBody": "Ko tipkate v klepetu, se bo tipkovnica preklopila na vaš ciljni jezik in popravljala črkovanje v tem jeziku.",
+    "autocorrectAndroidFallbackTitle": "Če vaša tipkovnica ne ponuja vašega ciljnega jezika, namestite Gboard in dodajte jezik tam:",
+    "resendInSeconds": "Ponovno pošlji ({seconds})",
+    "mapLevelFallbackNotice": "Še ni dejavnosti {selected} – namesto tega so prikazane dejavnosti {shown}."
 }

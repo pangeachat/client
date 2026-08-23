@@ -162,6 +162,9 @@ class _AudioCompletionWidget extends StatelessWidget {
                         pos: 'other',
                         textLanguage:
                             MatrixState.pangeaController.userController.userL2!,
+                        // Analytics practice is not in a room, and `textOnly`
+                        // renders no audio control here in any case.
+                        roomId: null,
                         textOnly: true,
                         style: textStyle?.copyWith(
                           color: Theme.of(context).colorScheme.onPrimary,
@@ -174,6 +177,7 @@ class _AudioCompletionWidget extends StatelessWidget {
             ),
             // Main example message
             RichText(
+              textScaler: MediaQuery.textScalerOf(context),
               text: TextSpan(
                 style: textStyle?.copyWith(
                   color: Theme.of(context).colorScheme.onPrimary,

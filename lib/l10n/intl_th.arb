@@ -2896,9 +2896,7 @@
     "enableAutocorrectPopupTitle": "เพิ่มแป้นพิมพ์ภาษาที่คุณตั้งเป้าไว้โดยไปที่:",
     "enableAutocorrectPopupSteps": "  • การตั้งค่า\n  • ทั่วไป\n  • คีย์บอร์ด\n  • คีย์บอร์ด\n  • เพิ่มคีย์บอร์ดใหม่",
     "enableAutocorrectPopupDescription": "เมื่อเลือกภาษาแล้ว คุณสามารถคลิกไอคอนโลกเล็กที่มุมล่างซ้ายของคีย์บอร์ดเพื่อเปิดใช้งานคีย์บอร์ดที่ติดตั้งใหม่",
-    "downloadGboardTitle": "ดาวน์โหลด Gboard จาก Google Play Store เพื่อเปิดใช้งานการแก้ไขอัตโนมัติและคุณสมบัติอื่น ๆ ของคีย์บอร์ด:",
     "downloadGboardSteps": " • ดาวน์โหลด Gboard\n  • เปิดแอป\n  • ภาษา\n  • เพิ่มคีย์บอร์ด\n  • เลือกภาษา\n  • เลือกประเภทคีย์บอร์ด\n  • เสร็จสิ้น",
-    "downloadGboardDescription": "เมื่อเลือกภาษาแล้ว คุณสามารถคลิกไอคอนโลกเล็กที่มุมล่างซ้ายของคีย์บอร์ดเพื่อเปิดใช้งานคีย์บอร์ดที่ติดตั้งใหม่",
     "enableAutocorrectWarning": "คำเตือน! ต้องเพิ่มคีย์บอร์ดภาษาที่คุณตั้งเป้าไว้",
     "displayName": "ชื่อแสดง",
     "leaveRoomDescription": "คุณกำลังจะออกจากแชทนี้ ผู้ใช้อื่นจะเห็นว่าคุณได้ออกจากแชทแล้ว",
@@ -3098,7 +3096,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-17 09:31:25.044731",
+    "@@last_modified": "2026-08-21 09:39:41.280306",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6021,15 +6019,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10369,6 +10359,9 @@
     "pingedActivity": "กิจกรรมที่ถูกปิง",
     "appInTargetLanguageStaysInBaseLanguage": "(การตั้งค่านี้จะยังคงเป็นภาษาแม่ของคุณ เพื่อให้คุณสามารถค้นหาได้เสมอ)",
     "usernameTakenPleaseChooseAnother": "ชื่อผู้ใช้นี้ถูกใช้ไปแล้ว โปรดเลือกชื่ออื่น",
+    "allParticipants": "ผู้เข้าร่วมทั้งหมด",
+    "seeFullCoursePlan": "ดูแผนการเรียนฉบับเต็ม",
+    "catchUp": "ติดตาม",
     "messageLanguageIs": "ข้อความนี้ตั้งค่าเป็น {language}",
     "updateMessageLanguage": "คลิกที่นี่เพื่อเปลี่ยนภาษาของข้อความ",
     "messageLanguage": "ภาษาของข้อความ",
@@ -10378,5 +10371,24 @@
     "unlockTranslations": "ปลดล็อกการแปล",
     "unlockEmojiMode": "ปลดล็อกโหมดอิโมจิ",
     "unlockMessagePractice": "ปลดล็อกการฝึกข้อความ",
-    "unlockWritingAssistance": "ปลดล็อกตัวช่วยการเขียน"
+    "unlockWritingAssistance": "ปลดล็อกตัวช่วยการเขียน",
+    "courseSectionTeaching": "การสอน",
+    "courseSectionLearning": "การเรียนรู้",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 คอร์ส} other{{count} คอร์ส}}",
+    "showMore": "แสดงเพิ่มเติม",
+    "showLess": "แสดงน้อยลง",
+    "countNewMessages": "{count, plural, =1{1 ข้อความใหม่} other{{count} ข้อความใหม่}}",
+    "markAllRead": "ทำเครื่องหมายว่าอ่านแล้วทั้งหมด",
+    "usersAreTryingToJoinCourse": "ผู้ใช้กำลังพยายามเข้าร่วมคอร์สของคุณ",
+    "denyAllUsers": "ปฏิเสธผู้ใช้ทั้งหมด",
+    "denyAllKnocksDescription": "ผู้ใช้เหล่านี้จะถูกปฏิเสธไม่ให้เข้าร่วมคอร์ส พวกเขาอาจพยายามเข้าร่วมอีกครั้งได้ทุกเมื่อ",
+    "courseNameHint": "ชื่อคอร์ส",
+    "typeCourseCodeToConfirm": "โปรดยืนยันโดยพิมพ์รหัสคอร์ส {code} ด้านล่าง",
+    "typeCourseNameToConfirm": "โปรดยืนยันโดยพิมพ์ชื่อคอร์ส {name} ด้านล่าง",
+    "inviteAFriend": "เชิญเพื่อน",
+    "autocorrectAndroidDialogTitle": "การแก้ไขอัตโนมัติในภาษาเป้าหมายของคุณ",
+    "autocorrectAndroidDialogBody": "เมื่อคุณพิมพ์ในแชท แป้นพิมพ์ของคุณจะเปลี่ยนเป็นภาษาเป้าหมายและแก้ไขการสะกดในภาษานั้น",
+    "autocorrectAndroidFallbackTitle": "หากแป้นพิมพ์ของคุณไม่มีภาษาเป้าหมาย ให้ติดตั้ง Gboard และเพิ่มภาษาที่นั่น:",
+    "resendInSeconds": "ส่งอีกครั้งใน ({seconds})",
+    "mapLevelFallbackNotice": "ยังไม่มีกิจกรรม {selected} — แสดง {shown} แทน"
 }

@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/dm_invite/dm_invite_ferry_consumer.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
@@ -21,11 +22,13 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
+import 'package:fluffychat/pangea/extensions/friend_dm_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
+import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
+import 'package:fluffychat/routes/chat_list/friend_dm_prompt.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -267,6 +270,12 @@ class WorkspaceShell extends StatelessWidget {
                   focus: mapFocusFor(state),
                 ),
 
+                /// Headless: opens a DM invite link's DM once the shell is up
+                /// (the invite route only caches + lands here — the map, not a
+                /// blank page, is what a slow first sync shows). Zero-size; it
+                /// is a shell resident so it exists exactly when logged in.
+                DmInviteFerryConsumer(uri: state.uri),
+
                 // Everything above the map respects the device safe area; the
                 // map itself does not (it is full-bleed, see above).
                 Positioned.fill(
@@ -501,6 +510,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   static const double _coursesSheetRowEstimate = 84.0;
   static const double _coursesSheetAddOptionsAllowance = 236.0;
 
+  /// One Invited / Teaching / Learning section header row, when the hub
+  /// groups by role (#8425): the row's text + 4px padding + the 8px separator.
+  static const double _coursesSheetSectionHeaderEstimate = 36.0;
+
   /// The activity plan's minimized rest height: the cavity handle + the start
   /// page's app bar, info row, and CTA row, with no media/description. This is
   /// the plan's opening stop (there is no taller mid-level); dragging up goes
@@ -592,6 +605,11 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             // tap, a pin load after zooming out).
             emptyVerdict: () => mapController.emptyVerdict,
             canZoomOut: () => mapController.canZoomOut,
+            // Drives the level-fallback notice: when the chosen Level pill has
+            // no content, the map matches the nearest level that does and says
+            // so here (world-map.instructions.md, "Empty levels fall back to
+            // the nearest one with content").
+            filter: () => mapController.filter,
             onWidenSearch: mapController.widenFilters,
             // Resets to the whole-world view (all the way out, centered over
             // the fullest window of matching pins, #8121) — the map's World
@@ -642,16 +660,22 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // the analytics bar). Row height is an estimate (a two-line ChatListItem);
     // a slight overshoot only adds breathing room, and the cap absorbs long
     // lists. Uses the same visibility predicate as the list's all-chats
-    // filter so the estimate counts what actually renders.
+    // filter so the estimate counts what actually renders — the chat rooms
+    // plus the bot / support tiles, which take a row each without being rooms,
+    // and the invite-a-friend prompt while the list carries it (#8395), so
+    // its button shows rather than waiting behind a drag.
     double? preferredCavityHeight;
     if (isActivityCavity) {
       preferredCavityHeight = _activitySheetMinimizedHeight;
     } else if (cavityToken?.type == PanelTypesEnum.chats) {
-      final visibleChats = Matrix.of(context).client.rooms
+      final visibleChats = client.rooms
           .where((room) => !room.isHiddenRoom && !room.isSpace)
           .length;
+      final visibleRows = visibleChats + DMListTile.tileCount(client);
       preferredCavityHeight =
-          _chatsSheetHeaderAllowance + visibleChats * _chatsSheetRowEstimate;
+          _chatsSheetHeaderAllowance +
+          visibleRows * _chatsSheetRowEstimate +
+          (client.hasFriendDM ? 0 : FriendDMPrompt.estimatedHeight);
     } else if (cavityToken?.type == PanelTypesEnum.addcourse &&
         cavityToken?.param is! AddCoursePageTokenParam) {
       // The Courses hub opens tall enough to show all joined courses (or the
@@ -667,12 +691,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       // They fall through to the default (roughly half the screen), which is
       // what routing.instructions.md specifies for sections other than the
       // chats sheet and the Courses hub.
-      final courseCount = client.sortedCourses(l10n).length;
+      final groups = client.coursesByRole(l10n);
       preferredCavityHeight =
           _chatsSheetHeaderAllowance +
-          (courseCount == 0
+          (groups.courseCount == 0
               ? _coursesSheetAddOptionsAllowance
-              : courseCount * _coursesSheetRowEstimate);
+              : groups.courseCount * _coursesSheetRowEstimate +
+                    groups.sectionCount * _coursesSheetSectionHeaderEstimate);
     }
 
     String? cavityKey;
@@ -732,18 +757,14 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // nav; the mirror of the analytics bar's closeSections).
         onCourseShortcutTap: () => context.go(
           shortcutCourse != null
+              // No section param even for a knock-badged course: knocks
+              // surface in the Catch up card at the top of the page (#8357),
+              // which a scroll-to-Chats would skip right past.
               ? WorkspaceNav.openCourseSection(
                   uri,
                   shortcutCourse.id,
                   keepRoom: false,
                   clearRight: true,
-                  // While users are knocking, land the admin on the Chats
-                  // tab — where the knock notification lives — instead of
-                  // the Course Plan default, until the knock is accepted or
-                  // denied (#8139).
-                  tab: shortcutCourse.knockingUsers.isNotEmpty
-                      ? SpaceSettingsTabs.chat
-                      : null,
                 )
               : WorkspaceNav.setSection(
                   uri,

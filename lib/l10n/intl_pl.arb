@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-17 09:31:12.848282",
+    "@@last_modified": "2026-08-21 09:39:39.956875",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -3271,9 +3271,7 @@
     "enableAutocorrectPopupTitle": "Dodaj klawiaturę języka docelowego, przechodząc do:",
     "enableAutocorrectPopupSteps": "  • Ustawienia\n  • Ogólne\n  • Klawiatura\n  • Klawiatury\n  • Dodaj nową klawiaturę",
     "enableAutocorrectPopupDescription": "Po wybraniu języka możesz kliknąć małą ikonę globu w lewym dolnym rogu klawiatury, aby aktywować nowo zainstalowaną klawiaturę.",
-    "downloadGboardTitle": "Pobierz Gboard ze Sklepu Google Play, aby włączyć korektę automatyczną i inne funkcje klawiatury:",
     "downloadGboardSteps": " • Pobierz Gboard\n  • Otwórz aplikację\n  • Języki\n  • Dodaj klawiaturę\n  • Wybierz język\n  • Wybierz typ klawiatury\n  • Gotowe",
-    "downloadGboardDescription": "Po wybraniu języka możesz kliknąć małą ikonę globu w lewym dolnym rogu klawiatury, aby aktywować nowo zainstalowaną klawiaturę.",
     "enableAutocorrectWarning": "Uwaga! Wymaga dodania klawiatury języka docelowego",
     "displayName": "Nazwa wyświetlana",
     "leaveRoomDescription": "Zamierzasz opuścić ten czat. Inni użytkownicy zobaczą, że opuściłeś czat.",
@@ -5484,15 +5482,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9822,6 +9812,9 @@
     "pingedActivity": "Aktywność z powiadomieniem",
     "appInTargetLanguageStaysInBaseLanguage": "(To ustawienie pozostaje w Twoim języku ojczystym, aby zawsze można je było znaleźć.)",
     "usernameTakenPleaseChooseAnother": "Ta nazwa użytkownika jest już zajęta. Wybierz inną.",
+    "allParticipants": "Wszyscy uczestnicy",
+    "seeFullCoursePlan": "Zobacz pełny plan kursu",
+    "catchUp": "Nadrób zaległości",
     "messageLanguageIs": "Ten komunikat jest ustawiony na {language}.",
     "updateMessageLanguage": "Kliknij tutaj, aby zmienić język wiadomości.",
     "messageLanguage": "Język wiadomości",
@@ -9831,5 +9824,24 @@
     "unlockTranslations": "Odblokuj tłumaczenia",
     "unlockEmojiMode": "Odblokuj tryb emoji",
     "unlockMessagePractice": "Odblokuj ćwiczenia z wiadomościami",
-    "unlockWritingAssistance": "Odblokuj pomoc w pisaniu"
+    "unlockWritingAssistance": "Odblokuj pomoc w pisaniu",
+    "courseSectionTeaching": "Nauczanie",
+    "courseSectionLearning": "Nauka",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kursów}}",
+    "showMore": "Pokaż więcej",
+    "showLess": "Pokaż mniej",
+    "countNewMessages": "{count, plural, =1{1 nowa wiadomość} other{{count} nowych wiadomości}}",
+    "markAllRead": "Oznacz wszystkie jako przeczytane",
+    "usersAreTryingToJoinCourse": "Użytkownicy próbują dołączyć do Twojego kursu",
+    "denyAllUsers": "Odrzuć wszystkich użytkowników",
+    "denyAllKnocksDescription": "Użytkownicy zostaną odrzuceni z kursu. Mogą próbować dołączyć ponownie w dowolnym momencie.",
+    "courseNameHint": "Nazwa kursu",
+    "typeCourseCodeToConfirm": "Aby potwierdzić, wpisz poniżej kod kursu {code}.",
+    "typeCourseNameToConfirm": "Aby potwierdzić, wpisz poniżej nazwę kursu {name}.",
+    "inviteAFriend": "Zaproś znajomego",
+    "autocorrectAndroidDialogTitle": "Autokorekta w języku docelowym",
+    "autocorrectAndroidDialogBody": "Gdy piszesz na czacie, klawiatura przełączy się na język docelowy i poprawi pisownię w tym języku.",
+    "autocorrectAndroidFallbackTitle": "Jeśli Twoja klawiatura nie oferuje języka docelowego, zainstaluj Gboard i dodaj tam język:",
+    "resendInSeconds": "Wyślij ponownie ({seconds})",
+    "mapLevelFallbackNotice": "Brak aktywności {selected} — zamiast tego pokazano {shown}."
 }

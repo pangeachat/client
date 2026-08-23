@@ -1126,9 +1126,7 @@
     "enableAutocorrectPopupTitle": "మీ లక్ష్య భాష కీబోర్డ్‌ను జోడించడానికి ఈ క్రింది దశలను అనుసరించండి:",
     "enableAutocorrectPopupSteps": "  • సెట్టింగ్స్\n  • జనరల్\n  • కీబోర్డ్\n  • కీబోర్డ్స్\n  • కొత్త కీబోర్డ్ జోడించండి",
     "enableAutocorrectPopupDescription": "భాషను ఎంచుకున్న తర్వాత, మీ కీబోర్డ్ దిగువ ఎడమ వైపు ఉన్న చిన్న గ్లోబ్ ఐకాన్ పై క్లిక్ చేసి కొత్తగా ఇన్‌స్టాల్ చేసిన కీబోర్డ్‌ను యాక్టివేట్ చేయవచ్చు.",
-    "downloadGboardTitle": "ఆటోకరెక్ట్ మరియు ఇతర కీబోర్డ్ ఫీచర్లను సక్రియం చేయడానికి గూగుల్ ప్లే స్టోర్ నుండి Gboard ను డౌన్లోడ్ చేయండి:",
     "downloadGboardSteps": " • Gboard డౌన్లోడ్ చేయండి\n  • యాప్‌ను తెరవండి\n  • భాషలు\n  • కీబోర్డ్ జోడించండి\n  • భాషను ఎంచుకోండి\n  • కీబోర్డ్ రకాన్ని ఎంచుకోండి\n  • పూర్తి",
-    "downloadGboardDescription": "భాషను ఎంచుకున్న తర్వాత, మీ కీబోర్డ్ యొక్క కుడి కింది మూలలో ఉన్న చిన్న గ్లోబ్ చిహ్నాన్ని క్లిక్ చేయండి, తద్వారా కొత్తగా ఇన్‌స్టాల్ చేసిన కీబోర్డ్‌ను యాక్టివేట్ చేయవచ్చు.",
     "enableAutocorrectWarning": "హెచ్చరిక! మీ లక్ష్య భాష కీబోర్డ్‌ను జోడించాల్సి ఉంటుంది",
     "displayName": "ప్రదర్శన పేరు",
     "leaveRoomDescription": "మీరు ఈ చాట్‌ను విడిచిపోతున్నారు. ఇతర వినియోగదారులు మీరు చాట్‌ను విడిచిపోవడాన్ని చూడగలుగుతారు.",
@@ -1329,7 +1327,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-17 09:31:27.046368",
+    "@@last_modified": "2026-08-21 09:39:41.747075",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6339,15 +6337,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10687,6 +10677,9 @@
     "pingedActivity": "పింగ్ చేయబడిన కార్యాచరణ",
     "appInTargetLanguageStaysInBaseLanguage": "(ఈ సెట్టింగ్ మీ స్థానిక భాషలోనే ఉంటుంది, కాబట్టి మీరు దీన్ని ఎల్లప్పుడూ కనుగొనగలరు.)",
     "usernameTakenPleaseChooseAnother": "ఆ యూజర్‌నేమ్ ఇప్పటికే ఉంది. దయచేసి మరొకటి ఎంచుకోండి.",
+    "allParticipants": "అందరూ పాల్గొనేవారు",
+    "seeFullCoursePlan": "పూర్తి కోర్సు ప్లాన్ చూడండి",
+    "catchUp": "తెలుసుకోండి",
     "messageLanguageIs": "ఈ సందేశం {language}కి సెట్ చేయబడింది.",
     "updateMessageLanguage": "సందేశం యొక్క భాషను మార్చడానికి ఇక్కడ క్లిక్ చేయండి.",
     "messageLanguage": "సందేశ భాష",
@@ -10696,5 +10689,24 @@
     "unlockTranslations": "అనువాదాలను అన్‌లాక్ చేయండి",
     "unlockEmojiMode": "ఎమోజి మోడ్‌ను అన్‌లాక్ చేయండి",
     "unlockMessagePractice": "సందేశ అభ్యాసాన్ని అన్‌లాక్ చేయండి",
-    "unlockWritingAssistance": "రాత సహాయాన్ని అన్‌లాక్ చేయండి"
+    "unlockWritingAssistance": "రాత సహాయాన్ని అన్‌లాక్ చేయండి",
+    "courseSectionTeaching": "బోధన",
+    "courseSectionLearning": "నేర్చుకోవడం",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 కోర్సు} other{{count} కోర్సులు}}",
+    "showMore": "మరింత చూపించు",
+    "showLess": "తక్కువ చూపించు",
+    "countNewMessages": "{count, plural, =1{1 కొత్త సందేశం} other{{count} కొత్త సందేశాలు}}",
+    "markAllRead": "అన్నింటినీ చదివినట్లు గుర్తించు",
+    "usersAreTryingToJoinCourse": "వినియోగదారులు మీ కోర్సులో చేరడానికి ప్రయత్నిస్తున్నారు",
+    "denyAllUsers": "అన్ని వినియోగదారులను తిరస్కరించండి",
+    "denyAllKnocksDescription": "ఈ వినియోగదారులు కోర్సు నుండి తిరస్కరించబడతారు. వారు ఎప్పుడైనా మళ్లీ చేరడానికి ప్రయత్నించవచ్చు.",
+    "courseNameHint": "కోర్సు పేరు",
+    "typeCourseCodeToConfirm": "నిర్ధారించడానికి, కోర్సు కోడ్ {code} ను క్రింద టైప్ చేయండి.",
+    "typeCourseNameToConfirm": "నిర్ధారించడానికి, కోర్సు పేరు {name} ను క్రింద టైప్ చేయండి.",
+    "inviteAFriend": "స్నేహితుడిని ఆహ్వానించండి",
+    "autocorrectAndroidDialogTitle": "మీ లక్ష్య భాషలో స్వీయ దిద్దుబాటు",
+    "autocorrectAndroidDialogBody": "మీరు చాట్‌లో టైప్ చేసినప్పుడు, మీ కీబోర్డ్ మీ లక్ష్య భాషకు మారుతుంది మరియు ఆ భాషలో స్పెల్లింగ్‌ను సరిచేస్తుంది.",
+    "autocorrectAndroidFallbackTitle": "మీ కీబోర్డ్ మీ లక్ష్య భాషను అందించకపోతే, Gboardని ఇన్‌స్టాల్ చేసి, అక్కడ భాషను జోడించండి:",
+    "resendInSeconds": "మళ్ళీ పంపండి ({seconds})",
+    "mapLevelFallbackNotice": "ఇంకా {selected} కార్యకలాపాలు లేవు — బదులుగా {shown} చూపుతోంది."
 }

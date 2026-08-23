@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:14.274709",
+    "@@last_modified": "2026-08-21 09:39:32.887322",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -2900,9 +2900,7 @@
     "enableAutocorrectPopupTitle": "আপনার লক্ষ্য ভাষার কীবোর্ড যোগ করুন: সেটিংসে যান",
     "enableAutocorrectPopupSteps": "  • সেটিংস\n  • সাধারণ\n  • কীবোর্ড\n  • কীবোর্ডসমূহ\n  • নতুন কীবোর্ড যোগ করুন",
     "enableAutocorrectPopupDescription": "একবার ভাষা নির্বাচন করলে, আপনি আপনার কীবোর্ডের নিচে বাম পাশে ছোট গ্লোব আইকনে ক্লিক করে নতুন ইনস্টলকৃত কীবোর্ডটি সক্রিয় করতে পারেন।",
-    "downloadGboardTitle": "অটোকারেক্ট এবং অন্যান্য কীবোর্ড বৈশিষ্ট্য সক্ষম করতে Google Play Store থেকে Gboard ডাউনলোড করুন:",
     "downloadGboardSteps": " • Gboard ডাউনলোড করুন\n  • অ্যাপ খুলুন\n  • ভাষা\n  • কীবোর্ড যোগ করুন\n  • ভাষা নির্বাচন করুন\n  • কীবোর্ডের ধরন নির্বাচন করুন\n  • শেষ",
-    "downloadGboardDescription": "একবার ভাষা নির্বাচন হয়ে গেলে, আপনি আপনার কীবোর্ডের নিচে বাম কোণে ছোট গ্লোব আইকনে ক্লিক করে নতুন ইনস্টলকৃত কীবোর্ডটি সক্রিয় করতে পারেন।",
     "enableAutocorrectWarning": "সতর্কতা! আপনার লক্ষ্য ভাষার কীবোর্ড যোগ করতে হবে",
     "displayName": "প্রদর্শন নাম",
     "leaveRoomDescription": "আপনি এই চ্যাট থেকে ছেড়ে যাচ্ছেন। অন্যান্য ব্যবহারকারীরা দেখবে যে আপনি চ্যাট ছেড়ে গেছেন।",
@@ -6017,15 +6015,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10365,6 +10355,9 @@
     "pingedActivity": "পিং করা কার্যকলাপ",
     "appInTargetLanguageStaysInBaseLanguage": "(এই সেটিংটি আপনার স্থানীয় ভাষাতেই থাকবে যাতে আপনি এটি সবসময় খুঁজে পান।)",
     "usernameTakenPleaseChooseAnother": "এই ব্যবহারকারীর নাম ইতিমধ্যেই নেওয়া হয়েছে। অনুগ্রহ করে অন্য একটি বেছে নিন।",
+    "allParticipants": "সকল অংশগ্রহণকারী",
+    "seeFullCoursePlan": "সম্পূর্ণ কোর্স প্ল্যান দেখুন",
+    "catchUp": "যোগাযোগ করুন",
     "messageLanguageIs": "এই বার্তার ভাষা {language} এ সেট করা আছে।",
     "updateMessageLanguage": "বার্তার ভাষা পরিবর্তন করতে এখানে ক্লিক করুন।",
     "messageLanguage": "বার্তার ভাষা",
@@ -10374,5 +10367,24 @@
     "unlockTranslations": "অনুবাদ আনলক করুন",
     "unlockEmojiMode": "ইমোজি মোড আনলক করুন",
     "unlockMessagePractice": "মেসেজ অনুশীলন আনলক করুন",
-    "unlockWritingAssistance": "রাইটিং অ্যাসিস্টেন্স আনলক করুন"
+    "unlockWritingAssistance": "রাইটিং অ্যাসিস্টেন্স আনলক করুন",
+    "courseSectionTeaching": "শিক্ষাদান",
+    "courseSectionLearning": "শিক্ষাগ্রহন",
+    "courseSectionLabel": "{title}, {count, plural, =1{1টি কোর্স} other{{count}টি কোর্স}}",
+    "showMore": "আরও দেখান",
+    "showLess": "কম দেখান",
+    "countNewMessages": "{count, plural, =1{১টি নতুন বার্তা} other{{count}টি নতুন বার্তা}}",
+    "markAllRead": "সবগুলো পঠিত হিসেবে চিহ্নিত করুন",
+    "usersAreTryingToJoinCourse": "ব্যবহারকারীরা আপনার কোর্সে যোগদানের চেষ্টা করছেন",
+    "denyAllUsers": "সমস্ত ব্যবহারকারীকে প্রত্যাখ্যান করুন",
+    "denyAllKnocksDescription": "এই ব্যবহারকারীদের কোর্স থেকে প্রত্যাখ্যান করা হবে। তারা যেকোনো সময় আবার যোগদানের চেষ্টা করতে পারে।",
+    "courseNameHint": "কোর্সের নাম",
+    "typeCourseCodeToConfirm": "নিশ্চিত করতে, নিচে কোর্স কোড {code} টাইপ করুন।",
+    "typeCourseNameToConfirm": "নিশ্চিত করতে, নিচে কোর্সের নাম {name} টাইপ করুন।",
+    "inviteAFriend": "একজন বন্ধুকে আমন্ত্রণ জানান",
+    "autocorrectAndroidDialogTitle": "আপনার লক্ষ্য ভাষায় স্বয়ংক্রিয় সংশোধন",
+    "autocorrectAndroidDialogBody": "আপনি যখন চ্যাটে টাইপ করবেন, আপনার কীবোর্ড আপনার লক্ষ্য ভাষায় পরিবর্তিত হবে এবং সেই ভাষায় বানান সংশোধন করবে।",
+    "autocorrectAndroidFallbackTitle": "যদি আপনার কীবোর্ড আপনার লক্ষ্য ভাষা অফার না করে, তাহলে Gboard ইনস্টল করুন এবং সেখানে ভাষা যোগ করুন:",
+    "resendInSeconds": "পুনরায় পাঠান ({seconds})",
+    "mapLevelFallbackNotice": "এখনও কোনো {selected} কার্যকলাপ নেই — পরিবর্তে {shown} দেখানো হচ্ছে।"
 }

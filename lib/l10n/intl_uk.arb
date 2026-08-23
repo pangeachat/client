@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-17 09:31:29.349579",
+    "@@last_modified": "2026-08-21 09:39:41.668067",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -3360,9 +3360,7 @@
     "enableAutocorrectPopupTitle": "Додайте клавіатуру цільової мови, перейшовши до:",
     "enableAutocorrectPopupSteps": "  • Налаштування\n  • Загальні\n  • Клавіатура\n  • Клавіатури\n  • Додати нову клавіатуру",
     "enableAutocorrectPopupDescription": "Після вибору мови ви можете натиснути маленьку іконку глобуса в нижньому лівому куті клавіатури, щоб активувати нововстановлену клавіатуру.",
-    "downloadGboardTitle": "Завантажте Gboard з Google Play Store, щоб увімкнути автокорекцію та інші функції клавіатури:",
     "downloadGboardSteps": " • Завантажити Gboard\n  • Відкрити додаток\n  • Мови\n  • Додати клавіатуру\n  • Вибрати мову\n  • Вибрати тип клавіатури\n  • Готово",
-    "downloadGboardDescription": "Після вибору мови ви можете натиснути маленьку іконку глобуса в нижньому лівому куті клавіатури, щоб активувати нововстановлену клавіатуру.",
     "enableAutocorrectWarning": "Увага! Потрібно додати клавіатуру цільової мови",
     "displayName": "Відображуване ім'я",
     "leaveRoomDescription": "Ви збираєтеся покинути цей чат. Інші користувачі побачать, що ви покинули чат.",
@@ -5569,15 +5567,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9737,6 +9727,9 @@
     "pingedActivity": "Діяльність, що була відзначена",
     "appInTargetLanguageStaysInBaseLanguage": "(Ця настройка залишається вашою рідною мовою, щоб ви завжди могли її знайти.)",
     "usernameTakenPleaseChooseAnother": "Це ім’я користувача вже зайняте. Будь ласка, виберіть інше.",
+    "allParticipants": "Усі учасники",
+    "seeFullCoursePlan": "Переглянути повний план курсу",
+    "catchUp": "Наздогнати",
     "messageLanguageIs": "Це повідомлення налаштовано на {language}.",
     "updateMessageLanguage": "Натисніть тут, щоб змінити мову повідомлення.",
     "messageLanguage": "Мова повідомлення",
@@ -9746,5 +9739,24 @@
     "unlockTranslations": "Розблокувати переклади",
     "unlockEmojiMode": "Розблокувати режим емодзі",
     "unlockMessagePractice": "Розблокувати практику повідомлень",
-    "unlockWritingAssistance": "Розблокувати допомогу з письмом"
+    "unlockWritingAssistance": "Розблокувати допомогу з письмом",
+    "courseSectionTeaching": "Викладання",
+    "courseSectionLearning": "Навчання",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курси}}",
+    "showMore": "Показати більше",
+    "showLess": "Показати менше",
+    "countNewMessages": "{count, plural, =1{1 нове повідомлення} other{{count} нових повідомлень}}",
+    "markAllRead": "Позначити всі як прочитані",
+    "usersAreTryingToJoinCourse": "Користувачі намагаються приєднатися до вашого курсу",
+    "denyAllUsers": "Відхилити всіх користувачів",
+    "denyAllKnocksDescription": "Цим користувачам буде відмовлено в доступі до курсу. Вони можуть спробувати приєднатися знову в будь-який час.",
+    "courseNameHint": "Назва курсу",
+    "typeCourseCodeToConfirm": "Для підтвердження введіть код курсу {code} нижче.",
+    "typeCourseNameToConfirm": "Для підтвердження введіть назву курсу {name} нижче.",
+    "inviteAFriend": "Запросити друга",
+    "autocorrectAndroidDialogTitle": "Автовиправлення цільовою мовою",
+    "autocorrectAndroidDialogBody": "Коли ви друкуєте в чаті, клавіатура перемикається на цільову мову та виправляє орфографію цією мовою.",
+    "autocorrectAndroidFallbackTitle": "Якщо ваша клавіатура не пропонує цільову мову, встановіть Gboard і додайте мову там:",
+    "resendInSeconds": "Надіслати повторно через ({seconds})",
+    "mapLevelFallbackNotice": "Ще немає занять {selected} — замість них показано {shown}."
 }

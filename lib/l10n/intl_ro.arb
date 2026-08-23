@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:07.415614",
+    "@@last_modified": "2026-08-21 09:39:39.996812",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -2825,9 +2825,7 @@
     "enableAutocorrectPopupTitle": "Adaugă tastatura limbii tale țintă accesând:",
     "enableAutocorrectPopupSteps": "  • Setări\n  • General\n  • Tastatură\n  • Tastaturi\n  • Adaugă tastatură nouă",
     "enableAutocorrectPopupDescription": "Odată ce limba este selectată, poți face clic pe micuța pictogramă glob pe partea stângă jos a tastaturii pentru a activa tastatura recent instalată.",
-    "downloadGboardTitle": "Descarcă Gboard din Google Play Store pentru a activa corectarea automată și alte funcții ale tastaturii:",
     "downloadGboardSteps": " • Descarcă Gboard\n  • Deschide aplicația\n  • Limbi\n  • Adaugă tastatură\n  • Selectează limba\n  • Selectează tipul de tastatură\n  • Gata",
-    "downloadGboardDescription": "Odată ce limba este selectată, poți face clic pe micuța pictogramă glob pe partea stângă jos a tastaturii pentru a activa tastatura recent instalată.",
     "enableAutocorrectWarning": "Avertisment! Necesită adăugarea tastaturii limbii tale țintă",
     "displayName": "Nume afișat",
     "leaveRoomDescription": "Ești pe cale să părăsești acest chat. Alți utilizatori vor vedea că ai părăsit chat-ul.",
@@ -6121,15 +6119,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10469,6 +10459,9 @@
     "pingedActivity": "Activitate pinguită",
     "appInTargetLanguageStaysInBaseLanguage": "(Această setare rămâne în limba dvs. maternă, astfel încât să o puteți găsi oricând.)",
     "usernameTakenPleaseChooseAnother": "Acest nume de utilizator este deja folosit. Te rugăm să alegi altul.",
+    "allParticipants": "Toți participanții",
+    "seeFullCoursePlan": "Vezi planul complet al cursului",
+    "catchUp": "Recuperează",
     "messageLanguageIs": "Acest mesaj este setat la {language}.",
     "updateMessageLanguage": "Apăsați aici pentru a schimba limba mesajului.",
     "messageLanguage": "Limba mesajului",
@@ -10478,5 +10471,24 @@
     "unlockTranslations": "Deblocați traducerile",
     "unlockEmojiMode": "Deblocați modul emoji",
     "unlockMessagePractice": "Deblocați exersarea mesajelor",
-    "unlockWritingAssistance": "Deblocați asistența la scriere"
+    "unlockWritingAssistance": "Deblocați asistența la scriere",
+    "courseSectionTeaching": "Predare",
+    "courseSectionLearning": "Învățare",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curs} other{{count} cursuri}}",
+    "showMore": "Afișează mai mult",
+    "showLess": "Afișează mai puțin",
+    "countNewMessages": "{count, plural, =1{1 mesaj nou} other{{count} mesaje noi}}",
+    "markAllRead": "Marchează tot ca citit",
+    "usersAreTryingToJoinCourse": "Utilizatorii încearcă să se alăture cursului tău",
+    "denyAllUsers": "Refuză toți utilizatorii",
+    "denyAllKnocksDescription": "Acești utilizatori vor fi refuzați de la curs. Ei pot încerca să se alăture din nou oricând.",
+    "courseNameHint": "Numele cursului",
+    "typeCourseCodeToConfirm": "Pentru a confirma, introduceți codul cursului {code} mai jos.",
+    "typeCourseNameToConfirm": "Pentru a confirma, introduceți numele cursului {name} mai jos.",
+    "inviteAFriend": "Invită un prieten",
+    "autocorrectAndroidDialogTitle": "Corectare automată în limba țintă",
+    "autocorrectAndroidDialogBody": "Când scrii într-un chat, tastatura ta va comuta la limba țintă și va corecta ortografia în acea limbă.",
+    "autocorrectAndroidFallbackTitle": "Dacă tastatura ta nu oferă limba țintă, instalează Gboard și adaugă limba acolo:",
+    "resendInSeconds": "Retrimite ({seconds})",
+    "mapLevelFallbackNotice": "Încă nu există activități {selected} — se afișează {shown} în schimb."
 }

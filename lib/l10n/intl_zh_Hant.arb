@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:49.446907",
+    "@@last_modified": "2026-08-21 09:39:42.383398",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -3250,9 +3250,7 @@
     "enableAutocorrectPopupTitle": "請前往以下位置加入您的目標語言鍵盤：",
     "enableAutocorrectPopupSteps": "  • 設定\n  • 一般\n  • 鍵盤\n  • 鍵盤\n  • 新增鍵盤",
     "enableAutocorrectPopupDescription": "選擇語言後，您可以點擊鍵盤左下角的小地球圖示來啟用新安裝的鍵盤。",
-    "downloadGboardTitle": "從 Google Play 商店下載 Gboard 以啟用自動更正及其他鍵盤功能：",
     "downloadGboardSteps": " • 下載 Gboard\n  • 開啟應用程式\n  • 語言\n  • 添加鍵盤\n  • 選擇語言\n  • 選擇鍵盤類型\n  • 完成",
-    "downloadGboardDescription": "選擇語言後，您可以點擊鍵盤左下角的小地球圖示來啟用新安裝的鍵盤。",
     "enableAutocorrectWarning": "警告！需要加入您的目標語言鍵盤",
     "displayName": "顯示名稱",
     "leaveRoomDescription": "您即將離開此聊天。其他用戶將看到您已離開聊天。",
@@ -5506,15 +5504,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9843,6 +9833,9 @@
     "pingedActivity": "已標記的活動",
     "appInTargetLanguageStaysInBaseLanguage": "(此設定會保留為您的母語，以便您隨時找到它。)",
     "usernameTakenPleaseChooseAnother": "該用戶名已被使用。請選擇另一個。",
+    "allParticipants": "所有參與者",
+    "seeFullCoursePlan": "查看完整課程計畫",
+    "catchUp": "追進度",
     "messageLanguageIs": "此訊息已設定為{language}。",
     "updateMessageLanguage": "點擊此處更改訊息語言。",
     "messageLanguage": "訊息語言",
@@ -9852,5 +9845,24 @@
     "unlockTranslations": "解鎖翻譯",
     "unlockEmojiMode": "解鎖表情符號模式",
     "unlockMessagePractice": "解鎖訊息練習",
-    "unlockWritingAssistance": "解鎖寫作輔助"
+    "unlockWritingAssistance": "解鎖寫作輔助",
+    "courseSectionTeaching": "教學",
+    "courseSectionLearning": "學習",
+    "courseSectionLabel": "{title}，{count, plural, =1{1 門課程} other{{count} 門課程}}",
+    "showMore": "顯示更多",
+    "showLess": "顯示較少",
+    "countNewMessages": "{count, plural, =1{1 條新訊息} other{{count} 條新訊息}}",
+    "markAllRead": "全部標記為已讀",
+    "usersAreTryingToJoinCourse": "有用戶嘗試加入您的課程",
+    "denyAllUsers": "拒絕所有用戶",
+    "denyAllKnocksDescription": "這些用戶將被拒絕加入課程。他們可以隨時再次嘗試加入。",
+    "courseNameHint": "課程名稱",
+    "typeCourseCodeToConfirm": "若要確認，請在下方輸入課程代碼 {code}。",
+    "typeCourseNameToConfirm": "若要確認，請在下方輸入課程名稱 {name}。",
+    "inviteAFriend": "邀請朋友",
+    "autocorrectAndroidDialogTitle": "目標語言自動校正",
+    "autocorrectAndroidDialogBody": "當您在聊天中打字時，您的鍵盤將切換到您的目標語言並自動校正該語言的拼寫。",
+    "autocorrectAndroidFallbackTitle": "如果您的鍵盤不支援您的目標語言，請安裝 Gboard 並在其中新增該語言：",
+    "resendInSeconds": "重新發送 ({seconds})",
+    "mapLevelFallbackNotice": "尚未有{selected}活動—改為顯示{shown}。"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-17 09:30:31.454207",
+    "@@last_modified": "2026-08-21 09:39:35.361317",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -3067,9 +3067,7 @@
     "enableAutocorrectPopupTitle": "Dodajte tipkovnicu za ciljani jezik tako da odete na:",
     "enableAutocorrectPopupSteps": "  • Postavke\n  • Općenito\n  • Tipkovnica\n  • Tipkovnice\n  • Dodaj novu tipkovnicu",
     "enableAutocorrectPopupDescription": "Kad odaberete jezik, možete kliknuti na malu globus ikonu u donjem lijevom kutu vaše tipkovnice za aktiviranje nove instalirane tipkovnice.",
-    "downloadGboardTitle": "Preuzmite Gboard s Google Play trgovine za omogućavanje automatske ispravke i drugih značajki tipkovnice:",
     "downloadGboardSteps": " • Preuzmi Gboard\n  • Otvori aplikaciju\n  • Jezici\n  • Dodaj tipkovnicu\n  • Odaberi jezik\n  • Odaberi vrstu tipkovnice\n  • Gotovo",
-    "downloadGboardDescription": "Kad odaberete jezik, možete kliknuti na malu globus ikonu u donjem lijevom kutu vaše tipkovnice za aktiviranje nove instalirane tipkovnice.",
     "enableAutocorrectWarning": "Upozorenje! Potrebno je dodati tipkovnicu za ciljani jezik",
     "displayName": "Prikazno ime",
     "leaveRoomDescription": "Upravo napuštate ovaj chat. Ostali korisnici će vidjeti da ste napustili chat.",
@@ -5825,15 +5823,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10173,6 +10163,9 @@
     "pingedActivity": "Pingana aktivnost",
     "appInTargetLanguageStaysInBaseLanguage": "(Ova postavka ostaje na vašem materinjem jeziku kako biste je uvijek mogli pronaći.)",
     "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Odaberite drugo.",
+    "allParticipants": "Svi sudionici",
+    "seeFullCoursePlan": "Pogledajte cijeli plan tečaja",
+    "catchUp": "Nadoknadite",
     "messageLanguageIs": "Jezik ove poruke je {language}.",
     "updateMessageLanguage": "Kliknite ovdje za promjenu jezika poruke.",
     "messageLanguage": "Jezik poruke",
@@ -10182,5 +10175,24 @@
     "unlockTranslations": "Otključaj prijevode",
     "unlockEmojiMode": "Otključaj način rada s emotikonima",
     "unlockMessagePractice": "Otključaj vježbanje poruka",
-    "unlockWritingAssistance": "Otključaj pomoć pri pisanju"
+    "unlockWritingAssistance": "Otključaj pomoć pri pisanju",
+    "courseSectionTeaching": "Predavanje",
+    "courseSectionLearning": "Učenje",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 tečaj} other{{count} tečajeva}}",
+    "showMore": "Prikaži više",
+    "showLess": "Prikaži manje",
+    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} nove poruke}}",
+    "markAllRead": "Označi sve pročitano",
+    "usersAreTryingToJoinCourse": "Korisnici se pokušavaju pridružiti vašem tečaju",
+    "denyAllUsers": "Odbij sve korisnike",
+    "denyAllKnocksDescription": "Ovi će korisnici biti odbijeni s tečaja. Mogu se pokušati ponovno pridružiti u bilo kojem trenutku.",
+    "courseNameHint": "Naziv tečaja",
+    "typeCourseCodeToConfirm": "Za potvrdu, upišite kod tečaja {code} ispod.",
+    "typeCourseNameToConfirm": "Za potvrdu, upišite naziv tečaja {name} ispod.",
+    "inviteAFriend": "Pozovi prijatelja",
+    "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
+    "autocorrectAndroidDialogBody": "Kada tipkate u chatu, vaša će se tipkovnica prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
+    "autocorrectAndroidFallbackTitle": "Ako vaša tipkovnica ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:",
+    "resendInSeconds": "Ponovno pošalji ({seconds})",
+    "mapLevelFallbackNotice": "Još nema aktivnosti za {selected} — umjesto toga prikazuje se {shown}."
 }

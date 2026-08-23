@@ -100,7 +100,6 @@ class _EditContent extends StatelessWidget {
         // ),
         Flexible(
           child: Text(
-            textScaler: TextScaler.noScaling,
             event.calcLocalizedBodyFallback(
               MatrixLocals(L10n.of(context)),
               withSenderNamePrefix: false,

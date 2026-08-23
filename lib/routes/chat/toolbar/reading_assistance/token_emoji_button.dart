@@ -4,10 +4,12 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/routes/chat/toolbar/word_card/lemma_emoji_setter_mixin.dart';
+import 'package:fluffychat/utils/text_scaler_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class TokenEmojiButton extends StatelessWidget with LemmaEmojiSetter {
   static const double _buttonSize = 24.0;
+  static const double _glyphSize = _buttonSize - 8;
 
   final ValueNotifier<SelectMode?> selectModeNotifier;
   final VoidCallback onTap;
@@ -40,6 +42,14 @@ class TokenEmojiButton extends StatelessWidget with LemmaEmojiSetter {
       builder: (context, mode, _) {
         final visible = mode == SelectMode.emoji;
 
+        // The glyph scales with the device text size, so the button box grows
+        // by the factor the scaler applies at the glyph's own font size — not
+        // by `scale(_buttonSize)`, which asks a non-linear scaler what a 24pt
+        // *font* would become (accessibility.instructions.md, Text scaling).
+        final glyphScale = MediaQuery.textScalerOf(
+          context,
+        ).factorAt(_glyphSize);
+
         return AnimatedSize(
           duration: FluffyThemes.animationDuration,
           curve: Curves.easeOut,
@@ -49,14 +59,14 @@ class TokenEmojiButton extends StatelessWidget with LemmaEmojiSetter {
                   onTap: enabled ? onTap : null,
                   borderRadius: BorderRadius.circular(99),
                   child: SizedBox(
-                    width: _buttonSize,
-                    height: _buttonSize,
+                    width: _buttonSize * glyphScale,
+                    height: _buttonSize * glyphScale,
                     child: Center(
                       child: _EmojiText(
                         token: token,
                         enabled: enabled,
                         textColor: textColor,
-                        fontSize: _buttonSize - 8,
+                        fontSize: _glyphSize,
                       ),
                     ),
                   ),
@@ -106,7 +116,6 @@ class _EmojiText extends StatelessWidget {
         return Text(
           emoji ?? "-",
           style: TextStyle(fontSize: fontSize, color: textColor),
-          textScaler: TextScaler.noScaling,
         );
       },
     );

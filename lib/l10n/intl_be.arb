@@ -3350,9 +3350,7 @@
     "enableAutocorrectPopupTitle": "Дадайце клавіятуру мовы мэты, перайшоўшы ў:",
     "enableAutocorrectPopupSteps": "  • Налады\n  • Агульныя\n  • Клавіятура\n  • Клавіятуры\n  • Дадаць новую клавіятуру",
     "enableAutocorrectPopupDescription": "Пасля выбару мовы вы можаце націснуць на маленькую ікону глобуса ў ніжнім левым куце вашай клавіятуры, каб актываваць новую ўсталяваную клавіятуру.",
-    "downloadGboardTitle": "Загрузіце Gboard з Google Play Store, каб уключыць аўтаматычную карэкцыю і іншыя функцыі клавіятуры:",
     "downloadGboardSteps": " • Загрузіце Gboard\n  • Адкрыйце прыкладанне\n  • Мовы\n  • Дадаць клавіятуру\n  • Выбраць мову\n  • Выбраць тып клавіятуры\n  • Гатова",
-    "downloadGboardDescription": "Пасля выбару мовы вы можаце націснуць на маленькую ікону глобуса ў ніжнім левым куце вашай клавіятуры, каб актываваць новую ўсталяваную клавіятуру.",
     "enableAutocorrectWarning": "Увага! Патрабуецца дадаць клавіятуру мовы мэты",
     "displayName": "Імя для паказу",
     "leaveRoomDescription": "Вы збіраецеся пакінуць гэты чат. Іншыя карыстальнікі ўбачаць, што вы пакінулі чат.",
@@ -3553,7 +3551,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-17 09:30:13.871595",
+    "@@last_modified": "2026-08-21 09:39:33.110566",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -5569,15 +5567,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9751,6 +9741,9 @@
     "pingedActivity": "Актыўнасць з пінкам",
     "appInTargetLanguageStaysInBaseLanguage": "(Гэтая налада застаецца на вашай роднай мове, каб вы заўсёды маглі яе знайсці.)",
     "usernameTakenPleaseChooseAnother": "Гэтае імя карыстальніка ўжо занята. Калі ласка, выберыце іншае.",
+    "allParticipants": "Усе ўдзельнікі",
+    "seeFullCoursePlan": "Глядзець поўны план курса",
+    "catchUp": "Нагнаць",
     "messageLanguageIs": "Мова паведамлення: {language}.",
     "updateMessageLanguage": "Націсніце тут, каб змяніць мову паведамлення.",
     "messageLanguage": "Мова паведамлення",
@@ -9760,5 +9753,24 @@
     "unlockTranslations": "Разблакіраваць пераклады",
     "unlockEmojiMode": "Разблакіраваць рэжым эмодзі",
     "unlockMessagePractice": "Разблакіраваць практыку паведамленняў",
-    "unlockWritingAssistance": "Разблакіраваць дапамогу ў напісанні"
+    "unlockWritingAssistance": "Разблакіраваць дапамогу ў напісанні",
+    "courseSectionTeaching": "Выкладанне",
+    "courseSectionLearning": "Вывучэнне",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсаў}}",
+    "showMore": "Паказаць больш",
+    "showLess": "Паказаць менш",
+    "countNewMessages": "{count, plural, =1{1 новае паведамленне} other{{count} новых паведамленняў}}",
+    "markAllRead": "Адзначыць усе прачытанымі",
+    "usersAreTryingToJoinCourse": "Карыстальнікі спрабуюць далучыцца да вашага курса",
+    "denyAllUsers": "Адхіліць усіх карыстальнікаў",
+    "denyAllKnocksDescription": "Гэтыя карыстальнікі будуць адхілены ад курса. Яны могуць паспрабаваць далучыцца зноў у любы час.",
+    "courseNameHint": "Назва курса",
+    "typeCourseCodeToConfirm": "Каб пацвердзіць, увядзіце код курса {code} ніжэй.",
+    "typeCourseNameToConfirm": "Каб пацвердзіць, увядзіце назву курса {name} ніжэй.",
+    "inviteAFriend": "Запрасіць сябра",
+    "autocorrectAndroidDialogTitle": "Аўтавыпраўленне на вашай мэтавай мове",
+    "autocorrectAndroidDialogBody": "Калі вы друкуеце ў чаце, ваша клавіятура пераключыцца на мэтавую мову і выправіць арфаграфію на гэтай мове.",
+    "autocorrectAndroidFallbackTitle": "Калі ваша клавіятура не прапануе мэтавую мову, усталюйце Gboard і дадайце мову там:",
+    "resendInSeconds": "Адправіць паўторна праз ({seconds})",
+    "mapLevelFallbackNotice": "Пакуль няма заняткаў {selected} — замест іх паказаны {shown}."
 }

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:dynamic_color/dynamic_color.dart';
 
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/style_example_message.dart';
@@ -304,22 +303,10 @@ class SettingsStyleView extends StatelessWidget {
                   );
                 },
               ),
-              ListTile(
-                title: Text(L10n.of(context).fontSize),
-                trailing: Text(
-                  '× ${AppSettings.fontSizeFactor.value.toStringAsFixed(1)}',
-                ),
-              ),
-              Slider(
-                min: 0.5,
-                max: 2.5,
-                divisions: 20,
-                value: AppSettings.fontSizeFactor.value,
-                semanticFormatterCallback: (d) =>
-                    '× ${AppSettings.fontSizeFactor.value.toStringAsFixed(1)}',
-                onChanged: controller.changeFontSizeFactor,
-              ),
-
+              // #Pangea
+              // The app-level font-size slider is gone; text size comes from
+              // the device's own setting now (issue #7719).
+              // Pangea#
               // #Pangea
               // Divider(color: theme.dividerColor),
               // ListTile(

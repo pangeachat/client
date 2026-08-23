@@ -184,41 +184,33 @@ class LearningSettingsViewModel extends ChangeNotifier {
   }
 
   void updateToolSetting(ToolSetting toolSetting, bool value) {
-    final updated = _updatedProfile.copyWith(
-      toolSettings: _updatedProfile.toolSettings.copyWith(
-        interactiveTranslator: toolSetting == ToolSetting.interactiveTranslator
-            ? value
-            : _updatedProfile.toolSettings.interactiveTranslator,
-        interactiveGrammar: toolSetting == ToolSetting.interactiveGrammar
-            ? value
-            : _updatedProfile.toolSettings.interactiveGrammar,
-        immersionMode: toolSetting == ToolSetting.immersionMode
-            ? value
-            : _updatedProfile.toolSettings.immersionMode,
-        definitions: toolSetting == ToolSetting.definitions
-            ? value
-            : _updatedProfile.toolSettings.definitions,
-        autoIGC: toolSetting == ToolSetting.autoIGC
-            ? value
-            : _updatedProfile.toolSettings.autoIGC,
-        audioWords: toolSetting == ToolSetting.audioWords
-            ? value
-            : _updatedProfile.toolSettings.audioWords,
-        audioChoices: toolSetting == ToolSetting.audioChoices
-            ? value
-            : _updatedProfile.toolSettings.audioChoices,
-        audioOnNewMessage: toolSetting == ToolSetting.audioOnNewMessage
-            ? value
-            : _updatedProfile.toolSettings.audioOnNewMessage,
-        audioOnMessageClick: toolSetting == ToolSetting.audioOnMessageClick
-            ? value
-            : _updatedProfile.toolSettings.audioOnMessageClick,
-        enableAutocorrect: toolSetting == ToolSetting.enableAutocorrect
-            ? value
-            : _updatedProfile.toolSettings.enableAutocorrect,
+    // Only the changed toggle is passed; copyWith keeps the rest untouched,
+    // which matters for autocorrect — passing its resolved value back would
+    // turn a never-chosen null into this device's platform default.
+    final toolSettings = _updatedProfile.toolSettings;
+    final updatedToolSettings = switch (toolSetting) {
+      ToolSetting.interactiveTranslator => toolSettings.copyWith(
+        interactiveTranslator: value,
       ),
-    );
-    _updateProfile(updated);
+      ToolSetting.interactiveGrammar => toolSettings.copyWith(
+        interactiveGrammar: value,
+      ),
+      ToolSetting.immersionMode => toolSettings.copyWith(immersionMode: value),
+      ToolSetting.definitions => toolSettings.copyWith(definitions: value),
+      ToolSetting.autoIGC => toolSettings.copyWith(autoIGC: value),
+      ToolSetting.audioWords => toolSettings.copyWith(audioWords: value),
+      ToolSetting.audioChoices => toolSettings.copyWith(audioChoices: value),
+      ToolSetting.audioOnNewMessage => toolSettings.copyWith(
+        audioOnNewMessage: value,
+      ),
+      ToolSetting.audioOnMessageClick => toolSettings.copyWith(
+        audioOnMessageClick: value,
+      ),
+      ToolSetting.enableAutocorrect => toolSettings.copyWith(
+        enableAutocorrect: value,
+      ),
+    };
+    _updateProfile(_updatedProfile.copyWith(toolSettings: updatedToolSettings));
   }
 
   bool get appLanguageIsTarget =>

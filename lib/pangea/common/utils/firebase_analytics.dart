@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
+import 'package:fluffychat/features/user/user_constants.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart';
@@ -101,6 +102,7 @@ class GoogleAnalytics {
     required String targetLanguage,
     required String sourceLanguage,
     String? userType,
+    String? cefrLevel,
   }) {
     analytics?.setUserProperty(
       name: ModelKey.targetLanguage,
@@ -112,6 +114,12 @@ class GoogleAnalytics {
     );
     if (userType != null) {
       analytics?.setUserProperty(name: 'user_type', value: userType);
+    }
+    if (cefrLevel != null) {
+      analytics?.setUserProperty(
+        name: UserConstants.cefrLevel,
+        value: cefrLevel,
+      );
     }
   }
 

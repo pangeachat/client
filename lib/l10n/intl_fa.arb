@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:19.181817",
+    "@@last_modified": "2026-08-21 09:39:34.675360",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -3268,9 +3268,7 @@
     "enableAutocorrectPopupTitle": "با رفتن به تنظیمات صفحه کلید زبان هدف خود را اضافه کنید:",
     "enableAutocorrectPopupSteps": "  • تنظیمات\n  • عمومی\n  • صفحه کلید\n  • صفحه کلیدها\n  • افزودن صفحه کلید جدید",
     "enableAutocorrectPopupDescription": "پس از انتخاب زبان، می‌توانید روی آیکون کوچک کره در پایین سمت چپ صفحه کلید خود کلیک کنید تا صفحه کلید نصب شده جدید فعال شود.",
-    "downloadGboardTitle": "برای فعال کردن تصحیح خودکار و ویژگی‌های دیگر صفحه کلید، Gboard را از فروشگاه Google Play دانلود کنید:",
     "downloadGboardSteps": " • دانلود Gboard\n  • باز کردن برنامه\n  • زبان‌ها\n  • افزودن صفحه کلید\n  • انتخاب زبان\n  • انتخاب نوع صفحه کلید\n  • انجام شد",
-    "downloadGboardDescription": "پس از انتخاب زبان، می‌توانید روی آیکون کوچک کره در پایین سمت چپ صفحه کلید خود کلیک کنید تا صفحه کلید نصب شده جدید فعال شود.",
     "enableAutocorrectWarning": "هشدار! نیاز به افزودن صفحه کلید زبان هدف دارید",
     "displayName": "نام نمایشی",
     "leaveRoomDescription": "در حال خروج از این چت هستید. سایر کاربران خواهند دید که شما چت را ترک کرده‌اید.",
@@ -5482,15 +5480,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9825,6 +9815,9 @@
     "pingedActivity": "فعالیت پینگ‌شده",
     "appInTargetLanguageStaysInBaseLanguage": "(این تنظیمات به زبان مادری شما باقی می‌ماند تا همیشه بتوانید آن را پیدا کنید.)",
     "usernameTakenPleaseChooseAnother": "این نام کاربری قبلاً استفاده شده است. لطفاً نام دیگری انتخاب کنید.",
+    "allParticipants": "همه شرکت‌کنندگان",
+    "seeFullCoursePlan": "مشاهده برنامه کامل دوره",
+    "catchUp": "به‌روزرسانی",
     "messageLanguageIs": "زبان این پیام روی {language} تنظیم شده است.",
     "updateMessageLanguage": "برای تغییر زبان پیام اینجا کلیک کنید.",
     "messageLanguage": "زبان پیام",
@@ -9834,5 +9827,24 @@
     "unlockTranslations": "باز کردن ترجمه‌ها",
     "unlockEmojiMode": "باز کردن حالت اموجی",
     "unlockMessagePractice": "باز کردن تمرین پیام",
-    "unlockWritingAssistance": "باز کردن کمک نوشتاری"
+    "unlockWritingAssistance": "باز کردن کمک نوشتاری",
+    "courseSectionTeaching": "آموزش",
+    "courseSectionLearning": "یادگیری",
+    "courseSectionLabel": "{title}, {count, plural, =1{۱ دوره} other{{count} دوره}}",
+    "showMore": "نمایش بیشتر",
+    "showLess": "نمایش کمتر",
+    "countNewMessages": "{count, plural, =1{۱ پیام جدید} other{{count} پیام جدید}}",
+    "markAllRead": "علامت‌گذاری همه به عنوان خوانده‌شده",
+    "usersAreTryingToJoinCourse": "کاربران در تلاش برای پیوستن به دوره شما هستند",
+    "denyAllUsers": "رد کردن همه کاربران",
+    "denyAllKnocksDescription": "این کاربران از دوره رد خواهند شد. آنها ممکن است در هر زمان دوباره برای پیوستن تلاش کنند.",
+    "courseNameHint": "نام دوره",
+    "typeCourseCodeToConfirm": "برای تأیید، کد دوره {code} را در زیر تایپ کنید.",
+    "typeCourseNameToConfirm": "برای تأیید، نام دوره {name} را در زیر تایپ کنید.",
+    "inviteAFriend": "دعوت از یک دوست",
+    "autocorrectAndroidDialogTitle": "تصحیح خودکار در زبان مقصد شما",
+    "autocorrectAndroidDialogBody": "هنگامی که در یک چت تایپ می‌کنید، صفحه‌کلید شما به زبان مقصدتان تغییر می‌کند و املای کلمات را در آن زبان تصحیح می‌کند.",
+    "autocorrectAndroidFallbackTitle": "اگر صفحه‌کلید شما زبان مقصدتان را ارائه نمی‌دهد، Gboard را نصب کنید و زبان را در آنجا اضافه کنید:",
+    "resendInSeconds": "ارسال مجدد ({seconds})",
+    "mapLevelFallbackNotice": "هنوز هیچ فعالیت {selected} وجود ندارد — در عوض {shown} نمایش داده می‌شود."
 }

@@ -111,7 +111,16 @@ class ConstructIdentifier {
     }
   }
 
-  // override operator == and hashCode
+  /// Strict identity: lemma (case-sensitive), type and normalised category.
+  ///
+  /// `'other'` is NOT a wildcard here. It used to be — an `'other'` id was
+  /// `==` to the same lemma/type with any category — while [hashCode] kept
+  /// including [category], which broke the equals/hashCode contract: hashed
+  /// collections never reached `==` for differing categories and so already
+  /// behaved strictly; only direct comparisons saw the wildcard. Strict `==`
+  /// makes both agree (#8441). `'other'` means "unclassifiable" and is
+  /// filtered out of aggregations by [isInvalid] — see
+  /// analytics-system.instructions.md, Key Contracts.
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
@@ -119,15 +128,11 @@ class ConstructIdentifier {
     return other is ConstructIdentifier &&
         other.lemma == lemma &&
         other.type == type &&
-        (category == other.category ||
-            category.toLowerCase() == 'other' ||
-            other.category.toLowerCase() == 'other');
+        other.category == category;
   }
 
   @override
-  int get hashCode {
-    return lemma.hashCode ^ type.hashCode ^ category.hashCode;
-  }
+  int get hashCode => Object.hash(lemma, type, category);
 
   String get string {
     return "$lemma:${type.string}-$category".toLowerCase();

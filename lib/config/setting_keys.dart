@@ -34,7 +34,11 @@ enum AppSettings<T> {
   // ),
   // Pangea#
   renderHtml<bool>('chat.fluffy.renderHtml', true),
-  fontSizeFactor<double>('chat.fluffy.font_size_factor', 1.0),
+  // #Pangea
+  // fontSizeFactor removed — the device's own text-size setting is the single
+  // source of text size app-wide (issue #7719).
+  // fontSizeFactor<double>('chat.fluffy.font_size_factor', 1.0),
+  // Pangea#
   hideRedactedEvents<bool>('chat.fluffy.hideRedactedEvents', false),
   hideUnknownEvents<bool>('chat.fluffy.hideUnknownEvents', true),
   separateChatTypes<bool>('chat.fluffy.separateChatTypes', false),
@@ -83,18 +87,11 @@ enum AppSettings<T> {
 
     final store = AppSettings._store = await SharedPreferences.getInstance();
 
-    // Migrate wrong datatype for fontSizeFactor
-    final fontSizeFactorString = Result(
-      () => store.getString(AppSettings.fontSizeFactor.key),
-    ).asValue?.value;
-    if (fontSizeFactorString != null) {
-      Logs().i('Migrate wrong datatype for fontSizeFactor!');
-      await store.remove(AppSettings.fontSizeFactor.key);
-      final fontSizeFactor = double.tryParse(fontSizeFactorString);
-      if (fontSizeFactor != null) {
-        await store.setDouble(AppSettings.fontSizeFactor.key, fontSizeFactor);
-      }
-    }
+    // #Pangea
+    // The stored `chat.fluffy.font_size_factor` is left where it is. Nothing
+    // reads it any more (issue #7719), and deleting it would only cost a write
+    // on every cold start for every user who ever moved the old slider.
+    // Pangea#
 
     if (store.getBool(AppSettings.sendOnEnter.key) == null) {
       await store.setBool(AppSettings.sendOnEnter.key, !PlatformInfos.isMobile);

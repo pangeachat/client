@@ -3350,9 +3350,7 @@
     "enableAutocorrectPopupTitle": "Pievienojiet savu mērķvalodas tastatūru, dodoties uz:",
     "enableAutocorrectPopupSteps": "  • Iestatījumi\n  • Vispārīgi\n  • Tastatūra\n  • Tastatūras\n  • Pievienot jaunu tastatūru",
     "enableAutocorrectPopupDescription": "Kad valoda ir izvēlēta, jūs varat noklikšķināt uz mazās globusa ikonas apakšējā kreisajā stūrī, lai aktivizētu jauno instalēto tastatūru.",
-    "downloadGboardTitle": "Lejupielādējiet Gboard no Google Play veikala, lai iespējotu automātisko labošanu un citas tastatūras funkcijas:",
     "downloadGboardSteps": " • Lejupielādēt Gboard\n  • Atvērt lietotni\n  • Valodas\n  • Pievienot tastatūru\n  • Izvēlēties valodu\n  • Izvēlēties tastatūras veidu\n  • Gatavs",
-    "downloadGboardDescription": "Kad valoda ir izvēlēta, jūs varat noklikšķināt uz mazās globusa ikonas apakšējā kreisajā stūrī, lai aktivizētu jauno instalēto tastatūru.",
     "enableAutocorrectWarning": "Brīdinājums! Nepieciešams pievienot mērķvalodas tastatūru",
     "displayName": "Parādāmais vārds",
     "leaveRoomDescription": "Jūs parādīsiet, ka pametat šo čatu. Citi lietotāji redzēs, ka esat aizgājis no čata.",
@@ -3540,7 +3538,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-17 09:30:54.233764",
+    "@@last_modified": "2026-08-21 09:39:37.466607",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -5569,15 +5567,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9737,6 +9727,9 @@
     "pingedActivity": "Paziņojumu darbība",
     "appInTargetLanguageStaysInBaseLanguage": "(Šis iestatījums paliek jūsu dzimtajā valodā, lai jūs to vienmēr varētu atrast.)",
     "usernameTakenPleaseChooseAnother": "Šis lietotājvārds jau ir aizņemts. Lūdzu, izvēlieties citu.",
+    "allParticipants": "Visi dalībnieki",
+    "seeFullCoursePlan": "Skatīt pilnu kursa plānu",
+    "catchUp": "Panākt",
     "messageLanguageIs": "Šī ziņa ir iestatīta uz {language}.",
     "updateMessageLanguage": "Noklikšķiniet šeit, lai mainītu ziņas valodu.",
     "messageLanguage": "Ziņas valoda",
@@ -9746,5 +9739,24 @@
     "unlockTranslations": "Atbloķēt tulkojumus",
     "unlockEmojiMode": "Atbloķēt emocijzīmju režīmu",
     "unlockMessagePractice": "Atbloķēt ziņojumu praksi",
-    "unlockWritingAssistance": "Atbloķēt rakstīšanas palīdzību"
+    "unlockWritingAssistance": "Atbloķēt rakstīšanas palīdzību",
+    "courseSectionTeaching": "Mācīšana",
+    "courseSectionLearning": "Mācīšanās",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurss} other{{count} kursi}}",
+    "showMore": "Rādīt vairāk",
+    "showLess": "Rādīt mazāk",
+    "countNewMessages": "{count, plural, =1{1 jauna ziņa} other{{count} jaunas ziņas}}",
+    "markAllRead": "Atzīmēt visu kā izlasītu",
+    "usersAreTryingToJoinCourse": "Lietotāji mēģina pievienoties jūsu kursam",
+    "denyAllUsers": "Noraidīt visus lietotājus",
+    "denyAllKnocksDescription": "Šie lietotāji tiks noraidīti no kursa. Viņi jebkurā laikā var mēģināt pievienoties vēlreiz.",
+    "courseNameHint": "Kursa nosaukums",
+    "typeCourseCodeToConfirm": "Lai apstiprinātu, ievadiet kursa kodu {code} zemāk.",
+    "typeCourseNameToConfirm": "Lai apstiprinātu, ievadiet kursa nosaukumu {name} zemāk.",
+    "inviteAFriend": "Uzaicināt draugu",
+    "autocorrectAndroidDialogTitle": "Automātiskā korekcija jūsu mērķa valodā",
+    "autocorrectAndroidDialogBody": "Kad rakstīsiet tērzēšanā, tastatūra pārslēgsies uz jūsu mērķa valodu un labos pareizrakstību šajā valodā.",
+    "autocorrectAndroidFallbackTitle": "Ja jūsu tastatūra nepiedāvā jūsu mērķa valodu, instalējiet Gboard un pievienojiet valodu tur:",
+    "resendInSeconds": "Sūtīt atkārtoti ({seconds})",
+    "mapLevelFallbackNotice": "Vēl nav {selected} aktivitāšu — tā vietā tiek rādītas {shown}."
 }

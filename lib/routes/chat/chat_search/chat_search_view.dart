@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
 import 'package:fluffychat/routes/chat/chat_search/chat_search_files_tab.dart';
 import 'package:fluffychat/routes/chat/chat_search/chat_search_images_tab.dart';
 import 'package:fluffychat/routes/chat/chat_search/chat_search_message_tab.dart';
@@ -19,19 +20,8 @@ class ChatSearchView extends StatelessWidget {
   Widget build(BuildContext context) {
     final room = controller.room;
     if (room == null) {
-      return Semantics(
-        container: true,
-        child: Scaffold(
-          appBar: AppBar(title: Text(L10n.of(context).oopsSomethingWentWrong)),
-          body: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text(
-                L10n.of(context).youAreNoLongerParticipatingInThisChat,
-              ),
-            ),
-          ),
-        ),
+      return RoomUnavailablePanel(
+        closeButton: controller.widget.embeddedCloseButton,
       );
     }
 
@@ -42,9 +32,7 @@ class ChatSearchView extends StatelessWidget {
       container: true,
       child: Scaffold(
         appBar: AppBar(
-          leading: Center(
-            child: controller.widget.embeddedCloseButton ?? const BackButton(),
-          ),
+          leading: Center(child: controller.widget.embeddedCloseButton),
           centerTitle: false,
           titleSpacing: 0,
           title: Text(

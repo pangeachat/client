@@ -7,16 +7,20 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
+import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/analytics_header_avatar.dart';
+import 'package:fluffychat/routes/world/circular_xp_ring_painter.dart';
 import 'package:fluffychat/routes/world/hex_level_badge.dart';
 import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
 import 'package:fluffychat/routes/world/user_cluster_view_model.dart';
 import 'package:fluffychat/routes/world/world_analytics_bar.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
+import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'mock_user_cluster_view_model.dart';
 
@@ -465,6 +469,136 @@ void main() {
       );
       final box = tester.getSize(find.byType(AnalyticsHeaderAvatarInternal));
       expect(box.height, lessThanOrEqualTo(kToolbarHeight));
+    });
+  });
+
+  /// The level number and the XP ring must track live XP on every rendering
+  /// of the cluster (analytics-system.instructions.md, "Key Contracts": read
+  /// `derivedData` inside a StreamBuilder on the construct stream). The
+  /// chat-header avatar had no such subscription, so its badge froze at the
+  /// mount-time level while the celebration chip announced a later one
+  /// (#8437). Each rendering is pinned here so no future one drifts.
+  group('live level + XP progress (#8437)', () {
+    // 100 XP: past the level-2 floor (38), well short of level 3 (263) — so
+    // both the number and the ring visibly move from the level-1 defaults.
+    final gained = DerivedAnalyticsDataModel(totalXP: 100);
+
+    Future<void> earnXp(
+      WidgetTester tester,
+      MockUserClusterViewModel viewModel,
+      StreamController<AnalyticsStreamUpdate> constructUpdates,
+    ) async {
+      // The live service bumps its cached derived data, THEN ticks the stream.
+      viewModel.derived = gained;
+      constructUpdates.add(
+        AnalyticsStreamUpdate(points: 100, totalPoints: 100),
+      );
+      // Broadcast delivery, the rebuild, and the derived future each take a
+      // frame; nothing animates here, so settling is exact.
+      await tester.pumpAndSettle();
+    }
+
+    double ringProgressOf<P extends CustomPainter>(WidgetTester tester) {
+      final paint = tester.widget<CustomPaint>(
+        find.byWidgetPredicate((w) => w is CustomPaint && w.painter is P),
+      );
+      final painter = paint.painter;
+      return switch (painter) {
+        XpBorderPainter() => painter.progress,
+        CircularXpRingPainter() => painter.progress,
+        _ => throw StateError('unexpected painter $painter'),
+      };
+    }
+
+    testWidgets('chat-header avatar: badge and ring update on an XP tick', (
+      tester,
+    ) async {
+      final constructUpdates =
+          StreamController<AnalyticsStreamUpdate>.broadcast();
+      addTearDown(constructUpdates.close);
+      final viewModel = MockUserClusterViewModel(
+        constructUpdateStream: constructUpdates.stream,
+      );
+      await pumpShellMounted(
+        tester,
+        Align(
+          alignment: Alignment.centerRight,
+          child: AnalyticsHeaderAvatarInternal(
+            viewModel: viewModel,
+            scale: 0.75,
+            flagBuilder: flagStandIn,
+          ),
+        ),
+      );
+      expect(tester.widget<HexLevelBadge>(find.byType(HexLevelBadge)).level, 1);
+      expect(ringProgressOf<CircularXpRingPainter>(tester), 0.0);
+
+      await earnXp(tester, viewModel, constructUpdates);
+
+      expect(tester.widget<HexLevelBadge>(find.byType(HexLevelBadge)).level, 2);
+      expect(
+        ringProgressOf<CircularXpRingPainter>(tester),
+        closeTo(gained.levelProgress, 1e-9),
+      );
+    });
+
+    testWidgets('full bar: badge and pill ring update on an XP tick', (
+      tester,
+    ) async {
+      final constructUpdates =
+          StreamController<AnalyticsStreamUpdate>.broadcast();
+      addTearDown(constructUpdates.close);
+      final viewModel = MockUserClusterViewModel(
+        constructUpdateStream: constructUpdates.stream,
+      );
+      await pumpBar(tester, viewModel: viewModel);
+      expect(tester.widget<HexLevelBadge>(find.byType(HexLevelBadge)).level, 1);
+      expect(ringProgressOf<XpBorderPainter>(tester), 0.0);
+
+      await earnXp(tester, viewModel, constructUpdates);
+
+      expect(tester.widget<HexLevelBadge>(find.byType(HexLevelBadge)).level, 2);
+      expect(
+        ringProgressOf<XpBorderPainter>(tester),
+        closeTo(gained.levelProgress, 1e-9),
+      );
+    });
+
+    testWidgets('web cluster: medal and pill ring update on an XP tick', (
+      tester,
+    ) async {
+      final constructUpdates =
+          StreamController<AnalyticsStreamUpdate>.broadcast();
+      addTearDown(constructUpdates.close);
+      // No L2: the cluster has no offline flag seam, and the real chip loads a
+      // network SVG. The level/XP path under test doesn't depend on it.
+      final viewModel = MockUserClusterViewModel(
+        constructUpdateStream: constructUpdates.stream,
+        hasL2: false,
+      );
+      await pumpShellMounted(
+        tester,
+        Align(
+          alignment: Alignment.topRight,
+          child: WorldUserClusterInternal(viewModel: viewModel),
+        ),
+      );
+      expect(
+        tester.widget<ClusterLevelMedal>(find.byType(ClusterLevelMedal)).level,
+        1,
+      );
+      expect(ringProgressOf<XpBorderPainter>(tester), 0.0);
+
+      await earnXp(tester, viewModel, constructUpdates);
+
+      expect(
+        tester.widget<ClusterLevelMedal>(find.byType(ClusterLevelMedal)).level,
+        2,
+      );
+      expect(
+        ringProgressOf<XpBorderPainter>(tester),
+        closeTo(gained.levelProgress, 1e-9),
+      );
     });
   });
 }

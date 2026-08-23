@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-17 09:30:19.566918",
+    "@@last_modified": "2026-08-21 09:39:34.649518",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -3163,9 +3163,7 @@
     "enableAutocorrectPopupTitle": "Ajoutez votre clavier de langue cible en allant sur :",
     "enableAutocorrectPopupSteps": "  • Paramètres\n  • Général\n  • Clavier\n  • Claviers\n  • Ajouter un nouveau clavier",
     "enableAutocorrectPopupDescription": "Une fois la langue sélectionnée, vous pouvez cliquer sur la petite icône de globe en bas à gauche de votre clavier pour activer le clavier nouvellement installé.",
-    "downloadGboardTitle": "Téléchargez Gboard depuis le Google Play Store pour activer l'autocorrection et d'autres fonctionnalités du clavier :",
     "downloadGboardSteps": " • Télécharger Gboard\n  • Ouvrir l'application\n  • Langues\n  • Ajouter un clavier\n  • Sélectionner la langue\n  • Choisir le type de clavier\n  • Terminé",
-    "downloadGboardDescription": "Une fois la langue sélectionnée, vous pouvez cliquer sur la petite icône de globe en bas à gauche de votre clavier pour activer le clavier nouvellement installé.",
     "enableAutocorrectWarning": "Attention ! Nécessite d'ajouter le clavier de votre langue cible",
     "displayName": "Nom d'affichage",
     "leaveRoomDescription": "Vous êtes sur le point de quitter cette conversation. Les autres utilisateurs verront que vous avez quitté la discussion.",
@@ -5759,15 +5757,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10092,6 +10082,9 @@
     "pingedActivity": "Activité pingée",
     "appInTargetLanguageStaysInBaseLanguage": "(Ce paramètre reste dans votre langue maternelle afin que vous puissiez toujours le retrouver.)",
     "usernameTakenPleaseChooseAnother": "Ce nom d'utilisateur est déjà pris. Veuillez en choisir un autre.",
+    "allParticipants": "Tous les participants",
+    "seeFullCoursePlan": "Voir le plan de cours complet",
+    "catchUp": "Rattraper",
     "messageLanguageIs": "Ce message est défini sur {language}.",
     "updateMessageLanguage": "Cliquez ici pour changer la langue du message.",
     "messageLanguage": "Langue du message",
@@ -10101,5 +10094,24 @@
     "unlockTranslations": "Débloquer les traductions",
     "unlockEmojiMode": "Débloquer le mode emoji",
     "unlockMessagePractice": "Débloquer la pratique des messages",
-    "unlockWritingAssistance": "Débloquer l'aide à l'écriture"
+    "unlockWritingAssistance": "Débloquer l'aide à l'écriture",
+    "courseSectionTeaching": "Enseignement",
+    "courseSectionLearning": "Apprentissage",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 cours} other{{count} cours}}",
+    "showMore": "Afficher plus",
+    "showLess": "Afficher moins",
+    "countNewMessages": "{count, plural, =1{1 nouveau message} other{{count} nouveaux messages}}",
+    "markAllRead": "Tout marquer comme lu",
+    "usersAreTryingToJoinCourse": "Des utilisateurs essaient de rejoindre votre cours",
+    "denyAllUsers": "Refuser tous les utilisateurs",
+    "denyAllKnocksDescription": "Ces utilisateurs seront rejetés du cours. Ils pourront tenter de le rejoindre à nouveau à tout moment.",
+    "courseNameHint": "Nom du cours",
+    "typeCourseCodeToConfirm": "Pour confirmer, saisissez le code de cours {code} ci-dessous.",
+    "typeCourseNameToConfirm": "Pour confirmer, saisissez le nom du cours {name} ci-dessous.",
+    "inviteAFriend": "Inviter un ami",
+    "autocorrectAndroidDialogTitle": "Correction automatique dans votre langue cible",
+    "autocorrectAndroidDialogBody": "Lorsque vous tapez dans un chat, votre clavier basculera vers votre langue cible et corrigera l'orthographe dans cette langue.",
+    "autocorrectAndroidFallbackTitle": "Si votre clavier n'offre pas votre langue cible, installez Gboard et ajoutez la langue là :",
+    "resendInSeconds": "Renvoyer dans ({seconds})",
+    "mapLevelFallbackNotice": "Aucune activité {selected} pour l'instant — affichage des activités {shown} à la place."
 }

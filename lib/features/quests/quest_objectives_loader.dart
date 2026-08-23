@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
@@ -24,6 +25,16 @@ List<QuestObjectiveGroup> objectiveGroupsWithActivities(
 ) => (groups ?? const <QuestObjectiveGroup>[])
     .where((g) => g.activities.isNotEmpty)
     .toList();
+
+/// The "Up next" Mission among the rendered [groups]: the one matching
+/// [anchorMissionId] (the shared resolver's anchor), or the first group while
+/// the anchor is unresolved / not in this outline. Null for an empty outline.
+QuestObjectiveGroup? upNextObjectiveGroup(
+  List<QuestObjectiveGroup> groups,
+  String? anchorMissionId,
+) =>
+    groups.firstWhereOrNull((g) => g.objective.id == anchorMissionId) ??
+    groups.firstOrNull;
 
 class QuestObjectivesLoader {
   final Client client;
@@ -72,6 +83,18 @@ class QuestObjectivesLoader {
   /// Whether this course's progress has resolved, so the panel knows to render
   /// the star display at all.
   bool get hasResolvedProgress => _scopedQuest != null;
+
+  /// The "Up next" Mission — the shared resolver's anchor — or null until the
+  /// resolution lands. Callers fall back to the first Mission in the outline.
+  String? get anchorMissionId => _scopedQuest?.anchorMissionId;
+
+  /// The Mission the course page's Course-plan section highlights: the anchor's
+  /// group, or the first rendered Mission until resolution lands (null when the
+  /// outline hasn't loaded or has no Missions with activities). The one answer
+  /// shared by the highlight itself and anything deciding what it can't show
+  /// (e.g. the pinged-activity badge on "See full course plan", #8454).
+  QuestObjectiveGroup? get upNextGroup =>
+      upNextObjectiveGroup(filteredObjectiveGroups, anchorMissionId);
 
   /// This course's rollup for [missionId]. Null means "not resolved", never
   /// "zero" — the caller renders no star display rather than a false 0.

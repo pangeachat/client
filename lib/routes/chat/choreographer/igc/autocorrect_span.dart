@@ -20,6 +20,7 @@ class AutocorrectSpan extends WidgetSpan {
            child: Builder(
              builder: (context) {
                return RichText(
+                 textScaler: MediaQuery.textScalerOf(context),
                  key: MatrixState.pAnyState
                      .layerLinkAndKey(transformTargetId)
                      .key,

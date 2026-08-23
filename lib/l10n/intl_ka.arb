@@ -1739,9 +1739,7 @@
     "enableAutocorrectPopupTitle": "დაამატეთ თქვენი მიზნობრივი ენის კლავიატურა შემდეგ მისამართზე გადასვლით:",
     "enableAutocorrectPopupSteps": "  • პარამეტრები\n  • ზოგადი\n  • კლავიატურა\n  • კლავიატურები\n  • ახალი კლავიატურის დამატება",
     "enableAutocorrectPopupDescription": "როდესაც ენა აირჩევა, შეგიძლიათ დააჭიროთ პატარა გლობუსის ხატულას კლავიატურის ქვედა მარცხენა მხარეს, რათა გააქტიუროთ ახალი ინსტალირებული კლავიატურა.",
-    "downloadGboardTitle": "გადმოწერეთ Gboard Google Play Store-დან, რათა ჩართოთ ავტომატური კორექტორი და სხვა კლავიატურის ფუნქციები:",
     "downloadGboardSteps": " • გადმოწერეთ Gboard\n  • გახსენით აპლიკაცია\n  • ენები\n  • კლავიატურის დამატება\n  • ენის არჩევა\n  • კლავიატურის ტიპის არჩევა\n  • დასრულება",
-    "downloadGboardDescription": "როდესაც ენა აირჩევა, შეგიძლიათ დააჭიროთ პატარა გლობუსის ხატულას კლავიატურის ქვედა მარცხენა მხარეს, რათა გააქტიუროთ ახალი ინსტალირებული კლავიატურა.",
     "enableAutocorrectWarning": "გაფრთხილება! საჭიროა თქვენი სამიზნე ენის კლავიატურის დამატება",
     "displayName": "სახელის ჩვენება",
     "leaveRoomDescription": "თქვენ აპირებთ ამ ჩატის დატოვებას. სხვა მომხმარებლები იხილავენ, რომ თქვენ დატოვეთ ჩატი.",
@@ -1942,7 +1940,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-17 09:30:46.486026",
+    "@@last_modified": "2026-08-21 09:39:36.829260",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6289,15 +6287,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10637,6 +10627,9 @@
     "pingedActivity": "აქტივობაზე შეტყობინება",
     "appInTargetLanguageStaysInBaseLanguage": "(ეს პარამეტრი რჩება თქვენს მშობლიურ ენაზე, რათა ყოველთვის შეძლოთ მისი პოვნა.)",
     "usernameTakenPleaseChooseAnother": "ეს მომხმარებლის სახელი უკვე დაკავებულია. გთხოვთ, აირჩიოთ სხვა.",
+    "allParticipants": "ყველა მონაწილე",
+    "seeFullCoursePlan": "იხილეთ კურსის სრული გეგმა",
+    "catchUp": "წამოეწიეთ",
     "messageLanguageIs": "ამ შეტყობინების ენა არის {language}.",
     "updateMessageLanguage": "შეტყობინების ენის შესაცვლელად დააჭირეთ აქ.",
     "messageLanguage": "შეტყობინების ენა",
@@ -10646,5 +10639,24 @@
     "unlockTranslations": "თარგმანების განბლოკვა",
     "unlockEmojiMode": "ემოჯი რეჟიმის განბლოკვა",
     "unlockMessagePractice": "შეტყობინებების პრაქტიკის განბლოკვა",
-    "unlockWritingAssistance": "წერის დახმარების განბლოკვა"
+    "unlockWritingAssistance": "წერის დახმარების განბლოკვა",
+    "courseSectionTeaching": "ასწავლის",
+    "courseSectionLearning": "სწავლობს",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 კურსი} other{{count} კურსი}}",
+    "showMore": "მეტი",
+    "showLess": "ნაკლები",
+    "countNewMessages": "{count, plural, =1{1 ახალი შეტყობინება} other{{count} ახალი შეტყობინება}}",
+    "markAllRead": "ყველას წაკითხულად მონიშვნა",
+    "usersAreTryingToJoinCourse": "მომხმარებლები ცდილობენ თქვენს კურსზე გაწევრიანებას",
+    "denyAllUsers": "ყველა მომხმარებლის დაბლოკვა",
+    "denyAllKnocksDescription": "ეს მომხმარებლები დაბლოკილი იქნებიან კურსიდან. მათ შეუძლიათ ნებისმიერ დროს სცადონ ხელახლა გაწევრიანება.",
+    "courseNameHint": "კურსის სახელი",
+    "typeCourseCodeToConfirm": "დასადასტურებლად, ჩაწერეთ კურსის კოდი {code} ქვემოთ.",
+    "typeCourseNameToConfirm": "დასადასტურებლად, ჩაწერეთ კურსის სახელი {name} ქვემოთ.",
+    "inviteAFriend": "მოიწვიე მეგობარი",
+    "autocorrectAndroidDialogTitle": "ავტოკორექცია თქვენს სამიზნე ენაზე",
+    "autocorrectAndroidDialogBody": "როდესაც ჩატში წერთ, თქვენი კლავიატურა გადაერთვება თქვენს სამიზნე ენაზე და შეასწორებს მართლწერას ამ ენაზე.",
+    "autocorrectAndroidFallbackTitle": "თუ თქვენი კლავიატურა არ გთავაზობთ თქვენს სამიზნე ენას, დააინსტალირეთ Gboard და დაამატეთ ენა იქ:",
+    "resendInSeconds": "ხელახლა გაგზავნა ({seconds})",
+    "mapLevelFallbackNotice": "ჯერ არ არის {selected} აქტივობები — ნაცვლად ნაჩვენებია {shown}."
 }

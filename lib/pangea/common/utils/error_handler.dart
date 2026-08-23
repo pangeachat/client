@@ -11,40 +11,31 @@ import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
-class PangeaWarningError implements Exception {
-  final String message;
-  PangeaWarningError(String message)
-    : message = "Pangea Warning Error: $message";
-
-  @override
-  String toString() => message;
-}
-
 class ErrorHandler {
   ErrorHandler();
 
   static Future<void> initialize() async {
-    // Debug builds never init Sentry: local-dev errors are visible in the
-    // console already, and reporting them buries staging/production signal.
+    // Only a build positively identified as staging or production (see
+    // Environment.sentryEnvironment) inits Sentry: local-dev and
+    // misconfigured-build errors are visible in the console already, and
+    // reporting them mislabelled buries staging/production signal (#8505).
     // Every capture below no-ops without init.
-    if (!kDebugMode) {
+    final sentryEnvironment = Environment.sentryEnvironment;
+    if (sentryEnvironment != null) {
       await SentryFlutter.init((options) {
         options.dsn = Environment.sentryDsn;
         options.tracesSampleRate = 0.02;
-        options.environment = Environment.isStagingEnvironment
-            ? "staging"
-            : "production";
+        options.environment = sentryEnvironment;
       });
     }
 
-    // Error handling
+    // Error handling. Both global sinks route through [logError] rather than
+    // capturing directly, so a failure arriving here gets the same severity
+    // table and grouping key as one reported from a repo — a raw
+    // [Sentry.captureException] gets neither.
     FlutterError.onError = (FlutterErrorDetails details) async {
-      if (!shouldReport(details.exception)) return;
       if (!kDebugMode || PlatformInfos.isMobile) {
-        Sentry.captureException(
-          details.exception,
-          stackTrace: details.stack ?? StackTrace.current,
-        );
+        await logError(e: details.exception, s: details.stack, data: {});
       }
     };
 
@@ -104,6 +95,12 @@ class ErrorHandler {
   /// drifted before (repos-and-error-handling.instructions.md § Severity
   /// policy). An explicit [level] still wins: a caller with context the
   /// failure lacks may escalate.
+  ///
+  /// A [PangeaHttpException] additionally reaches Sentry with an explicit
+  /// grouping key ([PangeaHttpException.fingerprintOf]) so it lands in an issue
+  /// per status + endpoint. Sentry groups by stack trace otherwise, and these
+  /// all share one frame in [Requests], so every HTTP failure in the app
+  /// collapsed into a single catch-all issue (#8469).
   static Future<void> logError({
     Object? e,
     StackTrace? s,
@@ -113,12 +110,7 @@ class ErrorHandler {
   }) async {
     if (!shouldReport(e)) return;
 
-    if (e is PangeaWarningError) {
-      // Custom handling for PangeaWarningError
-      debugPrint("PangeaWarningError: ${e.message}");
-    } else {
-      debugPrint("error message: ${m ?? e}");
-    }
+    debugPrint("error message: ${m ?? e}");
 
     Sentry.addBreadcrumb(Breadcrumb(data: data));
     debugPrint(data.toString());
@@ -128,6 +120,8 @@ class ErrorHandler {
       stackTrace: s ?? StackTrace.current,
       withScope: (scope) {
         scope.level = level ?? PangeaHttpException.severityOf(e);
+        final fingerprint = PangeaHttpException.fingerprintOf(e);
+        if (fingerprint != null) scope.fingerprint = fingerprint;
       },
     );
   }

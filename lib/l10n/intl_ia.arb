@@ -1164,9 +1164,7 @@
     "enableAutocorrectPopupTitle": "Adder tu clavier de lingua target per ir a:",
     "enableAutocorrectPopupSteps": "  • Configuration\n  • General\n  • Claviatura\n  • Claviaturas\n  • Adder nove clavier",
     "enableAutocorrectPopupDescription": "Post le selection de le lingua, tu pote cliccar le icono de globulo in le basso sinistre de tu clavier pro activar le clavier installate recentemente.",
-    "downloadGboardTitle": "Downloadar Gboard ab le Google Play Store pro activar le autocorrecte e altere characteristicas del clavier:",
     "downloadGboardSteps": " • Downloadar Gboard\n  • Aperir le application\n  • Linguas\n  • Adder clavier\n  • Seliger lingua\n  • Seliger typologia de clavier\n  • Fin",
-    "downloadGboardDescription": "Post le selection de le lingua, tu pote cliccar le icono de globulo in le basso sinistre de tu clavier pro activar le clavier installate recentemente.",
     "enableAutocorrectWarning": "Attention! Require adder le clavier de lingua target",
     "displayName": "Nom de display",
     "leaveRoomDescription": "Tu es circa de partir de iste chat. Altri usatores vide que tu ha partite le chat.",
@@ -1367,7 +1365,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-17 09:30:35.879883",
+    "@@last_modified": "2026-08-21 09:39:38.955966",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6325,15 +6323,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10673,6 +10663,9 @@
     "pingedActivity": "Activitate pingite",
     "appInTargetLanguageStaysInBaseLanguage": "(Iste parametro remane in tu lingua native a fin que tu pote semper trovar lo.)",
     "usernameTakenPleaseChooseAnother": "Iste nomine de usator es jam prendite. Per favor selige un altere.",
+    "allParticipants": "Tote le participantes",
+    "seeFullCoursePlan": "Vider le plano complete del curso",
+    "catchUp": "Actualisar se",
     "messageLanguageIs": "Iste message es configurate a {language}.",
     "updateMessageLanguage": "Clicca hic pro cambiar le lingua del message.",
     "messageLanguage": "Lingua del message",
@@ -10682,5 +10675,24 @@
     "unlockTranslations": "Diserara traductiones",
     "unlockEmojiMode": "Diserara modo emoji",
     "unlockMessagePractice": "Diserara practica de messages",
-    "unlockWritingAssistance": "Diserara assistentia de scriptura"
+    "unlockWritingAssistance": "Diserara assistentia de scriptura",
+    "courseSectionTeaching": "Inseniamento",
+    "courseSectionLearning": "Apprendimento",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
+    "showMore": "Monstrar plus",
+    "showLess": "Monstrar minus",
+    "countNewMessages": "{count, plural, =1{1 nove message} other{{count} nove messages}}",
+    "markAllRead": "Marcar tote legite",
+    "usersAreTryingToJoinCourse": "Usatores essaya unir se a tu curso",
+    "denyAllUsers": "Refusar tote le usatores",
+    "denyAllKnocksDescription": "Iste usatores essera rejectate del curso. Illes pote tentar unir se de novo in qualque momento.",
+    "courseNameHint": "Nom del curso",
+    "typeCourseCodeToConfirm": "Pro confirmar, scribe le codice de curso {code} hic infra.",
+    "typeCourseNameToConfirm": "Pro confirmar, scribe le nomine de curso {name} hic infra.",
+    "inviteAFriend": "Invita un amico",
+    "autocorrectAndroidDialogTitle": "Autocorrection in tu lingua de destination",
+    "autocorrectAndroidDialogBody": "Quando tu scribe in un chat, tu claviero cambiara a tu lingua de destination e corrigera le orthographia in ille lingua.",
+    "autocorrectAndroidFallbackTitle": "Si tu claviero non offere tu lingua de destination, installa Gboard e adde le lingua ibi:",
+    "resendInSeconds": "Re-inviar ({seconds})",
+    "mapLevelFallbackNotice": "Ancora nulle activitates de {selected} — monstrante {shown} in su loco."
 }

@@ -15,6 +15,11 @@ import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
 /// the no-flag fallback (the info row, where an overlay would crowd the small
 /// chip). Passive — callers needing a tap/tooltip wrap it. See
 /// activity-start-page.instructions.md.
+///
+/// [tintColor] overrides the ring/background color (default
+/// `colorScheme.primary`) — the context language chips use this to signal a
+/// mismatch with the learner's target language (profile.instructions.md,
+/// "Switching from context").
 class LanguageFlagChip extends StatelessWidget {
   final LanguageModel? language;
   final String langCode;
@@ -24,6 +29,7 @@ class LanguageFlagChip extends StatelessWidget {
   final double radius;
   final double borderWidth;
   final bool alwaysShowCode;
+  final Color? tintColor;
 
   const LanguageFlagChip({
     required this.language,
@@ -34,6 +40,7 @@ class LanguageFlagChip extends StatelessWidget {
     this.radius = 6.0,
     this.borderWidth = 2.0,
     this.alwaysShowCode = true,
+    this.tintColor,
     super.key,
   });
 
@@ -70,7 +77,7 @@ class LanguageFlagChip extends StatelessWidget {
       padding: EdgeInsets.all(borderWidth),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: theme.colorScheme.primary,
+        color: tintColor ?? theme.colorScheme.primary,
         borderRadius: BorderRadius.circular(radius + borderWidth),
       ),
       child: showFlag

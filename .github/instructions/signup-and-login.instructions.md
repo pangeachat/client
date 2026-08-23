@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/routes/home/**"
+applyTo: "lib/routes/home/**,lib/utils/uia_request_manager.dart"
 description: "Design for the pre-authentication experience — the intro carousel, its per-layout backdrops, responsive layout and type, the slide assets, and the choice between signup and login."
 ---
 
@@ -25,10 +25,14 @@ See also: [returning-user-detection.instructions.md](returning-user-detection.in
 
 | Layout | Backdrop | Files |
 |---|---|---|
-| Narrow | World map | [`world_map_background.png`](../../assets/pangea/world_map_background.png) and [`world_map_background_dark.png`](../../assets/pangea/world_map_background_dark.png) |
+| Narrow | World map | [`world-map-background.svg`](../../assets/pangea/world-map-background.svg) and [`world-map-background-dark.svg`](../../assets/pangea/world-map-background-dark.svg) |
 | Wide | Stars over a base colour that follows the theme | [`star_background.png`](../../assets/pangea/star_background.png) |
 
-The star field needs only one file where the map needs two. It is a transparent image carrying nothing but the stars, so the base colour beneath it flips with the theme while the stars stay as they are. The map fills its whole frame with land and water, so it had to be rendered a second time in dark tones — there is no base showing through to do that work.
+**Where the map files come from.** Both are vendored copies of [`world-map-background.svg`](https://github.com/pangeachat/business/blob/main/brand/world-map-background.svg) and [`world-map-background-dark.svg`](https://github.com/pangeachat/business/blob/main/brand/world-map-background-dark.svg) in `pangeachat/business`, which is the source of truth for the artwork and for the `Map Land` / `Map Water` color tokens behind it. Refresh them by copying both files out of `business/brand/` into `assets/pangea/`; never edit them here, or the two repos drift.
+
+The client deliberately does **not** load these from `https://assets.pangea.chat/brand/`, where the same files are also published. Flutter bundles assets into the binary at build time, and this screen paints before the app has made any network call, so a remote URL would have nothing to fall back to. That is the same reasoning the website applies to its own copy.
+
+The star field needs only one file where the map needs two. It is a transparent image carrying nothing but the stars, so the base colour beneath it flips with the theme while the stars stay as they are. The map fills its whole frame with land and water, so it needs a second file in dark tones — there is no base showing through to do that work. Both map files are vector, two flat fills each, so the dark variant is the light one with its water and land fills swapped.
 
 The stars also give the wide layout something to fill the space around a slide with. Because a slide is capped rather than stretched, a broad window always leaves area around it, and that area now reads as part of the product rather than as an empty margin.
 
@@ -167,6 +171,14 @@ That section holds both layouts — six narrow frames and six wide ones — so t
 The headline in the comps is drawn in a lighter purple than the role chosen above. Where the two disagree, the role wins — it keeps the screen inside one derived palette, and it follows the theme into dark mode on its own.
 
 The comps also rewrite the headlines — shorter on slides 2 to 6, and absent on slide 1. Those are the intended wording; the strings listed under Slide inventory are what the code says today.
+
+## Entering an email address
+
+The signup form checks the address before it submits, so a learner sees the problem in the field rather than after a round trip. That check is a copy of a rule the homeserver owns — see the server's [email-address-policy.instructions.md](../../../synapse-pangea-chat/.github/instructions/email-address-policy.instructions.md). The form's check is never the gate: the same rule is enforced on every server path that can send a verification email, and the app is only one of them. A change to what Pangea accepts is decided in that doc first, and the two rules must not drift apart.
+
+[`RegistrationEmailPopup`](../../lib/routes/home/signup/registration_email_popup.dart) is where a learner waits for the verification link. Its resend control is disabled while a send is in flight and for thirty seconds afterwards, showing the time remaining, because otherwise every tap mails them again.
+
+What actually makes the server send a fresh email is the send-attempt number going up; a repeat request carrying the same number is treated as the same request and sends nothing. So the number advances only once a send has succeeded — a resend that failed leaves it where it was, and the next tap retries rather than burning an attempt.
 
 ## Choosing a method
 

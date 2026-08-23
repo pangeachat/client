@@ -1136,9 +1136,7 @@
     "enableAutocorrectPopupTitle": "Tilføj dit målsprog-tastatur ved at gå til:",
     "enableAutocorrectPopupSteps": "  • Indstillinger\n  • Generelt\n  • Tastatur\n  • Tastaturer\n  • Tilføj nyt tastatur",
     "enableAutocorrectPopupDescription": "Når sproget er valgt, kan du klikke på det lille globus-ikon nederst til venstre på dit tastatur for at aktivere det nyinstallerede tastatur.",
-    "downloadGboardTitle": "Download Gboard fra Google Play Butik for at aktivere automatisk rettelse og andre tastaturfunktioner:",
     "downloadGboardSteps": " • Download Gboard\n  • Åbn appen\n  • Sprog\n  • Tilføj tastatur\n  • Vælg sprog\n  • Vælg tastaturtype\n  • Udført",
-    "downloadGboardDescription": "Når sproget er valgt, kan du klikke på det lille globus-ikon nederst til venstre på dit tastatur for at aktivere det nyinstallerede tastatur.",
     "enableAutocorrectWarning": "Advarsel! Kræver tilføjelse af dit målsprog-tastatur",
     "displayName": "Visningsnavn",
     "leaveRoomDescription": "Du er ved at forlade denne chat. Andre brugere vil se, at du har forladt chatten.",
@@ -1339,7 +1337,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-17 09:30:17.526537",
+    "@@last_modified": "2026-08-21 09:39:33.779923",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -6309,15 +6307,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10657,6 +10647,9 @@
     "pingedActivity": "Pinget aktivitet",
     "appInTargetLanguageStaysInBaseLanguage": "(Denne indstilling forbliver på dit modersmål, så du altid kan finde den.)",
     "usernameTakenPleaseChooseAnother": "Brugernavnet er allerede taget. Vælg venligst et andet.",
+    "allParticipants": "Alle deltagere",
+    "seeFullCoursePlan": "Se hele kursusplanen",
+    "catchUp": "Indhent det forsømte",
     "messageLanguageIs": "Denne besked er indstillet til {language}.",
     "updateMessageLanguage": "Klik her for at ændre beskedens sprog.",
     "messageLanguage": "Beskedsprog",
@@ -10666,5 +10659,24 @@
     "unlockTranslations": "Lås op for oversættelser",
     "unlockEmojiMode": "Lås op for emoji-tilstand",
     "unlockMessagePractice": "Lås op for beskedøvelse",
-    "unlockWritingAssistance": "Lås op for skrivehjælp"
+    "unlockWritingAssistance": "Lås op for skrivehjælp",
+    "courseSectionTeaching": "Undervisning",
+    "courseSectionLearning": "Læring",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kurser}}",
+    "showMore": "Vis mere",
+    "showLess": "Vis mindre",
+    "countNewMessages": "{count, plural, =1{1 ny besked} other{{count} nye beskeder}}",
+    "markAllRead": "Marker alt som læst",
+    "usersAreTryingToJoinCourse": "Brugere prøver at deltage i dit kursus",
+    "denyAllUsers": "Afvis alle brugere",
+    "denyAllKnocksDescription": "Disse brugere vil blive afvist fra kurset. De kan til enhver tid forsøge at deltage igen.",
+    "courseNameHint": "Kursusnavn",
+    "typeCourseCodeToConfirm": "For at bekræfte, indtast kursuskoden {code} herunder.",
+    "typeCourseNameToConfirm": "For at bekræfte, indtast kursusnavnet {name} herunder.",
+    "inviteAFriend": "Inviter en ven",
+    "autocorrectAndroidDialogTitle": "Autokorrektur på dit målsprog",
+    "autocorrectAndroidDialogBody": "Når du skriver i en chat, skifter dit tastatur til dit målsprog og retter stavefejl på det sprog.",
+    "autocorrectAndroidFallbackTitle": "Hvis dit tastatur ikke tilbyder dit målsprog, skal du installere Gboard og tilføje sproget der:",
+    "resendInSeconds": "Send igen ({seconds})",
+    "mapLevelFallbackNotice": "Ingen {selected}-aktiviteter endnu – viser {shown} i stedet."
 }

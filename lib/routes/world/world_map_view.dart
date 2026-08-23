@@ -196,13 +196,11 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// (#7245).
   _PinRenderer? _lastSettledRenderer;
 
-  /// The marker box for a pin: the tier size, except an inProgress pin renders a
-  /// gold star that can exceed a tiny dot's box, so its box is sized to hold the
-  /// largest star (the super star, [PinSize.superStarDotDiameter]).
+  /// The marker box for a pin — [PinTier.markerBox]: the tier size for a
+  /// teardrop or card, and the min touch-target square for a dot-shaped pin (a
+  /// small dot or the trail star), which also holds the largest star (#7688).
   static Size _markerBox(ActivityPinState state, PinTier tier) =>
-      state == ActivityPinState.inProgress
-      ? const Size(PinSize.superStarDotDiameter, PinSize.superStarDotDiameter)
-      : Size(tier.dotWidth, tier.dotHeight(state));
+      tier.markerBox(state);
 
   /// The marker's anchor within its box — where [Marker.point] (the geographic
   /// coordinate) lands on screen. A mid pin is a teardrop whose pointed tip is

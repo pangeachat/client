@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-17 09:30:23.237156",
+    "@@last_modified": "2026-08-21 09:39:34.692139",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3360,9 +3360,7 @@
     "enableAutocorrectPopupTitle": "Engade o teu teclado de idioma obxectivo indo a:",
     "enableAutocorrectPopupSteps": "  • Configuración\n  • Xeral\n  • Teclado\n  • Teclados\n  • Engadir novo teclado",
     "enableAutocorrectPopupDescription": "Unha vez que se seleccione o idioma, podes facer clic na pequena icona do globo na parte inferior esquerda do teu teclado para activar o teclado recentemente instalado.",
-    "downloadGboardTitle": "Descarga Gboard desde a Google Play Store para activar a corrección automática e outras funcións do teclado:",
     "downloadGboardSteps": " • Descarga Gboard\n  • Abre a aplicación\n  • Idiomas\n  • Engadir teclado\n  • Seleccionar idioma\n  • Seleccionar tipo de teclado\n  • Listo",
-    "downloadGboardDescription": "Unha vez que se seleccione o idioma, podes facer clic na pequena icona do globo na parte inferior esquerda do teu teclado para activar o teclado recentemente instalado.",
     "enableAutocorrectWarning": "¡Advertencia! É necesario engadir o teclado do teu idioma obxectivo",
     "displayName": "Nome para amosar",
     "leaveRoomDescription": "Estás a piques de abandonar este chat. Outros usuarios verán que saíste do chat.",
@@ -5569,15 +5567,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9737,6 +9727,9 @@
     "pingedActivity": "Actividade mencionada",
     "appInTargetLanguageStaysInBaseLanguage": "(Esta configuración permanece no teu idioma nativo para que sempre a poidas atopar.)",
     "usernameTakenPleaseChooseAnother": "Ese nome de usuario xa está en uso. Escolle outro.",
+    "allParticipants": "Todos os participantes",
+    "seeFullCoursePlan": "Ver o plan completo do curso",
+    "catchUp": "Pórse ao día",
     "messageLanguageIs": "Esta mensaxe está configurada en {language}.",
     "updateMessageLanguage": "Fai clic aquí para cambiar o idioma da mensaxe.",
     "messageLanguage": "Idioma da mensaxe",
@@ -9746,5 +9739,24 @@
     "unlockTranslations": "Desbloquear traducións",
     "unlockEmojiMode": "Desbloquear modo emoji",
     "unlockMessagePractice": "Desbloquear práctica de mensaxes",
-    "unlockWritingAssistance": "Desbloquear asistencia de escritura"
+    "unlockWritingAssistance": "Desbloquear asistencia de escritura",
+    "courseSectionTeaching": "Ensino",
+    "courseSectionLearning": "Aprendizaxe",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
+    "showMore": "Mostrar máis",
+    "showLess": "Mostrar menos",
+    "countNewMessages": "{count, plural, =1{1 mensaxe nova} other{{count} mensaxes novas}}",
+    "markAllRead": "Marcar todo como lido",
+    "usersAreTryingToJoinCourse": "Os usuarios están a intentar unirse ao teu curso",
+    "denyAllUsers": "Rexeitar todos os usuarios",
+    "denyAllKnocksDescription": "Estes usuarios serán rexeitados do curso. Poderán intentar unirse de novo en calquera momento.",
+    "courseNameHint": "Nome do curso",
+    "typeCourseCodeToConfirm": "Para confirmar, escribe o código do curso {code} a continuación.",
+    "typeCourseNameToConfirm": "Para confirmar, escribe o nome do curso {name} a continuación.",
+    "inviteAFriend": "Invita a un amigo",
+    "autocorrectAndroidDialogTitle": "Corrección automática no teu idioma de destino",
+    "autocorrectAndroidDialogBody": "Cando escribas nun chat, o teu teclado cambiará ao teu idioma de destino e corrixirá a ortografía nese idioma.",
+    "autocorrectAndroidFallbackTitle": "Se o teu teclado non ofrece o teu idioma de destino, instala Gboard e engade o idioma alí:",
+    "resendInSeconds": "Reenviar ({seconds})",
+    "mapLevelFallbackNotice": "Aínda non hai actividades {selected} — mostrándose {shown} no seu lugar."
 }

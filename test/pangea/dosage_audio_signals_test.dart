@@ -62,7 +62,43 @@ void main() {
         'auto_read',
         'tap_read',
         'toolbar_read',
+        'word_audio',
+        'practice_audio',
       ]);
+    });
+
+    test('word and drill audio are their OWN categories, not message ones', () {
+      // The four that came first are all about a MESSAGE — a peer's voice
+      // message, a message read aloud on arrival, a message the speaker button
+      // was tapped on, a message the toolbar was opened on. A tapped word and a
+      // drill choice are neither, and `tap_read` is the one they would have been
+      // folded into: it is the only learner-initiated member, and it means the
+      // whole message on the paid route.
+      for (final category in [
+        DosageListeningCategory.wordAudio,
+        DosageListeningCategory.practiceAudio,
+      ]) {
+        for (final message in [
+          DosageListeningCategory.peer,
+          DosageListeningCategory.autoRead,
+          DosageListeningCategory.tapRead,
+          DosageListeningCategory.toolbarRead,
+        ]) {
+          expect(category.wireName, isNot(message.wireName));
+          expect(category.coverage, isNot(message.coverage));
+        }
+      }
+      // And not each other: looking a word up and drilling are two study
+      // behaviours, which is the whole reason there are two of these and not
+      // one.
+      expect(
+        DosageListeningCategory.wordAudio.wireName,
+        isNot(DosageListeningCategory.practiceAudio.wireName),
+      );
+      expect(
+        DosageListeningCategory.wordAudio.coverage,
+        isNot(DosageListeningCategory.practiceAudio.coverage),
+      );
     });
 
     test('toolbar-open read-aloud is its OWN category, not tap_read', () {
@@ -87,7 +123,7 @@ void main() {
       );
     });
 
-    test('coverage has FIVE categories — voiceSend is not a listening one', () {
+    test('coverage has SEVEN categories — voiceSend is not a listening one', () {
       // Speaking's magnitude is derived server-side, so there is no speaking
       // playback event; but the server only learns a voice message exists from a
       // client row, so its DENOMINATOR still needs a declaration (D-V2-15).
@@ -96,6 +132,8 @@ void main() {
         'auto_read',
         'tap_read',
         'toolbar_read',
+        'word_audio',
+        'practice_audio',
         'voice_send',
       ]);
       // The type system, not a convention, is what stops a listening event being
@@ -192,6 +230,49 @@ void main() {
       expect(json['ts'], '2026-01-01T12:00:00.000Z');
     });
 
+    test('a roomless playback keeps the key and sends a null', () {
+      // Six of the ten read-aloud surfaces have no room, and the ingest model
+      // is `extra="forbid"` and distinguishes an ABSENT `room_id` from a null
+      // one. So the roomless form is the SAME five keys with one of them null —
+      // dropping the key would be a different statement to the server, and
+      // adding a placeholder room would be a fabricated one.
+      final json = DosageAudioEvent.fromPlayback(
+        playbackId: 'dddddddd-dddd-4ddd-8ddd-dddddddddddd',
+        roomId: null,
+        category: DosageListeningCategory.wordAudio,
+        elapsed: const Duration(seconds: 4),
+        endedAt: DateTime.utc(2026, 1, 1, 12),
+      ).toJson();
+
+      expect(json.keys.toSet(), {
+        'playback_id',
+        'room_id',
+        'category',
+        'elapsed_ms',
+        'ts',
+      });
+      expect(json['room_id'], isNull);
+    });
+
+    test('null is a room the wire can carry; the empty string is not', () {
+      // The distinction the whole change turns on. Null means "this surface has
+      // no room", which is true of the vocab list, analytics practice and the
+      // activity start page. The empty string means a room was meant to arrive
+      // and did not — a bug at the call site — and relaxing the guard to accept
+      // null must not relax it into accepting that too.
+      DosageAudioEvent event(String? roomId) => DosageAudioEvent.fromPlayback(
+        playbackId: 'id',
+        roomId: roomId,
+        category: DosageListeningCategory.wordAudio,
+        elapsed: const Duration(seconds: 1),
+        endedAt: DateTime.utc(2026, 1, 1, 12),
+      );
+
+      expect(event(null).hasWellFormedRoom, isTrue);
+      expect(event(roomId).hasWellFormedRoom, isTrue);
+      expect(event('').hasWellFormedRoom, isFalse);
+    });
+
     test('an absurd magnitude is clamped rather than sent as-is', () {
       final event = DosageAudioEvent.fromPlayback(
         playbackId: 'id',
@@ -285,11 +366,35 @@ void main() {
       );
     });
 
+    test('records a ROOMLESS playback rather than dropping it', () {
+      // Six of the ten read-aloud surfaces have no room, and the emit path is
+      // shared with the four that do. A null that fell into the empty-string
+      // guard below would leave all six silently dark while every call site
+      // looked correctly wired — the exact failure this pins.
+      final buffer = DosageAudioBuffer();
+      DosageAudioBuffer.debugPutAccount(mxid, buffer);
+
+      DosageAudioSignals.recordPlayback(
+        category: DosageListeningCategory.wordAudio,
+        roomId: null,
+        elapsed: const Duration(seconds: 3),
+        userId: mxid,
+        accessToken: token,
+      );
+
+      expect(buffer.bufferedEvents, hasLength(1));
+      expect(buffer.bufferedEvents.single.roomId, isNull);
+      expect(buffer.bufferedEvents.single.toJson()['room_id'], isNull);
+    });
+
     test('drops a playback it cannot attribute or bucket', () {
       final buffer = DosageAudioBuffer();
       DosageAudioBuffer.debugPutAccount(mxid, buffer);
 
-      // No room => no course bucket, so the signal is structurally unusable.
+      // An EMPTY room is not a roomless surface: it is a room that was supposed
+      // to arrive and did not. Null says the first, and is kept (above); this
+      // says the second, and is dropped. Accepting it would file a call site's
+      // bug as a legitimate roomless playback.
       DosageAudioSignals.recordPlayback(
         category: DosageListeningCategory.peer,
         roomId: '',

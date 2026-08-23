@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/share_room_code_util.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -75,13 +76,16 @@ class ShareRoomButton extends StatelessWidget {
             contentPadding: const EdgeInsets.all(0),
           ),
         ),
-        PopupMenuItem<ShareCodeType>(
-          value: ShareCodeType.code,
-          child: ListTile(
-            title: Text(L10n.of(context).shareInviteCode(joinCode)),
-            contentPadding: const EdgeInsets.all(0),
+        // Activity sessions have no code-entry surface to join with, so
+        // showing an invite code here would just confuse (#8529).
+        if (!room.isActivitySession)
+          PopupMenuItem<ShareCodeType>(
+            value: ShareCodeType.code,
+            child: ListTile(
+              title: Text(L10n.of(context).shareInviteCode(joinCode)),
+              contentPadding: const EdgeInsets.all(0),
+            ),
           ),
-        ),
       ],
     );
   }
