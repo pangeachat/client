@@ -91,11 +91,7 @@ class ChatListItemSubtitle extends StatelessWidget {
       // conversation agree. Left to the SDK this reads "User sent a
       // pangea.call event".
       return Text(
-        callPreviewLine(
-          L10n.of(context),
-          event,
-          outgoing: event.senderId == room.client.userID,
-        ),
+        callPreviewLine(L10n.of(context), event),
         style: style,
         maxLines: 2,
         overflow: TextOverflow.ellipsis,

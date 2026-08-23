@@ -59,10 +59,11 @@ void main() {
     bool video = false,
     int durationMs = 8000,
     String sender = '@a:server',
+    String? caller,
   }) => Event(
     type: PangeaEventTypes.call,
     content: {
-      'caller': sender,
+      'caller': caller ?? sender,
       'answered': answered,
       'declined': declined,
       'video': video,
@@ -118,6 +119,24 @@ void main() {
     final mine = card(answered: false, declined: true, sender: client.userID!);
     mine.room.lastEvent = mine;
     expect(await preview(tester, mine), 'Call declined');
+  });
+
+  testWidgets('who called is the stated caller, not who wrote the card', (
+    tester,
+  ) async {
+    // The writer is chosen deterministically and is not always the side that
+    // called: a card recovered by the survivor is written by the OTHER one.
+    // Reading direction off the sender made the chat list say the opposite of
+    // the card in the conversation about the same call.
+    final recovered = card(
+      answered: false,
+      declined: false,
+      durationMs: 0,
+      sender: client.userID!, // we wrote it
+      caller: '@a:server', // they called
+    );
+    recovered.room.lastEvent = recovered;
+    expect(await preview(tester, recovered), 'Missed call');
   });
 
   testWidgets('a video call says so', (tester) async {

@@ -7,16 +7,21 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
-/// One finished call, drawn in the timeline.
+/// Whether this account placed the call.
 ///
-/// Centred, like a join or an invitation, because a call is something that
-/// HAPPENED in the conversation rather than something one side said. Drawing it
-/// as a chat bubble would attribute it to whoever's client wrote it and align it
-/// to their edge, which reads as a message from them.
-///
-/// The same event is read from both sides of a direct message, so direction is
-/// derived per viewer: the account that placed the call sees it as outgoing, the
-/// other as incoming.
+/// From the stated caller, not from who wrote the event: the writer is chosen
+/// deterministically so exactly one card exists, and that is not always the
+/// side that called -- a card recovered by the survivor is written by the
+/// side that did NOT call. Older events carry no caller, so the sender stands
+/// in. One reading, shared by the card and the chat list, so the two cannot
+/// tell the learner different things about the same call.
+bool callWasOutgoing(Event event) {
+  final me = event.room.client.userID;
+  final caller = event.content['caller'];
+  if (caller is String) return caller == me;
+  return event.senderId == me;
+}
+
 /// What the CHAT LIST says about a room whose newest event is a call.
 ///
 /// The same words the card in the conversation uses, so the list and the
@@ -25,7 +30,8 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 /// "No messages yet" on a room where two people had just talked -- and the
 /// SDK's own fallback for an unknown message type is no better ("User sent a
 /// pangea.call event"). A call is worth a line of its own.
-String callPreviewLine(L10n l10n, Event event, {required bool outgoing}) {
+String callPreviewLine(L10n l10n, Event event) {
+  final outgoing = callWasOutgoing(event);
   final declined = event.content['declined'] == true;
   final answered = event.content['answered'] == true;
   final video = event.content['video'] == true;
@@ -42,6 +48,16 @@ String callPreviewLine(L10n l10n, Event event, {required bool outgoing}) {
   return '$label · ${CallTimelineEvent.formatDuration(duration)}';
 }
 
+/// One finished call, drawn in the timeline.
+///
+/// Centred, like a join or an invitation, because a call is something that
+/// HAPPENED in the conversation rather than something one side said. Drawing it
+/// as a chat bubble would attribute it to whoever's client wrote it and align it
+/// to their edge, which reads as a message from them.
+///
+/// The same event is read from both sides of a direct message, so direction is
+/// derived per viewer: the account that placed the call sees it as outgoing, the
+/// other as incoming.
 class CallTimelineEvent extends StatelessWidget {
   final Event event;
 
@@ -53,17 +69,7 @@ class CallTimelineEvent extends StatelessWidget {
 
   const CallTimelineEvent(this.event, {required this.timeline, super.key});
 
-  /// Whether this account placed the call.
-  ///
-  /// From the stated caller, not from who wrote the event: the writer is chosen
-  /// deterministically so exactly one card exists, and that is not always the
-  /// side that called. Older events carry no caller, so the sender stands in.
-  bool get _outgoing {
-    final me = event.room.client.userID;
-    final caller = event.content['caller'];
-    if (caller is String) return caller == me;
-    return event.senderId == me;
-  }
+  bool get _outgoing => callWasOutgoing(event);
 
   bool get _video => event.content['video'] == true;
 
