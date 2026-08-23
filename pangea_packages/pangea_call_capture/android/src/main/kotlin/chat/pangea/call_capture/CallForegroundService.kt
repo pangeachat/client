@@ -258,14 +258,17 @@ class CallForegroundService : Service() {
           Log.i("PangeaCall", "ignoring a stale type change for $typesGen")
           return START_NOT_STICKY
         }
-        // A refused type change is a refusal like any other. Ignoring the
-        // false left a video call whose service still described microphone
-        // only -- Android protecting media that is not what is running, and
-        // Dart believing the promotion had happened.
+        // A refused type change is NOT the service going away: it is still
+        // running, still foreground, still protecting the call with the types
+        // it already had. Saying "promotion-failed" here made Dart give its
+        // claim back and ask for a service that was already up -- which the
+        // guard above refuses -- so the call ended with a notification nobody
+        // would stop. Its own name, and the call goes on.
         if (running &&
           !promote(camera = intent.getBooleanExtra(EXTRA_VIDEO, false))
         ) {
-          onAction?.invoke("promotion-failed")
+          Log.w("PangeaCall", "the camera type was refused; audio only")
+          onAction?.invoke("types-refused")
         }
       }
       ACTION_STOP -> {

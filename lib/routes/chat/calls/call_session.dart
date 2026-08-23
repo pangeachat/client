@@ -314,6 +314,12 @@ class CallSession extends ChangeNotifier {
           unawaited(toggleMute());
         case 'promotion-failed':
           call.foregroundRefused();
+        case 'types-refused':
+          // The service is up and the call is protected; Android just would
+          // not add the camera to what it says the service is doing. Nothing
+          // to reclaim -- taking the claim back here would leave the running
+          // service with nobody to stop it.
+          Logs().w('The call service could not add the camera type');
       }
     });
   }

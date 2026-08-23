@@ -570,6 +570,34 @@ void main() {
 
   matrix.Room roomStub(Client c) => matrix.Room(id: '!r:server', client: c);
 
+  group('a call cannot outlive the room it is in', () {
+    // Leaving the chat goes straight to the SDK and knows nothing about
+    // calls: the media, the recording and Android's foreground service all
+    // carried on afterwards, and the learner had to notice and hang up
+    // separately.
+    test('leaving the room ends the call', () async {
+      final (call, calls, _, _) = await build();
+      calls.remotePresent = true;
+      final room = matrix.Room(
+        id: '!r:server',
+        client: calls.client,
+        membership: Membership.join,
+      );
+      await call.start(room, video: false);
+      expect(call.stage, CallStage.connected);
+
+      room.membership = Membership.leave;
+      await Future<void>.delayed(ActiveCall.presenceRecheck * 2);
+      await pumpEventQueue();
+
+      expect(
+        call.stage,
+        CallStage.ended,
+        reason: 'the call went on in a room the learner had left',
+      );
+    });
+  });
+
   group('how long the call is recorded as having lasted', () {
     test('does not charge the conversation for its own teardown', () async {
       final (call, calls, _, capture) = await build();

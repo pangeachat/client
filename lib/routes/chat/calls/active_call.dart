@@ -702,6 +702,20 @@ class ActiveCall extends ChangeNotifier {
     _presenceClock?.cancel();
     _presenceClock = Timer.periodic(presenceRecheck, (_) {
       if (_ending || _disposed) return;
+      // A call cannot outlive the room it is in. Leaving the chat -- from the
+      // details pane, the menu, or another of this learner's devices -- goes
+      // straight to the SDK and knows nothing about calls, so the media, the
+      // recording and Android's foreground service all carried on afterwards
+      // and the learner had to notice and hang up separately. Read on this
+      // clock rather than through another subscription: the rule is the same
+      // one the rest of this tick serves, that state is re-derived and never
+      // waited for.
+      final room = _room;
+      if (room != null && room.membership != Membership.join) {
+        Logs().i('The room this call is in is no longer joined; ending it');
+        unawaited(hangUp());
+        return;
+      }
       _onParticipantsChanged();
     });
   }

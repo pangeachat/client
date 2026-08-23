@@ -441,6 +441,24 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
         false;
   }
 
+  /// Turns a call down as BUSY, so the caller hears an engaged tone instead
+  /// of ringing into nothing until it times out as a missed call.
+  void _declineBusy(IncomingCallNotification ring) {
+    final service = _service;
+    if (service == null) return;
+    unawaited(() async {
+      try {
+        await service.decline(
+          ring.event.room,
+          notificationEventId: ring.event.eventId,
+          reason: CallService.declineBusy,
+        );
+      } catch (e, s) {
+        matrix.Logs().w('Could not turn down a call we cannot take', e, s);
+      }
+    }());
+  }
+
   void _offer(IncomingCallNotification ring, String account) {
     // Checked against the account this subscription was made for, BEFORE any
     // state is touched. Cancelling does not unqueue what has already been
@@ -448,6 +466,19 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // still land here — and besides answering with the wrong account, it
     // must not clear this account's offer or setState after dispose.
     if (!mounted || _listeningTo != account) return;
+    // A call is already live somewhere in this app. Ringing here offers an
+    // Answer that cannot happen: taking it throws AlreadyInACall and declines
+    // busy at that point, so the learner is shown a call they can only
+    // refuse -- and if they ignore the prompt instead, the caller rings out
+    // and writes a missed call rather than being told the line is engaged.
+    // The same-account case never gets this far (the service reads its own
+    // busy state); this is the one on ANOTHER account.
+    final live = Matrix.of(context).activeCall.value;
+    if (live != null && live.room.id != ring.event.room.id) {
+      matrix.Logs().i('A ring arrived while a call is live elsewhere; busy');
+      _declineBusy(ring);
+      return;
+    }
     // Same room as a standing rejoin offer: one rule, by evidence. A ring
     // naming the caller's CURRENT membership is a live call happening NOW --
     // it wins, and the offer goes (the caller has moved on, so the call the
@@ -675,20 +706,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       // so TELL the caller rather than leaving them ringing into nothing
       // until they time out and write a missed call.
       matrix.Logs().w('Answering while already on a call elsewhere');
-      final service = _service;
-      if (service != null) {
-        unawaited(() async {
-          try {
-            await service.decline(
-              ring.event.room,
-              notificationEventId: ring.event.eventId,
-              reason: CallService.declineBusy,
-            );
-          } catch (e, s) {
-            matrix.Logs().w('Could not turn down a call we cannot take', e, s);
-          }
-        }());
-      }
+      _declineBusy(ring);
       return;
     }
     // The call lives in its own chat's pane, so answering also goes there.
