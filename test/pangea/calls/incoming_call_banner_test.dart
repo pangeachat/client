@@ -168,6 +168,36 @@ void main() {
     await tester.pumpAndSettle();
   }
 
+  // Switching accounts must leave NOTHING listening to the account the
+  // learner walked away from. The ring's own watchers -- its lifetime timer,
+  // "has the caller given up", "did another of my devices answer" -- are
+  // subscriptions on the OLD account's service, and `_listen` used to cancel
+  // the account-level ones by hand and miss those. One teardown, used by
+  // every path that puts a ring away, is what stops that drifting again.
+  test('an account switch tears the old ring down through _dismiss', () {
+    final source = File(
+      'lib/routes/chat/calls/incoming_call_banner.dart',
+    ).readAsStringSync();
+    final start = source.indexOf('void _listen() {');
+    expect(start, greaterThan(-1), reason: '_listen must still exist');
+    final body = source.substring(start, source.indexOf('\n  }', start));
+    expect(
+      body.contains('_dismiss();'),
+      isTrue,
+      reason: 'the switch goes through the one teardown',
+    );
+    for (final hand in [
+      '_stillRinging?.cancel()',
+      '_siblingAnswered?.cancel()',
+    ]) {
+      expect(
+        body.contains(hand),
+        isFalse,
+        reason: 'a second, hand-rolled teardown is how one gets forgotten',
+      );
+    }
+  });
+
   group('a caller who hangs up and tries again', () {
     testWidgets('gets the prompt pointed at the new call', (tester) async {
       final room = directChat();

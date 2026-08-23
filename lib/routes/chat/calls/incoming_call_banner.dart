@@ -114,11 +114,15 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
     _rings?.cancel();
     _ownDeclines?.cancel();
-    _callerGone?.cancel();
+    // A prompt belonging to the account we just left is not this one's, and
+    // NOTHING watching that account's service may outlive the switch. The
+    // per-ring watchers -- has the caller given up, did another of my devices
+    // answer -- are subscriptions on the OLD service, so they go through the
+    // one teardown that knows about all of them rather than being cancelled
+    // by hand here, which is how two of them were missed.
+    _dismiss();
     _listeningTo = account;
     _service = matrixState.callService;
-    // A prompt belonging to the account we just left is not this one's.
-    if (_ringing != null) setState(() => _showRing(null));
     // Both prompts belonged to the account we just left: a Return offer
     // surviving the switch would rejoin the OLD account's call over the new
     // account's connection.
@@ -590,6 +594,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     super.dispose();
   }
 
+  /// Puts the prompt away and cancels everything that was watching the ring
+  /// it belonged to. The single teardown -- an account switch uses it too, so
+  /// a new watcher can never be added while an old one is still listening to
+  /// the account the learner just left.
   void _dismiss() {
     _stillRinging?.cancel();
     _stillRinging = null;
@@ -597,7 +605,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _callerGone = null;
     _siblingAnswered?.cancel();
     _siblingAnswered = null;
-    if (mounted) setState(() => _showRing(null));
+    if (mounted && _ringing != null) setState(() => _showRing(null));
   }
 
   /// Turns the call down and tells the caller, so their phone stops ringing.
