@@ -340,7 +340,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     if (!mounted) return;
     Matrix.of(context).startCall(
       offer.room,
-      video: false,
+      // The call comes back as what it WAS. Returning always as audio left a
+      // video call with the camera off and the other person's picture gone
+      // for good.
+      video: offer.video,
       rejoinMembershipEventId: offer.membershipEventId,
       rejoinSince: offer.since,
     );

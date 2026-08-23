@@ -27,15 +27,24 @@ class CallBreadcrumb {
   final String membershipEventId;
   final DateTime at;
 
+  /// Whether the call being returned to was a VIDEO call.
+  ///
+  /// Kept because a rejoin has no other way to know. Returning always as
+  /// audio meant a video call came back with the camera off and the other
+  /// person watching their picture vanish for good.
+  final bool video;
+
   const CallBreadcrumb({
     required this.roomId,
     required this.membershipEventId,
     required this.at,
+    this.video = false,
   });
 
   static Future<void> drop({
     required String roomId,
     required String membershipEventId,
+    bool video = false,
   }) async {
     try {
       final store = await SharedPreferences.getInstance();
@@ -44,6 +53,7 @@ class CallBreadcrumb {
         jsonEncode({
           'roomId': roomId,
           'membershipEventId': membershipEventId,
+          'video': video,
           'at': DateTime.now().millisecondsSinceEpoch,
         }),
       );
@@ -83,6 +93,7 @@ class CallBreadcrumb {
       final crumb = CallBreadcrumb(
         roomId: roomId,
         membershipEventId: membership,
+        video: json['video'] == true,
         at: DateTime.fromMillisecondsSinceEpoch(at),
       );
       if (DateTime.now().difference(crumb.at) > maxAge) {

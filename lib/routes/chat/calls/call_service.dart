@@ -1295,6 +1295,7 @@ class CallService {
             room: room,
             membershipEventId: crumb.membershipEventId,
             since: crumb.at,
+            video: crumb.video,
           ),
         ];
       }
@@ -1683,9 +1684,14 @@ class RejoinOffer {
   /// after is a genuine new call, which wins.
   final DateTime? since;
 
+  /// Whether the call being returned to had video. Unknown for an offer
+  /// recovered from state alone, which comes back as audio.
+  final bool video;
+
   const RejoinOffer({
     required this.room,
     required this.membershipEventId,
     this.since,
+    this.video = false,
   });
 }

@@ -745,12 +745,22 @@ class ActiveCall extends ChangeNotifier {
   ///
   /// Retried from the announce path because the first arrival can precede
   /// the membership echo; whichever lands second writes it.
+  /// Whether this call asked for video, remembered for the breadcrumb.
+  bool _isVideoCall = false;
+
   void _dropBreadcrumb() {
     final room = _room;
     final anchor = _membershipEventId;
     if (room == null || anchor == null || _ending) return;
     Logs().i('Leaving the call breadcrumb for ${room.id}');
-    unawaited(CallBreadcrumb.drop(roomId: room.id, membershipEventId: anchor));
+    unawaited(
+      CallBreadcrumb.drop(
+        roomId: room.id,
+        membershipEventId: anchor,
+        // So a return brings the call back as what it was, camera and all.
+        video: _isVideoCall,
+      ),
+    );
   }
 
   /// Notes that the talking is over. Called as the call starts to end rather
@@ -1174,6 +1184,7 @@ class ActiveCall extends ChangeNotifier {
     DateTime? rejoinSince,
   }) async {
     _room = room;
+    _isVideoCall = video;
     _rejoining = rejoinAnchor != null;
     _startedAt = DateTime.now();
     // At the EARLIEST guaranteed-foreground moment, strictly before the first

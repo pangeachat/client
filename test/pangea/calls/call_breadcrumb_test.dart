@@ -4,6 +4,26 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 
 void main() {
+  // A rejoin has no other way to know what kind of call it is returning to.
+  // Coming back always as audio left a video call with the camera off and the
+  // other person's picture gone for good.
+  test('remembers whether the call had video', () async {
+    SharedPreferences.setMockInitialValues({});
+    await CallBreadcrumb.drop(
+      roomId: '!r:server',
+      membershipEventId: r'$mem',
+      video: true,
+    );
+    expect((await CallBreadcrumb.read())!.video, isTrue);
+
+    await CallBreadcrumb.drop(roomId: '!r:server', membershipEventId: r'$mem');
+    expect(
+      (await CallBreadcrumb.read())!.video,
+      isFalse,
+      reason: 'a voice call must not come back with the camera on',
+    );
+  });
+
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() => SharedPreferences.setMockInitialValues({}));
