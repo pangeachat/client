@@ -164,6 +164,13 @@ class _FakeMedia extends CallMedia {
   /// produces: the call still comes up, on audio.
   bool refuseCamera = false;
 
+  /// Nothing to publish through at all: the call comes up and the other side
+  /// hears silence.
+  bool refuseCapture = false;
+
+  @override
+  bool get captureRefused => refuseCapture;
+
   @override
   bool get cameraFailed => refuseCamera;
 
@@ -647,6 +654,32 @@ void main() {
       expect(spy.cards.length, 1, reason: 'one call, one card');
       expect(spy.cards.single.answered, isTrue);
       expect(spy.cards.single.declined, isFalse);
+    });
+  });
+
+  group('a call nobody can hear', () {
+    // The one failure on this screen a learner cannot discover for
+    // themselves: the call is up, the timer runs, and the other person hears
+    // silence. It must be said out loud.
+    test('says so, rather than looking like an ordinary call', () async {
+      final client = await _bareClient();
+      final calls = _FakeCalls(client);
+      final media = _FakeMedia()..refuseCapture = true;
+      final session = CallSession.start(
+        room: matrix.Room(id: '!mute:server', client: client),
+        video: false,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      expect(session.microphoneRefused, isTrue);
     });
   });
 

@@ -356,6 +356,10 @@ String callStatusLine(L10n l10n, CallSession session) {
     case CallStage.connected:
       break;
   }
+  // Above the ordinary lines, because it is the one thing on this screen the
+  // learner cannot discover for themselves: the call looks completely normal
+  // to them while the other person hears silence.
+  if (session.microphoneRefused) return l10n.callNoMicrophone;
   if (session.isReconnecting) return l10n.callReconnecting;
   if (session.peerReconnecting) {
     return l10n.callPeerReconnecting(

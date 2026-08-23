@@ -208,6 +208,10 @@ class CallSession extends ChangeNotifier {
 
   bool get muted => _muted;
   bool get cameraOn => _camera;
+
+  /// Whether a capture device could not be opened at all. The call is up and
+  /// looks normal; the other person hears nothing.
+  bool get microphoneRefused => media.captureRefused;
   bool get isOver => _over;
   bool get hasPresenter => _presenters > 0;
 

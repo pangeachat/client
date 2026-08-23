@@ -3597,6 +3597,7 @@
     "callCameraOn": "Turn camera on",
     "callCameraOff": "Turn camera off",
     "callRecordingNotice": "This call is transcribed for your analytics",
+    "callNoMicrophone": "They cannot hear you: your microphone did not start",
     "callIncoming": "Incoming call",
     "callAnswer": "Answer",
     "callDecline": "Decline",
