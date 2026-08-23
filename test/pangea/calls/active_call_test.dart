@@ -4,9 +4,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart' show AudioTrack;
 import 'package:matrix/matrix.dart' as matrix show Room;
 import 'package:matrix/matrix.dart' hide Room;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
+import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
@@ -730,6 +732,49 @@ void main() {
 
       calls.holdJoin!.complete();
       await starting;
+    });
+  });
+
+  group('a call that failed', () {
+    // A rejoin whose token, focus or SFU connect missed tears down like any
+    // other failure. Erasing the breadcrumb there threw away the learner's
+    // only way back to a call that is still live, with the peer sitting in it
+    // waiting -- and the failed-call screen offers only Close.
+    test('keeps the breadcrumb, so returning can be tried again', () async {
+      SharedPreferences.setMockInitialValues({});
+      await CallBreadcrumb.drop(
+        roomId: '!r:server',
+        membershipEventId: r'$original-membership',
+      );
+
+      final (call, calls, _, _) = await build();
+      calls.joinError = StateError('no focus');
+      await call.start(
+        roomStub(calls.client),
+        video: false,
+        rejoinAnchor: r'$original-membership',
+      );
+
+      expect(call.stage, CallStage.failed);
+      await pumpEventQueue();
+      expect(
+        await CallBreadcrumb.read(),
+        isNotNull,
+        reason: 'the way back must outlive a failed attempt to take it',
+      );
+    });
+
+    test('a call that ENDED cleanly erases it', () async {
+      SharedPreferences.setMockInitialValues({});
+      final (call, calls, _, _) = await build();
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      expect(await CallBreadcrumb.read(), isNotNull, reason: 'dropped on join');
+
+      await call.hangUp();
+      await pumpEventQueue();
+      expect(await CallBreadcrumb.read(), isNull);
     });
   });
 

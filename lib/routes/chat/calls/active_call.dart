@@ -1689,7 +1689,17 @@ class ActiveCall extends ChangeNotifier {
     // The clean teardown erases the reload trace; only a death that never
     // ran this line leaves it standing, which is exactly what makes it the
     // signal.
-    unawaited(CallBreadcrumb.clear());
+    //
+    // A call that FAILED is not a clean teardown. A rejoin whose token, focus
+    // or SFU connect missed tears down like any other failure -- and erasing
+    // the crumb there threw away the learner's only way back to a call that
+    // is still live, with the peer sitting in it waiting. Keeping it costs a
+    // Return offer that may find an empty room and leave quietly; erasing it
+    // costs the call.
+    // Read from the OUTCOME, not the stage: the stage becomes failed after
+    // this teardown, and the outcome is decided before it, precisely so the
+    // screen can say what went wrong straight away.
+    if (_outcome != CallOutcome.failed) unawaited(CallBreadcrumb.clear());
     unawaited(_declines?.cancel());
     _declines = null;
     unawaited(_peerRings?.cancel());
