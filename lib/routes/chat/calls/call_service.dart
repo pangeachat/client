@@ -774,13 +774,17 @@ class CallService {
       if (state.senderId != callerId) continue;
       final memberships = state.content['memberships'];
       if (memberships is! List) continue;
-      // A device filter cannot be applied to an EMPTY list: there is no
-      // membership left to carry a device id, and the state key does not
-      // always name one. An empty list is that sender holding nothing at
-      // all, which answers the question for every device they have -- and
-      // skipping it as "not this device" turned a retraction back into
-      // silence, which is the one reading that means nothing.
-      if (memberships.isNotEmpty &&
+      // An EMPTY list carries no device id -- there is no membership left to
+      // hold one -- so it is attributed by its STATE KEY. A key naming a
+      // device speaks for that device alone: the caller's laptop retracting
+      // when it ended an earlier call says nothing about the phone that is
+      // ringing now, and reading it as "that phone is gone" dropped the
+      // recovered ring and rang the caller out. Only the legacy key that is
+      // the bare user id, which no device can be read out of, speaks for the
+      // whole user.
+      final speaksForEveryDevice =
+          memberships.isEmpty && state.stateKey == callerId;
+      if (!speaksForEveryDevice &&
           deviceId != null &&
           !_belongsToDevice(state, memberships, deviceId)) {
         continue;

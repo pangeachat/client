@@ -1569,6 +1569,102 @@ void main() {
       },
     );
 
+    // The caller's LAPTOP retracted when it ended an earlier call. That says
+    // nothing about the PHONE ringing now -- and reading it as "that phone is
+    // gone" dropped the recovered ring, so the callee saw nothing and the
+    // caller rang out.
+    test(
+      'another device of theirs retracting does not silence this ring',
+      () async {
+        final roomId = '!laptop${seq++}:fakeServer.notExisting';
+        final client = await bareClient();
+        await client.login(
+          LoginType.mLoginPassword,
+          token: 'abcd',
+          identifier: AuthenticationUserIdentifier(user: me),
+          deviceId: 'GHTYAJCE',
+        );
+        await client.handleSync(
+          SyncUpdate(
+            nextBatch: 'batch',
+            rooms: RoomsUpdate(
+              join: {
+                roomId: JoinedRoomUpdate(
+                  state: [
+                    MatrixEvent(
+                      type: EventTypes.GroupCallMember,
+                      content: const {'memberships': <Object?>[]},
+                      senderId: caller,
+                      eventId: r'$laptop',
+                      originServerTs: DateTime.now(),
+                      stateKey: '_${caller}_LAPTOP',
+                    ),
+                  ],
+                ),
+              },
+            ),
+          ),
+        );
+        final service = CallService(client);
+        final room = client.getRoomById(roomId)!;
+        expect(
+          service.callerPresence(room, caller, deviceId: 'PHONE'),
+          PeerPresence.unknown,
+          reason: "the laptop's retraction is not the phone's",
+        );
+        expect(
+          service.callerPresence(room, caller, deviceId: 'LAPTOP'),
+          PeerPresence.gone,
+          reason: 'it is very much the laptop\'s',
+        );
+      },
+    );
+
+    // The legacy key, which names no device at all, still speaks for the user.
+    test(
+      'a retraction under the bare user id speaks for every device',
+      () async {
+        final roomId = '!bare${seq++}:fakeServer.notExisting';
+        final client = await bareClient();
+        await client.login(
+          LoginType.mLoginPassword,
+          token: 'abcd',
+          identifier: AuthenticationUserIdentifier(user: me),
+          deviceId: 'GHTYAJCE',
+        );
+        await client.handleSync(
+          SyncUpdate(
+            nextBatch: 'batch',
+            rooms: RoomsUpdate(
+              join: {
+                roomId: JoinedRoomUpdate(
+                  state: [
+                    MatrixEvent(
+                      type: EventTypes.GroupCallMember,
+                      content: const {'memberships': <Object?>[]},
+                      senderId: caller,
+                      eventId: r'$bare',
+                      originServerTs: DateTime.now(),
+                      stateKey: caller,
+                    ),
+                  ],
+                ),
+              },
+            ),
+          ),
+        );
+        final service = CallService(client);
+        expect(
+          service.callerPresence(
+            client.getRoomById(roomId)!,
+            caller,
+            deviceId: 'PHONE',
+          ),
+          PeerPresence.gone,
+        );
+      },
+    );
+
     test('the device that rang, still in the call, keeps ringing', () async {
       final (service, room) = await withCallerDevices(phoneStillIn: true);
       expect(
