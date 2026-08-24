@@ -42,6 +42,15 @@ class CallTranscriptContent {
   /// second name for that would be one more thing to keep in step.
   static const relType = 'pangea.call_transcript';
 
+  /// What a READER will accept from one half, regardless of what the writer
+  /// claims. Our own writer stays well under both (a half is capped at 50000
+  /// bytes on the way out), so these only ever bite on content we did not
+  /// write. Room content is untrusted: without a ceiling here, one event with a
+  /// vast segment list makes opening a transcript do unbounded work, and a
+  /// bogus half could win the duplicate contest in §_beats by sheer volume.
+  static const maxSegments = 2000;
+  static const maxTotalChars = 60000;
+
   Map<String, dynamic> toJson() => {
     'call_key': callKey,
     'segments': [for (final segment in segments) segment.toJson()],
@@ -64,9 +73,17 @@ class CallTranscriptContent {
     final rawSegments = content['segments'];
     if (rawSegments is! List) return null;
 
-    final segments = <TranscriptSegment>[
-      for (final raw in rawSegments) ?TranscriptSegment.fromJson(raw),
-    ];
+    // Bounded as it is built, not filtered afterwards: the point is to stop
+    // early, so a hostile list costs the reader a fixed amount of work.
+    final segments = <TranscriptSegment>[];
+    var totalChars = 0;
+    for (final raw in rawSegments) {
+      if (segments.length >= maxSegments || totalChars >= maxTotalChars) break;
+      final segment = TranscriptSegment.fromJson(raw);
+      if (segment == null) continue;
+      segments.add(segment);
+      totalChars += segment.text.length;
+    }
 
     final langCode = content['lang_code'];
 

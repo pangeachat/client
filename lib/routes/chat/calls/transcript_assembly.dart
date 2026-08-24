@@ -34,20 +34,35 @@ class HalfAccounting {
   final int segmentsOmitted;
   final bool drainComplete;
 
+  /// Whether the writer said anything about its own capture at all.
+  ///
+  /// An older or foreign client omits these fields entirely. That is an absence
+  /// of assertion, not an assertion of completeness, and presenting such a half
+  /// as whole would put a claim in the writer's mouth it never made.
+  final bool declared;
+
   const HalfAccounting({
     this.chunksCaptured = 0,
     this.chunksTranscribed = 0,
     this.truncated = false,
     this.segmentsOmitted = 0,
     this.drainComplete = true,
+    this.declared = false,
   });
 
-  /// Whether the writer itself admits this is not everything that was said.
+  /// Whether this half is known NOT to be everything that was said — either
+  /// because the writer says so, or because it never said otherwise.
   bool get writerAdmitsGaps =>
-      truncated || !drainComplete || chunksTranscribed < chunksCaptured;
+      !declared ||
+      truncated ||
+      !drainComplete ||
+      chunksTranscribed < chunksCaptured;
 
   Map<String, dynamic> toJson() => {
     'chunks_captured': chunksCaptured,
+
+    // Written unconditionally: our own halves always carry an assertion, so a
+    // round-trip of one never reads back as undeclared.
     'chunks_transcribed': chunksTranscribed,
     'truncated': truncated,
     'segments_omitted': segmentsOmitted,
@@ -66,6 +81,7 @@ class HalfAccounting {
 
     final captured = intOr('chunks_captured', 0);
     return HalfAccounting(
+      declared: raw.containsKey('chunks_captured'),
       chunksCaptured: captured,
       // Clamped: a half claiming more transcribed than captured is malformed,
       // and letting it through would make `writerAdmitsGaps` read false for a

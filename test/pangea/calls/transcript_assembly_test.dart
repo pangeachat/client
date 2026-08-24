@@ -13,6 +13,7 @@ TranscriptCandidate _candidate(
   HalfAccounting accounting = const HalfAccounting(
     chunksCaptured: 2,
     chunksTranscribed: 2,
+    declared: true,
   ),
 }) => TranscriptCandidate(
   senderId: sender,
@@ -73,6 +74,7 @@ void main() {
             accounting: const HalfAccounting(
               chunksCaptured: 5,
               chunksTranscribed: 3,
+              declared: true,
             ),
           ),
         ],
@@ -91,6 +93,7 @@ void main() {
               chunksCaptured: 2,
               chunksTranscribed: 2,
               drainComplete: false,
+              declared: true,
             ),
           ),
         ],
@@ -110,6 +113,7 @@ void main() {
               chunksTranscribed: 2,
               truncated: true,
               segmentsOmitted: 4,
+              declared: true,
             ),
           ),
         ],
@@ -148,6 +152,7 @@ void main() {
               accounting: const HalfAccounting(
                 chunksCaptured: 999,
                 chunksTranscribed: 999,
+                declared: true,
               ),
             ),
             _candidate(alice, texts: ['la verdad'], ts: 900),
@@ -225,6 +230,25 @@ void main() {
         ).segments.add(const TranscriptSegment('injected')),
         throwsUnsupportedError,
       );
+    });
+
+    test('a writer that asserted nothing is not presented as complete', () {
+      // An older or foreign client omits the accounting entirely. Absence of an
+      // assertion is not an assertion of completeness, and reading it as one
+      // would put a claim in that writer's mouth it never made.
+      final transcript = assembleTranscript(
+        candidates: [
+          TranscriptCandidate(
+            senderId: alice,
+            originServerTs: 100,
+            segments: const [TranscriptSegment('algo')],
+            accounting: HalfAccounting.fromJson(const {}),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).state, HalfState.incomplete);
     });
   });
 

@@ -88,7 +88,10 @@ List<TranscriptSegment> buildSegments(
 
       final word = timing.word.trim();
       if (word.isNotEmpty) words.add(word);
-      previousEnd = timing.endTimeMs ?? previousEnd;
+      // An unknown end makes the NEXT gap unmeasurable. Keeping the previous
+      // word's end here measured that gap from the wrong place and split an
+      // utterance that had no pause in it.
+      previousEnd = timing.endTimeMs;
     }
 
     if (words.isNotEmpty) _add(segments, words.join(' '));

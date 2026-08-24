@@ -113,6 +113,24 @@ void main() {
       expect(segments.map((s) => s.text), ['uno dos tres']);
     });
 
+    test('a word with an unknown END cannot be measured from a stale one', () {
+      // 'two' has no end time, so the gap before 'three' is unmeasurable and
+      // must not be computed from 'one' end. Measuring it from the stale 300
+      // split an utterance that had no pause in it.
+      final segments = buildSegments([
+        _response(
+          'one two three',
+          timings: [
+            ('one', 0, 300),
+            ('two', 2000, null),
+            ('three', 2050, 2300),
+          ],
+        ),
+      ]);
+
+      expect(segments.map((s) => s.text), ['one', 'two three']);
+    });
+
     test('timings that are all blank fall back to the chunk text', () {
       final segments = buildSegments([
         _response('texto real', timings: [('   ', 0, 100), ('', 200, 300)]),
