@@ -1805,7 +1805,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-21 09:39:40.709898",
+    "@@last_modified": "2026-08-24 11:54:21.179132",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10703,5 +10703,9 @@
     "autocorrectAndroidDialogBody": "Ko tipkate v klepetu, se bo tipkovnica preklopila na vaš ciljni jezik in popravljala črkovanje v tem jeziku.",
     "autocorrectAndroidFallbackTitle": "Če vaša tipkovnica ne ponuja vašega ciljnega jezika, namestite Gboard in dodajte jezik tam:",
     "resendInSeconds": "Ponovno pošlji ({seconds})",
-    "mapLevelFallbackNotice": "Še ni dejavnosti {selected} – namesto tega so prikazane dejavnosti {shown}."
+    "mapLevelFallbackNotice": "Še ni dejavnosti {selected} – namesto tega so prikazane dejavnosti {shown}.",
+    "switchLanguageChipLabel": "Preklopi na {language}",
+    "languageDropdownLevel": "Stopnja {level}",
+    "whatAreYouLearning": "Kaj se učiš?",
+    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik"
 }

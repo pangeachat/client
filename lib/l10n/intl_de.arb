@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-21 09:39:33.799415",
+    "@@last_modified": "2026-08-24 11:54:15.214892",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9745,5 +9745,9 @@
     "autocorrectAndroidDialogBody": "Wenn Sie in einem Chat tippen, wechselt Ihre Tastatur zu Ihrer Zielsprache und korrigiert die Rechtschreibung in dieser Sprache.",
     "autocorrectAndroidFallbackTitle": "Wenn Ihre Tastatur Ihre Zielsprache nicht anbietet, installieren Sie Gboard und fügen Sie die Sprache dort hinzu:",
     "resendInSeconds": "Erneut senden ({seconds})",
-    "mapLevelFallbackNotice": "Noch keine {selected} Aktivitäten – stattdessen werden {shown} angezeigt."
+    "mapLevelFallbackNotice": "Noch keine {selected} Aktivitäten – stattdessen werden {shown} angezeigt.",
+    "switchLanguageChipLabel": "Wechseln zu {language}",
+    "languageDropdownLevel": "Stufe {level}",
+    "whatAreYouLearning": "Was lernst du?",
+    "languageSwitcherBaseLanguageLabel": "Deine Basissprache"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-21 09:39:38.334490",
+    "@@last_modified": "2026-08-24 11:54:19.441108",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Кога пишувате во разговор, вашата тастатура ќе се префрли на целниот јазик и ќе го коригира правописот на тој јазик.",
     "autocorrectAndroidFallbackTitle": "Ако вашата тастатура не го нуди целниот јазик, инсталирајте Gboard и додајте го јазикот таму:",
     "resendInSeconds": "Повторно испрати ({seconds})",
-    "mapLevelFallbackNotice": "Сè уште нема активности за {selected} — наместо тоа се прикажуваат {shown}."
+    "mapLevelFallbackNotice": "Сè уште нема активности за {selected} — наместо тоа се прикажуваат {shown}.",
+    "switchLanguageChipLabel": "Префрли на {language}",
+    "languageDropdownLevel": "Ниво {level}",
+    "whatAreYouLearning": "Што учиш?",
+    "languageSwitcherBaseLanguageLabel": "Твојот основен јазик"
 }

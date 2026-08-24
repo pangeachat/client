@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-21 09:39:42.571851",
+    "@@last_modified": "2026-08-24 11:54:23.360659",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Nígbàtí o bá ń tẹ́kì nínú ìfọ̀rọ̀wéránṣẹ́, kíbọ́ọ̀dù rẹ yóò yí sí èdè tí o fẹ́ kọ́, yóò sì tún àṣìṣe ìkọ̀wé ṣe nínú èdè náà.",
     "autocorrectAndroidFallbackTitle": "Tí kíbọ́ọ̀dù rẹ kò bá ní èdè tí o fẹ́ kọ́, fi Gboard sori ẹ̀rọ rẹ, kí o sì fi èdè náà kún un níbẹ̀:",
     "resendInSeconds": "Tun ránṣẹ́ ({seconds})",
-    "mapLevelFallbackNotice": "Ko si awọn iṣẹ {selected} sibẹsibẹ — nfi {shown} han dipo."
+    "mapLevelFallbackNotice": "Ko si awọn iṣẹ {selected} sibẹsibẹ — nfi {shown} han dipo.",
+    "switchLanguageChipLabel": "Yipada si {language}",
+    "languageDropdownLevel": "Ipele {level}",
+    "whatAreYouLearning": "Kini o n kọ?",
+    "languageSwitcherBaseLanguageLabel": "Èdè ìpìlẹ̀ rẹ"
 }

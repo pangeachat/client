@@ -3551,7 +3551,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-21 09:39:33.110566",
+    "@@last_modified": "2026-08-24 11:54:14.501741",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9772,5 +9772,9 @@
     "autocorrectAndroidDialogBody": "Калі вы друкуеце ў чаце, ваша клавіятура пераключыцца на мэтавую мову і выправіць арфаграфію на гэтай мове.",
     "autocorrectAndroidFallbackTitle": "Калі ваша клавіятура не прапануе мэтавую мову, усталюйце Gboard і дадайце мову там:",
     "resendInSeconds": "Адправіць паўторна праз ({seconds})",
-    "mapLevelFallbackNotice": "Пакуль няма заняткаў {selected} — замест іх паказаны {shown}."
+    "mapLevelFallbackNotice": "Пакуль няма заняткаў {selected} — замест іх паказаны {shown}.",
+    "switchLanguageChipLabel": "Перайсці на {language}",
+    "languageDropdownLevel": "Узровень {level}",
+    "whatAreYouLearning": "Што вы вывучаеце?",
+    "languageSwitcherBaseLanguageLabel": "Ваша базавая мова"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:39.996812",
+    "@@last_modified": "2026-08-24 11:54:20.889713",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10490,5 +10490,9 @@
     "autocorrectAndroidDialogBody": "Când scrii într-un chat, tastatura ta va comuta la limba țintă și va corecta ortografia în acea limbă.",
     "autocorrectAndroidFallbackTitle": "Dacă tastatura ta nu oferă limba țintă, instalează Gboard și adaugă limba acolo:",
     "resendInSeconds": "Retrimite ({seconds})",
-    "mapLevelFallbackNotice": "Încă nu există activități {selected} — se afișează {shown} în schimb."
+    "mapLevelFallbackNotice": "Încă nu există activități {selected} — se afișează {shown} în schimb.",
+    "switchLanguageChipLabel": "Treci la {language}",
+    "languageDropdownLevel": "Nivelul {level}",
+    "whatAreYouLearning": "Ce înveți?",
+    "languageSwitcherBaseLanguageLabel": "Limba ta de bază"
 }

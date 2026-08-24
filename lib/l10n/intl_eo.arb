@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:33.950881",
+    "@@last_modified": "2026-08-24 11:54:15.530482",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10703,5 +10703,9 @@
     "autocorrectAndroidDialogBody": "Kiam vi tajpas en babilejo, via klavaro ŝanĝos al via cellingvo kaj korektos literumadon en tiu lingvo.",
     "autocorrectAndroidFallbackTitle": "Se via klavaro ne ofertas vian cellingvon, instalu Gboard kaj aldonu la lingvon tie:",
     "resendInSeconds": "Sendu denove ({seconds})",
-    "mapLevelFallbackNotice": "Ankoraŭ neniuj {selected} agadoj — montrante {shown} anstataŭe."
+    "mapLevelFallbackNotice": "Ankoraŭ neniuj {selected} agadoj — montrante {shown} anstataŭe.",
+    "switchLanguageChipLabel": "Ŝanĝi al la {language}",
+    "languageDropdownLevel": "Nivelo {level}",
+    "whatAreYouLearning": "Kion vi lernas?",
+    "languageSwitcherBaseLanguageLabel": "Via baza lingvo"
 }

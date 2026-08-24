@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-21 09:39:40.748831",
+    "@@last_modified": "2026-08-24 11:54:21.654896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Markaad ku qorto sheekeysi, kiiboodhkaagu wuxuu u wareegi doonaa luqaddaada bartilmaameedka ah wuxuuna sixi doonaa higgaadda luqaddaas.",
     "autocorrectAndroidFallbackTitle": "Haddii kiiboodhkaagu uusan bixin luqaddaada bartilmaameedka ah, rakib Gboard oo ku dar luqadda halkaas:",
     "resendInSeconds": "Dib u dir ({seconds})",
-    "mapLevelFallbackNotice": "Weli ma jiraan waxqabadyo {selected} ah — waxaan ku tusaynaa {shown} beddelkeeda."
+    "mapLevelFallbackNotice": "Weli ma jiraan waxqabadyo {selected} ah — waxaan ku tusaynaa {shown} beddelkeeda.",
+    "switchLanguageChipLabel": "U wareeg {language}",
+    "languageDropdownLevel": "Heerka {level}",
+    "whatAreYouLearning": "Maxaad baranaysaa?",
+    "languageSwitcherBaseLanguageLabel": "Luqaddaada aasaasiga ah"
 }

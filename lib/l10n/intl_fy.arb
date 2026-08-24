@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-21 09:39:34.923521",
+    "@@last_modified": "2026-08-24 11:54:16.200145",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "As jo yn in petear typst, sil dyn toetseboerd oerskeakelje nei dyn doeltaal en de stavering yn dy taal korrizjearje.",
     "autocorrectAndroidFallbackTitle": "As dyn toetseboerd dyn doeltaal net oanbiedt, ynstallearje dan Gboard en foegje de taal dêr ta:",
     "resendInSeconds": "Op 'e nij ferstjoere ({seconds})",
-    "mapLevelFallbackNotice": "No {selected} aktiviteiten — yn stee dêrfan wurde {shown} werjûn."
+    "mapLevelFallbackNotice": "No {selected} aktiviteiten — yn stee dêrfan wurde {shown} werjûn.",
+    "switchLanguageChipLabel": "Wikselje nei {language}",
+    "languageDropdownLevel": "Nivo {level}",
+    "whatAreYouLearning": "Wat learsto?",
+    "languageSwitcherBaseLanguageLabel": "Dyn basistaal"
 }

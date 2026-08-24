@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-21 09:39:36.152976",
+    "@@last_modified": "2026-08-24 11:54:17.776584",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Mgbe ị na-ede ihe na nkata, ahụigodo gị ga-agbanwe gaa n'asụsụ ị na-amụ ma dozie mkpoputa n'asụsụ ahụ.",
     "autocorrectAndroidFallbackTitle": "Ọ bụrụ na ahụigodo gị anaghị enye asụsụ ị na-amụ, wụnye Gboard ma tinye asụsụ ahụ ebe ahụ:",
     "resendInSeconds": "Zipụgharịa ({seconds})",
-    "mapLevelFallbackNotice": "Enweghị ọrụ {selected} etinyere — na-egosi {shown} kama."
+    "mapLevelFallbackNotice": "Enweghị ọrụ {selected} etinyere — na-egosi {shown} kama.",
+    "switchLanguageChipLabel": "Gbanwee gaa na {language}",
+    "languageDropdownLevel": "Ọkwa {level}",
+    "whatAreYouLearning": "Kedu ihe ị na-amụ?",
+    "languageSwitcherBaseLanguageLabel": "Asụsụ gị bụ isi"
 }

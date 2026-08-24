@@ -2562,7 +2562,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-21 09:39:40.016851",
+    "@@last_modified": "2026-08-24 11:54:20.783981",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10675,5 +10675,9 @@
     "autocorrectAndroidDialogBody": "Quando escrever numa conversa, o seu teclado mudará para a sua língua-alvo e corrigirá a ortografia nessa língua.",
     "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer a sua língua-alvo, instale o Gboard e adicione a língua lá:",
     "resendInSeconds": "Reenviar ({seconds})",
-    "mapLevelFallbackNotice": "Ainda não há atividades {selected} — a mostrar {shown} em vez disso."
+    "mapLevelFallbackNotice": "Ainda não há atividades {selected} — a mostrar {shown} em vez disso.",
+    "switchLanguageChipLabel": "Mudar para {language}",
+    "languageDropdownLevel": "Nível {level}",
+    "whatAreYouLearning": "O que estás a aprender?",
+    "languageSwitcherBaseLanguageLabel": "A sua língua base"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-21 09:39:34.372628",
+    "@@last_modified": "2026-08-24 11:54:15.787240",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9755,5 +9755,9 @@
     "autocorrectAndroidDialogBody": "Vestluses tippides lülitub klaviatuur sihtkeelde ja parandab õigekirja selles keeles.",
     "autocorrectAndroidFallbackTitle": "Kui teie klaviatuur ei paku sihtkeelt, installige Gboard ja lisage keel sinna:",
     "resendInSeconds": "Saada uuesti ({seconds})",
-    "mapLevelFallbackNotice": "Tegevusi {selected} veel pole – näitame hoopis {shown}."
+    "mapLevelFallbackNotice": "Tegevusi {selected} veel pole – näitame hoopis {shown}.",
+    "switchLanguageChipLabel": "Lülita keelele {language}",
+    "languageDropdownLevel": "Tase {level}",
+    "whatAreYouLearning": "Mida sa õpid?",
+    "languageSwitcherBaseLanguageLabel": "Sinu baaskeelt"
 }

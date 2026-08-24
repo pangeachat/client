@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-21 09:39:41.668067",
+    "@@last_modified": "2026-08-24 11:54:22.585797",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9758,5 +9758,9 @@
     "autocorrectAndroidDialogBody": "Коли ви друкуєте в чаті, клавіатура перемикається на цільову мову та виправляє орфографію цією мовою.",
     "autocorrectAndroidFallbackTitle": "Якщо ваша клавіатура не пропонує цільову мову, встановіть Gboard і додайте мову там:",
     "resendInSeconds": "Надіслати повторно через ({seconds})",
-    "mapLevelFallbackNotice": "Ще немає занять {selected} — замість них показано {shown}."
+    "mapLevelFallbackNotice": "Ще немає занять {selected} — замість них показано {shown}.",
+    "switchLanguageChipLabel": "Перейти на {language}",
+    "languageDropdownLevel": "Рівень {level}",
+    "whatAreYouLearning": "Що ви вивчаєте?",
+    "languageSwitcherBaseLanguageLabel": "Ваша основна мова"
 }

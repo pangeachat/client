@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-21 09:39:32.877296",
+    "@@last_modified": "2026-08-24 11:54:14.396031",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Когато пишете в чат, клавиатурата ви ще превключи на целевия език и ще коригира правописа на този език.",
     "autocorrectAndroidFallbackTitle": "Ако клавиатурата ви не предлага целевия език, инсталирайте Gboard и добавете езика там:",
     "resendInSeconds": "Изпрати отново ({seconds})",
-    "mapLevelFallbackNotice": "Все още няма {selected} дейности — показваме {shown} вместо това."
+    "mapLevelFallbackNotice": "Все още няма {selected} дейности — показваме {shown} вместо това.",
+    "switchLanguageChipLabel": "Превключване на {language}",
+    "languageDropdownLevel": "Ниво {level}",
+    "whatAreYouLearning": "Какво учиш?",
+    "languageSwitcherBaseLanguageLabel": "Вашият основен език"
 }

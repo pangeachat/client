@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-21 09:39:41.841538",
+    "@@last_modified": "2026-08-24 11:54:23.006609",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "پارىڭىڭىزغا يازغاندا، كۇنۇپكا تاختىڭىز نىشان تىلىڭىزغا ئالماشتۇرۇلىدۇ ھەمدە شۇ تىلدىكى ئىملا خاتالىقىنى تۈزىتىدۇ.",
     "autocorrectAndroidFallbackTitle": "ئەگەر كۇنۇپكا تاختىڭىز نىشان تىلىڭىزنى تەمىنلىمىسە، Gboard نى قاچىلاپ، شۇ يەرگە تىل قوشۇڭ:",
     "resendInSeconds": "قايتا ئەۋەتىش ({seconds})",
-    "mapLevelFallbackNotice": "تېخى {selected} پائالىيەت يوق — ئەكسىچە {shown} كۆرسىتىلدى."
+    "mapLevelFallbackNotice": "تېخى {selected} پائالىيەت يوق — ئەكسىچە {shown} كۆرسىتىلدى.",
+    "switchLanguageChipLabel": "{language}غا ئالماشتۇرۇش",
+    "languageDropdownLevel": "{level}-دەرىجە",
+    "whatAreYouLearning": "نېمە ئۆگىنىۋاتىسىز؟",
+    "languageSwitcherBaseLanguageLabel": "سىزنىڭ ئاساسىي تىلىڭىز"
 }

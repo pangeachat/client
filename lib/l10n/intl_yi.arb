@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-21 09:39:42.100576",
+    "@@last_modified": "2026-08-24 11:54:23.433561",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "ווען איר טיפּט אין אַ שמועס, וועט דיין קלאַוויאַטור באַשטימען צו דיין ציל שפּראַך און קאָרעקטירן אויסלייג אין יענער שפּראַך.",
     "autocorrectAndroidFallbackTitle": "אויב דיין קלאַוויאַטור אָפפערט נישט דיין ציל שפּראַך, אינסטאַליר Gboard און לייג צו די שפּראַך דאָרט:",
     "resendInSeconds": "ווידערשיקן ({seconds})",
-    "mapLevelFallbackNotice": "נאָך נישט קיין {selected} אַקטיוויטעטן — ווייזט {shown} אַנשטאָט."
+    "mapLevelFallbackNotice": "נאָך נישט קיין {selected} אַקטיוויטעטן — ווייזט {shown} אַנשטאָט.",
+    "switchLanguageChipLabel": "באַשטימען צו {language}",
+    "languageDropdownLevel": "ניוואָ {level}",
+    "whatAreYouLearning": "וואָס לערנסטו זיך?",
+    "languageSwitcherBaseLanguageLabel": "דיין באַזע שפּראַך"
 }

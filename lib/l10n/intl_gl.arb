@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-21 09:39:34.692139",
+    "@@last_modified": "2026-08-24 11:54:16.273464",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9758,5 +9758,9 @@
     "autocorrectAndroidDialogBody": "Cando escribas nun chat, o teu teclado cambiará ao teu idioma de destino e corrixirá a ortografía nese idioma.",
     "autocorrectAndroidFallbackTitle": "Se o teu teclado non ofrece o teu idioma de destino, instala Gboard e engade o idioma alí:",
     "resendInSeconds": "Reenviar ({seconds})",
-    "mapLevelFallbackNotice": "Aínda non hai actividades {selected} — mostrándose {shown} no seu lugar."
+    "mapLevelFallbackNotice": "Aínda non hai actividades {selected} — mostrándose {shown} no seu lugar.",
+    "switchLanguageChipLabel": "Cambiar a {language}",
+    "languageDropdownLevel": "Nivel {level}",
+    "whatAreYouLearning": "Que estás a aprender?",
+    "languageSwitcherBaseLanguageLabel": "A túa lingua base"
 }

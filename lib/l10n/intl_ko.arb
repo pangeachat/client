@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:36.755787",
+    "@@last_modified": "2026-08-24 11:54:18.363328",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9951,5 +9951,9 @@
     "autocorrectAndroidDialogBody": "채팅을 입력할 때 키보드가 학습 언어로 전환되고 해당 언어로 맞춤법을 교정합니다.",
     "autocorrectAndroidFallbackTitle": "키보드에서 학습 언어를 지원하지 않는 경우 Gboard를 설치하고 언어를 추가하세요.",
     "resendInSeconds": "재전송 ({seconds})",
-    "mapLevelFallbackNotice": "{selected} 활동이 아직 없습니다. 대신 {shown}을(를) 표시합니다."
+    "mapLevelFallbackNotice": "{selected} 활동이 아직 없습니다. 대신 {shown}을(를) 표시합니다.",
+    "switchLanguageChipLabel": "{language}로 전환",
+    "languageDropdownLevel": "레벨 {level}",
+    "whatAreYouLearning": "무엇을 배우고 있나요?",
+    "languageSwitcherBaseLanguageLabel": "기본 언어"
 }

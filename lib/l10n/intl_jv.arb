@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-21 09:39:36.817807",
+    "@@last_modified": "2026-08-24 11:54:17.899830",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Nalika ngetik ing obrolan, keyboard-mu bakal ganti menyang basa targetmu lan mbenerake ejaan ing basa kasebut.",
     "autocorrectAndroidFallbackTitle": "Yen keyboard-mu ora nawakake basa targetmu, instal Gboard lan tambahake basa kasebut ing kana:",
     "resendInSeconds": "Kirim maneh ({seconds})",
-    "mapLevelFallbackNotice": "Durung ana aktivitas {selected} — nampilake {shown} wae."
+    "mapLevelFallbackNotice": "Durung ana aktivitas {selected} — nampilake {shown} wae.",
+    "switchLanguageChipLabel": "Ganti menyang {language}",
+    "languageDropdownLevel": "Tingkat {level}",
+    "whatAreYouLearning": "Apa sing lagi kok sinau?",
+    "languageSwitcherBaseLanguageLabel": "Basa dhasarmu"
 }

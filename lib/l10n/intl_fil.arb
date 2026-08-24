@@ -2083,7 +2083,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-21 09:39:34.739842",
+    "@@last_modified": "2026-08-24 11:54:16.416867",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10618,5 +10618,9 @@
     "autocorrectAndroidDialogBody": "Kapag nagta-type ka sa chat, lilipat ang iyong keyboard sa target na wika mo at itatama ang spelling sa wikang iyon.",
     "autocorrectAndroidFallbackTitle": "Kung hindi iniaalok ng iyong keyboard ang target na wika mo, i-install ang Gboard at idagdag ang wika doon:",
     "resendInSeconds": "Ipadala muli ({seconds})",
-    "mapLevelFallbackNotice": "Wala pang aktibidad na {selected} — ipinapakita ang {shown} sa halip."
+    "mapLevelFallbackNotice": "Wala pang aktibidad na {selected} — ipinapakita ang {shown} sa halip.",
+    "switchLanguageChipLabel": "Lumipat sa {language}",
+    "languageDropdownLevel": "Antas {level}",
+    "whatAreYouLearning": "Ano ang pinag-aaralan mo?",
+    "languageSwitcherBaseLanguageLabel": "Ang iyong base language"
 }

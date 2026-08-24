@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-21 09:39:36.642326",
+    "@@last_modified": "2026-08-24 11:54:17.808567",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10527,5 +10527,9 @@
     "autocorrectAndroidDialogBody": "チャットで入力すると、キーボードが目標言語に切り替わり、その言語でスペルが修正されます。",
     "autocorrectAndroidFallbackTitle": "キーボードが目標言語に対応していない場合は、Gboardをインストールして言語を追加してください。",
     "resendInSeconds": "再送信 ({seconds})",
-    "mapLevelFallbackNotice": "{selected}のアクティビティはまだありません。代わりに{shown}を表示しています。"
+    "mapLevelFallbackNotice": "{selected}のアクティビティはまだありません。代わりに{shown}を表示しています。",
+    "switchLanguageChipLabel": "{language}に切り替える",
+    "languageDropdownLevel": "レベル{level}",
+    "whatAreYouLearning": "何を学習していますか？",
+    "languageSwitcherBaseLanguageLabel": "あなたの母国語"
 }

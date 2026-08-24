@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-21 09:39:40.781309",
+    "@@last_modified": "2026-08-24 11:54:22.244664",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "A e taina i se talatalanoaga, o le a fesuia'i lau piano i lau gagana e a'oa'oina ma fa'asa'o le sipelaga i lena gagana.",
     "autocorrectAndroidFallbackTitle": "Afai e le ofoina mai e lau piano lau gagana e a'oa'oina, fa'apipi'i le Gboard ma fa'aopoopo le gagana iina:",
     "resendInSeconds": "Toe lafo ({seconds})",
-    "mapLevelFallbackNotice": "E leai ni gaioiga {selected} i le taimi nei — o loʻo faʻaalia {shown} nai lo lena."
+    "mapLevelFallbackNotice": "E leai ni gaioiga {selected} i le taimi nei — o loʻo faʻaalia {shown} nai lo lena.",
+    "switchLanguageChipLabel": "Fesuiaʻi i le {language}",
+    "languageDropdownLevel": "Tulaga {level}",
+    "whatAreYouLearning": "O le a le mea o e aʻoaʻoina?",
+    "languageSwitcherBaseLanguageLabel": "Lau gagana autū"
 }

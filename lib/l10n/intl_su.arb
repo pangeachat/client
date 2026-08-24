@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-21 09:39:41.051589",
+    "@@last_modified": "2026-08-24 11:54:21.782305",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Nalika anjeun ngetik dina obrolan, kibor anjeun bakal robah kana basa target anjeun sarta ngabenerkeun éjahan dina basa éta.",
     "autocorrectAndroidFallbackTitle": "Upami kibor anjeun henteu nawiskeun basa target anjeun, pasang Gboard sareng tambihan basa éta di dinya:",
     "resendInSeconds": "Kirim deui ({seconds})",
-    "mapLevelFallbackNotice": "Tacan aya kagiatan {selected} — nembongkeun {shown} baé."
+    "mapLevelFallbackNotice": "Tacan aya kagiatan {selected} — nembongkeun {shown} baé.",
+    "switchLanguageChipLabel": "Gentos kana basa {language}",
+    "languageDropdownLevel": "Tingkat {level}",
+    "whatAreYouLearning": "Diajar naon?",
+    "languageSwitcherBaseLanguageLabel": "Basa dasar anjeun"
 }
