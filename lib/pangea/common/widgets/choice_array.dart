@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -88,6 +89,15 @@ class ChoicesArray<T> extends StatelessWidget {
                   // an account switch mid-playback must not post under a stale
                   // one. A fresh probe per call: it holds a running
                   // measurement.
+                  // A choice is spoken as raw text: this widget serves
+                  // writing assistance and the activity orchestrator and is
+                  // handed strings, not tokens, so there is no construct to
+                  // file the hearing under. Deriving a lemma from the surface
+                  // form would file it under the wrong word, which is worse
+                  // than not recording it.
+                  exposure: const ListeningExposureDeclaration.exempt(
+                    "choice text is not resolved to a construct here",
+                  ),
                   listening: DosageTtsListeningProbe(
                     category: DosageListeningCategory.practiceAudio,
                     roomId: roomId,

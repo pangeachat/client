@@ -262,6 +262,11 @@ class SpaceAnalyticsSummaryModel {
       final systemUsesIncorrect = [];
 
       for (final use in entry.cappedUses) {
+        // This split keys on the SIGN of xp, not on `summaryEnumType`, so a
+        // 0-XP use would land in the incorrect bucket by default. Listening
+        // exposure is neither correct nor incorrect — nothing was answered —
+        // so it is skipped rather than scored.
+        if (use.useType == ConstructUseTypeEnum.hrd) continue;
         if (originalUseTypes.contains(use.useType)) {
           use.xp > 0
               ? originalUsesCorrect.add(use)

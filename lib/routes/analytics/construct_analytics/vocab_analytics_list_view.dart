@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
+import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
@@ -314,6 +315,9 @@ class VocabAnalyticsListView extends StatelessWidget {
                                     // it plainly, and the serving side answers
                                     // it the same way: counted in the language,
                                     // absent from any course.
+                                    exposure: ListeningExposureDeclaration([
+                                      vocabItem.id,
+                                    ]),
                                     listening: DosageTtsListeningProbe(
                                       category:
                                           DosageListeningCategory.wordAudio,

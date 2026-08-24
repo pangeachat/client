@@ -10,6 +10,7 @@ import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
 import 'package:just_audio/just_audio.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/common/utils/strip_emojis.dart';
@@ -398,6 +399,17 @@ class TtsController {
     ///
     /// Design: docs/research/104-speaking-listening-minutes-v2.md, D-V2-1.
     required DosageTtsListeningProbe listening,
+
+    /// REQUIRED: the lemmas this utterance covers, for listening exposure.
+    ///
+    /// Same shape and same reason as [listening]: this entry point is handed
+    /// text, not tokens, so only the caller knows which constructs its
+    /// utterance actually speaks. Required so a new read-aloud path cannot
+    /// silently record nothing; use
+    /// [ListeningExposureDeclaration.exempt] to say a path speaks no L2 lemma.
+    ///
+    /// See message-read-aloud.instructions.md (Word-level exposure).
+    required ListeningExposureDeclaration exposure,
   }) async {
     final requestId = ++_requestCounter;
     // The measurement for THIS call. Bracketed here rather than at each call
@@ -426,10 +438,21 @@ class TtsController {
       }
     }
 
-    void reportPlaybackStarted() =>
-        guarded(listening.started, 'onPlaybackStarted');
-    void reportPlaybackAborted() =>
-        guarded(listening.aborted, 'onPlaybackAborted');
+    // Whether the route that ran last actually played. Follows the same
+    // per-route start/abort pairing as the meter above: a backend failure
+    // rescued by the device is start/abort/start, so the final value describes
+    // the route that survived, not the one that failed.
+    var played = false;
+
+    void reportPlaybackStarted() {
+      played = true;
+      guarded(listening.started, 'onPlaybackStarted');
+    }
+
+    void reportPlaybackAborted() {
+      played = false;
+      guarded(listening.aborted, 'onPlaybackAborted');
+    }
 
     final strippedText = stripEmojis(text);
     final request = _AudioRequest(
@@ -505,6 +528,12 @@ class TtsController {
       // Guarded like the other two, so telemetry can never surface to the
       // learner.
       guarded(listening.finish, 'listening.finish');
+      // Exposure rides the same bracket, and only when a route actually played:
+      // read-aloud stops on drafting, selection and focus loss, so minting for
+      // an utterance that never started would bank words nobody heard.
+      if (played) {
+        guarded(() => exposure.record(listening.userId()), 'exposure.record');
+      }
     }
   }
 

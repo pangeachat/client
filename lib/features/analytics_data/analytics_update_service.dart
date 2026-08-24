@@ -9,6 +9,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics/listening_exposure_buffer.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_database.dart';
@@ -154,6 +155,10 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
         accessToken: dataService.accountAccessToken,
       );
     }
+    // Drop this account's exposure buffer. Anything still in it is discarded:
+    // the store this would drain into is deleted moments from now, and the
+    // pre-logout save has already had its chance at it.
+    ListeningExposureBuffer.disposeAccount(_accountUserId);
   }
 
   @override
@@ -166,10 +171,31 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
       // Backgrounding is where a session most often ends without a teardown, so
       // it is the audio lane's best chance to land the period it just observed.
       unawaited(_flushAudio());
+      // Same reasoning for exposure, one step short: draining moves the open
+      // window into the DURABLE local store, which survives an app kill and
+      // goes out on the next flush. Nothing is sent from here.
+      final lang = _l2OrNull;
+      if (lang != null) unawaited(_drainListeningExposure(lang));
     }
   }
 
   LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
+
+  /// The account's L2, or null when app state is not up yet.
+  ///
+  /// `MatrixState.pangeaController` is a `late static`, so reading it THROWS
+  /// rather than returning null before the app has initialized it. Every other
+  /// reader here runs behind the heartbeat, which only ticks once the app is
+  /// up; [didChangeAppLifecycleState] does not — the framework calls it on the
+  /// UI thread, and a throw there would stall backgrounding. So that one path
+  /// asks for the language in a form that can answer "not yet".
+  LanguageModel? get _l2OrNull {
+    try {
+      return _l2;
+    } catch (_) {
+      return null;
+    }
+  }
 
   Future<Room?> _getAnalyticsRoom({LanguageModel? l2Override}) async {
     final l2 = l2Override ?? _l2;
@@ -213,6 +239,24 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     }
   }
 
+  /// Moves any buffered listening exposure into the local store.
+  ///
+  /// Deliberately called from [sendLocalAnalyticsToAnalyticsRoom] rather than
+  /// wired separately: every path that flushes analytics already goes through
+  /// there — the heartbeat, the [addAnalytics] triggers, a language switch and,
+  /// the one that matters most, the pre-logout save in `p_logout`, which is the
+  /// last moment a valid bearer exists before the store is deleted.
+  Future<void> _drainListeningExposure(LanguageModel language) async {
+    final buffer = ListeningExposureBuffer.forAccount(_accountUserId);
+    if (buffer == null || buffer.isEmpty) return;
+    final uses = buffer.drain();
+    if (uses.isEmpty) return;
+    // No targetID: a drain is not a message, and the local store keys on its
+    // own stamp anyway. One drain is one write batch, which is what keeps
+    // exposure from moving the `_maxMessagesCached` flush trigger.
+    await addAnalytics(null, uses, language.langCodeShort);
+  }
+
   Future<void> sendLocalAnalyticsToAnalyticsRoom({
     LanguageModel? l2Override,
   }) async {
@@ -226,6 +270,11 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
       );
       return;
     }
+
+    // Before the in-flight check, not after: a logout-time save that coincided
+    // with a heartbeat would otherwise return early and leave the window's
+    // exposure in a buffer that is about to be dropped.
+    await _drainListeningExposure(lang);
 
     final inProgress =
         _updateCompleter != null && !_updateCompleter!.isCompleted;

@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
@@ -73,6 +74,11 @@ class AnalyticsPracticeUiController {
         // [_listeningProbe]: that room says where the CONTENT came from, not
         // where the learner was listening.
         listening: _listeningProbe(),
+        exposure: token == null
+            ? const ListeningExposureDeclaration.exempt(
+                "choice text did not resolve to a token in this exercise",
+              )
+            : ListeningExposureDeclaration.ofTokens([token]),
       );
       return;
     }
@@ -90,6 +96,7 @@ class AnalyticsPracticeUiController {
       // learner's own construct history, not from a message, so there is no
       // room to attribute it to and none is invented. See [_listeningProbe].
       listening: _listeningProbe(),
+      exposure: ListeningExposureDeclaration([cId]),
     );
   }
 
@@ -110,6 +117,7 @@ class AnalyticsPracticeUiController {
       // Roomless drill listening, for the same reason as the choice above: this
       // is the meaning exercise's prompt, and it has no message behind it.
       listening: _listeningProbe(),
+      exposure: ListeningExposureDeclaration.ofTokens([token]),
     );
   }
 }

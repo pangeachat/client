@@ -20,19 +20,18 @@ class LemmaUsageDots extends StatelessWidget {
     super.key,
   });
 
-  /// Find lemma uses for the given exercise type, to create dot list
+  /// Find lemma uses for the given exercise type, to create dot list.
+  ///
+  /// One mark per SCORED use only. Zero-XP uses are not marks: listening
+  /// exposure alone fires often enough to outnumber everything else here and
+  /// turn the row into a wall of identical dots. It is shown as a count
+  /// instead — see analytics-system.instructions.md (Construct Displays).
   List<Color> sortedUses(LearningSkillsEnum category) {
     final List<Color> useList = [];
     for (final OneConstructUse use in construct.cappedUses) {
-      // If the use type matches the given category, save to list
-      // Usage with positive XP is saved as true, else false
-      if (category == use.useType.skillsEnumType) {
-        useList.add(switch (use.xp) {
-          > 0 => AppConfig.success,
-          < 0 => Colors.red,
-          _ => Colors.grey[400]!,
-        });
-      }
+      if (category != use.useType.skillsEnumType) continue;
+      if (use.xp == 0) continue;
+      useList.add(use.xp > 0 ? AppConfig.success : Colors.red);
     }
     return useList;
   }
