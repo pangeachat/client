@@ -867,7 +867,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
       // Write events sequentially
       for (final e in pendingWrites.entries) {
-        _serverConstructsBox.put(
+        await _serverConstructsBox.put(
           e.key,
           e.value.map((u) => u.toJson()).toList(),
         );
@@ -923,7 +923,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     await _transaction(() async {
       // Store local constructs
       final key = DateTime.now().millisecondsSinceEpoch;
-      _localConstructsBox.put(
+      await _localConstructsBox.put(
         _langKey(key.toString(), language),
         uses.map((u) => u.toJson()).toList(),
       );
