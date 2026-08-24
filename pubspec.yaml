@@ -68,7 +68,7 @@ dependencies:
       # Pinned deliberately. The MatrixRTC/LiveKit call work depends on SDK VoIP
       # internals (LiveKitBackend, GroupCallSession, WebRTCDelegate); without a ref
       # this resolves to HEAD and can change under us on any `pub upgrade`.
-      ref: cd3b04a0d696279ee48f9576fda48184d1121c4f
+      ref: 9eb0c0c68640fe138cc94ed1035d2e9f211b63ff
   # Pangea#
   mime: ^2.0.0
   opus_caf_converter_dart: ^1.0.1
@@ -191,7 +191,7 @@ flutter:
     # It must stay commented on main: .env is gitignored, and a declared but
     # missing asset fails the build. Web doesn't bundle .env at all — it is
     # fetched from the web root at runtime (see lib/pangea/common/config/env_loader.dart).
-    - .env
+    # - .env
     - assets/pangea/
     - assets/pangea/bot_faces/
     # Pangea#
@@ -203,11 +203,6 @@ flutter:
 # 2. Always link an (upstream?) issue
 # 3. Explain how and when this can be removed (overrides must be temporarily)
 dependency_overrides:
-  # LOCAL ONLY -- must NOT be committed. Points at the patched matrix-dart-sdk
-  # worktree (fix/delayed-event-lifecycle) so E2E runs against the SDK we will
-  # actually ship; the pin moves when the fork branch is pushed.
-  matrix:
-    path: /Users/balla/PangeaChat/matrix-dart-sdk/.claude/worktrees/delayed-events
   # To fix 16kb compatiblity in PlayStore. It is fixed in main branch but
   # not yet published:
   # https://github.com/google/webcrypto.dart/issues/207

@@ -84,20 +84,8 @@ android {
     }
 
     buildTypes {
-        debug {
-            // A distinct package so a debug/test build installs ALONGSIDE the
-            // store app instead of being refused with "app not installed": the
-            // two share applicationId but are signed with different keys, and
-            // Android will not install one over the other. Debug only — release
-            // keeps the real id.
-            applicationIdSuffix = ".debug"
-        }
         release {
-            // LOCAL TEST ONLY -- not for commit. The store keys live in CI;
-            // a device-test release build signs with the debug key and keeps
-            // the .debug package so it installs alongside the store app.
-            signingConfig = signingConfigs.getByName("debug")
-            applicationIdSuffix = ".debug"
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")

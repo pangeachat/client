@@ -1551,9 +1551,11 @@ packages:
   matrix:
     dependency: "direct main"
     description:
-      path: "/Users/balla/PangeaChat/matrix-dart-sdk/.claude/worktrees/delayed-events"
-      relative: false
-    source: path
+      path: "."
+      ref: "9eb0c0c68640fe138cc94ed1035d2e9f211b63ff"
+      resolved-ref: "9eb0c0c68640fe138cc94ed1035d2e9f211b63ff"
+      url: "https://github.com/pangeachat/matrix-dart-sdk.git"
+    source: git
     version: "4.1.0"
   meta:
     dependency: "direct main"
