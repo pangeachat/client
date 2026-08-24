@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-24 11:54:16.398058",
+    "@@last_modified": "2026-08-24 16:25:53.961565",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} પર સ્વિચ કરો",
     "languageDropdownLevel": "સ્તર {level}",
     "whatAreYouLearning": "તમે શું શીખી રહ્યા છો?",
-    "languageSwitcherBaseLanguageLabel": "તમારી મૂળ ભાષા"
+    "languageSwitcherBaseLanguageLabel": "તમારી મૂળ ભાષા",
+    "listenModeDescription": "સાંભળવા માટે કોઈ વિકલ્પ પર ટૅપ કરો. કંઈપણ પસંદ કરેલું નથી."
 }

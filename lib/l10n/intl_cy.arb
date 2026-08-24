@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-24 11:54:15.284493",
+    "@@last_modified": "2026-08-24 16:25:52.982661",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Newid i {language}",
     "languageDropdownLevel": "Lefel {level}",
     "whatAreYouLearning": "Beth wyt ti'n ei ddysgu?",
-    "languageSwitcherBaseLanguageLabel": "Eich iaith sylfaen"
+    "languageSwitcherBaseLanguageLabel": "Eich iaith sylfaen",
+    "listenModeDescription": "Tapiwch ddewis i'w glywed. Nid oes dim wedi'i ddewis."
 }

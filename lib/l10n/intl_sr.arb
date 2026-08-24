@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:21.750601",
+    "@@last_modified": "2026-08-24 16:25:57.710510",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10705,5 +10705,6 @@
     "switchLanguageChipLabel": "Prebaci na {language}",
     "languageDropdownLevel": "Nivo {level}",
     "whatAreYouLearning": "Šta učiš?",
-    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik"
+    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik",
+    "listenModeDescription": "Dodirnite izbor da biste ga čuli. Ništa nije odabrano."
 }

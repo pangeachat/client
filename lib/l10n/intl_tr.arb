@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-24 11:54:22.395700",
+    "@@last_modified": "2026-08-24 16:25:58.267930",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10057,5 +10057,6 @@
     "switchLanguageChipLabel": "{language} diline geç",
     "languageDropdownLevel": "Seviye {level}",
     "whatAreYouLearning": "Ne öğreniyorsun?",
-    "languageSwitcherBaseLanguageLabel": "Ana dilin"
+    "languageSwitcherBaseLanguageLabel": "Ana dilin",
+    "listenModeDescription": "Duymak için bir seçeneğe dokunun. Hiçbir şey seçili değil."
 }

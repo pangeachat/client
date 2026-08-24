@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-24 11:54:14.429912",
+    "@@last_modified": "2026-08-24 16:25:52.379189",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} dilinə keçin",
     "languageDropdownLevel": "Səviyyə {level}",
     "whatAreYouLearning": "Nə öyrənirsiniz?",
-    "languageSwitcherBaseLanguageLabel": "Sizin əsas diliniz"
+    "languageSwitcherBaseLanguageLabel": "Sizin əsas diliniz",
+    "listenModeDescription": "Eşitmək üçün bir seçimə toxunun. Heç nə seçilməyib."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:19.843796",
+    "@@last_modified": "2026-08-24 16:25:56.605539",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9813,5 +9813,6 @@
     "switchLanguageChipLabel": "Bytt til {language}",
     "languageDropdownLevel": "Nivå {level}",
     "whatAreYouLearning": "Hva lærer du?",
-    "languageSwitcherBaseLanguageLabel": "Ditt morsmål"
+    "languageSwitcherBaseLanguageLabel": "Ditt morsmål",
+    "listenModeDescription": "Trykk på et valg for å høre det. Ingenting er valgt."
 }

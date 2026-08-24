@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-24 11:54:14.441692",
+    "@@last_modified": "2026-08-24 16:25:52.308598",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Prebacite se na {language}",
     "languageDropdownLevel": "Nivo {level}",
     "whatAreYouLearning": "Šta učite?",
-    "languageSwitcherBaseLanguageLabel": "Vaš osnovni jezik"
+    "languageSwitcherBaseLanguageLabel": "Vaš osnovni jezik",
+    "listenModeDescription": "Dodirnite izbor da biste ga čuli. Ništa nije odabrano."
 }

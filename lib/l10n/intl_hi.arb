@@ -3094,7 +3094,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-24 11:54:16.838032",
+    "@@last_modified": "2026-08-24 16:25:53.945970",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10388,5 +10388,6 @@
     "switchLanguageChipLabel": "{language} पर स्विच करें",
     "languageDropdownLevel": "स्तर {level}",
     "whatAreYouLearning": "आप क्या सीख रहे हैं?",
-    "languageSwitcherBaseLanguageLabel": "आपकी आधार भाषा"
+    "languageSwitcherBaseLanguageLabel": "आपकी आधार भाषा",
+    "listenModeDescription": "सुनने के लिए किसी विकल्प पर टैप करें। कुछ भी नहीं चुना गया है।"
 }

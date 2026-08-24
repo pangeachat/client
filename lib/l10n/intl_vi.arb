@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:22.978497",
+    "@@last_modified": "2026-08-24 16:25:58.437065",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7048,5 +7048,6 @@
     "switchLanguageChipLabel": "Chuyển sang {language}",
     "languageDropdownLevel": "Cấp độ {level}",
     "whatAreYouLearning": "Bạn đang học gì?",
-    "languageSwitcherBaseLanguageLabel": "Ngôn ngữ cơ bản của bạn"
+    "languageSwitcherBaseLanguageLabel": "Ngôn ngữ cơ bản của bạn",
+    "listenModeDescription": "Chạm vào một lựa chọn để nghe. Chưa có gì được chọn."
 }

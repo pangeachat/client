@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-24 11:54:15.214892",
+    "@@last_modified": "2026-08-24 16:25:52.984341",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9743,5 +9743,6 @@
     "switchLanguageChipLabel": "Wechseln zu {language}",
     "languageDropdownLevel": "Stufe {level}",
     "whatAreYouLearning": "Was lernst du?",
-    "languageSwitcherBaseLanguageLabel": "Deine Basissprache"
+    "languageSwitcherBaseLanguageLabel": "Deine Basissprache",
+    "listenModeDescription": "Tippe auf eine Auswahl, um sie anzuhören. Nichts ist ausgewählt."
 }

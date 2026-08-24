@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-24 11:54:23.151921",
+    "@@last_modified": "2026-08-24 16:25:58.526721",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Tshintshela ku-{language}",
     "languageDropdownLevel": "Inqanaba {level}",
     "whatAreYouLearning": "Ufunda ntoni?",
-    "languageSwitcherBaseLanguageLabel": "Ulwimi lwakho olusisiseko"
+    "languageSwitcherBaseLanguageLabel": "Ulwimi lwakho olusisiseko",
+    "listenModeDescription": "Cofa ukhetho ukuze ulive. Akukho nto ikhethiweyo."
 }

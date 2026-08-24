@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-24 11:54:21.782305",
+    "@@last_modified": "2026-08-24 16:25:57.848109",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Gentos kana basa {language}",
     "languageDropdownLevel": "Tingkat {level}",
     "whatAreYouLearning": "Diajar naon?",
-    "languageSwitcherBaseLanguageLabel": "Basa dasar anjeun"
+    "languageSwitcherBaseLanguageLabel": "Basa dasar anjeun",
+    "listenModeDescription": "Toél pilihan pikeun ngadéngékeunana. Taya nu kapilih."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-24 11:54:20.058940",
+    "@@last_modified": "2026-08-24 16:25:56.333756",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} मा स्विच गर्नुहोस्",
     "languageDropdownLevel": "स्तर {level}",
     "whatAreYouLearning": "तपाईं के सिक्दै हुनुहुन्छ?",
-    "languageSwitcherBaseLanguageLabel": "तपाईंको आधार भाषा"
+    "languageSwitcherBaseLanguageLabel": "तपाईंको आधार भाषा",
+    "listenModeDescription": "सुन्नको लागि एउटा विकल्प ट्याप गर्नुहोस्। केही पनि चयन गरिएको छैन।"
 }

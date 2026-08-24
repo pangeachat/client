@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-24 11:54:16.213161",
+    "@@last_modified": "2026-08-24 16:25:53.683740",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9767,5 +9767,6 @@
     "switchLanguageChipLabel": "Athraigh go {language}",
     "languageDropdownLevel": "Leibhéal {level}",
     "whatAreYouLearning": "Cad atá tú ag foghlaim?",
-    "languageSwitcherBaseLanguageLabel": "Do bhuntheanga"
+    "languageSwitcherBaseLanguageLabel": "Do bhuntheanga",
+    "listenModeDescription": "Tapáil rogha chun í a chloisteáil. Níl aon rud roghnaithe."
 }

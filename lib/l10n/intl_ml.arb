@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-24 11:54:19.428726",
+    "@@last_modified": "2026-08-24 16:25:55.809634",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} എന്നതിലേക്ക് മാറുക",
     "languageDropdownLevel": "ലെവൽ {level}",
     "whatAreYouLearning": "നിങ്ങൾ എന്താണ് പഠിക്കുന്നത്?",
-    "languageSwitcherBaseLanguageLabel": "നിങ്ങളുടെ അടിസ്ഥാന ഭാഷ"
+    "languageSwitcherBaseLanguageLabel": "നിങ്ങളുടെ അടിസ്ഥാന ഭാഷ",
+    "listenModeDescription": "കേൾക്കാൻ ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക. ഒന്നും തിരഞ്ഞെടുത്തിട്ടില്ല."
 }

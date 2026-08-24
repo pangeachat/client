@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:20.889713",
+    "@@last_modified": "2026-08-24 16:25:57.021609",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10488,5 +10488,6 @@
     "switchLanguageChipLabel": "Treci la {language}",
     "languageDropdownLevel": "Nivelul {level}",
     "whatAreYouLearning": "Ce înveți?",
-    "languageSwitcherBaseLanguageLabel": "Limba ta de bază"
+    "languageSwitcherBaseLanguageLabel": "Limba ta de bază",
+    "listenModeDescription": "Atingeți o opțiune pentru a o auzi. Nu este selectat nimic."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-24 11:54:18.726267",
+    "@@last_modified": "2026-08-24 16:25:55.298179",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Muta ad {language}",
     "languageDropdownLevel": "Gradus {level}",
     "whatAreYouLearning": "Quid discis?",
-    "languageSwitcherBaseLanguageLabel": "Lingua tua fundamentalis"
+    "languageSwitcherBaseLanguageLabel": "Lingua tua fundamentalis",
+    "listenModeDescription": "Tange optionem ut audias. Nihil eligitur."
 }

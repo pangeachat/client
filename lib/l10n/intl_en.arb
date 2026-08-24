@@ -3469,6 +3469,11 @@
         "description": "Shown in the email signup form when the homeserver reports the chosen username is already registered."
     },
     "listen": "Listen",
+    "listenModeDescription": "Tap a choice to hear it. Nothing is selected.",
+    "@listenModeDescription": {
+        "type": "text",
+        "description": "Shown under the choices in the writing assistance card while Listen mode is on, explaining that tapping a choice only plays its audio."
+    },
     "trialPeriodExpired": "Your trial period has expired",
     "translations": "translations",
     "definitions": "definitions",

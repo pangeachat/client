@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:15.530482",
+    "@@last_modified": "2026-08-24 16:25:52.975120",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10701,5 +10701,6 @@
     "switchLanguageChipLabel": "Ŝanĝi al la {language}",
     "languageDropdownLevel": "Nivelo {level}",
     "whatAreYouLearning": "Kion vi lernas?",
-    "languageSwitcherBaseLanguageLabel": "Via baza lingvo"
+    "languageSwitcherBaseLanguageLabel": "Via baza lingvo",
+    "listenModeDescription": "Frapu elekton por aŭdi ĝin. Nenio estas elektita."
 }
