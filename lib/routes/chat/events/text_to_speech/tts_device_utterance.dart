@@ -129,6 +129,20 @@ class TtsDeviceUtterance {
   /// The plugin's `speak` future threw.
   void onSpeakThrew() => _settle(TtsDeviceOutcome.failed);
 
+  /// Whether this utterance ran to its end without the app cutting it off.
+  ///
+  /// [TtsDeviceOutcome.played] deliberately does NOT answer this: for listening
+  /// minutes an utterance that was cut off still counts, because the learner
+  /// heard the part that played. Word-level exposure is the opposite — it is
+  /// all-or-nothing per lemma, and a read stopped after two words did not
+  /// expose the learner to the rest of the sentence.
+  ///
+  /// Captured at settle time rather than derived on read: [stopRequested] is
+  /// mutable, and a LATER request's stop must not retroactively reclassify an
+  /// utterance that had already finished.
+  bool get playedToEnd => _playedToEnd;
+  bool _playedToEnd = false;
+
   TtsDeviceOutcome get _endedOutcome {
     if (started) return TtsDeviceOutcome.played;
     return stopRequested ? TtsDeviceOutcome.cancelled : TtsDeviceOutcome.failed;
@@ -141,6 +155,10 @@ class TtsDeviceUtterance {
 
   void _settle([TtsDeviceOutcome? outcome]) {
     dispose();
-    if (!_outcome.isCompleted) _outcome.complete(outcome ?? _endedOutcome);
+    if (_outcome.isCompleted) return;
+    // An explicit outcome is only ever passed for a failure, so a clean finish
+    // is: audio started, nothing asked it to stop, and it ended on its own.
+    _playedToEnd = outcome == null && started && !stopRequested;
+    _outcome.complete(outcome ?? _endedOutcome);
   }
 }

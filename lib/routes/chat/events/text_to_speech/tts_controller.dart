@@ -438,21 +438,24 @@ class TtsController {
       }
     }
 
-    // Whether the route that ran last actually played. Follows the same
-    // per-route start/abort pairing as the meter above: a backend failure
-    // rescued by the device is start/abort/start, so the final value describes
-    // the route that survived, not the one that failed.
-    var played = false;
+    // Whether a route played the utterance THROUGH TO ITS END.
+    //
+    // Deliberately not "a route started". The listening meter banks whatever
+    // played, because a learner who heard half a message did hear that half —
+    // but word-level exposure is all-or-nothing per lemma, and a read stopped
+    // after two words did not expose the learner to the rest of the sentence.
+    // Both device and backend routes can start and then be cut off while still
+    // reporting success (`TtsDeviceOutcome.played` covers "cut off by a stop",
+    // and a Choreo `Loading interrupted` is treated as an expected
+    // cancellation), so neither the start signal nor the return value can
+    // stand in for completion.
+    var completed = false;
 
-    void reportPlaybackStarted() {
-      played = true;
-      guarded(listening.started, 'onPlaybackStarted');
-    }
-
-    void reportPlaybackAborted() {
-      played = false;
-      guarded(listening.aborted, 'onPlaybackAborted');
-    }
+    void reportPlaybackStarted() =>
+        guarded(listening.started, 'onPlaybackStarted');
+    void reportPlaybackAborted() =>
+        guarded(listening.aborted, 'onPlaybackAborted');
+    void reportPlaybackCompleted() => completed = true;
 
     final strippedText = stripEmojis(text);
     final request = _AudioRequest(
@@ -499,6 +502,7 @@ class TtsController {
         speed: speed,
         allowChoreoPlay: allowChoreoPlay,
         onPlaybackStarted: reportPlaybackStarted,
+        onPlaybackCompleted: reportPlaybackCompleted,
         onPlaybackAborted: reportPlaybackAborted,
       );
     } catch (e, s) {
@@ -528,10 +532,10 @@ class TtsController {
       // Guarded like the other two, so telemetry can never surface to the
       // learner.
       guarded(listening.finish, 'listening.finish');
-      // Exposure rides the same bracket, and only when a route actually played:
+      // Exposure rides the same bracket, and only on a completed playback:
       // read-aloud stops on drafting, selection and focus loss, so minting for
-      // an utterance that never started would bank words nobody heard.
-      if (played) {
+      // an utterance that was cut off would bank words nobody heard.
+      if (completed) {
         guarded(() => exposure.record(listening.userId()), 'exposure.record');
       }
     }
@@ -555,6 +559,11 @@ class TtsController {
     double speed = 1.0,
     bool allowChoreoPlay = true,
     VoidCallback? onPlaybackStarted,
+
+    /// A route played this utterance THROUGH TO ITS END. Distinct from
+    /// [onPlaybackStarted] plus a success return: both routes can start
+    /// and then be cut off while still reporting success.
+    VoidCallback? onPlaybackCompleted,
     VoidCallback? onPlaybackAborted,
   }) async {
     chatController?.stopMediaStream.add(null);
@@ -642,6 +651,7 @@ class TtsController {
           tid: tid,
           speed: speed,
           onPlaybackStarted: onPlaybackStarted,
+          onPlaybackCompleted: onPlaybackCompleted,
         );
         // The backend was asked to play and did not. Whatever interval it opened
         // is not listening — drop it BEFORE the fallback opens its own, or the
@@ -663,6 +673,7 @@ class TtsController {
             speed: speed,
             voice: selection.voice,
             onPlaybackStarted: onPlaybackStarted,
+            onPlaybackCompleted: onPlaybackCompleted,
           );
           if (rescued != TtsDeviceOutcome.played) onPlaybackAborted?.call();
         } else if (!success) {
@@ -682,6 +693,7 @@ class TtsController {
           speed: speed,
           voice: selection.voice,
           onPlaybackStarted: onPlaybackStarted,
+          onPlaybackCompleted: onPlaybackCompleted,
         );
         // Anything but audio heard: drop whatever interval the device opened
         // BEFORE a rescue opens its own.
@@ -714,6 +726,7 @@ class TtsController {
             tid: tid,
             speed: speed,
             onPlaybackStarted: onPlaybackStarted,
+            onPlaybackCompleted: onPlaybackCompleted,
           );
           if (!rescued) onPlaybackAborted?.call();
         } else if (outcome == TtsDeviceOutcome.failed) {
@@ -754,6 +767,11 @@ class TtsController {
     /// default voice for the language (set via `_setSpeakingLanguage`) is used.
     Map<String, String>? voice,
     VoidCallback? onPlaybackStarted,
+
+    /// A route played this utterance THROUGH TO ITS END. Distinct from
+    /// [onPlaybackStarted] plus a success return: both routes can start
+    /// and then be cut off while still reporting success.
+    VoidCallback? onPlaybackCompleted,
   }) async {
     if (!_isCurrentRequestId(requestId)) {
       _log('Skipping device playback for superseded request', tid);
@@ -814,6 +832,10 @@ class TtsController {
         ),
       );
       final outcome = await utterance.outcome;
+      // `played` covers an utterance that was cut off, because for listening
+      // minutes the part that played still counts. Exposure needs the stricter
+      // fact, which the utterance captures at settle time.
+      if (utterance.playedToEnd) onPlaybackCompleted?.call();
       _log(
         'Device playback ended: ${outcome.name} '
         '(started=${utterance.started} stopRequested=${utterance.stopRequested} '
@@ -857,6 +879,11 @@ class TtsController {
     required String tid,
     double speed = 1.0,
     VoidCallback? onPlaybackStarted,
+
+    /// A route played this utterance THROUGH TO ITS END. Distinct from
+    /// [onPlaybackStarted] plus a success return: both routes can start
+    /// and then be cut off while still reporting success.
+    VoidCallback? onPlaybackCompleted,
   }) async {
     _log('_speakFromChoreo: text="$text" ttsPhoneme=$ttsPhoneme', tid);
     TextToSpeechResponseModel? ttsRes;
@@ -919,6 +946,10 @@ class TtsController {
       onPlaybackStarted?.call();
       await player.play();
       _log('Audio playback from choreo completed', tid);
+      // Reached only when `play()` resolved normally. The `Loading interrupted`
+      // branch below returns success too — it is an expected cancellation, not
+      // a failure — so a success return cannot stand in for completion.
+      onPlaybackCompleted?.call();
       return true;
     } catch (e, s) {
       if (e.toString().contains('Loading interrupted')) {

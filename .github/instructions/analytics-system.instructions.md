@@ -38,7 +38,7 @@ Different interactions contribute different amounts of XP, reflecting effort. Ea
 - **Using a word in writing** (via the choreographer) — XP based on the construct use type
 - **Hearing a word** through read-aloud or voice-message playback — 0 XP. The exposure is the data; see [Listening exposure](#listening-exposure).
 
-Each data point is stored as a [`OneConstructUse`](../../lib/features/analytics/constructs_model.dart) which includes construct identifier, use type, timestamp, and messageId.
+Each data point is stored as a [`OneConstructUse`](../../lib/features/analytics/constructs_model.dart) which includes construct identifier, use type and timestamp, plus — for message-originated uses only — the message id. Listening exposure carries neither a message id nor a room id; see [Listening exposure](#listening-exposure).
 
 ### Listening exposure
 

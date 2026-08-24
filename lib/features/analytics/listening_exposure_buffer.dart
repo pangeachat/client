@@ -67,6 +67,14 @@ class ListeningExposureBuffer {
   /// exposure in the order the learner first heard each lemma in this window.
   final Map<ConstructIdentifier, _ExposureBucket> _open = {};
 
+  /// The most rows this buffer will hold across failed drains.
+  ///
+  /// A drain that cannot persist puts its rows back, so a store that is down
+  /// would otherwise grow this without bound. Past the cap the OLDEST rows are
+  /// dropped: exposure is a 0-XP research signal, and losing the start of a
+  /// long outage is better than growing memory on a device until it is killed.
+  static const int maxHeldRows = 5000;
+
   /// Buckets closed by the [window] bound and waiting for the next [drain].
   final List<OneConstructUse> _closed = [];
 
@@ -110,6 +118,19 @@ class ListeningExposureBuffer {
     final drained = List<OneConstructUse>.unmodifiable(_closed);
     _closed.clear();
     return drained;
+  }
+
+  /// Puts drained rows back after a failed write.
+  ///
+  /// [drain] empties the buffer, so without this a store error between the
+  /// drain and the write would silently lose the window rather than retry it.
+  /// Restored rows go to the FRONT: they are older than anything recorded
+  /// since, and [_closed] is kept chronological.
+  void restore(List<OneConstructUse> uses) {
+    if (uses.isEmpty) return;
+    _closed.insertAll(0, uses);
+    final overflow = _closed.length - maxHeldRows;
+    if (overflow > 0) _closed.removeRange(0, overflow);
   }
 
   void _closeIfWindowElapsed(DateTime at) {

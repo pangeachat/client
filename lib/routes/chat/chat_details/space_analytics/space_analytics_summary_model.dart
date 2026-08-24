@@ -213,9 +213,14 @@ class SpaceAnalyticsSummaryModel {
         vocabLargeXP += 1;
       }
 
+      // Explicitly three-way, not correct-or-else. A construct can now reach
+      // this list with no scored use at all — listening exposure is 0 XP, and
+      // so are `unk` and every `ign*` — and counting "the learner never got
+      // this right" as "the learner got it wrong" would inflate a
+      // teacher-visible number with words that were merely heard.
       if (entry.hasCorrectUse) {
         vocabUsedCorrectly += 1;
-      } else {
+      } else if (entry.hasIncorrectUse) {
         vocabUsedIncorrectly += 1;
       }
     }

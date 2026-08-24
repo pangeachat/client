@@ -251,10 +251,29 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     if (buffer == null || buffer.isEmpty) return;
     final uses = buffer.drain();
     if (uses.isEmpty) return;
-    // No targetID: a drain is not a message, and the local store keys on its
-    // own stamp anyway. One drain is one write batch, which is what keeps
-    // exposure from moving the `_maxMessagesCached` flush trigger.
-    await addAnalytics(null, uses, language.langCodeShort);
+    try {
+      // No targetID: a drain is not a message, and the local store keys on its
+      // own stamp anyway. One drain is one write batch, which is what keeps
+      // exposure from moving the `_maxMessagesCached` flush trigger.
+      await addAnalytics(null, uses, language.langCodeShort);
+    } catch (err, s) {
+      // The drain already emptied the buffer, so a failed write would lose the
+      // window outright. Put it back and let the next drain retry.
+      //
+      // Caught HERE rather than left to the caller: the lifecycle path calls
+      // this through `unawaited`, where a throw is an unhandled async error,
+      // and the send path calls it before its own try block. Neither would
+      // have restored the rows.
+      buffer.restore(uses);
+      ErrorHandler.logErrorOnce(
+        key: "listening-exposure-drain-failed",
+        e: err,
+        s: s,
+        m: "Could not persist buffered listening exposure; retrying next drain",
+        data: {"rows": uses.length},
+        level: SentryLevel.warning,
+      );
+    }
   }
 
   Future<void> sendLocalAnalyticsToAnalyticsRoom({

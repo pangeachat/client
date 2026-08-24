@@ -167,6 +167,57 @@ void main() {
     });
   });
 
+  group('a failed write', () {
+    test('is retried, not lost', () {
+      // `drain` empties the buffer, so a store error between the drain and the
+      // write would silently lose the window rather than retry it.
+      final buffer = build()..record([id('hablar')]);
+      final drained = buffer.drain();
+
+      buffer.restore(drained);
+
+      expect(buffer.drain().single.count, 1);
+    });
+
+    test('restored rows stay older than anything recorded since', () {
+      final buffer = build()..record([id('hablar')]);
+      final drained = buffer.drain();
+      clock = clock.add(const Duration(minutes: 1));
+      buffer.record([id('comer')]);
+
+      buffer.restore(drained);
+
+      expect(buffer.drain().map((u) => u.lemma), ['hablar', 'comer']);
+    });
+
+    test('cannot grow without bound while the store stays down', () {
+      // Otherwise an outage grows this on the device until it is killed.
+      final buffer = build();
+      for (var i = 0; i < ListeningExposureBuffer.maxHeldRows + 50; i++) {
+        buffer.record([id('lemma$i')]);
+      }
+
+      buffer.restore(buffer.drain());
+
+      expect(buffer.drain(), hasLength(ListeningExposureBuffer.maxHeldRows));
+    });
+
+    test('drops the OLDEST rows when it has to drop some', () {
+      final buffer = build();
+      for (var i = 0; i < ListeningExposureBuffer.maxHeldRows + 1; i++) {
+        buffer.record([id('lemma$i')]);
+      }
+
+      buffer.restore(buffer.drain());
+
+      expect(
+        buffer.drain().first.lemma,
+        'lemma1',
+        reason: 'lemma0 was the oldest and is the one dropped',
+      );
+    });
+  });
+
   group('per-account registry', () {
     test('keeps accounts apart', () {
       ListeningExposureBuffer.forAccount('@a:server')!.record([id('hablar')]);
