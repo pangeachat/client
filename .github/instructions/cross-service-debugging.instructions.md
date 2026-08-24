@@ -4,7 +4,7 @@ applyTo: "**/.env*,**/*repo*.dart,lib/pangea/common/network/**"
 
 # Cross-Service Debugging (client)
 
-See the [org-wide cross-service debugging guide](../../../.github/instructions/cross-service-debugging.instructions.md) for staging auth tokens, curl commands, local full-stack setup, and common pitfalls.
+See the [org-wide cross-service debugging guide](../../../.github/.github/instructions/cross-service-debugging.instructions.md) for staging auth tokens, curl commands, local full-stack setup, and common pitfalls.
 
 ## Client-Specific Notes
 
