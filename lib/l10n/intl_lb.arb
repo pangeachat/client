@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-24 11:54:18.791750",
+    "@@last_modified": "2026-08-24 15:12:02.721765",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Wiesselen op {language}",
     "languageDropdownLevel": "Niveau {level}",
     "whatAreYouLearning": "Wat léiers du?",
-    "languageSwitcherBaseLanguageLabel": "Deng Basissprooch"
+    "languageSwitcherBaseLanguageLabel": "Deng Basissprooch",
+    "constructUseHrdDesc": "Héieren"
 }

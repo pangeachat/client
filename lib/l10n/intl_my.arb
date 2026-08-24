@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-24 11:54:19.748043",
+    "@@last_modified": "2026-08-24 15:12:03.280293",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} သို့ ပြောင်းရန်",
     "languageDropdownLevel": "အဆင့် {level}",
     "whatAreYouLearning": "ဘာတွေ သင်ယူနေပါသလဲ။",
-    "languageSwitcherBaseLanguageLabel": "သင်၏ အခြေခံဘာသာစကား"
+    "languageSwitcherBaseLanguageLabel": "သင်၏ အခြေခံဘာသာစကား",
+    "constructUseHrdDesc": "ကြားဖူး"
 }

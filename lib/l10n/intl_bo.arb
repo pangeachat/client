@@ -2920,7 +2920,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-24 11:54:14.844993",
+    "@@last_modified": "2026-08-24 15:11:59.954450",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9367,5 +9367,6 @@
     "switchLanguageChipLabel": "{language}ལ་སྒྱུར་",
     "languageDropdownLevel": "རིམ་པ་{level}",
     "whatAreYouLearning": "ཁྱེད་རང་གིས་ཅི་ཞིག་སྦྱོང་བཞིན་ཡོད།",
-    "languageSwitcherBaseLanguageLabel": "ཁྱེད་ཀྱི་གཞི་རྩའི་སྐད་ཡིག"
+    "languageSwitcherBaseLanguageLabel": "ཁྱེད་ཀྱི་གཞི་རྩའི་སྐད་ཡིག",
+    "constructUseHrdDesc": "ཐོས་པ་"
 }

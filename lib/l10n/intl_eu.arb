@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-24 11:54:15.969505",
+    "@@last_modified": "2026-08-24 15:12:01.030358",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9756,5 +9756,6 @@
     "switchLanguageChipLabel": "{language} hizkuntzara aldatu",
     "languageDropdownLevel": "{level} maila",
     "whatAreYouLearning": "Zer ikasten ari zara?",
-    "languageSwitcherBaseLanguageLabel": "Zure oinarrizko hizkuntza"
+    "languageSwitcherBaseLanguageLabel": "Zure oinarrizko hizkuntza",
+    "constructUseHrdDesc": "Entzunda"
 }

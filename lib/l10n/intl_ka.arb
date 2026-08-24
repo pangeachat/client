@@ -1938,7 +1938,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-24 11:54:17.917322",
+    "@@last_modified": "2026-08-24 15:12:02.110599",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10656,5 +10656,6 @@
     "switchLanguageChipLabel": "გადართვა {language}-ზე",
     "languageDropdownLevel": "დონე {level}",
     "whatAreYouLearning": "რას სწავლობთ?",
-    "languageSwitcherBaseLanguageLabel": "თქვენი საბაზო ენა"
+    "languageSwitcherBaseLanguageLabel": "თქვენი საბაზო ენა",
+    "constructUseHrdDesc": "მოისმინა"
 }

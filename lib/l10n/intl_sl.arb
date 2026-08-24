@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-24 11:54:21.179132",
+    "@@last_modified": "2026-08-24 15:12:04.262196",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10701,5 +10701,6 @@
     "switchLanguageChipLabel": "Preklopi na {language}",
     "languageDropdownLevel": "Stopnja {level}",
     "whatAreYouLearning": "Kaj se učiš?",
-    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik"
+    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik",
+    "constructUseHrdDesc": "Slišal"
 }

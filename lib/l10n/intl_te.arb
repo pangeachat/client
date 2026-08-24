@@ -1325,7 +1325,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-24 11:54:22.249343",
+    "@@last_modified": "2026-08-24 15:12:04.796264",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10706,5 +10706,6 @@
     "switchLanguageChipLabel": "{language}కి మారండి",
     "languageDropdownLevel": "స్థాయి {level}",
     "whatAreYouLearning": "మీరు ఏమి నేర్చుకుంటున్నారు?",
-    "languageSwitcherBaseLanguageLabel": "మీ ప్రాథమిక భాష"
+    "languageSwitcherBaseLanguageLabel": "మీ ప్రాథమిక భాష",
+    "constructUseHrdDesc": "విన్నారు"
 }

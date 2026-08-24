@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-24 11:54:15.226550",
+    "@@last_modified": "2026-08-24 15:12:00.467403",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10250,5 +10250,6 @@
     "switchLanguageChipLabel": "Přepnout na {language}",
     "languageDropdownLevel": "Úroveň {level}",
     "whatAreYouLearning": "Co se učíte?",
-    "languageSwitcherBaseLanguageLabel": "Váš základní jazyk"
+    "languageSwitcherBaseLanguageLabel": "Váš základní jazyk",
+    "constructUseHrdDesc": "Slyšel"
 }

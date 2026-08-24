@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-24 11:54:19.681498",
+    "@@last_modified": "2026-08-24 15:12:03.397816",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Aqleb għal {language}",
     "languageDropdownLevel": "Livell {level}",
     "whatAreYouLearning": "X’qed titgħallem?",
-    "languageSwitcherBaseLanguageLabel": "Il-lingwa bażi tiegħek"
+    "languageSwitcherBaseLanguageLabel": "Il-lingwa bażi tiegħek",
+    "constructUseHrdDesc": "Smajt"
 }

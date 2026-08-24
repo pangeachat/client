@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-24 11:54:21.654896",
+    "@@last_modified": "2026-08-24 15:12:04.282016",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "U wareeg {language}",
     "languageDropdownLevel": "Heerka {level}",
     "whatAreYouLearning": "Maxaad baranaysaa?",
-    "languageSwitcherBaseLanguageLabel": "Luqaddaada aasaasiga ah"
+    "languageSwitcherBaseLanguageLabel": "Luqaddaada aasaasiga ah",
+    "constructUseHrdDesc": "La maqlay"
 }

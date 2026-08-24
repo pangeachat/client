@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:23.471899",
+    "@@last_modified": "2026-08-24 15:12:05.230605",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9862,5 +9862,6 @@
     "switchLanguageChipLabel": "切換至{language}",
     "languageDropdownLevel": "等級 {level}",
     "whatAreYouLearning": "您正在學習什麼？",
-    "languageSwitcherBaseLanguageLabel": "您的基礎語言"
+    "languageSwitcherBaseLanguageLabel": "您的基礎語言",
+    "constructUseHrdDesc": "聽過"
 }

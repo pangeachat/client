@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:18.363328",
+    "@@last_modified": "2026-08-24 15:12:02.420684",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9949,5 +9949,6 @@
     "switchLanguageChipLabel": "{language}로 전환",
     "languageDropdownLevel": "레벨 {level}",
     "whatAreYouLearning": "무엇을 배우고 있나요?",
-    "languageSwitcherBaseLanguageLabel": "기본 언어"
+    "languageSwitcherBaseLanguageLabel": "기본 언어",
+    "constructUseHrdDesc": "들었어요"
 }

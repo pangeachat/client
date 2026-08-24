@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:17.644882",
+    "@@last_modified": "2026-08-24 15:12:01.929266",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9829,5 +9829,6 @@
     "switchLanguageChipLabel": "Passa a {language}",
     "languageDropdownLevel": "Livello {level}",
     "whatAreYouLearning": "Cosa stai imparando?",
-    "languageSwitcherBaseLanguageLabel": "La tua lingua base"
+    "languageSwitcherBaseLanguageLabel": "La tua lingua base",
+    "constructUseHrdDesc": "Sentito"
 }

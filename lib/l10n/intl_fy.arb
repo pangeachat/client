@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-24 11:54:16.200145",
+    "@@last_modified": "2026-08-24 15:12:01.019589",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Wikselje nei {language}",
     "languageDropdownLevel": "Nivo {level}",
     "whatAreYouLearning": "Wat learsto?",
-    "languageSwitcherBaseLanguageLabel": "Dyn basistaal"
+    "languageSwitcherBaseLanguageLabel": "Dyn basistaal",
+    "constructUseHrdDesc": "Heard"
 }

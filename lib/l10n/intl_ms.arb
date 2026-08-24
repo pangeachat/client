@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-24 11:54:29.443349",
+    "@@last_modified": "2026-08-24 15:12:03.188174",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Tukar kepada {language}",
     "languageDropdownLevel": "Tahap {level}",
     "whatAreYouLearning": "Apa yang anda pelajari?",
-    "languageSwitcherBaseLanguageLabel": "Bahasa asas anda"
+    "languageSwitcherBaseLanguageLabel": "Bahasa asas anda",
+    "constructUseHrdDesc": "Dengar"
 }

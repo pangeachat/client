@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-24 11:54:14.385641",
+    "@@last_modified": "2026-08-24 15:11:59.943029",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10062,5 +10062,6 @@
     "switchLanguageChipLabel": "التبديل إلى {language}",
     "languageDropdownLevel": "المستوى {level}",
     "whatAreYouLearning": "ماذا تتعلم؟",
-    "languageSwitcherBaseLanguageLabel": "لغتك الأساسية"
+    "languageSwitcherBaseLanguageLabel": "لغتك الأساسية",
+    "constructUseHrdDesc": "سمعت"
 }

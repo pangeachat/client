@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-24 11:54:20.371017",
+    "@@last_modified": "2026-08-24 15:12:03.746594",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} 'ਤੇ ਸਵਿੱਚ ਕਰੋ",
     "languageDropdownLevel": "ਪੱਧਰ {level}",
     "whatAreYouLearning": "ਤੁਸੀਂ ਕੀ ਸਿੱਖ ਰਹੇ ਹੋ?",
-    "languageSwitcherBaseLanguageLabel": "ਤੁਹਾਡੀ ਮੂਲ ਭਾਸ਼ਾ"
+    "languageSwitcherBaseLanguageLabel": "ਤੁਹਾਡੀ ਮੂਲ ਭਾਸ਼ਾ",
+    "constructUseHrdDesc": "ਸੁਣਿਆ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-24 11:54:22.796996",
+    "@@last_modified": "2026-08-24 15:12:05.065783",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} پر سوئچ کریں",
     "languageDropdownLevel": "لیول {level}",
     "whatAreYouLearning": "آپ کیا سیکھ رہے ہیں؟",
-    "languageSwitcherBaseLanguageLabel": "آپ کی بنیادی زبان"
+    "languageSwitcherBaseLanguageLabel": "آپ کی بنیادی زبان",
+    "constructUseHrdDesc": "سنا"
 }

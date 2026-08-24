@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-24 11:54:20.501768",
+    "@@last_modified": "2026-08-24 15:12:03.691960",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} ته لاړ شه",
     "languageDropdownLevel": "کچه {level}",
     "whatAreYouLearning": "تاسو څه زده کوئ؟",
-    "languageSwitcherBaseLanguageLabel": "ستاسو اصلي ژبه"
+    "languageSwitcherBaseLanguageLabel": "ستاسو اصلي ژبه",
+    "constructUseHrdDesc": "اوریدل شوی"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-24 11:54:17.161537",
+    "@@last_modified": "2026-08-24 15:12:01.479051",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Chanje an {language}",
     "languageDropdownLevel": "Nivo {level}",
     "whatAreYouLearning": "Kisa w ap aprann?",
-    "languageSwitcherBaseLanguageLabel": "Lang baz ou"
+    "languageSwitcherBaseLanguageLabel": "Lang baz ou",
+    "constructUseHrdDesc": "Tande"
 }

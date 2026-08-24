@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-24 11:54:14.396031",
+    "@@last_modified": "2026-08-24 15:11:59.937773",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Превключване на {language}",
     "languageDropdownLevel": "Ниво {level}",
     "whatAreYouLearning": "Какво учиш?",
-    "languageSwitcherBaseLanguageLabel": "Вашият основен език"
+    "languageSwitcherBaseLanguageLabel": "Вашият основен език",
+    "constructUseHrdDesc": "Чуто"
 }

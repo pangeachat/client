@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-24 11:54:15.787240",
+    "@@last_modified": "2026-08-24 15:12:00.983694",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9753,5 +9753,6 @@
     "switchLanguageChipLabel": "Lülita keelele {language}",
     "languageDropdownLevel": "Tase {level}",
     "whatAreYouLearning": "Mida sa õpid?",
-    "languageSwitcherBaseLanguageLabel": "Sinu baaskeelt"
+    "languageSwitcherBaseLanguageLabel": "Sinu baaskeelt",
+    "constructUseHrdDesc": "Kuuldud"
 }

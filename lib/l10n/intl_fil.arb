@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-24 11:54:16.416867",
+    "@@last_modified": "2026-08-24 15:12:01.022130",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10616,5 +10616,6 @@
     "switchLanguageChipLabel": "Lumipat sa {language}",
     "languageDropdownLevel": "Antas {level}",
     "whatAreYouLearning": "Ano ang pinag-aaralan mo?",
-    "languageSwitcherBaseLanguageLabel": "Ang iyong base language"
+    "languageSwitcherBaseLanguageLabel": "Ang iyong base language",
+    "constructUseHrdDesc": "Narinig"
 }

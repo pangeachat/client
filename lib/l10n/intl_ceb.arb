@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-24 11:54:15.446294",
+    "@@last_modified": "2026-08-24 15:12:00.480317",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Balhin sa {language}",
     "languageDropdownLevel": "Lebel {level}",
     "whatAreYouLearning": "Unsa ang imong ginatun-an?",
-    "languageSwitcherBaseLanguageLabel": "Imong base nga pinulongan"
+    "languageSwitcherBaseLanguageLabel": "Imong base nga pinulongan",
+    "constructUseHrdDesc": "Nadungog"
 }

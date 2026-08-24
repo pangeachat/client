@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:20.889713",
+    "@@last_modified": "2026-08-24 15:12:03.949641",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10488,5 +10488,6 @@
     "switchLanguageChipLabel": "Treci la {language}",
     "languageDropdownLevel": "Nivelul {level}",
     "whatAreYouLearning": "Ce înveți?",
-    "languageSwitcherBaseLanguageLabel": "Limba ta de bază"
+    "languageSwitcherBaseLanguageLabel": "Limba ta de bază",
+    "constructUseHrdDesc": "Auzit"
 }

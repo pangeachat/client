@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-24 11:54:18.357284",
+    "@@last_modified": "2026-08-24 15:12:02.309895",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} ಗೆ ಬದಲಿಸಿ",
     "languageDropdownLevel": "ಹಂತ {level}",
     "whatAreYouLearning": "ನೀವು ಏನು ಕಲಿಯುತ್ತಿದ್ದೀರಿ?",
-    "languageSwitcherBaseLanguageLabel": "ನಿಮ್ಮ ಮೂಲ ಭಾಷೆ"
+    "languageSwitcherBaseLanguageLabel": "ನಿಮ್ಮ ಮೂಲ ಭಾಷೆ",
+    "constructUseHrdDesc": "ಕೇಳಿದೆ"
 }

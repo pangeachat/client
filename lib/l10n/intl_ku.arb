@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-24 11:54:18.840544",
+    "@@last_modified": "2026-08-24 15:12:02.619378",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "بگۆڕە بۆ {language}",
     "languageDropdownLevel": "ئاست {level}",
     "whatAreYouLearning": "چی فێردەبیت؟",
-    "languageSwitcherBaseLanguageLabel": "زمانی بنەڕەتیت"
+    "languageSwitcherBaseLanguageLabel": "زمانی بنەڕەتیت",
+    "constructUseHrdDesc": "بیستراوە"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:20.459529",
+    "@@last_modified": "2026-08-24 15:12:03.675050",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10700,5 +10700,6 @@
     "switchLanguageChipLabel": "Mudar para {language}",
     "languageDropdownLevel": "Nível {level}",
     "whatAreYouLearning": "O que você está aprendendo?",
-    "languageSwitcherBaseLanguageLabel": "Seu idioma base"
+    "languageSwitcherBaseLanguageLabel": "Seu idioma base",
+    "constructUseHrdDesc": "Ouviu"
 }

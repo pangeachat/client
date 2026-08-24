@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:14.522839",
+    "@@last_modified": "2026-08-24 15:11:59.961690",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10384,5 +10384,6 @@
     "switchLanguageChipLabel": "{language} এ পরিবর্তন করুন",
     "languageDropdownLevel": "স্তর {level}",
     "whatAreYouLearning": "আপনি কি শিখছেন?",
-    "languageSwitcherBaseLanguageLabel": "আপনার বেস ভাষা"
+    "languageSwitcherBaseLanguageLabel": "আপনার বেস ভাষা",
+    "constructUseHrdDesc": "শুনেছি"
 }

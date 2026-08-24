@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-24 11:54:22.488124",
+    "@@last_modified": "2026-08-24 15:12:04.707569",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Ба забони {language} гузаштан",
     "languageDropdownLevel": "Сатҳи {level}",
     "whatAreYouLearning": "Шумо чиро меомӯзед?",
-    "languageSwitcherBaseLanguageLabel": "Забони асосии шумо"
+    "languageSwitcherBaseLanguageLabel": "Забони асосии шумо",
+    "constructUseHrdDesc": "Шунидам"
 }

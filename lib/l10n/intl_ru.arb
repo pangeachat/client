@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-24 11:54:21.147184",
+    "@@last_modified": "2026-08-24 15:12:03.954453",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10728,5 +10728,6 @@
     "switchLanguageChipLabel": "Переключиться на {language}",
     "languageDropdownLevel": "Уровень {level}",
     "whatAreYouLearning": "Что вы изучаете?",
-    "languageSwitcherBaseLanguageLabel": "Ваш основной язык"
+    "languageSwitcherBaseLanguageLabel": "Ваш основной язык",
+    "constructUseHrdDesc": "Услышано"
 }

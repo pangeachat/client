@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-24 11:54:22.585797",
+    "@@last_modified": "2026-08-24 15:12:05.034591",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9756,5 +9756,6 @@
     "switchLanguageChipLabel": "Перейти на {language}",
     "languageDropdownLevel": "Рівень {level}",
     "whatAreYouLearning": "Що ви вивчаєте?",
-    "languageSwitcherBaseLanguageLabel": "Ваша основна мова"
+    "languageSwitcherBaseLanguageLabel": "Ваша основна мова",
+    "constructUseHrdDesc": "Чув"
 }

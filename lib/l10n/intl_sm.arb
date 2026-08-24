@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-24 11:54:22.244664",
+    "@@last_modified": "2026-08-24 15:12:04.126767",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Fesuiaʻi i le {language}",
     "languageDropdownLevel": "Tulaga {level}",
     "whatAreYouLearning": "O le a le mea o e aʻoaʻoina?",
-    "languageSwitcherBaseLanguageLabel": "Lau gagana autū"
+    "languageSwitcherBaseLanguageLabel": "Lau gagana autū",
+    "constructUseHrdDesc": "Faʻalogoina"
 }

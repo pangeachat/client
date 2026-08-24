@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-24 11:54:21.545952",
+    "@@last_modified": "2026-08-24 15:12:04.407261",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Kalo te {language}",
     "languageDropdownLevel": "Niveli {level}",
     "whatAreYouLearning": "Çfarë po mëson?",
-    "languageSwitcherBaseLanguageLabel": "Gjuha juaj bazë"
+    "languageSwitcherBaseLanguageLabel": "Gjuha juaj bazë",
+    "constructUseHrdDesc": "Dëgjuar"
 }

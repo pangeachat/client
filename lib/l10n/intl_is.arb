@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-24 11:54:17.779872",
+    "@@last_modified": "2026-08-24 15:12:01.984607",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Skipta yfir í {language}",
     "languageDropdownLevel": "Stig {level}",
     "whatAreYouLearning": "Hvað ertu að læra?",
-    "languageSwitcherBaseLanguageLabel": "Grunnmálið þitt"
+    "languageSwitcherBaseLanguageLabel": "Grunnmálið þitt",
+    "constructUseHrdDesc": "Heyrði"
 }

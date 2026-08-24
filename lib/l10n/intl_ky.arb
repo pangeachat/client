@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-24 11:54:18.929537",
+    "@@last_modified": "2026-08-24 15:12:02.616687",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} тилине которуу",
     "languageDropdownLevel": "{level}-деңгээл",
     "whatAreYouLearning": "Эмне үйрөнүп жатасыз?",
-    "languageSwitcherBaseLanguageLabel": "Сиздин негизги тилиңиз"
+    "languageSwitcherBaseLanguageLabel": "Сиздин негизги тилиңиз",
+    "constructUseHrdDesc": "Уктум"
 }

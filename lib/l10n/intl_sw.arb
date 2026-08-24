@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-24 11:54:22.033887",
+    "@@last_modified": "2026-08-24 15:12:04.677227",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Badilisha hadi {language}",
     "languageDropdownLevel": "Kiwango {level}",
     "whatAreYouLearning": "Unajifunza nini?",
-    "languageSwitcherBaseLanguageLabel": "Lugha yako ya msingi"
+    "languageSwitcherBaseLanguageLabel": "Lugha yako ya msingi",
+    "constructUseHrdDesc": "Nimesikia"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-24 11:54:23.896765",
+    "@@last_modified": "2026-08-24 15:12:05.495357",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Shintshela ku-{language}",
     "languageDropdownLevel": "Izinga {level}",
     "whatAreYouLearning": "Ufundani?",
-    "languageSwitcherBaseLanguageLabel": "Ulimi lwakho oluyisisekelo"
+    "languageSwitcherBaseLanguageLabel": "Ulimi lwakho oluyisisekelo",
+    "constructUseHrdDesc": "Kuzwakale"
 }

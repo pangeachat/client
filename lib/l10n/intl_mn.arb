@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-24 11:54:19.562227",
+    "@@last_modified": "2026-08-24 15:12:03.089700",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} руу шилжих",
     "languageDropdownLevel": "Түвшин {level}",
     "whatAreYouLearning": "Та юу сурч байна вэ?",
-    "languageSwitcherBaseLanguageLabel": "Таны үндсэн хэл"
+    "languageSwitcherBaseLanguageLabel": "Таны үндсэн хэл",
+    "constructUseHrdDesc": "Сонссон"
 }

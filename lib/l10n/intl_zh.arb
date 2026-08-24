@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-24 11:54:23.290953",
+    "@@last_modified": "2026-08-24 15:12:05.286470",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9756,5 +9756,6 @@
     "switchLanguageChipLabel": "切换到{language}",
     "languageDropdownLevel": "级别 {level}",
     "whatAreYouLearning": "您在学什么？",
-    "languageSwitcherBaseLanguageLabel": "您的母语"
+    "languageSwitcherBaseLanguageLabel": "您的母语",
+    "constructUseHrdDesc": "听过"
 }

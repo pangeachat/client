@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-24 11:54:21.629141",
+    "@@last_modified": "2026-08-24 15:12:04.322791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Chinja kuenda ku{language}",
     "languageDropdownLevel": "Chikamu {level}",
     "whatAreYouLearning": "Uri kudzidza chii?",
-    "languageSwitcherBaseLanguageLabel": "Mutauro wako wekutanga"
+    "languageSwitcherBaseLanguageLabel": "Mutauro wako wekutanga",
+    "constructUseHrdDesc": "Ndakanzwa"
 }

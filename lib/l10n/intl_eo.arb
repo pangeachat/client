@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:15.530482",
+    "@@last_modified": "2026-08-24 15:12:00.496293",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10701,5 +10701,6 @@
     "switchLanguageChipLabel": "Ŝanĝi al la {language}",
     "languageDropdownLevel": "Nivelo {level}",
     "whatAreYouLearning": "Kion vi lernas?",
-    "languageSwitcherBaseLanguageLabel": "Via baza lingvo"
+    "languageSwitcherBaseLanguageLabel": "Via baza lingvo",
+    "constructUseHrdDesc": "Aŭdita"
 }

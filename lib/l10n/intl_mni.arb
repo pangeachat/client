@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-24 11:54:19.619939",
+    "@@last_modified": "2026-08-24 15:12:03.106824",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} da hongjin",
     "languageDropdownLevel": "Level {level}",
     "whatAreYouLearning": "Nung karino tamliba?",
-    "languageSwitcherBaseLanguageLabel": "Nanggi base language"
+    "languageSwitcherBaseLanguageLabel": "Nanggi base language",
+    "constructUseHrdDesc": "তাঞ্জা"
 }

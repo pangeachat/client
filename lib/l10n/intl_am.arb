@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-24 11:54:14.581266",
+    "@@last_modified": "2026-08-24 15:11:59.939012",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "ወደ {language} ቀይር",
     "languageDropdownLevel": "ደረጃ {level}",
     "whatAreYouLearning": "ምን እየተማርክ ነው?",
-    "languageSwitcherBaseLanguageLabel": "የእርስዎ መሰረታዊ ቋንቋ"
+    "languageSwitcherBaseLanguageLabel": "የእርስዎ መሰረታዊ ቋንቋ",
+    "constructUseHrdDesc": "ሰምቷል"
 }

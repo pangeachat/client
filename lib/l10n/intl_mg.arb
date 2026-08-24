@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-24 11:54:19.285327",
+    "@@last_modified": "2026-08-24 15:12:02.819247",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Mifindra amin'ny teny {language}",
     "languageDropdownLevel": "Ambaratonga {level}",
     "whatAreYouLearning": "Inona no ianaranao?",
-    "languageSwitcherBaseLanguageLabel": "Ny fiteninao fototra"
+    "languageSwitcherBaseLanguageLabel": "Ny fiteninao fototra",
+    "constructUseHrdDesc": "Reny"
 }

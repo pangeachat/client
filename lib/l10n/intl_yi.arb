@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-24 11:54:23.433561",
+    "@@last_modified": "2026-08-24 15:12:05.285098",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "באַשטימען צו {language}",
     "languageDropdownLevel": "ניוואָ {level}",
     "whatAreYouLearning": "וואָס לערנסטו זיך?",
-    "languageSwitcherBaseLanguageLabel": "דיין באַזע שפּראַך"
+    "languageSwitcherBaseLanguageLabel": "דיין באַזע שפּראַך",
+    "constructUseHrdDesc": "געהערט"
 }

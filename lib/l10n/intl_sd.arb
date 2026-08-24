@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-24 11:54:21.340734",
+    "@@last_modified": "2026-08-24 15:12:04.127837",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} ۾ مَٽايو",
     "languageDropdownLevel": "سطح {level}",
     "whatAreYouLearning": "توهان ڇا سکي رهيا آهيو؟",
-    "languageSwitcherBaseLanguageLabel": "توهان جي بنيادي ٻولي"
+    "languageSwitcherBaseLanguageLabel": "توهان جي بنيادي ٻولي",
+    "constructUseHrdDesc": "ٻڌو"
 }

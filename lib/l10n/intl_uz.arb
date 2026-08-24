@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-24 11:54:23.313865",
+    "@@last_modified": "2026-08-24 15:12:05.016021",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9760,5 +9760,6 @@
     "switchLanguageChipLabel": "{language} tiliga oʻtish",
     "languageDropdownLevel": "Daraja {level}",
     "whatAreYouLearning": "Nimani o'rganyapsiz?",
-    "languageSwitcherBaseLanguageLabel": "Sizning asosiy tilingiz"
+    "languageSwitcherBaseLanguageLabel": "Sizning asosiy tilingiz",
+    "constructUseHrdDesc": "Eshitildi"
 }

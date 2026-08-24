@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-24 11:54:20.388007",
+    "@@last_modified": "2026-08-24 15:12:03.599655",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9841,5 +9841,6 @@
     "switchLanguageChipLabel": "Przełącz na {language}",
     "languageDropdownLevel": "Poziom {level}",
     "whatAreYouLearning": "Czego się uczysz?",
-    "languageSwitcherBaseLanguageLabel": "Twój język podstawowy"
+    "languageSwitcherBaseLanguageLabel": "Twój język podstawowy",
+    "constructUseHrdDesc": "Usłyszane"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-24 11:54:16.693062",
+    "@@last_modified": "2026-08-24 15:12:01.448518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Canza zuwa {language}",
     "languageDropdownLevel": "Mataki {level}",
     "whatAreYouLearning": "Me kake koya?",
-    "languageSwitcherBaseLanguageLabel": "Harshenka na asali"
+    "languageSwitcherBaseLanguageLabel": "Harshenka na asali",
+    "constructUseHrdDesc": "Ji"
 }

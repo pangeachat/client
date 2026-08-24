@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-24 11:54:17.159016",
+    "@@last_modified": "2026-08-24 15:12:01.601888",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Փոխել {language} լեզվին",
     "languageDropdownLevel": "Մակարդակ {level}",
     "whatAreYouLearning": "Ի՞նչ եք սովորում։",
-    "languageSwitcherBaseLanguageLabel": "Ձեր հիմնական լեզուն"
+    "languageSwitcherBaseLanguageLabel": "Ձեր հիմնական լեզուն",
+    "constructUseHrdDesc": "Լսել եմ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-24 11:54:21.155278",
+    "@@last_modified": "2026-08-24 15:12:04.099651",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} වෙත මාරු වන්න",
     "languageDropdownLevel": "මට්ටම {level}",
     "whatAreYouLearning": "ඔබ ඉගෙන ගන්නේ කුමක්ද?",
-    "languageSwitcherBaseLanguageLabel": "ඔබේ මූලික භාෂාව"
+    "languageSwitcherBaseLanguageLabel": "ඔබේ මූලික භාෂාව",
+    "constructUseHrdDesc": "ඇසුණි"
 }

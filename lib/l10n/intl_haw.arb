@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-24 11:54:18.019686",
+    "@@last_modified": "2026-08-24 15:12:01.426058",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "E hoʻololi i ka {language}",
     "languageDropdownLevel": "Papa {level}",
     "whatAreYouLearning": "He aha kāu e aʻo nei?",
-    "languageSwitcherBaseLanguageLabel": "Kou ʻōlelo kumu"
+    "languageSwitcherBaseLanguageLabel": "Kou ʻōlelo kumu",
+    "constructUseHrdDesc": "Lohe ʻia"
 }

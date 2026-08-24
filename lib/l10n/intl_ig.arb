@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-24 11:54:17.776584",
+    "@@last_modified": "2026-08-24 15:12:01.910438",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Gbanwee gaa na {language}",
     "languageDropdownLevel": "Ọkwa {level}",
     "whatAreYouLearning": "Kedu ihe ị na-amụ?",
-    "languageSwitcherBaseLanguageLabel": "Asụsụ gị bụ isi"
+    "languageSwitcherBaseLanguageLabel": "Asụsụ gị bụ isi",
+    "constructUseHrdDesc": "Anụrụ"
 }

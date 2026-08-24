@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:15.004231",
+    "@@last_modified": "2026-08-24 15:12:00.403319",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9883,5 +9883,6 @@
     "switchLanguageChipLabel": "Canviar a {language}",
     "languageDropdownLevel": "Nivell {level}",
     "whatAreYouLearning": "Què estàs aprenent?",
-    "languageSwitcherBaseLanguageLabel": "La teva llengua base"
+    "languageSwitcherBaseLanguageLabel": "La teva llengua base",
+    "constructUseHrdDesc": "Sentit"
 }
