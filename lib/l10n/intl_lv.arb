@@ -3350,14 +3350,12 @@
     "enableAutocorrectPopupTitle": "Pievienojiet savu mērķvalodas tastatūru, dodoties uz:",
     "enableAutocorrectPopupSteps": "  • Iestatījumi\n  • Vispārīgi\n  • Tastatūra\n  • Tastatūras\n  • Pievienot jaunu tastatūru",
     "enableAutocorrectPopupDescription": "Kad valoda ir izvēlēta, jūs varat noklikšķināt uz mazās globusa ikonas apakšējā kreisajā stūrī, lai aktivizētu jauno instalēto tastatūru.",
-    "downloadGboardSteps": " • Lejupielādēt Gboard\n  • Atvērt lietotni\n  • Valodas\n  • Pievienot tastatūru\n  • Izvēlēties valodu\n  • Izvēlēties tastatūras veidu\n  • Gatavs",
     "enableAutocorrectWarning": "Brīdinājums! Nepieciešams pievienot mērķvalodas tastatūru",
     "displayName": "Parādāmais vārds",
     "leaveRoomDescription": "Jūs parādīsiet, ka pametat šo čatu. Citi lietotāji redzēs, ka esat aizgājis no čata.",
     "confirmUserId": "Lūdzu, apstipriniet savu Pangea Chat lietotājvārdu, lai dzēstu savu kontu.",
     "paidSubscriptionStarts": "Sākas {startDate}",
     "cancelInSubscriptionSettings": "• Atcelt jebkurā laikā abonementa iestatījumos",
-    "downloadGboard": "Lejupielādēt Gboard",
     "autocorrectNotAvailable": "Diemžēl jūsu platforma šobrīd nav atbalstīta šai funkcijai. Sekojiet līdzi turpmākajiem attīstības posmiem!",
     "pleaseUpdateApp": "Lūdzu, atjauniniet lietotni, lai turpinātu.",
     "chooseEmojiInstructionsBody": "Saskaņojiet emocijas ar vārdiem, ko tās vislabāk pārstāv. Neuztraucieties! Par nesaskaņām nav punktu zaudējumu. 😅",
@@ -5567,10 +5565,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5596,10 +5590,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9759,6 +9749,10 @@
     "autocorrectAndroidFallbackTitle": "Ja jūsu tastatūra nepiedāvā jūsu mērķa valodu, instalējiet Gboard un pievienojiet valodu tur:",
     "resendInSeconds": "Sūtīt atkārtoti ({seconds})",
     "mapLevelFallbackNotice": "Vēl nav {selected} aktivitāšu — tā vietā tiek rādītas {shown}.",
+    "openKeyboardSettings": "Atvērt tastatūras iestatījumus",
+    "keyboardPromptAddKeyboardMessage": "Pievienojiet tastatūru mērķa valodai, lai darbotos automātiskā korekcija.",
+    "keyboardPromptAddKeyboardAction": "Pievienot tastatūru",
+    "keyboardPromptSwitchKeyboardMessage": "Pieskarieties globusa ikonai tastatūrā, lai pārslēgtos uz mērķa valodu.",
     "switchLanguageChipLabel": "Pārslēgties uz {language}",
     "languageDropdownLevel": "Līmenis {level}",
     "whatAreYouLearning": "Ko tu mācies?",

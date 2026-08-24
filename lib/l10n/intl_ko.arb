@@ -3213,14 +3213,12 @@
     "enableAutocorrectPopupTitle": "목표 언어 키보드를 추가하려면 다음으로 이동하세요:",
     "enableAutocorrectPopupSteps": "  • 설정\n  • 일반\n  • 키보드\n  • 키보드\n  • 새 키보드 추가",
     "enableAutocorrectPopupDescription": "언어를 선택하면, 키보드 왼쪽 하단의 작은 지구본 아이콘을 클릭하여 새로 설치한 키보드를 활성화할 수 있습니다.",
-    "downloadGboardSteps": " • Gboard 다운로드\n  • 앱 열기\n  • 언어\n  • 키보드 추가\n  • 언어 선택\n  • 키보드 유형 선택\n  • 완료",
     "enableAutocorrectWarning": "경고! 목표 언어 키보드 추가가 필요합니다",
     "displayName": "표시 이름",
     "leaveRoomDescription": "이 채팅을 떠날 예정입니다. 다른 사용자는 당신이 채팅을 떠났음을 볼 수 있습니다.",
     "confirmUserId": "계정을 삭제하려면 Pangea 채팅 사용자 이름을 확인하세요.",
     "paidSubscriptionStarts": "{startDate}부터 시작",
     "cancelInSubscriptionSettings": "• 구독 설정에서 언제든 취소 가능",
-    "downloadGboard": "Gboard 다운로드",
     "autocorrectNotAvailable": "안타깝게도 현재 이 플랫폼은 이 기능을 지원하지 않습니다. 향후 개발을 기대하세요!",
     "pleaseUpdateApp": "앱을 계속 사용하려면 업데이트하세요.",
     "chooseEmojiInstructionsBody": "이모지를 가장 잘 나타내는 단어와 일치시키세요. 걱정하지 마세요! 의견이 다르다고 해서 점수가 깎이진 않아요! 😅",
@@ -5580,10 +5578,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5609,10 +5603,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9952,6 +9942,10 @@
     "autocorrectAndroidFallbackTitle": "키보드에서 학습 언어를 지원하지 않는 경우 Gboard를 설치하고 언어를 추가하세요.",
     "resendInSeconds": "재전송 ({seconds})",
     "mapLevelFallbackNotice": "{selected} 활동이 아직 없습니다. 대신 {shown}을(를) 표시합니다.",
+    "openKeyboardSettings": "키보드 설정 열기",
+    "keyboardPromptAddKeyboardMessage": "자동 고침이 작동하도록 목표 언어용 키보드를 추가하세요.",
+    "keyboardPromptAddKeyboardAction": "키보드 추가",
+    "keyboardPromptSwitchKeyboardMessage": "키보드의 지구본 아이콘을 탭하여 목표 언어로 전환하세요.",
     "switchLanguageChipLabel": "{language}로 전환",
     "languageDropdownLevel": "레벨 {level}",
     "whatAreYouLearning": "무엇을 배우고 있나요?",

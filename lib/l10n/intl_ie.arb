@@ -2895,14 +2895,12 @@
     "enableAutocorrectPopupTitle": "Aggiungi tu teclado de lingua target per ir a:",
     "enableAutocorrectPopupSteps": "  • Configuration\n  • General\n  • Keyboard\n  • Keyboards\n  • Aggiungi Nove Keyboard",
     "enableAutocorrectPopupDescription": "Unu li lingue es electet, tu posse clicar la parve glob icon in le basso sinistre del tu clavier pro activar le nove installate clavier.",
-    "downloadGboardSteps": " • Scarigar Gboard\n  • Aperir le app\n  • Lingues\n  • Addar clavier\n  • Electer lingua\n  • Electer typa de clavier\n  • Finito",
     "enableAutocorrectWarning": "Aviso! Require addar le clavier de tu lingua de destino",
     "displayName": "Nomen de visualisation",
     "leaveRoomDescription": "Tu es sur le puncto de partir de iste chat. Altri usatores vide que tu ha partite le chat.",
     "confirmUserId": "Per favor confirma tu nomine de usator in Pangea Chat pro eliminar tu conto.",
     "paidSubscriptionStarts": "A partir de {startDate}",
     "cancelInSubscriptionSettings": " • Cancellar in qualunque momento in le configuration de abbonamento",
-    "downloadGboard": "Scarigar Gboard",
     "autocorrectNotAvailable": "Desolatamente, tu piattaforma non es supportate pro iste caracteristica. Restar attent pro ulteriore developpamento!",
     "pleaseUpdateApp": "Per favor actualisa le app pro continuar.",
     "chooseEmojiInstructionsBody": "Corresponda emojis con le parolas que illes representa melior. Non te preoccupa! Nulle puncto per disaccordo. 😅",
@@ -6019,10 +6017,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6048,10 +6042,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10391,6 +10381,10 @@
     "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o seu idioma-alvo, instale o Gboard e adicione o idioma lá:",
     "resendInSeconds": "Athsheol ({seconds})",
     "mapLevelFallbackNotice": "Níor cuireadh aon ghníomhaíochtaí {selected} leis fós — tá {shown} á thaispeáint ina ionad.",
+    "openKeyboardSettings": "Oscail Socruithe an Mhéarchláir",
+    "keyboardPromptAddKeyboardMessage": "Cuir méarchlár le haghaidh do theanga sprice leis ionas go n-oibreoidh an ceartú uathoibríoch.",
+    "keyboardPromptAddKeyboardAction": "Cuir Méarchlár Leis",
+    "keyboardPromptSwitchKeyboardMessage": "Beartaigh an deilbhín cruinne ar do mhéarchlár chun athrú go dtí do theanga sprice.",
     "switchLanguageChipLabel": "Athraigh go {language}",
     "languageDropdownLevel": "Leibhéal {level}",
     "whatAreYouLearning": "Cad atá tú ag foghlaim?",

@@ -2900,14 +2900,12 @@
     "enableAutocorrectPopupTitle": "আপনার লক্ষ্য ভাষার কীবোর্ড যোগ করুন: সেটিংসে যান",
     "enableAutocorrectPopupSteps": "  • সেটিংস\n  • সাধারণ\n  • কীবোর্ড\n  • কীবোর্ডসমূহ\n  • নতুন কীবোর্ড যোগ করুন",
     "enableAutocorrectPopupDescription": "একবার ভাষা নির্বাচন করলে, আপনি আপনার কীবোর্ডের নিচে বাম পাশে ছোট গ্লোব আইকনে ক্লিক করে নতুন ইনস্টলকৃত কীবোর্ডটি সক্রিয় করতে পারেন।",
-    "downloadGboardSteps": " • Gboard ডাউনলোড করুন\n  • অ্যাপ খুলুন\n  • ভাষা\n  • কীবোর্ড যোগ করুন\n  • ভাষা নির্বাচন করুন\n  • কীবোর্ডের ধরন নির্বাচন করুন\n  • শেষ",
     "enableAutocorrectWarning": "সতর্কতা! আপনার লক্ষ্য ভাষার কীবোর্ড যোগ করতে হবে",
     "displayName": "প্রদর্শন নাম",
     "leaveRoomDescription": "আপনি এই চ্যাট থেকে ছেড়ে যাচ্ছেন। অন্যান্য ব্যবহারকারীরা দেখবে যে আপনি চ্যাট ছেড়ে গেছেন।",
     "confirmUserId": "আপনার পাঞ্জিয়া চ্যাটের ব্যবহারকার নাম নিশ্চিত করুন যাতে আপনি আপনার অ্যাকাউন্ট মুছে ফেলতে পারেন।",
     "paidSubscriptionStarts": "{startDate} থেকে শুরু",
     "cancelInSubscriptionSettings": " • সাবস্ক্রিপশন সেটিংসে যেকোনো সময় বাতিল করুন",
-    "downloadGboard": "Gboard ডাউনলোড করুন",
     "autocorrectNotAvailable": "দুঃখিত, এই বৈশিষ্ট্যের জন্য আপনার প্ল্যাটফর্ম বর্তমানে সমর্থিত নয়। আরও উন্নতির জন্য অপেক্ষা করুন!",
     "pleaseUpdateApp": "অ্যাপটি আপডেট করুন চালিয়ে যেতে।",
     "chooseEmojiInstructionsBody": "ইমোজি এবং তাদের প্রতিনিধিত্বকারী শব্দের সাথে মিলান। চিন্তা করবেন না! অসম্মতিতে কোনও পয়েন্ট কাটা হবে না। 😅",
@@ -6015,10 +6013,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6044,10 +6038,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10387,6 +10377,10 @@
     "autocorrectAndroidFallbackTitle": "যদি আপনার কীবোর্ড আপনার লক্ষ্য ভাষা অফার না করে, তাহলে Gboard ইনস্টল করুন এবং সেখানে ভাষা যোগ করুন:",
     "resendInSeconds": "পুনরায় পাঠান ({seconds})",
     "mapLevelFallbackNotice": "এখনও কোনো {selected} কার্যকলাপ নেই — পরিবর্তে {shown} দেখানো হচ্ছে।",
+    "openKeyboardSettings": "কিবোর্ড সেটিংস খুলুন",
+    "keyboardPromptAddKeyboardMessage": "আপনার লক্ষ্য ভাষার জন্য একটি কীবোর্ড যোগ করুন যাতে স্বয়ংক্রিয় সংশোধন কাজ করে।",
+    "keyboardPromptAddKeyboardAction": "কীবোর্ড যোগ করুন",
+    "keyboardPromptSwitchKeyboardMessage": "আপনার লক্ষ্য ভাষায় পরিবর্তন করতে আপনার কীবোর্ডের গ্লোব আইকনে আলতো চাপুন।",
     "switchLanguageChipLabel": "{language} এ পরিবর্তন করুন",
     "languageDropdownLevel": "স্তর {level}",
     "whatAreYouLearning": "আপনি কি শিখছেন?",

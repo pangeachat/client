@@ -3364,14 +3364,12 @@
     "enableAutocorrectPopupTitle": "Maqsadli til klaviaturasini qo'shish uchun quyidagiga o'ting:",
     "enableAutocorrectPopupSteps": "  • Sozlamalar\n  • Umumiy\n  • Klaviatura\n  • Klaviaturalar\n  • Yangi klaviatura qo'shish",
     "enableAutocorrectPopupDescription": "Til tanlangandan so'ng, klaviaturangizning pastki chap tomonidagi kichik dunyo ikonkasini bosib, yangi o'rnatilgan klaviaturani faollashtirishingiz mumkin.",
-    "downloadGboardSteps": " • Gboard-ni yuklab oling\n  • Ilovani oching\n  • Tillar\n  • Klaviatura qo'shish\n  • Tilni tanlang\n  • Klaviatura turini tanlang\n  • Tayyor",
     "enableAutocorrectWarning": "Ogohlantirish! Maqsadli til klaviaturasini qo'shishni talab qiladi",
     "displayName": "Ko'rsatish nomi",
     "leaveRoomDescription": "Siz bu chatdan chiqmoqdasiz. Boshqa foydalanuvchilar siz chatdan chiqganingizni ko'radilar.",
     "confirmUserId": "Iltimos, hisobingizni o'chirish uchun Pangea Chat foydalanuvchi nomingizni tasdiqlang.",
     "paidSubscriptionStarts": "{startDate} dan boshlab",
     "cancelInSubscriptionSettings": " • Obuna sozlamalarida istalgan vaqtda bekor qiling",
-    "downloadGboard": "Gboard-ni yuklab oling",
     "autocorrectNotAvailable": "Afsuski, platformangiz hozirda bu funksiyani qo'llab-quvvatlamaydi. Keyingi rivojlanishlarni kuzatib boring!",
     "pleaseUpdateApp": "Iltimos, davom etish uchun ilovani yangilang.",
     "chooseEmojiInstructionsBody": "Emojilarni ularning eng yaxshi ifodalaydigan so'zlari bilan moslang. Xavotir olmang! Noto'g'ri fikrda bo'lsangiz, hech qanday ball yo'qotilmaydi. 😅",
@@ -5942,10 +5940,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5971,10 +5965,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9763,6 +9753,10 @@
     "autocorrectAndroidFallbackTitle": "Agar klaviaturangiz maqsadli tilingizni taklif qilmasa, Gboard'ni o'rnating va tilni u yerga qo'shing:",
     "resendInSeconds": "Qayta yuborish ({seconds})",
     "mapLevelFallbackNotice": "Hali {selected} faoliyat yoʻq — buning oʻrniga {shown} koʻrsatilmoqda.",
+    "openKeyboardSettings": "Klaviatura sozlamalarini ochish",
+    "keyboardPromptAddKeyboardMessage": "Avtokorreksiya ishlashi uchun maqsadli tilingiz uchun klaviatura qoʻshing.",
+    "keyboardPromptAddKeyboardAction": "Klaviatura qoʻshish",
+    "keyboardPromptSwitchKeyboardMessage": "Maqsadli tilingizga oʻtish uchun klaviaturangizdagi globus belgisini bosing.",
     "switchLanguageChipLabel": "{language} tiliga oʻtish",
     "languageDropdownLevel": "Daraja {level}",
     "whatAreYouLearning": "Nimani o'rganyapsiz?",

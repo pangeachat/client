@@ -2536,14 +2536,12 @@
     "enableAutocorrectPopupTitle": "Dodajte tastaturu za ciljni jezik tako što ćete otići na:",
     "enableAutocorrectPopupSteps": "  • Podešavanja\n  • Opšte\n  • Tastatura\n  • Tastature\n  • Dodaj novu tastaturu",
     "enableAutocorrectPopupDescription": "Nakon što odaberete jezik, možete kliknuti na malu globus ikonu na donjem levom uglu vaše tastature da aktivirate novu tastaturu.",
-    "downloadGboardSteps": " • Preuzmi Gboard\n  • Otvori aplikaciju\n  • Jezici\n  • Dodaj tastaturu\n  • Izaberi jezik\n  • Izaberi tip tastature\n  • Gotovo",
     "enableAutocorrectWarning": "Upozorenje! Potrebno je dodavanje tastature za ciljni jezik",
     "displayName": "Prikazno ime",
     "leaveRoomDescription": "Upravo napuštate ovaj chat. Ostali korisnici će videti da ste napustili chat.",
     "confirmUserId": "Молимо вас да потврдите своје корисничко име на Pangea Chat-у како бисте избрисали свој налог.",
     "paidSubscriptionStarts": "Почиње {startDate}",
     "cancelInSubscriptionSettings": "• Откажите у било ком тренутку у подешавањима претплате",
-    "downloadGboard": "Преузми Gboard",
     "autocorrectNotAvailable": "Нажалост, ваша платформа тренутно није подржана за ову функцију. Останите у току за даљи развој!",
     "pleaseUpdateApp": "Молимо вас да ажурирате апликацију да бисте наставили.",
     "chooseEmojiInstructionsBody": "Ускладите емотиконе са речима које најбоље представљају. Не брини! Нема поена за неслагање. 😅",
@@ -6336,10 +6334,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6365,10 +6359,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10708,6 +10698,10 @@
     "autocorrectAndroidFallbackTitle": "Ako vaša tastatura ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:",
     "resendInSeconds": "Ponovo pošalji ({seconds})",
     "mapLevelFallbackNotice": "Još nema {selected} aktivnosti — umesto toga prikazuje se {shown}.",
+    "openKeyboardSettings": "Otvori podešavanja tastature",
+    "keyboardPromptAddKeyboardMessage": "Dodajte tastaturu za ciljni jezik da bi automatska ispravka radila.",
+    "keyboardPromptAddKeyboardAction": "Dodaj tastaturu",
+    "keyboardPromptSwitchKeyboardMessage": "Dodirnite ikonu globusa na tastaturi da biste se prebacili na ciljni jezik.",
     "switchLanguageChipLabel": "Prebaci na {language}",
     "languageDropdownLevel": "Nivo {level}",
     "whatAreYouLearning": "Šta učiš?",

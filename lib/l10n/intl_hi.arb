@@ -2895,14 +2895,12 @@
     "enableAutocorrectPopupTitle": "अपनी लक्षित भाषा की कीबोर्ड जोड़ने के लिए जाएं:",
     "enableAutocorrectPopupSteps": "  • सेटिंग्स\n  • सामान्य\n  • कीबोर्ड\n  • कीबोर्ड्स\n  • नया कीबोर्ड जोड़ें",
     "enableAutocorrectPopupDescription": "एक बार भाषा का चयन करने के बाद, आप अपने कीबोर्ड के नीचे बाएं कोने में छोटे ग्लोब आइकन पर क्लिक कर सकते हैं ताकि नए इंस्टॉल किए गए कीबोर्ड को सक्रिय किया जा सके।",
-    "downloadGboardSteps": " • Gboard डाउनलोड करें\n  • ऐप खोलें\n  • भाषाएँ\n  • कीबोर्ड जोड़ें\n  • भाषा चुनें\n  • कीबोर्ड प्रकार चुनें\n  • पूरा",
     "enableAutocorrectWarning": "चेतावनी! अपने लक्ष्य भाषा की कीबोर्ड जोड़ने की आवश्यकता है",
     "displayName": "प्रदर्शन नाम",
     "leaveRoomDescription": "आप इस चैट को छोड़ने वाले हैं। अन्य उपयोगकर्ता देखेंगे कि आपने चैट छोड़ दी है।",
     "confirmUserId": "कृपया अपना पांगेआ चैट उपयोगकर्ता नाम की पुष्टि करें ताकि आपना खाता हटा सकें।",
     "paidSubscriptionStarts": "{startDate} से शुरू",
     "cancelInSubscriptionSettings": "• सदस्यता सेटिंग्स में कभी भी रद्द करें",
-    "downloadGboard": "Gboard डाउनलोड करें",
     "autocorrectNotAvailable": "दुर्भाग्यवश, आपका प्लेटफ़ॉर्म इस सुविधा के लिए वर्तमान में समर्थित नहीं है। आगे के विकास के लिए जुड़े रहें!",
     "pleaseUpdateApp": "कृपया ऐप को अपडेट करें ताकि आप जारी रख सकें।",
     "chooseEmojiInstructionsBody": "इमोजी को उनके सबसे अच्छे प्रतिनिधित्व वाले शब्दों के साथ मिलाएं। चिंता मत करें! असहमत होने पर कोई अंक नहीं कटेगा। 😅",
@@ -6019,10 +6017,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6048,10 +6042,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10391,6 +10381,10 @@
     "autocorrectAndroidFallbackTitle": "यदि आपका कीबोर्ड आपकी लक्ष्य भाषा प्रदान नहीं करता है, तो Gboard इंस्टॉल करें और वहां भाषा जोड़ें:",
     "resendInSeconds": "पुनः भेजें ({seconds})",
     "mapLevelFallbackNotice": "अभी तक कोई {selected} गतिविधियां नहीं हैं — इसके बजाय {shown} दिखाया जा रहा है।",
+    "openKeyboardSettings": "कीबोर्ड सेटिंग खोलें",
+    "keyboardPromptAddKeyboardMessage": "अपनी लक्ष्य भाषा के लिए एक कीबोर्ड जोड़ें ताकि स्वतः सुधार काम कर सके।",
+    "keyboardPromptAddKeyboardAction": "कीबोर्ड जोड़ें",
+    "keyboardPromptSwitchKeyboardMessage": "अपनी लक्ष्य भाषा पर स्विच करने के लिए अपने कीबोर्ड पर ग्लोब आइकन पर टैप करें।",
     "switchLanguageChipLabel": "{language} पर स्विच करें",
     "languageDropdownLevel": "स्तर {level}",
     "whatAreYouLearning": "आप क्या सीख रहे हैं?",
