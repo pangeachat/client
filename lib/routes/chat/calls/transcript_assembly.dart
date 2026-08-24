@@ -127,17 +127,27 @@ class HalfAccounting {
       return value is int && value >= 0 ? value : fallback;
     }
 
+    // A declaration must be COMPLETE and WELL-TYPED, not merely present.
+    //
+    // Checking key presence alone let two things through. A content carrying
+    // only some of the fields had the rest default to their optimistic values,
+    // so what it omitted became assertions it never made. And a content
+    // carrying every key with junk in it -- `'1'` as a string, `'yes'` for a
+    // bool -- parsed to those same optimistic defaults while still counting as
+    // declared, so hostile malformed content could present an empty half as
+    // complete. Anything short of a full, correctly-typed accounting is
+    // undeclared, which reads as incomplete.
+    final wellFormed =
+        raw['chunks_captured'] is int &&
+        raw['chunks_transcribed'] is int &&
+        raw['drain_complete'] is bool &&
+        raw['truncated'] is bool &&
+        raw['segments_omitted'] is int;
+
     final captured = intOr('chunks_captured', 0);
     final rawTranscribed = intOr('chunks_transcribed', 0);
     return HalfAccounting(
-      // Every field, not just one. A content carrying `chunks_captured` alone
-      // was treated as a full declaration, so the fields it omitted defaulted
-      // to their optimistic values and the half read complete -- turning
-      // silence into an assertion.
-      declared:
-          raw.containsKey('chunks_captured') &&
-          raw.containsKey('chunks_transcribed') &&
-          raw.containsKey('drain_complete'),
+      declared: wellFormed,
       incoherent: rawTranscribed > captured,
       chunksCaptured: captured,
       // Clamped: a half claiming more transcribed than captured is malformed,

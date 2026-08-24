@@ -251,6 +251,36 @@ void main() {
       );
     });
 
+    test('junk values are not a declaration, even with every key present', () {
+      // Key presence alone let hostile malformed content -- '1' as a string,
+      // 'yes' for a bool -- parse to optimistic defaults while still counting
+      // as declared, so an empty half could be shown complete.
+      final accounting = HalfAccounting.fromJson(const {
+        'chunks_captured': '1',
+        'chunks_transcribed': '1',
+        'drain_complete': 'yes',
+        'truncated': 'no',
+        'segments_omitted': '0',
+      });
+
+      expect(accounting.declared, isFalse);
+      expect(accounting.writerAdmitsGaps, isTrue);
+    });
+
+    test(
+      'an accounting missing truncated/segments_omitted is not complete',
+      () {
+        final accounting = HalfAccounting.fromJson(const {
+          'chunks_captured': 1,
+          'chunks_transcribed': 1,
+          'drain_complete': true,
+        });
+
+        expect(accounting.declared, isFalse);
+        expect(accounting.writerAdmitsGaps, isTrue);
+      },
+    );
+
     test('a PARTIAL accounting is not a declaration', () {
       // chunks_captured alone used to count as a full declaration, so the
       // fields it omitted defaulted to optimistic values and the half read

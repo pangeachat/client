@@ -148,6 +148,8 @@ void main() {
         'chunks_captured': 0,
         'chunks_transcribed': 0,
         'drain_complete': true,
+        'truncated': false,
+        'segments_omitted': 0,
       })!;
 
       expect(parsed.accounting.incoherent, isTrue);
@@ -163,6 +165,8 @@ void main() {
         'chunks_captured': 0,
         'chunks_transcribed': 0,
         'drain_complete': true,
+        'truncated': false,
+        'segments_omitted': 0,
       })!;
 
       expect(parsed.accounting.incoherent, isFalse);

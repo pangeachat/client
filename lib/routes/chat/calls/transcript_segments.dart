@@ -41,14 +41,7 @@ class TranscriptSegment {
 /// the thing this exists to prevent.
 const kUtterancePause = Duration(milliseconds: 900);
 
-/// How much of a chunk's text the word timings must account for before the cut
-/// they produce is preferred over the chunk's own text.
-///
-/// Not 1.0: joining words with single spaces legitimately loses punctuation and
-/// original spacing, so an exact match is not achievable. Well above a half, so
-/// that a timing list covering only the opening of a sentence loses to the full
-/// text rather than truncating it.
-const _coverageFloor = 0.8;
+final _whitespace = RegExp(r'\s+');
 
 /// Cuts one call's frozen responses into readable segments.
 ///
@@ -110,10 +103,20 @@ List<TranscriptSegment> buildSegments(
     // finer cut of it, they are a partial one -- and keeping only what they
     // covered silently drops the rest. "hello world" timed as ["hello"] must
     // not become "hello".
-    final covered = segments
+    // Counted in WORDS, not characters. A character ratio cannot notice a
+    // short word dropped off a long one -- timings for
+    // "supercalifragilisticexpialidocious" alone cover well over 80% of
+    // "supercalifragilisticexpialidocious bye" and quietly lost "bye".
+    final wordsCovered = segments
         .skip(countBefore)
-        .fold(0, (sum, segment) => sum + segment.text.length);
-    if (covered < transcript.text.trim().length * _coverageFloor) {
+        .fold(
+          0,
+          (sum, segment) => sum + segment.text.split(_whitespace).length,
+        );
+    final wordsInText = transcript.text.trim().isEmpty
+        ? 0
+        : transcript.text.trim().split(_whitespace).length;
+    if (wordsCovered < wordsInText) {
       segments.removeRange(countBefore, segments.length);
       _add(segments, transcript.text);
       continue;

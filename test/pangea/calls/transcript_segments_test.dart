@@ -181,6 +181,21 @@ void main() {
       expect(segments.map((s) => s.text), ['hola que tal', 'muy bien']);
     });
 
+    test('a SHORT word dropped off a long one is still caught', () {
+      // A character ratio could not see this: timings for the long word alone
+      // cover well over 80% of the text, and 'bye' was quietly lost.
+      final segments = buildSegments([
+        _response(
+          'supercalifragilisticexpialidocious bye',
+          timings: [('supercalifragilisticexpialidocious', 0, 900)],
+        ),
+      ]);
+
+      expect(segments.map((s) => s.text), [
+        'supercalifragilisticexpialidocious bye',
+      ]);
+    });
+
     test('no usable chunks yields no segments', () {
       expect(buildSegments([_empty]), isEmpty);
       expect(buildSegments([]), isEmpty);
