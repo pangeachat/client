@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -61,6 +62,35 @@ class Environment {
         return null;
     }
   }
+
+  /// Tags saying WHICH BUILD produced a Sentry event, applied to every event
+  /// by [ErrorHandler.applyBuildTags].
+  ///
+  /// The SDK's default release is
+  /// `<package>@<pubspec version>+<build number>`, and pubspec's `+N` is
+  /// hand-bumped, so every locally-built app reports one byte-identical
+  /// release string for months and a local build is indistinguishable in
+  /// Sentry from a deployed one (#8544). These are tags,
+  /// not environments: the `production`/`staging` allow-list is untouched, and
+  /// a build that cannot positively identify one still does not report at all
+  /// (see [sentryEnvironment]).
+  static Map<String, String> get sentryBuildTags =>
+      sentryBuildTagsFor(buildCommitSha);
+
+  /// [sentryBuildTags] for a build compiled from [commitSha], empty when the
+  /// build has no pushed commit. Split out only so both channels are reachable
+  /// from a test: [buildCommitSha] is a compile-time constant, so a test
+  /// process cannot vary it.
+  @visibleForTesting
+  static Map<String, String> sentryBuildTagsFor(String commitSha) => {
+    'build_channel': commitSha.isEmpty ? 'local' : 'ci',
+    if (commitSha.isNotEmpty) 'build_commit': commitSha,
+    // An override persists in local storage and outranks dotenv, so it
+    // survives a pull and a rebuild: without this, "aimed at the production
+    // homeserver" and "pointed at production once and never un-pointed" look
+    // identical.
+    'config_override': (appConfigOverride != null).toString(),
+  };
 
   /// Force Flutter's accessibility semantics tree always-on (opt-in).
   ///

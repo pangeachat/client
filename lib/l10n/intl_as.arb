@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-21 09:39:33.074059",
+    "@@last_modified": "2026-08-24 11:54:14.590858",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "কী-ব’ৰ্ড ছেটিংছ খোলক",
     "keyboardPromptAddKeyboardMessage": "আপোনাৰ লক্ষ্য ভাষাৰ বাবে এটা কিব'ৰ্ড যোগ কৰক যাতে স্বয়ংক্ৰিয় সংশোধন কাম কৰে।",
     "keyboardPromptAddKeyboardAction": "কিব'ৰ্ড যোগ কৰক",
-    "keyboardPromptSwitchKeyboardMessage": "আপোনাৰ লক্ষ্য ভাষালৈ সলনি কৰিবলৈ আপোনাৰ কিব'ৰ্ডত গ্ল'ব আইকনত টেপ কৰক।"
+    "keyboardPromptSwitchKeyboardMessage": "আপোনাৰ লক্ষ্য ভাষালৈ সলনি কৰিবলৈ আপোনাৰ কিব'ৰ্ডত গ্ল'ব আইকনত টেপ কৰক।",
+    "switchLanguageChipLabel": "{language} লৈ সলনি কৰক",
+    "languageDropdownLevel": "স্তৰ {level}",
+    "whatAreYouLearning": "আপুনি কি শিকি আছে?",
+    "languageSwitcherBaseLanguageLabel": "আপোনাৰ মূল ভাষা"
 }

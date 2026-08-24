@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:42.383398",
+    "@@last_modified": "2026-08-24 11:54:23.471899",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9858,5 +9858,9 @@
     "openKeyboardSettings": "開啟鍵盤設定",
     "keyboardPromptAddKeyboardMessage": "新增目標語言的鍵盤，以啟用自動校正功能。",
     "keyboardPromptAddKeyboardAction": "新增鍵盤",
-    "keyboardPromptSwitchKeyboardMessage": "點擊鍵盤上的地球圖示，切換至您的目標語言。"
+    "keyboardPromptSwitchKeyboardMessage": "點擊鍵盤上的地球圖示，切換至您的目標語言。",
+    "switchLanguageChipLabel": "切換至{language}",
+    "languageDropdownLevel": "等級 {level}",
+    "whatAreYouLearning": "您正在學習什麼？",
+    "languageSwitcherBaseLanguageLabel": "您的基礎語言"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-21 09:39:37.382783",
+    "@@last_modified": "2026-08-24 11:54:18.726267",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Aperi Claviaturae Optiones",
     "keyboardPromptAddKeyboardMessage": "Claviaturae linguae tuae additae sunt, ut correctio automatica operetur.",
     "keyboardPromptAddKeyboardAction": "Adde Claviaturam",
-    "keyboardPromptSwitchKeyboardMessage": "Tange iconem orbis terrarum in claviaturā tuā ut ad linguam tuam commutēs."
+    "keyboardPromptSwitchKeyboardMessage": "Tange iconem orbis terrarum in claviaturā tuā ut ad linguam tuam commutēs.",
+    "switchLanguageChipLabel": "Muta ad {language}",
+    "languageDropdownLevel": "Gradus {level}",
+    "whatAreYouLearning": "Quid discis?",
+    "languageSwitcherBaseLanguageLabel": "Lingua tua fundamentalis"
 }

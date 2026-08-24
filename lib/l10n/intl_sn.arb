@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-21 09:39:40.739828",
+    "@@last_modified": "2026-08-24 11:54:21.629141",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Vhura Zvirongwa zveKibhodhi",
     "keyboardPromptAddKeyboardMessage": "Wedzera kiibhodhi yemutauro wako waunoda kuti autocorrect ishande.",
     "keyboardPromptAddKeyboardAction": "Wedzera Kiibhodhi",
-    "keyboardPromptSwitchKeyboardMessage": "Tinya chiratidzo chepasi rose pakiibhodhi yako kuti uchinje kumutauro wako waunoda."
+    "keyboardPromptSwitchKeyboardMessage": "Tinya chiratidzo chepasi rose pakiibhodhi yako kuti uchinje kumutauro wako waunoda.",
+    "switchLanguageChipLabel": "Chinja kuenda ku{language}",
+    "languageDropdownLevel": "Chikamu {level}",
+    "whatAreYouLearning": "Uri kudzidza chii?",
+    "languageSwitcherBaseLanguageLabel": "Mutauro wako wekutanga"
 }

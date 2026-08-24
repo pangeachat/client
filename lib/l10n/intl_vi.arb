@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:41.838171",
+    "@@last_modified": "2026-08-24 11:54:22.978497",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7044,5 +7044,9 @@
     "openKeyboardSettings": "Mở Cài đặt Bàn phím",
     "keyboardPromptAddKeyboardMessage": "Thêm bàn phím cho ngôn ngữ bạn muốn học để tính năng tự động sửa lỗi hoạt động.",
     "keyboardPromptAddKeyboardAction": "Thêm bàn phím",
-    "keyboardPromptSwitchKeyboardMessage": "Nhấn vào biểu tượng quả địa cầu trên bàn phím để chuyển sang ngôn ngữ bạn muốn học."
+    "keyboardPromptSwitchKeyboardMessage": "Nhấn vào biểu tượng quả địa cầu trên bàn phím để chuyển sang ngôn ngữ bạn muốn học.",
+    "switchLanguageChipLabel": "Chuyển sang {language}",
+    "languageDropdownLevel": "Cấp độ {level}",
+    "whatAreYouLearning": "Bạn đang học gì?",
+    "languageSwitcherBaseLanguageLabel": "Ngôn ngữ cơ bản của bạn"
 }

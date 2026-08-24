@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-21 09:39:35.361317",
+    "@@last_modified": "2026-08-24 11:54:16.951499",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10188,5 +10188,9 @@
     "openKeyboardSettings": "Otvori postavke tipkovnice",
     "keyboardPromptAddKeyboardMessage": "Dodajte tipkovnicu za ciljni jezik kako bi automatska ispravka radila.",
     "keyboardPromptAddKeyboardAction": "Dodaj tipkovnicu",
-    "keyboardPromptSwitchKeyboardMessage": "Dodirnite ikonu globusa na tipkovnici za prebacivanje na ciljni jezik."
+    "keyboardPromptSwitchKeyboardMessage": "Dodirnite ikonu globusa na tipkovnici za prebacivanje na ciljni jezik.",
+    "switchLanguageChipLabel": "Prebaci na {language}",
+    "languageDropdownLevel": "Razina {level}",
+    "whatAreYouLearning": "Što učiš?",
+    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik"
 }

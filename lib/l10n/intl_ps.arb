@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-21 09:39:40.104856",
+    "@@last_modified": "2026-08-24 11:54:20.501768",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "د کیبورډ تنظیمات خلاص کړئ",
     "keyboardPromptAddKeyboardMessage": "د خپلې موخې ژبې لپاره کیبورډ اضافه کړئ ترڅو اتومات سمون کار وکړي.",
     "keyboardPromptAddKeyboardAction": "کیبورډ اضافه کړئ",
-    "keyboardPromptSwitchKeyboardMessage": "د خپلې موخې ژبې ته د بدلولو لپاره په خپل کیبورډ کې د نړۍ آیکون ټایپ کړئ."
+    "keyboardPromptSwitchKeyboardMessage": "د خپلې موخې ژبې ته د بدلولو لپاره په خپل کیبورډ کې د نړۍ آیکون ټایپ کړئ.",
+    "switchLanguageChipLabel": "{language} ته لاړ شه",
+    "languageDropdownLevel": "کچه {level}",
+    "whatAreYouLearning": "تاسو څه زده کوئ؟",
+    "languageSwitcherBaseLanguageLabel": "ستاسو اصلي ژبه"
 }

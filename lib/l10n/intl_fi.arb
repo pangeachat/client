@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-21 09:39:34.728485",
+    "@@last_modified": "2026-08-24 11:54:16.545834",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9789,5 +9789,9 @@
     "openKeyboardSettings": "Avaa näppäimistöasetukset",
     "keyboardPromptAddKeyboardMessage": "Lisää kohdekielesi näppäimistö, jotta automaattinen korjaus toimii.",
     "keyboardPromptAddKeyboardAction": "Lisää näppäimistö",
-    "keyboardPromptSwitchKeyboardMessage": "Vaihda kohdekieleen napauttamalla näppäimistön maapallokuvaketta."
+    "keyboardPromptSwitchKeyboardMessage": "Vaihda kohdekieleen napauttamalla näppäimistön maapallokuvaketta.",
+    "switchLanguageChipLabel": "Vaihda kieleen: {language}",
+    "languageDropdownLevel": "Taso {level}",
+    "whatAreYouLearning": "Mitä opiskelet?",
+    "languageSwitcherBaseLanguageLabel": "Peruskielesi"
 }

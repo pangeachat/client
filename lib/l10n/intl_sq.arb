@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-21 09:39:40.656219",
+    "@@last_modified": "2026-08-24 11:54:21.545952",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Hap Cilësimet e Tastierës",
     "keyboardPromptAddKeyboardMessage": "Shto një tastierë për gjuhën tënde të synuar, që të funksionojë korrigjimi automatik.",
     "keyboardPromptAddKeyboardAction": "Shto tastierë",
-    "keyboardPromptSwitchKeyboardMessage": "Prek ikonën e globit në tastierën tënde për të kaluar te gjuha jote e synuar."
+    "keyboardPromptSwitchKeyboardMessage": "Prek ikonën e globit në tastierën tënde për të kaluar te gjuha jote e synuar.",
+    "switchLanguageChipLabel": "Kalo te {language}",
+    "languageDropdownLevel": "Niveli {level}",
+    "whatAreYouLearning": "Çfarë po mëson?",
+    "languageSwitcherBaseLanguageLabel": "Gjuha juaj bazë"
 }

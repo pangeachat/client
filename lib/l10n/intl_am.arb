@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-21 09:39:32.886286",
+    "@@last_modified": "2026-08-24 11:54:14.581266",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "የቁልፍ ሰሌዳ ቅንብሮችን ክፈት",
     "keyboardPromptAddKeyboardMessage": "ራስ-አስተካካዩ እንዲሰራ ለምትማሩት ቋንቋ የቁልፍ ሰሌዳ ያክሉ።",
     "keyboardPromptAddKeyboardAction": "የቁልፍ ሰሌዳ ያክሉ",
-    "keyboardPromptSwitchKeyboardMessage": "ወደምትማሩት ቋንቋ ለመቀየር በቁልፍ ሰሌዳዎ ላይ ያለውን የምድር ምልክት ይጫኑ።"
+    "keyboardPromptSwitchKeyboardMessage": "ወደምትማሩት ቋንቋ ለመቀየር በቁልፍ ሰሌዳዎ ላይ ያለውን የምድር ምልክት ይጫኑ።",
+    "switchLanguageChipLabel": "ወደ {language} ቀይር",
+    "languageDropdownLevel": "ደረጃ {level}",
+    "whatAreYouLearning": "ምን እየተማርክ ነው?",
+    "languageSwitcherBaseLanguageLabel": "የእርስዎ መሰረታዊ ቋንቋ"
 }

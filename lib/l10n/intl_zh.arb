@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-21 09:39:42.393259",
+    "@@last_modified": "2026-08-24 11:54:23.290953",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9752,5 +9752,9 @@
     "openKeyboardSettings": "打开键盘设置",
     "keyboardPromptAddKeyboardMessage": "为您的目标语言添加键盘，以便自动更正功能正常运行。",
     "keyboardPromptAddKeyboardAction": "添加键盘",
-    "keyboardPromptSwitchKeyboardMessage": "点击键盘上的地球图标，切换到您的目标语言。"
+    "keyboardPromptSwitchKeyboardMessage": "点击键盘上的地球图标，切换到您的目标语言。",
+    "switchLanguageChipLabel": "切换到{language}",
+    "languageDropdownLevel": "级别 {level}",
+    "whatAreYouLearning": "您在学什么？",
+    "languageSwitcherBaseLanguageLabel": "您的母语"
 }

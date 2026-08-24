@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-21 09:39:41.557637",
+    "@@last_modified": "2026-08-24 11:54:22.395700",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,9 @@
     "openKeyboardSettings": "Klavye Ayarlarını Aç",
     "keyboardPromptAddKeyboardMessage": "Otomatik düzeltmenin çalışması için hedef diliniz için bir klavye ekleyin.",
     "keyboardPromptAddKeyboardAction": "Klavye Ekle",
-    "keyboardPromptSwitchKeyboardMessage": "Hedef dilinize geçmek için klavyenizdeki dünya simgesine dokunun."
+    "keyboardPromptSwitchKeyboardMessage": "Hedef dilinize geçmek için klavyenizdeki dünya simgesine dokunun.",
+    "switchLanguageChipLabel": "{language} diline geç",
+    "languageDropdownLevel": "Seviye {level}",
+    "whatAreYouLearning": "Ne öğreniyorsun?",
+    "languageSwitcherBaseLanguageLabel": "Ana dilin"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-21 09:39:34.692139",
+    "@@last_modified": "2026-08-24 11:54:16.273464",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9752,5 +9752,9 @@
     "openKeyboardSettings": "Abrir axustes do teclado",
     "keyboardPromptAddKeyboardMessage": "Engade un teclado para o teu idioma de destino para que funcione o autocorrector.",
     "keyboardPromptAddKeyboardAction": "Engadir teclado",
-    "keyboardPromptSwitchKeyboardMessage": "Toca a icona do globo no teu teclado para cambiar ao teu idioma de destino."
+    "keyboardPromptSwitchKeyboardMessage": "Toca a icona do globo no teu teclado para cambiar ao teu idioma de destino.",
+    "switchLanguageChipLabel": "Cambiar a {language}",
+    "languageDropdownLevel": "Nivel {level}",
+    "whatAreYouLearning": "Que estás a aprender?",
+    "languageSwitcherBaseLanguageLabel": "A túa lingua base"
 }

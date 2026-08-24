@@ -3536,7 +3536,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-21 09:39:37.466607",
+    "@@last_modified": "2026-08-24 11:54:18.784340",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9752,5 +9752,9 @@
     "openKeyboardSettings": "Atvērt tastatūras iestatījumus",
     "keyboardPromptAddKeyboardMessage": "Pievienojiet tastatūru mērķa valodai, lai darbotos automātiskā korekcija.",
     "keyboardPromptAddKeyboardAction": "Pievienot tastatūru",
-    "keyboardPromptSwitchKeyboardMessage": "Pieskarieties globusa ikonai tastatūrā, lai pārslēgtos uz mērķa valodu."
+    "keyboardPromptSwitchKeyboardMessage": "Pieskarieties globusa ikonai tastatūrā, lai pārslēgtos uz mērķa valodu.",
+    "switchLanguageChipLabel": "Pārslēgties uz {language}",
+    "languageDropdownLevel": "Līmenis {level}",
+    "whatAreYouLearning": "Ko tu mācies?",
+    "languageSwitcherBaseLanguageLabel": "Jūsu pamata valoda"
 }

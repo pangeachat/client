@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-21 09:39:33.799415",
+    "@@last_modified": "2026-08-24 11:54:15.214892",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9739,5 +9739,9 @@
     "openKeyboardSettings": "Tastatureinstellungen öffnen",
     "keyboardPromptAddKeyboardMessage": "Füge eine Tastatur für deine Zielsprache hinzu, damit die Autokorrektur funktioniert.",
     "keyboardPromptAddKeyboardAction": "Tastatur hinzufügen",
-    "keyboardPromptSwitchKeyboardMessage": "Tippe auf das Globus-Symbol auf deiner Tastatur, um zu deiner Zielsprache zu wechseln."
+    "keyboardPromptSwitchKeyboardMessage": "Tippe auf das Globus-Symbol auf deiner Tastatur, um zu deiner Zielsprache zu wechseln.",
+    "switchLanguageChipLabel": "Wechseln zu {language}",
+    "languageDropdownLevel": "Stufe {level}",
+    "whatAreYouLearning": "Was lernst du?",
+    "languageSwitcherBaseLanguageLabel": "Deine Basissprache"
 }

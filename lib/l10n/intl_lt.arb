@@ -2968,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-21 09:39:37.486908",
+    "@@last_modified": "2026-08-24 11:54:18.747051",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10533,5 +10533,9 @@
     "openKeyboardSettings": "Atidaryti klaviatūros nustatymus",
     "keyboardPromptAddKeyboardMessage": "Pridėkite tikslinės kalbos klaviatūrą, kad veiktų automatinis taisymas.",
     "keyboardPromptAddKeyboardAction": "Pridėti klaviatūrą",
-    "keyboardPromptSwitchKeyboardMessage": "Bakstelėkite gaublio piktogramą klaviatūroje, kad perjungtumėte į tikslinę kalbą."
+    "keyboardPromptSwitchKeyboardMessage": "Bakstelėkite gaublio piktogramą klaviatūroje, kad perjungtumėte į tikslinę kalbą.",
+    "switchLanguageChipLabel": "Perjungti į {language}",
+    "languageDropdownLevel": "{level} lygis",
+    "whatAreYouLearning": "Ko mokotės?",
+    "languageSwitcherBaseLanguageLabel": "Jūsų pagrindinė kalba"
 }

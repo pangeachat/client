@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-21 09:39:41.411562",
+    "@@last_modified": "2026-08-24 11:54:22.488124",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Танзимоти клавиатураро кушоед",
     "keyboardPromptAddKeyboardMessage": "Барои забони мақсадноки худ клавиатура илова кунед, то ки ислоҳи худкор кор кунад.",
     "keyboardPromptAddKeyboardAction": "Клавиатура илова кунед",
-    "keyboardPromptSwitchKeyboardMessage": "Барои гузаштан ба забони мақсадноки худ тасвири глобусро дар клавиатураи худ пахш кунед."
+    "keyboardPromptSwitchKeyboardMessage": "Барои гузаштан ба забони мақсадноки худ тасвири глобусро дар клавиатураи худ пахш кунед.",
+    "switchLanguageChipLabel": "Ба забони {language} гузаштан",
+    "languageDropdownLevel": "Сатҳи {level}",
+    "whatAreYouLearning": "Шумо чиро меомӯзед?",
+    "languageSwitcherBaseLanguageLabel": "Забони асосии шумо"
 }

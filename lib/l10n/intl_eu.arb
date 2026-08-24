@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-21 09:39:34.817746",
+    "@@last_modified": "2026-08-24 11:54:15.969505",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9752,5 +9752,9 @@
     "openKeyboardSettings": "Ireki teklatuaren ezarpenak",
     "keyboardPromptAddKeyboardMessage": "Gehitu teklatua zure xede-hizkuntzarako, zuzenketa automatikoa funtziona dezan.",
     "keyboardPromptAddKeyboardAction": "Gehitu teklatua",
-    "keyboardPromptSwitchKeyboardMessage": "Sakatu teklatuko globoaren ikonoa zure xede-hizkuntzara aldatzeko."
+    "keyboardPromptSwitchKeyboardMessage": "Sakatu teklatuko globoaren ikonoa zure xede-hizkuntzara aldatzeko.",
+    "switchLanguageChipLabel": "{language} hizkuntzara aldatu",
+    "languageDropdownLevel": "{level} maila",
+    "whatAreYouLearning": "Zer ikasten ari zara?",
+    "languageSwitcherBaseLanguageLabel": "Zure oinarrizko hizkuntza"
 }

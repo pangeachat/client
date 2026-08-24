@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-21 09:39:41.280306",
+    "@@last_modified": "2026-08-24 11:54:22.389093",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10384,5 +10384,9 @@
     "openKeyboardSettings": "เปิดการตั้งค่าแป้นพิมพ์",
     "keyboardPromptAddKeyboardMessage": "เพิ่มแป้นพิมพ์สำหรับภาษาเป้าหมายของคุณ เพื่อให้การแก้ไขอัตโนมัติทำงานได้",
     "keyboardPromptAddKeyboardAction": "เพิ่มแป้นพิมพ์",
-    "keyboardPromptSwitchKeyboardMessage": "แตะไอคอนรูปโลกบนแป้นพิมพ์ของคุณเพื่อสลับไปใช้ภาษาเป้าหมาย"
+    "keyboardPromptSwitchKeyboardMessage": "แตะไอคอนรูปโลกบนแป้นพิมพ์ของคุณเพื่อสลับไปใช้ภาษาเป้าหมาย",
+    "switchLanguageChipLabel": "เปลี่ยนเป็น {language}",
+    "languageDropdownLevel": "ระดับ {level}",
+    "whatAreYouLearning": "คุณกำลังเรียนรู้อะไรอยู่",
+    "languageSwitcherBaseLanguageLabel": "ภาษาหลักของคุณ"
 }

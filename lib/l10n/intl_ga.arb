@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-21 09:39:34.813264",
+    "@@last_modified": "2026-08-24 11:54:16.213161",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9763,5 +9763,9 @@
     "openKeyboardSettings": "Oscail Socruithe an Mhéarchláir",
     "keyboardPromptAddKeyboardMessage": "Cuir méarchlár do do sprioc-theanga leis ionas go n-oibreoidh an ceartú uathoibríoch.",
     "keyboardPromptAddKeyboardAction": "Cuir Méarchlár Leis",
-    "keyboardPromptSwitchKeyboardMessage": "Beartaigh an deilbhín cruinne ar do mhéarchlár chun aistriú chuig do sprioc-theanga."
+    "keyboardPromptSwitchKeyboardMessage": "Beartaigh an deilbhín cruinne ar do mhéarchlár chun aistriú chuig do sprioc-theanga.",
+    "switchLanguageChipLabel": "Athraigh go {language}",
+    "languageDropdownLevel": "Leibhéal {level}",
+    "whatAreYouLearning": "Cad atá tú ag foghlaim?",
+    "languageSwitcherBaseLanguageLabel": "Do bhuntheanga"
 }

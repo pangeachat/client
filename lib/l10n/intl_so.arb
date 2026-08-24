@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-21 09:39:40.748831",
+    "@@last_modified": "2026-08-24 11:54:21.654896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Fur Goobaha Kiiboodhka",
     "keyboardPromptAddKeyboardMessage": "Ku dar kiiboodhka luqadda aad bartay si autocorrect-ku u shaqeeyo.",
     "keyboardPromptAddKeyboardAction": "Ku dar Kiiboodhka",
-    "keyboardPromptSwitchKeyboardMessage": "Taabo astaanta caalamka ee kiiboodhkaaga si aad ugu beddesho luqadda aad bartay."
+    "keyboardPromptSwitchKeyboardMessage": "Taabo astaanta caalamka ee kiiboodhkaaga si aad ugu beddesho luqadda aad bartay.",
+    "switchLanguageChipLabel": "U wareeg {language}",
+    "languageDropdownLevel": "Heerka {level}",
+    "whatAreYouLearning": "Maxaad baranaysaa?",
+    "languageSwitcherBaseLanguageLabel": "Luqaddaada aasaasiga ah"
 }

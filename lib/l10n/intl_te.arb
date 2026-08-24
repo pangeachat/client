@@ -1325,7 +1325,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-21 09:39:41.747075",
+    "@@last_modified": "2026-08-24 11:54:22.249343",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10702,5 +10702,9 @@
     "openKeyboardSettings": "కీబోర్డ్ సెట్టింగ్‌లను తెరవండి",
     "keyboardPromptAddKeyboardMessage": "ఆటోకరెక్ట్ పని చేయడానికి మీ లక్ష్య భాష కోసం కీబోర్డ్‌ను జోడించండి.",
     "keyboardPromptAddKeyboardAction": "కీబోర్డ్‌ను జోడించండి",
-    "keyboardPromptSwitchKeyboardMessage": "మీ లక్ష్య భాషకు మారడానికి మీ కీబోర్డ్‌లోని గ్లోబ్ చిహ్నాన్ని నొక్కండి."
+    "keyboardPromptSwitchKeyboardMessage": "మీ లక్ష్య భాషకు మారడానికి మీ కీబోర్డ్‌లోని గ్లోబ్ చిహ్నాన్ని నొక్కండి.",
+    "switchLanguageChipLabel": "{language}కి మారండి",
+    "languageDropdownLevel": "స్థాయి {level}",
+    "whatAreYouLearning": "మీరు ఏమి నేర్చుకుంటున్నారు?",
+    "languageSwitcherBaseLanguageLabel": "మీ ప్రాథమిక భాష"
 }

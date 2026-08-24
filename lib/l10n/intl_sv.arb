@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:41.119106",
+    "@@last_modified": "2026-08-24 11:54:21.932867",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10270,5 +10270,9 @@
     "openKeyboardSettings": "Öppna tangentbordsinställningar",
     "keyboardPromptAddKeyboardMessage": "Lägg till ett tangentbord för ditt målspråk så att autokorrigeringen fungerar.",
     "keyboardPromptAddKeyboardAction": "Lägg till tangentbord",
-    "keyboardPromptSwitchKeyboardMessage": "Tryck på jordglobsikonen på tangentbordet för att växla till ditt målspråk."
+    "keyboardPromptSwitchKeyboardMessage": "Tryck på jordglobsikonen på tangentbordet för att växla till ditt målspråk.",
+    "switchLanguageChipLabel": "Byt till {language}",
+    "languageDropdownLevel": "Nivå {level}",
+    "whatAreYouLearning": "Vad lär du dig?",
+    "languageSwitcherBaseLanguageLabel": "Ditt basspråk"
 }

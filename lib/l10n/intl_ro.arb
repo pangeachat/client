@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:39.996812",
+    "@@last_modified": "2026-08-24 11:54:20.889713",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10484,5 +10484,9 @@
     "openKeyboardSettings": "Deschide Setările Tastaturii",
     "keyboardPromptAddKeyboardMessage": "Adaugă o tastatură pentru limba țintă, astfel încât corectarea automată să funcționeze.",
     "keyboardPromptAddKeyboardAction": "Adaugă tastatură",
-    "keyboardPromptSwitchKeyboardMessage": "Atinge pictograma glob de pe tastatură pentru a comuta la limba țintă."
+    "keyboardPromptSwitchKeyboardMessage": "Atinge pictograma glob de pe tastatură pentru a comuta la limba țintă.",
+    "switchLanguageChipLabel": "Treci la {language}",
+    "languageDropdownLevel": "Nivelul {level}",
+    "whatAreYouLearning": "Ce înveți?",
+    "languageSwitcherBaseLanguageLabel": "Limba ta de bază"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-21 09:39:39.844277",
+    "@@last_modified": "2026-08-24 11:54:20.371017",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "ਕੀਬੋਰਡ ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ",
     "keyboardPromptAddKeyboardMessage": "ਆਟੋਕਰੈਕਟ ਕੰਮ ਕਰਨ ਲਈ ਆਪਣੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਲਈ ਇੱਕ ਕੀਬੋਰਡ ਸ਼ਾਮਲ ਕਰੋ।",
     "keyboardPromptAddKeyboardAction": "ਕੀਬੋਰਡ ਸ਼ਾਮਲ ਕਰੋ",
-    "keyboardPromptSwitchKeyboardMessage": "ਆਪਣੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ 'ਤੇ ਜਾਣ ਲਈ ਆਪਣੇ ਕੀਬੋਰਡ 'ਤੇ ਗਲੋਬ ਆਈਕਨ 'ਤੇ ਟੈਪ ਕਰੋ।"
+    "keyboardPromptSwitchKeyboardMessage": "ਆਪਣੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ 'ਤੇ ਜਾਣ ਲਈ ਆਪਣੇ ਕੀਬੋਰਡ 'ਤੇ ਗਲੋਬ ਆਈਕਨ 'ਤੇ ਟੈਪ ਕਰੋ।",
+    "switchLanguageChipLabel": "{language} 'ਤੇ ਸਵਿੱਚ ਕਰੋ",
+    "languageDropdownLevel": "ਪੱਧਰ {level}",
+    "whatAreYouLearning": "ਤੁਸੀਂ ਕੀ ਸਿੱਖ ਰਹੇ ਹੋ?",
+    "languageSwitcherBaseLanguageLabel": "ਤੁਹਾਡੀ ਮੂਲ ਭਾਸ਼ਾ"
 }

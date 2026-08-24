@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-21 09:39:41.841538",
+    "@@last_modified": "2026-08-24 11:54:23.006609",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "كۇنۇپكا تاختىسى تەڭشەكلىرىنى ئېچىڭ",
     "keyboardPromptAddKeyboardMessage": "ئاپتوماتىك تۈزىتىش ئىقتىدارىنى ئىشلىتىش ئۈچۈن نىشان تىلىڭىزنىڭ كۇنۇپكا تاختىسىنى قوشۇڭ.",
     "keyboardPromptAddKeyboardAction": "كۇنۇپكا تاختىسى قوشۇش",
-    "keyboardPromptSwitchKeyboardMessage": "نىشان تىلىڭىزغا ئالماشتۇرۇش ئۈچۈن كۇنۇپكا تاختىسىدىكى يەر شارى بەلگىسىنى چېكىڭ."
+    "keyboardPromptSwitchKeyboardMessage": "نىشان تىلىڭىزغا ئالماشتۇرۇش ئۈچۈن كۇنۇپكا تاختىسىدىكى يەر شارى بەلگىسىنى چېكىڭ.",
+    "switchLanguageChipLabel": "{language}غا ئالماشتۇرۇش",
+    "languageDropdownLevel": "{level}-دەرىجە",
+    "whatAreYouLearning": "نېمە ئۆگىنىۋاتىسىز؟",
+    "languageSwitcherBaseLanguageLabel": "سىزنىڭ ئاساسىي تىلىڭىز"
 }

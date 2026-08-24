@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-21 09:39:41.051589",
+    "@@last_modified": "2026-08-24 11:54:21.782305",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Buka Setélan Kibor",
     "keyboardPromptAddKeyboardMessage": "Tambihkeun kibor pikeun basa target anjeun supados autocorrect tiasa dianggo.",
     "keyboardPromptAddKeyboardAction": "Tambihkeun Kibor",
-    "keyboardPromptSwitchKeyboardMessage": "Ketok ikon globe dina kibor anjeun pikeun ngalih ka basa target anjeun."
+    "keyboardPromptSwitchKeyboardMessage": "Ketok ikon globe dina kibor anjeun pikeun ngalih ka basa target anjeun.",
+    "switchLanguageChipLabel": "Gentos kana basa {language}",
+    "languageDropdownLevel": "Tingkat {level}",
+    "whatAreYouLearning": "Diajar naon?",
+    "languageSwitcherBaseLanguageLabel": "Basa dasar anjeun"
 }

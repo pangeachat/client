@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-21 09:39:33.866634",
+    "@@last_modified": "2026-08-24 11:54:15.469222",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7971,5 +7971,9 @@
     "openKeyboardSettings": "Abrir la configuración del teclado",
     "keyboardPromptAddKeyboardMessage": "Añade un teclado para tu idioma objetivo para que funcione la autocorrección.",
     "keyboardPromptAddKeyboardAction": "Añadir teclado",
-    "keyboardPromptSwitchKeyboardMessage": "Toca el icono del globo en tu teclado para cambiar a tu idioma objetivo."
+    "keyboardPromptSwitchKeyboardMessage": "Toca el icono del globo en tu teclado para cambiar a tu idioma objetivo.",
+    "switchLanguageChipLabel": "Cambiar a {language}",
+    "languageDropdownLevel": "Nivel {level}",
+    "whatAreYouLearning": "¿Qué estás aprendiendo?",
+    "languageSwitcherBaseLanguageLabel": "Tu idioma base"
 }

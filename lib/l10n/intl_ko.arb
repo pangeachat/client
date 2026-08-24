@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:36.755787",
+    "@@last_modified": "2026-08-24 11:54:18.363328",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9945,5 +9945,9 @@
     "openKeyboardSettings": "키보드 설정 열기",
     "keyboardPromptAddKeyboardMessage": "자동 고침이 작동하도록 목표 언어용 키보드를 추가하세요.",
     "keyboardPromptAddKeyboardAction": "키보드 추가",
-    "keyboardPromptSwitchKeyboardMessage": "키보드의 지구본 아이콘을 탭하여 목표 언어로 전환하세요."
+    "keyboardPromptSwitchKeyboardMessage": "키보드의 지구본 아이콘을 탭하여 목표 언어로 전환하세요.",
+    "switchLanguageChipLabel": "{language}로 전환",
+    "languageDropdownLevel": "레벨 {level}",
+    "whatAreYouLearning": "무엇을 배우고 있나요?",
+    "languageSwitcherBaseLanguageLabel": "기본 언어"
 }

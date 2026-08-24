@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-21 09:39:35.396736",
+    "@@last_modified": "2026-08-24 11:54:17.161537",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Louvri Anviwònman Klavye",
     "keyboardPromptAddKeyboardMessage": "Ajoute yon klavye pou lang sib ou pou koreksyon otomatik la mache.",
     "keyboardPromptAddKeyboardAction": "Ajoute Klavye",
-    "keyboardPromptSwitchKeyboardMessage": "Tape ikòn glòb la sou klavye ou pou chanje nan lang sib ou."
+    "keyboardPromptSwitchKeyboardMessage": "Tape ikòn glòb la sou klavye ou pou chanje nan lang sib ou.",
+    "switchLanguageChipLabel": "Chanje an {language}",
+    "languageDropdownLevel": "Nivo {level}",
+    "whatAreYouLearning": "Kisa w ap aprann?",
+    "languageSwitcherBaseLanguageLabel": "Lang baz ou"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-21 09:39:35.978385",
+    "@@last_modified": "2026-08-24 11:54:17.779872",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Opna lyklaborðsstillingar",
     "keyboardPromptAddKeyboardMessage": "Bættu við lyklaborði fyrir tungumálið sem þú ert að læra svo sjálfvirk leiðrétting virki.",
     "keyboardPromptAddKeyboardAction": "Bæta við lyklaborði",
-    "keyboardPromptSwitchKeyboardMessage": "Pikkaðu á hnattartáknið á lyklaborðinu þínu til að skipta yfir í tungumálið sem þú ert að læra."
+    "keyboardPromptSwitchKeyboardMessage": "Pikkaðu á hnattartáknið á lyklaborðinu þínu til að skipta yfir í tungumálið sem þú ert að læra.",
+    "switchLanguageChipLabel": "Skipta yfir í {language}",
+    "languageDropdownLevel": "Stig {level}",
+    "whatAreYouLearning": "Hvað ertu að læra?",
+    "languageSwitcherBaseLanguageLabel": "Grunnmálið þitt"
 }

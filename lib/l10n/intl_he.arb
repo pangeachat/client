@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:35.282354",
+    "@@last_modified": "2026-08-24 11:54:16.651913",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10666,5 +10666,9 @@
     "openKeyboardSettings": "פתח הגדרות מקלדת",
     "keyboardPromptAddKeyboardMessage": "הוסף מקלדת לשפת היעד שלך כדי שהתיקון האוטומטי יעבוד.",
     "keyboardPromptAddKeyboardAction": "הוסף מקלדת",
-    "keyboardPromptSwitchKeyboardMessage": "הקש על סמל הגלובוס במקלדת שלך כדי לעבור לשפת היעד שלך."
+    "keyboardPromptSwitchKeyboardMessage": "הקש על סמל הגלובוס במקלדת שלך כדי לעבור לשפת היעד שלך.",
+    "switchLanguageChipLabel": "עבור ל{language}",
+    "languageDropdownLevel": "רמה {level}",
+    "whatAreYouLearning": "מה אתה לומד?",
+    "languageSwitcherBaseLanguageLabel": "שפת הבסיס שלך"
 }

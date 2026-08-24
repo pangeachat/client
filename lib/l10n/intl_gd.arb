@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-21 09:39:35.039522",
+    "@@last_modified": "2026-08-24 11:54:16.356222",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Fosgail Roghainnean a’ Mheur-chlàir",
     "keyboardPromptAddKeyboardMessage": "Cuir meur-chlàr ris airson do chànan targaid gus am bi fèin-cheartachadh ag obair.",
     "keyboardPromptAddKeyboardAction": "Cuir Meur-chlàr ris",
-    "keyboardPromptSwitchKeyboardMessage": "Tap air an ìomhaigh chruinne air a’ mheur-chlàr agad gus atharrachadh chun chànan targaid agad."
+    "keyboardPromptSwitchKeyboardMessage": "Tap air an ìomhaigh chruinne air a’ mheur-chlàr agad gus atharrachadh chun chànan targaid agad.",
+    "switchLanguageChipLabel": "Atharraich gu {language}",
+    "languageDropdownLevel": "Ìre {level}",
+    "whatAreYouLearning": "Dè tha thu ag ionnsachadh?",
+    "languageSwitcherBaseLanguageLabel": "Do chànan bunaiteach"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-21 09:39:36.824463",
+    "@@last_modified": "2026-08-24 11:54:18.092544",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Пернетақта параметрлерін ашу",
     "keyboardPromptAddKeyboardMessage": "Автотүзету жұмыс істеуі үшін мақсатты тіліңізге арналған пернетақтаны қосыңыз.",
     "keyboardPromptAddKeyboardAction": "Пернетақтаны қосу",
-    "keyboardPromptSwitchKeyboardMessage": "Мақсатты тіліңізге ауысу үшін пернетақтаңыздағы глобус белгішесін түртіңіз."
+    "keyboardPromptSwitchKeyboardMessage": "Мақсатты тіліңізге ауысу үшін пернетақтаңыздағы глобус белгішесін түртіңіз.",
+    "switchLanguageChipLabel": "{language} тіліне ауысу",
+    "languageDropdownLevel": "{level} деңгей",
+    "whatAreYouLearning": "Сіз не үйреніп жатырсыз?",
+    "languageSwitcherBaseLanguageLabel": "Сіздің негізгі тіліңіз"
 }

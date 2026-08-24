@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-21 09:39:42.100576",
+    "@@last_modified": "2026-08-24 11:54:23.433561",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "עפֿן קלאַוויאַטור סעטטינגס",
     "keyboardPromptAddKeyboardMessage": "לייגט צו אַ קלאַוויאַטור פֿאַר אייער צילשפּראַך כּדי אױטאָקאָרעקט זאָל אַרבעטן.",
     "keyboardPromptAddKeyboardAction": "לייגט צו קלאַוויאַטור",
-    "keyboardPromptSwitchKeyboardMessage": "דריקט דעם גלאָבוסל־אייקאָן אויף אייער קלאַוויאַטור צו בייטן צו אייער צילשפּראַך."
+    "keyboardPromptSwitchKeyboardMessage": "דריקט דעם גלאָבוסל־אייקאָן אויף אייער קלאַוויאַטור צו בייטן צו אייער צילשפּראַך.",
+    "switchLanguageChipLabel": "באַשטימען צו {language}",
+    "languageDropdownLevel": "ניוואָ {level}",
+    "whatAreYouLearning": "וואָס לערנסטו זיך?",
+    "languageSwitcherBaseLanguageLabel": "דיין באַזע שפּראַך"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-21 09:39:37.591222",
+    "@@last_modified": "2026-08-24 11:54:18.840544",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "کردنەوەی ڕێکخستنەکانی کیبۆرد",
     "keyboardPromptAddKeyboardMessage": "کیبۆردێک بۆ زمانی مەبەستەکەت زیاد بکە بۆ ئەوەی ڕاستکردنەوەی خۆکارانە کار بکات.",
     "keyboardPromptAddKeyboardAction": "زیادکردنی کیبۆرد",
-    "keyboardPromptSwitchKeyboardMessage": "پەنجە لەسەر ئایکۆنی گۆی زەوی دابنێ لەسەر کیبۆردەکەت بۆ گۆڕین بۆ زمانی مەبەستەکەت."
+    "keyboardPromptSwitchKeyboardMessage": "پەنجە لەسەر ئایکۆنی گۆی زەوی دابنێ لەسەر کیبۆردەکەت بۆ گۆڕین بۆ زمانی مەبەستەکەت.",
+    "switchLanguageChipLabel": "بگۆڕە بۆ {language}",
+    "languageDropdownLevel": "ئاست {level}",
+    "whatAreYouLearning": "چی فێردەبیت؟",
+    "languageSwitcherBaseLanguageLabel": "زمانی بنەڕەتیت"
 }

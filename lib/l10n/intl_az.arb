@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-21 09:39:33.044762",
+    "@@last_modified": "2026-08-24 11:54:14.429912",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Klaviatura Ayarlarını Aç",
     "keyboardPromptAddKeyboardMessage": "Avtokorrektin işləməsi üçün hədəf diliniz üçün klaviatura əlavə edin.",
     "keyboardPromptAddKeyboardAction": "Klaviatura əlavə et",
-    "keyboardPromptSwitchKeyboardMessage": "Hədəf dilinizə keçmək üçün klaviaturanızdakı qlobus işarəsinə toxunun."
+    "keyboardPromptSwitchKeyboardMessage": "Hədəf dilinizə keçmək üçün klaviaturanızdakı qlobus işarəsinə toxunun.",
+    "switchLanguageChipLabel": "{language} dilinə keçin",
+    "languageDropdownLevel": "Səviyyə {level}",
+    "whatAreYouLearning": "Nə öyrənirsiniz?",
+    "languageSwitcherBaseLanguageLabel": "Sizin əsas diliniz"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:33.819315",
+    "@@last_modified": "2026-08-24 11:54:15.004231",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9879,5 +9879,9 @@
     "openKeyboardSettings": "Obrir la configuració del teclat",
     "keyboardPromptAddKeyboardMessage": "Afegeix un teclat per al teu idioma objectiu perquè funcioni la correcció automàtica.",
     "keyboardPromptAddKeyboardAction": "Afegeix teclat",
-    "keyboardPromptSwitchKeyboardMessage": "Toca la icona del globus al teclat per canviar al teu idioma objectiu."
+    "keyboardPromptSwitchKeyboardMessage": "Toca la icona del globus al teclat per canviar al teu idioma objectiu.",
+    "switchLanguageChipLabel": "Canviar a {language}",
+    "languageDropdownLevel": "Nivell {level}",
+    "whatAreYouLearning": "Què estàs aprenent?",
+    "languageSwitcherBaseLanguageLabel": "La teva llengua base"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-21 09:39:36.642326",
+    "@@last_modified": "2026-08-24 11:54:17.808567",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10521,5 +10521,9 @@
     "openKeyboardSettings": "キーボード設定を開く",
     "keyboardPromptAddKeyboardMessage": "オートコレクトを有効にするには、学習言語のキーボードを追加してください。",
     "keyboardPromptAddKeyboardAction": "キーボードを追加",
-    "keyboardPromptSwitchKeyboardMessage": "キーボードの地球儀アイコンをタップして、学習言語に切り替えてください。"
+    "keyboardPromptSwitchKeyboardMessage": "キーボードの地球儀アイコンをタップして、学習言語に切り替えてください。",
+    "switchLanguageChipLabel": "{language}に切り替える",
+    "languageDropdownLevel": "レベル{level}",
+    "whatAreYouLearning": "何を学習していますか？",
+    "languageSwitcherBaseLanguageLabel": "あなたの母国語"
 }

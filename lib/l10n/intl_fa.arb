@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:34.675360",
+    "@@last_modified": "2026-08-24 11:54:15.931626",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9840,5 +9840,9 @@
     "openKeyboardSettings": "باز کردن تنظیمات صفحه‌کلید",
     "keyboardPromptAddKeyboardMessage": "برای زبان مقصدتان صفحه‌کلید اضافه کنید تا تصحیح خودکار کار کند.",
     "keyboardPromptAddKeyboardAction": "افزودن صفحه‌کلید",
-    "keyboardPromptSwitchKeyboardMessage": "روی نماد کره زمین در صفحه‌کلید خود ضربه بزنید تا به زبان مقصدتان تغییر دهید."
+    "keyboardPromptSwitchKeyboardMessage": "روی نماد کره زمین در صفحه‌کلید خود ضربه بزنید تا به زبان مقصدتان تغییر دهید.",
+    "switchLanguageChipLabel": "تغییر به {language}",
+    "languageDropdownLevel": "سطح {level}",
+    "whatAreYouLearning": "چه چیزی یاد می‌گیرید؟",
+    "languageSwitcherBaseLanguageLabel": "زبان پایه شما"
 }

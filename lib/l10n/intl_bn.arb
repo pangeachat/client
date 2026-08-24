@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:32.887322",
+    "@@last_modified": "2026-08-24 11:54:14.522839",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10380,5 +10380,9 @@
     "openKeyboardSettings": "কিবোর্ড সেটিংস খুলুন",
     "keyboardPromptAddKeyboardMessage": "আপনার লক্ষ্য ভাষার জন্য একটি কীবোর্ড যোগ করুন যাতে স্বয়ংক্রিয় সংশোধন কাজ করে।",
     "keyboardPromptAddKeyboardAction": "কীবোর্ড যোগ করুন",
-    "keyboardPromptSwitchKeyboardMessage": "আপনার লক্ষ্য ভাষায় পরিবর্তন করতে আপনার কীবোর্ডের গ্লোব আইকনে আলতো চাপুন।"
+    "keyboardPromptSwitchKeyboardMessage": "আপনার লক্ষ্য ভাষায় পরিবর্তন করতে আপনার কীবোর্ডের গ্লোব আইকনে আলতো চাপুন।",
+    "switchLanguageChipLabel": "{language} এ পরিবর্তন করুন",
+    "languageDropdownLevel": "স্তর {level}",
+    "whatAreYouLearning": "আপনি কি শিখছেন?",
+    "languageSwitcherBaseLanguageLabel": "আপনার বেস ভাষা"
 }

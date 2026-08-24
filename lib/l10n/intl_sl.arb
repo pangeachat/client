@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-21 09:39:40.709898",
+    "@@last_modified": "2026-08-24 11:54:21.179132",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10697,5 +10697,9 @@
     "openKeyboardSettings": "Odpri nastavitve tipkovnice",
     "keyboardPromptAddKeyboardMessage": "Dodajte tipkovnico za ciljni jezik, da bo samodejni popravek deloval.",
     "keyboardPromptAddKeyboardAction": "Dodaj tipkovnico",
-    "keyboardPromptSwitchKeyboardMessage": "Dotaknite se ikone globusa na tipkovnici, da preklopite na ciljni jezik."
+    "keyboardPromptSwitchKeyboardMessage": "Dotaknite se ikone globusa na tipkovnici, da preklopite na ciljni jezik.",
+    "switchLanguageChipLabel": "Preklopi na {language}",
+    "languageDropdownLevel": "Stopnja {level}",
+    "whatAreYouLearning": "Kaj se učiš?",
+    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik"
 }

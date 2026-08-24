@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-21 09:39:38.334490",
+    "@@last_modified": "2026-08-24 11:54:19.441108",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Отвори поставки за тастатура",
     "keyboardPromptAddKeyboardMessage": "Додадете тастатура за вашиот целен јазик за да работи автоматската корекција.",
     "keyboardPromptAddKeyboardAction": "Додај тастатура",
-    "keyboardPromptSwitchKeyboardMessage": "Допрете ја иконата со глобус на вашата тастатура за да се префрлите на вашиот целен јазик."
+    "keyboardPromptSwitchKeyboardMessage": "Допрете ја иконата со глобус на вашата тастатура за да се префрлите на вашиот целен јазик.",
+    "switchLanguageChipLabel": "Префрли на {language}",
+    "languageDropdownLevel": "Ниво {level}",
+    "whatAreYouLearning": "Што учиш?",
+    "languageSwitcherBaseLanguageLabel": "Твојот основен јазик"
 }

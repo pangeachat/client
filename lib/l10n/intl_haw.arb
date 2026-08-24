@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-21 09:39:35.397838",
+    "@@last_modified": "2026-08-24 11:54:18.019686",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "E wehe i nā hoʻonohonoho papa kī",
     "keyboardPromptAddKeyboardMessage": "Hoʻohui i kahi kīpē no kāu ʻōlelo i manaʻo ʻia i hana pono ka hoʻoponopono ʻana.",
     "keyboardPromptAddKeyboardAction": "Hoʻohui Kīpē",
-    "keyboardPromptSwitchKeyboardMessage": "Kaomi i ka ikona honua ma kāu kīpē e hoʻololi i kāu ʻōlelo i manaʻo ʻia."
+    "keyboardPromptSwitchKeyboardMessage": "Kaomi i ka ikona honua ma kāu kīpē e hoʻololi i kāu ʻōlelo i manaʻo ʻia.",
+    "switchLanguageChipLabel": "E hoʻololi i ka {language}",
+    "languageDropdownLevel": "Papa {level}",
+    "whatAreYouLearning": "He aha kāu e aʻo nei?",
+    "languageSwitcherBaseLanguageLabel": "Kou ʻōlelo kumu"
 }

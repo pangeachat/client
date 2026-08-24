@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-21 09:39:42.685047",
+    "@@last_modified": "2026-08-24 11:54:23.896765",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Vula Izilungiselelo Zekhibhodi",
     "keyboardPromptAddKeyboardMessage": "Faka ikhibhodi yolimi oluqondile ukuze i-autocorrect isebenze.",
     "keyboardPromptAddKeyboardAction": "Faka Ikhibhodi",
-    "keyboardPromptSwitchKeyboardMessage": "Thepha isithonjana se-globe kukhibhodi yakho ukuze ushintshele olimini oluqondile."
+    "keyboardPromptSwitchKeyboardMessage": "Thepha isithonjana se-globe kukhibhodi yakho ukuze ushintshele olimini oluqondile.",
+    "switchLanguageChipLabel": "Shintshela ku-{language}",
+    "languageDropdownLevel": "Izinga {level}",
+    "whatAreYouLearning": "Ufundani?",
+    "languageSwitcherBaseLanguageLabel": "Ulimi lwakho oluyisisekelo"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-21 09:39:39.185535",
+    "@@last_modified": "2026-08-24 11:54:20.215688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Tsegulani Zokonda pa Kiyibodi",
     "keyboardPromptAddKeyboardMessage": "Onjezani kiyibodi ya chilankhulo chanu kuti autocorrect igwire ntchito.",
     "keyboardPromptAddKeyboardAction": "Onjezani Kiyibodi",
-    "keyboardPromptSwitchKeyboardMessage": "Dinani chizindikiro cha dziko lapansi pa kiyibodi yanu kuti musinthe ku chilankhulo chanu."
+    "keyboardPromptSwitchKeyboardMessage": "Dinani chizindikiro cha dziko lapansi pa kiyibodi yanu kuti musinthe ku chilankhulo chanu.",
+    "switchLanguageChipLabel": "Sinthani ku {language}",
+    "languageDropdownLevel": "Mulingo {level}",
+    "whatAreYouLearning": "Mukaphunzira chiyani?",
+    "languageSwitcherBaseLanguageLabel": "Chilankhulo chanu choyambira"
 }

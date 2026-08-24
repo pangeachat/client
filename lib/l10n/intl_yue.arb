@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-21 09:39:42.388007",
+    "@@last_modified": "2026-08-24 11:54:23.229439",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10709,5 +10709,9 @@
     "openKeyboardSettings": "開啟鍵盤設定",
     "keyboardPromptAddKeyboardMessage": "為你的目標語言新增鍵盤，讓自動修正功能正常運作。",
     "keyboardPromptAddKeyboardAction": "新增鍵盤",
-    "keyboardPromptSwitchKeyboardMessage": "點擊鍵盤上的地球圖示，切換到你的目標語言。"
+    "keyboardPromptSwitchKeyboardMessage": "點擊鍵盤上的地球圖示，切換到你的目標語言。",
+    "switchLanguageChipLabel": "切換至{language}",
+    "languageDropdownLevel": "程度 {level}",
+    "whatAreYouLearning": "你正在學習什麼？",
+    "languageSwitcherBaseLanguageLabel": "你的基礎語言"
 }

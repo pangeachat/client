@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-21 09:39:34.923521",
+    "@@last_modified": "2026-08-24 11:54:16.200145",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Toetseboerdyntellingen iepenje",
     "keyboardPromptAddKeyboardMessage": "Foegje in toetseboerd ta foar jo doeltaal, sadat autokorreksje wurket.",
     "keyboardPromptAddKeyboardAction": "Toetseboerd tafoegje",
-    "keyboardPromptSwitchKeyboardMessage": "Tik op it wrâldbol-ikoantsje op jo toetseboerd om oer te skeakeljen nei jo doeltaal."
+    "keyboardPromptSwitchKeyboardMessage": "Tik op it wrâldbol-ikoantsje op jo toetseboerd om oer te skeakeljen nei jo doeltaal.",
+    "switchLanguageChipLabel": "Wikselje nei {language}",
+    "languageDropdownLevel": "Nivo {level}",
+    "whatAreYouLearning": "Wat learsto?",
+    "languageSwitcherBaseLanguageLabel": "Dyn basistaal"
 }

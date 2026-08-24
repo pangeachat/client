@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-21 09:39:40.781309",
+    "@@last_modified": "2026-08-24 11:54:22.244664",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Tatala Fa'atonuga o le Piano",
     "keyboardPromptAddKeyboardMessage": "Fa'aopoopo se piano mo lau gagana e a'oa'oina ina ia galue le autocorrect.",
     "keyboardPromptAddKeyboardAction": "Fa'aopoopo le Piano",
-    "keyboardPromptSwitchKeyboardMessage": "Pa'i i le fa'ailoga lalolagi i luga o lau piano e sui ai i lau gagana e a'oa'oina."
+    "keyboardPromptSwitchKeyboardMessage": "Pa'i i le fa'ailoga lalolagi i luga o lau piano e sui ai i lau gagana e a'oa'oina.",
+    "switchLanguageChipLabel": "Fesuiaʻi i le {language}",
+    "languageDropdownLevel": "Tulaga {level}",
+    "whatAreYouLearning": "O le a le mea o e aʻoaʻoina?",
+    "languageSwitcherBaseLanguageLabel": "Lau gagana autū"
 }

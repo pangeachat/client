@@ -2920,7 +2920,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-21 09:39:33.259545",
+    "@@last_modified": "2026-08-24 11:54:14.844993",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9363,5 +9363,9 @@
     "openKeyboardSettings": "མཐེབ་གཞོང་སྒྲིག་སྟངས་ཁ་ཕྱེ།",
     "keyboardPromptAddKeyboardMessage": "རང་གི་དམིགས་ཡུལ་སྐད་ཡིག་ལ་མཐེབ་གཞོང་ཞིག་སྣོན་པ་དང་། དེ་ལྟར་བྱས་ན་རང་འགུལ་ཡོ་བསྲང་གིས་ལས་ཀ་བྱེད་ཐུབ།",
     "keyboardPromptAddKeyboardAction": "མཐེབ་གཞོང་སྣོན་པ།",
-    "keyboardPromptSwitchKeyboardMessage": "རང་གི་མཐེབ་གཞོང་སྟེང་གི་འཛམ་གླིང་རྟགས་ལ་རེག་ནས་རང་གི་དམིགས་ཡུལ་སྐད་ཡིག་ལ་བསྒྱུར་བ།"
+    "keyboardPromptSwitchKeyboardMessage": "རང་གི་མཐེབ་གཞོང་སྟེང་གི་འཛམ་གླིང་རྟགས་ལ་རེག་ནས་རང་གི་དམིགས་ཡུལ་སྐད་ཡིག་ལ་བསྒྱུར་བ།",
+    "switchLanguageChipLabel": "{language}ལ་སྒྱུར་",
+    "languageDropdownLevel": "རིམ་པ་{level}",
+    "whatAreYouLearning": "ཁྱེད་རང་གིས་ཅི་ཞིག་སྦྱོང་བཞིན་ཡོད།",
+    "languageSwitcherBaseLanguageLabel": "ཁྱེད་ཀྱི་གཞི་རྩའི་སྐད་ཡིག"
 }

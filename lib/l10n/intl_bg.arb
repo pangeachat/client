@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-21 09:39:32.877296",
+    "@@last_modified": "2026-08-24 11:54:14.396031",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Отваряне на настройките на клавиатурата",
     "keyboardPromptAddKeyboardMessage": "Добавете клавиатура за целевия език, за да работи автоматичната корекция.",
     "keyboardPromptAddKeyboardAction": "Добавяне на клавиатура",
-    "keyboardPromptSwitchKeyboardMessage": "Докоснете иконата на глобус на клавиатурата, за да превключите към целевия език."
+    "keyboardPromptSwitchKeyboardMessage": "Докоснете иконата на глобус на клавиатурата, за да превключите към целевия език.",
+    "switchLanguageChipLabel": "Превключване на {language}",
+    "languageDropdownLevel": "Ниво {level}",
+    "whatAreYouLearning": "Какво учиш?",
+    "languageSwitcherBaseLanguageLabel": "Вашият основен език"
 }

@@ -21,7 +21,7 @@ Token info feedback lets users flag incorrect token data (POS, language, phoneti
 **v1**: `{choreoEndpoint}/token/feedback`
 **v2**: `{choreoEndpoint}/token/feedback_v2`
 
-Update `PApiUrls.tokenFeedback` (or add a new constant) in [urls.dart](lib/pangea/common/network/urls.dart).
+Update `PApiUrls.tokenFeedback` (or add a new constant) in [urls.dart](../../lib/pangea/common/network/urls.dart).
 
 ---
 

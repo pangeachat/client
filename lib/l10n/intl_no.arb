@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-21 09:39:38.889867",
+    "@@last_modified": "2026-08-24 11:54:20.184584",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Åpne tastaturinnstillinger",
     "keyboardPromptAddKeyboardMessage": "Legg til et tastatur for målspråket ditt slik at autokorrektur fungerer.",
     "keyboardPromptAddKeyboardAction": "Legg til tastatur",
-    "keyboardPromptSwitchKeyboardMessage": "Trykk på globusikonet på tastaturet for å bytte til målspråket ditt."
+    "keyboardPromptSwitchKeyboardMessage": "Trykk på globusikonet på tastaturet for å bytte til målspråket ditt.",
+    "switchLanguageChipLabel": "Bytt til {language}",
+    "languageDropdownLevel": "Nivå {level}",
+    "whatAreYouLearning": "Hva lærer du?",
+    "languageSwitcherBaseLanguageLabel": "Ditt morsmål"
 }

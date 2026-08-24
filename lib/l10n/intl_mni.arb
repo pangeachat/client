@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-21 09:39:38.612684",
+    "@@last_modified": "2026-08-24 11:54:19.619939",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Keyboard Settings Hangba",
     "keyboardPromptAddKeyboardMessage": "नाओगी লোনগীদমক কীবোর্ড অমা থম্নু, মসিনা অটোকরেক্ট থবক তৌবা ঙমগনি।",
     "keyboardPromptAddKeyboardAction": "কীবোর্ড থম্নু",
-    "keyboardPromptSwitchKeyboardMessage": "নাওগী কীবোর্ডদা লৈবা গ্লোব আইকন অদুদা থিহায়ু, মসিনা নাওগী লোনদা অহোংবা পুরক্নবা।"
+    "keyboardPromptSwitchKeyboardMessage": "নাওগী কীবোর্ডদা লৈবা গ্লোব আইকন অদুদা থিহায়ু, মসিনা নাওগী লোনদা অহোংবা পুরক্নবা।",
+    "switchLanguageChipLabel": "{language} da hongjin",
+    "languageDropdownLevel": "Level {level}",
+    "whatAreYouLearning": "Nung karino tamliba?",
+    "languageSwitcherBaseLanguageLabel": "Nanggi base language"
 }

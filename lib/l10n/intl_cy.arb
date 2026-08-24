@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-21 09:39:33.918998",
+    "@@last_modified": "2026-08-24 11:54:15.284493",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Agor Gosodiadau Bysellfwrdd",
     "keyboardPromptAddKeyboardMessage": "Ychwanegwch fysellfwrdd ar gyfer eich iaith darged fel bod awto-gywiro'n gweithio.",
     "keyboardPromptAddKeyboardAction": "Ychwanegu Bysellfwrdd",
-    "keyboardPromptSwitchKeyboardMessage": "Tapiwch yr eicon glôb ar eich bysellfwrdd i newid i'ch iaith darged."
+    "keyboardPromptSwitchKeyboardMessage": "Tapiwch yr eicon glôb ar eich bysellfwrdd i newid i'ch iaith darged.",
+    "switchLanguageChipLabel": "Newid i {language}",
+    "languageDropdownLevel": "Lefel {level}",
+    "whatAreYouLearning": "Beth wyt ti'n ei ddysgu?",
+    "languageSwitcherBaseLanguageLabel": "Eich iaith sylfaen"
 }

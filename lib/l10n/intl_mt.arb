@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-21 09:39:38.351197",
+    "@@last_modified": "2026-08-24 11:54:19.681498",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Iftaħ is-Settings tat-Tastiera",
     "keyboardPromptAddKeyboardMessage": "Żid tastiera għal-lingwa fil-mira tiegħek biex taħdem il-korrezzjoni awtomatika.",
     "keyboardPromptAddKeyboardAction": "Żid Tastiera",
-    "keyboardPromptSwitchKeyboardMessage": "Tektek l-ikona tal-globu fuq it-tastiera tiegħek biex taqleb għal-lingwa fil-mira tiegħek."
+    "keyboardPromptSwitchKeyboardMessage": "Tektek l-ikona tal-globu fuq it-tastiera tiegħek biex taqleb għal-lingwa fil-mira tiegħek.",
+    "switchLanguageChipLabel": "Aqleb għal {language}",
+    "languageDropdownLevel": "Livell {level}",
+    "whatAreYouLearning": "X’qed titgħallem?",
+    "languageSwitcherBaseLanguageLabel": "Il-lingwa bażi tiegħek"
 }

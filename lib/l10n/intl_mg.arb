@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-21 09:39:37.615701",
+    "@@last_modified": "2026-08-24 11:54:19.285327",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Sokafy ny Fikirana ny Kitendry",
     "keyboardPromptAddKeyboardMessage": "Ampio fitendry ho an'ny fiteninao kendrena mba hiasa ny fanitsiana mandeha ho azy.",
     "keyboardPromptAddKeyboardAction": "Ampio fitendry",
-    "keyboardPromptSwitchKeyboardMessage": "Tsindrio ny kisary globe eo amin'ny fitendry anao mba hifindra amin'ny fiteninao kendrena."
+    "keyboardPromptSwitchKeyboardMessage": "Tsindrio ny kisary globe eo amin'ny fitendry anao mba hifindra amin'ny fiteninao kendrena.",
+    "switchLanguageChipLabel": "Mifindra amin'ny teny {language}",
+    "languageDropdownLevel": "Ambaratonga {level}",
+    "whatAreYouLearning": "Inona no ianaranao?",
+    "languageSwitcherBaseLanguageLabel": "Ny fiteninao fototra"
 }

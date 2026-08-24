@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-21 09:39:36.775732",
+    "@@last_modified": "2026-08-24 11:54:18.357284",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "ಕೀಬೋರ್ಡ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ತೆರೆಯಿರಿ",
     "keyboardPromptAddKeyboardMessage": "ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಗೆ ಕೀಬೋರ್ಡ್ ಸೇರಿಸಿ ಇದರಿಂದ ಸ್ವಯಂ ತಿದ್ದುಪಡಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ.",
     "keyboardPromptAddKeyboardAction": "ಕೀಬೋರ್ಡ್ ಸೇರಿಸಿ",
-    "keyboardPromptSwitchKeyboardMessage": "ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಗೆ ಬದಲಾಯಿಸಲು ನಿಮ್ಮ ಕೀಬೋರ್ಡ್‌ನಲ್ಲಿರುವ ಗ್ಲೋಬ್ ಐಕಾನ್ ಅನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ."
+    "keyboardPromptSwitchKeyboardMessage": "ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಗೆ ಬದಲಾಯಿಸಲು ನಿಮ್ಮ ಕೀಬೋರ್ಡ್‌ನಲ್ಲಿರುವ ಗ್ಲೋಬ್ ಐಕಾನ್ ಅನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ.",
+    "switchLanguageChipLabel": "{language} ಗೆ ಬದಲಿಸಿ",
+    "languageDropdownLevel": "ಹಂತ {level}",
+    "whatAreYouLearning": "ನೀವು ಏನು ಕಲಿಯುತ್ತಿದ್ದೀರಿ?",
+    "languageSwitcherBaseLanguageLabel": "ನಿಮ್ಮ ಮೂಲ ಭಾಷೆ"
 }

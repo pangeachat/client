@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-21 09:39:35.647592",
+    "@@last_modified": "2026-08-24 11:54:17.034828",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Qhib Chaw Teeb Tsa Keyboard",
     "keyboardPromptAddKeyboardMessage": "Ntxiv ib lub keyboard rau koj hom lus kom autocorrect ua haujlwm.",
     "keyboardPromptAddKeyboardAction": "Ntxiv Keyboard",
-    "keyboardPromptSwitchKeyboardMessage": "Coj tus ntiv tes nias lub ntiaj teb icon ntawm koj lub keyboard kom hloov mus rau koj hom lus."
+    "keyboardPromptSwitchKeyboardMessage": "Coj tus ntiv tes nias lub ntiaj teb icon ntawm koj lub keyboard kom hloov mus rau koj hom lus.",
+    "switchLanguageChipLabel": "Hloov mus rau {language}",
+    "languageDropdownLevel": "Qib {level}",
+    "whatAreYouLearning": "Koj kawm dab tsi?",
+    "languageSwitcherBaseLanguageLabel": "Koj hom lus pib"
 }

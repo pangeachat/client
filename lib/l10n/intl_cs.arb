@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-21 09:39:33.847413",
+    "@@last_modified": "2026-08-24 11:54:15.226550",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10246,5 +10246,9 @@
     "openKeyboardSettings": "Otevřít nastavení klávesnice",
     "keyboardPromptAddKeyboardMessage": "Přidejte klávesnici pro váš cílový jazyk, aby fungovala automatická oprava.",
     "keyboardPromptAddKeyboardAction": "Přidat klávesnici",
-    "keyboardPromptSwitchKeyboardMessage": "Klepněte na ikonu glóbu na klávesnici pro přepnutí na váš cílový jazyk."
+    "keyboardPromptSwitchKeyboardMessage": "Klepněte na ikonu glóbu na klávesnici pro přepnutí na váš cílový jazyk.",
+    "switchLanguageChipLabel": "Přepnout na {language}",
+    "languageDropdownLevel": "Úroveň {level}",
+    "whatAreYouLearning": "Co se učíte?",
+    "languageSwitcherBaseLanguageLabel": "Váš základní jazyk"
 }

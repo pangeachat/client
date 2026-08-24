@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-21 09:39:34.372628",
+    "@@last_modified": "2026-08-24 11:54:15.787240",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9749,5 +9749,9 @@
     "openKeyboardSettings": "Ava klaviatuuri seaded",
     "keyboardPromptAddKeyboardMessage": "Lisage sihtkeele klaviatuur, et automaatkorrektuur töötaks.",
     "keyboardPromptAddKeyboardAction": "Lisa klaviatuur",
-    "keyboardPromptSwitchKeyboardMessage": "Puudutage klaviatuuril maakera ikooni, et lülituda sihtkeelele."
+    "keyboardPromptSwitchKeyboardMessage": "Puudutage klaviatuuril maakera ikooni, et lülituda sihtkeelele.",
+    "switchLanguageChipLabel": "Lülita keelele {language}",
+    "languageDropdownLevel": "Tase {level}",
+    "whatAreYouLearning": "Mida sa õpid?",
+    "languageSwitcherBaseLanguageLabel": "Sinu baaskeelt"
 }

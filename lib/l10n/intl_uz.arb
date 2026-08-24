@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-21 09:39:41.895742",
+    "@@last_modified": "2026-08-24 11:54:23.313865",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9756,5 +9756,9 @@
     "openKeyboardSettings": "Klaviatura sozlamalarini ochish",
     "keyboardPromptAddKeyboardMessage": "Avtokorreksiya ishlashi uchun maqsadli tilingiz uchun klaviatura qoʻshing.",
     "keyboardPromptAddKeyboardAction": "Klaviatura qoʻshish",
-    "keyboardPromptSwitchKeyboardMessage": "Maqsadli tilingizga oʻtish uchun klaviaturangizdagi globus belgisini bosing."
+    "keyboardPromptSwitchKeyboardMessage": "Maqsadli tilingizga oʻtish uchun klaviaturangizdagi globus belgisini bosing.",
+    "switchLanguageChipLabel": "{language} tiliga oʻtish",
+    "languageDropdownLevel": "Daraja {level}",
+    "whatAreYouLearning": "Nimani o'rganyapsiz?",
+    "languageSwitcherBaseLanguageLabel": "Sizning asosiy tilingiz"
 }

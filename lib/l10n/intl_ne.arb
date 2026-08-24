@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-21 09:39:38.966804",
+    "@@last_modified": "2026-08-24 11:54:20.058940",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "किबोर्ड सेटिङहरू खोल्नुहोस्",
     "keyboardPromptAddKeyboardMessage": "तपाईंको लक्षित भाषाको लागि किबोर्ड थप्नुहोस् ताकि स्वतः सच्याउने काम गरोस्।",
     "keyboardPromptAddKeyboardAction": "किबोर्ड थप्नुहोस्",
-    "keyboardPromptSwitchKeyboardMessage": "तपाईंको लक्षित भाषामा स्विच गर्न किबोर्डमा रहेको ग्लोब आइकनमा ट्याप गर्नुहोस्।"
+    "keyboardPromptSwitchKeyboardMessage": "तपाईंको लक्षित भाषामा स्विच गर्न किबोर्डमा रहेको ग्लोब आइकनमा ट्याप गर्नुहोस्।",
+    "switchLanguageChipLabel": "{language} मा स्विच गर्नुहोस्",
+    "languageDropdownLevel": "स्तर {level}",
+    "whatAreYouLearning": "तपाईं के सिक्दै हुनुहुन्छ?",
+    "languageSwitcherBaseLanguageLabel": "तपाईंको आधार भाषा"
 }

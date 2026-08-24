@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-21 09:39:42.421440",
+    "@@last_modified": "2026-08-24 11:54:23.151921",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Vula Useto Lwebhodi yezitshixo",
     "keyboardPromptAddKeyboardMessage": "Yongeza ikhibhodi yolwimi ekujoliswe kulo ukuze kusebenze ukulungisa okuzenzekelayo.",
     "keyboardPromptAddKeyboardAction": "Yongeza iKhibhodi",
-    "keyboardPromptSwitchKeyboardMessage": "Cofa i-ayikhoni yeglowubhu kwikhibhodi yakho ukuze utshintshele kulwimi ekujoliswe kulo."
+    "keyboardPromptSwitchKeyboardMessage": "Cofa i-ayikhoni yeglowubhu kwikhibhodi yakho ukuze utshintshele kulwimi ekujoliswe kulo.",
+    "switchLanguageChipLabel": "Tshintshela ku-{language}",
+    "languageDropdownLevel": "Inqanaba {level}",
+    "whatAreYouLearning": "Ufunda ntoni?",
+    "languageSwitcherBaseLanguageLabel": "Ulwimi lwakho olusisiseko"
 }

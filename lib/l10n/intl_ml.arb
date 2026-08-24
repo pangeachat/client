@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-21 09:39:38.352737",
+    "@@last_modified": "2026-08-24 11:54:19.428726",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "കീബോർഡ് ക്രമീകരണങ്ങൾ തുറക്കുക",
     "keyboardPromptAddKeyboardMessage": "നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷയ്‌ക്കായി ഒരു കീബോർഡ് ചേർക്കുക, അതുവഴി സ്വയമേവ ശരിയാക്കൽ പ്രവർത്തിക്കും.",
     "keyboardPromptAddKeyboardAction": "കീബോർഡ് ചേർക്കുക",
-    "keyboardPromptSwitchKeyboardMessage": "നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷയിലേക്ക് മാറാൻ കീബോർഡിലെ ഗ്ലോബ് ഐക്കണിൽ ടാപ്പ് ചെയ്യുക."
+    "keyboardPromptSwitchKeyboardMessage": "നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷയിലേക്ക് മാറാൻ കീബോർഡിലെ ഗ്ലോബ് ഐക്കണിൽ ടാപ്പ് ചെയ്യുക.",
+    "switchLanguageChipLabel": "{language} എന്നതിലേക്ക് മാറുക",
+    "languageDropdownLevel": "ലെവൽ {level}",
+    "whatAreYouLearning": "നിങ്ങൾ എന്താണ് പഠിക്കുന്നത്?",
+    "languageSwitcherBaseLanguageLabel": "നിങ്ങളുടെ അടിസ്ഥാന ഭാഷ"
 }

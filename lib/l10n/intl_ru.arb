@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-21 09:39:39.845534",
+    "@@last_modified": "2026-08-24 11:54:21.147184",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10724,5 +10724,9 @@
     "openKeyboardSettings": "Открыть настройки клавиатуры",
     "keyboardPromptAddKeyboardMessage": "Добавьте клавиатуру для целевого языка, чтобы автокоррекция работала.",
     "keyboardPromptAddKeyboardAction": "Добавить клавиатуру",
-    "keyboardPromptSwitchKeyboardMessage": "Нажмите значок глобуса на клавиатуре, чтобы переключиться на целевой язык."
+    "keyboardPromptSwitchKeyboardMessage": "Нажмите значок глобуса на клавиатуре, чтобы переключиться на целевой язык.",
+    "switchLanguageChipLabel": "Переключиться на {language}",
+    "languageDropdownLevel": "Уровень {level}",
+    "whatAreYouLearning": "Что вы изучаете?",
+    "languageSwitcherBaseLanguageLabel": "Ваш основной язык"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-21 09:39:33.837184",
+    "@@last_modified": "2026-08-24 11:54:15.202567",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Apre i Paràmetri di a Tastiera",
     "keyboardPromptAddKeyboardMessage": "Aghjunghje una tastiera per a vostra lingua di destinazione per chì l'autucurrezzione funziona.",
     "keyboardPromptAddKeyboardAction": "Aghjunghje Tastiera",
-    "keyboardPromptSwitchKeyboardMessage": "Toccate l'icona di u globu nantu à a vostra tastiera per cambià à a vostra lingua di destinazione."
+    "keyboardPromptSwitchKeyboardMessage": "Toccate l'icona di u globu nantu à a vostra tastiera per cambià à a vostra lingua di destinazione.",
+    "switchLanguageChipLabel": "Passà à u {language}",
+    "languageDropdownLevel": "Livellu {level}",
+    "whatAreYouLearning": "Chì amparate?",
+    "languageSwitcherBaseLanguageLabel": "A vostra lingua di basa"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-21 09:39:37.461546",
+    "@@last_modified": "2026-08-24 11:54:18.929537",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Баскычтоп жөндөөлөрүн ачуу",
     "keyboardPromptAddKeyboardMessage": "Автооңдоо иштеши үчүн максаттуу тилиңизге баскычтоп кошуңуз.",
     "keyboardPromptAddKeyboardAction": "Баскычтоп кошуу",
-    "keyboardPromptSwitchKeyboardMessage": "Максаттуу тилиңизге өтүү үчүн баскычтобуңуздагы глобус сөлөкөтүн таптаңыз."
+    "keyboardPromptSwitchKeyboardMessage": "Максаттуу тилиңизге өтүү үчүн баскычтобуңуздагы глобус сөлөкөтүн таптаңыз.",
+    "switchLanguageChipLabel": "{language} тилине которуу",
+    "languageDropdownLevel": "{level}-деңгээл",
+    "whatAreYouLearning": "Эмне үйрөнүп жатасыз?",
+    "languageSwitcherBaseLanguageLabel": "Сиздин негизги тилиңиз"
 }

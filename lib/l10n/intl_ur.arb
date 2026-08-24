@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-21 09:39:41.780173",
+    "@@last_modified": "2026-08-24 11:54:22.796996",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "کی بورڈ کی ترتیبات کھولیں",
     "keyboardPromptAddKeyboardMessage": "آٹو کریکٹ کے کام کرنے کے لیے اپنی ہدف زبان کے لیے ایک کی بورڈ شامل کریں۔",
     "keyboardPromptAddKeyboardAction": "کی بورڈ شامل کریں",
-    "keyboardPromptSwitchKeyboardMessage": "اپنی ہدف زبان پر سوئچ کرنے کے لیے اپنے کی بورڈ پر گلوب آئیکن کو تھپتھپائیں۔"
+    "keyboardPromptSwitchKeyboardMessage": "اپنی ہدف زبان پر سوئچ کرنے کے لیے اپنے کی بورڈ پر گلوب آئیکن کو تھپتھپائیں۔",
+    "switchLanguageChipLabel": "{language} پر سوئچ کریں",
+    "languageDropdownLevel": "لیول {level}",
+    "whatAreYouLearning": "آپ کیا سیکھ رہے ہیں؟",
+    "languageSwitcherBaseLanguageLabel": "آپ کی بنیادی زبان"
 }

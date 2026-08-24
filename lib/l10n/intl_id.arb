@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:35.854067",
+    "@@last_modified": "2026-08-24 11:54:17.255754",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9825,5 +9825,9 @@
     "openKeyboardSettings": "Buka Pengaturan Papan Ketik",
     "keyboardPromptAddKeyboardMessage": "Tambahkan papan ketik untuk bahasa target Anda agar koreksi otomatis berfungsi.",
     "keyboardPromptAddKeyboardAction": "Tambahkan Papan Ketik",
-    "keyboardPromptSwitchKeyboardMessage": "Ketuk ikon bola dunia di papan ketik Anda untuk beralih ke bahasa target Anda."
+    "keyboardPromptSwitchKeyboardMessage": "Ketuk ikon bola dunia di papan ketik Anda untuk beralih ke bahasa target Anda.",
+    "switchLanguageChipLabel": "Beralih ke {language}",
+    "languageDropdownLevel": "Level {level}",
+    "whatAreYouLearning": "Apa yang sedang Anda pelajari?",
+    "languageSwitcherBaseLanguageLabel": "Bahasa dasar Anda"
 }

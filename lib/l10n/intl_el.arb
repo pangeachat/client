@@ -3401,7 +3401,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-21 09:39:33.832631",
+    "@@last_modified": "2026-08-24 11:54:15.395566",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10627,5 +10627,9 @@
     "openKeyboardSettings": "Άνοιγμα ρυθμίσεων πληκτρολογίου",
     "keyboardPromptAddKeyboardMessage": "Προσθέστε ένα πληκτρολόγιο για τη γλώσσα-στόχο σας, ώστε να λειτουργεί η αυτόματη διόρθωση.",
     "keyboardPromptAddKeyboardAction": "Προσθήκη πληκτρολογίου",
-    "keyboardPromptSwitchKeyboardMessage": "Πατήστε το εικονίδιο της υδρογείου στο πληκτρολόγιό σας για να μεταβείτε στη γλώσσα-στόχο σας."
+    "keyboardPromptSwitchKeyboardMessage": "Πατήστε το εικονίδιο της υδρογείου στο πληκτρολόγιό σας για να μεταβείτε στη γλώσσα-στόχο σας.",
+    "switchLanguageChipLabel": "Μετάβαση σε {language}",
+    "languageDropdownLevel": "Επίπεδο {level}",
+    "whatAreYouLearning": "Τι μαθαίνεις;",
+    "languageSwitcherBaseLanguageLabel": "Η βασική σου γλώσσα"
 }

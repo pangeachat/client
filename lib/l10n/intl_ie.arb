@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-21 09:39:36.115963",
+    "@@last_modified": "2026-08-24 11:54:17.800143",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10384,5 +10384,9 @@
     "openKeyboardSettings": "Oscail Socruithe an Mhéarchláir",
     "keyboardPromptAddKeyboardMessage": "Cuir méarchlár le haghaidh do theanga sprice leis ionas go n-oibreoidh an ceartú uathoibríoch.",
     "keyboardPromptAddKeyboardAction": "Cuir Méarchlár Leis",
-    "keyboardPromptSwitchKeyboardMessage": "Beartaigh an deilbhín cruinne ar do mhéarchlár chun athrú go dtí do theanga sprice."
+    "keyboardPromptSwitchKeyboardMessage": "Beartaigh an deilbhín cruinne ar do mhéarchlár chun athrú go dtí do theanga sprice.",
+    "switchLanguageChipLabel": "Athraigh go {language}",
+    "languageDropdownLevel": "Leibhéal {level}",
+    "whatAreYouLearning": "Cad atá tú ag foghlaim?",
+    "languageSwitcherBaseLanguageLabel": "Do bhuntheanga"
 }

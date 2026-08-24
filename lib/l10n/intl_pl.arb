@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-21 09:39:39.956875",
+    "@@last_modified": "2026-08-24 11:54:20.388007",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9837,5 +9837,9 @@
     "openKeyboardSettings": "Otwórz ustawienia klawiatury",
     "keyboardPromptAddKeyboardMessage": "Dodaj klawiaturę dla języka docelowego, aby autokorekta działała.",
     "keyboardPromptAddKeyboardAction": "Dodaj klawiaturę",
-    "keyboardPromptSwitchKeyboardMessage": "Stuknij ikonę globusa na klawiaturze, aby przełączyć się na język docelowy."
+    "keyboardPromptSwitchKeyboardMessage": "Stuknij ikonę globusa na klawiaturze, aby przełączyć się na język docelowy.",
+    "switchLanguageChipLabel": "Przełącz na {language}",
+    "languageDropdownLevel": "Poziom {level}",
+    "whatAreYouLearning": "Czego się uczysz?",
+    "languageSwitcherBaseLanguageLabel": "Twój język podstawowy"
 }

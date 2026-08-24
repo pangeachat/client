@@ -3094,7 +3094,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-21 09:39:44.495741",
+    "@@last_modified": "2026-08-24 11:54:16.838032",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10384,5 +10384,9 @@
     "openKeyboardSettings": "कीबोर्ड सेटिंग खोलें",
     "keyboardPromptAddKeyboardMessage": "अपनी लक्ष्य भाषा के लिए एक कीबोर्ड जोड़ें ताकि स्वतः सुधार काम कर सके।",
     "keyboardPromptAddKeyboardAction": "कीबोर्ड जोड़ें",
-    "keyboardPromptSwitchKeyboardMessage": "अपनी लक्ष्य भाषा पर स्विच करने के लिए अपने कीबोर्ड पर ग्लोब आइकन पर टैप करें।"
+    "keyboardPromptSwitchKeyboardMessage": "अपनी लक्ष्य भाषा पर स्विच करने के लिए अपने कीबोर्ड पर ग्लोब आइकन पर टैप करें।",
+    "switchLanguageChipLabel": "{language} पर स्विच करें",
+    "languageDropdownLevel": "स्तर {level}",
+    "whatAreYouLearning": "आप क्या सीख रहे हैं?",
+    "languageSwitcherBaseLanguageLabel": "आपकी आधार भाषा"
 }

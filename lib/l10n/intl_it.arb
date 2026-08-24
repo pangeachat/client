@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:35.899032",
+    "@@last_modified": "2026-08-24 11:54:17.644882",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9825,5 +9825,9 @@
     "openKeyboardSettings": "Apri Impostazioni Tastiera",
     "keyboardPromptAddKeyboardMessage": "Aggiungi una tastiera per la lingua che stai imparando, così la correzione automatica funzionerà.",
     "keyboardPromptAddKeyboardAction": "Aggiungi tastiera",
-    "keyboardPromptSwitchKeyboardMessage": "Tocca l'icona del mappamondo sulla tastiera per passare alla lingua che stai imparando."
+    "keyboardPromptSwitchKeyboardMessage": "Tocca l'icona del mappamondo sulla tastiera per passare alla lingua che stai imparando.",
+    "switchLanguageChipLabel": "Passa a {language}",
+    "languageDropdownLevel": "Livello {level}",
+    "whatAreYouLearning": "Cosa stai imparando?",
+    "languageSwitcherBaseLanguageLabel": "La tua lingua base"
 }

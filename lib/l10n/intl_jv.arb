@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-21 09:39:36.817807",
+    "@@last_modified": "2026-08-24 11:54:17.899830",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Setelan Papan Ketik Dibukak",
     "keyboardPromptAddKeyboardMessage": "Tambah keyboard kanggo basa sing arep disinaoni supaya autocorrect bisa digunakake.",
     "keyboardPromptAddKeyboardAction": "Tambah Keyboard",
-    "keyboardPromptSwitchKeyboardMessage": "Tutul lambang globe ing keyboard sampeyan kanggo ngganti menyang basa sing arep disinaoni."
+    "keyboardPromptSwitchKeyboardMessage": "Tutul lambang globe ing keyboard sampeyan kanggo ngganti menyang basa sing arep disinaoni.",
+    "switchLanguageChipLabel": "Ganti menyang {language}",
+    "languageDropdownLevel": "Tingkat {level}",
+    "whatAreYouLearning": "Apa sing lagi kok sinau?",
+    "languageSwitcherBaseLanguageLabel": "Basa dhasarmu"
 }

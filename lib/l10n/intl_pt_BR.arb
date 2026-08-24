@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:40.042910",
+    "@@last_modified": "2026-08-24 11:54:20.804337",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9752,5 +9752,9 @@
     "openKeyboardSettings": "Abrir configurações do teclado",
     "keyboardPromptAddKeyboardMessage": "Adicione um teclado para o seu idioma de destino para que a correção automática funcione.",
     "keyboardPromptAddKeyboardAction": "Adicionar Teclado",
-    "keyboardPromptSwitchKeyboardMessage": "Toque no ícone do globo no seu teclado para mudar para o seu idioma de destino."
+    "keyboardPromptSwitchKeyboardMessage": "Toque no ícone do globo no seu teclado para mudar para o seu idioma de destino.",
+    "switchLanguageChipLabel": "Mudar para {language}",
+    "languageDropdownLevel": "Nível {level}",
+    "whatAreYouLearning": "O que você está aprendendo?",
+    "languageSwitcherBaseLanguageLabel": "Seu idioma base"
 }

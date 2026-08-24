@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-21 09:39:41.065603",
+    "@@last_modified": "2026-08-24 11:54:21.946019",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Bula Litlhophiso tsa Keyboard",
     "keyboardPromptAddKeyboardMessage": "Kenya keyboard ya puo eo o e ithutang hore autocorrect e sebetse.",
     "keyboardPromptAddKeyboardAction": "Kenya Keyboard",
-    "keyboardPromptSwitchKeyboardMessage": "Tlanya letshwao la lefatshe ho keyboard ya hao ho fetohela puong eo o e ithutang."
+    "keyboardPromptSwitchKeyboardMessage": "Tlanya letshwao la lefatshe ho keyboard ya hao ho fetohela puong eo o e ithutang.",
+    "switchLanguageChipLabel": "Fetolela ho {language}",
+    "languageDropdownLevel": "Boemo ba {level}",
+    "whatAreYouLearning": "U ithuta eng?",
+    "languageSwitcherBaseLanguageLabel": "Puō ea hao ea motheo"
 }

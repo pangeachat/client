@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-21 09:39:34.649518",
+    "@@last_modified": "2026-08-24 11:54:15.918409",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10107,5 +10107,9 @@
     "openKeyboardSettings": "Ouvrir les paramètres du clavier",
     "keyboardPromptAddKeyboardMessage": "Ajoutez un clavier pour votre langue cible afin que la correction automatique fonctionne.",
     "keyboardPromptAddKeyboardAction": "Ajouter un clavier",
-    "keyboardPromptSwitchKeyboardMessage": "Appuyez sur l'icône du globe sur votre clavier pour passer à votre langue cible."
+    "keyboardPromptSwitchKeyboardMessage": "Appuyez sur l'icône du globe sur votre clavier pour passer à votre langue cible.",
+    "switchLanguageChipLabel": "Passer au {language}",
+    "languageDropdownLevel": "Niveau {level}",
+    "whatAreYouLearning": "Qu'apprenez-vous ?",
+    "languageSwitcherBaseLanguageLabel": "Votre langue de base"
 }

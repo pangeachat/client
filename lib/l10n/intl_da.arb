@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-21 09:39:33.779923",
+    "@@last_modified": "2026-08-24 11:54:15.159038",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10672,5 +10672,9 @@
     "openKeyboardSettings": "Åbn tastaturindstillinger",
     "keyboardPromptAddKeyboardMessage": "Tilføj et tastatur til dit målsprog, så autokorrektur virker.",
     "keyboardPromptAddKeyboardAction": "Tilføj tastatur",
-    "keyboardPromptSwitchKeyboardMessage": "Tryk på globusikonet på dit tastatur for at skifte til dit målsprog."
+    "keyboardPromptSwitchKeyboardMessage": "Tryk på globusikonet på dit tastatur for at skifte til dit målsprog.",
+    "switchLanguageChipLabel": "Skift til {language}",
+    "languageDropdownLevel": "Niveau {level}",
+    "whatAreYouLearning": "Hvad lærer du?",
+    "languageSwitcherBaseLanguageLabel": "Dit grundsprog"
 }

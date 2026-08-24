@@ -1938,7 +1938,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-21 09:39:36.829260",
+    "@@last_modified": "2026-08-24 11:54:17.917322",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10652,5 +10652,9 @@
     "openKeyboardSettings": "კლავიატურის პარამეტრების გახსნა",
     "keyboardPromptAddKeyboardMessage": "დაამატეთ კლავიატურა თქვენი სამიზნე ენისთვის, რათა ავტოკორექციამ იმუშაოს.",
     "keyboardPromptAddKeyboardAction": "კლავიატურის დამატება",
-    "keyboardPromptSwitchKeyboardMessage": "შეეხეთ გლობუსის ხატულას თქვენს კლავიატურაზე, რათა გადახვიდეთ თქვენს სამიზნე ენაზე."
+    "keyboardPromptSwitchKeyboardMessage": "შეეხეთ გლობუსის ხატულას თქვენს კლავიატურაზე, რათა გადახვიდეთ თქვენს სამიზნე ენაზე.",
+    "switchLanguageChipLabel": "გადართვა {language}-ზე",
+    "languageDropdownLevel": "დონე {level}",
+    "whatAreYouLearning": "რას სწავლობთ?",
+    "languageSwitcherBaseLanguageLabel": "თქვენი საბაზო ენა"
 }

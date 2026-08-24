@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-21 09:39:33.110566",
+    "@@last_modified": "2026-08-24 11:54:14.501741",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9766,5 +9766,9 @@
     "openKeyboardSettings": "Адкрыць налады клавіятуры",
     "keyboardPromptAddKeyboardMessage": "Дадайце клавіятуру для мэтавай мовы, каб працаваў аўтавыпраўленне.",
     "keyboardPromptAddKeyboardAction": "Дадаць клавіятуру",
-    "keyboardPromptSwitchKeyboardMessage": "Націсніце значок глобуса на клавіятуры, каб пераключыцца на мэтавую мову."
+    "keyboardPromptSwitchKeyboardMessage": "Націсніце значок глобуса на клавіятуры, каб пераключыцца на мэтавую мову.",
+    "switchLanguageChipLabel": "Перайсці на {language}",
+    "languageDropdownLevel": "Узровень {level}",
+    "whatAreYouLearning": "Што вы вывучаеце?",
+    "languageSwitcherBaseLanguageLabel": "Ваша базавая мова"
 }

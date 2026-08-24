@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-21 09:39:42.571851",
+    "@@last_modified": "2026-08-24 11:54:23.360659",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Ṣí Àwọn Ètò Bọ́tíìnì",
     "keyboardPromptAddKeyboardMessage": "Fi keyboard kún un fún èdè tí ò ń kọ́, kí autocorrect lè ṣiṣẹ́.",
     "keyboardPromptAddKeyboardAction": "Fi Keyboard Kún Un",
-    "keyboardPromptSwitchKeyboardMessage": "Tẹ àmì ayé lórí keyboard rẹ láti yí sí èdè tí ò ń kọ́."
+    "keyboardPromptSwitchKeyboardMessage": "Tẹ àmì ayé lórí keyboard rẹ láti yí sí èdè tí ò ń kọ́.",
+    "switchLanguageChipLabel": "Yipada si {language}",
+    "languageDropdownLevel": "Ipele {level}",
+    "whatAreYouLearning": "Kini o n kọ?",
+    "languageSwitcherBaseLanguageLabel": "Èdè ìpìlẹ̀ rẹ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-21 09:39:36.866610",
+    "@@last_modified": "2026-08-24 11:54:18.653193",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Open Keyboard Setin dɛm",
     "keyboardPromptAddKeyboardMessage": "Put in wan keyboard fɔ yu target langwej so autocorrect go wok.",
     "keyboardPromptAddKeyboardAction": "Put in Keyboard",
-    "keyboardPromptSwitchKeyboardMessage": "Tap di glob icon na yu keyboard fɔ chenj to yu target langwej."
+    "keyboardPromptSwitchKeyboardMessage": "Tap di glob icon na yu keyboard fɔ chenj to yu target langwej.",
+    "switchLanguageChipLabel": "Chenj to {language}",
+    "languageDropdownLevel": "Level {level}",
+    "whatAreYouLearning": "Wetin yu de lan?",
+    "languageSwitcherBaseLanguageLabel": "Yu base langwej"
 }

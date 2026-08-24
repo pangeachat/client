@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-21 09:39:33.901799",
+    "@@last_modified": "2026-08-24 11:54:15.446294",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Ablihi ang Mga Setting sa Keyboard",
     "keyboardPromptAddKeyboardMessage": "Pagdugang og keyboard para sa imong target nga pinulongan aron molihok ang autocorrect.",
     "keyboardPromptAddKeyboardAction": "Pagdugang og Keyboard",
-    "keyboardPromptSwitchKeyboardMessage": "I-tap ang icon sa globo sa imong keyboard aron mobalhin sa imong target nga pinulongan."
+    "keyboardPromptSwitchKeyboardMessage": "I-tap ang icon sa globo sa imong keyboard aron mobalhin sa imong target nga pinulongan.",
+    "switchLanguageChipLabel": "Balhin sa {language}",
+    "languageDropdownLevel": "Lebel {level}",
+    "whatAreYouLearning": "Unsa ang imong ginatun-an?",
+    "languageSwitcherBaseLanguageLabel": "Imong base nga pinulongan"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-21 09:39:35.643420",
+    "@@last_modified": "2026-08-24 11:54:17.090827",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9855,5 +9855,9 @@
     "openKeyboardSettings": "Billentyűzetbeállítások megnyitása",
     "keyboardPromptAddKeyboardMessage": "Adj hozzá billentyűzetet a célnyelvedhez, hogy működjön az automatikus javítás.",
     "keyboardPromptAddKeyboardAction": "Billentyűzet hozzáadása",
-    "keyboardPromptSwitchKeyboardMessage": "Koppints a földgömb ikonra a billentyűzeteden, hogy átválts a célnyelvedre."
+    "keyboardPromptSwitchKeyboardMessage": "Koppints a földgömb ikonra a billentyűzeteden, hogy átválts a célnyelvedre.",
+    "switchLanguageChipLabel": "Váltás a következő nyelvre: {language}",
+    "languageDropdownLevel": "{level}. szint",
+    "whatAreYouLearning": "Mit tanulsz?",
+    "languageSwitcherBaseLanguageLabel": "Alapnyelved"
 }

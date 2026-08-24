@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:40.974992",
+    "@@last_modified": "2026-08-24 11:54:21.750601",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10701,5 +10701,9 @@
     "openKeyboardSettings": "Otvori podešavanja tastature",
     "keyboardPromptAddKeyboardMessage": "Dodajte tastaturu za ciljni jezik da bi automatska ispravka radila.",
     "keyboardPromptAddKeyboardAction": "Dodaj tastaturu",
-    "keyboardPromptSwitchKeyboardMessage": "Dodirnite ikonu globusa na tastaturi da biste se prebacili na ciljni jezik."
+    "keyboardPromptSwitchKeyboardMessage": "Dodirnite ikonu globusa na tastaturi da biste se prebacili na ciljni jezik.",
+    "switchLanguageChipLabel": "Prebaci na {language}",
+    "languageDropdownLevel": "Nivo {level}",
+    "whatAreYouLearning": "Šta učiš?",
+    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik"
 }

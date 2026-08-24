@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-21 09:39:36.152976",
+    "@@last_modified": "2026-08-24 11:54:17.776584",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Mepee Ntọala Ahụigwe",
     "keyboardPromptAddKeyboardMessage": "Tinye ahụigodo maka asụsụ ịchọrọ ka mmezi akpaaka wee rụọ ọrụ.",
     "keyboardPromptAddKeyboardAction": "Tinye Ahụigodo",
-    "keyboardPromptSwitchKeyboardMessage": "Pịa akara ngosi ụwa dị na ahụigodo gị ka ịgbanwee gaa na asụsụ ịchọrọ."
+    "keyboardPromptSwitchKeyboardMessage": "Pịa akara ngosi ụwa dị na ahụigodo gị ka ịgbanwee gaa na asụsụ ịchọrọ.",
+    "switchLanguageChipLabel": "Gbanwee gaa na {language}",
+    "languageDropdownLevel": "Ọkwa {level}",
+    "whatAreYouLearning": "Kedu ihe ị na-amụ?",
+    "languageSwitcherBaseLanguageLabel": "Asụsụ gị bụ isi"
 }

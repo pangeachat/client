@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-21 09:39:40.357964",
+    "@@last_modified": "2026-08-24 11:54:21.340734",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "ڪي بورڊ سيٽنگون کوليو",
     "keyboardPromptAddKeyboardMessage": "پنهنجي سکڻ واري ٻوليءَ لاءِ ڪي بورڊ شامل ڪريو ته جيئن آٽوڪرڪٽ ڪم ڪري.",
     "keyboardPromptAddKeyboardAction": "ڪي بورڊ شامل ڪريو",
-    "keyboardPromptSwitchKeyboardMessage": "پنهنجي ڪي بورڊ تي گلوب آئڪن کي ٽيپ ڪريو ته جيئن پنهنجي سکڻ واري ٻوليءَ تي تبديل ڪري سگهو."
+    "keyboardPromptSwitchKeyboardMessage": "پنهنجي ڪي بورڊ تي گلوب آئڪن کي ٽيپ ڪريو ته جيئن پنهنجي سکڻ واري ٻوليءَ تي تبديل ڪري سگهو.",
+    "switchLanguageChipLabel": "{language} ۾ مَٽايو",
+    "languageDropdownLevel": "سطح {level}",
+    "whatAreYouLearning": "توهان ڇا سکي رهيا آهيو؟",
+    "languageSwitcherBaseLanguageLabel": "توهان جي بنيادي ٻولي"
 }

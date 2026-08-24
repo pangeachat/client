@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-21 09:39:37.405679",
+    "@@last_modified": "2026-08-24 11:54:18.791750",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Tastaturastellungen opmaachen",
     "keyboardPromptAddKeyboardMessage": "Füügt eng Tastatur fir Är Zilssprooch derbäi, fir datt d'Autokorrektur funktionnéiert.",
     "keyboardPromptAddKeyboardAction": "Tastatur derbäisetzen",
-    "keyboardPromptSwitchKeyboardMessage": "Tippt op d'Globus-Ikon op Ärer Tastatur, fir op Är Zilssprooch ze wiesselen."
+    "keyboardPromptSwitchKeyboardMessage": "Tippt op d'Globus-Ikon op Ärer Tastatur, fir op Är Zilssprooch ze wiesselen.",
+    "switchLanguageChipLabel": "Wiesselen op {language}",
+    "languageDropdownLevel": "Niveau {level}",
+    "whatAreYouLearning": "Wat léiers du?",
+    "languageSwitcherBaseLanguageLabel": "Deng Basissprooch"
 }

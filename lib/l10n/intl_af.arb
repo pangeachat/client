@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-21 09:39:32.933641",
+    "@@last_modified": "2026-08-24 11:54:14.351926",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Maak Sleutelbordinstellings oop",
     "keyboardPromptAddKeyboardMessage": "Voeg 'n sleutelbord vir jou doeltaal by sodat outokorreksie werk.",
     "keyboardPromptAddKeyboardAction": "Voeg sleutelbord by",
-    "keyboardPromptSwitchKeyboardMessage": "Tik die aardbol-ikoon op jou sleutelbord om na jou doeltaal oor te skakel."
+    "keyboardPromptSwitchKeyboardMessage": "Tik die aardbol-ikoon op jou sleutelbord om na jou doeltaal oor te skakel.",
+    "switchLanguageChipLabel": "Skakel oor na {language}",
+    "languageDropdownLevel": "Vlak {level}",
+    "whatAreYouLearning": "Wat leer jy?",
+    "languageSwitcherBaseLanguageLabel": "Jou basis taal"
 }

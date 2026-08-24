@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-21 09:39:41.668067",
+    "@@last_modified": "2026-08-24 11:54:22.585797",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9752,5 +9752,9 @@
     "openKeyboardSettings": "Відкрити налаштування клавіатури",
     "keyboardPromptAddKeyboardMessage": "Додайте клавіатуру для цільової мови, щоб працював автовиправлення.",
     "keyboardPromptAddKeyboardAction": "Додати клавіатуру",
-    "keyboardPromptSwitchKeyboardMessage": "Натисніть піктограму глобуса на клавіатурі, щоб переключитися на цільову мову."
+    "keyboardPromptSwitchKeyboardMessage": "Натисніть піктограму глобуса на клавіатурі, щоб переключитися на цільову мову.",
+    "switchLanguageChipLabel": "Перейти на {language}",
+    "languageDropdownLevel": "Рівень {level}",
+    "whatAreYouLearning": "Що ви вивчаєте?",
+    "languageSwitcherBaseLanguageLabel": "Ваша основна мова"
 }

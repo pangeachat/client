@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-21 09:39:40.016851",
+    "@@last_modified": "2026-08-24 11:54:20.783981",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10669,5 +10669,9 @@
     "openKeyboardSettings": "Abrir Definições do Teclado",
     "keyboardPromptAddKeyboardMessage": "Adicione um teclado para o seu idioma de destino para que a correção automática funcione.",
     "keyboardPromptAddKeyboardAction": "Adicionar Teclado",
-    "keyboardPromptSwitchKeyboardMessage": "Toque no ícone do globo no seu teclado para mudar para o seu idioma de destino."
+    "keyboardPromptSwitchKeyboardMessage": "Toque no ícone do globo no seu teclado para mudar para o seu idioma de destino.",
+    "switchLanguageChipLabel": "Mudar para {language}",
+    "languageDropdownLevel": "Nível {level}",
+    "whatAreYouLearning": "O que estás a aprender?",
+    "languageSwitcherBaseLanguageLabel": "A sua língua base"
 }

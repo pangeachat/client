@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-21 09:39:38.186074",
+    "@@last_modified": "2026-08-24 11:54:29.443349",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Buka Tetapan Papan Kekunci",
     "keyboardPromptAddKeyboardMessage": "Tambah papan kekunci untuk bahasa sasaran anda supaya pembetulan automatik berfungsi.",
     "keyboardPromptAddKeyboardAction": "Tambah Papan Kekunci",
-    "keyboardPromptSwitchKeyboardMessage": "Ketik ikon glob pada papan kekunci anda untuk bertukar kepada bahasa sasaran anda."
+    "keyboardPromptSwitchKeyboardMessage": "Ketik ikon glob pada papan kekunci anda untuk bertukar kepada bahasa sasaran anda.",
+    "switchLanguageChipLabel": "Tukar kepada {language}",
+    "languageDropdownLevel": "Tahap {level}",
+    "whatAreYouLearning": "Apa yang anda pelajari?",
+    "languageSwitcherBaseLanguageLabel": "Bahasa asas anda"
 }

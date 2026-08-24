@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-21 09:39:38.417108",
+    "@@last_modified": "2026-08-24 11:54:19.562227",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2156,5 +2156,9 @@
     "openKeyboardSettings": "Гарын тохиргоог нээх",
     "keyboardPromptAddKeyboardMessage": "Автоматаар засах функцийг ашиглахын тулд сурах хэлнийхээ гарыг нэмнэ үү.",
     "keyboardPromptAddKeyboardAction": "Гар нэмэх",
-    "keyboardPromptSwitchKeyboardMessage": "Сурах хэл рүүгээ шилжихийн тулд гарынхаа дэлхийн бөмбөрцөг дүрс дээр дарна уу."
+    "keyboardPromptSwitchKeyboardMessage": "Сурах хэл рүүгээ шилжихийн тулд гарынхаа дэлхийн бөмбөрцөг дүрс дээр дарна уу.",
+    "switchLanguageChipLabel": "{language} руу шилжих",
+    "languageDropdownLevel": "Түвшин {level}",
+    "whatAreYouLearning": "Та юу сурч байна вэ?",
+    "languageSwitcherBaseLanguageLabel": "Таны үндсэн хэл"
 }

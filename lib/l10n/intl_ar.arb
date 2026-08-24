@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-21 09:39:32.940488",
+    "@@last_modified": "2026-08-24 11:54:14.385641",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10058,5 +10058,9 @@
     "openKeyboardSettings": "فتح إعدادات لوحة المفاتيح",
     "keyboardPromptAddKeyboardMessage": "أضف لوحة مفاتيح للغتك المستهدفة ليعمل التصحيح التلقائي.",
     "keyboardPromptAddKeyboardAction": "إضافة لوحة مفاتيح",
-    "keyboardPromptSwitchKeyboardMessage": "اضغط على أيقونة الكرة الأرضية في لوحة المفاتيح للتبديل إلى لغتك المستهدفة."
+    "keyboardPromptSwitchKeyboardMessage": "اضغط على أيقونة الكرة الأرضية في لوحة المفاتيح للتبديل إلى لغتك المستهدفة.",
+    "switchLanguageChipLabel": "التبديل إلى {language}",
+    "languageDropdownLevel": "المستوى {level}",
+    "whatAreYouLearning": "ماذا تتعلم؟",
+    "languageSwitcherBaseLanguageLabel": "لغتك الأساسية"
 }
