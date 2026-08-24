@@ -15,7 +15,7 @@ The client uses a **dual-branch model** unlike other services — but the produc
 | `main` | Staging (`app.staging.pangea.chat`) | Merging to `main` deploys staging |
 | `production` | Production (`app.pangea.chat`) | **Nothing deploys on push.** The branch records the commit a release is cut from; publishing a GitHub release targeting it runs [`release.yaml`](../../.github/workflows/release.yaml) — builds Flutter web, uploads to S3, invalidates CloudFront, posts to Matrix |
 
-Separating the two is the point: merging into `production` marks where we are cutting from and is safe to do whenever, and the release publish is the single deliberate act that ships to users. Cut the release against the branch — `gh release create <tag> --target production` — because a `release` event runs the workflow file **from the tagged commit**, so the copy of `release.yaml` on `production` is the one that runs. A production redeploy with no new release is `workflow_dispatch` on the same workflow.
+Separating the two is the point: merging into `production` marks where we are cutting from and is safe to do whenever, while publishing the release is the single deliberate act that ships to users. The release must target the `production` branch, because GitHub runs a release's workflow from the tagged commit — so the copy of `release.yaml` on `production` is the one that runs. Redeploying production without a new release is a manual run of the same workflow. Steps are in the [create-release skill](https://github.com/pangeachat/.github/blob/main/.github/skills/create-release/SKILL.md).
 
 Production is periodically synced from `main` via merge PRs. Between syncs, the branches diverge — sometimes significantly (100+ commits).
 
@@ -40,7 +40,7 @@ Choosing a level is answering one question: *would we ever force someone onto th
 
 These definitions are analogous to the SemVer standard definitions for these version numbers, except defined in terms of the need for user-side forced updates instead of in terms of backwards compatibility.
 
-**Bumping is a judgment call, not a per-PR obligation** — most PRs need none. Raise it when a PR is the thing a future floor-raise would target, or when a release is being cut. A release must still bump `+N`, so the tag is unique and the version the app reports matches the release it came from — but a reused version now fails loudly at `gh release create` instead of silently producing no tag and no deploy, because the workflow no longer creates the tag itself.
+**Bumping is a judgment call, not a per-PR obligation** — most PRs need none. Raise it when a PR is the thing a future floor-raise would target, or when a release is being cut. A release must still bump `+N`, so the tag is unique and the version the app reports matches the release it came from — but because the release cutter now creates the tag rather than the workflow, a reused version collides loudly at that point instead of silently producing no tag and no deploy.
 
 ## Environment Config (`.env`)
 
@@ -71,7 +71,7 @@ When a bug must be fixed on production before the next full sync from `main`:
 2. **Assess cherry-pick feasibility** — If the fix already exists on `main`, try `git cherry-pick`. If `production` has diverged (e.g., a refactor changed the surrounding code), the cherry-pick may apply as a no-op or conflict. In that case, manually port the fix to be compatible with production's codebase.
 3. **PR to `production`** — open a PR targeting `production`, not `main`.
 4. **Bump the version** in `pubspec.yaml` — see [Versioning](#versioning). A hotfix is a patch: increment the build number (e.g., `4.1.18+6` → `4.1.18+7`).
-5. **Publish a release to deploy** — merging the PR to `production` deploys nothing. Cut the release once the fix is on the branch: `gh release create <version> --target production` (see [release-process](https://github.com/pangeachat/.github/blob/main/.github/instructions/release-process.instructions.md) for the body contract). Publishing runs [`release.yaml`](../../.github/workflows/release.yaml).
+5. **Publish a release to deploy** — merging the PR to `production` deploys nothing. Once the fix is on the branch, cut a release targeting it; publishing runs [`release.yaml`](../../.github/workflows/release.yaml). See [release-process](https://github.com/pangeachat/.github/blob/main/.github/instructions/release-process.instructions.md) for the gates and the release-body contract.
 6. **Forward-port to `main`** — after the hotfix is confirmed working on production, ensure the fix also exists on `main` (via the original PR, a separate PR, or the next sync merge). Otherwise the fix regresses on the next production sync.
 
 ### Key risks
