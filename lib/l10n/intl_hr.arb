@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-21 09:39:35.361317",
+    "@@last_modified": "2026-08-24 11:54:16.951499",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10194,5 +10194,9 @@
     "autocorrectAndroidDialogBody": "Kada tipkate u chatu, vaša će se tipkovnica prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
     "autocorrectAndroidFallbackTitle": "Ako vaša tipkovnica ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:",
     "resendInSeconds": "Ponovno pošalji ({seconds})",
-    "mapLevelFallbackNotice": "Još nema aktivnosti za {selected} — umjesto toga prikazuje se {shown}."
+    "mapLevelFallbackNotice": "Još nema aktivnosti za {selected} — umjesto toga prikazuje se {shown}.",
+    "switchLanguageChipLabel": "Prebaci na {language}",
+    "languageDropdownLevel": "Razina {level}",
+    "whatAreYouLearning": "Što učiš?",
+    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik"
 }

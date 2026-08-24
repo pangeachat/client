@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-21 09:39:32.940488",
+    "@@last_modified": "2026-08-24 11:54:14.385641",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10064,5 +10064,9 @@
     "autocorrectAndroidDialogBody": "عند الكتابة في الدردشة، ستتحول لوحة المفاتيح إلى لغتك المستهدفة وتصحح الأخطاء الإملائية في تلك اللغة.",
     "autocorrectAndroidFallbackTitle": "إذا كانت لوحة المفاتيح لا توفر لغتك المستهدفة، فقم بتثبيت Gboard وأضف اللغة هناك:",
     "resendInSeconds": "إعادة الإرسال خلال ({seconds})",
-    "mapLevelFallbackNotice": "لا توجد أنشطة {selected} بعد — نعرض {shown} بدلاً من ذلك."
+    "mapLevelFallbackNotice": "لا توجد أنشطة {selected} بعد — نعرض {shown} بدلاً من ذلك.",
+    "switchLanguageChipLabel": "التبديل إلى {language}",
+    "languageDropdownLevel": "المستوى {level}",
+    "whatAreYouLearning": "ماذا تتعلم؟",
+    "languageSwitcherBaseLanguageLabel": "لغتك الأساسية"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-21 09:39:37.701285",
+    "@@last_modified": "2026-08-24 11:54:18.825961",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "ເມື່ອທ່ານພິມໃນການສົນທະນາ, ແປ້ນພິມຂອງທ່ານຈະປ່ຽນເປັນພາສາເປົ້າໝາຍຂອງທ່ານ ແລະ ແກ້ໄຂການສະກົດຄຳໃນພາສານັ້ນ.",
     "autocorrectAndroidFallbackTitle": "ຖ້າແປ້ນພິມຂອງທ່ານບໍ່ຮອງຮັບພາສາເປົ້າໝາຍຂອງທ່ານ, ໃຫ້ຕິດຕັ້ງ Gboard ແລະ ເພີ່ມພາສານັ້ນຢູ່ບ່ອນນັ້ນ:",
     "resendInSeconds": "ສົ່ງຄືນໃໝ່ ({seconds})",
-    "mapLevelFallbackNotice": "ຍັງບໍ່ມີກິດຈະກຳ {selected} — ສະແດງ {shown} ແທນ."
+    "mapLevelFallbackNotice": "ຍັງບໍ່ມີກິດຈະກຳ {selected} — ສະແດງ {shown} ແທນ.",
+    "switchLanguageChipLabel": "ປ່ຽນເປັນ {language}",
+    "languageDropdownLevel": "ລະດັບ {level}",
+    "whatAreYouLearning": "ທ່ານກຳລັງຮຽນຫຍັງ?",
+    "languageSwitcherBaseLanguageLabel": "ພາສາພື້ນຖານຂອງທ່ານ"
 }

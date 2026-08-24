@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:41.838171",
+    "@@last_modified": "2026-08-24 11:54:22.978497",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7042,5 +7042,9 @@
     "autocorrectAndroidDialogBody": "Khi bạn nhập tin nhắn trong cuộc trò chuyện, bàn phím của bạn sẽ chuyển sang ngôn ngữ mục tiêu và sửa lỗi chính tả bằng ngôn ngữ đó.",
     "autocorrectAndroidFallbackTitle": "Nếu bàn phím của bạn không hỗ trợ ngôn ngữ mục tiêu, hãy cài đặt Gboard và thêm ngôn ngữ đó tại đây:",
     "resendInSeconds": "Gửi lại ({seconds})",
-    "mapLevelFallbackNotice": "Chưa có hoạt động {selected} nào — thay vào đó hiển thị {shown}."
+    "mapLevelFallbackNotice": "Chưa có hoạt động {selected} nào — thay vào đó hiển thị {shown}.",
+    "switchLanguageChipLabel": "Chuyển sang {language}",
+    "languageDropdownLevel": "Cấp độ {level}",
+    "whatAreYouLearning": "Bạn đang học gì?",
+    "languageSwitcherBaseLanguageLabel": "Ngôn ngữ cơ bản của bạn"
 }

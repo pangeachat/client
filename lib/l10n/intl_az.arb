@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-21 09:39:33.044762",
+    "@@last_modified": "2026-08-24 11:54:14.429912",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Söhbətdə yazarkən klaviaturanız hədəf dilinizə keçəcək və həmin dildə orfoqrafiyanı düzəldəcək.",
     "autocorrectAndroidFallbackTitle": "Əgər klaviaturanız hədəf dilinizi təklif etmirsə, Gboard-u quraşdırın və dili oraya əlavə edin:",
     "resendInSeconds": "Yenidən göndər ({seconds})",
-    "mapLevelFallbackNotice": "Hələ heç bir {selected} fəaliyyəti yoxdur — əvəzinə {shown} göstərilir."
+    "mapLevelFallbackNotice": "Hələ heç bir {selected} fəaliyyəti yoxdur — əvəzinə {shown} göstərilir.",
+    "switchLanguageChipLabel": "{language} dilinə keçin",
+    "languageDropdownLevel": "Səviyyə {level}",
+    "whatAreYouLearning": "Nə öyrənirsiniz?",
+    "languageSwitcherBaseLanguageLabel": "Sizin əsas diliniz"
 }

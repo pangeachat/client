@@ -3096,7 +3096,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-21 09:39:41.280306",
+    "@@last_modified": "2026-08-24 11:54:22.389093",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10390,5 +10390,9 @@
     "autocorrectAndroidDialogBody": "เมื่อคุณพิมพ์ในแชท แป้นพิมพ์ของคุณจะเปลี่ยนเป็นภาษาเป้าหมายและแก้ไขการสะกดในภาษานั้น",
     "autocorrectAndroidFallbackTitle": "หากแป้นพิมพ์ของคุณไม่มีภาษาเป้าหมาย ให้ติดตั้ง Gboard และเพิ่มภาษาที่นั่น:",
     "resendInSeconds": "ส่งอีกครั้งใน ({seconds})",
-    "mapLevelFallbackNotice": "ยังไม่มีกิจกรรม {selected} — แสดง {shown} แทน"
+    "mapLevelFallbackNotice": "ยังไม่มีกิจกรรม {selected} — แสดง {shown} แทน",
+    "switchLanguageChipLabel": "เปลี่ยนเป็น {language}",
+    "languageDropdownLevel": "ระดับ {level}",
+    "whatAreYouLearning": "คุณกำลังเรียนรู้อะไรอยู่",
+    "languageSwitcherBaseLanguageLabel": "ภาษาหลักของคุณ"
 }

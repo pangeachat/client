@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:33.819315",
+    "@@last_modified": "2026-08-24 11:54:15.004231",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9885,5 +9885,9 @@
     "autocorrectAndroidDialogBody": "Quan escriguis en un xat, el teu teclat canviarà a la teva llengua d'aprenentatge i corregirà l'ortografia en aquesta llengua.",
     "autocorrectAndroidFallbackTitle": "Si el teu teclat no ofereix la teva llengua d'aprenentatge, instal·la Gboard i afegeix-hi la llengua:",
     "resendInSeconds": "Reenviar ({seconds})",
-    "mapLevelFallbackNotice": "Encara no hi ha activitats {selected}; es mostren {shown} en el seu lloc."
+    "mapLevelFallbackNotice": "Encara no hi ha activitats {selected}; es mostren {shown} en el seu lloc.",
+    "switchLanguageChipLabel": "Canviar a {language}",
+    "languageDropdownLevel": "Nivell {level}",
+    "whatAreYouLearning": "Què estàs aprenent?",
+    "languageSwitcherBaseLanguageLabel": "La teva llengua base"
 }

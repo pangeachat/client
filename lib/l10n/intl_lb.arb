@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-21 09:39:37.405679",
+    "@@last_modified": "2026-08-24 11:54:18.791750",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Wann Dir an engem Chat tippt, wiesselt Är Tastatur op Är Zilssprooch a korrigéiert d'Schreifweis an där Sprooch.",
     "autocorrectAndroidFallbackTitle": "Wann Är Tastatur Är Zilssprooch net ubitt, installéiert Gboard a füügt d'Sprooch do bäi:",
     "resendInSeconds": "Nei schécken an ({seconds})",
-    "mapLevelFallbackNotice": "Nach keng {selected} Aktivitéiten — weisen amplaz {shown}."
+    "mapLevelFallbackNotice": "Nach keng {selected} Aktivitéiten — weisen amplaz {shown}.",
+    "switchLanguageChipLabel": "Wiesselen op {language}",
+    "languageDropdownLevel": "Niveau {level}",
+    "whatAreYouLearning": "Wat léiers du?",
+    "languageSwitcherBaseLanguageLabel": "Deng Basissprooch"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-21 09:39:40.656219",
+    "@@last_modified": "2026-08-24 11:54:21.545952",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Kur shkruani në një bisedë, tastiera juaj do të kalojë në gjuhën tuaj të synuar dhe do të korrigjojë drejtshkrimin në atë gjuhë.",
     "autocorrectAndroidFallbackTitle": "Nëse tastiera juaj nuk ofron gjuhën tuaj të synuar, instaloni Gboard dhe shtoni gjuhën atje:",
     "resendInSeconds": "Rikërko ({seconds})",
-    "mapLevelFallbackNotice": "Asnjë aktivitet {selected} ende — po shfaqet {shown} në vend të tij."
+    "mapLevelFallbackNotice": "Asnjë aktivitet {selected} ende — po shfaqet {shown} në vend të tij.",
+    "switchLanguageChipLabel": "Kalo te {language}",
+    "languageDropdownLevel": "Niveli {level}",
+    "whatAreYouLearning": "Çfarë po mëson?",
+    "languageSwitcherBaseLanguageLabel": "Gjuha juaj bazë"
 }

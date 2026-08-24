@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-21 09:39:41.271019",
+    "@@last_modified": "2026-08-24 11:54:22.033887",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Unapoandika kwenye gumzo, kibodi chako kitabadilika hadi lugha unayolenga na kusahihisha tahajia katika lugha hiyo.",
     "autocorrectAndroidFallbackTitle": "Ikiwa kibodi chako hakitoi lugha unayolenga, sakinisha Gboard na uongeze lugha hapo:",
     "resendInSeconds": "Tuma tena baada ya sekunde {seconds}",
-    "mapLevelFallbackNotice": "Hakuna shughuli za {selected} bado — zinaonyesha {shown} badala yake."
+    "mapLevelFallbackNotice": "Hakuna shughuli za {selected} bado — zinaonyesha {shown} badala yake.",
+    "switchLanguageChipLabel": "Badilisha hadi {language}",
+    "languageDropdownLevel": "Kiwango {level}",
+    "whatAreYouLearning": "Unajifunza nini?",
+    "languageSwitcherBaseLanguageLabel": "Lugha yako ya msingi"
 }

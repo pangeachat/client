@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-21 09:39:33.901799",
+    "@@last_modified": "2026-08-24 11:54:15.446294",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Kung mag-type ka sa chat, ang imong keyboard mobalhin sa imong target nga pinulongan ug mokorektar sa spelling niana nga pinulongan.",
     "autocorrectAndroidFallbackTitle": "Kung ang imong keyboard dili mohatag sa imong target nga pinulongan, i-install ang Gboard ug idugang ang pinulongan didto:",
     "resendInSeconds": "Ipadala pag-usab ({seconds})",
-    "mapLevelFallbackNotice": "Wala pay {selected} nga kalihokan — gipakita ang {shown} hinuon."
+    "mapLevelFallbackNotice": "Wala pay {selected} nga kalihokan — gipakita ang {shown} hinuon.",
+    "switchLanguageChipLabel": "Balhin sa {language}",
+    "languageDropdownLevel": "Lebel {level}",
+    "whatAreYouLearning": "Unsa ang imong ginatun-an?",
+    "languageSwitcherBaseLanguageLabel": "Imong base nga pinulongan"
 }

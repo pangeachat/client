@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:41.119106",
+    "@@last_modified": "2026-08-24 11:54:21.932867",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10276,5 +10276,9 @@
     "autocorrectAndroidDialogBody": "När du skriver i en chatt växlar tangentbordet till ditt målspråk och korrigerar stavningen på det språket.",
     "autocorrectAndroidFallbackTitle": "Om ditt tangentbord inte erbjuder ditt målspråk, installera Gboard och lägg till språket där:",
     "resendInSeconds": "Skicka igen ({seconds})",
-    "mapLevelFallbackNotice": "Inga {selected} aktiviteter än – visar {shown} istället."
+    "mapLevelFallbackNotice": "Inga {selected} aktiviteter än – visar {shown} istället.",
+    "switchLanguageChipLabel": "Byt till {language}",
+    "languageDropdownLevel": "Nivå {level}",
+    "whatAreYouLearning": "Vad lär du dig?",
+    "languageSwitcherBaseLanguageLabel": "Ditt basspråk"
 }

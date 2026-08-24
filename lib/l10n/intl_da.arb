@@ -1337,7 +1337,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-21 09:39:33.779923",
+    "@@last_modified": "2026-08-24 11:54:15.159038",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10678,5 +10678,9 @@
     "autocorrectAndroidDialogBody": "Når du skriver i en chat, skifter dit tastatur til dit målsprog og retter stavefejl på det sprog.",
     "autocorrectAndroidFallbackTitle": "Hvis dit tastatur ikke tilbyder dit målsprog, skal du installere Gboard og tilføje sproget der:",
     "resendInSeconds": "Send igen ({seconds})",
-    "mapLevelFallbackNotice": "Ingen {selected}-aktiviteter endnu – viser {shown} i stedet."
+    "mapLevelFallbackNotice": "Ingen {selected}-aktiviteter endnu – viser {shown} i stedet.",
+    "switchLanguageChipLabel": "Skift til {language}",
+    "languageDropdownLevel": "Niveau {level}",
+    "whatAreYouLearning": "Hvad lærer du?",
+    "languageSwitcherBaseLanguageLabel": "Dit grundsprog"
 }

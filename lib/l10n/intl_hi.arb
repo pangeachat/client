@@ -3096,7 +3096,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-21 09:39:44.495741",
+    "@@last_modified": "2026-08-24 11:54:16.838032",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10390,5 +10390,9 @@
     "autocorrectAndroidDialogBody": "जब आप चैट में टाइप करते हैं, तो आपका कीबोर्ड आपकी लक्ष्य भाषा में बदल जाएगा और उस भाषा में वर्तनी को सही करेगा।",
     "autocorrectAndroidFallbackTitle": "यदि आपका कीबोर्ड आपकी लक्ष्य भाषा प्रदान नहीं करता है, तो Gboard इंस्टॉल करें और वहां भाषा जोड़ें:",
     "resendInSeconds": "पुनः भेजें ({seconds})",
-    "mapLevelFallbackNotice": "अभी तक कोई {selected} गतिविधियां नहीं हैं — इसके बजाय {shown} दिखाया जा रहा है।"
+    "mapLevelFallbackNotice": "अभी तक कोई {selected} गतिविधियां नहीं हैं — इसके बजाय {shown} दिखाया जा रहा है।",
+    "switchLanguageChipLabel": "{language} पर स्विच करें",
+    "languageDropdownLevel": "स्तर {level}",
+    "whatAreYouLearning": "आप क्या सीख रहे हैं?",
+    "languageSwitcherBaseLanguageLabel": "आपकी आधार भाषा"
 }

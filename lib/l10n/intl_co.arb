@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-21 09:39:33.837184",
+    "@@last_modified": "2026-08-24 11:54:15.202567",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Quandu scrivite in una chjachjarata, a vostra tastiera cambierà à a vostra lingua di destinazione è curreggerà l'ortografia in quella lingua.",
     "autocorrectAndroidFallbackTitle": "Se a vostra tastiera ùn offre micca a vostra lingua di destinazione, stallate Gboard è aghjunghjite a lingua quì:",
     "resendInSeconds": "Rinvialla ({seconds})",
-    "mapLevelFallbackNotice": "Nisuna attività {selected} ancu – mostrendu {shown} invece."
+    "mapLevelFallbackNotice": "Nisuna attività {selected} ancu – mostrendu {shown} invece.",
+    "switchLanguageChipLabel": "Passà à u {language}",
+    "languageDropdownLevel": "Livellu {level}",
+    "whatAreYouLearning": "Chì amparate?",
+    "languageSwitcherBaseLanguageLabel": "A vostra lingua di basa"
 }

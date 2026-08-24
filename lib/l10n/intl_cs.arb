@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-21 09:39:33.847413",
+    "@@last_modified": "2026-08-24 11:54:15.226550",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10252,5 +10252,9 @@
     "autocorrectAndroidDialogBody": "Když píšete do chatu, klávesnice se přepne na váš cílový jazyk a bude v něm opravovat pravopis.",
     "autocorrectAndroidFallbackTitle": "Pokud vaše klávesnice nenabízí váš cílový jazyk, nainstalujte Gboard a přidejte jazyk tam:",
     "resendInSeconds": "Znovu odeslat ({seconds})",
-    "mapLevelFallbackNotice": "Zatím žádné aktivity {selected} – místo toho se zobrazují {shown}."
+    "mapLevelFallbackNotice": "Zatím žádné aktivity {selected} – místo toho se zobrazují {shown}.",
+    "switchLanguageChipLabel": "Přepnout na {language}",
+    "languageDropdownLevel": "Úroveň {level}",
+    "whatAreYouLearning": "Co se učíte?",
+    "languageSwitcherBaseLanguageLabel": "Váš základní jazyk"
 }

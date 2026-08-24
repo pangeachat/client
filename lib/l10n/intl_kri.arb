@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-21 09:39:36.866610",
+    "@@last_modified": "2026-08-24 11:54:18.653193",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Tɛm we yu de rayt na chat, yu keyboard go chenj to yu tɔŋ we yu de lan ɛn kɔrɛkt spɛlin na dat tɔŋ.",
     "autocorrectAndroidFallbackTitle": "If yu keyboard nɔ gɛt yu tɔŋ we yu de lan, instɔl Gboard ɛn ad di tɔŋ de:",
     "resendInSeconds": "Send bak ({seconds})",
-    "mapLevelFallbackNotice": "No {selected} aktivitis yet — de sho {shown} insted."
+    "mapLevelFallbackNotice": "No {selected} aktivitis yet — de sho {shown} insted.",
+    "switchLanguageChipLabel": "Chenj to {language}",
+    "languageDropdownLevel": "Level {level}",
+    "whatAreYouLearning": "Wetin yu de lan?",
+    "languageSwitcherBaseLanguageLabel": "Yu base langwej"
 }

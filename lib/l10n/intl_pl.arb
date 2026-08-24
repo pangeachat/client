@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-21 09:39:39.956875",
+    "@@last_modified": "2026-08-24 11:54:20.388007",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9843,5 +9843,9 @@
     "autocorrectAndroidDialogBody": "Gdy piszesz na czacie, klawiatura przełączy się na język docelowy i poprawi pisownię w tym języku.",
     "autocorrectAndroidFallbackTitle": "Jeśli Twoja klawiatura nie oferuje języka docelowego, zainstaluj Gboard i dodaj tam język:",
     "resendInSeconds": "Wyślij ponownie ({seconds})",
-    "mapLevelFallbackNotice": "Brak aktywności {selected} — zamiast tego pokazano {shown}."
+    "mapLevelFallbackNotice": "Brak aktywności {selected} — zamiast tego pokazano {shown}.",
+    "switchLanguageChipLabel": "Przełącz na {language}",
+    "languageDropdownLevel": "Poziom {level}",
+    "whatAreYouLearning": "Czego się uczysz?",
+    "languageSwitcherBaseLanguageLabel": "Twój język podstawowy"
 }

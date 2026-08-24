@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:35.854067",
+    "@@last_modified": "2026-08-24 11:54:17.255754",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9831,5 +9831,9 @@
     "autocorrectAndroidDialogBody": "Saat Anda mengetik di obrolan, keyboard Anda akan beralih ke bahasa target Anda dan mengoreksi ejaan dalam bahasa tersebut.",
     "autocorrectAndroidFallbackTitle": "Jika keyboard Anda tidak menawarkan bahasa target Anda, instal Gboard dan tambahkan bahasa di sana:",
     "resendInSeconds": "Kirim ulang ({seconds})",
-    "mapLevelFallbackNotice": "Belum ada aktivitas {selected} — menampilkan {shown} sebagai gantinya."
+    "mapLevelFallbackNotice": "Belum ada aktivitas {selected} — menampilkan {shown} sebagai gantinya.",
+    "switchLanguageChipLabel": "Beralih ke {language}",
+    "languageDropdownLevel": "Level {level}",
+    "whatAreYouLearning": "Apa yang sedang Anda pelajari?",
+    "languageSwitcherBaseLanguageLabel": "Bahasa dasar Anda"
 }

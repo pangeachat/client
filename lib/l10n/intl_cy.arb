@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-21 09:39:33.918998",
+    "@@last_modified": "2026-08-24 11:54:15.284493",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Pan fyddwch chi'n teipio mewn sgwrs, bydd eich bysellfwrdd yn newid i'ch iaith darged ac yn cywiro sillafu yn yr iaith honno.",
     "autocorrectAndroidFallbackTitle": "Os nad yw eich bysellfwrdd yn cynnig eich iaith darged, gosodwch Gboard ac ychwanegwch yr iaith yno:",
     "resendInSeconds": "Ail-anfon ({seconds})",
-    "mapLevelFallbackNotice": "Dim gweithgareddau {selected} eto — yn dangos {shown} yn lle hynny."
+    "mapLevelFallbackNotice": "Dim gweithgareddau {selected} eto — yn dangos {shown} yn lle hynny.",
+    "switchLanguageChipLabel": "Newid i {language}",
+    "languageDropdownLevel": "Lefel {level}",
+    "whatAreYouLearning": "Beth wyt ti'n ei ddysgu?",
+    "languageSwitcherBaseLanguageLabel": "Eich iaith sylfaen"
 }

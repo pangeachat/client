@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:34.675360",
+    "@@last_modified": "2026-08-24 11:54:15.931626",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9846,5 +9846,9 @@
     "autocorrectAndroidDialogBody": "هنگامی که در یک چت تایپ می‌کنید، صفحه‌کلید شما به زبان مقصدتان تغییر می‌کند و املای کلمات را در آن زبان تصحیح می‌کند.",
     "autocorrectAndroidFallbackTitle": "اگر صفحه‌کلید شما زبان مقصدتان را ارائه نمی‌دهد، Gboard را نصب کنید و زبان را در آنجا اضافه کنید:",
     "resendInSeconds": "ارسال مجدد ({seconds})",
-    "mapLevelFallbackNotice": "هنوز هیچ فعالیت {selected} وجود ندارد — در عوض {shown} نمایش داده می‌شود."
+    "mapLevelFallbackNotice": "هنوز هیچ فعالیت {selected} وجود ندارد — در عوض {shown} نمایش داده می‌شود.",
+    "switchLanguageChipLabel": "تغییر به {language}",
+    "languageDropdownLevel": "سطح {level}",
+    "whatAreYouLearning": "چه چیزی یاد می‌گیرید؟",
+    "languageSwitcherBaseLanguageLabel": "زبان پایه شما"
 }

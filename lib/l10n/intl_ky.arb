@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-21 09:39:37.461546",
+    "@@last_modified": "2026-08-24 11:54:18.929537",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2154,5 +2154,9 @@
     "autocorrectAndroidDialogBody": "Чатка тергениңизде, клавиатураңыз максаттуу тилиңизге которулуп, ошол тилдеги орфографияны оңдойт.",
     "autocorrectAndroidFallbackTitle": "Эгер клавиатураңыз максаттуу тилиңизди сунуштабаса, Gboard орнотуп, тилди ошол жерден кошуңуз:",
     "resendInSeconds": "Кайра жөнөтүү ({seconds})",
-    "mapLevelFallbackNotice": "Азырынча {selected} иш-чаралар жок — анын ордуна {shown} көрсөтүлүүдө."
+    "mapLevelFallbackNotice": "Азырынча {selected} иш-чаралар жок — анын ордуна {shown} көрсөтүлүүдө.",
+    "switchLanguageChipLabel": "{language} тилине которуу",
+    "languageDropdownLevel": "{level}-деңгээл",
+    "whatAreYouLearning": "Эмне үйрөнүп жатасыз?",
+    "languageSwitcherBaseLanguageLabel": "Сиздин негизги тилиңиз"
 }

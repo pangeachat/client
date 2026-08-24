@@ -3096,7 +3096,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-21 09:39:36.115963",
+    "@@last_modified": "2026-08-24 11:54:17.800143",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10390,5 +10390,9 @@
     "autocorrectAndroidDialogBody": "Quando você digita em um bate-papo, seu teclado mudará para o seu idioma-alvo e corrigirá a ortografia nesse idioma.",
     "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o seu idioma-alvo, instale o Gboard e adicione o idioma lá:",
     "resendInSeconds": "Athsheol ({seconds})",
-    "mapLevelFallbackNotice": "Níor cuireadh aon ghníomhaíochtaí {selected} leis fós — tá {shown} á thaispeáint ina ionad."
+    "mapLevelFallbackNotice": "Níor cuireadh aon ghníomhaíochtaí {selected} leis fós — tá {shown} á thaispeáint ina ionad.",
+    "switchLanguageChipLabel": "Athraigh go {language}",
+    "languageDropdownLevel": "Leibhéal {level}",
+    "whatAreYouLearning": "Cad atá tú ag foghlaim?",
+    "languageSwitcherBaseLanguageLabel": "Do bhuntheanga"
 }

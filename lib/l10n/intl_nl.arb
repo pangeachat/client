@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-21 09:39:38.939067",
+    "@@last_modified": "2026-08-24 11:54:20.172265",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9758,5 +9758,9 @@
     "autocorrectAndroidDialogBody": "Wanneer je typt in een chat, schakelt je toetsenbord over naar je doeltaal en corrigeert de spelling in die taal.",
     "autocorrectAndroidFallbackTitle": "Als je toetsenbord je doeltaal niet aanbiedt, installeer dan Gboard en voeg de taal daar toe:",
     "resendInSeconds": "Opnieuw verzenden ({seconds})",
-    "mapLevelFallbackNotice": "Nog geen {selected} activiteiten — in plaats daarvan worden {shown} getoond."
+    "mapLevelFallbackNotice": "Nog geen {selected} activiteiten — in plaats daarvan worden {shown} getoond.",
+    "switchLanguageChipLabel": "Overschakelen naar {language}",
+    "languageDropdownLevel": "Niveau {level}",
+    "whatAreYouLearning": "Wat leer je?",
+    "languageSwitcherBaseLanguageLabel": "Je basistaal"
 }
