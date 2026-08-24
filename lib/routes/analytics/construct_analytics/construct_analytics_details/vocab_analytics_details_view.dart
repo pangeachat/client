@@ -6,12 +6,14 @@ import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics_data/widgets/analytics_future_builder.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/analytics_details_usage_content.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/construct_xp_progress_bar.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/restore_constructs_mixin.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_models.dart';
@@ -20,7 +22,7 @@ import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Displays information about selected lemma, and its usage
-class VocabDetailsView extends StatelessWidget {
+class VocabDetailsView extends StatelessWidget with ConstructRestorer {
   final ConstructIdentifier constructId;
   final ConstructAnalyticsViewState controller;
 
@@ -35,8 +37,9 @@ class VocabDetailsView extends StatelessWidget {
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
     final analyticsService = Matrix.of(context).analyticsDataService;
-    return FutureBuilder(
-      future: l2 != null
+    return AnalyticsFutureBuilder<ConstructUses>(
+      dependencies: [constructId, l2],
+      fetch: () => l2 != null
           ? analyticsService.getConstructUse(constructId, l2)
           : Future.value(
               ConstructUses(
@@ -112,6 +115,9 @@ class VocabDetailsView extends StatelessWidget {
                   maxWidth: double.infinity,
                   enableEmojiSelection: true,
                   enableEmojiReactions: false,
+                  // This page carries its own Restore tile below, so the card
+                  // must not offer a second one in its header.
+                  enableRestore: false,
                 ),
               ),
               if (construct != null)
@@ -136,20 +142,32 @@ class VocabDetailsView extends StatelessWidget {
                           ),
                         ),
                         AnalyticsDetailsUsageContent(construct: construct),
-                        ListTile(
-                          leading: Icon(
-                            Icons.delete_outline,
-                            color: Theme.of(context).colorScheme.error,
-                          ),
-                          title: Text(
-                            L10n.of(context).delete,
-                            style: TextStyle(
+                        if (Matrix.of(
+                          context,
+                        ).analyticsDataService.isConstructBlocked(constructId))
+                          ListTile(
+                            leading: const Icon(
+                              Icons.restore_from_trash_outlined,
+                            ),
+                            title: Text(L10n.of(context).restore),
+                            onTap: () =>
+                                restoreConstructs(context, [constructId]),
+                          )
+                        else
+                          ListTile(
+                            leading: Icon(
+                              Icons.delete_outline,
                               color: Theme.of(context).colorScheme.error,
                             ),
+                            title: Text(
+                              L10n.of(context).delete,
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.error,
+                              ),
+                            ),
+                            onTap: () =>
+                                controller.blockConstructs([constructId]),
                           ),
-                          onTap: () =>
-                              controller.blockConstructs([constructId]),
-                        ),
                       ],
                     ),
                   ],

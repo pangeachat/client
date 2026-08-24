@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/language_level_dropdown.dart';
+import 'package:fluffychat/routes/settings/settings_learning/app_language_settings_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/audio_settings_section.dart';
 import 'package:fluffychat/routes/settings/settings_learning/autocorrect_settings_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
@@ -101,13 +101,7 @@ class LearningSettingsTiles extends StatelessWidget {
               children: [
                 Divider(height: 1),
                 AutocorrectSettingsTile(viewModel: viewModel),
-                SwitchListTile.adaptive(
-                  value: viewModel.appLanguageIsTarget,
-                  title: Text(L10n.of(context).appInTargetLanguageTitle),
-                  subtitle: Text(L10n.of(context).appInTargetLanguageDesc),
-                  activeThumbColor: AppConfig.activeToggleColor,
-                  onChanged: viewModel.setAppLanguageIsTarget,
-                ),
+                AppLanguageSettingsTile(viewModel: viewModel),
                 ...ToolSetting.values
                     .where(
                       (tool) => tool.isAvailableSetting && !tool.isAudioSetting,

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
 
-import 'package:fluffychat/pangea/common/utils/svg_repo.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
-
-class CustomizedSvg extends StatefulWidget {
+/// A [NetworkSvg] with its colors swapped out — used for assets we tint to the
+/// current theme (morph icons, analytics level icons).
+class CustomizedSvg extends StatelessWidget {
   /// URL of the SVG file
   final String svgUrl;
 
@@ -40,57 +39,11 @@ class CustomizedSvg extends StatefulWidget {
     this.fit,
   });
 
-  @override
-  State<CustomizedSvg> createState() => _CustomizedSvgState();
-}
-
-class _CustomizedSvgState extends State<CustomizedSvg> {
-  String? _svgContent;
-  bool _isLoading = false;
-  bool _hasError = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadSvg();
-  }
-
-  @override
-  void didUpdateWidget(covariant CustomizedSvg oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.svgUrl != widget.svgUrl) {
-      _loadSvg();
-    }
-  }
-
-  String get _cacheKey {
-    final buffer = StringBuffer(widget.svgUrl);
-    widget.colorReplacements.forEach((k, v) {
-      buffer.write('$k->$v;');
-    });
-    return buffer.toString();
-  }
-
-  Future<void> _loadSvg() async {
-    setState(() {
-      _isLoading = true;
-      _hasError = false;
-      _svgContent = null;
-    });
-
-    final svg = await SvgRepo.get(widget.svgUrl);
-    if (svg.isError) {
-      _hasError = true;
-    } else {
-      _svgContent = _modifySVG(svg.result!);
-    }
-
-    if (mounted) setState(() => _isLoading = false);
-  }
-
+  /// Drops `fill="none"` so a replaced color actually paints, then applies the
+  /// replacements.
   String _modifySVG(String svgContent) {
     String modifiedSvg = svgContent.replaceAll("fill=\"none\"", '');
-    for (final entry in widget.colorReplacements.entries) {
+    for (final entry in colorReplacements.entries) {
       modifiedSvg = modifiedSvg.replaceAll(entry.key, entry.value);
     }
     return modifiedSvg;
@@ -98,24 +51,24 @@ class _CustomizedSvgState extends State<CustomizedSvg> {
 
   @override
   Widget build(BuildContext context) {
-    if (_isLoading) {
-      return widget.loadingPlaceholder ??
+    return NetworkSvg(
+      svgUrl: svgUrl,
+      transform: _modifySVG,
+      transformKey: colorReplacements.entries
+          .map((e) => '${e.key}->${e.value}')
+          .join(';'),
+      errorWidget: errorIcon,
+      placeholder:
+          loadingPlaceholder ??
           SizedBox(
-            width: widget.width,
-            height: widget.height,
+            width: width,
+            height: height,
             child: const Center(child: CircularProgressIndicator()),
-          );
-    } else if (_hasError || _svgContent == null) {
-      return widget.errorIcon;
-    } else {
-      return SvgPicture(
-        SvgStringLoader(_svgContent!),
-        key: ValueKey(_cacheKey),
-        width: widget.width,
-        height: widget.height,
-        fit: widget.fit ?? BoxFit.contain,
-      );
-    }
+          ),
+      width: width,
+      height: height,
+      fit: fit,
+    );
   }
 }
 

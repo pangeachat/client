@@ -10,6 +10,7 @@ class InsufficientDataIndicator extends StatelessWidget {
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 400),
       child: RichText(
+        textScaler: MediaQuery.textScalerOf(context),
         textAlign: TextAlign.center,
         text: TextSpan(
           children: [

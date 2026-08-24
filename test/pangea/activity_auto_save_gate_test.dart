@@ -38,9 +38,15 @@ void main() {
     // gate (a restart with empty in-memory sets still closes the gate purely
     // because the server-synced archived_at makes hasArchivedActivity true,
     // which is the already-saved case above). It is exercised where it actually
-    // lives — the empty-set first pass in the shouldSave / shouldEmitOutcome
-    // groups below — so no vacuous restart-flavoured duplicate of the
-    // already-saved assertion is kept here.
+    // lives — the empty-set first pass in the shouldEmitOutcome group below —
+    // so no vacuous restart-flavoured duplicate of the already-saved assertion
+    // is kept here.
+    //
+    // The same first case also covers the #8258 repair: when a co-player's
+    // stale-read write drops this user's archived_at, hasArchivedActivity goes
+    // false again and the gate re-opens, which is what lets the service
+    // re-archive. The replay of the ORIGINAL instant is asserted in
+    // activity_archive_activity_test.dart.
 
     test('session still in progress does not save', () {
       expect(
@@ -135,31 +141,6 @@ void main() {
         ActivityAutoSaveService.shouldEmitOutcome('!b:x', emitted),
         isTrue,
       );
-    });
-  });
-
-  group('shouldSave (first archive authoritative)', () {
-    test('saves the first time; a saved room is never re-saved', () {
-      final saved = <String>{};
-      expect(
-        ActivityAutoSaveService.shouldSave('!s:x', saved),
-        isTrue,
-        reason: 'first pass saves and archives',
-      );
-      saved.add('!s:x'); // the service marks it saved on success
-      expect(
-        ActivityAutoSaveService.shouldSave('!s:x', saved),
-        isFalse,
-        reason:
-            'the gate re-opens until the archive syncs back; a pre-sync sweep '
-            'must NOT re-archive with a newer timestamp — first archive wins',
-      );
-    });
-
-    test('tracks each session room independently', () {
-      final saved = <String>{'!a:x'};
-      expect(ActivityAutoSaveService.shouldSave('!a:x', saved), isFalse);
-      expect(ActivityAutoSaveService.shouldSave('!b:x', saved), isTrue);
     });
   });
 

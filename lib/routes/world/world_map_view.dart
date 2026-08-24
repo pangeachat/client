@@ -15,12 +15,11 @@ import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_markers_layer.dart';
 import 'package:fluffychat/routes/world/large_markers_layer.dart';
-import 'package:fluffychat/routes/world/mid_size_pin_labels_layer.dart';
+import 'package:fluffychat/routes/world/map_exit_tracker.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
@@ -55,16 +54,6 @@ class _PinRenderer {
   /// another activity is focused (#7349). See world-map.instructions.md.
   final String? focusedId;
 
-  /// Which mid pins show an activity-name side-label and on which side, from
-  /// the [placePinLabels] geometry pass (world-map.instructions.md, "Pin
-  /// display"). Frozen with the rest of the model while the camera moves.
-  final LabelPlacementResult labels;
-
-  /// The measured pixel [Size] of each labelled mid pin's label (matches
-  /// [kPinLabelTextStyle]), so [_labelMarkers] reuses it instead of
-  /// re-measuring.
-  final Map<String, Size> labelSizes;
-
   /// Ids of `available` pins the learner can't start yet — their role count
   /// exceeds the course's available members (course-scoped map only). These
   /// pins and their labels render at half opacity. Never holds joinable /
@@ -78,8 +67,6 @@ class _PinRenderer {
     required this.activityIdToPingStatus,
     required this.activityIdToTier,
     required this.focusedId,
-    this.labels = const LabelPlacementResult(),
-    this.labelSizes = const {},
     this.nonStartableIds = const {},
   });
 
@@ -142,9 +129,16 @@ class LargeCardSnapshot {
   final ActivityPlanModel? plan;
   final Room? liveRoom;
   final int starsEarned;
-  final List<LargeCardParticipant> participants;
+  final List<String> participants;
   final int openSlots;
   final ActivityStarLevel starLevel;
+
+  /// True when this is an `available` card the course can't currently staff
+  /// (its role count outruns the available members) — the card renders at 50%
+  /// opacity, the large-tier mirror of an understaffed mid pin
+  /// (world-map.instructions.md, "Understaffed pins"). Course-scoped only; never
+  /// set on the world map or for a live/completed card.
+  final bool understaffed;
 
   const LargeCardSnapshot({
     required this.card,
@@ -156,6 +150,7 @@ class LargeCardSnapshot {
     required this.participants,
     required this.openSlots,
     required this.starLevel,
+    this.understaffed = false,
   });
 }
 
@@ -182,33 +177,16 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// clear (#7218). Update alongside the chrome if its heights change.
   static const double _narrowBottomChromeInset = 140.0;
 
-  /// Pins that have left the active set and are animating to scale 0.
-  final Map<String, PinSnapshot> _exiting = {};
+  /// Entry/exit animation bookkeeping for the small/mid dot tier: which pins
+  /// are shrinking out, and which have already played their pop-in. See
+  /// [MapExitTracker] for why only an on-screen pin ever animates out (#8155).
+  final MapExitTracker<PinSnapshot> _dotExits = MapExitTracker();
 
-  /// Last-known render snapshot of each active non-large pin, used to seed
-  /// [_exiting] with the correct visual state when a pin leaves.
-  Map<String, PinSnapshot> _lastActive = {};
-
-  /// Non-large pin ids that have already played their entry scale-in. A pin
-  /// only animates in on its first appearance ([Set.add] returning true at
-  /// build time); after that, a [WorldMapDot] State recreated mid-gesture by
-  /// MarkerLayer's positional reconciliation renders at full scale instead of
-  /// replaying the pop-in (#8136). Pruned at each settle in [_updateExiting],
-  /// so a pin that leaves and later returns pops in fresh again.
-  final Set<String> _enteredIds = {};
-
-  /// Mirrors [_enteredIds] for the large tier ([WorldMapLargeCardAnimated]).
-  final Set<String> _enteredLargeIds = {};
-
-  /// Large cards that have left the large tier (demoted, or the dot promoted
-  /// past it out of view) and are animating to scale/opacity 0 — mirrors
-  /// [_exiting]/[_lastActive] but for [WorldMapLargeCard] (world-map card
-  /// pop-in/out; see [WorldMapLargeCardAnimated]).
-  final Map<String, LargeCardSnapshot> _exitingLarge = {};
-
-  /// Last-known render snapshot of each active large card, used to seed
-  /// [_exitingLarge] with the correct content when a card leaves.
-  Map<String, LargeCardSnapshot> _lastActiveLarge = {};
+  /// Mirrors [_dotExits] for the large tier ([WorldMapLargeCardAnimated]): a
+  /// card demoted out of the tier (X-dismissed, out-ranked, or no longer fits)
+  /// shrinks away instead of vanishing instantly, while its dot (mid where
+  /// eligible, else small) pops in fresh the same frame.
+  final MapExitTracker<LargeCardSnapshot> _largeExits = MapExitTracker();
 
   /// The last render model computed while the camera was settled. Reused
   /// as-is while [WorldMapController.isActivelyMoving] is true, instead of
@@ -218,13 +196,11 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// (#7245).
   _PinRenderer? _lastSettledRenderer;
 
-  /// The marker box for a pin: the tier size, except an inProgress pin renders a
-  /// gold star that can exceed a tiny dot's box, so its box is sized to hold the
-  /// largest star (the super star, [PinSize.superStarDotDiameter]).
+  /// The marker box for a pin — [PinTier.markerBox]: the tier size for a
+  /// teardrop or card, and the min touch-target square for a dot-shaped pin (a
+  /// small dot or the trail star), which also holds the largest star (#7688).
   static Size _markerBox(ActivityPinState state, PinTier tier) =>
-      state == ActivityPinState.inProgress
-      ? const Size(PinSize.superStarDotDiameter, PinSize.superStarDotDiameter)
-      : Size(tier.dotWidth, tier.dotHeight(state));
+      tier.markerBox(state);
 
   /// The marker's anchor within its box — where [Marker.point] (the geographic
   /// coordinate) lands on screen. A mid pin is a teardrop whose pointed tip is
@@ -237,164 +213,71 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// flutter_map's `alignment` is inverted from intuition — `Alignment.topCenter`
   /// puts the marker *above* the point (so the point lands at the box's bottom).
   /// [Marker.computePixelAlignment] does that sign for us from the tip's pixel
-  /// offset down the box, so this stays correct even if a label row below the
-  /// tip is ever reintroduced. Every other case (small dot, inProgress star) is
-  /// a plain box with no point, so the default centre anchor is already correct.
+  /// offset down the box. Every other case (small dot, inProgress star) is a
+  /// plain box with no point, so the default centre anchor is already correct.
   static Alignment _markerAlignment(ActivityPinState state, PinTier tier) {
     if (tier != PinTier.mid || state == ActivityPinState.inProgress) {
       return Alignment.center;
     }
+    // The teardrop's tip (its geographic anchor) is the box's lowest point —
+    // the head + point stack, with no reserved label row below it.
     final tipY = PinSize.midDiameter + PinSize.midPointHeight;
-    final boxHeight = tipY + PinSize.midLabelHeight;
     return Marker.computePixelAlignment(
       width: PinSize.midDiameter,
-      height: boxHeight,
+      height: tipY,
       left: PinSize.midDiameter / 2,
       top: tipY,
     );
   }
 
-  /// Measure a mid-pin label at [kPinLabelTextStyle] (honouring the platform
-  /// text scaler) so the placement pass and the marker box use the painted
-  /// size. Capped at [kPinLabelMaxWidth]; [kPinLabelHaloPad] leaves room for the
-  /// white halo stroke so it isn't clipped and collisions include it.
-  Size _measureLabel(BuildContext context, String title) {
-    final tp = TextPainter(
-      text: TextSpan(text: title, style: kPinLabelTextStyle),
-      maxLines: 1,
-      ellipsis: '…',
-      textDirection: Directionality.of(context),
-      textScaler: MediaQuery.textScalerOf(context),
-    )..layout(maxWidth: kPinLabelMaxWidth);
-    final size = Size(
-      tp.width + 2 * kPinLabelHaloPad,
-      tp.height + 2 * kPinLabelHaloPad,
-    );
-    tp.dispose();
-    return size;
-  }
-
-  /// Choose each labelable mid pin's side via the live camera projection,
-  /// mirroring [_placeLarge]: same safe area (viewport minus the side overlays),
-  /// with the placed large cards as obstacles so a label never lands on a card.
-  /// Falls back to no labels on the rare frame the camera isn't laid out yet.
-  LabelPlacementResult _placeLabels({
-    required List<String> orderedIds,
-    required Map<String, QuestActivityCard> cardById,
-    required Map<String, Size> labelSizes,
-    required Set<String> largeIds,
-  }) {
-    if (orderedIds.isEmpty) return const LabelPlacementResult();
+  /// Whether [point] currently falls inside the camera's visible bounds — the
+  /// gate on queueing (and keeping) an exit animation, since flutter_map's
+  /// MarkerLayer only builds markers it doesn't cull. Null point, or a camera
+  /// that isn't laid out yet, counts as on screen so nothing is dropped before
+  /// the map can answer.
+  bool _isOnScreen(LatLng? point) {
+    if (point == null) return true;
     try {
-      final camera = widget.controller.mapController.camera;
-      final size = camera.size;
-      const margin = 12.0;
-      final safeArea = Rect.fromLTRB(
-        widget.controller.widget.leftOverlayWidth + margin,
-        margin,
-        size.width - widget.controller.widget.rightOverlayWidth - margin,
-        size.height - margin,
-      );
-      Offset? offsetOf(String id) {
-        final p = cardById[id]?.point;
-        return p == null ? null : camera.latLngToScreenOffset(p);
-      }
-
-      // Placed large cards sit above labels, so treat their footprints as
-      // obstacles — a label never paints under a card. The card box is anchored
-      // bottom-centre on the pin (topCenter marker), matching placeLargeCards.
-      final cardSize = Size(
-        PinTier.large.dotWidth,
-        PinTier.large.dotHeight(ActivityPinState.joinable),
-      );
-      final obstacles = <Rect>[
-        for (final id in largeIds)
-          if (offsetOf(id) case final o?)
-            Rect.fromLTWH(
-              o.dx - cardSize.width / 2,
-              o.dy - cardSize.height,
-              cardSize.width,
-              cardSize.height,
-            ),
-      ];
-
-      return placePinLabels(
-        orderedIds: orderedIds,
-        screenOffsetOf: offsetOf,
-        labelSizeOf: (id) => labelSizes[id] ?? Size.zero,
-        safeArea: safeArea,
-        obstacleRects: obstacles,
-        previousSides: _lastSettledRenderer?.labels.sides ?? const {},
+      return widget.controller.mapController.camera.visibleBounds.contains(
+        point,
       );
     } catch (_) {
-      return const LabelPlacementResult();
+      return true;
     }
   }
 
-  /// Detects newly-gone non-large pins and adds them to [_exiting] using their
-  /// last-known render state — **including** a pin promoted to large: its dot
-  /// shrinks away in this layer while [WorldMapLargeCardAnimated] grows the new
-  /// card in at the same spot ([_largeMarkers]), so promotion reads as one pin
-  /// morphing into a card rather than an instant swap. Called at the top of
-  /// [build] before the marker layers are constructed — mutates tracking maps
-  /// without calling setState.
+  /// Hands this frame's non-large pins to [_dotExits], which detects the ones
+  /// newly gone and starts their shrink-out from their last-known render state
+  /// — **including** a pin promoted to large: its dot shrinks away in this layer
+  /// while [WorldMapLargeCardAnimated] grows the new card in at the same spot
+  /// ([_largeMarkers]), so promotion reads as one pin morphing into a card
+  /// rather than an instant swap. A pin the camera merely panned away from is
+  /// dropped instead of animated (#8155 — see [MapExitTracker]). Called at the
+  /// top of [build] before the marker layers are constructed — mutates the
+  /// trackers without calling setState.
   void _updateExiting(_PinRenderer render) {
-    final currentNonLargeIds = {
-      for (final c in render.nonLargeCards) c.activityId,
-    };
-
-    // Re-appeared as a (still) non-large pin: cancel any in-progress exit.
-    _exiting.removeWhere((id, _) => currentNonLargeIds.contains(id));
-
-    // A pin gone from the render model forgets its "already entered" mark, so
-    // its next appearance (incl. demotion back from large) pops in fresh.
-    // While the camera is moving the frozen renderer yields the same id set,
-    // so nothing churns mid-gesture (#8136).
-    _enteredIds.retainAll(currentNonLargeIds);
-
-    // Anything that was a dot last frame and isn't a dot this frame —
-    // genuinely gone, or promoted to large — plays the shrink-out.
-    for (final entry in _lastActive.entries) {
-      if (!currentNonLargeIds.contains(entry.key) &&
-          !_exiting.containsKey(entry.key)) {
-        _exiting[entry.key] = entry.value;
-      }
-    }
-
-    // Refresh the snapshot for the next frame.
-    _lastActive = {
-      for (final card in render.nonLargeCards)
-        card.activityId: PinSnapshot(
-          card: card,
-          state: render.stateOf(card.activityId),
-          tier: render.tierOf(card.activityId),
-          pinged: render.pingedOf(card.activityId),
-          starLevel: render.starLevelOf(card.activityId),
-        ),
-    };
+    _dotExits.update(
+      active: {
+        for (final card in render.nonLargeCards)
+          card.activityId: PinSnapshot(
+            card: card,
+            state: render.stateOf(card.activityId),
+            tier: render.tierOf(card.activityId),
+            pinged: render.pingedOf(card.activityId),
+            starLevel: render.starLevelOf(card.activityId),
+          ),
+      },
+      isOnScreen: (snapshot) => _isOnScreen(snapshot.card.point),
+    );
   }
 
-  /// Mirrors [_updateExiting] for the large tier: a card demoted out of
-  /// [currentLarge] (X-dismissed, out-ranked, or no longer fits) plays its
-  /// shrink-out in [_exitingLarge] instead of vanishing instantly. Its dot
-  /// (mid, if eligible, else small) pops in fresh the same frame, the mirror
-  /// image of a promotion.
+  /// Mirrors [_updateExiting] for the large tier, over the cards resolved for
+  /// this frame.
   void _updateExitingLarge(Map<String, LargeCardSnapshot> currentLarge) {
-    final currentIds = currentLarge.keys.toSet();
-
-    _exitingLarge.removeWhere((id, _) => currentIds.contains(id));
-
-    // Mirror of _updateExiting's pruning (#8136).
-    _enteredLargeIds.retainAll(currentIds);
-
-    for (final entry in _lastActiveLarge.entries) {
-      if (!currentIds.contains(entry.key) &&
-          !_exitingLarge.containsKey(entry.key)) {
-        _exitingLarge[entry.key] = entry.value;
-      }
-    }
-
-    _lastActiveLarge = currentLarge;
+    _largeExits.update(
+      active: currentLarge,
+      isOnScreen: (snapshot) => _isOnScreen(snapshot.card.point),
+    );
   }
 
   /// Resolve the per-frame pin draw model: the width-driven budget, the ranked +
@@ -433,6 +316,18 @@ class _WorldMapViewState extends State<WorldMapView> {
       budget: budget,
     );
 
+    // The large-tier eligibility gate: `available`, `joinable`, and `ongoing`
+    // pins can all render as a large card; the one exclusion is the completed
+    // trail star (`inProgress`), which is only ever a gold-star dot
+    // (world-map.instructions.md, "Priority matrix"). Resolved here, not in
+    // ranking, because it needs each pin's display state — the pins manager
+    // alone distinguishes a plain `available` pin from a completed one.
+    final largeEligibleIds = {
+      for (final c in visible)
+        if (widget.controller.displayStateOf(c) != ActivityPinState.inProgress)
+          c.activityId,
+    };
+
     // Large cards exist only where the width affords them (budget.large > 0). The
     // placement pass fits the candidates' footprints to the screen (no overlap, no
     // edge spill, not under a panel), focused-first — see world-map.instructions.md
@@ -444,21 +339,26 @@ class _WorldMapViewState extends State<WorldMapView> {
       visible: visible,
       candidates: ranking.ordered,
       largeBudget: budget.large,
-      largeEligibleIds: ranking.largeEligibleIds,
+      largeEligibleIds: largeEligibleIds,
     );
 
-    // Split the ordered list by the caps: large = what placement fit, then mid,
-    // then small takes the remainder of the N-capped list (so an unfilled large
-    // slot flows down to lighter tiers rather than crowding).
+    // Split the ordered list by the caps: large = what placement fit, then a
+    // geometric mid pass (purely by score — there is no live-session mid gate
+    // any more), then small takes the remainder of the N-capped list (so an
+    // unfilled large slot flows down to lighter tiers rather than crowding).
     final largeIds = placement.largeIds.toSet();
     final rest = ranking.ordered.where((id) => !largeIds.contains(id)).toList();
-    // Under the live-session gate, only live sessions are eligible for mid; every
-    // other pin drops to small (world-map.instructions.md, the heavy-tier gate).
-    final heavy = ranking.heavyEligibleIds;
-    final mediumIds = rest
-        .where((id) => heavy == null || heavy.contains(id))
-        .take(budget.mid)
-        .toSet();
+    // Mid placement mirrors the large pass: a mid pin that would sit UNDER a
+    // placed large card, or ON a higher-scored mid pin, is demoted to a small
+    // dot — so mid pins never stack and never hide beneath a card
+    // (world-map.instructions.md, pipeline step 4).
+    final midPlacement = _placeMid(
+      visible: visible,
+      candidates: rest,
+      midBudget: budget.mid,
+      largeIds: largeIds,
+    );
+    final mediumIds = midPlacement.midIds;
     final smallIds = rest.where((id) => !mediumIds.contains(id)).toSet();
 
     final render = _createPinRenderer(
@@ -533,6 +433,63 @@ class _WorldMapViewState extends State<WorldMapView> {
           ...eligible.where((id) => id != focusedId),
         ].take(largeBudget).toList(),
       );
+    }
+  }
+
+  /// Footprint-aware placement of the mid pins, the mirror of [_placeLarge]:
+  /// projects each candidate's pin tip via the live camera and admits it as
+  /// `mid` only if its teardrop footprint overlaps neither a placed large card
+  /// (the [largeIds] footprints, drawn above) nor a higher-scored mid pin
+  /// already placed — otherwise it is demoted to a small dot. Falls back to the
+  /// static top-[midBudget] on the rare frame the camera isn't laid out yet (the
+  /// next settle re-places geometrically). See world-map.instructions.md
+  /// (pipeline step 4).
+  MidPlacementResult _placeMid({
+    required List<QuestActivityCard> visible,
+    required List<String> candidates,
+    required int midBudget,
+    required Set<String> largeIds,
+  }) {
+    if (midBudget <= 0) return const MidPlacementResult();
+    final pointById = <String, LatLng>{
+      for (final c in visible) c.activityId: ?c.point,
+    };
+    try {
+      final camera = widget.controller.mapController.camera;
+      Offset? offsetOf(String id) {
+        final p = pointById[id];
+        return p == null ? null : camera.latLngToScreenOffset(p);
+      }
+
+      // Placed large cards are obstacles: a mid pin whose head lands under one
+      // is demoted to a dot. The card box is anchored bottom-centre on its pin
+      // (topCenter marker), the same footprint the large pass reserves.
+      final cardSize = Size(
+        PinTier.large.dotWidth,
+        PinTier.large.dotHeight(ActivityPinState.joinable),
+      );
+      final obstacles = <Rect>[
+        for (final id in largeIds)
+          if (offsetOf(id) case final o?)
+            Rect.fromLTWH(
+              o.dx - cardSize.width / 2,
+              o.dy - cardSize.height,
+              cardSize.width,
+              cardSize.height,
+            ),
+      ];
+
+      return placeMidPins(
+        orderedCandidates: candidates,
+        focusedId: widget.controller.focusedActivityId,
+        screenOffsetOf: offsetOf,
+        midBudget: midBudget,
+        obstacleRects: obstacles,
+      );
+    } catch (_) {
+      // Camera not laid out yet: budget-only, no geometry — the next
+      // camera-ready frame does the real placement.
+      return MidPlacementResult(midIds: candidates.take(midBudget).toSet());
     }
   }
 
@@ -627,29 +584,6 @@ class _WorldMapViewState extends State<WorldMapView> {
       }
     }
 
-    // Mid pins carry a Google-Maps-style activity-name label; small dots and
-    // the gold-star (inProgress) state never do (world-map.instructions.md,
-    // "Pin display"). Measure + place here so the labels freeze into the
-    // settled snapshot alongside the tiers (the isActivelyMoving guard).
-    final cardById = {for (final c in visible) c.activityId: c};
-    final labelableIds = [
-      for (final id in mediumIds)
-        if (states[id] != null &&
-            states[id] != ActivityPinState.inProgress &&
-            cardById[id]?.point != null)
-          id,
-    ];
-    final labelSizes = {
-      for (final id in labelableIds)
-        id: _measureLabel(context, cardById[id]!.title),
-    };
-    final labels = _placeLabels(
-      orderedIds: labelableIds,
-      cardById: cardById,
-      labelSizes: labelSizes,
-      largeIds: largeIds,
-    );
-
     return _PinRenderer(
       visible: visible,
       activityIdToStarLevel: starLevels,
@@ -657,8 +591,6 @@ class _WorldMapViewState extends State<WorldMapView> {
       activityIdToState: states,
       activityIdToTier: tiers,
       focusedId: focusedId,
-      labels: labels,
-      labelSizes: labelSizes,
       nonStartableIds: nonStartableIds,
     );
   }
@@ -675,8 +607,7 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// holds the learner's live room (the large card resolves it for the message
   /// preview too), it passes [liveRoom] so the `ongoingPending` arm reuses it
   /// instead of re-scanning.
-  ({List<LargeCardParticipant> participants, int openSlots})
-  _sessionParticipants(
+  ({List<String> participants, int openSlots}) _sessionParticipants(
     String activityId,
     ActivityPinState state, {
     Room? liveRoom,
@@ -690,9 +621,9 @@ class _WorldMapViewState extends State<WorldMapView> {
             : null;
         return (
           participants:
-              joinableActivity?.largeCardParticipants ??
-              discoveredSummary?.largeCardParticipants ??
-              const <LargeCardParticipant>[],
+              joinableActivity?.largeCardParticipantIds ??
+              discoveredSummary?.largeCardParticipantIds ??
+              const <String>[],
           openSlots:
               joinableActivity?.numRemainingRoles ??
               discoveredSummary?.openSlots ??
@@ -703,12 +634,11 @@ class _WorldMapViewState extends State<WorldMapView> {
             liveRoom ??
             widget.controller.client?.activeActivityInstance(activityId);
         return (
-          participants:
-              room?.largeCardParticipants ?? const <LargeCardParticipant>[],
+          participants: room?.largeCardParticipantIds ?? const <String>[],
           openSlots: room?.numRemainingRoles ?? 0,
         );
       default:
-        return (participants: const <LargeCardParticipant>[], openSlots: 0);
+        return (participants: const <String>[], openSlots: 0);
     }
   }
 
@@ -764,6 +694,9 @@ class _WorldMapViewState extends State<WorldMapView> {
       // The completed-activity trail tier (all-time), so a live large card on a
       // previously-completed activity still shows its star below the caret.
       starLevel: render.starLevelOf(card.activityId),
+      // Dim an available card the course can't yet staff (course-scoped; the
+      // renderer only ever flags `available` pins here).
+      understaffed: render.nonStartableOf(card.activityId),
     );
   }
 
@@ -786,12 +719,12 @@ class _WorldMapViewState extends State<WorldMapView> {
   }
 
   void _onExitedMarker(String activityId) {
-    if (mounted) setState(() => _exiting.remove(activityId));
+    if (mounted) setState(() => _dotExits.finishExit(activityId));
   }
 
   void _onExitedLargeCardMarker(String activityId) {
     if (mounted) {
-      setState(() => _exitingLarge.remove(activityId));
+      setState(() => _largeExits.finishExit(activityId));
     }
   }
 
@@ -800,7 +733,13 @@ class _WorldMapViewState extends State<WorldMapView> {
     // world-map-tiles Phase 1: free hosted tiles switched by app theme —
     // OpenStreetMap (light) / CartoDB Dark Matter (dark).
     final dark = Theme.of(context).brightness == Brightness.dark;
-    final retina = dark && MediaQuery.devicePixelRatioOf(context) > 1.0;
+    // What shows through wherever tiles have not arrived yet. Matched to each
+    // basemap's own paper — CartoDB Dark Matter's near-black, OSM's pale beige
+    // — so a gap during a zoom reads as unfilled map rather than the light
+    // grey flash flutter_map defaults to (#7937).
+    final mapBackground = dark
+        ? const Color(0xFF0E0E0E)
+        : const Color(0xFFF2EFE9);
 
     final warming = widget.controller.warmingPins;
 
@@ -878,10 +817,10 @@ class _WorldMapViewState extends State<WorldMapView> {
                 sessionParticipants: (a, b) => _sessionParticipants(a, b),
                 focusedId: render.focusedId,
                 onTap: widget.controller.openActivity,
-                // Set.add returns true only on first insertion — a pin
-                // animates in the first build it appears, then holds full
-                // scale through State recreations (#8136).
-                animateInOf: _enteredIds.add,
+                // markEntered returns true only the first build a pin appears
+                // — it animates in then, and holds full scale through the
+                // State recreations MarkerLayer causes mid-gesture (#8136).
+                animateInOf: _dotExits.markEntered,
               ).layer();
               final Widget largeLayer = LargeMarkersLayer(
                 largeCards: render.largeCards,
@@ -889,7 +828,7 @@ class _WorldMapViewState extends State<WorldMapView> {
                 focusedId: render.focusedId,
                 onTap: widget.controller.openActivity,
                 onClose: widget.controller.dismissLargeCard,
-                animateInOf: _enteredLargeIds.add,
+                animateInOf: _largeExits.markEntered,
               ).layer();
               return FlutterMap(
                 mapController: widget.controller.mapController,
@@ -912,6 +851,17 @@ class _WorldMapViewState extends State<WorldMapView> {
                     90,
                     -90,
                   ),
+                  // Un-tiled map area — every gap a zoom opens up before its
+                  // tiles arrive — paints this. flutter_map's default is a
+                  // light grey (#E0E0E0), which is what makes a zoom
+                  // "flashbang" a dark-theme user (#7937).
+                  backgroundColor: mapBackground,
+                  // Scroll-wheel zoom stays flutter_map's: it applies each wheel
+                  // event immediately, which is what direct manipulation should
+                  // do. An eased, cursor-anchored version was tried for #7937
+                  // and felt delayed and jumpy next to this — the ease showed up
+                  // as input lag, not as calm. Only the programmatic glides
+                  // (focus button, world reset) were slowed.
                   interactionOptions: const InteractionOptions(
                     flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
                   ),
@@ -926,13 +876,32 @@ class _WorldMapViewState extends State<WorldMapView> {
                 ),
                 children: [
                   // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
-                  // Dark Matter (dark). Retina (@2x) keeps the dark basemap's small
-                  // labels sharp; CartoDB serves @2x, light (OSM) stays 1x.
+                  // Dark Matter (dark).
+                  //
+                  // Retina (@2x) is OFF (#7937). It used to be on for dark, to keep
+                  // that basemap's small labels sharp, but @2x is ~4x the pixels per
+                  // tile — so dark theme took roughly four times as long per tile to
+                  // arrive as light, and a slow tile is a visible gap. That is why
+                  // the loading artifact read as a DARK-mode problem specifically.
+                  // Labels are slightly softer on HiDPI as a result; legible on-brand
+                  // labels are a Phase 2 (vector tiles) goal anyway, where they cost
+                  // nothing — see world-map-tiles.instructions.md. `{r}` resolves to
+                  // an empty string with retina off, so the template is unchanged.
                   TileLayer(
                     urlTemplate: dark
                         ? 'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
                         : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    retinaMode: retina,
+                    retinaMode: false,
+                    // How far outside the view a tile survives pruning. flutter_map
+                    // covers a still-loading level by scaling a neighbouring level it
+                    // already holds (TileImageView._retainAncestor), so the fallback
+                    // is only as good as what is still in memory; the default 2 drops
+                    // ancestors partway through a long move, leaving nothing to scale
+                    // and the background showing through in tile-shaped squares.
+                    // Retention only — the LOAD range is driven by `panBuffer`, which
+                    // stays at its default, so this costs memory and zero extra tile
+                    // requests (which matters on Phase 1's free hosted tiers).
+                    keepBuffer: 5,
                     userAgentPackageName: 'com.talktolearn.chat',
                   ),
                   // world_v2: activity pins by relevance tier + state, capped by the
@@ -940,21 +909,10 @@ class _WorldMapViewState extends State<WorldMapView> {
                   // clustering); the large featured cards render unclustered above so
                   // they're always visible.
                   _ShimmerLayer(active: warming, child: dotLayer),
-                  // Activity-name labels for mid pins, above the dots but below the
-                  // large cards (world-map.instructions.md, "Pin display"; z-order:
-                  // small < mid < labels < large).
-                  MidSizePinLabelsLayer(
-                    nonLargeCards: render.nonLargeCards,
-                    sideOf: render.labels.sideOf,
-                    sizeOf: (id) => render.labelSizes[id],
-                    stateOf: render.stateOf,
-                    nonStartableOf: render.nonStartableOf,
-                    onTap: widget.controller.openActivity,
-                  ).layer(),
                   // Dying pins (a separate layer) so they don't disturb the live pins
                   // while animating out.
                   ExitingMarkersLayer(
-                    exiting: _exiting.values.toList(),
+                    exiting: _dotExits.exiting,
                     markerBox: _markerBox,
                     markerAlignment: _markerAlignment,
                     onExited: _onExitedMarker,
@@ -962,7 +920,7 @@ class _WorldMapViewState extends State<WorldMapView> {
                   // Dying large cards (demoted, or bumped out) shrinking away beneath
                   // the live layer.
                   ExitingLargeMarkersLayer(
-                    exitingLarge: _exitingLarge.values.toList(),
+                    exitingLarge: _largeExits.exiting,
                     onExited: _onExitedLargeCardMarker,
                   ).layer(),
                   // Large cards (always visible): the featured cards the width affords.
@@ -1037,20 +995,13 @@ class _WorldMapViewState extends State<WorldMapView> {
           )
         : const SizedBox.shrink();
 
-    // A course shows its plain map (plus the controls); the world map adds the
-    // search + filter overlay.
-    if (!widget.controller.isWorld) {
-      return Semantics(
-        label: L10n.of(context).activityMapLabel,
-        container: true,
-        child: Stack(
-          children: [
-            Positioned.fill(child: map),
-            controls,
-          ],
-        ),
-      );
-    }
+    // The search + filter overlay rides BOTH scopes (#7716): a selected course
+    // narrows which activities compete, not whether the learner can search or
+    // filter within them (world-map.instructions.md). Nothing here is
+    // scope-aware — the sliver rule below is what decides visibility, so an
+    // open course panel hides the overlay exactly like any other left panel
+    // that squeezes the map, and closing that panel brings it back.
+    //
     // The overlay lives in the EXPOSED map sliver: right of the open left
     // panels, clear of the right column / the top-right cluster gutter (a fixed
     // 360 slid under the cluster and off-screen whenever panels squeezed the

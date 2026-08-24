@@ -52,15 +52,22 @@ Future<String?> showTextInputDialog({
               mainAxisSize: .min,
               children: [
                 if (message != null)
-                  SelectableLinkify(
-                    text: message,
-                    textScaleFactor: MediaQuery.textScalerOf(context).scale(1),
-                    linkStyle: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      decorationColor: Theme.of(context).colorScheme.primary,
+                  Semantics(
+                    container: true,
+                    label: message,
+                    child: SelectableLinkify(
+                      text: message,
+                      textScaleFactor: MediaQuery.textScalerOf(
+                        context,
+                      ).scale(1),
+                      linkStyle: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        decorationColor: Theme.of(context).colorScheme.primary,
+                      ),
+                      options: const LinkifyOptions(humanize: false),
+                      onOpen: (url) =>
+                          UrlLauncher(context, url.url).launchUrl(),
                     ),
-                    options: const LinkifyOptions(humanize: false),
-                    onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
                   ),
                 const SizedBox(height: 16),
                 ValueListenableBuilder<String?>(

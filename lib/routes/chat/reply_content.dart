@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -33,8 +32,7 @@ class ReplyContent extends StatelessWidget {
     final displayEvent = timeline != null
         ? replyEvent.getDisplayEvent(timeline)
         : replyEvent;
-    final fontSize =
-        AppConfig.messageFontSize * AppSettings.fontSizeFactor.value;
+    final fontSize = AppConfig.messageFontSize;
     // #Pangea
     final color = ownMessage
         ? theme.colorScheme.tertiaryContainer
@@ -71,9 +69,6 @@ class ReplyContent extends StatelessWidget {
                   future: displayEvent.fetchSenderUser(),
                   builder: (context, snapshot) {
                     return Text(
-                      // #Pangea
-                      textScaler: TextScaler.noScaling,
-                      // Pangea#
                       '${(snapshot.data ?? displayEvent.senderFromMemoryOrFallback).localizedDisplayname(L10n.of(context))}:',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -86,9 +81,6 @@ class ReplyContent extends StatelessWidget {
                   },
                 ),
                 Text(
-                  // #Pangea
-                  textScaler: TextScaler.noScaling,
-                  // Pangea#
                   displayEvent.calcLocalizedBodyFallback(
                     MatrixLocals(L10n.of(context)),
                     withSenderNamePrefix: false,

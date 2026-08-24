@@ -9,6 +9,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_shared_player_tracker.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
@@ -37,6 +39,20 @@ class AudioPlayerWidget extends StatefulWidget {
   final bool autoplay;
   final bool enableClicks;
   final AudioPlaybackSpeedController? playbackSpeedController;
+
+  /// Which kind of listening a playback through THIS instance is, or null to
+  /// measure nothing.
+  ///
+  /// **Supplied by the caller and never inferred here, because this widget
+  /// cannot tell.** Three call sites hand it audio — the timeline, the message
+  /// practice card and the analytics practice widget — and none of its own
+  /// fields discriminates them: [senderId] is the learner's own mxid for the
+  /// practice widget's TTS audio, and [eventId] is a string-mangled key
+  /// (`_overlay`, `_practice`, `_button` suffixes), not a Matrix event id.
+  /// Instrumenting on those would produce an uncategorisable signal, so only the
+  /// timeline passes a category and the practice surfaces stay out of scope by
+  /// passing nothing.
+  final DosageListeningCategory? listeningCategory;
   // Pangea#
 
   static const int wavesCount = 40;
@@ -54,6 +70,7 @@ class AudioPlayerWidget extends StatefulWidget {
     this.autoplay = false,
     this.enableClicks = true,
     this.playbackSpeedController,
+    this.listeningCategory,
     // Pangea#
     super.key,
   });
@@ -78,10 +95,33 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   StreamSubscription? _onAudioStateChanged;
 
   double playbackSpeed = 1.0;
+
+  /// Elapsed-playback accounting for the dosage listening signal. A DEDICATED
+  /// subscription rather than a hook into [_onAudioStateChanged]: that one is
+  /// re-attached by both [_onPlayerChange] and [_onButtonTap] and is not scoped
+  /// to this widget owning the shared player, so measuring off it would count
+  /// somebody else's playback.
+  StreamSubscription<PlayerState>? _listeningSub;
+
+  /// Null — and therefore measuring nothing — unless the caller named a
+  /// category. The practice surfaces name none.
+  DosageSharedPlayerTracker? _listeningTracker;
   // Pangea#
 
   @override
   void dispose() {
+    // #Pangea
+    // UNCONDITIONAL, and before everything else. The teardown below runs only
+    // when this widget owns the shared player, so anything left inside it leaks
+    // for every other bubble on screen. Closing the measurement here is also
+    // what counts a playback the learner navigated away from mid-way: they heard
+    // what they heard, and no playback path distinguishes "stopped" from
+    // "finished" anyway.
+    matrix.voiceMessageEventId.removeListener(_onListeningOwnershipChange);
+    _listeningSub?.cancel();
+    _listeningSub = null;
+    _listeningTracker?.close();
+    // Pangea#
     super.dispose();
     // #Pangea
     widget.playbackSpeedController?.playbackSpeed.removeListener(
@@ -186,6 +226,12 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
         }
       });
       // Pangea#
+      // #Pangea
+      // Resuming/pausing the player this widget already owns. Attach before the
+      // transition so the state stream reports it. Synchronous and no-op unless
+      // a category was supplied.
+      _watchListening(currentPlayer);
+      // Pangea#
       if (currentPlayer.isAtEndPosition) {
         currentPlayer.seek(Duration.zero);
       } else if (currentPlayer.playing) {
@@ -275,6 +321,13 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     // Pangea#
 
     final audioPlayer = matrix.audioPlayer = AudioPlayer();
+
+    // #Pangea
+    // The player this widget will play through now exists; watch it for the
+    // listening measurement. Attached BEFORE the source is set so the very first
+    // playing transition is seen.
+    _watchListening(audioPlayer);
+    // Pangea#
 
     // #Pangea
     // if (file != null) {
@@ -404,6 +457,34 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     });
   }
 
+  /// Watches the shared player for THIS widget's playback. Called from
+  /// [_onButtonTap] — where this instance actually starts a playback — rather
+  /// than from the notifier listener, because the fresh [AudioPlayer] does not
+  /// exist yet at the moment the notifier fires.
+  void _watchListening(AudioPlayer? player) {
+    if (_listeningTracker == null || player == null) return;
+    _listeningSub?.cancel();
+    _listeningSub = player.playerStateStream.listen(
+      (state) => _listeningTracker?.update(
+        playing: state.playing,
+        completed: state.processingState == ProcessingState.completed,
+        currentOwnerId: matrix.voiceMessageEventId.value,
+      ),
+    );
+  }
+
+  /// Closes an open measurement when the shared player moves to another widget
+  /// or another surface. Whatever was heard up to that point is real and is
+  /// emitted; what follows belongs to whoever took the player.
+  void _onListeningOwnershipChange() {
+    final tracker = _listeningTracker;
+    if (tracker == null) return;
+    if (matrix.voiceMessageEventId.value == widget.eventId) return;
+    _listeningSub?.cancel();
+    _listeningSub = null;
+    tracker.close();
+  }
+
   void _onUpdatePlaybackSpeed() {
     if (widget.playbackSpeedController == null) return;
     setState(
@@ -422,6 +503,19 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     // #Pangea
     WidgetsBinding.instance.addPostFrameCallback((_) => _onPlayerChange());
     matrix.voiceMessageEventId.addListener(_onPlayerChange);
+    final listeningCategory = widget.listeningCategory;
+    if (listeningCategory != null) {
+      _listeningTracker = DosageSharedPlayerTracker(
+        category: listeningCategory,
+        roomId: widget.roomId,
+        ownerId: widget.eventId,
+        // Read live at emit time, not captured here: an account switch or a
+        // token refresh mid-playback must not post under a stale identity.
+        userId: () => matrix.client.userID,
+        accessToken: () => matrix.client.accessToken,
+      );
+      matrix.voiceMessageEventId.addListener(_onListeningOwnershipChange);
+    }
     if (widget.playbackSpeedController != null) {
       playbackSpeed = widget.playbackSpeedController!.playbackSpeed.value;
       widget.playbackSpeedController!.playbackSpeed.addListener(

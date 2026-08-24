@@ -11,20 +11,16 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_view.dart';
-import 'package:fluffychat/routes/chat_list/course_default_chats_enum.dart';
-import 'package:fluffychat/routes/chat_list/default_chats_room_extension.dart';
 import 'package:fluffychat/routes/chat_list/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/routes/chat_list/hierarchy_sync_update_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -179,10 +175,9 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
   List<Room> get joinedChats =>
       joinedRooms.where((room) => !room.isActivitySession).toList();
 
-  bool showDefaultChatCreation(CourseDefaultChatsEnum type) {
-    if (space == null || !space!.isRoomAdmin) return false;
-    return !space!.dismissedDefaultChat(type) && !space!.hasDefaultChat(type);
-  }
+  /// The discovered (unjoined) hierarchy children, for
+  /// [DefaultChatCreationTile]'s existing-but-unjoined check.
+  List<SpaceRoomsChunk$2>? get discoveredChildren => _discoveredChildren;
 
   void _setRoomSubscription() {
     _roomSubscription?.cancel();
@@ -601,29 +596,6 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
     if (widget.client.getRoomById(roomId) == null) {
       throw Exception("Failed to join room");
-    }
-
-    NavigationUtil.goToSpaceRoute(roomId, const [], context);
-  }
-
-  Future<void> dismissDefaultChatCreation(CourseDefaultChatsEnum type) async {
-    final space = this.space;
-    if (space == null) throw Exception("Room is null");
-    await space.dismissDefaultChatCreation(type);
-  }
-
-  Future<void> createDefaultChat(CourseDefaultChatsEnum type) async {
-    final space = this.space;
-    if (space == null) throw Exception("Room is null");
-    final roomId = await space.addDefaultChat(
-      type: type,
-      name: type.title(L10n.of(context)),
-    );
-
-    GoogleAnalytics.createChat(roomId);
-    final classCode = space.joinCode;
-    if (classCode != null) {
-      GoogleAnalytics.addParent(roomId, classCode);
     }
 
     NavigationUtil.goToSpaceRoute(roomId, const [], context);

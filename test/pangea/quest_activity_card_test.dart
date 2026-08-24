@@ -96,4 +96,46 @@ void main() {
       expect(c.goals, isEmpty);
     });
   });
+
+  group('QuestActivityCard.fromJson (course path)', () {
+    // The CMS-doc shape QuestRepo.cmsDocShapeFromEntry adapts a course entry
+    // to: { res: { plan: {...} }, learningObjectiveRefs: [...] }. The plan node
+    // is the same one activityPlanFromV2 reads its cefr_level from.
+    Map<String, dynamic> doc() => {
+      'res': {
+        'plan': {
+          'activity_id': 'act-2',
+          'title': 'En la Fiesta',
+          'l2': 'es',
+          'cefr_level': 'B1',
+          'coordinates': [-99.1332, 19.4326],
+          'roles': [
+            {'role_id': 'r1'},
+            {'role_id': 'r2'},
+          ],
+        },
+      },
+      'learningObjectiveRefs': ['lo-a'],
+    };
+
+    test('carries the CEFR level from res.plan.cefr_level (#8243)', () {
+      final c = QuestActivityCard.fromJson(doc());
+      expect(c.activityId, 'act-2');
+      expect(c.cefr, 'B1');
+      expect(c.l2, 'es');
+      expect(c.roleCount, 2);
+      expect(c.learningObjectiveRefs, ['lo-a']);
+    });
+
+    test('cefr stays null when the plan omits cefr_level', () {
+      final d = doc();
+      (d['res'] as Map)['plan'] = {
+        'activity_id': 'act-3',
+        'title': 'No level',
+        'l2': 'es',
+        'coordinates': [0, 0],
+      };
+      expect(QuestActivityCard.fromJson(d).cefr, isNull);
+    });
+  });
 }

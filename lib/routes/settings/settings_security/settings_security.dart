@@ -170,8 +170,6 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     }
   }
 
-  Future<void> dehydrateAction() => Matrix.of(context).dehydrateAction(context);
-
   void changeShareKeysWith(ShareKeysWith? shareKeysWith) async {
     if (shareKeysWith == null) return;
     AppSettings.shareKeysWith.setItem(shareKeysWith.name);

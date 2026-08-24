@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/archived_session_controller.dart';
@@ -10,21 +9,36 @@ import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
 
 class ActivitySessionButtons extends StatelessWidget {
   final ActivitySessionStartState controller;
   final ActivitySessionStateController sessionController;
 
+  /// Mobile minimized rest: render just the CTA row, snug and left-aligned
+  /// under the info row (no divider, description, centering, or heavy padding),
+  /// so the minimized sheet reads as densely as the course card's compact peek.
+  final bool compact;
+
   const ActivitySessionButtons({
     super.key,
     required this.controller,
     required this.sessionController,
+    this.compact = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final description = sessionController.descriptionText;
+
+    if (compact) {
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(12.0, 4.0, 8.0, 12.0),
+        child: _SessionCTAButtons(sessionController, compact: compact),
+      );
+    }
 
     return AnimatedSize(
       alignment: Alignment.bottomCenter,
@@ -59,7 +73,7 @@ class ActivitySessionButtons extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                    _SessionCTAButtons(sessionController),
+                    _SessionCTAButtons(sessionController, compact: compact),
                   ],
                 ),
               ),
@@ -72,21 +86,28 @@ class ActivitySessionButtons extends StatelessWidget {
 }
 
 /// The session page's call-to-action button: a full-width filled button in the
-/// primary container colour. Public because the archived fallback body renders
-/// its own leave CTA outside this footer (#8064).
+/// darker `primary` colour when it leads, dropping to the lighter
+/// `primaryContainer` [secondary] style for any action that follows it. Public
+/// because the archived fallback body renders its own leave CTA outside this
+/// footer (#8064).
 class ActivitySessionCTAButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
 
-  /// A de-emphasized (outlined) variant for a secondary action shown beside a
-  /// stronger one — e.g. "start my own" when joining an open session is the
-  /// encouraged choice.
+  /// A de-emphasized variant for any action following the single primary: a
+  /// fully filled but lighter (primaryContainer) button, mirroring the mobile
+  /// CTA chips — e.g. "start my own" when joining an open session leads.
   final bool secondary;
+
+  /// An optional leading glyph — the state CTAs pass their
+  /// [ActivityPinState.icon] so the row echoes the map pins' iconography.
+  final IconData? icon;
 
   const ActivitySessionCTAButton(
     this.text,
     this.onPressed, {
     this.secondary = false,
+    this.icon,
     super.key,
   });
 
@@ -98,23 +119,24 @@ class ActivitySessionCTAButton extends StatelessWidget {
     );
     final child = Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Flexible(child: Text(text, textAlign: TextAlign.center))],
+      children: [
+        if (icon != null) ...[
+          Icon(icon, size: 18.0),
+          const SizedBox(width: 8.0),
+        ],
+        Flexible(child: Text(text, textAlign: TextAlign.center)),
+      ],
     );
-    if (secondary) {
-      return OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          foregroundColor: theme.colorScheme.onPrimaryContainer,
-          padding: const EdgeInsets.all(8.0),
-          shape: shape,
-        ),
-        onPressed: onPressed,
-        child: child,
-      );
-    }
+    // Mirror the mobile CTA chips' colour hierarchy: the single lead action is
+    // the darker filled primary; every following action is a fully filled but
+    // lighter primaryContainer button (not a bare outline).
+    final scheme = theme.colorScheme;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: theme.colorScheme.primaryContainer,
-        foregroundColor: theme.colorScheme.onPrimaryContainer,
+        backgroundColor: secondary ? scheme.primaryContainer : scheme.primary,
+        foregroundColor: secondary
+            ? scheme.onPrimaryContainer
+            : scheme.onPrimary,
         padding: const EdgeInsets.all(8.0),
         shape: shape,
       ),
@@ -127,7 +149,11 @@ class ActivitySessionCTAButton extends StatelessWidget {
 class _SessionCTAButtons extends StatelessWidget {
   final ActivitySessionStateController controller;
 
-  const _SessionCTAButtons(this.controller);
+  /// True at the minimized mobile rest — lets the not-started CTAs drop actions
+  /// that don't fit (and aren't needed) in the short sheet.
+  final bool compact;
+
+  const _SessionCTAButtons(this.controller, {this.compact = false});
 
   @override
   Widget build(BuildContext context) {
@@ -142,7 +168,7 @@ class _SessionCTAButtons extends StatelessWidget {
     }
 
     if (controller is NotStartedSessionController) {
-      return _NotStartedSessionCTAButtons(controller);
+      return _NotStartedSessionCTAButtons(controller, compact: compact);
     }
 
     if (controller is ConfirmedRoleSessionController) {
@@ -187,7 +213,8 @@ class _FullSessionCTAButtons extends StatelessWidget {
 
 class _NotStartedSessionCTAButtons extends StatelessWidget {
   final NotStartedSessionController controller;
-  const _NotStartedSessionCTAButtons(this.controller);
+  final bool compact;
+  const _NotStartedSessionCTAButtons(this.controller, {this.compact = false});
 
   @override
   Widget build(BuildContext context) {
@@ -211,10 +238,14 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
 
         final int neededParticipants = snapshot.data ?? 0;
         final bool hasEnoughParticipants = neededParticipants <= 0;
-        return Column(
-          spacing: 16.0,
-          children: [
-            if (!hasEnoughParticipants) ...[
+
+        // Not enough course participants yet — a blocking notice with its own
+        // invite / pick-different actions. Stays a vertical list on both
+        // platforms (it isn't the browse CTA the horizontal row replaces).
+        if (!hasEnoughParticipants) {
+          return Column(
+            spacing: 16.0,
+            children: [
               Text(
                 neededParticipants > 1
                     ? L10n.of(context).activityNeedsMembers(neededParticipants)
@@ -228,14 +259,35 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                   L10n.of(context).inviteFriendsToCourse,
                   controller.inviteToCourse,
                 ),
-              ActivitySessionCTAButton(
-                L10n.of(context).pickDifferentActivity,
-                controller.goToCourse,
-              ),
-            ] else if (controller.joinedActivityRoomId != null) ...[
+              // Only when the sheet is roomy (maximized / web). It just leaves
+              // the activity — unnecessary in the minimized map view, and it
+              // wouldn't fit the short rest. Maximized it returns to the course
+              // card, or closes back to the map. Primary only when it leads;
+              // with invite above it, it drops to the lighter secondary.
+              if (!compact)
+                ActivitySessionCTAButton(
+                  L10n.of(context).pickDifferentActivity,
+                  controller.goToCourse,
+                  secondary: controller.canInviteToCourse,
+                ),
+            ],
+          );
+        }
+
+        // The browse CTA: the horizontal row on mobile, the vertical layout
+        // below on web.
+        if (!FluffyThemes.isColumnMode(context)) {
+          return _NotStartedMobileCtaRow(controller);
+        }
+
+        return Column(
+          spacing: 16.0,
+          children: [
+            if (controller.joinedActivityRoomId != null) ...[
               ActivitySessionCTAButton(
                 L10n.of(context).continueText,
                 controller.goToJoinedActivity,
+                icon: ActivityPinState.ongoingActive.icon,
               ),
             ] else ...[
               // An open session to join is the encouraged choice, so it leads
@@ -245,28 +297,216 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                 ActivitySessionCTAButton(
                   '${L10n.of(context).joinOpenSession} (${controller.openSessionCount})',
                   controller.goToJoinPage,
+                  icon: ActivityPinState.joinable.icon,
                 ),
                 ActivitySessionCTAButton(
                   L10n.of(context).startOwn,
                   controller.startNewActivity,
                   secondary: true,
+                  icon: ActivityPinState.available.icon,
                 ),
               ] else
                 ActivitySessionCTAButton(
                   L10n.of(context).start,
                   controller.startNewActivity,
-                ),
-              if (controller.course?.isRoomAdmin == true &&
-                  controller.hasCurrentOrFinishedSessions)
-                ActivitySessionCTAButton(
-                  '${L10n.of(context).viewCurrentOrFinished} (${controller.currentOrFinishedSessionCount})',
-                  controller.goToViewPage,
+                  icon: ActivityPinState.available.icon,
                 ),
             ],
+            // Completed sits below the start/join choice, de-emphasized, for any
+            // viewer with sessions to review (see [hasCompletedSessions]).
+            if (controller.hasCompletedSessions)
+              ActivitySessionCTAButton(
+                L10n.of(context).mapFilterCompleted,
+                controller.goToViewPage,
+                secondary: true,
+                icon: ActivityPinState.inProgress.icon,
+              ),
           ],
         );
       },
     );
+  }
+}
+
+/// The mobile browse-step CTA: a single horizontally scrolling row. Exactly one
+/// filled primary leads (Ongoing → Join → Start), followed by any other
+/// available actions, with the everyone-visible Completed chip and then share +
+/// flag always appended last as light pills. The later steps (role picker,
+/// waiting room) keep their vertical lists. See
+/// activity-start-page.instructions.md.
+class _NotStartedMobileCtaRow extends StatelessWidget {
+  final NotStartedSessionController controller;
+  const _NotStartedMobileCtaRow(this.controller);
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    final page = controller.widget.controller;
+    final chips = <Widget>[];
+
+    // An action chip maximizes the sheet before running — the view it opens
+    // (role picker, sessions list) is dropped by the minimized LayoutBuilder,
+    // so it must reach full first. Continue is exempt: it leaves for the chat.
+    final expand = CavityControls.maybeExpandToFull(context);
+    VoidCallback expandThen(VoidCallback action) => () {
+      expand?.call();
+      action();
+    };
+
+    if (controller.joinedActivityRoomId != null) {
+      chips.add(
+        _ActivityCtaChip(
+          label: l10n.continueText,
+          icon: ActivityPinState.ongoingActive.icon,
+          onPressed: controller.goToJoinedActivity,
+          filled: true,
+        ),
+      );
+    } else if (controller.openSessionCount > 0) {
+      chips.add(
+        _ActivityCtaChip(
+          label: '${l10n.joinOpenSession} (${controller.openSessionCount})',
+          icon: ActivityPinState.joinable.icon,
+          onPressed: expandThen(controller.goToJoinPage),
+          filled: true,
+        ),
+      );
+      chips.add(
+        _ActivityCtaChip(
+          label: l10n.startOwn,
+          icon: ActivityPinState.available.icon,
+          onPressed: expandThen(controller.startNewActivity),
+        ),
+      );
+    } else {
+      chips.add(
+        _ActivityCtaChip(
+          label: l10n.start,
+          icon: ActivityPinState.available.icon,
+          onPressed: expandThen(controller.startNewActivity),
+          filled: true,
+        ),
+      );
+    }
+
+    // Opens the per-viewer Completed subpage (see [hasCompletedSessions]).
+    if (controller.hasCompletedSessions) {
+      chips.add(
+        _ActivityCtaChip(
+          label: l10n.mapFilterCompleted,
+          icon: ActivityPinState.inProgress.icon,
+          onPressed: expandThen(controller.goToViewPage),
+        ),
+      );
+    }
+
+    chips.add(
+      _ActivityCtaChip(
+        icon: Icons.share_outlined,
+        tooltip: l10n.share,
+        onPressed: page.copyActivityLink,
+      ),
+    );
+    chips.add(
+      _ActivityCtaChip(
+        icon: Icons.flag_outlined,
+        tooltip: l10n.feedbackButton,
+        onPressed: page.submitActivityFeedback,
+      ),
+    );
+
+    // Stretch the single primary CTA to fill the row when everything fits, but
+    // fall back to a plain horizontal scroll when the chips overflow
+    return LayoutBuilder(
+      builder: (context, constraints) => SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minWidth: constraints.maxWidth),
+          child: IntrinsicWidth(
+            child: Row(
+              spacing: 8.0,
+              children: [
+                Expanded(child: chips.first),
+                ...chips.skip(1),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// A pill in the mobile CTA row. The single primary action is [filled] (solid
+/// primary); every other action — including share and flag — is a light
+/// primaryContainer pill. Passing [icon] with no [label] renders a circular
+/// icon-only chip (share / flag) sized to match the text pills' height; passing
+/// both renders the icon as a leading glyph before the label (the state chips).
+class _ActivityCtaChip extends StatelessWidget {
+  final String? label;
+  final IconData? icon;
+  final VoidCallback? onPressed;
+  final bool filled;
+  final String? tooltip;
+
+  const _ActivityCtaChip({
+    this.label,
+    this.icon,
+    required this.onPressed,
+    this.filled = false,
+    this.tooltip,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final style = ElevatedButton.styleFrom(
+      backgroundColor: filled
+          ? theme.colorScheme.primary
+          : theme.colorScheme.primaryContainer,
+      foregroundColor: filled
+          ? theme.colorScheme.onPrimary
+          : theme.colorScheme.onPrimaryContainer,
+      elevation: 0.0,
+      shape: const StadiumBorder(),
+    );
+
+    final Widget button = icon != null && label == null
+        ? SizedBox(
+            height: 40.0,
+            width: 40.0,
+            child: ElevatedButton(
+              style: style.copyWith(
+                padding: WidgetStateProperty.all(EdgeInsets.zero),
+                shape: WidgetStateProperty.all(const CircleBorder()),
+              ),
+              onPressed: onPressed,
+              child: Icon(icon, size: 20.0),
+            ),
+          )
+        : SizedBox(
+            height: 40.0,
+            child: ElevatedButton(
+              style: style.copyWith(
+                padding: WidgetStateProperty.all(
+                  const EdgeInsets.symmetric(horizontal: 20.0),
+                ),
+              ),
+              onPressed: onPressed,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (icon != null) ...[
+                    Icon(icon, size: 18.0),
+                    const SizedBox(width: 8.0),
+                  ],
+                  Text(label ?? ''),
+                ],
+              ),
+            ),
+          );
+
+    return tooltip == null ? button : Tooltip(message: tooltip!, child: button);
   }
 }
 
@@ -281,10 +521,7 @@ class _ArchivedSessionCTAButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final page = controller.widget.controller;
     if (!page.canLeaveArchivedSession) return const SizedBox.shrink();
-    return ActivitySessionCTAButton(
-      L10n.of(context).leave,
-      page.leaveArchivedSession,
-    );
+    return ActivitySessionCTAButton(L10n.of(context).leave, page.leaveSession);
   }
 }
 
@@ -297,6 +534,10 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
     return Column(
       mainAxisSize: .min,
       children: [
+        // Ping, play with bot, and invite friends are all equally valid ways
+        // forward from the waiting room, so none leads — every one keeps the
+        // same primary fill as Start, rather than all dropping to the lighter
+        // secondary, which read as the buttons changing colour mid-flow (#8427).
         if (controller.showPingCourse) ...[
           FutureBuilder(
             future: controller.canPingParticipants,

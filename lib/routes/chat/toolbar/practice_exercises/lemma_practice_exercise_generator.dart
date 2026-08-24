@@ -39,13 +39,12 @@ class LemmaPracticeExerciseGenerator {
     required String language,
     int? maxChoices = 4,
   }) async {
-    final constructs = await MatrixState
-        .pangeaController
-        .matrixState
-        .analyticsDataService
-        .getAggregatedConstructs(ConstructTypeEnum.vocab, language);
-
-    final List<ConstructIdentifier> constructIds = constructs.keys.toList();
+    // Only identifiers are needed here; the ids-only read skips deserializing
+    // every vocab use per exercise (#8433).
+    final constructIds =
+        (await MatrixState.pangeaController.matrixState.analyticsDataService
+                .getAggregatedConstructIds(ConstructTypeEnum.vocab, language))
+            .toList();
     // Offload computation to an isolate
     final Map<ConstructIdentifier, int> distances = await compute(
       _computeDistancesInIsolate,

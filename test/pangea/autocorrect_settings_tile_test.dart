@@ -1,13 +1,28 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:matrix/matrix.dart' show Client;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/autocorrect_settings_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/enable_autocorrect_dialog.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import '../utils/test_client.dart';
+
+class _FakeMatrixState extends MatrixState {
+  _FakeMatrixState(this._client);
+
+  final Client _client;
+
+  @override
+  Client get client => _client;
+}
 
 /// #8112 — on web the autocorrect toggle is disabled with a "Mobile only"
 /// subtitle instead of opening a warning dialog. Tapping the disabled tile
@@ -19,7 +34,23 @@ void main() {
   const snackBarWarning =
       'Device autocorrect is only available on the mobile app.';
 
-  LearningSettingsViewModel makeViewModel({bool autocorrectOn = false}) =>
+  late Client client;
+
+  setUpAll(() async {
+    // The view model listens to the user controller's profile streams, so it
+    // needs a controller to reach through MatrixState. The controller builds a
+    // PLanguageStore, which reads its cache from shared preferences.
+    SharedPreferences.setMockInitialValues({});
+    client = await prepareTestClient();
+    MatrixState.pangeaController = PangeaController(
+      matrixState: _FakeMatrixState(client),
+    );
+  });
+
+  tearDownAll(() => client.dispose());
+
+  /// [autocorrectOn] null means the user has never touched the toggle.
+  LearningSettingsViewModel makeViewModel({bool? autocorrectOn = false}) =>
       LearningSettingsViewModel(
         Profile(
           userSettings: UserSettings(),
@@ -127,6 +158,98 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(viewModel.getToolSetting(ToolSetting.enableAutocorrect), isTrue);
+    });
+
+    // #8466 — with hintLocales the keyboard follows the target language on
+    // its own, so the Android dialog explains that and keeps the Gboard
+    // walkthrough only as the fallback.
+    testWidgets(
+      'Android dialog explains the keyboard switch, Gboard fallback',
+      (tester) async {
+        await pumpTile(tester, makeViewModel(), isWeb: false);
+
+        await tester.tap(find.byType(SwitchListTile));
+        await tester.pumpAndSettle();
+
+        expect(
+          find.text('Autocorrect in your target language'),
+          findsOneWidget,
+        );
+        expect(
+          find.textContaining(
+            'your keyboard will switch to your target language',
+          ),
+          findsOneWidget,
+        );
+        expect(
+          find.textContaining('install Gboard and add the language there'),
+          findsOneWidget,
+        );
+        expect(find.text('Download Gboard'), findsOneWidget);
+        expect(find.textContaining('Warning!'), findsNothing);
+      },
+    );
+  });
+
+  // #8466 — autocorrect defaults on for Android only, resolved per device from
+  // an unchosen (null) stored value. The view model must not collapse that
+  // into an explicit choice when some other toggle changes.
+  group('platform default', () {
+    /// testWidgets checks the platform override is restored before tearDowns
+    /// run, so it has to be reset inside the body.
+    Future<void> onPlatform(
+      TargetPlatform platform,
+      Future<void> Function() body,
+    ) async {
+      debugDefaultTargetPlatformOverride = platform;
+      try {
+        await body();
+      } finally {
+        debugDefaultTargetPlatformOverride = null;
+      }
+    }
+
+    testWidgets('never-chosen reads on for Android and off for iOS', (_) async {
+      await onPlatform(TargetPlatform.android, () async {
+        expect(
+          makeViewModel(
+            autocorrectOn: null,
+          ).getToolSetting(ToolSetting.enableAutocorrect),
+          isTrue,
+        );
+      });
+      await onPlatform(TargetPlatform.iOS, () async {
+        expect(
+          makeViewModel(
+            autocorrectOn: null,
+          ).getToolSetting(ToolSetting.enableAutocorrect),
+          isFalse,
+        );
+      });
+    });
+
+    testWidgets('changing another toggle leaves autocorrect unchosen', (
+      _,
+    ) async {
+      await onPlatform(TargetPlatform.android, () async {
+        final viewModel = makeViewModel(autocorrectOn: null);
+        viewModel.updateToolSetting(ToolSetting.audioWords, false);
+        expect(
+          viewModel.updatedProfile.toolSettings.enableAutocorrectChoice,
+          isNull,
+        );
+      });
+    });
+
+    testWidgets('toggling autocorrect records an explicit choice', (_) async {
+      await onPlatform(TargetPlatform.android, () async {
+        final viewModel = makeViewModel(autocorrectOn: null);
+        viewModel.updateToolSetting(ToolSetting.enableAutocorrect, false);
+        expect(
+          viewModel.updatedProfile.toolSettings.enableAutocorrectChoice,
+          isFalse,
+        );
+      });
     });
   });
 }

@@ -38,6 +38,24 @@ def load_unused_keys(json_path: str) -> List[str]:
     return data['unused_keys']
 
 
+def _detect_indent(raw: str, default: int = 4) -> int:
+    """
+    Infer an arb file's indentation width from its first indented line.
+
+    Args:
+        raw: Full text of the .arb file
+        default: Width to assume when no indented line is found
+
+    Returns:
+        Number of spaces one indent level occupies
+    """
+    for line in raw.splitlines()[1:]:
+        stripped = line.lstrip(' ')
+        if stripped and stripped != line:
+            return len(line) - len(stripped)
+    return default
+
+
 def remove_keys_from_arb_file(arb_file_path: str, keys_to_remove: Set[str]) -> int:
     """
     Remove specified keys and their metadata from an .arb file.
@@ -54,8 +72,14 @@ def remove_keys_from_arb_file(arb_file_path: str, keys_to_remove: Set[str]) -> i
     """
     # Read the JSON file
     with open(arb_file_path, 'r', encoding='utf-8') as f:
-        data = json.load(f, object_pairs_hook=OrderedDict)
-    
+        raw = f.read()
+    data = json.loads(raw, object_pairs_hook=OrderedDict)
+
+    # Match the file's own indentation. The arb files are 4-space indented;
+    # re-serializing at a different width rewrites every line of every locale,
+    # burying a two-key removal in a six-figure diff.
+    indent = _detect_indent(raw)
+
     # Track what we remove
     removed_count = 0
     keys_to_delete = []
@@ -76,15 +100,19 @@ def remove_keys_from_arb_file(arb_file_path: str, keys_to_remove: Set[str]) -> i
                 keys_to_delete.append(key)
                 removed_count += 1
     
+    # Nothing to do — leave the file untouched rather than round-tripping it.
+    if not keys_to_delete:
+        return 0
+
     # Remove the keys
     for key in keys_to_delete:
         del data[key]
-    
+
     # Write back to file with proper formatting
     with open(arb_file_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+        json.dump(data, f, indent=indent, ensure_ascii=False)
         f.write('\n')  # Add trailing newline
-    
+
     return removed_count
 
 

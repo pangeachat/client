@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/bot/bot_client_extension.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
@@ -37,6 +36,7 @@ class PangeaController {
   StreamSubscription? _languageSubscription;
   StreamSubscription? _settingsSubscription;
   StreamSubscription? _joinSpaceSubscription;
+  StreamSubscription? _analyticsRoomMuteSubscription;
 
   ///Matrix Variables
   final MatrixState matrixState;
@@ -63,9 +63,11 @@ class PangeaController {
     initControllers(userID);
     _registerSubscriptions();
 
+    // Locale is set by MatrixState's toggle-aware _setAppLanguage() once the
+    // profile loads (see matrix.dart's _setLanguageListener) — setting it
+    // here too raced that call and always won with the hardcoded L1,
+    // ignoring the "show app in the language I'm learning" toggle (#8509).
     userController.reinitialize().then((_) {
-      final l1 = userController.profile.userSettings.sourceLanguage;
-      Provider.of<LocaleProvider>(context, listen: false).setLocale(l1);
       GrammarConstructsProvider.fetchFeaturesAndTags();
     });
 
@@ -73,7 +75,6 @@ class PangeaController {
 
     if (userID != null) {
       StyleSettingsRepo.settings(userID).then((settings) {
-        AppSettings.fontSizeFactor.setItem(settings.fontSizeFactor);
         AppConfig.useActivityImageAsChatBackground =
             settings.useActivityImageBackground;
       });
@@ -95,6 +96,7 @@ class PangeaController {
       targetLanguage: userController.profile.userSettings.targetLanguage ?? '',
       sourceLanguage: userController.profile.userSettings.sourceLanguage ?? '',
       userType: isTeacher ? 'teacher' : 'learner',
+      cefrLevel: userController.profile.userSettings.cefrLevel.string,
     );
 
     try {
@@ -113,9 +115,11 @@ class PangeaController {
     _languageSubscription?.cancel();
     _settingsSubscription?.cancel();
     _joinSpaceSubscription?.cancel();
+    _analyticsRoomMuteSubscription?.cancel();
     _languageSubscription = null;
     _settingsSubscription = null;
     _joinSpaceSubscription = null;
+    _analyticsRoomMuteSubscription = null;
 
     GoogleAnalytics.logout();
     _clearCache();
@@ -156,6 +160,14 @@ class PangeaController {
     _settingsSubscription = userController.settingsUpdateStream.stream.listen((
       update,
     ) async {
+      // Every path that writes the level — onboarding's picker, learning
+      // settings, the bot dialog, a course join — lands here, so this is the
+      // one place the analytics mirror can't drift from the profile.
+      GoogleAnalytics.setUserProperties(
+        targetLanguage: update.userSettings.targetLanguage ?? '',
+        sourceLanguage: update.userSettings.sourceLanguage ?? '',
+        cefrLevel: update.userSettings.cefrLevel.string,
+      );
       await matrixState.client.updateBotOptions(update.userSettings);
       await userController.updatePublicProfile();
     });
@@ -164,6 +176,11 @@ class PangeaController {
     _joinSpaceSubscription ??= matrixState.client.onSync.stream
         .where(matrixState.client.isJoinSpaceSyncUpdate)
         .listen((_) => matrixState.client.addAnalyticsRoomsToSpaces());
+
+    _analyticsRoomMuteSubscription?.cancel();
+    _analyticsRoomMuteSubscription = matrixState.client.onSync.stream
+        .where(matrixState.client.isNewAnalyticsRoomSyncUpdate)
+        .listen((_) => matrixState.client.setPangeaPushRules());
   }
 
   Future<void> _clearCache({List<String> exclude = const []}) async {
@@ -193,9 +210,15 @@ class PangeaController {
   }
 
   Future<void> _onLanguageUpdate(LanguageUpdate update) async {
+    // Both languages come off the update, which carries them already resolved.
+    // `baseLang` is the L1 and `targetLang` the L2 (see [LanguageUpdate]) — this
+    // was reporting the L1 as `target_language`, so every language change wrote
+    // the learner's OWN language into the dimension that is supposed to say
+    // what they are learning.
     GoogleAnalytics.setUserProperties(
-      targetLanguage: update.baseLang.langCode,
-      sourceLanguage: userController.profile.userSettings.sourceLanguage ?? '',
+      targetLanguage: update.targetLang.langCode,
+      sourceLanguage: update.baseLang.langCode,
+      cefrLevel: userController.profile.userSettings.cefrLevel.string,
     );
 
     final exclude = [

@@ -13,6 +13,9 @@ class PickLanguageOnboardingStep extends OnboardingStep {
   });
 
   @override
+  double get contentMaxWidth => 840.0;
+
+  @override
   bool get enableGoForward {
     final base = state.baseLanguage;
     final target = state.targetLanguage;

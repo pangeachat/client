@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
@@ -30,11 +32,23 @@ class ChoicesArray<T> extends StatelessWidget {
   final String Function(T)? getDisplayCopy;
   final bool enabled;
 
+  /// The room the choices belong to, for the listening measurement below.
+  ///
+  /// REQUIRED, and deliberately so. This widget is generic and shared, and it
+  /// has no room of its own — only its caller knows one. A room a caller may
+  /// omit is a room a caller will omit, and the emit would then have to invent
+  /// one or go dark, which is how the gap this closes opened in the first
+  /// place. Both current callers have a room in hand; a third that does not
+  /// belongs in the same conversation as the roomless surfaces, not behind a
+  /// default here.
+  final String roomId;
+
   const ChoicesArray({
     super.key,
     required this.choices,
     required this.onPressed,
     required this.selectedChoiceIndex,
+    required this.roomId,
     this.enableAudio = true,
     this.langCode,
     this.onLongPress,
@@ -64,6 +78,27 @@ class ChoicesArray<T> extends StatelessWidget {
                   targetID: null,
                   langCode: langCode!,
                   useCase: TtsUseCase.choices,
+                  // Listening category 6 (#104): audio a DRILL played — a
+                  // tapped answer choice spoken back to the learner.
+                  //
+                  // The category is a constant here, but the ROOM cannot be:
+                  // this widget serves writing assistance and the activity
+                  // orchestrator, so it is threaded in by whichever caller
+                  // built it. The identity is read live rather than captured —
+                  // an account switch mid-playback must not post under a stale
+                  // one. A fresh probe per call: it holds a running
+                  // measurement.
+                  listening: DosageTtsListeningProbe(
+                    category: DosageListeningCategory.practiceAudio,
+                    roomId: roomId,
+                    userId: () =>
+                        MatrixState.pangeaController.matrixState.client.userID,
+                    accessToken: () => MatrixState
+                        .pangeaController
+                        .matrixState
+                        .client
+                        .accessToken,
+                  ),
                 );
               }
             },

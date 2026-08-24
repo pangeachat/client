@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -19,8 +20,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -53,6 +54,15 @@ class CourseObjectivesList extends StatefulWidget {
   /// `Expanded`).
   final bool shrinkWrap;
 
+  /// Render only the "Up next" Mission — the shared resolver's anchor (first
+  /// Mission in the outline until resolution lands). The course page's
+  /// Course-plan section highlight; the full list is its "See all" subpage.
+  final bool upNextOnly;
+
+  /// Mission headers collapse/expand their carousels (the full course plan
+  /// subpage, #8357). Off in previews and the Up-next highlight.
+  final bool collapsibleMissions;
+
   final QuestObjectivesLoader objectivesProvider;
 
   const CourseObjectivesList({
@@ -61,6 +71,8 @@ class CourseObjectivesList extends StatefulWidget {
     this.questId,
     this.hasCompletedActivity,
     this.shrinkWrap = false,
+    this.upNextOnly = false,
+    this.collapsibleMissions = false,
     super.key,
   });
 
@@ -78,10 +90,25 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   int? _availableParticipants;
   StreamSubscription? _availableParticipantsSub;
 
+  /// Attached to the ObjectiveSection holding the pinged activity, so the
+  /// floating ping-bar can tell whether it's on screen and scroll to it.
+  final GlobalKey _pingedSectionKey = GlobalKey();
+
+  /// The pinged activity whose section has been in view — its ping-bar hides
+  /// and never comes back this visit. Per-activity, so a NEW ping landing
+  /// while the plan is open gets its own bar (#8319).
+  String? _seenPingedActivityId;
+
+  bool get _pingedSectionSeen => _seenPingedActivityId == _pingedActivityId;
+
   @override
   void initState() {
     super.initState();
     _loadAvailableParticipants();
+    // The course page stashes the ping asynchronously (it reads the timeline),
+    // usually after this list first builds — rebuild when it lands.
+    CoursePingBadgeCache.instance.addListener(_onLiveStateSourcesChanged);
+    _scrollController.addListener(_checkPingedSectionSeen);
     // Open state is read off the map's discovery cache, which discovery updates
     // out-of-band (async, throttled). Rebuild the instant it changes — a session
     // discovered or removed — so a card turns Open / back to plain live, not only
@@ -108,6 +135,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   @override
   void dispose() {
     DiscoveredSessionsCache.instance.removeListener(_onLiveStateSourcesChanged);
+    CoursePingBadgeCache.instance.removeListener(_onLiveStateSourcesChanged);
     _availableParticipantsSub?.cancel();
     _scrollController.dispose();
     super.dispose();
@@ -115,6 +143,62 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   void _onLiveStateSourcesChanged() {
     if (mounted) setState(() {});
+  }
+
+  /// The activity a course ping pointed at, when it's for THIS course.
+  /// Previews (no room) never match. See [CoursePingBadgeCache].
+  String? get _pingedActivityId {
+    final ping = CoursePingBadgeCache.instance.value;
+    if (ping == null || ping.courseId != widget.room?.id) return null;
+    return ping.activityId;
+  }
+
+  /// Hide the ping-bar for good once the pinged section shows in the
+  /// viewport. Checked on scroll and post-frame; the section not being built
+  /// at all (lazy list, far below the fold) counts as not seen.
+  void _checkPingedSectionSeen() {
+    if (_pingedSectionSeen || _pingedActivityId == null) return;
+    final sectionBox = _pingedSectionKey.currentContext?.findRenderObject();
+    final listBox = context.findRenderObject();
+    if (sectionBox is! RenderBox ||
+        listBox is! RenderBox ||
+        !sectionBox.attached ||
+        !listBox.attached) {
+      return;
+    }
+    final top = sectionBox.localToGlobal(Offset.zero, ancestor: listBox).dy;
+    // Seen once a meaningful slice of the section (or all of it, when the
+    // learner scrolled past) is inside the viewport.
+    if (top < listBox.size.height - 100.0) {
+      setState(() => _seenPingedActivityId = _pingedActivityId);
+    }
+  }
+
+  /// Scroll to the pinged activity's section. The list builds lazily, so an
+  /// unbuilt target has no context to ensureVisible — step down a viewport at
+  /// a time until it mounts, then settle on it.
+  Future<void> _scrollToPinged() async {
+    while (_pingedSectionKey.currentContext == null &&
+        _scrollController.hasClients) {
+      final position = _scrollController.position;
+      if (position.pixels >= position.maxScrollExtent) break;
+      await _scrollController.animateTo(
+        (position.pixels + position.viewportDimension * 0.8).clamp(
+          0.0,
+          position.maxScrollExtent,
+        ),
+        duration: const Duration(milliseconds: 150),
+        curve: Curves.linear,
+      );
+    }
+    final sectionContext = _pingedSectionKey.currentContext;
+    if (sectionContext == null) return;
+    await Scrollable.ensureVisible(
+      sectionContext,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeOut,
+      alignment: 0.1,
+    );
   }
 
   Future<void> _loadAvailableParticipants() async {
@@ -159,7 +243,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   ///    discriminator — [Room.numRemainingRoles] > 0 (seats still empty) →
   ///    [ActivityPinState.ongoingPending] (Waiting), else
   ///    [ActivityPinState.ongoingActive] — and carries the room's roster
-  ///    ([Room.largeCardParticipants] + remaining seats) so the card can draw
+  ///    ([Room.largeCardParticipantIds] + remaining seats) so the card can draw
   ///    the same participant row the map's pending pin does.
   ///  * Otherwise, open sessions others started that the learner can join —
   ///    counted from the map's shared [DiscoveredSessionsCache] (best-effort; the
@@ -169,7 +253,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   ({
     ActivityPinState? state,
     int openSessions,
-    List<LargeCardParticipant> participants,
+    List<String> participants,
     int openSlots,
   })
   _liveStateFor(String activityId) {
@@ -192,7 +276,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             ? ActivityPinState.ongoingPending
             : ActivityPinState.ongoingActive,
         openSessions: 0,
-        participants: live?.largeCardParticipants ?? const [],
+        participants: live?.largeCardParticipantIds ?? const [],
         openSlots: remaining,
       );
     }
@@ -216,111 +300,203 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: widget.objectivesProvider.questLoader,
-      builder: (context, state, _) {
-        switch (state) {
-          case AsyncLoading():
-          case AsyncIdle():
-            return const Center(child: CircularProgressIndicator.adaptive());
-          case AsyncError(error: final error):
-            return _QuestLoadErrorView(
-              error,
-              showAddCourse: widget.room?.isRoomAdmin == true,
-            );
-          case AsyncLoaded():
-            // The overall quest-star bar now lives in the course card header
-            // (above the tabs — [CourseProgressBar]), so it shows on every tab
-            // and in the collapsed mobile peek; the list is just the Missions.
-            // Per-Mission stars still show once the shared rollup resolves; a
-            // preview has no learner progress.
-            final groups = widget.objectivesProvider.filteredObjectiveGroups;
-            if (groups.isEmpty) {
+    return Semantics(
+      label: L10n.of(context).coursePlan,
+      container: true,
+      child: ValueListenableBuilder(
+        valueListenable: widget.objectivesProvider.questLoader,
+        builder: (context, state, _) {
+          switch (state) {
+            case AsyncLoading():
+            case AsyncIdle():
+              return const Center(child: CircularProgressIndicator.adaptive());
+            case AsyncError(error: final error):
               return _QuestLoadErrorView(
-                MissingQuestException(),
+                error,
                 showAddCourse: widget.room?.isRoomAdmin == true,
               );
-            }
+            case AsyncLoaded():
+              // Per-Mission stars still show once the shared rollup resolves; a
+              // preview has no learner progress. (The overall quest-star bar
+              // lives in the course page's Course-plan section.)
+              final allGroups =
+                  widget.objectivesProvider.filteredObjectiveGroups;
+              final anchorId = widget.objectivesProvider.anchorMissionId;
+              final groups = widget.upNextOnly
+                  ? [?widget.objectivesProvider.upNextGroup]
+                  : allGroups;
+              if (groups.isEmpty) {
+                return _QuestLoadErrorView(
+                  MissingQuestException(),
+                  showAddCourse: widget.room?.isRoomAdmin == true,
+                );
+              }
 
-            return ValueListenableBuilder(
-              valueListenable: widget.objectivesProvider.progression,
-              builder: (context, progression, _) {
-                // Scoped to THIS course: the shared resolution spans every
-                // joined course, and Missions are reused across quests (#7771).
-                final hasProgress =
-                    widget.room != null &&
-                    widget.objectivesProvider.hasResolvedProgress;
-                final list = ListView.separated(
-                  controller: widget.shrinkWrap ? null : _scrollController,
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  shrinkWrap: widget.shrinkWrap,
-                  physics: widget.shrinkWrap
-                      ? const NeverScrollableScrollPhysics()
-                      : null,
-                  itemCount: groups.length,
-                  separatorBuilder: (_, _) => const SizedBox(height: 24.0),
-                  itemBuilder: (context, i) {
-                    final group = groups[i];
-                    return ObjectiveSection(
-                      index: i,
-                      group: group,
-                      hasCompletedActivity: widget.hasCompletedActivity,
-                      progress: hasProgress
-                          ? widget.objectivesProvider.missionProgress(
-                              group.objective.id,
-                            )
-                          : null,
-                      onTap: (ref) {
-                        final room = widget.room;
-                        if (room == null) {
-                          // Token-native open; the course context (if any) is kept,
-                          // so the plan closes back to it. See routing.instructions.md.
-                          context.go(
-                            WorkspaceNav.openActivity(
-                              GoRouterState.of(context).uri,
-                              ref.activityId,
-                            ),
-                          );
-                          return;
-                        }
-                        // Immersive in-course open: the token producer drops the
-                        // `left=course` card (and any right panel) and keeps the
-                        // `?m=course:` scope, so the plan takes the card's slot and
-                        // backs out to it. A video hero autostarts (muted).
-                        context.go(
-                          WorkspaceNav.openCourseActivity(
-                            room.id,
-                            ref.activityId,
-                            autoplay:
-                                ref.plan.heroBlock?.isVideo == true ||
-                                ref.plan.heroBlock?.isYoutube == true,
+              return ValueListenableBuilder(
+                valueListenable: widget.objectivesProvider.progression,
+                builder: (context, progression, _) {
+                  // Scoped to THIS course: the shared resolution spans every
+                  // joined course, and Missions are reused across quests (#7771).
+                  final hasProgress =
+                      widget.room != null &&
+                      widget.objectivesProvider.hasResolvedProgress;
+                  // The pinged activity's section, for the card badge and the
+                  // floating ping-bar. A ping for an activity no longer in the
+                  // plan resolves to no badge at all.
+                  final pingedActivityId = _pingedActivityId;
+                  final pingedGroupIndex = pingedActivityId == null
+                      ? -1
+                      : groups.indexWhere(
+                          (g) => g.activities.any(
+                            (a) => a.activityId == pingedActivityId,
                           ),
                         );
-                      },
-                      userStarsByActivity: (activityId) =>
-                          widget.room?.client.userStarsByActivity[activityId] ??
-                          0,
-                      liveStateByActivity: _liveStateFor,
-                      availableParticipants: _availableParticipants,
+                  if (pingedGroupIndex >= 0 && !_pingedSectionSeen) {
+                    // Catch the initially-visible case (and any relayout)
+                    // that the scroll listener alone would miss.
+                    WidgetsBinding.instance.addPostFrameCallback(
+                      (_) => _checkPingedSectionSeen(),
                     );
-                  },
-                );
-                // In a preview the list is embedded in an outer scroll view (shrinkWrap)
-                // with no map behind it, so a wheel can't leak — return it bare. The
-                // standalone course-card panel floats over the map, so capture the wheel
-                // OPAQUELY across the whole panel: the gaps between cards and the
-                // objective headers are hit-transparent, and a wheel there would zoom the
-                // map instead of scrolling the list. See [_claimVerticalScroll].
-                if (widget.shrinkWrap) return list;
-                return Listener(
-                  behavior: HitTestBehavior.opaque,
-                  onPointerSignal: _claimVerticalScroll,
-                  child: list,
-                );
-              },
-            );
-        }
-      },
+                  }
+                  final list = ListView.separated(
+                    controller: widget.shrinkWrap ? null : _scrollController,
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    shrinkWrap: widget.shrinkWrap,
+                    physics: widget.shrinkWrap
+                        ? const NeverScrollableScrollPhysics()
+                        : null,
+                    itemCount: groups.length,
+                    separatorBuilder: (_, _) => const SizedBox(height: 24.0),
+                    itemBuilder: (context, i) {
+                      final group = groups[i];
+                      return ObjectiveSection(
+                        key: i == pingedGroupIndex ? _pingedSectionKey : null,
+                        pingedActivityId: i == pingedGroupIndex
+                            ? pingedActivityId
+                            : null,
+                        collapsible: widget.collapsibleMissions,
+                        isUpNext: group.objective.id == anchorId,
+                        group: group,
+                        hasCompletedActivity: widget.hasCompletedActivity,
+                        progress: hasProgress
+                            ? widget.objectivesProvider.missionProgress(
+                                group.objective.id,
+                              )
+                            : null,
+                        onTap: (ref) {
+                          final room = widget.room;
+                          if (room == null) {
+                            // Token-native open; the course context (if any) is kept,
+                            // so the plan closes back to it. See routing.instructions.md.
+                            context.go(
+                              WorkspaceNav.openActivity(
+                                GoRouterState.of(context).uri,
+                                ref.activityId,
+                              ),
+                            );
+                            return;
+                          }
+                          // Immersive in-course open: the token producer drops the
+                          // `left=course` card (and any right panel) and keeps the
+                          // `?m=course:` scope, so the plan takes the card's slot and
+                          // backs out to it. A video hero autostarts (muted).
+                          context.go(
+                            WorkspaceNav.openCourseActivity(
+                              room.id,
+                              ref.activityId,
+                              autoplay:
+                                  ref.plan.heroBlock?.isVideo == true ||
+                                  ref.plan.heroBlock?.isYoutube == true,
+                            ),
+                          );
+                        },
+                        userStarsByActivity: (activityId) =>
+                            widget
+                                .room
+                                ?.client
+                                .userStarsByActivity[activityId] ??
+                            0,
+                        liveStateByActivity: _liveStateFor,
+                        availableParticipants: _availableParticipants,
+                      );
+                    },
+                  );
+                  // In a preview the list is embedded in an outer scroll view (shrinkWrap)
+                  // with no map behind it, so a wheel can't leak — return it bare. The
+                  // standalone course-card panel floats over the map, so capture the wheel
+                  // OPAQUELY across the whole panel: the gaps between cards and the
+                  // objective headers are hit-transparent, and a wheel there would zoom the
+                  // map instead of scrolling the list. See [_claimVerticalScroll].
+                  if (widget.shrinkWrap) return list;
+                  return Listener(
+                    behavior: HitTestBehavior.opaque,
+                    onPointerSignal: _claimVerticalScroll,
+                    child: Stack(
+                      children: [
+                        list,
+                        // The pinged activity is below the fold: float a bar
+                        // that scrolls to it. It latches hidden once the
+                        // section has been seen (#8319).
+                        if (pingedGroupIndex >= 0 && !_pingedSectionSeen)
+                          Positioned(
+                            bottom: 16.0,
+                            left: 0,
+                            right: 0,
+                            child: Center(
+                              child: _PingedActivityBar(onTap: _scrollToPinged),
+                            ),
+                          ),
+                      ],
+                    ),
+                  );
+                },
+              );
+          }
+        },
+      ),
+    );
+  }
+}
+
+/// The floating "pinged activity below" pill: bell + label + down arrow.
+/// Tapping it scrolls the plan to the pinged activity's section.
+class _PingedActivityBar extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _PingedActivityBar({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: AppConfig.green,
+      elevation: 4.0,
+      borderRadius: BorderRadius.circular(24.0),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(24.0),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 8.0,
+            children: [
+              Icon(
+                Icons.notifications_outlined,
+                size: 18.0,
+                color: Colors.white,
+              ),
+              Text(
+                L10n.of(context).pingedActivity,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Icon(Icons.arrow_downward, size: 18.0, color: Colors.white),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
@@ -340,13 +516,16 @@ class _QuestLoadErrorView extends StatelessWidget {
           child: Column(
             spacing: 12.0,
             children: [
-              Text(
-                showAddCourse
-                    ? L10n.of(context).missingCourseOutlineCta
-                    : L10n.of(context).missingCourseOutline,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.outline,
+              Semantics(
+                container: true,
+                child: Text(
+                  showAddCourse
+                      ? L10n.of(context).missingCourseOutlineCta
+                      : L10n.of(context).missingCourseOutline,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.outline,
+                  ),
                 ),
               ),
               if (showAddCourse)

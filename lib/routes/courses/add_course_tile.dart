@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
+import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 
@@ -11,11 +11,17 @@ class AddCourseTile extends StatelessWidget {
   final VoidCallback? onTap;
   final bool expanded;
 
+  /// Someone is knocking on this course and the viewer is an admin who can act
+  /// on it — the avatar wears the red "!" badge, outranking the course-ping
+  /// bell. Supplied by [AddCourseTileList], which watches the member list.
+  final bool hasKnockingUsers;
+
   const AddCourseTile({
     super.key,
     required this.content,
     this.onTap,
     this.expanded = false,
+    this.hasKnockingUsers = false,
   });
 
   @override
@@ -31,11 +37,18 @@ class AddCourseTile extends StatelessWidget {
 
     // An invited course hides its member/level chips, so the participant count
     // would announce detail that isn't on screen — lead with the state instead.
-    final label = invited
+    final courseLabel = invited
         ? '$title, ${L10n.of(context).invited}'
         : members != null
         ? '$title, ${L10n.of(context).countParticipants(members)}'
         : title;
+
+    // The knock badge is a bare icon nested inside the tile's own labeled
+    // button node, so the state rides the tile label as well — the same way
+    // `invited` does — rather than relying on the nested node being announced.
+    final label = hasKnockingUsers
+        ? '$courseLabel, ${L10n.of(context).aUserIsKnocking}'
+        : courseLabel;
 
     return Material(
       type: MaterialType.transparency,
@@ -67,6 +80,7 @@ class AddCourseTile extends StatelessWidget {
                       unreadCoursePingEvent: unreadCoursePingEvent,
                       courseChildrenIds: courseChildrenIds,
                       invite: invited,
+                      hasKnockingUsers: hasKnockingUsers,
                     ),
                     Expanded(
                       child: Column(
@@ -103,18 +117,7 @@ class AddCourseTile extends StatelessWidget {
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
                               if (invited)
-                                CourseInfoChip(
-                                  icon: Icons.mail,
-                                  text: L10n.of(context).invited,
-                                  fontSize: 12.0,
-                                  iconSize: 12.0,
-                                  highlightColor: AppConfig.goldByTheme(
-                                    context,
-                                  ),
-                                  foregroundColor: AppConfig.onGoldByTheme(
-                                    context,
-                                  ),
-                                ),
+                                ExcludeSemantics(child: InvitedChip()),
                               if (members != null && !invited)
                                 Semantics(
                                   label: L10n.of(

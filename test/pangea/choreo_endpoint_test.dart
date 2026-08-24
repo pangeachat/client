@@ -13,6 +13,7 @@ import 'package:fluffychat/features/activity_sessions/activity_rating_request.da
 import 'package:fluffychat/features/activity_sessions/activity_rating_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_request_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
+import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
@@ -257,6 +258,37 @@ void main() {
         lemmaLang: 'es',
         partOfSpeech: 'adv',
         messageInfo: {},
+        mock: true,
+      ).toJson();
+
+      final Requests req = Requests(accessToken: authToken);
+      final Response res = await req.post(
+        url: "$choreoApi/lemma_definition",
+        body: request,
+      );
+
+      // Ensure mock response is valid and compatible with response model
+      assert(res.statusCode == 200);
+      final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
+      LemmaInfoResponse.fromJson(json);
+    });
+
+    test("Lemma dictionary endpoint feedback test", () async {
+      // Contract check for the corrected feedback shape: the server's
+      // LemmaMeaningRequest.feedback expects [{feedback, content, score?}]
+      final Map<String, dynamic> request = LemmaInfoRequest(
+        lemma: 'ahora',
+        userL1: 'en',
+        lemmaLang: 'es',
+        partOfSpeech: 'adv',
+        messageInfo: {},
+        feedback: [
+          LLMFeedbackModel(
+            feedback: 'The emoji does not match the meaning of this word',
+            content: LemmaInfoResponse(emoji: ['🍇'], meaning: 'now'),
+            contentToJson: (c) => c.toJson(),
+          ),
+        ],
         mock: true,
       ).toJson();
 

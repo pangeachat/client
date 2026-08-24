@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,6 @@ import 'package:app_links/app_links.dart';
 import 'package:collection/collection.dart';
 import 'package:desktop_notifications/desktop_notifications.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:matrix/encryption.dart';
 import 'package:matrix/matrix.dart';
@@ -21,6 +19,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
@@ -31,13 +30,12 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/utils/client_manager.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/screen_size_warning_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../config/setting_keys.dart';
 import '../routes/settings/settings_device/key_verification_dialog.dart';
 import '../utils/account_bundles.dart';
@@ -79,8 +77,32 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   String? activeBundle;
   // #Pangea
   static late PangeaController pangeaController;
+
+  /// Whether [pangeaController] has been assigned yet.
+  ///
+  /// It is assigned in [initState], after `initMatrix()`, but widgets build —
+  /// and repos are reached from `build()` — before that runs. Reading the
+  /// field first throws `LateInitializationError`, which escapes any caller
+  /// that is not already inside a try/catch.
+  ///
+  /// Dart exposes no initialization check for a `late` field, so the read is
+  /// the test. Caught untyped on purpose: the error the runtime throws is
+  /// `LateError` from `dart:_internal`, which application code cannot name.
+  static bool get isPangeaControllerInitialized {
+    try {
+      pangeaController;
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   static PangeaAnyState pAnyState = PangeaAnyState();
-  late StreamSubscription? _uriListener;
+
+  /// Not `late`: [dispose] cancels it unconditionally, so an [initState] that
+  /// never reached its assignment would crash teardown with a
+  /// LateInitializationError that buries whatever actually failed.
+  StreamSubscription? _uriListener;
 
   final Map<String, AnalyticsDataService> _analyticsServices = {};
   final Map<String, ActivityAutoSaveService> _activityAutoSaveServices = {};
@@ -92,6 +114,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// finishes, so a queued rebuild reads the closing service rather than
   /// creating a fresh one that would outlive the account and leak.
   final Map<String, Future<void>> _disposingServices = {};
+
+  /// Client names currently unwinding from a `loggedOut` event: from the
+  /// moment the state change is observed until the client has been removed
+  /// from [Matrix.clients] and its subscriptions cancelled ([_registerSubs]'s
+  /// `loggedOut` branch below). That teardown awaits unrelated async work
+  /// (e.g. the analytics update in `handleLoginStateChange`) before it even
+  /// starts, so `client.isLogged() == false` alone does not prove the client
+  /// is safe to hand back to a new login — [getLoginClient] must never reuse
+  /// one still in this set, or the new login silently loses its
+  /// `onLoginStateChanged` listener and the login dialog never closes
+  /// (#8514).
+  final Set<String> _clientsTearingDown = {};
   // Pangea#
   SharedPreferences get store => widget.store;
 
@@ -104,18 +138,43 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   ValueNotifier<int> notifPermissionNotifier = ValueNotifier(0);
   // Pangea#
 
+  // #Pangea
+  /// The account [client] last resolved, retained so the getter keeps its
+  /// non-null contract while [Matrix.clients] holds none.
+  ///
+  /// Single-account logout empties that list (the `loggedOut` branch of
+  /// [_registerSubs]) and routes straight to `/home`, so every widget building
+  /// that route — auth guards, presence builders, the lifecycle observer —
+  /// reads [client] against an empty list. Handing back the account that just
+  /// logged out is truthful rather than silent: `isLogged()` is false, so
+  /// callers gate to the login screen exactly as they would for any signed-out
+  /// account, instead of the getter throwing `Bad state: No element` (#8368).
+  ///
+  /// Only ever a last resort — a live account in [Matrix.clients] always wins,
+  /// so the next login is never shadowed by the account it replaced.
+  Client? _lastResolvedClient;
+  // Pangea#
+
   Client get client {
     if (_activeClient < 0 || _activeClient >= widget.clients.length) {
       // #Pangea
-      currentBundle!.first!.homeserver = AppConfig.defaultHomeserverUri;
+      final fallback = currentBundle?.firstOrNull ?? _lastResolvedClient;
+      if (fallback == null) {
+        // Unreachable via ClientManager.getClients, which always yields at
+        // least one client. Named loudly so it can never read as the empty
+        // bundle above.
+        throw StateError('MatrixState.client read before any client existed');
+      }
+      fallback.homeserver = AppConfig.defaultHomeserverUri;
+      return _lastResolvedClient = fallback;
       // Pangea#
-      return currentBundle!.first!;
     }
 
     // #Pangea
-    widget.clients[_activeClient].homeserver = AppConfig.defaultHomeserverUri;
+    final activeClient = widget.clients[_activeClient];
+    activeClient.homeserver = AppConfig.defaultHomeserverUri;
+    return _lastResolvedClient = activeClient;
     // Pangea#
-    return widget.clients[_activeClient];
   }
 
   // #Pangea
@@ -213,8 +272,25 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   AudioPlayer? audioPlayer;
   final ValueNotifier<String?> voiceMessageEventId = ValueNotifier(null);
 
+  /// Whether [getLoginClient] would hand back the current [client] instead
+  /// of creating a fresh login candidate. Exposed for tests; see
+  /// [_clientsTearingDown].
+  @visibleForTesting
+  bool get canReuseClientForLogin =>
+      widget.clients.isNotEmpty &&
+      !client.isLogged() &&
+      !_clientsTearingDown.contains(client.clientName);
+
+  /// Test-only: marks [clientName] as unwinding a `loggedOut` event, exactly
+  /// as the listener installed by [_registerSubs] does before its async
+  /// teardown — lets tests exercise the [getLoginClient] race guard without
+  /// a live `loggedOut` stream event (#8514).
+  @visibleForTesting
+  void markClientTearingDownForTest(String clientName) =>
+      _clientsTearingDown.add(clientName);
+
   Future<Client> getLoginClient() async {
-    if (widget.clients.isNotEmpty && !client.isLogged()) {
+    if (canReuseClientForLogin) {
       return client;
     }
     final candidate = _loginClientCandidate ??=
@@ -227,15 +303,25 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
               .first
               .then((_) async {
                 // #Pangea
+                // The `client` getter (and anything handleLoginStateChange
+                // reads through it, e.g. PangeaController._onLogin) must
+                // resolve to THIS candidate before handleLoginStateChange
+                // runs — added to Matrix.clients and made active first.
+                // Otherwise, on a fresh single-account login, Matrix.clients
+                // is still empty at this point and `client` falls back to
+                // the previous (already logged-out, torn-down) account, so
+                // _onLogin's network calls hang against a dead client and
+                // the login dialog never closes (#8514).
+                if (!widget.clients.contains(_loginClientCandidate)) {
+                  widget.clients.add(_loginClientCandidate!);
+                }
+                setActiveClient(_loginClientCandidate);
                 await MatrixState.pangeaController.handleLoginStateChange(
                   LoginState.loggedIn,
                   _loginClientCandidate!.userID,
                   context,
                 );
                 // Pangea#
-                if (!widget.clients.contains(_loginClientCandidate)) {
-                  widget.clients.add(_loginClientCandidate!);
-                }
                 ClientManager.addClientNameToStore(
                   _loginClientCandidate!.clientName,
                   store,
@@ -350,7 +436,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setAppLanguage();
       _setLanguageListener();
-      _showScreenSizeDialog();
+      _checkScreenSize();
       // Debug-only: `?devlogin=1` signs the local build into the test account,
       // bypassing the canvas login form. No-op without the param. See
       // dev_login.dart / matrix-auth.instructions.md.
@@ -361,60 +447,41 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   // #Pangea
-  bool _showingScreenSizeDialog = false;
-  // Tracks whether the screen was too small on the last check. The popup is
-  // only shown when transitioning from "big enough" → "too small" (or on the
-  // initial frame check), so resizing from small → big never triggers it.
-  bool _screenWasTooSmall = false;
+  final ScreenSizeWarning _screenSizeWarning = ScreenSizeWarning();
+  Timer? _screenSizeTimer;
+
   @override
   void didChangeMetrics() {
-    _showScreenSizeDialog();
+    // Debounced: a resize (or an on-screen keyboard opening/closing) fires a
+    // burst of metrics changes, and only the size it settles on is meaningful.
+    _screenSizeTimer?.cancel();
+    _screenSizeTimer = Timer(kScreenSizeSettleDelay, _checkScreenSize);
     super.didChangeMetrics();
   }
 
-  Future<void> _showScreenSizeDialog() async {
-    if (!kIsWeb) return;
+  void _checkScreenSize() {
+    if (!kIsWeb || !mounted) return;
 
-    final height = MediaQuery.heightOf(context);
-    if (height > 550) {
-      // Screen is now big enough — reset so a future shrink can show the popup.
-      _screenWasTooSmall = false;
-      return;
-    }
-
-    // Screen is too small. Guard against: dialog already open, or screen was
-    // already too small (i.e. we're mid-resize within the too-small range).
-    if (_showingScreenSizeDialog || _screenWasTooSmall) return;
-
-    // Mark immediately so any didChangeMetrics calls fired during the navigator
-    // retry loop (e.g. mid-expansion resize events) are blocked by the guard
-    // above and don't trigger a spurious dialog show.
-    _screenWasTooSmall = true;
-
-    // The navigator may not be ready on the initial frame — retry next frame,
-    // resetting the flag so the retry can re-evaluate height and navigator.
+    // The navigator may not be mounted yet on the initial frame — retry next
+    // frame, but only while the window is short enough to warrant a warning.
     final navigatorContext =
         FluffyChatApp.router.routerDelegate.navigatorKey.currentContext;
-    if (navigatorContext == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _screenWasTooSmall = false;
-        _showScreenSizeDialog();
-      });
+    if (navigatorContext == null && screenIsTooShort(context)) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _checkScreenSize());
       return;
     }
 
-    _showingScreenSizeDialog = true;
-    await showOkAlertDialog(
-      context: navigatorContext,
-      title: L10n.of(context).screenSizeWarning,
-    );
-    _showingScreenSizeDialog = false;
+    _screenSizeWarning.onWindowHeight(windowHeight(context), navigatorContext);
   }
 
   StreamSubscription? _languageListener;
   StreamSubscription? _appLanguageSettingsListener;
   Future<void> _setLanguageListener() async {
     await pangeaController.userController.initialize();
+    // The initState call to _setAppLanguage ran before initialize() resolved,
+    // so it read Profile.emptyProfile and never saw the real user settings.
+    // Re-apply now that the actual profile (and the toggle) are loaded.
+    _setAppLanguage();
     GrammarConstructsProvider.fetchFeaturesAndTags();
 
     _languageListener?.cancel();
@@ -502,6 +569,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       state,
     ) async {
       // #Pangea
+      // Mark BEFORE the handleLoginStateChange await below, which can take a
+      // while (e.g. the analytics update) — getLoginClient must refuse to
+      // reuse this client for the whole unwind, not just once teardown
+      // itself starts (#8514).
+      if (state == LoginState.loggedOut) {
+        _clientsTearingDown.add(c.clientName);
+      }
       // A failure reporting the state change (e.g. Firebase analytics) must NOT
       // skip the loggedOut teardown below — otherwise the account's services +
       // subscriptions (and its dosage tracker) leak on logout.
@@ -522,6 +596,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         ClientManager.removeClientNameFromStore(c.clientName, store);
         // #Pangea
         // InitWithRestoreExtension.deleteSessionBackup(name);
+        _clientsTearingDown.remove(c.clientName);
         // Pangea#
       }
       if (loggedInWithMultipleClients && state != LoginState.loggedIn) {
@@ -595,14 +670,27 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// Never throws or blocks the logout.
   Future<void> flushAccountTelemetry(String clientName) async {
     try {
-      final userId = _analyticsServices[clientName]?.accountUserId;
+      final service = _analyticsServices[clientName];
+      final userId = service?.accountUserId;
       if (userId == null || userId.isEmpty) return;
       // Tombstoned, non-destructive flush: KEEPS the tracker (so a failed logout
       // leaves it live) but blocks a new span from opening during the awaited
       // POST — which would otherwise flush only after logout kills the bearer.
-      await DosageEngagementTracker.flushForLogout(
-        userId,
-      ).timeout(const Duration(seconds: 5));
+      //
+      // The audio buffer gets the same treatment and, unlike the span, it is
+      // handed the bearer explicitly: a listening observation has no Matrix
+      // artefact to re-derive it from, so this is the last moment it can be
+      // delivered at all. Both are bounded and independent — one timing out must
+      // not cost the other its flush.
+      await Future.wait([
+        DosageEngagementTracker.flushForLogout(
+          userId,
+        ).timeout(const Duration(seconds: 5)).catchError((_) {}),
+        DosageAudioBuffer.flushForLogout(
+          userId,
+          accessToken: service?.accountAccessToken,
+        ).timeout(const Duration(seconds: 5)).catchError((_) {}),
+      ]);
     } catch (_) {
       // Telemetry is best-effort; a flush failure must never block logout.
     }
@@ -713,6 +801,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     _languageListener?.cancel();
     _appLanguageSettingsListener?.cancel();
     _uriListener?.cancel();
+    _screenSizeTimer?.cancel();
     notifPermissionNotifier.dispose();
     // Pangea#
 
@@ -722,32 +811,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return Provider(create: (_) => this, child: widget.child);
-  }
-
-  Future<void> dehydrateAction(BuildContext context) async {
-    final response = await showOkCancelAlertDialog(
-      context: context,
-      isDestructive: true,
-      title: L10n.of(context).dehydrate,
-      message: L10n.of(context).dehydrateWarning,
-    );
-    if (response != OkCancelResult.ok) {
-      return;
-    }
-    final result = await showFutureLoadingDialog(
-      context: context,
-      future: client.exportDump,
-    );
-    final export = result.result;
-    if (export == null) return;
-
-    final exportBytes = Uint8List.fromList(const Utf8Codec().encode(export));
-
-    final exportFileName =
-        'fluffychat-export-${DateFormat(DateFormat.YEAR_MONTH_DAY).format(DateTime.now())}.fluffybackup';
-
-    final file = MatrixFile(bytes: exportBytes, name: exportFileName);
-    file.save(context);
   }
 
   // #Pangea

@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/instructions/instruction_settings.dart';
@@ -197,10 +199,9 @@ class UserSettings {
 
 /// The user's language tool settings.
 class UserToolSettings {
-  // Keys of the retired enableTTS/autoReadAloudMessages toggles, kept as
-  // read-fallbacks so stored profiles seed the per-surface audio toggles.
+  // Key of the retired enableTTS toggle, kept as a read-fallback so stored
+  // profiles seed the words/choices audio toggles.
   static const _legacyEnableTTSKey = 'ToolSetting.enableTTS';
-  static const _legacyAutoReadAloudKey = 'autoReadAloudMessages';
 
   final bool interactiveTranslator;
   final bool interactiveGrammar;
@@ -209,8 +210,14 @@ class UserToolSettings {
   final bool autoIGC;
   final bool audioWords;
   final bool audioChoices;
-  final bool audioIncomingMessages;
-  final bool enableAutocorrect;
+  final bool audioOnNewMessage;
+  final bool audioOnMessageClick;
+
+  /// The user's explicit autocorrect choice, or null when they have never
+  /// touched the toggle. Kept unresolved in storage so each device applies its
+  /// own [enableAutocorrectPlatformDefault] — resolving at write time would
+  /// sync an Android "on" to the same account's iOS devices.
+  final bool? enableAutocorrectChoice;
   final bool showDeveloperOptions;
 
   const UserToolSettings({
@@ -221,10 +228,21 @@ class UserToolSettings {
     this.autoIGC = true,
     this.audioWords = true,
     this.audioChoices = true,
-    this.audioIncomingMessages = false,
-    this.enableAutocorrect = false,
+    this.audioOnNewMessage = true,
+    this.audioOnMessageClick = true,
+    bool? enableAutocorrect,
     this.showDeveloperOptions = false,
-  });
+  }) : enableAutocorrectChoice = enableAutocorrect;
+
+  /// Device autocorrect defaults on only where the composer can tell the
+  /// keyboard which language to correct in — Android, via `hintLocales`
+  /// (#8466). iOS stays off until #8465 gives it a language-targeted keyboard.
+  /// Reads [defaultTargetPlatform] rather than dart:io so tests can override it.
+  static bool get enableAutocorrectPlatformDefault =>
+      !kIsWeb && defaultTargetPlatform == TargetPlatform.android;
+
+  bool get enableAutocorrect =>
+      enableAutocorrectChoice ?? enableAutocorrectPlatformDefault;
 
   factory UserToolSettings.fromJson(
     Map<String, dynamic> json,
@@ -237,9 +255,16 @@ class UserToolSettings {
     autoIGC: json[UserConstants.autoIGC] ?? true,
     audioWords: json["audioWords"] ?? json[_legacyEnableTTSKey] ?? true,
     audioChoices: json["audioChoices"] ?? json[_legacyEnableTTSKey] ?? true,
-    audioIncomingMessages:
-        json["audioIncomingMessages"] ?? json[_legacyAutoReadAloudKey] ?? false,
-    enableAutocorrect: json["enableAutocorrect"] ?? false,
+    // Deliberately not seeded from the retired audioIncomingMessages key: it
+    // was opt-in default-off, so a stored false is almost always the old
+    // default rather than a choice, and #8264 turns message audio on for
+    // everyone.
+    audioOnNewMessage: json["audioOnNewMessage"] ?? true,
+    audioOnMessageClick: json["audioOnMessageClick"] ?? true,
+    // Before #8466 every saved profile carried this key (default-off was
+    // written back), so a stored false is kept as the user's choice — only
+    // profiles without the key pick up the platform default.
+    enableAutocorrect: json["enableAutocorrect"] as bool?,
     showDeveloperOptions: json["showDeveloperOptions"] ?? false,
   );
 
@@ -252,8 +277,11 @@ class UserToolSettings {
     data[UserConstants.autoIGC] = autoIGC;
     data["audioWords"] = audioWords;
     data["audioChoices"] = audioChoices;
-    data["audioIncomingMessages"] = audioIncomingMessages;
-    data["enableAutocorrect"] = enableAutocorrect;
+    data["audioOnNewMessage"] = audioOnNewMessage;
+    data["audioOnMessageClick"] = audioOnMessageClick;
+    if (enableAutocorrectChoice != null) {
+      data["enableAutocorrect"] = enableAutocorrectChoice;
+    }
     data["showDeveloperOptions"] = showDeveloperOptions;
     return data;
   }
@@ -296,7 +324,8 @@ class UserToolSettings {
     bool? autoIGC,
     bool? audioWords,
     bool? audioChoices,
-    bool? audioIncomingMessages,
+    bool? audioOnNewMessage,
+    bool? audioOnMessageClick,
     bool? enableAutocorrect,
     bool? showDeveloperOptions,
   }) {
@@ -309,9 +338,9 @@ class UserToolSettings {
       autoIGC: autoIGC ?? this.autoIGC,
       audioWords: audioWords ?? this.audioWords,
       audioChoices: audioChoices ?? this.audioChoices,
-      audioIncomingMessages:
-          audioIncomingMessages ?? this.audioIncomingMessages,
-      enableAutocorrect: enableAutocorrect ?? this.enableAutocorrect,
+      audioOnNewMessage: audioOnNewMessage ?? this.audioOnNewMessage,
+      audioOnMessageClick: audioOnMessageClick ?? this.audioOnMessageClick,
+      enableAutocorrect: enableAutocorrect ?? enableAutocorrectChoice,
       showDeveloperOptions: showDeveloperOptions ?? this.showDeveloperOptions,
     );
   }
@@ -328,8 +357,9 @@ class UserToolSettings {
         other.autoIGC == autoIGC &&
         other.audioWords == audioWords &&
         other.audioChoices == audioChoices &&
-        other.audioIncomingMessages == audioIncomingMessages &&
-        other.enableAutocorrect == enableAutocorrect &&
+        other.audioOnNewMessage == audioOnNewMessage &&
+        other.audioOnMessageClick == audioOnMessageClick &&
+        other.enableAutocorrectChoice == enableAutocorrectChoice &&
         other.showDeveloperOptions == showDeveloperOptions;
   }
 
@@ -342,8 +372,9 @@ class UserToolSettings {
     autoIGC.hashCode,
     audioWords.hashCode,
     audioChoices.hashCode,
-    audioIncomingMessages.hashCode,
-    enableAutocorrect.hashCode,
+    audioOnNewMessage.hashCode,
+    audioOnMessageClick.hashCode,
+    enableAutocorrectChoice.hashCode,
     showDeveloperOptions.hashCode,
   ]);
 }

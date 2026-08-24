@@ -35,6 +35,7 @@ void main() {
     ValueChanged<bool>? onCavityFullChanged,
     double keyboardInset = 0.0,
     Widget Function(Widget child)? chatsBadgeBuilder,
+    Widget Function(Widget child)? coursesBadgeBuilder,
     bool settle = true,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
@@ -63,6 +64,7 @@ void main() {
             onCavityFullChanged: onCavityFullChanged,
             keyboardInset: keyboardInset,
             chatsBadgeBuilder: chatsBadgeBuilder,
+            coursesBadgeBuilder: coursesBadgeBuilder,
           ),
         ),
       ),
@@ -114,7 +116,7 @@ void main() {
       );
       final chatsButton = tester.widget<IconButton>(
         find.ancestor(
-          of: find.byTooltip('All chats'),
+          of: find.byTooltip(RegExp('All chats*')),
           matching: find.byType(IconButton),
         ),
       );
@@ -142,8 +144,12 @@ void main() {
         activeSection: AppSection.world,
         onSectionTap: tapped.add,
       );
-
-      await tester.tap(find.byTooltip('All chats'));
+      await tester.tap(
+        find.ancestor(
+          of: find.byTooltip(RegExp('All chats*')),
+          matching: find.byType(IconButton),
+        ),
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.byTooltip('Courses'));
       await tester.pumpAndSettle();
@@ -181,7 +187,10 @@ void main() {
         expect(
           find.descendant(
             of: find.byKey(badgeKey),
-            matching: find.byTooltip('All chats'),
+            matching: find.ancestor(
+              of: find.byTooltip(RegExp('All chats*')),
+              matching: find.byType(IconButton),
+            ),
           ),
           findsOneWidget,
           reason: 'the badge must enclose the Chats rail item',
@@ -194,6 +203,43 @@ void main() {
             ),
             findsNothing,
             reason: 'only the Chats item carries the unread badge',
+          );
+        }
+      },
+    );
+
+    testWidgets(
+      'the injected badge wraps the Courses item — and only the Courses item '
+      '(#8190)',
+      (tester) async {
+        // Same seam as the Chats badge, for the invited-course envelope the
+        // shell injects when a course invitation is pending.
+        const badgeKey = ValueKey('invitedCourseBadge');
+        await pumpNav(
+          tester,
+          coursesBadgeBuilder: (child) =>
+              KeyedSubtree(key: badgeKey, child: child),
+        );
+
+        expect(
+          find.descendant(
+            of: find.byKey(badgeKey),
+            matching: find.ancestor(
+              of: find.byTooltip('Courses'),
+              matching: find.byType(IconButton),
+            ),
+          ),
+          findsOneWidget,
+          reason: 'the badge must enclose the Courses rail item',
+        );
+        for (final other in ['World', 'All chats', 'Add a course']) {
+          expect(
+            find.descendant(
+              of: find.byKey(badgeKey),
+              matching: find.byTooltip(other),
+            ),
+            findsNothing,
+            reason: 'only the Courses item carries the invite badge',
           );
         }
       },
@@ -212,7 +258,12 @@ void main() {
             Padding(padding: const EdgeInsets.all(2.0), child: child),
       );
 
-      await tester.tap(find.byTooltip('All chats'));
+      await tester.tap(
+        find.ancestor(
+          of: find.byTooltip(RegExp('All chats*')),
+          matching: find.byType(IconButton),
+        ),
+      );
       await tester.pumpAndSettle();
 
       expect(tapped, [AppSection.chats]);
@@ -534,7 +585,12 @@ void main() {
 
         // The rail item must reopen it at a usable height, NOT the
         // remembered zero (the #7510 stuck state).
-        await tester.tap(find.byTooltip('All chats'));
+        await tester.tap(
+          find.ancestor(
+            of: find.byTooltip(RegExp('All chats*')),
+            matching: find.byType(IconButton),
+          ),
+        );
         await tester.pumpAndSettle();
         expect(
           cavityHeightOf(tester),
@@ -863,7 +919,12 @@ void main() {
 
         // Tapping the still-active rail item re-expands to the remembered
         // (full) height rather than the section default (half).
-        await tester.tap(find.byTooltip('All chats'));
+        await tester.tap(
+          find.ancestor(
+            of: find.byTooltip(RegExp('All chats*')),
+            matching: find.byType(IconButton),
+          ),
+        );
         await tester.pumpAndSettle();
         expect(cavityHeightOf(tester), closeTo(maxHeightPx, 1.0));
       },
@@ -883,7 +944,12 @@ void main() {
 
       expect(cavityHeightOf(tester), greaterThan(0.0));
 
-      await tester.tap(find.byTooltip('All chats'));
+      await tester.tap(
+        find.ancestor(
+          of: find.byTooltip(RegExp('All chats*')),
+          matching: find.byType(IconButton),
+        ),
+      );
       await tester.pumpAndSettle();
 
       expect(cavityHeightOf(tester), 0.0);
@@ -1045,17 +1111,20 @@ void main() {
       expect(cavityHeightOf(tester), closeTo(maxHeightPx * 0.5 - 200.0, 1.0));
     });
 
-    testWidgets('a keyboard taller than the cavity clamps to zero, not '
-        'negative', (tester) async {
+    testWidgets('a keyboard taller than the cavity stops at the floor, '
+        'keeping the surface mounted', (tester) async {
       await pumpNav(
         tester,
         cavityChild: const Text('Chat list'),
         cavityKey: 'chats',
         maxHeightFraction: 0.75,
-        // Half height is 300px; a 500px inset would drive it negative.
+        // Half height is 300px; a 500px inset would trim past zero. The floor
+        // holds instead: trimming to nothing unmounts the hosted surface, and
+        // with it whatever interaction summoned the keyboard (#8072).
         keyboardInset: 500.0,
       );
-      expect(cavityHeightOf(tester), 0.0);
+      expect(cavityHeightOf(tester), closeTo(96.0, 1.0));
+      expect(find.text('Chat list'), findsOneWidget);
     });
   });
 
@@ -1145,17 +1214,69 @@ void main() {
       expect(cavityHeightOf(tester), closeTo(128.0, 1.0));
     });
 
-    testWidgets('leaves an unfocused cavity to the plain #7754 trim', (
+    testWidgets('holds the floor — but does not grow — without cavity focus', (
       tester,
     ) async {
-      // The search bar riding ABOVE the widget owns this keyboard; nothing in
-      // the cavity is focused, so the cavity neither grows nor holds a floor.
+      // A keyboard whose owner is outside the cavity's focus subtree (the
+      // search bar above the widget, or a hosted dropdown's overlay menu).
+      // The cavity must not grow to full — that height belongs to an
+      // in-cavity input — but it must keep the floor: the keyboard's owner
+      // can still be anchored inside (the dropdown case below).
       await pumpCourseCavity(tester, keyboardInset: 300.0);
-      expect(cavityHeightOf(tester), 0.0);
+      expect(cavityHeightOf(tester), closeTo(96.0, 1.0));
+      expect(find.byType(TextField), findsOneWidget);
+    });
+
+    testWidgets('keeps a hosted dropdown\'s menu open when a keyboard trims '
+        'the cavity', (tester) async {
+      // Kel's reopen of #8072: the add-course language dropdown opens an
+      // overlay-route menu with its own search field. That field's keyboard
+      // trims the cavity; focus lives in the OVERLAY, not the cavity subtree,
+      // so the focus-gated floor didn't hold — the trim unmounted the hosted
+      // flow, disposing the menu's anchor and dismissing menu + keyboard.
+      final dropdown = DropdownButton<String>(
+        value: 'de',
+        items: const [
+          DropdownMenuItem(value: 'de', child: Text('German')),
+          DropdownMenuItem(value: 'el', child: Text('Greek')),
+        ],
+        onChanged: (_) {},
+      );
+      Future<void> pumpDropdownCavity(
+        WidgetTester tester, {
+        double keyboardInset = 0.0,
+      }) => pumpNav(
+        tester,
+        cavityChild: dropdown,
+        cavityKey: 'course-a',
+        cavityContextId: 'course-a',
+        cavityDefaultsToPeek: true,
+        maxHeightFraction: 0.75,
+        keyboardInset: keyboardInset,
+      );
+
+      await pumpDropdownCavity(tester);
+      await tester.tap(find.text('German'));
+      await tester.pumpAndSettle();
+      // Menu open: the unselected option is visible in the overlay.
+      expect(find.text('Greek'), findsOneWidget);
+
+      // The menu's search field summons a keyboard taller than the peek.
+      await pumpDropdownCavity(tester, keyboardInset: 500.0);
+      expect(
+        find.text('Greek'),
+        findsOneWidget,
+        reason: 'the trim must not unmount the menu\'s anchor',
+      );
+      expect(find.byType(DropdownButton<String>), findsOneWidget);
     });
   });
 
-  group('full-height reporting (#7697)', () {
+  group('full-height reporting (#7697, #8247)', () {
+    // The report is LEVEL-triggered: the latched value is re-sent after every
+    // frame, so these assert the LAST report, not the exact sequence. The
+    // repeats are what keeps the shell's process-global honest across a
+    // dispose (#8247, below).
     testWidgets('reports full only on settle, and toggles back on collapse', (
       tester,
     ) async {
@@ -1167,18 +1288,18 @@ void main() {
         maxHeightFraction: 0.75,
         onCavityFullChanged: reports.add,
       );
-      // Opens at half — never full — so nothing is reported yet.
-      expect(reports, isEmpty);
+      // Opens at half — never full — so it reports not-full.
+      expect(reports.last, isFalse);
 
-      // Handle tap settles at full: one true report.
+      // Handle tap settles at full.
       await tester.tap(handleFinder());
       await tester.pumpAndSettle();
-      expect(reports, [true]);
+      expect(reports.last, isTrue);
 
-      // Handle tap settles back at half: reports false. Only real changes fire.
+      // Handle tap settles back at half.
       await tester.tap(handleFinder());
       await tester.pumpAndSettle();
-      expect(reports, [true, false]);
+      expect(reports.last, isFalse);
     });
 
     testWidgets('an ephemeral tap-outside collapse reports not-full', (
@@ -1196,12 +1317,40 @@ void main() {
       );
       await tester.tap(handleFinder()); // -> full
       await tester.pumpAndSettle();
-      expect(reports, [true]);
+      expect(reports.last, isTrue);
 
       // Tap outside collapses ephemerally — the sheet is no longer full.
       await tester.tapAt(const Offset(200, 20));
       await tester.pumpAndSettle();
-      expect(reports, [true, false]);
+      expect(reports.last, isFalse);
+    });
+
+    testWidgets('a fresh mount re-asserts not-full after a full sheet was '
+        'disposed (#8247)', (tester) async {
+      final reports = <bool>[];
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Activity plan'),
+        cavityKey: 'activity:a',
+        maxHeightFraction: 0.75,
+        onCavityFullChanged: reports.add,
+      );
+      await tester.tap(handleFinder()); // -> full
+      await tester.pumpAndSettle();
+      expect(reports.last, isTrue);
+
+      // Launching the session drops the plan token (`liveView` siblings), so
+      // the widget goes away WITHOUT a close: didUpdateWidget's closedNow
+      // branch never runs and the State is disposed still latched full.
+      await unmountNav(tester);
+      reports.clear();
+
+      // Back at the bare map: a genuinely fresh State with no cavity. It must
+      // assert not-full rather than assume the last instance left it that way
+      // — otherwise the shell's ActivitySheetFull stays true and the analytics
+      // bar renders at opacity 0 for the rest of the process.
+      await pumpNav(tester, onCavityFullChanged: reports.add);
+      expect(reports.last, isFalse);
     });
   });
 }

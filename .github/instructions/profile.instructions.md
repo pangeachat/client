@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/pangea/user/user_model.dart, lib/pangea/user/user_controller.dart, lib/pangea/user/public_profile_model.dart, lib/pangea/user/analytics_profile_model.dart, lib/pangea/chat_settings/utils/bot_client_extension.dart, lib/pangea/chat_settings/models/bot_options_model.dart, lib/pangea/bot/utils/bot_room_extension.dart, lib/pangea/bot/widgets/bot_chat_settings_dialog.dart, lib/pangea/learning_settings/**, lib/pangea/common/controllers/pangea_controller.dart"
+applyTo: "lib/features/user/user_model.dart, lib/features/user/user_controller.dart, lib/features/user/public_profile_model.dart, lib/features/user/analytics_profile_model.dart, lib/features/bot/bot_client_extension.dart, lib/features/bot/bot_options_model.dart, lib/features/bot/bot_room_extension.dart, lib/features/bot/widgets/bot_chat_settings_dialog.dart, lib/routes/settings/settings_learning/**, lib/pangea/common/controllers/pangea_controller.dart"
 ---
 
 # Profile Settings — Architecture & Contracts
@@ -8,13 +8,14 @@ How profile settings are structured, stored, propagated, and surfaced to other u
 
 ## Data Model
 
-`Profile` (in [user_model.dart](lib/pangea/user/user_model.dart)) is the top-level container. It wraps three sub-models:
+`Profile` (in [user_model.dart](../../lib/features/user/user_model.dart)) is the top-level container. It wraps three sub-models:
 
 - **`UserSettings`** — learning prefs: target/source language, CEFR level, gender, voice, country, about, etc.
 - **`UserToolSettings`** — per-tool on/off toggles (interactive translator, grammar, immersion mode, definitions, auto-WA, autocorrect, and per-surface audio: words, choices, incoming messages).
+  - **Device autocorrect default is platform-conditional**: on for Android, where the composer also passes the target language to the keyboard (`hintLocales`) so corrections land in the L2; off on iOS until the keyboard language can be targeted there ([#8465](https://github.com/pangeachat/client/issues/8465)); never on web. The stored value stays unset until the user touches the toggle, so each device resolves its own default and an explicit choice, once made, syncs to every device. Profiles saved before the default flipped keep their stored value ([#8466](https://github.com/pangeachat/client/issues/8466)).
 - **`InstructionSettings`** — which instructional tooltips the user has dismissed.
 
-A separate **`PublicProfileModel`** (in [public_profile_model.dart](lib/pangea/user/public_profile_model.dart)) holds data visible to other users: analytics level/XP per language, country, and about. It lives on the Matrix user profile (public), not in account data.
+A separate **`PublicProfileModel`** (in [public_profile_model.dart](../../lib/features/user/public_profile_model.dart)) holds data visible to other users: analytics level/XP per language, country, and about. It lives on the Matrix user profile (public), not in account data.
 
 > **Open question**: `country` and `about` are the only fields that cross the private → public boundary (they live in `UserSettings` but get synced to `PublicProfileModel`). It might be cleaner to keep them solely in `PublicProfileModel` and edit them in a "public profile" editor, making the privacy boundary explicit.
 
@@ -44,17 +45,25 @@ All four use the same `SettingsLearning` widget and the same save flow: write to
 
 5. **Bot member menu** — `BotChatSettingsDialog`, opened from the bot's member profile in a room. Updates the profile *and* immediately calls bot option propagation rather than waiting for the stream (avoids perceived lag in the room the user is looking at).
 
-### Inline language-switch prompts
+### Switching from context
 
-These bypass the full settings UI and only change `targetLanguage`:
+Course and activity content is language-specific, but the learner's language is one global setting. Power users in multiple courses can often encounter content outside of their L2. Switching out of that mismatch is meant to be easy and low-stakes, and it happens **from the surface the learner is already looking at** rather than from settings.
 
-6. **Activity session mismatch** — When the user tries to send a message in an activity room whose target language differs from their current L2, a popup offers to switch. Rate-limited to once per 30 minutes per room (via `LanguageMismatchRepo`) to avoid nagging. On confirm, updates the profile and auto-sends the pending message.
+6. **The language chip is the switch.** Every surface that shows what language its content is in draws that language already, and that drawing is the control: the [`LanguageFlagChip`](../../lib/features/languages/language_flag_chip.dart) in the activity start page's info row, the language chip among a course's info chips (both the course a learner has joined and one they are previewing), and the same chip in a running session's [goal header](activities.instructions.md#the-goal-header). When the content's language differs from the learner's L2 the chip is tinted to say so; tapping it opens the language switcher. Nothing fires on open — these panels re-open on nearly every move through the workspace, so an offer that appeared by itself would be a notification the learner cannot turn off.
 
-7. **Reading toolbar mismatch** — When the user taps a message in a language that doesn't match their L2 and the selected toolbar mode is unavailable, a snackbar offers a "Learn" button to switch their target language.
+7. **The language switcher** is one list of every target language — the same dropdown learning settings uses, so the control behaves identically wherever it is opened. The language shown on the target that opened the switcher is at the top of the list, then the languages the learner already has analytics in (`publicProfile.analytics.languageAnalytics`), each showing its flag and its level, so the two or three languages a learner actually moves between are reachable without scrolling or searching; every other language follows in the usual order below them. Picking one switches immediately.
+
+8. **Send-time mismatch popup** (the backstop) — When the learner tries to send a message in an activity room whose target language differs from their L2, a popup offers to switch, rate-limited to once per 30 minutes per room (via `LanguageMismatchRepo`) to avoid nagging. On confirm it updates the profile and auto-sends the pending message. This stays because the chip is deliberately quiet: it is the only path that reaches a learner who never noticed the mismatch.
+
+9. **Reading toolbar mismatch** — When the user taps a message in a language that doesn't match their L2 and the selected toolbar mode is unavailable, a snackbar offers a "Learn" button to switch their target language.
+
+**Switching to the learner's base language is refused, not attempted.** `IdenticalLanguageException` is thrown inside the profile write, so every offer has to know before it asks: a chip whose language is the learner's L1 renders as a plain label — no tint, no tap — and the switcher shows that language as unavailable with the reason. The send-time popup already applies the same rule.
+
+**A switch is cheap and loses nothing.** Each language keeps its own analytics room and its own local partition ([analytics-system.instructions.md](analytics-system.instructions.md#per-language-isolation)), so switching away banks the current language rather than spending it, and switching back finds it intact; the work of switching is smallest for a language the learner has little history in, which is the common case here. A switch takes effect immediately on tap, with no interstitial confirmation — that held for languages with analytics from the start, and now holds for every language.
 
 ### Contract all paths must satisfy
 
-Every path that changes settings **must** write to account data via `UserController.updateProfile`. The sync-driven stream is the canonical trigger for propagating changes to the bot and public profile. The only exception is the bot-settings dialog (path 5), which additionally calls bot propagation eagerly for responsiveness.
+Every path that changes settings **must** write to account data via `UserController.updateProfile` — the chip and the switcher included, however far they sit from the settings page. The sync-driven stream is the canonical trigger for propagating changes to the bot and public profile. The only exception is the bot-settings dialog (path 5), which additionally calls bot propagation eagerly for responsiveness.
 
 ## Bot Option Propagation
 
@@ -89,22 +98,34 @@ The activity-plan filter uses state event presence, but Matrix state events pers
 
 `country` and `about` are synced from `UserSettings` → `PublicProfileModel` on every settings update. All other settings remain private. Other users see *derived* analytics levels (computed from chat activity), not the self-reported CEFR level.
 
+### Ownership and mirroring
+
+`PublicProfileModel` is **per-account state held on a process-wide controller**. `UserController` lives for the life of the app, its `client` getter resolves whichever account is active *now*, and the whole profile is PUT as one blob. That combination is how one learner's bio, country, levels and analytics room ids ended up published on accounts that had set none of them ([#8531](https://github.com/pangeachat/client/issues/8531)).
+
+- **INVARIANT: NEVER publish a profile under an account other than the one it was loaded for.** The loaded profile carries that account's id, and the single write path refuses — and reports — a mismatch. Logout drops it, so the null every writer gates on means "not loaded yet" rather than "loaded, for someone else".
+- The mirror is exact, cleared values included: `about` and `country` published equal what `UserSettings` holds, and a cleared one is *removed*. The PUT replaces the whole field object, so omitting a key deletes it server-side. A sync that can only overwrite and never clear cannot converge — it re-writes the stale value on every settings update, which is why a foreign bio survived every later edit.
+- An `analytics_room_id` in the blob must name a room the owning user created. It is not decoration: [join_room_analytics_access_extension.dart](../../lib/features/analytics_access/join_room_analytics_access_extension.dart) reads it to choose the room instructors are granted into, and Synapse refuses a room the caller did not create — so a foreign id leaks nothing, but silently leaves that student's instructors with no analytics access. Ids naming rooms this user does not own are dropped when the profile is loaded; the level beside them is not verifiable and is left to the normal analytics update.
+
 ## Key Files
 
 | Concern | Location |
 |---|---|
-| Profile / UserSettings models | [lib/pangea/user/user_model.dart](lib/pangea/user/user_model.dart) |
-| UserController (cache, streams, updateProfile) | [lib/pangea/user/user_controller.dart](lib/pangea/user/user_controller.dart) |
-| Side-effect subscriptions | [lib/pangea/common/controllers/pangea_controller.dart](lib/pangea/common/controllers/pangea_controller.dart) |
-| Bot option propagation | [lib/pangea/chat_settings/utils/bot_client_extension.dart](lib/pangea/chat_settings/utils/bot_client_extension.dart) |
-| BotOptionsModel | [lib/pangea/chat_settings/models/bot_options_model.dart](lib/pangea/chat_settings/models/bot_options_model.dart) |
-| Language mismatch popup + rate limiter | [lib/pangea/learning_settings/](lib/pangea/learning_settings/) |
-| Public profile model | [lib/pangea/user/public_profile_model.dart](lib/pangea/user/public_profile_model.dart) |
-| Settings UI | [lib/pangea/learning_settings/settings_learning.dart](lib/pangea/learning_settings/settings_learning.dart) |
-| Bot chat settings dialog | [lib/pangea/bot/widgets/bot_chat_settings_dialog.dart](lib/pangea/bot/widgets/bot_chat_settings_dialog.dart) |
+| Profile / UserSettings models | [lib/features/user/user_model.dart](../../lib/features/user/user_model.dart) |
+| UserController (cache, streams, updateProfile) | [lib/features/user/user_controller.dart](../../lib/features/user/user_controller.dart) |
+| Side-effect subscriptions | [lib/pangea/common/controllers/pangea_controller.dart](../../lib/pangea/common/controllers/pangea_controller.dart) |
+| Bot option propagation | [lib/features/bot/bot_client_extension.dart](../../lib/features/bot/bot_client_extension.dart) |
+| BotOptionsModel | [lib/features/bot/bot_options_model.dart](../../lib/features/bot/bot_options_model.dart) |
+| Language mismatch popup + rate limiter | [lib/routes/settings/settings_learning/](../../lib/routes/settings/settings_learning/) |
+| Public profile model | [lib/features/user/public_profile_model.dart](../../lib/features/user/public_profile_model.dart) |
+| Public profile display (about, level, country) | [lib/widgets/users/](../../lib/widgets/users/) |
+| Analytics-room grant that reads the public profile | [lib/features/analytics_access/join_room_analytics_access_extension.dart](../../lib/features/analytics_access/join_room_analytics_access_extension.dart) |
+| Settings UI | [lib/routes/settings/settings_learning/settings_learning.dart](../../lib/routes/settings/settings_learning/settings_learning.dart) |
+| Profile page (avatar, country, gender, about) | [lib/routes/profile/user_home_page.dart](../../lib/routes/profile/user_home_page.dart) |
+| Bot chat settings dialog | [lib/features/bot/widgets/bot_chat_settings_dialog.dart](../../lib/features/bot/widgets/bot_chat_settings_dialog.dart) |
 
 ## Future Work
 
-- **Bio / about editing** — Users currently have no UI to set or edit their `about` field. Add an input to either the learning settings page or a dedicated public-profile editor.
-- **Bio / about display** — Decide where other users see the bio. Candidates: user profile sheet in a room, member list hover card, space member directory. Also resolve whether `about` should stay in `UserSettings` (private, synced to public) or move entirely to `PublicProfileModel`.
+- **First-switch confirmation for analytics-less languages** — a switch into a language with no analytics currently behaves like any other: immediate, no interstitial. We may want to say once that the new language starts at level 1 and the previous one keeps its level and XP, so an empty progress screen never reads as lost work — deferred rather than built for the initial context-switching rollout.
+- **Per-language self-reported level** — `UserSettings.cefrLevel` is one value per learner while analytics level and XP are per language, so switching leaves a level asserted about the new language that the learner never claimed. The more switching we encourage from context, the more often that is wrong.
+- **Where `about` and `country` live** — both are edited on the profile page and published to `PublicProfileModel`, so they cross the private → public boundary through a sync that has to be kept exact in both directions. Moving them into `PublicProfileModel` outright, edited in a public-profile editor, would remove the mirror rather than keep fixing it.
 - **Public learning stats** — Surface vocab count, grammar construct progress, and completed activities on a user's public profile so classmates and teachers can see learning outcomes, not just XP/level.

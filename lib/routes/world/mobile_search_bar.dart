@@ -3,17 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_empty_view_card.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
+import 'package:fluffychat/routes/world/world_map_level_fallback_notice.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 /// The single-column floating search bar riding above the nav widget
 /// (routing.instructions.md → Single-column search bar): ONE persistent bar for
-/// the WORLD map's activity search. It rides the nav widget's expansion for free
+/// the map's activity search. It rides the nav widget's expansion for free
 /// by rendering in the widget's `topAttachment` slot.
 ///
-/// WORLD scope only — the shell mounts it over the bare world map and hides it
-/// entirely on a course-scoped map (where the query does not filter pins) and
-/// over a selected activity, mirroring the web overlay ([WorldMapSearchOverlay]),
-/// which only renders in world scope.
+/// Mounted over the bare map in BOTH scopes (#7716) — world and course alike,
+/// mirroring the web overlay ([WorldMapSearchOverlay]) — and hidden entirely
+/// over a selected activity or an open section sheet, which cover the exposed
+/// map band it rides. On a course-scoped map it starts [minimized] to the
+/// compact icon (routing.instructions.md → Single-column search bar).
 ///
 /// Typing filters the map's pins live; there is no results dropdown on narrow —
 /// the pins ARE the results. What rides above the bar instead (in addition to
@@ -22,10 +24,11 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 /// view shows no matches it diagnoses WHY (off-screen matches, pill-excluded
 /// matches, a dead query) and offers the one remedy that fixes it.
 ///
-/// Presentational: the shell decides the [hintText] (the scope) and where the
-/// callbacks route. State is read through BUILDERS ([emptyVerdict],
-/// [canZoomOut]) re-evaluated on every local rebuild, because this bar is
-/// shell-built and the map's own setState never reaches it; [viewRevision]
+/// Presentational: the shell decides the [hintText] (the scope), the
+/// [minimized] state, and where the callbacks route. State is read through
+/// BUILDERS ([emptyVerdict], [canZoomOut]) re-evaluated on every local
+/// rebuild, because this bar is shell-built and the map's own setState never
+/// reaches it; [viewRevision]
 /// (the map's filter/pin-load tick) triggers those rebuilds for changes that
 /// don't originate here (a filter pill tap, a pin load after zooming out).
 class MobileSearchBar extends StatefulWidget {
@@ -49,6 +52,13 @@ class MobileSearchBar extends StatefulWidget {
   /// live (greyed below it).
   final bool Function()? canZoomOut;
 
+  /// The live Level-pill filter ([WorldMapController.filter]) — a builder for
+  /// the same reason the others are — read only for the level-fallback notice
+  /// ([WorldMapLevelFallbackNotice]): whether the map is standing a
+  /// neighbouring level in for the one the learner chose. Null in a scope
+  /// without the notice.
+  final WorldMapFilter Function()? filter;
+
   /// The card's levers: clear every pill to "All …" / step the camera out one
   /// zoom level.
   final VoidCallback? onWidenSearch;
@@ -61,12 +71,24 @@ class MobileSearchBar extends StatefulWidget {
   /// Active map filter chips, rendered above the bar (map scope only).
   final Widget? filtersChild;
 
+  /// Compact-icon state: a single search icon button pinned left, restoring the
+  /// full bar via [onRestore]. The course-scoped resting state
+  /// (routing.instructions.md → Single-column search bar) — the scoped map's
+  /// own chrome already owns the band, so search waits behind one tap. The
+  /// empty-view card and filters stay hidden while minimized: they belong to
+  /// the expanded bar.
+  final bool minimized;
+  final VoidCallback? onRestore;
+
   const MobileSearchBar({
     required this.hintText,
     required this.query,
     required this.onQueryChanged,
+    this.minimized = false,
+    this.onRestore,
     this.emptyVerdict,
     this.canZoomOut,
+    this.filter,
     this.onWidenSearch,
     this.onZoomOut,
     this.viewRevision,
@@ -119,6 +141,24 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
 
+    if (widget.minimized) {
+      // The compact state: one labeled icon button pinned to the left, just
+      // above the nav rail; tapping restores the full bar.
+      return Align(
+        alignment: Alignment.centerLeft,
+        child: Material(
+          elevation: 4,
+          borderRadius: BorderRadius.circular(99),
+          color: Theme.of(context).colorScheme.surface,
+          child: IconButton(
+            tooltip: widget.hintText,
+            icon: const Icon(Icons.search),
+            onPressed: widget.onRestore,
+          ),
+        ),
+      );
+    }
+
     // Drive the clear (X) button off the field's own controller, not the
     // externally-owned query. This bar is built by the shell, whose
     // onQueryChanged reaches only the map's State (through a GlobalKey), so a
@@ -127,9 +167,15 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
     final searching = _controller.text.trim().isNotEmpty;
 
     final verdict = widget.emptyVerdict?.call() ?? MapEmptyVerdict.none;
+    final filter = widget.filter?.call();
+    // Same precedence as the wide overlay: the empty-view card is the more
+    // urgent message and owns the slot whenever both would apply.
+    final levelFallback = verdict == MapEmptyVerdict.none
+        ? filter?.cefrFallback
+        : null;
 
     return Semantics(
-      label: widget.hintText,
+      label: l10n.searchActivitiesLabel,
       container: true,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -150,6 +196,16 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
                 canZoomOut: widget.canZoomOut?.call() ?? false,
                 onWidenSearch: () => widget.onWidenSearch?.call(),
                 onZoomOut: () => widget.onZoomOut?.call(),
+              ),
+            ),
+            const SizedBox(height: 8),
+          ],
+          if (levelFallback != null) ...[
+            Align(
+              alignment: Alignment.centerRight,
+              child: WorldMapLevelFallbackNotice(
+                selected: filter?.cefrLevel,
+                fallback: levelFallback,
               ),
             ),
             const SizedBox(height: 8),

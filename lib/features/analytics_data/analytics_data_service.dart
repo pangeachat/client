@@ -1,6 +1,10 @@
 import 'dart:async';
+import 'dart:math';
+
+import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
@@ -12,11 +16,11 @@ import 'package:fluffychat/features/analytics/constructs_event.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_database.dart';
 import 'package:fluffychat/features/analytics_data/analytics_database_builder.dart';
-import 'package:fluffychat/features/analytics_data/analytics_settings_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_sync_controller.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_events.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_service.dart';
+import 'package:fluffychat/features/analytics_data/blocked_constructs_cache.dart';
 import 'package:fluffychat/features/analytics_data/construct_merge_table.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -39,12 +43,15 @@ class AnalyticsStreamUpdate {
   final int totalPoints;
 
   final Set<ConstructIdentifier>? blockedConstructs;
+  final Set<ConstructIdentifier>? restoredConstructs;
+
   final String? targetID;
 
   AnalyticsStreamUpdate({
     this.points = 0,
     this.totalPoints = 0,
     this.blockedConstructs,
+    this.restoredConstructs,
     this.targetID,
   });
 }
@@ -65,6 +72,13 @@ class AnalyticsDataService {
   /// pinned value instead (otherwise disposeAccount would be handed '' and leak
   /// the account's open span + tracker).
   String? get accountUserId => _accountClient.userID;
+
+  /// The account's current bearer, for the best-effort dosage lane. Read live
+  /// for the same reason as [accountUserId]: tokens refresh mid-session, and a
+  /// snapshot taken at construction would post a heartbeat flush under a stale
+  /// one. Null after logout invalidates it, which the buffer treats as "hold,
+  /// do not attempt".
+  String? get accountAccessToken => _accountClient.accessToken;
 
   late final AnalyticsUpdateDispatcher updateDispatcher;
   late final AnalyticsUpdateService updateService;
@@ -129,6 +143,17 @@ class AnalyticsDataService {
   Future<void> _initDatabase(Client client) async {
     _invalidateCaches();
 
+    // #8525: pairs with the _closeDatabase crumb. Reopening REPLACES
+    // _analyticsClient without closing the outgoing one, so a later
+    // closed-store failure can also mean "a previous instance's connection
+    // went away"; the crumb trail is what distinguishes the two.
+    Sentry.addBreadcrumb(
+      Breadcrumb(
+        message: 'AnalyticsDataService._initDatabase',
+        data: {'replacedExisting': _analyticsClient != null},
+      ),
+    );
+
     final database = await analyticsDatabaseBuilder(
       "${client.clientName}_analytics",
     );
@@ -159,13 +184,12 @@ class AnalyticsDataService {
 
       _invalidateCaches();
       final l2 = MatrixState.pangeaController.userController.userL2;
-      final analyticsUserId = await _analyticsClientGetter.database.getUserID();
-      final storedLanguage = await _analyticsClientGetter.database
-          .getCurrentLanguage();
-
-      final storedAnalyticsRoomId = l2 != null
-          ? await _analyticsClientGetter.database.getAnalyticsRoomId()
-          : null;
+      final database = _analyticsClientGetter.database;
+      final (analyticsUserId, storedLanguage, storedAnalyticsRoomId) = await (
+        database.getUserID(),
+        database.getCurrentLanguage(),
+        l2 != null ? database.getAnalyticsRoomId() : Future<String?>.value(),
+      ).wait;
 
       final analyticsRoomId = l2 != null
           ? _getAnalyticsRoomLocal(l2)?.id
@@ -250,23 +274,26 @@ class AnalyticsDataService {
     }
   }
 
+  /// Seed the merge table from the stored aggregates. Reads identifiers only
+  /// ([AnalyticsDatabase.getAggregateIds]) — the table never needed the uses,
+  /// and deserializing them was the last full-corpus parse on the init path.
   Future<void> _initMergeTable(String language) async {
-    final vocab = await _analyticsClientGetter.database.getAggregatedConstructs(
-      ConstructTypeEnum.vocab,
-      language,
-    );
-    final morph = await _analyticsClientGetter.database.getAggregatedConstructs(
-      ConstructTypeEnum.morph,
-      language,
-    );
+    final database = _analyticsClientGetter.database;
+    final (vocab, morph) = await (
+      database.getAggregateIds(ConstructTypeEnum.vocab, language),
+      database.getAggregateIds(ConstructTypeEnum.morph, language),
+    ).wait;
 
     final blocked = blockedConstructs;
-    _mergeTable.addConstructs(vocab, blocked);
-    _mergeTable.addConstructs(morph, blocked);
+    _mergeTable.addIdentifiers(vocab, blocked);
+    _mergeTable.addIdentifiers(morph, blocked);
   }
 
   Future<void> reinitialize() async {
     Logs().i("Reinitializing analytics database.");
+    Sentry.addBreadcrumb(
+      Breadcrumb(message: 'AnalyticsDataService.reinitialize'),
+    );
     initError = null;
     initCompleter = Completer<void>();
     _clearLocalCaches();
@@ -278,6 +305,7 @@ class AnalyticsDataService {
 
   void _clearLocalCaches() {
     _invalidateCaches();
+    _blockedCache.clear();
     _mergeTable.clear();
   }
 
@@ -304,6 +332,15 @@ class AnalyticsDataService {
   }
 
   Future<void> _closeDatabase() async {
+    // Breadcrumb the close itself. #8525: a closed store poisons every later
+    // analytics write, and the only way to tell an orderly teardown from a
+    // close we did not initiate is whether this crumb precedes the failure.
+    Sentry.addBreadcrumb(
+      Breadcrumb(
+        message: 'AnalyticsDataService._closeDatabase',
+        data: {'hadDatabase': _analyticsClient != null},
+      ),
+    );
     await _analyticsClient?.database.delete();
     _analyticsClient = null;
     _clearLocalCaches();
@@ -324,10 +361,19 @@ class AnalyticsDataService {
   int uniqueConstructsByType(ConstructTypeEnum type) =>
       _mergeTable.uniqueConstructsByType(type);
 
+  /// See [BlockedConstructsCache] for what is memoized and why (#8433).
+  final BlockedConstructsCache _blockedCache = BlockedConstructsCache();
+
+  /// The user's blocked constructs for the current L2. Read-only: callers
+  /// must not mutate the returned set (it is shared between reads).
   Set<ConstructIdentifier> get blockedConstructs {
-    final analyticsRoom =
-        _analyticsClientGetter.client.ownAnalyticsRoomLocalByL2;
-    return analyticsRoom?.blockedConstructs ?? {};
+    final client = _analyticsClientGetter.client;
+    return _blockedCache.read(
+      l2: MatrixState.pangeaController.userController.userL2?.langCodeShort,
+      roomCount: client.rooms.length,
+      roomById: client.getRoomById,
+      resolveAnalyticsRoom: () => client.ownAnalyticsRoomLocalByL2,
+    );
   }
 
   Future<void> waitForSync(String analyticsRoomID) async {
@@ -370,18 +416,26 @@ class AnalyticsDataService {
     );
 
     final blocked = blockedConstructs;
-    final List<OneConstructUse> filtered = [];
 
-    final Map<ConstructIdentifier, DateTime?> cappedLastUseCache = {};
-    for (final use in uses) {
-      if (blocked.contains(use.identifier)) continue;
-      if (use.identifier.isInvalid) continue;
-
-      if (!cappedLastUseCache.containsKey(use.identifier)) {
-        final constructs = await getConstructUse(use.identifier, language);
-        cappedLastUseCache[use.identifier] = constructs.cappedLastUse;
+    // Every distinct, visible identifier in one batched aggregate read, so the
+    // per-use loop below never awaits (#8420).
+    final visibleIds = <ConstructIdentifier>{
+      for (final use in uses)
+        if (!blocked.contains(use.identifier) && !use.identifier.isInvalid)
+          use.identifier,
+    };
+    final Map<ConstructIdentifier, DateTime?> cappedLastUseById = {};
+    if (filterCapped && visibleIds.isNotEmpty) {
+      final constructs = await getConstructUses(visibleIds.toList(), language);
+      for (final entry in constructs.entries) {
+        cappedLastUseById[entry.key] = entry.value.cappedLastUse;
       }
-      final cappedLastUse = cappedLastUseCache[use.identifier];
+    }
+
+    final List<OneConstructUse> filtered = [];
+    for (final use in uses) {
+      if (!visibleIds.contains(use.identifier)) continue;
+      final cappedLastUse = cappedLastUseById[use.identifier];
       if (filterCapped &&
           (cappedLastUse != null && use.timeStamp.isAfter(cappedLastUse))) {
         continue;
@@ -461,6 +515,78 @@ class AnalyticsDataService {
 
     stopwatch.stop();
     return cleaned;
+  }
+
+  /// The keys [getAggregatedConstructs] would return — every visible canonical
+  /// construct of [type] — read from row identifiers alone
+  /// ([AnalyticsDatabase.getAggregateIds]), so callers that only need the ids
+  /// (practice distractors) skip deserializing every use.
+  Future<Set<ConstructIdentifier>> getAggregatedConstructIds(
+    ConstructTypeEnum type,
+    String language,
+  ) async {
+    await _ensureInitialized();
+    final ids = await _analyticsClientGetter.database.getAggregateIds(
+      type,
+      language,
+    );
+    final blocked = blockedConstructs;
+    final result = <ConstructIdentifier>{};
+    for (final id in ids) {
+      final canonical = _mergeTable.resolve(id);
+      if (blocked.contains(canonical) || canonical.isInvalid) continue;
+      result.add(canonical);
+    }
+    return result;
+  }
+
+  /// The inverse of [getAggregatedConstructs]: only the constructs the user has
+  /// blocked, for the deleted-vocab list. Every other fetcher on this service
+  /// filters blocked ids OUT, so the undo surface needs its own read.
+  ///
+  /// Merge-table resolution is skipped on purpose — blocking removes an id from
+  /// the table, so `resolve` would hand it straight back, and case-variants of a
+  /// blocked lemma are separate entries in the blocked set too.
+  ///
+  /// Every blocked id of [type] gets a row even when the database has no uses
+  /// for it (blocked on another device before this one ever saw the word), so a
+  /// blocked construct can never become unrestorable.
+  Future<Map<ConstructIdentifier, ConstructUses>> getBlockedConstructs(
+    ConstructTypeEnum type,
+    String language,
+  ) async {
+    await _ensureInitialized();
+    final blocked = blockedConstructs;
+    if (blocked.isEmpty) return {};
+
+    final combined = await _analyticsClientGetter.database
+        .getAggregatedConstructs(type, language);
+
+    final result = <ConstructIdentifier, ConstructUses>{};
+    for (final entry in combined) {
+      if (!blocked.contains(entry.id) || entry.id.isInvalid) continue;
+      final existing = result[entry.id];
+      if (existing != null) {
+        existing.merge(entry);
+      } else {
+        result[entry.id] = entry;
+      }
+    }
+
+    for (final id in blocked) {
+      if (id.type != type || id.isInvalid) continue;
+      result.putIfAbsent(
+        id,
+        () => ConstructUses(
+          uses: [],
+          constructType: id.type,
+          lemma: id.lemma,
+          category: id.category,
+        ),
+      );
+    }
+
+    return result;
   }
 
   Future<int> getNewConstructCount(
@@ -581,15 +707,19 @@ class AnalyticsDataService {
         );
       } else {
         await MatrixState.pangeaController.userController.addXPOffset(offset);
-        await updateXPOffset(
-          MatrixState
-              .pangeaController
-              .userController
-              .publicProfile!
-              .analytics
-              .xpOffset!,
-          language,
-        );
+        // Mirrors whatever the public profile ended up holding. Null when the
+        // offset was not applied there — nothing loaded yet, or a profile
+        // belonging to another account (#8531) — and the local copy must then
+        // stay put too, rather than drifting away from the published one.
+        final xpOffset = MatrixState
+            .pangeaController
+            .userController
+            .publicProfile
+            ?.analytics
+            .xpOffset;
+        if (xpOffset != null) {
+          await updateXPOffset(xpOffset, language);
+        }
       }
     }
 
@@ -635,46 +765,92 @@ class AnalyticsDataService {
       events,
       language,
     );
-    final vocab = await getAggregatedConstructs(
-      ConstructTypeEnum.vocab,
-      language,
-    );
-    final morphs = await getAggregatedConstructs(
-      ConstructTypeEnum.morph,
-      language,
-    );
-    final constructs = [...vocab.values, ...morphs.values];
-    final totalXP = constructs.fold(0, (total, c) => total + c.points);
+    await _recomputeTotalXP(language);
+  }
 
-    await _analyticsClientGetter.database.updateTotalXP(totalXP, language);
+  /// Recomputes the language's XP total and level from the current aggregate.
+  ///
+  /// Reads per-row uncapped xp sums straight from the aggregate JSON
+  /// ([AnalyticsDatabase.getAggregateXPSums]) and folds them with
+  /// [foldTotalXP] — the same grouping, blocked/invalid filter and per-construct
+  /// cap that [getAggregatedConstructs] applies, without deserializing every
+  /// stored use (#8418).
+  Future<void> _recomputeTotalXP(String language) async {
+    final db = _analyticsClientGetter.database;
+    final sums = await Future.wait([
+      db.getAggregateXPSums(ConstructTypeEnum.vocab, language),
+      db.getAggregateXPSums(ConstructTypeEnum.morph, language),
+    ]);
+    final totalXP = foldTotalXP(
+      sums.expand((s) => s),
+      resolve: _mergeTable.resolve,
+      blocked: blockedConstructs,
+    );
+
+    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      level: DerivedAnalyticsDataModel.calculateLevelWithXp(totalXP),
+    );
+    await db.updateTotalXP(totalXP, language);
+  }
+
+  /// Total XP over per-row uncapped xp [sums]: rows are grouped by their
+  /// merge-table canonical id ([resolve]), groups whose canonical is blocked or
+  /// invalid are dropped, and each remaining group contributes
+  /// `min(sum, xpForFlower)` — exactly what summing [ConstructUses.points]
+  /// over [getAggregatedConstructs] yields.
+  @visibleForTesting
+  static int foldTotalXP(
+    Iterable<({ConstructIdentifier id, int xp})> sums, {
+    required ConstructIdentifier Function(ConstructIdentifier) resolve,
+    required Set<ConstructIdentifier> blocked,
+  }) {
+    final byCanonical = <ConstructIdentifier, int>{};
+    for (final row in sums) {
+      final canonical = resolve(row.id);
+      if (blocked.contains(canonical) || canonical.isInvalid) continue;
+      byCanonical[canonical] = (byCanonical[canonical] ?? 0) + row.xp;
+    }
+    var total = 0;
+    for (final xp in byCanonical.values) {
+      total += min(xp, AnalyticsConstants.xpForFlower);
+    }
+    return total;
   }
 
   Future<void> updateBlockedConstructs(
-    ConstructIdentifier constructId,
+    Set<ConstructIdentifier> constructIds,
     String language,
   ) async {
     await _ensureInitialized();
-    _mergeTable.removeConstruct(constructId);
-
-    final construct = await _analyticsClientGetter.database.getConstructUse([
-      constructId,
-    ], language);
-
-    final derived = await derivedData(language);
-    final newXP = derived.totalXP - construct.points;
-    final newLevel = DerivedAnalyticsDataModel.calculateLevelWithXp(newXP);
-
-    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
-      level: newLevel,
-    );
-
-    await _analyticsClientGetter.database.updateTotalXP(newXP, language);
+    for (final constructId in constructIds) {
+      _mergeTable.removeConstruct(constructId);
+    }
+    _invalidateCaches();
+    await _recomputeTotalXP(language);
     _invalidateCaches();
   }
 
+  Future<void> updateRestoredConstructs(
+    Set<ConstructIdentifier> constructIds,
+    String language,
+  ) async {
+    await _ensureInitialized();
+    await _initMergeTable(language);
+    _invalidateCaches();
+    await _recomputeTotalXP(language);
+    _invalidateCaches();
+  }
+
+  /// Drop the local (not-yet-uploaded) uses and aggregates, then re-derive
+  /// the XP total. This runs right after the uploaded copy has echoed back
+  /// from the analytics room; the recompute that echo triggered saw the
+  /// uses on both sides, so the total is settled here rather than on the
+  /// next unrelated sync.
   Future<void> clearLocalAnalytics(String language) async {
     _invalidateCaches();
     await _ensureInitialized();
     await _analyticsClientGetter.database.clearLocalConstructData(language);
+    _invalidateCaches();
+    await _recomputeTotalXP(language);
   }
 }

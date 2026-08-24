@@ -7,6 +7,8 @@ import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 class SubscriptionOptionCard extends StatelessWidget {
+  static const double _borderRadius = 12.0;
+
   final ProductPlan plan;
   final VoidCallback onTap;
   final bool selected;
@@ -26,6 +28,16 @@ class SubscriptionOptionCard extends StatelessWidget {
         ? theme.textTheme.titleMedium
         : theme.textTheme.titleSmall;
 
+    final frameColor = selected
+        ? AppConfig.goldByTheme(context)
+        : theme.colorScheme.primaryContainer;
+
+    // The title sits on [frameColor], so its ink follows the frame — gold is a
+    // light fill in both themes, where onPrimaryContainer is unreadable (#8303).
+    final foregroundColor = selected
+        ? AppConfig.onGoldByTheme(context)
+        : theme.colorScheme.onPrimaryContainer;
+
     return Semantics(
       button: true,
       selected: selected,
@@ -33,39 +45,37 @@ class SubscriptionOptionCard extends StatelessWidget {
           '${plan.duration.cardTitle(l10n)}, ${plan.duration.copy(l10n)}, ${plan.priceDisplay}',
       excludeSemantics: true,
       onTap: onTap,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12.0),
-        child: FrameContainer(
-          title: plan.duration.cardTitle(l10n),
-          frameColor: selected
-              ? AppConfig.goldByTheme(context)
-              : theme.colorScheme.primaryContainer,
-          backgroundColor: theme.colorScheme.surface,
-          foregroundColor: selected
-              ? (theme.brightness == Brightness.light
-                    ? theme.colorScheme.onSurface
-                    : theme.colorScheme.surface)
-              : theme.colorScheme.onPrimaryContainer,
-          padding: EdgeInsets.all(8.0),
-          titlePadding: EdgeInsetsGeometry.symmetric(
-            vertical: 8.0,
-            horizontal: 2.0,
-          ),
-          borderRadius: 12.0,
-          titleStyle: textStyle?.copyWith(
-            fontWeight: FontWeight.bold,
-            color: theme.colorScheme.onPrimaryContainer,
-          ),
-          child: Column(
-            spacing: 8.0,
-            children: [
-              Text(
-                plan.duration.copy(l10n),
-                style: textStyle?.copyWith(fontWeight: FontWeight.bold),
-              ),
-              Text(plan.priceDisplay, style: textStyle),
-            ],
+      child: Material(
+        elevation: 4.0,
+        borderRadius: BorderRadius.circular(_borderRadius),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(_borderRadius),
+          child: FrameContainer(
+            title: plan.duration.cardTitle(l10n),
+            frameColor: frameColor,
+            backgroundColor: theme.colorScheme.surface,
+            foregroundColor: foregroundColor,
+            padding: EdgeInsets.all(8.0),
+            titlePadding: EdgeInsetsGeometry.symmetric(
+              vertical: 8.0,
+              horizontal: 2.0,
+            ),
+            borderRadius: _borderRadius,
+            titleStyle: textStyle?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: foregroundColor,
+            ),
+            child: Column(
+              spacing: 8.0,
+              children: [
+                Text(
+                  plan.duration.copy(l10n),
+                  style: textStyle?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                Text(plan.priceDisplay, style: textStyle),
+              ],
+            ),
           ),
         ),
       ),

@@ -9,11 +9,58 @@ import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class Environment {
+  /// The 8-character git commit SHA this build was compiled from, passed in by
+  /// the build workflows as `--dart-define=BUILD_COMMIT_SHA=...`.
+  ///
+  /// This is the only part of the version display that identifies *what code*
+  /// is running. Build numbers cannot: they are per-platform monotonic counters
+  /// owned by the stores (or, on web, a clock), so they order builds without
+  /// saying what is in one. See `ci.instructions.md`.
+  ///
+  /// Compile-time, so it must be `const` — a non-const read would always be
+  /// empty. Empty on any locally-run build, which is not built from a pushed
+  /// commit; the Settings tile omits it then.
+  static const String buildCommitSha = String.fromEnvironment(
+    "BUILD_COMMIT_SHA",
+  );
+
   static bool get itIsTime =>
       DateTime.utc(2023, 1, 25).isBefore(DateTime.now());
 
   static bool get isStagingEnvironment =>
       dotenv.env["ENVIRONMENT"] == "staging";
+
+  /// The Sentry-reportable environment for this build, per the allow-list in
+  /// sentry.instructions.md (only `staging`/`production` are valid; anything
+  /// else must not report).
+  ///
+  /// Deliberately NOT derived from [isStagingEnvironment]: the production
+  /// `.env` secret never sets `ENVIRONMENT` at all, so that key can't
+  /// positively identify production.
+  ///
+  /// Deliberately NOT derived from [userSearchDomain]: see the note on that
+  /// getter. Replicates [AppConfig.defaultHomeserverUri]'s scheme-then-host
+  /// parse of [synapseURL] locally to avoid importing `AppConfig` (which
+  /// imports [Environment] and would cycle).
+  static String? get sentryEnvironment {
+    final url = synapseURL;
+    final hasScheme = url.startsWith('http://') || url.startsWith('https://');
+    final host = Uri.tryParse(
+      hasScheme ? url : 'https://$url',
+    )?.host.toLowerCase();
+    if (host == null || host.isEmpty) return null;
+    final normalized = host.startsWith('matrix.')
+        ? host.substring('matrix.'.length)
+        : host;
+    switch (normalized) {
+      case 'pangea.chat':
+        return 'production';
+      case 'staging.pangea.chat':
+        return 'staging';
+      default:
+        return null;
+    }
+  }
 
   /// Force Flutter's accessibility semantics tree always-on (opt-in).
   ///
@@ -41,7 +88,13 @@ class Environment {
         'Synapse Url not found';
   }
 
-  static String get homeServer {
+  /// The bare domain to complete a directory-search username into a full
+  /// Matrix ID (`@user:<domain>` — see `UserSearchExtension.searchUser`).
+  /// Single-purpose: NOT a general "which environment/host is this build"
+  /// signal, because the `HOME_SERVER` override below is returned raw,
+  /// unlike the scheme/`matrix.`-stripped `SYNAPSE_URL` fallback. Use
+  /// [synapseURL] for that instead (see [sentryEnvironment]).
+  static String get userSearchDomain {
     String? homeServerFromSynapseURL =
         appConfigOverride?.synapseURL ?? dotenv.env['SYNAPSE_URL'];
     if (homeServerFromSynapseURL != null) {
@@ -125,6 +178,20 @@ class Environment {
   static bool get dosageSignalsEnabled {
     return appConfigOverride?.dosageSignalsEnabled ??
         (dotenv.env["DOSAGE_SIGNALS_ENABLED"]?.toLowerCase() == 'true');
+  }
+
+  /// Capability gate for the client-reported voice-message durations that
+  /// populate speaking (`voice_messages` on the audio-signals lane; see
+  /// [DosageSignalsRepo] and admin-dash-api#150). Defaults to `false` so it
+  /// ships dark, and it is deliberately SEPARATE from [dosageSignalsEnabled]:
+  /// the audio lane is already live against servers that predate the
+  /// `voice_messages` field, whose `extra="forbid"` ingest 422s an unknown key
+  /// and takes the sibling playback + coverage lanes down with it. So this flag
+  /// is turned on ONLY once every target server has shipped #150 — reversing the
+  /// usual client-ahead-of-server hazard the sibling routes guard against.
+  static bool get dosageVoiceMessagesEnabled {
+    return appConfigOverride?.dosageVoiceMessagesEnabled ??
+        (dotenv.env["DOSAGE_VOICE_MESSAGES_ENABLED"]?.toLowerCase() == 'true');
   }
 
   /// Feature flag for the voice-transcript tokenizer-decouple send path.
@@ -270,6 +337,7 @@ class AppConfigOverride {
   final String? teacherBffApi;
   final bool? analyticsDualWriteEnabled;
   final bool? dosageSignalsEnabled;
+  final bool? dosageVoiceMessagesEnabled;
   final bool? voiceTranscriptDecoupleEnabled;
   final bool? liveStreamingSttEnabled;
   final String? sentryDsn;
@@ -289,6 +357,7 @@ class AppConfigOverride {
     this.teacherBffApi,
     this.analyticsDualWriteEnabled,
     this.dosageSignalsEnabled,
+    this.dosageVoiceMessagesEnabled,
     this.voiceTranscriptDecoupleEnabled,
     this.liveStreamingSttEnabled,
     this.sentryDsn,
@@ -310,6 +379,7 @@ class AppConfigOverride {
       teacherBffApi: json['teacherBffApi'] as String?,
       analyticsDualWriteEnabled: json['analyticsDualWriteEnabled'] as bool?,
       dosageSignalsEnabled: json['dosageSignalsEnabled'] as bool?,
+      dosageVoiceMessagesEnabled: json['dosageVoiceMessagesEnabled'] as bool?,
       voiceTranscriptDecoupleEnabled:
           json['voiceTranscriptDecoupleEnabled'] as bool?,
       liveStreamingSttEnabled: json['liveStreamingSttEnabled'] as bool?,
@@ -334,6 +404,7 @@ class AppConfigOverride {
       'teacherBffApi': teacherBffApi,
       'analyticsDualWriteEnabled': analyticsDualWriteEnabled,
       'dosageSignalsEnabled': dosageSignalsEnabled,
+      'dosageVoiceMessagesEnabled': dosageVoiceMessagesEnabled,
       'voiceTranscriptDecoupleEnabled': voiceTranscriptDecoupleEnabled,
       'liveStreamingSttEnabled': liveStreamingSttEnabled,
       'sentryDsn': sentryDsn,
@@ -357,6 +428,7 @@ class AppConfigOverride {
         teacherBffApi.hashCode ^
         analyticsDualWriteEnabled.hashCode ^
         dosageSignalsEnabled.hashCode ^
+        dosageVoiceMessagesEnabled.hashCode ^
         voiceTranscriptDecoupleEnabled.hashCode ^
         liveStreamingSttEnabled.hashCode ^
         sentryDsn.hashCode ^
@@ -380,6 +452,7 @@ class AppConfigOverride {
         teacherBffApi == other.teacherBffApi &&
         analyticsDualWriteEnabled == other.analyticsDualWriteEnabled &&
         dosageSignalsEnabled == other.dosageSignalsEnabled &&
+        dosageVoiceMessagesEnabled == other.dosageVoiceMessagesEnabled &&
         voiceTranscriptDecoupleEnabled ==
             other.voiceTranscriptDecoupleEnabled &&
         liveStreamingSttEnabled == other.liveStreamingSttEnabled &&

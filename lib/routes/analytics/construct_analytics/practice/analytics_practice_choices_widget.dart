@@ -19,6 +19,10 @@ class AnalyticsPracticeExerciseChoices extends StatelessWidget {
   final bool showHint;
   final Function(String) onSelectChoice;
 
+  /// Choices already picked in this exercise, held by the session rather than
+  /// the cards, so reopening the panel mid-exercise restores them (#8309).
+  final Set<String> selectedChoices;
+
   final List<InlineSpan>? audioExampleMessage;
   final String? audioTranslation;
 
@@ -30,6 +34,7 @@ class AnalyticsPracticeExerciseChoices extends StatelessWidget {
     required this.isComplete,
     required this.showHint,
     required this.onSelectChoice,
+    required this.selectedChoices,
     this.audioExampleMessage,
     this.audioTranslation,
   });
@@ -71,6 +76,7 @@ class AnalyticsPracticeExerciseChoices extends StatelessWidget {
                           choiceText: choice.choiceText,
                           choiceEmoji: choice.choiceEmoji,
                           enabled: !isComplete,
+                          isSelected: selectedChoices.contains(choice.choiceId),
                           shrinkWrap: true,
                         ),
                       )
@@ -98,6 +104,7 @@ class AnalyticsPracticeExerciseChoices extends StatelessWidget {
               choiceText: choice.choiceText,
               choiceEmoji: choice.choiceEmoji,
               enabled: !isComplete,
+              isSelected: selectedChoices.contains(choice.choiceId),
             ),
           )
           .toList(),
@@ -155,6 +162,9 @@ class _AudioCompletionWidget extends StatelessWidget {
                         pos: 'other',
                         textLanguage:
                             MatrixState.pangeaController.userController.userL2!,
+                        // Analytics practice is not in a room, and `textOnly`
+                        // renders no audio control here in any case.
+                        roomId: null,
                         textOnly: true,
                         style: textStyle?.copyWith(
                           color: Theme.of(context).colorScheme.onPrimary,
@@ -167,6 +177,7 @@ class _AudioCompletionWidget extends StatelessWidget {
             ),
             // Main example message
             RichText(
+              textScaler: MediaQuery.textScalerOf(context),
               text: TextSpan(
                 style: textStyle?.copyWith(
                   color: Theme.of(context).colorScheme.onPrimary,

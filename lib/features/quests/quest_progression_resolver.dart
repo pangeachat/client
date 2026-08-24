@@ -9,7 +9,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 
 /// How far along a quest the next-Mission gradient reaches before decaying to
@@ -224,19 +223,10 @@ class ProgressionResolution {
     final cache = JoinedObjectiveCache();
     await cache.rebuildFromJoinedCourses(
       client,
-      // Once per course per session, sharing the map rebuild's key: this runs
-      // on every course-panel open, and a course that persistently fails to
-      // resolve (e.g. an orphaned quest plan) re-fails on each of them (#8083).
-      // Keyed per course ROOM — two rooms of one quest can fail independently
-      // (e.g. a per-room private-activity read); questId keeps orphaned-quest
-      // reports diagnosable.
-      onError: (roomId, questId, e, s) => ErrorHandler.logErrorOnce(
-        key: 'course-outline-resolve:$roomId',
-        e: e,
-        s: s,
-        m: 'course progression failed to resolve',
-        data: {'courseRoomId': roomId, 'questId': questId},
-      ),
+      // The SAME reporter the world map's rebuild passes — one throttle key,
+      // one severity rule, so this path and the map's can't disagree about a
+      // failure only one of them will end up reporting (#8470).
+      onError: reportCourseOutlineFailure,
     );
     return cache.resolution(client.userStarsByActivity);
   }

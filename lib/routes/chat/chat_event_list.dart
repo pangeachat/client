@@ -6,6 +6,7 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_user_summaries_widget.dart';
@@ -56,6 +57,13 @@ class ChatEventList extends StatelessWidget {
       child: NotificationListener<ScrollMetricsNotification>(
         onNotification: (_) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
+            // The list can detach (or the controller can be disposed) between
+            // the notification and this callback — leaving the chat, switching
+            // threads, or the timeline going null. Reading position then throws.
+            if (!controller.mounted ||
+                !controller.scrollController.hasClients) {
+              return;
+            }
             try {
               final scrollable =
                   controller.scrollController.position.maxScrollExtent > 0;
@@ -118,8 +126,10 @@ class ChatEventList extends StatelessWidget {
               // #Pangea
               if (i == events.length + 3) {
                 // Extra top spacer on activities so all content can scroll
-                // above the floating activity goals header.
-                return controller.room.ownRole?.allGoals.isNotEmpty == true
+                // above the floating activity goals header. The header is gone
+                // once the summary carries the goals, and so is the spacer.
+                return controller.room.ownRole?.allGoals.isNotEmpty == true &&
+                        !controller.room.hasGeneratedActivitySummary
                     ? SizedBox(height: 170)
                     : SizedBox.shrink();
               }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
@@ -19,6 +18,7 @@ import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
@@ -46,18 +46,6 @@ bool needsParticipantRefill({
   required int? joinedCount,
   required bool hasUnresolvedSeats,
 }) => everFilled ? filledAtJoinedCount != joinedCount : hasUnresolvedSeats;
-
-/// Severity for a course outline that failed to resolve during the objective
-/// cache rebuild. [MissingQuestException] is a state the repo already
-/// classified benign — [QuestRepo.quest] returns it without reporting, and the
-/// course panel renders it as a known state — so re-reporting it at `error`
-/// re-severitized a handled condition (CLIENT-DQC, #8094). It still reports at
-/// `warning` (once per course per session) because a dropped course blanks
-/// relevance banding with no other visible signal. Everything else keeps
-/// `error`: the outline read failing for any other reason is real breakage.
-@visibleForTesting
-SentryLevel courseOutlineErrorLevel(Object error) =>
-    error is MissingQuestException ? SentryLevel.warning : SentryLevel.error;
 
 /// Minimum spacing between empty-cache self-heal rebuilds of the objective
 /// cache. A set-change rebuild (course join/leave) is never subject to it —
@@ -288,15 +276,22 @@ class WorldMapPinsManager {
   /// for the host's recruit ping (carries `pangea.activity.id`), within a day.
   /// A ping leaves no persistent room state, so this proxy is intentionally
   /// approximate — its efficacy is worth watching (world-map.instructions.md).
+  ///
+  /// Reads the spaces through [ActivitySessionDiscovery.joinedCourseSpaces],
+  /// which snapshots `client.rooms` — load-bearing here, not just DRY (#8361,
+  /// CLIENT-DBW). The SDK mutates `client.rooms` IN PLACE from its sync handler
+  /// (`rooms.insert` on a join, `rooms.removeAt` on a leave), and this loop
+  /// awaits a timeline per space, so a lazy `where` view over that list threw
+  /// `Concurrent modification during iteration` when a course arrived or left
+  /// mid-scan — aborting the pass and stranding pinged pins stale until the
+  /// next clean one. The room list moving is correct SDK behaviour the map
+  /// can't block, so the scan reads a snapshot and picks up a course that
+  /// joined mid-pass on the next sync tick (which that join itself produces).
   Future<void> recomputePinged(Client client) async {
     final pinged = <String>{};
     final cutoff = DateTime.now().subtract(const Duration(hours: 24));
-    final spaces = client.rooms.where(
-      (r) =>
-          r.isSpace && r.membership == Membership.join && r.coursePlan != null,
-    );
 
-    for (final space in spaces) {
+    for (final space in client.joinedCourseRooms) {
       try {
         final timeline = await space.getTimeline();
         for (final e in timeline.events) {
@@ -583,16 +578,7 @@ class WorldMapPinsManager {
       final rooms = client.joinedCourseRooms;
       await _objectiveCache.rebuildFromJoinedCourses(
         client,
-        // Keyed per course ROOM — two rooms of one quest can fail
-        // independently; questId keeps orphaned-quest reports diagnosable.
-        onError: (roomId, questId, e, s) => ErrorHandler.logErrorOnce(
-          key: 'course-outline-resolve:$roomId',
-          e: e,
-          s: s,
-          m: 'JoinedObjectiveCache: course outline failed to resolve',
-          data: {'courseRoomId': roomId, 'questId': questId},
-          level: courseOutlineErrorLevel(e),
-        ),
+        onError: reportCourseOutlineFailure,
       );
       _objectiveCacheRoomIds = rooms.map((r) => r.id).toSet();
       _objectiveCacheQuestIds = rooms.map((r) => r.coursePlan!.uuid).toSet();
@@ -669,6 +655,10 @@ class WorldMapPinsManager {
     );
     final activityCards = activityCardsResult.result;
     if (activityCards == null) {
+      // A rate-limit pause means we never asked (#8360), so the course is not
+      // known to be empty — hold the pins we have instead of blanking the map
+      // for the length of the pause. Any real failure still empties it.
+      if (activityCardsResult.error is RateLimitedException) return;
       _pins = [];
       return;
     }
@@ -713,6 +703,17 @@ class WorldMapPinsManager {
     String? l2,
     String? l1,
   }) async {
-    _pins = await ActivityMapRepo.bboxPins(bounds: bounds, l2: l2);
+    final pins = (await ActivityMapRepo.bboxPins(
+      bounds: bounds,
+      l2: l2,
+    )).result;
+    // An error is "no fresh answer for this viewport", never "no activities
+    // here" — the read was suppressed by the rate-limit pause (#8360) or it
+    // failed (#8473). Keep the pins already on the map either way: blanking it
+    // on a transient network blip is worse than holding the last good
+    // viewport, and the next camera settle refetches. Only a successful empty
+    // list means the viewport is genuinely empty, and that still clears.
+    if (pins == null) return;
+    _pins = pins;
   }
 }

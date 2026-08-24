@@ -42,7 +42,6 @@ class ActivityChatController {
   bool _disposed = false;
   bool _loadingSummary = false;
 
-  final ScrollController carouselController = ScrollController();
   final ValueNotifier<Set<String>> usedVocab = ValueNotifier({});
   final ValueNotifier<ActivityRoleModel?> highlightedRole = ValueNotifier(null);
   final ValueNotifier<bool> showInstructions = ValueNotifier(false);
@@ -66,7 +65,6 @@ class ActivityChatController {
 
   Future<void> dispose() async {
     _disposed = true;
-    carouselController.dispose();
     _analyticsSubscription.cancel();
     usedVocab.dispose();
     highlightedRole.dispose();

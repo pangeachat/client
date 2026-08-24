@@ -31,7 +31,7 @@ class SignupPageView extends StatelessWidget {
           appBar: AppBar(
             centerTitle: true,
             title: SizedBox(
-              width: 450,
+              width: 600,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -60,6 +60,7 @@ class SignupPageView extends StatelessWidget {
                   if (controller.prevInfo != null)
                     MergeSemantics(
                       child: RichText(
+                        textScaler: MediaQuery.textScalerOf(context),
                         text: TextSpan(
                           style: TextStyle(color: theme.colorScheme.onSurface),
                           children: [

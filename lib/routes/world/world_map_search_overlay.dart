@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_empty_view_card.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_filter_bar.dart';
+import 'package:fluffychat/routes/world/world_map_level_fallback_notice.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
@@ -15,11 +17,12 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 /// supersedes it. Still consumed by [WorldMapSignalUtils.reduceActivityCompletions].
 enum MapCompletionFilter { notStarted, inProgress, completed }
 
-/// The Google-Maps-style search + filter surface floating over the World map.
+/// The Google-Maps-style search + filter surface floating over the map.
 /// Presentational: the map owns the pin set, the filter state, and the
 /// filtering — this renders the bar, the [WorldMapFilterBar] pills, and the
-/// results, reporting user intent via callbacks. World-only (the shell hides it
-/// elsewhere). See world-map.instructions.md.
+/// results, reporting user intent via callbacks. Scope-agnostic: it rides the
+/// world map and a course-scoped map alike (#7716), sized to whatever map
+/// sliver the open panels leave. See world-map.instructions.md.
 class WorldMapSearchOverlay extends StatefulWidget {
   final WorldMapFilter filter;
 
@@ -163,12 +166,18 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            subtitle: Text(
-                              [card.l2, card.cefr]
-                                  .where((s) => s != null && s.isNotEmpty)
-                                  .join(' · '),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
+                            subtitle: Semantics(
+                              label:
+                                  "${PLanguageStore.byLangCode(card.l2)?.displayName ?? card.l2}, ${card.cefr}",
+                              child: ExcludeSemantics(
+                                child: Text(
+                                  [card.l2, card.cefr]
+                                      .where((s) => s != null && s.isNotEmpty)
+                                      .join(' · '),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
                             ),
                             onTap: () => widget.onResultTap(card),
                           );
@@ -184,6 +193,14 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                   canZoomOut: widget.canZoomOut,
                   onWidenSearch: widget.onWidenSearch,
                   onZoomOut: widget.onZoomOut,
+                ),
+              ] else if (widget.filter.cefrFallback != null) ...[
+                // Only once the map has something on it: an empty view is the
+                // more urgent message and owns the slot when both apply.
+                const SizedBox(height: 8),
+                WorldMapLevelFallbackNotice(
+                  selected: widget.filter.cefrLevel,
+                  fallback: widget.filter.cefrFallback,
                 ),
               ],
             ],

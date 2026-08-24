@@ -30,7 +30,11 @@ class FreeTrialStepView extends StatelessWidget {
         ? theme.textTheme.displayMedium
         : theme.textTheme.headlineMedium;
 
+    // See the note on the same wrapper in onboarding_page.dart —
+    // `explicitChildNodes` stops this page container from absorbing a
+    // descendant's semantics config.
     return Semantics(
+      explicitChildNodes: true,
       label: L10n.of(context).pageLabel(L10n.of(context).freeTrial),
       child: Scaffold(
         appBar: AppBar(
@@ -60,8 +64,14 @@ class FreeTrialStepView extends StatelessWidget {
             ),
             Center(
               child: Container(
-                width: 350,
-                padding: const EdgeInsets.only(bottom: 20.0),
+                // Matches the wizard shell in onboarding_page.dart.
+                width: double.infinity,
+                constraints: const BoxConstraints(maxWidth: 600.0),
+                padding: const EdgeInsets.only(
+                  left: 16.0,
+                  right: 16.0,
+                  bottom: 20.0,
+                ),
                 child: Column(
                   children: [
                     Expanded(

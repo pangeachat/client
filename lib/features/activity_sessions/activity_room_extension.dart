@@ -108,4 +108,20 @@ extension ActivityRoomExtension on Room {
   Room? get courseParent => pangeaSpaceParents.firstWhereOrNull(
     (parent) => parent.coursePlan != null,
   );
+
+  /// The joined course space this session was LAUNCHED from, or null when it was
+  /// launched from the world map.
+  ///
+  /// Launching also shares the session into every other eligible joined course
+  /// as an `m.space.child` (see `activities.instructions.md`), so a
+  /// world-launched session collects course parents it was never "in" and
+  /// [courseParent] picks an arbitrary one of them. Anything that acts ON the
+  /// course — pinging its roster, offering it on the invite page — keys off this
+  /// instead, so it stays silent for a learner who is not in a course at all
+  /// (#8097).
+  Room? get sourceCourse {
+    final sourceCourseId = pinnedSourceCourseId;
+    if (sourceCourseId == null) return null;
+    return pangeaSpaceParents.firstWhereOrNull((p) => p.id == sourceCourseId);
+  }
 }

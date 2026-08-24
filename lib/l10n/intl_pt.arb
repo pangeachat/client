@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:16.165905",
+    "@@last_modified": "2026-08-24 11:54:20.459529",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -851,10 +851,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrateWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noOtherDevicesFound": {
         "type": "String",
         "placeholders": {}
@@ -1066,10 +1062,6 @@
         "placeholders": {}
     },
     "@copyToClipboard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
         "type": "String",
         "placeholders": {}
     },
@@ -2331,8 +2323,6 @@
     "leave": "Sair",
     "leftTheChat": "Saiu do chat",
     "lightTheme": "Claro",
-    "dehydrate": "Exportar sessão e limpar o dispositivo",
-    "dehydrateWarning": "Esta ação não pode ser desfeita. Certifique-se de armazenar o arquivo de backup com segurança.",
     "hydrate": "Restaurar a partir do arquivo de backup",
     "loadingPleaseWait": "Carregando… Por favor, aguarde.",
     "loadMore": "Carregar mais…",
@@ -3226,9 +3216,7 @@
     "enableAutocorrectPopupTitle": "Adicione o teclado do seu idioma alvo indo para:",
     "enableAutocorrectPopupSteps": "  • Configurações\n  • Geral\n  • Teclado\n  • Teclados\n  • Adicionar Novo Teclado",
     "enableAutocorrectPopupDescription": "Depois de selecionar o idioma, você pode clicar no pequeno ícone do globo na parte inferior esquerda do seu teclado para ativar o teclado recentemente instalado.",
-    "downloadGboardTitle": "Baixe o Gboard da Google Play Store para ativar a correção automática e outros recursos do teclado:",
     "downloadGboardSteps": " • Baixar Gboard\n  • Abrir o aplicativo\n  • Idiomas\n  • Adicionar teclado\n  • Selecionar idioma\n  • Selecionar tipo de teclado\n  • Concluído",
-    "downloadGboardDescription": "Depois de selecionar o idioma, você pode clicar no pequeno ícone do globo na parte inferior esquerda do seu teclado para ativar o teclado recentemente instalado.",
     "enableAutocorrectWarning": "Atenção! É necessário adicionar o teclado do idioma alvo",
     "displayName": "Nome de exibição",
     "leaveRoomDescription": "Você está prestes a sair deste chat. Outros usuários verão que você saiu do chat.",
@@ -6343,15 +6331,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -8547,16 +8527,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Esta palavra de vocabulário será removida permanentemente da sua análise",
     "woman": "Mulher",
     "man": "Homem",
     "otherGender": "Outro",
     "unselectedGender": "Selecione uma opção de gênero",
     "chatParticipantTooltip": "Estas são todas as pessoas neste chat. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10639,8 +10614,6 @@
     "audioWordsDescription": "Reproduza o áudio de uma palavra ao tocar nela.",
     "audioChoicesToolName": "Opções",
     "audioChoicesDescription": "Reproduza o áudio das opções de resposta em atividades práticas.",
-    "audioIncomingMessagesToolName": "Mensagens recebidas",
-    "audioIncomingMessagesDescription": "Leia automaticamente as mensagens recebidas em voz alta no seu idioma-alvo para praticar a escuta.",
     "choosePangeaAvatar": "Escolha um avatar Pangea",
     "readAloudNoVoiceTitle": "Nenhuma voz de alta qualidade em {language} encontrada",
     "readAloudNoVoiceDesktopWeb": "Este navegador não oferece uma voz de alta qualidade em {language}, então as mensagens não podem ser lidas em voz alta aqui. Chrome e Edge geralmente incluem vozes de alta qualidade.",
@@ -10661,5 +10634,77 @@
     "conversationFromDayOne": "Conversação desde o primeiro dia",
     "builtForConnection": "Feito para conexão",
     "aiWhenYouNeedIt": "IA quando você precisar",
-    "practiceTailoredForYou": "Prática personalizada para você"
+    "practiceTailoredForYou": "Prática personalizada para você",
+    "deletedVocab": "Palavras excluídas",
+    "blockLemmaConfirmation": "Esta palavra será removida do seu vocabulário e deixará de render XP. Você pode recuperá-la em Palavras excluídas.",
+    "deletedVocabListBody": "Estas palavras estão ocultas do seu vocabulário e não rendem XP. Restaure uma para recuperá-la.",
+    "deletedVocabListBodyEmpty": "Você não excluiu nenhuma palavra. As palavras que você excluir do seu vocabulário aparecerão aqui para que você possa recuperá-las.",
+    "deletedVocabListLabel": "Palavras excluídas",
+    "restore": "Restaurar",
+    "deletedWordLabel": "{lemma}, excluído",
+    "restoredWords": "{count, plural, =1{1 palavra restaurada} other{{count} palavras restauradas}}",
+    "chatSearchPageLabel": "Página de pesquisa do chat",
+    "selectImageLabel": "Selecionar imagem",
+    "userSearchTagsLabel": "Pesquisar em...",
+    "courseDetails": "Detalhes do curso",
+    "objective": "Objetivo",
+    "pingedLabel": "Notificado",
+    "mapFilterPlayerCount": "{count} jogadores",
+    "practiceFeedbackButtonTooltip": "Reportar um problema com este exercício",
+    "practiceFeedbackDialogTitle": "Feedback do Exercício de Prática",
+    "practiceFeedbackSelectPair": "Qual par parece errado?",
+    "practiceFeedbackUserSetEmoji": "Você escolheu este emoji — altere-o no cartão da palavra",
+    "practiceFeedbackAlreadyMatched": "Já combinado corretamente",
+    "practiceFeedbackUpdated": "Obrigado! O exercício foi atualizado com base no seu feedback.",
+    "practiceFeedbackUnchanged": "Obrigado! Seu relatório foi registrado, mas o conteúdo permaneceu inalterado.",
+    "audioOnNewMessageToolName": "Em nova mensagem",
+    "audioOnNewMessageDescription": "Leia automaticamente as novas mensagens recebidas em voz alta no seu idioma de destino.",
+    "audioOnMessageClickToolName": "Ao clicar na mensagem",
+    "audioOnMessageClickDescription": "Leia uma mensagem em voz alta no seu idioma de destino ao clicar nela.",
+    "audioSettingDisabledTitle": "Áudio do {toolName} desativado",
+    "audioSettingDisabledBody": "Você pode ativar o áudio do {toolName} nas suas configurações de aprendizado",
+    "audioSettingDisabledEnable": "Ativar",
+    "rejoinedTheActivity": "🔄 {username} voltou para esta atividade",
+    "shareAnalytics": "Compartilhar Análises",
+    "courseNoLongerAvailableTitle": "Curso indisponível",
+    "courseDeletedDialogDesc": "Este curso foi excluído.",
+    "pingedActivity": "Atividade com ping",
+    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuração permanece no seu idioma nativo para que você possa sempre encontrá-la.)",
+    "usernameTakenPleaseChooseAnother": "Esse nome de usuário já está em uso. Por favor, escolha outro.",
+    "allParticipants": "Todos os participantes",
+    "seeFullCoursePlan": "Ver plano de curso completo",
+    "catchUp": "Recuperar",
+    "messageLanguageIs": "Esta mensagem está definida para {language}.",
+    "updateMessageLanguage": "Clique aqui para alterar o idioma da mensagem.",
+    "messageLanguage": "Idioma da mensagem",
+    "messageLanguageUpdated": "Idioma da mensagem atualizado!",
+    "pickCefrLevelStepSubtitle": "Você pode mudar isso depois",
+    "unlockPremiumAudio": "Desbloquear áudio premium",
+    "unlockTranslations": "Desbloquear traduções",
+    "unlockEmojiMode": "Desbloquear modo emoji",
+    "unlockMessagePractice": "Desbloquear prática de mensagens",
+    "unlockWritingAssistance": "Desbloquear assistência de escrita",
+    "courseSectionTeaching": "Ensino",
+    "courseSectionLearning": "Aprendizagem",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
+    "showMore": "Mostrar mais",
+    "showLess": "Mostrar menos",
+    "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}",
+    "markAllRead": "Marcar tudo como lido",
+    "usersAreTryingToJoinCourse": "Usuários estão tentando entrar no seu curso",
+    "denyAllUsers": "Recusar todos os usuários",
+    "denyAllKnocksDescription": "Esses usuários serão rejeitados do curso. Eles podem tentar entrar novamente a qualquer momento.",
+    "courseNameHint": "Nome do curso",
+    "typeCourseCodeToConfirm": "Para confirmar, digite o código do curso {code} abaixo.",
+    "typeCourseNameToConfirm": "Para confirmar, digite o nome do curso {name} abaixo.",
+    "inviteAFriend": "Convidar um amigo",
+    "autocorrectAndroidDialogTitle": "Autocorreção no seu idioma de destino",
+    "autocorrectAndroidDialogBody": "Quando você digita em um bate-papo, seu teclado mudará para o idioma de destino e corrigirá a ortografia nesse idioma.",
+    "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o seu idioma de destino, instale o Gboard e adicione o idioma lá:",
+    "resendInSeconds": "Reenviar ({seconds})",
+    "mapLevelFallbackNotice": "Ainda não há atividades {selected} — mostrando {shown} em vez disso.",
+    "switchLanguageChipLabel": "Mudar para {language}",
+    "languageDropdownLevel": "Nível {level}",
+    "whatAreYouLearning": "O que você está aprendendo?",
+    "languageSwitcherBaseLanguageLabel": "Seu idioma base"
 }

@@ -280,7 +280,10 @@ class Choreographer extends ChangeNotifier {
     _startLoading();
 
     feedbackText != null
-        ? await igcController.rerunWithFeedback(feedbackText)
+        ? await igcController.rerunWithFeedback(
+            textController.text,
+            feedbackText,
+          )
         : await igcController.getIGCTextData(textController.text, []);
 
     if (igcController.openNormalizationMatches.isNotEmpty) {

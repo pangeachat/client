@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart' as matrix;
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
@@ -16,6 +17,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'user_model.dart';
@@ -45,7 +47,35 @@ class UserController {
   /// to be read in from client's account data each time it is accessed.
   Profile? _cachedProfile;
 
-  PublicProfileModel? publicProfile;
+  PublicProfileModel? _publicProfile;
+
+  /// The account [_publicProfile] was loaded for.
+  ///
+  /// [UserController] outlives any one login — it hangs off the process-wide
+  /// [MatrixState.pangeaController] — while [client] resolves whichever account
+  /// is active NOW, and the whole profile is PUT as one blob. Without the owner
+  /// recorded alongside it, a blob loaded for one account is written onto the
+  /// next one, giving a user a bio, country, levels and analytics room ids they
+  /// never set (#8531).
+  String? _publicProfileUserId;
+
+  /// The signed-in user's public profile, or null until it has been loaded for
+  /// the account that is active now. Every writer gates on that null, so it
+  /// must never be left holding another account's profile.
+  PublicProfileModel? get publicProfile => _publicProfile;
+
+  /// Records the profile together with the account it belongs to. The two are
+  /// only ever set as a pair, so a write cannot be aimed at the wrong account.
+  void setPublicProfile(PublicProfileModel? profile, {String? userId}) {
+    _publicProfile = profile;
+    _publicProfileUserId = profile == null ? null : userId;
+  }
+
+  /// Whether the loaded public profile belongs to the account that is active
+  /// now. False while nothing is loaded, and false if the active account
+  /// changed after it was loaded — both mean "do not write".
+  bool get _publicProfileIsOwn =>
+      _publicProfile != null && _publicProfileUserId == client.userID;
 
   /// Listens for account updates and updates the cached profile
   StreamSubscription? _profileListener;
@@ -134,6 +164,60 @@ class UserController {
     await updatedProfile.saveProfileData(waitForDataInSync: waitForDataInSync);
   }
 
+  /// True when [language] is the learner's base language, short-code
+  /// compared (so 'es' matches a base of 'es-MX') — the rule
+  /// [IdenticalLanguageException] enforces inside the profile write
+  /// (profile.instructions.md, "Switching to the learner's base language is
+  /// refused, not attempted"). Callers that offer a switch before it's
+  /// attempted — the language switcher sheet's row list — use this to know
+  /// up front, rather than reacting to the throw.
+  static bool isBaseLanguage(LanguageModel language, String? baseLangCode) {
+    final baseLangShort = baseLangCode?.split('-').first;
+    return baseLangShort != null && language.langCodeShort == baseLangShort;
+  }
+
+  /// True when [language] is already the learner's target language,
+  /// short-code compared the same way [isBaseLanguage] is.
+  static bool isCurrentTargetLanguage(
+    LanguageModel language,
+    String? targetLangCode,
+  ) {
+    final targetLangShort = targetLangCode?.split('-').first;
+    return targetLangShort != null && language.langCodeShort == targetLangShort;
+  }
+
+  /// Whether a content language chip should tint itself and offer a switch
+  /// to [language] (profile.instructions.md, "Switching from context",
+  /// point 6): not when it's already the learner's target, and not when
+  /// it's their base language — a switch there is refused, so there's
+  /// nothing to offer.
+  static bool canSwitchTo(
+    LanguageModel language, {
+    required String? targetLangCode,
+    required String? baseLangCode,
+  }) =>
+      !isCurrentTargetLanguage(language, targetLangCode) &&
+      !isBaseLanguage(language, baseLangCode);
+
+  /// Switches the learner's target language — the one write every inline
+  /// switch path shares (profile.instructions.md, "Switching from context"):
+  /// the send-time mismatch popup, the reading-toolbar snackbar, and the
+  /// language switcher sheet. Throws [IdenticalLanguageException] rather
+  /// than writing when [language] is the learner's base language.
+  Future<void> updateTargetLanguage(LanguageModel language) async {
+    await updateProfile((profile) {
+      if (isBaseLanguage(language, profile.userSettings.sourceLanguage)) {
+        throw IdenticalLanguageException();
+      }
+
+      return profile.copyWith(
+        userSettings: profile.userSettings.copyWith(
+          targetLanguage: language.langCode,
+        ),
+      );
+    }, waitForDataInSync: true);
+  }
+
   /// A completer for the profile model of a user.
   Completer<void> initCompleter = Completer<void>();
   bool _initializing = false;
@@ -184,19 +268,30 @@ class UserController {
       await client.onSync.stream.first;
     }
 
-    if (client.userID == null) return;
+    // Pinned before the awaits below: the account can change while the profile
+    // request is in flight, and what is loaded here must be attributed to the
+    // account it was actually read for, never to whoever is active when it
+    // lands.
+    final userId = client.userID;
+    if (userId == null) return;
     final accountData = client.accountData[UserConstants.userProfile]?.content;
     final fromAccountData =
         Profile.fromAccountData(accountData) ?? Profile.emptyProfile;
     _cachedProfile ??= fromAccountData;
 
     try {
-      final resp = await client.getUserProfile(client.userID!);
-      publicProfile = PublicProfileModel.fromJson(resp.additionalProperties);
+      final resp = await client.getUserProfile(userId);
+      setPublicProfile(
+        PublicProfileModel.fromJson(resp.additionalProperties),
+        userId: userId,
+      );
     } catch (e) {
       // getting a 404 error for some users without pre-existing profile
       // still want to set other properties, so catch this error
-      publicProfile = PublicProfileModel(analytics: AnalyticsProfileModel());
+      setPublicProfile(
+        PublicProfileModel(analytics: AnalyticsProfileModel()),
+        userId: userId,
+      );
     }
 
     await updatePublicProfile();
@@ -218,6 +313,7 @@ class UserController {
     _initializing = false;
     initCompleter = Completer<void>();
     _cachedProfile = null;
+    setPublicProfile(null);
     _profileListener?.cancel();
     _profileListener = null;
   }
@@ -289,6 +385,24 @@ class UserController {
     String type,
     Map<String, dynamic> content,
   ) async {
+    // Last line of defence, past every caller's own guard: the profile in hand
+    // is written only to the account it was loaded for. Reported once a session
+    // because a refusal repeats for as long as the mismatch lasts.
+    if (!_publicProfileIsOwn) {
+      await ErrorHandler.logErrorOnce(
+        key: 'public-profile-write-refused',
+        e: "Refused to write a public profile that belongs to another account",
+        s: StackTrace.current,
+        data: {
+          'loadedFor': _publicProfileUserId,
+          'activeUser': client.userID,
+          'type': type,
+        },
+        level: SentryLevel.warning,
+      );
+      return;
+    }
+
     try {
       await client.setUserProfile(client.userID!, type, content);
     } catch (e, s) {
@@ -307,7 +421,7 @@ class UserController {
   }) async {
     targetLanguage ??= userL2;
     baseLanguage ??= userL1;
-    if (targetLanguage == null || publicProfile == null) return;
+    if (targetLanguage == null || !_publicProfileIsOwn) return;
 
     final analyticsRoom = client.ownAnalyticsRoomLocal(lang: targetLanguage);
 
@@ -335,10 +449,31 @@ class UserController {
   }
 
   Future<void> _addAnalyticsRoomIdsToPublicProfile() async {
-    if (publicProfile?.analytics.languageAnalytics == null) return;
+    if (!_publicProfileIsOwn ||
+        publicProfile?.analytics.languageAnalytics == null) {
+      return;
+    }
     final analyticsRooms = client.allMyAnalyticsRooms;
 
     if (analyticsRooms.isEmpty) return;
+
+    // Drop any analytics room id naming a room this user did not create. Such
+    // an id arrived with another account's blob (#8531) and is not decoration:
+    // the instructor-access grant reads it to choose the room it invites
+    // instructors into, and Synapse rejects a room the caller did not create —
+    // so a foreign id silently leaves this student's instructors with no
+    // analytics access at all. The room id is the only field here whose owner
+    // is verifiable, so it is the only one repaired; a level that came from the
+    // same blob is left to the normal analytics update, which overwrites it for
+    // the language the user actually studies.
+    //
+    // Safe against a room that has not surfaced in sync yet: the early return
+    // above means this runs only once some analytics room is visible, and an id
+    // cleared in error is restored by the loop below on the next init.
+    publicProfile!.analytics.clearForeignAnalyticsRoomIds(
+      analyticsRooms.map((room) => room.id).toSet(),
+    );
+
     for (final analyticsRoom in analyticsRooms) {
       final lang = analyticsRoom.madeForLang?.split("-").first;
       if (lang == null || publicProfile?.analytics.languageAnalytics == null) {
@@ -371,7 +506,7 @@ class UserController {
 
   Future<void> addXPOffset(int offset) async {
     final targetLanguage = userL2;
-    if (targetLanguage == null || publicProfile == null) return;
+    if (targetLanguage == null || !_publicProfileIsOwn) return;
 
     publicProfile!.analytics.addXPOffset(
       targetLanguage,
@@ -385,15 +520,26 @@ class UserController {
   }
 
   Future<void> updatePublicProfile() async {
-    if (publicProfile == null ||
-        (publicProfile!.country == profile.userSettings.country &&
-            publicProfile!.about == profile.userSettings.about)) {
+    final current = publicProfile;
+    if (current == null || !_publicProfileIsOwn) return;
+    if (current.country == profile.userSettings.country &&
+        current.about == profile.userSettings.about) {
       return;
     }
 
-    publicProfile = publicProfile!.copyWith(
-      country: profile.userSettings.country,
-      about: profile.userSettings.about,
+    // Built rather than copied: the mirror has to be able to CLEAR. country and
+    // about are whatever UserSettings holds, null included — toJson omits a
+    // null field and the PUT replaces the whole profile object, so the key is
+    // removed server-side. A sync that can only overwrite and never clear
+    // cannot converge: it re-writes the stale value on every settings update,
+    // which is why a foreign bio survived every later edit (#8531).
+    setPublicProfile(
+      PublicProfileModel(
+        analytics: current.analytics,
+        country: profile.userSettings.country,
+        about: profile.userSettings.about,
+      ),
+      userId: _publicProfileUserId,
     );
 
     await _savePublicProfileUpdate(
@@ -452,8 +598,10 @@ class UserController {
         return profile.toolSettings.audioWords;
       case ToolSetting.audioChoices:
         return profile.toolSettings.audioChoices;
-      case ToolSetting.audioIncomingMessages:
-        return profile.toolSettings.audioIncomingMessages;
+      case ToolSetting.audioOnNewMessage:
+        return profile.toolSettings.audioOnNewMessage;
+      case ToolSetting.audioOnMessageClick:
+        return profile.toolSettings.audioOnMessageClick;
     }
   }
 

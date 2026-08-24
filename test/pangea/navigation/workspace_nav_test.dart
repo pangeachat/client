@@ -359,6 +359,82 @@ void main() {
       );
     });
 
+    test('a section subpage rides the param as <section>/all (#8357)', () {
+      final loc = WorkspaceNav.openCourseTab(
+        u('/?c=!s'),
+        tab: SpaceSettingsTabs.chat,
+        expanded: true,
+      );
+      expect(u(loc).queryParameters['left'], 'course:chat/all');
+
+      final param =
+          parseOpenPanels(u(loc)).left.single.param as CourseDetailsTokenParam;
+      expect(param.activeTab, SpaceSettingsTabs.chat);
+      expect(param.expanded, isTrue);
+
+      // Back from the subpage: the plain section param, not expanded.
+      final backParam =
+          parseOpenPanels(
+                u(
+                  WorkspaceNav.openCourseTab(
+                    u(loc),
+                    tab: SpaceSettingsTabs.chat,
+                  ),
+                ),
+              ).left.single.param
+              as CourseDetailsTokenParam;
+      expect(backParam.expanded, isFalse);
+    });
+
+    test('a subpage pops via the token, keeping the card\'s slot (#8357)', () {
+      // `<section>/all` is a pushed subpage, so the PANEL's close control
+      // owns the back arrow (the close-affordance rule) — the token must
+      // read as pushed and pop to the plain section.
+      const token = CoursePanelToken(
+        CourseDetailsTokenParam(
+          activeTab: SpaceSettingsTabs.participants,
+          expanded: true,
+        ),
+      );
+      expect(token.param?.isPushed, isTrue);
+      expect(token.popped?.param?.expanded, isFalse);
+      expect(token.popped?.param?.activeTab, SpaceSettingsTabs.participants);
+
+      // The pop replaces the card token IN PLACE: with a detail open beside
+      // the card (invite opened from the card, then "All participants"
+      // pushed), the master must not land after its detail.
+      final loc = u('/?c=!s&left=course:participants/all,coursepage:invite');
+      final left = parseOpenPanels(u(WorkspaceNav.popPage(loc, token))).left;
+      expect(left.first.type, PanelTypesEnum.course);
+      expect((left.first.param as CourseDetailsTokenParam).expanded, isFalse);
+      expect(left.last.type, PanelTypesEnum.coursepage);
+    });
+
+    test('an unknown segment after the section parses as not expanded', () {
+      final param = CourseDetailsTokenParam.parse('chat/bogus');
+      expect(param.activeTab, SpaceSettingsTabs.chat);
+      expect(param.expanded, isFalse);
+    });
+
+    test('a trailing segment after /all is malformed, not a push', () {
+      final param = CourseDetailsTokenParam.parse('chat/all/bogus');
+      expect(param.activeTab, SpaceSettingsTabs.chat);
+      expect(param.expanded, isFalse);
+      expect(param.isPushed, isFalse);
+    });
+
+    test('an expanded non-expandable section is not pushed', () {
+      // `more` shows everything inline; its /all degrades to the section
+      // scroll, so the panel must not render a back arrow over the plain card.
+      const param = CourseDetailsTokenParam(
+        activeTab: SpaceSettingsTabs.more,
+        expanded: true,
+      );
+      expect(param.expandedSection, isNull);
+      expect(param.isPushed, isFalse);
+      expect(param.poppedParam, isNull);
+    });
+
     test('keeps a live room beside the course (a course can scope a room)', () {
       // A course-scoped room: the `?m=course:` filter is set, the room is live,
       // and opening the course card keeps the room beside it.
@@ -1243,6 +1319,29 @@ void main() {
         SettingsPagePanelToken(SettingsTokenParam.parse('security')),
       );
       expect(parseOpenPanels(u(loc)).right.length, 0);
+    });
+
+    test('blocked vocab pops back to the vocab list, not away (#6803)', () {
+      const vocab = AnalyticsPanelToken(
+        AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
+      );
+      const blocked = AnalyticsPanelToken(
+        AnalyticsTokenParam(
+          subpage: ProgressIndicatorEnum.wordsUsed,
+          deleted: true,
+        ),
+      );
+
+      var loc = WorkspaceNav.openAnalytics(u('/'));
+      expect(parseOpenPanels(u(loc)).right.single, vocab);
+
+      loc = WorkspaceNav.openBlockedVocabList(u(loc));
+      expect(parseOpenPanels(u(loc)).right.single, blocked);
+
+      // Without AnalyticsPanelToken.popped this pops to an empty column, i.e.
+      // the back arrow closes analytics instead of returning to the list.
+      loc = WorkspaceNav.popPage(u(loc), blocked);
+      expect(parseOpenPanels(u(loc)).right.single, vocab);
     });
 
     test('pushing keeps other panels in the column', () {

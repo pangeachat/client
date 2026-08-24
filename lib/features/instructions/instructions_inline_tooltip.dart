@@ -162,6 +162,7 @@ class InlineTooltipState extends State<InlineTooltip>
                         container: true,
                         child: widget.richText != null
                             ? RichText(
+                                textScaler: MediaQuery.textScalerOf(context),
                                 text: TextSpan(
                                   children: widget.richText,
                                   style:

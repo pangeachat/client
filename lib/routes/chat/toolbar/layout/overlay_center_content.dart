@@ -32,6 +32,7 @@ class OverlayCenterContent extends StatelessWidget {
   final ReadingAssistanceMode? readingAssistanceMode;
 
   final String overlayKey;
+  final bool useTokenKeys;
 
   const OverlayCenterContent({
     required this.event,
@@ -48,6 +49,7 @@ class OverlayCenterContent extends StatelessWidget {
     this.sizeAnimation,
     this.isTransitionAnimation = false,
     this.readingAssistanceMode,
+    this.useTokenKeys = false,
     super.key,
   });
 
@@ -89,6 +91,7 @@ class OverlayCenterContent extends StatelessWidget {
                     messageHeight: messageHeight,
                     isTransitionAnimation: isTransitionAnimation,
                     readingAssistanceMode: readingAssistanceMode,
+                    useTokenKeys: useTokenKeys,
                     canRefresh:
                         (event.eventId ==
                             host.chatController?.refreshEventID) &&

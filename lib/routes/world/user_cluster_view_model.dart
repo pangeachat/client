@@ -74,10 +74,18 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   final ValueNotifier<String?> _displayName = ValueNotifier(null);
 
   late final Stream<LevelUpdate> _levelUpdates;
+  late final StreamSubscription<String> _ownProfileUpdates;
+
+  /// How long the own-profile update stream must stay quiet before the
+  /// signals that piled up during a burst are honored with one fetch.
+  final Duration profileRefreshQuietPeriod;
+
+  static const Duration defaultProfileRefreshQuietPeriod = Duration(seconds: 1);
 
   WorldUserClusterViewModel({
     required this.analyticsService,
     required this.client,
+    this.profileRefreshQuietPeriod = defaultProfileRefreshQuietPeriod,
   }) {
     _levelUpdates = analyticsService.updateDispatcher.levelUpdateStream.stream
         .where(
@@ -87,6 +95,12 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
               .showSubscriptionGatedContent,
         );
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
+    // The cluster outlives the profile page that changes the avatar, so it
+    // relies on the change being announced: by the page's own write
+    // (OwnProfileClientExtension) and by the member events sync raises (#8330).
+    _ownProfileUpdates = client.onUserProfileUpdate.stream
+        .where((userId) => userId == client.userID)
+        .listen((_) => _onOwnProfileUpdate());
   }
 
   final StreamController<void> _planHydrationStream =
@@ -95,10 +109,14 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   void _onPlanHydrate() => _planHydrationStream.add(null);
 
   bool _profileLoaded = false;
+  bool _disposed = false;
 
   @override
   void dispose() {
+    _disposed = true;
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
+    _ownProfileUpdates.cancel();
+    _profileRefreshQuietTimer?.cancel();
     _planHydrationStream.close();
     _avatarUrl.dispose();
     _displayName.dispose();
@@ -261,13 +279,71 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
     ),
   );
 
-  Future<void> _loadProfile() async {
+  bool _loadingProfile = false;
+
+  /// A signal not yet honored with a fetch: it landed while one was in flight
+  /// (that fetch may predate the change it announces) or inside a burst.
+  bool _profileRefreshPending = false;
+  Timer? _profileRefreshQuietTimer;
+
+  /// One avatar edit rewrites the member event in every joined room, so the
+  /// update stream arrives as a burst spread over the sync that carries it —
+  /// one fetch per signal is a request storm for an account in many rooms.
+  /// The first signal fetches at once (a local edit shows immediately); the
+  /// rest fold into a single trailing fetch once the stream has been quiet for
+  /// [profileRefreshQuietPeriod] (#8330).
+  void _onOwnProfileUpdate() {
+    if (_profileRefreshQuietTimer == null && !_loadingProfile) {
+      _loadProfile(fromServer: true);
+    } else {
+      _profileRefreshPending = true;
+    }
+    _profileRefreshQuietTimer?.cancel();
+    _profileRefreshQuietTimer = Timer(profileRefreshQuietPeriod, () {
+      _profileRefreshQuietTimer = null;
+      _flushPendingProfileRefresh();
+    });
+  }
+
+  /// Honors a pending signal once nothing stands in the way — the burst has
+  /// gone quiet and no fetch is in flight. Called from both ends: when the
+  /// quiet timer fires and when a fetch completes.
+  void _flushPendingProfileRefresh() {
+    if (!_profileRefreshPending ||
+        _loadingProfile ||
+        _profileRefreshQuietTimer != null) {
+      return;
+    }
+    _profileRefreshPending = false;
+    _loadProfile(fromServer: true);
+  }
+
+  /// Loads the own profile into [avatarUrl] / [displayName]. The initial load
+  /// takes the SDK's cached profile; [fromServer] skips the cache, which the
+  /// SDK refreshes with whatever the last fetch saw — an update signal must
+  /// not be answered from it.
+  Future<void> _loadProfile({bool fromServer = false}) async {
+    if (_disposed) return;
+    if (_loadingProfile) {
+      _profileRefreshPending = true;
+      return;
+    }
+    _loadingProfile = true;
     try {
-      final profile = await client.fetchOwnProfile();
+      // Swallows network failures itself (the SDK answers from its cache, or
+      // with an empty profile), so the avatar falls back to the initial.
+      final profile = fromServer
+          ? await client.getProfileFromUserId(
+              client.userID!,
+              maxCacheAge: Duration.zero,
+            )
+          : await client.fetchOwnProfile();
+      if (_disposed) return;
       _avatarUrl.value = profile.avatarUrl;
       _displayName.value = profile.displayName;
-    } catch (_) {
-      // Avatar falls back to the initial; not worth surfacing.
+    } finally {
+      _loadingProfile = false;
+      _flushPendingProfileRefresh();
     }
   }
 }

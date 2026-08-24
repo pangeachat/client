@@ -16,6 +16,8 @@
 /// boundary").
 library;
 
+import 'package:flutter/material.dart' show kMinInteractiveDimension;
+
 /// A resolved per-view pin budget: the constituent tier caps plus the trail
 /// reservation. [total] (`N`) is the sum of the tier caps.
 class PinBudget {
@@ -99,6 +101,18 @@ abstract class PinSize {
   /// maps-like redesign).
   static const double smallDiameter = 8.0;
 
+  /// The tappable box around a **dot-shaped** marker — a small-tier dot, or the
+  /// completed trail star at any tier (`PinTier.isDot`). The dot itself stays
+  /// [smallDiameter] / [starDotDiameter] (world-map.instructions.md: "a
+  /// deliberately small dot"); only its flutter_map marker box — and so its hit
+  /// target and semantics rect — is padded out, centred on the same anchor, to
+  /// Material's minimum interactive dimension (48 logical px, above WCAG
+  /// 2.5.5's 44) so a dot is tappable on a phone without zooming in until it
+  /// earns a mid pin (#7688). Overlapping dots overlap their targets too — a
+  /// tap between two dots lands on the one drawn on top, which the issue
+  /// accepted over dots that take several tries to hit.
+  static const double dotTouchTarget = kMinInteractiveDimension;
+
   /// Mid pin (activity-type glyph) diameter — the circular "head" of the
   /// teardrop marker.
   static const double midDiameter = 44.0;
@@ -106,18 +120,18 @@ abstract class PinSize {
   /// Extra height below the mid pin's circular head for the teardrop's
   /// pointed tip, which sits at the pin's geographic anchor (Figma
   /// `Activity pin v3`; world-map.instructions.md, "Pin display"). Small pins
-  /// stay a plain circle and don't use this.
+  /// stay a plain circle and don't use this. A mid pin's "num/num" participant
+  /// count (joinable / ongoing-pending only) stacks inside the circular head
+  /// under its icon glyph, so the marker box is just head + point — no reserved
+  /// row below the tip, and no outside activity-name label any more.
   static const double midPointHeight = 10.0;
 
-  /// No longer a separate reserved row: a mid pin's "num/num" participant
-  /// count (joinable / ongoing-pending only) now stacks inside the circular
-  /// head under its icon glyph (world-map.instructions.md, "Pin display"), so
-  /// the marker box needs no extra height below the teardrop's point. Kept at
-  /// 0 (rather than removed) so the box-height/anchor math in
-  /// `world_map_ranking.dart`/`world_map_view.dart` stays a single formula.
-  static const double midLabelHeight = 0.0;
-
-  /// Large card width.
+  /// Large card width bounds. Cards size to their content (title + info row)
+  /// between these — [largeMinWidth] keeps a short-title card from collapsing to
+  /// a sliver, [largeWidth] caps a long one (its title wraps to two lines and
+  /// then ellipsizes rather than growing past it). The marker box is always the
+  /// max width and centres the card, so the tail still lands on the pin.
+  static const double largeMinWidth = 150.0;
   static const double largeWidth = 260.0;
 
   /// Large card height — taller when a joinable session shows its participant row.

@@ -701,8 +701,6 @@
     "leave": "Iščä",
     "leftTheChat": "Zapustil je pogovor",
     "lightTheme": "Svetla",
-    "dehydrate": "Izvozi sejo in počisti napravo",
-    "dehydrateWarning": "Ta dejanja ni mogoče razveljaviti. Poskrbite, da varno shranite varnostno kopijo datoteke.",
     "hydrate": "Obnovi iz varnostne kopije",
     "loadingPleaseWait": "Nalaganje… Prosimo počakajte.",
     "loadMore": "Naloži več…",
@@ -1606,9 +1604,7 @@
     "enableAutocorrectPopupTitle": "Dodajte tipkovnico za ciljni jezik tako, da greste na:",
     "enableAutocorrectPopupSteps": "  • Nastavitve\n  • Splošno\n  • Tipkovnica\n  • Tipkovnice\n  • Dodaj novo tipkovnico",
     "enableAutocorrectPopupDescription": "Ko je jezik izbran, lahko kliknete na majhno ikono zemljevide na spodnjem levem delu tipkovnice, da aktivirate novo nameščeno tipkovnico.",
-    "downloadGboardTitle": "Prenesite Gboard iz trgovine Google Play, da omogočite samodejno popravljanje in druge funkcije tipkovnice:",
     "downloadGboardSteps": " • Prenesi Gboard\n  • Odpri aplikacijo\n  • Jezik\n  • Dodaj tipkovnico\n  • Izberi jezik\n  • Izberi vrsto tipkovnice\n  • Končano",
-    "downloadGboardDescription": "Ko je jezik izbran, lahko kliknete majhno ikono zemeljske globus na spodnjem levem delu vaše tipkovnice, da aktivirate novo nameščeno tipkovnico.",
     "enableAutocorrectWarning": "Opozorilo! Potrebno je dodati tipkovnico ciljanega jezika",
     "displayName": "Prikazno ime",
     "leaveRoomDescription": "Približujete se izstopu iz tega klepeta. Drugi uporabniki bodo videli, da ste zapustili klepet.",
@@ -1809,7 +1805,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-05 11:42:16.566366",
+    "@@last_modified": "2026-08-24 11:54:21.179132",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -2374,14 +2370,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -6344,15 +6332,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -8548,16 +8528,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ta beseda v besedi bo trajno odstranjena iz vaših analiz.",
     "woman": "Ženska",
     "man": "Moški",
     "otherGender": "Drugo",
     "unselectedGender": "Izberite možnost spola",
     "chatParticipantTooltip": "To so vsi v tem klepetu. Kliknite na avatar katerega koli uporabnika in \"začnite pogovor\", da pošljete DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10640,8 +10615,6 @@
     "audioWordsDescription": "Predvajaj zvok besede, ko se je dotakneš.",
     "audioChoicesToolName": "Izbire",
     "audioChoicesDescription": "Predvajaj zvok za izbire odgovorov v vajah.",
-    "audioIncomingMessagesToolName": "Dohodne sporočila",
-    "audioIncomingMessagesDescription": "Samodejno preberi prejeta sporočila na glas v ciljnem jeziku za vajo poslušanja.",
     "choosePangeaAvatar": "Izberite avatar Pangea",
     "readAloudNoVoiceTitle": "Ni najdenega visokokakovostnega glasu za {language}",
     "readAloudNoVoiceDesktopWeb": "Ta brskalnik ne ponuja visokokakovostnega glasu za {language}, zato sporočil ni mogoče dobro prebrati na glas. Chrome in Edge običajno vključujeta visokokakovostne glasove.",
@@ -10662,5 +10635,77 @@
     "conversationFromDayOne": "Pogovor od prvega dne",
     "builtForConnection": "Ustvarjeno za povezovanje",
     "aiWhenYouNeedIt": "AI, ko ga potrebuješ",
-    "practiceTailoredForYou": "Praksa, prilagojena tebi"
+    "practiceTailoredForYou": "Praksa, prilagojena tebi",
+    "deletedVocab": "Izbrisane besede",
+    "blockLemmaConfirmation": "Ta beseda bo odstranjena iz vašega besedišča in ne bo več prinašala XP. Lahko jo vrnete iz Izbrisanih besed.",
+    "deletedVocabListBody": "Te besede so skrite iz vašega besedišča in ne prinašajo XP. Obnovite jih, da jih vrnete.",
+    "deletedVocabListBodyEmpty": "Niste izbrisali nobene besede. Besede, ki jih izbrišete iz svojega besedišča, se bodo prikazale tukaj, da jih lahko vrnete.",
+    "deletedVocabListLabel": "Izbrisane besede",
+    "restore": "Obnovi",
+    "deletedWordLabel": "{lemma}, izbrisano",
+    "restoredWords": "{count, plural, =1{Obnovljena 1 beseda} other{Obnovljenih {count} besed}}",
+    "chatSearchPageLabel": "Stran za iskanje klepetov",
+    "selectImageLabel": "Izberi sliko",
+    "userSearchTagsLabel": "Išči v...",
+    "courseDetails": "Podrobnosti tečaja",
+    "objective": "Cilj",
+    "pingedLabel": "Pingano",
+    "mapFilterPlayerCount": "{count} igralcev",
+    "practiceFeedbackButtonTooltip": "Prijavi težavo s to vajo",
+    "practiceFeedbackDialogTitle": "Povratne informacije o vaji",
+    "practiceFeedbackSelectPair": "Kateri par se zdi napačen?",
+    "practiceFeedbackUserSetEmoji": "Izbrali ste ta emoji – spremenite ga na kartici z besedo",
+    "practiceFeedbackAlreadyMatched": "Že pravilno usklajeno",
+    "practiceFeedbackUpdated": "Hvala! Vaja je bila posodobljena na podlagi vaših povratnih informacij.",
+    "practiceFeedbackUnchanged": "Hvala! Vaše poročilo je bilo zabeleženo, vendar vsebina ostaja nespremenjena.",
+    "audioOnNewMessageToolName": "Ob novem sporočilu",
+    "audioOnNewMessageDescription": "Samodejno prebere nova prejeta sporočila na glas v vašem ciljnem jeziku.",
+    "audioOnMessageClickToolName": "Ob kliku na sporočilo",
+    "audioOnMessageClickDescription": "Prebere sporočilo na glas v vašem ciljnem jeziku, ko kliknete nanj.",
+    "audioSettingDisabledTitle": "Zvok {toolName} je onemogočen",
+    "audioSettingDisabledBody": "Zvok {toolName} lahko omogočite v nastavitvah učenja",
+    "audioSettingDisabledEnable": "Omogoči",
+    "rejoinedTheActivity": "🔄 {username} se je znova pridružil tej dejavnosti",
+    "shareAnalytics": "Deli analitiko",
+    "courseNoLongerAvailableTitle": "Tečaj ni na voljo",
+    "courseDeletedDialogDesc": "Ta tečaj je bil izbrisan.",
+    "pingedActivity": "Dejavnost pinga",
+    "appInTargetLanguageStaysInBaseLanguage": "(Ta nastavitev ostane v vašem maternem jeziku, da jo lahko vedno najdete.)",
+    "usernameTakenPleaseChooseAnother": "To uporabniško ime je že zasedeno. Izberite drugo.",
+    "allParticipants": "Vsi udeleženci",
+    "seeFullCoursePlan": "Oglejte si celoten načrt tečaja",
+    "catchUp": "Nadaljuj",
+    "messageLanguageIs": "Jezik sporočila je nastavljen na {language}.",
+    "updateMessageLanguage": "Kliknite tukaj za spremembo jezika sporočila.",
+    "messageLanguage": "Jezik sporočila",
+    "messageLanguageUpdated": "Jezik sporočila je posodobljen!",
+    "pickCefrLevelStepSubtitle": "To lahko pozneje spremenite",
+    "unlockPremiumAudio": "Odkleni premium zvok",
+    "unlockTranslations": "Odkleni prevode",
+    "unlockEmojiMode": "Odkleni način emoji",
+    "unlockMessagePractice": "Odkleni vajo sporočil",
+    "unlockWritingAssistance": "Odkleni pomoč pri pisanju",
+    "courseSectionTeaching": "Poučevanje",
+    "courseSectionLearning": "Učenje",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 tečaj} other{{count} tečajev}}",
+    "showMore": "Pokaži več",
+    "showLess": "Pokaži manj",
+    "countNewMessages": "{count, plural, =1{1 novo sporočilo} other{{count} novih sporočil}}",
+    "markAllRead": "Označi vse kot prebrano",
+    "usersAreTryingToJoinCourse": "Uporabniki se poskušajo pridružiti vašemu tečaju",
+    "denyAllUsers": "Zavrni vse uporabnike",
+    "denyAllKnocksDescription": "Ti uporabniki bodo zavrnjeni iz tečaja. Lahko se poskusijo znova pridružiti kadar koli.",
+    "courseNameHint": "Ime tečaja",
+    "typeCourseCodeToConfirm": "Za potrditev spodaj vnesite kodo tečaja {code}.",
+    "typeCourseNameToConfirm": "Za potrditev spodaj vnesite ime tečaja {name}.",
+    "inviteAFriend": "Povabi prijatelja",
+    "autocorrectAndroidDialogTitle": "Samodejni popravek v vašem ciljnem jeziku",
+    "autocorrectAndroidDialogBody": "Ko tipkate v klepetu, se bo tipkovnica preklopila na vaš ciljni jezik in popravljala črkovanje v tem jeziku.",
+    "autocorrectAndroidFallbackTitle": "Če vaša tipkovnica ne ponuja vašega ciljnega jezika, namestite Gboard in dodajte jezik tam:",
+    "resendInSeconds": "Ponovno pošlji ({seconds})",
+    "mapLevelFallbackNotice": "Še ni dejavnosti {selected} – namesto tega so prikazane dejavnosti {shown}.",
+    "switchLanguageChipLabel": "Preklopi na {language}",
+    "languageDropdownLevel": "Stopnja {level}",
+    "whatAreYouLearning": "Kaj se učiš?",
+    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik"
 }

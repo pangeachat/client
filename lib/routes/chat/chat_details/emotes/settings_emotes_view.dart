@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
@@ -22,11 +23,10 @@ class EmotesSettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (controller.widget.roomId != null && controller.room == null) {
-      return Scaffold(
-        appBar: AppBar(title: Text(L10n.of(context).oopsSomethingWentWrong)),
-        body: Center(
-          child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
-        ),
+      // The save-mode cancel button that takes priority below can't apply
+      // here — there is no pack to edit.
+      return RoomUnavailablePanel(
+        closeButton: controller.widget.embeddedCloseButton,
       );
     }
     final theme = Theme.of(context);
@@ -47,11 +47,9 @@ class EmotesSettingsView extends StatelessWidget {
         // world_v2: when hosted as a `course:emotes` push, the panel supplies
         // the leading `←` back to the card (the save-mode cancel button keeps
         // priority). See `routing.instructions.md`.
-        leading:
-            !controller.showSave &&
-                controller.widget.embeddedCloseButton != null
-            ? Center(child: controller.widget.embeddedCloseButton)
-            : null,
+        leading: controller.showSave
+            ? null
+            : Center(child: controller.widget.embeddedCloseButton),
         title: controller.showSave
             ? TextButton(
                 onPressed: controller.resetAction,

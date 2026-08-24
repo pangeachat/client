@@ -182,6 +182,11 @@ class LemmaUseExampleMessagesState extends State<LemmaUseExampleMessages> {
                 controller: host,
                 vocabLemmas: highlightLemmas,
                 onTokenClick: openToolbar,
+                // These chips render real chat messages. Without their own
+                // token target-key namespace they collide with the same event
+                // in the open chat timeline (#6803).
+                isAnalyticsExample: true,
+                useTokenKeys: true,
               ),
             ),
           ),

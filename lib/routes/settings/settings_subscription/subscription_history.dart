@@ -97,7 +97,8 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
       MatrixState.pangeaController.subscriptionController.subscriptionStatus;
 
   bool get _canManageSubscription =>
-      _subscriptionStatus?.manageEligible == true && _billingPortal != null;
+      _subscriptionStatus?.manageEligible == true &&
+      _billingPortalProvider.response?.hasBillingAccount == true;
 
   SubscriptionEntitlement? get _cancelableEntitlement =>
       _subscriptionStatus?.cancelableEntitlement;

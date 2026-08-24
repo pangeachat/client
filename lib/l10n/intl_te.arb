@@ -223,8 +223,6 @@
     "leave": "నిష్క్రమించండి",
     "leftTheChat": "చాట్ నుండి నిష్క్రమించారు",
     "lightTheme": "కాంతివంతమైన",
-    "dehydrate": "సెషన్ ఎగుమతి చేసి పరికరాన్ని శుభ్రం చేయండి",
-    "dehydrateWarning": "ఈ చర్యను తిరిగి చేయలేరు. బ్యాకప్ ఫైల్‌ను సురక్షితంగా నిల్వ చేయండి.",
     "hydrate": "బ్యాకప్ ఫైల్ నుండి పునరుద్ధరించండి",
     "loadingPleaseWait": "లోడ్ అవుతోంది… దయచేసి వేచిఉండండి.",
     "loadMore": "మరిన్ని లోడ్ చేయండి…",
@@ -1128,9 +1126,7 @@
     "enableAutocorrectPopupTitle": "మీ లక్ష్య భాష కీబోర్డ్‌ను జోడించడానికి ఈ క్రింది దశలను అనుసరించండి:",
     "enableAutocorrectPopupSteps": "  • సెట్టింగ్స్\n  • జనరల్\n  • కీబోర్డ్\n  • కీబోర్డ్స్\n  • కొత్త కీబోర్డ్ జోడించండి",
     "enableAutocorrectPopupDescription": "భాషను ఎంచుకున్న తర్వాత, మీ కీబోర్డ్ దిగువ ఎడమ వైపు ఉన్న చిన్న గ్లోబ్ ఐకాన్ పై క్లిక్ చేసి కొత్తగా ఇన్‌స్టాల్ చేసిన కీబోర్డ్‌ను యాక్టివేట్ చేయవచ్చు.",
-    "downloadGboardTitle": "ఆటోకరెక్ట్ మరియు ఇతర కీబోర్డ్ ఫీచర్లను సక్రియం చేయడానికి గూగుల్ ప్లే స్టోర్ నుండి Gboard ను డౌన్లోడ్ చేయండి:",
     "downloadGboardSteps": " • Gboard డౌన్లోడ్ చేయండి\n  • యాప్‌ను తెరవండి\n  • భాషలు\n  • కీబోర్డ్ జోడించండి\n  • భాషను ఎంచుకోండి\n  • కీబోర్డ్ రకాన్ని ఎంచుకోండి\n  • పూర్తి",
-    "downloadGboardDescription": "భాషను ఎంచుకున్న తర్వాత, మీ కీబోర్డ్ యొక్క కుడి కింది మూలలో ఉన్న చిన్న గ్లోబ్ చిహ్నాన్ని క్లిక్ చేయండి, తద్వారా కొత్తగా ఇన్‌స్టాల్ చేసిన కీబోర్డ్‌ను యాక్టివేట్ చేయవచ్చు.",
     "enableAutocorrectWarning": "హెచ్చరిక! మీ లక్ష్య భాష కీబోర్డ్‌ను జోడించాల్సి ఉంటుంది",
     "displayName": "ప్రదర్శన పేరు",
     "leaveRoomDescription": "మీరు ఈ చాట్‌ను విడిచిపోతున్నారు. ఇతర వినియోగదారులు మీరు చాట్‌ను విడిచిపోవడాన్ని చూడగలుగుతారు.",
@@ -1331,7 +1327,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-05 11:42:17.257730",
+    "@@last_modified": "2026-08-24 11:54:22.249343",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -2379,14 +2375,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -6349,15 +6337,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -8553,16 +8533,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "ఈ పదం మీ విశ్లేషణల నుండి శాశ్వతంగా తొలగించబడుతుంది",
     "woman": "మహిళ",
     "man": "పురుషుడు",
     "otherGender": "ఇతర",
     "unselectedGender": "ఒక లింగ ఎంపికను ఎంచుకోండి",
     "chatParticipantTooltip": "ఈ చాట్లో ఉన్న అందరే. ఏ వినియోగదారుడి అవతారంపై క్లిక్ చేసి \"సంభాషణ ప్రారంభించండి\" అని నేరుగా సందేశం పంపండి.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10645,8 +10620,6 @@
     "audioWordsDescription": "పదంపై నొక్కినప్పుడు దాని ఆడియోను ప్లే చేయండి.",
     "audioChoicesToolName": "ఎంపికలు",
     "audioChoicesDescription": "అభ్యాస కార్యకలాపాలలో సమాధాన ఎంపికల కోసం ఆడియోను ప్లే చేయండి.",
-    "audioIncomingMessagesToolName": "ఇన్‌కమింగ్ సందేశాలు",
-    "audioIncomingMessagesDescription": "వినే అభ్యాసం కోసం మీ లక్ష్య భాషలో స్వీకరించిన సందేశాలను స్వయంచాలకంగా బిగ్గరగా చదవండి.",
     "choosePangeaAvatar": "పంగేయా అవతార్‌ను ఎంచుకోండి",
     "readAloudNoVoiceTitle": "అధిక-నాణ్యత గల {language} వాయిస్ కనుగొనబడలేదు",
     "readAloudNoVoiceDesktopWeb": "ఈ బ్రౌజర్ అధిక-నాణ్యత గల {language} వాయిస్‌ను అందించదు, కాబట్టి సందేశాలను ఇక్కడ సరిగ్గా చదవలేము. Chrome మరియు Edge సాధారణంగా అధిక-నాణ్యత గల వాయిస్‌లను కలిగి ఉంటాయి.",
@@ -10667,5 +10640,77 @@
     "conversationFromDayOne": "మొదటి రోజు నుంచే సంభాషణ",
     "builtForConnection": "కనెక్షన్ కోసం నిర్మించబడింది",
     "aiWhenYouNeedIt": "మీకు అవసరమైనప్పుడు AI",
-    "practiceTailoredForYou": "మీకు అనుగుణంగా అభ్యాసం"
+    "practiceTailoredForYou": "మీకు అనుగుణంగా అభ్యాసం",
+    "deletedVocab": "తొలగించిన పదాలు",
+    "blockLemmaConfirmation": "ఈ పదం మీ పదజాలం నుండి తీసివేయబడుతుంది మరియు XP సంపాదించడం ఆగిపోతుంది. మీరు దీన్ని తొలగించిన పదాల నుండి తిరిగి తీసుకురావచ్చు.",
+    "deletedVocabListBody": "ఈ పదాలు మీ పదజాలం నుండి దాచబడ్డాయి మరియు XP సంపాదించవు. దాన్ని తిరిగి తీసుకురావడానికి ఒకదాన్ని పునరుద్ధరించండి.",
+    "deletedVocabListBodyEmpty": "మీరు ఏ పదాలను తొలగించలేదు. మీరు మీ పదజాలం నుండి తొలగించిన పదాలు ఇక్కడ కనిపిస్తాయి, తద్వారా మీరు వాటిని తిరిగి తీసుకురావచ్చు.",
+    "deletedVocabListLabel": "తొలగించిన పదాలు",
+    "restore": "పునరుద్ధరించు",
+    "deletedWordLabel": "{lemma}, తొలగించబడింది",
+    "restoredWords": "{count, plural, =1{1 పదం పునరుద్ధరించబడింది} other{{count} పదాలు పునరుద్ధరించబడ్డాయి}}",
+    "chatSearchPageLabel": "చాట్ శోధన పేజీ",
+    "selectImageLabel": "చిత్రాన్ని ఎంచుకోండి",
+    "userSearchTagsLabel": "దీనిలో శోధించండి...",
+    "courseDetails": "కోర్సు వివరాలు",
+    "objective": "లక్ష్యం",
+    "pingedLabel": "పింగ్ చేయబడింది",
+    "mapFilterPlayerCount": "{count} ఆటగాళ్ళు",
+    "practiceFeedbackButtonTooltip": "ఈ అభ్యాసంలో సమస్యను నివేదించండి",
+    "practiceFeedbackDialogTitle": "అభ్యాస వ్యాయామం అభిప్రాయం",
+    "practiceFeedbackSelectPair": "ఏ జత తప్పుగా కనిపిస్తుంది?",
+    "practiceFeedbackUserSetEmoji": "మీరు ఈ ఎమోజిని ఎంచుకున్నారు — పద కార్డ్ నుండి దీన్ని మార్చండి",
+    "practiceFeedbackAlreadyMatched": "ఇప్పటికే సరిగ్గా సరిపోలింది",
+    "practiceFeedbackUpdated": "ధన్యవాదాలు! మీ అభిప్రాయం ఆధారంగా వ్యాయామం నవీకరించబడింది.",
+    "practiceFeedbackUnchanged": "ధన్యవాదాలు! మీ నివేదిక రికార్డ్ చేయబడింది, కానీ కంటెంట్ మారకుండా తిరిగి వచ్చింది.",
+    "audioOnNewMessageToolName": "కొత్త సందేశం వచ్చినప్పుడు",
+    "audioOnNewMessageDescription": "మీ లక్ష్య భాషలో కొత్తగా వచ్చిన సందేశాలను స్వయంచాలకంగా బిగ్గరగా చదవండి.",
+    "audioOnMessageClickToolName": "సందేశంపై క్లిక్ చేసినప్పుడు",
+    "audioOnMessageClickDescription": "మీరు సందేశంపై క్లిక్ చేసినప్పుడు మీ లక్ష్య భాషలో బిగ్గరగా చదవండి.",
+    "audioSettingDisabledTitle": "{toolName} ఆడియో నిలిపివేయబడింది",
+    "audioSettingDisabledBody": "మీరు మీ అభ్యాస సెట్టింగ్‌లలో {toolName} ఆడియోను ప్రారంభించవచ్చు",
+    "audioSettingDisabledEnable": "ప్రారంభించు",
+    "rejoinedTheActivity": "🔄 {username} ఈ కార్యాచరణలో తిరిగి చేరారు",
+    "shareAnalytics": "విశ్లేషణలను భాగస్వామ్యం చేయండి",
+    "courseNoLongerAvailableTitle": "కోర్సు అందుబాటులో లేదు",
+    "courseDeletedDialogDesc": "ఈ కోర్సు తొలగించబడింది.",
+    "pingedActivity": "పింగ్ చేయబడిన కార్యాచరణ",
+    "appInTargetLanguageStaysInBaseLanguage": "(ఈ సెట్టింగ్ మీ స్థానిక భాషలోనే ఉంటుంది, కాబట్టి మీరు దీన్ని ఎల్లప్పుడూ కనుగొనగలరు.)",
+    "usernameTakenPleaseChooseAnother": "ఆ యూజర్‌నేమ్ ఇప్పటికే ఉంది. దయచేసి మరొకటి ఎంచుకోండి.",
+    "allParticipants": "అందరూ పాల్గొనేవారు",
+    "seeFullCoursePlan": "పూర్తి కోర్సు ప్లాన్ చూడండి",
+    "catchUp": "తెలుసుకోండి",
+    "messageLanguageIs": "ఈ సందేశం {language}కి సెట్ చేయబడింది.",
+    "updateMessageLanguage": "సందేశం యొక్క భాషను మార్చడానికి ఇక్కడ క్లిక్ చేయండి.",
+    "messageLanguage": "సందేశ భాష",
+    "messageLanguageUpdated": "సందేశ భాష నవీకరించబడింది!",
+    "pickCefrLevelStepSubtitle": "మీరు దీన్ని తర్వాత మార్చవచ్చు",
+    "unlockPremiumAudio": "ప్రీమియం ఆడియోను అన్‌లాక్ చేయండి",
+    "unlockTranslations": "అనువాదాలను అన్‌లాక్ చేయండి",
+    "unlockEmojiMode": "ఎమోజి మోడ్‌ను అన్‌లాక్ చేయండి",
+    "unlockMessagePractice": "సందేశ అభ్యాసాన్ని అన్‌లాక్ చేయండి",
+    "unlockWritingAssistance": "రాత సహాయాన్ని అన్‌లాక్ చేయండి",
+    "courseSectionTeaching": "బోధన",
+    "courseSectionLearning": "నేర్చుకోవడం",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 కోర్సు} other{{count} కోర్సులు}}",
+    "showMore": "మరింత చూపించు",
+    "showLess": "తక్కువ చూపించు",
+    "countNewMessages": "{count, plural, =1{1 కొత్త సందేశం} other{{count} కొత్త సందేశాలు}}",
+    "markAllRead": "అన్నింటినీ చదివినట్లు గుర్తించు",
+    "usersAreTryingToJoinCourse": "వినియోగదారులు మీ కోర్సులో చేరడానికి ప్రయత్నిస్తున్నారు",
+    "denyAllUsers": "అన్ని వినియోగదారులను తిరస్కరించండి",
+    "denyAllKnocksDescription": "ఈ వినియోగదారులు కోర్సు నుండి తిరస్కరించబడతారు. వారు ఎప్పుడైనా మళ్లీ చేరడానికి ప్రయత్నించవచ్చు.",
+    "courseNameHint": "కోర్సు పేరు",
+    "typeCourseCodeToConfirm": "నిర్ధారించడానికి, కోర్సు కోడ్ {code} ను క్రింద టైప్ చేయండి.",
+    "typeCourseNameToConfirm": "నిర్ధారించడానికి, కోర్సు పేరు {name} ను క్రింద టైప్ చేయండి.",
+    "inviteAFriend": "స్నేహితుడిని ఆహ్వానించండి",
+    "autocorrectAndroidDialogTitle": "మీ లక్ష్య భాషలో స్వీయ దిద్దుబాటు",
+    "autocorrectAndroidDialogBody": "మీరు చాట్‌లో టైప్ చేసినప్పుడు, మీ కీబోర్డ్ మీ లక్ష్య భాషకు మారుతుంది మరియు ఆ భాషలో స్పెల్లింగ్‌ను సరిచేస్తుంది.",
+    "autocorrectAndroidFallbackTitle": "మీ కీబోర్డ్ మీ లక్ష్య భాషను అందించకపోతే, Gboardని ఇన్‌స్టాల్ చేసి, అక్కడ భాషను జోడించండి:",
+    "resendInSeconds": "మళ్ళీ పంపండి ({seconds})",
+    "mapLevelFallbackNotice": "ఇంకా {selected} కార్యకలాపాలు లేవు — బదులుగా {shown} చూపుతోంది.",
+    "switchLanguageChipLabel": "{language}కి మారండి",
+    "languageDropdownLevel": "స్థాయి {level}",
+    "whatAreYouLearning": "మీరు ఏమి నేర్చుకుంటున్నారు?",
+    "languageSwitcherBaseLanguageLabel": "మీ ప్రాథమిక భాష"
 }

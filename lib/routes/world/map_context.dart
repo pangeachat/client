@@ -54,3 +54,15 @@ abstract class MapCameraFocusRequests {
 
   static void request() => notifier.value++;
 }
+
+/// Whether the activity plan's mobile sheet is at its FULL rest. At full the
+/// sheet grows over the top analytics bar, so the shell hides the bar (its
+/// band is reclaimed for the sheet's height). Set by the nav cavity for the
+/// activity only — false for every other cavity and when nothing is open.
+abstract class ActivitySheetFull {
+  static final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
+
+  static void set({required bool value}) {
+    if (notifier.value != value) notifier.value = value;
+  }
+}

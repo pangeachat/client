@@ -10,8 +10,8 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 /// off-screen matches → zoom out; pill-excluded matches → widen the search;
 /// a query matching nothing → no remedy pretends to help.
 enum MapEmptyVerdict {
-  /// Matches are visible (or the verdict doesn't apply — loading, course
-  /// scope, camera not laid out): no card.
+  /// Matches are visible (or the verdict doesn't apply — loading, camera not
+  /// laid out): no card.
   none,
 
   /// Matches pass the filters/query but every one sits OUTSIDE the current
@@ -60,6 +60,15 @@ class WorldMapFilter {
   /// inProgress (world-map.instructions.md, "Filters").
   final ActivityPinState? status;
 
+  /// The level actually being matched when the learner's chosen level carries
+  /// no content — the nearest one that does ([LanguageLevelTypeEnum.nearestTo]),
+  /// resolved over the loaded set by [WorldMapFilterState.resolveCefrFallback].
+  /// Null whenever the chosen level is being honoured exactly, which is the
+  /// normal case; non-null is the map's cue to SAY it is showing a neighbouring
+  /// level (world-map.instructions.md, "Empty levels fall back to the nearest
+  /// one with content").
+  final LanguageLevelTypeEnum? cefrFallback;
+
   final bool filterDefaultsApplied;
 
   const WorldMapFilter({
@@ -68,12 +77,18 @@ class WorldMapFilter {
     this.cefrFilter = const {},
     this.partySize,
     this.status,
+    this.cefrFallback,
     this.filterDefaultsApplied = false,
   });
 
   /// The single selected CEFR level, or null for "All levels". [cefrFilter]
   LanguageLevelTypeEnum? get cefrLevel =>
       cefrFilter.isEmpty ? null : cefrFilter.first;
+
+  /// The level the map is actually matching on: the learner's choice, or the
+  /// [cefrFallback] standing in for it when that choice has no content. Null
+  /// means "All levels" — no level term at all.
+  LanguageLevelTypeEnum? get effectiveCefrLevel => cefrFallback ?? cefrLevel;
 
   /// Every pill defaults to "All", so any non-empty pill (or query) means the
   /// learner has narrowed away from the default — the reset control shows.
@@ -101,6 +116,7 @@ class WorldMapFilter {
     Set<LanguageLevelTypeEnum>? cefrFilter,
     Object? partySize = _unset,
     Object? status = _unset,
+    Object? cefrFallback = _unset,
     bool? filterDefaultsApplied,
   }) => WorldMapFilter(
     query: query ?? this.query,
@@ -112,6 +128,9 @@ class WorldMapFilter {
     status: identical(status, _unset)
         ? this.status
         : status as ActivityPinState?,
+    cefrFallback: identical(cefrFallback, _unset)
+        ? this.cefrFallback
+        : cefrFallback as LanguageLevelTypeEnum?,
     filterDefaultsApplied: filterDefaultsApplied ?? this.filterDefaultsApplied,
   );
 
@@ -121,6 +140,7 @@ class WorldMapFilter {
     "cefr_filter": cefrFilter.toList(),
     "party_size": partySize,
     "status": status?.name,
+    "cefr_fallback": cefrFallback?.string,
     "filter_defaults_applied": filterDefaultsApplied,
   };
 }
@@ -130,8 +150,20 @@ class WorldMapFilterState {
 
   WorldMapFilter get filter => _filter;
 
-  bool include(QuestActivityCard card, ActivityPinState state) {
-    return _langMatches(card) &&
+  /// [applyLanguage] carries the settings-fixed language constant, and is the
+  /// one part of the filter set that differs by map scope. The WORLD map
+  /// always applies it. A COURSE-scoped map does not: its pins are fetched at
+  /// the COURSE's own L2 ([WorldMapPinsManager.loadCourseScopedPins]), so
+  /// narrowing them by the learner's *settings* L2 would empty the map of any
+  /// course taught in another language — with no lever to widen, since
+  /// language is deliberately not one. The course scope is itself the
+  /// narrowing there; the pills and the query still apply (#7716).
+  bool include(
+    QuestActivityCard card,
+    ActivityPinState state, {
+    bool applyLanguage = true,
+  }) {
+    return (!applyLanguage || _langMatches(card)) &&
         _cefrMatches(card) &&
         _partyMatches(card) &&
         _statusMatches(state) &&
@@ -140,9 +172,24 @@ class WorldMapFilterState {
 
   /// Language + query only — the "would clearing every pill surface matches?"
   /// probe behind [MapEmptyVerdict.filtersHideMatches]. Language stays applied
-  /// (it is settings-fixed, not a pill the learner can widen in-app).
-  bool matchesIgnoringPills(QuestActivityCard card) =>
-      _langMatches(card) && card.matchesQuery(_filter.query);
+  /// (it is settings-fixed, not a pill the learner can widen in-app) wherever
+  /// [include] applies it — see [applyLanguage] there.
+  bool matchesIgnoringPills(
+    QuestActivityCard card, {
+    bool applyLanguage = true,
+  }) =>
+      (!applyLanguage || _langMatches(card)) &&
+      card.matchesQuery(_filter.query);
+
+  bool matchesIgnoringCefr(
+    QuestActivityCard card,
+    ActivityPinState state, {
+    bool applyLanguage = true,
+  }) =>
+      (!applyLanguage || _langMatches(card)) &&
+      _partyMatches(card) &&
+      _statusMatches(state) &&
+      card.matchesQuery(_filter.query);
 
   bool _langMatches(QuestActivityCard card) {
     final filterL2 = _filter.l2;
@@ -152,12 +199,18 @@ class WorldMapFilterState {
   }
 
   bool _cefrMatches(QuestActivityCard card) {
-    if (_filter.cefrFilter.isEmpty) return true; // "All levels"
+    // The EFFECTIVE level, not the chosen one: when the chosen level carries no
+    // content the map matches its nearest neighbour instead and says so
+    // ([WorldMapFilter.cefrFallback], resolved by [resolveCefrFallback]).
+    final level = _filter.effectiveCefrLevel;
+    if (level == null) return true; // "All levels"
     final cefr = card.cefr;
     if (cefr == null || cefr.isEmpty) return true; // unknown level: keep
-    final norm = cefr.toUpperCase().replaceAll('_', '');
-    return _filter.cefrFilter.any((l) => l.string == norm);
+    return level.string == _normalizeCefr(cefr);
   }
+
+  static String _normalizeCefr(String cefr) =>
+      cefr.toUpperCase().replaceAll('_', '').replaceAll('-', '');
 
   bool _partyMatches(QuestActivityCard card) {
     final p = _filter.partySize;
@@ -189,7 +242,53 @@ class WorldMapFilterState {
   void setCefrLevel(LanguageLevelTypeEnum? level) {
     _filter = _filter.copyWith(
       cefrFilter: level == null ? <LanguageLevelTypeEnum>{} : {level},
+      // A fresh choice is honoured exactly until the loaded set says otherwise
+      // — the controller re-resolves right after this.
+      cefrFallback: null,
     );
+  }
+
+  /// Resolve the Level pill's fallback against [candidates] — the loaded,
+  /// renderable pins that pass everything EXCEPT the level term
+  /// ([matchesIgnoringPills] plus a coordinate, so the promise can only name a
+  /// level the learner can actually see).
+  ///
+  /// The chosen level stands when any candidate carries it (or carries no level
+  /// at all, which [_cefrMatches] keeps); otherwise the nearest level with
+  /// content stands in for it and [WorldMapFilter.cefrFallback] records the
+  /// substitution for the map to display. Returns true when the resolution
+  /// changed, so the caller can skip a needless rebuild.
+  bool resolveCefrFallback(Iterable<QuestActivityCard> candidates) {
+    final chosen = _filter.cefrLevel;
+    final previous = _filter.cefrFallback;
+
+    LanguageLevelTypeEnum? resolved;
+    if (chosen != null) {
+      final available = <LanguageLevelTypeEnum>{};
+      var hasUnleveled = false;
+      for (final card in candidates) {
+        final cefr = card.cefr;
+        if (cefr == null || cefr.isEmpty) {
+          hasUnleveled = true;
+          break; // an unleveled card already satisfies any chosen level
+        }
+        // Matched against the known codes rather than parsed:
+        // LanguageLevelTypeEnum.fromString falls back to A1 for anything it
+        // doesn't recognise, which would let a garbage level silently satisfy
+        // an A1 choice. An unrecognised code contributes nothing instead.
+        final norm = _normalizeCefr(cefr);
+        for (final level in LanguageLevelTypeEnum.values) {
+          if (level.string == norm) available.add(level);
+        }
+      }
+      if (!hasUnleveled) {
+        resolved = LanguageLevelTypeEnum.nearestTo(chosen, available);
+      }
+    }
+
+    if (resolved == previous) return false;
+    _filter = _filter.copyWith(cefrFallback: resolved);
+    return true;
   }
 
   void setPartySize(int? p) => _filter = _filter.copyWith(partySize: p);
@@ -204,6 +303,7 @@ class WorldMapFilterState {
       partySize: null,
       status: null,
       cefrFilter: const {},
+      cefrFallback: null,
     );
   }
 }

@@ -12,6 +12,7 @@ import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
+import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
@@ -110,7 +111,16 @@ class ConstructIdentifier {
     }
   }
 
-  // override operator == and hashCode
+  /// Strict identity: lemma (case-sensitive), type and normalised category.
+  ///
+  /// `'other'` is NOT a wildcard here. It used to be — an `'other'` id was
+  /// `==` to the same lemma/type with any category — while [hashCode] kept
+  /// including [category], which broke the equals/hashCode contract: hashed
+  /// collections never reached `==` for differing categories and so already
+  /// behaved strictly; only direct comparisons saw the wildcard. Strict `==`
+  /// makes both agree (#8441). `'other'` means "unclassifiable" and is
+  /// filtered out of aggregations by [isInvalid] — see
+  /// analytics-system.instructions.md, Key Contracts.
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
@@ -118,15 +128,11 @@ class ConstructIdentifier {
     return other is ConstructIdentifier &&
         other.lemma == lemma &&
         other.type == type &&
-        (category == other.category ||
-            category.toLowerCase() == 'other' ||
-            other.category.toLowerCase() == 'other');
+        other.category == category;
   }
 
   @override
-  int get hashCode {
-    return lemma.hashCode ^ type.hashCode ^ category.hashCode;
-  }
+  int get hashCode => Object.hash(lemma, type, category);
 
   String get string {
     return "$lemma:${type.string}-$category".toLowerCase();
@@ -175,18 +181,21 @@ class ConstructIdentifier {
     return pos;
   }
 
-  LemmaInfoRequest lemmaInfoRequest(Map<String, dynamic> messageInfo) =>
-      LemmaInfoRequest(
-        partOfSpeech: category,
-        lemmaLang:
-            MatrixState.pangeaController.userController.userL2?.langCodeShort ??
-            LanguageKeys.defaultLanguage,
-        userL1:
-            MatrixState.pangeaController.userController.userL1?.langCodeShort ??
-            LanguageKeys.defaultLanguage,
-        lemma: lemma,
-        messageInfo: messageInfo,
-      );
+  LemmaInfoRequest lemmaInfoRequest(
+    Map<String, dynamic> messageInfo, {
+    List<LLMFeedbackModel<LemmaInfoResponse>> feedback = const [],
+  }) => LemmaInfoRequest(
+    partOfSpeech: category,
+    lemmaLang:
+        MatrixState.pangeaController.userController.userL2?.langCodeShort ??
+        LanguageKeys.defaultLanguage,
+    userL1:
+        MatrixState.pangeaController.userController.userL1?.langCodeShort ??
+        LanguageKeys.defaultLanguage,
+    lemma: lemma,
+    messageInfo: messageInfo,
+    feedback: feedback,
+  );
 
   /// [lemmmaLang] if not set, assumed to be userL2
   Future<Result<LemmaInfoResponse>> getLemmaInfo(

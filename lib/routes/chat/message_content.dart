@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
@@ -47,6 +48,7 @@ class MessageContent extends StatelessWidget {
   final Event? prevEvent;
   final bool isTransitionAnimation;
   final ReadingAssistanceMode? readingAssistanceMode;
+  final bool useTokenKeys;
 
   /// Overrides the default token-tap behavior (select in the open overlay,
   /// else open the chat toolbar). The analytics example messages use this to
@@ -55,6 +57,13 @@ class MessageContent extends StatelessWidget {
 
   /// Gold-highlight lemma set override for [HtmlMessage] (lower-cased).
   final Set<String>? vocabLemmas;
+
+  /// Rendered as an example-message chip on a construct's analytics details
+  /// page, which shows real chat messages. Without this the chip shares token
+  /// target keys with the same event in the open chat timeline, putting one
+  /// `LayerLink` on two `CompositedTransformTarget`s and one `GlobalKey` in two
+  /// places (#6803). See [PangeaToken.analyticsExampleTargetKey].
+  final bool isAnalyticsExample;
   // Pangea#
 
   const MessageContent(
@@ -74,8 +83,10 @@ class MessageContent extends StatelessWidget {
     this.prevEvent,
     this.isTransitionAnimation = false,
     this.readingAssistanceMode,
+    this.useTokenKeys = false,
     this.onTokenClick,
     this.vocabLemmas,
+    this.isAnalyticsExample = false,
     // Pangea#
   });
 
@@ -152,8 +163,7 @@ class MessageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fontSize =
-        AppConfig.messageFontSize * AppSettings.fontSizeFactor.value;
+    final fontSize = AppConfig.messageFontSize;
     final buttonTextColor = textColor;
     switch (event.type) {
       case EventTypes.Message:
@@ -222,6 +232,21 @@ class MessageContent extends StatelessWidget {
                 // Audio messages always open the toolbar on tap, so the
                 // in-bubble controls only take clicks inside the overlay.
                 enableClicks: overlayController != null,
+                // Listening category 1, decided HERE because only this call
+                // site knows what kind of listening its playback is (#104).
+                //
+                // Two facts make this the sound place for it. The sender is a
+                // REAL Matrix sender here, so "somebody else sent it" is a
+                // sound test — which it is not in the practice widgets, where
+                // the learner's own mxid is passed for TTS audio they did not
+                // send. And what reaches this branch is genuinely
+                // voice-message-only: the timeline filter drops any event
+                // carrying a `transcription` block, and every read-aloud asset
+                // the learner "sends" carries one.
+                listeningCategory: DosageListeningCategory.forTimelineAudio(
+                  senderId: event.senderId,
+                  ownUserId: event.room.client.userID,
+                ),
                 // Pangea#
               );
             } else {
@@ -349,16 +374,11 @@ class MessageContent extends StatelessWidget {
                   html: html,
                   textColor: textColor,
                   room: event.room,
-                  fontSize:
-                      AppSettings.fontSizeFactor.value *
-                      AppConfig.messageFontSize *
-                      (bigEmotes ? 5 : 1),
+                  fontSize: AppConfig.messageFontSize * (bigEmotes ? 5 : 1),
                   limitHeight: !selected,
                   linkStyle: TextStyle(
                     color: linkColor,
-                    fontSize:
-                        AppSettings.fontSizeFactor.value *
-                        AppConfig.messageFontSize,
+                    fontSize: AppConfig.messageFontSize,
                     decoration: TextDecoration.underline,
                     decorationColor: linkColor,
                   ),
@@ -386,6 +406,8 @@ class MessageContent extends StatelessWidget {
                   isPracticeMode:
                       readingAssistanceMode ==
                       ReadingAssistanceMode.practiceMode,
+                  isAnalyticsExample: isAnalyticsExample,
+                  useTokenKeys: useTokenKeys,
                   // Pangea#
                 ),
               ),

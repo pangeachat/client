@@ -22,10 +22,10 @@ import { expect, test } from "../fixtures";
 
 async function gotoSurface(
   page: import("@playwright/test").Page,
-  hash: string,
+  path: string,
   sentinel: import("@playwright/test").Locator,
 ) {
-  await page.goto(hash);
+  await page.goto(path);
   await page.mouse.move(640, 400);
   await page.mouse.wheel(0, -500);
   await expect(sentinel).toBeVisible({ timeout: 90_000 });
@@ -97,15 +97,15 @@ test.describe("Structural a11y gates", () => {
     fs.readFileSync(path.resolve(__dirname, "../../lib/l10n/intl_en.arb"), "utf-8"),
   );
 
-  const surfaces: { name: string; hash: string; sentinel: (p: any) => any }[] = [
-    { name: "world map", hash: "/#/", sentinel: (p) => p.getByRole("textbox", { name: intl.mapSearchHint }) },
-    { name: "chat list", hash: "/#/?left=chats", sentinel: (p) => p.getByRole("button", { name: intl.chatWithSupport }).first() },
-    { name: "settings", hash: "/#/?right=settings", sentinel: (p) => p.getByRole("button", { name: intl.learningSettings }).first() },
+  const surfaces: { name: string; path: string; sentinel: (p: any) => any }[] = [
+    { name: "world map", path: "/", sentinel: (p) => p.getByRole("textbox", { name: intl.mapSearchHint }) },
+    { name: "chat list", path: "/?left=chats", sentinel: (p) => p.getByRole("button", { name: intl.chatWithSupport }).first() },
+    { name: "settings", path: "/?right=settings", sentinel: (p) => p.getByRole("button", { name: intl.learningSettings }).first() },
   ];
 
   for (const s of surfaces) {
     test(`${s.name}: title + keyboard operability`, async ({ page }) => {
-      await gotoSurface(page, s.hash, s.sentinel(page));
+      await gotoSurface(page, s.path, s.sentinel(page));
 
       // 2.4.2 Page Titled — a non-empty document title must be present.
       expect((await page.title()).trim().length, "document.title is empty").toBeGreaterThan(0);

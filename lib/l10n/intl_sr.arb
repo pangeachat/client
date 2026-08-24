@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:16.804478",
+    "@@last_modified": "2026-08-24 11:54:21.750601",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -1773,8 +1773,6 @@
     "invalidServerName": "Nevažeće ime servera",
     "redactMessageDescription": "Poruka će biti redigovana za sve učesnike u ovom razgovoru. Ovo se ne može poništiti.",
     "optionalRedactReason": "(Opcionalno) Razlog za redigovanje ove poruke...",
-    "dehydrate": "Izvoz sesije i brisanje uređaja",
-    "dehydrateWarning": "Ова акција се не може опозвати. Осигурајте да сигурно сачувате резервну копију датотеке.",
     "hydrate": "Врати из резервне копије",
     "locationDisabledNotice": "Услуге локације су онемогућене. Молимо вас да их омогућите како бисте могли делити своју локацију.",
     "locationPermissionDeniedNotice": "Дозвола за локацију је одбијена. Молимо вас да је одобрите како бисте могли делити своју локацију.",
@@ -2538,9 +2536,7 @@
     "enableAutocorrectPopupTitle": "Dodajte tastaturu za ciljni jezik tako što ćete otići na:",
     "enableAutocorrectPopupSteps": "  • Podešavanja\n  • Opšte\n  • Tastatura\n  • Tastature\n  • Dodaj novu tastaturu",
     "enableAutocorrectPopupDescription": "Nakon što odaberete jezik, možete kliknuti na malu globus ikonu na donjem levom uglu vaše tastature da aktivirate novu tastaturu.",
-    "downloadGboardTitle": "Preuzmite Gboard sa Google Play prodavnice za omogućavanje automatske ispravke i drugih funkcija tastature:",
     "downloadGboardSteps": " • Preuzmi Gboard\n  • Otvori aplikaciju\n  • Jezici\n  • Dodaj tastaturu\n  • Izaberi jezik\n  • Izaberi tip tastature\n  • Gotovo",
-    "downloadGboardDescription": "Nakon što odaberete jezik, možete kliknuti na malu globus ikonu na donjem levom uglu vaše tastature da aktivirate novu tastaturu.",
     "enableAutocorrectWarning": "Upozorenje! Potrebno je dodavanje tastature za ciljni jezik",
     "displayName": "Prikazno ime",
     "leaveRoomDescription": "Upravo napuštate ovaj chat. Ostali korisnici će videti da ste napustili chat.",
@@ -3030,14 +3026,6 @@
         "placeholders": {}
     },
     "@optionalRedactReason": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -6348,15 +6336,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -8552,16 +8532,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ova reč u rečniku će biti trajno uklonjena iz vaših analitika",
     "woman": "Žena",
     "man": "Muškarac",
     "otherGender": "Drugo",
     "unselectedGender": "Izaberite opciju pola",
     "chatParticipantTooltip": "Ovo su svi u ovom čatu. Kliknite na avatar bilo kog korisnika i \"započnite razgovor\" da pošaljete DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10644,8 +10619,6 @@
     "audioWordsDescription": "Reprodukujte zvuk reči kada je dodirnete.",
     "audioChoicesToolName": "Izbori",
     "audioChoicesDescription": "Reprodukujte zvuk za ponuđene odgovore u vežbama.",
-    "audioIncomingMessagesToolName": "Dolazne poruke",
-    "audioIncomingMessagesDescription": "Automatski čitajte primljene poruke naglas na ciljnom jeziku radi vežbanja slušanja.",
     "choosePangeaAvatar": "Izaberite Pangea avatar",
     "readAloudNoVoiceTitle": "Nije pronađen visokokvalitetan glas za {language}",
     "readAloudNoVoiceDesktopWeb": "Ovaj pregledač ne nudi visokokvalitetan glas za {language}, tako da se poruke ovde ne mogu dobro čitati naglas. Chrome i Edge obično uključuju visokokvalitetne glasove.",
@@ -10666,5 +10639,77 @@
     "conversationFromDayOne": "Razgovor od prvog dana",
     "builtForConnection": "Napravljeno za povezivanje",
     "aiWhenYouNeedIt": "AI kada vam zatreba",
-    "practiceTailoredForYou": "Vežba krojena po vašoj meri"
+    "practiceTailoredForYou": "Vežba krojena po vašoj meri",
+    "deletedVocab": "Izbrisane reči",
+    "blockLemmaConfirmation": "Ova reč će biti uklonjena iz vašeg rečnika i prestaće da donosi XP. Možete je vratiti iz Izbrisanih reči.",
+    "deletedVocabListBody": "Ove reči su skrivene iz vašeg rečnika i ne donose XP. Vratite neku da biste je ponovo koristili.",
+    "deletedVocabListBodyEmpty": "Niste izbrisali nijednu reč. Reči koje izbrišete iz svog rečnika pojaviće se ovde kako biste ih mogli vratiti.",
+    "deletedVocabListLabel": "Izbrisane reči",
+    "restore": "Vrati",
+    "deletedWordLabel": "{lemma}, izbrisano",
+    "restoredWords": "{count, plural, =1{Vraćena 1 reč} other{Vraćeno {count} reči}}",
+    "chatSearchPageLabel": "Stranica za pretragu ćaskanja",
+    "selectImageLabel": "Izaberite sliku",
+    "userSearchTagsLabel": "Pretraži u...",
+    "courseDetails": "Detalji kursa",
+    "objective": "Cilj",
+    "pingedLabel": "Pingovano",
+    "mapFilterPlayerCount": "{count} igrača",
+    "practiceFeedbackButtonTooltip": "Prijavite problem sa ovom vežbom",
+    "practiceFeedbackDialogTitle": "Povratne informacije o vežbi",
+    "practiceFeedbackSelectPair": "Koji par izgleda pogrešno?",
+    "practiceFeedbackUserSetEmoji": "Izabrali ste ovaj emodži — promenite ga sa kartice reči",
+    "practiceFeedbackAlreadyMatched": "Već je tačno upareno",
+    "practiceFeedbackUpdated": "Hvala! Vežba je ažurirana na osnovu vaših povratnih informacija.",
+    "practiceFeedbackUnchanged": "Hvala! Vaš izveštaj je zabeležen, ali sadržaj je ostao nepromenjen.",
+    "audioOnNewMessageToolName": "Na novu poruku",
+    "audioOnNewMessageDescription": "Automatski čitaj naglas nove primljene poruke na ciljnom jeziku.",
+    "audioOnMessageClickToolName": "Na klik poruke",
+    "audioOnMessageClickDescription": "Pročitaj poruku naglas na ciljnom jeziku kada klikneš na nju.",
+    "audioSettingDisabledTitle": "Zvuk za {toolName} je isključen",
+    "audioSettingDisabledBody": "Možete uključiti zvuk za {toolName} u podešavanjima učenja",
+    "audioSettingDisabledEnable": "Omogući",
+    "rejoinedTheActivity": "🔄 {username} se ponovo pridružio/la ovoj aktivnosti",
+    "shareAnalytics": "Delite analitiku",
+    "courseNoLongerAvailableTitle": "Kurs nedostupan",
+    "courseDeletedDialogDesc": "Ovaj kurs je obrisan.",
+    "pingedActivity": "Pingovana aktivnost",
+    "appInTargetLanguageStaysInBaseLanguage": "(Ovo podešavanje ostaje na vašem maternjem jeziku kako biste ga uvek mogli pronaći.)",
+    "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Izaberite drugo.",
+    "allParticipants": "Svi učesnici",
+    "seeFullCoursePlan": "Pogledajte ceo plan kursa",
+    "catchUp": "Sustići",
+    "messageLanguageIs": "Ova poruka je podešena na {language}.",
+    "updateMessageLanguage": "Kliknite ovde da promenite jezik poruke.",
+    "messageLanguage": "Jezik poruke",
+    "messageLanguageUpdated": "Jezik poruke je ažuriran!",
+    "pickCefrLevelStepSubtitle": "Ovo možete promeniti kasnije",
+    "unlockPremiumAudio": "Otključajte premium audio",
+    "unlockTranslations": "Otključajte prevode",
+    "unlockEmojiMode": "Otključajte emoji režim",
+    "unlockMessagePractice": "Otključajte vežbanje poruka",
+    "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
+    "courseSectionTeaching": "Predavanje",
+    "courseSectionLearning": "Učenje",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kursa}}",
+    "showMore": "Prikaži više",
+    "showLess": "Prikaži manje",
+    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}",
+    "markAllRead": "Označi sve kao pročitano",
+    "usersAreTryingToJoinCourse": "Korisnici pokušavaju da se pridruže vašem kursu",
+    "denyAllUsers": "Odbij sve korisnike",
+    "denyAllKnocksDescription": "Ovi korisnici će biti odbijeni sa kursa. Mogu pokušati da se ponovo pridruže u bilo kom trenutku.",
+    "courseNameHint": "Naziv kursa",
+    "typeCourseCodeToConfirm": "Da potvrdite, unesite kod kursa {code} ispod.",
+    "typeCourseNameToConfirm": "Da potvrdite, unesite naziv kursa {name} ispod.",
+    "inviteAFriend": "Pozovi prijatelja",
+    "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
+    "autocorrectAndroidDialogBody": "Kada kucate u ćaskanju, vaša tastatura će se prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
+    "autocorrectAndroidFallbackTitle": "Ako vaša tastatura ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:",
+    "resendInSeconds": "Ponovo pošalji ({seconds})",
+    "mapLevelFallbackNotice": "Još nema {selected} aktivnosti — umesto toga prikazuje se {shown}.",
+    "switchLanguageChipLabel": "Prebaci na {language}",
+    "languageDropdownLevel": "Nivo {level}",
+    "whatAreYouLearning": "Šta učiš?",
+    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik"
 }

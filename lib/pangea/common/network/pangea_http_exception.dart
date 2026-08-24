@@ -22,8 +22,9 @@ class PangeaHttpException implements Exception {
   /// rather than per resource. Query strings are dropped entirely.
   final String path;
 
-  /// The backend's parsed `detail` message, capped at [maxDetailLength].
-  /// Only ever the `detail` field — never the body.
+  /// The backend's parsed failure identifier, capped at [maxDetailLength] —
+  /// choreo's `detail` message, or a Synapse module's Matrix `errcode`. Only
+  /// ever one of those two fields — never the body.
   final String? detail;
 
   static const int maxDetailLength = 200;
@@ -49,6 +50,23 @@ class PangeaHttpException implements Exception {
       detail: detail ?? detailFromResponse(response),
     );
   }
+
+  /// The typed failure for a Synapse Pangea module call. Those sites reach the
+  /// homeserver through the Matrix SDK's `Api.httpClient` rather than
+  /// `Requests`, so they raise the typed failure themselves.
+  ///
+  /// [request] is taken from the caller rather than read off
+  /// [http.StreamedResponse.request], which is only as reliable as the client
+  /// implementation that filled it in — the method and path are the whole
+  /// point of the title, so they are not left to that. [body] is passed
+  /// separately because the caller has already drained [response]'s stream.
+  factory PangeaHttpException.fromStreamedResponse(
+    http.BaseRequest request,
+    http.StreamedResponse response,
+    List<int> body,
+  ) => PangeaHttpException.fromResponse(
+    http.Response.bytes(body, response.statusCode, request: request),
+  );
 
   static final _uuid = RegExp(
     r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
@@ -80,15 +98,49 @@ class PangeaHttpException implements Exception {
     return null;
   }
 
+  /// `detail` is the choreo (FastAPI) shape; `errcode` is the Matrix shape the
+  /// Synapse modules answer with. Both are short, server-generated identifiers.
+  /// Matrix's sibling `error` field is deliberately never read — it is
+  /// free text, which is the body rule's whole concern.
   static String? detailFromResponse(http.Response response) {
     try {
       final decoded = jsonDecode(utf8.decode(response.bodyBytes));
       if (decoded is! Map<String, dynamic>) return null;
-      final detail = decoded['detail'];
+      final detail = decoded['detail'] ?? decoded['errcode'];
       return detail is String ? detail : null;
     } catch (_) {
       return null;
     }
+  }
+
+  /// Namespaces [fingerprintOf] so a Pangea HTTP failure can never collide
+  /// with another hand-set fingerprint, and so the group is identifiable as
+  /// this rule's rather than Sentry's.
+  static const String fingerprintNamespace = 'pangea-http';
+
+  /// The Sentry grouping key for [error] — status, method, and normalized
+  /// path — or null for anything else, which keeps Sentry's default grouping.
+  ///
+  /// Sentry groups by stack trace, and every [PangeaHttpException] is raised
+  /// through the same frame in `Requests`, so grouping collapsed every failure
+  /// on every endpoint into one catch-all issue regardless of status or
+  /// meaning: CLIENT-DWD held a routine 404 for a removed activity, a 401
+  /// token refresh, and a 5xx backend regression under one status, one
+  /// assignee, and one ignore switch (#8469). [toString] already reads per
+  /// endpoint; this makes the grouping match what the title says.
+  ///
+  /// [detail] is deliberately excluded: it embeds the resource id, as in
+  /// `No canonical activity found for activity_id='<uuid>'`, so fingerprinting
+  /// on it would split one endpoint into an issue per resource — the thing
+  /// [normalizePath] exists to prevent.
+  static List<String>? fingerprintOf(Object? error) {
+    if (error is! PangeaHttpException) return null;
+    return [
+      fingerprintNamespace,
+      '${error.statusCode}',
+      error.method,
+      error.path,
+    ];
   }
 
   /// The one severity table for a repo-layer fetch failure

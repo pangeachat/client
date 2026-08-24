@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/widgets/avatar.dart';
-
-/// One participant in a featured joinable/ongoing session — just what the
-/// avatar stack needs, decoupled from the Matrix SDK type. [userId] is the
-/// Matrix id, passed to [Avatar] so it can apply its per-user rendering
-typedef LargeCardParticipant = ({Uri? avatar, String name, String userId});
+import 'package:fluffychat/pangea/common/widgets/user_profile_builder.dart';
 
 /// The Joinable / Ongoing-Pending participant row: an optional leading icon
 /// (door vs hourglass) followed by filled/unfilled avatar circles, one per role
 /// — world-map.instructions.md, "Pin state".
+///
+/// Participants are bare Matrix ids: each circle fetches its own owner's
+/// profile ([UserProfileAvatar]). Callers pass ids and nothing else — a name or
+/// avatar resolved upstream from room state is wrong for the row's main case, a
+/// session the learner has not joined and so has no member events for (#8192).
 
 class ActivityParticipantRow extends StatelessWidget {
   static const int defaultMaxVisible = 5;
   final IconData? icon;
   final Color accent;
-  final List<LargeCardParticipant> participants;
+  final List<String> participants;
   final int openSlots;
   final double avatarSize;
 
@@ -54,13 +54,8 @@ class ActivityParticipantRow extends StatelessWidget {
               Icon(icon, size: 18, color: accent),
               const SizedBox(width: 8),
             ],
-            for (final p in participants.take(maxVisible)) ...[
-              Avatar(
-                mxContent: p.avatar,
-                name: p.name,
-                size: avatarSize,
-                userId: p.userId,
-              ),
+            for (final userId in participants.take(maxVisible)) ...[
+              UserProfileAvatar(userId: userId, size: avatarSize),
               const SizedBox(width: 4),
             ],
             // An open seat, matching the activity-lobby's open-role look

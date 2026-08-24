@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 
 class ButtonDetails {
@@ -13,7 +12,6 @@ class ButtonDetails {
   final bool showInMainView;
   final bool isToggle;
   final bool value;
-  final SpaceSettingsTabs? tab;
   final Widget? trailing;
 
   const ButtonDetails({
@@ -26,7 +24,6 @@ class ButtonDetails {
     this.isToggle = false,
     this.value = false,
     this.showInMainView = true,
-    this.tab,
     this.trailing,
   });
 }
@@ -36,14 +33,11 @@ class RoomDetailsButton extends StatelessWidget {
   final double height;
   final ButtonDetails buttonDetails;
 
-  final bool selected;
-
   const RoomDetailsButton({
     super.key,
     required this.buttonDetails,
     required this.mini,
     required this.height,
-    this.selected = false,
   });
 
   @override
@@ -70,7 +64,7 @@ class RoomDetailsButton extends StatelessWidget {
                       alignment: Alignment.center,
                       height: height,
                       decoration: BoxDecoration(
-                        color: hovered || selected
+                        color: hovered
                             ? Theme.of(
                                 context,
                               ).colorScheme.primaryContainer.withAlpha(200)

@@ -59,11 +59,6 @@ class WorldMapFilterBar extends StatelessWidget {
     ActivityPinState.inProgress,
   ];
 
-  // A short pill/dropdown label for a level — the CEFR code (Pre-A1 spelled
-  // prettily). Picking a level filters to exactly that level.
-  String _levelLabel(LanguageLevelTypeEnum lvl) =>
-      lvl == LanguageLevelTypeEnum.preA1 ? 'Pre-A1' : lvl.string;
-
   String _statusLabel(BuildContext context, ActivityPinState s) {
     final l10n = L10n.of(context);
     return switch (s) {
@@ -90,7 +85,7 @@ class WorldMapFilterBar extends StatelessWidget {
       ),
       for (final lvl in _levelOptions)
         _FilterMenuEntry(
-          label: _levelLabel(lvl),
+          label: lvl.title(context),
           selected: level == lvl,
           onSelected: () => onSetLevel(lvl),
         ),
@@ -104,8 +99,7 @@ class WorldMapFilterBar extends StatelessWidget {
       ),
       for (final p in WorldMapFilter.partySizeOptions)
         _FilterMenuEntry(
-          label: '$p',
-          leading: groups,
+          label: l10n.mapFilterPlayerCount(p),
           selected: filter.partySize == p,
           onSelected: () => onSetPartySize(p),
         ),
@@ -122,6 +116,7 @@ class WorldMapFilterBar extends StatelessWidget {
           label: _statusLabel(context, s),
           selected: filter.status == s,
           onSelected: () => onSetStatus(s),
+          icon: s.icon,
         ),
     ];
 
@@ -131,7 +126,7 @@ class WorldMapFilterBar extends StatelessWidget {
       child: Row(
         children: [
           _FilterDropdownPill(
-            label: level == null ? l10n.mapFilterAllLevels : _levelLabel(level),
+            label: level == null ? l10n.mapFilterAllLevels : level.shortLabel,
             active: filter.cefrFilter.isNotEmpty,
             entries: levelEntries,
           ),
@@ -149,6 +144,7 @@ class WorldMapFilterBar extends StatelessWidget {
             label: filter.status == null
                 ? l10n.mapFilterAllStatuses
                 : _statusLabel(context, filter.status!),
+            icon: filter.status != null ? Icon(filter.status!.icon) : null,
             active: filter.status != null,
             entries: statusEntries,
           ),
@@ -175,19 +171,21 @@ class WorldMapFilterBar extends StatelessWidget {
   }
 }
 
-/// One option in a filter pill's dropdown: its [label], an optional [leading]
-/// glyph (the people icon for party sizes), whether it is the current
+/// One option in a filter pill's dropdown: its [label], whether it is the current
 /// [selected] value (shown with a check), and the [onSelected] action.
 class _FilterMenuEntry {
   final String label;
-  final Widget? leading;
   final bool selected;
   final VoidCallback onSelected;
+
+  /// An optional leading glyph — the status entries carry their
+  /// [ActivityPinState.icon] so the dropdown matches the map pins.
+  final IconData? icon;
   const _FilterMenuEntry({
     required this.label,
-    this.leading,
     required this.selected,
     required this.onSelected,
+    this.icon,
   });
 }
 
@@ -217,7 +215,6 @@ class _FilterDropdownPill extends StatelessWidget {
     final fg = active ? scheme.onPrimaryContainer : scheme.onSurfaceVariant;
 
     return PopupMenuButton<_FilterMenuEntry>(
-      tooltip: label,
       position: PopupMenuPosition.under,
       onSelected: (e) => e.onSelected(),
       itemBuilder: (context) => [
@@ -232,14 +229,14 @@ class _FilterDropdownPill extends StatelessWidget {
                       ? Icon(Icons.check, size: 18, color: scheme.primary)
                       : null,
                 ),
-                if (e.leading != null) ...[
-                  IconTheme.merge(
-                    data: const IconThemeData(size: 16),
-                    child: e.leading!,
-                  ),
-                  const SizedBox(width: 6),
+                if (e.icon != null) ...[
+                  Icon(e.icon, size: 18, color: scheme.onSurfaceVariant),
+                  const SizedBox(width: 8),
                 ],
-                Text(e.label),
+                // Flexible so a label longer than the menu's max width (the
+                // ACTFL level titles, long translations) wraps instead of
+                // overflowing the row.
+                Flexible(child: Text(e.label)),
               ],
             ),
           ),

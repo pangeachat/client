@@ -31,6 +31,17 @@ enum InvitationFilter {
   static InvitationFilter? fromString(String value) =>
       InvitationFilter.values.firstWhereOrNull((e) => e.name == value);
 
+  /// The most relevant starting filter for [room]'s invite flow: knocking
+  /// users first, then the parent space's members, then contacts.
+  static InvitationFilter defaultForRoom(Room room) {
+    if (room.getParticipants([Membership.knock]).isNotEmpty) {
+      return InvitationFilter.knocking;
+    }
+    return room.pangeaSpaceParents.isNotEmpty
+        ? InvitationFilter.space
+        : InvitationFilter.contacts;
+  }
+
   static InvitationFilter? fromNullableString(String? value) =>
       value == null ? null : fromString(value);
 }
@@ -41,25 +52,16 @@ extension InvitationFiltersRoomExtension on Room {
   /// The course whose roster the "in this course" filter offers, or null when
   /// there is none to offer.
   ///
-  /// For an activity session this is the course the session was LAUNCHED from
-  /// (`source_course_id`) — NOT merely a space parent. Launching also shares the
-  /// session into every other eligible joined course as an `m.space.child` (see
-  /// `activities.instructions.md`), so a session started from the world map
-  /// collects course parents it was never "in". Offering those rosters reads as
-  /// "invite this course" to someone who is not in a course at all, and the
-  /// launcher has no reason to expect them (#8097). A world-launched session
-  /// pins no source course, so it gets no course filter.
+  /// For an activity session this is [Room.sourceCourse] — the course the session
+  /// was LAUNCHED from, not merely a space parent — so a world-launched session
+  /// gets no course filter (#8097).
   ///
   /// Every other room keeps the plain first-space-parent rule: a chat inside a
   /// course space really is "in this course".
   Room? get invitationCourseSpace {
+    if (isActivitySession) return sourceCourse;
     final parents = pangeaSpaceParents;
-    if (parents.isEmpty) return null;
-    if (!isActivitySession) return parents.first;
-
-    final sourceCourseId = pinnedSourceCourseId;
-    if (sourceCourseId == null) return null;
-    return parents.firstWhereOrNull((p) => p.id == sourceCourseId);
+    return parents.isEmpty ? null : parents.first;
   }
 
   /// Whether the invite page offers a roster ("participants") filter.
@@ -75,16 +77,16 @@ class PangeaInvitationSelection extends StatefulWidget {
   final String roomId;
   final InvitationFilter? initialFilter;
 
-  /// world_v2: the leading affordance supplied by the host course panel (`←`
-  /// back to the card) when this is a `course:invite` push, replacing the
-  /// route-pop [BackButton]. See `routing.instructions.md`.
-  final Widget? embeddedCloseButton;
+  /// world_v2: the leading affordance supplied by the host panel (`←` back to
+  /// the card / chat). Required: the room-gone error state renders its own
+  /// chrome and must carry it (#8322, #8327). See `routing.instructions.md`.
+  final Widget embeddedCloseButton;
 
   const PangeaInvitationSelection({
     super.key,
     required this.roomId,
     this.initialFilter,
-    this.embeddedCloseButton,
+    required this.embeddedCloseButton,
   });
 
   @override

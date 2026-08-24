@@ -367,7 +367,21 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       _l2!.langCodeShort,
     );
 
-    if (!notifier.exerciseComplete(exercise)) return;
+    final isComplete = notifier.exerciseComplete(exercise);
+
+    // Every tap speaks the word it landed on. The audio exercise takes one tap
+    // per word it heard, and the tap that finishes it is a word tap like the
+    // rest (#8310); the meaning exercise instead replays its target there, so
+    // it would say the same lemma twice.
+    if (!isComplete || exercise is VocabAudioPracticeExerciseModel) {
+      AnalyticsPracticeUiController.playChoiceAudio(
+        exercise,
+        choiceContent,
+        _l2!.langCodeShort,
+      );
+    }
+
+    if (!isComplete) return;
 
     _playExerciseAudio(exercise);
 

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:12.884174",
+    "@@last_modified": "2026-08-24 11:54:16.651913",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -1319,8 +1319,6 @@
     "invalidServerName": "שם שרת לא חוקי",
     "redactMessageDescription": "ההודעה תימחק לכל המשתתפים בשיחה זו. פעולה זו אינה ניתנת לביטול.",
     "optionalRedactReason": "(אופציונלי) סיבת מחיקת ההודעה...",
-    "dehydrate": "יצוא סשן וניקוי מכשיר",
-    "dehydrateWarning": "פעולה זו אינה ניתנת לביטול. ודא שאתה שומר את קובץ הגיבוי במקום בטוח.",
     "hydrate": "שחזר מקובץ גיבוי",
     "messagesStyle": "הודעות:",
     "noEmotesFound": "לא נמצאו אמוטיקונים. 😕",
@@ -2162,9 +2160,7 @@
     "enableAutocorrectPopupTitle": "הוסף את מקלדת שפת היעד שלך על ידי כניסה ל:",
     "enableAutocorrectPopupSteps": "  • הגדרות\n  • כללי\n  • מקלדת\n  • מקלדות\n  • הוסף מקלדת חדשה",
     "enableAutocorrectPopupDescription": "לאחר בחירת השפה, תוכל ללחוץ על סמל הגלובוס הקטן בפינה השמאלית התחתונה של המקלדת כדי להפעיל את המקלדת שהותקנה לאחרונה.",
-    "downloadGboardTitle": "הורד את Gboard מחנות Google Play כדי להפעיל תיקון אוטומטי ותכונות מקלדת נוספות:",
     "downloadGboardSteps": " • הורד את Gboard\n  • פתח את האפליקציה\n  • שפות\n  • הוסף מקלדת\n  • בחר שפה\n  • בחר סוג מקלדת\n  • סיום",
-    "downloadGboardDescription": "לאחר בחירת השפה, תוכל ללחוץ על סמל הגלובוס הקטן בפינה השמאלית התחתונה של המקלדת כדי להפעיל את המקלדת שהותקנה לאחרונה.",
     "enableAutocorrectWarning": "אזהרה! דורש הוספת מקלדת שפת היעד שלך",
     "displayName": "שם תצוגה",
     "leaveRoomDescription": "אתה עומד לעזוב את השיחה הזו. משתמשים אחרים יראו שהייתה לך יציאה מהשיחה.",
@@ -2606,14 +2602,6 @@
         "placeholders": {}
     },
     "@optionalRedactReason": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -6313,15 +6301,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -8517,16 +8497,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "מילת הווקב הזו תוסר לצמיתות מהאנליטיקה שלך",
     "woman": "אישה",
     "man": "גבר",
     "otherGender": "אחר",
     "unselectedGender": "בחר אפשרות מגדר",
     "chatParticipantTooltip": "אלה כולם בצ'אט הזה. לחץ על התמונה של כל משתמש ו\"התחל שיחה\" כדי לשלוח הודעה פרטית.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10609,8 +10584,6 @@
     "audioWordsDescription": "השמעת מילה בלחיצה עליה.",
     "audioChoicesToolName": "אפשרויות",
     "audioChoicesDescription": "השמעת אודיו עבור אפשרויות התשובה בפעילויות תרגול.",
-    "audioIncomingMessagesToolName": "הודעות נכנסות",
-    "audioIncomingMessagesDescription": "הקראה אוטומטית של הודעות שהתקבלו בקול רם בשפת היעד שלך לתרגול הקשבה.",
     "choosePangeaAvatar": "בחר אווטאר של Pangea",
     "readAloudNoVoiceTitle": "לא נמצא קול {language} באיכות גבוהה",
     "readAloudNoVoiceDesktopWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. Chrome ו-Edge בדרך כלל כוללים קולות באיכות גבוהה.",
@@ -10631,5 +10604,77 @@
     "conversationFromDayOne": "שיחה מהיום הראשון",
     "builtForConnection": "נבנה לחיבור",
     "aiWhenYouNeedIt": "בינה מלאכותית כשאתה צריך אותה",
-    "practiceTailoredForYou": "תרגול המותאם אישית עבורך"
+    "practiceTailoredForYou": "תרגול המותאם אישית עבורך",
+    "deletedVocab": "מילים שנמחקו",
+    "blockLemmaConfirmation": "מילה זו תוסר מאוצר המילים שלך ותפסיק לצבור נקודות ניסיון. תוכל להחזיר אותה מ'מילים שנמחקו'.",
+    "deletedVocabListBody": "מילים אלו מוסתרות מאוצר המילים שלך ואינן צוברות נקודות ניסיון. שחזר מילה כדי להחזיר אותה.",
+    "deletedVocabListBodyEmpty": "לא מחקת מילים. מילים שתמחק מאוצר המילים שלך יופיעו כאן כדי שתוכל להחזיר אותן.",
+    "deletedVocabListLabel": "מילים שנמחקו",
+    "restore": "שחזר",
+    "deletedWordLabel": "{lemma}, נמחקה",
+    "restoredWords": "{count, plural, =1{שוחזרה מילה אחת} other{שוחזרו {count} מילים}}",
+    "chatSearchPageLabel": "דף חיפוש צ'אט",
+    "selectImageLabel": "בחר תמונה",
+    "userSearchTagsLabel": "חפש ב...",
+    "courseDetails": "פרטי הקורס",
+    "objective": "מטרה",
+    "pingedLabel": "תויג",
+    "mapFilterPlayerCount": "{count} שחקנים",
+    "practiceFeedbackButtonTooltip": "דווח על בעיה בתרגיל זה",
+    "practiceFeedbackDialogTitle": "משוב על תרגיל",
+    "practiceFeedbackSelectPair": "איזה זוג נראה שגוי?",
+    "practiceFeedbackUserSetEmoji": "בחרת את האימוג'י הזה — שנה אותו מכרטיס המילה",
+    "practiceFeedbackAlreadyMatched": "כבר תואם נכון",
+    "practiceFeedbackUpdated": "תודה! התרגיל עודכן בהתאם למשוב שלך.",
+    "practiceFeedbackUnchanged": "תודה! הדיווח שלך נרשם, אך התוכן נשאר ללא שינוי.",
+    "audioOnNewMessageToolName": "בהודעה חדשה",
+    "audioOnNewMessageDescription": "הקרא אוטומטית הודעות חדשות שהתקבלו בשפת היעד שלך.",
+    "audioOnMessageClickToolName": "בלחיצה על הודעה",
+    "audioOnMessageClickDescription": "הקרא הודעה בשפת היעד שלך בלחיצה עליה.",
+    "audioSettingDisabledTitle": "שמע של {toolName} מושבת",
+    "audioSettingDisabledBody": "ניתן להפעיל את השמע של {toolName} בהגדרות הלמידה שלך",
+    "audioSettingDisabledEnable": "הפעל",
+    "rejoinedTheActivity": "🔄 {username} הצטרף/ה מחדש לפעילות זו",
+    "shareAnalytics": "שיתוף נתונים סטטיסטיים",
+    "courseNoLongerAvailableTitle": "הקורס אינו זמין",
+    "courseDeletedDialogDesc": "הקורס נמחק.",
+    "pingedActivity": "פעילות עם תזכורת",
+    "appInTargetLanguageStaysInBaseLanguage": "(הגדרה זו נשארת בשפת האם שלך כדי שתוכל תמיד למצוא אותה.)",
+    "usernameTakenPleaseChooseAnother": "שם המשתמש הזה כבר תפוס. אנא בחר שם אחר.",
+    "allParticipants": "כל המשתתפים",
+    "seeFullCoursePlan": "הצג את תוכנית הקורס המלאה",
+    "catchUp": "להתעדכן",
+    "messageLanguageIs": "הודעה זו מוגדרת ל{language}.",
+    "updateMessageLanguage": "לחץ כאן כדי לשנות את שפת ההודעה.",
+    "messageLanguage": "שפת ההודעה",
+    "messageLanguageUpdated": "שפת ההודעה עודכנה!",
+    "pickCefrLevelStepSubtitle": "תוכל לשנות זאת מאוחר יותר",
+    "unlockPremiumAudio": "פתיחת אודיו פרימיום",
+    "unlockTranslations": "פתיחת תרגומים",
+    "unlockEmojiMode": "פתיחת מצב אימוג'י",
+    "unlockMessagePractice": "פתיחת תרגול הודעות",
+    "unlockWritingAssistance": "פתיחת סיוע בכתיבה",
+    "courseSectionTeaching": "מלמד",
+    "courseSectionLearning": "לומד",
+    "courseSectionLabel": "{title}, {count, plural, =1{קורס אחד} other{{count} קורסים}}",
+    "showMore": "הצג עוד",
+    "showLess": "הצג פחות",
+    "countNewMessages": "{count, plural, =1{הודעה חדשה אחת} other{{count} הודעות חדשות}}",
+    "markAllRead": "סמן הכל כנקרא",
+    "usersAreTryingToJoinCourse": "משתמשים מנסים להצטרף לקורס שלך",
+    "denyAllUsers": "דחה את כל המשתמשים",
+    "denyAllKnocksDescription": "משתמשים אלה יידחו מהקורס. הם עשויים לנסות להצטרף שוב בכל עת.",
+    "courseNameHint": "שם הקורס",
+    "typeCourseCodeToConfirm": "כדי לאשר, הקלד את קוד הקורס {code} למטה.",
+    "typeCourseNameToConfirm": "כדי לאשר, הקלד את שם הקורס {name} למטה.",
+    "inviteAFriend": "הזמן חבר",
+    "autocorrectAndroidDialogTitle": "תיקון שגיאות אוטומטי בשפת היעד שלך",
+    "autocorrectAndroidDialogBody": "כשאתה מקליד בצ'אט, המקלדת שלך תעבור לשפת היעד שלך ותתקן שגיאות כתיב בשפה זו.",
+    "autocorrectAndroidFallbackTitle": "אם המקלדת שלך לא מציעה את שפת היעד שלך, התקן את Gboard והוסף את השפה שם:",
+    "resendInSeconds": "שלח שוב בעוד ({seconds})",
+    "mapLevelFallbackNotice": "אין פעילויות {selected} עדיין – מציג {shown} במקום.",
+    "switchLanguageChipLabel": "עבור ל{language}",
+    "languageDropdownLevel": "רמה {level}",
+    "whatAreYouLearning": "מה אתה לומד?",
+    "languageSwitcherBaseLanguageLabel": "שפת הבסיס שלך"
 }

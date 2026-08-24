@@ -24,8 +24,10 @@ void main() {
 
   Future<void> pumpCelebration(
     WidgetTester tester,
-    Stream<LevelUpdate> levelUpdates,
-  ) async {
+    Stream<LevelUpdate> levelUpdates, {
+    Future<void> Function()? playChime,
+    bool chipBelow = false,
+  }) async {
     await tester.pumpWidget(
       MaterialApp(
         localizationsDelegates: L10n.localizationsDelegates,
@@ -36,6 +38,11 @@ void main() {
               levelUpdates: levelUpdates,
               chipDuration: chipDuration,
               pulseDuration: pulseDuration,
+              // Never the real chime here: the default reaches for the audio
+              // plugin and the assets bucket, neither of which exists in a
+              // widget test.
+              playChime: playChime ?? () async {},
+              chipBelow: chipBelow,
               child: const SizedBox(key: badgeKey, width: 40, height: 44),
             ),
           ),
@@ -98,6 +105,50 @@ void main() {
     await controller.close();
   });
 
+  testWidgets('a level bump plays the chime (#7881)', (tester) async {
+    var chimes = 0;
+    final controller = StreamController<LevelUpdate>.broadcast();
+    await pumpCelebration(
+      tester,
+      controller.stream,
+      playChime: () async => chimes++,
+    );
+
+    expect(chimes, 0);
+
+    controller.add(const LevelUpdate(prevLevel: 3, newLevel: 4));
+    await tester.pump();
+    await tester.pump();
+
+    // Once per level-up, fired with the pulse rather than after it.
+    expect(chimes, 1);
+
+    await tester.pump(pulseDuration);
+    await tester.pump(chipDuration + fadeOut);
+    await tester.pumpAndSettle();
+    await controller.close();
+  });
+
+  testWidgets('no chime when the level did not increase (#7881)', (
+    tester,
+  ) async {
+    var chimes = 0;
+    final controller = StreamController<LevelUpdate>.broadcast();
+    await pumpCelebration(
+      tester,
+      controller.stream,
+      playChime: () async => chimes++,
+    );
+
+    controller.add(const LevelUpdate(prevLevel: 4, newLevel: 4));
+    controller.add(const LevelUpdate(prevLevel: 4, newLevel: 3));
+    await tester.pump();
+    await tester.pump();
+
+    expect(chimes, 0);
+    await controller.close();
+  });
+
   testWidgets('no chip when the level did not increase', (tester) async {
     final controller = StreamController<LevelUpdate>.broadcast();
     await pumpCelebration(tester, controller.stream);
@@ -128,6 +179,51 @@ void main() {
     // Pulse and chip are paint-time effects only — the celebration never
     // grows the badge's layout box (so it can't push the surfaces around).
     expect(tester.getSize(find.byType(LevelUpBadgeCelebration)), badgeSize);
+
+    await tester.pump(pulseDuration);
+    await tester.pump(chipDuration + fadeOut);
+    await tester.pumpAndSettle();
+    await controller.close();
+  });
+
+  testWidgets('the chip sits beside the badge by default', (tester) async {
+    final controller = StreamController<LevelUpdate>.broadcast();
+    await pumpCelebration(tester, controller.stream);
+    final chipText = l10nOf(tester).levelUpChip(4);
+
+    controller.add(const LevelUpdate(prevLevel: 3, newLevel: 4));
+    await tester.pump();
+    await tester.pump();
+
+    final badge = tester.getRect(find.byKey(badgeKey));
+    final chip = tester.getRect(find.text(chipText));
+    expect(chip.right, lessThanOrEqualTo(badge.left));
+    expect(chip.center.dy, moreOrLessEquals(badge.center.dy, epsilon: 1.0));
+
+    await tester.pump(pulseDuration);
+    await tester.pump(chipDuration + fadeOut);
+    await tester.pumpAndSettle();
+    await controller.close();
+  });
+
+  testWidgets('chipBelow drops the chip under the badge instead (#8257)', (
+    tester,
+  ) async {
+    final controller = StreamController<LevelUpdate>.broadcast();
+    await pumpCelebration(tester, controller.stream, chipBelow: true);
+    final chipText = l10nOf(tester).levelUpChip(4);
+
+    controller.add(const LevelUpdate(prevLevel: 3, newLevel: 4));
+    await tester.pump();
+    await tester.pump();
+
+    // Below the badge and centered on it — the analytics bar's badge sits at
+    // the screen's left edge, where a chip hanging off its leading edge would
+    // be cut off.
+    final badge = tester.getRect(find.byKey(badgeKey));
+    final chip = tester.getRect(find.text(chipText));
+    expect(chip.top, greaterThanOrEqualTo(badge.bottom));
+    expect(chip.center.dx, moreOrLessEquals(badge.center.dx, epsilon: 1.0));
 
     await tester.pump(pulseDuration);
     await tester.pump(chipDuration + fadeOut);

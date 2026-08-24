@@ -119,46 +119,70 @@ class _WorldMapDotState extends State<WorldMapDot>
 
   @override
   Widget build(BuildContext context) {
+    final isDot = widget.tier.isDot(widget.state);
     return ScaleTransition(
       scale: CurvedAnimation(
         parent: _ctrl,
         curve: Curves.easeOut,
         reverseCurve: Curves.easeIn,
       ),
-      child: Tooltip(
-        message: widget.card.title,
-        // Semantics below names the pin; exclude the Tooltip so the title isn't
-        // announced twice ("<title> <title>").
-        excludeFromSemantics: true,
-        child: Semantics(
-          button: !widget.dying,
-          label: widget.dying
-              ? ''
-              : "${L10n.of(context).activityLabel(widget.card.title)}, ${widget.state.label(L10n.of(context))}",
-          // excludeSemantics drops the DESCENDANT tree — including the
-          // GestureDetector's implicit tap action — so this node must carry
-          // its own onTap, or assistive tech can name the pin but never
-          // activate it (#7591).
-          onTap: widget.dying ? null : widget.onTap,
-          excludeSemantics: true,
-          child: GestureDetector(
+      // A dying pin is inert, and its layer sits ABOVE the live pins — so it
+      // must not hit-test at all, or its box (touch-target-sized for a dot)
+      // would shadow the live pin beneath for the length of the exit.
+      child: IgnorePointer(
+        ignoring: widget.dying,
+        child: Tooltip(
+          message: widget.card.title,
+          // Semantics below names the pin; exclude the Tooltip so the title
+          // isn't announced twice ("<title> <title>").
+          excludeFromSemantics: true,
+          child: Semantics(
+            button: !widget.dying,
+            label: widget.dying
+                ? ''
+                : "${L10n.of(context).activityLabel(widget.card.title)}, ${widget.state.label(L10n.of(context))}",
+            // excludeSemantics drops the DESCENDANT tree — including the
+            // GestureDetector's implicit tap action — so this node must carry
+            // its own onTap, or assistive tech can name the pin but never
+            // activate it (#7591).
             onTap: widget.dying ? null : widget.onTap,
-            child: _withCompletionStar(
-              widget.tier == PinTier.mid
-                  ? _MediumDotContent(
-                      state: widget.state,
-                      pinged: widget.pinged,
-                      unreadRoom: widget.unreadRoom,
-                      participantsFilled: widget.participantsFilled,
-                      participantsTotal: widget.participantsTotal,
-                      starLevel: widget.starLevel,
-                      isFocused: widget.isFocused,
-                    )
-                  : _SmallDotContent(
-                      state: widget.state,
-                      starLevel: widget.starLevel,
-                      isFocused: widget.isFocused,
-                    ),
+            excludeSemantics: true,
+            child: GestureDetector(
+              onTap: widget.dying ? null : widget.onTap,
+              // A dot's marker box is padded out past its painted circle to
+              // the min touch target ([PinSize.dotTouchTarget]); the whole box
+              // must take the tap, not just the tiny dot (#7688). A mid
+              // teardrop keeps deferring to its silhouette-only painter
+              // hit-test, so its transparent corners still fall through
+              // (#7920).
+              behavior: isDot
+                  ? HitTestBehavior.opaque
+                  : HitTestBehavior.deferToChild,
+              // Sized to the same [PinTier.markerBox] the MarkerLayer gives
+              // this pin, with the painted pin centred in it — a no-op for a
+              // teardrop (box == pin), the touch-target padding for a dot.
+              child: SizedBox.fromSize(
+                size: widget.tier.markerBox(widget.state),
+                child: Center(
+                  child: _withCompletionStar(
+                    widget.tier == PinTier.mid
+                        ? _MediumDotContent(
+                            state: widget.state,
+                            pinged: widget.pinged,
+                            unreadRoom: widget.unreadRoom,
+                            participantsFilled: widget.participantsFilled,
+                            participantsTotal: widget.participantsTotal,
+                            starLevel: widget.starLevel,
+                            isFocused: widget.isFocused,
+                          )
+                        : _SmallDotContent(
+                            state: widget.state,
+                            starLevel: widget.starLevel,
+                            isFocused: widget.isFocused,
+                          ),
+                  ),
+                ),
+              ),
             ),
           ),
         ),
@@ -219,17 +243,11 @@ class _SmallDotContent extends StatelessWidget {
   );
 }
 
-/// The mid-pin glyph, matching its large-card counterpart icon-for-icon
-/// (world-map.instructions.md, "Pin display"): `available` a plus, `joinable`
-/// a door, `ongoingPending` an hourglass, `ongoingActive` a chat bubble.
-/// `inProgress` renders no glyph — its body is a gold star, not a coloured pin.
-IconData? _mediumGlyph(ActivityPinState state) => switch (state) {
-  ActivityPinState.available => Icons.add,
-  ActivityPinState.joinable => Icons.meeting_room,
-  ActivityPinState.ongoingPending => Icons.hourglass_bottom,
-  ActivityPinState.ongoingActive => Icons.chat_bubble_outline,
-  ActivityPinState.inProgress => null,
-};
+/// The mid-pin glyph (world-map.instructions.md, "Pin display"): each state's
+/// shared [ActivityPinState.icon], except `inProgress` (Completed) whose pin
+/// body is a gold star rather than a coloured pin, so it shows no mid-glyph.
+IconData? _mediumGlyph(ActivityPinState state) =>
+    state == ActivityPinState.inProgress ? null : state.icon;
 
 /// The mid-pin "num/num" participant-count label — `joinable`/`ongoingPending`
 /// only (never `ongoingActive`, which shows no count — world-map.instructions.md,
@@ -270,6 +288,19 @@ class _MediumDotContent extends StatelessWidget {
       participantsTotal,
     );
 
+    // The glyph is white on every mid pin EXCEPT `available` in light mode: its
+    // light-purple fill is too pale for a white "+" to stand out, so there the
+    // icon takes the pin's dark-purple label colour to match the designs (its
+    // former outside label used the same colour). Dark mode keeps white — the
+    // `available` pin fills with the darker `AppConfig.primaryColorDark` purple
+    // there, which a white glyph reads cleanly over (world-map.instructions.md,
+    // "Pin state").
+    final glyphColor =
+        state == ActivityPinState.available &&
+            Theme.of(context).brightness == Brightness.light
+        ? state.labelColor
+        : Colors.white;
+
     // The icon and (for joinable/ongoing-pending) the "num/num" count stack
     // together as a single glyph inside the circular head, rather than the
     // count sitting in its own reserved row below the pin — so the pin reads
@@ -279,14 +310,14 @@ class _MediumDotContent extends StatelessWidget {
       final icon => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 16, color: Colors.white),
+          Icon(icon, size: 16, color: glyphColor),
           if (label != null)
             Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: glyphColor,
               ),
             ),
         ],
@@ -366,6 +397,8 @@ class _WorldMapStateDot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bodyColor = _bodyColor(context);
+
     if (state == ActivityPinState.inProgress) {
       // Progress is the state: a fixed-size star dot replaces the coloured body
       // — a super star (all roles) or a plain star (one role). No shape/point.
@@ -384,7 +417,7 @@ class _WorldMapStateDot extends StatelessWidget {
         width: diameter,
         height: diameter,
         decoration: BoxDecoration(
-          color: _bodyColor,
+          color: bodyColor,
           shape: BoxShape.circle,
           border: Border.all(color: Colors.white, width: borderWidth),
           boxShadow: const [BoxShadow(blurRadius: 3, color: Colors.black38)],
@@ -405,7 +438,7 @@ class _WorldMapStateDot extends StatelessWidget {
           CustomPaint(
             size: Size(diameter, diameter + pointHeight),
             painter: TeardropPainter(
-              color: _bodyColor,
+              color: bodyColor,
               headDiameter: diameter,
               pointHeight: pointHeight,
             ),
@@ -426,8 +459,11 @@ class _WorldMapStateDot extends StatelessWidget {
 
   /// The pin body's fill, darkened slightly while [isFocused] for the selected
   /// look (the star dot keeps its own gold — only coloured bodies darken).
-  Color get _bodyColor =>
-      isFocused ? WorldMapSelection.darken(state.color) : state.color;
+  /// Theme-aware: an `available` pin fills darker in the dark theme (#8174).
+  Color _bodyColor(BuildContext context) {
+    final base = state.bodyColor(context);
+    return isFocused ? WorldMapSelection.darken(base) : base;
+  }
 
   /// The selected (focused) treatment: NO outline — a soft state-coloured glow
   /// haloes the pin head (the body itself darkens via [_bodyColor]), so a
@@ -449,7 +485,9 @@ class _WorldMapStateDot extends StatelessWidget {
       height: headDiameter,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        boxShadow: WorldMapSelection.glow(state.color),
+        // The halo tracks the body fill, so a focused `available` pin in the
+        // dark theme glows its darker purple rather than the light one (#8174).
+        boxShadow: WorldMapSelection.glow(state.bodyColor(context)),
       ),
     );
 

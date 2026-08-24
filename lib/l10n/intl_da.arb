@@ -233,8 +233,6 @@
     "leave": "Forlad",
     "leftTheChat": "Forlod chatten",
     "lightTheme": "Lyst",
-    "dehydrate": "Eksporter session og slet enhed",
-    "dehydrateWarning": "Denne handling kan ikke fortrydes. Sørg for at gemme backup-filen sikkert.",
     "hydrate": "Gendan fra backup-fil",
     "loadingPleaseWait": "Indlæser… Vent venligst.",
     "loadMore": "Indlæs flere…",
@@ -1138,9 +1136,7 @@
     "enableAutocorrectPopupTitle": "Tilføj dit målsprog-tastatur ved at gå til:",
     "enableAutocorrectPopupSteps": "  • Indstillinger\n  • Generelt\n  • Tastatur\n  • Tastaturer\n  • Tilføj nyt tastatur",
     "enableAutocorrectPopupDescription": "Når sproget er valgt, kan du klikke på det lille globus-ikon nederst til venstre på dit tastatur for at aktivere det nyinstallerede tastatur.",
-    "downloadGboardTitle": "Download Gboard fra Google Play Butik for at aktivere automatisk rettelse og andre tastaturfunktioner:",
     "downloadGboardSteps": " • Download Gboard\n  • Åbn appen\n  • Sprog\n  • Tilføj tastatur\n  • Vælg sprog\n  • Vælg tastaturtype\n  • Udført",
-    "downloadGboardDescription": "Når sproget er valgt, kan du klikke på det lille globus-ikon nederst til venstre på dit tastatur for at aktivere det nyinstallerede tastatur.",
     "enableAutocorrectWarning": "Advarsel! Kræver tilføjelse af dit målsprog-tastatur",
     "displayName": "Visningsnavn",
     "leaveRoomDescription": "Du er ved at forlade denne chat. Andre brugere vil se, at du har forladt chatten.",
@@ -1341,7 +1337,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-05 11:42:11.001268",
+    "@@last_modified": "2026-08-24 11:54:15.159038",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -2349,14 +2345,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -6319,15 +6307,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -8523,16 +8503,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Dette ord vil blive permanent fjernet fra din analyse",
     "woman": "Kvinde",
     "man": "Mand",
     "otherGender": "Andet",
     "unselectedGender": "Vælg en kønsoption",
     "chatParticipantTooltip": "Dette er alle i denne chat. Klik på en brugers avatar og \"start samtale\" for at sende en DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10615,8 +10590,6 @@
     "audioWordsDescription": "Afspil et ords lyd, når du trykker på det.",
     "audioChoicesToolName": "Valgmuligheder",
     "audioChoicesDescription": "Afspil lyd for svarmuligheder i øvelsesaktiviteter.",
-    "audioIncomingMessagesToolName": "Indgående beskeder",
-    "audioIncomingMessagesDescription": "Læs automatisk modtagne beskeder højt på dit målsprog for lytteøvelse.",
     "choosePangeaAvatar": "Vælg en Pangea-avatar",
     "readAloudNoVoiceTitle": "Ingen {language}-stemme af høj kvalitet fundet",
     "readAloudNoVoiceDesktopWeb": "Denne browser tilbyder ikke en {language}-stemme af høj kvalitet, så beskeder kan ikke læses højt her. Chrome og Edge inkluderer normalt stemmer af høj kvalitet.",
@@ -10637,5 +10610,77 @@
     "conversationFromDayOne": "Samtale fra dag ét",
     "builtForConnection": "Bygget til forbindelse",
     "aiWhenYouNeedIt": "AI, når du har brug for det",
-    "practiceTailoredForYou": "Øvelse skræddersyet til dig"
+    "practiceTailoredForYou": "Øvelse skræddersyet til dig",
+    "deletedVocab": "Slettede ord",
+    "blockLemmaConfirmation": "Dette ord fjernes fra dit ordforråd og giver ikke længere XP. Du kan gendanne det fra Slettede ord.",
+    "deletedVocabListBody": "Disse ord er skjult fra dit ordforråd og giver ikke XP. Gendan et for at få det tilbage.",
+    "deletedVocabListBodyEmpty": "Du har ikke slettet nogen ord. Ord, du sletter fra dit ordforråd, vises her, så du kan gendanne dem.",
+    "deletedVocabListLabel": "Slettede ord",
+    "restore": "Gendan",
+    "deletedWordLabel": "{lemma}, slettet",
+    "restoredWords": "{count, plural, =1{Gendannede 1 ord} other{Gendannede {count} ord}}",
+    "chatSearchPageLabel": "Søgeside for chat",
+    "selectImageLabel": "Vælg billede",
+    "userSearchTagsLabel": "Søg i...",
+    "courseDetails": "Kursusdetaljer",
+    "objective": "Mål",
+    "pingedLabel": "Pinget",
+    "mapFilterPlayerCount": "{count} spillere",
+    "practiceFeedbackButtonTooltip": "Rapportér et problem med denne øvelse",
+    "practiceFeedbackDialogTitle": "Feedback på øvelse",
+    "practiceFeedbackSelectPair": "Hvilket par ser forkert ud?",
+    "practiceFeedbackUserSetEmoji": "Du valgte denne emoji – skift den fra ordkortet",
+    "practiceFeedbackAlreadyMatched": "Allerede matchet korrekt",
+    "practiceFeedbackUpdated": "Tak! Øvelsen er blevet opdateret baseret på din feedback.",
+    "practiceFeedbackUnchanged": "Tak! Din rapport blev registreret, men indholdet er uændret.",
+    "audioOnNewMessageToolName": "Ved ny besked",
+    "audioOnNewMessageDescription": "Læs automatisk nye modtagne beskeder højt på dit målsprog.",
+    "audioOnMessageClickToolName": "Ved klik på besked",
+    "audioOnMessageClickDescription": "Læs en besked højt på dit målsprog, når du klikker på den.",
+    "audioSettingDisabledTitle": "{toolName}-lyd deaktiveret",
+    "audioSettingDisabledBody": "Du kan aktivere {toolName}-lyd i dine læringsindstillinger",
+    "audioSettingDisabledEnable": "Aktiver",
+    "rejoinedTheActivity": "🔄 {username} er vendt tilbage til denne aktivitet",
+    "shareAnalytics": "Del analyser",
+    "courseNoLongerAvailableTitle": "Kursus ikke tilgængeligt",
+    "courseDeletedDialogDesc": "Dette kursus er blevet slettet.",
+    "pingedActivity": "Pinget aktivitet",
+    "appInTargetLanguageStaysInBaseLanguage": "(Denne indstilling forbliver på dit modersmål, så du altid kan finde den.)",
+    "usernameTakenPleaseChooseAnother": "Brugernavnet er allerede taget. Vælg venligst et andet.",
+    "allParticipants": "Alle deltagere",
+    "seeFullCoursePlan": "Se hele kursusplanen",
+    "catchUp": "Indhent det forsømte",
+    "messageLanguageIs": "Denne besked er indstillet til {language}.",
+    "updateMessageLanguage": "Klik her for at ændre beskedens sprog.",
+    "messageLanguage": "Beskedsprog",
+    "messageLanguageUpdated": "Beskedsprog opdateret!",
+    "pickCefrLevelStepSubtitle": "Du kan ændre dette senere",
+    "unlockPremiumAudio": "Lås op for premium-lyd",
+    "unlockTranslations": "Lås op for oversættelser",
+    "unlockEmojiMode": "Lås op for emoji-tilstand",
+    "unlockMessagePractice": "Lås op for beskedøvelse",
+    "unlockWritingAssistance": "Lås op for skrivehjælp",
+    "courseSectionTeaching": "Undervisning",
+    "courseSectionLearning": "Læring",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kurser}}",
+    "showMore": "Vis mere",
+    "showLess": "Vis mindre",
+    "countNewMessages": "{count, plural, =1{1 ny besked} other{{count} nye beskeder}}",
+    "markAllRead": "Marker alt som læst",
+    "usersAreTryingToJoinCourse": "Brugere prøver at deltage i dit kursus",
+    "denyAllUsers": "Afvis alle brugere",
+    "denyAllKnocksDescription": "Disse brugere vil blive afvist fra kurset. De kan til enhver tid forsøge at deltage igen.",
+    "courseNameHint": "Kursusnavn",
+    "typeCourseCodeToConfirm": "For at bekræfte, indtast kursuskoden {code} herunder.",
+    "typeCourseNameToConfirm": "For at bekræfte, indtast kursusnavnet {name} herunder.",
+    "inviteAFriend": "Inviter en ven",
+    "autocorrectAndroidDialogTitle": "Autokorrektur på dit målsprog",
+    "autocorrectAndroidDialogBody": "Når du skriver i en chat, skifter dit tastatur til dit målsprog og retter stavefejl på det sprog.",
+    "autocorrectAndroidFallbackTitle": "Hvis dit tastatur ikke tilbyder dit målsprog, skal du installere Gboard og tilføje sproget der:",
+    "resendInSeconds": "Send igen ({seconds})",
+    "mapLevelFallbackNotice": "Ingen {selected}-aktiviteter endnu – viser {shown} i stedet.",
+    "switchLanguageChipLabel": "Skift til {language}",
+    "languageDropdownLevel": "Niveau {level}",
+    "whatAreYouLearning": "Hvad lærer du?",
+    "languageSwitcherBaseLanguageLabel": "Dit grundsprog"
 }

@@ -21,7 +21,7 @@ class SignupWithEmailView extends StatelessWidget {
           appBar: AppBar(
             centerTitle: true,
             title: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 450),
+              constraints: const BoxConstraints(maxWidth: 600),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -96,6 +96,20 @@ class SignupWithEmailView extends StatelessWidget {
                         FocusManager.instance.primaryFocus?.unfocus(),
                     inputFormatters: [LengthLimitingTextInputFormatter(128)],
                   ),
+                  // What the homeserver rejected the last attempt for, in the
+                  // form rather than in an error dialog (#8370). A live region
+                  // so it is announced when it appears.
+                  if (controller.signupError != null)
+                    Semantics(
+                      liveRegion: true,
+                      child: Text(
+                        controller.signupError!,
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.error,
+                        ),
+                      ),
+                    ),
                   ElevatedButton(
                     onPressed: controller.enableSignUp
                         ? controller.signup

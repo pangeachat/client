@@ -5,7 +5,7 @@ description: Learn a language while texting your friends.
 # Pangea#
 publish_to: none
 # On version bump also increase the build number for F-Droid
-version: 5.0.0+6
+version: 5.0.1+6
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -137,6 +137,10 @@ dependencies:
   # (routes/chat/events/streaming_stt/) connects the choreo WS relay with the
   # access_token subprotocol via WebSocketChannel.
   web_socket_channel: ^3.0.3
+  # iOS-only: per-field keyboard language persistence for the chat composer
+  # (routes/chat/composer_keyboard_context.dart, #8465).
+  text_input_context:
+    path: pangea_packages/text_input_context
   # Pangea#
 
 dev_dependencies:

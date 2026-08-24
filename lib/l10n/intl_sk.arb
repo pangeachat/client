@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-05 11:42:16.731113",
+    "@@last_modified": "2026-08-24 11:54:21.104757",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -1386,8 +1386,6 @@
     "redactMessageDescription": "Správa bude redigovaná pre všetkých účastníkov tejto konverzácie. Toto nemôže byť vrátené.",
     "optionalRedactReason": "(Voliteľné) Dôvod redigovania tejto správy...",
     "inviteForMe": "Pozvať mňa",
-    "dehydrate": "Exportovať reláciu a vymazať zariadenie",
-    "dehydrateWarning": "Táto akcia sa nedá vrátiť. Uistite sa, že bezpečne uložíte záložný súbor.",
     "hydrate": "Obnoviť zo záložného súboru",
     "locationDisabledNotice": "Služby polohy sú zakázané. Povolením ich môžete zdieľať svoju polohu.",
     "locationPermissionDeniedNotice": "Oprávnenie na polohu bolo zamietnuté. Požiadajte o povolenie, aby ste mohli zdieľať svoju polohu.",
@@ -2195,9 +2193,7 @@
     "enableAutocorrectPopupTitle": "Pridajte klávesnicu cieľového jazyka prechádzaním do:",
     "enableAutocorrectPopupSteps": "  • Nastavenia\n  • Všeobecné\n  • Klávesnica\n  • Klávesnice\n  • Pridať novú klávesnicu",
     "enableAutocorrectPopupDescription": "Po výbere jazyka môžete kliknúť na malú ikonu glóbusu v ľavom spodnom rohu klávesnice na aktiváciu novozaloženej klávesnice.",
-    "downloadGboardTitle": "Stiahnite si Gboard z Obchodu Google Play na povolenie automatickej korekcie a ďalších funkcií klávesnice:",
     "downloadGboardSteps": " • Stiahnite si Gboard\n  • Otvorte aplikáciu\n  • Jazyky\n  • Pridať klávesnicu\n  • Vybrať jazyk\n  • Vybrať typ klávesnice\n  • Hotovo",
-    "downloadGboardDescription": "Po výbere jazyka môžete kliknúť na malú ikonu glóbusu v ľavom spodnom rohu klávesnice na aktiváciu novozaloženej klávesnice.",
     "enableAutocorrectWarning": "Varovanie! Vyžaduje pridanie klávesnice cieľového jazyka",
     "displayName": "Zobrazované meno",
     "leaveRoomDescription": "Chystáte sa opustiť tento chat. Ostatní používatelia uvidia, že ste opustili chat.",
@@ -2838,14 +2834,6 @@
         "placeholders": {}
     },
     "@inviteForMe": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -6344,15 +6332,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -8548,16 +8528,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Toto slovo v slovnej zásobe bude trvalo odstránené z vašich analytických údajov",
     "woman": "Žena",
     "man": "Muž",
     "otherGender": "Iné",
     "unselectedGender": "Vyberte možnosť pohlavia",
     "chatParticipantTooltip": "Toto sú všetci v tomto chate. Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“ na odoslanie priamej správy.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10640,8 +10615,6 @@
     "audioWordsDescription": "Prehrajte zvuk slova, keď naň ťuknete.",
     "audioChoicesToolName": "Možnosti",
     "audioChoicesDescription": "Prehrajte zvuk pre možnosti odpovedí v cvičeniach.",
-    "audioIncomingMessagesToolName": "Prichádzajúce správy",
-    "audioIncomingMessagesDescription": "Automaticky čítajte prijaté správy nahlas vo vašom cieľovom jazyku pre cvičenie počúvania.",
     "choosePangeaAvatar": "Vyberte si avatara Pangea",
     "readAloudNoVoiceTitle": "Nenašiel sa kvalitný hlas pre jazyk {language}",
     "readAloudNoVoiceDesktopWeb": "Tento prehliadač neponúka kvalitný hlas pre jazyk {language}, takže správy tu nemožno dobre nahlas prečítať. Prehliadače Chrome a Edge zvyčajne obsahujú kvalitné hlasy.",
@@ -10662,5 +10635,77 @@
     "conversationFromDayOne": "Konverzácia od prvého dňa",
     "builtForConnection": "Stvorené pre spojenie",
     "aiWhenYouNeedIt": "AI, keď ju potrebuješ",
-    "practiceTailoredForYou": "Cvičenie šité na mieru"
+    "practiceTailoredForYou": "Cvičenie šité na mieru",
+    "deletedVocab": "Odstránené slová",
+    "blockLemmaConfirmation": "Toto slovo bude odstránené z vášho slovníka a prestane získavať XP. Môžete ho vrátiť z Odstránených slov.",
+    "deletedVocabListBody": "Tieto slová sú skryté z vášho slovníka a nezískavajú XP. Obnovte ich, aby ste ich vrátili.",
+    "deletedVocabListBodyEmpty": "Neodstránili ste žiadne slová. Slová, ktoré odstránite z vášho slovníka, sa tu zobrazia, aby ste ich mohli vrátiť.",
+    "deletedVocabListLabel": "Odstránené slová",
+    "restore": "Obnoviť",
+    "deletedWordLabel": "{lemma}, odstránené",
+    "restoredWords": "{count, plural, =1{Obnovené 1 slovo} other{Obnovených {count} slov}}",
+    "chatSearchPageLabel": "Stránka vyhľadávania chatu",
+    "selectImageLabel": "Vybrať obrázok",
+    "userSearchTagsLabel": "Hľadať v...",
+    "courseDetails": "Podrobnosti kurzu",
+    "objective": "Cieľ",
+    "pingedLabel": "Pingnuté",
+    "mapFilterPlayerCount": "{count} hráčov",
+    "practiceFeedbackButtonTooltip": "Nahlásiť problém s týmto cvičením",
+    "practiceFeedbackDialogTitle": "Spätná väzba k cvičeniu",
+    "practiceFeedbackSelectPair": "Ktorý pár vyzerá nesprávne?",
+    "practiceFeedbackUserSetEmoji": "Vybrali ste tento emoji – zmeňte ho z kartičky slova",
+    "practiceFeedbackAlreadyMatched": "Už správne spárované",
+    "practiceFeedbackUpdated": "Ďakujeme! Cvičenie bolo aktualizované na základe vašej spätnej väzby.",
+    "practiceFeedbackUnchanged": "Ďakujeme! Váš hlásenie bolo zaznamenané, ale obsah zostal nezmenený.",
+    "audioOnNewMessageToolName": "Pri novej správe",
+    "audioOnNewMessageDescription": "Automaticky nahlas prečítať nové prijaté správy vo vašom cieľovom jazyku.",
+    "audioOnMessageClickToolName": "Pri kliknutí na správu",
+    "audioOnMessageClickDescription": "Nahlas prečítať správu vo vašom cieľovom jazyku po kliknutí na ňu.",
+    "audioSettingDisabledTitle": "Zvuk {toolName} je vypnutý",
+    "audioSettingDisabledBody": "Zvuk {toolName} môžete zapnúť v nastaveniach učenia",
+    "audioSettingDisabledEnable": "Zapnúť",
+    "rejoinedTheActivity": "🔄 {username} sa znova pripojil k tejto aktivite",
+    "shareAnalytics": "Zdieľať analýzy",
+    "courseNoLongerAvailableTitle": "Kurz nedostupný",
+    "courseDeletedDialogDesc": "Tento kurz bol vymazaný.",
+    "pingedActivity": "Aktivita s upozornením",
+    "appInTargetLanguageStaysInBaseLanguage": "(Toto nastavenie zostane vo vašom rodnom jazyku, aby ste ho vždy našli.)",
+    "usernameTakenPleaseChooseAnother": "Toto používateľské meno je už obsadené. Vyberte si iné.",
+    "allParticipants": "Všetci účastníci",
+    "seeFullCoursePlan": "Zobraziť celý plán kurzu",
+    "catchUp": "Dohnať",
+    "messageLanguageIs": "Tento text je nastavený na jazyk {language}.",
+    "updateMessageLanguage": "Kliknutím sem zmeníte jazyk správy.",
+    "messageLanguage": "Jazyk správy",
+    "messageLanguageUpdated": "Jazyk správy bol aktualizovaný!",
+    "pickCefrLevelStepSubtitle": "Môžete to zmeniť neskôr",
+    "unlockPremiumAudio": "Odomknúť prémiové audio",
+    "unlockTranslations": "Odomknúť preklady",
+    "unlockEmojiMode": "Odomknúť režim emoji",
+    "unlockMessagePractice": "Odomknúť precvičovanie správ",
+    "unlockWritingAssistance": "Odomknúť pomoc pri písaní",
+    "courseSectionTeaching": "Výučba",
+    "courseSectionLearning": "Učenie",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurz} other{{count} kurzov}}",
+    "showMore": "Zobraziť viac",
+    "showLess": "Zobraziť menej",
+    "countNewMessages": "{count, plural, =1{1 nová správa} other{{count} nových správ}}",
+    "markAllRead": "Označiť všetko ako prečítané",
+    "usersAreTryingToJoinCourse": "Používatelia sa snažia pripojiť k vášmu kurzu",
+    "denyAllUsers": "Odmietnuť všetkých používateľov",
+    "denyAllKnocksDescription": "Títo používatelia budú z kurzu odmietnutí. Môžu sa kedykoľvek pokúsiť znova pripojiť.",
+    "courseNameHint": "Názov kurzu",
+    "typeCourseCodeToConfirm": "Pre potvrdenie zadajte kód kurzu {code} nižšie.",
+    "typeCourseNameToConfirm": "Pre potvrdenie zadajte názov kurzu {name} nižšie.",
+    "inviteAFriend": "Pozvať priateľa",
+    "autocorrectAndroidDialogTitle": "Automatické opravy v cieľovom jazyku",
+    "autocorrectAndroidDialogBody": "Keď píšete v chate, klávesnica sa prepne na váš cieľový jazyk a opraví pravopis v tomto jazyku.",
+    "autocorrectAndroidFallbackTitle": "Ak vaša klávesnica neponúka váš cieľový jazyk, nainštalujte si Gboard a pridajte tam jazyk:",
+    "resendInSeconds": "Znova odoslať o ({seconds})",
+    "mapLevelFallbackNotice": "Zatiaľ žiadne aktivity {selected} – namiesto toho sa zobrazujú {shown}.",
+    "switchLanguageChipLabel": "Prepnúť na {language}",
+    "languageDropdownLevel": "Úroveň {level}",
+    "whatAreYouLearning": "Čo sa učíte?",
+    "languageSwitcherBaseLanguageLabel": "Váš základný jazyk"
 }

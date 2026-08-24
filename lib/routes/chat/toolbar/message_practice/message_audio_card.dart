@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
@@ -55,15 +55,19 @@ class MessageAudioCardState extends State<MessageAudioCard> {
     } catch (e, s) {
       widget.onError?.call();
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        m: 'something wrong getting audio in MessageAudioCardState',
-        data: {
-          'widget.messageEvent.messageDisplayLangCode':
-              widget.messageEvent.messageDisplayLangCode,
-        },
-      );
+      // An unsubscribed user is control flow, not an error: backend TTS is
+      // entitlement-gated, so the 401 is the expected answer (#8375).
+      if (e is! UnsubscribedException) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          m: 'something wrong getting audio in MessageAudioCardState',
+          data: {
+            'widget.messageEvent.messageDisplayLangCode':
+                widget.messageEvent.messageDisplayLangCode,
+          },
+        );
+      }
       if (mounted) setState(() => _isLoading = false);
     }
   }
@@ -83,8 +87,7 @@ class MessageAudioCardState extends State<MessageAudioCard> {
               senderId: widget.messageEvent.senderId,
               matrixFile: audioFile,
               color: Theme.of(context).colorScheme.onPrimaryContainer,
-              fontSize:
-                  AppConfig.messageFontSize * AppSettings.fontSizeFactor.value,
+              fontSize: AppConfig.messageFontSize,
               linkColor: Theme.of(context).brightness == Brightness.light
                   ? Theme.of(context).colorScheme.primary
                   : Theme.of(context).colorScheme.onPrimary,

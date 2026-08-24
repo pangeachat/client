@@ -8,6 +8,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -30,6 +32,16 @@ class ActivityVocabWidget extends StatelessWidget {
   final String activityLangCode;
   final ValueNotifier<Set<String>>? usedVocab;
 
+  /// The room a tapped vocab chip's audio belongs to, or null where there is
+  /// none, for the listening measurement in [_VocabChipsState._selectVocab].
+  ///
+  /// Required despite being nullable, because this widget renders on two
+  /// surfaces that differ on exactly this point: the in-chat activity summary
+  /// has a room, and the session start page has none until a session room
+  /// exists. Null is an answer each caller must give rather than fall into, and
+  /// a room borrowed from the other surface would be fabricated.
+  final String? roomId;
+
   const ActivityVocabWidget({
     super.key,
     required this.vocab,
@@ -37,6 +49,7 @@ class ActivityVocabWidget extends StatelessWidget {
     required this.targetId,
     required this.activityLangCode,
     required this.usedVocab,
+    required this.roomId,
   });
 
   @override
@@ -61,6 +74,7 @@ class ActivityVocabWidget extends StatelessWidget {
                 langCode: langCode,
                 usedVocab: const {},
                 activityLangCode: activityLangCode,
+                roomId: roomId,
               )
             : ValueListenableBuilder(
                 valueListenable: usedVocab!,
@@ -70,6 +84,7 @@ class ActivityVocabWidget extends StatelessWidget {
                   langCode: langCode,
                   usedVocab: used,
                   activityLangCode: activityLangCode,
+                  roomId: roomId,
                 ),
               ),
       ],
@@ -84,11 +99,16 @@ class _VocabChips extends StatefulWidget {
   final String activityLangCode;
   final Set<String>? usedVocab;
 
+  /// See [ActivityVocabWidget.roomId]. Required here too: this is where the
+  /// emit happens, so a default would decide the question for both surfaces.
+  final String? roomId;
+
   const _VocabChips({
     required this.vocab,
     required this.targetId,
     required this.langCode,
     required this.activityLangCode,
+    required this.roomId,
     this.usedVocab,
   });
 
@@ -153,6 +173,20 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
       vocab.lemma,
       langCode: widget.langCode,
       useCase: TtsUseCase.words,
+      // Listening category 5 (#104): a WORD the learner tapped.
+      //
+      // The room comes from whichever surface built this widget and is null on
+      // the one that has none — see [ActivityVocabWidget.roomId]. A fresh probe
+      // per call: it holds a running measurement.
+      listening: DosageTtsListeningProbe(
+        category: DosageListeningCategory.wordAudio,
+        roomId: widget.roomId,
+        // Read live: an account switch or a token refresh mid-playback must not
+        // post under a stale identity.
+        userId: () => MatrixState.pangeaController.matrixState.client.userID,
+        accessToken: () =>
+            MatrixState.pangeaController.matrixState.client.accessToken,
+      ),
     );
     _showWordCard(vocab);
   }
@@ -170,6 +204,16 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
 
   void _showWordCard(Vocab vocab) {
     final target = _vocabKey(vocab);
+    // A pointer can't reach a chip while a card is open — the tap lands on
+    // the card's backdrop and dismisses it — but a screen reader activates
+    // chips straight through the semantics tree, stacking one card + backdrop
+    // per chip until every one has been dismissed (#8279). Close this
+    // widget's other card first so only one is ever open.
+    for (final other in widget.vocab) {
+      if (other != vocab) {
+        MatrixState.pAnyState.closeOverlay(_vocabKey(other));
+      }
+    }
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => OverlayUtil.showPositionedCard(
         context: context,
@@ -179,7 +223,11 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
           target: target,
           onClose: () {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (mounted) setState(() => _selectedVocab = null);
+              // When closed as a side effect of opening another chip's card,
+              // _selectedVocab already points at the newer card — leave it.
+              if (mounted && _selectedVocab == vocab) {
+                setState(() => _selectedVocab = null);
+              }
             });
           },
         ),
@@ -189,7 +237,9 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
           closePrevOverlay: false,
           addBorder: false,
           maxWidth: AppConfig.toolbarMinWidth,
-          maxHeight: AppConfig.toolbarMaxHeight,
+          // Same scaled height the card itself uses — a fixed 250 here would
+          // clip the card back to its unscaled size at large device text.
+          maxHeight: AppConfig.scaledToolbarMaxHeight(context),
         ),
       ),
     );

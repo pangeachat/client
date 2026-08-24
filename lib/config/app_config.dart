@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/utils/text_scaler_extension.dart';
 
 abstract class AppConfig {
   static String get defaultHomeserver => Environment.synapseURL;
@@ -18,6 +18,7 @@ abstract class AppConfig {
 
   static const Color primaryColor = Color(0xFF8560E0);
   static const Color primaryColorLight = Color(0xFFDBC9FF);
+  static const Color primaryColorDark = Color.fromARGB(255, 81, 66, 126);
   static const Color secondaryColor = Color.fromARGB(255, 253, 191, 1);
 
   static const Color chatColor = primaryColor;
@@ -130,8 +131,25 @@ abstract class AppConfig {
   static const double readingAssistanceInputBarHeight = 175.0;
   static String errorSubscriptionId = "pangea_subscription_error";
 
+  /// [toolbarMaxHeight] grown by the device text scaler.
+  ///
+  /// The word card is a fixed-height box whose whole content is text — the
+  /// word, its transcription and its meaning — so at a large device text size
+  /// the unscaled 250 clips it. Everything that reserves room for that card
+  /// must use the same value, or the card and the space held for it disagree.
+  /// See accessibility.instructions.md, Text scaling.
+  ///
+  /// The card's height is driven by its stack of body lines, so it grows by the
+  /// factor the scaler applies at [messageFontSize] — the card's smallest text,
+  /// which under a non-linear system scaler takes the largest factor of
+  /// anything in the card. The box therefore errs toward extra room rather than
+  /// clipping.
+  static double scaledToolbarMaxHeight(BuildContext context) =>
+      toolbarMaxHeight *
+      MediaQuery.textScalerOf(context).factorAt(messageFontSize);
+
   static TextStyle messageTextStyle(Event? event, Color textColor) {
-    final fontSize = messageFontSize * AppSettings.fontSizeFactor.value;
+    final fontSize = messageFontSize;
     final bigEmotes =
         event != null &&
         event.onlyEmotes &&

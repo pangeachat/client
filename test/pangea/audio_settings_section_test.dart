@@ -1,23 +1,128 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:matrix/matrix.dart' show Client;
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/audio_settings_section.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
+import 'package:fluffychat/routes/settings/settings_learning/read_aloud_voice_dialog.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import '../utils/test_client.dart';
 
-/// #8117 — the Audio section of learning settings: the three per-surface audio
-/// toggles (Words, Choices, Incoming messages).
+class _FakeMatrixState extends MatrixState {
+  _FakeMatrixState(this._client);
+
+  final Client _client;
+
+  @override
+  Client get client => _client;
+}
+
+/// Keeps the profile in memory instead of reading Matrix account data, so a
+/// test can push a synced profile the way an account data sync would.
+class _StubUserController extends UserController {
+  _StubUserController(this.syncedProfile);
+
+  Profile syncedProfile;
+
+  @override
+  Profile get profile => syncedProfile;
+
+  /// What [UserController._onProfileUpdate] does when account data changes:
+  /// swap the cached profile, then announce it.
+  void sync(Profile updated) {
+    syncedProfile = updated;
+    settingsUpdateStream.add(updated);
+  }
+}
+
+/// #8117 / #8264 / #8326 / #8334 — the Audio section of learning settings: the
+/// per-surface audio toggles (Words, Choices, On new message, On message
+/// click), the known-good-voice gate on the two message toggles, and keeping
+/// all of them current with profile changes made off this page.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  const ttsChannel = MethodChannel('flutter_tts');
+
+  /// The voices `flutter_tts.getVoices` reports for the next engine query.
+  /// `enhanced` clears the quality bar; `default` does not.
+  List<Map<String, String>> deviceVoices = [];
+
+  late Client client;
+  late _StubUserController userController;
+
+  setUpAll(() async {
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(ttsChannel, (call) async {
+          if (call.method == 'getVoices') return deviceVoices;
+          return 1;
+        });
+
+    // The target language resolves through PLanguageStore, so seed its cache
+    // rather than letting initialize() reach the network.
+    SharedPreferences.setMockInitialValues({
+      PrefKey.lastFetched: DateTime.now().toIso8601String(),
+      PrefKey.languagesKey: jsonEncode({
+        PrefKey.languagesKey: [
+          {
+            'language_code': 'es',
+            'language_name': 'Spanish',
+            'l2_support': 'full',
+          },
+        ],
+      }),
+    });
+    await PLanguageStore.initialize();
+
+    // The view model listens to the user controller's profile streams, so it
+    // needs a controller to reach through MatrixState.
+    client = await prepareTestClient();
+    MatrixState.pangeaController = PangeaController(
+      matrixState: _FakeMatrixState(client),
+    );
+  });
+
+  tearDownAll(() => client.dispose());
+
+  setUp(() {
+    deviceVoices = [
+      {'name': 'Mónica (Enhanced)', 'locale': 'es-ES', 'quality': 'enhanced'},
+    ];
+  });
+
   LearningSettingsViewModel makeViewModel({
     UserToolSettings toolSettings = const UserToolSettings(),
-  }) => LearningSettingsViewModel(
-    Profile(userSettings: UserSettings(), toolSettings: toolSettings),
-  );
+  }) {
+    final profile = Profile(
+      userSettings: UserSettings(sourceLanguage: 'en', targetLanguage: 'es'),
+      toolSettings: toolSettings,
+    );
+    // Swapped in per test so each one starts from its own profile, and so the
+    // PangeaController's own subscriptions stay on the controller it built.
+    userController = _StubUserController(profile);
+    MatrixState.pangeaController.userController = userController;
+    return LearningSettingsViewModel(profile);
+  }
+
+  bool toggleValue(WidgetTester tester, String title) => tester
+      .widget<SwitchListTile>(
+        find.ancestor(
+          of: find.text(title),
+          matching: find.byType(SwitchListTile),
+        ),
+      )
+      .value;
 
   Future<void> pumpSection(
     WidgetTester tester,
@@ -30,7 +135,13 @@ void main() {
         supportedLocales: L10n.supportedLocales,
         home: Scaffold(
           body: SingleChildScrollView(
-            child: AudioSettingsSection(viewModel: viewModel),
+            // The section redraws off the view model through the same
+            // ListenableBuilder LearningSettingsTiles mounts it under.
+            child: ListenableBuilder(
+              listenable: viewModel,
+              builder: (context, _) =>
+                  AudioSettingsSection(viewModel: viewModel),
+            ),
           ),
         ),
       ),
@@ -38,56 +149,113 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  testWidgets('renders the section header and three toggles', (tester) async {
+  testWidgets('renders the section header and four toggles', (tester) async {
     await pumpSection(tester, makeViewModel());
 
     expect(find.text('Audio'), findsOneWidget);
-    // The bot voice picker is gone: the bot no longer generates TTS, so the
-    // control did nothing. See message-read-aloud.instructions.md.
-    expect(find.text('Pangea Bot audio message voice'), findsNothing);
     expect(find.text('Words'), findsOneWidget);
     expect(find.text('Choices'), findsOneWidget);
-    expect(find.text('Incoming messages'), findsOneWidget);
-    expect(find.byType(SwitchListTile), findsNWidgets(3));
+    expect(find.text('On new message'), findsOneWidget);
+    expect(find.text('On message click'), findsOneWidget);
+    expect(find.byType(SwitchListTile), findsNWidgets(4));
 
-    // The retired toggles are gone.
-    expect(find.text('Enabled text-to-speech'), findsNothing);
-    expect(
-      find.text('Automatically read aloud all received messages'),
-      findsNothing,
-    );
+    // The retired single message-audio toggle is gone (#8264).
+    expect(find.text('Incoming messages'), findsNothing);
   });
 
-  testWidgets('turning off the incoming messages toggle updates the view '
-      'model', (tester) async {
-    final viewModel = makeViewModel(
-      toolSettings: const UserToolSettings(audioIncomingMessages: true),
-    );
-    await pumpSection(tester, viewModel);
-
-    expect(viewModel.getToolSetting(ToolSetting.audioIncomingMessages), isTrue);
-
-    // Disabling is ungated (the known-good-voice gate only guards enabling).
-    await tester.tap(find.text('Incoming messages'));
-    await tester.pumpAndSettle();
-
-    expect(
-      viewModel.getToolSetting(ToolSetting.audioIncomingMessages),
-      isFalse,
-    );
-  });
-
-  testWidgets('enabling incoming messages without a target language is '
-      'blocked by the voice gate', (tester) async {
+  testWidgets('turning off the message toggles updates the view model', (
+    tester,
+  ) async {
     final viewModel = makeViewModel();
     await pumpSection(tester, viewModel);
 
-    await tester.tap(find.text('Incoming messages'));
+    expect(viewModel.getToolSetting(ToolSetting.audioOnNewMessage), isTrue);
+    expect(viewModel.getToolSetting(ToolSetting.audioOnMessageClick), isTrue);
+
+    // Disabling is ungated (the known-good-voice gate only guards enabling).
+    await tester.tap(find.text('On new message'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('On message click'));
     await tester.pumpAndSettle();
 
-    expect(
-      viewModel.getToolSetting(ToolSetting.audioIncomingMessages),
-      isFalse,
+    expect(viewModel.getToolSetting(ToolSetting.audioOnNewMessage), isFalse);
+    expect(viewModel.getToolSetting(ToolSetting.audioOnMessageClick), isFalse);
+  });
+
+  testWidgets('the message toggles read off without a known-good voice, '
+      'whatever the account setting says (#8326)', (tester) async {
+    deviceVoices = [
+      {'name': 'Mónica', 'locale': 'es-ES', 'quality': 'default'},
+    ];
+    // Both stored on — the default every account starts with (#8264).
+    final viewModel = makeViewModel();
+    await pumpSection(tester, viewModel);
+
+    expect(viewModel.getToolSetting(ToolSetting.audioOnNewMessage), isFalse);
+    expect(viewModel.getToolSetting(ToolSetting.audioOnMessageClick), isFalse);
+  });
+
+  testWidgets('enabling a message toggle without a known-good voice is '
+      'blocked by the gate', (tester) async {
+    deviceVoices = [
+      {'name': 'Mónica', 'locale': 'es-ES', 'quality': 'default'},
+    ];
+    final viewModel = makeViewModel(
+      toolSettings: const UserToolSettings(
+        audioOnNewMessage: false,
+        audioOnMessageClick: false,
+      ),
     );
+    await pumpSection(tester, viewModel);
+
+    await tester.tap(find.text('On new message'));
+    await tester.pumpAndSettle();
+
+    expect(viewModel.getToolSetting(ToolSetting.audioOnNewMessage), isFalse);
+    expect(find.byType(ReadAloudVoiceDialog), findsOneWidget);
+  });
+
+  testWidgets('a toggle stored on reads on once a qualifying voice is '
+      'downloaded', (tester) async {
+    deviceVoices = [
+      {'name': 'Mónica', 'locale': 'es-ES', 'quality': 'default'},
+    ];
+    final viewModel = makeViewModel();
+    await pumpSection(tester, viewModel);
+    expect(viewModel.getToolSetting(ToolSetting.audioOnMessageClick), isFalse);
+
+    // The learner follows the dialog to system settings and comes back.
+    deviceVoices = [
+      {'name': 'Mónica (Enhanced)', 'locale': 'es-ES', 'quality': 'enhanced'},
+    ];
+    await tester.tap(find.text('On message click'));
+    await tester.pumpAndSettle();
+
+    expect(viewModel.getToolSetting(ToolSetting.audioOnMessageClick), isTrue);
+    expect(find.byType(ReadAloudVoiceDialog), findsNothing);
+  });
+
+  testWidgets('a toggle turned on elsewhere reads on here (#8334)', (
+    tester,
+  ) async {
+    final viewModel = makeViewModel(
+      toolSettings: const UserToolSettings(audioWords: false),
+    );
+    await pumpSection(tester, viewModel);
+    expect(toggleValue(tester, 'Words'), isFalse);
+
+    // What the word card's "enable audio" prompt writes, coming back on sync
+    // while this page is open beside the chat.
+    userController.sync(
+      viewModel.updatedProfile.copyWith(
+        toolSettings: viewModel.updatedProfile.toolSettings.copyWith(
+          audioWords: true,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(viewModel.getToolSetting(ToolSetting.audioWords), isTrue);
+    expect(toggleValue(tester, 'Words'), isTrue);
   });
 }

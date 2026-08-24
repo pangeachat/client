@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:11.361785",
+    "@@last_modified": "2026-08-24 11:54:15.530482",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -1850,8 +1850,6 @@
     "invalidServerName": "Nevalida servila nomo",
     "redactMessageDescription": "La mesaĝo estos redaktita por ĉiuj partoprenantoj en ĉi tiu konversacio. Tio ne povas esti malkonfirmita.",
     "optionalRedactReason": "(Opcionalo) Kialo por redakti ĉi tiun mesaĝon...",
-    "dehydrate": "Eksporti sesion kaj forviŝi aparaton",
-    "dehydrateWarning": "Ĉi tiu ago ne povas esti malkonfirmita. Certigu ke vi sekure konservas la rezervan dosieron.",
     "hydrate": "Restarigi el rezervdosiero",
     "locationDisabledNotice": "Loko-servoj estas malaktivigitaj. Bonvolu ebligi ilin por povi dividi vian lokon.",
     "locationPermissionDeniedNotice": "Permesoj pri loko estas malpermesitaj. Bonvolu doni ilin por povi dividi vian lokon.",
@@ -2609,9 +2607,7 @@
     "enableAutocorrectPopupTitle": "Aldoni vian celan lingvon-klavaron per irado al:",
     "enableAutocorrectPopupSteps": "  • Agordoj\n  • Ĝenerala\n  • Klavaro\n  • Klavaroj\n  • Aldoni novan klavaron",
     "enableAutocorrectPopupDescription": "Post kiam la lingvo estas elektita, vi povas klaki la malgrandan globan ikonon ĉe la maldekstra angulo de via klavaro por aktivigi la novan instalitan klavaron.",
-    "downloadGboardTitle": "Elŝuti Gboard de la Google Play Store por ebligi aŭtomatan korektadon kaj aliajn klavaraĵojn:",
     "downloadGboardSteps": " • Elŝuti Gboard\n  • Malfermi la aplikaĵon\n  • Lingvoj\n  • Aldoni klavaron\n  • Elekti lingvon\n  • Elekti klavartipo\n  • Fino",
-    "downloadGboardDescription": "Post kiam la lingvo estas elektita, vi povas klaki la malgrandan globan ikonon ĉe la maldekstra angulo de via klavaro por aktivigi la novan instalitan klavaron.",
     "enableAutocorrectWarning": "Averto! Postulas aldoni vian celan lingvon-klavaron",
     "displayName": "Montra nomo",
     "leaveRoomDescription": "Vi estas proksima forlasi ĉi tiun babilejon. Aliaj uzantoj vidos ke vi forlasis la babilejon.",
@@ -3057,14 +3053,6 @@
         "placeholders": {}
     },
     "@optionalRedactReason": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -6344,15 +6332,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -8548,16 +8528,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ĉi tiu vortaro vorto estos permanente forigita el viaj analizoj",
     "woman": "Virino",
     "man": "Viro",
     "otherGender": "Alia",
     "unselectedGender": "Elektu genran opcion",
     "chatParticipantTooltip": "Ĉi tio estas ĉiuj en ĉi tiu konversacio. Klaku sur la avataro de iu ajn kaj \"komenci konversacion\" por sendi DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10640,8 +10615,6 @@
     "audioWordsDescription": "Ludu la aŭdion de vorto kiam vi frapetas ĝin.",
     "audioChoicesToolName": "Elektoj",
     "audioChoicesDescription": "Ludu aŭdion por respondaj elektoj en praktikaj agadoj.",
-    "audioIncomingMessagesToolName": "Alvenantaj mesaĝoj",
-    "audioIncomingMessagesDescription": "Aŭtomate laŭtlegi ricevitajn mesaĝojn en via cellingvo por aŭskulta praktiko.",
     "choosePangeaAvatar": "Elektu Pangean avataron",
     "readAloudNoVoiceTitle": "Neniu altkvalita {language} voĉo trovita",
     "readAloudNoVoiceDesktopWeb": "Ĉi tiu retumilo ne ofertas altkvalitan {language} voĉon, do mesaĝoj ne povas esti bone laŭtlegitaj ĉi tie. Chrome kaj Edge kutime inkluzivas altkvalitajn voĉojn.",
@@ -10662,5 +10635,77 @@
     "conversationFromDayOne": "Konversacio ekde la unua tago",
     "builtForConnection": "Konstruita por konekto",
     "aiWhenYouNeedIt": "AI kiam vi bezonas ĝin",
-    "practiceTailoredForYou": "Praktiko adaptita al vi"
+    "practiceTailoredForYou": "Praktiko adaptita al vi",
+    "deletedVocab": "Forigitaj vortoj",
+    "blockLemmaConfirmation": "Ĉi tiu vorto estos forigita el via vortprovizo kaj ne plu gajnos XP. Vi povas reporti ĝin el Forigitaj vortoj.",
+    "deletedVocabListBody": "Ĉi tiuj vortoj estas kaŝitaj de via vortprovizo kaj ne gajnas XP. Restarigu unu por reporti ĝin.",
+    "deletedVocabListBodyEmpty": "Vi ne forigis iujn vortojn. Vortoj, kiujn vi forigas el via vortprovizo, aperos ĉi tie, por ke vi povu reporti ilin.",
+    "deletedVocabListLabel": "Forigitaj vortoj",
+    "restore": "Restarigi",
+    "deletedWordLabel": "{lemma}, forigita",
+    "restoredWords": "{count, plural, =1{Restarigita 1 vorto} other{Restarigitaj {count} vortoj}}",
+    "chatSearchPageLabel": "Babileja serĉopaĝo",
+    "selectImageLabel": "Elekti bildon",
+    "userSearchTagsLabel": "Serĉi en...",
+    "courseDetails": "Kursaj detaloj",
+    "objective": "Celo",
+    "pingedLabel": "Pingita",
+    "mapFilterPlayerCount": "{count} ludantoj",
+    "practiceFeedbackButtonTooltip": "Raporti problemon pri ĉi tiu ekzerco",
+    "practiceFeedbackDialogTitle": "Reago pri Ekzerco",
+    "practiceFeedbackSelectPair": "Kiu paro aspektas malĝusta?",
+    "practiceFeedbackUserSetEmoji": "Vi elektis ĉi tiun emoji-on — ŝanĝu ĝin de la vortkarto",
+    "practiceFeedbackAlreadyMatched": "Jam ĝuste kongruigita",
+    "practiceFeedbackUpdated": "Dankon! La ekzerco estis ĝisdatigita laŭ via reago.",
+    "practiceFeedbackUnchanged": "Dankon! Via raporto estis registrita, sed la enhavo restis senŝanĝa.",
+    "audioOnNewMessageToolName": "Je nova mesaĝo",
+    "audioOnNewMessageDescription": "Aŭtomate laŭtlegi novajn ricevitajn mesaĝojn en via cellingvo.",
+    "audioOnMessageClickToolName": "Je mesaĝklako",
+    "audioOnMessageClickDescription": "Laŭtlegi mesaĝon en via cellingvo kiam vi klakas sur ĝi.",
+    "audioSettingDisabledTitle": "Aŭdio de {toolName} malŝaltita",
+    "audioSettingDisabledBody": "Vi povas ŝalti la aŭdion de {toolName} en viaj lernaj agordoj",
+    "audioSettingDisabledEnable": "Ŝalti",
+    "rejoinedTheActivity": "🔄 {username} realiĝis al ĉi tiu agado",
+    "shareAnalytics": "Kunhavigi Analizojn",
+    "courseNoLongerAvailableTitle": "Kurso ne disponebla",
+    "courseDeletedDialogDesc": "Ĉi tiu kurso estas forigita.",
+    "pingedActivity": "Pingita agado",
+    "appInTargetLanguageStaysInBaseLanguage": "(Ĉi tiu agordo restas en via denaska lingvo, por ke vi ĉiam povu trovi ĝin.)",
+    "usernameTakenPleaseChooseAnother": "Tiu uzantnomo jam estas prenita. Bonvolu elekti alian.",
+    "allParticipants": "Ĉiuj partoprenantoj",
+    "seeFullCoursePlan": "Vidi la plenan kursplanon",
+    "catchUp": "Reatingi",
+    "messageLanguageIs": "Ĉi tiu mesaĝo estas agordita al {language}.",
+    "updateMessageLanguage": "Alklaku ĉi tie por ŝanĝi la lingvon de la mesaĝo.",
+    "messageLanguage": "Lingvo de mesaĝo",
+    "messageLanguageUpdated": "Lingvo de mesaĝo ĝisdatigita!",
+    "pickCefrLevelStepSubtitle": "Vi povas ŝanĝi tion poste",
+    "unlockPremiumAudio": "Malŝlosi altkvalitan sonon",
+    "unlockTranslations": "Malŝlosi tradukojn",
+    "unlockEmojiMode": "Malŝlosi emoji-reĝimon",
+    "unlockMessagePractice": "Malŝlosi mesaĝan praktikon",
+    "unlockWritingAssistance": "Malŝlosi skriban helpon",
+    "courseSectionTeaching": "Instruado",
+    "courseSectionLearning": "Lernado",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} kursoj}}",
+    "showMore": "Montri pli",
+    "showLess": "Montri malpli",
+    "countNewMessages": "{count, plural, =1{1 nova mesaĝo} other{{count} novaj mesaĝoj}}",
+    "markAllRead": "Marki ĉion kiel legitan",
+    "usersAreTryingToJoinCourse": "Uzantoj provas aliĝi al via kurso",
+    "denyAllUsers": "Malakcepti ĉiujn uzantojn",
+    "denyAllKnocksDescription": "Ĉi tiuj uzantoj estos malakceptitaj de la kurso. Ili rajtas provi aliĝi denove iam ajn.",
+    "courseNameHint": "Nomo de kurso",
+    "typeCourseCodeToConfirm": "Por konfirmi, tajpu la kurskodon {code} ĉi-sube.",
+    "typeCourseNameToConfirm": "Por konfirmi, tajpu la kursnomon {name} ĉi-sube.",
+    "inviteAFriend": "Invitu amikon",
+    "autocorrectAndroidDialogTitle": "Aŭtomata korekto en via cellingvo",
+    "autocorrectAndroidDialogBody": "Kiam vi tajpas en babilejo, via klavaro ŝanĝos al via cellingvo kaj korektos literumadon en tiu lingvo.",
+    "autocorrectAndroidFallbackTitle": "Se via klavaro ne ofertas vian cellingvon, instalu Gboard kaj aldonu la lingvon tie:",
+    "resendInSeconds": "Sendu denove ({seconds})",
+    "mapLevelFallbackNotice": "Ankoraŭ neniuj {selected} agadoj — montrante {shown} anstataŭe.",
+    "switchLanguageChipLabel": "Ŝanĝi al la {language}",
+    "languageDropdownLevel": "Nivelo {level}",
+    "whatAreYouLearning": "Kion vi lernas?",
+    "languageSwitcherBaseLanguageLabel": "Via baza lingvo"
 }

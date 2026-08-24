@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_message_widget.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar_error_example_widget.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
+import 'package:fluffychat/utils/text_scaler_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AnalyticsPracticeExerciseContent extends StatelessWidget {
@@ -52,8 +52,7 @@ class AnalyticsPracticeExerciseContent extends StatelessWidget {
             key: ValueKey('audio_${exercise.eventId}'),
             color: Theme.of(context).colorScheme.primary,
             linkColor: Theme.of(context).colorScheme.secondary,
-            fontSize:
-                AppSettings.fontSizeFactor.value * AppConfig.messageFontSize,
+            fontSize: AppConfig.messageFontSize,
             eventId: '${exercise.eventId}_practice',
             roomId: exercise.roomId!,
             senderId: Matrix.of(context).client.userID!,
@@ -63,8 +62,15 @@ class AnalyticsPracticeExerciseContent extends StatelessWidget {
           ),
         ),
       ),
+      // The example message scales with the device text size, so the slot it
+      // sits in has to grow with it — a fixed 100 clips the bubble outright at
+      // large text sizes (accessibility.instructions.md, Text scaling).
       _ => SizedBox(
-        height: 100.0,
+        height:
+            100.0 *
+            MediaQuery.textScalerOf(
+              context,
+            ).factorAt(AppConfig.messageFontSize),
         child: Center(
           child: AnalyticsPracticeExerciseExampleMessage(exampleMessage),
         ),

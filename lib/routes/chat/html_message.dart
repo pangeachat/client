@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:go_router/go_router.dart';
 import 'package:highlight/highlight.dart' show highlight;
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
@@ -20,6 +21,7 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dar
 import 'package:fluffychat/routes/chat/events/tokens/token_rendering_util.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
+import 'package:fluffychat/routes/chat/html_message_parse_cache.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/token_practice_button.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
@@ -28,6 +30,7 @@ import 'package:fluffychat/routes/chat/toolbar/reading_assistance/token_emoji_bu
 import 'package:fluffychat/utils/code_highlight_theme.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -55,6 +58,13 @@ class HtmlMessage extends StatelessWidget {
   final Event? prevEvent;
   final bool isTransitionAnimation;
   final bool isPracticeMode;
+  final bool useTokenKeys;
+
+  /// Rendered as an example-message chip on a construct's analytics details
+  /// page. Selects that render context's token target-key namespace so the
+  /// chip does not collide with the same event in the open chat timeline —
+  /// see [PangeaToken.analyticsExampleTargetKey].
+  final bool isAnalyticsExample;
   final void Function(PangeaToken)? onClick;
 
   /// Overrides the room-activity vocab lemmas as the gold-highlight set —
@@ -68,6 +78,21 @@ class HtmlMessage extends StatelessWidget {
   /// neither an override nor an activity plan exists.
   late final Set<String>? _activityVocabLemmas =
       vocabLemmas ?? controller.room.activityPlan?.vocabLemmas;
+
+  /// Message-level inputs of the per-node render, computed once per build
+  /// instead of once per HTML node (issue #8393): the message text style
+  /// runs emoji regexes over the body, and the new-token set walks the
+  /// message representations.
+  late final TextStyle? _messageTextStyle = pangeaMessageEvent != null
+      ? AppConfig.messageTextStyle(pangeaMessageEvent!.event, textColor)
+      : null;
+
+  late final Set<PangeaTokenText> _newTokens =
+      pangeaMessageEvent != null && !pangeaMessageEvent!.ownMessage
+      ? TokensUtil.instance.getNewTokensByEvent(pangeaMessageEvent!)
+      : <PangeaTokenText>{};
+
+  late final TokenRenderingUtil _renderer = TokenRenderingUtil();
   // Pangea#
 
   HtmlMessage({
@@ -91,6 +116,8 @@ class HtmlMessage extends StatelessWidget {
     this.onClick,
     this.isTransitionAnimation = false,
     this.isPracticeMode = false,
+    this.useTokenKeys = false,
+    this.isAnalyticsExample = false,
     this.vocabLemmas,
     // Pangea#
   });
@@ -174,20 +201,35 @@ class HtmlMessage extends StatelessWidget {
   };
 
   // #Pangea
-  List<PangeaToken>? get tokens => pangeaMessageEvent
-      ?.messageDisplayRepresentation
-      ?.tokens
+  static final RegExp _digitRegex = RegExp(r'[0-9]');
+  static const Set<String> _skippedPos = {'SYM'};
+
+  /// The display representation's raw token list. Also the parse-cache
+  /// identity key: the list object is stable across rebuilds while nothing
+  /// changed, and is replaced when tokens arrive or the display language
+  /// switches (issue #8423).
+  late final List<PangeaToken>? _displayTokens =
+      pangeaMessageEvent?.messageDisplayRepresentation?.tokens;
+
+  /// Interactive tokens of the display representation, computed once per
+  /// build so the per-token loops in [_addTokenTags] and [_renderHtml] don't
+  /// refilter the list on every call (issue #8393).
+  late final List<PangeaToken>? tokens = _displayTokens
       ?.where(
         (t) =>
-            !["SYM"].contains(t.pos) &&
-            !t.lemma.text.contains(RegExp(r'[0-9]')),
+            !_skippedPos.contains(t.pos) && !t.lemma.text.contains(_digitRegex),
       )
       .toList();
 
+  /// Reversed so that on a position collision the first token in [tokens]
+  /// wins, matching the previous firstWhereOrNull lookup.
+  late final Map<String, PangeaToken> _tokensByPosition = {
+    for (final token in (tokens ?? const <PangeaToken>[]).reversed)
+      '${token.text.offset}:${token.text.length}': token,
+  };
+
   PangeaToken? getToken(String text, int offset, int length) =>
-      tokens?.firstWhereOrNull(
-        (token) => token.text.offset == offset && token.text.length == length,
-      );
+      _tokensByPosition['$offset:$length'];
 
   String _addTokenTags() {
     if (html.contains("<a href")) return html;
@@ -393,6 +435,19 @@ class HtmlMessage extends StatelessWidget {
   }
 
   /// Transforms a Node to an InlineSpan.
+  ///
+  /// **Nothing under a `WidgetSpan` here may scale its own text.** The
+  /// paragraph these spans are rendered into carries the device text scaler,
+  /// and `RichText` scales every `WidgetSpan` child a second time on top of
+  /// that: it wraps each one in `_AutoScaleInlineWidget`, which lays the child
+  /// out unscaled and then paints it through a scale transform
+  /// (flutter#126962). A span child that reads the scaler itself therefore
+  /// renders at scale squared — at the browser's largest font size, message
+  /// text half again as large as the rest of the app (#7719).
+  ///
+  /// So each span child below is pinned to `TextScaler.noScaling` where it
+  /// takes a scaler, and wrapped in `MediaQuery.withNoTextScaling` where it
+  /// resolves one itself, leaving the placeholder as the single scaler.
   // #Pangea
   // InlineSpan _renderHtml(dom.Node node, BuildContext context, {int depth = 1}) {
   InlineSpan _renderHtml(
@@ -434,27 +489,13 @@ class HtmlMessage extends StatelessWidget {
           this.fontSize;
     }
 
-    final existingStyle = pangeaMessageEvent != null
-        ? textStyle
-              .merge(
-                AppConfig.messageTextStyle(
-                  pangeaMessageEvent!.event,
-                  textColor,
-                ),
-              )
-              .copyWith(fontSize: fontSize)
-        : textStyle.copyWith(fontSize: fontSize);
-
-    final renderer = TokenRenderingUtil();
+    final existingStyle = textStyle
+        .merge(_messageTextStyle)
+        .copyWith(fontSize: fontSize);
 
     final underlineColor = pangeaMessageEvent!.ownMessage
         ? Theme.of(context).colorScheme.primaryContainer.withAlpha(200)
         : Theme.of(context).colorScheme.primary.withAlpha(200);
-
-    final newTokens =
-        pangeaMessageEvent != null && !pangeaMessageEvent!.ownMessage
-        ? TokensUtil.instance.getNewTokensByEvent(pangeaMessageEvent!)
-        : <PangeaTokenText>{};
 
     final practiceMode = overlayController?.practiceController.practiceMode;
     // Pangea#
@@ -476,11 +517,11 @@ class HtmlMessage extends StatelessWidget {
             ? overlayController!.isTokenHighlighted(token)
             : false;
 
-        final isNew = token != null && newTokens.contains(token.text);
+        final isNew = token != null && _newTokens.contains(token.text);
         final isFirstNewToken =
             isNew &&
             controller.chatController?.buttonEventID == event.eventId &&
-            newTokens.first == token.text;
+            _newTokens.first == token.text;
         final showShimmer =
             !InstructionsEnum.shimmerNewToken.isToggledOff &&
             !isPracticeMode &&
@@ -493,17 +534,24 @@ class HtmlMessage extends StatelessWidget {
               _activityVocabLemmas,
             );
 
-        final tokenWidth = renderer.tokenTextWidthForContainer(
+        final tokenWidth = _renderer.tokenTextWidthForContainer(
           node.text,
           Theme.of(context).colorScheme.primary.withAlpha(200),
           existingStyle,
           fontSize,
+          // Sizes boxes that live inside the token's own WidgetSpan, which is
+          // unscaled — the placeholder scales the whole subtree.
+          TextScaler.noScaling,
         );
 
-        final tokenTargetKey = isPracticeMode
+        final tokenTargetKey = !useTokenKeys
+            ? null
+            : isPracticeMode
             ? token?.practiceModeTargetKey(event.eventId)
             : overlayController != null
             ? token?.overlayTargetKey(event.eventId)
+            : isAnalyticsExample
+            ? token?.analyticsExampleTargetKey(event.eventId)
             : token?.baseTargetKey(event.eventId);
 
         final layerLinkAndKey = tokenTargetKey != null
@@ -516,39 +564,44 @@ class HtmlMessage extends StatelessWidget {
               alignment: isPracticeMode
                   ? PlaceholderAlignment.bottom
                   : PlaceholderAlignment.middle,
-              child: Column(
-                children: [
-                  if (token != null && overlayController != null)
-                    TokenEmojiButton(
-                      token: token,
-                      enabled: token.lemma.saveVocab,
-                      targetId: overlayController!.tokenEmojiPopupKey(token),
-                      selectModeNotifier: overlayController!.selectedMode,
-                      onTap: () =>
-                          overlayController!.onClickOverlayMessageToken(token),
-                      textColor: textColor,
-                    ),
-                  if (isPracticeMode &&
-                      token != null &&
-                      overlayController != null)
-                    TokenPracticeButton(
-                      token: token,
-                      controller: overlayController!.practiceController,
-                      textStyle: existingStyle,
-                      width: tokenWidth,
-                      textColor: textColor,
-                    ),
-                  CompositedTransformTarget(
-                    link: layerLinkAndKey?.link ?? LayerLink(),
-                    child: MouseRegion(
-                      key: layerLinkAndKey?.key,
-                      cursor: SystemMouseCursors.click,
+              child: MediaQuery.withNoTextScaling(
+                child: Column(
+                  children: [
+                    if (token != null &&
+                        overlayController != null &&
+                        !isPracticeMode)
+                      TokenEmojiButton(
+                        token: token,
+                        enabled: token.lemma.saveVocab,
+                        targetId: overlayController!.tokenEmojiPopupKey(token),
+                        selectModeNotifier: overlayController!.selectedMode,
+                        onTap: () => overlayController!
+                            .onClickOverlayMessageToken(token),
+                        textColor: textColor,
+                      ),
+                    if (isPracticeMode &&
+                        token != null &&
+                        overlayController != null)
+                      TokenPracticeButton(
+                        token: token,
+                        controller: overlayController!.practiceController,
+                        textStyle: existingStyle,
+                        width: tokenWidth,
+                        textColor: textColor,
+                      ),
+                    CompositedTransformTarget(
+                      link: layerLinkAndKey?.link ?? LayerLink(),
                       child: GestureDetector(
                         behavior: HitTestBehavior.translucent,
                         onTap: onClick != null && token != null
                             ? () => onClick?.call(token)
                             : null,
+                        // One MouseRegion per token: HoverBuilder carries the
+                        // cursor and the overlay target key, replacing the
+                        // second wrapper region (issue #8426).
                         child: HoverBuilder(
+                          key: layerLinkAndKey?.key,
+                          cursor: SystemMouseCursors.click,
                           builder: (context, hovered) {
                             final underlineTextWidget = UnderlineText(
                               text: node.text.trim(),
@@ -576,28 +629,28 @@ class HtmlMessage extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                  if (isPracticeMode &&
-                      token != null &&
-                      overlayController != null)
-                    ListenableBuilder(
-                      listenable: overlayController!.practiceController,
-                      builder: (context, _) => AnimatedSize(
-                        duration: const Duration(
-                          milliseconds: AppConfig.overlayAnimationDuration,
-                        ),
-                        curve: Curves.easeOut,
-                        child: SizedBox(
-                          height:
-                              practiceMode != MessagePracticeMode.noneSelected
-                              ? 4.0
-                              : 0.0,
-                          width: tokenWidth,
+                    if (isPracticeMode &&
+                        token != null &&
+                        overlayController != null)
+                      ListenableBuilder(
+                        listenable: overlayController!.practiceController,
+                        builder: (context, _) => AnimatedSize(
+                          duration: const Duration(
+                            milliseconds: AppConfig.overlayAnimationDuration,
+                          ),
+                          curve: Curves.easeOut,
+                          child: SizedBox(
+                            height:
+                                practiceMode != MessagePracticeMode.noneSelected
+                                ? 4.0
+                                : 0.0,
+                            width: tokenWidth,
+                          ),
                         ),
                       ),
-                    ),
-                ],
-                // ),
+                  ],
+                  // ),
+                ),
               ),
             ),
             if (node.text.endsWith('\n')) const TextSpan(text: '\n'),
@@ -619,17 +672,19 @@ class HtmlMessage extends StatelessWidget {
               // #Pangea
               alignment: .middle,
               // Pangea#
-              child: MatrixPill(
-                key: Key('user_pill_$matrixId'),
-                name: user.localizedDisplayname(L10n.of(context)),
-                avatar: user.avatarUrl,
-                uri: href,
-                outerContext: context,
-                fontSize: fontSize,
-                color: linkStyle.color,
-                // #Pangea
-                userId: user.id,
-                // Pangea#
+              child: MediaQuery.withNoTextScaling(
+                child: MatrixPill(
+                  key: Key('user_pill_$matrixId'),
+                  name: user.localizedDisplayname(L10n.of(context)),
+                  avatar: user.avatarUrl,
+                  uri: href,
+                  outerContext: context,
+                  fontSize: fontSize,
+                  color: linkStyle.color,
+                  // #Pangea
+                  userId: user.id,
+                  // Pangea#
+                ),
               ),
             );
           }
@@ -641,17 +696,19 @@ class HtmlMessage extends StatelessWidget {
               // #Pangea
               alignment: .middle,
               // Pangea#
-              child: MatrixPill(
-                name:
-                    room?.getLocalizedDisplayname(
-                      MatrixLocals(L10n.of(context)),
-                    ) ??
-                    matrixId,
-                avatar: room?.avatar,
-                uri: href,
-                outerContext: context,
-                fontSize: fontSize,
-                color: linkStyle.color,
+              child: MediaQuery.withNoTextScaling(
+                child: MatrixPill(
+                  name:
+                      room?.getLocalizedDisplayname(
+                        MatrixLocals(L10n.of(context)),
+                      ) ??
+                      matrixId,
+                  avatar: room?.avatar,
+                  uri: href,
+                  outerContext: context,
+                  fontSize: fontSize,
+                  color: linkStyle.color,
+                ),
               ),
             );
           }
@@ -663,12 +720,7 @@ class HtmlMessage extends StatelessWidget {
               splashColor: Colors.transparent,
               onTap: () => UrlLauncher(context, href, node.text).launchUrl(),
               child: Text.rich(
-                // #Pangea
-                // Text.rich applies the device's textScaleFactor
-                // overriding this one since non-html messages don't
-                // abide by the device's textScaleFactor
                 textScaler: TextScaler.noScaling,
-                // Pangea#
                 TextSpan(
                   children: _renderWithLineBreaks(
                     node.nodes,
@@ -711,9 +763,7 @@ class HtmlMessage extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(left: fontSize),
             child: Text.rich(
-              // #Pangea
               textScaler: TextScaler.noScaling,
-              // Pangea#
               TextSpan(
                 children: [
                   if (!isCheckbox) ...[
@@ -792,9 +842,7 @@ class HtmlMessage extends StatelessWidget {
               border: Border(left: BorderSide(color: textColor, width: 5)),
             ),
             child: Text.rich(
-              // #Pangea
               textScaler: TextScaler.noScaling,
-              // Pangea#
               TextSpan(
                 children: _renderWithLineBreaks(
                   node.nodes,
@@ -844,6 +892,7 @@ class HtmlMessage extends StatelessWidget {
                   ? const EdgeInsets.symmetric(horizontal: 4.0)
                   : const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
               child: Text.rich(
+                textScaler: TextScaler.noScaling,
                 TextSpan(children: [_renderCodeBlockNode(element)]),
                 selectionColor: hightlightTextColor.withAlpha(128),
               ),
@@ -886,9 +935,7 @@ class HtmlMessage extends StatelessWidget {
                 obscure = !obscure;
               }),
               child: Text.rich(
-                // #Pangea
                 textScaler: TextScaler.noScaling,
-                // Pangea#
                 TextSpan(
                   children: [
                     WidgetSpan(
@@ -947,9 +994,7 @@ class HtmlMessage extends StatelessWidget {
                 obscure = !obscure;
               }),
               child: Text.rich(
-                // #Pangea
                 textScaler: TextScaler.noScaling,
-                // Pangea#
                 TextSpan(
                   children: _renderWithLineBreaks(
                     node.nodes,
@@ -1004,44 +1049,47 @@ class HtmlMessage extends StatelessWidget {
           alignment: isPracticeMode
               ? PlaceholderAlignment.bottom
               : PlaceholderAlignment.middle,
-          child: Column(
-            children: [
-              if (node.localName == 'nontoken' && overlayController != null)
-                // Use TokenEmojiButton to ensure consistent vertical alignment for non-token elements (e.g., emojis) in practice mode.
-                TokenEmojiButton(
-                  selectModeNotifier: overlayController!.selectedMode,
-                  onTap: () {},
-                  enabled: false,
-                  textColor: textColor,
-                ),
-              RichText(
-                text: TextSpan(
-                  style: textStyle.merge(style),
-                  children: _renderWithLineBreaks(
-                    node.nodes,
-                    context,
-                    textStyle.merge(style ?? const TextStyle()),
-                    depth: depth,
+          child: MediaQuery.withNoTextScaling(
+            child: Column(
+              children: [
+                if (node.localName == 'nontoken' && overlayController != null)
+                  // Use TokenEmojiButton to ensure consistent vertical alignment for non-token elements (e.g., emojis) in practice mode.
+                  TokenEmojiButton(
+                    selectModeNotifier: overlayController!.selectedMode,
+                    onTap: () {},
+                    enabled: false,
+                    textColor: textColor,
                   ),
-                ),
-              ),
-              if (overlayController != null)
-                ListenableBuilder(
-                  listenable: overlayController!.practiceController,
-                  builder: (context, _) => AnimatedSize(
-                    duration: const Duration(
-                      milliseconds: AppConfig.overlayAnimationDuration,
-                    ),
-                    curve: Curves.easeOut,
-                    child: SizedBox(
-                      height: practiceMode != MessagePracticeMode.noneSelected
-                          ? 4.0
-                          : 0.0,
-                      width: 0,
+                RichText(
+                  textScaler: TextScaler.noScaling,
+                  text: TextSpan(
+                    style: textStyle.merge(style),
+                    children: _renderWithLineBreaks(
+                      node.nodes,
+                      context,
+                      textStyle.merge(style ?? const TextStyle()),
+                      depth: depth,
                     ),
                   ),
                 ),
-            ],
+                if (overlayController != null)
+                  ListenableBuilder(
+                    listenable: overlayController!.practiceController,
+                    builder: (context, _) => AnimatedSize(
+                      duration: const Duration(
+                        milliseconds: AppConfig.overlayAnimationDuration,
+                      ),
+                      curve: Curves.easeOut,
+                      child: SizedBox(
+                        height: practiceMode != MessagePracticeMode.noneSelected
+                            ? 4.0
+                            : 0.0,
+                        width: 0,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
           ),
         );
       // return TextSpan(
@@ -1090,7 +1138,13 @@ class HtmlMessage extends StatelessWidget {
     //   overflow: TextOverflow.fade,
     //   selectionColor: textColor.withAlpha(128)
     // );
-    final parsed = parser.parse(_addTokenTags()).body ?? dom.Element.html('');
+    final parsed = HtmlMessageParseCache.get(
+      event.eventId,
+      html: html,
+      tokensIdentity: _displayTokens,
+      textDirection: pangeaMessageEvent?.textDirection,
+      parse: () => parser.parse(_addTokenTags()).body ?? dom.Element.html(''),
+    );
     return GestureDetector(
       // Null (instead of a no-op) when there is neither a toolbar to open nor
       // an open overlay to shield, so the tap falls through to the host's own
@@ -1109,7 +1163,6 @@ class HtmlMessage extends StatelessWidget {
             }
           : null,
       child: Text.rich(
-        textScaler: TextScaler.noScaling,
         _renderHtml(
           parsed,
           context,
@@ -1148,14 +1201,44 @@ class MatrixPill extends StatelessWidget {
     // Pangea#
   });
 
+  Future<void> _onTap() async {
+    final userId = this.userId;
+    if (userId == null) {
+      UrlLauncher(outerContext, uri).launchUrl();
+      return;
+    }
+
+    bool noProfileWarning = false;
+    Profile profile;
+    try {
+      profile = await Matrix.of(
+        outerContext,
+      ).client.getProfileFromUserId(userId);
+    } catch (_) {
+      noProfileWarning = true;
+      profile = Profile(userId: userId, displayName: name, avatarUrl: avatar);
+    }
+    if (!outerContext.mounted) return;
+
+    await UserDialog.show(
+      context: outerContext,
+      profile: profile,
+      noProfileWarning: noProfileWarning,
+      uri: GoRouterState.of(outerContext).uri,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Colors.transparent,
-      onTap: UrlLauncher(outerContext, uri).launchUrl,
+      // #Pangea
+      // onTap: UrlLauncher(outerContext, uri).launchUrl,
+      onTap: _onTap,
+      // Pangea#
       // #Pangea
       child: RichText(
-        textScaler: TextScaler.noScaling,
+        textScaler: MediaQuery.textScalerOf(context),
         text: TextSpan(
           children: [
             WidgetSpan(

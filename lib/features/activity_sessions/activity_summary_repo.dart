@@ -7,6 +7,7 @@ import 'package:http/http.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_request_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -77,8 +78,10 @@ class ActivitySummaryRepo {
         body: request.toJson(),
       );
 
+      // `req.post` already threw typed for anything ≥ 400, so this only guards
+      // a success status the parser cannot consume (201/202/204/3xx).
       if (res.statusCode != 200) {
-        throw res;
+        throw PangeaHttpException.fromResponse(res);
       }
 
       final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
@@ -89,6 +92,7 @@ class ActivitySummaryRepo {
           e: e,
           s: s,
           data: {'activity_summary_request': request.toJson()},
+          level: PangeaHttpException.severityOf(e),
         );
       }
       return Result.error(e);

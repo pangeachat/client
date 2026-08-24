@@ -3,15 +3,22 @@ import 'package:flutter/foundation.dart';
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
+import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/morph_selection.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_exercise_memo.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_choice.dart';
@@ -32,6 +39,19 @@ class PracticeController with ChangeNotifier {
   }
 
   PracticeExerciseModel? _activity;
+
+  /// Exercises already generated for this message, so a learner who leaves a
+  /// word and comes back to it sees the exercise they were looking at rather
+  /// than a reshuffled one. Scoped to this controller: it is created with the
+  /// message's practice and dies with it.
+  final PracticeExerciseMemo _memo = PracticeExerciseMemo();
+
+  /// Choice content the user flagged as wrong via practice feedback, by
+  /// construct. Fed into exercise requests so regenerated exercises steer
+  /// their picks away from the reported content — the regenerated row can
+  /// legitimately still contain it, and re-displaying it makes a successful
+  /// regen look like it did nothing.
+  final Map<ConstructIdentifier, String> _flaggedChoices = {};
 
   MessagePracticeMode _practiceMode = MessagePracticeMode.noneSelected;
 
@@ -247,6 +267,17 @@ class PracticeController with ChangeNotifier {
         useCase: TtsUseCase.choices,
         pos: token.pos,
         morph: token.morph.map((k, v) => MapEntry(k.name, v)),
+        // Listening category 6 (#104): audio a DRILL played — here, the token
+        // spoken back once an answer has been given.
+        //
+        // Not a word tap: the learner asked for an exercise, not for this word.
+        // A fresh probe per call: it holds a running measurement.
+        listening: DosageTtsListeningProbe(
+          category: DosageListeningCategory.practiceAudio,
+          roomId: pangeaMessageEvent.room.id,
+          userId: () => pangeaMessageEvent.room.client.userID,
+          accessToken: () => pangeaMessageEvent.room.client.accessToken,
+        ),
       );
     }
 
@@ -262,24 +293,81 @@ class PracticeController with ChangeNotifier {
     );
   }
 
+  MessagePracticeExerciseRequest _buildExerciseRequest(PracticeTarget target) =>
+      MessagePracticeExerciseRequest(
+        userL1: MatrixState.pangeaController.userController.userL1!.langCode,
+        userL2: MatrixState.pangeaController.userController.userL2!.langCode,
+        exerciseQualityFeedback: null,
+        target: target,
+        avoidContent: _flaggedChoices,
+      );
+
   Future<Result<PracticeExerciseModel>> fetchActivityModel(
     PracticeTarget target,
   ) async {
-    final req = MessagePracticeExerciseRequest(
-      userL1: MatrixState.pangeaController.userController.userL1!.langCode,
-      userL2: MatrixState.pangeaController.userController.userL2!.langCode,
-      exerciseQualityFeedback: null,
-      target: target,
-    );
+    final memoized = _memo.read(target);
+    if (memoized != null) {
+      _activity = memoized;
+      return Result.value(memoized);
+    }
 
     final result = await PracticeRepo.getPracticeExercise(
-      req,
+      _buildExerciseRequest(target),
       messageInfo: pangeaMessageEvent.event.content,
     );
     if (result.isValue) {
       _activity = result.result;
+      _memo.write(target, result.result!);
     }
 
     return result;
+  }
+
+  /// Send user feedback on served lemma content (a wrong emoji or meaning)
+  /// to the lemma dictionary endpoint, which regenerates the shared row and
+  /// overwrites the lemma cache. On success, the exercise memoized for
+  /// [target] is dropped so the next fetch rebuilds it from corrected content.
+  ///
+  /// [priorContent] is the content as displayed, used as feedback context if
+  /// the lemma cache has expired. [flaggedChoice] is the exact choice content
+  /// the user reported; regenerated exercises avoid re-picking it. Returns
+  /// both the prior and regenerated content so callers can tell the user
+  /// whether anything changed.
+  Future<Result<({LemmaInfoResponse prior, LemmaInfoResponse updated})>>
+  submitLemmaFeedback({
+    required ConstructIdentifier cId,
+    required LemmaInfoResponse priorContent,
+    required String feedbackText,
+    required String flaggedChoice,
+    required PracticeTarget target,
+  }) async {
+    final prior =
+        LemmaInfoRepo.instance.getCached(
+          cId.lemmaInfoRequest(pangeaMessageEvent.event.content),
+        ) ??
+        priorContent;
+
+    final req = cId.lemmaInfoRequest(
+      pangeaMessageEvent.event.content,
+      feedback: [
+        LLMFeedbackModel(
+          feedback: feedbackText,
+          content: prior,
+          contentToJson: (c) => c.toJson(),
+        ),
+      ],
+    );
+
+    final result = await LemmaInfoRepo.instance.get(req, forceRefresh: true);
+    final updated = result.result;
+    if (updated == null) {
+      final error = result.asError!;
+      return Result.error(error.error, error.stackTrace);
+    }
+
+    _flaggedChoices[cId] = flaggedChoice;
+    _memo.remove(target);
+    _activity = null;
+    return Result.value((prior: prior, updated: updated));
   }
 }

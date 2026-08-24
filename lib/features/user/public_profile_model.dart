@@ -47,16 +47,4 @@ class PublicProfileModel {
       about: about,
     );
   }
-
-  PublicProfileModel copyWith({
-    AnalyticsProfileModel? analytics,
-    String? country,
-    String? about,
-  }) {
-    return PublicProfileModel(
-      analytics: analytics ?? this.analytics,
-      country: country ?? this.country,
-      about: about ?? this.about,
-    );
-  }
 }

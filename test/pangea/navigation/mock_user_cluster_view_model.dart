@@ -10,8 +10,25 @@ import 'package:fluffychat/routes/world/user_cluster_view_model.dart';
 
 class MockUserClusterViewModel implements UserClusterViewModel {
   late final Stream<LevelUpdate> _levelUpdates;
-  MockUserClusterViewModel({Stream<LevelUpdate>? levelUpdates})
-    : _levelUpdates = levelUpdates ?? const Stream.empty();
+  late final Stream<AnalyticsStreamUpdate> _constructUpdateStream;
+
+  /// The level/XP the surfaces read. Mutable so a test can bump XP and then
+  /// tick [constructUpdateStream], the way the live service does.
+  DerivedAnalyticsDataModel derived;
+
+  /// False when the surface under test can't inject an offline flag stand-in
+  /// (the web cluster) — the real chip loads a network SVG in tests, so the
+  /// mock reports no L2 and the surface skips the flag.
+  final bool hasL2;
+
+  MockUserClusterViewModel({
+    Stream<LevelUpdate>? levelUpdates,
+    Stream<AnalyticsStreamUpdate>? constructUpdateStream,
+    DerivedAnalyticsDataModel? derived,
+    this.hasL2 = true,
+  }) : _levelUpdates = levelUpdates ?? const Stream.empty(),
+       _constructUpdateStream = constructUpdateStream ?? const Stream.empty(),
+       derived = derived ?? DerivedAnalyticsDataModel();
 
   int taps = 0;
   int avatarTaps = 0;
@@ -32,7 +49,8 @@ class MockUserClusterViewModel implements UserClusterViewModel {
   Stream<LanguageUpdate> get languageStream => Stream.empty();
 
   @override
-  Stream<AnalyticsStreamUpdate> get constructUpdateStream => Stream.empty();
+  Stream<AnalyticsStreamUpdate> get constructUpdateStream =>
+      _constructUpdateStream;
 
   @override
   Stream<void> get starsUpdateStream => Stream.empty();
@@ -42,7 +60,7 @@ class MockUserClusterViewModel implements UserClusterViewModel {
 
   @override
   LanguageModel? get userL2 =>
-      LanguageModel(langCode: 'es', displayName: 'Spanish');
+      hasL2 ? LanguageModel(langCode: 'es', displayName: 'Spanish') : null;
 
   @override
   int get starsEarned => 0;
@@ -54,12 +72,11 @@ class MockUserClusterViewModel implements UserClusterViewModel {
   int get numGrammarConstruct => 0;
 
   @override
-  DerivedAnalyticsDataModel? get cachedDerivedAnalyticsData =>
-      DerivedAnalyticsDataModel();
+  DerivedAnalyticsDataModel? get cachedDerivedAnalyticsData => derived;
 
   @override
   Future<DerivedAnalyticsDataModel> get derivedAnalyticsData =>
-      Future.value(DerivedAnalyticsDataModel());
+      Future.value(derived);
 
   @override
   void reloadProfile() {}

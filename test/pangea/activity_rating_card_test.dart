@@ -17,8 +17,9 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'get_test_client.dart';
 
 /// Visibility contract of the post-play rating prompt (#7194): shows only for
-/// a finished own role on an unrated (activity, pinned version); submit is
-/// disabled until a thumb is picked; the X dismisses for the current view.
+/// a finished own role on an unrated (activity, pinned version); comment and
+/// submit stay hidden until a thumb is picked (#8286); the X dismisses for
+/// the current view.
 void main() {
   late Client client;
 
@@ -101,20 +102,22 @@ void main() {
     await pumpCard(tester, sessionRoom(finished: true));
     expect(find.byIcon(Icons.thumb_up_outlined), findsOneWidget);
     expect(find.byIcon(Icons.thumb_down_outlined), findsOneWidget);
-    expect(find.byType(TextField), findsOneWidget);
   });
 
-  testWidgets('submit is disabled until a thumb is picked', (tester) async {
+  testWidgets('comment and submit stay hidden until a thumb is picked', (
+    tester,
+  ) async {
     await pumpCard(tester, sessionRoom(finished: true));
 
-    final button = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
-    expect(button.onPressed, isNull);
+    expect(find.byType(TextField), findsNothing);
+    expect(find.byType(ElevatedButton), findsNothing);
 
     await tester.tap(find.byIcon(Icons.thumb_up_outlined));
     await tester.pumpAndSettle();
 
-    final enabled = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
-    expect(enabled.onPressed, isNotNull);
+    expect(find.byType(TextField), findsOneWidget);
+    final button = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+    expect(button.onPressed, isNotNull);
     expect(find.byIcon(Icons.thumb_up), findsOneWidget);
   });
 

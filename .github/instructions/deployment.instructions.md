@@ -4,23 +4,25 @@ applyTo: "**/.github/workflows/**,**/deploy*"
 
 # Deployment (client)
 
-Follows the [org-wide deployment conventions](../../../.github/instructions/deployment.instructions.md) — see that doc for pipelines, environment URLs, deploy notes, and coordination. This doc covers client-specific details only.
+Follows the [org-wide deployment conventions](../../../.github/.github/instructions/deployment.instructions.md) — see that doc for pipelines, environment URLs, deploy notes, and coordination. This doc covers client-specific details only.
 
 ## Branch Model
 
-The client uses a **dual-branch model** unlike other services:
+The client uses a **dual-branch model** unlike other services — but the production *deploy trigger* is the same as everywhere else: **publishing a GitHub release**.
 
 | Branch | Environment | Trigger |
 |--------|------------|---------|
 | `main` | Staging (`app.staging.pangea.chat`) | Merging to `main` deploys staging |
-| `production` | Production (`app.pangea.chat`) | Push to `production` triggers [`release.yaml`](../../.github/workflows/release.yaml) — tags from `pubspec.yaml` version, builds Flutter web + mobile, uploads to S3 |
+| `production` | Production (`app.pangea.chat`) | **Nothing deploys on push.** The branch records the commit a release is cut from; publishing a GitHub release targeting it runs [`release.yaml`](../../.github/workflows/release.yaml) — builds Flutter web, uploads to S3, invalidates CloudFront, posts to Matrix |
+
+Separating the two is the point: merging into `production` marks where we are cutting from and is safe to do whenever, while publishing the release is the single deliberate act that ships to users. The release must target the `production` branch, because GitHub runs a release's workflow from the tagged commit — so the copy of `release.yaml` on `production` is the one that runs. Redeploying production without a new release is a manual run of the same workflow. Steps are in the [create-release skill](https://github.com/pangeachat/.github/blob/main/.github/skills/create-release/SKILL.md).
 
 Production is periodically synced from `main` via merge PRs. Between syncs, the branches diverge — sometimes significantly (100+ commits).
 
 ## Deploy Mechanism
 
 - Flutter web build → S3 upload via GitHub Actions
-- Mobile builds: both platforms follow the same shape — a staging build is a button (manual `workflow_dispatch`), a production build happens automatically on every release, and promotion to end users stays a human step in the store console. Android: [`android-playstore.yml`](../../.github/workflows/android-playstore.yml) uploads a signed appbundle to the Play Store internal track (release also attaches an APK to the GitHub release). iOS: [`ios-testflight.yml`](../../.github/workflows/ios-testflight.yml) uploads a signed IPA to TestFlight (fastlane match signing; certs live encrypted in the private `pangeachat/ios-certificates` repo). CI is the only sanctioned path for store builds because the checked-in Firebase config files are the staging ones — only env-secret-driven CI builds are guaranteed to carry the right Firebase project (FCM tokens are project-scoped; a mismatch kills push).
+- Mobile builds: both platforms follow the same shape — every build, staging or production, is a button (manual `workflow_dispatch` with the environment selected), and promotion to end users stays a human step in the store console. Store builds are **not** wired into `release.yaml`; a web release does not produce a mobile build. Android: [`android-playstore.yml`](../../.github/workflows/android-playstore.yml) uploads a signed appbundle to the Play Store internal track. iOS: [`ios-testflight.yml`](../../.github/workflows/ios-testflight.yml) uploads a signed IPA to TestFlight (fastlane match signing; certs live encrypted in the private `pangeachat/ios-certificates` repo). CI is the only sanctioned path for store builds because the checked-in Firebase config files are the staging ones — only env-secret-driven CI builds are guaranteed to carry the right Firebase project (FCM tokens are project-scoped; a mismatch kills push).
 - Staging: app.staging.pangea.chat (S3 + CloudFront)
 - Production: app.pangea.chat (S3 + CloudFront)
 
@@ -28,15 +30,17 @@ Production is periodically synced from `main` via merge PRs. Between syncs, the 
 
 The semantic version in `pubspec.yaml` is bumped by hand. (The build number after the `+` is stamped automatically per platform at build time — see [ci.instructions.md](ci.instructions.md).)
 
-**Which level to bump.** The levels are defined by what they let you do to the fleet, because major and minor are the only two that can wall a user out: the client raises a mandatory-update wall when the force-upgrade floor's major *or* minor exceeds the running client's. Patch never can. Raising that floor is a separate, deliberate release step — see [client-version-gating.instructions.md](https://github.com/pangeachat/2-step-choreographer/blob/main/.github/instructions/client-version-gating.instructions.md).
+**Which level to bump.** The wall itself is mechanical: the force-upgrade floor walls out any client strictly below it, at **any** level — patch included. The levels are policy, defined by what we plan to do to the fleet. Raising the floor is a separate, deliberate release step — see [client-version-gating.instructions.md](https://github.com/pangeachat/2-step-choreographer/blob/main/.github/instructions/client-version-gating.instructions.md).
 
 - **Major** — a release you intend to eventually force the whole fleet onto: a protocol or stored-data break, or a cutover that ends coexistence with the previous line.
 - **Minor** — a release you may later want to force: a notable feature, or a migration users must land on before old clients become a liability.
-- **Patch** — the default, and right for most work including most feature work. Never used to retire a fleet.
+- **Patch** — the default, and right for most work including most feature work. Not used for planned fleet retirement; a patch-level floor raise is the emergency lever (e.g. forcing a security fix onto the fleet).
 
-Choosing a level is answering one question: *would we ever force someone onto this?* If no, it is a patch.
+Choosing a level is answering one question: *would we ever force someone onto this?* If no, it is a patch. A yes driven by a breaking change is also the deploy-note trigger: that change needs a `deploy-note` issue (org [deployment § Deploy Notes](https://github.com/pangeachat/.github/blob/main/.github/instructions/deployment.instructions.md#deploy-notes)), and the eventual fleet retirement is the floor-flip deploy note.
 
-**Bumping is a judgment call, not a per-PR obligation** — most PRs need none. Raise it when a PR is the thing a future floor-raise would target, or when a release is being cut. A release must bump `+N` regardless, because the release workflow tags from the full version string and silently fails on a tag that already exists.
+These definitions are analogous to the SemVer standard definitions for these version numbers, except defined in terms of the need for user-side forced updates instead of in terms of backwards compatibility.
+
+**Bumping is a judgment call, not a per-PR obligation** — most PRs need none. Raise it when a PR is the thing a future floor-raise would target, or when a release is being cut. A release must still bump `+N`, so the tag is unique and the version the app reports matches the release it came from — but because the release cutter now creates the tag rather than the workflow, a reused version collides loudly at that point instead of silently producing no tag and no deploy.
 
 ## Environment Config (`.env`)
 
@@ -67,7 +71,7 @@ When a bug must be fixed on production before the next full sync from `main`:
 2. **Assess cherry-pick feasibility** — If the fix already exists on `main`, try `git cherry-pick`. If `production` has diverged (e.g., a refactor changed the surrounding code), the cherry-pick may apply as a no-op or conflict. In that case, manually port the fix to be compatible with production's codebase.
 3. **PR to `production`** — open a PR targeting `production`, not `main`.
 4. **Bump the version** in `pubspec.yaml` — see [Versioning](#versioning). A hotfix is a patch: increment the build number (e.g., `4.1.18+6` → `4.1.18+7`).
-5. **Push triggers deploy** — merging the PR (or pushing directly) to `production` triggers [`release.yaml`](../../.github/workflows/release.yaml).
+5. **Publish a release to deploy** — merging the PR to `production` deploys nothing. Once the fix is on the branch, cut a release targeting it; publishing runs [`release.yaml`](../../.github/workflows/release.yaml). See [release-process](https://github.com/pangeachat/.github/blob/main/.github/instructions/release-process.instructions.md) for the gates and the release-body contract.
 6. **Forward-port to `main`** — after the hotfix is confirmed working on production, ensure the fix also exists on `main` (via the original PR, a separate PR, or the next sync merge). Otherwise the fix regresses on the next production sync.
 
 ### Key risks

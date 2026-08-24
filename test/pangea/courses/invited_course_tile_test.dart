@@ -7,10 +7,10 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
 import 'package:fluffychat/routes/courses/add_course_tile.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
-import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 
 /// Coverage for #7636: a course the learner has been *invited* to must read as
 /// an invitation, not as an error. In the courses list that means a gold
@@ -77,16 +77,35 @@ void main() {
     final context = tester.element(find.byType(AddCourseTile));
     final l10n = L10n.of(context);
 
-    final chip = tester.widget<CourseInfoChip>(
-      find.byWidgetPredicate(
-        (w) => w is CourseInfoChip && w.text == l10n.invited,
+    expect(find.byType(InvitedChip), findsOneWidget);
+    expect(
+      find.descendant(
+        of: find.byType(InvitedChip),
+        matching: find.text(l10n.invited),
+      ),
+      findsOneWidget,
+    );
+
+    final icon = tester.widget<Icon>(
+      find.descendant(
+        of: find.byType(InvitedChip),
+        matching: find.byType(Icon),
+      ),
+    );
+    final pill = tester.widget<Container>(
+      find.descendant(
+        of: find.byType(InvitedChip),
+        matching: find.byType(Container),
       ),
     );
 
-    expect(chip.icon, Icons.mail);
-    expect(chip.highlightColor, AppConfig.goldByTheme(context));
+    expect(icon.icon, Icons.mail);
     expect(
-      chip.foregroundColor,
+      (pill.decoration! as BoxDecoration).color,
+      AppConfig.goldByTheme(context),
+    );
+    expect(
+      icon.color,
       AppConfig.onGoldByTheme(context),
       reason: 'gold is a light fill; the label needs dark ink to stay legible',
     );
@@ -134,7 +153,7 @@ void main() {
 
         final pill = tester.widget<Container>(
           find.descendant(
-            of: find.byType(CourseInfoChip),
+            of: find.byType(InvitedChip),
             matching: find.byType(Container),
           ),
         );
@@ -158,7 +177,7 @@ void main() {
 
     final pill = tester.widget<Container>(
       find.descendant(
-        of: find.byType(CourseInfoChip),
+        of: find.byType(InvitedChip),
         matching: find.byType(Container),
       ),
     );
@@ -198,27 +217,23 @@ void main() {
   // The joined branch of the tile renders `UnreadRoomsBadge`, which needs a
   // `Provider<MatrixState>` this change doesn't touch — so the chip's own
   // contract is covered directly instead of through a fully-mounted tile.
-  testWidgets('chip paints icon and text with the given foreground', (
-    tester,
-  ) async {
-    const ink = Color(0xFF123456);
-
+  testWidgets('chip paints icon and text with the on-gold ink', (tester) async {
     await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(
-          body: CourseInfoChip(
-            icon: Icons.mail,
-            text: 'Invited',
-            fontSize: 12.0,
-            iconSize: 12.0,
-            highlightColor: AppConfig.gold,
-            foregroundColor: ink,
-          ),
-        ),
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: const Scaffold(body: InvitedChip()),
       ),
     );
+    await tester.pumpAndSettle();
+
+    final context = tester.element(find.byType(InvitedChip));
+    final ink = AppConfig.onGoldByTheme(context);
 
     expect(tester.widget<Icon>(find.byIcon(Icons.mail)).color, ink);
-    expect(tester.widget<Text>(find.text('Invited')).style?.color, ink);
+    expect(
+      tester.widget<Text>(find.text(L10n.of(context).invited)).style?.color,
+      ink,
+    );
   });
 }

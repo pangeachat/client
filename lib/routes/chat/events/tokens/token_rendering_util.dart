@@ -8,13 +8,19 @@ class TokenRenderingUtil {
 
   static final Map<String, double> _tokensWidthCache = {};
 
+  /// [textScaler] must be the device scaler the token is actually rendered
+  /// with — a width measured at one scale and rendered at another leaves the
+  /// underline and highlight box off the word. It is part of the cache key for
+  /// the same reason: the cached width is only valid at the scale it was
+  /// measured at.
   double tokenTextWidthForContainer(
     String text,
     Color underlineColor,
     TextStyle style,
     double fontSize,
+    TextScaler textScaler,
   ) {
-    final tokenSizeKey = "$text-$fontSize";
+    final tokenSizeKey = "$text-$fontSize-${textScaler.scale(fontSize)}";
     if (_tokensWidthCache.containsKey(tokenSizeKey)) {
       return _tokensWidthCache[tokenSizeKey]!;
     }
@@ -23,6 +29,7 @@ class TokenRenderingUtil {
       text: TextSpan(text: text, style: style),
       maxLines: 1,
       textDirection: TextDirection.ltr,
+      textScaler: textScaler,
     )..layout();
     final width = textPainter.width;
     textPainter.dispose();

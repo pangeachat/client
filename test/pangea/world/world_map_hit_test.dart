@@ -5,16 +5,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
-import 'package:fluffychat/routes/world/world_map_pin_label.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_state_dot.dart';
 
 /// Covers #7920: on the map, a tap must open exactly the activity the user
-/// sees. Two guards:
-///   - a mid pin absorbs taps only within its visible teardrop silhouette, not
-///     the transparent corners of its bounding box (so an overlapping neighbour
-///     can't steal the tap through empty space);
-///   - a mid pin's name label opens ITS OWN activity when tapped.
+/// sees — a mid pin absorbs taps only within its visible teardrop silhouette,
+/// not the transparent corners of its bounding box (so an overlapping neighbour
+/// can't steal the tap through empty space).
 void main() {
   const card = QuestActivityCard(
     activityId: 'a1',
@@ -93,36 +90,5 @@ void main() {
         reason: 'a tap on the visible pin head must open its activity',
       );
     });
-  });
-
-  testWidgets('a mid-pin label opens its own activity when tapped (#7920)', (
-    tester,
-  ) async {
-    var tapped = false;
-    // The exact composition MidSizePinLabelsLayer wraps each label in.
-    await pump(
-      tester,
-      ExcludeSemantics(
-        child: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: () => tapped = true,
-          child: const WorldMapPinLabel(
-            title: 'Test Activity',
-            color: Colors.black,
-          ),
-        ),
-      ),
-    );
-
-    await tester.tap(find.byType(WorldMapPinLabel));
-    await tester.pump();
-
-    expect(
-      tapped,
-      isTrue,
-      reason:
-          'clicking a label\'s visible text must open the NAMED activity, not '
-          'fall through to a neighbouring pin beneath it (#7920)',
-    );
   });
 }

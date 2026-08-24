@@ -148,7 +148,12 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     return null;
   }
 
+  /// Drives every horizontal choice in the overlay: which edge the bubble
+  /// anchors to and which way the word card grows. Hosts that left-align
+  /// their messages force it false, so an own message there behaves like a
+  /// received one (#8252).
   bool get ownMessage =>
+      !widget.overlayController.config.alignMessageLeft &&
       widget.event.senderId == widget.event.room.client.userID;
 
   double get _toolbarMaxWidth {
@@ -281,8 +286,11 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   double get overheadContentHeight {
+    // The word card grows with the device text size, so the room reserved for
+    // it above the message has to grow by the same factor — otherwise the card
+    // is laid out over the message it belongs to.
     return (widget.overlayController.selectedToken != null
-            ? AppConfig.toolbarMaxHeight
+            ? AppConfig.scaledToolbarMaxHeight(context)
             : 40.0) +
         4.0;
   }

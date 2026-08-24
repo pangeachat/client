@@ -680,7 +680,7 @@ class RecordingViewModelState extends State<RecordingViewModel> {
   /// buffer-level contract + defense-in-depth if that wiring ever changes; the
   /// VM relies on the subscription lifecycle, not on calling it. (Covered by the
   /// "no partial reaches the editable buffer after stop" integration test.)
-  Future<void> stopStreamingToEditable() async {
+  Future<void> stopStreamingToEditable(VoiceMessageSend onSend) async {
     final session = _streaming;
     // The `_finalizingToEditable` guard closes the double-tap window: the
     // `_editable == null` check alone is not enough because `_editable` stays
@@ -722,7 +722,14 @@ class RecordingViewModelState extends State<RecordingViewModel> {
 
       _pendingResult = result;
       _pendingWaveform = _waveformFromAmplitudes(amps);
-      if (_routeEmptyStreamToBatch(result)) return;
+      if (_routeEmptyStreamToBatch(result)) {
+        // #8209: an empty streamed transcript has nothing to review — send it
+        // immediately through the batch path (reuses stopAndSend's
+        // `_degradedToBatch && _pendingResult` branch) instead of parking in
+        // batch-ready and forcing the learner to tap send a second time.
+        await stopAndSend(onSend);
+        return;
+      }
       _editable = EditableTranscript(
         originalAsrText: result.transcript,
         words: session.finalWords,
@@ -842,6 +849,11 @@ class RecordingViewModelState extends State<RecordingViewModel> {
     // Invalidate any in-flight streaming start so a pending start aborts instead
     // of falling through to the batch recorder after this teardown.
     _startGeneration++;
+    // Every send path calls cancel() AFTER awaiting onSend, so the recorder can
+    // already be gone by then (the user left the chat mid-upload). dispose() has
+    // run _reset() in that case, so there is nothing left to tear down — and
+    // setState on a defunct State throws (CLIENT-AN1).
+    if (!mounted) return;
     // Pangea#
     setState(() {
       _reset();

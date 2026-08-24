@@ -1,11 +1,11 @@
 ---
-applyTo: "lib/pangea/text_to_speech/**,lib/pangea/common/widgets/word_audio_button.dart"
+applyTo: "lib/routes/chat/events/text_to_speech/**,lib/pangea/text_to_speech/**,lib/pangea/common/widgets/word_audio_button.dart"
 description: "Client word-level TTS — Pro gate, known-good-voice gate (native quality field / client-side web name patterns) before backend fallback."
 ---
 
 # Word-Level Text-to-Speech (Client)
 
-Word- and token-level pronunciation audio: the learner taps a word (word card, token overlay, vocab details) and hears it spoken. Owned by [`TtsController`](../../lib/pangea/text_to_speech/tts_controller.dart); triggered from [`word_audio_button.dart`](../../lib/pangea/common/widgets/word_audio_button.dart). Scope is isolated word/token playback.
+Word- and token-level pronunciation audio: the learner taps a word (word card, token overlay, vocab details) and hears it spoken. Owned by [`TtsController`](../../lib/routes/chat/events/text_to_speech/tts_controller.dart); triggered from the audio affordance in [`phonetic_transcription_widget.dart`](../../lib/routes/chat/events/phonetic_transcription/phonetic_transcription_widget.dart) and the vocab and choice surfaces. Scope is isolated word/token playback.
 
 Every `TtsController.tryToSpeak` call declares a `TtsUseCase` (words / choices / incomingMessage) mapping it to a per-surface audio toggle in the Audio section of learning settings. When the toggle is off, nothing plays; explicit audio buttons (those passing a `targetID` + context) show `TtsDisabledPopup` pointing to settings.
 
@@ -38,7 +38,7 @@ Two consequences drive the design:
 
 In priority order, for a request:
 
-1. **Not subscribed → device.** Backend TTS is entitlement-gated server-side (`has_active_entitlement` → 401 for free users), so subscription is the first branch: an unsubscribed user always plays device TTS — using the best voice available per [Known-good voice](#known-good-voice) — read via [`SubscriptionController.isSubscribed`](../../lib/pangea/subscription/controllers/subscription_controller.dart). Audio keeps working rather than erroring; the trade-off is free users hear whatever the device offers. Whether word-level pronunciation should be free is a separate product question, not decided here. The decisions below apply to subscribed users.
+1. **Not subscribed → device.** Backend TTS is entitlement-gated server-side (`has_active_entitlement` → 401 for free users), so subscription is the first branch: an unsubscribed user always plays device TTS — using the best voice available per [Known-good voice](#known-good-voice) — read via [`SubscriptionController.isSubscribed`](../../lib/features/subscription/controllers/subscription_controller.dart). Audio keeps working rather than erroring; the trade-off is free users hear whatever the device offers. Whether word-level pronunciation should be free is a separate product question, not decided here. The decisions below apply to subscribed users.
 2. **Phoneme override → backend.** A resolved `tts_phoneme` (heteronym disambiguation) can't be honored by device TTS. See [Phoneme playback](#phoneme-playback).
 3. **No device voice for the L2 → backend.** Nothing local to play.
 4. **Known-good device voice available → device (that voice); otherwise → backend.** Rather than route by platform, check whether the device actually offers a good voice for the L2 and use it, falling back to backend only when it doesn't. This minimizes backend spend and fixes poor pronunciation at the source. See [Known-good voice](#known-good-voice) for how "good" is determined per surface.
@@ -58,6 +58,15 @@ When a known-good voice is found, the controller must **explicitly select it** o
 
 **Validation:** the name patterns and thresholds are platform conventions, not guarantees, so they must be confirmed against real `getVoices` output per target browser/OS before relying on them.
 
+### Failure handling
+
+Choosing a source is half the job; either source can fail after it was chosen. A request must always end — with audio if any source can still give it, and with its play indicator cleared and its listening measurement closed either way.
+
+- **Backend fails or is slow → device.** When the backend fetch fails or misses its deadline (one second when the device has a voice to fall back to; the full deadline for a phoneme request, since the device cannot render the phoneme — #8076), the device voice plays instead, if there is one.
+- **Device fails → backend.** The mirror. A device utterance that never produced audio and was not stopped by the app — the engine reported an error before it started (`not-allowed`, `synthesis-failed`), never reported a start within a short watchdog window, or returned without ever starting — is rescued by backend TTS when the request may reach the backend at all and the user is subscribed. Setting-driven read-aloud (`allowChoreoPlay: false`) is never rescued; silence there is the design (see [message-read-aloud.instructions.md](message-read-aloud.instructions.md)). A stop is never rescued: the learner tapping stop, or a later tap superseding the word, asked for silence.
+- **A device utterance always ends the request.** The plugin's `speak` future is not trusted to resolve — on the web it never does when the utterance errors, which is also how Chrome reports an interruption, and on iOS it never does when a later stop drops it. Each utterance is tracked instead (`TtsDeviceUtterance`) and settled by whichever comes first: the engine's completion, cancel or error callback, the speak future, or the start watchdog. One rule decides what the learner heard: audio was heard iff the engine reported a start; otherwise the utterance was cancelled if the app asked for the stop, and failed if nobody did. A word cut off by the next tap counts as heard for as long as it played (#8455).
+- **The next word waits for the engine to confirm the stop.** Cutting off a word and issuing the next in the same instant loses the second on the web — the browser plugin drops a `speak` while it still believes the previous utterance is playing, and the browser confirms the cancel asynchronously. So `stop()` waits, briefly and bounded, for that confirmation before the next word is issued.
+
 ## Phoneme playback
 
 Heteronyms (e.g. 还 → hái vs huán) get arbitrary pronunciation from device TTS because it has no context. The fix is to speak a specific phoneme. Responsibilities split cleanly:
@@ -69,7 +78,7 @@ Heteronyms (e.g. 还 → hái vs huán) get arbitrary pronunciation from device 
 
 ## Audio caching
 
-Backend audio is cached client-side in [`text_to_speech_repo.dart`](../../lib/pangea/text_to_speech/text_to_speech_repo.dart) (short TTL) so repeated taps on the same word don't re-hit the network or re-bill. This is what keeps the backend-fallback and phoneme paths affordable: word audio is short, user-initiated, and highly repeat-tapped. The backend additionally has its own CMS audio cache (choreographer doc).
+Backend audio is cached client-side in [`text_to_speech_repo.dart`](../../lib/routes/chat/events/text_to_speech/text_to_speech_repo.dart) (short TTL) so repeated taps on the same word don't re-hit the network or re-bill. This is what keeps the backend-fallback and phoneme paths affordable: word audio is short, user-initiated, and highly repeat-tapped. The backend additionally has its own CMS audio cache (choreographer doc).
 
 ## Optional override setting
 

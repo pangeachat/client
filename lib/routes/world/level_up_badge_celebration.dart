@@ -1,18 +1,30 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:audioplayers/audioplayers.dart';
+
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// A level-up celebration anchored to the level badge it wraps (issue #7432).
 ///
 /// Replaces the old top-down chat snackbar: instead of chrome dropping over
-/// the conversation, the badge itself briefly pulses (scale + gold glow) and a
-/// small "Level N!" chip pops out beside it, then fades away on its own. This
-/// keeps the learner's eye on the analytics surface the level actually lives
-/// on, per the issue's intent.
+/// the conversation, the badge itself briefly pulses (scale + gold glow), a
+/// small "Level N!" chip pops out beside it (or below it — see [chipBelow]),
+/// and the level-up chime plays; the chip then fades away on its own. This keeps the learner's eye on the
+/// analytics surface the level actually lives on, per the issue's intent.
+///
+/// Only one of these is ever mounted at a time — the shell picks the cluster
+/// (column mode) or the analytics bar (narrow), and a full-screen chat's app
+/// bar hosts the avatar only where the bar is absent (routing.instructions.md
+/// → Single-column analytics nav bar). That is what keeps a single level-up
+/// from playing the chime two or three times over.
 ///
 /// Contract (routing.instructions.md, "Single-column analytics nav bar" — no
 /// stacked chrome, no timed controls):
@@ -42,11 +54,23 @@ class LevelUpBadgeCelebration extends StatefulWidget {
   /// One full pulse run (a few scale/glow beats). Tests shorten this.
   final Duration pulseDuration;
 
+  /// Fired alongside the pulse. Defaults to the real chime; widget tests pass
+  /// a no-op so they never reach for the audio plugin or the network.
+  final Future<void> Function()? playChime;
+
+  /// Drops the chip below the badge instead of beside it. Opt-in per host,
+  /// because only one of them has no room beside the badge: on the narrow
+  /// analytics bar the badge overhangs the pill's left end near the screen's
+  /// edge, so a chip hanging off its leading edge runs off-screen (#8257).
+  final bool chipBelow;
+
   const LevelUpBadgeCelebration({
     required this.child,
     this.levelUpdates,
     this.chipDuration = defaultChipDuration,
     this.pulseDuration = defaultPulseDuration,
+    this.playChime,
+    this.chipBelow = false,
     super.key,
   });
 
@@ -63,7 +87,7 @@ class _LevelUpBadgeCelebrationState extends State<LevelUpBadgeCelebration>
   static const double _maxScaleBoost = 0.18;
   static const int _pulseBeats = 3;
 
-  /// Gap between the chip's trailing edge and the badge's leading edge.
+  /// Gap between the chip and the badge edge it hangs off.
   static const double _chipGap = 6.0;
 
   StreamSubscription<LevelUpdate>? _subscription;
@@ -78,6 +102,33 @@ class _LevelUpBadgeCelebrationState extends State<LevelUpBadgeCelebration>
   late final AnimationController _chipController;
   late final Animation<double> _chipOpacity;
   late final Animation<double> _chipScale;
+
+  Future<void> _playChime() => widget.playChime?.call() ?? _playLevelUpChime();
+
+  Future<void> _playLevelUpChime() async {
+    final player = AudioPlayer();
+    try {
+      await player.setVolume(min(0.25, AppSettings.volume.value));
+      await player.play(
+        UrlSource(
+          "${AppConfig.assetsBaseURL}/${AnalyticsConstants.levelUpAudioFileName}",
+        ),
+      );
+      // Let the clip finish before the player is torn down.
+      await Future.delayed(const Duration(seconds: 2));
+    } catch (e, s) {
+      // Once, not per level-up: the failure modes here are standing ones (no
+      // network, browser autoplay policy), so repeat reports say nothing new.
+      await ErrorHandler.logErrorOnce(
+        key: "level_up_chime",
+        e: e,
+        s: s,
+        data: {"message": "Failed to play level up sound"},
+      );
+    } finally {
+      await player.dispose();
+    }
+  }
 
   @override
   void initState() {
@@ -153,6 +204,8 @@ class _LevelUpBadgeCelebrationState extends State<LevelUpBadgeCelebration>
     setState(() => _celebratedLevel = update.newLevel);
     _pulseController.forward(from: 0.0);
     _chipController.forward();
+    // Not awaited: the chime outlives the pulse and must not gate the visuals.
+    unawaited(_playChime());
 
     _chipTimer?.cancel();
     _chipTimer = Timer(widget.chipDuration, () {
@@ -201,10 +254,11 @@ class _LevelUpBadgeCelebrationState extends State<LevelUpBadgeCelebration>
           child: widget.child,
         ),
         if (celebratedLevel != null)
-          // The chip hangs just past the badge's leading edge, vertically
-          // centered on it: the OverflowBox lets it take its intrinsic width
-          // without an overflow error, and the FractionalTranslation shifts
-          // it fully outside so it reads as popping out of the badge.
+          // The chip hangs just past one badge edge — the bottom under
+          // [chipBelow], otherwise the leading edge — centered on it the other
+          // way: the OverflowBox lets it take its intrinsic size without an
+          // overflow error, and the FractionalTranslation shifts it fully
+          // outside so it reads as popping out of the badge.
           Positioned.fill(
             child: IgnorePointer(
               child: OverflowBox(
@@ -214,11 +268,17 @@ class _LevelUpBadgeCelebrationState extends State<LevelUpBadgeCelebration>
                 maxWidth: double.infinity,
                 minHeight: 0.0,
                 maxHeight: double.infinity,
-                alignment: Alignment.centerLeft,
+                alignment: widget.chipBelow
+                    ? Alignment.bottomCenter
+                    : Alignment.centerLeft,
                 child: FractionalTranslation(
-                  translation: const Offset(-1.0, 0.0),
+                  translation: widget.chipBelow
+                      ? const Offset(0.0, 1.0)
+                      : const Offset(-1.0, 0.0),
                   child: Padding(
-                    padding: const EdgeInsets.only(right: _chipGap),
+                    padding: widget.chipBelow
+                        ? const EdgeInsets.only(top: _chipGap)
+                        : const EdgeInsets.only(right: _chipGap),
                     child: FadeTransition(
                       opacity: _chipOpacity,
                       child: ScaleTransition(

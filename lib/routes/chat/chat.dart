@@ -31,6 +31,7 @@ import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart'
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_signals.dart';
 import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
@@ -60,6 +61,8 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
+import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
@@ -87,6 +90,7 @@ import 'package:fluffychat/routes/chat/event_too_large_dialog.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event_cache.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/representation_content_model.dart';
 import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
@@ -157,7 +161,9 @@ class ChatPage extends StatelessWidget {
   final String? eventId;
 
   // #Pangea
-  final Widget? backButton;
+  /// The hosting panel's close control. Required: the room-gone state below
+  /// renders its own chrome and must carry it (#7746, #8322).
+  final Widget backButton;
   // Pangea#
 
   const ChatPage({
@@ -166,7 +172,7 @@ class ChatPage extends StatelessWidget {
     this.eventId,
     this.shareItems,
     // #Pangea
-    this.backButton,
+    required this.backButton,
     // Pangea#
   });
 
@@ -185,21 +191,9 @@ class ChatPage extends StatelessWidget {
     }
 
     if (room == null) {
-      // if (room == null) {
-      // Pangea#
-      return Scaffold(
-        appBar: AppBar(leading: backButton),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              L10n.of(context).youAreNoLongerParticipatingInThisChat,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      );
+      return RoomUnavailablePanel(closeButton: backButton);
     }
+    // Pangea#
 
     return ChatPageWithRoom(
       key: Key('chat_page_${roomId}_$eventId'),
@@ -280,6 +274,12 @@ class ChatController extends State<ChatPageWithRoom>
 
   @override
   Timeline? timeline;
+
+  // #Pangea
+  /// Reused message-event wrappers so parsed representations survive
+  /// timeline rebuilds — see [PangeaMessageEventCache] (#8393 stage 2).
+  final PangeaMessageEventCache pangeaMessageEvents = PangeaMessageEventCache();
+  // Pangea#
 
   /// True while this room's timeline subscriptions are cancelled but the
   /// controller stays mounted (the panel lost focus without being removed). On
@@ -704,7 +704,7 @@ class ChatController extends State<ChatPageWithRoom>
       ownMessage: event.senderId == Matrix.of(context).client.userID,
     );
 
-    final msgLang = pangeaMessageEvent.originalSent?.langCode.split('-').first;
+    final msgLang = pangeaMessageEvent.correctedSent?.langCode.split('-').first;
 
     if (msgLang != l2) return;
 
@@ -713,7 +713,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
     if (newTokens.isEmpty) return;
     final newTokenText = newTokens.first;
-    final token = pangeaMessageEvent.originalSent?.tokens?.firstWhereOrNull(
+    final token = pangeaMessageEvent.correctedSent?.tokens?.firstWhereOrNull(
       (t) => newTokenText == t.text,
     );
     if (token == null) return;
@@ -754,7 +754,12 @@ class ChatController extends State<ChatPageWithRoom>
         final token = tutorialToken;
         if (event == null) return;
         // Re-open the toolbar so SelectModeButtons mounts and picks up the queued tutorial.
-        showToolbar(event, bypassBlockingOverlays: true, selectedToken: token);
+        showToolbar(
+          event,
+          bypassBlockingOverlays: true,
+          selectedToken: token,
+          isTutorial: true,
+        );
         return;
       case TutorialEnum.writingAssistance:
         // The writing-assistance tutorial starts from the text input which is
@@ -778,7 +783,11 @@ class ChatController extends State<ChatPageWithRoom>
           TutorialStepData(
             targetKey: event.eventId,
             onTap: () async {
-              showToolbar(event, bypassBlockingOverlays: true);
+              showToolbar(
+                event,
+                bypassBlockingOverlays: true,
+                isTutorial: true,
+              );
             },
             canShowNextStep: () => isToolbarOpen,
           ),
@@ -914,6 +923,15 @@ class ChatController extends State<ChatPageWithRoom>
       currentTimeline: () => timeline,
       isSuppressed: () =>
           selectMode ||
+          // The open toolbar is the app-wide "a message is open" state, and
+          // this controller's own selection list is only a proxy for it
+          // (#8396). The two diverge: the overlay is registered a frame before
+          // the selection lands, a host can own its selection and never set one
+          // here (the analytics example message), and a second controller for
+          // the same room has an empty list while the visible one has the
+          // message open. Read from the shared overlay registry so every one of
+          // those stays quiet.
+          isToolbarOpen ||
           sendController.text.isNotEmpty ||
           !isFocused ||
           // Recording is inline, not modal, so none of the conditions above
@@ -1257,22 +1275,30 @@ class ChatController extends State<ChatPageWithRoom>
         // .then((_) {
         //   _setReadMarkerFuture = null;
         // });
-        .then((_) {
-          _setReadMarkerFuture = null;
-        })
+        // One report, through the one sink: severity, the fingerprint and
+        // the UnsubscribedException guard are all applied in [ErrorHandler]
+        // (repos-and-error-handling.instructions.md § The contract), so a
+        // direct `Sentry.captureException` here both double-reported and
+        // opted out of them. `e` is passed unwrapped — the old
+        // `PangeaWarningError("...$e")` stringified the failure and destroyed
+        // the type the sink reads. What was a `where` tag rides in `data`.
         .catchError((e, s) {
           ErrorHandler.logError(
-            e: PangeaWarningError("Failed to set read marker: $e"),
+            e: e,
             s: s,
-            data: {'eventId': eventId, 'roomId': roomId},
-          );
-          Sentry.captureException(
-            e,
-            stackTrace: s,
-            withScope: (scope) {
-              scope.setTag('where', 'setReadMarker');
+            data: {
+              'where': 'setReadMarker',
+              'eventId': eventId,
+              'roomId': roomId,
             },
           );
+        })
+        // Cleared on both paths, not just success. The field is the in-flight
+        // guard read at the top of this method, so leaving it set after a
+        // failure disabled read markers for the rest of this controller's
+        // life — one dropped request and the chat stopped marking read.
+        .whenComplete(() {
+          _setReadMarkerFuture = null;
         });
     // Pangea#
     if (eventId == null || eventId == timeline.room.lastEvent?.eventId) {
@@ -1286,6 +1312,7 @@ class ChatController extends State<ChatPageWithRoom>
     timeline = null;
     inputFocus.removeListener(_inputFocusListener);
     // #Pangea
+    pangeaMessageEvents.clear();
     WidgetsBinding.instance.removeObserver(this);
     _storeInputTimeoutTimer?.cancel();
     _displayChatDetailsColumn.dispose();
@@ -1728,9 +1755,14 @@ class ChatController extends State<ChatPageWithRoom>
       decoupleFlag: decoupleTokenizer,
       isStreamedSend: streamedTranscript != null,
     );
-    final VoiceAnalyticsSink? voiceAnalyticsSink = decoupledSend
-        ? Matrix.of(context).analyticsDataService.updateService.addAnalytics
-        : null;
+    // Captured UNCONDITIONALLY: BOTH send paths record analytics after the
+    // send's awaits, so both need the sink resolved here rather than from a
+    // possibly-defunct context later (#8371). `updateService` is a
+    // `late final` assigned in the service constructor, so this read cannot
+    // fail on a send that never reaches analytics.
+    final VoiceAnalyticsSink voiceAnalyticsSink = Matrix.of(
+      context,
+    ).analyticsDataService.updateService.addAnalytics;
     final capturedRoom = room;
     final capturedRoomId = roomId;
     final capturedClientUserId = sendingClient.userID;
@@ -1889,6 +1921,71 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
+    // Best-effort dosage envelope for the voice send — the EXISTENCE half of
+    // speaking (#104). It reports only that the message exists (and, via the
+    // reporter below, that `voice_send` coverage may be declared): nothing
+    // enumerates a room's timeline, so this client-originated row is the only way
+    // the server learns a voice message happened at all. The DURATION half rides
+    // a separate, capability-gated `voice_messages` row emitted just after this
+    // (see the recordVoiceMessage call below).
+    //
+    // The other such row is a `pvm` construct use, and that has two holes this
+    // envelope is immune to — a message whose tokens are all unsavable produces
+    // none, and a streamed send's `pvm` uses arrive only via a background
+    // enrichment pass that can be interrupted. Emitted here, immediately after
+    // the send resolves and BEFORE either analytics branch, so neither hole can
+    // take the envelope with it.
+    //
+    // Fire-and-forget, unlike listening: a lost envelope is recoverable because
+    // the `m.audio` event is still in Matrix for the server to re-derive from.
+    DosageMessageSignals.emitForSentMessage(
+      roomId: capturedRoomId,
+      userId: capturedClientUserId,
+      deviceId: capturedRoom.client.deviceID,
+      accessToken: capturedRoom.client.accessToken,
+      msgEventId: eventId,
+      // Counts only; `body` is never transmitted, only its length. A voice
+      // message with no usable transcript still counts as a message — the
+      // envelope's job is to say one exists.
+      body: stt?.hasUsableTranscript == true ? stt!.transcript.text : "",
+      // A decoupled or streamed send embeds `stt_tokens: []` and tokenizes in
+      // the background, so an explicit 0 would be a claim rather than a count.
+      // Pass null there and let the whitespace fallback approximate it.
+      tokenCount: stt?.hasUsableTokens == true
+          ? stt!.transcript.sttTokens.length
+          : null,
+      langCode: stt?.hasUsableTranscript == true ? stt!.langCode : null,
+      // This envelope is the ONLY evidence the server gets that a voice message
+      // exists, so `voice_send` coverage — which licenses it to serve a speaking
+      // ZERO — may only be declared for a period whose envelopes landed. Report
+      // the outcome so a lost one withholds the period instead. Still
+      // fire-and-forget for this send: nothing below is awaited.
+      onEnvelopeSettled: DosageAudioSignals.voiceSendReporter(
+        userId: capturedClientUserId,
+      ),
+    );
+
+    // The DURATION half of speaking (admin-dash-api#150 / #104). For a DM / 1:1 /
+    // bot room the server's OTHER populate path — a teacher-token read of the
+    // course session room's `m.audio` — cannot see this message, so the
+    // `content.info.duration` the client holds right here (`duration`, the same
+    // value embedded in `info` above) is the ONLY place that magnitude exists.
+    // Reported on the SAME audio-signals lane as a `voice_messages` row keyed by
+    // the SAME `m.audio` event id ([eventId]) the envelope above and the `pvm`
+    // uses carry, so the server dedups on `(sender, msg_id)` and never
+    // double-counts against the Matrix-resolved path. Capability-gated
+    // (Environment.dosageVoiceMessagesEnabled) so it can never post the field to
+    // a server that predates #150. Synchronous + allocation-only; the POST is
+    // unawaited on the analytics heartbeat, exactly like the envelope above, so
+    // the send path never waits on it.
+    DosageAudioSignals.recordVoiceMessage(
+      msgId: eventId,
+      roomId: capturedRoomId,
+      durationMs: duration,
+      userId: capturedClientUserId,
+      accessToken: capturedRoom.client.accessToken,
+    );
+
     // The voice note is on the wire, so the learner is in a spoken exchange:
     // read the bot's next reply aloud. Set only after the send succeeds — a
     // failed upload must not leave the mode stuck on. Mirrors the rule the bot
@@ -1912,15 +2009,24 @@ class ChatController extends State<ChatPageWithRoom>
           eventId: eventId,
           baseStt: stt,
           snapshot: decoupleSnapshot!,
-          analyticsSink: voiceAnalyticsSink!,
+          analyticsSink: voiceAnalyticsSink,
           room: capturedRoom,
           roomId: capturedRoomId,
           clientUserId: capturedClientUserId,
         );
       } else if (!decoupledSend) {
-        // Flag OFF and not a streamed send: unchanged legacy inline analytics
-        // path (byte-parity with the pre-decouple behaviour).
-        _sendVoiceMessageAnalytics(eventId, stt);
+        // Flag OFF and not a streamed send: the legacy inline analytics path.
+        // Fire-and-forget like the decoupled branch above, so send never waits
+        // on analytics -- and `unawaited` makes that explicit rather than
+        // leaving a dropped Future.
+        unawaited(
+          _sendVoiceMessageAnalytics(
+            eventId,
+            stt,
+            voiceAnalyticsSink,
+            capturedRoomId,
+          ),
+        );
       }
     }
     // Pangea#
@@ -2154,7 +2260,10 @@ class ChatController extends State<ChatPageWithRoom>
     final clients = Matrix.of(context).currentBundle;
     for (final event in selectedEvents) {
       if (!event.status.isSent) return false;
-      if (event.canRedact == false &&
+      // #Pangea
+      // if (event.canRedact == false &&
+      if (!room.canRedactEventFrom(event.senderId) &&
+          // Pangea#
           !(clients!.any((cl) => event.senderId == cl!.userID))) {
         return false;
       }
@@ -2774,6 +2883,12 @@ class ChatController extends State<ChatPageWithRoom>
     Event? nextEvent,
     Event? prevEvent,
     bool bypassBlockingOverlays = false,
+
+    /// Whether a tutorial opened the toolbar rather than the learner. Marked at
+    /// the call site rather than inferred, so read-aloud does not talk over the
+    /// tutorial's own instruction. See "Reading on select" in
+    /// client/.github/instructions/message-read-aloud.instructions.md
+    bool isTutorial = false,
   }) async {
     if (event.redacted ||
         event.text == '' ||
@@ -2875,6 +2990,19 @@ class ChatController extends State<ChatPageWithRoom>
       );
     }
 
+    // A deliberate tap on a message is a request to hear it, own messages
+    // included. The controller owns which selections qualify.
+    readAloudController.readSelectedMessage(
+      pangeaMessageEvent ??
+          PangeaMessageEvent(
+            event: event,
+            timeline: timeline!,
+            ownMessage: event.senderId == event.room.client.userID,
+          ),
+      isTutorial: isTutorial,
+      tokenSelected: selectedToken != null,
+    );
+
     GoogleAnalytics.openMessageToolbar();
   }
 
@@ -2921,47 +3049,29 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
+  /// Thin wiring for the flag-OFF send's inline analytics: the coordinator owns
+  /// the guards and the feedback/record ordering, so this reads NO widget
+  /// `context` and nothing escapes. [sink] and [roomId] are the t0 captures
+  /// from [onVoiceMessageSend] -- resolving the analytics service here instead
+  /// would crash on a defunct context once the learner navigates away mid-send,
+  /// and silently drop the record with it (#8371).
   Future<void> _sendVoiceMessageAnalytics(
     String eventId,
     SpeechToTextResponseModel stt,
-  ) async {
-    try {
-      // Exhausted-fallback: fromJson no longer throws for `results: []`
-      // (R0-2), so a voice message can now carry a real-but-empty stt. There
-      // is nothing to score; `transcript` assumes at least one result and
-      // would throw otherwise.
-      if (stt.results.isEmpty || stt.transcript.sttTokens.isEmpty) return;
-      final constructs = stt.constructs(roomId, eventId);
-      if (constructs.isEmpty) return;
-
-      final langCode = stt.langCode.split('-').first;
-      // Fire-and-forget the visual feedback, but wrap it so a fetch/overlay
-      // throw can never escape as an unhandled async error -- P1b made
-      // `_showAnalyticsFeedback` async/heavier, so the flag-OFF path needs the
-      // same swallow the decouple coordinator applies (H2, ON/OFF symmetric).
-      unawaited(
-        guardFeedbackDispatch(
-          () => _showAnalyticsFeedback(constructs, eventId, langCode),
-          (e, s) => ErrorHandler.logError(
-            e: e,
-            s: s,
-            data: {'roomId': roomId, 'eventId': eventId},
-          ),
-        ),
-      );
-      Matrix.of(context).analyticsDataService.updateService.addAnalytics(
-        eventId,
-        constructs,
-        langCode,
-      );
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'roomId': roomId, 'eventId': eventId},
-      );
-    }
-  }
+    VoiceAnalyticsSink sink,
+    String roomId,
+  ) => recordInlineVoiceAnalytics(
+    stt: stt,
+    roomId: roomId,
+    eventId: eventId,
+    sink: sink,
+    showFeedback: _showAnalyticsFeedback,
+    onError: (e, s) => ErrorHandler.logError(
+      e: e,
+      s: s,
+      data: {'roomId': roomId, 'eventId': eventId},
+    ),
+  );
 
   Future<async.Result<SpeechToTextResponseModel>> _getVoiceMessageTranscript(
     MatrixAudioFile file, {
@@ -3039,6 +3149,9 @@ class ChatController extends State<ChatPageWithRoom>
             maxWidth: maxWidth,
             transformTargetId: ChoreoConstants.inputTransformTargetKey,
             ignorePointer: true,
+            // Taps outside the card still reach the input field and other
+            // highlights, but taps on the card stop there (#8181).
+            blockPointerThrough: true,
             isScrollable: false,
           ),
           overlayPosition: OverlayPosition.above,
@@ -3069,6 +3182,7 @@ class ChatController extends State<ChatPageWithRoom>
           ignorePointer: true,
           targetAnchor: Alignment.topCenter,
           followerAnchor: Alignment.bottomCenter,
+          blockPointerThrough: true,
         ),
       ),
     );
@@ -3208,23 +3322,9 @@ class ChatController extends State<ChatPageWithRoom>
       context: context,
       future: () async {
         clearSelectedEvents();
-        await MatrixState.pangeaController.userController.updateProfile((
-          profile,
-        ) {
-          final baseLangShort = profile.userSettings.sourceLanguage
-              ?.split('-')
-              .first;
-
-          if (baseLangShort != null && baseLangShort == target.langCodeShort) {
-            throw IdenticalLanguageException();
-          }
-
-          return profile.copyWith(
-            userSettings: profile.userSettings.copyWith(
-              targetLanguage: target.langCode,
-            ),
-          );
-        }, waitForDataInSync: true);
+        await MatrixState.pangeaController.userController.updateTargetLanguage(
+          target,
+        );
       },
     );
     if (resp.isError) return;
@@ -3348,7 +3448,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (confirmed != OkCancelResult.ok) return;
     final result = await showFutureLoadingDialog(
       context: context,
-      future: widget.room.leave,
+      future: widget.room.leaveIgnoringUnknownRoom,
     );
 
     if (result.isError) return;

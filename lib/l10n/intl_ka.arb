@@ -836,8 +836,6 @@
     "leave": "გადადი",
     "leftTheChat": "გადადგა საუბარი",
     "lightTheme": "მარტივი",
-    "dehydrate": "ექსპორტი სესია და წაშალეთ მოწყობილობა",
-    "dehydrateWarning": "ეს მოქმედება ვერ მოხერხდება უკან დაბრუნება. დარწმუნდით, რომ უსაფრთხოდ ინახავთ სარეზერვო ფაილს.",
     "hydrate": "აღადგინე სარეზერვო ფაილიდან",
     "loadingPleaseWait": "იტვირთება… გთხოვთ დაელოდოთ.",
     "loadMore": "მეტი ჩატვირთვა…",
@@ -1741,9 +1739,7 @@
     "enableAutocorrectPopupTitle": "დაამატეთ თქვენი მიზნობრივი ენის კლავიატურა შემდეგ მისამართზე გადასვლით:",
     "enableAutocorrectPopupSteps": "  • პარამეტრები\n  • ზოგადი\n  • კლავიატურა\n  • კლავიატურები\n  • ახალი კლავიატურის დამატება",
     "enableAutocorrectPopupDescription": "როდესაც ენა აირჩევა, შეგიძლიათ დააჭიროთ პატარა გლობუსის ხატულას კლავიატურის ქვედა მარცხენა მხარეს, რათა გააქტიუროთ ახალი ინსტალირებული კლავიატურა.",
-    "downloadGboardTitle": "გადმოწერეთ Gboard Google Play Store-დან, რათა ჩართოთ ავტომატური კორექტორი და სხვა კლავიატურის ფუნქციები:",
     "downloadGboardSteps": " • გადმოწერეთ Gboard\n  • გახსენით აპლიკაცია\n  • ენები\n  • კლავიატურის დამატება\n  • ენის არჩევა\n  • კლავიატურის ტიპის არჩევა\n  • დასრულება",
-    "downloadGboardDescription": "როდესაც ენა აირჩევა, შეგიძლიათ დააჭიროთ პატარა გლობუსის ხატულას კლავიატურის ქვედა მარცხენა მხარეს, რათა გააქტიუროთ ახალი ინსტალირებული კლავიატურა.",
     "enableAutocorrectWarning": "გაფრთხილება! საჭიროა თქვენი სამიზნე ენის კლავიატურის დამატება",
     "displayName": "სახელის ჩვენება",
     "leaveRoomDescription": "თქვენ აპირებთ ამ ჩატის დატოვებას. სხვა მომხმარებლები იხილავენ, რომ თქვენ დატოვეთ ჩატი.",
@@ -1944,7 +1940,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-05 11:42:13.759403",
+    "@@last_modified": "2026-08-24 11:54:17.917322",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -2329,14 +2325,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -6299,15 +6287,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -8503,16 +8483,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "ეს სიტყვა მუდმივად წაიშლება თქვენი ანალიტიკიდან",
     "woman": "ქალი",
     "man": "კაცი",
     "otherGender": "სხვა",
     "unselectedGender": "აირჩიეთ სქესის ვარიანტი",
     "chatParticipantTooltip": "ეს არის ყველა ადამიანი ამ ჩატში. დააწკაპუნეთ ნებისმიერი მომხმარებლის ავატარზე და „საუბრის დაწყება“, რომ გამოგიგზავნოთ პირადი შეტყობინება.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10595,8 +10570,6 @@
     "audioWordsDescription": "დაუკარით სიტყვის აუდიო, როდესაც მასზე დააკლიკებთ.",
     "audioChoicesToolName": "არჩევანი",
     "audioChoicesDescription": "დაუკარით აუდიო სავარჯიშო აქტივობებში პასუხის ვარიანტებისთვის.",
-    "audioIncomingMessagesToolName": "შემომავალი შეტყობინებები",
-    "audioIncomingMessagesDescription": "ავტომატურად წაიკითხეთ მიღებული შეტყობინებები ხმამაღლა თქვენს სამიზნე ენაზე მოსმენის პრაქტიკისთვის.",
     "choosePangeaAvatar": "აირჩიეთ Pangea-ს ავატარი",
     "readAloudNoVoiceTitle": "ვერ მოიძებნა მაღალი ხარისხის {language} ხმა",
     "readAloudNoVoiceDesktopWeb": "ეს ბრაუზერი არ გთავაზობთ მაღალი ხარისხის {language} ხმას, ამიტომ შეტყობინებების ხმამაღლა წაკითხვა აქ კარგად ვერ მოხერხდება. Chrome და Edge, როგორც წესი, მოიცავს მაღალი ხარისხის ხმებს.",
@@ -10617,5 +10590,77 @@
     "conversationFromDayOne": "საუბარი პირველივე დღიდან",
     "builtForConnection": "კავშირისთვის შექმნილი",
     "aiWhenYouNeedIt": "AI, როცა დაგჭირდება",
-    "practiceTailoredForYou": "თქვენზე მორგებული პრაქტიკა"
+    "practiceTailoredForYou": "თქვენზე მორგებული პრაქტიკა",
+    "deletedVocab": "წაშლილი სიტყვები",
+    "blockLemmaConfirmation": "ეს სიტყვა წაიშლება თქვენი ლექსიკიდან და შეწყვეტს XP-ის გამომუშავებას. შეგიძლიათ მისი აღდგენა წაშლილი სიტყვებიდან.",
+    "deletedVocabListBody": "ეს სიტყვები დამალულია თქვენი ლექსიკიდან და არ გამოიმუშავებს XP-ს. აღადგინეთ ისინი უკან დასაბრუნებლად.",
+    "deletedVocabListBodyEmpty": "თქვენ არ წაგიშლიათ არცერთი სიტყვა. სიტყვები, რომლებსაც წაშლით თქვენი ლექსიკიდან, აქ გამოჩნდება, რათა შეძლოთ მათი აღდგენა.",
+    "deletedVocabListLabel": "წაშლილი სიტყვები",
+    "restore": "აღდგენა",
+    "deletedWordLabel": "{lemma}, წაშლილია",
+    "restoredWords": "{count, plural, =1{აღდგენილია 1 სიტყვა} other{აღდგენილია {count} სიტყვა}}",
+    "chatSearchPageLabel": "ჩეთის ძიების გვერდი",
+    "selectImageLabel": "სურათის არჩევა",
+    "userSearchTagsLabel": "ძიება...",
+    "courseDetails": "კურსის დეტალები",
+    "objective": "მიზანი",
+    "pingedLabel": "დაპინგულია",
+    "mapFilterPlayerCount": "{count} მოთამაშე",
+    "practiceFeedbackButtonTooltip": "შეატყობინეთ პრობლემის შესახებ ამ სავარჯიშოში",
+    "practiceFeedbackDialogTitle": "სავარჯიშოს უკუკავშირი",
+    "practiceFeedbackSelectPair": "რომელი წყვილი გამოიყურება არასწორად?",
+    "practiceFeedbackUserSetEmoji": "თქვენ აირჩიეთ ეს emoji — შეცვალეთ ის სიტყვის ბარათიდან",
+    "practiceFeedbackAlreadyMatched": "უკვე სწორად არის შეხამებული",
+    "practiceFeedbackUpdated": "გმადლობთ! სავარჯიშო განახლდა თქვენი უკუკავშირის საფუძველზე.",
+    "practiceFeedbackUnchanged": "გმადლობთ! თქვენი შეტყობინება ჩაიწერა, მაგრამ შინაარსი უცვლელი დარჩა.",
+    "audioOnNewMessageToolName": "ახალ შეტყობინებაზე",
+    "audioOnNewMessageDescription": "ავტომატურად წაიკითხეთ ხმამაღლა ახალი მიღებული შეტყობინებები თქვენს სამიზნე ენაზე.",
+    "audioOnMessageClickToolName": "შეტყობინებაზე დაწკაპუნებით",
+    "audioOnMessageClickDescription": "წაიკითხეთ შეტყობინება ხმამაღლა თქვენს სამიზნე ენაზე, როდესაც დააწკაპუნებთ მასზე.",
+    "audioSettingDisabledTitle": "{toolName} აუდიო გამორთულია",
+    "audioSettingDisabledBody": "შეგიძლიათ ჩართოთ {toolName} აუდიო თქვენს სასწავლო პარამეტრებში",
+    "audioSettingDisabledEnable": "ჩართვა",
+    "rejoinedTheActivity": "🔄 {username} კვლავ შეუერთდა ამ აქტივობას",
+    "shareAnalytics": "გააზიარეთ ანალიტიკა",
+    "courseNoLongerAvailableTitle": "კურსი მიუწვდომელია",
+    "courseDeletedDialogDesc": "ეს კურსი წაშლილია.",
+    "pingedActivity": "აქტივობაზე შეტყობინება",
+    "appInTargetLanguageStaysInBaseLanguage": "(ეს პარამეტრი რჩება თქვენს მშობლიურ ენაზე, რათა ყოველთვის შეძლოთ მისი პოვნა.)",
+    "usernameTakenPleaseChooseAnother": "ეს მომხმარებლის სახელი უკვე დაკავებულია. გთხოვთ, აირჩიოთ სხვა.",
+    "allParticipants": "ყველა მონაწილე",
+    "seeFullCoursePlan": "იხილეთ კურსის სრული გეგმა",
+    "catchUp": "წამოეწიეთ",
+    "messageLanguageIs": "ამ შეტყობინების ენა არის {language}.",
+    "updateMessageLanguage": "შეტყობინების ენის შესაცვლელად დააჭირეთ აქ.",
+    "messageLanguage": "შეტყობინების ენა",
+    "messageLanguageUpdated": "შეტყობინების ენა განახლებულია!",
+    "pickCefrLevelStepSubtitle": "ამას მოგვიანებით შეცვლით",
+    "unlockPremiumAudio": "პრემიუმ აუდიოს განბლოკვა",
+    "unlockTranslations": "თარგმანების განბლოკვა",
+    "unlockEmojiMode": "ემოჯი რეჟიმის განბლოკვა",
+    "unlockMessagePractice": "შეტყობინებების პრაქტიკის განბლოკვა",
+    "unlockWritingAssistance": "წერის დახმარების განბლოკვა",
+    "courseSectionTeaching": "ასწავლის",
+    "courseSectionLearning": "სწავლობს",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 კურსი} other{{count} კურსი}}",
+    "showMore": "მეტი",
+    "showLess": "ნაკლები",
+    "countNewMessages": "{count, plural, =1{1 ახალი შეტყობინება} other{{count} ახალი შეტყობინება}}",
+    "markAllRead": "ყველას წაკითხულად მონიშვნა",
+    "usersAreTryingToJoinCourse": "მომხმარებლები ცდილობენ თქვენს კურსზე გაწევრიანებას",
+    "denyAllUsers": "ყველა მომხმარებლის დაბლოკვა",
+    "denyAllKnocksDescription": "ეს მომხმარებლები დაბლოკილი იქნებიან კურსიდან. მათ შეუძლიათ ნებისმიერ დროს სცადონ ხელახლა გაწევრიანება.",
+    "courseNameHint": "კურსის სახელი",
+    "typeCourseCodeToConfirm": "დასადასტურებლად, ჩაწერეთ კურსის კოდი {code} ქვემოთ.",
+    "typeCourseNameToConfirm": "დასადასტურებლად, ჩაწერეთ კურსის სახელი {name} ქვემოთ.",
+    "inviteAFriend": "მოიწვიე მეგობარი",
+    "autocorrectAndroidDialogTitle": "ავტოკორექცია თქვენს სამიზნე ენაზე",
+    "autocorrectAndroidDialogBody": "როდესაც ჩატში წერთ, თქვენი კლავიატურა გადაერთვება თქვენს სამიზნე ენაზე და შეასწორებს მართლწერას ამ ენაზე.",
+    "autocorrectAndroidFallbackTitle": "თუ თქვენი კლავიატურა არ გთავაზობთ თქვენს სამიზნე ენას, დააინსტალირეთ Gboard და დაამატეთ ენა იქ:",
+    "resendInSeconds": "ხელახლა გაგზავნა ({seconds})",
+    "mapLevelFallbackNotice": "ჯერ არ არის {selected} აქტივობები — ნაცვლად ნაჩვენებია {shown}.",
+    "switchLanguageChipLabel": "გადართვა {language}-ზე",
+    "languageDropdownLevel": "დონე {level}",
+    "whatAreYouLearning": "რას სწავლობთ?",
+    "languageSwitcherBaseLanguageLabel": "თქვენი საბაზო ენა"
 }

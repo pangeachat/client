@@ -7,13 +7,13 @@ import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
-/// The overall course progress bar for the course-card HEADER (above the tabs,
-/// #7597): the quest's earned-over-threshold stars and a bar. Lives in the
-/// header so it shows on every tab and in the collapsed mobile peek — where the
-/// objective list (and its old in-list header) isn't even mounted, since the
-/// card opens on the chat tab on narrow. Self-resolves the shared progression
-/// ([resolveJoinedProgression]); renders a muted empty bar until it lands so the
-/// header height (and the peek) stays stable.
+/// The overall course progress bar for the course page: the quest's
+/// earned-over-threshold stars and a bar. It rides the page's intro block
+/// (under the Catch up card, #8357) and stands alone in the collapsed mobile
+/// peek — where the sections aren't even mounted — so a learner always sees
+/// course progress without scrolling. Self-resolves the shared progression
+/// ([resolveJoinedProgression]); renders a muted empty bar until it lands so
+/// the layout (and the peek) stays stable.
 class CourseProgressBar extends StatelessWidget {
   final QuestObjectivesLoader objectivesProvider;
   const CourseProgressBar({required this.objectivesProvider, super.key});
@@ -112,15 +112,16 @@ class ProgressBarRow extends StatelessWidget {
       ),
     );
 
-    final result = Semantics(label: label, value: label, child: bar);
-
     // Tap (mobile) and hover (desktop) both surface the exact count.
-    return label == null
-        ? result
-        : Tooltip(
-            message: label,
-            triggerMode: TooltipTriggerMode.tap,
-            child: result,
-          );
+    return Semantics(
+      container: true,
+      child: label == null
+          ? bar
+          : Tooltip(
+              message: label,
+              triggerMode: TooltipTriggerMode.tap,
+              child: bar,
+            ),
+    );
   }
 }

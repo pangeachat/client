@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
 import 'package:fluffychat/routes/world/world_map_empty_view_card.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
+import 'package:fluffychat/routes/world/world_map_level_fallback_notice.dart';
 
 /// Coverage for the single-column floating search bar
 /// (routing.instructions.md → Single-column search bar): the presentational
@@ -26,6 +28,9 @@ void main() {
     VoidCallback? onWidenSearch,
     VoidCallback? onZoomOut,
     Listenable? viewRevision,
+    bool minimized = false,
+    VoidCallback? onRestore,
+    WorldMapFilter Function()? filter,
   }) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -38,12 +43,15 @@ void main() {
               hintText: hintText,
               query: query,
               onQueryChanged: onQueryChanged ?? (_) {},
+              minimized: minimized,
+              onRestore: onRestore,
               filtersChild: filtersChild,
               emptyVerdict: emptyVerdict,
               canZoomOut: canZoomOut,
               onWidenSearch: onWidenSearch,
               onZoomOut: onZoomOut,
               viewRevision: viewRevision,
+              filter: filter,
             ),
           ),
         ),
@@ -117,6 +125,53 @@ void main() {
     expect(find.byType(WorldMapEmptyViewCard), findsNothing);
   });
 
+  testWidgets('a level fallback rides above the bar and names both levels', (
+    tester,
+  ) async {
+    const fallback = WorldMapFilter(
+      cefrFilter: {LanguageLevelTypeEnum.preA1},
+      cefrFallback: LanguageLevelTypeEnum.a1,
+    );
+    await pumpBar(
+      tester,
+      emptyVerdict: () => MapEmptyVerdict.none,
+      filter: () => fallback,
+    );
+    expect(find.byType(WorldMapLevelFallbackNotice), findsOneWidget);
+    final noticeY = tester
+        .getTopLeft(find.byType(WorldMapLevelFallbackNotice))
+        .dy;
+    expect(noticeY, lessThan(tester.getTopLeft(find.byType(TextField)).dy));
+
+    // An honoured level says nothing.
+    await pumpBar(
+      tester,
+      emptyVerdict: () => MapEmptyVerdict.none,
+      filter: () =>
+          const WorldMapFilter(cefrFilter: {LanguageLevelTypeEnum.a1}),
+    );
+    expect(find.byType(WorldMapLevelFallbackNotice), findsNothing);
+  });
+
+  testWidgets('the empty-view card outranks the fallback notice', (
+    tester,
+  ) async {
+    await pumpBar(
+      tester,
+      emptyVerdict: () => MapEmptyVerdict.filtersHideMatches,
+      filter: () => const WorldMapFilter(
+        cefrFilter: {LanguageLevelTypeEnum.preA1},
+        cefrFallback: LanguageLevelTypeEnum.a1,
+      ),
+    );
+    expect(find.byType(WorldMapEmptyViewCard), findsOneWidget);
+    expect(
+      find.byType(WorldMapLevelFallbackNotice),
+      findsNothing,
+      reason: 'a map with nothing on it is the more urgent message',
+    );
+  });
+
   testWidgets('off-screen matches: Zoom out fires, no Widen offered', (
     tester,
   ) async {
@@ -133,13 +188,30 @@ void main() {
     expect(find.text('Widen search'), findsNothing);
   });
 
-  testWidgets('at the zoom floor the Zoom out lever greys out, not hides', (
+  testWidgets('off-screen matches keep the lever live at the zoom floor', (
+    tester,
+  ) async {
+    // #8121: the lever re-centers as well as zooms, and a narrow screen at the
+    // floor still can't show the whole world — so matches loaded off-screen
+    // are exactly when it must stay pressable, not grey out.
+    var zoomedOut = false;
+    await pumpBar(
+      tester,
+      emptyVerdict: () => MapEmptyVerdict.matchesOffscreen,
+      canZoomOut: () => false,
+      onZoomOut: () => zoomedOut = true,
+    );
+    await tester.tap(find.text('Zoom out'));
+    expect(zoomedOut, isTrue);
+  });
+
+  testWidgets('an empty area greys the lever out at the floor, not hides', (
     tester,
   ) async {
     var zoomedOut = false;
     await pumpBar(
       tester,
-      emptyVerdict: () => MapEmptyVerdict.matchesOffscreen,
+      emptyVerdict: () => MapEmptyVerdict.noActivities,
       canZoomOut: () => false,
       onZoomOut: () => zoomedOut = true,
     );
@@ -190,6 +262,35 @@ void main() {
     );
     expect(find.textContaining('in this area'), findsOneWidget);
     expect(find.text('Zoom out'), findsOneWidget);
+  });
+
+  testWidgets('minimized: one icon button, no field, filters or card', (
+    tester,
+  ) async {
+    // The course-scoped resting state (#7716, routing.instructions.md →
+    // Single-column search bar): the scoped map's own chrome owns the band, so
+    // search waits behind one tap — and everything that rides the expanded bar
+    // waits with it.
+    await pumpBar(
+      tester,
+      minimized: true,
+      filtersChild: const Text('FILTER CHIPS', key: Key('chips')),
+      emptyVerdict: () => MapEmptyVerdict.matchesOffscreen,
+      canZoomOut: () => true,
+    );
+    expect(find.byIcon(Icons.search), findsOneWidget);
+    expect(find.byType(TextField), findsNothing);
+    expect(find.byKey(const Key('chips')), findsNothing);
+    expect(find.byType(WorldMapEmptyViewCard), findsNothing);
+  });
+
+  testWidgets('minimized: tapping the icon asks the shell to restore', (
+    tester,
+  ) async {
+    var restored = false;
+    await pumpBar(tester, minimized: true, onRestore: () => restored = true);
+    await tester.tap(find.byIcon(Icons.search));
+    expect(restored, isTrue);
   });
 
   testWidgets('a viewRevision tick re-reads the live verdict', (tester) async {

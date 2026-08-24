@@ -1,12 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:async/async.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -26,44 +22,19 @@ import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exerc
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/word_audio_practice_exercise_generator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// Represents an item in the completion cache.
-class _RequestCacheItem {
-  final PracticeExerciseModel practiceExercise;
-  final DateTime timestamp;
-
-  _RequestCacheItem({required this.practiceExercise, required this.timestamp});
-
-  bool get isExpired =>
-      DateTime.now().difference(timestamp) > PracticeRepo._cacheDuration;
-
-  factory _RequestCacheItem.fromJson(Map<String, dynamic> json) {
-    return _RequestCacheItem(
-      practiceExercise: PracticeExerciseModel.fromJson(
-        json['practiceActivity'],
-      ),
-      timestamp: DateTime.parse(json['timestamp']),
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-    'practiceActivity': practiceExercise.toJson(),
-    'timestamp': timestamp.toIso8601String(),
-  };
-}
-
-/// Controller for handling exercise completions.
+/// Generates one practice exercise per request.
+///
+/// Stateless by design: an exercise the learner may return to is held by the
+/// practice that requested it (see `PracticeExerciseMemo`), never cached here.
+/// A repo-level cache is shared by every surface and outlives the practice it
+/// belongs to, which is what made the previous one unsafe as well as inert
+/// (#8432).
 class PracticeRepo {
-  static final GetStorage _storage = GetStorage('practice_activity_cache');
-  static const Duration _cacheDuration = Duration(minutes: 1);
-
   /// [event] is optional and used for saving the event to Matrix
   static Future<Result<PracticeExerciseModel>> getPracticeExercise(
     MessagePracticeExerciseRequest req, {
     required Map<String, dynamic> messageInfo,
   }) async {
-    final cached = _getCached(req);
-    if (cached != null) return Result.value(cached);
-
     try {
       final MessagePracticeExerciseResponse res = await _routePracticeExercise(
         accessToken: MatrixState.pangeaController.userController.accessToken,
@@ -71,7 +42,6 @@ class PracticeRepo {
         messageInfo: messageInfo,
       );
 
-      await _setCached(req, res);
       return Result.value(res.exercise);
     } on HttpException catch (e, s) {
       return Result.error(e, s);
@@ -135,7 +105,6 @@ class PracticeRepo {
       case PracticeExerciseTypeEnum.morphId:
         return MorphPracticeExerciseGenerator.get(req);
       case PracticeExerciseTypeEnum.wordMeaning:
-        debugger(when: kDebugMode);
         return LemmaMeaningPracticeExerciseGenerator.get(
           req,
           messageInfo: messageInfo,
@@ -147,39 +116,4 @@ class PracticeRepo {
         return _fetch(accessToken: accessToken, requestModel: req);
     }
   }
-
-  static PracticeExerciseModel? _getCached(MessagePracticeExerciseRequest req) {
-    final keys = List.from(_storage.getKeys());
-    for (final k in keys) {
-      try {
-        final item = _RequestCacheItem.fromJson(_storage.read(k));
-        if (item.isExpired) {
-          _storage.remove(k);
-        }
-      } catch (e) {
-        _storage.remove(k);
-      }
-    }
-
-    try {
-      final entry = _RequestCacheItem.fromJson(
-        _storage.read(req.hashCode.toString()),
-      );
-      return entry.practiceExercise;
-    } catch (e) {
-      _storage.remove(req.hashCode.toString());
-    }
-    return null;
-  }
-
-  static Future<void> _setCached(
-    MessagePracticeExerciseRequest req,
-    MessagePracticeExerciseResponse res,
-  ) => _storage.write(
-    req.hashCode.toString(),
-    _RequestCacheItem(
-      practiceExercise: res.exercise,
-      timestamp: DateTime.now(),
-    ).toJson(),
-  );
 }

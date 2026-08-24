@@ -5,7 +5,11 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/languages/context_language_switch_target.dart';
+import 'package:fluffychat/features/languages/language_flag_chip.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -22,6 +26,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_
 import 'package:fluffychat/routes/chat/activity_sessions/activity_start_hero.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -32,6 +37,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 // The close-only-this-room-token location moved to the navigation layer
 // (`roomTokenCloseLocation`) once leaving a chat needed the same semantic
 // (#7561); the activity plan's close (#7156) reads it from there.
+
+/// Below this body height the start page is at its mobile minimized rest and
+/// renders only the header + info row + CTA — the scroll content is dropped
+/// until the sheet is dragged/tapped up. Kept in step with
+/// `_activitySheetMinimizedHeight` in workspace_shell.dart, the cavity height
+/// that produces this. See activity-start-page.instructions.md.
+const double kActivityCompactMaxHeight = 150.0;
 
 class ActivitySessionStartView extends StatelessWidget {
   final ActivitySessionStartState controller;
@@ -78,6 +90,9 @@ class ActivitySessionStartView extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
+            scrolledUnderElevation: FluffyThemes.isColumnMode(context)
+                ? 0.0
+                : null,
             leadingWidth: 52.0,
             // With no plan, an archived session falls back to the room name —
             // it was set from the plan's title at room creation.
@@ -146,27 +161,26 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
-              // Rating indicator (#7194/#7993) — top-right per design: a NEW
-              // pill until the activity has ratings, then the aggregate meter.
-              if (activity != null)
-                Padding(
-                  padding: const EdgeInsets.only(right: 4.0),
-                  child: ActivityRatingMeter(
-                    average: activity.ratingAverage,
-                    count: activity.ratingCount,
-                  ),
+              // While a confirmed session waits to fill, the "…" menu (leave /
+              // delete) stands in for share on web and is a net-new action on
+              // mobile — so nobody confuses sharing the activity with inviting
+              // people into the room. See activity-start-page.instructions.md.
+              if (controller.isPendingSession)
+                _WaitingRoomMenuButton(controller)
+              // Web hosts share in the app bar, left of focus; mobile keeps it
+              // as a chip in the bottom CTA row instead.
+              else if (FluffyThemes.isColumnMode(context))
+                IconButton(
+                  tooltip: L10n.of(context).share,
+                  icon: const Icon(Icons.share_outlined),
+                  onPressed: controller.copyActivityLink,
                 ),
               // The one camera path that zooms (#7616): selection only pans,
               // so this button zoom+pans the map to the activity's pin.
               IconButton(
                 tooltip: L10n.of(context).focusOnMap,
-                icon: const Icon(Icons.filter_center_focus),
+                icon: const Icon(Icons.my_location),
                 onPressed: MapCameraFocusRequests.request,
-              ),
-              IconButton(
-                tooltip: L10n.of(context).feedbackButton,
-                icon: const Icon(Icons.flag_outlined),
-                onPressed: controller.submitActivityFeedback,
               ),
             ],
           ),
@@ -196,92 +210,315 @@ class ActivitySessionStartView extends StatelessWidget {
                     message: L10n.of(context).activityNotFound,
                   ),
                 )
-              : Column(
-                  children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        controller: controller.scrollController,
-                        child: Column(
-                          children: [
-                            ActivityStartHero(
-                              controller: controller,
-                              sessionController: sessionController,
-                              activity: activity,
-                            ),
-                            if (sessionController.showDescriptionSection)
-                              Center(
-                                child: Container(
+              : LayoutBuilder(
+                  builder: (context, constraints) {
+                    final compact =
+                        constraints.maxHeight.isFinite &&
+                        constraints.maxHeight < kActivityCompactMaxHeight;
+                    // No scroll content at this rest, so fill the short sheet and
+                    // space the info row and CTA evenly down it — the slack reads
+                    // as breathing room rather than a gap under the CTA.
+                    if (compact) {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          _ActivityStartInfoRow(activity: activity),
+                          ActivitySessionButtons(
+                            controller: controller,
+                            sessionController: sessionController,
+                            compact: true,
+                          ),
+                        ],
+                      );
+                    }
+                    return Column(
+                      children: [
+                        _ActivityStartInfoRow(activity: activity),
+                        Expanded(
+                          child: SingleChildScrollView(
+                            controller: controller.scrollController,
+                            child: Column(
+                              children: [
+                                ActivityStartHero(
+                                  controller: controller,
+                                  sessionController: sessionController,
+                                  activity: activity,
+                                ),
+                                if (sessionController.showDescriptionSection)
+                                  Center(
+                                    child: Container(
+                                      constraints: const BoxConstraints(
+                                        maxWidth: 600.0,
+                                      ),
+                                      padding: const EdgeInsets.fromLTRB(
+                                        16.0,
+                                        50.0,
+                                        16.0,
+                                        0.0,
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        spacing: 12.0,
+                                        children: [
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Expanded(
+                                                child: Linkify(
+                                                  text: activity.description,
+                                                  options: const LinkifyOptions(
+                                                    humanize: false,
+                                                  ),
+                                                  useMouseRegion: true,
+                                                  style:
+                                                      theme.textTheme.bodyLarge,
+                                                  linkStyle: theme
+                                                      .textTheme
+                                                      .bodyLarge
+                                                      ?.copyWith(
+                                                        color: theme
+                                                            .colorScheme
+                                                            .primary,
+                                                        decoration:
+                                                            TextDecoration
+                                                                .underline,
+                                                        decorationColor: theme
+                                                            .colorScheme
+                                                            .primary,
+                                                      ),
+                                                  onOpen: (link) => UrlLauncher(
+                                                    context,
+                                                    link.url,
+                                                  ).launchUrl(),
+                                                ),
+                                              ),
+                                              // Web relocates the flag out of the
+                                              // old share/flag row to here, the
+                                              // top-right of the text content;
+                                              // mobile keeps its CTA-row chip.
+                                              if (FluffyThemes.isColumnMode(
+                                                context,
+                                              ))
+                                                IconButton(
+                                                  tooltip: L10n.of(
+                                                    context,
+                                                  ).feedbackButton,
+                                                  icon: const Icon(
+                                                    Icons.flag_outlined,
+                                                  ),
+                                                  onPressed: controller
+                                                      .submitActivityFeedback,
+                                                ),
+                                            ],
+                                          ),
+                                          if (activity.vocab.isNotEmpty)
+                                            ActivityVocabWidget(
+                                              key: ValueKey(
+                                                'activity-start-vocab-${activity.activityId}',
+                                              ),
+                                              vocab: activity.vocab,
+                                              langCode:
+                                                  activity.req.targetLanguage,
+                                              targetId: 'activity-start-vocab',
+                                              usedVocab: null,
+                                              activityLangCode:
+                                                  activity.req.targetLanguage,
+                                              // The start page precedes the
+                                              // session room, so a chip tapped
+                                              // here belongs to no room at all.
+                                              roomId: null,
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                Container(
                                   constraints: const BoxConstraints(
                                     maxWidth: 600.0,
                                   ),
-                                  padding: const EdgeInsets.fromLTRB(
-                                    16.0,
-                                    50.0,
-                                    16.0,
-                                    0.0,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    spacing: 12.0,
-                                    children: [
-                                      Linkify(
-                                        text: activity.description,
-                                        options: const LinkifyOptions(
-                                          humanize: false,
-                                        ),
-                                        useMouseRegion: true,
-                                        style: theme.textTheme.bodyLarge,
-                                        linkStyle: theme.textTheme.bodyLarge
-                                            ?.copyWith(
-                                              color: theme.colorScheme.primary,
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              decorationColor:
-                                                  theme.colorScheme.primary,
-                                            ),
-                                        onOpen: (link) => UrlLauncher(
-                                          context,
-                                          link.url,
-                                        ).launchUrl(),
-                                      ),
-                                      if (activity.vocab.isNotEmpty)
-                                        ActivityVocabWidget(
-                                          key: ValueKey(
-                                            'activity-start-vocab-${activity.activityId}',
-                                          ),
-                                          vocab: activity.vocab,
-                                          langCode: activity.req.targetLanguage,
-                                          targetId: 'activity-start-vocab',
-                                          usedVocab: null,
-                                          activityLangCode:
-                                              activity.req.targetLanguage,
-                                        ),
-                                    ],
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: ActivitySessionBottomContent(
+                                    sessionController,
                                   ),
                                 ),
-                              ),
-                            Container(
-                              constraints: const BoxConstraints(
-                                maxWidth: 600.0,
-                              ),
-                              padding: const EdgeInsets.all(12.0),
-                              child: ActivitySessionBottomContent(
-                                sessionController,
-                              ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                    ActivitySessionButtons(
-                      controller: controller,
-                      sessionController: sessionController,
-                    ),
-                  ],
+                        ActivitySessionButtons(
+                          controller: controller,
+                          sessionController: sessionController,
+                        ),
+                      ],
+                    );
+                  },
                 ),
         );
       },
+    );
+  }
+}
+
+enum _WaitingRoomAction { leave, delete }
+
+/// The waiting-room "…" menu in the app bar: leave the session, or — if you own
+/// the room ([ActivitySessionStartState.canDeleteSession]) — delete it for
+/// everyone. The same exit chat offers, surfaced while a confirmed session
+/// waits to fill. See activity-start-page.instructions.md.
+class _WaitingRoomMenuButton extends StatelessWidget {
+  final ActivitySessionStartState controller;
+
+  const _WaitingRoomMenuButton(this.controller);
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<_WaitingRoomAction>(
+      tooltip: L10n.of(context).moreOptions,
+      onSelected: (action) {
+        switch (action) {
+          case _WaitingRoomAction.leave:
+            controller.leaveSession();
+          case _WaitingRoomAction.delete:
+            controller.deleteSession();
+        }
+      },
+      itemBuilder: (context) => [
+        PopupMenuItem(
+          value: _WaitingRoomAction.leave,
+          child: Row(
+            children: [
+              const Icon(Icons.logout_outlined),
+              const SizedBox(width: 12.0),
+              Text(L10n.of(context).leave),
+            ],
+          ),
+        ),
+        if (controller.canDeleteSession)
+          PopupMenuItem(
+            value: _WaitingRoomAction.delete,
+            child: Row(
+              children: [
+                const Icon(Icons.delete_outlined),
+                const SizedBox(width: 12.0),
+                Text(L10n.of(context).delete),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+/// The always-visible second row under the title: who made the activity and
+/// its at-a-glance facts (L2, level, participant count, rating). It sits above
+/// the scrollable body so a map explorer sees the essentials without expanding
+/// the sheet. Creator is fixed to PangeaChat until learners can author their
+/// own activities. See activity-start-page.instructions.md.
+class _ActivityStartInfoRow extends StatelessWidget {
+  final ActivityPlanModel activity;
+
+  const _ActivityStartInfoRow({required this.activity});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final language = PLanguageStore.byLangCode(activity.req.targetLanguage);
+    final onVariant = theme.colorScheme.onSurfaceVariant;
+
+    return Container(
+      color: theme.colorScheme.surface,
+      padding: const EdgeInsets.fromLTRB(12.0, 0.0, 8.0, 8.0),
+      child: Row(
+        children: [
+          Container(
+            width: 28.0,
+            height: 28.0,
+            padding: const EdgeInsets.all(5.0),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.primaryContainer,
+              shape: BoxShape.circle,
+            ),
+            child: const PangeaLogoSvg(width: 18.0),
+          ),
+          const SizedBox(width: 8.0),
+          Expanded(
+            child: Text(
+              'PangeaChat',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          const SizedBox(width: 8.0),
+          // Never empty: the flag when the language resolves to one, else a
+          // langcode chip (shared with the analytics cluster's flag). Doubles
+          // as the switch to that language when it isn't the learner's
+          // target (activity-start-page.instructions.md).
+          ContextLanguageSwitchTarget(
+            contentLanguage: language,
+            builder: (context, canSwitch) => LanguageFlagChip(
+              language: language,
+              langCode: activity.req.targetLanguage,
+              width: 24.0,
+              height: 18.0,
+              fontSize: 12.0,
+              radius: 3.0,
+              borderWidth: 1.0,
+              alwaysShowCode: false,
+              tintColor: canSwitch ? theme.colorScheme.tertiary : null,
+            ),
+          ),
+          const SizedBox(width: 12.0),
+          _IconLabel(
+            icon: Icons.school_outlined,
+            label: activity.req.cefrLevel.string,
+            color: onVariant,
+          ),
+          const SizedBox(width: 12.0),
+          _IconLabel(
+            icon: Icons.group_outlined,
+            label: '${activity.req.numberOfParticipants}',
+            color: onVariant,
+          ),
+          const SizedBox(width: 8.0),
+          ActivityRatingMeter(
+            average: activity.ratingAverage,
+            count: activity.ratingCount,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// A compact icon + text pair for the info row's level and participant facts.
+class _IconLabel extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color color;
+
+  const _IconLabel({
+    required this.icon,
+    required this.label,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: 18.0, color: color),
+        const SizedBox(width: 4.0),
+        Text(
+          label,
+          style: Theme.of(context).textTheme.labelLarge?.copyWith(color: color),
+        ),
+      ],
     );
   }
 }
@@ -330,7 +567,7 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
             if (controller.canLeaveArchivedSession) ...[
               ActivitySessionCTAButton(
                 L10n.of(context).leave,
-                controller.leaveArchivedSession,
+                controller.leaveSession,
               ),
               const SizedBox(height: 16.0),
             ],

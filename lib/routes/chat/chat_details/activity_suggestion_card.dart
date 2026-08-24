@@ -25,7 +25,7 @@ class ActivitySuggestionCard extends StatelessWidget {
 
   /// The live roster drawn in the Waiting ([ActivityPinState.ongoingPending])
   /// state's participant bar
-  final List<LargeCardParticipant> participants;
+  final List<String> participants;
   final int openSlots;
 
   /// The activity's live map-pin state, or null for a plain card. Drives the
@@ -176,9 +176,15 @@ class ActivitySuggestionCard extends StatelessWidget {
                                       size: iconSize ?? 12.0,
                                       color: onState,
                                     ),
-                                    Text(
-                                      "${activity.req.numberOfParticipants}",
-                                      style: labelStyle,
+                                    Semantics(
+                                      label:
+                                          "${L10n.of(context).participants}: ${activity.req.numberOfParticipants}",
+                                      child: ExcludeSemantics(
+                                        child: Text(
+                                          "${activity.req.numberOfParticipants}",
+                                          style: labelStyle,
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -203,15 +209,33 @@ class ActivitySuggestionCard extends StatelessWidget {
                 children: [
                   _ActivityStateBanner(
                     color: stateColor,
-                    width: width / 2 + _bannerPoke,
-                    child: Text(
-                      _stateLabel(context),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: fontSizeSmall ?? 11.0,
-                        fontWeight: FontWeight.w600,
-                      ),
+                    minWidth: width / 2 + _bannerPoke,
+                    maxWidth: width + _bannerPoke,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // The shared status glyph, matching the map pin.
+                        Icon(
+                          pinState!.icon,
+                          size: (fontSizeSmall ?? 11.0) + 3.0,
+                          color: Colors.white,
+                        ),
+                        const SizedBox(width: 4.0),
+                        Flexible(
+                          child: Text(
+                            _stateLabel(context),
+                            textAlign: TextAlign.center,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: fontSizeSmall ?? 11.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   if (pinState == ActivityPinState.ongoingPending &&
@@ -246,7 +270,7 @@ class _WaitingParticipantBar extends StatelessWidget {
   /// The width of the card this bar hangs off, used to size the avatars down.
   final double cardWidth;
 
-  final List<LargeCardParticipant> participants;
+  final List<String> participants;
   final int openSlots;
 
   const _WaitingParticipantBar({
@@ -277,7 +301,9 @@ class _WaitingParticipantBar extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8.0),
       child: _ActivityStateBanner(
         color: color,
-        width: barWidth,
+        // The roster bar wants an exact width sized to its avatars, so pin it.
+        minWidth: barWidth,
+        maxWidth: barWidth,
         child: ActivityParticipantRow(
           icon: null,
           accent: Colors.white,
@@ -294,14 +320,20 @@ class _ActivityStateBanner extends StatelessWidget {
   final Color color;
   final Widget child;
 
-  /// Fixed banner width so its bookmark (left) edge lands at ~mid-card while the
-  /// straight right edge is right-anchored just past the card.
-  final double width;
+  /// The banner sizes to its content between these bounds. [minWidth] keeps a
+  /// short label reading as a proper bookmark (left edge ~mid-card, the original
+  /// look); [maxWidth] lets a longer label (e.g. "Ongoing", now that a glyph
+  /// rides beside it) grow leftward into the free space rather than overflow —
+  /// capped so it can't run off the card. The clipper is size-driven, so the
+  /// bookmark shape follows whatever width results.
+  final double minWidth;
+  final double maxWidth;
 
   const _ActivityStateBanner({
     required this.color,
     required this.child,
-    required this.width,
+    required this.minWidth,
+    required this.maxWidth,
   });
 
   @override
@@ -313,8 +345,8 @@ class _ActivityStateBanner extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       color: color,
       elevation: 3.0,
-      child: SizedBox(
-        width: width,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minWidth: minWidth, maxWidth: maxWidth),
         child: Padding(
           // Extra left padding clears the bookmark notch.
           padding: const EdgeInsets.fromLTRB(16.0, 3.0, 10.0, 3.0),

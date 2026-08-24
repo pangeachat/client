@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
+import 'package:fluffychat/routes/chat/voice_analytics_feedback.dart';
 
 /// P1b.4 — the flag-gated send path's background coordinator, analytics
 /// recorder, and interim embed.
@@ -536,6 +537,136 @@ void main() {
       expect(ctx.calls, 0);
     });
   });
+
+  group(
+    'recordInlineVoiceAnalytics (flag-OFF path) — lifecycle independence',
+    () {
+      test('records via the sink CAPTURED at send start even after the chat is '
+          'disposed mid-send; a late context read would have thrown', () async {
+        final ctx = _AnalyticsContext();
+        // PRODUCTION pattern (chat.dart): resolve the sink at t0, while the
+        // widget is GUARANTEED live.
+        final sink = ctx.sink;
+
+        // The learner navigates away while the STT round-trip + upload are in
+        // flight, so `ChatController` unmounts before analytics run.
+        ctx.disposed = true;
+
+        await recordInlineVoiceAnalytics(
+          stt: _rich(),
+          roomId: '!r:server',
+          eventId: r'$audio:server',
+          sink: sink,
+        );
+
+        // The spoken constructs are still recorded -- the signal is not lost.
+        expect(ctx.calls, 1);
+        // Teeth: reading the analytics service LATE (the pre-fix behaviour) is
+        // exactly the null-check crash this capture prevents.
+        expect(() => ctx.sink, throwsStateError);
+      });
+
+      test(
+        'dispatches the overlay BEFORE recording, so the new-construct counts '
+        'it reads are not zeroed by the record itself',
+        () async {
+          final ctx = _AnalyticsContext();
+          final order = <String>[];
+          final sink = ctx.sink;
+
+          await recordInlineVoiceAnalytics(
+            stt: _rich(),
+            roomId: '!r:server',
+            eventId: r'$audio:server',
+            sink: (id, constructs, langCode) async {
+              order.add('record');
+              return sink(id, constructs, langCode);
+            },
+            showFeedback: (_, _, _) async => order.add('feedback'),
+          );
+
+          expect(order, ['feedback', 'record']);
+          expect(ctx.calls, 1);
+        },
+      );
+
+      test(
+        'a THROWING feedback neither blocks the record nor escapes',
+        () async {
+          final ctx = _AnalyticsContext();
+          final errors = <Object>[];
+
+          await recordInlineVoiceAnalytics(
+            stt: _rich(),
+            roomId: '!r:server',
+            eventId: r'$audio:server',
+            sink: ctx.sink,
+            showFeedback: (_, _, _) async =>
+                throw StateError('overlay blew up'),
+            onError: (e, _) => errors.add(e),
+          );
+          await Future<void>.delayed(Duration.zero);
+
+          expect(
+            ctx.calls,
+            1,
+            reason: 'the record is independent of the overlay',
+          );
+          expect(errors, hasLength(1));
+        },
+      );
+
+      test(
+        'a THROWING sink is reported, never rethrown into the send path',
+        () async {
+          final errors = <Object>[];
+
+          await recordInlineVoiceAnalytics(
+            stt: _rich(),
+            roomId: '!r:server',
+            eventId: r'$audio:server',
+            sink: (_, _, _) async => throw StateError('analytics write failed'),
+            onError: (e, _) => errors.add(e),
+          );
+
+          expect(errors, hasLength(1));
+        },
+      );
+
+      test(
+        'SF: an ASYNC-throwing onError logger cannot reject the caller',
+        () async {
+          await expectLater(
+            recordInlineVoiceAnalytics(
+              stt: _rich(),
+              roomId: '!r:server',
+              eventId: r'$audio:server',
+              sink: (_, _, _) async =>
+                  throw StateError('analytics write failed'),
+              onError: (_, _) => Future<void>.error(StateError('logger down')),
+            ),
+            completes,
+          );
+        },
+      );
+
+      test(
+        'no-ops (no sink call) when the transcript carries no tokens',
+        () async {
+          final ctx = _AnalyticsContext();
+
+          await recordInlineVoiceAnalytics(
+            stt: _skipTokenizeBase(),
+            roomId: '!r:server',
+            eventId: r'$audio:server',
+            sink: ctx.sink,
+          );
+
+          expect(ctx.calls, 0);
+        },
+      );
+    },
+  );
 
   group('voiceTranscriptDecoupleEnabled flag plumbing', () {
     test('AppConfigOverride defaults the flag to null (off)', () {

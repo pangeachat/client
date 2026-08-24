@@ -109,6 +109,60 @@
         "type": "String",
         "placeholders": {}
     },
+    "allParticipants": "All participants",
+    "@allParticipants": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "catchUp": "Catch up",
+    "@catchUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showMore": "Show more",
+    "@showMore": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showLess": "Show less",
+    "@showLess": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "markAllRead": "Mark all read",
+    "@markAllRead": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "usersAreTryingToJoinCourse": "Users are trying to join your course",
+    "@usersAreTryingToJoinCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "denyAllUsers": "Deny all users",
+    "@denyAllUsers": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "denyAllKnocksDescription": "These users will be rejected from the course. They may attempt to join again at any time.",
+    "@denyAllKnocksDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "countNewMessages": "{count, plural, =1{1 new message} other{{count} new messages}}",
+    "@countNewMessages": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "seeFullCoursePlan": "See full course plan",
+    "@seeFullCoursePlan": {
+        "type": "String",
+        "placeholders": {}
+    },
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},
     "commandHint_googly": "Send some googly eyes",
@@ -165,6 +219,11 @@
     },
     "appInTargetLanguageDesc": "Menus, buttons, and labels appear in your target language for immersion. Untranslated text falls back to English.",
     "@appInTargetLanguageDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "appInTargetLanguageStaysInBaseLanguage": "(This setting stays in your native language so you can always find it.)",
+    "@appInTargetLanguageStaysInBaseLanguage": {
         "type": "String",
         "placeholders": {}
     },
@@ -764,6 +823,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "deletedVocab": "Deleted words",
+    "@deletedVocab": {
+        "type": "String",
+        "placeholders": {}
+    },
     "deleteAccount": "Delete account",
     "@deleteAccount": {
         "type": "String",
@@ -1182,10 +1246,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrate": "Export session and wipe device",
-    "@dehydrate": {},
-    "dehydrateWarning": "This action cannot be undone. Ensure you safely store the backup file.",
-    "@dehydrateWarning": {},
     "hydrate": "Restore from backup file",
     "@hydrate": {},
     "loadingPleaseWait": "Loading… Please wait.",
@@ -3403,6 +3463,11 @@
     },
     "pleaseEnterValidEmail": "Please enter a valid email address.",
     "pleaseChooseAUsername": "Please choose a username",
+    "usernameTakenPleaseChooseAnother": "That username is already taken. Please choose another.",
+    "@usernameTakenPleaseChooseAnother": {
+        "type": "text",
+        "description": "Shown in the email signup form when the homeserver reports the chosen username is already registered."
+    },
     "listen": "Listen",
     "trialPeriodExpired": "Your trial period has expired",
     "translations": "translations",
@@ -3510,8 +3575,10 @@
     "audioWordsDescription": "Play a word's audio when you tap on it.",
     "audioChoicesToolName": "Choices",
     "audioChoicesDescription": "Play audio for answer choices in practice activities.",
-    "audioIncomingMessagesToolName": "Incoming messages",
-    "audioIncomingMessagesDescription": "Automatically read received messages aloud in your target language for listening practice.",
+    "audioOnNewMessageToolName": "On new message",
+    "audioOnNewMessageDescription": "Automatically read new received messages aloud in your target language.",
+    "audioOnMessageClickToolName": "On message click",
+    "audioOnMessageClickDescription": "Read a message aloud in your target language when you click on it.",
     "yourUsername": "Your username",
     "yourEmail": "Your email",
     "iWantToLearn": "I want to learn",
@@ -3591,16 +3658,34 @@
     "enableAutocorrectDescription": "If your device supports the language you're learning, you can enable device autocorrect to fix common errors as you type.",
     "autocorrectMobileOnly": "Mobile only",
     "autocorrectMobileOnlyWarning": "Device autocorrect is only available on the mobile app.",
-    "ttsDisbledTitle": "Text-to-speech disabled",
-    "ttsDisabledBody": "You can enable text-to-speech in your learning settings",
+    "audioSettingDisabledTitle": "{toolName} audio disabled",
+    "@audioSettingDisabledTitle": {
+        "type": "String",
+        "placeholders": {
+            "toolName": {
+                "type": "String"
+            }
+        }
+    },
+    "audioSettingDisabledBody": "You can enable {toolName} audio in your learning settings",
+    "@audioSettingDisabledBody": {
+        "type": "String",
+        "placeholders": {
+            "toolName": {
+                "type": "String"
+            }
+        }
+    },
+    "audioSettingDisabledEnable": "Enable",
     "noSpaceDescriptionYet": "No course description created yet.",
     "tooLargeToSend": "This message is too large to send",
     "enableAutocorrectPopupTitle": "Add your target language keyboard by going to:",
     "enableAutocorrectPopupSteps": "  • Settings\n  • General\n  • Keyboard\n  • Keyboards\n  • Add New Keyboard",
     "enableAutocorrectPopupDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
-    "downloadGboardTitle": "Download Gboard from the Google Play Store to enable autocorrect and other keyboard features:",
+    "autocorrectAndroidDialogTitle": "Autocorrect in your target language",
+    "autocorrectAndroidDialogBody": "When you type in a chat, your keyboard will switch to your target language and correct spelling in that language.",
+    "autocorrectAndroidFallbackTitle": "If your keyboard doesn't offer your target language, install Gboard and add the language there:",
     "downloadGboardSteps": " • Download Gboard\n  • Open app\n  • Languages\n  • Add keyboard\n  • Select Language\n  • Select keyboard type\n  • Done",
-    "downloadGboardDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
     "enableAutocorrectWarning": "Warning! Requires adding your target language keyboard",
     "displayName": "Display name",
     "leaveRoomDescription": "You're about to leave this chat. Other users will see that you have left the chat.",
@@ -3768,6 +3853,15 @@
     "openRoleLabel": "OPEN",
     "finishedTheActivity": "🎯 {username} wrapped up this activity",
     "@finishedTheActivity": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
+    "rejoinedTheActivity": "🔄 {username} rejoined this activity",
+    "@rejoinedTheActivity": {
         "type": "String",
         "placeholders": {
             "username": {
@@ -3958,6 +4052,13 @@
     "reportGrammarIssueTooltip": "Report grammar information issue",
     "grammarFeedbackDialogTitle": "Grammar Information Feedback",
     "grammarFeedbackSubmittedDesc": "Thanks! The explanation has been updated based on your feedback.",
+    "practiceFeedbackButtonTooltip": "Report a problem with this exercise",
+    "practiceFeedbackDialogTitle": "Practice Exercise Feedback",
+    "practiceFeedbackSelectPair": "Which pair looks wrong?",
+    "practiceFeedbackUserSetEmoji": "You picked this emoji — change it from the word card",
+    "practiceFeedbackAlreadyMatched": "Already matched correctly",
+    "practiceFeedbackUpdated": "Thanks! The exercise has been updated based on your feedback.",
+    "practiceFeedbackUnchanged": "Thanks! Your report was recorded, but the content came back unchanged.",
     "noPublicCoursesFound": "No public courses found. Would you like to create one?",
     "noCourseTemplatesFound": "We couldn't find any courses for your target language. You can chat with Pangea Bot in the meantime, and check back later for more courses.",
     "botActivityJoinFailMessage": "Pangea Bot is taking a while to respond. Please try again later, or invite a friend.",
@@ -4247,7 +4348,7 @@
         }
     },
     "pickDifferentActivity": "Pick a different activity",
-    "blockLemmaConfirmation": "This vocab word will be permanently removed from your analytics",
+    "blockLemmaConfirmation": "This word will be removed from your vocabulary and stop earning XP. You can bring it back from Deleted words.",
     "woman": "Woman",
     "man": "Man",
     "otherGender": "Other",
@@ -4307,11 +4408,11 @@
     "chatWithSupport": "Chat with Support",
     "botDisplayName": "Pangea Bot",
     "@botDisplayName": {
-      "description": "Display name shown for the Pangea Bot account in place of its server-side profile name."
+        "description": "Display name shown for the Pangea Bot account in place of its server-side profile name."
     },
     "supportDisplayName": "Support",
     "@supportDisplayName": {
-      "description": "Display name shown for the Support account in place of its server-side profile name."
+        "description": "Display name shown for the Support account in place of its server-side profile name."
     },
     "newCourseAccess": "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.",
     "onboardingLanguagesTitle": "What language are you learning?",
@@ -4337,7 +4438,12 @@
     "youveCompletedPractice": "You've completed practice, keep it up to get better!",
     "courseDescription": "Courses consist of 3-8 modules each with activities to encourage practicing words in different contexts",
     "emailVerificationFailed": "Email verification failed. Please try again.",
-    "unlockLearningTools": "Unlock learning tools",
+    "unlockLearningTools": "Unlock word tools",
+    "unlockPremiumAudio": "Unlock premium audio",
+    "unlockTranslations": "Unlock translations",
+    "unlockEmojiMode": "Unlock emoji mode",
+    "unlockMessagePractice": "Unlock message practice",
+    "unlockWritingAssistance": "Unlock writing assistance",
     "managementSnackbarMessage": "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker.",
     "getStarted": "Get started",
     "hideEvents": "Hide events",
@@ -4347,6 +4453,8 @@
     "unbanFromSpace": "Unban from course",
     "cannotJoinBannedRoom": "Banned. Unable to join.",
     "removedFromCourseError": "You've been removed from this course. Contact your teacher.",
+    "courseNoLongerAvailableTitle": "Course unavailable",
+    "courseDeletedDialogDesc": "This course has been deleted.",
     "sessionFull": "Too late! This activity is full.",
     "returnToCourse": "Return to course",
     "returnHome": "Return home",
@@ -4384,6 +4492,15 @@
     "clickOnEmailLinkDesc": "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.",
     "didntReceiveEmail": "Didn't receive the email?",
     "resend": "Resend",
+    "resendInSeconds": "Resend ({seconds})",
+    "@resendInSeconds": {
+        "type": "text",
+        "placeholders": {
+            "seconds": {
+                "type": "int"
+            }
+        }
+    },
     "suggestedVocab": "Suggested vocab",
     "myGender": "My gender",
     "profile": "Profile",
@@ -4394,6 +4511,24 @@
     "enableEmailNotifications": "Enable email notifications",
     "learningAnalytics": "Learning analytics",
     "searchLanguagesHint": "Search languages",
+    "switchLanguageChipLabel": "Switch to {language}",
+    "@switchLanguageChipLabel": {
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "languageDropdownLevel": "Level {level}",
+    "@languageDropdownLevel": {
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "whatAreYouLearning": "What are you learning?",
+    "languageSwitcherBaseLanguageLabel": "Your base language",
     "alreadySpeak": "I already speak...",
     "welcomeBackLogin": "Welcome back! You previously signed in with {platform}.",
     "@welcomeBackLogin": {
@@ -4447,6 +4582,17 @@
     "loginFinishedLabel": "Finalizing...",
     "loginErrorLabel": "An error occurred during login",
     "clickToUpdateTargetLanguage": "Click here to update your target language.",
+    "messageLanguageIs": "This message is set to {language}.",
+    "@messageLanguageIs": {
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "updateMessageLanguage": "Click here to change the message's language.",
+    "messageLanguage": "Message language",
+    "messageLanguageUpdated": "Message language updated!",
     "closeEmojiMenu": "Close emoji menu",
     "visibilityToggleTitle": "Allow others to search for your course",
     "subscribedToUnlockTools": "Subscribe to unlock interactive translation and grammar checking, audio playback, personalized practice exercises, and learning analytics!",
@@ -4487,13 +4633,34 @@
     "removeAdminDescription": "Lowering this user's permission level will remove admin privileges.",
     "emojiToolbarInstruction": "This mode allows you to set emojis to words! Select a word to associate an emoji with it!",
     "analyticsVocabListBodyEmpty": "The vocabulary words you collect will go here. Start chatting and interacting to earn some!",
+    "deletedVocabListBody": "These words are hidden from your vocabulary and don't earn XP. Restore one to bring it back.",
+    "deletedVocabListBodyEmpty": "You haven't deleted any words. Words you delete from your vocabulary will show up here so you can bring them back.",
+    "deletedVocabListLabel": "Deleted words",
+    "restore": "Restore",
+    "deletedWordLabel": "{lemma}, deleted",
+    "@deletedWordLabel": {
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "restoredWords": "{count, plural, =1{Restored 1 word} other{Restored {count} words}}",
+    "@restoredWords": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
     "readingAssistanceTutorialCollectToken": "Select words to learn more about them",
     "requireAnalyticsAccessTitle": "Require analytics access to join",
     "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",
-    "analyticsAccessNoticeTitle": "Analytics Access Required",
-    "analyticsAccessNoticeDesc": "By joining this course, you agree to grant admins access to your learning analytics.",
+    "analyticsAccessNoticeTitle": "Learning Analytics Required",
+    "analyticsAccessNoticeDesc": "Admins of this course want to view your analytics to track your learning progress. Allow them access to join.",
+    "shareAnalytics": "Share Analytics",
     "setPermissionsLevelDesc": "Please choose a predefined role below or enter a custom permission level. Pick a whole number between 0 and 100.",
     "reportContentIssue": "Report content issue",
     "userTypeTitle": "I use Pangea Chat to",
@@ -4505,6 +4672,7 @@
     "pickLanguageTeacherStepTitle": "What language are you teaching?",
     "pickCefrLevelTeacherStepTitle": "What level do you teach?",
     "pickCefrLevelStudentStepTitle": "What level are you?",
+    "pickCefrLevelStepSubtitle": "You can change this later",
     "customCourseStepTitle": "Fill this form to get a custom course",
     "courseCodeStepErrorMessage": "Please check your code and try again",
     "institution": "Institution",
@@ -4563,7 +4731,6 @@
     "playAgain": "Play again",
     "reviewActivity": "Review",
     "back": "Back",
-    "viewCurrentOrFinished": "View current or finished",
     "pronunciationTools": "Pronunciation tools",
     "audioTranscription": "AI audio transcription",
     "visualLearnerSupport": "Visual learner support",
@@ -4813,6 +4980,11 @@
     "joinableLabel": "Joinable",
     "inProgressLabel": "Previously completed",
     "availableLabel": "Create activity",
+    "chatSearchPageLabel": "Chat search page",
+    "selectImageLabel": "Select image",
+    "userSearchTagsLabel": "Search in...",
+    "courseDetails": "Course details",
+    "objective": "Objective",
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
     "exitVocabPracticeSession": "Your current vocab practice session progress won't be saved.",
     "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved.",
@@ -4904,10 +5076,62 @@
     "streamingSttDegradedLiveBanner": "Live transcription is running on a backup service. Quality may vary, please check the text.",
     "streamingSttDegradedToBatchBanner": "Live transcription is unavailable right now. Your message was transcribed the standard way, without live editing. We're working to restore it.",
     "streamingSttLanguageUnsupportedBanner": "Live transcription isn't available for this language yet. We're working on it.",
+    "pingedLabel": "Pinged",
+    "pingedActivity": "Pinged activity",
+    "mapFilterPlayerCount": "{count} players",
+    "@mapFilterPlayerCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "formLabel": "{name} form",
     "@formLabel": {
         "placeholders": {
             "name": {
+                "type": "String"
+            }
+        }
+    },
+    "courseSectionTeaching": "Teaching",
+    "courseSectionLearning": "Learning",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 course} other{{count} courses}}",
+    "@courseSectionLabel": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            },
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "courseNameHint": "Course name",
+    "typeCourseCodeToConfirm": "To confirm, type the course code {code} below.",
+    "@typeCourseCodeToConfirm": {
+        "placeholders": {
+            "code": {
+                "type": "String"
+            }
+        }
+    },
+    "typeCourseNameToConfirm": "To confirm, type the course name {name} below.",
+    "@typeCourseNameToConfirm": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "inviteAFriend": "Invite a friend",
+    "mapLevelFallbackNotice": "No {selected} activities yet — showing {shown} instead.",
+    "@mapLevelFallbackNotice": {
+        "placeholders": {
+            "selected": {
+                "type": "String"
+            },
+            "shown": {
                 "type": "String"
             }
         }

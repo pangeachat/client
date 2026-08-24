@@ -12,11 +12,12 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
+import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -31,10 +32,7 @@ enum NotStartedSubPage {
       case NotStartedSubPage.join:
         return [ActivitySummaryStatus.notStarted];
       case NotStartedSubPage.view:
-        return [
-          ActivitySummaryStatus.inProgress,
-          ActivitySummaryStatus.completed,
-        ];
+        return [ActivitySummaryStatus.completed];
       case NotStartedSubPage.main:
         return [];
     }
@@ -150,21 +148,48 @@ class NotStartedSessionController extends State<NotStartedSession>
   ActivitySessionsStatusModel get activityStatuses =>
       widget.summaries.activitySessionStatuses;
 
-  bool get hasCurrentOrFinishedSessions =>
-      activityStatuses
-          .getSessionsByStatus(ActivitySummaryStatus.inProgress)
-          .isNotEmpty ||
-      activityStatuses
-          .getSessionsByStatus(ActivitySummaryStatus.completed)
-          .isNotEmpty;
+  bool get isCourseAdmin => widget.course?.isRoomAdmin == true;
 
-  int get currentOrFinishedSessionCount =>
-      activityStatuses
-          .getSessionsByStatus(ActivitySummaryStatus.inProgress)
-          .length +
-      activityStatuses
-          .getSessionsByStatus(ActivitySummaryStatus.completed)
-          .length;
+  String? get _ownUserId => Matrix.of(context).client.userID;
+
+  Map<String, RoomSummaryResponse> get _completedSessions =>
+      activityStatuses.getSessionsByStatus(ActivitySummaryStatus.completed);
+
+  /// The completed sessions the Completed subpage lists for this viewer. A course admin oversees
+  /// the whole course, so they see every finished session with their own floated
+  /// to the top; everyone else — including anyone on a standalone activity,
+  /// which has no course to administer — sees only the sessions they personally
+  /// finished (their role archived, [RoomSummaryResponse.isCompleteByUserId], so
+  /// one others wrapped up after they left doesn't read as theirs).
+  Map<String, RoomSummaryResponse> get visibleCompletedSessions {
+    final userId = _ownUserId;
+    if (!isCourseAdmin) {
+      if (userId == null) return {};
+      return Map.fromEntries(
+        _completedSessions.entries.where(
+          (e) => e.value.isCompleteByUserId(userId),
+        ),
+      );
+    }
+    final entries = _completedSessions.entries.toList();
+    if (userId != null) {
+      entries.sort((a, b) {
+        final aOwn = a.value.isCompleteByUserId(userId) ? 0 : 1;
+        final bOwn = b.value.isCompleteByUserId(userId) ? 0 : 1;
+        return aOwn.compareTo(bOwn);
+      });
+    }
+    return Map.fromEntries(entries);
+  }
+
+  /// Whether [visibleCompletedSessions] has anything — tested cheaply (no build
+  /// or sort of the collection) since it gates several CTAs on every rebuild.
+  bool get hasCompletedSessions {
+    if (isCourseAdmin) return _completedSessions.isNotEmpty;
+    final userId = _ownUserId;
+    return userId != null &&
+        _completedSessions.values.any((s) => s.isCompleteByUserId(userId));
+  }
 
   Future<int> get neededCourseParticipants async {
     // No course: the session launches standalone (the bot fills in), so no
@@ -183,7 +208,8 @@ class NotStartedSessionController extends State<NotStartedSession>
   }
 
   void startNewActivity() {
-    widget.scrollController.jumpTo(0);
+    //Nothing to jump to if container is minimized, so skip
+    if (widget.scrollController.hasClients) widget.scrollController.jumpTo(0);
     final course = widget.course;
     // With a course, launch scoped to it; otherwise launch the activity as a
     // standalone immersive panel over the map (no course context to clear —
@@ -206,14 +232,11 @@ class NotStartedSessionController extends State<NotStartedSession>
   void goToCourse() {
     final course = widget.course;
     if (course == null) return;
-    // world_v2: token nav to the course card's course-plan tab (no stacked
-    // route push). See routing.instructions.md.
+    // world_v2: token nav to the course card (no stacked route push). No
+    // section param — it would scroll the page on open (#8357); the course
+    // plan already leads the page. See routing.instructions.md.
     context.go(
-      WorkspaceNav.openCourse(
-        GoRouterState.of(context).uri,
-        course.id,
-        tab: SpaceSettingsTabs.course,
-      ),
+      WorkspaceNav.openCourse(GoRouterState.of(context).uri, course.id),
     );
   }
 

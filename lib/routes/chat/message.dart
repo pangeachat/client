@@ -116,18 +116,22 @@ class Message extends StatelessWidget {
     // #Pangea
     PangeaMessageEvent? pangeaMessageEvent;
     if (event.type == EventTypes.Message) {
-      pangeaMessageEvent = PangeaMessageEvent(
-        event: event,
-        timeline: timeline,
+      pangeaMessageEvent = controller.pangeaMessageEvents.get(
+        event,
+        timeline,
         ownMessage: event.senderId == Matrix.of(context).client.userID,
       );
     }
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (controller.pangeaEditingEvent?.eventId == event.eventId) {
-        pangeaMessageEvent?.updateLatestEdit();
-        controller.clearEditingEvent();
-      }
-    });
+    // Only schedule the post-frame edit check for the one message being
+    // edited, not for every visible message on every frame (issue #8393).
+    if (controller.pangeaEditingEvent?.eventId == event.eventId) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (controller.pangeaEditingEvent?.eventId == event.eventId) {
+          pangeaMessageEvent?.updateLatestEdit();
+          controller.clearEditingEvent();
+        }
+      });
+    }
     // Pangea#
     final theme = Theme.of(context);
 
@@ -378,7 +382,7 @@ class Message extends StatelessWidget {
                           child: Text(
                             event.originServerTs.localizedTime(context),
                             style: TextStyle(
-                              fontSize: 12 * AppSettings.fontSizeFactor.value,
+                              fontSize: 12,
                               fontWeight: FontWeight.bold,
                               color: theme.colorScheme.secondary,
                             ),
@@ -806,6 +810,8 @@ class Message extends StatelessWidget {
                                                                       nextEvent,
                                                                   prevEvent:
                                                                       previousEvent,
+                                                                  useTokenKeys:
+                                                                      true,
                                                                   // Pangea#
                                                                 ),
                                                                 if (event
@@ -1164,9 +1170,7 @@ class Message extends StatelessWidget {
                       ),
                       child: Text(
                         L10n.of(context).readUpToHere,
-                        style: TextStyle(
-                          fontSize: 12 * AppSettings.fontSizeFactor.value,
-                        ),
+                        style: TextStyle(fontSize: 12),
                       ),
                     ),
                     Expanded(

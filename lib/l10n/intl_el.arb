@@ -1078,10 +1078,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrateWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noOtherDevicesFound": {
         "type": "String",
         "placeholders": {}
@@ -1255,10 +1251,6 @@
         "placeholders": {}
     },
     "@copyToClipboard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
         "type": "String",
         "placeholders": {}
     },
@@ -2307,8 +2299,6 @@
     "leave": "Αποχώρηση",
     "leftTheChat": "Έφυγε από τη συζήτηση",
     "lightTheme": "Φωτεινό",
-    "dehydrate": "Εξαγωγή συνεδρίας και διαγραφή συσκευής",
-    "dehydrateWarning": "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί. Βεβαιωθείτε ότι αποθηκεύετε με ασφάλεια το αρχείο αντιγράφου ασφαλείας.",
     "hydrate": "Ανάκτηση από αρχείο δημιουργίας αντιγράφων ασφαλείας",
     "loadingPleaseWait": "Φόρτωση… Παρακαλώ περιμένετε.",
     "loadMore": "Φόρτωση περισσότερων…",
@@ -3212,9 +3202,7 @@
     "enableAutocorrectPopupTitle": "Προσθέστε το πληκτρολόγιο της γλώσσας στόχου πηγαίνοντας στα:",
     "enableAutocorrectPopupSteps": "  • Ρυθμίσεις\n  • Γενικά\n  • Πληκτρολόγιο\n  • Πληκτρολόγια\n  • Προσθήκη νέου πληκτρολογίου",
     "enableAutocorrectPopupDescription": "Μόλις επιλεγεί η γλώσσα, μπορείτε να κάνετε κλικ στο μικρό εικονίδιο του κόσμου στο κάτω αριστερό μέρος του πληκτρολογίου σας για να ενεργοποιήσετε το νέο εγκατεστημένο πληκτρολόγιο.",
-    "downloadGboardTitle": "Κατεβάστε το Gboard από το Google Play Store για να ενεργοποιήσετε την αυτόματη διόρθωση και άλλες λειτουργίες πληκτρολογίου:",
     "downloadGboardSteps": " • Κατεβάστε το Gboard\n  • Ανοίξτε την εφαρμογή\n  • Γλώσσες\n  • Προσθήκη πληκτρολογίου\n  • Επιλογή γλώσσας\n  • Επιλογή τύπου πληκτρολογίου\n  • Τέλος",
-    "downloadGboardDescription": "Μόλις επιλεγεί η γλώσσα, μπορείτε να κάνετε κλικ στο μικρό εικονίδιο του κόσμου στο κάτω αριστερό μέρος του πληκτρολογίου σας για να ενεργοποιήσετε το νέο εγκατεστημένο πληκτρολόγιο.",
     "enableAutocorrectWarning": "Προειδοποίηση! Απαιτείται η προσθήκη του πληκτρολογίου της γλώσσας στόχου",
     "displayName": "Εμφανιζόμενο όνομα",
     "leaveRoomDescription": "Πρόκειται να φύγετε από αυτήν τη συνομιλία. Οι άλλοι χρήστες θα δουν ότι έχετε φύγει.",
@@ -3415,7 +3403,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-05 11:42:11.249576",
+    "@@last_modified": "2026-08-24 11:54:15.395566",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -6274,15 +6262,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -8478,16 +8458,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Αυτή η λέξη λεξιλογίου θα αφαιρεθεί μόνιμα από την ανάλυσή σας",
     "woman": "Γυναίκα",
     "man": "Άνδρας",
     "otherGender": "Άλλο",
     "unselectedGender": "Επιλέξτε μια επιλογή φύλου",
     "chatParticipantTooltip": "Αυτοί είναι όλοι σε αυτή τη συνομιλία. Κάντε κλικ στο avatar οποιουδήποτε χρήστη και \"ξεκινήστε συνομιλία\" για να στείλετε ένα DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10570,8 +10545,6 @@
     "audioWordsDescription": "Αναπαραγωγή ήχου μιας λέξης όταν την πατάτε.",
     "audioChoicesToolName": "Επιλογές",
     "audioChoicesDescription": "Αναπαραγωγή ήχου για τις επιλογές απάντησης σε δραστηριότητες εξάσκησης.",
-    "audioIncomingMessagesToolName": "Εισερχόμενα μηνύματα",
-    "audioIncomingMessagesDescription": "Αυτόματη ανάγνωση των εισερχόμενων μηνυμάτων δυνατά στη γλώσσα-στόχο σας για εξάσκηση στην ακρόαση.",
     "choosePangeaAvatar": "Επιλέξτε ένα avatar Pangea",
     "readAloudNoVoiceTitle": "Δεν βρέθηκε φωνή υψηλής ποιότητας για {language}",
     "readAloudNoVoiceDesktopWeb": "Αυτό το πρόγραμμα περιήγησης δεν προσφέρει φωνή υψηλής ποιότητας για {language}, επομένως τα μηνύματα δεν μπορούν να διαβαστούν καλά εδώ. Το Chrome και το Edge συνήθως περιλαμβάνουν φωνές υψηλής ποιότητας.",
@@ -10592,5 +10565,77 @@
     "conversationFromDayOne": "Συζήτηση από την πρώτη μέρα",
     "builtForConnection": "Φτιαγμένο για σύνδεση",
     "aiWhenYouNeedIt": "AI όταν το χρειάζεστε",
-    "practiceTailoredForYou": "Εξάσκηση προσαρμοσμένη για εσάς"
+    "practiceTailoredForYou": "Εξάσκηση προσαρμοσμένη για εσάς",
+    "deletedVocab": "Διαγραμμένες λέξεις",
+    "blockLemmaConfirmation": "Αυτή η λέξη θα αφαιρεθεί από το λεξιλόγιό σας και δεν θα κερδίζει πλέον XP. Μπορείτε να την επαναφέρετε από τις Διαγραμμένες λέξεις.",
+    "deletedVocabListBody": "Αυτές οι λέξεις είναι κρυμμένες από το λεξιλόγιό σας και δεν κερδίζουν XP. Επαναφέρετε μία για να την επαναφέρετε.",
+    "deletedVocabListBodyEmpty": "Δεν έχετε διαγράψει λέξεις. Οι λέξεις που διαγράφετε από το λεξιλόγιό σας θα εμφανίζονται εδώ, ώστε να μπορείτε να τις επαναφέρετε.",
+    "deletedVocabListLabel": "Διαγραμμένες λέξεις",
+    "restore": "Επαναφορά",
+    "deletedWordLabel": "{lemma}, διαγραμμένο",
+    "restoredWords": "{count, plural, =1{Επαναφέρθηκε 1 λέξη} other{Επαναφέρθηκαν {count} λέξεις}}",
+    "chatSearchPageLabel": "Σελίδα αναζήτησης συνομιλιών",
+    "selectImageLabel": "Επιλογή εικόνας",
+    "userSearchTagsLabel": "Αναζήτηση σε...",
+    "courseDetails": "Λεπτομέρειες μαθήματος",
+    "objective": "Στόχος",
+    "pingedLabel": "Έγινε ping",
+    "mapFilterPlayerCount": "{count} παίκτες",
+    "practiceFeedbackButtonTooltip": "Αναφέρετε ένα πρόβλημα με αυτήν την άσκηση",
+    "practiceFeedbackDialogTitle": "Σχόλια για την άσκηση πρακτικής",
+    "practiceFeedbackSelectPair": "Ποιο ζευγάρι φαίνεται λάθος;",
+    "practiceFeedbackUserSetEmoji": "Επιλέξατε αυτό το emoji — αλλάξτε το από την κάρτα λέξης",
+    "practiceFeedbackAlreadyMatched": "Ήδη αντιστοιχισμένο σωστά",
+    "practiceFeedbackUpdated": "Ευχαριστούμε! Η άσκηση έχει ενημερωθεί βάσει των σχολίων σας.",
+    "practiceFeedbackUnchanged": "Ευχαριστούμε! Η αναφορά σας καταγράφηκε, αλλά το περιεχόμενο παρέμεινε αμετάβλητο.",
+    "audioOnNewMessageToolName": "Σε νέο μήνυμα",
+    "audioOnNewMessageDescription": "Αυτόματη ανάγνωση των νέων εισερχόμενων μηνυμάτων δυνατά στη γλώσσα-στόχο σας.",
+    "audioOnMessageClickToolName": "Στο κλικ μηνύματος",
+    "audioOnMessageClickDescription": "Ανάγνωση ενός μηνύματος δυνατά στη γλώσσα-στόχο σας όταν κάνετε κλικ σε αυτό.",
+    "audioSettingDisabledTitle": "Ο ήχος {toolName} είναι απενεργοποιημένος",
+    "audioSettingDisabledBody": "Μπορείτε να ενεργοποιήσετε τον ήχο {toolName} στις ρυθμίσεις εκμάθησής σας",
+    "audioSettingDisabledEnable": "Ενεργοποίηση",
+    "rejoinedTheActivity": "🔄 Ο/Η {username} επανήλθε σε αυτήν τη δραστηριότητα",
+    "shareAnalytics": "Κοινή χρήση αναλυτικών στοιχείων",
+    "courseNoLongerAvailableTitle": "Το μάθημα δεν είναι διαθέσιμο",
+    "courseDeletedDialogDesc": "Αυτό το μάθημα έχει διαγραφεί.",
+    "pingedActivity": "Δραστηριότητα με ping",
+    "appInTargetLanguageStaysInBaseLanguage": "(Αυτή η ρύθμιση παραμένει στη μητρική σας γλώσσα, ώστε να μπορείτε πάντα να τη βρίσκετε.)",
+    "usernameTakenPleaseChooseAnother": "Αυτό το όνομα χρήστη χρησιμοποιείται ήδη. Παρακαλώ επιλέξτε άλλο.",
+    "allParticipants": "Όλοι οι συμμετέχοντες",
+    "seeFullCoursePlan": "Δείτε το πλήρες πρόγραμμα μαθημάτων",
+    "catchUp": "Ενημέρωση",
+    "messageLanguageIs": "Αυτό το μήνυμα έχει οριστεί σε {language}.",
+    "updateMessageLanguage": "Κάντε κλικ εδώ για να αλλάξετε τη γλώσσα του μηνύματος.",
+    "messageLanguage": "Γλώσσα μηνύματος",
+    "messageLanguageUpdated": "Η γλώσσα του μηνύματος ενημερώθηκε!",
+    "pickCefrLevelStepSubtitle": "Μπορείτε να το αλλάξετε αργότερα",
+    "unlockPremiumAudio": "Ξεκλείδωμα premium ήχου",
+    "unlockTranslations": "Ξεκλείδωμα μεταφράσεων",
+    "unlockEmojiMode": "Ξεκλείδωμα λειτουργίας emoji",
+    "unlockMessagePractice": "Ξεκλείδωμα εξάσκησης μηνυμάτων",
+    "unlockWritingAssistance": "Ξεκλείδωμα βοήθειας γραφής",
+    "courseSectionTeaching": "Διδασκαλία",
+    "courseSectionLearning": "Μάθηση",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 μάθημα} other{{count} μαθήματα}}",
+    "showMore": "Εμφάνιση περισσότερων",
+    "showLess": "Εμφάνιση λιγότερων",
+    "countNewMessages": "{count, plural, =1{1 νέο μήνυμα} other{{count} νέα μηνύματα}}",
+    "markAllRead": "Σήμανση όλων ως αναγνωσμένων",
+    "usersAreTryingToJoinCourse": "Χρήστες προσπαθούν να μπουν στο μάθημά σας",
+    "denyAllUsers": "Απόρριψη όλων των χρηστών",
+    "denyAllKnocksDescription": "Αυτοί οι χρήστες θα απορριφθούν από το μάθημα. Μπορούν να προσπαθήσουν να μπουν ξανά ανά πάσα στιγμή.",
+    "courseNameHint": "Όνομα μαθήματος",
+    "typeCourseCodeToConfirm": "Για επιβεβαίωση, πληκτρολογήστε τον κωδικό μαθήματος {code} παρακάτω.",
+    "typeCourseNameToConfirm": "Για επιβεβαίωση, πληκτρολογήστε το όνομα μαθήματος {name} παρακάτω.",
+    "inviteAFriend": "Πρόσκληση φίλου",
+    "autocorrectAndroidDialogTitle": "Αυτόματη διόρθωση στη γλώσσα-στόχο σας",
+    "autocorrectAndroidDialogBody": "Όταν πληκτρολογείτε σε μια συνομιλία, το πληκτρολόγιό σας θα αλλάξει στη γλώσσα-στόχο σας και θα διορθώσει την ορθογραφία σε αυτήν τη γλώσσα.",
+    "autocorrectAndroidFallbackTitle": "Εάν το πληκτρολόγιό σας δεν προσφέρει τη γλώσσα-στόχο σας, εγκαταστήστε το Gboard και προσθέστε τη γλώσσα εκεί:",
+    "resendInSeconds": "Επανάληψη αποστολής ({seconds})",
+    "mapLevelFallbackNotice": "Δεν υπάρχουν ακόμα δραστηριότητες {selected} — εμφανίζονται {shown} αντ' αυτών.",
+    "switchLanguageChipLabel": "Μετάβαση σε {language}",
+    "languageDropdownLevel": "Επίπεδο {level}",
+    "whatAreYouLearning": "Τι μαθαίνεις;",
+    "languageSwitcherBaseLanguageLabel": "Η βασική σου γλώσσα"
 }

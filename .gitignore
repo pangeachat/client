@@ -115,3 +115,6 @@ test-results/
 !.claude/settings.json.generated_by_sync
 .env.*
 !.env.*.template
+
+# Report written by scripts/find_unused_intl_keys.py (carries a machine-local path)
+scripts/unused_intl_keys.json

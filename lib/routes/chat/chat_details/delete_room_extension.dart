@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
 import 'package:http/http.dart';
 import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
@@ -52,22 +53,27 @@ extension DeleteRoom on Room {
   }
 
   Future<void> deleteSpace(List<String> spaceChildRoomIds) async {
-    final List<Future<void>> futures = [];
-    for (final roomId in spaceChildRoomIds) {
-      final roomInstance = client.getRoomById(roomId);
-      if (roomInstance != null) {
-        // Niether delete not leave activities the user has archived,
-        // since they're hidden in the main chat UI.
-        if (roomInstance.isActivitySession) {
-          if (!roomInstance.hasArchivedActivity) {
-            futures.add(roomInstance.leave());
+    // Deleting a room is expensive server-side (kicks + purge), so cap
+    // concurrency instead of firing every child delete at once.
+    const batchSize = 5;
+    for (final batch in spaceChildRoomIds.slices(batchSize)) {
+      final List<Future<void>> futures = [];
+      for (final roomId in batch) {
+        final roomInstance = client.getRoomById(roomId);
+        if (roomInstance != null) {
+          // Niether delete not leave activities the user has archived,
+          // since they're hidden in the main chat UI.
+          if (roomInstance.isActivitySession) {
+            if (!roomInstance.hasArchivedActivity) {
+              futures.add(roomInstance.leave());
+            }
+          } else {
+            futures.add(roomInstance.delete());
           }
-        } else {
-          futures.add(roomInstance.delete());
         }
       }
+      await Future.wait(futures);
     }
-    await Future.wait(futures);
     await delete();
   }
 }

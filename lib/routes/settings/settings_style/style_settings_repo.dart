@@ -2,36 +2,27 @@ import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
+/// A stored blob written before issue #7719 still carries a `fontSizeFactor`
+/// key. Nothing reads it, and [StyleSettings.fromJson] ignores unknown keys, so
+/// it simply drops out the next time the blob is written.
 class StyleSettings {
-  final double fontSizeFactor;
   final bool useActivityImageBackground;
 
-  const StyleSettings({
-    this.fontSizeFactor = 1.0,
-    this.useActivityImageBackground = true,
-  });
+  const StyleSettings({this.useActivityImageBackground = true});
 
   Map<String, dynamic> toJson() {
-    return {
-      'fontSizeFactor': fontSizeFactor,
-      'useActivityImageBackground': useActivityImageBackground,
-    };
+    return {'useActivityImageBackground': useActivityImageBackground};
   }
 
   factory StyleSettings.fromJson(Map<String, dynamic> json) {
     return StyleSettings(
-      fontSizeFactor: (json['fontSizeFactor'] as num?)?.toDouble() ?? 1.0,
       useActivityImageBackground:
           json['useActivityImageBackground'] as bool? ?? true,
     );
   }
 
-  StyleSettings copyWith({
-    double? fontSizeFactor,
-    bool? useActivityImageBackground,
-  }) {
+  StyleSettings copyWith({bool? useActivityImageBackground}) {
     return StyleSettings(
-      fontSizeFactor: fontSizeFactor ?? this.fontSizeFactor,
       useActivityImageBackground:
           useActivityImageBackground ?? this.useActivityImageBackground,
     );
@@ -55,12 +46,6 @@ class StyleSettingsRepo {
       _storage.remove(key);
       return const StyleSettings();
     }
-  }
-
-  static Future<void> setFontSizeFactor(String userId, double factor) async {
-    final currentSettings = await settings(userId);
-    final updatedSettings = currentSettings.copyWith(fontSizeFactor: factor);
-    await _storage.write(_storageKey(userId), updatedSettings.toJson());
   }
 
   static Future<void> setUseActivityImageBackground(

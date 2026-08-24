@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -198,6 +199,15 @@ class SettingsView extends StatelessWidget {
                         child: const Icon(Icons.open_in_new_outlined),
                       ),
                     ),
+                    ListTile(
+                      leading: const Icon(Icons.privacy_tip_outlined),
+                      title: Text(L10n.of(context).privacy),
+                      onTap: () => launchUrl(AppConfig.privacyUrl),
+                      trailing: Semantics(
+                        label: L10n.of(context).openNewTab,
+                        child: const Icon(Icons.open_in_new_outlined),
+                      ),
+                    ),
                     if (MatrixState
                         .pangeaController
                         .userController
@@ -215,10 +225,17 @@ class SettingsView extends StatelessWidget {
                               ),
                               onTap: () async {
                                 if (snapshot.data == null) return;
+                                // The commit SHA is what makes a pasted bug
+                                // report reproducible — build numbers are
+                                // per-platform counters and do not identify
+                                // code — so it rides along in the copy.
                                 await Clipboard.setData(
                                   ClipboardData(
-                                    text:
-                                        "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
+                                    text: [
+                                      "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
+                                      if (Environment.buildCommitSha.isNotEmpty)
+                                        Environment.buildCommitSha,
+                                    ].join(" "),
                                   ),
                                 );
                                 ScaffoldMessenger.of(
@@ -239,6 +256,12 @@ class SettingsView extends StatelessWidget {
                                       )
                                     : L10n.of(context).versionNotFound,
                               ),
+                              // A commit SHA is an identifier, not copy, so it
+                              // is shown raw rather than through a translated
+                              // label. Absent on local builds.
+                              subtitle: Environment.buildCommitSha.isEmpty
+                                  ? null
+                                  : Text(Environment.buildCommitSha),
                             );
                           } else if (snapshot.hasError) {
                             return ListTile(
@@ -276,11 +299,6 @@ class SettingsView extends StatelessWidget {
                     //       activeRoute.startsWith('/settings/homeserver')
                     //       ? theme.colorScheme.surfaceContainerHigh
                     //       : null,
-                    // ),
-                    // ListTile(
-                    //   leading: const Icon(Icons.privacy_tip_outlined),
-                    //   title: Text(L10n.of(context).privacy),
-                    //   onTap: () => launchUrl(AppConfig.privacyUrl),
                     // ),
                     // ListTile(
                     //   leading: const Icon(Icons.info_outline_rounded),

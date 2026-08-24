@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
-import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/language_detection_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
@@ -52,15 +50,17 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       await _updatePhoneticTranscription(response.updatedPhonetics!);
     }
 
-    final originalSent = event?.originalSent;
+    // baseline for "did the language change" is the corrected sent rep, so a
+    // second round of feedback compares against the prior correction
+    final sent = event?.correctedSent;
 
     // if no other changes, just return the message
     final hasTokenUpdate =
         response.updatedTokens != null || response.updatedToken != null;
     final hasLangUpdate =
-        originalSent != null &&
+        sent != null &&
         response.updatedLanguage != null &&
-        response.updatedLanguage != originalSent.langCode;
+        response.updatedLanguage != sent.langCode;
 
     if (!hasTokenUpdate && !hasLangUpdate) {
       return response.userFriendlyMessage;
@@ -74,8 +74,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       tokens[requestData.selectedToken] = response.updatedToken!;
     }
 
-    final updatedLanguage =
-        response.updatedLanguage ?? event?.originalSent?.langCode;
+    final updatedLanguage = response.updatedLanguage ?? sent?.langCode;
 
     final tokensSent = PangeaMessageTokens(
       tokens: tokens,
@@ -86,24 +85,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     );
 
     if (requestData.fullText != null && event != null) {
-      // No dosage message-envelope emit here: this is an EDIT/re-send of an
-      // already-counted message (token-feedback correction), not a new learner
-      // turn — emitting would double-count. A.3 reconciles turns from the
-      // event_log by distinct message, so the original send already counts.
-      await event!.room.pangeaSendTextEvent(
-        requestData.fullText!,
-        editEventId: event!.eventId,
-        originalWritten: event!.originalWritten?.content,
-        tokensSent: tokensSent,
-        tokensWritten: event!.originalWritten?.tokens != null
-            ? PangeaMessageTokens(
-                tokens: event!.originalWritten!.tokens!,
-                detections: event!.originalWritten?.detections,
-              )
-            : null,
-        choreo: originalSent?.choreo,
-        messageTag: ChoreoConstants.tokenFeedbackEdit,
-      );
+      await event!.sendTokenCorrection(requestData.fullText!, tokensSent);
     }
 
     return response.userFriendlyMessage;

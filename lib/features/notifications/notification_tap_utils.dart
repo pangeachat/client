@@ -200,6 +200,22 @@ class NotificationTapUtil {
       return;
     }
 
+    // An analytics room is an internal construct store, never a chat surface
+    // (#8268). Instructors are auto-joined to student analytics rooms, so the
+    // invite branch below never catches this — fail fast to the joined parent
+    // course (or the map) instead of relying on the room panel to reject it.
+    if (room.isAnalyticsRoom) {
+      final parentCourseId = room.pangeaSpaceParents
+          .firstWhereOrNull((p) => p.membership == Membership.join)
+          ?.id;
+      router.go(
+        parentCourseId != null
+            ? WorkspaceNav.openCourse(uri, parentCourseId)
+            : PRoutes.world,
+      );
+      return;
+    }
+
     Logs().w("Notification Body: $notification");
     if (notification?['type'] == EventTypes.RoomMember &&
         room.membership == Membership.invite &&

@@ -97,6 +97,7 @@ class WorldAnalyticsBarInternal extends StatelessWidget {
       builder: (context, _) {
         final l2 = viewModel.userL2;
         return Semantics(
+          container: true,
           label: L10n.of(context).analyticsAndSettingsLabel,
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -322,6 +323,10 @@ class _PowerupsRow extends StatelessWidget {
                         // overhangs.
                         child: LevelUpBadgeCelebration(
                           levelUpdates: viewModel.levelUpdates,
+                          // The badge overhangs the pill near the screen's
+                          // left edge here, so the chip drops below it — beside
+                          // it, the chip ran off-screen (#8257).
+                          chipBelow: true,
                           child: HexLevelBadge(
                             level: level,
                             selected:

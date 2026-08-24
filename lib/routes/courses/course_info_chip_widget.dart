@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/languages/context_language_switch_target.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -13,17 +15,10 @@ class CourseInfoChip extends StatelessWidget {
   final double? iconSize;
   final EdgeInsets? padding;
 
-  /// The chip's pill fill, used as given. It used to be washed with a
-  /// translucent [ColorScheme.surface] first, which in the dark theme dragged
-  /// the invited chip's gold toward the near-black surface and left it muddy
-  /// and visibly off the gold of the `InvitedCourseBadge` sitting right beside
-  /// it on the same tile (#8109). The chip and the badge are one state marker,
-  /// so they wear one color — the same gold the level-up chip wears.
-  final Color? highlightColor;
-
-  /// Ink for the icon and text. Needed when [highlightColor] is dark or
-  /// saturated enough that the ambient text color stops being legible on it.
-  final Color? foregroundColor;
+  /// Overrides both the icon and text color — the language chip uses this to
+  /// signal a mismatch with the learner's target language
+  /// (profile.instructions.md, "Switching from context").
+  final Color? color;
 
   const CourseInfoChip({
     super.key,
@@ -32,36 +27,24 @@ class CourseInfoChip extends StatelessWidget {
     required this.fontSize,
     required this.iconSize,
     this.padding,
-    this.highlightColor,
-    this.foregroundColor,
+    this.color,
   });
 
   @override
   Widget build(BuildContext context) {
-    final row = Row(
-      spacing: 4.0,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: iconSize, color: foregroundColor),
-        Text(
-          text,
-          style: TextStyle(fontSize: fontSize, color: foregroundColor),
-        ),
-      ],
-    );
-
     return Padding(
       padding: padding ?? EdgeInsets.zero,
-      child: highlightColor == null
-          ? row
-          : Container(
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-              decoration: BoxDecoration(
-                color: highlightColor,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: row,
-            ),
+      child: Row(
+        spacing: 4.0,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: iconSize, color: color),
+          Text(
+            text,
+            style: TextStyle(fontSize: fontSize, color: color),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -154,12 +137,21 @@ class CourseInfoChipsState extends State<CourseInfoChips> {
       spacing: 8.0,
       runSpacing: 8.0,
       children: [
-        CourseInfoChip(
-          icon: Icons.language,
-          text: outline.quest.targetLanguageDisplay,
-          fontSize: widget.fontSize,
-          iconSize: widget.iconSize,
-          padding: widget.padding,
+        // Doubles as the switch to this course's language when it isn't the
+        // learner's target (profile.instructions.md, "Switching from
+        // context").
+        ContextLanguageSwitchTarget(
+          contentLanguage: PLanguageStore.byLangCode(
+            outline.quest.targetLanguage,
+          ),
+          builder: (context, canSwitch) => CourseInfoChip(
+            icon: Icons.language,
+            text: outline.quest.targetLanguageDisplay,
+            fontSize: widget.fontSize,
+            iconSize: widget.iconSize,
+            padding: widget.padding,
+            color: canSwitch ? Theme.of(context).colorScheme.tertiary : null,
+          ),
         ),
         CourseInfoChip(
           icon: Icons.school,

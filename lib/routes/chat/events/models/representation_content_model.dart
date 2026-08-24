@@ -8,6 +8,7 @@ import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_model.dart
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/span_choice_type_enum.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -29,8 +30,21 @@ class PangeaRepresentation {
   bool originalSent;
   bool originalWritten;
 
+  /// this representation supersedes the message's sent representation for
+  /// language identity and interactive tokens (e.g. a re-tokenization from
+  /// token-info feedback); it may be authored by a user other than the
+  /// message sender. never claims [originalSent] — provenance, choreo, and
+  /// analytics consumers keep reading the embedded original.
+  bool isCorrection;
+
   // a representation can be create via speech to text on the original message
   SpeechToTextResponseModel? speechToText;
+
+  /// tokens embedded directly in the representation content, so a correction
+  /// is a single atomic event — no separate child tokens event to race or
+  /// orphan. non-correction representations keep tokens in child
+  /// [PangeaTokensEvent]s.
+  PangeaMessageTokens? tokens;
 
   // how do we know which representation was sent by author?
   // RepresentationEvent.text == PangeaMessageEvent.event.body
@@ -59,7 +73,9 @@ class PangeaRepresentation {
     required this.text,
     required this.originalSent,
     required this.originalWritten,
+    this.isCorrection = false,
     this.speechToText,
+    this.tokens,
   });
 
   factory PangeaRepresentation.fromJson(Map<String, dynamic> json) {
@@ -68,9 +84,15 @@ class PangeaRepresentation {
       text: json[_textKey],
       originalSent: json[_originalSentKey] ?? false,
       originalWritten: json[_originalWrittenKey] ?? false,
+      isCorrection: json[_isCorrectionKey] ?? false,
       speechToText: json[_speechToTextKey] == null
           ? null
           : SpeechToTextResponseModel.fromJson(json[_speechToTextKey]),
+      tokens: json[_tokensKey] == null
+          ? null
+          : PangeaMessageTokens.fromJson(
+              Map<String, dynamic>.from(json[_tokensKey]),
+            ),
     );
   }
 
@@ -78,7 +100,9 @@ class PangeaRepresentation {
   static const _langCodeKey = "lang";
   static const _originalSentKey = "snt";
   static const _originalWrittenKey = "wrttn";
+  static const _isCorrectionKey = "crctn";
   static const _speechToTextKey = "stt";
+  static const _tokensKey = "tkns";
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
@@ -86,8 +110,12 @@ class PangeaRepresentation {
     data[_langCodeKey] = langCode;
     if (originalSent) data[_originalSentKey] = originalSent;
     if (originalWritten) data[_originalWrittenKey] = originalWritten;
+    if (isCorrection) data[_isCorrectionKey] = isCorrection;
     if (speechToText != null) {
       data[_speechToTextKey] = speechToText!.toJson();
+    }
+    if (tokens != null) {
+      data[_tokensKey] = tokens!.toJson();
     }
     return data;
   }

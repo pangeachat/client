@@ -60,7 +60,10 @@ Future<T?> showInviteDialog<T>(
                       style: theme.textTheme.titleMedium,
                     ),
                     const SizedBox(height: 12),
-                    Text(message, textAlign: TextAlign.center),
+                    Semantics(
+                      container: true,
+                      child: Text(message, textAlign: TextAlign.center),
+                    ),
                     const SizedBox(height: 20),
                     for (final action in actions)
                       Padding(

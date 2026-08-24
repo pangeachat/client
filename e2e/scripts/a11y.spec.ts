@@ -37,10 +37,10 @@ async function auditPage(page: import("@playwright/test").Page) {
  */
 async function gotoSurface(
   page: import("@playwright/test").Page,
-  hash: string,
+  path: string,
   sentinel: import("@playwright/test").Locator,
 ) {
-  await page.goto(hash);
+  await page.goto(path);
   await page.mouse.move(640, 400);
   await page.mouse.wheel(0, -500);
   await expect(sentinel).toBeVisible({ timeout: 90_000 });
@@ -89,7 +89,7 @@ test.describe("Accessibility (axe-core)", () => {
     test("world map has no a11y violations", async ({ page }) => {
       await gotoSurface(
         page,
-        "/#/",
+        "/",
         page.getByRole("textbox", { name: intl.mapSearchHint }),
       );
       const violations = await auditPage(page);
@@ -99,7 +99,7 @@ test.describe("Accessibility (axe-core)", () => {
     test("chat list has no a11y violations", async ({ page }) => {
       await gotoSurface(
         page,
-        "/#/?left=chats",
+        "/?left=chats",
         page.getByRole("button", { name: intl.chatWithSupport }).first(),
       );
       const violations = await auditPage(page);
@@ -109,7 +109,7 @@ test.describe("Accessibility (axe-core)", () => {
     test("settings panel has no a11y violations", async ({ page }) => {
       await gotoSurface(
         page,
-        "/#/?right=settings",
+        "/?right=settings",
         page.getByRole("button", { name: intl.learningSettings }).first(),
       );
       const violations = await auditPage(page);
@@ -119,7 +119,7 @@ test.describe("Accessibility (axe-core)", () => {
     test("profile page has no a11y violations", async ({ page }) => {
       await gotoSurface(
         page,
-        "/#/?right=settingspage:profile,settings",
+        "/?right=settingspage:profile,settings",
         // The profile shows the account's Matrix id; the CI account is fixed.
         page.getByRole("button", { name: /staging_automated_tests/ }).first(),
       );
@@ -133,7 +133,7 @@ test.describe("Accessibility (axe-core)", () => {
     test("settings learning page has no a11y violations", async ({ page }) => {
       await gotoSurface(
         page,
-        "/#/?right=settingspage:learning,settings",
+        "/?right=settingspage:learning,settings",
         page.getByRole("button", { name: intl.iWantToLearn }).first(),
       );
       const violations = await auditPage(page);
@@ -143,7 +143,7 @@ test.describe("Accessibility (axe-core)", () => {
     test("settings security page has no a11y violations", async ({ page }) => {
       await gotoSurface(
         page,
-        "/#/?right=settingspage:security,settings",
+        "/?right=settingspage:security,settings",
         // Gate on a control the page actually renders. The old sentinel was the
         // "your public key" field, which #7502 commented out — so this waited 90s
         // for an element that no longer exists. settings.spec.ts already drives

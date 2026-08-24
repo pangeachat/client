@@ -221,6 +221,7 @@ class SpanCardState extends State<SpanCard> {
                         scrollController: scrollController,
                         onChoiceSelect: _onChoiceSelect,
                         onUpdateMatch: _updateMatch,
+                        roomId: _choreographer.room.id,
                       ),
                     ),
                   ),
@@ -242,12 +243,17 @@ class _MatchContent extends StatelessWidget {
   final Future<void> Function(PangeaMatchState, PangeaMatchStatusEnum)
   onUpdateMatch;
 
+  /// The room being typed in, passed through to [ChoicesArray] so a tapped
+  /// choice's audio is counted against it.
+  final String roomId;
+
   const _MatchContent({
     super.key,
     required this.match,
     required this.scrollController,
     required this.onChoiceSelect,
     required this.onUpdateMatch,
+    required this.roomId,
   });
 
   @override
@@ -289,6 +295,10 @@ class _MatchContent extends StatelessWidget {
                         PangeaMatchStatusEnum.accepted,
                       ),
                       selectedChoiceIndex: currentMatch.selectedChoiceIndex,
+                      // Writing assistance always runs against the room being
+                      // typed in, so the choice audio it plays is that room's
+                      // listening.
+                      roomId: roomId,
                       id: match.hashCode.toString(),
                       langCode: MatrixState
                           .pangeaController

@@ -197,6 +197,22 @@ class TokensUtil {
     );
   }
 
+  /// The cache identity for [getAdjacentTokenPositions]. The event id alone is
+  /// NOT enough: a message's token list can be replaced under an unchanged id
+  /// (a language correction re-tokenizes the same text under a different
+  /// model; token-info feedback re-tokenizes it outright), and the positions
+  /// are indices into whichever list produced them. Serving the old list's
+  /// indices against the new list overruns it in the renderer's `sublist`.
+  ///
+  /// The signature covers exactly the fields the walk below reads — `pos` and
+  /// each token's span — so a genuinely identical reading still hits cache.
+  static String _tokenPositionsCacheKey(
+    String eventID,
+    List<PangeaToken> tokens,
+  ) =>
+      '$eventID:'
+      '${Object.hashAll(tokens.map((t) => Object.hash(t.pos, t.start, t.end)))}';
+
   /// Given a list of tokens, returns a list of positions for tokens and adjacent punctuation
   /// This list may include gaps in the actual message for non-token elements,
   /// so should not be used to fully reconstruct the original message.
@@ -204,7 +220,8 @@ class TokensUtil {
     String eventID,
     List<PangeaToken> tokens,
   ) {
-    final cached = _getCachedTokenPositions(eventID);
+    final cacheKey = _tokenPositionsCacheKey(eventID, tokens);
+    final cached = _getCachedTokenPositions(cacheKey);
     if (cached != null) {
       return cached;
     }
@@ -245,7 +262,7 @@ class TokensUtil {
       positions.add(position);
     }
 
-    _setCachedTokenPositions(eventID, positions);
+    _setCachedTokenPositions(cacheKey, positions);
     return positions;
   }
 

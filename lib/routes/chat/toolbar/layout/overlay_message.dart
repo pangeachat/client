@@ -2,13 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/subscription/widgets/locked_preview_banner.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -46,6 +45,7 @@ class OverlayMessage extends StatelessWidget {
   final ReadingAssistanceMode? readingAssistanceMode;
   final String overlayKey;
   final bool canRefresh;
+  final bool useTokenKeys;
 
   const OverlayMessage(
     this.event, {
@@ -61,6 +61,7 @@ class OverlayMessage extends StatelessWidget {
     this.isTransitionAnimation = false,
     this.readingAssistanceMode,
     this.canRefresh = false,
+    this.useTokenKeys = false,
     super.key,
   });
 
@@ -218,6 +219,7 @@ class OverlayMessage extends StatelessWidget {
               readingAssistanceMode: readingAssistanceMode,
               selected: true,
               vocabLemmas: overlayController.highlightVocabLemmas,
+              useTokenKeys: useTokenKeys,
             ),
           ),
           if (event.hasAggregatedEvents(timeline, RelationshipTypes.edit))
@@ -236,12 +238,15 @@ class OverlayMessage extends StatelessWidget {
                     color: textColor.withAlpha(164),
                     size: 14,
                   ),
-                  Text(
-                    displayEvent.originServerTs.localizedTimeShort(context),
-                    textScaler: TextScaler.noScaling,
-                    style: TextStyle(
-                      color: textColor.withAlpha(164),
-                      fontSize: 11,
+                  // Flexible: the timestamp scales with the device text size
+                  // now, and this row is inside the bubble's width budget.
+                  Flexible(
+                    child: Text(
+                      displayEvent.originServerTs.localizedTimeShort(context),
+                      style: TextStyle(
+                        color: textColor.withAlpha(164),
+                        fontSize: 11,
+                      ),
                     ),
                   ),
                 ],
@@ -367,20 +372,17 @@ class _MessageSelectModeContent extends StatelessWidget {
           return const SizedBox();
         }
 
+        // A gated mode an unsubscribed user picks shows a skeleton of what it
+        // would have produced, not a red error: reaching a paid feature should
+        // read as "something good is one tap away" (#7929). A null label means
+        // the mode isn't gated at all — regeneration is free — so it falls
+        // through to its normal behavior even while unsubscribed.
+        final unlockLabel = mode.unlockLabel(context);
         final sub = MatrixState.pangeaController.subscriptionController;
-        if (!sub.showSubscriptionGatedContent) {
+        if (unlockLabel != null && !sub.showSubscriptionGatedContent) {
           return Padding(
             padding: const EdgeInsets.all(12.0),
-            child: ErrorIndicator(
-              message: L10n.of(context).subscribeReadingAssistance,
-              onTap: () => context.go(
-                WorkspaceNav.openSettings(
-                  GoRouterState.of(context).uri,
-                  page: 'subscription',
-                ),
-              ),
-              style: style,
-            ),
+            child: LockedPreviewBanner(label: unlockLabel),
           );
         }
 
@@ -423,7 +425,6 @@ class _MessageSelectModeContent extends StatelessWidget {
                 Flexible(
                   child: Text(
                     value,
-                    textScaler: TextScaler.noScaling,
                     style: style.copyWith(fontStyle: FontStyle.italic),
                   ),
                 ),
@@ -514,7 +515,6 @@ class _MessageBubbleTranscription extends StatelessWidget {
                     const SizedBox(width: 8),
                     Text(
                       L10n.of(context).transcriptionFailed,
-                      textScaler: TextScaler.noScaling,
                       style: style.copyWith(fontStyle: FontStyle.italic),
                     ),
                   ],

@@ -17,6 +17,7 @@ import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -137,6 +138,13 @@ Future<void> _tryPushHelper(
   Logs().v('Push helper got notification event of type ${event.type}.');
 
   // #Pangea
+  // Analytics rooms are internal data stores and must never produce a
+  // notification, no matter which server path generated the push.
+  if (event.room.isAnalyticsRoom) {
+    Logs().v('Push message is for an analytics room. Do not display.');
+    return;
+  }
+
   if (event.type == EventTypes.RoomMember) {
     final membership = event.content.tryGet<String>('membership');
     if (membership == 'invite') {

@@ -62,115 +62,138 @@ class UserDialog extends StatelessWidget {
     final avatar = profile.avatarUrl;
 
     return AlertDialog.adaptive(
-      title: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 256),
-        child: Center(child: Text(displayname, textAlign: TextAlign.center)),
+      title: ExcludeSemantics(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 256),
+          child: Center(child: Text(displayname, textAlign: TextAlign.center)),
+        ),
       ),
-      content: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
-        child: PresenceBuilder(
-          userId: profile.userId,
-          client: Matrix.of(context).client,
-          builder: (context, presence) {
-            if (presence == null) return const SizedBox.shrink();
-            final lastActiveTimestamp = presence.lastActiveTimestamp;
-            final presenceText = presence.currentlyActive == true
-                ? L10n.of(context).currentlyActive
-                : lastActiveTimestamp != null
-                ? L10n.of(context).lastActiveAgo(
-                    lastActiveTimestamp.localizedTimeShort(context),
-                  )
-                : null;
+      content: Semantics(
+        label: L10n.of(context).profile,
+        container: true,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
+          child: PresenceBuilder(
+            userId: profile.userId,
+            client: Matrix.of(context).client,
+            builder: (context, presence) {
+              if (presence == null) return const SizedBox.shrink();
+              final lastActiveTimestamp = presence.lastActiveTimestamp;
+              final presenceText = presence.currentlyActive == true
+                  ? L10n.of(context).currentlyActive
+                  : lastActiveTimestamp != null
+                  ? L10n.of(context).lastActiveAgo(
+                      lastActiveTimestamp.localizedTimeShort(context),
+                    )
+                  : null;
 
-            return SingleChildScrollView(
-              child: Column(
-                spacing: 8,
-                mainAxisSize: .min,
-                crossAxisAlignment: .stretch,
-                children: [
-                  HoverBuilder(
-                    builder: (context, hovered) => StatefulBuilder(
-                      builder: (context, setState) => MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          onTap: () {
-                            Clipboard.setData(
-                              ClipboardData(text: profile.userId),
-                            );
-                            setState(() {
-                              copied = true;
-                            });
-                          },
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 4.0),
-                                    child: AnimatedScale(
-                                      duration: FluffyThemes.animationDuration,
-                                      curve: FluffyThemes.animationCurve,
-                                      scale: hovered
-                                          ? 1.33
-                                          : copied
-                                          ? 1.25
-                                          : 1.0,
-                                      child: Icon(
-                                        copied
-                                            ? Icons.check_circle
-                                            : Icons.copy,
-                                        size: 12,
-                                        color: copied ? Colors.green : null,
+              return SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: .min,
+                  crossAxisAlignment: .stretch,
+                  children: [
+                    Semantics(
+                      label: L10n.of(context).copy,
+                      container: true,
+                      child: HoverBuilder(
+                        builder: (context, hovered) => StatefulBuilder(
+                          builder: (context, setState) => MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: () {
+                                Clipboard.setData(
+                                  ClipboardData(text: profile.userId),
+                                );
+                                setState(() {
+                                  copied = true;
+                                });
+                              },
+                              child: RichText(
+                                textScaler: MediaQuery.textScalerOf(context),
+                                text: TextSpan(
+                                  children: [
+                                    WidgetSpan(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                          right: 4.0,
+                                        ),
+                                        child: AnimatedScale(
+                                          duration:
+                                              FluffyThemes.animationDuration,
+                                          curve: FluffyThemes.animationCurve,
+                                          scale: hovered
+                                              ? 1.33
+                                              : copied
+                                              ? 1.25
+                                              : 1.0,
+                                          child: Icon(
+                                            copied
+                                                ? Icons.check_circle
+                                                : Icons.copy,
+                                            size: 12,
+                                            color: copied ? Colors.green : null,
+                                          ),
+                                        ),
                                       ),
                                     ),
+                                    TextSpan(text: profile.userId),
+                                  ],
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                    fontSize: 10,
                                   ),
                                 ),
-                                TextSpan(text: profile.userId),
-                              ],
-                              style: theme.textTheme.bodyMedium?.copyWith(
-                                fontSize: 10,
+                                textAlign: TextAlign.center,
                               ),
                             ),
-                            textAlign: TextAlign.center,
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Center(
-                    child: Avatar(
-                      mxContent: avatar,
-                      name: displayname,
-                      size: Avatar.defaultSize * 2,
-                      onTap: avatar != null
-                          ? () => showDialog(
-                              context: context,
-                              builder: (_) => MxcImageViewer(avatar),
-                            )
-                          : null,
-                      userId: profile.userId,
+                    const SizedBox(height: 8),
+                    Center(
+                      child: ExcludeSemantics(
+                        child: Avatar(
+                          mxContent: avatar,
+                          name: displayname,
+                          size: Avatar.defaultSize * 2,
+                          onTap: avatar != null
+                              ? () => showDialog(
+                                  context: context,
+                                  builder: (_) => MxcImageViewer(avatar),
+                                )
+                              : null,
+                          userId: profile.userId,
+                        ),
+                      ),
                     ),
-                  ),
-                  if (presenceText != null)
-                    Text(
-                      presenceText,
-                      style: const TextStyle(fontSize: 10),
-                      textAlign: TextAlign.center,
-                    ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Column(
+                    if (presenceText != null) ...[
+                      const SizedBox(height: 8),
+                      Text(
+                        presenceText,
+                        style: const TextStyle(fontSize: 10),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                    // Each of these draws nothing at all when the user has no
+                    // such data — the bot has none of it — so nothing may pad
+                    // or space them from the outside: that padding is what left
+                    // an empty band under the activeness status (#8238). Each
+                    // line brings its own spacing when it has something to say.
+                    Column(
                       children: [
-                        LevelDisplayName(userId: profile.userId),
+                        LevelDisplayName(
+                          userId: profile.userId,
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        ),
                         CountryDisplay(userId: profile.userId),
                         AboutMeDisplay(userId: profile.userId),
                       ],
                     ),
-                  ),
-                ],
-              ),
-            );
-          },
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ),
       actions: [

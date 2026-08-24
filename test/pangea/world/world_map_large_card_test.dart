@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
+import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
@@ -28,8 +29,9 @@ void main() {
     VoidCallback? onTap,
     bool isFocused = false,
     Color primary = const Color(0xFF112233),
+    Brightness brightness = Brightness.light,
     ActivityPinState state = ActivityPinState.available,
-    List<LargeCardParticipant> participants = const [],
+    List<String> participants = const [],
     int openSlots = 0,
     int starsEarned = 0,
     QuestActivityCard? cardOverride,
@@ -39,8 +41,10 @@ void main() {
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
         theme: ThemeData(
+          brightness: brightness,
           colorScheme: ColorScheme.fromSeed(
             seedColor: primary,
+            brightness: brightness,
           ).copyWith(primary: primary),
         ),
         home: Scaffold(
@@ -68,6 +72,18 @@ void main() {
   /// (the state hue) at the glow's blur radius — the distinct focused marker
   /// now that the outline is gone (#7349). Scans DecoratedBox (a Container
   /// builds one internally).
+  /// The card's 4px frame colour — the only [Border] in the tree (the flag chip
+  /// and glow use fill/shadow, not a border).
+  Color? cardBorderColor(WidgetTester tester) {
+    for (final c in tester.widgetList<Container>(find.byType(Container))) {
+      final d = c.decoration;
+      if (d is BoxDecoration && d.border is Border) {
+        return (d.border! as Border).top.color;
+      }
+    }
+    return null;
+  }
+
   bool hasStateGlow(WidgetTester tester, Color color) =>
       tester.widgetList<DecoratedBox>(find.byType(DecoratedBox)).any((b) {
         final d = b.decoration;
@@ -213,17 +229,81 @@ void main() {
       },
     );
 
-    testWidgets(
-      'a non-eligible state (available/inProgress) renders no body content',
-      (tester) async {
-        // available/inProgress never reach this widget in production (the
-        // ranking/placement large-tier hard gate excludes them beforehand) —
-        // this just confirms the defensive default doesn't crash or show a
-        // stray icon.
-        await pumpCard(tester, state: ActivityPinState.available);
-        expect(find.byIcon(Icons.meeting_room), findsNothing);
-        expect(find.byIcon(Icons.hourglass_bottom), findsNothing);
-      },
-    );
+    testWidgets('available shows the L2 flag, CEFR level, and party size', (
+      tester,
+    ) async {
+      await pumpCard(
+        tester,
+        state: ActivityPinState.available,
+        cardOverride: const QuestActivityCard(
+          activityId: 'a1',
+          title: 'Test Activity',
+          l2: 'es',
+          cefr: 'b1',
+          coordinates: [0, 0],
+          learningObjectiveRefs: [],
+          roleCount: 4,
+        ),
+      );
+      // CEFR level (uppercased) + party size (a people glyph + the role count).
+      // The L2 flag chip falls back to the uppercase code when the language
+      // store isn't initialised.
+      expect(find.text('B1'), findsOneWidget);
+      expect(find.byIcon(Icons.groups), findsOneWidget);
+      expect(find.text('4'), findsOneWidget);
+      expect(find.text('ES'), findsWidgets);
+      // Not a live state, so none of the live-card glyphs show.
+      expect(find.byIcon(Icons.meeting_room), findsNothing);
+      expect(find.byIcon(Icons.hourglass_bottom), findsNothing);
+    });
+
+    testWidgets('an available card sizes to content, not the full max width', (
+      tester,
+    ) async {
+      // Short title + a compact info row: the card must shrink to its content
+      // (like the joinable participant row) rather than stretch to largeWidth,
+      // while never collapsing below the largeMinWidth floor.
+      await pumpCard(
+        tester,
+        state: ActivityPinState.available,
+        cardOverride: const QuestActivityCard(
+          activityId: 'a1',
+          title: 'Hi',
+          l2: 'es',
+          cefr: 'a1',
+          coordinates: [0, 0],
+          learningObjectiveRefs: [],
+          roleCount: 2,
+        ),
+      );
+      final width = tester.getSize(find.byType(WorldMapLargeCard)).width;
+      expect(width, lessThan(PinSize.largeWidth));
+      expect(width, greaterThanOrEqualTo(PinSize.largeMinWidth));
+    });
+
+    testWidgets('in dark mode the available card border maps the mid pin '
+        'colour (primaryColorDark)', (tester) async {
+      await pumpCard(
+        tester,
+        brightness: Brightness.dark,
+        state: ActivityPinState.available,
+      );
+      // The mid pin fills with the darker-purple brand constant in dark mode
+      // (#8174); the card's frame must map that same colour, not the light-mode
+      // light-purple fill.
+      expect(cardBorderColor(tester), AppConfig.primaryColorDark);
+    });
+
+    testWidgets('inProgress (the completed trail star) renders no body content', (
+      tester,
+    ) async {
+      // inProgress never reaches this widget in production — the completed
+      // trail star is a gold-star dot, excluded before the card is built.
+      // This confirms the defensive default doesn't crash or show a stray icon.
+      await pumpCard(tester, state: ActivityPinState.inProgress);
+      expect(find.byIcon(Icons.meeting_room), findsNothing);
+      expect(find.byIcon(Icons.hourglass_bottom), findsNothing);
+      expect(find.byIcon(Icons.groups), findsNothing);
+    });
   });
 }

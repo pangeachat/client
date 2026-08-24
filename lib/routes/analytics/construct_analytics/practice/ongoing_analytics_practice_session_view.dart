@@ -96,6 +96,9 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                                 morph: token.morph.map(
                                   (k, v) => MapEntry(k.name, v),
                                 ),
+                                // Analytics practice runs outside any room, so
+                                // a pronunciation tap here belongs to none.
+                                roomId: null,
                                 textLanguage: MatrixState
                                     .pangeaController
                                     .userController
@@ -185,6 +188,8 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                                       .exerciseComplete(exercise),
                                   showHint: controller.notifier.showHint,
                                   onSelectChoice: controller.onSelectChoice,
+                                  selectedChoices:
+                                      controller.notifier.selectedChoices,
                                   audioExampleMessage: audioExampleMessage,
                                   audioTranslation: audioTranslation,
                                 );
