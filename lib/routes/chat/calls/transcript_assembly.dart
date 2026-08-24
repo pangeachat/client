@@ -137,12 +137,17 @@ class HalfAccounting {
     // declared, so hostile malformed content could present an empty half as
     // complete. Anything short of a full, correctly-typed accounting is
     // undeclared, which reads as incomplete.
+    bool nonNegativeInt(Object? value) => value is int && value >= 0;
+
+    // Non-negative, not merely `is int`. A count of -1 is an int, so a content
+    // declaring -1 captured and -1 transcribed passed the type check, clamped
+    // to zero, and assembled as a COMPLETE silent half.
     final wellFormed =
-        raw['chunks_captured'] is int &&
-        raw['chunks_transcribed'] is int &&
+        nonNegativeInt(raw['chunks_captured']) &&
+        nonNegativeInt(raw['chunks_transcribed']) &&
         raw['drain_complete'] is bool &&
         raw['truncated'] is bool &&
-        raw['segments_omitted'] is int;
+        nonNegativeInt(raw['segments_omitted']);
 
     final captured = intOr('chunks_captured', 0);
     final rawTranscribed = intOr('chunks_transcribed', 0);

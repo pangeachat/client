@@ -196,6 +196,36 @@ void main() {
       ]);
     });
 
+    test('timings that REPLACE a word fall back rather than fabricate', () {
+      // The worst failure this builder can have. Same word count, different
+      // words: a count check passed these and the output became
+      // "pay alice today" -- losing "bob" and inventing "alice". A learner is
+      // read as having said something they did not.
+      final segments = buildSegments([
+        _response(
+          'pay bob today',
+          timings: [('pay', 0, 200), ('alice', 250, 500), ('today', 550, 800)],
+        ),
+      ]);
+
+      expect(segments.map((s) => s.text), ['pay bob today']);
+    });
+
+    test('punctuation and case differences do NOT trigger the fallback', () {
+      // Joining timed words loses punctuation and casing legitimately, so the
+      // comparison normalises both. If it did not, the fallback would fire on
+      // every ordinary chunk and word timings would never be used at all.
+      final segments = buildSegments([
+        _response(
+          'Hola, que tal?',
+          timings: [('Hola', 0, 200), ('que', 250, 500), ('tal', 550, 800)],
+        ),
+      ]);
+
+      expect(segments, hasLength(1));
+      expect(segments.single.text, 'Hola que tal');
+    });
+
     test('no usable chunks yields no segments', () {
       expect(buildSegments([_empty]), isEmpty);
       expect(buildSegments([]), isEmpty);

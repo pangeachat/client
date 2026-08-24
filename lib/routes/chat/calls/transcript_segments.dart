@@ -43,6 +43,18 @@ const kUtterancePause = Duration(milliseconds: 900);
 
 final _whitespace = RegExp(r'\s+');
 
+/// A chunk's words, normalised for comparison only.
+///
+/// Case and surrounding punctuation are dropped, because joining timed words
+/// with single spaces legitimately loses them. The WORDS themselves must still
+/// match exactly -- that is the whole point of the check.
+String _words(String text) => text
+    .toLowerCase()
+    .replaceAll(RegExp(r'[^\w\s]', unicode: true), '')
+    .trim()
+    .split(_whitespace)
+    .join(' ');
+
 /// Cuts one call's frozen responses into readable segments.
 ///
 /// [ordered] must already be in the order the speaker said them —
@@ -103,20 +115,19 @@ List<TranscriptSegment> buildSegments(
     // finer cut of it, they are a partial one -- and keeping only what they
     // covered silently drops the rest. "hello world" timed as ["hello"] must
     // not become "hello".
-    // Counted in WORDS, not characters. A character ratio cannot notice a
-    // short word dropped off a long one -- timings for
-    // "supercalifragilisticexpialidocious" alone cover well over 80% of
-    // "supercalifragilisticexpialidocious bye" and quietly lost "bye".
-    final wordsCovered = segments
+    // The timings must reconstruct the transcript EXACTLY, word for word.
+    //
+    // Counting words was still a proxy, and proxies here fail in the worst
+    // direction available. Timings [pay, alice, today] against the text
+    // "pay bob today" have the same word count, so a count check passed them
+    // and the output became "pay alice today" -- losing a word AND inventing
+    // one. A coarse transcript is a readability problem; a fabricated one is
+    // put in a learner's mouth and read as evidence of what they said.
+    final rebuilt = segments
         .skip(countBefore)
-        .fold(
-          0,
-          (sum, segment) => sum + segment.text.split(_whitespace).length,
-        );
-    final wordsInText = transcript.text.trim().isEmpty
-        ? 0
-        : transcript.text.trim().split(_whitespace).length;
-    if (wordsCovered < wordsInText) {
+        .map((segment) => segment.text)
+        .join(' ');
+    if (_words(rebuilt) != _words(transcript.text)) {
       segments.removeRange(countBefore, segments.length);
       _add(segments, transcript.text);
       continue;

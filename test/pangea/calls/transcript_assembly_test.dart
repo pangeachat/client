@@ -251,6 +251,21 @@ void main() {
       );
     });
 
+    test('negative counts are not a declaration', () {
+      // -1 is an int, so a type-only check accepted it, clamped it to zero, and
+      // assembled a COMPLETE silent half out of hostile content.
+      final accounting = HalfAccounting.fromJson(const {
+        'chunks_captured': -1,
+        'chunks_transcribed': -1,
+        'drain_complete': true,
+        'truncated': false,
+        'segments_omitted': 0,
+      });
+
+      expect(accounting.declared, isFalse);
+      expect(accounting.writerAdmitsGaps, isTrue);
+    });
+
     test('junk values are not a declaration, even with every key present', () {
       // Key presence alone let hostile malformed content -- '1' as a string,
       // 'yes' for a bool -- parse to optimistic defaults while still counting
