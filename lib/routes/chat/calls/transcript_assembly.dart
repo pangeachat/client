@@ -1,0 +1,216 @@
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
+
+/// Why a speaker's half reads the way it does.
+///
+/// Three states, kept distinct on purpose. Someone opening a transcript is
+/// asking whether a conversation happened, and "they said nothing", "their
+/// words are missing" and "we stopped reading early" are three different
+/// answers. Collapsing them is how a transcript lies.
+enum HalfState {
+  /// Their half is here and declares itself whole.
+  present,
+
+  /// Nothing was written for them. WHY is not knowable — a crash, a mute
+  /// throughout, a free account whose transcription is entitlement-gated, an
+  /// older app, or a failed provider. The view says only that they are not
+  /// represented, and never that they were silent.
+  absent,
+
+  /// Something is here but is knowingly not all of it: the writer said so, or
+  /// the reader stopped at its own ceiling.
+  incomplete,
+}
+
+/// What one speaker's device wrote about the audio it captured.
+///
+/// These are claims by that device about its own recording, not facts the
+/// reader can verify — a modified client can write anything, exactly as it can
+/// for any message in the room. They are used to describe a half and to choose
+/// between duplicates, never to authenticate one.
+class HalfAccounting {
+  final int chunksCaptured;
+  final int chunksTranscribed;
+  final bool truncated;
+  final int segmentsOmitted;
+  final bool drainComplete;
+
+  const HalfAccounting({
+    this.chunksCaptured = 0,
+    this.chunksTranscribed = 0,
+    this.truncated = false,
+    this.segmentsOmitted = 0,
+    this.drainComplete = true,
+  });
+
+  /// Whether the writer itself admits this is not everything that was said.
+  bool get writerAdmitsGaps =>
+      truncated || !drainComplete || chunksTranscribed < chunksCaptured;
+
+  Map<String, dynamic> toJson() => {
+    'chunks_captured': chunksCaptured,
+    'chunks_transcribed': chunksTranscribed,
+    'truncated': truncated,
+    'segments_omitted': segmentsOmitted,
+    'drain_complete': drainComplete,
+  };
+
+  /// Tolerant by design: room content is untrusted and a partial or foreign
+  /// shape must degrade to "we know less about this half", never to an
+  /// exception that takes the view down.
+  static HalfAccounting fromJson(Object? raw) {
+    if (raw is! Map) return const HalfAccounting();
+    int intOr(String key, int fallback) {
+      final value = raw[key];
+      return value is int && value >= 0 ? value : fallback;
+    }
+
+    final captured = intOr('chunks_captured', 0);
+    return HalfAccounting(
+      chunksCaptured: captured,
+      // Clamped: a half claiming more transcribed than captured is malformed,
+      // and letting it through would make `writerAdmitsGaps` read false for a
+      // half that is nonsense.
+      chunksTranscribed: intOr('chunks_transcribed', 0).clamp(0, captured),
+      truncated: raw['truncated'] == true,
+      segmentsOmitted: intOr('segments_omitted', 0),
+      // Absent means unknown, and unknown must not read as "fine".
+      drainComplete: raw['drain_complete'] != false,
+    );
+  }
+}
+
+/// One speaker's side of a call, as the view will read it.
+class TranscriptHalf {
+  final String senderId;
+  final List<TranscriptSegment> segments;
+  final HalfAccounting accounting;
+  final HalfState state;
+
+  const TranscriptHalf({
+    required this.senderId,
+    required this.segments,
+    required this.accounting,
+    required this.state,
+  });
+
+  /// How much speech this half actually carries.
+  ///
+  /// Measured from the text present, never read off a self-declared count:
+  /// choosing between duplicates by a number the content supplied would let an
+  /// event claiming 999 chunks and carrying nothing beat a genuine one.
+  int get contentLength =>
+      segments.fold(0, (sum, segment) => sum + segment.text.length);
+}
+
+/// A parsed `pangea.call_transcript` event, before assembly picks between
+/// duplicates.
+class TranscriptCandidate {
+  final String senderId;
+  final int originServerTs;
+  final List<TranscriptSegment> segments;
+  final HalfAccounting accounting;
+
+  const TranscriptCandidate({
+    required this.senderId,
+    required this.originServerTs,
+    required this.segments,
+    required this.accounting,
+  });
+
+  int get contentLength =>
+      segments.fold(0, (sum, segment) => sum + segment.text.length);
+}
+
+/// The assembled transcript of one call.
+class CallTranscript {
+  final List<TranscriptHalf> halves;
+
+  /// True when the reader stopped before the server said there was no more —
+  /// its own page or byte ceiling. Absence cannot be concluded from a capped
+  /// read, only from an exhausted one.
+  final bool readerStoppedEarly;
+
+  const CallTranscript({required this.halves, this.readerStoppedEarly = false});
+
+  bool get isEmpty => halves.every((half) => half.segments.isEmpty);
+}
+
+/// Assembles the halves of one call.
+///
+/// [candidates] are every parsed transcript event found for the call, in any
+/// order. [expectedSenders] is who took part, so a speaker who wrote nothing is
+/// reported as absent rather than silently omitted — the difference between
+/// "they said nothing" and "we never looked" is the whole point.
+///
+/// [exhausted] is whether retrieval reached the end of the server's relations,
+/// as opposed to stopping at the reader's own cap. A capped read can never
+/// conclude absence.
+CallTranscript assembleTranscript({
+  required List<TranscriptCandidate> candidates,
+  required List<String> expectedSenders,
+  bool exhausted = true,
+}) {
+  final bySender = <String, TranscriptCandidate>{};
+
+  for (final candidate in candidates) {
+    final held = bySender[candidate.senderId];
+    if (held == null || _beats(candidate, held)) {
+      bySender[candidate.senderId] = candidate;
+    }
+  }
+
+  // Expected senders first and in order, so the view is stable across reads;
+  // then anyone who wrote but was not expected, which is odd enough to show
+  // rather than hide.
+  final senders = <String>[
+    ...expectedSenders,
+    ...bySender.keys.where((id) => !expectedSenders.contains(id)),
+  ];
+
+  final halves = <TranscriptHalf>[];
+  for (final senderId in senders) {
+    final candidate = bySender[senderId];
+
+    if (candidate == null) {
+      halves.add(
+        TranscriptHalf(
+          senderId: senderId,
+          segments: const [],
+          accounting: const HalfAccounting(),
+          // A read that stopped early cannot tell absent from unread.
+          state: exhausted ? HalfState.absent : HalfState.incomplete,
+        ),
+      );
+      continue;
+    }
+
+    halves.add(
+      TranscriptHalf(
+        senderId: senderId,
+        segments: List.unmodifiable(candidate.segments),
+        accounting: candidate.accounting,
+        state: (!exhausted || candidate.accounting.writerAdmitsGaps)
+            ? HalfState.incomplete
+            : HalfState.present,
+      ),
+    );
+  }
+
+  return CallTranscript(
+    halves: List.unmodifiable(halves),
+    readerStoppedEarly: !exhausted,
+  );
+}
+
+/// Which of two events from the SAME sender to believe.
+///
+/// The one carrying more actual text, breaking ties by the earlier event.
+/// Deliberately not "the earliest wins": a buggy client that emits an empty
+/// half before the real one lands after the drain would otherwise hide the real
+/// one for good. Content cannot be inflated without supplying the content.
+bool _beats(TranscriptCandidate candidate, TranscriptCandidate held) {
+  if (candidate.contentLength != held.contentLength) {
+    return candidate.contentLength > held.contentLength;
+  }
+  return candidate.originServerTs < held.originServerTs;
+}
