@@ -1,9 +1,15 @@
 name: Release Workflow
 
+# Publishing a GitHub release is what deploys production, matching every other
+# Pangea service (deployment.instructions.md). Pushing to `production` only
+# records where a release is being cut and deploys nothing. Releases are cut
+# against `production` (`gh release create <tag> --target production`), and a
+# release event runs this file from the tagged commit — so the copy on
+# `production` is the one that runs.
 on:
-  push:
-    branches:
-      - production
+  release:
+    types: [published]
+  workflow_dispatch:
 
 concurrency:
   group: release_workflow
@@ -15,31 +21,10 @@ env:
   WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
 
 permissions:
-  contents: write # Creates GitHub releases and uploads release assets
+  contents: write # Uploads the web bundle as a release asset
 
 jobs:
-  create_release:
-    name: "Tagged Release"
-    runs-on: "ubuntu-latest"
-    outputs:
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
-      - name: Get Version from pubspec.yaml
-        run: echo "VERSION=$(grep '^version:' pubspec.yaml | cut -d ' ' -f2 | tr -d '\r')" >> $GITHUB_ENV
-      - name: Create GitHub Release
-        id: create_release
-        uses: ncipollo/release-action@b7eabc95ff50cbeeedec83973935c8f306dfcd0b # v1
-        with:
-          name: Release v${{ env.VERSION }}
-          tag: ${{ env.VERSION }}
-          draft: false
-          prerelease: false
-          generateReleaseNotes: true
-
   build_web:
-    needs: create_release
     runs-on: ubuntu-latest
     environment: production
     outputs:
@@ -131,14 +116,12 @@ jobs:
           name: web
           path: build/web
       - name: Upload to release
-        uses: actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1
+        # Only a release run has a release to attach the bundle to; a
+        # workflow_dispatch redeploy skips this and still deploys.
+        if: ${{ github.event_name == 'release' }}
         env:
           GITHUB_TOKEN: ${{ secrets.PAGES_DEPLOY_TOKEN }}
-        with:
-          upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: pangeachat-web.tar.gz
-          asset_name: pangeachat-web.tar.gz
-          asset_content_type: application/gzip
+        run: gh release upload "${{ github.event.release.tag_name }}" pangeachat-web.tar.gz --clobber --repo "$GITHUB_REPOSITORY"
 
   deploy_web:
     runs-on: ubuntu-latest
@@ -287,6 +270,22 @@ jobs:
           # 3. A deep path serves the SPA shell (the fallback is alive).
           curl -sf "$BASE/zz9smoke" | grep -qi "<html\|<base\|flutter" \
             || { echo "::error::deep path did not serve the SPA shell — fallback broken?"; exit 1; }
+
+  notify:
+    needs: deploy_web
+    if: ${{ github.event_name == 'release' }}
+    permissions:
+      id-token: write
+      contents: read
+    # Local workflow — this public repo can't call the private org-wide
+    # notify-matrix-deploy.yaml (see header of notify-matrix-build.yml).
+    uses: ./.github/workflows/notify-matrix-build.yml
+    with:
+      service_name: "Pangea Chat Web"
+      version: ${{ github.event.release.tag_name }}
+      release_body: ${{ github.event.release.body }}
+    secrets:
+      aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PROD }}
 
   update_sentry:
     runs-on: ubuntu-latest

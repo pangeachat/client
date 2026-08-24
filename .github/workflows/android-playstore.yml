@@ -1,7 +1,7 @@
 name: Build Android and upload to Play Store internal track
 # Signed appbundle uploaded to the Play Store internal track.
-# - Called from release.yaml with environment=production on every release.
-# - Manually dispatchable for staging (or production) test builds.
+# - Manually dispatched, choosing staging or production. This is the only path;
+#   release.yaml builds web only and never triggers a store build.
 # Promotion beyond the internal track happens by hand in the Play Console,
 # mirroring the TestFlight -> App Store human step on iOS.
 on:
