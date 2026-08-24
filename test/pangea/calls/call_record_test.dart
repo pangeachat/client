@@ -484,6 +484,48 @@ void main() {
       },
     );
 
+    test('a credit that stored nothing can be tried again', () async {
+      // Crediting is marked done BEFORE the write, because doing it twice
+      // records the learner as having said everything twice. The one failure
+      // that is safe to retry is the one that stored nothing at all, and
+      // without putting the flag back the ordinary second call returned
+      // immediately and that speech was gone.
+      var attempts = 0;
+      final r = CallRecord(
+        roomId: '!r:server',
+        transcripts: await sinkWith(() => spokenWord('hola')),
+        sendEvent: (content, txid) async {
+          written.add(content);
+          return r'$card';
+        },
+        analytics: (eventId, uses, language) async {
+          attempts++;
+          throw const CallAnalyticsNotStored('the store was closed');
+        },
+      );
+
+      await r.finish(
+        duration: const Duration(seconds: 30),
+        video: false,
+        writeTimelineEvent: true,
+        anchorEventId: r'$ring',
+      );
+      final afterFirst = attempts;
+      expect(afterFirst, greaterThan(0));
+
+      await r.finish(
+        duration: const Duration(seconds: 30),
+        video: false,
+        writeTimelineEvent: true,
+        anchorEventId: r'$ring',
+      );
+      expect(
+        attempts,
+        greaterThan(afterFirst),
+        reason: 'a credit that stored nothing was never tried again',
+      );
+    });
+
     test('every writer stamps the same key field', () async {
       final r = record(await sinkWith(() => spokenWord('hola')));
       await r.writeCard(

@@ -24,6 +24,21 @@ typedef CallAnalyticsSink =
 /// screen is live but it runs after the call ends, and the user hanging up is
 /// exactly the moment that screen goes away. A recorder that needed the screen
 /// would lose the analytics of every call that ended normally.
+/// The analytics sink saying it stored NOTHING.
+///
+/// Only this failure is safe to retry. Anything else may have written the
+/// uses already, and crediting them twice records the learner as having said
+/// everything twice -- their counts, and the proficiency drawn from them,
+/// quietly wrong.
+class CallAnalyticsNotStored implements Exception {
+  final Object cause;
+
+  const CallAnalyticsNotStored(this.cause);
+
+  @override
+  String toString() => 'CallAnalyticsNotStored: $cause';
+}
+
 class CallRecord {
   final CallEventSender sendEvent;
   final CallAnalyticsSink analytics;
@@ -296,7 +311,16 @@ class CallRecord {
     // lifecycle calls this twice, so without this the SECOND call was a
     // duplicate rather than a retry.
     _credited = true;
-    await analytics(eventId, uses, language!);
+    try {
+      await analytics(eventId, uses, language!);
+    } on CallAnalyticsNotStored catch (e, s) {
+      // Nothing was written, so there is nothing to double. Putting the flag
+      // back is the only way this learner's speech gets another chance: the
+      // ordinary lifecycle calls this again, and without it that second call
+      // returned immediately and the words were gone.
+      _credited = false;
+      Logs().w('The call\'s speech was not credited; it can be retried', e, s);
+    }
   }
 
   /// How long a call in the timeline lasted, read from its content.

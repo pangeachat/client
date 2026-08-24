@@ -30,6 +30,7 @@ import 'package:fluffychat/pangea/common/config/dev_login.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
@@ -345,7 +346,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           );
           return;
         }
-        await service.updateService.addAnalytics(eventId, uses, language);
+        try {
+          await service.updateService.addAnalytics(eventId, uses, language);
+        } on AnalyticsNotStoredException catch (e) {
+          // Said in the call's own terms, so the record knows this one is
+          // safe to try again and every other failure is not.
+          throw CallAnalyticsNotStored(e.cause);
+        }
       },
       onReleased: (session) {
         if (activeCall.value == session) activeCall.value = null;

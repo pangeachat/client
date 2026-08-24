@@ -56,6 +56,22 @@ class AnalyticsStreamUpdate {
   });
 }
 
+/// A local analytics update that got nowhere.
+///
+/// Thrown when the work BEFORE the local write fails, so nothing was stored.
+/// The distinction matters to anything that credits once and only once -- a
+/// call's speech, most of all: a failure that stored nothing can be tried
+/// again, and one that stored something cannot, because trying again would
+/// count the same words twice.
+class AnalyticsNotStoredException implements Exception {
+  final Object cause;
+
+  const AnalyticsNotStoredException(this.cause);
+
+  @override
+  String toString() => 'AnalyticsNotStoredException: $cause';
+}
+
 class AnalyticsDataService {
   _AnalyticsClient? _analyticsClient;
 
@@ -643,11 +659,21 @@ class AnalyticsDataService {
         .toList();
     final updateIds = addedConstructs.map((c) => c.identifier).toSet();
 
-    final prevData = await derivedData(language);
-    final prevConstructs = await getConstructUses(updateIds.toList(), language);
+    // Everything up to the local write can fail, and a caller that has
+    // already marked the work done -- a call crediting a learner's speech
+    // once and only once -- needs to tell "nothing landed" from "it landed
+    // and something after it failed". Only the first is safe to try again.
+    final DerivedAnalyticsDataModel prevData;
+    final Map<ConstructIdentifier, ConstructUses> prevConstructs;
+    try {
+      prevData = await derivedData(language);
+      prevConstructs = await getConstructUses(updateIds.toList(), language);
 
-    _invalidateCaches();
-    await _ensureInitialized();
+      _invalidateCaches();
+      await _ensureInitialized();
+    } catch (e, s) {
+      Error.throwWithStackTrace(AnalyticsNotStoredException(e), s);
+    }
 
     final blocked = blockedConstructs;
     final newUnusedConstructs = updateIds
