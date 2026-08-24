@@ -36,8 +36,23 @@ Different interactions contribute different amounts of XP, reflecting effort. Ea
 - **Correct practice answers** (emoji matching, meaning selection, listening) — moderate XP
 - **Wrong practice answers** — a small negative XP value, deliberately, to discourage guessing through a multiple-choice item. Skipped or unanswered items are worth 0. See `ConstructUseTypeEnum.pointValue` for the per-type values.
 - **Using a word in writing** (via the choreographer) — XP based on the construct use type
+- **Hearing a word** through read-aloud or voice-message playback — 0 XP. The exposure is the data; see [Listening exposure](#listening-exposure).
 
 Each data point is stored as a [`OneConstructUse`](../../lib/features/analytics/constructs_model.dart) which includes construct identifier, use type, timestamp, and messageId.
+
+### Listening exposure
+
+Receptive exposure per word is a variable language researchers design studies around, so hearing a lemma is recorded as a construct use in its own right (`ConstructUseTypeEnum.hrd`). It is **worth 0 XP** — awarding points for audio the learner did not ask for would be XP inflation, and the count is what the data is for. It is vocab-only and gated on `lemma.saveVocab`, the same filter every other lemma-level signal uses.
+
+Every read-aloud surface mints it, not just whole messages: word taps and practice-choice audio are listening too. That deliberately overlaps `click` and the `corWL` / `corLA` family, which record the same moment for different reasons — one counts what was heard, the others what was looked up or answered. Exposure is minted only on a **completed** playback, because read-aloud holds a single slot and stops on drafting, selection and focus loss; minting at the start would bank words that were never spoken.
+
+An exposure use **never carries a source event id or room id.** The listening lane drops both at the point of collection on the grounds that a per-student record of which peers a learner attends to is a social-graph fact about a third party (see [`DosageAudioEvent`](../../lib/features/dosage/dosage_audio_event.dart)), and a lemma-level record derived from someone else's message would reintroduce exactly that, with content attached. Changing this is a privacy decision, not a schema decision.
+
+Exposure is excluded from `sentByUser` and returns `null` from `summaryEnumType`, so it reaches neither the typed-words counter nor the correct/incorrect buckets: it is neither. The bucket split in [`SpaceAnalyticsSummaryModel`](../../lib/routes/chat/chat_details/space_analytics/space_analytics_summary_model.dart) keys on the sign of `xp` rather than on that enum, so it needs its own guard there — a 0-XP use otherwise lands in *incorrect*.
+
+**Bucketing.** Exposure fires far more often than production or practice, and nothing in the analytics store ever prunes or compacts uses. So exposures accumulate in memory ([`ListeningExposureBuffer`](../../lib/features/analytics/listening_exposure_buffer.dart)) and are written as one row per lemma per window carrying an explicit `count`, rather than one row per event. The count is authoritative — never infer it from the number of rows.
+
+The window is **five minutes**, and its ceiling is not arbitrary: construct-use timestamps double as corroboration anchors for engagement spans, matched within ±10 minutes with no type filter. A bucket therefore carries a real instant inside itself (its last exposure), never a synthetic boundary, and the window must stay inside the corroboration window — a day-long bucket would carry one anchor and stop vouching for the rest of the day, which bites hardest in the passive listening session where exposure rows are the only anchors a learner has.
 
 ### Construct Deduplication
 
@@ -54,6 +69,8 @@ The vocab list view shows a list of tiles, one for each vocab construct, each wi
 Both list views show a button at the top to launch practice (See [practice exercises instructions](practice-exercises.instructions.md) for more details on analytics practice exercises), and a "more" button which expands a popup menu containing additional options, e.g. the download button, a button to navigate to the blocked constructs page, etc. The "more" button is hidden if it has no content, like in a morph construct list with developer mode turned off.
 
 Construct details pages show definitions, canonical examples, and user-generated usage examples for individual constructs.
+
+On a construct details page the usage rows are one mark per scored use — green earned XP, red lost it. Zero-XP uses are not marks: exposure alone would outnumber everything else and turn the row into a wall. Listening exposure appears instead as a single count on the listening row, which reads the same at 24 as at 2,400. Anything added later that fires at exposure's frequency belongs in that shape too, not in the marks.
 
 ### Blocking Constructs
 
