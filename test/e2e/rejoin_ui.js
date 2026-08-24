@@ -125,8 +125,22 @@ h.refuseIfAnotherRunIsLive();
   // The crumb is what makes a return possible. Read it BEFORE the reload:
   // a null here is the app failing to drop it, which is a different bug
   // from the reload failing to find it.
+  //
+  // Found by PREFIX: the crumb is stored per account
+  // (`...breadcrumb.<clientName>`), and reading the bare key printed null for
+  // a device that had one -- under a Return offer that was working, which is
+  // exactly the sort of diagnostic that sends the next person hunting a bug
+  // that is not there.
   const crumbBefore = await B.page.evaluate(
-    () => window.localStorage.getItem('flutter.pangea.call.breadcrumb'));
+    () => {
+      for (let i = 0; i < window.localStorage.length; i++) {
+        const key = window.localStorage.key(i) || '';
+        if (key.startsWith('flutter.pangea.call.breadcrumb')) {
+          return window.localStorage.getItem(key);
+        }
+      }
+      return null;
+    });
   console.log('   B breadcrumb BEFORE reload:', crumbBefore);
   console.log('   B in call before reload:', await mx.hasMembership(B.token, ROOM_ID, B.userId));
 
@@ -137,7 +151,8 @@ h.refuseIfAnotherRunIsLive();
   if (!alive) {
     const diag = await B.page.evaluate(() => ({
       keys: Object.keys(window.localStorage).length,
-      hasCrumb: !!window.localStorage.getItem('flutter.pangea.call.breadcrumb'),
+      hasCrumb: Object.keys(window.localStorage)
+          .some((k) => k.startsWith('flutter.pangea.call.breadcrumb')),
       glass: !!document.querySelector('flt-glass-pane'),
       semantics: !!document.querySelector('flt-semantics-host'),
       ready: document.readyState,
@@ -149,7 +164,15 @@ h.refuseIfAnotherRunIsLive();
   // Diagnostics before judging: is the crumb there, is A still in the call,
   // and what does B's own log say about the scan?
   const crumb = await B.page.evaluate(
-    () => window.localStorage.getItem('flutter.pangea.call.breadcrumb'));
+    () => {
+      for (let i = 0; i < window.localStorage.length; i++) {
+        const key = window.localStorage.key(i) || '';
+        if (key.startsWith('flutter.pangea.call.breadcrumb')) {
+          return window.localStorage.getItem(key);
+        }
+      }
+      return null;
+    });
   console.log('   B breadcrumb after reload:', crumb);
   console.log('   A still in the call:',
     await mx.hasMembership(A.token, ROOM_ID, A.userId));
