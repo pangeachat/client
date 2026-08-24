@@ -321,6 +321,40 @@ void main() {
       },
     );
 
+    test(
+      'one chunk failing does not stop close waiting for the rest',
+      () async {
+        // BOTH are still running when the call ends. A failure arrives here as
+        // an error on a future, and letting it out of the wait made close()
+        // itself throw: the caller then treated the whole flush as failed, and
+        // the loop that is the only thing watching for a chunk retried WHILE we
+        // waited never ran again.
+        final failing = Completer<SpeechToTextResponseModel>();
+        final slow = Completer<SpeechToTextResponseModel>();
+        var calls = 0;
+        final s = CallTranscriptSink(
+          userL1: 'en',
+          userL2: 'es',
+          transcribe: (_) => calls++ == 0 ? failing.future : slow.future,
+        );
+
+        unawaited(s.deliver(chunk(0)).catchError((_) {}));
+        unawaited(s.deliver(chunk(1)));
+        await pumpEventQueue();
+
+        final closing = s.close();
+        failing.completeError(StateError('provider refused'));
+        slow.complete(spokenWord('hola'));
+
+        await closing;
+        expect(
+          s.hasTranscript,
+          isTrue,
+          reason: 'the chunk that DID come back was not kept',
+        );
+      },
+    );
+
     test('call speech is credited as pvc, which counts as speaking', () {
       // The type the client emits has to be one the server scores; an unknown
       // one silently scores zero rather than failing.

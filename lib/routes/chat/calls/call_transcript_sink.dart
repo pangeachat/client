@@ -161,9 +161,30 @@ class CallTranscriptSink implements CallAudioSink {
     // Waited for, not abandoned. The call's words are read as soon as this
     // returns, and a transcription still running would simply be missing from
     // them — the learner would lose that stretch with nothing to show why.
+    //
+    // One chunk failing is not a reason to stop waiting for the others. Each
+    // failure is already logged where it happens and releases its index for a
+    // retry, so it arrives here as an error on a future -- and letting that
+    // out of the wait ended the loop below, which is the only thing watching
+    // for a retry that started while we waited.
+    //
+    // The budget is for the whole close, not for each turn of the loop: a
+    // chunk that keeps failing and keeps being retried would otherwise hold
+    // the end of a call open a minute at a time, for as long as it kept
+    // failing.
+    final deadline = DateTime.now().add(_settleWithin);
     while (_running.isNotEmpty) {
+      final left = deadline.difference(DateTime.now());
+      if (left <= Duration.zero) {
+        Logs().w(
+          'Gave up waiting for a call transcription; its words are lost',
+        );
+        return;
+      }
       try {
-        await Future.wait(List.of(_running.values)).timeout(_settleWithin);
+        await Future.wait(
+          List.of(_running.values).map((work) => work.catchError((_) {})),
+        ).timeout(left);
       } on TimeoutException {
         Logs().w(
           'Gave up waiting for a call transcription; its words are lost',
