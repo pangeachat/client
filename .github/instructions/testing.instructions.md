@@ -4,7 +4,7 @@ applyTo: "**/*test*,**/test/**,**/integration_test/**"
 
 # Testing Guide (Client)
 
-Follows the [cross-repo testing strategy](../../../.github/.github/instructions/testing.instructions.md) — see that doc for tier definitions (unit / integration / e2e), conventions, and rationale. This doc covers client-specific details only.
+Follows the [cross-repo testing strategy](../../../.github/.github/instructions/testing.instructions.md) — see that doc for the bucket framework (unit / integration / smoke / eval / load), conventions, and rationale. This doc covers client-specific details only.
 
 ## Stack
 
@@ -45,7 +45,7 @@ e2e/
 
 ## Where choreo/CMS tests live
 
-The PR runner (`flutter test` via `integrate.yaml`) is a plain ubuntu-latest with no choreo credentials and no running server. Nothing in `test/` can make a real network call. Three tiers cover the space:
+The PR runner (`flutter test` via `integrate.yaml`) is a plain ubuntu-latest with no choreo credentials and no running server. Nothing in `test/` can make a real network call. Two tiers cover the space:
 
 | Goal | Location | CI gate | Mock mechanism |
 |---|---|---|---|
