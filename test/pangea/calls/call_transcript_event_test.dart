@@ -138,6 +138,38 @@ void main() {
     });
   });
 
+  group('accounting that cannot describe its own content', () {
+    test('captured nothing yet shipped speech is incoherent', () {
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': [
+          {'text': 'I spoke'},
+        ],
+        'chunks_captured': 0,
+        'chunks_transcribed': 0,
+        'drain_complete': true,
+      })!;
+
+      expect(parsed.accounting.incoherent, isTrue);
+      expect(parsed.accounting.writerAdmitsGaps, isTrue);
+    });
+
+    test('captured nothing and shipped nothing is coherent', () {
+      // A speaker muted throughout genuinely captured nothing. That must stay
+      // a clean, complete answer or every silent half would look broken.
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': <dynamic>[],
+        'chunks_captured': 0,
+        'chunks_transcribed': 0,
+        'drain_complete': true,
+      })!;
+
+      expect(parsed.accounting.incoherent, isFalse);
+      expect(parsed.accounting.writerAdmitsGaps, isFalse);
+    });
+  });
+
   group('reader ceilings', () {
     test('a vast segment list is bounded AND the half is marked shortened', () {
       // Room content is untrusted. Two separate failures here: doing unbounded

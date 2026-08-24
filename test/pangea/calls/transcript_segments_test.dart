@@ -152,6 +152,35 @@ void main() {
       expect(segments.map((s) => s.text), ['antes', 'texto real']);
     });
 
+    test('timings covering only part of the text lose to the full text', () {
+      // "hello world" timed as ["hello"] must not become "hello". A partial
+      // timing list is not a finer cut of the text, it is an incomplete one.
+      final segments = buildSegments([
+        _response('hello world', timings: [('hello', 0, 100)]),
+      ]);
+
+      expect(segments.map((s) => s.text), ['hello world']);
+    });
+
+    test('timings covering the text are still preferred', () {
+      // The coverage floor must not fire on ordinary input, or word timings
+      // would never be used and every chunk would be one wall of text.
+      final segments = buildSegments([
+        _response(
+          'hola que tal muy bien',
+          timings: [
+            ('hola', 0, 300),
+            ('que', 350, 600),
+            ('tal', 620, 900),
+            ('muy', 2300, 2600),
+            ('bien', 2650, 2900),
+          ],
+        ),
+      ]);
+
+      expect(segments.map((s) => s.text), ['hola que tal', 'muy bien']);
+    });
+
     test('no usable chunks yields no segments', () {
       expect(buildSegments([_empty]), isEmpty);
       expect(buildSegments([]), isEmpty);

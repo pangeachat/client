@@ -166,17 +166,31 @@ void main() {
       });
 
       test('equal content falls back to the earlier event', () {
+        // The two must be DISTINGUISHABLE and the same length, or reversing the
+        // tie-break would still pass and the test would prove nothing.
         final transcript = assembleTranscript(
           candidates: [
-            _candidate(alice, texts: ['hola'], ts: 900),
-            _candidate(alice, texts: ['hola'], ts: 100),
+            _candidate(alice, texts: ['tarde'], ts: 900),
+            _candidate(alice, texts: ['antes'], ts: 100),
           ],
           expectedSenders: [alice],
         );
 
-        // Both carry the same text; the tie-break is deterministic, so a
-        // re-read cannot reorder what the user saw.
-        expect(_halfFor(transcript, alice).segments.single.text, 'hola');
+        expect(_halfFor(transcript, alice).segments.single.text, 'antes');
+      });
+
+      test('a half padded by repeating itself does not win', () {
+        // Most-content-wins, naively on raw length, let a buggy or modified
+        // client beat the truthful half just by duplicating its text.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(alice, texts: ['hello'], ts: 100),
+            _candidate(alice, texts: ['hello', 'hello', 'hello'], ts: 200),
+          ],
+          expectedSenders: [alice],
+        );
+
+        expect(_halfFor(transcript, alice).segments, hasLength(1));
       });
 
       test('one half per sender, never two', () {
@@ -196,16 +210,21 @@ void main() {
       });
     });
 
-    test('an unexpected sender is shown, not silently dropped', () {
+    test('a non-participant gets no section at all', () {
+      // This test previously asserted the opposite -- that an unexpected sender
+      // was "odd enough to show". That was wrong: a transcript event from
+      // someone who was not in the call is a bug or an attack, and giving it a
+      // section lends it the standing of a real half. It also let one room
+      // member force unbounded sections by writing under many sender ids.
       final transcript = assembleTranscript(
-        candidates: [_candidate(alice), _candidate('@mallory:evil.com')],
+        candidates: [
+          _candidate(alice),
+          _candidate('@mallory:evil.com', texts: ['I was never here']),
+        ],
         expectedSenders: [alice],
       );
 
-      expect(transcript.halves.map((h) => h.senderId), [
-        alice,
-        '@mallory:evil.com',
-      ]);
+      expect(transcript.halves.map((h) => h.senderId), [alice]);
     });
 
     test('expected senders keep their order across reads', () {
@@ -230,6 +249,25 @@ void main() {
         ).segments.add(const TranscriptSegment('injected')),
         throwsUnsupportedError,
       );
+    });
+
+    test('a PARTIAL accounting is not a declaration', () {
+      // chunks_captured alone used to count as a full declaration, so the
+      // fields it omitted defaulted to optimistic values and the half read
+      // complete -- turning silence into an assertion.
+      final transcript = assembleTranscript(
+        candidates: [
+          TranscriptCandidate(
+            senderId: alice,
+            originServerTs: 100,
+            segments: const [TranscriptSegment('algo')],
+            accounting: HalfAccounting.fromJson(const {'chunks_captured': 2}),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).state, HalfState.incomplete);
     });
 
     test('a writer that asserted nothing is not presented as complete', () {

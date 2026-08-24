@@ -107,7 +107,16 @@ class CallTranscriptContent {
 
     final langCode = content['lang_code'];
 
-    final accounting = HalfAccounting.fromJson(content);
+    var accounting = HalfAccounting.fromJson(content);
+
+    // Captured nothing, yet shipped speech. The accounting cannot describe the
+    // content it arrived with, so it is not trustworthy about completeness
+    // either -- and only here are both visible at once.
+    if (segments.isNotEmpty &&
+        accounting.declared &&
+        accounting.chunksCaptured == 0) {
+      accounting = accounting.asIncoherent();
+    }
 
     return CallTranscriptContent(
       callKey: callKey,

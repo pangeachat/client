@@ -1,5 +1,18 @@
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 
+/// The weight of a half, counting each distinct utterance once.
+///
+/// Duplicate-selection compares this rather than raw length, so a half padded
+/// by repeating its own text cannot outweigh the truthful one it copies.
+int distinctContentLength(List<TranscriptSegment> segments) {
+  final seen = <String>{};
+  var total = 0;
+  for (final segment in segments) {
+    if (seen.add(segment.text)) total += segment.text.length;
+  }
+  return total;
+}
+
 /// Why a speaker's half reads the way it does.
 ///
 /// Three states, kept distinct on purpose. Someone opening a transcript is
@@ -80,6 +93,17 @@ class HalfAccounting {
     'drain_complete': drainComplete,
   };
 
+  /// This accounting, marked as unable to describe its own content.
+  HalfAccounting asIncoherent() => HalfAccounting(
+    chunksCaptured: chunksCaptured,
+    chunksTranscribed: chunksTranscribed,
+    truncated: truncated,
+    segmentsOmitted: segmentsOmitted,
+    drainComplete: drainComplete,
+    declared: declared,
+    incoherent: true,
+  );
+
   /// A half whose segments the READER dropped at its own ceiling. Distinct from
   /// [truncated], which is the writer's own admission: this one is our doing,
   /// and hiding it would let us present a half we shortened as whole.
@@ -106,7 +130,14 @@ class HalfAccounting {
     final captured = intOr('chunks_captured', 0);
     final rawTranscribed = intOr('chunks_transcribed', 0);
     return HalfAccounting(
-      declared: raw.containsKey('chunks_captured'),
+      // Every field, not just one. A content carrying `chunks_captured` alone
+      // was treated as a full declaration, so the fields it omitted defaulted
+      // to their optimistic values and the half read complete -- turning
+      // silence into an assertion.
+      declared:
+          raw.containsKey('chunks_captured') &&
+          raw.containsKey('chunks_transcribed') &&
+          raw.containsKey('drain_complete'),
       incoherent: rawTranscribed > captured,
       chunksCaptured: captured,
       // Clamped: a half claiming more transcribed than captured is malformed,
@@ -140,8 +171,7 @@ class TranscriptHalf {
   /// Measured from the text present, never read off a self-declared count:
   /// choosing between duplicates by a number the content supplied would let an
   /// event claiming 999 chunks and carrying nothing beat a genuine one.
-  int get contentLength =>
-      segments.fold(0, (sum, segment) => sum + segment.text.length);
+  int get contentLength => distinctContentLength(segments);
 }
 
 /// A parsed `pangea.call_transcript` event, before assembly picks between
@@ -159,8 +189,10 @@ class TranscriptCandidate {
     required this.accounting,
   });
 
-  int get contentLength =>
-      segments.fold(0, (sum, segment) => sum + segment.text.length);
+  /// Distinct content, so padding a half by repeating itself wins nothing:
+  /// ["hello"] and ["hello", "hello"] weigh the same, and the tie-break then
+  /// prefers the earlier -- which is the genuine one.
+  int get contentLength => distinctContentLength(segments);
 }
 
 /// The assembled transcript of one call.
@@ -201,13 +233,15 @@ CallTranscript assembleTranscript({
     }
   }
 
-  // Expected senders first and in order, so the view is stable across reads;
-  // then anyone who wrote but was not expected, which is odd enough to show
-  // rather than hide.
-  final senders = <String>[
-    ...expectedSenders,
-    ...bySender.keys.where((id) => !expectedSenders.contains(id)),
-  ];
+  // ONLY the call's participants get a section.
+  //
+  // An earlier version also showed halves from senders who were not in the
+  // call, reasoning that it was odd enough to surface. That was wrong: a
+  // transcript event from a non-participant is a bug or an attack, and giving
+  // it a section in a two-person call lends it the same standing as a real
+  // half. It also let one hostile room member force unbounded sections by
+  // writing under many sender ids.
+  final senders = expectedSenders;
 
   final halves = <TranscriptHalf>[];
   for (final senderId in senders) {
