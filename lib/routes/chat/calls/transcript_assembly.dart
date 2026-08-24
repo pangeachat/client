@@ -48,6 +48,7 @@ class HalfAccounting {
     this.segmentsOmitted = 0,
     this.drainComplete = true,
     this.declared = false,
+    this.incoherent = false,
   });
 
   /// Whether this half is known NOT to be everything that was said — either
@@ -56,7 +57,17 @@ class HalfAccounting {
       !declared ||
       truncated ||
       !drainComplete ||
-      chunksTranscribed < chunksCaptured;
+      segmentsOmitted > 0 ||
+      chunksTranscribed < chunksCaptured ||
+      incoherent;
+
+  /// An accounting that cannot describe any real capture.
+  ///
+  /// A writer claiming more chunks transcribed than captured, or claiming it
+  /// captured nothing while shipping segments, has told us something that
+  /// cannot be true. Clamping such a half into shape made it read COMPLETE,
+  /// which hands a nonsense event more credibility than a truthful one.
+  final bool incoherent;
 
   Map<String, dynamic> toJson() => {
     'chunks_captured': chunksCaptured,
@@ -69,6 +80,19 @@ class HalfAccounting {
     'drain_complete': drainComplete,
   };
 
+  /// A half whose segments the READER dropped at its own ceiling. Distinct from
+  /// [truncated], which is the writer's own admission: this one is our doing,
+  /// and hiding it would let us present a half we shortened as whole.
+  HalfAccounting readerTruncated() => HalfAccounting(
+    chunksCaptured: chunksCaptured,
+    chunksTranscribed: chunksTranscribed,
+    truncated: true,
+    segmentsOmitted: segmentsOmitted,
+    drainComplete: drainComplete,
+    declared: declared,
+    incoherent: incoherent,
+  );
+
   /// Tolerant by design: room content is untrusted and a partial or foreign
   /// shape must degrade to "we know less about this half", never to an
   /// exception that takes the view down.
@@ -80,13 +104,15 @@ class HalfAccounting {
     }
 
     final captured = intOr('chunks_captured', 0);
+    final rawTranscribed = intOr('chunks_transcribed', 0);
     return HalfAccounting(
       declared: raw.containsKey('chunks_captured'),
+      incoherent: rawTranscribed > captured,
       chunksCaptured: captured,
       // Clamped: a half claiming more transcribed than captured is malformed,
       // and letting it through would make `writerAdmitsGaps` read false for a
       // half that is nonsense.
-      chunksTranscribed: intOr('chunks_transcribed', 0).clamp(0, captured),
+      chunksTranscribed: rawTranscribed.clamp(0, captured),
       truncated: raw['truncated'] == true,
       segmentsOmitted: intOr('segments_omitted', 0),
       // Absent means unknown, and unknown must not read as "fine".

@@ -138,6 +138,65 @@ void main() {
     });
   });
 
+  group('reader ceilings', () {
+    test('a vast segment list is bounded AND the half is marked shortened', () {
+      // Room content is untrusted. Two separate failures here: doing unbounded
+      // work, and then presenting what survived as the whole of what was said.
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': [
+          for (var i = 0; i < 9000; i++) {'text': 'x'},
+        ],
+        'chunks_captured': 1,
+        'chunks_transcribed': 1,
+        'drain_complete': true,
+      })!;
+
+      expect(
+        parsed.segments.length,
+        lessThanOrEqualTo(CallTranscriptContent.maxSegments),
+      );
+      expect(parsed.accounting.truncated, isTrue);
+      expect(parsed.accounting.writerAdmitsGaps, isTrue);
+    });
+
+    test('one enormous segment cannot slip through whole', () {
+      // The running-total check used to run BEFORE adding, so a single vast
+      // segment was accepted in full and could then win duplicate selection on
+      // content length alone.
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': [
+          {'text': 'a' * 500000},
+        ],
+      })!;
+
+      expect(parsed.segments, isEmpty);
+      expect(parsed.accounting.truncated, isTrue);
+    });
+
+    test('a list of junk entries is not scanned to the end', () {
+      // Accepting nothing meant the accepted-segment cap never tripped, so a
+      // million nulls still cost a full scan.
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': List<Object?>.filled(50000, null),
+      })!;
+
+      expect(parsed.segments, isEmpty);
+      expect(parsed.accounting.truncated, isTrue);
+    });
+
+    test('an ordinary half is NOT marked shortened', () {
+      // The ceilings must not fire on real content, or every transcript would
+      // claim to be incomplete and the signal would mean nothing.
+      final parsed = CallTranscriptContent.fromJson(_content().toJson())!;
+
+      expect(parsed.segments, hasLength(2));
+      expect(parsed.accounting.truncated, isFalse);
+    });
+  });
+
   group('txnId', () {
     test('is stable for the same call and sender', () {
       expect(

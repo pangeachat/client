@@ -139,6 +139,19 @@ void main() {
       expect(segments.map((s) => s.text), ['texto real']);
     });
 
+    test('a LATER chunk with all-blank timings still falls back', () {
+      // The fallback used to ask whether any segment existed at all, so a
+      // blank-timing chunk was dropped whenever an earlier chunk had produced
+      // something -- losing speech, and only in calls long enough to have a
+      // second chunk.
+      final segments = buildSegments([
+        _response('antes'),
+        _response('texto real', timings: [('   ', 0, 100), ('', 200, 300)]),
+      ]);
+
+      expect(segments.map((s) => s.text), ['antes', 'texto real']);
+    });
+
     test('no usable chunks yields no segments', () {
       expect(buildSegments([_empty]), isEmpty);
       expect(buildSegments([]), isEmpty);

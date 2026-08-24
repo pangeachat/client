@@ -272,16 +272,36 @@ void main() {
       );
     });
 
-    test('transcribed is clamped to captured', () {
-      // A half claiming more transcribed than captured is nonsense; letting it
-      // through would make writerAdmitsGaps read false for a broken half.
+    test('a half claiming more transcribed than captured is INCOHERENT, '
+        'not clamped into looking complete', () {
+      // This test previously asserted the opposite -- that clamping made the
+      // half read complete. That was the bug: clamping a nonsense claim into
+      // shape gave a broken event more credibility than a truthful one.
       final accounting = HalfAccounting.fromJson({
         'chunks_captured': 2,
         'chunks_transcribed': 99,
       });
 
-      expect(accounting.chunksTranscribed, 2);
-      expect(accounting.writerAdmitsGaps, isFalse);
+      expect(
+        accounting.chunksTranscribed,
+        2,
+        reason: 'still clamped for display',
+      );
+      expect(accounting.incoherent, isTrue);
+      expect(accounting.writerAdmitsGaps, isTrue);
+    });
+
+    test('omitted segments alone mean the writer admits gaps', () {
+      // segments_omitted used to be ignored unless `truncated` was also set,
+      // so a writer that dropped speech and said so could still read complete.
+      final accounting = HalfAccounting.fromJson({
+        'chunks_captured': 2,
+        'chunks_transcribed': 2,
+        'segments_omitted': 4,
+        'drain_complete': true,
+      });
+
+      expect(accounting.writerAdmitsGaps, isTrue);
     });
 
     test('round-trips its own json', () {

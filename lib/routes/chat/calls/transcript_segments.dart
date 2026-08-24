@@ -73,6 +73,7 @@ List<TranscriptSegment> buildSegments(
     // whatever is being built rather than being dropped or guessed at.
     final words = <String>[];
     int? previousEnd;
+    final countBefore = segments.length;
 
     for (final timing in timings) {
       final start = timing.startTimeMs;
@@ -98,7 +99,12 @@ List<TranscriptSegment> buildSegments(
 
     // Every timing was empty or whitespace, which would silently lose a chunk
     // the provider did read. The chunk's own text is the fallback.
-    if (words.isEmpty && segments.isEmpty) _add(segments, transcript.text);
+    //
+    // Judged PER CHUNK. Asking whether `segments` is empty overall meant a
+    // later chunk with all-blank timings was dropped whenever an earlier chunk
+    // had produced anything -- silently losing speech, and only in calls long
+    // enough to have a second chunk.
+    if (segments.length == countBefore) _add(segments, transcript.text);
   }
 
   return List.unmodifiable(segments);

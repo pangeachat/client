@@ -51,6 +51,13 @@ class CallTranscriptContent {
   static const maxSegments = 2000;
   static const maxTotalChars = 60000;
 
+  /// How many RAW entries the reader will even look at.
+  ///
+  /// Separate from [maxSegments], which counts only the ones that parsed. A
+  /// list of a million nulls accepts nothing and so never reached that cap,
+  /// while still costing a full scan.
+  static const maxRawEntries = 4000;
+
   Map<String, dynamic> toJson() => {
     'call_key': callKey,
     'segments': [for (final segment in segments) segment.toJson()],
@@ -77,20 +84,39 @@ class CallTranscriptContent {
     // early, so a hostile list costs the reader a fixed amount of work.
     final segments = <TranscriptSegment>[];
     var totalChars = 0;
+    var examined = 0;
+    var shortened = rawSegments.length > maxRawEntries;
+
     for (final raw in rawSegments) {
-      if (segments.length >= maxSegments || totalChars >= maxTotalChars) break;
+      if (examined >= maxRawEntries || segments.length >= maxSegments) {
+        shortened = true;
+        break;
+      }
+      examined++;
       final segment = TranscriptSegment.fromJson(raw);
       if (segment == null) continue;
+      // Checked BEFORE adding, against this segment's own size: testing the
+      // running total first let a single vast segment through whole.
+      if (totalChars + segment.text.length > maxTotalChars) {
+        shortened = true;
+        break;
+      }
       segments.add(segment);
       totalChars += segment.text.length;
     }
 
     final langCode = content['lang_code'];
 
+    final accounting = HalfAccounting.fromJson(content);
+
     return CallTranscriptContent(
       callKey: callKey,
       segments: segments,
-      accounting: HalfAccounting.fromJson(content),
+      // A half the READER shortened must not read as whole. Dropping speech
+      // and then presenting the remainder as complete is the one outcome this
+      // feature cannot produce, and it does not matter whether the writer or
+      // the reader did the dropping.
+      accounting: shortened ? accounting.readerTruncated() : accounting,
       langCode: langCode is String && langCode.isNotEmpty ? langCode : null,
     );
   }
