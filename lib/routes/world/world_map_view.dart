@@ -20,6 +20,7 @@ import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_markers_layer.dart';
 import 'package:fluffychat/routes/world/large_markers_layer.dart';
 import 'package:fluffychat/routes/world/map_exit_tracker.dart';
+import 'package:fluffychat/routes/world/trackpad_pinch_zoom.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
@@ -788,6 +789,10 @@ class _WorldMapViewState extends State<WorldMapView> {
         // note on MapOptions below.)
         child: Listener(
           onPointerDown: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+          // Trackpad pinch — the gesture flutter_map itself ignores on the
+          // web ([claimTrackpadPinch]).
+          onPointerSignal: (event) =>
+              claimTrackpadPinch(event, widget.controller.pinchZoom),
           child: LayoutBuilder(
             builder: (context, constraints) {
               // The zoom-out floor is viewport-derived (#7813): out to where one
