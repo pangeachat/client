@@ -71,11 +71,7 @@ void main() {
       final segments = buildSegments([
         _response(
           'hola que tal',
-          timings: [
-            ('hola', 0, 300),
-            ('que', 500, 700),
-            ('tal', 900, 1100),
-          ],
+          timings: [('hola', 0, 300), ('que', 500, 700), ('tal', 900, 1100)],
         ),
       ]);
 
@@ -110,11 +106,7 @@ void main() {
       final segments = buildSegments([
         _response(
           'uno dos tres',
-          timings: [
-            ('uno', 0, 300),
-            ('dos', null, null),
-            ('tres', 400, 700),
-          ],
+          timings: [('uno', 0, 300), ('dos', null, null), ('tres', 400, 700)],
         ),
       ]);
 
@@ -123,10 +115,7 @@ void main() {
 
     test('timings that are all blank fall back to the chunk text', () {
       final segments = buildSegments([
-        _response(
-          'texto real',
-          timings: [('   ', 0, 100), ('', 200, 300)],
-        ),
+        _response('texto real', timings: [('   ', 0, 100), ('', 200, 300)]),
       ]);
 
       expect(segments.map((s) => s.text), ['texto real']);

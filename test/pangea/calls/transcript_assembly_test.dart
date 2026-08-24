@@ -184,7 +184,10 @@ void main() {
           expectedSenders: [alice],
         );
 
-        expect(transcript.halves.where((h) => h.senderId == alice), hasLength(1));
+        expect(
+          transcript.halves.where((h) => h.senderId == alice),
+          hasLength(1),
+        );
       });
     });
 
@@ -216,9 +219,10 @@ void main() {
       );
 
       expect(
-        () => _halfFor(transcript, alice).segments.add(
-          const TranscriptSegment('injected'),
-        ),
+        () => _halfFor(
+          transcript,
+          alice,
+        ).segments.add(const TranscriptSegment('injected')),
         throwsUnsupportedError,
       );
     });
@@ -228,14 +232,20 @@ void main() {
     test('tolerates a malformed shape rather than throwing', () {
       expect(HalfAccounting.fromJson(null).chunksCaptured, 0);
       expect(HalfAccounting.fromJson('nonsense').chunksCaptured, 0);
-      expect(HalfAccounting.fromJson({'chunks_captured': 'lots'}).chunksCaptured, 0);
+      expect(
+        HalfAccounting.fromJson({'chunks_captured': 'lots'}).chunksCaptured,
+        0,
+      );
     });
 
     test('a missing drain flag reads as unknown, and unknown is not fine', () {
       // Absent must not be optimistic: a foreign or older writer that says
       // nothing about its drain should not be presented as complete.
       expect(HalfAccounting.fromJson({}).drainComplete, isTrue);
-      expect(HalfAccounting.fromJson({'drain_complete': false}).drainComplete, isFalse);
+      expect(
+        HalfAccounting.fromJson({'drain_complete': false}).drainComplete,
+        isFalse,
+      );
     });
 
     test('transcribed is clamped to captured', () {
