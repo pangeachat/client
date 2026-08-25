@@ -148,14 +148,8 @@ void main() {
     });
   });
 
-  group('when the peer has left and cannot be identified', () {
-    test('one call still draws ONE card, not two', () {
-      // The case this feature is built around. Their card syncs late, we write
-      // a survivor card for the same call, then they leave the room -- so the
-      // peer can no longer be worked out. Asking the raw set of sides whether
-      // their id belongs made it answer false for a real person, so our later
-      // card was never compared against their genuinely earlier one and both
-      // drew: one call, twice, in the conversation.
+  group('when the peer cannot be identified', () {
+    Room wideRoom() {
       client.accountData.remove('m.direct');
       final wide = Room(
         id: '!wide:server',
@@ -183,34 +177,91 @@ void main() {
           ),
         );
       }
+      return wide;
+    }
 
-      Event cardFrom(String sender, String id, int ts) => Event(
-        type: PangeaEventTypes.call,
-        content: {
-          'msgtype': PangeaEventTypes.call,
-          'answered': true,
-          CallRecord.callKeyField: 'k',
-        },
-        senderId: sender,
-        eventId: id,
-        originServerTs: DateTime.fromMillisecondsSinceEpoch(ts),
-        room: wide,
-        status: EventStatus.synced,
+    Event cardFrom(Room r, String sender, String id, int ts) => Event(
+      type: PangeaEventTypes.call,
+      content: {
+        'msgtype': PangeaEventTypes.call,
+        'answered': true,
+        CallRecord.callKeyField: 'k',
+      },
+      senderId: sender,
+      eventId: id,
+      originServerTs: DateTime.fromMillisecondsSinceEpoch(ts),
+      room: r,
+      status: EventStatus.synced,
+    );
+
+    test('a card that cannot vouch for itself cannot hide the real one', () {
+      // The attack. A third party who was in the room during the call knows
+      // the call key -- it is ordinary room state -- so they can post a card
+      // carrying it with an earlier timestamp than the real one, which is
+      // written only at hangup. Letting that suppress made the truthful card
+      // vanish and took the transcript's only tap target with it.
+      final wide = wideRoom();
+      final forged = cardFrom(wide, '@third:server', r'$forged', 1000);
+      final real = cardFrom(
+        wide,
+        '@test:fakeServer.notExisting',
+        r'$real',
+        2000,
       );
 
-      final theirs = cardFrom('@a:server', r'$theirs', 1000);
-      final mine = cardFrom('@test:fakeServer.notExisting', r'$mine', 2000);
-      final all = [theirs, mine];
-
       expect(
-        CallTimelineEvent.isDuplicateOfEarlier(theirs, all),
+        CallTimelineEvent.isDuplicateOfEarlier(real, [forged, real]),
         isFalse,
-        reason: 'the earliest card is the one that draws',
+        reason: 'the real card still draws',
+      );
+    });
+
+    test('the stated cost: two genuine cards for one call both draw', () {
+      // Deliberate, and a reversal of the earlier choice here. Neither card
+      // can prove itself entitled to suppress the other while the peer is
+      // unidentifiable, so both are kept. A visible duplicate of a call that
+      // really happened is a far better failure than a real call disappearing
+      // -- which is what preferring one card bought, once a forgery could be
+      // the one preferred.
+      final wide = wideRoom();
+      final theirs = cardFrom(wide, '@a:server', r'$theirs', 1000);
+      final mine = cardFrom(
+        wide,
+        '@test:fakeServer.notExisting',
+        r'$mine',
+        2000,
+      );
+
+      expect(
+        CallTimelineEvent.isDuplicateOfEarlier(mine, [theirs, mine]),
+        isFalse,
       );
       expect(
-        CallTimelineEvent.isDuplicateOfEarlier(mine, all),
+        CallTimelineEvent.isDuplicateOfEarlier(theirs, [theirs, mine]),
+        isFalse,
+      );
+    });
+
+    test('an identifiable peer still collapses the duplicate', () {
+      // The ordinary case has to keep working: when we can tell who the other
+      // side is, two cards for one call still draw once.
+      client.accountData['m.direct'] = BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@a:server': ['!r:server'],
+        },
+      );
+      final theirs = card(r'$theirs', key: 'k', ts: 1000);
+      final mine = card(
+        r'$mine',
+        key: 'k',
+        ts: 2000,
+        sender: '@test:fakeServer.notExisting',
+      );
+
+      expect(
+        CallTimelineEvent.isDuplicateOfEarlier(mine, [theirs, mine]),
         isTrue,
-        reason: 'and the later one is suppressed, peer identifiable or not',
       );
     });
   });

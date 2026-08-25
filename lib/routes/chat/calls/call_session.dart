@@ -633,7 +633,13 @@ class CallSession extends ChangeNotifier {
           e.type == PangeaEventTypes.call &&
           e.content[CallRecord.callKeyField] == key &&
           !e.status.isError &&
-          callCardCouldBeReal(e),
+          // PROVEN, for the same reason as suppression: this decides whether
+          // to SKIP writing the real card, so a card that cannot vouch for
+          // itself must not be able to stop us. Where the peer is unknown we
+          // write, and the conversation may show two cards for one call --
+          // which is visible and harmless, unlike the call having no card at
+          // all because a stranger's forgery told us one already existed.
+          callCardIsProvenReal(e),
     );
     if (already) return;
     Logs().i('No card arrived for this call; the survivor writes it');

@@ -644,6 +644,34 @@ void main() {
       expect(room.cards, hasLength(1));
     });
 
+    test("an unvouchable card does not stop the survivor writing", () async {
+      // The other half of the same attack. This check decides whether to SKIP
+      // writing the real card, so a card that cannot prove it came from a
+      // party to the call must not be able to stop us -- otherwise a stranger
+      // who was in the room during the call posts one carrying the key, the
+      // survivor stays quiet, the timeline correctly refuses to draw the
+      // forgery, and the call ends with no card from anybody.
+      final (session, room, _) = await answeredCall();
+      final client = room.client;
+      client.accountData.remove('m.direct');
+      session.timelineEventsOverride = () async => [
+        matrix.Event(
+          type: PangeaEventTypes.call,
+          content: {CallRecord.callKeyField: r'$caller-membership'},
+          senderId: '@third:server',
+          eventId: r'$unvouchable',
+          originServerTs: DateTime.now(),
+          room: matrix.Room(id: '!r:server', client: client),
+        ),
+      ];
+      session.endCall();
+      await pumpEventQueue();
+
+      await session.survivorCheckNowForTest();
+
+      expect(room.cards, hasLength(1), reason: 'the real card is written');
+    });
+
     test('the survivor never invents an answered call', () async {
       // A caller whose app dies mid-ring leaves a membership that still reads
       // as calling, so a call BACK looks like glare: peerAlsoPlaced turns on,

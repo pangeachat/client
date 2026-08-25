@@ -66,13 +66,43 @@ Set<String> _callSides(Room room) => {?room.client.userID, ?callPeerOf(room)};
 /// transcript it opens.
 ///
 /// Null is not a denial. When the peer is unknown nobody is excluded, which
-/// costs a forged card being drawn in a room we could not resolve, and saves
+/// costs a forged card being DRAWN in a room we could not resolve, and saves
 /// every real call in a room the other person has left. Losing a real call is
 /// the worse of the two and much the likelier: the forgery needs a hostile
 /// room member, and the peer leaving needs nothing at all.
+///
+/// This answer is for SHOWING a card and nothing else. Deciding whether one
+/// card may displace another, or stand in for one not yet written, is a
+/// different question with the opposite risk -- see [callCardIsProvenReal].
 bool callCardCouldBeReal(Event event) {
   final peer = callPeerOf(event.room);
   if (peer == null) return true;
+  return _callSides(event.room).contains(event.senderId);
+}
+
+/// Whether this card is PROVEN to come from somebody on the call.
+///
+/// The same question as [callCardCouldBeReal] with the unknown resolved the
+/// other way, because the consequence runs the other way. Showing a card we
+/// cannot vouch for adds something visible and harmless. Letting a card we
+/// cannot vouch for suppress another, or count as one already written,
+/// REMOVES a real record -- and removal is silent, and takes the transcript's
+/// only tap target with it.
+///
+/// One principle, two answers: an unknown is resolved toward keeping records,
+/// never toward removing them.
+///
+/// The cost is stated plainly: when the peer cannot be identified, two
+/// genuine cards for one call both draw, because neither can prove itself
+/// entitled to suppress the other. A visible duplicate of a call that really
+/// happened is a far better failure than a real call disappearing, which is
+/// what the permissive answer allowed -- a third party who was in the room
+/// during the call knows the call key, and a card carrying it and an earlier
+/// timestamp suppressed the truthful one and told the survivor not to bother
+/// writing at all.
+bool callCardIsProvenReal(Event event) {
+  final peer = callPeerOf(event.room);
+  if (peer == null) return false;
   return _callSides(event.room).contains(event.senderId);
 }
 
@@ -235,14 +265,16 @@ class CallTimelineEvent extends StatelessWidget {
       if (other.type != PangeaEventTypes.call) continue;
       if (other.content[CallRecord.callKeyField] != key) continue;
       if (other.status.isError) continue;
-      // Through the RULE, not the raw set. This asked `sides.contains` and so
-      // became the fourth place to read "we cannot tell who the peer is" as
-      // "the peer is not a participant" -- and here that meant a card was
-      // never compared against the genuinely earlier one, so a call the peer
-      // wrote and we also wrote drew TWICE in the conversation. Exactly the
-      // case the feature is built around: their card syncs late, we write a
-      // survivor card, they leave the room, and now nothing suppresses ours.
-      if (!callCardCouldBeReal(other)) continue;
+      // PROVEN, not merely possible. Suppression removes a record, so a card
+      // that cannot vouch for itself does not get to do it: otherwise a third
+      // party who was in the room during the call -- and therefore knows the
+      // call key, which is ordinary room state -- could post a card with an
+      // earlier timestamp and make the truthful one disappear.
+      //
+      // When the peer cannot be identified this means two genuine cards for
+      // one call both draw. That is the trade, and it is the right way round:
+      // a visible duplicate of a real call beats a real call vanishing.
+      if (!callCardIsProvenReal(other)) continue;
       final byTime = other.originServerTs.compareTo(event.originServerTs);
       if (byTime < 0 ||
           (byTime == 0 && other.eventId.compareTo(event.eventId) < 0)) {
