@@ -78,7 +78,9 @@ class AnalyticsPracticeUiController {
             ? const ListeningExposureDeclaration.exempt(
                 "choice text did not resolve to a token in this exercise",
               )
-            : ListeningExposureDeclaration.ofTokens([token]),
+            : ListeningExposureDeclaration.ofTokens([
+                token,
+              ], langCode: language),
       );
       return;
     }
@@ -96,7 +98,7 @@ class AnalyticsPracticeUiController {
       // learner's own construct history, not from a message, so there is no
       // room to attribute it to and none is invented. See [_listeningProbe].
       listening: _listeningProbe(),
-      exposure: ListeningExposureDeclaration([cId]),
+      exposure: ListeningExposureDeclaration([cId], langCode: language),
     );
   }
 
@@ -117,7 +119,9 @@ class AnalyticsPracticeUiController {
       // Roomless drill listening, for the same reason as the choice above: this
       // is the meaning exercise's prompt, and it has no message behind it.
       listening: _listeningProbe(),
-      exposure: ListeningExposureDeclaration.ofTokens([token]),
+      exposure: ListeningExposureDeclaration.ofTokens([
+        token,
+      ], langCode: language),
     );
   }
 }

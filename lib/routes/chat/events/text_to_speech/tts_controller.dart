@@ -10,6 +10,7 @@ import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
 import 'package:just_audio/just_audio.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/analytics/listening_exposure_buffer.dart';
 import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
@@ -536,6 +537,13 @@ class TtsController {
       // read-aloud stops on drafting, selection and focus loss, so minting for
       // an utterance that was cut off would bank words nobody heard.
       if (completed) {
+        assert(
+          exposure.exemptReason != null ||
+              ListeningExposureBuffer.languageKey(exposure.langCode) ==
+                  ListeningExposureBuffer.languageKey(langCode),
+          'exposure declared ${exposure.langCode} but $langCode was spoken: '
+          'a use filed under the wrong language cannot be separated later',
+        );
         guarded(() => exposure.record(listening.userId()), 'exposure.record');
       }
     }

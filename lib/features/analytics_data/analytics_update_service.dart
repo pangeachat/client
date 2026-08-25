@@ -249,7 +249,12 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   Future<void> _drainListeningExposure(LanguageModel language) async {
     final buffer = ListeningExposureBuffer.forAccount(_accountUserId);
     if (buffer == null || buffer.isEmpty) return;
-    final uses = buffer.drain();
+    // Only this language's rows. The buffer may be holding exposure in others —
+    // a voice message in a language that is not the L2, a word tapped in a
+    // message somebody wrote in their own language — and filing those here is
+    // exactly the mislabeling per-language isolation forbids. They stay held,
+    // and are evicted by the buffer's own bound if no drain ever claims them.
+    final uses = buffer.drain(language.langCodeShort);
     if (uses.isEmpty) return;
     try {
       // No targetID: a drain is not a message, and the local store keys on its
@@ -264,7 +269,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
       // this through `unawaited`, where a throw is an unhandled async error,
       // and the send path calls it before its own try block. Neither would
       // have restored the rows.
-      buffer.restore(uses);
+      buffer.restore(language.langCodeShort, uses);
       ErrorHandler.logErrorOnce(
         key: "listening-exposure-drain-failed",
         e: err,

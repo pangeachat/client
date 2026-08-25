@@ -94,6 +94,11 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                               PhoneticTranscriptionWidget(
                                 exposure: ListeningExposureDeclaration.ofTokens(
                                   [token],
+                                  langCode: MatrixState
+                                      .pangeaController
+                                      .userController
+                                      .userL2!
+                                      .langCode,
                                 ),
                                 text: token.vocabConstructID.lemma,
                                 pos: token.pos,

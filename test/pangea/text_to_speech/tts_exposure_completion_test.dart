@@ -40,16 +40,18 @@ void main() {
   const learner = '@learner:example.org';
   late FakeTtsEngine engine;
 
-  ListeningExposureDeclaration hablar() => ListeningExposureDeclaration([
-    ConstructIdentifier(
-      lemma: 'hablar',
-      type: ConstructTypeEnum.vocab,
-      category: 'verb',
-    ),
-  ]);
+  ListeningExposureDeclaration hablar({String langCode = 'es'}) =>
+      ListeningExposureDeclaration([
+        ConstructIdentifier(
+          lemma: 'hablar',
+          type: ConstructTypeEnum.vocab,
+          category: 'verb',
+        ),
+      ], langCode: langCode);
 
   int recordedExposures() =>
-      ListeningExposureBuffer.forAccount(learner)?.pendingExposures ?? 0;
+      ListeningExposureBuffer.forAccount(learner)?.pendingExposuresFor('es') ??
+      0;
 
   Future<void> untilTrue(bool Function() ready) async {
     for (var i = 0; i < 200 && !ready(); i++) {
@@ -74,7 +76,17 @@ void main() {
     DosageAudioBuffer.debugResetAccounts();
     ListeningExposureBuffer.debugResetAccounts();
     MatrixState.pangeaController = PlayablePangeaController();
-    engine = FakeTtsEngine()..install();
+    // Both voices from the start. `TtsController` derives its available-language
+    // list from `getVoices` and caches it on a static that is only refreshed on
+    // web, so a voice added later in the file is never seen — the French test
+    // below would then pass because nothing played, not because nothing was
+    // recorded.
+    engine = FakeTtsEngine(
+      voices: const [
+        {'name': 'Paulina', 'locale': 'es-ES', 'quality': 'enhanced'},
+        {'name': 'Amelie', 'locale': 'fr-FR', 'quality': 'enhanced'},
+      ],
+    )..install();
     TtsController.deviceStartTimeout = const Duration(milliseconds: 60);
     TtsController.stopSettleTimeout = const Duration(milliseconds: 60);
   });
@@ -188,6 +200,36 @@ void main() {
       recordedExposures(),
       0,
       reason: 'the interrupted first read must not bank its lemma',
+    );
+  });
+
+  test('a non-L2 utterance never reaches the L2 drain', () async {
+    // The bug this pins: nothing in the exposure path used to look at language,
+    // so a French word heard in a Spanish learner's room was filed as Spanish
+    // vocabulary. Read-aloud is L2-gated, but voice messages and word taps in a
+    // message are not — a multilingual room speaks whatever was written.
+    engine.onSpeak = FakeSpeakBehavior.startAndComplete;
+
+    await TtsController.tryToSpeak(
+      'parler',
+      langCode: 'fr',
+      useCase: TtsUseCase.words,
+      allowChoreoPlay: false,
+      listening: SpyProbe(buffer: DosageAudioBuffer()),
+      exposure: hablar(langCode: 'fr'),
+    );
+
+    final buffer = ListeningExposureBuffer.forAccount(learner)!;
+
+    expect(
+      buffer.drain('es'),
+      isEmpty,
+      reason: 'the Spanish room must not receive a French hearing',
+    );
+    expect(
+      buffer.pendingExposuresFor('fr'),
+      1,
+      reason: 'and it is held under the language it was actually spoken in',
     );
   });
 

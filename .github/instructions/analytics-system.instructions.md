@@ -40,6 +40,19 @@ Different interactions contribute different amounts of XP, reflecting effort. Ea
 
 Each data point is stored as a [`OneConstructUse`](../../lib/features/analytics/constructs_model.dart) which includes construct identifier, use type and timestamp, plus — for message-originated uses only — the message id. Listening exposure carries neither a message id nor a room id; see [Listening exposure](#listening-exposure).
 
+Adding a value to `ConstructUseTypeEnum` is a bigger commitment than it looks: it lands in XP, in the skill rows, in the teacher summaries and in practice selection. Work through [Adding a use type](#adding-a-use-type) before writing one.
+
+### Adding a use type
+
+The compiler asks most of these — the switches over `ConstructUseTypeEnum` are exhaustive, so a new value will not build until they are answered. It does **not** ask the last two, and those are the ones that have been got wrong.
+
+1. **XP value** (`pointValue`) — and whether 0 is right, which means the use is recorded for its own sake rather than rewarded.
+2. **Skill** (`skillsEnumType`) — which row of the construct details page it belongs in.
+3. **Produced or received** (`sentByUser`) — this is what keeps a use out of the turn and typed-word counters.
+4. **Summary bucket** (`summaryEnumType`) — correct, incorrect, typed word, or `null` for none. Note that [`SpaceAnalyticsSummaryModel`](../../lib/routes/chat/chat_details/space_analytics/space_analytics_summary_model.dart) has a second split that keys on the SIGN of `xp` rather than on this enum, so a 0-XP use needs handling there too.
+5. **Language provenance** — *what language is this use in, and how does the recording path know?* Not asked by any compiler. See [Per-Language Isolation](#per-language-isolation): the language must travel with the recording as a required argument, from whatever knows what was actually written, read or spoken.
+6. **Volume** — how often does this fire relative to production and practice? Nothing in the store prunes or compacts uses, so a high-frequency use type needs bucketing rather than one row per event, and the display has to stay readable at its volume.
+
 ### Listening exposure
 
 Receptive exposure per word is a variable language researchers design studies around, so hearing a lemma is recorded as a construct use in its own right (`ConstructUseTypeEnum.hrd`). It is **worth 0 XP** — awarding points for audio the learner did not ask for would be XP inflation, and the count is what the data is for. It is vocab-only and gated on `lemma.saveVocab`, the same filter every other lemma-level signal uses.
@@ -120,7 +133,11 @@ All analytics computation happens against [`AnalyticsDatabase`](../../lib/featur
 
 ### Per-Language Isolation
 
-Each target language has its own analytics room and its own local database partition. Switching languages reinitializes the analytics context cleanly. There is no cross-language XP blending.
+Each target language has its own analytics room and its own local database partition. Switching languages reinitializes the analytics context cleanly.
+
+Every construct use is filed under exactly one language, and that language comes from the **source of the use** — the text that was written, read or spoken. **NEVER record a use whose language you have not established**, and in particular never let it default to whatever L2 the learner happens to have set: a stored use carries no language of its own, so once it is written into the wrong language's room nothing downstream can tell it apart from a real one. Mislabeled data is worse than absent data, because absent data is visible as a gap.
+
+A new source of construct uses therefore has to answer *how do you know what language this is in* before it records anything, and the answer belongs in the code as a required argument rather than as a check each call site is trusted to remember — see [Adding a use type](#adding-a-use-type).
 
 ### Multi-Device Sync
 

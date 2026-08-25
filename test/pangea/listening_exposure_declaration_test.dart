@@ -28,9 +28,10 @@ void main() {
     test('declares the lemma, not the surface form', () {
       // A bucket is keyed on the construct, so a declaration that leaked the
       // inflected form would file "hablando" and "hablo" under two words.
-      final declaration = ListeningExposureDeclaration.ofTokens([
-        token('hablando', 'hablar', saveVocab: true),
-      ]);
+      final declaration = ListeningExposureDeclaration.ofTokens(
+        langCode: 'es',
+        [token('hablando', 'hablar', saveVocab: true)],
+      );
 
       expect(declaration.constructs.single.lemma, 'hablar');
       expect(declaration.constructs.single.type, ConstructTypeEnum.vocab);
@@ -40,18 +41,22 @@ void main() {
       // saveVocab is the same gate every other lemma-level signal applies. A
       // word that is invisible everywhere else must not become visible only
       // because it was read aloud.
-      final declaration = ListeningExposureDeclaration.ofTokens([
-        token('hablar', 'hablar', saveVocab: true),
-        token('de', 'de', saveVocab: false),
-      ]);
+      final declaration = ListeningExposureDeclaration.ofTokens(
+        langCode: 'es',
+        [
+          token('hablar', 'hablar', saveVocab: true),
+          token('de', 'de', saveVocab: false),
+        ],
+      );
 
       expect(declaration.constructs.map((c) => c.lemma), ['hablar']);
     });
 
     test('a message of nothing but ignorable tokens declares nothing', () {
-      final declaration = ListeningExposureDeclaration.ofTokens([
-        token('de', 'de', saveVocab: false),
-      ]);
+      final declaration = ListeningExposureDeclaration.ofTokens(
+        langCode: 'es',
+        [token('de', 'de', saveVocab: false)],
+      );
 
       expect(declaration.constructs, isEmpty);
     });
@@ -68,11 +73,11 @@ void main() {
       ListeningExposureDeclaration([
         id('hablar'),
         id('comer'),
-      ]).record('@learner:server');
+      ], langCode: 'es').record('@learner:server');
 
       final drained = ListeningExposureBuffer.forAccount(
         '@learner:server',
-      )!.drain();
+      )!.drain('es');
 
       expect(drained.map((u) => u.lemma), containsAll(['hablar', 'comer']));
       expect(
@@ -94,7 +99,7 @@ void main() {
 
     test('an unknown account banks nothing rather than guessing', () {
       // Attributing a hearing to the wrong account is worse than losing it.
-      ListeningExposureDeclaration([id('hablar')]).record(null);
+      ListeningExposureDeclaration([id('hablar')], langCode: 'es').record(null);
 
       expect(ListeningExposureBuffer.forAccount(''), isNull);
     });
@@ -102,7 +107,9 @@ void main() {
     test('repeated plays are not deduplicated', () {
       // Repetition IS the variable this feature exists to measure: collapsing
       // replays would encode a theory nobody asked for.
-      final declaration = ListeningExposureDeclaration([id('hablar')]);
+      final declaration = ListeningExposureDeclaration([
+        id('hablar'),
+      ], langCode: 'es');
 
       declaration.record('@learner:server');
       declaration.record('@learner:server');
@@ -110,7 +117,7 @@ void main() {
       expect(
         ListeningExposureBuffer.forAccount(
           '@learner:server',
-        )!.drain().single.count,
+        )!.drain('es').single.count,
         2,
       );
     });

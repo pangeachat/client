@@ -109,7 +109,9 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
                 ? const ListeningExposureDeclaration.exempt(
                     "match item has no token to attribute the lemma to",
                   )
-                : ListeningExposureDeclaration.ofTokens([widget.token!]),
+                : ListeningExposureDeclaration.ofTokens([
+                    widget.token!,
+                  ], langCode: l2),
           );
         }
       } catch (e, s) {

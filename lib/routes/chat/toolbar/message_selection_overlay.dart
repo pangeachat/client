@@ -256,7 +256,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
           userId: () => pangeaMessageEvent.room.client.userID,
           accessToken: () => pangeaMessageEvent.room.client.accessToken,
         ),
-        exposure: ListeningExposureDeclaration.ofTokens([selectedToken!]),
+        exposure: ListeningExposureDeclaration.ofTokens([
+          selectedToken!,
+        ], langCode: pangeaMessageEvent.messageDisplayLangCode),
       );
     }
     if (!MatrixState

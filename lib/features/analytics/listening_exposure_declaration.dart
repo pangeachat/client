@@ -19,8 +19,21 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 ///
 /// See message-read-aloud.instructions.md (Word-level exposure).
 class ListeningExposureDeclaration {
-  /// The constructs this utterance covers.
-  const ListeningExposureDeclaration(this.constructs) : exemptReason = null;
+  /// The constructs this utterance covers, and the language it is spoken in.
+  ///
+  /// [langCode] is required and is not a formality. A stored use carries no
+  /// language of its own, so one filed under the wrong language is
+  /// indistinguishable from a real one afterwards — and the wrong language is
+  /// what you get by default, because the drain files under whatever L2 the
+  /// learner currently has set. Read-aloud is L2-gated, but voice messages and
+  /// word taps inside a message are not: a multilingual room speaks whatever
+  /// was written. So the language travels from whatever knows what was actually
+  /// spoken. See analytics-system.instructions.md (Per-Language Isolation).
+  const ListeningExposureDeclaration(
+    this.constructs, {
+    required String langCode,
+  }) : _langCode = langCode,
+       exemptReason = null;
 
   /// This path speaks nothing that should count as exposure to a lemma.
   ///
@@ -28,6 +41,7 @@ class ListeningExposureDeclaration {
   /// deliberate exemption from an oversight.
   const ListeningExposureDeclaration.exempt(String reason)
     : constructs = const <ConstructIdentifier>[],
+      _langCode = '',
       exemptReason = reason;
 
   /// The vocab constructs of [tokens] that are worth saving.
@@ -35,14 +49,24 @@ class ListeningExposureDeclaration {
   /// `saveVocab` is the same gate every other lemma-level signal applies, so a
   /// token the rest of analytics ignores does not become visible only because
   /// it was read aloud.
-  factory ListeningExposureDeclaration.ofTokens(Iterable<PangeaToken> tokens) =>
-      ListeningExposureDeclaration([
-        for (final token in tokens)
-          if (token.lemma.saveVocab) token.vocabConstructID,
-      ]);
+  factory ListeningExposureDeclaration.ofTokens(
+    Iterable<PangeaToken> tokens, {
+    required String langCode,
+  }) => ListeningExposureDeclaration([
+    for (final token in tokens)
+      if (token.lemma.saveVocab) token.vocabConstructID,
+  ], langCode: langCode);
 
   final List<ConstructIdentifier> constructs;
   final String? exemptReason;
+
+  /// The language of what is being spoken. Empty only for an exemption, which
+  /// records nothing and so has no language to be wrong about.
+  final String _langCode;
+
+  /// The language this declaration records under, for callers that need to
+  /// check it against the language actually handed to the player.
+  String get langCode => _langCode;
 
   /// Records one exposure per declared construct against [userId]'s buffer.
   ///
@@ -51,6 +75,8 @@ class ListeningExposureDeclaration {
   /// spoken nothing records nothing.
   void record(String? userId) {
     if (constructs.isEmpty) return;
-    ListeningExposureBuffer.forAccount(userId ?? "")?.record(constructs);
+    ListeningExposureBuffer.forAccount(
+      userId ?? "",
+    )?.record(constructs, langCode: _langCode);
   }
 }

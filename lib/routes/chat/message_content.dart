@@ -488,7 +488,14 @@ class MessageContent extends StatelessWidget {
         "voice message has no usable transcript",
       );
     }
-    return ListeningExposureDeclaration.ofTokens(tokens);
+    // The transcript's OWN language, never the learner's L2. Nothing gates a
+    // voice message on the target language — in a multilingual room someone
+    // speaks whatever they speak — so this is the one path where assuming the
+    // L2 would file French hearings as Spanish vocabulary.
+    return ListeningExposureDeclaration.ofTokens(
+      tokens,
+      langCode: stt!.langCode,
+    );
   }
 }
 

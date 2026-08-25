@@ -279,7 +279,11 @@ class PracticeController with ChangeNotifier {
           userId: () => pangeaMessageEvent.room.client.userID,
           accessToken: () => pangeaMessageEvent.room.client.accessToken,
         ),
-        exposure: ListeningExposureDeclaration.ofTokens([token]),
+        exposure: ListeningExposureDeclaration.ofTokens(
+          [token],
+          langCode:
+              MatrixState.pangeaController.userController.userL2!.langCode,
+        ),
       );
     }
 

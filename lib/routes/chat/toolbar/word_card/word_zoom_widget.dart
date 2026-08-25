@@ -123,7 +123,9 @@ class WordZoomWidget extends StatelessWidget {
                         // The card is opened on one construct, so its
                         // pronunciation taps expose the learner to that lemma
                         // rather than to whatever the surface form parses as.
-                        exposure: ListeningExposureDeclaration([construct]),
+                        exposure: ListeningExposureDeclaration([
+                          construct,
+                        ], langCode: langCode),
                         text: token.content,
                         textLanguage:
                             PLanguageStore.byLangCode(langCode) ??

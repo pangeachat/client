@@ -315,9 +315,13 @@ class VocabAnalyticsListView extends StatelessWidget {
                                     // it plainly, and the serving side answers
                                     // it the same way: counted in the language,
                                     // absent from any course.
-                                    exposure: ListeningExposureDeclaration([
-                                      vocabItem.id,
-                                    ]),
+                                    exposure: ListeningExposureDeclaration(
+                                      [vocabItem.id],
+                                      langCode: MatrixState
+                                          .pangeaController
+                                          .userController
+                                          .userL2Code!,
+                                    ),
                                     listening: DosageTtsListeningProbe(
                                       category:
                                           DosageListeningCategory.wordAudio,

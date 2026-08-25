@@ -325,7 +325,14 @@ class MessageReadAloudController {
         "message has no usable tokens to attribute exposure to",
       );
     }
-    return ListeningExposureDeclaration.ofTokens(tokens);
+    // The SAME language handed to `tryToSpeak` for this message. Read-aloud is
+    // already gated on the L2, so in practice these agree — but the gate is a
+    // call-site check and this is the recorded fact, so it is taken from the
+    // text rather than assumed to be the learner's L2.
+    return ListeningExposureDeclaration.ofTokens(
+      tokens,
+      langCode: message.messageDisplayLangCode,
+    );
   }
 
   DosageTtsListeningProbe _listeningProbe(DosageListeningCategory category) =>

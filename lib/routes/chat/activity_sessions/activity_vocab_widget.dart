@@ -188,7 +188,9 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
         accessToken: () =>
             MatrixState.pangeaController.matrixState.client.accessToken,
       ),
-      exposure: ListeningExposureDeclaration.ofTokens([vocab.asToken()]),
+      exposure: ListeningExposureDeclaration.ofTokens([
+        vocab.asToken(),
+      ], langCode: widget.langCode),
     );
     _showWordCard(vocab);
   }
