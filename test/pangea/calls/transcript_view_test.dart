@@ -7,7 +7,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
-import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
 import '../get_test_client.dart';
 
@@ -73,19 +72,6 @@ void main() {
     );
     return r;
   }
-
-  /// A room whose membership is NOT in memory but IS obtainable from the
-  /// server -- the ordinary state of a room the user has not opened, and the
-  /// one case a cached read gets wrong.
-  Room unloadedRoom() => Room(
-    id: '!726s6s6q:example.com',
-    client: client,
-    summary: RoomSummary.fromJson({
-      'm.joined_member_count': 2,
-      'm.invited_member_count': 0,
-      'm.heroes': <String>[],
-    }),
-  );
 
   MatrixEvent half(
     String sender, {
@@ -155,6 +141,7 @@ void main() {
         home: CallTranscriptView(
           room: room(),
           callKey: _callKey,
+          callerId: _peer,
           fetcher: fetcher,
         ),
       ),
@@ -191,6 +178,7 @@ void main() {
           home: CallTranscriptView(
             room: encryptedRoom(),
             callKey: _callKey,
+            callerId: _peer,
             fetcher: serving(const []),
           ),
         ),
@@ -333,75 +321,45 @@ void main() {
     });
   });
 
-  group('participantsOf', () {
-    test('a half from a peer known only to the SERVER survives assembly', () {
-      // The user-visible consequence of the rule below, one layer down:
-      // assembly drops a half from anyone outside expectedSenders, so a
-      // participants list built from cache deletes the peer's words outright.
-      final transcript = assembleTranscript(
-        candidates: [
-          TranscriptCandidate(
-            senderId: '@alice:example.com',
-            originServerTs: 1000,
-            segments: const [TranscriptSegment('lo dije yo')],
-            accounting: const HalfAccounting(
-              chunksCaptured: 1,
-              chunksTranscribed: 1,
-              declared: true,
-            ),
-          ),
-        ],
-        expectedSenders: const ['@alice:example.com', _me],
-        exhausted: true,
-      );
+  group('callParticipants', () {
+    test('a past room member who was not on the call gets no section', () {
+      // Room membership answers "who has ever been in this conversation".
+      // Using it here gave everyone who ever left a permanent "no transcript
+      // from them" section on every future call they were never part of.
+      final ids = callParticipants(me: _me, callerId: _peer, peerId: _peer);
 
+      expect(ids, [_peer, _me]);
+      expect(ids, isNot(contains('@longgone:example.com')));
+    });
+
+    test('the caller is named even if they have since LEFT the room', () {
+      // The case room membership was reached for in the first place. The card
+      // names the caller, so it survives them leaving.
       expect(
-        transcript.halves
-            .firstWhere((h) => h.senderId == '@alice:example.com')
-            .segments
-            .single
-            .text,
-        'lo dije yo',
+        callParticipants(me: _me, callerId: '@gone:example.com', peerId: null),
+        contains('@gone:example.com'),
       );
     });
 
-    test('LOADS membership rather than trusting what is cached', () async {
-      // getParticipants returns whatever happens to be in memory, and the SDK
-      // says so on the method. On a room the user has not opened that is just
-      // this account, so the peer's half -- one we successfully read -- would
-      // be discarded as a stranger's and their side would vanish.
-      final loaded = await participantsOf(unloadedRoom());
-
-      expect(loaded, contains('@alice:example.com'));
-      expect(loaded, contains(_me));
+    test('an old card with no caller still gets both sides', () {
+      // Cards predate the caller field. The room's direct-chat peer is the
+      // best available answer, and dropping to one side would report the
+      // other as not having been there.
+      expect(callParticipants(me: _me, callerId: null, peerId: _peer), [
+        _peer,
+        _me,
+      ]);
     });
 
-    test('includes a peer who has since LEFT the room', () async {
-      // They still spoke. Reading the joined set alone would erase their side
-      // of a conversation they are demonstrably part of.
-      final r = room(members: const [_me]);
-      r.setState(
-        Event(
-          type: EventTypes.RoomMember,
-          stateKey: _peer,
-          content: const {'membership': 'leave'},
-          senderId: _peer,
-          eventId: r'$left',
-          originServerTs: DateTime.now(),
-          room: r,
-        ),
+    test('this account is always one of the sides', () {
+      expect(callParticipants(me: _me, callerId: null, peerId: null), [_me]);
+    });
+
+    test('is stable across reads, so sections do not reorder', () {
+      expect(
+        callParticipants(me: _me, callerId: _peer, peerId: _peer),
+        callParticipants(me: _me, callerId: _peer, peerId: _peer),
       );
-
-      expect(await participantsOf(r), contains(_peer));
-    });
-
-    test('always includes this account', () async {
-      expect(await participantsOf(room()), contains(_me));
-    });
-
-    test('is stable across reads, so sections do not reorder', () async {
-      final r = room();
-      expect(await participantsOf(r), await participantsOf(r));
     });
   });
 }

@@ -264,6 +264,19 @@ void main() {
         },
       );
 
+      test('a half that cannot fit even empty is NOT sent', () async {
+        // Packing trims SEGMENTS, so it can only shrink a half to its
+        // envelope. If the envelope alone is over budget the binary search
+        // converges on zero segments and returns an empty half that is still
+        // too large -- silently, because nothing downstream looked again.
+        // Sending it means the server rejects the WHOLE half.
+        final sent = _Sent();
+        final wrote = await _write(sent, maxBytes: 10);
+
+        expect(wrote, isFalse);
+        expect(sent.contents, isEmpty);
+      });
+
       test('non-Latin text is measured in BYTES, not characters', () async {
         // Counting characters would size a CJK transcript at a third of its
         // real weight and blow the ceiling it was checked against.

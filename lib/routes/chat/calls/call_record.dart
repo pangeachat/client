@@ -362,51 +362,74 @@ class CallRecord {
   /// must not cost the other. A transcript that does not publish is a gap in
   /// the history; a credit applied twice is a learner's proficiency quietly
   /// wrong, which is why only the latter is guarded by [_credited].
+  /// Publishes this device's half, retrying a transient failure.
+  ///
+  /// The retry is HERE and not shared with the card's. Publishing was moved out
+  /// of `_finish` so a failed card could not cost the transcript and so the
+  /// credit guard could not make it unreachable -- both real couplings -- but
+  /// moving it out took it out of the card's retry loop as well, and nothing
+  /// replaced that. The flag below was reset on failure so a later attempt
+  /// could try again, the log said so, and no later attempt existed: `finish()`
+  /// runs once per call behind a latch, and the screen is gone afterwards.
+  /// Permitting a retry is not the same as performing one.
+  ///
+  /// A resend is safe because the transaction id is deterministic in
+  /// (call_key, sender): a half that did land is collapsed by the server rather
+  /// than written twice. That property is what makes retrying the correct
+  /// answer here, and it is why refusing to retry was never buying anything --
+  /// duplicates were already impossible, so the refusal only threw the half
+  /// away. A speaker whose one send failed then reads as ABSENT: told they said
+  /// nothing, when they spoke and their device tried to say so.
   Future<void> _publishTranscript(String? callKey) async {
     final publish = publishTranscript;
     if (publish == null || _published || callKey == null) return;
 
-    // Marked before the await so concurrent callers cannot both publish, and
-    // PUT BACK on failure so a later attempt can try again.
-    //
-    // An earlier version never reset it, reasoning that a retry might publish a
-    // second half if the first had in fact landed. That reasoning was wrong,
-    // and wrong against this feature's own design: the transaction id is
-    // deterministic in (call_key, sender) precisely so a resend after a network
-    // failure collapses server-side instead of writing a second copy. Refusing
-    // to retry did not avoid a duplicate -- duplicates were already impossible
-    // -- it just threw the half away. A transient send failure then lost the
-    // words for good, and a reader doing an exhausted read would report that
-    // speaker ABSENT: told they said nothing, when they spoke and the device
-    // tried to say so.
+    // Read ONCE, before the first attempt. The sink is closed by now, and a
+    // retry must resend the same half rather than whatever the sink reports
+    // later -- the deterministic transaction id only collapses a resend if the
+    // resend is actually the same event.
+    final segments = transcripts.segments;
+    final chunksCaptured = transcripts.chunksCaptured;
+    final chunksTranscribed = transcripts.chunksTranscribed;
+    final chunksLost = transcripts.chunksLost;
+    // Meaningful only once the sink has closed, which the capture service does
+    // before this runs. Read earlier it would be the optimistic default and a
+    // half could claim a completeness nothing had checked.
+    final drainComplete = transcripts.drainComplete;
+    final langCode = transcripts.langCode;
+
+    // Marked before the first await so concurrent callers cannot both publish.
     _published = true;
-    try {
-      await publish(
-        callKey: callKey,
-        segments: transcripts.segments,
-        chunksCaptured: transcripts.chunksCaptured,
-        chunksTranscribed: transcripts.chunksTranscribed,
-        chunksLost: transcripts.chunksLost,
-        // Meaningful only once the sink has closed, which the capture service
-        // does before this runs. Read earlier it would be the optimistic
-        // default and a half could claim a completeness nothing had checked.
-        drainComplete: transcripts.drainComplete,
-        langCode: transcripts.langCode,
-      );
-    } catch (e, s) {
-      // Released for another attempt. Safe because of the deterministic
-      // transaction id above: a resend of a half that did land is collapsed by
-      // the server rather than duplicated.
-      _published = false;
-      // Swallowed rather than rethrown, so a transcript failure cannot drag the
-      // credit into its own retry loop, which is once-only and cannot survive
-      // being re-entered.
-      Logs().w(
-        'The call transcript was not published; it can be retried',
-        e,
-        s,
-      );
+
+    for (var attempt = 0; attempt < 3; attempt++) {
+      if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
+      try {
+        await publish(
+          callKey: callKey,
+          segments: segments,
+          chunksCaptured: chunksCaptured,
+          chunksTranscribed: chunksTranscribed,
+          chunksLost: chunksLost,
+          drainComplete: drainComplete,
+          langCode: langCode,
+        );
+        return;
+      } catch (e, s) {
+        // Swallowed rather than rethrown, so a transcript failure cannot drag
+        // the credit into its own retry loop, which is once-only and cannot
+        // survive being re-entered.
+        Logs().w('Publishing the call transcript failed', e, s);
+      }
     }
+
+    // Every attempt failed. Released so anything that does call again may try,
+    // and logged as a LOSS rather than as a retryable condition -- the previous
+    // wording claimed a retry that nothing performed.
+    _published = false;
+    Logs().e(
+      'The call transcript was not published after 3 attempts; '
+      'this speaker will read as absent',
+    );
   }
 
   bool _published = false;

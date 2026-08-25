@@ -232,7 +232,14 @@ class CallTimelineEvent extends StatelessWidget {
   void _openTranscript(BuildContext context) {
     final key = _callKey;
     if (key == null) return;
-    showCallTranscript(context, room: event.room, callKey: key);
+    showCallTranscript(
+      context,
+      room: event.room,
+      callKey: key,
+      // From the card, so a caller who has since left the room is still named
+      // as a side of the call they placed.
+      callerId: event.content['caller'] as String?,
+    );
   }
 
   IconData _icon(bool missed) {

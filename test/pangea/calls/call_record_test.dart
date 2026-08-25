@@ -11,6 +11,30 @@ import 'call_transcript_sink_test.dart' show chunk, silent, spokenWord;
 
 const kDur = Duration(seconds: 30);
 
+/// A sink whose reported content CHANGES on every read.
+///
+/// Nothing real does this, and that is the point: a retry that re-reads the
+/// sink is indistinguishable from one that resends a snapshot unless the two
+/// reads can differ. The deterministic transaction id collapses a RESEND, so
+/// sending different content under the same id is not a resend at all -- the
+/// server keeps whichever arrived first and the rest is silently discarded.
+class _ShiftingSink extends CallTranscriptSink {
+  _ShiftingSink()
+    : super(
+        userL1: 'en',
+        userL2: 'es',
+        transcribe: (_) async => spokenWord('hola'),
+      );
+
+  int reads = 0;
+
+  @override
+  List<TranscriptSegment> get segments {
+    reads++;
+    return [TranscriptSegment('read $reads')];
+  }
+}
+
 void main() {
   late List<Map<String, dynamic>> written;
   late List<String> txids;
@@ -32,11 +56,16 @@ void main() {
   >
   published;
 
+  /// Every publish ATTEMPT, by the words it carried. Distinct from [published],
+  /// which records only the ones that landed.
+  late List<List<String>> publishAttempts;
+
   setUp(() {
     written = [];
     txids = [];
     recorded = [];
     published = [];
+    publishAttempts = [];
   });
 
   Future<CallTranscriptSink> sinkWith(
@@ -61,6 +90,7 @@ void main() {
     Object? analyticsError,
     bool withPublisher = false,
     Object? publishError,
+    int publishFailures = 0,
   }) => CallRecord(
     roomId: '!r:server',
     transcripts: transcripts,
@@ -85,7 +115,11 @@ void main() {
             required bool drainComplete,
             String? langCode,
           }) async {
+            publishAttempts.add(segments.map((s) => s.text).toList());
             if (publishError != null) throw publishError;
+            if (publishAttempts.length <= publishFailures) {
+              throw Exception('transient');
+            }
             published.add((
               callKey: callKey,
               segments: segments.length,
@@ -186,12 +220,12 @@ void main() {
       expect(published.single.drained, isFalse);
     });
 
-    test('a failed publish can be retried on a later finish', () async {
-      // The transaction id is deterministic precisely so a resend collapses
-      // server-side. Refusing to retry did not avoid a duplicate -- duplicates
-      // were already impossible -- it threw the half away, and a reader doing
-      // an exhausted read would then report that speaker as having said
-      // nothing.
+    test('a half that exhausted its retries can still publish later', () async {
+      // Belt and braces on top of the in-finish retry, which is the one that
+      // matters: in production finish() runs once per call behind a latch, so
+      // "a later finish" is not a mechanism anything relies on. This asserts
+      // only that giving up does not LATCH -- a record that failed every
+      // attempt is left able to try, rather than marked done.
       var attempts = 0;
       final sink = await sinkWith(() => spokenWord('hola'));
       final r = CallRecord(
@@ -210,15 +244,15 @@ void main() {
               String? langCode,
             }) async {
               attempts++;
-              if (attempts == 1) throw StateError('a transient network blip');
+              if (attempts <= 3) throw StateError('a transient network blip');
             },
       );
 
       await r.finish(duration: kDur, video: false, callKey: '\$anchor');
-      expect(attempts, 1);
+      expect(attempts, 3, reason: 'it retried within the one finish');
 
       await r.finish(duration: kDur, video: false, callKey: '\$anchor');
-      expect(attempts, 2, reason: 'the second finish tries again');
+      expect(attempts, 4, reason: 'giving up did not latch');
     });
 
     test('a call with SILENCE in it is not reported incomplete', () async {
@@ -825,5 +859,111 @@ void main() {
         expect(written.single.containsKey(CallRecord.callKeyField), isFalse);
       },
     );
+
+    test(
+      'a transient publish failure is RETRIED, not merely permitted',
+      () async {
+        // The flag was reset on failure and the log said it could be retried --
+        // and nothing ever retried. finish() runs once per call behind a latch
+        // and the screen is gone afterwards, so the one attempt was the only
+        // attempt. Permitting a retry is not performing one, and the speaker
+        // read as ABSENT for the difference.
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withPublisher: true,
+          publishFailures: 1,
+        );
+
+        await r.finish(
+          duration: const Duration(seconds: 30),
+          video: false,
+          callKey: r'$anchor',
+        );
+
+        expect(
+          publishAttempts.length,
+          greaterThan(1),
+          reason: 'it tried again',
+        );
+        expect(published, hasLength(1), reason: 'and the half actually landed');
+      },
+    );
+
+    test('the retry resends the SAME half, read once up front', () async {
+      // The deterministic transaction id only collapses a resend if the resend
+      // IS the same event. Re-reading the sink per attempt sends different
+      // content under one id, which the server does not collapse -- it keeps
+      // the first and discards the rest.
+      final seen = <String>[];
+      final sink = _ShiftingSink();
+      var attempts = 0;
+      final r = CallRecord(
+        roomId: '!r:server',
+        transcripts: sink,
+        sendEvent: (content, txid) async => r'$call',
+        analytics: (id, uses, lang) async {},
+        publishTranscript:
+            ({
+              required String callKey,
+              required List<TranscriptSegment> segments,
+              required int chunksCaptured,
+              required int chunksTranscribed,
+              required int chunksLost,
+              required bool drainComplete,
+              String? langCode,
+            }) async {
+              seen.add(segments.single.text);
+              if (++attempts < 3) throw StateError('a transient blip');
+            },
+      );
+
+      await r.finish(duration: kDur, video: false, callKey: r'$anchor');
+
+      expect(seen, hasLength(3));
+      expect(seen.toSet(), hasLength(1), reason: 'all three were identical');
+    });
+
+    test('the retry carries identical words through the real sink', () async {
+      // The deterministic transaction id only collapses a resend if the resend
+      // IS the same event. Re-reading the sink per attempt would send
+      // different content under one id, which the server would not collapse.
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withPublisher: true,
+        publishFailures: 2,
+      );
+
+      await r.finish(
+        duration: const Duration(seconds: 30),
+        video: false,
+        callKey: r'$anchor',
+      );
+
+      expect(publishAttempts, hasLength(3));
+      expect(
+        publishAttempts.map((a) => a.join('|')).toSet(),
+        hasLength(1),
+        reason: 'every attempt carried identical words',
+      );
+    });
+
+    test('a half that never lands does not block the call credit', () async {
+      // Publishing runs ahead of the credit guard deliberately. Its retries
+      // must not be able to swallow the hangup path with them.
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withPublisher: true,
+        publishError: Exception('down'),
+      );
+
+      await r.finish(
+        duration: const Duration(seconds: 30),
+        video: false,
+        callKey: r'$anchor',
+      );
+
+      expect(published, isEmpty);
+      expect(written, hasLength(1), reason: 'the card was still written');
+    });
   });
 }

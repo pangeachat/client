@@ -16,45 +16,50 @@ Future<void> showCallTranscript(
   BuildContext context, {
   required Room room,
   required String callKey,
+  required String? callerId,
 }) => showDialog(
   context: context,
   useRootNavigator: false,
   builder: (_) => FullWidthDialog(
     maxWidth: 640,
     maxHeight: 800,
-    dialogContent: CallTranscriptView(room: room, callKey: callKey),
+    dialogContent: CallTranscriptView(
+      room: room,
+      callKey: callKey,
+      callerId: callerId,
+    ),
   ),
 );
 
-/// Who could have written a half of this call.
+/// Who could have written a half of THIS CALL.
 ///
-/// Needed so a speaker who wrote nothing is reported ABSENT rather than
-/// quietly omitted -- the reader cannot tell "they said nothing" from "we have
-/// no half for them" unless it is told who to expect. Assembly also DROPS a
-/// half from anyone not on this list, which is what stops a stranger writing
-/// themselves a section, and is why the list has to be right.
+/// Taken from the call, not from the room. Room membership was the obvious
+/// proxy and it is the wrong one: it answers "who has ever been in this
+/// conversation", so every person who ever left the room earned a permanent
+/// "no transcript from them" section on every future call in it, having never
+/// been on any of them. The two questions only coincide in a room nobody has
+/// left.
 ///
-/// REQUESTED, not read from memory. `getParticipants` returns whatever
-/// membership happens to be cached, and the SDK says so on the method itself.
-/// A room whose members have not been loaded yields just this account, so the
-/// peer's half -- one we successfully read -- would be dropped as a stranger's
-/// and their side of the conversation would silently vanish.
+/// A 1:1 call has exactly two sides: whoever placed it, and whoever they
+/// called. [callerId] comes off the call's own card, so it names the caller
+/// even if they have since left the room -- which is the case room membership
+/// was reached for in the first place, and this covers it without the rest.
 ///
-/// Membership includes people who have since LEFT. A peer who spoke and then
-/// left the room still spoke, and reading the joined set alone would erase
-/// their side of a transcript they are demonstrably in.
+/// [peerId] is the other side. The reader is always one of the two, so between
+/// this account and the caller only one gap remains, and the room's direct-chat
+/// peer fills it.
 ///
-/// A failed request throws rather than degrading to the cached list: a wrong
-/// answer here deletes someone's words, and saying we could not find out is
-/// the honest outcome.
+/// Needed at all because assembly reports a participant who wrote nothing as
+/// ABSENT rather than omitting them, and DROPS a half from anyone not named --
+/// which is what stops a stranger writing themselves a section. Both behaviours
+/// depend on this list being right.
 @visibleForTesting
-Future<List<String>> participantsOf(Room room) async {
-  final members = await room.requestParticipants(const [
-    Membership.join,
-    Membership.leave,
-  ]);
-
-  final ids = <String>{?room.client.userID, for (final m in members) m.id};
+List<String> callParticipants({
+  required String? me,
+  required String? callerId,
+  required String? peerId,
+}) {
+  final ids = <String>{?me, ?callerId, ?peerId};
 
   // Sorted, so the sections do not reorder between two reads of the same call.
   return ids.toList()..sort();
@@ -64,12 +69,17 @@ class CallTranscriptView extends StatefulWidget {
   final Room room;
   final String callKey;
 
+  /// Who placed the call, off its own card. Null on a card old enough not to
+  /// carry one, where the room's peer is the best available answer.
+  final String? callerId;
+
   /// Injected only by tests, which have no homeserver to read from.
   final RelationsFetcher? fetcher;
 
   const CallTranscriptView({
     required this.room,
     required this.callKey,
+    required this.callerId,
     this.fetcher,
     super.key,
   });
@@ -87,11 +97,15 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     _transcript = _load();
   }
 
-  Future<CallTranscript> _load() async => fetchCallTranscript(
+  Future<CallTranscript> _load() => fetchCallTranscript(
     fetch: widget.fetcher ?? relationsFetcherFor(widget.room.client),
     roomId: widget.room.id,
     callKey: widget.callKey,
-    expectedSenders: await participantsOf(widget.room),
+    expectedSenders: callParticipants(
+      me: widget.room.client.userID,
+      callerId: widget.callerId,
+      peerId: widget.room.directChatMatrixID,
+    ),
     encrypted: widget.room.encrypted,
   );
 

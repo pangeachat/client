@@ -100,6 +100,21 @@ Future<bool> writeCallTranscript({
   );
   final content = build(packed.segments, packed.omitted);
 
+  // Checked, not assumed. Packing trims SEGMENTS, so it can only shrink a half
+  // down to its envelope -- call key, accounting, relation, language tag. If
+  // the envelope alone is over budget the binary search converges on zero
+  // segments and returns an empty half that is still too large, silently,
+  // because nothing downstream looks again. Sending it means the server
+  // rejects the WHOLE half, which is the outcome the packing exists to avoid.
+  final encoded = _encodedBytes(content);
+  if (encoded > budget) {
+    Logs().e(
+      'No call transcript written: the half does not fit even with every '
+      'segment dropped ($encoded > $budget bytes)',
+    );
+    return false;
+  }
+
   await send(content.toJson(), CallTranscriptContent.txnId(callKey, senderId));
   return true;
 }

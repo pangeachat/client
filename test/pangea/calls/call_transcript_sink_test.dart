@@ -368,4 +368,35 @@ void main() {
       );
     });
   });
+
+  group('the language tag, which comes from a provider', () {
+    Future<CallTranscriptSink> sinkSaying(String langCode) async {
+      final sink = CallTranscriptSink(
+        userL1: 'en',
+        userL2: 'es',
+        transcribe: (_) async => spokenWord('hola', langCode: langCode),
+      );
+      await sink.deliver(chunk(0));
+      return sink;
+    }
+
+    test('a tag with no hyphen cannot be unbounded', () async {
+      // The only field in the event that arrives from a provider with no
+      // length bound. Splitting on a hyphen trims es-MX to es and does nothing
+      // at all to a value with no hyphen in it, so a malformed answer could
+      // carry arbitrary text into a half packed against a byte ceiling -- and
+      // a half over the ceiling is rejected whole, not trimmed.
+      final sink = await sinkSaying('x' * 400);
+
+      expect(sink.langCode, isNull, reason: 'not a language tag, so not used');
+    });
+
+    test('an ordinary regional tag still yields its primary subtag', () async {
+      // The bound must not fire on real input, or every call would lose its
+      // language and the field would stop meaning anything.
+      final sink = await sinkSaying('es-MX');
+
+      expect(sink.langCode, 'es');
+    });
+  });
 }

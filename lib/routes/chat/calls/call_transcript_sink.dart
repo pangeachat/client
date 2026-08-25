@@ -303,15 +303,31 @@ class CallTranscriptSink implements CallAudioSink {
     id: use.id,
   );
 
+  /// The longest a language tag may be before we stop believing it.
+  ///
+  /// A BCP 47 primary subtag is at most 8 characters. This is the ceiling on a
+  /// value that arrives from a speech provider and goes straight into an event
+  /// with a hard size limit, so it is a bound on untrusted input rather than a
+  /// formatting preference.
+  static const maxLangCodeLength = 8;
+
   /// The language the call was transcribed in, or null if nothing was.
   ///
   /// Taken from the first chunk that produced anything: the speaker's target
   /// language is pinned for the whole call, so every chunk agrees and the
   /// earliest answer is the call's answer.
+  ///
+  /// Bounded, because this is a provider's word and it is the only unbounded
+  /// field in the event. Splitting on a hyphen trims `es-MX` to `es` but does
+  /// nothing at all to a value with no hyphen in it, so a malformed answer
+  /// could carry an arbitrary amount of text into a half that is packed to fit
+  /// a byte ceiling. Anything past the ceiling is not a language tag, so it is
+  /// dropped rather than truncated into a different, plausible-looking one.
   String? get langCode {
     for (final result in _ordered) {
       if (result.hasUsableTranscript) {
-        return result.langCode.split('-').first;
+        final tag = result.langCode.split('-').first;
+        return tag.length <= maxLangCodeLength ? tag : null;
       }
     }
     return null;
