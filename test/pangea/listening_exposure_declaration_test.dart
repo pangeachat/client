@@ -145,6 +145,13 @@ void main() {
       expect(use(count: 7).toJson()['count'], 7);
     });
 
+    test('is omitted entirely when it is one', () {
+      // Every use the app has ever written has a count of 1. Serialising the
+      // key on all of them would be dead weight in events that are chunked
+      // against a hard Matrix size limit.
+      expect(use().toJson().containsKey('count'), isFalse);
+    });
+
     test('round-trips', () {
       expect(OneConstructUse.fromJson(use(count: 7).toJson()).count, 7);
     });
@@ -153,6 +160,13 @@ void main() {
       final legacy = use().toJson()..remove('count');
 
       expect(OneConstructUse.fromJson(legacy).count, 1);
+    });
+
+    test('a bucketed row still round-trips through the omission', () {
+      final json = use(count: 7).toJson();
+
+      expect(json['count'], 7);
+      expect(OneConstructUse.fromJson(json).count, 7);
     });
 
     test('every other use type still means one occurrence', () {

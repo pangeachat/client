@@ -266,12 +266,13 @@ class SpaceAnalyticsSummaryModel {
       final systemUsesCorrect = [];
       final systemUsesIncorrect = [];
 
+      // This loop is MORPH only, and listening exposure is vocab only — every
+      // construct that reaches the exposure buffer comes from a vocab
+      // identifier — so no `hrd` use can appear here. A guard on this loop
+      // would read as the thing keeping exposure out of the teacher's
+      // correct/incorrect figures; the three-way split over `cleanedVocab`
+      // above is what actually does that.
       for (final use in entry.cappedUses) {
-        // This split keys on the SIGN of xp, not on `summaryEnumType`, so a
-        // 0-XP use would land in the incorrect bucket by default. Listening
-        // exposure is neither correct nor incorrect — nothing was answered —
-        // so it is skipped rather than scored.
-        if (use.useType == ConstructUseTypeEnum.hrd) continue;
         if (originalUseTypes.contains(use.useType)) {
           use.xp > 0
               ? originalUsesCorrect.add(use)

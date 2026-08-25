@@ -152,7 +152,11 @@ class OneConstructUse {
     'categories': category,
     'id': id,
     'xp': xp,
-    'count': count,
+    // Omitted when it is 1, which is every use except a bucketed one. This key
+    // would otherwise be dead weight on every row the app has ever written,
+    // and these events are chunked against a hard Matrix size limit. Absent
+    // reads back as 1.
+    if (count != 1) 'count': count,
   };
 
   OneConstructUse copyWith({

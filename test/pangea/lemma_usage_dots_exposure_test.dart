@@ -62,15 +62,37 @@ void main() {
     expect(marks, [AppConfig.success, Colors.red]);
   });
 
-  test('other zero-XP uses are excluded too, not just exposure', () {
-    // The rule is "marks are scored uses", not "marks are everything but the
-    // new thing" — an ignored hint is no more a mark than a hearing is.
+  test('other zero-XP uses still draw their grey mark', () {
+    // The rule is "every use is a mark EXCEPT exposure", not "marks are scored
+    // uses". Dropping every 0-XP use would take real evidence with it.
     final marks = marksFor([
       use(ConstructUseTypeEnum.corWL),
       use(ConstructUseTypeEnum.ignWL),
     ], LearningSkillsEnum.hearing);
 
-    expect(marks, [AppConfig.success]);
+    expect(marks, hasLength(2));
+    expect(marks.first, AppConfig.success);
+  });
+
+  test('a word typed correctly in chat keeps its writing marks', () {
+    // ignIGC is minted on every sent message for tokens writing assistance
+    // left alone, so it is the most common thing in the Writing row. An
+    // exclusion by score rather than by type made this row read as empty.
+    final marks = marksFor([
+      use(ConstructUseTypeEnum.ignIGC),
+      use(ConstructUseTypeEnum.ignIGC),
+    ], LearningSkillsEnum.writing);
+
+    expect(marks, hasLength(2));
+  });
+
+  test('exposure is excluded even alongside other zero-XP uses', () {
+    final marks = marksFor([
+      use(ConstructUseTypeEnum.ignWL),
+      use(ConstructUseTypeEnum.hrd, count: 400),
+    ], LearningSkillsEnum.hearing);
+
+    expect(marks, hasLength(1), reason: 'the ignored hint, not the hearings');
   });
 
   test('exposure does not leak into another skill row', () {
@@ -80,5 +102,11 @@ void main() {
     ], LearningSkillsEnum.reading);
 
     expect(marks, [AppConfig.success]);
+    expect(
+      marksFor([
+        use(ConstructUseTypeEnum.hrd, count: 12),
+      ], LearningSkillsEnum.hearing),
+      isEmpty,
+    );
   });
 }

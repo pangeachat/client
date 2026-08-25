@@ -952,12 +952,23 @@ class TtsController {
       }
       // Backend audio starts here; `play()` resolves at playback end.
       onPlaybackStarted?.call();
-      await player.play();
-      _log('Audio playback from choreo completed', tid);
-      // Reached only when `play()` resolved normally. The `Loading interrupted`
-      // branch below returns success too — it is an expected cancellation, not
-      // a failure — so a success return cannot stand in for completion.
-      onPlaybackCompleted?.call();
+      final reachedEnd = await player.play();
+      _log('Audio playback from choreo ended: reachedEnd=$reachedEnd', tid);
+      // Two things have to hold, and neither is "play() returned".
+      //
+      // `play()` resolves when playback "completes OR is paused or stopped",
+      // and the wrapper's wait also resolves on `idle`, which is where `stop()`
+      // leaves the player. `_stop()` — which every newer tryToSpeak awaits, and
+      // which forceStop calls — stops this player. So a superseded or
+      // interrupted playback returns normally, exactly like a finished one.
+      // `reachedEnd` is the difference.
+      //
+      // And a request that is no longer current must not report anything: it
+      // was superseded mid-play, so its lemmas were not all heard even if the
+      // player did drain.
+      if (reachedEnd && _isCurrentRequestId(requestId)) {
+        onPlaybackCompleted?.call();
+      }
       return true;
     } catch (e, s) {
       if (e.toString().contains('Loading interrupted')) {

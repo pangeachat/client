@@ -83,7 +83,9 @@ Both list views show a button at the top to launch practice (See [practice exerc
 
 Construct details pages show definitions, canonical examples, and user-generated usage examples for individual constructs.
 
-On a construct details page the usage rows are one mark per scored use — green earned XP, red lost it. Zero-XP uses are not marks: exposure alone would outnumber everything else and turn the row into a wall. Listening exposure appears instead as a single count on the listening row, which reads the same at 24 as at 2,400. Anything added later that fires at exposure's frequency belongs in that shape too, not in the marks.
+On a construct details page the usage rows are one mark per use — green earned XP, red lost it, grey scored nothing. Grey is not noise: `ignIGC` and `ignIt` are minted on every sent message for tokens writing assistance left alone, so they are the most common evidence in the Writing row, and a word the learner typed correctly would read as an empty row without them.
+
+Listening exposure is the one exclusion, and it is excluded **by use type, not by being worth nothing** — it fires often enough to bury everything else, so it appears as a single count on the listening row instead, which reads the same at 24 as at 2,400. Anything added later that fires at that frequency belongs in the same shape. Excluding it by score instead would silently take the grey marks above with it.
 
 ### Blocking Constructs
 

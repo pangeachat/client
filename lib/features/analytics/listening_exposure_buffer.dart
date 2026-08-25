@@ -150,11 +150,20 @@ class ListeningExposureBuffer {
   }
 
   /// Puts [langCode]'s drained rows back after a failed write.
+  ///
+  /// Goes through the same remove-then-insert and eviction as [record]. A
+  /// restore is evidence this language is the one being drained — i.e. the
+  /// learner's L2 — so leaving it at its old position would make it the first
+  /// candidate for eviction, and the buffer would drop the one language
+  /// somebody is actually going to ask for in favour of languages nobody will.
   void restore(String langCode, List<OneConstructUse> uses) {
     if (uses.isEmpty) return;
     final key = languageKey(langCode);
     if (key.isEmpty) return;
-    (_byLanguage[key] ??= _LanguageBuckets()).restore(uses);
+    final buckets = _byLanguage.remove(key) ?? _LanguageBuckets();
+    _byLanguage[key] = buckets;
+    buckets.restore(uses);
+    _evictStaleLanguages();
   }
 
   /// Drops the least-recently-heard languages past [maxLanguages].

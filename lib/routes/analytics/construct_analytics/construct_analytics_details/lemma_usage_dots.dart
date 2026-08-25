@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
+import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 
@@ -22,16 +23,27 @@ class LemmaUsageDots extends StatelessWidget {
 
   /// Find lemma uses for the given exercise type, to create dot list.
   ///
-  /// One mark per SCORED use only. Zero-XP uses are not marks: listening
-  /// exposure alone fires often enough to outnumber everything else here and
-  /// turn the row into a wall of identical dots. It is shown as a count
-  /// instead — see analytics-system.instructions.md (Construct Displays).
+  /// One mark per use, EXCEPT listening exposure, which is excluded by use type
+  /// rather than by being worth nothing.
+  ///
+  /// The distinction matters: plenty of existing 0-XP uses are real evidence
+  /// the learner earned. `ignIGC` and `ignIt` are minted on every sent message
+  /// for tokens that writing assistance left alone — i.e. the learner typed the
+  /// word and nothing was wrong with it — and they are the most common thing in
+  /// the Writing row. Dropping every 0-XP use would take those with it.
+  /// Exposure is excluded because it fires often enough to bury everything
+  /// else, not because it scores nothing; it is shown as a count instead — see
+  /// analytics-system.instructions.md (Construct Displays).
   List<Color> sortedUses(LearningSkillsEnum category) {
     final List<Color> useList = [];
     for (final OneConstructUse use in construct.cappedUses) {
       if (category != use.useType.skillsEnumType) continue;
-      if (use.xp == 0) continue;
-      useList.add(use.xp > 0 ? AppConfig.success : Colors.red);
+      if (use.useType == ConstructUseTypeEnum.hrd) continue;
+      useList.add(switch (use.xp) {
+        > 0 => AppConfig.success,
+        < 0 => Colors.red,
+        _ => Colors.grey[400]!,
+      });
     }
     return useList;
   }

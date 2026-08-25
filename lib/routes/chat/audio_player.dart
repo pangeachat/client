@@ -124,6 +124,15 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   /// Reset when a fresh playback starts, so a replay counts again: exposure is
   /// deliberately not deduplicated — repetition is the variable.
   bool _exposureRecorded = false;
+
+  /// Whether the learner moved the playhead during this playback.
+  ///
+  /// Completion alone does not mean the message was heard: dragging the slider
+  /// to the last second of a two-minute voice message reaches `completed`
+  /// having played almost none of it. There is no per-word coverage to consult,
+  /// so a scrubbed playback declines to record rather than guessing which words
+  /// were reached.
+  bool _scrubbed = false;
   // Pangea#
 
   /// Banks this message's lemmas once the playback that THIS widget owns runs
@@ -136,9 +145,10 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     if (matrix.voiceMessageEventId.value != widget.eventId) return;
     if (playing && !completed) {
       _exposureRecorded = false;
+      _scrubbed = false;
       return;
     }
-    if (!completed || _exposureRecorded) return;
+    if (!completed || _exposureRecorded || _scrubbed) return;
     _exposureRecorded = true;
     widget.exposure.record(matrix.client.userID);
   }
@@ -388,9 +398,15 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       name: fileToPlay.name,
       mimeType: fileToPlay.mimeType,
     );
-    matrixFilePlayer.setAudioSourceAndPlay().onError(
-      ErrorReporter(context, 'Unable to play audio message').onErrorCallback,
-    );
+    // `onError` has to yield the future's own type now that play() reports
+    // whether it reached the end; a failure did not reach it.
+    matrixFilePlayer.setAudioSourceAndPlay().onError<Object>((e, s) {
+      ErrorReporter(
+        context,
+        'Unable to play audio message',
+      ).onErrorCallback(e, s);
+      return false;
+    });
     // Pangea#
   }
 
@@ -776,14 +792,19 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                       // #Pangea
                                       onChanged: !widget.enableClicks
                                           ? null
-                                          : (position) => audioPlayer == null
-                                                ? _onButtonTap()
-                                                : audioPlayer.seek(
-                                                    Duration(
-                                                      milliseconds: position
-                                                          .round(),
-                                                    ),
-                                                  ),
+                                          : (position) {
+                                              if (audioPlayer == null) {
+                                                _onButtonTap();
+                                                return;
+                                              }
+                                              _scrubbed = true;
+                                              audioPlayer.seek(
+                                                Duration(
+                                                  milliseconds: position
+                                                      .round(),
+                                                ),
+                                              );
+                                            },
                                       // onChanged: (position) => audioPlayer == null
                                       //     ? _onButtonTap()
                                       //     : audioPlayer.seek(

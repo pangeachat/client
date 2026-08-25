@@ -233,6 +233,34 @@ void main() {
     );
   });
 
+  test('an interruption we did not ask for records nothing', () async {
+    // The everyday web case: Chrome cancels speechSynthesis and reports it as
+    // an error. Nothing called our stop, so a rule of "ended and we did not
+    // stop it" counts the whole utterance as heard.
+    engine.onSpeak = FakeSpeakBehavior.startAndHang;
+    final probe = SpyProbe(buffer: DosageAudioBuffer());
+
+    final speaking = TtsController.tryToSpeak(
+      'hablar',
+      langCode: 'es',
+      useCase: TtsUseCase.words,
+      allowChoreoPlay: false,
+      listening: probe,
+      exposure: hablar(),
+    );
+
+    await untilTrue(() => engine.spoken.isNotEmpty);
+    await engine.emit('speak.onError', 'interrupted');
+    await speaking;
+
+    expect(probe.starts, greaterThan(0), reason: 'audio really did start');
+    expect(
+      recordedExposures(),
+      0,
+      reason: 'nobody asked it to stop, and it still did not finish',
+    );
+  });
+
   test('an exempt path records nothing even on a clean finish', () async {
     engine.onSpeak = FakeSpeakBehavior.startAndComplete;
 

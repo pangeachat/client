@@ -313,7 +313,7 @@ void main() {
     test('a language that is never drained still cannot grow unbounded', () {
       final buffer = build();
       for (var i = 0; i < ListeningExposureBuffer.maxHeldRows + 20; i++) {
-        buffer.record([id('lemma\$i')], langCode: 'fr');
+        buffer.record([id('lemma$i')], langCode: 'fr');
         clock = clock.add(ListeningExposureBuffer.window);
       }
 
@@ -325,6 +325,46 @@ void main() {
         buffer.pendingExposuresFor('fr'),
         lessThanOrEqualTo(ListeningExposureBuffer.maxHeldRows + 1),
       );
+    });
+  });
+
+  group('restoring after a failed write', () {
+    test('moves the restored language to the front of the eviction queue', () {
+      // A restore is evidence this language IS the one being drained — the
+      // learner's L2. Left at its original position it is the OLDEST entry, so
+      // the next new language evicts it: the buffer drops the one language
+      // somebody is about to ask for and keeps the ones nobody will.
+      final buffer = build()..record([id('hablar')], langCode: 'es');
+      for (var i = 0; i < ListeningExposureBuffer.maxLanguages - 1; i++) {
+        buffer.record([id('word$i')], langCode: 'l$i');
+      }
+
+      buffer.restore('es', buffer.drain('es'));
+      buffer.record([id('neu')], langCode: 'de');
+
+      expect(buffer.heldLanguages, contains('es'));
+      expect(buffer.pendingExposuresFor('es'), 1);
+      expect(
+        buffer.heldLanguages,
+        isNot(contains('l0')),
+        reason: 'the genuinely oldest language is the one evicted',
+      );
+    });
+
+    test('does not push the buffer past the language cap', () {
+      final buffer = build()..record([id('hablar')], langCode: 'es');
+      final drained = buffer.drain('es');
+      for (var i = 0; i < ListeningExposureBuffer.maxLanguages; i++) {
+        buffer.record([id('word$i')], langCode: 'l$i');
+      }
+
+      buffer.restore('es', drained);
+
+      expect(
+        buffer.heldLanguages,
+        hasLength(ListeningExposureBuffer.maxLanguages),
+      );
+      expect(buffer.pendingExposuresFor('es'), 1);
     });
   });
 
