@@ -472,4 +472,77 @@ void main() {
       expect(parsed.drainComplete, isFalse);
     });
   });
+
+  group('when the participant list is a guess, not an answer', () {
+    TranscriptCandidate spoke(String sender) => _candidate(
+      sender,
+      texts: const ['palabras de verdad'],
+      accounting: const HalfAccounting(
+        chunksCaptured: 1,
+        chunksTranscribed: 1,
+        declared: true,
+      ),
+    );
+
+    test('a half we cannot place is not discarded in silence', () {
+      // The failure this design exists to prevent, from the direction it did
+      // not cover. Not "we said they were silent when we could not read
+      // them", but "we read them, could not place them, and said nothing at
+      // all" -- while reporting the read as complete.
+      final transcript = assembleTranscript(
+        candidates: [spoke(bob)],
+        expectedSenders: [alice],
+        participantsKnown: false,
+      );
+
+      expect(transcript.readerStoppedEarly, isTrue);
+      expect(
+        _halfFor(transcript, alice).state,
+        HalfState.incomplete,
+        reason: 'we cannot say alice was absent while holding an unplaced half',
+      );
+    });
+
+    test('a guess that placed everything still concludes normally', () {
+      // The degradation must not fire just because the list was a guess. A
+      // guess that turned out to cover everything read is as good as an
+      // answer, and hedging every transcript would empty the flag of meaning.
+      final transcript = assembleTranscript(
+        candidates: [spoke(alice)],
+        expectedSenders: [alice, bob],
+        participantsKnown: false,
+      );
+
+      expect(transcript.readerStoppedEarly, isFalse);
+      expect(_halfFor(transcript, alice).state, HalfState.present);
+      expect(_halfFor(transcript, bob).state, HalfState.absent);
+    });
+
+    test('a KNOWN list still drops a stranger without hedging', () {
+      // The anti-injection rule is the reason this function filters at all,
+      // and it has to keep working: a half from somebody who was not on the
+      // call gets no section, and the real halves stay conclusive.
+      final transcript = assembleTranscript(
+        candidates: [spoke(alice), spoke('@stranger:evil.example')],
+        expectedSenders: [alice, bob],
+      );
+
+      expect(transcript.halves.map((h) => h.senderId), [alice, bob]);
+      expect(transcript.readerStoppedEarly, isFalse);
+      expect(_halfFor(transcript, alice).state, HalfState.present);
+    });
+
+    test('a capped read still cannot conclude, guess or not', () {
+      // The two reasons a conclusion is unsafe are independent, and either
+      // alone is enough.
+      final transcript = assembleTranscript(
+        candidates: [spoke(alice)],
+        expectedSenders: [alice, bob],
+        exhausted: false,
+      );
+
+      expect(transcript.readerStoppedEarly, isTrue);
+      expect(_halfFor(transcript, bob).state, HalfState.incomplete);
+    });
+  });
 }

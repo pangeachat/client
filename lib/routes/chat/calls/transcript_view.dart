@@ -85,16 +85,24 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     _transcript = _load();
   }
 
-  Future<CallTranscript> _load() => fetchCallTranscript(
-    fetch: widget.fetcher ?? relationsFetcherFor(widget.room.client),
-    roomId: widget.room.id,
-    callKey: widget.callKey,
-    expectedSenders: callParticipants(
-      me: widget.room.client.userID,
-      peerId: callPeerOf(widget.room),
-    ),
-    encrypted: widget.room.encrypted,
-  );
+  Future<CallTranscript> _load() {
+    // Worked out ONCE and both facts carried together: who we think took part,
+    // and whether that is an answer or a guess. Read separately, the second
+    // one is what gets forgotten -- and a guess presented as an answer is how
+    // a real half comes to be discarded in silence.
+    final peer = callPeerOf(widget.room);
+    return fetchCallTranscript(
+      fetch: widget.fetcher ?? relationsFetcherFor(widget.room.client),
+      roomId: widget.room.id,
+      callKey: widget.callKey,
+      expectedSenders: callParticipants(
+        me: widget.room.client.userID,
+        peerId: peer,
+      ),
+      participantsKnown: peer != null,
+      encrypted: widget.room.encrypted,
+    );
+  }
 
   // A block body, not an arrow: an arrow returns the assignment's value, and
   // setState refuses a callback that returns a Future. Retry did nothing.

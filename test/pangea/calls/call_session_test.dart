@@ -592,6 +592,58 @@ void main() {
       expect(room.cards, isEmpty, reason: 'their card exists; nothing to add');
     });
 
+    test("a stranger's card does not stop the survivor writing", () async {
+      // The key is the caller's membership event id, which every room member
+      // can see DURING the call. Checking only type and key let anyone post a
+      // card carrying it inside the settle window: this check found it, the
+      // real survivor card was never written, and the timeline then correctly
+      // refused to draw the forgery -- leaving the call with no card from
+      // anybody, and its transcript unreachable.
+      final (session, room, _) = await answeredCall();
+      final client = room.client;
+      session.timelineEventsOverride = () async => [
+        matrix.Event(
+          type: PangeaEventTypes.call,
+          content: {CallRecord.callKeyField: r'$caller-membership'},
+          senderId: '@stranger:evil.example',
+          eventId: r'$forged',
+          originServerTs: DateTime.now(),
+          room: matrix.Room(id: '!r:server', client: client),
+        ),
+      ];
+      session.endCall();
+      await pumpEventQueue();
+
+      await session.survivorCheckNowForTest();
+
+      expect(room.cards, hasLength(1), reason: 'the real card is written');
+    });
+
+    test('a card whose send FAILED does not stop the survivor either', () async {
+      // It is kept locally and marked errored, nothing retries it, and the
+      // peer never receives it -- so treating it as already written suppresses
+      // the one write that would have reached them.
+      final (session, room, _) = await answeredCall();
+      final client = room.client;
+      session.timelineEventsOverride = () async => [
+        matrix.Event(
+          type: PangeaEventTypes.call,
+          content: {CallRecord.callKeyField: r'$caller-membership'},
+          senderId: '@friend:fakeServer.notExisting',
+          eventId: r'$never-sent',
+          originServerTs: DateTime.now(),
+          room: matrix.Room(id: '!r:server', client: client),
+          status: matrix.EventStatus.error,
+        ),
+      ];
+      session.endCall();
+      await pumpEventQueue();
+
+      await session.survivorCheckNowForTest();
+
+      expect(room.cards, hasLength(1));
+    });
+
     test('the survivor never invents an answered call', () async {
       // A caller whose app dies mid-ring leaves a membership that still reads
       // as calling, so a call BACK looks like glare: peerAlsoPlaced turns on,

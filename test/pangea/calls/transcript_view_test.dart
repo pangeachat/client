@@ -172,6 +172,61 @@ void main() {
       expect(find.text('You'), findsOneWidget);
     });
 
+    testWidgets('an unresolved peer does not produce a confident empty '
+        'transcript', (tester) async {
+      // The room is not a direct chat and has no single other member, so the
+      // peer cannot be worked out. A half from them is still in the room. It
+      // used to be read, discarded as unplaceable, and the call reported as
+      // containing nothing -- with the read marked complete.
+      final r = Room(
+        id: '!c:fakeServer.notExisting',
+        client: client,
+        summary: RoomSummary.fromJson({
+          'm.joined_member_count': 3,
+          'm.invited_member_count': 0,
+          'm.heroes': <String>[],
+        }),
+      );
+      client.accountData.remove('m.direct');
+      for (final id in [_me, _peer, '@third:example.com']) {
+        r.setState(
+          Event(
+            type: EventTypes.RoomMember,
+            stateKey: id,
+            content: const {'membership': 'join'},
+            senderId: id,
+            eventId: '\$m-\$id',
+            originServerTs: DateTime.now(),
+            room: r,
+          ),
+        );
+      }
+
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('en'),
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+          home: CallTranscriptView(
+            room: r,
+            callKey: _callKey,
+            fetcher: serving([
+              half(_peer, texts: ['lo dije yo']),
+            ]),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(
+        find.textContaining('not shown'),
+        findsOneWidget,
+        reason: 'the screen admits it could not read all of this call',
+      );
+      expect(find.textContaining('No transcript from'), findsNothing);
+      expect(find.textContaining('did not say anything'), findsNothing);
+    });
+
     testWidgets('in an ENCRYPTED room nobody is reported as having said '
         'nothing', (tester) async {
       // Nothing on the relations path decrypts, so every half comes back

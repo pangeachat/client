@@ -253,10 +253,35 @@ class CallTranscript {
 /// [exhausted] is whether retrieval reached the end of the server's relations,
 /// as opposed to stopping at the reader's own cap. A capped read can never
 /// conclude absence.
+///
+/// [participantsKnown] is whether [expectedSenders] is an ANSWER or a GUESS.
+///
+/// This function discards any half whose sender is not expected, and that is
+/// right when the list is known: such a half is a stranger's, and giving it a
+/// section in a two-person call would lend an attack the standing of a record.
+/// It is a lie when the list is a guess. The caller works the participants out
+/// from local state, and that can come up short -- account data that has not
+/// synced, a room whose membership does not name a single other side. When it
+/// does, a real participant is missing from the list, their genuine half is
+/// dropped on the floor, and the reader reports the call as containing nothing
+/// while claiming to have read everything.
+///
+/// That is the failure this whole design exists to prevent, arrived at from
+/// the one direction it did not cover: not "we said they were silent when we
+/// could not read them", but "we read them, could not place them, and said
+/// nothing at all". Every earlier attempt to fix it improved the GUESS. The
+/// assumption is what needed stating, because a better guess is still a guess
+/// and the next way of getting it wrong lands here again.
+///
+/// So: when the list is not authoritative AND something was found that it
+/// cannot place, this read cannot conclude anything. It degrades to the answer
+/// it can defend -- we could not find out -- rather than presenting a partial
+/// picture as the whole one.
 CallTranscript assembleTranscript({
   required List<TranscriptCandidate> candidates,
   required List<String> expectedSenders,
   bool exhausted = true,
+  bool participantsKnown = true,
 }) {
   final bySender = <String, TranscriptCandidate>{};
 
@@ -280,6 +305,17 @@ CallTranscript assembleTranscript({
   // rule this function exists to enforce.
   final senders = <String>{...expectedSenders};
 
+  // Read but not placeable. Harmless when we know who took part -- it is
+  // somebody else's event and dropping it is the point. Decisive when we do
+  // not, because then it may be the very half we are about to report missing.
+  final unplaceable = bySender.keys.any((id) => !senders.contains(id));
+
+  // The single question every state below turns on: may this read draw a
+  // conclusion about what a speaker did? Two independent ways for the answer
+  // to be no, and both have to hold for a conclusion to be safe -- we saw
+  // everything the server had, and we know whose halves we were looking for.
+  final canConclude = exhausted && !(unplaceable && !participantsKnown);
+
   final halves = <TranscriptHalf>[];
   for (final senderId in senders) {
     final candidate = bySender[senderId];
@@ -290,8 +326,8 @@ CallTranscript assembleTranscript({
           senderId: senderId,
           segments: const [],
           accounting: const HalfAccounting(),
-          // A read that stopped early cannot tell absent from unread.
-          state: exhausted ? HalfState.absent : HalfState.incomplete,
+          // A read that cannot conclude cannot tell absent from unread.
+          state: canConclude ? HalfState.absent : HalfState.incomplete,
         ),
       );
       continue;
@@ -302,7 +338,7 @@ CallTranscript assembleTranscript({
         senderId: senderId,
         segments: List.unmodifiable(candidate.segments),
         accounting: candidate.accounting,
-        state: (!exhausted || candidate.accounting.writerAdmitsGaps)
+        state: (!canConclude || candidate.accounting.writerAdmitsGaps)
             ? HalfState.incomplete
             : HalfState.present,
       ),
@@ -311,7 +347,10 @@ CallTranscript assembleTranscript({
 
   return CallTranscript(
     halves: List.unmodifiable(halves),
-    readerStoppedEarly: !exhausted,
+    // Reported whenever a conclusion was unsafe, whichever of the two reasons
+    // it was. The view says the same thing to the learner either way: some of
+    // this call could not be read.
+    readerStoppedEarly: !canConclude,
   );
 }
 

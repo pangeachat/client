@@ -47,17 +47,32 @@ String? callPeerOf(Room room) {
 /// Local state only. A Matrix sender id is stamped by the homeserver rather
 /// than chosen by the writer, so a card or a half claiming to come from
 /// somebody else cannot pass a check against this set.
+///
+/// Holds ONE id when the peer cannot be worked out, and that is not the same
+/// as knowing the peer is nobody -- see [callCardCouldBeReal].
 Set<String> callSides(Room room) => {?room.client.userID, ?callPeerOf(room)};
 
-/// Whether this event is a call card written by somebody who was on the call.
+/// Whether this call card could have been written by somebody on the call.
 ///
-/// Anyone in the room can send an event of this type. Without this, a member
-/// who was not on the call could post a card with an answered flag, a duration
-/// and a transcript affordance, and it drew as a real call that never
-/// happened. The suppression rule already asked this question of a card trying
-/// to hide another; the card being DRAWN was never asked it.
-bool callCardIsFromAParticipant(Event event) =>
-    callSides(event.room).contains(event.senderId);
+/// COULD, not IS, and the difference is the whole of it. Anyone in the room
+/// can send an event of this type, so a card from a third party must not draw:
+/// it would put a call on screen that never happened, with a duration and a
+/// transcript affordance. But [callPeerOf] answers null when it cannot tell
+/// who the other side is -- an ordinary thing once that person leaves the room
+/// -- and reading that null as "they were not a participant" hid the real card
+/// for a call that really happened, on every surface, along with the
+/// transcript it opens.
+///
+/// Null is not a denial. When the peer is unknown nobody is excluded, which
+/// costs a forged card being drawn in a room we could not resolve, and saves
+/// every real call in a room the other person has left. Losing a real call is
+/// the worse of the two and much the likelier: the forgery needs a hostile
+/// room member, and the peer leaving needs nothing at all.
+bool callCardCouldBeReal(Event event) {
+  final peer = callPeerOf(event.room);
+  if (peer == null) return true;
+  return {?event.room.client.userID, peer}.contains(event.senderId);
+}
 
 /// Whether this account placed the call.
 ///
@@ -85,7 +100,14 @@ bool callWasOutgoing(Event event) {
   // can still show the other person the wrong arrow for a call they were both
   // on. That is the honest limit here: the label can be wrong between two
   // people who were really talking, and no third party can be inserted.
-  if (caller is String && (caller == me || caller == callPeerOf(event.room))) {
+  // When the peer cannot be worked out we cannot confirm the name -- and
+  // rejecting it then discarded a TRUTHFUL value written by our own side: a
+  // survivor card correctly naming the peer who called, read back as a call we
+  // placed. An unconfirmable name is still only ever one of the two people in
+  // a 1:1 room, so believing it costs at most the arrow, which the peer could
+  // flip anyway.
+  final peer = callPeerOf(event.room);
+  if (caller is String && (caller == me || peer == null || caller == peer)) {
     return caller == me;
   }
 
@@ -114,7 +136,7 @@ bool callWasOutgoing(Event event) {
 /// exists.
 String? callPreviewLine(L10n l10n, Event event) {
   if (event.status.isError) return null;
-  if (!callCardIsFromAParticipant(event)) return null;
+  if (!callCardCouldBeReal(event)) return null;
   final outgoing = callWasOutgoing(event);
   final declined = event.content['declined'] == true;
   final answered = event.content['answered'] == true;
@@ -128,7 +150,7 @@ String? callPreviewLine(L10n l10n, Event event) {
   }
   final label = video ? l10n.callHistoryVideoCall : l10n.callHistoryVoiceCall;
   final duration = CallRecord.durationOf(event.content);
-  if (duration == Duration.zero) return label;
+  if (duration == null) return label;
   return '$label · ${CallTimelineEvent.formatDuration(duration)}';
 }
 
@@ -166,7 +188,11 @@ class CallTimelineEvent extends StatelessWidget {
 
   /// Read through the record's own rule, so the card and the thing that wrote
   /// it cannot disagree about what a duration is.
-  Duration get _duration => CallRecord.durationOf(event.content);
+  /// Null when the card states no usable duration. Distinct from a call that
+  /// really lasted no time: the card drew "0:00" for both, stating a length
+  /// the data did not support, while the chat list showed no length at all for
+  /// one of them -- two surfaces contradicting each other about one call.
+  Duration? get _duration => CallRecord.durationOf(event.content);
 
   /// Whether another card for the SAME call precedes this one.
   ///
@@ -257,7 +283,7 @@ class CallTimelineEvent extends StatelessWidget {
     // than no record -- it reads as an extra call that never took place.
     if (_neverSent) return const SizedBox.shrink();
     // A card from somebody who was not on the call is not a record of it.
-    if (!callCardIsFromAParticipant(event)) return const SizedBox.shrink();
+    if (!callCardCouldBeReal(event)) return const SizedBox.shrink();
     if (_duplicateOfEarlier) return const SizedBox.shrink();
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
@@ -297,9 +323,9 @@ class CallTimelineEvent extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  if (connected) ...[
+                  if (connected && _duration != null) ...[
                     Text(
-                      '  ${formatDuration(_duration)}',
+                      '  ${formatDuration(_duration!)}',
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.onSurfaceVariant,
                       ),

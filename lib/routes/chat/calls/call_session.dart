@@ -4,7 +4,6 @@ import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart';
 
 import 'package:livekit_client/livekit_client.dart' as lk;
-import 'package:matrix/matrix.dart' as matrix show Event, Room, User;
 import 'package:matrix/matrix.dart' show Logs;
 import 'package:permission_handler/permission_handler.dart';
 
@@ -13,12 +12,17 @@ import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/ring_player.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+
+import 'package:matrix/matrix.dart'
+    as matrix
+    show Event, EventStatusExtension, Room, User;
 
 import 'package:pangea_call_capture/pangea_call_capture.dart'
     show CallForegroundControl;
@@ -609,10 +613,27 @@ class CallSession extends ChangeNotifier {
 
   Future<void> _survivorCheck(String key, String? caller) async {
     final events = await _timelineEvents();
+    // Through the same question the timeline asks, not a private copy of it.
+    //
+    // This decided "a card for this call already exists" on type and key
+    // alone. The key is the caller's membership event id, which every room
+    // member can see DURING the call -- so anyone could post a card carrying
+    // it inside the settle window, this check would find it, and the real
+    // survivor card would never be written. The timeline then correctly
+    // refuses to draw the forgery, and the call is left with no card from
+    // anybody: gone from the conversation and from the chat list, taking the
+    // transcript it opens with it.
+    //
+    // A send that failed does not count either. It is kept locally and marked
+    // errored, nothing retries it, and the peer never receives it, so treating
+    // it as a card already written suppresses the one write that would have
+    // reached them.
     final already = events.any(
       (e) =>
           e.type == PangeaEventTypes.call &&
-          e.content[CallRecord.callKeyField] == key,
+          e.content[CallRecord.callKeyField] == key &&
+          !e.status.isError &&
+          callCardCouldBeReal(e),
     );
     if (already) return;
     Logs().i('No card arrived for this call; the survivor writes it');

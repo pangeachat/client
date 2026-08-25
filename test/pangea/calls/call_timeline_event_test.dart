@@ -211,4 +211,90 @@ void main() {
       expect(find.byType(Icon), findsNothing, reason: 'nothing at all');
     });
   });
+
+  group('when the peer cannot be worked out', () {
+    /// A room that is not a direct chat and has no single other side: three
+    /// people have been here, so [callPeerOf] cannot name one.
+    Room unresolvable() {
+      client.accountData.remove('m.direct');
+      final r = Room(
+        id: '!c:fakeServer.notExisting',
+        client: client,
+        summary: RoomSummary.fromJson({
+          'm.joined_member_count': 3,
+          'm.invited_member_count': 0,
+          'm.heroes': <String>[],
+        }),
+      );
+      for (final id in [me, '@friend:server', '@third:server']) {
+        r.setState(
+          Event(
+            type: EventTypes.RoomMember,
+            stateKey: id,
+            content: const {'membership': 'join'},
+            senderId: id,
+            eventId: '\$m-\$id',
+            originServerTs: DateTime.now(),
+            room: r,
+          ),
+        );
+      }
+      return r;
+    }
+
+    Event cardIn(Room r, {required String sender, Object? caller}) => Event(
+      type: PangeaEventTypes.call,
+      content: {
+        'caller': caller,
+        'answered': true,
+        'declined': false,
+        'duration_ms': 8000,
+      },
+      senderId: sender,
+      eventId: r'$c',
+      originServerTs: DateTime.now(),
+      room: r,
+      status: EventStatus.synced,
+    );
+
+    test('a real call is not hidden because we cannot confirm who was on it', () {
+      // Not knowing who the other side is happens on its own -- they leave the
+      // room. Reading that as "they were not a participant" hid the card for a
+      // call that really happened, on every surface, and the transcript with
+      // it.
+      final r = unresolvable();
+      expect(callCardCouldBeReal(cardIn(r, sender: '@friend:server')), isTrue);
+    });
+
+    test('a known peer still excludes everyone else', () {
+      // The anti-forgery rule has to keep working wherever it can be applied.
+      client.accountData['m.direct'] = BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@friend:server': ['!c:fakeServer.notExisting'],
+        },
+      );
+      final r = Room(id: '!c:fakeServer.notExisting', client: client);
+      expect(
+        callCardCouldBeReal(cardIn(r, sender: '@stranger:evil.example')),
+        isFalse,
+      );
+      expect(callCardCouldBeReal(cardIn(r, sender: '@friend:server')), isTrue);
+    });
+
+    test(
+      'a truthful caller is not discarded because it cannot be confirmed',
+      () {
+        // Our own survivor card, correctly naming the peer who called us, read
+        // back as a call WE placed -- nobody lied, the unresolved peer simply
+        // threw away a true value.
+        final r = unresolvable();
+        expect(
+          callWasOutgoing(cardIn(r, sender: me, caller: '@friend:server')),
+          isFalse,
+          reason: 'they called, and our card says so',
+        );
+      },
+    );
+  });
 }

@@ -663,8 +663,11 @@ void main() {
         CallRecord.durationOf({'duration_ms': '90000'}),
         const Duration(seconds: 90),
       );
-      expect(CallRecord.durationOf({'duration_ms': 'soon'}), Duration.zero);
-      expect(CallRecord.durationOf(const {}), Duration.zero);
+      // Null rather than zero: not knowing how long a call lasted and knowing
+      // it lasted no time are different facts, and the card and the chat list
+      // disagreed about which they were showing.
+      expect(CallRecord.durationOf({'duration_ms': 'soon'}), isNull);
+      expect(CallRecord.durationOf(const {}), isNull);
       expect(
         CallRecord.durationOf({'duration_ms': 1500}),
         const Duration(milliseconds: 1500),
@@ -972,13 +975,22 @@ void main() {
       // num.tryParse accepts "NaN" and "Infinity", and .round() on either
       // throws -- so a card carrying one of those words took the whole row
       // down rather than reading as a call of unknown length.
+      // Null, not zero: a card stating no usable length and a call that
+      // really lasted none are different facts, and collapsing them made the
+      // card print "0:00" while the chat list printed nothing.
       for (final word in ['NaN', 'Infinity', '-Infinity', '-61000']) {
         expect(
           CallRecord.durationOf({'duration_ms': word}),
-          Duration.zero,
+          isNull,
           reason: word,
         );
       }
+      expect(CallRecord.durationOf(const {}), isNull, reason: 'absent');
+      expect(
+        CallRecord.durationOf(const {'duration_ms': 0}),
+        Duration.zero,
+        reason: 'a real zero is still a stated zero',
+      );
     });
 
     test('an ordinary duration still reads', () {

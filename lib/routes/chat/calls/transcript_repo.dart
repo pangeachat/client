@@ -46,6 +46,11 @@ Future<CallTranscript> fetchCallTranscript({
   required String roomId,
   required String callKey,
   required List<String> expectedSenders,
+
+  /// Whether [expectedSenders] is an answer or a guess. See
+  /// [assembleTranscript]: a guess that comes up short must not be allowed to
+  /// discard a real half in silence.
+  bool participantsKnown = true,
   bool encrypted = false,
   int maxPages = kMaxRelationPages,
   int maxEvents = kMaxRelationEvents,
@@ -114,6 +119,7 @@ Future<CallTranscript> fetchCallTranscript({
   return assembleTranscript(
     candidates: candidates,
     expectedSenders: expectedSenders,
+    participantsKnown: participantsKnown,
     // An encrypted room is never an exhausted read, whatever the server said
     // about paging: we reached the end of a list we could not read.
     exhausted: exhausted && !encrypted,

@@ -439,7 +439,7 @@ class CallRecord {
   /// Defensive because this event is written by other clients and by older
   /// versions of this one: a cast that throws while drawing the timeline takes
   /// down the whole row rather than one number in it.
-  static Duration durationOf(Map<String, Object?> content) {
+  static Duration? durationOf(Map<String, Object?> content) {
     // Finite, not merely parseable. `num.tryParse` accepts "NaN" and
     // "Infinity", and `.round()` on either throws -- so a card carrying one of
     // those words took the whole row down rather than reading as a call of
@@ -455,7 +455,11 @@ class CallRecord {
     if (parsed != null && parsed.isFinite && parsed >= 0) {
       return Duration(milliseconds: parsed.round());
     }
-    return Duration.zero;
+    // Null, not zero. A card stating no usable length and a call that really
+    // lasted none are different facts, and collapsing them made one surface
+    // print "0:00" for a malformed card while the other printed nothing -- a
+    // length the data does not support, and two views of one call disagreeing.
+    return null;
   }
 
   /// What a client that cannot draw a call card shows instead.
