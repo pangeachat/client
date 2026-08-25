@@ -412,16 +412,16 @@ void main() {
     // per call. ALL reads go through ContractHarness.serverEvent — the SDK's
     // getEventById serves the client's own authored bytes back from the
     // local database, which can never detect server-side normalization.
-    Room? _timelineRoom;
+    Room? timelineRoomCache;
     Future<Room> timelineRoom() async {
-      if (_timelineRoom != null) return _timelineRoom!;
+      if (timelineRoomCache != null) return timelineRoomCache!;
       final roomId = await client.createPangeaGroupChat('P2 timeline');
       ContractHarness.trackRoom(client, roomId);
       await ContractHarness.waitUntil(
         client,
         () => client.getRoomById(roomId) != null,
       );
-      return _timelineRoom = client.getRoomById(roomId)!;
+      return timelineRoomCache = client.getRoomById(roomId)!;
     }
 
     test(
