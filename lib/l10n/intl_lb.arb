@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-24 16:25:55.470276",
+    "@@last_modified": "2026-08-25 11:37:42.016461",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "Niveau {level}",
     "whatAreYouLearning": "Wat léiers du?",
     "languageSwitcherBaseLanguageLabel": "Deng Basissprooch",
-    "listenModeDescription": "Tipp op eng Wiel fir se ze héieren. Näischt ass ausgewielt."
+    "listenModeDescription": "Tipp op eng Wiel fir se ze héieren. Näischt ass ausgewielt.",
+    "rateActivityLiked": "Mir huet et gefall",
+    "rateActivityDisliked": "Mir huet et net gefall"
 }

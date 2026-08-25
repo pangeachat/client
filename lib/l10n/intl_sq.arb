@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-24 16:25:57.591653",
+    "@@last_modified": "2026-08-25 11:37:43.779921",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "Niveli {level}",
     "whatAreYouLearning": "Çfarë po mëson?",
     "languageSwitcherBaseLanguageLabel": "Gjuha juaj bazë",
-    "listenModeDescription": "Trokitni një zgjedhje për ta dëgjuar. Asgjë nuk është zgjedhur."
+    "listenModeDescription": "Trokitni një zgjedhje për ta dëgjuar. Asgjë nuk është zgjedhur.",
+    "rateActivityLiked": "Më pëlqeu",
+    "rateActivityDisliked": "Nuk më pëlqeu"
 }

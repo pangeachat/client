@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-24 16:25:56.251206",
+    "@@last_modified": "2026-08-25 11:37:40.896136",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "Level {level}",
     "whatAreYouLearning": "Nung karino tamliba?",
     "languageSwitcherBaseLanguageLabel": "Nanggi base language",
-    "listenModeDescription": "খংনবা অমা তা-ও। করিগুম্বা অমা খলদে।"
+    "listenModeDescription": "খংনবা অমা তা-ও। করিগুম্বা অমা খলদে।",
+    "rateActivityLiked": "পাম্বা",
+    "rateActivityDisliked": "পাম্বদে"
 }

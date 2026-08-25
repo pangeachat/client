@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 16:25:57.710510",
+    "@@last_modified": "2026-08-25 11:37:43.987640",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10706,5 +10706,7 @@
     "languageDropdownLevel": "Nivo {level}",
     "whatAreYouLearning": "Šta učiš?",
     "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik",
-    "listenModeDescription": "Dodirnite izbor da biste ga čuli. Ništa nije odabrano."
+    "listenModeDescription": "Dodirnite izbor da biste ga čuli. Ništa nije odabrano.",
+    "rateActivityLiked": "Svidelo mi se",
+    "rateActivityDisliked": "Nije mi se svidelo"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-24 16:25:54.271204",
+    "@@last_modified": "2026-08-25 11:37:39.330122",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9860,5 +9860,7 @@
     "languageDropdownLevel": "{level}. szint",
     "whatAreYouLearning": "Mit tanulsz?",
     "languageSwitcherBaseLanguageLabel": "Alapnyelved",
-    "listenModeDescription": "Koppintson egy választásra, hogy meghallgassa. Nincs kiválasztva semmi."
+    "listenModeDescription": "Koppintson egy választásra, hogy meghallgassa. Nincs kiválasztva semmi.",
+    "rateActivityLiked": "Tetszett",
+    "rateActivityDisliked": "Nem tetszett"
 }

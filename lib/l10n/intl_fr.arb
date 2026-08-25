@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-24 16:25:53.596067",
+    "@@last_modified": "2026-08-25 11:37:37.625445",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10112,5 +10112,7 @@
     "languageDropdownLevel": "Niveau {level}",
     "whatAreYouLearning": "Qu'apprenez-vous ?",
     "languageSwitcherBaseLanguageLabel": "Votre langue de base",
-    "listenModeDescription": "Touchez un choix pour l'entendre. Rien n'est sélectionné."
+    "listenModeDescription": "Touchez un choix pour l'entendre. Rien n'est sélectionné.",
+    "rateActivityLiked": "J'ai aimé",
+    "rateActivityDisliked": "Je n'ai pas aimé"
 }

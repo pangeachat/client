@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-24 16:25:56.740427",
+    "@@last_modified": "2026-08-25 11:37:42.089291",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "ਪੱਧਰ {level}",
     "whatAreYouLearning": "ਤੁਸੀਂ ਕੀ ਸਿੱਖ ਰਹੇ ਹੋ?",
     "languageSwitcherBaseLanguageLabel": "ਤੁਹਾਡੀ ਮੂਲ ਭਾਸ਼ਾ",
-    "listenModeDescription": "ਇਸਨੂੰ ਸੁਣਨ ਲਈ ਇੱਕ ਵਿਕਲਪ 'ਤੇ ਟੈਪ ਕਰੋ। ਕੁਝ ਵੀ ਚੁਣਿਆ ਨਹੀਂ ਗਿਆ ਹੈ।"
+    "listenModeDescription": "ਇਸਨੂੰ ਸੁਣਨ ਲਈ ਇੱਕ ਵਿਕਲਪ 'ਤੇ ਟੈਪ ਕਰੋ। ਕੁਝ ਵੀ ਚੁਣਿਆ ਨਹੀਂ ਗਿਆ ਹੈ।",
+    "rateActivityLiked": "ਪਸੰਦ ਕੀਤਾ",
+    "rateActivityDisliked": "ਪਸੰਦ ਨਹੀਂ ਕੀਤਾ"
 }

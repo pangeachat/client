@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-24 16:25:57.996456",
+    "@@last_modified": "2026-08-25 11:37:44.716282",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10389,5 +10389,7 @@
     "languageDropdownLevel": "ระดับ {level}",
     "whatAreYouLearning": "คุณกำลังเรียนรู้อะไรอยู่",
     "languageSwitcherBaseLanguageLabel": "ภาษาหลักของคุณ",
-    "listenModeDescription": "แตะตัวเลือกเพื่อฟัง ไม่มีอะไรถูกเลือก"
+    "listenModeDescription": "แตะตัวเลือกเพื่อฟัง ไม่มีอะไรถูกเลือก",
+    "rateActivityLiked": "ถูกใจ",
+    "rateActivityDisliked": "ไม่ถูกใจ"
 }

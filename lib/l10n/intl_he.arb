@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 16:25:54.189726",
+    "@@last_modified": "2026-08-25 11:37:38.952084",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10671,5 +10671,7 @@
     "languageDropdownLevel": "רמה {level}",
     "whatAreYouLearning": "מה אתה לומד?",
     "languageSwitcherBaseLanguageLabel": "שפת הבסיס שלך",
-    "listenModeDescription": "הקש על אפשרות כדי לשמוע אותה. שום דבר לא נבחר."
+    "listenModeDescription": "הקש על אפשרות כדי לשמוע אותה. שום דבר לא נבחר.",
+    "rateActivityLiked": "אהבתי",
+    "rateActivityDisliked": "לא אהבתי"
 }

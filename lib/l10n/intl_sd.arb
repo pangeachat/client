@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-24 16:25:57.219603",
+    "@@last_modified": "2026-08-25 11:37:42.877426",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "سطح {level}",
     "whatAreYouLearning": "توهان ڇا سکي رهيا آهيو؟",
     "languageSwitcherBaseLanguageLabel": "توهان جي بنيادي ٻولي",
-    "listenModeDescription": "ٻڌڻ لاءِ ڪنهن چونڊ تي ٽيپ ڪريو. ڪجهه به چونڊيل ناهي."
+    "listenModeDescription": "ٻڌڻ لاءِ ڪنهن چونڊ تي ٽيپ ڪريو. ڪجهه به چونڊيل ناهي.",
+    "rateActivityLiked": "پسند آيو",
+    "rateActivityDisliked": "پسند نه آيو"
 }

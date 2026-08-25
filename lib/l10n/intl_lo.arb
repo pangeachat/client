@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-24 16:25:55.451088",
+    "@@last_modified": "2026-08-25 11:37:40.350441",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "ລະດັບ {level}",
     "whatAreYouLearning": "ທ່ານກຳລັງຮຽນຫຍັງ?",
     "languageSwitcherBaseLanguageLabel": "ພາສາພື້ນຖານຂອງທ່ານ",
-    "listenModeDescription": "ແຕະຕົວເລືອກເພື່ອຟັງ. ບໍ່ມີຫຍັງຖືກເລືອກ."
+    "listenModeDescription": "ແຕະຕົວເລືອກເພື່ອຟັງ. ບໍ່ມີຫຍັງຖືກເລືອກ.",
+    "rateActivityLiked": "ມັກ",
+    "rateActivityDisliked": "ບໍ່ມັກ"
 }

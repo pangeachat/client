@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-24 16:25:57.883642",
+    "@@last_modified": "2026-08-25 11:37:43.967393",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "Kiwango {level}",
     "whatAreYouLearning": "Unajifunza nini?",
     "languageSwitcherBaseLanguageLabel": "Lugha yako ya msingi",
-    "listenModeDescription": "Gonga chaguo ili kulisikia. Hakuna kilichochaguliwa."
+    "listenModeDescription": "Gonga chaguo ili kulisikia. Hakuna kilichochaguliwa.",
+    "rateActivityLiked": "Nimeipenda",
+    "rateActivityDisliked": "Sikuipenda"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-24 16:25:55.168044",
+    "@@last_modified": "2026-08-25 11:37:40.218436",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "ಹಂತ {level}",
     "whatAreYouLearning": "ನೀವು ಏನು ಕಲಿಯುತ್ತಿದ್ದೀರಿ?",
     "languageSwitcherBaseLanguageLabel": "ನಿಮ್ಮ ಮೂಲ ಭಾಷೆ",
-    "listenModeDescription": "ಕೇಳಲು ಒಂದು ಆಯ್ಕೆಯನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ. ಯಾವುದನ್ನೂ ಆಯ್ಕೆ ಮಾಡಲಾಗಿಲ್ಲ."
+    "listenModeDescription": "ಕೇಳಲು ಒಂದು ಆಯ್ಕೆಯನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ. ಯಾವುದನ್ನೂ ಆಯ್ಕೆ ಮಾಡಲಾಗಿಲ್ಲ.",
+    "rateActivityLiked": "ಇಷ್ಟವಾಯಿತು",
+    "rateActivityDisliked": "ಇಷ್ಟವಾಗಲಿಲ್ಲ"
 }

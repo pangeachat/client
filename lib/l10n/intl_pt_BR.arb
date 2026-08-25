@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 16:25:57.152604",
+    "@@last_modified": "2026-08-25 11:37:43.080209",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9757,5 +9757,7 @@
     "languageDropdownLevel": "Nível {level}",
     "whatAreYouLearning": "O que você está aprendendo?",
     "languageSwitcherBaseLanguageLabel": "Seu idioma base",
-    "listenModeDescription": "Toque em uma opção para ouvi-la. Nada selecionado."
+    "listenModeDescription": "Toque em uma opção para ouvi-la. Nada selecionado.",
+    "rateActivityLiked": "Gostei",
+    "rateActivityDisliked": "Não gostei"
 }

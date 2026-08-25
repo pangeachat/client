@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-24 16:25:55.446814",
+    "@@last_modified": "2026-08-25 11:37:40.066135",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "{level}-деңгээл",
     "whatAreYouLearning": "Эмне үйрөнүп жатасыз?",
     "languageSwitcherBaseLanguageLabel": "Сиздин негизги тилиңиз",
-    "listenModeDescription": "Угуу үчүн тандоону басыңыз. Эч нерсе тандалган жок."
+    "listenModeDescription": "Угуу үчүн тандоону басыңыз. Эч нерсе тандалган жок.",
+    "rateActivityLiked": "Жакты",
+    "rateActivityDisliked": "Жаккан жок"
 }

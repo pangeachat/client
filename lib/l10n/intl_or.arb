@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-24 16:25:56.767603",
+    "@@last_modified": "2026-08-25 11:37:42.081639",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "ସ୍ତର {level}",
     "whatAreYouLearning": "ଆପଣ କ’ଣ ଶିଖୁଛନ୍ତି?",
     "languageSwitcherBaseLanguageLabel": "ଆପଣଙ୍କ ମୂଳ ଭାଷା",
-    "listenModeDescription": "ଶୁଣିବା ପାଇଁ ଏକ ବିକଳ୍ପ ବାଛନ୍ତୁ। କିଛି ବଛାଯାଇନାହିଁ।"
+    "listenModeDescription": "ଶୁଣିବା ପାଇଁ ଏକ ବିକଳ୍ପ ବାଛନ୍ତୁ। କିଛି ବଛାଯାଇନାହିଁ।",
+    "rateActivityLiked": "ପସନ୍ଦ କଲି",
+    "rateActivityDisliked": "ପସନ୍ଦ କଲି ନାହିଁ"
 }

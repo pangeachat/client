@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-24 16:25:54.592721",
+    "@@last_modified": "2026-08-25 11:37:39.491126",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10389,5 +10389,7 @@
     "languageDropdownLevel": "Leibhéal {level}",
     "whatAreYouLearning": "Cad atá tú ag foghlaim?",
     "languageSwitcherBaseLanguageLabel": "Do bhuntheanga",
-    "listenModeDescription": "Tapáil rogha chun é a chloisteáil. Níl aon rud roghnaithe."
+    "listenModeDescription": "Tapáil rogha chun é a chloisteáil. Níl aon rud roghnaithe.",
+    "rateActivityLiked": "Thaitin sé liom",
+    "rateActivityDisliked": "Níor thaitin sé liom"
 }

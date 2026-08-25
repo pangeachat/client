@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-24 16:25:55.174666",
+    "@@last_modified": "2026-08-25 11:37:41.841038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "{level} деңгей",
     "whatAreYouLearning": "Сіз не үйреніп жатырсыз?",
     "languageSwitcherBaseLanguageLabel": "Сіздің негізгі тіліңіз",
-    "listenModeDescription": "Тыңдау үшін таңдауды басыңыз. Ештеңе таңдалмаған."
+    "listenModeDescription": "Тыңдау үшін таңдауды басыңыз. Ештеңе таңдалмаған.",
+    "rateActivityLiked": "Ұнады",
+    "rateActivityDisliked": "Ұнамады"
 }

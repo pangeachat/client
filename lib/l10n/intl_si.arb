@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-24 16:25:57.340542",
+    "@@last_modified": "2026-08-25 11:37:43.092196",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "මට්ටම {level}",
     "whatAreYouLearning": "ඔබ ඉගෙන ගන්නේ කුමක්ද?",
     "languageSwitcherBaseLanguageLabel": "ඔබේ මූලික භාෂාව",
-    "listenModeDescription": "එය ඇසීමට තේරීමක් තට්ටු කරන්න. කිසිවක් තෝරාගෙන නොමැත."
+    "listenModeDescription": "එය ඇසීමට තේරීමක් තට්ටු කරන්න. කිසිවක් තෝරාගෙන නොමැත.",
+    "rateActivityLiked": "කැමති විය",
+    "rateActivityDisliked": "අකමැති විය"
 }
