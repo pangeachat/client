@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-25 11:37:37.043629",
+    "@@last_modified": "2026-08-25 13:19:06.118242",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Tapiwch ddewis i'w glywed. Nid oes dim wedi'i ddewis.",
     "rateActivityLiked": "Hoffais i",
     "rateActivityDisliked": "Doeddwn i ddim yn ei hoffi",
-    "constructUseHrdDesc": "Clywed"
+    "constructUseHrdDesc": "Clywed",
+    "timesHeard": "{count, plural, =1{Clywyd unwaith} other{Clywyd {count} gwaith}}"
 }

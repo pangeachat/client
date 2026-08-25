@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-25 11:37:42.718514",
+    "@@last_modified": "2026-08-25 13:19:16.432863",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9845,5 +9845,6 @@
     "listenModeDescription": "Dotknij wyboru, aby go usłyszeć. Nic nie jest wybrane.",
     "rateActivityLiked": "Podobało mi się",
     "rateActivityDisliked": "Nie podobało mi się",
-    "constructUseHrdDesc": "Usłyszane"
+    "constructUseHrdDesc": "Usłyszane",
+    "timesHeard": "{count, plural, =1{Usłyszano raz} other{Usłyszano {count} razy}}"
 }

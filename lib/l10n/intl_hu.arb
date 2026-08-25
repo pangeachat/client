@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-25 11:37:39.330122",
+    "@@last_modified": "2026-08-25 13:19:09.121356",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9863,5 +9863,6 @@
     "listenModeDescription": "Koppintson egy választásra, hogy meghallgassa. Nincs kiválasztva semmi.",
     "rateActivityLiked": "Tetszett",
     "rateActivityDisliked": "Nem tetszett",
-    "constructUseHrdDesc": "Hallotta"
+    "constructUseHrdDesc": "Hallotta",
+    "timesHeard": "{count, plural, =1{Hallva egyszer} other{Hallva {count} alkalommal}}"
 }

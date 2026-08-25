@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-25 11:37:38.641989",
+    "@@last_modified": "2026-08-25 13:19:08.981645",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Tape yon chwa pou tande li. Pa gen anyen ki chwazi.",
     "rateActivityLiked": "Te renmen li",
     "rateActivityDisliked": "Pa t renmen li",
-    "constructUseHrdDesc": "Tande"
+    "constructUseHrdDesc": "Tande",
+    "timesHeard": "{count, plural, =1{Tande yon fwa} other{Tande {count} fwa}}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 11:37:36.993501",
+    "@@last_modified": "2026-08-25 13:19:06.343930",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10705,5 +10705,6 @@
     "listenModeDescription": "Frapu elekton por aŭdi ĝin. Nenio estas elektita.",
     "rateActivityLiked": "Ŝatis ĝin",
     "rateActivityDisliked": "Malŝatis ĝin",
-    "constructUseHrdDesc": "Aŭdita"
+    "constructUseHrdDesc": "Aŭdita",
+    "timesHeard": "{count, plural, =1{Aŭdita unufoje} other{Aŭdita {count} fojojn}}"
 }

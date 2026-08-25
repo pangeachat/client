@@ -2920,7 +2920,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-25 11:37:36.538539",
+    "@@last_modified": "2026-08-25 13:19:08.544141",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9371,5 +9371,6 @@
     "listenModeDescription": "གདམ་ག་ཞིག་ལ་རེག་ནས་ཉོན། གང་ཡང་འདེམས་མི་འདུག",
     "rateActivityLiked": "དགའ་པོ་བྱུང་།",
     "rateActivityDisliked": "དགའ་པོ་མ་བྱུང་།",
-    "constructUseHrdDesc": "ཐོས་པ་"
+    "constructUseHrdDesc": "ཐོས་པ་",
+    "timesHeard": "{count, plural, =1{ཐེངས་གཅིག་གོ་སོང་།} other{ཐེངས་ {count} གོ་སོང་།}}"
 }

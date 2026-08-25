@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 11:37:40.047618",
+    "@@last_modified": "2026-08-25 13:19:10.983031",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9953,5 +9953,6 @@
     "listenModeDescription": "선택 항목을 탭하여 들어보세요. 아무것도 선택되지 않았습니다.",
     "rateActivityLiked": "마음에 들어요",
     "rateActivityDisliked": "마음에 들지 않아요",
-    "constructUseHrdDesc": "들었어요"
+    "constructUseHrdDesc": "들었어요",
+    "timesHeard": "{count, plural, =1{1회 들음} other{{count}회 들음}}"
 }

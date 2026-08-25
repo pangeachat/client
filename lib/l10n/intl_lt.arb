@@ -2968,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-25 11:37:40.287114",
+    "@@last_modified": "2026-08-25 13:19:11.765122",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10541,5 +10541,6 @@
     "listenModeDescription": "Palieskite pasirinkimą, kad jį išgirstumėte. Nieko nepasirinkta.",
     "rateActivityLiked": "Patiko",
     "rateActivityDisliked": "Nepatiko",
-    "constructUseHrdDesc": "Girdėta"
+    "constructUseHrdDesc": "Girdėta",
+    "timesHeard": "{count, plural, =1{Išgirsta vieną kartą} other{Išgirsta {count} kartus}}"
 }

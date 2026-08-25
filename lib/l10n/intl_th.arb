@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-25 11:37:44.716282",
+    "@@last_modified": "2026-08-25 13:19:16.624182",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10392,5 +10392,6 @@
     "listenModeDescription": "แตะตัวเลือกเพื่อฟัง ไม่มีอะไรถูกเลือก",
     "rateActivityLiked": "ถูกใจ",
     "rateActivityDisliked": "ไม่ถูกใจ",
-    "constructUseHrdDesc": "ได้ยิน"
+    "constructUseHrdDesc": "ได้ยิน",
+    "timesHeard": "{count, plural, =1{ได้ยิน 1 ครั้ง} other{ได้ยิน {count} ครั้ง}}"
 }

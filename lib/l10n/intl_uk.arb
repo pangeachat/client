@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-25 11:37:44.267708",
+    "@@last_modified": "2026-08-25 13:19:16.717145",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9760,5 +9760,6 @@
     "listenModeDescription": "Торкніться варіанта, щоб прослухати його. Нічого не вибрано.",
     "rateActivityLiked": "Сподобалось",
     "rateActivityDisliked": "Не сподобалось",
-    "constructUseHrdDesc": "Чув"
+    "constructUseHrdDesc": "Чув",
+    "timesHeard": "{count, plural, =1{Прослухано один раз} other{Прослухано {count} разів}}"
 }

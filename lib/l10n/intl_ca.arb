@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 11:37:37.010760",
+    "@@last_modified": "2026-08-25 13:19:05.608787",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9887,5 +9887,6 @@
     "listenModeDescription": "Toca una opció per escoltar-la. No hi ha res seleccionat.",
     "rateActivityLiked": "M'ha agradat",
     "rateActivityDisliked": "No m'ha agradat",
-    "constructUseHrdDesc": "Sentit"
+    "constructUseHrdDesc": "Sentit",
+    "timesHeard": "{count, plural, =1{Sentida una vegada} other{Sentida {count} vegades}}"
 }

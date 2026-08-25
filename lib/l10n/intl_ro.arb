@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 11:37:42.710694",
+    "@@last_modified": "2026-08-25 13:19:15.437255",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10492,5 +10492,6 @@
     "listenModeDescription": "Atingeți o opțiune pentru a o auzi. Nu este selectat nimic.",
     "rateActivityLiked": "Mi-a plăcut",
     "rateActivityDisliked": "Nu mi-a plăcut",
-    "constructUseHrdDesc": "Auzit"
+    "constructUseHrdDesc": "Auzit",
+    "timesHeard": "{count, plural, =1{Ascultat o dată} other{Ascultat de {count} ori}}"
 }

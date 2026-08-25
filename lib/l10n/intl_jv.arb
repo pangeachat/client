@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-25 11:37:39.622284",
+    "@@last_modified": "2026-08-25 13:19:12.918885",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Tutul pilihan kanggo ngrungokake. Ora ana sing dipilih.",
     "rateActivityLiked": "Seneng",
     "rateActivityDisliked": "Ora seneng",
-    "constructUseHrdDesc": "Krungu"
+    "constructUseHrdDesc": "Krungu",
+    "timesHeard": "{count, plural, =1{Krungu sepisan} other{Krungu {count} kaping}}"
 }

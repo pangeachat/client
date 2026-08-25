@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-25 11:37:43.598844",
+    "@@last_modified": "2026-08-25 13:19:15.826727",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Toél pilihan pikeun ngadéngékeunana. Taya nu kapilih.",
     "rateActivityLiked": "Resep",
     "rateActivityDisliked": "Teu resep",
-    "constructUseHrdDesc": "Kadangu"
+    "constructUseHrdDesc": "Kadangu",
+    "timesHeard": "{count, plural, =1{Kaping dangu sakali} other{Kaping dangu {count} kali}}"
 }

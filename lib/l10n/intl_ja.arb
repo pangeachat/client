@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-25 11:37:39.358045",
+    "@@last_modified": "2026-08-25 13:19:10.252765",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10529,5 +10529,6 @@
     "listenModeDescription": "選択肢をタップして聞きます。何も選択されていません。",
     "rateActivityLiked": "よかった",
     "rateActivityDisliked": "よくなかった",
-    "constructUseHrdDesc": "聞きました"
+    "constructUseHrdDesc": "聞きました",
+    "timesHeard": "{count, plural, =1{1回聞きました} other{{count}回聞きました}}"
 }

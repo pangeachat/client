@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-25 11:37:41.811778",
+    "@@last_modified": "2026-08-25 13:19:13.170683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "ऐकण्यासाठी पर्याय टॅप करा. काहीही निवडलेले नाही.",
     "rateActivityLiked": "आवडले",
     "rateActivityDisliked": "आवडले नाही",
-    "constructUseHrdDesc": "ऐकले"
+    "constructUseHrdDesc": "ऐकले",
+    "timesHeard": "{count, plural, =1{एकदा ऐकले} other{{count} वेळा ऐकले}}"
 }

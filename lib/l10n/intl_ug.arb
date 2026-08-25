@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-25 11:37:44.589160",
+    "@@last_modified": "2026-08-25 13:19:17.079362",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "ئاڭلاش ئۈچۈن بىر تاللاشنى چېكىڭ. ھېچقانداق تاللاش يوق.",
     "rateActivityLiked": "ياقتۇردۇم",
     "rateActivityDisliked": "ياقتۇرمىدىم",
-    "constructUseHrdDesc": "ئاڭلىدى"
+    "constructUseHrdDesc": "ئاڭلىدى",
+    "timesHeard": "{count, plural, =1{بىر قېتىم ئاڭلىدى} other{{count} قېتىم ئاڭلىدى}}"
 }

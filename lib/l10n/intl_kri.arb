@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-25 11:37:40.023519",
+    "@@last_modified": "2026-08-25 13:19:10.905571",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Tap wan choyz fɔ yɛr am. Natin nɔ de pik.",
     "rateActivityLiked": "I like am",
     "rateActivityDisliked": "I nor like am",
-    "constructUseHrdDesc": "Bin yɛri"
+    "constructUseHrdDesc": "Bin yɛri",
+    "timesHeard": "{count, plural, =1{Yɛri wans} other{Yɛri {count} tɛm}}"
 }

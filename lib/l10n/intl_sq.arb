@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-25 11:37:43.779921",
+    "@@last_modified": "2026-08-25 13:19:17.290144",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Trokitni një zgjedhje për ta dëgjuar. Asgjë nuk është zgjedhur.",
     "rateActivityLiked": "Më pëlqeu",
     "rateActivityDisliked": "Nuk më pëlqeu",
-    "constructUseHrdDesc": "Dëgjuar"
+    "constructUseHrdDesc": "Dëgjuar",
+    "timesHeard": "{count, plural, =1{Dëgjuar një herë} other{Dëgjuar {count} herë}}"
 }

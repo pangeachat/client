@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-25 11:37:41.769052",
+    "@@last_modified": "2026-08-25 13:19:13.809972",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Trykk på et valg for å høre det. Ingenting er valgt.",
     "rateActivityLiked": "Likte det",
     "rateActivityDisliked": "Likte det ikke",
-    "constructUseHrdDesc": "Hørt"
+    "constructUseHrdDesc": "Hørt",
+    "timesHeard": "{count, plural, =1{Hørt én gang} other{Hørt {count} ganger}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-25 11:37:44.598508",
+    "@@last_modified": "2026-08-25 13:19:17.214636",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "سننے کے لیے ایک انتخاب پر ٹیپ کریں۔ کچھ بھی منتخب نہیں ہے۔",
     "rateActivityLiked": "پسند آیا",
     "rateActivityDisliked": "پسند نہیں آیا",
-    "constructUseHrdDesc": "سنا"
+    "constructUseHrdDesc": "سنا",
+    "timesHeard": "{count, plural, =1{ایک بار سنا} other{{count} بار سنا}}"
 }

@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-25 11:37:38.971598",
+    "@@last_modified": "2026-08-25 13:19:09.379979",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10696,5 +10696,6 @@
     "listenModeDescription": "Tocca un selection pro audir lo. Nihil es seligite.",
     "rateActivityLiked": "Me placeva",
     "rateActivityDisliked": "Non me placeva",
-    "constructUseHrdDesc": "Audite"
+    "constructUseHrdDesc": "Audite",
+    "timesHeard": "{count, plural, =1{Audite un vice} other{Audite {count} vices}}"
 }

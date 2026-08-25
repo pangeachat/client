@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-25 11:37:42.877426",
+    "@@last_modified": "2026-08-25 13:19:15.338688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "ٻڌڻ لاءِ ڪنهن چونڊ تي ٽيپ ڪريو. ڪجهه به چونڊيل ناهي.",
     "rateActivityLiked": "پسند آيو",
     "rateActivityDisliked": "پسند نه آيو",
-    "constructUseHrdDesc": "ٻڌو"
+    "constructUseHrdDesc": "ٻڌو",
+    "timesHeard": "{count, plural, =1{هڪ دفعو ٻڌو} other{{count} دفعا ٻڌو}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-25 11:37:38.049361",
+    "@@last_modified": "2026-08-25 13:19:07.894476",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9760,5 +9760,6 @@
     "listenModeDescription": "Toca unha opción para escoitala. Non hai nada seleccionado.",
     "rateActivityLiked": "Gustoume",
     "rateActivityDisliked": "Non me gustou",
-    "constructUseHrdDesc": "Escoitado"
+    "constructUseHrdDesc": "Escoitado",
+    "timesHeard": "{count, plural, =1{Escoitado unha vez} other{Escoitado {count} veces}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-25 11:37:42.089291",
+    "@@last_modified": "2026-08-25 13:19:14.259883",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "ਇਸਨੂੰ ਸੁਣਨ ਲਈ ਇੱਕ ਵਿਕਲਪ 'ਤੇ ਟੈਪ ਕਰੋ। ਕੁਝ ਵੀ ਚੁਣਿਆ ਨਹੀਂ ਗਿਆ ਹੈ।",
     "rateActivityLiked": "ਪਸੰਦ ਕੀਤਾ",
     "rateActivityDisliked": "ਪਸੰਦ ਨਹੀਂ ਕੀਤਾ",
-    "constructUseHrdDesc": "ਸੁਣਿਆ"
+    "constructUseHrdDesc": "ਸੁਣਿਆ",
+    "timesHeard": "{count, plural, =1{ਇੱਕ ਵਾਰ ਸੁਣਿਆ} other{{count} ਵਾਰ ਸੁਣਿਆ}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-25 11:37:41.018568",
+    "@@last_modified": "2026-08-25 13:19:11.494132",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "دەست بنێ بە هەڵبژاردەیەکدا بۆ بیستنی. هیچ شتێک هەڵنەبژێردراوە.",
     "rateActivityLiked": "پەسەندکرا",
     "rateActivityDisliked": "پەسەندنەکرا",
-    "constructUseHrdDesc": "بیستراوە"
+    "constructUseHrdDesc": "بیستراوە",
+    "timesHeard": "{count, plural, =1{یەکجار بیستراوە} other{{count} جار بیستراوە}}"
 }

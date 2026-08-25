@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-25 11:37:39.491126",
+    "@@last_modified": "2026-08-25 13:19:09.678938",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10392,5 +10392,6 @@
     "listenModeDescription": "Tapáil rogha chun é a chloisteáil. Níl aon rud roghnaithe.",
     "rateActivityLiked": "Thaitin sé liom",
     "rateActivityDisliked": "Níor thaitin sé liom",
-    "constructUseHrdDesc": "Cluinntinn"
+    "constructUseHrdDesc": "Cluinntinn",
+    "timesHeard": "{count, plural, =1{Cluinntí aon uair amháin} other{Cluinntí {count} uair}}"
 }

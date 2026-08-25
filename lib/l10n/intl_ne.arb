@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-25 11:37:41.846328",
+    "@@last_modified": "2026-08-25 13:19:13.479870",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "सुन्नको लागि एउटा विकल्प ट्याप गर्नुहोस्। केही पनि चयन गरिएको छैन।",
     "rateActivityLiked": "मन पर्यो",
     "rateActivityDisliked": "मन परेन",
-    "constructUseHrdDesc": "सुनियो"
+    "constructUseHrdDesc": "सुनियो",
+    "timesHeard": "{count, plural, =1{एक पटक सुनियो} other{{count} पटक सुनियो}}"
 }

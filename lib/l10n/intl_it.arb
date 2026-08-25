@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 11:37:39.675289",
+    "@@last_modified": "2026-08-25 13:19:09.806249",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9833,5 +9833,6 @@
     "listenModeDescription": "Tocca una scelta per ascoltarla. Nulla è selezionato.",
     "rateActivityLiked": "Mi è piaciuto",
     "rateActivityDisliked": "Non mi è piaciuto",
-    "constructUseHrdDesc": "Sentito"
+    "constructUseHrdDesc": "Sentito",
+    "timesHeard": "{count, plural, =1{Ascoltato una volta} other{Ascoltato {count} volte}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-25 11:37:41.841038",
+    "@@last_modified": "2026-08-25 13:19:10.659036",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Тыңдау үшін таңдауды басыңыз. Ештеңе таңдалмаған.",
     "rateActivityLiked": "Ұнады",
     "rateActivityDisliked": "Ұнамады",
-    "constructUseHrdDesc": "Естідім"
+    "constructUseHrdDesc": "Естідім",
+    "timesHeard": "{count, plural, =1{Бір рет тыңдалды} other{{count} рет тыңдалды}}"
 }

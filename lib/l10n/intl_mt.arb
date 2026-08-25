@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-25 11:37:41.286784",
+    "@@last_modified": "2026-08-25 13:19:14.329809",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Tektek għażla biex tismagħha. Xejn mhu magħżul.",
     "rateActivityLiked": "Għoġobni",
     "rateActivityDisliked": "Ma għoġobnix",
-    "constructUseHrdDesc": "Smajt"
+    "constructUseHrdDesc": "Smajt",
+    "timesHeard": "{count, plural, =1{Misma darba} other{Misma {count} darbiet}}"
 }

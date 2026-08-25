@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-25 11:37:45.172307",
+    "@@last_modified": "2026-08-25 13:19:17.355335",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Cofa ukhetho ukuze ulive. Akukho nto ikhethiweyo.",
     "rateActivityLiked": "Ndiyithandile",
     "rateActivityDisliked": "Andiyithandanga",
-    "constructUseHrdDesc": "Kuviwe"
+    "constructUseHrdDesc": "Kuviwe",
+    "timesHeard": "{count, plural, =1{Kuviwe kanye} other{Kuviwe {count} izihlandlo}}"
 }
