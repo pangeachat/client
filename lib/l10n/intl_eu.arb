@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-24 16:25:53.410174",
+    "@@last_modified": "2026-08-25 11:37:37.387776",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9758,5 +9758,7 @@
     "whatAreYouLearning": "Zer ikasten ari zara?",
     "languageSwitcherBaseLanguageLabel": "Zure oinarrizko hizkuntza",
     "listenModeDescription": "Sakatu aukera bat hura entzuteko. Ez dago ezer hautatuta.",
+    "rateActivityLiked": "Gustatu zait",
+    "rateActivityDisliked": "Ez zait gustatu",
     "constructUseHrdDesc": "Entzunda"
 }

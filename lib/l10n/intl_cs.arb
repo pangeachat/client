@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-24 16:25:53.003782",
+    "@@last_modified": "2026-08-25 11:37:37.056537",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10252,5 +10252,7 @@
     "whatAreYouLearning": "Co se učíte?",
     "languageSwitcherBaseLanguageLabel": "Váš základní jazyk",
     "listenModeDescription": "Klepnutím na možnost si ji poslechnete. Nic není vybráno.",
+    "rateActivityLiked": "Líbilo se mi to",
+    "rateActivityDisliked": "Nelíbilo se mi to",
     "constructUseHrdDesc": "Slyšel"
 }

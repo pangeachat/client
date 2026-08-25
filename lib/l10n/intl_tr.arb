@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-24 16:25:58.267930",
+    "@@last_modified": "2026-08-25 11:37:44.365936",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10059,5 +10059,7 @@
     "whatAreYouLearning": "Ne öğreniyorsun?",
     "languageSwitcherBaseLanguageLabel": "Ana dilin",
     "listenModeDescription": "Duymak için bir seçeneğe dokunun. Hiçbir şey seçili değil.",
+    "rateActivityLiked": "Beğenildi",
+    "rateActivityDisliked": "Beğenilmedi",
     "constructUseHrdDesc": "Duyuldu"
 }

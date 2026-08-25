@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-24 16:25:53.887244",
+    "@@last_modified": "2026-08-25 11:37:38.049361",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9758,5 +9758,7 @@
     "whatAreYouLearning": "Que estás a aprender?",
     "languageSwitcherBaseLanguageLabel": "A túa lingua base",
     "listenModeDescription": "Toca unha opción para escoitala. Non hai nada seleccionado.",
+    "rateActivityLiked": "Gustoume",
+    "rateActivityDisliked": "Non me gustou",
     "constructUseHrdDesc": "Escoitado"
 }

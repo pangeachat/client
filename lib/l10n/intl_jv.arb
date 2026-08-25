@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-24 16:25:54.772099",
+    "@@last_modified": "2026-08-25 11:37:39.622284",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2162,5 +2162,7 @@
     "whatAreYouLearning": "Apa sing lagi kok sinau?",
     "languageSwitcherBaseLanguageLabel": "Basa dhasarmu",
     "listenModeDescription": "Tutul pilihan kanggo ngrungokake. Ora ana sing dipilih.",
+    "rateActivityLiked": "Seneng",
+    "rateActivityDisliked": "Ora seneng",
     "constructUseHrdDesc": "Krungu"
 }

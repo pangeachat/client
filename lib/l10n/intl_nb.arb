@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 16:25:56.605539",
+    "@@last_modified": "2026-08-25 11:37:41.490878",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9815,5 +9815,7 @@
     "whatAreYouLearning": "Hva lærer du?",
     "languageSwitcherBaseLanguageLabel": "Ditt morsmål",
     "listenModeDescription": "Trykk på et valg for å høre det. Ingenting er valgt.",
+    "rateActivityLiked": "Likte den",
+    "rateActivityDisliked": "Likte den ikke",
     "constructUseHrdDesc": "Hørt"
 }

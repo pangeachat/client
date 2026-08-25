@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-24 16:25:56.923687",
+    "@@last_modified": "2026-08-25 11:37:42.533719",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10675,5 +10675,7 @@
     "whatAreYouLearning": "O que estás a aprender?",
     "languageSwitcherBaseLanguageLabel": "A sua língua base",
     "listenModeDescription": "Toque numa opção para a ouvir. Nada selecionado.",
+    "rateActivityLiked": "Gostei",
+    "rateActivityDisliked": "Não gostei",
     "constructUseHrdDesc": "Ouviu"
 }

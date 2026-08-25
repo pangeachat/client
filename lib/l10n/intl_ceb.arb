@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-24 16:25:52.917401",
+    "@@last_modified": "2026-08-25 11:37:36.671913",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2162,5 +2162,7 @@
     "whatAreYouLearning": "Unsa ang imong ginatun-an?",
     "languageSwitcherBaseLanguageLabel": "Imong base nga pinulongan",
     "listenModeDescription": "I-tap ang usa ka kapilian aron madungog kini. Walay napili.",
+    "rateActivityLiked": "Ganahan ko",
+    "rateActivityDisliked": "Dili ko ganahan",
     "constructUseHrdDesc": "Nadungog"
 }

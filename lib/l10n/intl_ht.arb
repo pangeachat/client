@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-24 16:25:54.245933",
+    "@@last_modified": "2026-08-25 11:37:38.641989",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2162,5 +2162,7 @@
     "whatAreYouLearning": "Kisa w ap aprann?",
     "languageSwitcherBaseLanguageLabel": "Lang baz ou",
     "listenModeDescription": "Tape yon chwa pou tande li. Pa gen anyen ki chwazi.",
+    "rateActivityLiked": "Te renmen li",
+    "rateActivityDisliked": "Pa t renmen li",
     "constructUseHrdDesc": "Tande"
 }

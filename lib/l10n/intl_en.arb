@@ -3948,6 +3948,8 @@
     "waitingForOthersToFinish": "Waiting for the rest to finish up...",
     "generatingSummary": "Analyzing chat and generating results",
     "rateActivityTitle": "How was this activity?",
+    "rateActivityLiked": "Liked it",
+    "rateActivityDisliked": "Didn't like it",
     "rateActivityCommentHint": "Add a comment (optional)",
     "rateActivityCommentRejected": "Your comment couldn't be posted. Try rewording it, or submit your rating without a comment.",
     "rateActivityThanks": "Thanks for your feedback!",

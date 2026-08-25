@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-24 16:25:52.325398",
+    "@@last_modified": "2026-08-25 11:37:36.329948",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2162,5 +2162,7 @@
     "whatAreYouLearning": "Wat leer jy?",
     "languageSwitcherBaseLanguageLabel": "Jou basis taal",
     "listenModeDescription": "Tik 'n keuse om dit te hoor. Niks is gekies nie.",
+    "rateActivityLiked": "Het daarvan gehou",
+    "rateActivityDisliked": "Het nie daarvan gehou nie",
     "constructUseHrdDesc": "Gehoor"
 }

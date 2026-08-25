@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-24 16:25:55.821812",
+    "@@last_modified": "2026-08-25 11:37:40.850125",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2162,5 +2162,7 @@
     "whatAreYouLearning": "Што учиш?",
     "languageSwitcherBaseLanguageLabel": "Твојот основен јазик",
     "listenModeDescription": "Допрете избор за да го слушнете. Ништо не е избрано.",
+    "rateActivityLiked": "Ми се допадна",
+    "rateActivityDisliked": "Не ми се допадна",
     "constructUseHrdDesc": "Слушнато"
 }

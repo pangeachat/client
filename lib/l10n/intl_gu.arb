@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-24 16:25:53.961565",
+    "@@last_modified": "2026-08-25 11:37:37.921009",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2162,5 +2162,7 @@
     "whatAreYouLearning": "તમે શું શીખી રહ્યા છો?",
     "languageSwitcherBaseLanguageLabel": "તમારી મૂળ ભાષા",
     "listenModeDescription": "સાંભળવા માટે કોઈ વિકલ્પ પર ટૅપ કરો. કંઈપણ પસંદ કરેલું નથી.",
+    "rateActivityLiked": "ગમ્યું",
+    "rateActivityDisliked": "ન ગમ્યું",
     "constructUseHrdDesc": "સાંભળ્યું"
 }

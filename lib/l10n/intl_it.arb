@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 16:25:54.717881",
+    "@@last_modified": "2026-08-25 11:37:39.675289",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9831,5 +9831,7 @@
     "whatAreYouLearning": "Cosa stai imparando?",
     "languageSwitcherBaseLanguageLabel": "La tua lingua base",
     "listenModeDescription": "Tocca una scelta per ascoltarla. Nulla è selezionato.",
+    "rateActivityLiked": "Mi è piaciuto",
+    "rateActivityDisliked": "Non mi è piaciuto",
     "constructUseHrdDesc": "Sentito"
 }

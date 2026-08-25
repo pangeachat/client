@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-24 16:25:54.656936",
+    "@@last_modified": "2026-08-25 11:37:38.976397",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2162,5 +2162,7 @@
     "whatAreYouLearning": "Ի՞նչ եք սովորում։",
     "languageSwitcherBaseLanguageLabel": "Ձեր հիմնական լեզուն",
     "listenModeDescription": "Ընտրեք տարբերակը՝ այն լսելու համար։ Ոչինչ ընտրված չէ։",
+    "rateActivityLiked": "Հավանել եմ",
+    "rateActivityDisliked": "Չեմ հավանել",
     "constructUseHrdDesc": "Լսել եմ"
 }

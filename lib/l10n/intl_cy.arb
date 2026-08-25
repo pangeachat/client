@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-24 16:25:52.982661",
+    "@@last_modified": "2026-08-25 11:37:37.043629",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2162,5 +2162,7 @@
     "whatAreYouLearning": "Beth wyt ti'n ei ddysgu?",
     "languageSwitcherBaseLanguageLabel": "Eich iaith sylfaen",
     "listenModeDescription": "Tapiwch ddewis i'w glywed. Nid oes dim wedi'i ddewis.",
+    "rateActivityLiked": "Hoffais i",
+    "rateActivityDisliked": "Doeddwn i ddim yn ei hoffi",
     "constructUseHrdDesc": "Clywed"
 }

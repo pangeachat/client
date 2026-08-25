@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 16:25:58.437065",
+    "@@last_modified": "2026-08-25 11:37:44.467971",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7050,5 +7050,7 @@
     "whatAreYouLearning": "Bạn đang học gì?",
     "languageSwitcherBaseLanguageLabel": "Ngôn ngữ cơ bản của bạn",
     "listenModeDescription": "Chạm vào một lựa chọn để nghe. Chưa có gì được chọn.",
+    "rateActivityLiked": "Đã thích",
+    "rateActivityDisliked": "Không thích",
     "constructUseHrdDesc": "Đã nghe"
 }

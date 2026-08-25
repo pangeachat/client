@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 16:25:52.956346",
+    "@@last_modified": "2026-08-25 11:37:37.010760",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9885,5 +9885,7 @@
     "whatAreYouLearning": "Què estàs aprenent?",
     "languageSwitcherBaseLanguageLabel": "La teva llengua base",
     "listenModeDescription": "Toca una opció per escoltar-la. No hi ha res seleccionat.",
+    "rateActivityLiked": "M'ha agradat",
+    "rateActivityDisliked": "No m'ha agradat",
     "constructUseHrdDesc": "Sentit"
 }

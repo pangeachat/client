@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-24 16:25:52.486827",
+    "@@last_modified": "2026-08-25 11:37:36.203501",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2162,5 +2162,7 @@
     "whatAreYouLearning": "আপুনি কি শিকি আছে?",
     "languageSwitcherBaseLanguageLabel": "আপোনাৰ মূল ভাষা",
     "listenModeDescription": "শুনিবলৈ এটা বিকল্পত টেপ কৰক। একো নিৰ্বাচিত হোৱা নাই।",
+    "rateActivityLiked": "ভাল পালোঁ",
+    "rateActivityDisliked": "ভাল নাপালোঁ",
     "constructUseHrdDesc": "শুনিছে"
 }

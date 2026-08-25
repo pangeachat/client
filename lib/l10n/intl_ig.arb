@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-24 16:25:54.790202",
+    "@@last_modified": "2026-08-25 11:37:39.369058",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2162,5 +2162,7 @@
     "whatAreYouLearning": "Kedu ihe ị na-amụ?",
     "languageSwitcherBaseLanguageLabel": "Asụsụ gị bụ isi",
     "listenModeDescription": "Pịa nhọrọ ka ị nụ ya. Ahọpụtaghị ihe ọ bụla.",
+    "rateActivityLiked": "Ọ masịrị m",
+    "rateActivityDisliked": "Ọ masịghị m",
     "constructUseHrdDesc": "Anụrụ"
 }
