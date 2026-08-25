@@ -9,8 +9,8 @@ import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_state_machine.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_widget.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
-import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_state_transition_events.dart';
+import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
