@@ -36,6 +36,10 @@ enum InstructionsEnum {
   writingAssistanceTutorial,
   selectModeButtonsTutorial,
   emojiToolbarMode,
+  welcomeTutorial,
+  worldMapTutorial,
+  activityInviteTutorial,
+  activityGoalsTutorial,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -70,6 +74,10 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.writingAssistanceTutorial:
       case InstructionsEnum.selectModeButtonsTutorial:
       case InstructionsEnum.emojiToolbarMode:
+      case InstructionsEnum.welcomeTutorial:
+      case InstructionsEnum.worldMapTutorial:
+      case InstructionsEnum.activityInviteTutorial:
+      case InstructionsEnum.activityGoalsTutorial:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -127,6 +135,10 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.writingAssistanceTutorial:
       case InstructionsEnum.selectModeButtonsTutorial:
       case InstructionsEnum.emojiToolbarMode:
+      case InstructionsEnum.welcomeTutorial:
+      case InstructionsEnum.worldMapTutorial:
+      case InstructionsEnum.activityInviteTutorial:
+      case InstructionsEnum.activityGoalsTutorial:
         return "";
       case InstructionsEnum.disableLanguageTools:
         return l10n.disableLanguageToolsDesc;

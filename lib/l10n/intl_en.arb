@@ -5154,5 +5154,25 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "tutorialWelcome": "{greeting} to Pangea Chat! I'm your guide, let's jump right in.",
+    "@tutorialWelcome": {
+        "placeholders": {
+            "greeting": {
+                "type": "String"
+            }
+        }
+    },
+    "tutorialWorldMapIntro": "This is the world map. Every roleplay activity in {language} lives here.",
+    "@tutorialWorldMapIntro": {
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "tutorialWorldMapPickActivity": "Tap a highlighted 2-player activity to open and start it!",
+    "tutorialWorldMapNoActivities": "No 2-player activities in view. Try zooming out or widening your search.",
+    "tutorialActivityInvite": "No need to wait alone — you can play with me any time, or invite a friend to join you.",
+    "tutorialActivityGoals": "Play your role and send messages that complete these goals. Each one earns a star, and stars move you through a course's Missions."
 }

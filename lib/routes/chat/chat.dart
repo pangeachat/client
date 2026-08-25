@@ -22,6 +22,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
@@ -56,6 +57,7 @@ import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -248,22 +250,24 @@ class ChatController extends State<ChatPageWithRoom>
 
   StreamSubscription? _readingAssistanceTutorialSubscription;
 
-  StreamSubscription? _forwardTutorialSubscription;
-  StreamSubscription? _goBackTutorialSubscription;
-
   StreamSubscription? _goalCompletionSubscription;
   StreamSubscription? _activityRolesSubscription;
 
   late final ValueNotifier<ActivityRoleGoal?> activeGoalNotifier;
 
-  /// The event used to start the reading-assistance tutorial. Stored so the
-  /// tutorial can be re-opened when the user navigates back through the sequence.
+  /// The event and token the chat tutorial sequence points at. Stored so any
+  /// of its tutorials can be (re-)opened whenever the controller asks — on
+  /// first launch, on back navigation, or after the toolbar is reopened.
   Event? _tutorialEvent;
   PangeaToken? tutorialToken;
 
+  /// App-scoped: one controller runs every sequence, so a tutorial can outlive
+  /// this chat. See tutorials.instructions.md.
+  TutorialOverlayController get tutorialOverlayController =>
+      MatrixState.tutorialOverlayController;
+
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
-  late final TutorialOverlayController tutorialOverlayController;
   late final WritingAssistancePopupManager _spanCardOverlayController;
   final ValueNotifier<bool> scrollableNotifier = ValueNotifier(false);
   // Pangea#
@@ -723,64 +727,117 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  void _writingAssistanceTutorialListener(TutorialEnum? tutorial) {
-    if (tutorial != TutorialEnum.writingAssistance) return;
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _launchWritingAssistanceTutorial(),
+  /// Registers what this chat can put on screen. Each launcher owns its own
+  /// preparation, so the controller never has to know which host does what and
+  /// this class grows no per-tutorial switch. See tutorials.instructions.md.
+  void _registerTutorialLaunchers() {
+    tutorialOverlayController
+      ..registerLauncher(
+        TutorialEnum.readingAssistance,
+        _launchReadingAssistanceTutorial,
+      )
+      ..registerLauncher(
+        TutorialEnum.writingAssistance,
+        _launchWritingAssistanceTutorial,
+      )
+      // Opener, not owner: SelectModeButtons owns those targets and only
+      // exists while the toolbar is open, so this chat's job is to open it.
+      ..registerLauncher(
+        TutorialEnum.selectModeButtons,
+        _openToolbarForSelectModeTutorial,
+        role: TutorialLaunchRole.opener,
+      )
+      ..registerLauncher(
+        TutorialEnum.activityGoals,
+        _launchActivityGoalsTutorial,
+      );
+  }
+
+  void _unregisterTutorialLaunchers() {
+    tutorialOverlayController
+      ..unregisterLauncher(TutorialEnum.readingAssistance)
+      ..unregisterLauncher(TutorialEnum.writingAssistance)
+      ..unregisterLauncher(
+        TutorialEnum.selectModeButtons,
+        role: TutorialLaunchRole.opener,
+      )
+      ..unregisterLauncher(TutorialEnum.activityGoals);
+  }
+
+  /// Whether the goal header the tutorial points at is actually on screen —
+  /// the same conditions ActivityStatsMenu draws it under.
+  bool get _hasGoalHeader =>
+      room.showActivityChatUI &&
+      !room.hasGeneratedActivitySummary &&
+      room.hasPickedRole &&
+      (room.ownRole?.allGoals.isNotEmpty ?? false);
+
+  void _maybeStartActivityGoalsTutorial() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !isFocused || !_hasGoalHeader) return;
+      tutorialOverlayController.requestSequence(
+        TutorialSequences.activityGoalsSequence,
+      );
+    });
+  }
+
+  /// Ends with the goal list open, so the learner finishes the step looking at
+  /// the goals they are about to play for.
+  Future<void> _launchActivityGoalsTutorial() async {
+    if (!mounted || !_hasGoalHeader) return;
+    tutorialOverlayController.launchTutorial(
+      context: context,
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.activityGoals,
+        stepsData: [
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.activityGoalHeader,
+            onTap: () async => activityController.setShowDropdown(true),
+            canShowNextStep: () =>
+                activityController.showActivityDropdown.value,
+          ),
+        ],
+      ),
+      isFocused: isFocused,
     );
   }
 
-  /// Called when the user navigates back across a tutorial-model boundary.
-  /// Re-prepares the required UI state and re-opens the appropriate tutorial
-  /// at its last step.
-  Future<void> _goBackTutorialListener(TutorialEnum? tutorial) async {
-    if (!mounted) return;
-    if (tutorial == null) return;
-
-    switch (tutorial) {
-      case TutorialEnum.readingAssistance:
-        final event = _tutorialEvent;
-        final token = tutorialToken;
-        if (event == null || token == null) return;
-        // Hide the toolbar (if open) before re-showing the reading-assistance
-        // tutorial which points at the message bubble itself.
-        clearSelectedEvents();
-        await Future.delayed(FluffyThemes.animationDuration);
-        if (!mounted) return;
-        _relaunchReadingAssistanceTutorial(event, token);
-        return;
-      case TutorialEnum.selectModeButtons:
-        final event = _tutorialEvent;
-        final token = tutorialToken;
-        if (event == null) return;
-        // Re-open the toolbar so SelectModeButtons mounts and picks up the queued tutorial.
-        showToolbar(
-          event,
-          bypassBlockingOverlays: true,
-          selectedToken: token,
-          isTutorial: true,
-        );
-        return;
-      case TutorialEnum.writingAssistance:
-        // The writing-assistance tutorial starts from the text input which is
-        // always visible, so no extra state preparation is needed.
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) => _launchWritingAssistanceTutorial(),
-        );
-        return;
-    }
+  /// Re-opens the toolbar so SelectModeButtons mounts and registers as the
+  /// owner of the select-mode targets. Waits out the open animation so the
+  /// buttons are laid out before the spotlight is positioned on one.
+  Future<void> _openToolbarForSelectModeTutorial() async {
+    final event = _tutorialEvent;
+    if (!mounted || event == null) return;
+    showToolbar(
+      event,
+      bypassBlockingOverlays: true,
+      selectedToken: tutorialToken,
+      isTutorial: true,
+    );
+    await Future.delayed(FluffyThemes.animationDuration);
   }
 
-  void _launchReadingAssistanceTutorial(Event event, PangeaToken token) {
+  /// Points at the message bubble itself, so the toolbar must be closed first —
+  /// this runs on the way forward and on the way back, and only the back path
+  /// can arrive with it open.
+  Future<void> _launchReadingAssistanceTutorial() async {
+    final event = _tutorialEvent;
+    final token = tutorialToken;
+    if (!mounted || event == null || token == null) return;
+
     inputFocus.unfocus();
-    _tutorialEvent = event;
-    tutorialToken = token;
+    if (isToolbarOpen) {
+      clearSelectedEvents();
+      await Future.delayed(FluffyThemes.animationDuration);
+      if (!mounted) return;
+    }
 
     tutorialOverlayController.launchTutorial(
       context: context,
-      tutorial: ReadingAssistantTutorialModel(
-        data: [
-          TutorialStepData(
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.readingAssistance,
+        stepsData: [
+          TutorialStepData.single(
             targetKey: event.eventId,
             onTap: () async {
               showToolbar(
@@ -797,12 +854,14 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  void _launchWritingAssistanceTutorial() {
+  Future<void> _launchWritingAssistanceTutorial() async {
+    if (!mounted) return;
     tutorialOverlayController.launchTutorial(
       context: context,
-      tutorial: WritingAssistantTutorialModel(
-        data: [
-          TutorialStepData(
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.writingAssistance,
+        stepsData: [
+          TutorialStepData.single(
             targetKey: ChoreoConstants.inputTransformTargetKey,
             onTap: () async => inputFocus.requestFocus(),
             canShowNextStep: () => true,
@@ -811,10 +870,6 @@ class ChatController extends State<ChatPageWithRoom>
       ),
       isFocused: isFocused,
     );
-  }
-
-  void _relaunchReadingAssistanceTutorial(Event event, PangeaToken token) {
-    _launchReadingAssistanceTutorial(event, token);
   }
 
   void _activityConfettiListener() {
@@ -830,6 +885,9 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _activityRolesListener() {
+    // Role state is what decides whether the goal header exists, so this is also
+    // where the goal-header tutorial gets its chance.
+    _maybeStartActivityGoalsTutorial();
     if (activeGoalNotifier.value != null || room.currentGoal == null) return;
     activeGoalNotifier.value = room.currentGoal;
   }
@@ -894,7 +952,11 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   bool get _canLaunchTutorialSequence {
-    if (tutorialOverlayController.state.hasCompletedSequence) {
+    // This trigger — a message carrying a word new to the learner — is the
+    // reading-assistance step's own moment. Once that step is seen, the rest of
+    // the sequence resumes from its own surfaces (the toolbar, the input bar),
+    // so a new message must not reopen the toolbar unprompted.
+    if (!tutorialOverlayController.isPending(TutorialEnum.readingAssistance)) {
       return false;
     }
 
@@ -907,11 +969,11 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _startAssistanceTutorialSequence(Event event, PangeaToken token) {
     if (!_canLaunchTutorialSequence) return;
-    if (tutorialOverlayController.isTutorialQueued(
-      TutorialEnum.readingAssistance,
-    )) {
-      _launchReadingAssistanceTutorial(event, token);
-    }
+    _tutorialEvent = event;
+    tutorialToken = token;
+    tutorialOverlayController.requestSequence(
+      TutorialSequences.chatTutorialSequence,
+    );
   }
 
   void _pangeaInit() {
@@ -1013,18 +1075,8 @@ class ChatController extends State<ChatPageWithRoom>
         )
         .listen((_) => _activityRolesListener());
 
-    tutorialOverlayController = TutorialOverlayController(
-      TutorialSequences.chatTutorialSequence,
-    );
-
-    _forwardTutorialSubscription?.cancel();
-    _forwardTutorialSubscription = tutorialOverlayController
-        .forwardTutorialStream
-        .listen(_writingAssistanceTutorialListener);
-
-    _goBackTutorialSubscription?.cancel();
-    _goBackTutorialSubscription = tutorialOverlayController.backNavigationStream
-        .listen(_goBackTutorialListener);
+    _registerTutorialLaunchers();
+    _maybeStartActivityGoalsTutorial();
 
     inputFocus.addListener(_inputFocusListener);
 
@@ -1339,11 +1391,15 @@ class ChatController extends State<ChatPageWithRoom>
     depressMessageButton.dispose();
     scrollableNotifier.dispose();
     TokensUtil.instance.clearNewTokenCache();
-    _forwardTutorialSubscription?.cancel();
-    _goBackTutorialSubscription?.cancel();
     _goalCompletionSubscription?.cancel();
     _activityRolesSubscription?.cancel();
-    tutorialOverlayController.dispose();
+    _unregisterTutorialLaunchers();
+    // Nothing can show the remaining steps once this chat is gone. Progress is
+    // persisted, so the next chat resumes where this one left off, and giving
+    // the sequence up here is what lets a queued one start.
+    tutorialOverlayController
+      ..releaseSequence(TutorialSequences.chatTutorialSequence)
+      ..releaseSequence(TutorialSequences.activityGoalsSequence);
     activeGoalNotifier.dispose();
     //Pangea#
     super.dispose();

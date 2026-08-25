@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_overlay_state_machine.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_tooltip_container_widget.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -42,72 +42,83 @@ class TutorialOverlayWidget extends StatefulWidget {
 class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   bool _visible = false;
 
-  Size? _lastTargetSize;
-  Offset? _lastTargetOffset;
+  /// Where the current step's spotlights are on screen. Re-read every frame; a
+  /// target whose widget has no attached render box simply contributes no hole.
+  List<Rect> _spotlightRects = const [];
 
   @override
   void initState() {
     super.initState();
 
-    final model = widget.model;
-    final tutorial = model.activeTutorial;
-
-    if (tutorial == null) {
+    if (widget.model.activeTutorial == null) {
       ErrorHandler.logError(
         e: "TutorialOverlayWidget launched with no active tutorial",
-        data: model.toJson(),
+        data: widget.model.toJson(),
       );
       widget.reset();
       return;
     }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _setVisible(true);
-    });
+    WidgetsBinding.instance.addPostFrameCallback((_) => _setVisible(true));
     WidgetsBinding.instance.addPostFrameCallback(_monitorTargetWidget);
   }
 
-  /// Polls each frame while the overlay is active.
-  /// If the current step's target widget has been unmounted (and we are not
-  /// mid-transition), closes the overlay so the dark blocking layer does not
-  /// remain visible without any tutorial content.
+  TutorialStepData? get _stepData {
+    final tutorial = widget.model.activeTutorial;
+    if (tutorial == null) return null;
+    return tutorial.dataAt(widget.model.stepIndex);
+  }
+
+  /// Polls each frame while the overlay is active, repositioning the spotlight
+  /// as its targets move and deciding when the overlay has nothing left to
+  /// point at.
   void _monitorTargetWidget(Duration _) {
     if (!mounted) return;
 
-    final tutorial = widget.model.activeTutorial;
-
-    if (tutorial == null) {
+    final data = _stepData;
+    if (data == null) {
       WidgetsBinding.instance.addPostFrameCallback(_monitorTargetWidget);
       return;
     }
 
-    final stepKey = tutorial.targetKeyAt(widget.model.stepIndex);
-    final renderBox = _currentRenderBox(stepKey);
+    final rects = <Rect>[];
+    for (final key in data.targetKeys) {
+      final box = _currentRenderBox(key);
+      if (box == null) continue;
+      rects.add(box.localToGlobal(Offset.zero) & box.size);
+    }
+    final hostRects = data.spotlightRects?.call();
+    if (hostRects != null) rects.addAll(hostRects);
 
-    if (renderBox == null) {
-      _lastTargetOffset = null;
-      _lastTargetSize = null;
-
+    // A step with no targets is about the app rather than anything on screen,
+    // so there is nothing that can vanish out from under it.
+    if (data.hasSpotlight && rects.isEmpty) {
+      // Every target is gone. A multi-target step survives losing some of them
+      // — only losing all of them means there is nothing left to light.
       final notTransitioning = !widget.model.isStepTransitioning;
       if (notTransitioning && _visible) {
+        // Armed steps included: the learner has navigated away to do the thing
+        // the step asked for, so the overlay gets out of the way. The
+        // controller keeps watching, and the tutorial resumes when they've
+        // done it.
         widget.reset();
         return;
       }
-    } else {
-      final newSize = renderBox.size;
-      final newOffset = renderBox.localToGlobal(Offset.zero);
+    }
 
-      final sizeChanged = newSize != _lastTargetSize;
-      final offsetChanged = newOffset != _lastTargetOffset;
-
-      if (sizeChanged || offsetChanged) {
-        _lastTargetSize = newSize;
-        _lastTargetOffset = newOffset;
-        setState(() {});
-      }
+    if (!_sameRects(rects, _spotlightRects)) {
+      setState(() => _spotlightRects = rects);
     }
 
     WidgetsBinding.instance.addPostFrameCallback(_monitorTargetWidget);
+  }
+
+  bool _sameRects(List<Rect> a, List<Rect> b) {
+    if (a.length != b.length) return false;
+    for (var i = 0; i < a.length; i++) {
+      if (a[i] != b[i]) return false;
+    }
+    return true;
   }
 
   Duration get _duration => FluffyThemes.animationDuration;
@@ -122,9 +133,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     );
   }
 
-  RenderBox? _currentRenderBox(String? stepKey) {
-    if (stepKey == null) return null;
-
+  RenderBox? _currentRenderBox(String stepKey) {
     try {
       final target = MatrixState.pAnyState.layerLinkAndKey(stepKey);
       final renderBox =
@@ -142,51 +151,52 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     }
   }
 
-  bool _tooltipHasBottomOverflow(Size? tooltipSize) {
-    final screenHeight = MediaQuery.sizeOf(context).height;
-    final pos = _lastTargetOffset ?? Offset.zero;
-    final targetSize = _lastTargetSize ?? Size.zero;
-    final tip = _tooltipSize(tooltipSize);
-    final tooltipOffset =
-        pos.dy + targetSize.height + tip.height + (_tooltipPadding * 2);
-    return tooltipOffset > screenHeight;
+  /// The box containing everything the step lit — the target itself for a single
+  /// one, the group's bounds for several.
+  Rect? get _anchorRect {
+    if (_spotlightRects.isEmpty) return null;
+    return _spotlightRects.reduce((a, b) => a.expandToInclude(b));
   }
 
-  bool _tooltipHasTopOverflow(Size? tooltipSize) {
-    final pos = _lastTargetOffset ?? Offset.zero;
-    final tip = _tooltipSize(tooltipSize);
-    final tooltipOffset = pos.dy - tip.height - (_tooltipPadding * 2);
-    return tooltipOffset < 0;
+  /// Where the tooltip goes, decided by whether there is room beside what was
+  /// lit rather than by how many things were lit.
+  ///
+  /// Two stacked buttons have tight bounds and read best anchored just above
+  /// them. Map pins scattered across the map have bounds spanning the viewport,
+  /// leaving no room either side — that takes the bottom, so the card never
+  /// covers what it just lit. A target as big as the map has the same problem,
+  /// and anchoring it pushed the card clean off the top edge, which read as the
+  /// step silently doing nothing. A step with nothing lit has no "beside" at
+  /// all, so it centers.
+  _TooltipPlacement _placementFor(Size tooltipSize) {
+    final anchor = _anchorRect;
+    if (anchor == null) return _TooltipPlacement.centered;
+
+    final gap = _tooltipSize(tooltipSize).height + _tooltipPadding * 2;
+    final fitsAbove = anchor.top - gap >= 0;
+    final fitsBelow = anchor.bottom + gap <= MediaQuery.sizeOf(context).height;
+    if (fitsAbove || fitsBelow) return _TooltipPlacement.anchored;
+    return _TooltipPlacement.bottom;
   }
 
-  bool _showAbove(Size? tooltipSize) =>
-      !_tooltipHasTopOverflow(tooltipSize) ||
-      _tooltipHasBottomOverflow(tooltipSize);
+  Rect _inflated(Rect rect, double? padding) =>
+      padding == null ? rect : rect.inflate(padding);
 
-  double? _tooltipHorizontalOffset(Size? tooltipSize) {
-    final size = _lastTargetSize;
-    final pos = _lastTargetOffset;
+  bool _showAbove(Rect anchor, Size tooltipSize) {
+    final gap = _tooltipSize(tooltipSize).height + _tooltipPadding * 2;
+    return anchor.top - gap >= 0;
+  }
 
-    if (pos == null || size == null) return null;
+  /// Left edge for a tooltip centered on [anchor], nudged back inside the
+  /// screen when centering would push it off either side.
+  double _tooltipLeft(Rect anchor, Size tip) {
     final screenWidth = MediaQuery.sizeOf(context).width;
-    final tip = _tooltipSize(tooltipSize);
-    if (tip.width >= screenWidth) {
-      return null; // can't fit, just center
-    }
-
-    final midpoint = pos.dx + size.width / 2;
-
-    final rightEdge = midpoint + tip.width / 2 + _tooltipPadding;
-    final leftEdge = midpoint - tip.width / 2 - _tooltipPadding;
-    if (rightEdge > screenWidth) {
-      return screenWidth - rightEdge - _tooltipPadding;
-    }
-
-    // then check for overflow on the left
-    if (leftEdge < 0) {
-      return _tooltipPadding - leftEdge;
-    }
-    return null;
+    if (tip.width >= screenWidth) return 0;
+    final centered = anchor.center.dx - tip.width / 2;
+    return centered.clamp(
+      _tooltipPadding,
+      screenWidth - tip.width - _tooltipPadding,
+    );
   }
 
   void _setVisible(bool visible) {
@@ -236,120 +246,164 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     return true;
   }
 
+  /// On an armed step every tap belongs to the app, so this only decides
+  /// whether the overlay should get out of the way: a tap on something it lit
+  /// is the learner doing what was asked, so the spotlight stays until that
+  /// lands; a tap anywhere else means they are doing something else, and the
+  /// scrim should not follow them around. The step stays armed either way.
+  void _onArmedPointerDown(Offset position) {
+    if (!_visible) return;
+    final onLitTarget = _spotlightRects.any(
+      (rect) => rect.inflate(_tooltipPadding).contains(position),
+    );
+    if (!onLitTarget) widget.reset();
+  }
+
   @override
   Widget build(BuildContext context) {
     final model = widget.model;
     final tutorial = model.activeTutorial;
     final stepIndex = model.stepIndex;
     final step = tutorial?.step(stepIndex, L10n.of(context));
+    final data = _stepData;
 
-    final stepSize = tutorial?.tooltipSizeAt(stepIndex);
+    if (step == null || data == null) return const SizedBox.shrink();
 
-    final showNavigation =
-        tutorial?.tutorialType.showNavigationButtons ?? false;
+    final tooltipSize = step.style.tooltipSize;
+    // A targetless step needs nothing measured; a spotlight step waits until it
+    // knows where its target is, so the tooltip never flies in from the corner.
+    final ready = !data.hasSpotlight || _spotlightRects.isNotEmpty;
+    final showNavigation = step.type.showNavigationButtons;
 
-    final size = _lastTargetSize;
-    final holeWidth = (size?.width ?? 0.0) + (step?.style.padding ?? 0) * 2;
-    final holeHeight = (size?.height ?? 0.0) + (step?.style.padding ?? 0) * 2;
-    final showAbove = _showAbove(stepSize);
+    final content = Stack(
+      children: [
+        AnimatedOpacity(
+          opacity: _visible && ready ? 1.0 : 0.0,
+          duration: _duration,
+          child: ExcludeSemantics(
+            child: ColorFiltered(
+              colorFilter: const ColorFilter.mode(
+                Colors.black,
+                BlendMode.srcOut,
+              ),
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.black.withAlpha(100),
+                    ),
+                  ),
 
-    // Don't render tooltip until target position is known to avoid
-    // "flying" animation from top-left corner (where Offset.zero defaults to)
-    final hasTargetPosition =
-        _lastTargetOffset != null && _lastTargetSize != null;
+                  /// One "hole" per lit target.
+                  for (final rect in _spotlightRects)
+                    Positioned.fromRect(
+                      rect: _inflated(rect, step.style.padding),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(
+                            step.style.borderRadius ?? 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ),
+
+        if (_visible && ready)
+          _TutorialTooltipPlacement(
+            placement: _placementFor(tooltipSize),
+            anchor: _anchorRect,
+            showAbove:
+                _anchorRect != null && _showAbove(_anchorRect!, tooltipSize),
+            left: _anchorRect == null
+                ? null
+                : _tooltipLeft(_anchorRect!, _tooltipSize(tooltipSize)),
+            padding: _tooltipPadding,
+            child: TutorialTooltipContainerWidget(
+              width: tooltipSize.width,
+              height: tooltipSize.height,
+              padding: _tooltipPadding,
+              onNext: () => _next(step),
+              onPrevious: _previous,
+              showNext: showNavigation && widget.enabledForward,
+              showPrevious: showNavigation && widget.enabledBack,
+              currentStep: widget.completedSteps,
+              totalSteps: widget.totalSteps,
+              text: step.style.tooltip,
+            ),
+          ),
+      ],
+    );
+
+    // An armed step hands the screen back: the learner has to reach the thing
+    // the step is pointing at, so the overlay must not swallow their taps. It
+    // watches them only to know when to get out of the way, and it does not
+    // block assistive tech either — telling someone to tap a pin while hiding
+    // that pin from their screen reader is the trap this avoids.
+    if (data.isArmed) {
+      return Listener(
+        behavior: HitTestBehavior.translucent,
+        onPointerDown: (event) => _onArmedPointerDown(event.position),
+        child: IgnorePointer(child: content),
+      );
+    }
 
     return BlockSemantics(
       child: MouseRegion(
-        cursor: step != null && _visible
-            ? SystemMouseCursors.click
-            : SystemMouseCursors.basic,
+        cursor: _visible ? SystemMouseCursors.click : SystemMouseCursors.basic,
         child: GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: step != null && _visible ? () => _next(step) : null,
-          child: Stack(
-            children: [
-              AnimatedOpacity(
-                opacity: _visible && step != null && hasTargetPosition
-                    ? 1.0
-                    : 0.0,
-                duration: _duration,
-                child: step != null
-                    ? ExcludeSemantics(
-                        child: ColorFiltered(
-                          colorFilter: const ColorFilter.mode(
-                            Colors.black,
-                            BlendMode.srcOut,
-                          ),
-                          child: Stack(
-                            children: [
-                              /// Overlay + layer
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.black.withAlpha(100),
-                                ),
-                              ),
-
-                              /// The "hole"
-                              CompositedTransformFollower(
-                                link: MatrixState.pAnyState
-                                    .layerLinkAndKey(step.data.targetKey)
-                                    .link,
-                                showWhenUnlinked: false,
-                                targetAnchor: Alignment.center,
-                                followerAnchor: Alignment.center,
-                                child: Container(
-                                  width: holeWidth,
-                                  height: holeHeight,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(
-                                      step.style.borderRadius ?? 16,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                    : const SizedBox.shrink(),
-              ),
-
-              if (_visible && step != null && hasTargetPosition)
-                CompositedTransformFollower(
-                  link: MatrixState.pAnyState
-                      .layerLinkAndKey(step.data.targetKey)
-                      .link,
-                  showWhenUnlinked: false,
-                  targetAnchor: showAbove
-                      ? Alignment.topCenter
-                      : Alignment.bottomCenter,
-                  followerAnchor: showAbove
-                      ? Alignment.bottomCenter
-                      : Alignment.topCenter,
-                  offset: Offset(
-                    _tooltipHorizontalOffset(stepSize) ?? 0,
-                    showAbove
-                        ? -_tooltipPadding
-                        : _tooltipPadding, // gap between target and tooltip
-                  ),
-                  child: TutorialTooltipContainerWidget(
-                    width: step.style.tooltipSize.width,
-                    height: step.style.tooltipSize.height,
-                    padding: _tooltipPadding,
-                    onNext: () => _next(step),
-                    onPrevious: _previous,
-                    showNext: showNavigation && widget.enabledForward,
-                    showPrevious: showNavigation && widget.enabledBack,
-                    currentStep: widget.completedSteps,
-                    totalSteps: widget.totalSteps,
-                    text: step.style.tooltip,
-                  ),
-                ),
-            ],
-          ),
+          onTap: _visible ? () => _next(step) : null,
+          child: content,
         ),
       ),
+    );
+  }
+}
+
+enum _TooltipPlacement { anchored, centered, bottom }
+
+/// Places the tooltip per [_TutorialOverlayWidgetState._placement].
+class _TutorialTooltipPlacement extends StatelessWidget {
+  final _TooltipPlacement placement;
+  final Rect? anchor;
+  final bool showAbove;
+  final double? left;
+  final double padding;
+  final Widget child;
+
+  const _TutorialTooltipPlacement({
+    required this.placement,
+    required this.anchor,
+    required this.showAbove,
+    required this.left,
+    required this.padding,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final anchor = this.anchor;
+    if (placement != _TooltipPlacement.anchored || anchor == null) {
+      return Align(
+        alignment: placement == _TooltipPlacement.bottom
+            ? Alignment.bottomCenter
+            : Alignment.center,
+        child: Padding(padding: EdgeInsets.all(padding * 2), child: child),
+      );
+    }
+
+    return Positioned(
+      left: left,
+      top: showAbove ? null : anchor.bottom + padding,
+      bottom: showAbove
+          ? MediaQuery.sizeOf(context).height - anchor.top + padding
+          : null,
+      child: child,
     );
   }
 }

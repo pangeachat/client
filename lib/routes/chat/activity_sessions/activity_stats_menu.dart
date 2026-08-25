@@ -13,6 +13,7 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_room_exte
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content.dart';
@@ -165,6 +166,9 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                   ActivityGoalHeaderCard(
                     showDropdown: showDropdown,
                     isComplete: allComplete,
+                    // Only the live session lights this card, so only it claims
+                    // the target id (see ActivityGoalHeaderCard).
+                    tutorialTargetId: TutorialTargetIds.activityGoalHeader,
                     collapsed: collapsed,
                     expanded: ActivityDropdownContent(
                       goals: goals,

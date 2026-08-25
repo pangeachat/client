@@ -36,7 +36,9 @@ Target ids are named constants beside the widget that registers them, never inli
 
 The spotlight is a single overlay, and the app refuses to open **any** overlay while a blocking one is up. Two sequences can therefore never share the screen, whatever else changes — so rather than let hosts discover that by fighting over it, **the controller is app-scoped**: one controller, owned where the overlay registry itself lives, running at most one sequence. A request that arrives while another sequence is running is **queued, not dropped**.
 
-A second controller would contend for the same overlay key and the loser would silently fail to launch, which is why there is exactly one. It is also what lets a tutorial outlive the screen it started on — the activity tutorial spans the waiting screen and the chat, the app tour spans five panels, and the greeting hands off to a surface tutorial without the scrim blinking between them.
+A second controller would contend for the same overlay key and the loser would silently fail to launch, which is why there is exactly one. It is also what lets a tutorial outlive the screen it started on — the app tour spans five panels, and the greeting hands off to a surface tutorial without the scrim blinking between them.
+
+**A tutorial is the unit of "one host owns these steps."** Whichever widget owns a step's targets is the only thing that can build that step, so steps on different surfaces belong to different tutorials, sequenced together. A host that goes away gives its sequence up rather than stranding it; progress is already saved, so the next arrival resumes where it left off.
 
 ## The four step kinds
 
@@ -78,7 +80,8 @@ A tutorial is offered when it is unseen, its trigger fires, and its gate passes.
 | `welcome` | Orientation | first arrival at **either** the world map or a course plan — once ever, whichever comes first |
 | `worldMap` | Orientation | first world map with pins actually rendered |
 | `coursePlan` | Orientation | first course plan with its activities rendered |
-| `activityOrientation` | Orientation | first confirmed role in an activity |
+| `activityInvite` | Orientation | first confirmed role, on the waiting room |
+| `activityGoals` | Orientation | first activity chat showing a goal header |
 | `appTour` | Orientation | next arrival at a map after the learner's first finished activity |
 | the chat sequence — `readingAssistance`, `selectModeButtons`, `writingAssistance` | Feature | the learner's first L2 message containing a word new to them, while scrolled to the bottom |
 
@@ -90,8 +93,8 @@ That yields two paths, and no learner is ever taught the same thing twice:
 
 | Arrives | Sees, in order |
 |---|---|
-| **with no course code** | `welcome` + `worldMap` → `activityOrientation` on their first role → `appTour` after their first finished activity → `coursePlan` whenever they later join a course |
-| **by course code** | `welcome` + `coursePlan` → `activityOrientation` → `appTour`, whose last step is the **World** icon → `worldMap` on the map it opens |
+| **with no course code** | `welcome` + `worldMap` → `activityInvite` then `activityGoals` on their first activity → `appTour` after their first finished activity → `coursePlan` whenever they later join a course |
+| **by course code** | `welcome` + `coursePlan` → `activityInvite` then `activityGoals` → `appTour`, whose last step is the **World** icon → `worldMap` on the map it opens |
 
 The app tour ending on World is what closes the second path: a course-code learner may never have opened the world map, so the tour hands them to it, and the world tutorial picks up from there.
 
@@ -113,12 +116,14 @@ Two-role activities are the target because the bot fills exactly one seat, so th
 
 Its armed step is the same beat as `worldMap`'s over a different target, so the pair is defined once and its copy parameterized rather than duplicated.
 
-### activityOrientation
+### activityInvite and activityGoals
 
-Two steps, spanning the moment a learner first holds a role.
+Two beats around the moment a learner first holds a role, one per surface:
 
-1. **The invite and play-with-the-bot controls** on the confirmed-role waiting screen. "You can play with me any time, or invite a friend." This is where the two-person nature of the app is taught, once — playtesters repeatedly asked whether the app could be used with other people, and this is the first moment the answer is concrete. Skipped when the learner joined an already-open session and never sees a waiting screen.
-2. **The goal header**, once the chat opens. Playing your role and completing goals earns stars, and stars move you through a course's Missions. Tapping expands the goal list, so the learner ends the step looking at the goals they are about to play for.
+- **`activityInvite`** lights the invite and play-with-the-bot controls on the confirmed-role waiting room. "You can play with me any time, or invite a friend." This is where the two-person nature of the app is taught, once — playtesters repeatedly asked whether the app could be used with other people, and this is the first moment the answer is concrete.
+- **`activityGoals`** lights the goal header once the chat opens. Playing your role and completing goals earns stars, and stars move you through a course's Missions. Tapping expands the goal list, so the learner ends the step looking at the goals they are about to play for.
+
+**Two tutorials rather than one with two steps**, because their surfaces have different owners and a learner who joins an already-running session never sees a waiting room at all. As one tutorial, that learner's sequence would stall behind a step whose screen never appears; as two, the first simply never fires and the second runs on its own. It is also why the waiting-room one keeps its own seen flag: a learner who skipped it that way is still offered it at their next activity that does have a waiting room.
 
 It stops there deliberately. Nothing later in an activity — completing every goal, finishing for credit — gets a step: those surfaces already explain themselves, and a third interruption inside the learner's first activity costs more attention than it returns.
 

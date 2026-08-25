@@ -3,6 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_overlay_state_machine.dart';
+import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_state_transition_events.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 
@@ -17,15 +19,35 @@ const _full = [
 ];
 
 TutorialStepData _stepData() =>
-    TutorialStepData(targetKey: 'test_key', canShowNextStep: () => true);
+    TutorialStepData.single(targetKey: 'test_key', canShowNextStep: () => true);
 
-ReadingAssistantTutorialModel _readingModel() =>
-    ReadingAssistantTutorialModel(data: [_stepData()]);
+TutorialModel _model(TutorialEnum type) => TutorialModel(
+  tutorialType: type,
+  stepsData: List.generate(type.stepCount, (_) => _stepData()),
+);
 
-SelectModeButtonsTutorialModel _selectModel() =>
-    SelectModeButtonsTutorialModel(data: List.generate(4, (_) => _stepData()));
+TutorialModel _readingModel() => _model(TutorialEnum.readingAssistance);
+
+TutorialModel _selectModel() => _model(TutorialEnum.selectModeButtons);
+
+/// Stands in for the learner's profile: every tutorial unseen unless named in
+/// [seen], resuming at whatever [resumeSteps] says.
+class _FakeProgress extends TutorialProgressSource {
+  final Set<TutorialEnum> seen;
+  final Map<TutorialEnum, int> resumeSteps;
+
+  const _FakeProgress({this.seen = const {}, this.resumeSteps = const {}});
+
+  @override
+  bool isEnabled(TutorialEnum tutorial) => !seen.contains(tutorial);
+
+  @override
+  int resumeStep(TutorialEnum tutorial) => resumeSteps[tutorial] ?? 0;
+}
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   group('TutorialOverlayStateMachine', () {
     // -------------------------------------------------------------------------
     // Initial state
@@ -426,5 +448,298 @@ void main() {
         expect(TutorialOverlayStateMachine([]).hasCompletedSequence, true);
       });
     });
+  });
+
+  // ===========================================================================
+  // Step declarations: the template list is the single source of the count
+  // ===========================================================================
+  group('step count derivation', () {
+    test('every tutorial reports the length of its template list', () {
+      for (final tutorial in TutorialEnum.values) {
+        expect(
+          tutorial.stepCount,
+          tutorial.stepTemplates.length,
+          reason: '$tutorial step count must derive from its templates',
+        );
+      }
+    });
+
+    test('no tutorial declares zero steps', () {
+      for (final tutorial in TutorialEnum.values) {
+        expect(tutorial.stepCount, greaterThan(0), reason: '$tutorial');
+      }
+    });
+
+    test('every declared step is reachable — none is dead config', () {
+      // The bug this pins: writingAssistance once declared two tooltip sizes
+      // and two styles against a step count of 1, so its second step could
+      // never run. Walking a model to its last step proves each has data.
+      for (final tutorial in TutorialEnum.values) {
+        final sm = TutorialOverlayStateMachine([tutorial]);
+        final model = _model(tutorial);
+        for (var i = 0; i < tutorial.stepCount; i++) {
+          expect(model.targetKeysAt(i), isNotEmpty);
+          expect(model.tooltipSizeAt(i), tutorial.stepTemplates[i].tooltipSize);
+          if (i < tutorial.stepCount - 1) {
+            sm.dispatch(const ForwardTutorialEvent());
+            expect(sm.model.stepIndex, i + 1);
+          }
+        }
+      }
+    });
+
+    test('a model cannot be built with the wrong number of steps', () {
+      expect(
+        () => TutorialModel(
+          tutorialType: TutorialEnum.readingAssistance,
+          stepsData: [_stepData(), _stepData()],
+        ),
+        throwsA(isA<AssertionError>()),
+      );
+    });
+  });
+
+  // ===========================================================================
+  // App-scoped controller: one sequence at a time, the rest queued
+  // ===========================================================================
+  group('TutorialOverlayController — sequences', () {
+    const chat = [
+      TutorialEnum.readingAssistance,
+      TutorialEnum.selectModeButtons,
+    ];
+    const other = [TutorialEnum.writingAssistance];
+
+    test('no sequence active before one is requested', () {
+      final c = TutorialOverlayController(progress: const _FakeProgress());
+      expect(c.hasActiveSequence, false);
+      expect(c.state.tutorialType, isNull);
+      // Reads safely with nothing running rather than needing a null check.
+      expect(c.state.hasCompletedSequence, true);
+      expect(c.isTutorialQueued(TutorialEnum.readingAssistance), false);
+    });
+
+    test('requesting a sequence arms its first enabled tutorial', () {
+      final c = TutorialOverlayController(progress: const _FakeProgress());
+      expect(c.requestSequence(chat), true);
+      expect(c.hasActiveSequence, true);
+      expect(c.state.tutorialType, TutorialEnum.readingAssistance);
+    });
+
+    test('already-seen tutorials are left out of the counter', () {
+      final c = TutorialOverlayController(
+        progress: const _FakeProgress(seen: {TutorialEnum.readingAssistance}),
+      );
+      c.requestSequence(chat);
+      expect(c.state.tutorialType, TutorialEnum.selectModeButtons);
+      expect(
+        c.state.totalStepsInSequence,
+        TutorialEnum.selectModeButtons.stepCount,
+      );
+    });
+
+    test('a fully-seen sequence does not start', () {
+      final c = TutorialOverlayController(
+        progress: const _FakeProgress(
+          seen: {
+            TutorialEnum.readingAssistance,
+            TutorialEnum.selectModeButtons,
+          },
+        ),
+      );
+      expect(c.requestSequence(chat), false);
+      expect(c.hasActiveSequence, false);
+    });
+
+    test('resumes at the saved step', () {
+      final c = TutorialOverlayController(
+        progress: const _FakeProgress(
+          seen: {TutorialEnum.readingAssistance},
+          resumeSteps: {TutorialEnum.selectModeButtons: 2},
+        ),
+      );
+      c.requestSequence(chat);
+      expect(c.state.model.stepIndex, 2);
+    });
+
+    test('re-requesting the active sequence is a no-op', () {
+      final c = TutorialOverlayController(progress: const _FakeProgress());
+      c.requestSequence(chat);
+      expect(c.requestSequence(chat), false);
+      expect(c.state.tutorialType, TutorialEnum.readingAssistance);
+    });
+
+    test('a second sequence is queued, not dropped, and starts on release', () {
+      final c = TutorialOverlayController(progress: const _FakeProgress());
+      c.requestSequence(chat);
+      expect(c.requestSequence(other), false);
+      expect(c.state.tutorialType, TutorialEnum.readingAssistance);
+
+      c.releaseSequence(chat);
+      expect(c.hasActiveSequence, true);
+      expect(c.state.tutorialType, TutorialEnum.writingAssistance);
+    });
+
+    test(
+      'releasing a queued sequence removes it without disturbing the active one',
+      () {
+        final c = TutorialOverlayController(progress: const _FakeProgress());
+        c.requestSequence(chat);
+        c.requestSequence(other);
+        c.releaseSequence(other);
+        c.releaseSequence(chat);
+        expect(c.hasActiveSequence, false);
+      },
+    );
+
+    test('a queued sequence with nothing left to show is skipped on drain', () {
+      final c = TutorialOverlayController(
+        progress: const _FakeProgress(seen: {TutorialEnum.writingAssistance}),
+      );
+      c.requestSequence(chat);
+      c.requestSequence(other);
+      c.releaseSequence(chat);
+      expect(c.hasActiveSequence, false);
+    });
+
+    test('sequence identity is by content, not list instance', () {
+      final c = TutorialOverlayController(progress: const _FakeProgress());
+      c.requestSequence(TutorialSequences.chatTutorialSequence);
+      // A fresh list with the same tutorials is the same sequence.
+      expect(c.requestSequence(TutorialSequences.chatTutorialSequence), false);
+      c.releaseSequence(TutorialSequences.chatTutorialSequence);
+      expect(c.hasActiveSequence, false);
+    });
+  });
+
+  // ===========================================================================
+  // Launcher registry: hosts declare what they own, no host-side switch
+  // ===========================================================================
+  group('TutorialOverlayController — launchers', () {
+    const chat = [
+      TutorialEnum.readingAssistance,
+      TutorialEnum.selectModeButtons,
+    ];
+
+    test('the armed tutorial\'s launcher runs when the sequence starts', () {
+      final calls = <TutorialEnum>[];
+      final c = TutorialOverlayController(progress: const _FakeProgress());
+      c.registerLauncher(TutorialEnum.readingAssistance, () async {
+        calls.add(TutorialEnum.readingAssistance);
+      });
+      c.requestSequence(chat);
+      expect(calls, [TutorialEnum.readingAssistance]);
+    });
+
+    testWidgets(
+      'a host registering while its tutorial waits is the launch trigger',
+      (tester) async {
+        final calls = <TutorialEnum>[];
+        final c = TutorialOverlayController(progress: const _FakeProgress());
+        c.requestSequence(chat);
+        expect(calls, isEmpty, reason: 'nothing registered yet');
+
+        c.registerLauncher(TutorialEnum.readingAssistance, () async {
+          calls.add(TutorialEnum.readingAssistance);
+        });
+        await tester.pump();
+        expect(calls, [TutorialEnum.readingAssistance]);
+      },
+    );
+
+    testWidgets(
+      'registering a tutorial that is not waiting does not launch it',
+      (tester) async {
+        final calls = <TutorialEnum>[];
+        final c = TutorialOverlayController(progress: const _FakeProgress());
+        c.requestSequence(chat);
+        c.registerLauncher(TutorialEnum.selectModeButtons, () async {
+          calls.add(TutorialEnum.selectModeButtons);
+        });
+        await tester.pump();
+        expect(calls, isEmpty);
+      },
+    );
+
+    test('an owner wins over an opener for the same tutorial', () {
+      final calls = <String>[];
+      final c = TutorialOverlayController(progress: const _FakeProgress());
+      c.registerLauncher(
+        TutorialEnum.readingAssistance,
+        () async => calls.add('opener'),
+        role: TutorialLaunchRole.opener,
+      );
+      c.registerLauncher(
+        TutorialEnum.readingAssistance,
+        () async => calls.add('owner'),
+      );
+      c.requestSequence(chat);
+      expect(calls, ['owner']);
+    });
+
+    testWidgets('an opener that mounts the owner hands off to it', (
+      tester,
+    ) async {
+      final calls = <String>[];
+      final c = TutorialOverlayController(progress: const _FakeProgress());
+      // The opener's whole job: make the owner exist. Mirrors the chat opening
+      // its toolbar so SelectModeButtons can mount.
+      c.registerLauncher(TutorialEnum.readingAssistance, () async {
+        calls.add('opener');
+        c.registerLauncher(
+          TutorialEnum.readingAssistance,
+          () async => calls.add('owner'),
+        );
+      }, role: TutorialLaunchRole.opener);
+      c.requestSequence(chat);
+      await tester.pump();
+      expect(calls, ['opener', 'owner']);
+    });
+
+    testWidgets(
+      'the owner mounting mid-preparation does not launch underneath it',
+      (tester) async {
+        final calls = <String>[];
+        final c = TutorialOverlayController(progress: const _FakeProgress());
+        c.registerLauncher(TutorialEnum.readingAssistance, () async {
+          c.registerLauncher(
+            TutorialEnum.readingAssistance,
+            () async => calls.add('owner'),
+          );
+          // Preparation continues after the owner mounts; the owner must wait.
+          await Future<void>.microtask(() {});
+          calls.add('opener-done');
+        }, role: TutorialLaunchRole.opener);
+        c.requestSequence(chat);
+        await tester.pump();
+        expect(calls, ['opener-done', 'owner']);
+      },
+    );
+
+    test('unregistering falls back to the opener', () {
+      final calls = <String>[];
+      final c = TutorialOverlayController(progress: const _FakeProgress());
+      c.registerLauncher(
+        TutorialEnum.readingAssistance,
+        () async => calls.add('opener'),
+        role: TutorialLaunchRole.opener,
+      );
+      c.registerLauncher(
+        TutorialEnum.readingAssistance,
+        () async => calls.add('owner'),
+      );
+      c.unregisterLauncher(TutorialEnum.readingAssistance);
+      c.requestSequence(chat);
+      expect(calls, ['opener']);
+    });
+
+    test(
+      'a sequence with no registered host stays armed rather than failing',
+      () {
+        final c = TutorialOverlayController(progress: const _FakeProgress());
+        expect(c.requestSequence(chat), true);
+        expect(c.state.tutorialType, TutorialEnum.readingAssistance);
+        expect(c.state.model.activeTutorial, isNull);
+      },
+    );
   });
 }

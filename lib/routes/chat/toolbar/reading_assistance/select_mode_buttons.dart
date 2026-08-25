@@ -216,7 +216,6 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   String get _playerOwnerId => "${messageEvent.eventId}_button";
 
   StreamSubscription? _audioSub;
-  StreamSubscription? _tutorialSub;
 
   MatrixState? matrix;
 
@@ -236,35 +235,26 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     matrix?.voiceMessageEventId.addListener(_onListeningOwnershipChange);
     // Pangea#
 
-    final chat = widget.controller.chatController;
-    if (chat != null &&
-        chat.tutorialOverlayController.isTutorialQueued(
-          TutorialEnum.selectModeButtons,
-        )) {
-      Future.delayed(Duration(milliseconds: 1000), () {
-        if (mounted && controller.selectedMode.value == null) {
-          _startSelectModeTutorial();
-        }
-      });
-    } else {
-      _shimmerTranslateButton.value = true;
-      _tutorialSub = chat?.tutorialOverlayController.forwardTutorialStream
-          .listen((tutorial) {
-            if (!mounted) return;
-            if (tutorial == TutorialEnum.selectModeButtons &&
-                controller.selectedMode.value == null) {
-              _startSelectModeTutorial();
-            }
-          });
-    }
+    // This widget owns the select-mode targets and only exists while the
+    // toolbar is open, so it registers as their owner; registering while the
+    // tutorial is already waiting is itself the launch trigger.
+    final tutorials = MatrixState.tutorialOverlayController;
+    tutorials.registerLauncher(
+      TutorialEnum.selectModeButtons,
+      _startSelectModeTutorial,
+    );
+    // The shimmer nudges toward the translate button; the tutorial does that
+    // job itself while it runs, and turns the shimmer back on when it moves on.
+    _shimmerTranslateButton.value = !tutorials.isTutorialQueued(
+      TutorialEnum.selectModeButtons,
+    );
   }
 
   @override
   void dispose() {
-    final tutorial =
-        widget.controller.chatController?.tutorialOverlayController;
-    if (tutorial != null &&
-        tutorial.state.isTutorialActive(TutorialEnum.selectModeButtons) &&
+    final tutorial = MatrixState.tutorialOverlayController;
+    tutorial.unregisterLauncher(TutorialEnum.selectModeButtons);
+    if (tutorial.state.isTutorialActive(TutorialEnum.selectModeButtons) &&
         !tutorial.state.model.isStepTransitioning) {
       tutorial.resetTutorial();
     }
@@ -282,7 +272,6 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     matrix?.audioPlayer = null;
     matrix?.voiceMessageEventId.value = null;
     _audioSub?.cancel();
-    _tutorialSub?.cancel();
     _playerStateSub?.cancel();
     _isPlayingNotifier.dispose();
     controller.playTokenNotifier.removeListener(_playToken);
@@ -299,9 +288,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   bool get _canRefresh =>
       messageEvent.eventId == widget.controller.chatController?.refreshEventID;
 
-  void _startSelectModeTutorial() {
+  Future<void> _startSelectModeTutorial() async {
     final chat = widget.controller.chatController;
     if (chat == null) return;
+    if (!mounted || controller.selectedMode.value != null) return;
 
     _shimmerTranslateButton.value = false;
 
@@ -316,9 +306,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
     chat.tutorialOverlayController.launchTutorial(
       context: context,
-      tutorial: SelectModeButtonsTutorialModel(
-        data: [
-          TutorialStepData(
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.selectModeButtons,
+        stepsData: [
+          TutorialStepData.single(
             targetKey: tokenTarget,
             onTap: () async {
               widget.overlayController.updateSelectedSpan(
@@ -331,7 +322,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
             canShowNextStep: () =>
                 mounted && controller.selectedMode.value == null,
           ),
-          TutorialStepData(
+          TutorialStepData.single(
             targetKey: translateTarget,
             onTap: () async {
               await updateMode(SelectMode.translate);
@@ -341,7 +332,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                 mounted &&
                 controller.selectedMode.value == SelectMode.translate,
           ),
-          TutorialStepData(
+          TutorialStepData.single(
             targetKey: audioTarget,
             onTap: () async {
               await updateMode(SelectMode.audio);
@@ -350,7 +341,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
             canShowNextStep: () =>
                 mounted && controller.selectedMode.value == SelectMode.audio,
           ),
-          TutorialStepData(
+          TutorialStepData.single(
             targetKey: msgTarget,
             onTap: () async => widget.controller.clearSelectedEvents(),
             canShowNextStep: () => true,

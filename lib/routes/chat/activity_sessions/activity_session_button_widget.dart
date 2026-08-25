@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
@@ -11,6 +12,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_con
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivitySessionButtons extends StatelessWidget {
   final ActivitySessionStartState controller;
@@ -551,15 +553,31 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
         if (controller.showInviteOptions)
           Padding(
             padding: EdgeInsetsGeometry.only(bottom: 16.0),
-            child: ActivitySessionCTAButton(
-              L10n.of(context).playWithBot,
-              controller.enablePlayWithBot ? controller.playWithBot : null,
+            child: CompositedTransformTarget(
+              link: MatrixState.pAnyState
+                  .layerLinkAndKey(TutorialTargetIds.activityPlayWithBot)
+                  .link,
+              key: MatrixState.pAnyState
+                  .layerLinkAndKey(TutorialTargetIds.activityPlayWithBot)
+                  .key,
+              child: ActivitySessionCTAButton(
+                L10n.of(context).playWithBot,
+                controller.enablePlayWithBot ? controller.playWithBot : null,
+              ),
             ),
           ),
         if (controller.showInviteOptions)
-          ActivitySessionCTAButton(
-            L10n.of(context).inviteFriends,
-            controller.inviteFriends,
+          CompositedTransformTarget(
+            link: MatrixState.pAnyState
+                .layerLinkAndKey(TutorialTargetIds.activityInviteFriends)
+                .link,
+            key: MatrixState.pAnyState
+                .layerLinkAndKey(TutorialTargetIds.activityInviteFriends)
+                .key,
+            child: ActivitySessionCTAButton(
+              L10n.of(context).inviteFriends,
+              controller.inviteFriends,
+            ),
           ),
       ],
     );
