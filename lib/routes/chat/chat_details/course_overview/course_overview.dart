@@ -315,10 +315,12 @@ class _CourseOverviewState extends State<CourseOverview> {
                           )
                         : null,
                   ),
-                  CourseParticipantsPreview(room: room),
-                  CourseSectionButton(
-                    label: l10n.allParticipants,
-                    onPressed: () =>
+                  // The preview owns the "All participants" button: only it
+                  // knows how many cards fit, and the button shows only when
+                  // members were truncated (#8578).
+                  CourseParticipantsPreview(
+                    room: room,
+                    onShowAll: () =>
                         _openSubpage(SpaceSettingsTabs.participants),
                   ),
                 ],
@@ -336,16 +338,19 @@ class _CourseOverviewState extends State<CourseOverview> {
                   ),
                   // Only the settings this user can act on show inline; the
                   // full list, grayed-out rows included, lives on the All
-                  // settings subpage (#8578).
+                  // settings subpage. The button shows only when grayed-out
+                  // rows exist (non-admins) — for admins the inline list IS
+                  // the full list, so the subpage adds nothing (#8578).
                   CourseSettingsButtonList(
                     buttons: widget.moreButtons
                         .where((b) => b.enabled)
                         .toList(),
                   ),
-                  CourseSectionButton(
-                    label: l10n.allSettings,
-                    onPressed: () => _openSubpage(SpaceSettingsTabs.more),
-                  ),
+                  if (widget.moreButtons.any((b) => b.visible && !b.enabled))
+                    CourseSectionButton(
+                      label: l10n.allSettings,
+                      onPressed: () => _openSubpage(SpaceSettingsTabs.more),
+                    ),
                 ],
               ),
             ),
