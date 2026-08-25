@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-24 16:25:53.637620",
+    "@@last_modified": "2026-08-25 11:37:37.710307",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10617,5 +10617,7 @@
     "languageDropdownLevel": "Antas {level}",
     "whatAreYouLearning": "Ano ang pinag-aaralan mo?",
     "languageSwitcherBaseLanguageLabel": "Ang iyong base language",
-    "listenModeDescription": "I-tap ang pagpipilian para marinig ito. Walang napili."
+    "listenModeDescription": "I-tap ang pagpipilian para marinig ito. Walang napili.",
+    "rateActivityLiked": "Nagustuhan",
+    "rateActivityDisliked": "Hindi nagustuhan"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 16:25:52.345599",
+    "@@last_modified": "2026-08-25 11:37:36.454086",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10385,5 +10385,7 @@
     "languageDropdownLevel": "স্তর {level}",
     "whatAreYouLearning": "আপনি কি শিখছেন?",
     "languageSwitcherBaseLanguageLabel": "আপনার বেস ভাষা",
-    "listenModeDescription": "শোনার জন্য একটি বিকল্পে ট্যাপ করুন। কিছুই নির্বাচন করা হয়নি।"
+    "listenModeDescription": "শোনার জন্য একটি বিকল্পে ট্যাপ করুন। কিছুই নির্বাচন করা হয়নি।",
+    "rateActivityLiked": "পছন্দ হয়েছে",
+    "rateActivityDisliked": "পছন্দ হয়নি"
 }

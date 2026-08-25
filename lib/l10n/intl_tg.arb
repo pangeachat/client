@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-24 16:25:58.202310",
+    "@@last_modified": "2026-08-25 11:37:44.247731",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "Сатҳи {level}",
     "whatAreYouLearning": "Шумо чиро меомӯзед?",
     "languageSwitcherBaseLanguageLabel": "Забони асосии шумо",
-    "listenModeDescription": "Барои шунидан интихобро пахш кунед. Ҳеҷ чиз интихоб нашудааст."
+    "listenModeDescription": "Барои шунидан интихобро пахш кунед. Ҳеҷ чиз интихоб нашудааст.",
+    "rateActivityLiked": "Мақбул донистам",
+    "rateActivityDisliked": "Мақбул надонистам"
 }

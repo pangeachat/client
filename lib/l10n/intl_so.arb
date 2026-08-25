@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-24 16:25:57.678144",
+    "@@last_modified": "2026-08-25 11:37:43.311771",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "Heerka {level}",
     "whatAreYouLearning": "Maxaad baranaysaa?",
     "languageSwitcherBaseLanguageLabel": "Luqaddaada aasaasiga ah",
-    "listenModeDescription": "Dooro mid si aad u dhageysato. Waxba lama dooran."
+    "listenModeDescription": "Dooro mid si aad u dhageysato. Waxba lama dooran.",
+    "rateActivityLiked": "Waan jeclaystay",
+    "rateActivityDisliked": "Ma jeclaysan"
 }

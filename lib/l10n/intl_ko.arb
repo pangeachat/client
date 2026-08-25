@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 16:25:55.177020",
+    "@@last_modified": "2026-08-25 11:37:40.047618",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9950,5 +9950,7 @@
     "languageDropdownLevel": "레벨 {level}",
     "whatAreYouLearning": "무엇을 배우고 있나요?",
     "languageSwitcherBaseLanguageLabel": "기본 언어",
-    "listenModeDescription": "선택 항목을 탭하여 들어보세요. 아무것도 선택되지 않았습니다."
+    "listenModeDescription": "선택 항목을 탭하여 들어보세요. 아무것도 선택되지 않았습니다.",
+    "rateActivityLiked": "마음에 들어요",
+    "rateActivityDisliked": "마음에 들지 않아요"
 }

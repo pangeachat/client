@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-24 16:25:58.300936",
+    "@@last_modified": "2026-08-25 11:37:44.598508",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "لیول {level}",
     "whatAreYouLearning": "آپ کیا سیکھ رہے ہیں؟",
     "languageSwitcherBaseLanguageLabel": "آپ کی بنیادی زبان",
-    "listenModeDescription": "سننے کے لیے ایک انتخاب پر ٹیپ کریں۔ کچھ بھی منتخب نہیں ہے۔"
+    "listenModeDescription": "سننے کے لیے ایک انتخاب پر ٹیپ کریں۔ کچھ بھی منتخب نہیں ہے۔",
+    "rateActivityLiked": "پسند آیا",
+    "rateActivityDisliked": "پسند نہیں آیا"
 }

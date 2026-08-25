@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-24 16:25:56.190844",
+    "@@last_modified": "2026-08-25 11:37:40.942463",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "Түвшин {level}",
     "whatAreYouLearning": "Та юу сурч байна вэ?",
     "languageSwitcherBaseLanguageLabel": "Таны үндсэн хэл",
-    "listenModeDescription": "Сонсохын тулд сонголтыг товшино уу. Юу ч сонгогдоогүй байна."
+    "listenModeDescription": "Сонсохын тулд сонголтыг товшино уу. Юу ч сонгогдоогүй байна.",
+    "rateActivityLiked": "Таалагдсан",
+    "rateActivityDisliked": "Таалагдаагүй"
 }

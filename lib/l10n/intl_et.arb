@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-24 16:25:53.366450",
+    "@@last_modified": "2026-08-25 11:37:37.896996",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9754,5 +9754,7 @@
     "languageDropdownLevel": "Tase {level}",
     "whatAreYouLearning": "Mida sa õpid?",
     "languageSwitcherBaseLanguageLabel": "Sinu baaskeelt",
-    "listenModeDescription": "Puuduta valikut, et seda kuulda. Midagi pole valitud."
+    "listenModeDescription": "Puuduta valikut, et seda kuulda. Midagi pole valitud.",
+    "rateActivityLiked": "Meeldis",
+    "rateActivityDisliked": "Ei meeldinud"
 }

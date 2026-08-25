@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-24 16:25:57.848109",
+    "@@last_modified": "2026-08-25 11:37:43.598844",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "Tingkat {level}",
     "whatAreYouLearning": "Diajar naon?",
     "languageSwitcherBaseLanguageLabel": "Basa dasar anjeun",
-    "listenModeDescription": "Toél pilihan pikeun ngadéngékeunana. Taya nu kapilih."
+    "listenModeDescription": "Toél pilihan pikeun ngadéngékeunana. Taya nu kapilih.",
+    "rateActivityLiked": "Resep",
+    "rateActivityDisliked": "Teu resep"
 }

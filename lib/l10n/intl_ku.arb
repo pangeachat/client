@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-24 16:25:55.625112",
+    "@@last_modified": "2026-08-25 11:37:41.018568",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "ئاست {level}",
     "whatAreYouLearning": "چی فێردەبیت؟",
     "languageSwitcherBaseLanguageLabel": "زمانی بنەڕەتیت",
-    "listenModeDescription": "دەست بنێ بە هەڵبژاردەیەکدا بۆ بیستنی. هیچ شتێک هەڵنەبژێردراوە."
+    "listenModeDescription": "دەست بنێ بە هەڵبژاردەیەکدا بۆ بیستنی. هیچ شتێک هەڵنەبژێردراوە.",
+    "rateActivityLiked": "پەسەندکرا",
+    "rateActivityDisliked": "پەسەندنەکرا"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-24 16:25:54.808496",
+    "@@last_modified": "2026-08-25 11:37:39.358045",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10526,5 +10526,7 @@
     "languageDropdownLevel": "レベル{level}",
     "whatAreYouLearning": "何を学習していますか？",
     "languageSwitcherBaseLanguageLabel": "あなたの母国語",
-    "listenModeDescription": "選択肢をタップして聞きます。何も選択されていません。"
+    "listenModeDescription": "選択肢をタップして聞きます。何も選択されていません。",
+    "rateActivityLiked": "よかった",
+    "rateActivityDisliked": "よくなかった"
 }

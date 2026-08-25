@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-24 16:25:52.305231",
+    "@@last_modified": "2026-08-25 11:37:36.114267",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "ደረጃ {level}",
     "whatAreYouLearning": "ምን እየተማርክ ነው?",
     "languageSwitcherBaseLanguageLabel": "የእርስዎ መሰረታዊ ቋንቋ",
-    "listenModeDescription": "ለመስማት ምርጫ ይንኩ። ምንም አልተመረጠም።"
+    "listenModeDescription": "ለመስማት ምርጫ ይንኩ። ምንም አልተመረጠም።",
+    "rateActivityLiked": "ወደድኩት",
+    "rateActivityDisliked": "አልወደድኩትም"
 }

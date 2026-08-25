@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-24 16:25:53.572056",
+    "@@last_modified": "2026-08-25 11:37:37.637025",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "Ìre {level}",
     "whatAreYouLearning": "Dè tha thu ag ionnsachadh?",
     "languageSwitcherBaseLanguageLabel": "Do chànan bunaiteach",
-    "listenModeDescription": "Tap air roghainn gus a cluinntinn. Chan eil dad air a thaghadh."
+    "listenModeDescription": "Tap air roghainn gus a cluinntinn. Chan eil dad air a thaghadh.",
+    "rateActivityLiked": "Chòrd e rium",
+    "rateActivityDisliked": "Cha chòrd e rium"
 }

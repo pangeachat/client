@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-24 16:25:56.333756",
+    "@@last_modified": "2026-08-25 11:37:41.846328",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "स्तर {level}",
     "whatAreYouLearning": "तपाईं के सिक्दै हुनुहुन्छ?",
     "languageSwitcherBaseLanguageLabel": "तपाईंको आधार भाषा",
-    "listenModeDescription": "सुन्नको लागि एउटा विकल्प ट्याप गर्नुहोस्। केही पनि चयन गरिएको छैन।"
+    "listenModeDescription": "सुन्नको लागि एउटा विकल्प ट्याप गर्नुहोस्। केही पनि चयन गरिएको छैन।",
+    "rateActivityLiked": "मन पर्यो",
+    "rateActivityDisliked": "मन परेन"
 }

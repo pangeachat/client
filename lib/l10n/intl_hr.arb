@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-24 16:25:54.142942",
+    "@@last_modified": "2026-08-25 11:37:38.595396",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10193,5 +10193,7 @@
     "languageDropdownLevel": "Razina {level}",
     "whatAreYouLearning": "Što učiš?",
     "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik",
-    "listenModeDescription": "Dodirnite odabir da biste ga čuli. Ništa nije odabrano."
+    "listenModeDescription": "Dodirnite odabir da biste ga čuli. Ništa nije odabrano.",
+    "rateActivityLiked": "Svidjelo mi se",
+    "rateActivityDisliked": "Nije mi se svidjelo"
 }

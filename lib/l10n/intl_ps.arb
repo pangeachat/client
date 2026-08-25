@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-24 16:25:56.890033",
+    "@@last_modified": "2026-08-25 11:37:42.493211",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "کچه {level}",
     "whatAreYouLearning": "تاسو څه زده کوئ؟",
     "languageSwitcherBaseLanguageLabel": "ستاسو اصلي ژبه",
-    "listenModeDescription": "د اوریدلو لپاره یو انتخاب ټایپ کړئ. هیڅ شی نه دی انتخاب شوی."
+    "listenModeDescription": "د اوریدلو لپاره یو انتخاب ټایپ کړئ. هیڅ شی نه دی انتخاب شوی.",
+    "rateActivityLiked": "خوښ شو",
+    "rateActivityDisliked": "نه خوښ شو"
 }

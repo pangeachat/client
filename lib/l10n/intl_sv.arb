@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 16:25:57.809608",
+    "@@last_modified": "2026-08-25 11:37:43.760863",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10275,5 +10275,7 @@
     "languageDropdownLevel": "Nivå {level}",
     "whatAreYouLearning": "Vad lär du dig?",
     "languageSwitcherBaseLanguageLabel": "Ditt basspråk",
-    "listenModeDescription": "Tryck på ett val för att höra det. Inget är valt."
+    "listenModeDescription": "Tryck på ett val för att höra det. Inget är valt.",
+    "rateActivityLiked": "Gillade det",
+    "rateActivityDisliked": "Gillade det inte"
 }

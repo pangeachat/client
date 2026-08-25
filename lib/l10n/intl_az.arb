@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-24 16:25:52.379189",
+    "@@last_modified": "2026-08-25 11:37:36.142641",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2161,5 +2161,7 @@
     "languageDropdownLevel": "Səviyyə {level}",
     "whatAreYouLearning": "Nə öyrənirsiniz?",
     "languageSwitcherBaseLanguageLabel": "Sizin əsas diliniz",
-    "listenModeDescription": "Eşitmək üçün bir seçimə toxunun. Heç nə seçilməyib."
+    "listenModeDescription": "Eşitmək üçün bir seçimə toxunun. Heç nə seçilməyib.",
+    "rateActivityLiked": "Bəyəndim",
+    "rateActivityDisliked": "Bəyənmədim"
 }
