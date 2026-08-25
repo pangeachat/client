@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
@@ -329,20 +330,7 @@ void main() {
 
   group('callParticipants', () {
     test('is derived locally and cannot be influenced by room content', () {
-      // Both sides of a 1:1 call are known without asking anyone: this account
-      // and the room's direct-chat peer. The call card's `caller` used to be
-      // consulted and is written by whoever wrote the card.
       expect(callParticipants(me: _me, peerId: _peer), [_peer, _me]);
-    });
-
-    test('a peer who has LEFT the room is still a side of the call', () {
-      // The case the card's caller was reached for. m.direct records who the
-      // conversation is with and does not change when they leave, so the peer
-      // survives without trusting anybody's word for it.
-      expect(
-        callParticipants(me: _me, peerId: '@gone:example.com'),
-        contains('@gone:example.com'),
-      );
     });
 
     test('with no peer known, no claim is made about a second person', () {
@@ -351,53 +339,72 @@ void main() {
       expect(callParticipants(me: _me, peerId: null), [_me]);
     });
 
-    test('this account is always a side', () {
-      expect(callParticipants(me: _me, peerId: _peer), contains(_me));
-    });
-
-    test('with no DM peer known, the room\'s other member stands in', () {
-      // directChatMatrixID comes from m.direct account data, which can be
-      // absent on a device whose account data has not synced. Left out, the
-      // peer's real half was not reported ABSENT -- assembly drops an unlisted
-      // sender entirely, so their words vanished with no row and no
-      // explanation, which is worse than any of the four answers this reader
-      // is built to give.
-      expect(
-        callParticipants(me: _me, peerId: null, otherMembers: [_me, _peer]),
-        [_peer, _me],
-      );
-    });
-
-    test('the fallback does not guess in a room that is not a pair', () {
-      // Three members is not a 1:1 call, and picking one of them would be
-      // inventing a participant rather than recovering one.
-      expect(
-        callParticipants(
-          me: _me,
-          peerId: null,
-          otherMembers: [_me, _peer, '@third:example.com'],
-        ),
-        [_me],
-      );
-    });
-
-    test('a known DM peer is not overridden by membership', () {
-      // The narrower answer wins: membership says who is in the room, not who
-      // was on the call.
-      expect(
-        callParticipants(
-          me: _me,
-          peerId: _peer,
-          otherMembers: [_me, '@someoneelse:example.com'],
-        ),
-        [_peer, _me],
-      );
-    });
-
     test('is stable across reads, so sections do not reorder', () {
       expect(
         callParticipants(me: _me, peerId: _peer),
         callParticipants(me: _me, peerId: _peer),
+      );
+    });
+  });
+
+  group('callPeerOf', () {
+    Room roomWith(Map<String, String> members, {bool direct = false}) {
+      client.accountData.remove('m.direct');
+      if (direct) {
+        client.accountData['m.direct'] = BasicEvent(
+          type: 'm.direct',
+          content: {
+            _peer: ['!c:fakeServer.notExisting'],
+          },
+        );
+      }
+      final r = Room(id: '!c:fakeServer.notExisting', client: client);
+      members.forEach((id, membership) {
+        r.setState(
+          Event(
+            type: EventTypes.RoomMember,
+            stateKey: id,
+            content: {'membership': membership},
+            senderId: id,
+            eventId: '\$m-\$id',
+            originServerTs: DateTime.now(),
+            room: r,
+          ),
+        );
+      });
+      return r;
+    }
+
+    test('m.direct wins, and survives the peer leaving', () {
+      expect(
+        callPeerOf(roomWith({_me: 'join', _peer: 'leave'}, direct: true)),
+        _peer,
+      );
+    });
+
+    test('a pair that once had a third person is still a pair', () {
+      // This is the case the transcript reader used to give up on: looking
+      // only at everyone who was ever here made a current pair ambiguous, so
+      // the peer was left out and their real half vanished with no row.
+      expect(
+        callPeerOf(
+          roomWith({_me: 'join', _peer: 'join', '@gone:example.com': 'leave'}),
+        ),
+        _peer,
+      );
+    });
+
+    test('a departed peer is still found when nobody else is here', () {
+      expect(callPeerOf(roomWith({_me: 'join', _peer: 'leave'})), _peer);
+    });
+
+    test('a room that is genuinely not a pair yields nobody', () {
+      // Naming the wrong person is worse than naming none, in both consumers.
+      expect(
+        callPeerOf(
+          roomWith({_me: 'join', _peer: 'join', '@third:example.com': 'join'}),
+        ),
+        isNull,
       );
     });
   });

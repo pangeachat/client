@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
+import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 
@@ -49,30 +50,9 @@ Future<void> showCallTranscript(
 /// asserted: assembly reports a named participant who wrote nothing as ABSENT
 /// rather than omitting them, and DROPS a half from anyone not named -- which
 /// is what stops a stranger writing themselves a section.
-/// [otherMembers] is the fallback when [peerId] is not known: the room's other
-/// members, excluding this account. `directChatMatrixID` is read from m.direct
-/// account data, which can be absent on a device whose account data has not
-/// synced, or if the direct-chat flag was later removed. When it is, the peer
-/// was silently left out of this list -- and assembly does not report an
-/// unlisted sender as absent, it drops them entirely, so their real half
-/// vanished from the screen with no row and no explanation. That is a worse
-/// answer than any of the four this reader is built to give.
-///
-/// Membership is server-enforced state rather than content anyone can write,
-/// so it is safe here in a way the call card was not. It is a fallback and not
-/// the primary source because it answers a broader question -- who is in this
-/// room, not who was on this call -- which is why it is taken only when the
-/// narrower answer is unavailable, and why a room that is not a pair yields
-/// nothing rather than a guess.
 @visibleForTesting
-List<String> callParticipants({
-  required String? me,
-  required String? peerId,
-  Iterable<String> otherMembers = const [],
-}) {
-  final others = otherMembers.where((id) => id != me).toSet();
-  final peer = peerId ?? (others.length == 1 ? others.single : null);
-  final ids = <String>{?me, ?peer};
+List<String> callParticipants({required String? me, required String? peerId}) {
+  final ids = <String>{?me, ?peerId};
 
   // Sorted, so the sections do not reorder between two reads of the same call.
   return ids.toList()..sort();
@@ -111,10 +91,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     callKey: widget.callKey,
     expectedSenders: callParticipants(
       me: widget.room.client.userID,
-      peerId: widget.room.directChatMatrixID,
-      otherMembers: widget.room
-          .getParticipants(const [Membership.join, Membership.leave])
-          .map((m) => m.id),
+      peerId: callPeerOf(widget.room),
     ),
     encrypted: widget.room.encrypted,
   );

@@ -91,12 +91,12 @@ class ChatListItemSubtitle extends StatelessWidget {
       // conversation agree. Left to the SDK this reads "User sent a
       // pangea.call event".
       final line = callPreviewLine(L10n.of(context), event);
-      // Null when the conversation itself draws nothing for this call -- a
-      // card whose send failed. Falling through to the empty-chat line keeps
-      // the two surfaces saying the same thing.
-      if (line == null) {
-        return Text(L10n.of(context).emptyChat, style: style);
-      }
+      // Null when the conversation draws nothing for this call: a send that
+      // failed, or a card from somebody who was not on it. Nothing is shown
+      // rather than the empty-chat line, which would be a claim about the
+      // whole room -- and the room may be full of real messages that simply
+      // are not the newest event.
+      if (line == null) return const SizedBox.shrink();
       return Text(
         line,
         style: style,

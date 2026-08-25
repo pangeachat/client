@@ -8,16 +8,56 @@ import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
+/// The other side of a 1:1 conversation, or null when it cannot be told.
+///
+/// ONE answer, because several places need it and each one that worked it out
+/// for itself got a different answer. The transcript reader had a fallback for
+/// a missing m.direct, the direction of a call did not, and the card's own
+/// legitimacy check did not either -- so the same unsynced account data showed
+/// a real speaker no row at all in one place and the wrong arrow in another.
+///
+/// m.direct first: it records who the conversation is WITH and survives them
+/// leaving the room, which membership does not. Failing that, membership --
+/// server-enforced state, not content anyone can write.
+///
+/// Joined members are tried before ever-members. A pair with a third person
+/// who joined and left is still a pair now, and looking only at the wider set
+/// made it ambiguous and gave up. Ambiguity yields null rather than a guess:
+/// naming the wrong person is worse than naming nobody, in both consumers.
+String? callPeerOf(Room room) {
+  final direct = room.directChatMatrixID;
+  if (direct != null) return direct;
+
+  final me = room.client.userID;
+  Set<String> others(List<Membership> filter) => room
+      .getParticipants(filter)
+      .map((m) => m.id)
+      .where((id) => id != me)
+      .toSet();
+
+  final joined = others(const [Membership.join]);
+  if (joined.length == 1) return joined.single;
+
+  final ever = others(const [Membership.join, Membership.leave]);
+  return ever.length == 1 ? ever.single : null;
+}
+
 /// The two people a 1:1 call in [room] can have been between.
 ///
-/// Local state only: this account, and the room's direct-chat peer. Neither is
-/// room content, and a Matrix sender id is stamped by the homeserver rather
-/// than chosen by the writer, so a card claiming to be from someone else
-/// cannot pass a check against this set.
-Set<String> callSides(Room room) => {
-  ?room.client.userID,
-  ?room.directChatMatrixID,
-};
+/// Local state only. A Matrix sender id is stamped by the homeserver rather
+/// than chosen by the writer, so a card or a half claiming to come from
+/// somebody else cannot pass a check against this set.
+Set<String> callSides(Room room) => {?room.client.userID, ?callPeerOf(room)};
+
+/// Whether this event is a call card written by somebody who was on the call.
+///
+/// Anyone in the room can send an event of this type. Without this, a member
+/// who was not on the call could post a card with an answered flag, a duration
+/// and a transcript affordance, and it drew as a real call that never
+/// happened. The suppression rule already asked this question of a card trying
+/// to hide another; the card being DRAWN was never asked it.
+bool callCardIsFromAParticipant(Event event) =>
+    callSides(event.room).contains(event.senderId);
 
 /// Whether this account placed the call.
 ///
@@ -45,8 +85,7 @@ bool callWasOutgoing(Event event) {
   // can still show the other person the wrong arrow for a call they were both
   // on. That is the honest limit here: the label can be wrong between two
   // people who were really talking, and no third party can be inserted.
-  if (caller is String &&
-      (caller == me || caller == event.room.directChatMatrixID)) {
+  if (caller is String && (caller == me || caller == callPeerOf(event.room))) {
     return caller == me;
   }
 
@@ -75,6 +114,7 @@ bool callWasOutgoing(Event event) {
 /// exists.
 String? callPreviewLine(L10n l10n, Event event) {
   if (event.status.isError) return null;
+  if (!callCardIsFromAParticipant(event)) return null;
   final outgoing = callWasOutgoing(event);
   final declined = event.content['declined'] == true;
   final answered = event.content['answered'] == true;
@@ -216,6 +256,8 @@ class CallTimelineEvent extends StatelessWidget {
     // failed is the record of it, and a record only one side holds is worse
     // than no record -- it reads as an extra call that never took place.
     if (_neverSent) return const SizedBox.shrink();
+    // A card from somebody who was not on the call is not a record of it.
+    if (!callCardIsFromAParticipant(event)) return const SizedBox.shrink();
     if (_duplicateOfEarlier) return const SizedBox.shrink();
     final l10n = L10n.of(context);
     final theme = Theme.of(context);

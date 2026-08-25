@@ -173,4 +173,42 @@ void main() {
       },
     );
   });
+
+  group('a card from somebody who was not on the call', () {
+    Event strangerCard() {
+      client.accountData['m.direct'] = BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@friend:server': ['!c:fakeServer.notExisting'],
+        },
+      );
+      final room = Room(id: '!c:fakeServer.notExisting', client: client);
+      return Event(
+        type: PangeaEventTypes.call,
+        content: {
+          'caller': '@friend:server',
+          'answered': true,
+          'declined': false,
+          'duration_ms': 134000,
+        },
+        senderId: '@stranger:evil.example',
+        eventId: r'$forged',
+        originServerTs: DateTime.now(),
+        room: room,
+        status: EventStatus.synced,
+      );
+    }
+
+    testWidgets('is not drawn at all', (tester) async {
+      // Anyone in the room can send an event of this type. The suppression
+      // rule already asked who sent a card that was trying to hide another;
+      // the card being DRAWN was never asked. So a member who was not on the
+      // call could post one with an answered flag, a duration and a transcript
+      // affordance, and it read as a call that never happened.
+      await pump(tester, strangerCard());
+
+      expect(find.text('Voice call'), findsNothing);
+      expect(find.byType(Icon), findsNothing, reason: 'nothing at all');
+    });
+  });
 }

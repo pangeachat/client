@@ -108,6 +108,30 @@ void main() {
     return tester.widget<Text>(find.byType(Text)).data!;
   }
 
+  /// The same, but able to express "the list shows nothing here".
+  ///
+  /// Distinct from an empty string: a call the conversation refuses to draw
+  /// gets no line at all, and a helper that insists on exactly one Text cannot
+  /// tell that from a failure.
+  Future<String?> previewOrNothing(WidgetTester tester, Event event) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: ChatListItemSubtitle(
+            room: event.room,
+            style: const TextStyle(),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final texts = tester.widgetList<Text>(find.byType(Text));
+    return texts.isEmpty ? null : texts.first.data;
+  }
+
   testWidgets('an answered call reads as a call, with its length', (
     tester,
   ) async {
@@ -172,6 +196,29 @@ void main() {
     failed.status = EventStatus.error;
     failed.room.lastEvent = failed;
 
-    expect(await preview(tester, failed), isNot(contains('Voice call')));
+    expect(await previewOrNothing(tester, failed), isNull);
+  });
+
+  testWidgets('a card from somebody who was not on the call gets no line', (
+    tester,
+  ) async {
+    // The two surfaces are supposed to agree about the same call, and the
+    // conversation refuses to draw this one at all.
+    final forged = card(sender: '@stranger:evil.example');
+    forged.room.lastEvent = forged;
+
+    expect(await previewOrNothing(tester, forged), isNull);
+  });
+
+  testWidgets('an unshowable card does not claim the whole room is empty', (
+    tester,
+  ) async {
+    // The room may be full of real messages that simply are not the newest
+    // event. "Empty chat" is a claim about all of it.
+    final failed = card();
+    failed.status = EventStatus.error;
+    failed.room.lastEvent = failed;
+
+    expect(await previewOrNothing(tester, failed), isNull);
   });
 }
