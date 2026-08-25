@@ -450,7 +450,9 @@ class CallRecord {
         : ms is String
         ? num.tryParse(ms)
         : null;
-    if (parsed != null && parsed.isFinite) {
+    // Non-negative as well as finite. A call cannot have lasted less than no
+    // time, and the value is somebody else's word.
+    if (parsed != null && parsed.isFinite && parsed >= 0) {
       return Duration(milliseconds: parsed.round());
     }
     return Duration.zero;

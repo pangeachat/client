@@ -968,11 +968,11 @@ void main() {
   });
 
   group('durationOf, reading somebody else\'s number', () {
-    test('a non-finite duration reads as unknown, not as a crash', () {
+    test('a duration that cannot be one reads as unknown', () {
       // num.tryParse accepts "NaN" and "Infinity", and .round() on either
       // throws -- so a card carrying one of those words took the whole row
       // down rather than reading as a call of unknown length.
-      for (final word in ['NaN', 'Infinity', '-Infinity']) {
+      for (final word in ['NaN', 'Infinity', '-Infinity', '-61000']) {
         expect(
           CallRecord.durationOf({'duration_ms': word}),
           Duration.zero,

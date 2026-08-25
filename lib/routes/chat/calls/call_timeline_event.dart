@@ -8,6 +8,17 @@ import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
+/// The two people a 1:1 call in [room] can have been between.
+///
+/// Local state only: this account, and the room's direct-chat peer. Neither is
+/// room content, and a Matrix sender id is stamped by the homeserver rather
+/// than chosen by the writer, so a card claiming to be from someone else
+/// cannot pass a check against this set.
+Set<String> callSides(Room room) => {
+  ?room.client.userID,
+  ?room.directChatMatrixID,
+};
+
 /// Whether this account placed the call.
 ///
 /// From the stated caller, not from who wrote the event: the writer is chosen
@@ -52,7 +63,18 @@ bool callWasOutgoing(Event event) {
 /// "No messages yet" on a room where two people had just talked -- and the
 /// SDK's own fallback for an unknown message type is no better ("User sent a
 /// pangea.call event"). A call is worth a line of its own.
-String callPreviewLine(L10n l10n, Event event) {
+/// Null when there is nothing to say about this call.
+///
+/// A send that failed is kept in the LOCAL timeline and marked errored;
+/// nothing retries it and the peer never receives it. The card in the
+/// conversation already refuses to draw one, because a record only one side
+/// holds reads as a call that never happened. The list had no such check, so
+/// the same event vanished from the conversation and stayed in the chat list
+/// as a plausible "Voice call - 2:14" the other person had never seen. The two
+/// surfaces are supposed to agree; that is the whole reason this function
+/// exists.
+String? callPreviewLine(L10n l10n, Event event) {
+  if (event.status.isError) return null;
   final outgoing = callWasOutgoing(event);
   final declined = event.content['declined'] == true;
   final answered = event.content['answered'] == true;
@@ -129,11 +151,25 @@ class CallTimelineEvent extends StatelessWidget {
   static bool isDuplicateOfEarlier(Event event, Iterable<Event> all) {
     final key = event.content[CallRecord.callKeyField];
     if (key is! String) return false;
+
+    // Only a card written by one of the two people who were on the call can
+    // suppress another. The key is the caller's membership event id, which
+    // both sides know DURING the call, long before either writes its card --
+    // so without this, anyone else in the room could write a card carrying the
+    // right key the moment the call starts, win the earliest-timestamp
+    // tie-break below, and permanently hide the truthful card behind their
+    // own. Setting `declined` on the forgery also removed the tap target that
+    // opens the transcript, so the real halves became unreachable while still
+    // existing. Sender ids are stamped by the homeserver, not by the writer,
+    // which is what makes this check worth anything.
+    final sides = callSides(event.room);
+
     for (final other in all) {
       if (identical(other, event) || other.eventId == event.eventId) continue;
       if (other.type != PangeaEventTypes.call) continue;
       if (other.content[CallRecord.callKeyField] != key) continue;
       if (other.status.isError) continue;
+      if (!sides.contains(other.senderId)) continue;
       final byTime = other.originServerTs.compareTo(event.originServerTs);
       if (byTime < 0 ||
           (byTime == 0 && other.eventId.compareTo(event.eventId) < 0)) {

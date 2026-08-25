@@ -20,6 +20,15 @@ void main() {
 
   setUpAll(() async {
     client = await getTestClient();
+    // A real direct chat with @a:server. Only a card written by one of the two
+    // people who were on the call can suppress another, so the pair has to be
+    // established or nothing counts as a side.
+    client.accountData['m.direct'] = BasicEvent(
+      type: 'm.direct',
+      content: {
+        '@a:server': ['!r:server'],
+      },
+    );
     room = Room(id: '!r:server', client: client);
   });
 
@@ -29,6 +38,7 @@ void main() {
     String id, {
     String? key,
     int ts = 1000,
+    String sender = '@a:server',
     EventStatus status = EventStatus.synced,
   }) => Event(
     type: PangeaEventTypes.call,
@@ -38,7 +48,7 @@ void main() {
       'answered': true,
       CallRecord.callKeyField: ?key,
     },
-    senderId: '@a:server',
+    senderId: sender,
     eventId: id,
     originServerTs: DateTime.fromMillisecondsSinceEpoch(ts),
     room: room,
@@ -94,5 +104,47 @@ void main() {
     final real = card(r'$real', key: 'k', ts: 2000);
     final all = [failed, real];
     expect(CallTimelineEvent.isDuplicateOfEarlier(real, all), isFalse);
+  });
+
+  group('a card from someone who was not on the call', () {
+    test('cannot suppress the real one', () {
+      // The key is the caller's membership event id, and both sides know it
+      // DURING the call -- long before either writes its card. Without a
+      // sender check anyone else in the room could write a card carrying the
+      // right key the moment the call starts, win the earliest-timestamp
+      // tie-break, and hide the truthful card behind their own permanently.
+      // Setting `declined` on the forgery also removed the tap target that
+      // opens the transcript, so real halves became unreachable.
+      final real = card(r'$real', key: 'k', ts: 2000);
+      final forged = card(
+        r'$forged',
+        key: 'k',
+        ts: 1000,
+        sender: '@stranger:evil.example',
+      );
+
+      expect(
+        CallTimelineEvent.isDuplicateOfEarlier(real, [real, forged]),
+        isFalse,
+        reason: 'the truthful card is still drawn',
+      );
+    });
+
+    test('a genuine earlier card from the other side still suppresses', () {
+      // The rule has to keep working: both devices can write a card for one
+      // call, and exactly one is drawn.
+      final mine = card(
+        r'$mine',
+        key: 'k',
+        ts: 2000,
+        sender: '@test:fakeServer.notExisting',
+      );
+      final theirs = card(r'$theirs', key: 'k', ts: 1000);
+
+      expect(
+        CallTimelineEvent.isDuplicateOfEarlier(mine, [mine, theirs]),
+        isTrue,
+      );
+    });
   });
 }

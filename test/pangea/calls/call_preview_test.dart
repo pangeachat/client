@@ -159,4 +159,19 @@ void main() {
     event.room.lastEvent = event;
     expect(await preview(tester, event), 'Video call · 1:02');
   });
+
+  testWidgets('a call the conversation refuses to draw is not in the list', (
+    tester,
+  ) async {
+    // The card in the conversation already refuses to draw a send that
+    // failed: nothing retries it, the peer never receives it, and a record
+    // only one side holds reads as a call that never happened. The list had
+    // no such check, so the same event vanished from the conversation and
+    // stayed here as a plausible "Voice call" the other person never saw.
+    final failed = card(durationMs: 8000);
+    failed.status = EventStatus.error;
+    failed.room.lastEvent = failed;
+
+    expect(await preview(tester, failed), isNot(contains('Voice call')));
+  });
 }

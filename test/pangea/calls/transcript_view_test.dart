@@ -355,6 +355,45 @@ void main() {
       expect(callParticipants(me: _me, peerId: _peer), contains(_me));
     });
 
+    test('with no DM peer known, the room\'s other member stands in', () {
+      // directChatMatrixID comes from m.direct account data, which can be
+      // absent on a device whose account data has not synced. Left out, the
+      // peer's real half was not reported ABSENT -- assembly drops an unlisted
+      // sender entirely, so their words vanished with no row and no
+      // explanation, which is worse than any of the four answers this reader
+      // is built to give.
+      expect(
+        callParticipants(me: _me, peerId: null, otherMembers: [_me, _peer]),
+        [_peer, _me],
+      );
+    });
+
+    test('the fallback does not guess in a room that is not a pair', () {
+      // Three members is not a 1:1 call, and picking one of them would be
+      // inventing a participant rather than recovering one.
+      expect(
+        callParticipants(
+          me: _me,
+          peerId: null,
+          otherMembers: [_me, _peer, '@third:example.com'],
+        ),
+        [_me],
+      );
+    });
+
+    test('a known DM peer is not overridden by membership', () {
+      // The narrower answer wins: membership says who is in the room, not who
+      // was on the call.
+      expect(
+        callParticipants(
+          me: _me,
+          peerId: _peer,
+          otherMembers: [_me, '@someoneelse:example.com'],
+        ),
+        [_peer, _me],
+      );
+    });
+
     test('is stable across reads, so sections do not reorder', () {
       expect(
         callParticipants(me: _me, peerId: _peer),

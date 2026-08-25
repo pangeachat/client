@@ -90,8 +90,15 @@ class ChatListItemSubtitle extends StatelessWidget {
       // The same words the card in the conversation uses, so the list and the
       // conversation agree. Left to the SDK this reads "User sent a
       // pangea.call event".
+      final line = callPreviewLine(L10n.of(context), event);
+      // Null when the conversation itself draws nothing for this call -- a
+      // card whose send failed. Falling through to the empty-chat line keeps
+      // the two surfaces saying the same thing.
+      if (line == null) {
+        return Text(L10n.of(context).emptyChat, style: style);
+      }
       return Text(
-        callPreviewLine(L10n.of(context), event),
+        line,
         style: style,
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
