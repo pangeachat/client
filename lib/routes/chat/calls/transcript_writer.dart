@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
@@ -45,23 +47,34 @@ Future<bool> writeCallTranscript({
   // half is a real answer -- they were muted, or said nothing -- and it is a
   // DIFFERENT answer from no half at all, which means we do not know. The
   // reader can only tell those apart if the silent case is stated.
-  final packed = _packUnder(segments, maxBytes);
+  // Built through a closure so packing measures the REAL event, accounting and
+  // relation included, rather than guessing at the envelope around the text.
+  CallTranscriptContent build(List<TranscriptSegment> kept, int omitted) =>
+      CallTranscriptContent(
+        callKey: callKey,
+        segments: kept,
+        accounting: HalfAccounting(
+          chunksCaptured: chunksCaptured,
+          chunksTranscribed: chunksTranscribed,
+          truncated: omitted > 0,
+          segmentsOmitted: omitted,
+          drainComplete: drainComplete,
+          // Our own halves always carry a full accounting, so a round-trip of
+          // one never reads back as a writer that asserted nothing.
+          declared: true,
+        ),
+        langCode: langCode,
+      );
 
-  final content = CallTranscriptContent(
-    callKey: callKey,
-    segments: packed.segments,
-    accounting: HalfAccounting(
-      chunksCaptured: chunksCaptured,
-      chunksTranscribed: chunksTranscribed,
-      truncated: packed.omitted > 0,
-      segmentsOmitted: packed.omitted,
-      drainComplete: drainComplete,
-      // Our own halves always carry a full accounting, so a round-trip of one
-      // never reads back as a writer that asserted nothing.
-      declared: true,
-    ),
-    langCode: langCode,
+  // Sized against the worst case for the accounting fields: a half packed while
+  // claiming nothing was omitted, then re-labelled as truncated, would grow by
+  // the extra digits and could cross the line it was just checked against.
+  final packed = _packUnder(
+    segments,
+    maxBytes,
+    (kept) => build(kept, segments.length - kept.length),
   );
+  final content = build(packed.segments, packed.omitted);
 
   await send(content.toJson(), CallTranscriptContent.txnId(callKey, senderId));
   return true;
@@ -74,48 +87,40 @@ Future<bool> writeCallTranscript({
 /// losing its start is worse. The count of what went is carried in the half's
 /// accounting, so a truncated transcript says so rather than presenting itself
 /// as everything that was said.
+///
+/// The fit is MEASURED, not estimated. An earlier version added up UTF-8 byte
+/// lengths, which undercounts what actually goes on the wire: the event is
+/// serialised as JSON, where a quote costs two bytes, a newline two, and a
+/// control character six. A half could therefore be packed, believed to be
+/// under budget, and still be rejected by the server -- losing the whole half
+/// rather than its tail, which is the outcome the packing exists to avoid.
+///
+/// Found by binary search over the prefix length, so a long half costs a
+/// handful of encodings rather than one per segment.
 ({List<TranscriptSegment> segments, int omitted}) _packUnder(
   List<TranscriptSegment> segments,
   int maxBytes,
+  CallTranscriptContent Function(List<TranscriptSegment>) build,
 ) {
-  final kept = <TranscriptSegment>[];
-  // The envelope around the segments -- keys, accounting, the relation -- is
-  // charged for before any segment is, so a half cannot fit its text and then
-  // overflow on its own metadata.
-  var used = _envelopeBytes;
-
-  for (final segment in segments) {
-    final cost = _segmentBytes(segment);
-    if (used + cost > maxBytes) break;
-    kept.add(segment);
-    used += cost;
+  if (_encodedBytes(build(segments)) <= maxBytes) {
+    return (segments: segments, omitted: 0);
   }
 
-  return (segments: kept, omitted: segments.length - kept.length);
-}
-
-/// A conservative allowance for everything in the event that is not a segment.
-const _envelopeBytes = 512;
-
-/// What one segment costs on the wire, counted in UTF-8 bytes rather than
-/// characters: a transcript of a non-Latin language would otherwise be measured
-/// at a fraction of its real size and blow the ceiling it was checked against.
-int _segmentBytes(TranscriptSegment segment) =>
-    // The JSON shape {"text":"..."} plus its separator, near enough.
-    12 + _utf8Length(segment.text);
-
-int _utf8Length(String text) {
-  var bytes = 0;
-  for (final rune in text.runes) {
-    if (rune <= 0x7F) {
-      bytes += 1;
-    } else if (rune <= 0x7FF) {
-      bytes += 2;
-    } else if (rune <= 0xFFFF) {
-      bytes += 3;
+  // Largest prefix that fits. `low` is always known to fit and `high` always
+  // known not to, so the loop cannot settle on an over-budget answer.
+  var low = 0;
+  var high = segments.length;
+  while (low < high) {
+    final mid = (low + high + 1) ~/ 2;
+    if (_encodedBytes(build(segments.sublist(0, mid))) <= maxBytes) {
+      low = mid;
     } else {
-      bytes += 4;
+      high = mid - 1;
     }
   }
-  return bytes;
+
+  return (segments: segments.sublist(0, low), omitted: segments.length - low);
 }
+
+int _encodedBytes(CallTranscriptContent content) =>
+    utf8.encode(jsonEncode(content.toJson())).length;

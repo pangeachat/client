@@ -176,6 +176,38 @@ void main() {
         expect(parsed.accounting.segmentsOmitted, 0);
       });
 
+      test('JSON escaping cannot push the half over the limit', () async {
+        // The event goes on the wire as JSON, where a quote costs two bytes, a
+        // newline two, and a control character six. Adding up plain UTF-8
+        // lengths undercounted all of those, so a half could be packed,
+        // believed to fit, and still be rejected -- losing the WHOLE half
+        // rather than its tail.
+        final sent = _Sent();
+        await _write(
+          sent,
+          texts: [
+            for (var i = 0; i < 300; i++) 'dijo "hola"\n\ty \u0000 luego $i',
+          ],
+          maxBytes: 2000,
+        );
+
+        expect(sent.bytes, lessThanOrEqualTo(2000));
+      });
+
+      test('re-labelling as truncated cannot cross the line', () async {
+        // The accounting grows when segments_omitted goes from 0 to a large
+        // number. Packing against a half that claimed nothing was omitted and
+        // then re-labelling it would add those digits after the check.
+        final sent = _Sent();
+        await _write(
+          sent,
+          texts: [for (var i = 0; i < 5000; i++) 'relleno $i'],
+          maxBytes: 1200,
+        );
+
+        expect(sent.bytes, lessThanOrEqualTo(1200));
+      });
+
       test('non-Latin text is measured in BYTES, not characters', () async {
         // Counting characters would size a CJK transcript at a third of its
         // real weight and blow the ceiling it was checked against.
