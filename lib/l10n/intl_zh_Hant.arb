@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 13:19:20.062663",
+    "@@last_modified": "2026-08-25 15:25:47.293687",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9867,5 +9867,6 @@
     "rateActivityLiked": "喜歡",
     "rateActivityDisliked": "不喜歡",
     "constructUseHrdDesc": "聽過",
-    "timesHeard": "{count, plural, =1{已聽過一次} other{已聽過 {count} 次}}"
+    "timesHeard": "{count, plural, =1{已聽過一次} other{已聽過 {count} 次}}",
+    "allSettings": "所有設定"
 }

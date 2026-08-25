@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-25 13:19:06.118242",
+    "@@last_modified": "2026-08-25 15:25:42.041538",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Hoffais i",
     "rateActivityDisliked": "Doeddwn i ddim yn ei hoffi",
     "constructUseHrdDesc": "Clywed",
-    "timesHeard": "{count, plural, =1{Clywyd unwaith} other{Clywyd {count} gwaith}}"
+    "timesHeard": "{count, plural, =1{Clywyd unwaith} other{Clywyd {count} gwaith}}",
+    "allSettings": "Pob gosodiad"
 }

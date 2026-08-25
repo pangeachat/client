@@ -114,6 +114,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "allSettings": "All settings",
+    "@allSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
     "catchUp": "Catch up",
     "@catchUp": {
         "type": "String",

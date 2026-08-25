@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-25 13:19:08.257778",
+    "@@last_modified": "2026-08-25 15:25:41.919258",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Ganahan ko",
     "rateActivityDisliked": "Dili ko ganahan",
     "constructUseHrdDesc": "Nadungog",
-    "timesHeard": "{count, plural, =1{Nakadungog kausa} other{Nakadungog {count} ka beses}}"
+    "timesHeard": "{count, plural, =1{Nakadungog kausa} other{Nakadungog {count} ka beses}}",
+    "allSettings": "Tanan nga setting"
 }

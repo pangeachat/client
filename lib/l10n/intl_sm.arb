@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-25 13:19:15.228419",
+    "@@last_modified": "2026-08-25 15:25:45.915203",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Na ou fiafia i ai",
     "rateActivityDisliked": "Ou te leʻi fiafia i ai",
     "constructUseHrdDesc": "Faʻalogoina",
-    "timesHeard": "{count, plural, =1{Faʻalogo tasi} other{Faʻalogo faʻatolu {count}}}"
+    "timesHeard": "{count, plural, =1{Faʻalogo tasi} other{Faʻalogo faʻatolu {count}}}",
+    "allSettings": "Tulaga uma"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-25 13:19:05.032267",
+    "@@last_modified": "2026-08-25 15:25:41.378260",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Svidjelo mi se",
     "rateActivityDisliked": "Nije mi se svidjelo",
     "constructUseHrdDesc": "Čuo",
-    "timesHeard": "{count, plural, =1{Čuo jednom} other{Čuo {count} puta}}"
+    "timesHeard": "{count, plural, =1{Čuo jednom} other{Čuo {count} puta}}",
+    "allSettings": "Sve postavke"
 }

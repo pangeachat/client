@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 13:19:12.337648",
+    "@@last_modified": "2026-08-25 15:25:43.031976",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10675,5 +10675,6 @@
     "rateActivityLiked": "אהבתי",
     "rateActivityDisliked": "לא אהבתי",
     "constructUseHrdDesc": "נשמע",
-    "timesHeard": "{count, plural, =1{נשמע פעם אחת} other{נשמע {count} פעמים}}"
+    "timesHeard": "{count, plural, =1{נשמע פעם אחת} other{נשמע {count} פעמים}}",
+    "allSettings": "כל ההגדרות"
 }

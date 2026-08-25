@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-25 13:19:06.796251",
+    "@@last_modified": "2026-08-25 15:25:42.487562",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9761,5 +9761,6 @@
     "rateActivityLiked": "Gustatu zait",
     "rateActivityDisliked": "Ez zait gustatu",
     "constructUseHrdDesc": "Entzunda",
-    "timesHeard": "{count, plural, =1{Behin entzun da} other{{count} aldiz entzun da}}"
+    "timesHeard": "{count, plural, =1{Behin entzun da} other{{count} aldiz entzun da}}",
+    "allSettings": "Ezarpen guztiak"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-25 13:19:07.894476",
+    "@@last_modified": "2026-08-25 15:25:42.673988",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9761,5 +9761,6 @@
     "rateActivityLiked": "Gustoume",
     "rateActivityDisliked": "Non me gustou",
     "constructUseHrdDesc": "Escoitado",
-    "timesHeard": "{count, plural, =1{Escoitado unha vez} other{Escoitado {count} veces}}"
+    "timesHeard": "{count, plural, =1{Escoitado unha vez} other{Escoitado {count} veces}}",
+    "allSettings": "Todos os axustes"
 }

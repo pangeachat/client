@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-25 13:19:15.679066",
+    "@@last_modified": "2026-08-25 15:25:46.040504",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Waan jeclaystay",
     "rateActivityDisliked": "Ma jeclaysan",
     "constructUseHrdDesc": "La maqlay",
-    "timesHeard": "{count, plural, =1{Hal mar la maqlay} other{{count} jeer la maqlay}}"
+    "timesHeard": "{count, plural, =1{Hal mar la maqlay} other{{count} jeer la maqlay}}",
+    "allSettings": "Dhammaan goobaha"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-25 13:19:08.981645",
+    "@@last_modified": "2026-08-25 15:25:43.065664",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Te renmen li",
     "rateActivityDisliked": "Pa t renmen li",
     "constructUseHrdDesc": "Tande",
-    "timesHeard": "{count, plural, =1{Tande yon fwa} other{Tande {count} fwa}}"
+    "timesHeard": "{count, plural, =1{Tande yon fwa} other{Tande {count} fwa}}",
+    "allSettings": "Tout paramèt"
 }

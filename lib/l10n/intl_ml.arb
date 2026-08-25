@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-25 13:19:12.231667",
+    "@@last_modified": "2026-08-25 15:25:44.513038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "ഇഷ്ടപ്പെട്ടു",
     "rateActivityDisliked": "ഇഷ്ടപ്പെട്ടില്ല",
     "constructUseHrdDesc": "കേട്ടു",
-    "timesHeard": "{count, plural, =1{ഒരു തവണ കേട്ടു} other{{count} തവണ കേട്ടു}}"
+    "timesHeard": "{count, plural, =1{ഒരു തവണ കേട്ടു} other{{count} തവണ കേട്ടു}}",
+    "allSettings": "എല്ലാ ക്രമീകരണങ്ങളും"
 }

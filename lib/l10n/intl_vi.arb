@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 13:19:17.533102",
+    "@@last_modified": "2026-08-25 15:25:46.940164",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7053,5 +7053,6 @@
     "rateActivityLiked": "Đã thích",
     "rateActivityDisliked": "Không thích",
     "constructUseHrdDesc": "Đã nghe",
-    "timesHeard": "{count, plural, =1{Đã nghe một lần} other{Đã nghe {count} lần}}"
+    "timesHeard": "{count, plural, =1{Đã nghe một lần} other{Đã nghe {count} lần}}",
+    "allSettings": "Tất cả cài đặt"
 }

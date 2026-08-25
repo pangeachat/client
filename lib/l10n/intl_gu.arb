@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-25 13:19:08.064412",
+    "@@last_modified": "2026-08-25 15:25:42.900679",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "ગમ્યું",
     "rateActivityDisliked": "ન ગમ્યું",
     "constructUseHrdDesc": "સાંભળ્યું",
-    "timesHeard": "{count, plural, =1{એકવાર સાંભળ્યું} other{{count} વાર સાંભળ્યું}}"
+    "timesHeard": "{count, plural, =1{એકવાર સાંભળ્યું} other{{count} વાર સાંભળ્યું}}",
+    "allSettings": "બધી સેટિંગ્સ"
 }

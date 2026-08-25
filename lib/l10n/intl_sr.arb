@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 13:19:17.036507",
+    "@@last_modified": "2026-08-25 15:25:46.073793",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10710,5 +10710,6 @@
     "rateActivityLiked": "Svidelo mi se",
     "rateActivityDisliked": "Nije mi se svidelo",
     "constructUseHrdDesc": "Čuo/čula",
-    "timesHeard": "{count, plural, =1{Čuo jednom} other{Čuo {count} puta}}"
+    "timesHeard": "{count, plural, =1{Čuo jednom} other{Čuo {count} puta}}",
+    "allSettings": "Sva podešavanja"
 }

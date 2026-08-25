@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-25 13:19:17.952015",
+    "@@last_modified": "2026-08-25 15:25:47.346840",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Ngiyithandile",
     "rateActivityDisliked": "Angiyithandanga",
     "constructUseHrdDesc": "Kuzwakale",
-    "timesHeard": "{count, plural, =1{Izwiwe kanye} other{Izwiwe izikhathi eziyi-{count}}}"
+    "timesHeard": "{count, plural, =1{Izwiwe kanye} other{Izwiwe izikhathi eziyi-{count}}}",
+    "allSettings": "Zonke izilungiselelo"
 }

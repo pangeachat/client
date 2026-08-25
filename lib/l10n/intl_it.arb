@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 13:19:09.806249",
+    "@@last_modified": "2026-08-25 15:25:43.717354",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9834,5 +9834,6 @@
     "rateActivityLiked": "Mi è piaciuto",
     "rateActivityDisliked": "Non mi è piaciuto",
     "constructUseHrdDesc": "Sentito",
-    "timesHeard": "{count, plural, =1{Ascoltato una volta} other{Ascoltato {count} volte}}"
+    "timesHeard": "{count, plural, =1{Ascoltato una volta} other{Ascoltato {count} volte}}",
+    "allSettings": "Tutte le impostazioni"
 }

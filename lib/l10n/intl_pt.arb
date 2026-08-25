@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 13:19:14.356959",
+    "@@last_modified": "2026-08-25 15:25:45.816741",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10705,5 +10705,6 @@
     "rateActivityLiked": "Gostei",
     "rateActivityDisliked": "Não gostei",
     "constructUseHrdDesc": "Ouviu",
-    "timesHeard": "{count, plural, =1{Ouvido uma vez} other{Ouvido {count} vezes}}"
+    "timesHeard": "{count, plural, =1{Ouvido uma vez} other{Ouvido {count} vezes}}",
+    "allSettings": "Todas as configurações"
 }

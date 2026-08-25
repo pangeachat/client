@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-25 13:19:09.121356",
+    "@@last_modified": "2026-08-25 15:25:43.098717",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9864,5 +9864,6 @@
     "rateActivityLiked": "Tetszett",
     "rateActivityDisliked": "Nem tetszett",
     "constructUseHrdDesc": "Hallotta",
-    "timesHeard": "{count, plural, =1{Hallva egyszer} other{Hallva {count} alkalommal}}"
+    "timesHeard": "{count, plural, =1{Hallva egyszer} other{Hallva {count} alkalommal}}",
+    "allSettings": "Összes beállítás"
 }

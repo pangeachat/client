@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-25 13:19:17.214636",
+    "@@last_modified": "2026-08-25 15:25:46.812094",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "پسند آیا",
     "rateActivityDisliked": "پسند نہیں آیا",
     "constructUseHrdDesc": "سنا",
-    "timesHeard": "{count, plural, =1{ایک بار سنا} other{{count} بار سنا}}"
+    "timesHeard": "{count, plural, =1{ایک بار سنا} other{{count} بار سنا}}",
+    "allSettings": "تمام ترتیبات"
 }

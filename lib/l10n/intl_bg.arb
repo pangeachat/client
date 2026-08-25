@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-25 13:19:04.868760",
+    "@@last_modified": "2026-08-25 15:25:41.384636",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Хареса ми",
     "rateActivityDisliked": "Не ми хареса",
     "constructUseHrdDesc": "Чуто",
-    "timesHeard": "{count, plural, =1{Чуто веднъж} other{Чуто {count} пъти}}"
+    "timesHeard": "{count, plural, =1{Чуто веднъж} other{Чуто {count} пъти}}",
+    "allSettings": "Всички настройки"
 }

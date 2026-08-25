@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-25 13:19:08.186612",
+    "@@last_modified": "2026-08-25 15:25:42.987979",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Na so",
     "rateActivityDisliked": "Ban so ba",
     "constructUseHrdDesc": "Ji",
-    "timesHeard": "{count, plural, =1{An ji sau ɗaya} other{An ji sau {count}}}"
+    "timesHeard": "{count, plural, =1{An ji sau ɗaya} other{An ji sau {count}}}",
+    "allSettings": "Duk saituna"
 }
