@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
@@ -127,6 +129,72 @@ void main() {
       await r.finish(duration: kDur, video: false, callKey: '\$anchor');
 
       expect(published, hasLength(1));
+    });
+
+    test('publishes even when the card could not be written', () async {
+      // The transcript needs only the anchor. Coupling it to the card's event
+      // id meant a failed write cost the words as well, though nothing about
+      // publishing depends on the card existing.
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withPublisher: true,
+        writeError: StateError('the server said no'),
+      );
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+      expect(published, hasLength(1));
+      expect(recorded, isEmpty, reason: 'nothing to credit against');
+    });
+
+    test('publishes on a later finish that finally has the anchor', () async {
+      // The ordinary lifecycle can credit first and learn the call key second.
+      // Behind the _credited guard the transcript was then never published at
+      // all -- the credit was right and the words were silently lost.
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withPublisher: true,
+      );
+      await r.finish(duration: kDur, video: false);
+      expect(published, isEmpty, reason: 'no anchor yet');
+
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+      expect(published, hasLength(1));
+    });
+
+    test('an abandoned drain is reported, not smoothed over', () async {
+      // drainComplete exists to stop a half claiming to be everything somebody
+      // said. Hard-coding it true passed every other test here, because none of
+      // them could reach a drain that gave up.
+      final sink = CallTranscriptSink(
+        userL1: 'en',
+        userL2: 'es',
+        settleWithin: Duration.zero,
+        transcribe: (_) => Completer<SpeechToTextResponseModel>().future,
+      );
+      unawaited(sink.deliver(chunk(0)));
+      // The capture service closes the sink before the record finishes, so the
+      // record reads a settled answer rather than the optimistic default. The
+      // order matters and this mirrors it.
+      expect(await sink.close(), isFalse);
+
+      final r = record(sink, withPublisher: true);
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+      expect(published.single.drained, isFalse);
+    });
+
+    test('hands over the accounting the reader depends on', () async {
+      // Asserting only "the publisher was called" would not notice these being
+      // swapped, dropped, or hard-coded -- and they are what a reader uses to
+      // decide whether a half is complete.
+      final sink = await sinkWith(() => spokenWord('hola'), chunks: 3);
+      final r = record(sink, withPublisher: true);
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+      expect(published.single.captured, 3);
+      expect(published.single.transcribed, 3);
+      expect(published.single.drained, isTrue);
+      expect(published.single.segments, greaterThan(0));
     });
 
     test('publishes nothing without an anchor', () async {

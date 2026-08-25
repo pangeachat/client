@@ -222,6 +222,17 @@ class CallRecord {
     String? callerId,
     String? callKey,
   }) async {
+    // Ahead of every guard below, because none of them are about the
+    // transcript. Publishing lives outside the credit's control flow entirely:
+    // it needs only the anchor, and it is a separate promise to the learner.
+    //
+    // Both couplings were real. Inside _finish it sat after the card's event id
+    // was resolved, so a card that failed to write ALSO cost the transcript --
+    // though publishing never needed the card. And behind the _credited check
+    // it was unreachable whenever an earlier finish had credited without a
+    // call key, which is exactly the sequence the ordinary lifecycle produces.
+    await _publishTranscript(callKey);
+
     if (_credited) return;
     // Concurrent callers join the in-flight attempt rather than being dropped.
     // Dropping one made a failed write unretryable in practice: the two callers
@@ -298,14 +309,6 @@ class CallRecord {
       return;
     }
 
-    // Published before the analytics credit and guarded separately, because the
-    // two fail independently. Crediting is once-only and must never be retried
-    // after a partial success; publishing is idempotent through its transaction
-    // id and can safely be attempted again. Letting a transcript failure escape
-    // here would drag the credit into a retry it cannot survive, so it is caught
-    // and the words are simply not published this time.
-    await _publishTranscript(callKey);
-
     if (!answered) {
       // Nothing was said to anyone. The call is in the timeline so it is not
       // lost, but there is no conversation to credit.
@@ -375,6 +378,9 @@ class CallRecord {
         segments: transcripts.segments,
         chunksCaptured: transcripts.chunksCaptured,
         chunksTranscribed: transcripts.chunksTranscribed,
+        // Meaningful only once the sink has closed, which the capture service
+        // does before this runs. Read earlier it would be the optimistic
+        // default and a half could claim a completeness nothing had checked.
         drainComplete: transcripts.drainComplete,
         langCode: transcripts.langCode,
       );

@@ -56,6 +56,7 @@ class CallTranscriptSink implements CallAudioSink {
     required this.transcribe,
     required this.userL1,
     required this.userL2,
+    this.settleWithin = defaultSettleWithin,
   });
 
   /// What was said, in the order it was said, skipping chunks that produced
@@ -178,7 +179,13 @@ class CallTranscriptSink implements CallAudioSink {
   ///
   /// They carry their own limits, so this only exists so that a stuck one cannot
   /// hold the end of a call open for ever.
-  static const _settleWithin = Duration(seconds: 60);
+  ///
+  /// Injectable because the abandoned-drain path is what `drainComplete`
+  /// exists to report, and at sixty seconds no test could reach it -- so the
+  /// field guarding against a half falsely claiming completeness was itself
+  /// uncovered.
+  final Duration settleWithin;
+  static const defaultSettleWithin = Duration(seconds: 60);
 
   @override
   Future<bool> close() async {
@@ -196,7 +203,7 @@ class CallTranscriptSink implements CallAudioSink {
     // chunk that keeps failing and keeps being retried would otherwise hold
     // the end of a call open a minute at a time, for as long as it kept
     // failing.
-    final deadline = DateTime.now().add(_settleWithin);
+    final deadline = DateTime.now().add(settleWithin);
     while (_running.isNotEmpty) {
       final left = deadline.difference(DateTime.now());
       if (left <= Duration.zero) {
