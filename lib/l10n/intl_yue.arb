@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-25 11:37:45.191014",
+    "@@last_modified": "2026-08-25 13:19:17.545264",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10716,5 +10716,7 @@
     "languageSwitcherBaseLanguageLabel": "你的基礎語言",
     "listenModeDescription": "點擊一個選項來聽。沒有選擇任何內容。",
     "rateActivityLiked": "鍾意",
-    "rateActivityDisliked": "唔鍾意"
+    "rateActivityDisliked": "唔鍾意",
+    "constructUseHrdDesc": "聽過",
+    "timesHeard": "{count, plural, =1{聽過一次} other{聽過 {count} 次}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-25 11:37:43.967393",
+    "@@last_modified": "2026-08-25 13:19:15.988762",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Lugha yako ya msingi",
     "listenModeDescription": "Gonga chaguo ili kulisikia. Hakuna kilichochaguliwa.",
     "rateActivityLiked": "Nimeipenda",
-    "rateActivityDisliked": "Sikuipenda"
+    "rateActivityDisliked": "Sikuipenda",
+    "constructUseHrdDesc": "Nimesikia",
+    "timesHeard": "{count, plural, =1{Umesikika mara moja} other{Umesikika mara {count}}}"
 }

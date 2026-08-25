@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-25 11:37:40.896136",
+    "@@last_modified": "2026-08-25 13:19:14.363965",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Nanggi base language",
     "listenModeDescription": "খংনবা অমা তা-ও। করিগুম্বা অমা খলদে।",
     "rateActivityLiked": "পাম্বা",
-    "rateActivityDisliked": "পাম্বদে"
+    "rateActivityDisliked": "পাম্বদে",
+    "constructUseHrdDesc": "তাঞ্জা",
+    "timesHeard": "{count, plural, =1{ꯑꯣꯟ ꯑꯃꯥ ꯇꯥꯈ꯭ꯔꯦ} other{{count} ꯑꯣꯟ ꯇꯥꯈ꯭ꯔꯦ}}"
 }

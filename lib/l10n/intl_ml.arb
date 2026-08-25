@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-25 11:37:42.106325",
+    "@@last_modified": "2026-08-25 13:19:12.231667",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "നിങ്ങളുടെ അടിസ്ഥാന ഭാഷ",
     "listenModeDescription": "കേൾക്കാൻ ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക. ഒന്നും തിരഞ്ഞെടുത്തിട്ടില്ല.",
     "rateActivityLiked": "ഇഷ്ടപ്പെട്ടു",
-    "rateActivityDisliked": "ഇഷ്ടപ്പെട്ടില്ല"
+    "rateActivityDisliked": "ഇഷ്ടപ്പെട്ടില്ല",
+    "constructUseHrdDesc": "കേട്ടു",
+    "timesHeard": "{count, plural, =1{ഒരു തവണ കേട്ടു} other{{count} തവണ കേട്ടു}}"
 }

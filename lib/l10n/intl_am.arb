@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-25 11:37:36.114267",
+    "@@last_modified": "2026-08-25 13:19:04.781092",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "የእርስዎ መሰረታዊ ቋንቋ",
     "listenModeDescription": "ለመስማት ምርጫ ይንኩ። ምንም አልተመረጠም።",
     "rateActivityLiked": "ወደድኩት",
-    "rateActivityDisliked": "አልወደድኩትም"
+    "rateActivityDisliked": "አልወደድኩትም",
+    "constructUseHrdDesc": "ሰምቷል",
+    "timesHeard": "{count, plural, =1{አንድ ጊዜ ተሰምቷል} other{{count} ጊዜ ተሰምቷል}}"
 }

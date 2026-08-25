@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-25 11:37:41.532949",
+    "@@last_modified": "2026-08-25 13:19:13.430546",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Bahasa asas anda",
     "listenModeDescription": "Ketik pilihan untuk mendengarnya. Tiada yang dipilih.",
     "rateActivityLiked": "Suka",
-    "rateActivityDisliked": "Tidak suka"
+    "rateActivityDisliked": "Tidak suka",
+    "constructUseHrdDesc": "Dengar",
+    "timesHeard": "{count, plural, =1{Didengar sekali} other{Didengar {count} kali}}"
 }

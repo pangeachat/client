@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-25 11:37:37.708726",
+    "@@last_modified": "2026-08-25 13:19:09.119631",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Dyn basistaal",
     "listenModeDescription": "Tik op in kar om it te hearren. Neat is selektearre.",
     "rateActivityLiked": "Fûn it moai",
-    "rateActivityDisliked": "Fûn it net moai"
+    "rateActivityDisliked": "Fûn it net moai",
+    "constructUseHrdDesc": "Heard",
+    "timesHeard": "{count, plural, =1{Ien kear heard} other{{count} kear heard}}"
 }

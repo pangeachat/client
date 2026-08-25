@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 11:37:41.534018",
+    "@@last_modified": "2026-08-25 13:19:13.789996",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9759,5 +9759,7 @@
     "languageSwitcherBaseLanguageLabel": "Je basistaal",
     "listenModeDescription": "Tik op een keuze om deze te horen. Er is niets geselecteerd.",
     "rateActivityLiked": "Vond het leuk",
-    "rateActivityDisliked": "Vond het niet leuk"
+    "rateActivityDisliked": "Vond het niet leuk",
+    "constructUseHrdDesc": "Gehoord",
+    "timesHeard": "{count, plural, =1{Eén keer gehoord} other{{count} keer gehoord}}"
 }

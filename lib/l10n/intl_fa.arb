@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 11:37:37.278369",
+    "@@last_modified": "2026-08-25 13:19:06.846767",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9847,5 +9847,7 @@
     "languageSwitcherBaseLanguageLabel": "زبان پایه شما",
     "listenModeDescription": "برای شنیدن یک گزینه روی آن ضربه بزنید. چیزی انتخاب نشده است.",
     "rateActivityLiked": "پسندیدم",
-    "rateActivityDisliked": "نپسندیدم"
+    "rateActivityDisliked": "نپسندیدم",
+    "constructUseHrdDesc": "شنیده شد",
+    "timesHeard": "{count, plural, =1{یک بار شنیده شد} other{{count} بار شنیده شد}}"
 }

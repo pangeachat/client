@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-25 11:37:38.331402",
+    "@@last_modified": "2026-08-25 13:19:07.352793",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7978,5 +7978,7 @@
     "languageSwitcherBaseLanguageLabel": "Tu idioma base",
     "listenModeDescription": "Toca una opción para escucharla. No hay nada seleccionado.",
     "rateActivityLiked": "Me gustó",
-    "rateActivityDisliked": "No me gustó"
+    "rateActivityDisliked": "No me gustó",
+    "constructUseHrdDesc": "Escuchado",
+    "timesHeard": "{count, plural, =1{Escuchado una vez} other{Escuchado {count} veces}}"
 }

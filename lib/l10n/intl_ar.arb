@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-25 11:37:36.131372",
+    "@@last_modified": "2026-08-25 13:19:04.693108",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10065,5 +10065,7 @@
     "languageSwitcherBaseLanguageLabel": "لغتك الأساسية",
     "listenModeDescription": "اضغط على خيار لسماعه. لم يتم تحديد أي شيء.",
     "rateActivityLiked": "أعجبني",
-    "rateActivityDisliked": "لم يعجبني"
+    "rateActivityDisliked": "لم يعجبني",
+    "constructUseHrdDesc": "سمعت",
+    "timesHeard": "{count, plural, =1{سمعت مرة واحدة} other{سمعت {count} مرات}}"
 }

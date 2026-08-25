@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-25 11:37:44.926830",
+    "@@last_modified": "2026-08-25 13:19:17.347849",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "דיין באַזע שפּראַך",
     "listenModeDescription": "טאַפּ אַ ברירה צו הערן עס. גאָרנישט איז אויסגעקליבן.",
     "rateActivityLiked": "געפֿעלן",
-    "rateActivityDisliked": "נישט געפֿעלן"
+    "rateActivityDisliked": "נישט געפֿעלן",
+    "constructUseHrdDesc": "געהערט",
+    "timesHeard": "{count, plural, =1{געהערט איין מאָל} other{געהערט {count} מאָל}}"
 }

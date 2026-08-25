@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-25 11:37:40.850125",
+    "@@last_modified": "2026-08-25 13:19:14.143368",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Твојот основен јазик",
     "listenModeDescription": "Допрете избор за да го слушнете. Ништо не е избрано.",
     "rateActivityLiked": "Ми се допадна",
-    "rateActivityDisliked": "Не ми се допадна"
+    "rateActivityDisliked": "Не ми се допадна",
+    "constructUseHrdDesc": "Слушнато",
+    "timesHeard": "{count, plural, =1{Слушнато еднаш} other{Слушнато {count} пати}}"
 }

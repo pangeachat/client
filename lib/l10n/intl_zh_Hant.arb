@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 11:37:44.937222",
+    "@@last_modified": "2026-08-25 13:19:20.062663",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9865,5 +9865,7 @@
     "languageSwitcherBaseLanguageLabel": "您的基礎語言",
     "listenModeDescription": "點擊一個選項來聽。沒有選取任何項目。",
     "rateActivityLiked": "喜歡",
-    "rateActivityDisliked": "不喜歡"
+    "rateActivityDisliked": "不喜歡",
+    "constructUseHrdDesc": "聽過",
+    "timesHeard": "{count, plural, =1{已聽過一次} other{已聽過 {count} 次}}"
 }

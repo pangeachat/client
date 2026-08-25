@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-25 11:37:42.081639",
+    "@@last_modified": "2026-08-25 13:19:14.447207",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "ଆପଣଙ୍କ ମୂଳ ଭାଷା",
     "listenModeDescription": "ଶୁଣିବା ପାଇଁ ଏକ ବିକଳ୍ପ ବାଛନ୍ତୁ। କିଛି ବଛାଯାଇନାହିଁ।",
     "rateActivityLiked": "ପସନ୍ଦ କଲି",
-    "rateActivityDisliked": "ପସନ୍ଦ କଲି ନାହିଁ"
+    "rateActivityDisliked": "ପସନ୍ଦ କଲି ନାହିଁ",
+    "constructUseHrdDesc": "ଶୁଣାଗଲା",
+    "timesHeard": "{count, plural, =1{ଥରେ ଶୁଣାଗଲା} other{{count} ଥର ଶୁଣାଗଲା}}"
 }

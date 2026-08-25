@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-25 11:37:40.721617",
+    "@@last_modified": "2026-08-25 13:19:13.840292",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Ny fiteninao fototra",
     "listenModeDescription": "Tsindrio ny safidy iray hihainoana azy. Tsy misy voafidy.",
     "rateActivityLiked": "Tia an'io",
-    "rateActivityDisliked": "Tsy tiana"
+    "rateActivityDisliked": "Tsy tiana",
+    "constructUseHrdDesc": "Reny",
+    "timesHeard": "{count, plural, =1{Reny indray mandeha} other{Reny in-{count} indray mandeha}}"
 }

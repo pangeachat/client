@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 11:37:43.399488",
+    "@@last_modified": "2026-08-25 13:19:14.356959",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10703,5 +10703,7 @@
     "languageSwitcherBaseLanguageLabel": "Seu idioma base",
     "listenModeDescription": "Toque em uma opção para ouvi-la. Nada selecionado.",
     "rateActivityLiked": "Gostei",
-    "rateActivityDisliked": "Não gostei"
+    "rateActivityDisliked": "Não gostei",
+    "constructUseHrdDesc": "Ouviu",
+    "timesHeard": "{count, plural, =1{Ouvido uma vez} other{Ouvido {count} vezes}}"
 }

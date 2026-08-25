@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-25 11:37:40.187105",
+    "@@last_modified": "2026-08-25 13:19:13.315893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Lingua tua fundamentalis",
     "listenModeDescription": "Tange optionem ut audias. Nihil eligitur.",
     "rateActivityLiked": "Placuit",
-    "rateActivityDisliked": "Non placuit"
+    "rateActivityDisliked": "Non placuit",
+    "constructUseHrdDesc": "Audivit",
+    "timesHeard": "{count, plural, =1{Semel auditum} other{Auditum {count} vicibus}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-25 11:37:37.896996",
+    "@@last_modified": "2026-08-25 13:19:07.315997",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9756,5 +9756,7 @@
     "languageSwitcherBaseLanguageLabel": "Sinu baaskeelt",
     "listenModeDescription": "Puuduta valikut, et seda kuulda. Midagi pole valitud.",
     "rateActivityLiked": "Meeldis",
-    "rateActivityDisliked": "Ei meeldinud"
+    "rateActivityDisliked": "Ei meeldinud",
+    "constructUseHrdDesc": "Kuuldud",
+    "timesHeard": "{count, plural, =1{Kuuldud üks kord} other{Kuuldud {count} korda}}"
 }

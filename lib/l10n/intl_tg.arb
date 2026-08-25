@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-25 11:37:44.247731",
+    "@@last_modified": "2026-08-25 13:19:16.265545",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Забони асосии шумо",
     "listenModeDescription": "Барои шунидан интихобро пахш кунед. Ҳеҷ чиз интихоб нашудааст.",
     "rateActivityLiked": "Мақбул донистам",
-    "rateActivityDisliked": "Мақбул надонистам"
+    "rateActivityDisliked": "Мақбул надонистам",
+    "constructUseHrdDesc": "Шунидам",
+    "timesHeard": "{count, plural, =1{Як бор шунида шуд} other{{count} бор шунида шуд}}"
 }

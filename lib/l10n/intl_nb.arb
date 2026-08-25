@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 11:37:41.490878",
+    "@@last_modified": "2026-08-25 13:19:13.465173",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9816,5 +9816,7 @@
     "languageSwitcherBaseLanguageLabel": "Ditt morsmål",
     "listenModeDescription": "Trykk på et valg for å høre det. Ingenting er valgt.",
     "rateActivityLiked": "Likte den",
-    "rateActivityDisliked": "Likte den ikke"
+    "rateActivityDisliked": "Likte den ikke",
+    "constructUseHrdDesc": "Hørt",
+    "timesHeard": "{count, plural, =1{Hørt én gang} other{Hørt {count} ganger}}"
 }

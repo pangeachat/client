@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-25 11:37:38.994060",
+    "@@last_modified": "2026-08-25 13:19:08.805312",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Koj hom lus pib",
     "listenModeDescription": "Coj ib qho kev xaiv los mloog. Tsis muaj dab tsi raug xaiv.",
     "rateActivityLiked": "Nyiam",
-    "rateActivityDisliked": "Tsis nyiam"
+    "rateActivityDisliked": "Tsis nyiam",
+    "constructUseHrdDesc": "Hnov",
+    "timesHeard": "{count, plural, =1{Hnov ib zaug} other{Hnov {count} zaug}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-25 11:37:46.261731",
+    "@@last_modified": "2026-08-25 13:19:17.952015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Ulimi lwakho oluyisisekelo",
     "listenModeDescription": "Thepha okukhethile ukuze ukuzwe. Akukho okukhethiwe.",
     "rateActivityLiked": "Ngiyithandile",
-    "rateActivityDisliked": "Angiyithandanga"
+    "rateActivityDisliked": "Angiyithandanga",
+    "constructUseHrdDesc": "Kuzwakale",
+    "timesHeard": "{count, plural, =1{Izwiwe kanye} other{Izwiwe izikhathi eziyi-{count}}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-25 11:37:38.976397",
+    "@@last_modified": "2026-08-25 13:19:09.597565",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Ձեր հիմնական լեզուն",
     "listenModeDescription": "Ընտրեք տարբերակը՝ այն լսելու համար։ Ոչինչ ընտրված չէ։",
     "rateActivityLiked": "Հավանել եմ",
-    "rateActivityDisliked": "Չեմ հավանել"
+    "rateActivityDisliked": "Չեմ հավանել",
+    "constructUseHrdDesc": "Լսել եմ",
+    "timesHeard": "{count, plural, =1{Մեկ անգամ լսված է} other{{count} անգամ լսված է}}"
 }

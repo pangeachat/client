@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-25 11:37:44.998585",
+    "@@last_modified": "2026-08-25 13:19:18.050037",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9759,5 +9759,7 @@
     "languageSwitcherBaseLanguageLabel": "您的母语",
     "listenModeDescription": "点击一个选项来听。未选择任何内容。",
     "rateActivityLiked": "喜欢",
-    "rateActivityDisliked": "不喜欢"
+    "rateActivityDisliked": "不喜欢",
+    "constructUseHrdDesc": "听过",
+    "timesHeard": "{count, plural, =1{听到一次} other{听到{count}次}}"
 }

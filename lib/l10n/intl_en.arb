@@ -3592,6 +3592,15 @@
     "formSectionHeader": "Forms used in chats:",
     "writingExercisesTooltip": "Writing",
     "listeningExercisesTooltip": "Listening",
+    "timesHeard": "{count, plural, =1{Heard once} other{Heard {count} times}}",
+    "@timesHeard": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "readingExercisesTooltip": "Reading",
     "meaningNotFound": "Meaning could not be found.",
     "notTheCodeError": "Sorry, that's not the code!",
@@ -4850,6 +4859,7 @@
     },
     "closeAddCoursePage": "Close add course page",
     "constructUseSugDesc": "Accepted suggestions",
+    "constructUseHrdDesc": "Heard",
     "mostPopular": "Most popular",
     "mostSavings": "Most savings",
     "enterDiscountCode": "Enter discount code",

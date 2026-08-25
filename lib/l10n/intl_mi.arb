@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-25 11:37:40.584038",
+    "@@last_modified": "2026-08-25 13:19:12.957017",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Tō reo matua",
     "listenModeDescription": "Pāwhiritia tētahi kōwhiringa kia rangona. Kāore he mea i tohua.",
     "rateActivityLiked": "I pai",
-    "rateActivityDisliked": "Kāore i pai"
+    "rateActivityDisliked": "Kāore i pai",
+    "constructUseHrdDesc": "Kua rangona",
+    "timesHeard": "{count, plural, =1{Kua rangona kotahi} other{Kua rangona {count} wā}}"
 }

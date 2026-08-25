@@ -75,6 +75,18 @@ class OneConstructUse {
 
   int xp;
 
+  /// How many occurrences this row stands for.
+  ///
+  /// One for every use type except [ConstructUseTypeEnum.hrd], which is
+  /// bucketed: exposure fires far more often than anything else on this list
+  /// and nothing prunes the store, so a window's worth of hearings is written
+  /// as ONE row carrying its count. Read the count; never infer it from the
+  /// number of rows.
+  ///
+  /// Defaults to 1 rather than being required, so the ~40 existing call sites
+  /// that mint one use per event keep meaning exactly what they meant.
+  final int count;
+
   OneConstructUse({
     required this.useType,
     required this.lemma,
@@ -84,6 +96,7 @@ class OneConstructUse {
     required this.form,
     required this.xp,
     this.id,
+    this.count = 1,
   }) {
     if (category is MorphFeaturesEnum) {
       _category = category.name;
@@ -118,6 +131,9 @@ class OneConstructUse {
         timeStamp: DateTime.parse(json['timeStamp']),
       ),
       xp: json['xp'] ?? useType.pointValue,
+      // Absent on every row written before bucketing existed, and on every row
+      // an older client wrote, so a missing count is one occurrence.
+      count: json['count'] as int? ?? 1,
     );
   }
 
@@ -136,6 +152,11 @@ class OneConstructUse {
     'categories': category,
     'id': id,
     'xp': xp,
+    // Omitted when it is 1, which is every use except a bucketed one. This key
+    // would otherwise be dead weight on every row the app has ever written,
+    // and these events are chunked against a hard Matrix size limit. Absent
+    // reads back as 1.
+    if (count != 1) 'count': count,
   };
 
   OneConstructUse copyWith({
@@ -147,6 +168,7 @@ class OneConstructUse {
     String? id,
     ConstructUseMetaData? metadata,
     int? xp,
+    int? count,
   }) {
     return OneConstructUse(
       lemma: lemma ?? this.lemma,
@@ -157,6 +179,7 @@ class OneConstructUse {
       id: id ?? this.id,
       metadata: metadata ?? this.metadata,
       xp: xp ?? this.xp,
+      count: count ?? this.count,
     );
   }
 

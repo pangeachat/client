@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-25 11:37:42.016461",
+    "@@last_modified": "2026-08-25 13:19:12.914848",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Deng Basissprooch",
     "listenModeDescription": "Tipp op eng Wiel fir se ze héieren. Näischt ass ausgewielt.",
     "rateActivityLiked": "Mir huet et gefall",
-    "rateActivityDisliked": "Mir huet et net gefall"
+    "rateActivityDisliked": "Mir huet et net gefall",
+    "constructUseHrdDesc": "Héieren",
+    "timesHeard": "{count, plural, =1{Eemol héieren} other{{count} Mol héieren}}"
 }

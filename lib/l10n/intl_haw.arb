@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-25 11:37:38.341229",
+    "@@last_modified": "2026-08-25 13:19:08.362360",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Kou ʻōlelo kumu",
     "listenModeDescription": "E kaomi i ke koho e hoʻolohe. ʻAʻohe mea i koho ʻia.",
     "rateActivityLiked": "Makemake au",
-    "rateActivityDisliked": "ʻAʻole au makemake"
+    "rateActivityDisliked": "ʻAʻole au makemake",
+    "constructUseHrdDesc": "Lohe ʻia",
+    "timesHeard": "{count, plural, =1{Lohe hoʻokahi} other{Lohe ʻia {count} manawa}}"
 }

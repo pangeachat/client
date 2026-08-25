@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-25 11:37:40.942463",
+    "@@last_modified": "2026-08-25 13:19:12.939051",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Таны үндсэн хэл",
     "listenModeDescription": "Сонсохын тулд сонголтыг товшино уу. Юу ч сонгогдоогүй байна.",
     "rateActivityLiked": "Таалагдсан",
-    "rateActivityDisliked": "Таалагдаагүй"
+    "rateActivityDisliked": "Таалагдаагүй",
+    "constructUseHrdDesc": "Сонссон",
+    "timesHeard": "{count, plural, =1{Нэг удаа сонссон} other{Сонссон удаа: {count}}}"
 }

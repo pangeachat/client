@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-25 11:37:36.764154",
+    "@@last_modified": "2026-08-25 13:19:05.643133",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "A vostra lingua di basa",
     "listenModeDescription": "Toccate una scelta per sentela. Nunda hè sceltu.",
     "rateActivityLiked": "Mi hè piaciutu",
-    "rateActivityDisliked": "Ùn m'hè micca piaciutu"
+    "rateActivityDisliked": "Ùn m'hè micca piaciutu",
+    "constructUseHrdDesc": "Sentitu",
+    "timesHeard": "{count, plural, =1{Ascultatu una volta} other{Ascultatu {count} volte}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-25 11:37:39.224252",
+    "@@last_modified": "2026-08-25 13:19:12.011573",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "Grunnmálið þitt",
     "listenModeDescription": "Pikkaðu á valmöguleika til að heyra hann. Ekkert er valið.",
     "rateActivityLiked": "Líkaði vel",
-    "rateActivityDisliked": "Líkaði ekki"
+    "rateActivityDisliked": "Líkaði ekki",
+    "constructUseHrdDesc": "Heyrði",
+    "timesHeard": "{count, plural, =1{Heyrt einu sinni} other{Heyrt {count} sinnum}}"
 }

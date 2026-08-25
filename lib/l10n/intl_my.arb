@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-25 11:37:42.620240",
+    "@@last_modified": "2026-08-25 13:19:15.564854",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2163,5 +2163,7 @@
     "languageSwitcherBaseLanguageLabel": "သင်၏ အခြေခံဘာသာစကား",
     "listenModeDescription": "ရွေးချယ်စရာကို နားထောင်ရန် နှိပ်ပါ။ မည်သည့်အရာကိုမျှ ရွေးချယ်ထားခြင်း မရှိပါ။",
     "rateActivityLiked": "ကြိုက်တယ်",
-    "rateActivityDisliked": "မကြိုက်ဘူး"
+    "rateActivityDisliked": "မကြိုက်ဘူး",
+    "constructUseHrdDesc": "ကြားဖူး",
+    "timesHeard": "{count, plural, =1{တစ်ကြိမ်ကြားဖူးသည်} other{{count} ကြိမ်ကြားဖူးသည်}}"
 }
