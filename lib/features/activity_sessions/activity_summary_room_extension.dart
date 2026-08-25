@@ -58,12 +58,28 @@ extension ActivitySummaryRoomExtension on Room {
     ActivitySummaryModel summary,
     String langCode,
   ) async {
-    await client.setRoomStateWithKey(
-      id,
-      PangeaEventTypes.activitySummary,
-      langCode,
-      summary.toJson(),
-    );
+    try {
+      await client.setRoomStateWithKey(
+        id,
+        PangeaEventTypes.activitySummary,
+        langCode,
+        summary.toJson(),
+      );
+    } catch (_) {
+      // The write needs the network — the very thing that just failed when
+      // this is the errorAt transition. This client initiated the request and
+      // already knows the outcome, so apply the state locally and announce it,
+      // or the spinner runs forever with no error and no retry (#8362). The
+      // next successful sync overwrites it with whatever the server holds.
+      final state = StrippedStateEvent(
+        type: PangeaEventTypes.activitySummary,
+        stateKey: langCode,
+        senderId: client.userID!,
+        content: summary.toJson(),
+      );
+      setState(state);
+      client.onRoomState.add((roomId: id, state: state));
+    }
   }
 
   ActivitySummaryRequestModel _constructSummaryRequest(
@@ -169,45 +185,54 @@ extension ActivitySummaryRoomExtension on Room {
     if (_activitySummary(langCode)?.summary != null && feedback == null) return;
     await _startRequestingActivitySummary(langCode);
 
-    final events = await getAllEvents();
-    final timeline = this.timeline ?? await getTimeline();
-    final messageEvents = getPangeaMessageEvents(
-      events,
-      timeline,
-      msgtypes: [MessageTypes.Text, MessageTypes.Audio],
-    );
-
-    // The plan body is canonical in CMS (reference-only room state); resolve it
-    // before building the request rather than assuming it is hydrated.
-    final activity =
-        activityPlan ??
-        await ActivityPlanRepo.instance.getPlan(activityId ?? '');
-    if (activity == null) {
-      await _stopRequestingActivitySummaryOnError(null, langCode);
-      return;
-    }
-    final req = _constructSummaryRequest(
-      messageEvents,
-      langCode,
-      activity: activity,
-      feedback: feedback,
-    );
-    final analytics = _constrctSummaryAnalyticsModel(messageEvents, langCode);
-
-    final result = await ActivitySummaryRepo.get(id, req);
-    if (result.isError) {
-      if (_activitySummary(langCode)?.summary == null) {
-        await _stopRequestingActivitySummaryOnError(analytics, langCode);
-      }
-    } else {
-      await _stopRequestActivitySummaryOnSuccess(
-        result.result!,
-        analytics,
-        langCode,
+    try {
+      final events = await getAllEvents();
+      final timeline = this.timeline ?? await getTimeline();
+      final messageEvents = getPangeaMessageEvents(
+        events,
+        timeline,
+        msgtypes: [MessageTypes.Text, MessageTypes.Audio],
       );
-    }
 
-    ActivitySummaryRepo.delete(id, req);
+      // The plan body is canonical in CMS (reference-only room state); resolve
+      // it before building the request rather than assuming it is hydrated.
+      final activity =
+          activityPlan ??
+          await ActivityPlanRepo.instance.getPlan(activityId ?? '');
+      if (activity == null) {
+        await _stopRequestingActivitySummaryOnError(null, langCode);
+        return;
+      }
+      final req = _constructSummaryRequest(
+        messageEvents,
+        langCode,
+        activity: activity,
+        feedback: feedback,
+      );
+      final analytics = _constrctSummaryAnalyticsModel(messageEvents, langCode);
+
+      final result = await ActivitySummaryRepo.get(id, req);
+      if (result.isError) {
+        if (_activitySummary(langCode)?.summary == null) {
+          await _stopRequestingActivitySummaryOnError(analytics, langCode);
+        }
+      } else {
+        await _stopRequestActivitySummaryOnSuccess(
+          result.result!,
+          analytics,
+          langCode,
+        );
+      }
+
+      ActivitySummaryRepo.delete(id, req);
+    } catch (e, s) {
+      // ActivitySummaryRepo.get returns a Result and never throws, so a throw
+      // here is the pre-request work (event/timeline fetch) dying — typically
+      // the network going down mid-flow. Record the error state or the
+      // requestedAt written above leaves the UI loading forever (#8362).
+      ErrorHandler.logError(e: e, s: s, data: {"roomID": id});
+      await _stopRequestingActivitySummaryOnError(null, langCode);
+    }
   }
 
   Future<void> fetchSummariesByL1({String? feedback}) async {
