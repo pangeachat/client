@@ -19,7 +19,28 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 bool callWasOutgoing(Event event) {
   final me = event.room.client.userID;
   final caller = event.content['caller'];
-  if (caller is String) return caller == me;
+
+  // Believed only when it names one of the two real sides of this call. It
+  // cannot be checked against the sender -- the card is written by the
+  // survivor as often as by the caller, which is the whole reason the field
+  // exists -- so it is checked against the only two people a 1:1 call can
+  // have. That rejects a stranger, and rejects a value that is not a user id
+  // at all.
+  //
+  // What it does NOT do, and cannot: stop the peer claiming that either of
+  // the two of us dialled. They are a real party to the call and they wrote
+  // the card, and there is no independent record of who pressed the button --
+  // if there were, this field would not be needed. So a modified peer client
+  // can still show the other person the wrong arrow for a call they were both
+  // on. That is the honest limit here: the label can be wrong between two
+  // people who were really talking, and no third party can be inserted.
+  if (caller is String &&
+      (caller == me || caller == event.room.directChatMatrixID)) {
+    return caller == me;
+  }
+
+  // Anything else, including a non-string: fall back to the writer, which is
+  // where this stood before the field existed.
   return event.senderId == me;
 }
 
@@ -232,14 +253,7 @@ class CallTimelineEvent extends StatelessWidget {
   void _openTranscript(BuildContext context) {
     final key = _callKey;
     if (key == null) return;
-    showCallTranscript(
-      context,
-      room: event.room,
-      callKey: key,
-      // From the card, so a caller who has since left the room is still named
-      // as a side of the call they placed.
-      callerId: event.content['caller'] as String?,
-    );
+    showCallTranscript(context, room: event.room, callKey: key);
   }
 
   IconData _icon(bool missed) {

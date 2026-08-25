@@ -16,6 +16,21 @@ import '../get_test_client.dart';
 /// the learner nothing while burying the last real message. Exactly one call
 /// event is worth a preview, and it is the card, which carries a plain body
 /// written for this.
+/// A real direct chat with `@a:server`.
+///
+/// The card's stated caller is believed only when it names one of the two real
+/// sides of the call, and the peer is read from m.direct -- so a room that is
+/// not a direct chat has no second side for the caller to be.
+Room _directChat(Client client) {
+  client.accountData['m.direct'] = BasicEvent(
+    type: 'm.direct',
+    content: {
+      '@a:server': ['!r:server'],
+    },
+  );
+  return Room(id: '!r:server', client: client);
+}
+
 void main() {
   late Client client;
 
@@ -29,7 +44,7 @@ void main() {
     senderId: '@a:server',
     eventId: '\$e',
     originServerTs: DateTime.now(),
-    room: Room(id: '!r:server', client: client),
+    room: _directChat(client),
   );
 
   test('the call plumbing never becomes a room preview', () {
@@ -72,7 +87,7 @@ void main() {
     senderId: sender,
     eventId: r'$card',
     originServerTs: DateTime.now(),
-    room: Room(id: '!r:server', client: client),
+    room: _directChat(client),
   );
 
   Future<String> preview(WidgetTester tester, Event event) async {

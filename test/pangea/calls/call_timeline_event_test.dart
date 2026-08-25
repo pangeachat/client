@@ -84,4 +84,93 @@ void main() {
     await pump(tester, card(status: EventStatus.sending));
     expect(find.text('Call declined'), findsOneWidget);
   });
+
+  group('the caller field, which is room content', () {
+    Event withCaller(Object? caller, {required String sender}) {
+      client.accountData['m.direct'] = BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@friend:server': ['!c:fakeServer.notExisting'],
+        },
+      );
+      final room = Room(id: '!c:fakeServer.notExisting', client: client);
+      return Event(
+        type: PangeaEventTypes.call,
+        content: {
+          'caller': caller,
+          'answered': true,
+          'declined': false,
+          'duration_ms': 1000,
+        },
+        senderId: sender,
+        eventId: r'$card',
+        originServerTs: DateTime.now(),
+        room: room,
+        status: EventStatus.synced,
+      );
+    }
+
+    test('a caller naming a stranger is ignored, and the writer stands in', () {
+      // The discriminating case: this card says WE wrote it, and names
+      // somebody who is not either of us. Believing the field there would let
+      // a crafted card decide the direction of a call between two other
+      // people; falling back to the writer is where this stood before the
+      // field existed.
+      expect(
+        callWasOutgoing(withCaller('@stranger:evil.example', sender: me)),
+        isTrue,
+        reason: 'we wrote it, so it was ours',
+      );
+      expect(
+        callWasOutgoing(
+          withCaller('@stranger:evil.example', sender: '@friend:server'),
+        ),
+        isFalse,
+        reason: 'they wrote it, so it was theirs',
+      );
+    });
+
+    test('a caller that is not a user id at all is ignored', () {
+      // Also the crash: this value used to be cast to String? unguarded on the
+      // path that opens the transcript.
+      expect(callWasOutgoing(withCaller(123, sender: me)), isTrue);
+      expect(callWasOutgoing(withCaller(null, sender: me)), isTrue);
+    });
+
+    test('a caller naming one of the two real sides is believed', () {
+      // The field has to keep working: the card is written by the survivor as
+      // often as by the caller, which is the whole reason it exists.
+      expect(
+        callWasOutgoing(withCaller(me, sender: '@friend:server')),
+        isTrue,
+        reason: 'they wrote it, but it says we called',
+      );
+      expect(
+        callWasOutgoing(withCaller('@friend:server', sender: me)),
+        isFalse,
+        reason: 'we wrote it, but it says they called',
+      );
+    });
+
+    test(
+      'the peer can still claim either of us dialled -- documented limit',
+      () {
+        // Not a fix, a boundary. Both of these are the peer writing the card and
+        // naming whichever of the two real parties it likes, and both are
+        // believed, because there is no independent record of who dialled. The
+        // cost is a wrong arrow between two people who were really talking. No
+        // third party can be inserted, which is the part that mattered.
+        expect(
+          callWasOutgoing(withCaller(me, sender: '@friend:server')),
+          isTrue,
+        );
+        expect(
+          callWasOutgoing(
+            withCaller('@friend:server', sender: '@friend:server'),
+          ),
+          isFalse,
+        );
+      },
+    );
+  });
 }

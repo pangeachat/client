@@ -31,6 +31,14 @@ void main() {
   /// `requestParticipants` answers from state instead of reaching for a
   /// homeserver this test does not have.
   Room room({List<String> members = const [_me, _peer]}) {
+    // A real direct chat: the peer is read from m.direct, which is where both
+    // sides of a 1:1 call now come from.
+    client.accountData['m.direct'] = BasicEvent(
+      type: 'm.direct',
+      content: {
+        _peer: ['!c:fakeServer.notExisting'],
+      },
+    );
     final r = Room(
       id: '!c:fakeServer.notExisting',
       client: client,
@@ -141,7 +149,6 @@ void main() {
         home: CallTranscriptView(
           room: room(),
           callKey: _callKey,
-          callerId: _peer,
           fetcher: fetcher,
         ),
       ),
@@ -178,7 +185,6 @@ void main() {
           home: CallTranscriptView(
             room: encryptedRoom(),
             callKey: _callKey,
-            callerId: _peer,
             fetcher: serving(const []),
           ),
         ),
@@ -322,87 +328,38 @@ void main() {
   });
 
   group('callParticipants', () {
-    test('a past room member who was not on the call gets no section', () {
-      // Room membership answers "who has ever been in this conversation".
-      // Using it here gave everyone who ever left a permanent "no transcript
-      // from them" section on every future call they were never part of.
-      final ids = callParticipants(
-        me: _me,
-        callerId: _peer,
-        peerId: _peer,
-        callerIsPlausible: (_) => true,
-      );
-
-      expect(ids, [_peer, _me]);
-      expect(ids, isNot(contains('@longgone:example.com')));
+    test('is derived locally and cannot be influenced by room content', () {
+      // Both sides of a 1:1 call are known without asking anyone: this account
+      // and the room's direct-chat peer. The call card's `caller` used to be
+      // consulted and is written by whoever wrote the card.
+      expect(callParticipants(me: _me, peerId: _peer), [_peer, _me]);
     });
 
-    test('a caller the room has never heard of is DROPPED', () {
-      // The card is room content and a modified client can put any string in
-      // it. Taken on trust it became a third section on a two-person call,
-      // permanently reading "no transcript from them" about somebody who was
-      // never there -- the screen asserting a participant into existence.
-      final ids = callParticipants(
-        me: _me,
-        callerId: '@invented:evil.example',
-        peerId: _peer,
-        callerIsPlausible: (_) => false,
-      );
-
-      expect(ids, [_peer, _me]);
-      expect(ids, isNot(contains('@invented:evil.example')));
-    });
-
-    test('the caller is named even if they have since LEFT the room', () {
-      // The case room membership was reached for in the first place. The card
-      // names the caller, so it survives them leaving.
+    test('a peer who has LEFT the room is still a side of the call', () {
+      // The case the card's caller was reached for. m.direct records who the
+      // conversation is with and does not change when they leave, so the peer
+      // survives without trusting anybody's word for it.
       expect(
-        callParticipants(
-          me: _me,
-          callerId: '@gone:example.com',
-          peerId: null,
-          callerIsPlausible: (_) => true,
-        ),
+        callParticipants(me: _me, peerId: '@gone:example.com'),
         contains('@gone:example.com'),
       );
     });
 
-    test('an old card with no caller still gets both sides', () {
-      // Cards predate the caller field. The room's direct-chat peer is the
-      // best available answer, and dropping to one side would report the
-      // other as not having been there.
-      expect(
-        callParticipants(
-          me: _me,
-          callerId: null,
-          peerId: _peer,
-          callerIsPlausible: (_) => true,
-        ),
-        [_peer, _me],
-      );
+    test('with no peer known, no claim is made about a second person', () {
+      // Honest degradation: showing only our own half says nothing false
+      // about anyone. Filling the gap from the card is what let a stranger in.
+      expect(callParticipants(me: _me, peerId: null), [_me]);
     });
 
-    test('this account is always one of the sides', () {
-      expect(
-        callParticipants(
-          me: _me,
-          callerId: null,
-          peerId: null,
-          callerIsPlausible: (_) => true,
-        ),
-        [_me],
-      );
+    test('this account is always a side', () {
+      expect(callParticipants(me: _me, peerId: _peer), contains(_me));
     });
 
     test('is stable across reads, so sections do not reorder', () {
-      List<String> read() => callParticipants(
-        me: _me,
-        callerId: _peer,
-        peerId: _peer,
-        callerIsPlausible: (_) => true,
+      expect(
+        callParticipants(me: _me, peerId: _peer),
+        callParticipants(me: _me, peerId: _peer),
       );
-
-      expect(read(), read());
     });
   });
 }

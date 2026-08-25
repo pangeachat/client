@@ -440,11 +440,18 @@ class CallRecord {
   /// versions of this one: a cast that throws while drawing the timeline takes
   /// down the whole row rather than one number in it.
   static Duration durationOf(Map<String, Object?> content) {
+    // Finite, not merely parseable. `num.tryParse` accepts "NaN" and
+    // "Infinity", and `.round()` on either throws -- so a card carrying one of
+    // those words took the whole row down rather than reading as a call of
+    // unknown length. Room content, so it is somebody else's word.
     final ms = content['duration_ms'];
-    if (ms is num) return Duration(milliseconds: ms.round());
-    if (ms is String) {
-      final parsed = num.tryParse(ms);
-      if (parsed != null) return Duration(milliseconds: parsed.round());
+    final parsed = ms is num
+        ? ms
+        : ms is String
+        ? num.tryParse(ms)
+        : null;
+    if (parsed != null && parsed.isFinite) {
+      return Duration(milliseconds: parsed.round());
     }
     return Duration.zero;
   }

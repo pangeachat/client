@@ -966,4 +966,30 @@ void main() {
       expect(written, hasLength(1), reason: 'the card was still written');
     });
   });
+
+  group('durationOf, reading somebody else\'s number', () {
+    test('a non-finite duration reads as unknown, not as a crash', () {
+      // num.tryParse accepts "NaN" and "Infinity", and .round() on either
+      // throws -- so a card carrying one of those words took the whole row
+      // down rather than reading as a call of unknown length.
+      for (final word in ['NaN', 'Infinity', '-Infinity']) {
+        expect(
+          CallRecord.durationOf({'duration_ms': word}),
+          Duration.zero,
+          reason: word,
+        );
+      }
+    });
+
+    test('an ordinary duration still reads', () {
+      expect(
+        CallRecord.durationOf({'duration_ms': 1500}),
+        const Duration(milliseconds: 1500),
+      );
+      expect(
+        CallRecord.durationOf({'duration_ms': '1500'}),
+        const Duration(milliseconds: 1500),
+      );
+    });
+  });
 }

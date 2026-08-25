@@ -16,57 +16,42 @@ Future<void> showCallTranscript(
   BuildContext context, {
   required Room room,
   required String callKey,
-  required String? callerId,
 }) => showDialog(
   context: context,
   useRootNavigator: false,
   builder: (_) => FullWidthDialog(
     maxWidth: 640,
     maxHeight: 800,
-    dialogContent: CallTranscriptView(
-      room: room,
-      callKey: callKey,
-      callerId: callerId,
-    ),
+    dialogContent: CallTranscriptView(room: room, callKey: callKey),
   ),
 );
 
 /// Who could have written a half of THIS CALL.
 ///
-/// Taken from the call, not from the room. Room membership was the obvious
-/// proxy and it is the wrong one: it answers "who has ever been in this
-/// conversation", so everyone who ever left earned a permanent "no transcript
-/// from them" section on every future call in it, having never been on any of
-/// them.
+/// A 1:1 call has exactly two sides, and both are known locally: this account,
+/// and the room's direct-chat peer. Nothing here comes from room content.
 ///
-/// A 1:1 call has exactly two sides: whoever placed it and whoever they
-/// called. [peerId] is the room's direct-chat peer. [callerId] comes off the
-/// call's own card, and is what still names a caller who has since left the
-/// room -- the case room membership was reached for in the first place.
+/// The card's `caller` field used to be consulted, to name a caller who had
+/// since left the room. It was never needed: [peerId] is read from the m.direct
+/// account data, which records who the conversation is with and does not change
+/// when they leave. So the field bought nothing, and it is written by whoever
+/// wrote the card.
 ///
-/// [callerId] is UNTRUSTED. The card is room content and a modified client can
-/// put any string in it. Taken on trust it became a third section on a
-/// two-person call, permanently reading "no transcript from them" about
-/// somebody who was never there -- the screen asserting a participant into
-/// existence. [callerIsPlausible] is the caller's own answer to whether that
-/// name could have been on this call at all; a name it rejects is dropped
-/// rather than shown.
+/// Checking it harder was the wrong answer, and the first attempt shows why --
+/// it asked whether the name had EVER been a member of this room, which is not
+/// the same question as whether they were on this call. An attacker with a
+/// second account could join it, leave it, and still satisfy that check, then
+/// forge both a card naming it and a half from it: fabricated speech attributed
+/// to somebody who was never on the call. The fix is not a better check on an
+/// untrusted field. It is not to need the field.
 ///
-/// Needed at all because assembly reports a named participant who wrote
-/// nothing as ABSENT rather than omitting them, and DROPS a half from anyone
-/// not named -- which is what stops a stranger writing themselves a section.
-/// Both behaviours depend on this list being right, in both directions.
+/// This list matters in both directions, which is why it is derived and not
+/// asserted: assembly reports a named participant who wrote nothing as ABSENT
+/// rather than omitting them, and DROPS a half from anyone not named -- which
+/// is what stops a stranger writing themselves a section.
 @visibleForTesting
-List<String> callParticipants({
-  required String? me,
-  required String? callerId,
-  required String? peerId,
-  required bool Function(String) callerIsPlausible,
-}) {
-  final caller = callerId != null && callerIsPlausible(callerId)
-      ? callerId
-      : null;
-  final ids = <String>{?me, ?caller, ?peerId};
+List<String> callParticipants({required String? me, required String? peerId}) {
+  final ids = <String>{?me, ?peerId};
 
   // Sorted, so the sections do not reorder between two reads of the same call.
   return ids.toList()..sort();
@@ -76,17 +61,12 @@ class CallTranscriptView extends StatefulWidget {
   final Room room;
   final String callKey;
 
-  /// Who placed the call, off its own card. Null on a card old enough not to
-  /// carry one, where the room's peer is the best available answer.
-  final String? callerId;
-
   /// Injected only by tests, which have no homeserver to read from.
   final RelationsFetcher? fetcher;
 
   const CallTranscriptView({
     required this.room,
     required this.callKey,
-    required this.callerId,
     this.fetcher,
     super.key,
   });
@@ -110,13 +90,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     callKey: widget.callKey,
     expectedSenders: callParticipants(
       me: widget.room.client.userID,
-      callerId: widget.callerId,
       peerId: widget.room.directChatMatrixID,
-      // A name is plausible only if this room has a membership event for it.
-      // A peer who left still has one, which is exactly the case the card's
-      // caller exists to cover; a name invented by a modified client has none.
-      callerIsPlausible: (id) =>
-          widget.room.getState(EventTypes.RoomMember, id) != null,
     ),
     encrypted: widget.room.encrypted,
   );
