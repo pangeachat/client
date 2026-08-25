@@ -147,4 +147,71 @@ void main() {
       );
     });
   });
+
+  group('when the peer has left and cannot be identified', () {
+    test('one call still draws ONE card, not two', () {
+      // The case this feature is built around. Their card syncs late, we write
+      // a survivor card for the same call, then they leave the room -- so the
+      // peer can no longer be worked out. Asking the raw set of sides whether
+      // their id belongs made it answer false for a real person, so our later
+      // card was never compared against their genuinely earlier one and both
+      // drew: one call, twice, in the conversation.
+      client.accountData.remove('m.direct');
+      final wide = Room(
+        id: '!wide:server',
+        client: client,
+        summary: RoomSummary.fromJson({
+          'm.joined_member_count': 3,
+          'm.invited_member_count': 0,
+          'm.heroes': <String>[],
+        }),
+      );
+      for (final id in [
+        '@test:fakeServer.notExisting',
+        '@a:server',
+        '@third:server',
+      ]) {
+        wide.setState(
+          Event(
+            type: EventTypes.RoomMember,
+            stateKey: id,
+            content: const {'membership': 'join'},
+            senderId: id,
+            eventId: '\$m-\$id',
+            originServerTs: DateTime.now(),
+            room: wide,
+          ),
+        );
+      }
+
+      Event cardFrom(String sender, String id, int ts) => Event(
+        type: PangeaEventTypes.call,
+        content: {
+          'msgtype': PangeaEventTypes.call,
+          'answered': true,
+          CallRecord.callKeyField: 'k',
+        },
+        senderId: sender,
+        eventId: id,
+        originServerTs: DateTime.fromMillisecondsSinceEpoch(ts),
+        room: wide,
+        status: EventStatus.synced,
+      );
+
+      final theirs = cardFrom('@a:server', r'$theirs', 1000);
+      final mine = cardFrom('@test:fakeServer.notExisting', r'$mine', 2000);
+      final all = [theirs, mine];
+
+      expect(
+        CallTimelineEvent.isDuplicateOfEarlier(theirs, all),
+        isFalse,
+        reason: 'the earliest card is the one that draws',
+      );
+      expect(
+        CallTimelineEvent.isDuplicateOfEarlier(mine, all),
+        isTrue,
+        reason: 'and the later one is suppressed, peer identifiable or not',
+      );
+    });
+  });
 }

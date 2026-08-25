@@ -48,9 +48,11 @@ String? callPeerOf(Room room) {
 /// than chosen by the writer, so a card or a half claiming to come from
 /// somebody else cannot pass a check against this set.
 ///
-/// Holds ONE id when the peer cannot be worked out, and that is not the same
-/// as knowing the peer is nobody -- see [callCardCouldBeReal].
-Set<String> callSides(Room room) => {?room.client.userID, ?callPeerOf(room)};
+/// PRIVATE, and it stays private. This is the raw set, and reading it directly
+/// is how "the peer is unknown" gets mistaken for "the peer is nobody" -- it
+/// holds one id in that case, and `contains` then answers false for a real
+/// person. Every caller wants the RULE, which is [callCardCouldBeReal].
+Set<String> _callSides(Room room) => {?room.client.userID, ?callPeerOf(room)};
 
 /// Whether this call card could have been written by somebody on the call.
 ///
@@ -71,7 +73,7 @@ Set<String> callSides(Room room) => {?room.client.userID, ?callPeerOf(room)};
 bool callCardCouldBeReal(Event event) {
   final peer = callPeerOf(event.room);
   if (peer == null) return true;
-  return {?event.room.client.userID, peer}.contains(event.senderId);
+  return _callSides(event.room).contains(event.senderId);
 }
 
 /// Whether this account placed the call.
@@ -228,14 +230,19 @@ class CallTimelineEvent extends StatelessWidget {
     // opens the transcript, so the real halves became unreachable while still
     // existing. Sender ids are stamped by the homeserver, not by the writer,
     // which is what makes this check worth anything.
-    final sides = callSides(event.room);
-
     for (final other in all) {
       if (identical(other, event) || other.eventId == event.eventId) continue;
       if (other.type != PangeaEventTypes.call) continue;
       if (other.content[CallRecord.callKeyField] != key) continue;
       if (other.status.isError) continue;
-      if (!sides.contains(other.senderId)) continue;
+      // Through the RULE, not the raw set. This asked `sides.contains` and so
+      // became the fourth place to read "we cannot tell who the peer is" as
+      // "the peer is not a participant" -- and here that meant a card was
+      // never compared against the genuinely earlier one, so a call the peer
+      // wrote and we also wrote drew TWICE in the conversation. Exactly the
+      // case the feature is built around: their card syncs late, we write a
+      // survivor card, they leave the room, and now nothing suppresses ours.
+      if (!callCardCouldBeReal(other)) continue;
       final byTime = other.originServerTs.compareTo(event.originServerTs);
       if (byTime < 0 ||
           (byTime == 0 && other.eventId.compareTo(event.eventId) < 0)) {
