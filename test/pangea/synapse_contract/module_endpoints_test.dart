@@ -2,24 +2,29 @@
 library;
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' show StreamedResponse;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
+import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
+import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
 import 'package:fluffychat/features/analytics_access/grant_analytics_access_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/authentication/delete_account_action_enum.dart';
 import 'package:fluffychat/features/authentication/delete_account_extension.dart';
 import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
+import 'package:fluffychat/pangea/spaces/space_gone_gate.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/launch_activity_session.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/home/signup/request_token_client_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -45,7 +50,7 @@ void main() {
 
   setUpAll(() async {
     await ContractHarness.initTestEnvironment();
-    clientA = await ContractHarness.loggedIn(ContractHarness.learnerA);
+    clientA = await ContractHarness.loggedIn('contract-module-a');
   });
 
   tearDownAll(() async {
@@ -75,7 +80,7 @@ void main() {
       final ownLeave = state['m.room.member']?[clientA.userID];
       expect(ownLeave?['membership'], 'leave');
       expect(
-        ownLeave?['pangea.room_deleted'],
+        ownLeave?[SpaceGoneGate.deletedContentKey],
         true,
         reason: 'the deletion marker clients key off must ride the leave',
       );
@@ -101,7 +106,10 @@ void main() {
         ],
       );
 
-      Future<bool> catalogContains(String roomId) async {
+      // The client's OWN model is the contract: PublicCoursesChunk.tryParse
+      // drops entries without a course_id, so asserting the inherited
+      // `chunk` would stay green while the app's catalog rendered empty.
+      Future<PublicCoursesChunk?> findInCatalog(String roomId) async {
         String? since;
         for (var page = 0; page < 30; page++) {
           final resp = await clientA.getPublicCourses(
@@ -109,28 +117,42 @@ void main() {
             since: since,
             targetLanguage: 'es',
           );
-          if (resp.chunk.any((c) => c.roomId == roomId)) return true;
+          for (final course in resp.courses) {
+            if (course.room.roomId == roomId) return course;
+          }
           since = resp.nextBatch;
-          if (since == null) return false;
+          if (since == null) return null;
         }
         fail('catalog paging did not terminate within 30 pages');
       }
 
+      final match = await findInCatalog(courseId);
       expect(
-        await catalogContains(courseId),
-        true,
+        match,
+        isNotNull,
         reason:
             'a published es-course must appear in the targetLanguage '
-            'filtered catalog (course discovery)',
+            'filtered catalog, parsed through PublicCoursesChunk '
+            '(course discovery)',
       );
+      expect(match?.courseId, 'contract-catalog-uuid');
+      expect(match?.targetLanguage, 'es');
 
       await clientA.setRoomVisibilityOnDirectory(
         courseId,
         visibility: Visibility.private,
       );
+      // Primary evidence: the directory visibility itself round-trips.
       expect(
-        await catalogContains(courseId),
-        false,
+        await clientA.getRoomVisibilityOnDirectory(courseId),
+        Visibility.private,
+      );
+      // Secondary: absent from the filtered walk (a growing directory can
+      // only make this pass spuriously, which the visibility check above
+      // guards against).
+      expect(
+        await findInCatalog(courseId),
+        isNull,
         reason: 'unpublishing must remove the course from the catalog',
       );
 
@@ -161,6 +183,14 @@ void main() {
         bogus,
       ], l1Code: 'en');
 
+      expect(
+        resp.summaries.length,
+        2,
+        reason:
+            'exactly the two real rooms — a client-side parse failure that '
+            'dropped one is indistinguishable from the server dropping it '
+            'unless the count is pinned',
+      );
       expect(resp.summaries.containsKey(courseId), true);
       expect(resp.summaries.containsKey(chatId), true);
       expect(
@@ -168,8 +198,25 @@ void main() {
         false,
         reason: 'an unknown room must be dropped, not reject the batch',
       );
-      expect(resp.summaries[courseId]?.coursePlan?.uuid, isNotNull);
+      expect(
+        resp.summaries[courseId]?.coursePlan?.uuid,
+        'contract-preview-uuid',
+      );
       expect(resp.summaries[courseId]?.joinRule, JoinRules.knock);
+      // membership_summary ships only for activity/course rooms by module
+      // design (role-holder filtering vs full membership) — assert it on
+      // the COURSE, which carries pangea.course_plan; the plain chat
+      // correctly has none.
+      expect(
+        resp.summaries[courseId]?.membershipSummary[clientA.userID],
+        'join',
+      );
+      expect(
+        resp.summaries[courseId]?.adminUserIDs,
+        contains(clientA.userID),
+        reason: 'power_levels must round-trip into the admin list',
+      );
+      expect(resp.summaries[chatId]?.membershipSummary, isEmpty);
     });
   });
 
@@ -180,7 +227,16 @@ void main() {
         visibility: Visibility.private,
         joinRules: JoinRules.knock,
       );
+      ContractHarness.trackRoom(clientA, courseId);
+      // createPangeaRoom tolerates a sync timeout, so the local Room can
+      // legitimately be null here — and a null primarySpace would create an
+      // unattached session and misblame the module below.
+      await ContractHarness.waitUntil(
+        clientA,
+        () => clientA.getRoomById(courseId) != null,
+      );
       final space = clientA.getRoomById(courseId);
+      expect(space, isNotNull);
       final sessionId = await clientA.launchActivitySession(
         ActivityPlanModel(
           req: ActivityPlanRequest(
@@ -214,6 +270,87 @@ void main() {
             'activity session (#7982)',
       );
       expect(resp.summaries[sessionId]?.activityId, 'contract-asp-activity');
+
+      // The activity query-param variant: matching filter keeps the
+      // session, a non-matching one drops it.
+      final filtered = await clientA.getActivitySessionPreviews(
+        [courseId],
+        activityId: 'contract-asp-activity',
+        l1Code: 'en',
+      );
+      expect(filtered.summaries.containsKey(sessionId), true);
+      final filteredOut = await clientA.getActivitySessionPreviews(
+        [courseId],
+        activityId: 'contract-other-activity',
+        l1Code: 'en',
+      );
+      expect(filteredOut.summaries.containsKey(sessionId), false);
+    });
+  });
+
+  group('course deletion (deleteSpace)', () {
+    test('hierarchy filters analytics rooms; space and chat delete with the '
+        'marker', () async {
+      final courseId = await clientA.createPangeaSpace(
+        name: 'Contract DelSpace ${DateTime.now().millisecondsSinceEpoch}',
+        visibility: Visibility.private,
+        joinRules: JoinRules.knock,
+      );
+      final chatId = await clientA.createPangeaGroupChat(
+        'Contract delspace chat',
+      );
+      // An analytics-typed child: the hierarchy filter must protect it —
+      // deleting a course must never delete a learner's analytics room.
+      final analyticsId = await clientA.createRoom(
+        creationContent: {'type': PangeaRoomTypes.analytics},
+        name: 'Contract delspace analytics',
+        visibility: Visibility.private,
+      );
+      ContractHarness.trackRoom(clientA, analyticsId);
+      await ContractHarness.waitUntil(
+        clientA,
+        () =>
+            clientA.getRoomById(courseId) != null &&
+            clientA.getRoomById(chatId) != null,
+      );
+      final space = clientA.getRoomById(courseId)!;
+      await space.setSpaceChild(chatId);
+      await space.setSpaceChild(analyticsId);
+
+      // The filter depends on Synapse echoing our custom room_type
+      // through /hierarchy.
+      final toDelete = await space.getSpaceChildrenToDelete();
+      final ids = toDelete.map((r) => r.roomId).toList();
+      expect(ids, contains(chatId));
+      expect(
+        ids,
+        isNot(contains(analyticsId)),
+        reason:
+            'the hierarchy must echo the p.analytics room_type so course '
+            'deletion spares analytics rooms',
+      );
+
+      await space.deleteSpace(ids);
+
+      for (final roomId in [courseId, chatId]) {
+        final state = await ContractHarness.serverState(clientA, roomId);
+        final ownLeave = state['m.room.member']?[clientA.userID];
+        expect(ownLeave?['membership'], 'leave');
+        expect(
+          ownLeave?[SpaceGoneGate.deletedContentKey],
+          true,
+          reason: 'deletion marker missing on $roomId',
+        );
+      }
+      // The analytics room survives.
+      final analyticsState = await ContractHarness.serverState(
+        clientA,
+        analyticsId,
+      );
+      expect(
+        analyticsState['m.room.member']?[clientA.userID]?['membership'],
+        'join',
+      );
     });
   });
 
@@ -238,33 +375,28 @@ void main() {
         joinRules: JoinRules.knock,
         initialState: [
           StateEvent(
-            type: 'pangea.course_settings',
-            content: {'require_analytics_access': true},
+            type: PangeaEventTypes.courseSettings,
+            content: const CourseSettingsModel(
+              requireAnalyticsAccess: true,
+            ).toJson(),
           ),
         ],
       );
+      ContractHarness.trackRoom(teacher, courseId);
       final courseState = await ContractHarness.serverState(teacher, courseId);
       final code =
           courseState['m.room.join_rules']?['']?['access_code'] as String;
       await learner.knockWithCode(code); // server-side invite
       await learner.joinRoomByIdWithAccessCheck(courseId);
 
-      // The learner's analytics room (the mirrored p.analytics shape).
-      final analyticsRoomId = await learner.createRoom(
-        creationContent: {
-          'type': PangeaRoomTypes.analytics,
-          ModelKey.langCode: 'es',
-        },
-        name: '${learner.userID} es Analytics',
-        preset: CreateRoomPreset.publicChat,
-        visibility: Visibility.private,
-        initialState: [
-          StateEvent(
-            type: EventTypes.RoomJoinRules,
-            content: {ModelKey.joinRule: JoinRules.knock.name},
-          ),
-        ],
+      // The learner's analytics room via the REAL production path (a fresh
+      // persona, so getMyAnalyticsRoom always creates).
+      final analyticsRoom = await learner.getMyAnalyticsRoom(
+        LanguageModel(langCode: 'es', displayName: 'Spanish'),
       );
+      expect(analyticsRoom, isNotNull);
+      final analyticsRoomId = analyticsRoom!.id;
+      ContractHarness.trackRoom(learner, analyticsRoomId);
 
       await learner.grantInstructorAnalyticsAccess(courseId, analyticsRoomId);
 
@@ -293,10 +425,17 @@ void main() {
   });
 
   group('delete_user', () {
-    test('schedule, status, and cancel round-trip on a throwaway', () async {
+    test('status, schedule, cancel, and the typed no-schedule error', () async {
       final throwaway = await ContractHarness.loggedIn(
         'contract-del-${DateTime.now().millisecondsSinceEpoch}',
       );
+      addTearDown(() => ContractHarness.dispose(throwaway));
+
+      // The production spelling: settings_security queries with NO action.
+      // DeleteAccountResponseModel.fromJson throws on an unknown action
+      // name, so this pins both the endpoint default and the parser.
+      final status = await throwaway.deleteAccount();
+      expect(status.userId, throwaway.userID);
 
       final scheduled = await throwaway.deleteAccount(
         action: DeleteAccountAction.schedule,
@@ -313,7 +452,16 @@ void main() {
       );
       expect(canceled.canceled, true);
 
-      await ContractHarness.dispose(throwaway);
+      // Cancel is idempotent at the API contract level (matching the
+      // module's documented idempotency for force): a second cancel with
+      // nothing scheduled still returns 200 and parses. Pin that — the
+      // DeleteAccountException string-mapping has no client-reachable
+      // trigger (the enum prevents invalid actions), so it stays covered
+      // only by parsing, not by a live error.
+      final cancelAgain = await throwaway.deleteAccount(
+        action: DeleteAccountAction.cancel,
+      );
+      expect(cancelAgain.action, DeleteAccountAction.cancel);
     });
   });
 
@@ -334,44 +482,69 @@ void main() {
           await limited.knockWithCode('contract-no-such-code');
         } catch (e) {
           thrown = e;
-          final status = (thrown as dynamic).statusCode;
-          if (status == 429) break;
+          if (e is StreamedResponse && e.statusCode == 429) break;
         }
       }
       expect(
-        (thrown as dynamic).statusCode,
-        429,
+        thrown,
+        isNotNull,
+        reason: 'knock_with_code never rate-limited across 15 calls',
+      );
+      // Production branches on `e is StreamedResponse && statusCode == 429`
+      // (space_code_controller) — pin the exact thrown type, not just a
+      // status shape.
+      expect(
+        thrown,
+        isA<StreamedResponse>().having((r) => r.statusCode, 'status', 429),
         reason:
-            'the burst limit must surface as a raw 429 response — the '
-            'status the TooManyRequestsDialog handling reads',
+            'the burst limit must surface as the raw 429 response the '
+            'TooManyRequestsDialog handling reads',
       );
     });
   });
 
   group('register/email/requestToken', () {
-    test(
-      'the module route is registered and accepts the username field',
-      () async {
-        // Local stacks have no SMTP relay, so a successful send is not the
-        // contract here. What IS the contract: the custom route exists (an
-        // M_UNRECOGNIZED would mean the module route vanished) and accepts the
-        // non-spec `username` field the client sends.
-        final unique = DateTime.now().millisecondsSinceEpoch;
-        try {
-          await clientA.requestTokenToRegister(
-            'contract-secret-$unique',
-            'contract-$unique@example.com',
-            'contract-reg-$unique',
-            1,
-          );
-        } on MatrixException catch (e) {
-          expect(
-            e.error,
-            isNot(MatrixError.M_UNRECOGNIZED),
-            reason: 'the pangea register/email/requestToken route must exist',
-          );
-        }
-      },
-    );
+    test('the module route accepts the username field', () async {
+      // Local stacks have no SMTP relay, so a successful send is not
+      // guaranteed. The contract: the custom route exists and the request
+      // shape (with the non-spec `username` field) is ACCEPTED — any
+      // route-missing or schema-rejection error must fail this test, while
+      // a mail-delivery failure must not.
+      final unique = DateTime.now().millisecondsSinceEpoch;
+      const routeOrSchemaErrors = [
+        MatrixError.M_UNRECOGNIZED,
+        MatrixError.M_NOT_FOUND,
+        MatrixError.M_BAD_JSON,
+        MatrixError.M_NOT_JSON,
+        MatrixError.M_MISSING_PARAM,
+        MatrixError.M_INVALID_PARAM,
+      ];
+      try {
+        final resp = await clientA.requestTokenToRegister(
+          'contract-secret-$unique',
+          'contract-$unique@example.com',
+          'contract-reg-$unique',
+          1,
+        );
+        expect(resp.sid, isNotEmpty, reason: 'a token session was created');
+      } on MatrixException catch (e) {
+        expect(
+          routeOrSchemaErrors.contains(e.error),
+          false,
+          reason:
+              'route/schema rejection (${e.errcode}): the module route or '
+              'its username field is broken',
+        );
+      } catch (e) {
+        // A non-JSON 5xx (SMTP-less local stack) surfaces as a plain
+        // Exception from unexpectedResponse — the route exists and accepted
+        // the shape; sending failed. That is the tolerated case.
+        expect(
+          e.toString(),
+          contains('http error response'),
+          reason: 'unexpected failure shape: $e',
+        );
+      }
+    });
   });
 }

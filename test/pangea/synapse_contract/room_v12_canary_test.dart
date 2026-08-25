@@ -35,7 +35,7 @@ void main() {
 
   setUpAll(() async {
     await ContractHarness.initTestEnvironment();
-    client = await ContractHarness.loggedIn(ContractHarness.learnerA);
+    client = await ContractHarness.loggedIn('contract-canary-a');
     v12Supported = await ContractHarness.roomVersionSupported(client, '12');
   });
 
@@ -43,12 +43,35 @@ void main() {
     await ContractHarness.dispose(client);
   });
 
+  test('v12 creation works without a users map (control)', () async {
+    if (!v12Supported) {
+      markTestSkipped('homeserver cannot create v12 rooms');
+      return;
+    }
+    // Control FIRST: if v12 creation is broken generally (or rate-limited),
+    // this is the test that says so, instead of the canary "passing" on an
+    // unrelated rejection.
+    final roomId = await client.createRoom(
+      roomVersion: '12',
+      visibility: Visibility.private,
+      name: 'Contract v12 control',
+      powerLevelContentOverride: RoomDefaults.defaultPowerLevelsContent(),
+    );
+    ContractHarness.trackRoom(client, roomId);
+    final state = await ContractHarness.serverState(client, roomId);
+    expect(state['m.room.create']?['']?['room_version'], '12');
+  });
+
   test('creator re-listed in the PL override is rejected on v12', () async {
     if (!v12Supported) {
       markTestSkipped('homeserver cannot create v12 rooms');
       return;
     }
-    // The users-map override every Pangea chat/session creation sends.
+    // The users-map override every Pangea chat/session creation sends. The
+    // matcher pins the rejection CLASS: a schema/param refusal, explicitly
+    // not a rate limit and not "v12 unsupported" (those would make the
+    // canary lie about what it proved). Tighten to the exact errcode on the
+    // first 1.159 run.
     await expectLater(
       client.createRoom(
         roomVersion: '12',
@@ -59,28 +82,23 @@ void main() {
           botUserId: BotName.byEnvironment,
         ),
       ),
-      throwsA(isA<MatrixException>()),
+      throwsA(
+        isA<MatrixException>().having(
+          (e) => e.error,
+          'errcode',
+          anyOf(
+            MatrixError.M_BAD_JSON,
+            MatrixError.M_INVALID_PARAM,
+            MatrixError.M_FORBIDDEN,
+            MatrixError.M_UNKNOWN,
+          ),
+        ),
+      ),
       reason:
           'default_power_level.dart documents this shape as forbidden on '
-          'v12 — if it now succeeds, the limitation note (and the planned '
-          'version-conditional users map) need revisiting',
+          'v12 — if it now succeeds (or fails as a rate limit), the '
+          'limitation note and the planned version-conditional users map '
+          'need revisiting',
     );
-  });
-
-  test('the same override without a users map is accepted on v12', () async {
-    if (!v12Supported) {
-      markTestSkipped('homeserver cannot create v12 rooms');
-      return;
-    }
-    // Control: proves the canary above fails on the creator listing
-    // specifically, not on v12 creation generally.
-    final roomId = await client.createRoom(
-      roomVersion: '12',
-      visibility: Visibility.private,
-      name: 'Contract v12 control',
-      powerLevelContentOverride: RoomDefaults.defaultPowerLevelsContent(),
-    );
-    final state = await ContractHarness.serverState(client, roomId);
-    expect(state['m.room.create']?['']?['room_version'], '12');
   });
 }
