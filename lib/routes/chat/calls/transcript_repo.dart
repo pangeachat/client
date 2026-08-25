@@ -30,11 +30,23 @@ const kMaxRelationEvents = 200;
 ///
 /// [expectedSenders] is who took part, so a participant who wrote nothing is
 /// reported absent rather than quietly omitted.
+///
+/// [encrypted] is whether the room encrypts its events. The relations endpoint
+/// returns them as the server holds them, and nothing on that path decrypts:
+/// in an encrypted room every half comes back typed `m.room.encrypted` and is
+/// filtered out below as not-a-transcript. A read like that has not found
+/// nothing -- it has failed to look -- and calling both speakers ABSENT off it
+/// would tell each of them the other said nothing. Pangea creates its rooms
+/// unencrypted (every `startDirectChat` call site passes `enableEncryption:
+/// false`), so this is a guard against a room we did not make, not a live
+/// path. It defaults to false so a caller that does not know cannot be made
+/// worse off, and the honest answer is INCOMPLETE.
 Future<CallTranscript> fetchCallTranscript({
   required RelationsFetcher fetch,
   required String roomId,
   required String callKey,
   required List<String> expectedSenders,
+  bool encrypted = false,
   int maxPages = kMaxRelationPages,
   int maxEvents = kMaxRelationEvents,
 }) async {
@@ -102,7 +114,9 @@ Future<CallTranscript> fetchCallTranscript({
   return assembleTranscript(
     candidates: candidates,
     expectedSenders: expectedSenders,
-    exhausted: exhausted,
+    // An encrypted room is never an exhausted read, whatever the server said
+    // about paging: we reached the end of a list we could not read.
+    exhausted: exhausted && !encrypted,
   );
 }
 

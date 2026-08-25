@@ -290,5 +290,45 @@ void main() {
 
       expect(transcript.halves.map((h) => h.senderId), [alice]);
     });
+
+    test('an ENCRYPTED room never concludes that a speaker was absent', () async {
+      // Nothing on the relations path decrypts, so every half comes back typed
+      // m.room.encrypted and is filtered out as not-a-transcript. Reading that
+      // as "neither of them said anything" tells each person a falsehood about
+      // the other, which is the one thing this design exists to prevent.
+      final pages = _pages([(chunk: <MatrixEvent>[], next: null)]);
+
+      final transcript = await fetchCallTranscript(
+        fetch: pages.fetch,
+        roomId: _room,
+        callKey: _callKey,
+        expectedSenders: [alice, bob],
+        encrypted: true,
+      );
+
+      expect(
+        transcript.halves.map((h) => h.state),
+        everyElement(HalfState.incomplete),
+      );
+      expect(transcript.readerStoppedEarly, isTrue);
+    });
+
+    test('an unencrypted room still concludes absence normally', () async {
+      // The guard must not fire on the ordinary case, or every transcript
+      // would hedge and the distinction would stop meaning anything.
+      final pages = _pages([(chunk: <MatrixEvent>[], next: null)]);
+
+      final transcript = await fetchCallTranscript(
+        fetch: pages.fetch,
+        roomId: _room,
+        callKey: _callKey,
+        expectedSenders: [alice, bob],
+      );
+
+      expect(
+        transcript.halves.map((h) => h.state),
+        everyElement(HalfState.absent),
+      );
+    });
   });
 }

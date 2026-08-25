@@ -31,6 +31,7 @@ Future<bool> _write(
   int chunksTranscribed = 2,
   int chunksLost = 0,
   bool drainComplete = true,
+  bool encrypted = false,
   String? langCode = 'es',
   int maxBytes = kMaxHalfBytes,
 }) => writeCallTranscript(
@@ -42,6 +43,7 @@ Future<bool> _write(
   chunksTranscribed: chunksTranscribed,
   chunksLost: chunksLost,
   drainComplete: drainComplete,
+  encrypted: encrypted,
   langCode: langCode,
   maxBytes: maxBytes,
 );
@@ -226,6 +228,41 @@ void main() {
 
         expect(sent.bytes, lessThanOrEqualTo(1200));
       });
+
+      test(
+        'an ENCRYPTED half is packed well under the plaintext ceiling',
+        () async {
+          // The room inflates what the writer hands it, and the server's limit
+          // applies to the inflated event. Packing to the plaintext ceiling gets
+          // the WHOLE half rejected, and a retry re-packs to the same wrong
+          // budget, so the loss never recovers.
+          final plain = _Sent();
+          await _write(
+            plain,
+            texts: [for (var i = 0; i < 400; i++) 'segmento numero \$i'],
+            maxBytes: 4000,
+          );
+
+          final sealed = _Sent();
+          await _write(
+            sealed,
+            texts: [for (var i = 0; i < 400; i++) 'segmento numero \$i'],
+            maxBytes: 4000,
+            encrypted: true,
+          );
+
+          expect(
+            sealed.bytes * kEncryptedOverheadFactor,
+            lessThanOrEqualTo(4000),
+            reason: 'the inflated event still fits the ceiling',
+          );
+          expect(
+            sealed.bytes,
+            lessThan(plain.bytes),
+            reason: 'the encrypted budget is genuinely tighter',
+          );
+        },
+      );
 
       test('non-Latin text is measured in BYTES, not characters', () async {
         // Counting characters would size a CJK transcript at a third of its

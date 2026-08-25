@@ -13,8 +13,11 @@ import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/ring_player.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 import 'package:pangea_call_capture/pangea_call_capture.dart'
@@ -58,6 +61,14 @@ class CallSession extends ChangeNotifier {
   final CallMedia media;
   final ActiveCall call;
   final CallRecord _record;
+
+  /// The transcript publisher this session wired up, exposed so a test can
+  /// prove the wiring EXISTS. Everything under this feature was built and
+  /// green while nothing in the app ever wrote a transcript, because the
+  /// publisher was optional and no caller supplied it. Parts that all work
+  /// and are not connected read as a working feature and ship a dark one.
+  @visibleForTesting
+  TranscriptPublisher? get transcriptPublisher => _record.publishTranscript;
 
   final String? _myUserId;
   final String? _peerUserId;
@@ -170,6 +181,37 @@ class CallSession extends ChangeNotifier {
           transcripts: transcripts,
           sendEvent: (content, txid) =>
               room.sendEvent(content, type: PangeaEventTypes.call, txid: txid),
+          // The transcript half this device writes when the call ends. Built
+          // here rather than inside CallRecord so the record stays testable
+          // without a room, and so the ONE place that knows about the room --
+          // its id, and whether it encrypts -- is the place that knows.
+          publishTranscript:
+              ({
+                required String callKey,
+                required List<TranscriptSegment> segments,
+                required int chunksCaptured,
+                required int chunksTranscribed,
+                required int chunksLost,
+                required bool drainComplete,
+                String? langCode,
+              }) => writeCallTranscript(
+                send: (content, txid) => room.sendEvent(
+                  content,
+                  type: CallTranscriptContent.relType,
+                  txid: txid,
+                ),
+                callKey: callKey,
+                senderId: room.client.userID ?? '',
+                segments: segments,
+                chunksCaptured: chunksCaptured,
+                chunksTranscribed: chunksTranscribed,
+                chunksLost: chunksLost,
+                drainComplete: drainComplete,
+                // The room inflates what it is handed, and the server's limit
+                // applies to the inflated event.
+                encrypted: room.encrypted,
+                langCode: langCode,
+              ),
           analytics: analytics,
         );
     return CallSession._(

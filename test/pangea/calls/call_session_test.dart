@@ -12,8 +12,10 @@ import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 
@@ -203,6 +205,18 @@ class _RecordingRoom extends matrix.Room {
   _RecordingRoom({required super.id, required super.client});
 
   final List<Map<String, dynamic>> sent = [];
+  final List<String> sentTypes = [];
+
+  /// Only the call CARDS.
+  ///
+  /// A session writes more than one kind of event -- the card the conversation
+  /// shows, and this device's transcript half. Assertions about what the
+  /// conversation shows must say so, or adding any second event type breaks
+  /// them for reasons that have nothing to do with what they are testing.
+  List<Map<String, dynamic>> get cards => [
+    for (var i = 0; i < sent.length; i++)
+      if (sentTypes[i] == PangeaEventTypes.call) sent[i],
+  ];
 
   @override
   Future<String?> sendEvent(
@@ -216,6 +230,7 @@ class _RecordingRoom extends matrix.Room {
     bool displayPendingEvent = true,
   }) async {
     sent.add(content);
+    sentTypes.add(type);
     return '\$card';
   }
 }
@@ -306,6 +321,65 @@ void main() {
     return (session, calls, released);
   }
 
+  test(
+    'a live session actually WRITES a transcript half to the room',
+    () async {
+      // The feature is only real if something calls it. Everything underneath
+      // was built and green while nothing in the app ever wrote a transcript:
+      // CallRecord.publishTranscript was optional and no caller supplied it. A
+      // suite that proves every part works and never checks the parts are
+      // connected reads as a working feature and ships a dark one.
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: _FakeMedia(),
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+
+      final publish = session.transcriptPublisher;
+      expect(
+        publish,
+        isNotNull,
+        reason: 'the live call must supply a publisher, not leave it null',
+      );
+
+      await publish!(
+        callKey: r'$anchor:server',
+        segments: const [TranscriptSegment('hola que tal')],
+        chunksCaptured: 1,
+        chunksTranscribed: 1,
+        chunksLost: 0,
+        drainComplete: true,
+        langCode: 'es',
+      );
+
+      final index = room.sentTypes.indexOf(CallTranscriptContent.relType);
+      expect(
+        index,
+        isNonNegative,
+        reason: 'the publisher must reach the room, not merely exist',
+      );
+
+      final written = room.sent[index];
+      expect(written['call_key'], r'$anchor:server');
+      expect(written['m.relates_to'], {
+        'rel_type': CallTranscriptContent.relType,
+        'event_id': r'$anchor:server',
+      });
+      expect((written['segments'] as List).single['text'], 'hola que tal');
+    },
+  );
+
   test('the call card is written at hangup, not after transcription', () async {
     // The card states the duration, who called and whether it was answered --
     // all of it known the instant the call ends. It used to be written in a
@@ -333,7 +407,7 @@ void main() {
     await pumpEventQueue();
 
     expect(
-      room.sent.map((e) => e['type'] ?? 'pangea.call'),
+      room.cards.map((e) => e['type'] ?? 'pangea.call'),
       isNotEmpty,
       reason: 'the card must not wait for speech-to-text that may never return',
     );
@@ -473,7 +547,7 @@ void main() {
 
         await session.survivorCheckNowForTest();
         expect(
-          room.sent,
+          room.cards,
           hasLength(1),
           reason: 'a real attempt has to leave a trace even so',
         );
@@ -485,12 +559,12 @@ void main() {
       session.timelineEventsOverride = () async => const [];
       session.endCall();
       await pumpEventQueue();
-      expect(room.sent, isEmpty, reason: 'the answerer never fast-writes');
+      expect(room.cards, isEmpty, reason: 'the answerer never fast-writes');
 
       await session.survivorCheckNowForTest();
 
-      expect(room.sent, hasLength(1), reason: 'the survivor card');
-      final card = room.sent.single;
+      expect(room.cards, hasLength(1), reason: 'the survivor card');
+      final card = room.cards.single;
       expect(card[CallRecord.callKeyField], r'$caller-membership');
       expect(card['answered'], isTrue);
       expect(card['declined'], isFalse);
@@ -515,7 +589,7 @@ void main() {
 
       await session.survivorCheckNowForTest();
 
-      expect(room.sent, isEmpty, reason: 'their card exists; nothing to add');
+      expect(room.cards, isEmpty, reason: 'their card exists; nothing to add');
     });
 
     test('the survivor never invents an answered call', () async {
@@ -563,9 +637,9 @@ void main() {
       await pumpEventQueue();
       await session.survivorCheckNowForTest();
 
-      expect(room.sent, hasLength(1), reason: 'the attempt is still recorded');
+      expect(room.cards, hasLength(1), reason: 'the attempt is still recorded');
       expect(
-        room.sent.single['answered'],
+        room.cards.single['answered'],
         isFalse,
         reason: 'nobody answered it, and the survivor may not pretend they did',
       );
@@ -598,7 +672,7 @@ void main() {
 
       // A survivor writing a missed or declined outcome would be fabricating
       // one it cannot know; only the caller decides those.
-      expect(room.sent, isEmpty);
+      expect(room.cards, isEmpty);
     });
   });
 

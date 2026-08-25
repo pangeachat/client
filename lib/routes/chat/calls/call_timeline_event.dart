@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 /// Whether this account placed the call.
@@ -131,6 +132,27 @@ class CallTimelineEvent extends StatelessWidget {
   /// the other cannot see.
   bool get _neverSent => event.status.isError;
 
+  /// The anchor both devices related their transcript halves to.
+  ///
+  /// Also the card's dedup key, and the same value for both: there is one
+  /// identity per call, and a transcript that hung off a different one could
+  /// not be found from the card that represents it.
+  String? get _callKey {
+    final key = event.content[CallRecord.callKeyField];
+    return key is String && key.isNotEmpty ? key : null;
+  }
+
+  /// Whether this card can lead anywhere.
+  ///
+  /// A call that never connected has nothing to transcribe, and a call whose
+  /// key was never learned has nothing to query -- both are unopenable, and
+  /// offering the tap anyway would promise a page that can only apologise.
+  ///
+  /// A call that DID connect may still turn out to have no halves. That is not
+  /// knowable without a read, so the tap is offered and the screen answers
+  /// honestly rather than the card guessing.
+  bool get _openable => _answered && !_declined && _callKey != null;
+
   @override
   Widget build(BuildContext context) {
     // Nothing, rather than a phantom. The call itself still happened; what
@@ -154,37 +176,63 @@ class CallTimelineEvent extends StatelessWidget {
         child: Material(
           color: theme.colorScheme.surface.withAlpha(128),
           borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(_icon(missed), size: 16, color: color),
-                const SizedBox(width: 7),
-                Flexible(
-                  child: Text(
-                    _label(l10n, missed),
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: color,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                if (connected) ...[
-                  Text(
-                    '  ${formatDuration(_duration)}',
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.onSurfaceVariant,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
+            // Null when there is nothing to open, which also removes the
+            // ripple: an affordance that leads nowhere is worse than none.
+            onTap: _openable ? () => _openTranscript(context) : null,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(_icon(missed), size: 16, color: color),
+                  const SizedBox(width: 7),
+                  Flexible(
+                    child: Text(
+                      _label(l10n, missed),
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: color,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
+                  if (connected) ...[
+                    Text(
+                      '  ${formatDuration(_duration)}',
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                  if (_openable) ...[
+                    const SizedBox(width: 7),
+                    Tooltip(
+                      message: l10n.callTranscriptOpen,
+                      child: Icon(
+                        Icons.notes,
+                        size: 15,
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
                 ],
-              ],
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  /// Guarded by [_openable], so the key is known to be there. Read again
+  /// rather than captured, because the build that drew the card and the tap
+  /// that follows it are separate moments.
+  void _openTranscript(BuildContext context) {
+    final key = _callKey;
+    if (key == null) return;
+    showCallTranscript(context, room: event.room, callKey: key);
   }
 
   IconData _icon(bool missed) {

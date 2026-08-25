@@ -3699,6 +3699,43 @@
     "callHistoryNoAnswer": "No answer",
     "callHistoryDeclined": "Call declined",
     "callHistoryYouDeclined": "You declined this call",
+    "callTranscriptTitle": "Call transcript",
+    "callTranscriptLoadFailed": "Could not load the transcript",
+    "callTranscriptRetry": "Try again",
+    "callTranscriptStoppedEarly": "This call had too much to read in one go, so some of it is not shown.",
+    "callTranscriptNone": "No transcript from {name}",
+    "@callTranscriptNone": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptSaidNothing": "{name} did not say anything",
+    "@callTranscriptSaidNothing": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptNothingRead": "Nothing could be read from what {name} said",
+    "@callTranscriptNothingRead": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptPartial": "Part of what {name} said may be missing",
+    "@callTranscriptPartial": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptOpen": "Read the transcript",
     "leaveSpaceDescription": "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.",
     "constructUseCorMmDesc": "Correct message meaning",
     "constructUseIncMmDesc": "Incorrect message meaning",

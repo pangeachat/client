@@ -18,6 +18,23 @@ typedef TranscriptSender =
 /// rejected in practice, so events are packed under `maxPDUSize - 10000`.
 const kMaxHalfBytes = 50000;
 
+/// How much larger an event gets once the room encrypts it.
+///
+/// Megolm wraps the plaintext and the result is base64, which costs a third
+/// again, plus a fixed envelope. Measured against the PLAINTEXT here because
+/// that is all the writer can see: it hands content to a sender, and whether
+/// that sender encrypts is the room's business, not the packer's.
+///
+/// Without this the packer fits a half to 50000 bytes of plaintext, the room
+/// inflates it past the server's ceiling, and the server rejects the WHOLE
+/// half -- not its tail. A retry re-packs from the same frozen segments to the
+/// same wrong budget, so the loss is permanent rather than transient.
+///
+/// Pangea creates its rooms unencrypted, so this is defence for a room we did
+/// not make. Deliberately generous: over-packing loses everything, and
+/// under-packing loses a few sentences off the end and says so.
+const kEncryptedOverheadFactor = 1.4;
+
 /// Publishes this device's half of a call.
 ///
 /// Called once, AFTER the sink's drain has settled, so the content is final and
@@ -37,6 +54,7 @@ Future<bool> writeCallTranscript({
   required int chunksLost,
   required bool drainComplete,
   String? langCode,
+  bool encrypted = false,
   int maxBytes = kMaxHalfBytes,
 }) async {
   if (callKey == null || callKey.isEmpty) {
@@ -71,9 +89,13 @@ Future<bool> writeCallTranscript({
   // Sized against the worst case for the accounting fields: a half packed while
   // claiming nothing was omitted, then re-labelled as truncated, would grow by
   // the extra digits and could cross the line it was just checked against.
+  final budget = encrypted
+      ? (maxBytes / kEncryptedOverheadFactor).floor()
+      : maxBytes;
+
   final packed = _packUnder(
     segments,
-    maxBytes,
+    budget,
     (kept) => build(kept, segments.length - kept.length),
   );
   final content = build(packed.segments, packed.omitted);
