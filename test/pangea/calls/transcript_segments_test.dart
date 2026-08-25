@@ -233,10 +233,43 @@ void main() {
       expect(segments.map((s) => s.text), ['猫 犬']);
     });
 
-    test('punctuation and case differences do NOT trigger the fallback', () {
-      // Joining timed words loses punctuation and casing legitimately, so the
-      // comparison normalises both. If it did not, the fallback would fire on
-      // every ordinary chunk and word timings would never be used at all.
+    test('punctuation INSIDE a word still distinguishes it', () {
+      // Stripping punctuation everywhere made "he'll" and "hell" compare
+      // equal, so the guard against a substituted word let that substitution
+      // straight through. Only edge punctuation may be forgiven.
+      final segments = buildSegments([
+        _response("he'll go", timings: [('hell', 0, 100), ('go', 150, 300)]),
+      ]);
+
+      expect(segments.map((s) => s.text), ["he'll go"]);
+    });
+
+    test('a symbol that changes a word is not stripped away', () {
+      final segments = buildSegments([
+        _response('C++ rocks', timings: [('C', 0, 100), ('rocks', 150, 300)]),
+      ]);
+
+      expect(segments.map((s) => s.text), ['C++ rocks']);
+    });
+
+    test('case alone does not trigger the fallback', () {
+      final segments = buildSegments([
+        _response(
+          'Hola que tal',
+          timings: [('hola', 0, 200), ('QUE', 250, 500), ('tal', 550, 800)],
+        ),
+      ]);
+
+      expect(segments, hasLength(1));
+      expect(segments.single.text, 'hola QUE tal');
+    });
+
+    test('punctuation the timings omit DOES trigger the fallback', () {
+      // This test previously asserted the opposite -- that punctuation should
+      // be forgiven, so that segmentation stayed usable. Every attempt to
+      // forgive it let a real substitution through as well ("he'll" vs "hell",
+      // "C++" vs "C"). Coarser segmentation is the price of never altering
+      // what someone said.
       final segments = buildSegments([
         _response(
           'Hola, que tal?',
@@ -244,8 +277,7 @@ void main() {
         ),
       ]);
 
-      expect(segments, hasLength(1));
-      expect(segments.single.text, 'Hola que tal');
+      expect(segments.map((s) => s.text), ['Hola, que tal?']);
     });
 
     test('no usable chunks yields no segments', () {

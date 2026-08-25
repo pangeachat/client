@@ -93,6 +93,21 @@ class CallTranscriptContent {
         break;
       }
       examined++;
+
+      // Checked before the entry is trimmed, which saves one copy of a hostile
+      // string. Deliberately NOT covered by a test: the observable output is
+      // identical either way, so any test would pass with this removed, and a
+      // test that cannot fail is worse than none. Worth keeping as cheap
+      // hygiene rather than protection -- by the time this runs the SDK has
+      // already parsed the whole event into memory, so the allocation this
+      // avoids is the second one, not the first.
+      if (raw is Map &&
+          raw['text'] is String &&
+          (raw['text'] as String).length > maxTotalChars) {
+        shortened = true;
+        break;
+      }
+
       final segment = TranscriptSegment.fromJson(raw);
       if (segment == null) continue;
       // Checked BEFORE adding, against this segment's own size: testing the

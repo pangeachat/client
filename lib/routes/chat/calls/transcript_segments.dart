@@ -43,23 +43,22 @@ const kUtterancePause = Duration(milliseconds: 900);
 
 final _whitespace = RegExp(r'\s+');
 
-/// A chunk's words, normalised for comparison only.
+/// A chunk's text, normalised for comparison ONLY by case and whitespace.
 ///
-/// Case and surrounding punctuation are dropped, because joining timed words
-/// with single spaces legitimately loses them. The WORDS themselves must still
-/// match exactly -- that is the whole point of the check.
-String _words(String text) => text
-    .toLowerCase()
-    // Strips PUNCTUATION, rather than keeping only "word characters".
-    //
-    // `\w` is ASCII-oriented, so `[^\w\s]` deleted every CJK character: 猫 and
-    // 犬 both normalised to the empty string and compared EQUAL, which let the
-    // fabrication guard pass a substituted word straight through. In a product
-    // teaching twenty-odd languages that is not an edge case.
-    .replaceAll(RegExp(r'[\p{P}\p{S}]', unicode: true), '')
-    .trim()
-    .split(_whitespace)
-    .join(' ');
+/// Deliberately forgiving nothing else. Three cleverer rules each let speech
+/// through altered: a character ratio missed a short word dropped off a long
+/// one; a word count matched "pay bob today" against timings for
+/// [pay, alice, today] and fabricated "alice"; stripping punctuation made
+/// "he'll" equal "hell", and stripping it only at word edges still made "C++"
+/// equal "C".
+///
+/// So the rule is exact. If the timings do not reconstruct the chunk, the
+/// chunk's own text is used. The cost is coarser segmentation whenever a
+/// provider omits punctuation from its word list -- a readability cost, paid
+/// knowingly, because the alternative is a transcript that quietly says
+/// something the learner did not.
+String _words(String text) =>
+    text.toLowerCase().trim().split(_whitespace).join(' ');
 
 /// Cuts one call's frozen responses into readable segments.
 ///
