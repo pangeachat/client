@@ -1,3 +1,9 @@
+import 'dart:io';
+
+import 'package:flutter/services.dart';
+
+import 'package:flutter_test/flutter_test.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -24,6 +30,46 @@ class ContractHarness {
 
   static int _clientCounter = 0;
   static bool _ffiInitialized = false;
+  static bool _environmentInitialized = false;
+
+  /// One-time test-process setup: dotenv, plus the GetStorage box that
+  /// `Environment.appConfigOverride` reads (needed by extensions that consult
+  /// `Environment`, e.g. `BotName.byEnvironment`). Same path_provider stub
+  /// pattern as sentry_build_tags_test.dart.
+  static Future<void> initTestEnvironment() async {
+    if (_environmentInitialized) return;
+    TestWidgetsFlutterBinding.ensureInitialized();
+    // The test binding installs a mock HttpClient that 400s every request;
+    // this suite exists to make REAL requests — restore the real client.
+    HttpOverrides.global = null;
+    EndpointTestEnv.load();
+    final tempDir = await Directory.systemTemp.createTemp('synapse_contract');
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+          const MethodChannel('plugins.flutter.io/path_provider'),
+          (methodCall) async => tempDir.path,
+        );
+    await GetStorage.init('env_override');
+    _environmentInitialized = true;
+  }
+
+  /// Make sure [persona] exists on the homeserver without keeping a session.
+  static Future<void> ensurePersona(String persona) async {
+    final client = await loggedIn(persona);
+    await dispose(client);
+  }
+
+  /// Whether the homeserver supports creating rooms of [version] (per
+  /// /capabilities) — gates the room-v12 canaries, which are meaningless on
+  /// a server that cannot create v12 rooms at all.
+  static Future<bool> roomVersionSupported(
+    Client client,
+    String version,
+  ) async {
+    final capabilities = await client.getCapabilities();
+    final available = capabilities.mRoomVersions?.available;
+    return available?.containsKey(version) ?? false;
+  }
 
   /// A fresh unauthenticated [Client] with an in-memory database (the same
   /// recipe the SDK's own tests use), homeserver already resolved.
