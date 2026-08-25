@@ -26,6 +26,7 @@ import 'package:fluffychat/features/bot/bot_options_model.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/lemmas/user_lemma_info_extension.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
@@ -34,6 +35,8 @@ import 'package:fluffychat/routes/chat/activity_sessions/launch_activity_session
 import 'package:fluffychat/routes/chat/chat_details/teacher_mode_model.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_settings_model.dart';
 import 'package:fluffychat/routes/chat_list/default_chats_room_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -87,12 +90,13 @@ void main() {
       primarySpace: null,
     );
     ContractHarness.trackRoom(client, roomId);
-    await ContractHarness.waitUntil(
-      client,
-      () =>
-          client.getRoomById(roomId)?.getState(PangeaEventTypes.activityRole) !=
-          null,
-    );
+    await ContractHarness.waitUntil(client, () {
+      final room = client.getRoomById(roomId);
+      // Power levels too: setBotOptions gates on canChangeStateEvent, which
+      // reads the LOCAL m.room.power_levels and silently no-ops without it.
+      return room?.getState(PangeaEventTypes.activityRole) != null &&
+          room?.getState(EventTypes.RoomPowerLevels) != null;
+    });
     return client.getRoomById(roomId)!;
   }
 
@@ -122,8 +126,13 @@ void main() {
         client,
         () => room.ownRoleState?.isFinished == false,
       );
+      // Positive first: a bare isNull is satisfied by the role (or the whole
+      // roles event) being absent. The serializer always emits the key.
+      final continued = await ownRole();
+      expect(continued, isNotNull);
+      expect(continued!.containsKey('finished_at'), true);
       expect(
-        (await ownRole())?['finished_at'],
+        continued['finished_at'],
         isNull,
         reason: 'continue must clear the finished stamp',
       );
@@ -138,13 +147,15 @@ void main() {
       // Archive with the at: override — the #8258 repair contract: a
       // re-write replays the ORIGINAL instant instead of stamping a new
       // one, and it is serialized as UTC.
-      final replayInstant = DateTime.utc(2026, 1, 2, 3, 4, 5);
+      // A LOCAL wall-clock instant pins the serializer's toUtc()
+      // normalization too (a UTC input would make that a no-op).
+      final replayInstant = DateTime(2026, 1, 2, 3, 4, 5);
       await room.archiveActivity(at: replayInstant);
       final archivedAt = (await ownRole())?['archived_at'] as String?;
       expect(
         archivedAt,
-        replayInstant.toIso8601String(),
-        reason: 'archive must persist the caller-supplied UTC instant',
+        replayInstant.toUtc().toIso8601String(),
+        reason: 'archive must persist the replayed instant, normalized to UTC',
       );
     });
   });
@@ -206,14 +217,18 @@ void main() {
         'p2-attached-course',
       );
       expect(state[PangeaEventTypes.coursePlan]?['']?['l2'], 'es');
+      final powerLevels = state['m.room.power_levels']?[''];
       expect(
-        (state['m.room.power_levels']?['']?['events']
-            as Map?)?['m.space.child'],
+        (powerLevels?['events'] as Map?)?['m.space.child'],
         0,
         reason:
             'attaching a course must let students add activity sessions '
             '(read-modify-write of the PL event)',
       );
+      // The RMW rebuilds the WHOLE event from local state — a stale/empty
+      // read would clobber everything else, so preservation is the contract.
+      expect((powerLevels?['users'] as Map?)?[client.userID], 100);
+      expect(powerLevels?['state_default'], 50);
     });
 
     test('teacher mode, capacity, chat-list settings, and the analytics '
@@ -239,9 +254,12 @@ void main() {
       await space.setCourseChatsSettings(
         const CourseChatsSettingsModel(dismissedIntroChat: true),
       );
+      // The toggle RMWs from LOCAL pangea.course_settings state; wait for
+      // the preceding write's echo so it flips from real state, not a
+      // stale read.
       await ContractHarness.waitUntil(
         client,
-        () => space.getState(PangeaEventTypes.courseSettings) != null || true,
+        () => space.getState(PangeaEventTypes.courseChatList) != null,
       );
       await space.toggleRequireAnalyticsAccess();
 
@@ -249,10 +267,9 @@ void main() {
       expect(state[PangeaEventTypes.teacherMode]?[''], teacherMode.toJson());
       expect(state[PangeaEventTypes.capacity]?['']?['capacity'], 12);
       expect(
-        state[PangeaEventTypes.courseChatList]?['']?['dismissed_intro_chat'] ??
-            state[PangeaEventTypes.courseChatList]?[''],
-        isNotNull,
-        reason: 'course chat-list settings must persist',
+        state[PangeaEventTypes.courseChatList]?[''],
+        const CourseChatsSettingsModel(dismissedIntroChat: true).toJson(),
+        reason: 'course chat-list settings must persist byte-equal',
       );
       expect(
         state[PangeaEventTypes
@@ -357,30 +374,60 @@ void main() {
       );
       await room.sendConstructsEvent(uses);
 
-      // Server-side read-back through the exact filtered /messages call the
-      // analytics sync uses (StateFilter on pangea.construct + sender).
-      final events = await room.getAnalyticsEvents(userId: learner.userID!);
-      expect(events, isNotNull);
+      // SERVER read-back: sendConstructsEvent ignores rejected chunks, and
+      // the local timeline still holds them with EventStatus.error — so the
+      // local getAnalyticsEvents path is green even when Synapse 413s every
+      // chunk. Ask the server directly with the same type/sender filter the
+      // analytics sync uses.
+      final resp = await learner.getRoomEvents(
+        room.id,
+        Direction.b,
+        limit: 50,
+        filter: jsonEncode({
+          'types': [PangeaEventTypes.construct],
+          'senders': [learner.userID],
+        }),
+      );
+      final serverEvents = resp.chunk
+          .where((e) => e.type == PangeaEventTypes.construct)
+          .toList();
       expect(
-        events!.length,
+        serverEvents.length,
         greaterThan(1),
         reason:
             'a batch this large must be chunked into multiple '
             'pangea.construct events (size cap)',
       );
-      final totalUses = events.fold<int>(
+      final totalUses = serverEvents.fold<int>(
         0,
-        (sum, e) => sum + e.content.uses.length,
+        (sum, e) => sum + ((e.content['uses'] as List?)?.length ?? 0),
       );
       expect(totalUses, uses.length, reason: 'no uses lost to chunking');
     });
   });
 
   group('custom timeline events', () {
+    // One shared plain group chat: these are message-send contracts, not
+    // room-creation ones, and launchActivitySession costs a CMS resolution
+    // per call. ALL reads go through ContractHarness.serverEvent — the SDK's
+    // getEventById serves the client's own authored bytes back from the
+    // local database, which can never detect server-side normalization.
+    Room? _timelineRoom;
+    Future<Room> timelineRoom() async {
+      if (_timelineRoom != null) return _timelineRoom!;
+      final roomId = await client.createPangeaGroupChat('P2 timeline');
+      ContractHarness.trackRoom(client, roomId);
+      await ContractHarness.waitUntil(
+        client,
+        () => client.getRoomById(roomId) != null,
+      );
+      return _timelineRoom = client.getRoomById(roomId)!;
+    }
+
     test(
       'sendPangeaEvent: non-spec rel_type accepted and retrievable',
       () async {
-        final room = await makeSessionRoom(activityId: 'p2-relations');
+        final room = await timelineRoom();
         final parentId = await room.sendTextEvent('parent message');
         expect(parentId, isNotNull);
 
@@ -391,17 +438,21 @@ void main() {
         );
         expect(eventId, isNotNull);
 
-        final event = await room.getEventById(eventId!.eventId);
-        expect(event?.type, PangeaEventTypes.representation);
+        final event = await ContractHarness.serverEvent(
+          client,
+          room.id,
+          eventId!.eventId,
+        );
+        expect(event.type, PangeaEventTypes.representation);
         expect(
-          event?.content['m.relates_to'],
+          event.content['m.relates_to'],
           {'rel_type': PangeaEventTypes.representation, 'event_id': parentId},
           reason:
               'the NON-SPEC rel_type (a pangea event type, not m.reference) '
               'must survive — the shape most exposed if Synapse ever '
               'validates relation types',
         );
-        expect(event?.content[PangeaEventTypes.representation], {
+        expect(event.content[PangeaEventTypes.representation], {
           'lang_code': 'es',
           'text': 'hola',
         });
@@ -409,7 +460,7 @@ void main() {
     );
 
     test('pangeaSendTextEvent sidecar keys round-trip', () async {
-      final room = await makeSessionRoom(activityId: 'p2-sidecars');
+      final room = await timelineRoom();
 
       final eventId = await room.pangeaSendTextEvent(
         'hola mundo',
@@ -417,62 +468,100 @@ void main() {
       );
       expect(eventId, isNotNull);
 
-      final event = await room.getEventById(eventId!);
-      expect(event?.content['body'], 'hola mundo');
+      final event = await ContractHarness.serverEvent(
+        client,
+        room.id,
+        eventId!,
+      );
+      expect(event.content['body'], 'hola mundo');
       expect(
-        event?.content[MessageConstants.messageTags],
+        event.content[MessageConstants.messageTags],
         contractMessageTag,
         reason: 'the Pangea sidecar keys must ride the m.room.message',
       );
     });
 
-    test('a large under-cap message body is accepted', () async {
-      final room = await makeSessionRoom(activityId: 'p2-large');
-      // Well under the client's 60_000-byte guard but far above a typical
-      // message — pins that the server accepts what the client permits.
+    test('a large guard-permitted message body is accepted', () async {
+      final room = await timelineRoom();
       // The 60_000-byte guard measures the encoded event WITH the markdown
       // formatted_body (it runs markdown unconditionally in its size probe),
       // so the effective body budget is roughly half the cap. Pin that a
-      // body the guard permits is accepted by the server.
+      // body the guard permits is stored intact by the server.
       final body = 'palabra ' * 3000; // ~24KB body, ~49KB probed event
       final eventId = await room.pangeaSendTextEvent(body);
       expect(eventId, isNotNull);
-      final event = await room.getEventById(eventId!);
-      expect((event?.content['body'] as String?)?.length, body.length);
+      final event = await ContractHarness.serverEvent(
+        client,
+        room.id,
+        eventId!,
+      );
+      expect((event.content['body'] as String?)?.length, body.length);
     });
 
-    test(
-      'TTS audio: the transcription extraContent survives upload+send',
-      () async {
-        final room = await makeSessionRoom(activityId: 'p2-tts');
-        final transcription = {
-          'lang_code': 'es',
-          'text': 'hola',
-          'duration': 850,
-        };
-
-        final eventId = await room.sendFileEvent(
-          MatrixFile(
-            bytes: Uint8List.fromList(utf8.encode('p2-fake-audio-bytes')),
-            name: 'p2-contract.ogg',
-            mimeType: 'audio/ogg',
+    test('TTS audio: the production payload survives upload+send', () async {
+      final room = await timelineRoom();
+      // The exact extraContent pangea_message_event builds: the full
+      // PangeaAudioEventData (tokens included), the msc1767/msc3245 blocks,
+      // and the non-spec rel_type on a FILE event.
+      final audioData = PangeaAudioEventData(
+        text: 'hola',
+        langCode: 'es',
+        tokens: [
+          TTSToken(
+            startMS: 0,
+            endMS: 850,
+            text: PangeaTokenText(offset: 0, content: 'hola', length: 4),
           ),
-          extraContent: {
-            'msgtype': MessageTypes.Audio,
-            MessageConstants.transcription: transcription,
+        ],
+      );
+      final parentId = await room.sendTextEvent('read this aloud');
+
+      final eventId = await room.sendFileEvent(
+        MatrixFile(
+          bytes: Uint8List.fromList(utf8.encode('p2-fake-audio-bytes')),
+          name: 'p2-contract.ogg',
+          mimeType: 'audio/ogg',
+        ),
+        extraContent: {
+          'info': {MessageConstants.duration: 850},
+          'org.matrix.msc3245.voice': {},
+          'org.matrix.msc1767.audio': {
+            MessageConstants.duration: 850,
+            'waveform': [0, 12, 48, 12, 0],
           },
-        );
-        expect(eventId, isNotNull);
-        final event = await room.getEventById(eventId!);
-        expect(
-          event?.content[MessageConstants.transcription],
-          transcription,
-          reason:
-              'the Pangea transcription payload (what the TTS push rule and '
-              'read-aloud key off) must survive the media send',
-        );
-      },
-    );
+          MessageConstants.transcription: audioData.toJson(),
+          'm.relates_to': {
+            'rel_type': PangeaEventTypes.textToSpeech,
+            'event_id': parentId,
+          },
+        },
+      );
+      expect(eventId, isNotNull);
+      final event = await ContractHarness.serverEvent(
+        client,
+        room.id,
+        eventId!,
+      );
+      expect(
+        event.content[MessageConstants.transcription],
+        audioData.toJson(),
+        reason:
+            'the full transcription payload (tokens included — what the TTS '
+            'push rule and read-aloud key off) must survive the media send',
+      );
+      expect(
+        event.content['m.relates_to'],
+        {'rel_type': PangeaEventTypes.textToSpeech, 'event_id': parentId},
+        reason: 'the non-spec rel_type on a FILE event must survive',
+      );
+      expect((event.content['org.matrix.msc1767.audio'] as Map?)?['waveform'], [
+        0,
+        12,
+        48,
+        12,
+        0,
+      ]);
+    });
   });
 }
 

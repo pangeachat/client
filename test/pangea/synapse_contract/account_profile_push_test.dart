@@ -9,12 +9,15 @@ import 'package:fluffychat/features/analytics_access/access_notice_extension.dar
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/notifications/notifications_client_extension.dart';
 import 'package:fluffychat/features/notifications/notifications_settings_model.dart';
+import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/own_profile_client_extension.dart';
 import 'package:fluffychat/features/user/pangea_push_rules_extension.dart';
+import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_constants.dart';
 import 'package:fluffychat/features/user/user_model.dart' as pangea_user;
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_client_extension.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_settings_model.dart';
 import '../endpoint_test_env.dart';
 import 'contract_harness.dart';
 
@@ -65,15 +68,20 @@ void main() {
     test('onboarding settings persist', () async {
       await client.setShowedTrialPage();
       final data = await accountData(PangeaEventTypes.onboardingSettings);
-      expect(data, isNotEmpty, reason: 'onboarding progress must persist');
+      // Exact key: the persona is reused across runs, so isNotEmpty would be
+      // vacuously green from run 2 even if the write no-oped or renamed.
+      expect(
+        data,
+        const OnboardingSettingsModel(showedTrialPage: true).toJson(),
+        reason: 'onboarding progress must persist byte-equal',
+      );
     });
 
     test('notification settings write the serializer shape', () async {
-      // Flip relative to current server state so the equality early-return
-      // in setNotificationsSettings cannot skip the write.
-      final current = await accountData(
-        PangeaEventTypes.notificationSettings,
-      ).then((d) => d['enable_email_notifs'] == true).catchError((_) => false);
+      // Flip relative to the LOCAL cached value — that is what the
+      // extension's equality early-return actually compares against, so
+      // flipping from anything else risks a skipped write.
+      final current = client.notificationSettings.enableEmailNotifs;
       final model = NotificationsSettingsModel(enableEmailNotifs: !current);
 
       await client.setNotificationsSettings(model);
@@ -83,18 +91,18 @@ void main() {
     });
 
     test('the p.user_profile bundle round-trips through the parser', () async {
-      // Profile.saveProfileData is MatrixState-coupled, so this drives the
-      // same account-data type with the production constants and pins the
-      // PARSER as the read contract: whatever shape is stored must come
-      // back through Profile.fromAccountData non-null.
-      final payload = {
-        UserConstants.userSettings: {
-          'target_language': 'es',
-          'source_language': 'en',
-          'created_at': DateTime.utc(2026).toIso8601String(),
-        },
-        UserConstants.toolSettings: <String, Object?>{},
-      };
+      // Profile.saveProfileData is MatrixState-coupled, so this writes the
+      // PRODUCTION serializer's output directly (Profile.toJson emits
+      // several explicit JSON nulls — the part an account-data normalizer
+      // would most plausibly strip) and pins the parser as the read side.
+      final profile = pangea_user.Profile(
+        userSettings: pangea_user.UserSettings(
+          targetLanguage: 'es',
+          sourceLanguage: 'en',
+          createdAt: DateTime.utc(2026),
+        ),
+      );
+      final payload = profile.toJson();
       await client.setAccountData(
         client.userID!,
         UserConstants.userProfile,
@@ -102,13 +110,13 @@ void main() {
       );
 
       final data = await accountData(UserConstants.userProfile);
-      expect(data[UserConstants.userSettings], isNotNull);
-      final parsed = pangea_user.Profile.fromAccountData(data);
       expect(
-        parsed,
-        isNotNull,
-        reason: 'the stored bundle must parse through Profile.fromAccountData',
+        data,
+        payload,
+        reason:
+            'the bundle must round-trip byte-equal, explicit nulls included',
       );
+      final parsed = pangea_user.Profile.fromAccountData(data);
       expect(parsed?.userSettings.targetLanguage, 'es');
     });
   });
@@ -218,20 +226,31 @@ void main() {
         await client.setOwnAvatar(null);
         final cleared = (await rawProfile())['avatar_url'];
         expect(
-          cleared == null || cleared == '',
-          true,
+          cleared,
+          anyOf(isNull, ''),
           reason: 'clearing must not 400 and must remove the avatar',
         );
       },
     );
 
     test('the MSC4133 extended analytics-profile field round-trips', () async {
-      final payload = {
-        'analytics': {
-          'es': {'level': 3, 'xp_offset': 120},
-        },
-        'country': 'MX',
-      };
+      // The production serializer, analytics_room_id included — a Matrix
+      // room id nested two levels inside an extended profile field is the
+      // value most exposed to MSC4133 content validation.
+      final lang = LanguageModel(langCode: 'es', displayName: 'Spanish');
+      final payload = PublicProfileModel(
+        analytics: AnalyticsProfileModel(
+          targetLanguage: lang,
+          languageAnalytics: {
+            lang: LanguageAnalyticsProfileEntry(
+              3,
+              120,
+              analyticsRoomId: '!p2analytics:${client.userID!.split(':').last}',
+            ),
+          },
+        ),
+        country: 'MX',
+      ).toJson();
       await client.setUserProfile(
         client.userID!,
         PangeaEventTypes.profileAnalytics,
@@ -265,9 +284,14 @@ void main() {
           isNot(MatrixError.M_UNRECOGNIZED),
           reason: 'the password-reset token route must exist',
         );
-      } catch (_) {
-        // Non-JSON 5xx from the SMTP-less local stack: route exists,
-        // sending failed — tolerated.
+      } on Exception catch (e) {
+        // ONLY the opaque non-JSON 5xx of an SMTP-less stack is tolerated —
+        // a socket failure, HTML 404, or parse error must stay red.
+        expect(
+          e.toString(),
+          contains('http error response'),
+          reason: 'unexpected failure shape: $e',
+        );
       }
     });
 
@@ -284,8 +308,13 @@ void main() {
           isNot(MatrixError.M_UNRECOGNIZED),
           reason: 'the 3pid email token route must exist',
         );
-      } catch (_) {
-        // Tolerated: send failure on an SMTP-less stack.
+      } on Exception catch (e) {
+        // Same tolerance as above: only the opaque 5xx shape.
+        expect(
+          e.toString(),
+          contains('http error response'),
+          reason: 'unexpected failure shape: $e',
+        );
       }
     });
   });
