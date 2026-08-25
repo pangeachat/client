@@ -401,6 +401,35 @@ void main() {
       );
     });
 
+    test('the accepted event replaces its own local echo', () {
+      // The hop every successfully sent card makes: the local echo is keyed by
+      // the transaction id, and the accepted event comes back under a real
+      // event id carrying that transaction id. Both echoes share one
+      // timestamp, so the tie used to be settled by comparing a transaction id
+      // string against a `\$`-prefixed event id -- correct today only because
+      // this app's transaction ids start with a letter, which sorts after
+      // `\$`. Luck, not an invariant.
+      asDirectChat();
+      final echo = card(r'$pangea.call.abc', key: 'k', ts: 1000);
+      echo.status = EventStatus.sending;
+      final accepted = Event(
+        type: PangeaEventTypes.call,
+        content: {'answered': true, CallRecord.callKeyField: 'k'},
+        senderId: '@a:server',
+        eventId: r'$real-server-id',
+        originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
+        room: Room(id: '!r:server', client: client),
+        status: EventStatus.synced,
+        unsigned: const {'transaction_id': r'$pangea.call.abc'},
+      );
+
+      expect(
+        callCardMayTakeTheChatListLine(echo, accepted),
+        isTrue,
+        reason: 'a record confirming itself is not a rival card',
+      );
+    });
+
     test('an unidentifiable peer is a shrug, not a refusal', () {
       // The distinction the previous version could not draw. Nobody being
       // identifiable must not be treated the same as this sender being

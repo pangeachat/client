@@ -83,7 +83,17 @@ bool callCardMayTakeTheChatListLine(Event? current, Event incoming) {
   // which refused the update and froze the line on the stale sending copy
   // forever. The chat list then showed a cheerful "Voice call" for a call the
   // peer never received, while the conversation correctly showed nothing.
-  if (current != null && current.eventId == incoming.eventId) return true;
+  //
+  // "The same record" also covers the hop from the local echo to the version
+  // the server accepted, which arrives under a DIFFERENT id: the echo is keyed
+  // by the transaction id, and the accepted event carries that transaction id
+  // back. Both echoes share one timestamp, so without this the tie would be
+  // settled by comparing a transaction id string against a `$`-prefixed event
+  // id -- which resolves correctly today only because this app's transaction
+  // ids happen to start with a letter, which sorts after `$`. That is luck,
+  // not an invariant, and rank arbitration was built for two independently
+  // authored rival cards rather than for one record confirming itself.
+  if (current != null && _sameRecord(current, incoming)) return true;
 
   // Something that cannot produce a line must not be allowed to take it.
   // Otherwise it wins the slot and renders as nothing, and a real call that
@@ -109,6 +119,15 @@ bool callCardMayTakeTheChatListLine(Event? current, Event incoming) {
   }
   return CallTimelineEvent.outranks(incoming, current);
 }
+
+/// Whether these are two sightings of ONE record rather than rival cards.
+///
+/// The same event id, or the local echo and the accepted event that carries
+/// its transaction id back.
+bool _sameRecord(Event current, Event incoming) =>
+    current.eventId == incoming.eventId ||
+    incoming.transactionId == current.eventId ||
+    current.transactionId == incoming.eventId;
 
 /// Whether the chat list would have anything to say about this card.
 ///
