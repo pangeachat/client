@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-24 11:54:16.545834",
+    "@@last_modified": "2026-08-24 16:25:53.448764",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9793,5 +9793,6 @@
     "switchLanguageChipLabel": "Vaihda kieleen: {language}",
     "languageDropdownLevel": "Taso {level}",
     "whatAreYouLearning": "Mitä opiskelet?",
-    "languageSwitcherBaseLanguageLabel": "Peruskielesi"
+    "languageSwitcherBaseLanguageLabel": "Peruskielesi",
+    "listenModeDescription": "Kuule valinta napauttamalla sitä. Mitään ei ole valittu."
 }

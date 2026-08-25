@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:15.931626",
+    "@@last_modified": "2026-08-24 16:25:53.697373",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9844,5 +9844,6 @@
     "switchLanguageChipLabel": "تغییر به {language}",
     "languageDropdownLevel": "سطح {level}",
     "whatAreYouLearning": "چه چیزی یاد می‌گیرید؟",
-    "languageSwitcherBaseLanguageLabel": "زبان پایه شما"
+    "languageSwitcherBaseLanguageLabel": "زبان پایه شما",
+    "listenModeDescription": "برای شنیدن یک گزینه روی آن ضربه بزنید. چیزی انتخاب نشده است."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-24 11:54:14.396031",
+    "@@last_modified": "2026-08-24 16:25:52.311899",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Превключване на {language}",
     "languageDropdownLevel": "Ниво {level}",
     "whatAreYouLearning": "Какво учиш?",
-    "languageSwitcherBaseLanguageLabel": "Вашият основен език"
+    "languageSwitcherBaseLanguageLabel": "Вашият основен език",
+    "listenModeDescription": "Докоснете избор, за да го чуете. Нищо не е избрано."
 }

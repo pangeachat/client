@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-24 11:54:21.104757",
+    "@@last_modified": "2026-08-24 16:25:57.397415",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10701,5 +10701,6 @@
     "switchLanguageChipLabel": "Prepnúť na {language}",
     "languageDropdownLevel": "Úroveň {level}",
     "whatAreYouLearning": "Čo sa učíte?",
-    "languageSwitcherBaseLanguageLabel": "Váš základný jazyk"
+    "languageSwitcherBaseLanguageLabel": "Váš základný jazyk",
+    "listenModeDescription": "Ťuknutím na možnosť si ju vypočujete. Nič nie je vybraté."
 }

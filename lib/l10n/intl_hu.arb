@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-24 11:54:17.090827",
+    "@@last_modified": "2026-08-24 16:25:54.271204",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9859,5 +9859,6 @@
     "switchLanguageChipLabel": "Váltás a következő nyelvre: {language}",
     "languageDropdownLevel": "{level}. szint",
     "whatAreYouLearning": "Mit tanulsz?",
-    "languageSwitcherBaseLanguageLabel": "Alapnyelved"
+    "languageSwitcherBaseLanguageLabel": "Alapnyelved",
+    "listenModeDescription": "Koppintson egy választásra, hogy meghallgassa. Nincs kiválasztva semmi."
 }

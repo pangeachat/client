@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:17.255754",
+    "@@last_modified": "2026-08-24 16:25:54.504129",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9829,5 +9829,6 @@
     "switchLanguageChipLabel": "Beralih ke {language}",
     "languageDropdownLevel": "Level {level}",
     "whatAreYouLearning": "Apa yang sedang Anda pelajari?",
-    "languageSwitcherBaseLanguageLabel": "Bahasa dasar Anda"
+    "languageSwitcherBaseLanguageLabel": "Bahasa dasar Anda",
+    "listenModeDescription": "Ketuk pilihan untuk mendengarnya. Tidak ada yang dipilih."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-24 11:54:16.951499",
+    "@@last_modified": "2026-08-24 16:25:54.142942",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10192,5 +10192,6 @@
     "switchLanguageChipLabel": "Prebaci na {language}",
     "languageDropdownLevel": "Razina {level}",
     "whatAreYouLearning": "Što učiš?",
-    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik"
+    "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik",
+    "listenModeDescription": "Dodirnite odabir da biste ga čuli. Ništa nije odabrano."
 }

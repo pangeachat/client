@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-24 11:54:18.825961",
+    "@@last_modified": "2026-08-24 16:25:55.451088",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "ປ່ຽນເປັນ {language}",
     "languageDropdownLevel": "ລະດັບ {level}",
     "whatAreYouLearning": "ທ່ານກຳລັງຮຽນຫຍັງ?",
-    "languageSwitcherBaseLanguageLabel": "ພາສາພື້ນຖານຂອງທ່ານ"
+    "languageSwitcherBaseLanguageLabel": "ພາສາພື້ນຖານຂອງທ່ານ",
+    "listenModeDescription": "ແຕະຕົວເລືອກເພື່ອຟັງ. ບໍ່ມີຫຍັງຖືກເລືອກ."
 }

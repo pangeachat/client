@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:23.471899",
+    "@@last_modified": "2026-08-24 16:25:58.828583",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9862,5 +9862,6 @@
     "switchLanguageChipLabel": "切換至{language}",
     "languageDropdownLevel": "等級 {level}",
     "whatAreYouLearning": "您正在學習什麼？",
-    "languageSwitcherBaseLanguageLabel": "您的基礎語言"
+    "languageSwitcherBaseLanguageLabel": "您的基礎語言",
+    "listenModeDescription": "點擊一個選項來聽。沒有選取任何項目。"
 }

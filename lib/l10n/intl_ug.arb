@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-24 11:54:23.006609",
+    "@@last_modified": "2026-08-24 16:25:58.497029",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language}غا ئالماشتۇرۇش",
     "languageDropdownLevel": "{level}-دەرىجە",
     "whatAreYouLearning": "نېمە ئۆگىنىۋاتىسىز؟",
-    "languageSwitcherBaseLanguageLabel": "سىزنىڭ ئاساسىي تىلىڭىز"
+    "languageSwitcherBaseLanguageLabel": "سىزنىڭ ئاساسىي تىلىڭىز",
+    "listenModeDescription": "ئاڭلاش ئۈچۈن بىر تاللاشنى چېكىڭ. ھېچقانداق تاللاش يوق."
 }

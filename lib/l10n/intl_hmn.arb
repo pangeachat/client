@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-24 11:54:17.034828",
+    "@@last_modified": "2026-08-24 16:25:54.261135",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Hloov mus rau {language}",
     "languageDropdownLevel": "Qib {level}",
     "whatAreYouLearning": "Koj kawm dab tsi?",
-    "languageSwitcherBaseLanguageLabel": "Koj hom lus pib"
+    "languageSwitcherBaseLanguageLabel": "Koj hom lus pib",
+    "listenModeDescription": "Coj ib qho kev xaiv los mloog. Tsis muaj dab tsi raug xaiv."
 }

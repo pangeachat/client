@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-24 11:54:19.423753",
+    "@@last_modified": "2026-08-24 16:25:55.934683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "{language} वर स्विच करा",
     "languageDropdownLevel": "स्तर {level}",
     "whatAreYouLearning": "तुम्ही काय शिकत आहात?",
-    "languageSwitcherBaseLanguageLabel": "तुमची मूळ भाषा"
+    "languageSwitcherBaseLanguageLabel": "तुमची मूळ भाषा",
+    "listenModeDescription": "ऐकण्यासाठी पर्याय टॅप करा. काहीही निवडलेले नाही."
 }

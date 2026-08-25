@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-24 11:54:20.184584",
+    "@@last_modified": "2026-08-24 16:25:56.415616",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2160,5 +2160,6 @@
     "switchLanguageChipLabel": "Bytt til {language}",
     "languageDropdownLevel": "Nivå {level}",
     "whatAreYouLearning": "Hva lærer du?",
-    "languageSwitcherBaseLanguageLabel": "Ditt morsmål"
+    "languageSwitcherBaseLanguageLabel": "Ditt morsmål",
+    "listenModeDescription": "Trykk på et valg for å høre det. Ingenting er valgt."
 }

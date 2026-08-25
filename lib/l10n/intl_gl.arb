@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-24 11:54:16.273464",
+    "@@last_modified": "2026-08-24 16:25:53.887244",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9756,5 +9756,6 @@
     "switchLanguageChipLabel": "Cambiar a {language}",
     "languageDropdownLevel": "Nivel {level}",
     "whatAreYouLearning": "Que estás a aprender?",
-    "languageSwitcherBaseLanguageLabel": "A túa lingua base"
+    "languageSwitcherBaseLanguageLabel": "A túa lingua base",
+    "listenModeDescription": "Toca unha opción para escoitala. Non hai nada seleccionado."
 }

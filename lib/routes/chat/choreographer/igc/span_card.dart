@@ -17,6 +17,8 @@ import 'package:fluffychat/routes/chat/choreographer/igc/span_choice_type_enum.d
 import 'package:fluffychat/routes/chat/choreographer/igc/span_data_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/writing_assistance_popup.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/writing_asssitance_popup_manager.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_disabled_popup.dart';
+import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SpanCard extends StatefulWidget {
@@ -38,6 +40,13 @@ class SpanCardState extends State<SpanCard> {
 
   double? _previousOffset;
   Offset _slideFrom = const Offset(0.1, 0); // default slide from right
+
+  /// Listen mode: while on, tapping a choice plays it and selects nothing.
+  ///
+  /// Belongs to the match being shown — advancing to another one turns it off,
+  /// so a learner can never carry an invisible mode into a choice they meant
+  /// to pick. See writing-assistance.instructions.md.
+  bool _listening = false;
 
   Choreographer get _choreographer => widget.controller.choreographer;
 
@@ -73,7 +82,21 @@ class SpanCardState extends State<SpanCard> {
       return;
     }
 
-    if (mounted) setState(() {});
+    if (mounted) setState(() => _listening = false);
+  }
+
+  /// Turn Listen mode on or off.
+  ///
+  /// Choice audio is gated by the audio section of learning settings, and a
+  /// mode whose whole purpose is audio must not be enterable while that gate
+  /// is shut — it would be a toggle that produces silence. The toggle is an
+  /// explicit audio affordance, so it says so the way the others do.
+  void _toggleListening(String targetId) {
+    if (!_listening && !ToolSetting.audioChoices.enabled) {
+      TtsDisabledPopup.show(context, targetId, ToolSetting.audioChoices);
+      return;
+    }
+    setState(() => _listening = !_listening);
   }
 
   Future<void> _onChoiceSelect(
@@ -222,6 +245,8 @@ class SpanCardState extends State<SpanCard> {
                         onChoiceSelect: _onChoiceSelect,
                         onUpdateMatch: _updateMatch,
                         roomId: _choreographer.room.id,
+                        listening: _listening,
+                        onToggleListening: _toggleListening,
                       ),
                     ),
                   ),
@@ -247,6 +272,13 @@ class _MatchContent extends StatelessWidget {
   /// choice's audio is counted against it.
   final String roomId;
 
+  /// Whether Listen mode is on, in which case a tapped choice is only spoken.
+  final bool listening;
+
+  /// Takes the id of the transform target the "audio is off" popup anchors to,
+  /// which is this content's toggle.
+  final void Function(String) onToggleListening;
+
   const _MatchContent({
     super.key,
     required this.match,
@@ -254,15 +286,23 @@ class _MatchContent extends StatelessWidget {
     required this.onChoiceSelect,
     required this.onUpdateMatch,
     required this.roomId,
+    required this.listening,
+    required this.onToggleListening,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final isOpen = match.updatedMatch.status.isOpen;
     final currentMatch = match.updatedMatch.match;
     final descriptionText =
         currentMatch.bestChoice?.feedback ??
         currentMatch.type.defaultPrompt(context);
+
+    // Per match, so the crossfade between two matches never has two subtrees
+    // holding the same global key.
+    final listenTargetId = 'wa-listen-${match.hashCode}';
+    final listenLink = MatrixState.pAnyState.layerLinkAndKey(listenTargetId);
 
     return Scrollbar(
       controller: scrollController,
@@ -275,11 +315,43 @@ class _MatchContent extends StatelessWidget {
             children: [
               Text(
                 descriptionText,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  color: theme.colorScheme.primary,
                 ),
                 textAlign: TextAlign.center,
               ),
+              if (isOpen)
+                Semantics(
+                  toggled: listening,
+                  child: CompositedTransformTarget(
+                    link: listenLink.link,
+                    child: KeyedSubtree(
+                      key: listenLink.key,
+                      child: TextButton.icon(
+                        onPressed: () => onToggleListening(listenTargetId),
+                        icon: const Icon(Icons.headphones, size: 18.0),
+                        label: Text(L10n.of(context).listen),
+                        style: TextButton.styleFrom(
+                          visualDensity: VisualDensity.compact,
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          backgroundColor: listening
+                              ? theme.colorScheme.primary
+                              : null,
+                          foregroundColor: listening
+                              ? theme.colorScheme.onPrimary
+                              : theme.colorScheme.onSurfaceVariant,
+                          shape: StadiumBorder(
+                            side: BorderSide(
+                              color: listening
+                                  ? theme.colorScheme.primary
+                                  : theme.colorScheme.outlineVariant,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               isOpen
                   ? ChoicesArray<SpanChoice>(
                       choices: currentMatch.choices?.map((e) {
@@ -306,6 +378,7 @@ class _MatchContent extends StatelessWidget {
                           .userL2Code!,
                       enabled: !currentMatch.isSelectedChoiceCorrection,
                       getDisplayCopy: (choice) => choice.value,
+                      listenMode: listening,
                     )
                   : Row(
                       spacing: 16.0,
@@ -339,6 +412,14 @@ class _MatchContent extends StatelessWidget {
                         ),
                       ],
                     ),
+              if (isOpen && listening)
+                Text(
+                  L10n.of(context).listenModeDescription,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.primary,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
             ],
           ),
         ),
