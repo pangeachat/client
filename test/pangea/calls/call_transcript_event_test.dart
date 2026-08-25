@@ -149,11 +149,7 @@ void main() {
         'segments': [
           {'text': 'I spoke'},
         ],
-        'chunks_captured': 0,
-        'chunks_transcribed': 0,
-        'drain_complete': true,
-        'truncated': false,
-        'segments_omitted': 0,
+        ...const HalfAccounting(drainComplete: true).toJson(),
       })!;
 
       expect(parsed.accounting.incoherent, isTrue);
@@ -166,11 +162,7 @@ void main() {
       final parsed = CallTranscriptContent.fromJson({
         'call_key': _callKey,
         'segments': <dynamic>[],
-        'chunks_captured': 0,
-        'chunks_transcribed': 0,
-        'drain_complete': true,
-        'truncated': false,
-        'segments_omitted': 0,
+        ...const HalfAccounting(drainComplete: true).toJson(),
       })!;
 
       expect(parsed.accounting.incoherent, isFalse);

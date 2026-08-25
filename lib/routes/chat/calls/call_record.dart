@@ -47,6 +47,7 @@ typedef TranscriptPublisher =
       required List<TranscriptSegment> segments,
       required int chunksCaptured,
       required int chunksTranscribed,
+      required int chunksLost,
       required bool drainComplete,
       String? langCode,
     });
@@ -365,12 +366,19 @@ class CallRecord {
     final publish = publishTranscript;
     if (publish == null || _published || callKey == null) return;
 
-    // Marked before the await, and NOT reset on failure. The retry loop above
-    // exists for the credit, and re-entering here on a later attempt would
-    // publish a second half for the same call under a different transaction id
-    // if the first had in fact landed. One attempt per call is the safe side of
-    // that trade: a missing transcript is visible and recoverable, a duplicated
-    // one is speech the learner never said twice.
+    // Marked before the await so concurrent callers cannot both publish, and
+    // PUT BACK on failure so a later attempt can try again.
+    //
+    // An earlier version never reset it, reasoning that a retry might publish a
+    // second half if the first had in fact landed. That reasoning was wrong,
+    // and wrong against this feature's own design: the transaction id is
+    // deterministic in (call_key, sender) precisely so a resend after a network
+    // failure collapses server-side instead of writing a second copy. Refusing
+    // to retry did not avoid a duplicate -- duplicates were already impossible
+    // -- it just threw the half away. A transient send failure then lost the
+    // words for good, and a reader doing an exhausted read would report that
+    // speaker ABSENT: told they said nothing, when they spoke and the device
+    // tried to say so.
     _published = true;
     try {
       await publish(
@@ -378,6 +386,7 @@ class CallRecord {
         segments: transcripts.segments,
         chunksCaptured: transcripts.chunksCaptured,
         chunksTranscribed: transcripts.chunksTranscribed,
+        chunksLost: transcripts.chunksLost,
         // Meaningful only once the sink has closed, which the capture service
         // does before this runs. Read earlier it would be the optimistic
         // default and a half could claim a completeness nothing had checked.
@@ -385,14 +394,18 @@ class CallRecord {
         langCode: transcripts.langCode,
       );
     } catch (e, s) {
+      // Released for another attempt. Safe because of the deterministic
+      // transaction id above: a resend of a half that did land is collapsed by
+      // the server rather than duplicated.
+      _published = false;
       // Swallowed rather than rethrown, so a transcript failure cannot drag the
-      // credit into the retry loop above. Belt and braces as things stand --
-      // the loop would retry and the guard above would skip the second publish,
-      // reaching the same outcome -- and deliberately NOT covered by a test,
-      // because no observable behaviour distinguishes it today. It earns its
-      // place the moment that retry loop changes, which is exactly when nobody
-      // will be thinking about this.
-      Logs().w('The call transcript was not published', e, s);
+      // credit into its own retry loop, which is once-only and cannot survive
+      // being re-entered.
+      Logs().w(
+        'The call transcript was not published; it can be retried',
+        e,
+        s,
+      );
     }
   }
 

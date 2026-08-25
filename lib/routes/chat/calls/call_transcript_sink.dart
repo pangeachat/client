@@ -237,6 +237,18 @@ class CallTranscriptSink implements CallAudioSink {
   int get chunksTranscribed =>
       _byIndex.values.where((r) => r.hasUsableTranscript).length;
 
+  /// Chunks this device captured and then LOST -- transcription failed and was
+  /// never retried.
+  ///
+  /// The number that actually means a gap. It is tempting to infer one from
+  /// `chunksTranscribed < chunksCaptured`, and that was wrong: those two count
+  /// different things. A chunk the provider read as SILENCE is captured and not
+  /// transcribed, yet nothing was dropped -- the audio was processed and found
+  /// to contain nothing said. Almost every real call has a quiet stretch, so
+  /// inferring loss from the difference marked nearly every transcript
+  /// incomplete, which leaves the flag meaning nothing when it matters.
+  int get chunksLost => _failed.length;
+
   /// Chunks whose transcription failed outright and was never retried.
   final Set<int> _failed = {};
 

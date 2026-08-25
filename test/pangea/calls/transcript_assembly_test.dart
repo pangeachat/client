@@ -66,14 +66,65 @@ void main() {
       expect(transcript.readerStoppedEarly, isTrue);
     });
 
-    test('a writer admitting gaps is incomplete even when exhausted', () {
+    test(
+      'silence is not a gap: fewer transcribed than captured is COMPLETE',
+      () {
+        // The most common shape of a real call. Inferring loss from
+        // transcribed < captured marked nearly every transcript incomplete,
+        // which leaves the flag meaning nothing when a half really is short.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              accounting: const HalfAccounting(
+                chunksCaptured: 5,
+                chunksTranscribed: 2,
+                chunksLost: 0,
+                declared: true,
+              ),
+            ),
+          ],
+          expectedSenders: [alice],
+        );
+
+        expect(_halfFor(transcript, alice).state, HalfState.present);
+      },
+    );
+
+    test('transcribed plus lost exceeding captured is INCOHERENT', () {
+      // The coherence rule is about the total, not one count: a half claiming
+      // it captured 3 and then accounting for 5 of them is nonsense whichever
+      // count carries the excess.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            accounting: HalfAccounting.fromJson(const {
+              'chunks_captured': 3,
+              'chunks_transcribed': 3,
+              'chunks_lost': 2,
+              'truncated': false,
+              'segments_omitted': 0,
+              'drain_complete': true,
+            }),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).accounting.incoherent, isTrue);
+      expect(_halfFor(transcript, alice).state, HalfState.incomplete);
+    });
+
+    test('a chunk actually LOST makes the half incomplete', () {
       final transcript = assembleTranscript(
         candidates: [
           _candidate(
             alice,
             accounting: const HalfAccounting(
               chunksCaptured: 5,
-              chunksTranscribed: 3,
+              chunksTranscribed: 4,
+              chunksLost: 1,
               declared: true,
             ),
           ),

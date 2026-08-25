@@ -26,6 +26,7 @@ void main() {
       int segments,
       int captured,
       int transcribed,
+      int lost,
       bool drained,
     })
   >
@@ -80,6 +81,7 @@ void main() {
             required List<TranscriptSegment> segments,
             required int chunksCaptured,
             required int chunksTranscribed,
+            required int chunksLost,
             required bool drainComplete,
             String? langCode,
           }) async {
@@ -89,6 +91,7 @@ void main() {
               segments: segments.length,
               captured: chunksCaptured,
               transcribed: chunksTranscribed,
+              lost: chunksLost,
               drained: drainComplete,
             ));
           },
@@ -182,6 +185,83 @@ void main() {
 
       expect(published.single.drained, isFalse);
     });
+
+    test('a failed publish can be retried on a later finish', () async {
+      // The transaction id is deterministic precisely so a resend collapses
+      // server-side. Refusing to retry did not avoid a duplicate -- duplicates
+      // were already impossible -- it threw the half away, and a reader doing
+      // an exhausted read would then report that speaker as having said
+      // nothing.
+      var attempts = 0;
+      final sink = await sinkWith(() => spokenWord('hola'));
+      final r = CallRecord(
+        roomId: '!r:server',
+        transcripts: sink,
+        sendEvent: (content, txid) async => '\$call',
+        analytics: (id, uses, lang) async {},
+        publishTranscript:
+            ({
+              required String callKey,
+              required List<TranscriptSegment> segments,
+              required int chunksCaptured,
+              required int chunksTranscribed,
+              required int chunksLost,
+              required bool drainComplete,
+              String? langCode,
+            }) async {
+              attempts++;
+              if (attempts == 1) throw StateError('a transient network blip');
+            },
+      );
+
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+      expect(attempts, 1);
+
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+      expect(attempts, 2, reason: 'the second finish tries again');
+    });
+
+    test('a call with SILENCE in it is not reported incomplete', () async {
+      // The most common shape of a real call: some chunks carry speech, some
+      // are quiet. Silence is not loss -- the provider processed the audio and
+      // found nothing said -- but inferring "speech dropped" from
+      // transcribed < captured marked almost every real transcript
+      // incomplete, which empties the flag of meaning.
+      var call = 0;
+      final sink = CallTranscriptSink(
+        userL1: 'en',
+        userL2: 'es',
+        transcribe: (_) async => (call++).isEven ? spokenWord('hola') : silent,
+      );
+      await sink.deliver(chunk(0));
+      await sink.deliver(chunk(1));
+      await sink.close();
+
+      final r = record(sink, withPublisher: true);
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+      expect(published.single.captured, 2);
+      expect(published.single.transcribed, 1);
+      expect(published.single.lost, 0, reason: 'silence is not loss');
+    });
+
+    test(
+      'a chunk that FAILED and was never retried is reported lost',
+      () async {
+        final sink = CallTranscriptSink(
+          userL1: 'en',
+          userL2: 'es',
+          transcribe: (_) async => throw StateError('the provider refused'),
+        );
+        await sink.deliver(chunk(0)).catchError((_) {});
+        await sink.close();
+
+        final r = record(sink, withPublisher: true);
+        await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+        expect(published.single.lost, 1);
+      },
+    );
 
     test('hands over the accounting the reader depends on', () async {
       // Asserting only "the publisher was called" would not notice these being

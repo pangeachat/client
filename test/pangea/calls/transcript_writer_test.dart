@@ -29,6 +29,7 @@ Future<bool> _write(
   String? callKey = _callKey,
   int chunksCaptured = 2,
   int chunksTranscribed = 2,
+  int chunksLost = 0,
   bool drainComplete = true,
   String? langCode = 'es',
   int maxBytes = kMaxHalfBytes,
@@ -39,6 +40,7 @@ Future<bool> _write(
   segments: [for (final t in texts) TranscriptSegment(t)],
   chunksCaptured: chunksCaptured,
   chunksTranscribed: chunksTranscribed,
+  chunksLost: chunksLost,
   drainComplete: drainComplete,
   langCode: langCode,
   maxBytes: maxBytes,
@@ -110,12 +112,29 @@ void main() {
       expect(parsed.accounting.writerAdmitsGaps, isTrue);
     });
 
-    test('chunks captured but not transcribed are declared', () async {
+    test('a chunk the writer LOST is declared as a gap', () async {
+      final sent = _Sent();
+      await _write(
+        sent,
+        chunksCaptured: 5,
+        chunksTranscribed: 3,
+        chunksLost: 2,
+      );
+
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      expect(parsed.accounting.chunksLost, 2);
+      expect(parsed.accounting.writerAdmitsGaps, isTrue);
+    });
+
+    test('captured-but-silent chunks are NOT declared as a gap', () async {
+      // The ordinary shape of a real call: five chunks captured, three with
+      // speech in them. Reading the difference as loss marked essentially
+      // every transcript incomplete, which left the flag meaning nothing.
       final sent = _Sent();
       await _write(sent, chunksCaptured: 5, chunksTranscribed: 3);
 
       final parsed = CallTranscriptContent.fromJson(sent.only)!;
-      expect(parsed.accounting.writerAdmitsGaps, isTrue);
+      expect(parsed.accounting.writerAdmitsGaps, isFalse);
     });
 
     group('packing', () {

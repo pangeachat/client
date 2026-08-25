@@ -49,6 +49,10 @@ class HalfAccounting {
   final int chunksTranscribed;
   final bool truncated;
   final int segmentsOmitted;
+
+  /// Chunks captured and then lost, which is the only count that means a gap.
+  /// Silence is captured-but-not-transcribed and is NOT a gap; see the sink.
+  final int chunksLost;
   final bool drainComplete;
 
   /// Whether the writer said anything about its own capture at all.
@@ -61,6 +65,7 @@ class HalfAccounting {
   const HalfAccounting({
     this.chunksCaptured = 0,
     this.chunksTranscribed = 0,
+    this.chunksLost = 0,
     this.truncated = false,
     this.segmentsOmitted = 0,
     this.drainComplete = true,
@@ -75,15 +80,16 @@ class HalfAccounting {
       truncated ||
       !drainComplete ||
       segmentsOmitted > 0 ||
-      chunksTranscribed < chunksCaptured ||
+      chunksLost > 0 ||
       incoherent;
 
   /// An accounting that cannot describe any real capture.
   ///
-  /// A writer claiming more chunks transcribed than captured, or claiming it
-  /// captured nothing while shipping segments, has told us something that
-  /// cannot be true. Clamping such a half into shape made it read COMPLETE,
-  /// which hands a nonsense event more credibility than a truthful one.
+  /// Transcribed and lost chunks are disjoint subsets of what was captured, so
+  /// `transcribed + lost <= captured` is the invariant any honest writer meets.
+  /// A half that breaks it has told us something that cannot be true. Clamping
+  /// such a half into shape made it read COMPLETE, which hands a nonsense event
+  /// more credibility than a truthful one.
   final bool incoherent;
 
   Map<String, dynamic> toJson() => {
@@ -92,6 +98,7 @@ class HalfAccounting {
     // Written unconditionally: our own halves always carry an assertion, so a
     // round-trip of one never reads back as undeclared.
     'chunks_transcribed': chunksTranscribed,
+    'chunks_lost': chunksLost,
     'truncated': truncated,
     'segments_omitted': segmentsOmitted,
     'drain_complete': drainComplete,
@@ -101,6 +108,7 @@ class HalfAccounting {
   HalfAccounting asIncoherent() => HalfAccounting(
     chunksCaptured: chunksCaptured,
     chunksTranscribed: chunksTranscribed,
+    chunksLost: chunksLost,
     truncated: truncated,
     segmentsOmitted: segmentsOmitted,
     drainComplete: drainComplete,
@@ -114,6 +122,7 @@ class HalfAccounting {
   HalfAccounting readerTruncated() => HalfAccounting(
     chunksCaptured: chunksCaptured,
     chunksTranscribed: chunksTranscribed,
+    chunksLost: chunksLost,
     truncated: true,
     segmentsOmitted: segmentsOmitted,
     drainComplete: drainComplete,
@@ -151,18 +160,24 @@ class HalfAccounting {
         nonNegativeInt(raw['chunks_transcribed']) &&
         raw['drain_complete'] is bool &&
         raw['truncated'] is bool &&
-        nonNegativeInt(raw['segments_omitted']);
+        nonNegativeInt(raw['segments_omitted']) &&
+        nonNegativeInt(raw['chunks_lost']);
 
     final captured = intOr('chunks_captured', 0);
     final rawTranscribed = intOr('chunks_transcribed', 0);
+    final rawLost = intOr('chunks_lost', 0);
     return HalfAccounting(
       declared: wellFormed,
-      incoherent: rawTranscribed > captured,
+      // Checked against the SUM, not each count alone: adding chunks_lost added
+      // a second way to exceed what was captured, and a rule that names one
+      // count stops holding the moment another is introduced.
+      incoherent: rawTranscribed + rawLost > captured,
       chunksCaptured: captured,
       // Clamped: a half claiming more transcribed than captured is malformed,
       // and letting it through would make `writerAdmitsGaps` read false for a
       // half that is nonsense.
       chunksTranscribed: rawTranscribed.clamp(0, captured),
+      chunksLost: rawLost,
       truncated: raw['truncated'] == true,
       segmentsOmitted: intOr('segments_omitted', 0),
       // Absent means unknown, and unknown must not read as "fine".

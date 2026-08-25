@@ -26,11 +26,17 @@ MatrixEvent _half(
     'segments': [
       for (final t in texts) {'text': t},
     ],
-    'chunks_captured': 2,
-    'chunks_transcribed': 2,
-    'drain_complete': true,
-    'truncated': false,
-    'segments_omitted': 0,
+    // Spread from the writer's OWN serializer rather than hand-rolled. A
+    // hand-written copy of the wire shape falls out of the declaration
+    // contract the moment a field is added to it, and it does so silently:
+    // the half reads undeclared, and the failure surfaces as an unrelated
+    // "why is this incomplete" somewhere else.
+    ...const HalfAccounting(
+      chunksCaptured: 2,
+      chunksTranscribed: 2,
+      chunksLost: 0,
+      drainComplete: true,
+    ).toJson(),
   },
 );
 

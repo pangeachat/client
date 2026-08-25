@@ -34,6 +34,7 @@ Future<bool> writeCallTranscript({
   required List<TranscriptSegment> segments,
   required int chunksCaptured,
   required int chunksTranscribed,
+  required int chunksLost,
   required bool drainComplete,
   String? langCode,
   int maxBytes = kMaxHalfBytes,
@@ -56,6 +57,7 @@ Future<bool> writeCallTranscript({
         accounting: HalfAccounting(
           chunksCaptured: chunksCaptured,
           chunksTranscribed: chunksTranscribed,
+          chunksLost: chunksLost,
           truncated: omitted > 0,
           segmentsOmitted: omitted,
           drainComplete: drainComplete,
