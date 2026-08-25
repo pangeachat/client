@@ -317,6 +317,37 @@ void main() {
     });
   });
 
+  group('rate limiting', () {
+    test('exhausting the knock_with_code burst yields a raw 429', () async {
+      // The module rate-limits per user (knock_with_code_requests_per_burst,
+      // 10/60s in every inventory); the client's TooManyRequestsDialog
+      // branches on the raw response's statusCode. A throwaway persona keeps
+      // the personas' budgets clean for other tests.
+      final limited = await ContractHarness.loggedIn(
+        'contract-429-${DateTime.now().millisecondsSinceEpoch}',
+      );
+      addTearDown(() => ContractHarness.dispose(limited));
+
+      Object? thrown;
+      for (var i = 0; i < 15; i++) {
+        try {
+          await limited.knockWithCode('contract-no-such-code');
+        } catch (e) {
+          thrown = e;
+          final status = (thrown as dynamic).statusCode;
+          if (status == 429) break;
+        }
+      }
+      expect(
+        (thrown as dynamic).statusCode,
+        429,
+        reason:
+            'the burst limit must surface as a raw 429 response — the '
+            'status the TooManyRequestsDialog handling reads',
+      );
+    });
+  });
+
   group('register/email/requestToken', () {
     test(
       'the module route is registered and accepts the username field',
