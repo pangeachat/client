@@ -447,8 +447,25 @@ class CallSession extends ChangeNotifier {
   /// Whether this call is worth a timeline entry at all: did it reach the SFU,
   /// did it actually ring somebody, or was it itself an answer. A call that
   /// rang nobody and connected to nothing leaves no trace, correctly.
+  ///
+  /// [_reachedCall] only means OUR OWN join to the SFU went through — it says
+  /// nothing about whether the other side was ever told. That distinction did
+  /// not used to matter: reaching "connected" required the ring to have gone
+  /// out first, so one implied the other. It stopped being true the moment
+  /// ringing could be skipped and retried in the background (a late
+  /// membership echo) — a PLACED call can now reach the SFU while its ring is
+  /// still pending, or never sent at all if the retry itself runs out. When
+  /// that happens and nobody ever joins, [_reachedCall] is the only thing left
+  /// standing in for "this mattered", and it is lying: hanging up would write
+  /// "no answer" for a call the other person was never rung for. So a placed
+  /// call only counts on [_reachedCall] once it is also known to have rung —
+  /// [call.rangOut] already covers that case on its own, this guard just keeps
+  /// [_reachedCall] from covering it a second time, dishonestly, when it
+  /// didn't. Every other placer (answering, rejoining, the sub-millisecond
+  /// glare that never places) is untouched: none of them ring, so none of
+  /// them relied on this in the first place.
   bool get _mattered =>
-      _reachedCall ||
+      (_reachedCall && (!call.placedCall || call.rangOut)) ||
       call.hadPeer ||
       call.rangOut ||
       notificationEventId != null;
