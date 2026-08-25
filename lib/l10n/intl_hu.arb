@@ -9862,5 +9862,6 @@
     "languageSwitcherBaseLanguageLabel": "Alapnyelved",
     "listenModeDescription": "Koppintson egy választásra, hogy meghallgassa. Nincs kiválasztva semmi.",
     "rateActivityLiked": "Tetszett",
-    "rateActivityDisliked": "Nem tetszett"
+    "rateActivityDisliked": "Nem tetszett",
+    "constructUseHrdDesc": "Hallotta"
 }

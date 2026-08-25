@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Сиздин негизги тилиңиз",
     "listenModeDescription": "Угуу үчүн тандоону басыңыз. Эч нерсе тандалган жок.",
     "rateActivityLiked": "Жакты",
-    "rateActivityDisliked": "Жаккан жок"
+    "rateActivityDisliked": "Жаккан жок",
+    "constructUseHrdDesc": "Уктум"
 }

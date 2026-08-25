@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "तपाईंको आधार भाषा",
     "listenModeDescription": "सुन्नको लागि एउटा विकल्प ट्याप गर्नुहोस्। केही पनि चयन गरिएको छैन।",
     "rateActivityLiked": "मन पर्यो",
-    "rateActivityDisliked": "मन परेन"
+    "rateActivityDisliked": "मन परेन",
+    "constructUseHrdDesc": "सुनियो"
 }

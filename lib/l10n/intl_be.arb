@@ -9773,5 +9773,6 @@
     "languageSwitcherBaseLanguageLabel": "Ваша базавая мова",
     "listenModeDescription": "Націсніце на выбар, каб пачуць яго. Нічога не выбрана.",
     "rateActivityLiked": "Спадабалася",
-    "rateActivityDisliked": "Не спадабалася"
+    "rateActivityDisliked": "Не спадабалася",
+    "constructUseHrdDesc": "Пачута"
 }

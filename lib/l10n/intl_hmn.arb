@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Koj hom lus pib",
     "listenModeDescription": "Coj ib qho kev xaiv los mloog. Tsis muaj dab tsi raug xaiv.",
     "rateActivityLiked": "Nyiam",
-    "rateActivityDisliked": "Tsis nyiam"
+    "rateActivityDisliked": "Tsis nyiam",
+    "constructUseHrdDesc": "Hnov"
 }

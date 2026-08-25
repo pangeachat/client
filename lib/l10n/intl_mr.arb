@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "तुमची मूळ भाषा",
     "listenModeDescription": "ऐकण्यासाठी पर्याय टॅप करा. काहीही निवडलेले नाही.",
     "rateActivityLiked": "आवडले",
-    "rateActivityDisliked": "आवडले नाही"
+    "rateActivityDisliked": "आवडले नाही",
+    "constructUseHrdDesc": "ऐकले"
 }

@@ -10634,5 +10634,6 @@
     "languageSwitcherBaseLanguageLabel": "Η βασική σου γλώσσα",
     "listenModeDescription": "Πατήστε μια επιλογή για να την ακούσετε. Τίποτα δεν έχει επιλεγεί.",
     "rateActivityLiked": "Μου άρεσε",
-    "rateActivityDisliked": "Δεν μου άρεσε"
+    "rateActivityDisliked": "Δεν μου άρεσε",
+    "constructUseHrdDesc": "Ακούστηκε"
 }

@@ -10679,5 +10679,6 @@
     "languageSwitcherBaseLanguageLabel": "Dit grundsprog",
     "listenModeDescription": "Tryk på et valg for at høre det. Intet er valgt.",
     "rateActivityLiked": "Kunne lide det",
-    "rateActivityDisliked": "Kunne ikke lide det"
+    "rateActivityDisliked": "Kunne ikke lide det",
+    "constructUseHrdDesc": "Hørt"
 }

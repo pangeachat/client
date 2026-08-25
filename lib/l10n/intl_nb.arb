@@ -9816,5 +9816,6 @@
     "languageSwitcherBaseLanguageLabel": "Ditt morsmål",
     "listenModeDescription": "Trykk på et valg for å høre det. Ingenting er valgt.",
     "rateActivityLiked": "Likte den",
-    "rateActivityDisliked": "Likte den ikke"
+    "rateActivityDisliked": "Likte den ikke",
+    "constructUseHrdDesc": "Hørt"
 }

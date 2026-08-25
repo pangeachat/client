@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Dyn basistaal",
     "listenModeDescription": "Tik op in kar om it te hearren. Neat is selektearre.",
     "rateActivityLiked": "Fûn it moai",
-    "rateActivityDisliked": "Fûn it net moai"
+    "rateActivityDisliked": "Fûn it net moai",
+    "constructUseHrdDesc": "Heard"
 }

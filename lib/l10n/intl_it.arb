@@ -9832,5 +9832,6 @@
     "languageSwitcherBaseLanguageLabel": "La tua lingua base",
     "listenModeDescription": "Tocca una scelta per ascoltarla. Nulla è selezionato.",
     "rateActivityLiked": "Mi è piaciuto",
-    "rateActivityDisliked": "Non mi è piaciuto"
+    "rateActivityDisliked": "Non mi è piaciuto",
+    "constructUseHrdDesc": "Sentito"
 }

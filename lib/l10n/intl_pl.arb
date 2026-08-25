@@ -9844,5 +9844,6 @@
     "languageSwitcherBaseLanguageLabel": "Twój język podstawowy",
     "listenModeDescription": "Dotknij wyboru, aby go usłyszeć. Nic nie jest wybrane.",
     "rateActivityLiked": "Podobało mi się",
-    "rateActivityDisliked": "Nie podobało mi się"
+    "rateActivityDisliked": "Nie podobało mi się",
+    "constructUseHrdDesc": "Usłyszane"
 }

@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Ulimi lwakho oluyisisekelo",
     "listenModeDescription": "Thepha okukhethile ukuze ukuzwe. Akukho okukhethiwe.",
     "rateActivityLiked": "Ngiyithandile",
-    "rateActivityDisliked": "Angiyithandanga"
+    "rateActivityDisliked": "Angiyithandanga",
+    "constructUseHrdDesc": "Kuzwakale"
 }

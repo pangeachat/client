@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Vaš osnovni jezik",
     "listenModeDescription": "Dodirnite izbor da biste ga čuli. Ništa nije odabrano.",
     "rateActivityLiked": "Svidjelo mi se",
-    "rateActivityDisliked": "Nije mi se svidjelo"
+    "rateActivityDisliked": "Nije mi se svidjelo",
+    "constructUseHrdDesc": "Čuo"
 }

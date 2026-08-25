@@ -9851,5 +9851,6 @@
     "languageSwitcherBaseLanguageLabel": "உங்கள் அடிப்படை மொழி",
     "listenModeDescription": "கேட்க ஒரு விருப்பத்தைத் தட்டவும். எதுவும் தேர்ந்தெடுக்கப்படவில்லை.",
     "rateActivityLiked": "பிடித்திருந்தது",
-    "rateActivityDisliked": "பிடிக்கவில்லை"
+    "rateActivityDisliked": "பிடிக்கவில்லை",
+    "constructUseHrdDesc": "கேட்டது"
 }

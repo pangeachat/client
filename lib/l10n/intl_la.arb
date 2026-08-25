@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Lingua tua fundamentalis",
     "listenModeDescription": "Tange optionem ut audias. Nihil eligitur.",
     "rateActivityLiked": "Placuit",
-    "rateActivityDisliked": "Non placuit"
+    "rateActivityDisliked": "Non placuit",
+    "constructUseHrdDesc": "Audivit"
 }

@@ -10695,5 +10695,6 @@
     "languageSwitcherBaseLanguageLabel": "Tu lingua de base",
     "listenModeDescription": "Tocca un selection pro audir lo. Nihil es seligite.",
     "rateActivityLiked": "Me placeva",
-    "rateActivityDisliked": "Non me placeva"
+    "rateActivityDisliked": "Non me placeva",
+    "constructUseHrdDesc": "Audite"
 }

@@ -10391,5 +10391,6 @@
     "languageSwitcherBaseLanguageLabel": "आपकी आधार भाषा",
     "listenModeDescription": "सुनने के लिए किसी विकल्प पर टैप करें। कुछ भी नहीं चुना गया है।",
     "rateActivityLiked": "पसंद आया",
-    "rateActivityDisliked": "पसंद नहीं आया"
+    "rateActivityDisliked": "पसंद नहीं आया",
+    "constructUseHrdDesc": "सुना"
 }

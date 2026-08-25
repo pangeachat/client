@@ -10277,5 +10277,6 @@
     "languageSwitcherBaseLanguageLabel": "Ditt basspråk",
     "listenModeDescription": "Tryck på ett val för att höra det. Inget är valt.",
     "rateActivityLiked": "Gillade det",
-    "rateActivityDisliked": "Gillade det inte"
+    "rateActivityDisliked": "Gillade det inte",
+    "constructUseHrdDesc": "Hört"
 }

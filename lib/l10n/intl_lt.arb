@@ -10540,5 +10540,6 @@
     "languageSwitcherBaseLanguageLabel": "Jūsų pagrindinė kalba",
     "listenModeDescription": "Palieskite pasirinkimą, kad jį išgirstumėte. Nieko nepasirinkta.",
     "rateActivityLiked": "Patiko",
-    "rateActivityDisliked": "Nepatiko"
+    "rateActivityDisliked": "Nepatiko",
+    "constructUseHrdDesc": "Girdėta"
 }

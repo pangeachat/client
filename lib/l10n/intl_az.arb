@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Sizin əsas diliniz",
     "listenModeDescription": "Eşitmək üçün bir seçimə toxunun. Heç nə seçilməyib.",
     "rateActivityLiked": "Bəyəndim",
-    "rateActivityDisliked": "Bəyənmədim"
+    "rateActivityDisliked": "Bəyənmədim",
+    "constructUseHrdDesc": "Eşidilib"
 }

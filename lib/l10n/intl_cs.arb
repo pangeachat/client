@@ -10253,5 +10253,6 @@
     "languageSwitcherBaseLanguageLabel": "Váš základní jazyk",
     "listenModeDescription": "Klepnutím na možnost si ji poslechnete. Nic není vybráno.",
     "rateActivityLiked": "Líbilo se mi to",
-    "rateActivityDisliked": "Nelíbilo se mi to"
+    "rateActivityDisliked": "Nelíbilo se mi to",
+    "constructUseHrdDesc": "Slyšel"
 }

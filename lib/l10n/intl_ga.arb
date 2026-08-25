@@ -9770,5 +9770,6 @@
     "languageSwitcherBaseLanguageLabel": "Do bhuntheanga",
     "listenModeDescription": "Tapáil rogha chun í a chloisteáil. Níl aon rud roghnaithe.",
     "rateActivityLiked": "Thaitin sé liom",
-    "rateActivityDisliked": "Níor thaitin sé liom"
+    "rateActivityDisliked": "Níor thaitin sé liom",
+    "constructUseHrdDesc": "Chuala"
 }

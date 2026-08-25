@@ -9865,5 +9865,6 @@
     "languageSwitcherBaseLanguageLabel": "您的基礎語言",
     "listenModeDescription": "點擊一個選項來聽。沒有選取任何項目。",
     "rateActivityLiked": "喜歡",
-    "rateActivityDisliked": "不喜歡"
+    "rateActivityDisliked": "不喜歡",
+    "constructUseHrdDesc": "聽過"
 }

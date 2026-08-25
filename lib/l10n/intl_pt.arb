@@ -10703,5 +10703,6 @@
     "languageSwitcherBaseLanguageLabel": "Seu idioma base",
     "listenModeDescription": "Toque em uma opção para ouvi-la. Nada selecionado.",
     "rateActivityLiked": "Gostei",
-    "rateActivityDisliked": "Não gostei"
+    "rateActivityDisliked": "Não gostei",
+    "constructUseHrdDesc": "Ouviu"
 }

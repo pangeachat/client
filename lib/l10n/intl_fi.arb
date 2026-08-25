@@ -9796,5 +9796,6 @@
     "languageSwitcherBaseLanguageLabel": "Peruskielesi",
     "listenModeDescription": "Kuule valinta napauttamalla sitä. Mitään ei ole valittu.",
     "rateActivityLiked": "Pidin siitä",
-    "rateActivityDisliked": "En pitänyt siitä"
+    "rateActivityDisliked": "En pitänyt siitä",
+    "constructUseHrdDesc": "Kuultu"
 }

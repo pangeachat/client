@@ -10731,5 +10731,6 @@
     "languageSwitcherBaseLanguageLabel": "Ваш основной язык",
     "listenModeDescription": "Нажмите на вариант, чтобы прослушать его. Ничего не выбрано.",
     "rateActivityLiked": "Понравилось",
-    "rateActivityDisliked": "Не понравилось"
+    "rateActivityDisliked": "Не понравилось",
+    "constructUseHrdDesc": "Услышано"
 }

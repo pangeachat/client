@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Lang baz ou",
     "listenModeDescription": "Tape yon chwa pou tande li. Pa gen anyen ki chwazi.",
     "rateActivityLiked": "Te renmen li",
-    "rateActivityDisliked": "Pa t renmen li"
+    "rateActivityDisliked": "Pa t renmen li",
+    "constructUseHrdDesc": "Tande"
 }

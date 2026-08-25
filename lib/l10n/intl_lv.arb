@@ -9759,5 +9759,6 @@
     "languageSwitcherBaseLanguageLabel": "Jūsu pamata valoda",
     "listenModeDescription": "Pieskarieties izvēlei, lai to dzirdētu. Nekas nav atlasīts.",
     "rateActivityLiked": "Patika",
-    "rateActivityDisliked": "Nepatika"
+    "rateActivityDisliked": "Nepatika",
+    "constructUseHrdDesc": "Dzirdēts"
 }

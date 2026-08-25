@@ -9756,5 +9756,6 @@
     "languageSwitcherBaseLanguageLabel": "Sinu baaskeelt",
     "listenModeDescription": "Puuduta valikut, et seda kuulda. Midagi pole valitud.",
     "rateActivityLiked": "Meeldis",
-    "rateActivityDisliked": "Ei meeldinud"
+    "rateActivityDisliked": "Ei meeldinud",
+    "constructUseHrdDesc": "Kuuldud"
 }

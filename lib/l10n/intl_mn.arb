@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Таны үндсэн хэл",
     "listenModeDescription": "Сонсохын тулд сонголтыг товшино уу. Юу ч сонгогдоогүй байна.",
     "rateActivityLiked": "Таалагдсан",
-    "rateActivityDisliked": "Таалагдаагүй"
+    "rateActivityDisliked": "Таалагдаагүй",
+    "constructUseHrdDesc": "Сонссон"
 }

@@ -9759,5 +9759,6 @@
     "languageSwitcherBaseLanguageLabel": "A túa lingua base",
     "listenModeDescription": "Toca unha opción para escoitala. Non hai nada seleccionado.",
     "rateActivityLiked": "Gustoume",
-    "rateActivityDisliked": "Non me gustou"
+    "rateActivityDisliked": "Non me gustou",
+    "constructUseHrdDesc": "Escoitado"
 }

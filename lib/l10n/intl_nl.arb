@@ -9759,5 +9759,6 @@
     "languageSwitcherBaseLanguageLabel": "Je basistaal",
     "listenModeDescription": "Tik op een keuze om deze te horen. Er is niets geselecteerd.",
     "rateActivityLiked": "Vond het leuk",
-    "rateActivityDisliked": "Vond het niet leuk"
+    "rateActivityDisliked": "Vond het niet leuk",
+    "constructUseHrdDesc": "Gehoord"
 }

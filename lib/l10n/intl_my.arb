@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "သင်၏ အခြေခံဘာသာစကား",
     "listenModeDescription": "ရွေးချယ်စရာကို နားထောင်ရန် နှိပ်ပါ။ မည်သည့်အရာကိုမျှ ရွေးချယ်ထားခြင်း မရှိပါ။",
     "rateActivityLiked": "ကြိုက်တယ်",
-    "rateActivityDisliked": "မကြိုက်ဘူး"
+    "rateActivityDisliked": "မကြိုက်ဘူး",
+    "constructUseHrdDesc": "ကြားဖူး"
 }

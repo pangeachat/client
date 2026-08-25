@@ -10704,5 +10704,6 @@
     "languageSwitcherBaseLanguageLabel": "Váš základný jazyk",
     "listenModeDescription": "Ťuknutím na možnosť si ju vypočujete. Nič nie je vybraté.",
     "rateActivityLiked": "Páčilo sa mi to",
-    "rateActivityDisliked": "Nepáčilo sa mi to"
+    "rateActivityDisliked": "Nepáčilo sa mi to",
+    "constructUseHrdDesc": "Počul"
 }

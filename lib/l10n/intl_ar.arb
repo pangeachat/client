@@ -10065,5 +10065,6 @@
     "languageSwitcherBaseLanguageLabel": "لغتك الأساسية",
     "listenModeDescription": "اضغط على خيار لسماعه. لم يتم تحديد أي شيء.",
     "rateActivityLiked": "أعجبني",
-    "rateActivityDisliked": "لم يعجبني"
+    "rateActivityDisliked": "لم يعجبني",
+    "constructUseHrdDesc": "سمعت"
 }

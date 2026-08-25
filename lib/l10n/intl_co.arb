@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "A vostra lingua di basa",
     "listenModeDescription": "Toccate una scelta per sentela. Nunda hè sceltu.",
     "rateActivityLiked": "Mi hè piaciutu",
-    "rateActivityDisliked": "Ùn m'hè micca piaciutu"
+    "rateActivityDisliked": "Ùn m'hè micca piaciutu",
+    "constructUseHrdDesc": "Sentitu"
 }

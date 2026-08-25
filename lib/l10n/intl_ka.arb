@@ -10659,5 +10659,6 @@
     "languageSwitcherBaseLanguageLabel": "თქვენი საბაზო ენა",
     "listenModeDescription": "მოსასმენად შეეხეთ არჩევანს. არაფერია არჩეული.",
     "rateActivityLiked": "მოეწონა",
-    "rateActivityDisliked": "არ მოეწონა"
+    "rateActivityDisliked": "არ მოეწონა",
+    "constructUseHrdDesc": "მოისმინა"
 }

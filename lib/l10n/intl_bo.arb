@@ -9370,5 +9370,6 @@
     "languageSwitcherBaseLanguageLabel": "ཁྱེད་ཀྱི་གཞི་རྩའི་སྐད་ཡིག",
     "listenModeDescription": "གདམ་ག་ཞིག་ལ་རེག་ནས་ཉོན། གང་ཡང་འདེམས་མི་འདུག",
     "rateActivityLiked": "དགའ་པོ་བྱུང་།",
-    "rateActivityDisliked": "དགའ་པོ་མ་བྱུང་།"
+    "rateActivityDisliked": "དགའ་པོ་མ་བྱུང་།",
+    "constructUseHrdDesc": "ཐོས་པ་"
 }

@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Kou ʻōlelo kumu",
     "listenModeDescription": "E kaomi i ke koho e hoʻolohe. ʻAʻohe mea i koho ʻia.",
     "rateActivityLiked": "Makemake au",
-    "rateActivityDisliked": "ʻAʻole au makemake"
+    "rateActivityDisliked": "ʻAʻole au makemake",
+    "constructUseHrdDesc": "Lohe ʻia"
 }

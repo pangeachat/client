@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "ستاسو اصلي ژبه",
     "listenModeDescription": "د اوریدلو لپاره یو انتخاب ټایپ کړئ. هیڅ شی نه دی انتخاب شوی.",
     "rateActivityLiked": "خوښ شو",
-    "rateActivityDisliked": "نه خوښ شو"
+    "rateActivityDisliked": "نه خوښ شو",
+    "constructUseHrdDesc": "اوریدل شوی"
 }

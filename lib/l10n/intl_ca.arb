@@ -9886,5 +9886,6 @@
     "languageSwitcherBaseLanguageLabel": "La teva llengua base",
     "listenModeDescription": "Toca una opció per escoltar-la. No hi ha res seleccionat.",
     "rateActivityLiked": "M'ha agradat",
-    "rateActivityDisliked": "No m'ha agradat"
+    "rateActivityDisliked": "No m'ha agradat",
+    "constructUseHrdDesc": "Sentit"
 }

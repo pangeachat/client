@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Gjuha juaj bazë",
     "listenModeDescription": "Trokitni një zgjedhje për ta dëgjuar. Asgjë nuk është zgjedhur.",
     "rateActivityLiked": "Më pëlqeu",
-    "rateActivityDisliked": "Nuk më pëlqeu"
+    "rateActivityDisliked": "Nuk më pëlqeu",
+    "constructUseHrdDesc": "Dëgjuar"
 }

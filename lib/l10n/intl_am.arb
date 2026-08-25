@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "የእርስዎ መሰረታዊ ቋንቋ",
     "listenModeDescription": "ለመስማት ምርጫ ይንኩ። ምንም አልተመረጠም።",
     "rateActivityLiked": "ወደድኩት",
-    "rateActivityDisliked": "አልወደድኩትም"
+    "rateActivityDisliked": "አልወደድኩትም",
+    "constructUseHrdDesc": "ሰምቷል"
 }

@@ -10391,5 +10391,6 @@
     "languageSwitcherBaseLanguageLabel": "ภาษาหลักของคุณ",
     "listenModeDescription": "แตะตัวเลือกเพื่อฟัง ไม่มีอะไรถูกเลือก",
     "rateActivityLiked": "ถูกใจ",
-    "rateActivityDisliked": "ไม่ถูกใจ"
+    "rateActivityDisliked": "ไม่ถูกใจ",
+    "constructUseHrdDesc": "ได้ยิน"
 }

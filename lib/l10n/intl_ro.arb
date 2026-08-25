@@ -10491,5 +10491,6 @@
     "languageSwitcherBaseLanguageLabel": "Limba ta de bază",
     "listenModeDescription": "Atingeți o opțiune pentru a o auzi. Nu este selectat nimic.",
     "rateActivityLiked": "Mi-a plăcut",
-    "rateActivityDisliked": "Nu mi-a plăcut"
+    "rateActivityDisliked": "Nu mi-a plăcut",
+    "constructUseHrdDesc": "Auzit"
 }

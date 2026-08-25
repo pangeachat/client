@@ -10673,5 +10673,6 @@
     "languageSwitcherBaseLanguageLabel": "שפת הבסיס שלך",
     "listenModeDescription": "הקש על אפשרות כדי לשמוע אותה. שום דבר לא נבחר.",
     "rateActivityLiked": "אהבתי",
-    "rateActivityDisliked": "לא אהבתי"
+    "rateActivityDisliked": "לא אהבתי",
+    "constructUseHrdDesc": "נשמע"
 }

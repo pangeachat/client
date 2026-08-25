@@ -10387,5 +10387,6 @@
     "languageSwitcherBaseLanguageLabel": "আপনার বেস ভাষা",
     "listenModeDescription": "শোনার জন্য একটি বিকল্পে ট্যাপ করুন। কিছুই নির্বাচন করা হয়নি।",
     "rateActivityLiked": "পছন্দ হয়েছে",
-    "rateActivityDisliked": "পছন্দ হয়নি"
+    "rateActivityDisliked": "পছন্দ হয়নি",
+    "constructUseHrdDesc": "শুনেছি"
 }

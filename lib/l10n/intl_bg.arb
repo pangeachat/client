@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Вашият основен език",
     "listenModeDescription": "Докоснете избор, за да го чуете. Нищо не е избрано.",
     "rateActivityLiked": "Хареса ми",
-    "rateActivityDisliked": "Не ми хареса"
+    "rateActivityDisliked": "Не ми хареса",
+    "constructUseHrdDesc": "Чуто"
 }

@@ -10060,5 +10060,6 @@
     "languageSwitcherBaseLanguageLabel": "Ana dilin",
     "listenModeDescription": "Duymak için bir seçeneğe dokunun. Hiçbir şey seçili değil.",
     "rateActivityLiked": "Beğenildi",
-    "rateActivityDisliked": "Beğenilmedi"
+    "rateActivityDisliked": "Beğenilmedi",
+    "constructUseHrdDesc": "Duyuldu"
 }

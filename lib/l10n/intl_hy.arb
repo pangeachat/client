@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Ձեր հիմնական լեզուն",
     "listenModeDescription": "Ընտրեք տարբերակը՝ այն լսելու համար։ Ոչինչ ընտրված չէ։",
     "rateActivityLiked": "Հավանել եմ",
-    "rateActivityDisliked": "Չեմ հավանել"
+    "rateActivityDisliked": "Չեմ հավանել",
+    "constructUseHrdDesc": "Լսել եմ"
 }

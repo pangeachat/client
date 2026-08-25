@@ -9759,5 +9759,6 @@
     "languageSwitcherBaseLanguageLabel": "Zure oinarrizko hizkuntza",
     "listenModeDescription": "Sakatu aukera bat hura entzuteko. Ez dago ezer hautatuta.",
     "rateActivityLiked": "Gustatu zait",
-    "rateActivityDisliked": "Ez zait gustatu"
+    "rateActivityDisliked": "Ez zait gustatu",
+    "constructUseHrdDesc": "Entzunda"
 }

@@ -9952,5 +9952,6 @@
     "languageSwitcherBaseLanguageLabel": "기본 언어",
     "listenModeDescription": "선택 항목을 탭하여 들어보세요. 아무것도 선택되지 않았습니다.",
     "rateActivityLiked": "마음에 들어요",
-    "rateActivityDisliked": "마음에 들지 않아요"
+    "rateActivityDisliked": "마음에 들지 않아요",
+    "constructUseHrdDesc": "들었어요"
 }

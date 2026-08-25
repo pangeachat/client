@@ -7051,5 +7051,6 @@
     "languageSwitcherBaseLanguageLabel": "Ngôn ngữ cơ bản của bạn",
     "listenModeDescription": "Chạm vào một lựa chọn để nghe. Chưa có gì được chọn.",
     "rateActivityLiked": "Đã thích",
-    "rateActivityDisliked": "Không thích"
+    "rateActivityDisliked": "Không thích",
+    "constructUseHrdDesc": "Đã nghe"
 }

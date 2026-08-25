@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "ພາສາພື້ນຖານຂອງທ່ານ",
     "listenModeDescription": "ແຕະຕົວເລືອກເພື່ອຟັງ. ບໍ່ມີຫຍັງຖືກເລືອກ.",
     "rateActivityLiked": "ມັກ",
-    "rateActivityDisliked": "ບໍ່ມັກ"
+    "rateActivityDisliked": "ບໍ່ມັກ",
+    "constructUseHrdDesc": "ໄດ້ຍິນ"
 }

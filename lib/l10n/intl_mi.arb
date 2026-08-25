@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Tō reo matua",
     "listenModeDescription": "Pāwhiritia tētahi kōwhiringa kia rangona. Kāore he mea i tohua.",
     "rateActivityLiked": "I pai",
-    "rateActivityDisliked": "Kāore i pai"
+    "rateActivityDisliked": "Kāore i pai",
+    "constructUseHrdDesc": "Kua rangona"
 }

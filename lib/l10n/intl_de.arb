@@ -9746,5 +9746,6 @@
     "languageSwitcherBaseLanguageLabel": "Deine Basissprache",
     "listenModeDescription": "Tippe auf eine Auswahl, um sie anzuhören. Nichts ist ausgewählt.",
     "rateActivityLiked": "Hat mir gefallen",
-    "rateActivityDisliked": "Hat mir nicht gefallen"
+    "rateActivityDisliked": "Hat mir nicht gefallen",
+    "constructUseHrdDesc": "Gehört"
 }

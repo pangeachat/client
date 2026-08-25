@@ -10704,5 +10704,6 @@
     "languageSwitcherBaseLanguageLabel": "Tvoj osnovni jezik",
     "listenModeDescription": "Tapnite izbiro, da jo slišite. Nič ni izbrano.",
     "rateActivityLiked": "Všeč mi je bilo",
-    "rateActivityDisliked": "Ni mi bilo všeč"
+    "rateActivityDisliked": "Ni mi bilo všeč",
+    "constructUseHrdDesc": "Slišal"
 }

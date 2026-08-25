@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Eich iaith sylfaen",
     "listenModeDescription": "Tapiwch ddewis i'w glywed. Nid oes dim wedi'i ddewis.",
     "rateActivityLiked": "Hoffais i",
-    "rateActivityDisliked": "Doeddwn i ddim yn ei hoffi"
+    "rateActivityDisliked": "Doeddwn i ddim yn ei hoffi",
+    "constructUseHrdDesc": "Clywed"
 }

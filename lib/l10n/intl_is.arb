@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "Grunnmálið þitt",
     "listenModeDescription": "Pikkaðu á valmöguleika til að heyra hann. Ekkert er valið.",
     "rateActivityLiked": "Líkaði vel",
-    "rateActivityDisliked": "Líkaði ekki"
+    "rateActivityDisliked": "Líkaði ekki",
+    "constructUseHrdDesc": "Heyrði"
 }

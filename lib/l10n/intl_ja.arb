@@ -10528,5 +10528,6 @@
     "languageSwitcherBaseLanguageLabel": "あなたの母国語",
     "listenModeDescription": "選択肢をタップして聞きます。何も選択されていません。",
     "rateActivityLiked": "よかった",
-    "rateActivityDisliked": "よくなかった"
+    "rateActivityDisliked": "よくなかった",
+    "constructUseHrdDesc": "聞きました"
 }

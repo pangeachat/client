@@ -2163,5 +2163,6 @@
     "languageSwitcherBaseLanguageLabel": "നിങ്ങളുടെ അടിസ്ഥാന ഭാഷ",
     "listenModeDescription": "കേൾക്കാൻ ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക. ഒന്നും തിരഞ്ഞെടുത്തിട്ടില്ല.",
     "rateActivityLiked": "ഇഷ്ടപ്പെട്ടു",
-    "rateActivityDisliked": "ഇഷ്ടപ്പെട്ടില്ല"
+    "rateActivityDisliked": "ഇഷ്ടപ്പെട്ടില്ല",
+    "constructUseHrdDesc": "കേട്ടു"
 }

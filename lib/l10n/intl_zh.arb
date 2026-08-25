@@ -9759,5 +9759,6 @@
     "languageSwitcherBaseLanguageLabel": "您的母语",
     "listenModeDescription": "点击一个选项来听。未选择任何内容。",
     "rateActivityLiked": "喜欢",
-    "rateActivityDisliked": "不喜欢"
+    "rateActivityDisliked": "不喜欢",
+    "constructUseHrdDesc": "听过"
 }

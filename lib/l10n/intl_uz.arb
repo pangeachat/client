@@ -9763,5 +9763,6 @@
     "languageSwitcherBaseLanguageLabel": "Sizning asosiy tilingiz",
     "listenModeDescription": "Eshitish uchun tanlovni bosing. Hech narsa tanlanmagan.",
     "rateActivityLiked": "Yoqdi",
-    "rateActivityDisliked": "Yoqmadi"
+    "rateActivityDisliked": "Yoqmadi",
+    "constructUseHrdDesc": "Eshitildi"
 }
