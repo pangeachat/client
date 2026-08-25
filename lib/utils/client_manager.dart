@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/utils/custom_http_client.dart';
@@ -170,7 +171,11 @@ abstract class ClientManager {
           ? (client) => client.refreshAccessToken()
           : null,
       // #Pangea
-      shouldReplaceRoomLastEvent: (_, event) => event.isVisibleLastEvent,
+      shouldReplaceRoomLastEvent: (current, event) =>
+          event.isVisibleLastEvent &&
+          // Two genuine cards for one call must not leave the chat list
+          // describing a different one than the conversation draws.
+          callCardMayTakeTheChatListLine(current, event),
       enableLastEventRefresh: false,
       roomPreviewLastEvents: {
         PangeaEventTypes.activityPlan,

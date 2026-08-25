@@ -265,4 +265,82 @@ void main() {
       );
     });
   });
+
+  group('the chat list keeps the same card the conversation draws', () {
+    test('a later survivor card does not take the line from the first', () {
+      // Real and deterministic, not a coincidence. The writer's card is sent
+      // at hangup; delivery to the other device is delayed past the settle
+      // window by ordinary network flakiness; that device writes a survivor
+      // card with the same call key and its own measured duration. Both are
+      // genuine. The conversation keeps the earlier one; the list took
+      // whatever arrived last, so one call was described twice, differently,
+      // and the survivor card always won because it is always the later one.
+      client.accountData['m.direct'] = BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@a:server': ['!r:server'],
+        },
+      );
+      final theirs = card(r'$theirs', key: 'k', ts: 1000);
+      final survivor = card(
+        r'$survivor',
+        key: 'k',
+        ts: 2000,
+        sender: '@test:fakeServer.notExisting',
+      );
+
+      expect(
+        callCardMayTakeTheChatListLine(theirs, survivor),
+        isFalse,
+        reason: 'the line keeps the card the conversation draws',
+      );
+      expect(
+        CallTimelineEvent.isDuplicateOfEarlier(survivor, [theirs, survivor]),
+        isTrue,
+        reason: 'and the conversation agrees, from the other direction',
+      );
+    });
+
+    test('a card for a DIFFERENT call always takes the line', () {
+      // The rule is only about one call described twice. A newer call is the
+      // newest thing that happened in the room and belongs on the line.
+      client.accountData['m.direct'] = BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@a:server': ['!r:server'],
+        },
+      );
+      final older = card(r'$older', key: 'k1', ts: 1000);
+      final newer = card(r'$newer', key: 'k2', ts: 2000);
+
+      expect(callCardMayTakeTheChatListLine(older, newer), isTrue);
+    });
+
+    test('an earlier card for the same call DOES take the line', () {
+      // Arrival order is not timestamp order. If the earlier card syncs
+      // second, it still becomes the line, because it is the one drawn.
+      client.accountData['m.direct'] = BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@a:server': ['!r:server'],
+        },
+      );
+      final survivor = card(
+        r'$survivor',
+        key: 'k',
+        ts: 2000,
+        sender: '@test:fakeServer.notExisting',
+      );
+      final theirs = card(r'$theirs', key: 'k', ts: 1000);
+
+      expect(callCardMayTakeTheChatListLine(survivor, theirs), isTrue);
+    });
+
+    test('nothing on the line yet means anything may take it', () {
+      expect(
+        callCardMayTakeTheChatListLine(null, card(r'$a', key: 'k')),
+        isTrue,
+      );
+    });
+  });
 }

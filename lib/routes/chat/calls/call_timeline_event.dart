@@ -54,6 +54,32 @@ String? callPeerOf(Room room) {
 /// person. Every caller wants the RULE, which is [callCardCouldBeReal].
 Set<String> _callSides(Room room) => {?room.client.userID, ?callPeerOf(room)};
 
+/// Whether a newly arrived event may take over the room's chat-list line.
+///
+/// Only interesting when it and the line's current event are cards for the
+/// SAME call, which happens for real: the writer's card is sent at hangup, its
+/// delivery to the other device is delayed past the settle window by ordinary
+/// network flakiness, and that device writes a survivor card carrying the same
+/// call key and its own independently measured duration. Both are genuine.
+///
+/// The conversation keeps the earlier one. The list had no idea that rule
+/// existed and simply took whatever arrived last, so the two surfaces
+/// deterministically described one call with two different durations. Not a
+/// coincidence -- the survivor card is always the later one, so it always won
+/// the line.
+///
+/// Both cards must be able to vouch for themselves before this arbitrates:
+/// letting one that cannot displace one that can would remove a real record
+/// from the list, which is the thing the strict predicate exists to stop.
+bool callCardMayTakeTheChatListLine(Event? current, Event incoming) {
+  if (current == null) return true;
+  if (!CallTimelineEvent.sameCall(incoming, current)) return true;
+  if (!callCardIsProvenReal(incoming) || !callCardIsProvenReal(current)) {
+    return true;
+  }
+  return CallTimelineEvent.outranks(incoming, current);
+}
+
 /// Whether this call card could have been written by somebody on the call.
 ///
 /// COULD, not IS, and the difference is the whole of it. Anyone in the room
@@ -241,6 +267,28 @@ class CallTimelineEvent extends StatelessWidget {
     return t != null && isDuplicateOfEarlier(event, t.events);
   }
 
+  /// Which of two cards for the SAME call the surfaces agree to keep.
+  ///
+  /// Earliest by origin_server_ts, with the event id as the final tie-break so
+  /// every client picks the same one. Exported because the chat list has to
+  /// reach the same verdict as the conversation from a different direction:
+  /// the conversation sees the whole timeline, the list sees only the incoming
+  /// event and the one it already held.
+  static bool outranks(Event a, Event b) {
+    final byTime = a.originServerTs.compareTo(b.originServerTs);
+    if (byTime != 0) return byTime < 0;
+    return a.eventId.compareTo(b.eventId) < 0;
+  }
+
+  /// Whether two events are cards for the same call.
+  static bool sameCall(Event a, Event b) {
+    final key = a.content[CallRecord.callKeyField];
+    return key is String &&
+        a.type == PangeaEventTypes.call &&
+        b.type == PangeaEventTypes.call &&
+        b.content[CallRecord.callKeyField] == key;
+  }
+
   /// The rule itself, pure so it can be pinned directly: [event] is a
   /// duplicate iff some other sent call card in [all] carries the same key
   /// and sorts earlier -- origin_server_ts first, event id as the final
@@ -275,11 +323,7 @@ class CallTimelineEvent extends StatelessWidget {
       // one call both draw. That is the trade, and it is the right way round:
       // a visible duplicate of a real call beats a real call vanishing.
       if (!callCardIsProvenReal(other)) continue;
-      final byTime = other.originServerTs.compareTo(event.originServerTs);
-      if (byTime < 0 ||
-          (byTime == 0 && other.eventId.compareTo(event.eventId) < 0)) {
-        return true;
-      }
+      if (outranks(other, event)) return true;
     }
     return false;
   }
