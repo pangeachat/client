@@ -130,13 +130,35 @@ class CallTranscriptContent {
 
     var accounting = HalfAccounting.fromJson(content);
 
-    // Captured nothing, yet shipped speech. The accounting cannot describe the
-    // content it arrived with, so it is not trustworthy about completeness
-    // either -- and only here are both visible at once.
-    if (segments.isNotEmpty &&
-        accounting.declared &&
-        accounting.chunksCaptured == 0) {
-      accounting = accounting.asIncoherent();
+    // The accounting and the content must agree, in BOTH directions. Only here
+    // are the two visible at once, so this is the only place the disagreement
+    // can be seen at all -- and a half whose own numbers contradict its own
+    // words is not trustworthy about completeness either.
+    //
+    // The check used to name one direction. Naming one direction is how the
+    // other goes unnoticed: this file already learned that once, when the
+    // coherence rule named `transcribed` and stopped holding the moment
+    // `lost` was added.
+    //
+    // Words with nothing behind them: it shipped speech while claiming to have
+    // captured nothing.
+    //
+    // Nothing with words behind it: it claims a chunk was transcribed and
+    // carries no words at all -- which would otherwise read as a flat,
+    // uncaveated "they said nothing", a definite claim about a person
+    // contradicted by the same event's own numbers. Truncation is the
+    // legitimate way to be in that state, so it is excluded: a half whose
+    // segments were dropped to fit says so, and already reads as incomplete.
+    if (accounting.declared) {
+      final wordsWithoutCapture =
+          segments.isNotEmpty && accounting.chunksCaptured == 0;
+      final captureWithoutWords =
+          segments.isEmpty &&
+          accounting.chunksTranscribed > 0 &&
+          !accounting.truncated;
+      if (wordsWithoutCapture || captureWithoutWords) {
+        accounting = accounting.asIncoherent();
+      }
     }
 
     return CallTranscriptContent(

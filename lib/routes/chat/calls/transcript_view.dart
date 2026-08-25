@@ -35,31 +35,38 @@ Future<void> showCallTranscript(
 ///
 /// Taken from the call, not from the room. Room membership was the obvious
 /// proxy and it is the wrong one: it answers "who has ever been in this
-/// conversation", so every person who ever left the room earned a permanent
-/// "no transcript from them" section on every future call in it, having never
-/// been on any of them. The two questions only coincide in a room nobody has
-/// left.
+/// conversation", so everyone who ever left earned a permanent "no transcript
+/// from them" section on every future call in it, having never been on any of
+/// them.
 ///
-/// A 1:1 call has exactly two sides: whoever placed it, and whoever they
-/// called. [callerId] comes off the call's own card, so it names the caller
-/// even if they have since left the room -- which is the case room membership
-/// was reached for in the first place, and this covers it without the rest.
+/// A 1:1 call has exactly two sides: whoever placed it and whoever they
+/// called. [peerId] is the room's direct-chat peer. [callerId] comes off the
+/// call's own card, and is what still names a caller who has since left the
+/// room -- the case room membership was reached for in the first place.
 ///
-/// [peerId] is the other side. The reader is always one of the two, so between
-/// this account and the caller only one gap remains, and the room's direct-chat
-/// peer fills it.
+/// [callerId] is UNTRUSTED. The card is room content and a modified client can
+/// put any string in it. Taken on trust it became a third section on a
+/// two-person call, permanently reading "no transcript from them" about
+/// somebody who was never there -- the screen asserting a participant into
+/// existence. [callerIsPlausible] is the caller's own answer to whether that
+/// name could have been on this call at all; a name it rejects is dropped
+/// rather than shown.
 ///
-/// Needed at all because assembly reports a participant who wrote nothing as
-/// ABSENT rather than omitting them, and DROPS a half from anyone not named --
-/// which is what stops a stranger writing themselves a section. Both behaviours
-/// depend on this list being right.
+/// Needed at all because assembly reports a named participant who wrote
+/// nothing as ABSENT rather than omitting them, and DROPS a half from anyone
+/// not named -- which is what stops a stranger writing themselves a section.
+/// Both behaviours depend on this list being right, in both directions.
 @visibleForTesting
 List<String> callParticipants({
   required String? me,
   required String? callerId,
   required String? peerId,
+  required bool Function(String) callerIsPlausible,
 }) {
-  final ids = <String>{?me, ?callerId, ?peerId};
+  final caller = callerId != null && callerIsPlausible(callerId)
+      ? callerId
+      : null;
+  final ids = <String>{?me, ?caller, ?peerId};
 
   // Sorted, so the sections do not reorder between two reads of the same call.
   return ids.toList()..sort();
@@ -105,6 +112,11 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       me: widget.room.client.userID,
       callerId: widget.callerId,
       peerId: widget.room.directChatMatrixID,
+      // A name is plausible only if this room has a membership event for it.
+      // A peer who left still has one, which is exactly the case the card's
+      // caller exists to cover; a name invented by a modified client has none.
+      callerIsPlausible: (id) =>
+          widget.room.getState(EventTypes.RoomMember, id) != null,
     ),
     encrypted: widget.room.encrypted,
   );

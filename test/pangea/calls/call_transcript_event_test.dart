@@ -170,6 +170,60 @@ void main() {
     });
   });
 
+  group('accounting that contradicts its own content', () {
+    CallTranscriptContent parse({
+      required List<Map<String, String>> segments,
+      required int captured,
+      required int transcribed,
+      bool truncated = false,
+      int omitted = 0,
+    }) => CallTranscriptContent.fromJson({
+      'call_key': _callKey,
+      'segments': segments,
+      ...HalfAccounting(
+        chunksCaptured: captured,
+        chunksTranscribed: transcribed,
+        truncated: truncated,
+        segmentsOmitted: omitted,
+        drainComplete: true,
+      ).toJson(),
+    })!;
+
+    test('a chunk transcribed with NO words is incoherent', () {
+      // Otherwise this renders as a flat "they said nothing" -- a definite
+      // claim about a person, contradicted by the same event's own numbers.
+      final parsed = parse(segments: const [], captured: 2, transcribed: 1);
+
+      expect(parsed.accounting.incoherent, isTrue);
+      expect(parsed.accounting.writerAdmitsGaps, isTrue);
+    });
+
+    test('a TRUNCATED half with no words is not incoherent', () {
+      // The legitimate way to be in that state: the segments were dropped to
+      // fit, the half says so, and it already reads as incomplete. Flagging it
+      // would make truncation look like corruption.
+      final parsed = parse(
+        segments: const [],
+        captured: 2,
+        transcribed: 1,
+        truncated: true,
+        omitted: 4,
+      );
+
+      expect(parsed.accounting.incoherent, isFalse);
+      expect(parsed.accounting.writerAdmitsGaps, isTrue);
+    });
+
+    test('a genuinely silent half stays coherent', () {
+      // Nothing captured, nothing transcribed, nothing said. The whole point
+      // of the flag is that it does NOT fire here.
+      final parsed = parse(segments: const [], captured: 0, transcribed: 0);
+
+      expect(parsed.accounting.incoherent, isFalse);
+      expect(parsed.accounting.writerAdmitsGaps, isFalse);
+    });
+  });
+
   group('reader ceilings', () {
     test('a vast segment list is bounded AND the half is marked shortened', () {
       // Room content is untrusted. Two separate failures here: doing unbounded

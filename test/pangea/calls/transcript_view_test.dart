@@ -326,17 +326,43 @@ void main() {
       // Room membership answers "who has ever been in this conversation".
       // Using it here gave everyone who ever left a permanent "no transcript
       // from them" section on every future call they were never part of.
-      final ids = callParticipants(me: _me, callerId: _peer, peerId: _peer);
+      final ids = callParticipants(
+        me: _me,
+        callerId: _peer,
+        peerId: _peer,
+        callerIsPlausible: (_) => true,
+      );
 
       expect(ids, [_peer, _me]);
       expect(ids, isNot(contains('@longgone:example.com')));
+    });
+
+    test('a caller the room has never heard of is DROPPED', () {
+      // The card is room content and a modified client can put any string in
+      // it. Taken on trust it became a third section on a two-person call,
+      // permanently reading "no transcript from them" about somebody who was
+      // never there -- the screen asserting a participant into existence.
+      final ids = callParticipants(
+        me: _me,
+        callerId: '@invented:evil.example',
+        peerId: _peer,
+        callerIsPlausible: (_) => false,
+      );
+
+      expect(ids, [_peer, _me]);
+      expect(ids, isNot(contains('@invented:evil.example')));
     });
 
     test('the caller is named even if they have since LEFT the room', () {
       // The case room membership was reached for in the first place. The card
       // names the caller, so it survives them leaving.
       expect(
-        callParticipants(me: _me, callerId: '@gone:example.com', peerId: null),
+        callParticipants(
+          me: _me,
+          callerId: '@gone:example.com',
+          peerId: null,
+          callerIsPlausible: (_) => true,
+        ),
         contains('@gone:example.com'),
       );
     });
@@ -345,21 +371,38 @@ void main() {
       // Cards predate the caller field. The room's direct-chat peer is the
       // best available answer, and dropping to one side would report the
       // other as not having been there.
-      expect(callParticipants(me: _me, callerId: null, peerId: _peer), [
-        _peer,
-        _me,
-      ]);
+      expect(
+        callParticipants(
+          me: _me,
+          callerId: null,
+          peerId: _peer,
+          callerIsPlausible: (_) => true,
+        ),
+        [_peer, _me],
+      );
     });
 
     test('this account is always one of the sides', () {
-      expect(callParticipants(me: _me, callerId: null, peerId: null), [_me]);
+      expect(
+        callParticipants(
+          me: _me,
+          callerId: null,
+          peerId: null,
+          callerIsPlausible: (_) => true,
+        ),
+        [_me],
+      );
     });
 
     test('is stable across reads, so sections do not reorder', () {
-      expect(
-        callParticipants(me: _me, callerId: _peer, peerId: _peer),
-        callParticipants(me: _me, callerId: _peer, peerId: _peer),
+      List<String> read() => callParticipants(
+        me: _me,
+        callerId: _peer,
+        peerId: _peer,
+        callerIsPlausible: (_) => true,
       );
+
+      expect(read(), read());
     });
   });
 }
