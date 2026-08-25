@@ -91,6 +91,10 @@ void main() {
       })!;
 
       expect(parsed.segments.map((s) => s.text), ['primero', 'ultimo']);
+      // ...and the half says so. Dropping entries quietly and presenting the
+      // rest as whole is the same lie as truncating quietly.
+      expect(parsed.accounting.truncated, isTrue);
+      expect(parsed.accounting.writerAdmitsGaps, isTrue);
     });
 
     test('a missing segments list is refused, an empty one is not', () {

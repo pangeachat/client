@@ -218,6 +218,15 @@ void main() {
       });
     });
 
+    test('a participant listed twice still gets one section', () {
+      final transcript = assembleTranscript(
+        candidates: [_candidate(alice)],
+        expectedSenders: [alice, alice],
+      );
+
+      expect(transcript.halves, hasLength(1));
+    });
+
     test('a non-participant gets no section at all', () {
       // This test previously asserted the opposite -- that an unexpected sender
       // was "odd enough to show". That was wrong: a transcript event from

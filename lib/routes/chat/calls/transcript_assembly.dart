@@ -260,7 +260,10 @@ CallTranscript assembleTranscript({
   // it a section in a two-person call lends it the same standing as a real
   // half. It also let one hostile room member force unbounded sections by
   // writing under many sender ids.
-  final senders = expectedSenders;
+  // De-duplicated: a caller passing the same participant twice would otherwise
+  // get two sections for one speaker, contradicting the one-half-per-sender
+  // rule this function exists to enforce.
+  final senders = <String>{...expectedSenders};
 
   final halves = <TranscriptHalf>[];
   for (final senderId in senders) {

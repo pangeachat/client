@@ -109,7 +109,13 @@ class CallTranscriptContent {
       }
 
       final segment = TranscriptSegment.fromJson(raw);
-      if (segment == null) continue;
+      if (segment == null) {
+        // A dropped entry is dropped CONTENT. Skipping it quietly and then
+        // presenting the rest as whole is the same lie as truncating quietly,
+        // and the reason does not matter to the person reading it.
+        shortened = true;
+        continue;
+      }
       // Checked BEFORE adding, against this segment's own size: testing the
       // running total first let a single vast segment through whole.
       if (totalChars + segment.text.length > maxTotalChars) {
