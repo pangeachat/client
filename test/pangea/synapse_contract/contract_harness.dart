@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
@@ -7,6 +8,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import '../endpoint_test_env.dart';
 
 /// Live-SDK harness for the Synapse contract suite.
@@ -59,6 +61,23 @@ class ContractHarness {
     await dispose(client);
   }
 
+  /// Sync-poll until [predicate] holds — for extension methods that read the
+  /// LOCAL room state (join rules, space children) right after a server write.
+  static Future<void> waitUntil(
+    Client client,
+    bool Function() predicate, {
+    Duration timeout = const Duration(seconds: 10),
+  }) async {
+    final deadline = DateTime.now().add(timeout);
+    while (!predicate()) {
+      if (DateTime.now().isAfter(deadline)) {
+        throw TimeoutException('waitUntil: condition not met in $timeout');
+      }
+      await client.oneShotSync();
+      await Future.delayed(const Duration(milliseconds: 250));
+    }
+  }
+
   /// Whether the homeserver supports creating rooms of [version] (per
   /// /capabilities) — gates the room-v12 canaries, which are meaningless on
   /// a server that cannot create v12 rooms at all.
@@ -87,7 +106,33 @@ class ContractHarness {
       ),
       sqfliteFactory: databaseFactoryFfi,
     );
-    final client = Client('contract-test-$n', database: database);
+    final client = Client(
+      'contract-test-$n',
+      database: database,
+      // Mirrors ClientManager.createClient: without these in the important
+      // set the SDK never surfaces join_rules / pangea.* state on the local
+      // Room, and every extension that reads local state silently no-ops.
+      importantStateEvents: <String>{
+        'im.ponies.room_emotes',
+        EventTypes.RoomPowerLevels,
+        EventTypes.RoomJoinRules,
+        PangeaEventTypes.botOptions,
+        PangeaEventTypes.capacity,
+        PangeaEventTypes.userSetLemmaInfo,
+        PangeaEventTypes.activityPlan,
+        PangeaEventTypes.activityRole,
+        PangeaEventTypes.activitySummary,
+        PangeaEventTypes.activityRoomIds,
+        PangeaEventTypes.analyticsStatus,
+        PangeaEventTypes.coursePlan,
+        PangeaEventTypes.teacherMode,
+        PangeaEventTypes.courseChatList,
+        PangeaEventTypes.analyticsSettings,
+        PangeaEventTypes.courseSettings,
+        PangeaEventTypes.orchestratorAwardedGoals,
+        PangeaEventTypes.botParticipant,
+      },
+    );
     await client.checkHomeserver(Uri.parse(EndpointTestEnv.synapseUrl));
     return client;
   }
