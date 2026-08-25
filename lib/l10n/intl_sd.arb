@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-24 15:12:04.127837",
+    "@@last_modified": "2026-08-24 16:25:57.219603",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "سطح {level}",
     "whatAreYouLearning": "توهان ڇا سکي رهيا آهيو؟",
     "languageSwitcherBaseLanguageLabel": "توهان جي بنيادي ٻولي",
+    "listenModeDescription": "ٻڌڻ لاءِ ڪنهن چونڊ تي ٽيپ ڪريو. ڪجهه به چونڊيل ناهي.",
     "constructUseHrdDesc": "ٻڌو"
 }

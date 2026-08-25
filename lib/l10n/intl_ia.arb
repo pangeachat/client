@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-24 15:12:01.911766",
+    "@@last_modified": "2026-08-24 16:25:54.546392",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10693,5 +10693,6 @@
     "languageDropdownLevel": "Nivello {level}",
     "whatAreYouLearning": "Que apprende tu?",
     "languageSwitcherBaseLanguageLabel": "Tu lingua de base",
+    "listenModeDescription": "Tocca un selection pro audir lo. Nihil es seligite.",
     "constructUseHrdDesc": "Audite"
 }

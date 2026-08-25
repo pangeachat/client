@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-24 15:12:01.019589",
+    "@@last_modified": "2026-08-24 16:25:53.471877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Nivo {level}",
     "whatAreYouLearning": "Wat learsto?",
     "languageSwitcherBaseLanguageLabel": "Dyn basistaal",
+    "listenModeDescription": "Tik op in kar om it te hearren. Neat is selektearre.",
     "constructUseHrdDesc": "Heard"
 }

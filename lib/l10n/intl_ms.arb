@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-24 15:12:03.188174",
+    "@@last_modified": "2026-08-24 16:25:56.161243",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Tahap {level}",
     "whatAreYouLearning": "Apa yang anda pelajari?",
     "languageSwitcherBaseLanguageLabel": "Bahasa asas anda",
+    "listenModeDescription": "Ketik pilihan untuk mendengarnya. Tiada yang dipilih.",
     "constructUseHrdDesc": "Dengar"
 }

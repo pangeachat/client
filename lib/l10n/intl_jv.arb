@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-24 15:12:02.121101",
+    "@@last_modified": "2026-08-24 16:25:54.772099",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Tingkat {level}",
     "whatAreYouLearning": "Apa sing lagi kok sinau?",
     "languageSwitcherBaseLanguageLabel": "Basa dhasarmu",
+    "listenModeDescription": "Tutul pilihan kanggo ngrungokake. Ora ana sing dipilih.",
     "constructUseHrdDesc": "Krungu"
 }

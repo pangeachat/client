@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-24 15:12:05.065783",
+    "@@last_modified": "2026-08-24 16:25:58.300936",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "لیول {level}",
     "whatAreYouLearning": "آپ کیا سیکھ رہے ہیں؟",
     "languageSwitcherBaseLanguageLabel": "آپ کی بنیادی زبان",
+    "listenModeDescription": "سننے کے لیے ایک انتخاب پر ٹیپ کریں۔ کچھ بھی منتخب نہیں ہے۔",
     "constructUseHrdDesc": "سنا"
 }

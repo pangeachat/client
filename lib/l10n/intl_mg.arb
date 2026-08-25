@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-24 15:12:02.819247",
+    "@@last_modified": "2026-08-24 16:25:55.811589",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Ambaratonga {level}",
     "whatAreYouLearning": "Inona no ianaranao?",
     "languageSwitcherBaseLanguageLabel": "Ny fiteninao fototra",
+    "listenModeDescription": "Tsindrio ny safidy iray hihainoana azy. Tsy misy voafidy.",
     "constructUseHrdDesc": "Reny"
 }

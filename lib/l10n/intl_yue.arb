@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-24 15:12:05.235425",
+    "@@last_modified": "2026-08-24 16:25:58.768621",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10714,5 +10714,6 @@
     "languageDropdownLevel": "程度 {level}",
     "whatAreYouLearning": "你正在學習什麼？",
     "languageSwitcherBaseLanguageLabel": "你的基礎語言",
+    "listenModeDescription": "點擊一個選項來聽。沒有選擇任何內容。",
     "constructUseHrdDesc": "聽過"
 }

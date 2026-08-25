@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-24 15:12:05.495357",
+    "@@last_modified": "2026-08-24 16:25:58.960557",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Izinga {level}",
     "whatAreYouLearning": "Ufundani?",
     "languageSwitcherBaseLanguageLabel": "Ulimi lwakho oluyisisekelo",
+    "listenModeDescription": "Thepha okukhethile ukuze ukuzwe. Akukho okukhethiwe.",
     "constructUseHrdDesc": "Kuzwakale"
 }

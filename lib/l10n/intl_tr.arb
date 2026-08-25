@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-24 15:12:04.846075",
+    "@@last_modified": "2026-08-24 16:25:58.267930",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10058,5 +10058,6 @@
     "languageDropdownLevel": "Seviye {level}",
     "whatAreYouLearning": "Ne öğreniyorsun?",
     "languageSwitcherBaseLanguageLabel": "Ana dilin",
+    "listenModeDescription": "Duymak için bir seçeneğe dokunun. Hiçbir şey seçili değil.",
     "constructUseHrdDesc": "Duyuldu"
 }

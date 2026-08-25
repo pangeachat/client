@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-24 15:12:04.542831",
+    "@@last_modified": "2026-08-24 16:25:57.848109",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Tingkat {level}",
     "whatAreYouLearning": "Diajar naon?",
     "languageSwitcherBaseLanguageLabel": "Basa dasar anjeun",
+    "listenModeDescription": "Toél pilihan pikeun ngadéngékeunana. Taya nu kapilih.",
     "constructUseHrdDesc": "Kadangu"
 }

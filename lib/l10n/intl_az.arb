@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-24 15:11:59.959242",
+    "@@last_modified": "2026-08-24 16:25:52.379189",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Səviyyə {level}",
     "whatAreYouLearning": "Nə öyrənirsiniz?",
     "languageSwitcherBaseLanguageLabel": "Sizin əsas diliniz",
+    "listenModeDescription": "Eşitmək üçün bir seçimə toxunun. Heç nə seçilməyib.",
     "constructUseHrdDesc": "Eşidilib"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-24 15:12:02.492662",
+    "@@last_modified": "2026-08-24 16:25:55.143020",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "កម្រិត {level}",
     "whatAreYouLearning": "តើអ្នកកំពុងរៀនអ្វី?",
     "languageSwitcherBaseLanguageLabel": "ភាសាមូលដ្ឋានរបស់អ្នក",
+    "listenModeDescription": "ប៉ះជម្រើសដើម្បីស្ដាប់។ គ្មានអ្វីត្រូវបានជ្រើសរើសទេ។",
     "constructUseHrdDesc": "បានឮ"
 }

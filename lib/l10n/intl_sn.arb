@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-24 15:12:04.322791",
+    "@@last_modified": "2026-08-24 16:25:57.579021",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Chikamu {level}",
     "whatAreYouLearning": "Uri kudzidza chii?",
     "languageSwitcherBaseLanguageLabel": "Mutauro wako wekutanga",
+    "listenModeDescription": "Tinya sarudzo kuti unzwe. Hapana chasarudzwa.",
     "constructUseHrdDesc": "Ndakanzwa"
 }

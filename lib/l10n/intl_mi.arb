@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-24 15:12:02.839403",
+    "@@last_modified": "2026-08-24 16:25:55.866010",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Taumata {level}",
     "whatAreYouLearning": "He aha tō ako?",
     "languageSwitcherBaseLanguageLabel": "Tō reo matua",
+    "listenModeDescription": "Pāwhiritia tētahi kōwhiringa kia rangona. Kāore he mea i tohua.",
     "constructUseHrdDesc": "Kua rangona"
 }

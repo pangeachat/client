@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-24 15:12:04.282016",
+    "@@last_modified": "2026-08-24 16:25:57.678144",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Heerka {level}",
     "whatAreYouLearning": "Maxaad baranaysaa?",
     "languageSwitcherBaseLanguageLabel": "Luqaddaada aasaasiga ah",
+    "listenModeDescription": "Dooro mid si aad u dhageysato. Waxba lama dooran.",
     "constructUseHrdDesc": "La maqlay"
 }

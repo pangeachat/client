@@ -2968,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-24 15:12:02.889428",
+    "@@last_modified": "2026-08-24 16:25:55.715222",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10538,5 +10538,6 @@
     "languageDropdownLevel": "{level} lygis",
     "whatAreYouLearning": "Ko mokotės?",
     "languageSwitcherBaseLanguageLabel": "Jūsų pagrindinė kalba",
+    "listenModeDescription": "Palieskite pasirinkimą, kad jį išgirstumėte. Nieko nepasirinkta.",
     "constructUseHrdDesc": "Girdėta"
 }

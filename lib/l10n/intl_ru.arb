@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-24 15:12:03.954453",
+    "@@last_modified": "2026-08-24 16:25:57.317328",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10729,5 +10729,6 @@
     "languageDropdownLevel": "Уровень {level}",
     "whatAreYouLearning": "Что вы изучаете?",
     "languageSwitcherBaseLanguageLabel": "Ваш основной язык",
+    "listenModeDescription": "Нажмите на вариант, чтобы прослушать его. Ничего не выбрано.",
     "constructUseHrdDesc": "Услышано"
 }

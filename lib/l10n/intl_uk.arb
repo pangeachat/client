@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-24 15:12:05.034591",
+    "@@last_modified": "2026-08-24 16:25:58.316312",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9757,5 +9757,6 @@
     "languageDropdownLevel": "Рівень {level}",
     "whatAreYouLearning": "Що ви вивчаєте?",
     "languageSwitcherBaseLanguageLabel": "Ваша основна мова",
+    "listenModeDescription": "Торкніться варіанта, щоб прослухати його. Нічого не вибрано.",
     "constructUseHrdDesc": "Чув"
 }

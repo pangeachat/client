@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-24 15:12:00.445028",
+    "@@last_modified": "2026-08-24 16:25:52.792645",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Livellu {level}",
     "whatAreYouLearning": "Chì amparate?",
     "languageSwitcherBaseLanguageLabel": "A vostra lingua di basa",
+    "listenModeDescription": "Toccate una scelta per sentela. Nunda hè sceltu.",
     "constructUseHrdDesc": "Sentitu"
 }

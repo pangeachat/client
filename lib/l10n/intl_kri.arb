@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-24 15:12:02.379339",
+    "@@last_modified": "2026-08-24 16:25:55.316283",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Level {level}",
     "whatAreYouLearning": "Wetin yu de lan?",
     "languageSwitcherBaseLanguageLabel": "Yu base langwej",
+    "listenModeDescription": "Tap wan choyz fɔ yɛr am. Natin nɔ de pik.",
     "constructUseHrdDesc": "Bin yɛri"
 }

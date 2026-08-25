@@ -44,6 +44,15 @@ class ChoicesArray<T> extends StatelessWidget {
   /// default here.
   final String roomId;
 
+  /// When true, tapping a choice plays it and nothing else — [onPressed] is
+  /// not called, so nothing is selected or replaced.
+  ///
+  /// Writing assistance's Listen mode, and only its. A learner who knows a
+  /// language by ear cannot tell the choices apart on sight, and hearing one
+  /// used to cost them the answer. Every other caller leaves this false and
+  /// keeps the shipped behaviour, where a tap selects.
+  final bool listenMode;
+
   const ChoicesArray({
     super.key,
     required this.choices,
@@ -56,6 +65,7 @@ class ChoicesArray<T> extends StatelessWidget {
     this.getDisplayCopy,
     this.id,
     this.enabled = true,
+    this.listenMode = false,
   });
 
   @override
@@ -69,7 +79,7 @@ class ChoicesArray<T> extends StatelessWidget {
           (index, entry) => ChoiceItem<T>(
             onLongPress: onLongPress,
             onPressed: (T value, int index) {
-              onPressed(value, index);
+              if (!listenMode) onPressed(value, index);
               if (enableAudio && langCode != null) {
                 TtsController.tryToSpeak(
                   // Display string is used for TTS

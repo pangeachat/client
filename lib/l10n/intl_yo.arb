@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-24 15:12:05.202573",
+    "@@last_modified": "2026-08-24 16:25:58.878175",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Ipele {level}",
     "whatAreYouLearning": "Kini o n kọ?",
     "languageSwitcherBaseLanguageLabel": "Èdè ìpìlẹ̀ rẹ",
+    "listenModeDescription": "Fọwọ́ kan ohun tí o fẹ́ gbọ́. Kò sí ohun tí a yàn.",
     "constructUseHrdDesc": "Gbọ́"
 }

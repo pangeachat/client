@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-24 15:12:00.003353",
+    "@@last_modified": "2026-08-24 16:25:52.314107",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9771,5 +9771,6 @@
     "languageDropdownLevel": "Узровень {level}",
     "whatAreYouLearning": "Што вы вывучаеце?",
     "languageSwitcherBaseLanguageLabel": "Ваша базавая мова",
+    "listenModeDescription": "Націсніце на выбар, каб пачуць яго. Нічога не выбрана.",
     "constructUseHrdDesc": "Пачута"
 }

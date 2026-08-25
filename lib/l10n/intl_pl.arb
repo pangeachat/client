@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-24 15:12:03.599655",
+    "@@last_modified": "2026-08-24 16:25:56.758104",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9842,5 +9842,6 @@
     "languageDropdownLevel": "Poziom {level}",
     "whatAreYouLearning": "Czego się uczysz?",
     "languageSwitcherBaseLanguageLabel": "Twój język podstawowy",
+    "listenModeDescription": "Dotknij wyboru, aby go usłyszeć. Nic nie jest wybrane.",
     "constructUseHrdDesc": "Usłyszane"
 }

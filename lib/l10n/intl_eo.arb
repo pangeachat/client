@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 15:12:00.496293",
+    "@@last_modified": "2026-08-24 16:25:52.975120",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10702,5 +10702,6 @@
     "languageDropdownLevel": "Nivelo {level}",
     "whatAreYouLearning": "Kion vi lernas?",
     "languageSwitcherBaseLanguageLabel": "Via baza lingvo",
+    "listenModeDescription": "Frapu elekton por aŭdi ĝin. Nenio estas elektita.",
     "constructUseHrdDesc": "Aŭdita"
 }

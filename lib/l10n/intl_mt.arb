@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-24 15:12:03.397816",
+    "@@last_modified": "2026-08-24 16:25:56.425927",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Livell {level}",
     "whatAreYouLearning": "X’qed titgħallem?",
     "languageSwitcherBaseLanguageLabel": "Il-lingwa bażi tiegħek",
+    "listenModeDescription": "Tektek għażla biex tismagħha. Xejn mhu magħżul.",
     "constructUseHrdDesc": "Smajt"
 }

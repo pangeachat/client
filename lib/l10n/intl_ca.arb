@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 15:12:00.403319",
+    "@@last_modified": "2026-08-24 16:25:52.956346",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9884,5 +9884,6 @@
     "languageDropdownLevel": "Nivell {level}",
     "whatAreYouLearning": "Què estàs aprenent?",
     "languageSwitcherBaseLanguageLabel": "La teva llengua base",
+    "listenModeDescription": "Toca una opció per escoltar-la. No hi ha res seleccionat.",
     "constructUseHrdDesc": "Sentit"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-24 15:12:02.629576",
+    "@@last_modified": "2026-08-24 16:25:55.298179",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Gradus {level}",
     "whatAreYouLearning": "Quid discis?",
     "languageSwitcherBaseLanguageLabel": "Lingua tua fundamentalis",
+    "listenModeDescription": "Tange optionem ut audias. Nihil eligitur.",
     "constructUseHrdDesc": "Audivit"
 }

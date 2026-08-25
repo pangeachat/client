@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-24 15:12:04.524821",
+    "@@last_modified": "2026-08-24 16:25:57.869019",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Boemo ba {level}",
     "whatAreYouLearning": "U ithuta eng?",
     "languageSwitcherBaseLanguageLabel": "Puō ea hao ea motheo",
+    "listenModeDescription": "Tlanya khetho ho e utlwa. Ha ho letho le kgethilweng.",
     "constructUseHrdDesc": "Utloile"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-24 15:12:02.721765",
+    "@@last_modified": "2026-08-24 16:25:55.470276",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Niveau {level}",
     "whatAreYouLearning": "Wat léiers du?",
     "languageSwitcherBaseLanguageLabel": "Deng Basissprooch",
+    "listenModeDescription": "Tipp op eng Wiel fir se ze héieren. Näischt ass ausgewielt.",
     "constructUseHrdDesc": "Héieren"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 15:12:03.675050",
+    "@@last_modified": "2026-08-24 16:25:56.910187",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10701,5 +10701,6 @@
     "languageDropdownLevel": "Nível {level}",
     "whatAreYouLearning": "O que você está aprendendo?",
     "languageSwitcherBaseLanguageLabel": "Seu idioma base",
+    "listenModeDescription": "Toque em uma opção para ouvi-la. Nada selecionado.",
     "constructUseHrdDesc": "Ouviu"
 }

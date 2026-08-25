@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-24 15:12:02.351738",
+    "@@last_modified": "2026-08-24 16:25:55.174666",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "{level} деңгей",
     "whatAreYouLearning": "Сіз не үйреніп жатырсыз?",
     "languageSwitcherBaseLanguageLabel": "Сіздің негізгі тіліңіз",
+    "listenModeDescription": "Тыңдау үшін таңдауды басыңыз. Ештеңе таңдалмаған.",
     "constructUseHrdDesc": "Естідім"
 }

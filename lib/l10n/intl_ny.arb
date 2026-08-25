@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-24 15:12:03.564127",
+    "@@last_modified": "2026-08-24 16:25:56.561323",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Mulingo {level}",
     "whatAreYouLearning": "Mukaphunzira chiyani?",
     "languageSwitcherBaseLanguageLabel": "Chilankhulo chanu choyambira",
+    "listenModeDescription": "Dinani chisankho kuti mumve. Palibe chomwe chasankhidwa.",
     "constructUseHrdDesc": "Kumva"
 }

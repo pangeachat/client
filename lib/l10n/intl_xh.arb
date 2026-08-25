@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-24 15:12:05.087218",
+    "@@last_modified": "2026-08-24 16:25:58.526721",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2161,5 +2161,6 @@
     "languageDropdownLevel": "Inqanaba {level}",
     "whatAreYouLearning": "Ufunda ntoni?",
     "languageSwitcherBaseLanguageLabel": "Ulwimi lwakho olusisiseko",
+    "listenModeDescription": "Cofa ukhetho ukuze ulive. Akukho nto ikhethiweyo.",
     "constructUseHrdDesc": "Kuviwe"
 }
