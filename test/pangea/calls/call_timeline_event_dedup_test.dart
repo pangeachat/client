@@ -343,4 +343,134 @@ void main() {
       );
     });
   });
+
+  group('what may hold the chat-list line', () {
+    void asDirectChat() {
+      client.accountData['m.direct'] = BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@a:server': ['!r:server'],
+        },
+      );
+    }
+
+    test('a card that renders as nothing cannot take the line', () {
+      // A third party who was in the room during the call knows the call key.
+      // Their card fails the "could be real" check, so the list renders
+      // nothing for it -- and letting it win the slot took the summary away
+      // from a real call the conversation was still drawing. A blank row, not
+      // a wrong one, which is harder to notice and worse.
+      asDirectChat();
+      final real = card(r'$real', key: 'k', ts: 1000);
+      final forged = card(
+        r'$forged',
+        key: 'k',
+        ts: 2000,
+        sender: '@stranger:evil.example',
+      );
+
+      expect(callCardMayTakeTheChatListLine(real, forged), isFalse);
+    });
+
+    test('a card whose send FAILED cannot take the line', () {
+      asDirectChat();
+      final real = card(r'$real', key: 'k1', ts: 1000);
+      final failed = card(r'$failed', key: 'k2', ts: 2000);
+      failed.status = EventStatus.error;
+
+      expect(callCardMayTakeTheChatListLine(real, failed), isFalse);
+    });
+
+    test('the SAME event advancing its own status is always let through', () {
+      // A locally sent event is echoed at status sending and, if the send
+      // fails, echoed again as the SAME event id with status error. Ranking
+      // those two is a tie -- same timestamp, same id -- which refused the
+      // update and froze the line on the stale sending copy, so the list
+      // showed a cheerful "Voice call" for a call the peer never received
+      // while the conversation showed nothing.
+      asDirectChat();
+      final sending = card(r'$mine', key: 'k', ts: 1000);
+      sending.status = EventStatus.sending;
+      final errored = card(r'$mine', key: 'k', ts: 1000);
+      errored.status = EventStatus.error;
+
+      expect(
+        callCardMayTakeTheChatListLine(sending, errored),
+        isTrue,
+        reason: 'the record must be allowed to tell the truth about itself',
+      );
+    });
+
+    test('an unidentifiable peer is a shrug, not a refusal', () {
+      // The distinction the previous version could not draw. Nobody being
+      // identifiable must not be treated the same as this sender being
+      // identifiably not a participant.
+      client.accountData.remove('m.direct');
+      final wide = Room(
+        id: '!wide:server',
+        client: client,
+        summary: RoomSummary.fromJson({
+          'm.joined_member_count': 3,
+          'm.invited_member_count': 0,
+          'm.heroes': <String>[],
+        }),
+      );
+      for (final id in [
+        '@test:fakeServer.notExisting',
+        '@a:server',
+        '@third:server',
+      ]) {
+        wide.setState(
+          Event(
+            type: EventTypes.RoomMember,
+            stateKey: id,
+            content: const {'membership': 'join'},
+            senderId: id,
+            eventId: '\$m-\$id',
+            originServerTs: DateTime.now(),
+            room: wide,
+          ),
+        );
+      }
+      Event inWide(String sender, String id, int ts) => Event(
+        type: PangeaEventTypes.call,
+        content: {'answered': true, CallRecord.callKeyField: 'k'},
+        senderId: sender,
+        eventId: id,
+        originServerTs: DateTime.fromMillisecondsSinceEpoch(ts),
+        room: wide,
+        status: EventStatus.synced,
+      );
+
+      expect(
+        callCardMayTakeTheChatListLine(
+          inWide('@a:server', r'$one', 1000),
+          inWide('@third:server', r'$two', 2000),
+        ),
+        isTrue,
+        reason: 'neither can vouch, so neither is refused',
+      );
+    });
+
+    test('an ordinary message still takes the line', () {
+      // Only call cards are ours to arbitrate.
+      asDirectChat();
+      final callCard = card(r'$c', key: 'k', ts: 1000);
+      final message = Event(
+        type: EventTypes.Message,
+        content: const {'msgtype': 'm.text', 'body': 'hola'},
+        // NOT one of the two sides. Without the type guard this event would
+        // be judged by a rule written for call cards and refused, so the chat
+        // list would stop updating for ordinary messages from anyone the
+        // call rules do not recognise.
+        senderId: '@third:server',
+        eventId: r'$msg',
+        originServerTs: DateTime.fromMillisecondsSinceEpoch(2000),
+        room: Room(id: '!r:server', client: client),
+        status: EventStatus.synced,
+      );
+
+      expect(callCardMayTakeTheChatListLine(callCard, message), isTrue);
+    });
+  });
 }

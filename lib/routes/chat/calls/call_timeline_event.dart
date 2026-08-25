@@ -72,13 +72,52 @@ Set<String> _callSides(Room room) => {?room.client.userID, ?callPeerOf(room)};
 /// letting one that cannot displace one that can would remove a real record
 /// from the list, which is the thing the strict predicate exists to stop.
 bool callCardMayTakeTheChatListLine(Event? current, Event incoming) {
+  // Only call cards are ours to arbitrate. Everything else the room sends
+  // reaches the line the way it always did.
+  if (incoming.type != PangeaEventTypes.call) return true;
+
+  // A record advancing through its OWN lifecycle is not a rival card, and it
+  // must never be refused. A locally sent event is echoed at status sending
+  // and, if the send fails, echoed again as the same event id with status
+  // error. Comparing those two by rank is a tie -- same timestamp, same id --
+  // which refused the update and froze the line on the stale sending copy
+  // forever. The chat list then showed a cheerful "Voice call" for a call the
+  // peer never received, while the conversation correctly showed nothing.
+  if (current != null && current.eventId == incoming.eventId) return true;
+
+  // Something that cannot produce a line must not be allowed to take it.
+  // Otherwise it wins the slot and renders as nothing, and a real call that
+  // IS being drawn in the conversation loses its summary entirely -- a blank
+  // row rather than a wrong one.
+  //
+  // This is the direction the previous version could not see. It asked
+  // whether EITHER side was unproven, which conflated two different things:
+  // unproven because nobody is identifiable, and unproven because this sender
+  // is identifiably not a participant. The first is a shrug and the second is
+  // a refusal, and treating them alike let a forged card blank the line for a
+  // real one.
+  if (!callCardCanBeSummarised(incoming)) return false;
+
   if (current == null) return true;
   if (!CallTimelineEvent.sameCall(incoming, current)) return true;
+
+  // Between two cards for one call, rank decides -- but only when both can
+  // vouch for themselves. Where neither can, the conversation draws both and
+  // the line shows one of them, which is the declared duplicate-card cost.
   if (!callCardIsProvenReal(incoming) || !callCardIsProvenReal(current)) {
     return true;
   }
   return CallTimelineEvent.outranks(incoming, current);
 }
+
+/// Whether the chat list would have anything to say about this card.
+///
+/// One answer, asked by the two places that need it: [callPreviewLine], which
+/// renders the line, and [callCardMayTakeTheChatListLine], which decides who
+/// holds it. They were separate judgements, and the gap between them is how a
+/// card that renders as nothing came to win the slot from one that renders.
+bool callCardCanBeSummarised(Event event) =>
+    !event.status.isError && callCardCouldBeReal(event);
 
 /// Whether this call card could have been written by somebody on the call.
 ///
@@ -193,8 +232,7 @@ bool callWasOutgoing(Event event) {
 /// surfaces are supposed to agree; that is the whole reason this function
 /// exists.
 String? callPreviewLine(L10n l10n, Event event) {
-  if (event.status.isError) return null;
-  if (!callCardCouldBeReal(event)) return null;
+  if (!callCardCanBeSummarised(event)) return null;
   final outgoing = callWasOutgoing(event);
   final declined = event.content['declined'] == true;
   final answered = event.content['answered'] == true;
@@ -295,8 +333,7 @@ class CallTimelineEvent extends StatelessWidget {
   /// tie-break, so every client picks the same survivor of a double-write.
   @visibleForTesting
   static bool isDuplicateOfEarlier(Event event, Iterable<Event> all) {
-    final key = event.content[CallRecord.callKeyField];
-    if (key is! String) return false;
+    if (event.content[CallRecord.callKeyField] is! String) return false;
 
     // Only a card written by one of the two people who were on the call can
     // suppress another. The key is the caller's membership event id, which
@@ -310,8 +347,10 @@ class CallTimelineEvent extends StatelessWidget {
     // which is what makes this check worth anything.
     for (final other in all) {
       if (identical(other, event) || other.eventId == event.eventId) continue;
-      if (other.type != PangeaEventTypes.call) continue;
-      if (other.content[CallRecord.callKeyField] != key) continue;
+      // Through the shared match, not a second copy of it. Two independent
+      // implementations of "are these the same call" drift the moment one is
+      // edited.
+      if (!sameCall(event, other)) continue;
       if (other.status.isError) continue;
       // PROVEN, not merely possible. Suppression removes a record, so a card
       // that cannot vouch for itself does not get to do it: otherwise a third
