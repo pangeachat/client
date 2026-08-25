@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-25 11:37:37.387776",
+    "@@last_modified": "2026-08-25 13:19:06.796251",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9760,5 +9760,6 @@
     "listenModeDescription": "Sakatu aukera bat hura entzuteko. Ez dago ezer hautatuta.",
     "rateActivityLiked": "Gustatu zait",
     "rateActivityDisliked": "Ez zait gustatu",
-    "constructUseHrdDesc": "Entzunda"
+    "constructUseHrdDesc": "Entzunda",
+    "timesHeard": "{count, plural, =1{Behin entzun da} other{{count} aldiz entzun da}}"
 }

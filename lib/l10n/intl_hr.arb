@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-25 11:37:38.595396",
+    "@@last_modified": "2026-08-25 13:19:08.900250",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10196,5 +10196,6 @@
     "listenModeDescription": "Dodirnite odabir da biste ga čuli. Ništa nije odabrano.",
     "rateActivityLiked": "Svidjelo mi se",
     "rateActivityDisliked": "Nije mi se svidjelo",
-    "constructUseHrdDesc": "Čuo"
+    "constructUseHrdDesc": "Čuo",
+    "timesHeard": "{count, plural, =1{Čuo jednom} other{Čuo {count} puta}}"
 }

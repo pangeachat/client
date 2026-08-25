@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-25 11:37:44.277947",
+    "@@last_modified": "2026-08-25 13:19:18.239204",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Tlanya khetho ho e utlwa. Ha ho letho le kgethilweng.",
     "rateActivityLiked": "Ke e ratile",
     "rateActivityDisliked": "Ha ke a e rata",
-    "constructUseHrdDesc": "Utloile"
+    "constructUseHrdDesc": "Utloile",
+    "timesHeard": "{count, plural, =1{Utluilwe hang fela} other{Utluilwe {count} dinako}}"
 }

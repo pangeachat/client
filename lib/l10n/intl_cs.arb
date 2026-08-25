@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-25 11:37:37.056537",
+    "@@last_modified": "2026-08-25 13:19:06.054634",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10254,5 +10254,6 @@
     "listenModeDescription": "Klepnutím na možnost si ji poslechnete. Nic není vybráno.",
     "rateActivityLiked": "Líbilo se mi to",
     "rateActivityDisliked": "Nelíbilo se mi to",
-    "constructUseHrdDesc": "Slyšel"
+    "constructUseHrdDesc": "Slyšel",
+    "timesHeard": "{count, plural, =1{Slyšeno jednou} other{Slyšeno {count}krát}}"
 }

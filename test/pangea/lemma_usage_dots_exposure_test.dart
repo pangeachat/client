@@ -43,6 +43,62 @@ void main() {
     ).sortedUses(skill);
   }
 
+  int heardFor(List<OneConstructUse> uses, LearningSkillsEnum skill) {
+    return LemmaUsageDots(
+      construct: ConstructUses(
+        uses: uses,
+        constructType: ConstructTypeEnum.vocab,
+        lemma: 'hablar',
+        category: 'verb',
+      ),
+      category: skill,
+      tooltip: '',
+      icon: Icons.volume_up,
+    ).exposureCount(skill);
+  }
+
+  group('the heard count', () {
+    test('sums occurrences, not rows', () {
+      // One row stands for a whole window of hearings. Counting rows would
+      // report a number far below what happened.
+      expect(
+        heardFor([
+          use(ConstructUseTypeEnum.hrd, count: 40),
+          use(ConstructUseTypeEnum.hrd, count: 2),
+        ], LearningSkillsEnum.hearing),
+        42,
+      );
+    });
+
+    test('is zero when the learner has heard nothing', () {
+      expect(
+        heardFor([use(ConstructUseTypeEnum.corLA)], LearningSkillsEnum.hearing),
+        0,
+      );
+    });
+
+    test('does not appear on a row that is not listening', () {
+      expect(
+        heardFor([
+          use(ConstructUseTypeEnum.hrd, count: 9),
+        ], LearningSkillsEnum.reading),
+        0,
+      );
+    });
+
+    test('keeps counting past the flower cap', () {
+      // `cappedUses` stops at the XP cap, so a capped figure would freeze at
+      // flowering — under-reporting exposure for the words heard most. Enough
+      // scored uses here to pass the cap, then more hearings after it.
+      final uses = [
+        for (var i = 0; i < 30; i++) use(ConstructUseTypeEnum.corPA),
+        use(ConstructUseTypeEnum.hrd, count: 12),
+      ];
+
+      expect(heardFor(uses, LearningSkillsEnum.hearing), 12);
+    });
+  });
+
   test('exposure draws no mark, however much of it there is', () {
     final marks = marksFor([
       use(ConstructUseTypeEnum.hrd, count: 200),

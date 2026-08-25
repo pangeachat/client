@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-25 11:37:42.545428",
+    "@@last_modified": "2026-08-25 13:19:13.991656",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Dinani chisankho kuti mumve. Palibe chomwe chasankhidwa.",
     "rateActivityLiked": "Ndadikonda",
     "rateActivityDisliked": "Sindinakonde",
-    "constructUseHrdDesc": "Kumva"
+    "constructUseHrdDesc": "Kumva",
+    "timesHeard": "{count, plural, =1{Wamvedwa kamodzi} other{Wamvedwa {count} nthawi}}"
 }

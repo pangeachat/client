@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-25 11:37:43.332277",
+    "@@last_modified": "2026-08-25 13:19:15.228419",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Paʻi i se filifiliga e faʻalogo ai. E leai se mea ua filifilia.",
     "rateActivityLiked": "Na ou fiafia i ai",
     "rateActivityDisliked": "Ou te leʻi fiafia i ai",
-    "constructUseHrdDesc": "Faʻalogoina"
+    "constructUseHrdDesc": "Faʻalogoina",
+    "timesHeard": "{count, plural, =1{Faʻalogo tasi} other{Faʻalogo faʻatolu {count}}}"
 }

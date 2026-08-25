@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-25 11:37:36.194379",
+    "@@last_modified": "2026-08-25 13:19:04.868760",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Докоснете избор, за да го чуете. Нищо не е избрано.",
     "rateActivityLiked": "Хареса ми",
     "rateActivityDisliked": "Не ми хареса",
-    "constructUseHrdDesc": "Чуто"
+    "constructUseHrdDesc": "Чуто",
+    "timesHeard": "{count, plural, =1{Чуто веднъж} other{Чуто {count} пъти}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-25 11:37:42.493211",
+    "@@last_modified": "2026-08-25 13:19:14.421697",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "د اوریدلو لپاره یو انتخاب ټایپ کړئ. هیڅ شی نه دی انتخاب شوی.",
     "rateActivityLiked": "خوښ شو",
     "rateActivityDisliked": "نه خوښ شو",
-    "constructUseHrdDesc": "اوریدل شوی"
+    "constructUseHrdDesc": "اوریدل شوی",
+    "timesHeard": "{count, plural, =1{یو ځل اوریدل شوی} other{{count} ځله اوریدل شوی}}"
 }

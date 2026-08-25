@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-25 11:37:43.311771",
+    "@@last_modified": "2026-08-25 13:19:15.679066",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Dooro mid si aad u dhageysato. Waxba lama dooran.",
     "rateActivityLiked": "Waan jeclaystay",
     "rateActivityDisliked": "Ma jeclaysan",
-    "constructUseHrdDesc": "La maqlay"
+    "constructUseHrdDesc": "La maqlay",
+    "timesHeard": "{count, plural, =1{Hal mar la maqlay} other{{count} jeer la maqlay}}"
 }

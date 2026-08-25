@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-25 11:37:46.382483",
+    "@@last_modified": "2026-08-25 13:19:18.422270",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9764,5 +9764,6 @@
     "listenModeDescription": "Eshitish uchun tanlovni bosing. Hech narsa tanlanmagan.",
     "rateActivityLiked": "Yoqdi",
     "rateActivityDisliked": "Yoqmadi",
-    "constructUseHrdDesc": "Eshitildi"
+    "constructUseHrdDesc": "Eshitildi",
+    "timesHeard": "{count, plural, =1{Bir marta eshitildi} other{{count} marta eshitildi}}"
 }

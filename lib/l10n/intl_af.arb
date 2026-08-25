@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-25 11:37:36.329948",
+    "@@last_modified": "2026-08-25 13:19:04.783697",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "Tik 'n keuse om dit te hoor. Niks is gekies nie.",
     "rateActivityLiked": "Het daarvan gehou",
     "rateActivityDisliked": "Het nie daarvan gehou nie",
-    "constructUseHrdDesc": "Gehoor"
+    "constructUseHrdDesc": "Gehoor",
+    "timesHeard": "{count, plural, =1{Een keer gehoor} other{{count} keer gehoor}}"
 }

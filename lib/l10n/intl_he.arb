@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 11:37:38.952084",
+    "@@last_modified": "2026-08-25 13:19:12.337648",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10674,5 +10674,6 @@
     "listenModeDescription": "הקש על אפשרות כדי לשמוע אותה. שום דבר לא נבחר.",
     "rateActivityLiked": "אהבתי",
     "rateActivityDisliked": "לא אהבתי",
-    "constructUseHrdDesc": "נשמע"
+    "constructUseHrdDesc": "נשמע",
+    "timesHeard": "{count, plural, =1{נשמע פעם אחת} other{נשמע {count} פעמים}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-25 11:37:43.092196",
+    "@@last_modified": "2026-08-25 13:19:15.176036",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "එය ඇසීමට තේරීමක් තට්ටු කරන්න. කිසිවක් තෝරාගෙන නොමැත.",
     "rateActivityLiked": "කැමති විය",
     "rateActivityDisliked": "අකමැති විය",
-    "constructUseHrdDesc": "ඇසුණි"
+    "constructUseHrdDesc": "ඇසුණි",
+    "timesHeard": "{count, plural, =1{වරක් ඇසුණි} other{{count} වරක් ඇසුණි}}"
 }

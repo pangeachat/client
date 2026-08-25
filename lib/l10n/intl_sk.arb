@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-25 11:37:43.710569",
+    "@@last_modified": "2026-08-25 13:19:15.107346",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10705,5 +10705,6 @@
     "listenModeDescription": "Ťuknutím na možnosť si ju vypočujete. Nič nie je vybraté.",
     "rateActivityLiked": "Páčilo sa mi to",
     "rateActivityDisliked": "Nepáčilo sa mi to",
-    "constructUseHrdDesc": "Počul"
+    "constructUseHrdDesc": "Počul",
+    "timesHeard": "{count, plural, =1{Vypočuté raz} other{Vypočuté {count}-krát}}"
 }

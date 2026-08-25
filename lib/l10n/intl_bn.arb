@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 11:37:36.454086",
+    "@@last_modified": "2026-08-25 13:19:04.570025",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10388,5 +10388,6 @@
     "listenModeDescription": "শোনার জন্য একটি বিকল্পে ট্যাপ করুন। কিছুই নির্বাচন করা হয়নি।",
     "rateActivityLiked": "পছন্দ হয়েছে",
     "rateActivityDisliked": "পছন্দ হয়নি",
-    "constructUseHrdDesc": "শুনেছি"
+    "constructUseHrdDesc": "শুনেছি",
+    "timesHeard": "{count, plural, =1{একবার শোনা হয়েছে} other{{count} বার শোনা হয়েছে}}"
 }

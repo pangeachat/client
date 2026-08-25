@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-25 11:37:40.218436",
+    "@@last_modified": "2026-08-25 13:19:10.290766",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "ಕೇಳಲು ಒಂದು ಆಯ್ಕೆಯನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ. ಯಾವುದನ್ನೂ ಆಯ್ಕೆ ಮಾಡಲಾಗಿಲ್ಲ.",
     "rateActivityLiked": "ಇಷ್ಟವಾಯಿತು",
     "rateActivityDisliked": "ಇಷ್ಟವಾಗಲಿಲ್ಲ",
-    "constructUseHrdDesc": "ಕೇಳಿದೆ"
+    "constructUseHrdDesc": "ಕೇಳಿದೆ",
+    "timesHeard": "{count, plural, =1{ಒಮ್ಮೆ ಕೇಳಲಾಗಿದೆ} other{{count} ಬಾರಿ ಕೇಳಲಾಗಿದೆ}}"
 }

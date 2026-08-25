@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-25 11:37:39.583328",
+    "@@last_modified": "2026-08-25 13:19:10.315640",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2164,5 +2164,6 @@
     "listenModeDescription": "ប៉ះជម្រើសដើម្បីស្ដាប់។ គ្មានអ្វីត្រូវបានជ្រើសរើសទេ។",
     "rateActivityLiked": "ចូលចិត្ត",
     "rateActivityDisliked": "មិនចូលចិត្ត",
-    "constructUseHrdDesc": "បានឮ"
+    "constructUseHrdDesc": "បានឮ",
+    "timesHeard": "{count, plural, =1{បានឮម្ដង} other{បានឮ {count} ដង}}"
 }

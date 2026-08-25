@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-25 11:37:42.609476",
+    "@@last_modified": "2026-08-25 13:19:14.866699",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10732,5 +10732,6 @@
     "listenModeDescription": "Нажмите на вариант, чтобы прослушать его. Ничего не выбрано.",
     "rateActivityLiked": "Понравилось",
     "rateActivityDisliked": "Не понравилось",
-    "constructUseHrdDesc": "Услышано"
+    "constructUseHrdDesc": "Услышано",
+    "timesHeard": "{count, plural, =1{Прослушано 1 раз} other{Прослушано {count} раз}}"
 }
