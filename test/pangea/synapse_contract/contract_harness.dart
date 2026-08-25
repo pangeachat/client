@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
@@ -71,6 +72,20 @@ class ContractHarness {
         'Switch client/.env to the local profile (scripts/use-env.sh '
         'local), or set CONTRACT_SUITE_ALLOW_REMOTE=1 if you really mean '
         'it.',
+      );
+    }
+
+    // The analytics dual-write posts construct batches to the teacher BFF
+    // (fire-and-forget). The localhost guard above only covers Synapse, so
+    // refuse the combination that would write real analytics remotely.
+    final dualWrite =
+        dotenv.env['ANALYTICS_DUAL_WRITE_ENABLED']?.toLowerCase() == 'true';
+    final bff = dotenv.env['TEACHER_BFF_API'] ?? '';
+    if (dualWrite && !bff.contains('localhost') && !bff.contains('127.0.0.1')) {
+      throw StateError(
+        'ANALYTICS_DUAL_WRITE_ENABLED is on with a non-local '
+        'TEACHER_BFF_API ($bff) — the constructs tests would write real '
+        'analytics to a remote service.',
       );
     }
 
@@ -307,10 +322,29 @@ class ContractHarness {
     return state;
   }
 
+  /// One event straight from the server (`/rooms/{id}/event/{id}`),
+  /// bypassing the local database. Room.getEventById serves the client's
+  /// OWN bytes back (sendEvent fake-syncs the authored content under the
+  /// real event id), so it can never detect server-side normalization.
+  static Future<MatrixEvent> serverEvent(
+    Client client,
+    String roomId,
+    String eventId,
+  ) => client.getOneRoomEvent(roomId, eventId);
+
   /// Tear down a client created by [loggedIn]. Best-effort cleanup of
   /// tracked rooms (unpublish + leave) keeps the persona's initial sync and
   /// the public directory bounded across runs; the account itself persists.
   static Future<void> dispose(Client client) async {
+    // Drain fire-and-forget tails (e.g. getMyAnalyticsRoom's unawaited
+    // grant/space-attach calls) before closing the database under them.
+    // Also load-bearing: loggedIn always leaves prevBatch non-null, which
+    // keeps those tails off the `onSync.stream.first` path that would throw
+    // on a closed stream OUTSIDE their try/catch.
+    try {
+      await client.oneShotSync().timeout(const Duration(seconds: 2));
+    } catch (_) {}
+    await Future.delayed(const Duration(milliseconds: 250));
     for (final roomId in _trackedRooms.remove(client) ?? const <String>[]) {
       try {
         await client.setRoomVisibilityOnDirectory(
