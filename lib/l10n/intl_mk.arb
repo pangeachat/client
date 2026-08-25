@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-25 13:19:14.143368",
+    "@@last_modified": "2026-08-25 15:25:44.533242",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Ми се допадна",
     "rateActivityDisliked": "Не ми се допадна",
     "constructUseHrdDesc": "Слушнато",
-    "timesHeard": "{count, plural, =1{Слушнато еднаш} other{Слушнато {count} пати}}"
+    "timesHeard": "{count, plural, =1{Слушнато еднаш} other{Слушнато {count} пати}}",
+    "allSettings": "Сите поставки"
 }

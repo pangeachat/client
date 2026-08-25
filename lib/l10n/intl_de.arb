@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-25 13:19:06.211144",
+    "@@last_modified": "2026-08-25 15:25:41.979961",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9748,5 +9748,6 @@
     "rateActivityLiked": "Hat mir gefallen",
     "rateActivityDisliked": "Hat mir nicht gefallen",
     "constructUseHrdDesc": "Gehört",
-    "timesHeard": "{count, plural, =1{Einmal gehört} other{{count} Mal gehört}}"
+    "timesHeard": "{count, plural, =1{Einmal gehört} other{{count} Mal gehört}}",
+    "allSettings": "Alle Einstellungen"
 }

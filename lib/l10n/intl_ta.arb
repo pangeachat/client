@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 13:19:16.197571",
+    "@@last_modified": "2026-08-25 15:25:46.418968",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9853,5 +9853,6 @@
     "rateActivityLiked": "பிடித்திருந்தது",
     "rateActivityDisliked": "பிடிக்கவில்லை",
     "constructUseHrdDesc": "கேட்டது",
-    "timesHeard": "{count, plural, =1{ஒருமுறை கேட்டது} other{{count} முறை கேட்டது}}"
+    "timesHeard": "{count, plural, =1{ஒருமுறை கேட்டது} other{{count} முறை கேட்டது}}",
+    "allSettings": "அனைத்து அமைப்புகளும்"
 }

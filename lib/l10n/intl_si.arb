@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-25 13:19:15.176036",
+    "@@last_modified": "2026-08-25 15:25:45.791197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "කැමති විය",
     "rateActivityDisliked": "අකමැති විය",
     "constructUseHrdDesc": "ඇසුණි",
-    "timesHeard": "{count, plural, =1{වරක් ඇසුණි} other{{count} වරක් ඇසුණි}}"
+    "timesHeard": "{count, plural, =1{වරක් ඇසුණි} other{{count} වරක් ඇසුණි}}",
+    "allSettings": "සියලු සැකසුම්"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-25 13:19:10.905571",
+    "@@last_modified": "2026-08-25 15:25:44.077515",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "I like am",
     "rateActivityDisliked": "I nor like am",
     "constructUseHrdDesc": "Bin yɛri",
-    "timesHeard": "{count, plural, =1{Yɛri wans} other{Yɛri {count} tɛm}}"
+    "timesHeard": "{count, plural, =1{Yɛri wans} other{Yɛri {count} tɛm}}",
+    "allSettings": "Ɔl di setin dɛn"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-25 13:19:12.914848",
+    "@@last_modified": "2026-08-25 15:25:44.217261",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Mir huet et gefall",
     "rateActivityDisliked": "Mir huet et net gefall",
     "constructUseHrdDesc": "Héieren",
-    "timesHeard": "{count, plural, =1{Eemol héieren} other{{count} Mol héieren}}"
+    "timesHeard": "{count, plural, =1{Eemol héieren} other{{count} Mol héieren}}",
+    "allSettings": "All Astellungen"
 }

@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-25 13:19:06.367664",
+    "@@last_modified": "2026-08-25 15:25:41.973438",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10681,5 +10681,6 @@
     "rateActivityLiked": "Kunne lide det",
     "rateActivityDisliked": "Kunne ikke lide det",
     "constructUseHrdDesc": "Hørt",
-    "timesHeard": "{count, plural, =1{Hørt én gang} other{Hørt {count} gange}}"
+    "timesHeard": "{count, plural, =1{Hørt én gang} other{Hørt {count} gange}}",
+    "allSettings": "Alle indstillinger"
 }

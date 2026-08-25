@@ -3401,7 +3401,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-25 13:19:06.618580",
+    "@@last_modified": "2026-08-25 15:25:42.026591",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10636,5 +10636,6 @@
     "rateActivityLiked": "Μου άρεσε",
     "rateActivityDisliked": "Δεν μου άρεσε",
     "constructUseHrdDesc": "Ακούστηκε",
-    "timesHeard": "{count, plural, =1{Ακούστηκε μία φορά} other{Ακούστηκε {count} φορές}}"
+    "timesHeard": "{count, plural, =1{Ακούστηκε μία φορά} other{Ακούστηκε {count} φορές}}",
+    "allSettings": "Όλες οι ρυθμίσεις"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 13:19:15.437255",
+    "@@last_modified": "2026-08-25 15:25:45.522007",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10493,5 +10493,6 @@
     "rateActivityLiked": "Mi-a plăcut",
     "rateActivityDisliked": "Nu mi-a plăcut",
     "constructUseHrdDesc": "Auzit",
-    "timesHeard": "{count, plural, =1{Ascultat o dată} other{Ascultat de {count} ori}}"
+    "timesHeard": "{count, plural, =1{Ascultat o dată} other{Ascultat de {count} ori}}",
+    "allSettings": "Toate setările"
 }

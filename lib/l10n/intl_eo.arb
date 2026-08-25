@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 13:19:06.343930",
+    "@@last_modified": "2026-08-25 15:25:42.004170",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10706,5 +10706,6 @@
     "rateActivityLiked": "Ŝatis ĝin",
     "rateActivityDisliked": "Malŝatis ĝin",
     "constructUseHrdDesc": "Aŭdita",
-    "timesHeard": "{count, plural, =1{Aŭdita unufoje} other{Aŭdita {count} fojojn}}"
+    "timesHeard": "{count, plural, =1{Aŭdita unufoje} other{Aŭdita {count} fojojn}}",
+    "allSettings": "Ĉiuj agordoj"
 }

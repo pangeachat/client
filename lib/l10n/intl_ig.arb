@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-25 13:19:09.694423",
+    "@@last_modified": "2026-08-25 15:25:43.547960",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Ọ masịrị m",
     "rateActivityDisliked": "Ọ masịghị m",
     "constructUseHrdDesc": "Anụrụ",
-    "timesHeard": "{count, plural, =1{Anụrụ otu ugboro} other{Anụrụ ugboro {count}}}"
+    "timesHeard": "{count, plural, =1{Anụrụ otu ugboro} other{Anụrụ ugboro {count}}}",
+    "allSettings": "Ntọala niile"
 }

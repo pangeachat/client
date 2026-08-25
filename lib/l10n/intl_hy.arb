@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-25 13:19:09.597565",
+    "@@last_modified": "2026-08-25 15:25:43.222934",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Հավանել եմ",
     "rateActivityDisliked": "Չեմ հավանել",
     "constructUseHrdDesc": "Լսել եմ",
-    "timesHeard": "{count, plural, =1{Մեկ անգամ լսված է} other{{count} անգամ լսված է}}"
+    "timesHeard": "{count, plural, =1{Մեկ անգամ լսված է} other{{count} անգամ լսված է}}",
+    "allSettings": "Բոլոր կարգավորումները"
 }

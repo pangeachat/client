@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-25 13:19:10.867342",
+    "@@last_modified": "2026-08-25 15:25:44.042766",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Жакты",
     "rateActivityDisliked": "Жаккан жок",
     "constructUseHrdDesc": "Уктум",
-    "timesHeard": "{count, plural, =1{Бир жолу угулду} other{{count} жолу угулду}}"
+    "timesHeard": "{count, plural, =1{Бир жолу угулду} other{{count} жолу угулду}}",
+    "allSettings": "Бардык жөндөөлөр"
 }

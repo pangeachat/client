@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-25 13:19:13.479870",
+    "@@last_modified": "2026-08-25 15:25:45.018396",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "मन पर्यो",
     "rateActivityDisliked": "मन परेन",
     "constructUseHrdDesc": "सुनियो",
-    "timesHeard": "{count, plural, =1{एक पटक सुनियो} other{{count} पटक सुनियो}}"
+    "timesHeard": "{count, plural, =1{एक पटक सुनियो} other{{count} पटक सुनियो}}",
+    "allSettings": "सबै सेटिङहरू"
 }

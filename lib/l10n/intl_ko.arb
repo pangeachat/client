@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 13:19:10.983031",
+    "@@last_modified": "2026-08-25 15:25:44.000990",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9954,5 +9954,6 @@
     "rateActivityLiked": "마음에 들어요",
     "rateActivityDisliked": "마음에 들지 않아요",
     "constructUseHrdDesc": "들었어요",
-    "timesHeard": "{count, plural, =1{1회 들음} other{{count}회 들음}}"
+    "timesHeard": "{count, plural, =1{1회 들음} other{{count}회 들음}}",
+    "allSettings": "모든 설정"
 }

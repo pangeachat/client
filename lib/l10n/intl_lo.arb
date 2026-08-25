@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-25 13:19:11.552140",
+    "@@last_modified": "2026-08-25 15:25:44.372035",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "ມັກ",
     "rateActivityDisliked": "ບໍ່ມັກ",
     "constructUseHrdDesc": "ໄດ້ຍິນ",
-    "timesHeard": "{count, plural, =1{ໄດ້ຍິນໜຶ່ງເທື່ອ} other{ໄດ້ຍິນ {count} ເທື່ອ}}"
+    "timesHeard": "{count, plural, =1{ໄດ້ຍິນໜຶ່ງເທື່ອ} other{ໄດ້ຍິນ {count} ເທື່ອ}}",
+    "allSettings": "ການຕັ້ງຄ່າທັງໝົດ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-25 13:19:14.447207",
+    "@@last_modified": "2026-08-25 15:25:45.471944",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "ପସନ୍ଦ କଲି",
     "rateActivityDisliked": "ପସନ୍ଦ କଲି ନାହିଁ",
     "constructUseHrdDesc": "ଶୁଣାଗଲା",
-    "timesHeard": "{count, plural, =1{ଥରେ ଶୁଣାଗଲା} other{{count} ଥର ଶୁଣାଗଲା}}"
+    "timesHeard": "{count, plural, =1{ଥରେ ଶୁଣାଗଲା} other{{count} ଥର ଶୁଣାଗଲା}}",
+    "allSettings": "ସମସ୍ତ ସେଟିଙ୍ଗ୍"
 }

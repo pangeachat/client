@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-25 13:19:06.356034",
+    "@@last_modified": "2026-08-25 15:25:41.427357",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Bəyəndim",
     "rateActivityDisliked": "Bəyənmədim",
     "constructUseHrdDesc": "Eşidilib",
-    "timesHeard": "{count, plural, =1{Bir dəfə eşidildi} other{{count} dəfə eşidildi}}"
+    "timesHeard": "{count, plural, =1{Bir dəfə eşidildi} other{{count} dəfə eşidildi}}",
+    "allSettings": "Bütün tənzimləmələr"
 }

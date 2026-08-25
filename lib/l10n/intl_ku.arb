@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-25 13:19:11.494132",
+    "@@last_modified": "2026-08-25 15:25:44.143392",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "پەسەندکرا",
     "rateActivityDisliked": "پەسەندنەکرا",
     "constructUseHrdDesc": "بیستراوە",
-    "timesHeard": "{count, plural, =1{یەکجار بیستراوە} other{{count} جار بیستراوە}}"
+    "timesHeard": "{count, plural, =1{یەکجار بیستراوە} other{{count} جار بیستراوە}}",
+    "allSettings": "هەموو ڕێکخستنەکان"
 }

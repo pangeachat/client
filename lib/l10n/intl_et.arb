@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-25 13:19:07.315997",
+    "@@last_modified": "2026-08-25 15:25:42.494582",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9758,5 +9758,6 @@
     "rateActivityLiked": "Meeldis",
     "rateActivityDisliked": "Ei meeldinud",
     "constructUseHrdDesc": "Kuuldud",
-    "timesHeard": "{count, plural, =1{Kuuldud üks kord} other{Kuuldud {count} korda}}"
+    "timesHeard": "{count, plural, =1{Kuuldud üks kord} other{Kuuldud {count} korda}}",
+    "allSettings": "Kõik seaded"
 }

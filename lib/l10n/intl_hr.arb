@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-25 13:19:08.900250",
+    "@@last_modified": "2026-08-25 15:25:43.039414",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10197,5 +10197,6 @@
     "rateActivityLiked": "Svidjelo mi se",
     "rateActivityDisliked": "Nije mi se svidjelo",
     "constructUseHrdDesc": "Čuo",
-    "timesHeard": "{count, plural, =1{Čuo jednom} other{Čuo {count} puta}}"
+    "timesHeard": "{count, plural, =1{Čuo jednom} other{Čuo {count} puta}}",
+    "allSettings": "Sve postavke"
 }

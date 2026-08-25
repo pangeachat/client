@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-25 13:19:18.050037",
+    "@@last_modified": "2026-08-25 15:25:47.055057",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9761,5 +9761,6 @@
     "rateActivityLiked": "喜欢",
     "rateActivityDisliked": "不喜欢",
     "constructUseHrdDesc": "听过",
-    "timesHeard": "{count, plural, =1{听到一次} other{听到{count}次}}"
+    "timesHeard": "{count, plural, =1{听到一次} other{听到{count}次}}",
+    "allSettings": "所有设置"
 }
