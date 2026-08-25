@@ -53,6 +53,21 @@ class HalfAccounting {
   /// Chunks captured and then lost, which is the only count that means a gap.
   /// Silence is captured-but-not-transcribed and is NOT a gap; see the sink.
   final int chunksLost;
+
+  /// Whether the microphone never opened at all.
+  ///
+  /// A speaker who was muted and a speaker we could not record both arrive
+  /// here as zero chunks captured, and they are completely different facts. An
+  /// empty half from a muted speaker is a real answer -- they said nothing --
+  /// and is deliberately written as one. An empty half from a device whose
+  /// microphone was refused is not an answer about the speaker at all; it is
+  /// an answer about us.
+  ///
+  /// Without this the second case read as the first, and the screen told the
+  /// learner that a person who had been talking the whole call "did not say
+  /// anything" -- a confident, specific claim about somebody, sourced entirely
+  /// from our own failure.
+  final bool captureRefused;
   final bool drainComplete;
 
   /// Whether the writer said anything about its own capture at all.
@@ -66,6 +81,7 @@ class HalfAccounting {
     this.chunksCaptured = 0,
     this.chunksTranscribed = 0,
     this.chunksLost = 0,
+    this.captureRefused = false,
     this.truncated = false,
     this.segmentsOmitted = 0,
     this.drainComplete = true,
@@ -81,6 +97,7 @@ class HalfAccounting {
       !drainComplete ||
       segmentsOmitted > 0 ||
       chunksLost > 0 ||
+      captureRefused ||
       incoherent;
 
   /// An accounting that cannot describe any real capture.
@@ -99,6 +116,7 @@ class HalfAccounting {
     // round-trip of one never reads back as undeclared.
     'chunks_transcribed': chunksTranscribed,
     'chunks_lost': chunksLost,
+    'capture_refused': captureRefused,
     'truncated': truncated,
     'segments_omitted': segmentsOmitted,
     'drain_complete': drainComplete,
@@ -109,6 +127,7 @@ class HalfAccounting {
     chunksCaptured: chunksCaptured,
     chunksTranscribed: chunksTranscribed,
     chunksLost: chunksLost,
+    captureRefused: captureRefused,
     truncated: truncated,
     segmentsOmitted: segmentsOmitted,
     drainComplete: drainComplete,
@@ -123,6 +142,7 @@ class HalfAccounting {
     chunksCaptured: chunksCaptured,
     chunksTranscribed: chunksTranscribed,
     chunksLost: chunksLost,
+    captureRefused: captureRefused,
     truncated: true,
     segmentsOmitted: segmentsOmitted,
     drainComplete: drainComplete,
@@ -161,7 +181,8 @@ class HalfAccounting {
         raw['drain_complete'] is bool &&
         raw['truncated'] is bool &&
         nonNegativeInt(raw['segments_omitted']) &&
-        nonNegativeInt(raw['chunks_lost']);
+        nonNegativeInt(raw['chunks_lost']) &&
+        raw['capture_refused'] is bool;
 
     final captured = intOr('chunks_captured', 0);
     final rawTranscribed = intOr('chunks_transcribed', 0);
@@ -178,6 +199,7 @@ class HalfAccounting {
       // half that is nonsense.
       chunksTranscribed: rawTranscribed.clamp(0, captured),
       chunksLost: rawLost,
+      captureRefused: raw['capture_refused'] == true,
       truncated: raw['truncated'] == true,
       segmentsOmitted: intOr('segments_omitted', 0),
       // Absent means unknown, and unknown must not read as "fine".

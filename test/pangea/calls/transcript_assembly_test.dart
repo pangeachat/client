@@ -545,4 +545,74 @@ void main() {
       expect(_halfFor(transcript, bob).state, HalfState.incomplete);
     });
   });
+
+  group('a microphone that never opened', () {
+    test('is not reported as a speaker who said nothing', () {
+      // The two arrive here identically -- zero chunks captured -- and they
+      // are completely different facts. A muted speaker really did say
+      // nothing. A device whose microphone was refused knows nothing about
+      // the speaker at all, and saying they were silent is a confident claim
+      // about a person sourced entirely from our own failure.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            texts: const [],
+            accounting: const HalfAccounting(
+              chunksCaptured: 0,
+              chunksTranscribed: 0,
+              captureRefused: true,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).state, HalfState.incomplete);
+    });
+
+    test('a genuinely muted speaker still reads as having said nothing', () {
+      // The counterweight. This case is deliberate and must keep working, or
+      // every silent half would hedge and the distinction would be worthless.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            texts: const [],
+            accounting: const HalfAccounting(
+              chunksCaptured: 0,
+              chunksTranscribed: 0,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).state, HalfState.present);
+    });
+
+    test('the flag survives the wire', () {
+      final json = const HalfAccounting(
+        chunksCaptured: 0,
+        chunksTranscribed: 0,
+        captureRefused: true,
+        declared: true,
+      ).toJson();
+
+      expect(HalfAccounting.fromJson(json).captureRefused, isTrue);
+      expect(HalfAccounting.fromJson(json).writerAdmitsGaps, isTrue);
+    });
+
+    test('a half that omits the flag is not a full declaration', () {
+      // Same rule as every other accounting field: silence about it is an
+      // absence of assertion, not an assertion of "the microphone was fine".
+      final json = Map<String, dynamic>.from(
+        const HalfAccounting(chunksCaptured: 1, chunksTranscribed: 1).toJson(),
+      )..remove('capture_refused');
+
+      expect(HalfAccounting.fromJson(json).declared, isFalse);
+    });
+  });
 }

@@ -42,6 +42,7 @@ Future<bool> _write(
   chunksCaptured: chunksCaptured,
   chunksTranscribed: chunksTranscribed,
   chunksLost: chunksLost,
+  captureRefused: false,
   drainComplete: drainComplete,
   encrypted: encrypted,
   langCode: langCode,

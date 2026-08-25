@@ -48,6 +48,7 @@ typedef TranscriptPublisher =
       required int chunksCaptured,
       required int chunksTranscribed,
       required int chunksLost,
+      required bool captureRefused,
       required bool drainComplete,
       String? langCode,
     });
@@ -216,6 +217,11 @@ class CallRecord {
   Future<void> finish({
     required Duration duration,
     required bool video,
+
+    /// Whether this device's microphone never opened. Distinct from a speaker
+    /// who was muted: one is a fact about them, the other about us, and they
+    /// reach the accounting as the same zero chunks unless told apart here.
+    bool captureRefused = false,
     bool answered = true,
     bool declined = false,
     bool writeTimelineEvent = true,
@@ -232,7 +238,7 @@ class CallRecord {
     // though publishing never needed the card. And behind the _credited check
     // it was unreachable whenever an earlier finish had credited without a
     // call key, which is exactly the sequence the ordinary lifecycle produces.
-    await _publishTranscript(callKey);
+    await _publishTranscript(callKey, captureRefused);
 
     if (_credited) return;
     // Concurrent callers join the in-flight attempt rather than being dropped.
@@ -380,7 +386,7 @@ class CallRecord {
   /// duplicates were already impossible, so the refusal only threw the half
   /// away. A speaker whose one send failed then reads as ABSENT: told they said
   /// nothing, when they spoke and their device tried to say so.
-  Future<void> _publishTranscript(String? callKey) async {
+  Future<void> _publishTranscript(String? callKey, bool captureRefused) async {
     final publish = publishTranscript;
     if (publish == null || _published || callKey == null) return;
 
@@ -410,6 +416,7 @@ class CallRecord {
           chunksCaptured: chunksCaptured,
           chunksTranscribed: chunksTranscribed,
           chunksLost: chunksLost,
+          captureRefused: captureRefused,
           drainComplete: drainComplete,
           langCode: langCode,
         );

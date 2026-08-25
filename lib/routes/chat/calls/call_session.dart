@@ -74,6 +74,12 @@ class CallSession extends ChangeNotifier {
   @visibleForTesting
   TranscriptPublisher? get transcriptPublisher => _record.publishTranscript;
 
+  /// The record this session writes through, exposed so a test can drive the
+  /// REAL finish path. Calling the publisher directly proves only that a
+  /// parameter exists; what needs proving is that the session fills it in.
+  @visibleForTesting
+  CallRecord get record => _record;
+
   final String? _myUserId;
   final String? _peerUserId;
 
@@ -196,6 +202,7 @@ class CallSession extends ChangeNotifier {
                 required int chunksCaptured,
                 required int chunksTranscribed,
                 required int chunksLost,
+                required bool captureRefused,
                 required bool drainComplete,
                 String? langCode,
               }) => writeCallTranscript(
@@ -210,6 +217,7 @@ class CallSession extends ChangeNotifier {
                 chunksCaptured: chunksCaptured,
                 chunksTranscribed: chunksTranscribed,
                 chunksLost: chunksLost,
+                captureRefused: captureRefused,
                 drainComplete: drainComplete,
                 // The room inflates what it is handed, and the server's limit
                 // applies to the inflated event.
@@ -685,6 +693,8 @@ class CallSession extends ChangeNotifier {
             return _record.finish(
               duration: call.talkDuration,
               video: _usedVideo,
+              // Our own failure, not a statement about the speaker.
+              captureRefused: microphoneRefused,
               answered: call.hadPeer,
               declined: call.wasDeclined,
               writeTimelineEvent: _writesTheCall,

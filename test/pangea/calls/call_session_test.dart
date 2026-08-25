@@ -359,6 +359,7 @@ void main() {
         chunksCaptured: 1,
         chunksTranscribed: 1,
         chunksLost: 0,
+        captureRefused: false,
         drainComplete: true,
         langCode: 'es',
       );
@@ -670,6 +671,46 @@ void main() {
       await session.survivorCheckNowForTest();
 
       expect(room.cards, hasLength(1), reason: 'the real card is written');
+    });
+
+    test('a refused microphone is declared, not read as silence', () async {
+      // The state a phone lands in when the browser will not grant it a
+      // microphone -- exactly what the local two-device test produces. The
+      // sink sees no chunks, so the half looks identical to a muted
+      // speaker's, and the screen then tells the learner that somebody who
+      // talked the whole call "did not say anything": a confident claim about
+      // a person, sourced entirely from our own failure.
+      //
+      // Driven through the real hangup rather than by calling finish()
+      // directly. Passing the flag in by hand proves the parameter exists and
+      // nothing about whether the session fills it in, which is the part that
+      // was missing.
+      final (session, room, media) = await answeredCall();
+      media.refuseCapture = true;
+      session.timelineEventsOverride = () async => const [];
+      session.endCall();
+      await pumpEventQueue();
+
+      final index = room.sentTypes.indexOf(CallTranscriptContent.relType);
+      expect(index, isNonNegative, reason: 'a half was written');
+      expect(
+        room.sent[index]['capture_refused'],
+        isTrue,
+        reason: 'and it says the microphone never opened',
+      );
+    });
+
+    test('an ordinary call does not claim its microphone failed', () async {
+      // The counterweight: the flag must not fire on every call, or it would
+      // hedge every transcript and mean nothing.
+      final (session, room, _) = await answeredCall();
+      session.timelineEventsOverride = () async => const [];
+      session.endCall();
+      await pumpEventQueue();
+
+      final index = room.sentTypes.indexOf(CallTranscriptContent.relType);
+      expect(index, isNonNegative);
+      expect(room.sent[index]['capture_refused'], isFalse);
     });
 
     test('the survivor never invents an answered call', () async {

@@ -107,6 +107,7 @@ void main() {
           chunksCaptured: captured,
           chunksTranscribed: transcribed,
           chunksLost: lost,
+          captureRefused: false,
           drainComplete: drainComplete,
         ).toJson(),
     },

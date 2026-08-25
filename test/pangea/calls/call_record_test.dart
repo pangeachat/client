@@ -112,6 +112,7 @@ void main() {
             required int chunksCaptured,
             required int chunksTranscribed,
             required int chunksLost,
+            required bool captureRefused,
             required bool drainComplete,
             String? langCode,
           }) async {
@@ -240,6 +241,7 @@ void main() {
               required int chunksCaptured,
               required int chunksTranscribed,
               required int chunksLost,
+              required bool captureRefused,
               required bool drainComplete,
               String? langCode,
             }) async {
@@ -912,6 +914,7 @@ void main() {
               required int chunksCaptured,
               required int chunksTranscribed,
               required int chunksLost,
+              required bool captureRefused,
               required bool drainComplete,
               String? langCode,
             }) async {

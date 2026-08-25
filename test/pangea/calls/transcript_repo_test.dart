@@ -35,6 +35,7 @@ MatrixEvent _half(
       chunksCaptured: 2,
       chunksTranscribed: 2,
       chunksLost: 0,
+      captureRefused: false,
       drainComplete: true,
     ).toJson(),
   },

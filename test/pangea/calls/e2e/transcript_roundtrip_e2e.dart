@@ -73,6 +73,7 @@ void main() {
           chunksCaptured: 2,
           chunksTranscribed: 2,
           chunksLost: 0,
+          captureRefused: false,
           drainComplete: true,
           langCode: 'es',
         );
@@ -85,6 +86,7 @@ void main() {
           chunksCaptured: 1,
           chunksTranscribed: 1,
           chunksLost: 0,
+          captureRefused: false,
           drainComplete: true,
           langCode: 'es',
         );
@@ -131,6 +133,7 @@ void main() {
         chunksCaptured: 1,
         chunksTranscribed: 1,
         chunksLost: 0,
+        captureRefused: false,
         drainComplete: true,
       );
 
@@ -160,6 +163,7 @@ void main() {
         chunksTranscribed: 2,
         // The abandoned drain is the gap here, not a lost chunk.
         chunksLost: 0,
+        captureRefused: false,
         drainComplete: false,
       );
 
@@ -193,6 +197,7 @@ void main() {
         chunksCaptured: 40,
         chunksTranscribed: 40,
         chunksLost: 0,
+        captureRefused: false,
         drainComplete: true,
       );
       expect(wrote, isTrue, reason: 'the server accepted the packed half');
