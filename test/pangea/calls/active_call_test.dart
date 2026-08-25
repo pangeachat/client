@@ -515,7 +515,7 @@ class _NullSink implements CallAudioSink {
   @override
   Future<void> deliver(PcmChunk chunk, {Duration? within}) async {}
   @override
-  Future<void> close() async {}
+  Future<bool> close() async => true;
 }
 
 void main() {

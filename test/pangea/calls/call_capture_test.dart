@@ -49,13 +49,19 @@ class RecordingSink implements CallAudioSink {
   int closeFailures = 0;
 
   @override
-  Future<void> close() async {
+  Future<bool> close() async {
     if (closeFailures > 0) {
       closeFailures--;
       throw StateError('the sink refused to close');
     }
     closes++;
+    return drained;
   }
+
+  /// What this fake reports about its drain. Defaults to a clean one so the
+  /// existing tests, which are about closing rather than completeness, read
+  /// unchanged.
+  bool drained = true;
 }
 
 /// Stands in for a published track. [addAudioRenderer] is the only member the

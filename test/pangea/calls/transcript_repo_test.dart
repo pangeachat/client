@@ -46,6 +46,12 @@ MatrixEvent _half(
     required String relType,
     String? from,
   }) async {
+    // Asserted, not ignored. A fake that answers whatever it is asked would let
+    // the reader query the wrong anchor or relation type and still pass every
+    // test, while production found no halves and called both people absent.
+    expect(roomId, _room);
+    expect(eventId, _callKey);
+    expect(relType, CallTranscriptContent.relType);
     froms.add(from);
     final page = pages[index.clamp(0, pages.length - 1)];
     index++;
@@ -166,6 +172,30 @@ void main() {
         callKey: _callKey,
         expectedSenders: [alice, bob],
         maxEvents: 10,
+      );
+
+      expect(_halfFor(transcript, bob).state, HalfState.incomplete);
+      expect(transcript.readerStoppedEarly, isTrue);
+    });
+
+    test('a cap hit inside the LAST page is not exhaustion', () async {
+      // The page has no next token, so the read looks finished -- but the cap
+      // stopped it part-way through, and the half it never reached must not be
+      // reported as someone having said nothing.
+      final p = _pages([
+        (
+          chunk:
+              [for (var i = 0; i < 20; i++) _half(alice, ts: i)] + [_half(bob)],
+          next: null,
+        ),
+      ]);
+
+      final transcript = await fetchCallTranscript(
+        fetch: p.fetch,
+        roomId: _room,
+        callKey: _callKey,
+        expectedSenders: [alice, bob],
+        maxEvents: 5,
       );
 
       expect(_halfFor(transcript, bob).state, HalfState.incomplete);

@@ -40,6 +40,7 @@ Future<CallTranscript> fetchCallTranscript({
 }) async {
   final candidates = <TranscriptCandidate>[];
   var exhausted = false;
+  var cappedMidPage = false;
   var seen = 0;
   String? from;
 
@@ -52,7 +53,15 @@ Future<CallTranscript> fetchCallTranscript({
     );
 
     for (final event in result.chunk) {
-      if (seen >= maxEvents) break;
+      if (seen >= maxEvents) {
+        // The cap was hit part-way through a page. Recorded, because the page
+        // itself may have been the last one: seeing `nextBatch == null` below
+        // would otherwise call this read exhausted and let a half we never
+        // looked at be reported ABSENT -- the exact conflation this design
+        // exists to prevent, arrived at from the one direction not yet covered.
+        cappedMidPage = true;
+        break;
+      }
       seen++;
 
       // The relation type is what was queried, but the EVENT type still has to
@@ -82,7 +91,9 @@ Future<CallTranscript> fetchCallTranscript({
     // Exhausted means the SERVER said there is no more. Only then may a
     // missing half be called absent rather than unread.
     if (from == null) {
-      exhausted = true;
+      // Only a read that examined everything the server offered may claim to
+      // have seen everything.
+      exhausted = !cappedMidPage;
       break;
     }
     if (seen >= maxEvents) break;

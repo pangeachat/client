@@ -26,7 +26,14 @@ abstract class CallAudioSink {
   Future<void> deliver(PcmChunk chunk, {Duration? within});
 
   /// Signals that no further chunks are coming for this call.
-  Future<void> close();
+  ///
+  /// Returns whether every outstanding transcription settled. FALSE means the
+  /// sink gave up on work still in flight, so what it holds is knowingly short
+  /// of what was said. It used to return nothing and merely log that, which
+  /// left the one caller that publishes a transcript unable to tell a complete
+  /// half from a truncated one -- and a half that quietly claims to be
+  /// everything somebody said is the one outcome this feature cannot produce.
+  Future<bool> close();
 }
 
 /// The audio format chunks are captured and delivered in.

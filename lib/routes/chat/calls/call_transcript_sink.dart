@@ -99,6 +99,8 @@ class CallTranscriptSink implements CallAudioSink {
     // A chunk is transcribed once. Redelivery — a retry, or a hangup racing a
     // flush — must not bill the route again or count the same words twice.
     if (!_transcribed.add(chunk.index)) return Future.value();
+    // A retry of a previously failed chunk is no longer a loss.
+    _failed.remove(chunk.index);
 
     // A block, not an arrow. Removing from the map RETURNS the future being
     // removed, and whenComplete waits for a future its callback returns — so
@@ -145,6 +147,10 @@ class CallTranscriptSink implements CallAudioSink {
       // was transcribed must never be transcribed twice, but one that was not
       // has nothing to double-count.
       _transcribed.remove(chunk.index);
+      // Remembered, not just logged. A chunk that failed and was never retried
+      // is speech this device captured and lost, and the half it belongs to has
+      // to say so rather than present the rest as the whole.
+      _failed.add(chunk.index);
       Logs().w('Could not transcribe call chunk ${chunk.index}', e, s);
       rethrow;
     }
@@ -157,7 +163,7 @@ class CallTranscriptSink implements CallAudioSink {
   static const _settleWithin = Duration(seconds: 60);
 
   @override
-  Future<void> close() async {
+  Future<bool> close() async {
     // Waited for, not abandoned. The call's words are read as soon as this
     // returns, and a transcription still running would simply be missing from
     // them — the learner would lose that stretch with nothing to show why.
@@ -179,7 +185,7 @@ class CallTranscriptSink implements CallAudioSink {
         Logs().w(
           'Gave up waiting for a call transcription; its words are lost',
         );
-        return;
+        return false;
       }
       try {
         await Future.wait(
@@ -189,10 +195,25 @@ class CallTranscriptSink implements CallAudioSink {
         Logs().w(
           'Gave up waiting for a call transcription; its words are lost',
         );
-        return;
+        return false;
       }
     }
+    return true;
   }
+
+  /// How many chunks this device handed over, whether or not they came back.
+  ///
+  /// The denominator of the completeness accounting: compared against
+  /// [chunksTranscribed], it is what lets a reader see that a stretch of speech
+  /// was captured and then lost, rather than never spoken.
+  int get chunksCaptured => _transcribed.length + _failed.length;
+
+  /// How many chunks came back with something readable in them.
+  int get chunksTranscribed =>
+      _byIndex.values.where((r) => r.hasUsableTranscript).length;
+
+  /// Chunks whose transcription failed outright and was never retried.
+  final Set<int> _failed = {};
 
   /// The call's speaking analytics, as one batch.
   ///
