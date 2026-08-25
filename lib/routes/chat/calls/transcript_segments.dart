@@ -50,7 +50,13 @@ final _whitespace = RegExp(r'\s+');
 /// match exactly -- that is the whole point of the check.
 String _words(String text) => text
     .toLowerCase()
-    .replaceAll(RegExp(r'[^\w\s]', unicode: true), '')
+    // Strips PUNCTUATION, rather than keeping only "word characters".
+    //
+    // `\w` is ASCII-oriented, so `[^\w\s]` deleted every CJK character: 猫 and
+    // 犬 both normalised to the empty string and compared EQUAL, which let the
+    // fabrication guard pass a substituted word straight through. In a product
+    // teaching twenty-odd languages that is not an edge case.
+    .replaceAll(RegExp(r'[\p{P}\p{S}]', unicode: true), '')
     .trim()
     .split(_whitespace)
     .join(' ');

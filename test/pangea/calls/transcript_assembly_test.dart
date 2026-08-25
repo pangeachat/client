@@ -179,18 +179,26 @@ void main() {
         expect(_halfFor(transcript, alice).segments.single.text, 'antes');
       });
 
-      test('a half padded by repeating itself does not win', () {
-        // Most-content-wins, naively on raw length, let a buggy or modified
-        // client beat the truthful half just by duplicating its text.
+      test('a genuinely repeated utterance is NOT discarded', () {
+        // This test previously asserted the opposite -- that a half repeating
+        // its own text should lose, to defend against padding. That defence
+        // cost real speech: people repeat themselves, and de-duplicating made
+        // the fuller half tie with a shorter earlier one and lose. The padding
+        // it guarded against is not a threat, because both candidates come
+        // from the same account, which can already write any single half it
+        // likes.
         final transcript = assembleTranscript(
           candidates: [
-            _candidate(alice, texts: ['hello'], ts: 100),
-            _candidate(alice, texts: ['hello', 'hello', 'hello'], ts: 200),
+            _candidate(alice, texts: ['yes'], ts: 100),
+            _candidate(alice, texts: ['yes', 'yes'], ts: 200),
           ],
           expectedSenders: [alice],
         );
 
-        expect(_halfFor(transcript, alice).segments, hasLength(1));
+        expect(_halfFor(transcript, alice).segments.map((s) => s.text), [
+          'yes',
+          'yes',
+        ]);
       });
 
       test('one half per sender, never two', () {

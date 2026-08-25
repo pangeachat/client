@@ -211,6 +211,28 @@ void main() {
       expect(segments.map((s) => s.text), ['pay bob today']);
     });
 
+    test('a substituted CJK word is caught, not normalised away', () {
+      // `[^\w\s]` deleted every CJK character, so 猫 and 犬 both became the
+      // empty string and compared EQUAL -- the fabrication guard passed a
+      // substituted word straight through. This product teaches twenty-odd
+      // languages; ASCII-shaped normalisation is not acceptable here.
+      final segments = buildSegments([
+        _response('猫', timings: [('犬', 0, 100)]),
+      ]);
+
+      expect(segments.map((s) => s.text), ['猫']);
+    });
+
+    test('matching CJK timings are still preferred', () {
+      // The guard must not fire on correct non-Latin input either, or word
+      // timings would be unusable for those languages.
+      final segments = buildSegments([
+        _response('猫 犬', timings: [('猫', 0, 100), ('犬', 150, 300)]),
+      ]);
+
+      expect(segments.map((s) => s.text), ['猫 犬']);
+    });
+
     test('punctuation and case differences do NOT trigger the fallback', () {
       // Joining timed words loses punctuation and casing legitimately, so the
       // comparison normalises both. If it did not, the fallback would fire on

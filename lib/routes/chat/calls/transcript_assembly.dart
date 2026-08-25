@@ -1,17 +1,21 @@
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 
-/// The weight of a half, counting each distinct utterance once.
+/// The weight of a half: how much speech it actually carries.
 ///
-/// Duplicate-selection compares this rather than raw length, so a half padded
-/// by repeating its own text cannot outweigh the truthful one it copies.
-int distinctContentLength(List<TranscriptSegment> segments) {
-  final seen = <String>{};
-  var total = 0;
-  for (final segment in segments) {
-    if (seen.add(segment.text)) total += segment.text.length;
-  }
-  return total;
-}
+/// This counted each DISTINCT utterance once for a while, to stop a half padded
+/// with repeated text outweighing the truthful one it copied. That defence cost
+/// more than it bought. People repeat themselves -- a learner saying "yes, yes"
+/// is ordinary speech -- and de-duplicating made the genuine longer half tie
+/// with a shorter earlier one and lose.
+///
+/// The padding it guarded against is not a real threat either: both candidates
+/// come from the SAME Matrix account, and that account can already write
+/// whatever single half it likes. Selection between one sender's own duplicates
+/// was never a security boundary; it exists to survive a BUGGY writer whose
+/// empty or partial half lands before the real one. Raw length does that, and
+/// does not throw away speech somebody actually said.
+int totalContentLength(List<TranscriptSegment> segments) =>
+    segments.fold(0, (sum, segment) => sum + segment.text.length);
 
 /// Why a speaker's half reads the way it does.
 ///
@@ -186,7 +190,7 @@ class TranscriptHalf {
   /// Measured from the text present, never read off a self-declared count:
   /// choosing between duplicates by a number the content supplied would let an
   /// event claiming 999 chunks and carrying nothing beat a genuine one.
-  int get contentLength => distinctContentLength(segments);
+  int get contentLength => totalContentLength(segments);
 }
 
 /// A parsed `pangea.call_transcript` event, before assembly picks between
@@ -207,7 +211,7 @@ class TranscriptCandidate {
   /// Distinct content, so padding a half by repeating itself wins nothing:
   /// ["hello"] and ["hello", "hello"] weigh the same, and the tie-break then
   /// prefers the earlier -- which is the genuine one.
-  int get contentLength => distinctContentLength(segments);
+  int get contentLength => totalContentLength(segments);
 }
 
 /// The assembled transcript of one call.
