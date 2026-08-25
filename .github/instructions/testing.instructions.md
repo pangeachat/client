@@ -77,7 +77,7 @@ Synapse contract tests exercise the exact requests the Pangea client sends to th
 
 Two mechanisms: raw-endpoint tests (the `synapse_endpoint_test.dart` pattern) for `_synapse/client/pangea/*` module endpoints, and live-SDK tests that instantiate a real `Client`, log in, and call the client's own extension methods — so the wire bytes are exactly what the app sends and no fixture can drift. Writes assert success **plus a server-side state read-back** (a 200 alone hides silent normalization); reads must parse into the client's own model classes; the typed error contracts client code branches on (e.g. `ORG.PANGEA.BANNED_FROM_ROOM`) get named tests.
 
-Same tier and env plumbing as the other endpoint suites (`endpoint_test_env.dart`; local-only, skips without `.env`). **Before any Synapse version bump, this suite must pass against both the current and the target version on the local stack** — that run is a listed precondition in the upgrade's deploy note.
+Same tier and env plumbing as the other endpoint suites (`endpoint_test_env.dart`; local-only, skips without `.env`). **Before any Synapse version bump, this suite must pass against both the current and the target version on the local stack** — that run is a listed precondition in the upgrade's deploy note. The suite assumes the stock local stack: open registration (m.login.dummy), a non-zero `delete_room_purge_delay_seconds`, an on-domain bot account, and — on Synapse ≥1.159 — an `rc_room_creation` override above the suite's room churn; the harness refuses non-localhost targets unless `CONTRACT_SUITE_ALLOW_REMOTE=1`.
 
 ## Current State
 
