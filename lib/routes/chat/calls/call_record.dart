@@ -2,6 +2,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 /// Writes the call to the room and returns the event id, or null if it could
@@ -39,8 +40,26 @@ class CallAnalyticsNotStored implements Exception {
   String toString() => 'CallAnalyticsNotStored: $cause';
 }
 
+/// Publishes this device's transcript half. See `transcript_writer.dart`.
+typedef TranscriptPublisher =
+    Future<void> Function({
+      required String callKey,
+      required List<TranscriptSegment> segments,
+      required int chunksCaptured,
+      required int chunksTranscribed,
+      required bool drainComplete,
+      String? langCode,
+    });
+
 class CallRecord {
   final CallEventSender sendEvent;
+
+  /// Publishes this device's transcript half, if the feature is wired up.
+  ///
+  /// Optional so every existing construction of a record keeps working
+  /// unchanged, and so a deployment can leave transcripts unpublished without
+  /// touching this class.
+  final TranscriptPublisher? publishTranscript;
   final CallAnalyticsSink analytics;
   final CallTranscriptSink transcripts;
   final String roomId;
@@ -75,6 +94,7 @@ class CallRecord {
     required this.analytics,
     required this.transcripts,
     required this.roomId,
+    this.publishTranscript,
   });
 
   /// Writes the call and records what was said.
@@ -278,6 +298,14 @@ class CallRecord {
       return;
     }
 
+    // Published before the analytics credit and guarded separately, because the
+    // two fail independently. Crediting is once-only and must never be retried
+    // after a partial success; publishing is idempotent through its transaction
+    // id and can safely be attempted again. Letting a transcript failure escape
+    // here would drag the credit into a retry it cannot survive, so it is caught
+    // and the words are simply not published this time.
+    await _publishTranscript(callKey);
+
     if (!answered) {
       // Nothing was said to anyone. The call is in the timeline so it is not
       // lost, but there is no conversation to credit.
@@ -322,6 +350,47 @@ class CallRecord {
       Logs().w('The call\'s speech was not credited; it can be retried', e, s);
     }
   }
+
+  /// Publishes this device's half of the conversation, at most once.
+  ///
+  /// Separate from the analytics credit on purpose: a learner's XP and the
+  /// readable record of what they said are different promises, and one failing
+  /// must not cost the other. A transcript that does not publish is a gap in
+  /// the history; a credit applied twice is a learner's proficiency quietly
+  /// wrong, which is why only the latter is guarded by [_credited].
+  Future<void> _publishTranscript(String? callKey) async {
+    final publish = publishTranscript;
+    if (publish == null || _published || callKey == null) return;
+
+    // Marked before the await, and NOT reset on failure. The retry loop above
+    // exists for the credit, and re-entering here on a later attempt would
+    // publish a second half for the same call under a different transaction id
+    // if the first had in fact landed. One attempt per call is the safe side of
+    // that trade: a missing transcript is visible and recoverable, a duplicated
+    // one is speech the learner never said twice.
+    _published = true;
+    try {
+      await publish(
+        callKey: callKey,
+        segments: transcripts.segments,
+        chunksCaptured: transcripts.chunksCaptured,
+        chunksTranscribed: transcripts.chunksTranscribed,
+        drainComplete: transcripts.drainComplete,
+        langCode: transcripts.langCode,
+      );
+    } catch (e, s) {
+      // Swallowed rather than rethrown, so a transcript failure cannot drag the
+      // credit into the retry loop above. Belt and braces as things stand --
+      // the loop would retry and the guard above would skip the second publish,
+      // reaching the same outcome -- and deliberately NOT covered by a test,
+      // because no observable behaviour distinguishes it today. It earns its
+      // place the moment that retry loop changes, which is exactly when nobody
+      // will be thinking about this.
+      Logs().w('The call transcript was not published', e, s);
+    }
+  }
+
+  bool _published = false;
 
   /// How long a call in the timeline lasted, read from its content.
   ///

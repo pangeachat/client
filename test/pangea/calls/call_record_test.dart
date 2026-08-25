@@ -2,19 +2,38 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'call_transcript_sink_test.dart' show chunk, silent, spokenWord;
+
+const kDur = Duration(seconds: 30);
 
 void main() {
   late List<Map<String, dynamic>> written;
   late List<String> txids;
   late List<({String eventId, int uses, String lang})> recorded;
 
+  /// What the transcript publisher was handed, if a test wired one up. Reset
+  /// per test like the others: a shared collector let one test see another's
+  /// halves, so three of these passed or failed on ordering rather than on
+  /// what the code did.
+  late List<
+    ({
+      String callKey,
+      int segments,
+      int captured,
+      int transcribed,
+      bool drained,
+    })
+  >
+  published;
+
   setUp(() {
     written = [];
     txids = [];
     recorded = [];
+    published = [];
   });
 
   Future<CallTranscriptSink> sinkWith(
@@ -37,6 +56,8 @@ void main() {
     String? eventId = '\$call',
     Object? writeError,
     Object? analyticsError,
+    bool withPublisher = false,
+    Object? publishError,
   }) => CallRecord(
     roomId: '!r:server',
     transcripts: transcripts,
@@ -50,7 +71,101 @@ void main() {
       if (analyticsError != null) throw analyticsError;
       recorded.add((eventId: id, uses: uses.length, lang: lang));
     },
+    publishTranscript: !withPublisher
+        ? null
+        : ({
+            required String callKey,
+            required List<TranscriptSegment> segments,
+            required int chunksCaptured,
+            required int chunksTranscribed,
+            required bool drainComplete,
+            String? langCode,
+          }) async {
+            if (publishError != null) throw publishError;
+            published.add((
+              callKey: callKey,
+              segments: segments.length,
+              captured: chunksCaptured,
+              transcribed: chunksTranscribed,
+              drained: drainComplete,
+            ));
+          },
   );
+
+  group('publishing the transcript half', () {
+    test('publishes once, anchored to the call key', () async {
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withPublisher: true,
+      );
+      await r.finish(
+        duration: const Duration(seconds: 30),
+        video: false,
+        callKey: '\$anchor',
+      );
+
+      expect(published, hasLength(1));
+      expect(published.single.callKey, '\$anchor');
+      expect(published.single.segments, greaterThan(0));
+    });
+
+    test('does not publish twice when the credit is retried', () async {
+      // The guard is only REACHABLE when a first finish did not credit: a
+      // credited record returns before the publish path. An analytics store
+      // that refuses puts the record back in play, and that second pass must
+      // not write the learner's words a second time.
+      //
+      // An earlier version of this test simply called finish twice on a
+      // successful record. That could not fail: the second call returned at
+      // the _credited check and never reached the guard at all.
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withPublisher: true,
+        analyticsError: const CallAnalyticsNotStored('the store was closed'),
+      );
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+      expect(published, hasLength(1));
+    });
+
+    test('publishes nothing without an anchor', () async {
+      // A half nobody can query back is worse than none.
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withPublisher: true,
+      );
+      await r.finish(duration: kDur, video: false);
+
+      expect(published, isEmpty);
+    });
+
+    test('a call nobody answered still publishes its half', () async {
+      // The publish happens before the answered check: a speaker who captured
+      // nothing writes an empty half, and that is a different answer from no
+      // half at all.
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withPublisher: true,
+      );
+      await r.finish(
+        duration: Duration.zero,
+        video: false,
+        answered: false,
+        callKey: '\$anchor',
+      );
+
+      expect(published, hasLength(1));
+    });
+
+    test('nothing is published when no publisher is wired', () async {
+      final r = record(await sinkWith(() => spokenWord('hola')));
+      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+
+      expect(published, isEmpty);
+      expect(recorded, hasLength(1));
+    });
+  });
 
   test('writes the call to the room and records what was said', () async {
     final r = record(await sinkWith(() => spokenWord('hola')));

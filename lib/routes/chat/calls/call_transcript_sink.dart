@@ -6,6 +6,7 @@ import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
@@ -69,6 +70,23 @@ class CallTranscriptSink implements CallAudioSink {
     for (final result in _ordered)
       if (result.hasUsableTranscript) result.transcript.text,
   ];
+
+  /// What was said, cut into readable utterances.
+  ///
+  /// Built here rather than by handing out the frozen responses, for the same
+  /// reason [transcripts] returns strings: those responses are mutable all the
+  /// way down, so passing them out would let any caller empty one and change
+  /// what this call is worth.
+  List<TranscriptSegment> get segments => buildSegments(_ordered);
+
+  /// Whether [close] settled everything it still had in flight.
+  ///
+  /// Optimistic until [close] runs, because nothing has been abandoned before
+  /// then. FALSE afterwards means work was given up on, so what this sink holds
+  /// is knowingly short of what was said -- and the half published from it has
+  /// to say so.
+  bool get drainComplete => _drainComplete;
+  bool _drainComplete = true;
 
   /// How many chunks came back, readable or not. The count is what a caller can
   /// have without a handle on anything mutable.
@@ -185,7 +203,7 @@ class CallTranscriptSink implements CallAudioSink {
         Logs().w(
           'Gave up waiting for a call transcription; its words are lost',
         );
-        return false;
+        return _drainComplete = false;
       }
       try {
         await Future.wait(
@@ -195,10 +213,10 @@ class CallTranscriptSink implements CallAudioSink {
         Logs().w(
           'Gave up waiting for a call transcription; its words are lost',
         );
-        return false;
+        return _drainComplete = false;
       }
     }
-    return true;
+    return _drainComplete = true;
   }
 
   /// How many chunks this device handed over, whether or not they came back.

@@ -3651,7 +3651,7 @@
     "callUnmute": "Unmute",
     "callCameraOn": "Turn camera on",
     "callCameraOff": "Turn camera off",
-    "callRecordingNotice": "This call is transcribed for your analytics",
+    "callRecordingNotice": "This call is transcribed and saved. You and the other person can read it afterwards.",
     "callNoMicrophone": "They cannot hear you: your microphone did not start",
     "callIncoming": "Incoming call",
     "callAnswer": "Answer",

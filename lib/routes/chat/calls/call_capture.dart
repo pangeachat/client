@@ -513,11 +513,21 @@ class CallCaptureService {
     // that failed was remembered as done, and the retry that could have fixed
     // it skipped the work — the same mistake as clearing a handle before the
     // operation it stands for has succeeded.
-    await sink.close();
+    _drainComplete = await sink.close();
     _finished = true;
   }
 
   bool _finished = false;
+
+  /// Whether the sink settled everything it still had in flight.
+  ///
+  /// FALSE means work was abandoned, so whatever the sink holds is knowingly
+  /// short of what was said. Carried out to whoever publishes the transcript,
+  /// because a half that quietly claims to be everything somebody said is the
+  /// one thing this feature must not produce. Optimistic until [finish] runs:
+  /// nothing has been abandoned before then.
+  bool get drainComplete => _drainComplete;
+  bool _drainComplete = true;
 
   /// The frame's samples as 16-bit PCM. Lives with the tap that produces them.
   @visibleForTesting
