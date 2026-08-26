@@ -132,6 +132,19 @@ enum PinTier {
   Size markerBox(ActivityPinState state) => isDot(state)
       ? const Size.square(PinSize.dotTouchTarget)
       : Size(dotWidth, dotHeight(state));
+
+  /// The size the pin is actually **painted** at, which for a dot is far smaller
+  /// than its [markerBox] — that box is padded out to a 48px tap target around
+  /// an 8px dot. Anything drawn to fit the pin itself, rather than to be
+  /// tappable, wants this: the tutorial's gold nudge pulse sized to the box
+  /// instead read as a big disc floating around a tiny dot.
+  Size paintedSize(ActivityPinState state) => isDot(state)
+      ? Size.square(
+          state == ActivityPinState.inProgress
+              ? PinSize.starDotDiameter
+              : PinSize.smallDiameter,
+        )
+      : Size(dotWidth, dotHeight(state));
 }
 
 /// Live signals for one activity derived from Matrix room state: its live-session

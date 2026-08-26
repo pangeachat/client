@@ -49,6 +49,12 @@ class TutorialStepData {
   /// tap. See tutorials.instructions.md.
   final TutorialStepArming? arming;
 
+  /// For a step with no spotlight to lose: whether the surface it belongs to is
+  /// still in front of the learner. False means get out of the way but stay
+  /// armed — exactly what a vanished target means. Without it a card that tracks
+  /// nothing would follow the learner onto every other screen.
+  final bool Function()? surfaceIsVisible;
+
   /// Runtime values this step's copy needs — a greeting in the learner's target
   /// language, a language name, whether anything was found. The copy itself
   /// stays in the step's template; only the values come from here, so there is
@@ -68,6 +74,7 @@ class TutorialStepData {
     required this.canShowNextStep,
     this.arming,
     this.tooltipArgs,
+    this.surfaceIsVisible,
   });
 
   /// Convenience for the common single-target step.
@@ -77,6 +84,7 @@ class TutorialStepData {
     required this.canShowNextStep,
     this.arming,
     this.tooltipArgs,
+    this.surfaceIsVisible,
   }) : targetKeys = [targetKey],
        spotlightRects = null;
 
@@ -96,6 +104,24 @@ class TutorialStepArming {
   const TutorialStepArming({required this.signal, required this.isSatisfied});
 }
 
+/// What tapping a branch step's choice does.
+enum TutorialChoiceOutcome {
+  /// Carry on to the next step.
+  advance,
+
+  /// End this tutorial and mark it seen. The learner was asked and said no, so
+  /// it should not come back.
+  decline,
+}
+
+/// One labelled answer on a branch step.
+class TutorialStepChoice {
+  final String Function(L10n) label;
+  final TutorialChoiceOutcome outcome;
+
+  const TutorialStepChoice({required this.label, required this.outcome});
+}
+
 /// One step's copy and geometry, declared per tutorial in
 /// [TutorialStepTemplates]. The length of a tutorial's template list IS its
 /// step count — see [TutorialEnum.stepCount] — so there is nowhere for the
@@ -108,11 +134,27 @@ class TutorialStepTemplate {
   final double? borderRadius;
   final double? padding;
 
+  /// Whether this step darkens what is behind it.
+  ///
+  /// False hands the surface over completely: no scrim, no spotlight, nothing
+  /// blocked, and no tap dismisses it — just the bot card, while the surface
+  /// itself carries the emphasis (the map shimmers the pins it is talking
+  /// about). For a step the learner is meant to act on, dimming the thing they
+  /// have to use works against the ask.
+  final bool dimsBackground;
+
+  /// Present on a **branch** step: the step asks a question and the learner
+  /// answers by picking one of these instead of tapping through. Declared here
+  /// with the copy, since which answers exist is part of what the step says.
+  final List<TutorialStepChoice> choices;
+
   const TutorialStepTemplate({
     required this.tooltip,
     required this.tooltipSize,
     this.borderRadius,
     this.padding,
+    this.choices = const [],
+    this.dimsBackground = true,
   });
 
   TutorialStepStyle resolve(L10n l10n, List<String> args) => TutorialStepStyle(
@@ -120,6 +162,11 @@ class TutorialStepTemplate {
     tooltipSize: tooltipSize,
     borderRadius: borderRadius,
     padding: padding,
+    choices: [
+      for (final choice in choices)
+        (label: choice.label(l10n), outcome: choice.outcome),
+    ],
+    dimsBackground: dimsBackground,
   );
 }
 
@@ -130,10 +177,21 @@ class TutorialStepStyle {
   final double? borderRadius;
   final double? padding;
 
+  /// Non-empty on a branch step. A tap anywhere else must do nothing while
+  /// these are showing, or a tap aimed at a button advances past the question.
+  final List<({String label, TutorialChoiceOutcome outcome})> choices;
+
+  /// See [TutorialStepTemplate.dimsBackground].
+  final bool dimsBackground;
+
   const TutorialStepStyle({
     required this.tooltip,
     required this.tooltipSize,
     this.borderRadius,
     this.padding,
+    this.choices = const [],
+    this.dimsBackground = true,
   });
+
+  bool get isBranch => choices.isNotEmpty;
 }

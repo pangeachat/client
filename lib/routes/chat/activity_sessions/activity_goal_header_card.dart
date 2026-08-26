@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 
 /// The floating goal-header card shared by the live session and the start/
 /// summary pages. It crossfades between its [collapsed] face (star summary +
@@ -49,7 +49,7 @@ class ActivityGoalHeaderCard extends StatelessWidget {
           // On the container, not the Align above it: an Align inside a Stack
           // fills the space it is given, so a spotlight measured there would be
           // the size of the whole chat rather than the card.
-          child: _MaybeTutorialTarget(
+          child: TutorialTarget(
             targetId: targetId,
             child: AnimatedContainer(
               duration: FluffyThemes.animationDuration,
@@ -114,27 +114,6 @@ class ActivityGoalHeaderCard extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-/// Wraps [child] as a tutorial spotlight target when [targetId] is given, and
-/// is a plain pass-through when it is not.
-class _MaybeTutorialTarget extends StatelessWidget {
-  final String? targetId;
-  final Widget child;
-
-  const _MaybeTutorialTarget({required this.targetId, required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    final targetId = this.targetId;
-    if (targetId == null) return child;
-    final target = MatrixState.pAnyState.layerLinkAndKey(targetId);
-    return CompositedTransformTarget(
-      link: target.link,
-      key: target.key,
-      child: child,
     );
   }
 }

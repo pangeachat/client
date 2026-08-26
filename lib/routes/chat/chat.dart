@@ -755,13 +755,23 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _unregisterTutorialLaunchers() {
     tutorialOverlayController
-      ..unregisterLauncher(TutorialEnum.readingAssistance)
-      ..unregisterLauncher(TutorialEnum.writingAssistance)
+      ..unregisterLauncher(
+        TutorialEnum.readingAssistance,
+        _launchReadingAssistanceTutorial,
+      )
+      ..unregisterLauncher(
+        TutorialEnum.writingAssistance,
+        _launchWritingAssistanceTutorial,
+      )
       ..unregisterLauncher(
         TutorialEnum.selectModeButtons,
+        _openToolbarForSelectModeTutorial,
         role: TutorialLaunchRole.opener,
       )
-      ..unregisterLauncher(TutorialEnum.activityGoals);
+      ..unregisterLauncher(
+        TutorialEnum.activityGoals,
+        _launchActivityGoalsTutorial,
+      );
   }
 
   /// Whether the goal header the tutorial points at is actually on screen —
@@ -772,13 +782,40 @@ class ChatController extends State<ChatPageWithRoom>
       room.hasPickedRole &&
       (room.ownRole?.allGoals.isNotEmpty ?? false);
 
+  /// At most one pending check, so the plan-hydrate notifier costs one callback
+  /// rather than one per notification.
+  bool _goalsTutorialCheckScheduled = false;
+
   void _maybeStartActivityGoalsTutorial() {
+    if (_goalsTutorialCheckScheduled) return;
+    _goalsTutorialCheckScheduled = true;
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted || !isFocused || !_hasGoalHeader) return;
-      tutorialOverlayController.requestSequence(
-        TutorialSequences.activityGoalsSequence,
-      );
+      _goalsTutorialCheckScheduled = false;
+      _checkActivityGoalsTutorial();
     });
+  }
+
+  /// Every condition below starts out false on a cold open — the plan is still
+  /// being fetched so there is no role or goals, panel focus lands a frame late,
+  /// and the profile is still loading — so nothing here concludes, it just
+  /// re-asks. See tutorials.instructions.md on trigger evaluation.
+  void _checkActivityGoalsTutorial() {
+    if (!mounted) return;
+    if (!MatrixState
+        .pangeaController
+        .userController
+        .initCompleter
+        .isCompleted) {
+      return;
+    }
+    if (!tutorialOverlayController.isPending(TutorialEnum.activityGoals)) {
+      return;
+    }
+    if (!isFocused || !_hasGoalHeader) return;
+
+    tutorialOverlayController.requestSequence(
+      TutorialSequences.activityGoalsSequence,
+    );
   }
 
   /// Ends with the goal list open, so the learner finishes the step looking at
@@ -1056,6 +1093,14 @@ class ChatController extends State<ChatPageWithRoom>
         activitySessionId,
         version: room.pinnedActivityVersionId,
         revalidate: true,
+      );
+      // The goal header only exists once the plan lands, and the plan is
+      // fetched, so hydration is the moment to re-ask.
+      ActivityPlanRepo.instance.addListener(_maybeStartActivityGoalsTutorial);
+      // And once more when the profile lands, in case it loads after every other
+      // hook has already had its turn (a fresh login straight into an activity).
+      MatrixState.pangeaController.userController.initCompleter.future.then(
+        (_) => _maybeStartActivityGoalsTutorial(),
       );
     }
 
@@ -1385,6 +1430,7 @@ class ChatController extends State<ChatPageWithRoom>
     _tokensSubscription?.cancel();
     _readingAssistanceTutorialSubscription?.cancel();
     PanelFocusController.instance.removeListener(_onFocusChanged);
+    ActivityPlanRepo.instance.removeListener(_maybeStartActivityGoalsTutorial);
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
     inputFocus.dispose();
@@ -1452,6 +1498,9 @@ class ChatController extends State<ChatPageWithRoom>
     if (!mounted) return;
     if (isFocused) {
       _resumeTimeline();
+      // Focus is published a frame after the chat mounts, so this is the first
+      // point the goal-header tutorial can pass its own focus check.
+      _maybeStartActivityGoalsTutorial();
     } else {
       _suspendTimeline();
     }

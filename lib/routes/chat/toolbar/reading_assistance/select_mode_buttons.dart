@@ -253,7 +253,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   @override
   void dispose() {
     final tutorial = MatrixState.tutorialOverlayController;
-    tutorial.unregisterLauncher(TutorialEnum.selectModeButtons);
+    tutorial.unregisterLauncher(
+      TutorialEnum.selectModeButtons,
+      _startSelectModeTutorial,
+    );
     if (tutorial.state.isTutorialActive(TutorialEnum.selectModeButtons) &&
         !tutorial.state.model.isStepTransitioning) {
       tutorial.resetTutorial();

@@ -6,6 +6,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
@@ -55,6 +56,13 @@ class ObjectiveSection extends StatefulWidget {
   /// resolver's anchor (#8357).
   final bool isUpNext;
 
+  /// Registers this section's activity carousel as a tutorial spotlight target.
+  /// Decided by the parent, which is the only thing that knows whether THIS
+  /// list is the one driving the tutorial — a target id is a GlobalKey, and two
+  /// mounted lists (a course card and its pushed full-plan subpage) both have an
+  /// anchor Mission, so only one may claim it.
+  final String? tutorialTargetId;
+
   const ObjectiveSection({
     super.key,
     required this.group,
@@ -67,6 +75,7 @@ class ObjectiveSection extends StatefulWidget {
     this.pingedActivityId,
     this.collapsible = false,
     this.isUpNext = false,
+    this.tutorialTargetId,
     this.spacing = 16.0,
     this.cardWidth,
     this.cardHeight,
@@ -266,164 +275,175 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
           if (!_collapsed) const SizedBox(height: 12.0),
           // The activities that satisfy this objective.
           if (!_collapsed)
-            SizedBox(
-              height: _cardHeight,
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  NotificationListener<ScrollMetricsNotification>(
-                    onNotification: (ScrollMetricsNotification notification) {
-                      _updateArrowVisibility();
-                      return true;
-                    },
-                    child: ListView.separated(
-                      controller: _scrollController,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: activities.length,
-                      separatorBuilder: (_, _) =>
-                          SizedBox(width: widget.spacing),
-                      padding: EdgeInsets.symmetric(
-                        vertical: widget.spacing / 2.0,
-                      ),
-                      itemBuilder: (context, i) {
-                        final ref = activities[i];
-                        final complete =
-                            (widget.hasCompletedActivity?.call(
-                              ref.activityId,
-                            ) ??
-                            false);
-                        final starsEarned = widget.userStarsByActivity(
-                          ref.activityId,
-                        );
-                        final liveState = widget.liveStateByActivity(
-                          ref.activityId,
-                        );
-                        // A completed activity drops its state colouring for
-                        // the check overlay, so the card and its ping bell
-                        // both read it from here.
-                        final pinState = complete ? null : liveState.state;
-                        // Dim activities that can't be started yet: the course lacks
-                        // enough members for their roles (tapping opens the start page's
-                        // Invite CTA). A live (ongoing/joinable) session already filled
-                        // its seats so it never dims
-                        final available = widget.availableParticipants;
-                        final canStart =
-                            available == null ||
-                            complete ||
-                            liveState.state != null ||
-                            ref.plan.req.numberOfParticipants <= available;
-                        return MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            // In a preview (no room), open the activity as a standalone
-                            // world object (`/<activityId>`). In a joined course, open it
-                            // as the focused detail over the map: DROP the `left=course`
-                            // card (so it isn't left blank beside the activity) but KEEP
-                            // the `?m=course:` filter. That surviving course scope is what
-                            // marks this plan as the card's child: its close is a back-arrow
-                            // that reopens the card (a pin-opened plan drops the scope and so
-                            // closes with an X). The map stays course-scoped and zooms to
-                            // this activity (`mapFocusFor` → `ActivityFocus`). See
-                            // routing.instructions.md.
-                            onTap: () => widget.onTap(ref),
-                            child: Stack(
-                              // The card's state banner peeks past its top-left
-                              // corner, so this wrapping Stack must not clip it.
-                              clipBehavior: Clip.hardEdge,
-                              children: [
-                                Opacity(
-                                  opacity: canStart ? 1.0 : 0.5,
-                                  child: ActivitySuggestionCard(
-                                    activity: ref.plan,
-                                    width: _cardWidth,
-                                    height: _cardHeight,
-                                    fontSize: _isColumnMode ? 16.0 : 12.0,
-                                    fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
-                                    iconSize: _isColumnMode ? 12.0 : 8.0,
-                                    starsEarned: starsEarned,
-                                    pinState: pinState,
-                                    openSessions: liveState.openSessions,
-                                    participants: liveState.participants,
-                                    openSlots: liveState.openSlots,
-                                  ),
-                                ),
-                                if (complete)
-                                  Container(
-                                    width: _cardWidth,
-                                    height: _cardHeight,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12.0),
-                                      color: theme.colorScheme.surface
-                                          .withAlpha(180),
+            TutorialTarget(
+              // Only the anchor Mission's carousel is lit, and there is exactly
+              // one anchor, so this id has a single claimant. See
+              // TutorialTargetIds.courseUpNextActivities.
+              targetId: widget.tutorialTargetId,
+              child: SizedBox(
+                height: _cardHeight,
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    NotificationListener<ScrollMetricsNotification>(
+                      onNotification: (ScrollMetricsNotification notification) {
+                        _updateArrowVisibility();
+                        return true;
+                      },
+                      child: ListView.separated(
+                        controller: _scrollController,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: activities.length,
+                        separatorBuilder: (_, _) =>
+                            SizedBox(width: widget.spacing),
+                        padding: EdgeInsets.symmetric(
+                          vertical: widget.spacing / 2.0,
+                        ),
+                        itemBuilder: (context, i) {
+                          final ref = activities[i];
+                          final complete =
+                              (widget.hasCompletedActivity?.call(
+                                ref.activityId,
+                              ) ??
+                              false);
+                          final starsEarned = widget.userStarsByActivity(
+                            ref.activityId,
+                          );
+                          final liveState = widget.liveStateByActivity(
+                            ref.activityId,
+                          );
+                          // A completed activity drops its state colouring for
+                          // the check overlay, so the card and its ping bell
+                          // both read it from here.
+                          final pinState = complete ? null : liveState.state;
+                          // Dim activities that can't be started yet: the course lacks
+                          // enough members for their roles (tapping opens the start page's
+                          // Invite CTA). A live (ongoing/joinable) session already filled
+                          // its seats so it never dims
+                          final available = widget.availableParticipants;
+                          final canStart =
+                              available == null ||
+                              complete ||
+                              liveState.state != null ||
+                              ref.plan.req.numberOfParticipants <= available;
+                          return MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              // In a preview (no room), open the activity as a standalone
+                              // world object (`/<activityId>`). In a joined course, open it
+                              // as the focused detail over the map: DROP the `left=course`
+                              // card (so it isn't left blank beside the activity) but KEEP
+                              // the `?m=course:` filter. That surviving course scope is what
+                              // marks this plan as the card's child: its close is a back-arrow
+                              // that reopens the card (a pin-opened plan drops the scope and so
+                              // closes with an X). The map stays course-scoped and zooms to
+                              // this activity (`mapFocusFor` → `ActivityFocus`). See
+                              // routing.instructions.md.
+                              onTap: () => widget.onTap(ref),
+                              child: Stack(
+                                // The card's state banner peeks past its top-left
+                                // corner, so this wrapping Stack must not clip it.
+                                clipBehavior: Clip.hardEdge,
+                                children: [
+                                  Opacity(
+                                    opacity: canStart ? 1.0 : 0.5,
+                                    child: ActivitySuggestionCard(
+                                      activity: ref.plan,
+                                      width: _cardWidth,
+                                      height: _cardHeight,
+                                      fontSize: _isColumnMode ? 16.0 : 12.0,
+                                      fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
+                                      iconSize: _isColumnMode ? 12.0 : 8.0,
+                                      starsEarned: starsEarned,
+                                      pinState: pinState,
+                                      openSessions: liveState.openSessions,
+                                      participants: liveState.participants,
+                                      openSlots: liveState.openSlots,
                                     ),
-                                    child: Center(
-                                      child: SvgPicture.asset(
-                                        'assets/pangea/check.svg',
-                                        width: 48.0,
-                                        height: 48.0,
+                                  ),
+                                  if (complete)
+                                    Container(
+                                      width: _cardWidth,
+                                      height: _cardHeight,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                          12.0,
+                                        ),
+                                        color: theme.colorScheme.surface
+                                            .withAlpha(180),
+                                      ),
+                                      child: Center(
+                                        child: SvgPicture.asset(
+                                          'assets/pangea/check.svg',
+                                          width: 48.0,
+                                          height: 48.0,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                // The course-ping bell, top-left so it shares
-                                // the banner's row without covering it (#8319),
-                                // in the card's own state hue (#8481).
-                                if (ref.activityId == widget.pingedActivityId)
-                                  Positioned(
-                                    top: 8.0,
-                                    left: 6.0,
-                                    child: CoursePingBadge(pinState: pinState),
-                                  ),
-                              ],
+                                  // The course-ping bell, top-left so it shares
+                                  // the banner's row without covering it (#8319),
+                                  // in the card's own state hue (#8481).
+                                  if (ref.activityId == widget.pingedActivityId)
+                                    Positioned(
+                                      top: 8.0,
+                                      left: 6.0,
+                                      child: CoursePingBadge(
+                                        pinState: pinState,
+                                      ),
+                                    ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                  // No BlockSemantics here (#8011): blocking is tree-order, not
-                  // geometric, so it would drop every card's semantics node in the
-                  // row — and on Flutter web with the semantics tree on (staging
-                  // forces it via ENABLE_SEMANTICS) a node-less card cannot be
-                  // clicked at all. Worse, the section's labeled container then
-                  // merges with the only surviving node (the arrow) into one
-                  // row-sized button, so every card click scrolls. Each arrow
-                  // instead defends its own strip with an opaque semantics hit
-                  // test — see ObjectiveSectionScrollArrow.
-                  // The scroll arrows overlay the ends of the ListView. Only mount
-                  // the arrow that is currently usable — a hidden-but-present arrow
-                  // (IgnorePointer / opacity 0) still leaves a semantics node at the
-                  // edge that, on Flutter web, lets a tap fall through to the card
-                  // beneath it.
-                  Positioned(
-                    left: 0,
-                    top: 0,
-                    bottom: 0,
-                    child: ValueListenableBuilder<bool>(
-                      valueListenable: _showBackArrowNotifier,
-                      builder: (context, showArrow, _) => showArrow
-                          ? ObjectiveSectionScrollArrow(
-                              direction: ArrowDirection.back,
-                              onTap: () => _scrollByArrow(ArrowDirection.back),
-                            )
-                          : const SizedBox.shrink(),
+                    // No BlockSemantics here (#8011): blocking is tree-order, not
+                    // geometric, so it would drop every card's semantics node in the
+                    // row — and on Flutter web with the semantics tree on (staging
+                    // forces it via ENABLE_SEMANTICS) a node-less card cannot be
+                    // clicked at all. Worse, the section's labeled container then
+                    // merges with the only surviving node (the arrow) into one
+                    // row-sized button, so every card click scrolls. Each arrow
+                    // instead defends its own strip with an opaque semantics hit
+                    // test — see ObjectiveSectionScrollArrow.
+                    // The scroll arrows overlay the ends of the ListView. Only mount
+                    // the arrow that is currently usable — a hidden-but-present arrow
+                    // (IgnorePointer / opacity 0) still leaves a semantics node at the
+                    // edge that, on Flutter web, lets a tap fall through to the card
+                    // beneath it.
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      bottom: 0,
+                      child: ValueListenableBuilder<bool>(
+                        valueListenable: _showBackArrowNotifier,
+                        builder: (context, showArrow, _) => showArrow
+                            ? ObjectiveSectionScrollArrow(
+                                direction: ArrowDirection.back,
+                                onTap: () =>
+                                    _scrollByArrow(ArrowDirection.back),
+                              )
+                            : const SizedBox.shrink(),
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    bottom: 0,
-                    child: ValueListenableBuilder<bool>(
-                      valueListenable: _showForwardArrowNotifier,
-                      builder: (context, showArrow, _) => showArrow
-                          ? ObjectiveSectionScrollArrow(
-                              direction: ArrowDirection.forward,
-                              onTap: () =>
-                                  _scrollByArrow(ArrowDirection.forward),
-                            )
-                          : const SizedBox.shrink(),
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      bottom: 0,
+                      child: ValueListenableBuilder<bool>(
+                        valueListenable: _showForwardArrowNotifier,
+                        builder: (context, showArrow, _) => showArrow
+                            ? ObjectiveSectionScrollArrow(
+                                direction: ArrowDirection.forward,
+                                onTap: () =>
+                                    _scrollByArrow(ArrowDirection.forward),
+                              )
+                            : const SizedBox.shrink(),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
         ],

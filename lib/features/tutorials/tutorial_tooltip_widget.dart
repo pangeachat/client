@@ -2,11 +2,18 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
+import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 
 class TutorialTooltipWidget extends StatelessWidget {
   final String text;
   final int currentStep;
   final int totalSteps;
+
+  /// A branch step's answers. Rendered inside the card, below the progress row,
+  /// so the card grows to contain them — floating them over its bottom edge left
+  /// them straddling the border and covering the progress bar.
+  final List<({String label, TutorialChoiceOutcome outcome})> choices;
+  final void Function(TutorialChoiceOutcome)? onChoice;
   final EdgeInsets padding;
   final BorderRadius borderRadius;
   final TextStyle? textStyle;
@@ -18,6 +25,8 @@ class TutorialTooltipWidget extends StatelessWidget {
     required this.text,
     required this.currentStep,
     required this.totalSteps,
+    this.choices = const [],
+    this.onChoice,
     this.padding = const EdgeInsets.all(8),
     this.borderRadius = const BorderRadius.all(Radius.circular(8)),
     this.textStyle,
@@ -95,7 +104,65 @@ class TutorialTooltipWidget extends StatelessWidget {
               ],
             ),
           ),
+          if (choices.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 4.0),
+              child: Row(
+                spacing: 8.0,
+                children: [
+                  for (final choice in choices)
+                    Expanded(
+                      child: _TutorialChoiceButton(
+                        label: choice.label,
+                        // The app's colour hierarchy: one darker filled primary
+                        // leads, and anything following it is a fully filled but
+                        // lighter primaryContainer button.
+                        secondary:
+                            choice.outcome != TutorialChoiceOutcome.advance,
+                        onPressed: () => onChoice?.call(choice.outcome),
+                      ),
+                    ),
+                ],
+              ),
+            ),
         ],
+      ),
+    );
+  }
+}
+
+class _TutorialChoiceButton extends StatelessWidget {
+  final String label;
+  final bool secondary;
+  final VoidCallback onPressed;
+
+  const _TutorialChoiceButton({
+    required this.label,
+    required this.secondary,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: secondary ? scheme.primaryContainer : scheme.primary,
+        foregroundColor: secondary
+            ? scheme.onPrimaryContainer
+            : scheme.onPrimary,
+        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
+        minimumSize: const Size(0, 36),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+      ),
+      onPressed: onPressed,
+      child: Text(
+        label,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        textAlign: TextAlign.center,
       ),
     );
   }

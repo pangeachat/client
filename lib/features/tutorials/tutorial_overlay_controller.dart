@@ -76,9 +76,26 @@ class TutorialOverlayController {
 
   bool get hasActiveSequence => _activeSequence != null;
 
+  /// Whether [tutorial] is the one running and its current step is armed — the
+  /// ask is on the table and the learner has not answered it yet.
+  ///
+  /// A host uses this to keep an on-surface nudge running for as long as the ask
+  /// stands: the world map shimmers the pins it just told the learner to tap,
+  /// and stops when they do (or when the tutorial moves on).
+  bool isAwaitingLearnerAction(TutorialEnum tutorial) =>
+      _state.tutorialType == tutorial && _armed != null;
+
   /// Whether this learner still has [tutorial] coming — unseen, and not yet
   /// walked to its end. Asked by a host whose trigger belongs to one specific
   /// tutorial, so the trigger stays silent once that tutorial is done.
+  ///
+  /// **A caller must never cache a `false` from this.** The answer lives on the
+  /// learner's profile, which loads asynchronously and reports everything as
+  /// *already seen* until it does — and which the learner can reset from
+  /// settings. A remembered "nothing left to show" outlives the profile it came
+  /// from, and on a host that is never remounted (the world map) that retires
+  /// the tutorial for the rest of the session. Ask again; the answer is a map
+  /// lookup. See tutorials.instructions.md on trigger evaluation.
   bool isPending(TutorialEnum tutorial) => _progress.isEnabled(tutorial);
 
   /// Puts the current step back on screen when a sequence is running but nothing
@@ -113,11 +130,15 @@ class TutorialOverlayController {
       if (!_queue.any((queued) => _isSameSequence(queued, sequence))) {
         _queue.add(sequence);
       }
+      Logs().v("Tutorial sequence $sequence queued behind $_activeSequence");
       return false;
     }
 
     final enabled = sequence.where(_progress.isEnabled).toList();
-    if (enabled.isEmpty) return false;
+    if (enabled.isEmpty) {
+      Logs().v("Tutorial sequence $sequence has nothing left to show");
+      return false;
+    }
 
     _activeSequence = sequence;
     _state = TutorialOverlayStateMachine(
@@ -162,12 +183,20 @@ class TutorialOverlayController {
     }
   }
 
+  /// Removes [launcher] only if it is the one currently registered.
+  ///
+  /// The identity check matters for a tutorial more than one host can own — the
+  /// greeting fires on the world map or a course plan, whichever the learner
+  /// reaches first. Without it, the second host to register and then leave would
+  /// take the first host's registration with it, and nothing could launch the
+  /// greeting again.
   void unregisterLauncher(
-    TutorialEnum tutorial, {
+    TutorialEnum tutorial,
+    TutorialLauncher launcher, {
     TutorialLaunchRole role = TutorialLaunchRole.owner,
   }) {
     final roles = _launchers[tutorial];
-    if (roles == null) return;
+    if (roles == null || roles[role] != launcher) return;
     roles.remove(role);
     if (roles.isEmpty) _launchers.remove(tutorial);
   }
@@ -321,6 +350,7 @@ class TutorialOverlayController {
             forward: forwardTutorial,
             back: backTutorial,
             reset: resetTutorial,
+            decline: declineCurrentTutorial,
             setTutorialTransitioning: setTutorialTransitioning,
             enabledForward: machine.canGoForward,
             enabledBack: machine.canGoBack,
@@ -374,6 +404,17 @@ class TutorialOverlayController {
     } else {
       _syncArming();
     }
+  }
+
+  /// The learner declined this tutorial at a branch step: mark it seen, because
+  /// they were asked and said no, and end the sequence rather than carrying on
+  /// into steps they just opted out of.
+  void declineCurrentTutorial() {
+    final tutorial = _state.tutorialType;
+    if (tutorial == null) return;
+    GoogleAnalytics.declineTutorial(tutorial.name, _state.model.stepIndex);
+    tutorial.saveProgress(tutorial.stepCount);
+    _endSequence();
   }
 
   /// Re-opens the previous tutorial in the sequence at its last step.

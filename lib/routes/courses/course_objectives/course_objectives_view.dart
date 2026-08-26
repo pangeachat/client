@@ -10,12 +10,21 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
+import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
+import 'package:fluffychat/features/tutorials/tutorial_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
+import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
+import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -26,6 +35,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 /// The Activities / Course-plan tab of a selected course (world_v2): the
 /// course's learning objectives, each with the activities that satisfy it.
@@ -109,6 +119,13 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     // usually after this list first builds — rebuild when it lands.
     CoursePingBadgeCache.instance.addListener(_onLiveStateSourcesChanged);
     _scrollController.addListener(_checkPingedSectionSeen);
+    _registerTutorialLaunchers();
+    _maybeStartOrientation();
+    // Once more when the profile lands, in case it loads after every other hook
+    // has had its turn.
+    MatrixState.pangeaController.userController.initCompleter.future.then(
+      (_) => _maybeStartOrientation(),
+    );
     // Open state is read off the map's discovery cache, which discovery updates
     // out-of-band (async, throttled). Rebuild the instant it changes — a session
     // discovered or removed — so a card turns Open / back to plain live, not only
@@ -138,11 +155,156 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     CoursePingBadgeCache.instance.removeListener(_onLiveStateSourcesChanged);
     _availableParticipantsSub?.cancel();
     _scrollController.dispose();
+    if (_hostsTutorial) {
+      _tutorials
+        ..unregisterLauncher(TutorialEnum.welcome, _launchWelcomeTutorial)
+        ..unregisterLauncher(TutorialEnum.coursePlan, _launchCoursePlanTutorial)
+        // Nothing can show the remaining steps once this list is gone. Progress
+        // is persisted, so the next visit resumes where this one left off.
+        ..releaseSequence(TutorialSequences.courseOrientationSequence);
+    }
     super.dispose();
+  }
+
+  // Orientation tutorials — the greeting, then the course plan.
+  // Design: tutorials.instructions.md
+
+  TutorialOverlayController get _tutorials =>
+      MatrixState.tutorialOverlayController;
+
+  /// At most one pending check, so the rebuild-heavy live-state listeners cost
+  /// one callback rather than one per notification.
+  bool _orientationCheckScheduled = false;
+
+  /// Whether THIS list instance is the one that runs the course tutorial.
+  ///
+  /// The card's Up-next highlight and its pushed full-plan subpage can both be
+  /// mounted, and both have an anchor Mission — so exactly one is allowed to
+  /// claim the carousel target and drive the sequence. The highlight wins: it is
+  /// what a learner sees when they open the course. A preview of an unjoined
+  /// plan teaches nothing and is excluded by having no room.
+  bool get _hostsTutorial => widget.upNextOnly && widget.room != null;
+
+  void _registerTutorialLaunchers() {
+    if (!_hostsTutorial) return;
+    _tutorials
+      ..registerLauncher(TutorialEnum.welcome, _launchWelcomeTutorial)
+      ..registerLauncher(TutorialEnum.coursePlan, _launchCoursePlanTutorial);
+  }
+
+  /// Re-asked on every rebuild source rather than checked once: the quest
+  /// outline, the anchor Mission, and the profile all land asynchronously, and a
+  /// single early check would simply find nothing and give up.
+  void _maybeStartOrientation() {
+    if (!_hostsTutorial) return;
+    if (_orientationCheckScheduled) return;
+    _orientationCheckScheduled = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _orientationCheckScheduled = false;
+      _checkOrientation();
+    });
+  }
+
+  void _checkOrientation() {
+    if (!mounted) return;
+
+    if (!MatrixState
+        .pangeaController
+        .userController
+        .initCompleter
+        .isCompleted) {
+      return;
+    }
+
+    if (!_tutorials.isPending(TutorialEnum.welcome) &&
+        !_tutorials.isPending(TutorialEnum.coursePlan)) {
+      return;
+    }
+
+    if (_tutorials.hasActiveSequence) {
+      _tutorials.resumeIfStranded();
+      return;
+    }
+
+    // The carousel the second step points at only exists once the outline has
+    // rendered.
+    if (_upNextCarouselRect == null) return;
+
+    _tutorials.requestSequence(TutorialSequences.courseOrientationSequence);
+  }
+
+  /// The "Up next" Mission's activity carousel, if it is currently on screen.
+  Rect? get _upNextCarouselRect {
+    final box = MatrixState.pAnyState.getRenderBox(
+      TutorialTargetIds.courseUpNextActivities,
+    );
+    if (box == null) return null;
+    return box.localToGlobal(Offset.zero) & box.size;
+  }
+
+  Future<void> _launchWelcomeTutorial() async {
+    if (!mounted) return;
+    final greeting = await TutorialCopy.targetLanguageGreeting(context);
+    if (!mounted) return;
+    _tutorials.launchTutorial(
+      context: context,
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.welcome,
+        stepsData: [
+          // No target: the greeting is about the app, not about anything on
+          // screen, so it centers over the darkened plan.
+          TutorialStepData(
+            canShowNextStep: () => true,
+            tooltipArgs: () => [greeting],
+          ),
+        ],
+      ),
+      isFocused: true,
+    );
+  }
+
+  Future<void> _launchCoursePlanTutorial() async {
+    if (!mounted) return;
+    _tutorials.launchTutorial(
+      context: context,
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.coursePlan,
+        stepsData: [
+          TutorialStepData(canShowNextStep: () => true),
+          TutorialStepData(
+            // The carousel, resolved live so it tracks the plan scrolling.
+            spotlightRects: () {
+              final rect = _upNextCarouselRect;
+              return rect == null ? const [] : [rect];
+            },
+            canShowNextStep: () => true,
+            // A non-empty arg switches to the copy for "we could not point at
+            // your current Mission's activities".
+            tooltipArgs: () =>
+                _upNextCarouselRect == null ? const ['empty'] : const [],
+            // Armed: the learner opens an activity themselves, however they
+            // reach it.
+            arming: TutorialStepArming(
+              signal: GoRouter.of(context).routeInformationProvider,
+              isSatisfied: _hasActivityPanelOpen,
+            ),
+          ),
+        ],
+      ),
+      isFocused: true,
+    );
+  }
+
+  bool _hasActivityPanelOpen() {
+    if (!mounted) return false;
+    return parseOpenPanels(
+      GoRouter.of(context).routeInformationProvider.value.uri,
+    ).left.any((token) => token.type == PanelTypesEnum.activity);
   }
 
   void _onLiveStateSourcesChanged() {
     if (mounted) setState(() {});
+    _maybeStartOrientation();
   }
 
   /// The activity a course ping pointed at, when it's for THIS course.
@@ -376,6 +538,12 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                             : null,
                         collapsible: widget.collapsibleMissions,
                         isUpNext: group.objective.id == anchorId,
+                        // Only the course card's Up-next highlight drives the
+                        // course tutorial, so only it claims the target id.
+                        tutorialTargetId:
+                            _hostsTutorial && group.objective.id == anchorId
+                            ? TutorialTargetIds.courseUpNextActivities
+                            : null,
                         group: group,
                         hasCompletedActivity: widget.hasCompletedActivity,
                         progress: hasProgress

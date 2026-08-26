@@ -14,6 +14,7 @@ class TutorialOverlayWidget extends StatefulWidget {
   final VoidCallback forward;
   final VoidCallback back;
   final VoidCallback reset;
+  final VoidCallback decline;
   final Function(bool) setTutorialTransitioning;
 
   final bool enabledForward;
@@ -27,6 +28,7 @@ class TutorialOverlayWidget extends StatefulWidget {
     required this.forward,
     required this.back,
     required this.reset,
+    required this.decline,
     required this.setTutorialTransitioning,
     required this.enabledForward,
     required this.enabledBack,
@@ -89,6 +91,14 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     }
     final hostRects = data.spotlightRects?.call();
     if (hostRects != null) rects.addAll(hostRects);
+
+    // A step with no spotlight to lose says for itself when it stops applying.
+    if (data.surfaceIsVisible?.call() == false &&
+        !widget.model.isStepTransitioning &&
+        _visible) {
+      widget.reset();
+      return;
+    }
 
     // A step with no targets is about the app rather than anything on screen,
     // so there is nothing that can vanish out from under it.
@@ -168,9 +178,15 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   /// and anchoring it pushed the card clean off the top edge, which read as the
   /// step silently doing nothing. A step with nothing lit has no "beside" at
   /// all, so it centers.
-  _TooltipPlacement _placementFor(Size tooltipSize) {
+  _TooltipPlacement _placementFor(Size tooltipSize, bool dimsBackground) {
     final anchor = _anchorRect;
-    if (anchor == null) return _TooltipPlacement.centered;
+    // An undimmed step has handed the surface over, so its card takes the bottom
+    // rather than sitting in the middle of what the learner is meant to use.
+    if (anchor == null) {
+      return dimsBackground
+          ? _TooltipPlacement.centered
+          : _TooltipPlacement.bottom;
+    }
 
     final gap = _tooltipSize(tooltipSize).height + _tooltipPadding * 2;
     final fitsAbove = anchor.top - gap >= 0;
@@ -277,45 +293,46 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
 
     final content = Stack(
       children: [
-        AnimatedOpacity(
-          opacity: _visible && ready ? 1.0 : 0.0,
-          duration: _duration,
-          child: ExcludeSemantics(
-            child: ColorFiltered(
-              colorFilter: const ColorFilter.mode(
-                Colors.black,
-                BlendMode.srcOut,
-              ),
-              child: Stack(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.black.withAlpha(100),
+        if (step.style.dimsBackground)
+          AnimatedOpacity(
+            opacity: _visible && ready ? 1.0 : 0.0,
+            duration: _duration,
+            child: ExcludeSemantics(
+              child: ColorFiltered(
+                colorFilter: const ColorFilter.mode(
+                  Colors.black,
+                  BlendMode.srcOut,
+                ),
+                child: Stack(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black.withAlpha(100),
+                      ),
                     ),
-                  ),
 
-                  /// One "hole" per lit target.
-                  for (final rect in _spotlightRects)
-                    Positioned.fromRect(
-                      rect: _inflated(rect, step.style.padding),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(
-                            step.style.borderRadius ?? 16,
+                    /// One "hole" per lit target.
+                    for (final rect in _spotlightRects)
+                      Positioned.fromRect(
+                        rect: _inflated(rect, step.style.padding),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(
+                              step.style.borderRadius ?? 16,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
-        ),
 
         if (_visible && ready)
           _TutorialTooltipPlacement(
-            placement: _placementFor(tooltipSize),
+            placement: _placementFor(tooltipSize, step.style.dimsBackground),
             anchor: _anchorRect,
             showAbove:
                 _anchorRect != null && _showAbove(_anchorRect!, tooltipSize),
@@ -334,10 +351,24 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
               currentStep: widget.completedSteps,
               totalSteps: widget.totalSteps,
               text: step.style.tooltip,
+              choices: step.style.choices,
+              onChoice: (outcome) => switch (outcome) {
+                TutorialChoiceOutcome.advance => _next(step),
+                TutorialChoiceOutcome.decline => widget.decline(),
+              },
             ),
           ),
       ],
     );
+
+    // An undimmed step is purely the card: nothing is blocked, and no tap
+    // dismisses it, so the nudge stands until the learner does the thing or
+    // leaves the surface. Not wrapped in BlockSemantics for the same reason the
+    // armed case isn't — hiding the surface from a screen reader while asking
+    // the learner to use it is the trap.
+    if (!step.style.dimsBackground) {
+      return IgnorePointer(child: content);
+    }
 
     // An armed step hands the screen back: the learner has to reach the thing
     // the step is pointing at, so the overlay must not swallow their taps. It
@@ -352,12 +383,19 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
       );
     }
 
+    // A branch step is asking a question, so a tap anywhere but its buttons
+    // does nothing — otherwise a tap aimed at a button that just misses would
+    // advance past the question.
+    final tapAdvances = _visible && !step.style.isBranch;
+
     return BlockSemantics(
       child: MouseRegion(
-        cursor: _visible ? SystemMouseCursors.click : SystemMouseCursors.basic,
+        cursor: tapAdvances
+            ? SystemMouseCursors.click
+            : SystemMouseCursors.basic,
         child: GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onTap: _visible ? () => _next(step) : null,
+          onTap: tapAdvances ? () => _next(step) : null,
           child: content,
         ),
       ),

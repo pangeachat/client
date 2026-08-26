@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -36,10 +34,4 @@ class TutorialModel {
   /// The step's raw data, without allocating styles or requiring an [L10n].
   /// Safe to call every frame.
   TutorialStepData dataAt(int index) => _stepsData[index];
-
-  /// The target ids for [index]. Safe to call every frame.
-  List<String> targetKeysAt(int index) => _stepsData[index].targetKeys;
-
-  Size tooltipSizeAt(int index) =>
-      tutorialType.stepTemplates[index].tooltipSize;
 }

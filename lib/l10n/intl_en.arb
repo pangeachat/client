@@ -5173,6 +5173,18 @@
     },
     "tutorialWorldMapPickActivity": "Tap a highlighted 2-player activity to open and start it!",
     "tutorialWorldMapNoActivities": "No 2-player activities in view. Try zooming out or widening your search.",
-    "tutorialActivityInvite": "No need to wait alone — you can play with me any time, or invite a friend to join you.",
-    "tutorialActivityGoals": "Play your role and send messages that complete these goals. Each one earns a star, and stars move you through a course's Missions."
+    "tutorialActivityInvite": "No need to wait alone! You can play with me any time, or invite a friend to join you.",
+    "tutorialActivityGoals": "Play your role and send messages that complete these goals. Everyone has goals, so play along to help your teammates reach theirs too!",
+    "tutorialCoursePlanIntro": "This is your course plan — a series of Missions to work through with the people in your course. You progress by completing goals and earning stars",
+    "tutorialCoursePlanPickActivity": "These are the activities for your current Mission. Tap one to open and start it!",
+    "tutorialCoursePlanNoActivities": "Tap any activity in your plan to open and start it!",
+    "tutorialAppTourOffer": "Great job finishing your first activity! Would you like me to show you around the app?",
+    "tutorialAppTourAccept": "Give me a tour",
+    "tutorialAppTourDecline": "I'll explore",
+    "tutorialAppTourChats": "This is your chat list \u2014 find friends to chat with, or talk to me any time.",
+    "tutorialAppTourCoursesSome": "Your courses live here. Looks like you've joined one already!",
+    "tutorialAppTourCoursesNone": "Courses live here \u2014 you can join one with a code, or make your own.",
+    "tutorialAppTourAnalytics": "This is your progress: every word and grammar form you've used.",
+    "tutorialAppTourPractice": "You'll find personalized practice lessons here",
+    "tutorialAppTourWorld": "And this brings you back to the world map any time. Happy learning!"
 }

@@ -55,7 +55,9 @@ A second controller would contend for the same overlay key and the loser would s
 
 An armed step also isn't holding the overlay, so another sequence may run in front of it; the armed one resumes afterwards.
 
-**A multi-target step ends only when every target is gone.** The overlay follows its targets each frame and tears down when a target unmounts — right for one target, wrong for a set of map pins that re-rank continuously. It repositions when any target moves, ends only when all are gone, and anchors the tooltip to the group rather than the first target so it never lands on top of something it lit.
+**A multi-target step ends only when every target is gone.** The overlay follows its targets each frame and tears down when a target unmounts — right for one target, wrong for a set that re-ranks continuously. It repositions when any target moves, ends only when all are gone, and anchors the tooltip to the group rather than the first target so it never lands on top of something it lit.
+
+**A step may hand its surface over entirely instead of dimming it.** No scrim, no cut-outs, nothing blocked, and no tap dismisses it — just the bot card at the bottom of the screen, while the **surface itself carries the emphasis**. Where the learner has to *use* what the step is describing, darkening it works against the ask; and a cut-out never matches what it lights anyway, since a spotlight is a rounded rectangle and a map pin is an 8px dot or a teardrop. Such a step says for itself when its surface is no longer in front of the learner, because it has no target whose disappearance would say so — otherwise a card that tracks nothing would follow them onto every other screen.
 
 ## Prep belongs to the step, not the host
 
@@ -73,13 +75,15 @@ A tutorial is offered when it is unseen, its trigger fires, and its gate passes.
 - **Feature tutorials stay subscription-gated.** They teach paid tools; teaching one to someone who cannot use it is a dead end.
 - **A tutorial never fires onto an empty or still-loading surface.** An orientation step pointing at nothing is worse than no orientation.
 
+**A trigger keeps asking; it does not conclude from a "no".** Everything a gate reads arrives asynchronously — the profile that records what has been seen, a fetched activity plan, panel focus published a frame late — and an unloaded profile reports every tutorial as *already seen*. So a failed check means "not yet", never "nothing to do", and the only state a trigger may latch on is one it has confirmed from loaded data. Checking once on arrival is how a tutorial silently never appears.
+
 ## The catalog
 
 | Tutorial | Kind | Offered when |
 |---|---|---|
 | `welcome` | Orientation | first arrival at **either** the world map or a course plan — once ever, whichever comes first |
 | `worldMap` | Orientation | first world map with pins actually rendered |
-| `coursePlan` | Orientation | first course plan with its activities rendered |
+| `coursePlan` | Orientation | first joined course whose plan is showing its Up-next Mission |
 | `activityInvite` | Orientation | first confirmed role, on the waiting room |
 | `activityGoals` | Orientation | first activity chat showing a goal header |
 | `appTour` | Orientation | next arrival at a map after the learner's first finished activity |
@@ -105,16 +109,22 @@ One step, no target: the bot introduces itself and greets the learner in their *
 ### worldMap
 
 1. **The map.** Every activity in the learner's target language lives here — that is what the world map *is*, and the reason to come back to it.
-2. **Every visible two-role activity, lit at once.** "Try one to start." Armed — the learner opens the activity themselves, and may ignore the suggestion and come back to it. When no two-role activity is in view, the step carries the same *widen search* / *zoom out* remedy the map's own empty-view card would offer, read from the same diagnosis so the two can never disagree.
+2. **Every visible two-role activity, shimmering.** "Tap one to start." The map is handed over — undimmed and fully usable — and the pins wear the same **gold nudge shimmer** the message tutorial uses on the translate button, so the emphasis is on the pins themselves rather than a hole cut around them. It reads clearly at the mid and large tiers and is subtle on an 8px dot, which is accepted: the card carries the instruction. Armed — the learner opens the activity themselves, and may ignore it and come back. The shimmer runs for exactly as long as the ask stands, so panning and tapping around the map do not end it; it stops when they open an activity, or when they leave the map. When no two-role activity is in view, the step carries the same *widen search* / *zoom out* remedy the map's own empty-view card would offer, read from the same diagnosis so the two can never disagree.
 
 Two-role activities are the target because the bot fills exactly one seat, so they are the only ones a friendless new learner can start alone — the same reason the map already demotes 3+ role activities for them ([world map](world-map.instructions.md)).
 
 ### coursePlan
 
-1. **The course plan.** A course lays out a **plan of Missions** to work through, with the people in the course to play them with; earning **stars** moves the learner along it. A star is one orchestrator-awarded activity goal and a Mission is a learning objective — [quests](quests.instructions.md) owns both.
-2. **The course's two-role activity cards, lit at once.** Armed, exactly as on the map: the learner opens one themselves.
+Mirrors `worldMap` — an introduction to the surface, then "go start one":
 
-Its armed step is the same beat as `worldMap`'s over a different target, so the pair is defined once and its copy parameterized rather than duplicated.
+1. **What a course is**, with nothing lit: a **plan of Missions** to work through with the people in the course, where completing activity goals earns **stars** that move the learner along it. A star is one orchestrator-awarded activity goal and a Mission is a learning objective — [quests](quests.instructions.md) owns both.
+2. **The Up-next Mission's activity carousel.** Armed, exactly as on the map: the learner opens an activity themselves.
+
+**The carousel, not its individual cards.** A card would need a target id each, and the same activity can appear under more than one Mission, so two cards would contend for one id. Exactly one Mission is ever the anchor, so pointing at its carousel has a single claimant — and it says the more useful thing anyway: *these* are the activities for what you are working on now.
+
+**It runs on the course card's Up-next highlight, not the full-plan subpage.** The subpage is pushed within the card, so both are mounted at once and both have an anchor Mission; the highlight wins, because it is what a learner sees when they open the course. A preview of an unjoined plan runs nothing — there is no learner progress to explain.
+
+**No two-role filter here, unlike the map.** On the world map, two-role activities are singled out because the bot fills one seat and a 3+ role activity is a dead end for a learner with nobody to play with. Inside a course that reasoning inverts: its activities were hand-picked by the course author, so a 3+ role one is a deliberate part of the syllabus — which is why the [world map](world-map.instructions.md) already declines to demote it there. The step points at the Mission's activities and lets the learner choose.
 
 ### activityInvite and activityGoals
 
@@ -133,12 +143,14 @@ The chat sequence may fire in the same activity, on the learner's first L2 messa
 
 Offered on the next arrival at a map after the first finished activity — never mid-activity, never on the summary screen. Each step opens its own panel and gates on it having opened.
 
-0. **Branch.** "Great job finishing your first activity — want a tour?" *Explore myself* ends the tour and marks it seen; that is the only exit.
+0. **Branch.** "Great job finishing your first activity — want a tour?" *I'll explore* ends the tour and marks it seen; that is the only exit. A tap anywhere but the two buttons does nothing, so a tap that just misses one cannot advance past the question.
 1. **Chats.** 2. **Courses** — copy varies on whether the learner has joined any. 3. **Analytics.** 4. **Practice.** 5. **World.**
 
 The branch counts as a step, so the tour reads 1/6 through 6/6. Naming its length up front is honest, and a display total that differs from the real step count would re-introduce exactly the drift one step-count declaration removes.
 
-Practice opens from **inside** analytics and shares a slot with the vocab and grammar details ([routing](routing.instructions.md)), so step 4's preparation has to leave step 3's panel intact rather than closing what it just opened.
+**The Practice step shows where practice lives; it does not open it.** The Practice button is disabled until the learner has collected ten words, which is exactly where someone stands right after their first activity — so opening it would fail and gating on it would strand the tour for the learner it exists for. Every other step opens its panel and gates on that panel actually being open.
+
+**The tour outranks the map introduction.** When both are due on the same arrival, the tour runs: it is the answer to "what now?" after a first activity, while the map introduction describes a map the learner has by then already used. `worldMap` then runs after the tour hands them to the map — which is what the final World step is for.
 
 ## Analytics
 

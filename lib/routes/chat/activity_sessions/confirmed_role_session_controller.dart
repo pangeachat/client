@@ -76,7 +76,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
     _pingCooldown?.cancel();
     _goalsHandler.cancel();
     MatrixState.tutorialOverlayController
-      ..unregisterLauncher(TutorialEnum.activityInvite)
+      ..unregisterLauncher(TutorialEnum.activityInvite, _launchInviteTutorial)
       // Nothing can show the remaining steps once the waiting room is gone, and
       // giving the sequence up here is what lets the goal-header one start when
       // the chat opens.
@@ -87,7 +87,11 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   /// Always post-frame: the request launches the tutorial synchronously, and the
   /// controls it lights have to be laid out before the spotlight is placed.
   void _scheduleInviteTutorialRequest() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // Which tutorials this learner has seen lives on their profile, and an
+      // unloaded profile reports every one as already seen. Waiting for it is
+      // the difference between offering this a moment later and never at all.
+      await MatrixState.pangeaController.userController.initCompleter.future;
       // Offered only where the controls actually exist: a learner who is not the
       // room admin has no invite options, so there would be nothing to light.
       if (!mounted || !showInviteOptions) return;

@@ -10,7 +10,9 @@ enum TutorialEnum {
   welcome(showNavigationButtons: false, isOrientation: true),
   worldMap(showNavigationButtons: false, isOrientation: true),
   activityInvite(showNavigationButtons: false, isOrientation: true),
-  activityGoals(showNavigationButtons: false, isOrientation: true);
+  activityGoals(showNavigationButtons: false, isOrientation: true),
+  coursePlan(showNavigationButtons: false, isOrientation: true),
+  appTour(showNavigationButtons: false, isOrientation: true);
 
   final bool showNavigationButtons;
 
@@ -35,6 +37,8 @@ enum TutorialEnum {
     TutorialEnum.worldMap => TutorialStepTemplates.worldMap,
     TutorialEnum.activityInvite => TutorialStepTemplates.activityInvite,
     TutorialEnum.activityGoals => TutorialStepTemplates.activityGoals,
+    TutorialEnum.coursePlan => TutorialStepTemplates.coursePlan,
+    TutorialEnum.appTour => TutorialStepTemplates.appTour,
   };
 
   int get stepCount => stepTemplates.length;
@@ -62,6 +66,8 @@ enum TutorialEnum {
     TutorialEnum.worldMap => InstructionsEnum.worldMapTutorial,
     TutorialEnum.activityInvite => InstructionsEnum.activityInviteTutorial,
     TutorialEnum.activityGoals => InstructionsEnum.activityGoalsTutorial,
+    TutorialEnum.coursePlan => InstructionsEnum.coursePlanTutorial,
+    TutorialEnum.appTour => InstructionsEnum.appTourTutorial,
   };
 
   bool get _hasBeenSeen => _instructionsEnum.isToggledOff;

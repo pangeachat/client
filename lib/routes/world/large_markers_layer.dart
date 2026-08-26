@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_view.dart';
@@ -20,6 +21,10 @@ class LargeMarkersLayer {
   /// pop-in (#8136). Mirrors [DotMarkersLayer.animateInOf].
   final bool Function(String) animateInOf;
 
+  /// Cards wearing the tutorial's gold nudge shimmer. Empty whenever no tutorial
+  /// is asking the learner to open one of them.
+  final Set<String> shimmerIds;
+
   const LargeMarkersLayer({
     required this.largeCards,
     required this.currentLarge,
@@ -27,6 +32,7 @@ class LargeMarkersLayer {
     required this.onTap,
     required this.onClose,
     required this.animateInOf,
+    this.shimmerIds = const {},
   });
 
   MarkerLayer layer() {
@@ -65,20 +71,28 @@ class LargeMarkersLayer {
                 alignment: Alignment.bottomCenter,
                 child: WorldMapLargeCardAnimated(
                   animateIn: animateInOf(card.activityId),
-                  child: WorldMapLargeCard(
-                    card: snap.card,
-                    state: snap.state,
-                    pinged: snap.pinged,
-                    plan: snap.plan,
-                    liveRoom: snap.liveRoom,
-                    starsEarned: snap.starsEarned,
-                    participants: snap.participants,
-                    openSlots: snap.openSlots,
-                    starLevel: snap.starLevel,
-                    understaffed: snap.understaffed,
-                    isFocused: card.activityId == focusedId,
-                    onTap: () => onTap(card),
-                    onClose: () => onClose(card),
+                  // A wash rather than the halo the smaller pins get: a glow
+                  // behind an opaque card would barely show. Kept far fainter
+                  // than the button shimmer it borrows — at the button's own
+                  // opacity a card this large just turns gold.
+                  child: ShimmerBackground(
+                    enabled: shimmerIds.contains(card.activityId),
+                    maxOpacity: 0.18,
+                    child: WorldMapLargeCard(
+                      card: snap.card,
+                      state: snap.state,
+                      pinged: snap.pinged,
+                      plan: snap.plan,
+                      liveRoom: snap.liveRoom,
+                      starsEarned: snap.starsEarned,
+                      participants: snap.participants,
+                      openSlots: snap.openSlots,
+                      starLevel: snap.starLevel,
+                      understaffed: snap.understaffed,
+                      isFocused: card.activityId == focusedId,
+                      onTap: () => onTap(card),
+                      onClose: () => onClose(card),
+                    ),
                   ),
                 ),
               ),

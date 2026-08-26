@@ -1,10 +1,11 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
+import 'package:fluffychat/routes/world/world_map_pin_shimmer.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_state_dot.dart';
 
@@ -25,6 +26,10 @@ class DotMarkersLayer {
   /// on screen at the last settle, so a State recreated by MarkerLayer's
   /// per-frame positional reconciliation doesn't replay its pop-in (#8136).
   final bool Function(String) animateInOf;
+
+  /// Pins wearing the tutorial's gold nudge shimmer. Empty whenever no tutorial
+  /// is asking the learner to open one of them.
+  final Set<String> shimmerIds;
   final ({List<String> participants, int openSlots}) Function(
     String,
     ActivityPinState,
@@ -45,6 +50,7 @@ class DotMarkersLayer {
     required this.onTap,
     required this.animateInOf,
     required this.sessionParticipants,
+    this.shimmerIds = const {},
   });
 
   /// The mid-pin "num/num" participant counts for `joinable`/`ongoingPending`
@@ -109,18 +115,23 @@ class DotMarkersLayer {
           child: Opacity(
             key: ValueKey(card.activityId),
             opacity: nonStartableOf(card.activityId) ? 0.5 : 1.0,
-            child: WorldMapDot(
-              card: card,
-              state: state,
-              tier: tier,
-              onTap: () => onTap(card),
-              pinged: pingedOf(card.activityId),
-              starLevel: starLevelOf(card.activityId),
-              unreadRoom: _unreadRoomFor(card.activityId, state),
-              participantsFilled: counts.filled,
-              participantsTotal: counts.total,
-              isFocused: card.activityId == focusedId,
-              animateIn: animateInOf(card.activityId),
+            child: WorldMapPinShimmer(
+              enabled: shimmerIds.contains(card.activityId),
+              size: tier.paintedSize(state),
+              borderRadius: BorderRadius.circular(box.height),
+              child: WorldMapDot(
+                card: card,
+                state: state,
+                tier: tier,
+                onTap: () => onTap(card),
+                pinged: pingedOf(card.activityId),
+                starLevel: starLevelOf(card.activityId),
+                unreadRoom: _unreadRoomFor(card.activityId, state),
+                participantsFilled: counts.filled,
+                participantsTotal: counts.total,
+                isFocused: card.activityId == focusedId,
+                animateIn: animateInOf(card.activityId),
+              ),
             ),
           ),
         );

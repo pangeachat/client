@@ -40,6 +40,8 @@ enum InstructionsEnum {
   worldMapTutorial,
   activityInviteTutorial,
   activityGoalsTutorial,
+  coursePlanTutorial,
+  appTourTutorial,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -78,6 +80,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.worldMapTutorial:
       case InstructionsEnum.activityInviteTutorial:
       case InstructionsEnum.activityGoalsTutorial:
+      case InstructionsEnum.coursePlanTutorial:
+      case InstructionsEnum.appTourTutorial:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -139,6 +143,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.worldMapTutorial:
       case InstructionsEnum.activityInviteTutorial:
       case InstructionsEnum.activityGoalsTutorial:
+      case InstructionsEnum.coursePlanTutorial:
+      case InstructionsEnum.appTourTutorial:
         return "";
       case InstructionsEnum.disableLanguageTools:
         return l10n.disableLanguageToolsDesc;

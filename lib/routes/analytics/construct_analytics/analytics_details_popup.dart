@@ -16,6 +16,8 @@ import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
@@ -369,7 +371,14 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
           // (construct == null); a construct detail shows the report flag
           // instead, so the two never collide.
           if (widget.construct == null && widget.showPracticeButton) ...[
-            _PracticeButton(view: widget.view),
+            TutorialTarget(
+              // Per construct type: the vocabulary and grammar panels are this
+              // same widget, and either may be the one open.
+              targetId: TutorialTargetIds.analyticsPracticeButton(
+                widget.view.name,
+              ),
+              child: _PracticeButton(view: widget.view),
+            ),
             const SizedBox(width: 8.0),
           ],
           if (widget.construct == null) AnalyticsMoreMenu(view: widget.view),

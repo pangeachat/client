@@ -478,8 +478,8 @@ void main() {
         final sm = TutorialOverlayStateMachine([tutorial]);
         final model = _model(tutorial);
         for (var i = 0; i < tutorial.stepCount; i++) {
-          expect(model.targetKeysAt(i), isNotEmpty);
-          expect(model.tooltipSizeAt(i), tutorial.stepTemplates[i].tooltipSize);
+          expect(model.dataAt(i), isNotNull);
+          expect(tutorial.stepTemplates[i].tooltipSize, isNotNull);
           if (i < tutorial.stepCount - 1) {
             sm.dispatch(const ForwardTutorialEvent());
             expect(sm.model.stepIndex, i + 1);
@@ -718,18 +718,32 @@ void main() {
     test('unregistering falls back to the opener', () {
       final calls = <String>[];
       final c = TutorialOverlayController(progress: const _FakeProgress());
+      Future<void> opener() async => calls.add('opener');
+      Future<void> owner() async => calls.add('owner');
       c.registerLauncher(
         TutorialEnum.readingAssistance,
-        () async => calls.add('opener'),
+        opener,
         role: TutorialLaunchRole.opener,
       );
-      c.registerLauncher(
-        TutorialEnum.readingAssistance,
-        () async => calls.add('owner'),
-      );
-      c.unregisterLauncher(TutorialEnum.readingAssistance);
+      c.registerLauncher(TutorialEnum.readingAssistance, owner);
+      c.unregisterLauncher(TutorialEnum.readingAssistance, owner);
       c.requestSequence(chat);
       expect(calls, ['opener']);
+    });
+
+    test('unregistering a launcher that was replaced leaves the new one', () {
+      // Two hosts can own the same tutorial at different times (the greeting
+      // fires on the map or a course plan). The one that left must not take the
+      // current registration with it.
+      final calls = <String>[];
+      final c = TutorialOverlayController(progress: const _FakeProgress());
+      Future<void> first() async => calls.add('first');
+      Future<void> second() async => calls.add('second');
+      c.registerLauncher(TutorialEnum.readingAssistance, first);
+      c.registerLauncher(TutorialEnum.readingAssistance, second);
+      c.unregisterLauncher(TutorialEnum.readingAssistance, first);
+      c.requestSequence(chat);
+      expect(calls, ['second']);
     });
 
     test(

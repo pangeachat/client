@@ -49,6 +49,84 @@ class TutorialStepTemplates {
           ? l10n.tutorialWorldMapPickActivity
           : l10n.tutorialWorldMapNoActivities,
       tooltipSize: const Size(280, 120),
+      // Hands the map over: no scrim and no cut-outs, because the map itself
+      // carries the emphasis — it shimmers the pins this step is talking about.
+      dimsBackground: false,
+    ),
+  ];
+
+  /// Six steps: the offer, then one per destination. The offer counts, so the
+  /// tour reads 1/6 through 6/6 — naming its length up front is honest, and a
+  /// display total that differed from the real step count would reintroduce the
+  /// drift one step declaration removes.
+  ///
+  /// It ends on **World** so that a learner who arrived by course code and has
+  /// never opened the map is handed to it, where [worldMap] picks up.
+  static final List<TutorialStepTemplate> appTour = [
+    TutorialStepTemplate(
+      tooltip: (l10n, _) => l10n.tutorialAppTourOffer,
+      // Taller than the other steps: this one carries its two answers inside
+      // the card as well as the text and progress row.
+      tooltipSize: const Size(300, 200),
+      choices: [
+        TutorialStepChoice(
+          label: (l10n) => l10n.tutorialAppTourAccept,
+          outcome: TutorialChoiceOutcome.advance,
+        ),
+        TutorialStepChoice(
+          label: (l10n) => l10n.tutorialAppTourDecline,
+          outcome: TutorialChoiceOutcome.decline,
+        ),
+      ],
+    ),
+    TutorialStepTemplate(
+      tooltip: (l10n, _) => l10n.tutorialAppTourChats,
+      tooltipSize: const Size(270, 130),
+      borderRadius: 12.0,
+      padding: 4.0,
+    ),
+    TutorialStepTemplate(
+      // args: non-empty when the learner has already joined a course.
+      tooltip: (l10n, args) => args.isEmpty
+          ? l10n.tutorialAppTourCoursesNone
+          : l10n.tutorialAppTourCoursesSome,
+      tooltipSize: const Size(270, 130),
+      borderRadius: 12.0,
+      padding: 4.0,
+    ),
+    TutorialStepTemplate(
+      tooltip: (l10n, _) => l10n.tutorialAppTourAnalytics,
+      tooltipSize: const Size(270, 130),
+      borderRadius: 100.0,
+      padding: 4.0,
+    ),
+    TutorialStepTemplate(
+      tooltip: (l10n, _) => l10n.tutorialAppTourPractice,
+      tooltipSize: const Size(280, 140),
+      borderRadius: 20.0,
+      padding: 4.0,
+    ),
+    TutorialStepTemplate(
+      tooltip: (l10n, _) => l10n.tutorialAppTourWorld,
+      tooltipSize: const Size(270, 130),
+      borderRadius: 12.0,
+      padding: 4.0,
+    ),
+  ];
+
+  /// Mirrors [worldMap]: an introduction to the surface, then "go start one".
+  static final List<TutorialStepTemplate> coursePlan = [
+    TutorialStepTemplate(
+      tooltip: (l10n, _) => l10n.tutorialCoursePlanIntro,
+      tooltipSize: const Size(290, 140),
+    ),
+    TutorialStepTemplate(
+      tooltip: (l10n, args) => args.isEmpty
+          ? l10n.tutorialCoursePlanPickActivity
+          : l10n.tutorialCoursePlanNoActivities,
+      tooltipSize: const Size(280, 120),
+      borderRadius: AppConfig.borderRadius,
+      padding: 4.0,
     ),
   ];
 

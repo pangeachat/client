@@ -14,6 +14,18 @@ class TutorialSequences {
     TutorialEnum.worldMap,
   ];
 
+  /// The greeting, then the course plan. [TutorialEnum.welcome] is shared with
+  /// [worldOrientationSequence] and drops out of whichever the learner reaches
+  /// second, so nobody is greeted twice.
+  static TutorialSequence get courseOrientationSequence => [
+    TutorialEnum.welcome,
+    TutorialEnum.coursePlan,
+  ];
+
+  /// Offered after the learner's first finished activity. Alone in its sequence:
+  /// it is one tutorial that walks the whole app.
+  static TutorialSequence get appTourSequence => [TutorialEnum.appTour];
+
   /// Separate sequences, not one two-step tutorial, because their two surfaces
   /// are owned by different hosts and a learner joining an already-running
   /// session never sees the waiting room at all. Independent sequences let that

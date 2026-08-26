@@ -10,13 +10,16 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
@@ -1116,14 +1119,10 @@ class WorldMapController extends State<WorldMap>
   TutorialOverlayController get _tutorials =>
       MatrixState.tutorialOverlayController;
 
-  /// The two-role pins the map is currently DRAWING, in map-local coordinates,
-  /// republished by the view every frame.
-  ///
-  /// Pins carry no tutorial target ids of their own: the marker layer mounts the
-  /// same pin once per repeated copy of the world, and a target id hands out a
-  /// GlobalKey, which can only be attached to one widget at a time. So the map
-  /// projects its own pins instead, and the spotlight reads these.
-  List<Rect> _drawnTwoRolePinRects = const [];
+  /// Whether any two-role activity is among the pins the map is currently
+  /// drawing. Only the copy needs this now — the emphasis itself is a shimmer on
+  /// the pins, so there is no geometry to hand over.
+  bool _hasTwoRolePins = false;
 
   /// Whether the map is currently drawing any pins at all — the signal that it
   /// has finished loading and has content, which is what the orientation
@@ -1136,20 +1135,14 @@ class WorldMapController extends State<WorldMap>
   /// rather than one per frame.
   bool _orientationCheckScheduled = false;
 
-  /// Set only once the profile has loaded AND says there is nothing left to
-  /// show. Until the profile loads, "nothing to show" is indistinguishable from
-  /// "not known yet", so latching on it would silently retire the tutorial for
-  /// a learner who had never seen it.
-  bool _orientationSettled = false;
-
-  void publishTutorialPinGeometry({
+  void publishTutorialPinState({
     required bool hasAnyPins,
-    required List<Rect> twoRoleRects,
+    required bool hasTwoRolePins,
   }) {
     _mapIsDrawingPins = hasAnyPins;
-    _drawnTwoRolePinRects = twoRoleRects;
+    _hasTwoRolePins = hasTwoRolePins;
 
-    if (_orientationSettled || !hasAnyPins) return;
+    if (!hasAnyPins) return;
     if (_orientationCheckScheduled) return;
 
     // Published during the view's build, so the launch waits for the frame.
@@ -1163,13 +1156,15 @@ class WorldMapController extends State<WorldMap>
   void _registerTutorialLaunchers() {
     _tutorials
       ..registerLauncher(TutorialEnum.welcome, _launchWelcomeTutorial)
-      ..registerLauncher(TutorialEnum.worldMap, _launchWorldMapTutorial);
+      ..registerLauncher(TutorialEnum.worldMap, _launchWorldMapTutorial)
+      ..registerLauncher(TutorialEnum.appTour, _launchAppTourTutorial);
   }
 
   void _unregisterTutorialLaunchers() {
     _tutorials
-      ..unregisterLauncher(TutorialEnum.welcome)
-      ..unregisterLauncher(TutorialEnum.worldMap);
+      ..unregisterLauncher(TutorialEnum.welcome, _launchWelcomeTutorial)
+      ..unregisterLauncher(TutorialEnum.worldMap, _launchWorldMapTutorial)
+      ..unregisterLauncher(TutorialEnum.appTour, _launchAppTourTutorial);
   }
 
   /// Offered only once the map is actually showing pins and nothing is covering
@@ -1178,10 +1173,6 @@ class WorldMapController extends State<WorldMap>
   void _maybeStartOrientation() {
     if (!mounted) return;
 
-    // Which tutorials this learner has seen lives on their profile, and an
-    // unloaded profile reports everything as seen. Returning without latching
-    // is the difference between offering the sequence a moment later and never
-    // offering it at all.
     if (!MatrixState
         .pangeaController
         .userController
@@ -1190,11 +1181,14 @@ class WorldMapController extends State<WorldMap>
       return;
     }
 
-    if (!_tutorials.isPending(TutorialEnum.welcome) &&
-        !_tutorials.isPending(TutorialEnum.worldMap)) {
-      _orientationSettled = true;
-      return;
-    }
+    // EVERY tutorial this map hosts, the tour included: leaving the tour out
+    // here meant it could never fire for anyone who had finished the map
+    // orientation, which is everyone it is meant for.
+    final anyPending =
+        _tutorials.isPending(TutorialEnum.welcome) ||
+        _tutorials.isPending(TutorialEnum.worldMap) ||
+        _tutorials.isPending(TutorialEnum.appTour);
+    if (!anyPending) return;
 
     // Already running: nothing to start, but it may have been left off screen
     // by a host teardown or a force-closed overlay.
@@ -1203,34 +1197,107 @@ class WorldMapController extends State<WorldMap>
       return;
     }
 
-    // Every check below can flip back and forth as the learner navigates, so
-    // none of them latches — the next frame that draws pins tries again.
     if (!isWorld || !_mapIsDrawingPins) return;
     if (_openLeftPanelTypes.isNotEmpty) return;
 
+    // The tour comes first once it is due: it is the answer to "what now?"
+    // after a first activity, and the map orientation is about a map the learner
+    // has by then already used.
+    if (_tutorials.isPending(TutorialEnum.appTour) && _hasFinishedAnActivity) {
+      _tutorials.requestSequence(TutorialSequences.appTourSequence);
+      return;
+    }
+
     _tutorials.requestSequence(TutorialSequences.worldOrientationSequence);
+  }
+
+  /// The app tour's gate: the learner has finished at least one activity.
+  ///
+  /// NOTE: this is the standing "ever finished one" flag, so every existing
+  /// learner qualifies the moment this ships and would be congratulated on
+  /// finishing their first activity. That has to be resolved before release —
+  /// see tutorials.instructions.md.
+  bool get _hasFinishedAnActivity =>
+      _client?.hasAnyFinishedActivitySession == true;
+
+  Uri get _uri => GoRouter.of(context).routeInformationProvider.value.uri;
+
+  /// Whether a right-column analytics panel is open — the gate for the tour's
+  /// analytics step.
+  bool get _hasAnalyticsPanelOpen => parseOpenPanels(
+    _uri,
+  ).right.any((token) => token.type.isNonPracticeAnalyticsPanel);
+
+  /// Each step opens the panel it is describing exactly as the learner would —
+  /// through the workspace URL, never by reaching into panel state — then gates
+  /// its own advance on that panel actually being open.
+  Future<void> _launchAppTourTutorial() async {
+    if (!mounted) return;
+    final joinedCourses = _client?.joinedCourseRooms.length ?? 0;
+
+    _tutorials.launchTutorial(
+      context: context,
+      tutorial: TutorialModel(
+        tutorialType: TutorialEnum.appTour,
+        stepsData: [
+          // The offer. Nothing lit, and a tap outside the two buttons does
+          // nothing (see TutorialStepStyle.choices).
+          TutorialStepData(canShowNextStep: () => true),
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.navChats,
+            onTap: () async => context.go(
+              WorkspaceNav.setSection(
+                _uri,
+                const ChatsPanelToken(),
+                keepRoom: false,
+              ),
+            ),
+            canShowNextStep: () => parseOpenPanels(
+              _uri,
+            ).left.any((token) => token.type.isLeftChatList),
+          ),
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.navCourses,
+            onTap: () async => context.go(WorkspaceNav.openAddCourse(_uri)),
+            canShowNextStep: () => parseOpenPanels(
+              _uri,
+            ).left.any((token) => token.type.isCourseRelated),
+            tooltipArgs: () => joinedCourses > 0 ? const ['some'] : const [],
+          ),
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.analyticsVocabTracker,
+            onTap: () async => context.go(WorkspaceNav.openAnalytics(_uri)),
+            canShowNextStep: () => _hasAnalyticsPanelOpen,
+          ),
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.analyticsPracticeButton(
+              ConstructTypeEnum.vocab.name,
+            ),
+            // Deliberately does NOT open practice, and does NOT gate on it:
+            // the button is disabled below ten collected words, which is
+            // exactly where a learner is right after their first activity. The
+            // step shows them where practice lives; gating on it opening would
+            // stall the tour for the learner it is for.
+            canShowNextStep: () => true,
+          ),
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.navWorld,
+            onTap: () async => context.go(WorkspaceNav.clearAll()),
+            canShowNextStep: () => true,
+          ),
+        ],
+      ),
+      isFocused: true,
+    );
   }
 
   Iterable<PanelTypesEnum> get _openLeftPanelTypes => parseOpenPanels(
     GoRouter.of(context).routeInformationProvider.value.uri,
   ).left.map((token) => token.type);
 
-  /// The learner's target language greeting them in their own target language,
-  /// borrowed from that locale's UI copy rather than a new content source.
-  Future<String> _targetLanguageGreeting() async {
-    final fallback = L10n.of(context).welcome;
-    final l2 = MatrixState.pangeaController.userController.userL2;
-    if (l2 == null) return fallback;
-    try {
-      return (await lookupL10n(Locale(l2.langCodeShort))).welcome;
-    } catch (_) {
-      return fallback;
-    }
-  }
-
   Future<void> _launchWelcomeTutorial() async {
     if (!mounted) return;
-    final greeting = await _targetLanguageGreeting();
+    final greeting = await TutorialCopy.targetLanguageGreeting(context);
     if (!mounted) return;
     _tutorials.launchTutorial(
       context: context,
@@ -1268,14 +1335,18 @@ class WorldMapController extends State<WorldMap>
             tooltipArgs: () => [languageName],
           ),
           TutorialStepData(
-            spotlightRects: _tutorialTwoRolePinRects,
             canShowNextStep: () => true,
             // A non-empty arg switches the copy to the map's own widen/zoom-out
-            // remedy, for the case where nothing two-role is in view.
-            // Resolved when the step is shown, not when the sequence started:
-            // pins come and go as the learner pans.
-            tooltipArgs: () =>
-                _drawnTwoRolePinRects.isEmpty ? const ['empty'] : const [],
+            // remedy, for the case where nothing two-role is in view. Resolved
+            // when the step is shown, not when the sequence started: pins come
+            // and go as the learner pans.
+            tooltipArgs: () => _hasTwoRolePins ? const [] : const ['empty'],
+            // The card is only relevant over the map itself, and nothing else
+            // tracks a target that could vanish — so this is what tells it to
+            // get out of the way (while staying armed) when the learner opens a
+            // panel or leaves the world scope.
+            surfaceIsVisible: () =>
+                isWorld && _openLeftPanelTypes.isEmpty && _mapIsDrawingPins,
             // Armed: the learner opens an activity themselves. Any route that
             // seats an activity panel counts, however they got there.
             arming: TutorialStepArming(
@@ -1289,17 +1360,11 @@ class WorldMapController extends State<WorldMap>
     );
   }
 
-  /// Map-local pin rects translated into the screen coordinates the spotlight
-  /// draws in.
-  List<Rect> _tutorialTwoRolePinRects() {
-    if (_drawnTwoRolePinRects.isEmpty) return const [];
-    final box = MatrixState.pAnyState.getRenderBox(
-      TutorialTargetIds.worldMapViewport,
-    );
-    if (box == null) return const [];
-    final origin = box.localToGlobal(Offset.zero);
-    return [for (final rect in _drawnTwoRolePinRects) rect.shift(origin)];
-  }
+  /// Whether the map should be shimmering the two-role activities right now:
+  /// the world-map tutorial has asked the learner to open one and is still
+  /// waiting. Stops when they do it, or when the tutorial moves on.
+  bool get shimmerTwoRoleActivities =>
+      _tutorials.isAwaitingLearnerAction(TutorialEnum.worldMap);
 
   bool _hasActivityPanelOpen() {
     if (!mounted) return false;
