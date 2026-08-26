@@ -1,10 +1,8 @@
-import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
 import 'package:badges/badges.dart' show BadgePosition;
-import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -12,6 +10,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/dm_invite/dm_invite_ferry_consumer.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/course_shortcut.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -534,17 +533,11 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   bool _searchRestored = false;
   String? _lastScopeId;
 
-  StreamSubscription<bool>? _roomUpdates;
-
-  /// The joined-course set the last build drew from, as sorted ids. The ONLY
-  /// thing this layer needs a sync to refresh, so the listener rebuilds on a
-  /// change to this and nothing else — `build` also assembles the cavity's
-  /// open panel (a live chat list, a course card), and `hasRoomUpdate` is true
-  /// for ordinary traffic like a read receipt, so an ungated rebuild would
-  /// tear that panel down about once a second all day. Sorted because
-  /// `client.rooms` is recency-ordered: a message in any course reorders it
-  /// without changing who is in what.
-  String _joinedCourseIds = '';
+  /// Resolves the course-shortcut slot and tells us when it changes. Shared
+  /// (process-wide), so this layer only listens — the pin-sheet toggle
+  /// disposes and re-creates it, and the learner's opened-course memory has to
+  /// survive that.
+  late final CourseShortcut _shortcut;
 
   @override
   void initState() {
@@ -552,22 +545,18 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // `build` reads the joined-course list straight off the client, so a
     // membership change with no route change has to rebuild this layer —
     // otherwise a deleted course keeps its avatar in the shortcut slot until
-    // the learner navigates away (#8599). Same stream/filter the web rail uses
-    // for its course list.
-    _roomUpdates = Matrix.of(context).client.onSync.stream
-        .where((s) => s.hasRoomUpdate)
-        .rateLimit(const Duration(seconds: 1))
-        .listen((_) {
-          if (!mounted) return;
-          final courses = _joinedCourses(Matrix.of(context).client);
-          if (_courseIdSignature(courses) == _joinedCourseIds) return;
-          setState(() {});
-        });
+    // the learner navigates away (#8599).
+    _shortcut = courseShortcutFor(Matrix.of(context).client)
+      ..addListener(_onShortcutChanged);
+  }
+
+  void _onShortcutChanged() {
+    if (mounted) setState(() {});
   }
 
   @override
   void dispose() {
-    _roomUpdates?.cancel();
+    _shortcut.removeListener(_onShortcutChanged);
     super.dispose();
   }
 
@@ -578,24 +567,15 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     final uri = state.uri;
     final screenHeight = MediaQuery.sizeOf(context).height;
 
-    // The course-shortcut slot (routing.instructions.md): `+` when no courses
-    // are joined, the single course when one, the most-recently-opened course
-    // otherwise. The most-recent choice is device-local view state, never URL.
-    final joined = _joinedCourses(client);
-    _joinedCourseIds = _courseIdSignature(joined);
+    // The course-shortcut slot — `+`, or the most-recently-opened course still
+    // joined. [CourseShortcut] owns the rule and the memory behind it.
+    final joined = _shortcut.courses;
     final activeSpaceId = activeSpaceIdFor(uri);
     if (activeSpaceId != null &&
         joined.any((space) => space.id == activeSpaceId)) {
-      courseShortcutHistory
-        ..remove(activeSpaceId)
-        ..insert(0, activeSpaceId);
+      _shortcut.opened(activeSpaceId);
     }
-    final shortcutId = courseShortcutIdFor(
-      joined.map((space) => space.id).toList(),
-    );
-    final Room? shortcutCourse = shortcutId == null
-        ? null
-        : joined.firstWhere((space) => space.id == shortcutId);
+    final Room? shortcutCourse = _shortcut.course;
 
     // The cavity: the focused section surface hosted bare (the widget is the
     // card; the surface brings its own header/close). A course keys its height
@@ -938,39 +918,6 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     );
   }
 }
-
-/// The learner's joined courses, in [Client.rooms]' own recency order.
-List<Room> _joinedCourses(Client client) => client.rooms
-    .where((r) => r.isSpace && r.membership == Membership.join)
-    .toList();
-
-/// [_joinedCourses] as one comparable value — sorted ids, so it changes when a
-/// course is joined, left or deleted and not when a message reorders
-/// [Client.rooms]. Lets the narrow nav layer tell a membership change apart
-/// from ordinary sync traffic.
-String _courseIdSignature(List<Room> courses) =>
-    (courses.map((r) => r.id).toList()..sort()).join(',');
-
-/// Device-local memory of the courses the learner has opened, most recent
-/// first, for the narrow rail's course-shortcut slot. Ephemeral view state,
-/// deliberately outside the URL (routing.instructions.md → Single-column bottom
-/// nav). Module-level so it survives shell rebuilds; resets with the process.
-@visibleForTesting
-final List<String> courseShortcutHistory = [];
-
-/// The course the narrow rail's shortcut slot shows: the most-recently-opened
-/// one that is **still joined**, else the client's most-recently-active course.
-/// Null when the learner is in no course (the slot shows `+`).
-///
-/// Falling through the history — rather than straight to the client's first
-/// room — is what keeps deleting or leaving the course in the slot from landing
-/// on an arbitrary other course: it lands on the one opened before it (#8599).
-/// [joinedIds] arrives in the client's own recency order.
-@visibleForTesting
-String? courseShortcutIdFor(List<String> joinedIds) => joinedIds.isEmpty
-    ? null
-    : courseShortcutHistory.firstWhereOrNull(joinedIds.contains) ??
-          joinedIds.first;
 
 /// Every layout fact the [WorkspaceShell] derives from the current route +
 /// viewport, resolved once per build into one immutable bundle so `build` reads
