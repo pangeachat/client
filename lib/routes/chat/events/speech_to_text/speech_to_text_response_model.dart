@@ -30,22 +30,38 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 /// the exact mistake `capture_refused` exists to prevent, one layer down. A
 /// chunk that fails is counted as lost, which is what actually happened.
 ///
-/// "Beside" means beside in the LIST too, not only beside in the object. The
-/// call path reads the first usable transcript and nothing else, so a sibling
-/// result or a sibling alternative it never looks at must not be able to take
-/// down the one it does. Those are DROPPED.
+/// Tolerance is decided by what an element MEANS to the reader, never by what
+/// makes the throw go away. Three rounds on this file each widened it a notch
+/// too far, and each notch cost truth at the edge.
 ///
-/// Dropping is not the same as degrading to empty, and the difference is what
-/// the failure would CLAIM. A response that arrived carrying content, none of
-/// which we could read, still fails the parse: reporting that chunk as SILENCE
-/// would be a statement about the speaker produced entirely from our own parse
-/// failure, which is the exact mistake `capture_refused` exists to prevent one
-/// layer down. A chunk that fails is counted as lost, which is what happened.
+/// A FIELD beside the text -- a position, a token, a confidence, a language tag
+/// -- DESCRIBES the words. It cannot stand in for them, so an unreadable one
+/// degrades to its absent value and the words still stand.
 ///
-/// A response that genuinely carried nothing is a different thing again, and
-/// parses fine. `results: []` is the frozen exhausted-fallback answer, and a
-/// result with `transcripts: []` is a provider that found nothing sayable.
-/// Those are answers, not failures.
+/// An ALTERNATIVE is the provider's own ranked reading of the SAME audio.
+/// Position there is a preference, not an identity, so an unreadable
+/// alternative is dropped and the next one stands: a lower-ranked reading of
+/// what was said still beats losing the chunk.
+///
+/// A RESULT is a different SEGMENT of the audio, and its position IS its
+/// identity. Every reader in all three repos takes `results[0].transcripts[0]`,
+/// so dropping a result promotes a different piece of the recording into the
+/// place the first one meant -- handing the reader speech from somewhere else
+/// and saying nothing about it. There is no tolerance to be had here. An
+/// unreadable result fails the parse, and the chunk is counted lost, which is
+/// what actually happened.
+///
+/// Dropping is not degrading to empty, and after a compaction the two become
+/// indistinguishable -- which is how a malformed first result followed by an
+/// empty second came to read as SILENCE. A response that arrived carrying
+/// content none of which could be read must never resolve to an empty model,
+/// because downstream that reads as the provider finding nothing sayable: a
+/// claim about the speaker produced entirely from our own failure.
+///
+/// A response that genuinely carried nothing is a different fact and parses
+/// fine. `results: []` is the frozen exhausted-fallback answer, and a result
+/// with `transcripts: []` is a provider that read the audio and heard nothing.
+/// Those are answers, not failures, and an empty list is not an unreadable one.
 
 /// A finite number, or null.
 ///
@@ -125,23 +141,20 @@ class SpeechToTextResponseModel extends BaseResponse {
     // with no readable container at all is not an answer about anybody.
     final raw = json['results'] as List;
 
+    // Positional, and nothing is ever dropped or compacted here. A result is a
+    // SEGMENT of the audio and its index is its identity, so removing one would
+    // slide a different segment into the place every reader takes as the first.
+    // Failing costs this chunk; substituting would hand somebody speech from
+    // elsewhere in the recording and say nothing about it.
     final results = <SpeechToTextResult>[];
-    for (final entry in raw) {
-      final result = SpeechToTextResult.fromJson(entry);
-      // Dropped, not fatal. Nothing on the call path reads past the first
-      // usable transcript, so a malformed second result used to destroy a
-      // perfectly good first one -- and with it up to ninety seconds of speech.
-      if (result != null) results.add(result);
-    }
-
-    // Content arrived and none of it could be read. Keeping the empty list here
-    // would read downstream as the provider finding nothing sayable, which is
-    // silence -- a claim about the speaker sourced entirely from our own
-    // failure. It fails instead, and the chunk is counted lost.
-    if (results.isEmpty && raw.isNotEmpty) {
-      throw const FormatException(
-        'No readable result in the speech-to-text response',
-      );
+    for (var i = 0; i < raw.length; i++) {
+      final result = SpeechToTextResult.fromJson(raw[i]);
+      if (result == null) {
+        throw FormatException(
+          'Unreadable result at position $i of the speech-to-text response',
+        );
+      }
+      results.add(result);
     }
 
     return SpeechToTextResponseModel(
@@ -192,10 +205,14 @@ class SpeechToTextResult {
 
   /// One result, or null when nothing in it can be read.
   ///
-  /// Null rather than throwing, so the caller above drops it and the readable
-  /// results still stand. A result whose `transcripts` list is EMPTY is not
-  /// unreadable -- it is a provider that found nothing sayable, which is an
-  /// answer, and it survives as one.
+  /// Null is FATAL to the only caller, which throws naming this result's
+  /// position -- a result's index is its identity, so there is nothing safe to
+  /// do with one we cannot read. Null rather than throwing from here only so
+  /// that the position can be named in the message.
+  ///
+  /// A result whose `transcripts` list is EMPTY is not unreadable. It is a
+  /// provider that read the audio and heard nothing, which is an answer, and it
+  /// survives as one.
   static SpeechToTextResult? fromJson(Object? raw) {
     if (raw is! Map) return null;
     final entries = raw['transcripts'];

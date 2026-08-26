@@ -488,21 +488,84 @@ void main() {
       'stt_tokens': <dynamic>[],
     };
 
-    test('a malformed SECOND result does not cost the first', () async {
+    test('a malformed result fails, wherever in the list it sits', () async {
+      // This test used to assert the opposite -- that a malformed SECOND result
+      // was dropped and the good first one survived. That was wrong, and it was
+      // wrong in a way the alternative-level rule below is not.
+      //
+      // A result is a SEGMENT of the audio and its index is its identity. Every
+      // reader across all three repos takes `results[0].transcripts[0]`, so
+      // dropping one slides a different piece of the recording into the place
+      // the first one meant. And once the list has been compacted, "we could
+      // read none of what arrived" and "the provider returned nothing" are
+      // indistinguishable -- which let a malformed first result followed by an
+      // empty second read as SILENCE.
+      //
+      // Nothing was lost by giving the tolerance up: all three choreo adapters
+      // emit exactly one result, so the shape it defended is not one any
+      // producer sends.
       final s = sinkReturning({
         'results': [
           {
             'transcripts': [goodTranscript('hola mundo')],
           },
-          // Nothing on the call path reads a second result.
           {'transcripts': 'not a list'},
         ],
       });
 
-      await s.deliver(chunk(0, startedAtMs: 1000));
+      await expectLater(s.deliver(chunk(0)), throwsA(isA<FormatException>()));
 
-      expect(s.chunksLost, 0, reason: 'nothing was captured and then lost');
-      expect(s.transcripts, ['hola mundo']);
+      expect(s.chunksLost, 1, reason: 'captured, and then genuinely lost');
+      expect(s.hasTranscript, isFalse);
+    });
+
+    test('a malformed FIRST result is never replaced by a later one', () async {
+      // The substitution this rule exists to prevent. Dropping the first result
+      // promotes the second into `results.first`, so the reader is handed
+      // speech from a different part of the recording and nothing anywhere says
+      // so. Losing the chunk is the honest outcome; quietly answering with the
+      // wrong segment is not.
+      final s = sinkReturning({
+        'results': [
+          {'transcripts': 'not a list'},
+          {
+            'transcripts': [goodTranscript('otro momento')],
+          },
+        ],
+      });
+
+      await expectLater(s.deliver(chunk(0)), throwsA(isA<FormatException>()));
+
+      expect(s.chunksLost, 1);
+      expect(
+        s.transcripts,
+        isEmpty,
+        reason: 'never the second segment standing in for the first',
+      );
+    });
+
+    test('a malformed first beside an EMPTY second is not silence', () async {
+      // The worse half, and the one a compacted list cannot see. Dropping the
+      // malformed first leaves a list that is NOT empty -- it holds the
+      // empty-transcripts second -- so a guard asking whether anything survived
+      // does not fire, and the chunk is reported as the speaker having said
+      // nothing. Speech we failed to read, presented as a person's silence.
+      final s = sinkReturning({
+        'results': [
+          {'transcripts': 'not a list'},
+          {'transcripts': <dynamic>[]},
+        ],
+      });
+
+      await expectLater(s.deliver(chunk(0)), throwsA(isA<FormatException>()));
+
+      expect(
+        s.chunksLost,
+        1,
+        reason: 'this is a chunk we lost, not a speaker who was quiet',
+      );
+      expect(s.hasTranscript, isFalse);
+      expect(s.chunksTranscribed, 0);
     });
 
     test('a malformed SECOND alternative does not cost the first', () async {
