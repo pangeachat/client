@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart' show visibleForTesting;
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
@@ -250,7 +249,6 @@ class MessageReadAloudController {
       // silence from speech. The probe can: `tryToSpeak` brackets it around a
       // route that was actually asked to play, and only that.
       listening: _listeningProbe(DosageListeningCategory.toolbarRead),
-      exposure: _exposure(message),
     );
   }
 
@@ -300,7 +298,6 @@ class MessageReadAloudController {
       // fails and falls back to the device has neither the failure nor the
       // switch counted as audio the learner heard.
       listening: _listeningProbe(DosageListeningCategory.autoRead),
-      exposure: _exposure(message),
     );
   }
 
@@ -311,30 +308,6 @@ class MessageReadAloudController {
   /// different categories — see the call sites. The category is the only thing
   /// that differs, which is exactly why it is an argument here and a constant
   /// there, rather than something this method could decide for itself.
-  /// The lemmas this read covers: every saveable vocab token of the text that
-  /// is about to be spoken.
-  ///
-  /// Read from the DISPLAY representation, which is the one whose text is
-  /// passed to `tryToSpeak` — a message read in the L2 must not bank exposure
-  /// for the tokens of some other representation of it. A message with no
-  /// usable tokens declares nothing rather than guessing at its words.
-  ListeningExposureDeclaration _exposure(PangeaMessageEvent message) {
-    final tokens = message.messageDisplayRepresentation?.tokens;
-    if (tokens == null || tokens.isEmpty) {
-      return const ListeningExposureDeclaration.exempt(
-        "message has no usable tokens to attribute exposure to",
-      );
-    }
-    // The SAME language handed to `tryToSpeak` for this message. Read-aloud is
-    // already gated on the L2, so in practice these agree — but the gate is a
-    // call-site check and this is the recorded fact, so it is taken from the
-    // text rather than assumed to be the learner's L2.
-    return ListeningExposureDeclaration.ofTokens(
-      tokens,
-      langCode: message.messageDisplayLangCode,
-    );
-  }
-
   DosageTtsListeningProbe _listeningProbe(DosageListeningCategory category) =>
       DosageTtsListeningProbe(
         category: category,

@@ -822,29 +822,6 @@ class WorldMapController extends State<WorldMap>
     );
   }
 
-  /// Zoom around a point on the map by a gesture's [scale] factor — the web
-  /// trackpad pinch (#8556). Direct manipulation, so it lands on the camera
-  /// immediately and un-eased, exactly like the scroll wheel (see
-  /// [WorldMapConstants] on why that input is deliberately not glided).
-  /// [focalPoint] is the cursor's position over the map, and the spot under it
-  /// holds still while the zoom changes — the same anchoring the wheel gets.
-  void pinchZoom(double scale, Offset focalPoint) {
-    final camera = mapController.camera;
-    final zoom = WorldMapConstants.zoomAfterPinch(camera.zoom, scale, minZoom);
-    // At a zoom limit the gesture has nothing left to do; moving anyway would
-    // re-center on the cursor for no zoom change.
-    if (zoom == camera.zoom) return;
-
-    // Drop any glide in flight, so its next tick can't stomp the camera the
-    // learner is steering by hand.
-    _dropGlideInFlight();
-    mapController.move(camera.focusedZoomCenter(focalPoint, zoom), zoom);
-    // A pinch IS a gesture, but a controller-driven move reports itself as
-    // programmatic, so raise the signal a drag or wheel gets from flutter_map
-    // itself ([mapPanTick]).
-    mapPanTick.value++;
-  }
-
   /// Centers the current selection within the *exposed* canvas — the map area
   /// the left column and detail panel don't cover. A specifically-focused
   /// target centers on itself (keeping the current zoom); a course fits all
@@ -981,7 +958,11 @@ class WorldMapController extends State<WorldMap>
       return;
     }
     if (WorldMapConstants.movesInstantly(mapController.camera.zoom, zoom)) {
-      _dropGlideInFlight();
+      // Drop any glide already in flight, so its next tick can't stomp the
+      // camera we are about to set.
+      anim.stop();
+      _camStart = null;
+      _camTarget = null;
       try {
         mapController.move(center, zoom);
       } catch (_) {
@@ -1005,14 +986,6 @@ class WorldMapController extends State<WorldMap>
       ..duration = WorldMapConstants.glideDurationFor(_camStartZoom, zoom)
       ..reset()
       ..forward();
-  }
-
-  /// Abandons any glide in flight so its next tick can't stomp a camera that
-  /// is about to be set directly.
-  void _dropGlideInFlight() {
-    _cameraAnimationController.stop();
-    _camStart = null;
-    _camTarget = null;
   }
 
   void _onCamGlideTick() {

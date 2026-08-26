@@ -30,22 +30,6 @@ This is not a style preference. A thrown `http.Response` has no `toString()` ove
 
 The rule lives in `Requests` alone. A second copy of it anywhere else drifts.
 
-## Build identity on every event
-
-Every Sentry event the client reports carries three tags saying **which build produced it**. Without them a local build and a deployed one are indistinguishable: the SDK's default release is `<package>@<pubspec version>+<build number>`, and pubspec's `+N` is hand-bumped, so every locally-built app reports the same release string for months at a time. Triage twice could not answer "does the build that produced this event contain the fix?" and had to reason from event timestamps instead.
-
-| Tag | Value | Answers |
-| --- | --- | --- |
-| `build_channel` | `local` \| `ci` | A developer's machine, or a deployed build? |
-| `build_commit` | 8-char commit SHA, `ci` only | Which code is running — does it contain a given fix? |
-| `config_override` | `true` \| `false` | Is a persisted `appConfigOverride` redirecting this build away from what its `.env` says? |
-
-The channel derives from `Environment.buildCommitSha`, which every build workflow passes as a `--dart-define` and which is empty on a build with no pushed commit (see [ci.instructions.md](ci.instructions.md)). Nothing new is stamped at build time — the tags read a signal the build already carries.
-
-`config_override` is here because an override persists in local storage and outranks dotenv, so it survives a pull and a rebuild. Without it, "this build is aimed at the production homeserver" and "this build was pointed at production once and never un-pointed" look identical.
-
-These are tags, not environments. The allow-list — only `production` and `staging`, per the org [sentry.instructions.md](../../../.github/.github/instructions/sentry.instructions.md) — is unchanged, and a build that cannot positively identify one still does not report at all.
-
 ## Severity policy
 
 Severity is a property of the failure, not of the author's judgment at the call site. One table, applied by the repo layer:

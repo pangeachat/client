@@ -8,7 +8,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
-import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
@@ -188,9 +187,6 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
         accessToken: () =>
             MatrixState.pangeaController.matrixState.client.accessToken,
       ),
-      exposure: ListeningExposureDeclaration.ofTokens([
-        vocab.asToken(),
-      ], langCode: widget.langCode),
     );
     _showWordCard(vocab);
   }

@@ -1136,12 +1136,14 @@
     "enableAutocorrectPopupTitle": "Tilføj dit målsprog-tastatur ved at gå til:",
     "enableAutocorrectPopupSteps": "  • Indstillinger\n  • Generelt\n  • Tastatur\n  • Tastaturer\n  • Tilføj nyt tastatur",
     "enableAutocorrectPopupDescription": "Når sproget er valgt, kan du klikke på det lille globus-ikon nederst til venstre på dit tastatur for at aktivere det nyinstallerede tastatur.",
+    "downloadGboardSteps": " • Download Gboard\n  • Åbn appen\n  • Sprog\n  • Tilføj tastatur\n  • Vælg sprog\n  • Vælg tastaturtype\n  • Udført",
     "enableAutocorrectWarning": "Advarsel! Kræver tilføjelse af dit målsprog-tastatur",
     "displayName": "Visningsnavn",
     "leaveRoomDescription": "Du er ved at forlade denne chat. Andre brugere vil se, at du har forladt chatten.",
     "confirmUserId": "Bekræft venligst dit Pangea Chat-brugernavn for at slette din konto.",
     "paidSubscriptionStarts": "Starter {startDate}",
     "cancelInSubscriptionSettings": "Afmeld når som helst i abonnementindstillinger",
+    "downloadGboard": "Download Gboard",
     "autocorrectNotAvailable": "Desværre understøttes din platform ikke i øjeblikket til denne funktion. Følg med for yderligere udvikling!",
     "pleaseUpdateApp": "Opdater venligst appen for at fortsætte.",
     "chooseEmojiInstructionsBody": "Match emojis med de ord, de bedst repræsenterer. Bare rolig! Der er ingen pointtab for uenighed. 😅",
@@ -1335,7 +1337,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-25 15:25:41.973438",
+    "@@last_modified": "2026-08-24 11:54:15.159038",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -6305,6 +6307,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@downloadGboardSteps": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6330,6 +6336,10 @@
         }
     },
     "@cancelInSubscriptionSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10669,18 +10679,8 @@
     "autocorrectAndroidFallbackTitle": "Hvis dit tastatur ikke tilbyder dit målsprog, skal du installere Gboard og tilføje sproget der:",
     "resendInSeconds": "Send igen ({seconds})",
     "mapLevelFallbackNotice": "Ingen {selected}-aktiviteter endnu – viser {shown} i stedet.",
-    "openKeyboardSettings": "Åbn tastaturindstillinger",
-    "keyboardPromptAddKeyboardMessage": "Tilføj et tastatur til dit målsprog, så autokorrektur virker.",
-    "keyboardPromptAddKeyboardAction": "Tilføj tastatur",
-    "keyboardPromptSwitchKeyboardMessage": "Tryk på globusikonet på dit tastatur for at skifte til dit målsprog.",
     "switchLanguageChipLabel": "Skift til {language}",
     "languageDropdownLevel": "Niveau {level}",
     "whatAreYouLearning": "Hvad lærer du?",
-    "languageSwitcherBaseLanguageLabel": "Dit grundsprog",
-    "listenModeDescription": "Tryk på et valg for at høre det. Intet er valgt.",
-    "rateActivityLiked": "Kunne lide det",
-    "rateActivityDisliked": "Kunne ikke lide det",
-    "constructUseHrdDesc": "Hørt",
-    "timesHeard": "{count, plural, =1{Hørt én gang} other{Hørt {count} gange}}",
-    "allSettings": "Alle indstillinger"
+    "languageSwitcherBaseLanguageLabel": "Dit grundsprog"
 }

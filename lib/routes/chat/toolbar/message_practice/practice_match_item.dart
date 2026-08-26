@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
@@ -105,13 +104,6 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
               accessToken: () =>
                   widget.controller.pangeaMessageEvent.room.client.accessToken,
             ),
-            exposure: widget.token == null
-                ? const ListeningExposureDeclaration.exempt(
-                    "match item has no token to attribute the lemma to",
-                  )
-                : ListeningExposureDeclaration.ofTokens([
-                    widget.token!,
-                  ], langCode: l2),
           );
         }
       } catch (e, s) {

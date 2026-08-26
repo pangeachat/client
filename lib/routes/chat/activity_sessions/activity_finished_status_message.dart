@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -32,76 +33,71 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     final l1 = MatrixState.pangeaController.userController.userL1Code;
 
     final finished = controller.room.isActivityFinished;
+    final summary = controller.room.visibleActivitySummaryByL1;
 
-    return ValueListenableBuilder(
-      valueListenable: controller.activityController.summaryFetchFailed,
-      builder: (context, fetchFailed, _) {
-        final summary = controller.room.visibleActivitySummaryByL1;
+    // A summary still generating renders in the chat instead, so the bar stays
+    // collapsed and the rating card above it doesn't get pushed around (#8018).
+    final summarySection =
+        finished &&
+            summary != null &&
+            summary.summary == null &&
+            !summary.isLoading
+        ? _SummarySection(
+            summary: summary,
+            fetchSummaries: l1 != null
+                ? () => controller.room.fetchSummaries(l1)
+                : null,
+          )
+        : null;
 
-        // A summary still generating renders in the chat instead, so the bar
-        // stays collapsed and the rating card above it doesn't get pushed
-        // around (#8018). A locally-recorded failure overrides room state,
-        // which can't say "error" when the network is down (#8362).
-        final summarySection =
-            finished &&
-                (fetchFailed ||
-                    (summary != null &&
-                        summary.summary == null &&
-                        !summary.isLoading))
-            ? _SummarySection(
-                hasError: fetchFailed || (summary?.hasError ?? false),
-                fetchSummaries: l1 != null
-                    ? controller.activityController.fetchSummaries
-                    : null,
-              )
-            : null;
+    final hasContent = !finished || summarySection != null;
 
-        final hasContent = !finished || summarySection != null;
-
-        return AnimatedSize(
-          alignment: Alignment.bottomCenter,
-          duration: FluffyThemes.animationDuration,
-          child: hasContent
-              ? Container(
-                  padding: const EdgeInsets.all(12.0),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surface,
-                    border: Border(top: BorderSide(color: theme.dividerColor)),
+    return AnimatedSize(
+      alignment: Alignment.bottomCenter,
+      duration: FluffyThemes.animationDuration,
+      child: hasContent
+          ? Container(
+              padding: const EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surface,
+                border: Border(top: BorderSide(color: theme.dividerColor)),
+              ),
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 400),
+                  child: Column(
+                    spacing: 12.0,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      if (summarySection != null)
+                        summarySection
+                      else if (!finished)
+                        _WaitSection(
+                          onContinue: controller.room.continueActivity,
+                        ),
+                    ],
                   ),
-                  child: Center(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 400),
-                      child: Column(
-                        spacing: 12.0,
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          if (summarySection != null)
-                            summarySection
-                          else if (!finished)
-                            _WaitSection(
-                              onContinue: controller.room.continueActivity,
-                            ),
-                        ],
-                      ),
-                    ),
-                  ),
-                )
-              : SizedBox(),
-        );
-      },
+                ),
+              ),
+            )
+          : SizedBox(),
     );
   }
 }
 
 class _SummarySection extends StatelessWidget {
-  final bool hasError;
+  final ActivitySummaryModel summary;
   final Future<void> Function()? fetchSummaries;
 
-  const _SummarySection({required this.hasError, required this.fetchSummaries});
+  const _SummarySection({required this.summary, required this.fetchSummaries});
 
   @override
   Widget build(BuildContext context) {
+    if (summary.summary != null || summary.isLoading) {
+      return const SizedBox.shrink();
+    }
+
     if (!MatrixState
         .pangeaController
         .subscriptionController
@@ -117,7 +113,7 @@ class _SummarySection extends StatelessWidget {
       );
     }
 
-    if (hasError) {
+    if (summary.hasError) {
       return Column(
         spacing: 8,
         children: [

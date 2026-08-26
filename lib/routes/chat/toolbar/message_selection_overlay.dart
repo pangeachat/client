@@ -9,7 +9,6 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
@@ -256,9 +255,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
           userId: () => pangeaMessageEvent.room.client.userID,
           accessToken: () => pangeaMessageEvent.room.client.accessToken,
         ),
-        exposure: ListeningExposureDeclaration.ofTokens([
-          selectedToken!,
-        ], langCode: pangeaMessageEvent.messageDisplayLangCode),
       );
     }
     if (!MatrixState

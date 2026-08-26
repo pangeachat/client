@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:46.240305",
+    "@@last_modified": "2026-08-24 11:54:21.932867",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -2994,12 +2994,14 @@
     "enableAutocorrectPopupTitle": "Lägg till ditt tangentbord för målspråket genom att gå till:",
     "enableAutocorrectPopupSteps": "  • Inställningar\n  • Allmänt\n  • Tangentbord\n  • Tangentbord\n  • Lägg till nytt tangentbord",
     "enableAutocorrectPopupDescription": "När språket är valt kan du klicka på den lilla globikonen längst ner till vänster på ditt tangentbord för att aktivera det nyinstallerade tangentbordet.",
+    "downloadGboardSteps": " • Ladda ner Gboard\n  • Öppna appen\n  • Språk\n  • Lägg till tangentbord\n  • Välj språk\n  • Välj tangentbordstyp\n  • Klart",
     "enableAutocorrectWarning": "Varning! Kräver att du lägger till ditt tangentbord för målspråket",
     "displayName": "Visningsnamn",
     "leaveRoomDescription": "Du är på väg att lämna denna chatt. Andra användare kommer att se att du har lämnat chatten.",
     "confirmUserId": "Vänligen bekräfta ditt Pangea Chat-användarnamn för att kunna radera ditt konto.",
     "paidSubscriptionStarts": "Startar {startDate}",
     "cancelInSubscriptionSettings": "• Avbryt när som helst i prenumerationsinställningarna",
+    "downloadGboard": "Ladda ner Gboard",
     "autocorrectNotAvailable": "Tyvärr stöds inte din plattform för den här funktionen för tillfället. Håll utkik efter vidareutveckling!",
     "pleaseUpdateApp": "Uppdatera appen för att fortsätta.",
     "chooseEmojiInstructionsBody": "Matcha emojis med de ord de bäst representerar. Oroa dig inte! Inga poäng dras av för oenighet. 😅",
@@ -5903,6 +5905,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@downloadGboardSteps": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5928,6 +5934,10 @@
         }
     },
     "@cancelInSubscriptionSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10267,18 +10277,8 @@
     "autocorrectAndroidFallbackTitle": "Om ditt tangentbord inte erbjuder ditt målspråk, installera Gboard och lägg till språket där:",
     "resendInSeconds": "Skicka igen ({seconds})",
     "mapLevelFallbackNotice": "Inga {selected} aktiviteter än – visar {shown} istället.",
-    "openKeyboardSettings": "Öppna tangentbordsinställningar",
-    "keyboardPromptAddKeyboardMessage": "Lägg till ett tangentbord för ditt målspråk så att autokorrigeringen fungerar.",
-    "keyboardPromptAddKeyboardAction": "Lägg till tangentbord",
-    "keyboardPromptSwitchKeyboardMessage": "Tryck på jordglobsikonen på tangentbordet för att växla till ditt målspråk.",
     "switchLanguageChipLabel": "Byt till {language}",
     "languageDropdownLevel": "Nivå {level}",
     "whatAreYouLearning": "Vad lär du dig?",
-    "languageSwitcherBaseLanguageLabel": "Ditt basspråk",
-    "listenModeDescription": "Tryck på ett val för att höra det. Inget är valt.",
-    "rateActivityLiked": "Gillade det",
-    "rateActivityDisliked": "Gillade det inte",
-    "constructUseHrdDesc": "Hört",
-    "timesHeard": "{count, plural, =1{Hörd en gång} other{Hörd {count} gånger}}",
-    "allSettings": "Alla inställningar"
+    "languageSwitcherBaseLanguageLabel": "Ditt basspråk"
 }

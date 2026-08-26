@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
-import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -92,14 +91,6 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                             ),
                             if (isVocabType && !isAudioExercise)
                               PhoneticTranscriptionWidget(
-                                exposure: ListeningExposureDeclaration.ofTokens(
-                                  [token],
-                                  langCode: MatrixState
-                                      .pangeaController
-                                      .userController
-                                      .userL2!
-                                      .langCode,
-                                ),
                                 text: token.vocabConstructID.lemma,
                                 pos: token.pos,
                                 morph: token.morph.map(

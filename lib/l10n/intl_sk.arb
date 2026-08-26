@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-25 15:25:45.941971",
+    "@@last_modified": "2026-08-24 11:54:21.104757",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -2193,12 +2193,14 @@
     "enableAutocorrectPopupTitle": "Pridajte klávesnicu cieľového jazyka prechádzaním do:",
     "enableAutocorrectPopupSteps": "  • Nastavenia\n  • Všeobecné\n  • Klávesnica\n  • Klávesnice\n  • Pridať novú klávesnicu",
     "enableAutocorrectPopupDescription": "Po výbere jazyka môžete kliknúť na malú ikonu glóbusu v ľavom spodnom rohu klávesnice na aktiváciu novozaloženej klávesnice.",
+    "downloadGboardSteps": " • Stiahnite si Gboard\n  • Otvorte aplikáciu\n  • Jazyky\n  • Pridať klávesnicu\n  • Vybrať jazyk\n  • Vybrať typ klávesnice\n  • Hotovo",
     "enableAutocorrectWarning": "Varovanie! Vyžaduje pridanie klávesnice cieľového jazyka",
     "displayName": "Zobrazované meno",
     "leaveRoomDescription": "Chystáte sa opustiť tento chat. Ostatní používatelia uvidia, že ste opustili chat.",
     "confirmUserId": "Prosím, potvrďte svoje používateľské meno v Pangea Chate, aby ste mohli vymazať svoj účet.",
     "paidSubscriptionStarts": "Začína {startDate}",
     "cancelInSubscriptionSettings": "• Zrušiť kedykoľvek v nastaveniach predplatného",
+    "downloadGboard": "Stiahnuť Gboard",
     "autocorrectNotAvailable": "Bohužiaľ, vaša platforma momentálne nepodporuje túto funkciu. Sledujte ďalší vývoj!",
     "pleaseUpdateApp": "Prosím, aktualizujte aplikáciu, aby ste mohli pokračovať.",
     "chooseEmojiInstructionsBody": "Zodpovedajte emodži slovami, ktoré najlepšie reprezentujú. Nebojte sa! Za nesúhlas nebudú odpočítané body. 😅",
@@ -6330,6 +6332,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@downloadGboardSteps": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6355,6 +6361,10 @@
         }
     },
     "@cancelInSubscriptionSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10694,18 +10704,8 @@
     "autocorrectAndroidFallbackTitle": "Ak vaša klávesnica neponúka váš cieľový jazyk, nainštalujte si Gboard a pridajte tam jazyk:",
     "resendInSeconds": "Znova odoslať o ({seconds})",
     "mapLevelFallbackNotice": "Zatiaľ žiadne aktivity {selected} – namiesto toho sa zobrazujú {shown}.",
-    "openKeyboardSettings": "Otvoriť nastavenia klávesnice",
-    "keyboardPromptAddKeyboardMessage": "Pridajte si klávesnicu pre váš cieľový jazyk, aby fungovala automatická oprava.",
-    "keyboardPromptAddKeyboardAction": "Pridať klávesnicu",
-    "keyboardPromptSwitchKeyboardMessage": "Ťuknite na ikonu glóbusu na klávesnici a prepnite na cieľový jazyk.",
     "switchLanguageChipLabel": "Prepnúť na {language}",
     "languageDropdownLevel": "Úroveň {level}",
     "whatAreYouLearning": "Čo sa učíte?",
-    "languageSwitcherBaseLanguageLabel": "Váš základný jazyk",
-    "listenModeDescription": "Ťuknutím na možnosť si ju vypočujete. Nič nie je vybraté.",
-    "rateActivityLiked": "Páčilo sa mi to",
-    "rateActivityDisliked": "Nepáčilo sa mi to",
-    "constructUseHrdDesc": "Počul",
-    "timesHeard": "{count, plural, =1{Vypočuté raz} other{Vypočuté {count}-krát}}",
-    "allSettings": "Všetky nastavenia"
+    "languageSwitcherBaseLanguageLabel": "Váš základný jazyk"
 }

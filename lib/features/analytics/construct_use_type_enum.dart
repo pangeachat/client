@@ -101,13 +101,7 @@ enum ConstructUseTypeEnum {
 
   // grammar error activity
   corGE,
-  incGE,
-
-  /// lemma heard through read-aloud or voice-message playback. Passive
-  /// receptive exposure, worth 0 XP: the count is the data. Bucketed rather
-  /// than stored one row per event - see [OneConstructUse.count] and
-  /// analytics-system.instructions.md.
-  hrd;
+  incGE;
 
   static ConstructUseTypeEnum fromString(String value) {
     return ConstructUseTypeEnum.values.firstWhere(
@@ -202,8 +196,6 @@ enum ConstructUseTypeEnum {
         return L10n.of(context).constructUseCorGEDesc;
       case ConstructUseTypeEnum.incGE:
         return L10n.of(context).constructUseIncGEDesc;
-      case ConstructUseTypeEnum.hrd:
-        return L10n.of(context).constructUseHrdDesc;
     }
   }
 
@@ -266,8 +258,6 @@ enum ConstructUseTypeEnum {
         return Icons.star;
       case ConstructUseTypeEnum.sug:
         return Icons.lightbulb_outline;
-      case ConstructUseTypeEnum.hrd:
-        return Icons.volume_up;
     }
   }
 
@@ -319,10 +309,6 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.nan:
       case ConstructUseTypeEnum.ga:
       case ConstructUseTypeEnum.ta:
-      // Passive exposure. The learner did not ask for this audio and did not
-      // answer anything, so paying XP for it would inflate every word they
-      // happen to have heard.
-      case ConstructUseTypeEnum.hrd:
         return 0;
 
       case ConstructUseTypeEnum.incMM:
@@ -389,9 +375,6 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incGC:
       case ConstructUseTypeEnum.corGE:
       case ConstructUseTypeEnum.incGE:
-      // Heard, not produced. Keeping exposure out of here is what keeps it out
-      // of the turn and target-language-word counters downstream.
-      case ConstructUseTypeEnum.hrd:
         return false;
     }
   }
@@ -419,7 +402,6 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incHWL:
       case ConstructUseTypeEnum.corLA:
       case ConstructUseTypeEnum.incLA:
-      case ConstructUseTypeEnum.hrd:
         return LearningSkillsEnum.hearing;
       case ConstructUseTypeEnum.corPA:
       case ConstructUseTypeEnum.ignPA:
@@ -500,9 +482,6 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.click:
       case ConstructUseTypeEnum.bonus:
       case ConstructUseTypeEnum.nan:
-      // Exposure is neither a correct nor an incorrect answer, and it is not a
-      // typed word. It belongs in none of the summary buckets.
-      case ConstructUseTypeEnum.hrd:
         return null;
     }
   }

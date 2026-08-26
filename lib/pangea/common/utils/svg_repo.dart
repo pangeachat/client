@@ -39,23 +39,12 @@ class SvgRepo {
   /// URL instead of one per widget per rebuild (#8338).
   static final Map<String, Future<Result<String>>> _cache = {};
 
-  /// The settled half of [_cache]. A widget that lays itself out differently
-  /// for a missing asset needs the answer while it builds, not a frame later.
-  static final Map<String, Result<String>> _settled = {};
-
-  /// The outcome of this session's fetch of [url], or null if it hasn't been
-  /// fetched yet or is still in flight.
-  static Result<String>? peek(String url) => _settled[url];
-
   static Future<Result<String>> get(String url) async {
     if (_cache.containsKey(url)) {
       return _cache[url]!;
     }
 
-    final future = _fetch(url).then((result) {
-      _settled[url] = result;
-      return result;
-    });
+    final future = _fetch(url);
     _cache[url] = future;
     return future;
   }
