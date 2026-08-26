@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
 import 'package:badges/badges.dart' show BadgePosition;
+import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -532,6 +534,30 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   bool _searchRestored = false;
   String? _lastScopeId;
 
+  StreamSubscription<bool>? _roomUpdates;
+
+  @override
+  void initState() {
+    super.initState();
+    // `build` reads the joined-course list straight off the client (the
+    // shortcut slot, the hub sheet's fit height), so a membership change with
+    // no route change must rebuild this layer — otherwise a deleted course
+    // keeps its avatar in the shortcut slot until the learner navigates away
+    // (#8599). Same stream/filter the web rail uses for its course list.
+    _roomUpdates = Matrix.of(context).client.onSync.stream
+        .where((s) => s.hasRoomUpdate)
+        .rateLimit(const Duration(seconds: 1))
+        .listen((_) {
+          if (mounted) setState(() {});
+        });
+  }
+
+  @override
+  void dispose() {
+    _roomUpdates?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
@@ -548,16 +574,16 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     final activeSpaceId = activeSpaceIdFor(uri);
     if (activeSpaceId != null &&
         joined.any((space) => space.id == activeSpaceId)) {
-      _lastCourseShortcutId = activeSpaceId;
+      courseShortcutHistory
+        ..remove(activeSpaceId)
+        ..insert(0, activeSpaceId);
     }
-    final Room? shortcutCourse = joined.isEmpty
+    final shortcutId = courseShortcutIdFor(
+      joined.map((space) => space.id).toList(),
+    );
+    final Room? shortcutCourse = shortcutId == null
         ? null
-        : joined.length == 1
-        ? joined.first
-        : joined.firstWhere(
-            (space) => space.id == _lastCourseShortcutId,
-            orElse: () => joined.first,
-          );
+        : joined.firstWhere((space) => space.id == shortcutId);
 
     // The cavity: the focused section surface hosted bare (the widget is the
     // card; the surface brings its own header/close). A course keys its height
@@ -901,11 +927,26 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   }
 }
 
-/// Device-local memory of the last course the learner opened, for the narrow
-/// rail's course-shortcut slot. Ephemeral view state, deliberately outside the
-/// URL (routing.instructions.md → Single-column bottom nav). Module-level so it
-/// survives shell rebuilds; resets with the process.
-String? _lastCourseShortcutId;
+/// Device-local memory of the courses the learner has opened, most recent
+/// first, for the narrow rail's course-shortcut slot. Ephemeral view state,
+/// deliberately outside the URL (routing.instructions.md → Single-column bottom
+/// nav). Module-level so it survives shell rebuilds; resets with the process.
+@visibleForTesting
+final List<String> courseShortcutHistory = [];
+
+/// The course the narrow rail's shortcut slot shows: the most-recently-opened
+/// one that is **still joined**, else the client's most-recently-active course.
+/// Null when the learner is in no course (the slot shows `+`).
+///
+/// Falling through the history — rather than straight to the client's first
+/// room — is what keeps deleting or leaving the course in the slot from landing
+/// on an arbitrary other course: it lands on the one opened before it (#8599).
+/// [joinedIds] arrives in the client's own recency order.
+@visibleForTesting
+String? courseShortcutIdFor(List<String> joinedIds) => joinedIds.isEmpty
+    ? null
+    : courseShortcutHistory.firstWhereOrNull(joinedIds.contains) ??
+          joinedIds.first;
 
 /// Every layout fact the [WorkspaceShell] derives from the current route +
 /// viewport, resolved once per build into one immutable bundle so `build` reads
