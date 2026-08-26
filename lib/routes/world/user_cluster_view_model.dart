@@ -179,8 +179,12 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
       analyticsService.numConstructs(ConstructTypeEnum.morph);
 
   @override
-  DerivedAnalyticsDataModel? get cachedDerivedAnalyticsData =>
-      analyticsService.cachedDerivedData;
+  DerivedAnalyticsDataModel? get cachedDerivedAnalyticsData {
+    final l2 = userL2;
+    return l2 == null
+        ? null
+        : analyticsService.cachedDerivedDataFor(l2.langCodeShort);
+  }
 
   @override
   Future<DerivedAnalyticsDataModel> get derivedAnalyticsData {

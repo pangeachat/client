@@ -100,6 +100,12 @@ class AnalyticsDataService {
   int _derivedCacheVersion = -1;
   DerivedAnalyticsDataModel? _cachedDerivedStats;
 
+  /// The language [_cachedDerivedStats] was read for. The cache is a single
+  /// slot over a per-language store, so without this a read for one language
+  /// is served another language's totals — and the level computed from it gets
+  /// published as that language's (#8582).
+  String? _cachedDerivedLanguage;
+
   _AnalyticsClient get _analyticsClientGetter {
     assert(_analyticsClient != null);
     return _analyticsClient!;
@@ -138,6 +144,7 @@ class AnalyticsDataService {
   void _invalidateCaches() {
     _cacheVersion++;
     _cachedDerivedStats = null;
+    _cachedDerivedLanguage = null;
   }
 
   Future<void> _initDatabase(Client client) async {
@@ -241,15 +248,17 @@ class AnalyticsDataService {
       );
 
       if (l2 != null) {
-        int xpOffset = analyticsProfile.xpOffsetByLanguage(l2) ?? 0;
+        int xpOffset =
+            analyticsProfile.xpOffsetByLanguage(l2.langCodeShort) ?? 0;
         if (xpOffset < 0) {
           ErrorHandler.logError(
             e: "Negative XP offset calculated during analytics update",
             s: StackTrace.current,
-            data: {"offset": xpOffset},
+            data: {"offset": xpOffset, "language": l2.langCodeShort},
           );
           await MatrixState.pangeaController.userController.addXPOffset(
             -xpOffset,
+            l2.langCodeShort,
           );
           xpOffset = 0;
         }
@@ -380,15 +389,25 @@ class AnalyticsDataService {
     await _syncController?.waitForSync(analyticsRoomID);
   }
 
-  DerivedAnalyticsDataModel? get cachedDerivedData => _cachedDerivedStats;
+  /// The cached stats, but only when they are [language]'s. This is the
+  /// synchronous placeholder a UI surface paints before [derivedData] resolves,
+  /// so handing back another language's totals shows the learner a level that
+  /// is not theirs for this language. The cache is one slot over a per-language
+  /// store and [_recomputeTotalXP] can populate it for a language that is not
+  /// the current target, so the language has to be checked, not assumed.
+  DerivedAnalyticsDataModel? cachedDerivedDataFor(String language) =>
+      _cachedDerivedLanguage == language ? _cachedDerivedStats : null;
 
   Future<DerivedAnalyticsDataModel> derivedData(String language) async {
     await _ensureInitialized();
 
-    if (_cachedDerivedStats == null || _derivedCacheVersion != _cacheVersion) {
+    if (_cachedDerivedStats == null ||
+        _derivedCacheVersion != _cacheVersion ||
+        _cachedDerivedLanguage != language) {
       _cachedDerivedStats = await _analyticsClientGetter.database
           .getDerivedStats(language);
       _derivedCacheVersion = _cacheVersion;
+      _cachedDerivedLanguage = language;
     }
 
     return _cachedDerivedStats!;
@@ -682,6 +701,7 @@ class AnalyticsDataService {
     // Do this on all updates (not just on level updates) to account for cases
     // of target language updates being missed (https://github.com/pangeachat/client/issues/2006)
     MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      languageCode: language,
       level: newData.level,
     );
 
@@ -706,7 +726,10 @@ class AnalyticsDataService {
           },
         );
       } else {
-        await MatrixState.pangeaController.userController.addXPOffset(offset);
+        await MatrixState.pangeaController.userController.addXPOffset(
+          offset,
+          language,
+        );
         // Mirrors whatever the public profile ended up holding. Null when the
         // offset was not applied there — nothing loaded yet, or a profile
         // belonging to another account (#8531) — and the local copy must then
@@ -716,7 +739,7 @@ class AnalyticsDataService {
             .userController
             .publicProfile
             ?.analytics
-            .xpOffset;
+            .xpOffsetByLanguage(language);
         if (xpOffset != null) {
           await updateXPOffset(xpOffset, language);
         }
@@ -787,10 +810,32 @@ class AnalyticsDataService {
       blocked: blockedConstructs,
     );
 
-    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
-      level: DerivedAnalyticsDataModel.calculateLevelWithXp(totalXP),
-    );
+    // Store first, then publish the level the STORE now reports. The mirror
+    // has to agree with the analytics bar, and the bar renders
+    // DerivedAnalyticsDataModel.level — which is computed over totalXP PLUS the
+    // language's XP offset. Publishing calculateLevelWithXp(totalXP) here
+    // dropped that offset, so every learner carrying one (any learner whose
+    // level protection has ever engaged) had a mirror sitting below their own
+    // bar, re-published on every sync round-trip (#8582).
     await db.updateTotalXP(totalXP, language);
+    _invalidateCaches();
+
+    // Read the stored stats STRAIGHT from the database rather than through
+    // derivedData(). This runs inside analytics init — _initDatabase awaits
+    // bulkUpdate, which lands here whenever the analytics room has events since
+    // the last local sync — and derivedData() waits on the very init completer
+    // that only completes after that call returns. Routing through it hangs
+    // analytics initialization, and with it every read that awaits the same
+    // completer. Nothing else on this path is init-gated, which is why it was
+    // safe before.
+    final stats = await db.getDerivedStats(language);
+
+    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      languageCode: language,
+      // Includes the language's XP offset, exactly as the analytics bar's
+      // DerivedAnalyticsDataModel.level does.
+      level: stats.level,
+    );
   }
 
   /// Total XP over per-row uncapped xp [sums]: rows are grouped by their
