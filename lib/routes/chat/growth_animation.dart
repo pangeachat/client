@@ -34,24 +34,29 @@ class GrowthAnimation extends StatefulWidget {
     required this.icon,
   });
 
-  static void show(
-    BuildContext context,
-    String targetId,
-    String overlayKey,
-    Widget icon,
-  ) => OverlayUtil.showOverlay(
-    context: context,
-    child: GrowthAnimation(targetID: overlayKey, icon: icon),
-    displayDetails: TransformOverlayDisplayDetails(
-      overlayKey: overlayKey,
-      followerAnchor: Alignment.topCenter,
-      targetAnchor: Alignment.topCenter,
-      transformTargetId: targetId,
-      closePrevOverlay: false,
-      backDropToDismiss: false,
-      ignorePointer: true,
-    ),
-  );
+  /// Hosted in the Overlay nearest the anchor itself, resolved from the
+  /// registry — never a listener's context. See [PointsGainedAnimation.show];
+  /// same reasoning (#8613).
+  static void show(String targetId, String overlayKey, Widget icon) {
+    final anchorContext = MatrixState.pAnyState
+        .layerLinkAndKey(targetId)
+        .key
+        .currentContext;
+    if (anchorContext == null) return;
+    OverlayUtil.showOverlay(
+      context: anchorContext,
+      child: GrowthAnimation(targetID: overlayKey, icon: icon),
+      displayDetails: TransformOverlayDisplayDetails(
+        overlayKey: overlayKey,
+        followerAnchor: Alignment.topCenter,
+        targetAnchor: Alignment.topCenter,
+        transformTargetId: targetId,
+        closePrevOverlay: false,
+        backDropToDismiss: false,
+        ignorePointer: true,
+      ),
+    );
+  }
 
   @override
   State<GrowthAnimation> createState() => _GrowthAnimationState();
