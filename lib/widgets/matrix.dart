@@ -629,7 +629,11 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       return;
     }
 
-    _screenSizeWarning.onWindowHeight(windowHeight(context), navigatorContext);
+    _screenSizeWarning.onWindowMetrics(
+      height: windowHeight(context),
+      growableHeight: windowGrowableHeight(),
+      navigatorContext: navigatorContext,
+    );
   }
 
   StreamSubscription? _languageListener;
@@ -982,6 +986,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     _appLanguageSettingsListener?.cancel();
     _uriListener?.cancel();
     _screenSizeTimer?.cancel();
+    _screenSizeWarning.dismiss();
     notifPermissionNotifier.dispose();
     // Pangea#
 

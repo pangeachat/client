@@ -4,16 +4,53 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
+/// The publicly-readable mirror of a learner's analytics: their level and XP
+/// offset per language, plus the id of each language's analytics room.
+///
+/// It is a mirror, never a source. The source of truth is the per-language
+/// local analytics partition and Matrix analytics room, neither of which other
+/// users can read — this exists so classmates and instructors can see a level
+/// at all (profile.instructions.md, "Ownership and mirroring").
+///
+/// **Keyed per language, by short code** (`fr`, not `fr-CA`). Analytics rooms
+/// and local partitions are per language, so every regional variant of a
+/// language shares one XP total and must show one level; keying per locale gave
+/// `fr`, `fr-FR` and `fr-CA` three independent, separately-stale entries
+/// (#8582). Keys are raw strings rather than [LanguageModel] both because that
+/// is the grain the data actually has, and because resolving them through
+/// [PLanguageStore] made parsing depend on the language list having loaded —
+/// before it had, every entry was silently dropped and the next write published
+/// the empty result over the learner's real history.
 class AnalyticsProfileModel {
-  LanguageModel? baseLanguage;
-  LanguageModel? targetLanguage;
-  Map<LanguageModel, LanguageAnalyticsProfileEntry>? languageAnalytics;
+  /// Short language codes, mirroring the learner's current settings. Raw
+  /// strings for the same reason the map keys are.
+  ///
+  /// Normalized on assignment: the short-code grain is the whole point of this
+  /// class, and a full code stored here reads back as a missing entry — which
+  /// is exactly the bug #8582 fixed. Enforcing it in the setter rather than
+  /// trusting every caller means it cannot be reintroduced by construction.
+  String? get baseLanguage => _baseLanguage;
+  set baseLanguage(String? code) =>
+      _baseLanguage = code == null ? null : _shortCode(code);
+  String? _baseLanguage;
+
+  String? get targetLanguage => _targetLanguage;
+  set targetLanguage(String? code) =>
+      _targetLanguage = code == null ? null : _shortCode(code);
+  String? _targetLanguage;
+
+  Map<String, LanguageAnalyticsProfileEntry>? languageAnalytics;
 
   AnalyticsProfileModel({
-    this.baseLanguage,
-    this.targetLanguage,
+    String? baseLanguage,
+    String? targetLanguage,
     this.languageAnalytics,
-  });
+  }) {
+    this.baseLanguage = baseLanguage;
+    this.targetLanguage = targetLanguage;
+  }
+
+  static String _shortCode(String langCode) => langCode.split('-').first;
 
   factory AnalyticsProfileModel.fromJson(Map<String, dynamic> json) {
     if (!json.containsKey(PangeaEventTypes.profileAnalytics)) {
@@ -22,55 +59,87 @@ class AnalyticsProfileModel {
 
     final profileJson = json[PangeaEventTypes.profileAnalytics];
 
-    final baseLanguage = profileJson[ModelKey.sourceLanguage] != null
-        ? PLanguageStore.byLangCode(profileJson[ModelKey.sourceLanguage])
-        : null;
-
-    final targetLanguage = profileJson[ModelKey.targetLanguage] != null
-        ? PLanguageStore.byLangCode(profileJson[ModelKey.targetLanguage])
-        : null;
-
-    final languageAnalytics = <LanguageModel, LanguageAnalyticsProfileEntry>{};
-    if (profileJson[AnalyticsConstants.analytics] != null &&
-        profileJson[AnalyticsConstants.analytics]!.isNotEmpty) {
-      for (final entry in profileJson[AnalyticsConstants.analytics].entries) {
-        final lang = PLanguageStore.byLangCode(entry.key);
-        if (lang == null) continue;
-        final level = entry.value[AnalyticsConstants.level];
-        final xpOffset = entry.value[AnalyticsConstants.xpOffset] ?? 0;
-        final analyticsRoomId =
-            entry.value[AnalyticsConstants.analyticsRoomId] as String?;
-        languageAnalytics[lang] = LanguageAnalyticsProfileEntry(
-          level,
-          xpOffset,
-          analyticsRoomId: analyticsRoomId,
-        );
+    // Profiles written before #8582 carry a key per locale over one shared set
+    // of analytics. Group the variants, then reduce each group deterministically
+    // — iterating the decoded map directly would make the result depend on the
+    // server's key order.
+    final byLanguage = <String, List<MapEntry<String, Map>>>{};
+    final analyticsJson = profileJson[AnalyticsConstants.analytics];
+    if (analyticsJson is Map) {
+      for (final entry in analyticsJson.entries) {
+        final key = entry.key;
+        final value = entry.value;
+        if (key is! String || value is! Map) continue;
+        (byLanguage[_shortCode(key)] ??= []).add(MapEntry(key, value));
       }
     }
 
-    final profile = AnalyticsProfileModel(
-      baseLanguage: baseLanguage,
-      targetLanguage: targetLanguage,
+    final languageAnalytics = <String, LanguageAnalyticsProfileEntry>{};
+    for (final group in byLanguage.entries) {
+      final language = group.key;
+      final variants = group.value..sort((a, b) => a.key.compareTo(b.key));
+
+      var level = 0;
+      var xpOffset = 0;
+      String? analyticsRoomId;
+      for (final variant in variants) {
+        final v = variant.value;
+        final variantLevel = v[AnalyticsConstants.level];
+        final variantOffset = v[AnalyticsConstants.xpOffset];
+        if (variantLevel is int && variantLevel > level) level = variantLevel;
+        // Largest, not sum. The offset exists so a level never visibly drops
+        // (analytics-system.instructions.md, "Level Protection"); the largest
+        // any variant recorded is the highest level this learner was ever
+        // protected at, which is the guarantee being preserved. Summing would
+        // publish a level higher than any they actually saw.
+        if (variantOffset is int && variantOffset > xpOffset) {
+          xpOffset = variantOffset;
+        }
+        // The exact short-code key wins; otherwise the first variant to name a
+        // room, in sorted key order. Any id is provisional anyway —
+        // [clearForeignAnalyticsRoomIds] drops one this user does not own and
+        // the analytics-room backfill re-derives it from live rooms.
+        final variantRoomId = v[AnalyticsConstants.analyticsRoomId];
+        if (variantRoomId is String && variantRoomId.isNotEmpty) {
+          if (variant.key == language || analyticsRoomId == null) {
+            analyticsRoomId = variantRoomId;
+          }
+        }
+      }
+
+      languageAnalytics[language] = LanguageAnalyticsProfileEntry(
+        level,
+        xpOffset,
+        analyticsRoomId: analyticsRoomId,
+      );
+    }
+
+    return AnalyticsProfileModel(
+      baseLanguage: profileJson[ModelKey.sourceLanguage] != null
+          ? _shortCode(profileJson[ModelKey.sourceLanguage] as String)
+          : null,
+      targetLanguage: profileJson[ModelKey.targetLanguage] != null
+          ? _shortCode(profileJson[ModelKey.targetLanguage] as String)
+          : null,
       languageAnalytics: languageAnalytics,
     );
-    return profile;
   }
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
 
     if (targetLanguage != null) {
-      json[ModelKey.targetLanguage] = targetLanguage!.langCodeShort;
+      json[ModelKey.targetLanguage] = targetLanguage;
     }
 
     if (baseLanguage != null) {
-      json[ModelKey.sourceLanguage] = baseLanguage!.langCodeShort;
+      json[ModelKey.sourceLanguage] = baseLanguage;
     }
 
     final analytics = {};
     if (languageAnalytics != null && languageAnalytics!.isNotEmpty) {
       for (final entry in languageAnalytics!.entries) {
-        analytics[entry.key.langCode] = {
+        analytics[entry.key] = {
           AnalyticsConstants.level: entry.value.level,
           AnalyticsConstants.xpOffset: entry.value.xpOffset,
           if (entry.value.analyticsRoomId != null)
@@ -88,31 +157,27 @@ class AnalyticsProfileModel {
       targetLanguage == null ||
       (languageAnalytics == null || languageAnalytics!.isEmpty);
 
-  String? analyticsRoomIdByLanguage(LanguageModel language) =>
-      languageAnalytics![language]?.analyticsRoomId;
+  String? analyticsRoomIdByLanguage(String langCode) =>
+      languageAnalytics?[_shortCode(langCode)]?.analyticsRoomId;
 
-  /// Set the level and analytics room ID for the a given language.
-  void setLanguageInfo(
-    LanguageModel language,
-    int level,
-    String? analyticsRoomId,
-  ) {
-    languageAnalytics ??= {};
-    languageAnalytics![language] ??= LanguageAnalyticsProfileEntry(
-      0,
-      0,
-      analyticsRoomId: analyticsRoomId,
-    );
+  /// Records [level] and [analyticsRoomId] for [langCode]'s language.
+  ///
+  /// The level is set, not raised: it legitimately falls when a learner blocks
+  /// constructs (analytics-system.instructions.md, "Blocking Constructs").
+  ///
+  /// A null [analyticsRoomId] means "not known here" — the room may simply not
+  /// have surfaced in sync yet — and leaves any id already recorded alone.
+  /// Instructor analytics access is granted through that id, so losing it costs
+  /// a student's instructors their access; only
+  /// [clearForeignAnalyticsRoomIds] removes one, and only for a room this user
+  /// demonstrably does not own.
+  void setLanguageInfo(String langCode, int level, String? analyticsRoomId) {
+    final key = _shortCode(langCode);
+    final entry = (languageAnalytics ??= {})[key] ??=
+        LanguageAnalyticsProfileEntry(0, 0);
 
-    if (languageAnalytics![language]!.level < level) {
-      languageAnalytics![language]!.level = level;
-    }
-
-    final currentRoomId = analyticsRoomIdByLanguage(language);
-    if (currentRoomId != analyticsRoomId) {
-      languageAnalytics![language]!.analyticsRoomId = analyticsRoomId;
-    }
-    languageAnalytics![language]!.level = level;
+    entry.level = level;
+    if (analyticsRoomId != null) entry.analyticsRoomId = analyticsRoomId;
   }
 
   /// Forgets every analytics room id naming a room outside [ownRoomIds] — the
@@ -128,31 +193,42 @@ class AnalyticsProfileModel {
     }
   }
 
-  void addXPOffset(
-    LanguageModel language,
-    int xpOffset,
-    String? analyticsRoomId,
-  ) {
-    languageAnalytics ??= {};
-    languageAnalytics![language] ??= LanguageAnalyticsProfileEntry(
-      0,
-      0,
-      analyticsRoomId: analyticsRoomId,
-    );
+  void addXPOffset(String langCode, int xpOffset, String? analyticsRoomId) {
+    final key = _shortCode(langCode);
+    final entry = (languageAnalytics ??= {})[key] ??=
+        LanguageAnalyticsProfileEntry(0, 0);
 
-    final currentRoomId = analyticsRoomIdByLanguage(language);
-    if (currentRoomId == null) {
-      languageAnalytics![language]!.analyticsRoomId = analyticsRoomId;
-    }
-    languageAnalytics![language]!.xpOffset += xpOffset;
+    entry.analyticsRoomId ??= analyticsRoomId;
+    entry.xpOffset += xpOffset;
   }
 
-  int? get level => languageAnalytics?[targetLanguage]?.level;
+  int? get level =>
+      targetLanguage == null ? null : languageAnalytics?[targetLanguage]?.level;
 
-  int? get xpOffset => languageAnalytics?[targetLanguage]?.xpOffset;
+  int? xpOffsetByLanguage(String langCode) =>
+      languageAnalytics?[_shortCode(langCode)]?.xpOffset;
 
-  int? xpOffsetByLanguage(LanguageModel language) =>
-      languageAnalytics?[language]?.xpOffset;
+  /// This language's entry, for a row that displays a level — null for a
+  /// regional variant even when its language has analytics.
+  ///
+  /// Variants (`fr-CA`, `es-MX`) are legacy rows over one shared set of
+  /// analytics: there is one analytics room and one local partition per
+  /// language, so a level shown against each variant reads as separate
+  /// progress the learner does not have. The level belongs to the language, so
+  /// only the language's own row carries it (#8582). Every multi-variant
+  /// language in the target list has such a row, so no level is hidden by this.
+  LanguageAnalyticsProfileEntry? displayEntryFor(LanguageModel language) =>
+      language.isLocalized ? null : languageAnalytics?[language.langCodeShort];
+
+  /// [targetLanguage] / [baseLanguage] resolved for display (flag, name).
+  /// Resolved on read rather than at parse time so that a language list which
+  /// has not loaded yet costs a flag, never a dropped entry.
+  LanguageModel? get targetLanguageModel => targetLanguage == null
+      ? null
+      : PLanguageStore.byLangCode(targetLanguage!);
+
+  LanguageModel? get baseLanguageModel =>
+      baseLanguage == null ? null : PLanguageStore.byLangCode(baseLanguage!);
 }
 
 class LanguageAnalyticsProfileEntry {

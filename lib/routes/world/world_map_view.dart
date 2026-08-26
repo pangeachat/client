@@ -1,12 +1,16 @@
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
@@ -14,12 +18,14 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_markers_layer.dart';
 import 'package:fluffychat/routes/world/large_markers_layer.dart';
 import 'package:fluffychat/routes/world/map_exit_tracker.dart';
+import 'package:fluffychat/routes/world/trackpad_pinch_zoom.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
@@ -176,6 +182,79 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// search bar riding above it, with their gaps) that on-map overlays must
   /// clear (#7218). Update alongside the chrome if its heights change.
   static const double _narrowBottomChromeInset = 140.0;
+
+  /// OSM tile-policy hardening (#8603): the native User-Agent names the app
+  /// AND carries a contact URL, per the OSM tile usage policy. Web cannot set
+  /// the header at all (a Dart/browser limitation flutter_map documents on
+  /// `TileProvider.headers`), so this is best-effort — web traffic stays
+  /// identifiable only by Referer and IP.
+  ///
+  /// One provider instance for the State's lifetime: `TileLayer` disposes its
+  /// final widget's provider, but never intermediate ones, so constructing a
+  /// fresh provider each build would leak its internal HTTP client.
+  late final NetworkTileProvider _tileProvider = NetworkTileProvider(
+    headers: {
+      if (!kIsWeb)
+        'User-Agent':
+            'flutter_map (com.talktolearn.chat; +${AppConfig.website})',
+    },
+    // A blocking provider tends to answer with an error status whose body is
+    // itself a decodable "blocked" image; flutter_map's default decodes and
+    // DISPLAYS it, hiding the block from `errorTileCallback`. Treat any
+    // non-2xx as a hard error instead, so telemetry fires and the tile
+    // degrades to the map background. What this still cannot catch is a wrong
+    // image served with HTTP 200 (#8585's mode) — see
+    // world-map-tiles.instructions.md.
+    attemptDecodeOfHttpErrorResponses: false,
+  );
+
+  /// Tile-failure telemetry (#8603), split by what the failure means:
+  ///
+  /// - The tile server ANSWERED with a non-2xx ([NetworkImageLoadException],
+  ///   which is all a non-2xx can surface as under
+  ///   `attemptDecodeOfHttpErrorResponses: false`) — the provider-blocking
+  ///   signature this issue exists to detect. Escalates through
+  ///   [ErrorHandler.logErrorOnce], one report per app session: enough to see
+  ///   a block spike across sessions in Sentry (and alert on it later), never
+  ///   event spam. Explicit warning level — a tile block degrades the map, it
+  ///   doesn't break the app.
+  /// - Anything else (socket errors, timeouts, aborts) is the user's own
+  ///   connectivity — a rate-limited breadcrumb only, context on whatever
+  ///   event reports next. An offline learner must not generate events.
+  ///
+  /// Every failure, either class, leaves the breadcrumb. What neither class
+  /// covers is a wrong image served with HTTP 200 (#8585's mode) — see
+  /// world-map-tiles.instructions.md.
+  DateTime? _lastTileErrorCrumb;
+
+  void _onTileError(TileImage tile, Object error, StackTrace? stackTrace) {
+    final now = DateTime.now();
+    if (_lastTileErrorCrumb == null ||
+        now.difference(_lastTileErrorCrumb!) >= const Duration(seconds: 30)) {
+      _lastTileErrorCrumb = now;
+      Sentry.addBreadcrumb(
+        Breadcrumb(
+          category: 'world_map.tile_error',
+          message: error.toString(),
+          data: {'tile': tile.coordinates.toString()},
+          level: SentryLevel.warning,
+        ),
+      );
+    }
+
+    if (error is NetworkImageLoadException) {
+      ErrorHandler.logErrorOnce(
+        key: 'world_map.tile_http_error',
+        e: error,
+        s: stackTrace,
+        data: {
+          'tile': tile.coordinates.toString(),
+          'statusCode': error.statusCode,
+        },
+        level: SentryLevel.warning,
+      );
+    }
+  }
 
   /// Entry/exit animation bookkeeping for the small/mid dot tier: which pins
   /// are shrinking out, and which have already played their pop-in. See
@@ -730,15 +809,17 @@ class _WorldMapViewState extends State<WorldMapView> {
 
   @override
   Widget build(BuildContext context) {
-    // world-map-tiles Phase 1: free hosted tiles switched by app theme —
-    // OpenStreetMap (light) / CartoDB Dark Matter (dark).
+    // world-map-tiles Phase 1: free hosted OpenStreetMap tiles for both
+    // themes; dark theme is a client-side color filter over the same tiles
+    // (see the TileLayer below).
     final dark = Theme.of(context).brightness == Brightness.dark;
-    // What shows through wherever tiles have not arrived yet. Matched to each
-    // basemap's own paper — CartoDB Dark Matter's near-black, OSM's pale beige
-    // — so a gap during a zoom reads as unfilled map rather than the light
-    // grey flash flutter_map defaults to (#7937).
+    // What shows through wherever tiles have not arrived yet. Matched to the
+    // basemap's paper — OSM's pale beige, or that beige passed through
+    // darkModeTileBuilder's color matrix — so a gap during a zoom reads as
+    // unfilled map rather than the light grey flash flutter_map defaults
+    // to (#7937).
     final mapBackground = dark
-        ? const Color(0xFF0E0E0E)
+        ? const Color(0xFF130F0A)
         : const Color(0xFFF2EFE9);
 
     final warming = widget.controller.warmingPins;
@@ -788,6 +869,10 @@ class _WorldMapViewState extends State<WorldMapView> {
         // note on MapOptions below.)
         child: Listener(
           onPointerDown: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+          // Trackpad pinch — the gesture flutter_map itself ignores on the
+          // web ([claimTrackpadPinch]).
+          onPointerSignal: (event) =>
+              claimTrackpadPinch(event, widget.controller.pinchZoom),
           child: LayoutBuilder(
             builder: (context, constraints) {
               // The zoom-out floor is viewport-derived (#7813): out to where one
@@ -875,22 +960,23 @@ class _WorldMapViewState extends State<WorldMapView> {
                       widget.controller.onMapPositionChanged(hasGesture),
                 ),
                 children: [
-                  // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
-                  // Dark Matter (dark).
+                  // Base tiles: OpenStreetMap for both themes. Dark theme is
+                  // darkModeTileBuilder (invert + 180° hue-rotate) over the same
+                  // tiles rather than a second provider — CARTO's keyless CDN
+                  // enforces per-IP usage by serving "API KEY REQUIRED" watermark
+                  // tiles to some users (#8585), so one keyless provider is one
+                  // failure mode and one usage budget. On-brand dark styling is a
+                  // Phase 2 (vector tiles) goal — see
+                  // world-map-tiles.instructions.md.
                   //
-                  // Retina (@2x) is OFF (#7937). It used to be on for dark, to keep
-                  // that basemap's small labels sharp, but @2x is ~4x the pixels per
-                  // tile — so dark theme took roughly four times as long per tile to
-                  // arrive as light, and a slow tile is a visible gap. That is why
-                  // the loading artifact read as a DARK-mode problem specifically.
-                  // Labels are slightly softer on HiDPI as a result; legible on-brand
-                  // labels are a Phase 2 (vector tiles) goal anyway, where they cost
-                  // nothing — see world-map-tiles.instructions.md. `{r}` resolves to
-                  // an empty string with retina off, so the template is unchanged.
+                  // Retina (@2x) is OFF (#7937): @2x is ~4x the pixels per tile,
+                  // so a slow tile is a visible gap. Labels are slightly softer on
+                  // HiDPI as a result; legible on-brand labels are a Phase 2 goal
+                  // anyway, where they cost nothing.
                   TileLayer(
-                    urlTemplate: dark
-                        ? 'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-                        : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    urlTemplate:
+                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    tileBuilder: dark ? darkModeTileBuilder : null,
                     retinaMode: false,
                     // How far outside the view a tile survives pruning. flutter_map
                     // covers a still-loading level by scaling a neighbouring level it
@@ -903,6 +989,20 @@ class _WorldMapViewState extends State<WorldMapView> {
                     // requests (which matters on Phase 1's free hosted tiers).
                     keepBuffer: 5,
                     userAgentPackageName: 'com.talktolearn.chat',
+                    // #8603 hardening: contact-URL User-Agent on native, and
+                    // non-2xx responses as hard errors — see [_tileProvider].
+                    tileProvider: _tileProvider,
+                    errorTileCallback: _onTileError,
+                    // A failed tile paints transparent, so the themed map
+                    // background (#7937) shows through — a hard block degrades
+                    // to uniform paper, not a grey flash, in both themes.
+                    errorImage: MemoryImage(TileProvider.transparentImage),
+                    // Failed tiles are re-fetched once they leave the pruning
+                    // margin and come back — an offline blip heals on its own
+                    // instead of leaving permanent holes (the default `none`
+                    // pins the error tile for the session).
+                    evictErrorTileStrategy:
+                        EvictErrorTileStrategy.notVisibleRespectMargin,
                   ),
                   // world_v2: activity pins by relevance tier + state, capped by the
                   // width-driven budget. Small/mid dots render individually (no
@@ -959,10 +1059,13 @@ class _WorldMapViewState extends State<WorldMapView> {
                             attributions: [
                               TextSourceAttribution(
                                 'OpenStreetMap contributors',
-                                onTap: () {},
+                                // OSM's attribution requirement is credit +
+                                // link (#8603); a dead onTap rendered the
+                                // credit without its required target.
+                                onTap: () => launchUrlString(
+                                  'https://www.openstreetmap.org/copyright',
+                                ),
                               ),
-                              if (dark)
-                                TextSourceAttribution('CARTO', onTap: () {}),
                             ],
                           ),
                         ],

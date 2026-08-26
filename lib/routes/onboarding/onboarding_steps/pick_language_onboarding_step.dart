@@ -57,11 +57,15 @@ class PickLanguageOnboardingStep extends OnboardingStep {
       );
     });
 
-    final maxRemainingSteps = switch (state.userType) {
-      UserType.student => 0,
-      UserType.teacher => 1,
-      null => 0,
-    };
+    // A joined course adds the joined-course page after the level step, for
+    // learners and teachers alike — see joining-courses.instructions.md.
+    final maxRemainingSteps = state.joinedRoomId != null
+        ? 1
+        : switch (state.userType) {
+            UserType.student => 0,
+            UserType.teacher => 1,
+            null => 0,
+          };
 
     return PickCefrLevelOnboardingStep(
       client: client,

@@ -8,14 +8,14 @@ How profile settings are structured, stored, propagated, and surfaced to other u
 
 ## Data Model
 
-`Profile` (in [user_model.dart](lib/features/user/user_model.dart)) is the top-level container. It wraps three sub-models:
+`Profile` (in [user_model.dart](../../lib/features/user/user_model.dart)) is the top-level container. It wraps three sub-models:
 
 - **`UserSettings`** — learning prefs: target/source language, CEFR level, gender, voice, country, about, etc.
 - **`UserToolSettings`** — per-tool on/off toggles (interactive translator, grammar, immersion mode, definitions, auto-WA, autocorrect, and per-surface audio: words, choices, incoming messages).
   - **Device autocorrect default is platform-conditional**: on for Android, where the composer also passes the target language to the keyboard (`hintLocales`) so corrections land in the L2; off on iOS until the keyboard language can be targeted there ([#8465](https://github.com/pangeachat/client/issues/8465)); never on web. The stored value stays unset until the user touches the toggle, so each device resolves its own default and an explicit choice, once made, syncs to every device. Profiles saved before the default flipped keep their stored value ([#8466](https://github.com/pangeachat/client/issues/8466)).
 - **`InstructionSettings`** — which instructional tooltips the user has dismissed.
 
-A separate **`PublicProfileModel`** (in [public_profile_model.dart](lib/features/user/public_profile_model.dart)) holds data visible to other users: analytics level/XP per language, country, and about. It lives on the Matrix user profile (public), not in account data.
+A separate **`PublicProfileModel`** (in [public_profile_model.dart](../../lib/features/user/public_profile_model.dart)) holds data visible to other users: analytics level/XP per language, country, and about. It lives on the Matrix user profile (public), not in account data.
 
 > **Open question**: `country` and `about` are the only fields that cross the private → public boundary (they live in `UserSettings` but get synced to `PublicProfileModel`). It might be cleaner to keep them solely in `PublicProfileModel` and edit them in a "public profile" editor, making the privacy boundary explicit.
 
@@ -104,24 +104,28 @@ The activity-plan filter uses state event presence, but Matrix state events pers
 
 - **INVARIANT: NEVER publish a profile under an account other than the one it was loaded for.** The loaded profile carries that account's id, and the single write path refuses — and reports — a mismatch. Logout drops it, so the null every writer gates on means "not loaded yet" rather than "loaded, for someone else".
 - The mirror is exact, cleared values included: `about` and `country` published equal what `UserSettings` holds, and a cleared one is *removed*. The PUT replaces the whole field object, so omitting a key deletes it server-side. A sync that can only overwrite and never clear cannot converge — it re-writes the stale value on every settings update, which is why a foreign bio survived every later edit.
-- An `analytics_room_id` in the blob must name a room the owning user created. It is not decoration: [join_room_analytics_access_extension.dart](lib/features/analytics_access/join_room_analytics_access_extension.dart) reads it to choose the room instructors are granted into, and Synapse refuses a room the caller did not create — so a foreign id leaks nothing, but silently leaves that student's instructors with no analytics access. Ids naming rooms this user does not own are dropped when the profile is loaded; the level beside them is not verifiable and is left to the normal analytics update.
+- **The analytics mirror is keyed per language, by short code** (`fr`, not `fr-CA`). Analytics rooms and local partitions are per language ([analytics-system.instructions.md](analytics-system.instructions.md#per-language-isolation)), so every regional variant of a language shares one XP total and must report one level; a learner who has practised French as `fr`, `fr-FR` and `fr-CA` sees the same level on all three rows. Keying per locale instead gave each variant its own entry over that one shared total, each stuck at whatever the level was the last time that exact variant was the target language ([#8582](https://github.com/pangeachat/client/issues/8582)). Profiles written before that carry per-locale keys; they collapse onto the language when read, the highest level winning.
+- **A regional variant never displays a level of its own.** Once the analytics are aggregated onto the language, the language's own row carries the level and the variant rows are ordinary unlabelled options — a level shown against each variant reads as separate progress the learner does not have. For the same reason a variant is never sorted into the analytics group at the top of a target-language list: it would put a row with no level above languages that have one. Variants are legacy data and the levels aggregate down to the language before anything renders them.
+- **A published level names the language it was computed from.** A level is derived from one language's analytics across several awaits, so "the language the learner is on right now" is not the same thing as "the language this number describes" — a switch landing in that window published French's level as the learner's Dutch level (#8582).
+- **The mirror lags, so nothing showing the learner their own level reads it.** Their own level and XP come from the live local analytics data; the mirror is what *other* people see. Surfaces that do show it — a language row in the switcher or dropdown — read it through the controller's public-profile stream during build, because the profile is mutated in place and a surface holding a stale copy has no way to know. Without that, a corrected level reached whichever surface happened to rebuild next and nothing else, which is how the closed dropdown button and the open list came to disagree (#8582).
+- An `analytics_room_id` in the blob must name a room the owning user created. It is not decoration: [join_room_analytics_access_extension.dart](../../lib/features/analytics_access/join_room_analytics_access_extension.dart) reads it to choose the room instructors are granted into, and Synapse refuses a room the caller did not create — so a foreign id leaks nothing, but silently leaves that student's instructors with no analytics access. Ids naming rooms this user does not own are dropped when the profile is loaded; the level beside them is not verifiable and is left to the normal analytics update.
 
 ## Key Files
 
 | Concern | Location |
 |---|---|
-| Profile / UserSettings models | [lib/features/user/user_model.dart](lib/features/user/user_model.dart) |
-| UserController (cache, streams, updateProfile) | [lib/features/user/user_controller.dart](lib/features/user/user_controller.dart) |
-| Side-effect subscriptions | [lib/pangea/common/controllers/pangea_controller.dart](lib/pangea/common/controllers/pangea_controller.dart) |
-| Bot option propagation | [lib/features/bot/bot_client_extension.dart](lib/features/bot/bot_client_extension.dart) |
-| BotOptionsModel | [lib/features/bot/bot_options_model.dart](lib/features/bot/bot_options_model.dart) |
-| Language mismatch popup + rate limiter | [lib/routes/settings/settings_learning/](lib/routes/settings/settings_learning/) |
-| Public profile model | [lib/features/user/public_profile_model.dart](lib/features/user/public_profile_model.dart) |
-| Public profile display (about, level, country) | [lib/widgets/users/](lib/widgets/users/) |
-| Analytics-room grant that reads the public profile | [lib/features/analytics_access/join_room_analytics_access_extension.dart](lib/features/analytics_access/join_room_analytics_access_extension.dart) |
-| Settings UI | [lib/routes/settings/settings_learning/settings_learning.dart](lib/routes/settings/settings_learning/settings_learning.dart) |
-| Profile page (avatar, country, gender, about) | [lib/routes/profile/user_home_page.dart](lib/routes/profile/user_home_page.dart) |
-| Bot chat settings dialog | [lib/features/bot/widgets/bot_chat_settings_dialog.dart](lib/features/bot/widgets/bot_chat_settings_dialog.dart) |
+| Profile / UserSettings models | [lib/features/user/user_model.dart](../../lib/features/user/user_model.dart) |
+| UserController (cache, streams, updateProfile) | [lib/features/user/user_controller.dart](../../lib/features/user/user_controller.dart) |
+| Side-effect subscriptions | [lib/pangea/common/controllers/pangea_controller.dart](../../lib/pangea/common/controllers/pangea_controller.dart) |
+| Bot option propagation | [lib/features/bot/bot_client_extension.dart](../../lib/features/bot/bot_client_extension.dart) |
+| BotOptionsModel | [lib/features/bot/bot_options_model.dart](../../lib/features/bot/bot_options_model.dart) |
+| Language mismatch popup + rate limiter | [lib/routes/settings/settings_learning/](../../lib/routes/settings/settings_learning/) |
+| Public profile model | [lib/features/user/public_profile_model.dart](../../lib/features/user/public_profile_model.dart) |
+| Public profile display (about, level, country) | [lib/widgets/users/](../../lib/widgets/users/) |
+| Analytics-room grant that reads the public profile | [lib/features/analytics_access/join_room_analytics_access_extension.dart](../../lib/features/analytics_access/join_room_analytics_access_extension.dart) |
+| Settings UI | [lib/routes/settings/settings_learning/settings_learning.dart](../../lib/routes/settings/settings_learning/settings_learning.dart) |
+| Profile page (avatar, country, gender, about) | [lib/routes/profile/user_home_page.dart](../../lib/routes/profile/user_home_page.dart) |
+| Bot chat settings dialog | [lib/features/bot/widgets/bot_chat_settings_dialog.dart](../../lib/features/bot/widgets/bot_chat_settings_dialog.dart) |
 
 ## Future Work
 

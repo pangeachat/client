@@ -14,6 +14,7 @@ import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -58,7 +59,8 @@ class ConstructAnalyticsView extends StatefulWidget {
   ConstructAnalyticsViewState createState() => ConstructAnalyticsViewState();
 }
 
-class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
+class ConstructAnalyticsViewState extends State<ConstructAnalyticsView>
+    with AnalyticsUpdater {
   final TextEditingController searchController = TextEditingController();
   final List<ConstructIdentifier> selectedConstructs = [];
 

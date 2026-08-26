@@ -10,6 +10,7 @@ import 'package:fluffychat/features/languages/analytics_language_order.dart';
 import 'package:fluffychat/features/languages/l2_support_enum.dart';
 import 'package:fluffychat/features/languages/language_display_name_postfix_widget.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
+import 'package:fluffychat/features/languages/language_flag_or_fallback.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -96,149 +97,163 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
 
     sortedLanguages.sort((a, b) => sortLanguages(a, b));
 
-    // Languages the learner already has analytics in sort to the top of the
-    // L2 list, so the two or three they actually move between are reachable
-    // without scrolling or searching — profile.instructions.md, "Switching
-    // from context". Left null for the base-language list.
-    final Map<LanguageModel, LanguageAnalyticsProfileEntry>?
-    analyticsByLanguage = widget.isL2List
-        ? MatrixState
-              .pangeaController
-              .userController
-              .publicProfile
-              ?.analytics
-              .languageAnalytics
-        : null;
-
-    final order = AnalyticsLanguageOrder.of(
-      sortedLanguages,
-      analyticsByLanguage,
-    );
-    final List<LanguageModel> displayOrder = order.displayOrder;
-    final int dividerIndex = order.dividerIndex;
-
     final bool hasError = widget.error != null || widget.hasError;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Semantics(
-          container: true,
-          child: DropdownButtonFormField2<LanguageModel>(
-            customButton:
-                widget.initialLanguage != null &&
-                    sortedLanguages.contains(widget.initialLanguage)
-                ? LanguageDropDownEntry(
-                    languageModel: widget.initialLanguage!,
-                    isL2List: widget.isL2List,
-                    isDropdown: true,
-                    enabled: widget.enabled,
-                    analytics: analyticsByLanguage?[widget.initialLanguage],
-                  )
-                : null,
-            menuItemStyleData: MenuItemStyleData(
-              padding: EdgeInsets.zero,
-              customHeights: [
-                for (var i = 0; i < displayOrder.length; i++) ...[
-                  if (i == dividerIndex) _dividerItemHeight,
-                  analyticsByLanguage?[displayOrder[i]] != null
-                      ? _analyticsItemHeight
-                      : _itemHeight,
+        // Subscribed during build, and every level read inside the builder, so
+        // the closed button and the open list can never be showing two
+        // different snapshots of a profile that is mutated in place (#8582).
+        StreamBuilder(
+          stream: MatrixState
+              .pangeaController
+              .userController
+              .publicProfileStream
+              .stream,
+          builder: (context, _) {
+            // Languages the learner already has analytics in sort to the top
+            // of the L2 list, so the two or three they actually move between
+            // are reachable without scrolling or searching —
+            // profile.instructions.md, "Switching from context". Null for the
+            // base-language list, which this rule doesn't apply to.
+            final analytics = widget.isL2List
+                ? MatrixState
+                      .pangeaController
+                      .userController
+                      .publicProfile
+                      ?.analytics
+                : null;
+
+            final order = AnalyticsLanguageOrder.of(sortedLanguages, analytics);
+            final List<LanguageModel> displayOrder = order.displayOrder;
+            final int dividerIndex = order.dividerIndex;
+
+            return Semantics(
+              container: true,
+              child: DropdownButtonFormField2<LanguageModel>(
+                customButton:
+                    widget.initialLanguage != null &&
+                        sortedLanguages.contains(widget.initialLanguage)
+                    ? LanguageDropDownEntry(
+                        languageModel: widget.initialLanguage!,
+                        isL2List: widget.isL2List,
+                        isDropdown: true,
+                        enabled: widget.enabled,
+                        analytics: analytics?.displayEntryFor(
+                          widget.initialLanguage!,
+                        ),
+                      )
+                    : null,
+                menuItemStyleData: MenuItemStyleData(
+                  padding: EdgeInsets.zero,
+                  customHeights: [
+                    for (var i = 0; i < displayOrder.length; i++) ...[
+                      if (i == dividerIndex) _dividerItemHeight,
+                      analytics?.displayEntryFor(displayOrder[i]) != null
+                          ? _analyticsItemHeight
+                          : _itemHeight,
+                    ],
+                  ],
+                ),
+                decoration: InputDecoration(
+                  labelText: widget.decorationText,
+                  enabledBorder: hasError
+                      ? OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.error,
+                          ),
+                        )
+                      : null,
+                  focusedBorder: hasError
+                      ? OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.error,
+                            width: 2,
+                          ),
+                        )
+                      : null,
+                ),
+                isExpanded: true,
+                dropdownStyleData: DropdownStyleData(
+                  maxHeight: kIsWeb ? 500 : null,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14),
+                    color:
+                        widget.backgroundColor ??
+                        Theme.of(context).colorScheme.surfaceContainerHigh,
+                  ),
+                ),
+                items: [
+                  for (var i = 0; i < displayOrder.length; i++) ...[
+                    // Separates the analytics languages above from the rest of
+                    // the list; dropped once a search is typed, since
+                    // LanguageModel.search only matches a null item against an
+                    // empty query — so a filtered result list never carries a
+                    // stray rule.
+                    if (i == dividerIndex)
+                      DropdownMenuItem(
+                        enabled: false,
+                        child: ExcludeSemantics(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Divider(height: _dividerItemHeight),
+                          ),
+                        ),
+                      ),
+                    DropdownMenuItem(
+                      value: displayOrder[i],
+                      child: Container(
+                        color: widget.initialLanguage == displayOrder[i]
+                            ? Theme.of(
+                                context,
+                              ).colorScheme.primary.withAlpha(20)
+                            : Colors.transparent,
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 8,
+                          horizontal: 12,
+                        ),
+                        child: LanguageDropDownEntry(
+                          languageModel: displayOrder[i],
+                          isL2List: widget.isL2List,
+                          analytics: analytics?.displayEntryFor(
+                            displayOrder[i],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ],
-              ],
-            ),
-            decoration: InputDecoration(
-              labelText: widget.decorationText,
-              enabledBorder: hasError
-                  ? OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.error,
-                      ),
-                    )
-                  : null,
-              focusedBorder: hasError
-                  ? OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.error,
-                        width: 2,
-                      ),
-                    )
-                  : null,
-            ),
-            isExpanded: true,
-            dropdownStyleData: DropdownStyleData(
-              maxHeight: kIsWeb ? 500 : null,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14),
-                color:
-                    widget.backgroundColor ??
-                    Theme.of(context).colorScheme.surfaceContainerHigh,
-              ),
-            ),
-            items: [
-              for (var i = 0; i < displayOrder.length; i++) ...[
-                // Separates the analytics languages above from the rest of
-                // the list; dropped once a search is typed, since
-                // LanguageModel.search only matches a null item against an
-                // empty query — so a filtered result list never carries a
-                // stray rule.
-                if (i == dividerIndex)
-                  DropdownMenuItem(
-                    enabled: false,
-                    child: ExcludeSemantics(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: Divider(height: _dividerItemHeight),
-                      ),
-                    ),
-                  ),
-                DropdownMenuItem(
-                  value: displayOrder[i],
-                  child: Container(
-                    color: widget.initialLanguage == displayOrder[i]
-                        ? Theme.of(context).colorScheme.primary.withAlpha(20)
-                        : Colors.transparent,
+                onChanged: widget.enabled
+                    ? (value) => widget.onChange(value!)
+                    : null,
+                value: widget.initialLanguage,
+                dropdownSearchData: DropdownSearchData(
+                  searchController: _searchController,
+                  searchInnerWidgetHeight: 50,
+                  searchInnerWidget: Padding(
                     padding: const EdgeInsets.symmetric(
-                      vertical: 8,
-                      horizontal: 12,
+                      horizontal: 14,
+                      vertical: 10,
                     ),
-                    child: LanguageDropDownEntry(
-                      languageModel: displayOrder[i],
-                      isL2List: widget.isL2List,
-                      analytics: analyticsByLanguage?[displayOrder[i]],
+                    child: PangeaSearchBar(
+                      labelText: L10n.of(context).searchLanguagesHint,
+                      autofocus: true,
+                      controller: _searchController,
                     ),
                   ),
+                  searchMatchFn: (item, searchValue) =>
+                      LanguageModel.search(item.value, searchValue, context),
                 ),
-              ],
-            ],
-            onChanged: widget.enabled
-                ? (value) => widget.onChange(value!)
-                : null,
-            value: widget.initialLanguage,
-            dropdownSearchData: DropdownSearchData(
-              searchController: _searchController,
-              searchInnerWidgetHeight: 50,
-              searchInnerWidget: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 14,
-                  vertical: 10,
-                ),
-                child: PangeaSearchBar(
-                  labelText: L10n.of(context).searchLanguagesHint,
-                  autofocus: true,
-                  controller: _searchController,
-                ),
+                onMenuStateChange: (isOpen) {
+                  if (!isOpen) _searchController.clear();
+                },
+                enableFeedback: widget.enabled,
               ),
-              searchMatchFn: (item, searchValue) =>
-                  LanguageModel.search(item.value, searchValue, context),
-            ),
-            onMenuStateChange: (isOpen) {
-              if (!isOpen) _searchController.clear();
-            },
-            enableFeedback: widget.enabled,
-          ),
+            );
+          },
         ),
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
@@ -274,7 +289,8 @@ class LanguageDropDownEntry extends StatelessWidget {
   /// context") and, when [languageModel] also has a usable flag, promotes
   /// the leading icon from [Avatar]'s hashed-letter circle to
   /// [LanguageFlagChip]. A language with analytics but no usable flag (a
-  /// variant-disambiguated base language, or one lacking a flag asset) keeps
+  /// variant-disambiguated base language, one lacking a flag asset, or one
+  /// whose flag couldn't be fetched — see [LanguageFlagOrFallback]) keeps
   /// the circle rather than falling to [LanguageFlagChip]'s own two-letter
   /// code badge, which reads as squished at this row's size next to a full
   /// circle.
@@ -292,22 +308,27 @@ class LanguageDropDownEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final analytics = this.analytics;
+    final avatar = Avatar(name: languageModel.langCode, size: 30);
     return Row(
       children: [
         Opacity(
           opacity: enabled ? 1 : 0.5,
           child: ExcludeSemantics(
-            child: analytics != null && languageModel.shouldShowFlag
-                ? LanguageFlagChip(
+            child: analytics != null
+                ? LanguageFlagOrFallback(
                     language: languageModel,
-                    langCode: languageModel.langCode,
-                    width: 30,
-                    height: 22,
-                    radius: 4,
-                    borderWidth: 1,
-                    alwaysShowCode: false,
+                    flag: LanguageFlagChip(
+                      language: languageModel,
+                      langCode: languageModel.langCode,
+                      width: 30,
+                      height: 22,
+                      radius: 4,
+                      borderWidth: 1,
+                      alwaysShowCode: false,
+                    ),
+                    fallback: avatar,
                   )
-                : Avatar(name: languageModel.langCode, size: 30),
+                : avatar,
           ),
         ),
         const SizedBox(width: 10),

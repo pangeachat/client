@@ -83,6 +83,26 @@ void main() {
     });
   });
 
+  group('coursesHubIsOpen (hub outranks the course avatar, #8605)', () {
+    bool hub(String location) => coursesHubIsOpen(Uri.parse(location));
+
+    test('the hub token — with or without a persisting ?c= context', () {
+      expect(hub('/?left=addcourse'), isTrue);
+      expect(hub('/?left=addcoursepage:own'), isTrue);
+      // Opening the hub from inside a course keeps `?c=` — the hub still wins
+      // the highlight over the course avatar (the issue's repro).
+      expect(hub('/?c=!s:x&left=addcourse'), isTrue);
+    });
+
+    test('course surfaces and the bare context are not the hub', () {
+      expect(hub('/'), isFalse);
+      expect(hub('/?c=!s:x'), isFalse);
+      expect(hub('/?c=!s:x&left=course'), isFalse);
+      expect(hub('/?c=!s:x&left=course,room:!r'), isFalse);
+      expect(hub('/?left=chats'), isFalse);
+    });
+  });
+
   group('activeSpaceIdFor (course is the ?c= context, not the path)', () {
     test('reads the course context from ?c=, anywhere in the query', () {
       expect(space('/?c=!s:x'), '!s:x');

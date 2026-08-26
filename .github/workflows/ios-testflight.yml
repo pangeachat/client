@@ -1,8 +1,8 @@
 name: Build iOS and upload to TestFlight
 # Signed iOS build via fastlane match, uploaded to TestFlight.
-# - Called from release.yaml with environment=production on every release.
-# - Manually dispatchable for staging (or production) test builds. This is the
-#   only supported path to TestFlight; the old laptop fastlane lane is gone.
+# - Manually dispatched, choosing staging or production. This is the only
+#   supported path to TestFlight; the old laptop fastlane lane is gone, and
+#   release.yaml builds web only and never triggers a store build.
 #   The selected GitHub Environment supplies GOOGLE_SERVICES_PLIST and
 #   WEB_APP_ENV, so the Firebase project always matches the target environment
 #   (see deployment.instructions.md).

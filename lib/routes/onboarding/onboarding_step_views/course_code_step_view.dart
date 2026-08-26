@@ -78,101 +78,103 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
       children: [
         Expanded(
           child: Center(
-            child: Column(
-              spacing: 12.0,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                BotFace(
-                  expression: BotExpression.idle,
-                  useRive: true,
-                  width: 140.0,
-                ),
-                Semantics(
-                  container: true,
-                  child: Text(
-                    widget.error != null
-                        ? L10n.of(context).courseCodeStepErrorMessage
-                        : L10n.of(context).courseCodeStepTitle,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: widget.error != null
-                          ? theme.colorScheme.error
-                          : null,
+            child: SingleChildScrollView(
+              child: Column(
+                spacing: 12.0,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  BotFace(
+                    expression: BotExpression.idle,
+                    useRive: true,
+                    width: 140.0,
+                  ),
+                  Semantics(
+                    container: true,
+                    child: Text(
+                      widget.error != null
+                          ? L10n.of(context).courseCodeStepErrorMessage
+                          : L10n.of(context).courseCodeStepTitle,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: widget.error != null
+                            ? theme.colorScheme.error
+                            : null,
+                      ),
                     ),
                   ),
-                ),
-                ValueListenableBuilder(
-                  valueListenable: _showCodeInput,
-                  builder: (context, showInput, _) {
-                    if (showInput) {
-                      return Semantics(
-                        container: true,
-                        child: TextField(
-                          controller: _codeController,
-                          decoration: InputDecoration(
-                            hintText: L10n.of(context).courseCodeStepHint,
-                            helperText:
-                                '', // reserves the error space permanently
-                            errorText: widget.error != null ? '' : null,
-                            suffixIcon: widget.error != null
-                                ? Icon(
-                                    Icons.error,
-                                    color: theme.colorScheme.error,
-                                  )
-                                : null,
+                  ValueListenableBuilder(
+                    valueListenable: _showCodeInput,
+                    builder: (context, showInput, _) {
+                      if (showInput) {
+                        return Semantics(
+                          container: true,
+                          child: TextField(
+                            controller: _codeController,
+                            decoration: InputDecoration(
+                              hintText: L10n.of(context).courseCodeStepHint,
+                              helperText:
+                                  '', // reserves the error space permanently
+                              errorText: widget.error != null ? '' : null,
+                              suffixIcon: widget.error != null
+                                  ? Icon(
+                                      Icons.error,
+                                      color: theme.colorScheme.error,
+                                    )
+                                  : null,
+                            ),
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(10),
+                            ],
                           ),
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(10),
-                          ],
-                        ),
-                      );
-                    }
+                        );
+                      }
 
-                    return Column(
-                      spacing: 12.0,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsGeometry.symmetric(
-                            horizontal: 16.0,
-                          ),
-                          child: ElevatedButton(
-                            onPressed: widget.skip,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  theme.colorScheme.surfaceContainer,
-                              foregroundColor: theme.colorScheme.onSurface,
+                      return Column(
+                        spacing: 12.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsGeometry.symmetric(
+                              horizontal: 16.0,
                             ),
-                            child: Row(
-                              spacing: 8.0,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [Text(L10n.of(context).no)],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsGeometry.symmetric(
-                            horizontal: 16.0,
-                          ),
-                          child: ElevatedButton(
-                            onPressed: _setShowCodeInput,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  theme.colorScheme.surfaceContainer,
-                              foregroundColor: theme.colorScheme.onSurface,
-                            ),
-                            child: Row(
-                              spacing: 8.0,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [Text(L10n.of(context).yes)],
+                            child: ElevatedButton(
+                              onPressed: widget.skip,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    theme.colorScheme.surfaceContainer,
+                                foregroundColor: theme.colorScheme.onSurface,
+                              ),
+                              child: Row(
+                                spacing: 8.0,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [Text(L10n.of(context).no)],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              ],
+                          Padding(
+                            padding: EdgeInsetsGeometry.symmetric(
+                              horizontal: 16.0,
+                            ),
+                            child: ElevatedButton(
+                              onPressed: _setShowCodeInput,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    theme.colorScheme.surfaceContainer,
+                                foregroundColor: theme.colorScheme.onSurface,
+                              ),
+                              child: Row(
+                                spacing: 8.0,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [Text(L10n.of(context).yes)],
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),

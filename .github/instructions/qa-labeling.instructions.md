@@ -5,7 +5,7 @@ description: "How a client issue's testing platforms are chosen — the platform
 
 # QA Platform Labeling (Client)
 
-Extends the org-wide [qa-testing-process](../../../.github/instructions/qa-testing-process.instructions.md), which owns the label vocabulary, the tested-on-staging flip, and the QA-complete definition that gates a release. This doc covers one client-specific thing: **which** of the four platform labels an issue gets, rather than always getting all four.
+Extends the org-wide [qa-testing-process](../../../.github/.github/instructions/qa-testing-process.instructions.md), which owns the label vocabulary, the tested-on-staging flip, and the QA-complete definition that gates a release. This doc covers one client-specific thing: **which** of the four platform labels an issue gets, rather than always getting all four.
 
 Client issues carried all four since the auto-labeling workflow was introduced. Only 47 of 1,235 files under `lib/` contain platform-conditional code, so most changes were being verified four times against identical code paths, and the queue grew faster than it could drain. This narrows the set to what a change can actually break.
 
@@ -52,7 +52,7 @@ Evaluated in order; first match wins:
 | **Evaluated** ticked, ≥1 platform ticked | Exactly the ticked platforms |
 | **Evaluated** ticked, 0 platforms ticked | `does not need testing` |
 
-The last row is an explicit statement that the change needs no human verification, and the issue's edit history records who made it. See [Exemptions](../../../.github/instructions/qa-testing-process.instructions.md#exemptions) for the accountability that carries.
+The last row is an explicit statement that the change needs no human verification, and the issue's edit history records who made it. See [Exemptions](../../../.github/.github/instructions/qa-testing-process.instructions.md#exemptions) for the accountability that carries.
 
 **INVARIANT: every unclear case resolves to all four labels.** A missing section, an unticked box, a body the parser cannot read — all fail toward more testing. NEVER change this so that ambiguity yields fewer labels than today.
 

@@ -296,6 +296,8 @@ class WorldMapPinsManager {
         final timeline = await space.getTimeline();
         for (final e in timeline.events) {
           if (!e.originServerTs.isAfter(cutoff)) continue;
+          // Own pings recruit others, never their sender (#8610).
+          if (e.senderId == client.userID) continue;
           final id = e.content['pangea.activity.id'];
           if (id is String && id.isNotEmpty) pinged.add(id);
         }

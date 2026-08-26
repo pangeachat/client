@@ -38,4 +38,4 @@ The client tracks potential subscription changes via the [SubscriptionManagement
 
 ## Managing a subscription
 
-Settings shows the current plan and billing history natively, cancels in the app, and opens a Stripe-hosted page only to change the payment card. This is account management, shown on every platform. Institution-sponsored learners see who sponsors their access in place of a paywall.
+Settings shows the current plan and billing history natively, cancels in the app, and opens a Stripe-hosted page only to change the payment card. This is account management, shown on every platform. Seat-sponsored learners (Group or Institution tier) see who sponsors their access in place of a paywall.
