@@ -300,6 +300,22 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return _lastEventTimestampBox.get('analytics_room_id');
   }
 
+  /// Every language this device holds analytics for.
+  ///
+  /// The store is partitioned per language and keeps every language the learner
+  /// has studied here, not just the active one — so the correct level for all of
+  /// them is already on hand, which is what lets the published profile be
+  /// reconciled rather than only corrected for whichever language is current
+  /// (#8611).
+  Future<Set<String>> storedLanguages() async {
+    final keys = await _derivedStatsBox.getAllKeys();
+    return keys
+        .where((key) => key.endsWith('|derived_stats'))
+        .map((key) => key.split('|').first)
+        .where((language) => language.isNotEmpty)
+        .toSet();
+  }
+
   Future<DerivedAnalyticsDataModel> getDerivedStats(String language) async {
     final raw = await _derivedStatsBox.get(_langKey('derived_stats', language));
     return raw == null

@@ -88,7 +88,26 @@ class AnalyticsDataService {
   Completer<void> initCompleter = Completer<void>();
   Object? initError;
 
-  AnalyticsDataService(this._accountClient) {
+  /// Opens the analytics store. Injectable so a test can drive the real init
+  /// path against an in-memory database.
+  ///
+  /// Nothing could reach that path before (#8611): every existing test either
+  /// fakes this whole service or drives [AnalyticsDatabase] directly. That gap
+  /// is how #8592 shipped a read on the init path which waited for init to
+  /// finish — a hang that a green suite could not see.
+  final Future<AnalyticsDatabase> Function(String name) _databaseBuilder;
+
+  /// Completes once the store is open and the service can serve reads that do
+  /// not gate on init — strictly BEFORE [initCompleter], which waits for the
+  /// whole of [_initAnalytics]. A test uses it to reach the state the init path
+  /// actually runs in: store ready, init still in flight.
+  @visibleForTesting
+  final Completer<void> databaseReady = Completer<void>();
+
+  AnalyticsDataService(
+    this._accountClient, {
+    Future<AnalyticsDatabase> Function(String name)? databaseBuilder,
+  }) : _databaseBuilder = databaseBuilder ?? analyticsDatabaseBuilder {
     updateDispatcher = AnalyticsUpdateDispatcher(this);
     updateService = AnalyticsUpdateService(this);
     _initDatabase(_accountClient);
@@ -161,10 +180,9 @@ class AnalyticsDataService {
       ),
     );
 
-    final database = await analyticsDatabaseBuilder(
-      "${client.clientName}_analytics",
-    );
+    final database = await _databaseBuilder("${client.clientName}_analytics");
     _analyticsClient = _AnalyticsClient(client: client, database: database);
+    if (!databaseReady.isCompleted) databaseReady.complete();
 
     if (client.isLogged()) {
       // Pin the dosage account mxid the moment we know we are logged in, BEFORE
@@ -265,6 +283,8 @@ class AnalyticsDataService {
         await updateXPOffset(xpOffset, l2.langCodeShort);
       }
 
+      await reconcilePublishedLevels();
+
       _syncController!.start();
       updateService.start();
 
@@ -281,6 +301,33 @@ class AnalyticsDataService {
       updateDispatcher.sendEmptyAnalyticsUpdate();
       updateDispatcher.sendActivityAnalyticsUpdate(null);
     }
+  }
+
+  /// Publishes the level this device derives for every language it holds
+  /// analytics for, not just the one the learner is currently studying.
+  ///
+  /// Without this the published profile is only ever corrected for the active
+  /// language, so a wrong entry for any other language stays wrong until the
+  /// learner switches to it — which is why the profiles corrupted before #8592
+  /// did not heal on their own.
+  ///
+  /// Reads the store DIRECTLY rather than through [derivedData]: this runs
+  /// inside init, and [derivedData] waits on the completer that init has not
+  /// reached yet (#8592). The init-path tests pin that.
+  @visibleForTesting
+  Future<void> reconcilePublishedLevels() async {
+    final database = _analyticsClientGetter.database;
+    final languages = await database.storedLanguages();
+    if (languages.isEmpty) return;
+
+    final levels = <String, int>{};
+    for (final language in languages) {
+      levels[language] = (await database.getDerivedStats(language)).level;
+    }
+
+    await MatrixState.pangeaController.userController.reconcileAnalyticsLevels(
+      levels,
+    );
   }
 
   /// Seed the merge table from the stored aggregates. Reads identifiers only
