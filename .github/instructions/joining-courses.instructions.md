@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/features/join_codes/**,lib/routes/chat_list/**,lib/routes/courses/**,lib/pangea/spaces/**,lib/utils/url_launcher.dart,lib/config/routes.dart,web/index.html,ios/Runner/Runner.entitlements,android/app/src/main/AndroidManifest.xml"
+applyTo: "lib/features/join_codes/**,lib/routes/chat_list/**,lib/routes/courses/**,lib/routes/onboarding/**,lib/pangea/spaces/**,lib/utils/url_launcher.dart,lib/config/routes.dart,web/index.html,ios/Runner/Runner.entitlements,android/app/src/main/AndroidManifest.xml"
 ---
 
 # Joining Courses — Client Design
@@ -39,6 +39,25 @@ A course carries its own target language — the quest's, the same field its inf
 - An **activity session**: the activity page with that session bound (join/resume) — the invite means "come join my session", so it never lands on the parent course, and no course context is forced open alongside it (an invitee outside the course cannot load that course; forcing it open showed an endless spinner).
 
 **Pre-login**: a logged-out visitor is bounced to login, which drops the destination URL, so the `/` auth guard ([`PAuthGaurd`](../../lib/pangea/common/utils/p_vguard.dart)) caches the code (`SpaceCodeRepo`) first. After login, the SAME guard's logged-in branch redirects the landing into the join flow — the guard rather than a login-state listener, because it is the one place every login transport passes through (a web SSO login returns via a full page reload, and a restored session boots straight in; a listener never fires for those). Only the join page's actually-firing submit consumes the cache — anything earlier proved lossy under competing boot-time navigations, and an interrupted attempt just retries on the next logged-in landing. A brand-new user's onboarding joins with the cached code instead. The same ferry carries a shared activity link (`/<uuid>`): its activity id is cached across the bounce, the guard redirects the logged-in landing into the activity token, and opening the activity panel consumes it; a pending join code outranks a pending activity. It also carries the DM invite link (`/invite_user/<id>`, [routing.instructions.md](routing.instructions.md#ids-in-urls)): the invite route never renders — its redirect caches the invited user id (on every landing, not only the bounce) and lands the user on the world map with the chat list open — and the shell itself opens the DM from there and consumes the entry once the DM has actually opened (or definitively failed). It waits behind a pending join code or activity — lowest in the same precedence — and takes its turn on the next workspace navigation. Nothing else replays the cache — a stale code must never re-fire a join from an unrelated screen — and it is time-stamped and expires (`SpaceCodeRepo.cacheTTL`) so a visitor who never logs in can't leave a code that surprise-joins a much later login.
+
+### Onboarding with a link-joined course
+
+A new user arriving by class link signs up before joining, so the join runs inside onboarding: after they choose learner or teacher, onboarding joins with the ferried code and then loads the quest behind the course, which supplies the course title, description, target language and level.
+
+**Joining and loading the quest are separate outcomes.** A course space can be joined while its quest does not resolve — the space points at a retired or v1 plan id, or the content service is briefly unavailable. Treating that as a failed join is what produced #8593: the user was already a member but was still asked for a class code, with the ferried code discarded so the field they were shown was empty.
+
+Once the user is a member, onboarding continues as a joined-course flow and the class-code step is not shown. It ends on the joined-course page for learners and teachers alike — for a teacher that page takes the place of the course-request step, since they already have a course. What comes before it depends on the quest:
+
+| Quest resolves | What the user does first |
+| --- | --- |
+| Yes | Nothing — the quest supplies target language, base language and level, and onboarding goes straight to the joined-course page with the full course card |
+| No | The user supplies what the quest could not, then lands on the joined-course page built from the space alone — its name, avatar and teacher, with no course card |
+
+**The space records its own target language,** in the `pangea.course_plan` state event next to the quest id ([`CoursePlanEvent`](../../lib/features/course_plans/courses/course_plan_event.dart)). When it is there, onboarding records it as the user's target language and their device language as their base language, and only the level is asked for. Onboarding always writes both languages to the profile, whether the user chose them or the course supplied them.
+
+The language step is still shown in two cases: the space records no language — spaces predate the field, and the old spaces are the ones whose quests fail — or the course teaches the user's own device language, since a course cannot be taught in the language it teaches.
+
+None of this repairs the quest: the space still points at an id the content service cannot return, so the course plan page fails the same way after onboarding.
 
 **matrix.to links**: Standard Matrix links (`https://matrix.to/#/...`) go through a separate path. For knock-only rooms, this shows the public room bottom sheet with a code field and "Ask to Join" button.
 

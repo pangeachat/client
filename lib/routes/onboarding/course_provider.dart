@@ -5,6 +5,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart'
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_repo.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_request_model.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_response_model.dart';
@@ -22,7 +23,11 @@ abstract class CourseProvider {
 
   Future<String> joinSpaceWithCode(String code);
 
-  Future<CoursePlanModel> getCourseByRoomId(String roomId);
+  /// The joined course's quest, or null when it cannot be resolved — a space
+  /// pointing at a retired plan id, or a content service that didn't answer.
+  /// The join still stands, so onboarding continues without the course's
+  /// details (#8593).
+  Future<CoursePlanModel?> getCourseByRoomId(String roomId);
 
   Future<Result<CustomCourseResponseModel>> requestCustomCourse(
     CustomCourseRequestModel request,
@@ -54,13 +59,24 @@ class ClientCourseProvider implements CourseProvider {
   }
 
   @override
-  Future<CoursePlanModel> getCourseByRoomId(String roomId) async {
-    final courseId = await client.getCourseIdByRoomId(roomId);
-    final quest = await QuestPlansRepo.get(courseId);
-    if (quest == null) {
-      throw Exception('No quest plan found for course $courseId');
+  Future<CoursePlanModel?> getCourseByRoomId(String roomId) async {
+    try {
+      final courseId = await client.getCourseIdByRoomId(roomId);
+      final quest = await QuestPlansRepo.get(courseId);
+      if (quest == null) {
+        // Reported once per course: an orphaned course re-fails for every user
+        // who joins it, and each repeat carries no new signal (#8083).
+        await ErrorHandler.logErrorOnce(
+          key: 'onboarding-course-load:$courseId',
+          e: Exception('No quest plan found for course $courseId'),
+          data: {'roomId': roomId},
+        );
+      }
+      return quest;
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'roomId': roomId});
+      return null;
     }
-    return quest;
   }
 
   @override
@@ -81,7 +97,7 @@ class MockCourseProvider implements CourseProvider {
       '!aeSvkSZmeiXqgwLVNS:staging.pangea.chat';
 
   @override
-  Future<CoursePlanModel> getCourseByRoomId(String roomId) async =>
+  Future<CoursePlanModel?> getCourseByRoomId(String roomId) async =>
       CoursePlanModel(
         targetLanguage: "es",
         languageOfInstructions: "en",
