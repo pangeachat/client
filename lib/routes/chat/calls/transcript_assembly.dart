@@ -87,6 +87,7 @@ class HalfAccounting {
     this.drainComplete = true,
     this.declared = false,
     this.incoherent = false,
+    this.readerShortened = false,
     this.unreadableContent = false,
   });
 
@@ -119,6 +120,18 @@ class HalfAccounting {
   /// the same footing as [incoherent].
   final bool unreadableContent;
 
+  /// WE dropped part of this half to stay within our own ceilings.
+  ///
+  /// Distinct from [truncated], which is the writer saying it could not fit
+  /// what it had. Both set [truncated] -- the state has to read as incomplete
+  /// either way -- but only this one is ours, and reporting our ceiling as the
+  /// writer omitting segments to fit sends whoever reads it to the wrong
+  /// device. The second time `truncated` standing for two causes has cost a
+  /// wrong diagnosis here.
+  ///
+  /// Reader-side, so it is not serialised and takes no part in [declared].
+  final bool readerShortened;
+
   Map<String, dynamic> toJson() => {
     'chunks_captured': chunksCaptured,
 
@@ -142,6 +155,7 @@ class HalfAccounting {
     segmentsOmitted: segmentsOmitted,
     drainComplete: drainComplete,
     declared: declared,
+    readerShortened: readerShortened,
     incoherent: true,
     unreadableContent: unreadableContent,
   );
@@ -159,6 +173,7 @@ class HalfAccounting {
     segmentsOmitted: segmentsOmitted,
     drainComplete: drainComplete,
     declared: declared,
+    readerShortened: true,
     incoherent: incoherent,
     unreadableContent: true,
   );
@@ -172,6 +187,7 @@ class HalfAccounting {
     segmentsOmitted: segmentsOmitted,
     drainComplete: drainComplete,
     declared: declared,
+    readerShortened: true,
     incoherent: incoherent,
     unreadableContent: unreadableContent,
   );
@@ -255,6 +271,10 @@ enum HalfIssue {
   /// Words were dropped to fit the event under the server's size limit.
   tooLongToSend,
 
+  /// WE dropped part of it at one of our own ceilings. Ours, not theirs, and
+  /// the distinction is which device somebody should go and look at.
+  tooLongToRead,
+
   /// Part of the half could not be read. A corrupt entry, not a size problem.
   contentUnreadable,
 
@@ -283,8 +303,16 @@ class TranscriptHalf {
   final HalfAccounting accounting;
   final HalfState state;
 
-  /// Whether OUR read of the room fell short, as opposed to the writer
-  /// admitting a gap in what it sent.
+  /// Whether OUR read of the room fell short -- we stopped before the server
+  /// ran out -- as opposed to the writer admitting a gap in what it sent.
+  ///
+  /// NOT the same question as whether the transcript may be called whole. That
+  /// also fails when we cannot name who was on the call, and copying THAT here
+  /// made every half of such a call report "we could not read it" ahead of a
+  /// microphone that never opened or audio that was lost. Not knowing who
+  /// spoke is a fact about the CALL; it says nothing about our read of any
+  /// particular half. Conflating a whole-transcript condition with a per-half
+  /// one is the same mistake, one level up, that this field was added to fix.
   ///
   /// [HalfState.incomplete] means both, and that is right for the screen --
   /// "we cannot show you all of this" is one message either way. It is wrong
@@ -323,6 +351,7 @@ class TranscriptHalf {
     // logged as the writer losing audio, and nothing said we had not
     // finished looking.
     if (accounting.unreadableContent) return HalfIssue.contentUnreadable;
+    if (accounting.readerShortened) return HalfIssue.tooLongToRead;
     if (readWasCutShort) return HalfIssue.couldNotRead;
 
     if (accounting.captureRefused) return HalfIssue.microphoneRefused;
@@ -434,6 +463,14 @@ CallTranscript assembleTranscript({
   required List<String> expectedSenders,
   bool exhausted = true,
   bool participantsKnown = true,
+
+  /// Senders whose event the reader found and could not parse.
+  ///
+  /// Separate from [candidates] precisely because there is nothing to place: a
+  /// content that will not parse still carries a SENDER, and that is the whole
+  /// difference between "they wrote nothing" and "they wrote something we
+  /// could not read".
+  Set<String> unreadableSenders = const {},
 }) {
   final bySender = <String, TranscriptCandidate>{};
 
@@ -476,15 +513,22 @@ CallTranscript assembleTranscript({
   for (final senderId in senders) {
     final candidate = bySender[senderId];
 
+    // Something arrived from them that we could not read. It is not absence,
+    // whatever else the read managed, and it is not the writer's fault.
+    final wasUnreadable = unreadableSenders.contains(senderId);
+
     if (candidate == null) {
       halves.add(
         TranscriptHalf(
           senderId: senderId,
           segments: const [],
-          accounting: const HalfAccounting(),
-          // A read that cannot conclude cannot tell absent from unread.
-          state: canConclude ? HalfState.absent : HalfState.incomplete,
-          readWasCutShort: !canConclude,
+          accounting: HalfAccounting(unreadableContent: wasUnreadable),
+          // A read that cannot conclude cannot tell absent from unread -- and
+          // neither can one that held their event and could not parse it.
+          state: (canConclude && !wasUnreadable)
+              ? HalfState.absent
+              : HalfState.incomplete,
+          readWasCutShort: !exhausted,
         ),
       );
       continue;
@@ -494,11 +538,19 @@ CallTranscript assembleTranscript({
       TranscriptHalf(
         senderId: senderId,
         segments: List.unmodifiable(candidate.segments),
-        accounting: candidate.accounting,
-        state: (!canConclude || candidate.accounting.writerAdmitsGaps)
+        // A half we DID place, from a sender who also sent something we
+        // could not read. The unreadable one may have been the fuller copy,
+        // so what is shown is not known to be everything they said.
+        accounting: wasUnreadable
+            ? candidate.accounting.readerFoundUnreadable()
+            : candidate.accounting,
+        state:
+            (!canConclude ||
+                wasUnreadable ||
+                candidate.accounting.writerAdmitsGaps)
             ? HalfState.incomplete
             : HalfState.present,
-        readWasCutShort: !canConclude,
+        readWasCutShort: !exhausted,
       ),
     );
   }

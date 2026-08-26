@@ -715,6 +715,58 @@ void main() {
       expect(issueOf(clean, exhausted: false), HalfIssue.couldNotRead);
     });
 
+    test('OUR ceiling is not the writer saying it could not fit', () {
+      // Both set `truncated`, because the half reads as incomplete either
+      // way. Only one of them is ours, and reporting our ceiling as the
+      // writer omitting segments to fit sends whoever reads the bug report to
+      // the wrong device. Second time `truncated` standing for two causes has
+      // cost a wrong diagnosis in this feature.
+      const writersOwn = HalfAccounting(
+        chunksCaptured: 4,
+        chunksTranscribed: 4,
+        truncated: true,
+        segmentsOmitted: 3,
+        declared: true,
+      );
+
+      expect(issueOf(writersOwn), HalfIssue.tooLongToSend);
+      expect(issueOf(writersOwn.readerTruncated()), HalfIssue.tooLongToRead);
+    });
+
+    test('not knowing who spoke does not mask what a half admits', () {
+      // Whether the transcript may be called whole and whether OUR read of
+      // this half fell short are different questions. Deriving the second
+      // from the first made every half of a call with an unnameable peer
+      // report "we could not read it" ahead of the concrete thing it said.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            accounting: const HalfAccounting(
+              chunksCaptured: 4,
+              chunksTranscribed: 2,
+              chunksLost: 2,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [alice],
+        participantsKnown: false,
+      );
+
+      final half = transcript.halves.single;
+      expect(
+        half.state,
+        HalfState.incomplete,
+        reason: 'the screen still hedges: we cannot name who was on the call',
+      );
+      expect(
+        half.issue,
+        HalfIssue.audioLost,
+        reason: 'but the diagnosis keeps the fact somebody can act on',
+      );
+    });
+
     test('an impossible accounting is reported before what it claims', () {
       // A half that cannot be true tells us nothing reliable about any of its
       // own fields. Reporting one of them as the cause repeats the half's own

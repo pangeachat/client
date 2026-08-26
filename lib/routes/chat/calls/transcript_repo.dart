@@ -59,6 +59,16 @@ Future<CallTranscript> fetchCallTranscript({
   int maxEvents = kMaxRelationEvents,
 }) async {
   final candidates = <TranscriptCandidate>[];
+
+  // Senders whose event we found and could NOT parse.
+  //
+  // Dropping it silently and moving on let assembly see no half from that
+  // sender and, on an exhausted read, report them ABSENT -- "no transcript
+  // from them", when the truth is that they wrote one and we could not read
+  // it. The event's SENDER survives a content that does not, so this costs
+  // one set and closes the last route from a reader failure to a claim about
+  // what somebody did.
+  final unreadable = <String>{};
   var exhausted = false;
   var cappedMidPage = false;
   var seen = 0;
@@ -90,7 +100,10 @@ Future<CallTranscript> fetchCallTranscript({
       if (event.type != CallTranscriptContent.relType) continue;
 
       final content = CallTranscriptContent.fromJson(event.content);
-      if (content == null) continue;
+      if (content == null) {
+        unreadable.add(event.senderId);
+        continue;
+      }
 
       // A half whose content names a different call is not this call's, even
       // though the server returned it under this anchor.
@@ -126,6 +139,7 @@ Future<CallTranscript> fetchCallTranscript({
     // An encrypted room is never an exhausted read, whatever the server said
     // about paging: we reached the end of a list we could not read.
     exhausted: exhausted && !encrypted,
+    unreadableSenders: unreadable,
   );
 
   // Recorded for every half that is not clean, by default and at read time.

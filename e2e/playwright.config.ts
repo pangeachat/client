@@ -65,5 +65,31 @@ export default defineConfig({
       },
       dependencies: ["setup"],
     },
+    {
+      // A real 1:1 call needs TWO parties, each with their OWN voice.
+      //
+      // One machine has one microphone, so a live two-party call can never be
+      // tested by hand here: both sides would capture the same room and
+      // per-speaker attribution -- the whole point of the transcript -- is
+      // exactly what cannot be checked. Chromium's fake capture solves it:
+      // each browser context is handed its own WAV file as its microphone, so
+      // the two halves carry provably different speech.
+      //
+      // No storageState: this project signs both accounts in itself, because
+      // the shared one is a single account and a call needs two.
+      name: "calls",
+      testMatch: /calls\/.*\.spec\.ts/,
+      use: {
+        ...devices["Desktop Chrome"],
+        permissions: ["microphone"],
+        launchOptions: {
+          args: [
+            "--use-fake-ui-for-media-stream",
+            "--use-fake-device-for-media-stream",
+            "--autoplay-policy=no-user-gesture-required",
+          ],
+        },
+      },
+    },
   ]
 });

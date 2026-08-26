@@ -273,9 +273,51 @@ void main() {
         expectedSenders: [alice, bob],
       );
 
+      // The read survives, which is what the name promises: alice's half is
+      // still there and the view still renders.
       expect(_halfFor(transcript, alice).segments, isNotEmpty);
-      expect(_halfFor(transcript, bob).state, HalfState.absent);
+
+      // And bob is NOT absent. This test used to assert he was, which is the
+      // one thing that cannot be true: an event of his arrived, we held it,
+      // and we could not parse it. "No transcript from bob" is a claim about
+      // what bob did, made on the strength of our own failure to read what he
+      // sent -- and the sender survives a content that does not, so there was
+      // never any need to guess.
+      expect(_halfFor(transcript, bob).state, HalfState.incomplete);
+      expect(_halfFor(transcript, bob).accounting.unreadableContent, isTrue);
+      expect(_halfFor(transcript, bob).issue, HalfIssue.contentUnreadable);
     });
+
+    test(
+      'an unreadable duplicate does not present the rest as whole',
+      () async {
+        // A sender with TWO events, one readable and one not. The half we can
+        // show is real, but the one we dropped may have been the fuller copy --
+        // so what is shown is not known to be everything they said.
+        final broken = MatrixEvent(
+          type: CallTranscriptContent.relType,
+          eventId: '\$broken',
+          senderId: alice,
+          originServerTs: DateTime.fromMillisecondsSinceEpoch(9),
+          content: const {'nothing': 'useful'},
+        );
+        final p = _pages([
+          (chunk: [_half(alice), broken], next: null),
+        ]);
+
+        final transcript = await fetchCallTranscript(
+          fetch: p.fetch,
+          roomId: _room,
+          callKey: _callKey,
+          expectedSenders: [alice],
+        );
+
+        final half = _halfFor(transcript, alice);
+        expect(half.segments, isNotEmpty);
+        expect(half.state, HalfState.incomplete);
+        expect(half.issue, HalfIssue.contentUnreadable);
+      },
+    );
 
     test('a non-participant who wrote a half gets no section', () async {
       final p = _pages([
