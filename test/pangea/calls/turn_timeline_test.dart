@@ -211,4 +211,59 @@ void main() {
       expect(secondY, lessThan(thirdY));
     },
   );
+
+  testWidgets(
+    'sizes to its content inside an unbounded scrollable, so what follows it '
+    'still renders',
+    (tester) async {
+      // The real arrangement, not a bounded stand-in: CallTranscriptView
+      // places this widget inside a ListView, alongside the absent/silent/
+      // unreadable notes that belong below the conversation. A ListView
+      // hands each child UNBOUNDED height on purpose, so it can measure the
+      // child's own natural size. Every other test in this file pumps
+      // TurnTimeline straight into a bounded Scaffold body, where a Column
+      // defaulting to MainAxisSize.max is harmless and invisible -- this is
+      // the one arrangement that can actually see the defect, because the
+      // defect only exists in composition: a Column that tries to fill
+      // unbounded height reports back something Flutter treats as
+      // effectively infinite, and a ListView lays out lazily, so anything
+      // placed after it in the list is pushed past that and never built.
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('en'),
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+          home: Scaffold(
+            body: ListView(
+              children: [
+                TurnTimeline(
+                  turns: [
+                    turn(text: 'first spoken'),
+                    turn(
+                      senderId: '@b:server',
+                      name: 'Bob',
+                      at: const Duration(seconds: 5),
+                      text: 'second spoken',
+                    ),
+                  ],
+                ),
+                const Text('trailing marker'),
+              ],
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+      // Found at all -- a widget past an infinitely-tall sibling in a lazy
+      // ListView is never built, so this is the assertion that would
+      // otherwise fail with "0 widgets found", not a wrong-position error.
+      expect(find.text('trailing marker'), findsOneWidget);
+      expect(
+        tester.getTopLeft(find.text('trailing marker')).dy,
+        greaterThan(tester.getTopLeft(find.text('second spoken')).dy),
+      );
+    },
+  );
 }

@@ -81,6 +81,15 @@ class TurnTimeline extends StatelessWidget {
     final ordered = _byTime(turns);
 
     return Column(
+      // Explicit, not left to the default: a Column's main-axis size
+      // defaults to filling whatever its parent offers, and the parent this
+      // widget is built for is someone else's scrollable -- which hands its
+      // children UNBOUNDED height on purpose, so each can report its own
+      // natural size. This widget must size to its CONTENT there, not to
+      // however much of that unbounded space it happens to be handed; a
+      // ListView lays out lazily, so anything a caller places after this
+      // widget only renders if this one reports a sane height first.
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         for (var i = 0; i < ordered.length; i++)
@@ -166,6 +175,16 @@ class _Turn extends StatelessWidget {
         const SizedBox(width: TurnTimeline._avatarGap),
         Expanded(
           child: Column(
+            // Same exposure as the outer Column, and for the same reason:
+            // Expanded governs the ROW's main axis (width) only. Along the
+            // Row's cross axis (height) a non-stretch child is simply handed
+            // the Row's own incoming height constraint, and the Row is
+            // itself a non-flex child of the outer Column -- which always
+            // gives non-flex children an unbounded main-axis constraint,
+            // regardless of the outer Column's own mainAxisSize. So this
+            // Column inherits the same unbounded height once embedded in a
+            // scrollable, and must size to content for the same reason.
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (showHeader) ...[
