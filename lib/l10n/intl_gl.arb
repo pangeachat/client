@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-24 11:54:16.273464",
+    "@@last_modified": "2026-08-25 15:25:42.673988",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3360,14 +3360,12 @@
     "enableAutocorrectPopupTitle": "Engade o teu teclado de idioma obxectivo indo a:",
     "enableAutocorrectPopupSteps": "  • Configuración\n  • Xeral\n  • Teclado\n  • Teclados\n  • Engadir novo teclado",
     "enableAutocorrectPopupDescription": "Unha vez que se seleccione o idioma, podes facer clic na pequena icona do globo na parte inferior esquerda do teu teclado para activar o teclado recentemente instalado.",
-    "downloadGboardSteps": " • Descarga Gboard\n  • Abre a aplicación\n  • Idiomas\n  • Engadir teclado\n  • Seleccionar idioma\n  • Seleccionar tipo de teclado\n  • Listo",
     "enableAutocorrectWarning": "¡Advertencia! É necesario engadir o teclado do teu idioma obxectivo",
     "displayName": "Nome para amosar",
     "leaveRoomDescription": "Estás a piques de abandonar este chat. Outros usuarios verán que saíste do chat.",
     "confirmUserId": "Por favor, confirma o teu nome de usuario de Pangea Chat para eliminar a túa conta.",
     "paidSubscriptionStarts": "Comeza o {startDate}",
     "cancelInSubscriptionSettings": "• Cancelar en calquera momento na configuración da subscrición",
-    "downloadGboard": "Descargar Gboard",
     "autocorrectNotAvailable": "Lamentablemente, a túa plataforma actualmente non é compatible con esta función. ¡Mantente atento para máis desenvolvementos!",
     "pleaseUpdateApp": "Actualiza a aplicación para continuar.",
     "chooseEmojiInstructionsBody": "Combina emojis coas palabras que mellor as representan. Non te preocupes! Non hai puntos en contra por discrepar. 😅",
@@ -5567,10 +5565,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5596,10 +5590,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9759,8 +9749,18 @@
     "autocorrectAndroidFallbackTitle": "Se o teu teclado non ofrece o teu idioma de destino, instala Gboard e engade o idioma alí:",
     "resendInSeconds": "Reenviar ({seconds})",
     "mapLevelFallbackNotice": "Aínda non hai actividades {selected} — mostrándose {shown} no seu lugar.",
+    "openKeyboardSettings": "Abrir axustes do teclado",
+    "keyboardPromptAddKeyboardMessage": "Engade un teclado para o teu idioma de destino para que funcione o autocorrector.",
+    "keyboardPromptAddKeyboardAction": "Engadir teclado",
+    "keyboardPromptSwitchKeyboardMessage": "Toca a icona do globo no teu teclado para cambiar ao teu idioma de destino.",
     "switchLanguageChipLabel": "Cambiar a {language}",
     "languageDropdownLevel": "Nivel {level}",
     "whatAreYouLearning": "Que estás a aprender?",
-    "languageSwitcherBaseLanguageLabel": "A túa lingua base"
+    "languageSwitcherBaseLanguageLabel": "A túa lingua base",
+    "listenModeDescription": "Toca unha opción para escoitala. Non hai nada seleccionado.",
+    "rateActivityLiked": "Gustoume",
+    "rateActivityDisliked": "Non me gustou",
+    "constructUseHrdDesc": "Escoitado",
+    "timesHeard": "{count, plural, =1{Escoitado unha vez} other{Escoitado {count} veces}}",
+    "allSettings": "Todos os axustes"
 }

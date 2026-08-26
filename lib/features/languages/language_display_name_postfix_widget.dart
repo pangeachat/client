@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/languages/language_flag_or_fallback.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
@@ -26,26 +27,31 @@ class LanguageDisplayNamePostfixWidget extends StatelessWidget {
         style: style,
         children: [
           TextSpan(text: language.getDisplayName(L10n.of(context))),
-          if (language.shouldShowFlag) ...[
-            WidgetSpan(
-              child: SizedBox(width: spacing),
-            ), // Add some spacing between the text and the icon
-            WidgetSpan(
-              alignment: PlaceholderAlignment.middle,
-              child: SizedBox(
-                width: iconSize,
-                height: iconSize,
-                child: NetworkSvg(
-                  svgUrl: language.svgUrl.toString(),
-                  placeholder: const Center(
-                    child: CircularProgressIndicator(strokeWidth: 0.5),
-                  ),
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: LanguageFlagOrFallback(
+              language: language,
+              // The gap belongs to the flag: without one, what follows the
+              // name sits right after it rather than after a hole where a
+              // flag isn't (#8548).
+              flag: Padding(
+                padding: EdgeInsetsDirectional.only(start: spacing),
+                child: SizedBox(
                   width: iconSize,
                   height: iconSize,
+                  child: NetworkSvg(
+                    svgUrl: language.svgUrl.toString(),
+                    placeholder: const Center(
+                      child: CircularProgressIndicator(strokeWidth: 0.5),
+                    ),
+                    width: iconSize,
+                    height: iconSize,
+                  ),
                 ),
               ),
+              fallback: const SizedBox.shrink(),
             ),
-          ],
+          ),
         ],
       ),
     );

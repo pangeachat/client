@@ -74,7 +74,7 @@ extension LocalNotificationsExtension on MatrixState {
       final avatarUrl = event.senderFromMemoryOrFallback.avatarUrl;
       Uri? thumbnailUri;
 
-      if (avatarUrl != null) {
+      if (avatarUrl != null && client.canDownloadMxc(avatarUrl)) {
         const size = 128;
         const thumbnailMethod = ThumbnailMethod.crop;
         // Pre-cache so that we can later just set the thumbnail uri as icon:
@@ -91,13 +91,12 @@ extension LocalNotificationsExtension on MatrixState {
           Logs().d('Unable to pre-download avatar for web notification', e, s);
         }
 
-        thumbnailUri = await event.senderFromMemoryOrFallback.avatarUrl
-            ?.getThumbnailUri(
-              client,
-              width: size,
-              height: size,
-              method: thumbnailMethod,
-            );
+        thumbnailUri = await avatarUrl.getThumbnailUri(
+          client,
+          width: size,
+          height: size,
+          method: thumbnailMethod,
+        );
       }
 
       // #Pangea
@@ -115,7 +114,7 @@ extension LocalNotificationsExtension on MatrixState {
       final avatarUrl = event.room.avatar;
       final hints = [NotificationHint.soundName('message-new-instant')];
 
-      if (avatarUrl != null) {
+      if (avatarUrl != null && client.canDownloadMxc(avatarUrl)) {
         const size = notificationAvatarDimension;
         const thumbnailMethod = ThumbnailMethod.crop;
         // Pre-cache so that we can later just set the thumbnail uri as icon:

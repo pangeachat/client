@@ -5,6 +5,37 @@ import 'dart:ui';
 import 'package:matrix/matrix.dart';
 
 extension ClientDownloadContentExtension on Client {
+  /// Whether [downloadMxcCached] can build a real download URL for [uri]. The
+  /// SDK answers both a non-`mxc` scheme and a missing homeserver with an empty
+  /// `Uri()`, which reaches `httpClient.get` as a hostless URL and throws
+  /// (CLIENT-A20).
+  bool canDownloadMxc(Uri? uri) =>
+      uri != null && uri.isScheme('mxc') && homeserver != null;
+
+  /// [downloadMxcCached] for an avatar that may legitimately be absent or — as
+  /// with a course room's assets-bucket image — not an `mxc` URI at all. Yields
+  /// null where in-app `Avatar` falls back to `ImageByUrl`, which the
+  /// notification surfaces calling this have no equivalent of.
+  Future<Uint8List?> downloadAvatarCached(
+    Uri? avatar, {
+    num? width,
+    num? height,
+    bool isThumbnail = false,
+    bool? animated,
+    ThumbnailMethod? thumbnailMethod,
+    bool rounded = false,
+  }) async => canDownloadMxc(avatar)
+      ? await downloadMxcCached(
+          avatar!,
+          width: width,
+          height: height,
+          isThumbnail: isThumbnail,
+          animated: animated,
+          thumbnailMethod: thumbnailMethod,
+          rounded: rounded,
+        )
+      : null;
+
   Future<Uint8List> downloadMxcCached(
     Uri mxc, {
     num? width,

@@ -2350,14 +2350,12 @@
     "enableAutocorrectPopupTitle": "Adicione o teclado do seu idioma de destino indo para:",
     "enableAutocorrectPopupSteps": "  • Definições\n  • Geral\n  • Teclado\n  • Teclados\n  • Adicionar novo teclado",
     "enableAutocorrectPopupDescription": "Depois de selecionar o idioma, pode clicar no pequeno ícone do globo na parte inferior esquerda do seu teclado para ativar o teclado recentemente instalado.",
-    "downloadGboardSteps": " • Baixar Gboard\n  • Abrir o aplicativo\n  • Idiomas\n  • Adicionar teclado\n  • Selecionar idioma\n  • Selecionar tipo de teclado\n  • Concluído",
     "enableAutocorrectWarning": "Atenção! É necessário adicionar o teclado do seu idioma de destino",
     "displayName": "Nome de exibição",
     "leaveRoomDescription": "Está prestes a sair deste chat. Outros utilizadores verão que saiu do chat.",
     "confirmUserId": "Por favor, confirme o seu nome de utilizador no Pangea Chat para excluir a sua conta.",
     "paidSubscriptionStarts": "Começa em {startDate}",
     "cancelInSubscriptionSettings": "• Cancelar a qualquer momento nas definições de assinatura",
-    "downloadGboard": "Baixar Gboard",
     "autocorrectNotAvailable": "Infelizmente, a sua plataforma não é atualmente suportada para este recurso. Fique atento a novos desenvolvimentos!",
     "pleaseUpdateApp": "Por favor, atualize o aplicativo para continuar.",
     "chooseEmojiInstructionsBody": "Combine emojis com as palavras que melhor os representam. Não se preocupe! Não há penalizações por discordar. 😅",
@@ -2562,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-24 11:54:20.783981",
+    "@@last_modified": "2026-08-25 15:25:45.529848",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6315,10 +6313,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6344,10 +6338,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10676,8 +10666,18 @@
     "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer a sua língua-alvo, instale o Gboard e adicione a língua lá:",
     "resendInSeconds": "Reenviar ({seconds})",
     "mapLevelFallbackNotice": "Ainda não há atividades {selected} — a mostrar {shown} em vez disso.",
+    "openKeyboardSettings": "Abrir Definições do Teclado",
+    "keyboardPromptAddKeyboardMessage": "Adicione um teclado para o seu idioma de destino para que a correção automática funcione.",
+    "keyboardPromptAddKeyboardAction": "Adicionar Teclado",
+    "keyboardPromptSwitchKeyboardMessage": "Toque no ícone do globo no seu teclado para mudar para o seu idioma de destino.",
     "switchLanguageChipLabel": "Mudar para {language}",
     "languageDropdownLevel": "Nível {level}",
     "whatAreYouLearning": "O que estás a aprender?",
-    "languageSwitcherBaseLanguageLabel": "A sua língua base"
+    "languageSwitcherBaseLanguageLabel": "A sua língua base",
+    "listenModeDescription": "Toque numa opção para a ouvir. Nada selecionado.",
+    "rateActivityLiked": "Gostei",
+    "rateActivityDisliked": "Não gostei",
+    "constructUseHrdDesc": "Ouviu",
+    "timesHeard": "{count, plural, =1{Ouvido uma vez} other{Ouvido {count} vezes}}",
+    "allSettings": "Todas as definições"
 }

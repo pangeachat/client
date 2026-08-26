@@ -36,8 +36,36 @@ Different interactions contribute different amounts of XP, reflecting effort. Ea
 - **Correct practice answers** (emoji matching, meaning selection, listening) — moderate XP
 - **Wrong practice answers** — a small negative XP value, deliberately, to discourage guessing through a multiple-choice item. Skipped or unanswered items are worth 0. See `ConstructUseTypeEnum.pointValue` for the per-type values.
 - **Using a word in writing** (via the choreographer) — XP based on the construct use type
+- **Hearing a word** through read-aloud or voice-message playback — 0 XP. The exposure is the data; see [Listening exposure](#listening-exposure).
 
-Each data point is stored as a [`OneConstructUse`](../../lib/features/analytics/constructs_model.dart) which includes construct identifier, use type, timestamp, and messageId.
+Each data point is stored as a [`OneConstructUse`](../../lib/features/analytics/constructs_model.dart) which includes construct identifier, use type and timestamp, plus — for message-originated uses only — the message id. Listening exposure carries neither a message id nor a room id; see [Listening exposure](#listening-exposure).
+
+Adding a value to `ConstructUseTypeEnum` is a bigger commitment than it looks: it lands in XP, in the skill rows, in the teacher summaries and in practice selection. Work through [Adding a use type](#adding-a-use-type) before writing one.
+
+### Adding a use type
+
+The compiler asks most of these — the switches over `ConstructUseTypeEnum` are exhaustive, so a new value will not build until they are answered. It does **not** ask the last two, and those are the ones that have been got wrong.
+
+1. **XP value** (`pointValue`) — and whether 0 is right, which means the use is recorded for its own sake rather than rewarded.
+2. **Skill** (`skillsEnumType`) — which row of the construct details page it belongs in.
+3. **Produced or received** (`sentByUser`) — this is what keeps a use out of the turn and typed-word counters.
+4. **Summary bucket** (`summaryEnumType`) — correct, incorrect, typed word, or `null` for none. Note that [`SpaceAnalyticsSummaryModel`](../../lib/routes/chat/chat_details/space_analytics/space_analytics_summary_model.dart) has a second split that keys on the SIGN of `xp` rather than on this enum, so a 0-XP use needs handling there too.
+5. **Language provenance** — *what language is this use in, and how does the recording path know?* Not asked by any compiler. See [Per-Language Isolation](#per-language-isolation): the language must travel with the recording as a required argument, from whatever knows what was actually written, read or spoken.
+6. **Volume** — how often does this fire relative to production and practice? Nothing in the store prunes or compacts uses, so a high-frequency use type needs bucketing rather than one row per event, and the display has to stay readable at its volume.
+
+### Listening exposure
+
+Receptive exposure per word is a variable language researchers design studies around, so hearing a lemma is recorded as a construct use in its own right (`ConstructUseTypeEnum.hrd`). It is **worth 0 XP** — awarding points for audio the learner did not ask for would be XP inflation, and the count is what the data is for. It is vocab-only and gated on `lemma.saveVocab`, the same filter every other lemma-level signal uses.
+
+Every read-aloud surface mints it, not just whole messages: word taps and practice-choice audio are listening too. That deliberately overlaps `click` and the `corWL` / `corLA` family, which record the same moment for different reasons — one counts what was heard, the others what was looked up or answered. Exposure is minted only on a **completed** playback, because read-aloud holds a single slot and stops on drafting, selection and focus loss; minting at the start would bank words that were never spoken.
+
+An exposure use **never carries a source event id or room id.** The listening lane drops both at the point of collection on the grounds that a per-student record of which peers a learner attends to is a social-graph fact about a third party (see [`DosageAudioEvent`](../../lib/features/dosage/dosage_audio_event.dart)), and a lemma-level record derived from someone else's message would reintroduce exactly that, with content attached. Changing this is a privacy decision, not a schema decision.
+
+Exposure is excluded from `sentByUser` and returns `null` from `summaryEnumType`, so it reaches neither the typed-words counter nor the correct/incorrect buckets: it is neither. The bucket split in [`SpaceAnalyticsSummaryModel`](../../lib/routes/chat/chat_details/space_analytics/space_analytics_summary_model.dart) keys on the sign of `xp` rather than on that enum, so it needs its own guard there — a 0-XP use otherwise lands in *incorrect*.
+
+**Bucketing.** Exposure fires far more often than production or practice, and nothing in the analytics store ever prunes or compacts uses. So exposures accumulate in memory ([`ListeningExposureBuffer`](../../lib/features/analytics/listening_exposure_buffer.dart)) and are written as one row per lemma per window carrying an explicit `count`, rather than one row per event. The count is authoritative — never infer it from the number of rows.
+
+The window is **five minutes**, and its ceiling is not arbitrary: construct-use timestamps double as corroboration anchors for engagement spans, matched within ±10 minutes with no type filter. A bucket therefore carries a real instant inside itself (its last exposure), never a synthetic boundary, and the window must stay inside the corroboration window — a day-long bucket would carry one anchor and stop vouching for the rest of the day, which bites hardest in the passive listening session where exposure rows are the only anchors a learner has.
 
 ### Construct Deduplication
 
@@ -54,6 +82,10 @@ The vocab list view shows a list of tiles, one for each vocab construct, each wi
 Both list views show a button at the top to launch practice (See [practice exercises instructions](practice-exercises.instructions.md) for more details on analytics practice exercises), and a "more" button which expands a popup menu containing additional options, e.g. the download button, a button to navigate to the blocked constructs page, etc. The "more" button is hidden if it has no content, like in a morph construct list with developer mode turned off.
 
 Construct details pages show definitions, canonical examples, and user-generated usage examples for individual constructs.
+
+On a construct details page the usage rows are one mark per use — green earned XP, red lost it, grey scored nothing. Grey is not noise: `ignIGC` and `ignIt` are minted on every sent message for tokens writing assistance left alone, so they are the most common evidence in the Writing row, and a word the learner typed correctly would read as an empty row without them.
+
+Listening exposure is the one exclusion, and it is excluded **by use type, not by being worth nothing** — it fires often enough to bury everything else, so it appears as a single count on the listening row instead, which reads the same at 24 as at 2,400. Anything added later that fires at that frequency belongs in the same shape. Excluding it by score instead would silently take the grey marks above with it.
 
 ### Blocking Constructs
 
@@ -103,7 +135,11 @@ All analytics computation happens against [`AnalyticsDatabase`](../../lib/featur
 
 ### Per-Language Isolation
 
-Each target language has its own analytics room and its own local database partition. Switching languages reinitializes the analytics context cleanly. There is no cross-language XP blending.
+Each target language has its own analytics room and its own local database partition. Switching languages reinitializes the analytics context cleanly.
+
+Every construct use is filed under exactly one language, and that language comes from the **source of the use** — the text that was written, read or spoken. **NEVER record a use whose language you have not established**, and in particular never let it default to whatever L2 the learner happens to have set: a stored use carries no language of its own, so once it is written into the wrong language's room nothing downstream can tell it apart from a real one. Mislabeled data is worse than absent data, because absent data is visible as a gap.
+
+A new source of construct uses therefore has to answer *how do you know what language this is in* before it records anything, and the answer belongs in the code as a required argument rather than as a check each call site is trusted to remember — see [Adding a use type](#adding-a-use-type).
 
 ### Multi-Device Sync
 

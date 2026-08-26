@@ -40,19 +40,37 @@ class SpaceCodeRepo {
     return value;
   }
 
+  /// Write an entry and its stamp so a concurrent read can only see BOTH or
+  /// NEITHER. `GetStorage.write` applies the value to memory synchronously and
+  /// then awaits a flush, so awaiting the value write before stamping leaves a
+  /// window where the entry is readable with no stamp — which [_readFresh]
+  /// scores as stale and CLEARS, destroying an entry that was merely mid-write.
+  /// A native cold start opens exactly that window: the shell's DM-invite
+  /// consumer mounts and reads the ferry while the invite route's redirect is
+  /// still writing it, so the link landed on the chat list with the invite
+  /// already wiped and did nothing until it was tapped again (#8555). Issuing
+  /// both writes in one synchronous step (they apply to memory as they are
+  /// called, before either flush is awaited) leaves no window to read into.
   static Future<void> _writeStamped(
     String key,
     String stampKey,
     String value,
   ) async {
     if (value.isEmpty) return;
-    await _spaceStorage.write(key, value);
-    await _spaceStorage.write(stampKey, DateTime.now().millisecondsSinceEpoch);
+    await Future.wait([
+      _spaceStorage.write(key, value),
+      _spaceStorage.write(stampKey, DateTime.now().millisecondsSinceEpoch),
+    ]);
   }
 
+  /// Clear both keys in one synchronous step, for the same reason
+  /// [_writeStamped] writes them in one: a half-cleared entry is a readable
+  /// state no reader should ever be able to observe.
   static Future<void> _clearStamped(String key, String stampKey) async {
-    await _spaceStorage.remove(key);
-    await _spaceStorage.remove(stampKey);
+    await Future.wait([
+      _spaceStorage.remove(key),
+      _spaceStorage.remove(stampKey),
+    ]);
   }
 
   /// The course join code ferried across the login bounce; consumed by the
