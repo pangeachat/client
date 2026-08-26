@@ -53,7 +53,10 @@ class UserController {
   /// the level on a language row, the analytics bar and the participant list
   /// showing one number: without it a corrected level reached whichever surface
   /// happened to rebuild next and nothing else (#8582).
-  final StreamController<PublicProfileModel> publicProfileStream =
+  /// Null means "no profile loaded" — logout clears it, and a surface still
+  /// mounted must stop showing the previous account's levels rather than hold
+  /// them until an unrelated rebuild (#8531).
+  final StreamController<PublicProfileModel?> publicProfileStream =
       StreamController.broadcast();
 
   /// Cached version of the user profile, so it doesn't have
@@ -86,9 +89,8 @@ class UserController {
   }
 
   void _notifyPublicProfileChanged() {
-    final profile = _publicProfile;
-    if (profile == null || publicProfileStream.isClosed) return;
-    publicProfileStream.add(profile);
+    if (publicProfileStream.isClosed) return;
+    publicProfileStream.add(_publicProfile);
   }
 
   /// Whether the loaded public profile belongs to the account that is active
@@ -434,9 +436,15 @@ class UserController {
       return;
     }
 
+    // Announced BEFORE the request, not after it succeeds: callers mutate the
+    // in-memory profile and then call this, and that mutated object is what
+    // every surface renders. Announcing only on success left a failed write
+    // showing the old level while memory held the new one — a narrower version
+    // of the staleness this stream exists to remove.
+    _notifyPublicProfileChanged();
+
     try {
       await client.setUserProfile(client.userID!, type, content);
-      _notifyPublicProfileChanged();
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -489,12 +497,20 @@ class UserController {
   static String _shortCode(String langCode) => langCode.split('-').first;
 
   /// The id of this user's own analytics room for [language] (a short code).
-  /// Analytics rooms are per language, so the short code is the whole key.
-  String? _ownAnalyticsRoomIdFor(String language) => client.allMyAnalyticsRooms
-      .firstWhereOrNull(
-        (room) => _shortCode(room.madeForLang ?? '') == language,
-      )
-      ?.id;
+  ///
+  /// Goes through [ownAnalyticsRoomLocal] rather than scanning
+  /// [allMyAnalyticsRooms] directly, because a learner can end up with more
+  /// than one analytics room for a language and that lookup resolves the
+  /// CANONICAL one (the oldest). Analytics itself reads and writes the
+  /// canonical room, and instructor analytics access is granted through
+  /// whatever id is published here — so picking a different room publishes an
+  /// id the rest of the system ignores, and one that can change between calls
+  /// as room ordering shifts.
+  String? _ownAnalyticsRoomIdFor(String language) {
+    final model = PLanguageStore.byLangCode(language);
+    if (model == null) return null;
+    return client.ownAnalyticsRoomLocal(lang: model)?.id;
+  }
 
   Future<void> _addAnalyticsRoomIdsToPublicProfile() async {
     if (!_publicProfileIsOwn ||

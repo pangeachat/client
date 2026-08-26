@@ -44,6 +44,44 @@ void main() {
       expect(profile.languageAnalytics!['es']!.analyticsRoomId, '!a:x');
     });
 
+    test('the exact language key wins the room id over a variant', () {
+      // Deterministic regardless of the order the server returns the keys in:
+      // iterating the decoded map directly made the winner depend on that.
+      final profile = AnalyticsProfileModel.fromJson(
+        profileJson({
+          'fr-CA': {'level': 2, 'xp_offset': 0, 'analytics_room_id': '!ca:x'},
+          'fr': {'level': 3, 'xp_offset': 0, 'analytics_room_id': '!fr:x'},
+        }),
+      );
+
+      expect(profile.languageAnalytics!['fr']!.analyticsRoomId, '!fr:x');
+    });
+
+    test('the largest XP offset wins, so a protected level cannot drop', () {
+      // Largest, not sum: the offset exists so a level never visibly drops, and
+      // the largest any variant recorded is the highest level this learner was
+      // ever protected at. Summing would publish one higher than they ever saw.
+      final profile = AnalyticsProfileModel.fromJson(
+        profileJson({
+          'fr': {'level': 2, 'xp_offset': 300},
+          'fr-CA': {'level': 3, 'xp_offset': 500},
+        }),
+      );
+
+      expect(profile.languageAnalytics!['fr']!.xpOffset, 500);
+    });
+
+    test('a non-integer level or offset does not throw', () {
+      final profile = AnalyticsProfileModel.fromJson(
+        profileJson({
+          'fr': {'level': 'three', 'xp_offset': 1.5},
+        }),
+      );
+
+      expect(profile.languageAnalytics!['fr']!.level, 0);
+      expect(profile.languageAnalytics!['fr']!.xpOffset, 0);
+    });
+
     test('target language and map keys agree, so level resolves', () {
       // Before #8582 the target was serialized short while the keys were
       // written full, so `level` read null for every learner whose target was
@@ -126,6 +164,23 @@ void main() {
 
       expect(profile.languageAnalytics!['fr']!.analyticsRoomId, '!a:x');
       expect(profile.languageAnalytics!['fr']!.level, 14);
+    });
+
+    test('a full code assigned to target language is normalized', () {
+      // The short-code grain is the whole point of this class: a full code
+      // stored here reads back as a missing entry, which is the #8582 bug.
+      final profile = AnalyticsProfileModel(
+        targetLanguage: 'fr-CA',
+        baseLanguage: 'en-US',
+        languageAnalytics: {'fr': LanguageAnalyticsProfileEntry(13, 0)},
+      );
+
+      expect(profile.targetLanguage, 'fr');
+      expect(profile.baseLanguage, 'en');
+      expect(profile.level, 13);
+
+      profile.targetLanguage = 'es-MX';
+      expect(profile.targetLanguage, 'es');
     });
 
     test('round-trips through json as short codes', () {

@@ -24,15 +24,31 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 class AnalyticsProfileModel {
   /// Short language codes, mirroring the learner's current settings. Raw
   /// strings for the same reason the map keys are.
-  String? baseLanguage;
-  String? targetLanguage;
+  ///
+  /// Normalized on assignment: the short-code grain is the whole point of this
+  /// class, and a full code stored here reads back as a missing entry — which
+  /// is exactly the bug #8582 fixed. Enforcing it in the setter rather than
+  /// trusting every caller means it cannot be reintroduced by construction.
+  String? get baseLanguage => _baseLanguage;
+  set baseLanguage(String? code) =>
+      _baseLanguage = code == null ? null : _shortCode(code);
+  String? _baseLanguage;
+
+  String? get targetLanguage => _targetLanguage;
+  set targetLanguage(String? code) =>
+      _targetLanguage = code == null ? null : _shortCode(code);
+  String? _targetLanguage;
+
   Map<String, LanguageAnalyticsProfileEntry>? languageAnalytics;
 
   AnalyticsProfileModel({
-    this.baseLanguage,
-    this.targetLanguage,
+    String? baseLanguage,
+    String? targetLanguage,
     this.languageAnalytics,
-  });
+  }) {
+    this.baseLanguage = baseLanguage;
+    this.targetLanguage = targetLanguage;
+  }
 
   static String _shortCode(String langCode) => langCode.split('-').first;
 
@@ -43,34 +59,59 @@ class AnalyticsProfileModel {
 
     final profileJson = json[PangeaEventTypes.profileAnalytics];
 
-    final languageAnalytics = <String, LanguageAnalyticsProfileEntry>{};
+    // Profiles written before #8582 carry a key per locale over one shared set
+    // of analytics. Group the variants, then reduce each group deterministically
+    // — iterating the decoded map directly would make the result depend on the
+    // server's key order.
+    final byLanguage = <String, List<MapEntry<String, Map>>>{};
     final analyticsJson = profileJson[AnalyticsConstants.analytics];
     if (analyticsJson is Map) {
       for (final entry in analyticsJson.entries) {
+        final key = entry.key;
         final value = entry.value;
-        if (entry.key is! String || value is! Map) continue;
-
-        // Profiles written before #8582 carry a key per locale. Collapse them
-        // onto the language: the largest level wins, since every variant was
-        // reporting on one shared XP total and the highest is the one that saw
-        // it most recently.
-        final key = _shortCode(entry.key as String);
-        final existing = languageAnalytics[key];
-        final level = value[AnalyticsConstants.level] as int? ?? 0;
-        final xpOffset = value[AnalyticsConstants.xpOffset] as int? ?? 0;
-        final analyticsRoomId =
-            value[AnalyticsConstants.analyticsRoomId] as String?;
-
-        languageAnalytics[key] = LanguageAnalyticsProfileEntry(
-          existing == null
-              ? level
-              : (level > existing.level ? level : existing.level),
-          existing == null
-              ? xpOffset
-              : (xpOffset > existing.xpOffset ? xpOffset : existing.xpOffset),
-          analyticsRoomId: analyticsRoomId ?? existing?.analyticsRoomId,
-        );
+        if (key is! String || value is! Map) continue;
+        (byLanguage[_shortCode(key)] ??= []).add(MapEntry(key, value));
       }
+    }
+
+    final languageAnalytics = <String, LanguageAnalyticsProfileEntry>{};
+    for (final group in byLanguage.entries) {
+      final language = group.key;
+      final variants = group.value..sort((a, b) => a.key.compareTo(b.key));
+
+      var level = 0;
+      var xpOffset = 0;
+      String? analyticsRoomId;
+      for (final variant in variants) {
+        final v = variant.value;
+        final variantLevel = v[AnalyticsConstants.level];
+        final variantOffset = v[AnalyticsConstants.xpOffset];
+        if (variantLevel is int && variantLevel > level) level = variantLevel;
+        // Largest, not sum. The offset exists so a level never visibly drops
+        // (analytics-system.instructions.md, "Level Protection"); the largest
+        // any variant recorded is the highest level this learner was ever
+        // protected at, which is the guarantee being preserved. Summing would
+        // publish a level higher than any they actually saw.
+        if (variantOffset is int && variantOffset > xpOffset) {
+          xpOffset = variantOffset;
+        }
+        // The exact short-code key wins; otherwise the first variant to name a
+        // room, in sorted key order. Any id is provisional anyway —
+        // [clearForeignAnalyticsRoomIds] drops one this user does not own and
+        // the analytics-room backfill re-derives it from live rooms.
+        final variantRoomId = v[AnalyticsConstants.analyticsRoomId];
+        if (variantRoomId is String && variantRoomId.isNotEmpty) {
+          if (variant.key == language || analyticsRoomId == null) {
+            analyticsRoomId = variantRoomId;
+          }
+        }
+      }
+
+      languageAnalytics[language] = LanguageAnalyticsProfileEntry(
+        level,
+        xpOffset,
+        analyticsRoomId: analyticsRoomId,
+      );
     }
 
     return AnalyticsProfileModel(
@@ -164,10 +205,6 @@ class AnalyticsProfileModel {
   int? get level =>
       targetLanguage == null ? null : languageAnalytics?[targetLanguage]?.level;
 
-  int? get xpOffset => targetLanguage == null
-      ? null
-      : languageAnalytics?[targetLanguage]?.xpOffset;
-
   int? xpOffsetByLanguage(String langCode) =>
       languageAnalytics?[_shortCode(langCode)]?.xpOffset;
 
@@ -180,11 +217,6 @@ class AnalyticsProfileModel {
 
   LanguageModel? get baseLanguageModel =>
       baseLanguage == null ? null : PLanguageStore.byLangCode(baseLanguage!);
-
-  /// This language's entry, for a UI row showing [language]'s level. Every
-  /// regional variant resolves to the one entry its language shares.
-  LanguageAnalyticsProfileEntry? entryFor(LanguageModel language) =>
-      languageAnalytics?[language.langCodeShort];
 }
 
 class LanguageAnalyticsProfileEntry {

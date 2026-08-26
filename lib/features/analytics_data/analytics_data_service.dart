@@ -389,7 +389,14 @@ class AnalyticsDataService {
     await _syncController?.waitForSync(analyticsRoomID);
   }
 
-  DerivedAnalyticsDataModel? get cachedDerivedData => _cachedDerivedStats;
+  /// The cached stats, but only when they are [language]'s. This is the
+  /// synchronous placeholder a UI surface paints before [derivedData] resolves,
+  /// so handing back another language's totals shows the learner a level that
+  /// is not theirs for this language. The cache is one slot over a per-language
+  /// store and [_recomputeTotalXP] can populate it for a language that is not
+  /// the current target, so the language has to be checked, not assumed.
+  DerivedAnalyticsDataModel? cachedDerivedDataFor(String language) =>
+      _cachedDerivedLanguage == language ? _cachedDerivedStats : null;
 
   Future<DerivedAnalyticsDataModel> derivedData(String language) async {
     await _ensureInitialized();
