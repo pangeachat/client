@@ -207,26 +207,50 @@ class _WorldMapViewState extends State<WorldMapView> {
     attemptDecodeOfHttpErrorResponses: false,
   );
 
-  /// Tile-load failures → a rate-limited Sentry breadcrumb (#8603), so a hard
-  /// provider block is visible as context on whatever event reports next,
-  /// without a flaky network spamming a crumb per tile.
+  /// Tile-failure telemetry (#8603), split by what the failure means:
+  ///
+  /// - The tile server ANSWERED with a non-2xx ([NetworkImageLoadException],
+  ///   which is all a non-2xx can surface as under
+  ///   `attemptDecodeOfHttpErrorResponses: false`) — the provider-blocking
+  ///   signature this issue exists to detect. Escalates to ONE
+  ///   `captureMessage` per map lifetime: enough to see a block spike across
+  ///   sessions in Sentry (and alert on it later), never event spam.
+  /// - Anything else (socket errors, timeouts, aborts) is the user's own
+  ///   connectivity — a rate-limited breadcrumb only, context on whatever
+  ///   event reports next. An offline learner must not generate events.
+  ///
+  /// Every failure, either class, leaves the breadcrumb. What neither class
+  /// covers is a wrong image served with HTTP 200 (#8585's mode) — see
+  /// world-map-tiles.instructions.md.
   DateTime? _lastTileErrorCrumb;
+  bool _tileBlockReported = false;
 
   void _onTileError(TileImage tile, Object error, StackTrace? stackTrace) {
     final now = DateTime.now();
-    if (_lastTileErrorCrumb != null &&
-        now.difference(_lastTileErrorCrumb!) < const Duration(seconds: 30)) {
-      return;
+    if (_lastTileErrorCrumb == null ||
+        now.difference(_lastTileErrorCrumb!) >= const Duration(seconds: 30)) {
+      _lastTileErrorCrumb = now;
+      Sentry.addBreadcrumb(
+        Breadcrumb(
+          category: 'world_map.tile_error',
+          message: error.toString(),
+          data: {'tile': tile.coordinates.toString()},
+          level: SentryLevel.warning,
+        ),
+      );
     }
-    _lastTileErrorCrumb = now;
-    Sentry.addBreadcrumb(
-      Breadcrumb(
-        category: 'world_map.tile_error',
-        message: error.toString(),
-        data: {'tile': tile.coordinates.toString()},
+
+    if (error is NetworkImageLoadException && !_tileBlockReported) {
+      _tileBlockReported = true;
+      Sentry.captureMessage(
+        'World map tile provider returned HTTP ${error.statusCode}',
         level: SentryLevel.warning,
-      ),
-    );
+        withScope: (scope) => scope.setContexts('tile', {
+          'coordinates': tile.coordinates.toString(),
+          'statusCode': error.statusCode,
+        }),
+      );
+    }
   }
 
   /// Entry/exit animation bookkeeping for the small/mid dot tier: which pins
