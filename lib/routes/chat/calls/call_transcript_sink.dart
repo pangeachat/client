@@ -366,11 +366,17 @@ class CallTranscriptSink implements CallAudioSink {
   /// could carry an arbitrary amount of text into a half that is packed to fit
   /// a byte ceiling. Anything past the ceiling is not a language tag, so it is
   /// dropped rather than truncated into a different, plausible-looking one.
+  ///
+  /// Empty is dropped for the same reason. The response model reads an
+  /// unreadable `lang_code` as empty rather than throwing -- a language tag
+  /// must not cost the words beside it -- and empty means UNKNOWN there.
+  /// Writing it out would put a language tag on the wire that names no
+  /// language, which the reader then drops anyway.
   String? get langCode {
     for (final result in _ordered) {
       if (result.hasUsableTranscript) {
         final tag = result.langCode.split('-').first;
-        return tag.length <= maxLangCodeLength ? tag : null;
+        return tag.isNotEmpty && tag.length <= maxLangCodeLength ? tag : null;
       }
     }
     return null;

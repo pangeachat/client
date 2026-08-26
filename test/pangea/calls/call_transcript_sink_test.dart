@@ -420,6 +420,53 @@ void main() {
     });
   });
 
+  group('a chunk whose timings the provider malformed', () {
+    test('keeps its words, loses only its position', () async {
+      // The whole reason the response parse is tolerant. A throw out of the
+      // parse lands in the catch below, which marks the chunk failed and counts
+      // it LOST -- so one malformed number cost up to ninety seconds of
+      // somebody's speech. Now the words arrive and only the position is
+      // withheld, which is the promise this feature makes everywhere else.
+      final s = CallTranscriptSink(
+        userL1: 'en',
+        userL2: 'es',
+        transcribe: (_) async => SpeechToTextResponseModel.fromJson({
+          'results': [
+            {
+              'transcripts': [
+                {
+                  'transcript': 'hola mundo',
+                  'confidence': 100,
+                  'lang_code': 'es-ES',
+                  'words_per_hr': 9391,
+                  'stt_tokens': <dynamic>[],
+                  'word_timings': [
+                    {
+                      'word': 'hola',
+                      'start_time_ms': 0,
+                      'end_time_ms': 100,
+                      'confidence': 100,
+                    },
+                    // The provider dropped this word's confidence.
+                    {'word': 'mundo', 'start_time_ms': 150, 'end_time_ms': 300},
+                  ],
+                },
+              ],
+            },
+          ],
+        }),
+      );
+
+      await s.deliver(chunk(0, startedAtMs: 1000));
+
+      expect(s.chunksLost, 0, reason: 'nothing was captured and then lost');
+      expect(s.transcripts, ['hola mundo']);
+      expect(s.segments.map((segment) => (segment.text, segment.atMs)), [
+        ('hola mundo', null),
+      ]);
+    });
+  });
+
   group('the language tag, which comes from a provider', () {
     Future<CallTranscriptSink> sinkSaying(String langCode) async {
       final sink = CallTranscriptSink(
@@ -440,6 +487,16 @@ void main() {
       final sink = await sinkSaying('x' * 400);
 
       expect(sink.langCode, isNull, reason: 'not a language tag, so not used');
+    });
+
+    test('a tag the model could not read is no tag at all', () async {
+      // The response model reads an unreadable `lang_code` as EMPTY rather than
+      // throwing, because a language tag must not cost the words beside it.
+      // Empty means unknown there, so writing it out would put a tag on the
+      // wire that names no language.
+      final sink = await sinkSaying('');
+
+      expect(sink.langCode, isNull);
     });
 
     test('an ordinary regional tag still yields its primary subtag', () async {

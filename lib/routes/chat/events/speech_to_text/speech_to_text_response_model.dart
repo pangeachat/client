@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:matrix/matrix.dart' show Logs;
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
@@ -7,6 +9,36 @@ import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+
+/// Tolerance belongs where untrusted data ENTERS, and a defect in one field
+/// must never cost a field that does not depend on it.
+///
+/// A speech provider's response is untrusted in exactly the way room content
+/// is, and the parse below used to couple every field to every other one. A
+/// missing `word`, a non-numeric `confidence`, a NaN, a single non-map entry in
+/// `word_timings` -- any of them threw, the throw propagated out of the whole
+/// response parse, and the one caller that catches it marks the chunk FAILED
+/// and counts it lost. So one malformed timing entry cost up to ninety seconds
+/// of somebody's speech. Timings are what POSITION the words; they must never
+/// be able to destroy them.
+///
+/// So the fields BESIDE the text degrade to their absent value, and the fields
+/// that ARE the text still fail the parse. Those are not the same choice, and
+/// the difference is what the failure would claim. A transcript we cannot read
+/// leaves nothing to save, and reporting that chunk as SILENCE would be a
+/// statement about the speaker produced entirely from our own parse failure --
+/// the exact mistake `capture_refused` exists to prevent, one layer down. A
+/// chunk that fails is counted as lost, which is what actually happened.
+///
+/// The three that stay strict are the payload containers: `results`,
+/// `transcripts`, and the `transcript` text itself.
+
+/// A finite number, or null.
+///
+/// `is num` alone is not enough: NaN and infinity are numbers to it and then
+/// throw from `round()` and `toInt()`, which is how a provider's NaN reached
+/// the catch that marks a chunk lost.
+num? _finite(Object? value) => value is num && value.isFinite ? value : null;
 
 class SpeechToTextResponseModel extends BaseResponse {
   final List<SpeechToTextResult> results;
@@ -78,7 +110,9 @@ class SpeechToTextResponseModel extends BaseResponse {
       results: (json['results'] as List)
           .map((e) => SpeechToTextResult.fromJson(e))
           .toList(),
-      service: json['service'] as String?,
+      // Provenance, not content. A non-string here used to throw and take the
+      // transcript with it.
+      service: json['service'] is String ? json['service'] as String : null,
     );
   }
 
@@ -158,19 +192,79 @@ class Transcript {
   double? get wordsPerMinute => wordsPerHr != null ? wordsPerHr! / 60 : null;
 
   factory Transcript.fromJson(Map<String, dynamic> json) => Transcript(
+    // Strict, deliberately: this IS the speech. See the note at the top of
+    // this file for why an unreadable transcript fails the chunk rather than
+    // degrading to an empty one.
     text: json['transcript'],
-    confidence: json[ChoreoConstants.confidence] <= 100
-        ? json[ChoreoConstants.confidence]
-        : json[ChoreoConstants.confidence] / 100,
-    sttTokens: (json['stt_tokens'] as List)
-        .map((e) => STTToken.fromJson(e))
-        .toList(),
-    langCode: json[ModelKey.langCode],
-    wordsPerHr: json['words_per_hr'],
-    wordTimings: (json['word_timings'] as List?)
-        ?.map((e) => WordTiming.fromJson(e as Map<String, dynamic>))
-        .toList(),
+    confidence: _confidence(json[ChoreoConstants.confidence]),
+    sttTokens: _tokens(json['stt_tokens']),
+    // Empty means UNKNOWN, and a caller that writes a language tag has to
+    // treat it as such rather than putting an empty tag on the wire.
+    langCode: json[ModelKey.langCode] is String
+        ? json[ModelKey.langCode] as String
+        : '',
+    wordsPerHr: _finite(json['words_per_hr'])?.toInt(),
+    wordTimings: _timings(json['word_timings']),
   );
+
+  /// The transcript's own confidence, on the frozen 0..100 scale.
+  ///
+  /// Over 100 is the double-scaled shape this has always divided by 100. That
+  /// division produces a DOUBLE, which was then assigned straight to an int
+  /// field -- so a confidence of 250 threw a type error out of the parse and
+  /// cost the chunk its words, and an absent or non-numeric one threw before
+  /// the comparison even ran. Rounded and clamped now, like the per-word one,
+  /// so a conforming 0..100 int still passes through untouched.
+  static int _confidence(Object? raw) {
+    final value = _finite(raw);
+    if (value == null) return 0;
+    return (value <= 100 ? value : value / 100).round().clamp(0, 100);
+  }
+
+  /// The word timings, or null when any one of them cannot be read.
+  ///
+  /// ALL or nothing. Keeping the readable ones would hand the segment builder
+  /// a list that no longer accounts for the whole transcript -- which is not a
+  /// finer cut of it but a partial one, and a partial one moves where the cuts
+  /// land. Null is a state the whole pipeline already handles: it yields one
+  /// segment for the chunk, with no position claimed for it.
+  static List<WordTiming>? _timings(Object? raw) {
+    if (raw is! List) return null;
+    final timings = <WordTiming>[];
+    for (final entry in raw) {
+      final timing = WordTiming.fromJson(entry);
+      if (timing == null) return null;
+      timings.add(timing);
+    }
+    return timings;
+  }
+
+  /// The tokens, or empty when any one of them cannot be read.
+  ///
+  /// All or nothing for the same reason the timings are: a partial token list
+  /// under-credits the learner silently. Empty is a state this app already
+  /// produces and already handles -- the skip-tokenize send path embeds
+  /// `stt_tokens: []` deliberately, and every consumer gates on
+  /// [SpeechToTextResponseModel.hasUsableTokens].
+  ///
+  /// Caught HERE rather than by loosening [STTToken] or [PangeaToken]. Those
+  /// are read by the toolbar, by practice and by analytics, and making them
+  /// tolerant would let a real contract break degrade quietly everywhere
+  /// instead of failing where somebody would notice. Tolerance belongs at the
+  /// boundary untrusted data crosses, and nowhere further in.
+  static List<STTToken> _tokens(Object? raw) {
+    if (raw is! List) return const [];
+    try {
+      return [for (final entry in raw) STTToken.fromJson(entry)];
+    } catch (e, s) {
+      Logs().w(
+        'A speech-to-text token could not be read; tokens dropped',
+        e,
+        s,
+      );
+      return const [];
+    }
+  }
 
   Transcript copyWith({List<STTToken>? sttTokens}) => Transcript(
     text: text,
@@ -222,12 +316,36 @@ class WordTiming {
   /// or an out-of-range number) ever leaking a contract violation into the app.
   static int _normalizeConfidence(num raw) => raw.round().clamp(0, 100);
 
-  factory WordTiming.fromJson(Map<String, dynamic> json) => WordTiming(
-    word: json['word'] as String,
-    startTimeMs: (json['start_time_ms'] as num?)?.toInt(),
-    endTimeMs: (json['end_time_ms'] as num?)?.toInt(),
-    confidence: _normalizeConfidence(json['confidence'] as num),
-  );
+  /// One timing entry, or null when it cannot be read.
+  ///
+  /// Nullable rather than throwing, and a static method rather than a factory
+  /// because a factory cannot return null. See the note at the top of this
+  /// file: an entry we cannot parse costs the timings, never the words.
+  static WordTiming? fromJson(Object? raw) {
+    if (raw is! Map) return null;
+    final word = raw['word'];
+    final confidence = _finite(raw['confidence']);
+    if (word is! String || confidence == null) return null;
+
+    // Present-but-unreadable is NOT the same as absent. The contract allows a
+    // provider to omit a timestamp and this app is careful never to fabricate
+    // one, so reading a garbage timestamp as the omission would quietly hand
+    // the cutter a timing set that still reconstructs the text and still
+    // cuts -- at boundaries taken from a number nobody sent.
+    final start = raw['start_time_ms'];
+    final end = raw['end_time_ms'];
+    if ((start != null && _finite(start) == null) ||
+        (end != null && _finite(end) == null)) {
+      return null;
+    }
+
+    return WordTiming(
+      word: word,
+      startTimeMs: (start as num?)?.toInt(),
+      endTimeMs: (end as num?)?.toInt(),
+      confidence: _normalizeConfidence(confidence),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
     "word": word,
