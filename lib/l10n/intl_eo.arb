@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:15.530482",
+    "@@last_modified": "2026-08-25 15:25:42.004170",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2607,14 +2607,12 @@
     "enableAutocorrectPopupTitle": "Aldoni vian celan lingvon-klavaron per irado al:",
     "enableAutocorrectPopupSteps": "  • Agordoj\n  • Ĝenerala\n  • Klavaro\n  • Klavaroj\n  • Aldoni novan klavaron",
     "enableAutocorrectPopupDescription": "Post kiam la lingvo estas elektita, vi povas klaki la malgrandan globan ikonon ĉe la maldekstra angulo de via klavaro por aktivigi la novan instalitan klavaron.",
-    "downloadGboardSteps": " • Elŝuti Gboard\n  • Malfermi la aplikaĵon\n  • Lingvoj\n  • Aldoni klavaron\n  • Elekti lingvon\n  • Elekti klavartipo\n  • Fino",
     "enableAutocorrectWarning": "Averto! Postulas aldoni vian celan lingvon-klavaron",
     "displayName": "Montra nomo",
     "leaveRoomDescription": "Vi estas proksima forlasi ĉi tiun babilejon. Aliaj uzantoj vidos ke vi forlasis la babilejon.",
     "confirmUserId": "Bonvolu konfirmi vian Pangea Babilejo uzantnomon por forigi vian konton.",
     "paidSubscriptionStarts": "Komencas {startDate}",
     "cancelInSubscriptionSettings": "• Nuligi iam ajn en abonaj agordoj",
-    "downloadGboard": "Elŝuti Gboard",
     "autocorrectNotAvailable": "Bedaŭrinde via platformo ne estas nun subtenata por ĉi tiu trajto. Restu kunlaboranta por plua evoluo!",
     "pleaseUpdateApp": "Bonvolu ĝisdatigi la aplikaĵon por daŭrigi.",
     "chooseEmojiInstructionsBody": "Kompareu emojiojn kun la vortoj kiujn ili plej bone reprezentas. Ne zorgu! Neniuj poentoj forlasas pro malkonsento. 😅",
@@ -6332,10 +6330,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6361,10 +6355,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10704,8 +10694,18 @@
     "autocorrectAndroidFallbackTitle": "Se via klavaro ne ofertas vian cellingvon, instalu Gboard kaj aldonu la lingvon tie:",
     "resendInSeconds": "Sendu denove ({seconds})",
     "mapLevelFallbackNotice": "Ankoraŭ neniuj {selected} agadoj — montrante {shown} anstataŭe.",
+    "openKeyboardSettings": "Malfermi Klavarajn Agordojn",
+    "keyboardPromptAddKeyboardMessage": "Aldonu klavaron por via cellingvo, por ke aŭtomata korekto funkciu.",
+    "keyboardPromptAddKeyboardAction": "Aldoni Klavaron",
+    "keyboardPromptSwitchKeyboardMessage": "Frapu la globusan ikonon sur via klavaro por ŝanĝi al via cellingvo.",
     "switchLanguageChipLabel": "Ŝanĝi al la {language}",
     "languageDropdownLevel": "Nivelo {level}",
     "whatAreYouLearning": "Kion vi lernas?",
-    "languageSwitcherBaseLanguageLabel": "Via baza lingvo"
+    "languageSwitcherBaseLanguageLabel": "Via baza lingvo",
+    "listenModeDescription": "Frapu elekton por aŭdi ĝin. Nenio estas elektita.",
+    "rateActivityLiked": "Ŝatis ĝin",
+    "rateActivityDisliked": "Malŝatis ĝin",
+    "constructUseHrdDesc": "Aŭdita",
+    "timesHeard": "{count, plural, =1{Aŭdita unufoje} other{Aŭdita {count} fojojn}}",
+    "allSettings": "Ĉiuj agordoj"
 }

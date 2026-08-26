@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:17.644882",
+    "@@last_modified": "2026-08-25 15:25:43.717354",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -3278,14 +3278,12 @@
     "enableAutocorrectPopupTitle": "Aggiungi la tastiera della lingua di destinazione andando su:",
     "enableAutocorrectPopupSteps": "  • Impostazioni\n  • Generali\n  • Tastiera\n  • Tastiere\n  • Aggiungi nuova tastiera",
     "enableAutocorrectPopupDescription": "Una volta selezionata la lingua, puoi cliccare sull'icona del globo in basso a sinistra della tastiera per attivare la tastiera appena installata.",
-    "downloadGboardSteps": " • Scarica Gboard\n  • Apri l'app\n  • Lingue\n  • Aggiungi tastiera\n  • Seleziona lingua\n  • Seleziona tipo di tastiera\n  • Fatto",
     "enableAutocorrectWarning": "Attenzione! È necessario aggiungere la tastiera della lingua di destinazione",
     "displayName": "Nome visualizzato",
     "leaveRoomDescription": "Stai per uscire da questa chat. Gli altri utenti vedranno che hai lasciato la chat.",
     "confirmUserId": "Per favore conferma il tuo nome utente Pangea Chat per eliminare il tuo account.",
     "paidSubscriptionStarts": "Inizio {startDate}",
     "cancelInSubscriptionSettings": "Annulla in qualsiasi momento nelle impostazioni di abbonamento",
-    "downloadGboard": "Scarica Gboard",
     "autocorrectNotAvailable": "Sfortunatamente, la tua piattaforma non è attualmente supportata per questa funzione. Resta sintonizzato per ulteriori sviluppi!",
     "pleaseUpdateApp": "Aggiorna l'app per continuare.",
     "chooseEmojiInstructionsBody": "Abbina le emoji alle parole che rappresentano al meglio. Non preoccuparti! Nessun punto in meno se non sei d'accordo. 😅",
@@ -5490,10 +5488,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5519,10 +5513,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9832,8 +9822,18 @@
     "autocorrectAndroidFallbackTitle": "Se la tastiera non offre la lingua di destinazione, installa Gboard e aggiungi la lingua lì:",
     "resendInSeconds": "Invia di nuovo ({seconds})",
     "mapLevelFallbackNotice": "Nessuna attività {selected} ancora — mostro invece {shown}.",
+    "openKeyboardSettings": "Apri Impostazioni Tastiera",
+    "keyboardPromptAddKeyboardMessage": "Aggiungi una tastiera per la lingua che stai imparando, così la correzione automatica funzionerà.",
+    "keyboardPromptAddKeyboardAction": "Aggiungi tastiera",
+    "keyboardPromptSwitchKeyboardMessage": "Tocca l'icona del mappamondo sulla tastiera per passare alla lingua che stai imparando.",
     "switchLanguageChipLabel": "Passa a {language}",
     "languageDropdownLevel": "Livello {level}",
     "whatAreYouLearning": "Cosa stai imparando?",
-    "languageSwitcherBaseLanguageLabel": "La tua lingua base"
+    "languageSwitcherBaseLanguageLabel": "La tua lingua base",
+    "listenModeDescription": "Tocca una scelta per ascoltarla. Nulla è selezionato.",
+    "rateActivityLiked": "Mi è piaciuto",
+    "rateActivityDisliked": "Non mi è piaciuto",
+    "constructUseHrdDesc": "Sentito",
+    "timesHeard": "{count, plural, =1{Ascoltato una volta} other{Ascoltato {count} volte}}",
+    "allSettings": "Tutte le impostazioni"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-24 11:54:22.337094",
+    "@@last_modified": "2026-08-25 15:25:46.418968",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -3269,14 +3269,12 @@
     "enableAutocorrectPopupTitle": "உங்கள் இலக்கு மொழி விசைப்பலகையை சேர்க்க கீழே செல்லவும்:",
     "enableAutocorrectPopupSteps": "  • அமைப்புகள்\n  • பொது\n  • விசைப்பலகை\n  • விசைப்பலகைகள்\n  • புதிய விசைப்பலகையைச் சேர்க்கவும்",
     "enableAutocorrectPopupDescription": "மொழி தேர்வு செய்யப்பட்ட பின், உங்கள் விசைப்பலகையின் கீழே இடது பக்கத்தில் உள்ள சிறிய உலகக் குறியீட்டை கிளிக் செய்து புதிய நிறுவப்பட்ட விசைப்பலகையை செயல்படுத்தலாம்.",
-    "downloadGboardSteps": " • Gboard-ஐ பதிவிறக்கம் செய்க\n  • பயன்பாட்டைத் திறக்கவும்\n  • மொழிகள்\n  • விசைப்பலகையைச் சேர்க்கவும்\n  • மொழியை தேர்வு செய்யவும்\n  • விசைப்பலகை வகையை தேர்வு செய்யவும்\n  • முடி",
     "enableAutocorrectWarning": "எச்சரிக்கை! உங்கள் இலக்கு மொழி விசைப்பலகையைச் சேர்க்க வேண்டும்",
     "displayName": "காட்சி பெயர்",
     "leaveRoomDescription": "இந்த உரையாடலை நீங்கள் விட்டு செல்லப் போகிறீர்கள். மற்ற பயனர்கள் நீங்கள் விட்டு சென்றதை காண்பார்கள்.",
     "confirmUserId": "உங்கள் பாங்கியா உரையாடல் பயனர்பெயரை உறுதிப்படுத்தவும், உங்கள் கணக்கை நீக்கவும்.",
     "paidSubscriptionStarts": "{startDate} முதல்",
     "cancelInSubscriptionSettings": "• சந்தா அமைப்புகளில் எப்போது வேண்டுமானாலும் ரத்து செய்யவும்",
-    "downloadGboard": "Gboard ஐ பதிவிறக்கம் செய்யவும்",
     "autocorrectNotAvailable": "துரதிருஷ்டவசமாக, உங்கள் தளத்திற்கு இந்த அம்சம் தற்போது ஆதரிக்கப்படவில்லை. மேலும் மேம்பாட்டுக்காக காத்திருக்கவும்!",
     "pleaseUpdateApp": "தயவுசெய்து செயலியை புதுப்பிக்கவும் தொடரவும்.",
     "chooseEmojiInstructionsBody": "எழுத்துக்களை சிறந்த முறையில் பிரதிநிதித்துவப்படுத்தும் எமோஜிகளை பொருத்தவும். கவலைப்பட வேண்டாம்! ஒப்பந்தம் இல்லாமல் புள்ளிகள் குறையாது. 😅",
@@ -5489,10 +5487,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5518,10 +5512,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9851,8 +9841,18 @@
     "autocorrectAndroidFallbackTitle": "உங்கள் விசைப்பலகை உங்கள் இலக்கு மொழியை வழங்கவில்லை என்றால், Gboard ஐ நிறுவி, அங்கு மொழியைச் சேர்க்கவும்:",
     "resendInSeconds": "மீண்டும் அனுப்பு ({seconds})",
     "mapLevelFallbackNotice": "இதுவரை {selected} செயல்பாடுகள் இல்லை — அதற்குப் பதிலாக {shown} காட்டப்படுகிறது.",
+    "openKeyboardSettings": "விசைப்பலகை அமைப்புகளைத் திற",
+    "keyboardPromptAddKeyboardMessage": "உங்கள் இலக்கு மொழிக்கு விசைப்பலகையைச் சேர்க்கவும், இதனால் தானாகத் திருத்தும் வசதி செயல்படும்.",
+    "keyboardPromptAddKeyboardAction": "விசைப்பலகையைச் சேர்",
+    "keyboardPromptSwitchKeyboardMessage": "உங்கள் இலக்கு மொழிக்கு மாற, உங்கள் விசைப்பலகையில் உள்ள பூகோள ஐகானைத் தட்டவும்.",
     "switchLanguageChipLabel": "{language} மொழிக்கு மாறு",
     "languageDropdownLevel": "நிலை {level}",
     "whatAreYouLearning": "நீங்கள் என்ன கற்றுக்கொள்கிறீர்கள்?",
-    "languageSwitcherBaseLanguageLabel": "உங்கள் அடிப்படை மொழி"
+    "languageSwitcherBaseLanguageLabel": "உங்கள் அடிப்படை மொழி",
+    "listenModeDescription": "கேட்க ஒரு விருப்பத்தைத் தட்டவும். எதுவும் தேர்ந்தெடுக்கப்படவில்லை.",
+    "rateActivityLiked": "பிடித்திருந்தது",
+    "rateActivityDisliked": "பிடிக்கவில்லை",
+    "constructUseHrdDesc": "கேட்டது",
+    "timesHeard": "{count, plural, =1{ஒருமுறை கேட்டது} other{{count} முறை கேட்டது}}",
+    "allSettings": "அனைத்து அமைப்புகளும்"
 }

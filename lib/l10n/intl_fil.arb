@@ -1871,14 +1871,12 @@
     "enableAutocorrectPopupTitle": "Idagdag ang iyong target na keyboard sa wika sa pamamagitan ng pagpunta sa:",
     "enableAutocorrectPopupSteps": "  • Mga Setting\n  • Pangkalahatan\n  • Keyboard\n  • Mga Keyboard\n  • Magdagdag ng Bagong Keyboard",
     "enableAutocorrectPopupDescription": "Kapag napili na ang wika, maaari mong i-click ang maliit na icon ng globe sa ibabang kaliwa ng iyong keyboard upang i-activate ang bagong na-install na keyboard.",
-    "downloadGboardSteps": " • I-download ang Gboard\n  • Buksan ang app\n  • Mga Wika\n  • Magdagdag ng keyboard\n  • Piliin ang Wika\n  • Piliin ang uri ng keyboard\n  • Tapos na",
     "enableAutocorrectWarning": "Babala! Kailangan idagdag ang iyong target na keyboard sa wika",
     "displayName": "Pangalan na ipapakita",
     "leaveRoomDescription": "Malapit ka nang umalis sa chat na ito. Makikita ng ibang mga user na umalis ka na sa chat.",
     "confirmUserId": "Mangyaring kumpirmahin ang iyong Pangea Chat username upang ma-delete ang iyong account.",
     "paidSubscriptionStarts": "Nagsisimula {startDate}",
     "cancelInSubscriptionSettings": "• Kanselahin anumang oras sa mga setting ng subscription",
-    "downloadGboard": "I-download ang Gboard",
     "autocorrectNotAvailable": "Sa kasamaang palad, ang iyong platform ay kasalukuyang hindi sinusuportahan para sa tampok na ito. Abangan ang karagdagang pag-unlad!",
     "pleaseUpdateApp": "Mangyaring i-update ang app upang magpatuloy.",
     "chooseEmojiInstructionsBody": "Itugma ang mga emoji sa mga salitang pinakamahusay na kumakatawan dito. Huwag mag-alala! Walang puntos na mawawala kung hindi magkatugma. 😅",
@@ -2083,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-24 11:54:16.416867",
+    "@@last_modified": "2026-08-25 15:25:42.522448",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6258,10 +6256,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6287,10 +6281,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10619,8 +10609,18 @@
     "autocorrectAndroidFallbackTitle": "Kung hindi iniaalok ng iyong keyboard ang target na wika mo, i-install ang Gboard at idagdag ang wika doon:",
     "resendInSeconds": "Ipadala muli ({seconds})",
     "mapLevelFallbackNotice": "Wala pang aktibidad na {selected} — ipinapakita ang {shown} sa halip.",
+    "openKeyboardSettings": "Buksan ang Mga Setting ng Keyboard",
+    "keyboardPromptAddKeyboardMessage": "Magdagdag ng keyboard para sa target na wika mo para gumana ang autocorrect.",
+    "keyboardPromptAddKeyboardAction": "Magdagdag ng Keyboard",
+    "keyboardPromptSwitchKeyboardMessage": "I-tap ang icon ng globo sa iyong keyboard para lumipat sa target na wika mo.",
     "switchLanguageChipLabel": "Lumipat sa {language}",
     "languageDropdownLevel": "Antas {level}",
     "whatAreYouLearning": "Ano ang pinag-aaralan mo?",
-    "languageSwitcherBaseLanguageLabel": "Ang iyong base language"
+    "languageSwitcherBaseLanguageLabel": "Ang iyong base language",
+    "listenModeDescription": "I-tap ang pagpipilian para marinig ito. Walang napili.",
+    "rateActivityLiked": "Nagustuhan",
+    "rateActivityDisliked": "Hindi nagustuhan",
+    "constructUseHrdDesc": "Narinig",
+    "timesHeard": "{count, plural, =1{Narinig nang isang beses} other{Narinig nang {count} beses}}",
+    "allSettings": "Lahat ng setting"
 }

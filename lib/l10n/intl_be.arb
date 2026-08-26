@@ -3350,14 +3350,12 @@
     "enableAutocorrectPopupTitle": "Дадайце клавіятуру мовы мэты, перайшоўшы ў:",
     "enableAutocorrectPopupSteps": "  • Налады\n  • Агульныя\n  • Клавіятура\n  • Клавіятуры\n  • Дадаць новую клавіятуру",
     "enableAutocorrectPopupDescription": "Пасля выбару мовы вы можаце націснуць на маленькую ікону глобуса ў ніжнім левым куце вашай клавіятуры, каб актываваць новую ўсталяваную клавіятуру.",
-    "downloadGboardSteps": " • Загрузіце Gboard\n  • Адкрыйце прыкладанне\n  • Мовы\n  • Дадаць клавіятуру\n  • Выбраць мову\n  • Выбраць тып клавіятуры\n  • Гатова",
     "enableAutocorrectWarning": "Увага! Патрабуецца дадаць клавіятуру мовы мэты",
     "displayName": "Імя для паказу",
     "leaveRoomDescription": "Вы збіраецеся пакінуць гэты чат. Іншыя карыстальнікі ўбачаць, што вы пакінулі чат.",
     "confirmUserId": "Калі ласка, пацвердзіце імя карыстальніка ў Pangea Chat, каб выдаліць свой рахунак.",
     "paidSubscriptionStarts": "Пачынаецца {startDate}",
     "cancelInSubscriptionSettings": "• Адмяніць у любы час у наладах падпіскі",
-    "downloadGboard": "Загрузіце Gboard",
     "autocorrectNotAvailable": "На жаль, ваша платформа ў цяперашні час не падтрымліваецца для гэтай функцыі. Сачыце за навінамі!",
     "pleaseUpdateApp": "Калі ласка, абновіце прыкладанне, каб працягнуць.",
     "chooseEmojiInstructionsBody": "Злучыце эмодзі з словамі, якія яны лепш за ўсё прадстаўляюць. Не хвалюйцеся! Ніякіх штрафных балаў за нязгоду. 😅",
@@ -3551,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-24 11:54:14.501741",
+    "@@last_modified": "2026-08-25 15:25:41.403813",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -5567,10 +5565,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5596,10 +5590,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9773,8 +9763,18 @@
     "autocorrectAndroidFallbackTitle": "Калі ваша клавіятура не прапануе мэтавую мову, усталюйце Gboard і дадайце мову там:",
     "resendInSeconds": "Адправіць паўторна праз ({seconds})",
     "mapLevelFallbackNotice": "Пакуль няма заняткаў {selected} — замест іх паказаны {shown}.",
+    "openKeyboardSettings": "Адкрыць налады клавіятуры",
+    "keyboardPromptAddKeyboardMessage": "Дадайце клавіятуру для мэтавай мовы, каб працаваў аўтавыпраўленне.",
+    "keyboardPromptAddKeyboardAction": "Дадаць клавіятуру",
+    "keyboardPromptSwitchKeyboardMessage": "Націсніце значок глобуса на клавіятуры, каб пераключыцца на мэтавую мову.",
     "switchLanguageChipLabel": "Перайсці на {language}",
     "languageDropdownLevel": "Узровень {level}",
     "whatAreYouLearning": "Што вы вывучаеце?",
-    "languageSwitcherBaseLanguageLabel": "Ваша базавая мова"
+    "languageSwitcherBaseLanguageLabel": "Ваша базавая мова",
+    "listenModeDescription": "Націсніце на выбар, каб пачуць яго. Нічога не выбрана.",
+    "rateActivityLiked": "Спадабалася",
+    "rateActivityDisliked": "Не спадабалася",
+    "constructUseHrdDesc": "Пачута",
+    "timesHeard": "{count, plural, =1{Пачута адзін раз} other{Пачута {count} разы}}",
+    "allSettings": "Усе налады"
 }
