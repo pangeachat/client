@@ -210,21 +210,42 @@ class SpeechToTextResult {
   /// do with one we cannot read. Null rather than throwing from here only so
   /// that the position can be named in the message.
   ///
-  /// A result whose `transcripts` list is EMPTY is not unreadable. It is a
-  /// provider that read the audio and heard nothing, which is an answer, and it
-  /// survives as one.
+  /// A result whose `transcripts` list is EMPTY is not unreadable, and neither
+  /// is one whose only alternative carries an empty transcript. Both are a
+  /// provider that read the audio and heard nothing, which is an answer, and
+  /// they survive as one -- but only while nothing was dropped to get there.
   static SpeechToTextResult? fromJson(Object? raw) {
     if (raw is! Map) return null;
     final entries = raw['transcripts'];
     if (entries is! List) return null;
 
     final transcripts = <Transcript>[];
+    var dropped = false;
     for (final entry in entries) {
       final transcript = Transcript.fromJson(entry);
       // A malformed second alternative is one the call path never reads.
-      if (transcript != null) transcripts.add(transcript);
+      if (transcript == null) {
+        dropped = true;
+        continue;
+      }
+      transcripts.add(transcript);
     }
-    if (transcripts.isEmpty && entries.isNotEmpty) return null;
+
+    // Dropping is only honest when a readable alternative SURVIVES to stand in
+    // the dropped one's place -- and the reader takes `transcripts.first`, so
+    // the stand-in has to be that one, and it has to carry words. An empty
+    // survivor is not a stand-in: it leaves the screen saying the speaker said
+    // NOTHING, which is a claim about a person produced from content we could
+    // not read.
+    //
+    // Asked of what was DROPPED, never of what survived. An empty transcript is
+    // a legitimate answer -- `hasUsableTranscript` exists to gate exactly that,
+    // and persisted embeds carry it -- so the two are told apart by whether we
+    // lost something, which is the only thing that distinguishes them. Reading
+    // the answer off the survivors is the same mistake the result level made.
+    if (dropped && (transcripts.isEmpty || transcripts.first.text.isEmpty)) {
+      return null;
+    }
     return SpeechToTextResult(transcripts: transcripts);
   }
 

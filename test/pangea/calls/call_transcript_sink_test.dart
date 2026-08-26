@@ -480,6 +480,17 @@ void main() {
           transcribe: (_) async => SpeechToTextResponseModel.fromJson(response),
         );
 
+    /// A transcript the provider read as carrying no speech. Legitimate: the
+    /// model's own `hasUsableTranscript` exists to report exactly this shape as
+    /// parseable but not usable.
+    Map<String, dynamic> emptyTranscript() => {
+      'transcript': '',
+      'confidence': 90,
+      'lang_code': 'es-ES',
+      'words_per_hr': 0,
+      'stt_tokens': <dynamic>[],
+    };
+
     Map<String, dynamic> goodTranscript(String text) => {
       'transcript': text,
       'confidence': 100,
@@ -604,6 +615,77 @@ void main() {
 
       expect(model.hasUsableTranscript, isTrue);
       expect(model.transcript.text, 'hola mundo');
+    });
+
+    test('a malformed alternative beside an EMPTY one is not silence', () async {
+      // Dropping an alternative is only honest when a readable one SURVIVES to
+      // stand in its place. Here the survivor carries no words, so the result
+      // holds one empty alternative: no loss recorded, no usable transcript,
+      // and the screen says the speaker SAID NOTHING -- a claim about a person
+      // produced from content we could not read.
+      final s = sinkReturning({
+        'results': [
+          {
+            'transcripts': [
+              {'transcript': 42, 'confidence': 90},
+              emptyTranscript(),
+            ],
+          },
+        ],
+      });
+
+      await expectLater(s.deliver(chunk(0)), throwsA(isA<FormatException>()));
+
+      expect(
+        s.chunksLost,
+        1,
+        reason: 'this is a chunk we lost, not a speaker who was quiet',
+      );
+      expect(s.hasTranscript, isFalse);
+      expect(s.chunksTranscribed, 0);
+    });
+
+    test('an empty survivor behind a readable one is still not a stand-in', () {
+      // Tighter than "some survivor has words". The reader takes
+      // `transcripts.first`, so a readable alternative sitting BEHIND an empty
+      // one is never seen and cannot stand in for what was dropped.
+      expect(
+        () => SpeechToTextResponseModel.fromJson({
+          'results': [
+            {
+              'transcripts': [
+                {'transcript': 42, 'confidence': 90},
+                emptyTranscript(),
+                goodTranscript('nunca leido'),
+              ],
+            },
+          ],
+        }),
+        throwsA(isA<FormatException>()),
+      );
+    });
+
+    test('an EMPTY transcript with nothing dropped is still silence', () async {
+      // The control, and the reason this is decided by what was DROPPED rather
+      // than by what survived. An empty transcript is a legitimate answer --
+      // `hasUsableTranscript` exists to gate exactly that -- so it must not be
+      // turned into a lost chunk just because it carries no words.
+      final s = sinkReturning({
+        'results': [
+          {
+            'transcripts': [emptyTranscript()],
+          },
+        ],
+      });
+
+      await s.deliver(chunk(0));
+
+      expect(
+        s.chunksLost,
+        0,
+        reason: 'nothing was dropped, so nothing is lost',
+      );
+      expect(s.hasTranscript, isFalse);
     });
 
     test(
