@@ -112,13 +112,40 @@ class FakeTrack implements AudioTrack {
   dynamic noSuchMethod(Invocation i) => super.noSuchMethod(i);
 }
 
+/// [ms] of speech at [sampleRate], as the tap would hand it over.
+Int16List speech(int ms, {int sampleRate = captureSampleRate}) {
+  final samples = Int16List(sampleRate * ms ~/ 1000);
+  for (var i = 0; i < samples.length; i++) {
+    samples[i] = i.isEven ? 9830 : -9830;
+  }
+  return samples;
+}
+
+/// A wall clock a test can move.
+///
+/// The recorder reads a clock exactly once per run, so what a test needs is not
+/// a fake time source but the ability to say "and then five seconds passed" —
+/// including backwards, which is the case the floor on a run's start exists to
+/// survive and which no real clock can be asked to do.
+class Clock {
+  int ms = 1700000000000;
+  int call() => ms;
+}
+
 void main() {
   late RecordingSink sink;
   late FakeTrack track;
+  late Clock clock;
+
+  /// Every `runStartedAtMs` a chunker was built with, in the order the runs
+  /// began. It is the one thing a test can see about where a run was placed.
+  late List<int> runStarts;
 
   setUp(() {
     sink = RecordingSink();
     track = FakeTrack();
+    clock = Clock();
+    runStarts = [];
   });
 
   CallCaptureService service({
@@ -131,14 +158,19 @@ void main() {
     tap: withTap,
     deliveryTimeout: timeout ?? const Duration(seconds: 30),
     detachTimeout: detach ?? const Duration(seconds: 5),
-    newChunker: (firstIndex, sampleRate) => PcmChunker(
-      sampleRate: sampleRate,
-      channels: captureChannels,
-      targetDuration: const Duration(milliseconds: 200),
-      maxDuration: const Duration(milliseconds: 400),
-      minSilence: const Duration(milliseconds: 100),
-      firstIndex: firstIndex,
-    ),
+    nowMs: clock.call,
+    newChunker: (firstIndex, sampleRate, runStartedAtMs) {
+      runStarts.add(runStartedAtMs);
+      return PcmChunker(
+        sampleRate: sampleRate,
+        channels: captureChannels,
+        targetDuration: const Duration(milliseconds: 200),
+        maxDuration: const Duration(milliseconds: 400),
+        minSilence: const Duration(milliseconds: 100),
+        firstIndex: firstIndex,
+        runStartedAtMs: runStartedAtMs,
+      );
+    },
   );
 
   group('CallCaptureService', () {
@@ -762,6 +794,226 @@ void main() {
     );
   });
 
+  group('where a run sits', () {
+    test('a mute cuts the run, and the next one starts after the gap', () async {
+      // The flush has to happen in setMuted, not in _onFrames: after a mute no
+      // more frames arrive, so a flush waiting for one never runs and the words
+      // before the mute sit in the chunker until the next stop — coming out
+      // glued to whatever was said after the learner unmuted.
+      final s = service();
+      await s.start(track);
+      for (var i = 0; i < 15; i++) {
+        track.emit(20); // 300ms, under the 400ms ceiling
+      }
+      await pumpEventQueue();
+      expect(sink.delivered, isEmpty, reason: 'nothing has been cut yet');
+
+      s.setMuted(true);
+      await pumpEventQueue();
+      expect(sink.delivered.map((c) => c.index), [
+        0,
+      ], reason: 'the mute flushed the tail');
+
+      clock.ms += 5000;
+      s.setMuted(false);
+      for (var i = 0; i < 15; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+      await pumpEventQueue();
+
+      expect(
+        sink.delivered.map((c) => c.index),
+        [0, 1],
+        reason:
+            'the run after the mute numbers on from the tail, never over it',
+      );
+      expect(
+        sink.delivered[1].startedAtMs - sink.delivered[0].startedAtMs,
+        5000,
+        reason: 'a mute is an absence of capture, so it is a gap in the record',
+      );
+    });
+
+    test('a sample-rate change is not a gap; a mute is', () async {
+      // A rate change happens inside ONE callback and the very same batch
+      // continues into the new chunker, so there is no silence between them —
+      // only a boundary we imposed. Reading the clock there invents a gap and
+      // pushes the first new-rate chunk later than the speech actually was.
+      final tap = _DrivableTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+
+      tap.onFrames!(speech(100), captureSampleRate);
+      clock.ms += 1000; // a clock read below would invent a whole second
+      tap.onFrames!(speech(100, sampleRate: 24000), 24000);
+      await pumpEventQueue();
+
+      expect(sink.delivered.map((c) => c.index), [0]);
+      expect(sink.delivered.single.startedAtMs, runStarts[0]);
+      expect(
+        runStarts[1],
+        runStarts[0] + 100,
+        reason: 'the new rate continues exactly where the old one ended',
+      );
+
+      clock.ms += 5000;
+      s.setMuted(true);
+      s.setMuted(false);
+      tap.onFrames!(speech(100, sampleRate: 24000), 24000);
+      await pumpEventQueue();
+
+      expect(
+        runStarts[2],
+        clock.ms - 100,
+        reason: 'a mute IS an absence of capture, so its run takes the gap',
+      );
+    });
+
+    test(
+      'a clock that steps backwards cannot move a later run earlier',
+      () async {
+        // Device clocks are corrected mid-call. The floor makes a half monotone
+        // by construction: a step backwards can compress a gap to zero, and can
+        // never put a later turn in front of an earlier one.
+        final s = service();
+        await s.start(track);
+        for (var i = 0; i < 10; i++) {
+          track.emit(20); // 200ms
+        }
+        await s.stop();
+        await pumpEventQueue();
+
+        clock.ms -= 60000;
+        await s.start(track);
+        for (var i = 0; i < 10; i++) {
+          track.emit(20);
+        }
+        await s.stop();
+        await pumpEventQueue();
+
+        expect(sink.delivered, hasLength(2));
+        expect(
+          sink.delivered[1].startedAtMs,
+          sink.delivered[0].startedAtMs + 200,
+          reason:
+              'the later run begins where the earlier one ended, not before',
+        );
+      },
+    );
+  });
+
+  group('a run that ends without a stop', () {
+    test('delivers the audio a failed open had already handed over', () async {
+      // If the tap called us back, the platform was already handing over
+      // microphone samples and only the handshake failed. Leaving that audio in
+      // place let the next run inherit it, glued across the gap between them.
+      final tap = _FramesThenFailsTap();
+      final s = service(withTap: tap);
+      final starting = s.start(track);
+      await pumpEventQueue();
+
+      tap.finishOpening();
+      await expectLater(starting, throwsStateError);
+      await pumpEventQueue();
+
+      expect(sink.delivered.map((c) => c.index), [0]);
+      expect(sink.delivered.single.pcm.lengthInBytes ~/ 2, 1600);
+    });
+
+    test('does not cut the run that replaced it', () async {
+      // A stop that lands first ends the run first, and a start after it owns
+      // whatever chunker exists now. An open failing at that point must be a
+      // no-op, not a second cut through somebody else's sentence.
+      final tap = _FramesThenFailsTap();
+      final s = service(withTap: tap);
+      final starting = s.start(track);
+      await pumpEventQueue();
+      await s.stop();
+      expect(sink.delivered.map((c) => c.index), [0]);
+
+      await s.start(track); // opens cleanly, and hands over its own 100ms
+      tap.onFrames!(speech(100), captureSampleRate);
+      tap.finishOpening();
+      await expectLater(starting, throwsStateError);
+      await pumpEventQueue();
+      tap.onFrames!(speech(50), captureSampleRate);
+      await s.stop();
+      await pumpEventQueue();
+
+      expect(sink.delivered.map((c) => c.index), [0, 1]);
+      expect(
+        sink.delivered[1].pcm.lengthInBytes ~/ 2,
+        captureSampleRate * 250 ~/ 1000,
+        reason: 'the second run is one stretch, not two split by a stale open',
+      );
+    });
+
+    test('drops frames from a tap that outlived it', () async {
+      // When `tap.open` throws there is no detach handle, so a tap installed
+      // before the throw cannot be tracked and never comes off. _onFrames was
+      // gated only by the global `_running`, which the NEXT start sets before
+      // its own open — so the leaked tap's frames were accepted straight into
+      // the run that followed.
+      final tap = _LeakingTap();
+      final s = service(withTap: tap);
+      await expectLater(s.start(track), throwsStateError);
+      final leaked = tap.onFrames!;
+
+      await s.start(track);
+      leaked(speech(100), captureSampleRate);
+      await s.stop();
+      await pumpEventQueue();
+
+      expect(
+        sink.delivered,
+        isEmpty,
+        reason: 'a callback may only ever feed the run it was opened for',
+      );
+    });
+  });
+
+  group('a start that overtakes a stop', () {
+    test('does not inherit the previous run\'s audio', () async {
+      // _stop clears `_running` early but does not take the chunker until AFTER
+      // awaiting the detach. A start landing inside that window passed every
+      // guard, attached a second tap, and fed the OLD chunker — so one chunk
+      // held both runs, with the gap between them written out of the record.
+      final tap = _SlowDetachTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+      tap.onFrames!(speech(100), captureSampleRate);
+      await pumpEventQueue();
+
+      final stopping = s.stop();
+      await pumpEventQueue();
+
+      final starting = s.start(track);
+      await pumpEventQueue();
+
+      // Speech arriving while the stop is still unwinding. It belongs to
+      // nothing: the run it was captured for is over, and the run that follows
+      // has not been opened.
+      tap.onFrames!(speech(100), captureSampleRate);
+      await pumpEventQueue();
+
+      tap.finishDetach();
+      await stopping;
+      await starting;
+
+      tap.onFrames!(speech(100), captureSampleRate);
+      await s.stop();
+      await pumpEventQueue();
+
+      expect(sink.delivered.map((c) => c.index), [0, 1]);
+      expect(
+        sink.delivered.map((c) => c.pcm.lengthInBytes ~/ 2),
+        [1600, 1600],
+        reason: 'two runs of 100ms each, never one chunk holding both',
+      );
+    });
+  });
+
   group('a tap that will not let go', () {
     test('is kept rather than dropped when it arrives too late', () async {
       final tap = _StubbornSlowTap();
@@ -868,6 +1120,60 @@ class _StubbornSlowTap implements CallAudioTap {
       }
       detached = true;
     };
+  }
+}
+
+/// A tap the test drives by hand, so it can deliver audio at a rate of its own
+/// choosing — which is what a device changing its capture rate mid-call looks
+/// like from in here.
+class _DrivableTap implements CallAudioTap {
+  CallAudioFrames? onFrames;
+
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+    this.onFrames = onFrames;
+    return () async => this.onFrames = null;
+  }
+}
+
+/// A tap that hands over audio and only THEN fails to open.
+///
+/// The platform was already delivering microphone samples; only the handshake
+/// failed. The FIRST open behaves that way and a later one attaches normally,
+/// so one test can cover a failed open landing after a new run has started.
+class _FramesThenFailsTap implements CallAudioTap {
+  final _failing = Completer<void>();
+  int opens = 0;
+
+  /// The callback of the most recent open, so a test can keep feeding the run
+  /// that is actually current.
+  CallAudioFrames? onFrames;
+
+  void finishOpening() => _failing.complete();
+
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+    this.onFrames = onFrames;
+    onFrames(speech(100), captureSampleRate);
+    if (opens++ > 0) return () async {};
+    await _failing.future;
+    throw StateError('the platform never finished opening');
+  }
+}
+
+/// A tap whose open throws AFTER installing its callback.
+///
+/// There is no detach handle to hold, so nothing ever comes back to it: it goes
+/// on delivering audio into a recorder that believes it is gone.
+class _LeakingTap implements CallAudioTap {
+  CallAudioFrames? onFrames;
+  int opens = 0;
+
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+    this.onFrames ??= onFrames;
+    if (opens++ > 0) return () async {};
+    throw StateError('the platform refused after installing the callback');
   }
 }
 

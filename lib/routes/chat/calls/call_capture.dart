@@ -77,6 +77,9 @@ const _settleFinishWithin = Duration(minutes: 2);
 /// learner loses both the record and every word of the conversation.
 const _detachTimeout = Duration(seconds: 5);
 
+/// The wall clock, in absolute Unix milliseconds.
+int _systemNowMs() => DateTime.now().millisecondsSinceEpoch;
+
 /// Records this device's own outbound call audio.
 ///
 /// It taps the track being published, not the microphone. A microphone also
@@ -93,13 +96,32 @@ class CallCaptureService {
 
   /// How long a tap is given to detach. Injected so a test need not wait it out.
   final Duration detachTimeout;
-  final PcmChunker Function(int firstIndex, int sampleRate) _newChunker;
+
+  /// The wall clock. Injected because the rules below exist to survive a clock
+  /// that misbehaves — including one that steps BACKWARDS mid-call, which is
+  /// not reachable from a test any other way.
+  final int Function() nowMs;
+
+  final PcmChunker Function(int firstIndex, int sampleRate, int runStartedAtMs)
+  _newChunker;
 
   /// Chunk numbering continues across stop and start. Recording can be handed to
   /// another of the learner's devices and handed back within one call, and a
   /// second stretch numbered from zero would be taken for a redelivery of the
   /// first and silently dropped.
   int _nextIndex = 0;
+
+  /// Where the run just closed ended, in absolute Unix milliseconds.
+  ///
+  /// A FLOOR, not a guess. The next run's audio cannot have been captured
+  /// before the previous run's audio finished, so taking the later of this and
+  /// the clock makes a half monotone by construction: a device clock that steps
+  /// backwards mid-call can compress a gap to zero, but it can never move a
+  /// later run in front of an earlier one.
+  ///
+  /// Zero until a run has closed, which is no constraint at all — there is
+  /// nothing yet for a first run to have to sit after.
+  int _notBeforeMs = 0;
 
   PcmChunker? _chunker;
   DetachTap? _detach;
@@ -125,19 +147,23 @@ class CallCaptureService {
     CallAudioTap? tap,
     this.deliveryTimeout = _deliveryTimeout,
     this.detachTimeout = _detachTimeout,
-    PcmChunker Function(int firstIndex, int sampleRate)? newChunker,
+    int Function()? nowMs,
+    PcmChunker Function(int firstIndex, int sampleRate, int runStartedAtMs)?
+    newChunker,
   }) : tap =
            tap ??
            defaultCallAudioTap(
              sampleRate: captureSampleRate,
              channels: captureChannels,
            ),
+       nowMs = nowMs ?? _systemNowMs,
        _newChunker =
            newChunker ??
-           ((firstIndex, sampleRate) => PcmChunker(
+           ((firstIndex, sampleRate, runStartedAtMs) => PcmChunker(
              sampleRate: sampleRate,
              channels: captureChannels,
              firstIndex: firstIndex,
+             runStartedAtMs: runStartedAtMs,
            ));
 
   /// Taps that have not come off. A recording will not start while this has
@@ -157,6 +183,18 @@ class CallCaptureService {
   /// device happens to produce, so a chunk's bytes mean the same thing on every
   /// platform and the header we write over them is always true.
   Future<void> start(AudioTrack track) async {
+    // FIRST, above every guard below. [_stop] clears `_running` early but does
+    // not take the chunker until AFTER awaiting the detach, so a start landing
+    // inside that window passed every guard, attached a second tap, and fed the
+    // OLD chunker — the two runs glued together across the very gap that
+    // separates them.
+    //
+    // Snapshotted, because this method clears the field a few lines down.
+    // Awaiting it after that point would await a field it had just cleared and
+    // fix nothing.
+    final stopping = _stopped;
+    if (stopping != null) await stopping;
+
     if (_running) {
       throw StateError('A call recording is already running');
     }
@@ -172,11 +210,31 @@ class CallCaptureService {
     final session = ++_session;
     final DetachTap? detach;
     try {
-      detach = await tap.open(track, _onFrames);
+      // The callback closes over the session it was opened FOR. See [_onFrames]
+      // for the hole that closes.
+      detach = await tap.open(
+        track,
+        (samples, sampleRate) => _onFrames(samples, sampleRate, session),
+      );
     } catch (_) {
       // Left clear so a transient failure can be retried by the next election.
       // Recording as started forever would refuse every later attempt.
-      if (_session == session) _running = false;
+      //
+      // And the run ENDS here rather than leaving whatever the tap already
+      // handed over in place for the next run to inherit, glued across the gap.
+      // That audio is real: if the tap called us back then the platform was
+      // already handing over microphone samples and only the handshake failed,
+      // so it is delivered like any other. It is not a refused microphone
+      // either — `capture_refused` is whether the PERMISSION was refused, which
+      // a failed open cannot answer, so there is no contradiction to avoid.
+      //
+      // Gated on the session for the same reason `_running` is: a stop that
+      // landed first has already ended this run, and a start after it owns
+      // whatever chunker exists now.
+      if (_session == session) {
+        _running = false;
+        _endRun();
+      }
       rethrow;
     }
     if (_session != session) {
@@ -191,6 +249,12 @@ class CallCaptureService {
     if (detach == null) {
       // No tap on this device. Nothing is recorded, and the call is unaffected.
       _running = false;
+      // The run ends here too. It is a no-op when no frames arrived, and that
+      // is the reason to make the call rather than to reason about it: the
+      // argument that no tap means no chunker rests on a guarantee
+      // [CallAudioTap] does not state, and if frames CAN arrive before a throw
+      // then nothing says they cannot arrive before a null return.
+      _endRun();
     }
   }
 
@@ -310,13 +374,6 @@ class CallCaptureService {
     }
   }
 
-  /// Takes audio from the tap.
-  ///
-  /// The chunker is built here rather than at start, because the rate is not
-  /// known until audio arrives — and it can change mid-call when the device or
-  /// the negotiated codec does. A change ends the current chunk rather than
-  /// reinterpreting samples already collected at the old rate, which would
-  /// stretch or compress what the learner said.
   /// Whether the learner has muted. Frames are dropped while it is set.
   ///
   /// A gate the recorder owns, NOT LiveKit's mute. LiveKit's mute only stops
@@ -328,18 +385,107 @@ class CallCaptureService {
   bool _muted = false;
 
   /// Gates or ungates capture to match the microphone button.
-  void setMuted(bool muted) => _muted = muted;
+  ///
+  /// The run ends HERE rather than in [_onFrames], and on the false -> true
+  /// transition only. After a mute no more frames arrive, so a flush that waits
+  /// for one never runs: the words spoken before the mute would sit in the
+  /// chunker until the next stop and come out glued to whatever was said after
+  /// the learner unmuted. Nothing else happens here — the ordering and the race
+  /// are [_endRun]'s problem, solved once.
+  void setMuted(bool muted) {
+    final wasMuted = _muted;
+    _muted = muted;
+    if (muted && !wasMuted) _endRun();
+  }
 
-  void _onFrames(Int16List samples, int sampleRate) {
-    if (!_running || _stopping || _muted) return;
-    var chunker = _chunker;
-    if (chunker != null && chunker.sampleRate != sampleRate) {
-      final tail = chunker.flush();
-      if (tail != null) _hand(tail);
-      _nextIndex = chunker.nextIndex;
-      chunker = null;
+  /// Ends the current run, and is the ONE place a run ends.
+  ///
+  /// Five paths reach it — a stop, a sample-rate change, a mute, a tap that
+  /// failed to open, and a start that overtook a stop — and listing those
+  /// rather than unifying them is how three of the five came to be missing.
+  ///
+  /// Takes and clears [_chunker] FIRST, which is what makes it idempotent: two
+  /// callers racing across an await cannot flush the same chunker twice.
+  ///
+  /// Then flushes, and only THEN reads `nextIndex`. That order is easy to get
+  /// backwards and costly when it is: `flush()` increments the index through
+  /// its own cut, so reading `nextIndex` first hands back the tail's own number
+  /// and the sink — which keys results by index — takes the next real chunk for
+  /// a redelivery of that tail.
+  void _endRun() {
+    final chunker = _chunker;
+    _chunker = null;
+    if (chunker == null) return;
+
+    final tail = chunker.flush();
+    // Remembered before the chunker is let go, so a later stretch of the same
+    // call numbers on from here.
+    _nextIndex = chunker.nextIndex;
+    // And so a later stretch cannot claim to have been captured before this
+    // one finished. See [_notBeforeMs].
+    _notBeforeMs = chunker.endedAtMs;
+    if (tail != null) _hand(tail);
+  }
+
+  /// Where a run that begins after an ABSENCE of capture sits, in absolute Unix
+  /// milliseconds.
+  ///
+  /// The one clock read in this file. It is taken when the chunker is built,
+  /// which is inside the first callback of the run — by which time that batch's
+  /// audio has already been captured. So the batch's own duration comes off,
+  /// which is exact and free: the samples are in hand and their length is the
+  /// answer.
+  ///
+  /// What remains is the platform's own latency between a microphone sample and
+  /// the callback that carries it. It is not measurable from here, it is small,
+  /// and it is very nearly the same on both devices — the same app, the same
+  /// tap — so it largely cancels in the comparison that matters.
+  ///
+  /// The later of that and [_notBeforeMs], which is what a clock that steps
+  /// backwards cannot get past.
+  int _runStartsAt(int samples, int sampleRate) {
+    final batchMs = (samples ~/ captureChannels) * 1000 ~/ sampleRate;
+    final startedAt = nowMs() - batchMs;
+    return startedAt > _notBeforeMs ? startedAt : _notBeforeMs;
+  }
+
+  /// Takes audio from the tap.
+  ///
+  /// The chunker is built here rather than at start, because the rate is not
+  /// known until audio arrives — and it can change mid-call when the device or
+  /// the negotiated codec does. A change ends the current chunk rather than
+  /// reinterpreting samples already collected at the old rate, which would
+  /// stretch or compress what the learner said.
+  void _onFrames(Int16List samples, int sampleRate, int session) {
+    // Gated on the SESSION, not on [_running] alone. When `tap.open` throws
+    // there is no detach handle, so a tap installed before the throw cannot be
+    // tracked in [_unreleased] and never comes off — and the next start sets
+    // `_running` before ITS own open, so the leaked tap's frames were accepted
+    // straight into the run that followed. Ending the run does not help there,
+    // because that audio arrives afterwards. A callback that carries the
+    // session it was opened for can only ever feed that one, which closes a
+    // hole that predates the positions below.
+    if (session != _session || !_running || _stopping || _muted) return;
+
+    final held = _chunker;
+    if (held != null && held.sampleRate != sampleRate) {
+      // A format change is NOT a gap. A sample-rate change happens inside ONE
+      // callback and the very same batch continues into the new chunker, so
+      // there is no silence between them — only a boundary we imposed. Reading
+      // the clock here would invent a gap and push the first new-rate chunk
+      // later than the speech actually was, so the new run continues at the old
+      // one's end exactly. The three boundaries that ARE an absence of capture
+      // — a stop, a mute, a tap that failed to open — go through [_runStartsAt]
+      // instead.
+      _endRun();
+      _chunker = _newChunker(_nextIndex, sampleRate, _notBeforeMs);
     }
-    chunker ??= _chunker = _newChunker(_nextIndex, sampleRate);
+
+    final chunker = _chunker ??= _newChunker(
+      _nextIndex,
+      sampleRate,
+      _runStartsAt(samples.length, sampleRate),
+    );
     for (final chunk in chunker.add(samples)) {
       _hand(chunk);
     }
@@ -459,16 +605,7 @@ class CallCaptureService {
     // on the next stop or not at all; nothing else ever comes back to it.
     await _releaseUnreleased();
 
-    final chunker = _chunker;
-    _chunker = null;
-
-    if (chunker != null) {
-      final tail = chunker.flush();
-      if (tail != null) _hand(tail);
-      // Remembered before the chunker is let go, so a later stretch of the same
-      // call numbers on from here.
-      _nextIndex = chunker.nextIndex;
-    }
+    _endRun();
   }
 
   /// Ends the call's recording for good.
