@@ -1,12 +1,16 @@
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
@@ -177,6 +181,53 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// search bar riding above it, with their gaps) that on-map overlays must
   /// clear (#7218). Update alongside the chrome if its heights change.
   static const double _narrowBottomChromeInset = 140.0;
+
+  /// OSM tile-policy hardening (#8603): the native User-Agent names the app
+  /// AND carries a contact URL, per the OSM tile usage policy. Web cannot set
+  /// the header at all (a Dart/browser limitation flutter_map documents on
+  /// `TileProvider.headers`), so this is best-effort — web traffic stays
+  /// identifiable only by Referer and IP.
+  ///
+  /// One provider instance for the State's lifetime: `TileLayer` disposes its
+  /// final widget's provider, but never intermediate ones, so constructing a
+  /// fresh provider each build would leak its internal HTTP client.
+  late final NetworkTileProvider _tileProvider = NetworkTileProvider(
+    headers: {
+      if (!kIsWeb)
+        'User-Agent':
+            'flutter_map (com.talktolearn.chat; +${AppConfig.website})',
+    },
+    // A blocking provider tends to answer with an error status whose body is
+    // itself a decodable "blocked" image; flutter_map's default decodes and
+    // DISPLAYS it, hiding the block from `errorTileCallback`. Treat any
+    // non-2xx as a hard error instead, so telemetry fires and the tile
+    // degrades to the map background. What this still cannot catch is a wrong
+    // image served with HTTP 200 (#8585's mode) — see
+    // world-map-tiles.instructions.md.
+    attemptDecodeOfHttpErrorResponses: false,
+  );
+
+  /// Tile-load failures → a rate-limited Sentry breadcrumb (#8603), so a hard
+  /// provider block is visible as context on whatever event reports next,
+  /// without a flaky network spamming a crumb per tile.
+  DateTime? _lastTileErrorCrumb;
+
+  void _onTileError(TileImage tile, Object error, StackTrace? stackTrace) {
+    final now = DateTime.now();
+    if (_lastTileErrorCrumb != null &&
+        now.difference(_lastTileErrorCrumb!) < const Duration(seconds: 30)) {
+      return;
+    }
+    _lastTileErrorCrumb = now;
+    Sentry.addBreadcrumb(
+      Breadcrumb(
+        category: 'world_map.tile_error',
+        message: error.toString(),
+        data: {'tile': tile.coordinates.toString()},
+        level: SentryLevel.warning,
+      ),
+    );
+  }
 
   /// Entry/exit animation bookkeeping for the small/mid dot tier: which pins
   /// are shrinking out, and which have already played their pop-in. See
@@ -911,6 +962,20 @@ class _WorldMapViewState extends State<WorldMapView> {
                     // requests (which matters on Phase 1's free hosted tiers).
                     keepBuffer: 5,
                     userAgentPackageName: 'com.talktolearn.chat',
+                    // #8603 hardening: contact-URL User-Agent on native, and
+                    // non-2xx responses as hard errors — see [_tileProvider].
+                    tileProvider: _tileProvider,
+                    errorTileCallback: _onTileError,
+                    // A failed tile paints transparent, so the themed map
+                    // background (#7937) shows through — a hard block degrades
+                    // to uniform paper, not a grey flash, in both themes.
+                    errorImage: MemoryImage(TileProvider.transparentImage),
+                    // Failed tiles are re-fetched once they leave the pruning
+                    // margin and come back — an offline blip heals on its own
+                    // instead of leaving permanent holes (the default `none`
+                    // pins the error tile for the session).
+                    evictErrorTileStrategy:
+                        EvictErrorTileStrategy.notVisibleRespectMargin,
                   ),
                   // world_v2: activity pins by relevance tier + state, capped by the
                   // width-driven budget. Small/mid dots render individually (no
@@ -967,7 +1032,12 @@ class _WorldMapViewState extends State<WorldMapView> {
                             attributions: [
                               TextSourceAttribution(
                                 'OpenStreetMap contributors',
-                                onTap: () {},
+                                // OSM's attribution requirement is credit +
+                                // link (#8603); a dead onTap rendered the
+                                // credit without its required target.
+                                onTap: () => launchUrlString(
+                                  'https://www.openstreetmap.org/copyright',
+                                ),
                               ),
                             ],
                           ),
