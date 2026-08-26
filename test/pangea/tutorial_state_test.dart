@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
@@ -7,6 +8,9 @@ import 'package:fluffychat/features/tutorials/tutorial_overlay_state_machine.dar
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_state_transition_events.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/pangea/lemmas/lemma.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 
 // Sequences used across tests.
 // readingAssistance: 1 step  |  selectModeButtons: 4 steps  |  writingAssistance: 1 step
@@ -764,6 +768,137 @@ void main() {
         expect(c.requestSequence(chat), true);
         expect(c.state.tutorialType, TutorialEnum.readingAssistance);
         expect(c.state.model.activeTutorial, isNull);
+      },
+    );
+  });
+  // ===========================================================================
+  // The welcome greeting: shown as a vocabulary word when we resolved a real
+  // L2 one, as plain text otherwise. See tutorials.instructions.md.
+  // ===========================================================================
+  group('TutorialCopy.splitOnWordSlot', () {
+    test('a slot at the start leaves nothing before it', () {
+      final split = TutorialCopy.splitOnWordSlot(
+        '${TutorialCopy.wordSlot} to Pangea Chat!',
+      );
+      expect(split, isNotNull);
+      expect(split!.before, '');
+      expect(split.after, ' to Pangea Chat!');
+    });
+
+    test('a slot mid-sentence splits both sides — a translator need not put '
+        'the greeting first', () {
+      final split = TutorialCopy.splitOnWordSlot(
+        'En español decimos ${TutorialCopy.wordSlot}, welcome!',
+      );
+      expect(split!.before, 'En español decimos ');
+      expect(split.after, ', welcome!');
+    });
+
+    test('copy with no slot returns null — nothing to place', () {
+      expect(TutorialCopy.splitOnWordSlot('Welcome to Pangea Chat!'), isNull);
+    });
+  });
+
+  group('TutorialGreeting', () {
+    PangeaToken token() => PangeaToken(
+      text: PangeaTokenText(content: 'Bienvenido', length: 10, offset: 0),
+      lemma: Lemma(text: 'bienvenido', saveVocab: true, form: 'Bienvenido'),
+      // What a greeting actually tags as. A function word, so it will never be
+      // reported "new" — the bubble still renders, just without the green.
+      pos: 'intj',
+      morph: const {},
+    );
+
+    test('a tokenized L2 greeting is a bubble', () {
+      final greeting = TutorialGreeting(
+        'Bienvenido',
+        token: token(),
+        langCode: 'es',
+      );
+      expect(greeting.isBubble, isTrue);
+    });
+
+    test('a greeting with no token is not a bubble — the fallback paths leave '
+        'the word in a language the learner already speaks', () {
+      expect(const TutorialGreeting('Welcome').isBubble, isFalse);
+    });
+
+    test('a token with no language is not a bubble', () {
+      expect(TutorialGreeting('Bienvenido', token: token()).isBubble, isFalse);
+    });
+  });
+
+  group('TutorialModel.welcome', () {
+    test('a bubble greeting puts the marker in the copy, not the word — the '
+        'tooltip needs to know where to place the bubble', () {
+      final greeting = TutorialGreeting(
+        'Bienvenido',
+        token: PangeaToken(
+          text: PangeaTokenText(content: 'Bienvenido', length: 10, offset: 0),
+          lemma: Lemma(text: 'bienvenido', saveVocab: true, form: 'Bienvenido'),
+          pos: 'intj',
+          morph: const {},
+        ),
+        langCode: 'es',
+      );
+      final data = TutorialModel.welcome(greeting).dataAt(0);
+      expect(data.resolvedTooltipArgs, [TutorialCopy.wordSlot]);
+      expect(data.wordBubble!()!.isBubble, isTrue);
+    });
+
+    test('a plain greeting substitutes the word itself', () {
+      final data = TutorialModel.welcome(
+        const TutorialGreeting('Welcome'),
+      ).dataAt(0);
+      expect(data.resolvedTooltipArgs, ['Welcome']);
+      expect(data.wordBubble!()!.isBubble, isFalse);
+    });
+
+    test('the greeting step carries no target and needs no host state', () {
+      final data = TutorialModel.welcome(
+        const TutorialGreeting('Welcome'),
+      ).dataAt(0);
+      expect(data.hasSpotlight, isFalse);
+      expect(data.isArmed, isFalse);
+      expect(data.canShowNextStep(), isTrue);
+    });
+  });
+
+  // ===========================================================================
+  // Which armed steps may be put back on screen
+  // ===========================================================================
+  group('armed steps and the scrim', () {
+    // The bug this locks: `resumeIfStranded` skipped EVERY armed step, on the
+    // reasoning that being off screen is the point. True while armed steps
+    // always carried a scrim — but the map's pin step hands the surface over
+    // instead, so its card is the only thing explaining the shimmer still
+    // running on the pins. Dismissed and never resumed, the learner was left
+    // with a highlight and no instruction. Which of the two an armed step is
+    // comes from `dimsBackground`, so these are the templates that decide it.
+    test('the world map hands its surface over on the step that asks the '
+        'learner to open an activity', () {
+      final templates = TutorialEnum.worldMap.stepTemplates;
+      expect(templates.last.dimsBackground, isFalse);
+    });
+
+    test('the course plan keeps its scrim on the equivalent step', () {
+      final templates = TutorialEnum.coursePlan.stepTemplates;
+      expect(templates.last.dimsBackground, isTrue);
+    });
+
+    test(
+      'every other step dims — handing the surface over is the exception',
+      () {
+        for (final tutorial in TutorialEnum.values) {
+          for (var i = 0; i < tutorial.stepCount; i++) {
+            final dims = tutorial.stepTemplates[i].dimsBackground;
+            if (tutorial == TutorialEnum.worldMap && i == 1) {
+              expect(dims, isFalse, reason: '$tutorial step $i');
+              continue;
+            }
+            expect(dims, isTrue, reason: '$tutorial step $i');
+          }
+        }
       },
     );
   });

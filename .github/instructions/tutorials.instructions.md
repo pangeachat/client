@@ -103,7 +103,13 @@ The app tour ending on World is what closes the second path: a course-code learn
 
 ### welcome
 
-One step, no target: the bot introduces itself and greets the learner in their **L2** — plain styled text, not tappable — over the darkened screen. It says nothing about the map or the course, because it fires on whichever the learner landed on. Tapping hands straight to that surface's tutorial with no scrim blink between them.
+One step, no target: the bot introduces itself and greets the learner in their **L2**, over the darkened screen. It says nothing about the map or the course, because it fires on whichever the learner landed on. Tapping hands straight to that surface's tutorial with no scrim blink between them.
+
+**The greeting itself is a word bubble, not text.** It renders as a tappable vocabulary word — the learner's first contact with the mechanic the whole product runs on: words in the L2 are things you can touch, look up, and collect. Tapping opens the **word card** over the scrim and **collects the word**, so the greeting is also the learner's first collected vocabulary.
+
+**Whether it is styled as *new* is the tokenizer's answer, never ours.** The bubble asks the same analytics service every chat token asks, so a learner who already has the word simply sees it uncollected-but-not-new, and a tooltip reset cannot fake a discovery. In practice a greeting usually tags as an **interjection**, which is a function word and so never carries the green new-word underline — accepted, because the point of the bubble is that the word is *touchable*, not that it is new. It still collects, and still opens a card.
+
+**The bubble appears only when a real L2 greeting was resolved.** It needs a tokenized word to be a word at all, so the fallbacks — no target language, no translation of the greeting for that locale, a tokenizer that did not answer — degrade to the plain app-language greeting with no bubble. A greeting in the learner's own language has nothing to teach about their L2.
 
 ### worldMap
 

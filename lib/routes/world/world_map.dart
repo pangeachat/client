@@ -1318,17 +1318,7 @@ class WorldMapController extends State<WorldMap>
     if (!mounted) return;
     _tutorials.launchTutorial(
       context: context,
-      tutorial: TutorialModel(
-        tutorialType: TutorialEnum.welcome,
-        stepsData: [
-          // No target: the greeting is about the app, not about anything on
-          // screen, so it centers over the darkened map.
-          TutorialStepData(
-            canShowNextStep: () => true,
-            tooltipArgs: () => [greeting],
-          ),
-        ],
-      ),
+      tutorial: TutorialModel.welcome(greeting),
       isFocused: true,
     );
   }

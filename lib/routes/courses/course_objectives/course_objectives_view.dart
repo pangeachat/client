@@ -249,17 +249,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     if (!mounted) return;
     _tutorials.launchTutorial(
       context: context,
-      tutorial: TutorialModel(
-        tutorialType: TutorialEnum.welcome,
-        stepsData: [
-          // No target: the greeting is about the app, not about anything on
-          // screen, so it centers over the darkened plan.
-          TutorialStepData(
-            canShowNextStep: () => true,
-            tooltipArgs: () => [greeting],
-          ),
-        ],
-      ),
+      tutorial: TutorialModel.welcome(greeting),
       isFocused: true,
     );
   }

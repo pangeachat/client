@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
@@ -65,6 +66,15 @@ class TutorialStepData {
   /// a stale world (whether any two-role pin was in view, say).
   final List<String> Function()? tooltipArgs;
 
+  /// A word inside this step's copy that is shown as a tappable vocabulary
+  /// word rather than as text. Only the welcome step's L2 greeting today.
+  ///
+  /// Data, not a widget: the host resolves the word (it owns the network call
+  /// that tokenizes it) and the tooltip owns how a word is drawn, so neither
+  /// has to know the other's job. Null — the fallback paths, where the greeting
+  /// ended up in a language the learner already speaks — renders as plain text.
+  final TutorialGreeting? Function()? wordBubble;
+
   List<String> get resolvedTooltipArgs => tooltipArgs?.call() ?? const [];
 
   TutorialStepData({
@@ -75,6 +85,7 @@ class TutorialStepData {
     this.arming,
     this.tooltipArgs,
     this.surfaceIsVisible,
+    this.wordBubble,
   });
 
   /// Convenience for the common single-target step.
@@ -85,6 +96,7 @@ class TutorialStepData {
     this.arming,
     this.tooltipArgs,
     this.surfaceIsVisible,
+    this.wordBubble,
   }) : targetKeys = [targetKey],
        spotlightRects = null;
 

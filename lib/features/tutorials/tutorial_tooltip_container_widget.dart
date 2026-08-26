@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_tooltip_widget.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -25,6 +26,9 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
   final List<({String label, TutorialChoiceOutcome outcome})> choices;
   final void Function(TutorialChoiceOutcome) onChoice;
 
+  /// See [TutorialStepData.wordBubble].
+  final TutorialGreeting? wordBubble;
+
   const TutorialTooltipContainerWidget({
     super.key,
     required this.width,
@@ -39,6 +43,7 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
     required this.totalSteps,
     this.choices = const [],
     required this.onChoice,
+    this.wordBubble,
   });
 
   @override
@@ -63,6 +68,7 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
                   totalSteps: totalSteps,
                   choices: choices,
                   onChoice: onChoice,
+                  wordBubble: wordBubble,
                 ),
               ),
             ),

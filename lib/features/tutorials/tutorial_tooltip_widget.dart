@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
+import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
+import 'package:fluffychat/features/tutorials/tutorial_word_bubble.dart';
 
 class TutorialTooltipWidget extends StatelessWidget {
   final String text;
@@ -14,6 +16,10 @@ class TutorialTooltipWidget extends StatelessWidget {
   /// them straddling the border and covering the progress bar.
   final List<({String label, TutorialChoiceOutcome outcome})> choices;
   final void Function(TutorialChoiceOutcome)? onChoice;
+
+  /// A word in [text] to draw as a tappable vocabulary word instead of as text.
+  /// Its position comes from [TutorialCopy.wordSlot] in the copy.
+  final TutorialGreeting? wordBubble;
   final EdgeInsets padding;
   final BorderRadius borderRadius;
   final TextStyle? textStyle;
@@ -27,6 +33,7 @@ class TutorialTooltipWidget extends StatelessWidget {
     required this.totalSteps,
     this.choices = const [],
     this.onChoice,
+    this.wordBubble,
     this.padding = const EdgeInsets.all(8),
     this.borderRadius = const BorderRadius.all(Radius.circular(8)),
     this.textStyle,
@@ -70,10 +77,10 @@ class TutorialTooltipWidget extends StatelessWidget {
                             minHeight: constraints.maxHeight,
                           ),
                           child: Center(
-                            child: Text(
-                              text,
+                            child: _TutorialTooltipText(
+                              text: text,
                               style: style,
-                              textAlign: TextAlign.center,
+                              wordBubble: wordBubble,
                             ),
                           ),
                         ),
@@ -164,6 +171,55 @@ class _TutorialChoiceButton extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         textAlign: TextAlign.center,
       ),
+    );
+  }
+}
+
+/// The card's copy, with one word optionally drawn as a vocabulary bubble.
+///
+/// The copy stays a single localized string: the host substitutes
+/// [TutorialCopy.wordSlot] where the word goes and this splits on it, so the
+/// bubble lands wherever the translator put the placeholder rather than where
+/// English happens to put it.
+class _TutorialTooltipText extends StatelessWidget {
+  final String text;
+  final TextStyle? style;
+  final TutorialGreeting? wordBubble;
+
+  const _TutorialTooltipText({
+    required this.text,
+    required this.style,
+    required this.wordBubble,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final bubble = wordBubble;
+    final split = TutorialCopy.splitOnWordSlot(text);
+    if (bubble == null || !bubble.isBubble || split == null) {
+      // Any leftover marker becomes the word itself rather than being shown, so
+      // copy resolved for a bubble still reads correctly when the bubble could
+      // not be built.
+      return Text(
+        text.replaceAll(TutorialCopy.wordSlot, bubble?.word ?? ''),
+        style: style,
+        textAlign: TextAlign.center,
+      );
+    }
+
+    return Text.rich(
+      TextSpan(
+        style: style,
+        children: [
+          if (split.before.isNotEmpty) TextSpan(text: split.before),
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: TutorialWordBubble(greeting: bubble, style: style),
+          ),
+          if (split.after.isNotEmpty) TextSpan(text: split.after),
+        ],
+      ),
+      textAlign: TextAlign.center,
     );
   }
 }

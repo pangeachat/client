@@ -775,19 +775,15 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   /// Whether the goal header the tutorial points at is actually on screen.
-  ///
-  /// [Room.showsActivityStartPage] is the load-bearing clause: until the
-  /// activity starts, the chat view replaces the whole timeline with the start
-  /// page, so the header does not exist — while every other clause here is
-  /// already true on the waiting room. Without it the tutorial launched at an
-  /// unmounted target, the overlay tore itself down, and the sequence was left
-  /// active, blocking every later attempt.
-  bool get _hasGoalHeader =>
-      !room.showsActivityStartPage &&
-      room.showActivityChatUI &&
-      !room.hasGeneratedActivitySummary &&
-      room.hasPickedRole &&
-      (room.ownRole?.allGoals.isNotEmpty ?? false);
+  /// The conditions themselves live in [activityGoalHeaderGate], beside the
+  /// activity's other gates and testable without a room.
+  bool get _hasGoalHeader => activityGoalHeaderGate(
+    showsStartPage: room.showsActivityStartPage,
+    showsActivityChatUI: room.showActivityChatUI,
+    hasSummary: room.hasGeneratedActivitySummary,
+    hasPickedRole: room.hasPickedRole,
+    hasGoals: room.ownRole?.allGoals.isNotEmpty ?? false,
+  );
 
   /// At most one pending check, so the plan-hydrate notifier costs one callback
   /// rather than one per notification.

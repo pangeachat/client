@@ -359,6 +359,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
               totalSteps: widget.totalSteps,
               text: step.style.tooltip,
               choices: step.style.choices,
+              wordBubble: data.wordBubble?.call(),
               onChoice: (outcome) => switch (outcome) {
                 TutorialChoiceOutcome.advance => _next(step),
                 TutorialChoiceOutcome.decline => widget.decline(),

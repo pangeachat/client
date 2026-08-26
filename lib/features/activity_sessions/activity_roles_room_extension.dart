@@ -21,6 +21,28 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 /// orphan rooms into the chat timeline instead of the start page. Instead, a
 /// plan-less room counts as started only when it has assigned roles (real
 /// progress worth showing in the timeline).
+/// Whether the floating **goal header** is on screen in an activity chat — the
+/// target the goal tutorial points at.
+///
+/// [showsStartPage] is the load-bearing clause. Until the activity starts, the
+/// chat view replaces the whole timeline with the start page, so the header does
+/// not exist — while every other condition here is already true on the waiting
+/// room. Without it the tutorial launched at an unmounted target, the overlay
+/// tore itself down, and the sequence was left active, blocking every later
+/// attempt. See tutorials.instructions.md.
+bool activityGoalHeaderGate({
+  required bool showsStartPage,
+  required bool showsActivityChatUI,
+  required bool hasSummary,
+  required bool hasPickedRole,
+  required bool hasGoals,
+}) =>
+    !showsStartPage &&
+    showsActivityChatUI &&
+    !hasSummary &&
+    hasPickedRole &&
+    hasGoals;
+
 @visibleForTesting
 bool activityStartedGate({
   required bool finished,
