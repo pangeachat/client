@@ -18,6 +18,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
@@ -212,9 +213,11 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// - The tile server ANSWERED with a non-2xx ([NetworkImageLoadException],
   ///   which is all a non-2xx can surface as under
   ///   `attemptDecodeOfHttpErrorResponses: false`) — the provider-blocking
-  ///   signature this issue exists to detect. Escalates to ONE
-  ///   `captureMessage` per map lifetime: enough to see a block spike across
-  ///   sessions in Sentry (and alert on it later), never event spam.
+  ///   signature this issue exists to detect. Escalates through
+  ///   [ErrorHandler.logErrorOnce], one report per app session: enough to see
+  ///   a block spike across sessions in Sentry (and alert on it later), never
+  ///   event spam. Explicit warning level — a tile block degrades the map, it
+  ///   doesn't break the app.
   /// - Anything else (socket errors, timeouts, aborts) is the user's own
   ///   connectivity — a rate-limited breadcrumb only, context on whatever
   ///   event reports next. An offline learner must not generate events.
@@ -223,7 +226,6 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// covers is a wrong image served with HTTP 200 (#8585's mode) — see
   /// world-map-tiles.instructions.md.
   DateTime? _lastTileErrorCrumb;
-  bool _tileBlockReported = false;
 
   void _onTileError(TileImage tile, Object error, StackTrace? stackTrace) {
     final now = DateTime.now();
@@ -240,15 +242,16 @@ class _WorldMapViewState extends State<WorldMapView> {
       );
     }
 
-    if (error is NetworkImageLoadException && !_tileBlockReported) {
-      _tileBlockReported = true;
-      Sentry.captureMessage(
-        'World map tile provider returned HTTP ${error.statusCode}',
-        level: SentryLevel.warning,
-        withScope: (scope) => scope.setContexts('tile', {
-          'coordinates': tile.coordinates.toString(),
+    if (error is NetworkImageLoadException) {
+      ErrorHandler.logErrorOnce(
+        key: 'world_map.tile_http_error',
+        e: error,
+        s: stackTrace,
+        data: {
+          'tile': tile.coordinates.toString(),
           'statusCode': error.statusCode,
-        }),
+        },
+        level: SentryLevel.warning,
       );
     }
   }
