@@ -17,6 +17,41 @@ import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 int totalContentLength(List<TranscriptSegment> segments) =>
     segments.fold(0, (sum, segment) => sum + segment.text.length);
 
+/// What a half SAYS, independent of how finely it was cut.
+///
+/// Two halves of the same speech from the same device can be split differently
+/// — a newer one cut by word timings, an older one cut coarsely — and the
+/// words are the same words either way. Joined on a single space so those two
+/// compare equal, which is what stops the choice between them turning on an
+/// artefact of the cut.
+String joinedContent(List<TranscriptSegment> segments) =>
+    segments.map((segment) => segment.text).join(' ');
+
+/// Whether these segments can be laid on a shared timeline beside another
+/// speaker's.
+///
+/// Every displayed segment must carry a position, AND the positions must be
+/// non-decreasing in the order they were written. Presence alone is not enough:
+/// a half with every position filled but jumbled would render that speaker's
+/// own words out of order, with full confidence. Monotonicity is what this
+/// writer guarantees, so a half that fails it was not written by this code.
+///
+/// This is a check for content that is BROKEN, not for content that is
+/// dishonest. A participant can fabricate positions and misorder their own
+/// turns, and nothing here prevents that — they can already fabricate the
+/// WORDS, which is strictly worse. Selling this as protection against a
+/// malicious participant would be a promise the design cannot keep.
+bool segmentsArePlaceable(List<TranscriptSegment> segments) {
+  int? previous;
+  for (final segment in segments) {
+    final at = segment.atMs;
+    if (at == null) return false;
+    if (previous != null && at < previous) return false;
+    previous = at;
+  }
+  return true;
+}
+
 /// Why a speaker's half reads the way it does.
 ///
 /// Three states, kept distinct on purpose. Someone opening a transcript is
@@ -248,6 +283,49 @@ class HalfAccounting {
       drainComplete: raw['drain_complete'] != false,
     );
   }
+
+  /// Value equality, over every field including the reader-side ones.
+  ///
+  /// This is a value object and should always have had it. Without it `==` is
+  /// identity, so two duplicates parsed from two events could never compare
+  /// equal — and the duplicate rule in `_beats` that asks whether two halves
+  /// carry the IDENTICAL accounting would have been dead code that read as
+  /// protection.
+  ///
+  /// Every field, deliberately. Comparing on `writerAdmitsGaps` instead would
+  /// collapse undeclared, truncated, an abandoned drain, lost chunks, a refused
+  /// microphone and an impossible accounting into one bit — distinctions the
+  /// reader shows through [HalfIssue]. Two halves that are both merely "not
+  /// clean" are not interchangeable.
+  @override
+  bool operator ==(Object other) =>
+      other is HalfAccounting &&
+      other.chunksCaptured == chunksCaptured &&
+      other.chunksTranscribed == chunksTranscribed &&
+      other.chunksLost == chunksLost &&
+      other.captureRefused == captureRefused &&
+      other.truncated == truncated &&
+      other.segmentsOmitted == segmentsOmitted &&
+      other.drainComplete == drainComplete &&
+      other.declared == declared &&
+      other.incoherent == incoherent &&
+      other.readerShortened == readerShortened &&
+      other.unreadableContent == unreadableContent;
+
+  @override
+  int get hashCode => Object.hash(
+    chunksCaptured,
+    chunksTranscribed,
+    chunksLost,
+    captureRefused,
+    truncated,
+    segmentsOmitted,
+    drainComplete,
+    declared,
+    incoherent,
+    readerShortened,
+    unreadableContent,
+  );
 }
 
 /// One speaker's side of a call, as the view will read it.
@@ -258,6 +336,23 @@ class HalfAccounting {
 /// said nothing" is unanswerable if all we kept was the state: several
 /// different failures reach the same one, and without the cause we would be
 /// guessing at which. Kept by default, for every half that is not clean.
+/// What the reader found when it went looking for one speaker's half.
+enum HalfArrival {
+  /// A half arrived and was placed.
+  placed,
+
+  /// A half was placed, AND something else from this sender was rejected --
+  /// so what is shown is not known to be everything they said.
+  placedWithLoss,
+
+  /// Something from them reached us under this call's anchor and none of it
+  /// became a half. Not the same as silence, and never to be shown as it.
+  rejected,
+
+  /// Nothing from them reached us at all.
+  none,
+}
+
 enum HalfIssue {
   /// Nothing wrong. The half is everything that speaker said.
   none,
@@ -335,15 +430,15 @@ class TranscriptHalf {
   /// is that we do not know who "them" is.
   final bool participantsWereAGuess;
 
-  /// Whether NOTHING from this sender arrived at all.
+  /// What we found when we looked for this sender's half.
   ///
-  /// When it did not, every field of [accounting] is a default this function
-  /// constructed, and reading those as the writer's declaration reports a
-  /// claim nobody made -- "the writer said nothing about its own capture",
-  /// about a writer that sent no capture and no accounting to be silent
-  /// about. The same overloading, once more: `declared` false means both
-  /// "they sent junk" and "we invented this".
-  final bool nothingArrived;
+  /// One value, replacing the two booleans that used to say this. They could
+  /// contradict each other: a sender whose only event we failed to parse got
+  /// `nothingArrived: true` -- documented as "NOTHING from this sender
+  /// arrived" -- beside the flag proving something had. Each review round of
+  /// this class added another boolean, and the round after found the pair.
+  /// An enum cannot hold two answers at once, which is the point.
+  final HalfArrival arrival;
 
   const TranscriptHalf({
     required this.senderId,
@@ -352,7 +447,7 @@ class TranscriptHalf {
     required this.state,
     required this.readWasCutShort,
     required this.participantsWereAGuess,
-    required this.nothingArrived,
+    required this.arrival,
   });
 
   /// Why this half is not a clean record, or [HalfIssue.none].
@@ -365,32 +460,33 @@ class TranscriptHalf {
   HalfIssue get issue {
     if (state == HalfState.absent) return HalfIssue.neverWritten;
 
-    // Nothing from them arrived, and we could not conclude they were silent.
-    // There is no writer claim to report here -- see [nothingArrived] -- so
-    // the only true thing to say is WHY we could not conclude. Falling
-    // through to the checks below reported `writerSaidNothing`, which is a
-    // statement about a person, produced entirely from a default of ours.
-    if (nothingArrived) {
-      if (accounting.unreadableContent) return HalfIssue.contentUnreadable;
-      if (readWasCutShort) return HalfIssue.couldNotRead;
-      return HalfIssue.participantsUnknown;
+    // NO half was placed, so every field of [accounting] is a default this
+    // function constructed. Reading it as the writer's declaration reports a
+    // claim nobody made -- "the writer said nothing about its own capture",
+    // about a writer that sent no accounting to be silent about.
+    if (arrival == HalfArrival.rejected) return HalfIssue.contentUnreadable;
+    if (arrival == HalfArrival.none) {
+      return readWasCutShort
+          ? HalfIssue.couldNotRead
+          : HalfIssue.participantsUnknown;
     }
-    // FIRST among the writer's claims. An accounting that cannot be true tells
-    // us nothing reliable about any of its own fields, so reporting one of
-    // them as the cause would be repeating the half's own nonsense back with
-    // a confident label on it.
-    if (accounting.incoherent) return HalfIssue.accountingImpossible;
 
-    // OURS, both of them, and they come first because the stated ordering is
-    // our failures ahead of the writer's admissions -- those are the ones we
-    // can act on. Asking `state == incomplete` here instead put this last and
-    // reported the writer's admission whenever both were true, because that
-    // state is set by either. A cut-short read alongside lost audio was
-    // logged as the writer losing audio, and nothing said we had not
-    // finished looking.
+    // OURS, all three, and they come first because the stated ordering is our
+    // failures ahead of the writer's -- those are the ones we can act on.
+    // Asking `state == incomplete` here instead put them last and reported
+    // the writer's admission whenever both were true, because that state is
+    // set by either. A cut-short read alongside lost audio was logged as the
+    // writer losing audio, and nothing said we had not finished looking.
     if (accounting.unreadableContent) return HalfIssue.contentUnreadable;
     if (accounting.readerShortened) return HalfIssue.tooLongToRead;
     if (readWasCutShort) return HalfIssue.couldNotRead;
+
+    // Then, ahead of everything DERIVED from the accounting: numbers that
+    // cannot be true tell us nothing reliable about any of their own fields,
+    // so reporting one of them repeats the half's own nonsense back with a
+    // confident label on it. This used to sit above our failures too, which
+    // was a step too far -- it is not OUR read that its numbers cast doubt on.
+    if (accounting.incoherent) return HalfIssue.accountingImpossible;
 
     if (accounting.captureRefused) return HalfIssue.microphoneRefused;
     if (!accounting.declared) return HalfIssue.writerSaidNothing;
@@ -431,6 +527,12 @@ class TranscriptHalf {
   /// choosing between duplicates by a number the content supplied would let an
   /// event claiming 999 chunks and carrying nothing beat a genuine one.
   int get contentLength => totalContentLength(segments);
+
+  /// Whether this half's turns can be laid on a shared timeline.
+  ///
+  /// A half with nothing in it passes trivially, which is right: a speaker who
+  /// said nothing has no turn that could land in the wrong place.
+  bool get timelineEligible => segmentsArePlaceable(segments);
 }
 
 /// A parsed `pangea.call_transcript` event, before assembly picks between
@@ -452,6 +554,17 @@ class TranscriptCandidate {
   /// ["hello"] and ["hello", "hello"] weigh the same, and the tie-break then
   /// prefers the earlier -- which is the genuine one.
   int get contentLength => totalContentLength(segments);
+
+  /// What this half says, independent of how finely it was cut.
+  String get joinedText => joinedContent(segments);
+
+  /// Whether this half could actually be rendered on a timeline.
+  ///
+  /// The FULL test, not merely "carries some `atMs`". A same-text half with
+  /// jumbled positions that replaced a sound one would fail the render gate
+  /// anyway, and the timeline would be lost to a half that could never have
+  /// shown it.
+  bool get timelineEligible => segmentsArePlaceable(segments);
 }
 
 /// The assembled transcript of one call.
@@ -466,6 +579,18 @@ class CallTranscript {
   const CallTranscript({required this.halves, this.readerStoppedEarly = false});
 
   bool get isEmpty => halves.every((half) => half.segments.isEmpty);
+
+  /// Whether this call reads as one conversation in order, rather than as two
+  /// per-speaker columns.
+  ///
+  /// EVERY displayed half has to qualify. One half that cannot be placed makes
+  /// the whole interleaving a guess, so the call falls back to the per-speaker
+  /// view rather than showing part of it in order and part of it not.
+  ///
+  /// This is what makes a position safe to leave optional. Optionality costs
+  /// the SHAPE of the screen and never the truth of the words — the opposite of
+  /// `chunks_lost` or `capture_refused`, where silence would cost the truth.
+  bool get timelineEligible => halves.every((half) => half.timelineEligible);
 }
 
 /// Assembles the halves of one call.
@@ -574,7 +699,7 @@ CallTranscript assembleTranscript({
               : HalfState.incomplete,
           readWasCutShort: !exhausted,
           participantsWereAGuess: !participantsKnown,
-          nothingArrived: true,
+          arrival: wasUnreadable ? HalfArrival.rejected : HalfArrival.none,
         ),
       );
       continue;
@@ -598,7 +723,9 @@ CallTranscript assembleTranscript({
             : HalfState.present,
         readWasCutShort: !exhausted,
         participantsWereAGuess: !participantsKnown,
-        nothingArrived: false,
+        arrival: wasUnreadable
+            ? HalfArrival.placedWithLoss
+            : HalfArrival.placed,
       ),
     );
   }
@@ -618,7 +745,37 @@ CallTranscript assembleTranscript({
 /// Deliberately not "the earliest wins": a buggy client that emits an empty
 /// half before the real one lands after the drain would otherwise hide the real
 /// one for good. Content cannot be inflated without supplying the content.
+///
+/// Ahead of both of those sits one narrow step, for two halves that are the
+/// same speech in every respect except whether they can be placed in time.
 bool _beats(TranscriptCandidate candidate, TranscriptCandidate held) {
+  // ABOVE the length test, not between it and the tie-break. `contentLength`
+  // sums segment texts and counts no separators, so ["hello world"] measures 11
+  // and ["hello", "world"] measures 10. Those are the SAME WORDS, and they are
+  // exactly the pair this step exists for: a newer half split finely by timings
+  // against an older one that was not. Placed below the length test, the old
+  // half wins on a difference that is an artefact of how it was cut, and the
+  // step never fires in the case it was written for.
+  //
+  // Identical text, never equal length. Equal length means two halves that
+  // happen to be the same size, which is not the same words, and letting a
+  // positioned one win there would change what the transcript SAYS rather than
+  // only its order.
+  //
+  // Identical accounting too, so this does nothing except choose between halves
+  // that are indistinguishable in every respect this feature cares about EXCEPT
+  // whether they can be placed in time — the same sender's old untimed copy
+  // against their new timed one, which is the only case it was ever for.
+  //
+  // The trade is narrow and worth naming: a later duplicate carrying positions
+  // displaces an earlier one without them, from the same sender's own device,
+  // with every word the same. Without the step, an old untimed copy keeps the
+  // slot and the timeline never renders.
+  if (candidate.joinedText == held.joinedText &&
+      candidate.accounting == held.accounting &&
+      candidate.timelineEligible != held.timelineEligible) {
+    return candidate.timelineEligible;
+  }
   if (candidate.contentLength != held.contentLength) {
     return candidate.contentLength > held.contentLength;
   }

@@ -9,6 +9,7 @@ const bob = '@bob:example.com';
 TranscriptCandidate _candidate(
   String sender, {
   List<String> texts = const ['hola'],
+  List<TranscriptSegment>? segments,
   int ts = 1000,
   HalfAccounting accounting = const HalfAccounting(
     chunksCaptured: 2,
@@ -18,9 +19,13 @@ TranscriptCandidate _candidate(
 }) => TranscriptCandidate(
   senderId: sender,
   originServerTs: ts,
-  segments: [for (final text in texts) TranscriptSegment(text)],
+  segments: segments ?? [for (final text in texts) TranscriptSegment(text)],
   accounting: accounting,
 );
+
+/// A segment that knows when it was said.
+TranscriptSegment _placed(String text, int atMs) =>
+    TranscriptSegment(text, atMs: atMs);
 
 TranscriptHalf _halfFor(CallTranscript transcript, String sender) =>
     transcript.halves.firstWhere((half) => half.senderId == sender);
@@ -265,6 +270,229 @@ void main() {
         expect(
           transcript.halves.where((h) => h.senderId == alice),
           hasLength(1),
+        );
+      });
+
+      test('a positioned half beats its own coarse untimed duplicate', () {
+        // `contentLength` sums segment texts and counts no separators, so
+        // ["hello world"] measures 11 and ["hello", "world"] measures 10.
+        // Those are the SAME WORDS, and they are exactly the pair this step
+        // exists for: a newer half split finely by timings against an older one
+        // that was not. Below the length test, the old half wins on a
+        // difference that is an artefact of how it was cut.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              segments: const [TranscriptSegment('hello world')],
+              ts: 100,
+            ),
+            _candidate(
+              alice,
+              segments: [_placed('hello', 1000), _placed('world', 2000)],
+              ts: 900,
+            ),
+          ],
+          expectedSenders: [alice],
+        );
+
+        expect(_halfFor(transcript, alice).segments.map((s) => s.atMs), [
+          1000,
+          2000,
+        ]);
+      });
+
+      test('a same-LENGTH but different half does not win on being placed', () {
+        // Equal length is two halves that happen to be the same size, which is
+        // not the same words. Letting a positioned one win there would change
+        // what the transcript SAYS rather than only its order.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              segments: const [TranscriptSegment('antes')],
+              ts: 100,
+            ),
+            _candidate(alice, segments: [_placed('tarde', 1000)], ts: 900),
+          ],
+          expectedSenders: [alice],
+        );
+
+        expect(
+          _halfFor(transcript, alice).segments.single.text,
+          'antes',
+          reason: 'the earlier event still wins the tie',
+        );
+      });
+
+      test('a placed duplicate does not displace a different ACCOUNTING', () {
+        // Requiring the accountings to match is what stops this step changing
+        // the DIAGNOSIS to buy a timeline. Two halves that are both merely "not
+        // clean" are not interchangeable: a positioned one that lost a chunk
+        // must not displace an unpositioned one that is whole.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              segments: const [TranscriptSegment('hola')],
+              ts: 100,
+            ),
+            _candidate(
+              alice,
+              segments: [_placed('hola', 1000)],
+              ts: 900,
+              accounting: const HalfAccounting(
+                chunksCaptured: 2,
+                chunksTranscribed: 1,
+                chunksLost: 1,
+                declared: true,
+              ),
+            ),
+          ],
+          expectedSenders: [alice],
+        );
+
+        expect(_halfFor(transcript, alice).segments.single.atMs, isNull);
+        expect(_halfFor(transcript, alice).accounting.chunksLost, 0);
+      });
+
+      test('a placed duplicate with jumbled positions does not win', () {
+        // Eligible by the FULL test, not merely "carries some at_ms".
+        // Otherwise a same-text half with jumbled positions replaces a sound
+        // one and then fails the render gate anyway, and the timeline is lost
+        // to a half that could never have shown it.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              segments: const [
+                TranscriptSegment('hola'),
+                TranscriptSegment('que tal'),
+              ],
+              ts: 100,
+            ),
+            _candidate(
+              alice,
+              segments: [_placed('hola', 5000), _placed('que tal', 1000)],
+              ts: 900,
+            ),
+          ],
+          expectedSenders: [alice],
+        );
+
+        expect(
+          _halfFor(transcript, alice).segments.map((s) => s.atMs),
+          [null, null],
+          reason: 'the earlier event keeps the slot',
+        );
+      });
+    });
+
+    group('when the timeline may render', () {
+      test('both halves placed and in order', () {
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              segments: [_placed('hola', 1000), _placed('muy bien', 9000)],
+            ),
+            _candidate(bob, segments: [_placed('que tal', 5000)]),
+          ],
+          expectedSenders: [alice, bob],
+        );
+
+        expect(transcript.timelineEligible, isTrue);
+      });
+
+      test('one unpositioned chunk drops the whole call to per-speaker', () {
+        // Part of a call in order and part of it not is worse than neither: the
+        // reader cannot tell which turns were placed and which were guessed.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(alice, segments: [_placed('hola', 1000)]),
+            _candidate(
+              bob,
+              segments: [
+                _placed('que tal', 2000),
+                const TranscriptSegment('y luego'),
+              ],
+            ),
+          ],
+          expectedSenders: [alice, bob],
+        );
+
+        expect(_halfFor(transcript, alice).timelineEligible, isTrue);
+        expect(_halfFor(transcript, bob).timelineEligible, isFalse);
+        expect(transcript.timelineEligible, isFalse);
+      });
+
+      test('positions that go backwards render per-speaker', () {
+        // Presence alone is not enough. A half with every position filled but
+        // jumbled would render that speaker's own words out of order, with full
+        // confidence. Monotonicity is what this writer guarantees, so a half
+        // that fails it was not written by this code.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              segments: [_placed('luego', 5000), _placed('primero', 1000)],
+            ),
+          ],
+          expectedSenders: [alice],
+        );
+
+        expect(transcript.timelineEligible, isFalse);
+        expect(
+          _halfFor(transcript, alice).segments.map((s) => s.text),
+          ['luego', 'primero'],
+          reason: 'and the words are untouched either way',
+        );
+      });
+
+      test('a speaker who said nothing does not hold the timeline back', () {
+        // A silent half has no turn that could land in the wrong place.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(alice, segments: [_placed('hola', 1000)]),
+            _candidate(bob, segments: const []),
+          ],
+          expectedSenders: [alice, bob],
+        );
+
+        expect(transcript.timelineEligible, isTrue);
+      });
+    });
+
+    group('HalfAccounting as a value', () {
+      HalfAccounting parsed({int lost = 0}) => HalfAccounting.fromJson({
+        'chunks_captured': 2,
+        'chunks_transcribed': 2,
+        'chunks_lost': lost,
+        'capture_refused': false,
+        'truncated': false,
+        'segments_omitted': 0,
+        'drain_complete': true,
+      });
+
+      test('two accountings with the same fields are equal', () {
+        // Without this the duplicate rule above is dead code that READS as
+        // protection: `==` would be identity, and two halves parsed from two
+        // events could never compare equal.
+        expect(
+          identical(parsed(), parsed()),
+          isFalse,
+          reason: 'two real instances, or this proves nothing',
+        );
+        expect(parsed(), parsed());
+        expect(parsed().hashCode, parsed().hashCode);
+      });
+
+      test('a difference in any field is a difference', () {
+        expect(parsed(), isNot(parsed(lost: 1)));
+        expect(
+          const HalfAccounting(declared: true),
+          isNot(const HalfAccounting(declared: true, unreadableContent: true)),
+          reason: 'the reader-side fields count too',
         );
       });
     });
@@ -787,6 +1015,23 @@ void main() {
         HalfIssue.audioLost,
         reason: 'but the diagnosis keeps the fact somebody can act on',
       );
+    });
+
+    test('an impossible accounting does not cast doubt on OUR read', () {
+      // Nonsense numbers outrank everything DERIVED from them, and nothing
+      // else. This check used to sit above our own failures too, so a read we
+      // cut short was reported as the writer's arithmetic being impossible --
+      // which is true, and is not the thing the person reading it can act on.
+      // Their numbers say nothing about whether we finished looking.
+      const nonsense = HalfAccounting(
+        chunksCaptured: 1,
+        chunksTranscribed: 5,
+        declared: true,
+        incoherent: true,
+      );
+
+      expect(issueOf(nonsense), HalfIssue.accountingImpossible);
+      expect(issueOf(nonsense, exhausted: false), HalfIssue.couldNotRead);
     });
 
     test('an impossible accounting is reported before what it claims', () {

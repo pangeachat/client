@@ -257,7 +257,7 @@ void main() {
           state: HalfState.incomplete,
           readWasCutShort: false,
           participantsWereAGuess: false,
-          nothingArrived: false,
+          arrival: HalfArrival.placed,
         ).issue,
         HalfIssue.contentUnreadable,
       );
@@ -290,7 +290,7 @@ void main() {
           state: HalfState.incomplete,
           readWasCutShort: false,
           participantsWereAGuess: false,
-          nothingArrived: false,
+          arrival: HalfArrival.placed,
         ).issue,
         HalfIssue.accountingImpossible,
       );
@@ -490,6 +490,90 @@ void main() {
 
       expect(parsed.accounting.unreadableContent, isTrue);
       expect(parsed.accounting.truncated, isTrue);
+
+      // The flags are not the point -- what somebody READS is. Both a corrupt
+      // entry and a writer that could not fit its half set `truncated`, so
+      // checking flags alone leaves the wrong diagnosis free to come back.
+      expect(
+        TranscriptHalf(
+          senderId: '@a:example.com',
+          segments: parsed.segments,
+          accounting: parsed.accounting,
+          state: HalfState.incomplete,
+          readWasCutShort: false,
+          participantsWereAGuess: false,
+          arrival: HalfArrival.placed,
+        ).issue,
+        HalfIssue.contentUnreadable,
+      );
+    });
+  });
+
+  group('a position on the wire', () {
+    Map<String, dynamic> half(List<Map<String, dynamic>> segments) => {
+      'call_key': _callKey,
+      'segments': segments,
+      'chunks_captured': 2,
+      'chunks_transcribed': 2,
+      'chunks_lost': 0,
+      'capture_refused': false,
+      'truncated': false,
+      'segments_omitted': 0,
+      'drain_complete': true,
+    };
+
+    test('a half written before positions existed still reads as declared', () {
+      // Every half already in a room was written without one. A reader that
+      // needed a position to accept a segment would drop all of that speech and
+      // report those halves as shortened -- our own failure, blamed on them.
+      final parsed = CallTranscriptContent.fromJson(
+        half([
+          {'text': 'hola'},
+          {'text': 'que tal'},
+        ]),
+      )!;
+
+      expect(parsed.segments.map((s) => s.text), ['hola', 'que tal']);
+      expect(parsed.segments.map((s) => s.atMs), [null, null]);
+      expect(parsed.accounting.declared, isTrue);
+      expect(parsed.accounting.readerShortened, isFalse);
+      expect(parsed.accounting.unreadableContent, isFalse);
+    });
+
+    test('a malformed position does not shorten the half', () {
+      // A bad position costs a position. Rejecting the segment would drop
+      // speech AND mark the half shortened, which is a reader-side lie about
+      // what the writer sent.
+      final parsed = CallTranscriptContent.fromJson(
+        half([
+          {'text': 'hola', 'at_ms': 'soon'},
+          {'text': 'que tal', 'at_ms': -1},
+        ]),
+      )!;
+
+      expect(parsed.segments.map((s) => s.text), ['hola', 'que tal']);
+      expect(parsed.segments.map((s) => s.atMs), [null, null]);
+      expect(parsed.accounting.truncated, isFalse);
+      expect(parsed.accounting.readerShortened, isFalse);
+      expect(parsed.accounting.unreadableContent, isFalse);
+    });
+
+    test('a sound position survives the round trip', () {
+      final written = CallTranscriptContent(
+        callKey: _callKey,
+        segments: const [
+          TranscriptSegment('hola', atMs: 1700000000000),
+          TranscriptSegment('que tal', atMs: 1700000003000),
+        ],
+        accounting: const HalfAccounting(
+          chunksCaptured: 1,
+          chunksTranscribed: 1,
+          declared: true,
+        ),
+      );
+
+      final parsed = CallTranscriptContent.fromJson(written.toJson())!;
+      expect(parsed.segments, written.segments);
     });
   });
 }

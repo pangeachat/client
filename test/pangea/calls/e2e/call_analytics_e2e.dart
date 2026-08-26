@@ -91,6 +91,7 @@ void main() {
         targetDuration: const Duration(seconds: 3),
         maxDuration: const Duration(seconds: 5),
         minSilence: const Duration(milliseconds: 300),
+        runStartedAtMs: DateTime.now().millisecondsSinceEpoch,
       );
 
       final sink = CallTranscriptSink(
