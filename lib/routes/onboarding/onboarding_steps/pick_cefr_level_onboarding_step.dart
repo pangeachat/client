@@ -1,5 +1,6 @@
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -31,6 +32,13 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
         userSettings: profile.userSettings.copyWith(cefrLevel: level),
       );
     });
+
+    // A joined course ends onboarding on the joined-course page, and for a
+    // teacher it takes the place of the course request — they already have a
+    // course. See joining-courses.instructions.md.
+    if (state.joinedRoomId != null) {
+      return JoinedCourseOnboardingStep.next(client: client, state: state);
+    }
 
     return switch (type) {
       UserType.student =>
