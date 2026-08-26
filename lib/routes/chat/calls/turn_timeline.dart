@@ -57,6 +57,11 @@ class CallTurn {
 /// is read start to finish, not queried at an offset, so there is nothing to
 /// buy by making this one lazy.
 class TurnTimeline extends StatelessWidget {
+  /// Need not arrive sorted by [CallTurn.at] -- [build] sorts it. A caller
+  /// that forgets to order its own list is not a caller this widget trusts
+  /// to have gotten it right; an unenforced precondition is a hazard, not a
+  /// contract, and the one direction it can fail in here is a teacher reading
+  /// a call in the wrong order with full confidence that it is correct.
   final List<CallTurn> turns;
 
   const TurnTimeline({required this.turns, super.key});
@@ -73,16 +78,18 @@ class TurnTimeline extends StatelessWidget {
 
     final theme = Theme.of(context);
     final l10n = L10n.of(context);
+    final ordered = _byTime(turns);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        for (var i = 0; i < turns.length; i++)
+        for (var i = 0; i < ordered.length; i++)
           Padding(
-            padding: EdgeInsets.only(top: i == 0 ? 0 : _gapAbove(i)),
+            padding: EdgeInsets.only(top: i == 0 ? 0 : _gapAbove(ordered, i)),
             child: _Turn(
-              turn: turns[i],
-              showHeader: i == 0 || turns[i - 1].senderId != turns[i].senderId,
+              turn: ordered[i],
+              showHeader:
+                  i == 0 || ordered[i - 1].senderId != ordered[i].senderId,
               theme: theme,
               l10n: l10n,
             ),
@@ -91,12 +98,35 @@ class TurnTimeline extends StatelessWidget {
     );
   }
 
+  /// Sorted by [CallTurn.at], stable by construction rather than by trusting
+  /// `List.sort` to behave that way -- it is not guaranteed to.
+  ///
+  /// Two turns can legitimately share one instant: the backend's own
+  /// arithmetic stamps every chunk cut from one oversized audio batch with a
+  /// position derived from frame count, and a batch split into several
+  /// chunks in a single pass can produce equal timestamps for chunks that
+  /// were still spoken in a real order. Sorting the ORIGINAL INDEX alongside
+  /// the timestamp turns every comparison into a strict total order, so two
+  /// same-instant turns keep the order they were given -- the order they
+  /// were spoken -- regardless of which algorithm runs underneath, and
+  /// regardless of how many times this rebuilds.
+  static List<CallTurn> _byTime(List<CallTurn> turns) {
+    final indices = List<int>.generate(turns.length, (i) => i)
+      ..sort((a, b) {
+        final byTime = turns[a].at.compareTo(turns[b].at);
+        return byTime != 0 ? byTime : a.compareTo(b);
+      });
+    return [for (final i in indices) turns[i]];
+  }
+
   /// 20px across a speaker change, 6px between two turns from the one
   /// speaker -- the vertical half of the rule that makes a change read as
   /// one. [i] is never 0; the caller supplies that gap directly, since there
-  /// is no turn above the first to measure a change against.
-  double _gapAbove(int i) =>
-      turns[i - 1].senderId == turns[i].senderId ? 6 : 20;
+  /// is no turn above the first to measure a change against. Reads
+  /// [ordered], never [turns] -- the gap is between two turns as SHOWN, and
+  /// only the sorted list says what that is.
+  static double _gapAbove(List<CallTurn> ordered, int i) =>
+      ordered[i - 1].senderId == ordered[i].senderId ? 6 : 20;
 }
 
 class _Turn extends StatelessWidget {

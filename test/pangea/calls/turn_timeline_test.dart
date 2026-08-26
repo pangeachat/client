@@ -155,4 +155,60 @@ void main() {
     expect(find.text('You'), findsOneWidget);
     expect(find.text('Alice'), findsNothing);
   });
+
+  testWidgets(
+    'turns render in call-time order, regardless of the order the caller supplies them in',
+    (tester) async {
+      // Handed in reverse: third, first, second. Nothing about the wiring
+      // that builds this list is trusted to have sorted it -- the widget
+      // sorts by CallTurn.at itself, so a caller cannot get this wrong.
+      await pump(tester, [
+        turn(
+          senderId: '@c:server',
+          at: const Duration(seconds: 30),
+          text: 'third spoken',
+        ),
+        turn(senderId: '@a:server', text: 'first spoken'),
+        turn(
+          senderId: '@b:server',
+          at: const Duration(seconds: 15),
+          text: 'second spoken',
+        ),
+      ]);
+
+      final firstY = tester.getTopLeft(find.text('first spoken')).dy;
+      final secondY = tester.getTopLeft(find.text('second spoken')).dy;
+      final thirdY = tester.getTopLeft(find.text('third spoken')).dy;
+
+      expect(firstY, lessThan(secondY));
+      expect(secondY, lessThan(thirdY));
+    },
+  );
+
+  testWidgets(
+    'turns that share one instant keep the order they were given, not some '
+    "other order the sort happens to land on",
+    (tester) async {
+      // The backend's own arithmetic can stamp several chunks split from one
+      // oversized audio batch with the same position. Equal `at` is a real
+      // case, not a malformed one, and the only fact this widget can use to
+      // order them correctly is the order it was handed -- which is the
+      // order they were spoken.
+      const at = Duration(seconds: 5);
+      await pump(tester, [
+        turn(senderId: '@a:server', at: at, text: 'spoken first of the tie'),
+        turn(senderId: '@b:server', at: at, text: 'spoken second of the tie'),
+        turn(senderId: '@c:server', at: at, text: 'spoken third of the tie'),
+      ]);
+
+      final firstY = tester.getTopLeft(find.text('spoken first of the tie')).dy;
+      final secondY = tester
+          .getTopLeft(find.text('spoken second of the tie'))
+          .dy;
+      final thirdY = tester.getTopLeft(find.text('spoken third of the tie')).dy;
+
+      expect(firstY, lessThan(secondY));
+      expect(secondY, lessThan(thirdY));
+    },
+  );
 }
