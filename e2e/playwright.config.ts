@@ -19,6 +19,48 @@ for (const file of [".env.staging", ".env"]) {
  * Playwright config for Pangea Chat E2E tests (web).
  * See https://playwright.dev/docs/test-configuration.
  */
+/**
+ * Refuses to run anything that places a real CALL against a deployed host.
+ *
+ * The nightly cron runs `mode=full`, which is the whole of `e2e/scripts/`,
+ * against https://app.staging.pangea.chat. A call spec swept up by that would
+ * dial a real call every night, unattended, against a shared account, and
+ * push both halves of the audio through a BILLED speech-to-text provider.
+ *
+ * Placement is not a safeguard: "it lives outside e2e/scripts" holds only
+ * until somebody moves it back. This is the safeguard, and it fails closed --
+ * a call spec anywhere under this config, pointed anywhere but a local stack,
+ * stops the run rather than quietly spending money.
+ *
+ * Calls are tested by the harness in client/test/e2e instead, which drives
+ * two real browsers and a real phone against a local stack and never runs in
+ * CI.
+ */
+function refuseRemoteCallSpecs(): void {
+  const target = process.env.BASE_URL || "";
+  const isLocal =
+    target === "" ||
+    /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])(:|\/|$)/.test(target);
+  if (isLocal) return;
+
+  const specs = fs.existsSync(path.join(__dirname, "scripts"))
+    ? fs
+        .readdirSync(path.join(__dirname, "scripts"), { recursive: true })
+        .map(String)
+        .filter((f) => /call/i.test(f) && f.endsWith(".spec.ts"))
+    : [];
+
+  if (specs.length > 0) {
+    throw new Error(
+      `Refusing to run against ${target}: ${specs.join(", ")} would place a ` +
+        `real call and bill a speech-to-text provider. Calls belong to the ` +
+        `harness in client/test/e2e, which runs against a local stack only.`,
+    );
+  }
+}
+
+refuseRemoteCallSpecs();
+
 export default defineConfig({
   testDir: "./scripts",
 
@@ -64,32 +106,6 @@ export default defineConfig({
         storageState: path.join(__dirname, ".auth", "user.json"),
       },
       dependencies: ["setup"],
-    },
-    {
-      // A real 1:1 call needs TWO parties, each with their OWN voice.
-      //
-      // One machine has one microphone, so a live two-party call can never be
-      // tested by hand here: both sides would capture the same room and
-      // per-speaker attribution -- the whole point of the transcript -- is
-      // exactly what cannot be checked. Chromium's fake capture solves it:
-      // each browser context is handed its own WAV file as its microphone, so
-      // the two halves carry provably different speech.
-      //
-      // No storageState: this project signs both accounts in itself, because
-      // the shared one is a single account and a call needs two.
-      name: "calls",
-      testMatch: /calls\/.*\.spec\.ts/,
-      use: {
-        ...devices["Desktop Chrome"],
-        permissions: ["microphone"],
-        launchOptions: {
-          args: [
-            "--use-fake-ui-for-media-stream",
-            "--use-fake-device-for-media-stream",
-            "--autoplay-policy=no-user-gesture-required",
-          ],
-        },
-      },
     },
   ]
 });
