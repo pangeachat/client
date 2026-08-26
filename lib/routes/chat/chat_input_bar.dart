@@ -9,7 +9,6 @@ import 'package:fluffychat/routes/chat/chat_emoji_picker.dart';
 import 'package:fluffychat/routes/chat/degradation_banner.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/streaming_stt_gate.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/streaming_stt_session.dart';
-import 'package:fluffychat/routes/chat/keyboard_prompt_banner.dart';
 import 'package:fluffychat/routes/chat/pangea_chat_input_row.dart';
 import 'package:fluffychat/routes/chat/recording_view_model.dart';
 import 'package:fluffychat/routes/chat/reply_display.dart';
@@ -80,15 +79,8 @@ class ChatInputBar extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        // Both banners float ABOVE the composer box (sibling),
-                        // so the box's Clip.hardEdge never cuts their shadow.
-                        KeyboardPromptBanner(
-                          composerFocusNode: controller.inputFocus,
-                          targetLanguageCode: () => controller
-                              .pangeaController
-                              .userController
-                              .userL2Code,
-                        ),
+                        // Banner floats ABOVE the composer box (sibling), so the
+                        // box's Clip.hardEdge never cuts its shadow.
                         if (bannerKind != DegradationBannerKind.none)
                           DegradationBanner(
                             kind: bannerKind,

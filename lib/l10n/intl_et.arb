@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-25 15:25:42.494582",
+    "@@last_modified": "2026-08-24 11:54:15.787240",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -3370,12 +3370,14 @@
     "enableAutocorrectPopupTitle": "Lisa oma sihtkeele klaviatuur, minnes aadressile:",
     "enableAutocorrectPopupSteps": "  • Seaded\n  • Üldine\n  • Klaviatuur\n  • Klaviatuurid\n  • Lisa uus klaviatuur",
     "enableAutocorrectPopupDescription": "Kui keel on valitud, saate klaviatuuri vasakus alumises nurgas oleva väikese globaalse ikooni klõpsates aktiveerida hiljuti installitud klaviatuuri.",
+    "downloadGboardSteps": " • Laadige Gboard alla\n  • Avage rakendus\n  • Keeled\n  • Lisa klaviatuur\n  • Valige keel\n  • Valige klaviatuuri tüüp\n  • Valmis",
     "enableAutocorrectWarning": "Hoiatus! Vajalik on oma sihtkeele klaviatuuri lisamine",
     "displayName": "Nimi kuvatud",
     "leaveRoomDescription": "Oled sellest vestlusest lahkumas. Teised kasutajad näevad, et oled lahkunud vestlusest.",
     "confirmUserId": "Palun kinnita oma Pangea Vestluse kasutajanimi, et oma konto kustutada.",
     "paidSubscriptionStarts": "Algab {startDate}",
     "cancelInSubscriptionSettings": "• Tühista igal ajal tellimuse seadetes",
+    "downloadGboard": "Laadi alla Gboard",
     "autocorrectNotAvailable": "Kahjuks ei ole teie platvorm praegu selle funktsiooni jaoks toetatud. Jälgige edasisi arenguid!",
     "pleaseUpdateApp": "Palun uuendage rakendus, et jätkata.",
     "chooseEmojiInstructionsBody": "Sobita emotikonid nende sõnadega, mida nad kõige paremini esindavad. Ära muretse! Ei karistata, kui ei nõustu. 😅",
@@ -5478,6 +5480,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@downloadGboardSteps": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5503,6 +5509,10 @@
         }
     },
     "@cancelInSubscriptionSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9746,18 +9756,8 @@
     "autocorrectAndroidFallbackTitle": "Kui teie klaviatuur ei paku sihtkeelt, installige Gboard ja lisage keel sinna:",
     "resendInSeconds": "Saada uuesti ({seconds})",
     "mapLevelFallbackNotice": "Tegevusi {selected} veel pole – näitame hoopis {shown}.",
-    "openKeyboardSettings": "Ava klaviatuuri seaded",
-    "keyboardPromptAddKeyboardMessage": "Lisage sihtkeele klaviatuur, et automaatkorrektuur töötaks.",
-    "keyboardPromptAddKeyboardAction": "Lisa klaviatuur",
-    "keyboardPromptSwitchKeyboardMessage": "Puudutage klaviatuuril maakera ikooni, et lülituda sihtkeelele.",
     "switchLanguageChipLabel": "Lülita keelele {language}",
     "languageDropdownLevel": "Tase {level}",
     "whatAreYouLearning": "Mida sa õpid?",
-    "languageSwitcherBaseLanguageLabel": "Sinu baaskeelt",
-    "listenModeDescription": "Puuduta valikut, et seda kuulda. Midagi pole valitud.",
-    "rateActivityLiked": "Meeldis",
-    "rateActivityDisliked": "Ei meeldinud",
-    "constructUseHrdDesc": "Kuuldud",
-    "timesHeard": "{count, plural, =1{Kuuldud üks kord} other{Kuuldud {count} korda}}",
-    "allSettings": "Kõik seaded"
+    "languageSwitcherBaseLanguageLabel": "Sinu baaskeelt"
 }

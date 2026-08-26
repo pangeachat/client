@@ -6,7 +6,6 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
-import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
@@ -278,11 +277,6 @@ class PracticeController with ChangeNotifier {
           roomId: pangeaMessageEvent.room.id,
           userId: () => pangeaMessageEvent.room.client.userID,
           accessToken: () => pangeaMessageEvent.room.client.accessToken,
-        ),
-        exposure: ListeningExposureDeclaration.ofTokens(
-          [token],
-          langCode:
-              MatrixState.pangeaController.userController.userL2!.langCode,
         ),
       );
     }

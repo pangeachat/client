@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-25 15:25:45.514507",
+    "@@last_modified": "2026-08-24 11:54:21.147184",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -3955,12 +3955,14 @@
     "enableAutocorrectPopupTitle": "Добавьте клавиатуру целевого языка, перейдя в:",
     "enableAutocorrectPopupSteps": "  • Настройки\n  • Общие\n  • Клавиатура\n  • Клавиатуры\n  • Добавить новую клавиатуру",
     "enableAutocorrectPopupDescription": "После выбора языка вы можете нажать на маленькую иконку глобуса в левом нижнем углу клавиатуры, чтобы активировать недавно установленную клавиатуру.",
+    "downloadGboardSteps": " • Скачайте Gboard\n  • Откройте приложение\n  • Языки\n  • Добавить клавиатуру\n  • Выберите язык\n  • Выберите тип клавиатуры\n  • Готово",
     "enableAutocorrectWarning": "Внимание! Требуется добавить клавиатуру целевого языка",
     "displayName": "Отображаемое имя",
     "leaveRoomDescription": "Вы собираетесь покинуть этот чат. Другие пользователи увидят, что вы покинули чат.",
     "confirmUserId": "Пожалуйста, подтвердите ваше имя пользователя в Pangea Chat, чтобы удалить ваш аккаунт.",
     "paidSubscriptionStarts": "Начинается {startDate}",
     "cancelInSubscriptionSettings": "• Отменить в любой момент в настройках подписки",
+    "downloadGboard": "Скачать Gboard",
     "autocorrectNotAvailable": "К сожалению, эта функция пока не поддерживается на вашей платформе. Следите за обновлениями!",
     "pleaseUpdateApp": "Пожалуйста, обновите приложение, чтобы продолжить.",
     "chooseEmojiInstructionsBody": "Совместите эмодзи с словами, которые они лучше всего представляют. Не волнуйтесь! За несогласие баллы не снимаются. 😅",
@@ -6365,6 +6367,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@downloadGboardSteps": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6390,6 +6396,10 @@
         }
     },
     "@cancelInSubscriptionSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10721,18 +10731,8 @@
     "autocorrectAndroidFallbackTitle": "Если ваша клавиатура не предлагает целевой язык, установите Gboard и добавьте язык там:",
     "resendInSeconds": "Отправить повторно через ({seconds})",
     "mapLevelFallbackNotice": "Пока нет {selected} активностей — вместо них показываются {shown}.",
-    "openKeyboardSettings": "Открыть настройки клавиатуры",
-    "keyboardPromptAddKeyboardMessage": "Добавьте клавиатуру для целевого языка, чтобы автокоррекция работала.",
-    "keyboardPromptAddKeyboardAction": "Добавить клавиатуру",
-    "keyboardPromptSwitchKeyboardMessage": "Нажмите значок глобуса на клавиатуре, чтобы переключиться на целевой язык.",
     "switchLanguageChipLabel": "Переключиться на {language}",
     "languageDropdownLevel": "Уровень {level}",
     "whatAreYouLearning": "Что вы изучаете?",
-    "languageSwitcherBaseLanguageLabel": "Ваш основной язык",
-    "listenModeDescription": "Нажмите на вариант, чтобы прослушать его. Ничего не выбрано.",
-    "rateActivityLiked": "Понравилось",
-    "rateActivityDisliked": "Не понравилось",
-    "constructUseHrdDesc": "Услышано",
-    "timesHeard": "{count, plural, =1{Прослушано 1 раз} other{Прослушано {count} раз}}",
-    "allSettings": "Все настройки"
+    "languageSwitcherBaseLanguageLabel": "Ваш основной язык"
 }

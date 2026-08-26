@@ -18,14 +18,13 @@ class CourseDetailsTokenParam extends TokenParam {
 
   static const String _expandedSegment = 'all';
 
-  /// The sections with a full "See all" subpage. `analytics` is retired, so
-  /// its expanded token degrades to the plain section scroll — and is NOT
-  /// pushed.
+  /// The sections with a full "See all" subpage. `more` shows everything
+  /// inline and `analytics` is retired, so an expanded token for either
+  /// degrades to the plain section scroll — and is NOT pushed.
   static const Set<SpaceSettingsTabs> expandableSections = {
     SpaceSettingsTabs.course,
     SpaceSettingsTabs.chat,
     SpaceSettingsTabs.participants,
-    SpaceSettingsTabs.more,
   };
 
   /// The pushed subpage this token opens, or null when it opens the plain

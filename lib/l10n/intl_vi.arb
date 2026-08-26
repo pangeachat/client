@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:46.940164",
+    "@@last_modified": "2026-08-24 11:54:22.978497",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -2326,6 +2326,7 @@
     "enableAutocorrectPopupTitle": "Thêm bàn phím ngôn ngữ mục tiêu của bạn bằng cách vào:",
     "enableAutocorrectPopupSteps": "  • Cài đặt\n  • Chung\n  • Bàn phím\n  • Bàn phím\n  • Thêm bàn phím mới",
     "enableAutocorrectPopupDescription": "Khi ngôn ngữ được chọn, bạn có thể nhấp vào biểu tượng quả địa cầu nhỏ ở góc dưới bên trái của bàn phím để kích hoạt bàn phím mới được cài đặt.",
+    "downloadGboardSteps": " • Tải Gboard\n  • Mở ứng dụng\n  • Ngôn ngữ\n  • Thêm bàn phím\n  • Chọn ngôn ngữ\n  • Chọn loại bàn phím\n  • Xong",
     "enableAutocorrectWarning": "Cảnh báo! Cần thêm bàn phím ngôn ngữ mục tiêu của bạn",
     "displayName": "Tên hiển thị",
     "leaveRoomDescription": "Bạn sắp rời khỏi cuộc trò chuyện này. Những người dùng khác sẽ thấy rằng bạn đã rời khỏi cuộc trò chuyện.",
@@ -2340,6 +2341,7 @@
         }
     },
     "cancelInSubscriptionSettings": "• Hủy bất cứ lúc nào trong cài đặt đăng ký",
+    "downloadGboard": "Tải Gboard",
     "autocorrectNotAvailable": "Rất tiếc, nền tảng của bạn hiện không được hỗ trợ cho tính năng này. Hãy theo dõi để biết thêm thông tin phát triển!",
     "takeAPhoto": "Chụp một bức ảnh",
     "recordAVideo": "Ghi lại một video",
@@ -7041,18 +7043,8 @@
     "autocorrectAndroidFallbackTitle": "Nếu bàn phím của bạn không hỗ trợ ngôn ngữ mục tiêu, hãy cài đặt Gboard và thêm ngôn ngữ đó tại đây:",
     "resendInSeconds": "Gửi lại ({seconds})",
     "mapLevelFallbackNotice": "Chưa có hoạt động {selected} nào — thay vào đó hiển thị {shown}.",
-    "openKeyboardSettings": "Mở Cài đặt Bàn phím",
-    "keyboardPromptAddKeyboardMessage": "Thêm bàn phím cho ngôn ngữ bạn muốn học để tính năng tự động sửa lỗi hoạt động.",
-    "keyboardPromptAddKeyboardAction": "Thêm bàn phím",
-    "keyboardPromptSwitchKeyboardMessage": "Nhấn vào biểu tượng quả địa cầu trên bàn phím để chuyển sang ngôn ngữ bạn muốn học.",
     "switchLanguageChipLabel": "Chuyển sang {language}",
     "languageDropdownLevel": "Cấp độ {level}",
     "whatAreYouLearning": "Bạn đang học gì?",
-    "languageSwitcherBaseLanguageLabel": "Ngôn ngữ cơ bản của bạn",
-    "listenModeDescription": "Chạm vào một lựa chọn để nghe. Chưa có gì được chọn.",
-    "rateActivityLiked": "Đã thích",
-    "rateActivityDisliked": "Không thích",
-    "constructUseHrdDesc": "Đã nghe",
-    "timesHeard": "{count, plural, =1{Đã nghe một lần} other{Đã nghe {count} lần}}",
-    "allSettings": "Tất cả cài đặt"
+    "languageSwitcherBaseLanguageLabel": "Ngôn ngữ cơ bản của bạn"
 }

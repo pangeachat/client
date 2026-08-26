@@ -80,16 +80,6 @@ The bracketing is not the caller's job. A caller cannot measure by timing the ca
 
 **The room travels wherever it exists, and its absence is expected.** Room-scoped rows sum into a total; a total never decomposes back into rooms, so dropping the room is a one-way door for one string. Some surfaces genuinely have none — analytics practice and the vocab list are not in a room — and those emit with an absent room rather than not emitting. A synthetic placeholder is never the answer: these rows are bucketed and authorized per room downstream, so a fabricated one is fabricated listening in somebody's course.
 
-### Word-level exposure
-
-Minutes are not the only thing a playback produces. Every read-aloud path also records which lemmas were heard, as 0-XP construct uses — see [Listening exposure](analytics-system.instructions.md#listening-exposure) for the use type and its bucketing.
-
-That makes the lemmas a **second thing the caller declares**, alongside the category, and for the same reason: the shared entry point is handed neither a room nor an event nor the tokens, so it cannot derive them, and optional instrumentation makes forgetting it the default. Declaring is required, with an explicit exemption for paths that genuinely speak no L2 lemma.
-
-The mint happens where the measurement closes — in the same `finally` that brackets the playback — so a route that resolves having played nothing records nothing, and an interrupted read banks no words it never reached.
-
-**Voice-message playback is the one path outside this.** It is not a TTS route and does not pass through the entry point; its lemmas come from the message's speech-to-text transcript. When a voice message has no usable transcript there is nothing to attribute, and no exposure is recorded — a known coverage gap, not a fault to work around.
-
 ## One message at a time
 Playback holds a single waiting slot: while a message is being read, at most one message waits, and a newer arrival replaces whichever message was waiting. The learner stays at most one message behind the conversation, so what they hear is still on screen. Reading every message in order would fall progressively further behind; ignoring everything that arrives mid-playback would instead skip the newest messages and drift the audio away from where the learner is looking.
 

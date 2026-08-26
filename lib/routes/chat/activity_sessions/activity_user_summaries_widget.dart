@@ -37,16 +37,10 @@ class ActivityUserSummaries extends StatelessWidget {
     if (summary == null) {
       // Generation runs in the chat, in the same semi-transparent box the
       // summary will fill, so the finished-status bar doesn't grow and shove
-      // the rating card around while we wait (#8018). A locally-recorded
-      // failure overrides room state, which can't say "error" when the
-      // network is down (#8362).
-      return ValueListenableBuilder(
-        valueListenable: controller.activityController.summaryFetchFailed,
-        builder: (context, fetchFailed, _) =>
-            summaryModel.isLoading && !fetchFailed
-            ? const _SummaryLoading()
-            : const SizedBox(),
-      );
+      // the rating card around while we wait (#8018).
+      return summaryModel.isLoading
+          ? const _SummaryLoading()
+          : const SizedBox();
     }
 
     final goals = room.ownRole?.allGoals ?? const <ActivityRoleGoal>[];

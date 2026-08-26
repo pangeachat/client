@@ -6,7 +6,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
-import 'package:fluffychat/features/keyboards/keyboard_prompt_local_store.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/language_service.dart';
@@ -155,12 +154,7 @@ class UserController {
   }) async {
     await initialize();
     final prevHash = profile.hashCode;
-    // Every path that changes the target language funnels through here, so
-    // this is the single place the autocorrect reset needs to be enforced.
-    final updatedProfile = Profile.resetAutocorrectIfLanguageChanged(
-      profile,
-      update(profile),
-    );
+    final Profile updatedProfile = update(profile);
 
     if (updatedProfile.hashCode == prevHash) {
       // no changes were made, so don't save
@@ -268,12 +262,6 @@ class UserController {
   /// Initializes the user's profile by waiting for account data to load, reading in account
   /// data to profile, and migrating from the pangea profile if the account data is not present.
   Future<void> _initialize() async {
-    // Profile.effectiveAutocorrect reads the observed-keyboard store
-    // synchronously (it is consumed from build methods), so the store has to
-    // be in memory before any real profile exists — otherwise autocorrect
-    // resolves off on iOS for whatever window the load takes.
-    await ObservedKeyboardStore.ready;
-
     // wait for account data to load
     // as long as it's not null, then this we've already migrated the profile
     if (client.prevBatch == null) {
@@ -605,7 +593,7 @@ class UserController {
       case ToolSetting.autoIGC:
         return profile.toolSettings.autoIGC;
       case ToolSetting.enableAutocorrect:
-        return profile.effectiveAutocorrect;
+        return profile.toolSettings.enableAutocorrect;
       case ToolSetting.audioWords:
         return profile.toolSettings.audioWords;
       case ToolSetting.audioChoices:

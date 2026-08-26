@@ -6,7 +6,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
@@ -102,7 +101,6 @@ void main() {
         langCode: 'es',
         useCase: TtsUseCase.words,
         listening: plainProbe(),
-        exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
         onStart: () => started++,
         onStop: () => stopped++,
       );
@@ -131,7 +129,6 @@ void main() {
       langCode: 'es',
       useCase: TtsUseCase.words,
       listening: plainProbe(),
-      exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
     );
 
     // A stranded id makes `stop` treat every later word as "not the current
@@ -143,7 +140,6 @@ void main() {
       langCode: 'es',
       useCase: TtsUseCase.words,
       listening: plainProbe(),
-      exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
       onStop: () => stoppedLater++,
     );
 
@@ -159,7 +155,6 @@ void main() {
         langCode: 'es',
         useCase: TtsUseCase.words,
         listening: probe,
-        exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
       );
 
       // The teeth. This harness has no Matrix state behind the controller, so
@@ -183,7 +178,6 @@ void main() {
         langCode: 'es',
         useCase: TtsUseCase.words,
         listening: probe,
-        exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
       );
 
       // Closing a measurement is not the same as banking one. No route was ever
@@ -236,7 +230,6 @@ void main() {
         useCase: TtsUseCase.newMessage,
         allowChoreoPlay: false,
         listening: probe,
-        exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
       );
 
       // The engine really was asked to speak, once, with this text. Everything
@@ -291,7 +284,6 @@ void main() {
           useCase: TtsUseCase.words,
           allowChoreoPlay: false,
           listening: probe,
-          exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
         );
 
         expect(spoken, ['hola'], reason: 'the device engine spoke the text');
@@ -340,7 +332,6 @@ void main() {
         useCase: TtsUseCase.words,
         allowChoreoPlay: false,
         listening: probe,
-        exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
         onStop: () => stopped++,
       );
 

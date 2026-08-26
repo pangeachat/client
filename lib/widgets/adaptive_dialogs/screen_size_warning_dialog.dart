@@ -3,21 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 
-export 'package:fluffychat/widgets/adaptive_dialogs/window_growable_height_stub.dart'
-    if (dart.library.js_interop) 'package:fluffychat/widgets/adaptive_dialogs/window_growable_height_web.dart';
-
 /// Shortest window (logical pixels) the app still lays out acceptably in.
 /// Below this the user is asked to expand their browser window.
 const double kMinScreenHeight = 550;
-
-/// Smallest gap (CSS pixels) between the OS work area and the window's outer
-/// height that still counts as "the user could expand this window". Below it
-/// the window effectively fills the work area — the browser is maximized or
-/// fullscreen, possibly with a docked on-screen keyboard eating the bottom of
-/// the screen — and asking the user to expand is asking for something the OS
-/// won't give them. The slack absorbs window-manager gaps and the few pixels a
-/// maximized window's borders overhang the work area by.
-const double kMinGrowableHeight = 50;
 
 /// Resize events arrive in bursts: dragging a browser window edge fires them
 /// continuously, and dismissing a mobile on-screen keyboard reports a briefly
@@ -51,43 +39,27 @@ bool screenIsTooShort(BuildContext context) =>
     windowHeight(context) <= kMinScreenHeight;
 
 /// Owns the "expand your screen size" warning: puts it up when the window is
-/// too short *and the user could actually make it taller*, and takes it back
-/// down once either stops being true.
+/// too short, and takes it back down once the window is big enough again.
 ///
-/// The expandability check is what keeps a desktop on-screen keyboard from
-/// triggering the warning: a keyboard docked into the OS work area shrinks a
-/// maximized browser right along with the work area, so the window still fills
-/// what the OS offers and there is nothing to ask the user for (#8179 reopen).
-///
-/// The warning is an [OverlayEntry], never a dialog route. A route (or
-/// anything else that takes focus) blurs the composer, and a focus-following
-/// on-screen keyboard closes on blur — which made the original fix slam the
-/// user's keyboard shut the moment it opened. Nothing here may ever move
-/// focus.
+/// The warning is driven from here rather than from inside the dialog so that
+/// one place decides, from one measurement, whether it should be on screen —
+/// and so that closing it is a route this object holds, never "whatever is
+/// currently on top of the navigator".
 class ScreenSizeWarning {
-  OverlayEntry? _entry;
+  Route<void>? _route;
 
   /// Whether the user has already been warned about the current too-short
   /// window. Cleared when the window grows back, so the warning shows once per
   /// shrink instead of returning every time the user resizes while short.
   bool _warned = false;
 
-  bool get isShowing => _entry != null;
+  bool get isShowing => _route?.isActive ?? false;
 
-  /// Feed the settled window measurements. [navigatorContext] is where the
-  /// warning's overlay is found; pass null while no navigator is mounted yet.
-  void onWindowMetrics({
-    required double height,
-    required double growableHeight,
-    required BuildContext? navigatorContext,
-  }) {
+  /// Feed the settled window height. [navigatorContext] is where the dialog is
+  /// pushed from; pass null while no navigator is mounted yet.
+  void onWindowHeight(double height, BuildContext? navigatorContext) {
     if (height > kMinScreenHeight) {
       _warned = false;
-      dismiss();
-      return;
-    }
-
-    if (growableHeight < kMinGrowableHeight) {
       dismiss();
       return;
     }
@@ -98,30 +70,32 @@ class ScreenSizeWarning {
   }
 
   void _show(BuildContext context) {
-    final entry = OverlayEntry(
-      builder: (_) => ScreenSizeWarningDialog(onClose: dismiss),
+    final navigator = Navigator.of(context, rootNavigator: true);
+    final route = DialogRoute<void>(
+      context: context,
+      themes: InheritedTheme.capture(from: context, to: navigator.context),
+      builder: (context) => const ScreenSizeWarningDialog(),
     );
-    _entry = entry;
-    Navigator.of(context, rootNavigator: true).overlay!.insert(entry);
+    _route = route;
+    navigator.push(route).whenComplete(() {
+      if (identical(_route, route)) _route = null;
+    });
   }
 
-  /// Takes the warning back down. No-op when it isn't showing.
+  /// Takes the warning back down. No-op when it isn't showing — including when
+  /// the user already closed it themselves.
   void dismiss() {
-    _entry?.remove();
-    _entry = null;
+    final route = _route;
+    _route = null;
+    if (route == null || !route.isActive) return;
+    route.navigator?.removeRoute(route);
   }
 }
 
 /// Asks the user to expand a too-short window. Put up and taken down by
-/// [ScreenSizeWarning]; the user can also close it with [onClose].
-///
-/// Rendered in an overlay with no barrier and no focus of its own: the app —
-/// including a composer whose on-screen keyboard would close if it lost
-/// focus — stays fully usable underneath.
+/// [ScreenSizeWarning]; the user can also close it by hand.
 class ScreenSizeWarningDialog extends StatelessWidget {
-  final VoidCallback onClose;
-
-  const ScreenSizeWarningDialog({required this.onClose, super.key});
+  const ScreenSizeWarningDialog({super.key});
 
   @override
   Widget build(BuildContext context) => AlertDialog.adaptive(
@@ -134,7 +108,8 @@ class ScreenSizeWarningDialog extends StatelessWidget {
     ),
     actions: [
       AdaptiveDialogAction(
-        onPressed: onClose,
+        onPressed: () => Navigator.of(context).pop(),
+        autofocus: true,
         child: Text(L10n.of(context).close),
       ),
     ],

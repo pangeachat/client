@@ -114,11 +114,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "allSettings": "All settings",
-    "@allSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
     "catchUp": "Catch up",
     "@catchUp": {
         "type": "String",
@@ -3474,11 +3469,6 @@
         "description": "Shown in the email signup form when the homeserver reports the chosen username is already registered."
     },
     "listen": "Listen",
-    "listenModeDescription": "Tap a choice to hear it. Nothing is selected.",
-    "@listenModeDescription": {
-        "type": "text",
-        "description": "Shown under the choices in the writing assistance card while Listen mode is on, explaining that tapping a choice only plays its audio."
-    },
     "trialPeriodExpired": "Your trial period has expired",
     "translations": "translations",
     "definitions": "definitions",
@@ -3597,15 +3587,6 @@
     "formSectionHeader": "Forms used in chats:",
     "writingExercisesTooltip": "Writing",
     "listeningExercisesTooltip": "Listening",
-    "timesHeard": "{count, plural, =1{Heard once} other{Heard {count} times}}",
-    "@timesHeard": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "readingExercisesTooltip": "Reading",
     "meaningNotFound": "Meaning could not be found.",
     "notTheCodeError": "Sorry, that's not the code!",
@@ -3703,12 +3684,9 @@
     "enableAutocorrectPopupDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
     "autocorrectAndroidDialogTitle": "Autocorrect in your target language",
     "autocorrectAndroidDialogBody": "When you type in a chat, your keyboard will switch to your target language and correct spelling in that language.",
-    "autocorrectAndroidFallbackTitle": "If your keyboard doesn't already support your target language, you can add it in your keyboard settings.",
-    "openKeyboardSettings": "Open Keyboard Settings",
+    "autocorrectAndroidFallbackTitle": "If your keyboard doesn't offer your target language, install Gboard and add the language there:",
+    "downloadGboardSteps": " • Download Gboard\n  • Open app\n  • Languages\n  • Add keyboard\n  • Select Language\n  • Select keyboard type\n  • Done",
     "enableAutocorrectWarning": "Warning! Requires adding your target language keyboard",
-    "keyboardPromptAddKeyboardMessage": "Add a keyboard for your target language so autocorrect works.",
-    "keyboardPromptAddKeyboardAction": "Add Keyboard",
-    "keyboardPromptSwitchKeyboardMessage": "Tap the globe icon on your keyboard to switch to your target language.",
     "displayName": "Display name",
     "leaveRoomDescription": "You're about to leave this chat. Other users will see that you have left the chat.",
     "confirmUserId": "Please confirm your Pangea Chat username in order to delete your account.",
@@ -3722,6 +3700,7 @@
         }
     },
     "cancelInSubscriptionSettings": "• Cancel at any time in subscription settings",
+    "downloadGboard": "Download Gboard",
     "autocorrectNotAvailable": "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!",
     "pleaseUpdateApp": "Please update the app to continue.",
     "chooseEmojiInstructionsBody": "Match emojis with the words they best represent. Don't worry! No points off for disagreeing. 😅",
@@ -3962,8 +3941,6 @@
     "waitingForOthersToFinish": "Waiting for the rest to finish up...",
     "generatingSummary": "Analyzing chat and generating results",
     "rateActivityTitle": "How was this activity?",
-    "rateActivityLiked": "Liked it",
-    "rateActivityDisliked": "Didn't like it",
     "rateActivityCommentHint": "Add a comment (optional)",
     "rateActivityCommentRejected": "Your comment couldn't be posted. Try rewording it, or submit your rating without a comment.",
     "rateActivityThanks": "Thanks for your feedback!",
@@ -4864,7 +4841,6 @@
     },
     "closeAddCoursePage": "Close add course page",
     "constructUseSugDesc": "Accepted suggestions",
-    "constructUseHrdDesc": "Heard",
     "mostPopular": "Most popular",
     "mostSavings": "Most savings",
     "enterDiscountCode": "Enter discount code",

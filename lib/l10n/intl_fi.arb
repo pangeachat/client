@@ -3338,12 +3338,14 @@
     "enableAutocorrectPopupTitle": "Lisää kohdekielesi näppäimistö seuraavasti:",
     "enableAutocorrectPopupSteps": "  • Asetukset\n  • Yleiset\n  • Näppäimistö\n  • Näppäimistöt\n  • Lisää uusi näppäimistö",
     "enableAutocorrectPopupDescription": "Kun kieli on valittu, voit klikata pienen maapallon kuvaketta näppäimistön alakulmassa ottaaksesi käyttöön juuri asennetun näppäimistön.",
+    "downloadGboardSteps": " • Lataa Gboard\n  • Avaa sovellus\n  • Kielet\n  • Lisää näppäimistö\n  • Valitse kieli\n  • Valitse näppäimistötyyppi\n  • Valmis",
     "enableAutocorrectWarning": "Varoitus! Vaatii kohdekielen näppäimistön lisäämisen",
     "displayName": "Näytön nimi",
     "leaveRoomDescription": "Olet poistumassa tästä keskustelusta. Muut käyttäjät näkevät, että olet poistunut keskustelusta.",
     "confirmUserId": "Vahvista Pangea Chat -käyttäjänimesi poistaaksesi tilisi.",
     "paidSubscriptionStarts": "Alkaen {startDate}",
     "cancelInSubscriptionSettings": "  • Peruuta milloin tahansa tilauksen asetuksissa",
+    "downloadGboard": "Lataa Gboard",
     "autocorrectNotAvailable": "Valitettavasti alustasi ei tällä hetkellä tue tätä ominaisuutta. Pysy kuulolla jatkokehityksestä!",
     "pleaseUpdateApp": "Päivitä sovellus jatkaaksesi.",
     "chooseEmojiInstructionsBody": "Vastaa emojien ja niiden parhaiten kuvaavien sanojen kanssa. Älä huoli! Ei pisteitä, vaikka eri mieltä olisitkin. 😅",
@@ -3537,7 +3539,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-25 15:25:42.403132",
+    "@@last_modified": "2026-08-24 11:54:16.545834",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -5553,6 +5555,10 @@
         "type": "String",
         "placeholders": {}
     },
+    "@downloadGboardSteps": {
+        "type": "String",
+        "placeholders": {}
+    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5578,6 +5584,10 @@
         }
     },
     "@cancelInSubscriptionSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9786,18 +9796,8 @@
     "autocorrectAndroidFallbackTitle": "Jos näppäimistösi ei tarjoa kohdekieltäsi, asenna Gboard ja lisää kieli sinne:",
     "resendInSeconds": "Lähetä uudelleen ({seconds})",
     "mapLevelFallbackNotice": "Ei vielä {selected} aktiviteetteja – näytetään sen sijaan {shown}.",
-    "openKeyboardSettings": "Avaa näppäimistöasetukset",
-    "keyboardPromptAddKeyboardMessage": "Lisää kohdekielesi näppäimistö, jotta automaattinen korjaus toimii.",
-    "keyboardPromptAddKeyboardAction": "Lisää näppäimistö",
-    "keyboardPromptSwitchKeyboardMessage": "Vaihda kohdekieleen napauttamalla näppäimistön maapallokuvaketta.",
     "switchLanguageChipLabel": "Vaihda kieleen: {language}",
     "languageDropdownLevel": "Taso {level}",
     "whatAreYouLearning": "Mitä opiskelet?",
-    "languageSwitcherBaseLanguageLabel": "Peruskielesi",
-    "listenModeDescription": "Kuule valinta napauttamalla sitä. Mitään ei ole valittu.",
-    "rateActivityLiked": "Pidin siitä",
-    "rateActivityDisliked": "En pitänyt siitä",
-    "constructUseHrdDesc": "Kuultu",
-    "timesHeard": "{count, plural, =1{Kuultu kerran} other{Kuultu {count} kertaa}}",
-    "allSettings": "Kaikki asetukset"
+    "languageSwitcherBaseLanguageLabel": "Peruskielesi"
 }

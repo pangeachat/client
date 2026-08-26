@@ -15,6 +15,7 @@ import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knock_notification_utils.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
@@ -233,25 +234,32 @@ Future<void> _tryPushHelper(
 
   Uint8List? roomAvatarFile, senderAvatarFile;
   try {
-    roomAvatarFile = await client
-        .downloadAvatarCached(
-          avatar,
-          thumbnailMethod: ThumbnailMethod.crop,
-          width: notificationAvatarDimension,
-          height: notificationAvatarDimension,
-          animated: false,
-          isThumbnail: true,
-          rounded: true,
-        )
-        .timeout(const Duration(seconds: 3));
+    roomAvatarFile = avatar == null
+        ? null
+        : await client
+              .downloadMxcCached(
+                avatar,
+                thumbnailMethod: ThumbnailMethod.crop,
+                width: notificationAvatarDimension,
+                height: notificationAvatarDimension,
+                animated: false,
+                isThumbnail: true,
+                rounded: true,
+              )
+              .timeout(const Duration(seconds: 3));
   } catch (e, s) {
     Logs().e('Unable to get avatar picture', e, s);
+    // #Pangea
+    ErrorHandler.logError(e: e, s: s, data: {"avatarUri": avatar.toString()});
+    // Pangea#
   }
   try {
     senderAvatarFile = event.room.isDirectChat
         ? roomAvatarFile
+        : senderAvatar == null
+        ? null
         : await client
-              .downloadAvatarCached(
+              .downloadMxcCached(
                 senderAvatar,
                 thumbnailMethod: ThumbnailMethod.crop,
                 width: notificationAvatarDimension,
