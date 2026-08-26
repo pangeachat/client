@@ -205,6 +205,90 @@ class _CourseCardBody extends StatelessWidget {
 
   const _CourseCardBody(this.controller, this.room);
 
+  /// The More section's rows. Every setting shows inline; admin-only rows are
+  /// disabled (not hidden) for non-admins — one layout for all roles (#8357).
+  List<ButtonDetails> _moreButtons(BuildContext context) {
+    final L10n l10n = L10n.of(context);
+    return [
+      ButtonDetails(
+        title: l10n.editCourse,
+        description: l10n.editCourseDesc,
+        icon: const Icon(Icons.edit_outlined, size: 30.0),
+        onPressed: () => controller.openCoursePage(RoomSubpageEnum.edit),
+        enabled: room.isRoomAdmin,
+      ),
+      ButtonDetails(
+        title: l10n.changeCourse,
+        description: l10n.changeCourseDesc,
+        icon: const Icon(Icons.assignment_outlined, size: 30.0),
+        onPressed: () => controller.openCoursePage(RoomSubpageEnum.addcourse),
+        enabled: room.isRoomAdmin,
+      ),
+      ButtonDetails(
+        title: l10n.starsToUnlockObjectiveTitle,
+        description: l10n.starsToUnlockObjectiveDesc,
+        icon: const Icon(Icons.star_outline, size: 30.0),
+        onPressed: controller.setStarsToUnlockObjective,
+        enabled: room.isRoomAdmin,
+        trailing: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(
+            "${room.teacherMode.starsToUnlockObjective ?? kDefaultStarsToUnlockObjective}",
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ),
+      ),
+      ButtonDetails(
+        title: l10n.requireAnalyticsAccessTitle,
+        description: l10n.requireAnalyticsAccessDesc,
+        icon: const Icon(Symbols.bar_chart_4_bars, size: 30.0),
+        onPressed: () => showFutureLoadingDialog(
+          context: context,
+          future: () => room.toggleRequireAnalyticsAccess(),
+        ),
+        enabled: room.isRoomAdmin,
+        isToggle: true,
+        value: room.requireAnalyticsAccess,
+      ),
+      ButtonDetails(
+        title: l10n.permissions,
+        description: l10n.permissionsDesc,
+        icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
+        onPressed: () => controller.openCoursePage(RoomSubpageEnum.permissions),
+        enabled: room.isRoomAdmin,
+      ),
+      ButtonDetails(
+        title: l10n.access,
+        description: l10n.accessDesc,
+        icon: const Icon(Icons.shield_outlined, size: 30.0),
+        onPressed: () => controller.openCoursePage(RoomSubpageEnum.access),
+        enabled: room.isRoomAdmin && room.spaceParents.isEmpty,
+      ),
+      ButtonDetails(
+        title: l10n.createGroupChat,
+        description: l10n.createGroupChatDesc,
+        icon: const Icon(Symbols.chat_add_on, size: 30.0),
+        onPressed: controller.addGroupChat,
+        enabled:
+            room.isRoomAdmin && room.canChangeStateEvent(EventTypes.SpaceChild),
+      ),
+      ButtonDetails(
+        title: l10n.leave,
+        description: l10n.leaveDesc,
+        icon: const Icon(Icons.logout_outlined, size: 30.0),
+        onPressed: controller.leaveCourse,
+        enabled: room.membership == Membership.join,
+      ),
+      ButtonDetails(
+        title: l10n.delete,
+        description: l10n.deleteDesc,
+        icon: const Icon(Icons.delete_outline, size: 30.0),
+        onPressed: () => DeleteSpaceDialog.show(room, context),
+        enabled: room.isRoomAdmin,
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -214,7 +298,7 @@ class _CourseCardBody extends StatelessWidget {
       child: CourseOverview(
         controller: controller,
         room: room,
-        moreButtons: _courseSettingsButtons(context, controller, room),
+        moreButtons: _moreButtons(context),
         onInvite: controller.openInvite,
         initialSection: controller.widget.activeTab,
       ),
@@ -222,100 +306,10 @@ class _CourseCardBody extends StatelessWidget {
   }
 }
 
-/// The More section's settings rows. The course page shows only the rows
-/// enabled for this user; the All settings subpage shows every row, with
-/// admin-only ones disabled (not hidden) for non-admins (#8578).
-List<ButtonDetails> _courseSettingsButtons(
-  BuildContext context,
-  SpaceDetailsController controller,
-  Room room,
-) {
-  final L10n l10n = L10n.of(context);
-  return [
-    ButtonDetails(
-      title: l10n.editCourse,
-      description: l10n.editCourseDesc,
-      icon: const Icon(Icons.edit_outlined, size: 30.0),
-      onPressed: () => controller.openCoursePage(RoomSubpageEnum.edit),
-      enabled: room.isRoomAdmin,
-    ),
-    ButtonDetails(
-      title: l10n.changeCourse,
-      description: l10n.changeCourseDesc,
-      icon: const Icon(Icons.assignment_outlined, size: 30.0),
-      onPressed: () => controller.openCoursePage(RoomSubpageEnum.addcourse),
-      enabled: room.isRoomAdmin,
-    ),
-    ButtonDetails(
-      title: l10n.starsToUnlockObjectiveTitle,
-      description: l10n.starsToUnlockObjectiveDesc,
-      icon: const Icon(Icons.star_outline, size: 30.0),
-      onPressed: controller.setStarsToUnlockObjective,
-      enabled: room.isRoomAdmin,
-      trailing: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Text(
-          "${room.teacherMode.starsToUnlockObjective ?? kDefaultStarsToUnlockObjective}",
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-      ),
-    ),
-    ButtonDetails(
-      title: l10n.requireAnalyticsAccessTitle,
-      description: l10n.requireAnalyticsAccessDesc,
-      icon: const Icon(Symbols.bar_chart_4_bars, size: 30.0),
-      onPressed: () => showFutureLoadingDialog(
-        context: context,
-        future: () => room.toggleRequireAnalyticsAccess(),
-      ),
-      enabled: room.isRoomAdmin,
-      isToggle: true,
-      value: room.requireAnalyticsAccess,
-    ),
-    ButtonDetails(
-      title: l10n.permissions,
-      description: l10n.permissionsDesc,
-      icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
-      onPressed: () => controller.openCoursePage(RoomSubpageEnum.permissions),
-      enabled: room.isRoomAdmin,
-    ),
-    ButtonDetails(
-      title: l10n.access,
-      description: l10n.accessDesc,
-      icon: const Icon(Icons.shield_outlined, size: 30.0),
-      onPressed: () => controller.openCoursePage(RoomSubpageEnum.access),
-      enabled: room.isRoomAdmin && room.spaceParents.isEmpty,
-    ),
-    ButtonDetails(
-      title: l10n.createGroupChat,
-      description: l10n.createGroupChatDesc,
-      icon: const Icon(Symbols.chat_add_on, size: 30.0),
-      onPressed: controller.addGroupChat,
-      enabled:
-          room.isRoomAdmin && room.canChangeStateEvent(EventTypes.SpaceChild),
-    ),
-    ButtonDetails(
-      title: l10n.leave,
-      description: l10n.leaveDesc,
-      icon: const Icon(Icons.logout_outlined, size: 30.0),
-      onPressed: controller.leaveCourse,
-      enabled: room.membership == Membership.join,
-    ),
-    ButtonDetails(
-      title: l10n.delete,
-      description: l10n.deleteDesc,
-      icon: const Icon(Icons.delete_outline, size: 30.0),
-      onPressed: () => DeleteSpaceDialog.show(room, context),
-      enabled: room.isRoomAdmin,
-    ),
-  ];
-}
-
 /// A section's full subpage, pushed within the card (`<section>/all` in the
-/// course token): the full course plan, the complete chat list, the member
-/// cards, or the full settings list. Its back control and section title are
-/// the card's header ([SpaceDetailsHeader]) — this body renders no navigation
-/// of its own.
+/// course token): the full course plan, the complete chat list, or the member
+/// cards. Its back control and section title are the card's header
+/// ([SpaceDetailsHeader]) — this body renders no navigation of its own.
 class _CourseSectionSubpage extends StatelessWidget {
   final SpaceDetailsController controller;
   final Room room;
@@ -359,11 +353,6 @@ class _CourseSectionSubpage extends StatelessWidget {
           room.id,
           activeChat: null,
           client: room.client,
-        ),
-        SpaceSettingsTabs.more => SingleChildScrollView(
-          child: CourseSettingsButtonList(
-            buttons: _courseSettingsButtons(context, controller, room),
-          ),
         ),
         _ => SingleChildScrollView(
           child: Column(

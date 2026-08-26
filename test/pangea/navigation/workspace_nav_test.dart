@@ -424,26 +424,15 @@ void main() {
     });
 
     test('an expanded non-expandable section is not pushed', () {
-      // `analytics` is retired; its /all degrades to the section scroll, so
-      // the panel must not render a back arrow over the plain card.
+      // `more` shows everything inline; its /all degrades to the section
+      // scroll, so the panel must not render a back arrow over the plain card.
       const param = CourseDetailsTokenParam(
-        activeTab: SpaceSettingsTabs.analytics,
+        activeTab: SpaceSettingsTabs.more,
         expanded: true,
       );
       expect(param.expandedSection, isNull);
       expect(param.isPushed, isFalse);
       expect(param.poppedParam, isNull);
-    });
-
-    test('the More section\'s All settings subpage is pushed (#8578)', () {
-      const param = CourseDetailsTokenParam(
-        activeTab: SpaceSettingsTabs.more,
-        expanded: true,
-      );
-      expect(param.expandedSection, SpaceSettingsTabs.more);
-      expect(param.isPushed, isTrue);
-      expect(param.poppedParam?.activeTab, SpaceSettingsTabs.more);
-      expect(param.poppedParam?.expanded, isFalse);
     });
 
     test('keeps a live room beside the course (a course can scope a room)', () {

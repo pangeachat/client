@@ -141,10 +141,6 @@ dependencies:
   # (routes/chat/composer_keyboard_context.dart, #8465).
   text_input_context:
     path: pangea_packages/text_input_context
-  # Reports the learner's enabled device keyboards, on iOS and Android
-  # (features/keyboards/keyboard_language_repo.dart, #8504).
-  keyboard_languages:
-    path: pangea_packages/keyboard_languages
   # Pangea#
 
 dev_dependencies:

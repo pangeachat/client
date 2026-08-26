@@ -161,10 +161,10 @@ void main() {
     });
 
     // #8466 — with hintLocales the keyboard follows the target language on
-    // its own, so the Android dialog explains that. #8504 — its action opens
-    // the system's keyboard settings directly instead of the Play Store.
+    // its own, so the Android dialog explains that and keeps the Gboard
+    // walkthrough only as the fallback.
     testWidgets(
-      'Android dialog explains the keyboard switch, links keyboard settings',
+      'Android dialog explains the keyboard switch, Gboard fallback',
       (tester) async {
         await pumpTile(tester, makeViewModel(), isWeb: false);
 
@@ -182,10 +182,10 @@ void main() {
           findsOneWidget,
         );
         expect(
-          find.textContaining('add it in your keyboard settings'),
+          find.textContaining('install Gboard and add the language there'),
           findsOneWidget,
         );
-        expect(find.text('Open Keyboard Settings'), findsOneWidget);
+        expect(find.text('Download Gboard'), findsOneWidget);
         expect(find.textContaining('Warning!'), findsNothing);
       },
     );

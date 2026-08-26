@@ -26,7 +26,7 @@ extension ChildrenAndParentsRoomExtension on Room {
     final Room? child = client.getRoomById(roomId);
     if (child == null) return;
 
-    for (final Room parent in child.pangeaSpaceParents) {
+    for (final Room parent in pangeaSpaceParents) {
       try {
         await parent.removeSpaceChild(roomId);
       } catch (e) {

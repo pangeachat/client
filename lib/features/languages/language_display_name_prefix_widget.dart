@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/features/languages/language_flag_or_fallback.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
@@ -27,18 +26,16 @@ class LanguageDisplayNamePrefixWidget extends StatelessWidget {
         SizedBox(
           width: iconSize,
           height: iconSize,
-          child: LanguageFlagOrFallback(
-            language: language,
-            flag: NetworkSvg(
-              svgUrl: language.svgUrl.toString(),
-              width: iconSize,
-              height: iconSize,
-              placeholder: const Center(
-                child: CircularProgressIndicator(strokeWidth: 0.5),
-              ),
-            ),
-            fallback: Icon(Icons.language, size: iconSize),
-          ),
+          child: language.shouldShowFlag
+              ? NetworkSvg(
+                  svgUrl: language.svgUrl.toString(),
+                  width: iconSize,
+                  height: iconSize,
+                  placeholder: const Center(
+                    child: CircularProgressIndicator(strokeWidth: 0.5),
+                  ),
+                )
+              : Icon(Icons.language, size: iconSize),
         ),
         SizedBox(height: spacing),
         Text(

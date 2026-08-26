@@ -213,14 +213,9 @@ class SpaceAnalyticsSummaryModel {
         vocabLargeXP += 1;
       }
 
-      // Explicitly three-way, not correct-or-else. A construct can now reach
-      // this list with no scored use at all — listening exposure is 0 XP, and
-      // so are `unk` and every `ign*` — and counting "the learner never got
-      // this right" as "the learner got it wrong" would inflate a
-      // teacher-visible number with words that were merely heard.
       if (entry.hasCorrectUse) {
         vocabUsedCorrectly += 1;
-      } else if (entry.hasIncorrectUse) {
+      } else {
         vocabUsedIncorrectly += 1;
       }
     }
@@ -266,12 +261,6 @@ class SpaceAnalyticsSummaryModel {
       final systemUsesCorrect = [];
       final systemUsesIncorrect = [];
 
-      // This loop is MORPH only, and listening exposure is vocab only — every
-      // construct that reaches the exposure buffer comes from a vocab
-      // identifier — so no `hrd` use can appear here. A guard on this loop
-      // would read as the thing keeping exposure out of the teacher's
-      // correct/incorrect figures; the three-way split over `cleanedVocab`
-      // above is what actually does that.
       for (final use in entry.cappedUses) {
         if (originalUseTypes.contains(use.useType)) {
           use.xp > 0

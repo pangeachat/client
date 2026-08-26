@@ -240,9 +240,7 @@ class _RatingThumb extends StatelessWidget {
     final theme = Theme.of(context);
     final up = rating == ActivityRatingValue.up;
     return IconButton(
-      tooltip: up
-          ? L10n.of(context).rateActivityLiked
-          : L10n.of(context).rateActivityDisliked,
+      tooltip: up ? L10n.of(context).yes : L10n.of(context).no,
       icon: Icon(
         selected
             ? (up ? Icons.thumb_up : Icons.thumb_down)

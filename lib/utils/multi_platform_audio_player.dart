@@ -19,26 +19,18 @@ class MultiPlatformAudioPlayer {
     required this.mimeType,
   });
 
-  /// Plays to the end, and reports WHETHER it reached the end.
-  ///
-  /// The return value is not decoration. `AudioPlayer.play()` resolves when
-  /// playback "completes or is paused or stopped", and the wait below also
-  /// resolves on `idle`, which is where `stop()` puts the player — so a
-  /// caller that treats a normal return as "the audio finished" is wrong every
-  /// time something interrupts it. `true` only for a real completion.
-  Future<bool> play() async {
+  Future<void> play() async {
     await audioPlayer.play();
-    final state = await audioPlayer.processingStateStream.firstWhere(
+    await audioPlayer.processingStateStream.firstWhere(
       (state) =>
           state == ProcessingState.completed || state == ProcessingState.idle,
       orElse: () => ProcessingState.idle,
     );
-    return state == ProcessingState.completed;
   }
 
-  Future<bool> setAudioSourceAndPlay() async {
+  Future<void> setAudioSourceAndPlay() async {
     await setAudioSource();
-    return play();
+    await play();
   }
 
   Future<void> setAudioSource() async {

@@ -6,7 +6,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
-import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
@@ -120,12 +119,6 @@ class WordZoomWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       PhoneticTranscriptionWidget(
-                        // The card is opened on one construct, so its
-                        // pronunciation taps expose the learner to that lemma
-                        // rather than to whatever the surface form parses as.
-                        exposure: ListeningExposureDeclaration([
-                          construct,
-                        ], langCode: langCode),
                         text: token.content,
                         textLanguage:
                             PLanguageStore.byLangCode(langCode) ??

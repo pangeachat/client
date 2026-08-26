@@ -8,7 +8,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
-import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
@@ -110,7 +109,6 @@ void main() {
           useCase: TtsUseCase.words,
           allowChoreoPlay: false,
           listening: probe,
-          exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
           onStop: () => stopped++,
         ).timeout(const Duration(seconds: 5));
 
@@ -139,7 +137,6 @@ void main() {
           langCode: 'es',
           useCase: TtsUseCase.words,
           listening: probe,
-          exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
         ).timeout(const Duration(seconds: 5)),
         () => MockClient((request) async {
           backendCalls.add(request);
@@ -175,7 +172,6 @@ void main() {
           useCase: TtsUseCase.newMessage,
           allowChoreoPlay: false,
           listening: SpyProbe(now: steppingClock()),
-          exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
         ).timeout(const Duration(seconds: 5)),
         () => MockClient((request) async {
           backendCalls.add(request);
@@ -196,7 +192,6 @@ void main() {
           langCode: 'es',
           useCase: TtsUseCase.words,
           listening: SpyProbe(now: steppingClock()),
-          exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
         ).timeout(const Duration(seconds: 5)),
         () => MockClient((request) async {
           backendCalls.add(request);
@@ -230,9 +225,6 @@ void main() {
             useCase: TtsUseCase.words,
             allowChoreoPlay: false,
             listening: probeA,
-            exposure: const ListeningExposureDeclaration.exempt(
-              "tts unit test",
-            ),
             onStop: () => aStopped++,
           );
           // Mid-word: the engine has started and is hanging, as a real word
@@ -251,9 +243,6 @@ void main() {
             useCase: TtsUseCase.words,
             allowChoreoPlay: false,
             listening: probeB,
-            exposure: const ListeningExposureDeclaration.exempt(
-              "tts unit test",
-            ),
           ).timeout(const Duration(seconds: 5));
 
           // Teeth: the first request's await never resolved before #8455, so
@@ -304,7 +293,6 @@ void main() {
           useCase: TtsUseCase.words,
           allowChoreoPlay: false,
           listening: probeA,
-          exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
           onStop: () => aStopped++,
         );
         await until(() => engine.log.contains('<-speak.onStart'));
@@ -316,7 +304,6 @@ void main() {
           useCase: TtsUseCase.words,
           allowChoreoPlay: false,
           listening: SpyProbe(now: steppingClock()),
-          exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
         ).timeout(const Duration(seconds: 5));
 
         // Settled on what was known once the wait for confirmation ran out:
@@ -348,9 +335,6 @@ void main() {
             langCode: 'es',
             useCase: TtsUseCase.words,
             listening: probe,
-            exposure: const ListeningExposureDeclaration.exempt(
-              "tts unit test",
-            ),
             onStop: () => stopped++,
           );
           await until(() => engine.spoken.contains('hola'));
@@ -387,7 +371,6 @@ void main() {
         useCase: TtsUseCase.words,
         allowChoreoPlay: false,
         listening: probe,
-        exposure: const ListeningExposureDeclaration.exempt("tts unit test"),
         onStop: () => stopped++,
       ).timeout(const Duration(seconds: 5));
       sw.stop();
@@ -429,9 +412,6 @@ void main() {
             langCode: 'es',
             useCase: TtsUseCase.words,
             listening: probe,
-            exposure: const ListeningExposureDeclaration.exempt(
-              "tts unit test",
-            ),
           ).timeout(const Duration(seconds: 5)),
           () => MockClient((request) async {
             backendCalls.add(request);

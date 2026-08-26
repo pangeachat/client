@@ -9,7 +9,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_shared_player_tracker.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
@@ -54,15 +53,6 @@ class AudioPlayerWidget extends StatefulWidget {
   /// timeline passes a category and the practice surfaces stay out of scope by
   /// passing nothing.
   final DosageListeningCategory? listeningCategory;
-
-  /// The lemmas this audio covers, for listening exposure.
-  ///
-  /// Voice-message playback is the one listening path outside the TTS entry
-  /// point, so it declares its lemmas here instead. Threaded in rather than
-  /// derived: this widget is handed ids and a file, not a transcript. The
-  /// practice surfaces that reuse this player pass nothing and so declare the
-  /// default exemption, exactly as they pass no category.
-  final ListeningExposureDeclaration exposure;
   // Pangea#
 
   static const int wavesCount = 40;
@@ -81,9 +71,6 @@ class AudioPlayerWidget extends StatefulWidget {
     this.enableClicks = true,
     this.playbackSpeedController,
     this.listeningCategory,
-    this.exposure = const ListeningExposureDeclaration.exempt(
-      "not a timeline voice message, or no usable transcript",
-    ),
     // Pangea#
     super.key,
   });
@@ -119,39 +106,7 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   /// Null — and therefore measuring nothing — unless the caller named a
   /// category. The practice surfaces name none.
   DosageSharedPlayerTracker? _listeningTracker;
-
-  /// Whether the playback currently in flight has already banked its exposure.
-  /// Reset when a fresh playback starts, so a replay counts again: exposure is
-  /// deliberately not deduplicated — repetition is the variable.
-  bool _exposureRecorded = false;
-
-  /// Whether the learner moved the playhead during this playback.
-  ///
-  /// Completion alone does not mean the message was heard: dragging the slider
-  /// to the last second of a two-minute voice message reaches `completed`
-  /// having played almost none of it. There is no per-word coverage to consult,
-  /// so a scrubbed playback declines to record rather than guessing which words
-  /// were reached.
-  bool _scrubbed = false;
   // Pangea#
-
-  /// Banks this message's lemmas once the playback that THIS widget owns runs
-  /// to completion.
-  ///
-  /// On completion rather than on start, for the same reason read-aloud mints
-  /// in its `finally`: a playback the learner scrubs away from or interrupts
-  /// did not expose them to the words it never reached.
-  void _recordExposure(bool playing, bool completed) {
-    if (matrix.voiceMessageEventId.value != widget.eventId) return;
-    if (playing && !completed) {
-      _exposureRecorded = false;
-      _scrubbed = false;
-      return;
-    }
-    if (!completed || _exposureRecorded || _scrubbed) return;
-    _exposureRecorded = true;
-    widget.exposure.record(matrix.client.userID);
-  }
 
   @override
   void dispose() {
@@ -398,15 +353,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       name: fileToPlay.name,
       mimeType: fileToPlay.mimeType,
     );
-    // `onError` has to yield the future's own type now that play() reports
-    // whether it reached the end; a failure did not reach it.
-    matrixFilePlayer.setAudioSourceAndPlay().onError<Object>((e, s) {
-      ErrorReporter(
-        context,
-        'Unable to play audio message',
-      ).onErrorCallback(e, s);
-      return false;
-    });
+    matrixFilePlayer.setAudioSourceAndPlay().onError(
+      ErrorReporter(context, 'Unable to play audio message').onErrorCallback,
+    );
     // Pangea#
   }
 
@@ -515,15 +464,13 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   void _watchListening(AudioPlayer? player) {
     if (_listeningTracker == null || player == null) return;
     _listeningSub?.cancel();
-    _listeningSub = player.playerStateStream.listen((state) {
-      final completed = state.processingState == ProcessingState.completed;
-      _listeningTracker?.update(
+    _listeningSub = player.playerStateStream.listen(
+      (state) => _listeningTracker?.update(
         playing: state.playing,
-        completed: completed,
+        completed: state.processingState == ProcessingState.completed,
         currentOwnerId: matrix.voiceMessageEventId.value,
-      );
-      _recordExposure(state.playing, completed);
-    });
+      ),
+    );
   }
 
   /// Closes an open measurement when the shared player moves to another widget
@@ -792,19 +739,14 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                       // #Pangea
                                       onChanged: !widget.enableClicks
                                           ? null
-                                          : (position) {
-                                              if (audioPlayer == null) {
-                                                _onButtonTap();
-                                                return;
-                                              }
-                                              _scrubbed = true;
-                                              audioPlayer.seek(
-                                                Duration(
-                                                  milliseconds: position
-                                                      .round(),
-                                                ),
-                                              );
-                                            },
+                                          : (position) => audioPlayer == null
+                                                ? _onButtonTap()
+                                                : audioPlayer.seek(
+                                                    Duration(
+                                                      milliseconds: position
+                                                          .round(),
+                                                    ),
+                                                  ),
                                       // onChanged: (position) => audioPlayer == null
                                       //     ? _onButtonTap()
                                       //     : audioPlayer.seek(

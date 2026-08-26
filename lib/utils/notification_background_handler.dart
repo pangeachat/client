@@ -259,17 +259,19 @@ Future<void> notificationTap(
           if (PlatformInfos.isAndroid) {
             final ownProfile = await room.client.fetchOwnProfile();
             final avatar = ownProfile.avatarUrl;
-            final avatarFile = await client
-                .downloadAvatarCached(
-                  avatar,
-                  thumbnailMethod: ThumbnailMethod.crop,
-                  width: notificationAvatarDimension,
-                  height: notificationAvatarDimension,
-                  animated: false,
-                  isThumbnail: true,
-                  rounded: true,
-                )
-                .timeout(const Duration(seconds: 3));
+            final avatarFile = avatar == null
+                ? null
+                : await client
+                      .downloadMxcCached(
+                        avatar,
+                        thumbnailMethod: ThumbnailMethod.crop,
+                        width: notificationAvatarDimension,
+                        height: notificationAvatarDimension,
+                        animated: false,
+                        isThumbnail: true,
+                        rounded: true,
+                      )
+                      .timeout(const Duration(seconds: 3));
             final messagingStyleInformation =
                 await AndroidFlutterLocalNotificationsPlugin()
                     .getActiveNotificationMessagingStyle(room.id.hashCode);
