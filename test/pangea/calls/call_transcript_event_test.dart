@@ -256,6 +256,8 @@ void main() {
           accounting: parsed.accounting,
           state: HalfState.incomplete,
           readWasCutShort: false,
+          participantsWereAGuess: false,
+          nothingArrived: false,
         ).issue,
         HalfIssue.contentUnreadable,
       );
@@ -287,6 +289,8 @@ void main() {
           accounting: parsed.accounting,
           state: HalfState.incomplete,
           readWasCutShort: false,
+          participantsWereAGuess: false,
+          nothingArrived: false,
         ).issue,
         HalfIssue.accountingImpossible,
       );

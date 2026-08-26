@@ -733,6 +733,28 @@ void main() {
       expect(issueOf(writersOwn.readerTruncated()), HalfIssue.tooLongToRead);
     });
 
+    test(
+      'a half that never arrived reports no claim the writer never made',
+      () {
+        // Nothing came from bob, and we cannot name who was on the call, so we
+        // cannot say he was silent. Every field of his accounting is a default
+        // WE constructed -- and `declared` being false then read as the writer
+        // saying nothing about its own capture, which is a statement about a
+        // person produced entirely from a placeholder of ours. `declared` was
+        // standing for two things again: "they sent junk" and "we invented
+        // this".
+        final transcript = assembleTranscript(
+          candidates: [_candidate(alice)],
+          expectedSenders: [alice, bob],
+          participantsKnown: false,
+        );
+
+        final missing = _halfFor(transcript, bob);
+        expect(missing.state, HalfState.incomplete);
+        expect(missing.issue, HalfIssue.participantsUnknown);
+      },
+    );
+
     test('not knowing who spoke does not mask what a half admits', () {
       // Whether the transcript may be called whole and whether OUR read of
       // this half fell short are different questions. Deriving the second

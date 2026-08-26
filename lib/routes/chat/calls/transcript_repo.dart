@@ -97,7 +97,17 @@ Future<CallTranscript> fetchCallTranscript({
       // The relation type is what was queried, but the EVENT type still has to
       // match: a relation of this type carrying some other event type is not a
       // transcript, and parsing it as one would invent content.
-      if (event.type != CallTranscriptContent.relType) continue;
+      if (event.type != CallTranscriptContent.relType) {
+        // Recorded, not merely skipped. It is not a transcript and must never
+        // be parsed as one -- but something from this sender DID arrive under
+        // this call's anchor, and concluding from that that they were silent
+        // is the same mistake as concluding it from a content we could not
+        // parse. The rule is about arrival, not about legibility: anything we
+        // saw here and did not turn into a half means we cannot call its
+        // sender absent.
+        unreadable.add(event.senderId);
+        continue;
+      }
 
       final content = CallTranscriptContent.fromJson(event.content);
       if (content == null) {

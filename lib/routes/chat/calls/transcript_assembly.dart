@@ -275,6 +275,10 @@ enum HalfIssue {
   /// the distinction is which device somebody should go and look at.
   tooLongToRead,
 
+  /// We could not work out who was on the call, so nothing about this half is
+  /// conclusive -- including, especially, its silence.
+  participantsUnknown,
+
   /// Part of the half could not be read. A corrupt entry, not a size problem.
   contentUnreadable,
 
@@ -320,12 +324,35 @@ class TranscriptHalf {
   /// difference between looking at this device and looking at theirs.
   final bool readWasCutShort;
 
+  /// Whether we could not name who was on the call.
+  ///
+  /// The OTHER half of the question `canConclude` asks, and it has to travel
+  /// here for the same reason [readWasCutShort] does. Splitting that question
+  /// into its two causes fixed the diagnosis for placed halves and left this
+  /// one behind: a sender we heard nothing from, on a call whose participants
+  /// we could not name, has no accounting to report, so `issue` fell through
+  /// to `writerSaidNothing` -- a statement about them, when the actual cause
+  /// is that we do not know who "them" is.
+  final bool participantsWereAGuess;
+
+  /// Whether NOTHING from this sender arrived at all.
+  ///
+  /// When it did not, every field of [accounting] is a default this function
+  /// constructed, and reading those as the writer's declaration reports a
+  /// claim nobody made -- "the writer said nothing about its own capture",
+  /// about a writer that sent no capture and no accounting to be silent
+  /// about. The same overloading, once more: `declared` false means both
+  /// "they sent junk" and "we invented this".
+  final bool nothingArrived;
+
   const TranscriptHalf({
     required this.senderId,
     required this.segments,
     required this.accounting,
     required this.state,
     required this.readWasCutShort,
+    required this.participantsWereAGuess,
+    required this.nothingArrived,
   });
 
   /// Why this half is not a clean record, or [HalfIssue.none].
@@ -337,6 +364,17 @@ class TranscriptHalf {
   /// starting point than the most actionable single cause.
   HalfIssue get issue {
     if (state == HalfState.absent) return HalfIssue.neverWritten;
+
+    // Nothing from them arrived, and we could not conclude they were silent.
+    // There is no writer claim to report here -- see [nothingArrived] -- so
+    // the only true thing to say is WHY we could not conclude. Falling
+    // through to the checks below reported `writerSaidNothing`, which is a
+    // statement about a person, produced entirely from a default of ours.
+    if (nothingArrived) {
+      if (accounting.unreadableContent) return HalfIssue.contentUnreadable;
+      if (readWasCutShort) return HalfIssue.couldNotRead;
+      return HalfIssue.participantsUnknown;
+    }
     // FIRST among the writer's claims. An accounting that cannot be true tells
     // us nothing reliable about any of its own fields, so reporting one of
     // them as the cause would be repeating the half's own nonsense back with
@@ -361,6 +399,12 @@ class TranscriptHalf {
       return HalfIssue.tooLongToSend;
     }
     if (!accounting.drainComplete) return HalfIssue.drainAbandoned;
+
+    // Last, deliberately. For a half that ARRIVED, everything above is a
+    // concrete fact about it and somebody can act on those; not being able to
+    // name who was on the call is true but not useful next to "the microphone
+    // never opened" or "two chunks of audio were lost".
+    if (participantsWereAGuess) return HalfIssue.participantsUnknown;
 
     // Reached only if the half is incomplete for a reason none of the checks
     // above named. Nothing produces that today -- every route to
@@ -529,6 +573,8 @@ CallTranscript assembleTranscript({
               ? HalfState.absent
               : HalfState.incomplete,
           readWasCutShort: !exhausted,
+          participantsWereAGuess: !participantsKnown,
+          nothingArrived: true,
         ),
       );
       continue;
@@ -551,6 +597,8 @@ CallTranscript assembleTranscript({
             ? HalfState.incomplete
             : HalfState.present,
         readWasCutShort: !exhausted,
+        participantsWereAGuess: !participantsKnown,
+        nothingArrived: false,
       ),
     );
   }

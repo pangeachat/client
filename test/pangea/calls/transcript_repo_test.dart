@@ -229,7 +229,15 @@ void main() {
         expectedSenders: [alice, bob],
       );
 
-      expect(_halfFor(transcript, bob).state, HalfState.absent);
+      // Not parsed -- its words must never reach the transcript.
+      expect(_halfFor(transcript, bob).segments, isEmpty);
+
+      // And bob is not absent. Something of his arrived under THIS call's
+      // anchor and we did not turn it into a half; the rule is about arrival,
+      // not about legibility, so "no transcript from bob" is a claim we have
+      // no standing to make.
+      expect(_halfFor(transcript, bob).state, HalfState.incomplete);
+      expect(_halfFor(transcript, bob).issue, HalfIssue.contentUnreadable);
     });
 
     test('a half naming a DIFFERENT call is ignored', () async {
