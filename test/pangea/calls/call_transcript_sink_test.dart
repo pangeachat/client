@@ -9,12 +9,15 @@ import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 
-PcmChunk chunk(int index, {int sampleRate = 16000}) => PcmChunk(
-  pcm: Uint8List(sampleRate * 2),
-  sampleRate: sampleRate,
-  channels: 1,
-  index: index,
-);
+/// One second of audio at [sampleRate], placed at [startedAtMs].
+PcmChunk chunk(int index, {int sampleRate = 16000, int startedAtMs = 1000}) =>
+    PcmChunk(
+      pcm: Uint8List(sampleRate * 2),
+      sampleRate: sampleRate,
+      channels: 1,
+      index: index,
+      startedAtMs: startedAtMs,
+    );
 
 /// An empty-but-valid response — the shape the route returns when nothing was
 /// transcribable, which is a normal answer rather than a failure.
@@ -26,9 +29,12 @@ SpeechToTextResponseModel get spoken => spokenWord('hola');
 
 /// One transcribed word, in the shape the route actually returns — taken from a
 /// real response so the test exercises the same parse the app does.
+/// [timed] adds a word timing spanning the first tenth of a second, which is
+/// what a chunk needs before its segment can be placed at all.
 SpeechToTextResponseModel spokenWord(
   String word, {
   String langCode = 'es-ES',
+  bool timed = false,
 }) => SpeechToTextResponseModel.fromJson({
   'results': [
     {
@@ -38,6 +44,15 @@ SpeechToTextResponseModel spokenWord(
           'confidence': 100,
           'lang_code': langCode,
           'words_per_hr': 9391,
+          if (timed)
+            'word_timings': [
+              {
+                'word': word,
+                'start_time_ms': 0,
+                'end_time_ms': 100,
+                'confidence': 100,
+              },
+            ],
           'stt_tokens': [
             {
               'token': {
@@ -366,6 +381,42 @@ void main() {
         ConstructUseTypeEnum.pvc.skillsEnumType,
         ConstructUseTypeEnum.pvm.skillsEnumType,
       );
+    });
+  });
+
+  group('where each chunk sat', () {
+    test('a segment is placed by the audio it came from', () async {
+      final s = sink(respond: (call) => spokenWord('w$call', timed: true));
+      await s.deliver(chunk(0, startedAtMs: 1000));
+      await s.deliver(chunk(1, startedAtMs: 2000));
+
+      expect(s.segments.map((segment) => (segment.text, segment.atMs)), [
+        ('w0', 1000),
+        ('w1', 2000),
+      ]);
+    });
+
+    test('a chunk that FAILED does not slide its neighbours onto the wrong '
+        'words', () async {
+      // The failed chunk is recorded in _failed and never reaches _byIndex, so
+      // its placement has no response beside it. Zipping the two sorted lists
+      // by POSITION would hand chunk 2's words chunk 1's start time, and every
+      // later chunk after that.
+      final s = sink(
+        failOn: {1},
+        respond: (call) => spokenWord('w$call', timed: true),
+      );
+      await s.deliver(chunk(0, startedAtMs: 1000));
+      await expectLater(
+        s.deliver(chunk(1, startedAtMs: 2000)),
+        throwsA(isA<StateError>()),
+      );
+      await s.deliver(chunk(2, startedAtMs: 3000));
+
+      expect(s.segments.map((segment) => (segment.text, segment.atMs)), [
+        ('w0', 1000),
+        ('w2', 3000),
+      ]);
     });
   });
 

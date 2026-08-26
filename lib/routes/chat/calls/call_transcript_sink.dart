@@ -43,6 +43,24 @@ class CallTranscriptSink implements CallAudioSink {
   /// provider first. Appending would order the call by provider latency rather
   /// than by when the learner spoke.
   final Map<int, SpeechToTextResponseModel> _byIndex = {};
+
+  /// Where each chunk's audio sat, keyed the same way [_byIndex] is.
+  ///
+  /// BESIDE it, never wrapped into it. `_byIndex` also feeds [transcripts],
+  /// [hasTranscript], [chunksTranscribed], [constructs] and [langCode], and
+  /// wrapping its value in a record would make every one of those unwrap
+  /// something it does not care about — which either fails to compile or,
+  /// worse, quietly miscounts.
+  ///
+  /// Recorded when the chunk is handed over rather than when its transcription
+  /// comes back, so a chunk that FAILED has a position with no response beside
+  /// it. That is the case the pairing below exists to survive.
+  ///
+  /// The DURATION is here because the positioning rule bounds a chunk's word
+  /// timings by it, and it lives only on [PcmChunk]. Keeping the start time
+  /// alone would throw the ceiling away.
+  final Map<int, ({int startedAtMs, int durationMs})> _placements = {};
+
   final Set<int> _transcribed = {};
 
   /// Each chunk's uses, built once and kept. See [constructs].
@@ -78,7 +96,24 @@ class CallTranscriptSink implements CallAudioSink {
   /// reason [transcripts] returns strings: those responses are mutable all the
   /// way down, so passing them out would let any caller empty one and change
   /// what this call is worth.
-  List<TranscriptSegment> get segments => buildSegments(_ordered);
+  ///
+  /// The one path that pairs a response with where its audio sat. It walks
+  /// [_byIndex] sorted by key and looks the placement up BY THAT SAME KEY,
+  /// never by zipping two sorted lists: a chunk whose transcription FAILED is
+  /// recorded in [_failed] and never reaches `_byIndex`, so its placement has
+  /// no response beside it — and a positional zip would then slide every later
+  /// chunk's start time onto the wrong words.
+  List<TranscriptSegment> get segments => buildSegments([
+    for (final index in _byIndex.keys.toList()..sort())
+      TranscribedChunk(
+        result: _byIndex[index]!,
+        // Non-null by construction: a placement is written before the request
+        // that fills `_byIndex` is even issued, so nothing can be in one map
+        // and missing from the other.
+        startedAtMs: _placements[index]!.startedAtMs,
+        durationMs: _placements[index]!.durationMs,
+      ),
+  ]);
 
   /// Whether [close] settled everything it still had in flight.
   ///
@@ -137,6 +172,14 @@ class CallTranscriptSink implements CallAudioSink {
   final Map<int, Future<void>> _running = {};
 
   Future<void> _transcribeChunk(PcmChunk chunk, Duration? within) async {
+    // Recorded from the chunk in hand, before the request goes out. It is the
+    // only moment the audio's own timing is visible here at all: what comes
+    // back is a transcript, which knows nothing about when the samples were
+    // captured.
+    _placements[chunk.index] = (
+      startedAtMs: chunk.startedAtMs,
+      durationMs: chunk.duration.inMilliseconds,
+    );
     try {
       // Bounded here, where the request is, so that giving up on it is a
       // failure of the attempt: the index is released below and the next
