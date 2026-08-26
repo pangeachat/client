@@ -68,9 +68,11 @@ void main() {
       botId: PublicProfileModel(analytics: AnalyticsProfileModel()),
       learnerId: PublicProfileModel(
         analytics: AnalyticsProfileModel(
-          baseLanguage: english,
-          targetLanguage: german,
-          languageAnalytics: {german: LanguageAnalyticsProfileEntry(2, 0)},
+          baseLanguage: english.langCodeShort,
+          targetLanguage: german.langCodeShort,
+          languageAnalytics: {
+            german.langCodeShort: LanguageAnalyticsProfileEntry(2, 0),
+          },
         ),
       ),
     });

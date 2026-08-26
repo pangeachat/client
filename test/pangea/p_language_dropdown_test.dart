@@ -180,8 +180,8 @@ void main() {
         PublicProfileModel(
           analytics: AnalyticsProfileModel(
             languageAnalytics: {
-              spanish: LanguageAnalyticsProfileEntry(4, 0),
-              french: LanguageAnalyticsProfileEntry(7, 0),
+              'es': LanguageAnalyticsProfileEntry(4, 0),
+              'fr': LanguageAnalyticsProfileEntry(7, 0),
             },
           ),
         ),
@@ -192,18 +192,24 @@ void main() {
       final rowOrder = openMenuRowOrder(tester);
       final frenchIndex = rowOrder.indexOf(french);
       final spanishIndex = rowOrder.indexOf(spanish);
+      final spanishMexicoIndex = rowOrder.indexOf(spanishMexico);
       final italianIndex = rowOrder.indexOf(italian);
 
       expect(frenchIndex, isNonNegative);
       expect(spanishIndex, isNonNegative);
+      expect(spanishMexicoIndex, isNonNegative);
       expect(italianIndex, isNonNegative);
       // Alphabetical within the analytics group (French before Spanish), and
-      // both ahead of Italian, which has no analytics.
+      // all of them ahead of Italian, which has no analytics. Spanish (Mexico)
+      // joins the group on Spanish's analytics: one language, one analytics
+      // room, one local partition (#8582).
       expect(frenchIndex, lessThan(spanishIndex));
       expect(spanishIndex, lessThan(italianIndex));
+      expect(spanishMexicoIndex, lessThan(italianIndex));
 
       expect(find.text(enL10n.languageDropdownLevel(7)), findsOneWidget);
-      expect(find.text(enL10n.languageDropdownLevel(4)), findsOneWidget);
+      // Spanish and Spanish (Mexico) report the same level, never two.
+      expect(find.text(enL10n.languageDropdownLevel(4)), findsNWidgets(2));
       expect(find.byType(Divider), findsOneWidget);
     },
   );
@@ -225,7 +231,7 @@ void main() {
     MatrixState.pangeaController.userController.setPublicProfile(
       PublicProfileModel(
         analytics: AnalyticsProfileModel(
-          languageAnalytics: {french: LanguageAnalyticsProfileEntry(7, 0)},
+          languageAnalytics: {'fr': LanguageAnalyticsProfileEntry(7, 0)},
         ),
       ),
     );
@@ -246,10 +252,7 @@ void main() {
       MatrixState.pangeaController.userController.setPublicProfile(
         PublicProfileModel(
           analytics: AnalyticsProfileModel(
-            languageAnalytics: {
-              spanish: LanguageAnalyticsProfileEntry(15, 0),
-              spanishMexico: LanguageAnalyticsProfileEntry(3, 0),
-            },
+            languageAnalytics: {'es': LanguageAnalyticsProfileEntry(15, 0)},
           ),
         ),
       );
@@ -274,8 +277,6 @@ void main() {
         ),
         findsNothing,
       );
-      expect(find.text(enL10n.languageDropdownLevel(15)), findsOneWidget);
-
       // Spanish (Mexico) is unambiguous, so it keeps its flag.
       expect(
         find.descendant(
@@ -284,7 +285,10 @@ void main() {
         ),
         findsOneWidget,
       );
-      expect(find.text(enL10n.languageDropdownLevel(3)), findsOneWidget);
+
+      // One language, one level: es and es-MX share an analytics room and a
+      // local partition, so both rows report the same number (#8582).
+      expect(find.text(enL10n.languageDropdownLevel(15)), findsNWidgets(2));
     },
   );
 }

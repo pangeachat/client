@@ -241,15 +241,17 @@ class AnalyticsDataService {
       );
 
       if (l2 != null) {
-        int xpOffset = analyticsProfile.xpOffsetByLanguage(l2) ?? 0;
+        int xpOffset =
+            analyticsProfile.xpOffsetByLanguage(l2.langCodeShort) ?? 0;
         if (xpOffset < 0) {
           ErrorHandler.logError(
             e: "Negative XP offset calculated during analytics update",
             s: StackTrace.current,
-            data: {"offset": xpOffset},
+            data: {"offset": xpOffset, "language": l2.langCodeShort},
           );
           await MatrixState.pangeaController.userController.addXPOffset(
             -xpOffset,
+            l2.langCodeShort,
           );
           xpOffset = 0;
         }
@@ -682,6 +684,7 @@ class AnalyticsDataService {
     // Do this on all updates (not just on level updates) to account for cases
     // of target language updates being missed (https://github.com/pangeachat/client/issues/2006)
     MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      languageCode: language,
       level: newData.level,
     );
 
@@ -706,7 +709,10 @@ class AnalyticsDataService {
           },
         );
       } else {
-        await MatrixState.pangeaController.userController.addXPOffset(offset);
+        await MatrixState.pangeaController.userController.addXPOffset(
+          offset,
+          language,
+        );
         // Mirrors whatever the public profile ended up holding. Null when the
         // offset was not applied there — nothing loaded yet, or a profile
         // belonging to another account (#8531) — and the local copy must then
@@ -716,7 +722,7 @@ class AnalyticsDataService {
             .userController
             .publicProfile
             ?.analytics
-            .xpOffset;
+            .xpOffsetByLanguage(language);
         if (xpOffset != null) {
           await updateXPOffset(xpOffset, language);
         }
@@ -787,10 +793,20 @@ class AnalyticsDataService {
       blocked: blockedConstructs,
     );
 
-    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
-      level: DerivedAnalyticsDataModel.calculateLevelWithXp(totalXP),
-    );
+    // Store first, then publish the level the STORE now reports. The mirror
+    // has to agree with the analytics bar, and the bar renders
+    // DerivedAnalyticsDataModel.level — which is computed over totalXP PLUS the
+    // language's XP offset. Publishing calculateLevelWithXp(totalXP) here
+    // dropped that offset, so every learner carrying one (any learner whose
+    // level protection has ever engaged) had a mirror sitting below their own
+    // bar, re-published on every sync round-trip (#8582).
     await db.updateTotalXP(totalXP, language);
+    _invalidateCaches();
+
+    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      languageCode: language,
+      level: (await derivedData(language)).level,
+    );
   }
 
   /// Total XP over per-row uncapped xp [sums]: rows are grouped by their

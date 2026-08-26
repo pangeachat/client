@@ -44,6 +44,18 @@ class UserController {
   final StreamController<Profile> settingsUpdateStream =
       StreamController.broadcast();
 
+  /// Fires whenever the published public profile changes — every level, XP
+  /// offset, analytics room id, country or bio write lands here.
+  ///
+  /// [PublicProfileModel] and the analytics entries inside it are mutated in
+  /// place, so a surface that read [publicProfile] during build has no way to
+  /// know it went stale. Reading through this stream in `build` is what keeps
+  /// the level on a language row, the analytics bar and the participant list
+  /// showing one number: without it a corrected level reached whichever surface
+  /// happened to rebuild next and nothing else (#8582).
+  final StreamController<PublicProfileModel> publicProfileStream =
+      StreamController.broadcast();
+
   /// Cached version of the user profile, so it doesn't have
   /// to be read in from client's account data each time it is accessed.
   Profile? _cachedProfile;
@@ -70,6 +82,13 @@ class UserController {
   void setPublicProfile(PublicProfileModel? profile, {String? userId}) {
     _publicProfile = profile;
     _publicProfileUserId = profile == null ? null : userId;
+    _notifyPublicProfileChanged();
+  }
+
+  void _notifyPublicProfileChanged() {
+    final profile = _publicProfile;
+    if (profile == null || publicProfileStream.isClosed) return;
+    publicProfileStream.add(profile);
   }
 
   /// Whether the loaded public profile belongs to the account that is active
@@ -317,7 +336,7 @@ class UserController {
           MatrixState.pangeaController.matrixState.analyticsDataService;
 
       final data = await analyticsService.derivedData(l2.langCodeShort);
-      updateAnalyticsProfile(level: data.level);
+      updateAnalyticsProfile(languageCode: l2.langCodeShort, level: data.level);
     }
   }
 
@@ -417,6 +436,7 @@ class UserController {
 
     try {
       await client.setUserProfile(client.userID!, type, content);
+      _notifyPublicProfileChanged();
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -426,39 +446,55 @@ class UserController {
     }
   }
 
+  /// Publishes [level] as the learner's level in [languageCode]'s language.
+  ///
+  /// [languageCode] is required, and callers pass the language the level was
+  /// actually computed from. It used to default to whatever `userL2` held when
+  /// the call ran, which is not the same thing: a level is computed from one
+  /// language's analytics across several awaits, and a switch landing in that
+  /// window filed the old language's level under the new language's key —
+  /// French's level 4 published as the learner's Dutch level (#8582).
   Future<void> updateAnalyticsProfile({
+    required String languageCode,
     required int level,
-    LanguageModel? baseLanguage,
-    LanguageModel? targetLanguage,
   }) async {
-    targetLanguage ??= userL2;
-    baseLanguage ??= userL1;
-    if (targetLanguage == null || !_publicProfileIsOwn) return;
+    if (!_publicProfileIsOwn) return;
 
-    final analyticsRoom = client.ownAnalyticsRoomLocal(lang: targetLanguage);
+    final analytics = publicProfile!.analytics;
+    final language = _shortCode(languageCode);
+    final analyticsRoomId = _ownAnalyticsRoomIdFor(language);
 
-    if (publicProfile!.analytics.targetLanguage == targetLanguage &&
-        publicProfile!.analytics.baseLanguage == baseLanguage &&
-        publicProfile!.analytics.languageAnalytics?[targetLanguage]?.level ==
-            level &&
-        publicProfile!.analytics.analyticsRoomIdByLanguage(targetLanguage) ==
-            analyticsRoom?.id) {
+    // target/base mirror the learner's current setting, which is independent
+    // of the language this level belongs to.
+    final targetLanguage = userL2?.langCodeShort;
+    final baseLanguage = userL1?.langCodeShort;
+
+    if (analytics.targetLanguage == targetLanguage &&
+        analytics.baseLanguage == baseLanguage &&
+        analytics.languageAnalytics?[language]?.level == level &&
+        analytics.analyticsRoomIdByLanguage(language) == analyticsRoomId) {
       return;
     }
 
-    publicProfile!.analytics.baseLanguage = baseLanguage;
-    publicProfile!.analytics.targetLanguage = targetLanguage;
-    publicProfile!.analytics.setLanguageInfo(
-      targetLanguage,
-      level,
-      analyticsRoom?.id,
-    );
+    if (targetLanguage != null) analytics.targetLanguage = targetLanguage;
+    if (baseLanguage != null) analytics.baseLanguage = baseLanguage;
+    analytics.setLanguageInfo(language, level, analyticsRoomId);
 
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileAnalytics,
       publicProfile!.toJson(),
     );
   }
+
+  static String _shortCode(String langCode) => langCode.split('-').first;
+
+  /// The id of this user's own analytics room for [language] (a short code).
+  /// Analytics rooms are per language, so the short code is the whole key.
+  String? _ownAnalyticsRoomIdFor(String language) => client.allMyAnalyticsRooms
+      .firstWhereOrNull(
+        (room) => _shortCode(room.madeForLang ?? '') == language,
+      )
+      ?.id;
 
   Future<void> _addAnalyticsRoomIdsToPublicProfile() async {
     if (!_publicProfileIsOwn ||
@@ -487,25 +523,16 @@ class UserController {
     );
 
     for (final analyticsRoom in analyticsRooms) {
-      final lang = analyticsRoom.madeForLang?.split("-").first;
-      if (lang == null || publicProfile?.analytics.languageAnalytics == null) {
-        continue;
-      }
-      final langKey = publicProfile!.analytics.languageAnalytics!.keys
-          .firstWhereOrNull((l) => l.langCodeShort == lang);
+      final madeForLang = analyticsRoom.madeForLang;
+      if (madeForLang == null) continue;
 
-      if (langKey == null) continue;
-      if (publicProfile!
-              .analytics
-              .languageAnalytics![langKey]!
-              .analyticsRoomId ==
-          analyticsRoom.id) {
-        continue;
-      }
+      final language = _shortCode(madeForLang);
+      final entry = publicProfile!.analytics.languageAnalytics?[language];
+      if (entry == null || entry.analyticsRoomId == analyticsRoom.id) continue;
 
       publicProfile!.analytics.setLanguageInfo(
-        langKey,
-        publicProfile!.analytics.languageAnalytics![langKey]!.level,
+        language,
+        entry.level,
         analyticsRoom.id,
       );
     }
@@ -516,14 +543,17 @@ class UserController {
     );
   }
 
-  Future<void> addXPOffset(int offset) async {
-    final targetLanguage = userL2;
-    if (targetLanguage == null || !_publicProfileIsOwn) return;
+  /// Adds [offset] to the XP offset published for [languageCode]'s language.
+  /// The language is required for the same reason it is on
+  /// [updateAnalyticsProfile]: the offset is derived from one language's XP.
+  Future<void> addXPOffset(int offset, String languageCode) async {
+    if (!_publicProfileIsOwn) return;
 
+    final language = _shortCode(languageCode);
     publicProfile!.analytics.addXPOffset(
-      targetLanguage,
+      language,
       offset,
-      client.ownAnalyticsRoomLocal(lang: targetLanguage)?.id,
+      _ownAnalyticsRoomIdFor(language),
     );
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileAnalytics,

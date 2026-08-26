@@ -29,16 +29,21 @@ class AnalyticsLanguageOrder {
           ? analyticsLanguages.length
           : -1;
 
-  /// [analyticsByLanguage] is null for a list this rule doesn't apply to
-  /// (the base-language list) and produces [analyticsLanguages] empty.
+  /// [analyticsByLanguage] is keyed by short language code and is null for a
+  /// list this rule doesn't apply to (the base-language list), which produces
+  /// [analyticsLanguages] empty. Every regional variant of a language the
+  /// learner has analytics in joins the top group, since they share one set of
+  /// analytics.
   factory AnalyticsLanguageOrder.of(
     List<LanguageModel> languages,
-    Map<LanguageModel, LanguageAnalyticsProfileEntry>? analyticsByLanguage,
+    Map<String, LanguageAnalyticsProfileEntry>? analyticsByLanguage,
   ) {
     final analyticsLanguages = analyticsByLanguage == null
         ? <LanguageModel>[]
         : languages
-              .where((lang) => analyticsByLanguage.containsKey(lang))
+              .where(
+                (lang) => analyticsByLanguage.containsKey(lang.langCodeShort),
+              )
               .toList();
     final remainingLanguages = analyticsLanguages.isEmpty
         ? languages
