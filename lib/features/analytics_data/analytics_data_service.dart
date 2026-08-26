@@ -100,6 +100,12 @@ class AnalyticsDataService {
   int _derivedCacheVersion = -1;
   DerivedAnalyticsDataModel? _cachedDerivedStats;
 
+  /// The language [_cachedDerivedStats] was read for. The cache is a single
+  /// slot over a per-language store, so without this a read for one language
+  /// is served another language's totals — and the level computed from it gets
+  /// published as that language's (#8582).
+  String? _cachedDerivedLanguage;
+
   _AnalyticsClient get _analyticsClientGetter {
     assert(_analyticsClient != null);
     return _analyticsClient!;
@@ -138,6 +144,7 @@ class AnalyticsDataService {
   void _invalidateCaches() {
     _cacheVersion++;
     _cachedDerivedStats = null;
+    _cachedDerivedLanguage = null;
   }
 
   Future<void> _initDatabase(Client client) async {
@@ -387,10 +394,13 @@ class AnalyticsDataService {
   Future<DerivedAnalyticsDataModel> derivedData(String language) async {
     await _ensureInitialized();
 
-    if (_cachedDerivedStats == null || _derivedCacheVersion != _cacheVersion) {
+    if (_cachedDerivedStats == null ||
+        _derivedCacheVersion != _cacheVersion ||
+        _cachedDerivedLanguage != language) {
       _cachedDerivedStats = await _analyticsClientGetter.database
           .getDerivedStats(language);
       _derivedCacheVersion = _cacheVersion;
+      _cachedDerivedLanguage = language;
     }
 
     return _cachedDerivedStats!;
