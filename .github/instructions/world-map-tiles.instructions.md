@@ -9,7 +9,7 @@ The world map's base tiles are both a cost surface (providers bill per request o
 
 ## Phase 1 — Free hosted tiles (current)
 
-Free hosted raster tiles, switched by the app theme: **OpenStreetMap** standard for light, **CartoDB Dark Matter** for dark. Rationale: zero cost and zero setup at our current scale (~100 MAU). Limits we accept for now: raw public tiles aren't sanctioned for a commercial product at scale, and free tiers cap somewhere in the low hundreds of active map users — fine today, not for the growth runway. Tiles are fetched directly from the provider CDN, never proxied through a backend.
+Free hosted raster tiles: **OpenStreetMap** standard for both themes, with dark theme rendered as a client-side color filter (flutter_map's `darkModeTileBuilder`) over the same tiles. Rationale: zero cost and zero setup at our current scale (~100 MAU), and a single provider means a single failure mode and usage budget — the previous dark provider (CartoDB Dark Matter's keyless CDN) enforced per-IP usage by serving "API KEY REQUIRED" watermark tiles to some users (#8585). Limits we accept for now: raw public tiles aren't sanctioned for a commercial product at scale, free tiers cap somewhere in the low hundreds of active map users, and filtered-OSM dark is functional rather than on-brand — fine today, not for the growth runway. Tiles are fetched directly from the provider CDN, never proxied through a backend.
 
 ## Phase 2 — Self-host
 
