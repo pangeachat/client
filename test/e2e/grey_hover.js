@@ -63,7 +63,7 @@ async function greyBlock(page, band, { selfTest = false } = {}) {
 
   console.log('[ring the callee, then hover every control on the banner]');
   const rang = await h.actUntil('place',
-    async () => { await h.ensureRoom(A, ROOM); await ui.clickLabel(A.page, 'Call', { exact: true }).catch(() => {}); },
+    async () => { await h.ensureRoom(A, ROOM); await ui.clickControl(A.page, 'call').catch(() => {}); },
     async () => (await h.since(A.token, ROOM_ID, mA)).some((e) => e.type === mx.RING && e.sender === A.userId),
     { tries: 3, gap: 4000 });
   h.check('grey', 'the call rang', rang, 'never rang');

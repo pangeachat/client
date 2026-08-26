@@ -1,3 +1,4 @@
+const labelsModule = require('./labels');
 // Driving the Flutter web app WITHOUT pixel coordinates.
 //
 // The old driver clicked fixed points like (680,126). Every layout change broke
@@ -85,7 +86,78 @@ async function hasLabel(page, label) {
   return (await findRect(page, label)) !== null;
 }
 
-module.exports = { wait, enableSemantics, labels, findRect, waitForLabel, clickLabel, hasLabel };
+/// The same questions, asked about a CONTROL rather than an English string.
+///
+/// The app renders in the user's own language, so "is the call button there"
+/// cannot be asked as "is the text 'Call' there". Each of these tries every
+/// string the app could draw for that control -- see labels.js -- and answers
+/// on the first one the screen actually has.
+/// EXACT by default, and that is not a detail.
+///
+/// A control's candidates are whole labels, so a substring match is never what
+/// is wanted here -- and it is actively dangerous: "Call" is a substring of
+/// "Video call", so a loose match places a VIDEO call when the scenario asked
+/// for a voice one, and the failure surfaces four assertions later as a card
+/// reading "Missed video call". Every call site this replaced passed
+/// `exact: true` for that reason; losing it in the abstraction put the bug
+/// back.
+async function findControl(page, name, opts = {}) {
+  for (const text of labelsModule.candidates(name)) {
+    const rect = await findRect(page, text, { exact: true, ...opts });
+    if (rect) return rect;
+  }
+  return null;
+}
+
+async function hasControl(page, name, opts = {}) {
+  return (await findControl(page, name, opts)) !== null;
+}
+
+/// Waits for a control to appear, then clicks it.
+///
+/// WAITS, like `clickLabel` does. An earlier version of this probed once and
+/// gave up, which quietly changed what several scenarios were asking: "the
+/// call button is usable again right after hanging up" stopped meaning "it
+/// comes back" and started meaning "it is back this instant". The suite
+/// caught it, which is the whole reason it exists.
+async function clickControl(page, name, { timeout = 15000, ...opts } = {}) {
+  const until = Date.now() + timeout;
+  for (;;) {
+    const rect = await findControl(page, name, opts);
+    if (rect) {
+      await page.mouse.click(rect.x, rect.y);
+      return rect;
+    }
+    if (Date.now() > until) {
+      throw new Error(
+        `${name} never appeared. Tried ` +
+          `${labelsModule.candidates(name).length} translations. ` +
+          `On screen: ${JSON.stringify(await labels(page))}`,
+      );
+    }
+    await wait(300);
+  }
+}
+
+/// The same wait, without the click.
+async function waitForControl(page, name, { timeout = 15000, ...opts } = {}) {
+  const until = Date.now() + timeout;
+  for (;;) {
+    const rect = await findControl(page, name, opts);
+    if (rect) return rect;
+    if (Date.now() > until) {
+      throw new Error(
+        `${name} never appeared. On screen: ${JSON.stringify(await labels(page))}`,
+      );
+    }
+    await wait(300);
+  }
+}
+
+module.exports = {
+  wait, enableSemantics, labels, findRect, waitForLabel, clickLabel, hasLabel,
+  findControl, hasControl, clickControl, waitForControl,
+};
 
 // ---------------------------------------------------------------------------
 // The incoming-call banner.
@@ -107,7 +179,7 @@ const BANNER = {
   message: { x: 443, y: 126 },
 };
 
-const BANNER_LABELS = { answer: 'Answer', decline: 'Decline', message: 'Message' };
+const BANNER_LABELS = { answer: 'answer', decline: 'decline', message: 'message' };
 
 /// Same rule as the panel: label first, confirmed position as the fallback,
 /// and the caller proves on the server that it landed.

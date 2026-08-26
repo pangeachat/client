@@ -101,7 +101,7 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
     await wait(i === 1 ? 6500 : 4000);
     await ui.enableSemantics(page);
     await wait(1500);
-    if (await ui.hasLabel(page, 'Call')) return;
+    if (await ui.hasControl(page, 'call')) return;
     // The deep link does not always land, and the app then sits on the chat
     // LIST with the conversation right there. Clicking it is what a person
     // would do, and it is far more reliable than reloading the same link
@@ -119,7 +119,7 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
       await wait(3500);
       await ui.enableSemantics(page);
       await wait(1200);
-      if (await ui.hasLabel(page, 'Call')) return;
+      if (await ui.hasControl(page, 'call')) return;
     }
     console.log(`   (room did not open, attempt ${i}/${attempts}; on screen: ${JSON.stringify(await ui.labels(page))})`);
   }
@@ -133,7 +133,7 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
 /// once at startup is therefore not enough: every scenario re-asserts the room
 /// is actually on screen before it touches anything.
 async function ensureRoom(p, roomLocalpart) {
-  if (await ui.hasLabel(p.page, 'Call')) return;
+  if (await ui.hasControl(p.page, 'call')) return;
   console.log(`   (${p.name} drifted off the room; reopening)`);
   await openRoom(p.page, roomLocalpart);
 }

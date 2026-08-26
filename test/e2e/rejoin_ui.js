@@ -36,10 +36,10 @@ function allClocks(pageText) {
 /// timeline's "Voice call 0:13" cards -- frozen numbers that pass for a
 /// running one.
 async function ensurePanel(page) {
-  if (await ui.hasLabel(page, 'Hang up').catch(() => false)) return true;
+  if (await ui.hasControl(page, 'hangup').catch(() => false)) return true;
   await ui.clickPanel(page, 'fullscreen').catch(() => {});
   await wait(1500);
-  return ui.hasLabel(page, 'Hang up').catch(() => false);
+  return ui.hasControl(page, 'hangup').catch(() => false);
 }
 
 /// The one that is actually RUNNING, proved by watching it move.
@@ -76,7 +76,7 @@ async function clickByText(page, label) {
 
 async function connect(A, B, mA) {
   const rang = await h.actUntil('place',
-    async () => { await h.ensureRoom(A, ROOM); await ui.clickLabel(A.page, 'Call', { exact: true }).catch(() => {}); },
+    async () => { await h.ensureRoom(A, ROOM); await ui.clickControl(A.page, 'call').catch(() => {}); },
     async () => (await h.since(A.token, ROOM_ID, mA)).some((e) => e.type === mx.RING && e.sender === A.userId),
     { tries: 3, gap: 4000 });
   if (!rang) return false;
@@ -184,7 +184,7 @@ h.refuseIfAnotherRunIsLive();
 
   let offered = false;
   for (let i = 0; i < 10 && !offered; i++) {
-    offered = await ui.hasLabel(B.page, 'Return').catch(() => false) ||
+    offered = await ui.hasControl(B.page, 'ret').catch(() => false) ||
       /Return/.test(await text(B.page));
     if (!offered) await wait(1500);
   }

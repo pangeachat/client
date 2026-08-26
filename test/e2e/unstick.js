@@ -26,7 +26,7 @@ const NAV = /^(next|continue|done|finish|get started|let's go|save)$/i;
   await wait(1500);
 
   for (let step = 0; step < 25; step++) {
-    if (await ui.hasLabel(page, 'Call').catch(() => false)) break;
+    if (await ui.hasControl(page, 'call').catch(() => false)) break;
     const labels = await ui.labels(page).catch(() => []);
     const leaves = await page.evaluate(() =>
       [...document.querySelectorAll('flt-semantics')]
@@ -81,7 +81,7 @@ const NAV = /^(next|continue|done|finish|get started|let's go|save)$/i;
   await wait(7000);
   await ui.enableSemantics(page);
   await wait(1500);
-  const ok = await ui.hasLabel(page, 'Call').catch(() => false);
+  const ok = await ui.hasControl(page, 'call').catch(() => false);
   console.log(`${who}: room opens = ${ok} (${page.url()})`);
   if (!ok) await page.screenshot({ path: shot(`stuck-${who}.png`) });
   await browser.close();

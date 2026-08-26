@@ -41,7 +41,7 @@ async function clickReturn(page) {
 
 /// Whether the Return offer is on screen, read every way the page can say it.
 async function returnOffered(page) {
-  if (await ui.hasLabel(page, 'Return').catch(() => false)) return true;
+  if (await ui.hasControl(page, 'ret').catch(() => false)) return true;
   return page.evaluate(() => {
     const text = document.body.innerText || '';
     if (/Return/.test(text)) return true;
@@ -91,7 +91,7 @@ async function rawMembership(token, userId) {
 
   console.log('[2] A places, B answers');
   const rang = await h.actUntil('place',
-    async () => { await h.ensureRoom(A, ROOM); await ui.clickLabel(A.page, 'Call', { exact: true }).catch(() => {}); },
+    async () => { await h.ensureRoom(A, ROOM); await ui.clickControl(A.page, 'call').catch(() => {}); },
     async () => (await h.since(A.token, ROOM_ID, mA)).some((e) => e.type === mx.RING && e.sender === A.userId),
     { tries: 3, gap: 4000 });
   if (!rang) { console.log('FAIL: never rang'); process.exit(2); }
