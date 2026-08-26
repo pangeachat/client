@@ -536,19 +536,32 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
 
   StreamSubscription<bool>? _roomUpdates;
 
+  /// The joined-course set the last build drew from, as sorted ids. The ONLY
+  /// thing this layer needs a sync to refresh, so the listener rebuilds on a
+  /// change to this and nothing else — `build` also assembles the cavity's
+  /// open panel (a live chat list, a course card), and `hasRoomUpdate` is true
+  /// for ordinary traffic like a read receipt, so an ungated rebuild would
+  /// tear that panel down about once a second all day. Sorted because
+  /// `client.rooms` is recency-ordered: a message in any course reorders it
+  /// without changing who is in what.
+  String _joinedCourseIds = '';
+
   @override
   void initState() {
     super.initState();
-    // `build` reads the joined-course list straight off the client (the
-    // shortcut slot, the hub sheet's fit height), so a membership change with
-    // no route change must rebuild this layer — otherwise a deleted course
-    // keeps its avatar in the shortcut slot until the learner navigates away
-    // (#8599). Same stream/filter the web rail uses for its course list.
+    // `build` reads the joined-course list straight off the client, so a
+    // membership change with no route change has to rebuild this layer —
+    // otherwise a deleted course keeps its avatar in the shortcut slot until
+    // the learner navigates away (#8599). Same stream/filter the web rail uses
+    // for its course list.
     _roomUpdates = Matrix.of(context).client.onSync.stream
         .where((s) => s.hasRoomUpdate)
         .rateLimit(const Duration(seconds: 1))
         .listen((_) {
-          if (mounted) setState(() {});
+          if (!mounted) return;
+          final courses = _joinedCourses(Matrix.of(context).client);
+          if (_courseIdSignature(courses) == _joinedCourseIds) return;
+          setState(() {});
         });
   }
 
@@ -568,9 +581,8 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // The course-shortcut slot (routing.instructions.md): `+` when no courses
     // are joined, the single course when one, the most-recently-opened course
     // otherwise. The most-recent choice is device-local view state, never URL.
-    final joined = client.rooms
-        .where((r) => r.isSpace && r.membership == Membership.join)
-        .toList();
+    final joined = _joinedCourses(client);
+    _joinedCourseIds = _courseIdSignature(joined);
     final activeSpaceId = activeSpaceIdFor(uri);
     if (activeSpaceId != null &&
         joined.any((space) => space.id == activeSpaceId)) {
@@ -926,6 +938,18 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     );
   }
 }
+
+/// The learner's joined courses, in [Client.rooms]' own recency order.
+List<Room> _joinedCourses(Client client) => client.rooms
+    .where((r) => r.isSpace && r.membership == Membership.join)
+    .toList();
+
+/// [_joinedCourses] as one comparable value — sorted ids, so it changes when a
+/// course is joined, left or deleted and not when a message reorders
+/// [Client.rooms]. Lets the narrow nav layer tell a membership change apart
+/// from ordinary sync traffic.
+String _courseIdSignature(List<Room> courses) =>
+    (courses.map((r) => r.id).toList()..sort()).join(',');
 
 /// Device-local memory of the courses the learner has opened, most recent
 /// first, for the narrow rail's course-shortcut slot. Ephemeral view state,
