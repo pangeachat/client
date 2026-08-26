@@ -707,6 +707,37 @@ void main() {
       expect(issueOf(clean, exhausted: false), HalfIssue.couldNotRead);
     });
 
+    test('an impossible accounting is reported before what it claims', () {
+      // A half that cannot be true tells us nothing reliable about any of its
+      // own fields. Reporting one of them as the cause repeats the half's own
+      // nonsense back with a confident label on it.
+      expect(
+        issueOf(
+          const HalfAccounting(
+            captureRefused: true,
+            declared: true,
+            incoherent: true,
+          ),
+        ),
+        HalfIssue.accountingImpossible,
+      );
+    });
+
+    test('unreadable content is not reported as a size problem', () {
+      expect(
+        issueOf(
+          const HalfAccounting(
+            chunksCaptured: 2,
+            chunksTranscribed: 2,
+            truncated: true,
+            declared: true,
+            unreadableContent: true,
+          ),
+        ),
+        HalfIssue.contentUnreadable,
+      );
+    });
+
     test('our own failure is reported ahead of the writer\'s admissions', () {
       // A half can carry several at once. Only one is reported, and it is the
       // one somebody reading a bug report can act on.

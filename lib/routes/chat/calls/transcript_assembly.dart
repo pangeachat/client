@@ -87,6 +87,7 @@ class HalfAccounting {
     this.drainComplete = true,
     this.declared = false,
     this.incoherent = false,
+    this.unreadableContent = false,
   });
 
   /// Whether this half is known NOT to be everything that was said — either
@@ -108,6 +109,15 @@ class HalfAccounting {
   /// such a half into shape made it read COMPLETE, which hands a nonsense event
   /// more credibility than a truthful one.
   final bool incoherent;
+
+  /// The READER could not read one of the entries. Distinct from [truncated],
+  /// which means the half did not fit: this one means part of it was corrupt.
+  /// Both shorten the half, and saying "too long to send" about a malformed
+  /// entry is a confident, specific, wrong diagnosis.
+  ///
+  /// Reader-side, so it is not serialised and takes no part in [declared] --
+  /// the same footing as [incoherent].
+  final bool unreadableContent;
 
   Map<String, dynamic> toJson() => {
     'chunks_captured': chunksCaptured,
@@ -133,11 +143,26 @@ class HalfAccounting {
     drainComplete: drainComplete,
     declared: declared,
     incoherent: true,
+    unreadableContent: unreadableContent,
   );
 
   /// A half whose segments the READER dropped at its own ceiling. Distinct from
   /// [truncated], which is the writer's own admission: this one is our doing,
   /// and hiding it would let us present a half we shortened as whole.
+  /// A half the reader shortened because part of it could not be read.
+  HalfAccounting readerFoundUnreadable() => HalfAccounting(
+    chunksCaptured: chunksCaptured,
+    chunksTranscribed: chunksTranscribed,
+    chunksLost: chunksLost,
+    captureRefused: captureRefused,
+    truncated: true,
+    segmentsOmitted: segmentsOmitted,
+    drainComplete: drainComplete,
+    declared: declared,
+    incoherent: incoherent,
+    unreadableContent: true,
+  );
+
   HalfAccounting readerTruncated() => HalfAccounting(
     chunksCaptured: chunksCaptured,
     chunksTranscribed: chunksTranscribed,
@@ -148,6 +173,7 @@ class HalfAccounting {
     drainComplete: drainComplete,
     declared: declared,
     incoherent: incoherent,
+    unreadableContent: unreadableContent,
   );
 
   /// Tolerant by design: room content is untrusted and a partial or foreign
@@ -229,6 +255,9 @@ enum HalfIssue {
   /// Words were dropped to fit the event under the server's size limit.
   tooLongToSend,
 
+  /// Part of the half could not be read. A corrupt entry, not a size problem.
+  contentUnreadable,
+
   /// Transcription never finished; the call ended with work outstanding.
   drainAbandoned,
 
@@ -270,8 +299,13 @@ class TranscriptHalf {
   /// starting point than the most actionable single cause.
   HalfIssue get issue {
     if (state == HalfState.absent) return HalfIssue.neverWritten;
-    if (accounting.captureRefused) return HalfIssue.microphoneRefused;
+    // FIRST among the writer's claims. An accounting that cannot be true tells
+    // us nothing reliable about any of its own fields, so reporting one of
+    // them as the cause would be repeating the half's own nonsense back with
+    // a confident label on it.
     if (accounting.incoherent) return HalfIssue.accountingImpossible;
+    if (accounting.captureRefused) return HalfIssue.microphoneRefused;
+    if (accounting.unreadableContent) return HalfIssue.contentUnreadable;
     if (!accounting.declared) return HalfIssue.writerSaidNothing;
     if (accounting.chunksLost > 0) return HalfIssue.audioLost;
     if (accounting.truncated || accounting.segmentsOmitted > 0) {

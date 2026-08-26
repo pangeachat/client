@@ -86,6 +86,7 @@ class CallTranscriptContent {
     var totalChars = 0;
     var examined = 0;
     var shortened = rawSegments.length > maxRawEntries;
+    var unreadable = false;
 
     for (final raw in rawSegments) {
       if (examined >= maxRawEntries || segments.length >= maxSegments) {
@@ -110,6 +111,10 @@ class CallTranscriptContent {
 
       final segment = TranscriptSegment.fromJson(raw);
       if (segment == null) {
+        // Noted apart from the ceilings. Both shorten the half, and calling a
+        // corrupt entry "too long to send" is a confident, specific, wrong
+        // answer to somebody trying to work out what happened.
+        unreadable = true;
         // A dropped entry is dropped CONTENT. Skipping it quietly and then
         // presenting the rest as whole is the same lie as truncating quietly,
         // and the reason does not matter to the person reading it.
@@ -156,7 +161,30 @@ class CallTranscriptContent {
           segments.isEmpty &&
           accounting.chunksTranscribed > 0 &&
           !accounting.truncated;
-      if (wordsWithoutCapture || captureWithoutWords) {
+
+      // Words with nothing that produced them. Zero chunks transcribed means
+      // no chunk yielded usable text, so text cannot exist -- unless the half
+      // was shortened, where the words that remain came from chunks the count
+      // no longer describes.
+      final wordsWithoutTranscription =
+          segments.isNotEmpty &&
+          accounting.chunksTranscribed == 0 &&
+          !accounting.truncated;
+
+      // A microphone that never opened cannot have captured anything or
+      // produced words. This check did not learn about `capture_refused` when
+      // it was added, so a half could assert the mic never opened while
+      // carrying real chunks and real text, and be believed -- the diagnosis
+      // then confidently reported a microphone failure for a half whose own
+      // numbers said otherwise.
+      final refusedYetRecorded =
+          accounting.captureRefused &&
+          (accounting.chunksCaptured > 0 || segments.isNotEmpty);
+
+      if (wordsWithoutCapture ||
+          captureWithoutWords ||
+          wordsWithoutTranscription ||
+          refusedYetRecorded) {
         accounting = accounting.asIncoherent();
       }
     }
@@ -168,7 +196,11 @@ class CallTranscriptContent {
       // and then presenting the remainder as complete is the one outcome this
       // feature cannot produce, and it does not matter whether the writer or
       // the reader did the dropping.
-      accounting: shortened ? accounting.readerTruncated() : accounting,
+      accounting: !shortened
+          ? accounting
+          : unreadable
+          ? accounting.readerFoundUnreadable()
+          : accounting.readerTruncated(),
       langCode: langCode is String && langCode.isNotEmpty ? langCode : null,
     );
   }

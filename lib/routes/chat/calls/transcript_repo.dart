@@ -47,6 +47,9 @@ Future<CallTranscript> fetchCallTranscript({
   required String callKey,
   required List<String> expectedSenders,
 
+  /// This account, so a diagnostic can say self or peer without naming anyone.
+  String? selfId,
+
   /// Whether [expectedSenders] is an answer or a guess. See
   /// [assembleTranscript]: a guess that comes up short must not be allowed to
   /// discard a real half in silence.
@@ -136,9 +139,15 @@ Future<CallTranscript> fetchCallTranscript({
   for (final half in transcript.halves) {
     final issue = half.issue;
     if (issue == HalfIssue.none) continue;
+    // A ROLE, not a user id. Every other log in this feature keeps
+    // participant identity out, and this one paired a durable,
+    // cross-call-correlatable Matrix id with a capture failure. The call key
+    // already distinguishes the halves of one call, which is all the
+    // diagnosis needs.
+    final role = half.senderId == selfId ? 'self' : 'peer';
     Logs().i(
       'Call transcript half not clean: ${issue.name} '
-      'for ${half.senderId} on $callKey '
+      'for $role on $callKey '
       '(state ${half.state.name}, '
       'captured ${half.accounting.chunksCaptured}, '
       'transcribed ${half.accounting.chunksTranscribed}, '

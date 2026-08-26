@@ -312,4 +312,102 @@ void main() {
       );
     });
   });
+
+  group('claims the accounting cannot support', () {
+    CallTranscriptContent parse(Map<String, dynamic> extra) =>
+        CallTranscriptContent.fromJson({'call_key': _callKey, ...extra})!;
+
+    test('a mic that never opened cannot also have captured audio', () {
+      // The coherence check never learned about capture_refused when it was
+      // added, so a half could claim the microphone never opened while
+      // carrying real chunks and real words -- and the diagnosis then
+      // reported a microphone failure for a half whose own numbers said
+      // otherwise.
+      final parsed = parse({
+        'segments': [
+          {'text': 'hola'},
+        ],
+        ...const HalfAccounting(
+          chunksCaptured: 3,
+          chunksTranscribed: 3,
+          captureRefused: true,
+          drainComplete: true,
+        ).toJson(),
+      });
+
+      expect(parsed.accounting.incoherent, isTrue);
+    });
+
+    test('an honest refusal is still believed', () {
+      // The counterweight: a real refusal carries no chunks and no words.
+      final parsed = parse({
+        'segments': <dynamic>[],
+        ...const HalfAccounting(
+          captureRefused: true,
+          drainComplete: true,
+        ).toJson(),
+      });
+
+      expect(parsed.accounting.incoherent, isFalse);
+      expect(parsed.accounting.captureRefused, isTrue);
+    });
+
+    test('words with nothing that produced them are impossible', () {
+      // Zero chunks transcribed means no chunk yielded usable text, so text
+      // cannot exist. This shape reached the reader as PRESENT and clean, and
+      // the diagnostic stayed silent on it -- the one failure it exists to
+      // prevent.
+      final parsed = parse({
+        'segments': [
+          {'text': 'hola'},
+        ],
+        ...const HalfAccounting(
+          chunksCaptured: 1,
+          chunksTranscribed: 0,
+          drainComplete: true,
+        ).toJson(),
+      });
+
+      expect(parsed.accounting.incoherent, isTrue);
+    });
+
+    test('a TRUNCATED half with words and no count is not impossible', () {
+      // The legitimate version: the words that remain came from chunks the
+      // count no longer describes.
+      final parsed = parse({
+        'segments': [
+          {'text': 'hola'},
+        ],
+        ...const HalfAccounting(
+          chunksCaptured: 1,
+          chunksTranscribed: 0,
+          truncated: true,
+          segmentsOmitted: 4,
+          drainComplete: true,
+        ).toJson(),
+      });
+
+      expect(parsed.accounting.incoherent, isFalse);
+    });
+
+    test('an unreadable entry is not reported as a size problem', () {
+      // Both shorten the half. Calling a corrupt entry "too long to send" is a
+      // confident, specific, wrong answer to somebody working out what
+      // happened.
+      final parsed = parse({
+        'segments': [
+          {'text': 'hola'},
+          {'text': 42},
+        ],
+        ...const HalfAccounting(
+          chunksCaptured: 2,
+          chunksTranscribed: 2,
+          drainComplete: true,
+        ).toJson(),
+      });
+
+      expect(parsed.accounting.unreadableContent, isTrue);
+      expect(parsed.accounting.truncated, isTrue);
+    });
+  });
 }

@@ -95,6 +95,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       fetch: widget.fetcher ?? relationsFetcherFor(widget.room.client),
       roomId: widget.room.id,
       callKey: widget.callKey,
+      selfId: widget.room.client.userID,
       expectedSenders: callParticipants(
         me: widget.room.client.userID,
         peerId: peer,
