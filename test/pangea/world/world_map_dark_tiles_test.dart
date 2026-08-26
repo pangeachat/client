@@ -43,8 +43,8 @@ void main() {
     final g = bytes.getUint8(1);
     final b = bytes.getUint8(2);
 
-    expect((r - mapBackground.red).abs(), lessThanOrEqualTo(2));
-    expect((g - mapBackground.green).abs(), lessThanOrEqualTo(2));
-    expect((b - mapBackground.blue).abs(), lessThanOrEqualTo(2));
+    expect((r - (mapBackground.r * 255.0).round()).abs(), lessThanOrEqualTo(2));
+    expect((g - (mapBackground.g * 255.0).round()).abs(), lessThanOrEqualTo(2));
+    expect((b - (mapBackground.b * 255.0).round()).abs(), lessThanOrEqualTo(2));
   });
 }
