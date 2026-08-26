@@ -748,8 +748,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         courseShortcutLabel: shortcutCourse != null
             ? shortcutCourse.getLocalizedDisplayname(MatrixLocals(l10n))
             : l10n.addCourse,
+        // Not while the Courses hub is open: the hub keeps the `?c=` context
+        // it was opened over, and the Courses item — not the shortcut — is
+        // what should light for it (#8605; mirrors the web rail).
         courseShortcutSelected:
-            shortcutCourse != null && shortcutCourse.id == activeSpaceId,
+            shortcutCourse != null &&
+            shortcutCourse.id == activeSpaceId &&
+            !coursesHubIsOpen(uri),
         // Rail navigations clear the right list: on one column a section and
         // a right panel are peers in the same slot, so opening a section must
         // close an open analytics/settings panel instead of leaving it stale

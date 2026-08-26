@@ -94,6 +94,14 @@ AppSection sectionFor(Uri uri) {
   return AppSection.world;
 }
 
+/// Whether the Courses HUB (the `addcourse` family) is an open left panel.
+/// Within the courses section this is what disambiguates the rail highlight:
+/// the hub icon lights over the specific course's avatar/shortcut — even while
+/// `?c=` persists under it, since opening the hub from inside a course keeps
+/// the context (#8605; open panels win, routing.instructions.md decision 5).
+bool coursesHubIsOpen(Uri uri) =>
+    parseOpenPanels(uri).left.any((t) => t.type.isAddCoursePanel);
+
 /// The active course space id — the workspace's `?c=<spaceid>` course context
 /// (a bare localpart) — else null. One value read by the map (scope) and the
 /// course-family panels (identity) alike, independent of the panel tokens.
