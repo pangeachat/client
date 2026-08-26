@@ -18,6 +18,12 @@ import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
 import '../get_test_client.dart';
 
 const _callKey = r'$membership:fakeServer.notExisting';
+
+/// A real wall-clock instant, because that is what a position IS.
+///
+/// 2026-08-26T09:00:00Z. Using 0 here would quietly make every fixture agree
+/// with a screen that never converted absolute time to elapsed.
+const _callStart = 1787994000000;
 const _me = '@test:fakeServer.notExisting';
 const _peer = '@peer:fakeServer.notExisting';
 
@@ -122,9 +128,12 @@ void main() {
     bool drainComplete = true,
     bool declared = true,
 
-    /// One position per entry in [texts], or null for a half written before
-    /// positions existed. Null is the ordinary case for these fixtures, which
-    /// is why the per-speaker view is what most of them assert.
+    /// One position per entry in [texts], as ABSOLUTE Unix milliseconds --
+    /// which is what the writer emits and therefore the only shape worth
+    /// testing against. Small numbers like 0 and 3000 would be the DISPLAY
+    /// unit, and a fixture in the display unit cannot catch a screen that
+    /// forgot to convert. Null is the ordinary case here, which is why the
+    /// per-speaker view is what most of these assert.
     List<int>? atMs,
   }) => MatrixEvent(
     type: CallTranscriptContent.relType,
@@ -209,9 +218,9 @@ void main() {
             texts: ['hola', 'que tal'],
             captured: 2,
             transcribed: 2,
-            atMs: [0, 6000],
+            atMs: [_callStart, _callStart + 6000],
           ),
-          half(_peer, texts: ['muy bien'], atMs: [3000]),
+          half(_peer, texts: ['muy bien'], atMs: [_callStart + 3000]),
         ]),
       );
 
@@ -230,6 +239,48 @@ void main() {
       expect(top('muy bien'), lessThan(top('que tal')));
     });
 
+    testWidgets('turn times are elapsed from the call, not wall clock', (
+      tester,
+    ) async {
+      // The two sides of this seam speak different units. A position is an
+      // ABSOLUTE Unix millisecond, which is what makes two devices comparable;
+      // a turn's time is ELAPSED and prints as m:ss. Handed over unconverted,
+      // a call placed in 2026 renders as some twenty-eight million minutes in
+      // -- and every fixture that used 0 and 3000 agreed with it, because
+      // those are the display unit rather than the stored one.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: ['hola'], atMs: [_callStart]),
+          half(_peer, texts: ['muy bien'], atMs: [_callStart + 74000]),
+        ]),
+      );
+
+      // Counted from the EARLIEST turn in the transcript, so the first thing
+      // anybody said is the zero.
+      expect(find.text('0:00'), findsOneWidget);
+      expect(find.text('1:14'), findsOneWidget);
+    });
+
+    testWidgets('the clock starts at the first turn, whoever spoke it', (
+      tester,
+    ) async {
+      // Per-half origins would restart the clock for the second speaker and
+      // stack both columns on top of each other. One clock runs behind the
+      // whole conversation, and it starts when somebody first speaks -- here
+      // that is the PEER, so our own later turn must not read as zero.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: ['hola'], atMs: [_callStart + 30000]),
+          half(_peer, texts: ['muy bien'], atMs: [_callStart]),
+        ]),
+      );
+
+      expect(find.text('0:00'), findsOneWidget);
+      expect(find.text('0:30'), findsOneWidget);
+    });
+
     testWidgets('a call with SOME positions is not drawn as a conversation', (
       tester,
     ) async {
@@ -239,7 +290,7 @@ void main() {
       await pump(
         tester,
         serving([
-          half(_me, texts: ['hola'], atMs: [0]),
+          half(_me, texts: ['hola'], atMs: [_callStart]),
           half(_peer, texts: ['muy bien']),
         ]),
       );
@@ -262,9 +313,9 @@ void main() {
             texts: ['hola', 'que tal'],
             captured: 2,
             transcribed: 2,
-            atMs: [6000, 0],
+            atMs: [_callStart + 6000, _callStart],
           ),
-          half(_peer, texts: ['muy bien'], atMs: [3000]),
+          half(_peer, texts: ['muy bien'], atMs: [_callStart + 3000]),
         ]),
       );
 
@@ -280,7 +331,7 @@ void main() {
       await pump(
         tester,
         serving([
-          half(_me, texts: ['hola'], atMs: [0]),
+          half(_me, texts: ['hola'], atMs: [_callStart]),
           half(_peer, texts: const [], captured: 0, transcribed: 0),
         ]),
       );

@@ -208,8 +208,27 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// which is what makes the `!` on each position safe: eligibility IS the
   /// promise that every displayed segment carries one. The widget sorts what
   /// it is given, so this does not.
+  ///
+  /// The two sides of this seam speak different units, and converting between
+  /// them is this method's real job. A segment's `atMs` is an ABSOLUTE Unix
+  /// millisecond -- that is what makes two devices comparable at all -- while
+  /// a turn's `at` is time ELAPSED, and gets printed as `m:ss`. Handing the
+  /// absolute value straight over renders a call that began in 2026 as some
+  /// twenty-eight million minutes in.
   List<CallTurn> _turnsOf(CallTranscript transcript, L10n l10n) {
     final me = widget.room.client.userID;
+
+    final positions = [
+      for (final half in transcript.halves)
+        for (final segment in half.segments) segment.atMs!,
+    ];
+    if (positions.isEmpty) return const [];
+
+    // The earliest turn ANYWHERE in the transcript, not the earliest in each
+    // half: the whole point is that one clock runs behind both columns, and
+    // per-half origins would restart it for the second speaker.
+    final start = positions.reduce((a, b) => a < b ? a : b);
+
     return [
       for (final half in transcript.halves)
         for (final segment in half.segments)
@@ -217,7 +236,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
             senderId: half.senderId,
             name: _nameFor(half.senderId, l10n),
             isMe: half.senderId == me,
-            at: Duration(milliseconds: segment.atMs!),
+            at: Duration(milliseconds: segment.atMs! - start),
             text: segment.text,
           ),
     ];
