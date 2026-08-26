@@ -115,22 +115,17 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
             // Languages the learner already has analytics in sort to the top
             // of the L2 list, so the two or three they actually move between
             // are reachable without scrolling or searching —
-            // profile.instructions.md, "Switching from context". Keyed by
-            // short language code; left null for the base-language list.
-            final Map<String, LanguageAnalyticsProfileEntry>?
-            analyticsByLanguage = widget.isL2List
+            // profile.instructions.md, "Switching from context". Null for the
+            // base-language list, which this rule doesn't apply to.
+            final analytics = widget.isL2List
                 ? MatrixState
                       .pangeaController
                       .userController
                       .publicProfile
                       ?.analytics
-                      .languageAnalytics
                 : null;
 
-            final order = AnalyticsLanguageOrder.of(
-              sortedLanguages,
-              analyticsByLanguage,
-            );
+            final order = AnalyticsLanguageOrder.of(sortedLanguages, analytics);
             final List<LanguageModel> displayOrder = order.displayOrder;
             final int dividerIndex = order.dividerIndex;
 
@@ -145,10 +140,9 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
                         isL2List: widget.isL2List,
                         isDropdown: true,
                         enabled: widget.enabled,
-                        analytics:
-                            analyticsByLanguage?[widget
-                                .initialLanguage!
-                                .langCodeShort],
+                        analytics: analytics?.displayEntryFor(
+                          widget.initialLanguage!,
+                        ),
                       )
                     : null,
                 menuItemStyleData: MenuItemStyleData(
@@ -156,8 +150,7 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
                   customHeights: [
                     for (var i = 0; i < displayOrder.length; i++) ...[
                       if (i == dividerIndex) _dividerItemHeight,
-                      analyticsByLanguage?[displayOrder[i].langCodeShort] !=
-                              null
+                      analytics?.displayEntryFor(displayOrder[i]) != null
                           ? _analyticsItemHeight
                           : _itemHeight,
                     ],
@@ -225,9 +218,9 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
                         child: LanguageDropDownEntry(
                           languageModel: displayOrder[i],
                           isL2List: widget.isL2List,
-                          analytics:
-                              analyticsByLanguage?[displayOrder[i]
-                                  .langCodeShort],
+                          analytics: analytics?.displayEntryFor(
+                            displayOrder[i],
+                          ),
                         ),
                       ),
                     ),

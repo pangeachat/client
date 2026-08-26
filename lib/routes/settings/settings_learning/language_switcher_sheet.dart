@@ -106,12 +106,8 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
               builder: (context, _) => ValueListenableBuilder(
                 valueListenable: _query,
                 builder: (context, query, _) {
-                  final analyticsByLanguage =
-                      userController.publicProfile?.analytics.languageAnalytics;
-                  final order = AnalyticsLanguageOrder.of(
-                    languages,
-                    analyticsByLanguage,
-                  );
+                  final analytics = userController.publicProfile?.analytics;
+                  final order = AnalyticsLanguageOrder.of(languages, analytics);
 
                   // The targeted language leads the top group, ahead of the
                   // analytics languages it's drawn from or otherwise joins —
@@ -152,9 +148,9 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
                           ),
                         _LanguageSwitcherRow(
                           language: displayLanguages[i],
-                          analytics:
-                              analyticsByLanguage?[displayLanguages[i]
-                                  .langCodeShort],
+                          analytics: analytics?.displayEntryFor(
+                            displayLanguages[i],
+                          ),
                           isCurrent: UserController.isCurrentTargetLanguage(
                             displayLanguages[i],
                             currentLanguage?.langCode,

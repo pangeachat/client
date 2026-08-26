@@ -208,6 +208,18 @@ class AnalyticsProfileModel {
   int? xpOffsetByLanguage(String langCode) =>
       languageAnalytics?[_shortCode(langCode)]?.xpOffset;
 
+  /// This language's entry, for a row that displays a level — null for a
+  /// regional variant even when its language has analytics.
+  ///
+  /// Variants (`fr-CA`, `es-MX`) are legacy rows over one shared set of
+  /// analytics: there is one analytics room and one local partition per
+  /// language, so a level shown against each variant reads as separate
+  /// progress the learner does not have. The level belongs to the language, so
+  /// only the language's own row carries it (#8582). Every multi-variant
+  /// language in the target list has such a row, so no level is hidden by this.
+  LanguageAnalyticsProfileEntry? displayEntryFor(LanguageModel language) =>
+      language.isLocalized ? null : languageAnalytics?[language.langCodeShort];
+
   /// [targetLanguage] / [baseLanguage] resolved for display (flag, name).
   /// Resolved on read rather than at parse time so that a language list which
   /// has not loaded yet costs a flag, never a dropped entry.
