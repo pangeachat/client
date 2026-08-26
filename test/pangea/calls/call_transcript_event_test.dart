@@ -214,6 +214,52 @@ void main() {
       expect(parsed.accounting.writerAdmitsGaps, isTrue);
     });
 
+    test('a half WE emptied is not accused of impossible numbers', () {
+      // The writer sent one segment and one transcribed chunk. Those numbers
+      // agree with each other perfectly. WE could not read the segment, so we
+      // dropped it -- and the emptiness this test used to see as the writer's
+      // contradiction is entirely our own doing.
+      //
+      // Getting this wrong costs the real diagnosis: `accountingImpossible`
+      // outranks `contentUnreadable`, so a reader-side parse failure was
+      // reported as the writer having sent numbers that cannot be true, and
+      // whoever read that bug report would go looking on the wrong device.
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': const [
+          {'text': 42},
+        ],
+        ...const HalfAccounting(
+          chunksCaptured: 1,
+          chunksTranscribed: 1,
+          drainComplete: true,
+        ).toJson(),
+      })!;
+
+      expect(
+        parsed.accounting.declared,
+        isTrue,
+        reason: 'the writer declared a complete accounting; the check runs',
+      );
+
+      expect(parsed.segments, isEmpty);
+      expect(parsed.accounting.unreadableContent, isTrue);
+      expect(
+        parsed.accounting.incoherent,
+        isFalse,
+        reason: 'the reader emptied this half; the writer did not',
+      );
+      expect(
+        TranscriptHalf(
+          senderId: '@a:example.com',
+          segments: parsed.segments,
+          accounting: parsed.accounting,
+          state: HalfState.incomplete,
+        ).issue,
+        HalfIssue.contentUnreadable,
+      );
+    });
+
     test('a genuinely silent half stays coherent', () {
       // Nothing captured, nothing transcribed, nothing said. The whole point
       // of the flag is that it does NOT fire here.

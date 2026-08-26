@@ -157,10 +157,19 @@ class CallTranscriptContent {
     if (accounting.declared) {
       final wordsWithoutCapture =
           segments.isNotEmpty && accounting.chunksCaptured == 0;
+      //
+      // Excluded when WE shortened the half, not only when the writer did.
+      // `accounting.truncated` here is the writer's own admission -- the
+      // reader's version of that flag is not applied until below -- so a half
+      // whose only segment this loop dropped as corrupt arrived at this test
+      // with an empty list and was called impossible. That accuses the writer
+      // of numbers that never disagreed with anything it sent, and it buries
+      // the real cause, which is that we could not read what it sent.
       final captureWithoutWords =
           segments.isEmpty &&
           accounting.chunksTranscribed > 0 &&
-          !accounting.truncated;
+          !accounting.truncated &&
+          !shortened;
 
       // Words with nothing that produced them. Zero chunks transcribed means
       // no chunk yielded usable text, so text cannot exist -- unless the half

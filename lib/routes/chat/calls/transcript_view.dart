@@ -226,9 +226,13 @@ class _HalfSection extends StatelessWidget {
     if (half.segments.isEmpty) {
       return [
         _Muted(
-          text: half.state == HalfState.incomplete
-              ? l10n.callTranscriptNothingRead(name)
-              : l10n.callTranscriptSaidNothing(name),
+          // Asked of the half rather than re-derived here. "They said nothing"
+          // is a definite claim about a person, and the only thing separating
+          // it from "we could not find out" is which state an empty half is
+          // in -- a distinction too easy to invert at each site that needs it.
+          text: half.saidNothing
+              ? l10n.callTranscriptSaidNothing(name)
+              : l10n.callTranscriptNothingRead(name),
         ),
       ];
     }

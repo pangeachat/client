@@ -316,6 +316,16 @@ class TranscriptHalf {
     return HalfIssue.none;
   }
 
+  /// Whether this half is a person who was recorded and said nothing.
+  ///
+  /// Silence is NOT a fourth [HalfState]; it is [HalfState.present] with no
+  /// segments, and that is deliberate -- a silent half is a complete, trusted
+  /// record, and giving it its own state would put it beside "we could not
+  /// find out". But the distinction is real and it is the single most
+  /// dangerous one in this feature to get backwards, so it is asked here once
+  /// rather than re-derived at each screen that needs it.
+  bool get saidNothing => state == HalfState.present && segments.isEmpty;
+
   /// How much speech this half actually carries.
   ///
   /// Measured from the text present, never read off a self-declared count:

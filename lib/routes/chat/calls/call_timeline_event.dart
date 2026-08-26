@@ -111,12 +111,22 @@ bool callCardMayTakeTheChatListLine(Event? current, Event incoming) {
   if (current == null) return true;
   if (!CallTimelineEvent.sameCall(incoming, current)) return true;
 
-  // Between two cards for one call, rank decides -- but only when both can
-  // vouch for themselves. Where neither can, the conversation draws both and
-  // the line shows one of them, which is the declared duplicate-card cost.
-  if (!callCardIsProvenReal(incoming) || !callCardIsProvenReal(current)) {
-    return true;
-  }
+  // Between two cards for one call, rank decides. Rank alone, with no
+  // provenness test in front of it.
+  //
+  // There used to be one: where neither card could vouch for itself, this
+  // returned true and let the newcomer through, on the reasoning that the
+  // conversation might draw both so the list could not mirror a single
+  // choice. That reasoning let the last arrival win, and "unproven" is the
+  // ordinary state whenever the peer is not identifiable -- so a card from
+  // anyone at all, carrying a real call's key, took the line from the real
+  // one. The same shrug-is-not-a-refusal mistake this file has now made in
+  // four places: unknown was read as permission.
+  //
+  // Rank is the answer in every case, proven or not, because it is the rule
+  // the CONVERSATION uses. Deferring to it is what makes the two surfaces
+  // agree, which is the only reason this function exists -- and the earlier
+  // card wins, so a card arriving later can never displace one already shown.
   return CallTimelineEvent.outranks(incoming, current);
 }
 

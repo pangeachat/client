@@ -471,13 +471,32 @@ void main() {
         status: EventStatus.synced,
       );
 
+      // Not refused: an unprovable card is still allowed to hold the line,
+      // which is what separates a shrug from a refusal.
+      expect(
+        callCardMayTakeTheChatListLine(
+          inWide('@third:server', r'$two', 2000),
+          inWide('@a:server', r'$one', 1000),
+        ),
+        isTrue,
+        reason: 'nobody being identifiable is not grounds to refuse a card',
+      );
+
+      // And not permitted either. This used to return true, on the reasoning
+      // that where neither card can vouch for itself the list cannot mirror
+      // the conversation's choice -- which handed the line to whatever
+      // arrived last. Since an unidentifiable peer is the ordinary state in
+      // any room this cannot read as a direct chat, that let a card from
+      // anyone at all, carrying a real call's key, displace the real one.
       expect(
         callCardMayTakeTheChatListLine(
           inWide('@a:server', r'$one', 1000),
           inWide('@third:server', r'$two', 2000),
         ),
-        isTrue,
-        reason: 'neither can vouch, so neither is refused',
+        isFalse,
+        reason:
+            'a later card must not displace an earlier one it cannot '
+            'outrank, whether or not either can be proven',
       );
     });
 
