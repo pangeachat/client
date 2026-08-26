@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-25 15:25:41.484126",
+    "@@last_modified": "2026-08-26 15:28:47.077818",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "አልወደድኩትም",
     "constructUseHrdDesc": "ሰምቷል",
     "timesHeard": "{count, plural, =1{አንድ ጊዜ ተሰምቷል} other{{count} ጊዜ ተሰምቷል}}",
-    "allSettings": "ሁሉም ቅንብሮች"
+    "allSettings": "ሁሉም ቅንብሮች",
+    "usedCorrectly": "{count, plural, =1{አንድ ጊዜ በትክክል ጥቅም ላይ ውሏል} other{{count} ጊዜ በትክክል ጥቅም ላይ ውሏል}}",
+    "usedIncorrectly": "{count, plural, =1{አንድ ጊዜ በስህተት ጥቅም ላይ ውሏል} other{{count} ጊዜ በስህተት ጥቅም ላይ ውሏል}}",
+    "usedWithoutScoring": "{count, plural, =1{አንድ ጊዜ ያለ ነጥብ ጥቅም ላይ ውሏል} other{{count} ጊዜ ያለ ነጥብ ጥቅም ላይ ውሏል}}"
 }

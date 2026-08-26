@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-25 15:25:44.543117",
+    "@@last_modified": "2026-08-26 15:28:52.319188",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Tsy tiana",
     "constructUseHrdDesc": "Reny",
     "timesHeard": "{count, plural, =1{Reny indray mandeha} other{Reny in-{count} indray mandeha}}",
-    "allSettings": "Fikirana rehetra"
+    "allSettings": "Fikirana rehetra",
+    "usedCorrectly": "{count, plural, =1{Nampiasaina tsara indray mandeha} other{Nampiasaina tsara in-{count}}}",
+    "usedIncorrectly": "{count, plural, =1{Nampiasaina diso indray mandeha} other{Nampiasaina diso in-{count} }}",
+    "usedWithoutScoring": "{count, plural, =1{Nampiasaina indray mandeha nefa tsy nahazo isa} other{Nampiasaina in-{count} nefa tsy nahazo isa}}"
 }

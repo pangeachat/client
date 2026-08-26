@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-25 15:25:43.809012",
+    "@@last_modified": "2026-08-26 15:28:50.986497",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Ұнамады",
     "constructUseHrdDesc": "Естідім",
     "timesHeard": "{count, plural, =1{Бір рет тыңдалды} other{{count} рет тыңдалды}}",
-    "allSettings": "Барлық параметрлер"
+    "allSettings": "Барлық параметрлер",
+    "usedCorrectly": "{count, plural, =1{Бір рет дұрыс қолданылды} other{{count} рет дұрыс қолданылды}}",
+    "usedIncorrectly": "{count, plural, =1{Бір рет қате қолданылды} other{{count} рет қате қолданылды}}",
+    "usedWithoutScoring": "{count, plural, =1{Ұпайсыз бір рет қолданылды} other{Ұпайсыз {count} рет қолданылды}}"
 }

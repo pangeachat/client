@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-25 15:25:43.054918",
+    "@@last_modified": "2026-08-26 15:28:49.695477",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Tsis nyiam",
     "constructUseHrdDesc": "Hnov",
     "timesHeard": "{count, plural, =1{Hnov ib zaug} other{Hnov {count} zaug}}",
-    "allSettings": "Tag nrho cov chaw"
+    "allSettings": "Tag nrho cov chaw",
+    "usedCorrectly": "{count, plural, =1{Siv tau raug ib zaug} other{Siv tau raug {count} zaug}}",
+    "usedIncorrectly": "{count, plural, =1{Siv tsis raug ib zaug} other{Siv tsis raug {count} zaug}}",
+    "usedWithoutScoring": "{count, plural, =1{Siv ib zaug tsis tau qhab nia} other{Siv {count} zaug tsis tau qhab nia}}"
 }

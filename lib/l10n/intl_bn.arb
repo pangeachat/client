@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:41.512796",
+    "@@last_modified": "2026-08-26 15:28:46.703085",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10390,5 +10390,8 @@
     "rateActivityDisliked": "পছন্দ হয়নি",
     "constructUseHrdDesc": "শুনেছি",
     "timesHeard": "{count, plural, =1{একবার শোনা হয়েছে} other{{count} বার শোনা হয়েছে}}",
-    "allSettings": "সমস্ত সেটিংস"
+    "allSettings": "সমস্ত সেটিংস",
+    "usedCorrectly": "{count, plural, =1{একবার সঠিকভাবে ব্যবহার করা হয়েছে} other{{count} বার সঠিকভাবে ব্যবহার করা হয়েছে}}",
+    "usedIncorrectly": "{count, plural, =1{একবার ভুলভাবে ব্যবহার করা হয়েছে} other{{count} বার ভুলভাবে ব্যবহার করা হয়েছে}}",
+    "usedWithoutScoring": "{count, plural, =1{স্কোরিং ছাড়াই একবার ব্যবহার করা হয়েছে} other{স্কোরিং ছাড়াই {count} বার ব্যবহার করা হয়েছে}}"
 }

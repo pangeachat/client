@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-25 15:25:45.941971",
+    "@@last_modified": "2026-08-26 15:28:54.975199",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10707,5 +10707,8 @@
     "rateActivityDisliked": "Nepáčilo sa mi to",
     "constructUseHrdDesc": "Počul",
     "timesHeard": "{count, plural, =1{Vypočuté raz} other{Vypočuté {count}-krát}}",
-    "allSettings": "Všetky nastavenia"
+    "allSettings": "Všetky nastavenia",
+    "usedCorrectly": "{count, plural, =1{Použité správne raz} other{Použité správne {count}-krát}}",
+    "usedIncorrectly": "{count, plural, =1{Použité nesprávne raz} other{Použité nesprávne {count}-krát}}",
+    "usedWithoutScoring": "{count, plural, =1{Použité raz bez bodovania} other{Použité {count}-krát bez bodovania}}"
 }

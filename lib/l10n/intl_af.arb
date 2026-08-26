@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-25 15:25:41.394660",
+    "@@last_modified": "2026-08-26 15:28:46.721807",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Het nie daarvan gehou nie",
     "constructUseHrdDesc": "Gehoor",
     "timesHeard": "{count, plural, =1{Een keer gehoor} other{{count} keer gehoor}}",
-    "allSettings": "Alle instellings"
+    "allSettings": "Alle instellings",
+    "usedCorrectly": "{count, plural, =1{Een keer korrek gebruik} other{{count} keer korrek gebruik}}",
+    "usedIncorrectly": "{count, plural, =1{Een keer verkeerd gebruik} other{{count} keer verkeerd gebruik}}",
+    "usedWithoutScoring": "{count, plural, =1{Een keer gebruik sonder telling} other{{count} keer gebruik sonder telling}}"
 }

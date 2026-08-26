@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-25 15:25:44.217261",
+    "@@last_modified": "2026-08-26 15:28:51.381754",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Mir huet et net gefall",
     "constructUseHrdDesc": "Héieren",
     "timesHeard": "{count, plural, =1{Eemol héieren} other{{count} Mol héieren}}",
-    "allSettings": "All Astellungen"
+    "allSettings": "All Astellungen",
+    "usedCorrectly": "{count, plural, =1{Eemol richteg benotzt} other{{count} Mol richteg benotzt}}",
+    "usedIncorrectly": "{count, plural, =1{Eemol falsch benotzt} other{{count} Mol falsch benotzt}}",
+    "usedWithoutScoring": "{count, plural, =1{Eemol ouni Punkten benotzt} other{{count} Mol ouni Punkten benotzt}}"
 }

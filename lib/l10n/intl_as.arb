@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-25 15:25:41.525507",
+    "@@last_modified": "2026-08-26 15:28:47.088408",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "ভাল নাপালোঁ",
     "constructUseHrdDesc": "শুনিছে",
     "timesHeard": "{count, plural, =1{এবাক শুনিছে} other{{count} বাৰ শুনিছে}}",
-    "allSettings": "সকলো ছেটিংছ"
+    "allSettings": "সকলো ছেটিংছ",
+    "usedCorrectly": "{count, plural, =1{এবাৰ শুদ্ধকৈ ব্যৱহাৰ কৰা হৈছে} other{{count} বাৰ শুদ্ধকৈ ব্যৱহাৰ কৰা হৈছে}}",
+    "usedIncorrectly": "{count, plural, =1{এবাৰ ভুলকৈ ব্যৱহাৰ কৰা হৈছে} other{{count} বাৰ ভুলকৈ ব্যৱহাৰ কৰা হৈছে}}",
+    "usedWithoutScoring": "{count, plural, =1{স্কোৰ নকৰাকৈ এবাৰ ব্যৱহাৰ কৰা হৈছে} other{স্কোৰ নকৰাকৈ {count} বাৰ ব্যৱহাৰ কৰা হৈছে}}"
 }

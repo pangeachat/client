@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-25 15:25:42.555183",
+    "@@last_modified": "2026-08-26 15:28:49.019847",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Cha chòrd e rium",
     "constructUseHrdDesc": "Chuala",
     "timesHeard": "{count, plural, =1{Chualas aon uair} other{Chualas {count} uair}}",
-    "allSettings": "A h-uile roghainn"
+    "allSettings": "A h-uile roghainn",
+    "usedCorrectly": "{count, plural, =1{Air a chleachdadh gu ceart aon turas} other{Air a chleachdadh gu ceart {count} tursan}}",
+    "usedIncorrectly": "{count, plural, =1{Air a chleachdadh gu ceàrr aon turas} other{Air a chleachdadh gu ceàrr {count} tursan}}",
+    "usedWithoutScoring": "{count, plural, =1{Air a chleachdadh aon turas gun sgòradh} other{Air a chleachdadh {count} tursan gun sgòradh}}"
 }

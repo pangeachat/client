@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-25 15:25:42.041538",
+    "@@last_modified": "2026-08-26 15:28:47.714938",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Doeddwn i ddim yn ei hoffi",
     "constructUseHrdDesc": "Clywed",
     "timesHeard": "{count, plural, =1{Clywyd unwaith} other{Clywyd {count} gwaith}}",
-    "allSettings": "Pob gosodiad"
+    "allSettings": "Pob gosodiad",
+    "usedCorrectly": "{count, plural, =1{Wedi'i ddefnyddio'n gywir unwaith} other{Wedi'i ddefnyddio'n gywir {count} gwaith}}",
+    "usedIncorrectly": "{count, plural, =1{Wedi'i ddefnyddio'n anghywir unwaith} other{Wedi'i ddefnyddio'n anghywir {count} gwaith}}",
+    "usedWithoutScoring": "{count, plural, =1{Wedi'i ddefnyddio unwaith heb sgorio} other{Wedi'i ddefnyddio {count} gwaith heb sgorio}}"
 }

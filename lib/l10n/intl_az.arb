@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-25 15:25:41.427357",
+    "@@last_modified": "2026-08-26 15:28:46.829481",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Bəyənmədim",
     "constructUseHrdDesc": "Eşidilib",
     "timesHeard": "{count, plural, =1{Bir dəfə eşidildi} other{{count} dəfə eşidildi}}",
-    "allSettings": "Bütün tənzimləmələr"
+    "allSettings": "Bütün tənzimləmələr",
+    "usedCorrectly": "{count, plural, =1{Bir dəfə düzgün istifadə edildi} other{{count} dəfə düzgün istifadə edildi}}",
+    "usedIncorrectly": "{count, plural, =1{Bir dəfə səhv istifadə edildi} other{{count} dəfə səhv istifadə edildi}}",
+    "usedWithoutScoring": "{count, plural, =1{Bir dəfə xal qazanmadan istifadə edildi} other{{count} dəfə xal qazanmadan istifadə edildi}}"
 }

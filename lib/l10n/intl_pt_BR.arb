@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:45.441921",
+    "@@last_modified": "2026-08-26 15:28:53.895902",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9762,5 +9762,8 @@
     "rateActivityDisliked": "Não gostei",
     "constructUseHrdDesc": "Ouviu",
     "timesHeard": "{count, plural, =1{Ouvido uma vez} other{Ouvido {count} vezes}}",
-    "allSettings": "Todas as configurações"
+    "allSettings": "Todas as configurações",
+    "usedCorrectly": "{count, plural, =1{Usado corretamente 1 vez} other{Usado corretamente {count} vezes}}",
+    "usedIncorrectly": "{count, plural, =1{Usado incorretamente 1 vez} other{Usado incorretamente {count} vezes}}",
+    "usedWithoutScoring": "{count, plural, =1{Usado 1 vez sem pontuar} other{Usado {count} vezes sem pontuar}}"
 }

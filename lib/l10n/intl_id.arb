@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:43.474132",
+    "@@last_modified": "2026-08-26 15:28:50.282958",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9835,5 +9835,8 @@
     "rateActivityDisliked": "Tidak suka",
     "constructUseHrdDesc": "Mendengar",
     "timesHeard": "{count, plural, =1{Didengar sekali} other{Didengar {count} kali}}",
-    "allSettings": "Semua pengaturan"
+    "allSettings": "Semua pengaturan",
+    "usedCorrectly": "{count, plural, =1{Digunakan dengan benar sekali} other{Digunakan dengan benar {count} kali}}",
+    "usedIncorrectly": "{count, plural, =1{Digunakan dengan salah sekali} other{Digunakan dengan salah {count} kali}}",
+    "usedWithoutScoring": "{count, plural, =1{Digunakan sekali tanpa penilaian} other{Digunakan {count} kali tanpa penilaian}}"
 }

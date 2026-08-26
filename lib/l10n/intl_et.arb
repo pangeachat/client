@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-25 15:25:42.494582",
+    "@@last_modified": "2026-08-26 15:28:48.489280",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9759,5 +9759,8 @@
     "rateActivityDisliked": "Ei meeldinud",
     "constructUseHrdDesc": "Kuuldud",
     "timesHeard": "{count, plural, =1{Kuuldud üks kord} other{Kuuldud {count} korda}}",
-    "allSettings": "Kõik seaded"
+    "allSettings": "Kõik seaded",
+    "usedCorrectly": "{count, plural, =1{Kasutatud õigesti üks kord} other{Kasutatud õigesti {count} korda}}",
+    "usedIncorrectly": "{count, plural, =1{Kasutatud valesti üks kord} other{Kasutatud valesti {count} korda}}",
+    "usedWithoutScoring": "{count, plural, =1{Kasutatud üks kord hindamata} other{Kasutatud {count} korda hindamata}}"
 }

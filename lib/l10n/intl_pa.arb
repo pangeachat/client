@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-25 15:25:45.394697",
+    "@@last_modified": "2026-08-26 15:28:53.942766",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "ਪਸੰਦ ਨਹੀਂ ਕੀਤਾ",
     "constructUseHrdDesc": "ਸੁਣਿਆ",
     "timesHeard": "{count, plural, =1{ਇੱਕ ਵਾਰ ਸੁਣਿਆ} other{{count} ਵਾਰ ਸੁਣਿਆ}}",
-    "allSettings": "ਸਾਰੀਆਂ ਸੈਟਿੰਗਾਂ"
+    "allSettings": "ਸਾਰੀਆਂ ਸੈਟਿੰਗਾਂ",
+    "usedCorrectly": "{count, plural, =1{ਇੱਕ ਵਾਰ ਸਹੀ ਢੰਗ ਨਾਲ ਵਰਤਿਆ ਗਿਆ} other{{count} ਵਾਰ ਸਹੀ ਢੰਗ ਨਾਲ ਵਰਤਿਆ ਗਿਆ}}",
+    "usedIncorrectly": "{count, plural, =1{ਇੱਕ ਵਾਰ ਗਲਤ ਢੰਗ ਨਾਲ ਵਰਤਿਆ ਗਿਆ} other{{count} ਵਾਰ ਗਲਤ ਢੰਗ ਨਾਲ ਵਰਤਿਆ ਗਿਆ}}",
+    "usedWithoutScoring": "{count, plural, =1{ਬਿਨਾਂ ਸਕੋਰ ਕੀਤੇ ਇੱਕ ਵਾਰ ਵਰਤਿਆ ਗਿਆ} other{ਬਿਨਾਂ ਸਕੋਰ ਕੀਤੇ {count} ਵਾਰ ਵਰਤਿਆ ਗਿਆ}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-25 15:25:44.808489",
+    "@@last_modified": "2026-08-26 15:28:52.139950",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Таалагдаагүй",
     "constructUseHrdDesc": "Сонссон",
     "timesHeard": "{count, plural, =1{Нэг удаа сонссон} other{Сонссон удаа: {count}}}",
-    "allSettings": "Бүх тохиргоо"
+    "allSettings": "Бүх тохиргоо",
+    "usedCorrectly": "{count, plural, =1{Нэг удаа зөв ашигласан} other{{count} удаа зөв ашигласан}}",
+    "usedIncorrectly": "{count, plural, =1{Нэг удаа буруу ашигласан} other{{count} удаа буруу ашигласан}}",
+    "usedWithoutScoring": "{count, plural, =1{Нэг удаа оноогүй ашигласан} other{{count} удаа оноогүй ашигласан}}"
 }

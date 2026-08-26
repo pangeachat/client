@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-25 15:25:46.565789",
+    "@@last_modified": "2026-08-26 15:28:55.783665",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10394,5 +10394,8 @@
     "rateActivityDisliked": "ไม่ถูกใจ",
     "constructUseHrdDesc": "ได้ยิน",
     "timesHeard": "{count, plural, =1{ได้ยิน 1 ครั้ง} other{ได้ยิน {count} ครั้ง}}",
-    "allSettings": "การตั้งค่าทั้งหมด"
+    "allSettings": "การตั้งค่าทั้งหมด",
+    "usedCorrectly": "{count, plural, =1{ใช้ถูกต้อง 1 ครั้ง} other{ใช้ถูกต้อง {count} ครั้ง}}",
+    "usedIncorrectly": "{count, plural, =1{ใช้ไม่ถูกต้อง 1 ครั้ง} other{ใช้ไม่ถูกต้อง {count} ครั้ง}}",
+    "usedWithoutScoring": "{count, plural, =1{ใช้ 1 ครั้งโดยไม่มีคะแนน} other{ใช้ {count} ครั้งโดยไม่มีคะแนน}}"
 }

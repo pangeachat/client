@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-25 15:25:47.069198",
+    "@@last_modified": "2026-08-26 15:28:56.770931",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10719,5 +10719,8 @@
     "rateActivityDisliked": "唔鍾意",
     "constructUseHrdDesc": "聽過",
     "timesHeard": "{count, plural, =1{聽過一次} other{聽過 {count} 次}}",
-    "allSettings": "所有設定"
+    "allSettings": "所有設定",
+    "usedCorrectly": "{count, plural, =1{正確使用一次} other{正確使用{count}次}}",
+    "usedIncorrectly": "{count, plural, =1{錯誤使用一次} other{錯誤使用{count}次}}",
+    "usedWithoutScoring": "{count, plural, =1{使用一次但沒有得分} other{使用{count}次但沒有得分}}"
 }
