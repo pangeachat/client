@@ -813,9 +813,21 @@ class AnalyticsDataService {
     await db.updateTotalXP(totalXP, language);
     _invalidateCaches();
 
+    // Read the stored stats STRAIGHT from the database rather than through
+    // derivedData(). This runs inside analytics init — _initDatabase awaits
+    // bulkUpdate, which lands here whenever the analytics room has events since
+    // the last local sync — and derivedData() waits on the very init completer
+    // that only completes after that call returns. Routing through it hangs
+    // analytics initialization, and with it every read that awaits the same
+    // completer. Nothing else on this path is init-gated, which is why it was
+    // safe before.
+    final stats = await db.getDerivedStats(language);
+
     await MatrixState.pangeaController.userController.updateAnalyticsProfile(
       languageCode: language,
-      level: (await derivedData(language)).level,
+      // Includes the language's XP offset, exactly as the analytics bar's
+      // DerivedAnalyticsDataModel.level does.
+      level: stats.level,
     );
   }
 
