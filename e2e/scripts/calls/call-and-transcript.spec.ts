@@ -1,6 +1,13 @@
 import fs from "fs";
 import path from "path";
-import { expect, test, type BrowserContext, type Page } from "@playwright/test";
+import {
+  chromium,
+  expect,
+  test,
+  type Browser,
+  type BrowserContext,
+  type Page,
+} from "@playwright/test";
 
 /**
  * A real 1:1 call, end to end, with two distinct voices.
@@ -36,6 +43,23 @@ const intl = JSON.parse(
   ),
 );
 
+/// Says where it got to.
+///
+/// A six-minute test that reports only "timeout" tells you nothing about
+/// which of a dozen steps was the one that never finished, and the snapshot
+/// is of whichever page happened to be handed to the reporter. Each step
+/// announces itself, so a failure names its own place.
+// Flutter paints to canvas and exposes semantics as overlay nodes. A real
+// mouse click has to pass Playwright's actionability checks against a node
+// that may be zero-sized or covered by the canvas, which presents as the
+// click never completing rather than as a miss -- so the call controls are
+// dispatched directly, the same way this file already opens the
+// accessibility placeholder.
+function step(what: string): void {
+  // eslint-disable-next-line no-console
+  console.log(`STEP ${what}`);
+}
+
 /** Fails loudly rather than letting an absent key widen a locator. */
 function str(key: string): string {
   const v = intl[key];
@@ -60,19 +84,33 @@ const CALLEE = { user: "calltester", pass: "calltesterpass" };
  * halves identical audio and the attribution assertion would pass while
  * proving nothing.
  */
-async function contextSpeaking(
-  browser: import("@playwright/test").Browser,
+async function browserSpeaking(
   wav: string,
-): Promise<BrowserContext> {
-  return browser.newContext({
+): Promise<{ browser: Browser; context: BrowserContext }> {
+  // A whole BROWSER per speaker, not a context.
+  //
+  // The file that stands in for a microphone is a Chromium LAUNCH argument,
+  // and launch arguments belong to the browser process. Passing
+  // `launchOptions` to `newContext` -- which an earlier version of this file
+  // did -- is silently ignored: both sides then share whatever the project
+  // config launched with, both halves carry the same audio, and the
+  // attribution assertion this file exists for passes while proving nothing.
+  const browser = await chromium.launch({
+    args: [
+      `--use-file-for-fake-audio-capture=${wav}`,
+      "--use-fake-ui-for-media-stream",
+      "--use-fake-device-for-media-stream",
+      "--autoplay-policy=no-user-gesture-required",
+    ],
+  });
+  // baseURL explicitly: a context built from a browser WE launched does not
+  // inherit the project's `use` block, so `page.goto("/")` would resolve
+  // against nothing.
+  const context = await browser.newContext({
     permissions: ["microphone"],
-    // Chromium reads the file as raw capture. Absent, the fake device emits a
-    // tone, which transcribes to nothing and would make an empty transcript
-    // look like a passing test.
-    launchOptions: {
-      args: [`--use-file-for-fake-audio-capture=${wav}`],
-    },
-  } as Parameters<typeof browser.newContext>[0]);
+    baseURL: process.env.BASE_URL || "http://localhost:8090",
+  });
+  return { browser, context };
 }
 
 /** Flutter draws to canvas; the semantics tree is the only thing to drive. */
@@ -127,24 +165,19 @@ test.describe("a 1:1 call, from ring to transcript", () => {
   // clock.
   test.setTimeout(360000);
 
-  test("both speakers' words survive the call and are attributed", async ({
-    browser,
-  }) => {
+  test("both speakers' words survive the call and are attributed", async () => {
     const speech = path.resolve(__dirname, "fixtures");
-    const callerCtx = await contextSpeaking(
-      browser,
-      path.join(speech, "caller.wav"),
-    );
-    const calleeCtx = await contextSpeaking(
-      browser,
-      path.join(speech, "callee.wav"),
-    );
+    const one = await browserSpeaking(path.join(speech, "caller.wav"));
+    const two = await browserSpeaking(path.join(speech, "callee.wav"));
+    const callerCtx = one.context;
+    const calleeCtx = two.context;
 
     try {
       const caller = await callerCtx.newPage();
       const callee = await calleeCtx.newPage();
 
       await Promise.all([signIn(caller, CALLER), signIn(callee, CALLEE)]);
+      step("both signed in");
 
       // The ring must reach the other side. Asserted before answering,
       // because a banner that never appears and a call that never connects
@@ -152,17 +185,39 @@ test.describe("a 1:1 call, from ring to transcript", () => {
       // Into the conversation first. Login lands on the world map, and the
       // call buttons live in the chat header -- clicking for them from the map
       // is how a spec ends up matching every button on the page.
+      // EXACT on every call control below. Playwright matches an accessible
+      // name by SUBSTRING unless told otherwise, and these labels are short
+      // and generic: "Call" alone matched seven nodes in this chat -- "Video
+      // call", a "Voice call - 0:40" history card, and more -- which is a
+      // strict-mode violation that presents as the click hanging rather than
+      // as an ambiguous locator.
       await caller.getByRole("button", { name: str("allChats") }).click();
-      await caller.getByRole("button", { name: CALLEE.user }).first().click();
+      step("caller: chat list");
+
+      // Matched as a PREFIX, not exactly. A chat tile's accessible name is
+      // built as "<display name>, " -- and "<display name>, unread, " when it
+      // has unread messages -- so an exact match on the account name can never
+      // hit, and a substring match would also catch a message that merely
+      // mentions them. The anchor is what makes it a tile.
+      await caller
+        .getByRole("button", { name: new RegExp(`^${CALLEE.user},`) })
+        .first()
+        .click();
+      step("caller: opened the chat");
 
       await callee.getByRole("button", { name: str("allChats") }).click();
+      step("callee: chat list");
 
-      await caller.getByRole("button", { name: str("startCall") }).click();
+      await caller.getByLabel(str("startCall"), { exact: true })
+          .dispatchEvent("click");
+      step("caller: pressed Call");
       await expect(
-        callee.getByRole("button", { name: str("callAnswer") }),
+        callee.getByLabel(str("callAnswer"), { exact: true }),
       ).toBeVisible({ timeout: 30000 });
 
-      await callee.getByRole("button", { name: str("callAnswer") }).click();
+      await callee.getByLabel(str("callAnswer"), { exact: true })
+          .dispatchEvent("click");
+      step("callee: answered");
 
       // Consent is part of the product promise, not decoration.
       await expect(
@@ -173,7 +228,9 @@ test.describe("a 1:1 call, from ring to transcript", () => {
       // and an empty transcript would mean "we did not wait", not "it broke".
       await caller.waitForTimeout(20000);
 
-      await caller.getByRole("button", { name: str("callHangUp") }).click();
+      await caller.getByLabel(str("callHangUp"), { exact: true })
+          .dispatchEvent("click");
+      step("caller: hung up");
 
       // The card is written at hangup and must not wait for transcription.
       const card = caller.getByText(str("callHistoryVoiceCall"), {
@@ -245,8 +302,8 @@ test.describe("a 1:1 call, from ring to transcript", () => {
         ).toBe(true);
       }
     } finally {
-      await callerCtx.close();
-      await calleeCtx.close();
+      await one.browser.close();
+      await two.browser.close();
     }
   });
 });
