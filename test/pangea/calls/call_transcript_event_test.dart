@@ -255,8 +255,40 @@ void main() {
           segments: parsed.segments,
           accounting: parsed.accounting,
           state: HalfState.incomplete,
+          readWasCutShort: false,
         ).issue,
         HalfIssue.contentUnreadable,
+      );
+    });
+
+    test('a refused microphone that dropped segments is impossible', () {
+      // A microphone that never opened produced nothing -- and segments the
+      // writer omitted TO FIT are produced text, as much as visible ones are.
+      // The rule named chunks captured and visible segments and stopped
+      // there, so this half was believed and diagnosed as a microphone
+      // failure, which is a specific, confident, wrong answer.
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': const <dynamic>[],
+        ...const HalfAccounting(
+          captureRefused: true,
+          truncated: true,
+          segmentsOmitted: 1,
+          drainComplete: true,
+        ).toJson(),
+      })!;
+
+      expect(parsed.accounting.declared, isTrue);
+      expect(parsed.accounting.incoherent, isTrue);
+      expect(
+        TranscriptHalf(
+          senderId: '@a:example.com',
+          segments: parsed.segments,
+          accounting: parsed.accounting,
+          state: HalfState.incomplete,
+          readWasCutShort: false,
+        ).issue,
+        HalfIssue.accountingImpossible,
       );
     });
 

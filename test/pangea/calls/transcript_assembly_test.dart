@@ -503,19 +503,27 @@ void main() {
       );
     });
 
-    test('a guess that placed everything still concludes normally', () {
-      // The degradation must not fire just because the list was a guess. A
-      // guess that turned out to cover everything read is as good as an
-      // answer, and hedging every transcript would empty the flag of meaning.
+    test('a peer we cannot name and who wrote nothing is not "absent"', () {
+      // The case the previous rule could not see, and the reason it is gone.
+      //
+      // It degraded only when an UNPLACEABLE half turned up while the
+      // participants were unknown -- which catches a peer who WROTE
+      // something, since their half cannot be placed, and misses entirely the
+      // peer who wrote nothing. With nobody identifiable there is then no
+      // unplaceable half and no second sender to report, so the screen showed
+      // one side of a conversation and said nothing was missing.
       final transcript = assembleTranscript(
         candidates: [spoke(alice)],
-        expectedSenders: [alice, bob],
+        expectedSenders: [alice],
         participantsKnown: false,
       );
 
-      expect(transcript.readerStoppedEarly, isFalse);
-      expect(_halfFor(transcript, alice).state, HalfState.present);
-      expect(_halfFor(transcript, bob).state, HalfState.absent);
+      expect(
+        transcript.readerStoppedEarly,
+        isTrue,
+        reason: 'not knowing who was on the call is itself a reason to hedge',
+      );
+      expect(_halfFor(transcript, alice).state, HalfState.incomplete);
     });
 
     test('a KNOWN list still drops a stranger without hedging', () {
@@ -751,6 +759,21 @@ void main() {
         ),
         HalfIssue.microphoneRefused,
       );
+
+      // The combination the ordering was actually wrong about. A cut-short
+      // read alongside a writer admission used to report the ADMISSION,
+      // because both set HalfState.incomplete and the reader-side check sat
+      // last -- so nothing said we had not finished looking, and the bug
+      // report pointed at the other device.
+      const admits = HalfAccounting(
+        chunksCaptured: 4,
+        chunksTranscribed: 2,
+        chunksLost: 2,
+        declared: true,
+      );
+
+      expect(issueOf(admits), HalfIssue.audioLost);
+      expect(issueOf(admits, exhausted: false), HalfIssue.couldNotRead);
     });
   });
 }

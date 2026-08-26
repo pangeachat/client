@@ -283,11 +283,21 @@ class TranscriptHalf {
   final HalfAccounting accounting;
   final HalfState state;
 
+  /// Whether OUR read of the room fell short, as opposed to the writer
+  /// admitting a gap in what it sent.
+  ///
+  /// [HalfState.incomplete] means both, and that is right for the screen --
+  /// "we cannot show you all of this" is one message either way. It is wrong
+  /// for [issue], whose whole job is to name WHICH, and which is the
+  /// difference between looking at this device and looking at theirs.
+  final bool readWasCutShort;
+
   const TranscriptHalf({
     required this.senderId,
     required this.segments,
     required this.accounting,
     required this.state,
+    required this.readWasCutShort,
   });
 
   /// Why this half is not a clean record, or [HalfIssue.none].
@@ -304,14 +314,30 @@ class TranscriptHalf {
     // them as the cause would be repeating the half's own nonsense back with
     // a confident label on it.
     if (accounting.incoherent) return HalfIssue.accountingImpossible;
-    if (accounting.captureRefused) return HalfIssue.microphoneRefused;
+
+    // OURS, both of them, and they come first because the stated ordering is
+    // our failures ahead of the writer's admissions -- those are the ones we
+    // can act on. Asking `state == incomplete` here instead put this last and
+    // reported the writer's admission whenever both were true, because that
+    // state is set by either. A cut-short read alongside lost audio was
+    // logged as the writer losing audio, and nothing said we had not
+    // finished looking.
     if (accounting.unreadableContent) return HalfIssue.contentUnreadable;
+    if (readWasCutShort) return HalfIssue.couldNotRead;
+
+    if (accounting.captureRefused) return HalfIssue.microphoneRefused;
     if (!accounting.declared) return HalfIssue.writerSaidNothing;
     if (accounting.chunksLost > 0) return HalfIssue.audioLost;
     if (accounting.truncated || accounting.segmentsOmitted > 0) {
       return HalfIssue.tooLongToSend;
     }
     if (!accounting.drainComplete) return HalfIssue.drainAbandoned;
+
+    // Reached only if the half is incomplete for a reason none of the checks
+    // above named. Nothing produces that today -- every route to
+    // HalfState.incomplete is either a cut-short read or an admission the
+    // writer made -- and it is kept so that a NEW route added later announces
+    // itself as an unexplained gap rather than reading as a clean record.
     if (state == HalfState.incomplete) return HalfIssue.couldNotRead;
     return HalfIssue.none;
   }
@@ -431,16 +457,20 @@ CallTranscript assembleTranscript({
   // rule this function exists to enforce.
   final senders = <String>{...expectedSenders};
 
-  // Read but not placeable. Harmless when we know who took part -- it is
-  // somebody else's event and dropping it is the point. Decisive when we do
-  // not, because then it may be the very half we are about to report missing.
-  final unplaceable = bySender.keys.any((id) => !senders.contains(id));
-
   // The single question every state below turns on: may this read draw a
   // conclusion about what a speaker did? Two independent ways for the answer
   // to be no, and both have to hold for a conclusion to be safe -- we saw
   // everything the server had, and we know whose halves we were looking for.
-  final canConclude = exhausted && !(unplaceable && !participantsKnown);
+  //
+  // The second half of that used to be narrower than the sentence above it: it
+  // asked whether an UNPLACEABLE half had turned up while the participants
+  // were unknown. That catches the peer who wrote something, because their
+  // half cannot be placed -- and misses the peer who wrote NOTHING entirely.
+  // With nobody identifiable there is then no unplaceable half, no second
+  // sender to report absent, and the screen shows one side of a conversation
+  // and says nothing is missing. Not knowing who was on a call is by itself a
+  // reason not to declare its record whole.
+  final canConclude = exhausted && participantsKnown;
 
   final halves = <TranscriptHalf>[];
   for (final senderId in senders) {
@@ -454,6 +484,7 @@ CallTranscript assembleTranscript({
           accounting: const HalfAccounting(),
           // A read that cannot conclude cannot tell absent from unread.
           state: canConclude ? HalfState.absent : HalfState.incomplete,
+          readWasCutShort: !canConclude,
         ),
       );
       continue;
@@ -467,6 +498,7 @@ CallTranscript assembleTranscript({
         state: (!canConclude || candidate.accounting.writerAdmitsGaps)
             ? HalfState.incomplete
             : HalfState.present,
+        readWasCutShort: !canConclude,
       ),
     );
   }

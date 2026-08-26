@@ -186,9 +186,21 @@ class CallTranscriptContent {
       // carrying real chunks and real text, and be believed -- the diagnosis
       // then confidently reported a microphone failure for a half whose own
       // numbers said otherwise.
+      //
+      // Total over every count the half carries, not over the two that were
+      // obvious. It named chunksCaptured and visible segments, and missed
+      // segments_omitted -- so a half could say the microphone never opened
+      // AND that it dropped transcript segments to fit, which are produced
+      // text, and be believed. This file has now made the same mistake twice:
+      // a rule that enumerates SOME of the counts stops holding the moment
+      // another is added, so this one names all of them.
       final refusedYetRecorded =
           accounting.captureRefused &&
-          (accounting.chunksCaptured > 0 || segments.isNotEmpty);
+          (accounting.chunksCaptured > 0 ||
+              accounting.chunksTranscribed > 0 ||
+              accounting.chunksLost > 0 ||
+              accounting.segmentsOmitted > 0 ||
+              segments.isNotEmpty);
 
       if (wordsWithoutCapture ||
           captureWithoutWords ||
