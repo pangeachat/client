@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 13:19:06.846767",
+    "@@last_modified": "2026-08-25 15:25:42.455575",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9849,5 +9849,6 @@
     "rateActivityLiked": "پسندیدم",
     "rateActivityDisliked": "نپسندیدم",
     "constructUseHrdDesc": "شنیده شد",
-    "timesHeard": "{count, plural, =1{یک بار شنیده شد} other{{count} بار شنیده شد}}"
+    "timesHeard": "{count, plural, =1{یک بار شنیده شد} other{{count} بار شنیده شد}}",
+    "allSettings": "همه تنظیمات"
 }

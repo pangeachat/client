@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-25 13:19:08.805312",
+    "@@last_modified": "2026-08-25 15:25:43.054918",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Nyiam",
     "rateActivityDisliked": "Tsis nyiam",
     "constructUseHrdDesc": "Hnov",
-    "timesHeard": "{count, plural, =1{Hnov ib zaug} other{Hnov {count} zaug}}"
+    "timesHeard": "{count, plural, =1{Hnov ib zaug} other{Hnov {count} zaug}}",
+    "allSettings": "Tag nrho cov chaw"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-25 13:19:09.119631",
+    "@@last_modified": "2026-08-25 15:25:42.512256",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Fûn it moai",
     "rateActivityDisliked": "Fûn it net moai",
     "constructUseHrdDesc": "Heard",
-    "timesHeard": "{count, plural, =1{Ien kear heard} other{{count} kear heard}}"
+    "timesHeard": "{count, plural, =1{Ien kear heard} other{{count} kear heard}}",
+    "allSettings": "Alle ynstellings"
 }

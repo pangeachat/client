@@ -745,15 +745,17 @@ class _WorldMapViewState extends State<WorldMapView> {
 
   @override
   Widget build(BuildContext context) {
-    // world-map-tiles Phase 1: free hosted tiles switched by app theme —
-    // OpenStreetMap (light) / CartoDB Dark Matter (dark).
+    // world-map-tiles Phase 1: free hosted OpenStreetMap tiles for both
+    // themes; dark theme is a client-side color filter over the same tiles
+    // (see the TileLayer below).
     final dark = Theme.of(context).brightness == Brightness.dark;
-    // What shows through wherever tiles have not arrived yet. Matched to each
-    // basemap's own paper — CartoDB Dark Matter's near-black, OSM's pale beige
-    // — so a gap during a zoom reads as unfilled map rather than the light
-    // grey flash flutter_map defaults to (#7937).
+    // What shows through wherever tiles have not arrived yet. Matched to the
+    // basemap's paper — OSM's pale beige, or that beige passed through
+    // darkModeTileBuilder's color matrix — so a gap during a zoom reads as
+    // unfilled map rather than the light grey flash flutter_map defaults
+    // to (#7937).
     final mapBackground = dark
-        ? const Color(0xFF0E0E0E)
+        ? const Color(0xFF130F0A)
         : const Color(0xFFF2EFE9);
 
     final warming = widget.controller.warmingPins;
@@ -910,22 +912,23 @@ class _WorldMapViewState extends State<WorldMapView> {
                       widget.controller.onMapPositionChanged(hasGesture),
                 ),
                 children: [
-                  // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
-                  // Dark Matter (dark).
+                  // Base tiles: OpenStreetMap for both themes. Dark theme is
+                  // darkModeTileBuilder (invert + 180° hue-rotate) over the same
+                  // tiles rather than a second provider — CARTO's keyless CDN
+                  // enforces per-IP usage by serving "API KEY REQUIRED" watermark
+                  // tiles to some users (#8585), so one keyless provider is one
+                  // failure mode and one usage budget. On-brand dark styling is a
+                  // Phase 2 (vector tiles) goal — see
+                  // world-map-tiles.instructions.md.
                   //
-                  // Retina (@2x) is OFF (#7937). It used to be on for dark, to keep
-                  // that basemap's small labels sharp, but @2x is ~4x the pixels per
-                  // tile — so dark theme took roughly four times as long per tile to
-                  // arrive as light, and a slow tile is a visible gap. That is why
-                  // the loading artifact read as a DARK-mode problem specifically.
-                  // Labels are slightly softer on HiDPI as a result; legible on-brand
-                  // labels are a Phase 2 (vector tiles) goal anyway, where they cost
-                  // nothing — see world-map-tiles.instructions.md. `{r}` resolves to
-                  // an empty string with retina off, so the template is unchanged.
+                  // Retina (@2x) is OFF (#7937): @2x is ~4x the pixels per tile,
+                  // so a slow tile is a visible gap. Labels are slightly softer on
+                  // HiDPI as a result; legible on-brand labels are a Phase 2 goal
+                  // anyway, where they cost nothing.
                   TileLayer(
-                    urlTemplate: dark
-                        ? 'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-                        : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    urlTemplate:
+                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    tileBuilder: dark ? darkModeTileBuilder : null,
                     retinaMode: false,
                     // How far outside the view a tile survives pruning. flutter_map
                     // covers a still-loading level by scaling a neighbouring level it
@@ -996,8 +999,6 @@ class _WorldMapViewState extends State<WorldMapView> {
                                 'OpenStreetMap contributors',
                                 onTap: () {},
                               ),
-                              if (dark)
-                                TextSourceAttribution('CARTO', onTap: () {}),
                             ],
                           ),
                         ],

@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-25 13:19:15.564854",
+    "@@last_modified": "2026-08-25 15:25:45.028339",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "ကြိုက်တယ်",
     "rateActivityDisliked": "မကြိုက်ဘူး",
     "constructUseHrdDesc": "ကြားဖူး",
-    "timesHeard": "{count, plural, =1{တစ်ကြိမ်ကြားဖူးသည်} other{{count} ကြိမ်ကြားဖူးသည်}}"
+    "timesHeard": "{count, plural, =1{တစ်ကြိမ်ကြားဖူးသည်} other{{count} ကြိမ်ကြားဖူးသည်}}",
+    "allSettings": "ဆက်တင်များအားလုံး"
 }

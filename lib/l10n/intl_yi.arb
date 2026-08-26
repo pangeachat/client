@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-25 13:19:17.347849",
+    "@@last_modified": "2026-08-25 15:25:47.026221",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "געפֿעלן",
     "rateActivityDisliked": "נישט געפֿעלן",
     "constructUseHrdDesc": "געהערט",
-    "timesHeard": "{count, plural, =1{געהערט איין מאָל} other{געהערט {count} מאָל}}"
+    "timesHeard": "{count, plural, =1{געהערט איין מאָל} other{געהערט {count} מאָל}}",
+    "allSettings": "אַלע סעטטינגס"
 }

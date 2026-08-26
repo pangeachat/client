@@ -8,6 +8,7 @@ import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_pin_shape.dart';
+import 'package:fluffychat/routes/world/world_map_pin_tooltip.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
@@ -131,11 +132,8 @@ class _WorldMapDotState extends State<WorldMapDot>
       // would shadow the live pin beneath for the length of the exit.
       child: IgnorePointer(
         ignoring: widget.dying,
-        child: Tooltip(
+        child: WorldMapPinTooltip(
           message: widget.card.title,
-          // Semantics below names the pin; exclude the Tooltip so the title
-          // isn't announced twice ("<title> <title>").
-          excludeFromSemantics: true,
           child: Semantics(
             button: !widget.dying,
             label: widget.dying

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-25 13:19:05.643133",
+    "@@last_modified": "2026-08-25 15:25:41.937956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Mi hè piaciutu",
     "rateActivityDisliked": "Ùn m'hè micca piaciutu",
     "constructUseHrdDesc": "Sentitu",
-    "timesHeard": "{count, plural, =1{Ascultatu una volta} other{Ascultatu {count} volte}}"
+    "timesHeard": "{count, plural, =1{Ascultatu una volta} other{Ascultatu {count} volte}}",
+    "allSettings": "Tutti i paràmetri"
 }

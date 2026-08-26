@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-25 13:19:12.957017",
+    "@@last_modified": "2026-08-25 15:25:44.674477",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "I pai",
     "rateActivityDisliked": "Kāore i pai",
     "constructUseHrdDesc": "Kua rangona",
-    "timesHeard": "{count, plural, =1{Kua rangona kotahi} other{Kua rangona {count} wā}}"
+    "timesHeard": "{count, plural, =1{Kua rangona kotahi} other{Kua rangona {count} wā}}",
+    "allSettings": "Ngā tautuhinga katoa"
 }

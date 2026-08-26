@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-25 13:19:04.693108",
+    "@@last_modified": "2026-08-25 15:25:41.447719",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10067,5 +10067,6 @@
     "rateActivityLiked": "أعجبني",
     "rateActivityDisliked": "لم يعجبني",
     "constructUseHrdDesc": "سمعت",
-    "timesHeard": "{count, plural, =1{سمعت مرة واحدة} other{سمعت {count} مرات}}"
+    "timesHeard": "{count, plural, =1{سمعت مرة واحدة} other{سمعت {count} مرات}}",
+    "allSettings": "جميع الإعدادات"
 }

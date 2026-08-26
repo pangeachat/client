@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-25 13:19:13.991656",
+    "@@last_modified": "2026-08-25 15:25:45.224428",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Ndadikonda",
     "rateActivityDisliked": "Sindinakonde",
     "constructUseHrdDesc": "Kumva",
-    "timesHeard": "{count, plural, =1{Wamvedwa kamodzi} other{Wamvedwa {count} nthawi}}"
+    "timesHeard": "{count, plural, =1{Wamvedwa kamodzi} other{Wamvedwa {count} nthawi}}",
+    "allSettings": "Zokonda zonse"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-25 13:19:16.265545",
+    "@@last_modified": "2026-08-25 15:25:46.538922",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Мақбул донистам",
     "rateActivityDisliked": "Мақбул надонистам",
     "constructUseHrdDesc": "Шунидам",
-    "timesHeard": "{count, plural, =1{Як бор шунида шуд} other{{count} бор шунида шуд}}"
+    "timesHeard": "{count, plural, =1{Як бор шунида шуд} other{{count} бор шунида шуд}}",
+    "allSettings": "Ҳамаи танзимот"
 }

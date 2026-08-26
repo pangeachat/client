@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-25 13:19:15.826727",
+    "@@last_modified": "2026-08-25 15:25:46.274792",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Resep",
     "rateActivityDisliked": "Teu resep",
     "constructUseHrdDesc": "Kadangu",
-    "timesHeard": "{count, plural, =1{Kaping dangu sakali} other{Kaping dangu {count} kali}}"
+    "timesHeard": "{count, plural, =1{Kaping dangu sakali} other{Kaping dangu {count} kali}}",
+    "allSettings": "Sadaya setélan"
 }

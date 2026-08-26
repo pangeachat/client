@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-25 13:19:16.732218",
+    "@@last_modified": "2026-08-25 15:25:46.598761",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10062,5 +10062,6 @@
     "rateActivityLiked": "Beğenildi",
     "rateActivityDisliked": "Beğenilmedi",
     "constructUseHrdDesc": "Duyuldu",
-    "timesHeard": "{count, plural, =1{Bir kez duyuldu} other{{count} kez duyuldu}}"
+    "timesHeard": "{count, plural, =1{Bir kez duyuldu} other{{count} kez duyuldu}}",
+    "allSettings": "Tüm ayarlar"
 }

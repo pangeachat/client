@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-25 13:19:17.290144",
+    "@@last_modified": "2026-08-25 15:25:46.090928",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Më pëlqeu",
     "rateActivityDisliked": "Nuk më pëlqeu",
     "constructUseHrdDesc": "Dëgjuar",
-    "timesHeard": "{count, plural, =1{Dëgjuar një herë} other{Dëgjuar {count} herë}}"
+    "timesHeard": "{count, plural, =1{Dëgjuar një herë} other{Dëgjuar {count} herë}}",
+    "allSettings": "Të gjitha cilësimet"
 }

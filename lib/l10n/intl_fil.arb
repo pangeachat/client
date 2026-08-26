@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-25 13:19:06.979314",
+    "@@last_modified": "2026-08-25 15:25:42.522448",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10621,5 +10621,6 @@
     "rateActivityLiked": "Nagustuhan",
     "rateActivityDisliked": "Hindi nagustuhan",
     "constructUseHrdDesc": "Narinig",
-    "timesHeard": "{count, plural, =1{Narinig nang isang beses} other{Narinig nang {count} beses}}"
+    "timesHeard": "{count, plural, =1{Narinig nang isang beses} other{Narinig nang {count} beses}}",
+    "allSettings": "Lahat ng setting"
 }

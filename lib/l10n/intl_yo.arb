@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-25 13:19:20.391558",
+    "@@last_modified": "2026-08-25 15:25:47.090408",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2165,5 +2165,6 @@
     "rateActivityLiked": "Ó wù mí",
     "rateActivityDisliked": "Kò wù mí",
     "constructUseHrdDesc": "Gbọ́",
-    "timesHeard": "{count, plural, =1{Gbọ́ lẹ́ẹ̀kan} other{Gbọ́ nígbà {count}}}"
+    "timesHeard": "{count, plural, =1{Gbọ́ lẹ́ẹ̀kan} other{Gbọ́ nígbà {count}}}",
+    "allSettings": "Gbogbo àwọn ètò"
 }

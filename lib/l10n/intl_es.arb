@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-25 13:19:07.352793",
+    "@@last_modified": "2026-08-25 15:25:42.213145",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7980,5 +7980,6 @@
     "rateActivityLiked": "Me gustó",
     "rateActivityDisliked": "No me gustó",
     "constructUseHrdDesc": "Escuchado",
-    "timesHeard": "{count, plural, =1{Escuchado una vez} other{Escuchado {count} veces}}"
+    "timesHeard": "{count, plural, =1{Escuchado una vez} other{Escuchado {count} veces}}",
+    "allSettings": "Todos los ajustes"
 }
