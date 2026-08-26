@@ -691,7 +691,13 @@ CallTranscript assembleTranscript({
         TranscriptHalf(
           senderId: senderId,
           segments: const [],
-          accounting: HalfAccounting(unreadableContent: wasUnreadable),
+          // Empty, and carrying no claim at all. Setting `unreadableContent`
+          // here made this synthesised accounting assert something, which is
+          // the exact habit that produced "the writer said nothing about its
+          // own capture" out of a placeholder. What arrived is [arrival]'s
+          // job, and nothing about a half nobody sent belongs in a shape
+          // built to describe one that was.
+          accounting: const HalfAccounting(),
           // A read that cannot conclude cannot tell absent from unread -- and
           // neither can one that held their event and could not parse it.
           state: (canConclude && !wasUnreadable)

@@ -258,8 +258,17 @@ void main() {
         expectedSenders: [alice, bob],
       );
 
-      expect(_halfFor(transcript, bob).state, HalfState.absent);
+      // Its words never reach this call's transcript.
+      expect(_halfFor(transcript, bob).segments, isEmpty);
       expect(_halfFor(transcript, alice).segments, isNotEmpty);
+
+      // But bob is not absent. The rule is about ARRIVAL, and this case was
+      // carved out of it -- which is how the same mistake survived a round.
+      // A legible event saying it belongs to another call tells us nothing
+      // about whether bob wrote a half HERE, and the call key it names is
+      // self-declared while the server's anchor says otherwise.
+      expect(_halfFor(transcript, bob).state, HalfState.incomplete);
+      expect(_halfFor(transcript, bob).issue, HalfIssue.contentUnreadable);
     });
 
     test('a malformed half does not take the read down', () async {
@@ -292,8 +301,19 @@ void main() {
       // sent -- and the sender survives a content that does not, so there was
       // never any need to guess.
       expect(_halfFor(transcript, bob).state, HalfState.incomplete);
-      expect(_halfFor(transcript, bob).accounting.unreadableContent, isTrue);
       expect(_halfFor(transcript, bob).issue, HalfIssue.contentUnreadable);
+
+      // The arrival is where that fact lives, and the accounting stays EMPTY.
+      // It used to be asserted off `accounting.unreadableContent`, which made
+      // a shape built to describe a half nobody sent carry a claim -- the same
+      // habit that once turned a placeholder into "the writer said nothing
+      // about its own capture".
+      expect(_halfFor(transcript, bob).arrival, HalfArrival.rejected);
+      expect(
+        _halfFor(transcript, bob).accounting.unreadableContent,
+        isFalse,
+        reason: 'a half nobody sent asserts nothing',
+      );
     });
 
     test(

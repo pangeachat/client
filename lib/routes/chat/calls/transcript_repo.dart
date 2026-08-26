@@ -116,8 +116,17 @@ Future<CallTranscript> fetchCallTranscript({
       }
 
       // A half whose content names a different call is not this call's, even
-      // though the server returned it under this anchor.
-      if (content.callKey != callKey) continue;
+      // though the server returned it under this anchor. Not placed -- and
+      // not forgotten either. The rule above is about ARRIVAL, and carving
+      // this one case out of it is how the same mistake survived a round: a
+      // legible event that says it belongs elsewhere still tells us nothing
+      // about whether its sender wrote a half HERE, so calling them silent
+      // remains a claim we cannot support. It is also self-declared, and the
+      // server's anchor says otherwise.
+      if (content.callKey != callKey) {
+        unreadable.add(event.senderId);
+        continue;
+      }
 
       candidates.add(
         TranscriptCandidate(
