@@ -313,6 +313,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
         // Pangea#
         onDownloadProgress: fileSize != null && fileSize > 0
             ? (progress) {
+                // #Pangea
+                if (!mounted) return;
+                // Pangea#
                 final progressPercentage = progress / fileSize;
                 setState(() {
                   _downloadProgress = progressPercentage < 1
@@ -343,6 +346,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       //     file = convertedFile;
       //   }
       // }
+      // Pangea#
+      // #Pangea
+      if (!mounted) return;
       // Pangea#
       setState(() {
         status = AudioPlayerStatus.downloaded;
