@@ -121,15 +121,26 @@ Int16List speech(int ms, {int sampleRate = captureSampleRate}) {
   return samples;
 }
 
-/// A wall clock a test can move.
+/// Time a test can move, in the two ways the recorder reads it.
 ///
-/// The recorder reads a clock exactly once per run, so what a test needs is not
-/// a fake time source but the ability to say "and then five seconds passed" —
-/// including backwards, which is the case the floor on a run's start exists to
-/// survive and which no real clock can be asked to do.
+/// [ms] is the WALL clock, which the recorder reads exactly once per call.
+/// [elapsed] is the monotonic counter it measures every gap from afterwards.
+/// They move independently on purpose: a device clock correction moves one and
+/// not the other, and that is the whole case these rules exist to survive. Nudge
+/// [ms] alone and nothing about the recording may shift.
+///
+/// [pass] is what really happening looks like — time passing on both.
 class Clock {
   int ms = 1700000000000;
+  int elapsed = 0;
+
   int call() => ms;
+  int monotonic() => elapsed;
+
+  void pass(int by) {
+    ms += by;
+    elapsed += by;
+  }
 }
 
 void main() {
@@ -159,6 +170,7 @@ void main() {
     deliveryTimeout: timeout ?? const Duration(seconds: 30),
     detachTimeout: detach ?? const Duration(seconds: 5),
     nowMs: clock.call,
+    elapsedMs: clock.monotonic,
     newChunker: (firstIndex, sampleRate, runStartedAtMs) {
       runStarts.add(runStartedAtMs);
       return PcmChunker(
@@ -814,7 +826,7 @@ void main() {
         0,
       ], reason: 'the mute flushed the tail');
 
-      clock.ms += 5000;
+      clock.pass(5000);
       s.setMuted(false);
       for (var i = 0; i < 15; i++) {
         track.emit(20);
@@ -845,7 +857,7 @@ void main() {
       await s.start(track);
 
       tap.onFrames!(speech(100), captureSampleRate);
-      clock.ms += 1000; // a clock read below would invent a whole second
+      clock.pass(1000); // a clock read below would invent a whole second
       tap.onFrames!(speech(100, sampleRate: 24000), 24000);
       await pumpEventQueue();
 
@@ -857,7 +869,7 @@ void main() {
         reason: 'the new rate continues exactly where the old one ended',
       );
 
-      clock.ms += 5000;
+      clock.pass(5000);
       s.setMuted(true);
       s.setMuted(false);
       tap.onFrames!(speech(100, sampleRate: 24000), 24000);
@@ -870,37 +882,90 @@ void main() {
       );
     });
 
-    test(
-      'a clock that steps backwards cannot move a later run earlier',
-      () async {
-        // Device clocks are corrected mid-call. The floor makes a half monotone
-        // by construction: a step backwards can compress a gap to zero, and can
-        // never put a later turn in front of an earlier one.
-        final s = service();
-        await s.start(track);
-        for (var i = 0; i < 10; i++) {
-          track.emit(20); // 200ms
-        }
-        await s.stop();
-        await pumpEventQueue();
+    test('a clock corrected mid-call moves nothing, either way', () async {
+      // This test used to assert only that a BACKWARD step could not move a run
+      // earlier, and that the floor on the previous run's end was what stopped
+      // it. That pinned half a rule. A clock nudged FORWARD between runs
+      // stamped the next one arbitrarily late and sailed through the render
+      // gate, because a position invented an hour into the future is still
+      // non-null and still non-decreasing.
+      //
+      // Bounding one direction and leaving the other open was the tell that the
+      // mechanism was wrong rather than the bound. A wall clock is not for
+      // measuring an elapsed interval: it is read once, and every gap after
+      // that is measured monotonically. So what is pinned now is that a
+      // correction in EITHER direction changes nothing at all.
+      final s = service();
+      await s.start(track);
+      for (var i = 0; i < 10; i++) {
+        track.emit(20); // 200ms
+      }
+      await s.stop();
+      await pumpEventQueue();
 
-        clock.ms -= 60000;
-        await s.start(track);
-        for (var i = 0; i < 10; i++) {
-          track.emit(20);
-        }
-        await s.stop();
-        await pumpEventQueue();
+      // Five real seconds, and the device clock jumps a minute forward.
+      clock.pass(5000);
+      clock.ms += 60000;
+      await s.start(track);
+      for (var i = 0; i < 10; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+      await pumpEventQueue();
 
-        expect(sink.delivered, hasLength(2));
-        expect(
-          sink.delivered[1].startedAtMs,
-          sink.delivered[0].startedAtMs + 200,
-          reason:
-              'the later run begins where the earlier one ended, not before',
-        );
-      },
-    );
+      // Five more real seconds, and it is corrected two minutes backward.
+      clock.pass(5000);
+      clock.ms -= 120000;
+      await s.start(track);
+      for (var i = 0; i < 10; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+      await pumpEventQueue();
+
+      expect(sink.delivered, hasLength(3));
+      expect(
+        sink.delivered[1].startedAtMs - sink.delivered[0].startedAtMs,
+        5000,
+        reason: 'five seconds of speech apart, not sixty-five',
+      );
+      expect(
+        sink.delivered[2].startedAtMs - sink.delivered[1].startedAtMs,
+        5000,
+        reason: 'and the correction back the other way moves it no further',
+      );
+    });
+
+    test('a monotonic counter that stalls cannot reorder two runs', () async {
+      // The floor stays, as defence rather than as the mechanism. Some
+      // platforms hold a monotonic counter still while the device sleeps, and a
+      // run measured from a stalled one would land before the run before it had
+      // finished. Compressed and in ORDER is a failure this design already
+      // accepts. Out of order is not.
+      final s = service();
+      await s.start(track);
+      for (var i = 0; i < 10; i++) {
+        track.emit(20); // 200ms
+      }
+      await s.stop();
+      await pumpEventQueue();
+
+      // Nothing moves at all, on either clock.
+      await s.start(track);
+      for (var i = 0; i < 10; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+      await pumpEventQueue();
+
+      expect(sink.delivered, hasLength(2));
+      expect(
+        sink.delivered[1].startedAtMs,
+        sink.delivered[0].startedAtMs + 200,
+        reason:
+            'the later run begins where the earlier one ended, never before',
+      );
+    });
   });
 
   group('a run that ends without a stop', () {

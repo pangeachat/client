@@ -80,6 +80,14 @@ const _detachTimeout = Duration(seconds: 5);
 /// The wall clock, in absolute Unix milliseconds.
 int _systemNowMs() => DateTime.now().millisecondsSinceEpoch;
 
+/// A process-wide MONOTONIC millisecond counter.
+///
+/// Only differences are ever taken from it, so its origin does not matter and
+/// one shared stopwatch costs less than one per recorder. Unlike the wall clock
+/// it cannot be corrected out from under a call.
+final _uptime = Stopwatch()..start();
+int _systemElapsedMs() => _uptime.elapsedMilliseconds;
+
 /// Records this device's own outbound call audio.
 ///
 /// It taps the track being published, not the microphone. A microphone also
@@ -97,10 +105,17 @@ class CallCaptureService {
   /// How long a tap is given to detach. Injected so a test need not wait it out.
   final Duration detachTimeout;
 
-  /// The wall clock. Injected because the rules below exist to survive a clock
-  /// that misbehaves — including one that steps BACKWARDS mid-call, which is
-  /// not reachable from a test any other way.
+  /// The wall clock, read exactly ONCE per call. Injected because the rules
+  /// below exist to survive a clock that misbehaves, which is not reachable
+  /// from a test any other way.
   final int Function() nowMs;
+
+  /// A monotonic millisecond counter, used only for differences.
+  ///
+  /// Injected beside [nowMs] so a test can advance wall time and elapsed time
+  /// independently — which is the only way to tell this mechanism apart from
+  /// the floor that backs it up.
+  final int Function() elapsedMs;
 
   final PcmChunker Function(int firstIndex, int sampleRate, int runStartedAtMs)
   _newChunker;
@@ -148,6 +163,7 @@ class CallCaptureService {
     this.deliveryTimeout = _deliveryTimeout,
     this.detachTimeout = _detachTimeout,
     int Function()? nowMs,
+    int Function()? elapsedMs,
     PcmChunker Function(int firstIndex, int sampleRate, int runStartedAtMs)?
     newChunker,
   }) : tap =
@@ -157,6 +173,7 @@ class CallCaptureService {
              channels: captureChannels,
            ),
        nowMs = nowMs ?? _systemNowMs,
+       elapsedMs = elapsedMs ?? _systemElapsedMs,
        _newChunker =
            newChunker ??
            ((firstIndex, sampleRate, runStartedAtMs) => PcmChunker(
@@ -430,24 +447,55 @@ class CallCaptureService {
   /// Where a run that begins after an ABSENCE of capture sits, in absolute Unix
   /// milliseconds.
   ///
-  /// The one clock read in this file. It is taken when the chunker is built,
-  /// which is inside the first callback of the run — by which time that batch's
-  /// audio has already been captured. So the batch's own duration comes off,
-  /// which is exact and free: the samples are in hand and their length is the
-  /// answer.
+  /// The wall clock is read exactly ONCE per call, at the first run, and every
+  /// gap after that is measured from a monotonic counter started at the same
+  /// instant. A wall clock is not for measuring an elapsed interval; that is
+  /// what a monotonic clock is for, and reading one per run made every device
+  /// clock correction during a call a fabricated gap.
+  ///
+  /// An earlier version bounded that with a floor on the previous run's end and
+  /// called it done. The floor only ever caught a BACKWARD step. A clock nudged
+  /// FORWARD between runs — after a mute, a stop and resume, or a tap that
+  /// failed to open — stamped the next run arbitrarily late, and the render
+  /// gate accepted it, because a position invented an hour into the future is
+  /// still non-null and still non-decreasing. Bounding one direction and
+  /// leaving the other open is the tell that the mechanism was wrong rather
+  /// than the bound.
+  ///
+  /// The read is taken when the chunker is built, which is inside the first
+  /// callback of the run — by which time that batch's audio has already been
+  /// captured. So the batch's own duration comes off, which is exact and free:
+  /// the samples are in hand and their length is the answer.
   ///
   /// What remains is the platform's own latency between a microphone sample and
   /// the callback that carries it. It is not measurable from here, it is small,
   /// and it is very nearly the same on both devices — the same app, the same
   /// tap — so it largely cancels in the comparison that matters.
   ///
-  /// The later of that and [_notBeforeMs], which is what a clock that steps
-  /// backwards cannot get past.
+  /// [_notBeforeMs] stays, as defence rather than as the mechanism. A monotonic
+  /// counter that stalls — some platforms hold one still while the device
+  /// sleeps — would compress the gaps that follow rather than scatter them, and
+  /// the floor keeps the ORDER right even then. Compressed and ordered is the
+  /// failure this design already accepts; scattered is not.
   int _runStartsAt(int samples, int sampleRate) {
+    var base = _baseUnixMs;
+    if (base == null) {
+      base = _baseUnixMs = nowMs();
+      _elapsedAtBase = elapsedMs();
+    }
     final batchMs = (samples ~/ captureChannels) * 1000 ~/ sampleRate;
-    final startedAt = nowMs() - batchMs;
+    final startedAt = base + (elapsedMs() - _elapsedAtBase) - batchMs;
     return startedAt > _notBeforeMs ? startedAt : _notBeforeMs;
   }
+
+  /// The wall clock at the moment this call's first run began, and the reading
+  /// of the monotonic counter taken at that same instant. Null until then.
+  ///
+  /// Per call, because a [CallCaptureService] is built per call session. Every
+  /// position this device produces for the call is this one number plus a
+  /// monotonic offset, so a clock correction mid-call moves nothing at all.
+  int? _baseUnixMs;
+  int _elapsedAtBase = 0;
 
   /// Takes audio from the tap.
   ///
