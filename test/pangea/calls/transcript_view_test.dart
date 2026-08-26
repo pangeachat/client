@@ -1,6 +1,11 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -9,6 +14,7 @@ import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
+import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
 import '../get_test_client.dart';
 
 const _callKey = r'$membership:fakeServer.notExisting';
@@ -17,6 +23,31 @@ const _peer = '@peer:fakeServer.notExisting';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  setUpAll(() async {
+    // The timeline draws the app's real Avatar, which reads
+    // BotName.byEnvironment -> GetStorage and dotenv. Neither is stood up by
+    // the widget-test harness, so a bare Avatar THROWS -- and Flutter answers
+    // a thrown build with a RenderErrorBox, which reports itself as 100000
+    // pixels tall and pushes everything after it out of a lazy list.
+    //
+    // That is worth the comment: the failure reads as a layout bug in the
+    // widget under test, and it is a missing fixture in this file. Same
+    // bootstrap as turn_timeline_test.dart and incoming_call_banner_test.dart.
+    final tempDir = await Directory.systemTemp.createTemp('transcript_view');
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+          const MethodChannel('plugins.flutter.io/path_provider'),
+          (methodCall) async => tempDir.path,
+        );
+    await GetStorage.init('env_override');
+    dotenv.testLoad(
+      mergeWith: {
+        'BOT_NAME': 'pangeabot',
+        'SYNAPSE_URL': 'https://fakeServer.notExisting',
+      },
+    );
+  });
 
   late Client client;
 
@@ -90,6 +121,11 @@ void main() {
     int lost = 0,
     bool drainComplete = true,
     bool declared = true,
+
+    /// One position per entry in [texts], or null for a half written before
+    /// positions existed. Null is the ordinary case for these fixtures, which
+    /// is why the per-speaker view is what most of them assert.
+    List<int>? atMs,
   }) => MatrixEvent(
     type: CallTranscriptContent.relType,
     eventId: '\$half-$sender',
@@ -98,7 +134,8 @@ void main() {
     content: {
       'call_key': _callKey,
       'segments': [
-        for (final t in texts) {'text': t},
+        for (final (i, t) in texts.indexed)
+          {'text': t, if (atMs != null) 'at_ms': atMs[i]},
       ],
       // From the writer's own serialiser, so a fixture cannot drift out of the
       // declaration contract when a field is added to it.
@@ -159,6 +196,109 @@ void main() {
   }
 
   group('CallTranscriptView', () {
+    testWidgets('a fully positioned call is drawn as ONE conversation', (
+      tester,
+    ) async {
+      // The whole point of the feature: a teacher reads the call in the order
+      // it happened, rather than two columns to cross-reference by hand.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: ['hola', 'que tal'],
+            captured: 2,
+            transcribed: 2,
+            atMs: [0, 6000],
+          ),
+          half(_peer, texts: ['muy bien'], atMs: [3000]),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+
+      // Asserted on what is DRAWN, not on what was handed over. The widget
+      // sorts its own input, so reading `turns` back would only prove what
+      // this file passed in -- a test that cannot see the ordering it exists
+      // to check.
+      //
+      // Interleaved by time, not grouped by speaker: the peer's reply at 3s
+      // sits BETWEEN our two turns, which is the thing the per-speaker view
+      // cannot express.
+      double top(String text) => tester.getTopLeft(find.text(text)).dy;
+      expect(top('hola'), lessThan(top('muy bien')));
+      expect(top('muy bien'), lessThan(top('que tal')));
+    });
+
+    testWidgets('a call with SOME positions is not drawn as a conversation', (
+      tester,
+    ) async {
+      // The dangerous case, and the reason the gate is all-or-nothing. Drawing
+      // the positioned half in order and guessing where the other one goes
+      // would present a guess in the shape of a record.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: ['hola'], atMs: [0]),
+          half(_peer, texts: ['muy bien']),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsNothing);
+      expect(find.text('hola'), findsOneWidget);
+      expect(find.text('muy bien'), findsOneWidget);
+    });
+
+    testWidgets('positions that go backwards are not a conversation', (
+      tester,
+    ) async {
+      // Present on every segment, and jumbled. Presence alone would let this
+      // render a speaker's own words out of order with full confidence.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: ['hola', 'que tal'],
+            captured: 2,
+            transcribed: 2,
+            atMs: [6000, 0],
+          ),
+          half(_peer, texts: ['muy bien'], atMs: [3000]),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsNothing);
+    });
+
+    testWidgets('a silent speaker is noted BELOW the conversation', (
+      tester,
+    ) async {
+      // Absent, silent and unreadable are facts about a HALF and have no
+      // moment they happened at. Given a place in the timeline they would
+      // invent one, at an instant nobody spoke.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: ['hola'], atMs: [0]),
+          half(_peer, texts: const [], captured: 0, transcribed: 0),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      expect(find.text('hola'), findsOneWidget);
+
+      final note = find.textContaining('did not say anything');
+      expect(note, findsOneWidget);
+      expect(
+        tester.getTopLeft(note).dy,
+        greaterThan(tester.getTopLeft(find.text('hola')).dy),
+        reason:
+            'a fact about a half has no moment, so it sits below the '
+            'conversation rather than inside it',
+      );
+    });
+
     testWidgets('both speakers get their own section', (tester) async {
       await pump(
         tester,

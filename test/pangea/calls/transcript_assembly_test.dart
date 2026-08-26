@@ -712,23 +712,37 @@ void main() {
       ),
     );
 
-    test('a half we cannot place is not discarded in silence', () {
-      // The failure this design exists to prevent, from the direction it did
-      // not cover. Not "we said they were silent when we could not read
-      // them", but "we read them, could not place them, and said nothing at
-      // all" -- while reporting the read as complete.
+    test('a half we cannot place is dropped, and the read says so', () {
+      // Two claims, and the first was never asserted.
+      //
+      // This test was written for an older rule, where an unplaceable half is
+      // what triggered the hedge. That rule is gone: `canConclude` now asks
+      // only whether the read finished and whether we can name who was on the
+      // call, because the old one caught a peer who WROTE something and
+      // missed entirely a peer who wrote nothing. So the hedge below no
+      // longer depends on bob at all -- it follows from the participants
+      // being a guess -- and asserting it alone proved nothing about the
+      // half this test is named for.
       final transcript = assembleTranscript(
         candidates: [spoke(bob)],
         expectedSenders: [alice],
         participantsKnown: false,
       );
 
-      expect(transcript.readerStoppedEarly, isTrue);
+      // The claim that matters and was missing: bob's words do NOT reach the
+      // screen. Only a named participant gets a section, which is what stops
+      // a stranger writing themselves one -- and it holds even when the list
+      // of names is a guess, because a guess is not permission.
+      expect(transcript.halves.map((h) => h.senderId), [alice]);
       expect(
-        _halfFor(transcript, alice).state,
-        HalfState.incomplete,
-        reason: 'we cannot say alice was absent while holding an unplaced half',
+        transcript.halves.single.segments,
+        isEmpty,
+        reason: "bob's speech must not appear under alice",
       );
+
+      // And the read does not present itself as whole while that is true.
+      expect(transcript.readerStoppedEarly, isTrue);
+      expect(_halfFor(transcript, alice).state, HalfState.incomplete);
     });
 
     test('a peer we cannot name and who wrote nothing is not "absent"', () {

@@ -7,6 +7,7 @@ import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
+import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
 
 /// Opens the transcript of one finished call.
 ///
@@ -149,23 +150,90 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
           }
 
           final transcript = snapshot.data!;
+
+          // The screen has two shapes and takes the one the data supports.
+          //
+          // A conversation can only be drawn when EVERY displayed segment of
+          // EVERY half carries a position and those positions run forwards.
+          // Anything less and we would be ordering some turns against others
+          // we cannot place, which reads as a record of who said what when
+          // and is a guess. The per-speaker view claims nothing about
+          // ordering, so it is what a partly-timed call gets.
+          final turns = transcript.timelineEligible
+              ? _turnsOf(transcript, l10n)
+              : const <CallTurn>[];
+
+          // Worked out here rather than inline, so the list itself stays
+          // readable and so this is a value a test can reason about.
+          final notes = transcript.halves
+              .map((half) => _noteFor(half, l10n))
+              .nonNulls
+              .toList();
+
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
             children: [
               if (transcript.readerStoppedEarly)
                 _Caveat(text: l10n.callTranscriptStoppedEarly),
-              for (final half in transcript.halves)
-                _HalfSection(
-                  half: half,
-                  name: _nameFor(half.senderId, l10n),
-                  theme: theme,
-                  l10n: l10n,
-                ),
+
+              if (turns.isNotEmpty)
+                TurnTimeline(turns: turns)
+              else
+                for (final half in transcript.halves)
+                  _HalfSection(
+                    half: half,
+                    name: _nameFor(half.senderId, l10n),
+                    theme: theme,
+                    l10n: l10n,
+                  ),
+
+              // BELOW the conversation, never inside it. Absent, silent and
+              // unreadable are facts about a HALF and have no moment they
+              // happened at; giving them a place in the timeline would invent
+              // one, at an instant nobody spoke. The per-speaker view says
+              // these things itself, inside each section, so they are only
+              // added out here when the timeline is what is drawn.
+              if (turns.isNotEmpty)
+                for (final note in notes) _Muted(text: note),
             ],
           );
         },
       ),
     );
+  }
+
+  /// Both halves flattened into one column, in the order they were spoken.
+  ///
+  /// Only ever called once [CallTranscript.timelineEligible] has answered yes,
+  /// which is what makes the `!` on each position safe: eligibility IS the
+  /// promise that every displayed segment carries one. The widget sorts what
+  /// it is given, so this does not.
+  List<CallTurn> _turnsOf(CallTranscript transcript, L10n l10n) {
+    final me = widget.room.client.userID;
+    return [
+      for (final half in transcript.halves)
+        for (final segment in half.segments)
+          CallTurn(
+            senderId: half.senderId,
+            name: _nameFor(half.senderId, l10n),
+            isMe: half.senderId == me,
+            at: Duration(milliseconds: segment.atMs!),
+            text: segment.text,
+          ),
+    ];
+  }
+
+  /// What still needs saying about a half once its words are in the timeline,
+  /// or null when the half is a clean record and needs nothing.
+  String? _noteFor(TranscriptHalf half, L10n l10n) {
+    final name = _nameFor(half.senderId, l10n);
+    if (half.state == HalfState.absent) return l10n.callTranscriptNone(name);
+    if (half.saidNothing) return l10n.callTranscriptSaidNothing(name);
+    if (half.segments.isEmpty) return l10n.callTranscriptNothingRead(name);
+    if (half.state == HalfState.incomplete) {
+      return l10n.callTranscriptPartial(name);
+    }
+    return null;
   }
 
   String _nameFor(String userId, L10n l10n) {
