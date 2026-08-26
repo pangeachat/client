@@ -19,9 +19,20 @@ class PointsGainedAnimation extends StatefulWidget {
     this.invert = false,
   });
 
-  static void show(String targetId, int points, BuildContext context) {
+  /// Hosted in the Overlay nearest the anchor itself, resolved from the
+  /// registry — never a listener's context. The construct streams reach every
+  /// live listener, so an open chat hears XP earned on the vocab panel; an
+  /// overlay resolved from the chat's context lives in its nested Navigator,
+  /// where an anchor in another panel never paints (#8613). No-op when the
+  /// anchor isn't mounted: an unlinked follower wouldn't paint either.
+  static void show(String targetId, int points) {
+    final anchorContext = MatrixState.pAnyState
+        .layerLinkAndKey(targetId)
+        .key
+        .currentContext;
+    if (anchorContext == null) return;
     OverlayUtil.showOverlay(
-      context: context,
+      context: anchorContext,
       child: PointsGainedAnimation(points: points, targetID: targetId),
       displayDetails: TransformOverlayDisplayDetails(
         overlayKey: "${targetId}_points",

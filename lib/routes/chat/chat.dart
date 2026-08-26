@@ -655,7 +655,6 @@ class ChatController extends State<ChatPageWithRoom>
     if (constructs.isEmpty || targetId == null) return;
     for (final construct in constructs) {
       GrowthAnimation.show(
-        context,
         targetId,
         "${targetId}_unlocked_${construct.string}",
         MorphIcon(
