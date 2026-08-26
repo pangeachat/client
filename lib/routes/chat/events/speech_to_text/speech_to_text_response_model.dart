@@ -30,8 +30,22 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 /// the exact mistake `capture_refused` exists to prevent, one layer down. A
 /// chunk that fails is counted as lost, which is what actually happened.
 ///
-/// The three that stay strict are the payload containers: `results`,
-/// `transcripts`, and the `transcript` text itself.
+/// "Beside" means beside in the LIST too, not only beside in the object. The
+/// call path reads the first usable transcript and nothing else, so a sibling
+/// result or a sibling alternative it never looks at must not be able to take
+/// down the one it does. Those are DROPPED.
+///
+/// Dropping is not the same as degrading to empty, and the difference is what
+/// the failure would CLAIM. A response that arrived carrying content, none of
+/// which we could read, still fails the parse: reporting that chunk as SILENCE
+/// would be a statement about the speaker produced entirely from our own parse
+/// failure, which is the exact mistake `capture_refused` exists to prevent one
+/// layer down. A chunk that fails is counted as lost, which is what happened.
+///
+/// A response that genuinely carried nothing is a different thing again, and
+/// parses fine. `results: []` is the frozen exhausted-fallback answer, and a
+/// result with `transcripts: []` is a provider that found nothing sayable.
+/// Those are answers, not failures.
 
 /// A finite number, or null.
 ///
@@ -106,10 +120,32 @@ class SpeechToTextResponseModel extends BaseResponse {
     // HTTP 200, not an error. That's a valid, empty transcript, not a parse
     // failure, so it must not throw here (R0-2); the caller decides whether
     // an empty model is usable.
+    //
+    // Still a hard cast, because `results` is the payload container: a response
+    // with no readable container at all is not an answer about anybody.
+    final raw = json['results'] as List;
+
+    final results = <SpeechToTextResult>[];
+    for (final entry in raw) {
+      final result = SpeechToTextResult.fromJson(entry);
+      // Dropped, not fatal. Nothing on the call path reads past the first
+      // usable transcript, so a malformed second result used to destroy a
+      // perfectly good first one -- and with it up to ninety seconds of speech.
+      if (result != null) results.add(result);
+    }
+
+    // Content arrived and none of it could be read. Keeping the empty list here
+    // would read downstream as the provider finding nothing sayable, which is
+    // silence -- a claim about the speaker sourced entirely from our own
+    // failure. It fails instead, and the chunk is counted lost.
+    if (results.isEmpty && raw.isNotEmpty) {
+      throw const FormatException(
+        'No readable result in the speech-to-text response',
+      );
+    }
+
     return SpeechToTextResponseModel(
-      results: (json['results'] as List)
-          .map((e) => SpeechToTextResult.fromJson(e))
-          .toList(),
+      results: results,
       // Provenance, not content. A non-string here used to throw and take the
       // transcript with it.
       service: json['service'] is String ? json['service'] as String : null,
@@ -154,12 +190,26 @@ class SpeechToTextResult {
 
   SpeechToTextResult({required this.transcripts});
 
-  factory SpeechToTextResult.fromJson(Map<String, dynamic> json) =>
-      SpeechToTextResult(
-        transcripts: (json['transcripts'] as List)
-            .map((e) => Transcript.fromJson(e))
-            .toList(),
-      );
+  /// One result, or null when nothing in it can be read.
+  ///
+  /// Null rather than throwing, so the caller above drops it and the readable
+  /// results still stand. A result whose `transcripts` list is EMPTY is not
+  /// unreadable -- it is a provider that found nothing sayable, which is an
+  /// answer, and it survives as one.
+  static SpeechToTextResult? fromJson(Object? raw) {
+    if (raw is! Map) return null;
+    final entries = raw['transcripts'];
+    if (entries is! List) return null;
+
+    final transcripts = <Transcript>[];
+    for (final entry in entries) {
+      final transcript = Transcript.fromJson(entry);
+      // A malformed second alternative is one the call path never reads.
+      if (transcript != null) transcripts.add(transcript);
+    }
+    if (transcripts.isEmpty && entries.isNotEmpty) return null;
+    return SpeechToTextResult(transcripts: transcripts);
+  }
 
   Map<String, dynamic> toJson() => {
     "transcripts": transcripts.map((e) => e.toJson()).toList(),
@@ -191,21 +241,31 @@ class Transcript {
   /// Returns the number of words per minute rounded to one decimal place.
   double? get wordsPerMinute => wordsPerHr != null ? wordsPerHr! / 60 : null;
 
-  factory Transcript.fromJson(Map<String, dynamic> json) => Transcript(
-    // Strict, deliberately: this IS the speech. See the note at the top of
-    // this file for why an unreadable transcript fails the chunk rather than
-    // degrading to an empty one.
-    text: json['transcript'],
-    confidence: _confidence(json[ChoreoConstants.confidence]),
-    sttTokens: _tokens(json['stt_tokens']),
-    // Empty means UNKNOWN, and a caller that writes a language tag has to
-    // treat it as such rather than putting an empty tag on the wire.
-    langCode: json[ModelKey.langCode] is String
-        ? json[ModelKey.langCode] as String
-        : '',
-    wordsPerHr: _finite(json['words_per_hr'])?.toInt(),
-    wordTimings: _timings(json['word_timings']),
-  );
+  /// One transcript alternative, or null when its TEXT cannot be read.
+  ///
+  /// The text is the only field left that can make an alternative unreadable;
+  /// everything beside it degrades to its absent value instead. Null rather
+  /// than throwing so a malformed alternative is dropped and the readable ones
+  /// still stand -- an empty text is not unreadable, it is a real answer that
+  /// `hasUsableTranscript` already reports as unusable.
+  static Transcript? fromJson(Object? raw) {
+    if (raw is! Map) return null;
+    final text = raw['transcript'];
+    if (text is! String) return null;
+
+    return Transcript(
+      text: text,
+      confidence: _confidence(raw[ChoreoConstants.confidence]),
+      sttTokens: _tokens(raw['stt_tokens']),
+      // Empty means UNKNOWN, and a caller that writes a language tag has to
+      // treat it as such rather than putting an empty tag on the wire.
+      langCode: raw[ModelKey.langCode] is String
+          ? raw[ModelKey.langCode] as String
+          : '',
+      wordsPerHr: _finite(raw['words_per_hr'])?.toInt(),
+      wordTimings: _timings(raw['word_timings']),
+    );
+  }
 
   /// The transcript's own confidence, on the frozen 0..100 scale.
   ///

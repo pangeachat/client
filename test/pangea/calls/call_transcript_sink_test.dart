@@ -467,6 +467,132 @@ void main() {
     });
   });
 
+  group('a response whose UNREAD parts the provider malformed', () {
+    // A sibling result and a sibling alternative are "beside the words" in
+    // exactly the way a sibling field is. The call path reads the first usable
+    // transcript and never looks past it, so neither of these is ever read --
+    // and both used to throw out of the whole parse, land in the catch that
+    // marks a chunk failed, and cost up to ninety seconds of speech.
+    CallTranscriptSink sinkReturning(Map<String, dynamic> response) =>
+        CallTranscriptSink(
+          userL1: 'en',
+          userL2: 'es',
+          transcribe: (_) async => SpeechToTextResponseModel.fromJson(response),
+        );
+
+    Map<String, dynamic> goodTranscript(String text) => {
+      'transcript': text,
+      'confidence': 100,
+      'lang_code': 'es-ES',
+      'words_per_hr': 9391,
+      'stt_tokens': <dynamic>[],
+    };
+
+    test('a malformed SECOND result does not cost the first', () async {
+      final s = sinkReturning({
+        'results': [
+          {
+            'transcripts': [goodTranscript('hola mundo')],
+          },
+          // Nothing on the call path reads a second result.
+          {'transcripts': 'not a list'},
+        ],
+      });
+
+      await s.deliver(chunk(0, startedAtMs: 1000));
+
+      expect(s.chunksLost, 0, reason: 'nothing was captured and then lost');
+      expect(s.transcripts, ['hola mundo']);
+    });
+
+    test('a malformed SECOND alternative does not cost the first', () async {
+      final s = sinkReturning({
+        'results': [
+          {
+            'transcripts': [
+              goodTranscript('hola mundo'),
+              // Nothing on the call path reads a second alternative.
+              {'transcript': 42, 'confidence': 90},
+            ],
+          },
+        ],
+      });
+
+      await s.deliver(chunk(0, startedAtMs: 1000));
+
+      expect(s.chunksLost, 0);
+      expect(s.transcripts, ['hola mundo']);
+    });
+
+    test('a malformed FIRST alternative falls through to the readable one', () {
+      // Dropping is positional-blind on purpose. The alternatives are the
+      // provider's own ranking, and a lower-ranked one is still speech that was
+      // really said -- which beats losing the chunk outright.
+      final model = SpeechToTextResponseModel.fromJson({
+        'results': [
+          {
+            'transcripts': [
+              {'transcript': 42, 'confidence': 90},
+              goodTranscript('hola mundo'),
+            ],
+          },
+        ],
+      });
+
+      expect(model.hasUsableTranscript, isTrue);
+      expect(model.transcript.text, 'hola mundo');
+    });
+
+    test(
+      'a response we could read NOTHING in still fails, and is lost',
+      () async {
+        // The other half of the rule, and the half that keeps dropping honest.
+        // Dropping every result would leave an empty model, which reads
+        // downstream as the provider finding nothing sayable -- silence. That is
+        // a claim about the speaker sourced entirely from our own parse failure.
+        final s = sinkReturning({
+          'results': [
+            {'transcripts': 'not a list'},
+          ],
+        });
+
+        await expectLater(s.deliver(chunk(0)), throwsA(isA<FormatException>()));
+
+        expect(s.chunksLost, 1, reason: 'captured, and then genuinely lost');
+        expect(s.hasTranscript, isFalse);
+      },
+    );
+
+    test('a response that CARRIED nothing is silence, not loss', () async {
+      // The frozen exhausted-fallback answer: HTTP 200 with `results: []`. It
+      // arrived carrying nothing, which is a real answer about the audio rather
+      // than a failure to read one, so it must not go the way of the test
+      // above.
+      final s = sinkReturning({'results': <dynamic>[]});
+
+      await s.deliver(chunk(0));
+
+      expect(s.chunksLost, 0);
+      expect(s.hasTranscript, isFalse);
+    });
+
+    test('a result that found nothing sayable survives as one', () async {
+      // `transcripts: []` is a provider that read the audio and heard nothing.
+      // An empty list is not an unreadable list, and collapsing the two would
+      // turn this answer into a lost chunk.
+      final s = sinkReturning({
+        'results': [
+          {'transcripts': <dynamic>[]},
+        ],
+      });
+
+      await s.deliver(chunk(0));
+
+      expect(s.chunksLost, 0);
+      expect(s.hasTranscript, isFalse);
+    });
+  });
+
   group('the language tag, which comes from a provider', () {
     Future<CallTranscriptSink> sinkSaying(String langCode) async {
       final sink = CallTranscriptSink(
