@@ -615,4 +615,111 @@ void main() {
       expect(HalfAccounting.fromJson(json).declared, isFalse);
     });
   });
+
+  group('why a half is not clean', () {
+    HalfIssue issueOf(HalfAccounting accounting, {bool exhausted = true}) =>
+        assembleTranscript(
+          candidates: [_candidate(alice, accounting: accounting)],
+          expectedSenders: [alice],
+          exhausted: exhausted,
+        ).halves.single.issue;
+
+    test('a clean half has no issue', () {
+      expect(
+        issueOf(
+          const HalfAccounting(
+            chunksCaptured: 2,
+            chunksTranscribed: 2,
+            declared: true,
+          ),
+        ),
+        HalfIssue.none,
+      );
+    });
+
+    test('each cause is reported as itself', () {
+      // The point of keeping this at all: several different failures reach the
+      // same state, so the state alone cannot answer "why did it say that".
+      expect(
+        issueOf(const HalfAccounting(captureRefused: true, declared: true)),
+        HalfIssue.microphoneRefused,
+      );
+      expect(
+        issueOf(
+          const HalfAccounting(
+            chunksCaptured: 3,
+            chunksTranscribed: 1,
+            chunksLost: 2,
+            declared: true,
+          ),
+        ),
+        HalfIssue.audioLost,
+      );
+      expect(
+        issueOf(
+          const HalfAccounting(
+            chunksCaptured: 1,
+            chunksTranscribed: 1,
+            truncated: true,
+            segmentsOmitted: 9,
+            declared: true,
+          ),
+        ),
+        HalfIssue.tooLongToSend,
+      );
+      expect(
+        issueOf(
+          const HalfAccounting(
+            chunksCaptured: 1,
+            chunksTranscribed: 1,
+            drainComplete: false,
+            declared: true,
+          ),
+        ),
+        HalfIssue.drainAbandoned,
+      );
+      expect(issueOf(const HalfAccounting()), HalfIssue.writerSaidNothing);
+      expect(
+        issueOf(const HalfAccounting(declared: true, incoherent: true)),
+        HalfIssue.accountingImpossible,
+      );
+    });
+
+    test('a speaker with no half at all is named as such', () {
+      final transcript = assembleTranscript(
+        candidates: const [],
+        expectedSenders: [alice],
+      );
+
+      expect(transcript.halves.single.issue, HalfIssue.neverWritten);
+    });
+
+    test('a read we cut short is OUR failure, not the writer\'s', () {
+      // The distinction that makes this worth logging: the same half, read two
+      // ways, reports two different causes.
+      final clean = const HalfAccounting(
+        chunksCaptured: 1,
+        chunksTranscribed: 1,
+        declared: true,
+      );
+
+      expect(issueOf(clean), HalfIssue.none);
+      expect(issueOf(clean, exhausted: false), HalfIssue.couldNotRead);
+    });
+
+    test('our own failure is reported ahead of the writer\'s admissions', () {
+      // A half can carry several at once. Only one is reported, and it is the
+      // one somebody reading a bug report can act on.
+      expect(
+        issueOf(
+          const HalfAccounting(
+            captureRefused: true,
+            drainComplete: false,
+            declared: true,
+          ),
+        ),
+        HalfIssue.microphoneRefused,
+      );
+    });
+  });
 }

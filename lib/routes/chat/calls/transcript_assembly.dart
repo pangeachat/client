@@ -209,6 +209,45 @@ class HalfAccounting {
 }
 
 /// One speaker's side of a call, as the view will read it.
+/// WHY a half is not a clean record of what somebody said.
+///
+/// The four states tell the reader what to SAY. This says what went wrong, and
+/// it exists because those are different jobs. A learner reporting "it said I
+/// said nothing" is unanswerable if all we kept was the state: several
+/// different failures reach the same one, and without the cause we would be
+/// guessing at which. Kept by default, for every half that is not clean.
+enum HalfIssue {
+  /// Nothing wrong. The half is everything that speaker said.
+  none,
+
+  /// This device never opened a microphone. A fact about us, not the speaker.
+  microphoneRefused,
+
+  /// Audio was captured and then lost before it could be transcribed.
+  audioLost,
+
+  /// Words were dropped to fit the event under the server's size limit.
+  tooLongToSend,
+
+  /// Transcription never finished; the call ended with work outstanding.
+  drainAbandoned,
+
+  /// The writer asserted nothing about its own capture, so completeness is
+  /// unknown rather than confirmed. An older or foreign client.
+  writerSaidNothing,
+
+  /// The accounting contradicts itself or the content it arrived with.
+  accountingImpossible,
+
+  /// No half from this speaker at all, on a read that reached the end.
+  neverWritten,
+
+  /// We could not read the whole call -- our own ceiling, an encrypted room,
+  /// or a participant list we were guessing at.
+  couldNotRead,
+}
+
+/// One speaker's side of one call, as the view will read it.
 class TranscriptHalf {
   final String senderId;
   final List<TranscriptSegment> segments;
@@ -221,6 +260,27 @@ class TranscriptHalf {
     required this.accounting,
     required this.state,
   });
+
+  /// Why this half is not a clean record, or [HalfIssue.none].
+  ///
+  /// Ordered by what a person reading a bug report would most want to know
+  /// first: our own failures before the writer's admissions, because those are
+  /// the ones we can act on. Only ever one reason is reported -- the first
+  /// that applies -- since a list of every co-occurring flag is a worse
+  /// starting point than the most actionable single cause.
+  HalfIssue get issue {
+    if (state == HalfState.absent) return HalfIssue.neverWritten;
+    if (accounting.captureRefused) return HalfIssue.microphoneRefused;
+    if (accounting.incoherent) return HalfIssue.accountingImpossible;
+    if (!accounting.declared) return HalfIssue.writerSaidNothing;
+    if (accounting.chunksLost > 0) return HalfIssue.audioLost;
+    if (accounting.truncated || accounting.segmentsOmitted > 0) {
+      return HalfIssue.tooLongToSend;
+    }
+    if (!accounting.drainComplete) return HalfIssue.drainAbandoned;
+    if (state == HalfState.incomplete) return HalfIssue.couldNotRead;
+    return HalfIssue.none;
+  }
 
   /// How much speech this half actually carries.
   ///

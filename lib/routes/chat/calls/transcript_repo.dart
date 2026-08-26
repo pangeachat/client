@@ -116,7 +116,7 @@ Future<CallTranscript> fetchCallTranscript({
     if (seen >= maxEvents) break;
   }
 
-  return assembleTranscript(
+  final transcript = assembleTranscript(
     candidates: candidates,
     expectedSenders: expectedSenders,
     participantsKnown: participantsKnown,
@@ -124,6 +124,33 @@ Future<CallTranscript> fetchCallTranscript({
     // about paging: we reached the end of a list we could not read.
     exhausted: exhausted && !encrypted,
   );
+
+  // Recorded for every half that is not clean, by default and at read time.
+  //
+  // The four states tell the learner what to say; they do not say what went
+  // wrong, and several different failures reach the same state. Without this,
+  // "it said I said nothing" is unanswerable after the fact -- the raw event
+  // is the only evidence and nobody has it. One line per unclean half, naming
+  // the cause and the counts behind it, is what makes such a report
+  // diagnosable instead of a guess.
+  for (final half in transcript.halves) {
+    final issue = half.issue;
+    if (issue == HalfIssue.none) continue;
+    Logs().i(
+      'Call transcript half not clean: ${issue.name} '
+      'for ${half.senderId} on $callKey '
+      '(state ${half.state.name}, '
+      'captured ${half.accounting.chunksCaptured}, '
+      'transcribed ${half.accounting.chunksTranscribed}, '
+      'lost ${half.accounting.chunksLost}, '
+      'micRefused ${half.accounting.captureRefused}, '
+      'drained ${half.accounting.drainComplete}, '
+      'declared ${half.accounting.declared}, '
+      'omitted ${half.accounting.segmentsOmitted})',
+    );
+  }
+
+  return transcript;
 }
 
 /// The [RelationsFetcher] that talks to a real homeserver.
