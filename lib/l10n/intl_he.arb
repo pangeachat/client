@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:43.031976",
+    "@@last_modified": "2026-08-26 15:28:49.392388",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10676,5 +10676,8 @@
     "rateActivityDisliked": "לא אהבתי",
     "constructUseHrdDesc": "נשמע",
     "timesHeard": "{count, plural, =1{נשמע פעם אחת} other{נשמע {count} פעמים}}",
-    "allSettings": "כל ההגדרות"
+    "allSettings": "כל ההגדרות",
+    "usedCorrectly": "{count, plural, =1{שימוש נכון פעם אחת} other{שימוש נכון {count} פעמים}}",
+    "usedIncorrectly": "{count, plural, =1{שימוש שגוי פעם אחת} other{שימוש שגוי {count} פעמים}}",
+    "usedWithoutScoring": "{count, plural, =1{שימוש פעם אחת ללא ניקוד} other{שימוש {count} פעמים ללא ניקוד}}"
 }

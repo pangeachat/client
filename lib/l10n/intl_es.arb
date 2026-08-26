@@ -7981,5 +7981,8 @@
     "rateActivityDisliked": "No me gustó",
     "constructUseHrdDesc": "Escuchado",
     "timesHeard": "{count, plural, =1{Escuchado una vez} other{Escuchado {count} veces}}",
-    "allSettings": "Todos los ajustes"
+    "allSettings": "Todos los ajustes",
+    "usedCorrectly": "{count, plural, =1{Usado correctamente una vez} other{Usado correctamente {count} veces}}",
+    "usedIncorrectly": "{count, plural, =1{Usado incorrectamente una vez} other{Usado incorrectamente {count} veces}}",
+    "usedWithoutScoring": "{count, plural, =1{Usado una vez sin puntuación} other{Usado {count} veces sin puntuación}}"
 }

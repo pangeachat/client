@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-25 15:25:41.403813",
+    "@@last_modified": "2026-08-26 15:28:46.792468",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9776,5 +9776,8 @@
     "rateActivityDisliked": "Не спадабалася",
     "constructUseHrdDesc": "Пачута",
     "timesHeard": "{count, plural, =1{Пачута адзін раз} other{Пачута {count} разы}}",
-    "allSettings": "Усе налады"
+    "allSettings": "Усе налады",
+    "usedCorrectly": "{count, plural, =1{Выкарыстана правільна адзін раз} other{Выкарыстана правільна {count} разоў}}",
+    "usedIncorrectly": "{count, plural, =1{Выкарыстана няправільна адзін раз} other{Выкарыстана няправільна {count} разоў}}",
+    "usedWithoutScoring": "{count, plural, =1{Выкарыстана адзін раз без падліку балаў} other{Выкарыстана {count} разоў без падліку балаў}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-25 15:25:45.028339",
+    "@@last_modified": "2026-08-26 15:28:53.159907",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "မကြိုက်ဘူး",
     "constructUseHrdDesc": "ကြားဖူး",
     "timesHeard": "{count, plural, =1{တစ်ကြိမ်ကြားဖူးသည်} other{{count} ကြိမ်ကြားဖူးသည်}}",
-    "allSettings": "ဆက်တင်များအားလုံး"
+    "allSettings": "ဆက်တင်များအားလုံး",
+    "usedCorrectly": "{count, plural, =1{တစ်ကြိမ် မှန်ကန်စွာ အသုံးပြုခဲ့သည်} other{{count} ကြိမ် မှန်ကန်စွာ အသုံးပြုခဲ့သည်}}",
+    "usedIncorrectly": "{count, plural, =1{တစ်ကြိမ် မှားယွင်းစွာ အသုံးပြုခဲ့သည်} other{{count} ကြိမ် မှားယွင်းစွာ အသုံးပြုခဲ့သည်}}",
+    "usedWithoutScoring": "{count, plural, =1{တစ်ကြိမ် အမှတ်မရဘဲ အသုံးပြုခဲ့သည်} other{{count} ကြိမ် အမှတ်မရဘဲ အသုံးပြုခဲ့သည်}}"
 }

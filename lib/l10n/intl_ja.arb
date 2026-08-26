@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-25 15:25:43.540834",
+    "@@last_modified": "2026-08-26 15:28:50.428281",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10531,5 +10531,8 @@
     "rateActivityDisliked": "よくなかった",
     "constructUseHrdDesc": "聞きました",
     "timesHeard": "{count, plural, =1{1回聞きました} other{{count}回聞きました}}",
-    "allSettings": "すべての設定"
+    "allSettings": "すべての設定",
+    "usedCorrectly": "{count, plural, =1{1回正しく使用} other{{count}回正しく使用}}",
+    "usedIncorrectly": "{count, plural, =1{1回誤って使用} other{{count}回誤って使用}}",
+    "usedWithoutScoring": "{count, plural, =1{1回使用（スコアなし）} other{{count}回使用（スコアなし）}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-25 15:25:47.026221",
+    "@@last_modified": "2026-08-26 15:28:57.051785",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "נישט געפֿעלן",
     "constructUseHrdDesc": "געהערט",
     "timesHeard": "{count, plural, =1{געהערט איין מאָל} other{געהערט {count} מאָל}}",
-    "allSettings": "אַלע סעטטינגס"
+    "allSettings": "אַלע סעטטינגס",
+    "usedCorrectly": "{count, plural, =1{איין מאָל ריכטיק גענוצט} other{{count} מאָל ריכטיק גענוצט}}",
+    "usedIncorrectly": "{count, plural, =1{איין מאָל פֿאַלש גענוצט} other{{count} מאָל פֿאַלש גענוצט}}",
+    "usedWithoutScoring": "{count, plural, =1{איין מאָל גענוצט אָן אַ סקאָר} other{{count} מאָל גענוצט אָן אַ סקאָר}}"
 }

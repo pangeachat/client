@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-25 15:25:45.791197",
+    "@@last_modified": "2026-08-26 15:28:54.985338",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "අකමැති විය",
     "constructUseHrdDesc": "ඇසුණි",
     "timesHeard": "{count, plural, =1{වරක් ඇසුණි} other{{count} වරක් ඇසුණි}}",
-    "allSettings": "සියලු සැකසුම්"
+    "allSettings": "සියලු සැකසුම්",
+    "usedCorrectly": "{count, plural, =1{එක් වරක් නිවැරදිව භාවිතා කරන ලදී} other{{count} වතාවක් නිවැරදිව භාවිතා කරන ලදී}}",
+    "usedIncorrectly": "{count, plural, =1{එක් වරක් වැරදි ලෙස භාවිතා කරන ලදී} other{{count} වතාවක් වැරදි ලෙස භාවිතා කරන ලදී}}",
+    "usedWithoutScoring": "{count, plural, =1{ලකුණු නොමැතිව එක් වරක් භාවිතා කරන ලදී} other{ලකුණු නොමැතිව {count} වතාවක් භාවිතා කරන ලදී}}"
 }

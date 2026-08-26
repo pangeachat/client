@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-25 15:25:43.098717",
+    "@@last_modified": "2026-08-26 15:28:49.908991",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9865,5 +9865,8 @@
     "rateActivityDisliked": "Nem tetszett",
     "constructUseHrdDesc": "Hallotta",
     "timesHeard": "{count, plural, =1{Hallva egyszer} other{Hallva {count} alkalommal}}",
-    "allSettings": "Összes beállítás"
+    "allSettings": "Összes beállítás",
+    "usedCorrectly": "{count, plural, =1{Egyszer helyesen használva} other{{count} alkalommal helyesen használva}}",
+    "usedIncorrectly": "{count, plural, =1{Egyszer helytelenül használva} other{{count} alkalommal helytelenül használva}}",
+    "usedWithoutScoring": "{count, plural, =1{Egyszer használva pontozás nélkül} other{{count} alkalommal használva pontozás nélkül}}"
 }

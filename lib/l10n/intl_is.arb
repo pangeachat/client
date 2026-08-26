@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-25 15:25:43.579164",
+    "@@last_modified": "2026-08-26 15:28:50.464212",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Líkaði ekki",
     "constructUseHrdDesc": "Heyrði",
     "timesHeard": "{count, plural, =1{Heyrt einu sinni} other{Heyrt {count} sinnum}}",
-    "allSettings": "Allar stillingar"
+    "allSettings": "Allar stillingar",
+    "usedCorrectly": "{count, plural, =1{Notað rétt einu sinni} other{Notað rétt {count} sinnum}}",
+    "usedIncorrectly": "{count, plural, =1{Notað rangt einu sinni} other{Notað rangt {count} sinnum}}",
+    "usedWithoutScoring": "{count, plural, =1{Notað einu sinni án stiga} other{Notað {count} sinnum án stiga}}"
 }

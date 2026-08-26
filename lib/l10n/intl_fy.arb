@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-25 15:25:42.512256",
+    "@@last_modified": "2026-08-26 15:28:48.505177",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Fûn it net moai",
     "constructUseHrdDesc": "Heard",
     "timesHeard": "{count, plural, =1{Ien kear heard} other{{count} kear heard}}",
-    "allSettings": "Alle ynstellings"
+    "allSettings": "Alle ynstellings",
+    "usedCorrectly": "{count, plural, =1{Ien kear goed brûkt} other{{count} kear goed brûkt}}",
+    "usedIncorrectly": "{count, plural, =1{Ien kear ferkeard brûkt} other{{count} kear ferkeard brûkt}}",
+    "usedWithoutScoring": "{count, plural, =1{Ien kear brûkt sûnder skoare} other{{count} kear brûkt sûnder skoare}}"
 }

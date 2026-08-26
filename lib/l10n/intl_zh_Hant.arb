@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-25 15:25:47.293687",
+    "@@last_modified": "2026-08-26 15:28:56.845523",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9868,5 +9868,8 @@
     "rateActivityDisliked": "不喜歡",
     "constructUseHrdDesc": "聽過",
     "timesHeard": "{count, plural, =1{已聽過一次} other{已聽過 {count} 次}}",
-    "allSettings": "所有設定"
+    "allSettings": "所有設定",
+    "usedCorrectly": "{count, plural, =1{正確使用一次} other{正確使用 {count} 次}}",
+    "usedIncorrectly": "{count, plural, =1{錯誤使用一次} other{錯誤使用 {count} 次}}",
+    "usedWithoutScoring": "{count, plural, =1{使用一次但未計分} other{使用 {count} 次但未計分}}"
 }

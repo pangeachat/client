@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-25 15:25:45.529848",
+    "@@last_modified": "2026-08-26 15:28:53.900019",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10679,5 +10679,8 @@
     "rateActivityDisliked": "Não gostei",
     "constructUseHrdDesc": "Ouviu",
     "timesHeard": "{count, plural, =1{Ouvido uma vez} other{Ouvido {count} vezes}}",
-    "allSettings": "Todas as definições"
+    "allSettings": "Todas as definições",
+    "usedCorrectly": "{count, plural, =1{Usado corretamente uma vez} other{Usado corretamente {count} vezes}}",
+    "usedIncorrectly": "{count, plural, =1{Usado incorretamente uma vez} other{Usado incorretamente {count} vezes}}",
+    "usedWithoutScoring": "{count, plural, =1{Usado uma vez sem pontuar} other{Usado {count} vezes sem pontuar}}"
 }

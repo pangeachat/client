@@ -1325,7 +1325,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-25 15:25:46.430721",
+    "@@last_modified": "2026-08-26 15:28:55.788340",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10712,5 +10712,8 @@
     "rateActivityDisliked": "ఇష్టపడలేదు",
     "constructUseHrdDesc": "విన్నారు",
     "timesHeard": "{count, plural, =1{ఒకసారి విన్నారు} other{{count} సార్లు విన్నారు}}",
-    "allSettings": "అన్ని సెట్టింగ్‌లు"
+    "allSettings": "అన్ని సెట్టింగ్‌లు",
+    "usedCorrectly": "{count, plural, =1{ఒకసారి సరిగ్గా ఉపయోగించారు} other{{count} సార్లు సరిగ్గా ఉపయోగించారు}}",
+    "usedIncorrectly": "{count, plural, =1{ఒకసారి తప్పుగా ఉపయోగించారు} other{{count} సార్లు తప్పుగా ఉపయోగించారు}}",
+    "usedWithoutScoring": "{count, plural, =1{ఒకసారి స్కోర్ చేయకుండా ఉపయోగించారు} other{{count} సార్లు స్కోర్ చేయకుండా ఉపయోగించారు}}"
 }

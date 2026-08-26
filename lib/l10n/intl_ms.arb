@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-25 15:25:44.805510",
+    "@@last_modified": "2026-08-26 15:28:52.843537",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Tidak suka",
     "constructUseHrdDesc": "Dengar",
     "timesHeard": "{count, plural, =1{Didengar sekali} other{Didengar {count} kali}}",
-    "allSettings": "Semua tetapan"
+    "allSettings": "Semua tetapan",
+    "usedCorrectly": "{count, plural, =1{Digunakan dengan betul sekali} other{Digunakan dengan betul {count} kali}}",
+    "usedIncorrectly": "{count, plural, =1{Digunakan dengan salah sekali} other{Digunakan dengan salah {count} kali}}",
+    "usedWithoutScoring": "{count, plural, =1{Digunakan sekali tanpa skor} other{Digunakan {count} kali tanpa skor}}"
 }

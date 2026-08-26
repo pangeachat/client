@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-25 15:25:46.966335",
+    "@@last_modified": "2026-08-26 15:28:56.555702",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9762,5 +9762,8 @@
     "rateActivityDisliked": "Не сподобалось",
     "constructUseHrdDesc": "Чув",
     "timesHeard": "{count, plural, =1{Прослухано один раз} other{Прослухано {count} разів}}",
-    "allSettings": "Усі налаштування"
+    "allSettings": "Усі налаштування",
+    "usedCorrectly": "{count, plural, =1{Використано правильно один раз} other{Використано правильно {count} разів}}",
+    "usedIncorrectly": "{count, plural, =1{Використано неправильно один раз} other{Використано неправильно {count} разів}}",
+    "usedWithoutScoring": "{count, plural, =1{Використано один раз без зарахування балів} other{Використано {count} разів без зарахування балів}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-25 15:25:42.673988",
+    "@@last_modified": "2026-08-26 15:28:48.926239",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9762,5 +9762,8 @@
     "rateActivityDisliked": "Non me gustou",
     "constructUseHrdDesc": "Escoitado",
     "timesHeard": "{count, plural, =1{Escoitado unha vez} other{Escoitado {count} veces}}",
-    "allSettings": "Todos os axustes"
+    "allSettings": "Todos os axustes",
+    "usedCorrectly": "{count, plural, =1{Usouse correctamente unha vez} other{Usouse correctamente {count} veces}}",
+    "usedIncorrectly": "{count, plural, =1{Usouse incorrectamente unha vez} other{Usouse incorrectamente {count} veces}}",
+    "usedWithoutScoring": "{count, plural, =1{Usouse unha vez sen puntuación} other{Usouse {count} veces sen puntuación}}"
 }

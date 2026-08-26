@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-25 15:25:45.224428",
+    "@@last_modified": "2026-08-26 15:28:53.700291",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2166,5 +2166,8 @@
     "rateActivityDisliked": "Sindinakonde",
     "constructUseHrdDesc": "Kumva",
     "timesHeard": "{count, plural, =1{Wamvedwa kamodzi} other{Wamvedwa {count} nthawi}}",
-    "allSettings": "Zokonda zonse"
+    "allSettings": "Zokonda zonse",
+    "usedCorrectly": "{count, plural, =1{Anagwiritsidwa ntchito moyenera kamodzi} other{Anagwiritsidwa ntchito moyenera {count} nthawi}}",
+    "usedIncorrectly": "{count, plural, =1{Anagwiritsidwa ntchito molakwika kamodzi} other{Anagwiritsidwa ntchito molakwika {count} nthawi}}",
+    "usedWithoutScoring": "{count, plural, =1{Anagwiritsidwa ntchito kamodzi osapeza mapointsi} other{Anagwiritsidwa ntchito {count} nthawi osapeza mapointsi}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-25 15:25:47.055057",
+    "@@last_modified": "2026-08-26 15:28:56.798397",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9762,5 +9762,8 @@
     "rateActivityDisliked": "不喜欢",
     "constructUseHrdDesc": "听过",
     "timesHeard": "{count, plural, =1{听到一次} other{听到{count}次}}",
-    "allSettings": "所有设置"
+    "allSettings": "所有设置",
+    "usedCorrectly": "{count, plural, =1{正确使用1次} other{正确使用{count}次}}",
+    "usedIncorrectly": "{count, plural, =1{错误使用1次} other{错误使用{count}次}}",
+    "usedWithoutScoring": "{count, plural, =1{使用1次未计分} other{使用{count}次未计分}}"
 }
