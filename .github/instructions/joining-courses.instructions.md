@@ -57,6 +57,8 @@ Once the user is a member, onboarding continues as a joined-course flow and the 
 
 The language step is still shown in two cases: the space records no language — spaces predate the field, and the old spaces are the ones whose quests fail — or the course teaches the user's own device language, since a course cannot be taught in the language it teaches.
 
+**Onboarding ends on the joined course itself,** not the world map — whatever the last page turns out to be. A new user is inside their trial window, so the trial page follows the joined-course page and is the page they finish on; the destination follows from having joined a course at all, not from which page is last (#8593).
+
 None of this repairs the quest: the space still points at an id the content service cannot return, so the course plan page fails the same way after onboarding.
 
 **matrix.to links**: Standard Matrix links (`https://matrix.to/#/...`) go through a separate path. For knock-only rooms, this shows the public room bottom sheet with a code field and "Ask to Join" button.

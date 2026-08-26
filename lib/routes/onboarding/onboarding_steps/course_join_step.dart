@@ -62,11 +62,7 @@ mixin CourseJoinStep on OnboardingStep {
       );
     });
 
-    return JoinedCourseOnboardingStep(
-      client: client,
-      state: state,
-      maxRemainingSteps: 0,
-    );
+    return JoinedCourseOnboardingStep.next(client: client, state: state);
   }
 
   /// The quest did not resolve, so the space is all onboarding has. It records
