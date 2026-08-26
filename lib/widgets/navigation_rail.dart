@@ -53,8 +53,12 @@ class SpacesNavigationRail extends StatelessWidget {
     final isChats = section == AppSection.chats;
     final isWorld = section == AppSection.world;
 
-    // The Add-course / find-course flow: courses section, no active space.
-    final isCourseFind = section == AppSection.courses && activeSpaceId == null;
+    // The Courses hub: lit while its panel is open — even under a persisting
+    // `?c=` context (#8605) — or on the courses section with no active space
+    // (the legacy /courses flow pages).
+    final hubOpen = coursesHubIsOpen(state.uri);
+    final isCourseFind =
+        section == AppSection.courses && (hubOpen || activeSpaceId == null);
 
     final largeIconWidth = naviRailWidth - (isColumnMode ? 32.0 : 24.0);
     final smallIconWidth = naviRailWidth - (isColumnMode ? 40.0 : 32.0);
@@ -218,9 +222,11 @@ class SpacesNavigationRail extends StatelessWidget {
                                         naviRailWidth: naviRailWidth,
                                         // Highlight the course avatar only while the course
                                         // IS the open section — not merely because `?c=`
-                                        // persists under a chat/room (routing decision 5).
+                                        // persists under a chat/room or under the Courses
+                                        // hub (routing decision 5, #8605).
                                         selected:
                                             section == AppSection.courses &&
+                                            !hubOpen &&
                                             activeSpaceId == space.id,
                                       ),
                                   ],
