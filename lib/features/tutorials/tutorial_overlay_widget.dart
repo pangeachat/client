@@ -188,20 +188,27 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
           : _TooltipPlacement.bottom;
     }
 
-    final gap = _tooltipSize(tooltipSize).height + _tooltipPadding * 2;
-    final fitsAbove = anchor.top - gap >= 0;
-    final fitsBelow = anchor.bottom + gap <= MediaQuery.sizeOf(context).height;
-    if (fitsAbove || fitsBelow) return _TooltipPlacement.anchored;
+    final fitsBelow =
+        anchor.bottom + _gap(tooltipSize) <= MediaQuery.sizeOf(context).height;
+    if (_showAbove(anchor, tooltipSize) || fitsBelow) {
+      return _TooltipPlacement.anchored;
+    }
     return _TooltipPlacement.bottom;
   }
+
+  /// The vertical room one placement needs: the card plus the breathing space
+  /// on both sides of it.
+  double _gap(Size tooltipSize) =>
+      _tooltipSize(tooltipSize).height + _tooltipPadding * 2;
 
   Rect _inflated(Rect rect, double? padding) =>
       padding == null ? rect : rect.inflate(padding);
 
-  bool _showAbove(Rect anchor, Size tooltipSize) {
-    final gap = _tooltipSize(tooltipSize).height + _tooltipPadding * 2;
-    return anchor.top - gap >= 0;
-  }
+  /// The single answer to "does the card fit above what was lit?" — [_placementFor]
+  /// decides *whether* to anchor from it, and the placement widget then puts the
+  /// card on that side.
+  bool _showAbove(Rect anchor, Size tooltipSize) =>
+      anchor.top - _gap(tooltipSize) >= 0;
 
   /// Left edge for a tooltip centered on [anchor], nudged back inside the
   /// screen when centering would push it off either side.

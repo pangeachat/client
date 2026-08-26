@@ -128,6 +128,18 @@ extension ActivityRolesRoomExtension on Room {
     return max(0, (availableRoles?.length ?? 0) - (assignedRoles?.length ?? 0));
   }
 
+  /// Whether the chat view shows the activity's **start page** (its role picker
+  /// / waiting room) in place of the timeline.
+  ///
+  /// The one home for this question, because two places need the same answer and
+  /// they drifted when each stated it: the chat view decides what to render, and
+  /// anything asking "is the activity chat UI actually on screen?" — the goal
+  /// header, and so the tutorial that points at it — has to agree. Note that
+  /// [showActivityChatUI] does NOT answer it: that one is about whether role and
+  /// summary state are locked down, not about what is being drawn.
+  bool get showsActivityStartPage =>
+      isActivitySession && activityId != null && !isActivityStarted;
+
   bool get isActivityStarted => activityStartedGate(
     finished: isActivityFinished,
     planRoleCount: activityPlan?.roles.length,

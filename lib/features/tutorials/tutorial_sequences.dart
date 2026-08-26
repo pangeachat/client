@@ -26,15 +26,7 @@ class TutorialSequences {
   /// it is one tutorial that walks the whole app.
   static TutorialSequence get appTourSequence => [TutorialEnum.appTour];
 
-  /// Separate sequences, not one two-step tutorial, because their two surfaces
-  /// are owned by different hosts and a learner joining an already-running
-  /// session never sees the waiting room at all. Independent sequences let that
-  /// one simply not fire, instead of stalling a shared sequence behind a step
-  /// whose screen never appears.
-  static TutorialSequence get activityInviteSequence => [
-    TutorialEnum.activityInvite,
-  ];
-
+  /// The goal header, once the activity chat is actually running.
   static TutorialSequence get activityGoalsSequence => [
     TutorialEnum.activityGoals,
   ];

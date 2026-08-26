@@ -9,11 +9,6 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
-import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
-import 'package:fluffychat/features/tutorials/tutorial_model.dart';
-import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
-import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
-import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -51,76 +46,16 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   final _goalsHandler = GoalsSubscriptionHandler();
 
   @override
-  void initState() {
-    super.initState();
-    // This screen owns the invite / play-with-bot controls the tutorial points
-    // at, so it registers as their owner. See tutorials.instructions.md.
-    MatrixState.tutorialOverlayController.registerLauncher(
-      TutorialEnum.activityInvite,
-      _launchInviteTutorial,
-    );
-    _scheduleInviteTutorialRequest();
-  }
-
-  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     _goalsHandler.init(widget.room.id, context, setState, () => mounted);
-    // Re-asked on dependency changes too: whether the invite controls exist
-    // turns on room admin state, which can land after the first build.
-    _scheduleInviteTutorialRequest();
   }
 
   @override
   void dispose() {
     _pingCooldown?.cancel();
     _goalsHandler.cancel();
-    MatrixState.tutorialOverlayController
-      ..unregisterLauncher(TutorialEnum.activityInvite, _launchInviteTutorial)
-      // Nothing can show the remaining steps once the waiting room is gone, and
-      // giving the sequence up here is what lets the goal-header one start when
-      // the chat opens.
-      ..releaseSequence(TutorialSequences.activityInviteSequence);
     super.dispose();
-  }
-
-  /// Always post-frame: the request launches the tutorial synchronously, and the
-  /// controls it lights have to be laid out before the spotlight is placed.
-  void _scheduleInviteTutorialRequest() {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      // Which tutorials this learner has seen lives on their profile, and an
-      // unloaded profile reports every one as already seen. Waiting for it is
-      // the difference between offering this a moment later and never at all.
-      await MatrixState.pangeaController.userController.initCompleter.future;
-      // Offered only where the controls actually exist: a learner who is not the
-      // room admin has no invite options, so there would be nothing to light.
-      if (!mounted || !showInviteOptions) return;
-      MatrixState.tutorialOverlayController.requestSequence(
-        TutorialSequences.activityInviteSequence,
-      );
-    });
-  }
-
-  Future<void> _launchInviteTutorial() async {
-    if (!mounted || !showInviteOptions) return;
-    MatrixState.tutorialOverlayController.launchTutorial(
-      context: context,
-      tutorial: TutorialModel(
-        tutorialType: TutorialEnum.activityInvite,
-        stepsData: [
-          TutorialStepData(
-            // Both controls lit as one group: the message is that either way
-            // works, so highlighting one over the other would misread.
-            targetKeys: const [
-              TutorialTargetIds.activityPlayWithBot,
-              TutorialTargetIds.activityInviteFriends,
-            ],
-            canShowNextStep: () => true,
-          ),
-        ],
-      ),
-      isFocused: true,
-    );
   }
 
   /// The course whose roster the ping reaches: the one this session was launched

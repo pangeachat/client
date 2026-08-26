@@ -9,7 +9,6 @@ enum TutorialEnum {
   selectModeButtons(showNavigationButtons: false),
   welcome(showNavigationButtons: false, isOrientation: true),
   worldMap(showNavigationButtons: false, isOrientation: true),
-  activityInvite(showNavigationButtons: false, isOrientation: true),
   activityGoals(showNavigationButtons: false, isOrientation: true),
   coursePlan(showNavigationButtons: false, isOrientation: true),
   appTour(showNavigationButtons: false, isOrientation: true);
@@ -35,7 +34,6 @@ enum TutorialEnum {
     TutorialEnum.selectModeButtons => TutorialStepTemplates.selectModeButtons,
     TutorialEnum.welcome => TutorialStepTemplates.welcome,
     TutorialEnum.worldMap => TutorialStepTemplates.worldMap,
-    TutorialEnum.activityInvite => TutorialStepTemplates.activityInvite,
     TutorialEnum.activityGoals => TutorialStepTemplates.activityGoals,
     TutorialEnum.coursePlan => TutorialStepTemplates.coursePlan,
     TutorialEnum.appTour => TutorialStepTemplates.appTour,
@@ -64,7 +62,6 @@ enum TutorialEnum {
       InstructionsEnum.selectModeButtonsTutorial,
     TutorialEnum.welcome => InstructionsEnum.welcomeTutorial,
     TutorialEnum.worldMap => InstructionsEnum.worldMapTutorial,
-    TutorialEnum.activityInvite => InstructionsEnum.activityInviteTutorial,
     TutorialEnum.activityGoals => InstructionsEnum.activityGoalsTutorial,
     TutorialEnum.coursePlan => InstructionsEnum.coursePlanTutorial,
     TutorialEnum.appTour => InstructionsEnum.appTourTutorial,

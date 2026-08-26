@@ -239,11 +239,15 @@ class _WorldMapViewState extends State<WorldMapView> {
   ///
   /// Ids rather than geometry: the emphasis is a shimmer on the pin itself, so
   /// nothing needs projecting, clipping to the visible map, or matching to a
-  /// pin's shape.
+  /// pin's shape. Pins carry no target ids at all — a repeating world mounts
+  /// each pin several times ([TutorialTarget]).
   Set<String> _twoRoleActivityIds(_PinRenderer render) => {
     for (final card in render.visible)
-      if (card.point != null && card.roleCount == 2) card.activityId,
+      if (_isDrawnTwoRolePin(card)) card.activityId,
   };
+
+  bool _isDrawnTwoRolePin(QuestActivityCard card) =>
+      card.point != null && card.roleCount == 2;
 
   /// Whether [point] currently falls inside the camera's visible bounds — the
   /// gate on queueing (and keeping) an exit animation, since flutter_map's
@@ -764,13 +768,13 @@ class _WorldMapViewState extends State<WorldMapView> {
     // per frame, then lay out the layers from it.
     final render = _resolvePinRender(context);
 
-    // Hand the worldMap tutorial the geometry of the two-role pins actually on
-    // screen. It has to come from here: pins carry no tutorial target ids (a
-    // repeating world mounts each one several times, and a target id is a
-    // GlobalKey), and this is where tier, state and camera are already in hand.
+    // Tell the worldMap tutorial what the map is drawing — this is where the
+    // camera decides what is visible at all. Two booleans rather than the pin
+    // set: this runs every frame, and building a set nothing reads unless a
+    // tutorial is running is waste on the map's hottest path.
     widget.controller.publishTutorialPinState(
       hasAnyPins: render.visible.any((c) => c.point != null),
-      hasTwoRolePins: _twoRoleActivityIds(render).isNotEmpty,
+      hasTwoRolePins: render.visible.any(_isDrawnTwoRolePin),
     );
 
     // Detect newly-gone pins before building the marker layers.

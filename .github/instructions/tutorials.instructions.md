@@ -84,7 +84,6 @@ A tutorial is offered when it is unseen, its trigger fires, and its gate passes.
 | `welcome` | Orientation | first arrival at **either** the world map or a course plan — once ever, whichever comes first |
 | `worldMap` | Orientation | first world map with pins actually rendered |
 | `coursePlan` | Orientation | first joined course whose plan is showing its Up-next Mission |
-| `activityInvite` | Orientation | first confirmed role, on the waiting room |
 | `activityGoals` | Orientation | first activity chat showing a goal header |
 | `appTour` | Orientation | next arrival at a map after the learner's first finished activity |
 | the chat sequence — `readingAssistance`, `selectModeButtons`, `writingAssistance` | Feature | the learner's first L2 message containing a word new to them, while scrolled to the bottom |
@@ -97,8 +96,8 @@ That yields two paths, and no learner is ever taught the same thing twice:
 
 | Arrives | Sees, in order |
 |---|---|
-| **with no course code** | `welcome` + `worldMap` → `activityInvite` then `activityGoals` on their first activity → `appTour` after their first finished activity → `coursePlan` whenever they later join a course |
-| **by course code** | `welcome` + `coursePlan` → `activityInvite` then `activityGoals` → `appTour`, whose last step is the **World** icon → `worldMap` on the map it opens |
+| **with no course code** | `welcome` + `worldMap` → `activityGoals` on their first activity → `appTour` after their first finished activity → `coursePlan` whenever they later join a course |
+| **by course code** | `welcome` + `coursePlan` → `activityGoals` → `appTour`, whose last step is the **World** icon → `worldMap` on the map it opens |
 
 The app tour ending on World is what closes the second path: a course-code learner may never have opened the world map, so the tour hands them to it, and the world tutorial picks up from there.
 
@@ -115,10 +114,11 @@ Two-role activities are the target because the bot fills exactly one seat, so th
 
 ### coursePlan
 
-Mirrors `worldMap` — an introduction to the surface, then "go start one":
+Mirrors `worldMap` — an introduction to the surface, then "go start one", with the course's own progress model in between:
 
-1. **What a course is**, with nothing lit: a **plan of Missions** to work through with the people in the course, where completing activity goals earns **stars** that move the learner along it. A star is one orchestrator-awarded activity goal and a Mission is a learning objective — [quests](quests.instructions.md) owns both.
-2. **The Up-next Mission's activity carousel.** Armed, exactly as on the map: the learner opens an activity themselves.
+1. **A welcome naming the course**, with nothing lit, so it takes over the screen: this course is a learning journey the learner takes with their course mates.
+2. **The course progress bar.** Doing activities and earning **stars** is what moves them along the course. A star is one orchestrator-awarded activity goal and a Mission is a learning objective — [quests](quests.instructions.md) owns both.
+3. **The Up-next Mission's activity carousel.** Armed, exactly as on the map: the learner opens an activity themselves.
 
 **The carousel, not its individual cards.** A card would need a target id each, and the same activity can appear under more than one Mission, so two cards would contend for one id. Exactly one Mission is ever the anchor, so pointing at its carousel has a single claimant — and it says the more useful thing anyway: *these* are the activities for what you are working on now.
 
@@ -126,16 +126,11 @@ Mirrors `worldMap` — an introduction to the surface, then "go start one":
 
 **No two-role filter here, unlike the map.** On the world map, two-role activities are singled out because the bot fills one seat and a 3+ role activity is a dead end for a learner with nobody to play with. Inside a course that reasoning inverts: its activities were hand-picked by the course author, so a 3+ role one is a deliberate part of the syllabus — which is why the [world map](world-map.instructions.md) already declines to demote it there. The step points at the Mission's activities and lets the learner choose.
 
-### activityInvite and activityGoals
+### activityGoals
 
-Two beats around the moment a learner first holds a role, one per surface:
+One step, one tap. It lights the **goal header** once the activity chat is running: playing your role and completing goals earns stars, and stars move you through a course's Missions. Tapping expands the goal list, so the learner ends the step looking at the goals they are about to play for.
 
-- **`activityInvite`** lights the invite and play-with-the-bot controls on the confirmed-role waiting room. "You can play with me any time, or invite a friend." This is where the two-person nature of the app is taught, once — playtesters repeatedly asked whether the app could be used with other people, and this is the first moment the answer is concrete.
-- **`activityGoals`** lights the goal header once the chat opens. Playing your role and completing goals earns stars, and stars move you through a course's Missions. Tapping expands the goal list, so the learner ends the step looking at the goals they are about to play for.
-
-**Two tutorials rather than one with two steps**, because their surfaces have different owners and a learner who joins an already-running session never sees a waiting room at all. As one tutorial, that learner's sequence would stall behind a step whose screen never appears; as two, the first simply never fires and the second runs on its own. It is also why the waiting-room one keeps its own seen flag: a learner who skipped it that way is still offered it at their next activity that does have a waiting room.
-
-It stops there deliberately. Nothing later in an activity — completing every goal, finishing for credit — gets a step: those surfaces already explain themselves, and a third interruption inside the learner's first activity costs more attention than it returns.
+**Nothing else inside an activity gets a step.** There was a waiting-room step before this one, pointing at the invite and play-with-the-bot controls — it was removed because it earned too little for an interruption at that moment, and the waiting room already shows both controls plainly. Completing every goal and finishing for credit likewise get nothing: those surfaces explain themselves, and a second interruption inside a learner's first activity costs more attention than it returns.
 
 The chat sequence may fire in the same activity, on the learner's first L2 message containing a new word. They stay **separate sequences with separate counters** — the learner sees two short progress bars, not one long one — and whichever asks for the overlay second queues behind the first.
 

@@ -98,14 +98,32 @@ class TutorialOverlayController {
   /// lookup. See tutorials.instructions.md on trigger evaluation.
   bool isPending(TutorialEnum tutorial) => _progress.isEnabled(tutorial);
 
+  /// Whether the armed step waiting on the learner is one that is *supposed* to
+  /// be off screen.
+  ///
+  /// A **dimmed** armed step is: withdrawing the scrim so the learner can act
+  /// is the whole point, so it must not be put back. An **undimmed** one has no
+  /// scrim to withdraw — its card IS the instruction, and the surface keeps its
+  /// own emphasis running (the map's shimmer) the whole time — so leaving it
+  /// dismissed strands the learner with a highlight and nothing explaining it.
+  bool get _armedStepHidesItself {
+    if (_armed == null) return false;
+    final tutorial = _state.tutorialType;
+    if (tutorial == null) return false;
+    final index = _state.model.stepIndex;
+    if (index < 0 || index >= tutorial.stepTemplates.length) return false;
+    return tutorial.stepTemplates[index].dimsBackground;
+  }
+
   /// Puts the current step back on screen when a sequence is running but nothing
   /// is showing it. Two ways that happens: the host that owned the step was torn
   /// down, or the overlay was force-closed from elsewhere (closing a chat clears
   /// every overlay), which leaves the machine believing a tutorial is up.
   ///
-  /// An armed step is deliberately left alone — being off screen is the point.
+  /// Callers check their own surface is present FIRST — resuming onto a surface
+  /// that isn't there relaunches a step that immediately dismisses itself again.
   void resumeIfStranded() {
-    if (_activeSequence == null || _armed != null) return;
+    if (_activeSequence == null || _armedStepHidesItself) return;
 
     final overlayOpen = MatrixState.pAnyState.isOverlayOpen(
       overlayKey: TutorialConstants.sequenceOverlayKey,
@@ -456,6 +474,16 @@ class TutorialOverlayController {
     _state = TutorialOverlayStateMachine(const []);
     _activeSequence = null;
 
+    if (_queue.isEmpty) return;
+    // Post-frame, so it runs AFTER the close above: [_closeOverlay] defers
+    // removal to a post-frame callback, and they run in registration order.
+    // Draining synchronously here let the next sequence find the still-present
+    // entry, "reuse" it, insert nothing, and then have it removed underneath —
+    // leaving the machine certain a tutorial was showing while nothing was.
+    WidgetsBinding.instance.addPostFrameCallback((_) => _drainQueue());
+  }
+
+  void _drainQueue() {
     while (_queue.isNotEmpty) {
       if (requestSequence(_queue.removeAt(0))) return;
     }
@@ -465,5 +493,9 @@ class TutorialOverlayController {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       MatrixState.pAnyState.closeOverlay(TutorialConstants.sequenceOverlayKey);
     });
+    // A post-frame callback only runs if a frame is coming, and a close is often
+    // the last thing to happen — without asking for one, the entry can sit on
+    // screen (and anything queued behind it stays queued).
+    WidgetsBinding.instance.ensureVisualUpdate();
   }
 }

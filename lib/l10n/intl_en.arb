@@ -5178,9 +5178,16 @@
     },
     "tutorialWorldMapPickActivity": "Tap a highlighted 2-player activity to open and start it!",
     "tutorialWorldMapNoActivities": "No 2-player activities in view. Try zooming out or widening your search.",
-    "tutorialActivityInvite": "No need to wait alone! You can play with me any time, or invite a friend to join you.",
     "tutorialActivityGoals": "Play your role and send messages that complete these goals. Everyone has goals, so play along to help your teammates reach theirs too!",
-    "tutorialCoursePlanIntro": "This is your course plan — a series of Missions to work through with the people in your course. You progress by completing goals and earning stars",
+    "tutorialCoursePlanIntro": "Welcome to your course, {courseName}! It will take you through a learning journey with your course mates.",
+    "@tutorialCoursePlanIntro": {
+        "placeholders": {
+            "courseName": {
+                "type": "String"
+            }
+        }
+    },
+    "tutorialCoursePlanProgress": "As you do activities and gain stars, you'll make progress here. Your teacher can see how far you've gotten!",
     "tutorialCoursePlanPickActivity": "These are the activities for your current Mission. Tap one to open and start it!",
     "tutorialCoursePlanNoActivities": "Tap any activity in your plan to open and start it!",
     "tutorialAppTourOffer": "Great job finishing your first activity! Would you like me to show you around the app?",

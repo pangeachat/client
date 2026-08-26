@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
@@ -181,6 +182,9 @@ class _CourseOverviewState extends State<CourseOverview> {
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: CourseProgressBar(
                       objectivesProvider: widget.controller.objectivesProvider,
+                      // The course tutorial runs on this page, so this is the
+                      // instance it points at.
+                      tutorialTargetId: TutorialTargetIds.courseProgressBar,
                     ),
                   ),
                 ],

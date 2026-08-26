@@ -18,9 +18,8 @@ class ActivityGoalHeaderCard extends StatelessWidget {
   final bool isComplete;
 
   /// Registers the card itself as a tutorial spotlight target, when its host
-  /// wants it lit. Opt-in rather than always-on because a target id hands out a
-  /// GlobalKey: only the live session passes one, so a second instance of this
-  /// shared card can never contend for the same key.
+  /// wants it lit. Only the live session passes one — this card is shared with
+  /// the start and summary pages ([TutorialTarget]).
   final String? tutorialTargetId;
 
   const ActivityGoalHeaderCard({
@@ -36,7 +35,6 @@ class ActivityGoalHeaderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final gold = AppConfig.goldByTheme(context);
-    final targetId = tutorialTargetId;
 
     return Align(
       alignment: Alignment.topCenter,
@@ -50,7 +48,7 @@ class ActivityGoalHeaderCard extends StatelessWidget {
           // fills the space it is given, so a spotlight measured there would be
           // the size of the whole chat rather than the card.
           child: TutorialTarget(
-            targetId: targetId,
+            targetId: tutorialTargetId,
             child: AnimatedContainer(
               duration: FluffyThemes.animationDuration,
               curve: Curves.easeInOut,

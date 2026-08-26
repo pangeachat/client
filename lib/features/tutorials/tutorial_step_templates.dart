@@ -117,8 +117,15 @@ class TutorialStepTemplates {
   /// Mirrors [worldMap]: an introduction to the surface, then "go start one".
   static final List<TutorialStepTemplate> coursePlan = [
     TutorialStepTemplate(
-      tooltip: (l10n, _) => l10n.tutorialCoursePlanIntro,
-      tooltipSize: const Size(290, 140),
+      // args: [the course's name]
+      tooltip: (l10n, args) => l10n.tutorialCoursePlanIntro(args.first),
+      tooltipSize: const Size(290, 150),
+    ),
+    TutorialStepTemplate(
+      tooltip: (l10n, _) => l10n.tutorialCoursePlanProgress,
+      tooltipSize: const Size(280, 120),
+      borderRadius: AppConfig.borderRadius,
+      padding: 6.0,
     ),
     TutorialStepTemplate(
       tooltip: (l10n, args) => args.isEmpty
@@ -126,19 +133,6 @@ class TutorialStepTemplates {
           : l10n.tutorialCoursePlanNoActivities,
       tooltipSize: const Size(280, 120),
       borderRadius: AppConfig.borderRadius,
-      padding: 4.0,
-    ),
-  ];
-
-  /// The waiting room: the learner holds a role and needs to know they are not
-  /// stuck waiting for someone. Playtesters repeatedly asked whether the app
-  /// could be used with other people, and this is the first moment the answer is
-  /// concrete.
-  static final List<TutorialStepTemplate> activityInvite = [
-    TutorialStepTemplate(
-      tooltip: (l10n, _) => l10n.tutorialActivityInvite,
-      tooltipSize: const Size(280, 120),
-      borderRadius: 24.0,
       padding: 4.0,
     ),
   ];

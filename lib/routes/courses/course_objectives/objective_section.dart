@@ -58,9 +58,9 @@ class ObjectiveSection extends StatefulWidget {
 
   /// Registers this section's activity carousel as a tutorial spotlight target.
   /// Decided by the parent, which is the only thing that knows whether THIS
-  /// list is the one driving the tutorial — a target id is a GlobalKey, and two
-  /// mounted lists (a course card and its pushed full-plan subpage) both have an
-  /// anchor Mission, so only one may claim it.
+  /// list is the one driving the tutorial: a course card and its pushed
+  /// full-plan subpage can both be mounted, and both have an anchor Mission
+  /// ([TutorialTarget]).
   final String? tutorialTargetId;
 
   const ObjectiveSection({

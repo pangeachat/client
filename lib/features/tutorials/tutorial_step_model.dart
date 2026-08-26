@@ -31,9 +31,9 @@ class TutorialStepData {
   /// of a widget carrying a target id. Called every frame, so it tracks.
   ///
   /// Map pins are why this exists: the marker layer mounts the same pin once
-  /// per repeated copy of the world, and a target id hands out a GlobalKey,
-  /// which can only be attached to one widget at a time. The map projects its
-  /// own pins through the live camera instead.
+  /// per repeated copy of the world, so no one mount site can claim a target id
+  /// ([TutorialTarget]). The map projects its own pins through the live camera
+  /// instead.
   final List<Rect> Function()? spotlightRects;
 
   /// Runs when the learner taps through. A tap step does its own work here —

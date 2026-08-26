@@ -3,9 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Registers [child] as a tutorial spotlight target, so a step can point at it
-/// by id. A null [targetId] is a plain pass-through, which is how a widget used
-/// in several places lets only one of them claim the id — the id hands out a
-/// GlobalKey, and two mounted claimants would collide.
+/// by id.
+///
+/// **One mounted claimant per id, ever.** An id resolves to a single
+/// `LabeledGlobalKey` in the overlay registry, and a GlobalKey may only be
+/// attached to one mounted widget at a time — two claimants throw. So a widget
+/// that renders in more than one place takes its id as a nullable parameter and
+/// a null [targetId] is a plain pass-through: the mount site the tutorial
+/// actually points at passes the id, every other one passes nothing. Everywhere
+/// an id is declared or claimed, the comment says *which* mount site claims it;
+/// the reason it has to be only one is here.
 class TutorialTarget extends StatelessWidget {
   final String? targetId;
   final Widget child;

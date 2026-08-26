@@ -38,7 +38,6 @@ enum InstructionsEnum {
   emojiToolbarMode,
   welcomeTutorial,
   worldMapTutorial,
-  activityInviteTutorial,
   activityGoalsTutorial,
   coursePlanTutorial,
   appTourTutorial,
@@ -78,7 +77,6 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.emojiToolbarMode:
       case InstructionsEnum.welcomeTutorial:
       case InstructionsEnum.worldMapTutorial:
-      case InstructionsEnum.activityInviteTutorial:
       case InstructionsEnum.activityGoalsTutorial:
       case InstructionsEnum.coursePlanTutorial:
       case InstructionsEnum.appTourTutorial:
@@ -141,7 +139,6 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.emojiToolbarMode:
       case InstructionsEnum.welcomeTutorial:
       case InstructionsEnum.worldMapTutorial:
-      case InstructionsEnum.activityInviteTutorial:
       case InstructionsEnum.activityGoalsTutorial:
       case InstructionsEnum.coursePlanTutorial:
       case InstructionsEnum.appTourTutorial:

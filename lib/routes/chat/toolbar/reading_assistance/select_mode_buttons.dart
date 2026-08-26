@@ -307,7 +307,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       return;
     }
 
-    chat.tutorialOverlayController.launchTutorial(
+    // The app-scoped controller, not the chat's — the chat only supplies the
+    // event and token this tutorial points at.
+    MatrixState.tutorialOverlayController.launchTutorial(
       context: context,
       tutorial: TutorialModel(
         tutorialType: TutorialEnum.selectModeButtons,

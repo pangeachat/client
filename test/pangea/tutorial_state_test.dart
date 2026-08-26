@@ -568,16 +568,23 @@ void main() {
       expect(c.state.tutorialType, TutorialEnum.readingAssistance);
     });
 
-    test('a second sequence is queued, not dropped, and starts on release', () {
-      final c = TutorialOverlayController(progress: const _FakeProgress());
-      c.requestSequence(chat);
-      expect(c.requestSequence(other), false);
-      expect(c.state.tutorialType, TutorialEnum.readingAssistance);
+    testWidgets(
+      'a second sequence is queued, not dropped, and starts on release',
+      (tester) async {
+        final c = TutorialOverlayController(progress: const _FakeProgress());
+        c.requestSequence(chat);
+        expect(c.requestSequence(other), false);
+        expect(c.state.tutorialType, TutorialEnum.readingAssistance);
 
-      c.releaseSequence(chat);
-      expect(c.hasActiveSequence, true);
-      expect(c.state.tutorialType, TutorialEnum.writingAssistance);
-    });
+        c.releaseSequence(chat);
+        // The drain is deferred until the ending sequence's overlay close has run,
+        // so the next one never reuses an entry that is about to be removed.
+        expect(c.hasActiveSequence, false, reason: 'drain waits for the frame');
+        await tester.pump();
+        expect(c.hasActiveSequence, true);
+        expect(c.state.tutorialType, TutorialEnum.writingAssistance);
+      },
+    );
 
     test(
       'releasing a queued sequence removes it without disturbing the active one',
@@ -591,15 +598,19 @@ void main() {
       },
     );
 
-    test('a queued sequence with nothing left to show is skipped on drain', () {
-      final c = TutorialOverlayController(
-        progress: const _FakeProgress(seen: {TutorialEnum.writingAssistance}),
-      );
-      c.requestSequence(chat);
-      c.requestSequence(other);
-      c.releaseSequence(chat);
-      expect(c.hasActiveSequence, false);
-    });
+    testWidgets(
+      'a queued sequence with nothing left to show is skipped on drain',
+      (tester) async {
+        final c = TutorialOverlayController(
+          progress: const _FakeProgress(seen: {TutorialEnum.writingAssistance}),
+        );
+        c.requestSequence(chat);
+        c.requestSequence(other);
+        c.releaseSequence(chat);
+        await tester.pump();
+        expect(c.hasActiveSequence, false);
+      },
+    );
 
     test('sequence identity is by content, not list instance', () {
       final c = TutorialOverlayController(progress: const _FakeProgress());

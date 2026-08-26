@@ -19,6 +19,7 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/features/tutorials/tutorial_constants.dart';
 import 'package:fluffychat/features/tutorials/tutorial_copy.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
@@ -1190,15 +1191,19 @@ class WorldMapController extends State<WorldMap>
         _tutorials.isPending(TutorialEnum.appTour);
     if (!anyPending) return;
 
-    // Already running: nothing to start, but it may have been left off screen
-    // by a host teardown or a force-closed overlay.
+    // The surface checks come FIRST, because they gate resuming as well as
+    // starting: resuming onto a map that is covered or empty would relaunch a
+    // step whose own surface check then dismisses it again, every frame.
+    if (!isWorld || !_mapIsDrawingPins) return;
+    if (_openLeftPanelTypes.isNotEmpty) return;
+
+    // Already running: nothing to start, but it may have been left off screen by
+    // a host teardown, a force-closed overlay, or an undimmed step whose surface
+    // went away and has now come back.
     if (_tutorials.hasActiveSequence) {
       _tutorials.resumeIfStranded();
       return;
     }
-
-    if (!isWorld || !_mapIsDrawingPins) return;
-    if (_openLeftPanelTypes.isNotEmpty) return;
 
     // The tour comes first once it is due: it is the answer to "what now?"
     // after a first activity, and the map orientation is about a map the learner
@@ -1228,6 +1233,15 @@ class WorldMapController extends State<WorldMap>
     _uri,
   ).right.any((token) => token.type.isNonPracticeAnalyticsPanel);
 
+  /// Navigates the tour to [location], then holds
+  /// [TutorialConstants.stepSettleDelay] so the learner sees what opened before
+  /// the next message arrives over it. Every tour step that moves does this, so
+  /// the beat is uniform and lives in one place.
+  Future<void> _goAndSettle(String location) async {
+    context.go(location);
+    await Future.delayed(TutorialConstants.stepSettleDelay);
+  }
+
   /// Each step opens the panel it is describing exactly as the learner would —
   /// through the workspace URL, never by reaching into panel state — then gates
   /// its own advance on that panel actually being open.
@@ -1245,7 +1259,7 @@ class WorldMapController extends State<WorldMap>
           TutorialStepData(canShowNextStep: () => true),
           TutorialStepData.single(
             targetKey: TutorialTargetIds.navChats,
-            onTap: () async => context.go(
+            onTap: () => _goAndSettle(
               WorkspaceNav.setSection(
                 _uri,
                 const ChatsPanelToken(),
@@ -1258,7 +1272,7 @@ class WorldMapController extends State<WorldMap>
           ),
           TutorialStepData.single(
             targetKey: TutorialTargetIds.navCourses,
-            onTap: () async => context.go(WorkspaceNav.openAddCourse(_uri)),
+            onTap: () => _goAndSettle(WorkspaceNav.openAddCourse(_uri)),
             canShowNextStep: () => parseOpenPanels(
               _uri,
             ).left.any((token) => token.type.isCourseRelated),
@@ -1266,7 +1280,7 @@ class WorldMapController extends State<WorldMap>
           ),
           TutorialStepData.single(
             targetKey: TutorialTargetIds.analyticsVocabTracker,
-            onTap: () async => context.go(WorkspaceNav.openAnalytics(_uri)),
+            onTap: () => _goAndSettle(WorkspaceNav.openAnalytics(_uri)),
             canShowNextStep: () => _hasAnalyticsPanelOpen,
           ),
           TutorialStepData.single(
@@ -1278,11 +1292,14 @@ class WorldMapController extends State<WorldMap>
             // exactly where a learner is right after their first activity. The
             // step shows them where practice lives; gating on it opening would
             // stall the tour for the learner it is for.
+            // Still holds the beat, so the tour's pacing does not change on the
+            // one step that has nowhere to go.
+            onTap: () => Future.delayed(TutorialConstants.stepSettleDelay),
             canShowNextStep: () => true,
           ),
           TutorialStepData.single(
             targetKey: TutorialTargetIds.navWorld,
-            onTap: () async => context.go(WorkspaceNav.clearAll()),
+            onTap: () => _goAndSettle(WorkspaceNav.clearAll()),
             canShowNextStep: () => true,
           ),
         ],

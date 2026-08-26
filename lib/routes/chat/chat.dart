@@ -774,9 +774,16 @@ class ChatController extends State<ChatPageWithRoom>
       );
   }
 
-  /// Whether the goal header the tutorial points at is actually on screen —
-  /// the same conditions ActivityStatsMenu draws it under.
+  /// Whether the goal header the tutorial points at is actually on screen.
+  ///
+  /// [Room.showsActivityStartPage] is the load-bearing clause: until the
+  /// activity starts, the chat view replaces the whole timeline with the start
+  /// page, so the header does not exist — while every other clause here is
+  /// already true on the waiting room. Without it the tutorial launched at an
+  /// unmounted target, the overlay tore itself down, and the sequence was left
+  /// active, blocking every later attempt.
   bool get _hasGoalHeader =>
+      !room.showsActivityStartPage &&
       room.showActivityChatUI &&
       !room.hasGeneratedActivitySummary &&
       room.hasPickedRole &&
@@ -811,7 +818,16 @@ class ChatController extends State<ChatPageWithRoom>
     if (!tutorialOverlayController.isPending(TutorialEnum.activityGoals)) {
       return;
     }
+    // Surface first, so a resume can actually be shown.
     if (!isFocused || !_hasGoalHeader) return;
+
+    // Already running: nothing to start, but it may have been left off screen —
+    // this chat's own dispose force-closes every overlay, the tutorial's
+    // included. The map and course hosts do the same.
+    if (tutorialOverlayController.hasActiveSequence) {
+      tutorialOverlayController.resumeIfStranded();
+      return;
+    }
 
     tutorialOverlayController.requestSequence(
       TutorialSequences.activityGoalsSequence,

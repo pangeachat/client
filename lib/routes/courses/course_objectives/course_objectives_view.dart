@@ -34,6 +34,7 @@ import 'package:fluffychat/routes/courses/course_objectives/objective_section.da
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -221,14 +222,14 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       return;
     }
 
+    // Before resuming, not after: a resume onto a surface that isn't there
+    // relaunches a step that immediately dismisses itself again.
+    if (_upNextCarouselRect == null) return;
+
     if (_tutorials.hasActiveSequence) {
       _tutorials.resumeIfStranded();
       return;
     }
-
-    // The carousel the second step points at only exists once the outline has
-    // rendered.
-    if (_upNextCarouselRect == null) return;
 
     _tutorials.requestSequence(TutorialSequences.courseOrientationSequence);
   }
@@ -265,12 +266,25 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   Future<void> _launchCoursePlanTutorial() async {
     if (!mounted) return;
+    final room = widget.room;
+    final courseName =
+        room?.getLocalizedDisplayname(MatrixLocals(L10n.of(context))) ?? '';
+
     _tutorials.launchTutorial(
       context: context,
       tutorial: TutorialModel(
         tutorialType: TutorialEnum.coursePlan,
         stepsData: [
-          TutorialStepData(canShowNextStep: () => true),
+          // Greets the learner by their course's name; nothing lit, so it takes
+          // over the screen.
+          TutorialStepData(
+            canShowNextStep: () => true,
+            tooltipArgs: () => [courseName],
+          ),
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.courseProgressBar,
+            canShowNextStep: () => true,
+          ),
           TutorialStepData(
             // The carousel, resolved live so it tracks the plan scrolling.
             spotlightRects: () {
