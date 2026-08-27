@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/subscription/widgets/decorative_stars.dart';
@@ -69,6 +70,63 @@ void main() {
         );
       });
     }
+
+    testWidgets('opens subscription settings from inside an overlay', (
+      tester,
+    ) async {
+      // The word card is shown as an `OverlayEntry` — over a vocab chip on the
+      // activity surfaces, and over a message in chat. An entry sits BESIDE the
+      // route's page in the Navigator's overlay, not under it, so a gate that
+      // read the current URI with `GoRouterState.of` threw there and the button
+      // did nothing at all (#8622).
+      final router = GoRouter(
+        initialLocation: '/rooms',
+        routes: [
+          GoRoute(
+            path: '/rooms',
+            builder: (context, state) => Scaffold(
+              body: Builder(
+                builder: (inner) => TextButton(
+                  onPressed: () => Overlay.of(inner).insert(
+                    OverlayEntry(
+                      builder: (_) => Align(
+                        alignment: Alignment.topLeft,
+                        child: MessageUnsubscribedCard(
+                          token: PangeaTokenText.fromString('Deutsch'),
+                          onClose: () {},
+                        ),
+                      ),
+                    ),
+                  ),
+                  child: const Text('open card'),
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+
+      await tester.pumpWidget(
+        MaterialApp.router(
+          locale: const Locale('en'),
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+          routerConfig: router,
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('open card'));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byType(UnlockButton));
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+      expect(
+        router.routeInformationProvider.value.uri.toString(),
+        contains('settingspage:subscription'),
+      );
+    });
 
     testWidgets('carries no stars unless asked', (tester) async {
       await pump(tester, const UnlockButton(label: 'unlock'));
