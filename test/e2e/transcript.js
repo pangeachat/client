@@ -25,26 +25,40 @@
 // Everything up to the words is green in two browsers: the ring, the answer,
 // the consent notice, the hangup, both halves written, each under its own
 // sender, with correct accounting. What does not come back is intelligible
-// SPEECH. The fake microphone is verified good -- a getUserMedia probe reads
-// peak RMS around 0.5 off these fixtures -- and the speech service is
-// verified reached, so the loss is between the two, in the web capture path.
+// SPEECH.
 //
-// call_audio_tap.dart names this hazard itself, on the renderer tap the web
-// uses: the browser is free to refuse the requested rate and fall back to
-// 48 kHz, and "labelling 48 kHz audio as 16 kHz does not fail loudly; it just
-// transcribes as gibberish". What comes back is "you you" from twenty seconds
-// of clear speech, which is gibberish.
+// What is established, rather than assumed:
 //
-// That is consistent with the known weakness of web recording that
-// fix-renderer-attach exists for -- on the web a device can report
-// isRecording == true with a dead or mislabelled recorder -- and with the
-// fact that the transcript has only ever been demonstrated end to end on a
-// PHONE, where PostEchoCancellationTap reads the audio module directly.
+//   - The fake microphone is good. A getUserMedia probe in a plain page reads
+//     peak RMS around 0.5 off these fixtures.
+//   - The speech service is reached. The local choreo log carries the calls,
+//     with the provider chain falling back to Whisper and succeeding.
+//   - Twenty seconds of clear English comes back as "you you", which is
+//     Whisper's known hallucination on SILENCE -- not the sort of mangling
+//     that warped or mislabelled audio produces.
+//   - The channel count is NOT the cause. The web capture genuinely downmixes
+//     to mono and reports 1, so nothing is mis-described that way.
+//     (A latent bug was found in that area and fixed separately: the delivered
+//     count was being ignored in favour of the requested one, which matters on
+//     native.)
+//
+// Silence at the tap, from a microphone that is demonstrably not silent, puts
+// the loss between the published track and the renderer the web path reads it
+// through. That is the territory fix-renderer-attach exists for -- on the web
+// a device can report isRecording == true with a dead recorder -- and it is
+// consistent with this feature only ever having been demonstrated end to end
+// on a PHONE, where PostEchoCancellationTap reads the audio module directly
+// instead.
+//
+// The mechanism is not proven and this comment does not claim it is. What is
+// proven is where the audio stops being audible, and that it is not any of
+// the three things first suspected.
 //
 // So the word-level checks below are expected to fail in two browsers today.
-// They are written as failures rather than skips ON PURPOSE: a skip would let
-// this quietly become permanent, and the day the web path is fixed this file
-// should go green without anybody remembering to re-enable it.
+// They are written as failures rather than skips ON PURPOSE, and this file
+// exits on the failure count: a skip, or a green exit, would let this quietly
+// become permanent, and the day the web path is fixed this file should go
+// green without anybody remembering to re-enable it.
 //
 // HONESTY. A half that failed is not a person who said nothing. The screen has
 // four separate things to say -- they spoke / they were silent / they wrote
