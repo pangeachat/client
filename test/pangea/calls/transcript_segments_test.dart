@@ -304,6 +304,35 @@ void main() {
       }
     });
 
+    test('an apostrophe at the EDGE is the same word, and aligns', () {
+      // Deliberate, and the distinction this file turns on. An apostrophe at a
+      // word's edge is elision, possession or a quote mark: "'em" is "em",
+      // "dogs'" is "dogs". The same character INSIDE a word forms a different
+      // one -- "he'll" is not "hell" -- and that case is refused above.
+      //
+      // Dropping edge apostrophes from the set would refuse every quoted or
+      // elided word and send those calls to the per-speaker view, to prevent a
+      // substitution that cannot be constructed: X' and X are always the same
+      // lexeme.
+      for (final (text, first) in [
+        ("'em go", 'em'),
+        ("'til then", 'til'),
+        ("dogs' bark", 'dogs'),
+      ]) {
+        final second = text.split(' ')[1];
+        final segments = buildSegments([
+          _chunk(text, timings: [(first, 0, 100), (second, 150, 300)]),
+        ]);
+
+        expect(segments.single.text, text);
+        expect(
+          segments.single.atMs,
+          _chunkStart,
+          reason: '$text should align: the edge mark does not change the word',
+        );
+      }
+    });
+
     test('sentence marks from other scripts are forgiven at the edges', () {
       // The set has to cover the scripts learners actually speak, not just
       // Latin. These are the shapes the captures on disk contain.

@@ -133,6 +133,14 @@ String _words(String text) =>
 ///
 /// Membership answers one question only: would a transcript add this character
 /// around a word it is enclosing in a sentence? A comma would. A `#` would not.
+///
+/// The apostrophes are in the set on purpose. At a word's EDGE an apostrophe is
+/// elision, possession or a quote -- "'em" is "em", "dogs'" is "dogs" -- so
+/// forgiving it aligns the same word rather than substituting a different one.
+/// X' and X are always the same lexeme, which is exactly what cannot be said of
+/// "C#" against "C". Inside a word the same character does form a different
+/// one, and `_core` trims only at the edges, so "he'll" is still refused
+/// against "hell".
 const _sentenceMarks = {
   '.',
   ',',
