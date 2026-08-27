@@ -814,8 +814,8 @@ class _WorldMapViewState extends State<WorldMapView> {
     // (see the TileLayer below).
     final dark = Theme.of(context).brightness == Brightness.dark;
     // What shows through wherever tiles have not arrived yet. Matched to the
-    // basemap's paper — OSM's pale beige, or that beige passed through
-    // darkModeTileBuilder's color matrix — so a gap during a zoom reads as
+    // basemap's paper — OSM's pale beige, or that beige passed through the
+    // dark filter's color matrix — so a gap during a zoom reads as
     // unfilled map rather than the light grey flash flutter_map defaults
     // to (#7937).
     final mapBackground = dark
@@ -915,6 +915,46 @@ class _WorldMapViewState extends State<WorldMapView> {
                 onClose: widget.controller.dismissLargeCard,
                 animateInOf: _largeExits.markEntered,
               ).layer();
+              // Base tiles: OpenStreetMap for both themes, one provider — the
+              // previous dark provider (CARTO's keyless CDN) enforced per-IP
+              // usage by serving "API KEY REQUIRED" watermark tiles to some
+              // users (#8585), so one keyless provider is one failure mode and
+              // one usage budget. On-brand dark styling is a later-phase
+              // (vector tiles) goal — see world-map-tiles.instructions.md.
+              //
+              // Retina (@2x) is OFF (#7937): @2x is ~4x the pixels per tile,
+              // so a slow tile is a visible gap. Labels are slightly softer on
+              // HiDPI as a result; legible on-brand labels are a later-phase
+              // goal anyway, where they cost nothing.
+              final tileLayer = TileLayer(
+                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                retinaMode: false,
+                // How far outside the view a tile survives pruning. flutter_map
+                // covers a still-loading level by scaling a neighbouring level it
+                // already holds (TileImageView._retainAncestor), so the fallback
+                // is only as good as what is still in memory; the default 2 drops
+                // ancestors partway through a long move, leaving nothing to scale
+                // and the background showing through in tile-shaped squares.
+                // Retention only — the LOAD range is driven by `panBuffer`, which
+                // stays at its default, so this costs memory and zero extra tile
+                // requests (which matters on Phase 1's free hosted tiers).
+                keepBuffer: 5,
+                userAgentPackageName: 'com.talktolearn.chat',
+                // #8603 hardening: contact-URL User-Agent on native, and
+                // non-2xx responses as hard errors — see [_tileProvider].
+                tileProvider: _tileProvider,
+                errorTileCallback: _onTileError,
+                // A failed tile paints transparent, so the themed map
+                // background (#7937) shows through — a hard block degrades
+                // to uniform paper, not a grey flash, in both themes.
+                errorImage: MemoryImage(TileProvider.transparentImage),
+                // Failed tiles are re-fetched once they leave the pruning
+                // margin and come back — an offline blip heals on its own
+                // instead of leaving permanent holes (the default `none`
+                // pins the error tile for the session).
+                evictErrorTileStrategy:
+                    EvictErrorTileStrategy.notVisibleRespectMargin,
+              );
               return FlutterMap(
                 mapController: widget.controller.mapController,
                 options: MapOptions(
@@ -960,50 +1000,18 @@ class _WorldMapViewState extends State<WorldMapView> {
                       widget.controller.onMapPositionChanged(hasGesture),
                 ),
                 children: [
-                  // Base tiles: OpenStreetMap for both themes. Dark theme is
-                  // darkModeTileBuilder (invert + 180° hue-rotate) over the same
-                  // tiles rather than a second provider — CARTO's keyless CDN
-                  // enforces per-IP usage by serving "API KEY REQUIRED" watermark
-                  // tiles to some users (#8585), so one keyless provider is one
-                  // failure mode and one usage budget. On-brand dark styling is a
-                  // Phase 2 (vector tiles) goal — see
-                  // world-map-tiles.instructions.md.
-                  //
-                  // Retina (@2x) is OFF (#7937): @2x is ~4x the pixels per tile,
-                  // so a slow tile is a visible gap. Labels are slightly softer on
-                  // HiDPI as a result; legible on-brand labels are a Phase 2 goal
-                  // anyway, where they cost nothing.
-                  TileLayer(
-                    urlTemplate:
-                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    tileBuilder: dark ? darkModeTileBuilder : null,
-                    retinaMode: false,
-                    // How far outside the view a tile survives pruning. flutter_map
-                    // covers a still-loading level by scaling a neighbouring level it
-                    // already holds (TileImageView._retainAncestor), so the fallback
-                    // is only as good as what is still in memory; the default 2 drops
-                    // ancestors partway through a long move, leaving nothing to scale
-                    // and the background showing through in tile-shaped squares.
-                    // Retention only — the LOAD range is driven by `panBuffer`, which
-                    // stays at its default, so this costs memory and zero extra tile
-                    // requests (which matters on Phase 1's free hosted tiers).
-                    keepBuffer: 5,
-                    userAgentPackageName: 'com.talktolearn.chat',
-                    // #8603 hardening: contact-URL User-Agent on native, and
-                    // non-2xx responses as hard errors — see [_tileProvider].
-                    tileProvider: _tileProvider,
-                    errorTileCallback: _onTileError,
-                    // A failed tile paints transparent, so the themed map
-                    // background (#7937) shows through — a hard block degrades
-                    // to uniform paper, not a grey flash, in both themes.
-                    errorImage: MemoryImage(TileProvider.transparentImage),
-                    // Failed tiles are re-fetched once they leave the pruning
-                    // margin and come back — an offline blip heals on its own
-                    // instead of leaving permanent holes (the default `none`
-                    // pins the error tile for the session).
-                    evictErrorTileStrategy:
-                        EvictErrorTileStrategy.notVisibleRespectMargin,
-                  ),
+                  // Dark theme is ONE ColorFiltered (invert + 180° hue-rotate)
+                  // over the whole tile layer, not a per-tile tileBuilder: the
+                  // matrix is identical either way (world_map_dark_tiles_test
+                  // pins it), but per-tile means a saveLayer per visible tile
+                  // and measured roughly double the filter's frame cost on
+                  // CPU-constrained machines — 82% vs 35% of pan frames over
+                  // 17ms at 6x throttle (#8623, measurements on #8603). Do not
+                  // move this back to `tileBuilder: darkModeTileBuilder`.
+                  if (dark)
+                    darkModeTilesContainerBuilder(context, tileLayer)
+                  else
+                    tileLayer,
                   // world_v2: activity pins by relevance tier + state, capped by the
                   // width-driven budget. Small/mid dots render individually (no
                   // clustering); the large featured cards render unclustered above so
