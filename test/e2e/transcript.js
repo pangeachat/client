@@ -201,8 +201,13 @@ async function main() {
     await wait(3000);
   }
 
-  h.check(s, 'both devices wrote a half', written.length >= 2,
-    `only ${written.length} half/halves appeared within two minutes`);
+  // Counted by SENDER, not by event. Two halves from one device is a
+  // different failure -- a redelivery, or one side writing twice -- and
+  // counting events called it success.
+  const senders = new Set(written.map((e) => e.sender));
+  h.check(s, 'both devices wrote a half', senders.size >= 2,
+    `${written.length} half/halves from ${senders.size} sender(s): ` +
+      [...senders].join(', '));
 
   console.log('[4] what each half actually carries');
   const byA = written.find((e) => e.sender === A.userId);
@@ -231,23 +236,40 @@ async function main() {
   // each other either, so without this the check passes hardest exactly when
   // the feature is most broken -- which is the shape of a check that cannot
   // fail, and this suite has been bitten by those before.
-  const crossed = CALLEE_SAYS.some((w) => aWords.has(w))
-    && CALLER_SAYS.some((w) => bWords.has(w));
   if (!aWords.size || !bWords.size) {
     h.skipped(s, 'the halves are not copies of each other',
       `nothing to compare: A has ${aWords.size} words, B has ${bWords.size}`);
   } else {
-    h.check(s, 'the halves are not copies of each other', !crossed,
-      'both halves carry both speakers -- one source was recorded twice');
+    // Two ways one source gets recorded twice, and the fixture words catch
+    // only the first. If the halves cross, each carries the other's script.
+    // If the pipeline duplicates a stream, both halves carry the SAME text --
+    // and when that text is gibberish there are no fixture words in it at
+    // all, so a check written on those alone calls it a pass. Overlap is the
+    // question that covers both.
+    const crossed = CALLEE_SAYS.some((w) => aWords.has(w))
+      && CALLER_SAYS.some((w) => bWords.has(w));
+    const shared = [...aWords].filter((w) => bWords.has(w));
+    const overlap = shared.length / Math.min(aWords.size, bWords.size);
+    h.check(s, 'the halves are not copies of each other',
+      !crossed && overlap < 0.8,
+      crossed
+        ? 'each half carries the other speaker -- the sources are crossed'
+        : `the halves share ${Math.round(overlap * 100)}% of their words ` +
+          `(${shared.slice(0, 8).join(' ')}) -- one source recorded twice`);
   }
 
   // The turn-by-turn positions, on the wire. Without them the reader falls
   // back to the per-speaker view by design, so their absence is silent on
   // screen and this is the only place it can be caught.
+  // The app's own contract for a position, not merely "is a number":
+  // TranscriptSegment.fromJson accepts an int, >= 0, below 2^53, and treats
+  // anything else as absent. A check looser than the contract passes on
+  // values the reader will refuse to place.
   const positioned = (ev) => {
     const segs = ev?.content?.segments;
     return Array.isArray(segs) && segs.length > 0
-      && segs.every((x) => x && typeof x.at_ms === 'number');
+      && segs.every((x) => x && Number.isInteger(x.at_ms)
+        && x.at_ms >= 0 && x.at_ms < 2 ** 53);
   };
   //
   // BOTH halves, because the timeline is all-or-nothing by design: the reader
@@ -280,11 +302,28 @@ async function main() {
 
     // Nobody is called silent who spoke. The screen has four things it can
     // say and this is the one that would be a lie.
-    const silentClaims = labels.labelsFor('callTranscriptSaidNothing')
-      .filter((t) => t.length > 6)
-      .some((t) => onScreen.includes(t));
-    h.check(s, 'nobody who spoke is reported as silent', !silentClaims,
-      `the transcript claims somebody said nothing: ${onScreen.slice(0, 200)}`);
+    // Tied to a PARTICIPANT, not searched for loose in the page. The literal
+    // run of a placeholder string is generic by construction -- "did not say
+    // anything" -- and asking whether that text appears anywhere would answer
+    // yes to an unrelated control carrying the same words. What matters is
+    // whether it is said about somebody who SPOKE.
+    const spoke = [byA, byB]
+      .filter((e) => e && words(spoken(e)).size)
+      .map((e) => e.sender);
+    const claims = labels.labelsFor('callTranscriptSaidNothing');
+    const lied = spoke.filter((sender) => {
+      const name = sender === A.userId ? 'you' : sender.slice(1).split(':')[0];
+      return claims.some((t) => {
+        const i = onScreen.indexOf(t);
+        if (i < 0) return false;
+        // The name sits beside the claim, on either side of it depending on
+        // the language's word order.
+        const around = onScreen.slice(Math.max(0, i - 60), i + t.length + 60);
+        return around.toLowerCase().includes(name.toLowerCase());
+      });
+    });
+    h.check(s, 'nobody who spoke is reported as silent', lied.length === 0,
+      `the transcript says ${lied.join(', ')} said nothing, but they spoke`);
   }
 
   console.log('[6] neither side logged an unhandled error');
@@ -293,7 +332,11 @@ async function main() {
       JSON.stringify(p.errors.slice(0, 3)));
   }
 
-  h.report();
+  // The exit code is the result. `h.report()` returns the failure count and
+  // an earlier version of this file threw it away, so a run with four failed
+  // checks exited 0 -- which makes the header's promise that these are
+  // FAILURES and not skips worth nothing to anything that reads exit codes.
+  process.exit(h.report() === 0 ? 0 : 1);
 }
 
 main().catch(async (e) => {

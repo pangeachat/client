@@ -60,14 +60,23 @@ function refuseRemoteCallSpecs(): void {
     /\bcallAnswer\b|\bcallHangUp\b|\bstartCall\b|\bstartVideoCall\b/,
   ];
 
-  const offenders = fs
-    .readdirSync(dir, { recursive: true })
-    .map(String)
-    .filter((f) => f.endsWith(".spec.ts"))
+  // Every file a spec could reach, not just the spec.
+  //
+  // Scanning spec bodies alone is defeated by moving one import out: a spec
+  // that calls `placeCall()` from a helper carries none of the marks itself.
+  // The whole directory is read instead -- helpers included -- so a call
+  // placed at any depth still shows up. Coarse on purpose: a false positive
+  // here costs a name in an allowlist, and a false negative costs a real
+  // call against a deployed host, every night, on somebody's bill.
+  const all = fs.readdirSync(dir, { recursive: true }).map(String);
+  const marked = all
+    .filter((f) => f.endsWith(".ts"))
     .filter((f) => {
       const body = fs.readFileSync(path.join(dir, f), "utf-8");
       return MARKS.some((m) => m.test(body));
     });
+
+  const offenders = marked;
 
   if (offenders.length > 0) {
     throw new Error(
