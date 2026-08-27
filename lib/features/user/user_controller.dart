@@ -349,6 +349,13 @@ class UserController {
     setPublicProfile(null);
     _profileListener?.cancel();
     _profileListener = null;
+    // The publish queue is deliberately NOT reset here. Reassigning the chain
+    // cannot detach a callback already registered on the old future — Dart
+    // futures do not cancel — so it would not drop the queued save it looks
+    // like it drops, and starting a fresh chain while a request is still in
+    // flight lets the next publish overlap it: the last-write-wins loss the
+    // chain exists to prevent. A save that outlives the logout is instead
+    // refused, quietly, by the ownership check in [_publishProfile].
   }
 
   /// Reinitializes the user's profile
@@ -414,43 +421,94 @@ class UserController {
     return email?.address;
   }
 
-  Future<void> _savePublicProfileUpdate(
-    String type,
-    Map<String, dynamic> content,
-  ) async {
+  /// Serializes the profile publishes, which all write the one field with
+  /// whatever the profile holds at that moment.
+  ///
+  /// [_saveChain] is the tail of the running sequence; [_saveQueued] is true
+  /// while a save that has not yet serialized its payload is waiting on it.
+  Future<void> _saveChain = Future.value();
+  bool _saveQueued = false;
+
+  /// Publishes the current public profile, one write at a time.
+  ///
+  /// Coalesced rather than queued: every caller writes the SAME field with
+  /// whatever the profile holds now, so a save that is already waiting will
+  /// carry this caller's change too and running both would just repeat the
+  /// request. Overlapping them is the actual hazard — the whole profile goes up
+  /// as one blob and concurrent PUTs are last-write-wins on the wire, so an
+  /// older blob could land after a newer one and silently undo it. Four call
+  /// sites publish here, several without awaiting.
+  ///
+  /// The payload is built inside the chain, not by the caller, so a save that
+  /// waited its turn sends the state as of its turn rather than a snapshot
+  /// taken before the write it was queued behind.
+  Future<void> _savePublicProfileUpdate() {
+    // Announced HERE, before the queue wait — callers mutate the in-memory
+    // profile and then call this, and that mutated object is what every surface
+    // renders. Announcing from inside the publish would hold the update back
+    // for however long the chain ahead of it takes, which is the staleness the
+    // stream exists to remove (#8582).
+    _notifyPublicProfileChanged();
+
+    if (_saveQueued) return _saveChain;
+
+    _saveQueued = true;
+    _saveChain = _saveChain.then((_) async {
+      // Cleared before the payload is built: from here a new caller's change
+      // is not covered by this save and needs one of its own.
+      _saveQueued = false;
+      try {
+        await _publishProfile();
+      } catch (e, s) {
+        // Nothing may leave this chain in a failed state. A failed future
+        // short-circuits every `.then` registered after it, so a single throw
+        // would silently stop the profile publishing again for the rest of the
+        // session and strand _saveQueued — and most callers do not await, so it
+        // would surface only as an unhandled async error.
+        ErrorHandler.logError(e: e, s: s, data: {});
+      }
+    });
+    return _saveChain;
+  }
+
+  Future<void> _publishProfile() async {
     // Last line of defence, past every caller's own guard: the profile in hand
     // is written only to the account it was loaded for. Reported once a session
     // because a refusal repeats for as long as the mismatch lasts.
+    if (_publicProfile == null) {
+      // Nothing loaded: the profile was cleared while this publish sat in the
+      // queue, which is ordinary logout timing rather than a fault. Reporting
+      // it would drown the signal below, which is meant to be rare.
+      return;
+    }
+
     if (!_publicProfileIsOwn) {
       await ErrorHandler.logErrorOnce(
         key: 'public-profile-write-refused',
         e: "Refused to write a public profile that belongs to another account",
         s: StackTrace.current,
-        data: {
-          'loadedFor': _publicProfileUserId,
-          'activeUser': client.userID,
-          'type': type,
-        },
+        data: {'loadedFor': _publicProfileUserId, 'activeUser': client.userID},
         level: SentryLevel.warning,
       );
       return;
     }
 
-    // Announced BEFORE the request, not after it succeeds: callers mutate the
-    // in-memory profile and then call this, and that mutated object is what
-    // every surface renders. Announcing only on success left a failed write
-    // showing the old level while memory held the new one — a narrower version
-    // of the staleness this stream exists to remove.
-    _notifyPublicProfileChanged();
-
+    final content = publicProfile!.toJson();
     try {
-      await client.setUserProfile(client.userID!, type, content);
+      // Bounded, because every later publish queues behind this one: the Matrix
+      // profile PUT has no timeout of its own, so a request that stalls rather
+      // than fails would wedge the chain for the rest of the session.
+      await client
+          .setUserProfile(
+            client.userID!,
+            PangeaEventTypes.profileAnalytics,
+            content,
+          )
+          .timeout(const Duration(seconds: 30));
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'type': type, 'content': content},
-      );
+      // Swallowed, so one failed publish cannot break the chain every later
+      // publish is queued behind.
+      ErrorHandler.logError(e: e, s: s, data: {'content': content});
     }
   }
 
@@ -488,10 +546,7 @@ class UserController {
     if (baseLanguage != null) analytics.baseLanguage = baseLanguage;
     analytics.setLanguageInfo(language, level, analyticsRoomId);
 
-    await _savePublicProfileUpdate(
-      PangeaEventTypes.profileAnalytics,
-      publicProfile!.toJson(),
-    );
+    await _savePublicProfileUpdate();
   }
 
   static String _shortCode(String langCode) => langCode.split('-').first;
@@ -553,10 +608,7 @@ class UserController {
       );
     }
 
-    await _savePublicProfileUpdate(
-      PangeaEventTypes.profileAnalytics,
-      publicProfile!.toJson(),
-    );
+    await _savePublicProfileUpdate();
   }
 
   /// Adds [offset] to the XP offset published for [languageCode]'s language.
@@ -571,10 +623,7 @@ class UserController {
       offset,
       _ownAnalyticsRoomIdFor(language),
     );
-    await _savePublicProfileUpdate(
-      PangeaEventTypes.profileAnalytics,
-      publicProfile!.toJson(),
-    );
+    await _savePublicProfileUpdate();
   }
 
   Future<void> updatePublicProfile() async {
@@ -600,10 +649,7 @@ class UserController {
       userId: _publicProfileUserId,
     );
 
-    await _savePublicProfileUpdate(
-      PangeaEventTypes.profileAnalytics,
-      publicProfile!.toJson(),
-    );
+    await _savePublicProfileUpdate();
   }
 
   Future<AnalyticsProfileModel> getPublicAnalyticsProfile(String userId) async {

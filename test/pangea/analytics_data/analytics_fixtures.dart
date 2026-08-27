@@ -85,10 +85,21 @@ List<OneConstructUse> usesFor(
 
 /// Opens a fresh, empty in-memory database. Each call gets its own sqlite
 /// connection so tests never share state.
-Future<AnalyticsDatabase> freshDatabase() async {
-  final sqlite = await databaseFactoryFfi.openDatabase(':memory:');
+/// [name] distinguishes stores WITHIN one test file: the underlying box
+/// collection is keyed by name, so two calls sharing it also share their data —
+/// which silently leaks one test's seed into the next.
+Future<AnalyticsDatabase> freshDatabase({
+  String name = 'analytics_test',
+}) async {
+  // singleInstance:false or sqflite hands the same open ':memory:' database
+  // back to every caller, so "fresh" stores would share their contents and one
+  // test's seed would silently leak into the next.
+  final sqlite = await databaseFactoryFfi.openDatabase(
+    ':memory:',
+    options: OpenDatabaseOptions(singleInstance: false),
+  );
   return AnalyticsDatabase.init(
-    'analytics_test',
+    name,
     database: sqlite,
     sqfliteFactory: databaseFactoryFfi,
   );
