@@ -269,9 +269,11 @@ void main() {
 
       expect(segments.map((s) => s.text), ["he'll go"]);
       // Asserting the text alone let the real regression through: the chunk
-      // could be ACCEPTED and stamped with the timing of a word the transcript
-      // never contained, and the text would still read correctly.
-      expect(segments.single.atMs, isNull);
+      // could be ACCEPTED and cut at a word the transcript never contained.
+      // Refused, it is ONE segment carrying the chunk's own start -- coarse,
+      // not absent, so the rest of the call still draws.
+      expect(segments, hasLength(1));
+      expect(segments.single.atMs, _chunkStart);
     });
 
     test('a symbol that changes a word is not stripped away', () {
@@ -280,7 +282,8 @@ void main() {
       ]);
 
       expect(segments.map((s) => s.text), ['C++ rocks']);
-      expect(segments.single.atMs, isNull);
+      expect(segments, hasLength(1));
+      expect(segments.single.atMs, _chunkStart);
     });
 
     test('a word-forming mark is kept whatever Unicode calls it', () {
@@ -297,10 +300,11 @@ void main() {
           '$word rocks',
         ], reason: '$word must not align with C');
         expect(
-          segments.single.atMs,
-          isNull,
-          reason: '$word aligned with C and took its timestamp',
+          segments,
+          hasLength(1),
+          reason: '$word aligned with C and was cut at its words',
         );
+        expect(segments.single.atMs, _chunkStart);
       }
     });
 
@@ -368,7 +372,8 @@ void main() {
       ]);
 
       expect(segments.map((s) => s.text), ['你好。是']);
-      expect(segments.single.atMs, isNull);
+      expect(segments, hasLength(1));
+      expect(segments.single.atMs, _chunkStart);
     });
 
     test('case alone does not trigger the fallback', () {
@@ -498,7 +503,10 @@ void main() {
         reason: 'the cut is the same cut either way',
       );
       expect(positioned.map((s) => s.atMs), [_chunkStart, _chunkStart + 2300]);
-      expect(unpositioned.map((s) => s.atMs), [null, null]);
+      // Both segments now sit at the chunk's own start: the cut is the same,
+      // and the claim narrows from "at this word" to "during this chunk"
+      // rather than vanishing.
+      expect(unpositioned.map((s) => s.atMs), [_chunkStart, _chunkStart]);
     });
 
     test('a blank timing spanning a pause does not swallow it', () {
@@ -544,7 +552,7 @@ void main() {
       expect(blank.single.text, 'texto real');
       expect(substituted.single.text, 'pay bob today');
       for (final fallback in [none, blank, substituted]) {
-        expect(fallback.single.atMs, isNull);
+        expect(fallback.single.atMs, _chunkStart);
       }
     });
 
@@ -621,7 +629,7 @@ void main() {
     };
 
     malformed.forEach((what, timings) {
-      test('$what leaves the chunk unpositioned, with its text intact', () {
+      test('$what costs the chunk its precision, not its text', () {
         final text = timings
             .map((timing) => timing.$1)
             .where((word) => word.trim().isNotEmpty)
@@ -631,7 +639,9 @@ void main() {
         ]);
 
         expect(segments.map((s) => s.text).join(' '), text);
-        expect(segments.map((s) => s.atMs), everyElement(isNull));
+        // The chunk's own start, not a word's, and never null: one mangled
+        // chunk must not hide the good turns around it.
+        expect(segments.map((s) => s.atMs), everyElement(_chunkStart));
       });
     });
 

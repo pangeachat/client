@@ -222,8 +222,9 @@ List<String> _transcriptWords(String text) =>
 ///
 /// Alignment is deliberately unclever: the counts must match exactly, and each
 /// pair must agree once sentence marks and case are set aside. Returns null on
-/// any disagreement, which drops the chunk to the same unpositioned fallback as
-/// before -- never worse than today.
+/// any disagreement, which drops the chunk to its whole-chunk fallback: the
+/// transcript's own text, placed at the chunk's start. Coarser, never absent,
+/// and never a word the speaker did not say.
 ///
 /// KNOWN LIMITATION: pairing is against the transcript's WHITESPACE-separated
 /// words, so scripts that do not space their words -- Chinese, Japanese -- give
@@ -239,8 +240,9 @@ List<String> _transcriptWords(String text) =>
 /// speech. What edge-only sentence marks buy: "Hello," lines up with `hello`,
 /// while "he'll" against "hell", "C++" against "C" and "C#" against "C" still
 /// do not -- each differs by something that belongs to the word, so they are
-/// refused and the chunk falls back unpositioned, as the old exact rule
-/// intended.
+/// refused and the chunk falls back to its own text at the chunk's start, as
+/// the old exact rule intended, minus the cost of hiding the rest of the
+/// call.
 List<String>? _alignedToTranscript(List<WordTiming> timings, String text) {
   final spoken = <int>[];
   for (var i = 0; i < timings.length; i++) {
@@ -289,7 +291,7 @@ List<TranscriptSegment> buildSegments(
     final timings = transcript.wordTimings;
 
     if (timings == null || timings.isEmpty) {
-      _add(segments, transcript.text, null);
+      _add(segments, transcript.text, chunk.startedAtMs);
       continue;
     }
 
@@ -299,7 +301,7 @@ List<TranscriptSegment> buildSegments(
     // positions taken from them can be trusted.
     final aligned = _alignedToTranscript(timings, transcript.text);
     if (aligned == null) {
-      _add(segments, transcript.text, null);
+      _add(segments, transcript.text, chunk.startedAtMs);
       continue;
     }
 
@@ -329,7 +331,8 @@ List<TranscriptSegment> buildSegments(
     // Where the segment being built starts, taken when its first word enters
     // the buffer. At the cut the value in hand belongs to the segment being
     // OPENED, not to the one being emitted. Left null for a chunk that cannot
-    // be placed, which is what leaves its segments unpositioned.
+    // be placed precisely, which is what leaves its segments at the chunk's
+    // own start rather than at a word's.
     int? openedAt;
 
     final countBefore = segments.length;
@@ -380,10 +383,11 @@ List<TranscriptSegment> buildSegments(
         .join(' ');
     if (_words(rebuilt) != _words(transcript.text)) {
       segments.removeRange(countBefore, segments.length);
-      // Unpositioned, even when the timings were a flawless sequence: a
-      // position taken from a cut that lost text would describe the surviving
-      // part, not the text being shown.
-      _add(segments, transcript.text, null);
+      // Back to the chunk's own start, even when the timings were a flawless
+      // sequence: a position taken from a cut that lost text would describe the
+      // surviving part, not the text being shown. The chunk's start describes
+      // all of it.
+      _add(segments, transcript.text, chunk.startedAtMs);
       continue;
     }
 
@@ -394,7 +398,9 @@ List<TranscriptSegment> buildSegments(
     // later chunk with all-blank timings was dropped whenever an earlier chunk
     // had produced anything -- silently losing speech, and only in calls long
     // enough to have a second chunk.
-    if (segments.length == countBefore) _add(segments, transcript.text, null);
+    if (segments.length == countBefore) {
+      _add(segments, transcript.text, chunk.startedAtMs);
+    }
   }
 
   return List.unmodifiable(segments);
@@ -424,12 +430,12 @@ List<TranscriptSegment> buildSegments(
 /// lies outside the chunk.
 ///
 /// The cost is real and is accepted: one absent end anywhere in a chunk makes
-/// that chunk unpositioned, and one unpositioned chunk drops the whole CALL
-/// back to the per-speaker view. Three earlier versions carved out exemptions
-/// to avoid that, and all three carve-outs were where the next hole was found.
-/// If providers turn out to omit ends routinely, that will show up as calls
-/// rendering per-speaker — a visible, measurable fact to revisit on, rather
-/// than a guess to design around now.
+/// that chunk placed at its own start rather than word by word. It no longer
+/// costs the rest of the call: every segment carries a position, so a chunk the
+/// provider mangled loses resolution and nothing else. Three earlier versions
+/// carved out exemptions inside this rule to avoid the old all-or-nothing cost,
+/// and all three carve-outs were where the next hole was found. The rule stayed
+/// strict and the COST moved instead, which is where it belonged.
 bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
   // Starts at zero, which is also what rejects a negative first start.
   var previousEnd = 0;
@@ -445,8 +451,23 @@ bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
 
 /// Where a segment opening [offsetInChunk] into [chunk] sits on the call's
 /// clock, or null when the chunk could not be placed.
-int? _positionOf(TranscribedChunk chunk, int? offsetInChunk) =>
-    offsetInChunk == null ? null : chunk.startedAtMs + offsetInChunk;
+/// Where a segment sits, at the best resolution available.
+///
+/// Never null. An offset INTO the chunk is the precise answer and comes from
+/// the provider's word timings; without one, the chunk's own start is still a
+/// true statement -- this was said during this stretch of the call -- and it is
+/// known from when we captured the audio, not from any timing we just decided
+/// not to trust.
+///
+/// This is the rule that stops one bad chunk hiding a whole call. Providers
+/// return a garbled chunk routinely: a corrupted character, a stray word in
+/// the wrong language, a word list that does not match its own transcript.
+/// Refusing to place such a chunk USED to leave it null, and one null anywhere
+/// dropped every other turn out of the timeline. A real call showed five of
+/// six segments perfectly placed and no timeline at all. Degrading one chunk's
+/// resolution is the honest cost; hiding five good turns is not.
+int _positionOf(TranscribedChunk chunk, int? offsetInChunk) =>
+    chunk.startedAtMs + (offsetInChunk ?? 0);
 
 void _add(List<TranscriptSegment> into, String text, int? atMs) {
   final trimmed = text.trim();

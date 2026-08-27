@@ -461,8 +461,11 @@ void main() {
 
       expect(s.chunksLost, 0, reason: 'nothing was captured and then lost');
       expect(s.transcripts, ['hola mundo']);
+      // The chunk's own start, not null. Malformed provider timings cost this
+      // chunk its word-level precision; they no longer cost the rest of the
+      // call its timeline.
       expect(s.segments.map((segment) => (segment.text, segment.atMs)), [
-        ('hola mundo', null),
+        ('hola mundo', 1000),
       ]);
     });
   });
