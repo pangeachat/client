@@ -452,48 +452,61 @@ class CallTimelineEvent extends StatelessWidget {
         child: Material(
           color: theme.colorScheme.surface.withAlpha(128),
           borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
-            // Null when there is nothing to open, which also removes the
-            // ripple: an affordance that leads nowhere is worse than none.
-            onTap: _openable ? () => _openTranscript(context) : null,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(_icon(missed), size: 16, color: color),
-                  const SizedBox(width: 7),
-                  Flexible(
-                    child: Text(
-                      _label(l10n, missed),
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: color,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  if (connected && _duration != null) ...[
-                    Text(
-                      '  ${formatDuration(_duration!)}',
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurfaceVariant,
-                      ),
-                    ),
-                  ],
-                  if (_openable) ...[
+          // The whole card is the tap target, so the whole card is what has to
+          // announce itself. The notes icon below carries a Tooltip, and a
+          // tooltip is a MOUSE HOVER: it says nothing to a screen reader and
+          // nothing at all on a phone, which is where most calls happen. Before
+          // this, the only way to discover the transcript was to guess that a
+          // finished call was tappable.
+          child: Semantics(
+            button: _openable,
+            label: _openable ? l10n.callTranscriptOpen : null,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
+              // Null when there is nothing to open, which also removes the
+              // ripple: an affordance that leads nowhere is worse than none.
+              onTap: _openable ? () => _openTranscript(context) : null,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 6,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(_icon(missed), size: 16, color: color),
                     const SizedBox(width: 7),
-                    Tooltip(
-                      message: l10n.callTranscriptOpen,
-                      child: Icon(
-                        Icons.notes,
-                        size: 15,
-                        color: theme.colorScheme.onSurfaceVariant,
+                    Flexible(
+                      child: Text(
+                        _label(l10n, missed),
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: color,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
+                    if (connected && _duration != null) ...[
+                      Text(
+                        '  ${formatDuration(_duration!)}',
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                    if (_openable) ...[
+                      const SizedBox(width: 7),
+                      Tooltip(
+                        message: l10n.callTranscriptOpen,
+                        child: Icon(
+                          Icons.notes,
+                          size: 15,
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
           ),
