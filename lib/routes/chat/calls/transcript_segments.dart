@@ -118,21 +118,63 @@ const kUtterancePause = Duration(milliseconds: 900);
 final _whitespace = RegExp(r'\s+');
 
 /// A chunk's text, normalised for comparison ONLY by case and whitespace.
-///
-/// Deliberately forgiving nothing else. Three cleverer rules each let speech
-/// through altered: a character ratio missed a short word dropped off a long
-/// one; a word count matched "pay bob today" against timings for
-/// [pay, alice, today] and fabricated "alice"; stripping punctuation made
-/// "he'll" equal "hell", and stripping it only at word edges still made "C++"
-/// equal "C".
-///
-/// So the rule is exact. If the timings do not reconstruct the chunk, the
-/// chunk's own text is used. The cost is coarser segmentation whenever a
-/// provider omits punctuation from its word list -- a readability cost, paid
-/// knowingly, because the alternative is a transcript that quietly says
-/// something the learner did not.
 String _words(String text) =>
     text.toLowerCase().trim().split(_whitespace).join(' ');
+
+/// Unicode punctuation and symbols, stripped only when COMPARING a provider's
+/// word against the transcript's.
+final _punctuation = RegExp(r'[\p{P}\p{S}]', unicode: true);
+
+/// A word reduced to the part two spellings of it must share.
+String _core(String word) =>
+    word.toLowerCase().replaceAll(_punctuation, '').trim();
+
+/// The transcript's own words, in order.
+List<String> _transcriptWords(String text) =>
+    text.trim().split(_whitespace).where((w) => w.isNotEmpty).toList();
+
+/// Lines the provider's timings up against the transcript's own words, ONE TO
+/// ONE, and hands back the transcript's spelling of each.
+///
+/// Providers return a punctuation-free word list beside a punctuated
+/// transcript: Deepgram is asked for `smart_format` + `punctuate` and its
+/// transcript comes back "Hello, मैं ... अभी." while its word list is
+/// [hello, मैं, ..., अभी]. Reconstructing the display text from that word list
+/// therefore never matched the transcript, which left every real call
+/// unpositioned. Measured on the captures on disk: 14/14.
+///
+/// So the display text comes from the TRANSCRIPT and the timings supply only
+/// the WHEN. That also means the punctuation survives into what the learner
+/// reads, which assembling from the word list could never do.
+///
+/// Alignment is deliberately unclever: the counts must match exactly, and each
+/// pair must agree once punctuation and case are set aside. Returns null on any
+/// disagreement, which drops the chunk to the same unpositioned fallback as
+/// before -- never worse than today.
+///
+/// What the count requirement buys: a provider that re-cuts word boundaries
+/// ("therapist" against [the, rapist], "nowhere" against [now, here]) does not
+/// line up and is refused, which is the case that could genuinely misattribute
+/// speech. What setting punctuation aside costs: a transcript "he'll" against a
+/// provider word "hell", or "C++" against "C", is accepted and DISPLAYED AS THE
+/// TRANSCRIPT HAS IT. That is a cost worth naming and it is small, because the
+/// transcript is already the authoritative text -- it is what this same screen
+/// shows on every fallback, and what the batch path has always shown.
+List<String>? _alignedToTranscript(List<WordTiming> timings, String text) {
+  final spoken = <int>[];
+  for (var i = 0; i < timings.length; i++) {
+    if (timings[i].word.trim().isNotEmpty) spoken.add(i);
+  }
+  final words = _transcriptWords(text);
+  if (spoken.isEmpty || spoken.length != words.length) return null;
+
+  final aligned = List<String>.filled(timings.length, '');
+  for (var k = 0; k < spoken.length; k++) {
+    if (_core(timings[spoken[k]].word) != _core(words[k])) return null;
+    aligned[spoken[k]] = words[k];
+  }
+  return aligned;
+}
 
 /// Cuts one call's frozen responses into readable segments.
 ///
@@ -170,6 +212,16 @@ List<TranscriptSegment> buildSegments(
       continue;
     }
 
+    // The transcript's own words, one per timing, or null when the two do not
+    // line up. Null means this chunk is not cut at all: the timings describe
+    // something other than the text being shown, so neither the words nor the
+    // positions taken from them can be trusted.
+    final aligned = _alignedToTranscript(timings, transcript.text);
+    if (aligned == null) {
+      _add(segments, transcript.text, null);
+      continue;
+    }
+
     // Decided ONCE per chunk, before anything is cut. The cut runs either way:
     // a chunk that cannot be positioned still gets whatever finer segmentation
     // its timings buy, it simply does not claim to know when any of it
@@ -201,7 +253,8 @@ List<TranscriptSegment> buildSegments(
 
     final countBefore = segments.length;
 
-    for (final timing in timings) {
+    for (var i = 0; i < timings.length; i++) {
+      final timing = timings[i];
       final start = timing.startTimeMs;
       final gapOpens =
           start != null &&
@@ -214,7 +267,9 @@ List<TranscriptSegment> buildSegments(
         openedAt = null;
       }
 
-      final word = timing.word.trim();
+      // The TRANSCRIPT's spelling, not the provider's word list -- that is what
+      // carries the punctuation and the casing a learner reads.
+      final word = aligned[i];
       if (word.isEmpty) continue;
       if (words.isEmpty && placeable) openedAt = start;
       words.add(word);
@@ -228,30 +283,25 @@ List<TranscriptSegment> buildSegments(
       _add(segments, words.join(' '), _positionOf(chunk, openedAt));
     }
 
-    // Timings that account for materially less than the transcript are not a
-    // finer cut of it, they are a partial one -- and keeping only what they
-    // covered silently drops the rest. "hello world" timed as ["hello"] must
-    // not become "hello".
-    // The timings must reconstruct the transcript EXACTLY, word for word.
+    // A backstop on THIS loop, not on the provider.
     //
-    // Counting words was still a proxy, and proxies here fail in the worst
-    // direction available. Timings [pay, alice, today] against the text
-    // "pay bob today" have the same word count, so a count check passed them
-    // and the output became "pay alice today" -- losing a word AND inventing
-    // one. A coarse transcript is a readability problem; a fabricated one is
-    // put in a learner's mouth and read as evidence of what they said.
+    // Provider disagreement is already refused by `_alignedToTranscript`
+    // above, so by the time the cut runs, the words being joined are the
+    // transcript's own. What remains is the cut itself losing some: `_add`
+    // drops anything that trims to empty, and a mis-sliced buffer would
+    // silently shorten a segment. "hello world" emerging as "hello" is a
+    // readability bug in this function; putting words a learner never said in
+    // front of them would be far worse, and that is what the alignment
+    // prevents. Kept because it is nearly free and it fails closed.
     final rebuilt = segments
         .skip(countBefore)
         .map((segment) => segment.text)
         .join(' ');
     if (_words(rebuilt) != _words(transcript.text)) {
       segments.removeRange(countBefore, segments.length);
-      // Unpositioned, even when the timings were a flawless sequence. This is
-      // the fallback that proves the never-position-a-fallback rule has to be
-      // its own rule rather than a consequence of the sequence check: the
-      // timings here can be complete and sane and it still fires, because they
-      // described DIFFERENT WORDS than the transcript did — so a position taken
-      // from them would describe the timed subset, not the text being shown.
+      // Unpositioned, even when the timings were a flawless sequence: a
+      // position taken from a cut that lost text would describe the surviving
+      // part, not the text being shown.
       _add(segments, transcript.text, null);
       continue;
     }

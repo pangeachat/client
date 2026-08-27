@@ -189,6 +189,10 @@ class CallTranscriptSink implements CallAudioSink {
       final request = transcribe(
         SpeechToTextRequestModel(
           audioContent: chunk.toWav(),
+          // Timings AS WELL AS tokens. `skipTokenize` would buy the timings by
+          // giving up `stt_tokens`, and `constructs()` is gated on those --
+          // the credit would silently go to zero on every call.
+          includeWordTimings: true,
           config: SpeechToTextAudioConfigModel(
             encoding: AudioEncodingEnum.linear16,
             sampleRateHertz: chunk.sampleRate,

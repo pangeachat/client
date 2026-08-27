@@ -79,12 +79,22 @@ class SpeechToTextRequestModel extends BaseRequest {
   /// must never share one with a full tokenized response for the same audio.
   final bool skipTokenize;
 
+  /// When true, the choreographer returns word timings IN ADDITION to
+  /// `stt_tokens`, rather than instead of them. The call transcript needs
+  /// both: timings to place each turn in time, and tokens because construct
+  /// crediting is gated on them and silently credits nothing when they are
+  /// empty -- so [skipTokenize] cannot serve this, it would stop awarding
+  /// speaking XP on every call. Like [skipTokenize] it is a distinct cache
+  /// slot (see [storageKey]): the two responses differ in shape.
+  final bool includeWordTimings;
+
   SpeechToTextRequestModel({
     required this.audioContent,
     required this.config,
     this.audioEvent,
     this.mock,
     this.skipTokenize = false,
+    this.includeWordTimings = false,
   });
 
   /// A full sha256 digest of the audio content. The R0 key sampled only the
@@ -97,7 +107,8 @@ class SpeechToTextRequestModel extends BaseRequest {
 
   @override
   String get storageKey =>
-      '$_audioDigest|${jsonEncode(config.toJson())}|$skipTokenize';
+      '$_audioDigest|${jsonEncode(config.toJson())}'
+      '|$skipTokenize|$includeWordTimings';
 
   @override
   Map<String, dynamic> toJson() => {
@@ -107,6 +118,11 @@ class SpeechToTextRequestModel extends BaseRequest {
     // today's (choreo defaults skip_tokenize to false); it is still part of
     // storageKey/==/hashCode so the cache never mixes the two paths.
     if (skipTokenize) "skip_tokenize": true,
+    // Omitted when false for the same reason as skip_tokenize: the flag-OFF
+    // request bytes stay byte-identical to today's, and choreo defaults it to
+    // false. Still part of storageKey/==/hashCode so the cache never mixes
+    // a with-timings response into a without-timings slot.
+    if (includeWordTimings) "include_word_timings": true,
     if (mock != null) ModelKey.mock: mock,
   };
 
@@ -117,11 +133,17 @@ class SpeechToTextRequestModel extends BaseRequest {
 
     return listEquals(audioContent, other.audioContent) &&
         config == other.config &&
-        skipTokenize == other.skipTokenize;
+        skipTokenize == other.skipTokenize &&
+        includeWordTimings == other.includeWordTimings;
   }
 
   @override
-  int get hashCode => Object.hash(_audioDigest, config.hashCode, skipTokenize);
+  int get hashCode => Object.hash(
+    _audioDigest,
+    config.hashCode,
+    skipTokenize,
+    includeWordTimings,
+  );
 }
 
 class SpeechToTextAudioConfigModel {
