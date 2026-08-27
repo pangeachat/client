@@ -21,6 +21,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/settings/settings_style/style_settings_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -115,6 +116,10 @@ class PangeaController {
 
   void _onLogout(BuildContext context) {
     userController.clear();
+    // The practice holder is a global singleton, so a session left running by
+    // the account logging out would otherwise resume — timer and all — under
+    // the next account (#8617).
+    PracticeSessionHolder.instance.end();
     _languageSubscription?.cancel();
     _settingsSubscription?.cancel();
     _joinSpaceSubscription?.cancel();
