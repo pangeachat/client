@@ -283,6 +283,65 @@ void main() {
       expect(segments.single.atMs, isNull);
     });
 
+    test('a word-forming mark is kept whatever Unicode calls it', () {
+      // `#` is Unicode punctuation, so every category-based rule accepted
+      // "C#" as "C". It is part of the WORD, not decoration the transcript put
+      // around it, which is why membership is an explicit set rather than a
+      // category. Same defect class as C++ and he'll, found a round later.
+      for (final word in ['C#', r'C$', 'C%', 'C&', 'C@', 'C_', 'C*', 'C/']) {
+        final segments = buildSegments([
+          _chunk('$word rocks', timings: [('C', 0, 100), ('rocks', 150, 300)]),
+        ]);
+
+        expect(segments.map((s) => s.text), [
+          '$word rocks',
+        ], reason: '$word must not align with C');
+        expect(
+          segments.single.atMs,
+          isNull,
+          reason: '$word aligned with C and took its timestamp',
+        );
+      }
+    });
+
+    test('sentence marks from other scripts are forgiven at the edges', () {
+      // The set has to cover the scripts learners actually speak, not just
+      // Latin. These are the shapes the captures on disk contain.
+      for (final (text, first, second) in [
+        ('¿Cómo estás?', 'cómo', 'estás'),
+        ('داخليًا، نعم', 'داخليًا', 'نعم'),
+        ('नमस्ते। हाँ', 'नमस्ते', 'हाँ'),
+      ]) {
+        final segments = buildSegments([
+          _chunk(text, timings: [(first, 0, 100), (second, 150, 300)]),
+        ]);
+
+        expect(
+          segments.single.atMs,
+          _chunkStart,
+          reason: '$text should align and carry a position',
+        );
+        expect(segments.single.text, text);
+      }
+    });
+
+    test('a script without word spacing falls back, and is not faked', () {
+      // KNOWN LIMITATION, asserted so it is visible rather than discovered.
+      // Alignment pairs the provider's words with the transcript's
+      // WHITESPACE-separated ones, and Chinese and Japanese do not separate
+      // words that way: "你好。是" is one token against two provider words, so
+      // the counts never match and the chunk falls back to the per-speaker
+      // view. Splitting CJK on sentence marks instead would be a different
+      // design; guessing at boundaries to fill the gap would put words in a
+      // learner's mouth, which is the one thing this file never does.
+      final segments = buildSegments([
+        _chunk('你好。是', timings: [('你好', 0, 100), ('是', 150, 300)]),
+      ]);
+
+      expect(segments.map((s) => s.text), ['你好。是']);
+      expect(segments.single.atMs, isNull);
+    });
+
     test('case alone does not trigger the fallback', () {
       final segments = buildSegments([
         _chunk(

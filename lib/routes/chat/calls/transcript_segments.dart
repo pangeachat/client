@@ -121,24 +121,78 @@ final _whitespace = RegExp(r'\s+');
 String _words(String text) =>
     text.toLowerCase().trim().split(_whitespace).join(' ');
 
-/// Punctuation at the START or END of a word, and nothing else.
+/// The marks a transcript uses to punctuate a SENTENCE, as a closed set.
 ///
-/// EDGE-ONLY, because that is the whole of what a transcript legitimately adds:
-/// it decorates a word it also encloses in a sentence -- "Hello," for `hello`,
-/// "¿Cómo" for `cómo`, Arabic "داخليًا،" for the bare word. A difference INSIDE
-/// a word is not decoration, it is a different word: "he'll" is not "hell".
-/// Stripping punctuation anywhere, which an earlier version of this did,
-/// collapsed exactly that distinction and accepted a timestamp for a word the
-/// transcript never contained.
+/// Deliberately a list and not a Unicode category. Three rounds of review found
+/// the same defect three times -- "he'll" accepted as "hell", then "C++" as
+/// "C", then "C#" as "C" -- because each rule was written as `\p{P}` or
+/// `\p{P}\p{S}`, and those categories are drawn for Unicode's purposes rather
+/// than ours. They contain `#`, `%`, `&`, `*`, `/`, `@` and `_`, every one of
+/// which belongs to the WORD rather than to the sentence around it. A category
+/// will keep surprising us; an explicit set cannot.
 ///
-/// PUNCTUATION ONLY, never symbols. `+` is a symbol, so "C++" keeps its tail
-/// and is correctly refused against a provider's "C" -- the same pair the old
-/// exact rule was written to catch.
-final _edgePunctuation = RegExp(r'^\p{P}+|\p{P}+$', unicode: true);
+/// Membership answers one question only: would a transcript add this character
+/// around a word it is enclosing in a sentence? A comma would. A `#` would not.
+const _sentenceMarks = {
+  '.',
+  ',',
+  '!',
+  '?',
+  ';',
+  ':',
+  '…',
+  '"',
+  "'",
+  '“',
+  '”',
+  '‘',
+  '’',
+  '«',
+  '»',
+  '(',
+  ')',
+  '[',
+  ']',
+  '{',
+  '}',
+  '¿',
+  '¡',
+  '—',
+  '–',
+  '。',
+  '、',
+  '！',
+  '？',
+  '；',
+  '：',
+  '「',
+  '」',
+  '『',
+  '』',
+  '،',
+  '؛',
+  '؟',
+  '।',
+};
 
-/// A word with its decoration removed, for COMPARISON only. Never displayed.
-String _core(String word) =>
-    word.trim().replaceAll(_edgePunctuation, '').toLowerCase();
+/// A word with its sentence decoration removed, for COMPARISON only. What is
+/// DISPLAYED is always the transcript's own spelling, never this.
+///
+/// Trims only at the edges. A mark inside a word is part of it: "he'll" is not
+/// "hell", and forgiving that accepted a timestamp for a word the transcript
+/// never contained.
+String _core(String word) {
+  final s = word.trim();
+  var start = 0;
+  var end = s.length;
+  while (start < end && _sentenceMarks.contains(s[start])) {
+    start++;
+  }
+  while (end > start && _sentenceMarks.contains(s[end - 1])) {
+    end--;
+  }
+  return s.substring(start, end).toLowerCase();
+}
 
 /// The transcript's own words, in order.
 List<String> _transcriptWords(String text) =>
@@ -159,17 +213,26 @@ List<String> _transcriptWords(String text) =>
 /// reads, which assembling from the word list could never do.
 ///
 /// Alignment is deliberately unclever: the counts must match exactly, and each
-/// pair must agree once punctuation and case are set aside. Returns null on any
-/// disagreement, which drops the chunk to the same unpositioned fallback as
+/// pair must agree once sentence marks and case are set aside. Returns null on
+/// any disagreement, which drops the chunk to the same unpositioned fallback as
 /// before -- never worse than today.
+///
+/// KNOWN LIMITATION: pairing is against the transcript's WHITESPACE-separated
+/// words, so scripts that do not space their words -- Chinese, Japanese -- give
+/// one token against many provider words and never align. Those calls always
+/// fall back to the per-speaker view. Splitting them on sentence marks instead
+/// would be a different design; guessing at word boundaries to fill the gap
+/// would put words in a learner's mouth, which is the one thing this file never
+/// does.
 ///
 /// What the count requirement buys: a provider that re-cuts word boundaries
 /// ("therapist" against [the, rapist], "nowhere" against [now, here]) does not
 /// line up and is refused, which is the case that could genuinely misattribute
-/// speech. What edge-only punctuation buys: "Hello," lines up with `hello`,
-/// while "he'll" against "hell" and "C++" against "C" still do not -- those
-/// differ INSIDE the word, so they are refused and the chunk falls back
-/// unpositioned, exactly as the old exact rule intended.
+/// speech. What edge-only sentence marks buy: "Hello," lines up with `hello`,
+/// while "he'll" against "hell", "C++" against "C" and "C#" against "C" still
+/// do not -- each differs by something that belongs to the word, so they are
+/// refused and the chunk falls back unpositioned, as the old exact rule
+/// intended.
 List<String>? _alignedToTranscript(List<WordTiming> timings, String text) {
   final spoken = <int>[];
   for (var i = 0; i < timings.length; i++) {
