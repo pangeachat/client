@@ -19,6 +19,8 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_card.da
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_popup_menu.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_stats_menu.dart';
+import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/chat_call_host.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_list_tile.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_title.dart';
@@ -35,6 +37,21 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 import '../../utils/stream_extension.dart';
+
+/// Starts a call from the room's own header.
+///
+/// A call already running somewhere else refuses rather than swallowing this
+/// one, so that ANSWERING a ring for another room can decline it as busy.
+/// Pressing Call is the other intent: there is nothing to tell the other side,
+/// and the useful thing is simply to show the call already in progress --
+/// which the refusal has already brought forward.
+void _startCall(BuildContext context, Room room, {required bool video}) {
+  try {
+    Matrix.of(context).startCall(room, video: video);
+  } on AlreadyInACall {
+    Logs().i('Already on a call; showing that one instead');
+  }
+}
 
 class ChatView extends StatelessWidget {
   final ChatController controller;
@@ -74,7 +91,50 @@ class ChatView extends StatelessWidget {
       ];
     }
 
+    // v1 is direct messages only, and only where the homeserver advertises an
+    // RTC focus — offering a button that cannot work is worse than not offering
+    // one. Group calls are the same transport with more members and land later.
+    // The focus is discovered over the network, so the button appears once the
+    // answer is in rather than flickering on a guess. The future is memoized on
+    // the service, so this is one request per account, not one per room opened.
     return [
+      if (controller.room.isDirectChat)
+        FutureBuilder(
+          future: Matrix.of(context).callService.resolveFocus(),
+          builder: (context, snapshot) => snapshot.data == null
+              ? const SizedBox.shrink()
+              : Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Labelled explicitly. An IconButton's tooltip is not
+                    // reaching the accessibility tree in this build, so these
+                    // reach a screen reader as two unnamed buttons -- and an
+                    // end-to-end test cannot find them by anything but their
+                    // pixel position, which is how the call harness came to be
+                    // clicking empty space after a layout change.
+                    Semantics(
+                      button: true,
+                      label: L10n.of(context).startVideoCall,
+                      child: IconButton(
+                        icon: const Icon(Icons.videocam_outlined),
+                        tooltip: L10n.of(context).startVideoCall,
+                        onPressed: () =>
+                            _startCall(context, controller.room, video: true),
+                      ),
+                    ),
+                    Semantics(
+                      button: true,
+                      label: L10n.of(context).startCall,
+                      child: IconButton(
+                        icon: const Icon(Icons.call_outlined),
+                        tooltip: L10n.of(context).startCall,
+                        onPressed: () =>
+                            _startCall(context, controller.room, video: false),
+                      ),
+                    ),
+                  ],
+                ),
+        ),
       IconButton(
         icon: const Icon(Icons.search_outlined),
         tooltip: L10n.of(context).search,
@@ -548,6 +608,11 @@ class ChatView extends StatelessWidget {
                   //     alignment: Alignment.center,
                   //     child: const Icon(Icons.upload_outlined, size: 100),
                   //   ),
+                  // Pangea#
+                  // #Pangea
+                  // The active call, rendered inside this chat's pane —
+                  // expanded panel or minimized top tile.
+                  ChatCallHost(roomId: controller.room.id),
                   // Pangea#
                 ],
               ),

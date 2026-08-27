@@ -3685,6 +3685,66 @@
     "nan": "Not applicable",
     "instructions": "Instructions",
     "constructUsePvmDesc": "Produced in voice message",
+    "constructUsePvcDesc": "Produced in a call",
+    "startCall": "Call",
+    "startVideoCall": "Video call",
+    "callConnecting": "Connecting",
+    "callFailed": "Could not connect the call",
+    "callEnded": "Call ended",
+    "callHangUp": "Hang up",
+    "callMute": "Mute",
+    "callOngoingChannel": "Ongoing call",
+    "callUnmute": "Unmute",
+    "callCameraOn": "Turn camera on",
+    "callCameraOff": "Turn camera off",
+    "callRecordingNotice": "This call is transcribed for your analytics",
+    "callNoMicrophone": "They cannot hear you: your microphone did not start",
+    "callIncoming": "Incoming call",
+    "callAnswer": "Answer",
+    "callDecline": "Decline",
+    "callDeclinedByPeer": "Call declined",
+    "callRinging": "Ringing...",
+    "callMinimize": "Minimize call",
+    "callFullscreen": "Full screen",
+    "callExitFullscreen": "Exit full screen",
+    "callReconnecting": "Reconnecting...",
+    "callReturn": "Return",
+    "callPeerMuted": "Muted",
+    "callPeerBusy": "{name} is on another call",
+    "@callPeerBusy": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callReturnOffer": "You were in a call before the app reloaded",
+    "callPeerReconnecting": "{name} reconnecting...",
+    "@callPeerReconnecting": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callFailedBusy": "You are already in a call",
+    "callFailedService": "The calling service refused the connection",
+    "callFailedNoFocus": "Calling is not available on this server",
+    "callIncomingVoice": "Incoming voice call",
+    "callIncomingVideo": "Incoming video call",
+    "callQuickReply": "Message",
+    "callQuickReplyTitle": "Quick reply",
+    "callReplyCantTalk": "Can't talk right now. What's up?",
+    "callReplyCallRightBack": "I'll call you right back",
+    "callReplyOnMyWay": "On my way",
+    "callReplyCallLater": "Can I call you later?",
+    "callHistoryVoiceCall": "Voice call",
+    "callHistoryVideoCall": "Video call",
+    "callHistoryMissedCall": "Missed call",
+    "callHistoryMissedVideoCall": "Missed video call",
+    "callHistoryNoAnswer": "No answer",
+    "callHistoryDeclined": "Call declined",
+    "callHistoryYouDeclined": "You declined this call",
     "leaveSpaceDescription": "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.",
     "constructUseCorMmDesc": "Correct message meaning",
     "constructUseIncMmDesc": "Incorrect message meaning",

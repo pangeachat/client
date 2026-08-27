@@ -1,0 +1,879 @@
+import 'dart:async';
+import 'dart:typed_data';
+
+import 'package:flutter_test/flutter_test.dart';
+import 'package:livekit_client/livekit_client.dart';
+
+import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
+import 'package:fluffychat/routes/chat/calls/call_capture.dart';
+import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
+
+class RecordingSink implements CallAudioSink {
+  final List<PcmChunk> delivered = [];
+  final List<int> failIndices;
+  int closes = 0;
+  Completer<void>? block;
+
+  /// How many times each chunk should fail before going through, so a test can
+  /// tell a retry that recovered from one that never happened.
+  final Map<int, int> failuresLeft;
+
+  /// Every delivery attempt, including the ones that failed.
+  final List<int> attempts = [];
+
+  RecordingSink({this.failIndices = const [], Map<int, int>? failuresLeft})
+    : failuresLeft = failuresLeft ?? {};
+
+  @override
+  Future<void> deliver(PcmChunk chunk, {Duration? within}) async {
+    // Honoured, because the contract puts the limit on the attempt rather than
+    // on whoever is waiting for it. A double that ignored it could not show a
+    // hanging delivery being given up on at all.
+    final blocked = block;
+    if (blocked != null) {
+      await (within == null ? blocked.future : blocked.future.timeout(within));
+    }
+    attempts.add(chunk.index);
+    final left = failuresLeft[chunk.index] ?? 0;
+    if (left > 0) {
+      failuresLeft[chunk.index] = left - 1;
+      throw StateError('sink temporarily refused chunk ${chunk.index}');
+    }
+    if (failIndices.contains(chunk.index)) {
+      throw StateError('sink refused chunk ${chunk.index}');
+    }
+    delivered.add(chunk);
+  }
+
+  /// How many times closing should fail before it goes through.
+  int closeFailures = 0;
+
+  @override
+  Future<void> close() async {
+    if (closeFailures > 0) {
+      closeFailures--;
+      throw StateError('the sink refused to close');
+    }
+    closes++;
+  }
+}
+
+/// Stands in for a published track. [addAudioRenderer] is the only member the
+/// recorder touches, and the real one is a plain callback registration.
+class FakeTrack implements AudioTrack {
+  AudioFrameCallback? onFrame;
+  bool failNextRenderer = false;
+  bool failCancel = false;
+  AudioRendererOptions? options;
+  int cancels = 0;
+
+  @override
+  CancelListenFunc addAudioRenderer({
+    required AudioFrameCallback onFrame,
+    AudioRendererOptions options = const AudioRendererOptions(),
+  }) {
+    if (failNextRenderer) {
+      failNextRenderer = false;
+      throw StateError('no renderer available');
+    }
+    this.onFrame = onFrame;
+    this.options = options;
+    return () async {
+      cancels++;
+      if (failCancel) throw StateError('the renderer will not detach');
+      this.onFrame = null;
+    };
+  }
+
+  void emit(int ms, {double amplitude = 0.3}) {
+    final count = captureSampleRate * ms ~/ 1000;
+    final samples = Int16List(count);
+    final peak = (amplitude * 32767).round();
+    for (var i = 0; i < count; i++) {
+      samples[i] = i.isEven ? peak : -peak;
+    }
+    onFrame?.call(
+      AudioFrame(
+        sampleRate: captureSampleRate,
+        channels: captureChannels,
+        data: samples.buffer.asUint8List(),
+        format: AudioFormat.Int16,
+      ),
+    );
+  }
+
+  @override
+  dynamic noSuchMethod(Invocation i) => super.noSuchMethod(i);
+}
+
+void main() {
+  late RecordingSink sink;
+  late FakeTrack track;
+
+  setUp(() {
+    sink = RecordingSink();
+    track = FakeTrack();
+  });
+
+  CallCaptureService service({
+    RecordingSink? withSink,
+    CallAudioTap? withTap,
+    Duration? timeout,
+    Duration? detach,
+  }) => CallCaptureService(
+    sink: withSink ?? sink,
+    tap: withTap,
+    deliveryTimeout: timeout ?? const Duration(seconds: 30),
+    detachTimeout: detach ?? const Duration(seconds: 5),
+    newChunker: (firstIndex, sampleRate) => PcmChunker(
+      sampleRate: sampleRate,
+      channels: captureChannels,
+      targetDuration: const Duration(milliseconds: 200),
+      maxDuration: const Duration(milliseconds: 400),
+      minSilence: const Duration(milliseconds: 100),
+      firstIndex: firstIndex,
+    ),
+  );
+
+  group('CallCaptureService', () {
+    test(
+      'requests the capture format rather than accepting the default',
+      () async {
+        await service().start(track);
+        expect(track.options!.sampleRate, captureSampleRate);
+        expect(track.options!.channels, captureChannels);
+        expect(track.options!.format, AudioFormat.Int16);
+      },
+    );
+
+    test('delivers chunks as the call runs, not only at the end', () async {
+      final s = service();
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await pumpEventQueue();
+      expect(
+        sink.delivered,
+        isNotEmpty,
+        reason: '600ms exceeds the 400ms ceiling',
+      );
+      await s.stop();
+    });
+
+    test('a hangup stop does not wait for choreo, a handover stop does', () async {
+      // The transcripts go to choreo. A call is over when the microphone and
+      // the membership are released, never when a transcription answers --
+      // and waiting for one held the account's ONE call open long after the
+      // learner hung up. That refused the next call, and silently swallowed an
+      // INCOMING ring, because a ring arriving while this account reads as busy
+      // is dropped from the stream and never replayed.
+      final s = service();
+      await s.start(track);
+      sink.block = Completer<void>();
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await pumpEventQueue();
+
+      var teardownDone = false;
+      unawaited(
+        s.stop(settleDeliveries: false).then((_) => teardownDone = true),
+      );
+      await pumpEventQueue();
+      expect(
+        teardownDone,
+        isTrue,
+        reason: 'a hangup may not wait on a delivery that is still running',
+      );
+
+      // The handover path still waits: it is about to START recording again,
+      // and letting it run over a stretch still flushing is what the wait is
+      // there to prevent.
+      var handoverDone = false;
+      unawaited(s.stop().then((_) => handoverDone = true));
+      await pumpEventQueue();
+      expect(
+        handoverDone,
+        isFalse,
+        reason: 'a handover stop still settles what it handed over',
+      );
+
+      sink.block!.complete();
+      await pumpEventQueue();
+      expect(handoverDone, isTrue);
+    });
+
+    test('a tap that throws leaves nothing started', () async {
+      // Recording it as started would refuse every later attempt with "already
+      // running", costing the call its analytics for a failure that may have
+      // been momentary.
+      final failing = FakeTrack()..failNextRenderer = true;
+      final s = service();
+
+      await expectLater(s.start(failing), throwsStateError);
+      expect(s.isRecording, isFalse);
+
+      await s.start(track);
+      expect(s.isRecording, isTrue, reason: 'and a retry works');
+    });
+
+    test('numbering continues when recording resumes in the same call', () async {
+      // Another of the learner's devices can take over recording and hand it
+      // back within one call. A second stretch numbered from zero would look
+      // like a redelivery of the first and be discarded as already transcribed.
+      final s = service();
+      await s.start(track);
+      for (var i = 0; i < 60; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+      final firstRun = sink.delivered.map((c) => c.index).toList();
+      expect(firstRun, isNotEmpty);
+
+      await s.start(track);
+      for (var i = 0; i < 60; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+
+      final all = sink.delivered.map((c) => c.index).toList();
+      expect(
+        all,
+        List.generate(all.length, (i) => i),
+        reason: 'one unbroken run of indices across both stretches',
+      );
+      expect(all.length, greaterThan(firstRun.length));
+    });
+
+    test('a tap that will not detach is not stacked over', () async {
+      // Starting again over an attached renderer would feed two taps into one
+      // chunker and count the learner's own voice twice. Losing a stretch of
+      // analytics is recoverable; counting it twice is not.
+      final s = service();
+      await s.start(track);
+      track.failCancel = true;
+      await s.stop();
+
+      expect(
+        s.start(track),
+        throwsStateError,
+        reason: 'refused rather than doubled',
+      );
+    });
+
+    test('a second start while recording is refused', () async {
+      final s = service();
+      await s.start(track);
+      await expectLater(s.start(track), throwsStateError);
+    });
+
+    test(
+      'stop cancels the tap, flushes the tail, and closes the sink',
+      () async {
+        final s = service();
+        await s.start(track);
+        track.emit(100);
+        await s.finish();
+
+        expect(track.cancels, 1);
+        expect(sink.delivered, hasLength(1), reason: 'the tail was flushed');
+        expect(sink.closes, 1);
+        expect(s.isRecording, isFalse);
+      },
+    );
+
+    test('finishing twice does not double-flush or double-close', () async {
+      final s = service();
+      await s.start(track);
+      track.emit(100);
+      await s.stop();
+      await s.finish();
+      expect(sink.delivered, hasLength(1));
+      expect(sink.closes, 1);
+    });
+
+    test('stop on a recorder that never started is a no-op', () async {
+      await service().stop();
+      expect(sink.closes, 0);
+    });
+
+    test('frames arriving after stop are ignored', () async {
+      final s = service();
+      await s.start(track);
+      final captured = track.onFrame;
+      await s.stop();
+      final before = sink.delivered.length;
+
+      // A renderer callback already in flight when the tap was cancelled.
+      captured!(
+        AudioFrame(
+          sampleRate: captureSampleRate,
+          channels: captureChannels,
+          data: Int16List(captureSampleRate).buffer.asUint8List(),
+          format: AudioFormat.Int16,
+        ),
+      );
+      await pumpEventQueue();
+      expect(sink.delivered, hasLength(before));
+    });
+
+    test('stop waits for chunks already handed to the sink', () async {
+      final s = service();
+      await s.start(track);
+      sink.block = Completer<void>();
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await pumpEventQueue();
+      expect(sink.delivered, isEmpty, reason: 'delivery is held open');
+
+      final stopped = s.stop();
+      var done = false;
+      unawaited(stopped.then((_) => done = true));
+      await pumpEventQueue();
+      expect(done, isFalse, reason: 'stop must not abandon spoken audio');
+
+      sink.block!.complete();
+      await stopped;
+      expect(sink.delivered, isNotEmpty);
+    });
+
+    test(
+      'a chunk the sink refuses does not fail the call or the hangup',
+      () async {
+        final failing = RecordingSink(failIndices: [0]);
+        final s = service(withSink: failing);
+        await s.start(track);
+        for (var i = 0; i < 60; i++) {
+          track.emit(20);
+        }
+        await pumpEventQueue();
+        await s.finish();
+
+        expect(failing.closes, 1, reason: 'the call still ended cleanly');
+        expect(
+          failing.delivered.map((c) => c.index),
+          isNot(contains(0)),
+          reason: 'the refused chunk is lost, and only that chunk',
+        );
+        expect(failing.delivered, isNotEmpty);
+      },
+    );
+  });
+
+  group('CallCaptureService.pcmOf', () {
+    AudioFrame frameOf(Uint8List data, AudioFormat format) => AudioFrame(
+      sampleRate: captureSampleRate,
+      channels: 1,
+      data: data,
+      format: format,
+    );
+
+    test('reads int16 samples little-endian', () async {
+      final src = Int16List.fromList([0, 1, -1, 32767, -32768]);
+      final out = CallCaptureService.pcmOf(
+        frameOf(src.buffer.asUint8List(), AudioFormat.Int16),
+      );
+      expect(out, src);
+    });
+
+    test('reads a frame whose bytes sit at an odd offset', () async {
+      final src = Int16List.fromList([5, -6, 7]);
+      final padded = Uint8List(src.lengthInBytes + 1)
+        ..setRange(1, src.lengthInBytes + 1, src.buffer.asUint8List());
+      final window = Uint8List.sublistView(padded, 1);
+      expect(
+        window.offsetInBytes.isOdd,
+        isTrue,
+        reason: 'this is the case a zero-copy view cannot handle',
+      );
+      expect(CallCaptureService.pcmOf(frameOf(window, AudioFormat.Int16)), src);
+    });
+
+    test('converts float32 samples and clamps out-of-range values', () async {
+      final src = Float32List.fromList([0.0, 1.0, -1.0, 0.5, 2.0, -2.0]);
+      final out = CallCaptureService.pcmOf(
+        frameOf(src.buffer.asUint8List(), AudioFormat.Float32),
+      );
+      expect(out, [0, 32767, -32767, 16384, 32767, -32767]);
+    });
+  });
+  group('a chunk whose delivery fails', () {
+    test('is retried rather than dropped', () async {
+      // A chunk is up to ninety seconds of somebody's speech and there is no
+      // second copy — the call is over by the time this fails. One request lost
+      // on a weak connection used to lose all of it silently.
+      final flaky = RecordingSink(failuresLeft: {0: 1});
+      final s = service(withSink: flaky);
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+
+      expect(
+        flaky.attempts.where((i) => i == 0).length,
+        greaterThan(1),
+        reason: 'the failed attempt must be tried again',
+      );
+      expect(
+        flaky.delivered.map((c) => c.index),
+        contains(0),
+        reason: 'and the words must arrive',
+      );
+    });
+
+    test('is given up on quietly once the attempts run out', () async {
+      // A chunk that will never send must not hold a hangup open forever, and
+      // must not take the call down with it.
+      final dead = RecordingSink(failIndices: const [0]);
+      final s = service(withSink: dead);
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+
+      await expectLater(s.stop(), completes);
+      expect(
+        dead.attempts.where((i) => i == 0).length,
+        3,
+        reason: 'bounded attempts, not an unbounded loop',
+      );
+    });
+  });
+  group('a device with no tap', () {
+    test('records nothing and leaves the call alone', () async {
+      // Some devices have no point to read from that sits after echo
+      // cancellation. Recording nothing costs the analytics; recording from the
+      // wrong point would credit the other person's words to this learner.
+      final s = service(withTap: _NoTap());
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+
+      expect(s.isRecording, isFalse);
+      expect(sink.delivered, isEmpty);
+    });
+  });
+
+  group('frames a tap hands over WHILE it detaches', () {
+    test(
+      'are dropped — the microphone is off the record once a stop begins',
+      () async {
+        // This once kept them: the tap's tail is the end of a sentence, and it
+        // arrives during the detach. But a detach can stall for its bounded
+        // seconds, and everything delivered in that window after a hangup is
+        // post-hangup microphone audio — the learner's private conversation once
+        // they believed the call was over. There is no marker on a frame that
+        // tells the tail from that, so the safer of the two wins: nothing is
+        // recorded once the stop has begun. The cost is at most the tap's last
+        // un-flushed batch; everything up to the hangup is already in the chunker.
+        final tap = _TailOnDetachTap();
+        final s = service(withTap: tap);
+        await s.start(track);
+        await s.stop();
+
+        expect(
+          sink.delivered.expand((c) => c.pcm),
+          isEmpty,
+          reason: 'audio handed over during a detach must not be recorded',
+        );
+      },
+    );
+  });
+
+  group('a stop landing while the tap is still attaching', () {
+    test('leaves no tap attached behind it', () async {
+      final tap = _SlowToAttachTap();
+      final s = service(withTap: tap);
+
+      final starting = s.start(track);
+      await pumpEventQueue();
+      await s.stop();
+      tap.finishAttaching();
+      await starting;
+
+      expect(
+        tap.detached,
+        isTrue,
+        reason: 'a tap that arrived after the stop must be released',
+      );
+      expect(s.isRecording, isFalse);
+    });
+  });
+
+  group('a delivery that hangs', () {
+    test(
+      'does not hold the end of the call open',
+      () async {
+        // A request that fails says so; one that hangs says nothing, and the
+        // hangup waits for every chunk still in flight.
+        final stuck = RecordingSink()..block = Completer<void>();
+        final s = service(
+          withSink: stuck,
+          timeout: const Duration(milliseconds: 20),
+        );
+        await s.start(track);
+        for (var i = 0; i < 30; i++) {
+          track.emit(20);
+        }
+
+        await expectLater(
+          s.finish().timeout(const Duration(seconds: 5)),
+          completes,
+        );
+      },
+      timeout: const Timeout(Duration(seconds: 20)),
+    );
+  });
+
+  group('a muted recorder', () {
+    test('drops frames so muted speech is never recorded', () async {
+      // LiveKit's mute only stops publishing to the peer; on Android the tap
+      // reads the capture module directly, upstream of that, so the recorder
+      // needs its own gate or a muted learner is still transcribed.
+      final s = service();
+      await s.start(track);
+      s.setMuted(true);
+      for (var i = 0; i < 60; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+      expect(sink.delivered, isEmpty, reason: 'muted speech must not record');
+    });
+
+    test('resumes capturing once unmuted', () async {
+      final s = service();
+      await s.start(track);
+      s.setMuted(true);
+      for (var i = 0; i < 20; i++) {
+        track.emit(20);
+      }
+      s.setMuted(false);
+      for (var i = 0; i < 60; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+      expect(sink.delivered, isNotEmpty, reason: 'speech after unmute records');
+    });
+  });
+
+  group('a hangup that catches the tap mid-detach', () {
+    test('drops frames that arrive after the stop has begun', () async {
+      // Detaching is a platform round-trip that can take its bounded seconds.
+      // Frames arriving in that window, after the learner hung up, are
+      // post-hangup microphone audio and must not be recorded.
+      final tap = _SlowDetachTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+
+      int total() =>
+          sink.delivered.fold(0, (n, c) => n + c.pcm.lengthInBytes ~/ 2);
+
+      // Half a second of speech BEFORE the hangup.
+      final speech = Int16List(12000)..fillRange(0, 12000, 8000);
+      tap.onFrames!(speech, 24000);
+      await pumpEventQueue();
+
+      // Hang up: stop begins and the detach hangs.
+      final stopping = s.stop();
+      await pumpEventQueue();
+
+      // A full second of speech arrives WHILE the detach is stuck.
+      tap.onFrames!(speech, 24000);
+      tap.onFrames!(speech, 24000);
+      await pumpEventQueue();
+
+      tap.finishDetach();
+      await stopping;
+
+      // Only the pre-hangup half second was recorded; the rest was dropped.
+      expect(
+        total(),
+        lessThan(20000),
+        reason: 'post-hangup microphone audio must not be recorded',
+      );
+    });
+  });
+
+  group('a close that fails', () {
+    test('is tried again rather than remembered as done', () async {
+      // Marking the call finished before the close had succeeded meant the one
+      // retry that could have fixed it skipped the work — the same mistake as
+      // clearing a handle before the operation it stands for has succeeded.
+      sink.closeFailures = 1;
+      final s = service();
+      await s.start(track);
+
+      await expectLater(s.finish(), throwsStateError);
+      expect(sink.closes, 0);
+
+      await s.finish();
+      expect(sink.closes, 1, reason: 'the retry must actually close it');
+    });
+  });
+
+  group('two stops arriving together', () {
+    test('close the sink once, not twice', () async {
+      // A hangup and a disconnect routinely land together. A guard followed by
+      // an await lets both past, and the sink is then closed twice.
+      final s = service(withTap: _SlowTap());
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+
+      await Future.wait([s.finish(), s.finish()]);
+
+      expect(sink.closes, 1);
+    });
+  });
+
+  group('a tap whose detach never comes back', () {
+    test('does not hold the hangup open for ever', () async {
+      final capture = service(
+        withTap: _SilentDetachTap(),
+        detach: const Duration(milliseconds: 50),
+      );
+      await capture.start(track);
+
+      // Teardown waits on this. Unbounded, the hangup never finished: the call
+      // was never written and every word of it went uncredited, to protect a
+      // tap that was lost either way.
+      await capture.stop().timeout(
+        const Duration(seconds: 2),
+        onTimeout: () => fail('stop must not wait on a tap that is gone'),
+      );
+
+      // Kept, like any tap that would not come off, so the next stop tries it
+      // again and no new recording starts over the top of it.
+      await expectLater(capture.start(track), throwsStateError);
+    });
+  });
+
+  group('the end of a call', () {
+    test('waits for a delivery that stopping gave up waiting on', () async {
+      // Stopping bounds its wait so a stuck upload cannot hold up a handover
+      // mid-call. The end of a call has nothing to hold up, and closing before
+      // a slow delivery lands would credit the learner from a transcript
+      // missing the words they were still waiting on.
+      final gate = Completer<void>();
+      final slow = RecordingSink()..block = gate;
+      final capture = service(withSink: slow);
+      await capture.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await pumpEventQueue();
+
+      var finished = false;
+      final finishing = capture.finish().then((_) => finished = true);
+      await pumpEventQueue();
+      expect(
+        finished,
+        isFalse,
+        reason: 'the call is not finished while its audio is still going',
+      );
+
+      gate.complete();
+      await finishing;
+      expect(slow.closes, 1);
+    });
+  });
+
+  group('a detach that throws before it returns', () {
+    test('is still retained, not lost', () async {
+      // A DetachTap may run synchronously, and so may its failure. Called
+      // outside the guard, that throw escaped the release path altogether and
+      // nothing ever came back to the tap — which stayed attached, silently.
+      final capture = service(withTap: _ThrowsOnDetachTap());
+      await capture.start(track);
+      await capture.stop();
+
+      await expectLater(
+        capture.start(track),
+        throwsStateError,
+        reason: 'a tap still attached must refuse a second recording',
+      );
+    });
+  });
+
+  group('a detach that is still running', () {
+    test('is waited for, not started a second time', () async {
+      // Giving up waiting does not stop it. Asking the same tap again runs a
+      // second stop over the top of the first — on Android that is the platform
+      // capture being torn down twice — and the tap can end up held for good,
+      // which stops this device recording anything ever again.
+      final tap = _SilentDetachTap();
+      final capture = service(
+        withTap: tap,
+        detach: const Duration(milliseconds: 50),
+      );
+      await capture.start(track);
+      await capture.stop();
+      expect(tap.detachCalls, 1);
+
+      // The next stop comes back to it and finds it still going.
+      await capture.stop();
+      expect(
+        tap.detachCalls,
+        1,
+        reason: 'a detach already in flight is waited for, never re-asked',
+      );
+
+      // Once it finally answers, the tap is free and recording can start again.
+      tap.finish.complete();
+      await capture.stop();
+      await capture.start(track);
+    });
+
+    test(
+      'frees itself the moment it answers, without waiting for a stop',
+      () async {
+        // Only a stop ever comes back to a held tap, and a stop happens at the
+        // END of a call. A tap that timed out and then detached a second later
+        // would block every recorder election until then, and this device would
+        // sit silent through the whole conversation.
+        final tap = _SilentDetachTap();
+        final capture = service(
+          withTap: tap,
+          detach: const Duration(milliseconds: 50),
+        );
+        await capture.start(track);
+        await capture.stop();
+        await expectLater(capture.start(track), throwsStateError);
+
+        // The platform finally answers, mid-call, with nothing else happening.
+        tap.finish.complete();
+        await pumpEventQueue();
+
+        await capture.start(track);
+        expect(capture.isRecording, isTrue);
+      },
+    );
+  });
+
+  group('a tap that will not let go', () {
+    test('is kept rather than dropped when it arrives too late', () async {
+      final tap = _StubbornSlowTap();
+      final capture = service(withTap: tap);
+      final starting = capture.start(track);
+      // The call ends while the tap is still attaching, so what arrives belongs
+      // to a recording that is already over.
+      await capture.stop();
+      tap.finishAttaching();
+      await starting;
+
+      expect(tap.detachAttempts, 1, reason: 'it was asked, and refused');
+      expect(tap.detached, isFalse);
+
+      // Still attached, so a second recording must not be laid over the top of
+      // it — two taps feeding one chunker would count the learner twice.
+      await expectLater(capture.start(track), throwsStateError);
+
+      // And the next stop comes back to it. Nothing else ever does.
+      await capture.stop();
+      expect(tap.detached, isTrue, reason: 'the tap was released in the end');
+      await capture.start(track);
+    });
+  });
+}
+
+/// A device that offers no point to read from after echo cancellation.
+/// A tap whose detach hangs until released, and whose frame callback the test
+/// can drive by hand — to deliver frames WHILE the detach is stuck.
+class _SlowDetachTap implements CallAudioTap {
+  CallAudioFrames? onFrames;
+  final _detaching = Completer<void>();
+  void finishDetach() => _detaching.complete();
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+    this.onFrames = onFrames;
+    return () => _detaching.future;
+  }
+}
+
+class _NoTap implements CallAudioTap {
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
+      null;
+}
+
+/// A tap whose detach takes a moment, which is what opens the window for a
+/// second stop to arrive while the first is still unwinding.
+class _SlowTap implements CallAudioTap {
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
+      () async => Future<void>.delayed(const Duration(milliseconds: 20));
+}
+
+/// A tap that hands over its last audio only as it is detached, the way the
+/// platform one does.
+class _TailOnDetachTap implements CallAudioTap {
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+    return () async {
+      onFrames(Int16List.fromList(List<int>.filled(8000, 1200)), 16000);
+    };
+  }
+}
+
+/// A tap that takes its time attaching, so a stop can land inside it.
+/// Attaches slowly, and will not let go the first time it is asked.
+/// A tap whose detach throws before it returns anything at all.
+class _ThrowsOnDetachTap implements CallAudioTap {
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
+      () => throw StateError('the platform refused, immediately');
+}
+
+/// A tap whose detach never comes back — a platform call that has gone away.
+class _SilentDetachTap implements CallAudioTap {
+  int detachCalls = 0;
+
+  /// Completed by a test to let the outstanding detach finally finish.
+  final finish = Completer<void>();
+
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
+      () {
+        detachCalls++;
+        return finish.future;
+      };
+}
+
+class _StubbornSlowTap implements CallAudioTap {
+  final _attached = Completer<void>();
+  int detachAttempts = 0;
+  bool detached = false;
+
+  void finishAttaching() => _attached.complete();
+
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+    await _attached.future;
+    return () async {
+      detachAttempts++;
+      if (detachAttempts == 1) {
+        throw StateError('the platform would not let go');
+      }
+      detached = true;
+    };
+  }
+}
+
+class _SlowToAttachTap implements CallAudioTap {
+  final _attached = Completer<void>();
+  bool detached = false;
+
+  void finishAttaching() => _attached.complete();
+
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+    await _attached.future;
+    return () async => detached = true;
+  }
+}

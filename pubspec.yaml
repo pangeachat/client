@@ -65,6 +65,10 @@ dependencies:
   matrix:
     git:
       url: https://github.com/pangeachat/matrix-dart-sdk.git # repo
+      # Pinned deliberately. The MatrixRTC/LiveKit call work depends on SDK VoIP
+      # internals (LiveKitBackend, GroupCallSession, WebRTCDelegate); without a ref
+      # this resolves to HEAD and can change under us on any `pub upgrade`.
+      ref: 2eb219064d1b79af3c0b78e6a845989ee2dda183
   # Pangea#
   mime: ^2.0.0
   opus_caf_converter_dart: ^1.0.1
@@ -137,6 +141,7 @@ dependencies:
   # (routes/chat/events/streaming_stt/) connects the choreo WS relay with the
   # access_token subprotocol via WebSocketChannel.
   web_socket_channel: ^3.0.3
+  livekit_client: ^2.9.0
   # iOS-only: per-field keyboard language persistence for the chat composer
   # (routes/chat/composer_keyboard_context.dart, #8465).
   text_input_context:
@@ -146,6 +151,8 @@ dependencies:
   keyboard_languages:
     path: pangea_packages/keyboard_languages
   # Pangea#
+  pangea_call_capture:
+    path: pangea_packages/pangea_call_capture
 
 dev_dependencies:
   flutter_lints: ^6.0.0

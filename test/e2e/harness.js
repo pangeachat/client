@@ -1,0 +1,266 @@
+// The call end-to-end harness.
+//
+// Two real browsers with fake microphones, driven by ACCESSIBILITY LABEL and
+// URL rather than pixel coordinates, and asserted against the Matrix
+// client-server API rather than against the canvas.
+//
+// The previous harness did the opposite of both and rotted silently: its fixed
+// clicks landed on empty space after a layout change, so it "passed" a call flow
+// it was no longer exercising. Every check here fails loudly instead.
+const { launch } = require('./browser');
+const { login, wait } = require('./login');
+const ui = require('./ui');
+const mx = require('./matrix');
+const cfg = require('./config');
+
+const APP = cfg.appUrl;
+const ACCOUNTS = cfg.accounts;
+
+/// One participant: a browser, a page, and an API token for assertions.
+/// Refuses to run two scenario processes at once.
+///
+/// Two suites driving the SAME two accounts fight over the same rooms and the
+/// same Chrome profiles, and the symptom is nothing like the cause: the app
+/// looks broken ("the call controls never appeared", "no ring reached the
+/// room") when in truth another run just took the room away. Killing the
+/// browsers between runs is not enough -- the node process that drives them
+/// has to be gone too.
+function refuseIfAnotherRunIsLive() {
+  const { execSync } = require('child_process');
+  let out = '';
+  try {
+    // Matched on the FILE NAME with any path in front of it. The pattern used
+    // to assume the scenario was started from inside this folder; run as
+    // `node test/e2e/scenarios.js` from the repo root it matched nothing at
+    // all, and a guard that never fires is worse than no guard, because
+    // everyone believes it is watching.
+    out = execSync(
+      'pgrep -f "node ([^ ]*/)?(scenarios|rejoin_ui|refresh_[a-z_]+|grey_hover'
+        + '|list_preview|device[a-z_0-9]*)\\.js" || true',
+      { encoding: 'utf8' },
+    );
+  } catch (_) {
+    return;
+  }
+  // Our own pid, and the shell pgrep runs in -- whose command line contains
+  // the pattern itself.
+  const mine = new Set([process.pid, process.ppid]);
+  const others = out.split('\n').filter((p) => p.trim() && !mine.has(Number(p)));
+  if (others.length) {
+    throw new Error(
+      `another scenario run is still live (pids ${others.join(', ')}); ` +
+        'stop it before starting this one, or the two will fight over the room',
+    );
+  }
+}
+
+async function openParticipant(name, roomLocalpart, port) {
+  const a = ACCOUNTS[name];
+  // The flutter service worker in a persisted profile serves the PREVIOUS
+  // build on reload -- every "regression" it manufactures looks exactly like
+  // a product bug in whatever changed last. Purging the SW store (login
+  // lives in localStorage/IndexedDB and survives) makes each run test the
+  // bundle actually on disk.
+  try {
+    require('fs').rmSync(`${a.profile}/Default/Service Worker`, { recursive: true, force: true });
+  } catch (_) {}
+  const browser = await launch({ userDataDir: a.profile, wav: a.wav, port });
+  const page = (await browser.pages())[0];
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(String(e.stack || e.message || e).slice(0, 600)));
+  // Tagged by participant: one shared tag meant the second login's
+  // screenshots overwrote the first's, and the evidence for a failure was
+  // whichever browser happened to fail last.
+  await login(page, a.user, a.pass, name);
+  await wait(3000);
+  await openRoom(page, roomLocalpart);
+  const session = await mx.login(a.user, a.pass);
+  return { name, browser, page, errors, ...session };
+}
+
+/// Opens the room and PROVES it opened.
+///
+/// The deep link does not always stick -- the app can resolve its own route
+/// after login and land back on the activity map. A harness that did not check
+/// would then drive the map, find nothing, and report the feature broken (or
+/// worse, find nothing and report nothing). So this confirms by waiting for a
+/// control that only exists inside a chat, and fails loudly if it never comes.
+async function openRoom(page, roomLocalpart, attempts = 4) {
+  for (let i = 1; i <= attempts; i++) {
+    // Cleared first on a retry: the app restores whatever route it was last
+    // on, and a profile left sitting on a settings page just swallowed the
+    // deep link four times in a row and reported the product broken. Going
+    // to the root and letting it settle puts it somewhere the link can work
+    // from.
+    if (i > 1) {
+      await page.goto(`${APP}/`, { waitUntil: 'domcontentloaded' });
+      await wait(3000);
+      await page.keyboard.press('Escape').catch(() => {});
+    }
+    await page.goto(`${APP}/?left=chats,room:${roomLocalpart}`, { waitUntil: 'domcontentloaded' });
+    await wait(i === 1 ? 6500 : 4000);
+    await ui.enableSemantics(page);
+    await wait(1500);
+    if (await ui.hasLabel(page, 'Call')) return;
+    // The deep link does not always land, and the app then sits on the chat
+    // LIST with the conversation right there. Clicking it is what a person
+    // would do, and it is far more reliable than reloading the same link
+    // again: a row is recognisable by its timestamp.
+    const row = await page.evaluate(() => {
+      const hit = [...document.querySelectorAll('flt-semantics[aria-label]')]
+        .find((e) => /\d{1,2}:\d{2}\s?(AM|PM)/i.test(e.getAttribute('aria-label') || ''));
+      if (!hit) return null;
+      const r = hit.getBoundingClientRect();
+      if (!r.width || !r.height) return null;
+      return { x: r.x + r.width / 2, y: r.y + r.height / 2, label: hit.getAttribute('aria-label') };
+    });
+    if (row) {
+      await page.mouse.click(row.x, row.y);
+      await wait(3500);
+      await ui.enableSemantics(page);
+      await wait(1200);
+      if (await ui.hasLabel(page, 'Call')) return;
+    }
+    console.log(`   (room did not open, attempt ${i}/${attempts}; on screen: ${JSON.stringify(await ui.labels(page))})`);
+  }
+  throw new Error('could not open the room: the call controls never appeared');
+}
+
+/// Re-opens the room if the app has drifted away from it.
+///
+/// The router re-resolves its own route once the initial sync finishes and can
+/// land back on the activity map minutes after the room was opened. Checking
+/// once at startup is therefore not enough: every scenario re-asserts the room
+/// is actually on screen before it touches anything.
+async function ensureRoom(p, roomLocalpart) {
+  if (await ui.hasLabel(p.page, 'Call')) return;
+  console.log(`   (${p.name} drifted off the room; reopening)`);
+  await openRoom(p.page, roomLocalpart);
+}
+
+/// Reloads a page the way a user does, and WAKES it up again.
+///
+/// Flutter web only publishes a semantics tree once the placeholder has been
+/// clicked, and a reload throws that away with the rest of the document. A
+/// scenario that reloads and then reads text sees an empty page forever and
+/// reports the product broken -- which is exactly what happened to the rejoin
+/// checks: they spent a minute waiting for text that could never arrive, and
+/// by the time they looked, the grace they meant to test had already expired.
+/// So no scenario reloads by hand; they all come through here.
+async function wake(page, { timeout = 45000 } = {}) {
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  const deadline = Date.now() + timeout;
+  await wait(5000);
+  while (Date.now() < deadline) {
+    await ui.enableSemantics(page);
+    const text = await page
+      .evaluate(() => document.body.innerText || '')
+      .catch(() => '');
+    if (text.trim().length > 0) return true;
+    await wait(2000);
+  }
+  return false;
+}
+
+/// Recovers a client after a scenario that ANSWERED a call.
+///
+/// With semantics enabled, ending an answered call leaves the Flutter web
+/// engine's semantics click pipeline broken: every later click throws
+/// "Cannot read properties of null (reading '_values')" inside the engine's
+/// ClickDebouncer, before any app code runs -- so buttons silently stop
+/// working. Verified to be semantics-specific: the identical flow driven by
+/// raw coordinates with semantics off works perfectly, which is why ordinary
+/// users never see it. A reload is the only reliable reset; the semantics
+/// placeholder cannot be re-enabled a second time without one.
+async function recover(p, roomLocalpart) {
+  await p.page.reload({ waitUntil: 'domcontentloaded' });
+  await wait(6000);
+  await ui.enableSemantics(p.page);
+  await wait(1500);
+  await openRoom(p.page, roomLocalpart);
+  // Reloading re-registers the engine error hooks' state, so stale errors from
+  // the pre-reload page are not counted against later scenarios.
+  p.errors.length = 0;
+}
+
+/// Performs an action until the SERVER says it happened.
+///
+/// The banner and the call panel are clicked by position, and a click can land
+/// a moment before the control is painted or while the app is mid-rebuild. A
+/// single click plus a fixed sleep makes the whole suite timing-sensitive and
+/// produces failures that look like product bugs. Retrying against a
+/// server-side predicate removes the timing question entirely: it either
+/// happened, or it genuinely did not.
+async function actUntil(label, act, confirmed, { tries = 6, gap = 2500 } = {}) {
+  for (let i = 1; i <= tries; i++) {
+    if (await confirmed()) return true;
+    await act();
+    await wait(gap);
+    if (await confirmed()) return true;
+    if (i < tries) console.log(`   (${label}: not confirmed yet, retry ${i}/${tries - 1})`);
+  }
+  return await confirmed();
+}
+
+/// Everything in the room from this moment on. Scenarios assert on the DELTA,
+/// so a room with history behaves the same as an empty one.
+async function mark(token, roomId) {
+  const evs = await mx.timeline(token, roomId, 5);
+  return evs.length ? evs[evs.length - 1].event_id : null;
+}
+
+async function since(token, roomId, markerId) {
+  const evs = await mx.timeline(token, roomId, 80);
+  if (!markerId) return evs;
+  const i = evs.findIndex((e) => e.event_id === markerId);
+  return i === -1 ? evs : evs.slice(i + 1);
+}
+
+/// The heart of it: what did the two participants each end up with?
+function compare(aEvents, aId, bEvents, bId) {
+  const aIds = new Set(aEvents.map((e) => e.event_id));
+  const bIds = new Set(bEvents.map((e) => e.event_id));
+  return {
+    onlyA: aEvents.filter((e) => !bIds.has(e.event_id)).map((e) => e.type),
+    onlyB: bEvents.filter((e) => !aIds.has(e.event_id)).map((e) => e.type),
+    aCards: mx.cardsIn(aEvents, aId),
+    bCards: mx.cardsIn(bEvents, bId),
+  };
+}
+
+const results = [];
+function check(scenario, name, pass, detail) {
+  results.push({ scenario, name, pass, detail });
+  console.log(`   ${pass ? 'PASS' : 'FAIL'}  ${name}${pass ? '' : '  -> ' + detail}`);
+}
+
+/// A scenario that could not judge itself this run.
+///
+/// Not a pass and not a failure: a ring that expired before the reload
+/// finished has nothing left to answer, and asserting either way would be
+/// making it up. It has to reach the SUMMARY though -- a run where a scenario
+/// asserted nothing read as fully green, and the only trace was a line of
+/// console output nobody scrolls back to.
+const inconclusive = [];
+function skipped(scenario, name, why) {
+  inconclusive.push({ scenario, name, why });
+  console.log(`   SKIP  ${name}  -> ${why}`);
+}
+
+function report() {
+  const failed = results.filter((r) => !r.pass);
+  console.log('\n================ SUMMARY ================');
+  console.log(`checks: ${results.length}   passed: ${results.length - failed.length}   FAILED: ${failed.length}`);
+  failed.forEach((f) => console.log(`  FAIL [${f.scenario}] ${f.name}: ${f.detail}`));
+  if (inconclusive.length) {
+    console.log(`INCONCLUSIVE: ${inconclusive.length} -- these proved nothing this run`);
+    inconclusive.forEach((s) => console.log(`  SKIP [${s.scenario}] ${s.name}: ${s.why}`));
+  }
+  return failed.length;
+}
+
+module.exports = {
+  wake, refuseIfAnotherRunIsLive, openParticipant, openRoom, ensureRoom, actUntil,
+  recover, mark, since, compare, check, skipped, report, results, inconclusive,
+  ui, mx, wait, cfg, APP,
+};

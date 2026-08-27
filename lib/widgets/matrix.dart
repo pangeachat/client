@@ -21,6 +21,7 @@ import 'package:fluffychat/features/activity_sessions/activity_auto_save_service
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
+import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
@@ -29,6 +30,10 @@ import 'package:fluffychat/pangea/common/config/dev_login.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/routes/chat/calls/call_record.dart';
+import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
@@ -106,6 +111,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   final Map<String, AnalyticsDataService> _analyticsServices = {};
   final Map<String, ActivityAutoSaveService> _activityAutoSaveServices = {};
+  final Map<String, CallService> _callServices = {};
 
   /// Accounts whose services are being torn down, mapped to the in-flight
   /// disposal. Concurrent teardowns coalesce onto ONE disposal (no double-
@@ -202,6 +208,158 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// account's, and never resurrecting a service for a closing one.
   AnalyticsDataService? analyticsServiceFor(String clientName) =>
       _analyticsServices[clientName];
+
+  /// This account's calling service.
+  ///
+  /// One per account and never rebuilt while the account lives: the SDK's [VoIP]
+  /// is per-client and identifies our membership by instance, so a second one
+  /// would lose track of a call the first is still in. The service itself is
+  /// inert until something asks it to call — it holds no media and constructs
+  /// no [VoIP] on creation.
+  CallService get callService => callServiceFor(client.clientName);
+
+  /// The calling service for a SPECIFIC account, created on first use.
+  ///
+  /// Unlike [analyticsDataService] this needs no closing-account guard:
+  /// [disposeAccountServices] removes the entry, and a service created after
+  /// that point owns nothing that could outlive the account.
+  CallService callServiceFor(String clientName) =>
+      _callServices[clientName] ??= CallService(
+        // The same last-resort the [client] getter keeps: a single-account
+        // logout empties `clients` while widgets are still building against
+        // it, and a service that throws `Bad state: No element` from a
+        // rebuild takes the whole route down. An account on its way out
+        // resolves to itself; every live account still wins on name.
+        widget.clients.firstWhere(
+          (c) => c.clientName == clientName,
+          orElse: () => client,
+        ),
+      );
+
+  /// The one call this app is in, if any. Panels and tiles listen here; the
+  /// session itself owns the call's lifecycle, so navigation never touches it.
+  final ValueNotifier<call_ui.CallSession?> activeCall = ValueNotifier(null);
+
+  /// The standing offer to return to a call a reload interrupted.
+  ///
+  /// App-level state like [activeCall], NOT banner-widget state: the banner
+  /// can be re-instantiated around it (theme, locale, lock-screen rebuilds),
+  /// and an offer held in one instance's setState died invisible while
+  /// another instance rendered. One notifier, read by whichever is live.
+  final ValueNotifier<RejoinOffer?> rejoinOffer = ValueNotifier(null);
+
+  /// Places or answers a call in [room], or brings the existing one back up.
+  ///
+  /// One call at a time is already the service's rule ([AlreadyInACall]); this
+  /// keeps the UI consistent with it: a second ask while a call is up expands
+  /// the call rather than failing, and a failed call still on screen is
+  /// dismissed to make way for the new one.
+  void startCall(
+    Room room, {
+    required bool video,
+    String? notificationEventId,
+    String? rejoinMembershipEventId,
+    DateTime? rejoinSince,
+    String? callerMembershipEventId,
+  }) {
+    final existing = activeCall.value;
+    if (existing != null) {
+      if (existing.isFailed) {
+        existing.dismissFailed();
+      } else if (existing.isOver) {
+        // Between the outcome latch and the deferred handover there is a
+        // one-microtask window in which a FINISHED session is still held here.
+        // It renders nothing, so expanding it would swallow the new call with
+        // no error anywhere. It is stepped over -- but NOT disposed: this
+        // branch can run from inside the old call's own notification, and its
+        // pending release microtask is the one place its disposal is safe.
+        activeCall.value = null;
+      } else if (existing.room.client != room.client ||
+          existing.room.id != room.id) {
+        // A live call somewhere ELSE -- another account, or another room on
+        // this one. Expanding it and returning answered nothing and declined
+        // nothing: the prompt had already been dismissed, so the caller rang
+        // out and wrote a missed call while this learner sat looking at an
+        // unrelated call. One call at a time is right; silently swallowing
+        // the second one is not, and the callers differ on what to do about
+        // it -- answering declines as busy, pressing Call just brings the
+        // live call forward -- so this says what happened and lets them
+        // decide.
+        Logs().w(
+          'Refusing a call in ${room.id}: already on one in ${existing.room.id}',
+        );
+        existing.expand();
+        throw const AlreadyInACall();
+      } else {
+        existing.expand();
+        return;
+      }
+    }
+    final user = pangeaController.userController;
+    // The services this call will use, resolved from the call's OWN account
+    // rather than from whichever account happens to be active later.
+    final accountName = room.client.clientName;
+    final callAccount = analyticsServiceFor(accountName);
+    activeCall.value = call_ui.CallSession.start(
+      room: room,
+      video: video,
+      notificationEventId: notificationEventId,
+      rejoinAnchor: rejoinMembershipEventId,
+      rejoinSince: rejoinSince,
+      callerMembershipEventId: callerMembershipEventId,
+      callService: callServiceFor(room.client.clientName),
+      // The two strings Android renders for the ongoing call. They can only
+      // come from here: the plugin has no translations, and the session has
+      // no context.
+      platformLabels: (
+        mute: L10n.of(context).callMute,
+        channel: L10n.of(context).callOngoingChannel,
+      ),
+      // The repo answers with a Result; the sink's contract is a value or a
+      // throw, and it already treats a throw as "this chunk's words are lost".
+      transcribe: (request) async {
+        final result = await SpeechToTextRepo.instance.get(request);
+        final value = result.asValue;
+        if (value == null) {
+          throw result.asError?.error ?? StateError('speech-to-text failed');
+        }
+        return value.value;
+      },
+      userL1: user.userL1Code ?? LanguageKeys.unknownLanguage,
+      userL2: user.userL2Code ?? LanguageKeys.unknownLanguage,
+      // Bound to the account that OWNS this call, captured now. Both of
+      // these used to be read through the active-account getters at the
+      // moment the recording finished, which is minutes later and after the
+      // learner may have switched accounts -- so one learner's spoken words
+      // could be credited to another's analytics. The call's own room names
+      // its account; nothing about that changes while the call runs.
+      analytics: (eventId, uses, language) async {
+        // Null once that account has been disposed -- logged out mid-call, or
+        // torn down while the transcription was still landing. Its analytics
+        // have nowhere to go, and the ACTIVE account's service is the one
+        // place they must not go.
+        final service = callAccount ?? analyticsServiceFor(accountName);
+        if (service == null) {
+          Logs().w(
+            'No analytics service left for $accountName; call speech '
+            'from that account is not being credited anywhere',
+          );
+          return;
+        }
+        try {
+          await service.updateService.addAnalytics(eventId, uses, language);
+        } on AnalyticsNotStoredException catch (e) {
+          // Said in the call's own terms, so the record knows this one is
+          // safe to try again and every other failure is not.
+          throw CallAnalyticsNotStored(e.cause);
+        }
+      },
+      onReleased: (session) {
+        if (activeCall.value == session) activeCall.value = null;
+        session.dispose();
+      },
+    );
+  }
   // Pangea#
 
   bool get isMultiAccount => widget.clients.length > 1;
@@ -712,9 +870,23 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     return _disposingServices[clientName] ??= () async {
       try {
         _activityAutoSaveServices[clientName]?.dispose();
+        // The CALL first, and not just the service. Disposing the service
+        // retracts this account's MatrixRTC membership, which is bookkeeping;
+        // the LiveKit connection, the microphone, the recorder and Android's
+        // ongoing-call notification all belong to the session. Logging out
+        // while on a call left every one of them running -- the other person
+        // could still hear a learner who had signed out, and the phone still
+        // showed a call in progress for an account that was gone.
+        final live = activeCall.value;
+        if (live != null && live.room.client.clientName == clientName) {
+          activeCall.value = null;
+          live.dispose();
+        }
+        await _callServices[clientName]?.dispose();
         await _analyticsServices[clientName]?.dispose();
       } finally {
         _activityAutoSaveServices.remove(clientName);
+        _callServices.remove(clientName);
         _analyticsServices.remove(clientName);
         _disposingServices.remove(clientName);
       }
@@ -784,6 +956,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
 
+    // #Pangea
+    // A call must never outlive the account UI that owns it. Disposing the
+    // session hangs up (idempotent) and still writes the record.
+    activeCall.value?.dispose();
+    activeCall.value = null;
+    // Pangea#
+
     onRoomKeyRequestSub.values.map((s) => s.cancel());
     onKeyVerificationRequestSub.values.map((s) => s.cancel());
     onLoginStateChanged.values.map((s) => s.cancel());
@@ -799,6 +978,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     for (final name in {
       ..._analyticsServices.keys,
       ..._activityAutoSaveServices.keys,
+      ..._callServices.keys,
     }) {
       unawaited(disposeAccountServices(name));
     }

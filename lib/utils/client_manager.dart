@@ -144,6 +144,11 @@ abstract class ClientManager {
         PangeaEventTypes.courseSettings,
         PangeaEventTypes.orchestratorAwardedGoals,
         PangeaEventTypes.botParticipant,
+        // Who is in a call. An incoming call can be for ANY room, so this has
+        // to be known without that room having been opened — a ring is decided
+        // against it, and a room left partial would read as nobody being in
+        // the call at all.
+        EventTypes.GroupCallMember,
         // Pangea#
       },
       logLevel: kReleaseMode ? Level.warning : Level.verbose,
@@ -171,6 +176,14 @@ abstract class ClientManager {
         PangeaEventTypes.activityPlan,
         PangeaEventTypes.activitySummary,
         EventTypes.RoomMember,
+        // A finished call is the newest thing that happened in that room, and
+        // the chat list should say so. Without this the card can never become
+        // the room's last event: hiding the membership plumbing stopped the
+        // list reading "sent a com.famedly.call.member event", but left
+        // "No messages yet" on a room where two people had just talked. The
+        // card carries a plain body -- "Voice call (0:13)", "Missed call",
+        // "Call declined" -- written for exactly this line.
+        PangeaEventTypes.call,
       },
       // Pangea#
     );

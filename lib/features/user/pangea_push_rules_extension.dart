@@ -92,5 +92,38 @@ extension PangeaPushRulesExtension on Client {
         ],
       );
     }
+
+    // A call notification must ring, not read like a mention. Without a rule of
+    // its own, an MSC4075 event rides the generic mention rule — Synapse ships
+    // nothing for it — so it would push with the default sound instead of a
+    // ring, and a backgrounded phone would chime rather than ring.
+    //
+    // Set every time rather than only when missing: a rule left by an earlier
+    // version with the wrong sound or conditions must be repaired, and the "skip
+    // if present" pattern the other rules use would leave that broken forever.
+    // This runs on login and account change, not a hot path, so the write is
+    // cheap insurance.
+    await setPushRule(
+      PushRuleKind.override,
+      PangeaEventTypes.callNotification,
+      [
+        PushRuleAction.notify,
+        {'set_tweak': 'sound', 'value': 'ring'},
+        {'set_tweak': 'highlight', 'value': false},
+      ],
+      conditions: [
+        PushCondition(
+          kind: 'event_match',
+          key: 'type',
+          pattern: PangeaEventTypes.callNotification,
+        ),
+        // Only an audible ring, not a quiet notice.
+        PushCondition(
+          kind: 'event_match',
+          key: 'content.application.notification_type',
+          pattern: 'ring',
+        ),
+      ],
+    );
   }
 }

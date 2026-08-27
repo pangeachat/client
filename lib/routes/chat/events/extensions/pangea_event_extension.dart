@@ -103,6 +103,17 @@ extension PangeaEvent on Event {
       EventTypes.RoomPinnedEvents,
       EventTypes.SpaceChild,
       EventTypes.SpaceParent,
+      // Call membership is plumbing -- who is on the SFU right now. As a room
+      // preview it read "User sent a com.famedly.call.member event", which
+      // told the learner nothing and buried the last real message. The CALL
+      // CARD below is the thing worth previewing.
+      EventTypes.GroupCallMember,
+      // The ring and the decline are plumbing too, and they arrive while the
+      // learner is looking at the list. Neither has a body worth reading --
+      // the CALL CARD below is what says what happened, and it lands moments
+      // later.
+      PangeaEventTypes.callNotification,
+      PangeaEventTypes.callDecline,
     }.contains(type)) {
       return false;
     }
@@ -115,6 +126,11 @@ extension PangeaEvent on Event {
       return {
         PangeaEventTypes.activityPlan,
         PangeaEventTypes.activitySummary,
+        // A finished call belongs in the preview like any message: the card
+        // carries a plain body ("Voice call (0:13)", "Missed call", "Call
+        // declined") written for exactly this, so the chat list reads it
+        // without knowing anything about calls.
+        PangeaEventTypes.call,
       }.contains(type);
     }
 
