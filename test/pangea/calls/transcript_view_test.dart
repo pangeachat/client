@@ -135,6 +135,11 @@ void main() {
     /// forgot to convert. Null is the ordinary case here, which is why the
     /// per-speaker view is what most of these assert.
     List<int>? atMs,
+
+    /// What this device's clock read against the SFU's when it joined. Absent
+    /// on every half written before the field existed, which is the case most
+    /// of these fixtures are about.
+    ClockAnchor? anchor,
   }) => MatrixEvent(
     type: CallTranscriptContent.relType,
     eventId: '\$half-$sender',
@@ -156,6 +161,7 @@ void main() {
           captureRefused: false,
           drainComplete: drainComplete,
         ).toJson(),
+      ...?anchor?.toJson(),
     },
   );
 
@@ -572,6 +578,129 @@ void main() {
 
       expect(find.textContaining('not shown'), findsOneWidget);
       expect(find.textContaining('No transcript from'), findsNothing);
+    });
+  });
+
+  group('two devices, two clocks', () {
+    // The SFU's clock when both devices joined -- two seconds before the first
+    // word, which is what an ordinary call looks like.
+    const sfuJoin = _callStart - 2000;
+
+    /// A device whose wall clock ran [aheadMs] ahead of the SFU's.
+    ClockAnchor skewed(int aheadMs) =>
+        ClockAnchor(sfuMs: sfuJoin, deviceMs: sfuJoin + aheadMs);
+
+    // The harm, staged exactly. WE speak first, at the call's start. The PEER
+    // replies five seconds later. Our device's clock is thirty seconds fast,
+    // so our turn is stamped thirty seconds after the call began and the
+    // peer's is stamped five -- and the merge, which compares those absolute
+    // values, puts the peer's reply before the greeting it answered.
+    List<MatrixEvent> exchange({ClockAnchor? mine, ClockAnchor? theirs}) => [
+      half(_me, texts: ['hola'], atMs: [_callStart + 30000], anchor: mine),
+      half(
+        _peer,
+        texts: ['muy bien'],
+        atMs: [_callStart + 5000],
+        anchor: theirs,
+      ),
+    ];
+
+    double top(WidgetTester tester, String text) =>
+        tester.getTopLeft(find.text(text)).dy;
+
+    testWidgets('a thirty-second skew no longer reorders the conversation', (
+      tester,
+    ) async {
+      await pump(
+        tester,
+        serving(exchange(mine: skewed(30000), theirs: skewed(0))),
+      );
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      // Spoken first, so drawn first -- which is the opposite of what the raw
+      // positions say, and the whole point of the anchor.
+      expect(top(tester, 'hola'), lessThan(top(tester, 'muy bien')));
+      // And the gap between them is the REAL five seconds, not the
+      // twenty-five the two clocks' disagreement made of it.
+      expect(find.text('0:00'), findsOneWidget);
+      expect(find.text('0:05'), findsOneWidget);
+    });
+
+    testWidgets('the same halves without anchors still read in device order', (
+      tester,
+    ) async {
+      // The defect itself, kept as a fixture. Nothing on these halves says how
+      // either clock stood, so there is nothing to correct by and the reader
+      // shows what the devices asserted. It is also what proves the test above
+      // is exercising the correction rather than agreeing with the raw data.
+      await pump(tester, serving(exchange()));
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      expect(top(tester, 'muy bien'), lessThan(top(tester, 'hola')));
+    });
+
+    testWidgets('ONE anchored half corrects nothing', (tester) async {
+      // All or nothing. Moving our half by thirty seconds while the peer's
+      // stays where their device put it changes their relative order on an
+      // offset measured for only one of them -- we cannot say whether that
+      // helps or harms, so it is not done.
+      await pump(tester, serving(exchange(mine: skewed(30000))));
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      expect(top(tester, 'muy bien'), lessThan(top(tester, 'hola')));
+    });
+
+    testWidgets('two clocks that agreed are left alone', (tester) async {
+      // The common case, and the one a correction must not make worse. Both
+      // devices were in step, so the offsets cancel and the transcript reads
+      // exactly as it did before anchors existed.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: ['hola'], atMs: [_callStart], anchor: skewed(400)),
+          half(
+            _peer,
+            texts: ['muy bien'],
+            atMs: [_callStart + 5000],
+            anchor: skewed(400),
+          ),
+        ]),
+      );
+
+      expect(top(tester, 'hola'), lessThan(top(tester, 'muy bien')));
+      expect(find.text('0:00'), findsOneWidget);
+      expect(find.text('0:05'), findsOneWidget);
+    });
+
+    testWidgets('a half whose own turns are ordered stays ordered', (
+      tester,
+    ) async {
+      // The render gate is answered on the RAW positions and the shift is
+      // applied after it. One constant off every position in a half cannot
+      // reorder them, so a half the gate accepted must still read forwards.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: ['hola', 'que tal'],
+            captured: 2,
+            transcribed: 2,
+            atMs: [_callStart + 30000, _callStart + 36000],
+            anchor: skewed(30000),
+          ),
+          half(
+            _peer,
+            texts: ['muy bien'],
+            atMs: [_callStart + 3000],
+            anchor: skewed(0),
+          ),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      expect(top(tester, 'hola'), lessThan(top(tester, 'muy bien')));
+      expect(top(tester, 'muy bien'), lessThan(top(tester, 'que tal')));
     });
   });
 

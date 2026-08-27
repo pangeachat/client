@@ -16,12 +16,22 @@ TranscriptCandidate _candidate(
     chunksTranscribed: 2,
     declared: true,
   ),
+  ClockAnchor? anchor,
 }) => TranscriptCandidate(
   senderId: sender,
   originServerTs: ts,
   segments: segments ?? [for (final text in texts) TranscriptSegment(text)],
   accounting: accounting,
+  clockAnchor: anchor,
 );
+
+/// A device whose clock ran [aheadMs] ahead of the SFU's at join.
+ClockAnchor _skewed(int aheadMs) =>
+    ClockAnchor(sfuMs: _sfuJoin, deviceMs: _sfuJoin + aheadMs);
+
+/// The SFU's clock at join. A real instant, because the reader refuses a
+/// reading that could not be one.
+const _sfuJoin = 1787994000000;
 
 /// A segment that knows when it was said.
 TranscriptSegment _placed(String text, int atMs) =>
@@ -1107,6 +1117,221 @@ void main() {
 
       expect(issueOf(admits), HalfIssue.audioLost);
       expect(issueOf(admits, exhausted: false), HalfIssue.couldNotRead);
+    });
+  });
+
+  group('ClockAnchor', () {
+    test('an offset is how far the DEVICE ran ahead of the SFU', () {
+      // The sign is load-bearing: the reader SUBTRACTS this to move a half
+      // onto the shared clock, so getting it backwards doubles the skew
+      // instead of removing it.
+      expect(_skewed(30000).offsetMs, 30000);
+      expect(_skewed(-30000).offsetMs, -30000);
+      expect(_skewed(0).offsetMs, 0);
+    });
+
+    test('round-trips its own json', () {
+      final anchor = _skewed(1500);
+      expect(ClockAnchor.fromJson(anchor.toJson()), anchor);
+    });
+
+    test('the field names are the wire contract', () {
+      // Named here so a rename cannot pass silently: the whole point of the
+      // fields is that another client, and an older build of this one, reads
+      // them. A parse that quietly stops matching costs the correction on
+      // every call between two versions.
+      expect(_skewed(1500).toJson(), {
+        'sfu_joined_at_ms': _sfuJoin,
+        'device_joined_at_ms': _sfuJoin + 1500,
+      });
+    });
+
+    test('a zero SFU reading is refused, not believed', () {
+      // Zero is the protocol default for `joinedAt`. A server that never
+      // stamped it reads as 1970, and the offset against 1970 is this
+      // device's ENTIRE clock -- some fifty-six years of "skew" applied to
+      // one speaker's half.
+      expect(ClockAnchor.of(sfuMs: 0, deviceMs: _sfuJoin), isNull);
+      expect(ClockAnchor.of(sfuMs: _sfuJoin, deviceMs: 0), isNull);
+    });
+
+    test('a negative or absurd reading is refused', () {
+      expect(ClockAnchor.of(sfuMs: -1, deviceMs: _sfuJoin), isNull);
+      expect(ClockAnchor.of(sfuMs: _sfuJoin, deviceMs: -1), isNull);
+      expect(
+        ClockAnchor.of(sfuMs: ClockAnchor.clockCeilingMs, deviceMs: _sfuJoin),
+        isNull,
+      );
+      expect(
+        ClockAnchor.of(
+          sfuMs: _sfuJoin,
+          // Beyond what a double holds exactly, which is where the
+          // subtraction stops being arithmetic and starts being rounding.
+          deviceMs: TranscriptSegment.atMsCeiling,
+        ),
+        isNull,
+      );
+    });
+
+    test('hostile content yields no anchor rather than an exception', () {
+      // Room content is somebody else's word. A throw here would take down a
+      // transcript whose words are perfectly readable, to protect an ordering.
+      expect(ClockAnchor.fromJson(const {}), isNull);
+      expect(
+        ClockAnchor.fromJson(const {
+          'sfu_joined_at_ms': 'soon',
+          'device_joined_at_ms': 'later',
+        }),
+        isNull,
+      );
+      expect(
+        ClockAnchor.fromJson(const {
+          'sfu_joined_at_ms': 1.5,
+          'device_joined_at_ms': 2.5,
+        }),
+        isNull,
+      );
+      expect(
+        ClockAnchor.fromJson(const {
+          'sfu_joined_at_ms': _sfuJoin,
+          'device_joined_at_ms': -5,
+        }),
+        isNull,
+      );
+    });
+
+    test('half an anchor measures nothing, so it is no anchor', () {
+      // A device time with no server time beside it is just a device time.
+      // Accepting one alone would put an offset of zero on a half whose clock
+      // was never compared to anything -- a claim that the two clocks agreed.
+      expect(
+        ClockAnchor.fromJson(const {'device_joined_at_ms': _sfuJoin}),
+        isNull,
+      );
+      expect(
+        ClockAnchor.fromJson(const {'sfu_joined_at_ms': _sfuJoin}),
+        isNull,
+      );
+    });
+  });
+
+  group('putting both halves on one clock', () {
+    test('the anchor travels from the chosen candidate onto the half', () {
+      // It has to reach the HALF: the merge happens after selection, and an
+      // offset that stops at the candidate is an offset the view never sees.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, anchor: _skewed(30000)),
+          _candidate(bob, anchor: _skewed(0)),
+        ],
+        expectedSenders: [alice, bob],
+      );
+
+      expect(_halfFor(transcript, alice).clockAnchor, _skewed(30000));
+      expect(_halfFor(transcript, bob).clockAnchor, _skewed(0));
+    });
+
+    test('a half nobody wrote asserts nothing about any clock', () {
+      // The same rule as its accounting: a synthesised offset of zero would be
+      // this reader claiming two clocks agreed, about a device that never told
+      // us what its clock said.
+      final transcript = assembleTranscript(
+        candidates: [_candidate(alice, anchor: _skewed(30000))],
+        expectedSenders: [alice, bob],
+      );
+
+      expect(_halfFor(transcript, bob).clockAnchor, isNull);
+    });
+
+    test('each half is shifted by its own offset', () {
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, anchor: _skewed(30000)),
+          _candidate(bob, anchor: _skewed(-500)),
+        ],
+        expectedSenders: [alice, bob],
+      );
+
+      expect(transcript.clocksReconcilable, isTrue);
+      expect(transcript.clockShiftFor(_halfFor(transcript, alice)), 30000);
+      expect(transcript.clockShiftFor(_halfFor(transcript, bob)), -500);
+    });
+
+    test('ONE half without an anchor stops the whole correction', () {
+      // All or nothing. Correcting one speaker and not the other moves them
+      // relative to each other by an offset measured for only one of them --
+      // we cannot bound whether that helps or harms, and a correction that
+      // might invert an order which was already right is worse than none.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, anchor: _skewed(30000)),
+          _candidate(bob),
+        ],
+        expectedSenders: [alice, bob],
+      );
+
+      expect(transcript.clocksReconcilable, isFalse);
+      expect(transcript.clockShiftFor(_halfFor(transcript, alice)), 0);
+      expect(transcript.clockShiftFor(_halfFor(transcript, bob)), 0);
+    });
+
+    test('a SILENT half without an anchor does not stop it', () {
+      // A half with no segments puts nothing on the timeline, so its clock
+      // cannot move any turn. Refusing the correction over it would throw the
+      // fix away in calls where it works perfectly.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, anchor: _skewed(30000)),
+          _candidate(bob, texts: const [], accounting: const HalfAccounting()),
+        ],
+        expectedSenders: [alice, bob],
+      );
+
+      expect(_halfFor(transcript, bob).segments, isEmpty);
+      expect(transcript.clocksReconcilable, isTrue);
+      expect(transcript.clockShiftFor(_halfFor(transcript, alice)), 30000);
+    });
+
+    test('an absent speaker does not stop it either', () {
+      final transcript = assembleTranscript(
+        candidates: [_candidate(alice, anchor: _skewed(30000))],
+        expectedSenders: [alice, bob],
+      );
+
+      expect(_halfFor(transcript, bob).state, HalfState.absent);
+      expect(transcript.clocksReconcilable, isTrue);
+      expect(transcript.clockShiftFor(_halfFor(transcript, alice)), 30000);
+    });
+
+    test('the shift cannot reorder a half against itself', () {
+      // The render gate is answered on the RAW positions and the shift is
+      // applied after it, so the two have to agree. One constant subtracted
+      // from every position in a half cannot reorder them -- this is the
+      // property that lets the gate go on reading the raw values.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: [
+              _placed('hola', _sfuJoin),
+              _placed('que tal', _sfuJoin + 6000),
+            ],
+            anchor: _skewed(30000),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      final shift = transcript.clockShiftFor(half);
+      expect(half.timelineEligible, isTrue);
+      expect(
+        segmentsArePlaceable([
+          for (final segment in half.segments)
+            TranscriptSegment(segment.text, atMs: segment.atMs! - shift),
+        ]),
+        isTrue,
+      );
     });
   });
 }

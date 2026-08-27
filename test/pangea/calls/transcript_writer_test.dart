@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 
@@ -33,6 +34,7 @@ Future<bool> _write(
   bool drainComplete = true,
   bool encrypted = false,
   String? langCode = 'es',
+  ClockAnchor? clockAnchor,
   int maxBytes = kMaxHalfBytes,
 }) => writeCallTranscript(
   send: sent.call,
@@ -46,6 +48,7 @@ Future<bool> _write(
   drainComplete: drainComplete,
   encrypted: encrypted,
   langCode: langCode,
+  clockAnchor: clockAnchor,
   maxBytes: maxBytes,
 );
 
@@ -290,6 +293,49 @@ void main() {
 
         expect(sent.bytes, lessThanOrEqualTo(1500));
       });
+    });
+  });
+
+  group('the clock anchor', () {
+    const anchor = ClockAnchor(sfuMs: 1787994000000, deviceMs: 1787994030000);
+
+    test('goes on the wire when the two clocks were read together', () async {
+      final sent = _Sent();
+      await _write(sent, clockAnchor: anchor);
+
+      expect(sent.only['sfu_joined_at_ms'], 1787994000000);
+      expect(sent.only['device_joined_at_ms'], 1787994030000);
+      expect(
+        CallTranscriptContent.fromJson(sent.only)!.clockAnchor?.offsetMs,
+        30000,
+      );
+    });
+
+    test('is simply omitted when there was none to read', () async {
+      // A half that cannot say how its clock compared is exactly the half a
+      // reader must not correct, so saying nothing is the honest answer. Zeroes
+      // would be a claim the two clocks agreed.
+      final sent = _Sent();
+      await _write(sent);
+
+      expect(sent.only.containsKey('sfu_joined_at_ms'), isFalse);
+      expect(sent.only.containsKey('device_joined_at_ms'), isFalse);
+    });
+
+    test('is inside what the packer measures', () async {
+      // Sized without it and added afterwards, a half packed right up to the
+      // budget would cross the line it was just checked against -- and the
+      // server rejects the WHOLE half, not its tail.
+      final sent = _Sent();
+      await _write(
+        sent,
+        texts: [for (var i = 0; i < 400; i++) 'hola que tal amigo'],
+        clockAnchor: anchor,
+        maxBytes: 2000,
+      );
+
+      expect(sent.only['sfu_joined_at_ms'], 1787994000000);
+      expect(sent.bytes, lessThanOrEqualTo(2000));
     });
   });
 }

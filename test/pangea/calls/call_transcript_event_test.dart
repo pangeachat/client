@@ -576,4 +576,90 @@ void main() {
       expect(parsed.segments, written.segments);
     });
   });
+
+  group('the clock anchor on the wire', () {
+    const sfuJoin = 1787994000000;
+
+    Map<String, dynamic> half({
+      Object? sfuJoinedAtMs,
+      Object? deviceJoinedAtMs,
+    }) => {
+      'call_key': _callKey,
+      'segments': [
+        {'text': 'hola', 'at_ms': sfuJoin + 1000},
+      ],
+      'chunks_captured': 2,
+      'chunks_transcribed': 2,
+      'chunks_lost': 0,
+      'capture_refused': false,
+      'truncated': false,
+      'segments_omitted': 0,
+      'drain_complete': true,
+      'sfu_joined_at_ms': ?sfuJoinedAtMs,
+      'device_joined_at_ms': ?deviceJoinedAtMs,
+    };
+
+    test('survives the round trip', () {
+      final written = CallTranscriptContent(
+        callKey: _callKey,
+        segments: const [TranscriptSegment('hola', atMs: sfuJoin + 1000)],
+        accounting: const HalfAccounting(
+          chunksCaptured: 1,
+          chunksTranscribed: 1,
+          declared: true,
+        ),
+        clockAnchor: const ClockAnchor(
+          sfuMs: sfuJoin,
+          deviceMs: sfuJoin + 30000,
+        ),
+      );
+
+      final parsed = CallTranscriptContent.fromJson(written.toJson())!;
+      expect(parsed.clockAnchor?.offsetMs, 30000);
+    });
+
+    test('a half written before the anchor existed still parses whole', () {
+      // Every half already in a room was written without one, and other
+      // clients need never write it. The fields are additive: an absent
+      // anchor costs the cross-speaker correction and nothing else.
+      final parsed = CallTranscriptContent.fromJson(half())!;
+
+      expect(parsed.clockAnchor, isNull);
+      expect(parsed.segments.map((s) => s.text), ['hola']);
+      expect(parsed.segments.map((s) => s.atMs), [sfuJoin + 1000]);
+      expect(parsed.accounting.declared, isTrue);
+      expect(parsed.accounting.readerShortened, isFalse);
+    });
+
+    test('a malformed anchor costs the anchor, never the words', () {
+      // Room content is somebody else's word. Refusing the event over a field
+      // whose only job is ORDERING would throw away speech that is perfectly
+      // readable, and the half must not read as shortened either -- we lost
+      // nothing the writer sent.
+      for (final broken in [
+        half(sfuJoinedAtMs: 'soon', deviceJoinedAtMs: 'later'),
+        half(sfuJoinedAtMs: 0, deviceJoinedAtMs: sfuJoin),
+        half(sfuJoinedAtMs: sfuJoin, deviceJoinedAtMs: -1),
+        // Half an anchor: a device time with no server time beside it
+        // measures nothing at all.
+        half(deviceJoinedAtMs: sfuJoin),
+      ]) {
+        final parsed = CallTranscriptContent.fromJson(broken)!;
+        expect(parsed.clockAnchor, isNull, reason: '$broken');
+        expect(parsed.segments.map((s) => s.text), ['hola'], reason: '$broken');
+        expect(parsed.accounting.declared, isTrue, reason: '$broken');
+        expect(parsed.accounting.readerShortened, isFalse, reason: '$broken');
+      }
+    });
+
+    test('an absent anchor writes no keys at all', () {
+      // Not zeroes. A pair of zeroes on the wire is an assertion that this
+      // device's clock matched the server's, made by a device that never
+      // compared them.
+      final json = _content().toJson();
+
+      expect(json.containsKey('sfu_joined_at_ms'), isFalse);
+      expect(json.containsKey('device_joined_at_ms'), isFalse);
+    });
+  });
 }

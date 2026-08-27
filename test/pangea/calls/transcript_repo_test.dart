@@ -16,6 +16,7 @@ MatrixEvent _half(
   String callKey = _callKey,
   String type = CallTranscriptContent.relType,
   int ts = 1000,
+  ClockAnchor? anchor,
 }) => MatrixEvent(
   type: type,
   eventId: '\$ev-$sender-$ts',
@@ -38,6 +39,7 @@ MatrixEvent _half(
       captureRefused: false,
       drainComplete: true,
     ).toJson(),
+    ...?anchor?.toJson(),
   },
 );
 
@@ -400,6 +402,35 @@ void main() {
         transcript.halves.map((h) => h.state),
         everyElement(HalfState.absent),
       );
+    });
+  });
+
+  group('the clock anchor', () {
+    const anchor = ClockAnchor(sfuMs: 1787994000000, deviceMs: 1787994030000);
+
+    test('reaches the half, so the view can use it', () async {
+      // The one data-flow step this change adds. `originServerTs` already
+      // stops at the candidate, and an offset that did the same would leave
+      // the merge with nothing to correct by while every other test passed.
+      final p = _pages([
+        (
+          chunk: [
+            _half(alice, anchor: anchor),
+            _half(bob),
+          ],
+          next: null,
+        ),
+      ]);
+
+      final transcript = await fetchCallTranscript(
+        fetch: p.fetch,
+        roomId: _room,
+        callKey: _callKey,
+        expectedSenders: [alice, bob],
+      );
+
+      expect(_halfFor(transcript, alice).clockAnchor, anchor);
+      expect(_halfFor(transcript, bob).clockAnchor, isNull);
     });
   });
 }
