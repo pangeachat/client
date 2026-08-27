@@ -76,15 +76,6 @@ class TutorialOverlayController {
 
   bool get hasActiveSequence => _activeSequence != null;
 
-  /// Whether [tutorial] is the one running and its current step is armed — the
-  /// ask is on the table and the learner has not answered it yet.
-  ///
-  /// A host uses this to keep an on-surface nudge running for as long as the ask
-  /// stands: the world map shimmers the pins it just told the learner to tap,
-  /// and stops when they do (or when the tutorial moves on).
-  bool isAwaitingLearnerAction(TutorialEnum tutorial) =>
-      _state.tutorialType == tutorial && _armed != null;
-
   /// Whether this learner still has [tutorial] coming — unseen, and not yet
   /// walked to its end. Asked by a host whose trigger belongs to one specific
   /// tutorial, so the trigger stays silent once that tutorial is done.
@@ -98,23 +89,6 @@ class TutorialOverlayController {
   /// lookup. See tutorials.instructions.md on trigger evaluation.
   bool isPending(TutorialEnum tutorial) => _progress.isEnabled(tutorial);
 
-  /// Whether the armed step waiting on the learner is one that is *supposed* to
-  /// be off screen.
-  ///
-  /// A **dimmed** armed step is: withdrawing the scrim so the learner can act
-  /// is the whole point, so it must not be put back. An **undimmed** one has no
-  /// scrim to withdraw — its card IS the instruction, and the surface keeps its
-  /// own emphasis running (the map's shimmer) the whole time — so leaving it
-  /// dismissed strands the learner with a highlight and nothing explaining it.
-  bool get _armedStepHidesItself {
-    if (_armed == null) return false;
-    final tutorial = _state.tutorialType;
-    if (tutorial == null) return false;
-    final index = _state.model.stepIndex;
-    if (index < 0 || index >= tutorial.stepTemplates.length) return false;
-    return tutorial.stepTemplates[index].dimsBackground;
-  }
-
   /// Puts the current step back on screen when a sequence is running but nothing
   /// is showing it. Two ways that happens: the host that owned the step was torn
   /// down, or the overlay was force-closed from elsewhere (closing a chat clears
@@ -123,7 +97,9 @@ class TutorialOverlayController {
   /// Callers check their own surface is present FIRST — resuming onto a surface
   /// that isn't there relaunches a step that immediately dismisses itself again.
   void resumeIfStranded() {
-    if (_activeSequence == null || _armedStepHidesItself) return;
+    // An armed step is deliberately left off screen: withdrawing the overlay so
+    // the learner can act IS the step. It resumes when they act.
+    if (_activeSequence == null || _armed != null) return;
 
     final overlayOpen = MatrixState.pAnyState.isOverlayOpen(
       overlayKey: TutorialConstants.sequenceOverlayKey,

@@ -5160,14 +5160,7 @@
             }
         }
     },
-    "tutorialWelcome": "{greeting} to Pangea Chat! I'm your guide, let's jump right in.",
-    "@tutorialWelcome": {
-        "placeholders": {
-            "greeting": {
-                "type": "String"
-            }
-        }
-    },
+    "tutorialWelcome": "I'm Pangea Bot, your guide and AI conversation partner. Let's get learning!",
     "tutorialWorldMapIntro": "This is the world map. Every roleplay activity in {language} lives here.",
     "@tutorialWorldMapIntro": {
         "placeholders": {
@@ -5176,8 +5169,7 @@
             }
         }
     },
-    "tutorialWorldMapPickActivity": "Tap a highlighted 2-player activity to open and start it!",
-    "tutorialWorldMapNoActivities": "No 2-player activities in view. Try zooming out or widening your search.",
+    "tutorialWorldMapPickActivity": "This is a conversation activity you can play with me or a partner. Click on it to start playing!",
     "tutorialActivityGoals": "Here are the goals for the role you're playing, send messages that complete them and earn stars!",
     "tutorialCoursePlanIntro": "Welcome to your course, {courseName}! It will take you through a learning journey with your course mates.",
     "@tutorialCoursePlanIntro": {

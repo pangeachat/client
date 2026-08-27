@@ -40,24 +40,32 @@ A second controller would contend for the same overlay key and the loser would s
 
 **A tutorial is the unit of "one host owns these steps."** Whichever widget owns a step's targets is the only thing that can build that step, so steps on different surfaces belong to different tutorials, sequenced together. A host that goes away gives its sequence up rather than stranding it; progress is already saved, so the next arrival resumes where it left off.
 
+
 ## The four step kinds
 
 | Kind | Advances when | Holds the screen? |
 |---|---|---|
 | **Tap** | the learner taps anywhere; the step then performs whatever it was pointing at | Yes — nothing but the tutorial responds |
 | **Armed** | the learner does the thing the step asked for, in the app itself | No — see below |
+| **Geometric** | as its underlying kind, over a rect the host computes rather than a registered widget | as its underlying kind |
 | **Branch** | the learner picks one of two labelled choices: advance, or end this tutorial and mark it seen | Yes, and a tap outside the choices does nothing — otherwise a tap toward a button would advance past the question |
 | **Multi-target** | as its underlying kind, over several lit targets at once | as its underlying kind |
 
-**A tap step acts for the learner.** Tapping anywhere is the whole interaction; the step itself then opens the toolbar, expands the goal list, or opens the panel it was describing, and gates its advance on that having worked. Most steps are tap steps, because most of what a tutorial does is *show*.
+**A tap step MAY act for the learner.** Tapping anywhere is the whole interaction; the step may then open the toolbar, open the panel it was describing, or open the activity it is pointing at, and gates its advance on that having worked. Most steps are tap steps, because most of what a tutorial does is *show*.
 
-**An armed step hands the screen back.** Where the point of the step is that the learner does it themselves — "try a two-player activity" — the tutorial cannot absorb their taps. The highlight and tooltip stay, but the learner drives: a tap on a lit target reaches the app, and a tap anywhere else dismisses the overlay while leaving the tutorial **armed at that step**. It resumes when the learner does the thing, including in a later app session, since the resume step is saved. So an armed step needs no timeout — a learner can never be stuck under the scrim waiting, and can always ignore the suggestion and come back to it.
+**Acting for the learner is a choice each step earns, not the default.** A step only performs the thing it is describing when that is plainly what the learner would want next. Two do not: the app tour's Practice step, because the button is disabled until ten words are collected; and the activity goal header, because expanding it leads with *"I'm done!"* and a learner nudged into tapping that finishes the activity before playing it. Both simply show where the thing is. When in doubt, show.
+
+**An armed step hands the screen back.** Where the point of the step is that the learner does it themselves — the course plan asking them to open an activity from its carousel — the tutorial cannot absorb their taps. The highlight and tooltip stay, but the learner drives: a tap on a lit target reaches the app, and a tap anywhere else dismisses the overlay while leaving the tutorial **armed at that step**. Such a step says for itself when its surface is no longer in front of the learner, because it has no target whose disappearance would say so. It resumes when the learner does the thing, including in a later app session, since the resume step is saved. So an armed step needs no timeout — a learner can never be stuck under the scrim waiting, and can always ignore the suggestion and come back to it.
 
 An armed step also isn't holding the overlay, so another sequence may run in front of it; the armed one resumes afterwards.
 
 **A multi-target step ends only when every target is gone.** The overlay follows its targets each frame and tears down when a target unmounts — right for one target, wrong for a set that re-ranks continuously. It repositions when any target moves, ends only when all are gone, and anchors the tooltip to the group rather than the first target so it never lands on top of something it lit.
 
-**A step may hand its surface over entirely instead of dimming it.** No scrim, no cut-outs, nothing blocked, and no tap dismisses it — just the bot card at the bottom of the screen, while the **surface itself carries the emphasis**. Where the learner has to *use* what the step is describing, darkening it works against the ask; and a cut-out never matches what it lights anyway, since a spotlight is a rounded rectangle and a map pin is an 8px dot or a teardrop. Such a step says for itself when its surface is no longer in front of the learner, because it has no target whose disappearance would say so — otherwise a card that tracks nothing would follow them onto every other screen.
+**Withholding the scrim is a visual decision, and only that.** A step with no scrim paints no dark layer and no cut-outs, and its card takes the **bottom** of the screen rather than the middle — for a step that is about the whole screen, darkening the thing it describes works against it. Nothing else changes: a tap anywhere still advances, exactly like a dimmed step. Exactly one step does this, the map introduction.
+
+**A card sits on the surface it is talking about.** Where there is room it anchors just above or below what was lit. Where the target is too big to sit beside — a panel, the whole map — it takes the bottom of the **target**, centred on the target, not the bottom of the screen: a course panel occupies one column, and a card centred on the screen there reads as belonging to the map beside it. Only a step with nothing lit uses the screen itself, centred when it is about the app and bottom when it is about the screen.
+
+**A step whose target is geometry rather than a widget computes its own rect.** Map pins carry no target ids — a repeating world mounts each pin several times, and an id is a single GlobalKey — so the map projects the pin it is pointing at through the live camera each frame, and the hole tracks it while the camera glides. A step lighting a small target pads the hole out so what is being pointed at is legible from across the screen.
 
 ## Prep belongs to the step, not the host
 
@@ -105,26 +113,40 @@ The app tour ending on World is what closes the second path: a course-code learn
 
 One step, no target: the bot introduces itself and greets the learner in their **L2**, over the darkened screen. It says nothing about the map or the course, because it fires on whichever the learner landed on. Tapping hands straight to that surface's tutorial with no scrim blink between them.
 
-**The greeting itself is a word bubble, not text.** It renders as a tappable vocabulary word — the learner's first contact with the mechanic the whole product runs on: words in the L2 are things you can touch, look up, and collect. Tapping opens the **word card** over the scrim and **collects the word**, so the greeting is also the learner's first collected vocabulary.
+**The greeting is a word bubble above the sentence, not text inside it.** It renders as a tappable vocabulary word, displayed large and centered over the message — the learner's first contact with the mechanic the whole product runs on: words in the L2 are things you can touch, look up, and collect. Tapping opens the **word card** over the scrim and **collects the word**, so the greeting is also the learner's first collected vocabulary.
+
+**Above the sentence, never spliced into it.** The copy takes no runtime arguments at all. A greeting substituted into the message is hostage to English word order — a translator whose language does not open with the greeting has nowhere to put it, and one that inflects around it reads as a typo. Standing on its own line the word works in every language, and gets to be large enough to read as the thing the step is about.
 
 **Whether it is styled as *new* is the tokenizer's answer, never ours.** The bubble asks the same analytics service every chat token asks, so a learner who already has the word simply sees it uncollected-but-not-new, and a tooltip reset cannot fake a discovery. In practice a greeting usually tags as an **interjection**, which is a function word and so never carries the green new-word underline — accepted, because the point of the bubble is that the word is *touchable*, not that it is new. It still collects, and still opens a card.
 
-**The bubble appears only when a real L2 greeting was resolved.** It needs a tokenized word to be a word at all, so the fallbacks — no target language, no translation of the greeting for that locale, a tokenizer that did not answer — degrade to the plain app-language greeting with no bubble. A greeting in the learner's own language has nothing to teach about their L2.
+**The greeting always shows; only the bubble is conditional.** Being tappable needs a tokenized word, so the fallbacks — no target language, no translation of the greeting for that locale, a tokenizer that did not answer — display the same word at the same size as plain text, in the app language, with nothing to look up. A greeting in a language the learner already speaks has nothing to teach about their L2, but a step that greets nobody is worse.
+
+**The greeting word is borrowed, not authored.** It is the app's own standalone-greeting string, read in the *learner's target language* — the one bare greeting already carried in every locale **with that language's own punctuation** (the Spanish inverted opening mark, the French space before the exclamation, the Japanese fullwidth one). A tutorial-specific key would have read as English for every learner until all 116 locales were translated, and a runtime machine translation would pay an AI call per learner to produce a constant that no translator could review. Because the string is shared, it must stay a bare greeting: the ARB entry carries that constraint.
 
 ### worldMap
 
-1. **The map.** Every activity in the learner's target language lives here — that is what the world map *is*, and the reason to come back to it.
-2. **Every visible two-role activity, shimmering.** "Tap one to start." The map is handed over — undimmed and fully usable — and the pins wear the same **gold nudge shimmer** the message tutorial uses on the translate button, so the emphasis is on the pins themselves rather than a hole cut around them. It reads clearly at the mid and large tiers and is subtle on an 8px dot, which is accepted: the card carries the instruction. Armed — the learner opens the activity themselves, and may ignore it and come back. The shimmer runs for exactly as long as the ask stands, so panning and tapping around the map do not end it; it stops when they open an activity, or when they leave the map. When no two-role activity is in view, the step carries the same *widen search* / *zoom out* remedy the map's own empty-view card would offer, read from the same diagnosis so the two can never disagree.
+1. **The map**, undimmed and whole, with the card at the bottom. Every activity in the learner's target language lives here — that is what the world map *is*, and the reason to come back to it. This step is about the entire screen, so it **clears the screen first**: every left and right panel closes and the learner lands on the bare map, the app's home surface on every platform. It still advances on a tap like any other step; only the scrim is withheld.
+2. **One activity, lit and centred.** The card explains what an activity *is* — a roleplay acted out with the bot or a partner — and **a tap anywhere opens it**. The learner cannot miss it and cannot pick the wrong one.
 
-Two-role activities are the target because the bot fills exactly one seat, so they are the only ones a friendless new learner can start alone — the same reason the map already demotes 3+ role activities for them ([world map](world-map.instructions.md)).
+**The camera moves on the way out of the introduction, not into it.** The introduction is about the map as the learner already has it; the glide belongs to the step that is about the activity. It is awaited, so the pin has arrived before the next step asks where it is.
+
+**The hole is the pin's real geometry**, at the tier it actually drew at, with a little padding — an ordinary rounded rect like every other spotlight step. Each tier anchors its box to the geographic point differently, so this is the map's answer to give, not the tutorial's to assume: a hole sized for a mid pin and centred on the point appears *below the tail* of a large card, in open map.
+
+**It must be a two-role activity — a hard gate.** The bot fills exactly one seat, so a two-role activity is the only kind a learner with nobody else around can actually start; anything else strands them on a start page waiting for humans who are not coming. Literally strands: an activity counts as *started* only once **every** role is filled, and until then the chat renders the start page instead of the timeline — so a 3+ role activity chosen for a lone learner has no goal header, no timeline and no composer for the whole session. It was this, not anything in the tutorial code, that made the activity tutorials appear only after the learner pressed *I'm done* — finishing is the other way an activity counts as started, so the chat flipped to the timeline at the one moment the tutorials were useless. The map already *demotes* 3+ role activities for a learner who hasn't finished one ([world map](world-map.instructions.md)); here they are excluded outright, because the tutorial is choosing on the learner's behalf and telling them to tap it. An unknown role count is excluded too — it cannot be confirmed to be two.
+
+**Among those the choice is deliberately blunt**: the first *placed* activity at the **lowest** level, preferring one plainly **available** over a live session someone else is running or a trail star already finished. No matching against the learner's own level and no keyword. The step teaches what an activity is, so the easiest one wins, and a rule with nothing to tune cannot quietly stop matching. State, unlike the role count, is only a preference, so a map whose two-role activities are all live sessions still yields a starter. **No qualifying activity means the step does not run** — the sequence ends after the introduction rather than pointing at something the learner cannot start.
+
+**Centred, not focused.** Focus is the learner's own "I'm working with this one" state and carries its own ring; the tutorial has chosen nothing on their behalf, it is only pointing, so it moves the camera and leaves focus alone.
+
+**The chosen pin is exempt from the attention budget**, floored at the mid tier. At narrow widths the heavy tiers empty first ([world map](world-map.instructions.md)), and a step asking for one tap cannot point at an 8px dot. A pin that earned the large tier keeps it.
 
 ### coursePlan
 
 Mirrors `worldMap` — an introduction to the surface, then "go start one", with the course's own progress model in between:
 
-1. **A welcome naming the course**, with nothing lit, so it takes over the screen: this course is a learning journey the learner takes with their course mates.
+1. **A welcome naming the course**, lighting the **whole course panel** — header, progress and plan sections together — so the step is plainly about *this* course: a learning journey the learner takes with their course mates. A full-height target leaves no room beside it, so the card sits at the bottom **of the panel**, centred on it.
 2. **The course progress bar.** Doing activities and earning **stars** is what moves them along the course. A star is one orchestrator-awarded activity goal and a Mission is a learning objective — [quests](quests.instructions.md) owns both.
-3. **The Up-next Mission's activity carousel.** Armed, exactly as on the map: the learner opens an activity themselves.
+3. **The Up-next Mission's activity carousel.** Armed — the learner picks an activity themselves, from a set their course author chose. The only armed step left; the map's equivalent points at one activity and opens it on a tap.
 
 **The carousel, not its individual cards.** A card would need a target id each, and the same activity can appear under more than one Mission, so two cards would contend for one id. Exactly one Mission is ever the anchor, so pointing at its carousel has a single claimant — and it says the more useful thing anyway: *these* are the activities for what you are working on now.
 
@@ -134,7 +156,9 @@ Mirrors `worldMap` — an introduction to the surface, then "go start one", with
 
 ### activityGoals
 
-One step, one tap. It lights the **goal header** once the activity chat is running: playing your role and completing goals earns stars, and stars move you through a course's Missions. Tapping expands the goal list, so the learner ends the step looking at the goals they are about to play for.
+One step, one tap. It lights the **goal header** once the activity chat is running: playing your role and completing goals earns stars, and stars move you through a course's Missions.
+
+**It points, and does nothing else** — a tap anywhere dismisses the card. It used to expand the goal list for the learner, which in play misled them: the expanded header leads with **"I'm done!"**, so a step whose whole message is *here is what to play for* handed them the button that ends the activity before they had said anything. Showing where something lives is not the same as opening it.
 
 **Nothing else inside an activity gets a step.** There was a waiting-room step before this one, pointing at the invite and play-with-the-bot controls — it was removed because it earned too little for an interruption at that moment, and the waiting room already shows both controls plainly. Completing every goal and finishing for credit likewise get nothing: those surfaces explain themselves, and a second interruption inside a learner's first activity costs more attention than it returns.
 

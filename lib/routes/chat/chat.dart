@@ -804,6 +804,7 @@ class ChatController extends State<ChatPageWithRoom>
   /// re-asks. See tutorials.instructions.md on trigger evaluation.
   void _checkActivityGoalsTutorial() {
     if (!mounted) return;
+
     if (!MatrixState
         .pangeaController
         .userController
@@ -830,8 +831,16 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  /// Ends with the goal list open, so the learner finishes the step looking at
-  /// the goals they are about to play for.
+  /// Points at the goal header and does nothing else — a tap anywhere just
+  /// dismisses the card.
+  ///
+  /// It used to expand the goal list for the learner. In play that misled them:
+  /// the expanded header leads with **"I'm done!"**, so a step whose whole
+  /// message is "here is what to play for" handed them the button that ends the
+  /// activity before they had said anything. Same reasoning as the app tour's
+  /// Practice step — showing where something lives is not the same as opening
+  /// it, and a step that acts for the learner has to be sure the action is one
+  /// they would want.
   Future<void> _launchActivityGoalsTutorial() async {
     if (!mounted || !_hasGoalHeader) return;
     tutorialOverlayController.launchTutorial(
@@ -841,9 +850,7 @@ class ChatController extends State<ChatPageWithRoom>
         stepsData: [
           TutorialStepData.single(
             targetKey: TutorialTargetIds.activityGoalHeader,
-            onTap: () async => activityController.setShowDropdown(true),
-            canShowNextStep: () =>
-                activityController.showActivityDropdown.value,
+            canShowNextStep: () => true,
           ),
         ],
       ),

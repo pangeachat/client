@@ -180,12 +180,12 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   /// all, so it centers.
   _TooltipPlacement _placementFor(Size tooltipSize, bool dimsBackground) {
     final anchor = _anchorRect;
-    // An undimmed step has handed the surface over, so its card takes the bottom
-    // rather than sitting in the middle of what the learner is meant to use.
+    // A step with no scrim is about the whole screen, so its card takes the
+    // bottom rather than sitting in the middle of what it is describing.
     if (anchor == null) {
       return dimsBackground
           ? _TooltipPlacement.centered
-          : _TooltipPlacement.bottom;
+          : _TooltipPlacement.screenBottom;
     }
 
     final fitsBelow =
@@ -193,7 +193,11 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
     if (_showAbove(anchor, tooltipSize) || fitsBelow) {
       return _TooltipPlacement.anchored;
     }
-    return _TooltipPlacement.bottom;
+    // Too big to sit beside — a panel, or the map. The card takes the bottom of
+    // the TARGET, centred on it, not the bottom of the screen: a course panel
+    // occupies one column, and a card centred on the screen there reads as
+    // belonging to the map beside it.
+    return _TooltipPlacement.anchorBottom;
   }
 
   /// The vertical room one placement needs: the card plus the breathing space
@@ -347,6 +351,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
                 ? null
                 : _tooltipLeft(_anchorRect!, _tooltipSize(tooltipSize)),
             padding: _tooltipPadding,
+            tooltipSize: _tooltipSize(tooltipSize),
             child: TutorialTooltipContainerWidget(
               width: tooltipSize.width,
               height: tooltipSize.height,
@@ -368,15 +373,6 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
           ),
       ],
     );
-
-    // An undimmed step is purely the card: nothing is blocked, and no tap
-    // dismisses it, so the nudge stands until the learner does the thing or
-    // leaves the surface. Not wrapped in BlockSemantics for the same reason the
-    // armed case isn't — hiding the surface from a screen reader while asking
-    // the learner to use it is the trap.
-    if (!step.style.dimsBackground) {
-      return IgnorePointer(child: content);
-    }
 
     // An armed step hands the screen back: the learner has to reach the thing
     // the step is pointing at, so the overlay must not swallow their taps. It
@@ -411,15 +407,33 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   }
 }
 
-enum _TooltipPlacement { anchored, centered, bottom }
+enum _TooltipPlacement {
+  /// Just above or just below what was lit.
+  anchored,
 
-/// Places the tooltip per [_TutorialOverlayWidgetState._placement].
+  /// The middle of the screen — a step with nothing lit, about the app.
+  centered,
+
+  /// The bottom of the screen — a step with nothing lit, about the screen.
+  screenBottom,
+
+  /// The bottom of what was lit, centred on it. For a target too big to sit
+  /// beside: the card belongs to that surface, so it sits ON it rather than
+  /// drifting to the middle of a screen the surface may occupy only half of.
+  anchorBottom,
+}
+
+/// Places the tooltip per [_TutorialOverlayWidgetState._placementFor].
 class _TutorialTooltipPlacement extends StatelessWidget {
   final _TooltipPlacement placement;
   final Rect? anchor;
   final bool showAbove;
   final double? left;
   final double padding;
+
+  /// The card's measured size, needed to seat it INSIDE the anchor's bottom
+  /// edge rather than hanging past it.
+  final Size tooltipSize;
   final Widget child;
 
   const _TutorialTooltipPlacement({
@@ -428,19 +442,33 @@ class _TutorialTooltipPlacement extends StatelessWidget {
     required this.showAbove,
     required this.left,
     required this.padding,
+    required this.tooltipSize,
     required this.child,
   });
 
   @override
   Widget build(BuildContext context) {
     final anchor = this.anchor;
-    if (placement != _TooltipPlacement.anchored || anchor == null) {
+    if (anchor == null ||
+        placement == _TooltipPlacement.centered ||
+        placement == _TooltipPlacement.screenBottom) {
       return Align(
-        alignment: placement == _TooltipPlacement.bottom
+        alignment: placement == _TooltipPlacement.screenBottom
             ? Alignment.bottomCenter
             : Alignment.center,
         child: Padding(padding: EdgeInsets.all(padding * 2), child: child),
       );
+    }
+
+    if (placement == _TooltipPlacement.anchorBottom) {
+      final screenHeight = MediaQuery.sizeOf(context).height;
+      // Clamped, so a target running past the bottom of the screen (or taller
+      // than it) still leaves the whole card visible.
+      final top = (anchor.bottom - tooltipSize.height - padding * 2).clamp(
+        padding,
+        (screenHeight - tooltipSize.height - padding).clamp(0.0, screenHeight),
+      );
+      return Positioned(left: left, top: top, child: child);
     }
 
     return Positioned(

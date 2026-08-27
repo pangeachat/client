@@ -50,10 +50,11 @@ class TutorialStepData {
   /// tap. See tutorials.instructions.md.
   final TutorialStepArming? arming;
 
-  /// For a step with no spotlight to lose: whether the surface it belongs to is
-  /// still in front of the learner. False means get out of the way but stay
-  /// armed — exactly what a vanished target means. Without it a card that tracks
-  /// nothing would follow the learner onto every other screen.
+  /// Whether the surface this step belongs to is still in front of the learner.
+  /// False means get out of the way — the same thing a vanished target means,
+  /// for a step whose target cannot vanish because it has none, or whose target
+  /// is geometry rather than a widget. Without it a card that tracks nothing
+  /// would follow the learner onto every other screen.
   final bool Function()? surfaceIsVisible;
 
   /// Runtime values this step's copy needs — a greeting in the learner's target
@@ -148,11 +149,11 @@ class TutorialStepTemplate {
 
   /// Whether this step darkens what is behind it.
   ///
-  /// False hands the surface over completely: no scrim, no spotlight, nothing
-  /// blocked, and no tap dismisses it — just the bot card, while the surface
-  /// itself carries the emphasis (the map shimmers the pins it is talking
-  /// about). For a step the learner is meant to act on, dimming the thing they
-  /// have to use works against the ask.
+  /// False paints no scrim and no cut-outs, and sends the card to the bottom of
+  /// the screen rather than the middle — for a step about the whole screen,
+  /// darkening the thing it describes works against it. Purely visual: a tap
+  /// anywhere still advances, exactly as on a dimmed step. What hands the screen
+  /// back to the learner is [TutorialStepData.arming], not this.
   final bool dimsBackground;
 
   /// Present on a **branch** step: the step asks a question and the learner

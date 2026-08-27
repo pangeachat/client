@@ -17,8 +17,7 @@ class TutorialTooltipWidget extends StatelessWidget {
   final List<({String label, TutorialChoiceOutcome outcome})> choices;
   final void Function(TutorialChoiceOutcome)? onChoice;
 
-  /// A word in [text] to draw as a tappable vocabulary word instead of as text.
-  /// Its position comes from [TutorialCopy.wordSlot] in the copy.
+  /// The L2 greeting, shown as a tappable vocabulary word above [text].
   final TutorialGreeting? wordBubble;
   final EdgeInsets padding;
   final BorderRadius borderRadius;
@@ -63,32 +62,50 @@ class TutorialTooltipWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
+          // The greeting and the message are ONE vertically centered block, so
+          // the slack above and below it is equal. Held apart before — the
+          // greeting a fixed-height child at the top, the message given all the
+          // slack — every spare pixel pooled under the greeting: it sat tight
+          // against the card's top edge with a gap beneath it.
           Expanded(
-            child: Row(
-              spacing: 8.0,
-              children: [
-                BotFace(width: iconSize, expression: BotExpression.gold),
-                Expanded(
-                  child: LayoutBuilder(
-                    builder: (context, constraints) {
-                      return SingleChildScrollView(
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(
-                            minHeight: constraints.maxHeight,
-                          ),
-                          child: Center(
-                            child: _TutorialTooltipText(
-                              text: text,
-                              style: style,
-                              wordBubble: wordBubble,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Above the bot-face row rather than inside it: sharing
+                        // the row centered the greeting on the text column
+                        // instead of the card, reading as offset to the right.
+                        if (wordBubble != null) ...[
+                          _TutorialGreeting(greeting: wordBubble!),
+                          const SizedBox(height: 8.0),
+                        ],
+                        Row(
+                          spacing: 8.0,
+                          children: [
+                            BotFace(
+                              width: iconSize,
+                              expression: BotExpression.gold,
                             ),
-                          ),
+                            Expanded(
+                              child: Text(
+                                text,
+                                style: style,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
                         ),
-                      );
-                    },
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                );
+              },
             ),
           ),
           Padding(
@@ -175,51 +192,35 @@ class _TutorialChoiceButton extends StatelessWidget {
   }
 }
 
-/// The card's copy, with one word optionally drawn as a vocabulary bubble.
-///
-/// The copy stays a single localized string: the host substitutes
-/// [TutorialCopy.wordSlot] where the word goes and this splits on it, so the
-/// bubble lands wherever the translator put the placeholder rather than where
-/// English happens to put it.
-class _TutorialTooltipText extends StatelessWidget {
-  final String text;
-  final TextStyle? style;
-  final TutorialGreeting? wordBubble;
+/// The step's L2 greeting, displayed large and centered across the full width
+/// of the card, above everything else. Why it stands on its own line rather
+/// than inside the sentence belongs to the step's copy — see the welcome entry
+/// in the step templates.
+class _TutorialGreeting extends StatelessWidget {
+  final TutorialGreeting greeting;
 
-  const _TutorialTooltipText({
-    required this.text,
-    required this.style,
-    required this.wordBubble,
-  });
+  const _TutorialGreeting({required this.greeting});
 
   @override
   Widget build(BuildContext context) {
-    final bubble = wordBubble;
-    final split = TutorialCopy.splitOnWordSlot(text);
-    if (bubble == null || !bubble.isBubble || split == null) {
-      // Any leftover marker becomes the word itself rather than being shown, so
-      // copy resolved for a bubble still reads correctly when the bubble could
-      // not be built.
-      return Text(
-        text.replaceAll(TutorialCopy.wordSlot, bubble?.word ?? ''),
-        style: style,
-        textAlign: TextAlign.center,
-      );
-    }
+    // Display size, not body size: the greeting IS the step's subject, and at
+    // the sentence's size it read as an aside.
+    final style = Theme.of(
+      context,
+    ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold);
 
-    return Text.rich(
-      TextSpan(
-        style: style,
-        children: [
-          if (split.before.isNotEmpty) TextSpan(text: split.before),
-          WidgetSpan(
-            alignment: PlaceholderAlignment.middle,
-            child: TutorialWordBubble(greeting: bubble, style: style),
-          ),
-          if (split.after.isNotEmpty) TextSpan(text: split.after),
-        ],
+    return SizedBox(
+      width: double.infinity,
+      child: Center(
+        // Shown either way. Only a resolved L2 word is a tappable vocabulary
+        // bubble; the fallbacks still greet the learner, just in a language they
+        // already speak and with nothing to look up. The sentence no longer
+        // carries the greeting, so dropping it here would leave the step with no
+        // greeting at all.
+        child: greeting.isBubble
+            ? TutorialWordBubble(greeting: greeting, style: style)
+            : Text(greeting.word, style: style, textAlign: TextAlign.center),
       ),
-      textAlign: TextAlign.center,
     );
   }
 }

@@ -38,8 +38,11 @@ class TutorialWordBubble extends StatefulWidget {
 
 class _TutorialWordBubbleState extends State<TutorialWordBubble>
     with CollectableTokensMixin {
-  static const String _targetId = 'tutorial_welcome_greeting';
-  static const String _cacheKey = 'tutorial_welcome_greeting';
+  /// One id, two roles: the overlay key + layer link the word card anchors to,
+  /// and the new-token cache key the "is this word new?" lookup is stored under.
+  /// Both are namespaces private to this widget, so one constant serves both —
+  /// two holding the same literal would only drift.
+  static const String _id = 'tutorial_welcome_greeting';
 
   bool _isNew = false;
   bool _cardOpen = false;
@@ -66,7 +69,7 @@ class _TutorialWordBubbleState extends State<TutorialWordBubble>
   @override
   void dispose() {
     _analyticsSubscription?.cancel();
-    MatrixState.pAnyState.closeOverlay(_targetId);
+    MatrixState.pAnyState.closeOverlay(_id);
     super.dispose();
   }
 
@@ -81,7 +84,7 @@ class _TutorialWordBubbleState extends State<TutorialWordBubble>
     // assumed: what the tokenizer returns varies by language, and deciding here
     // would put a second, quietly disagreeing answer next to the real one.
     final isNew = TokensUtil.instance
-        .getNewTokens(_cacheKey, [token], langCode)
+        .getNewTokens(_id, [token], langCode)
         .any((t) => t == token.text);
 
     if (mounted && isNew != _isNew) setState(() => _isNew = isNew);
@@ -102,8 +105,8 @@ class _TutorialWordBubbleState extends State<TutorialWordBubble>
         ? null
         : collectToken(
             token: token,
-            tokenCacheKey: _cacheKey,
-            targetId: _targetId,
+            tokenCacheKey: _id,
+            targetId: _id,
             langCode: langCode,
             // Not a chat token, so it must not retire the shimmer that teaches
             // the learner to tap words in their first real message.
@@ -142,8 +145,8 @@ class _TutorialWordBubbleState extends State<TutorialWordBubble>
           onClose: () => _closeWordCard(),
         ),
         displayDetails: PositionedOverlayDisplayDetails(
-          overlayKey: _targetId,
-          transformTargetId: _targetId,
+          overlayKey: _id,
+          transformTargetId: _id,
           closePrevOverlay: false,
           addBorder: false,
           maxWidth: AppConfig.toolbarMinWidth,
@@ -161,14 +164,14 @@ class _TutorialWordBubbleState extends State<TutorialWordBubble>
   }
 
   void _closeWordCard() {
-    MatrixState.pAnyState.closeOverlay(_targetId);
+    MatrixState.pAnyState.closeOverlay(_id);
     if (mounted && _cardOpen) setState(() => _cardOpen = false);
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final target = MatrixState.pAnyState.layerLinkAndKey(_targetId);
+    final target = MatrixState.pAnyState.layerLinkAndKey(_id);
 
     return CompositedTransformTarget(
       link: target.link,
@@ -181,7 +184,12 @@ class _TutorialWordBubbleState extends State<TutorialWordBubble>
             onTap: _onTap,
             child: Container(
               key: target.key,
-              padding: const EdgeInsets.symmetric(horizontal: 6.0),
+              // Roomier than a word inside a sentence needs: at display size
+              // the pill has to sit around the word, not cling to it.
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12.0,
+                vertical: 2.0,
+              ),
               decoration: BoxDecoration(
                 color: theme.colorScheme.primary.withAlpha(_cardOpen ? 40 : 20),
                 borderRadius: BorderRadius.circular(20.0),

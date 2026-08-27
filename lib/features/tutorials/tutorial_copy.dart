@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/repo/token_api_models.dart';
 import 'package:fluffychat/routes/chat/events/repo/tokens_repo.dart';
@@ -24,38 +25,37 @@ class TutorialGreeting {
   bool get isBubble => token != null && langCode != null;
 }
 
+/// The one token in [tokens] that could be a word, or null when there is not
+/// exactly one.
+///
+/// **Punctuation is dropped before counting.** A greeting carries its language's
+/// own marks — "¡Bienvenido!", "Bonjour !" — and the tokenizer returns those as
+/// tokens of their own, so counting raw tokens rejected every punctuated
+/// greeting and silently degraded it to plain, untappable text. What has to be
+/// unambiguous is the WORD: exactly one thing here can be a lemma, or the word
+/// card would be pointed at a guess.
+@visibleForTesting
+PangeaToken? soleLemmaToken(List<PangeaToken> tokens) {
+  final words = tokens
+      .where((token) => PartOfSpeechEnum.isEligibleLemmaTag(token.pos))
+      .toList();
+  return words.length == 1 ? words.first : null;
+}
+
 /// Runtime values tutorial copy needs that more than one host has to resolve.
 /// The strings themselves stay in the step templates.
 class TutorialCopy {
-  /// Stands in for the greeting inside the resolved copy, so the tooltip can
-  /// find where to put the word bubble.
-  ///
-  /// The copy stays ONE localized string with a `{greeting}` placeholder: the
-  /// host substitutes this marker instead of the word, and the tooltip splits on
-  /// it. Splitting the resolved string is what makes the bubble land wherever
-  /// the translator put the placeholder, rather than assuming it comes first.
-  /// U+2063 (invisible separator) prints nothing if it ever escapes.
-  static const String wordSlot = '⁣';
-
-  /// Splits [text] around [wordSlot]: the copy before the word and the copy
-  /// after it. Null when the marker is absent, which means the copy was
-  /// resolved for plain text and there is nothing to place.
-  ///
-  /// Split rather than assumed, so the bubble lands wherever the translator put
-  /// the `{greeting}` placeholder — English opens with it, and other languages
-  /// need not.
-  static ({String before, String after})? splitOnWordSlot(String text) {
-    final slot = text.indexOf(wordSlot);
-    if (slot < 0) return null;
-    return (
-      before: text.substring(0, slot),
-      after: text.substring(slot + wordSlot.length),
-    );
-  }
-
   /// A greeting in the learner's target language, borrowed from that locale's
   /// own UI copy rather than a new per-language content source, and tokenized so
   /// it can be shown as a word.
+  ///
+  /// The borrowed string is [L10n.joinedCourseStepTitle] — "Welcome!" — chosen
+  /// because it is the one bare greeting already translated into every locale
+  /// **with that language's own punctuation**: the Spanish inverted opening
+  /// mark, the French space before the exclamation, the Japanese fullwidth one.
+  /// A new key would have read as English for every learner until 116 locales
+  /// were translated. It is shared copy, so the ARB carries a note not to turn
+  /// it into a course-specific sentence.
   ///
   /// Falls back to the app language — no bubble — when there is no target
   /// language, when the locale has no translation, or when tokenization fails.
@@ -67,14 +67,14 @@ class TutorialCopy {
   static Future<TutorialGreeting> targetLanguageGreeting(
     BuildContext context,
   ) async {
-    final fallback = TutorialGreeting(L10n.of(context).welcome);
+    final fallback = TutorialGreeting(L10n.of(context).joinedCourseStepTitle);
     final userController = MatrixState.pangeaController.userController;
     final l2 = userController.userL2;
     if (l2 == null) return fallback;
 
     final String word;
     try {
-      word = (await lookupL10n(Locale(l2.langCodeShort))).welcome;
+      word = (await lookupL10n(Locale(l2.langCodeShort))).joinedCourseStepTitle;
     } catch (_) {
       return fallback;
     }
@@ -91,12 +91,11 @@ class TutorialCopy {
       );
       if (res.isError) return TutorialGreeting(word);
 
-      final tokens = res.asValue!.value.tokens;
-      // One word in, so one token out — anything else means the tokenizer read
-      // it as something other than the single word we asked about, and pointing
-      // a word card at the first of several would describe the wrong thing.
-      if (tokens.length != 1) return TutorialGreeting(word);
-      return TutorialGreeting(word, token: tokens.first, langCode: l2.langCode);
+      final token = soleLemmaToken(res.asValue!.value.tokens);
+      if (token == null) return TutorialGreeting(word);
+      // The bubble shows [word] — punctuation and all — while the card and the
+      // collection use this token, which is the word without it.
+      return TutorialGreeting(word, token: token, langCode: l2.langCode);
     } catch (_) {
       return TutorialGreeting(word);
     }

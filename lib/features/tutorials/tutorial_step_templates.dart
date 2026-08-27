@@ -28,11 +28,17 @@ class TutorialStepTemplates {
 
   /// One step, no target: a message about the app rather than about anything on
   /// screen, so it centers over the darkened map or course plan.
+  ///
+  /// The L2 greeting is NOT part of this string. It is displayed above it, as a
+  /// word in its own right — see [TutorialStepData.wordBubble]. Splicing it into
+  /// the sentence made the copy hostage to English word order: a translator
+  /// whose language does not open with the greeting, or inflects around it, had
+  /// nowhere to put it. Taller than the other one-step cards to make room for
+  /// the word above the text.
   static final List<TutorialStepTemplate> welcome = [
     TutorialStepTemplate(
-      // args: [greeting in the learner's target language]
-      tooltip: (l10n, args) => l10n.tutorialWelcome(args.first),
-      tooltipSize: const Size(280, 130),
+      tooltip: (l10n, _) => l10n.tutorialWelcome,
+      tooltipSize: const Size(280, 170),
     ),
   ];
 
@@ -41,17 +47,20 @@ class TutorialStepTemplates {
       // args: [the learner's target language name]
       tooltip: (l10n, args) => l10n.tutorialWorldMapIntro(args.first),
       tooltipSize: const Size(280, 130),
+      // No scrim: this step is about the whole screen, so darkening the thing
+      // it is describing works against it. Nothing is lit either, so the card
+      // takes the bottom of the screen. A tap anywhere still advances —
+      // withholding the scrim is a visual decision, not a handover.
+      dimsBackground: false,
     ),
     TutorialStepTemplate(
-      // Both strings live here, not at the call site; the host only signals
-      // which case applies by passing an arg or not.
-      tooltip: (l10n, args) => args.isEmpty
-          ? l10n.tutorialWorldMapPickActivity
-          : l10n.tutorialWorldMapNoActivities,
-      tooltipSize: const Size(280, 120),
-      // Hands the map over: no scrim and no cut-outs, because the map itself
-      // carries the emphasis — it shimmers the pins this step is talking about.
-      dimsBackground: false,
+      tooltip: (l10n, _) => l10n.tutorialWorldMapPickActivity,
+      tooltipSize: const Size(280, 130),
+      // A plain rounded rect around the pin, like every other spotlight step.
+      // The rect is the pin's REAL geometry for the tier it drew at — the map
+      // publishes it — so a little padding is all that is needed to frame it.
+      borderRadius: AppConfig.borderRadius,
+      padding: 8.0,
     ),
   ];
 
@@ -120,6 +129,10 @@ class TutorialStepTemplates {
       // args: [the course's name]
       tooltip: (l10n, args) => l10n.tutorialCoursePlanIntro(args.first),
       tooltipSize: const Size(290, 150),
+      // Lights the whole course panel, so the cut-out follows the panel's own
+      // corners. A full-height target leaves no room above or below it, so the
+      // placement rule seats the card at the bottom OF THE PANEL, centred on it.
+      borderRadius: AppConfig.borderRadius,
     ),
     TutorialStepTemplate(
       tooltip: (l10n, _) => l10n.tutorialCoursePlanProgress,

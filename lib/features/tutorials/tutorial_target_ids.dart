@@ -10,6 +10,17 @@ class TutorialTargetIds {
   /// can be mounted at the same time ([TutorialTarget]).
   static const String courseProgressBar = 'tutorial_course_progress_bar';
 
+  /// The world map's own viewport, used as the coordinate origin the map
+  /// projects a chosen pin's position into. The map is one persistent instance,
+  /// so this has a single claimant by construction.
+  static const String worldMapViewport = 'tutorial_world_map_viewport';
+
+  /// The whole course panel — header, progress bar and plan sections together.
+  /// Claimed by the panel that renders a `course` token, which is one widget on
+  /// both layouts: the wide left column and the narrow nav cavity host the same
+  /// tree, and they are mutually exclusive.
+  static const String coursePanel = 'tutorial_course_panel';
+
   /// The activity carousel of a course plan's "Up next" Mission.
   ///
   /// The carousel rather than its individual cards: a card would need an id per

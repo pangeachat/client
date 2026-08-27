@@ -265,9 +265,11 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       tutorial: TutorialModel(
         tutorialType: TutorialEnum.coursePlan,
         stepsData: [
-          // Greets the learner by their course's name; nothing lit, so it takes
-          // over the screen.
-          TutorialStepData(
+          // Lights the whole course panel — header, progress and plan — so the
+          // step is plainly about THIS course. A full-height target leaves no
+          // room beside it, so the card is seated at the bottom of the panel.
+          TutorialStepData.single(
+            targetKey: TutorialTargetIds.coursePanel,
             canShowNextStep: () => true,
             tooltipArgs: () => [courseName],
           ),
@@ -466,6 +468,16 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   @override
   Widget build(BuildContext context) {
+    // Re-asked from build, which is the ONLY hook that always runs when the
+    // carousel this tutorial points at appears. The quest outline loads
+    // asynchronously, so the first frame is a spinner and the carousel does not
+    // exist yet; the listeners wired in initState (ping cache, discovery cache,
+    // room sync) need not fire when it lands, so the check could sit unasked
+    // until something unrelated happened to poke it — which is why the tutorial
+    // only showed up on a SECOND visit to the course. Debounced to one
+    // post-frame callback by [_maybeStartOrientation].
+    _maybeStartOrientation();
+
     return Semantics(
       label: L10n.of(context).coursePlan,
       container: true,

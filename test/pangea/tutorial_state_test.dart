@@ -775,27 +775,52 @@ void main() {
   // The welcome greeting: shown as a vocabulary word when we resolved a real
   // L2 one, as plain text otherwise. See tutorials.instructions.md.
   // ===========================================================================
-  group('TutorialCopy.splitOnWordSlot', () {
-    test('a slot at the start leaves nothing before it', () {
-      final split = TutorialCopy.splitOnWordSlot(
-        '${TutorialCopy.wordSlot} to Pangea Chat!',
+  group('soleLemmaToken', () {
+    PangeaToken token(String content, String pos) => PangeaToken(
+      text: PangeaTokenText(
+        content: content,
+        length: content.length,
+        offset: 0,
+      ),
+      lemma: Lemma(text: content, saveVocab: true, form: content),
+      pos: pos,
+      morph: const {},
+    );
+
+    test('a bare word is the word', () {
+      expect(
+        soleLemmaToken([token('Welcome', 'intj')])?.text.content,
+        'Welcome',
       );
-      expect(split, isNotNull);
-      expect(split!.before, '');
-      expect(split.after, ' to Pangea Chat!');
     });
 
-    test('a slot mid-sentence splits both sides — a translator need not put '
-        'the greeting first', () {
-      final split = TutorialCopy.splitOnWordSlot(
-        'En español decimos ${TutorialCopy.wordSlot}, welcome!',
-      );
-      expect(split!.before, 'En español decimos ');
-      expect(split.after, ', welcome!');
+    test(
+      "punctuation around the word is ignored — the regression: the greeting "
+      "carries its language's own marks, and counting raw tokens rejected "
+      'every punctuated greeting',
+      () {
+        final tokens = [
+          token('¡', 'punct'),
+          token('Bienvenido', 'intj'),
+          token('!', 'punct'),
+        ];
+        expect(soleLemmaToken(tokens)?.text.content, 'Bienvenido');
+      },
+    );
+
+    test('a trailing mark after a space is ignored too (French)', () {
+      final tokens = [token('Bonjour', 'intj'), token('!', 'punct')];
+      expect(soleLemmaToken(tokens)?.text.content, 'Bonjour');
     });
 
-    test('copy with no slot returns null — nothing to place', () {
-      expect(TutorialCopy.splitOnWordSlot('Welcome to Pangea Chat!'), isNull);
+    test('two real words is ambiguous — no word card rather than a guess', () {
+      final tokens = [token('Buenos', 'adj'), token('días', 'noun')];
+      expect(soleLemmaToken(tokens), isNull);
+    });
+
+    test('nothing but punctuation resolves to no word', () {
+      expect(soleLemmaToken([token('!', 'punct')]), isNull);
+      expect(soleLemmaToken([]), isNull);
     });
   });
 
@@ -829,8 +854,7 @@ void main() {
   });
 
   group('TutorialModel.welcome', () {
-    test('a bubble greeting puts the marker in the copy, not the word — the '
-        'tooltip needs to know where to place the bubble', () {
+    test('a tokenized L2 greeting is carried as a bubble', () {
       final greeting = TutorialGreeting(
         'Bienvenido',
         token: PangeaToken(
@@ -842,16 +866,22 @@ void main() {
         langCode: 'es',
       );
       final data = TutorialModel.welcome(greeting).dataAt(0);
-      expect(data.resolvedTooltipArgs, [TutorialCopy.wordSlot]);
       expect(data.wordBubble!()!.isBubble, isTrue);
     });
 
-    test('a plain greeting substitutes the word itself', () {
+    test('a greeting that could not be tokenized is carried as plain text', () {
       final data = TutorialModel.welcome(
         const TutorialGreeting('Welcome'),
       ).dataAt(0);
-      expect(data.resolvedTooltipArgs, ['Welcome']);
       expect(data.wordBubble!()!.isBubble, isFalse);
+    });
+
+    test('the copy takes NO runtime arguments — the word is shown above the '
+        'sentence, never spliced into it, so no word order is assumed', () {
+      final data = TutorialModel.welcome(
+        const TutorialGreeting('Welcome'),
+      ).dataAt(0);
+      expect(data.resolvedTooltipArgs, isEmpty);
     });
 
     test('the greeting step carries no target and needs no host state', () {
@@ -867,39 +897,38 @@ void main() {
   // ===========================================================================
   // Which armed steps may be put back on screen
   // ===========================================================================
-  group('armed steps and the scrim', () {
-    // The bug this locks: `resumeIfStranded` skipped EVERY armed step, on the
-    // reasoning that being off screen is the point. True while armed steps
-    // always carried a scrim — but the map's pin step hands the surface over
-    // instead, so its card is the only thing explaining the shimmer still
-    // running on the pins. Dismissed and never resumed, the learner was left
-    // with a highlight and no instruction. Which of the two an armed step is
-    // comes from `dimsBackground`, so these are the templates that decide it.
-    test('the world map hands its surface over on the step that asks the '
-        'learner to open an activity', () {
-      final templates = TutorialEnum.worldMap.stepTemplates;
-      expect(templates.last.dimsBackground, isFalse);
-    });
-
-    test('the course plan keeps its scrim on the equivalent step', () {
-      final templates = TutorialEnum.coursePlan.stepTemplates;
-      expect(templates.last.dimsBackground, isTrue);
-    });
-
-    test(
-      'every other step dims — handing the surface over is the exception',
-      () {
-        for (final tutorial in TutorialEnum.values) {
-          for (var i = 0; i < tutorial.stepCount; i++) {
-            final dims = tutorial.stepTemplates[i].dimsBackground;
-            if (tutorial == TutorialEnum.worldMap && i == 1) {
-              expect(dims, isFalse, reason: '$tutorial step $i');
-              continue;
-            }
-            expect(dims, isTrue, reason: '$tutorial step $i');
-          }
+  group('the scrim, and which steps withhold it', () {
+    // Only ONE step drops the scrim now, and only for a visual reason: the map
+    // introduction is about the whole screen, so darkening the screen works
+    // against it. It still advances on a tap like any other step.
+    //
+    // The pin step used to drop it too, because it shimmered every two-role pin
+    // and a cut-out could not match an 8px dot. Pointing at ONE activity, at a
+    // guaranteed mid tier, with a padded circular hole, removed that reason —
+    // and with it the whole shimmer path and the undimmed-armed step kind.
+    test('the map introduction is the one step without a scrim', () {
+      expect(TutorialEnum.worldMap.stepTemplates.first.dimsBackground, isFalse);
+      for (final tutorial in TutorialEnum.values) {
+        for (var i = 0; i < tutorial.stepCount; i++) {
+          final expected = !(tutorial == TutorialEnum.worldMap && i == 0);
+          expect(
+            tutorial.stepTemplates[i].dimsBackground,
+            expected,
+            reason: '$tutorial step $i',
+          );
         }
-      },
-    );
+      }
+    });
+
+    test('the pin step lights something, so it keeps its scrim', () {
+      expect(TutorialEnum.worldMap.stepTemplates.last.dimsBackground, isTrue);
+    });
+
+    test('the course plan keeps its scrim throughout — every one of its steps '
+        'lights something, so there is something to cut out of', () {
+      for (final template in TutorialEnum.coursePlan.stepTemplates) {
+        expect(template.dimsBackground, isTrue);
+      }
+    });
   });
 }

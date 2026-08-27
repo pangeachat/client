@@ -27,21 +27,14 @@ class TutorialModel {
   /// once here rather than in each host because, alone among the steps, it
   /// prepares no host UI state: it needs only the greeting itself.
   ///
-  /// The copy's `{greeting}` placeholder takes [TutorialCopy.wordSlot] when the
-  /// word can be a bubble, so the tooltip knows where to put it, and the plain
-  /// word when it cannot.
+  /// The copy takes no arguments: the L2 word is shown above the sentence
+  /// instead of inside it, so nothing is substituted into the string.
   factory TutorialModel.welcome(TutorialGreeting greeting) => TutorialModel(
     tutorialType: TutorialEnum.welcome,
     stepsData: [
       // No target: the greeting is about the app, not about anything on screen,
       // so it centers over the darkened surface.
-      TutorialStepData(
-        canShowNextStep: () => true,
-        tooltipArgs: () => [
-          greeting.isBubble ? TutorialCopy.wordSlot : greeting.word,
-        ],
-        wordBubble: () => greeting,
-      ),
+      TutorialStepData(canShowNextStep: () => true, wordBubble: () => greeting),
     ],
   );
 
