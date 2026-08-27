@@ -73,18 +73,28 @@ function refuseRemoteCallSpecs(): void {
   // round an earlier version of this.
   const CODE = /\.(ts|tsx|js|mjs|cjs)$/;
 
-  // Comments stripped before matching. This guard's whole job is to notice
-  // code that places a call, and a spec that merely EXPLAINS in prose why it
-  // does not touch getUserMedia should not be refused for saying the word.
-  const stripComments = (src: string) =>
-    src.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/(^|[^:])\/\/[^\n]*/g, "$1 ");
+  // Comments are NOT stripped, and that is the deliberate direction.
+  //
+  // An earlier version stripped them with a regex so that a spec explaining
+  // in prose why it does not touch getUserMedia would not be refused for
+  // saying the word. A regex cannot parse JavaScript: `const s = "//";`
+  // followed by a real getUserMedia call is truncated at the string, and the
+  // guard walks straight past an actual call. That is a bypass, introduced to
+  // avoid an inconvenience.
+  //
+  // The asymmetry decides it. A false positive here costs somebody one line
+  // in the nightly allowlist, or a reworded comment. A false negative costs a
+  // real call against a deployed host, unattended, every night, on somebody's
+  // bill. So this errs toward refusing, and a spec that trips it on prose
+  // alone should say so in its own words rather than teach the guard to
+  // squint.
 
   const marked = fs
     .readdirSync(dir, { recursive: true })
     .map(String)
     .filter((f) => CODE.test(f))
     .filter((f) => {
-      const body = stripComments(fs.readFileSync(path.join(dir, f), "utf-8"));
+      const body = fs.readFileSync(path.join(dir, f), "utf-8");
       return MARKS.some((m) => m.test(body));
     });
 

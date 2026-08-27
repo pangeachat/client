@@ -322,27 +322,46 @@ async function main() {
 
     // Nobody is called silent who spoke. The screen has four things it can
     // say and this is the one that would be a lie.
-    // COUNTED, not name-matched.
+    // Built, not searched for.
     //
-    // Matching a name against the text beside the claim was brittle in two
-    // ways: it read only the FIRST occurrence, so a true note for one speaker
-    // hid a false one for the other; and it guessed the rendered name, which
-    // is a display name or a localised "You" and not the Matrix localpart
-    // this file knows. Counting sidesteps both. The screen may say "said
-    // nothing" exactly as many times as there are halves that really were
-    // silent; one more than that is a lie about somebody, whoever it names.
-    const reallySilent = [byA, byB]
-      .filter((e) => e && !words(spoken(e)).size).length;
-    const claimed = labels.labelsFor('callTranscriptSaidNothing')
-      .reduce((most, t) => {
-        let n = 0;
-        for (let i = onScreen.indexOf(t); i >= 0; i = onScreen.indexOf(t, i + 1)) n++;
-        return Math.max(most, n);
-      }, 0);
+    // The app draws `callTranscriptSaidNothing` with a name substituted in,
+    // so the exact sentence it would put on screen about a given person is
+    // computable -- "calltester did not say anything". Asking whether THAT
+    // string is present answers "is this person being called silent" with no
+    // ambiguity at all.
+    //
+    // Three earlier versions of this check were wrong, each in a way the next
+    // one inherited. Matching a guessed name failed because the screen draws a
+    // display name or a localised "You", not a Matrix localpart. Counting the
+    // claims could not tell a true note about the silent speaker from a false
+    // one about the speaker who spoke. And a proximity window around each
+    // claim accused whoever happened to be printed nearby -- in a two-line
+    // transcript, that is everybody.
+    //
+    // "Silent" is the APP's definition: a half with no segments, which is what
+    // `saidNothing` means. Counting words of four letters or more was a proxy,
+    // and it called a half carrying a couple of short words silent.
+    const templates = labels.templatesFor('callTranscriptSaidNothing');
+    const youNames = labels.labelsFor('you');
 
-    h.check(s, 'nobody who spoke is reported as silent', claimed <= reallySilent,
-      `the screen says "said nothing" ${claimed} time(s) but only ` +
-        `${reallySilent} half/halves were actually silent`);
+    const lied = [];
+    for (const ev of [byA, byB].filter(Boolean)) {
+      const segs = ev.content?.segments;
+      if (!Array.isArray(segs) || segs.length === 0) continue;   // truly silent
+
+      const names = ev.sender === A.userId
+        ? youNames
+        : [await mx.displayName(A.token, ev.sender), ev.sender.slice(1).split(':')[0]];
+
+      const accused = templates.some((t) =>
+        names.filter(Boolean).some((n) =>
+          onScreen.includes(t.replace(/\{[^}]*\}/g, String(n)))));
+      if (accused) lied.push(ev.sender);
+    }
+
+    h.check(s, 'nobody who spoke is reported as silent', lied.length === 0,
+      `the transcript says ${lied.join(', ')} said nothing, but their half ` +
+        `carries segments`);
   }
 
   console.log('[6] neither side logged an unhandled error');

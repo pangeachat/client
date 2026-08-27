@@ -139,4 +139,21 @@ function candidates(name) {
   return memo[name];
 }
 
-module.exports = { candidates, labelsFor, KEYS, L10N_DIR };
+/// Every RAW rendering of a key, placeholders intact.
+///
+/// `labelsFor` returns the literal runs, which is what you match a control by.
+/// This returns the templates themselves, which is what you use when you know
+/// what goes IN the placeholder: substituting the value the app would draw
+/// gives the exact string on screen, and an exact string needs no window
+/// around it to decide who it is about.
+function templatesFor(key) {
+  const out = new Set();
+  for (const arb of allArbs()) {
+    const v = arb[key];
+    if (typeof v === 'string' && v.length) out.add(v);
+  }
+  if (!out.size) throw new Error(`No translation defines "${key}".`);
+  return [...out];
+}
+
+module.exports = { candidates, labelsFor, templatesFor, KEYS, L10N_DIR };

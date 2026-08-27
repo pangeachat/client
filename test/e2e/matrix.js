@@ -64,6 +64,21 @@ async function timeline(token, roomId, limit = 60) {
   return (r.chunk || []).slice().reverse();
 }
 
+/// The name the APP will draw for a user.
+///
+/// Read from the server rather than guessed from the Matrix id: the screen
+/// draws a display name, and a scenario that assumes the localpart is testing
+/// its own assumption. The id is the fallback the client itself uses when a
+/// profile carries no name.
+async function displayName(token, userId) {
+  try {
+    const p = await api(`/_matrix/client/v3/profile/${encodeURIComponent(userId)}`, { token });
+    return (p && p.displayname) || userId;
+  } catch (_) {
+    return userId;
+  }
+}
+
 const CALL = 'pangea.call';
 const DECLINE = 'org.matrix.msc4310.rtc.decline';
 const RING = 'org.matrix.msc4075.rtc.notification';
@@ -148,4 +163,4 @@ async function hasMembership(token, roomId, userId) {
   return (await liveMemberships(token, roomId, userId)) > 0;
 }
 
-module.exports = { api, login, hasMembership, liveMemberships, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };
+module.exports = { api, login, displayName, hasMembership, liveMemberships, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };
