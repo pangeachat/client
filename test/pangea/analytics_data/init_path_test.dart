@@ -12,9 +12,7 @@ import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
-import 'package:fluffychat/features/analytics_data/analytics_database.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
@@ -64,6 +62,11 @@ class _FakeMatrixState extends MatrixState {
 /// stayed green throughout, because no test constructs a real
 /// [AnalyticsDataService]. These tests exist so that class of defect fails
 /// here instead of on a device.
+///
+/// Nothing on the init path publishes any more, so the stalled-publish test
+/// below passes today no matter what. It is kept as a guard: it fails the
+/// moment anything on that path starts awaiting a profile write again, which
+/// has now happened twice.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   sqfliteFfiInit();
@@ -122,22 +125,15 @@ void main() {
     return service;
   }
 
-  AnalyticsDatabase? seededDb;
-
-  /// The level the seeded store reports — what the publish must match.
-  Future<int> freshDerivedLevel() async =>
-      (await seededDb!.getDerivedStats(testLang)).level;
-
-  /// A LOGGED-IN service, so `_initAnalytics` actually runs. The tests above
-  /// reach the state init runs in; this drives init itself, which is the only
-  /// way to see anything init awaits.
   var storeSeq = 0;
 
-  Future<(AnalyticsDataService, _GatedProfileApi)> loggedInService({
-    bool seedAnalytics = true,
-  }) async {
+  /// A LOGGED-IN service, so `_initAnalytics` actually runs. The other tests
+  /// here reach the state init runs in; this drives init itself, which is the
+  /// only way to see anything init awaits.
+  Future<(AnalyticsDataService, _GatedProfileApi)> loggedInService() async {
     // A distinct store per call — a shared one carries the previous test's seed.
     final storeName = 'analytics_init_${storeSeq++}';
+
     final api = _GatedProfileApi();
     api.api['GET']!['/.well-known/matrix/client'] = (_) => {};
     api.api['PUT']![_profileFieldRoute] = (_) => {};
@@ -161,8 +157,6 @@ void main() {
       password: '1234',
     );
 
-    // The learner's target language — the one and only language whose level
-    // init publishes.
     client.accountData[UserConstants.userProfile] = BasicEvent(
       type: UserConstants.userProfile,
       content: pangea.Profile(
@@ -182,90 +176,16 @@ void main() {
     );
 
     final db = await freshDatabase(name: storeName);
-    // A language this device holds analytics for, so reconciliation has
-    // something to publish and actually reaches the profile write.
     await db.updateUserID(client.userID!);
     // A current language must be set or init treats the store as
-    // uninitialized and hard-refreshes it, wiping the seed.
+    // uninitialized and hard-refreshes it.
     await db.updateCurrentLanguage(testLang);
-    if (!seedAnalytics) {
-      seededDb = db;
-      return (
-        AnalyticsDataService(client, databaseBuilder: (_) async => db),
-        api,
-      );
-    }
-
-    // The TOTAL, not the offset: init writes the offset from the profile
-    // (zero here) over whatever is stored, so seeding that collapsed the
-    // derived level back to 1 and left the level assertion comparing 1 to 1.
-    await db.updateTotalXP(900, testLang);
-    // One real server event, so the store is marked as a language this device
-    // has actually pulled analytics for. Without that the publish is skipped by
-    // design — see publishCurrentLevel.
-    final factory = await ServerEventFactory.create();
-    await db.updateServerAnalytics([
-      factory.event([use(lemma: 'hola', ts: at(1))], ts: at(1)),
-    ], testLang);
-    // Re-assert the total: the server update recomputes nothing, but the seed
-    // must be the value the publish is checked against.
-    await db.updateTotalXP(900, testLang);
-    seededDb = db;
 
     return (
       AnalyticsDataService(client, databaseBuilder: (_) async => db),
       api,
     );
   }
-
-  test('init publishes the level it derived for the current language', () async {
-    // The feature end to end, through real initialization: the store is read
-    // and the level published. Without this the publish could be removed
-    // entirely and every other test would still pass — the ones below prove
-    // only that nothing on the init path waits for init.
-    final (service, api) = await loggedInService();
-
-    await service.initCompleter.future.timeout(const Duration(seconds: 10));
-
-    // Reconciliation is deliberately not awaited by init, so wait for its
-    // publish rather than assuming it has landed.
-    final deadline = DateTime.now().add(const Duration(seconds: 5));
-    while (api.puts.isEmpty && DateTime.now().isBefore(deadline)) {
-      await Future.delayed(const Duration(milliseconds: 20));
-    }
-
-    expect(
-      api.puts,
-      isNotEmpty,
-      reason: 'init must publish the level it derived from the local store',
-    );
-    final analytics = api.puts.last[AnalyticsConstants.analytics] as Map;
-    expect(analytics.keys, contains(testLang));
-
-    // Exactly what the store reports for this language — for the active
-    // language the local data is authoritative, so the published level is set,
-    // not raised.
-    final derived = await freshDerivedLevel();
-    expect(analytics[testLang][AnalyticsConstants.level], derived);
-  });
-
-  test('init publishes nothing when this device has no data yet', () async {
-    // A fresh install, a new device, or any hard refresh leaves the store
-    // empty, and bulkUpdate gives up silently when the analytics room is not in
-    // sync yet. An empty store derives level 1; publishing that exactly would
-    // overwrite the learner's real level with 1 for everyone who reads their
-    // profile. The publish must be skipped instead.
-    final (service, api) = await loggedInService(seedAnalytics: false);
-
-    await service.initCompleter.future.timeout(const Duration(seconds: 10));
-    await Future.delayed(const Duration(milliseconds: 300));
-
-    expect(
-      api.puts,
-      isEmpty,
-      reason: 'an unsynced store must not publish a level at all',
-    );
-  });
 
   test('init completes even while another profile publish is stalled', () async {
     // Profile publishes are serialized behind one chain and the Matrix profile
@@ -318,26 +238,6 @@ void main() {
             onTimeout: () => fail(
               'updateServerAnalytics hung: something on the init path is '
               'waiting for init to finish',
-            ),
-          );
-
-      expect(service.isInitializing, isTrue);
-    },
-  );
-
-  test(
-    'publishing the current level completes while init is in flight',
-    () async {
-      final service = await serviceMidInit();
-
-      await service.updateXPOffset(900, testLang);
-      await service
-          .publishCurrentLevel(testLang)
-          .timeout(
-            const Duration(seconds: 5),
-            onTimeout: () => fail(
-              'publishCurrentLevel hung: it runs inside init, so it must not '
-              'read through anything that waits for init to finish',
             ),
           );
 

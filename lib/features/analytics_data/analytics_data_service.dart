@@ -283,26 +283,6 @@ class AnalyticsDataService {
         await updateXPOffset(xpOffset, l2.langCodeShort);
       }
 
-      // NOT awaited. This ends in a profile PUT, and initialization must never
-      // wait on a network write: publishes are serialized behind one chain, so
-      // awaiting here parks init behind whatever else is publishing — and
-      // UserController.initialize fires one off un-awaited on every startup.
-      // The Matrix profile PUT has no timeout of its own, so a request that
-      // stalls rather than fails would hang init outright, with initError null
-      // and no error state to show for it. Nothing below depends on the result.
-      if (l2 != null) {
-        unawaited(
-          publishCurrentLevel(l2.langCodeShort).catchError(
-            (Object e, StackTrace s) => ErrorHandler.logError(
-              e: e,
-              s: s,
-              data: {"language": l2.langCodeShort},
-              m: "Failed to publish the current analytics level",
-            ),
-          ),
-        );
-      }
-
       _syncController!.start();
       updateService.start();
 
@@ -319,46 +299,6 @@ class AnalyticsDataService {
       updateDispatcher.sendEmptyAnalyticsUpdate();
       updateDispatcher.sendActivityAnalyticsUpdate(null);
     }
-  }
-
-  /// Publishes the level this device derives for the language being studied.
-  ///
-  /// Only that one language. It is the level other people actually see —
-  /// [AnalyticsProfileModel.level] reads the entry for the profile's target
-  /// language — and it is the only language whose local data is known current
-  /// here: `bulkUpdate` has just synced it from its analytics room, and blocked
-  /// constructs are folded for the active language alone. Every other
-  /// language's stored total is frozen at whatever it was when that language
-  /// was last active, so republishing from it would fight any other device the
-  /// learner uses, indefinitely and in both directions. A learner who wants an
-  /// older language's published level refreshed switches to it.
-  ///
-  /// The level is published exactly, not raised: for this language the local
-  /// data is authoritative, so a level that has genuinely fallen — blocking
-  /// constructs lowers one — must be able to go down.
-  ///
-  /// Reads the store DIRECTLY rather than through [derivedData], which waits on
-  /// the init completer this runs before (#8592).
-  @visibleForTesting
-  Future<void> publishCurrentLevel(String language) async {
-    final database = _analyticsClientGetter.database;
-
-    // Only from a store that has actually pulled this language's analytics at
-    // least once. `bulkUpdate` gives up silently when the analytics room is not
-    // in sync yet, and `_hardRefreshDatabase` empties the store on a fresh
-    // install, a new device or a changed account — so "we just synced it" is
-    // not something this can assume. An empty store derives level 1, and
-    // publishing that exactly would overwrite the learner's real level with 1
-    // for everyone who reads their profile. The timestamp is written only by
-    // updateServerAnalytics and cleared by the wipe, which makes it exactly the
-    // "this device has real data for this language" signal.
-    if (await database.getLastEventTimestamp(language) == null) return;
-
-    final stats = await database.getDerivedStats(language);
-    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
-      languageCode: language,
-      level: stats.level,
-    );
   }
 
   /// Seed the merge table from the stored aggregates. Reads identifiers only
