@@ -30,11 +30,21 @@ class CallTranscriptContent {
   /// The language this half was transcribed in, when the provider reported one.
   final String? langCode;
 
+  /// Where this device's wall clock sat relative to the SFU's, read at join.
+  ///
+  /// OPTIONAL on the wire, in both directions. Events written before this
+  /// existed carry nothing, other clients need not write it, and a reader that
+  /// cannot use it loses only the cross-speaker CORRECTION -- `at_ms` still
+  /// means what it always meant, an absolute Unix millisecond on the writing
+  /// device's own clock, and every word is still shown. See [ClockAnchor].
+  final ClockAnchor? clockAnchor;
+
   const CallTranscriptContent({
     required this.callKey,
     required this.segments,
     required this.accounting,
     this.langCode,
+    this.clockAnchor,
   });
 
   /// The relation type and the event type are the same string: a transcript
@@ -63,6 +73,7 @@ class CallTranscriptContent {
     'segments': [for (final segment in segments) segment.toJson()],
     ...accounting.toJson(),
     if (langCode != null) 'lang_code': langCode,
+    ...?clockAnchor?.toJson(),
     'm.relates_to': {'rel_type': relType, 'event_id': callKey},
   };
 
@@ -223,6 +234,10 @@ class CallTranscriptContent {
           ? accounting.readerFoundUnreadable()
           : accounting.readerTruncated(),
       langCode: langCode is String && langCode.isNotEmpty ? langCode : null,
+      // A malformed anchor is ABSENT, never a reason to reject the half. It
+      // decides only where these words sit against the OTHER speaker's, and
+      // refusing an event over it would cost every word to save an ordering.
+      clockAnchor: ClockAnchor.fromJson(content),
     );
   }
 

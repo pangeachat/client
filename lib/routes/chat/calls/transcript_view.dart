@@ -215,12 +215,34 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// a turn's `at` is time ELAPSED, and gets printed as `m:ss`. Handing the
   /// absolute value straight over renders a call that began in 2026 as some
   /// twenty-eight million minutes in.
+  ///
+  /// The other conversion is between two DEVICES. A position is stamped from
+  /// the writing device's own wall clock, and merging both halves by comparing
+  /// those absolute values compares two clocks: a constant skew shifts one
+  /// speaker's whole half, so the transcript states the wrong person spoke
+  /// first. Each half's [CallTranscript.clockShiftFor] moves it onto the one
+  /// clock both devices observed -- the SFU's -- before anything is ordered.
+  ///
+  /// The shift is applied HERE and nothing on the wire is rewritten. What a
+  /// device asserted stays what it asserted; putting two halves side by side
+  /// is a reader's problem, which is also why no migration is needed for the
+  /// calls already in people's rooms.
   List<CallTurn> _turnsOf(CallTranscript transcript, L10n l10n) {
     final me = widget.room.client.userID;
 
-    final positions = [
+    // Worked out once per HALF, not once per segment: one constant per half is
+    // the whole correction, and that is also what keeps the render gate sound.
+    // `timelineEligible` was answered on the raw positions, and subtracting a
+    // single constant from all of a half's positions cannot reorder them, so a
+    // half that was non-decreasing before the shift is non-decreasing after.
+    final placed = [
       for (final half in transcript.halves)
-        for (final segment in half.segments) segment.atMs!,
+        (half: half, shift: transcript.clockShiftFor(half)),
+    ];
+
+    final positions = [
+      for (final entry in placed)
+        for (final segment in entry.half.segments) segment.atMs! - entry.shift,
     ];
     if (positions.isEmpty) return const [];
 
@@ -237,18 +259,18 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     final start = positions.reduce((a, b) => a < b ? a : b);
 
     return [
-      for (final half in transcript.halves)
-        for (final segment in half.segments)
+      for (final entry in placed)
+        for (final segment in entry.half.segments)
           CallTurn(
-            senderId: half.senderId,
+            senderId: entry.half.senderId,
             // The speaker's OWN name, not what the header will print. The
             // widget substitutes "You" for your own turns itself, and the
             // avatar needs the real one: handing it the label drew every
             // self-turn's avatar as the initial of the word "You".
-            name: _displayNameOf(half.senderId),
-            avatarUrl: _avatarOf(half.senderId),
-            isMe: half.senderId == me,
-            at: Duration(milliseconds: segment.atMs! - start),
+            name: _displayNameOf(entry.half.senderId),
+            avatarUrl: _avatarOf(entry.half.senderId),
+            isMe: entry.half.senderId == me,
+            at: Duration(milliseconds: segment.atMs! - entry.shift - start),
             text: segment.text,
           ),
     ];
@@ -286,9 +308,12 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
 
 /// One speaker's side of the call.
 ///
-/// Per speaker, not interleaved. The two halves are recorded independently on
-/// two devices with no shared clock, so ordering one against the other would
-/// be a guess presented as a record of who said what when.
+/// Per speaker, not interleaved. What this view is for is a call whose turns
+/// cannot all be placed: the two halves are recorded independently on two
+/// devices, and without a position on every displayed segment, ordering one
+/// against the other would be a guess presented as a record of who said what
+/// when. A call that CAN be placed is drawn as one conversation instead, with
+/// each half moved onto the SFU's clock first.
 class _HalfSection extends StatelessWidget {
   final TranscriptHalf half;
   final String name;

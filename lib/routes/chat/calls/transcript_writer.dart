@@ -55,6 +55,12 @@ Future<bool> writeCallTranscript({
   required bool captureRefused,
   required bool drainComplete,
   String? langCode,
+
+  /// Where this device's clock sat relative to the SFU's, or null when the two
+  /// could not be read together. Null is a first-class answer and is simply
+  /// omitted from the event: a half that cannot say how its clock compared is
+  /// exactly the half a reader must not correct.
+  ClockAnchor? clockAnchor,
   bool encrypted = false,
   int maxBytes = kMaxHalfBytes,
 }) async {
@@ -86,6 +92,11 @@ Future<bool> writeCallTranscript({
           declared: true,
         ),
         langCode: langCode,
+        // Inside the closure, so the packer measures the event that actually
+        // goes on the wire. Sizing without it and adding it afterwards would
+        // grow a half past the budget it was just checked against, and the
+        // server rejects the WHOLE half rather than its tail.
+        clockAnchor: clockAnchor,
       );
 
   // Sized against the worst case for the accounting fields: a half packed while

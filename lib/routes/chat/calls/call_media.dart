@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart' show Logs;
 
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
 /// This device's media for one call.
 ///
@@ -162,7 +163,7 @@ class CallMedia {
   /// released, which is a no-op, not a failure.
   Future<LocalParticipant?> _publishingAs(bool on) async {
     final ready = room.localParticipant;
-    if (ready != null) return ready;
+    if (ready != null) return _anchored(ready);
     if (!on) return null;
     // Waited for, briefly, before being called a failure. The participant
     // appears as part of connecting, and asking a beat too early is a race
@@ -173,7 +174,7 @@ class CallMedia {
       await Future<void>.delayed(const Duration(milliseconds: 100));
       if (_released) return null;
       final late = room.localParticipant;
-      if (late != null) return late;
+      if (late != null) return _anchored(late);
     }
     // Loud, but not fatal. The silent `?.` this replaced was wrong because it
     // reported success for a step that never happened; throwing instead was
@@ -186,6 +187,49 @@ class CallMedia {
     _captureRefused = true;
     return null;
   }
+
+  /// Reads both clocks the first time this call has a participant to read them
+  /// from, and hands the participant straight back.
+  ///
+  /// Latched, not re-read. The two readings describe this device's clock
+  /// against the SFU's, which is a property of the CLOCKS and not of the
+  /// moment, so one measurement stands for the call — and `joinedAt` is fixed
+  /// at join anyway, so a later device reading beside it would measure the
+  /// call's own duration rather than any disagreement. It sits on this path
+  /// because this is where the local participant is first known to exist:
+  /// [connect] publishes the microphone through it before any audio is
+  /// captured, and the later mute and camera calls that also come through here
+  /// find the latch already taken.
+  LocalParticipant _anchored(LocalParticipant participant) {
+    _clockAnchor ??= ClockAnchor.of(
+      // Stamped by the SFU, so both devices in the call read the SAME clock
+      // here. Whole SECONDS: the millisecond field exists in the protocol and
+      // livekit_client 2.11.0 keeps it behind a private member, so the offset
+      // this yields is good to about a second. That is the documented limit of
+      // the correction, and it is two orders of magnitude better than the skew
+      // it exists to remove.
+      sfuMs: participant.joinedAt.millisecondsSinceEpoch,
+      // The same wall clock every position in this half is stamped from, read
+      // as close to the SFU's own instant as this device can observe it. What
+      // separates them is the join response's flight time -- tens of
+      // milliseconds, inside the second of quantisation above.
+      deviceMs: DateTime.now().millisecondsSinceEpoch,
+    );
+    return participant;
+  }
+
+  /// Where this device's wall clock sat relative to the SFU's, or null when a
+  /// usable pair of readings was never taken.
+  ///
+  /// Read by the transcript writer at the END of the call, off this latch,
+  /// rather than measured there: by then `joinedAt` is minutes in the past and
+  /// the device clock has moved with the call.
+  ///
+  /// Null is a real answer and must stay one. The reader refuses to correct
+  /// ANY half of a transcript unless every half that carries words has an
+  /// offset, so a missing one costs the correction and never a word.
+  ClockAnchor? get clockAnchor => _clockAnchor;
+  ClockAnchor? _clockAnchor;
 
   /// Whether a capture device could not be opened because there was nothing
   /// to open it through. Read by the UI so a call with no microphone says so.

@@ -52,6 +52,106 @@ bool segmentsArePlaceable(List<TranscriptSegment> segments) {
   return true;
 }
 
+/// Where one device's wall clock sat relative to the SFU's, read at join.
+///
+/// Every position in a half is stamped from the WRITING DEVICE's own wall
+/// clock, and the two halves of a call are written by two devices. Merging
+/// them by comparing those absolute values is a comparison across clocks: a
+/// constant skew shifts one speaker's ENTIRE half, so the transcript states
+/// the wrong person spoke first and looks perfectly ordinary doing it. This
+/// codebase has already lost a bug to cross-device skew -- `active_call.dart`
+/// records a device two minutes fast writing one call to the room twice.
+///
+/// The SFU is the one clock BOTH devices observe. LiveKit stamps
+/// `Participant.joinedAt` server-side at join, so it carries no send delay, no
+/// queueing and no federation. The transcript event's `origin_server_ts` was
+/// considered and rejected for exactly that reason: it is a RECEIVE time, so a
+/// half that took five seconds to send reads as five seconds of clock skew,
+/// and correcting by it would invert an ordering that was already right.
+///
+/// Both readings travel rather than the difference alone. The pair is what a
+/// bug report can be read back from, and it costs one integer.
+///
+/// KNOWN LIMIT: the LiveKit Dart API exposes `joinedAt` only in whole SECONDS
+/// -- `joinedAtMs` exists in the protocol but only behind a private field --
+/// so an offset carries up to a second of quantisation, and the two halves can
+/// disagree by up to a second after correction. That removes minutes of skew
+/// and will not separate two turns spoken less than a second apart.
+class ClockAnchor {
+  /// The SFU's clock at the moment this device joined the call.
+  final int sfuMs;
+
+  /// This device's own wall clock, read at that same moment.
+  final int deviceMs;
+
+  const ClockAnchor({required this.sfuMs, required this.deviceMs});
+
+  /// One past the largest clock reading either side will believe.
+  ///
+  /// 2100-01-01T00:00:00Z. Both fields are wall-clock instants, and their
+  /// DIFFERENCE is what moves a speaker's turns, so a reading outside any date
+  /// a clock can hold is not a measurement -- it is a number that would shift
+  /// half a conversation by centuries. Room content is somebody else's word.
+  static const clockCeilingMs = 4102444800000;
+
+  /// How far this device's clock ran AHEAD of the SFU's; negative when behind.
+  ///
+  /// Subtracting it from a position moves that position onto the shared clock.
+  int get offsetMs => deviceMs - sfuMs;
+
+  /// The anchor for a join seen at [sfuMs] on the SFU's clock and [deviceMs] on
+  /// this device's, or null when either reading is not a usable time.
+  ///
+  /// The same rule guards the wire and the writer, so a reading this reader
+  /// would refuse is never sent in the first place.
+  static ClockAnchor? of({required int sfuMs, required int deviceMs}) =>
+      _usable(sfuMs) && _usable(deviceMs)
+      ? ClockAnchor(sfuMs: sfuMs, deviceMs: deviceMs)
+      : null;
+
+  /// Strictly positive, not merely non-negative. Zero is the protocol default
+  /// for `joinedAt`: a server that never stamped the field reads as 1970, and
+  /// an offset measured against 1970 is this device's ENTIRE clock rather than
+  /// its disagreement with anything.
+  static bool _usable(int ms) => ms > 0 && ms < clockCeilingMs;
+
+  Map<String, dynamic> toJson() => {
+    'sfu_joined_at_ms': sfuMs,
+    'device_joined_at_ms': deviceMs,
+  };
+
+  /// Reads an anchor out of a transcript event's content.
+  ///
+  /// Tolerant, like everything else that parses room content: a non-int, a
+  /// negative, an absurd or an out-of-safe-range value is ABSENT rather than
+  /// thrown, and a half carrying one still shows every word it holds. An
+  /// exception here would take the transcript view down over a field whose
+  /// only job is to improve the ORDER of turns that are already readable.
+  ///
+  /// BOTH fields or neither. One alone measures nothing -- a device time with
+  /// no server time beside it is just a device time -- and letting half an
+  /// anchor through would put a fabricated offset of zero on a half whose
+  /// clock was never compared to anything.
+  static ClockAnchor? fromJson(Map<String, dynamic> content) {
+    final sfu = content['sfu_joined_at_ms'];
+    final device = content['device_joined_at_ms'];
+    if (sfu is! int || device is! int) return null;
+    return ClockAnchor.of(sfuMs: sfu, deviceMs: device);
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      other is ClockAnchor &&
+      other.sfuMs == sfuMs &&
+      other.deviceMs == deviceMs;
+
+  @override
+  int get hashCode => Object.hash(sfuMs, deviceMs);
+
+  @override
+  String toString() => 'ClockAnchor(sfu $sfuMs, device $deviceMs)';
+}
+
 /// Why a speaker's half reads the way it does.
 ///
 /// Three states, kept distinct on purpose. Someone opening a transcript is
@@ -440,6 +540,17 @@ class TranscriptHalf {
   /// An enum cannot hold two answers at once, which is the point.
   final HalfArrival arrival;
 
+  /// Where the WRITING device's clock sat relative to the SFU's, or null when
+  /// this half never said.
+  ///
+  /// Carried on the half and not left behind on the candidate, because the
+  /// merge that needs it happens after selection: a shared timeline is built
+  /// from halves, and an offset that stops at the candidate is an offset the
+  /// view cannot apply. Optional because every event written before this
+  /// existed, and every event from a client that does not write it, has to
+  /// keep parsing -- an absent anchor costs the CORRECTION and never a word.
+  final ClockAnchor? clockAnchor;
+
   const TranscriptHalf({
     required this.senderId,
     required this.segments,
@@ -447,6 +558,7 @@ class TranscriptHalf {
     required this.state,
     required this.readWasCutShort,
     required this.participantsWereAGuess,
+    this.clockAnchor,
     required this.arrival,
   });
 
@@ -543,11 +655,16 @@ class TranscriptCandidate {
   final List<TranscriptSegment> segments;
   final HalfAccounting accounting;
 
+  /// Where the writing device's clock sat relative to the SFU's. See
+  /// [ClockAnchor]; absent on an event written before the field existed.
+  final ClockAnchor? clockAnchor;
+
   const TranscriptCandidate({
     required this.senderId,
     required this.originServerTs,
     required this.segments,
     required this.accounting,
+    this.clockAnchor,
   });
 
   /// Distinct content, so padding a half by repeating itself wins nothing:
@@ -591,6 +708,37 @@ class CallTranscript {
   /// the SHAPE of the screen and never the truth of the words — the opposite of
   /// `chunks_lost` or `capture_refused`, where silence would cost the truth.
   bool get timelineEligible => halves.every((half) => half.timelineEligible);
+
+  /// Whether every half that carries words can be moved onto the SFU's clock.
+  ///
+  /// ALL OR NOTHING, and that is the whole rule. Correcting one half and not
+  /// the other moves one speaker relative to the other by an offset measured
+  /// for only one of them, and we cannot say whether that helps or harms: a
+  /// correction that might invert an order which was already right is worse
+  /// than leaving both halves where their devices put them.
+  ///
+  /// Only halves that carry WORDS are asked. A half with no segments puts
+  /// nothing on the timeline, so whether its clock could be reconciled cannot
+  /// move any turn -- and refusing the whole correction because a SILENT
+  /// speaker's device was older would throw the fix away in calls where it
+  /// works perfectly.
+  bool get clocksReconcilable => halves
+      .where((half) => half.segments.isNotEmpty)
+      .every((half) => half.clockAnchor != null);
+
+  /// How far to move one half's positions to put it on the shared clock.
+  ///
+  /// Zero unless [clocksReconcilable], which is what makes an old event, a
+  /// foreign client, or a half whose anchor would not parse cost the
+  /// CORRECTION and nothing else: the call still renders exactly as it did
+  /// before this field existed.
+  ///
+  /// One constant per half, subtracted from every position in it. That is what
+  /// keeps `segmentsArePlaceable` true after the shift -- a single constant
+  /// cannot reorder a sequence, so a half the render gate already accepted
+  /// stays non-decreasing, and the gate may go on reading the raw positions.
+  int clockShiftFor(TranscriptHalf half) =>
+      clocksReconcilable ? (half.clockAnchor?.offsetMs ?? 0) : 0;
 }
 
 /// Assembles the halves of one call.
@@ -706,6 +854,10 @@ CallTranscript assembleTranscript({
           readWasCutShort: !exhausted,
           participantsWereAGuess: !participantsKnown,
           arrival: wasUnreadable ? HalfArrival.rejected : HalfArrival.none,
+          // No anchor, for the same reason there is no accounting: nobody
+          // wrote one. A synthesised offset of zero would be this reader
+          // asserting the two clocks agreed, about a device that never told us
+          // what its clock said.
         ),
       );
       continue;
@@ -732,6 +884,10 @@ CallTranscript assembleTranscript({
         arrival: wasUnreadable
             ? HalfArrival.placedWithLoss
             : HalfArrival.placed,
+        // From the candidate that WON, never from any other copy: the offset
+        // has to describe the positions actually being shown, and two copies
+        // from one sender can carry different anchors if the device rejoined.
+        clockAnchor: candidate.clockAnchor,
       ),
     );
   }
@@ -782,6 +938,13 @@ bool _beats(TranscriptCandidate candidate, TranscriptCandidate held) {
       candidate.timelineEligible != held.timelineEligible) {
     return candidate.timelineEligible;
   }
+  // Deliberately NOT a second step for the clock anchor. Two duplicates from
+  // one sender that differ only in whether they carry one would leave the
+  // unanchored copy holding the slot -- and the cost of that is the call
+  // rendering exactly as it did before anchors existed, never a word or an
+  // order that is worse than today's. A step here would be a third rule in a
+  // function whose every rule has had to be argued, bought against a case that
+  // needs one account writing this call's half twice from two app versions.
   if (candidate.contentLength != held.contentLength) {
     return candidate.contentLength > held.contentLength;
   }

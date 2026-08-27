@@ -134,6 +134,12 @@ Future<CallTranscript> fetchCallTranscript({
           originServerTs: event.originServerTs.millisecondsSinceEpoch,
           segments: content.segments,
           accounting: content.accounting,
+          // Carried, not derived here. `originServerTs` beside it is the
+          // SERVER's receive time and is deliberately never used to correct a
+          // clock -- a slow send would read as skew, and under federation the
+          // two halves' timestamps come from two homeservers. The anchor is
+          // the writing device's own measurement against the SFU.
+          clockAnchor: content.clockAnchor,
         ),
       );
     }

@@ -223,6 +223,15 @@ class CallSession extends ChangeNotifier {
                 // applies to the inflated event.
                 encrypted: room.encrypted,
                 langCode: langCode,
+                // Read from the LATCH here, not measured here. It was taken
+                // when this device joined the SFU, minutes before this runs,
+                // and reading the two clocks now would measure the call's own
+                // length instead of the disagreement between them.
+                //
+                // Closed over rather than threaded through CallRecord: the
+                // record is deliberately free of anything to do with media,
+                // and this is the same seam that already knows the room.
+                clockAnchor: media.clockAnchor,
               ),
           analytics: analytics,
         );
