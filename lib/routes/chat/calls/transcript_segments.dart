@@ -334,6 +334,18 @@ List<TranscriptSegment> buildSegments(
     // but its earliest start is still the best evidence of when this chunk's
     // speech began. Without this every such segment sat at the chunk's start,
     // up to 45 seconds early.
+    //
+    // Every segment cut from such a chunk shares this one offset, and that is
+    // a deliberate floor rather than an oversight. Per-segment starts read out
+    // of a sequence we just called malformed can run BACKWARDS -- the "words
+    // out of order" case is exactly that -- and a decreasing position fails
+    // `segmentsArePlaceable`, which would drop the whole call to the
+    // per-speaker view for one bad chunk. So each segment claims the earliest
+    // moment speech happened in its chunk: a true lower bound, monotonic by
+    // construction, and never later than the words it labels. The cost is that
+    // the other speaker's turn falling between two of them renders after both.
+    // Rare enough to accept: well-formed sequences were 334 of 336 on the real
+    // provider captures.
     final fallbackOffset = placeable ? null : _speechBeganAt(timings);
 
     // A word whose start the provider omitted cannot open a gap, so it joins
@@ -502,12 +514,18 @@ bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
 /// turns. Ordering is the one thing the timeline exists to show, so buying it
 /// back with a number we already have is worth the few lines.
 int? _speechBeganAt(List<WordTiming> timings) {
+  int? earliest;
   for (final timing in timings) {
     if (timing.word.trim().isEmpty) continue;
     final start = timing.startTimeMs;
-    if (start != null && start >= 0) return start;
+    if (start == null || start < 0) continue;
+    // The EARLIEST start, not the first one listed. A malformed sequence is
+    // one whose order we already decided not to trust, so reading it in list
+    // order would take a later moment and claim speech began there -- which
+    // is the misordering this whole helper exists to avoid.
+    if (earliest == null || start < earliest) earliest = start;
   }
-  return null;
+  return earliest;
 }
 
 /// Where a segment sits, at the best resolution available.

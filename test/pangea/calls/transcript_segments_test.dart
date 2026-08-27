@@ -647,10 +647,17 @@ void main() {
         // the other speaker's correctly placed turns. Refusing a word list is
         // a judgement about WORDS; the earliest start is a separate claim and
         // survives it.
-        final firstStart = timings
+        final starts = timings
             .where((t) => t.$1.trim().isNotEmpty)
             .map((t) => t.$2)
-            .firstWhere((v) => v != null && v >= 0, orElse: () => null);
+            .whereType<int>()
+            .where((v) => v >= 0);
+        // The EARLIEST, not the first listed: a malformed sequence may list a
+        // later moment first, and claiming speech began there would misorder
+        // it against the other speaker.
+        final firstStart = starts.isEmpty
+            ? null
+            : starts.reduce((a, b) => a < b ? a : b);
         expect(
           segments.map((s) => s.atMs),
           everyElement(_chunkStart + (firstStart ?? 0)),
