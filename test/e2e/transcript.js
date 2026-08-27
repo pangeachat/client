@@ -42,17 +42,23 @@
 //     count was being ignored in favour of the requested one, which matters on
 //     native.)
 //
-// Silence at the tap, from a microphone that is demonstrably not silent, puts
-// the loss between the published track and the renderer the web path reads it
-// through. That is the territory fix-renderer-attach exists for -- on the web
-// a device can report isRecording == true with a dead recorder -- and it is
-// consistent with this feature only ever having been demonstrated end to end
-// on a PHONE, where PostEchoCancellationTap reads the audio module directly
-// instead.
+// What follows from that is narrower than it is tempting to write. The four
+// facts above bound the problem at both ends -- audible going in, reached at
+// the far end, not a format mis-description -- and they do NOT locate it. In
+// particular nothing here has measured the tap's own input, so "the tap
+// receives silence" is the leading hypothesis and not an established fact.
 //
-// The mechanism is not proven and this comment does not claim it is. What is
-// proven is where the audio stops being audible, and that it is not any of
-// the three things first suspected.
+// The hypothesis worth testing first: the web path reads its own outbound
+// audio through a renderer, and fix-renderer-attach exists because on the web
+// a device can report isRecording == true with a dead recorder. That would
+// look exactly like this. It also fits the feature only ever having been
+// demonstrated end to end on a PHONE, where PostEchoCancellationTap reads the
+// audio module directly instead.
+//
+// Three theories have already been wrong here -- sample rate, then channel
+// count, then a too-confident reading of the Whisper artefact -- so this
+// comment records what is measured and names the next thing to measure,
+// rather than picking a fourth.
 //
 // So the word-level checks below are expected to fail in two browsers today.
 // They are written as failures rather than skips ON PURPOSE, and this file
@@ -316,28 +322,27 @@ async function main() {
 
     // Nobody is called silent who spoke. The screen has four things it can
     // say and this is the one that would be a lie.
-    // Tied to a PARTICIPANT, not searched for loose in the page. The literal
-    // run of a placeholder string is generic by construction -- "did not say
-    // anything" -- and asking whether that text appears anywhere would answer
-    // yes to an unrelated control carrying the same words. What matters is
-    // whether it is said about somebody who SPOKE.
-    const spoke = [byA, byB]
-      .filter((e) => e && words(spoken(e)).size)
-      .map((e) => e.sender);
-    const claims = labels.labelsFor('callTranscriptSaidNothing');
-    const lied = spoke.filter((sender) => {
-      const name = sender === A.userId ? 'you' : sender.slice(1).split(':')[0];
-      return claims.some((t) => {
-        const i = onScreen.indexOf(t);
-        if (i < 0) return false;
-        // The name sits beside the claim, on either side of it depending on
-        // the language's word order.
-        const around = onScreen.slice(Math.max(0, i - 60), i + t.length + 60);
-        return around.toLowerCase().includes(name.toLowerCase());
-      });
-    });
-    h.check(s, 'nobody who spoke is reported as silent', lied.length === 0,
-      `the transcript says ${lied.join(', ')} said nothing, but they spoke`);
+    // COUNTED, not name-matched.
+    //
+    // Matching a name against the text beside the claim was brittle in two
+    // ways: it read only the FIRST occurrence, so a true note for one speaker
+    // hid a false one for the other; and it guessed the rendered name, which
+    // is a display name or a localised "You" and not the Matrix localpart
+    // this file knows. Counting sidesteps both. The screen may say "said
+    // nothing" exactly as many times as there are halves that really were
+    // silent; one more than that is a lie about somebody, whoever it names.
+    const reallySilent = [byA, byB]
+      .filter((e) => e && !words(spoken(e)).size).length;
+    const claimed = labels.labelsFor('callTranscriptSaidNothing')
+      .reduce((most, t) => {
+        let n = 0;
+        for (let i = onScreen.indexOf(t); i >= 0; i = onScreen.indexOf(t, i + 1)) n++;
+        return Math.max(most, n);
+      }, 0);
+
+    h.check(s, 'nobody who spoke is reported as silent', claimed <= reallySilent,
+      `the screen says "said nothing" ${claimed} time(s) but only ` +
+        `${reallySilent} half/halves were actually silent`);
   }
 
   console.log('[6] neither side logged an unhandled error');

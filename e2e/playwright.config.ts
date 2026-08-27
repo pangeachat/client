@@ -68,11 +68,23 @@ function refuseRemoteCallSpecs(): void {
   // placed at any depth still shows up. Coarse on purpose: a false positive
   // here costs a name in an allowlist, and a false negative costs a real
   // call against a deployed host, every night, on somebody's bill.
-  const all = fs.readdirSync(dir, { recursive: true }).map(String);
-  const marked = all
-    .filter((f) => f.endsWith(".ts"))
+  // Every executable file, not just TypeScript: a helper written as .js or
+  // .mjs under this tree is imported exactly as easily and was a plain way
+  // round an earlier version of this.
+  const CODE = /\.(ts|tsx|js|mjs|cjs)$/;
+
+  // Comments stripped before matching. This guard's whole job is to notice
+  // code that places a call, and a spec that merely EXPLAINS in prose why it
+  // does not touch getUserMedia should not be refused for saying the word.
+  const stripComments = (src: string) =>
+    src.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/(^|[^:])\/\/[^\n]*/g, "$1 ");
+
+  const marked = fs
+    .readdirSync(dir, { recursive: true })
+    .map(String)
+    .filter((f) => CODE.test(f))
     .filter((f) => {
-      const body = fs.readFileSync(path.join(dir, f), "utf-8");
+      const body = stripComments(fs.readFileSync(path.join(dir, f), "utf-8"));
       return MARKS.some((m) => m.test(body));
     });
 
