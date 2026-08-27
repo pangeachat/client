@@ -23,7 +23,7 @@ void main() {
     await tester.pumpWidget(
       RepaintBoundary(
         key: key,
-        // Same ColorFiltered matrix darkModeTileBuilder applies per tile.
+        // The same ColorFiltered the map applies over its tile layer (#8623).
         child: Builder(
           builder: (context) => darkModeTilesContainerBuilder(
             context,
