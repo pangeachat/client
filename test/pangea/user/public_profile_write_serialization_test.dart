@@ -180,6 +180,70 @@ void main() {
     },
   );
 
+  test('a change is announced before its publish reaches the server', () async {
+    // Surfaces read the level through this stream because the profile is
+    // mutated in place. Announcing from inside the publish instead held every
+    // update back for however long the chain ahead of it took — the staleness
+    // the stream exists to remove (#8582).
+    final user = MatrixState.pangeaController.userController;
+    api.gate = Completer<void>();
+
+    // One publish already in flight and held open, so the next change has a
+    // chain ahead of it. That is the only arrangement that tells the two
+    // placements apart: announcing from inside the publish would make this
+    // change wait for the stalled one to return.
+    unawaited(user.updateAnalyticsProfile(languageCode: 'es', level: 2));
+    await Future.delayed(const Duration(milliseconds: 50));
+    expect(api.inFlight, 1);
+
+    final announced = <int?>[];
+    final sub = user.publicProfileStream.stream.listen(
+      (p) => announced.add(p?.analytics.languageAnalytics?['fr']?.level),
+    );
+
+    unawaited(user.updateAnalyticsProfile(languageCode: 'fr', level: 9));
+    await Future.delayed(const Duration(milliseconds: 50));
+
+    expect(
+      announced,
+      contains(9),
+      reason: 'announced when the change is made, not when its publish lands',
+    );
+
+    api.gate!.complete();
+    await sub.cancel();
+  });
+
+  test('a logout mid-publish does not start an overlapping write', () async {
+    // clear() must not reset the publish chain: reassigning it cannot detach a
+    // callback already registered on the old future, and starting a fresh chain
+    // while a request is in flight lets the next publish overlap it — the
+    // last-write-wins loss the chain exists to prevent.
+    final user = MatrixState.pangeaController.userController;
+    api.gate = Completer<void>();
+
+    unawaited(user.updateAnalyticsProfile(languageCode: 'es', level: 2));
+    await Future.delayed(const Duration(milliseconds: 50));
+    expect(api.inFlight, 1);
+
+    user.clear();
+    user.setPublicProfile(
+      PublicProfileModel(analytics: AnalyticsProfileModel()),
+      userId: client.userID,
+    );
+    unawaited(user.updateAnalyticsProfile(languageCode: 'fr', level: 3));
+    await Future.delayed(const Duration(milliseconds: 50));
+
+    expect(
+      api.maxConcurrent,
+      1,
+      reason: 'a logout must not let a second publish overlap the first',
+    );
+
+    api.gate!.complete();
+    await Future.delayed(const Duration(milliseconds: 50));
+  });
+
   test('a failed publish does not wedge the ones queued behind it', () async {
     final user = MatrixState.pangeaController.userController;
     api.api['PUT']![_profileFieldRoute] = (_) => throw Exception('boom');

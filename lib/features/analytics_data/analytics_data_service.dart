@@ -341,9 +341,20 @@ class AnalyticsDataService {
   /// the init completer this runs before (#8592).
   @visibleForTesting
   Future<void> publishCurrentLevel(String language) async {
-    final stats = await _analyticsClientGetter.database.getDerivedStats(
-      language,
-    );
+    final database = _analyticsClientGetter.database;
+
+    // Only from a store that has actually pulled this language's analytics at
+    // least once. `bulkUpdate` gives up silently when the analytics room is not
+    // in sync yet, and `_hardRefreshDatabase` empties the store on a fresh
+    // install, a new device or a changed account — so "we just synced it" is
+    // not something this can assume. An empty store derives level 1, and
+    // publishing that exactly would overwrite the learner's real level with 1
+    // for everyone who reads their profile. The timestamp is written only by
+    // updateServerAnalytics and cleared by the wipe, which makes it exactly the
+    // "this device has real data for this language" signal.
+    if (await database.getLastEventTimestamp(language) == null) return;
+
+    final stats = await database.getDerivedStats(language);
     await MatrixState.pangeaController.userController.updateAnalyticsProfile(
       languageCode: language,
       level: stats.level,

@@ -349,13 +349,13 @@ class UserController {
     setPublicProfile(null);
     _profileListener?.cancel();
     _profileListener = null;
-    // Drop the publish queue with the profile it belonged to. A save enqueued
-    // while a request was in flight would otherwise run after logout and be
-    // refused by the ownership guard — turning the #8531 leak detector, which
-    // is meant to fire only when something has genuinely gone wrong, into
-    // ordinary logout noise.
-    _saveChain = Future.value();
-    _saveQueued = false;
+    // The publish queue is deliberately NOT reset here. Reassigning the chain
+    // cannot detach a callback already registered on the old future — Dart
+    // futures do not cancel — so it would not drop the queued save it looks
+    // like it drops, and starting a fresh chain while a request is still in
+    // flight lets the next publish overlap it: the last-write-wins loss the
+    // chain exists to prevent. A save that outlives the logout is instead
+    // refused, quietly, by the ownership check in [_publishProfile].
   }
 
   /// Reinitializes the user's profile
@@ -453,11 +453,20 @@ class UserController {
     if (_saveQueued) return _saveChain;
 
     _saveQueued = true;
-    _saveChain = _saveChain.then((_) {
+    _saveChain = _saveChain.then((_) async {
       // Cleared before the payload is built: from here a new caller's change
       // is not covered by this save and needs one of its own.
       _saveQueued = false;
-      return _publishProfile();
+      try {
+        await _publishProfile();
+      } catch (e, s) {
+        // Nothing may leave this chain in a failed state. A failed future
+        // short-circuits every `.then` registered after it, so a single throw
+        // would silently stop the profile publishing again for the rest of the
+        // session and strand _saveQueued — and most callers do not await, so it
+        // would surface only as an unhandled async error.
+        ErrorHandler.logError(e: e, s: s, data: {});
+      }
     });
     return _saveChain;
   }
@@ -466,6 +475,13 @@ class UserController {
     // Last line of defence, past every caller's own guard: the profile in hand
     // is written only to the account it was loaded for. Reported once a session
     // because a refusal repeats for as long as the mismatch lasts.
+    if (_publicProfile == null) {
+      // Nothing loaded: the profile was cleared while this publish sat in the
+      // queue, which is ordinary logout timing rather than a fault. Reporting
+      // it would drown the signal below, which is meant to be rare.
+      return;
+    }
+
     if (!_publicProfileIsOwn) {
       await ErrorHandler.logErrorOnce(
         key: 'public-profile-write-refused',

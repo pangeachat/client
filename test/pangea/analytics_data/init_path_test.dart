@@ -131,7 +131,13 @@ void main() {
   /// A LOGGED-IN service, so `_initAnalytics` actually runs. The tests above
   /// reach the state init runs in; this drives init itself, which is the only
   /// way to see anything init awaits.
-  Future<(AnalyticsDataService, _GatedProfileApi)> loggedInService() async {
+  var storeSeq = 0;
+
+  Future<(AnalyticsDataService, _GatedProfileApi)> loggedInService({
+    bool seedAnalytics = true,
+  }) async {
+    // A distinct store per call — a shared one carries the previous test's seed.
+    final storeName = 'analytics_init_${storeSeq++}';
     final api = _GatedProfileApi();
     api.api['GET']!['/.well-known/matrix/client'] = (_) => {};
     api.api['PUT']![_profileFieldRoute] = (_) => {};
@@ -175,14 +181,35 @@ void main() {
       userId: client.userID,
     );
 
-    final db = await freshDatabase();
+    final db = await freshDatabase(name: storeName);
     // A language this device holds analytics for, so reconciliation has
     // something to publish and actually reaches the profile write.
     await db.updateUserID(client.userID!);
     // A current language must be set or init treats the store as
     // uninitialized and hard-refreshes it, wiping the seed.
     await db.updateCurrentLanguage(testLang);
-    await db.updateXPOffset(900, testLang);
+    if (!seedAnalytics) {
+      seededDb = db;
+      return (
+        AnalyticsDataService(client, databaseBuilder: (_) async => db),
+        api,
+      );
+    }
+
+    // The TOTAL, not the offset: init writes the offset from the profile
+    // (zero here) over whatever is stored, so seeding that collapsed the
+    // derived level back to 1 and left the level assertion comparing 1 to 1.
+    await db.updateTotalXP(900, testLang);
+    // One real server event, so the store is marked as a language this device
+    // has actually pulled analytics for. Without that the publish is skipped by
+    // design — see publishCurrentLevel.
+    final factory = await ServerEventFactory.create();
+    await db.updateServerAnalytics([
+      factory.event([use(lemma: 'hola', ts: at(1))], ts: at(1)),
+    ], testLang);
+    // Re-assert the total: the server update recomputes nothing, but the seed
+    // must be the value the publish is checked against.
+    await db.updateTotalXP(900, testLang);
     seededDb = db;
 
     return (
@@ -220,6 +247,24 @@ void main() {
     // not raised.
     final derived = await freshDerivedLevel();
     expect(analytics[testLang][AnalyticsConstants.level], derived);
+  });
+
+  test('init publishes nothing when this device has no data yet', () async {
+    // A fresh install, a new device, or any hard refresh leaves the store
+    // empty, and bulkUpdate gives up silently when the analytics room is not in
+    // sync yet. An empty store derives level 1; publishing that exactly would
+    // overwrite the learner's real level with 1 for everyone who reads their
+    // profile. The publish must be skipped instead.
+    final (service, api) = await loggedInService(seedAnalytics: false);
+
+    await service.initCompleter.future.timeout(const Duration(seconds: 10));
+    await Future.delayed(const Duration(milliseconds: 300));
+
+    expect(
+      api.puts,
+      isEmpty,
+      reason: 'an unsynced store must not publish a level at all',
+    );
   });
 
   test('init completes even while another profile publish is stalled', () async {
