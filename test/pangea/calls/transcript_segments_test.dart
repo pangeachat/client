@@ -647,17 +647,20 @@ void main() {
         // the other speaker's correctly placed turns. Refusing a word list is
         // a judgement about WORDS; the earliest start is a separate claim and
         // survives it.
-        final starts = timings
+        // The earliest moment the chunk has ANY evidence of speech, from
+        // either end of any word, bounded to the chunk's own length. Starts
+        // alone read a word whose start was omitted as no evidence, which put
+        // the segment after that word had already finished. Later than the
+        // first listed is the misordering this guards against; outside the
+        // chunk is a claim about audio that does not exist.
+        final marks = timings
             .where((t) => t.$1.trim().isNotEmpty)
-            .map((t) => t.$2)
+            .expand((t) => [t.$2, t.$3])
             .whereType<int>()
-            .where((v) => v >= 0);
-        // The EARLIEST, not the first listed: a malformed sequence may list a
-        // later moment first, and claiming speech began there would misorder
-        // it against the other speaker.
-        final firstStart = starts.isEmpty
+            .where((v) => v >= 0 && v <= 1000);
+        final firstStart = marks.isEmpty
             ? null
-            : starts.reduce((a, b) => a < b ? a : b);
+            : marks.reduce((a, b) => a < b ? a : b);
         expect(
           segments.map((s) => s.atMs),
           everyElement(_chunkStart + (firstStart ?? 0)),
@@ -665,6 +668,35 @@ void main() {
               '$what should sit where speech began, not where the chunk did',
         );
       });
+    });
+
+    test('an omitted start still uses the word its END proves', () {
+      // Taking only starts answered 350 here, which is AFTER hola finished at
+      // 300. An end is evidence sound existed just as much as a start is.
+      final segments = buildSegments([
+        _chunk(
+          'hola que',
+          timings: [('hola', null, 300), ('que', 350, 600)],
+          durationMs: 1000,
+        ),
+      ]);
+
+      expect(segments.map((s) => s.atMs), everyElement(_chunkStart + 300));
+    });
+
+    test('a time past the chunk is not evidence of anything', () {
+      // _isWellFormedSequence already rejects out-of-chunk timings; the
+      // fallback must not then adopt one and place the turn after the audio it
+      // describes has ended.
+      final segments = buildSegments([
+        _chunk(
+          'hola que',
+          timings: [('hola', 5000, 6000), ('que', 400, 700)],
+          durationMs: 1000,
+        ),
+      ]);
+
+      expect(segments.map((s) => s.atMs), everyElement(_chunkStart + 400));
     });
 
     test('and the same words, well formed, ARE positioned', () {

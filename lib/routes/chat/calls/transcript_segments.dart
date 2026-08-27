@@ -319,7 +319,7 @@ List<TranscriptSegment> buildSegments(
       _add(
         segments,
         transcript.text,
-        _positionOf(chunk, _speechBeganAt(timings)),
+        _positionOf(chunk, _speechBeganAt(timings, chunk.durationMs)),
       );
       continue;
     }
@@ -341,12 +341,20 @@ List<TranscriptSegment> buildSegments(
     // out of order" case is exactly that -- and a decreasing position fails
     // `segmentsArePlaceable`, which would drop the whole call to the
     // per-speaker view for one bad chunk. So each segment claims the earliest
-    // moment speech happened in its chunk: a true lower bound, monotonic by
-    // construction, and never later than the words it labels. The cost is that
-    // the other speaker's turn falling between two of them renders after both.
-    // Rare enough to accept: well-formed sequences were 334 of 336 on the real
-    // provider captures.
-    final fallbackOffset = placeable ? null : _speechBeganAt(timings);
+    // moment this chunk has any EVIDENCE of speech, bounded to the chunk's own
+    // length.
+    //
+    // That is an estimate, not a proven floor, and calling it one earlier was
+    // an overclaim: a word whose start the provider omitted leaves only its
+    // end, and the real start is somewhere before that. What it does hold to
+    // is monotonic and inside the chunk, so it can be off by part of a chunk
+    // but never by a whole one, and never outside the audio it describes. The
+    // cost is that the other speaker's turn falling between two segments of
+    // one malformed chunk renders after both. Rare enough to accept:
+    // well-formed sequences were 334 of 336 on the real provider captures.
+    final fallbackOffset = placeable
+        ? null
+        : _speechBeganAt(timings, chunk.durationMs);
 
     // A word whose start the provider omitted cannot open a gap, so it joins
     // whatever is being built rather than being dropped or guessed at.
@@ -435,7 +443,7 @@ List<TranscriptSegment> buildSegments(
       _add(
         segments,
         transcript.text,
-        _positionOf(chunk, _speechBeganAt(timings)),
+        _positionOf(chunk, _speechBeganAt(timings, chunk.durationMs)),
       );
       continue;
     }
@@ -513,17 +521,27 @@ bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
 /// it happened, and sort it ahead of the other speaker's correctly placed
 /// turns. Ordering is the one thing the timeline exists to show, so buying it
 /// back with a number we already have is worth the few lines.
-int? _speechBeganAt(List<WordTiming> timings) {
+int? _speechBeganAt(List<WordTiming> timings, int durationMs) {
   int? earliest;
+
+  // Both ends of every word count as evidence, and nothing outside the chunk
+  // counts at all.
+  //
+  // Taking only STARTS read a word whose start the provider omitted as no
+  // evidence, so [hola null-300, que 350-600] answered 350 -- after `hola` had
+  // already FINISHED. An end is a moment sound existed just as much as a start
+  // is. And a time past the chunk's own length describes audio that does not
+  // exist; `_isWellFormedSequence` already rejects those, so adopting one here
+  // would place the turn after the chunk it belongs to.
+  void consider(int? at) {
+    if (at == null || at < 0 || at > durationMs) return;
+    if (earliest == null || at < earliest!) earliest = at;
+  }
+
   for (final timing in timings) {
     if (timing.word.trim().isEmpty) continue;
-    final start = timing.startTimeMs;
-    if (start == null || start < 0) continue;
-    // The EARLIEST start, not the first one listed. A malformed sequence is
-    // one whose order we already decided not to trust, so reading it in list
-    // order would take a later moment and claim speech began there -- which
-    // is the misordering this whole helper exists to avoid.
-    if (earliest == null || start < earliest) earliest = start;
+    consider(timing.startTimeMs);
+    consider(timing.endTimeMs);
   }
   return earliest;
 }
