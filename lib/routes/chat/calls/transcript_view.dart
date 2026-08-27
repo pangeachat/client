@@ -227,6 +227,13 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // The earliest turn ANYWHERE in the transcript, not the earliest in each
     // half: the whole point is that one clock runs behind both columns, and
     // per-half origins would restart it for the second speaker.
+    //
+    // This origin is the first turn SPOKEN, not the moment the call connected,
+    // and the two are different whenever a call opens with silence. Nothing on
+    // the wire says when capture began -- each segment carries only its own
+    // absolute time -- so the connect moment cannot be recovered here, and this
+    // clock can therefore read a little short of the duration on the call card.
+    // See `CallTurn.at`, which states the same contract.
     final start = positions.reduce((a, b) => a < b ? a : b);
 
     return [

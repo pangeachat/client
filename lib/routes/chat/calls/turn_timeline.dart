@@ -25,8 +25,22 @@ class CallTurn {
 
   final bool isMe;
 
-  /// Elapsed time from the start of the call. Already the number this widget
-  /// prints, not a wall-clock instant left for it to convert.
+  /// Elapsed time from the FIRST SPOKEN TURN of the call, not from the moment
+  /// the call connected. Already the number this widget prints, not a
+  /// wall-clock instant left for it to convert.
+  ///
+  /// The distinction is deliberate and worth knowing, because it means this
+  /// clock can disagree with the duration the call card shows. The transcript
+  /// wire carries one absolute time per segment and nothing about when capture
+  /// began, so the moment the call connected is not recoverable here; ringing,
+  /// greetings before anyone spoke, and any opening silence are all outside
+  /// what this can see. Normalising to the earliest turn is therefore the only
+  /// origin the data supports, and it is also the one a reader wants: 0:00 is
+  /// the first thing anybody said.
+  ///
+  /// If these times ever need to line up with the call's own duration, the
+  /// call's start has to be written into the transcript event at capture time
+  /// -- a wire change, not a display one.
   final Duration at;
 
   final String text;
