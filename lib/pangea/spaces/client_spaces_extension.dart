@@ -35,33 +35,40 @@ extension SpacesClientExtension on Client {
     ),
   );
 
+  /// The learner's joined courses, in [rooms]' own recency order.
+  List<Room> get joinedCourses =>
+      rooms.where((r) => r.isSpace && r.membership == Membership.join).toList();
+
+  /// The learner's courses they are joined to OR invited to — what the Courses
+  /// hub lists and sizes itself on.
+  List<Room> get courses => rooms
+      .where(
+        (r) =>
+            r.isSpace &&
+            (r.membership == Membership.join ||
+                r.membership == Membership.invite),
+      )
+      .toList();
+
   /// In the nav rail and courses tab, prioritize invited courses,
   /// then sort alphebetically by title
-  List<Room> sortedCourses(L10n l10n) =>
-      rooms
-          .where(
-            (r) =>
-                r.isSpace &&
-                (r.membership == Membership.join ||
-                    r.membership == Membership.invite),
-          )
-          .toList()
-        ..sort((a, b) {
-          if (a.membership == Membership.join &&
-              b.membership == Membership.invite) {
-            return 1;
-          }
-          if (b.membership == Membership.join &&
-              a.membership == Membership.invite) {
-            return -1;
-          }
-          return a
-              .getLocalizedDisplayname(MatrixLocals(l10n))
-              .toLowerCase()
-              .compareTo(
-                b.getLocalizedDisplayname(MatrixLocals(l10n)).toLowerCase(),
-              );
-        });
+  List<Room> sortedCourses(L10n l10n) => courses
+    ..sort((a, b) {
+      if (a.membership == Membership.join &&
+          b.membership == Membership.invite) {
+        return 1;
+      }
+      if (b.membership == Membership.join &&
+          a.membership == Membership.invite) {
+        return -1;
+      }
+      return a
+          .getLocalizedDisplayname(MatrixLocals(l10n))
+          .toLowerCase()
+          .compareTo(
+            b.getLocalizedDisplayname(MatrixLocals(l10n)).toLowerCase(),
+          );
+    });
 
   /// [sortedCourses] split by the learner's role in each course — the model
   /// the Courses hub, the nav rail and the mobile sheet's height estimate all

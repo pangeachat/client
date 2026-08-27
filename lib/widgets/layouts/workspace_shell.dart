@@ -546,7 +546,8 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // membership change with no route change has to rebuild this layer —
     // otherwise a deleted course keeps its avatar in the shortcut slot until
     // the learner navigates away (#8599).
-    _shortcut = courseShortcutFor(Matrix.of(context).client)
+    _shortcut = CourseShortcut.instance
+      ..watch(Matrix.of(context).client)
       ..addListener(_onShortcutChanged);
   }
 
@@ -569,7 +570,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
 
     // The course-shortcut slot — `+`, or the most-recently-opened course still
     // joined. [CourseShortcut] owns the rule and the memory behind it.
-    final joined = _shortcut.courses;
+    final joined = client.joinedCourses;
     final activeSpaceId = activeSpaceIdFor(uri);
     if (activeSpaceId != null &&
         joined.any((space) => space.id == activeSpaceId)) {

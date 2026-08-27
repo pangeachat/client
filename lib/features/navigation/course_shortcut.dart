@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/navigation/panel_focus.dart';
+import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 
 /// Which course the narrow rail's course-shortcut slot shows, and when that
@@ -23,9 +25,30 @@ import 'package:fluffychat/utils/stream_extension.dart';
 /// notifying on the raw stream would tear that panel down about once a second
 /// all day.
 class CourseShortcut extends ChangeNotifier {
-  CourseShortcut(this._client) {
+  CourseShortcut._();
+
+  /// One per process, like [PanelFocusController]: the nav layer is disposed
+  /// and re-created whenever a map-pin sheet opens over it, and a per-widget
+  /// instance would forget which course the learner opened every time.
+  static final CourseShortcut instance = CourseShortcut._();
+
+  Client? _client;
+  StreamSubscription<bool>? _updates;
+  String _signature = '';
+
+  /// Course ids the learner has opened, most recent first.
+  final List<String> _opened = [];
+
+  /// Starts watching [client] for the changes the slot cares about. Re-pointing
+  /// at a different client (logout, account switch) drops the opened-course
+  /// memory, so one account's history can never surface in another's slot.
+  void watch(Client client) {
+    if (identical(_client, client)) return;
+    _updates?.cancel();
+    _client = client;
+    _opened.clear();
     _signature = _signatureNow;
-    _updates = _client.onSync.stream
+    _updates = client.onSync.stream
         .where((s) => s.hasRoomUpdate)
         .rateLimit(const Duration(seconds: 1))
         .listen((_) {
@@ -36,29 +59,17 @@ class CourseShortcut extends ChangeNotifier {
         });
   }
 
-  final Client _client;
-  StreamSubscription<bool>? _updates;
-  String _signature = '';
-
-  /// Course ids the learner has opened, most recent first.
-  final List<String> _opened = [];
-
   /// Everything the slot draws, as one comparable value: each course's id,
   /// membership, name and avatar. Invited spaces count because the Courses hub
   /// sizes itself on them too. Sorted, because [Client.rooms] is
   /// recency-ordered — a message reorders it without changing what is drawn.
   String get _signatureNow =>
-      (_client.rooms
-              .where(
-                (r) =>
-                    r.isSpace &&
-                    (r.membership == Membership.join ||
-                        r.membership == Membership.invite),
-              )
+      (_client?.courses
               .map((r) => '${r.id}|${r.membership.name}|${r.name}|${r.avatar}')
               .toList()
-            ..sort())
-          .join(',');
+            ?..sort())
+          ?.join(',') ??
+      '';
 
   /// The learner opened [courseId] — it becomes the slot's course until they
   /// open another, or leave this one. Idempotent, so a rebuild can call it
@@ -70,17 +81,12 @@ class CourseShortcut extends ChangeNotifier {
       ..insert(0, courseId);
   }
 
-  /// The learner's joined courses, in [Client.rooms]' own recency order.
-  List<Room> get courses => _client.rooms
-      .where((r) => r.isSpace && r.membership == Membership.join)
-      .toList();
-
   /// The course the slot shows — null when the learner is in none, which is
   /// the `+` add-course button. Falls through [_opened] so a course that is
   /// gone yields the one opened before it; with nothing opened still joined,
   /// the client's own recency order decides.
   Room? get course {
-    final joined = courses;
+    final joined = _client?.joinedCourses ?? const <Room>[];
     if (joined.isEmpty) return null;
     final opened = _opened.firstWhereOrNull(
       (id) => joined.any((course) => course.id == id),
@@ -96,20 +102,4 @@ class CourseShortcut extends ChangeNotifier {
     _updates?.cancel();
     super.dispose();
   }
-}
-
-CourseShortcut? _shared;
-
-/// The process-wide [CourseShortcut] for [client].
-///
-/// Shared rather than owned by the nav layer because that layer is disposed and
-/// re-created whenever a map-pin sheet opens over it; a per-widget instance
-/// would forget which course the learner opened every time. A different client
-/// (logout, account switch) gets a fresh one, so one account's history can
-/// never surface in another's slot.
-CourseShortcut courseShortcutFor(Client client) {
-  final shared = _shared;
-  if (shared != null && shared._client == client) return shared;
-  shared?.dispose();
-  return _shared = CourseShortcut(client);
 }

@@ -69,13 +69,13 @@ void main() {
 
   test('shows nothing when no course is joined — the `+` button', () {
     client.rooms = [];
-    expect(CourseShortcut(client).course, isNull);
+    expect((CourseShortcut.instance..watch(client)).course, isNull);
   });
 
   test('shows the single joined course', () {
     final a = space('a');
     client.rooms = [a];
-    expect(CourseShortcut(client).course?.id, a.id);
+    expect((CourseShortcut.instance..watch(client)).course?.id, a.id);
   });
 
   test('shows the most-recently-opened course, not the client order', () {
@@ -84,7 +84,7 @@ void main() {
     // `b` leads the client's own recency order, so only the opened-memory can
     // produce `a` — otherwise this passes on the fallback by coincidence.
     client.rooms = [b, a];
-    final shortcut = CourseShortcut(client)
+    final shortcut = (CourseShortcut.instance..watch(client))
       ..opened(b.id)
       ..opened(a.id);
     expect(shortcut.course?.id, a.id);
@@ -99,7 +99,7 @@ void main() {
       // `other` outranks `a` in the client's own order, so landing on `a` can
       // only come from the opened-memory, never from the fallback.
       client.rooms = [doomed, other, a];
-      final shortcut = CourseShortcut(client)
+      final shortcut = (CourseShortcut.instance..watch(client))
         ..opened(a.id)
         ..opened(doomed.id);
       expect(shortcut.course?.id, doomed.id);
@@ -127,7 +127,7 @@ void main() {
     final other = space('other');
     final left = space('left');
     client.rooms = [left, other, a];
-    final shortcut = CourseShortcut(client)
+    final shortcut = (CourseShortcut.instance..watch(client))
       ..opened(a.id)
       ..opened(left.id);
 
@@ -139,7 +139,7 @@ void main() {
 
   test('ordinary traffic does not rebuild the slot', () async {
     client.rooms = [space('a'), space('b')];
-    final shortcut = CourseShortcut(client);
+    final shortcut = (CourseShortcut.instance..watch(client));
     var notified = 0;
     shortcut.addListener(() => notified++);
 
@@ -159,7 +159,7 @@ void main() {
   test('a course joined mid-session rebuilds the slot', () async {
     final a = space('a');
     client.rooms = [a];
-    final shortcut = CourseShortcut(client);
+    final shortcut = (CourseShortcut.instance..watch(client));
     var notified = 0;
     shortcut.addListener(() => notified++);
 
@@ -180,7 +180,7 @@ void main() {
     () async {
       final a = space('a');
       client.rooms = [a];
-      final shortcut = CourseShortcut(client);
+      final shortcut = (CourseShortcut.instance..watch(client));
       var notified = 0;
       shortcut.addListener(() => notified++);
 
@@ -192,14 +192,24 @@ void main() {
   );
 
   test(
-    'one shared instance per client, a fresh one on account switch',
+    're-pointing at another client drops the opened-course memory',
     () async {
-      final first = courseShortcutFor(client);
-      expect(identical(courseShortcutFor(client), first), isTrue);
+      final a = space('a');
+      final b = space('b');
+      client.rooms = [b, a];
+      final shortcut = CourseShortcut.instance
+        ..watch(client)
+        ..opened(a.id);
+      expect(shortcut.course?.id, a.id);
 
       final other = await getTestClient();
       addTearDown(other.dispose);
-      expect(identical(courseShortcutFor(other), first), isFalse);
+      other.rooms = [b, a];
+      shortcut.watch(other);
+
+      // Account B never opened anything, so the client's own order decides —
+      // account A's memory must not leak through.
+      expect(shortcut.course?.id, b.id);
     },
   );
 }
