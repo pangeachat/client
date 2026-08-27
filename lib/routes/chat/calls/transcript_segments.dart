@@ -22,14 +22,27 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_resp
 class TranscriptSegment {
   final String text;
 
-  /// When this stretch of speech began, in absolute Unix milliseconds, or null
-  /// when it cannot be placed in time.
+  /// When this stretch of speech began, in absolute Unix milliseconds, at the
+  /// best resolution the provider allowed.
   ///
-  /// Null is a first-class answer rather than a failure. A missing or unusable
-  /// position costs the SHAPE of the screen — the call falls back to the
-  /// per-speaker view — and never a word of what was said. See [fromJson] for
-  /// what is accepted off the wire, and [buildSegments] for when one is
-  /// produced at all.
+  /// THREE resolutions produce it and the field does not distinguish them,
+  /// which is deliberate: each is an answer to the same question, differing
+  /// only in how tightly it is bounded.
+  ///
+  /// 1. The moment its first word was spoken, when the timings were trusted
+  ///    word for word.
+  /// 2. The moment speech began anywhere in the chunk, when the word list was
+  ///    refused. Refusal judges which WORDS the timings name; when sound
+  ///    started is a separate claim and survives it.
+  /// 3. The chunk's own start, only when the provider offered no usable start
+  ///    at all. A chunk runs to 45 seconds, so this is the loosest of the
+  ///    three and is used last for that reason.
+  ///
+  /// [buildSegments] never produces null. It remains nullable for segments read
+  /// off the wire that carried no position, including events written before
+  /// this field existed. A null costs the SHAPE of the screen — the call falls
+  /// back to the per-speaker view — and never a word of what was said. See
+  /// [fromJson] for what is accepted off the wire.
   final int? atMs;
 
   const TranscriptSegment(this.text, {this.atMs});
@@ -301,7 +314,13 @@ List<TranscriptSegment> buildSegments(
     // positions taken from them can be trusted.
     final aligned = _alignedToTranscript(timings, transcript.text);
     if (aligned == null) {
-      _add(segments, transcript.text, chunk.startedAtMs);
+      // Refused for its WORDS, so the text is the transcript's whole. Placed
+      // by when speech began, which the timings still say truthfully.
+      _add(
+        segments,
+        transcript.text,
+        _positionOf(chunk, _speechBeganAt(timings)),
+      );
       continue;
     }
 
@@ -310,6 +329,12 @@ List<TranscriptSegment> buildSegments(
     // its timings buy, it simply does not claim to know when any of it
     // happened.
     final placeable = _isWellFormedSequence(timings, chunk.durationMs);
+
+    // When the sequence is not well formed we do not trust it word by word,
+    // but its earliest start is still the best evidence of when this chunk's
+    // speech began. Without this every such segment sat at the chunk's start,
+    // up to 45 seconds early.
+    final fallbackOffset = placeable ? null : _speechBeganAt(timings);
 
     // A word whose start the provider omitted cannot open a gap, so it joins
     // whatever is being built rather than being dropped or guessed at.
@@ -346,7 +371,11 @@ List<TranscriptSegment> buildSegments(
           start - previousEnd >= pause.inMilliseconds;
 
       if (gapOpens && words.isNotEmpty) {
-        _add(segments, words.join(' '), _positionOf(chunk, openedAt));
+        _add(
+          segments,
+          words.join(' '),
+          _positionOf(chunk, openedAt ?? fallbackOffset),
+        );
         words.clear();
         openedAt = null;
       }
@@ -364,7 +393,11 @@ List<TranscriptSegment> buildSegments(
     }
 
     if (words.isNotEmpty) {
-      _add(segments, words.join(' '), _positionOf(chunk, openedAt));
+      _add(
+        segments,
+        words.join(' '),
+        _positionOf(chunk, openedAt ?? fallbackOffset),
+      );
     }
 
     // A backstop on THIS loop, not on the provider.
@@ -387,7 +420,11 @@ List<TranscriptSegment> buildSegments(
       // sequence: a position taken from a cut that lost text would describe the
       // surviving part, not the text being shown. The chunk's start describes
       // all of it.
-      _add(segments, transcript.text, chunk.startedAtMs);
+      _add(
+        segments,
+        transcript.text,
+        _positionOf(chunk, _speechBeganAt(timings)),
+      );
       continue;
     }
 
@@ -451,6 +488,28 @@ bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
 
 /// Where a segment opening [offsetInChunk] into [chunk] sits on the call's
 /// clock, or null when the chunk could not be placed.
+/// When speech began inside a chunk, from the earliest start the provider gave.
+///
+/// Usable even when the word list was REFUSED. Refusal is a judgement about
+/// which WORDS the timings name, not about when sound happened, and those are
+/// independent claims: a provider can mangle "therapist" into "the rapist" and
+/// still be right that someone started speaking 32 seconds in.
+///
+/// This matters because a chunk runs to 45 seconds by default and 90 at the
+/// ceiling, and a chunk holds silence as well as speech. Placing a refused
+/// chunk at its START could therefore claim a turn up to a chunk earlier than
+/// it happened, and sort it ahead of the other speaker's correctly placed
+/// turns. Ordering is the one thing the timeline exists to show, so buying it
+/// back with a number we already have is worth the few lines.
+int? _speechBeganAt(List<WordTiming> timings) {
+  for (final timing in timings) {
+    if (timing.word.trim().isEmpty) continue;
+    final start = timing.startTimeMs;
+    if (start != null && start >= 0) return start;
+  }
+  return null;
+}
+
 /// Where a segment sits, at the best resolution available.
 ///
 /// Never null. An offset INTO the chunk is the precise answer and comes from

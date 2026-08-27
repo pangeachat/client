@@ -639,9 +639,24 @@ void main() {
         ]);
 
         expect(segments.map((s) => s.text).join(' '), text);
-        // The chunk's own start, not a word's, and never null: one mangled
-        // chunk must not hide the good turns around it.
-        expect(segments.map((s) => s.atMs), everyElement(_chunkStart));
+
+        // Never null: one mangled chunk must not hide the good turns around
+        // it. And never merely the chunk's start either, when the timings
+        // still say when speech began -- a chunk runs to 45 seconds, so a
+        // segment parked at the chunk's start can sort a whole chunk ahead of
+        // the other speaker's correctly placed turns. Refusing a word list is
+        // a judgement about WORDS; the earliest start is a separate claim and
+        // survives it.
+        final firstStart = timings
+            .where((t) => t.$1.trim().isNotEmpty)
+            .map((t) => t.$2)
+            .firstWhere((v) => v != null && v >= 0, orElse: () => null);
+        expect(
+          segments.map((s) => s.atMs),
+          everyElement(_chunkStart + (firstStart ?? 0)),
+          reason:
+              '$what should sit where speech began, not where the chunk did',
+        );
       });
     });
 
