@@ -113,7 +113,18 @@ jobs:
           if [[ "$MODE" == "smoke" ]]; then
             echo "files=e2e/scripts/login-logout.spec.ts" >> $GITHUB_OUTPUT
           elif [[ "$MODE" == "full" ]]; then
-            echo "files=e2e/scripts/" >> $GITHUB_OUTPUT
+            # An ALLOWLIST, not the directory.
+            #
+            # `e2e/scripts/` swept up whatever anybody added, and this job runs
+            # nightly against STAGING with a shared account. A spec that places
+            # a real call would have dialled one every night, unattended, and
+            # billed a speech provider for both halves of the audio -- and
+            # nobody adding it would have had any reason to look at this file.
+            #
+            # Naming them makes a new spec opt IN to running against a deployed
+            # host, which is the only way round that fails closed. Calls are
+            # tested by the harness in client/test/e2e, against a local stack.
+            echo "files=e2e/scripts/login-logout.spec.ts e2e/scripts/a11y.spec.ts e2e/scripts/a11y-contrast.spec.ts e2e/scripts/a11y-structure.spec.ts" >> $GITHUB_OUTPUT
           else
             FILES=$(node e2e/select-tests.js HEAD~1)
             echo "files=${FILES:-e2e/scripts/login-logout.spec.ts}" >> $GITHUB_OUTPUT

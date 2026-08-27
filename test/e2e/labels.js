@@ -64,21 +64,48 @@ function allArbs() {
 /// first lookup rather than searching the screen for a string that cannot be
 /// there and reporting the control as missing.
 function labelsFor(key) {
+  let defined = false;
   const out = new Set();
   for (const arb of allArbs()) {
     const v = arb[key];
-    // Placeholders are not ours to fill: a label carrying one is matched on
-    // its fixed prefix, which is what the app draws around whatever it
-    // interpolates.
-    if (typeof v === 'string' && v.length) out.add(v.split('{')[0].trim());
+    if (typeof v !== 'string' || !v.length) continue;
+    defined = true;
+
+    // Placeholders are not ours to fill, so a string carrying one is matched
+    // on its longest LITERAL RUN -- the longest stretch the app draws
+    // verbatim, whatever it interpolates around it.
+    //
+    // The obvious rule, "take the prefix before the first {", is wrong in the
+    // way that matters: "{name} did not say anything" begins WITH the
+    // placeholder, so its prefix is the empty string, every candidate is
+    // dropped, and the caller is handed an empty set. A check written against
+    // an empty set cannot fail. That is exactly what happened to the
+    // "nobody who spoke is reported as silent" assertion -- it read as
+    // coverage for a whole afternoon and could never once have caught
+    // anything.
+    const literal = v
+      .split(/\{[^}]*\}/)
+      .map((part) => part.trim())
+      .sort((a, b) => b.length - a.length)[0];
+    if (literal && literal.length >= 3) out.add(literal);
   }
-  if (!out.size) {
+
+  if (!defined) {
     throw new Error(
       `No translation defines "${key}". The app has probably renamed it; ` +
         `check lib/l10n/intl_en.arb.`,
     );
   }
-  return [...out].filter(Boolean);
+  // Defined everywhere and still nothing to match on: every rendering is
+  // placeholders and punctuation. Silently returning [] would hand back a
+  // question that always answers "no", so say so instead.
+  if (!out.size) {
+    throw new Error(
+      `"${key}" has no literal text to match on in any language -- every ` +
+        `rendering is placeholders. It cannot be found on screen by label.`,
+    );
+  }
+  return [...out];
 }
 
 /// The labels this harness drives, by the l10n key the app uses for each.
@@ -95,6 +122,8 @@ const KEYS = {
   mute: 'callMute',
   ret: 'callReturn',
   busy: 'callFailedBusy',
+  recordingNotice: 'callRecordingNotice',
+  transcriptLink: 'callTranscriptOpen',
 };
 
 const memo = {};

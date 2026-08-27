@@ -43,18 +43,39 @@ function refuseRemoteCallSpecs(): void {
     /^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])(:|\/|$)/.test(target);
   if (isLocal) return;
 
-  const specs = fs.existsSync(path.join(__dirname, "scripts"))
-    ? fs
-        .readdirSync(path.join(__dirname, "scripts"), { recursive: true })
-        .map(String)
-        .filter((f) => /call/i.test(f) && f.endsWith(".spec.ts"))
-    : [];
+  const dir = path.join(__dirname, "scripts");
+  if (!fs.existsSync(dir)) return;
 
-  if (specs.length > 0) {
+  // Judged on what a spec DOES, not what it is called. An earlier version
+  // matched filenames containing "call", which any rename walks straight
+  // past -- voice.spec.ts, transcript.spec.ts, rtc.spec.ts. What actually
+  // makes a spec unsafe against a deployed host is that it opens a
+  // microphone or drives the call controls, and those leave marks in the
+  // source that a rename does not remove.
+  const MARKS = [
+    /permissions\s*:\s*\[[^\]]*microphone/i,
+    /use-file-for-fake-audio-capture/i,
+    /use-fake-device-for-media-stream/i,
+    /getUserMedia/i,
+    /\bcallAnswer\b|\bcallHangUp\b|\bstartCall\b|\bstartVideoCall\b/,
+  ];
+
+  const offenders = fs
+    .readdirSync(dir, { recursive: true })
+    .map(String)
+    .filter((f) => f.endsWith(".spec.ts"))
+    .filter((f) => {
+      const body = fs.readFileSync(path.join(dir, f), "utf-8");
+      return MARKS.some((m) => m.test(body));
+    });
+
+  if (offenders.length > 0) {
     throw new Error(
-      `Refusing to run against ${target}: ${specs.join(", ")} would place a ` +
-        `real call and bill a speech-to-text provider. Calls belong to the ` +
-        `harness in client/test/e2e, which runs against a local stack only.`,
+      `Refusing to run against ${target}: ${offenders.join(", ")} opens a ` +
+        `microphone or drives the call controls, which against a deployed ` +
+        `host places a REAL call and bills a speech-to-text provider. Calls ` +
+        `belong to the harness in client/test/e2e, which runs against a ` +
+        `local stack only.`,
     );
   }
 }
