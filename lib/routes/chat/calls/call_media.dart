@@ -201,13 +201,20 @@ class CallMedia {
   /// captured, and the later mute and camera calls that also come through here
   /// find the latch already taken.
   LocalParticipant _anchored(LocalParticipant participant) {
-    _clockAnchor ??= ClockAnchor.of(
+    latchClockAnchor(
       // Stamped by the SFU, so both devices in the call read the SAME clock
       // here. Whole SECONDS: the millisecond field exists in the protocol and
       // livekit_client 2.11.0 keeps it behind a private member, so the offset
       // this yields is good to about a second. That is the documented limit of
       // the correction, and it is two orders of magnitude better than the skew
       // it exists to remove.
+      //
+      // `joinedAt` falls back to this device's own clock when the participant
+      // carries no server info, which would read as two clocks in perfect
+      // agreement. Unreachable in practice: livekit_client only ever builds a
+      // local participant through `createFromInfo`, which sets that info
+      // before the object exists. Named because it is an upstream property
+      // this correction leans on, not one this code can enforce.
       sfuMs: participant.joinedAt.millisecondsSinceEpoch,
       // The same wall clock every position in this half is stamped from, read
       // as close to the SFU's own instant as this device can observe it. What
@@ -216,6 +223,17 @@ class CallMedia {
       deviceMs: DateTime.now().millisecondsSinceEpoch,
     );
     return participant;
+  }
+
+  /// Takes the pair of readings, once.
+  ///
+  /// Split from the participant they are read off so the rule can be tested at
+  /// all: a LiveKit connection cannot be stood up in a unit test, so a latch
+  /// that only existed inside [_anchored] would be reachable only from a real
+  /// call. What is left there is the two-expression adapter.
+  @visibleForTesting
+  void latchClockAnchor({required int sfuMs, required int deviceMs}) {
+    _clockAnchor ??= ClockAnchor.of(sfuMs: sfuMs, deviceMs: deviceMs);
   }
 
   /// Where this device's wall clock sat relative to the SFU's, or null when a

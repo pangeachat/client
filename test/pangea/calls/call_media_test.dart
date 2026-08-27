@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
 /// Records what actually reached the SFU layer, so a step that runs after
 /// teardown is visible rather than merely improbable.
@@ -214,6 +215,56 @@ void main() {
       media.steps.clear();
       await media.setMicrophoneEnabled(false);
       expect(media.steps, ['mic:false']);
+    });
+  });
+
+  group('the clock anchor the transcript is corrected by', () {
+    // A real instant on the SFU's clock. The latch refuses a reading that
+    // could not be one.
+    const sfuJoin = 1787994000000;
+
+    test('a call that never had a participant carries no anchor', () {
+      // The state `RealSteps` is in: an unconnected room has no local
+      // participant, so there is nothing to read either clock off. Null has to
+      // survive all the way to the writer -- the reader refuses to correct any
+      // half of a transcript unless every half that carries words has an
+      // offset, and a fabricated zero here would claim the two clocks agreed.
+      expect(RealSteps().clockAnchor, isNull);
+    });
+
+    test('the FIRST reading stands for the call', () {
+      // Latched, not re-read. `joinedAt` is fixed at join, so pairing it with
+      // a device clock read later would measure the call's own duration and
+      // shift this speaker's whole half by it.
+      final media = RealSteps()
+        ..latchClockAnchor(sfuMs: sfuJoin, deviceMs: sfuJoin + 30000)
+        ..latchClockAnchor(sfuMs: sfuJoin, deviceMs: sfuJoin + 90000);
+
+      expect(media.clockAnchor?.offsetMs, 30000);
+    });
+
+    test('a reading that cannot be a time is no anchor at all', () {
+      // Zero is the protocol default for `joinedAt`, so a server that never
+      // stamped it reads as 1970 -- and the offset against 1970 is this
+      // device's entire clock. Refused here rather than on the wire, so a
+      // reading this app would not believe is never sent.
+      final media = RealSteps()..latchClockAnchor(sfuMs: 0, deviceMs: sfuJoin);
+
+      expect(media.clockAnchor, isNull);
+    });
+
+    test('a refused reading does not close the latch', () {
+      // The latch holds an ANSWER, not the fact of having asked. Closing it on
+      // a refusal would cost the correction for the whole call on the strength
+      // of one early, unusable read.
+      final media = RealSteps()
+        ..latchClockAnchor(sfuMs: 0, deviceMs: sfuJoin)
+        ..latchClockAnchor(sfuMs: sfuJoin, deviceMs: sfuJoin + 250);
+
+      expect(
+        media.clockAnchor,
+        const ClockAnchor(sfuMs: sfuJoin, deviceMs: sfuJoin + 250),
+      );
     });
   });
 }
