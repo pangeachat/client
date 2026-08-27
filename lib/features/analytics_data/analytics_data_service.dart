@@ -283,7 +283,23 @@ class AnalyticsDataService {
         await updateXPOffset(xpOffset, l2.langCodeShort);
       }
 
-      await reconcilePublishedLevels();
+      // NOT awaited. This ends in a profile PUT, and initialization must never
+      // wait on a network write: publishes are serialized behind one chain, so
+      // awaiting here parks init behind whatever else is publishing — and
+      // UserController.initialize fires one off un-awaited on every startup.
+      // The Matrix profile PUT has no timeout of its own, so a request that
+      // stalls rather than fails would hang init outright, with initError null
+      // and no error state to show for it. Nothing below depends on the result.
+      unawaited(
+        reconcilePublishedLevels().catchError(
+          (Object e, StackTrace s) => ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {},
+            m: "Failed to reconcile published analytics levels",
+          ),
+        ),
+      );
 
       _syncController!.start();
       updateService.start();

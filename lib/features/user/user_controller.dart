@@ -349,6 +349,13 @@ class UserController {
     setPublicProfile(null);
     _profileListener?.cancel();
     _profileListener = null;
+    // Drop the publish queue with the profile it belonged to. A save enqueued
+    // while a request was in flight would otherwise run after logout and be
+    // refused by the ownership guard — turning the #8531 leak detector, which
+    // is meant to fire only when something has genuinely gone wrong, into
+    // ordinary logout noise.
+    _saveChain = Future.value();
+    _saveQueued = false;
   }
 
   /// Reinitializes the user's profile
@@ -436,6 +443,13 @@ class UserController {
   /// waited its turn sends the state as of its turn rather than a snapshot
   /// taken before the write it was queued behind.
   Future<void> _savePublicProfileUpdate() {
+    // Announced HERE, before the queue wait — callers mutate the in-memory
+    // profile and then call this, and that mutated object is what every surface
+    // renders. Announcing from inside the publish would hold the update back
+    // for however long the chain ahead of it takes, which is the staleness the
+    // stream exists to remove (#8582).
+    _notifyPublicProfileChanged();
+
     if (_saveQueued) return _saveChain;
 
     _saveQueued = true;
@@ -463,20 +477,18 @@ class UserController {
       return;
     }
 
-    // Announced BEFORE the request, not after it succeeds: callers mutate the
-    // in-memory profile and then call this, and that mutated object is what
-    // every surface renders. Announcing only on success left a failed write
-    // showing the old level while memory held the new one — a narrower version
-    // of the staleness this stream exists to remove.
-    _notifyPublicProfileChanged();
-
     final content = publicProfile!.toJson();
     try {
-      await client.setUserProfile(
-        client.userID!,
-        PangeaEventTypes.profileAnalytics,
-        content,
-      );
+      // Bounded, because every later publish queues behind this one: the Matrix
+      // profile PUT has no timeout of its own, so a request that stalls rather
+      // than fails would wedge the chain for the rest of the session.
+      await client
+          .setUserProfile(
+            client.userID!,
+            PangeaEventTypes.profileAnalytics,
+            content,
+          )
+          .timeout(const Duration(seconds: 30));
     } catch (e, s) {
       // Swallowed, so one failed publish cannot break the chain every later
       // publish is queued behind.
