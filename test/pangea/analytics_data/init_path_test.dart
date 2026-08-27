@@ -14,8 +14,12 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/analytics_data/analytics_database.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
+import 'package:fluffychat/features/user/user_constants.dart';
+import 'package:fluffychat/features/user/user_model.dart' as pangea;
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -74,8 +78,22 @@ void main() {
     await GetStorage.init('env_override');
     dotenv.testLoad(mergeWith: {'BOT_NAME': 'pangeabot'});
     // PangeaController builds a PLanguageStore, which reads its cache from
-    // shared preferences on construction.
-    SharedPreferences.setMockInitialValues({});
+    // shared preferences on construction. Seeded as already fetched so the
+    // learner's target language resolves to a model rather than null.
+    SharedPreferences.setMockInitialValues({
+      PrefKey.lastFetched: DateTime.now().toIso8601String(),
+      PrefKey.languagesKey: jsonEncode({
+        PrefKey.languagesKey: [
+          {
+            'language_code': testLang,
+            'language_name': 'Spanish',
+            'l2_support': 'full',
+          },
+          {'language_code': 'en', 'language_name': 'English'},
+        ],
+      }),
+    });
+    await PLanguageStore.initialize();
   });
 
   /// A client that is NOT logged in, so `_initDatabase` opens the store and
@@ -104,6 +122,12 @@ void main() {
     return service;
   }
 
+  AnalyticsDatabase? seededDb;
+
+  /// The level the seeded store reports — what the publish must match.
+  Future<int> freshDerivedLevel() async =>
+      (await seededDb!.getDerivedStats(testLang)).level;
+
   /// A LOGGED-IN service, so `_initAnalytics` actually runs. The tests above
   /// reach the state init runs in; this drives init itself, which is the only
   /// way to see anything init awaits.
@@ -131,6 +155,18 @@ void main() {
       password: '1234',
     );
 
+    // The learner's target language — the one and only language whose level
+    // init publishes.
+    client.accountData[UserConstants.userProfile] = BasicEvent(
+      type: UserConstants.userProfile,
+      content: pangea.Profile(
+        userSettings: pangea.UserSettings(
+          sourceLanguage: 'en',
+          targetLanguage: testLang,
+        ),
+      ).toJson(),
+    );
+
     MatrixState.pangeaController = PangeaController(
       matrixState: _FakeMatrixState(client),
     );
@@ -147,6 +183,7 @@ void main() {
     // uninitialized and hard-refreshes it, wiping the seed.
     await db.updateCurrentLanguage(testLang);
     await db.updateXPOffset(900, testLang);
+    seededDb = db;
 
     return (
       AnalyticsDataService(client, databaseBuilder: (_) async => db),
@@ -154,13 +191,11 @@ void main() {
     );
   }
 
-  test('init publishes the levels this device holds analytics for', () async {
-    // The feature end to end, through real initialization — the store is
-    // enumerated, each level derived, and the map published. Without this the
-    // whole reconciliation could be disabled and every other test would still
-    // pass: the ones below prove only that nothing on the init path waits for
-    // init, and the unit tests drive reconcileAnalyticsLevels with a hand-built
-    // map, so nothing joined the two halves.
+  test('init publishes the level it derived for the current language', () async {
+    // The feature end to end, through real initialization: the store is read
+    // and the level published. Without this the publish could be removed
+    // entirely and every other test would still pass — the ones below prove
+    // only that nothing on the init path waits for init.
     final (service, api) = await loggedInService();
 
     await service.initCompleter.future.timeout(const Duration(seconds: 10));
@@ -175,10 +210,16 @@ void main() {
     expect(
       api.puts,
       isNotEmpty,
-      reason: 'init must publish the levels it derived from the local store',
+      reason: 'init must publish the level it derived from the local store',
     );
     final analytics = api.puts.last[AnalyticsConstants.analytics] as Map;
     expect(analytics.keys, contains(testLang));
+
+    // Exactly what the store reports for this language — for the active
+    // language the local data is authoritative, so the published level is set,
+    // not raised.
+    final derived = await freshDerivedLevel();
+    expect(analytics[testLang][AnalyticsConstants.level], derived);
   });
 
   test('init completes even while another profile publish is stalled', () async {
@@ -240,18 +281,20 @@ void main() {
   );
 
   test(
-    'reconciling published levels completes while init is in flight',
+    'publishing the current level completes while init is in flight',
     () async {
       final service = await serviceMidInit();
 
       await service.updateXPOffset(900, testLang);
-      await service.reconcilePublishedLevels().timeout(
-        const Duration(seconds: 5),
-        onTimeout: () => fail(
-          'reconcilePublishedLevels hung: it runs inside init, so it must '
-          'not read through anything that waits for init to finish',
-        ),
-      );
+      await service
+          .publishCurrentLevel(testLang)
+          .timeout(
+            const Duration(seconds: 5),
+            onTimeout: () => fail(
+              'publishCurrentLevel hung: it runs inside init, so it must not '
+              'read through anything that waits for init to finish',
+            ),
+          );
 
       expect(service.isInitializing, isTrue);
     },

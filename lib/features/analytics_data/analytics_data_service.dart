@@ -290,16 +290,18 @@ class AnalyticsDataService {
       // The Matrix profile PUT has no timeout of its own, so a request that
       // stalls rather than fails would hang init outright, with initError null
       // and no error state to show for it. Nothing below depends on the result.
-      unawaited(
-        reconcilePublishedLevels().catchError(
-          (Object e, StackTrace s) => ErrorHandler.logError(
-            e: e,
-            s: s,
-            data: {},
-            m: "Failed to reconcile published analytics levels",
+      if (l2 != null) {
+        unawaited(
+          publishCurrentLevel(l2.langCodeShort).catchError(
+            (Object e, StackTrace s) => ErrorHandler.logError(
+              e: e,
+              s: s,
+              data: {"language": l2.langCodeShort},
+              m: "Failed to publish the current analytics level",
+            ),
           ),
-        ),
-      );
+        );
+      }
 
       _syncController!.start();
       updateService.start();
@@ -319,30 +321,32 @@ class AnalyticsDataService {
     }
   }
 
-  /// Publishes the level this device derives for every language it holds
-  /// analytics for, not just the one the learner is currently studying.
+  /// Publishes the level this device derives for the language being studied.
   ///
-  /// Without this the published profile is only ever corrected for the active
-  /// language, so a wrong entry for any other language stays wrong until the
-  /// learner switches to it — which is why the profiles corrupted before #8592
-  /// did not heal on their own.
+  /// Only that one language. It is the level other people actually see —
+  /// [AnalyticsProfileModel.level] reads the entry for the profile's target
+  /// language — and it is the only language whose local data is known current
+  /// here: `bulkUpdate` has just synced it from its analytics room, and blocked
+  /// constructs are folded for the active language alone. Every other
+  /// language's stored total is frozen at whatever it was when that language
+  /// was last active, so republishing from it would fight any other device the
+  /// learner uses, indefinitely and in both directions. A learner who wants an
+  /// older language's published level refreshed switches to it.
   ///
-  /// Reads the store DIRECTLY rather than through [derivedData]: this runs
-  /// inside init, and [derivedData] waits on the completer that init has not
-  /// reached yet (#8592). The init-path tests pin that.
+  /// The level is published exactly, not raised: for this language the local
+  /// data is authoritative, so a level that has genuinely fallen — blocking
+  /// constructs lowers one — must be able to go down.
+  ///
+  /// Reads the store DIRECTLY rather than through [derivedData], which waits on
+  /// the init completer this runs before (#8592).
   @visibleForTesting
-  Future<void> reconcilePublishedLevels() async {
-    final database = _analyticsClientGetter.database;
-    final languages = await database.storedLanguages();
-    if (languages.isEmpty) return;
-
-    final levels = <String, int>{};
-    for (final language in languages) {
-      levels[language] = (await database.getDerivedStats(language)).level;
-    }
-
-    await MatrixState.pangeaController.userController.reconcileAnalyticsLevels(
-      levels,
+  Future<void> publishCurrentLevel(String language) async {
+    final stats = await _analyticsClientGetter.database.getDerivedStats(
+      language,
+    );
+    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      languageCode: language,
+      level: stats.level,
     );
   }
 

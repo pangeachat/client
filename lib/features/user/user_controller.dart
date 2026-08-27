@@ -595,41 +595,6 @@ class UserController {
     await _savePublicProfileUpdate();
   }
 
-  /// Publishes locally-derived levels for every language this device holds
-  /// analytics for, so an entry for a language the learner is not currently
-  /// studying stops sitting at whatever it was when they last switched away.
-  ///
-  /// **Raises only.** A local partition can be stale relative to another
-  /// device, but stale means MISSING events, so it can only ever under-report —
-  /// publishing only when the local level is higher is therefore safe against
-  /// staleness by construction, and it heals the symptom that was reported
-  /// (levels stuck low). Exact corrections, downward ones included — blocking a
-  /// construct legitimately lowers a level — keep happening for the active
-  /// language through [updateAnalyticsProfile].
-  ///
-  /// One publish for the whole map, not one per language.
-  Future<void> reconcileAnalyticsLevels(Map<String, int> derivedLevels) async {
-    if (!_publicProfileIsOwn) return;
-
-    final analytics = publicProfile!.analytics;
-    var changed = false;
-    for (final entry in derivedLevels.entries) {
-      final language = _shortCode(entry.key);
-      final published = analytics.languageAnalytics?[language]?.level;
-      if (published != null && published >= entry.value) continue;
-
-      analytics.setLanguageInfo(
-        language,
-        entry.value,
-        _ownAnalyticsRoomIdFor(language),
-      );
-      changed = true;
-    }
-
-    if (!changed) return;
-    await _savePublicProfileUpdate();
-  }
-
   /// Adds [offset] to the XP offset published for [languageCode]'s language.
   /// The language is required for the same reason it is on
   /// [updateAnalyticsProfile]: the offset is derived from one language's XP.
