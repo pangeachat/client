@@ -241,7 +241,12 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         for (final segment in half.segments)
           CallTurn(
             senderId: half.senderId,
-            name: _nameFor(half.senderId, l10n),
+            // The speaker's OWN name, not what the header will print. The
+            // widget substitutes "You" for your own turns itself, and the
+            // avatar needs the real one: handing it the label drew every
+            // self-turn's avatar as the initial of the word "You".
+            name: _displayNameOf(half.senderId),
+            avatarUrl: _avatarOf(half.senderId),
             isMe: half.senderId == me,
             at: Duration(milliseconds: segment.atMs! - start),
             text: segment.text,
@@ -264,10 +269,19 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
 
   String _nameFor(String userId, L10n l10n) {
     if (userId == widget.room.client.userID) return l10n.you;
-    return widget.room
-        .unsafeGetUserFromMemoryOrFallback(userId)
-        .calcDisplayname();
+    return _displayNameOf(userId);
   }
+
+  /// What this person is actually called, self included.
+  ///
+  /// Separate from [_nameFor] because the notes below the transcript address
+  /// the reader ("You said nothing") while an avatar has to be the person's
+  /// own, and one function cannot answer both.
+  String _displayNameOf(String userId) =>
+      widget.room.unsafeGetUserFromMemoryOrFallback(userId).calcDisplayname();
+
+  Uri? _avatarOf(String userId) =>
+      widget.room.unsafeGetUserFromMemoryOrFallback(userId).avatarUrl;
 }
 
 /// One speaker's side of the call.

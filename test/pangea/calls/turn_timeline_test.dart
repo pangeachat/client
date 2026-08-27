@@ -55,6 +55,80 @@ void main() {
     await tester.pumpAndSettle();
   }
 
+  testWidgets('a pause in one speaker gives the next stretch its own time', (
+    tester,
+  ) async {
+    // A real call rendered three stretches from one speaker at 0:04, 0:17 and
+    // 0:19 as a single turn stamped 0:04. Only the opening turn of a run draws
+    // a header, and the header is the only thing that prints a time, so the
+    // two later stretches silently inherited a moment fifteen seconds before
+    // they happened.
+    await pump(tester, [
+      turn(text: 'first', at: const Duration(seconds: 4)),
+      turn(text: 'much later', at: const Duration(seconds: 17)),
+    ]);
+
+    expect(find.text('0:04'), findsOneWidget);
+    expect(
+      find.text('0:17'),
+      findsOneWidget,
+      reason: 'the later stretch must state when it actually happened',
+    );
+  });
+
+  testWidgets('an unbroken stretch stays one turn', (tester) async {
+    // The other side of the same rule: grouping still has to happen, or every
+    // segment of one sentence draws its own name and avatar.
+    await pump(tester, [
+      turn(text: 'first', at: const Duration(seconds: 4)),
+      turn(text: 'right after', at: const Duration(milliseconds: 4300)),
+    ]);
+
+    expect(find.byType(Avatar), findsOneWidget);
+    expect(find.text('0:04'), findsOneWidget);
+  });
+
+  testWidgets('your own avatar is yours, not the initial of "You"', (
+    tester,
+  ) async {
+    // The header prints "You" for your own turns, and that label was being
+    // handed to the Avatar as the name. The fallback takes the initial of the
+    // name it is given, so every user saw a circle with a "Y" in it.
+    await pump(tester, [
+      turn(senderId: '@me:server', name: 'Satvik', isMe: true, text: 'mine'),
+    ]);
+
+    expect(
+      find.text('You'),
+      findsOneWidget,
+      reason: 'the header still says You',
+    );
+    final avatar = tester.widget<Avatar>(find.byType(Avatar));
+    expect(
+      avatar.name,
+      'Satvik',
+      reason: 'the avatar needs the person, not the word the header prints',
+    );
+  });
+
+  testWidgets('an avatar picture is used when the speaker has one', (
+    tester,
+  ) async {
+    await pump(tester, [
+      CallTurn(
+        senderId: '@a:server',
+        name: 'Alice',
+        isMe: false,
+        at: Duration.zero,
+        text: 'hello',
+        avatarUrl: Uri.parse('mxc://server/abc'),
+      ),
+    ]);
+
+    final avatar = tester.widget<Avatar>(find.byType(Avatar));
+    expect(avatar.mxContent, Uri.parse('mxc://server/abc'));
+  });
+
   testWidgets('an empty transcript renders nothing, and does not throw', (
     tester,
   ) async {

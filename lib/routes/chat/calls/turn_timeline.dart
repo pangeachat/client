@@ -19,6 +19,10 @@ class CallTurn {
   /// turns apart from the next; never rendered.
   final String senderId;
 
+  /// The speaker's avatar, when they have one. Null renders the initial of
+  /// [name], which is the same fallback the rest of the app uses.
+  final Uri? avatarUrl;
+
   /// The speaker's display name. Ignored when [isMe] is true -- the widget
   /// substitutes the localised "You" itself, so no caller has to remember to.
   final String name;
@@ -49,6 +53,7 @@ class CallTurn {
     required this.senderId,
     required this.name,
     required this.isMe,
+    this.avatarUrl,
     required this.at,
     required this.text,
   });
@@ -111,8 +116,7 @@ class TurnTimeline extends StatelessWidget {
             padding: EdgeInsets.only(top: i == 0 ? 0 : _gapAbove(ordered, i)),
             child: _Turn(
               turn: ordered[i],
-              showHeader:
-                  i == 0 || ordered[i - 1].senderId != ordered[i].senderId,
+              showHeader: _opensATurn(ordered, i),
               theme: theme,
               l10n: l10n,
             ),
@@ -149,7 +153,31 @@ class TurnTimeline extends StatelessWidget {
   /// [ordered], never [turns] -- the gap is between two turns as SHOWN, and
   /// only the sorted list says what that is.
   static double _gapAbove(List<CallTurn> ordered, int i) =>
-      ordered[i - 1].senderId == ordered[i].senderId ? 6 : 20;
+      _opensATurn(ordered, i) ? 20 : 6;
+
+  /// How long one speaker may keep going before their next stretch is read as
+  /// a new turn rather than a continuation of the last.
+  ///
+  /// A speaker CHANGE always opens a turn. A pause does too, and it has to:
+  /// only the opening turn of a run draws a header, and the header is the only
+  /// thing that prints a time. Grouping on the speaker alone therefore printed
+  /// ONE time above a run and let the rest inherit it silently -- a real call
+  /// showed three stretches at 0:04, 0:17 and 0:19 rendered as a single turn
+  /// stamped 0:04, so the screen said the last two happened fifteen seconds
+  /// before they did.
+  ///
+  /// Matched to `kUtterancePause`, the same gap the cutter used to end the
+  /// previous stretch. Anything the backend judged long enough to break a
+  /// segment on is long enough to deserve its own time on screen.
+  static const _newTurnAfter = Duration(milliseconds: 900);
+
+  static bool _opensATurn(List<CallTurn> ordered, int i) {
+    if (i == 0) return true;
+    final previous = ordered[i - 1];
+    final current = ordered[i];
+    if (previous.senderId != current.senderId) return true;
+    return current.at - previous.at >= _newTurnAfter;
+  }
 }
 
 class _Turn extends StatelessWidget {
@@ -181,7 +209,13 @@ class _Turn extends StatelessWidget {
           child: showHeader
               ? Avatar(
                   userId: turn.senderId,
-                  name: label,
+                  mxContent: turn.avatarUrl,
+                  // The speaker's OWN name, never `label`. Label is what the
+                  // header prints, and for your own turns that is the word
+                  // "You" -- handing it here drew a circle with a "Y" in it
+                  // for every user, since the fallback takes the initial of
+                  // whatever name it is given.
+                  name: turn.name,
                   size: TurnTimeline._avatarSize,
                 )
               : null,
