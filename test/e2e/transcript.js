@@ -20,6 +20,32 @@
 // carry provably different speech and "did each person's words land under
 // THEIR name" becomes a question that can be asked at all.
 //
+// WHERE THIS RUNS, AND WHERE IT DOES NOT YET PASS.
+//
+// Everything up to the words is green in two browsers: the ring, the answer,
+// the consent notice, the hangup, both halves written, each under its own
+// sender, with correct accounting. What does not come back is intelligible
+// SPEECH. The fake microphone is verified good -- a getUserMedia probe reads
+// peak RMS around 0.5 off these fixtures -- and the speech service is
+// verified reached, so the loss is between the two, in the web capture path.
+//
+// call_audio_tap.dart names this hazard itself, on the renderer tap the web
+// uses: the browser is free to refuse the requested rate and fall back to
+// 48 kHz, and "labelling 48 kHz audio as 16 kHz does not fail loudly; it just
+// transcribes as gibberish". What comes back is "you you" from twenty seconds
+// of clear speech, which is gibberish.
+//
+// That is consistent with the known weakness of web recording that
+// fix-renderer-attach exists for -- on the web a device can report
+// isRecording == true with a dead or mislabelled recorder -- and with the
+// fact that the transcript has only ever been demonstrated end to end on a
+// PHONE, where PostEchoCancellationTap reads the audio module directly.
+//
+// So the word-level checks below are expected to fail in two browsers today.
+// They are written as failures rather than skips ON PURPOSE: a skip would let
+// this quietly become permanent, and the day the web path is fixed this file
+// should go green without anybody remembering to re-enable it.
+//
 // HONESTY. A half that failed is not a person who said nothing. The screen has
 // four separate things to say -- they spoke / they were silent / they wrote
 // nothing / we could not find out -- and the whole feature is built around
@@ -74,23 +100,27 @@ function words(text) {
 
 /// A distinctive word from each fixture.
 ///
-/// The fixtures are ENGLISH, and deliberately so. They were Spanish, and
-/// neither test account speaks Spanish -- the speech provider is told which
-/// language to expect from the speaker's own profile, so Spanish audio came
-/// back as a handful of nonsense words or as nothing at all, and an empty
-/// transcript is indistinguishable from a broken pipeline. Audio the accounts
-/// could plausibly have produced is the only kind that tests anything.
+/// The fixtures are ENGLISH and about twenty seconds long, and both of those
+/// are deliberate.
 ///
-/// caller.wav: "Good afternoon. My name is Anna and today I want to tell you
-///              about my journey to Seville."
-/// callee.wav: "Of course. Please tell me everything about Seville. I was
-///              there last year in autumn."
+/// They were Spanish first, and neither test account speaks Spanish -- the
+/// provider is told which language to expect from the speaker's own profile,
+/// so Spanish audio came back as a couple of nonsense words. Then they were
+/// five seconds long inside a thirty-five second call, and Chromium is told
+/// `%noloop`, so five in six of every chunk was silence and the provider
+/// returned "you you" from it. An empty or nonsense transcript is
+/// indistinguishable from a broken pipeline, which is the worst thing a
+/// fixture can be.
 ///
-/// The shared word ("Seville") is deliberately NOT used to tell them apart.
-/// If the fixtures are replaced these move with them, and the run says so
-/// loudly rather than passing on a transcript of different audio.
-const CALLER_SAYS = ['afternoon', 'journey'];
-const CALLEE_SAYS = ['course', 'autumn'];
+/// Four sentences each, with a real pause between them, so the cutter has
+/// something to cut on and a call produces more than one turn.
+///
+/// The words below appear in ONE speaker's script and not the other's.
+/// "Seville" and "autumn" are in both and are deliberately not used. If the
+/// fixtures are replaced these move with them, and the run says so loudly
+/// rather than passing on a transcript of different audio.
+const CALLER_SAYS = ['afternoon', 'journey', 'spring', 'market'];
+const CALLEE_SAYS = ['course', 'orange', 'quarter', 'gardens'];
 
 async function main() {
   const s = 'transcript';
