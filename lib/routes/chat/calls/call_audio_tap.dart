@@ -14,11 +14,22 @@ import 'package:fluffychat/utils/platform_infos.dart';
 /// error — is how a tap comes to be left attached with nothing tracking it.
 typedef DetachTap = FutureOr<void> Function();
 
-/// Receives a stretch of this device's own outbound audio, and the rate it was
-/// captured at. The rate travels with the audio because it is not fixed: the
-/// audio processing module picks it from the device and the negotiated codec,
-/// and it changes when either does.
-typedef CallAudioFrames = void Function(Int16List samples, int sampleRate);
+/// Receives a stretch of this device's own outbound audio, and the FORMAT it
+/// was captured in.
+///
+/// Both facts travel with the audio because neither is fixed. The audio
+/// processing module picks the rate from the device and the negotiated codec
+/// and changes it when either does; the channel count is reported by the
+/// platform the same way, and on native it is whatever the platform decided
+/// rather than what we asked for.
+///
+/// Requesting a format and describing one are different things, and only the
+/// second one is true of the samples in hand. A channel count we assumed rather
+/// than read goes into the WAV header, halves or doubles the frame count
+/// derived from the byte length, and warps both the audio and every duration
+/// computed from it -- without failing anywhere.
+typedef CallAudioFrames =
+    void Function(Int16List samples, int sampleRate, int channels);
 
 /// Where a device reads its own outbound call audio from.
 ///
@@ -52,13 +63,19 @@ class TrackRendererTap implements CallAudioTap {
 
   @override
   Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
-    // The rate REQUESTED below and the rate the audio actually arrives at are
-    // two different facts, and only the second one describes the samples. On
-    // the web the renderer builds an AudioContext at the requested rate and
+    // The format REQUESTED below and the format the audio actually arrives in
+    // are two different facts, and only the second one describes the samples.
+    // On the web the renderer builds an AudioContext at the requested rate and
     // then reports whatever rate the browser really gave it -- browsers are
     // free to refuse, and the fallback is 48 kHz. Labelling 48 kHz audio as
-    // 16 kHz does not fail loudly; it just transcribes as gibberish. So the
-    // rate that travels with the audio is the frame's own, never ours.
+    // 16 kHz does not fail loudly; it just transcribes as gibberish.
+    //
+    // The same holds for the channel count, and it used to be dropped one line
+    // after this comment argued the case for the rate. On the web the renderer
+    // downmixes to what we asked for, so the two agree there; on native the
+    // count is read straight off the platform's own event, exactly as the rate
+    // is, and nothing promises it matches the request. So the whole format that
+    // travels with the audio is the frame's own, never ours.
     final cancel = track.addAudioRenderer(
       onFrame: (frame) => deliver(frame, onFrames),
       options: AudioRendererOptions(
@@ -73,7 +90,7 @@ class TrackRendererTap implements CallAudioTap {
   /// What a delivered frame becomes. Named so the rate rule above can be
   /// tested without standing up a real SFU track.
   static void deliver(AudioFrame frame, CallAudioFrames onFrames) =>
-      onFrames(pcmOfFrame(frame), frame.sampleRate);
+      onFrames(pcmOfFrame(frame), frame.sampleRate, frame.channels);
 }
 
 /// Android's post-echo-cancellation tap.
@@ -125,7 +142,12 @@ class PostEchoCancellationTap implements CallAudioTap {
     // answer and this listen -- milliseconds -- against audio that was being
     // double-counted into a learner's analytics.
     final subscription = capture.frames.listen(
-      (frame) => onFrames(_samplesOf(frame.pcm16), frame.sampleRate),
+      // Mono by the capture package's own contract -- its frame carries a rate
+      // precisely because that varies, and carries no channel count because
+      // this does not. A literal here is the only fact available rather than an
+      // assumption over one we were handed; if that package ever grows a
+      // channel count, it has to travel the same way the rate does.
+      (frame) => onFrames(_samplesOf(frame.pcm16), frame.sampleRate, 1),
       onError: (Object e, StackTrace s) =>
           Logs().w('The call audio tap reported an error', e, s),
     );

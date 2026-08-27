@@ -117,7 +117,12 @@ class CallCaptureService {
   /// the floor that backs it up.
   final int Function() elapsedMs;
 
-  final PcmChunker Function(int firstIndex, int sampleRate, int runStartedAtMs)
+  final PcmChunker Function(
+    int firstIndex,
+    int sampleRate,
+    int channels,
+    int runStartedAtMs,
+  )
   _newChunker;
 
   /// Chunk numbering continues across stop and start. Recording can be handed to
@@ -164,7 +169,12 @@ class CallCaptureService {
     this.detachTimeout = _detachTimeout,
     int Function()? nowMs,
     int Function()? elapsedMs,
-    PcmChunker Function(int firstIndex, int sampleRate, int runStartedAtMs)?
+    PcmChunker Function(
+      int firstIndex,
+      int sampleRate,
+      int channels,
+      int runStartedAtMs,
+    )?
     newChunker,
   }) : tap =
            tap ??
@@ -176,9 +186,11 @@ class CallCaptureService {
        elapsedMs = elapsedMs ?? _systemElapsedMs,
        _newChunker =
            newChunker ??
-           ((firstIndex, sampleRate, runStartedAtMs) => PcmChunker(
+           ((firstIndex, sampleRate, channels, runStartedAtMs) => PcmChunker(
+             // The format the frames ARRIVED in, never the one asked for. See
+             // [CallAudioFrames].
              sampleRate: sampleRate,
-             channels: captureChannels,
+             channels: channels,
              firstIndex: firstIndex,
              runStartedAtMs: runStartedAtMs,
            ));
@@ -231,7 +243,8 @@ class CallCaptureService {
       // for the hole that closes.
       detach = await tap.open(
         track,
-        (samples, sampleRate) => _onFrames(samples, sampleRate, session),
+        (samples, sampleRate, channels) =>
+            _onFrames(samples, sampleRate, channels, session),
       );
     } catch (_) {
       // Left clear so a transient failure can be retried by the next election.
@@ -477,13 +490,16 @@ class CallCaptureService {
   /// sleeps — would compress the gaps that follow rather than scatter them, and
   /// the floor keeps the ORDER right even then. Compressed and ordered is the
   /// failure this design already accepts; scattered is not.
-  int _runStartsAt(int samples, int sampleRate) {
+  int _runStartsAt(int samples, int sampleRate, int channels) {
     var base = _baseUnixMs;
     if (base == null) {
       base = _baseUnixMs = nowMs();
       _elapsedAtBase = elapsedMs();
     }
-    final batchMs = (samples ~/ captureChannels) * 1000 ~/ sampleRate;
+    // Interleaved samples divided by the channel count the frames actually
+    // carry. Dividing by the count we REQUESTED puts this out by exactly that
+    // factor, which moves where the run -- and every turn in it -- is placed.
+    final batchMs = (samples ~/ channels) * 1000 ~/ sampleRate;
     final startedAt = base + (elapsedMs() - _elapsedAtBase) - batchMs;
     return startedAt > _notBeforeMs ? startedAt : _notBeforeMs;
   }
@@ -504,7 +520,7 @@ class CallCaptureService {
   /// the negotiated codec does. A change ends the current chunk rather than
   /// reinterpreting samples already collected at the old rate, which would
   /// stretch or compress what the learner said.
-  void _onFrames(Int16List samples, int sampleRate, int session) {
+  void _onFrames(Int16List samples, int sampleRate, int channels, int session) {
     // Gated on the SESSION, not on [_running] alone. When `tap.open` throws
     // there is no detach handle, so a tap installed before the throw cannot be
     // tracked in [_unreleased] and never comes off — and the next start sets
@@ -516,7 +532,12 @@ class CallCaptureService {
     if (session != _session || !_running || _stopping || _muted) return;
 
     final held = _chunker;
-    if (held != null && held.sampleRate != sampleRate) {
+    // EITHER half of the format changing ends the run, for one reason: samples
+    // already collected cannot be reinterpreted in a format they were not
+    // captured in. Re-reading mono audio as stereo halves its frame count and
+    // stretches it, exactly as re-reading its rate would.
+    if (held != null &&
+        (held.sampleRate != sampleRate || held.channels != channels)) {
       // A format change is NOT a gap. A sample-rate change happens inside ONE
       // callback and the very same batch continues into the new chunker, so
       // there is no silence between them — only a boundary we imposed. Reading
@@ -526,13 +547,14 @@ class CallCaptureService {
       // — a stop, a mute, a tap that failed to open — go through [_runStartsAt]
       // instead.
       _endRun();
-      _chunker = _newChunker(_nextIndex, sampleRate, _notBeforeMs);
+      _chunker = _newChunker(_nextIndex, sampleRate, channels, _notBeforeMs);
     }
 
     final chunker = _chunker ??= _newChunker(
       _nextIndex,
       sampleRate,
-      _runStartsAt(samples.length, sampleRate),
+      channels,
+      _runStartsAt(samples.length, sampleRate, channels),
     );
     for (final chunk in chunker.add(samples)) {
       _hand(chunk);

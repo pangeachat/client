@@ -171,11 +171,11 @@ void main() {
     detachTimeout: detach ?? const Duration(seconds: 5),
     nowMs: clock.call,
     elapsedMs: clock.monotonic,
-    newChunker: (firstIndex, sampleRate, runStartedAtMs) {
+    newChunker: (firstIndex, sampleRate, channels, runStartedAtMs) {
       runStarts.add(runStartedAtMs);
       return PcmChunker(
         sampleRate: sampleRate,
-        channels: captureChannels,
+        channels: channels,
         targetDuration: const Duration(milliseconds: 200),
         maxDuration: const Duration(milliseconds: 400),
         minSilence: const Duration(milliseconds: 100),
@@ -625,7 +625,7 @@ void main() {
 
       // Half a second of speech BEFORE the hangup.
       final speech = Int16List(12000)..fillRange(0, 12000, 8000);
-      tap.onFrames!(speech, 24000);
+      tap.onFrames!(speech, 24000, 1);
       await pumpEventQueue();
 
       // Hang up: stop begins and the detach hangs.
@@ -633,8 +633,8 @@ void main() {
       await pumpEventQueue();
 
       // A full second of speech arrives WHILE the detach is stuck.
-      tap.onFrames!(speech, 24000);
-      tap.onFrames!(speech, 24000);
+      tap.onFrames!(speech, 24000, 1);
+      tap.onFrames!(speech, 24000, 1);
       await pumpEventQueue();
 
       tap.finishDetach();
@@ -856,9 +856,9 @@ void main() {
       final s = service(withTap: tap);
       await s.start(track);
 
-      tap.onFrames!(speech(100), captureSampleRate);
+      tap.onFrames!(speech(100), captureSampleRate, 1);
       clock.pass(1000); // a clock read below would invent a whole second
-      tap.onFrames!(speech(100, sampleRate: 24000), 24000);
+      tap.onFrames!(speech(100, sampleRate: 24000), 24000, 1);
       await pumpEventQueue();
 
       expect(sink.delivered.map((c) => c.index), [0]);
@@ -872,13 +872,127 @@ void main() {
       clock.pass(5000);
       s.setMuted(true);
       s.setMuted(false);
-      tap.onFrames!(speech(100, sampleRate: 24000), 24000);
+      tap.onFrames!(speech(100, sampleRate: 24000), 24000, 1);
       await pumpEventQueue();
 
       expect(
         runStarts[2],
         clock.ms - 100,
         reason: 'a mute IS an absence of capture, so its run takes the gap',
+      );
+    });
+
+    test('a channel-count change ends the run, like a rate change', () async {
+      // Samples already collected cannot be reinterpreted in a format they were
+      // not captured in: re-reading mono audio as stereo halves its frame count
+      // and stretches it, exactly as re-reading its rate would. And like a rate
+      // change it is a boundary WE imposed inside one batch, not an absence of
+      // capture, so it must not open a gap.
+      final tap = _DrivableTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+      clock.pass(1000); // a clock read below would invent a whole second
+      tap.onFrames!(speech(100), captureSampleRate, 2);
+      await pumpEventQueue();
+
+      expect(
+        sink.delivered.map((c) => c.index),
+        [0],
+        reason: 'the mono run was cut when the format changed under it',
+      );
+      expect(sink.delivered.single.channels, 1);
+      expect(
+        runStarts[1],
+        runStarts[0] + 100,
+        reason: 'a format change is not a gap, whichever half of it changed',
+      );
+    });
+
+    test('a stereo frame is measured as stereo, not as what we asked for', () {
+      // The batch duration positions the run, and it divides interleaved
+      // samples by the channel count. Dividing by the count we REQUESTED puts
+      // it out by exactly that factor.
+      final tap = _DrivableTap();
+      final s = service(withTap: tap);
+
+      return s.start(track).then((_) async {
+        // 100ms of STEREO is twice the samples of 100ms of mono.
+        tap.onFrames!(
+          speech(100, sampleRate: captureSampleRate * 2),
+          captureSampleRate,
+          2,
+        );
+        await pumpEventQueue();
+
+        expect(
+          runStarts.single,
+          clock.ms - 100,
+          reason: 'one hundred milliseconds of audio, not two hundred',
+        );
+      });
+    });
+
+    test('a stereo run is chunked and labelled as stereo', () async {
+      // The chunker's whole frame accounting divides bytes by the channel
+      // count, and that count goes into the WAV header choreo reads. Built with
+      // the count we REQUESTED, the same bytes measure twice as long, cut in
+      // the wrong places, and are handed to the provider labelled as something
+      // they are not.
+      final tap = _DrivableTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+
+      // 300ms of STEREO: under the 400ms ceiling as stereo, over it as mono.
+      tap.onFrames!(
+        speech(300, sampleRate: captureSampleRate * 2),
+        captureSampleRate,
+        2,
+      );
+      await s.stop();
+      await pumpEventQueue();
+
+      final chunk = sink.delivered.single;
+      expect(
+        chunk.channels,
+        2,
+        reason: 'the header must say what the bytes are',
+      );
+      expect(
+        chunk.duration.inMilliseconds,
+        300,
+        reason: 'labelled mono, the same bytes would measure 600ms',
+      );
+    });
+
+    test('the DEFAULT chunker is built from the format that arrived', () async {
+      // Every other test here injects a fake chunker factory, so the one
+      // production actually uses had the requested channel count baked into it
+      // with nothing exercising the difference.
+      final tap = _DrivableTap();
+      final s = CallCaptureService(
+        sink: sink,
+        tap: tap,
+        nowMs: clock.call,
+        elapsedMs: clock.monotonic,
+      );
+      await s.start(track);
+
+      tap.onFrames!(
+        speech(300, sampleRate: captureSampleRate * 2),
+        captureSampleRate,
+        2,
+      );
+      await s.stop();
+      await pumpEventQueue();
+
+      final chunk = sink.delivered.single;
+      expect(chunk.channels, 2);
+      expect(
+        chunk.duration.inMilliseconds,
+        300,
+        reason: 'labelled mono, the same bytes would measure 600ms',
       );
     });
 
@@ -998,11 +1112,11 @@ void main() {
       expect(sink.delivered.map((c) => c.index), [0]);
 
       await s.start(track); // opens cleanly, and hands over its own 100ms
-      tap.onFrames!(speech(100), captureSampleRate);
+      tap.onFrames!(speech(100), captureSampleRate, 1);
       tap.finishOpening();
       await expectLater(starting, throwsStateError);
       await pumpEventQueue();
-      tap.onFrames!(speech(50), captureSampleRate);
+      tap.onFrames!(speech(50), captureSampleRate, 1);
       await s.stop();
       await pumpEventQueue();
 
@@ -1026,7 +1140,7 @@ void main() {
       final leaked = tap.onFrames!;
 
       await s.start(track);
-      leaked(speech(100), captureSampleRate);
+      leaked(speech(100), captureSampleRate, 1);
       await s.stop();
       await pumpEventQueue();
 
@@ -1047,7 +1161,7 @@ void main() {
       final tap = _SlowDetachTap();
       final s = service(withTap: tap);
       await s.start(track);
-      tap.onFrames!(speech(100), captureSampleRate);
+      tap.onFrames!(speech(100), captureSampleRate, 1);
       await pumpEventQueue();
 
       final stopping = s.stop();
@@ -1059,14 +1173,14 @@ void main() {
       // Speech arriving while the stop is still unwinding. It belongs to
       // nothing: the run it was captured for is over, and the run that follows
       // has not been opened.
-      tap.onFrames!(speech(100), captureSampleRate);
+      tap.onFrames!(speech(100), captureSampleRate, 1);
       await pumpEventQueue();
 
       tap.finishDetach();
       await stopping;
       await starting;
 
-      tap.onFrames!(speech(100), captureSampleRate);
+      tap.onFrames!(speech(100), captureSampleRate, 1);
       await s.stop();
       await pumpEventQueue();
 
@@ -1139,7 +1253,7 @@ class _TailOnDetachTap implements CallAudioTap {
   @override
   Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
     return () async {
-      onFrames(Int16List.fromList(List<int>.filled(8000, 1200)), 16000);
+      onFrames(Int16List.fromList(List<int>.filled(8000, 1200)), 16000, 1);
     };
   }
 }
@@ -1219,7 +1333,7 @@ class _FramesThenFailsTap implements CallAudioTap {
   @override
   Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
     this.onFrames = onFrames;
-    onFrames(speech(100), captureSampleRate);
+    onFrames(speech(100), captureSampleRate, 1);
     if (opens++ > 0) return () async {};
     await _failing.future;
     throw StateError('the platform never finished opening');

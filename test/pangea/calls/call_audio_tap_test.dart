@@ -73,10 +73,48 @@ void main() {
           data: Uint8List.fromList([0, 0, 1, 0]),
           format: AudioFormat.Int16,
         ),
-        (samples, rate) => reported = rate,
+        (samples, rate, channels) => reported = rate,
       );
       expect(tap.sampleRate, 16000, reason: 'we still REQUEST 16 kHz');
       expect(reported, 48000, reason: 'but we report what actually arrived');
+    });
+
+    test('reports the CHANNEL COUNT the frame arrived with', () {
+      // The count used to be dropped one line after the comment above argued
+      // the case for the rate. On native it is read straight off the platform's
+      // own event, exactly as the rate is, and nothing promises it matches what
+      // we asked for -- so a stereo frame labelled mono would halve the frame
+      // count taken from its byte length and warp both the audio and every
+      // duration derived from it.
+      const tap = TrackRendererTap(sampleRate: 16000, channels: 1);
+      int? reported;
+      TrackRendererTap.deliver(
+        AudioFrame(
+          sampleRate: 48000,
+          channels: 2,
+          data: Uint8List.fromList([0, 0, 1, 0, 2, 0, 3, 0]),
+          format: AudioFormat.Int16,
+        ),
+        (samples, rate, channels) => reported = channels,
+      );
+      expect(tap.channels, 1, reason: 'we still REQUEST mono');
+      expect(reported, 2, reason: 'but we report what actually arrived');
+    });
+
+    test('a renderer that honours the request reports mono', () {
+      // The web renderer downmixes to what was asked for, so the two agree
+      // there. The rule must not fire on that ordinary case.
+      int? reported;
+      TrackRendererTap.deliver(
+        AudioFrame(
+          sampleRate: 16000,
+          channels: 1,
+          data: Uint8List.fromList([0, 0]),
+          format: AudioFormat.Int16,
+        ),
+        (samples, rate, channels) => reported = channels,
+      );
+      expect(reported, 1);
     });
 
     test('a browser that honours the request reports that rate', () {
@@ -88,7 +126,7 @@ void main() {
           data: Uint8List.fromList([0, 0]),
           format: AudioFormat.Int16,
         ),
-        (samples, rate) => reported = rate,
+        (samples, rate, channels) => reported = rate,
       );
       expect(reported, 16000);
     });
@@ -100,7 +138,7 @@ void main() {
       final tap = PostEchoCancellationTap(capture: platform);
       final got = <(Int16List, int)>[];
 
-      final detach = await tap.open(_noTrack, (s, r) => got.add((s, r)));
+      final detach = await tap.open(_noTrack, (s, r, c) => got.add((s, r)));
       await platform.emit([1, -1, 32767, -32768], 48000);
 
       expect(detach, isNotNull);
@@ -120,7 +158,7 @@ void main() {
         final platform = FakeCapture(attaches: false);
         final tap = PostEchoCancellationTap(capture: platform);
 
-        final detach = await tap.open(_noTrack, (_, _) {});
+        final detach = await tap.open(_noTrack, (_, _, _) {});
 
         expect(detach, isNull);
         expect(
@@ -135,7 +173,7 @@ void main() {
       final platform = FakeCapture(startThrows: StateError('no webrtc yet'));
       final tap = PostEchoCancellationTap(capture: platform);
 
-      final detach = await tap.open(_noTrack, (_, _) {});
+      final detach = await tap.open(_noTrack, (_, _, _) {});
 
       expect(detach, isNull);
       expect(platform.watching, isFalse);
@@ -148,7 +186,7 @@ void main() {
       final platform = FakeCapture();
       final tap = PostEchoCancellationTap(capture: platform);
 
-      final detach = await tap.open(_noTrack, (_, _) {});
+      final detach = await tap.open(_noTrack, (_, _, _) {});
       await detach!.call();
 
       expect(platform.teardown.first, 'stop');
@@ -158,7 +196,7 @@ void main() {
       final platform = FakeCapture();
       final tap = PostEchoCancellationTap(capture: platform);
 
-      final detach = await tap.open(_noTrack, (_, _) {});
+      final detach = await tap.open(_noTrack, (_, _, _) {});
       // Awaited with nothing pumped afterwards: a detach that only schedules the
       // work would leave the tap attached at the moment the caller believes the
       // recording has stopped.
@@ -181,7 +219,7 @@ void main() {
 
       await PostEchoCancellationTap(
         capture: platform,
-      ).open(_noTrack, (_, _) {});
+      ).open(_noTrack, (_, _, _) {});
 
       expect(
         listeningWhenStarted,
@@ -199,7 +237,7 @@ void main() {
       final platform = FakeCapture(attaches: false);
       final detach = await PostEchoCancellationTap(
         capture: platform,
-      ).open(_noTrack, (_, _) {});
+      ).open(_noTrack, (_, _, _) {});
       expect(detach, isNull);
       expect(
         platform.watching,
