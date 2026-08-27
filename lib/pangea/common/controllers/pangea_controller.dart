@@ -67,11 +67,15 @@ class PangeaController {
     initControllers(userID);
     _registerSubscriptions();
 
-    // Locale is set by MatrixState's toggle-aware _setAppLanguage() once the
-    // profile loads (see matrix.dart's _setLanguageListener) — setting it
-    // here too raced that call and always won with the hardcoded L1,
-    // ignoring the "show app in the language I'm learning" toggle (#8509).
+    // Re-apply the locale now the profile is loaded for THIS account. This
+    // used to set L1 unconditionally, which ignored the "show the app in the
+    // language I'm learning" toggle; it must go through the toggle-aware
+    // resolver instead. It cannot be dropped altogether, though — the only
+    // other calls happen at app start, and neither profile stream emits on
+    // login (the sync's profile matches the one initialize() just cached), so
+    // a logout/login left the locale wherever _onLogout's null put it (#8509).
     userController.reinitialize().then((_) {
+      matrixState.setAppLanguage();
       GrammarConstructsProvider.fetchFeaturesAndTags();
     });
 
