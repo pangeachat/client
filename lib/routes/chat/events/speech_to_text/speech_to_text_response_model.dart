@@ -220,12 +220,15 @@ class SpeechToTextResult {
     if (entries is! List) return null;
 
     final transcripts = <Transcript>[];
-    var dropped = false;
+    // Whether anything was dropped from IN FRONT of the surviving first, which
+    // is the only drop that changes what the reader is handed. A malformed
+    // alternative sitting BEHIND a survivor was never going to be read, so it
+    // was never a stand-in for anything and its loss costs nothing.
+    var droppedBeforeFirst = false;
     for (final entry in entries) {
       final transcript = Transcript.fromJson(entry);
-      // A malformed second alternative is one the call path never reads.
       if (transcript == null) {
-        dropped = true;
+        if (transcripts.isEmpty) droppedBeforeFirst = true;
         continue;
       }
       transcripts.add(transcript);
@@ -243,7 +246,14 @@ class SpeechToTextResult {
     // and persisted embeds carry it -- so the two are told apart by whether we
     // lost something, which is the only thing that distinguishes them. Reading
     // the answer off the survivors is the same mistake the result level made.
-    if (dropped && (transcripts.isEmpty || transcripts.first.text.isEmpty)) {
+    //
+    // Scoped to drops AHEAD of the survivor, for the same reason the stand-in
+    // is the first one: a valid empty alternative followed by a malformed one
+    // is the provider saying it heard nothing, and counting that as a lost
+    // chunk turns legitimate silence into loss -- the same lie in the other
+    // direction.
+    if (droppedBeforeFirst &&
+        (transcripts.isEmpty || transcripts.first.text.isEmpty)) {
       return null;
     }
     return SpeechToTextResult(transcripts: transcripts);

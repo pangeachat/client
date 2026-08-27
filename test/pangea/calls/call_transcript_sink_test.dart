@@ -645,6 +645,27 @@ void main() {
       expect(s.chunksTranscribed, 0);
     });
 
+    test('an EMPTY first beside a malformed LATER one is still silence', () {
+      // The other direction, and the one over-broad scoping got wrong. The
+      // reader takes `transcripts[0]`, which is legitimately empty here; the
+      // malformed alternative behind it was never going to be read, so it was
+      // never a stand-in for anything. Counting this as a lost chunk turns the
+      // provider saying it heard nothing into loss.
+      final model = SpeechToTextResponseModel.fromJson({
+        'results': [
+          {
+            'transcripts': [
+              emptyTranscript(),
+              {'transcript': 42, 'confidence': 90},
+            ],
+          },
+        ],
+      });
+
+      expect(model.hasUsableTranscript, isFalse);
+      expect(model.results, hasLength(1));
+    });
+
     test('an empty survivor behind a readable one is still not a stand-in', () {
       // Tighter than "some survivor has words". The reader takes
       // `transcripts.first`, so a readable alternative sitting BEHIND an empty
