@@ -217,21 +217,26 @@ class ActivityPlanRepo
     return req.get(url: uri.toString());
   }
 
-  /// The `?? 'en'` covers a set-up controller whose user has no L1 yet — a
-  /// different case from the controller not existing, which [_request] gates.
-  String get _viewerL1 =>
-      MatrixState.pangeaController.userController.userL1Code ?? 'en';
+  /// The viewer's display language (L2 when the "app in target language"
+  /// toggle is on, else L1), sent as the endpoint's `l1` param so activity
+  /// content follows the toggle (#8397). The `?? 'en'` covers a set-up
+  /// controller whose user has no languages yet — a different case from the
+  /// controller not existing, which [_request] gates.
+  String get _viewerDisplayLanguage =>
+      MatrixState.pangeaController.userController.displayLanguageCode ?? 'en';
 
   /// Null until `MatrixState` has assigned `pangeaController`, which it does in
   /// `initState` after `initMatrix()`. Every entry point below turns that null
   /// into its own "could not do it" value, so nothing in this repo touches the
   /// controller — or the network — before it exists.
   ///
-  /// The gate is on the whole request, not just on [_viewerL1], because the
-  /// repo reaches the controller down THREE paths and two of them ignore [l1]:
-  ///  - [_viewerL1] here, which crashed outright (Sentry CLIENT-D43): it runs
-  ///    while building the request, outside `BaseRepo._fetch`'s try/catch, so
-  ///    the `LateInitializationError` escaped the repo.
+  /// The gate is on the whole request, not just on [_viewerDisplayLanguage],
+  /// because the repo reaches the controller down THREE paths and two of them
+  /// ignore [l1]:
+  ///  - [_viewerDisplayLanguage] here, which crashed outright (Sentry
+  ///    CLIENT-D43): it runs while building the request, outside
+  ///    `BaseRepo._fetch`'s try/catch, so the `LateInitializationError`
+  ///    escaped the repo.
   ///  - `BaseRepo.createRequests()`, for the access token — inside that
   ///    try/catch, so it degrades to `Result.error`.
   ///  - `PersistentRepoCache.init()`, via `BaseRepo._cacheInit`. This one is
@@ -251,13 +256,13 @@ class ActivityPlanRepo
     if (!MatrixState.isPangeaControllerInitialized) return null;
     return ActivityPlanFetchRequest(
       activityId: activityId,
-      l1: l1 ?? _viewerL1,
+      l1: l1 ?? _viewerDisplayLanguage,
       version: version,
     );
   }
 
-  /// The plan for [activityId], localized to [l1] (viewer L1 by default), with
-  /// media resolved. Cached (TTL + in-flight dedup); null on fetch failure.
+  /// The plan for [activityId], localized to [l1] (the viewer's display
+  /// language by default), with media resolved. Cached (TTL + in-flight dedup); null on fetch failure.
   /// [forceRefresh] re-fetches past the TTL (the cache survives until the fresh
   /// plan lands). Callers that need to tell a removed activity apart from a
   /// transient failure use [lookup].

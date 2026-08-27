@@ -675,6 +675,14 @@ class UserController {
     return target == null || target.isEmpty ? null : target;
   }
 
+  /// The language content should display in: the target language (L2) when
+  /// the "app in target language" toggle is on, else the native language (L1).
+  /// Mirrors the app-copy locale resolution in `MatrixState.setAppLanguage`,
+  /// including its fallback to L1 when no target is set.
+  String? get displayLanguageCode => profile.userSettings.appLanguageIsTarget
+      ? (userL2Code ?? userL1Code)
+      : userL1Code;
+
   LanguageModel? get userL1 {
     if (userL1Code == null) return null;
     final langModel = PLanguageStore.byLangCode(userL1Code!);
