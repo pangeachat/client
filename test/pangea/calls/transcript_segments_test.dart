@@ -268,6 +268,10 @@ void main() {
       ]);
 
       expect(segments.map((s) => s.text), ["he'll go"]);
+      // Asserting the text alone let the real regression through: the chunk
+      // could be ACCEPTED and stamped with the timing of a word the transcript
+      // never contained, and the text would still read correctly.
+      expect(segments.single.atMs, isNull);
     });
 
     test('a symbol that changes a word is not stripped away', () {
@@ -276,6 +280,7 @@ void main() {
       ]);
 
       expect(segments.map((s) => s.text), ['C++ rocks']);
+      expect(segments.single.atMs, isNull);
     });
 
     test('case alone does not trigger the fallback', () {
@@ -287,15 +292,21 @@ void main() {
       ]);
 
       expect(segments, hasLength(1));
-      expect(segments.single.text, 'hola QUE tal');
+      // The TRANSCRIPT's casing, not the provider word list's. The words are
+      // the same words; only their spelling differs, and the transcript is the
+      // authoritative rendering of what was said.
+      expect(segments.single.text, 'Hola que tal');
     });
 
-    test('punctuation the timings omit DOES trigger the fallback', () {
-      // This test previously asserted the opposite -- that punctuation should
-      // be forgiven, so that segmentation stayed usable. Every attempt to
-      // forgive it let a real substitution through as well ("he'll" vs "hell",
-      // "C++" vs "C"). Coarser segmentation is the price of never altering
-      // what someone said.
+    test('punctuation the timings omit no longer costs the position', () {
+      // This is the case that kept every real call unpositioned: providers
+      // return a punctuation-free word list beside a punctuated transcript, so
+      // the old exact rule refused 14 of 14 captured chunks, and one refused
+      // chunk drops the whole call to the per-speaker view.
+      //
+      // Forgiving punctuation at the EDGES of a word is what makes this safe
+      // without reopening the substitution hole: "he'll" and "C++" differ
+      // INSIDE the word and are still refused, as the two tests above assert.
       final segments = buildSegments([
         _chunk(
           'Hola, que tal?',
@@ -304,6 +315,32 @@ void main() {
       ]);
 
       expect(segments.map((s) => s.text), ['Hola, que tal?']);
+      expect(
+        segments.single.atMs,
+        _chunkStart,
+        reason: 'the chunk aligns, so it must carry a position',
+      );
+    });
+
+    test('the punctuation a learner reads comes from the transcript', () {
+      // Real shape, from a capture on disk: Deepgram is asked for smart_format
+      // + punctuate, so its transcript is punctuated while its word list is
+      // not. Assembling display text from the word list could never show the
+      // punctuation; taking it from the transcript does.
+      final segments = buildSegments([
+        _chunk(
+          'Hello, how are you?',
+          timings: [
+            ('hello', 0, 100),
+            ('how', 2000, 2100),
+            ('are', 2150, 2250),
+            ('you', 2300, 2400),
+          ],
+        ),
+      ]);
+
+      expect(segments.map((s) => s.text), ['Hello,', 'how are you?']);
+      expect(segments.first.atMs, _chunkStart);
     });
 
     test('no usable chunks yields no segments', () {

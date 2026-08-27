@@ -121,13 +121,24 @@ final _whitespace = RegExp(r'\s+');
 String _words(String text) =>
     text.toLowerCase().trim().split(_whitespace).join(' ');
 
-/// Unicode punctuation and symbols, stripped only when COMPARING a provider's
-/// word against the transcript's.
-final _punctuation = RegExp(r'[\p{P}\p{S}]', unicode: true);
+/// Punctuation at the START or END of a word, and nothing else.
+///
+/// EDGE-ONLY, because that is the whole of what a transcript legitimately adds:
+/// it decorates a word it also encloses in a sentence -- "Hello," for `hello`,
+/// "¿Cómo" for `cómo`, Arabic "داخليًا،" for the bare word. A difference INSIDE
+/// a word is not decoration, it is a different word: "he'll" is not "hell".
+/// Stripping punctuation anywhere, which an earlier version of this did,
+/// collapsed exactly that distinction and accepted a timestamp for a word the
+/// transcript never contained.
+///
+/// PUNCTUATION ONLY, never symbols. `+` is a symbol, so "C++" keeps its tail
+/// and is correctly refused against a provider's "C" -- the same pair the old
+/// exact rule was written to catch.
+final _edgePunctuation = RegExp(r'^\p{P}+|\p{P}+$', unicode: true);
 
-/// A word reduced to the part two spellings of it must share.
+/// A word with its decoration removed, for COMPARISON only. Never displayed.
 String _core(String word) =>
-    word.toLowerCase().replaceAll(_punctuation, '').trim();
+    word.trim().replaceAll(_edgePunctuation, '').toLowerCase();
 
 /// The transcript's own words, in order.
 List<String> _transcriptWords(String text) =>
@@ -155,11 +166,10 @@ List<String> _transcriptWords(String text) =>
 /// What the count requirement buys: a provider that re-cuts word boundaries
 /// ("therapist" against [the, rapist], "nowhere" against [now, here]) does not
 /// line up and is refused, which is the case that could genuinely misattribute
-/// speech. What setting punctuation aside costs: a transcript "he'll" against a
-/// provider word "hell", or "C++" against "C", is accepted and DISPLAYED AS THE
-/// TRANSCRIPT HAS IT. That is a cost worth naming and it is small, because the
-/// transcript is already the authoritative text -- it is what this same screen
-/// shows on every fallback, and what the batch path has always shown.
+/// speech. What edge-only punctuation buys: "Hello," lines up with `hello`,
+/// while "he'll" against "hell" and "C++" against "C" still do not -- those
+/// differ INSIDE the word, so they are refused and the chunk falls back
+/// unpositioned, exactly as the old exact rule intended.
 List<String>? _alignedToTranscript(List<WordTiming> timings, String text) {
   final spoken = <int>[];
   for (var i = 0; i < timings.length; i++) {
