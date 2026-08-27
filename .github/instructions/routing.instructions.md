@@ -748,7 +748,7 @@ until it is explicitly ended, finished, or times out.
   or a rail section drops the `practice` panel from the URL but keeps the
   session alive in memory; re-opening practice resumes exactly where it left
   off. No confirm dialog on leave. Session state is ephemeral view state, never
-  in the URL — a refresh or app restart starts fresh.
+  in the URL — a refresh, app restart, or logout starts fresh.
 - **One session at a time.** A single practice session is live across both
   sections. Starting practice in the other section, or restarting the same
   one, **replaces** it — confirming first only if the current one is
