@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:diacritic/diacritic.dart';
@@ -42,6 +44,7 @@ abstract class CourseSearchController<T> {
 
   void disposeCourseSearch() {
     _disposed = true;
+    _disarmAutoRefocus();
     _filteredCoursesLoader.dispose();
     _searchController.removeListener(_onSearch);
     _scrollController.dispose();
@@ -110,6 +113,7 @@ abstract class CourseSearchController<T> {
   }
 
   void stopSearching() {
+    _disarmAutoRefocus();
     _searchingNotifier.value = false;
     _focusNode.unfocus();
     _searchController.clear();
@@ -118,14 +122,69 @@ abstract class CourseSearchController<T> {
 
   void startSearching() {
     _searchingNotifier.value = true;
+    // The focus grant must land a full frame AFTER the frame that swaps the
+    // search toggle for the field (#8581). On web with the semantics tree on
+    // (always true on staging, and for assistive-tech users anywhere), the
+    // engine applies DOM focus during the semantics update — but the removed
+    // toggle button still holds native DOM focus, and Blink delivers its
+    // element-removal blur asynchronously AFTER that update, stomping the
+    // focus. A same-frame or next-post-frame requestFocus loses that race and
+    // leaves the field looking focused but swallowing every keystroke.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_disposed) return;
+      WidgetsBinding.instance.ensureVisualUpdate();
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (_disposed) return;
+        _focusNode.requestFocus();
+        _armAutoRefocus();
+      });
+    });
     _searchController.clear();
     setFilteredCourses(AsyncLoaded(_loadedCourses));
-    // The search field only enters the tree on the rebuild triggered above, so
-    // focusing synchronously targets a detached node — on web the field can
-    // then read as focused without the browser input ever opening (#8581).
+  }
+
+  // Blink also drops DOM focus whenever the engine MOVES the field's semantic
+  // DOM node — which any semantics reshuffle around it causes (course tiles
+  // loading in, map pins animating behind the panel) — closing the text-input
+  // connection and unfocusing the field at an arbitrary later moment. That
+  // loss is framework-visible, so while search is open re-request focus when
+  // it drops — unless the user took it away themselves: any pointer-down
+  // disarms, and focus landing on a real widget (keyboard traversal) is left
+  // alone. Web-only: native platforms have no semantic-DOM focus to lose, and
+  // refocusing there would fight system keyboard dismissal.
+  bool _autoRefocusArmed = false;
+
+  void _armAutoRefocus() {
+    if (!kIsWeb || _autoRefocusArmed) return;
+    _autoRefocusArmed = true;
+    _focusNode.addListener(_onFocusChange);
+    GestureBinding.instance.pointerRouter.addGlobalRoute(_onGlobalPointer);
+  }
+
+  void _disarmAutoRefocus() {
+    if (!_autoRefocusArmed) return;
+    _autoRefocusArmed = false;
+    _focusNode.removeListener(_onFocusChange);
+    GestureBinding.instance.pointerRouter.removeGlobalRoute(_onGlobalPointer);
+  }
+
+  void _onGlobalPointer(PointerEvent event) {
+    if (event is PointerDownEvent) _disarmAutoRefocus();
+  }
+
+  void _onFocusChange() {
+    if (!_autoRefocusArmed || _focusNode.hasFocus) return;
+    final primary = FocusManager.instance.primaryFocus;
+    if (primary != null && primary is! FocusScopeNode) return;
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!_disposed) _focusNode.requestFocus();
+      if (!_disposed &&
+          _autoRefocusArmed &&
+          _searchingNotifier.value &&
+          !_focusNode.hasFocus) {
+        _focusNode.requestFocus();
+      }
     });
+    WidgetsBinding.instance.ensureVisualUpdate();
   }
 
   void _onSearch() {
