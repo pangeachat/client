@@ -163,6 +163,9 @@ class _SpyRecord extends CallRecord {
 }
 
 class _FakeMedia extends CallMedia {
+  /// A device clock the test states, so a latched anchor is exact.
+  _FakeMedia({super.now});
+
   _FakeRoster? fakeRoster;
 
   /// A camera that refuses to open, as a blocked web host or a denied prompt
@@ -331,6 +334,12 @@ void main() {
       // connected reads as a working feature and ships a dark one.
       final client = await _bareClient();
       final room = _RecordingRoom(id: '!r:server', client: client);
+      // A device thirty seconds ahead of the SFU, latched at join exactly as
+      // the real media does when the local participant first appears.
+      final sfuJoin = DateTime.utc(2026, 8, 26, 9);
+      final media = _FakeMedia(
+        now: () => sfuJoin.add(const Duration(seconds: 30)),
+      )..anchorClocksTo(sfuJoin);
       final session = CallSession.start(
         room: room,
         video: false,
@@ -341,7 +350,7 @@ void main() {
         userL2: 'es',
         analytics: (eventId, uses, language) async {},
         onReleased: (_) {},
-        mediaOverride: _FakeMedia(),
+        mediaOverride: media,
         captureOverride: CallCaptureService(sink: _NullSink()),
       );
       await pumpEventQueue();
@@ -378,6 +387,16 @@ void main() {
         'event_id': r'$anchor:server',
       });
       expect((written['segments'] as List).single['text'], 'hola que tal');
+
+      // And the join-time clock readings reach the event. This is the seam
+      // between the media that latched them and the half that carries them,
+      // and it is the one step the reader-side tests cannot see: without it
+      // every published half is unanchored, the correction never applies, and
+      // nothing else in the suite would notice.
+      expect(
+        CallTranscriptContent.fromJson(written)!.clockAnchor?.offsetMs,
+        30000,
+      );
     },
   );
 

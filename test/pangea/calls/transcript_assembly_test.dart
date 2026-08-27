@@ -1231,6 +1231,53 @@ void main() {
       expect(_halfFor(transcript, bob).clockAnchor, _skewed(0));
     });
 
+    test('an anchored duplicate beats an identical unanchored one', () {
+      // Same words, same claims, same placeability -- one written by a build
+      // that records the join clocks and one by a build that does not. Letting
+      // the older copy hold the slot buries an anchor that WAS written and
+      // silently reinstates the skew, and no word of the transcript turns on
+      // the choice, because the two say the same thing.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, ts: 100),
+          _candidate(alice, ts: 900, anchor: _skewed(30000)),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).clockAnchor, _skewed(30000));
+    });
+
+    test('and the earlier copy still wins when neither is anchored', () {
+      // The tie-break this sits in front of, unchanged: with nothing to choose
+      // between them the earlier event keeps the slot.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, ts: 900, texts: const ['later']),
+          _candidate(alice, ts: 100, texts: const ['first']),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).segments.single.text, 'first');
+    });
+
+    test('but never over a copy that carries more speech', () {
+      // An anchor decides ORDER. Words decide what the transcript says, and no
+      // amount of the former buys any of the latter: a fuller half still wins,
+      // and the call simply goes uncorrected.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, texts: const ['hola', 'que tal amigo']),
+          _candidate(alice, texts: const ['hola'], anchor: _skewed(30000)),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).segments, hasLength(2));
+      expect(_halfFor(transcript, alice).clockAnchor, isNull);
+    });
+
     test('a half nobody wrote asserts nothing about any clock', () {
       // The same rule as its accounting: a synthesised offset of zero would be
       // this reader claiming two clocks agreed, about a device that never told

@@ -909,7 +909,7 @@ CallTranscript assembleTranscript({
 /// one for good. Content cannot be inflated without supplying the content.
 ///
 /// Ahead of both of those sits one narrow step, for two halves that are the
-/// same speech in every respect except whether they can be placed in time.
+/// SAME SPEECH and differ only in how much of it a reader can use.
 bool _beats(TranscriptCandidate candidate, TranscriptCandidate held) {
   // ABOVE the length test, not between it and the tie-break. `contentLength`
   // sums segment texts and counts no separators, so ["hello world"] measures 11
@@ -934,17 +934,23 @@ bool _beats(TranscriptCandidate candidate, TranscriptCandidate held) {
   // with every word the same. Without the step, an old untimed copy keeps the
   // slot and the timeline never renders.
   if (candidate.joinedText == held.joinedText &&
-      candidate.accounting == held.accounting &&
-      candidate.timelineEligible != held.timelineEligible) {
-    return candidate.timelineEligible;
+      candidate.accounting == held.accounting) {
+    // What is left to choose on is how much of this speech a reader can USE,
+    // and there are two such properties. They are asked in the order they
+    // matter: a half that cannot be placed at all shows no timeline, while one
+    // that cannot be corrected shows the timeline its device asserted.
+    if (candidate.timelineEligible != held.timelineEligible) {
+      return candidate.timelineEligible;
+    }
+    // A clock anchor, on the same terms and for the same reason. Left out at
+    // first on the argument that an unanchored copy winning costs only the
+    // correction -- true, and beside the point: the anchor WAS written, and
+    // letting an older copy of the identical speech bury it reinstates the
+    // skew this whole change exists to remove, silently. The words cannot
+    // differ here, so nothing about what the transcript SAYS turns on this.
+    final anchored = candidate.clockAnchor != null;
+    if (anchored != (held.clockAnchor != null)) return anchored;
   }
-  // Deliberately NOT a second step for the clock anchor. Two duplicates from
-  // one sender that differ only in whether they carry one would leave the
-  // unanchored copy holding the slot -- and the cost of that is the call
-  // rendering exactly as it did before anchors existed, never a word or an
-  // order that is worse than today's. A step here would be a third rule in a
-  // function whose every rule has had to be argued, bought against a case that
-  // needs one account writing this call's half twice from two app versions.
   if (candidate.contentLength != held.contentLength) {
     return candidate.contentLength > held.contentLength;
   }

@@ -42,7 +42,16 @@ class CallMedia {
 
   bool _released = false;
 
-  CallMedia({Room? room}) : room = room ?? Room();
+  /// This device's wall clock.
+  ///
+  /// Injected for the same reason `CallCaptureService` injects one: what reads
+  /// it exists to survive a clock that disagrees with another device's, and
+  /// that disagreement is not reachable from a test any other way.
+  final DateTime Function() now;
+
+  CallMedia({Room? room, DateTime Function()? now})
+    : room = room ?? Room(),
+      now = now ?? DateTime.now;
 
   /// The audio this device is publishing, or null before the microphone is on.
   ///
@@ -201,39 +210,50 @@ class CallMedia {
   /// captured, and the later mute and camera calls that also come through here
   /// find the latch already taken.
   LocalParticipant _anchored(LocalParticipant participant) {
-    latchClockAnchor(
-      // Stamped by the SFU, so both devices in the call read the SAME clock
-      // here. Whole SECONDS: the millisecond field exists in the protocol and
-      // livekit_client 2.11.0 keeps it behind a private member, so the offset
-      // this yields is good to about a second. That is the documented limit of
-      // the correction, and it is two orders of magnitude better than the skew
-      // it exists to remove.
-      //
-      // `joinedAt` falls back to this device's own clock when the participant
-      // carries no server info, which would read as two clocks in perfect
-      // agreement. Unreachable in practice: livekit_client only ever builds a
-      // local participant through `createFromInfo`, which sets that info
-      // before the object exists. Named because it is an upstream property
-      // this correction leans on, not one this code can enforce.
-      sfuMs: participant.joinedAt.millisecondsSinceEpoch,
+    // Stamped by the SFU, so both devices in the call read the SAME clock
+    // here. Whole SECONDS: the millisecond field exists in the protocol and
+    // livekit_client 2.11.0 keeps it behind a private member, so the offset
+    // this yields is good to about a second. That is the documented limit of
+    // the correction, and it is two orders of magnitude better than the skew
+    // it exists to remove.
+    //
+    // `joinedAt` falls back to this device's own clock when the participant
+    // carries no server info, which would read as two clocks in perfect
+    // agreement. Unreachable in practice: livekit_client only ever builds a
+    // local participant through `createFromInfo`, which sets that info before
+    // the object exists. Named because it is an upstream property this
+    // correction leans on, not one this code can enforce.
+    anchorClocksTo(participant.joinedAt);
+    return participant;
+  }
+
+  /// Takes both clock readings, once, against the SFU's stamp for this join.
+  ///
+  /// ONE argument, deliberately. The device's own clock is read INSIDE this
+  /// method rather than handed to it, so the two readings cannot be passed the
+  /// wrong way round at the call site — a swap there would report the offset
+  /// negated, which doubles the skew instead of removing it. It also puts the
+  /// whole rule under test: a LiveKit connection cannot be stood up in a unit
+  /// test, so anything left inside [_anchored] is only reachable from a real
+  /// call, and what is left there now is one expression.
+  ///
+  /// KNOWN LIMIT: the device clock is read HERE, at join, while every position
+  /// this half carries is stamped from a base the capture service reads at the
+  /// FIRST AUDIO of the call. Both are the same clock, so the offset applies —
+  /// unless that clock is corrected in between, in which case the offset
+  /// describes the clock the positions are not on. Seconds apart in practice,
+  /// and the alternative is worse: `joinedAt` is fixed at join, so pairing it
+  /// with a later device reading would measure the call's own length instead.
+  @visibleForTesting
+  void anchorClocksTo(DateTime sfuJoinedAt) {
+    _clockAnchor ??= ClockAnchor.of(
+      sfuMs: sfuJoinedAt.millisecondsSinceEpoch,
       // The same wall clock every position in this half is stamped from, read
       // as close to the SFU's own instant as this device can observe it. What
       // separates them is the join response's flight time -- tens of
       // milliseconds, inside the second of quantisation above.
-      deviceMs: DateTime.now().millisecondsSinceEpoch,
+      deviceMs: now().millisecondsSinceEpoch,
     );
-    return participant;
-  }
-
-  /// Takes the pair of readings, once.
-  ///
-  /// Split from the participant they are read off so the rule can be tested at
-  /// all: a LiveKit connection cannot be stood up in a unit test, so a latch
-  /// that only existed inside [_anchored] would be reachable only from a real
-  /// call. What is left there is the two-expression adapter.
-  @visibleForTesting
-  void latchClockAnchor({required int sfuMs, required int deviceMs}) {
-    _clockAnchor ??= ClockAnchor.of(sfuMs: sfuMs, deviceMs: deviceMs);
   }
 
   /// Where this device's wall clock sat relative to the SFU's, or null when a

@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
-import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
 /// Records what actually reached the SFU layer, so a step that runs after
 /// teardown is visible rather than merely improbable.
@@ -51,6 +50,8 @@ class RecordingMedia extends CallMedia {
 /// silently did nothing is the thing under test. An unconnected LiveKit room
 /// has no local participant, which is exactly the state being guarded.
 class RealSteps extends CallMedia {
+  RealSteps({super.now});
+
   Future<void> mic(bool on) => enableMicrophone(on);
   Future<void> cam(bool on) => enableCamera(on);
 }
@@ -219,9 +220,12 @@ void main() {
   });
 
   group('the clock anchor the transcript is corrected by', () {
-    // A real instant on the SFU's clock. The latch refuses a reading that
-    // could not be one.
-    const sfuJoin = 1787994000000;
+    // The SFU's stamp for this device's join, and a device clock reading
+    // thirty seconds later than it -- a device thirty seconds fast.
+    final sfuJoin = DateTime.utc(2026, 8, 26, 9);
+    final deviceAtJoin = sfuJoin.add(const Duration(seconds: 30));
+
+    CallMedia mediaAt(DateTime deviceNow) => RealSteps(now: () => deviceNow);
 
     test('a call that never had a participant carries no anchor', () {
       // The state `RealSteps` is in: an unconnected room has no local
@@ -232,13 +236,23 @@ void main() {
       expect(RealSteps().clockAnchor, isNull);
     });
 
+    test('the offset is the DEVICE against the SFU, not the reverse', () {
+      // The sign is the whole correction. Read backwards it does not fail to
+      // help -- it doubles the skew, turning a thirty-second error into a
+      // minute, and it does so on every call.
+      final media = mediaAt(deviceAtJoin)..anchorClocksTo(sfuJoin);
+
+      expect(media.clockAnchor?.offsetMs, 30000);
+    });
+
     test('the FIRST reading stands for the call', () {
       // Latched, not re-read. `joinedAt` is fixed at join, so pairing it with
       // a device clock read later would measure the call's own duration and
-      // shift this speaker's whole half by it.
-      final media = RealSteps()
-        ..latchClockAnchor(sfuMs: sfuJoin, deviceMs: sfuJoin + 30000)
-        ..latchClockAnchor(sfuMs: sfuJoin, deviceMs: sfuJoin + 90000);
+      // shift this speaker's whole half by it. The later reading here is what
+      // an unmute five minutes in would produce.
+      final media = mediaAt(deviceAtJoin)
+        ..anchorClocksTo(sfuJoin)
+        ..anchorClocksTo(sfuJoin.subtract(const Duration(minutes: 5)));
 
       expect(media.clockAnchor?.offsetMs, 30000);
     });
@@ -248,7 +262,8 @@ void main() {
       // stamped it reads as 1970 -- and the offset against 1970 is this
       // device's entire clock. Refused here rather than on the wire, so a
       // reading this app would not believe is never sent.
-      final media = RealSteps()..latchClockAnchor(sfuMs: 0, deviceMs: sfuJoin);
+      final media = mediaAt(deviceAtJoin)
+        ..anchorClocksTo(DateTime.fromMillisecondsSinceEpoch(0, isUtc: true));
 
       expect(media.clockAnchor, isNull);
     });
@@ -257,14 +272,11 @@ void main() {
       // The latch holds an ANSWER, not the fact of having asked. Closing it on
       // a refusal would cost the correction for the whole call on the strength
       // of one early, unusable read.
-      final media = RealSteps()
-        ..latchClockAnchor(sfuMs: 0, deviceMs: sfuJoin)
-        ..latchClockAnchor(sfuMs: sfuJoin, deviceMs: sfuJoin + 250);
+      final media = mediaAt(deviceAtJoin)
+        ..anchorClocksTo(DateTime.fromMillisecondsSinceEpoch(0, isUtc: true))
+        ..anchorClocksTo(sfuJoin);
 
-      expect(
-        media.clockAnchor,
-        const ClockAnchor(sfuMs: sfuJoin, deviceMs: sfuJoin + 250),
-      );
+      expect(media.clockAnchor?.offsetMs, 30000);
     });
   });
 }
