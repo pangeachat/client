@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -211,34 +212,12 @@ class JoinedCourseStepView extends StatelessWidget {
             ),
           ),
         ),
-        ElevatedButton(
+        OnboardingForwardButton(
           onPressed: step.enableGoForward ? forward : null,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: theme.colorScheme.primaryContainer,
-            foregroundColor: theme.colorScheme.onPrimaryContainer,
-            minimumSize: const Size.fromHeight(48),
-          ),
-          child: SizedBox(
-            height: 24,
-            child: Center(
-              child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 200),
-                child: loading
-                    ? SizedBox(
-                        key: const ValueKey('loading'),
-                        width: double.infinity,
-                        child: const LinearProgressIndicator(),
-                      )
-                    : Text(
-                        hasNextStep
-                            ? step.nextStepText(L10n.of(context))
-                            : step.lastStepText(L10n.of(context)),
-                        key: const ValueKey('text'),
-                        textAlign: TextAlign.center,
-                      ),
-              ),
-            ),
-          ),
+          loading: loading,
+          label: hasNextStep
+              ? step.nextStepText(L10n.of(context))
+              : step.lastStepText(L10n.of(context)),
         ),
       ],
     );
