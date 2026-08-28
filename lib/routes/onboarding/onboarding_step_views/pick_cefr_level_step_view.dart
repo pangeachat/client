@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_cefr_level_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -109,39 +110,45 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
                         itemBuilder: (context, i) {
                           final level = levels[i];
                           final selected = selectedLevel == level;
-                          return ElevatedButton(
-                            onPressed: () => _setLevel(selected ? null : level),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: selected
-                                  ? theme.colorScheme.primaryContainer
-                                  : theme.colorScheme.surfaceContainer,
-                              foregroundColor: selected
-                                  ? theme.colorScheme.onPrimaryContainer
-                                  : theme.colorScheme.onSurface,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16),
+                          return Opacity(
+                            opacity: selectedLevel != null && !selected
+                                ? 0.5
+                                : 1.0,
+                            child: ElevatedButton(
+                              onPressed: () =>
+                                  _setLevel(selected ? null : level),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: selected
+                                    ? theme.colorScheme.primaryContainer
+                                    : theme.colorScheme.surfaceContainer,
+                                foregroundColor: selected
+                                    ? theme.colorScheme.onPrimaryContainer
+                                    : theme.colorScheme.onSurface,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
                               ),
-                            ),
-                            child: Column(
-                              spacing: 8.0,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      level.title(context),
-                                      style: theme.textTheme.titleMedium
-                                          ?.copyWith(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  level.description(context),
-                                  style: theme.textTheme.labelLarge,
-                                ),
-                              ],
+                              child: Column(
+                                spacing: 8.0,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        level.title(context),
+                                        style: theme.textTheme.titleMedium
+                                            ?.copyWith(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    level.description(context),
+                                    style: theme.textTheme.labelLarge,
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },
@@ -155,34 +162,12 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
         ),
         ValueListenableBuilder(
           valueListenable: _selectedLevel,
-          builder: (context, _, _) => ElevatedButton(
+          builder: (context, _, _) => OnboardingForwardButton(
             onPressed: _step.enableGoForward ? widget.forward : null,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: theme.colorScheme.primaryContainer,
-              foregroundColor: theme.colorScheme.onPrimaryContainer,
-              minimumSize: const Size.fromHeight(48),
-            ),
-            child: SizedBox(
-              height: 24,
-              child: Center(
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 200),
-                  child: widget.loading
-                      ? SizedBox(
-                          key: const ValueKey('loading'),
-                          width: double.infinity,
-                          child: const LinearProgressIndicator(),
-                        )
-                      : Text(
-                          widget.hasNextStep
-                              ? _step.nextStepText(L10n.of(context))
-                              : _step.lastStepText(L10n.of(context)),
-                          key: const ValueKey('text'),
-                          textAlign: TextAlign.center,
-                        ),
-                ),
-              ),
-            ),
+            loading: widget.loading,
+            label: widget.hasNextStep
+                ? _step.nextStepText(L10n.of(context))
+                : _step.lastStepText(L10n.of(context)),
           ),
         ),
       ],

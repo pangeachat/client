@@ -106,4 +106,32 @@ void main() {
     );
     semantics.dispose();
   });
+
+  // #8639 — once a level is picked, the unselected levels dim to half opacity
+  // so the selection reads at a glance.
+  testWidgets('selecting a level dims the other levels', (tester) async {
+    await pumpStep(tester, UserType.student);
+
+    double levelOpacity(String title) => tester
+        .widget<Opacity>(
+          find
+              .ancestor(
+                of: find.widgetWithText(ElevatedButton, title),
+                matching: find.byType(Opacity),
+              )
+              .first,
+        )
+        .opacity;
+
+    // The profile default (A1) is seeded as selected on entry.
+    expect(levelOpacity('Novice Mid (A1)'), 1.0);
+    expect(levelOpacity('Novice High (A2)'), 0.5);
+
+    await tester.tap(find.widgetWithText(ElevatedButton, 'Novice High (A2)'));
+    await tester.pump();
+
+    expect(levelOpacity('Novice High (A2)'), 1.0);
+    expect(levelOpacity('Novice Mid (A1)'), 0.5);
+    expect(levelOpacity('Novice Low (Pre A1)'), 0.5);
+  });
 }
