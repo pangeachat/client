@@ -231,6 +231,67 @@ void main() {
       expect(trimToSpeech(_chunk(_range(audio, 0, 22))), isNull);
     });
 
+    test('a false voicing does not carry the span away from real speech', () {
+      // False voicing was supposed to be the SAFE direction, and it is not on
+      // its own. A fan, a hum or a note periodic enough to pass for speech pins
+      // a span around ITSELF; whispered speech elsewhere in the chunk is not
+      // voiced, so it falls outside that span and is cut away -- and the veto
+      // that exists to catch exactly this never ran, because a span was found.
+      //
+      // Here: two seconds of quiet, half a second of a pure 150 Hz tone, then
+      // eighteen seconds of aperiodic speech.
+      final tone = Int16List(16000 ~/ 2);
+      for (var i = 0; i < tone.length; i++) {
+        tone[i] = (12000 * sin(2 * pi * 150 * i / 16000)).round();
+      }
+      final speech = _range(audio, 22.3, 40.2);
+      final random = Random(21);
+      final whispered = Int16List(speech.length);
+      for (var i = 0; i < speech.length; i++) {
+        whispered[i] = random.nextBool() ? speech[i] : -speech[i];
+      }
+      final chunk = Int16List.fromList([
+        ..._range(audio, 6, 8),
+        ...tone,
+        ...whispered,
+      ]);
+
+      final trimmed = trimToSpeech(_chunk(chunk));
+      expect(trimmed, isNotNull);
+      // Whole, because there is sound outside the span we cannot explain.
+      // Trimmed to the tone, this would be about half a second long.
+      expect(
+        trimmed!.durationMs,
+        greaterThan(15000),
+        reason: 'the speech after the tone must not be cut away',
+      );
+    });
+
+    test('a chunk with no quiet part at all is not read as silence', () {
+      // The relative floor assumes the chunk HAS a quiet part. Steady sound all
+      // the way through -- an unbroken whisper, a fricative, a machine -- puts
+      // the tenth percentile at the level of the sound itself, so nothing
+      // clears four times it and the relative measure reports near zero for
+      // audio that is loud everywhere.
+      final random = Random(31);
+      final steady = Int16List(16000 * 12);
+      for (var i = 0; i < steady.length; i++) {
+        // Constant-amplitude aperiodic sound: no pitch to find, no envelope to
+        // stand out against.
+        steady[i] = random.nextBool() ? 2000 : -2000;
+      }
+
+      expect(
+        trimToSpeech(_chunk(steady)),
+        isNotNull,
+        reason: 'loud everywhere is the opposite of empty',
+      );
+      // And the reference recording's own noise floor sits far below the
+      // absolute bar, so this backstop does not stop the suppression that
+      // matters.
+      expect(trimToSpeech(_chunk(_range(audio, 0, 22))), isNull);
+    });
+
     test('opposite-phase channels still have their speech FOUND', () {
       // A signed downmix is the obvious way to make one signal out of several,
       // and it is the wrong one: two channels in opposite phase sum to nothing.

@@ -80,9 +80,16 @@ drops speech and is only bounded by the guardrails below.**
 
 | error | effect | bounded by |
 |---|---|---|
-| false voicing (hum, fan, music, a periodic codec artifact) | span widens | nothing needed — at worst today's behaviour |
-| false silence on part of a chunk | span narrows | rules 1, 2 |
+| false voicing with no real speech elsewhere | span widens | nothing needed — at worst today's behaviour |
+| false voicing that PINS the span away from real speech | span lands on the wrong sound | rule 4 |
+| false silence on part of a chunk | span narrows | rules 2, 4 |
 | false silence on a whole chunk | chunk skipped | rules 1, 3, 4 |
+
+The second row was missed in an earlier draft, which claimed false voicing was
+always safe. It is not: a fan or a hum periodic enough to pass for speech pins a
+span around *itself*, and aperiodic speech elsewhere in the chunk then falls
+outside that span and is cut away. Rule 4 closes it, by asking about the audio
+being LEFT OUT rather than only about chunks with nothing to keep.
 
 Four rules bound the unsafe direction. They are the reason a one-recording
 classifier is allowed to make this decision at all:
@@ -95,14 +102,27 @@ classifier is allowed to make this decision at all:
    `keepWholeAbove` (70%) of the chunk, the whole chunk is sent. Marginal trims
    buy little and carry all of the clipping risk, so they are refused.
 3. **Skipping requires a long chunk with no speech frame anywhere in it.**
-4. **Skipping requires energy corroboration.** A chunk with no voiced frames but
-   with sustained energy is audio we do not understand, not audio we know to be
-   empty — whispered and wholly unvoiced speech look exactly like this. The
-   measure is the **loudest `loudWindow` (3s) stretch** of the chunk, scored as
-   the fraction of its 20ms windows above 4x the chunk's own 10th-percentile
-   level. At or above `skipBelowLoud` (0.85) the chunk is sent whole instead of
-   skipped. This uses level, but only ever to *refuse* to skip, which is the
-   safe direction.
+4. **Sound we cannot explain, ANYWHERE outside what we were going to send,
+   means sending the whole chunk.** Audio with no periodicity but sustained
+   energy is audio we do not understand, not audio we know to be empty —
+   whispered and wholly unvoiced speech look exactly like this. The measure is
+   the **loudest `loudWindow` (3s) stretch** lying outside the chosen span,
+   scored as the fraction of its 20ms windows above 4x the chunk's own
+   10th-percentile level. At or above `skipBelowLoud` (0.85) the whole chunk
+   goes. A chunk with no span at all is the same question with nothing kept, so
+   this is one rule rather than a special case for suppression — which is also
+   what closes the false-voicing hole above.
+
+   A range shorter than `loudWindow` scores zero: a stretch too short to fill
+   the window is not the sustained sound this looks for, and scoring it over
+   whatever it did cover would let a single burst beside the span veto every
+   trim.
+
+   The bar is relative to the chunk's own floor, which assumes the chunk HAS a
+   quiet part. `quietFloor` is the backstop for when it does not: a chunk whose
+   own 10th percentile already sits above -45 dBFS is loud everywhere, the
+   relative test measures nothing, and it is never suppressed. This uses level,
+   but only ever to *refuse* to skip or trim, which is the safe direction.
 
    The loudest stretch rather than the chunk average, because an average cannot
    tell continuous sound from scattered bumps. Averaged, a chunk of 22s noise
@@ -240,6 +260,7 @@ second sample retunes without rearchitecting.
 | `keepWholeAbove` | 0.70 | **unvalidated.** A judgement about when a trim stops being worth its risk. |
 | `skipBelowLoud` | 0.85 | measured over the loudest 3s: non-speech scores 0.39-0.72, speech and unvoiced surrogates 0.97-0.99. Mid-gap. |
 | `loudWindow` | 3000ms | **unvalidated.** Long enough that scattered bumps cannot fill it. |
+| `quietFloor` | 0.0056 (-45 dBFS) | **unvalidated from below.** Above the reference recording's -59 dBFS room noise; no steady whispered sample exists to place it against. |
 | `loudMultiple` | 4x own p10 | **unvalidated.** The level that counts as "not the floor". |
 | 4 kHz / 32ms / 20ms | - | standard pitch-tracking geometry, not tuned here |
 
@@ -249,9 +270,9 @@ in 20.3-22.0s start and 39.2-40.4s end. Raising the voicing threshold is what
 made them nearly irrelevant, which is why the design leans on periodicity rather
 than on the smoothing.
 
-Four of the eleven numbers are judgements rather than measurements. Three of them —
-`minTrimmable`, `keepWholeAbove`, `loudMultiple` — fail toward **sending more
-audio**: each is a threshold for *declining* to trim or skip, so being wrong about
+Five of the twelve numbers are judgements rather than measurements. Four of them —
+`minTrimmable`, `keepWholeAbove`, `loudMultiple`, `quietFloor` — fail toward
+**sending more audio**: each is a threshold for *declining* to trim or skip, so being wrong about
 it costs a request, not a word.
 
 `pad` is the exception and should not be listed with them. It is the one

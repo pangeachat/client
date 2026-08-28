@@ -112,6 +112,22 @@ class SpeechTrimSettings {
   /// count as loud. Relative to the chunk, so it carries across devices.
   final double loudMultiple;
 
+  /// The level, as a fraction of full scale, above which a chunk's own QUIETEST
+  /// windows are themselves too loud to be silence.
+  ///
+  /// [loudMultiple] is relative to the chunk's tenth percentile, which silently
+  /// assumes the chunk contains a quiet part. A chunk that is steady sound all
+  /// the way through — an unbroken whisper, a fricative, a continuous machine —
+  /// has its floor sitting at the level of the sound itself, so nothing clears
+  /// four times it and the relative measure reports near zero for audio that is
+  /// loud everywhere.
+  ///
+  /// This is the absolute backstop for that degenerate case, and it only ever
+  /// REFUSES to suppress. -45 dBFS, against a measured room-noise floor of
+  /// about -59 dBFS on the reference recording. **Unvalidated**: no steady
+  /// whispered sample exists here to place it against from the other side.
+  final double quietFloor;
+
   const SpeechTrimSettings({
     this.voicedPeak = 0.70,
     this.minVoicedRun = const Duration(milliseconds: 200),
@@ -123,6 +139,7 @@ class SpeechTrimSettings {
     this.skipBelowLoud = 0.85,
     this.loudWindow = const Duration(seconds: 3),
     this.loudMultiple = 4.0,
+    this.quietFloor = 0.0056,
   });
 }
 
@@ -172,13 +189,21 @@ TrimmedChunkAudio? trimToSpeech(
   if (voiced.isEmpty) return whole;
 
   final span = _speechSpan(voiced, settings, totalMs);
-  if (span == null) {
-    // No periodicity anywhere. Suppressed only if the chunk is also quiet;
-    // loud aperiodic audio is sent rather than thrown away.
-    return _loudFraction(chunk, settings) >= settings.skipBelowLoud
-        ? whole
-        : null;
+
+  // ONE rule, whether or not a span was found: is there a sustained stretch of
+  // sound OUTSIDE what we are about to send?
+  //
+  // Asking this only when no span was found left a hole. Voicing false
+  // positives are supposed to be the safe direction, and they are not when a
+  // span exists: a fan or a hum periodic enough to pass for speech pins a span
+  // around ITSELF, and whispered speech elsewhere in the chunk then falls
+  // outside it and is cut away -- while the veto that exists to catch exactly
+  // that never runs, because a span was found. Measuring what is left OUT
+  // covers the no-span case as the same question with nothing kept.
+  if (_soundOutside(chunk, settings, span) >= settings.skipBelowLoud) {
+    return whole;
   }
+  if (span == null) return null;
 
   final keptMs = span.$2 - span.$1;
   if (keptMs >= settings.keepWholeAbove * totalMs) return whole;
@@ -368,12 +393,26 @@ List<bool> _voicedFlags(
   return end > start ? (start, end) : null;
 }
 
-/// Fraction of 20ms windows standing clear of the chunk's own noise floor.
+/// How loud the chunk's loudest sustained stretch OUTSIDE [span] is, as the
+/// fraction of its 20ms windows standing clear of the chunk's own noise floor.
 ///
-/// Corroboration for suppression ONLY. A chunk with no periodicity but plenty of
-/// sustained level is not understood rather than known to be empty, and this is
-/// what stops it being thrown away.
-double _loudFraction(PcmChunk chunk, SpeechTrimSettings settings) {
+/// Corroboration for suppression, and for trimming. A stretch of sound this
+/// detector has no explanation for is not a stretch it knows to be empty —
+/// whispered and wholly unvoiced speech look exactly like that — so finding one
+/// outside what we were going to send means sending the chunk whole instead.
+///
+/// A null [span] means nothing was going to be kept, so the whole chunk is
+/// outside it. That is the same question, not a special case.
+///
+/// The loudest STRETCH rather than the average, because an average cannot tell
+/// a continuous sound from scattered bumps: a chunk half full of room noise and
+/// half full of whispering averages to about what a chunk of room noise alone
+/// does, and eighteen seconds of speech was thrown away between them.
+double _soundOutside(
+  PcmChunk chunk,
+  SpeechTrimSettings settings,
+  (int, int)? span,
+) {
   final channels = chunk.channels;
   final frames = chunk.pcm.lengthInBytes ~/ (2 * channels);
   final per = max(1, chunk.sampleRate * _hopMs ~/ 1000);
@@ -403,26 +442,40 @@ double _loudFraction(PcmChunk chunk, SpeechTrimSettings settings) {
 
   final sorted = List<double>.of(levels)..sort();
   final floor = sorted[min(sorted.length - 1, (0.10 * sorted.length).floor())];
+
+  // A chunk whose QUIETEST windows are already loud has no quiet part for the
+  // relative bar to stand on, and four times its own floor then measures
+  // nothing. Steady sound all the way through is the one shape that breaks the
+  // relative test, and it is also a shape a whisper takes.
+  if (floor >= settings.quietFloor * 32768.0) return 1;
+
   final bar = floor * settings.loudMultiple;
   final loud = [for (final level in levels) level > bar ? 1 : 0];
+  final window = max(1, settings.loudWindow.inMilliseconds ~/ _hopMs);
 
-  // The LOUDEST stretch, not the average one. A chunk half full of room noise
-  // and half full of whispering averages to about what a chunk of room noise
-  // alone does, and eighteen seconds of speech was thrown away between them.
-  final window = min(
-    loud.length,
-    max(1, settings.loudWindow.inMilliseconds ~/ _hopMs),
-  );
-  var count = 0;
-  for (var i = 0; i < window; i++) {
-    count += loud[i];
+  // The loudest [window] run wholly inside `[from, to)`. Zero for a range
+  // shorter than the window: a stretch too short to fill it cannot be the
+  // SUSTAINED sound this is looking for, and scoring it over whatever it did
+  // cover would let one burst beside the span veto every trim.
+  double bestIn(int from, int to) {
+    if (to - from < window) return 0;
+    var count = 0;
+    for (var i = from; i < from + window; i++) {
+      count += loud[i];
+    }
+    var best = count;
+    for (var i = from + 1; i + window <= to; i++) {
+      count += loud[i + window - 1] - loud[i - 1];
+      if (count > best) best = count;
+    }
+    return best / window;
   }
-  var best = count;
-  for (var i = 1; i + window <= loud.length; i++) {
-    count += loud[i + window - 1] - loud[i - 1];
-    if (count > best) best = count;
-  }
-  return best / window;
+
+  if (span == null) return bestIn(0, loud.length);
+
+  final firstKept = min(loud.length, span.$1 ~/ _hopMs);
+  final lastKept = min(loud.length, (span.$2 + _hopMs - 1) ~/ _hopMs);
+  return max(bestIn(0, firstKept), bestIn(lastKept, loud.length));
 }
 
 /// The chunk's audio between two offsets, as a WAV, aligned to sample frames.
