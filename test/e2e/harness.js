@@ -78,6 +78,19 @@ async function openParticipant(name, roomLocalpart, port) {
   return { name, browser, page, errors, ...session };
 }
 
+/// Whether an error is just the page having moved under a read.
+///
+/// Ordinary inside [openRoom]: the loop reads a page it has only this moment
+/// told to navigate, and the read's execution context goes away underneath it.
+/// The next round asks again.
+///
+/// Anything else is the HARNESS being broken -- an l10n key the app renamed
+/// (labels.js throws by design), a scan that cannot run -- and must be raised.
+/// Reported as "the room did not open" it would send whoever reads it looking
+/// at the product, which is a long way from the actual fault.
+const isMidNavigation = (e) =>
+  /execution context|detached|navigat/i.test(String(e && e.message));
+
 /// Opens the room and PROVES it opened.
 ///
 /// A harness that did not check would drive the map, find nothing, and report
@@ -121,8 +134,16 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
     // window" is not the test: a row scrolled out of the list keeps a node at a
     // coordinate that can sit over the app bar, and clicking that presses the
     // app bar. [ui.choose] ranks by what a click would actually reach.
+    let onScreen = [];
+    try {
+      onScreen = await ui.scan(page);
+    } catch (e) {
+      // Same rule as the wait above: a page still moving is not a reason to
+      // abandon a loop whose next act is to reload it anyway.
+      if (!isMidNavigation(e)) throw e;
+    }
     const row = ui.choose(
-      (await ui.scan(page)).filter((n) =>
+      onScreen.filter((n) =>
         n.names.some((l) => /\d{1,2}:\d{2}\s?(AM|PM)/i.test(l))),
       { reachable: true });
     if (row) {
@@ -135,10 +156,12 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
     // print only the labels, and the labels of an OPEN chat are nearly the
     // labels of the bare map -- so a slow paint and a lost route read
     // identically, and an investigation spent a long time on the wrong one.
-    // The labels are best effort HERE and nowhere else: a page still
-    // navigating cannot be read, and a diagnostic that throws instead of
-    // printing costs the retry that was about to happen. The URL always
-    // survives -- it needs no execution context.
+    // Best effort, and only here. [labels] consults nothing of the app's, so
+    // the only way it fails is the page moving -- and by this line a real
+    // harness fault has already been raised by the wait above, which asks the
+    // same page the same way. A diagnostic that threw would cost the retry
+    // that was about to happen. The URL needs no execution context and always
+    // survives.
     const seen = await ui
       .labels(page)
       .catch((e) => [`<could not read the screen: ${e.message}>`]);
@@ -173,17 +196,7 @@ async function settledInRoom(page, { timeout = 25000 } = {}) {
     try {
       if (await ui.hasControl(page, 'call')) return true;
     } catch (e) {
-      // Reading a page that is still navigating destroys the execution
-      // context under the read. That is ordinary here -- polling starts the
-      // instant the load begins -- and the next round asks again.
-      //
-      // Anything else is the HARNESS being broken: an l10n key the app
-      // renamed (labels.js throws by design), a scan that cannot run. Those
-      // must not come out as "the room did not open", which sends whoever
-      // reads it looking at the product.
-      if (!/execution context|detached|navigat/i.test(String(e && e.message))) {
-        throw e;
-      }
+      if (!isMidNavigation(e)) throw e;
       midNavigation = e;
     }
     if (Date.now() > deadline) {
