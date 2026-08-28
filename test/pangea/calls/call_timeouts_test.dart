@@ -130,13 +130,23 @@ void main() {
 
     test('every other SDK timeout is inherited, not restated', () {
       // Restating them here would freeze this app on whatever the SDK happened
-      // to ship the day this was written.
+      // to ship the day this was written. Every field the pinned SDK's
+      // CallTimeouts has today is listed, not a sample of them -- a sample
+      // would have let the other six be restated without anybody noticing.
+      // The residual: a field ADDED upstream is not caught, because Dart gives
+      // a test no way to enumerate them.
       final ours = pangeaCallTimeouts(random: _FixedRandom(0));
       final sdk = CallTimeouts();
+      expect(ours.defaultCallEventLifetime, sdk.defaultCallEventLifetime);
+      expect(ours.callInviteLifetime, sdk.callInviteLifetime);
+      expect(ours.iceGatheringDelay, sdk.iceGatheringDelay);
+      expect(ours.delayBeforeOffer, sdk.delayBeforeOffer);
       expect(ours.updateExpireTsTimerDuration, sdk.updateExpireTsTimerDuration);
       expect(ours.expireTsBumpDuration, sdk.expireTsBumpDuration);
-      expect(ours.callInviteLifetime, sdk.callInviteLifetime);
       expect(ours.activeSpeakerInterval, sdk.activeSpeakerInterval);
+      expect(ours.makeKeyOnLeaveDelay, sdk.makeKeyOnLeaveDelay);
+      expect(ours.makeKeyOnJoinDelay, sdk.makeKeyOnJoinDelay);
+      expect(ours.useKeyDelay, sdk.useKeyDelay);
     });
 
     test('it is slower than the SDK default, which is the change', () {

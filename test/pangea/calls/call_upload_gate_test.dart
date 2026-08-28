@@ -195,6 +195,24 @@ void main() {
       );
     });
 
+    test('a 4xx in between breaks the run too', () async {
+      // Consecutive has to mean consecutive. A 4xx is the server ANSWERING, so
+      // 503-400-503 is not two failures in a row -- and a breaker that opened
+      // on it would throttle a device against a backend that was serving
+      // perfectly well between two blips.
+      final gate = CallUploadGate(failuresToOpen: 2, openFor: _openFor);
+
+      for (final status in [503, 400, 503]) {
+        await expectLater(
+          gate.run(() async => throw _http(status), within: _budget),
+          throwsA(isA<PangeaHttpException>()),
+        );
+      }
+
+      expect(gate.consecutiveFailures, 1, reason: 'the 400 broke the run');
+      expect(gate.isOpen, isFalse);
+    });
+
     test('a success in between clears the run', () async {
       final gate = CallUploadGate(failuresToOpen: 2, openFor: _openFor);
 

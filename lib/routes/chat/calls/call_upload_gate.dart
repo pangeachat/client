@@ -288,16 +288,29 @@ class CallUploadGate {
   }
 
   void _recordFailure(Object error) {
-    if (isServerFailure(error)) _consecutiveFailures++;
+    if (isServerFailure(error)) {
+      _consecutiveFailures++;
+    } else if (_openUntil == null) {
+      // CONSECUTIVE means consecutive. A 4xx is the server answering, which is
+      // evidence it is alive, so 503-400-503 is not a run of two and must not
+      // open a breaker set to two. Leaving the count untouched here made the
+      // word in the docs a lie and would have opened the breaker on a backend
+      // that was answering perfectly well between two blips.
+      //
+      // Only while CLOSED. A PROBE that comes back 4xx did not succeed, and
+      // clearing the count there would throw the doors open on a backend still
+      // down — which is the one thing the probe exists to prevent.
+      _consecutiveFailures = 0;
+    }
     // This also re-opens after a failed PROBE, and deliberately without a
     // separate `wasProbe` clause. A probe only ever runs while the breaker is
-    // open, and the only thing that lowers the count is a SUCCESS — which
-    // closes the breaker at the same moment. So a probe that did not succeed
-    // always finds the count still at or past the threshold, whatever it failed
-    // with, and a `wasProbe ||` in front of this would be a condition no test
-    // could ever tell apart from its absence. The guarantee it was there to
-    // state — a failed probe never throws the doors open, not even on a 4xx —
-    // is asserted directly instead.
+    // open, the branch above cannot lower the count there, and the only other
+    // thing that lowers it is a SUCCESS — which closes the breaker at the same
+    // moment. So a probe that did not succeed always finds the count still at
+    // or past the threshold, whatever it failed with, and a `wasProbe ||` in
+    // front of this would be a condition no test could tell apart from its
+    // absence. The guarantee it was there to state — a failed probe never
+    // throws the doors open, not even on a 4xx — is asserted directly instead.
     if (_consecutiveFailures >= failuresToOpen) {
       _openUntil = DateTime.now().add(openFor);
     }
