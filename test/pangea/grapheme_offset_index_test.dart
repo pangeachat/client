@@ -262,6 +262,58 @@ void main() {
       });
     }
   });
+
+  group('GraphemeOffsetIndex.fromTextUtf16', () {
+    test('counts plain text the same as the code-point index', () {
+      final index = GraphemeOffsetIndex.fromTextUtf16('hello');
+
+      expect(index.graphemeCount, 5);
+      expect(index.codepointCount, 5);
+      expect(index.graphemeStartOfCodepoint(3), 3);
+    });
+
+    test('an emoji is two code units but one grapheme', () {
+      const text = 'a👍b';
+      final index = GraphemeOffsetIndex.fromTextUtf16(text);
+
+      expect(text.length, 4); // UTF-16 code units
+      expect(index.codepointCount, 4); // index counts the same unit
+      expect(index.graphemeCount, 3);
+      expect(index.graphemeStartOfCodepoint(3), 2); // 'b'
+    });
+
+    test('disagrees with the code-point index on astral characters', () {
+      // The whole reason for the second constructor: 'b' sits at code point 2
+      // but code unit 3, so an index built in the wrong unit misplaces it.
+      const text = 'a👍b';
+
+      expect(GraphemeOffsetIndex.fromText(text).graphemeStartOfCodepoint(2), 2);
+      expect(
+        GraphemeOffsetIndex.fromTextUtf16(text).graphemeStartOfCodepoint(2),
+        1,
+      );
+    });
+
+    test('an offset inside a surrogate pair resolves to that grapheme', () {
+      // Code unit 2 is the low surrogate of the emoji. The lookup returns the
+      // grapheme containing it rather than splitting the pair.
+      final index = GraphemeOffsetIndex.fromTextUtf16('a👍b');
+
+      expect(index.graphemeStartOfCodepoint(2), 1);
+      expect(index.graphemeEndOfCodepoint(2), 2);
+    });
+
+    test('a combining mark is one grapheme across two code units', () {
+      // Written with an explicit combining-acute escape so the test does not
+      // depend on whether this file is stored precomposed or decomposed.
+      const text = 'e\u0301x';
+      final index = GraphemeOffsetIndex.fromTextUtf16(text);
+
+      expect(text.length, 3); // UTF-16 code units
+      expect(index.graphemeCount, 2);
+      expect(index.graphemeStartOfCodepoint(2), 1); // 'x'
+    });
+  });
 }
 
 String _label(String text) => text.isEmpty

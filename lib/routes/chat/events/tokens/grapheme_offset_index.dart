@@ -11,6 +11,12 @@ import 'package:characters/characters.dart';
 ///
 /// Constructed once per transcript (O(n) in grapheme count). Lookups are
 /// O(log n) via binary search.
+///
+/// The index counts in whichever unit its constructor was given — code points
+/// via [GraphemeOffsetIndex.fromText], UTF-16 code units via
+/// [GraphemeOffsetIndex.fromTextUtf16]. The lookup methods name code points
+/// for the original tokenizer use; read them as "the unit this index was
+/// built in".
 class GraphemeOffsetIndex {
   /// `_starts[i]` is the code-point index at which grapheme cluster `i`
   /// begins. Sorted ascending; `_starts.length` equals the grapheme count.
@@ -27,6 +33,24 @@ class GraphemeOffsetIndex {
       cp += g.runes.length;
     }
     return GraphemeOffsetIndex._(starts, cp);
+  }
+
+  /// Same index, built in UTF-16 code units instead of code points — the unit
+  /// Dart's [String.length] and Flutter's [TextRange] count in, and so the
+  /// unit the platform spell checker reports its spans in.
+  ///
+  /// A separate constructor rather than a flag because the two units disagree
+  /// on every astral character: an emoji is one code point but two UTF-16
+  /// code units, so an index built in the wrong unit silently misplaces every
+  /// offset after the first emoji.
+  factory GraphemeOffsetIndex.fromTextUtf16(String text) {
+    final List<int> starts = [];
+    int codeUnits = 0;
+    for (final g in text.characters) {
+      starts.add(codeUnits);
+      codeUnits += g.length;
+    }
+    return GraphemeOffsetIndex._(starts, codeUnits);
   }
 
   int get graphemeCount => _starts.length;

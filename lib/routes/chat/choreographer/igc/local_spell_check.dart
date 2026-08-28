@@ -3,16 +3,15 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-import 'package:characters/characters.dart';
-
 import 'package:fluffychat/routes/chat/choreographer/igc/match_rule_id_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/span_choice_type_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/span_data_model.dart';
+import 'package:fluffychat/routes/chat/events/tokens/grapheme_offset_index.dart';
 
 /// Surface corrections read from the device's own spell checker, so a
 /// misspelling can be resolved without waiting for the server.
-/// See writing-assistance.instructions.md, "Local surface corrections".
+/// See writing-assistance.instructions.md, "Local spelling matches".
 abstract final class LocalSpellCheck {
   /// Overridable so tests can stand in for the platform channel.
   @visibleForTesting
@@ -50,26 +49,6 @@ abstract final class LocalSpellCheck {
   }
 }
 
-/// How many grapheme clusters of [text] come before UTF-16 code unit
-/// [codeUnitOffset] — the conversion between what the platform spell checker
-/// counts in and what [SpanData] counts in.
-///
-/// Walks the graphemes rather than slicing the string, so an offset that
-/// lands inside an emoji's surrogate pair resolves to the boundary around it
-/// instead of splitting the pair.
-int graphemeOffset(String text, int codeUnitOffset) {
-  var codeUnits = 0;
-  var graphemes = 0;
-
-  for (final grapheme in text.characters) {
-    if (codeUnits >= codeUnitOffset) break;
-    codeUnits += grapheme.length;
-    graphemes++;
-  }
-
-  return graphemes;
-}
-
 /// Converts the platform's misspelling reports into the same [SpanData] shape
 /// the server returns, typed as [ReplacementTypeEnum.spell].
 ///
@@ -78,13 +57,15 @@ int graphemeOffset(String text, int codeUnitOffset) {
 /// nothing to tap.
 ///
 /// The platform counts in UTF-16 code units and [SpanData] counts in
-/// grapheme clusters, so every offset is converted. Skipping this puts every
-/// span after an emoji or a combining mark on the wrong word.
+/// grapheme clusters, so every offset is converted through
+/// [GraphemeOffsetIndex]. Skipping this puts every span after an emoji or a
+/// combining mark on the wrong word.
 List<SpanData> localSpansToSpanData(
   List<SuggestionSpan> suggestions,
   String text,
 ) {
   final spans = <SpanData>[];
+  final index = GraphemeOffsetIndex.fromTextUtf16(text);
 
   for (final suggestion in suggestions) {
     if (suggestion.suggestions.isEmpty) continue;
@@ -106,9 +87,10 @@ List<SpanData> localSpansToSpanData(
                   SpanChoice(value: value, type: SpanChoiceTypeEnum.suggestion),
             )
             .toList(),
-        offset: graphemeOffset(text, range.start),
+        offset: index.graphemeStartOfCodepoint(range.start),
         length:
-            graphemeOffset(text, range.end) - graphemeOffset(text, range.start),
+            index.graphemeEndOfCodepoint(range.end) -
+            index.graphemeStartOfCodepoint(range.start),
         fullText: text,
         type: ReplacementTypeEnum.spell,
         rule: const Rule(id: MatchRuleIdModel.localSpellCheck),

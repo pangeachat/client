@@ -30,38 +30,6 @@ class _FakeSpellCheckService implements SpellCheckService {
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  group('graphemeOffset', () {
-    test('counts plain text one for one', () {
-      expect(graphemeOffset('hello', 0), 0);
-      expect(graphemeOffset('hello', 3), 3);
-      expect(graphemeOffset('hello', 5), 5);
-    });
-
-    test('an emoji counts as one grapheme, not its two code units', () {
-      const text = 'a👍b';
-      expect(text.length, 4); // code units
-      expect(graphemeOffset(text, 4), 3); // graphemes
-    });
-
-    test('an offset inside a surrogate pair clears the whole pair', () {
-      // Code unit 2 is the low surrogate of the emoji, which substring would
-      // split. Walking graphemes cannot split it: the offset resolves to the
-      // boundary after the emoji rather than into the middle of it.
-      expect(graphemeOffset('a👍b', 2), 2);
-    });
-
-    test('handles a combining mark as a single grapheme', () {
-      // e + combining acute: two code units, one grapheme.
-      const text = 'éx';
-      expect(graphemeOffset(text, 2), 1);
-      expect(graphemeOffset(text, 3), 2);
-    });
-
-    test('an offset past the end stops at the last grapheme', () {
-      expect(graphemeOffset('a👍', 99), 2);
-    });
-  });
-
   group('localSpansToSpanData (pure conversion)', () {
     test('maps a misspelling to a spell span with its suggestions', () {
       final spans = localSpansToSpanData(const [
