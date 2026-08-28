@@ -84,7 +84,10 @@ async function openParticipant(name, roomLocalpart, port) {
 /// after login and land back on the activity map. A harness that did not check
 /// would then drive the map, find nothing, and report the feature broken (or
 /// worse, find nothing and report nothing). So this confirms by waiting for a
-/// control that only exists inside a chat, and fails loudly if it never comes.
+/// control that only exists inside a chat -- the COMPOSER -- and fails loudly
+/// if it never comes. It used to confirm on a call button, which renders on
+/// the home map as well, so navigation could report success from the wrong
+/// screen entirely.
 async function openRoom(page, roomLocalpart, attempts = 4) {
   for (let i = 1; i <= attempts; i++) {
     // Cleared first on a retry: the app restores whatever route it was last
@@ -101,7 +104,7 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
     await wait(i === 1 ? 6500 : 4000);
     await ui.enableSemantics(page);
     await wait(1500);
-    if (await ui.hasControl(page, 'call')) return;
+    if (await ui.hasControl(page, 'composer')) return;
     // The deep link does not always land, and the app then sits on the chat
     // LIST with the conversation right there. Clicking it is what a person
     // would do, and it is far more reliable than reloading the same link
@@ -133,7 +136,11 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
 /// once at startup is therefore not enough: every scenario re-asserts the room
 /// is actually on screen before it touches anything.
 async function ensureRoom(p, roomLocalpart) {
-  if (await ui.hasControl(p.page, 'call')) return;
+  // Confirmed on the COMPOSER, not on a call button. Call buttons render on
+  // the home map too, so this guard used to pass while the app was nowhere
+  // near the room -- the transcript-card check then failed against a screen
+  // that never had a card on it.
+  if (await ui.hasControl(p.page, 'composer')) return;
   console.log(`   (${p.name} drifted off the room; reopening)`);
   await openRoom(p.page, roomLocalpart);
 }

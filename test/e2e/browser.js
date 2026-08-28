@@ -60,6 +60,31 @@ async function launch({ userDataDir, wav, port }) {
       '--use-fake-ui-for-media-stream',
       '--use-fake-device-for-media-stream',
       `--use-file-for-fake-audio-capture=${fakeAudio(wav)}%noloop`,
+      // And let the audio service actually READ that file.
+      //
+      // The fake microphone is fed by the audio service, which runs in its own
+      // sandboxed process, and on macOS that sandbox denies it the fixture.
+      // Chrome does not fail the capture over it: `media/audio/simple_sources.cc`
+      // logs "Failed to read <path> as input to the fake device. Try disabling
+      // the sandbox with --no-sandbox." once per capture, and then hands out
+      // DIGITAL SILENCE -- exact zeroes -- for the rest of the call.
+      //
+      // Which is the worst shape this could take. Everything that is about the
+      // CALL still passes: it rings, it is answered, both halves are written,
+      // each under its own sender, with turn positions. Only the words are
+      // gone, replaced by whatever a provider says about twenty seconds of
+      // nothing -- Whisper answers "you". That reads exactly like a broken
+      // transcript pipeline in the app, and three theories about the app's
+      // capture path were chased before Chrome's own log line was read.
+      //
+      // This IS a reduction in Chrome's sandboxing, and it belongs to the
+      // harness alone: these browsers are launched by this file, run against a
+      // laptop's local stack, and are thrown away at the end of a scenario.
+      // Nothing ships it. It also disables the audio service's sandbox
+      // ENTIRELY, and only that one: narrower than the `--no-sandbox` the log
+      // line suggests, which lifts the RENDERER sandbox too, and the renderer
+      // is the process running the app under test.
+      '--disable-features=AudioServiceSandbox',
       // Ringtones and remote audio start without a click, which no scenario
       // can supply.
       '--autoplay-policy=no-user-gesture-required',

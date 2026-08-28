@@ -20,51 +20,49 @@
 // carry provably different speech and "did each person's words land under
 // THEIR name" becomes a question that can be asked at all.
 //
-// WHERE THIS RUNS, AND WHERE IT DOES NOT YET PASS.
+// WHERE THIS RUNS.
 //
-// Everything up to the words is green in two browsers: the ring, the answer,
-// the consent notice, the hangup, both halves written, each under its own
-// sender, with correct accounting. What does not come back is intelligible
-// SPEECH.
+// WHY THE WORDS USED TO COME BACK EMPTY, AND WHAT IT WAS NOT.
 //
-// What is established, rather than assumed:
+// This file spent a long stretch green on everything except the words, which
+// came back as Whisper's silence hallucination ("you you"). Four theories were
+// wrong before the cause was read straight off Chrome's own log -- sample
+// rate, channel count, a too-confident reading of the Whisper artefact, and
+// then the app's web tap, on the argument that `TrackRendererTap` reads a
+// renderer and a renderer can be dead while `isRecording` is true. None of
+// them. Nothing found here implicates the app's capture path at all, which is
+// a narrower claim than "the app was fine" and is the one the evidence
+// supports: the harness never fed it anything to capture.
 //
-//   - The fake microphone is good. A getUserMedia probe in a plain page reads
-//     peak RMS around 0.5 off these fixtures.
-//   - The speech service is reached. The local choreo log carries the calls,
-//     with the provider chain falling back to Whisper and succeeding.
-//   - Twenty seconds of clear English comes back as "you you", which is
-//     Whisper's known hallucination on SILENCE -- not the sort of mangling
-//     that warped or mislabelled audio produces.
-//   - The channel count is NOT the cause. The web capture genuinely downmixes
-//     to mono and reports 1, so nothing is mis-described that way.
-//     (A latent bug was found in that area and fixed separately: the delivered
-//     count was being ignored in favour of the requested one, which matters on
-//     native.)
+// It was TWO facts about this harness. They are not the same failure -- the
+// first silenced BOTH microphones outright, the second emptied one speaker's
+// half while the other transcribed perfectly -- but they surface through the
+// same check, and the second was invisible until the first was fixed:
 //
-// What follows from that is narrower than it is tempting to write. The four
-// facts above bound the problem at both ends -- audible going in, reached at
-// the far end, not a format mis-description -- and they do NOT locate it. In
-// particular nothing here has measured the tap's own input, so "the tap
-// receives silence" is the leading hypothesis and not an established fact.
+//   - Chrome feeds `--use-file-for-fake-audio-capture` from the AUDIO SERVICE,
+//     which runs in its own sandboxed process, and on macOS that sandbox
+//     denies it the fixture. Chrome does not fail the capture over it: it logs
+//     "Failed to read <path> as input to the fake device" and hands out exact
+//     zeroes for the rest of the call. Measured, not inferred -- the wav choreo
+//     received had 0 non-zero samples out of 611,712. `browser.js` now passes
+//     `--disable-features=AudioServiceSandbox`, and that same wav comes back
+//     with speech in it.
+//   - Speech-to-text is asked for the SPEAKER'S OWN target language, read off
+//     their profile. With the audio flowing, the callee (learning English) came
+//     back with thirty-five words and the caller (learning Hindi) came back
+//     with none: English audio transcribed as Hindi returns empty, not wrong.
+//     `refuseIfNotLearning` below now says so before the call rather than after
+//     it.
 //
-// The hypothesis worth testing first: the web path reads its own outbound
-// audio through a renderer, and fix-renderer-attach exists because on the web
-// a device can report isRecording == true with a dead recorder. That would
-// look exactly like this. It also fits the feature only ever having been
-// demonstrated end to end on a PHONE, where PostEchoCancellationTap reads the
-// audio module directly instead.
+// Both of those are worth naming for the same reason: every check that is
+// about the CALL stayed green through them. It rang, it was answered, both
+// halves were written and attributed and positioned. Only the words were
+// missing, which is precisely the shape that reads as a broken pipeline in the
+// app.
 //
-// Three theories have already been wrong here -- sample rate, then channel
-// count, then a too-confident reading of the Whisper artefact -- so this
-// comment records what is measured and names the next thing to measure,
-// rather than picking a fourth.
-//
-// So the word-level checks below are expected to fail in two browsers today.
-// They are written as failures rather than skips ON PURPOSE, and this file
-// exits on the failure count: a skip, or a green exit, would let this quietly
-// become permanent, and the day the web path is fixed this file should go
-// green without anybody remembering to re-enable it.
+// The word-level checks below are written as failures rather than skips ON
+// PURPOSE, and this file exits on the failure count: a skip, or a green exit,
+// would let a silent fixture quietly become permanent.
 //
 // HONESTY. A half that failed is not a person who said nothing. The screen has
 // four separate things to say -- they spoke / they were silent / they wrote
@@ -142,10 +140,57 @@ function words(text) {
 const CALLER_SAYS = ['afternoon', 'journey', 'spring', 'market'];
 const CALLEE_SAYS = ['course', 'orange', 'quarter', 'gardens'];
 
+/// The language both fixtures are in.
+///
+/// Stated so it can be CHECKED, because the coupling above is silent when it
+/// breaks. Speech-to-text is asked for the speaker's own target language, and
+/// an account learning something else has this English audio transcribed as
+/// that other language -- which comes back empty, not wrong. The call still
+/// rings, connects, and writes both halves, so the only symptom is a speaker
+/// with no words, and that is indistinguishable from a dead capture path.
+const FIXTURE_LANG = 'en';
+
+/// Refuses a run whose fixtures the accounts cannot be understood in.
+///
+/// A refusal rather than a failed check, on the same terms `browser.js`
+/// refuses a missing wav: the alternative is four minutes of call to arrive at
+/// "expected one of afternoon/journey/spring/market; got", which names the app
+/// for something only the account says.
+///
+/// Asked over its own API logins, BEFORE the browsers, so the refusal costs a
+/// second rather than the two BROWSER logins and the whole call it would take
+/// to reach the same conclusion from a participant's own token.
+async function refuseIfNotLearning(names) {
+  for (const name of names) {
+    const a = h.cfg.accounts[name];
+    const { token, userId } = await mx.login(a.user, a.pass);
+    let code;
+    try {
+      code = await mx.targetLanguage(token, userId);
+    } finally {
+      // Handed back whatever the answer was. A session taken for one question
+      // is a Matrix DEVICE, and these two accounts are reused forever.
+      await mx.logout(token);
+    }
+    if (mx.baseLang(code) === FIXTURE_LANG) continue;
+    throw new Error(
+      `${name} (${userId}) is learning ${code || 'nothing yet'}, and the `
+      + `fixtures are ${FIXTURE_LANG}. Speech-to-text is asked for the `
+      + "speaker's own target language, so their half would come back empty "
+      + 'however well the call went. Sign in as that account and set the '
+      + `learning language to ${FIXTURE_LANG}. Going the other way is a change `
+      + 'to this file and not a setting: the wavs, FIXTURE_LANG, and the '
+      + 'CALLER_SAYS / CALLEE_SAYS words are one fixture set and all three move '
+      + 'together.',
+    );
+  }
+}
+
 async function main() {
   const s = 'transcript';
   console.log('[1] two browsers, each with its own voice');
   h.refuseIfAnotherRunIsLive();
+  await refuseIfNotLearning(['learner', 'calltester']);
   const A = await h.openParticipant('learner', ROOM, 9731);
   const B = await h.openParticipant('calltester', ROOM, 9732);
 
@@ -309,9 +354,33 @@ async function main() {
   }
 
   console.log('[5] and what the screen says about it');
+  // Back in the ROOM before asking what the room shows.
+  //
+  // The card is a timeline event, and the caller does not reliably end a call
+  // still looking at the timeline -- this scenario spent every run reporting
+  // "no way in to the transcript from the call card" while the page was
+  // sitting on the activity map, where no card of any kind exists. That is a
+  // harness failure wearing a product failure's clothes, and it hid the
+  // silent-speaker check behind it, which is gated on the card and so had
+  // never run at all. `ensureRoom` is a no-op when the room is already open.
+  await h.ensureRoom(A, ROOM);
+  // And the semantics tree turned back on: it is thrown away with the document
+  // on any navigation, and a tree that is not there answers "no card" for a
+  // card that is.
+  await ui.enableSemantics(A.page).catch(() => {});
   const card = await ui.hasControl(A.page, 'transcriptLink').catch(() => false);
+  // What WAS on screen, on the same argument `ui.waitForLabel` makes: a
+  // missing control is only actionable next to the ones that were found.
+  // Read only when it is missing, and never allowed to throw -- an argument to
+  // `check` is evaluated before the check is, so a diagnostic gathered
+  // unconditionally can end the run on the path where there was nothing to
+  // explain.
+  const seen = card ? [] : await ui.labels(A.page).catch(() => []);
+  const insteadOnScreen = JSON.stringify(
+    (Array.isArray(seen) ? seen : []).slice(0, 25),
+  );
   h.check(s, 'the card offers the transcript', card,
-    'no way in to the transcript from the call card');
+    `no way in to the transcript from the call card; on screen: ${insteadOnScreen}`);
 
   if (card) {
     await ui.clickControl(A.page, 'transcriptLink').catch(() => {});
