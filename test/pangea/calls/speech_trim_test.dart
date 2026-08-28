@@ -212,6 +212,52 @@ void main() {
     });
   });
 
+  group('what this detector cannot do', () {
+    test('a short unvoiced answer in a long quiet chunk is held back', () {
+      // A KNOWN LIMIT, pinned so it is visible rather than discovered.
+      //
+      // 350ms of wholly unvoiced speech in eight seconds of quiet has no
+      // periodicity to find, and it is far too little audio to move the level
+      // veto -- so it is suppressed.
+      //
+      // The obvious repair is to veto suppression on a RUN of loud windows
+      // rather than a fraction of them, and it cannot be taken. Measured on
+      // this recording's non-speech stretch: thirteen loud runs of 200ms or
+      // more, the longest 960ms -- LONGER and LOUDER than the whispered answer
+      // being protected. That rule would refuse to suppress the exact audio
+      // this file exists to stop sending, which transcribes to nothing on both
+      // providers and to invented words on each.
+      //
+      // Energy cannot separate the two cases. Separating them needs spectral
+      // structure, and there is no whispered sample here to calibrate it on;
+      // guessing would be the third time this investigation tuned against a
+      // recording it did not have.
+      final quiet = _range(audio, 0, 4);
+      final vowel = _range(audio, 29.0, 29.35);
+      final unvoiced = Int16List(vowel.length);
+      final random = Random(3);
+      for (var i = 0; i < vowel.length; i++) {
+        unvoiced[i] = random.nextBool() ? vowel[i] : -vowel[i];
+      }
+      final chunk = Int16List.fromList([
+        ...quiet,
+        ...unvoiced,
+        ..._range(audio, 4, 8),
+      ]);
+
+      expect(
+        trimToSpeech(_chunk(chunk)),
+        isNull,
+        reason: 'documented gap: see the design doc, Known gaps',
+      );
+
+      // What DOES protect it: the same answer one chunk shorter is under the
+      // floor, and a short chunk is never suppressed at all.
+      final short = Int16List.fromList([...quiet, ...unvoiced]);
+      expect(trimToSpeech(_chunk(short)), isNotNull);
+    });
+  });
+
   group('the audio and its position stay together', () {
     test('the wav holds exactly the samples the position claims', () {
       final trimmed = trimToSpeech(_chunk(audio))!;

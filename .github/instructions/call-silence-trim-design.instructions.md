@@ -272,6 +272,20 @@ segments, all real content, with no fabricated `Hey.` and no repetition.
 - The end-to-end gain is validated on Whisper and *inferred* for Deepgram from
   the brief's measurements. It was not re-measured against Deepgram, which is
   billed.
+- **A short WHOLLY UNVOICED answer in a long quiet chunk is suppressed.** Rule 4
+  protects a chunk that is loud and aperiodic throughout, because the loud
+  fraction is high. It does not protect 350ms of whisper in eight seconds of
+  quiet, which moves that fraction by about four points.
+  The obvious repair — veto suppression on a RUN of loud windows rather than a
+  fraction of them — was measured and refused. The reference recording's
+  non-speech stretch contains **thirteen loud runs of 200ms or more, the longest
+  960ms**: longer and louder than the whispered answer the rule would exist to
+  protect. It would therefore refuse to suppress the exact audio this design
+  exists to stop sending, which transcribes to nothing on both providers and to
+  invented words on each.
+  Energy cannot separate the two cases. Separating them needs spectral
+  structure, and there is no whispered sample here to calibrate it against.
+  The behaviour is pinned by a test so it stays visible.
 - **Boundary clipping is bounded, not eliminated.** This is an accepted
   limitation, not a solved problem, and it is inherent to cutting on voicing.
   The exposure is narrow on three sides at once: it applies only at the edges of
