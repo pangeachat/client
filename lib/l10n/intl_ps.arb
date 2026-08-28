@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-26 15:28:53.909840",
+    "@@last_modified": "2026-08-28 11:37:31.883995",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "له لاسه وتلی ویډیو زنګ",
     "callHistoryNoAnswer": "ځواب نشته",
     "callHistoryDeclined": "زنګ رد شو",
-    "callHistoryYouDeclined": "تاسو دا زنګ رد کړ"
+    "callHistoryYouDeclined": "تاسو دا زنګ رد کړ",
+    "starsEarnedInLanguage": "{language} کې ترلاسه شوي ستوري"
 }

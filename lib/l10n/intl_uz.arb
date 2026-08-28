@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-26 15:28:56.700765",
+    "@@last_modified": "2026-08-28 11:37:33.321943",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9815,5 +9815,6 @@
     "callHistoryMissedVideoCall": "O'tkazib yuborilgan video qo'ng'iroq",
     "callHistoryNoAnswer": "Javob yo'q",
     "callHistoryDeclined": "Qo'ng'iroq rad etildi",
-    "callHistoryYouDeclined": "Siz bu qo'ng'iroqni rad etdingiz"
+    "callHistoryYouDeclined": "Siz bu qo'ng'iroqni rad etdingiz",
+    "starsEarnedInLanguage": "{language} tilida topilgan yulduzlar"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-26 15:28:53.920082",
+    "@@last_modified": "2026-08-28 11:37:31.730573",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9896,5 +9896,6 @@
     "callHistoryMissedVideoCall": "Nieodebrane połączenie wideo",
     "callHistoryNoAnswer": "Brak odpowiedzi",
     "callHistoryDeclined": "Rozmowa odrzucona",
-    "callHistoryYouDeclined": "Odrzuciłeś to połączenie"
+    "callHistoryYouDeclined": "Odrzuciłeś to połączenie",
+    "starsEarnedInLanguage": "Gwiazdki zdobyte w {language}"
 }

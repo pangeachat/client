@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-26 15:28:49.410806",
+    "@@last_modified": "2026-08-28 11:37:29.945057",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10247,5 +10247,6 @@
     "callHistoryMissedVideoCall": "Propušteni video poziv",
     "callHistoryNoAnswer": "Nema odgovora",
     "callHistoryDeclined": "Poziv odbijen",
-    "callHistoryYouDeclined": "Odbili ste ovaj poziv"
+    "callHistoryYouDeclined": "Odbili ste ovaj poziv",
+    "starsEarnedInLanguage": "Zvijezde osvojene u {language}"
 }

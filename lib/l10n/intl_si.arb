@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-26 15:28:54.985338",
+    "@@last_modified": "2026-08-28 11:37:32.263191",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "මගහැරුණු වීඩියෝ ඇමතුම",
     "callHistoryNoAnswer": "පිළිතුරක් නැත",
     "callHistoryDeclined": "ඇමතුම ප්‍රතික්ෂේප කරන ලදී",
-    "callHistoryYouDeclined": "ඔබ මෙම ඇමතුම ප්‍රතික්ෂේප කළා"
+    "callHistoryYouDeclined": "ඔබ මෙම ඇමතුම ප්‍රතික්ෂේප කළා",
+    "starsEarnedInLanguage": "{language} භාෂාවෙන් උපයාගත් තරු"
 }

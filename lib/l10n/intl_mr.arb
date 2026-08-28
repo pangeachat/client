@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-26 15:28:52.938321",
+    "@@last_modified": "2026-08-28 11:37:31.162563",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "मिस केलेला व्हिडिओ कॉल",
     "callHistoryNoAnswer": "उत्तर नाही",
     "callHistoryDeclined": "कॉल नाकारला",
-    "callHistoryYouDeclined": "तुम्ही हा कॉल नाकारला"
+    "callHistoryYouDeclined": "तुम्ही हा कॉल नाकारला",
+    "starsEarnedInLanguage": "{language} मध्ये मिळवलेले तारे"
 }

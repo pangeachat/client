@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-26 15:28:51.445378",
+    "@@last_modified": "2026-08-28 11:37:30.845634",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "پەیوەندی ڤیدیۆیی وەڵامنەدراوە",
     "callHistoryNoAnswer": "وەڵام نەدرایەوە",
     "callHistoryDeclined": "پەیوەندییەکە ڕەتکرایەوە",
-    "callHistoryYouDeclined": "تۆ ئەم پەیوەندییەت ڕەتکردەوە"
+    "callHistoryYouDeclined": "تۆ ئەم پەیوەندییەت ڕەتکردەوە",
+    "starsEarnedInLanguage": "ئەستێرە بەدەستهاتووەکان لە {language}"
 }

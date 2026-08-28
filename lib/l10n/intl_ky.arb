@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-26 15:28:51.359448",
+    "@@last_modified": "2026-08-28 11:37:30.580285",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Өткөрүп жиберилген видео чалуу",
     "callHistoryNoAnswer": "Жооп жок",
     "callHistoryDeclined": "Чакыруудан баш тартылды",
-    "callHistoryYouDeclined": "Сиз бул чалуудан баш тарттыңыз"
+    "callHistoryYouDeclined": "Сиз бул чалуудан баш тарттыңыз",
+    "starsEarnedInLanguage": "{language} тилинде алынган жылдыздар"
 }

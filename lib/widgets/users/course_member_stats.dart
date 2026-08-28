@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -82,32 +83,52 @@ class _CourseMemberStatsState extends State<CourseMemberStats> {
           return const SizedBox.shrink();
         }
 
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          spacing: 4.0,
-          children: [
-            if (stars != null && stars > 0) ...[
-              Semantics(
-                label: "${L10n.of(context).stars}: $stars",
-                child: ExcludeSemantics(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    spacing: 2.0,
-                    children: [
-                      Icon(
-                        Icons.star,
-                        size: widget.iconSize,
-                        color: AppConfig.goldLight,
+        // The count is a bare number in a ~100px card, so what it MEANS is
+        // carried by the tooltip and the accessible name rather than a label
+        // there is no room for. See quests.instructions.md.
+        final language =
+            PLanguageStore.byLangCode(widget.langCode)?.displayName ??
+            widget.langCode.toUpperCase();
+
+        // Scaled down rather than ellipsized: at large OS text sizes a count
+        // clipped to "…" tells the reader nothing, and this row sits in a
+        // fixed-height box it cannot grow.
+        return FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 4.0,
+            children: [
+              if (stars != null && stars > 0)
+                Tooltip(
+                  message: L10n.of(context).starsEarnedInLanguage(language),
+                  child: Semantics(
+                    // The count sits outside the translated phrase: a star
+                    // total is a bare number in every language, and keeping it
+                    // out avoids a plural form the phrase does not need.
+                    label:
+                        "${L10n.of(context).starsEarnedInLanguage(language)}: "
+                        "$stars",
+                    child: ExcludeSemantics(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        spacing: 2.0,
+                        children: [
+                          Icon(
+                            Icons.star,
+                            size: widget.iconSize,
+                            color: AppConfig.goldLight,
+                          ),
+                          Text('$stars', style: widget.textStyle),
+                        ],
                       ),
-                      Text('$stars', style: widget.textStyle),
-                    ],
+                    ),
                   ),
                 ),
-              ),
+              if (level != null)
+                LevelRibbon(level: level, height: widget.iconSize + 2.0),
             ],
-            if (level != null)
-              LevelRibbon(level: level, height: widget.iconSize + 2.0),
-          ],
+          ),
         );
       },
     );

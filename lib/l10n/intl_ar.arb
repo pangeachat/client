@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-26 15:28:46.683386",
+    "@@last_modified": "2026-08-28 11:37:28.248668",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10117,5 +10117,6 @@
     "callHistoryMissedVideoCall": "مكالمة فيديو فائتة",
     "callHistoryNoAnswer": "لا يوجد رد",
     "callHistoryDeclined": "تم رفض المكالمة",
-    "callHistoryYouDeclined": "لقد رفضت هذه المكالمة"
+    "callHistoryYouDeclined": "لقد رفضت هذه المكالمة",
+    "starsEarnedInLanguage": "النجوم المكتسبة في {language}"
 }

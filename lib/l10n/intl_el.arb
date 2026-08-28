@@ -3401,7 +3401,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-26 15:28:48.026410",
+    "@@last_modified": "2026-08-28 11:37:28.923544",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10686,5 +10686,6 @@
     "callHistoryMissedVideoCall": "Αναπάντητη βιντεοκλήση",
     "callHistoryNoAnswer": "Καμία απάντηση",
     "callHistoryDeclined": "Η κλήση απορρίφθηκε",
-    "callHistoryYouDeclined": "Απορρίψατε αυτήν την κλήση"
+    "callHistoryYouDeclined": "Απορρίψατε αυτήν την κλήση",
+    "starsEarnedInLanguage": "Αστέρια που κερδήθηκαν στα {language}"
 }

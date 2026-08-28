@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-26 15:28:53.159907",
+    "@@last_modified": "2026-08-28 11:37:31.545609",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "လွတ်သွားသော ဗီဒီယိုခေါ်ဆိုမှု",
     "callHistoryNoAnswer": "အဖြေမရှိပါ",
     "callHistoryDeclined": "ခေါ်ဆိုမှုကို ငြင်းပယ်လိုက်သည်",
-    "callHistoryYouDeclined": "သင် ဤခေါ်ဆိုမှုကို ငြင်းပယ်ခဲ့သည်"
+    "callHistoryYouDeclined": "သင် ဤခေါ်ဆိုမှုကို ငြင်းပယ်ခဲ့သည်",
+    "starsEarnedInLanguage": "{language} တွင် ရရှိခဲ့သော ကြယ်များ"
 }

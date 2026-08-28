@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:47.601252",
+    "@@last_modified": "2026-08-28 11:37:28.344893",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9938,5 +9938,6 @@
     "callHistoryMissedVideoCall": "Videotrucada perduda",
     "callHistoryNoAnswer": "Sense resposta",
     "callHistoryDeclined": "Trucada rebutjada",
-    "callHistoryYouDeclined": "Has rebutjat aquesta trucada"
+    "callHistoryYouDeclined": "Has rebutjat aquesta trucada",
+    "starsEarnedInLanguage": "Estrelles guanyades a {language}"
 }

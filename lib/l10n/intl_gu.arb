@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-26 15:28:49.257022",
+    "@@last_modified": "2026-08-28 11:37:29.397291",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "મિસ્ડ વીડિયો કૉલ",
     "callHistoryNoAnswer": "કોઈ જવાબ નથી",
     "callHistoryDeclined": "કૉલ નકારવામાં આવ્યો",
-    "callHistoryYouDeclined": "તમે આ કૉલ નકાર્યો"
+    "callHistoryYouDeclined": "તમે આ કૉલ નકાર્યો",
+    "starsEarnedInLanguage": "{language} માં મેળવેલા સ્ટાર્સ"
 }

@@ -3094,7 +3094,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-26 15:28:49.396694",
+    "@@last_modified": "2026-08-28 11:37:29.482879",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10443,5 +10443,6 @@
     "callHistoryMissedVideoCall": "मिस्ड वीडियो कॉल",
     "callHistoryNoAnswer": "कोई जवाब नहीं",
     "callHistoryDeclined": "कॉल अस्वीकृत",
-    "callHistoryYouDeclined": "आपने यह कॉल अस्वीकृत कर दी"
+    "callHistoryYouDeclined": "आपने यह कॉल अस्वीकृत कर दी",
+    "starsEarnedInLanguage": "{language} में अर्जित सितारे"
 }

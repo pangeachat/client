@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-25 15:25:42.213145",
+    "@@last_modified": "2026-08-28 11:37:29.079701",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8030,5 +8030,6 @@
     "callHistoryMissedVideoCall": "Videollamada perdida",
     "callHistoryNoAnswer": "Sin respuesta",
     "callHistoryDeclined": "Llamada rechazada",
-    "callHistoryYouDeclined": "Rechazaste esta llamada"
+    "callHistoryYouDeclined": "Rechazaste esta llamada",
+    "starsEarnedInLanguage": "Estrellas ganadas en {language}"
 }

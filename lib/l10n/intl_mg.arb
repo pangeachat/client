@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-26 15:28:52.319188",
+    "@@last_modified": "2026-08-28 11:37:31.142989",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Antso an-dahatsary tsy voaray",
     "callHistoryNoAnswer": "Tsy nisy namaly",
     "callHistoryDeclined": "Antso nolavina",
-    "callHistoryYouDeclined": "Nolavinao ity antso ity"
+    "callHistoryYouDeclined": "Nolavinao ity antso ity",
+    "starsEarnedInLanguage": "Kintana azo tamin'ny teny {language}"
 }

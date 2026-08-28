@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-26 15:28:51.303650",
+    "@@last_modified": "2026-08-28 11:37:30.633832",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Colloquium video amissum",
     "callHistoryNoAnswer": "Nullum responsum",
     "callHistoryDeclined": "Colloquium recusatum",
-    "callHistoryYouDeclined": "Hoc colloquium recusavisti"
+    "callHistoryYouDeclined": "Hoc colloquium recusavisti",
+    "starsEarnedInLanguage": "Stellae in {language} meritae"
 }

@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-26 15:28:47.616209",
+    "@@last_modified": "2026-08-28 11:37:28.844534",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10731,5 +10731,6 @@
     "callHistoryMissedVideoCall": "Ubesvaret videoopkald",
     "callHistoryNoAnswer": "Intet svar",
     "callHistoryDeclined": "Opkald afvist",
-    "callHistoryYouDeclined": "Du afviste dette opkald"
+    "callHistoryYouDeclined": "Du afviste dette opkald",
+    "starsEarnedInLanguage": "Stjerner optjent i {language}"
 }

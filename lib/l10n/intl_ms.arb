@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-26 15:28:52.843537",
+    "@@last_modified": "2026-08-28 11:37:31.255297",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Panggilan video tidak dijawab",
     "callHistoryNoAnswer": "Tiada jawapan",
     "callHistoryDeclined": "Panggilan ditolak",
-    "callHistoryYouDeclined": "Anda menolak panggilan ini"
+    "callHistoryYouDeclined": "Anda menolak panggilan ini",
+    "starsEarnedInLanguage": "Bintang yang diperoleh dalam {language}"
 }

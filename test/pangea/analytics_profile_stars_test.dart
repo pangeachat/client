@@ -39,6 +39,16 @@ void main() {
       expect(withStars('fr', 12).raiseStars('fr', 12), isFalse);
     });
 
+    test('a language with no entry is not created just to record zero', () {
+      // Every sweep passes the current count, so a learner with no stars yet
+      // passes 0 constantly. Creating an entry for that publishes a level 0
+      // they never had — a language row claiming progress that does not exist.
+      final profile = AnalyticsProfileModel();
+      expect(profile.raiseStars('it', 0), isFalse);
+      expect(profile.languageAnalytics?.containsKey('it') ?? false, isFalse);
+      expect(profile.levelByLanguage('it'), isNull);
+    });
+
     test('a count of zero never clears a published total', () {
       final profile = withStars('fr', 12);
       expect(profile.raiseStars('fr', 0), isFalse);

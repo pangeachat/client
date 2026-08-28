@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-26 15:28:51.085396",
+    "@@last_modified": "2026-08-28 11:37:30.451019",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "ಮಿಸ್ಡ್ ವೀಡಿಯೊ ಕರೆ",
     "callHistoryNoAnswer": "ಉತ್ತರವಿಲ್ಲ",
     "callHistoryDeclined": "ಕರೆ ನಿರಾಕರಿಸಲಾಗಿದೆ",
-    "callHistoryYouDeclined": "ನೀವು ಈ ಕರೆಯನ್ನು ನಿರಾಕರಿಸಿದ್ದೀರಿ"
+    "callHistoryYouDeclined": "ನೀವು ಈ ಕರೆಯನ್ನು ನಿರಾಕರಿಸಿದ್ದೀರಿ",
+    "starsEarnedInLanguage": "{language} ನಲ್ಲಿ ಗಳಿಸಿದ ನಕ್ಷತ್ರಗಳು"
 }

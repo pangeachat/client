@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-26 15:28:56.059014",
+    "@@last_modified": "2026-08-28 11:37:33.204149",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "جاۋاب بېرىلمىگەن سىنلىق تېلېفون",
     "callHistoryNoAnswer": "جاۋاب يوق",
     "callHistoryDeclined": "تېلېفون رەت قىلىندى",
-    "callHistoryYouDeclined": "سىز بۇ تېلېفوننى رەت قىلدىڭىز"
+    "callHistoryYouDeclined": "سىز بۇ تېلېفوننى رەت قىلدىڭىز",
+    "starsEarnedInLanguage": "{language}دا ئېرىشكەن چولپانلار"
 }

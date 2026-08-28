@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:48.134097",
+    "@@last_modified": "2026-08-28 11:37:28.887444",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10756,5 +10756,6 @@
     "callHistoryMissedVideoCall": "Mankanta videovoko",
     "callHistoryNoAnswer": "Neniu respondo",
     "callHistoryDeclined": "Voko malakceptita",
-    "callHistoryYouDeclined": "Vi malakceptis ĉi tiun vokon"
+    "callHistoryYouDeclined": "Vi malakceptis ĉi tiun vokon",
+    "starsEarnedInLanguage": "Steloj gajnitaj en {language}"
 }

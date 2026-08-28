@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-26 15:28:53.199476",
+    "@@last_modified": "2026-08-28 11:37:36.005426",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "মিস তৌখিবা ভিডিও কল",
     "callHistoryNoAnswer": "পাউখুম পীরকখিদে",
     "callHistoryDeclined": "কল লৌদ্রে",
-    "callHistoryYouDeclined": "অদোম্না হায়রিবা কল অসি লৌদ্রে"
+    "callHistoryYouDeclined": "অদোম্না হায়রিবা কল অসি লৌদ্রে",
+    "starsEarnedInLanguage": "{language} da phangba thawanmichak"
 }

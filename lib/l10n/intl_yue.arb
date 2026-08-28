@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-26 15:28:56.770931",
+    "@@last_modified": "2026-08-28 11:37:33.587385",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10768,5 +10768,6 @@
     "callHistoryMissedVideoCall": "未接視像通話",
     "callHistoryNoAnswer": "無人接聽",
     "callHistoryDeclined": "通話已拒絕",
-    "callHistoryYouDeclined": "你拒絕了此通話"
+    "callHistoryYouDeclined": "你拒絕了此通話",
+    "starsEarnedInLanguage": "喺{language}賺取嘅星星"
 }

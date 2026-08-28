@@ -227,10 +227,17 @@ class AnalyticsProfileModel {
   /// profile.instructions.md.
   bool raiseStars(String langCode, int stars) {
     final key = _shortCode(langCode);
-    final entry = (languageAnalytics ??= {})[key] ??=
-        LanguageAnalyticsProfileEntry(0, 0);
+    final current = languageAnalytics?[key];
 
-    if (stars <= entry.stars) return false;
+    // Compared BEFORE anything is created: a learner with no stars yet passes 0
+    // on every recount, and creating an entry for that would publish a level 0
+    // this learner never had — a language row claiming progress that does not
+    // exist, and one more empty entry in everyone's profile.
+    if (stars <= (current?.stars ?? 0)) return false;
+
+    final entry =
+        current ??
+        ((languageAnalytics ??= {})[key] = LanguageAnalyticsProfileEntry(0, 0));
     entry.stars = stars;
     return true;
   }

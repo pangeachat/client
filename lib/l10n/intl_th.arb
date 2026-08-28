@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-26 15:28:55.783665",
+    "@@last_modified": "2026-08-28 11:37:32.986042",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10443,5 +10443,6 @@
     "callHistoryMissedVideoCall": "วิดีโอคอลที่ไม่ได้รับ",
     "callHistoryNoAnswer": "ไม่มีการตอบรับ",
     "callHistoryDeclined": "ปฏิเสธสาย",
-    "callHistoryYouDeclined": "คุณปฏิเสธสายนี้"
+    "callHistoryYouDeclined": "คุณปฏิเสธสายนี้",
+    "starsEarnedInLanguage": "ดาวที่ได้รับใน {language}"
 }

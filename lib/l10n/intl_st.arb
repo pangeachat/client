@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-26 15:28:56.080744",
+    "@@last_modified": "2026-08-28 11:37:32.525651",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Mohala oa video o fositsoeng",
     "callHistoryNoAnswer": "Ha ho karabo",
     "callHistoryDeclined": "Mohala o hanetsoe",
-    "callHistoryYouDeclined": "U hanne mohala ona"
+    "callHistoryYouDeclined": "U hanne mohala ona",
+    "starsEarnedInLanguage": "Dinaledi tse fumanweng ho {language}"
 }

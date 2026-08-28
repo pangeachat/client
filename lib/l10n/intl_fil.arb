@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-26 15:28:48.478417",
+    "@@last_modified": "2026-08-28 11:37:29.419140",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10671,5 +10671,6 @@
     "callHistoryMissedVideoCall": "Missed video call",
     "callHistoryNoAnswer": "Walang sumagot",
     "callHistoryDeclined": "Tanggihan ang tawag",
-    "callHistoryYouDeclined": "Tinanggihan mo ang tawag na ito"
+    "callHistoryYouDeclined": "Tinanggihan mo ang tawag na ito",
+    "starsEarnedInLanguage": "Mga star na nakuha sa {language}"
 }

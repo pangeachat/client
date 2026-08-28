@@ -75,15 +75,31 @@ void main() {
 
   tearDownAll(() => client.dispose());
 
-  Future<void> pumpStats(WidgetTester tester, String userId) async {
+  Future<void> pumpStats(
+    WidgetTester tester,
+    String userId, {
+    double textScale = 1.0,
+    bool inCard = false,
+  }) async {
     await tester.pumpWidget(
       MaterialApp(
         locale: const Locale('en'),
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
-        home: Scaffold(
-          body: Center(
-            child: CourseMemberStats(userId: userId, langCode: 'de'),
+        home: MediaQuery(
+          data: MediaQueryData(textScaler: TextScaler.linear(textScale)),
+          child: Scaffold(
+            body: Center(
+              child: inCard
+                  // The card's real geometry: a fixed box the row cannot grow.
+                  ? SizedBox(
+                      width: 100.0,
+                      height: 20.0,
+                      child: CourseMemberStats(userId: userId, langCode: 'de'),
+                    )
+                  // Loose, so the widget's own size is what gets measured.
+                  : CourseMemberStats(userId: userId, langCode: 'de'),
+            ),
           ),
         ),
       ),
@@ -121,5 +137,20 @@ void main() {
   ) async {
     await pumpStats(tester, emptyId);
     expect(tester.getSize(find.byType(CourseMemberStats)), Size.zero);
+  });
+
+  // The card is ~100px wide and 20px high and cannot grow, so at large OS text
+  // sizes the row has to scale down rather than overflow. iOS accessibility
+  // sizes reach roughly 3x.
+  testWidgets('does not overflow the card at large text scale', (tester) async {
+    for (final scale in [1.5, 2.0, 3.0]) {
+      await pumpStats(tester, starredId, textScale: scale, inCard: true);
+      expect(
+        tester.takeException(),
+        isNull,
+        reason: 'overflowed at textScale $scale',
+      );
+      expect(find.text('12'), findsOneWidget);
+    }
   });
 }

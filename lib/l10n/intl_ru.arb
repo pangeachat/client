@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-26 15:28:54.215044",
+    "@@last_modified": "2026-08-28 11:37:32.179532",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10783,5 +10783,6 @@
     "callHistoryMissedVideoCall": "Пропущенный видеозвонок",
     "callHistoryNoAnswer": "Нет ответа",
     "callHistoryDeclined": "Звонок отклонен",
-    "callHistoryYouDeclined": "Вы отклонили этот звонок"
+    "callHistoryYouDeclined": "Вы отклонили этот звонок",
+    "starsEarnedInLanguage": "Звезд заработано на {language}"
 }

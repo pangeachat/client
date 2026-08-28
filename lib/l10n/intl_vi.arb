@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:56.710171",
+    "@@last_modified": "2026-08-28 11:37:33.280331",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7103,5 +7103,6 @@
     "callHistoryMissedVideoCall": "Cuộc gọi video nhỡ",
     "callHistoryNoAnswer": "Không trả lời",
     "callHistoryDeclined": "Cuộc gọi bị từ chối",
-    "callHistoryYouDeclined": "Bạn đã từ chối cuộc gọi này"
+    "callHistoryYouDeclined": "Bạn đã từ chối cuộc gọi này",
+    "starsEarnedInLanguage": "Số sao kiếm được bằng tiếng {language}"
 }

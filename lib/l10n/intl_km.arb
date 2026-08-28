@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-26 15:28:51.138239",
+    "@@last_modified": "2026-08-28 11:37:30.435988",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "ការហៅវីដេអូមិនបានទទួល",
     "callHistoryNoAnswer": "គ្មានការឆ្លើយតប",
     "callHistoryDeclined": "ការហៅត្រូវបានបដិសេធ",
-    "callHistoryYouDeclined": "អ្នកបានបដិសេធការហៅនេះ"
+    "callHistoryYouDeclined": "អ្នកបានបដិសេធការហៅនេះ",
+    "starsEarnedInLanguage": "ផ្កាយដែលទទួលបានក្នុង{language}"
 }

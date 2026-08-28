@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:56.845523",
+    "@@last_modified": "2026-08-28 11:37:33.604472",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9917,5 +9917,6 @@
     "callHistoryMissedVideoCall": "未接視訊通話",
     "callHistoryNoAnswer": "無人接聽",
     "callHistoryDeclined": "通話已拒絕",
-    "callHistoryYouDeclined": "您拒絕了此通話"
+    "callHistoryYouDeclined": "您拒絕了此通話",
+    "starsEarnedInLanguage": "在{language}中獲得的星星"
 }

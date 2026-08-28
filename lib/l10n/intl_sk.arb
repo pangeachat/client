@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-26 15:28:54.975199",
+    "@@last_modified": "2026-08-28 11:37:32.315642",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10756,5 +10756,6 @@
     "callHistoryMissedVideoCall": "Zmeškaný videohovor",
     "callHistoryNoAnswer": "Bez odpovede",
     "callHistoryDeclined": "Hovor odmietnutý",
-    "callHistoryYouDeclined": "Tento hovor ste odmietli"
+    "callHistoryYouDeclined": "Tento hovor ste odmietli",
+    "starsEarnedInLanguage": "Hviezdy získané v jazyku {language}"
 }

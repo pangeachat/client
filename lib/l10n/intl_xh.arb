@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-26 15:28:57.035883",
+    "@@last_modified": "2026-08-28 11:37:33.330815",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Umnxeba wevidiyo ophosiweyo",
     "callHistoryNoAnswer": "Akukho mpendulo",
     "callHistoryDeclined": "Umnxeba uyaliwe",
-    "callHistoryYouDeclined": "Uwuyile lo mnxeba"
+    "callHistoryYouDeclined": "Uwuyile lo mnxeba",
+    "starsEarnedInLanguage": "Ii-star ozifumene ngesi-{language}"
 }

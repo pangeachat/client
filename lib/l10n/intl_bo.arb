@@ -2920,7 +2920,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-26 15:28:47.113356",
+    "@@last_modified": "2026-08-28 11:37:28.393286",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9422,5 +9422,6 @@
     "callHistoryMissedVideoCall": "བརྙན་འབོད་མ་བླངས།",
     "callHistoryNoAnswer": "ལན་མེད།",
     "callHistoryDeclined": "འབོད་བརྡ་མ་བླངས།",
-    "callHistoryYouDeclined": "ཁྱེད་ཀྱིས་འབོད་བརྡ་འདི་མ་བླངས།"
+    "callHistoryYouDeclined": "ཁྱེད་ཀྱིས་འབོད་བརྡ་འདི་མ་བླངས།",
+    "starsEarnedInLanguage": "{language}ནང་བསགས་པའི་སྐར་མ་"
 }

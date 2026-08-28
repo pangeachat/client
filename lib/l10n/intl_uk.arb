@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-26 15:28:56.555702",
+    "@@last_modified": "2026-08-28 11:37:33.106032",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9811,5 +9811,6 @@
     "callHistoryMissedVideoCall": "Пропущений відеодзвінок",
     "callHistoryNoAnswer": "Без відповіді",
     "callHistoryDeclined": "Дзвінок відхилено",
-    "callHistoryYouDeclined": "Ви відхилили цей дзвінок"
+    "callHistoryYouDeclined": "Ви відхилили цей дзвінок",
+    "starsEarnedInLanguage": "Зірок зароблено в {language}"
 }

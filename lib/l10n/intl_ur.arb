@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-26 15:28:56.586142",
+    "@@last_modified": "2026-08-28 11:37:33.261056",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "مسڈ ویڈیو کال",
     "callHistoryNoAnswer": "کوئی جواب نہیں",
     "callHistoryDeclined": "کال رد کر دی گئی",
-    "callHistoryYouDeclined": "آپ نے یہ کال رد کر دی"
+    "callHistoryYouDeclined": "آپ نے یہ کال رد کر دی",
+    "starsEarnedInLanguage": "{language} میں حاصل کردہ ستارے"
 }

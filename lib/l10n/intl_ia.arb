@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-26 15:28:50.036880",
+    "@@last_modified": "2026-08-28 11:37:30.089776",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10747,5 +10747,6 @@
     "callHistoryMissedVideoCall": "Appello video perdite",
     "callHistoryNoAnswer": "Nulle responsa",
     "callHistoryDeclined": "Appello declinate",
-    "callHistoryYouDeclined": "Tu declinava iste appello"
+    "callHistoryYouDeclined": "Tu declinava iste appello",
+    "starsEarnedInLanguage": "Stellas ganiate in {language}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:55.862893",
+    "@@last_modified": "2026-08-28 11:37:32.726344",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10329,5 +10329,6 @@
     "callHistoryMissedVideoCall": "Missat videosamtal",
     "callHistoryNoAnswer": "Inget svar",
     "callHistoryDeclined": "Samtal avböjt",
-    "callHistoryYouDeclined": "Du avböjde detta samtal"
+    "callHistoryYouDeclined": "Du avböjde detta samtal",
+    "starsEarnedInLanguage": "Stjärnor intjänade i {language}"
 }

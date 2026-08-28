@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:50.282958",
+    "@@last_modified": "2026-08-28 11:37:29.934705",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9884,5 +9884,6 @@
     "callHistoryMissedVideoCall": "Panggilan video tak terjawab",
     "callHistoryNoAnswer": "Tidak ada jawaban",
     "callHistoryDeclined": "Panggilan ditolak",
-    "callHistoryYouDeclined": "Anda menolak panggilan ini"
+    "callHistoryYouDeclined": "Anda menolak panggilan ini",
+    "starsEarnedInLanguage": "Bintang yang diperoleh dalam {language}"
 }

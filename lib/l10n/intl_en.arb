@@ -3878,6 +3878,12 @@
     "announcements": "Announcements",
     "activities": "Activities",
     "stars": "Stars",
+    "starsEarnedInLanguage": "Stars earned in {language}",
+    "@starsEarnedInLanguage": {
+        "placeholders": {
+            "language": {}
+        }
+    },
     "access": "Access",
     "howSpaceCanBeFound": "How this course can be found",
     "private": "Private",

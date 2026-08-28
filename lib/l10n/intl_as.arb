@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-26 15:28:47.088408",
+    "@@last_modified": "2026-08-28 11:37:28.470866",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "মিছড ভিডিঅ' কল",
     "callHistoryNoAnswer": "কোনো উত্তৰ নাই",
     "callHistoryDeclined": "কল প্ৰত্যাখ্যান কৰা হ'ল",
-    "callHistoryYouDeclined": "আপুনি এই কলটো প্ৰত্যাখ্যান কৰিলে"
+    "callHistoryYouDeclined": "আপুনি এই কলটো প্ৰত্যাখ্যান কৰিলে",
+    "starsEarnedInLanguage": "{language} ত অৰ্জন কৰা তাৰকাসমূহ"
 }

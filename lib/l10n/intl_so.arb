@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-26 15:28:54.970504",
+    "@@last_modified": "2026-08-28 11:37:32.566703",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Wicitaan muuqaal ah oo la seegay",
     "callHistoryNoAnswer": "Jawaab ma jirin",
     "callHistoryDeclined": "Wicitaankii waa la diiday",
-    "callHistoryYouDeclined": "Wicitaankan waad diiday"
+    "callHistoryYouDeclined": "Wicitaankan waad diiday",
+    "starsEarnedInLanguage": "Xiddigaha lagu kasbaday {language}"
 }

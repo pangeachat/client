@@ -30,6 +30,19 @@ bool activityAutoSaveGate({
   required bool hasArchivedActivity,
 }) => isActivityFinished && hasCompletedRole && !hasArchivedActivity;
 
+/// Whether the account this service belongs to may publish its star total now.
+///
+/// Only while it is the ACTIVE account. The services are per-account and all
+/// run at once, but the user controller they publish through is a single global
+/// that resolves the active account — so a background account would file its
+/// own count on the active account's profile, and a published total is never
+/// lowered, so nothing would ever correct it.
+@visibleForTesting
+bool activeAccountPublishesStars({
+  required String? serviceUserId,
+  required String? activeUserId,
+}) => serviceUserId != null && serviceUserId == activeUserId;
+
 /// Saves completed activity sessions automatically — records the session to
 /// the learner's analytics room and archives their role — so a session that
 /// completes while the learner is elsewhere still saves on the next sync.
@@ -123,6 +136,16 @@ class ActivityAutoSaveService {
   /// ignored rather than believed. See profile.instructions.md.
   void _publishStarTotal() {
     final userController = MatrixState.pangeaController.userController;
+
+    // A background account publishes on its next sweep after it is switched to
+    // — see [activeAccountPublishesStars] for why it must not publish now.
+    if (!activeAccountPublishesStars(
+      serviceUserId: client.userID,
+      activeUserId: userController.client.userID,
+    )) {
+      return;
+    }
+
     final l2 = userController.userL2;
     if (l2 == null) return;
 

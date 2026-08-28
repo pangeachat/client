@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-26 15:28:48.505177",
+    "@@last_modified": "2026-08-28 11:37:29.450076",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Mist fideo-oprop",
     "callHistoryNoAnswer": "Gjin antwurd",
     "callHistoryDeclined": "Oprop wegere",
-    "callHistoryYouDeclined": "Jo hawwe dizze oprop wegere"
+    "callHistoryYouDeclined": "Jo hawwe dizze oprop wegere",
+    "starsEarnedInLanguage": "Stjerren fertsjinne yn {language}"
 }

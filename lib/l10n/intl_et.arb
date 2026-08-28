@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-26 15:28:48.489280",
+    "@@last_modified": "2026-08-28 11:37:28.897859",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9808,5 +9808,6 @@
     "callHistoryMissedVideoCall": "Vastamata videokõne",
     "callHistoryNoAnswer": "Vastamata",
     "callHistoryDeclined": "Kõnest keelduti",
-    "callHistoryYouDeclined": "Keeldusite sellest kõnest"
+    "callHistoryYouDeclined": "Keeldusite sellest kõnest",
+    "starsEarnedInLanguage": "Tähti teenitud keeles {language}"
 }

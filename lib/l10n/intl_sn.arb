@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-26 15:28:55.036229",
+    "@@last_modified": "2026-08-28 11:37:32.643281",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Kufona kwevhidhiyo kwakapotsa",
     "callHistoryNoAnswer": "Hapana mhinduro",
     "callHistoryDeclined": "Kufona kwarambwa",
-    "callHistoryYouDeclined": "Waramba kufona uku"
+    "callHistoryYouDeclined": "Waramba kufona uku",
+    "starsEarnedInLanguage": "Nyeredzi dzawanikwa mu{language}"
 }

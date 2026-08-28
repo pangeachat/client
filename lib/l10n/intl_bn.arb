@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:46.703085",
+    "@@last_modified": "2026-08-28 11:37:28.430219",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10439,5 +10439,6 @@
     "callHistoryMissedVideoCall": "মিসড ভিডিও কল",
     "callHistoryNoAnswer": "কোনো উত্তর নেই",
     "callHistoryDeclined": "কল প্রত্যাখ্যান করা হয়েছে",
-    "callHistoryYouDeclined": "আপনি এই কলটি প্রত্যাখ্যান করেছেন"
+    "callHistoryYouDeclined": "আপনি এই কলটি প্রত্যাখ্যান করেছেন",
+    "starsEarnedInLanguage": "{language}-এ অর্জিত স্টার"
 }

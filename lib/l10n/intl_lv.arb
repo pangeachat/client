@@ -3536,7 +3536,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-26 15:28:51.950412",
+    "@@last_modified": "2026-08-28 11:37:30.928981",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9811,5 +9811,6 @@
     "callHistoryMissedVideoCall": "Neatbildēts videozvans",
     "callHistoryNoAnswer": "Nav atbildes",
     "callHistoryDeclined": "Zvans noraidīts",
-    "callHistoryYouDeclined": "Jūs noraidījāt šo zvanu"
+    "callHistoryYouDeclined": "Jūs noraidījāt šo zvanu",
+    "starsEarnedInLanguage": "Iegūtās zvaigznes valodā {language}"
 }

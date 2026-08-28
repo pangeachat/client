@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-26 15:28:53.900019",
+    "@@last_modified": "2026-08-28 11:37:31.872754",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10728,5 +10728,6 @@
     "callHistoryMissedVideoCall": "Chamada de vídeo perdida",
     "callHistoryNoAnswer": "Sem resposta",
     "callHistoryDeclined": "Chamada recusada",
-    "callHistoryYouDeclined": "Recusou esta chamada"
+    "callHistoryYouDeclined": "Recusou esta chamada",
+    "starsEarnedInLanguage": "Estrelas ganhas em {language}"
 }

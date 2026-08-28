@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-26 15:28:50.490496",
+    "@@last_modified": "2026-08-28 11:37:30.150158",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Oku vidiyo a na-azaghị",
     "callHistoryNoAnswer": "Enweghị azịza",
     "callHistoryDeclined": "Ajụla oku",
-    "callHistoryYouDeclined": "Ị jụrụ oku a"
+    "callHistoryYouDeclined": "Ị jụrụ oku a",
+    "starsEarnedInLanguage": "Kpakpando enwetara na {language}"
 }

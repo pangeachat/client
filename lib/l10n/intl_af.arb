@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-26 15:28:46.721807",
+    "@@last_modified": "2026-08-28 11:37:28.356373",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Gemiste video-oproep",
     "callHistoryNoAnswer": "Geen antwoord",
     "callHistoryDeclined": "Oproep geweier",
-    "callHistoryYouDeclined": "Jy het hierdie oproep geweier"
+    "callHistoryYouDeclined": "Jy het hierdie oproep geweier",
+    "starsEarnedInLanguage": "Sterre verdien in {language}"
 }

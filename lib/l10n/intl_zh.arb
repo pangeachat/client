@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-26 15:28:56.798397",
+    "@@last_modified": "2026-08-28 11:37:33.646161",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9811,5 +9811,6 @@
     "callHistoryMissedVideoCall": "未接视频通话",
     "callHistoryNoAnswer": "无人接听",
     "callHistoryDeclined": "通话已拒绝",
-    "callHistoryYouDeclined": "您拒绝了此通话"
+    "callHistoryYouDeclined": "您拒绝了此通话",
+    "starsEarnedInLanguage": "在{language}中获得的星星"
 }

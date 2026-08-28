@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-26 15:28:49.717162",
+    "@@last_modified": "2026-08-28 11:37:29.939288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Apèl videyo rate",
     "callHistoryNoAnswer": "Pa gen repons",
     "callHistoryDeclined": "Apèl la refize",
-    "callHistoryYouDeclined": "Ou refize apèl sa a"
+    "callHistoryYouDeclined": "Ou refize apèl sa a",
+    "starsEarnedInLanguage": "Etwal ou te touche nan {language}"
 }
