@@ -340,4 +340,83 @@ void main() {
       expect(sent.bytes, lessThanOrEqualTo(2000));
     });
   });
+
+  group('positions this writer could not pin down', () {
+    test('the half claims to mark them', () async {
+      // `buildSegments` bounds every position it could not take from a word,
+      // so a half from THIS writer carries the claim that a segment with no
+      // bound was taken from one. No other caller may make it.
+      final sent = _Sent();
+      await _write(sent);
+
+      expect(sent.only['positions_marked'], isTrue);
+      expect(
+        CallTranscriptContent.fromJson(sent.only)!.positionsMarked,
+        isTrue,
+      );
+    });
+
+    test('a bound goes on the wire and comes back', () async {
+      final sent = _Sent();
+      await writeCallTranscript(
+        send: sent.call,
+        callKey: _callKey,
+        senderId: _sender,
+        segments: const [
+          TranscriptSegment('hola', atMs: 1700000000000),
+          TranscriptSegment('que tal', atMs: 1700000001000, spanMs: 44000),
+        ],
+        chunksCaptured: 2,
+        chunksTranscribed: 2,
+        chunksLost: 0,
+        chunksSuppressed: 0,
+        captureRefused: false,
+        drainComplete: true,
+      );
+
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      expect(parsed.segments.map((s) => s.spanMs), [null, 44000]);
+      expect(parsed.segments.last.orderKeyMs, 1700000045000);
+    });
+
+    test('the bounds are inside what the packer measures', () async {
+      // The bytes these fields add are not free, and the packer is where that
+      // is settled. Measured without them, a half packed right up to the budget
+      // would cross the line it was just checked against -- and the server
+      // rejects the WHOLE half, not its tail. Dropped segments are counted in
+      // `segments_omitted`, so what is lost is disclosed rather than silent.
+      final sent = _Sent();
+      await writeCallTranscript(
+        send: sent.call,
+        callKey: _callKey,
+        senderId: _sender,
+        segments: [
+          for (var i = 0; i < 400; i++)
+            TranscriptSegment(
+              'hola que tal amigo',
+              atMs: 1700000000000 + i * 1000,
+              spanMs: 44000,
+            ),
+        ],
+        chunksCaptured: 400,
+        chunksTranscribed: 400,
+        chunksLost: 0,
+        chunksSuppressed: 0,
+        captureRefused: false,
+        drainComplete: true,
+        maxBytes: 2000,
+      );
+
+      expect(sent.bytes, lessThanOrEqualTo(2000));
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      // Every surviving segment kept its bound, and the loss is declared.
+      expect(
+        parsed.segments.every((s) => s.spanMs == 44000),
+        isTrue,
+        reason: 'the packer trims the tail, it does not strip the bounds',
+      );
+      expect(parsed.accounting.segmentsOmitted, greaterThan(0));
+      expect(parsed.accounting.truncated, isTrue);
+    });
+  });
 }

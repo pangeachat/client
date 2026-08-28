@@ -1063,12 +1063,21 @@ bool _beats(TranscriptCandidate candidate, TranscriptCandidate held) {
     // And last of the three, which is a decision and not an accident.
     //
     // An anchor and a position marker can disagree, and one of them has to
-    // yield. `clocksReconcilable` is ALL OR NOTHING across the call, so
-    // preferring an unanchored copy here would cost EVERY half its clock
-    // correction to buy this one half its disclosure. The two errors are not
-    // the same size either: this codebase has a recorded case of a device two
-    // minutes fast, while a position with no marker is wrong by at most one
-    // chunk. The larger, call-wide fix wins.
+    // yield. The tie-break is SCOPE, not size: `clocksReconcilable` is ALL OR
+    // NOTHING across the call, so preferring the unanchored copy here would
+    // cost EVERY half its clock correction -- including the other speaker's,
+    // which has nothing to do with this dispute -- to buy this one half its
+    // disclosure. The call-wide loss loses.
+    //
+    // The cost of that is real and is not being minimised. The two copies
+    // agree on their WORDS and their accounting, which is all `joinedText` and
+    // `==` compare, so the unmarked copy may well be carrying no spans at all:
+    // choosing it can leave this half's turns both undisclosed and placed at
+    // an estimate. How wrong that estimate is cannot be bounded from here --
+    // an unmarked half by definition tells us nothing about its own precision
+    // -- and saying otherwise would be a made-up number. What can be said is
+    // that the half reads as `timesUnstated` and the screen tells the reader
+    // its ordering may be wrong.
     final marked = candidate.positionsMarked;
     if (marked != held.positionsMarked) return marked;
   }

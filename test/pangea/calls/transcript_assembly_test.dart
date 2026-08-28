@@ -17,12 +17,14 @@ TranscriptCandidate _candidate(
     declared: true,
   ),
   ClockAnchor? anchor,
+  bool positionsMarked = false,
 }) => TranscriptCandidate(
   senderId: sender,
   originServerTs: ts,
   segments: segments ?? [for (final text in texts) TranscriptSegment(text)],
   accounting: accounting,
   clockAnchor: anchor,
+  positionsMarked: positionsMarked,
 );
 
 /// A device whose clock ran [aheadMs] ahead of the SFU's at join.
@@ -457,6 +459,54 @@ void main() {
           ['luego', 'primero'],
           reason: 'and the words are untouched either way',
         );
+      });
+
+      test('positions that run forwards but whose BOUNDS do not are refused', ()
+      {
+        // The half-scoped version of the same failure the test above refuses.
+        // `atMs` runs forwards here -- 1000 then 5000 -- so a gate that only
+        // looked at positions would accept it. But the first segment is bounded
+        // to a chunk ending at 9000 and the second to a moment, and the view
+        // places each at that bound, so the speaker's own words would render
+        // backwards with full confidence.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              segments: const [
+                TranscriptSegment('luego', atMs: 1000, spanMs: 8000),
+                TranscriptSegment('primero', atMs: 5000),
+              ],
+            ),
+          ],
+          expectedSenders: [alice],
+        );
+
+        expect(transcript.timelineEligible, isFalse);
+        expect(
+          _halfFor(transcript, alice).segments.map((s) => s.text),
+          ['luego', 'primero'],
+          reason: 'and the words are untouched either way',
+        );
+      });
+
+      test('bounds that run forwards are accepted', () {
+        // The control. Without it the rule above would still hold with the
+        // whole timeline switched off.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              segments: const [
+                TranscriptSegment('primero', atMs: 1000, spanMs: 3000),
+                TranscriptSegment('luego', atMs: 5000),
+              ],
+            ),
+          ],
+          expectedSenders: [alice],
+        );
+
+        expect(transcript.timelineEligible, isTrue);
       });
 
       test('a speaker who said nothing does not hold the timeline back', () {
@@ -1360,6 +1410,65 @@ void main() {
       );
 
       expect(_halfFor(transcript, alice).clockAnchor, _skewed(30000));
+    });
+
+    test('a marked duplicate beats an identical unmarked one', () {
+      // Same words, same claims -- one written by a build that says which of
+      // its positions are exact and one by a build that does not. Letting the
+      // older copy hold the slot buries a claim that WAS made and leaves the
+      // half reading as unvouched, with its times withheld on screen.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, ts: 100),
+          _candidate(alice, ts: 900, positionsMarked: true),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).positionsMarked, isTrue);
+    });
+
+    test('and the marker still loses to an anchor', () {
+      // The order inside this block, stated as a test because it is a real
+      // decision. `clocksReconcilable` is ALL OR NOTHING across the call, so
+      // preferring the marked-but-unanchored copy would cost EVERY half its
+      // clock correction -- the other speaker's included -- to buy this one
+      // half its disclosure. The call-wide loss loses.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, ts: 100, anchor: _skewed(30000)),
+          _candidate(alice, ts: 900, positionsMarked: true),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.clockAnchor, _skewed(30000));
+      expect(half.positionsMarked, isFalse);
+    });
+
+    test('the marker travels from the chosen candidate onto the half', () {
+      // From the copy that WON, never from any other. The claim describes the
+      // segments being shown, and only the winner supplied those.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, texts: const ['hola'], positionsMarked: true),
+          _candidate(
+            alice,
+            ts: 50,
+            texts: const ['hola que tal y todo lo demas'],
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.segments.single.text, 'hola que tal y todo lo demas');
+      expect(
+        half.positionsMarked,
+        isFalse,
+        reason: 'the fuller copy won, and it made no claim',
+      );
     });
 
     test('and the earlier copy still wins when neither is anchored', () {
