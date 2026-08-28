@@ -76,13 +76,26 @@ async function scan(page) {
       if (r.width <= 0 || r.height <= 0) continue;
       const x = r.x + r.width / 2;
       const y = r.y + r.height / 2;
+      const onScreen =
+        x >= 0 && y >= 0 && x < window.innerWidth && y < window.innerHeight;
+      // Would a click at that point actually reach this node? Being inside the
+      // window is not enough: Flutter does NOT clip the semantics DOM to its
+      // scroll views, so a card scrolled out of a chat list keeps a node
+      // positioned wherever it would have been -- often over the app bar, at a
+      // perfectly plausible-looking coordinate. Clicking it presses whatever is
+      // genuinely there instead, and nothing about the miss looks like a miss.
+      // The node itself, or something INSIDE it (a labelled button's own
+      // tappable child). Never an ancestor: `flutter-view` contains every
+      // node on the page, so accepting one would call everything reachable
+      // and answer the question with "yes" for ever.
+      const at = onScreen ? document.elementFromPoint(x, y) : null;
       out.push({
         names,
         role: e.getAttribute('role'),
         x,
         y,
-        onScreen:
-          x >= 0 && y >= 0 && x < window.innerWidth && y < window.innerHeight,
+        onScreen,
+        hittable: !!at && (at === e || e.contains(at)),
       });
     }
     return out;
@@ -108,17 +121,24 @@ async function labels(page) {
 /// does nothing at all. That is what made the second call in a session
 /// silently fail to place.
 ///
-/// On screen first. A long timeline holds twenty cards with the same name and
-/// most of them are scrolled out of the list's clip -- their nodes are still in
-/// the tree, with rects above the viewport, and clicking one lands at a
-/// NEGATIVE coordinate. Only when nothing matching is visible does an
-/// off-screen node get to answer, so `hasControl` stays at least as willing to
-/// find a control as it was before.
+/// Reachable first, then merely on screen, then anything. A long timeline holds
+/// twenty cards with the same name and most of them are scrolled out of the
+/// list's clip; their nodes stay in the tree at coordinates that are sometimes
+/// negative and sometimes -- worse -- land on the app bar, where a click
+/// presses something else entirely and the miss looks like a working click.
+///
+/// The last tier is a deliberate floor: something answering to the name but
+/// unreachable still beats nothing, so `hasControl` stays at least as willing
+/// to find a control as it was before this ranking existed.
 function choose(matches) {
   if (!matches.length) return null;
   const pick = (list) => list.find((n) => n.role === 'button') || list[0];
-  const visible = matches.filter((n) => n.onScreen);
-  const hit = pick(visible.length ? visible : matches);
+  const tiers = [
+    matches.filter((n) => n.hittable),
+    matches.filter((n) => n.onScreen),
+    matches,
+  ];
+  const hit = pick(tiers.find((t) => t.length));
   return { x: hit.x, y: hit.y };
 }
 
