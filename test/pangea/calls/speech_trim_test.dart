@@ -101,14 +101,24 @@ void main() {
       expect(trimToSpeech(_chunk(_range(audio, 10, 22))), isNull);
     });
 
-    test('speech with no noise around it is sent whole, not trimmed', () {
-      // A trim that saves nothing is all risk and no benefit, so it is refused.
-      final speech = _range(audio, 22.3, 40.2);
-      final trimmed = trimToSpeech(_chunk(speech));
+    test('a trim that saves little is refused, and the whole chunk sent', () {
+      // Three seconds of noise in front of the speech: a span covering ~85% of
+      // the chunk. Trimming that buys almost nothing and carries all of the
+      // clipping risk, so the whole chunk goes instead.
+      //
+      // The margin is what makes this test bite. Measured against the speech
+      // region ALONE the span covers ~100%, and a slice of a 100% span is
+      // indistinguishable from the whole chunk -- so that version of this test
+      // passed with the rule deleted.
+      final mostlySpeech = Int16List.fromList([
+        ..._range(audio, 19.3, 22.3),
+        ..._range(audio, 22.3, 40.2),
+      ]);
+      final trimmed = trimToSpeech(_chunk(mostlySpeech));
 
       expect(trimmed, isNotNull);
-      expect(trimmed!.startMs, 0);
-      expect(trimmed.durationMs, closeTo(17900, 60));
+      expect(trimmed!.startMs, 0, reason: 'the whole chunk, not a slice of it');
+      expect(trimmed.durationMs, closeTo(20900, 60));
     });
   });
 
@@ -116,12 +126,26 @@ void main() {
     test('a short chunk is sent whole and never analysed', () {
       // The defect needs a lot of noise to swamp a little speech, so a short
       // chunk cannot suffer from it -- and this is where a one-word answer
-      // lives. This audio is pure noise and is STILL sent.
-      final trimmed = trimToSpeech(_chunk(_range(audio, 10.2, 13.6)));
+      // lives.
+      //
+      // The audio is deliberately the QUIET noise this detector suppresses on
+      // sight: analysed, it would come back silent, and only the short-circuit
+      // sends it. An earlier version of this test used a louder stretch that
+      // survived analysis anyway, so it passed whether or not the rule existed.
+      final short = _range(audio, 0, 7.9);
+      expect(
+        trimToSpeech(_chunk(short, index: 1)),
+        isNotNull,
+        reason: 'short audio is sent whatever the detector thinks of it',
+      );
 
-      expect(trimmed, isNotNull);
-      expect(trimmed!.startMs, 0);
-      expect(trimmed.durationMs, closeTo(3400, 60));
+      final trimmed = trimToSpeech(_chunk(short))!;
+      expect(trimmed.startMs, 0);
+      expect(trimmed.durationMs, closeTo(7900, 60));
+
+      // The same audio, one second longer, is past the floor and suppressed --
+      // which is what shows the short-circuit is doing the work above.
+      expect(trimToSpeech(_chunk(_range(audio, 0, 9))), isNull);
     });
 
     test('a short answer buried in noise is found', () {
@@ -156,6 +180,28 @@ void main() {
         trimToSpeech(_chunk(scrambled)),
         isNotNull,
         reason: 'aperiodic does not mean empty',
+      );
+    });
+
+    test('the level that vetoes suppression is read across all channels', () {
+      // A speaker recorded onto ONE side: silent left, loud aperiodic right.
+      // The veto has to see the audio that exists, so it has to downmix rather
+      // than sample whichever channel comes first. Reading channel zero alone
+      // finds digital silence here and throws away a whole side of somebody
+      // talking -- and with identical channels the two are indistinguishable,
+      // which is why this case has them differ.
+      final speech = _range(audio, 22.3, 40.2);
+      final random = Random(11);
+      final stereo = Int16List(speech.length * 2);
+      for (var i = 0; i < speech.length; i++) {
+        stereo[i * 2] = 0;
+        stereo[i * 2 + 1] = random.nextBool() ? speech[i] : -speech[i];
+      }
+
+      expect(
+        trimToSpeech(_chunk(stereo, channels: 2)),
+        isNotNull,
+        reason: 'the right channel is full of somebody talking',
       );
     });
   });
