@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import 'package:characters/characters.dart';
 
+import 'package:fluffychat/routes/chat/choreographer/igc/match_rule_id_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/span_choice_type_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/span_data_model.dart';
@@ -89,7 +90,7 @@ List<SpanData> localSpansToSpanData(
         length: text.substring(range.start, range.end).characters.length,
         fullText: text,
         type: ReplacementTypeEnum.spell,
-        rule: null,
+        rule: const Rule(id: MatchRuleIdModel.localSpellCheck),
       ),
     );
   }

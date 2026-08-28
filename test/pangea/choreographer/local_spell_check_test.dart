@@ -5,7 +5,10 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/routes/chat/choreographer/igc/igc_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/local_spell_check.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/match_rule_id_model.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/replacement_type_enum.dart';
 
 class _FakeSpellCheckService implements SpellCheckService {
@@ -129,6 +132,72 @@ void main() {
       );
 
       expect(await LocalSpellCheck.spans('', locale), isEmpty);
+    });
+  });
+
+  group('IgcController.addLocalSpellMatches', () {
+    const locale = Locale('es');
+    late IgcController controller;
+
+    setUp(() {
+      debugDefaultTargetPlatformOverride = TargetPlatform.android;
+      controller = IgcController((_) {}, () {});
+    });
+
+    tearDown(() {
+      debugDefaultTargetPlatformOverride = null;
+      LocalSpellCheck.service = DefaultSpellCheckService();
+    });
+
+    test(
+      'adds open matches — spelling is never applied for the learner',
+      () async {
+        LocalSpellCheck.service = _FakeSpellCheckService(const [
+          SuggestionSpan(TextRange(start: 7, end: 12), ['world']),
+        ]);
+
+        expect(
+          await controller.addLocalSpellMatches('Hello, wrold', locale),
+          isTrue,
+        );
+        expect(controller.matches, hasLength(1));
+        expect(
+          controller.matches.single.updatedMatch.status,
+          PangeaMatchStatusEnum.open,
+        );
+        expect(controller.openMatches, hasLength(1));
+      },
+    );
+
+    test('highlights are drawn against the text they were found in', () async {
+      LocalSpellCheck.service = _FakeSpellCheckService(const [
+        SuggestionSpan(TextRange(start: 0, end: 5), ['world']),
+      ]);
+
+      await controller.addLocalSpellMatches('wrold', locale);
+
+      expect(controller.currentText, 'wrold');
+    });
+
+    test('tags matches so the server response can replace them', () async {
+      LocalSpellCheck.service = _FakeSpellCheckService(const [
+        SuggestionSpan(TextRange(start: 0, end: 5), ['world']),
+      ]);
+
+      await controller.addLocalSpellMatches('wrold', locale);
+
+      expect(
+        controller.matches.single.updatedMatch.match.rule?.id,
+        MatchRuleIdModel.localSpellCheck,
+      );
+    });
+
+    test('reports nothing added when the device finds nothing', () async {
+      LocalSpellCheck.service = _FakeSpellCheckService(const []);
+
+      expect(await controller.addLocalSpellMatches('hello', locale), isFalse);
+      expect(controller.matches, isEmpty);
+      expect(controller.currentText, isNull);
     });
   });
 }

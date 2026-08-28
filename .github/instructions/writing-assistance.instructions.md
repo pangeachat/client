@@ -172,7 +172,7 @@ Matches no longer require explicit accept/ignore. The lifecycle simplifies to:
 
 | Status      | Meaning                                                 | Ring/Highlight        |
 | ----------- | ------------------------------------------------------- | --------------------- |
-| `automatic` | Auto-applied on arrival from the server or the local pass (punct, diacritics, spell, cap) | Bright immediately    |
+| `automatic` | Auto-applied on arrival (punct, diacritics, cap) | Bright immediately    |
 | `open`      | Server-returned, not yet viewed                         | Muted                 |
 | `viewed`    | User opened the span card and navigated away            | Bright                |
 | `accepted`  | User tapped a choice, text replaced                     | Bright                |
@@ -208,19 +208,19 @@ Categories returned by `/grammar_v2`. Each gets a distinct color in the ring and
 | Category                | Types                                                                                                                                                                                                                                                           | Behavior                                                 |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | **Grammar** (~21 types) | verb conjugation/tense/mood, agreement (subject-verb, gender, number, case), article, preposition, pronoun, word order, negation, question formation, relative clause, connector, possessive, comparative, passive voice, conditional, infinitive/gerund, modal | Highlight + ring segment, user-viewable                  |
-| **Surface**             | punct, diacritics, spell, cap                                                                                                                                                                                                                                   | **Auto-applied**, bright immediately, undo via span card. Hint text displayed only if server provides one (non-null) — omitted for obvious corrections, included when pedagogically useful (e.g. explaining an accent rule). May originate from the local spell checker as well as the server; see [Local surface corrections](#local-surface-corrections). |
+| **Surface**             | punct, diacritics, cap, spell                                                                                                                                                                                                                                   | punct, diacritics and cap are **auto-applied**, bright immediately, undo via span card. **spell is never auto-applied** — a word rewritten without asking teaches nothing, and the learner cannot tell the correction from their own typing — so it highlights like any other match and waits to be tapped. Hint text displayed only if server provides one (non-null) — omitted for obvious corrections, included when pedagogically useful (e.g. explaining an accent rule). Spelling may originate from the local spell checker as well as the server; see [Local spelling matches](#local-spelling-matches). |
 | **Word choice**         | false cognate, L1 interference, collocation, semantic confusion                                                                                                                                                                                                 | Highlight + ring segment, user-viewable                  |
 | **Style / fluency**     | style, fluency, didYouMean, transcription, translation, other                                                                                                                                                                                                   | Highlight + ring segment, user-viewable                  |
 
 ---
 
-## Local surface corrections
+## Local spelling matches
 
-Surface misspellings are the most common writing-assistance match and the least interesting one, and every one of them currently waits on a round trip to `/grammar_v2`. The device's own spell checker resolves most of them immediately, so the learner sees the correction while the server call is still in flight.
+Misspellings are the most common writing-assistance match and the least interesting one, and every one of them currently waits on a round trip to `/grammar_v2`. The device's own spell checker finds most of them straight away, so the learner can be offered the correction while the server call is still in flight.
 
-The local pass is a latency optimisation, not a second opinion. It reads the text as typed, asks for the learner's target language, and produces the same Surface matches the server would. The server stays the authority: where both describe the same span and disagree, the server's version replaces the local one when the response arrives. The local checker only knows whether a word is in a dictionary; the server knows what the learner was trying to say.
+The local pass is a latency optimisation, not a second opinion. It reads the text as typed, asks for the learner's target language, and produces the same spelling matches the server would. The server stays the authority: when its response arrives it replaces the local spelling matches entirely, so a word both of them flagged ends as one match and one ring segment. The local checker only knows whether a word is in a dictionary; the server knows what the learner was trying to say.
 
-A local correction is presented exactly like a server surface correction — auto-applied on arrival, highlighted bright, announced by `AutocorrectPopup`, given its own ring segment, undoable from the span card, and recorded in `ChoreoRecordModel` on send. This is what separates the feature from the device's own autocorrect, which fixes spelling silently and so teaches the learner nothing and leaves no record behind. A local correction is never applied silently. Where the server later confirms a span the local pass already applied, it stays one match and one ring segment.
+A local match is presented exactly like a server spelling match — highlighted, given its own ring segment, opened by tapping, and recorded in `ChoreoRecordModel` on send. Like every spelling match it is never applied on the learner's behalf. That is what separates this from the device's own autocorrect, which rewrites a word without asking and so teaches the learner nothing and leaves no record behind. What the local pass changes is only *when* the learner sees the correction offered, not whether they choose it.
 
 ### When the local pass runs
 
@@ -247,8 +247,8 @@ Choreographer (ChangeNotifier)
 
 ### Flow Summary
 
-1. User types → debounce → the local surface pass applies immediately, and the `/grammar_v2` request goes out
-2. Response returns matches → auto-apply the remaining surface corrections, reconcile against locally applied ones, display the rest
+1. User types → debounce → the local spelling pass highlights what it finds, and the `/grammar_v2` request goes out
+2. Response returns matches → auto-apply surface corrections, replace the local spelling matches with the server's, display the rest
 3. Ring segments and text highlights appear (muted)
 4. User taps highlights to view suggestions, optionally accepts choices
 5. Viewed matches become bright

@@ -276,8 +276,26 @@ class Choreographer extends ChangeNotifier {
     await _runWritingAssistance(feedbackText: feedbackText);
   }
 
+  /// Offers the misspellings the device can find while the server request is
+  /// still in flight. Runs first because the platform call takes milliseconds
+  /// against the server's seconds, and its highlights need a repaint of their
+  /// own — the next one comes only when the response lands.
+  /// See writing-assistance.instructions.md, "Local spelling matches".
+  Future<void> _runLocalSpellPass() async {
+    final locale = MatrixState.pangeaController.userController.userL2?.locale;
+    if (locale == null) return;
+
+    final added = await igcController.addLocalSpellMatches(
+      textController.text,
+      locale,
+    );
+    if (added) notifyListeners();
+  }
+
   Future<void> _runWritingAssistance({String? feedbackText}) async {
     _startLoading();
+
+    await _runLocalSpellPass();
 
     feedbackText != null
         ? await igcController.rerunWithFeedback(

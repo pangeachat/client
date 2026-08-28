@@ -10,6 +10,9 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_repo.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_request_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_response_model.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/local_spell_check.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/match_rule_id_model.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/span_data_model.dart';
@@ -94,6 +97,42 @@ class IgcController {
     _matches.clear();
     clearMatchToShow();
   }
+
+  /// Highlights the misspellings the device can find, so the learner is
+  /// offered them without waiting for the server. Returns whether any were
+  /// added, so the caller knows whether a repaint is worth it.
+  ///
+  /// These are ordinary open matches: spelling is never applied on the
+  /// learner's behalf. The server replaces them wholesale in [_fetchIGC].
+  /// See writing-assistance.instructions.md, "Local spelling matches".
+  Future<bool> addLocalSpellMatches(String text, Locale locale) async {
+    if (_isFetching) return false;
+
+    final spans = await LocalSpellCheck.spans(text, locale);
+    if (spans.isEmpty) return false;
+
+    // The highlights are drawn against this text, so it has to be the text
+    // the spans were found in — not whatever the last response left behind.
+    _currentText = text;
+
+    for (final span in spans) {
+      _matches.add(
+        PangeaMatchState(
+          match: span,
+          status: PangeaMatchStatusEnum.open,
+          original: PangeaMatch(
+            match: span,
+            status: PangeaMatchStatusEnum.open,
+          ),
+        ),
+      );
+    }
+    return true;
+  }
+
+  void _removeLocalSpellMatches() => _matches.removeWhere(
+    (m) => m.updatedMatch.match.rule?.id == MatchRuleIdModel.localSpellCheck,
+  );
 
   void clearCurrentText() => _currentText = null;
 
@@ -349,6 +388,11 @@ class IgcController {
 
     _lastResponse = res.result!;
     _currentText = res.result!.originalInput;
+
+    // The server has now seen the same text, so its answer stands in for the
+    // local one — including where it found nothing to correct.
+    _removeLocalSpellMatches();
+
     for (final match in res.result!.matches) {
       final matchState = PangeaMatchState(
         match: match.match,
