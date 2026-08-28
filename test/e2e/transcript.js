@@ -30,7 +30,9 @@
 // rate, channel count, a too-confident reading of the Whisper artefact, and
 // then the app's web tap, on the argument that `TrackRendererTap` reads a
 // renderer and a renderer can be dead while `isRecording` is true. None of
-// them. The app's capture path was correct the whole time.
+// them. Nothing found here implicates the app's capture path at all, which is
+// a narrower claim than "the app was fine" and is the one the evidence
+// supports: the harness never fed it anything to capture.
 //
 // It was TWO facts about this harness. They are not the same failure -- the
 // first silenced BOTH microphones outright, the second emptied one speaker's
@@ -162,7 +164,14 @@ async function refuseIfNotLearning(names) {
   for (const name of names) {
     const a = h.cfg.accounts[name];
     const { token, userId } = await mx.login(a.user, a.pass);
-    const code = await mx.targetLanguage(token, userId);
+    let code;
+    try {
+      code = await mx.targetLanguage(token, userId);
+    } finally {
+      // Handed back whatever the answer was. A session taken for one question
+      // is a Matrix DEVICE, and these two accounts are reused forever.
+      await mx.logout(token);
+    }
     if (mx.baseLang(code) === FIXTURE_LANG) continue;
     throw new Error(
       `${name} (${userId}) is learning ${code || 'nothing yet'}, and the `
@@ -366,9 +375,10 @@ async function main() {
   // `check` is evaluated before the check is, so a diagnostic gathered
   // unconditionally can end the run on the path where there was nothing to
   // explain.
-  const insteadOnScreen = card
-    ? ''
-    : JSON.stringify((await ui.labels(A.page).catch(() => [])).slice(0, 25));
+  const seen = card ? [] : await ui.labels(A.page).catch(() => []);
+  const insteadOnScreen = JSON.stringify(
+    (Array.isArray(seen) ? seen : []).slice(0, 25),
+  );
   h.check(s, 'the card offers the transcript', card,
     `no way in to the transcript from the call card; on screen: ${insteadOnScreen}`);
 

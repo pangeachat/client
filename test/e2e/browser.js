@@ -77,10 +77,13 @@ async function launch({ userDataDir, wav, port }) {
       // transcript pipeline in the app, and three theories about the app's
       // capture path were chased before Chrome's own log line was read.
       //
-      // Narrower than the `--no-sandbox` that log line suggests, and
-      // deliberately so: that lifts the RENDERER sandbox too, and the renderer
-      // is the process running the app under test. This leaves the audio
-      // service out of process and lifts only its sandbox.
+      // This IS a reduction in Chrome's sandboxing, and it belongs to the
+      // harness alone: these browsers are launched by this file, run against a
+      // laptop's local stack, and are thrown away at the end of a scenario.
+      // Nothing ships it. It is also the narrowest reduction that works --
+      // narrower than the `--no-sandbox` the log line suggests, which lifts the
+      // RENDERER sandbox too, and the renderer is the process running the app
+      // under test.
       '--disable-features=AudioServiceSandbox',
       // Ringtones and remote audio start without a click, which no scenario
       // can supply.

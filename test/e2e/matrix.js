@@ -46,6 +46,21 @@ async function login(user, password) {
   return { token: r.access_token, userId: r.user_id, deviceId: r.device_id };
 }
 
+/// Gives a session back.
+///
+/// Every login creates a DEVICE, and the two fixture accounts are reused
+/// forever -- their call membership state already carries an entry from every
+/// past session, and `liveMemberships` exists to filter them out. A session
+/// taken to ask one question and then abandoned adds to that for nothing.
+///
+/// Never throws: it is cleanup, and cleanup that can fail a run is worse than
+/// the device it was tidying away.
+async function logout(token) {
+  try {
+    await api('/_matrix/client/v3/logout', { token, method: 'POST', body: {} });
+  } catch (_) {}
+}
+
 /// The room the two accounts share, newest-activity first.
 async function directRoomWith(token, peerUserId) {
   const joined = await api('/_matrix/client/v3/joined_rooms', { token });
@@ -205,4 +220,4 @@ async function hasMembership(token, roomId, userId) {
   return (await liveMemberships(token, roomId, userId)) > 0;
 }
 
-module.exports = { api, login, displayName, targetLanguage, baseLang, hasMembership, liveMemberships, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };
+module.exports = { api, login, logout, displayName, targetLanguage, baseLang, hasMembership, liveMemberships, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };
