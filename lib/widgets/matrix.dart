@@ -363,7 +363,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       rejoinAnchor: rejoinMembershipEventId,
       rejoinSince: rejoinSince,
       callerMembershipEventId: callerMembershipEventId,
-      callService: callServiceFor(room.client.clientName),
+      // By the room's client OBJECT, not its name: the name-keyed getter
+      // falls back to the ACTIVE account, and this is the call's own service
+      // for its whole life. Resolving it the same way the incoming-call
+      // banner does also guarantees they hold the SAME instance -- the SDK's
+      // VoIP is per instance, and two would lose track of each other's call.
+      callService: callServiceForClient(room.client),
       // Passed into the constructor, NOT toggled afterwards: the assignment
       // to `activeCall` below is what makes GlobalCallTile build, so a session
       // that becomes fullscreen after it would show one frame of the

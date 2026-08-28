@@ -350,6 +350,29 @@ void main() {
       );
     });
 
+    testWidgets('a ring already in flight when it goes cannot ring', (
+      tester,
+    ) async {
+      // The reconcile runs a frame LATE. Cancelling a subscription does not
+      // unqueue what it has already handed over, so between the account
+      // leaving `clients` and the reconcile dropping its record, a ring can
+      // still arrive -- and would otherwise raise a prompt, and start it
+      // sounding, for an account nobody can answer as.
+      final room = directChat(other);
+      final state = await pumpBanner(tester);
+
+      // Removed WITHOUT letting the reconcile run: no bump, no pump.
+      state.widget.clients.remove(other);
+      other.onTimelineEvent.add(ring(room, id: r'$inflight'));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.byKey(const ValueKey(r'$inflight')),
+        findsNothing,
+        reason: 'the account is already gone, whatever the map still says',
+      );
+    });
+
     testWidgets('and stops listening to it', (tester) async {
       final room = directChat(other);
       final state = await pumpBanner(tester);

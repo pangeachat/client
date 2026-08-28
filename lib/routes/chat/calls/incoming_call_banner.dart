@@ -664,12 +664,20 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   }
 
   void _offer(IncomingCallNotification ring, matrix.Client account) {
-    // Checked against the account this subscription was made for, BEFORE any
-    // state is touched. Cancelling does not unqueue what has already been
-    // handed over, so a ring for an account that has just signed out could
-    // still land here — and besides answering as the wrong account, it must
-    // not clear another account's offer or setState after dispose.
-    if (!mounted || !_accounts.containsKey(account)) return;
+    // Checked BEFORE any state is touched. Cancelling a subscription does not
+    // unqueue what it has already handed over, so a ring for an account that
+    // has just signed out could still land here — and besides being answered
+    // as the wrong account, it must not clear another account's offer, start
+    // a ring sound, or setState after dispose.
+    //
+    // Through [_serviceFor], which is the ONE liveness gate every ring-scoped
+    // action shares: the account is still subscribed AND still in `clients`.
+    // The map alone is not enough — the reconcile runs a frame late, so
+    // between a logout and that pass the record is still present for an
+    // account that has already gone.
+    if (!mounted) return;
+    if (_serviceFor(ring.event.room) == null) return;
+    if (!identical(ring.event.room.client, account)) return;
     // A call is already live somewhere in this app. Ringing here offers an
     // Answer that cannot happen: taking it throws AlreadyInACall and declines
     // busy at that point, so the learner is shown a call they can only
@@ -910,6 +918,13 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // moment someone tapped answer — and answering did nothing at all. The SFU
     // is the rendezvous point: join it, and let presence decide from there
     // whether anyone is actually on the other end.
+    // The account this ring reached must still be signed in. Between the
+    // prompt going up and this tap it can have logged out, and starting a
+    // call then would run it through whichever account is foregrounded now.
+    if (_serviceFor(ring.event.room) == null) {
+      matrix.Logs().w('Cannot answer: that account is no longer signed in');
+      return;
+    }
     final matrixState = Matrix.of(context);
     // Whether the call is for the account the learner is currently in.
     //
