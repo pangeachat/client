@@ -620,9 +620,9 @@ class WorldMapController extends State<WorldMap>
   }
 
   /// World pins for the current viewport, personalized to the user's language
-  /// (unless widened) and localized to their L1. No-op until the camera is laid
-  /// out (onMapReady retries). CEFR band, completion, and text search are
-  /// applied client-side over the result via [visiblePins].
+  /// (unless widened). No-op until the camera is laid out (onMapReady retries).
+  /// CEFR band, completion, and text search are applied client-side over the
+  /// result via [visiblePins].
   Future<void> loadWorldPins() async {
     if (!isWorld) return;
     final LatLngBounds bounds;
@@ -632,7 +632,6 @@ class WorldMapController extends State<WorldMap>
       return; // camera not ready yet
     }
 
-    final user = MatrixState.pangeaController.userController;
     if (mounted) setState(() => _loadingPins = true);
 
     try {
@@ -641,7 +640,6 @@ class WorldMapController extends State<WorldMap>
         // Language is fixed by the learner's settings, not a map filter, so the
         // working set is always narrowed to their L2 (world-map.instructions.md).
         l2: _filterState.filter.l2?.langCodeShort,
-        l1: user.userL1?.langCodeShort,
       );
     } finally {
       if (mounted) {

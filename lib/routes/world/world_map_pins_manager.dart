@@ -703,7 +703,6 @@ class WorldMapPinsManager {
   Future<void> loadWorldScopedPins({
     required LatLngBounds bounds,
     String? l2,
-    String? l1,
   }) async {
     final pins = (await ActivityMapRepo.bboxPins(
       bounds: bounds,
