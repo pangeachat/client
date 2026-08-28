@@ -42,7 +42,15 @@ class PangeaSsoButton extends StatelessWidget {
       return;
     }
 
-    final client = Matrix.of(context).client;
+    // The login must run on the client [getLoginClient] resolved when
+    // [_getSSOToken] built the redirect URL (memoized, so this returns the
+    // same instance) — that is the client carrying the login-success listener
+    // that navigates and closes the loading dialog. After a logout, the
+    // active-client getter instead resolves to the logged-out account, whose
+    // listeners are gone or mid-teardown: the token login then succeeds on a
+    // client nothing is watching, and the dialog hangs on "Finalizing..."
+    // until a refresh (#8640).
+    final client = await Matrix.of(context).getLoginClient();
     await LoginMethodRepo.clearStoredLoginMethod();
 
     GoogleAnalytics.prepareLogin(provider.name);
