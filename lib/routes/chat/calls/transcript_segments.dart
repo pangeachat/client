@@ -486,6 +486,9 @@ List<TranscriptSegment> buildSegments(
 /// earliest speech in it, every gap is measured from a real end, and nothing
 /// lies outside the chunk.
 ///
+/// Sub-threshold overlap between neighbouring words is tolerated; see
+/// [_boundaryJitter] for why, and for what is still refused.
+///
 /// The cost is real and is accepted: one absent end anywhere in a chunk makes
 /// that chunk placed at its own start rather than word by word. It no longer
 /// costs the rest of the call: every segment carries a position, so a chunk the
@@ -493,6 +496,30 @@ List<TranscriptSegment> buildSegments(
 /// carved out exemptions inside this rule to avoid the old all-or-nothing cost,
 /// and all three carve-outs were where the next hole was found. The rule stayed
 /// strict and the COST moved instead, which is where it belonged.
+/// How far a word may start BEFORE the previous one ended and still be read as
+/// the same ordered sequence.
+///
+/// Word boundaries out of an ASR are estimates, and neighbouring estimates
+/// disagree by a few milliseconds routinely. Requiring a strict partition
+/// therefore failed on jitter rather than on disorder: a real call rejected a
+/// 44-word chunk over ONE overlap of 20ms, and because a rejected chunk places
+/// every segment at one shared moment, three of that speaker's sentences
+/// collapsed onto a single timestamp and the conversation read out of order.
+///
+/// This is deliberately a TOLERANCE and not a removal of the rule. Overlaps
+/// beyond it still reject the chunk, so a genuinely disordered list -- the
+/// "words out of order" case, where a later word claims an earlier moment --
+/// is refused exactly as before.
+///
+/// Measured, not guessed, though the sample is thin and worth saying so: across
+/// every real provider capture on hand -- 48 responses, 1221 timed words --
+/// there is exactly ONE overlap and it is 20ms. So jitter is RARE and small,
+/// while the cost of treating it as disorder is total: the chunk loses word
+/// timing entirely and every segment in it collapses onto one moment. 50ms
+/// leaves better than twice the margin over the only case observed, and sits
+/// far below any gap that could reorder two speakers against each other.
+const _boundaryJitter = 50;
+
 bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
   // Starts at zero, which is also what rejects a negative first start.
   var previousEnd = 0;
@@ -500,8 +527,17 @@ bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
     final start = timing.startTimeMs;
     final end = timing.endTimeMs;
     if (start == null || end == null) return false;
-    if (start < previousEnd || end < start || end > durationMs) return false;
-    previousEnd = end;
+    // Absolute bounds first, WITHOUT the tolerance. `previousEnd` begins at
+    // zero, so folding the jitter allowance into that comparison quietly
+    // admitted a negative first start -- the tolerance is for disagreement
+    // between two neighbouring estimates, never for a word claiming a moment
+    // before the chunk began.
+    if (start < 0 || end < start || end > durationMs) return false;
+    if (start < previousEnd - _boundaryJitter) return false;
+    // Read forward from the LATER of the two, so a tolerated overlap cannot
+    // accumulate: ten words each 40ms early must not walk the sequence back
+    // half a second.
+    previousEnd = end > previousEnd ? end : previousEnd;
   }
   return true;
 }

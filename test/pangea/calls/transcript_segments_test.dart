@@ -699,6 +699,71 @@ void main() {
       expect(segments.map((s) => s.atMs), everyElement(_chunkStart + 400));
     });
 
+    test('a few ms of boundary jitter does NOT cost the chunk its cut', () {
+      // From a real two-person call: 44 words, ONE overlap of 20ms, and the
+      // whole chunk was refused. Every segment then shared one timestamp, so
+      // three of that speaker's sentences collapsed onto a single moment and
+      // the conversation read out of order against the other speaker.
+      final segments = buildSegments([
+        _chunk(
+          'hola que tal',
+          timings: [
+            ('hola', 0, 300),
+            ('que', 280, 600), // starts 20ms before 'hola' ended
+            ('tal', 2000, 2400),
+          ],
+          durationMs: 3000,
+        ),
+      ]);
+
+      expect(segments.map((s) => s.text), ['hola que', 'tal']);
+      expect(
+        segments.map((s) => s.atMs),
+        [_chunkStart, _chunkStart + 2000],
+        reason: 'jitter must not collapse the chunk onto one moment',
+      );
+    });
+
+    test('an overlap too large to be jitter still refuses the chunk', () {
+      // The guard this tolerance must not dissolve: a word claiming a moment
+      // well before the previous one ended is disorder, not measurement noise.
+      final segments = buildSegments([
+        _chunk(
+          'hola que tal',
+          timings: [
+            ('hola', 0, 2000),
+            ('que', 500, 2200), // 1500ms early: real disorder
+            ('tal', 2300, 2400),
+          ],
+          durationMs: 3000,
+        ),
+      ]);
+
+      expect(
+        segments.map((s) => s.atMs).toSet().length,
+        1,
+        reason: 'a disordered sequence still falls back to one moment',
+      );
+    });
+
+    test('tolerated overlaps do not accumulate backwards', () {
+      // Ten words each 40ms early must not walk the sequence half a second
+      // back. The scan reads forward from the later of the two ends.
+      final timings = <(String, int?, int?)>[];
+      for (var i = 0; i < 10; i++) {
+        timings.add(('w$i', i * 100 - 40, i * 100 + 100));
+      }
+      final segments = buildSegments([
+        _chunk(
+          List.generate(10, (i) => 'w$i').join(' '),
+          timings: [('w0', 0, 100), ...timings.skip(1)],
+          durationMs: 3000,
+        ),
+      ]);
+
+      expect(segments.single.atMs, _chunkStart);
+    });
+
     test('and the same words, well formed, ARE positioned', () {
       // The control. Without it every assertion above would still hold with
       // positioning removed altogether.
