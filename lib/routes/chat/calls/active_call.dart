@@ -575,9 +575,11 @@ class ActiveCall extends ChangeNotifier {
   /// `CallDelayedLeave.maxRestart` at the slowest, so the EARLIEST a
   /// server-written retraction can appear is the difference between those two
   /// after a device stopped heartbeating. Anything sooner cannot be the
-  /// server's, so this is as much room for slow delivery as can be taken
-  /// without ever mistaking the server's cleanup for a decision -- and it
-  /// stays inside [peerGraceWindow], so a genuine vanish is unaffected.
+  /// server's, so this is as much room for slow delivery as can be taken while
+  /// the retraction's own AGE still separates the two -- and it stays inside
+  /// [peerGraceWindow], so a genuine vanish is unaffected. It does not follow
+  /// that the cleanup is never mistaken for a decision; the two residuals
+  /// below are the reasons why.
   ///
   /// Those two are the app's numbers, not the SDK's defaults, and they were
   /// raised together precisely so this one stayed true; call_timeouts_test.dart
