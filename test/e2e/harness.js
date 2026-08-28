@@ -85,13 +85,19 @@ async function openParticipant(name, roomLocalpart, port) {
 /// confirms by waiting for a control that only exists inside a chat, and fails
 /// loudly if it never comes.
 ///
-/// What the checking has actually caught, measured rather than assumed: the
-/// chat is SLOW to paint, not missing. Eight cold loads of this link in a row
-/// kept `?left=chats,room:...` untouched in the address bar and opened the
-/// room every time; the one attempt that ever failed was the first one after a
-/// call, and the second attempt -- doing the same thing again -- worked. The
-/// route is not being swallowed, so the answer is patience (see
-/// [settledInRoom]) and a diagnostic that prints the URL.
+/// It catches TWO different failures, and they were confused for each other
+/// for a long time because this function reported neither of them clearly.
+///
+///   - The route really was swallowed. Measured with a History API hook, one
+///     cold load in ten pushed `/` over the accepted deep link ~160ms later:
+///     a restored session announcing itself and being sent to the world map
+///     (fixed in the app -- PAuthGaurd.loggedInLanding).
+///   - The chat was merely slow to paint. Nothing was wrong with the URL; the
+///     app was busy, most visibly right after a call, and a single look 6.5
+///     seconds in was too early.
+///
+/// So: patience for the second ([settledInRoom]), and a failure line that
+/// prints the URL, because that is the one fact that tells them apart.
 async function openRoom(page, roomLocalpart, attempts = 4) {
   for (let i = 1; i <= attempts; i++) {
     // Cleared first on a retry: the app restores whatever route it was last
@@ -110,19 +116,23 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
     // LIST with the conversation right there. Clicking it is what a person
     // would do, and it is far more reliable than reloading the same link
     // again: a row is recognisable by its timestamp.
-    const row = (await ui.scan(page)).find((n) =>
-      n.onScreen && n.names.some((l) => /\d{1,2}:\d{2}\s?(AM|PM)/i.test(l)));
+    //
+    // Through the same chooser every other click goes through. "Inside the
+    // window" is not the test: a row scrolled out of the list keeps a node at a
+    // coordinate that can sit over the app bar, and clicking that presses the
+    // app bar. [ui.choose] ranks by what a click would actually reach.
+    const row = ui.choose((await ui.scan(page)).filter((n) =>
+      n.names.some((l) => /\d{1,2}:\d{2}\s?(AM|PM)/i.test(l))));
     if (row) {
       await page.mouse.click(row.x, row.y);
       if (await settledInRoom(page, { timeout: 8000 })) return;
     }
     // THE URL, always. Without it this line cannot tell the two failures
-    // apart, and they want opposite fixes: a link the app REWROTE (the route
-    // was swallowed, a product bug) versus the link still standing with the
-    // chat simply not painted yet (the app is busy -- wait longer). A whole
-    // investigation went looking for a routing hole that does not exist
-    // because this printed only the labels, and the labels of an open chat are
-    // nearly the labels of the bare map.
+    // apart, and they want opposite fixes: a link the app REWROTE versus the
+    // link still standing with the chat simply not painted yet. It used to
+    // print only the labels, and the labels of an OPEN chat are nearly the
+    // labels of the bare map -- so a slow paint and a lost route read
+    // identically, and an investigation spent a long time on the wrong one.
     console.log(
       `   (room did not open, attempt ${i}/${attempts}; url ${page.url()}; ` +
         `on screen: ${JSON.stringify(await ui.labels(page))})`);

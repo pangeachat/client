@@ -39,9 +39,10 @@ async function enableSemantics(page) {
 /// feature that was working perfectly -- and the check it gates, the one about
 /// nobody being wrongly called silent, has therefore never run at all. It
 /// looked like a routing bug: `ui.labels()` came back with the map's labels
-/// and nothing of the chat, so the app appeared to be sitting on the world map
-/// with the deep link swallowed, when in truth the room was open and only its
-/// labels were unreadable from here.
+/// and nothing of the chat, so an OPEN room read as the bare world map with
+/// the deep link swallowed. There turned out to be a real swallow as well (see
+/// harness.js's [openRoom]), which is exactly why an unreadable screen is
+/// expensive: it made a rare bug and a common one look like the same thing.
 ///
 /// login.js already read both (its own `nameOf`), which is why signing in kept
 /// working while everything after it did not; unstick.js and refresh_midcall.js
@@ -252,8 +253,8 @@ async function waitForControl(page, name, { timeout = 15000, ...opts } = {}) {
 }
 
 module.exports = {
-  wait, enableSemantics, scan, labels, findRect, waitForLabel, clickLabel,
-  hasLabel, findControl, hasControl, clickControl, waitForControl,
+  wait, enableSemantics, scan, choose, labels, findRect, waitForLabel,
+  clickLabel, hasLabel, findControl, hasControl, clickControl, waitForControl,
 };
 
 // ---------------------------------------------------------------------------
