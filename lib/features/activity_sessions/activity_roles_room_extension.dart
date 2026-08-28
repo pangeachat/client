@@ -160,6 +160,16 @@ extension ActivityRolesRoomExtension on Room {
 
   bool get isActiveInActivity => hasPickedRole && !hasCompletedRole;
 
+  /// The Chats-list mirror of the map's `ongoingActive` pin state: the learner
+  /// holds a seat, every seat is filled so the chat has really started, and
+  /// their own role is neither finished nor archived. Split on the same
+  /// discriminator the map uses — [numRemainingRoles] > 0 is Waiting (pending),
+  /// 0 is active — over the same seat-held / own-role-live terms its session
+  /// facts carry, so a session's tile and its large card can never disagree on
+  /// when it is live (world-map.instructions.md, "Goal Progress").
+  bool get isOngoingActiveSession =>
+      isActiveInActivity && !hasArchivedActivity && numRemainingRoles == 0;
+
   /// Loaded membership of [userId] via [getParticipants] with the full
   /// membership filter — the DEFAULT filter drops leave/ban members, which is
   /// exactly the evidence [roleHolderVacated] needs. Null when the member
