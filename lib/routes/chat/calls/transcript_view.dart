@@ -7,6 +7,7 @@ import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
 
 /// Opens the transcript of one finished call.
@@ -170,11 +171,24 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
               .nonNulls
               .toList();
 
+          // Said once, at the top, and only about what is actually DRAWN.
+          // The per-speaker view prints no times at all, so neither caveat has
+          // anything to explain there -- and a caveat that fires when nothing
+          // on screen shows the thing it describes is noise that teaches the
+          // reader to skip the next one.
+          final approximate = turns.any(
+            (turn) => turn.time == TurnTime.atOrBefore,
+          );
+          final unstated = turns.any((turn) => turn.time == TurnTime.unstated);
+
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
             children: [
               if (transcript.readerStoppedEarly)
                 _Caveat(text: l10n.callTranscriptStoppedEarly),
+              if (approximate)
+                _Caveat(text: l10n.callTranscriptApproximateTimes),
+              if (unstated) _Caveat(text: l10n.callTranscriptUnstatedTimes),
 
               if (turns.isNotEmpty)
                 TurnTimeline(turns: turns)
@@ -240,23 +254,37 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         (half: half, shift: transcript.clockShiftFor(half)),
     ];
 
-    final positions = [
+    // The moment each segment is PLACED at, which for one that knows only its
+    // chunk is the END of that chunk's audio rather than the estimate inside
+    // it. That is the whole fix: placed at its estimate, a turn spoken forty
+    // seconds into a chunk renders at the chunk's start and jumps ahead of the
+    // other speaker's correctly timed question; placed at the latest moment it
+    // could have been, it cannot render earlier than it was said.
+    final keys = [
       for (final entry in placed)
-        for (final segment in entry.half.segments) segment.atMs! - entry.shift,
+        for (final segment in entry.half.segments)
+          segment.orderKeyMs! - entry.shift,
     ];
-    if (positions.isEmpty) return const [];
+    if (keys.isEmpty) return const [];
 
     // The earliest turn ANYWHERE in the transcript, not the earliest in each
     // half: the whole point is that one clock runs behind both columns, and
     // per-half origins would restart it for the second speaker.
     //
-    // This origin is the first turn SPOKEN, not the moment the call connected,
+    // Taken over the same keys everything is ORDERED by, not over the raw
+    // positions. Two reasons. The raw position of an approximate segment is an
+    // estimate this feature declines to print, and the origin is the number
+    // every printed time is relative to, so it may not be one we cannot
+    // defend; and a minimum over exactly the values being subtracted from is
+    // what makes every elapsed time non-negative by construction.
+    //
+    // This origin is the first turn PLACED, not the moment the call connected,
     // and the two are different whenever a call opens with silence. Nothing on
     // the wire says when capture began -- each segment carries only its own
     // absolute time -- so the connect moment cannot be recovered here, and this
     // clock can therefore read a little short of the duration on the call card.
     // See `CallTurn.at`, which states the same contract.
-    final start = positions.reduce((a, b) => a < b ? a : b);
+    final start = keys.reduce((a, b) => a < b ? a : b);
 
     return [
       for (final entry in placed)
@@ -270,10 +298,28 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
             name: _displayNameOf(entry.half.senderId),
             avatarUrl: _avatarOf(entry.half.senderId),
             isMe: entry.half.senderId == me,
-            at: Duration(milliseconds: segment.atMs! - entry.shift - start),
+            at: Duration(
+              milliseconds: segment.orderKeyMs! - entry.shift - start,
+            ),
+            time: _timeKindOf(segment, entry.half),
             text: segment.text,
           ),
     ];
+  }
+
+  /// What may be said about one segment's moment.
+  ///
+  /// The span is honoured wherever it appears, marked half or not: a span only
+  /// ever moves a turn LATER and says less about it, so it cannot manufacture
+  /// precision and there is nothing to protect against.
+  ///
+  /// The MARKER is what separates the other two. A half that marks its
+  /// positions has asserted that a segment carrying no span was placed at its
+  /// own first word; a half that does not has asserted nothing, and printing
+  /// its number anyway would put this app's confidence behind that silence.
+  TurnTime _timeKindOf(TranscriptSegment segment, TranscriptHalf half) {
+    if (segment.positionIsApproximate) return TurnTime.atOrBefore;
+    return half.positionsMarked ? TurnTime.exact : TurnTime.unstated;
   }
 
   /// What still needs saying about a half once its words are in the timeline,

@@ -22,21 +22,25 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_resp
 class TranscriptSegment {
   final String text;
 
-  /// When this stretch of speech began, in absolute Unix milliseconds, at the
-  /// best resolution the provider allowed.
+  /// Our best estimate of when this stretch of speech began, in absolute Unix
+  /// milliseconds.
   ///
-  /// THREE resolutions produce it and the field does not distinguish them,
-  /// which is deliberate: each is an answer to the same question, differing
-  /// only in how tightly it is bounded.
+  /// THREE resolutions produce it and this field does not distinguish them:
   ///
   /// 1. The moment its first word was spoken, when the timings were trusted
-  ///    word for word.
+  ///    word for word. Only this one is a MOMENT.
   /// 2. The moment speech began anywhere in the chunk, when the word list was
   ///    refused. Refusal judges which WORDS the timings name; when sound
   ///    started is a separate claim and survives it.
   /// 3. The chunk's own start, only when the provider offered no usable start
-  ///    at all. A chunk runs to 45 seconds, so this is the loosest of the
-  ///    three and is used last for that reason.
+  ///    at all.
+  ///
+  /// [spanMs] is what tells the two apart, and it is there because 2 and 3 are
+  /// ESTIMATES rather than bounds. Case 2 minimises over word starts AND word
+  /// ends, so a word whose start the provider omitted contributes its end and
+  /// the true first speech is somewhere before that; case 3 is the chunk's
+  /// start, and a chunk can open with silence. Neither may be read as the
+  /// moment somebody spoke.
   ///
   /// [buildSegments] never produces null. It remains nullable for segments read
   /// off the wire that carried no position, including events written before
@@ -45,11 +49,50 @@ class TranscriptSegment {
   /// [fromJson] for what is accepted off the wire.
   final int? atMs;
 
-  const TranscriptSegment(this.text, {this.atMs});
+  /// How much later than [atMs] this speech could have begun, or null when
+  /// [atMs] is the moment itself.
+  ///
+  /// PRESENCE is the marker, not a positive value. A chunk whose audio window
+  /// has collapsed to an instant, and an estimate that happens to land on its
+  /// own chunk's end, both carry a span of zero and neither can support the
+  /// claim that its first word was spoken exactly then. Reading `spanMs > 0`
+  /// as "approximate" would hand those two an exactness they do not have.
+  ///
+  /// Written as a DELTA rather than the window's absolute end: five digits
+  /// against thirteen, on a wire whose packer drops speech off the tail of a
+  /// half that will not fit. Being a delta also makes it invariant under the
+  /// per-half clock correction, which shifts [atMs] and nothing else.
+  ///
+  /// The upper end is PROVEN, unlike [atMs]. It is the end of the chunk's own
+  /// audio, and no word in a chunk began after its audio stopped.
+  final int? spanMs;
+
+  const TranscriptSegment(this.text, {this.atMs, this.spanMs})
+    : assert(
+        atMs != null || spanMs == null,
+        'a span bounds a position, and there is no position to bound',
+      );
+
+  /// The moment this segment is PLACED at: the latest it could have begun.
+  ///
+  /// This, not [atMs], is what orders one speaker's turns against the other's.
+  /// Placing an approximate turn at its estimate is what lets it render a whole
+  /// chunk earlier than it happened and jump ahead of the other speaker's
+  /// correctly timed turn -- an answer before its question. Placing it at the
+  /// end of the audio it came from cannot: no turn is then shown earlier on the
+  /// clock than it was spoken.
+  int? get orderKeyMs {
+    final at = atMs;
+    return at == null ? null : at + (spanMs ?? 0);
+  }
+
+  /// Whether this segment knows only which CHUNK it was said in.
+  bool get positionIsApproximate => atMs != null && spanMs != null;
 
   Map<String, dynamic> toJson() => {
     'text': text,
     if (atMs != null) 'at_ms': atMs,
+    if (atMs != null && spanMs != null) 'at_span_ms': spanMs,
   };
 
   /// One past the largest position that survives a JSON round trip.
@@ -57,6 +100,37 @@ class TranscriptSegment {
   /// JSON numbers are doubles, and the largest integer a double holds exactly
   /// is 2^53 - 1. Anything at or beyond this is not a time this writer produced.
   static const atMsCeiling = 9007199254740992;
+
+  /// What one raw entry says about how tightly its position is known.
+  ///
+  /// One implementation, two callers: this segment's own parse, and
+  /// `CallTranscriptContent.fromJson`, which has to know that an entry declared
+  /// a span it could not use so the HALF can stop claiming it marks its
+  /// positions. Two readers of one key would drift.
+  ///
+  /// A declared-but-unusable span does NOT cost the segment its `at_ms`. That
+  /// rule cannot be right here: whether a span is honoured is a question about
+  /// the segment, while what an unusable one means is a question about the
+  /// half's claim, and destroying a sound position over the second would drop
+  /// the whole call to the per-speaker view for one corrupt byte. It voids the
+  /// CLAIM instead, which is the shape `HalfAccounting.declared` already uses.
+  ///
+  /// A span beside an unusable `at_ms` is neither honoured nor held against the
+  /// half: there is no position for it to bound, and the segment is unplaceable
+  /// on its own account.
+  static ({int? spanMs, bool declaredButUnusable}) spanOf(
+    Object? raw,
+    int? atMs,
+  ) {
+    const none = (spanMs: null, declaredButUnusable: false);
+    if (raw is! Map || atMs == null) return none;
+    if (!raw.containsKey('at_span_ms')) return none;
+    final span = raw['at_span_ms'];
+    if (span is int && span >= 0 && atMs + span < atMsCeiling) {
+      return (spanMs: span, declaredButUnusable: false);
+    }
+    return (spanMs: null, declaredButUnusable: true);
+  }
 
   static TranscriptSegment? fromJson(Object? raw) {
     if (raw is! Map) return null;
@@ -74,23 +148,26 @@ class TranscriptSegment {
     // the writer sent; and accepting loose numbers would let hostile content
     // satisfy the render gate with fabricated positions.
     final at = raw['at_ms'];
-    return TranscriptSegment(
-      trimmed,
-      atMs: at is int && at >= 0 && at < atMsCeiling ? at : null,
-    );
+    final atMs = at is int && at >= 0 && at < atMsCeiling ? at : null;
+    return TranscriptSegment(trimmed, atMs: atMs, spanMs: spanOf(raw, atMs).spanMs);
   }
 
   @override
   bool operator ==(Object other) =>
-      other is TranscriptSegment && other.text == text && other.atMs == atMs;
+      other is TranscriptSegment &&
+      other.text == text &&
+      other.atMs == atMs &&
+      other.spanMs == spanMs;
 
   @override
-  int get hashCode => Object.hash(text, atMs);
+  int get hashCode => Object.hash(text, atMs, spanMs);
 
   @override
   String toString() => atMs == null
       ? 'TranscriptSegment($text)'
-      : 'TranscriptSegment($text @$atMs)';
+      : spanMs == null
+      ? 'TranscriptSegment($text @$atMs)'
+      : 'TranscriptSegment($text @$atMs+$spanMs)';
 }
 
 /// One chunk's frozen transcription, together with where its audio sat.
@@ -285,12 +362,18 @@ List<String>? _alignedToTranscript(List<WordTiming> timings, String text) {
 /// at all. Losing the finer cut is a readability cost; dropping the words would
 /// be a correctness one.
 ///
-/// A segment carries a POSITION only when it has a real one. A whole-chunk
-/// fallback never does — see [_isWellFormedSequence] for the other half of that
-/// rule. An earlier version gave the fallbacks an offset of zero and called it
-/// exact, and it is not: a ninety-second chunk can open with silence, so zero
-/// is the CHUNK's position passed off as the SPEECH's, and interleaving the
-/// other speaker against it would be confidently wrong.
+/// Every segment carries a position, and every segment SAYS how tightly that
+/// position is known. Only a segment cut by timings this file trusted word for
+/// word is stamped at its own first word; every other route is bounded to the
+/// chunk's audio and carries [TranscriptSegment.spanMs] to say so — see
+/// [_isWellFormedSequence] for what "trusted" means and [_add] for what the
+/// bound is.
+///
+/// Two earlier versions each got one half of that. One gave the fallbacks an
+/// offset of zero and called it exact, which is the CHUNK's position passed off
+/// as the SPEECH's; the next left them unpositioned, which dropped a whole call
+/// to the per-speaker view for one garbled chunk. Positioned AND bounded is
+/// both halves: no turn is hidden, and none claims a moment it cannot support.
 List<TranscriptSegment> buildSegments(
   List<TranscribedChunk> ordered, {
   Duration pause = kUtterancePause,
@@ -304,7 +387,7 @@ List<TranscriptSegment> buildSegments(
     final timings = transcript.wordTimings;
 
     if (timings == null || timings.isEmpty) {
-      _add(segments, transcript.text, chunk.startedAtMs);
+      _add(segments, transcript.text, chunk, null, exact: false);
       continue;
     }
 
@@ -314,12 +397,15 @@ List<TranscriptSegment> buildSegments(
     // positions taken from them can be trusted.
     final aligned = _alignedToTranscript(timings, transcript.text);
     if (aligned == null) {
-      // Refused for its WORDS, so the text is the transcript's whole. Placed
-      // by when speech began, which the timings still say truthfully.
+      // Refused for its WORDS, so the text is the transcript's whole. Estimated
+      // by when speech began, and bounded by the chunk it came from: refusing a
+      // word list says nothing about when the audio stopped.
       _add(
         segments,
         transcript.text,
-        _positionOf(chunk, _speechBeganAt(timings, chunk.durationMs)),
+        chunk,
+        _speechBeganAt(timings, chunk.durationMs),
+        exact: false,
       );
       continue;
     }
@@ -344,13 +430,16 @@ List<TranscriptSegment> buildSegments(
     // moment this chunk has any EVIDENCE of speech, bounded to the chunk's own
     // length.
     //
-    // That is an estimate, not a proven floor, and calling it one earlier was
-    // an overclaim: a word whose start the provider omitted leaves only its
-    // end, and the real start is somewhere before that. What it does hold to
-    // is monotonic and inside the chunk, so it can be off by part of a chunk
-    // but never by a whole one, and never outside the audio it describes. The
-    // cost is that the other speaker's turn falling between two segments of
-    // one malformed chunk renders after both. Rare enough to accept:
+    // That is an ESTIMATE and not a proven floor, which is the whole reason
+    // every segment built from it also carries a span: a word whose start the
+    // provider omitted leaves only its end, and the real start is somewhere
+    // before that. What the estimate does hold to is monotonic and inside the
+    // chunk, so it stays a useful ordering hint for anything reading `atMs`
+    // alone; what the SCREEN shows is the span's end, which is proven.
+    //
+    // The residual cost is one the span makes visible rather than hides: two
+    // segments of one malformed chunk are placed at the same moment, so the
+    // other speaker's turn falling between them renders after both. Rare:
     // well-formed sequences were 334 of 336 on the real provider captures.
     final fallbackOffset = placeable
         ? null
@@ -394,7 +483,13 @@ List<TranscriptSegment> buildSegments(
         _add(
           segments,
           words.join(' '),
-          _positionOf(chunk, openedAt ?? fallbackOffset),
+          chunk,
+          openedAt ?? fallbackOffset,
+          // Its own first word, or the chunk it sat in. `openedAt` is only
+          // ever taken from a well-formed sequence, so asking for it here is
+          // the same question as asking whether this segment was cut by
+          // timings we trusted word for word.
+          exact: openedAt != null,
         );
         words.clear();
         openedAt = null;
@@ -416,7 +511,9 @@ List<TranscriptSegment> buildSegments(
       _add(
         segments,
         words.join(' '),
-        _positionOf(chunk, openedAt ?? fallbackOffset),
+        chunk,
+        openedAt ?? fallbackOffset,
+        exact: openedAt != null,
       );
     }
 
@@ -436,14 +533,16 @@ List<TranscriptSegment> buildSegments(
         .join(' ');
     if (_words(rebuilt) != _words(transcript.text)) {
       segments.removeRange(countBefore, segments.length);
-      // Back to the chunk's own start, even when the timings were a flawless
+      // Back to the whole chunk, even when the timings were a flawless
       // sequence: a position taken from a cut that lost text would describe the
-      // surviving part, not the text being shown. The chunk's start describes
-      // all of it.
+      // surviving part, not the text being shown. The chunk describes all of
+      // it, and says so by carrying a span.
       _add(
         segments,
         transcript.text,
-        _positionOf(chunk, _speechBeganAt(timings, chunk.durationMs)),
+        chunk,
+        _speechBeganAt(timings, chunk.durationMs),
+        exact: false,
       );
       continue;
     }
@@ -456,7 +555,7 @@ List<TranscriptSegment> buildSegments(
     // had produced anything -- silently losing speech, and only in calls long
     // enough to have a second chunk.
     if (segments.length == countBefore) {
-      _add(segments, transcript.text, chunk.startedAtMs);
+      _add(segments, transcript.text, chunk, null, exact: false);
     }
   }
 
@@ -542,8 +641,6 @@ bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
   return true;
 }
 
-/// Where a segment opening [offsetInChunk] into [chunk] sits on the call's
-/// clock, or null when the chunk could not be placed.
 /// When speech began inside a chunk, from the earliest start the provider gave.
 ///
 /// Usable even when the word list was REFUSED. Refusal is a judgement about
@@ -582,25 +679,52 @@ int? _speechBeganAt(List<WordTiming> timings, int durationMs) {
   return earliest;
 }
 
-/// Where a segment sits, at the best resolution available.
+/// Adds one segment, positioned at the best resolution available and SAYING
+/// which resolution that was.
 ///
-/// Never null. An offset INTO the chunk is the precise answer and comes from
-/// the provider's word timings; without one, the chunk's own start is still a
-/// true statement -- this was said during this stretch of the call -- and it is
-/// known from when we captured the audio, not from any timing we just decided
-/// not to trust.
+/// A position is never null. An offset INTO the chunk is the finest answer and
+/// comes from the provider's word timings; without one, the chunk's own start
+/// is still a true statement -- this was said during this stretch of the call
+/// -- and it is known from when we captured the audio, not from any timing we
+/// just decided not to trust.
 ///
-/// This is the rule that stops one bad chunk hiding a whole call. Providers
-/// return a garbled chunk routinely: a corrupted character, a stray word in
-/// the wrong language, a word list that does not match its own transcript.
-/// Refusing to place such a chunk USED to leave it null, and one null anywhere
-/// dropped every other turn out of the timeline. A real call showed five of
-/// six segments perfectly placed and no timeline at all. Degrading one chunk's
-/// resolution is the honest cost; hiding five good turns is not.
-int _positionOf(TranscribedChunk chunk, int? offsetInChunk) =>
-    chunk.startedAtMs + (offsetInChunk ?? 0);
-
-void _add(List<TranscriptSegment> into, String text, int? atMs) {
+/// That rule is what stops one bad chunk hiding a whole call. Providers return
+/// a garbled chunk routinely: a corrupted character, a stray word in the wrong
+/// language, a word list that does not match its own transcript. Refusing to
+/// place such a chunk USED to leave it null, and one null anywhere dropped
+/// every other turn out of the timeline. A real call showed five of six
+/// segments perfectly placed and no timeline at all.
+///
+/// [exact] is the half of that which was missing. Degrading a chunk's
+/// resolution is the honest cost of keeping the call readable; presenting the
+/// degraded position as if it were a word's is not, and it is how a turn spoken
+/// forty seconds into a chunk came to render at the chunk's start, ahead of the
+/// other speaker's question. So a segment that is not [exact] carries the
+/// window it was cut from: `startedAtMs + durationMs` is the end of the audio
+/// that produced these words, and no word in a chunk began after its audio
+/// stopped.
+void _add(
+  List<TranscriptSegment> into,
+  String text,
+  TranscribedChunk chunk,
+  int? offsetInChunk, {
+  required bool exact,
+}) {
   final trimmed = text.trim();
-  if (trimmed.isNotEmpty) into.add(TranscriptSegment(trimmed, atMs: atMs));
+  if (trimmed.isEmpty) return;
+  final atMs = chunk.startedAtMs + (offsetInChunk ?? 0);
+  // Clamped rather than trusted. Every caller's offset is already bounded to
+  // the chunk -- `_speechBeganAt` refuses anything past `durationMs`, and a
+  // well-formed sequence lies inside it by definition -- so this cannot fire
+  // today. It is here because a negative span is not a window, and a future
+  // caller that got the bound wrong should lose resolution rather than emit
+  // one.
+  final end = chunk.startedAtMs + chunk.durationMs;
+  into.add(
+    TranscriptSegment(
+      trimmed,
+      atMs: atMs,
+      spanMs: exact ? null : (end > atMs ? end - atMs : 0),
+    ),
+  );
 }

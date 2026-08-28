@@ -30,11 +30,19 @@ String joinedContent(List<TranscriptSegment> segments) =>
 /// Whether these segments can be laid on a shared timeline beside another
 /// speaker's.
 ///
-/// Every displayed segment must carry a position, AND the positions must be
-/// non-decreasing in the order they were written. Presence alone is not enough:
-/// a half with every position filled but jumbled would render that speaker's
-/// own words out of order, with full confidence. Monotonicity is what this
-/// writer guarantees, so a half that fails it was not written by this code.
+/// Every displayed segment must carry a position, AND both the positions and
+/// the moments they are PLACED at must be non-decreasing in the order they were
+/// written. Presence alone is not enough: a half with every position filled but
+/// jumbled would render that speaker's own words out of order, with full
+/// confidence. Monotonicity is what this writer guarantees, so a half that
+/// fails it was not written by this code.
+///
+/// BOTH sequences are checked, because they are different sequences. A segment
+/// is placed at [TranscriptSegment.orderKeyMs] — the end of its window, for one
+/// that only knows which chunk it came from — and non-decreasing `atMs` does
+/// not imply non-decreasing keys: a wide window followed by a narrow one
+/// inverts them. Checking only `atMs` would let exactly the half this rule
+/// exists to refuse render its own words backwards.
 ///
 /// This is a check for content that is BROKEN, not for content that is
 /// dishonest. A participant can fabricate positions and misorder their own
@@ -42,12 +50,16 @@ String joinedContent(List<TranscriptSegment> segments) =>
 /// WORDS, which is strictly worse. Selling this as protection against a
 /// malicious participant would be a promise the design cannot keep.
 bool segmentsArePlaceable(List<TranscriptSegment> segments) {
-  int? previous;
+  int? previousAt;
+  int? previousKey;
   for (final segment in segments) {
     final at = segment.atMs;
     if (at == null) return false;
-    if (previous != null && at < previous) return false;
-    previous = at;
+    final key = segment.orderKeyMs!;
+    if (previousAt != null && at < previousAt) return false;
+    if (previousKey != null && key < previousKey) return false;
+    previousAt = at;
+    previousKey = key;
   }
   return true;
 }
@@ -521,6 +533,14 @@ enum HalfIssue {
   /// The accounting contradicts itself or the content it arrived with.
   accountingImpossible,
 
+  /// At least one turn could only be bounded to the chunk of audio it came
+  /// from, so it is shown at the latest moment it could have been said.
+  timesApproximate,
+
+  /// The writer never said which of its positions are exact, so none of them
+  /// can be vouched for. An older or foreign client.
+  timesUnstated,
+
   /// No half from this speaker at all, on a read that reached the end.
   neverWritten,
 
@@ -585,6 +605,28 @@ class TranscriptHalf {
   /// keep parsing -- an absent anchor costs the CORRECTION and never a word.
   final ClockAnchor? clockAnchor;
 
+  /// Whether this half's writer marks the positions it could not pin down.
+  ///
+  /// It asserts exactly one thing: on a marked half, a segment carrying no
+  /// span was placed at its OWN FIRST WORD. That is the claim an older or
+  /// foreign writer has not made, and absence of the claim is not the claim —
+  /// the same argument [HalfAccounting.declared] makes about completeness, one
+  /// level down.
+  ///
+  /// It does NOT decide whether a span is honoured. A span can only move a turn
+  /// LATER and mark it approximate, so honouring one from an unmarked writer
+  /// cannot manufacture precision, and gating it would put a segment-scoped
+  /// rule and a half-scoped one in contradiction over the same bytes.
+  ///
+  /// Carried here rather than in [HalfAccounting] on purpose. That class's `==`
+  /// is deliberately every field and `_beats` reads it as "indistinguishable in
+  /// every respect except whether a reader can use them"; an unmarked and a
+  /// marked copy of the same speech would then compare UNEQUAL, the
+  /// identical-text step would never fire, and the older unmarked copy could
+  /// keep the slot. This sits beside [clockAnchor], which is the same kind of
+  /// fact and already has the same kind of tie-break.
+  final bool positionsMarked;
+
   const TranscriptHalf({
     required this.senderId,
     required this.segments,
@@ -593,6 +635,7 @@ class TranscriptHalf {
     required this.readWasCutShort,
     required this.participantsWereAGuess,
     this.clockAnchor,
+    this.positionsMarked = false,
     required this.arrival,
   });
 
@@ -648,6 +691,17 @@ class TranscriptHalf {
     // never opened" or "two chunks of audio were lost".
     if (participantsWereAGuess) return HalfIssue.participantsUnknown;
 
+    // After all of those, because a half that lost audio or never opened a
+    // microphone has a bigger problem than the resolution of its clock.
+    //
+    // NOT mutually exclusive: an unmarked writer can still send spans, so the
+    // stronger statement -- we KNOW some of these are approximate -- is asked
+    // first. Only one issue is ever reported, so both are invisible whenever
+    // anything above applies; `transcript_repo` therefore logs the two facts
+    // unconditionally rather than relying on this.
+    if (approximatePositions > 0) return HalfIssue.timesApproximate;
+    if (!positionsMarked && carriesPositions) return HalfIssue.timesUnstated;
+
     // Reached only if the half is incomplete for a reason none of the checks
     // above named. Nothing produces that today -- every route to
     // HalfState.incomplete is either a cut-short read or an admission the
@@ -679,6 +733,18 @@ class TranscriptHalf {
   /// A half with nothing in it passes trivially, which is right: a speaker who
   /// said nothing has no turn that could land in the wrong place.
   bool get timelineEligible => segmentsArePlaceable(segments);
+
+  /// How many of this half's turns know only which chunk they were said in.
+  int get approximatePositions =>
+      segments.where((segment) => segment.positionIsApproximate).length;
+
+  /// Whether this half places anything at all.
+  ///
+  /// A half that positions nothing makes no claim about time, so neither
+  /// [positionsMarked] nor its absence has anything to say about it. Asked
+  /// before either is reported, on screen or in a log.
+  bool get carriesPositions =>
+      segments.any((segment) => segment.atMs != null);
 }
 
 /// A parsed `pangea.call_transcript` event, before assembly picks between
@@ -693,12 +759,18 @@ class TranscriptCandidate {
   /// [ClockAnchor]; absent on an event written before the field existed.
   final ClockAnchor? clockAnchor;
 
+  /// Whether this event marks the positions it could not pin down. See
+  /// [TranscriptHalf.positionsMarked]; false on an event written before the
+  /// field existed, and on one that declared a span this reader could not use.
+  final bool positionsMarked;
+
   const TranscriptCandidate({
     required this.senderId,
     required this.originServerTs,
     required this.segments,
     required this.accounting,
     this.clockAnchor,
+    this.positionsMarked = false,
   });
 
   /// Distinct content, so padding a half by repeating itself wins nothing:
@@ -922,6 +994,9 @@ CallTranscript assembleTranscript({
         // has to describe the positions actually being shown, and two copies
         // from one sender can carry different anchors if the device rejoined.
         clockAnchor: candidate.clockAnchor,
+        // Same rule, same reason: the claim has to describe the segments being
+        // shown, and only the winning copy supplied those.
+        positionsMarked: candidate.positionsMarked,
       ),
     );
   }
@@ -984,6 +1059,18 @@ bool _beats(TranscriptCandidate candidate, TranscriptCandidate held) {
     // differ here, so nothing about what the transcript SAYS turns on this.
     final anchored = candidate.clockAnchor != null;
     if (anchored != (held.clockAnchor != null)) return anchored;
+
+    // And last of the three, which is a decision and not an accident.
+    //
+    // An anchor and a position marker can disagree, and one of them has to
+    // yield. `clocksReconcilable` is ALL OR NOTHING across the call, so
+    // preferring an unanchored copy here would cost EVERY half its clock
+    // correction to buy this one half its disclosure. The two errors are not
+    // the same size either: this codebase has a recorded case of a device two
+    // minutes fast, while a position with no marker is wrong by at most one
+    // chunk. The larger, call-wide fix wins.
+    final marked = candidate.positionsMarked;
+    if (marked != held.positionsMarked) return marked;
   }
   if (candidate.contentLength != held.contentLength) {
     return candidate.contentLength > held.contentLength;

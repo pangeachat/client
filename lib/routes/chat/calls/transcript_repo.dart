@@ -140,6 +140,7 @@ Future<CallTranscript> fetchCallTranscript({
           // two halves' timestamps come from two homeservers. The anchor is
           // the writing device's own measurement against the SFU.
           clockAnchor: content.clockAnchor,
+          positionsMarked: content.positionsMarked,
         ),
       );
     }
@@ -194,7 +195,14 @@ Future<CallTranscript> fetchCallTranscript({
       'micRefused ${half.accounting.captureRefused}, '
       'drained ${half.accounting.drainComplete}, '
       'declared ${half.accounting.declared}, '
-      'omitted ${half.accounting.segmentsOmitted})',
+      'omitted ${half.accounting.segmentsOmitted}, '
+      // Both, unconditionally, because `issue` reports only ONE cause and
+      // these two sit last in its order -- so any other problem hides them.
+      // A report about turns in the wrong order is exactly the report that
+      // needs to know how many of them were only bounded to a chunk, and
+      // whether the writer said which were not.
+      'positionsMarked ${half.positionsMarked}, '
+      'approximate ${half.approximatePositions})',
     );
   }
 

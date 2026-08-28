@@ -39,12 +39,26 @@ class CallTranscriptContent {
   /// device's own clock, and every word is still shown. See [ClockAnchor].
   final ClockAnchor? clockAnchor;
 
+  /// Whether this writer marks the positions it could not pin down.
+  ///
+  /// OPTIONAL on the wire, like [clockAnchor], and false when absent. It
+  /// asserts one thing: a segment here carrying no `at_span_ms` was placed at
+  /// its own first word. An older or foreign client has not said that, and
+  /// absence of the claim is not the claim -- see
+  /// [TranscriptHalf.positionsMarked].
+  ///
+  /// Defaults to false so that a caller which forgets it under-claims. The one
+  /// writer that may set it is `transcript_writer.dart`, which builds the
+  /// segments it describes.
+  final bool positionsMarked;
+
   const CallTranscriptContent({
     required this.callKey,
     required this.segments,
     required this.accounting,
     this.langCode,
     this.clockAnchor,
+    this.positionsMarked = false,
   });
 
   /// The relation type and the event type are the same string: a transcript
@@ -73,6 +87,7 @@ class CallTranscriptContent {
     'segments': [for (final segment in segments) segment.toJson()],
     ...accounting.toJson(),
     if (langCode != null) 'lang_code': langCode,
+    if (positionsMarked) 'positions_marked': true,
     ...?clockAnchor?.toJson(),
     'm.relates_to': {'rel_type': relType, 'event_id': callKey},
   };
@@ -98,6 +113,16 @@ class CallTranscriptContent {
     var examined = 0;
     var shortened = rawSegments.length > maxRawEntries;
     var unreadable = false;
+
+    // Starts as what the event claims and can only be taken AWAY below.
+    //
+    // A half that declares a span this reader cannot use has not told us which
+    // of its positions are exact, whatever its flag says: the one entry we
+    // could not read might have been the approximate one. Voiding the CLAIM is
+    // the right cost -- the same shape `HalfAccounting.declared` uses -- and it
+    // is why the span check cannot instead destroy the segment's `at_ms`, which
+    // would drop the whole call to the per-speaker view over one corrupt byte.
+    var positionsMarked = content['positions_marked'] == true;
 
     for (final raw in rawSegments) {
       if (examined >= maxRawEntries || segments.length >= maxSegments) {
@@ -137,6 +162,9 @@ class CallTranscriptContent {
       if (totalChars + segment.text.length > maxTotalChars) {
         shortened = true;
         break;
+      }
+      if (TranscriptSegment.spanOf(raw, segment.atMs).declaredButUnusable) {
+        positionsMarked = false;
       }
       segments.add(segment);
       totalChars += segment.text.length;
@@ -235,6 +263,7 @@ class CallTranscriptContent {
           ? accounting.readerFoundUnreadable()
           : accounting.readerTruncated(),
       langCode: langCode is String && langCode.isNotEmpty ? langCode : null,
+      positionsMarked: positionsMarked,
       // A malformed anchor is ABSENT, never a reason to reject the half. It
       // decides only where these words sit against the OTHER speaker's, and
       // refusing an event over it would cost every word to save an ordering.
