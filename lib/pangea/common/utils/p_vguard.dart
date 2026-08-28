@@ -175,9 +175,10 @@ class PAuthGaurd {
   /// "the link stopped working after a call" was a fair description of a bug
   /// that has nothing to do with calls.
   ///
-  /// So: move them only from a place a logged-in user cannot stay. Everywhere
-  /// else the location on screen is the one they asked for, and the router's
-  /// own guards ([roomsRedirect]) already vet it.
+  /// So: move them only from a place a finished account cannot stay — an ENTRY
+  /// location ([isEntryLocation]). Everywhere else the location on screen is
+  /// the one they asked for, and the router's own guards ([roomsRedirect])
+  /// already vet it.
   ///
   /// [current] is the location the app is on; [isL2Set] whether the account
   /// has chosen a language to learn — until it has, registration outranks
@@ -187,16 +188,32 @@ class PAuthGaurd {
     required bool isL2Set,
   }) {
     if (!isL2Set) return '/registration';
-    return isAuthLocation(current) ? PRoutes.world : null;
+    return isEntryLocation(current) ? PRoutes.world : null;
   }
 
-  /// Whether [uri] is one of the logged-out entry screens — the `/home` family
-  /// (sign in, sign up, and the email variants of each). The only place a
-  /// freshly logged-in session has to be moved away from.
-  static bool isAuthLocation(Uri uri) =>
-      uri.path == _home || uri.path.startsWith('$_home/');
+  /// Whether [uri] is a route that exists only to get an account STARTED: the
+  /// `/home` family (sign in, sign up, and the email variant of each), plus the
+  /// onboarding and registration hops.
+  ///
+  /// None of the three is somewhere an account that has finished starting can
+  /// stay, and none is a place a person deep-links to, so moving off them costs
+  /// nothing. The `/home` screens cannot navigate away from themselves once a
+  /// login succeeds — that is the whole reason the listener exists. Onboarding
+  /// and registration are here because a completed account reloading on one of
+  /// them was carried to the map before this function existed, and their own
+  /// route guard does not do it: [onboardingRedirect] admits any logged-in
+  /// user, L2 set or not.
+  ///
+  /// A prefix test on whole segments, so `/homework` is not `/home`.
+  static bool isEntryLocation(Uri uri) => _entryRoots.any(
+    (root) => uri.path == root || uri.path.startsWith('$root/'),
+  );
 
-  static const String _home = '/home';
+  static const List<String> _entryRoots = [
+    '/home',
+    '/onboarding',
+    '/registration',
+  ];
 
   /// Redirect for onboarding routes
   static FutureOr<String?> onboardingRedirect(

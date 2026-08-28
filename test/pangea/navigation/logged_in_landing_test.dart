@@ -59,13 +59,18 @@ void main() {
       }
     });
 
-    test('moves a finished login off every sign-in screen', () {
+    test('moves a finished account off every entry screen', () {
       for (final location in const [
         '/home',
         '/home/login',
         '/home/login/email',
         '/home/signup',
         '/home/signup/email',
+        // Onboarding and registration too: an account that has already chosen
+        // its language has finished with both, and being carried off them is
+        // what happened before this decision existed.
+        '/onboarding',
+        '/registration',
       ]) {
         expect(
           PAuthGaurd.loggedInLanding(
@@ -96,13 +101,16 @@ void main() {
       () {
         // `/homework` is not under `/home`, and a prefix test that said it was
         // would throw away that URL for ever.
-        expect(
-          PAuthGaurd.loggedInLanding(
-            current: Uri.parse('/homework'),
-            isL2Set: true,
-          ),
-          isNull,
-        );
+        for (final location in const ['/homework', '/onboardings']) {
+          expect(
+            PAuthGaurd.loggedInLanding(
+              current: Uri.parse(location),
+              isL2Set: true,
+            ),
+            isNull,
+            reason: location,
+          );
+        }
       },
     );
   });

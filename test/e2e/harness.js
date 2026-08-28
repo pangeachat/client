@@ -155,10 +155,35 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
 /// once it is on.
 async function settledInRoom(page, { timeout = 25000 } = {}) {
   const deadline = Date.now() + timeout;
+  let midNavigation = null;
   for (;;) {
+    // Best effort: the placeholder is not there before the engine is up, and
+    // a failure to click it shows up a line later as a screen that cannot be
+    // read -- which IS reported.
     await ui.enableSemantics(page).catch(() => {});
-    if (await ui.hasControl(page, 'call').catch(() => false)) return true;
-    if (Date.now() > deadline) return false;
+    try {
+      if (await ui.hasControl(page, 'call')) return true;
+    } catch (e) {
+      // Reading a page that is still navigating destroys the execution
+      // context under the read. That is ordinary here -- polling starts the
+      // instant the load begins -- and the next round asks again.
+      //
+      // Anything else is the HARNESS being broken: an l10n key the app
+      // renamed (labels.js throws by design), a scan that cannot run. Those
+      // must not come out as "the room did not open", which sends whoever
+      // reads it looking at the product.
+      if (!/execution context|detached|navigat/i.test(String(e && e.message))) {
+        throw e;
+      }
+      midNavigation = e;
+    }
+    if (Date.now() > deadline) {
+      if (midNavigation) {
+        console.log(
+          `   (the page never stopped navigating: ${midNavigation.message})`);
+      }
+      return false;
+    }
     await wait(1000);
   }
 }
