@@ -461,8 +461,7 @@ void main() {
         );
       });
 
-      test('positions that run forwards but whose BOUNDS do not are refused', ()
-      {
+      test('positions that run forwards but whose BOUNDS do not are refused', () {
         // The half-scoped version of the same failure the test above refuses.
         // `atMs` runs forwards here -- 1000 then 5000 -- so a gate that only
         // looked at positions would accept it. But the first segment is bounded

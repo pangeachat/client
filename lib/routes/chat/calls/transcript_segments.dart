@@ -149,7 +149,11 @@ class TranscriptSegment {
     // satisfy the render gate with fabricated positions.
     final at = raw['at_ms'];
     final atMs = at is int && at >= 0 && at < atMsCeiling ? at : null;
-    return TranscriptSegment(trimmed, atMs: atMs, spanMs: spanOf(raw, atMs).spanMs);
+    return TranscriptSegment(
+      trimmed,
+      atMs: atMs,
+      spanMs: spanOf(raw, atMs).spanMs,
+    );
   }
 
   @override

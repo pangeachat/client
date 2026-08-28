@@ -353,9 +353,7 @@ class _Turn extends StatelessWidget {
   /// [roundUp] is for a stamp that is an UPPER BOUND rather than a moment; see
   /// [_stampFor].
   static String _stamp(Duration at, {bool roundUp = false}) {
-    final seconds = roundUp
-        ? (at.inMilliseconds + 999) ~/ 1000
-        : at.inSeconds;
+    final seconds = roundUp ? (at.inMilliseconds + 999) ~/ 1000 : at.inSeconds;
     return '${seconds ~/ 60}:${(seconds % 60).toString().padLeft(2, '0')}';
   }
 }

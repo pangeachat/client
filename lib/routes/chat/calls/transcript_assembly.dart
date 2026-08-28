@@ -743,8 +743,7 @@ class TranscriptHalf {
   /// A half that positions nothing makes no claim about time, so neither
   /// [positionsMarked] nor its absence has anything to say about it. Asked
   /// before either is reported, on screen or in a log.
-  bool get carriesPositions =>
-      segments.any((segment) => segment.atMs != null);
+  bool get carriesPositions => segments.any((segment) => segment.atMs != null);
 }
 
 /// A parsed `pangea.call_transcript` event, before assembly picks between

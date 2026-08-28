@@ -239,7 +239,11 @@ void main() {
     // The words and the speaker still draw. Only the number we cannot stand
     // behind is left off.
     await pump(tester, [
-      turn(text: 'hola', at: const Duration(seconds: 8), time: TurnTime.unstated),
+      turn(
+        text: 'hola',
+        at: const Duration(seconds: 8),
+        time: TurnTime.unstated,
+      ),
     ]);
 
     expect(find.text('hola'), findsOneWidget);

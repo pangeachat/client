@@ -854,11 +854,7 @@ void main() {
       final segments = buildSegments([
         _chunk(
           'hola que tal',
-          timings: [
-            ('hola', 500, 600),
-            ('que', 100, 200),
-            ('tal', 700, 800),
-          ],
+          timings: [('hola', 500, 600), ('que', 100, 200), ('tal', 700, 800)],
           durationMs: durationMs,
         ),
       ]);
@@ -1002,7 +998,10 @@ void main() {
     test('a sound span is honoured', () {
       // The gate must not fire on what this writer sends.
       expect(TranscriptSegment.spanOf({'at_span_ms': 0}, 1000).spanMs, 0);
-      expect(TranscriptSegment.spanOf({'at_span_ms': 45000}, 1000).spanMs, 45000);
+      expect(
+        TranscriptSegment.spanOf({'at_span_ms': 45000}, 1000).spanMs,
+        45000,
+      );
       expect(TranscriptSegment.spanOf({}, 1000).spanMs, isNull);
       expect(TranscriptSegment.spanOf({}, 1000).declaredButUnusable, isFalse);
     });
