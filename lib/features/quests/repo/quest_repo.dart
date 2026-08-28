@@ -214,6 +214,23 @@ class QuestRepo {
     };
   }
 
+  /// Test seam for [_displayL1]: the outline cache must be keyed by the
+  /// resolved display language, and tests have no [MatrixState] to flip.
+  @visibleForTesting
+  static String? debugDisplayL1;
+
+  /// The viewer's display language (L2 when the "app in target language"
+  /// toggle is on, else L1), sent as the quest-activities read's `l1` param so
+  /// card text follows the toggle (#8577). `'en'` covers a not-yet-initialized
+  /// controller — the read itself still fails safely through its try/catch —
+  /// and a user with no languages set, matching `ActivityPlanRepo`.
+  static String get _displayL1 =>
+      debugDisplayL1 ??
+      (MatrixState.isPangeaControllerInitialized
+          ? MatrixState.pangeaController.userController.displayLanguageCode ??
+                'en'
+          : 'en');
+
   /// Repo-wide pause after choreo rate-limits the activity reads (#8360).
   ///
   /// [RateLimitPause] carries the reasoning; what this instance decides is its
@@ -250,6 +267,12 @@ class QuestRepo {
         queryParameters: {
           if (courseRoomId != null && courseRoomId.isNotEmpty)
             'course_room_id': courseRoomId,
+          // Overlays each plan's title/description/learning-objective from
+          // persisted translation rows, canonical fallback per activity —
+          // read-only server-side, never an LLM call (#8577). `version_id` is
+          // computed over canonical content, so it is identical across `l1`
+          // values and session pinning is unaffected.
+          'l1': _displayL1,
         },
       );
       final response = await Requests(
@@ -501,7 +524,11 @@ class QuestRepo {
 
   /// Process-lifetime cache of resolved outlines, keyed by quest id + course
   /// room (a course-member read can carry private activities a plain read
-  /// doesn't, so the two must not share a cache row). In-memory (not
+  /// doesn't, so the two must not share a cache row) + display language
+  /// (activity-card text follows the "app in target language" toggle, #8577,
+  /// so a flip must miss the old row rather than replay the other language —
+  /// the same key-by-l1 rule as `ActivityPlanFetchRequest.storageKey`).
+  /// In-memory (not
   /// GetStorage) because [QuestOutline] carries session-scoped media CDN URLs —
   /// same reasoning as `ActivityPlanRepo`'s in-memory resolve cache.
   ///
@@ -539,7 +566,8 @@ class QuestRepo {
 
   /// The full outline: quest + objective groups (LOs in order, each with its
   /// matching activities). Successes and confirmed 404s are cached per (quest
-  /// id, course room); transient errors are returned but never cached (see
+  /// id, course room, display language); transient errors are returned but
+  /// never cached (see
   /// [_outlineCache]). Concurrent
   /// calls for the same key share one in-flight read. [courseRoomId] admits
   /// the quest owner's private activities when the caller is a joined member
@@ -549,7 +577,7 @@ class QuestRepo {
     String? courseRoomId,
     bool forceRefresh = false,
   }) async {
-    final cacheKey = '$questId|${courseRoomId ?? ''}';
+    final cacheKey = '$questId|${courseRoomId ?? ''}|$_displayL1';
     if (!forceRefresh) {
       final cached = _outlineCache[cacheKey];
       if (cached != null) return Future.value(cached);

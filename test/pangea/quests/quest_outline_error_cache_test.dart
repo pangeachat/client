@@ -34,6 +34,7 @@ void main() {
 
     tearDown(() {
       QuestRepo.debugBuildOutline = null;
+      QuestRepo.debugDisplayL1 = null;
       QuestRepo.resetOutlineCacheForTest();
     });
 
@@ -127,6 +128,30 @@ void main() {
 
       // A course-member read must not share the plain read's cache row.
       await QuestRepo.outline('quest-1', courseRoomId: '!room:server');
+      expect(buildCalls, 2);
+    });
+
+    test('a cached outline is scoped to its display language', () async {
+      QuestRepo.debugBuildOutline = (id, {courseRoomId}) async {
+        buildCalls++;
+        return Result.value(const QuestOutline(quest: quest, groups: []));
+      };
+
+      QuestRepo.debugDisplayL1 = 'fr';
+      await QuestRepo.outline('quest-1');
+      await QuestRepo.outline('quest-1');
+      expect(buildCalls, 1);
+
+      // #8577: activity-card text follows the display language, so flipping
+      // the "app in target language" toggle must miss the 'fr' row and
+      // refetch rather than replay the other language...
+      QuestRepo.debugDisplayL1 = 'de';
+      await QuestRepo.outline('quest-1');
+      expect(buildCalls, 2);
+
+      // ...while flipping back reuses the already-cached row.
+      QuestRepo.debugDisplayL1 = 'fr';
+      await QuestRepo.outline('quest-1');
       expect(buildCalls, 2);
     });
 
