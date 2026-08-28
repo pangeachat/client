@@ -68,6 +68,18 @@ class IgcController {
       )
       .toList();
 
+  /// Spelling the device found, still waiting to be applied. Kept separate
+  /// from [openNormalizationMatches] because a misspelling is not a
+  /// normalization error — its correction does not normalize to the original.
+  List<PangeaMatchState> get openLocalSpellMatches => _matches
+      .where(
+        (match) =>
+            match.updatedMatch.status.isOpen &&
+            match.updatedMatch.match.rule?.id ==
+                MatchRuleIdModel.localSpellCheck,
+      )
+      .toList();
+
   IGCRequestModel _igcRequest(
     String text,
     List<PreviousMessage> prevMessages,
@@ -98,20 +110,22 @@ class IgcController {
     clearMatchToShow();
   }
 
-  /// Highlights the misspellings the device can find, so the learner is
-  /// offered them without waiting for the server. Returns whether any were
-  /// added, so the caller knows whether a repaint is worth it.
+  /// Corrects the misspellings the device can find, **before** the text goes
+  /// to the server. Returns whether any were applied.
   ///
-  /// These are ordinary open matches: spelling is never applied on the
-  /// learner's behalf. The server replaces them wholesale in [_fetchIGC].
-  /// See writing-assistance.instructions.md, "Local spelling matches".
-  Future<bool> addLocalSpellMatches(String text, Locale locale) async {
+  /// Applying rather than merely offering is the point: the request then
+  /// carries the corrected sentence, so the server does not spend a round
+  /// trip re-finding what the device already knew. The learner still sees it
+  /// happen — an auto-applied match surfaces through `AutocorrectPopup` and
+  /// stays undoable from the span card, like every other Surface correction.
+  /// See writing-assistance.instructions.md, "Local spelling corrections".
+  Future<bool> applyLocalSpellMatches(String text, Locale locale) async {
     if (_isFetching) return false;
 
     final spans = await LocalSpellCheck.spans(text, locale);
     if (spans.isEmpty) return false;
 
-    // The highlights are drawn against this text, so it has to be the text
+    // Replacements are applied against this text, so it has to be the text
     // the spans were found in — not whatever the last response left behind.
     _currentText = text;
 
@@ -127,12 +141,10 @@ class IgcController {
         ),
       );
     }
+
+    await _acceptMatches(openLocalSpellMatches);
     return true;
   }
-
-  void _removeLocalSpellMatches() => _matches.removeWhere(
-    (m) => m.updatedMatch.match.rule?.id == MatchRuleIdModel.localSpellCheck,
-  );
 
   void clearCurrentText() => _currentText = null;
 
@@ -225,8 +237,13 @@ class IgcController {
     matchUpdateStream.add(match);
   }
 
-  Future<void> acceptNormalizationMatches() async {
-    final matches = openNormalizationMatches;
+  Future<void> acceptNormalizationMatches() =>
+      _acceptMatches(openNormalizationMatches);
+
+  /// Auto-applies [matches], resolving once each has been through
+  /// [updateMatchStatus] — which is what pushes the corrected text back to
+  /// the composer, so callers that need the corrected text must await this.
+  Future<void> _acceptMatches(List<PangeaMatchState> matches) async {
     if (matches.isEmpty) return;
 
     final expectedSpans = matches.map((m) => m.originalMatch).toSet();
@@ -389,10 +406,9 @@ class IgcController {
     _lastResponse = res.result!;
     _currentText = res.result!.originalInput;
 
-    // The server has now seen the same text, so its answer stands in for the
-    // local one — including where it found nothing to correct.
-    _removeLocalSpellMatches();
-
+    // Local spelling corrections are kept: they were applied before this request
+    // went out, so the server analysed the corrected text and its matches sit
+    // alongside them rather than replacing them.
     for (final match in res.result!.matches) {
       final matchState = PangeaMatchState(
         match: match.match,

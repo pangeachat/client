@@ -11,7 +11,7 @@ import 'package:fluffychat/routes/chat/events/tokens/grapheme_offset_index.dart'
 
 /// Surface corrections read from the device's own spell checker, so a
 /// misspelling can be resolved without waiting for the server.
-/// See writing-assistance.instructions.md, "Local spelling matches".
+/// See writing-assistance.instructions.md, "Local spelling corrections".
 abstract final class LocalSpellCheck {
   /// Overridable so tests can stand in for the platform channel.
   @visibleForTesting
