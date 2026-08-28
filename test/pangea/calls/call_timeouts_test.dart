@@ -24,8 +24,8 @@ class _FixedRandom implements Random {
 
 void main() {
   group('the delayed-leave numbers hold each other up', () {
-    test('the server can never retract inside the window that would read as a '
-        'hangup', () {
+    test('endedDeliberatelyWithin stays shorter than the earliest server '
+        'cleanup', () {
       // ActiveCall reads a membership retraction seen within
       // endedDeliberatelyWithin of the peer leaving as "they pressed end".
       // A device that CRASHED retracts nothing -- the homeserver does it, at
@@ -37,13 +37,15 @@ void main() {
       // This is the coupling that makes the two constants one decision: the
       // interval cannot be raised without raising applyLeave to match.
       //
-      // NECESSARY, not sufficient, and deliberately named that way. ActiveCall
-      // measures its window from the SFU's report of the departure, and the SFU
-      // holds a departed participant for its own retention -- so a retention
-      // longer than applyLeave - maxRestart puts the server's cleanup first
-      // whatever these numbers say. That hole is older than these constants and
-      // the SDK's own 18s/4s has it too; see [CallDelayedLeave]. What this
-      // asserts is that our numbers do not ADD to it.
+      // The name is the ARITHMETIC and not an outcome, because the outcome
+      // does not follow from it. ActiveCall measures its window from the SFU's
+      // report of the departure rather than from the death, and the SFU holds a
+      // departed participant for its own retention -- so a retention longer
+      // than applyLeave - maxRestart puts the server's cleanup first, and the
+      // retraction is read as a hangup however wide this gap is. That hole is
+      // older than these constants and the SDK's own 18s/4s has it too; it is
+      // written down in [CallDelayedLeave] and in endedDeliberatelyWithin's own
+      // comment. What this asserts is only that our numbers do not ADD to it.
       expect(
         ActiveCall.endedDeliberatelyWithin,
         lessThan(CallDelayedLeave.applyLeave - CallDelayedLeave.maxRestart),
