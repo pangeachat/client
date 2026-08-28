@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:49.392388",
+    "@@last_modified": "2026-08-28 11:37:29.465133",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10725,5 +10725,6 @@
     "callHistoryMissedVideoCall": "שיחת וידאו שלא נענתה",
     "callHistoryNoAnswer": "אין מענה",
     "callHistoryDeclined": "השיחה נדחתה",
-    "callHistoryYouDeclined": "דחית את השיחה הזו"
+    "callHistoryYouDeclined": "דחית את השיחה הזו",
+    "starsEarnedInLanguage": "כוכבים שנצברו ב{language}"
 }

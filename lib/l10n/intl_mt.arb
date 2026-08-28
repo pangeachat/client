@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-26 15:28:53.012609",
+    "@@last_modified": "2026-08-28 11:37:31.392031",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Sejħa bil-vidjo mitlufa",
     "callHistoryNoAnswer": "L-ebda tweġiba",
     "callHistoryDeclined": "Sejħa rrifjutata",
-    "callHistoryYouDeclined": "Int irrifjutajt din is-sejħa"
+    "callHistoryYouDeclined": "Int irrifjutajt din is-sejħa",
+    "starsEarnedInLanguage": "Stilel miksuba bil-{language}"
 }

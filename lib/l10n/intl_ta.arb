@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:55.986133",
+    "@@last_modified": "2026-08-28 11:37:32.798344",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9903,5 +9903,6 @@
     "callHistoryMissedVideoCall": "தவறிய வீடியோ அழைப்பு",
     "callHistoryNoAnswer": "பதில் இல்லை",
     "callHistoryDeclined": "அழைப்பு மறுக்கப்பட்டது",
-    "callHistoryYouDeclined": "இந்த அழைப்பை நீங்கள் மறுத்தீர்கள்"
+    "callHistoryYouDeclined": "இந்த அழைப்பை நீங்கள் மறுத்தீர்கள்",
+    "starsEarnedInLanguage": "{language} மொழியில் பெற்ற நட்சத்திரங்கள்"
 }

@@ -549,6 +549,22 @@ class UserController {
     await _savePublicProfileUpdate();
   }
 
+  /// Publishes [stars] as the learner's banked star total in [languageCode],
+  /// raising the published number and never lowering it.
+  ///
+  /// Only the language being studied is published, as with the level: it is the
+  /// one other people read and the one this device is best placed to count.
+  /// See profile.instructions.md.
+  Future<void> updateAnalyticsStars({
+    required String languageCode,
+    required int stars,
+  }) async {
+    if (!_publicProfileIsOwn) return;
+
+    if (!publicProfile!.analytics.raiseStars(languageCode, stars)) return;
+    await _savePublicProfileUpdate();
+  }
+
   static String _shortCode(String langCode) => langCode.split('-').first;
 
   /// The id of this user's own analytics room for [language] (a short code).

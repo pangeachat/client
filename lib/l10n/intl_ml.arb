@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-26 15:28:52.162245",
+    "@@last_modified": "2026-08-28 11:37:31.524130",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "മിസ്ഡ് വീഡിയോ കോൾ",
     "callHistoryNoAnswer": "മറുപടിയില്ല",
     "callHistoryDeclined": "കോൾ നിരസിച്ചു",
-    "callHistoryYouDeclined": "നിങ്ങൾ ഈ കോൾ നിരസിച്ചു"
+    "callHistoryYouDeclined": "നിങ്ങൾ ഈ കോൾ നിരസിച്ചു",
+    "starsEarnedInLanguage": "{language} ഭാഷയിൽ നേടിയ നക്ഷത്രങ്ങൾ"
 }

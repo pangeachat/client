@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-26 15:28:46.792468",
+    "@@last_modified": "2026-08-28 11:37:28.447465",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9825,5 +9825,6 @@
     "callHistoryMissedVideoCall": "Прапушчаны відэазванок",
     "callHistoryNoAnswer": "Без адказу",
     "callHistoryDeclined": "Званок адхілены",
-    "callHistoryYouDeclined": "Вы адхілілі гэты званок"
+    "callHistoryYouDeclined": "Вы адхілілі гэты званок",
+    "starsEarnedInLanguage": "Зароблена зорак у {language}"
 }

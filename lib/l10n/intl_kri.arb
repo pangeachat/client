@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-26 15:28:51.382949",
+    "@@last_modified": "2026-08-28 11:37:30.566664",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Mis vidiyo kɔl",
     "callHistoryNoAnswer": "Nɔ pikɔp",
     "callHistoryDeclined": "Kɔl diklɛn",
-    "callHistoryYouDeclined": "Yu diklɛn dis kɔl"
+    "callHistoryYouDeclined": "Yu diklɛn dis kɔl",
+    "starsEarnedInLanguage": "Stars wehn yu earn insai {language}"
 }

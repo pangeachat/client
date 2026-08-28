@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-26 15:28:53.010523",
+    "@@last_modified": "2026-08-28 11:37:31.436313",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "छुटेको भिडियो कल",
     "callHistoryNoAnswer": "जवाफ छैन",
     "callHistoryDeclined": "कल अस्वीकृत भयो",
-    "callHistoryYouDeclined": "तपाईंले यो कल अस्वीकार गर्नुभयो"
+    "callHistoryYouDeclined": "तपाईंले यो कल अस्वीकार गर्नुभयो",
+    "starsEarnedInLanguage": "{language} मा कमाएका ताराहरू"
 }

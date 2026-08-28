@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-26 15:28:46.829481",
+    "@@last_modified": "2026-08-28 11:37:28.276450",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Buraxılmış video zəng",
     "callHistoryNoAnswer": "Cavab yoxdur",
     "callHistoryDeclined": "Zəng rədd edildi",
-    "callHistoryYouDeclined": "Bu zəngi siz rədd etdiniz"
+    "callHistoryYouDeclined": "Bu zəngi siz rədd etdiniz",
+    "starsEarnedInLanguage": "{language} dilində qazanılan ulduzlar"
 }

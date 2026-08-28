@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-26 15:28:49.908991",
+    "@@last_modified": "2026-08-28 11:37:29.855818",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9914,5 +9914,6 @@
     "callHistoryMissedVideoCall": "Nem fogadott videóhívás",
     "callHistoryNoAnswer": "Nincs válasz",
     "callHistoryDeclined": "Hívás elutasítva",
-    "callHistoryYouDeclined": "Elutasítottad ezt a hívást"
+    "callHistoryYouDeclined": "Elutasítottad ezt a hívást",
+    "starsEarnedInLanguage": "{language} nyelven szerzett csillagok"
 }

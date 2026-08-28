@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-26 15:28:54.968936",
+    "@@last_modified": "2026-08-28 11:37:32.110474",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "مس ٿيل وڊيو ڪال",
     "callHistoryNoAnswer": "ڪو جواب نه",
     "callHistoryDeclined": "ڪال رد ڪئي وئي",
-    "callHistoryYouDeclined": "توهان هي ڪال رد ڪئي"
+    "callHistoryYouDeclined": "توهان هي ڪال رد ڪئي",
+    "starsEarnedInLanguage": "{language} ۾ حاصل ڪيل ستارا"
 }

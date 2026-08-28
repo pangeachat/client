@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-26 15:28:54.979935",
+    "@@last_modified": "2026-08-28 11:37:32.472823",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Video-thirrje e humbur",
     "callHistoryNoAnswer": "Pa përgjigje",
     "callHistoryDeclined": "Thirrja u refuzua",
-    "callHistoryYouDeclined": "Ju e refuzuat këtë thirrje"
+    "callHistoryYouDeclined": "Ju e refuzuat këtë thirrje",
+    "starsEarnedInLanguage": "Yje të fituar në {language}"
 }

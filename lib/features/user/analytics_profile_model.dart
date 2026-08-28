@@ -81,6 +81,7 @@ class AnalyticsProfileModel {
 
       var level = 0;
       var xpOffset = 0;
+      var stars = 0;
       String? analyticsRoomId;
       for (final variant in variants) {
         final v = variant.value;
@@ -95,6 +96,10 @@ class AnalyticsProfileModel {
         if (variantOffset is int && variantOffset > xpOffset) {
           xpOffset = variantOffset;
         }
+        // Largest for the same reason the published total only ever rises:
+        // a smaller number is never evidence the larger one is wrong.
+        final variantStars = v[AnalyticsConstants.stars];
+        if (variantStars is int && variantStars > stars) stars = variantStars;
         // The exact short-code key wins; otherwise the first variant to name a
         // room, in sorted key order. Any id is provisional anyway —
         // [clearForeignAnalyticsRoomIds] drops one this user does not own and
@@ -111,6 +116,7 @@ class AnalyticsProfileModel {
         level,
         xpOffset,
         analyticsRoomId: analyticsRoomId,
+        stars: stars,
       );
     }
 
@@ -142,6 +148,8 @@ class AnalyticsProfileModel {
         analytics[entry.key] = {
           AnalyticsConstants.level: entry.value.level,
           AnalyticsConstants.xpOffset: entry.value.xpOffset,
+          if (entry.value.stars > 0)
+            AnalyticsConstants.stars: entry.value.stars,
           if (entry.value.analyticsRoomId != null)
             AnalyticsConstants.analyticsRoomId: entry.value.analyticsRoomId,
         };
@@ -208,6 +216,38 @@ class AnalyticsProfileModel {
   int? xpOffsetByLanguage(String langCode) =>
       languageAnalytics?[_shortCode(langCode)]?.xpOffset;
 
+  /// Raises [langCode]'s banked star total to [stars], reporting whether that
+  /// changed anything (nothing is published when it did not).
+  ///
+  /// Raised, never set. Unlike a level, which legitimately falls when a learner
+  /// blocks constructs, every way a star count can be wrong makes it too LOW —
+  /// a device part-way through its first sync is missing rooms, and a session's
+  /// language only arrives once its activity plan has been fetched — so a
+  /// smaller number is never evidence the published one is wrong. See
+  /// profile.instructions.md.
+  bool raiseStars(String langCode, int stars) {
+    final key = _shortCode(langCode);
+    final current = languageAnalytics?[key];
+
+    // Compared BEFORE anything is created: a learner with no stars yet passes 0
+    // on every recount, and creating an entry for that would publish a level 0
+    // this learner never had — a language row claiming progress that does not
+    // exist, and one more empty entry in everyone's profile.
+    if (stars <= (current?.stars ?? 0)) return false;
+
+    final entry =
+        current ??
+        ((languageAnalytics ??= {})[key] = LanguageAnalyticsProfileEntry(0, 0));
+    entry.stars = stars;
+    return true;
+  }
+
+  int? starsByLanguage(String langCode) =>
+      languageAnalytics?[_shortCode(langCode)]?.stars;
+
+  int? levelByLanguage(String langCode) =>
+      languageAnalytics?[_shortCode(langCode)]?.level;
+
   /// This language's entry, for a row that displays a level — null for a
   /// regional variant even when its language has analytics.
   ///
@@ -236,9 +276,13 @@ class LanguageAnalyticsProfileEntry {
   int xpOffset = 0;
   String? analyticsRoomId;
 
+  /// Banked stars in this language — see [AnalyticsProfileModel.raiseStars].
+  int stars;
+
   LanguageAnalyticsProfileEntry(
     this.level,
     this.xpOffset, {
     this.analyticsRoomId,
+    this.stars = 0,
   });
 }

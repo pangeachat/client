@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-26 15:28:51.381754",
+    "@@last_modified": "2026-08-28 11:37:30.665984",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Verpassten Video-Uruff",
     "callHistoryNoAnswer": "Keng Äntwert",
     "callHistoryDeclined": "Uruff ofgeleent",
-    "callHistoryYouDeclined": "Dir hutt dësen Uruff ofgeleent"
+    "callHistoryYouDeclined": "Dir hutt dësen Uruff ofgeleent",
+    "starsEarnedInLanguage": "Stären a {language} verdéngt"
 }

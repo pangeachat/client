@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-26 15:28:47.714938",
+    "@@last_modified": "2026-08-28 11:37:28.909140",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Galwad fideo a gollwyd",
     "callHistoryNoAnswer": "Dim ateb",
     "callHistoryDeclined": "Galwad wedi'i gwrthod",
-    "callHistoryYouDeclined": "Gwrthodoch chi'r alwad hon"
+    "callHistoryYouDeclined": "Gwrthodoch chi'r alwad hon",
+    "starsEarnedInLanguage": "Sêr a enillwyd yn {language}"
 }

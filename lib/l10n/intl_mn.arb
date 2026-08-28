@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-26 15:28:52.139950",
+    "@@last_modified": "2026-08-28 11:37:31.169980",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Видео дуудлага алдсан",
     "callHistoryNoAnswer": "Хариулаагүй",
     "callHistoryDeclined": "Дуудлагаас татгалзсан",
-    "callHistoryYouDeclined": "Та энэ дуудлагаас татгалзсан"
+    "callHistoryYouDeclined": "Та энэ дуудлагаас татгалзсан",
+    "starsEarnedInLanguage": "{language} хэлээр цуглуулсан од"
 }

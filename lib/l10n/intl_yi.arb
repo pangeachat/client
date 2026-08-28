@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-26 15:28:57.051785",
+    "@@last_modified": "2026-08-28 11:37:33.483696",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "פארפעלטער ווידעא רוף",
     "callHistoryNoAnswer": "קיין ענטפער",
     "callHistoryDeclined": "רוף אפגעזאגט",
-    "callHistoryYouDeclined": "איר האט אפגעזאגט דעם רוף"
+    "callHistoryYouDeclined": "איר האט אפגעזאגט דעם רוף",
+    "starsEarnedInLanguage": "שטערן פֿאַרדינט אין {language}"
 }

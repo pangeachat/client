@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-26 15:28:47.612673",
+    "@@last_modified": "2026-08-28 11:37:28.875662",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Videochjama persa",
     "callHistoryNoAnswer": "Nisuna risposta",
     "callHistoryDeclined": "Chjama ricusata",
-    "callHistoryYouDeclined": "Avete ricusatu sta chjama"
+    "callHistoryYouDeclined": "Avete ricusatu sta chjama",
+    "starsEarnedInLanguage": "Stelle guadagnate in {language}"
 }

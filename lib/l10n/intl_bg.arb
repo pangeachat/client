@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-26 15:28:46.757407",
+    "@@last_modified": "2026-08-28 11:37:28.418389",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Пропуснато видео повикване",
     "callHistoryNoAnswer": "Без отговор",
     "callHistoryDeclined": "Разговорът е отхвърлен",
-    "callHistoryYouDeclined": "Вие отхвърлихте този разговор"
+    "callHistoryYouDeclined": "Вие отхвърлихте този разговор",
+    "starsEarnedInLanguage": "Спечелени звезди на {language}"
 }

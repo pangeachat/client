@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-26 15:28:49.695477",
+    "@@last_modified": "2026-08-28 11:37:29.654074",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Kev hu video tsis tau",
     "callHistoryNoAnswer": "Tsis teb",
     "callHistoryDeclined": "Tsis kam hu",
-    "callHistoryYouDeclined": "Koj tsis kam hu no"
+    "callHistoryYouDeclined": "Koj tsis kam hu no",
+    "starsEarnedInLanguage": "Cov hnub qub tau txais hauv {language}"
 }

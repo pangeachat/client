@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-26 15:28:54.988775",
+    "@@last_modified": "2026-08-28 11:37:36.712463",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10756,5 +10756,6 @@
     "callHistoryMissedVideoCall": "Zgrešen video klic",
     "callHistoryNoAnswer": "Ni odgovora",
     "callHistoryDeclined": "Klic zavrnjen",
-    "callHistoryYouDeclined": "Zavrnili ste ta klic"
+    "callHistoryYouDeclined": "Zavrnili ste ta klic",
+    "starsEarnedInLanguage": "Zvezdice, pridobljene v {language}"
 }

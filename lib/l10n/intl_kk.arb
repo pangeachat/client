@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-26 15:28:50.986497",
+    "@@last_modified": "2026-08-28 11:37:30.488176",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Қабылданбаған бейне қоңырау",
     "callHistoryNoAnswer": "Жауап жоқ",
     "callHistoryDeclined": "Қоңыраудан бас тартылды",
-    "callHistoryYouDeclined": "Сіз бұл қоңыраудан бас тарттыңыз"
+    "callHistoryYouDeclined": "Сіз бұл қоңыраудан бас тарттыңыз",
+    "starsEarnedInLanguage": "{language} тілінде жинаған жұлдыздар"
 }

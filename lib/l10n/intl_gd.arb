@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-26 15:28:49.019847",
+    "@@last_modified": "2026-08-28 11:37:29.520009",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Gairm-bhidio a chaidh a chall",
     "callHistoryNoAnswer": "Gun fhreagairt",
     "callHistoryDeclined": "Gairm air a diùltadh",
-    "callHistoryYouDeclined": "Dhiùlt thu a' ghairm seo"
+    "callHistoryYouDeclined": "Dhiùlt thu a' ghairm seo",
+    "starsEarnedInLanguage": "Rionnagan a choisinn thu ann an {language}"
 }

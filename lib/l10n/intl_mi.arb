@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-26 15:28:52.389743",
+    "@@last_modified": "2026-08-28 11:37:30.993364",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Waea ataata ngaro",
     "callHistoryNoAnswer": "Kāore he whakautu",
     "callHistoryDeclined": "Kua whakakorea te waea",
-    "callHistoryYouDeclined": "I whakakorea e koe tēnei waea"
+    "callHistoryYouDeclined": "I whakakorea e koe tēnei waea",
+    "starsEarnedInLanguage": "Whetū i whiwhi i te reo {language}"
 }

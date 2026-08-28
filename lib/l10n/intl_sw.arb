@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-26 15:28:56.079759",
+    "@@last_modified": "2026-08-28 11:37:32.817075",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Simu ya video uliyokosa",
     "callHistoryNoAnswer": "Hakuna jibu",
     "callHistoryDeclined": "Simu imekataliwa",
-    "callHistoryYouDeclined": "Ulikataa simu hii"
+    "callHistoryYouDeclined": "Ulikataa simu hii",
+    "starsEarnedInLanguage": "Nyota ulizopata katika {language}"
 }

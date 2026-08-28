@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-26 15:28:46.718276",
+    "@@last_modified": "2026-08-28 11:37:28.336233",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Propušteni video poziv",
     "callHistoryNoAnswer": "Nema odgovora",
     "callHistoryDeclined": "Poziv odbijen",
-    "callHistoryYouDeclined": "Odbili ste ovaj poziv"
+    "callHistoryYouDeclined": "Odbili ste ovaj poziv",
+    "starsEarnedInLanguage": "Zvijezde zarađene u {language}"
 }

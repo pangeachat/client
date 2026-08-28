@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:48.425117",
+    "@@last_modified": "2026-08-28 11:37:28.956419",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9899,5 +9899,6 @@
     "callHistoryMissedVideoCall": "تماس تصویری از دست رفته",
     "callHistoryNoAnswer": "بدون پاسخ",
     "callHistoryDeclined": "تماس رد شد",
-    "callHistoryYouDeclined": "شما این تماس را رد کردید"
+    "callHistoryYouDeclined": "شما این تماس را رد کردید",
+    "starsEarnedInLanguage": "ستاره‌های کسب شده در {language}"
 }

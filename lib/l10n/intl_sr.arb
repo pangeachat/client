@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:54.998349",
+    "@@last_modified": "2026-08-28 11:37:32.436990",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10760,5 +10760,6 @@
     "callHistoryMissedVideoCall": "Propušten video poziv",
     "callHistoryNoAnswer": "Nema odgovora",
     "callHistoryDeclined": "Poziv odbijen",
-    "callHistoryYouDeclined": "Odbili ste ovaj poziv"
+    "callHistoryYouDeclined": "Odbili ste ovaj poziv",
+    "starsEarnedInLanguage": "Zvezdice osvojene u {language}"
 }

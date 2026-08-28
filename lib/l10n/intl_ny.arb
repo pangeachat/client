@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-26 15:28:53.700291",
+    "@@last_modified": "2026-08-28 11:37:31.851073",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Kuyimba kwa vidiyo kosaphonya",
     "callHistoryNoAnswer": "Palibe yankho",
     "callHistoryDeclined": "Kuyimba kwakanidwa",
-    "callHistoryYouDeclined": "Mwakana kuyimba uku"
+    "callHistoryYouDeclined": "Mwakana kuyimba uku",
+    "starsEarnedInLanguage": "Nyenyezi zopezedwa mu {language}"
 }

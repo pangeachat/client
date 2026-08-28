@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-26 15:28:47.077818",
+    "@@last_modified": "2026-08-28 11:37:28.455415",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "ያመለጠ የቪዲዮ ጥሪ",
     "callHistoryNoAnswer": "ምንም ምላሽ የለም",
     "callHistoryDeclined": "ጥሪው ውድቅ ተደርጓል",
-    "callHistoryYouDeclined": "ይህን ጥሪ እምቢ ብለዋል"
+    "callHistoryYouDeclined": "ይህን ጥሪ እምቢ ብለዋል",
+    "starsEarnedInLanguage": "በ{language} የተገኙ ኮከቦች"
 }

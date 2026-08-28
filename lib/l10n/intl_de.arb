@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-26 15:28:47.719693",
+    "@@last_modified": "2026-08-28 11:37:28.860659",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9798,5 +9798,6 @@
     "callHistoryMissedVideoCall": "Verpasster Videoanruf",
     "callHistoryNoAnswer": "Keine Antwort",
     "callHistoryDeclined": "Anruf abgelehnt",
-    "callHistoryYouDeclined": "Sie haben diesen Anruf abgelehnt"
+    "callHistoryYouDeclined": "Sie haben diesen Anruf abgelehnt",
+    "starsEarnedInLanguage": "In {language} verdiente Sterne"
 }

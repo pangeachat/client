@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-26 15:28:53.134074",
+    "@@last_modified": "2026-08-28 11:37:31.552856",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Tapt videosamtale",
     "callHistoryNoAnswer": "Ikke noe svar",
     "callHistoryDeclined": "Samtalen avslått",
-    "callHistoryYouDeclined": "Du avslo denne samtalen"
+    "callHistoryYouDeclined": "Du avslo denne samtalen",
+    "starsEarnedInLanguage": "Stjerner opptjent i {language}"
 }

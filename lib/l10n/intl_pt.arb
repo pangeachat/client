@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:53.904817",
+    "@@last_modified": "2026-08-28 11:37:31.940118",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10755,5 +10755,6 @@
     "callHistoryMissedVideoCall": "Chamada de vídeo perdida",
     "callHistoryNoAnswer": "Sem resposta",
     "callHistoryDeclined": "Chamada recusada",
-    "callHistoryYouDeclined": "Você recusou esta chamada"
+    "callHistoryYouDeclined": "Você recusou esta chamada",
+    "starsEarnedInLanguage": "Estrelas ganhas em {language}"
 }

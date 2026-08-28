@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-26 15:28:52.322523",
+    "@@last_modified": "2026-08-28 11:37:31.013578",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Пропуштен видео повик",
     "callHistoryNoAnswer": "Нема одговор",
     "callHistoryDeclined": "Повикот е одбиен",
-    "callHistoryYouDeclined": "Го одбивте овој повик"
+    "callHistoryYouDeclined": "Го одбивте овој повик",
+    "starsEarnedInLanguage": "Освоени ѕвезди во {language}"
 }

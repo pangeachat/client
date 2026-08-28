@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-26 15:28:50.220771",
+    "@@last_modified": "2026-08-28 11:37:30.022496",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Բաց թողնված տեսազանգ",
     "callHistoryNoAnswer": "Անպատասխան",
     "callHistoryDeclined": "Զանգը մերժվեց",
-    "callHistoryYouDeclined": "Դուք մերժեցիք այս զանգը"
+    "callHistoryYouDeclined": "Դուք մերժեցիք այս զանգը",
+    "starsEarnedInLanguage": "{language}-ում վաստակած աստղեր"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-26 15:28:48.498075",
+    "@@last_modified": "2026-08-28 11:37:28.998149",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9811,5 +9811,6 @@
     "callHistoryMissedVideoCall": "Galdutako bideo-deia",
     "callHistoryNoAnswer": "Ez du erantzun",
     "callHistoryDeclined": "Deia baztertuta",
-    "callHistoryYouDeclined": "Dei hau baztertu duzu"
+    "callHistoryYouDeclined": "Dei hau baztertu duzu",
+    "starsEarnedInLanguage": "{language} hizkuntzan irabazitako izarrak"
 }

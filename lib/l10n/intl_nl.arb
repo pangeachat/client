@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:29:35.220984",
+    "@@last_modified": "2026-08-28 11:37:31.431801",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9811,5 +9811,6 @@
     "callHistoryMissedVideoCall": "Gemiste video-oproep",
     "callHistoryNoAnswer": "Geen antwoord",
     "callHistoryDeclined": "Oproep geweigerd",
-    "callHistoryYouDeclined": "U hebt deze oproep geweigerd"
+    "callHistoryYouDeclined": "U hebt deze oproep geweigerd",
+    "starsEarnedInLanguage": "Sterren verdiend in {language}"
 }

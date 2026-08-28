@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-26 15:28:50.428281",
+    "@@last_modified": "2026-08-28 11:37:30.115577",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10580,5 +10580,6 @@
     "callHistoryMissedVideoCall": "不在ビデオ通話",
     "callHistoryNoAnswer": "応答なし",
     "callHistoryDeclined": "通話が拒否されました",
-    "callHistoryYouDeclined": "この通話を拒否しました"
+    "callHistoryYouDeclined": "この通話を拒否しました",
+    "starsEarnedInLanguage": "{language}で獲得したスター"
 }

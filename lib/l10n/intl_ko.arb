@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:51.159685",
+    "@@last_modified": "2026-08-28 11:37:30.509980",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10004,5 +10004,6 @@
     "callHistoryMissedVideoCall": "부재중 영상 통화",
     "callHistoryNoAnswer": "응답 없음",
     "callHistoryDeclined": "통화 거절됨",
-    "callHistoryYouDeclined": "이 통화를 거절했습니다"
+    "callHistoryYouDeclined": "이 통화를 거절했습니다",
+    "starsEarnedInLanguage": "{language}에서 획득한 별"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:50.320605",
+    "@@last_modified": "2026-08-28 11:37:30.255718",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9884,5 +9884,6 @@
     "callHistoryMissedVideoCall": "Videochiamata persa",
     "callHistoryNoAnswer": "Nessuna risposta",
     "callHistoryDeclined": "Chiamata rifiutata",
-    "callHistoryYouDeclined": "Hai rifiutato questa chiamata"
+    "callHistoryYouDeclined": "Hai rifiutato questa chiamata",
+    "starsEarnedInLanguage": "Stelle guadagnate in {language}"
 }

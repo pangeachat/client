@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-26 15:28:53.942766",
+    "@@last_modified": "2026-08-28 11:37:31.715030",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "ਮਿਸਡ ਵੀਡੀਓ ਕਾਲ",
     "callHistoryNoAnswer": "ਕੋਈ ਜਵਾਬ ਨਹੀਂ",
     "callHistoryDeclined": "ਕਾਲ ਅਸਵੀਕਾਰ ਕੀਤੀ ਗਈ",
-    "callHistoryYouDeclined": "ਤੁਸੀਂ ਇਹ ਕਾਲ ਅਸਵੀਕਾਰ ਕੀਤੀ"
+    "callHistoryYouDeclined": "ਤੁਸੀਂ ਇਹ ਕਾਲ ਅਸਵੀਕਾਰ ਕੀਤੀ",
+    "starsEarnedInLanguage": "{language} ਵਿੱਚ ਕਮਾਏ ਸਿਤਾਰੇ"
 }

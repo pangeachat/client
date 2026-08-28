@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-26 15:28:53.950052",
+    "@@last_modified": "2026-08-28 11:37:32.008276",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10543,5 +10543,6 @@
     "callHistoryMissedVideoCall": "Apel video pierdut",
     "callHistoryNoAnswer": "Fără răspuns",
     "callHistoryDeclined": "Apel refuzat",
-    "callHistoryYouDeclined": "Ai refuzat acest apel"
+    "callHistoryYouDeclined": "Ai refuzat acest apel",
+    "starsEarnedInLanguage": "Stele câștigate în {language}"
 }

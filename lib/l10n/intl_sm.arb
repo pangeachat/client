@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-26 15:28:54.967796",
+    "@@last_modified": "2026-08-28 11:37:32.430456",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Valaau vitio misi",
     "callHistoryNoAnswer": "Leai se tali",
     "callHistoryDeclined": "Ua te'ena le valaau",
-    "callHistoryYouDeclined": "Na e te'ena lenei valaau"
+    "callHistoryYouDeclined": "Na e te'ena lenei valaau",
+    "starsEarnedInLanguage": "Fetu na maua i le gagana {language}"
 }

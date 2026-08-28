@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-26 15:28:57.210608",
+    "@@last_modified": "2026-08-28 11:37:33.783117",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Ipe fidio ti o padanu",
     "callHistoryNoAnswer": "Ko si idahun",
     "callHistoryDeclined": "Ipe ti kọ",
-    "callHistoryYouDeclined": "O kọ ipe yii"
+    "callHistoryYouDeclined": "O kọ ipe yii",
+    "starsEarnedInLanguage": "Àwọn ìràwọ̀ tí ó jẹ́ gbígbà ní {language}"
 }

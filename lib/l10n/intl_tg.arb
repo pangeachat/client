@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-26 15:28:56.052198",
+    "@@last_modified": "2026-08-28 11:37:33.074195",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Занги видеоии гумшуда",
     "callHistoryNoAnswer": "Ҷавоб нест",
     "callHistoryDeclined": "Занг рад карда шуд",
-    "callHistoryYouDeclined": "Шумо ин зангро рад кардед"
+    "callHistoryYouDeclined": "Шумо ин зангро рад кардед",
+    "starsEarnedInLanguage": "Ситораҳои бадастомада дар {language}"
 }

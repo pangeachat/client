@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-26 15:28:50.464212",
+    "@@last_modified": "2026-08-28 11:37:30.060011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2215,5 +2215,6 @@
     "callHistoryMissedVideoCall": "Ósvarað myndsímtal",
     "callHistoryNoAnswer": "Ekkert svar",
     "callHistoryDeclined": "Símtali hafnað",
-    "callHistoryYouDeclined": "Þú hafnaðir þessu símtali"
+    "callHistoryYouDeclined": "Þú hafnaðir þessu símtali",
+    "starsEarnedInLanguage": "Stjörnur unnar í {language}"
 }
