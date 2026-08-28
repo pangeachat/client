@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart' show SchedulerPhase;
 
 import 'package:matrix/matrix.dart'
     as matrix
@@ -269,7 +270,25 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// synchronously would be a setState during a build. [initState] already
   /// defers for the same reason.
   void _onAccountsChanged() {
-    WidgetsBinding.instance.addPostFrameCallback((_) => _listen());
+    final binding = WidgetsBinding.instance;
+    // Deferred ONLY when a build is actually in progress. An account can be
+    // added or removed from inside a login-state listener or a logout
+    // teardown, either of which can land mid-build, and reconciling there
+    // would be a setState during a build.
+    //
+    // Deferring unconditionally is wrong, and quietly so:
+    // `addPostFrameCallback` does not SCHEDULE a frame, it only queues work
+    // for the next one. Over an idle screen -- which is most of the time a
+    // banner is waiting for a call -- there may be no next frame for a long
+    // while, so an account that had just logged in would not start ringing
+    // until something unrelated happened to repaint. Reconciling
+    // immediately whenever it is safe means the subscription exists the
+    // moment the account does.
+    if (binding.schedulerPhase == SchedulerPhase.persistentCallbacks) {
+      binding.addPostFrameCallback((_) => _listen());
+      return;
+    }
+    _listen();
   }
 
   /// The active-account-scoped half: the rejoin offer, and the notifier that
