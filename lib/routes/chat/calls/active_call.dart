@@ -595,6 +595,17 @@ class ActiveCall extends ChangeNotifier {
   /// their departure and delivered late from one written late and delivered
   /// at once. A sync slower than this degrades to the ordinary grace, which
   /// is the behaviour we had before and costs at most seven more seconds.
+  ///
+  /// And the residual in the OTHER direction, which is the worse one and is
+  /// not fixed here: the SFU keeps a departed participant for its own retention
+  /// ([peerGraceWindow] is matched to it), so when that retention outlasts the
+  /// homeserver's cleanup, the retraction arrives first -- or inside this
+  /// window -- and a crash reads as a hangup. Nothing local separates the two
+  /// at that moment: a deliberate hangup ALSO retracts while the SFU still
+  /// lists the person. Only the timing tells them apart, and it would take an
+  /// apply-leave longer than the SFU's retention plus this window to do it.
+  /// True of the SDK's own defaults as well, and tracked rather than papered
+  /// over.
   static const endedDeliberatelyWithin = Duration(seconds: 13);
 
   /// When the peer was first seen to be gone, or null while they are here.

@@ -24,7 +24,8 @@ class _FixedRandom implements Random {
 
 void main() {
   group('the delayed-leave numbers hold each other up', () {
-    test('a server-written retraction can never be read as a hangup', () {
+    test('the server can never retract inside the window that would read as a '
+        'hangup', () {
       // ActiveCall reads a membership retraction seen within
       // endedDeliberatelyWithin of the peer leaving as "they pressed end".
       // A device that CRASHED retracts nothing -- the homeserver does it, at
@@ -35,9 +36,30 @@ void main() {
       //
       // This is the coupling that makes the two constants one decision: the
       // interval cannot be raised without raising applyLeave to match.
+      //
+      // NECESSARY, not sufficient, and deliberately named that way. ActiveCall
+      // measures its window from the SFU's report of the departure, and the SFU
+      // holds a departed participant for its own retention -- so a retention
+      // longer than applyLeave - maxRestart puts the server's cleanup first
+      // whatever these numbers say. That hole is older than these constants and
+      // the SDK's own 18s/4s has it too; see [CallDelayedLeave]. What this
+      // asserts is that our numbers do not ADD to it.
       expect(
         ActiveCall.endedDeliberatelyWithin,
         lessThan(CallDelayedLeave.applyLeave - CallDelayedLeave.maxRestart),
+      );
+    });
+
+    test('and it retracts no earlier than the SDK defaults would have', () {
+      // The direction is the part this change actually controls. Every drawn
+      // interval has to leave the earliest server-written retraction at least
+      // as late as the SDK would have put it -- otherwise a load fix would have
+      // bought its req/s by making a crash more likely to be reported to the
+      // other person as a deliberate hangup.
+      final sdk = CallTimeouts();
+      expect(
+        CallDelayedLeave.applyLeave - CallDelayedLeave.maxRestart,
+        greaterThan(sdk.delayedEventApplyLeave - sdk.delayedEventRestart),
       );
     });
 

@@ -29,8 +29,20 @@ import 'package:matrix/matrix.dart';
 ///    sooner than that cannot be the server's. Raising the restart interval
 ///    alone moves that retraction EARLIER, which is what would let a crash be
 ///    reported as a deliberate hangup. The two constants have to move together,
-///    and `endedDeliberatelyWithin < applyLeave - maxRestart` is the one that
-///    says so.
+///    and `endedDeliberatelyWithin < applyLeave - maxRestart` is what says so.
+///
+///    **That relation is necessary, not sufficient, and the gap is not this
+///    change's.** `ActiveCall` measures the window from when THIS CLIENT saw
+///    the peer leave, which is the SFU's report — and the SFU keeps a departed
+///    participant for its own retention window (`ActiveCall.peerGraceWindow`
+///    is matched to it). When that retention is longer than
+///    `applyLeave - restart`, the server's cleanup arrives first and a crash is
+///    read as a hangup no matter what these two numbers are. It is true of the
+///    SDK's 18s/4s as well; closing it would need
+///    `applyLeave - maxRestart > SFU retention + endedDeliberatelyWithin`,
+///    which is a much longer apply-leave and a decision of its own. What these
+///    numbers guarantee is only the direction: the earliest retraction is never
+///    moved EARLIER than the SDK would have put it.
 ///
 /// 3. **Cost.** Everything above is satisfied by leaving 18s/4s alone. The
 ///    reason not to is the load, which is the whole point of the change.
@@ -40,9 +52,6 @@ import 'package:matrix/matrix.dart';
 /// eighteen. Nothing reads that as busy — `CallService.isBusy` is local session
 /// state — so the visible effect is that a dead call's Return offer can stand
 /// twelve seconds longer, which is a trade this feature had already accepted.
-/// In exchange, a server-written retraction now arrives strictly LATER relative
-/// to the SFU's own departure report, and later is the safe direction for rule
-/// 2 above.
 class CallDelayedLeave {
   CallDelayedLeave._();
 
