@@ -4,7 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
+import 'package:fluffychat/routes/world/large_markers_layer.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// Screen-reader mirror of the drawn map pins (#7591).
@@ -16,8 +16,15 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 /// recommended workaround), so the exclusion is permanent. It also drops the
 /// pins' own semantics, leaving the map's "Activities" group empty to
 /// assistive tech. This layer re-authors them OUTSIDE the excluded subtree:
-/// one invisible semantics button per drawn pin, at the pin's projected screen
-/// position, carrying the same label and tap behavior as the visual pin.
+/// one invisible semantics button per drawn pin, carrying the same label and
+/// tap behavior as the visual pin.
+///
+/// **Each node's rect is the drawn marker's rect** — the same box size and
+/// anchor alignment the marker layers hand flutter_map, laid out with
+/// flutter_map's own alignment math — so a screen reader's focus highlight
+/// traces the visible pin, teardrop, or card itself, not an approximate box
+/// near it. `pin_semantics_layer_test.dart` pins that equality against the
+/// real marker layers, so the two cannot drift apart silently.
 ///
 /// The layer is pointer-transparent by construction: none of its render
 /// objects hit-test (`Semantics` boxes over empty `SizedBox`es), so pointer
@@ -32,6 +39,15 @@ class PinSemanticsLayer extends StatelessWidget {
   /// set), in the order they should be announced.
   final List<QuestActivityCard> cards;
   final ActivityPinState Function(String activityId) stateOf;
+  final PinTier Function(String activityId) tierOf;
+
+  /// The same box/anchor resolvers the dot marker layer is given, so dot and
+  /// teardrop mirror rects are the drawn markers' rects by construction. The
+  /// large tier's geometry comes from [LargeMarkersLayer]'s shared statics.
+  final Size Function(ActivityPinState state, PinTier tier) markerBox;
+  final Alignment Function(ActivityPinState state, PinTier tier)
+  markerAlignment;
+
   final void Function(QuestActivityCard card) onTap;
 
   const PinSemanticsLayer({
@@ -39,6 +55,9 @@ class PinSemanticsLayer extends StatelessWidget {
     required this.mapController,
     required this.cards,
     required this.stateOf,
+    required this.tierOf,
+    required this.markerBox,
+    required this.markerAlignment,
     required this.onTap,
   });
 
@@ -51,6 +70,34 @@ class PinSemanticsLayer extends StatelessWidget {
     } catch (_) {
       return null;
     }
+  }
+
+  /// The on-screen rect of [card]'s drawn marker: its box placed so that the
+  /// alignment anchor lands on the projected point — flutter_map's own
+  /// `MarkerLayer` math, so this rect and the drawn marker coincide.
+  Rect _markerRect(QuestActivityCard card, Offset projected) {
+    final state = stateOf(card.activityId);
+    final tier = tierOf(card.activityId);
+    final Size box;
+    final Alignment alignment;
+    if (tier == PinTier.large) {
+      box = Size(
+        LargeMarkersLayer.markerWidth(),
+        LargeMarkersLayer.markerHeight(state),
+      );
+      alignment = LargeMarkersLayer.markerAlignment;
+    } else {
+      box = markerBox(state, tier);
+      alignment = markerAlignment(state, tier);
+    }
+    final anchorLeft = 0.5 * box.width * (alignment.x + 1);
+    final anchorTop = 0.5 * box.height * (alignment.y + 1);
+    return Rect.fromLTWH(
+      projected.dx - (box.width - anchorLeft),
+      projected.dy - (box.height - anchorTop),
+      box.width,
+      box.height,
+    );
   }
 
   @override
@@ -67,27 +114,21 @@ class PinSemanticsLayer extends StatelessWidget {
           if (camera == null) return const SizedBox.shrink();
           return LayoutBuilder(
             builder: (context, constraints) {
-              final size = constraints.biggest;
-              const box = PinSize.dotTouchTarget;
+              final viewport = Offset.zero & constraints.biggest;
               final children = <Widget>[];
               for (final card in cards) {
                 final point = card.point;
                 if (point == null) continue;
-                final offset = camera.latLngToScreenOffset(point);
+                final rect = _markerRect(
+                  card,
+                  camera.latLngToScreenOffset(point),
+                );
                 // Off-viewport pins (the camera moved since the last settle
                 // re-rank) publish nothing, like the marker layers' culling.
-                if (offset.dx < 0 ||
-                    offset.dy < 0 ||
-                    offset.dx > size.width ||
-                    offset.dy > size.height) {
-                  continue;
-                }
+                if (!rect.overlaps(viewport)) continue;
                 children.add(
-                  Positioned(
-                    left: offset.dx - box / 2,
-                    top: offset.dy - box / 2,
-                    width: box,
-                    height: box,
+                  Positioned.fromRect(
+                    rect: rect,
                     child: Semantics(
                       // Each pin is its own node; without this a lone pin
                       // merges into the "Activities" group node and its

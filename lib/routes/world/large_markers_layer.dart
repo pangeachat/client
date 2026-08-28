@@ -29,8 +29,27 @@ class LargeMarkersLayer {
     required this.animateInOf,
   });
 
+  /// The large marker's box width: the card widened by the badge overhang on
+  /// both sides; the card centres within and the pin stays at the box's
+  /// horizontal centre, so the tail still lands on the dot while the top-right
+  /// badge has room to peek. Shared with [PinSemanticsLayer] so the
+  /// screen-reader mirror's rect is this same box.
+  static double markerWidth() =>
+      PinTier.large.dotWidth + WorldMapLargeCard.badgeOverhang * 2;
+
+  /// The large marker's box height: a ceiling so the tallest state variant
+  /// isn't clipped (the inner Align lets the card hug its own content), plus
+  /// tail room beneath and badge room above. Shared with [PinSemanticsLayer].
+  static double markerHeight(ActivityPinState state) =>
+      PinTier.large.dotHeight(state) +
+      WorldMapLargeCard.tailHeight +
+      WorldMapLargeCard.badgeOverhang;
+
+  /// Anchors the box bottom to the pin, so the height ceiling's slack lands
+  /// at the top. Shared with [PinSemanticsLayer].
+  static const Alignment markerAlignment = Alignment.topCenter;
+
   MarkerLayer layer() {
-    const tier = PinTier.large;
     return MarkerLayer(
       markers: largeCards
           .map((card) {
@@ -38,23 +57,9 @@ class LargeMarkersLayer {
             if (snap == null || card.point == null) return null;
             return Marker(
               point: card.point!,
-              // Widen by the badge overhang on both sides; the card centres within
-              // and the pin stays at the box's horizontal centre, so the tail still
-              // lands on the dot while the top-right badge has room to peek.
-              width: tier.dotWidth + WorldMapLargeCard.badgeOverhang * 2,
-              // The inner Align lets the card hug its own content (each state is a
-              // different height: joinable/ongoingPending add the avatar row,
-              // ongoingActive adds the message preview + star row). Height here is
-              // only a ceiling so the tallest variant isn't clipped; shorter cards
-              // don't stretch to fill it. The extra tailHeight reserves room beneath
-              // the card for the pin tail; the badgeOverhang reserves room ABOVE
-              // (topCenter alignment anchors the box bottom to the pin, so slack
-              // lands at the top) for the peeking unread badge.
-              height:
-                  tier.dotHeight(snap.state) +
-                  WorldMapLargeCard.tailHeight +
-                  WorldMapLargeCard.badgeOverhang,
-              alignment: Alignment.topCenter,
+              width: markerWidth(),
+              height: markerHeight(snap.state),
+              alignment: markerAlignment,
               // Child key, never Marker.key — see dot_markers_layer.dart
               // (#7947/#8136). Keeps the animated card's state tied to its own
               // activity through MarkerLayer's positional reconciliation.

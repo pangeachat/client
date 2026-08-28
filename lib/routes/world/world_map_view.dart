@@ -1159,13 +1159,18 @@ class _WorldMapViewState extends State<WorldMapView> {
           Positioned.fill(child: map),
           // Screen-reader pins (#7591): the map subtree above is
           // ExcludeSemantics'd (#8013), so the drawn pins' names and tap
-          // actions are re-authored here, outside it. The layer is
-          // pointer-transparent — pointer behavior stays with the real pins.
+          // actions are re-authored here, outside it, each node's rect
+          // matching its drawn marker so the focus highlight traces the
+          // visible pin. The layer is pointer-transparent — pointer behavior
+          // stays with the real pins.
           Positioned.fill(
             child: PinSemanticsLayer(
               mapController: widget.controller.mapController,
               cards: [...render.largeCards, ...render.nonLargeCards],
               stateOf: render.stateOf,
+              tierOf: render.tierOf,
+              markerBox: _markerBox,
+              markerAlignment: _markerAlignment,
               onTap: widget.controller.openActivity,
             ),
           ),
