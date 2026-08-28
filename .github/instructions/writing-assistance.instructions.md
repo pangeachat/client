@@ -226,8 +226,6 @@ Applied is not silent. A local correction gets the same treatment as any other a
 
 Because the request carries the corrected text, the server never sees the misspellings the device fixed. The two sets of matches sit alongside each other; neither replaces the other.
 
-A failed request does not take the correction back. The local pass already succeeded and the composer still carries its result, so the match survives the failure and stays undoable — everything else the failed request touched is discarded as usual. Dropping it would leave the learner holding a word they did not write with nothing to press.
-
 ### When the local pass runs
 
 The gate is whether the device has a dictionary for the learner's target language. It is not the active keyboard, and not the autocorrect setting: the spell checker is asked for a specific language and answers for that language whatever the learner is typing on, so keyboard state has no bearing on whether its answer is usable. Where no dictionary is available the pass is skipped and writing assistance behaves as it does today.

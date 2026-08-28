@@ -110,40 +110,6 @@ class IgcController {
     clearMatchToShow();
   }
 
-  /// Corrections the device already made to the text, which survive a failed
-  /// request. Only these: an open match is a suggestion nobody acted on, and
-  /// nothing is lost by dropping it.
-  List<PangeaMatchState> get appliedLocalSpellMatches => _matches
-      .where(
-        (match) =>
-            match.updatedMatch.status == PangeaMatchStatusEnum.automatic &&
-            match.updatedMatch.match.rule?.id ==
-                MatchRuleIdModel.localSpellCheck,
-      )
-      .toList();
-
-  /// Resets the state a failed `/grammar_v2` request invalidates, while
-  /// keeping the corrections the device already applied.
-  ///
-  /// The composer still carries those corrections, so dropping their matches
-  /// would leave the learner with a word they did not write and no way to put
-  /// it back — the request failing says nothing about the local pass, which
-  /// already succeeded. [_currentText] is restored with them because the
-  /// highlights and the undo are both resolved against it.
-  @visibleForTesting
-  void clearAfterFailedRequest() => _clearAfterFailedRequest();
-
-  void _clearAfterFailedRequest() {
-    final applied = appliedLocalSpellMatches;
-    final correctedText = _currentText;
-
-    clear();
-
-    if (applied.isEmpty) return;
-    _currentText = correctedText;
-    _matches.addAll(applied);
-  }
-
   /// Corrects the misspellings the device can find, **before** the text goes
   /// to the server. Returns whether any were applied.
   ///
@@ -428,7 +394,7 @@ class IgcController {
     if (res.isError) {
       debugPrint('IgcRepo.get error: ${res.asError}');
       onError(res.error!);
-      _clearAfterFailedRequest();
+      clear();
       return false;
     }
 
