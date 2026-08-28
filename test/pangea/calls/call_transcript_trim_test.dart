@@ -141,6 +141,79 @@ void main() {
     });
   });
 
+  group('a chunk whose audio could not even be read', () {
+    test('is recorded as LOST, not as silence', () async {
+      var calls = 0;
+      final sink = CallTranscriptSink(
+        transcribe: (_) async {
+          calls++;
+          return _response('x');
+        },
+        userL1: 'en',
+        userL2: 'hi',
+      );
+
+      // A malformed chunk: reading it divides by its channel count. The point
+      // is not this particular defect but that ANY throw out of the trim is
+      // accounted for, because the trim walks the chunk's bytes and byte
+      // walking can fail.
+      final broken = PcmChunk(
+        pcm: Uint8List(16000 * 2 * 10),
+        sampleRate: 16000,
+        channels: 0,
+        index: 7,
+        startedAtMs: _chunkStart,
+      );
+
+      await expectLater(sink.deliver(broken), throwsA(anything));
+
+      expect(calls, 0);
+      // NOT silence. Read outside the failure accounting, a throw here left the
+      // index claimed with nothing to release it: the chunk published as
+      // captured, not transcribed and not lost -- character for character how a
+      // chunk the PROVIDER read as silence looks. Speech this device dropped
+      // would have been indistinguishable from speech nobody spoke.
+      expect(sink.chunksLost, 1);
+      expect(sink.chunksSuppressed, 0);
+      expect(sink.chunksCaptured, 1);
+    });
+
+    test('can be retried, because the failure released its index', () async {
+      var calls = 0;
+      final sink = CallTranscriptSink(
+        transcribe: (_) async {
+          calls++;
+          return _response('hello');
+        },
+        userL1: 'en',
+        userL2: 'hi',
+      );
+
+      await expectLater(
+        sink.deliver(
+          PcmChunk(
+            pcm: Uint8List(16000 * 2 * 10),
+            sampleRate: 16000,
+            channels: 0,
+            index: 3,
+            startedAtMs: _chunkStart,
+          ),
+        ),
+        throwsA(anything),
+      );
+
+      // The same index, delivered again with audio that can be read. A retry
+      // that found the index still taken would have returned as though it had
+      // succeeded, and the words would be lost with nothing saying so.
+      await sink.deliver(_chunk(_range(22.3, 40.2), index: 3));
+
+      expect(calls, 1);
+      expect(sink.chunksLost, 0, reason: 'the retry is no longer a loss');
+      expect(sink.chunksTranscribed, 1);
+      expect(sink.chunksCaptured, 1);
+    });
+  });
+
   group('a chunk that was trimmed', () {
     test('is sent as the trimmed audio, not the whole chunk', () async {
       Uint8List? sent;

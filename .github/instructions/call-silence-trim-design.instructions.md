@@ -213,6 +213,14 @@ the opposite of what that accounting is for. Silence gets its own state:
 
 - `_suppressed` — captured, judged to hold no speech *by this device*, no
   request issued.
+
+A chunk whose audio cannot be READ is a fourth outcome and it is a **loss**, not
+silence. Examining a chunk walks its bytes and that can fail; if it does, the
+chunk has to release its claim and be counted lost, exactly as a failed request
+is. Left outside the failure accounting it published as captured, not
+transcribed and not lost — character for character how a chunk the provider read
+as silence looks, which would make speech this device dropped indistinguishable
+from speech nobody spoke.
 - `chunksCaptured = _transcribed.length + _failed.length + _suppressed.length`.
 - `chunksLost` stays `_failed.length`.
 

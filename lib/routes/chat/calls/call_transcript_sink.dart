@@ -196,7 +196,24 @@ class CallTranscriptSink implements CallAudioSink {
     //
     // Costs about 13ms for a 40-second chunk, once per chunk, so it runs here
     // rather than on an isolate of its own.
-    final audio = trimToSpeech(chunk, settings: trimSettings);
+    //
+    // INSIDE the failure accounting, not in front of it. Reading the audio is
+    // work that can throw — it walks the chunk's bytes — and outside the catch
+    // a throw here left the index claimed in `_transcribed` with nothing to
+    // release it: every retry then found the index taken and returned as though
+    // it had succeeded, and the half published the chunk as captured, not
+    // transcribed and not lost, which is exactly how a chunk the PROVIDER read
+    // as silence looks. Speech this device dropped would have been indis-
+    // tinguishable from speech nobody spoke.
+    final TrimmedChunkAudio? audio;
+    try {
+      audio = trimToSpeech(chunk, settings: trimSettings);
+    } catch (e, s) {
+      _transcribed.remove(chunk.index);
+      _failed.add(chunk.index);
+      Logs().w('Could not read call chunk ${chunk.index}', e, s);
+      rethrow;
+    }
     if (audio == null) {
       // Captured, and held nothing said. Not a failure and not a loss: the
       // audio was examined and found empty, so there is nothing to retry and
