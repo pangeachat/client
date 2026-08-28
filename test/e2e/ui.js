@@ -22,42 +22,111 @@ async function enableSemantics(page) {
   return r;
 }
 
-/// Every labelled node currently on screen. The debugging tool when a click
-/// cannot find its target -- it says what WAS there instead.
+/// Every semantics node on screen: the names it answers to, its role, and
+/// where it is. One crossing of the browser boundary; every question below is
+/// answered from it, in node.
+///
+/// A NAME IS NOT ONLY AN ARIA-LABEL. Flutter's web engine publishes a node's
+/// accessible name two ways and the choice is the ENGINE's, not the app's: a
+/// node that has child semantics nodes carries `aria-label`, and a LEAF carries
+/// its name as its own DOM TEXT instead. This file used to read only the
+/// attribute, so every leaf control was invisible to it -- and a leaf is
+/// exactly what a tappable widget with no inner semantics becomes.
+///
+/// What that cost: `hasControl(page, 'transcriptLink')` could never once be
+/// true. The call card publishes "Read the transcript" as text, so the check
+/// that asks whether the card offers the transcript failed on every run of a
+/// feature that was working perfectly -- and the check it gates, the one about
+/// nobody being wrongly called silent, has therefore never run at all. It
+/// looked like a routing bug: `ui.labels()` came back with the map's labels
+/// and nothing of the chat, so the app appeared to be sitting on the world map
+/// with the deep link swallowed, when in truth the room was open and only its
+/// labels were unreadable from here.
+///
+/// login.js already read both (its own `nameOf`), which is why signing in kept
+/// working while everything after it did not; unstick.js and refresh_midcall.js
+/// each grew their own leaf-text fallback. This is the one place that knows.
+///
+/// A merged leaf's name is the CONCATENATION of everything merged into it --
+/// "Read the transcript\nRead the transcript\nVoice call\n  0:38" is a single
+/// node -- so its text is offered LINE BY LINE rather than whole. Matching the
+/// blob would need a substring test, and substrings are precisely what
+/// `findControl` refuses: "Call" is a substring of "Video call", and that
+/// mistake places a video call where a scenario asked for a voice one.
+async function scan(page) {
+  return page.evaluate(() => {
+    const nodes = Array.from(document.querySelectorAll('flt-semantics'));
+    const out = [];
+    for (const e of nodes) {
+      const names = [];
+      const aria = (e.getAttribute('aria-label') || '').trim();
+      if (aria) names.push(aria);
+      // The node's OWN text only. Descendant text would make every ancestor
+      // answer to every name beneath it, up to the root -- and the root is a
+      // full-screen node, so a click would land in the middle of the window.
+      for (const child of e.childNodes) {
+        if (child.nodeType !== Node.TEXT_NODE) continue;
+        for (const line of (child.textContent || '').split('\n')) {
+          const t = line.trim();
+          if (t) names.push(t);
+        }
+      }
+      if (!names.length) continue;
+      const r = e.getBoundingClientRect();
+      if (r.width <= 0 || r.height <= 0) continue;
+      const x = r.x + r.width / 2;
+      const y = r.y + r.height / 2;
+      out.push({
+        names,
+        role: e.getAttribute('role'),
+        x,
+        y,
+        onScreen:
+          x >= 0 && y >= 0 && x < window.innerWidth && y < window.innerHeight,
+      });
+    }
+    return out;
+  });
+}
+
+/// Every name currently on screen, in document order, deduplicated. The
+/// debugging tool when a click cannot find its target -- it says what WAS
+/// there instead.
 async function labels(page) {
-  return page.evaluate(() =>
-    Array.from(document.querySelectorAll('flt-semantics[aria-label]'))
-      .map((e) => e.getAttribute('aria-label'))
-      .filter((s) => s && s.trim()),
-  );
+  const seen = new Set();
+  for (const node of await scan(page)) {
+    for (const name of node.names) seen.add(name);
+  }
+  return [...seen];
+}
+
+/// Which of the nodes that answer to a name gets clicked, as a point.
+///
+/// A real control, in preference to anything else carrying the same name. An
+/// IconButton's TOOLTIP repeats its label, so once the pointer has rested on
+/// the call button a second node saying "Call" exists -- and clicking that one
+/// does nothing at all. That is what made the second call in a session
+/// silently fail to place.
+///
+/// On screen first. A long timeline holds twenty cards with the same name and
+/// most of them are scrolled out of the list's clip -- their nodes are still in
+/// the tree, with rects above the viewport, and clicking one lands at a
+/// NEGATIVE coordinate. Only when nothing matching is visible does an
+/// off-screen node get to answer, so `hasControl` stays at least as willing to
+/// find a control as it was before.
+function choose(matches) {
+  if (!matches.length) return null;
+  const pick = (list) => list.find((n) => n.role === 'button') || list[0];
+  const visible = matches.filter((n) => n.onScreen);
+  const hit = pick(visible.length ? visible : matches);
+  return { x: hit.x, y: hit.y };
 }
 
 async function findRect(page, label, { exact = false } = {}) {
-  return page.evaluate(
-    (label, exact) => {
-      const nodes = Array.from(
-        document.querySelectorAll('flt-semantics[aria-label]'),
-      );
-      const matches = nodes.filter((e) => {
-        const l = e.getAttribute('aria-label') || '';
-        const ok = exact ? l === label : l.toLowerCase().includes(label.toLowerCase());
-        if (!ok) return false;
-        const r = e.getBoundingClientRect();
-        return r.width > 0 && r.height > 0;
-      });
-      if (!matches.length) return null;
-      // A real control, in preference to anything else carrying the same label.
-      // An IconButton's TOOLTIP repeats its label, so once the pointer has
-      // rested on the call button a second node with aria-label "Call" exists --
-      // and clicking that one does nothing at all. That is what made the second
-      // call in a session silently fail to place.
-      const hit = matches.find((e) => e.getAttribute('role') === 'button') || matches[0];
-      const r = hit.getBoundingClientRect();
-      return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
-    },
-    label,
-    exact,
-  );
+  const wanted = exact
+    ? (name) => name === label
+    : (name) => name.toLowerCase().includes(label.toLowerCase());
+  return choose((await scan(page)).filter((n) => n.names.some(wanted)));
 }
 
 async function waitForLabel(page, label, { timeout = 15000, exact = false } = {}) {
@@ -101,12 +170,20 @@ async function hasLabel(page, label) {
 /// reading "Missed video call". Every call site this replaced passed
 /// `exact: true` for that reason; losing it in the abstraction put the bug
 /// back.
+///
+/// Asked of ONE reading of the screen, not one per translation. A control has
+/// around a hundred candidate strings, and probing them in turn crossed the
+/// browser boundary a hundred times for a single question -- slow enough that
+/// the screen could change while the answer was being computed, which is the
+/// shape of a check that fails for a reason that is not a bug.
 async function findControl(page, name, opts = {}) {
-  for (const text of labelsModule.candidates(name)) {
-    const rect = await findRect(page, text, { exact: true, ...opts });
-    if (rect) return rect;
-  }
-  return null;
+  const { exact = true } = opts;
+  const candidates = labelsModule.candidates(name);
+  const matches = (name_) =>
+    exact
+      ? candidates.includes(name_)
+      : candidates.some((c) => name_.toLowerCase().includes(c.toLowerCase()));
+  return choose((await scan(page)).filter((n) => n.names.some(matches)));
 }
 
 async function hasControl(page, name, opts = {}) {
@@ -155,8 +232,8 @@ async function waitForControl(page, name, { timeout = 15000, ...opts } = {}) {
 }
 
 module.exports = {
-  wait, enableSemantics, labels, findRect, waitForLabel, clickLabel, hasLabel,
-  findControl, hasControl, clickControl, waitForControl,
+  wait, enableSemantics, scan, labels, findRect, waitForLabel, clickLabel,
+  hasLabel, findControl, hasControl, clickControl, waitForControl,
 };
 
 // ---------------------------------------------------------------------------

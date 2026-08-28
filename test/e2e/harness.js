@@ -80,11 +80,18 @@ async function openParticipant(name, roomLocalpart, port) {
 
 /// Opens the room and PROVES it opened.
 ///
-/// The deep link does not always stick -- the app can resolve its own route
-/// after login and land back on the activity map. A harness that did not check
-/// would then drive the map, find nothing, and report the feature broken (or
-/// worse, find nothing and report nothing). So this confirms by waiting for a
-/// control that only exists inside a chat, and fails loudly if it never comes.
+/// A harness that did not check would drive the map, find nothing, and report
+/// the feature broken (or worse, find nothing and report nothing). So this
+/// confirms by waiting for a control that only exists inside a chat, and fails
+/// loudly if it never comes.
+///
+/// What the checking has actually caught, measured rather than assumed: the
+/// chat is SLOW to paint, not missing. Eight cold loads of this link in a row
+/// kept `?left=chats,room:...` untouched in the address bar and opened the
+/// room every time; the one attempt that ever failed was the first one after a
+/// call, and the second attempt -- doing the same thing again -- worked. The
+/// route is not being swallowed, so the answer is patience (see
+/// [settledInRoom]) and a diagnostic that prints the URL.
 async function openRoom(page, roomLocalpart, attempts = 4) {
   for (let i = 1; i <= attempts; i++) {
     // Cleared first on a retry: the app restores whatever route it was last
@@ -98,32 +105,52 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
       await page.keyboard.press('Escape').catch(() => {});
     }
     await page.goto(`${APP}/?left=chats,room:${roomLocalpart}`, { waitUntil: 'domcontentloaded' });
-    await wait(i === 1 ? 6500 : 4000);
-    await ui.enableSemantics(page);
-    await wait(1500);
-    if (await ui.hasControl(page, 'call')) return;
+    if (await settledInRoom(page)) return;
     // The deep link does not always land, and the app then sits on the chat
     // LIST with the conversation right there. Clicking it is what a person
     // would do, and it is far more reliable than reloading the same link
     // again: a row is recognisable by its timestamp.
-    const row = await page.evaluate(() => {
-      const hit = [...document.querySelectorAll('flt-semantics[aria-label]')]
-        .find((e) => /\d{1,2}:\d{2}\s?(AM|PM)/i.test(e.getAttribute('aria-label') || ''));
-      if (!hit) return null;
-      const r = hit.getBoundingClientRect();
-      if (!r.width || !r.height) return null;
-      return { x: r.x + r.width / 2, y: r.y + r.height / 2, label: hit.getAttribute('aria-label') };
-    });
+    const row = (await ui.scan(page)).find((n) =>
+      n.onScreen && n.names.some((l) => /\d{1,2}:\d{2}\s?(AM|PM)/i.test(l)));
     if (row) {
       await page.mouse.click(row.x, row.y);
-      await wait(3500);
-      await ui.enableSemantics(page);
-      await wait(1200);
-      if (await ui.hasControl(page, 'call')) return;
+      if (await settledInRoom(page, { timeout: 8000 })) return;
     }
-    console.log(`   (room did not open, attempt ${i}/${attempts}; on screen: ${JSON.stringify(await ui.labels(page))})`);
+    // THE URL, always. Without it this line cannot tell the two failures
+    // apart, and they want opposite fixes: a link the app REWROTE (the route
+    // was swallowed, a product bug) versus the link still standing with the
+    // chat simply not painted yet (the app is busy -- wait longer). A whole
+    // investigation went looking for a routing hole that does not exist
+    // because this printed only the labels, and the labels of an open chat are
+    // nearly the labels of the bare map.
+    console.log(
+      `   (room did not open, attempt ${i}/${attempts}; url ${page.url()}; ` +
+        `on screen: ${JSON.stringify(await ui.labels(page))})`);
   }
   throw new Error('could not open the room: the call controls never appeared');
+}
+
+/// Waits for the chat to be on screen, rather than sleeping and looking once.
+///
+/// The sleep was 6.5 seconds and it was a guess about a machine, not a fact
+/// about the product: right after a call the app is draining a recording,
+/// uploading two transcript halves and catching up a sync backlog, and the
+/// chat paints later than that. The single look then reported the deep link
+/// dead while it was merely early -- the next attempt, doing exactly the same
+/// thing, found the room.
+///
+/// Semantics is re-enabled every round on purpose. Flutter only publishes its
+/// placeholder once the engine is up, so a click that arrives before that does
+/// nothing at all and the tree stays off for ever; asking again costs nothing
+/// once it is on.
+async function settledInRoom(page, { timeout = 25000 } = {}) {
+  const deadline = Date.now() + timeout;
+  for (;;) {
+    await ui.enableSemantics(page).catch(() => {});
+    if (await ui.hasControl(page, 'call').catch(() => false)) return true;
+    if (Date.now() > deadline) return false;
+    await wait(1000);
+  }
 }
 
 /// Re-opens the room if the app has drifted away from it.
