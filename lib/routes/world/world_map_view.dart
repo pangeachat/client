@@ -183,6 +183,16 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// clear (#7218). Update alongside the chrome if its heights change.
   static const double _narrowBottomChromeInset = 140.0;
 
+  /// flutter_map's keyboard focus node, owned here so it can skip Tab
+  /// traversal (#7219): the map's focus target is invisible, so a Tab stop on
+  /// it reads as "nothing selected". Clicking the map still focuses it for
+  /// keyboard panning. flutter_map only disposes the node when it created it
+  /// itself, so an injected one is disposed here.
+  final FocusNode _mapKeyboardFocusNode = FocusNode(
+    debugLabel: 'FlutterMap',
+    skipTraversal: true,
+  );
+
   /// OSM tile-policy hardening (#8603): the native User-Agent names the app
   /// AND carries a contact URL, per the OSM tile usage policy. Web cannot set
   /// the header at all (a Dart/browser limitation flutter_map documents on
@@ -808,6 +818,12 @@ class _WorldMapViewState extends State<WorldMapView> {
   }
 
   @override
+  void dispose() {
+    _mapKeyboardFocusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // world-map-tiles Phase 1: free hosted OpenStreetMap tiles for both
     // themes; dark theme is a client-side color filter over the same tiles
@@ -987,8 +1003,16 @@ class _WorldMapViewState extends State<WorldMapView> {
                   // and felt delayed and jumpy next to this — the ease showed up
                   // as input lag, not as calm. Only the programmatic glides
                   // (focus button, world reset) were slowed.
-                  interactionOptions: const InteractionOptions(
+                  interactionOptions: InteractionOptions(
                     flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+                    // Keep the map's invisible focus target out of Tab
+                    // traversal, and stop it grabbing focus at mount
+                    // (KeyboardOptions defaults autofocus to TRUE) — both
+                    // derail the workspace tab order (#7219).
+                    keyboardOptions: KeyboardOptions(
+                      focusNode: _mapKeyboardFocusNode,
+                      autofocus: false,
+                    ),
                   ),
                   // Tapping empty map does not clear focus — a focus is cleared only by
                   // closing its panel or focusing another (world-map.instructions.md).

@@ -246,6 +246,10 @@ class WorkspaceShell extends StatelessWidget {
       label: L10n.of(context).home,
       child: ScaffoldMessenger(
         child: FocusTraversalGroup(
+          // Tab order on the workspace (#7219): nav rail (1) → the map, whose
+          // reading order puts its search bar + filter pills first (2) → the
+          // user cluster / analytics bar (3). Unordered focusables (open
+          // panels, the narrow nav widget) follow in reading order.
           policy: OrderedTraversalPolicy(),
           child: Scaffold(
             // No bottomNavigationBar slot: the narrow chrome is the FLOATING nav
@@ -261,13 +265,16 @@ class WorkspaceShell extends StatelessWidget {
                 /// Persistent world map — the base layer everything overlays. Overlays pad the
                 /// camera so a course fit lands in the exposed area: left = rail + column +
                 /// detail; right = the panel zone.
-                WorldMap(
-                  key: _persistentWorldMapKey,
-                  leftOverlayWidth: l.mapLeftOverlay,
-                  rightOverlayWidth: l.allocation.mapRightOverlay,
-                  bottomOverlayHeight: l.mapBottomOverlay,
-                  availableVisibleMapWidth: l.availableVisibleMapWidth,
-                  focus: mapFocusFor(state),
+                FocusTraversalOrder(
+                  order: const NumericFocusOrder(2),
+                  child: WorldMap(
+                    key: _persistentWorldMapKey,
+                    leftOverlayWidth: l.mapLeftOverlay,
+                    rightOverlayWidth: l.allocation.mapRightOverlay,
+                    bottomOverlayHeight: l.mapBottomOverlay,
+                    availableVisibleMapWidth: l.availableVisibleMapWidth,
+                    focus: mapFocusFor(state),
+                  ),
                 ),
 
                 /// Headless: opens a DM invite link's DM once the shell is up
@@ -283,14 +290,22 @@ class WorkspaceShell extends StatelessWidget {
                     child: Stack(
                       fit: StackFit.expand,
                       children: [
-                        /// The route canvas, as one stable child
+                        /// The route canvas, as one stable child. ExcludeFocus
+                        /// (#7219): the canvas is permanently offstage, but
+                        /// Offstage does NOT remove its descendants from focus
+                        /// traversal — without this, navigating fills the
+                        /// canvas with invisible Tab stops and the visible
+                        /// chrome (the map search bar) becomes practically
+                        /// unreachable by keyboard.
                         Positioned(
                           left: l.leftInset,
                           top: 0,
                           bottom: 0,
                           right: 0,
                           width: null,
-                          child: Offstage(child: l.canvasChild),
+                          child: ExcludeFocus(
+                            child: Offstage(child: l.canvasChild),
+                          ),
                         ),
 
                         /// The narrow floating nav widget: the 4-item rail with the
@@ -338,11 +353,14 @@ class WorkspaceShell extends StatelessWidget {
                             padding: const EdgeInsets.all(
                               _ShellLayout.chromeMargin,
                             ),
-                            child: SpacesNavigationRail(
-                              state: state,
-                              showNavRail: l.navRail,
-                              naviRailWidth: FluffyThemes.navRailWidth + 1.0,
-                              activeSpaceId: activeSpaceIdFor(state.uri),
+                            child: FocusTraversalOrder(
+                              order: const NumericFocusOrder(1),
+                              child: SpacesNavigationRail(
+                                state: state,
+                                showNavRail: l.navRail,
+                                naviRailWidth: FluffyThemes.navRailWidth + 1.0,
+                                activeSpaceId: activeSpaceIdFor(state.uri),
+                              ),
                             ),
                           ),
                         ),
@@ -435,7 +453,10 @@ class WorkspaceShell extends StatelessWidget {
                           Positioned(
                             top: _ShellLayout.chromeMargin,
                             right: _ShellLayout.chromeMargin,
-                            child: WorldUserCluster(key: _userClusterKey),
+                            child: FocusTraversalOrder(
+                              order: const NumericFocusOrder(3),
+                              child: WorldUserCluster(key: _userClusterKey),
+                            ),
                           )
                         else if (l.analyticsBarVisible)
                           Positioned(
@@ -457,7 +478,10 @@ class WorkspaceShell extends StatelessWidget {
                                       child: child,
                                     ),
                                   ),
-                              child: WorldAnalyticsBar(key: _userClusterKey),
+                              child: FocusTraversalOrder(
+                                order: const NumericFocusOrder(3),
+                                child: WorldAnalyticsBar(key: _userClusterKey),
+                              ),
                             ),
                           ),
                       ],
