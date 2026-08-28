@@ -140,6 +140,19 @@ void main() {
     /// on every half written before the field existed, which is the case most
     /// of these fixtures are about.
     ClockAnchor? anchor,
+
+    /// How much later than its `at_ms` each segment could have begun, or null
+    /// for a segment placed at its own first word. One entry per [texts] entry.
+    List<int?>? spanMs,
+
+    /// Whether this writer says which of its positions are exact.
+    ///
+    /// TRUE by default because that is what `transcript_writer.dart` emits, and
+    /// a fixture that models our own writer has to carry the claims our writer
+    /// makes. The four tests that broke when this arrived were not finding a
+    /// bug -- they were fixtures that had silently become foreign clients, and
+    /// a foreign client's times are deliberately not printed.
+    bool positionsMarked = true,
   }) => MatrixEvent(
     type: CallTranscriptContent.relType,
     eventId: '\$half-$sender',
@@ -149,8 +162,13 @@ void main() {
       'call_key': _callKey,
       'segments': [
         for (final (i, t) in texts.indexed)
-          {'text': t, if (atMs != null) 'at_ms': atMs[i]},
+          {
+            'text': t,
+            if (atMs != null) 'at_ms': atMs[i],
+            if (spanMs?[i] != null) 'at_span_ms': spanMs![i],
+          },
       ],
+      if (positionsMarked) 'positions_marked': true,
       // From the writer's own serialiser, so a fixture cannot drift out of the
       // declaration contract when a field is added to it.
       if (declared)
@@ -326,6 +344,261 @@ void main() {
       );
 
       expect(find.byType(TurnTimeline), findsNothing);
+    });
+
+    testWidgets('an answer bounded to a chunk does not jump ahead of its '
+        'question', (tester) async {
+      // THE HARM, staged from the real shape of it. One of Alice's chunks ran
+      // from 0s to 45s and its word timings could not be used, so every
+      // sentence cut from it carries the same estimate -- the earliest evidence
+      // of speech anywhere in the chunk. Her "si" was actually said forty
+      // seconds in, answering Bob's question at thirty.
+      //
+      // Placed at the estimate, "si" renders at 0:00 and the transcript shows a
+      // learner answering a question they had not been asked. Placed at the end
+      // of the chunk it was cut from -- the last moment it could have been
+      // said -- it cannot.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: ['si'],
+            atMs: [_callStart],
+            spanMs: [45000],
+            anchor: null,
+          ),
+          half(_peer, texts: ['estas de acuerdo'], atMs: [_callStart + 30000]),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      double top(String text) => tester.getTopLeft(find.text(text)).dy;
+      expect(
+        top('estas de acuerdo'),
+        lessThan(top('si')),
+        reason: 'the question must come before the answer to it',
+      );
+    });
+
+    testWidgets('the SAME halves without the span read out of order', (
+      tester,
+    ) async {
+      // The control, and the thing that proves the test above exercises the
+      // span rather than agreeing with the raw positions. Identical fixture
+      // with `at_span_ms` stripped: the answer sorts on the estimate and lands
+      // ahead of the question, which is the defect exactly.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: ['si'], atMs: [_callStart]),
+          half(_peer, texts: ['estas de acuerdo'], atMs: [_callStart + 30000]),
+        ]),
+      );
+
+      double top(String text) => tester.getTopLeft(find.text(text)).dy;
+      expect(top('si'), lessThan(top('estas de acuerdo')));
+    });
+
+    testWidgets('a turn bounded to a chunk says "by", and says why', (
+      tester,
+    ) async {
+      // The peer opens the call with an exactly timed word, so the origin is
+      // that word and every number below is elapsed from it. Without it the
+      // origin would be the EARLIEST PLACED moment, which is the peer's
+      // question at 30s -- correct, but it puts the reader's arithmetic on a
+      // number that has nothing to do with what this test is about.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: ['si'], atMs: [_callStart], spanMs: [45000]),
+          half(
+            _peer,
+            texts: ['hola', 'estas de acuerdo'],
+            captured: 2,
+            transcribed: 2,
+            atMs: [_callStart, _callStart + 30000],
+          ),
+        ]),
+      );
+
+      // Placed at the END of its window, and printed as the bound it is.
+      expect(find.text('by 0:45'), findsOneWidget);
+      // The other speaker's turns were timed to their own words, so they print
+      // plain stamps -- which is what stops this test passing on a screen that
+      // simply gave up and marked everything approximate.
+      expect(find.text('0:00'), findsOneWidget);
+      expect(find.text('0:30'), findsOneWidget);
+      expect(find.textContaining('at or before'), findsOneWidget);
+    });
+
+    testWidgets('the clock starts at the earliest PLACED moment', (
+      tester,
+    ) async {
+      // The origin is the minimum over the same keys everything is ordered by,
+      // not over the raw positions. Two reasons, and this fixture is the second
+      // one: our estimate here is _callStart while our turn is PLACED 45s
+      // later, so an origin taken from the estimate would put the peer's 30s
+      // turn at 0:30 and ours at 0:45 -- but an origin taken from the raw
+      // minimum of a DIFFERENT half could sit after a key and render a
+      // negative elapsed time. Taking the minimum over exactly the values being
+      // subtracted from makes that impossible.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: ['si'], atMs: [_callStart], spanMs: [45000]),
+          half(_peer, texts: ['estas de acuerdo'], atMs: [_callStart + 30000]),
+        ]),
+      );
+
+      // The peer's exact 30s word is the earliest placed moment, so it is the
+      // zero, and ours reads fifteen seconds later rather than forty-five.
+      expect(find.text('0:00'), findsOneWidget);
+      expect(find.text('by 0:15'), findsOneWidget);
+      expect(
+        find.textContaining('-'),
+        findsNothing,
+        reason: 'no turn may render before the origin',
+      );
+    });
+
+    testWidgets('an unvouched turn does not become the zero every other time '
+        'is measured from', (tester) async {
+      // Every time on screen is a DIFFERENCE from the origin, and a difference
+      // is only as sound as both its ends. The peer's older client opens the
+      // call and never said how exact its times are; if that turn set the zero,
+      // our own exactly timed word would print "0:03" -- an exact-looking stamp
+      // measured from a number the same screen says it cannot vouch for, and
+      // wrong by however wrong that half was.
+      await pump(
+        tester,
+        serving([
+          half(
+            _peer,
+            texts: ['hola'],
+            atMs: [_callStart],
+            positionsMarked: false,
+          ),
+          half(_me, texts: ['que tal'], atMs: [_callStart + 3000]),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      // Both turns are shown, in the order their devices put them.
+      double top(String text) => tester.getTopLeft(find.text(text)).dy;
+      expect(top('hola'), lessThan(top('que tal')));
+
+      // Our word is the earliest moment anybody vouched for, so it is the zero.
+      expect(find.text('0:00'), findsOneWidget);
+      expect(
+        find.text('0:03'),
+        findsNothing,
+        reason: 'that stamp would be measured from an unvouched moment',
+      );
+      // And the peer's turn still shows no time of its own.
+      expect(find.textContaining('how exact'), findsOneWidget);
+    });
+
+    testWidgets('an unmarked half\'s span is not printed as a bound either', (
+      tester,
+    ) async {
+      // A span from a writer that never characterised its positions is a bound
+      // on a number we cannot vouch for. Acting on it to place the turn LATER
+      // is safe and is still done; saying "by 0:45" about it would be this app
+      // standing behind a claim its writer never made.
+      await pump(
+        tester,
+        serving([
+          half(
+            _peer,
+            texts: ['si'],
+            atMs: [_callStart],
+            spanMs: [45000],
+            positionsMarked: false,
+          ),
+          half(_me, texts: ['que tal'], atMs: [_callStart + 3000]),
+        ]),
+      );
+
+      expect(find.text('si'), findsOneWidget);
+      expect(find.textContaining('by '), findsNothing);
+      // The span still ORDERED it: placed at the end of its chunk, the peer's
+      // turn falls after our word rather than before it.
+      double top(String text) => tester.getTopLeft(find.text(text)).dy;
+      expect(top('que tal'), lessThan(top('si')));
+    });
+
+    testWidgets('a call whose times are all exact carries NO timing caveat', (
+      tester,
+    ) async {
+      // The other side of the rule. A caveat that fires on an ordinary call
+      // appears on every call and stops meaning anything.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: ['hola'], atMs: [_callStart]),
+          half(_peer, texts: ['muy bien'], atMs: [_callStart + 3000]),
+        ]),
+      );
+
+      expect(find.textContaining('at or before'), findsNothing);
+      expect(find.textContaining('how exact'), findsNothing);
+    });
+
+    testWidgets('a writer that never said how exact its times are shows none', (
+      tester,
+    ) async {
+      // An older or foreign client. It asserted a moment and never said
+      // whether that moment is a word's or a whole chunk's, so printing it
+      // would put our confidence behind its silence. The WORDS still show, and
+      // the turn keeps the place its device asserted.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: ['hola'],
+            atMs: [_callStart],
+            positionsMarked: false,
+          ),
+          half(
+            _peer,
+            texts: ['muy bien'],
+            atMs: [_callStart + 3000],
+            positionsMarked: false,
+          ),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      expect(find.text('hola'), findsOneWidget);
+      expect(find.text('muy bien'), findsOneWidget);
+      expect(find.text('0:00'), findsNothing);
+      expect(find.text('0:03'), findsNothing);
+      expect(find.textContaining('how exact'), findsOneWidget);
+    });
+
+    testWidgets('one unmarked half does not silence the other\'s times', (
+      tester,
+    ) async {
+      // Per HALF, not per call. The peer's older client says nothing about its
+      // own times; ours does, and ours are still worth printing.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: ['hola'], atMs: [_callStart]),
+          half(
+            _peer,
+            texts: ['muy bien'],
+            atMs: [_callStart + 3000],
+            positionsMarked: false,
+          ),
+        ]),
+      );
+
+      expect(find.text('0:00'), findsOneWidget);
+      expect(find.text('0:03'), findsNothing);
+      expect(find.textContaining('how exact'), findsOneWidget);
     });
 
     testWidgets('a silent speaker is noted BELOW the conversation', (

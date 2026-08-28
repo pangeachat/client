@@ -39,9 +39,16 @@ void main() {
     String name = 'Alice',
     bool isMe = false,
     Duration at = Duration.zero,
+    TurnTime time = TurnTime.exact,
     String text = 'hello',
-  }) =>
-      CallTurn(senderId: senderId, name: name, isMe: isMe, at: at, text: text);
+  }) => CallTurn(
+    senderId: senderId,
+    name: name,
+    isMe: isMe,
+    at: at,
+    time: time,
+    text: text,
+  );
 
   Future<void> pump(WidgetTester tester, List<CallTurn> turns) async {
     await tester.pumpWidget(
@@ -189,6 +196,109 @@ void main() {
 
     expect(find.text('0:08'), findsOneWidget);
     expect(find.text('1:02'), findsOneWidget);
+  });
+
+  testWidgets('a bound is printed as a bound, not as a moment', (tester) async {
+    await pump(tester, [
+      turn(
+        text: 'si',
+        at: const Duration(seconds: 45),
+        time: TurnTime.atOrBefore,
+      ),
+    ]);
+
+    expect(find.text('by 0:45'), findsOneWidget);
+    expect(
+      find.text('0:45'),
+      findsNothing,
+      reason: 'a bare stamp would read as the moment it was said',
+    );
+  });
+
+  testWidgets('a bound rounds UP, so it is never earlier than the bound', (
+    tester,
+  ) async {
+    // Every other stamp in this app truncates, which is right for a moment and
+    // wrong for a ceiling: a turn known to have been said by 45.999s printed
+    // as "by 0:45" names a moment it may well have been said after, and the
+    // whole value of the label is that a reader may rely on it.
+    await pump(tester, [
+      turn(
+        text: 'si',
+        at: const Duration(milliseconds: 45999),
+        time: TurnTime.atOrBefore,
+      ),
+    ]);
+
+    expect(find.text('by 0:46'), findsOneWidget);
+  });
+
+  testWidgets('a turn whose device never vouched for its times shows none', (
+    tester,
+  ) async {
+    // The words and the speaker still draw. Only the number we cannot stand
+    // behind is left off.
+    await pump(tester, [
+      turn(
+        text: 'hola',
+        at: const Duration(seconds: 8),
+        time: TurnTime.unstated,
+      ),
+    ]);
+
+    expect(find.text('hola'), findsOneWidget);
+    expect(find.text('Alice'), findsOneWidget);
+    expect(find.text('0:08'), findsNothing);
+    expect(find.textContaining('by'), findsNothing);
+  });
+
+  testWidgets('a turn never inherits a header of a different kind', (
+    tester,
+  ) async {
+    // Same speaker, same instant, different claims. Only the opening turn of a
+    // run draws a header and the header is the only thing that says what is
+    // known, so grouping these would file an exact turn under a bound -- or a
+    // bound under an exact stamp -- and hand it a claim that does not describe
+    // it.
+    await pump(tester, [
+      turn(
+        text: 'bounded',
+        at: const Duration(seconds: 45),
+        time: TurnTime.atOrBefore,
+      ),
+      turn(text: 'exact', at: const Duration(seconds: 45)),
+    ]);
+
+    expect(find.text('by 0:45'), findsOneWidget);
+    expect(find.text('0:45'), findsOneWidget);
+    expect(
+      find.byType(Avatar),
+      findsNWidgets(2),
+      reason: 'a change of kind opens a turn, exactly as a speaker change does',
+    );
+  });
+
+  testWidgets('two turns of the SAME kind at one instant still group', (
+    tester,
+  ) async {
+    // The other side of that rule. Every segment of one chunk whose timings
+    // were refused shares a moment AND a kind, and they are meant to read as
+    // one block belonging to that chunk.
+    await pump(tester, [
+      turn(
+        text: 'first',
+        at: const Duration(seconds: 45),
+        time: TurnTime.atOrBefore,
+      ),
+      turn(
+        text: 'second',
+        at: const Duration(seconds: 45),
+        time: TurnTime.atOrBefore,
+      ),
+    ]);
+
+    expect(find.byType(Avatar), findsOneWidget);
+    expect(find.text('by 0:45'), findsOneWidget);
   });
 
   testWidgets('own turns are tinted; the other speaker\'s are not', (

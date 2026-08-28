@@ -99,6 +99,12 @@ Future<bool> writeCallTranscript({
         // grow a half past the budget it was just checked against, and the
         // server rejects the WHOLE half rather than its tail.
         clockAnchor: clockAnchor,
+        // Always, and only here. `buildSegments` marks every position it could
+        // not pin down to a word, so a half from this writer carries the claim
+        // that a segment with no span WAS pinned to one. No other caller may
+        // set it: the flag describes how the segments were built, and this is
+        // the only place that knows.
+        positionsMarked: true,
       );
 
   // Sized against the worst case for the accounting fields: a half packed while

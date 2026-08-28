@@ -662,4 +662,104 @@ void main() {
       expect(json.containsKey('device_joined_at_ms'), isFalse);
     });
   });
+
+  group('positions_marked', () {
+    Map<String, dynamic> half(List<Object?> segments, {Object? marked}) => {
+      'call_key': _callKey,
+      'segments': segments,
+      'chunks_captured': 1,
+      'chunks_transcribed': 1,
+      'chunks_lost': 0,
+      'capture_refused': false,
+      'truncated': false,
+      'segments_omitted': 0,
+      'drain_complete': true,
+      'positions_marked': ?marked,
+    };
+
+    test('survives the round trip', () {
+      final written = CallTranscriptContent(
+        callKey: _callKey,
+        segments: const [
+          TranscriptSegment('hola', atMs: 1700000000000),
+          TranscriptSegment('que tal', atMs: 1700000001000, spanMs: 44000),
+        ],
+        accounting: const HalfAccounting(
+          chunksCaptured: 1,
+          chunksTranscribed: 1,
+          declared: true,
+        ),
+        positionsMarked: true,
+      );
+
+      final parsed = CallTranscriptContent.fromJson(written.toJson())!;
+      expect(parsed.positionsMarked, isTrue);
+      expect(parsed.segments.map((s) => s.spanMs), [null, 44000]);
+    });
+
+    test('absent and non-bool both read as UNMARKED', () {
+      // Absence of the claim is not the claim. A half that never said which of
+      // its positions are exact has not said they all are, and neither has one
+      // that put junk where the answer goes.
+      for (final marked in [null, 'yes', 1, 0, false]) {
+        final parsed = CallTranscriptContent.fromJson(
+          half([
+            {'text': 'hola', 'at_ms': 1000},
+          ], marked: marked),
+        )!;
+        expect(parsed.positionsMarked, isFalse, reason: 'marked=$marked');
+        // And never at the cost of the words or the position.
+        expect(parsed.segments.map((s) => s.text), ['hola']);
+        expect(parsed.segments.map((s) => s.atMs), [1000]);
+      }
+    });
+
+    test('a span this reader cannot use VOIDS the claim, not the position', () {
+      // The one direction this can fail in. The entry we could not read might
+      // have been the approximate one, so a half carrying it has not told us
+      // which of its positions are exact -- whatever its flag says. Taking the
+      // CLAIM away is the right cost; taking the position away would drop the
+      // whole call to the per-speaker view over one corrupt byte.
+      final parsed = CallTranscriptContent.fromJson(
+        half([
+          {'text': 'hola', 'at_ms': 1000},
+          {'text': 'que tal', 'at_ms': 2000, 'at_span_ms': 'soon'},
+        ], marked: true),
+      )!;
+
+      expect(parsed.positionsMarked, isFalse);
+      expect(parsed.segments.map((s) => s.text), ['hola', 'que tal']);
+      expect(parsed.segments.map((s) => s.atMs), [1000, 2000]);
+      expect(parsed.segments.map((s) => s.spanMs), [null, null]);
+      // Not a shortened half either: we lost nothing the writer sent.
+      expect(parsed.accounting.readerShortened, isFalse);
+      expect(parsed.accounting.unreadableContent, isFalse);
+    });
+
+    test('a SOUND span leaves the claim standing', () {
+      // The control. Without it the rule above would still hold with the claim
+      // hard-coded to false.
+      final parsed = CallTranscriptContent.fromJson(
+        half([
+          {'text': 'hola', 'at_ms': 1000},
+          {'text': 'que tal', 'at_ms': 2000, 'at_span_ms': 43000},
+        ], marked: true),
+      )!;
+
+      expect(parsed.positionsMarked, isTrue);
+      expect(parsed.segments.map((s) => s.spanMs), [null, 43000]);
+    });
+
+    test('an unmarked half writes no key at all', () {
+      // Not `false`. The default is the absence, so a half that makes no claim
+      // and a half written before the field existed are the same bytes.
+      final json = CallTranscriptContent(
+        callKey: _callKey,
+        segments: const [TranscriptSegment('hola', atMs: 1000)],
+        accounting: const HalfAccounting(declared: true),
+      ).toJson();
+
+      expect(json.containsKey('positions_marked'), isFalse);
+    });
+  });
 }

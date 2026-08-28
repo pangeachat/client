@@ -3735,6 +3735,16 @@
             }
         }
     },
+    "callTranscriptByTime": "by {time}",
+    "@callTranscriptByTime": {
+        "placeholders": {
+            "time": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptApproximateTimes": "A turn marked \"by\" a time was said at or before it. Those turns are shown at that moment, so they may have been said earlier.",
+    "callTranscriptUnstatedTimes": "Some turns show no time. The device that recorded them did not say how exact its times are, so where they sit in this conversation may be wrong.",
     "callTranscriptOpen": "Read the transcript",
     "leaveSpaceDescription": "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.",
     "constructUseCorMmDesc": "Correct message meaning",

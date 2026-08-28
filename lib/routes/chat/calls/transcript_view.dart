@@ -7,6 +7,7 @@ import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
 
 /// Opens the transcript of one finished call.
@@ -170,11 +171,24 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
               .nonNulls
               .toList();
 
+          // Said once, at the top, and only about what is actually DRAWN.
+          // The per-speaker view prints no times at all, so neither caveat has
+          // anything to explain there -- and a caveat that fires when nothing
+          // on screen shows the thing it describes is noise that teaches the
+          // reader to skip the next one.
+          final approximate = turns.any(
+            (turn) => turn.time == TurnTime.atOrBefore,
+          );
+          final unstated = turns.any((turn) => turn.time == TurnTime.unstated);
+
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
             children: [
               if (transcript.readerStoppedEarly)
                 _Caveat(text: l10n.callTranscriptStoppedEarly),
+              if (approximate)
+                _Caveat(text: l10n.callTranscriptApproximateTimes),
+              if (unstated) _Caveat(text: l10n.callTranscriptUnstatedTimes),
 
               if (turns.isNotEmpty)
                 TurnTimeline(turns: turns)
@@ -240,23 +254,62 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         (half: half, shift: transcript.clockShiftFor(half)),
     ];
 
-    final positions = [
+    // The moment each segment is PLACED at, which for one that knows only its
+    // chunk is the END of that chunk's audio rather than the estimate inside
+    // it. That is the whole fix: placed at its estimate, a turn spoken forty
+    // seconds into a chunk renders at the chunk's start and jumps ahead of the
+    // other speaker's correctly timed question; placed at the latest moment it
+    // could have been, it cannot render earlier than it was said.
+    final keys = [
       for (final entry in placed)
-        for (final segment in entry.half.segments) segment.atMs! - entry.shift,
+        for (final segment in entry.half.segments)
+          segment.orderKeyMs! - entry.shift,
     ];
-    if (positions.isEmpty) return const [];
+    if (keys.isEmpty) return const [];
+
+    // The keys we are prepared to STAND BEHIND: the ones from a half whose
+    // writer says which of its positions are exact. Both kinds from such a half
+    // qualify -- an exact key is a word's own start and an approximate one is
+    // the end of a chunk of audio we captured, and both are real instants on
+    // that device's clock.
+    final vouched = [
+      for (final entry in placed)
+        if (entry.half.positionsMarked)
+          for (final segment in entry.half.segments)
+            segment.orderKeyMs! - entry.shift,
+    ];
 
     // The earliest turn ANYWHERE in the transcript, not the earliest in each
     // half: the whole point is that one clock runs behind both columns, and
     // per-half origins would restart it for the second speaker.
     //
-    // This origin is the first turn SPOKEN, not the moment the call connected,
+    // Taken over the VOUCHED keys, because every time on screen is a difference
+    // from this one number and a difference is only as sound as both its ends.
+    // An unmarked writer's position is a bare assertion -- it may be a word's
+    // moment or a whole chunk's, and it never said which -- so letting one open
+    // the transcript would have made every OTHER turn's plain `m:ss` an exact
+    // offset from a number we had just told the reader we could not vouch for.
+    // The stamp would look exact and be off by however wrong that half was.
+    //
+    // Falling back to every key when nothing is vouched costs nothing: a
+    // transcript with no marked half prints no times at all, so the origin then
+    // only orders turns, and ordering by an unvouched position is what such a
+    // call has anyway.
+    //
+    // A turn from an unmarked half can therefore sit BEFORE the origin and take
+    // a negative elapsed value. That is deliberate and it never reaches the
+    // screen: such a turn prints no time, and a negative sorts it first, which
+    // is where its own device put it.
+    //
+    // This origin is the first turn PLACED, not the moment the call connected,
     // and the two are different whenever a call opens with silence. Nothing on
     // the wire says when capture began -- each segment carries only its own
     // absolute time -- so the connect moment cannot be recovered here, and this
     // clock can therefore read a little short of the duration on the call card.
     // See `CallTurn.at`, which states the same contract.
-    final start = positions.reduce((a, b) => a < b ? a : b);
+    final start = (vouched.isNotEmpty ? vouched : keys).reduce(
+      (a, b) => a < b ? a : b,
+    );
 
     return [
       for (final entry in placed)
@@ -270,10 +323,32 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
             name: _displayNameOf(entry.half.senderId),
             avatarUrl: _avatarOf(entry.half.senderId),
             isMe: entry.half.senderId == me,
-            at: Duration(milliseconds: segment.atMs! - entry.shift - start),
+            at: Duration(
+              milliseconds: segment.orderKeyMs! - entry.shift - start,
+            ),
+            time: _timeKindOf(segment, entry.half),
             text: segment.text,
           ),
     ];
+  }
+
+  /// What may be said about one segment's moment.
+  ///
+  /// The MARKER decides first, and it decides everything. A half that marks its
+  /// positions has asserted which of them are a word's and which are a chunk's;
+  /// a half that does not has asserted nothing, and NOTHING it carries can be
+  /// labelled -- not its bare positions, and not its spans either. A "by T"
+  /// from such a half would be a bound this app vouched for, resting on a
+  /// position its own writer never characterised.
+  ///
+  /// The span is still honoured for ORDERING on an unmarked half, in
+  /// [_turnsOf]. That is a different question with a different answer: a span
+  /// can only move a turn LATER, so acting on one cannot invent precision, and
+  /// a turn placed later than its device asked for is the safe direction. What
+  /// may be SAID about the result is what the marker governs.
+  TurnTime _timeKindOf(TranscriptSegment segment, TranscriptHalf half) {
+    if (!half.positionsMarked) return TurnTime.unstated;
+    return segment.positionIsApproximate ? TurnTime.atOrBefore : TurnTime.exact;
   }
 
   /// What still needs saying about a half once its words are in the timeline,

@@ -4,6 +4,43 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
+/// How well a turn's moment is known, and therefore what may be printed above
+/// it.
+///
+/// THREE states, not a boolean, because there are three different things the
+/// reader can be told and only one of them is a time we stand behind. An
+/// earlier design had two renderings for these three, which left the third
+/// printing a plain `m:ss` it had no standing to print.
+enum TurnTime {
+  /// [CallTurn.at] is the start of this turn's first word, as the provider
+  /// timed it in the audio that was sent. Printed as `m:ss`.
+  ///
+  /// Word-timing resolution, not phoneme resolution: the trim's pad stands
+  /// between the first voiced frame and the start of the audio a provider
+  /// read, so an unvoiced onset can fall a few tens of milliseconds ahead of
+  /// this. Far below anything that reorders two turns.
+  exact,
+
+  /// The words were said at or before [CallTurn.at], somewhere inside the
+  /// chunk of audio they were cut from. Printed as "by m:ss".
+  ///
+  /// Placed at the LATEST moment it could have been, which is what stops it
+  /// rendering ahead of the other speaker's correctly timed turn.
+  atOrBefore,
+
+  /// The writing device asserted a moment and never said whether that moment
+  /// was a word's or a whole chunk's. NO time is printed.
+  ///
+  /// Showing the number anyway would put this app's confidence behind that
+  /// device's silence. The turn still keeps its PLACE in the order that
+  /// unvouched number implies -- there is nothing else to order it by, and
+  /// hiding it would cost a real turn to protect against an uncertain one --
+  /// so its position in the conversation is as unvouched as its time. The
+  /// transcript says exactly that; withholding only the label would leave the
+  /// ordering claim standing unannounced.
+  unstated,
+}
+
 /// One utterance in an ordered call transcript.
 ///
 /// Deliberately plain, and deliberately not `TranscriptSegment` or a Matrix
@@ -29,23 +66,30 @@ class CallTurn {
 
   final bool isMe;
 
-  /// Elapsed time from the FIRST SPOKEN TURN of the call, not from the moment
-  /// the call connected. Already the number this widget prints, not a
-  /// wall-clock instant left for it to convert.
+  /// Elapsed from the transcript's ORIGIN — the earliest moment any turn in it
+  /// is PLACED at — not from the moment the call connected. Already the number
+  /// this widget prints, not a wall-clock instant left for it to convert.
   ///
-  /// The distinction is deliberate and worth knowing, because it means this
-  /// clock can disagree with the duration the call card shows. The transcript
-  /// wire carries one absolute time per segment and nothing about when capture
-  /// began, so the moment the call connected is not recoverable here; ringing,
-  /// greetings before anyone spoke, and any opening silence are all outside
-  /// what this can see. Normalising to the earliest turn is therefore the only
-  /// origin the data supports, and it is also the one a reader wants: 0:00 is
-  /// the first thing anybody said.
+  /// The earliest PLACED moment, and nothing stronger. It is the first thing
+  /// anybody said only when every drawn turn is [TurnTime.exact]; one
+  /// [TurnTime.atOrBefore] turn is enough to break that, and not only when it
+  /// is the earliest. A speaker bounded to `[0s, 45s]` who actually spoke at 5s
+  /// is placed at 45s, so the other speaker's exact word at 40s becomes the
+  /// origin and 0:00 lands on something said second.
+  ///
+  /// Either way this clock can disagree with the duration the call card shows.
+  /// The transcript wire carries one absolute time per segment and nothing
+  /// about when capture began, so the moment the call connected is not
+  /// recoverable here; ringing, greetings before anyone spoke, and any opening
+  /// silence are all outside what this can see.
   ///
   /// If these times ever need to line up with the call's own duration, the
   /// call's start has to be written into the transcript event at capture time
   /// -- a wire change, not a display one.
   final Duration at;
+
+  /// What may be said about [at]. See [TurnTime].
+  final TurnTime time;
 
   final String text;
 
@@ -55,6 +99,7 @@ class CallTurn {
     required this.isMe,
     this.avatarUrl,
     required this.at,
+    this.time = TurnTime.exact,
     required this.text,
   });
 }
@@ -132,11 +177,16 @@ class TurnTimeline extends StatelessWidget {
   /// arithmetic stamps every chunk cut from one oversized audio batch with a
   /// position derived from frame count, and a batch split into several
   /// chunks in a single pass can produce equal timestamps for chunks that
-  /// were still spoken in a real order. Sorting the ORIGINAL INDEX alongside
-  /// the timestamp turns every comparison into a strict total order, so two
-  /// same-instant turns keep the order they were given -- the order they
-  /// were spoken -- regardless of which algorithm runs underneath, and
-  /// regardless of how many times this rebuilds.
+  /// were still spoken in a real order. Every segment of one chunk whose
+  /// timings were refused shares one instant too, by construction.
+  ///
+  /// Sorting the ORIGINAL INDEX alongside the timestamp turns every comparison
+  /// into a strict total order, so two same-instant turns keep the order they
+  /// were given regardless of which algorithm runs underneath and regardless of
+  /// how many times this rebuilds. WITHIN one speaker that order is the order
+  /// they were spoken. ACROSS two speakers it is whichever half the caller
+  /// flattened first, which is arbitrary -- stable, so the screen does not
+  /// shuffle between rebuilds, but not a claim about who spoke first.
   static List<CallTurn> _byTime(List<CallTurn> turns) {
     final indices = List<int>.generate(turns.length, (i) => i)
       ..sort((a, b) {
@@ -176,6 +226,12 @@ class TurnTimeline extends StatelessWidget {
     final previous = ordered[i - 1];
     final current = ordered[i];
     if (previous.senderId != current.senderId) return true;
+    // A change of KIND opens a turn too, and it has to. Only the opening turn
+    // of a run draws a header, and the header is the only thing that says what
+    // is known about the time -- so an exact turn landing on the same moment as
+    // an at-or-before one would slide under its "by", or an unstated turn under
+    // a plain stamp, and inherit a claim that does not describe it.
+    if (previous.time != current.time) return true;
     return current.at - previous.at >= _newTurnAfter;
   }
 }
@@ -246,13 +302,19 @@ class _Turn extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(width: 8),
-                    Text(
-                      _stamp(turn.at),
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurfaceVariant,
+                    // Nothing at all for a turn whose device never said how
+                    // exact its times are. The name still draws, so the turn
+                    // reads as somebody's; only the claim we cannot support is
+                    // left off.
+                    if (_stampFor(turn) case final stamp?) ...[
+                      const SizedBox(width: 8),
+                      Text(
+                        stamp,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
                       ),
-                    ),
+                    ],
                   ],
                 ),
                 const SizedBox(height: 6),
@@ -265,11 +327,33 @@ class _Turn extends StatelessWidget {
     );
   }
 
+  /// What this turn's header may say about when it happened, or null when it
+  /// may say nothing.
+  String? _stampFor(CallTurn turn) => switch (turn.time) {
+    TurnTime.exact => _stamp(turn.at),
+    // "by 0:45", not "0:00-0:45". A range printed beside a turn reads as how
+    // long the turn LASTED, which is a second false claim in place of the
+    // first, and its lower edge is an estimate this feature cannot prove.
+    //
+    // Rounded UP, unlike every other stamp in this app. Truncating a bound
+    // understates it: a turn known to have been said by 45.999s would print
+    // "by 0:45", which is a moment it may well have been said after. The whole
+    // value of this label is that the reader may rely on it, so the one
+    // direction it may err in is the safe one.
+    TurnTime.atOrBefore => l10n.callTranscriptByTime(
+      _stamp(turn.at, roundUp: true),
+    ),
+    TurnTime.unstated => null,
+  };
+
   /// `m:ss`, matching the stamp `CallRecord`'s own fallback text and the live
   /// call timer already print elsewhere in this feature -- minutes uncapped,
   /// seconds padded to two digits.
-  static String _stamp(Duration at) {
-    final seconds = at.inSeconds;
+  ///
+  /// [roundUp] is for a stamp that is an UPPER BOUND rather than a moment; see
+  /// [_stampFor].
+  static String _stamp(Duration at, {bool roundUp = false}) {
+    final seconds = roundUp ? (at.inMilliseconds + 999) ~/ 1000 : at.inSeconds;
     return '${seconds ~/ 60}:${(seconds % 60).toString().padLeft(2, '0')}';
   }
 }

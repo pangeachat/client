@@ -779,10 +779,231 @@ void main() {
     });
   });
 
+  group('how tightly a position is known', () {
+    // A chunk short enough that its end is a distinctive number, so an
+    // assertion names the window rather than a coincidence.
+    const durationMs = 45000;
+    const chunkEnd = _chunkStart + durationMs;
+
+    test('a chunk cut by trusted timings claims a WORD, and says so', () {
+      // The control for everything below. Without it every assertion in this
+      // group would still hold with the exactness claim removed altogether.
+      final segments = buildSegments([
+        _chunk(
+          'hola que',
+          timings: [('hola', 0, 300), ('que', 350, 600)],
+          durationMs: durationMs,
+        ),
+      ]);
+
+      expect(segments.single.spanMs, isNull);
+      expect(segments.single.positionIsApproximate, isFalse);
+      expect(segments.single.orderKeyMs, _chunkStart);
+    });
+
+    // Every route by which a chunk fails to be cut word by word. Each one used
+    // to stamp a position indistinguishable from the one above.
+    final coarse = <String, TranscribedChunk>{
+      'no timings at all': _chunk('hola que tal', durationMs: durationMs),
+      'a word list that does not match its transcript': _chunk(
+        'pay bob today',
+        timings: [('pay', 0, 200), ('alice', 250, 500), ('today', 550, 800)],
+        durationMs: durationMs,
+      ),
+      'timings that are not a well-formed sequence': _chunk(
+        'hola que',
+        timings: [('hola', 0, 300), ('que', null, 600)],
+        durationMs: durationMs,
+      ),
+      'timings that are all blank': _chunk(
+        'texto real',
+        timings: [('   ', 0, 100), ('', 200, 300)],
+        durationMs: durationMs,
+      ),
+    };
+
+    coarse.forEach((what, chunk) {
+      test('$what is bounded to the chunk it came from', () {
+        final segments = buildSegments([chunk]);
+
+        expect(segments, isNotEmpty, reason: 'the words must still be here');
+        for (final segment in segments) {
+          expect(
+            segment.positionIsApproximate,
+            isTrue,
+            reason: '$what cannot know which word it was',
+          );
+          // The END of the chunk's audio, whatever the estimate inside it was.
+          // That bound is the only thing here that is PROVEN: no word in a
+          // chunk began after its audio stopped.
+          expect(segment.orderKeyMs, chunkEnd, reason: what);
+          expect(
+            segment.atMs! + segment.spanMs!,
+            chunkEnd,
+            reason: 'the span runs from the estimate to the proven end',
+          );
+        }
+      });
+    });
+
+    test('every segment of one malformed chunk shares its window', () {
+      // The shape of the real failure: three sentences cut from a chunk whose
+      // timings were refused. They share a moment, and they must share the
+      // BOUND as well -- an order key that differed between them would sort
+      // one of the speaker's own sentences against the other on nothing.
+      final segments = buildSegments([
+        _chunk(
+          'hola que tal',
+          timings: [('hola', 500, 600), ('que', 100, 200), ('tal', 700, 800)],
+          durationMs: durationMs,
+        ),
+      ]);
+
+      expect(segments.length, greaterThan(0));
+      expect(segments.map((s) => s.orderKeyMs).toSet(), {chunkEnd});
+    });
+
+    test('a chunk keeps the ESTIMATE it always had, alongside the bound', () {
+      // The span is added beside `atMs`, not in place of it. A reader that
+      // knows nothing about spans still gets the earliest evidence of speech
+      // rather than the chunk's start, which is what that estimate was for.
+      final segments = buildSegments([
+        _chunk(
+          'hola que',
+          timings: [('hola', 5000, 6000), ('que', 400, 700)],
+          durationMs: durationMs,
+        ),
+      ]);
+
+      expect(segments.single.atMs, _chunkStart + 400);
+      expect(segments.single.orderKeyMs, chunkEnd);
+    });
+
+    test('positions and their bounds both run forwards across chunks', () {
+      // What `segmentsArePlaceable` is entitled to assume of this writer. A
+      // chunk's window ends before the next chunk's begins, so neither the
+      // estimates nor the moments they are placed at can go backwards -- and a
+      // half whose own turns rendered out of order is the failure that rule
+      // exists to refuse.
+      final segments = buildSegments([
+        _chunk('primero', durationMs: 10000, startedAtMs: 1000),
+        _chunk(
+          'segundo',
+          timings: [('segundo', 100, 400)],
+          durationMs: 10000,
+          startedAtMs: 11000,
+        ),
+        _chunk('tercero', durationMs: 10000, startedAtMs: 21000),
+      ]);
+
+      final ats = [for (final s in segments) s.atMs!];
+      final keys = [for (final s in segments) s.orderKeyMs!];
+      expect(ats, orderedEquals([...ats]..sort()));
+      expect(keys, orderedEquals([...keys]..sort()));
+    });
+  });
+
   group('TranscriptSegment json', () {
     test('round-trips', () {
       const segment = TranscriptSegment('hola que tal', atMs: 1700000000000);
       expect(TranscriptSegment.fromJson(segment.toJson()), segment);
+    });
+
+    test('a bounded position round-trips, span and all', () {
+      const segment = TranscriptSegment(
+        'hola que tal',
+        atMs: 1700000000000,
+        spanMs: 45000,
+      );
+      final parsed = TranscriptSegment.fromJson(segment.toJson())!;
+
+      expect(parsed, segment);
+      expect(parsed.spanMs, 45000);
+      expect(parsed.positionIsApproximate, isTrue);
+    });
+
+    test('a span of ZERO still marks the position as bounded', () {
+      // Presence is the marker, not a positive value. A chunk whose audio
+      // window collapsed to an instant, and an estimate landing on its own
+      // chunk's end, both produce zero -- and neither can support the claim
+      // that its first word was spoken exactly then.
+      const segment = TranscriptSegment('hola', atMs: 1700000000000, spanMs: 0);
+      final json = segment.toJson();
+
+      expect(json['at_span_ms'], 0);
+      expect(TranscriptSegment.fromJson(json)!.positionIsApproximate, isTrue);
+    });
+
+    test('an EXACT segment writes no span at all', () {
+      // The other side of it, and what keeps the wire cost on the segments
+      // that need it. A key on every segment would be paid by every call.
+      const segment = TranscriptSegment('hola', atMs: 1700000000000);
+      expect(segment.toJson().containsKey('at_span_ms'), isFalse);
+      expect(TranscriptSegment.fromJson(segment.toJson())!.spanMs, isNull);
+    });
+
+    test('a segment written before spans existed reads as exact', () {
+      final parsed = TranscriptSegment.fromJson({
+        'text': 'hola',
+        'at_ms': 1700000000000,
+      })!;
+
+      expect(parsed.spanMs, isNull);
+      expect(parsed.positionIsApproximate, isFalse);
+    });
+
+    test('a bad span costs neither the words NOR the position', () {
+      // Deliberately unlike a bad `at_ms`, which costs the position. Whether a
+      // span is honoured is a question about this segment; what an unusable one
+      // MEANS is a question about the half's claim, and destroying a sound
+      // position over the second would drop a whole call to the per-speaker
+      // view for one corrupt byte. `CallTranscriptContent` takes the half's
+      // claim away instead.
+      final unusable = [
+        {'text': 'hola', 'at_ms': 1000, 'at_span_ms': 'soon'},
+        {'text': 'hola', 'at_ms': 1000, 'at_span_ms': -1},
+        {'text': 'hola', 'at_ms': 1000, 'at_span_ms': 1.5},
+        {'text': 'hola', 'at_ms': 1000, 'at_span_ms': null},
+        {
+          'text': 'hola',
+          'at_ms': 1000,
+          'at_span_ms': TranscriptSegment.atMsCeiling,
+        },
+      ];
+
+      for (final raw in unusable) {
+        final segment = TranscriptSegment.fromJson(raw)!;
+        expect(segment.text, 'hola', reason: '$raw must keep its words');
+        expect(segment.atMs, 1000, reason: '$raw must keep its position');
+        expect(segment.spanMs, isNull, reason: '$raw is not a bound');
+        expect(
+          TranscriptSegment.spanOf(raw, 1000).declaredButUnusable,
+          isTrue,
+          reason: '$raw declared a span and must be reported as such',
+        );
+      }
+    });
+
+    test('a span beside an unusable position is neither honoured nor held '
+        'against the half', () {
+      // There is no position for it to bound, and the segment is already
+      // unplaceable on its own account. Counting it against the half would
+      // punish a writer for a field that could not have meant anything.
+      const raw = {'text': 'hola', 'at_ms': 'soon', 'at_span_ms': 500};
+
+      expect(TranscriptSegment.fromJson(raw)!.atMs, isNull);
+      expect(TranscriptSegment.spanOf(raw, null).declaredButUnusable, isFalse);
+    });
+
+    test('a sound span is honoured', () {
+      // The gate must not fire on what this writer sends.
+      expect(TranscriptSegment.spanOf({'at_span_ms': 0}, 1000).spanMs, 0);
+      expect(
+        TranscriptSegment.spanOf({'at_span_ms': 45000}, 1000).spanMs,
+        45000,
+      );
+      expect(TranscriptSegment.spanOf({}, 1000).spanMs, isNull);
+      expect(TranscriptSegment.spanOf({}, 1000).declaredButUnusable, isFalse);
     });
 
     test('carries one offset per segment and nothing per word', () {
