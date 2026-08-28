@@ -128,32 +128,51 @@ async function labels(page) {
 /// negative and sometimes -- worse -- land on the app bar, where a click
 /// presses something else entirely and the miss looks like a working click.
 ///
-/// The last tier is a deliberate floor: something answering to the name but
-/// unreachable still beats nothing, so `hasControl` stays at least as willing
-/// to find a control as it was before this ranking existed.
-function choose(matches) {
-  if (!matches.length) return null;
-  const pick = (list) => list.find((n) => n.role === 'button') || list[0];
-  const tiers = [
-    matches.filter((n) => n.hittable),
-    matches.filter((n) => n.onScreen),
-    matches,
-  ];
-  const hit = pick(tiers.find((t) => t.length));
+/// ASKING and CLICKING want opposite answers when nothing is reachable, so
+/// they get them. [reachable] keeps only the first tier: a click that cannot
+/// land is not a click, and pressing whatever else happens to occupy the
+/// coordinate is the failure this ranking exists to stop -- so the caller is
+/// told nothing was found, waits, and eventually says so. Without it the lower
+/// tiers stand, because "is this control on the page" is still worth answering
+/// about something the screen is holding out of reach, and `hasControl` stays
+/// at least as willing to find a control as it was before this existed.
+function choose(matches, { reachable = false } = {}) {
+  const tiers = reachable
+    ? [matches.filter((n) => n.hittable)]
+    : [
+        matches.filter((n) => n.hittable),
+        matches.filter((n) => n.onScreen),
+        matches,
+      ];
+  const best = tiers.find((t) => t.length);
+  if (!best) return null;
+  const hit = best.find((n) => n.role === 'button') || best[0];
   return { x: hit.x, y: hit.y };
 }
 
-async function findRect(page, label, { exact = false } = {}) {
+/// The point a named element sits at, or null.
+///
+/// Permissive by default, because most callers are ASKING. Pass
+/// `reachable: true` when the answer will be clicked -- every helper here whose
+/// name begins with `click` already does.
+async function findRect(page, label, { exact = false, reachable = false } = {}) {
   const wanted = exact
     ? (name) => name === label
     : (name) => name.toLowerCase().includes(label.toLowerCase());
-  return choose((await scan(page)).filter((n) => n.names.some(wanted)));
+  return choose(
+    (await scan(page)).filter((n) => n.names.some(wanted)),
+    { reachable },
+  );
 }
 
-async function waitForLabel(page, label, { timeout = 15000, exact = false } = {}) {
+async function waitForLabel(
+  page,
+  label,
+  { timeout = 15000, exact = false, reachable = false } = {},
+) {
   const until = Date.now() + timeout;
   for (;;) {
-    const r = await findRect(page, label, { exact });
+    const r = await findRect(page, label, { exact, reachable });
     if (r) return r;
     if (Date.now() > until) {
       throw new Error(
@@ -167,7 +186,7 @@ async function waitForLabel(page, label, { timeout = 15000, exact = false } = {}
 /// Clicks a labelled element, failing loudly if it is not there. A click that
 /// misses must never look like a click that worked.
 async function clickLabel(page, label, opts = {}) {
-  const r = await waitForLabel(page, label, opts);
+  const r = await waitForLabel(page, label, { ...opts, reachable: true });
   await page.mouse.click(r.x, r.y);
   return r;
 }
@@ -198,13 +217,16 @@ async function hasLabel(page, label) {
 /// the screen could change while the answer was being computed, which is the
 /// shape of a check that fails for a reason that is not a bug.
 async function findControl(page, name, opts = {}) {
-  const { exact = true } = opts;
+  const { exact = true, reachable = false } = opts;
   const candidates = labelsModule.candidates(name);
   const matches = (name_) =>
     exact
       ? candidates.includes(name_)
       : candidates.some((c) => name_.toLowerCase().includes(c.toLowerCase()));
-  return choose((await scan(page)).filter((n) => n.names.some(matches)));
+  return choose(
+    (await scan(page)).filter((n) => n.names.some(matches)),
+    { reachable },
+  );
 }
 
 async function hasControl(page, name, opts = {}) {
@@ -221,14 +243,20 @@ async function hasControl(page, name, opts = {}) {
 async function clickControl(page, name, { timeout = 15000, ...opts } = {}) {
   const until = Date.now() + timeout;
   for (;;) {
-    const rect = await findControl(page, name, opts);
+    const rect = await findControl(page, name, { ...opts, reachable: true });
     if (rect) {
       await page.mouse.click(rect.x, rect.y);
       return rect;
     }
     if (Date.now() > until) {
+      // "Not there" and "there, but behind something / scrolled out of its
+      // list" are different bugs and want different next steps. This used to
+      // claim the first for both.
+      const outOfReach = await findControl(page, name, opts);
       throw new Error(
-        `${name} never appeared. Tried ` +
+        `${name} ${outOfReach
+          ? 'is on the page, but at no point a click could reach'
+          : 'never appeared'}. Tried ` +
           `${labelsModule.candidates(name).length} translations. ` +
           `On screen: ${JSON.stringify(await labels(page))}`,
       );
@@ -284,7 +312,7 @@ const BANNER_LABELS = { answer: 'answer', decline: 'decline', message: 'message'
 async function clickBanner(page, which) {
   const label = BANNER_LABELS[which];
   if (label) {
-    const r = await findRect(page, label);
+    const r = await findRect(page, label, { reachable: true });
     if (r) {
       await page.mouse.click(r.x, r.y);
       return 'label';
@@ -326,7 +354,7 @@ const PANEL_LABELS = {
 async function clickPanel(page, which) {
   const label = PANEL_LABELS[which];
   if (label) {
-    const r = await findRect(page, label);
+    const r = await findRect(page, label, { reachable: true });
     if (r) {
       await page.mouse.click(r.x, r.y);
       return 'label';

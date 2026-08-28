@@ -121,8 +121,10 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
     // window" is not the test: a row scrolled out of the list keeps a node at a
     // coordinate that can sit over the app bar, and clicking that presses the
     // app bar. [ui.choose] ranks by what a click would actually reach.
-    const row = ui.choose((await ui.scan(page)).filter((n) =>
-      n.names.some((l) => /\d{1,2}:\d{2}\s?(AM|PM)/i.test(l))));
+    const row = ui.choose(
+      (await ui.scan(page)).filter((n) =>
+        n.names.some((l) => /\d{1,2}:\d{2}\s?(AM|PM)/i.test(l))),
+      { reachable: true });
     if (row) {
       await page.mouse.click(row.x, row.y);
       if (await settledInRoom(page, { timeout: 8000 })) return;
@@ -133,9 +135,16 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
     // print only the labels, and the labels of an OPEN chat are nearly the
     // labels of the bare map -- so a slow paint and a lost route read
     // identically, and an investigation spent a long time on the wrong one.
+    // The labels are best effort HERE and nowhere else: a page still
+    // navigating cannot be read, and a diagnostic that throws instead of
+    // printing costs the retry that was about to happen. The URL always
+    // survives -- it needs no execution context.
+    const seen = await ui
+      .labels(page)
+      .catch((e) => [`<could not read the screen: ${e.message}>`]);
     console.log(
       `   (room did not open, attempt ${i}/${attempts}; url ${page.url()}; ` +
-        `on screen: ${JSON.stringify(await ui.labels(page))})`);
+        `on screen: ${JSON.stringify(seen)})`);
   }
   throw new Error('could not open the room: the call controls never appeared');
 }
