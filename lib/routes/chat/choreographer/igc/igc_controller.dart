@@ -10,7 +10,6 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_repo.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_request_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_response_model.dart';
-import 'package:fluffychat/routes/chat/choreographer/igc/local_spell_check.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/match_rule_id_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_state_model.dart';
@@ -98,17 +97,19 @@ class IgcController {
     clearMatchToShow();
   }
 
-  /// Highlights the misspellings the device can find, so the learner is
-  /// offered them without waiting for the server. Returns whether any were
-  /// added, so the caller knows whether a repaint is worth it.
+  /// Highlights [spans] the device found in [text], so the learner is offered
+  /// them without waiting for the server. Returns whether any were added, so
+  /// the caller knows whether a repaint is worth it.
   ///
   /// These are ordinary open matches: spelling is never applied on the
   /// learner's behalf. The server replaces them wholesale in [_fetchIGC].
+  ///
+  /// Takes spans already fetched rather than fetching them, so the caller can
+  /// check between the platform call and this that the composer still holds
+  /// [text] — offsets computed against text the learner has since edited would
+  /// land on the wrong words.
   /// See writing-assistance.instructions.md, "Local spelling matches".
-  Future<bool> addLocalSpellMatches(String text, Locale locale) async {
-    if (_isFetching) return false;
-
-    final spans = await LocalSpellCheck.spans(text, locale);
+  bool addLocalSpellMatches(List<SpanData> spans, String text) {
     if (spans.isEmpty) return false;
 
     // The highlights are drawn against this text, so it has to be the text

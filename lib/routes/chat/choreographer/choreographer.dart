@@ -13,6 +13,7 @@ import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_controller.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/local_spell_check.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/pangea_message_content_model.dart';
@@ -285,11 +286,17 @@ class Choreographer extends ChangeNotifier {
     final locale = MatrixState.pangeaController.userController.userL2?.locale;
     if (locale == null) return;
 
-    final added = await igcController.addLocalSpellMatches(
-      textController.text,
-      locale,
-    );
-    if (added) notifyListeners();
+    final text = textController.text;
+    final spans = await LocalSpellCheck.spans(text, locale);
+    if (spans.isEmpty) return;
+
+    // The learner can type while the platform answers. Spans are offsets into
+    // the text they were found in, so once the composer has moved on they
+    // point at the wrong words — drop them rather than highlight the wrong
+    // thing; the server request that follows still covers this text.
+    if (textController.text != text) return;
+
+    if (igcController.addLocalSpellMatches(spans, text)) notifyListeners();
   }
 
   Future<void> _runWritingAssistance({String? feedbackText}) async {

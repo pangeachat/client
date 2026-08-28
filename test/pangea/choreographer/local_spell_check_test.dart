@@ -135,56 +135,76 @@ void main() {
     });
   });
 
+  group('localSpansToSpanData guards', () {
+    test('drops a span overlapping one already taken', () {
+      // Replacements apply against a shifting string, so an overlapping span
+      // would splice into the previous one's output.
+      final spans = localSpansToSpanData(const [
+        SuggestionSpan(TextRange(start: 0, end: 6), ['hello']),
+        SuggestionSpan(TextRange(start: 3, end: 9), ['there']),
+      ], 'helllo yz');
+
+      expect(spans, hasLength(1));
+      expect(spans.single.errorSpan, 'helllo');
+    });
+
+    test('drops a suggestion identical to the flagged word', () {
+      final spans = localSpansToSpanData(const [
+        SuggestionSpan(TextRange(start: 0, end: 6), ['Mumbai']),
+      ], 'Mumbai es bonito');
+
+      expect(spans, isEmpty);
+    });
+
+    test('drops a span whose first suggestion echoes the input', () {
+      // selectBestChoice takes index 0, so an echo there makes the span a
+      // no-op even when a usable alternative follows it.
+      final spans = localSpansToSpanData(const [
+        SuggestionSpan(TextRange(start: 0, end: 5), ['wrold', 'world']),
+      ], 'wrold');
+
+      expect(spans, isEmpty);
+    });
+
+    test('orders spans by position regardless of input order', () {
+      final spans = localSpansToSpanData(const [
+        SuggestionSpan(TextRange(start: 6, end: 11), ['hello']),
+        SuggestionSpan(TextRange(start: 0, end: 5), ['world']),
+      ], 'wrold hlelo');
+
+      expect(spans.map((s) => s.offset), [0, 6]);
+    });
+  });
+
   group('IgcController.addLocalSpellMatches', () {
-    const locale = Locale('es');
     late IgcController controller;
 
     setUp(() {
-      debugDefaultTargetPlatformOverride = TargetPlatform.android;
       controller = IgcController((_) {}, () {});
     });
 
-    tearDown(() {
-      debugDefaultTargetPlatformOverride = null;
-      LocalSpellCheck.service = DefaultSpellCheckService();
+    test('adds open matches — spelling is never applied for the learner', () {
+      final spans = localSpansToSpanData(const [
+        SuggestionSpan(TextRange(start: 7, end: 12), ['world']),
+      ], 'Hello, wrold');
+
+      expect(controller.addLocalSpellMatches(spans, 'Hello, wrold'), isTrue);
+      expect(controller.matches, hasLength(1));
+      expect(
+        controller.matches.single.updatedMatch.status,
+        PangeaMatchStatusEnum.open,
+      );
+      expect(controller.openMatches, hasLength(1));
+      // Highlights are split on this, so it must be the text the spans
+      // were found in.
+      expect(controller.currentText, 'Hello, wrold');
     });
 
-    test(
-      'adds open matches — spelling is never applied for the learner',
-      () async {
-        LocalSpellCheck.service = _FakeSpellCheckService(const [
-          SuggestionSpan(TextRange(start: 7, end: 12), ['world']),
-        ]);
-
-        expect(
-          await controller.addLocalSpellMatches('Hello, wrold', locale),
-          isTrue,
-        );
-        expect(controller.matches, hasLength(1));
-        expect(
-          controller.matches.single.updatedMatch.status,
-          PangeaMatchStatusEnum.open,
-        );
-        expect(controller.openMatches, hasLength(1));
-      },
-    );
-
-    test('highlights are drawn against the text they were found in', () async {
-      LocalSpellCheck.service = _FakeSpellCheckService(const [
+    test('tags matches so the server response can replace them', () {
+      final spans = localSpansToSpanData(const [
         SuggestionSpan(TextRange(start: 0, end: 5), ['world']),
-      ]);
-
-      await controller.addLocalSpellMatches('wrold', locale);
-
-      expect(controller.currentText, 'wrold');
-    });
-
-    test('tags matches so the server response can replace them', () async {
-      LocalSpellCheck.service = _FakeSpellCheckService(const [
-        SuggestionSpan(TextRange(start: 0, end: 5), ['world']),
-      ]);
-
-      await controller.addLocalSpellMatches('wrold', locale);
+      ], 'wrold');
+      controller.addLocalSpellMatches(spans, 'wrold');
 
       expect(
         controller.matches.single.updatedMatch.match.rule?.id,
@@ -192,10 +212,8 @@ void main() {
       );
     });
 
-    test('reports nothing added when the device finds nothing', () async {
-      LocalSpellCheck.service = _FakeSpellCheckService(const []);
-
-      expect(await controller.addLocalSpellMatches('hello', locale), isFalse);
+    test('reports nothing added when the device finds nothing', () {
+      expect(controller.addLocalSpellMatches(const [], 'hello'), isFalse);
       expect(controller.matches, isEmpty);
       expect(controller.currentText, isNull);
     });

@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
+import 'package:characters/characters.dart';
+
 import 'package:fluffychat/routes/chat/choreographer/igc/match_rule_id_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/replacement_type_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/span_choice_type_enum.dart';
@@ -66,8 +68,11 @@ List<SpanData> localSpansToSpanData(
 ) {
   final spans = <SpanData>[];
   final index = GraphemeOffsetIndex.fromTextUtf16(text);
+  final ordered = suggestions.toList()
+    ..sort((a, b) => a.range.start.compareTo(b.range.start));
+  var lastEnd = 0;
 
-  for (final suggestion in suggestions) {
+  for (final suggestion in ordered) {
     if (suggestion.suggestions.isEmpty) continue;
 
     final range = suggestion.range;
@@ -76,6 +81,22 @@ List<SpanData> localSpansToSpanData(
         range.start >= range.end) {
       continue;
     }
+
+    // Replacements are applied one after another against a shifting string,
+    // so two spans covering the same characters would splice into each
+    // other's output and corrupt the text.
+    if (range.start < lastEnd) continue;
+    lastEnd = range.end;
+
+    final offset = index.graphemeStartOfCodepoint(range.start);
+    final length = index.graphemeEndOfCodepoint(range.end) - offset;
+
+    // A "correction" identical to what the learner typed would highlight a
+    // word, open a popup showing the same text twice, and record a mistake
+    // they did not make. Sliced by graphemes to match how [SpanData] reads
+    // its own span.
+    final flagged = text.characters.skip(offset).take(length).toString();
+    if (suggestion.suggestions.first == flagged) continue;
 
     spans.add(
       SpanData(
@@ -87,10 +108,8 @@ List<SpanData> localSpansToSpanData(
                   SpanChoice(value: value, type: SpanChoiceTypeEnum.suggestion),
             )
             .toList(),
-        offset: index.graphemeStartOfCodepoint(range.start),
-        length:
-            index.graphemeEndOfCodepoint(range.end) -
-            index.graphemeStartOfCodepoint(range.start),
+        offset: offset,
+        length: length,
         fullText: text,
         type: ReplacementTypeEnum.spell,
         rule: const Rule(id: MatchRuleIdModel.localSpellCheck),
