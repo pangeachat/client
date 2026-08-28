@@ -1120,6 +1120,88 @@ void main() {
     });
   });
 
+  group('chunks the writer held back', () {
+    test('the count survives the wire', () {
+      const written = HalfAccounting(
+        chunksCaptured: 5,
+        chunksTranscribed: 2,
+        chunksLost: 1,
+        chunksSuppressed: 2,
+        declared: true,
+      );
+
+      final read = HalfAccounting.fromJson(written.toJson());
+      expect(read.chunksSuppressed, 2);
+      expect(read, written);
+      // The field name is the wire contract: another client, and an older
+      // build of this one, reads it by that name.
+      expect(written.toJson()['chunks_suppressed'], 2);
+    });
+
+    test('a half from a client that predates the count still asserts', () {
+      // Every client written before this existed omits the field. Reading that
+      // as "asserted nothing" would retroactively strip every one of their
+      // halves of the claim it did make about itself.
+      final old = HalfAccounting.fromJson({
+        'chunks_captured': 3,
+        'chunks_transcribed': 3,
+        'chunks_lost': 0,
+        'capture_refused': false,
+        'truncated': false,
+        'segments_omitted': 0,
+        'drain_complete': true,
+      });
+
+      expect(old.declared, isTrue);
+      expect(old.chunksSuppressed, 0);
+      expect(old.incoherent, isFalse);
+    });
+
+    test('held-back chunks count against what was captured', () {
+      // Transcribed, lost and suppressed are disjoint subsets of captured, so
+      // the sum cannot exceed it. A rule naming only the first two would let a
+      // half claim it held back more audio than it ever recorded.
+      final tooMany = HalfAccounting.fromJson({
+        'chunks_captured': 2,
+        'chunks_transcribed': 1,
+        'chunks_lost': 0,
+        'chunks_suppressed': 2,
+        'capture_refused': false,
+        'truncated': false,
+        'segments_omitted': 0,
+        'drain_complete': true,
+      });
+
+      expect(tooMany.incoherent, isTrue);
+    });
+
+    test('ordinary silence is not a gap', () {
+      // Almost every real call has a quiet stretch. A flag raised by that
+      // would mark nearly every transcript incomplete and mean nothing when it
+      // mattered -- the same trap already avoided for lost chunks.
+      const quiet = HalfAccounting(
+        chunksCaptured: 4,
+        chunksTranscribed: 2,
+        chunksSuppressed: 2,
+        declared: true,
+      );
+
+      expect(quiet.writerAdmitsGaps, isFalse);
+      expect(quiet.incoherent, isFalse);
+    });
+
+    test('two halves differing only in what they held back are not equal', () {
+      const a = HalfAccounting(chunksCaptured: 2, chunksSuppressed: 0, declared: true);
+      const b = HalfAccounting(chunksCaptured: 2, chunksSuppressed: 2, declared: true);
+
+      expect(a == b, isFalse);
+      // And the hash has to follow equality: two values that differ must be
+      // free to land in different buckets, or the duplicate rule that compares
+      // accountings is comparing something it cannot tell apart.
+      expect(a.hashCode == b.hashCode, isFalse);
+    });
+  });
+
   group('ClockAnchor', () {
     test('an offset is how far the DEVICE ran ahead of the SFU', () {
       // The sign is load-bearing: the reader SUBTRACTS this to move a half
