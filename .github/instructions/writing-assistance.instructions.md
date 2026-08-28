@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/pangea/choreographer/**"
+applyTo: "lib/routes/chat/choreographer/**"
 ---
 
 # Writing Assistance — Design & Architecture
@@ -172,7 +172,7 @@ Matches no longer require explicit accept/ignore. The lifecycle simplifies to:
 
 | Status      | Meaning                                                 | Ring/Highlight        |
 | ----------- | ------------------------------------------------------- | --------------------- |
-| `automatic` | Auto-applied on arrival (punct, diacritics, spell, cap) | Bright immediately    |
+| `automatic` | Auto-applied on arrival from the server or the local pass (punct, diacritics, spell, cap) | Bright immediately    |
 | `open`      | Server-returned, not yet viewed                         | Muted                 |
 | `viewed`    | User opened the span card and navigated away            | Bright                |
 | `accepted`  | User tapped a choice, text replaced                     | Bright                |
@@ -208,9 +208,30 @@ Categories returned by `/grammar_v2`. Each gets a distinct color in the ring and
 | Category                | Types                                                                                                                                                                                                                                                           | Behavior                                                 |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | **Grammar** (~21 types) | verb conjugation/tense/mood, agreement (subject-verb, gender, number, case), article, preposition, pronoun, word order, negation, question formation, relative clause, connector, possessive, comparative, passive voice, conditional, infinitive/gerund, modal | Highlight + ring segment, user-viewable                  |
-| **Surface**             | punct, diacritics, spell, cap                                                                                                                                                                                                                                   | **Auto-applied**, bright immediately, undo via span card. Hint text displayed only if server provides one (non-null) — omitted for obvious corrections, included when pedagogically useful (e.g. explaining an accent rule). |
+| **Surface**             | punct, diacritics, spell, cap                                                                                                                                                                                                                                   | **Auto-applied**, bright immediately, undo via span card. Hint text displayed only if server provides one (non-null) — omitted for obvious corrections, included when pedagogically useful (e.g. explaining an accent rule). May originate from the local spell checker as well as the server; see [Local surface corrections](#local-surface-corrections). |
 | **Word choice**         | false cognate, L1 interference, collocation, semantic confusion                                                                                                                                                                                                 | Highlight + ring segment, user-viewable                  |
 | **Style / fluency**     | style, fluency, didYouMean, transcription, translation, other                                                                                                                                                                                                   | Highlight + ring segment, user-viewable                  |
+
+---
+
+## Local surface corrections
+
+Surface misspellings are the most common writing-assistance match and the least interesting one, and every one of them currently waits on a round trip to `/grammar_v2`. The device's own spell checker resolves most of them immediately, so the learner sees the correction while the server call is still in flight.
+
+The local pass is a latency optimisation, not a second opinion. It reads the text as typed, asks for the learner's target language, and produces the same Surface matches the server would. The server stays the authority: where both describe the same span and disagree, the server's version replaces the local one when the response arrives. The local checker only knows whether a word is in a dictionary; the server knows what the learner was trying to say.
+
+A local correction is presented exactly like a server surface correction — auto-applied on arrival, highlighted bright, announced by `AutocorrectPopup`, given its own ring segment, undoable from the span card, and recorded in `ChoreoRecordModel` on send. This is what separates the feature from the device's own autocorrect, which fixes spelling silently and so teaches the learner nothing and leaves no record behind. A local correction is never applied silently. Where the server later confirms a span the local pass already applied, it stays one match and one ring segment.
+
+### When the local pass runs
+
+The gate is whether the device has a dictionary for the learner's target language. It is not the active keyboard, and not the autocorrect setting: the spell checker is asked for a specific language and answers for that language whatever the learner is typing on, so keyboard state has no bearing on whether its answer is usable. Where no dictionary is available the pass is skipped and writing assistance behaves as it does today.
+
+| Platform | Local pass |
+| --- | --- |
+| iOS, Android | Runs when a target-language dictionary is available |
+| Web | Never — no device spell checker is reachable, so writing assistance stays server-only |
+
+The value concentrates where device autocorrect is off, since an active autocorrect has usually fixed these misspellings before writing assistance sees them. On iOS that means every learner not yet observed using a target-language keyboard — which is also when they are most exposed. Whether autocorrect is on for a given learner is owned by [target-language-keyboard.instructions.md](target-language-keyboard.instructions.md).
 
 ---
 
@@ -226,8 +247,8 @@ Choreographer (ChangeNotifier)
 
 ### Flow Summary
 
-1. User types → debounce → `/grammar_v2` request
-2. Response returns matches → auto-apply surface corrections, display the rest
+1. User types → debounce → the local surface pass applies immediately, and the `/grammar_v2` request goes out
+2. Response returns matches → auto-apply the remaining surface corrections, reconcile against locally applied ones, display the rest
 3. Ring segments and text highlights appear (muted)
 4. User taps highlights to view suggestions, optionally accepts choices
 5. Viewed matches become bright
