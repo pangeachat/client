@@ -462,6 +462,72 @@ void main() {
       );
     });
 
+    testWidgets('an unvouched turn does not become the zero every other time '
+        'is measured from', (tester) async {
+      // Every time on screen is a DIFFERENCE from the origin, and a difference
+      // is only as sound as both its ends. The peer's older client opens the
+      // call and never said how exact its times are; if that turn set the zero,
+      // our own exactly timed word would print "0:03" -- an exact-looking stamp
+      // measured from a number the same screen says it cannot vouch for, and
+      // wrong by however wrong that half was.
+      await pump(
+        tester,
+        serving([
+          half(
+            _peer,
+            texts: ['hola'],
+            atMs: [_callStart],
+            positionsMarked: false,
+          ),
+          half(_me, texts: ['que tal'], atMs: [_callStart + 3000]),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      // Both turns are shown, in the order their devices put them.
+      double top(String text) => tester.getTopLeft(find.text(text)).dy;
+      expect(top('hola'), lessThan(top('que tal')));
+
+      // Our word is the earliest moment anybody vouched for, so it is the zero.
+      expect(find.text('0:00'), findsOneWidget);
+      expect(
+        find.text('0:03'),
+        findsNothing,
+        reason: 'that stamp would be measured from an unvouched moment',
+      );
+      // And the peer's turn still shows no time of its own.
+      expect(find.textContaining('how exact'), findsOneWidget);
+    });
+
+    testWidgets('an unmarked half\'s span is not printed as a bound either', (
+      tester,
+    ) async {
+      // A span from a writer that never characterised its positions is a bound
+      // on a number we cannot vouch for. Acting on it to place the turn LATER
+      // is safe and is still done; saying "by 0:45" about it would be this app
+      // standing behind a claim its writer never made.
+      await pump(
+        tester,
+        serving([
+          half(
+            _peer,
+            texts: ['si'],
+            atMs: [_callStart],
+            spanMs: [45000],
+            positionsMarked: false,
+          ),
+          half(_me, texts: ['que tal'], atMs: [_callStart + 3000]),
+        ]),
+      );
+
+      expect(find.text('si'), findsOneWidget);
+      expect(find.textContaining('by '), findsNothing);
+      // The span still ORDERED it: placed at the end of its chunk, the peer's
+      // turn falls after our word rather than before it.
+      double top(String text) => tester.getTopLeft(find.text(text)).dy;
+      expect(top('que tal'), lessThan(top('si')));
+    });
+
     testWidgets('a call whose times are all exact carries NO timing caveat', (
       tester,
     ) async {
