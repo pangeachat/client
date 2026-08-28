@@ -145,10 +145,13 @@ class CallUploadGate {
   /// the cooldown plus the request. Null means the caller accepted an unbounded
   /// wait; every production caller passes one.
   ///
-  /// Throws [TimeoutException] when the budget runs out before [work] starts.
-  /// That refusal is deliberately NOT recorded as a failure: nothing reached the
-  /// server, so it is not evidence about the server — and a breaker that counted
-  /// its own refusals would hold itself open for ever.
+  /// A [TimeoutException] can come out of this for two different reasons, and
+  /// the gate treats them as opposites even though the caller cannot tell them
+  /// apart by type. [work] ran and did not answer in time: that is the server,
+  /// and it counts towards the breaker. Or the budget ran out before [work]
+  /// started at all: nothing reached the server, so it is not evidence about the
+  /// server, and it is recorded nowhere — a breaker that counted its own
+  /// refusals would hold itself open for ever with nothing able to close it.
   Future<T> run<T>(Future<T> Function() work, {Duration? within}) async {
     final deadline = within == null ? null : DateTime.now().add(within);
     final probing = await _admit(deadline);
@@ -163,7 +166,7 @@ class CallUploadGate {
         _recordSuccess();
         return result;
       } catch (error) {
-        _recordFailure(error, wasProbe: probing);
+        _recordFailure(error);
         rethrow;
       }
     } finally {
@@ -284,13 +287,18 @@ class CallUploadGate {
     _openUntil = null;
   }
 
-  void _recordFailure(Object error, {required bool wasProbe}) {
+  void _recordFailure(Object error) {
     if (isServerFailure(error)) _consecutiveFailures++;
-    // A probe that did not succeed re-opens whatever it failed with. The point
-    // of a probe is to find out whether the server can serve; anything other
-    // than an answer we can use means it still cannot be trusted, and admitting
-    // every waiter on the strength of a 4xx would empty the cooldown.
-    if (wasProbe || _consecutiveFailures >= failuresToOpen) {
+    // This also re-opens after a failed PROBE, and deliberately without a
+    // separate `wasProbe` clause. A probe only ever runs while the breaker is
+    // open, and the only thing that lowers the count is a SUCCESS — which
+    // closes the breaker at the same moment. So a probe that did not succeed
+    // always finds the count still at or past the threshold, whatever it failed
+    // with, and a `wasProbe ||` in front of this would be a condition no test
+    // could ever tell apart from its absence. The guarantee it was there to
+    // state — a failed probe never throws the doors open, not even on a 4xx —
+    // is asserted directly instead.
+    if (_consecutiveFailures >= failuresToOpen) {
       _openUntil = DateTime.now().add(openFor);
     }
   }

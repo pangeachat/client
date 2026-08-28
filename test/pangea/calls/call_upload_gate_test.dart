@@ -243,6 +243,25 @@ void main() {
       expect(gate.consecutiveFailures, before);
     });
 
+    test('a caller with no budget left is refused without being counted', () async {
+      // The other end of the same rule, and the one path that reaches it with
+      // the breaker CLOSED: a permit is free, the breaker is shut, and there is
+      // still no time to send in. Nothing may go out, and nothing may be
+      // recorded -- the gate has learned nothing about the server.
+      final gate = CallUploadGate(failuresToOpen: 1, openFor: _openFor);
+      var reached = false;
+
+      await expectLater(
+        gate.run(() async => reached = true, within: Duration.zero),
+        throwsA(isA<TimeoutException>()),
+      );
+
+      expect(reached, isFalse);
+      expect(gate.consecutiveFailures, 0);
+      expect(gate.isOpen, isFalse);
+      expect(gate.inFlight, 0, reason: 'and the permit came back');
+    });
+
     test('audio is not dropped while it is open: the caller waits for the '
         'probe slot', () async {
       final gate = CallUploadGate(failuresToOpen: 1, openFor: _openFor);
@@ -323,6 +342,36 @@ void main() {
         expect(reached, isFalse, reason: 'a fresh cooldown, not an open door');
       },
     );
+
+    test('a probe that comes back 4xx does not count as the server being '
+        'well again', () async {
+      // A 4xx says nothing about load, so it does not advance the failure count
+      // -- and that is exactly why the probe path has to re-open on ANY failure
+      // rather than on a fresh count. Read as "the server answered, so it is
+      // fine", one malformed chunk would empty the cooldown and let every
+      // waiter through at a backend that is still down.
+      final gate = CallUploadGate(failuresToOpen: 2, openFor: _openFor);
+      for (var i = 0; i < 2; i++) {
+        await expectLater(
+          gate.run(() async => throw _http(503), within: _budget),
+          throwsA(isA<PangeaHttpException>()),
+        );
+      }
+      expect(gate.isOpen, isTrue);
+      final counted = gate.consecutiveFailures;
+
+      await expectLater(
+        gate.run(() async => throw _http(400), within: _budget),
+        throwsA(isA<PangeaHttpException>()),
+      );
+
+      expect(
+        gate.consecutiveFailures,
+        counted,
+        reason: 'a bad request is still not a statement about load',
+      );
+      expect(gate.isOpen, isTrue, reason: 'and the breaker stayed shut');
+    });
   });
 
   group('what the sink records when the gate refuses', () {
