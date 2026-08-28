@@ -78,16 +78,39 @@ async function openParticipant(name, roomLocalpart, port) {
   return { name, browser, page, errors, ...session };
 }
 
+/// Whether an error is just the page having moved under a read.
+///
+/// Ordinary inside [openRoom]: the loop reads a page it has only this moment
+/// told to navigate, and the read's execution context goes away underneath it.
+/// The next round asks again.
+///
+/// Anything else is the HARNESS being broken -- an l10n key the app renamed
+/// (labels.js throws by design), a scan that cannot run -- and must be raised.
+/// Reported as "the room did not open" it would send whoever reads it looking
+/// at the product, which is a long way from the actual fault.
+const isMidNavigation = (e) =>
+  /execution context|detached|navigat/i.test(String(e && e.message));
+
 /// Opens the room and PROVES it opened.
 ///
-/// The deep link does not always stick -- the app can resolve its own route
-/// after login and land back on the activity map. A harness that did not check
-/// would then drive the map, find nothing, and report the feature broken (or
-/// worse, find nothing and report nothing). So this confirms by waiting for a
-/// control that only exists inside a chat -- the COMPOSER -- and fails loudly
-/// if it never comes. It used to confirm on a call button, which renders on
-/// the home map as well, so navigation could report success from the wrong
-/// screen entirely.
+/// A harness that did not check would drive the map, find nothing, and report
+/// the feature broken (or worse, find nothing and report nothing). So this
+/// confirms by waiting for a control that only exists inside a chat, and fails
+/// loudly if it never comes.
+///
+/// It catches TWO different failures, and they were confused for each other
+/// for a long time because this function reported neither of them clearly.
+///
+///   - The route really was swallowed. Measured with a History API hook, one
+///     cold load in ten pushed `/` over the accepted deep link ~160ms later:
+///     a restored session announcing itself and being sent to the world map
+///     (fixed in the app -- PAuthGaurd.loggedInLanding).
+///   - The chat was merely slow to paint. Nothing was wrong with the URL; the
+///     app was busy, most visibly right after a call, and a single look 6.5
+///     seconds in was too early.
+///
+/// So: patience for the second ([settledInRoom]), and a failure line that
+/// prints the URL, because that is the one fact that tells them apart.
 async function openRoom(page, roomLocalpart, attempts = 4) {
   for (let i = 1; i <= attempts; i++) {
     // Cleared first on a retry: the app restores whatever route it was last
@@ -101,32 +124,90 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
       await page.keyboard.press('Escape').catch(() => {});
     }
     await page.goto(`${APP}/?left=chats,room:${roomLocalpart}`, { waitUntil: 'domcontentloaded' });
-    await wait(i === 1 ? 6500 : 4000);
-    await ui.enableSemantics(page);
-    await wait(1500);
-    if (await ui.hasControl(page, 'composer')) return;
+    if (await settledInRoom(page)) return;
     // The deep link does not always land, and the app then sits on the chat
     // LIST with the conversation right there. Clicking it is what a person
     // would do, and it is far more reliable than reloading the same link
     // again: a row is recognisable by its timestamp.
-    const row = await page.evaluate(() => {
-      const hit = [...document.querySelectorAll('flt-semantics[aria-label]')]
-        .find((e) => /\d{1,2}:\d{2}\s?(AM|PM)/i.test(e.getAttribute('aria-label') || ''));
-      if (!hit) return null;
-      const r = hit.getBoundingClientRect();
-      if (!r.width || !r.height) return null;
-      return { x: r.x + r.width / 2, y: r.y + r.height / 2, label: hit.getAttribute('aria-label') };
-    });
+    //
+    // Through the same chooser every other click goes through. "Inside the
+    // window" is not the test: a row scrolled out of the list keeps a node at a
+    // coordinate that can sit over the app bar, and clicking that presses the
+    // app bar. [ui.choose] ranks by what a click would actually reach.
+    let onScreen = [];
+    try {
+      onScreen = await ui.scan(page);
+    } catch (e) {
+      // Same rule as the wait above: a page still moving is not a reason to
+      // abandon a loop whose next act is to reload it anyway.
+      if (!isMidNavigation(e)) throw e;
+    }
+    const row = ui.choose(
+      onScreen.filter((n) =>
+        n.names.some((l) => /\d{1,2}:\d{2}\s?(AM|PM)/i.test(l))),
+      { reachable: true });
     if (row) {
       await page.mouse.click(row.x, row.y);
-      await wait(3500);
-      await ui.enableSemantics(page);
-      await wait(1200);
-      if (await ui.hasControl(page, 'call')) return;
+      if (await settledInRoom(page, { timeout: 8000 })) return;
     }
-    console.log(`   (room did not open, attempt ${i}/${attempts}; on screen: ${JSON.stringify(await ui.labels(page))})`);
+    // THE URL, always. Without it this line cannot tell the two failures
+    // apart, and they want opposite fixes: a link the app REWROTE versus the
+    // link still standing with the chat simply not painted yet. It used to
+    // print only the labels, and the labels of an OPEN chat are nearly the
+    // labels of the bare map -- so a slow paint and a lost route read
+    // identically, and an investigation spent a long time on the wrong one.
+    // Best effort, and only here. [labels] consults nothing of the app's, so
+    // the only way it fails is the page moving -- and by this line a real
+    // harness fault has already been raised by the wait above, which asks the
+    // same page the same way. A diagnostic that threw would cost the retry
+    // that was about to happen. The URL needs no execution context and always
+    // survives.
+    const seen = await ui
+      .labels(page)
+      .catch((e) => [`<could not read the screen: ${e.message}>`]);
+    console.log(
+      `   (room did not open, attempt ${i}/${attempts}; url ${page.url()}; ` +
+        `on screen: ${JSON.stringify(seen)})`);
   }
   throw new Error('could not open the room: the call controls never appeared');
+}
+
+/// Waits for the chat to be on screen, rather than sleeping and looking once.
+///
+/// The sleep was 6.5 seconds and it was a guess about a machine, not a fact
+/// about the product: right after a call the app is draining a recording,
+/// uploading two transcript halves and catching up a sync backlog, and the
+/// chat paints later than that. The single look then reported the deep link
+/// dead while it was merely early -- the next attempt, doing exactly the same
+/// thing, found the room.
+///
+/// Semantics is re-enabled every round on purpose. Flutter only publishes its
+/// placeholder once the engine is up, so a click that arrives before that does
+/// nothing at all and the tree stays off for ever; asking again costs nothing
+/// once it is on.
+async function settledInRoom(page, { timeout = 25000 } = {}) {
+  const deadline = Date.now() + timeout;
+  let midNavigation = null;
+  for (;;) {
+    // Best effort: the placeholder is not there before the engine is up, and
+    // a failure to click it shows up a line later as a screen that cannot be
+    // read -- which IS reported.
+    await ui.enableSemantics(page).catch(() => {});
+    try {
+      if (await ui.hasControl(page, 'call')) return true;
+    } catch (e) {
+      if (!isMidNavigation(e)) throw e;
+      midNavigation = e;
+    }
+    if (Date.now() > deadline) {
+      if (midNavigation) {
+        console.log(
+          `   (the page never stopped navigating: ${midNavigation.message})`);
+      }
+      return false;
+    }
+    await wait(1000);
+  }
 }
 
 /// Re-opens the room if the app has drifted away from it.
@@ -136,11 +217,7 @@ async function openRoom(page, roomLocalpart, attempts = 4) {
 /// once at startup is therefore not enough: every scenario re-asserts the room
 /// is actually on screen before it touches anything.
 async function ensureRoom(p, roomLocalpart) {
-  // Confirmed on the COMPOSER, not on a call button. Call buttons render on
-  // the home map too, so this guard used to pass while the app was nowhere
-  // near the room -- the transcript-card check then failed against a screen
-  // that never had a card on it.
-  if (await ui.hasControl(p.page, 'composer')) return;
+  if (await ui.hasControl(p.page, 'call')) return;
   console.log(`   (${p.name} drifted off the room; reopening)`);
   await openRoom(p.page, roomLocalpart);
 }

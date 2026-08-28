@@ -124,12 +124,6 @@ const KEYS = {
   busy: 'callFailedBusy',
   recordingNotice: 'callRecordingNotice',
   transcriptLink: 'callTranscriptOpen',
-  // The composer. Present ONLY inside an open chat, which is what makes it a
-  // sound confirmation that navigation landed. The call buttons are not: they
-  // also render on the home map, so confirming on them let `openRoom` and
-  // `ensureRoom` both report success while the app sat on the map, and the
-  // transcript-card check then looked for a card that was never on screen.
-  composer: 'writeAMessage',
 };
 
 const memo = {};
