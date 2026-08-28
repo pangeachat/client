@@ -184,6 +184,36 @@ all — captured, held back, and counted as neither transcribed nor lost. See
 [call-silence-trim-design.instructions.md](call-silence-trim-design.instructions.md)
 for what the detector decides on and which of its numbers are still unvalidated.
 
+## Which language a half is transcribed against
+
+A call has no language of its own, and asking for one is a bug. It has two halves,
+and a half has one speaker, one microphone, one publishing account and one analytics
+ledger — so the language pair belongs to the account that publishes the half, which is
+`room.client`: the same account the call service and the analytics sink are resolved
+from, and the account stamped on the half as its sender. Not whichever account is
+foregrounded when the call starts, and not the other participant's.
+
+Two learners studying different languages therefore have their halves transcribed
+differently, and that is the point: their speech is credited to two separate ledgers
+in two separate languages.
+
+The target language is not a soft hint. Choreo picks the whole provider fallback chain
+from it, constrains Deepgram's detection to it, and discards any transcript whose
+script does not match it — so the wrong pair returns nothing rather than something
+approximate, and a speaker who speaks outside their own target language gets an empty
+half. That is a settings problem and it is what the E2E harness refuses a run over;
+resolving the pair per-account does not and cannot fix it.
+
+The pair is captured once, when the call starts, and never re-read: a learner who
+changes their target language mid-call would otherwise have one call transcribed
+against two languages and the halves would disagree.
+
+There is one `UserController` for the process and its cached profile follows the
+foregrounded account, so the call path reads the room's account data directly instead
+of through it. That read is deliberately read-only — the profile getter's legacy path
+also SAVES the migrated blob, onto the foregrounded account, and placing a call is not
+a settings edit. A per-account `UserController` is the larger fix and is Future work.
+
 ## Failure is not all-or-nothing
 
 A call fails only when the call cannot happen, and the microphone is where that

@@ -25,6 +25,7 @@ import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
+import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/dev_login.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -296,11 +297,20 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         return;
       }
     }
-    final user = pangeaController.userController;
     // The services this call will use, resolved from the call's OWN account
     // rather than from whichever account happens to be active later.
     final accountName = room.client.clientName;
     final callAccount = analyticsServiceFor(accountName);
+    // The SAME rule for the languages this call is transcribed against, and
+    // for the same reason. A call has no language of its own: it has two
+    // halves, each recorded from one device's own microphone and published
+    // under one account, and the pair belongs to whichever account publishes
+    // the half. Read through `pangeaController.userController` these came from
+    // whichever account was FOREGROUNDED when the call started -- and the
+    // target language picks the provider chain server-side, so the wrong one
+    // does not return an approximation, it returns nothing
+    // (pangeachat/.github#410).
+    final languages = UserController.languageCodesFor(room.client);
     activeCall.value = call_ui.CallSession.start(
       room: room,
       video: video,
@@ -326,8 +336,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         }
         return value.value;
       },
-      userL1: user.userL1Code ?? LanguageKeys.unknownLanguage,
-      userL2: user.userL2Code ?? LanguageKeys.unknownLanguage,
+      userL1: languages.l1 ?? LanguageKeys.unknownLanguage,
+      userL2: languages.l2 ?? LanguageKeys.unknownLanguage,
       // Bound to the account that OWNS this call, captured now. Both of
       // these used to be read through the active-account getters at the
       // moment the recording finished, which is minutes later and after the
