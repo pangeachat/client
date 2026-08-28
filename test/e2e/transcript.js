@@ -152,12 +152,18 @@ const FIXTURE_LANG = 'en';
 /// refuses a missing wav: the alternative is four minutes of call to arrive at
 /// "expected one of afternoon/journey/spring/market; got", which names the app
 /// for something only the account says.
-async function refuseIfNotLearning(participants) {
-  for (const p of participants) {
-    const code = await mx.targetLanguage(p.token, p.userId);
+///
+/// Asked over its own logins, BEFORE the browsers, so the refusal costs a
+/// second rather than the two logins and the whole call it would take to reach
+/// the same conclusion from a participant's own token.
+async function refuseIfNotLearning(names) {
+  for (const name of names) {
+    const a = h.cfg.accounts[name];
+    const { token, userId } = await mx.login(a.user, a.pass);
+    const code = await mx.targetLanguage(token, userId);
     if (mx.baseLang(code) === FIXTURE_LANG) continue;
     throw new Error(
-      `${p.name} (${p.userId}) is learning ${code || 'nothing yet'}, and the `
+      `${name} (${userId}) is learning ${code || 'nothing yet'}, and the `
       + `fixtures are ${FIXTURE_LANG}. Speech-to-text is asked for the `
       + "speaker's own target language, so their half would come back empty "
       + 'however well the call went. Sign in as that account and set the '
@@ -171,9 +177,9 @@ async function main() {
   const s = 'transcript';
   console.log('[1] two browsers, each with its own voice');
   h.refuseIfAnotherRunIsLive();
+  await refuseIfNotLearning(['learner', 'calltester']);
   const A = await h.openParticipant('learner', ROOM, 9731);
   const B = await h.openParticipant('calltester', ROOM, 9732);
-  await refuseIfNotLearning([A, B]);
 
   const mA = await h.mark(A.token, ROOM_ID);
 
@@ -335,11 +341,19 @@ async function main() {
   }
 
   console.log('[5] and what the screen says about it');
-  // Semantics turned back on before asking. The tree is rebuilt as the app
-  // navigates, and this question is asked minutes and one whole call after
-  // `openParticipant` switched it on -- a stale tree answers "no card" for a
-  // card that is on screen, which is a harness failure wearing a product
-  // failure's clothes.
+  // Back in the ROOM before asking what the room shows.
+  //
+  // The card is a timeline event, and the caller does not reliably end a call
+  // still looking at the timeline -- this scenario spent every run reporting
+  // "no way in to the transcript from the call card" while the page was
+  // sitting on the activity map, where no card of any kind exists. That is a
+  // harness failure wearing a product failure's clothes, and it hid the
+  // silent-speaker check behind it, which is gated on the card and so had
+  // never run at all. `ensureRoom` is a no-op when the room is already open.
+  await h.ensureRoom(A, ROOM);
+  // And the semantics tree turned back on: it is thrown away with the document
+  // on any navigation, and a tree that is not there answers "no card" for a
+  // card that is.
   await ui.enableSemantics(A.page).catch(() => {});
   const card = await ui.hasControl(A.page, 'transcriptLink').catch(() => false);
   h.check(s, 'the card offers the transcript', card,
