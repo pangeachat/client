@@ -61,7 +61,7 @@ class GlobalCallTile extends StatelessWidget {
                         constraints: const BoxConstraints(maxWidth: 460),
                         child: CallMiniTile(
                           session: session,
-                          onOpen: () => _openCall(session),
+                          onOpen: () => _openCall(context, session),
                         ),
                       ),
                     ),
@@ -75,10 +75,22 @@ class GlobalCallTile extends StatelessWidget {
     );
   }
 
-  /// Back to the call's own chat, expanded. Navigation uses the app's router
-  /// directly because this widget lives above it.
-  void _openCall(CallSession session) {
+  /// Back to the call, expanded. Navigation uses the app's router directly
+  /// because this widget lives above it.
+  ///
+  /// A call on a NON-ACTIVE account has no chat to go back to: `ChatPage`
+  /// resolves its room through the ACTIVE client, so this route would land on
+  /// RoomUnavailablePanel with a live call playing behind it. That call goes
+  /// fullscreen instead — the full panel, over the whole app, without touching
+  /// the route. This tile only renders while the session is NOT fullscreen
+  /// (the fullscreen branch returns above it), so the toggle here is always
+  /// off-to-on.
+  void _openCall(BuildContext context, CallSession session) {
     session.expand();
+    if (!identical(session.room.client, Matrix.of(context).client)) {
+      session.toggleFullscreen();
+      return;
+    }
     final router = FluffyChatApp.router;
     final uri = router.routeInformationProvider.value.uri;
     router.go(WorkspaceNav.openRoomById(uri, session.room.id));

@@ -117,9 +117,11 @@ class CallSession extends ChangeNotifier {
     this.callerMembershipEventId,
     this.platformLabels,
     this.tonesOverride,
+    bool fullscreen = false,
   }) : _record = record,
        _myUserId = myUserId,
        _peerUserId = peerUserId,
+       _fullscreen = fullscreen,
        _onReleased = onReleased {
     _camera = videoRequested;
     // What the ongoing-call notification says. The call only knows the room;
@@ -172,6 +174,11 @@ class CallSession extends ChangeNotifier {
     DateTime? rejoinSince,
     String? callerMembershipEventId,
     ({String mute, String channel})? platformLabels,
+
+    /// Whether the call covers the whole app from its first frame. See
+    /// [CallSession.fullscreen]: only a call answered on a non-active account
+    /// asks for this, because it has no chat pane to be presented in.
+    bool fullscreen = false,
     @visibleForTesting RingPlayer? tonesOverride,
     @visibleForTesting CallMedia? mediaOverride,
     @visibleForTesting CallCaptureService? captureOverride,
@@ -262,6 +269,7 @@ class CallSession extends ChangeNotifier {
       rejoinSince: rejoinSince,
       callerMembershipEventId: callerMembershipEventId,
       platformLabels: platformLabels,
+      fullscreen: fullscreen,
       tonesOverride: tonesOverride,
     );
   }
@@ -273,8 +281,18 @@ class CallSession extends ChangeNotifier {
   /// Whether the call is showing over the whole app rather than inside its
   /// chat pane. A choice, not the default: the pane is where the call lives,
   /// and this is the "make it big" button every video product offers.
+  ///
+  /// Seeded by the constructor rather than only toggled, because one caller
+  /// needs it true from the very first frame. A call answered on an account
+  /// that is not the foregrounded one has no chat pane to live in -- its room
+  /// belongs to another account, so navigating there would land on
+  /// `RoomUnavailablePanel` -- and it is presented by [GlobalCallTile]
+  /// instead. That tile renders the full [CallPanel] only when this is true;
+  /// otherwise it renders `CallMiniTile`, which has neither hangup nor mute.
+  /// Toggling after the session is published to `activeCall` would paint one
+  /// frame of a call the learner has just answered and cannot end.
   bool get fullscreen => _fullscreen;
-  bool _fullscreen = false;
+  bool _fullscreen;
 
   void toggleFullscreen() {
     _fullscreen = !_fullscreen;
