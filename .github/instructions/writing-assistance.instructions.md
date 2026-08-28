@@ -172,7 +172,7 @@ Matches no longer require explicit accept/ignore. The lifecycle simplifies to:
 
 | Status      | Meaning                                                 | Ring/Highlight        |
 | ----------- | ------------------------------------------------------- | --------------------- |
-| `automatic` | Auto-applied (punct, diacritics, cap from the server; spelling from the device) | Bright immediately    |
+| `automatic` | Auto-applied on arrival (punct, diacritics, cap) | Bright immediately    |
 | `open`      | Server-returned, not yet viewed                         | Muted                 |
 | `viewed`    | User opened the span card and navigated away            | Bright                |
 | `accepted`  | User tapped a choice, text replaced                     | Bright                |
@@ -208,23 +208,19 @@ Categories returned by `/grammar_v2`. Each gets a distinct color in the ring and
 | Category                | Types                                                                                                                                                                                                                                                           | Behavior                                                 |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | **Grammar** (~21 types) | verb conjugation/tense/mood, agreement (subject-verb, gender, number, case), article, preposition, pronoun, word order, negation, question formation, relative clause, connector, possessive, comparative, passive voice, conditional, infinitive/gerund, modal | Highlight + ring segment, user-viewable                  |
-| **Surface**             | punct, diacritics, cap, spell                                                                                                                                                                                                                                   | punct, diacritics and cap are **auto-applied**, bright immediately, undo via span card. **spell depends on where it came from**: the device spell checker's corrections are applied before the request goes out, while the server's are only ever offered. Hint text displayed only if server provides one (non-null) — omitted for obvious corrections, included when pedagogically useful (e.g. explaining an accent rule). See [Local spelling corrections](#local-spelling-corrections) for why the two differ. |
+| **Surface**             | punct, diacritics, cap, spell                                                                                                                                                                                                                                   | punct, diacritics and cap are **auto-applied**, bright immediately, undo via span card. **spell is never auto-applied** — a word rewritten without asking teaches nothing, and the learner cannot tell the correction from their own typing — so it highlights like any other match and waits to be tapped. Hint text displayed only if server provides one (non-null) — omitted for obvious corrections, included when pedagogically useful (e.g. explaining an accent rule). Spelling may originate from the local spell checker as well as the server; see [Local spelling matches](#local-spelling-matches). |
 | **Word choice**         | false cognate, L1 interference, collocation, semantic confusion                                                                                                                                                                                                 | Highlight + ring segment, user-viewable                  |
 | **Style / fluency**     | style, fluency, didYouMean, transcription, translation, other                                                                                                                                                                                                   | Highlight + ring segment, user-viewable                  |
 
 ---
 
-## Local spelling corrections
+## Local spelling matches
 
-Misspellings are the most common writing-assistance match and the least interesting one, and every one of them costs a round trip to `/grammar_v2` in which the server re-finds spelling the device's own checker already knew about. Correcting them on the device makes assistance immediate and takes that work off the choreographer.
+Misspellings are the most common writing-assistance match and the least interesting one, and every one of them currently waits on a round trip to `/grammar_v2`. The device's own spell checker finds most of them straight away, so the learner can be offered the correction while the server call is still in flight.
 
-**The correction is applied to the composer before the request is built, and the corrected sentence is what gets sent.** That ordering is the whole feature. A local pass that only highlighted would still send the raw text, the server would return the same spelling matches, and nothing would be saved — so the pass has to finish before the request goes out.
+The local pass is a latency optimisation, not a second opinion. It reads the text as typed, asks for the learner's target language, and produces the same spelling matches the server would. The server stays the authority: when its response arrives it replaces the local spelling matches entirely, so a word both of them flagged ends as one match and one ring segment. The local checker only knows whether a word is in a dictionary; the server knows what the learner was trying to say.
 
-Applied is not silent. A local correction gets the same treatment as any other auto-applied surface correction: `AutocorrectPopup`, bright highlight, undo from the span card, and a record in `ChoreoRecordModel` on send. Undo matters more here than elsewhere, because a device dictionary is confidently wrong about the things a learner writes most — proper nouns, borrowed words, dialect, and code-switching — and the learner is least placed to notice. Every correction stays one tap from being put back.
-
-**Server spelling matches are still never auto-applied.** The two are different claims about the same word: the device reports that it is absent from a dictionary, which is mechanical and narrow, while the server judges from context what the learner meant — exactly the kind of guess a learner should see and choose for themselves rather than have made for them.
-
-Because the request carries the corrected text, the server never sees the misspellings the device fixed. The two sets of matches sit alongside each other; neither replaces the other.
+A local match is presented exactly like a server spelling match — highlighted, given its own ring segment, opened by tapping, and recorded in `ChoreoRecordModel` on send. Like every spelling match it is never applied on the learner's behalf. That is what separates this from the device's own autocorrect, which rewrites a word without asking and so teaches the learner nothing and leaves no record behind. What the local pass changes is only *when* the learner sees the correction offered, not whether they choose it.
 
 ### When the local pass runs
 
@@ -251,8 +247,8 @@ Choreographer (ChangeNotifier)
 
 ### Flow Summary
 
-1. User types → debounce → the local spelling pass corrects what it finds, then the `/grammar_v2` request goes out carrying the corrected text
-2. Response returns matches → auto-apply surface corrections, display the rest alongside the local ones
+1. User types → debounce → the local spelling pass highlights what it finds, and the `/grammar_v2` request goes out
+2. Response returns matches → auto-apply surface corrections, replace the local spelling matches with the server's, display the rest
 3. Ring segments and text highlights appear (muted)
 4. User taps highlights to view suggestions, optionally accepts choices
 5. Viewed matches become bright

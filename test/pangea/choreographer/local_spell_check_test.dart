@@ -135,7 +135,7 @@ void main() {
     });
   });
 
-  group('IgcController.applyLocalSpellMatches', () {
+  group('IgcController.addLocalSpellMatches', () {
     const locale = Locale('es');
     late IgcController controller;
 
@@ -149,39 +149,42 @@ void main() {
       LocalSpellCheck.service = DefaultSpellCheckService();
     });
 
-    test('corrects the text so the server request carries the fix', () async {
-      LocalSpellCheck.service = _FakeSpellCheckService(const [
-        SuggestionSpan(TextRange(start: 7, end: 12), ['world']),
-      ]);
+    test(
+      'adds open matches — spelling is never applied for the learner',
+      () async {
+        LocalSpellCheck.service = _FakeSpellCheckService(const [
+          SuggestionSpan(TextRange(start: 7, end: 12), ['world']),
+        ]);
 
-      expect(
-        await controller.applyLocalSpellMatches('Hello, wrold', locale),
-        isTrue,
-      );
-      expect(controller.currentText, 'Hello, world');
-    });
+        expect(
+          await controller.addLocalSpellMatches('Hello, wrold', locale),
+          isTrue,
+        );
+        expect(controller.matches, hasLength(1));
+        expect(
+          controller.matches.single.updatedMatch.status,
+          PangeaMatchStatusEnum.open,
+        );
+        expect(controller.openMatches, hasLength(1));
+      },
+    );
 
-    test('the applied match stays undoable rather than disappearing', () async {
-      LocalSpellCheck.service = _FakeSpellCheckService(const [
-        SuggestionSpan(TextRange(start: 0, end: 5), ['world']),
-      ]);
-
-      await controller.applyLocalSpellMatches('wrold', locale);
-
-      expect(controller.matches, hasLength(1));
-      expect(
-        controller.matches.single.updatedMatch.status,
-        PangeaMatchStatusEnum.automatic,
-      );
-      expect(controller.openLocalSpellMatches, isEmpty);
-    });
-
-    test('tags matches so they are distinguishable from server ones', () async {
+    test('highlights are drawn against the text they were found in', () async {
       LocalSpellCheck.service = _FakeSpellCheckService(const [
         SuggestionSpan(TextRange(start: 0, end: 5), ['world']),
       ]);
 
-      await controller.applyLocalSpellMatches('wrold', locale);
+      await controller.addLocalSpellMatches('wrold', locale);
+
+      expect(controller.currentText, 'wrold');
+    });
+
+    test('tags matches so the server response can replace them', () async {
+      LocalSpellCheck.service = _FakeSpellCheckService(const [
+        SuggestionSpan(TextRange(start: 0, end: 5), ['world']),
+      ]);
+
+      await controller.addLocalSpellMatches('wrold', locale);
 
       expect(
         controller.matches.single.updatedMatch.match.rule?.id,
@@ -189,22 +192,10 @@ void main() {
       );
     });
 
-    test('corrects every misspelling, not just the first', () async {
-      LocalSpellCheck.service = _FakeSpellCheckService(const [
-        SuggestionSpan(TextRange(start: 0, end: 5), ['world']),
-        SuggestionSpan(TextRange(start: 6, end: 11), ['hello']),
-      ]);
-
-      await controller.applyLocalSpellMatches('wrold hlelo', locale);
-
-      expect(controller.currentText, 'world hello');
-      expect(controller.matches, hasLength(2));
-    });
-
-    test('leaves the text alone when the device finds nothing', () async {
+    test('reports nothing added when the device finds nothing', () async {
       LocalSpellCheck.service = _FakeSpellCheckService(const []);
 
-      expect(await controller.applyLocalSpellMatches('hello', locale), isFalse);
+      expect(await controller.addLocalSpellMatches('hello', locale), isFalse);
       expect(controller.matches, isEmpty);
       expect(controller.currentText, isNull);
     });

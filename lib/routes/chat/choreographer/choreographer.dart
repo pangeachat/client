@@ -276,18 +276,20 @@ class Choreographer extends ChangeNotifier {
     await _runWritingAssistance(feedbackText: feedbackText);
   }
 
-  /// Corrects the misspellings the device can find before the request is
-  /// built, so `/grammar_v2` receives the corrected sentence rather than
-  /// re-finding spelling the device already knew about. Awaited for that
-  /// reason: the request is only cheaper if the text is corrected first.
-  /// See writing-assistance.instructions.md, "Local spelling corrections".
+  /// Offers the misspellings the device can find while the server request is
+  /// still in flight. Runs first because the platform call takes milliseconds
+  /// against the server's seconds, and its highlights need a repaint of their
+  /// own — the next one comes only when the response lands.
+  /// See writing-assistance.instructions.md, "Local spelling matches".
   Future<void> _runLocalSpellPass() async {
     final locale = MatrixState.pangeaController.userController.userL2?.locale;
     if (locale == null) return;
 
-    // Applying streams a match update, which is what writes the corrected
-    // text back to the composer and repaints — so no notify is needed here.
-    await igcController.applyLocalSpellMatches(textController.text, locale);
+    final added = await igcController.addLocalSpellMatches(
+      textController.text,
+      locale,
+    );
+    if (added) notifyListeners();
   }
 
   Future<void> _runWritingAssistance({String? feedbackText}) async {
