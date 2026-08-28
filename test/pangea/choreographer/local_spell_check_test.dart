@@ -201,6 +201,30 @@ void main() {
       expect(controller.matches, hasLength(2));
     });
 
+    test('an applied correction survives a failed request', () async {
+      LocalSpellCheck.service = _FakeSpellCheckService(const [
+        SuggestionSpan(TextRange(start: 0, end: 5), ['world']),
+      ]);
+      await controller.applyLocalSpellMatches('wrold', locale);
+
+      controller.clearAfterFailedRequest();
+
+      // The composer still shows 'world', so the match that changed it has to
+      // stay or the learner cannot undo it.
+      expect(controller.currentText, 'world');
+      expect(controller.appliedLocalSpellMatches, hasLength(1));
+    });
+
+    test('a failed request still clears everything else', () async {
+      LocalSpellCheck.service = _FakeSpellCheckService(const []);
+      await controller.applyLocalSpellMatches('hello', locale);
+
+      controller.clearAfterFailedRequest();
+
+      expect(controller.matches, isEmpty);
+      expect(controller.currentText, isNull);
+    });
+
     test('leaves the text alone when the device finds nothing', () async {
       LocalSpellCheck.service = _FakeSpellCheckService(const []);
 
