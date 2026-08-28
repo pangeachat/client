@@ -32,8 +32,10 @@
 // renderer and a renderer can be dead while `isRecording` is true. None of
 // them. The app's capture path was correct the whole time.
 //
-// It was TWO facts about this harness, and each one alone produced exactly the
-// same symptom:
+// It was TWO facts about this harness. They are not the same failure -- the
+// first silenced BOTH microphones outright, the second emptied one speaker's
+// half while the other transcribed perfectly -- but they surface through the
+// same check, and the second was invisible until the first was fixed:
 //
 //   - Chrome feeds `--use-file-for-fake-audio-capture` from the AUDIO SERVICE,
 //     which runs in its own sandboxed process, and on macOS that sandbox
@@ -167,8 +169,10 @@ async function refuseIfNotLearning(names) {
       + `fixtures are ${FIXTURE_LANG}. Speech-to-text is asked for the `
       + "speaker's own target language, so their half would come back empty "
       + 'however well the call went. Sign in as that account and set the '
-      + `learning language to ${FIXTURE_LANG}, or point CALL_CALLER_WAV / `
-      + 'CALL_CALLEE_WAV at fixtures in the language it is learning.',
+      + `learning language to ${FIXTURE_LANG}. Going the other way is a change `
+      + 'to this file and not a setting: the wavs, FIXTURE_LANG, and the '
+      + 'CALLER_SAYS / CALLEE_SAYS words are one fixture set and all three move '
+      + 'together.',
     );
   }
 }
@@ -356,11 +360,17 @@ async function main() {
   // card that is.
   await ui.enableSemantics(A.page).catch(() => {});
   const card = await ui.hasControl(A.page, 'transcriptLink').catch(() => false);
+  // What WAS on screen, on the same argument `ui.waitForLabel` makes: a
+  // missing control is only actionable next to the ones that were found.
+  // Read only when it is missing, and never allowed to throw -- an argument to
+  // `check` is evaluated before the check is, so a diagnostic gathered
+  // unconditionally can end the run on the path where there was nothing to
+  // explain.
+  const insteadOnScreen = card
+    ? ''
+    : JSON.stringify((await ui.labels(A.page).catch(() => [])).slice(0, 25));
   h.check(s, 'the card offers the transcript', card,
-    // What WAS on screen, on the same argument `ui.waitForLabel` makes: a
-    // missing control is only actionable next to the ones that were found.
-    `no way in to the transcript from the call card; on screen: ` +
-      JSON.stringify((await ui.labels(A.page)).slice(0, 25)));
+    `no way in to the transcript from the call card; on screen: ${insteadOnScreen}`);
 
   if (card) {
     await ui.clickControl(A.page, 'transcriptLink').catch(() => {});

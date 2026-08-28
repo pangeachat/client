@@ -22,7 +22,14 @@ async function api(path, { token, method = 'GET', body } = {}) {
     json = { raw: text };
   }
   if (!res.ok) {
-    throw new Error(`${method} ${path} -> ${res.status} ${text.slice(0, 200)}`);
+    const err = new Error(`${method} ${path} -> ${res.status} ${text.slice(0, 200)}`);
+    // The STATUS, alongside the message. A caller that wants to treat one
+    // outcome as an answer -- an absent piece of account data is a 404, and a
+    // real answer -- must be able to tell it apart from an expired token or a
+    // homeserver that is down, and matching on the text of a message is how a
+    // catch comes to swallow the failures it was never meant to.
+    err.status = res.status;
+    throw err;
   }
   return json;
 }
@@ -88,17 +95,23 @@ async function displayName(token, userId) {
 /// call rings, connects, and writes both halves, and only the words are
 /// missing -- which reads as a broken capture path rather than as an account
 /// pointed at the wrong language.
+/// A 404 is the only failure this treats as an answer -- an account that has
+/// never filled in a profile genuinely has no target language. Everything else
+/// is rethrown: an expired token or a homeserver that is down would otherwise
+/// come back as "learning nothing yet" and be reported as a fixture problem.
 async function targetLanguage(token, userId) {
+  let p;
   try {
-    const p = await api(
+    p = await api(
       `/_matrix/client/v3/user/${encodeURIComponent(userId)}/account_data/profile`,
       { token },
     );
-    const code = p && p.user_settings && p.user_settings.target_language;
-    return typeof code === 'string' && code ? code : null;
-  } catch (_) {
-    return null;
+  } catch (e) {
+    if (e && e.status === 404) return null;
+    throw e;
   }
+  const code = p && p.user_settings && p.user_settings.target_language;
+  return typeof code === 'string' && code ? code : null;
 }
 
 /// A language code reduced to the language itself: 'en-US' and 'en' are the
