@@ -1191,8 +1191,16 @@ void main() {
     });
 
     test('two halves differing only in what they held back are not equal', () {
-      const a = HalfAccounting(chunksCaptured: 2, chunksSuppressed: 0, declared: true);
-      const b = HalfAccounting(chunksCaptured: 2, chunksSuppressed: 2, declared: true);
+      const a = HalfAccounting(
+        chunksCaptured: 2,
+        chunksSuppressed: 0,
+        declared: true,
+      );
+      const b = HalfAccounting(
+        chunksCaptured: 2,
+        chunksSuppressed: 2,
+        declared: true,
+      );
 
       expect(a == b, isFalse);
       // And the hash has to follow equality: two values that differ must be

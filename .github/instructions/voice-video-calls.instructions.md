@@ -175,6 +175,15 @@ Recording is gated on somebody being able to hear:
 Both parties record their own outbound audio simultaneously; that is the whole
 attribution design.
 
+Which means a device records its own noise floor for every stretch the OTHER
+person is talking, and a chunk that is mostly noise is not merely a wasted
+request: measured on a real call, both providers invented words for the silence
+and returned a fraction of what was said. So a chunk is narrowed to the part
+somebody spoke before it is sent, and a chunk with no speech in it is not sent at
+all — captured, held back, and counted as neither transcribed nor lost. See
+[call-silence-trim-design.instructions.md](call-silence-trim-design.instructions.md)
+for what the detector decides on and which of its numbers are still unvalidated.
+
 ## Failure is not all-or-nothing
 
 A call fails only when the call cannot happen, and the microphone is where that

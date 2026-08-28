@@ -218,7 +218,10 @@ TrimmedChunkAudio? trimToSpeech(
 /// threshold entirely. It is invariant to GAIN — not to additive noise, echo or
 /// periodic interference, which produce false VOICING and therefore send more
 /// audio rather than less.
-List<bool> _voicedFlags(({Int16List samples, int rate}) input, SpeechTrimSettings settings) {
+List<bool> _voicedFlags(
+  ({Int16List samples, int rate}) input,
+  SpeechTrimSettings settings,
+) {
   final s = input.samples;
   final rate = input.rate;
   final frame = rate * _frameMs ~/ 1000;
@@ -385,7 +388,11 @@ TrimmedChunkAudio? _slice(PcmChunk chunk, int startMs, int endMs) {
   final pcm = Uint8List.view(chunk.pcm.buffer, from, length);
 
   return TrimmedChunkAudio(
-    wav: pcm16ToWav(pcm, sampleRate: chunk.sampleRate, channels: chunk.channels),
+    wav: pcm16ToWav(
+      pcm,
+      sampleRate: chunk.sampleRate,
+      channels: chunk.channels,
+    ),
     // Recomputed from the FRAME the slice actually starts at, never from the
     // millisecond that was asked for. The two differ by up to a sample, and the
     // position a word is placed at has to describe the audio that was sent.

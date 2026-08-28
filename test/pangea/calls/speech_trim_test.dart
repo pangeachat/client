@@ -32,12 +32,11 @@ Int16List _loadFixture() {
     final id = String.fromCharCodes(bytes.sublist(offset, offset + 4));
     final size = view.getUint32(offset + 4, Endian.little);
     if (id == 'data') {
-      final pcm = bytes.sublist(offset + 8, min(offset + 8 + size, bytes.length));
-      return Int16List.view(
-        Uint8List.fromList(pcm).buffer,
-        0,
-        pcm.length ~/ 2,
+      final pcm = bytes.sublist(
+        offset + 8,
+        min(offset + 8 + size, bytes.length),
       );
+      return Int16List.view(Uint8List.fromList(pcm).buffer, 0, pcm.length ~/ 2);
     }
     offset += 8 + size + (size.isOdd ? 1 : 0);
   }
@@ -63,7 +62,11 @@ PcmChunk _chunk(
 );
 
 Int16List _range(Int16List all, double fromSec, double toSec) =>
-    Int16List.sublistView(all, (fromSec * 16000).round(), (toSec * 16000).round());
+    Int16List.sublistView(
+      all,
+      (fromSec * 16000).round(),
+      (toSec * 16000).round(),
+    );
 
 void main() {
   late Int16List audio;
@@ -87,7 +90,10 @@ void main() {
         reason: 'must skip the noise without clipping the first word',
       );
       // Speech runs to the end of the file, so the span has to reach it.
-      expect(trimmed.startMs + trimmed.durationMs, greaterThan(_fileEndMs - 700));
+      expect(
+        trimmed.startMs + trimmed.durationMs,
+        greaterThan(_fileEndMs - 700),
+      );
       // Less than 60% of the file survives; the whole point is sending less.
       expect(trimmed.durationMs, lessThan(0.6 * _fileEndMs));
     });

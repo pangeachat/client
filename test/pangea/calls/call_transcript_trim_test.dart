@@ -21,8 +21,11 @@ Int16List _load() {
   return Int16List.view(Uint8List.fromList(pcm).buffer, 0, pcm.length ~/ 2);
 }
 
-Int16List _range(double fromSec, double toSec) =>
-    Int16List.sublistView(_audio, (fromSec * 16000).round(), (toSec * 16000).round());
+Int16List _range(double fromSec, double toSec) => Int16List.sublistView(
+  _audio,
+  (fromSec * 16000).round(),
+  (toSec * 16000).round(),
+);
 
 const _chunkStart = 1700000000000;
 
@@ -215,33 +218,37 @@ void main() {
   });
 
   group('the settings are reachable', () {
-    test('a chunk held silent by default can be sent by loosening the trim',
-        () async {
-      var calls = 0;
-      Future<SpeechToTextResponseModel> transcribe(_) async {
-        calls++;
-        return _response('x');
-      }
+    test(
+      'a chunk held silent by default can be sent by loosening the trim',
+      () async {
+        var calls = 0;
+        Future<SpeechToTextResponseModel> transcribe(_) async {
+          calls++;
+          return _response('x');
+        }
 
-      final strict = CallTranscriptSink(
-        transcribe: transcribe,
-        userL1: 'en',
-        userL2: 'hi',
-      );
-      await strict.deliver(_chunk(_range(0, 22)));
-      expect(calls, 0);
+        final strict = CallTranscriptSink(
+          transcribe: transcribe,
+          userL1: 'en',
+          userL2: 'hi',
+        );
+        await strict.deliver(_chunk(_range(0, 22)));
+        expect(calls, 0);
 
-      // Every number in the detector is calibrated against ONE recording, so
-      // each has to be reachable from outside -- a constant nothing can move is
-      // a constant nothing can retune when the second sample arrives.
-      final loose = CallTranscriptSink(
-        transcribe: transcribe,
-        userL1: 'en',
-        userL2: 'hi',
-        trimSettings: const SpeechTrimSettings(minTrimmable: Duration(days: 1)),
-      );
-      await loose.deliver(_chunk(_range(0, 22)));
-      expect(calls, 1);
-    });
+        // Every number in the detector is calibrated against ONE recording, so
+        // each has to be reachable from outside -- a constant nothing can move is
+        // a constant nothing can retune when the second sample arrives.
+        final loose = CallTranscriptSink(
+          transcribe: transcribe,
+          userL1: 'en',
+          userL2: 'hi',
+          trimSettings: const SpeechTrimSettings(
+            minTrimmable: Duration(days: 1),
+          ),
+        );
+        await loose.deliver(_chunk(_range(0, 22)));
+        expect(calls, 1);
+      },
+    );
   });
 }

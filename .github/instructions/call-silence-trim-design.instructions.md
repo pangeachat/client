@@ -1,3 +1,7 @@
+---
+applyTo: "lib/routes/chat/calls/speech_trim.dart,lib/routes/chat/calls/call_transcript_sink.dart"
+---
+
 # Trimming a call chunk to the part somebody spoke
 
 ## The defect
