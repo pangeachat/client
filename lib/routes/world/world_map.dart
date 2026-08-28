@@ -128,6 +128,12 @@ class WorldMapController extends State<WorldMap>
 
   StreamSubscription<dynamic>? _syncSub;
   StreamSubscription? _languageSubscription;
+  StreamSubscription? _settingsSubscription;
+
+  /// The resolved display language the current pin set was requested with —
+  /// bbox card text is localized to it (#8398), so a settings or language
+  /// change that resolves to a different one refetches.
+  String? _pinsDisplayLanguage;
 
   final WorldMapFilterState _filterState = WorldMapFilterState();
   final WorldMapPinsManager _pinsManager = WorldMapPinsManager();
@@ -212,7 +218,18 @@ class WorldMapController extends State<WorldMap>
       if (update.prevBaseLang != update.baseLang) {
         _beginL1Warmup();
       }
+      _refetchOnDisplayLanguageChange();
     });
+
+    // The "app in target language" toggle arrives as a settings update (the
+    // languages themselves are unchanged), but it flips the resolved display
+    // language the bbox card text is localized to (#8398) — refetch so search
+    // matches what the learner now sees. The server caches per (l2, cefr,
+    // limit, l1), so no cache-busting is needed.
+    _settingsSubscription?.cancel();
+    _settingsSubscription = user.settingsUpdateStream.stream.listen(
+      (_) => _refetchOnDisplayLanguageChange(),
+    );
 
     // No settings-driven level default: the Level pill starts at "All levels"
     // and only the learner changes it, so a CEFR settings change never re-seats
@@ -300,6 +317,7 @@ class WorldMapController extends State<WorldMap>
   void dispose() {
     _syncSub?.cancel();
     _languageSubscription?.cancel();
+    _settingsSubscription?.cancel();
     _refetchDebounce?.cancel();
     _warmingTimer?.cancel();
     _fitDebounce?.cancel();
@@ -635,11 +653,17 @@ class WorldMapController extends State<WorldMap>
     if (mounted) setState(() => _loadingPins = true);
 
     try {
+      _pinsDisplayLanguage =
+          MatrixState.pangeaController.userController.displayLanguageCode;
       await _pinsManager.loadWorldScopedPins(
         bounds: bounds,
         // Language is fixed by the learner's settings, not a map filter, so the
         // working set is always narrowed to their L2 (world-map.instructions.md).
         l2: _filterState.filter.l2?.langCodeShort,
+        // Card text (title/description/learning objective) comes back in the
+        // resolved display language, canonical per card where no translation
+        // row exists yet — so search matches what the learner sees (#8398).
+        l1: _pinsDisplayLanguage,
       );
     } finally {
       if (mounted) {
@@ -656,6 +680,17 @@ class WorldMapController extends State<WorldMap>
         viewRevision.value++;
       }
     }
+  }
+
+  /// Refetch the world pins when the resolved display language no longer
+  /// matches the one the current set was requested with (#8398): a settings
+  /// update (the "app in target language" toggle) or a language change. No-op
+  /// in course scope ([loadWorldPins] guards); the next world-scoped load
+  /// reads the current value regardless.
+  void _refetchOnDisplayLanguageChange() {
+    final displayLang =
+        MatrixState.pangeaController.userController.displayLanguageCode;
+    if (displayLang != _pinsDisplayLanguage) loadWorldPins();
   }
 
   /// Apply a filter mutation: rebuild this State (the map and the wide

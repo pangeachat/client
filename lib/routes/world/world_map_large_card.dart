@@ -134,12 +134,13 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
 ///   last chat event, then the row of currently-gained stars — the only
 ///   large-card state that shows stars.
 ///
-/// The full [plan] carries the goal total AND the L1-localized title (the
-/// hydration fetch localizes; choreo #2736) — null while it hydrates, so the
-/// title falls back to the canonical [card] title until the plan lands (and
-/// re-hydrates on an L1 change, per the map's L1 warmup). [liveRoom] is the
-/// learner's own session room for an Ongoing card (participants for Pending,
-/// last event for Active). Tapping the card opens the activity's plan page.
+/// The full [plan] carries the goal total AND the title in the resolved
+/// display language (the hydration fetch localizes; #8397) — null while it
+/// hydrates, so the title falls back to the thin [card] title until the plan
+/// lands (and re-hydrates on an L1 change, per the map's L1 warmup).
+/// [liveRoom] is the learner's own session room for an Ongoing card
+/// (participants for Pending, last event for Active). Tapping the card opens
+/// the activity's plan page.
 class WorldMapLargeCard extends StatelessWidget {
   /// Height of the downward caret that tethers the card to its pin. The marker
   /// reserves this beneath the card so the tail isn't clipped (#7153).
