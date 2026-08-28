@@ -118,9 +118,14 @@ abstract class CourseSearchController<T> {
 
   void startSearching() {
     _searchingNotifier.value = true;
-    _focusNode.requestFocus();
     _searchController.clear();
     setFilteredCourses(AsyncLoaded(_loadedCourses));
+    // The search field only enters the tree on the rebuild triggered above, so
+    // focusing synchronously targets a detached node — on web the field can
+    // then read as focused without the browser input ever opening (#8581).
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!_disposed) _focusNode.requestFocus();
+    });
   }
 
   void _onSearch() {
