@@ -61,6 +61,20 @@ PcmChunk _chunk(
   startedAtMs: startedAtMs,
 );
 
+/// The same signal on two channels, the second inverted.
+///
+/// Clamped at the negative floor: -32768 has no positive counterpart in 16 bits
+/// and negating it wraps back to itself, which would leave the two channels
+/// identical exactly where the test needs them opposed.
+Int16List _antiPhase(Int16List mono) {
+  final out = Int16List(mono.length * 2);
+  for (var i = 0; i < mono.length; i++) {
+    out[i * 2] = mono[i];
+    out[i * 2 + 1] = mono[i] == -32768 ? 32767 : -mono[i];
+  }
+  return out;
+}
+
 Int16List _range(Int16List all, double fromSec, double toSec) =>
     Int16List.sublistView(
       all,
@@ -186,6 +200,73 @@ void main() {
         trimToSpeech(_chunk(scrambled)),
         isNotNull,
         reason: 'aperiodic does not mean empty',
+      );
+    });
+
+    test('unvoiced speech is kept even when noise outweighs it', () {
+      // The shape this whole file exists for, with the speech half whispered:
+      // 22s of room noise then 18s of wholly aperiodic speech. There is no
+      // periodicity to find anywhere in it, so the level veto is all that
+      // stands between eighteen seconds of somebody talking and the bin.
+      //
+      // It has to be the LOUDEST STRETCH rather than the chunk average. Averaged,
+      // this chunk scores 0.58 against pure noise's 0.46 -- twelve points apart,
+      // and on the wrong side of any thereshold that still suppressed the noise.
+      // Over the loudest three seconds the same two score 0.99 and 0.72.
+      final random = Random(5);
+      final speech = _range(audio, 22.3, 40.2);
+      final whispered = Int16List(speech.length);
+      for (var i = 0; i < speech.length; i++) {
+        whispered[i] = random.nextBool() ? speech[i] : -speech[i];
+      }
+      final chunk = Int16List.fromList([..._range(audio, 0, 22), ...whispered]);
+
+      expect(
+        trimToSpeech(_chunk(chunk)),
+        isNotNull,
+        reason: 'eighteen seconds of speech is not silence',
+      );
+      // And the noise it is buried in, alone, is still suppressed -- otherwise
+      // the veto would simply have stopped working.
+      expect(trimToSpeech(_chunk(_range(audio, 0, 22))), isNull);
+    });
+
+    test('opposite-phase channels still have their speech FOUND', () {
+      // A signed downmix is the obvious way to make one signal out of several,
+      // and it is the wrong one: two channels in opposite phase sum to nothing.
+      //
+      // Asserted on the TRIM rather than merely on not-being-suppressed. The
+      // level veto sums energy across channels and would rescue this chunk
+      // whole even if the voicing test had been handed silence -- so only an
+      // assertion that the speech was actually LOCATED can tell the two apart.
+      final antiPhase = _antiPhase(_range(audio, 0, 40.4));
+      final trimmed = trimToSpeech(_chunk(antiPhase, channels: 2));
+
+      expect(trimmed, isNotNull);
+      expect(
+        trimmed!.startMs,
+        inInclusiveRange(19000, _speechStartMs + 500),
+        reason: 'cancelled audio would find no speech and send everything',
+      );
+    });
+
+    test('opposite-phase channels are not read as a quiet chunk', () {
+      // The other half of the same mistake, isolated. Here there is no
+      // periodicity for the voicing test to find whichever channel it reads,
+      // so the level veto is the only thing standing between the chunk and the
+      // bin -- and a veto that squared the MEAN of the channels would measure
+      // this as digital silence.
+      final speech = _range(audio, 22.3, 40.2);
+      final random = Random(13);
+      final whispered = Int16List(speech.length);
+      for (var i = 0; i < speech.length; i++) {
+        whispered[i] = random.nextBool() ? speech[i] : -speech[i];
+      }
+
+      expect(
+        trimToSpeech(_chunk(_antiPhase(whispered), channels: 2)),
+        isNotNull,
+        reason: 'summed energy sees it; a signed mean cancels it away',
       );
     });
 

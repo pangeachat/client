@@ -88,15 +88,25 @@ class SpeechTrimSettings {
   /// whole chunk goes instead.
   final double keepWholeAbove;
 
-  /// A chunk with no voiced frames is only suppressed if its fraction of loud
-  /// windows is below this.
+  /// A chunk with no voiced frames is only suppressed if its loudest sustained
+  /// stretch scores below this.
   ///
   /// Audio that is loud but aperiodic is audio we do not UNDERSTAND, not audio
   /// we know to be empty — whispered and wholly unvoiced speech look exactly
-  /// like that. Measured on the reference recording, non-speech stretches score
-  /// 0.16-0.46 and speech scores 0.81. This uses level, but only ever to refuse
-  /// to suppress, which is the safe direction.
+  /// like that. This uses level, but only ever to refuse to suppress, which is
+  /// the safe direction.
+  ///
+  /// Measured over the LOUDEST WINDOW rather than the whole chunk, for the same
+  /// reason the voicing test is: a chunk-wide average cannot tell sparse bursts
+  /// apart from continuous sound. It scored a 22s-noise-plus-18s-whisper chunk
+  /// at 0.58 against pure noise's 0.46 — eighteen seconds of speech separated
+  /// from room noise by twelve points, and on the wrong side of any threshold
+  /// that still suppressed the noise. The same cases measured over the loudest
+  /// three seconds score 0.39-0.72 for non-speech and 0.97-0.99 for speech.
   final double skipBelowLoud;
+
+  /// The stretch [skipBelowLoud] is measured over.
+  final Duration loudWindow;
 
   /// How far above a chunk's own tenth-percentile level a window has to be to
   /// count as loud. Relative to the chunk, so it carries across devices.
@@ -110,7 +120,8 @@ class SpeechTrimSettings {
     this.pad = const Duration(milliseconds: 300),
     this.minTrimmable = const Duration(seconds: 8),
     this.keepWholeAbove = 0.70,
-    this.skipBelowLoud = 0.60,
+    this.skipBelowLoud = 0.85,
+    this.loudWindow = const Duration(seconds: 3),
     this.loudMultiple = 4.0,
   });
 }
@@ -175,13 +186,19 @@ TrimmedChunkAudio? trimToSpeech(
   return _slice(chunk, span.$1, span.$2) ?? whole;
 }
 
-/// The chunk as mono samples at roughly [_analysisRate].
+/// The chunk as one channel of samples at roughly [_analysisRate].
 ///
-/// Downmix and decimation in ONE pass, and every offset computed in whole
-/// sample frames: a slice landing mid-sample would shift the channel phase and
-/// hand the voicing test interleaved nonsense. Each output sample is the mean of
-/// a whole number of input frames, which is a crude but real anti-alias lowpass
-/// rather than bare subsampling.
+/// Channel selection and decimation in ONE pass, and every offset computed in
+/// whole sample frames: a slice landing mid-sample would shift the channel phase
+/// and hand the voicing test interleaved nonsense. Each output sample is the
+/// mean of a whole number of input frames from ONE channel, which is a crude but
+/// real anti-alias lowpass rather than bare subsampling.
+///
+/// The LOUDEST channel, never the average of them. Averaging is the obvious
+/// downmix and it is not safe here: two channels in opposite phase sum to
+/// nothing, so a signed mean would hand the voicing test digital silence for a
+/// chunk somebody is talking through. Taking one channel whole cannot cancel,
+/// and it keeps the waveform intact, which the autocorrelation needs.
 ({Int16List samples, int rate}) _reduceToMono(PcmChunk chunk) {
   final channels = chunk.channels;
   final frames = chunk.pcm.lengthInBytes ~/ (2 * channels);
@@ -192,17 +209,32 @@ TrimmedChunkAudio? trimToSpeech(
     chunk.pcm.lengthInBytes,
   );
 
+  var channel = 0;
+  if (channels > 1) {
+    var loudest = -1.0;
+    for (var c = 0; c < channels; c++) {
+      var energy = 0.0;
+      for (var f = 0; f < frames; f++) {
+        final v = data
+            .getInt16((f * channels + c) * 2, Endian.little)
+            .toDouble();
+        energy += v * v;
+      }
+      if (energy > loudest) {
+        loudest = energy;
+        channel = c;
+      }
+    }
+  }
+
   final out = Int16List(frames ~/ factor);
   var o = 0;
   for (var f = 0; f + factor <= frames && o < out.length; f += factor) {
     var sum = 0;
     for (var k = 0; k < factor; k++) {
-      final base = (f + k) * channels;
-      for (var c = 0; c < channels; c++) {
-        sum += data.getInt16((base + c) * 2, Endian.little);
-      }
+      sum += data.getInt16(((f + k) * channels + channel) * 2, Endian.little);
     }
-    out[o++] = sum ~/ (factor * channels);
+    out[o++] = sum ~/ factor;
   }
   // The rate the samples ACTUALLY came out at, not the one that was asked for.
   // A device rate that does not divide evenly still lands here correctly, and
@@ -356,22 +388,41 @@ double _loudFraction(PcmChunk chunk, SpeechTrimSettings settings) {
   for (var f = 0; f + per <= frames; f += per) {
     var sum = 0.0;
     for (var i = 0; i < per; i++) {
-      var mix = 0;
       final base = (f + i) * channels;
+      // Energy SUMMED across channels, never the square of their mean. Two
+      // channels in opposite phase average to nothing, and a signed downmix
+      // would read a chunk somebody is talking through as digital silence.
       for (var c = 0; c < channels; c++) {
-        mix += data.getInt16((base + c) * 2, Endian.little);
+        final v = data.getInt16((base + c) * 2, Endian.little).toDouble();
+        sum += v * v;
       }
-      final v = mix / channels;
-      sum += v * v;
     }
-    levels.add(sqrt(sum / per));
+    levels.add(sqrt(sum / (per * channels)));
   }
   if (levels.isEmpty) return 0;
 
   final sorted = List<double>.of(levels)..sort();
   final floor = sorted[min(sorted.length - 1, (0.10 * sorted.length).floor())];
   final bar = floor * settings.loudMultiple;
-  return levels.where((l) => l > bar).length / levels.length;
+  final loud = [for (final level in levels) level > bar ? 1 : 0];
+
+  // The LOUDEST stretch, not the average one. A chunk half full of room noise
+  // and half full of whispering averages to about what a chunk of room noise
+  // alone does, and eighteen seconds of speech was thrown away between them.
+  final window = min(
+    loud.length,
+    max(1, settings.loudWindow.inMilliseconds ~/ _hopMs),
+  );
+  var count = 0;
+  for (var i = 0; i < window; i++) {
+    count += loud[i];
+  }
+  var best = count;
+  for (var i = 1; i + window <= loud.length; i++) {
+    count += loud[i + window - 1] - loud[i - 1];
+    if (count > best) best = count;
+  }
+  return best / window;
 }
 
 /// The chunk's audio between two offsets, as a WAV, aligned to sample frames.

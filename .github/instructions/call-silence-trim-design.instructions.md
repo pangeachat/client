@@ -97,14 +97,20 @@ classifier is allowed to make this decision at all:
 3. **Skipping requires a long chunk with no speech frame anywhere in it.**
 4. **Skipping requires energy corroboration.** A chunk with no voiced frames but
    with sustained energy is audio we do not understand, not audio we know to be
-   empty — whispered and wholly unvoiced speech look exactly like this. If the
-   fraction of 20ms windows above 4x the chunk's own 10th-percentile level is at
-   or above `skipBelowLoud` (0.60), the chunk is sent whole instead of skipped.
-   Measured on the recording, the non-speech regions score 0.16-0.46 while the
-   speech region scores 0.81, and a surrogate for unvoiced speech — the speech
-   region with its periodicity destroyed and its envelope kept — scores 0.81 and
-   is correctly sent rather than skipped. This uses level, but only ever to
-   *refuse* to skip, which is the safe direction.
+   empty — whispered and wholly unvoiced speech look exactly like this. The
+   measure is the **loudest `loudWindow` (3s) stretch** of the chunk, scored as
+   the fraction of its 20ms windows above 4x the chunk's own 10th-percentile
+   level. At or above `skipBelowLoud` (0.85) the chunk is sent whole instead of
+   skipped. This uses level, but only ever to *refuse* to skip, which is the
+   safe direction.
+
+   The loudest stretch rather than the chunk average, because an average cannot
+   tell continuous sound from scattered bumps. Averaged, a chunk of 22s noise
+   plus 18s of *whispered* speech scores 0.58 against pure noise's 0.46 —
+   eighteen seconds of somebody talking separated from room tone by twelve
+   points, and on the wrong side of any threshold that still suppressed the
+   noise. Over the loudest three seconds the same cases score 0.99 and 0.72,
+   against 0.39-0.72 for non-speech and 0.97-0.99 for speech throughout.
 
 Applied to the recording: the 40.4s chunk trims to 46% and is trimmed; the
 17.9s pure-speech span measures 100% and is sent **whole**; a 3.4s noise chunk is
@@ -116,29 +122,34 @@ trimmed to.
 
 Per 32ms frame at 20ms hop, on the signal reduced to ~4 kHz:
 
-1. **Decode and downmix.** PCM16 little-endian; interleaved channels averaged to
-   mono. Every offset is computed in whole sample frames
+1. **Decode.** PCM16 little-endian. Every offset is computed in whole sample frames
    (`bytesPerFrame = 2 * channels`), so a slice can never land mid-sample or
    mid-frame and shift the channel phase.
-2. **Decimate** by the integer factor `sampleRate ~/ 4000` (4 at 16 kHz, 12 at
+2. **Take the loudest channel, never the average of them.** Averaging is the
+   obvious downmix and it is not safe: two channels in opposite phase sum to
+   nothing, so a signed mean would hand the voicing test digital silence for a
+   chunk somebody is talking through. One channel taken whole cannot cancel and
+   keeps the waveform the autocorrelation needs. The level veto is separate and
+   sums energy ACROSS channels, for the same reason.
+3. **Decimate** by the integer factor `sampleRate ~/ 4000` (4 at 16 kHz, 12 at
    48 kHz), each output sample being the mean of the factor's worth of input
    samples — a box filter, which is a real if crude anti-alias lowpass rather
    than bare subsampling. Pitch lives below 400 Hz, so the retained band is
    ample. All lag bounds are recomputed from the ACTUAL decimated rate, so a
    rate that does not divide evenly is still handled correctly.
-3. **Voiced** if the normalised autocorrelation peak over the lag band
+4. **Voiced** if the normalised autocorrelation peak over the lag band
    corresponding to 70-400 Hz is `>= voicedPeak` (0.70).
-4. A frame is **speech** if either
+5. A frame is **speech** if either
    - **sustained**: the voiced fraction over a `smoothWindow` (2000ms) window
      containing it is `>= speechFraction` (0.45); or
    - **isolated utterance**: it lies in a contiguous voiced run of at least
      `minVoicedRun` (200ms).
-5. The span runs from the first speech frame to the last, padded by `pad`
+6. The span runs from the first speech frame to the last, padded by `pad`
    (300ms) each side and clamped to the chunk.
-6. No speech frame at all, in a chunk at or above `minTrimmable`: **captured but
+7. No speech frame at all, in a chunk at or above `minTrimmable`: **captured but
    silent**. Not sent.
 
-There is deliberately **no minimum span length**. Criterion (4b) is what keeps
+There is deliberately **no minimum span length**. Criterion (5b) is what keeps
 short answers — "haan", "nahi", "yes", "okay" are the credit-bearing utterances
 a learner produces. Contiguous trimming also retains any short word falling
 between the first and last speech, whole.
@@ -227,7 +238,8 @@ second sample retunes without rearchitecting.
 | `pad` | 300ms | **unvalidated.** Chosen to cover unvoiced onsets and codas, not measured. |
 | `minTrimmable` | 8000ms | **unvalidated.** A judgement about how much non-speech it takes to swamp speech, not a measurement. |
 | `keepWholeAbove` | 0.70 | **unvalidated.** A judgement about when a trim stops being worth its risk. |
-| `skipBelowLoud` | 0.60 | measured: non-speech scores 0.16-0.46, speech and an unvoiced surrogate score 0.81. Mid-gap. |
+| `skipBelowLoud` | 0.85 | measured over the loudest 3s: non-speech scores 0.39-0.72, speech and unvoiced surrogates 0.97-0.99. Mid-gap. |
+| `loudWindow` | 3000ms | **unvalidated.** Long enough that scattered bumps cannot fill it. |
 | `loudMultiple` | 4x own p10 | **unvalidated.** The level that counts as "not the floor". |
 | 4 kHz / 32ms / 20ms | - | standard pitch-tracking geometry, not tuned here |
 
@@ -237,7 +249,7 @@ in 20.3-22.0s start and 39.2-40.4s end. Raising the voicing threshold is what
 made them nearly irrelevant, which is why the design leans on periodicity rather
 than on the smoothing.
 
-Four of the ten numbers are judgements rather than measurements. Three of them —
+Four of the eleven numbers are judgements rather than measurements. Three of them —
 `minTrimmable`, `keepWholeAbove`, `loudMultiple` — fail toward **sending more
 audio**: each is a threshold for *declining* to trim or skip, so being wrong about
 it costs a request, not a word.
@@ -273,11 +285,11 @@ segments, all real content, with no fabricated `Hey.` and no repetition.
   the brief's measurements. It was not re-measured against Deepgram, which is
   billed.
 - **A short WHOLLY UNVOICED answer in a long quiet chunk is suppressed.** Rule 4
-  protects a chunk that is loud and aperiodic throughout, because the loud
-  fraction is high. It does not protect 350ms of whisper in eight seconds of
-  quiet, which moves that fraction by about four points.
-  The obvious repair — veto suppression on a RUN of loud windows rather than a
-  fraction of them — was measured and refused. The reference recording's
+  protects a chunk carrying a sustained stretch of aperiodic sound, including
+  one where noise outweighs the speech. It does not protect 350ms of whisper in
+  eight seconds of quiet: no three-second stretch of that chunk is loud.
+  The obvious repair — veto suppression on a RUN of loud windows anywhere in the
+  chunk, rather than a sustained stretch — was measured and refused. The reference recording's
   non-speech stretch contains **thirteen loud runs of 200ms or more, the longest
   960ms**: longer and louder than the whispered answer the rule would exist to
   protect. It would therefore refuse to suppress the exact audio this design
