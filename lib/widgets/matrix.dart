@@ -29,6 +29,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/dev_login.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
@@ -777,7 +778,15 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // );
         if (state == LoginState.loggedIn) {
           final isL2Set = await pangeaController.userController.isUserL2Set;
-          FluffyChatApp.router.go(isL2Set ? PRoutes.world : '/registration');
+          // Not unconditionally the world map. This state also means "the
+          // session finished restoring", which on a cold start lands AFTER the
+          // app has resolved the URL the user opened — and going to the map
+          // then throws that URL away. See [PAuthGaurd.loggedInLanding].
+          final landing = PAuthGaurd.loggedInLanding(
+            current: FluffyChatApp.router.routeInformationProvider.value.uri,
+            isL2Set: isL2Set,
+          );
+          if (landing != null) FluffyChatApp.router.go(landing);
         } else {
           FluffyChatApp.router.go('/home');
         }
