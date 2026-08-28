@@ -6,6 +6,7 @@ import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
+import 'package:fluffychat/routes/chat/calls/speech_trim.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
@@ -70,11 +71,19 @@ class CallTranscriptSink implements CallAudioSink {
   /// batch, so the old one is discarded rather than mixed with the new.
   ({String roomId, String eventId})? _anchor;
 
+  /// How a chunk's audio is narrowed to the part somebody spoke.
+  ///
+  /// Injectable because every number in it is calibrated against a single
+  /// recording, and a test that could not move them could not show what any of
+  /// them is holding up.
+  final SpeechTrimSettings trimSettings;
+
   CallTranscriptSink({
     required this.transcribe,
     required this.userL1,
     required this.userL2,
     this.settleWithin = defaultSettleWithin,
+    this.trimSettings = const SpeechTrimSettings(),
   });
 
   /// What was said, in the order it was said, skipping chunks that produced
@@ -150,6 +159,12 @@ class CallTranscriptSink implements CallAudioSink {
     final running = _running[chunk.index];
     if (running != null) return running;
 
+    // A chunk already found to hold no speech is not analysed a second time.
+    // Checked ahead of `_transcribed` because the two are different answers:
+    // this one was never sent, and re-deciding it would cost the analysis again
+    // and risk counting it in two places.
+    if (_suppressed.contains(chunk.index)) return Future.value();
+
     // A chunk is transcribed once. Redelivery — a retry, or a hangup racing a
     // flush — must not bill the route again or count the same words twice.
     if (!_transcribed.add(chunk.index)) return Future.value();
@@ -172,13 +187,41 @@ class CallTranscriptSink implements CallAudioSink {
   final Map<int, Future<void>> _running = {};
 
   Future<void> _transcribeChunk(PcmChunk chunk, Duration? within) async {
-    // Recorded from the chunk in hand, before the request goes out. It is the
-    // only moment the audio's own timing is visible here at all: what comes
+    // Narrowed to the part somebody spoke, BEFORE anything is recorded about
+    // it. A device records its own microphone for the whole call, so while the
+    // other person talks it captures its own noise floor -- and a chunk that is
+    // mostly noise does not merely waste a request. Measured on a real 40.4s
+    // chunk, sending it whole returned three words where its speech alone
+    // returned forty-seven, and both providers invented words for the silence.
+    //
+    // Costs about 13ms for a 40-second chunk, once per chunk, so it runs here
+    // rather than on an isolate of its own.
+    final audio = trimToSpeech(chunk, settings: trimSettings);
+    if (audio == null) {
+      // Captured, and held nothing said. Not a failure and not a loss: the
+      // audio was examined and found empty, so there is nothing to retry and
+      // nothing to send. It is counted apart from both because THIS DEVICE
+      // decided it, using a detector calibrated on one recording -- a weaker
+      // claim than a provider reading a chunk as silence, and a reader is
+      // entitled to see the difference.
+      _transcribed.remove(chunk.index);
+      _suppressed.add(chunk.index);
+      return;
+    }
+
+    // Recorded from the audio ACTUALLY SENT, before the request goes out. It is
+    // the only moment the audio's own timing is visible here at all: what comes
     // back is a transcript, which knows nothing about when the samples were
     // captured.
+    //
+    // Both halves shift together. The start moves forward by however much of
+    // the chunk was dropped, so a word's timing still names the moment it was
+    // spoken; and the duration describes the audio the provider was given
+    // rather than the chunk it came from, which is the ceiling those timings
+    // are checked against.
     _placements[chunk.index] = (
-      startedAtMs: chunk.startedAtMs,
-      durationMs: chunk.duration.inMilliseconds,
+      startedAtMs: chunk.startedAtMs + audio.startMs,
+      durationMs: audio.durationMs,
     );
     try {
       // Bounded here, where the request is, so that giving up on it is a
@@ -188,7 +231,7 @@ class CallTranscriptSink implements CallAudioSink {
       // it again — three attempts that were only ever one.
       final request = transcribe(
         SpeechToTextRequestModel(
-          audioContent: chunk.toWav(),
+          audioContent: audio.wav,
           // Timings AS WELL AS tokens. `skipTokenize` would buy the timings by
           // giving up `stt_tokens`, and `constructs()` is gated on those --
           // the credit would silently go to zero on every call.
@@ -273,12 +316,19 @@ class CallTranscriptSink implements CallAudioSink {
     return _drainComplete = true;
   }
 
-  /// How many chunks this device handed over, whether or not they came back.
+  /// How many chunks this device captured, whatever became of them.
   ///
   /// The denominator of the completeness accounting: compared against
   /// [chunksTranscribed], it is what lets a reader see that a stretch of speech
   /// was captured and then lost, rather than never spoken.
-  int get chunksCaptured => _transcribed.length + _failed.length;
+  ///
+  /// Counts the SUPPRESSED chunks too. Both of the other counts are only
+  /// written inside `deliver()`, so a chunk this device chose not to send used
+  /// to vanish from the denominator entirely -- the one number that is supposed
+  /// to say "this much audio existed" quietly forgetting the audio nobody ever
+  /// saw.
+  int get chunksCaptured =>
+      _transcribed.length + _failed.length + _suppressed.length;
 
   /// How many chunks came back with something readable in them.
   int get chunksTranscribed =>
@@ -298,6 +348,20 @@ class CallTranscriptSink implements CallAudioSink {
 
   /// Chunks whose transcription failed outright and was never retried.
   final Set<int> _failed = {};
+
+  /// Chunks this device captured, examined, and found to hold no speech.
+  ///
+  /// Deliberately NOT counted in [chunksLost]. Nothing was dropped: the audio
+  /// was read and there was nothing in it. Almost every real call has a quiet
+  /// stretch, so treating this as a gap would mark nearly every transcript
+  /// incomplete and leave the flag meaning nothing when it matters -- the same
+  /// reasoning already recorded on [chunksLost].
+  ///
+  /// It is published all the same, because it is a claim by THIS DEVICE rather
+  /// than by a provider, and a reader that wants to distrust our judgement
+  /// needs the number to do it with.
+  int get chunksSuppressed => _suppressed.length;
+  final Set<int> _suppressed = {};
 
   /// The call's speaking analytics, as one batch.
   ///

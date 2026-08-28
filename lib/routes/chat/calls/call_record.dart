@@ -48,6 +48,7 @@ typedef TranscriptPublisher =
       required int chunksCaptured,
       required int chunksTranscribed,
       required int chunksLost,
+      required int chunksSuppressed,
       required bool captureRefused,
       required bool drainComplete,
       String? langCode,
@@ -398,6 +399,7 @@ class CallRecord {
     final chunksCaptured = transcripts.chunksCaptured;
     final chunksTranscribed = transcripts.chunksTranscribed;
     final chunksLost = transcripts.chunksLost;
+    final chunksSuppressed = transcripts.chunksSuppressed;
     // Meaningful only once the sink has closed, which the capture service does
     // before this runs. Read earlier it would be the optimistic default and a
     // half could claim a completeness nothing had checked.
@@ -416,6 +418,7 @@ class CallRecord {
           chunksCaptured: chunksCaptured,
           chunksTranscribed: chunksTranscribed,
           chunksLost: chunksLost,
+          chunksSuppressed: chunksSuppressed,
           captureRefused: captureRefused,
           drainComplete: drainComplete,
           langCode: langCode,

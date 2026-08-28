@@ -210,6 +210,7 @@ class CallTranscriptContent {
           (accounting.chunksCaptured > 0 ||
               accounting.chunksTranscribed > 0 ||
               accounting.chunksLost > 0 ||
+              accounting.chunksSuppressed > 0 ||
               accounting.segmentsOmitted > 0 ||
               segments.isNotEmpty);
 

@@ -189,6 +189,21 @@ class HalfAccounting {
   /// Silence is captured-but-not-transcribed and is NOT a gap; see the sink.
   final int chunksLost;
 
+  /// Chunks the WRITER'S DEVICE examined and chose not to send, having found no
+  /// speech in them.
+  ///
+  /// A different claim from a chunk a provider read as silence, and carried
+  /// separately for that reason. The provider's silence is a judgement by the
+  /// thing that actually reads speech; this one is a local detector's, and a
+  /// local detector can be wrong about a speaker it was never calibrated for.
+  ///
+  /// NOT part of [writerAdmitsGaps]. Almost every real call has a quiet
+  /// stretch, so a flag raised by ordinary silence would mark nearly every
+  /// transcript incomplete and leave the flag meaning nothing when it matters --
+  /// the same trap already described on [chunksLost]. It is here to be READ, by
+  /// anyone who wants to know how much audio a device decided against sending.
+  final int chunksSuppressed;
+
   /// Whether the microphone never opened at all.
   ///
   /// A speaker who was muted and a speaker we could not record both arrive
@@ -216,6 +231,7 @@ class HalfAccounting {
     this.chunksCaptured = 0,
     this.chunksTranscribed = 0,
     this.chunksLost = 0,
+    this.chunksSuppressed = 0,
     this.captureRefused = false,
     this.truncated = false,
     this.segmentsOmitted = 0,
@@ -274,6 +290,7 @@ class HalfAccounting {
     // round-trip of one never reads back as undeclared.
     'chunks_transcribed': chunksTranscribed,
     'chunks_lost': chunksLost,
+    'chunks_suppressed': chunksSuppressed,
     'capture_refused': captureRefused,
     'truncated': truncated,
     'segments_omitted': segmentsOmitted,
@@ -285,6 +302,7 @@ class HalfAccounting {
     chunksCaptured: chunksCaptured,
     chunksTranscribed: chunksTranscribed,
     chunksLost: chunksLost,
+    chunksSuppressed: chunksSuppressed,
     captureRefused: captureRefused,
     truncated: truncated,
     segmentsOmitted: segmentsOmitted,
@@ -303,6 +321,7 @@ class HalfAccounting {
     chunksCaptured: chunksCaptured,
     chunksTranscribed: chunksTranscribed,
     chunksLost: chunksLost,
+    chunksSuppressed: chunksSuppressed,
     captureRefused: captureRefused,
     truncated: true,
     segmentsOmitted: segmentsOmitted,
@@ -317,6 +336,7 @@ class HalfAccounting {
     chunksCaptured: chunksCaptured,
     chunksTranscribed: chunksTranscribed,
     chunksLost: chunksLost,
+    chunksSuppressed: chunksSuppressed,
     captureRefused: captureRefused,
     truncated: true,
     segmentsOmitted: segmentsOmitted,
@@ -364,18 +384,24 @@ class HalfAccounting {
     final captured = intOr('chunks_captured', 0);
     final rawTranscribed = intOr('chunks_transcribed', 0);
     final rawLost = intOr('chunks_lost', 0);
+    // Absent is zero, and deliberately not a reason to call a half undeclared:
+    // every client written before this count existed omits it, and treating
+    // that as "asserted nothing" would retroactively mark every one of their
+    // halves as making no claim about itself.
+    final rawSuppressed = intOr('chunks_suppressed', 0);
     return HalfAccounting(
       declared: wellFormed,
       // Checked against the SUM, not each count alone: adding chunks_lost added
       // a second way to exceed what was captured, and a rule that names one
       // count stops holding the moment another is introduced.
-      incoherent: rawTranscribed + rawLost > captured,
+      incoherent: rawTranscribed + rawLost + rawSuppressed > captured,
       chunksCaptured: captured,
       // Clamped: a half claiming more transcribed than captured is malformed,
       // and letting it through would make `writerAdmitsGaps` read false for a
       // half that is nonsense.
       chunksTranscribed: rawTranscribed.clamp(0, captured),
       chunksLost: rawLost,
+      chunksSuppressed: rawSuppressed,
       captureRefused: raw['capture_refused'] == true,
       truncated: raw['truncated'] == true,
       segmentsOmitted: intOr('segments_omitted', 0),
@@ -403,6 +429,7 @@ class HalfAccounting {
       other.chunksCaptured == chunksCaptured &&
       other.chunksTranscribed == chunksTranscribed &&
       other.chunksLost == chunksLost &&
+      other.chunksSuppressed == chunksSuppressed &&
       other.captureRefused == captureRefused &&
       other.truncated == truncated &&
       other.segmentsOmitted == segmentsOmitted &&
@@ -417,6 +444,7 @@ class HalfAccounting {
     chunksCaptured,
     chunksTranscribed,
     chunksLost,
+    chunksSuppressed,
     captureRefused,
     truncated,
     segmentsOmitted,

@@ -202,6 +202,7 @@ class CallSession extends ChangeNotifier {
                 required int chunksCaptured,
                 required int chunksTranscribed,
                 required int chunksLost,
+                required int chunksSuppressed,
                 required bool captureRefused,
                 required bool drainComplete,
                 String? langCode,
@@ -217,6 +218,7 @@ class CallSession extends ChangeNotifier {
                 chunksCaptured: chunksCaptured,
                 chunksTranscribed: chunksTranscribed,
                 chunksLost: chunksLost,
+                chunksSuppressed: chunksSuppressed,
                 captureRefused: captureRefused,
                 drainComplete: drainComplete,
                 // The room inflates what it is handed, and the server's limit
