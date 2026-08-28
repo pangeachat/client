@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
+import 'package:fluffychat/routes/chat/calls/call_upload_gate.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/routes/chat/calls/speech_trim.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
@@ -78,13 +79,22 @@ class CallTranscriptSink implements CallAudioSink {
   /// them is holding up.
   final SpeechTrimSettings trimSettings;
 
+  /// What bounds this DEVICE's uploads to the choreographer, across every call
+  /// and every account signed in on it.
+  ///
+  /// Shared by default, because that is the only scope at which "how much is
+  /// this device sending" is a real question — a gate per sink would be a gate
+  /// per call and would cap nothing. Injectable so a test gets its own.
+  final CallUploadGate gate;
+
   CallTranscriptSink({
     required this.transcribe,
     required this.userL1,
     required this.userL2,
     this.settleWithin = defaultSettleWithin,
     this.trimSettings = const SpeechTrimSettings(),
-  });
+    CallUploadGate? gate,
+  }) : gate = gate ?? CallUploadGate.shared;
 
   /// What was said, in the order it was said, skipping chunks that produced
   /// nothing readable.
@@ -240,30 +250,48 @@ class CallTranscriptSink implements CallAudioSink {
       startedAtMs: chunk.startedAtMs + audio.startMs,
       durationMs: audio.durationMs,
     );
+    final request = SpeechToTextRequestModel(
+      audioContent: audio.wav,
+      // Timings AS WELL AS tokens. `skipTokenize` would buy the timings by
+      // giving up `stt_tokens`, and `constructs()` is gated on those --
+      // the credit would silently go to zero on every call.
+      includeWordTimings: true,
+      config: SpeechToTextAudioConfigModel(
+        encoding: AudioEncodingEnum.linear16,
+        sampleRateHertz: chunk.sampleRate,
+        userL1: userL1,
+        userL2: userL2,
+      ),
+    );
     try {
+      // Through the gate, which bounds how many of these this device has out at
+      // once and stops it hammering a choreographer that is already failing.
+      // Only the REQUEST goes through it: the trim above is CPU work of about
+      // thirteen milliseconds, and letting it hold a permit would cap the wrong
+      // thing.
+      //
       // Bounded here, where the request is, so that giving up on it is a
       // failure of the attempt: the index is released below and the next
-      // attempt issues a genuinely new request. Bounded by the waiter instead,
-      // the abandoned one stayed listed as in flight and every retry waited on
-      // it again — three attempts that were only ever one.
-      final request = transcribe(
-        SpeechToTextRequestModel(
-          audioContent: audio.wav,
-          // Timings AS WELL AS tokens. `skipTokenize` would buy the timings by
-          // giving up `stt_tokens`, and `constructs()` is gated on those --
-          // the credit would silently go to zero on every call.
-          includeWordTimings: true,
-          config: SpeechToTextAudioConfigModel(
-            encoding: AudioEncodingEnum.linear16,
-            sampleRateHertz: chunk.sampleRate,
-            userL1: userL1,
-            userL2: userL2,
-          ),
-        ),
+      // attempt can try again. Bounded by the waiter instead, the abandoned one
+      // stayed listed as in flight HERE and every retry waited on it again —
+      // three attempts that were only ever one.
+      //
+      // Only as far as this sink, mind. In production `transcribe` reaches
+      // `SpeechToTextRepo`, which dedupes by the audio's digest for as long as
+      // its own sixty-second fetch is in flight — so a retry issued while the
+      // first request is still running joins that request rather than making a
+      // second one. That is the repo's decision, not this one's, and it is why
+      // this comment no longer claims the retry is always a fresh upload.
+      //
+      // The budget covers the WAITING too. A chunk refused by the gate for its
+      // whole budget is a chunk this device captured and could not send, and it
+      // falls into the same accounting as any other failure below — recorded as
+      // LOST, never as suppressed, which would claim we had looked at the audio
+      // and found nothing said.
+      _byIndex[chunk.index] = await gate.run(
+        () => transcribe(request),
+        within: within,
       );
-      _byIndex[chunk.index] = await (within == null
-          ? request
-          : request.timeout(within));
     } catch (e, s) {
       // Released and re-thrown, so the caller's retry can try again. Swallowing
       // this reported success to a caller whose whole purpose is to retry, and

@@ -569,14 +569,21 @@ class ActiveCall extends ChangeNotifier {
   /// late retraction is not a decision anyone made. The window separates the
   /// two without either side needing a new message.
   ///
-  /// Thirteen seconds, and the number is derived rather than guessed. The SDK
-  /// asks the homeserver to apply the delayed leave 18s after the last
-  /// restart, and restarts it every 4s, so the EARLIEST a server-written
-  /// retraction can appear is about 14s after a device stopped heartbeating.
-  /// Anything sooner cannot be the server's, so thirteen is as much room for
-  /// slow delivery as can be taken without ever mistaking the server's
-  /// cleanup for a decision -- and it stays inside [peerGraceWindow], so a
-  /// genuine vanish is unaffected.
+  /// Thirteen seconds, and the number is derived rather than guessed. The app
+  /// asks the homeserver to apply the delayed leave `CallDelayedLeave
+  /// .applyLeave` after the last restart and restarts it every
+  /// `CallDelayedLeave.maxRestart` at the slowest, so the EARLIEST a
+  /// server-written retraction can appear is the difference between those two
+  /// after a device stopped heartbeating. Anything sooner cannot be the
+  /// server's, so this is as much room for slow delivery as can be taken
+  /// without ever mistaking the server's cleanup for a decision -- and it
+  /// stays inside [peerGraceWindow], so a genuine vanish is unaffected.
+  ///
+  /// Those two are the app's numbers, not the SDK's defaults, and they were
+  /// raised together precisely so this one stayed true; call_timeouts_test.dart
+  /// asserts the relation rather than leaving it to this comment. Raising the
+  /// restart interval alone moves that retraction EARLIER and is what would
+  /// break it.
   ///
   /// The original four seconds was chosen for how quickly a hangup normally
   /// arrives, not for what it had to be distinguished FROM, and any sync

@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
+import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/pangea_voip_delegate.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
@@ -92,7 +93,9 @@ class CallService {
     RtcFocusDiscovery? focusDiscovery,
     Duration? joinWithin,
     Duration? leaveWithin,
+    CallTimeouts? timeouts,
   }) : delegate = delegate ?? PangeaVoipDelegate(),
+       timeouts = timeouts ?? pangeaCallTimeouts(),
        _tokens = tokenRepo ?? CallTokenRepo(),
        _discovery = focusDiscovery ?? RtcFocusDiscovery(),
        _joinWithin = joinWithin ?? const Duration(seconds: 30),
@@ -155,7 +158,18 @@ class CallService {
   /// `delegate.handleNewGroupCall` before returning, and it dereferences
   /// `delegate.mediaDevices` inline — so it must not run until the delegate is fully
   /// live, and should not run at all for an account that never places a call.
-  VoIP get voip => _voip ??= VoIP(client, delegate);
+  ///
+  /// [timeouts] is passed rather than left to the SDK's defaults. Those put a
+  /// delayed-leave restart on the wire every four seconds per participant, and
+  /// every device on the same period; see [CallDelayedLeave] for what replaces
+  /// them and why the two numbers had to move together.
+  VoIP get voip => _voip ??= VoIP(client, delegate, timeouts: timeouts);
+
+  /// The delayed-leave timings this account's calls run with, drawn once.
+  ///
+  /// Held here rather than built inside [voip] so the draw is stable across the
+  /// account's calls and so a test can read what was actually passed.
+  final CallTimeouts timeouts;
 
   /// Joins (or starts) the call in [room], returning the grant needed to connect
   /// its media.
