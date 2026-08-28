@@ -20,7 +20,7 @@
 // carry provably different speech and "did each person's words land under
 // THEIR name" becomes a question that can be asked at all.
 //
-// WHERE THIS RUNS, AND WHERE IT DOES NOT YET PASS.
+// WHERE THIS RUNS.
 //
 // WHY THE WORDS USED TO COME BACK EMPTY, AND WHAT IT WAS NOT.
 //
@@ -157,9 +157,9 @@ const FIXTURE_LANG = 'en';
 /// "expected one of afternoon/journey/spring/market; got", which names the app
 /// for something only the account says.
 ///
-/// Asked over its own logins, BEFORE the browsers, so the refusal costs a
-/// second rather than the two logins and the whole call it would take to reach
-/// the same conclusion from a participant's own token.
+/// Asked over its own API logins, BEFORE the browsers, so the refusal costs a
+/// second rather than the two BROWSER logins and the whole call it would take
+/// to reach the same conclusion from a participant's own token.
 async function refuseIfNotLearning(names) {
   for (const name of names) {
     const a = h.cfg.accounts[name];

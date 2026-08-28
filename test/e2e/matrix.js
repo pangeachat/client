@@ -57,7 +57,8 @@ async function login(user, password) {
 /// the device it was tidying away.
 async function logout(token) {
   try {
-    await api('/_matrix/client/v3/logout', { token, method: 'POST', body: {} });
+    // No body: the endpoint takes none, and Synapse answers 200 either way.
+    await api('/_matrix/client/v3/logout', { token, method: 'POST' });
   } catch (_) {}
 }
 
