@@ -243,24 +243,27 @@ void main() {
       expect(gate.consecutiveFailures, before);
     });
 
-    test('a caller with no budget left is refused without being counted', () async {
-      // The other end of the same rule, and the one path that reaches it with
-      // the breaker CLOSED: a permit is free, the breaker is shut, and there is
-      // still no time to send in. Nothing may go out, and nothing may be
-      // recorded -- the gate has learned nothing about the server.
-      final gate = CallUploadGate(failuresToOpen: 1, openFor: _openFor);
-      var reached = false;
+    test(
+      'a caller with no budget left is refused without being counted',
+      () async {
+        // The other end of the same rule, and the one path that reaches it with
+        // the breaker CLOSED: a permit is free, the breaker is shut, and there is
+        // still no time to send in. Nothing may go out, and nothing may be
+        // recorded -- the gate has learned nothing about the server.
+        final gate = CallUploadGate(failuresToOpen: 1, openFor: _openFor);
+        var reached = false;
 
-      await expectLater(
-        gate.run(() async => reached = true, within: Duration.zero),
-        throwsA(isA<TimeoutException>()),
-      );
+        await expectLater(
+          gate.run(() async => reached = true, within: Duration.zero),
+          throwsA(isA<TimeoutException>()),
+        );
 
-      expect(reached, isFalse);
-      expect(gate.consecutiveFailures, 0);
-      expect(gate.isOpen, isFalse);
-      expect(gate.inFlight, 0, reason: 'and the permit came back');
-    });
+        expect(reached, isFalse);
+        expect(gate.consecutiveFailures, 0);
+        expect(gate.isOpen, isFalse);
+        expect(gate.inFlight, 0, reason: 'and the permit came back');
+      },
+    );
 
     test('audio is not dropped while it is open: the caller waits for the '
         'probe slot', () async {
