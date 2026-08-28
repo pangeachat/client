@@ -122,36 +122,27 @@ abstract class CourseSearchController<T> {
 
   void startSearching() {
     _searchingNotifier.value = true;
-    // The focus grant must land a full frame AFTER the frame that swaps the
-    // search toggle for the field (#8581). On web with the semantics tree on
-    // (always true on staging, and for assistive-tech users anywhere), the
-    // engine applies DOM focus during the semantics update — but the removed
-    // toggle button still holds native DOM focus, and Blink delivers its
-    // element-removal blur asynchronously AFTER that update, stomping the
-    // focus. A same-frame or next-post-frame requestFocus loses that race and
-    // leaves the field looking focused but swallowing every keystroke.
+    // TextField.autofocus no-ops when the tapped toggle still holds focus, so
+    // request focus once the field is mounted (same as PangeaChatListSearchField).
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_disposed) return;
-      WidgetsBinding.instance.ensureVisualUpdate();
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (_disposed) return;
-        _focusNode.requestFocus();
-        _armAutoRefocus();
-      });
+      _focusNode.requestFocus();
+      _armAutoRefocus();
     });
     _searchController.clear();
     setFilteredCourses(AsyncLoaded(_loadedCourses));
   }
 
-  // Blink also drops DOM focus whenever the engine MOVES the field's semantic
-  // DOM node — which any semantics reshuffle around it causes (course tiles
-  // loading in, map pins animating behind the panel) — closing the text-input
-  // connection and unfocusing the field at an arbitrary later moment. That
-  // loss is framework-visible, so while search is open re-request focus when
-  // it drops — unless the user took it away themselves: any pointer-down
-  // disarms, and focus landing on a real widget (keyboard traversal) is left
-  // alone. Web-only: native platforms have no semantic-DOM focus to lose, and
-  // refocusing there would fight system keyboard dismissal.
+  // On web with the semantics tree on (staging stamps it on for everyone;
+  // assistive tech enables it anywhere), Blink drops the field's DOM focus
+  // whenever the engine moves its semantic DOM node — which any semantics
+  // change around it causes (course tiles loading in, map pins animating
+  // behind the panel) — closing the text-input connection and unfocusing the
+  // field at an arbitrary later moment. No widget structure prevents this
+  // (measured in #8581), so while search is open re-request focus when it
+  // drops without user intent: any pointer-down disarms, and focus landing on
+  // a real widget (keyboard traversal) is left alone. Web-only: native has no
+  // semantic DOM, and refocusing there would fight system keyboard dismissal.
   bool _autoRefocusArmed = false;
 
   void _armAutoRefocus() {
