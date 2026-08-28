@@ -379,15 +379,21 @@ class HalfAccounting {
         raw['truncated'] is bool &&
         nonNegativeInt(raw['segments_omitted']) &&
         nonNegativeInt(raw['chunks_lost']) &&
-        raw['capture_refused'] is bool;
+        raw['capture_refused'] is bool &&
+        // ABSENT is fine and stays declared: every client written before this
+        // count existed omits it, and treating that as "asserted nothing" would
+        // retroactively strip their halves of the claim they did make.
+        //
+        // PRESENT and malformed is not fine, and is the same hole the rule
+        // above exists to close. A count added later is not a count exempt from
+        // it: `'2'` as a string or -1 would otherwise parse to the optimistic
+        // zero and leave hostile content reading as a fully declared half.
+        (!raw.containsKey('chunks_suppressed') ||
+            nonNegativeInt(raw['chunks_suppressed']));
 
     final captured = intOr('chunks_captured', 0);
     final rawTranscribed = intOr('chunks_transcribed', 0);
     final rawLost = intOr('chunks_lost', 0);
-    // Absent is zero, and deliberately not a reason to call a half undeclared:
-    // every client written before this count existed omits it, and treating
-    // that as "asserted nothing" would retroactively mark every one of their
-    // halves as making no claim about itself.
     final rawSuppressed = intOr('chunks_suppressed', 0);
     return HalfAccounting(
       declared: wellFormed,

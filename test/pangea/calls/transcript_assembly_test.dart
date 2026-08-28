@@ -1157,6 +1157,30 @@ void main() {
       expect(old.incoherent, isFalse);
     });
 
+    test('a present but malformed count is not a declaration', () {
+      // The hole every other count is already checked for. Parsed leniently,
+      // junk becomes the optimistic zero while the half still reads as fully
+      // declared -- which is how hostile content presents itself as complete.
+      for (final junk in <Object>['2', -1, 1.5, true]) {
+        final half = HalfAccounting.fromJson({
+          'chunks_captured': 3,
+          'chunks_transcribed': 3,
+          'chunks_lost': 0,
+          'chunks_suppressed': junk,
+          'capture_refused': false,
+          'truncated': false,
+          'segments_omitted': 0,
+          'drain_complete': true,
+        });
+
+        expect(
+          half.declared,
+          isFalse,
+          reason: 'chunks_suppressed of $junk is not an assertion',
+        );
+      }
+    });
+
     test('held-back chunks count against what was captured', () {
       // Transcribed, lost and suppressed are disjoint subsets of captured, so
       // the sum cannot exceed it. A rule naming only the first two would let a
