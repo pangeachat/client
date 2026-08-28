@@ -98,8 +98,10 @@ class PAuthGaurd {
   /// fixes). Not that it never fires for a restored session — measurement says
   /// it does, on roughly one cold start in ten, whenever the restore finishes
   /// after the app has mounted. It simply cannot be depended on, which is why
-  /// consumption lives here and why that listener no longer navigates from a
-  /// location the user chose ([loggedInLanding]). The guard never clears the cache — only the join page's
+  /// consumption lives here, and why that listener no longer navigates away
+  /// from a location the user chose ([loggedInLanding]).
+  ///
+  /// The guard never clears the cache — only the join page's
   /// auto-submit does, at the moment it actually fires
   /// (CourseCodePage._autoSubmit). Anything earlier proved lossy: boot-time
   /// navigations (post-login listeners go() to the world route) preempted
