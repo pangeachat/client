@@ -154,7 +154,10 @@ class TurnTimeline extends StatelessWidget {
       // ListView lays out lazily, so anything a caller places after this
       // widget only renders if this one reports a sane height first.
       mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      // Stretch, not start: each turn is a Row that aligns ITSELF to the
+      // speaker's side, and it can only do that if it is handed the full
+      // width to align within.
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         for (var i = 0; i < ordered.length; i++)
           Padding(
@@ -252,75 +255,116 @@ class _Turn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final label = turn.isMe ? l10n.you : turn.name;
+    final scheme = theme.colorScheme;
+
+    // The chat's own convention, followed rather than reinvented: a reader
+    // opening this screen has just come from the timeline, and a call is a
+    // conversation between the same two people. Own turns sit right in the
+    // primary fill, the peer's sit left in the surface fill, and the corner
+    // adjacent to a same-speaker neighbour is squared off -- the shape that
+    // says "still them" without repeating a name. See `message.dart`, which
+    // is where these values come from.
+    final bubbleColor = turn.isMe
+        ? scheme.primary
+        : scheme.surfaceContainerHigh;
+    final textColor = turn.isMe ? scheme.onPrimary : scheme.onSurface;
+
+    const hardCorner = Radius.circular(4);
+    const roundedCorner = Radius.circular(AppConfig.borderRadius);
+    final radius = BorderRadius.only(
+      topLeft: !turn.isMe && !showHeader ? hardCorner : roundedCorner,
+      topRight: turn.isMe && !showHeader ? hardCorner : roundedCorner,
+      bottomLeft: roundedCorner,
+      bottomRight: roundedCorner,
+    );
+
+    final bubble = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(color: bubbleColor, borderRadius: radius),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (showHeader) ...[
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.alphabetic,
+              children: [
+                // The peer is named; you are not. A chat does not label your
+                // own messages with your name and neither does this, but the
+                // TIME is on every opening turn either way -- it is the one
+                // thing a transcript is for.
+                if (!turn.isMe) ...[
+                  Text(
+                    label,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: textColor,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                ],
+                // Nothing at all for a turn whose device never said how exact
+                // its times are, and "by 0:45" when only its chunk bounds it.
+                // The bubble and the side still say whose words these are, so
+                // a turn without a stamp still reads as theirs; only the claim
+                // we cannot support is left off.
+                if (_stampFor(turn) case final stamp?)
+                  Text(
+                    stamp,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: textColor.withAlpha(178),
+                    ),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 4),
+          ],
+          SelectableText(
+            turn.text,
+            style: theme.textTheme.bodyMedium?.copyWith(color: textColor),
+          ),
+        ],
+      ),
+    );
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: turn.isMe
+          ? MainAxisAlignment.end
+          : MainAxisAlignment.start,
       children: [
-        // Reserved whether or not this turn draws into it, so a continuation
-        // turn's text lands at exactly the x-coordinate the header's name
-        // did -- indentation by shared geometry, not by a second number that
-        // could drift from the first.
-        SizedBox(
-          width: TurnTimeline._avatarSize,
-          child: showHeader
-              ? Avatar(
-                  userId: turn.senderId,
-                  mxContent: turn.avatarUrl,
-                  // The speaker's OWN name, never `label`. Label is what the
-                  // header prints, and for your own turns that is the word
-                  // "You" -- handing it here drew a circle with a "Y" in it
-                  // for every user, since the fallback takes the initial of
-                  // whatever name it is given.
-                  name: turn.name,
-                  size: TurnTimeline._avatarSize,
-                )
-              : null,
-        ),
-        const SizedBox(width: TurnTimeline._avatarGap),
-        Expanded(
-          child: Column(
-            // Same exposure as the outer Column, and for the same reason:
-            // Expanded governs the ROW's main axis (width) only. Along the
-            // Row's cross axis (height) a non-stretch child is simply handed
-            // the Row's own incoming height constraint, and the Row is
-            // itself a non-flex child of the outer Column -- which always
-            // gives non-flex children an unbounded main-axis constraint,
-            // regardless of the outer Column's own mainAxisSize. So this
-            // Column inherits the same unbounded height once embedded in a
-            // scrollable, and must size to content for the same reason.
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (showHeader) ...[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                  textBaseline: TextBaseline.alphabetic,
-                  children: [
-                    Text(
-                      label,
-                      style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    // Nothing at all for a turn whose device never said how
-                    // exact its times are. The name still draws, so the turn
-                    // reads as somebody's; only the claim we cannot support is
-                    // left off.
-                    if (_stampFor(turn) case final stamp?) ...[
-                      const SizedBox(width: 8),
-                      Text(
-                        stamp,
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
-                const SizedBox(height: 6),
-              ],
-              _TurnText(turn: turn, theme: theme),
-            ],
+        // Only the peer gets a face, on their side, exactly as the chat does:
+        // you know who you are. The gutter is reserved on a continuation turn
+        // so the bubble below lines up with the one above it rather than
+        // sliding under the avatar.
+        if (!turn.isMe) ...[
+          SizedBox(
+            width: TurnTimeline._avatarSize,
+            child: showHeader
+                ? Avatar(
+                    userId: turn.senderId,
+                    mxContent: turn.avatarUrl,
+                    // The speaker's OWN name, never `label`: for your own
+                    // turns that word is "You", and the fallback would draw a
+                    // circle with a "Y" in it for every user alive.
+                    name: turn.name,
+                    size: TurnTimeline._avatarSize,
+                  )
+                : null,
+          ),
+          const SizedBox(width: TurnTimeline._avatarGap),
+        ],
+        // Bounded so a long turn wraps into a bubble instead of a full-width
+        // slab, which is what makes the two sides read as a conversation.
+        Flexible(
+          child: Align(
+            alignment: turn.isMe ? Alignment.centerRight : Alignment.centerLeft,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 420),
+              child: bubble,
+            ),
           ),
         ),
       ],
@@ -355,32 +399,5 @@ class _Turn extends StatelessWidget {
   static String _stamp(Duration at, {bool roundUp = false}) {
     final seconds = roundUp ? (at.inMilliseconds + 999) ~/ 1000 : at.inSeconds;
     return '${seconds ~/ 60}:${(seconds % 60).toString().padLeft(2, '0')}';
-  }
-}
-
-class _TurnText extends StatelessWidget {
-  final CallTurn turn;
-  final ThemeData theme;
-
-  const _TurnText({required this.turn, required this.theme});
-
-  @override
-  Widget build(BuildContext context) {
-    final text = SelectableText(turn.text, style: theme.textTheme.bodyMedium);
-    if (!turn.isMe) return text;
-
-    // No gold: gold reads as achievement everywhere else in this app --
-    // stars, levels -- and a transcript is a record, not a reward. The one
-    // turn worth marking at all is the reader's own, and a tint this quiet is
-    // the whole difference between "these are your words" and "look what you
-    // earned".
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.primary.withAlpha(20),
-        borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
-      ),
-      child: text,
-    );
   }
 }

@@ -102,20 +102,21 @@ void main() {
     // handed to the Avatar as the name. The fallback takes the initial of the
     // name it is given, so every user saw a circle with a "Y" in it.
     await pump(tester, [
+      turn(senderId: '@a:server', name: 'Alice', text: 'theirs'),
       turn(senderId: '@me:server', name: 'Satvik', isMe: true, text: 'mine'),
     ]);
 
+    // Only the other speaker draws a face, on their side, as the chat does:
+    // you know who you are, and your own name is not repeated over your own
+    // words either.
+    final avatars = find.byType(Avatar);
+    expect(avatars, findsOneWidget, reason: 'the peer, and only the peer');
     expect(
-      find.text('You'),
-      findsOneWidget,
-      reason: 'the header still says You',
+      tester.widget<Avatar>(avatars).name,
+      'Alice',
+      reason: 'the avatar needs the person, not the word a header prints',
     );
-    final avatar = tester.widget<Avatar>(find.byType(Avatar));
-    expect(
-      avatar.name,
-      'Satvik',
-      reason: 'the avatar needs the person, not the word the header prints',
-    );
+    expect(find.text('Satvik'), findsNothing);
   });
 
   testWidgets('an avatar picture is used when the speaker has one', (
@@ -173,11 +174,16 @@ void main() {
           .getTopLeft(find.text('continuation turn'))
           .dx;
 
-      // The continuation turn draws no avatar of its own, but the space is
-      // reserved, so its text lands at the exact x-coordinate the header
-      // turn's text did -- that alignment IS the indent.
+      // The continuation turn draws no avatar of its own, but the gutter is
+      // still reserved, so its bubble lands at the exact x-coordinate the
+      // header turn's did -- that alignment IS the indent, and without it the
+      // second bubble would slide left under the avatar.
       expect(continuationLeft, headerLeft);
-      expect(headerLeft, greaterThan(0));
+      expect(
+        headerLeft,
+        greaterThan(0),
+        reason: 'the peer\'s side leaves room for the avatar',
+      );
     },
   );
 
@@ -318,26 +324,64 @@ void main() {
       matching: find.byType(Container),
     );
 
+    // Both sides are bubbles now, as in the chat. What separates them is the
+    // FILL and the SIDE, not the presence of a bubble at all.
     expect(mine, findsOneWidget);
-    expect(theirs, findsNothing);
+    expect(theirs, findsOneWidget);
 
-    final decoration = tester.widget<Container>(mine).decoration;
-    expect(decoration, isA<BoxDecoration>());
-    final color = (decoration as BoxDecoration).color!;
-    // withAlpha(20): fully opaque would be a filled chip, and this app
-    // reserves that weight of colour for gold -- achievement, not a record.
-    expect(color.a, closeTo(20 / 255, 0.01));
+    final mineColor =
+        (tester.widget<Container>(mine).decoration! as BoxDecoration).color;
+    final theirsColor =
+        (tester.widget<Container>(theirs).decoration! as BoxDecoration).color;
+    expect(mineColor, isNot(theirsColor));
+
+    // And the sides really are opposite: your words sit right of theirs.
+    final myLeft = tester.getTopLeft(find.text('my words')).dx;
+    final theirLeft = tester.getTopLeft(find.text('their words')).dx;
+    expect(
+      myLeft,
+      greaterThan(theirLeft),
+      reason: 'your turn is right-aligned, the peer\'s is left',
+    );
+    // Opaque on both sides now. The old layout tinted only your own turn at
+    // alpha 20 because the peer's had no bubble to distinguish it from; with
+    // two sides and two fills, a wash is no longer what carries the meaning.
+    expect(mineColor!.a, 1.0);
+    expect(theirsColor!.a, 1.0);
   });
 
-  testWidgets('"You" comes from L10n, never the caller-supplied name', (
-    tester,
-  ) async {
+  testWidgets('your own turn is never labelled with a name', (tester) async {
+    // A chat does not write your name over your own messages and neither does
+    // this. What the test still guards is the older defect underneath: the
+    // caller supplies a name for every turn, and for your own turns that name
+    // must never reach the screen -- not as "Alice", and not as the localised
+    // "You" standing in for it either, now that the side carries the meaning.
     await pump(tester, [
       turn(senderId: '@me:server', name: 'Alice', isMe: true, text: 'hi'),
     ]);
 
-    expect(find.text('You'), findsOneWidget);
     expect(find.text('Alice'), findsNothing);
+    expect(find.text('You'), findsNothing);
+    expect(find.text('hi'), findsOneWidget, reason: 'the words still render');
+  });
+
+  testWidgets('the other speaker IS named, once per opening turn', (
+    tester,
+  ) async {
+    // The other half of the same rule: their name is the only way to know
+    // whose words these are, so it appears -- once, on the turn that opens
+    // their run, never repeated down a continuation.
+    await pump(tester, [
+      turn(senderId: '@a:server', name: 'Alice', text: 'first'),
+      turn(
+        senderId: '@a:server',
+        name: 'Alice',
+        text: 'second',
+        at: const Duration(milliseconds: 200),
+      ),
+    ]);
+
+    expect(find.text('Alice'), findsOneWidget);
   });
 
   testWidgets(
