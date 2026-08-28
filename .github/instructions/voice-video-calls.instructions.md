@@ -91,6 +91,7 @@ Two rules follow:
 | They vanished (refresh, crash, tunnel) | Their place is held for a grace window, then the call ends | The only case the grace window exists for |
 | They declined, or the ring expired | Kept distinct from a failure | The caller is owed the reason |
 | We pressed end, or our connection is gone for good | Over immediately | — |
+| We left the room, on this device or another | Over immediately | A call cannot outlive the room it is in; leaving goes straight to the SDK and knows nothing about calls, so nothing else would stop the microphone |
 
 Widening the grace window to cover the deliberate case is a regression, however
 reasonable it sounds.
@@ -273,8 +274,14 @@ The SFU is the one clock both devices observe. The event's server timestamp is a
 RECEIVE time, so a half that took five seconds to send would read as five seconds
 of skew, and correcting by it would invert an order that was already right.
 
-The correction is all-or-nothing across a call: moving one half by an offset
-measured for only that half is as likely to harm as to help. It is also no finer
+Within a device the wall clock is read once per call and every gap after that is
+measured monotonically, because a wall clock is not for measuring an elapsed
+interval: reading one per stretch of capture turned every clock correction during
+a call into a fabricated gap, and bounding that in one direction only left a
+forward nudge free to stamp the next stretch arbitrarily late.
+
+The cross-device correction is all-or-nothing across a call: moving one half by
+an offset measured for only that half is as likely to harm as to help. It is also no finer
 than the join time the SFU publishes, which is whole seconds — minutes of skew
 go, about a second remains, and two turns spoken less than a second apart are not
 separated by it.
@@ -308,7 +315,7 @@ kept, and it is the number that turn's boundary was already chosen on.
 ## Failure is not all-or-nothing
 
 A call fails only when the call cannot happen, and the microphone is where that
-line sits: **no microphone is no call.** Everything the product does with a call —
+line sits: **a microphone that will not open is no call.** Everything the product does with a call —
 the conversation itself and the attribution above — depends on the learner being
 heard. Whether a device with no microphone should instead get a listen-only
 call is an open product question, not a settled decision.
