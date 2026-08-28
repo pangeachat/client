@@ -260,6 +260,11 @@ extension AnalyticsClientExtension on Client {
         return null;
       }
 
+      // Uses can anchor to non-message events — call speech anchors to the
+      // pangea.call card (or, on the answering side, the ring notification) —
+      // and those carry no message content to display.
+      if (event.type != EventTypes.Message) return null;
+
       if (event.relationshipType == RelationshipTypes.edit) {
         final parentId = event.relationshipEventId;
         if (parentId != null) {
