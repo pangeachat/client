@@ -145,12 +145,18 @@ Per 32ms frame at 20ms hop, on the signal reduced to ~4 kHz:
 1. **Decode.** PCM16 little-endian. Every offset is computed in whole sample frames
    (`bytesPerFrame = 2 * channels`), so a slice can never land mid-sample or
    mid-frame and shift the channel phase.
-2. **Take the loudest channel, never the average of them.** Averaging is the
-   obvious downmix and it is not safe: two channels in opposite phase sum to
-   nothing, so a signed mean would hand the voicing test digital silence for a
-   chunk somebody is talking through. One channel taken whole cannot cancel and
-   keeps the waveform the autocorrelation needs. The level veto is separate and
-   sums energy ACROSS channels, for the same reason.
+2. **Run the voicing test on EVERY channel and take the union.** No downmix at
+   any point. A signed average is the obvious way to make one signal and it is
+   wrong twice over: two channels in opposite phase sum to nothing, so a chunk
+   somebody is talking through arrives as digital silence; and mixing a quiet
+   channel into a loud one buries whatever the quiet one carried. Picking the
+   loudest channel instead fixes only the first — a channel carrying loud
+   interference would then decide the verdict while a quieter channel holding
+   the actual answer went unread. A word has to be missed on every channel to be
+   missed at all, which errs toward finding speech. The level veto is separate
+   and sums energy ACROSS channels, for the same reason.
+
+   Costs one analysis per channel. Capture is mono, so in practice this is one.
 3. **Decimate** by the integer factor `sampleRate ~/ 4000` (4 at 16 kHz, 12 at
    48 kHz), each output sample being the mean of the factor's worth of input
    samples — a box filter, which is a real if crude anti-alias lowpass rather

@@ -292,6 +292,42 @@ void main() {
       expect(trimToSpeech(_chunk(_range(audio, 0, 22))), isNull);
     });
 
+    test('speech on a QUIETER channel is not buried by a louder one', () {
+      // Picking the loudest channel is the obvious repair for a downmix that
+      // cancels, and it is only half a repair: a channel carrying loud
+      // interference then decides the whole verdict, and a quieter channel
+      // carrying the actual answer is never looked at.
+      //
+      // Left: loud room noise, no speech. Right: the same noise at a fraction
+      // of the level, with a real voiced answer dropped into it. Every channel
+      // is analysed and the results unioned, so the answer is found on the
+      // channel that has it.
+      final noise = _range(audio, 0, 12);
+      final answer = _range(audio, 29.0, 29.6);
+      final quiet = <int>[
+        ...[for (final v in _range(audio, 0, 4)) v ~/ 8],
+        ...answer,
+        ...[for (final v in _range(audio, 4, 11.4)) v ~/ 8],
+      ];
+
+      final stereo = Int16List(noise.length * 2);
+      for (var i = 0; i < noise.length; i++) {
+        stereo[i * 2] = (noise[i] * 3).clamp(-32768, 32767).toInt();
+        stereo[i * 2 + 1] = i < quiet.length ? quiet[i] : 0;
+      }
+
+      final trimmed = trimToSpeech(_chunk(stereo, channels: 2));
+      expect(trimmed, isNotNull);
+      // Located on the right channel, around four seconds in -- not spread over
+      // the whole chunk, which is what a verdict taken from the left channel
+      // alone would have produced.
+      expect(
+        trimmed!.startMs,
+        inInclusiveRange(3000, 4500),
+        reason: 'the answer is on the channel nobody was listening to',
+      );
+    });
+
     test('opposite-phase channels still have their speech FOUND', () {
       // A signed downmix is the obvious way to make one signal out of several,
       // and it is the wrong one: two channels in opposite phase sum to nothing.

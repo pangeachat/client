@@ -184,8 +184,7 @@ TrimmedChunkAudio? trimToSpeech(
   final totalMs = chunk.duration.inMilliseconds;
   if (totalMs < settings.minTrimmable.inMilliseconds) return whole;
 
-  final reduced = _reduceToMono(chunk);
-  final voiced = _voicedFlags(reduced, settings);
+  final voiced = _voicedFlags(chunk, settings);
   if (voiced.isEmpty) return whole;
 
   final span = _speechSpan(voiced, settings, totalMs);
@@ -211,20 +210,23 @@ TrimmedChunkAudio? trimToSpeech(
   return _slice(chunk, span.$1, span.$2) ?? whole;
 }
 
-/// The chunk as one channel of samples at roughly [_analysisRate].
+/// One channel of the chunk, decimated to roughly [_analysisRate].
 ///
-/// Channel selection and decimation in ONE pass, and every offset computed in
-/// whole sample frames: a slice landing mid-sample would shift the channel phase
+/// Decimation and channel extraction in ONE pass, and every offset computed in
+/// whole sample frames: a read landing mid-frame would shift the channel phase
 /// and hand the voicing test interleaved nonsense. Each output sample is the
-/// mean of a whole number of input frames from ONE channel, which is a crude but
+/// mean of a whole number of input frames FROM ONE CHANNEL, which is a crude but
 /// real anti-alias lowpass rather than bare subsampling.
 ///
-/// The LOUDEST channel, never the average of them. Averaging is the obvious
-/// downmix and it is not safe here: two channels in opposite phase sum to
-/// nothing, so a signed mean would hand the voicing test digital silence for a
-/// chunk somebody is talking through. Taking one channel whole cannot cancel,
-/// and it keeps the waveform intact, which the autocorrelation needs.
-({Int16List samples, int rate}) _reduceToMono(PcmChunk chunk) {
+/// One channel at a time, and never a downmix of them. A signed average is the
+/// obvious way to make a single signal and it is wrong twice over: two channels
+/// in opposite phase sum to nothing, so a chunk somebody is talking through
+/// arrives as digital silence; and mixing a quiet channel into a loud one buries
+/// whatever the quiet one was carrying. Picking the loudest channel instead
+/// fixes only the first of those. [_voicedFlags] runs this once per channel and
+/// takes the union, so a word has to be missed on EVERY channel to be missed at
+/// all.
+({Int16List samples, int rate}) _reduceChannel(PcmChunk chunk, int channel) {
   final channels = chunk.channels;
   final frames = chunk.pcm.lengthInBytes ~/ (2 * channels);
   final factor = max(1, chunk.sampleRate ~/ _analysisRate);
@@ -233,24 +235,6 @@ TrimmedChunkAudio? trimToSpeech(
     chunk.pcm.offsetInBytes,
     chunk.pcm.lengthInBytes,
   );
-
-  var channel = 0;
-  if (channels > 1) {
-    var loudest = -1.0;
-    for (var c = 0; c < channels; c++) {
-      var energy = 0.0;
-      for (var f = 0; f < frames; f++) {
-        final v = data
-            .getInt16((f * channels + c) * 2, Endian.little)
-            .toDouble();
-        energy += v * v;
-      }
-      if (energy > loudest) {
-        loudest = energy;
-        channel = c;
-      }
-    }
-  }
 
   final out = Int16List(frames ~/ factor);
   var o = 0;
@@ -275,7 +259,27 @@ TrimmedChunkAudio? trimToSpeech(
 /// threshold entirely. It is invariant to GAIN — not to additive noise, echo or
 /// periodic interference, which produce false VOICING and therefore send more
 /// audio rather than less.
-List<bool> _voicedFlags(
+List<bool> _voicedFlags(PcmChunk chunk, SpeechTrimSettings settings) {
+  List<bool>? union;
+  for (var channel = 0; channel < chunk.channels; channel++) {
+    final flags = _voicedInChannel(_reduceChannel(chunk, channel), settings);
+    if (union == null) {
+      union = flags;
+      continue;
+    }
+    // A word has to be missed on EVERY channel to be missed at all. Taking the
+    // union rather than picking one channel means a quiet channel carrying a
+    // short answer is not buried by a loud one carrying interference, and it
+    // errs toward finding speech, which is the safe direction.
+    for (var i = 0; i < union.length && i < flags.length; i++) {
+      if (flags[i]) union[i] = true;
+    }
+  }
+  return union ?? const [];
+}
+
+/// Whether each analysis frame of ONE channel is periodic in the pitch band.
+List<bool> _voicedInChannel(
   ({Int16List samples, int rate}) input,
   SpeechTrimSettings settings,
 ) {
