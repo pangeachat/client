@@ -50,6 +50,26 @@ abstract final class LocalSpellCheck {
   }
 }
 
+/// How many grapheme clusters of [text] come before UTF-16 code unit
+/// [codeUnitOffset] — the conversion between what the platform spell checker
+/// counts in and what [SpanData] counts in.
+///
+/// Walks the graphemes rather than slicing the string, so an offset that
+/// lands inside an emoji's surrogate pair resolves to the boundary around it
+/// instead of splitting the pair.
+int graphemeOffset(String text, int codeUnitOffset) {
+  var codeUnits = 0;
+  var graphemes = 0;
+
+  for (final grapheme in text.characters) {
+    if (codeUnits >= codeUnitOffset) break;
+    codeUnits += grapheme.length;
+    graphemes++;
+  }
+
+  return graphemes;
+}
+
 /// Converts the platform's misspelling reports into the same [SpanData] shape
 /// the server returns, typed as [ReplacementTypeEnum.spell].
 ///
@@ -86,8 +106,9 @@ List<SpanData> localSpansToSpanData(
                   SpanChoice(value: value, type: SpanChoiceTypeEnum.suggestion),
             )
             .toList(),
-        offset: text.substring(0, range.start).characters.length,
-        length: text.substring(range.start, range.end).characters.length,
+        offset: graphemeOffset(text, range.start),
+        length:
+            graphemeOffset(text, range.end) - graphemeOffset(text, range.start),
         fullText: text,
         type: ReplacementTypeEnum.spell,
         rule: const Rule(id: MatchRuleIdModel.localSpellCheck),
