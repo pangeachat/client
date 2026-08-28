@@ -79,6 +79,35 @@ async function displayName(token, userId) {
   }
 }
 
+/// The language this account is LEARNING, as the app stores it -- 'en-US',
+/// 'hi', or null when the profile has not been filled in.
+///
+/// Speech-to-text is asked for the SPEAKER'S OWN target language, read off this
+/// profile, so an account learning Hindi has its English speech transcribed as
+/// Hindi and the provider answers with nothing at all. That is invisible: the
+/// call rings, connects, and writes both halves, and only the words are
+/// missing -- which reads as a broken capture path rather than as an account
+/// pointed at the wrong language.
+async function targetLanguage(token, userId) {
+  try {
+    const p = await api(
+      `/_matrix/client/v3/user/${encodeURIComponent(userId)}/account_data/profile`,
+      { token },
+    );
+    const code = p && p.user_settings && p.user_settings.target_language;
+    return typeof code === 'string' && code ? code : null;
+  } catch (_) {
+    return null;
+  }
+}
+
+/// A language code reduced to the language itself: 'en-US' and 'en' are the
+/// same language to a speech provider, and a fixture check that turned on the
+/// region would refuse a perfectly good account.
+function baseLang(code) {
+  return String(code || '').toLowerCase().split(/[-_]/)[0];
+}
+
 const CALL = 'pangea.call';
 const DECLINE = 'org.matrix.msc4310.rtc.decline';
 const RING = 'org.matrix.msc4075.rtc.notification';
@@ -163,4 +192,4 @@ async function hasMembership(token, roomId, userId) {
   return (await liveMemberships(token, roomId, userId)) > 0;
 }
 
-module.exports = { api, login, displayName, hasMembership, liveMemberships, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };
+module.exports = { api, login, displayName, targetLanguage, baseLang, hasMembership, liveMemberships, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };
