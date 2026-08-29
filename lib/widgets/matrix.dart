@@ -541,8 +541,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 // the previous (already logged-out, torn-down) account, so
                 // _onLogin's network calls hang against a dead client and
                 // the login dialog never closes (#8514).
+                // The bump below is said HERE rather than left to
+                // setActiveClient: the list changing and the ACTIVE account
+                // changing are two different facts, and only the first decides
+                // which accounts ring. A later edit that stopped making a new
+                // login active would otherwise stop it ever ringing.
                 if (!widget.clients.contains(_loginClientCandidate)) {
                   widget.clients.add(_loginClientCandidate!);
+                  _accountsChanged();
                 }
                 setActiveClient(_loginClientCandidate);
                 await MatrixState.pangeaController.handleLoginStateChange(

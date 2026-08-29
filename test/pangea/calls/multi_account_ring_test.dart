@@ -25,6 +25,17 @@ import '../get_test_client.dart';
 /// Every test here pumps the banner with TWO logged-in clients and makes the
 /// SECOND one — never the active one — the account being called.
 ///
+/// KNOWN LIMIT OF THIS FIXTURE. Both clients end up with the SAME Matrix user
+/// id: `FakeMatrixApi` returns one canned `/login` response and exposes no way
+/// to vary it, so `client.userID` is `@test:fakeServer.notExisting` for both.
+/// What separates the accounts here is their `clientName` — which is the key
+/// every per-account service is held under — and their streams, which is what
+/// the fix actually binds to. So these tests DO prove the banner subscribes
+/// per client and acts through the right client's service, and they CANNOT
+/// prove anything that turns on two distinct user ids, such as
+/// `answeredOnAnotherDevice` filtering room state by `client.userID`. Real
+/// two-account behaviour still needs two accounts on a live homeserver.
+///
 /// Skips `initMatrix()` for the same reason the single-account banner test
 /// does: push, notification listeners and the Pangea controller are all
 /// irrelevant here and none of them stand up under `flutter test`.
@@ -190,6 +201,48 @@ void main() {
     await tester.pump(const Duration(milliseconds: 50));
     return state;
   }
+
+  // Every mutation of the account list has to SAY so, or the banner never
+  // learns and that account never rings. A widget test can only prove the
+  // banner reacts to the signal; it cannot prove production emits it, and a
+  // new `clients.add` in some future login path would slip straight past.
+  // So the invariant is asserted mechanically against the source, the way
+  // this file's sibling asserts the banner's one teardown.
+  test('every change to the account list announces itself', () {
+    final source = File('lib/widgets/matrix.dart').readAsStringSync();
+    final lines = source.split('\n');
+    final mutations = <int>[];
+    for (var i = 0; i < lines.length; i++) {
+      if (RegExp(
+        r'widget\.clients\.(add|remove|insert|clear)\(',
+      ).hasMatch(lines[i])) {
+        mutations.add(i);
+      }
+    }
+    expect(
+      mutations,
+      isNotEmpty,
+      reason: 'the list must still be mutated somewhere, or this test is dead',
+    );
+    for (final at in mutations) {
+      // Near the mutation, not merely somewhere in the file: the
+      // announcement belongs in the same block, not in a caller that a later
+      // edit might stop going through. The window is generous forward because
+      // the logout path deliberately says it LAST, once the account is fully
+      // out of the way, so a listener that re-reads the list sees it gone.
+      final from = (at - 4).clamp(0, lines.length);
+      final to = (at + 14).clamp(0, lines.length);
+      expect(
+        lines.sublist(from, to).any((l) => l.contains('_accountsChanged()')),
+        isTrue,
+        reason:
+            'line ${at + 1} changes the account list without saying so:\n'
+            '  ${lines[at].trim()}\n'
+            'Nothing below MatrixState rebuilds on an account change, so an '
+            'account added here would never be subscribed and never ring.',
+      );
+    }
+  });
 
   group('the memory of a turned-down call', () {
     test('is dropped once no ring could still be worth suppressing', () {
