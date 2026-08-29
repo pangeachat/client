@@ -363,6 +363,13 @@ class FakeCapture extends CallCaptureService {
   /// Whether this device has anywhere to record THROUGH. Modelled rather than
   /// inherited, because it is what the election reads and a double that always
   /// answered true could not stand up the case the ranking exists for.
+  ///
+  /// [start] is overridden too, so the real answer could never move here
+  /// whatever this returned. What actually produces it -- a platform with no
+  /// tap point, residue that survived a retry, taps that attached and died --
+  /// is pinned in call_capture_test, under 'whether this device can record at
+  /// all' and 'a device whose tap keeps dying'. These tests own the other half:
+  /// what the election does once the answer is false.
   bool tapWorks = true;
 
   @override
@@ -2595,6 +2602,16 @@ void main() {
       // same reason, and the call goes untranscribed while a working sibling
       // sits second in line.
       final (call, calls, capture) = await recordingBesideAHigherSibling();
+      // Published for real. Left to the roster's silence-means-able default the
+      // check at the end would be reading the fixture back out of itself, and
+      // no change to how a sibling's capability is parsed or ranked could move
+      // it.
+      calls.roster!.attributes = {
+        '${calls.client.userID}:zzzzzzzzzz': {
+          CallRoster.canCaptureAttribute: 'yes',
+        },
+      };
+      calls.roster!.recompute();
 
       capture.loseTapForGood();
       await pumpEventQueue();
@@ -2614,6 +2631,35 @@ void main() {
         isTrue,
         reason: 'and it stood aside for a sibling that says it can',
       );
+    });
+
+    test('and it does not take the recording back until that has', () async {
+      // The other direction, and the one that costs the learner. A device whose
+      // microphone came back ranks itself able the instant it finds out --
+      // while every sibling still reads the "cannot" it published, and one of
+      // them is recording precisely because of it. Both are then elected in
+      // their own view, so both capture the same seconds and NEITHER discards:
+      // the convergence duplicate this whole feature exists to remove, in a
+      // window the discard does not cover.
+      final (call, calls, capture) = await recordingBesideAHigherSibling();
+      capture.loseTapForGood();
+      await pumpEventQueue();
+      await call.tickReelectionForTest();
+      expect(call.isRecording, isFalse, reason: 'the premise: it stood aside');
+
+      // The microphone comes back while the "yes" is still on the wire.
+      calls.roster!.holdAnnounce = Completer<void>();
+      capture.tapWorks = true;
+      trace.steps.clear();
+      await call.tickReelectionForTest();
+
+      expect(
+        trace.steps,
+        isNot(contains('capture.start')),
+        reason: 'its siblings still read it as unable, and one is recording',
+      );
+      expect(call.isRecording, isFalse);
+      calls.roster!.holdAnnounce!.complete();
     });
 
     test('a microphone acquired after connect re-enters the election', () async {
@@ -2764,6 +2810,50 @@ void main() {
       capture.loseTapForGood();
       await pumpEventQueue();
       await call.tickReelectionForTest();
+
+      expect(call.isRecording, isFalse, reason: 'the lower id has it now');
+      expect(capture.discardRequests.last, isFalse);
+    });
+
+    test('a successor whose microphone just arrived keeps our tail', () async {
+      // The successor joined FIRST and out-ranks this device on id, so the join
+      // times say discard -- but it published "cannot" for the whole of the
+      // stretch about to be dropped, so it had no tap while the learner was
+      // speaking and nobody else holds a single second of it. Capability read
+      // at the instant of the handover cannot tell that from a sibling that had
+      // been able all along, and this is the half of the pair the unit test
+      // cannot reach: it is handed the conclusion, and the conclusion is
+      // derived here.
+      final (call, calls, _, capture) = await build();
+      calls.roster!.myJoin = (true, joinedAt);
+      calls.roster!.joins = {
+        '${calls.client.userID}:AAAAAAAAAA': (
+          true,
+          joinedAt.subtract(const Duration(seconds: 20)),
+        ),
+      };
+      calls.roster!.attributes = {
+        '${calls.client.userID}:AAAAAAAAAA': {
+          CallRoster.canCaptureAttribute: 'no',
+        },
+      };
+      calls.remotePresent = true;
+      calls.devicesInCall = [calls.client.deviceID!, 'AAAAAAAAAA'];
+      await call.start(roomStub(calls.client), video: false);
+      expect(
+        call.isRecording,
+        isTrue,
+        reason: 'able out-ranks an earlier, lower id that says it cannot',
+      );
+
+      // Their microphone comes up mid-call, and they say so.
+      calls.roster!.attributes = {
+        '${calls.client.userID}:AAAAAAAAAA': {
+          CallRoster.canCaptureAttribute: 'yes',
+        },
+      };
+      calls.roster!.recompute();
+      await pumpEventQueue();
 
       expect(call.isRecording, isFalse, reason: 'the lower id has it now');
       expect(capture.discardRequests.last, isFalse);

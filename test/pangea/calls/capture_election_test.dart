@@ -202,7 +202,7 @@ void main() {
         CaptureElection.discardsCapturedAudio(
           myJoinedAt: earlier,
           successorJoinedAt: earlier,
-          displacedOnDeviceId: true,
+          successorRecordedTheSameStretch: true,
         ),
         isTrue,
       );
@@ -213,7 +213,7 @@ void main() {
         CaptureElection.discardsCapturedAudio(
           myJoinedAt: later,
           successorJoinedAt: earlier,
-          displacedOnDeviceId: true,
+          successorRecordedTheSameStretch: true,
         ),
         isTrue,
       );
@@ -226,23 +226,27 @@ void main() {
         CaptureElection.discardsCapturedAudio(
           myJoinedAt: earlier,
           successorJoinedAt: later,
-          displacedOnDeviceId: true,
+          successorRecordedTheSameStretch: true,
         ),
         isFalse,
       );
     });
 
-    test('a handover forced by capability delivers its tail', () {
-      // A successor that out-ranked us only because it JUST became able to
-      // record had no tap while we were recording, whatever its join time says.
-      // Discarding on that reading throws away audio nobody else has -- and it
-      // is reachable only now that capability and join times are both in the
-      // election.
+    test('a successor that was not recording keeps our tail', () {
+      // A successor that had no tap during our stretch was not holding a copy
+      // of it, whatever its join time says, so discarding throws away audio
+      // nobody else has. The join times still SAY discard here, which is the
+      // point: this term overrules them.
+      //
+      // The conclusion is handed in, because deriving it needs a whole call's
+      // worth of capability history. Where it comes from is covered by the
+      // active_call tests 'a successor whose microphone just arrived keeps our
+      // tail' and 'a handover forced by capability keeps our tail'.
       expect(
         CaptureElection.discardsCapturedAudio(
           myJoinedAt: later,
           successorJoinedAt: earlier,
-          displacedOnDeviceId: false,
+          successorRecordedTheSameStretch: false,
         ),
         isFalse,
       );
@@ -255,7 +259,7 @@ void main() {
         CaptureElection.discardsCapturedAudio(
           myJoinedAt: null,
           successorJoinedAt: earlier,
-          displacedOnDeviceId: true,
+          successorRecordedTheSameStretch: true,
         ),
         isFalse,
       );
@@ -263,7 +267,7 @@ void main() {
         CaptureElection.discardsCapturedAudio(
           myJoinedAt: earlier,
           successorJoinedAt: null,
-          displacedOnDeviceId: true,
+          successorRecordedTheSameStretch: true,
         ),
         isFalse,
       );

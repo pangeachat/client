@@ -71,6 +71,18 @@ class ActiveCall extends ChangeNotifier {
   Future<void>? _hangUp;
   bool _disposed = false;
 
+  /// Which of this account's other devices have said they CANNOT record at some
+  /// point during the stretch this device is recording now.
+  ///
+  /// The discard asks whether a successor was recording the seconds this device
+  /// is about to drop, and capability at the instant of the handover cannot
+  /// answer that: a sibling whose microphone came up a moment ago was not
+  /// recording anything before it did. Only ever added to while a stretch runs,
+  /// so a sibling that recovered stays disqualified for the rest of that
+  /// stretch and the tail is delivered — a duplicate is recoverable and audio
+  /// nobody else holds is not.
+  final Set<String> _unableWhileRecording = {};
+
   /// Set the moment anything asks the call to end. [start] checks it after every
   /// await, so a hangup that lands mid-connect stops the sequence instead of
   /// racing it to completion.
@@ -501,15 +513,36 @@ class ActiveCall extends ChangeNotifier {
           ),
     ];
 
-    // THE LANDED VALUE, not the live one, and the difference is the whole
-    // point. A device that stood aside the instant it found out — while every
-    // sibling still read it as able — would tie them all on capability and lose
-    // the device-id tiebreak to itself, and NOBODY would record for as long as
-    // the announcement stayed stuck. Ranking on what the siblings can actually
-    // see degrades to exactly the pre-capability behaviour when the write
-    // cannot land, which is bounded; the other way degrades to silence, which
-    // is not.
-    final iCanCapture = canRecordHere || (roster?.announcedCanCapture ?? true);
+    // Capability is a fact about a SPAN when the discard reads it, and every
+    // election is only an instant. Seeded at the election that starts a
+    // stretch — [_capturing] is false right up to the moment the reconcile it
+    // queues actually attaches — and added to by every election after it, so
+    // what this holds while a stretch runs is every sibling that has said it
+    // cannot record at any point during it.
+    if (!_capturing) _unableWhileRecording.clear();
+    for (final sibling in siblings) {
+      if (!sibling.canCapture) _unableWhileRecording.add(sibling.deviceId);
+    }
+
+    // THE LANDED VALUE, and ONLY the landed value. Every device reaches the
+    // same verdict alone because every device ranks the same candidates the
+    // same way, and that holds only while each of them ranks itself on the
+    // number its siblings can read. The live answer is this device's private
+    // knowledge; ranking on it is the one way to be elected in your own view
+    // and nowhere else.
+    //
+    // It matters in BOTH directions, which is what an earlier
+    // `canRecordHere || announced` got wrong. Losing capability: the landed
+    // value is still "able", so this device keeps trying rather than standing
+    // aside while its siblings all defer to it — the case that disjunct was
+    // written for, and one the landed value already covers on its own.
+    // REGAINING it: the landed value is still "cannot", so this device does
+    // not take the recording back until the "yes" has been accepted. The
+    // disjunct made it take the recording back the instant its microphone came
+    // up — while the sibling that had stepped in still read the "no" and was
+    // still recording — so both devices captured the same seconds and each,
+    // being elected in its own view, delivered them.
+    final iCanCapture = roster?.announcedCanCapture ?? true;
     final election = CaptureElection(
       myDeviceId: me,
       siblings: siblings,
@@ -529,18 +562,26 @@ class ActiveCall extends ChangeNotifier {
           CaptureElection.discardsCapturedAudio(
             myJoinedAt: roster?.myJoinTime,
             successorJoinedAt: roster?.siblingJoinTime(successor.deviceId),
-            // BOTH able, so the device id is what displaced us — and only then
-            // can the successor have been recording the stretch this device is
-            // about to drop.
+            // What is being answered is whether the successor was recording
+            // the seconds this device is about to throw away — a question
+            // about the whole stretch, which is why the successor's half of it
+            // cannot be read off this instant alone. Getting it wrong destroys
+            // the only copy of what the learner said.
             //
-            // Two ways that fails, and each of them destroys the only copy of
-            // what the learner said. A successor that out-ranked us because it
-            // JUST became able had no tap while we were recording. And two
-            // devices that have both concluded they CANNOT record are equally
-            // tied on capability, so the id decides between them — but the one
-            // that wins is not recording either, and it is the tie at FALSE
+            // The successor is able, and has been all along. One that
+            // out-ranked us because it JUST became able had no tap while we
+            // were recording — and reading only the live value here made a
+            // sibling whose microphone came up mid-call take our tail with it.
+            //
+            // And WE are able, so the device id is what displaced us. Two
+            // devices that have both concluded they cannot record are equally
+            // tied on capability and the id still decides between them, but
+            // whichever wins is recording nothing; it is the tie at FALSE
             // rather than the tie itself that makes the difference.
-            displacedOnDeviceId: successor.canCapture && iCanCapture,
+            successorRecordedTheSameStretch:
+                successor.canCapture &&
+                iCanCapture &&
+                !_unableWhileRecording.contains(successor.deviceId),
           ),
     );
 
@@ -608,10 +649,14 @@ class ActiveCall extends ChangeNotifier {
       } else {
         await capture.stop();
         _capturing = false;
+        // Only the two reasons that can actually reach here. Reaching this arm
+        // at all means [_capturing] was true, which means a stretch started,
+        // which means there was a track to start it with — and [_track] is
+        // acquired once and never given back. A third message about having
+        // nothing published read like an operator statement and could never be
+        // printed.
         Logs().i(
-          track == null
-              ? 'Not recording this call here: nothing is published to record'
-              : _peerGrace != null
+          _peerGrace != null
               ? 'Recording paused: waiting to see whether they come back'
               : 'Another device of this account is recording this call',
         );

@@ -151,20 +151,26 @@ class CaptureElection {
   /// answers false, because discarding a learner's speech on the strength of a
   /// number that was never measured destroys audio no other device holds.
   ///
-  /// AND THE DISPLACEMENT HAS TO BE ON DEVICE ID — which means both devices
-  /// were ABLE and the id broke the tie. A successor that out-ranked us only
-  /// because it JUST became able to record was, by definition, not recording
-  /// during our stretch: it had no tap. Nor was one that is tied with us at
-  /// "cannot", which the id also decides between: whichever of them wins is
+  /// AND THE SUCCESSOR HAS TO HAVE BEEN RECORDING THE SAME STRETCH. Join times
+  /// only establish that it was in the call; [successorRecordedTheSameStretch]
+  /// is the caller's statement that it was also able to record throughout, so
+  /// that the device id — not capability — is what displaced us, and was what
+  /// displaced us for the whole stretch.
+  ///
+  /// A SPAN, deliberately, and not a reading taken at the handover. A successor
+  /// that out-ranked us only because it JUST became able had no tap while we
+  /// were recording, and a caller that compared the two capabilities at the
+  /// instant of the displacement could not tell that from a device that had
+  /// been able all along. Nor is a successor tied with us at "cannot"
+  /// recording, which the id also decides between: whichever of them wins is
   /// recording nothing. Either way discarding throws away the only copy of what
-  /// the learner said, so [displacedOnDeviceId] is the caller's statement that
-  /// neither is the case.
+  /// the learner said.
   static bool discardsCapturedAudio({
     DateTime? myJoinedAt,
     DateTime? successorJoinedAt,
-    required bool displacedOnDeviceId,
+    required bool successorRecordedTheSameStretch,
   }) {
-    if (!displacedOnDeviceId) return false;
+    if (!successorRecordedTheSameStretch) return false;
     if (myJoinedAt == null || successorJoinedAt == null) return false;
     return !successorJoinedAt.isAfter(myJoinedAt);
   }

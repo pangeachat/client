@@ -1356,20 +1356,52 @@ void main() {
       );
     });
 
-    test('is decided before the stop that flushes it, not by it', () async {
-      // Teardown stops the recorder DIRECTLY, outside the election's serialised
-      // handover chain, so a hangup's stop can reach the flush while the
-      // election's own reconcile is still queued. A discard handed to the stop
-      // as an argument would arrive after the audio had already gone.
+    test('survives a stop that does not settle its deliveries', () async {
+      // Teardown's stop, which does not wait for what it handed over, and then
+      // the finish that does. Neither of them carries the request, so a flush
+      // reached that way has to find it where the election left it.
+      //
+      // The ordering claim itself -- that the request is in BEFORE the reconcile
+      // that stops the tap -- belongs to the caller and is pinned by the
+      // active_call test of that name. Nothing here goes through an election,
+      // so nothing here could fail if that moved.
       final capture = service();
       await capture.start(track);
       track.emit(100);
-      // The election concludes displacement here, with no stop in sight.
       capture.setDiscardOnStop(true);
 
-      // And somebody else's stop -- teardown's -- is what actually flushes.
       await capture.stop(settleDeliveries: false);
       await capture.finish();
+
+      expect(sink.delivered, isEmpty);
+    });
+
+    test('is not rewritten by an election that ran after the stop', () async {
+      // The request is read at the FLUSH, and a stop reaches that only after up
+      // to three bounded platform waits -- the detach, an overtaken start's
+      // release, and the residue sweep. The election goes on running on its two
+      // second clock throughout, and by then it is describing a roster with
+      // nothing to do with the stretch being ended. Cleared inside that stall
+      // it delivers the duplicate; set inside it, it drops the only copy of
+      // what the learner said.
+      final tap = _SlowDetachTap();
+      final capture = service(
+        withTap: tap,
+        detach: const Duration(seconds: 30),
+      );
+      await capture.start(track);
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+      // The election concluded displacement, and this stretch is a duplicate of
+      // what a sibling already has.
+      capture.setDiscardOnStop(true);
+
+      final stopping = capture.stop();
+      await pumpEventQueue();
+      // The sibling hangs up while the detach is still deciding, so the next
+      // tick elects this device again -- for a stretch that has not begun.
+      capture.setDiscardOnStop(false);
+      tap.finishDetach();
+      await stopping;
 
       expect(sink.delivered, isEmpty);
     });
@@ -1595,6 +1627,30 @@ void main() {
         isFalse,
         reason: 'and it says so rather than holding a tap it does not have',
       );
+    });
+
+    test('says so, so a capable sibling can out-rank it', () async {
+      // The election reads this, and nothing else tells it. Without it a device
+      // whose tap point is broken goes on announcing that it can record, keeps
+      // winning the election on device id, and the call is transcribed by
+      // nobody -- while `start` quietly returns having attached nothing. The
+      // refusal to attach and the announcement have to move together.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      restartOnLoss(s);
+      await s.start(track);
+
+      tap.die();
+      await pumpEventQueue();
+      expect(
+        s.canCapture,
+        isTrue,
+        reason: 'one death is a transient; the second attempt IS the retry',
+      );
+
+      tap.die();
+      await pumpEventQueue();
+      expect(s.canCapture, isFalse);
     });
 
     test('a stretch that delivered audio starts the count again', () async {

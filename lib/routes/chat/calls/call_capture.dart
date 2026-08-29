@@ -145,6 +145,13 @@ class CallCaptureService {
 
   PcmChunker? _chunker;
   DetachTap? _detach;
+
+  /// Whether the current stretch has stopped taking frames.
+  ///
+  /// Set before the detach rather than after it, and cleared only by the next
+  /// [start], so it marks the whole span between a stretch ending and one
+  /// replacing it. Two things read it, for the same reason: frames arriving in
+  /// that span belong to no stretch, and so does a discard request.
   bool _stopping = false;
 
   /// Whether a tap is attached. Separate from having a chunker, because the rate
@@ -248,11 +255,28 @@ class CallCaptureService {
   /// Only ever the TAIL: a chunk the chunker's own size or silence ceiling
   /// already cut and handed to the sink earlier in this stretch is gone and is
   /// not chased.
+  ///
+  /// AND IT DESCRIBES A STRETCH, so it stops taking new answers at the same
+  /// line the stretch stops taking frames. [_stop] reaches the flush only after
+  /// up to three bounded platform waits — a detach, an overtaken start's
+  /// release, and the residue sweep — and the election re-runs on a two second
+  /// clock throughout. Left writable across that stall, the value read at the
+  /// flush could belong to an election that ran seconds after the stretch
+  /// ended, describing a roster with nothing to do with the audio being
+  /// flushed: cleared inside the stall it delivers the duplicate, and set
+  /// inside it, it drops the only copy of what the learner said.
   bool _discardOnStop = false;
 
   /// Records that this stretch's tail is a duplicate of what another of this
   /// account's devices already has.
-  void setDiscardOnStop(bool discard) => _discardOnStop = discard;
+  ///
+  /// Ignored once the stretch has stopped taking frames, because from that line
+  /// on there is no stretch left for a caller to be describing. The next [start]
+  /// opens the question again.
+  void setDiscardOnStop(bool discard) {
+    if (_stopping) return;
+    _discardOnStop = discard;
+  }
 
   /// Told that the tap this recorder was running has died on its own.
   ///
@@ -365,6 +389,16 @@ class CallCaptureService {
         // may start over the top of it: two taps feeding one chunker would
         // count the learner's own voice twice. Losing this stretch of analytics
         // is recoverable, counting it twice is not.
+        //
+        // Everything this can see was ASKED, which is what makes it evidence
+        // about the device rather than about the timing. The only release that
+        // could add a tap here without the session bump above catching it is an
+        // overtaken start's, and one of those cannot be in flight while this
+        // branch runs: the start that publishes it has to get past this same
+        // guard first, so [_unreleased] was empty when it did, and while it
+        // holds `_releasing` above zero a later start with an empty
+        // [_unreleased] skips this branch entirely and refuses below without
+        // blaming anything. Nothing else refills the list in between.
         _canCapture = false;
         throw StateError('The previous audio tap is still attached');
       }
