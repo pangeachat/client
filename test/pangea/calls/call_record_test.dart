@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
+import 'package:fluffychat/routes/chat/calls/call_upload_gate.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
@@ -36,6 +37,13 @@ class _ShiftingSink extends CallTranscriptSink {
 }
 
 void main() {
+  // The sinks below take the process-wide upload gate. One test here hands a
+  // chunk to a transcriber that never answers and never bounds the wait, so it
+  // keeps a permit for the life of the isolate; without this the cap would be
+  // one lower for every test after it, and the failure would land on whichever
+  // test happened to run last.
+  setUp(CallUploadGate.resetShared);
+
   late List<Map<String, dynamic>> written;
   late List<String> txids;
   late List<({String eventId, int uses, String lang})> recorded;

@@ -437,7 +437,11 @@ void main() {
         counted,
         reason: 'a bad request is still not a statement about load',
       );
-      expect(gate.isOpen, isTrue, reason: 'and the breaker stayed shut');
+      expect(
+        gate.isOpen,
+        isTrue,
+        reason: 'and the breaker stayed open against everyone else',
+      );
     });
   });
 

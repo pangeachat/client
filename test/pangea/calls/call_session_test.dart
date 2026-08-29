@@ -14,6 +14,7 @@ import 'package:fluffychat/routes/chat/calls/call_session.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
+import 'package:fluffychat/routes/chat/calls/call_upload_gate.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -302,6 +303,10 @@ Future<matrix.Client> _bareClient() async {
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  // The session builds a sink on the process-wide upload gate, and one test
+  // here leaves a transcription that never answers. See call_record_test.
+  setUp(CallUploadGate.resetShared);
 
   Future<(CallSession, _FakeCalls, List<CallSession>)> build() async {
     final client = await _bareClient();

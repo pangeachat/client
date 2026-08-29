@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
+import 'package:fluffychat/routes/chat/calls/call_upload_gate.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/routes/chat/calls/speech_trim.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
@@ -74,6 +75,9 @@ void main() {
   setUpAll(() {
     _audio = _load();
   });
+
+  // These sinks take the process-wide upload gate. See call_record_test.
+  setUp(CallUploadGate.resetShared);
 
   group('a chunk with nothing said in it', () {
     test('is never sent, and never billed', () async {
