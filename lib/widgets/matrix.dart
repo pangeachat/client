@@ -862,11 +862,22 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // Pangea#
         try {
           await _cancelSubs(c.clientName);
-          widget.clients.remove(c);
-          ClientManager.removeClientNameFromStore(c.clientName, store);
         } finally {
           // #Pangea
+          // The account LEAVES whether or not its cleanup succeeded, and the
+          // mark clears only with it. Ordered this way because the two are one
+          // fact: "signing out" means "in the list but on the way out", so
+          // clearing the mark while the account is still listed hands it back
+          // to everything that asks -- a ring, a replay, a decline could then
+          // act as an account that has signed out, which is the hole the gate
+          // exists to close. Leaving the mark set instead strands the slot for
+          // the life of the app: `getLoginClient` would never reuse the
+          // client, with nothing on screen to say why. Neither is acceptable,
+          // and neither happens if the removal is not conditional on the
+          // cleanup either.
           // InitWithRestoreExtension.deleteSessionBackup(name);
+          widget.clients.remove(c);
+          ClientManager.removeClientNameFromStore(c.clientName, store);
           _clientsTearingDown.remove(c.clientName);
         }
         // #Pangea
