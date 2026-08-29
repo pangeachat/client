@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
+import 'package:fluffychat/routes/chat/calls/call_upload_gate.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
@@ -80,6 +81,10 @@ SpeechToTextResponseModel spokenWord(
 });
 
 void main() {
+  // These sinks take the process-wide upload gate, so its state has to start
+  // each test clean rather than carrying the last one's failures forward.
+  setUp(CallUploadGate.resetShared);
+
   late List<SpeechToTextRequestModel> sent;
 
   CallTranscriptSink sink({

@@ -569,14 +569,23 @@ class ActiveCall extends ChangeNotifier {
   /// late retraction is not a decision anyone made. The window separates the
   /// two without either side needing a new message.
   ///
-  /// Thirteen seconds, and the number is derived rather than guessed. The SDK
-  /// asks the homeserver to apply the delayed leave 18s after the last
-  /// restart, and restarts it every 4s, so the EARLIEST a server-written
-  /// retraction can appear is about 14s after a device stopped heartbeating.
-  /// Anything sooner cannot be the server's, so thirteen is as much room for
-  /// slow delivery as can be taken without ever mistaking the server's
-  /// cleanup for a decision -- and it stays inside [peerGraceWindow], so a
-  /// genuine vanish is unaffected.
+  /// Thirteen seconds, and the number is derived rather than guessed. The app
+  /// asks the homeserver to apply the delayed leave `CallDelayedLeave
+  /// .applyLeave` after the last restart and restarts it every
+  /// `CallDelayedLeave.maxRestart` at the slowest, so the EARLIEST a
+  /// server-written retraction can appear is the difference between those two
+  /// after a device stopped heartbeating. Anything sooner cannot be the
+  /// server's, so this is as much room for slow delivery as can be taken while
+  /// the retraction's own AGE still separates the two -- and it stays inside
+  /// [peerGraceWindow], so this check never shortens the grace a vanish gets.
+  /// It does not follow that the cleanup is never mistaken for a decision; the
+  /// two residuals below are the reasons why.
+  ///
+  /// Those two are the app's numbers, not the SDK's defaults, and they were
+  /// raised together precisely so this one stayed true; call_timeouts_test.dart
+  /// asserts the relation rather than leaving it to this comment. Raising the
+  /// restart interval alone moves that retraction EARLIER and is what would
+  /// break it.
   ///
   /// The original four seconds was chosen for how quickly a hangup normally
   /// arrives, not for what it had to be distinguished FROM, and any sync
@@ -588,6 +597,17 @@ class ActiveCall extends ChangeNotifier {
   /// their departure and delivered late from one written late and delivered
   /// at once. A sync slower than this degrades to the ordinary grace, which
   /// is the behaviour we had before and costs at most seven more seconds.
+  ///
+  /// And the residual in the OTHER direction, which is the worse one and is
+  /// not fixed here: the SFU keeps a departed participant for its own retention
+  /// ([peerGraceWindow] is matched to it), so when that retention outlasts the
+  /// homeserver's cleanup, the retraction arrives first -- or inside this
+  /// window -- and a crash reads as a hangup. Nothing local separates the two
+  /// at that moment: a deliberate hangup ALSO retracts while the SFU still
+  /// lists the person. Only the timing tells them apart, and it would take an
+  /// apply-leave longer than the SFU's retention plus this window to do it.
+  /// True of the SDK's own defaults as well, and tracked rather than papered
+  /// over.
   static const endedDeliberatelyWithin = Duration(seconds: 13);
 
   /// When the peer was first seen to be gone, or null while they are here.

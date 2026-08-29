@@ -11,6 +11,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
@@ -477,6 +478,29 @@ void main() {
       final service = CallService(await bareClient());
       expect(service.voipConstructed, isFalse);
     });
+
+    test(
+      'the SDK is given this app\'s delayed-leave timings, not its own',
+      () async {
+        // The SDK's defaults put a delayed-leave restart on the wire every four
+        // seconds per participant, all devices on the same period. The numbers
+        // that replace them, and why the two had to move together, are derived in
+        // call_timeouts_test.dart; this is the wiring -- without it every one of
+        // those numbers is a constant nothing reads.
+        final service = CallService(await bareClient());
+        final timeouts = service.voip.timeouts!;
+
+        expect(timeouts.delayedEventApplyLeave, CallDelayedLeave.applyLeave);
+        expect(
+          timeouts.delayedEventRestart,
+          greaterThanOrEqualTo(CallDelayedLeave.minRestart),
+        );
+        expect(
+          timeouts.delayedEventRestart,
+          lessThanOrEqualTo(CallDelayedLeave.maxRestart),
+        );
+      },
+    );
 
     test(
       'joining without a focus fails loudly rather than half-starting a call',
