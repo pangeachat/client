@@ -356,6 +356,28 @@ class CallCaptureService {
   /// what a mute should be. A muted device is not holding anybody's words.
   bool get capturingAudio => _running && !_stopping && _chunker != null;
 
+  /// Names the uninterrupted stretch of captured audio running now, or null
+  /// when none is.
+  ///
+  /// A TOKEN rather than a flag, because a sibling watching this from across
+  /// the SFU sees only the latest value an attribute ever held: attribute
+  /// writes are last-write-wins, so a stop and an immediate restart can leave
+  /// the watcher reading the same "yes" before and after and never learning
+  /// that anything happened in between. The audio in that gap belongs to
+  /// nobody, and the number changing is the only evidence of it.
+  ///
+  /// Counts RUNS, not sessions and not attach attempts. A run is the span
+  /// between a first frame and whatever ends it — a stop, a mute, a tap that
+  /// died — so a mute in the middle of a stretch shows up here as a break,
+  /// which is what it is. A sample-rate change does not: it swaps the chunker
+  /// inside one callback with no silence between, so the audio is continuous
+  /// and the token must not move.
+  String? get captureRun => capturingAudio ? '$_runCount' : null;
+
+  /// How many runs of captured audio this recorder has begun. Never reset
+  /// within a call, so a token is never reused.
+  int _runCount = 0;
+
   /// Told that audio has begun arriving, at the first frame of a run.
   ///
   /// Set by whoever owns the election, and the counterpart of [onCaptureLost].
@@ -863,9 +885,13 @@ class CallCaptureService {
     for (final chunk in chunker.add(samples)) {
       _hand(chunk);
     }
-    // AFTER the chunker exists, so a listener that reads [capturingAudio]
-    // straight out of this call sees the fact it is being told about.
-    if (firstFrameOfRun) onCaptureStarted?.call();
+    if (firstFrameOfRun) {
+      // Moved BEFORE the callback, so a listener that reads [captureRun]
+      // straight out of this call sees the run it is being told about rather
+      // than the previous one.
+      _runCount++;
+      onCaptureStarted?.call();
+    }
   }
 
   void _hand(PcmChunk chunk) {

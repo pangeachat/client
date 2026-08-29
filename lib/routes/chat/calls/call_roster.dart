@@ -39,19 +39,19 @@ class CallParticipant {
   /// must rank exactly as it did before capability existed.
   final bool canCapture;
 
-  /// That device's own word that audio is reaching its recorder RIGHT NOW, or
-  /// null when it has not said so.
+  /// What that device has said about whether it is recording, in the three
+  /// states it can say it in.
   ///
-  /// Silence is null, and null is the DEFAULT — the opposite polarity from
-  /// [canCapture] beside it, because the two answer different questions.
-  /// [canCapture] ranks a fleet and has to defer to a sibling it has not heard
-  /// from; this one is the only thing that ever authorises throwing captured
-  /// audio away, and deferring there destroys the copy.
+  /// Silent by default — the opposite polarity from [canCapture] beside it,
+  /// because the two answer different questions. [canCapture] ranks a fleet and
+  /// has to defer to a sibling it has not heard from; this one is the only
+  /// thing that ever authorises throwing captured audio away, and there silence
+  /// has to buy nothing in EITHER direction.
   ///
   /// Out of [==] for the same reason [joinedAt] is: presence dedups by set
   /// equality and this moves while the same people are in the same call.
   /// [state] is what carries it to the notify predicate.
-  final CaptureAttestation? capturing;
+  final CaptureReport? capturing;
 
   const CallParticipant({
     required this.userId,
@@ -104,7 +104,7 @@ class CallParticipant {
   CallParticipant describedBy({
     DateTime? joinedAt,
     bool canCapture = true,
-    CaptureAttestation? capturing,
+    CaptureReport? capturing,
   }) => CallParticipant(
     userId: userId,
     deviceId: deviceId,
@@ -120,7 +120,7 @@ class CallParticipant {
   /// is what the roster's notify predicate is built from: a hand-maintained
   /// list of "fields worth notifying about" is how a capability change came to
   /// land in silence.
-  (String, String?, DateTime?, bool, CaptureAttestation?) get state =>
+  (String, String?, DateTime?, bool, CaptureReport?) get state =>
       (userId, deviceId, joinedAt, canCapture, capturing);
 
   @override
@@ -227,16 +227,20 @@ class CallRoster extends ChangeNotifier {
   static const _canRecord = 'yes';
   static const _cannotRecord = 'no';
 
-  /// The attribute a device publishes while audio is ACTUALLY reaching its
-  /// recorder, and the value it takes when it is not.
+  /// The attribute a device publishes to say whether audio is ACTUALLY reaching
+  /// its recorder, and which uninterrupted stretch of it is running.
   ///
   /// A SECOND attribute rather than a richer value in the first one, because
   /// the two mean opposite things about silence and must never be able to be
   /// confused for one another. "I can record" is a claim about the device that
   /// stays true across the whole call; this is a claim about right now that a
   /// device is only entitled to make once a frame has actually arrived.
+  /// Published even while NOT recording, which the capability attribute never
+  /// is. That is the whole difference between a sibling that has told us it is
+  /// idle and one we have simply not heard from, and without it the two are the
+  /// same reading — which is how a sibling that was recording all along came to
+  /// be disqualified for a stretch it was holding.
   static const capturingAttribute = 'pangea_capturing';
-  static const _notCapturing = 'no';
 
   /// What a sibling's attributes say about whether it can record.
   ///
@@ -247,19 +251,16 @@ class CallRoster extends ChangeNotifier {
   static bool capableFromAttributes(Map<String, String> attributes) =>
       attributes[canCaptureAttribute] != _cannotRecord;
 
-  /// A sibling's own word that it is recording, or null when it has not given
-  /// one.
+  /// What a sibling's attributes say about whether it is recording.
   ///
-  /// The counterpart of what [announceCapturing] writes, and the mirror image
-  /// of [capableFromAttributes] directly above: there, anything but a refusal
-  /// is a yes; here, anything but the affirmative value is a no. Both defaults
-  /// are the safe one for the question being asked. Deferring to an unheard
-  /// sibling costs a stretch of the recording; believing an unheard sibling
-  /// holds a copy costs the copy.
-  static CaptureAttestation? attestationFromAttributes(
+  /// The counterpart of what [announceCapturing] writes. Unlike
+  /// [capableFromAttributes] directly above, this has no default to fall back
+  /// on: a device that has published nothing is SILENT, which is neither a yes
+  /// nor a no and settles nothing either way.
+  static CaptureReport captureReportFromAttributes(
     String deviceId,
     Map<String, String> attributes,
-  ) => CaptureAttestation.of(deviceId, attributes[capturingAttribute]);
+  ) => CaptureReport.of(deviceId, attributes[capturingAttribute]);
 
   /// The picture the last recompute produced. Everything public below is a view
   /// of it, so the stored state and the state listeners were told about cannot
@@ -427,15 +428,16 @@ class CallRoster extends ChangeNotifier {
   bool siblingCanCapture(String deviceId) =>
       _sibling(deviceId)?.canCapture ?? true;
 
-  /// One of this account's other devices attesting that it is recording, or
-  /// null.
+  /// What one of this account's other devices has said about whether it is
+  /// recording.
   ///
-  /// A device this account cannot see attests to NOTHING, which is the opposite
-  /// default from [siblingCanCapture] and is not an inconsistency: a sibling we
-  /// cannot see is one we have heard nothing from, and nothing is not a
-  /// statement that it holds a copy of what the learner just said.
-  CaptureAttestation? siblingCaptureAttestation(String deviceId) =>
-      _sibling(deviceId)?.capturing;
+  /// A device this account cannot see is SILENT, which is the opposite default
+  /// from [siblingCanCapture] and is not an inconsistency: a sibling we cannot
+  /// see is one we have heard nothing from, and nothing is neither a statement
+  /// that it holds a copy of what the learner just said nor a statement that it
+  /// does not.
+  CaptureReport siblingCaptureReport(String deviceId) =>
+      _sibling(deviceId)?.capturing ?? CaptureReport.of(deviceId, null);
 
   CallParticipant? _sibling(String deviceId) {
     for (final p in participants) {
@@ -531,29 +533,29 @@ class CallRoster extends ChangeNotifier {
         joinedAt: member.joinedAt,
       ),
       canCapture: capableFromAttributes(member.attributes),
-      // An identity with no device segment attests to nothing. There is no
-      // device to attribute the statement to, and an attestation that named
-      // nobody could be matched against any successor at all.
+      // An identity with no device segment says nothing. There is no device to
+      // attribute the statement to, and a report that named nobody could be
+      // matched against any successor at all.
       capturing: deviceId == null
           ? null
-          : attestationFromAttributes(deviceId, member.attributes),
+          : captureReportFromAttributes(deviceId, member.attributes),
     );
   }
 
   /// What this device's siblings have ACTUALLY been told, keyed by attribute.
   ///
-  /// Seeded with what silence already says, so announcing a value a sibling
-  /// would have assumed anyway costs no round trip: able, and not recording.
+  /// Seeded with what silence already says about CAPABILITY, so announcing a
+  /// value a sibling would have assumed anyway costs no round trip. There is
+  /// deliberately no such seed for the recording state: silence says nothing
+  /// there, so "I am not recording" is a sentence that has to actually be said,
+  /// and the first election of a call says it.
   /// Moved only once a write has landed, which is what makes it safe to rank
   /// on — the election reads the landed value rather than the live one, because
   /// a device that stood aside the instant it found out, while every sibling
   /// still read it as able, would tie them all on capability and lose the
   /// device-id tiebreak to itself, and nobody would record for as long as the
   /// signal stayed stuck.
-  final Map<String, String> _announced = {
-    canCaptureAttribute: _canRecord,
-    capturingAttribute: _notCapturing,
-  };
+  final Map<String, String> _announced = {canCaptureAttribute: _canRecord};
 
   /// What it wants them to be told. Differs from [_announced] precisely while
   /// an announcement is outstanding.
@@ -570,17 +572,19 @@ class CallRoster extends ChangeNotifier {
   Future<void> announceCanCapture(bool canCapture) =>
       _announce(canCaptureAttribute, canCapture ? _canRecord : _cannotRecord);
 
-  /// Tells them whether audio is reaching this device's recorder right now.
+  /// Tells them which uninterrupted stretch of audio is reaching this device's
+  /// recorder, or that none is.
   ///
-  /// Only ever said on the strength of a frame that actually arrived. This is
-  /// the one signal a displaced sibling is allowed to destroy its own captured
-  /// audio on, so a device that published it because it INTENDED to record
-  /// would be telling a sibling to throw away the only copy of what the learner
-  /// said.
-  Future<void> announceCapturing(bool capturing) => _announce(
-    capturingAttribute,
-    capturing ? CaptureAttestation.attested : _notCapturing,
-  );
+  /// ASSERTED LATE AND RETRACTED EARLY, and the asymmetry is the whole
+  /// discipline. A run is named only on the strength of a frame that actually
+  /// arrived, because this is the one signal a displaced sibling is allowed to
+  /// destroy its own captured audio on — a device that published it because it
+  /// INTENDED to record would be telling a sibling to throw away the only copy
+  /// of what the learner said. The retraction goes the other way and is
+  /// published on the INTENTION to stop, so it is already on the wire before
+  /// the audio stops rather than chasing it.
+  Future<void> announceCapturing(String? run) =>
+      _announce(capturingAttribute, CaptureReport.published(run));
 
   /// Publishes one fact, and everything else outstanding along with it.
   ///
@@ -687,7 +691,7 @@ class _RosterPicture {
     peerMuted: false,
   );
 
-  Set<(String, String?, DateTime?, bool, CaptureAttestation?)> get _states =>
+  Set<(String, String?, DateTime?, bool, CaptureReport?)> get _states =>
       participants.map((p) => p.state).toSet();
 
   @override

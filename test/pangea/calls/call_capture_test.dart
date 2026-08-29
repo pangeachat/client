@@ -1286,6 +1286,77 @@ void main() {
       },
     );
 
+    test('a run is named only once audio has actually arrived', () async {
+      // The token a sibling is allowed to destroy its own audio on. An attached
+      // tap that has produced nothing names no run at all.
+      final capture = service();
+      await capture.start(track);
+      expect(capture.captureRun, isNull);
+
+      track.emit(20);
+
+      expect(capture.captureRun, isNotNull);
+      await capture.stop();
+    });
+
+    test('a stop and a restart are DIFFERENT runs', () async {
+      // The whole reason it is a token. Attribute writes are last-write-wins,
+      // so a sibling watching this across the SFU can read the same value
+      // before and after a stop-restart pair and never learn the gap happened.
+      // The audio in that gap belongs to nobody.
+      final capture = service();
+      await capture.start(track);
+      track.emit(20);
+      final first = capture.captureRun;
+      await capture.stop();
+
+      await capture.start(track);
+      track.emit(20);
+
+      expect(capture.captureRun, isNotNull);
+      expect(capture.captureRun, isNot(first));
+      await capture.stop();
+    });
+
+    test('a mute and an unmute are different runs too', () async {
+      // A mute IS a gap in what this device holds, so it has to move the token
+      // exactly as a stop does.
+      final capture = service();
+      await capture.start(track);
+      track.emit(20);
+      final first = capture.captureRun;
+
+      capture.setMuted(true);
+      expect(capture.captureRun, isNull);
+      capture.setMuted(false);
+      track.emit(20);
+
+      expect(capture.captureRun, isNot(first));
+      await capture.stop();
+    });
+
+    test('a sample-rate change is the SAME run', () async {
+      // It swaps the chunker inside one callback with no silence between, so
+      // the audio is continuous. Moving the token here would tell a sibling
+      // about a gap that did not happen and cost a duplicate.
+      final capture = service();
+      await capture.start(track);
+      track.emit(20);
+      final first = capture.captureRun;
+
+      track.onFrame!(
+        AudioFrame(
+          sampleRate: 16000,
+          channels: captureChannels,
+          data: Int16List(320).buffer.asUint8List(),
+          format: AudioFormat.Int16,
+        ),
+      );
+
+      expect(capture.captureRun, first);
+      await capture.stop();
+    });
+
     test('a frame that arrives makes it true, and says so at once', () async {
       // Announced promptly rather than at the next election, because the window
       // it shortens is the one in which a sibling displacing this device cannot

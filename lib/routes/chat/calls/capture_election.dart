@@ -1,57 +1,160 @@
 import 'package:flutter/foundation.dart';
 
-/// One of this account's devices saying, of itself, that audio is reaching its
-/// recorder RIGHT NOW.
+/// What one of this account's devices has said about whether it is recording.
 ///
-/// The only currency [CaptureElection.discardsCapturedAudio] accepts as proof
-/// that somebody else holds a stretch this device is about to destroy, and the
-/// reason it is a type rather than a boolean. A boolean can be assembled out of
-/// whatever a caller had to hand — and the bug this replaced was exactly that:
-/// a sibling's [CaptureCandidate.canCapture], which is TRUE FOR SILENCE, was
-/// read as though the sibling had said it was recording. There is no
-/// constructor here that turns confidence into evidence. The only way to hold
-/// one is to have read the value a sibling actually published.
+/// THREE states, and the third one is the whole point. A device can be SILENT,
+/// it can DENY that it is recording, and it can ATTEST that it is — and silence
+/// is not a denial. Collapsing the two is what the first version of this did,
+/// in both directions and with a bug at each end: a sibling that had said
+/// nothing was read as recording, and later, a sibling that had said nothing
+/// was read as NOT recording and disqualified for the rest of a stretch it was
+/// actually holding.
+///
+/// Silence really does mean nothing here. An older build publishes none of
+/// this; a device whose write is still on the wire has published none of it
+/// YET; a value from a future version is not a sentence this build can read.
+/// None of those is a fact about what the device is doing, and neither
+/// destroying audio nor keeping a duplicate may rest on one.
+///
+/// [run] is what makes the attestation a claim about a SPAN rather than an
+/// instant. It names the uninterrupted stretch of captured audio the device is
+/// in the middle of, and it changes whenever that stretch breaks — so a watcher
+/// that saw `recording:4` before and `recording:5` now knows a gap happened
+/// even though the `no` between them never reached it. Attribute writes are
+/// last-write-wins and an observer sees only the latest, so without the token a
+/// stop and restart is INVISIBLE, and the audio in the gap belongs to nobody.
 @immutable
-class CaptureAttestation {
-  /// Which device said it.
+class CaptureReport {
+  /// Which device this is about.
   ///
   /// Carried so that evidence about one sibling can never license destroying a
   /// stretch a DIFFERENT sibling was supposed to be holding. The discard checks
   /// it rather than trusting the call site to have looked the right device up.
   final String deviceId;
 
-  const CaptureAttestation._(this.deviceId);
+  /// The uninterrupted stretch of captured audio it says it is in the middle
+  /// of, or null when it is not saying that.
+  final String? run;
 
-  /// The value a device publishes while, and only while, audio is actually
-  /// arriving at its recorder.
-  static const attested = 'recording';
+  /// Whether it has EXPLICITLY said it is not recording, as opposed to having
+  /// said nothing.
+  final bool denies;
 
-  /// Minted from what a sibling published, and from nothing else.
+  const CaptureReport._(this.deviceId, {this.run, this.denies = false});
+
+  static const _notRecording = 'no';
+  static const _runPrefix = 'recording:';
+
+  /// The value a device publishes to say what it is doing.
   ///
-  /// Null for silence, for an older build that publishes nothing, and for a
-  /// value from a future version this build does not understand. Every one of
-  /// those is an ABSENCE OF EVIDENCE rather than a denial, and the whole point
-  /// of this file is that absence never destroys audio.
+  /// A device in a call publishes this even while it is NOT recording, which
+  /// is the difference between a denial and a silence and therefore the only
+  /// reason a watcher can tell an idle sibling from one it has not heard from.
+  /// It costs one write per device per call.
+  static String published(String? run) =>
+      run == null ? _notRecording : '$_runPrefix$run';
+
+  /// Read back from what a sibling published, and from nothing else.
   ///
-  /// The polarity is deliberately the OPPOSITE of the capability attribute next
-  /// to it, and the two are not in tension. Capability RANKS, and being wrong
-  /// about it costs at most a couple of seconds in which the wrong device holds
-  /// the recording, which the next election takes back — so silence there reads
-  /// as ABLE and the fleet defers rather than deadlocking. This one AUTHORISES
-  /// DESTRUCTION, and being wrong about it costs a thing the learner said that
-  /// no device anywhere still holds. Nothing takes that back.
-  static CaptureAttestation? of(String deviceId, String? published) =>
-      published == attested ? CaptureAttestation._(deviceId) : null;
+  /// There is no constructor here that turns confidence into an attestation.
+  /// The only way to hold one is to have read an affirmative value a sibling
+  /// actually wrote, which is what stops a caller assembling the answer out of
+  /// whatever it had to hand — the shape of the original bug.
+  ///
+  /// The polarity is deliberately the opposite of the capability attribute this
+  /// sits beside, and the two are not in tension. Capability RANKS, and being
+  /// wrong about it costs at most a couple of seconds in which the wrong device
+  /// holds the recording, which the next election takes back — so silence there
+  /// reads as ABLE and the fleet defers rather than deadlocking. This one
+  /// AUTHORISES DESTRUCTION, and silence buys nothing at all.
+  factory CaptureReport.of(String deviceId, String? published) {
+    if (published == _notRecording) {
+      return CaptureReport._(deviceId, denies: true);
+    }
+    if (published != null && published.startsWith(_runPrefix)) {
+      final run = published.substring(_runPrefix.length);
+      if (run.isNotEmpty) return CaptureReport._(deviceId, run: run);
+    }
+    // Absent, empty, or a sentence from a build this one does not speak. Silent
+    // rather than denying: a value we cannot read is not a device telling us it
+    // has stopped, and treating it as one would disqualify a sibling that is
+    // recording perfectly well.
+    return CaptureReport._(deviceId);
+  }
 
   @override
   bool operator ==(Object other) =>
-      other is CaptureAttestation && other.deviceId == deviceId;
+      other is CaptureReport &&
+      other.deviceId == deviceId &&
+      other.run == run &&
+      other.denies == denies;
 
   @override
-  int get hashCode => deviceId.hashCode;
+  int get hashCode => Object.hash(deviceId, run, denies);
 
   @override
-  String toString() => 'CaptureAttestation($deviceId)';
+  String toString() =>
+      'CaptureReport($deviceId, ${run == null ? (denies ? 'not recording' : 'silent') : 'recording $run'})';
+}
+
+/// What this device has watched its siblings do while IT was recording.
+///
+/// The discard asks whether a successor held the whole stretch about to be
+/// destroyed, and one reading answers only for the instant it was taken. This
+/// is the ledger that turns a sequence of instants into a statement about the
+/// span — and, just as importantly, the place that decides what counts as a
+/// break, so no call site has to.
+///
+/// It records BREAKS ONLY, and only ones a sibling actually declared: a denial,
+/// or a run token different from the one it was first seen in. A stretch this
+/// device watched in silence is not a break, because silence is not a fact —
+/// that is the rule the previous version broke, latching "I have not heard from
+/// it" into a permanent "it was not recording" that no later attestation could
+/// lift.
+///
+/// What it CANNOT see is a sibling that was not in the roster at all. That gap
+/// is real and is covered elsewhere, by the join stamps: a successor whose join
+/// is provably earlier was in the call for the whole stretch even if this
+/// device could not see it for part of it.
+class CaptureWatch {
+  /// The run each sibling was first seen in during the stretch running now.
+  final Map<String, String> _firstSeenRun = {};
+
+  /// Siblings that broke continuity while this stretch was running.
+  final Set<String> _interrupted = {};
+
+  /// Starts a fresh stretch. Everything watched during the previous one says
+  /// nothing about this one.
+  void restart() {
+    _firstSeenRun.clear();
+    _interrupted.clear();
+  }
+
+  /// Takes one reading of one sibling.
+  ///
+  /// Called for every sibling at every election, so what accumulates is the
+  /// whole of what this device saw while it was recording.
+  void observe(CaptureReport report) {
+    if (report.denies) {
+      _interrupted.add(report.deviceId);
+      return;
+    }
+    final run = report.run;
+    if (run == null) return;
+    final first = _firstSeenRun[report.deviceId];
+    if (first == null) {
+      _firstSeenRun[report.deviceId] = run;
+    } else if (first != run) {
+      // It stopped and started again. The `no` in between may never have
+      // reached us — attributes are last-write-wins — so the token is the only
+      // evidence the gap happened, and the audio in it belongs to nobody.
+      _interrupted.add(report.deviceId);
+    }
+  }
+
+  /// Whether anything this device watched rules the sibling out for the stretch
+  /// running now.
+  bool interrupted(String deviceId) => _interrupted.contains(deviceId);
 }
 
 /// One device in the running to record a call, and whether it can.
@@ -208,35 +311,47 @@ class CaptureElection {
   ///
   ///   AUDIO IS DESTROYED ONLY ON POSITIVE EVIDENCE THAT ANOTHER DEVICE HOLDS
   ///   THE SAME STRETCH. Every input has to be something a device affirmatively
-  ///   established. The absence of a denial is not evidence, and neither is a
-  ///   measurement too coarse to answer the question being asked of it.
+  ///   established. The absence of a denial is not evidence, the absence of an
+  ///   attestation is not evidence either, and neither is a measurement too
+  ///   coarse to answer the question being asked of it.
+  ///
+  /// The middle clause is the one that took two goes to get right, because it
+  /// cuts BOTH ways and each direction has its own bug. Reading silence as "it
+  /// recorded" throws away the only copy. Reading silence as "it did not
+  /// record" — and remembering that for the rest of a stretch — keeps a
+  /// duplicate of audio a sibling really was holding. Neither is a reading;
+  /// they are two ways of inventing one. Silence is handled by having devices
+  /// SAY they are not recording, so an idle sibling is a denial and only a
+  /// sibling we have genuinely not heard from is silent.
   ///
   /// The rule is stated here once and enforced by the SHAPE of the arguments
-  /// rather than by each caller remembering it. [successorIsRecording] cannot
-  /// be spelled as a boolean somebody was confident about; the only way to hold
-  /// a [CaptureAttestation] is to have read the value a sibling published.
-  /// [seenNotRecording] is a set of observations rather than a verdict, so a
-  /// caller can hand over the wrong facts but not the wrong conclusion. The
-  /// version this replaced took a `bool` for the whole question, and the caller
+  /// rather than by each caller remembering it. [successorReport] cannot be
+  /// spelled as a boolean somebody was confident about; the only way to hold an
+  /// attesting one is to have read the value a sibling published. [watch] is
+  /// fed raw readings and decides for itself what breaks a span, so a caller
+  /// can hand over the wrong facts but not the wrong conclusion. The version
+  /// this replaced took a `bool` for the whole question, and the caller
   /// assembled it from the nearest thing to hand that read like an answer.
   ///
   /// FOUR THINGS HAVE TO BE TRUE, and each of them fails CLOSED.
   ///
-  /// THE SUCCESSOR HAS TO SAY IT IS RECORDING. Not that it CAN: capability is
-  /// true for silence by design, so a sibling whose tap attached and then never
-  /// produced a frame goes on advertising "able" until its own watchdog fires
-  /// fifteen seconds later — which is the failure the watchdog exists to
-  /// detect. Reading that as "it recorded" is how the one captured copy of a
-  /// learner's words came to be thrown away by the device that held it.
+  /// THE SUCCESSOR HAS TO BE ATTESTING, IN A NAMED RUN. Not that it CAN
+  /// record: capability is true for silence by design, so a sibling whose tap
+  /// attached and then never produced a frame goes on advertising "able" until
+  /// its own watchdog fires fifteen seconds later — which is the failure the
+  /// watchdog exists to detect. And not a bare "yes" either: the run token is
+  /// what lets [watch] see a stop-and-restart that last-write-wins attributes
+  /// would otherwise hide completely.
   ///
-  /// THE ATTESTATION HAS TO BE ABOUT THE SUCCESSOR. Checked here rather than
-  /// left to the call site, because a lookup against the wrong device id is
-  /// exactly the kind of mistake that reads correctly.
+  /// THE REPORT HAS TO BE ABOUT THE SUCCESSOR. Checked here rather than left to
+  /// the call site, because a lookup against the wrong device id is exactly the
+  /// kind of mistake that reads correctly.
   ///
-  /// AND IT HAS TO COVER THE WHOLE STRETCH. [seenNotRecording] is every sibling
-  /// this device has observed, at any point while this stretch was running,
-  /// NOT recording. A successor that only started when it took over holds none
-  /// of what came before, whatever it is doing now.
+  /// AND NOTHING WATCHED DURING THE STRETCH MAY HAVE BROKEN IT. A successor
+  /// that denied recording at any point while this stretch ran, or that has
+  /// changed run since it was first seen in one, holds a stretch with a hole in
+  /// it — and a hole anywhere is fatal, because what is being destroyed is the
+  /// whole tail and not the part that overlaps.
   ///
   /// AND THE JOIN STAMPS HAVE TO ORDER THE TWO DEVICES AT THE RESOLUTION THEY
   /// ACTUALLY CARRY. `Participant.joinedAt` is derived from a whole-SECOND
@@ -248,16 +363,19 @@ class CaptureElection {
   /// stamp a full resolution step earlier proves the successor was already
   /// there, and a stretch cannot begin before the device recording it joined.
   ///
-  /// WHAT THIS GIVES UP, deliberately and with a way back. Two devices that
-  /// genuinely answered in the same instant read as equal, and equal no longer
-  /// discards — so that race now ends in a delivered duplicate rather than in a
-  /// gamble on whether the loser's opening second was the only copy. A
-  /// duplicate is a wrong number in a learner's analytics; a discard that
-  /// guessed wrong is something the learner said that nothing anywhere still
-  /// has. The way back is not a looser rule, it is a better measurement: the
-  /// SFU already sends a millisecond join stamp (`ParticipantInfo.joined_at_ms`)
-  /// and livekit_client 2.11.0 simply does not expose it. When it does,
-  /// [joinStampResolution] drops and the same rule discards the race again.
+  /// WHAT THIS STILL CANNOT DO, stated rather than papered over. Every reading
+  /// here is of a snapshot the SFU sent at some earlier, unknowable instant, so
+  /// a successor that stopped moments ago can still be showing as attesting.
+  /// Audio captured inside that window is destroyed on evidence that was true
+  /// when it was published and false by the time it was read. No
+  /// publish-and-observe scheme closes it: a device cannot learn another
+  /// device's PRESENT state, only what it published at some point in the past,
+  /// and LiveKit exposes no server sequence or timestamp against which a
+  /// snapshot could be called current. What narrows it is the publishing
+  /// discipline on the other side — an attestation is asserted only after audio
+  /// has actually flowed, and retracted the moment stopping is INTENDED, so the
+  /// retraction is already on the wire before the audio stops. The residue is
+  /// the signal delay itself.
   ///
   /// Note what is NOT here any more. Whether WE could record, and whether the
   /// successor merely out-ranked us on capability, both used to be terms. An
@@ -265,14 +383,14 @@ class CaptureElection {
   /// is not a device that lost the tiebreak while recording nothing.
   static bool discardsCapturedAudio({
     required CaptureCandidate successor,
-    required CaptureAttestation? successorIsRecording,
-    required Set<String> seenNotRecording,
+    required CaptureReport successorReport,
+    required CaptureWatch watch,
     DateTime? myJoinedAt,
     DateTime? successorJoinedAt,
   }) {
-    if (successorIsRecording == null) return false;
-    if (successorIsRecording.deviceId != successor.deviceId) return false;
-    if (seenNotRecording.contains(successor.deviceId)) return false;
+    if (successorReport.deviceId != successor.deviceId) return false;
+    if (successorReport.run == null) return false;
+    if (watch.interrupted(successor.deviceId)) return false;
     if (myJoinedAt == null || successorJoinedAt == null) return false;
     return !successorJoinedAt.add(joinStampResolution).isAfter(myJoinedAt);
   }

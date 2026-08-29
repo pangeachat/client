@@ -196,20 +196,24 @@ void main() {
     final muchLater = noon.add(const Duration(seconds: 5));
 
     const successor = CaptureCandidate('AAAA');
-    final itIsRecording = CaptureAttestation.of(
-      'AAAA',
-      CaptureAttestation.attested,
-    );
+
+    /// What a device publishes while recording an uninterrupted run.
+    String inRun(String run) => CaptureReport.published(run);
+
+    /// A watch that saw the successor in one uninterrupted run all along.
+    CaptureWatch watchedRecording([String run = '7']) =>
+        CaptureWatch()..observe(CaptureReport.of('AAAA', inRun(run)));
 
     bool discards({
-      CaptureAttestation? attestation,
-      Set<String> seenNotRecording = const {},
+      String? published,
+      CaptureWatch? watch,
       DateTime? mine,
       DateTime? theirs,
+      String reportedDevice = 'AAAA',
     }) => CaptureElection.discardsCapturedAudio(
       successor: successor,
-      successorIsRecording: attestation,
-      seenNotRecording: seenNotRecording,
+      successorReport: CaptureReport.of(reportedDevice, published),
+      watch: watch ?? watchedRecording(),
       myJoinedAt: mine,
       successorJoinedAt: theirs,
     );
@@ -217,37 +221,73 @@ void main() {
     test('a successor recording since before we joined takes our tail', () {
       // The one shape that proves it. Its join stamp is a whole resolution step
       // earlier, so the second it names had ENDED before the second ours began
-      // -- it was in the call first however the sub-second truth fell -- and it
-      // says, of itself, that audio is reaching its recorder.
+      // -- it was in the call first however the sub-second truth fell -- it
+      // says of itself that audio is reaching its recorder, and it has been in
+      // the same run for the whole of the stretch about to be dropped.
       expect(
-        discards(attestation: itIsRecording, mine: aSecondLater, theirs: noon),
+        discards(published: inRun('7'), mine: aSecondLater, theirs: noon),
         isTrue,
       );
     });
 
     test('a successor that only says it CAN record keeps our tail', () {
-      // THE BLOCKER. Capability is true for silence by design, so a device
-      // whose tap attached and then never produced a frame goes on advertising
-      // "able" until its own watchdog fires fifteen seconds later. Nothing here
-      // may read that as "it recorded": the successor holds nothing, and this
-      // tail is the only copy of what the learner said.
+      // Capability is true for silence by design, so a device whose tap
+      // attached and then never produced a frame goes on advertising "able"
+      // until its own watchdog fires fifteen seconds later. Nothing here may
+      // read that as "it recorded": the successor holds nothing, and this tail
+      // is the only copy of what the learner said.
       expect(
-        discards(attestation: null, mine: aSecondLater, theirs: noon),
+        discards(
+          published: null,
+          watch: CaptureWatch(),
+          mine: aSecondLater,
+          theirs: noon,
+        ),
         isFalse,
       );
     });
 
-    test('an attestation from a different device keeps our tail', () {
-      // Evidence about one sibling can never license destroying a stretch a
-      // DIFFERENT sibling was supposed to be holding. Checked here rather than
-      // trusted to the call site, because a lookup against the wrong device id
-      // is the kind of mistake that reads correctly.
+    test('a successor that says it is NOT recording keeps our tail', () {
       expect(
         discards(
-          attestation: CaptureAttestation.of(
-            'ZZZZ',
-            CaptureAttestation.attested,
-          ),
+          published: CaptureReport.published(null),
+          watch: CaptureWatch(),
+          mine: aSecondLater,
+          theirs: noon,
+        ),
+        isFalse,
+      );
+    });
+
+    test('a value this build cannot read keeps our tail', () {
+      // A device speaking a later dialect is not a device telling us anything.
+      // It must not attest and it must not deny -- the second is what would
+      // wrongly disqualify a sibling that is recording perfectly well.
+      expect(
+        discards(
+          published: 'recording',
+          watch: CaptureWatch(),
+          mine: aSecondLater,
+          theirs: noon,
+        ),
+        isFalse,
+      );
+      expect(
+        CaptureReport.of('AAAA', 'recording').denies,
+        isFalse,
+        reason: 'it is silence, not a denial',
+      );
+    });
+
+    test('a report about a different device keeps our tail', () {
+      // Evidence about one sibling can never license destroying a stretch a
+      // DIFFERENT sibling was supposed to be holding. Checked in the rule
+      // rather than trusted to the call site, because a lookup against the
+      // wrong device id is the kind of mistake that reads correctly.
+      expect(
+        discards(
+          published: inRun('7'),
+          reportedDevice: 'ZZZZ',
           mine: aSecondLater,
           theirs: noon,
         ),
@@ -261,34 +301,16 @@ void main() {
       // read equality as "the successor was here first": a device that joined
       // at 12:00:00.001 and recorded until a sibling joined at 12:00:00.900
       // threw away nine hundred milliseconds the sibling was never in the room
-      // for. Delivering costs a duplicate; discarding costs a copy nothing
-      // else has.
+      // for.
       expect(
-        discards(attestation: itIsRecording, mine: noon, theirs: noon),
+        discards(published: inRun('7'), mine: noon, theirs: noon),
         isFalse,
       );
     });
 
     test('a successor that arrived after us keeps our tail', () {
       expect(
-        discards(attestation: itIsRecording, mine: noon, theirs: muchLater),
-        isFalse,
-      );
-    });
-
-    test('a successor seen not recording during our stretch keeps it', () {
-      // It is recording NOW and its join stamp is early enough, so every
-      // instantaneous reading says discard. But it was watched, while this
-      // stretch was running, not recording -- so it started when it took over
-      // and holds none of what came before. This term is what overrules the
-      // other two.
-      expect(
-        discards(
-          attestation: itIsRecording,
-          seenNotRecording: {'AAAA'},
-          mine: aSecondLater,
-          theirs: noon,
-        ),
+        discards(published: inRun('7'), mine: noon, theirs: muchLater),
         isFalse,
       );
     });
@@ -297,33 +319,123 @@ void main() {
       // Discarding a learner's speech on the strength of a number nobody
       // stamped is the one outcome this must not produce.
       expect(
-        discards(attestation: itIsRecording, mine: null, theirs: noon),
+        discards(published: inRun('7'), mine: null, theirs: noon),
         isFalse,
       );
       expect(
-        discards(attestation: itIsRecording, mine: aSecondLater, theirs: null),
+        discards(published: inRun('7'), mine: aSecondLater, theirs: null),
         isFalse,
       );
     });
   });
 
-  group('what counts as a device saying it is recording', () {
-    test('only the value a device actually publishes mints one', () {
-      expect(
-        CaptureAttestation.of('AAAA', CaptureAttestation.attested)?.deviceId,
-        'AAAA',
-      );
+  group('what a watcher makes of a stretch it watched', () {
+    final noon = DateTime.utc(2026, 8, 29, 12, 0, 0);
+    final aSecondLater = noon.add(const Duration(seconds: 1));
+    const successor = CaptureCandidate('AAAA');
+
+    bool discardsWith(CaptureWatch watch, {String published = 'recording:7'}) =>
+        CaptureElection.discardsCapturedAudio(
+          successor: successor,
+          successorReport: CaptureReport.of('AAAA', published),
+          watch: watch,
+          myJoinedAt: aSecondLater,
+          successorJoinedAt: noon,
+        );
+
+    test('a denial anywhere in the stretch keeps our tail', () {
+      // It is recording NOW and its join stamp is early enough, so every
+      // instantaneous reading says discard. But it told us, while this stretch
+      // was running, that it was not -- so it started when it took over and
+      // holds none of what came before.
+      final watch = CaptureWatch()
+        ..observe(CaptureReport.of('AAAA', CaptureReport.published(null)))
+        ..observe(CaptureReport.of('AAAA', 'recording:7'));
+
+      expect(discardsWith(watch), isFalse);
     });
 
-    test('silence, a refusal and a value from the future all mint none', () {
-      // Every one of these is an ABSENCE of evidence rather than a statement,
-      // and absence never destroys audio. An older build that publishes nothing
-      // and a future build that publishes something this one cannot read are
-      // the same case.
-      expect(CaptureAttestation.of('AAAA', null), isNull);
-      expect(CaptureAttestation.of('AAAA', 'no'), isNull);
-      expect(CaptureAttestation.of('AAAA', 'recording-v2'), isNull);
-      expect(CaptureAttestation.of('AAAA', ''), isNull);
+    test('a run that changed mid-stretch keeps our tail', () {
+      // THE CASE A FLAG CANNOT SEE. Attribute writes are last-write-wins, so a
+      // sibling that stopped and restarted can leave a watcher reading "yes"
+      // before and "yes" after, with the `no` in between never delivered. The
+      // token changing is the only evidence the gap happened, and the audio in
+      // it belongs to nobody.
+      final watch = CaptureWatch()
+        ..observe(CaptureReport.of('AAAA', 'recording:7'))
+        ..observe(CaptureReport.of('AAAA', 'recording:8'));
+
+      expect(discardsWith(watch, published: 'recording:8'), isFalse);
+    });
+
+    test('silence in the middle of a stretch is not a break', () {
+      // THE OTHER HALF, and the direction the previous version got wrong. A
+      // reading in which the sibling had published nothing yet is not the
+      // sibling saying it was idle -- it is us not having heard. Latching that
+      // into a denial kept a duplicate of a stretch the sibling really held,
+      // and no later attestation could lift it.
+      final watch = CaptureWatch()
+        ..observe(CaptureReport.of('AAAA', null))
+        ..observe(CaptureReport.of('AAAA', 'recording:7'));
+
+      expect(discardsWith(watch), isTrue);
+    });
+
+    test('the same run seen over and over is one uninterrupted stretch', () {
+      final watch = CaptureWatch();
+      for (var i = 0; i < 5; i++) {
+        watch.observe(CaptureReport.of('AAAA', 'recording:7'));
+      }
+      expect(discardsWith(watch), isTrue);
+    });
+
+    test('a break against one sibling says nothing about another', () {
+      final watch = CaptureWatch()
+        ..observe(CaptureReport.of('ZZZZ', CaptureReport.published(null)))
+        ..observe(CaptureReport.of('AAAA', 'recording:7'));
+
+      expect(watch.interrupted('ZZZZ'), isTrue);
+      expect(discardsWith(watch), isTrue);
+    });
+
+    test('a new stretch forgets what the previous one watched', () {
+      // What was watched while a DIFFERENT stretch was running says nothing
+      // about this one. Left uncleared, one sibling's hiccup would disqualify
+      // it for the rest of the call.
+      final watch = CaptureWatch()
+        ..observe(CaptureReport.of('AAAA', CaptureReport.published(null)));
+      expect(discardsWith(watch), isFalse);
+
+      watch.restart();
+      watch.observe(CaptureReport.of('AAAA', 'recording:7'));
+
+      expect(discardsWith(watch), isTrue);
+    });
+  });
+
+  group('what a device is heard to say about its own recording', () {
+    test('an affirmative run is read back as that run', () {
+      final report = CaptureReport.of('AAAA', CaptureReport.published('42'));
+      expect(report.run, '42');
+      expect(report.denies, isFalse);
+      expect(report.deviceId, 'AAAA');
+    });
+
+    test('an explicit no is a denial, not a silence', () {
+      final report = CaptureReport.of('AAAA', CaptureReport.published(null));
+      expect(report.run, isNull);
+      expect(report.denies, isTrue);
+    });
+
+    test('silence is neither', () {
+      // Three states, and this is the one the two bugs collapsed. An older
+      // build publishes nothing; a device whose write is still on the wire has
+      // published nothing YET. Neither is a sentence.
+      for (final published in [null, '', 'recording', 'recording:', 'later']) {
+        final report = CaptureReport.of('AAAA', published);
+        expect(report.run, isNull, reason: 'not an attestation: $published');
+        expect(report.denies, isFalse, reason: 'not a denial: $published');
+      }
     });
   });
 }

@@ -493,27 +493,30 @@ void main() {
   });
 
   group('what a device says about whether it IS recording', () {
-    test('a device that has published nothing attests to nothing', () async {
-      // The MIRROR IMAGE of the capability default directly above, and not an
-      // inconsistency. Deferring to a sibling we have not heard from costs a
-      // stretch of the recording; believing an unheard sibling holds a copy of
-      // what the learner said costs the copy.
+    test('a device that has published nothing is SILENT', () async {
+      // Not a denial. An older build publishes none of this and a device whose
+      // write is still on the wire has published none of it yet, and reading
+      // either as "it is idle" disqualifies a sibling that may be recording
+      // perfectly well -- which is how a duplicate of a held stretch was kept.
       roster.identities = {'$me:MYOTHERPHONE'};
       roster.recompute();
 
-      expect(roster.siblingCaptureAttestation('MYOTHERPHONE'), isNull);
+      final report = roster.siblingCaptureReport('MYOTHERPHONE');
+      expect(report.run, isNull);
+      expect(report.denies, isFalse);
     });
 
-    test('a device nobody can see attests to nothing either', () {
+    test('a device nobody can see is silent too', () {
       roster.recompute();
-      expect(roster.siblingCaptureAttestation('NEVERHEARDOFIT'), isNull);
+      final report = roster.siblingCaptureReport('NEVERHEARDOFIT');
+      expect(report.run, isNull);
+      expect(report.denies, isFalse);
     });
 
     test('saying it CAN record is not saying it IS', () async {
-      // The blocker, at the seam it enters through. A device whose tap attached
-      // and then delivered nothing goes on advertising "able" until its own
-      // watchdog fires; nothing here may turn that into evidence that it
-      // recorded anything.
+      // A device whose tap attached and then delivered nothing goes on
+      // advertising "able" until its own watchdog fires; nothing here may turn
+      // that into evidence that it recorded anything.
       roster.identities = {'$me:MYOTHERPHONE'};
       roster.attributes = {
         '$me:MYOTHERPHONE': {CallRoster.canCaptureAttribute: 'yes'},
@@ -521,58 +524,87 @@ void main() {
       roster.recompute();
 
       expect(roster.siblingCanCapture('MYOTHERPHONE'), isTrue);
-      expect(roster.siblingCaptureAttestation('MYOTHERPHONE'), isNull);
+      expect(roster.siblingCaptureReport('MYOTHERPHONE').run, isNull);
     });
 
-    test('a device that says it is recording is taken at its word', () {
+    test('a device that names a run is taken at its word', () {
       roster.identities = {'$me:MYOTHERPHONE'};
       roster.attributes = {
         '$me:MYOTHERPHONE': {
-          CallRoster.capturingAttribute: CaptureAttestation.attested,
+          CallRoster.capturingAttribute: CaptureReport.published('3'),
         },
       };
       roster.recompute();
 
-      expect(
-        roster.siblingCaptureAttestation('MYOTHERPHONE')?.deviceId,
-        'MYOTHERPHONE',
-      );
+      final report = roster.siblingCaptureReport('MYOTHERPHONE');
+      expect(report.run, '3');
+      expect(report.deviceId, 'MYOTHERPHONE');
     });
 
-    test('a change to it alone notifies listeners', () {
-      // Same participant set, same mute state, same join times, same
-      // capability. A sibling starting or stopping is exactly the shape of
-      // change the discard now depends on, and the predicate has to see it.
+    test('a device that says no is DENYING, which silence is not', () {
       roster.identities = {'$me:MYOTHERPHONE'};
+      roster.attributes = {
+        '$me:MYOTHERPHONE': {
+          CallRoster.capturingAttribute: CaptureReport.published(null),
+        },
+      };
+      roster.recompute();
+
+      expect(roster.siblingCaptureReport('MYOTHERPHONE').denies, isTrue);
+    });
+
+    test('a run changing alone notifies listeners', () {
+      // Same participant set, same mute state, same join times, same
+      // capability. A sibling stopping and restarting is exactly the shape of
+      // change the discard now depends on, and the predicate has to see it --
+      // the run token is the only trace such a pair leaves.
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.attributes = {
+        '$me:MYOTHERPHONE': {
+          CallRoster.capturingAttribute: CaptureReport.published('3'),
+        },
+      };
       roster.recompute();
       final before = notifications;
 
       roster.attributes = {
         '$me:MYOTHERPHONE': {
-          CallRoster.capturingAttribute: CaptureAttestation.attested,
+          CallRoster.capturingAttribute: CaptureReport.published('4'),
         },
       };
       roster.recompute();
 
       expect(notifications, greaterThan(before));
-      expect(roster.siblingCaptureAttestation('MYOTHERPHONE'), isNotNull);
+      expect(roster.siblingCaptureReport('MYOTHERPHONE').run, '4');
     });
   });
 
   group('telling the other devices what this one is doing', () {
-    test('nothing is written while there is nothing to say', () async {
-      // Siblings already read silence as NOT recording, so announcing that
-      // before anything has started is a round trip that buys nothing.
-      await roster.announceCapturing(false);
-      expect(roster.published, isEmpty);
-    });
-
-    test('a device that is recording says so', () async {
-      await roster.announceCapturing(true);
+    test('an idle device SAYS it is idle', () async {
+      // The capability attribute can stay silent because silence already means
+      // able. This one cannot: silence here means nothing at all, so a device
+      // that is not recording has to say so or a sibling cannot tell it from
+      // one it has not heard from. One write per device per call.
+      await roster.announceCapturing(null);
 
       expect(roster.published, [
-        {CallRoster.capturingAttribute: CaptureAttestation.attested},
+        {CallRoster.capturingAttribute: CaptureReport.published(null)},
       ]);
+    });
+
+    test('a recording device names its run', () async {
+      await roster.announceCapturing('5');
+
+      expect(roster.published, [
+        {CallRoster.capturingAttribute: CaptureReport.published('5')},
+      ]);
+    });
+
+    test('the same run twice is not written twice', () async {
+      await roster.announceCapturing('5');
+      await roster.announceCapturing('5');
+
+      expect(roster.published, hasLength(1));
     });
 
     test('both facts travel in ONE write', () async {
@@ -584,35 +616,32 @@ void main() {
       roster.holdPublish = held;
       final first = roster.announceCanCapture(false);
       await pumpEventQueue();
-      final second = roster.announceCapturing(true);
+      final second = roster.announceCapturing('5');
       held.complete();
       await first;
       await second;
 
       expect(roster.published, [
         {CallRoster.canCaptureAttribute: 'no'},
-        {CallRoster.capturingAttribute: CaptureAttestation.attested},
+        {CallRoster.capturingAttribute: CaptureReport.published('5')},
       ]);
       expect(roster.announcedCanCapture, isFalse);
     });
 
-    test(
-      'an outstanding attestation is re-asserted on the next recompute',
-      () async {
-        roster.publishError = StateError('Signal request timed out');
-        await roster.announceCapturing(true);
-        expect(roster.published, hasLength(1), reason: 'it did not spin');
+    test('an outstanding run is re-asserted on the next recompute', () async {
+      roster.publishError = StateError('Signal request timed out');
+      await roster.announceCapturing('5');
+      expect(roster.published, hasLength(1), reason: 'it did not spin');
 
-        roster.publishError = null;
-        roster.recompute();
-        await pumpEventQueue();
+      roster.publishError = null;
+      roster.recompute();
+      await pumpEventQueue();
 
-        expect(roster.published, hasLength(2));
-        expect(roster.published.last, {
-          CallRoster.capturingAttribute: CaptureAttestation.attested,
-        });
-      },
-    );
+      expect(roster.published, hasLength(2));
+      expect(roster.published.last, {
+        CallRoster.capturingAttribute: CaptureReport.published('5'),
+      });
+    });
   });
 
   group('telling the other devices whether this one can record', () {

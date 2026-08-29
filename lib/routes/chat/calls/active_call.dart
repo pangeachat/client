@@ -71,19 +71,26 @@ class ActiveCall extends ChangeNotifier {
   Future<void>? _hangUp;
   bool _disposed = false;
 
-  /// Which of this account's other devices have been SEEN NOT RECORDING at some
-  /// point during the stretch this device is recording now.
+  /// What this device has watched its siblings do while it was recording.
   ///
   /// The discard asks whether a successor was recording the seconds this device
-  /// is about to drop, and an attestation read at the instant of the handover
-  /// cannot answer that: a sibling that started recording when it took over
-  /// holds none of what came before. This is the span the instantaneous reading
-  /// is missing.
+  /// is about to drop, and a report read at the instant of the handover cannot
+  /// answer that: a sibling that started recording when it took over holds none
+  /// of what came before. This is the span the instantaneous reading is
+  /// missing. The ledger decides for itself what counts as a break, so nothing
+  /// here has to.
+  final CaptureWatch _watch = CaptureWatch();
+
+  /// Which run of OUR OWN captured audio the ledger describes.
   ///
-  /// Only ever added to while a stretch runs, so a sibling that started
-  /// recording midway stays disqualified for the rest of that stretch and the
-  /// tail is delivered.
-  final Set<String> _seenNotRecordingWhileRecording = {};
+  /// Keyed to the run rather than to "am I recording", because those differ at
+  /// exactly the moment that matters. A stretch ENDING also reads as not
+  /// recording, and clearing the ledger there threw away the record of what the
+  /// successor was doing immediately before the decision that reads it — which
+  /// is the whole stretch's worth of watching, discarded one election too
+  /// early. A ledger is opened by a new stretch of our audio starting and by
+  /// nothing else.
+  String? _watchedRun;
 
   /// Set the moment anything asks the call to end. [start] checks it after every
   /// await, so a hangup that lands mid-connect stops the sequence instead of
@@ -315,6 +322,14 @@ class ActiveCall extends ChangeNotifier {
 
   /// Tells this account's other devices what this one is ACTUALLY doing.
   ///
+  /// GATED ON [_wanted] AS WELL AS ON THE RECORDER, which is what makes the
+  /// retraction early rather than late. A sibling reads this to decide whether
+  /// to destroy its own captured audio, and every reading it takes is of a
+  /// snapshot published some unknowable time earlier — so the moment this
+  /// device DECIDES to stop is the moment the "no" has to start travelling, not
+  /// the moment the audio actually stops. The assertion is the other way round
+  /// and waits for a frame: intent is not evidence that anything was recorded.
+  ///
   /// Level-triggered like everything else here: it publishes the current answer
   /// rather than a transition, so a missed call costs one round trip and not
   /// the truth. The roster coalesces, so calling it from several places is a
@@ -322,7 +337,7 @@ class ActiveCall extends ChangeNotifier {
   void _announceCaptureState() {
     final roster = _roster;
     if (roster == null) return;
-    unawaited(roster.announceCapturing(capture.capturingAudio));
+    unawaited(roster.announceCapturing(_wanted ? capture.captureRun : null));
   }
 
   /// The recorder stopped itself, because its tap died.
@@ -479,7 +494,14 @@ class ActiveCall extends ChangeNotifier {
   /// Gates the recording to match the microphone button. Muting stops LiveKit
   /// publishing to the peer; this stops the recorder capturing too, which on
   /// Android it otherwise would — the tap there is upstream of the publish mute.
-  void setMuted(bool muted) => capture.setMuted(muted);
+  void setMuted(bool muted) {
+    capture.setMuted(muted);
+    // A mute ends the run, which is a break in what this device is holding and
+    // therefore something its siblings have to be told at once rather than on
+    // the next presence tick. Synchronous with the mute, so there is no instant
+    // in which the audio has stopped and the siblings still read a run.
+    _announceCaptureState();
+  }
 
   /// Starts or stops recording to match which device should be recording now.
   ///
@@ -526,11 +548,6 @@ class ActiveCall extends ChangeNotifier {
     unawaited(
       roster?.announceCanCapture(canRecordHere) ?? Future<void>.value(),
     );
-    // The second half of what this device tells its siblings, and the one they
-    // are allowed to destroy audio on. Published from the same election so the
-    // two facts a sibling ranks and discards on were read at one instant.
-    _announceCaptureState();
-
     final siblings = [
       // Siblings only, from the SFU's own participant list. The election has to
       // agree with presence about who is in the call; reading a different source
@@ -555,10 +572,19 @@ class ActiveCall extends ChangeNotifier {
     // precisely the case where the other device is invisible for the seconds in
     // question, and nothing observed locally can close it. The join stamps are
     // what stand in for that window, at the resolution they actually carry.
-    if (!_capturing) _seenNotRecordingWhileRecording.clear();
-    for (final sibling in siblings) {
-      if (roster?.siblingCaptureAttestation(sibling.deviceId) == null) {
-        _seenNotRecordingWhileRecording.add(sibling.deviceId);
+    final myRun = capture.captureRun;
+    if (myRun != null) {
+      if (myRun != _watchedRun) {
+        _watchedRun = myRun;
+        _watch.restart();
+      }
+      // Only while this device is actually holding audio. What it saw at a
+      // moment it was recording nothing is not part of any stretch, and folding
+      // it in would disqualify a sibling on the strength of a gap that was
+      // ours.
+      for (final sibling in siblings) {
+        final report = roster?.siblingCaptureReport(sibling.deviceId);
+        if (report != null) _watch.observe(report);
       }
     }
 
@@ -601,14 +627,16 @@ class ActiveCall extends ChangeNotifier {
     // The blocker this shape was adopted for was a boolean assembled right
     // here, out of the nearest thing to hand that looked like it meant the
     // successor had recorded.
+    final successorReport = successor == null
+        ? null
+        : roster?.siblingCaptureReport(successor.deviceId);
     capture.setDiscardOnStop(
       successor != null &&
+          successorReport != null &&
           CaptureElection.discardsCapturedAudio(
             successor: successor,
-            successorIsRecording: roster?.siblingCaptureAttestation(
-              successor.deviceId,
-            ),
-            seenNotRecording: _seenNotRecordingWhileRecording,
+            successorReport: successorReport,
+            watch: _watch,
             myJoinedAt: roster?.myJoinTime,
             successorJoinedAt: roster?.siblingJoinTime(successor.deviceId),
           ),
@@ -631,6 +659,13 @@ class ActiveCall extends ChangeNotifier {
         // is audio nobody heard.
         _peerGrace == null &&
         (roster?.isConnected ?? false);
+    // The second half of what this device tells its siblings, and the one they
+    // are allowed to destroy audio on. Published HERE, below [_wanted], rather
+    // than beside the capability announcement above: a device that has just
+    // decided to stop has to say so before its reconcile runs, because the
+    // reconcile is where the audio actually stops and the retraction needs a
+    // head start on it, not a chase.
+    _announceCaptureState();
     // Handovers are serialised. A device can be displaced and reinstated faster
     // than a flush completes, and starting a new recording while the previous
     // stop is still unwinding would let that stop cancel the new tap and close
