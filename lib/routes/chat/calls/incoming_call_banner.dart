@@ -683,10 +683,19 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// account that had signed out. Every ring-scoped path -- offering,
   /// answering, declining, dismissing, replaying, watching -- goes through
   /// here or through [_serviceFor], which is this plus the service lookup.
-  bool _serving(matrix.Client account) =>
-      mounted &&
-      _accounts.containsKey(account) &&
-      Matrix.of(context).widget.clients.contains(account);
+  ///
+  /// Three halves, not two. `Matrix.clients` still contains an account for the
+  /// whole of its logout: the removal happens AFTER the teardown it waits on,
+  /// and that teardown disposes services and awaits network work. A ring, a
+  /// replay, a decline or a tap queued in that window would otherwise pass a
+  /// list-only check and act through a service already being disposed, so the
+  /// account's own unwind flag is asked too.
+  bool _serving(matrix.Client account) {
+    if (!mounted || !_accounts.containsKey(account)) return false;
+    final matrixState = Matrix.of(context);
+    return matrixState.widget.clients.contains(account) &&
+        !matrixState.isSigningOut(account);
+  }
 
   /// Turns a call down as BUSY, so the caller hears an engaged tone instead
   /// of ringing into nothing until it times out as a missed call.

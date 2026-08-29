@@ -72,6 +72,13 @@ void main() {
       // Measured with the same corrected bound on both sides, or the
       // comparison flatters us: the SDK's shorter interval leaves it less
       // exposed to a missed restart than ours does.
+      //
+      // `requestBudget` is OUR constant and is applied to both sides on
+      // purpose. It is not a property of the SDK or of the homeserver -- it is
+      // the headroom a restart is allowed to burn on a bad link, which is the
+      // same physical allowance whoever picked the interval. Subtracting it
+      // from our side only would compare our worst case against their best,
+      // which is the flattery this test exists to refuse.
       final sdk = CallTimeouts();
       final ours =
           CallDelayedLeave.applyLeave -

@@ -121,7 +121,16 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// its account is closing — the entries stay in their maps until disposal
   /// finishes, so a queued rebuild reads the closing service rather than
   /// creating a fresh one that would outlive the account and leak.
-  final Map<String, Future<void>> _disposingServices = {};
+  /// In-flight teardowns, keyed by what each one OWNS -- the client instance
+  /// when there is one, the name when there is not.
+  ///
+  /// Not by name alone. On web every account shares one client name, so a
+  /// name-keyed `??=` hands a SECOND account's teardown the FIRST account's
+  /// in-flight future: the second body never runs, and its call service,
+  /// analytics service and live call are never disposed at all. Keying by the
+  /// owner keeps one teardown per account while still collapsing repeats of
+  /// the same one.
+  final Map<Object, Future<void>> _disposingServices = {};
 
   /// Client names currently unwinding from a `loggedOut` event: from the
   /// moment the state change is observed until the client has been removed
@@ -519,6 +528,16 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       widget.clients.isNotEmpty &&
       !client.isLogged() &&
       !_clientsTearingDown.contains(client.clientName);
+
+  /// Whether [account] is unwinding a logout.
+  ///
+  /// Set the moment `loggedOut` arrives and cleared only once the whole unwind
+  /// is done -- which is BEFORE the account leaves [widget.clients], because
+  /// that removal waits for the teardown to finish. Anything that must not act
+  /// for a departing account has to ask this as well as the client list: in
+  /// between, the list still contains it.
+  bool isSigningOut(Client account) =>
+      _clientsTearingDown.contains(account.clientName);
 
   /// Test-only: marks [clientName] as unwinding a `loggedOut` event, exactly
   /// as the listener installed by [_registerSubs] does before its async
@@ -990,7 +1009,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// Widget disposal passes none, because there the whole app is going and
   /// whatever is current is exactly what should go with it.
   Future<void> disposeAccountServices(String clientName, {Client? owner}) {
-    return _disposingServices[clientName] ??= () async {
+    final flightKey = owner ?? clientName;
+    return _disposingServices[flightKey] ??= () async {
       // #Pangea
       // Captured BEFORE any await, so the entry evicted in `finally` is the
       // one this teardown actually disposed and not whatever occupies the key
@@ -1046,7 +1066,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         if (identical(_analyticsServices[clientName], disposingAnalytics)) {
           _analyticsServices.remove(clientName);
         }
-        _disposingServices.remove(clientName);
+        _disposingServices.remove(flightKey);
       }
     }();
   }

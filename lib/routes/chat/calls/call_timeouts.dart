@@ -39,7 +39,8 @@ import 'package:matrix/matrix.dart';
 ///    the peer leave, which is the SFU's report — and the SFU keeps a departed
 ///    participant for its own retention window (`ActiveCall.peerGraceWindow`
 ///    is matched to it). When that retention is longer than
-///    `applyLeave - restart`, the server's cleanup arrives first and a crash is
+///    `applyLeave - (2 * maxRestart + requestBudget)`, the server's cleanup
+///    arrives first and a crash is
 ///    read as a hangup no matter what these two numbers are. It is true of the
 ///    SDK's 18s/4s as well; closing it would need
 ///    `applyLeave - (2 * maxRestart + requestBudget) > SFU retention +
@@ -55,7 +56,10 @@ import 'package:matrix/matrix.dart';
 /// up leaves its membership in room state for up to forty-five seconds instead
 /// of eighteen. Nothing reads that as busy — `CallService.isBusy` is local session
 /// state — so the visible effect is that a dead call's Return offer can stand
-/// twelve seconds longer, which is a trade this feature had already accepted.
+/// twenty-seven seconds longer than the SDK's eighteen would have, and fifteen
+/// longer than the thirty this file first chose. That is the real UX cost of
+/// the number and it is stated in full rather than as the difference from
+/// whichever value happens to precede it.
 class CallDelayedLeave {
   CallDelayedLeave._();
 
@@ -73,6 +77,17 @@ class CallDelayedLeave {
   /// deliberate hangup -- and worse, three seconds is SOONER than the SDK's
   /// own five, so the load fix was buying its req/s with exactly the
   /// regression its second invariant was written to forbid.
+  ///
+  /// This satisfies the NECESSARY condition and not the sufficient one, and
+  /// the difference is worth naming. `endedDeliberatelyWithin` is now inside
+  /// the earliest server cleanup, so our own numbers no longer manufacture the
+  /// misreading. They do not cure it: ActiveCall measures from the SFU's
+  /// report rather than from the death, and while the SFU's retention exceeds
+  /// `applyLeave - (2 * maxRestart + requestBudget) - endedDeliberatelyWithin`
+  /// -- five seconds, as these numbers stand -- the server's cleanup still
+  /// lands first and a crash still reads as a hangup. Closing THAT needs the
+  /// discriminator to stop inferring intent from timing, which is a change of
+  /// its own and is tracked in pangeachat/.github#410.
   ///
   /// Raised rather than shrinking the interval, because the interval is what
   /// costs money: load is one write per restart per participant, and
