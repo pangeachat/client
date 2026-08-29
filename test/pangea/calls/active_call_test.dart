@@ -3245,6 +3245,88 @@ void main() {
       );
     });
 
+    test('the audio waits for a retraction stuck behind another write', () async {
+      // THE CASE A HEAD START DOES NOT COVER. The announcer serialises, so when
+      // an earlier election's capability write is still in flight the
+      // retraction is only STORED -- no write starts -- and the reconcile can
+      // stop the audio before the "no" ever reaches the wire. In that window a
+      // sibling reads a run this device no longer holds and destroys its own
+      // tail for it.
+      final (call, calls, _, capture) = await build();
+      calls.roster!.myJoin = (true, joinedAt);
+      calls.roster!.joins = {
+        '${calls.client.userID}:zzzzzzzzzz': (
+          true,
+          joinedAt.subtract(const Duration(seconds: 20)),
+        ),
+      };
+      calls.remotePresent = true;
+      calls.devicesInCall = [calls.client.deviceID!, 'zzzzzzzzzz'];
+      await call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      expect(call.isRecording, isTrue);
+      trace.steps.clear();
+      calls.roster!.traceWrites = true;
+
+      // An earlier turn's capability write goes out and stays in flight.
+      final held = Completer<void>();
+      calls.roster!.holdAnnounce = held;
+      capture.tapWorks = false;
+      await call.tickReelectionForTest();
+      calls.roster!.holdAnnounce = null;
+
+      // Now, in a later turn, this device is displaced and must stop.
+      calls.devicesInCall = [
+        'AAAAAAAAAA',
+        calls.client.deviceID!,
+        'zzzzzzzzzz',
+      ];
+      await pumpEventQueue();
+
+      expect(
+        trace.steps,
+        isNot(contains('capture.stop')),
+        reason: 'the siblings have not been told yet',
+      );
+
+      held.complete();
+      await pumpEventQueue();
+
+      expect(
+        trace.steps.indexOf('publish(not recording)'),
+        allOf(
+          greaterThanOrEqualTo(0),
+          lessThan(trace.steps.indexOf('capture.stop')),
+        ),
+        reason: 'and the audio stopped only once they had been',
+      );
+    });
+
+    test('a device alone does not hold its stop open for nobody', () async {
+      // The wait is for the benefit of a sibling that could act on the stale
+      // claim. With no sibling in the call there is nobody to mislead, and
+      // holding the microphone open for a signal round trip would keep
+      // recording audio after this device was told to stop -- which is the very
+      // thing the stop was ordered for.
+      final (call, calls, _, capture) = await build();
+      calls.roster!.myJoin = (true, joinedAt);
+      calls.remotePresent = true;
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      expect(call.isRecording, isTrue);
+      trace.steps.clear();
+
+      // Nothing this device announces can land from here on.
+      calls.roster!.holdAnnounce = Completer<void>();
+      calls.remotePresent = false;
+      await calls.participantsBecome([calls.client.deviceID!]);
+
+      expect(trace.steps, contains('capture.stop'));
+      expect(call.isRecording, isFalse);
+      calls.roster!.holdAnnounce!.complete();
+    });
+
     test('a mute retracts the run at once', () async {
       // A mute is a gap in what this device holds. A sibling still reading the
       // run through it would drop its own tail believing this device had the

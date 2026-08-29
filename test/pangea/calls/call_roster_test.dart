@@ -628,6 +628,52 @@ void main() {
       expect(roster.announcedCanCapture, isFalse);
     });
 
+    test('a caller can wait until its word has actually reached the SFU', () async {
+      // Announcing is normally fire-and-forget. One caller cannot be: a device
+      // about to stop recording must not stop while its siblings can still read
+      // it as recording, and the announcer serialises -- so a write already in
+      // flight defers the retraction by a whole round trip.
+      final held = Completer<void>();
+      roster.holdPublish = held;
+      final capability = roster.announceCanCapture(false);
+      await pumpEventQueue();
+
+      var settled = false;
+      roster.holdPublish = null;
+      final retraction = roster
+          .announceCapturing(null)
+          .then((_) => settled = true);
+      await pumpEventQueue();
+
+      expect(
+        settled,
+        isFalse,
+        reason: 'it is queued behind a write already flying',
+      );
+      expect(roster.published, hasLength(1));
+
+      held.complete();
+      await capability;
+      await retraction;
+
+      expect(settled, isTrue);
+      expect(roster.published.last, {
+        CallRoster.capturingAttribute: CaptureReport.published(null),
+      });
+    });
+
+    test('and is released rather than held when the write does not go', () async {
+      // A recorder holding its microphone open on a signal channel that has
+      // stopped answering would be a worse bug than the one the wait exists to
+      // fix. What the caller is waiting for is the question to be SETTLED, and
+      // "it did not go" is an answer.
+      roster.publishError = StateError('Signal request timed out');
+
+      await roster.announceCapturing('5').timeout(const Duration(seconds: 5));
+
+      expect(roster.published, hasLength(1), reason: 'it did not spin');
+    });
+
     test('a later turn still waits for the write already flying', () async {
       // The batching is per TURN, not a free-for-all. `setAttributes` replaces
       // the whole map and the publish merges over the copy it can see, so two

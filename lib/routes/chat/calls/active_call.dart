@@ -325,7 +325,7 @@ class ActiveCall extends ChangeNotifier {
     // seconds before that sibling's first frame, which is exactly the audio
     // nobody else holds.
     _watchSiblings();
-    _announceCaptureState();
+    unawaited(_announceCaptureState());
   }
 
   /// Brings the ledger up to date with what the siblings are saying now.
@@ -365,10 +365,38 @@ class ActiveCall extends ChangeNotifier {
   /// rather than a transition, so a missed call costs one round trip and not
   /// the truth. The roster coalesces, so calling it from several places is a
   /// repetition rather than a race.
-  void _announceCaptureState() {
+  Future<void> _announceCaptureState() {
     final roster = _roster;
-    if (roster == null) return;
-    unawaited(roster.announceCapturing(_wanted ? capture.captureRun : null));
+    if (roster == null) return Future<void>.value();
+    return roster.announceCapturing(_wanted ? capture.captureRun : null);
+  }
+
+  /// Retracts the run, and waits for the word to actually reach the SFU.
+  ///
+  /// THE ONE PLACE ANYTHING WAITS ON A SIGNAL WRITE, and the reason is that
+  /// this is an ORDER rather than a race. A sibling is entitled to destroy its
+  /// own captured audio on our claim to be recording; the claim stops being
+  /// true the moment we stop, so the correction has to be somewhere the sibling
+  /// can read it BEFORE that moment. Publishing early and hoping the write wins
+  /// is not the same thing: the announcer serialises, so a capability write
+  /// already in flight defers the retraction by a whole round trip, and inside
+  /// that window a sibling reads a run we no longer hold.
+  ///
+  /// A BOUNDED wait, and a fourth alongside the three the recorder's own stop
+  /// already performs. The announcer releases its callers when a write lands,
+  /// when one fails, and when the loop gives up, so nothing here can hold a
+  /// microphone open on a channel that has stopped answering.
+  ///
+  /// And only when there is somebody to mislead. A device alone in the call has
+  /// no sibling that could act on the stale claim, and holding its stop open
+  /// for a round trip to tell nobody anything would be a cost with no benefit —
+  /// the audio it captures meanwhile is audio recorded after this device was
+  /// told to stop, which is exactly what [_wanted] exists to prevent.
+  Future<void> _retractCaptureState() async {
+    final roster = _roster;
+    final retracted = _announceCaptureState();
+    if (roster == null || !roster.hasSiblings) return;
+    await retracted;
   }
 
   /// The recorder stopped itself, because its tap died.
@@ -531,7 +559,7 @@ class ActiveCall extends ChangeNotifier {
     // therefore something its siblings have to be told at once rather than on
     // the next presence tick. Synchronous with the mute, so there is no instant
     // in which the audio has stopped and the siblings still read a run.
-    _announceCaptureState();
+    unawaited(_announceCaptureState());
   }
 
   /// Starts or stops recording to match which device should be recording now.
@@ -680,7 +708,7 @@ class ActiveCall extends ChangeNotifier {
     // decided to stop has to say so before its reconcile runs, because the
     // reconcile is where the audio actually stops and the retraction needs a
     // head start on it, not a chase.
-    _announceCaptureState();
+    unawaited(_announceCaptureState());
     // Handovers are serialised. A device can be displaced and reinstated faster
     // than a flush completes, and starting a new recording while the previous
     // stop is still unwinding would let that stop cancel the new tap and close
@@ -726,6 +754,10 @@ class ActiveCall extends ChangeNotifier {
         _capturing = capture.isRecording;
         Logs().i('Recording this call on this device');
       } else {
+        // FIRST, and awaited. See [_retractCaptureState]: a sibling may destroy
+        // its own tail on our claim to be recording, so the claim has to be
+        // corrected somewhere it can read before the audio it describes stops.
+        await _retractCaptureState();
         await capture.stop();
         _capturing = false;
         // Only the two reasons that can actually reach here. Reaching this arm
@@ -751,7 +783,7 @@ class ActiveCall extends ChangeNotifier {
       // could drop its own tail believing this device was still holding the
       // words. In the finally, because a stop that threw stopped the audio just
       // the same.
-      _announceCaptureState();
+      unawaited(_announceCaptureState());
     }
   }
 

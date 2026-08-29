@@ -564,6 +564,16 @@ class CallRoster extends ChangeNotifier {
   /// Whether a write is on the wire right now.
   bool _announcing = false;
 
+  /// Callers waiting to hear that what they asked for has actually reached the
+  /// SFU, per attribute.
+  ///
+  /// Announcing is normally fire-and-forget, because nothing waits on a signal
+  /// round trip. One caller does: a device about to stop recording must not
+  /// stop while its siblings can still read it as recording, and that is an
+  /// ORDER between two things this device controls rather than a race it can
+  /// hope to win.
+  final Map<String, List<Completer<void>>> _settling = {};
+
   /// What this device's siblings have actually been told about its capability.
   bool get announcedCanCapture =>
       _announced[canCaptureAttribute] != _cannotRecord;
@@ -610,10 +620,21 @@ class CallRoster extends ChangeNotifier {
   /// nothing — the write was always going to be asynchronous — and makes the
   /// batching a property of the announcer rather than something every caller
   /// has to arrange.
-  Future<void> _announce(String key, String value) async {
+  Future<void> _announce(String key, String value) {
     _wanted[key] = value;
-    if (_announcing) return;
-    _announcing = true;
+    // Already true as far as the siblings are concerned. Nothing to write and
+    // nothing to wait for.
+    if (_announced[key] == value) return Future<void>.value();
+    final settled = Completer<void>();
+    (_settling[key] ??= []).add(settled);
+    if (!_announcing) {
+      _announcing = true;
+      unawaited(_runAnnouncements());
+    }
+    return settled.future;
+  }
+
+  Future<void> _runAnnouncements() async {
     try {
       // The yield. Anything else this turn wants said is in [_wanted] by the
       // time the loop below composes its first write.
@@ -632,12 +653,30 @@ class CallRoster extends ChangeNotifier {
         // would have a device that never reached the SFU believe its siblings
         // knew, and stand aside on their behalf.
         _announced.addAll(pending);
+        for (final key in pending.keys) {
+          if (_announced[key] == _wanted[key]) _settle(key);
+        }
       }
     } finally {
       // Cleared HERE rather than from a completion callback, so there is no
       // instant in which the loop has exited and a caller still reads the run
       // as live — which would drop that caller's intent for good.
       _announcing = false;
+      // AND NOBODY WAITS FOREVER. A write that failed and a value superseded
+      // before it ever went out both release their callers, because what a
+      // caller is waiting for is the question to be SETTLED and "it did not go"
+      // is an answer. A recorder holding its microphone open on a signal
+      // channel that has stopped answering would be a worse bug than the one
+      // the wait exists to fix.
+      for (final key in _settling.keys.toList()) {
+        _settle(key);
+      }
+    }
+  }
+
+  void _settle(String key) {
+    for (final waiter in _settling.remove(key) ?? const <Completer<void>>[]) {
+      if (!waiter.isCompleted) waiter.complete();
     }
   }
 
@@ -673,6 +712,12 @@ class CallRoster extends ChangeNotifier {
       return;
     }
   }
+
+  /// Whether this account has another device in the call at all.
+  ///
+  /// Read by the recorder before it holds a stop open waiting for a retraction:
+  /// a device alone has nobody to mislead, and nobody to wait for.
+  bool get hasSiblings => siblingDeviceIds.isNotEmpty;
 
   @override
   void dispose() {
