@@ -1207,14 +1207,471 @@ void main() {
       expect(tap.detachAttempts, 1, reason: 'it was asked, and refused');
       expect(tap.detached, isFalse);
 
-      // Still attached, so a second recording must not be laid over the top of
-      // it — two taps feeding one chunker would count the learner twice.
+      // The next start comes back to it BEFORE deciding anything. A stop is the
+      // only other thing that ever returns to a held tap, and a device that
+      // keeps winning the election never performs one -- so leaving the retry
+      // to the stop kept this device silent for the whole call over one detach
+      // that would have succeeded on the second ask.
+      await capture.start(track);
+      expect(tap.detached, isTrue, reason: 'the retry let the old tap go');
+      expect(
+        capture.isRecording,
+        isTrue,
+        reason: 'and the stretch it was refusing actually happened',
+      );
+      expect(capture.canCapture, isTrue);
+      await capture.stop();
+    });
+
+    test('does not attach after a stop that landed inside the retry', () async {
+      // The retry is the ONE yield between the wait for an in-flight stop at
+      // the top of start() and the moment a tap is attached, so it reopens by
+      // hand the exact window that wait exists to close. A stop that lands and
+      // finishes inside it is invisible -- and if it was the last stop of the
+      // call, the tap this start went on to attach would never come off, and
+      // the microphone would stay open on a conversation that had ended.
+      final tap = _FreesOnRetryTap();
+      final capture = service(withTap: tap);
+      await capture.start(track);
+      await capture.stop();
+      expect(tap.detachAttempts, 2, reason: 'the stop asked twice and lost');
+
+      final starting = capture.start(track);
+      await pumpEventQueue();
+      // The hangup, landing while the retry is still deciding.
+      await capture.stop();
+      tap.finishDetach();
+
+      await expectLater(starting, throwsStateError);
+      expect(
+        tap.opens,
+        1,
+        reason: 'no tap was attached after the last stop of the call',
+      );
+      expect(capture.isRecording, isFalse);
+    });
+
+    test('still refuses when the retry cannot free it either', () async {
+      // The other half of the same line. A tap that will not come off however
+      // often it is asked is not a bad moment, and a second tap laid over it
+      // would feed one chunker from two sources and count the learner twice.
+      final tap = _ThrowsOnDetachTap();
+      final capture = service(withTap: tap);
+      await capture.start(track);
+      await capture.stop();
+
+      await expectLater(capture.start(track), throwsStateError);
+      expect(
+        capture.canCapture,
+        isFalse,
+        reason: 'a device holding a tap it cannot release cannot record',
+      );
+    });
+  });
+
+  group('whether this device can record at all', () {
+    test('a device that has never tried says it can', () async {
+      // Silence has to read as ABLE. A device that answered "cannot" before it
+      // had tried would rank itself last in the very first election of a call,
+      // when nobody has tried anything yet, and every device would defer to
+      // every other one.
+      expect(service().canCapture, isTrue);
+    });
+
+    test(
+      'a platform that answers there is no tap point stands it aside',
+      () async {
+        // The one answer that IS about the device. The election reads it and
+        // hands the recording to a sibling that has somewhere to record from.
+        final capture = service(withTap: _NoTap());
+        await capture.start(track);
+
+        expect(capture.isRecording, isFalse);
+        expect(capture.canCapture, isFalse);
+      },
+    );
+
+    test('a throw from the attach does not stand this device aside', () async {
+      // A platform call that failed says this ATTEMPT failed. Reading it as a
+      // statement about the device retires a working device over one bad round
+      // trip, for the rest of the call, and hands the recording to a sibling
+      // that may have no tap at all.
+      final capture = service();
+      track.failNextRenderer = true;
+
       await expectLater(capture.start(track), throwsStateError);
 
-      // And the next stop comes back to it. Nothing else ever does.
-      await capture.stop();
-      expect(tap.detached, isTrue, reason: 'the tap was released in the end');
+      expect(capture.canCapture, isTrue);
+    });
+
+    test('an attach that works again takes the answer back', () async {
+      // A reading, not a latch. Android's tap point can be missing simply
+      // because WebRTC's processing factory had not finished initialising, and
+      // a device retired over that would never come back within the call.
+      final tap = _RefusesUntilAskedAgainTap();
+      final capture = service(withTap: tap);
       await capture.start(track);
+      expect(capture.canCapture, isFalse);
+
+      await capture.start(track);
+      expect(capture.canCapture, isTrue);
+      await capture.stop();
+    });
+  });
+
+  group('a stretch another device also recorded', () {
+    test('is dropped rather than delivered', () async {
+      // Two devices answering the same ring both record the opening seconds.
+      // The sink keys a result by capture session and chunk index, and two
+      // devices are two sessions -- so delivering this tail credits the learner
+      // twice for saying something once.
+      final capture = service();
+      await capture.start(track);
+      track.emit(100);
+      capture.setDiscardOnStop(true);
+
+      await capture.stop();
+
+      expect(sink.delivered, isEmpty);
+    });
+
+    test('does not take the stretch that follows it as well', () async {
+      // The request belongs to the stretch the election decided it for. Left
+      // standing it would silently drop a later tail that nobody else recorded.
+      final capture = service();
+      await capture.start(track);
+      track.emit(100);
+      capture.setDiscardOnStop(true);
+      await capture.stop();
+      expect(sink.delivered, isEmpty);
+
+      await capture.start(track);
+      track.emit(100);
+      await capture.stop();
+
+      expect(
+        sink.delivered.map((c) => c.index),
+        [1],
+        reason: 'the discarded stretch still happened, so numbering moved on',
+      );
+    });
+
+    test('survives a stop that does not settle its deliveries', () async {
+      // Teardown's stop, which does not wait for what it handed over, and then
+      // the finish that does. Neither of them carries the request, so a flush
+      // reached that way has to find it where the election left it.
+      //
+      // The ordering claim itself -- that the request is in BEFORE the reconcile
+      // that stops the tap -- belongs to the caller and is pinned by the
+      // active_call test of that name. Nothing here goes through an election,
+      // so nothing here could fail if that moved.
+      final capture = service();
+      await capture.start(track);
+      track.emit(100);
+      capture.setDiscardOnStop(true);
+
+      await capture.stop(settleDeliveries: false);
+      await capture.finish();
+
+      expect(sink.delivered, isEmpty);
+    });
+
+    test('is not rewritten by an election that ran after the stop', () async {
+      // The request is read at the FLUSH, and a stop reaches that only after up
+      // to three bounded platform waits -- the detach, an overtaken start's
+      // release, and the residue sweep. The election goes on running on its two
+      // second clock throughout, and by then it is describing a roster with
+      // nothing to do with the stretch being ended. Cleared inside that stall
+      // it delivers the duplicate; set inside it, it drops the only copy of
+      // what the learner said.
+      final tap = _SlowDetachTap();
+      final capture = service(
+        withTap: tap,
+        detach: const Duration(seconds: 30),
+      );
+      await capture.start(track);
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+      // The election concluded displacement, and this stretch is a duplicate of
+      // what a sibling already has.
+      capture.setDiscardOnStop(true);
+
+      final stopping = capture.stop();
+      await pumpEventQueue();
+      // The sibling hangs up while the detach is still deciding, so the next
+      // tick elects this device again -- for a stretch that has not begun.
+      capture.setDiscardOnStop(false);
+      tap.finishDetach();
+      await stopping;
+
+      expect(sink.delivered, isEmpty);
+    });
+  });
+
+  group('a release that is still deciding', () {
+    // All three of these stand the same choreography up, because it is the one
+    // window nothing else covers: `_running = true` is set BEFORE the open, so
+    // two merely overlapping starts are refused on the running guard whether
+    // or not a release is counted. What is needed is a release running with no
+    // stop wrapped around it, and only one thing produces that -- a tap that
+    // arrives after the stop it belonged to, which is let go outside the
+    // memoised stop.
+    Future<(CallCaptureService, _OvertakenTap)> midRelease() async {
+      final tap = _OvertakenTap();
+      // Long, so the release under test is still deciding rather than having
+      // timed out and held the tap already.
+      final s = service(withTap: tap, detach: const Duration(seconds: 30));
+      // Left running deliberately: it is the start that gets overtaken, and it
+      // does not finish until its own release does.
+      unawaited(s.start(track));
+      await pumpEventQueue();
+      // Lands while the open is still pending. It finds no detach to take, so
+      // it completes at once and clears the in-flight stop -- and from here
+      // nothing serialises against what the open is about to hand back.
+      await s.stop();
+      tap.finishAttaching();
+      await pumpEventQueue();
+      return (s, tap);
+    }
+
+    test('refuses a start over the tap it has not placed yet', () async {
+      // Across a release the tap it is working on is in NEITHER `_detach` nor
+      // the unreleased list, so both readers answer "nothing attached" about a
+      // tap that is still on the track. A start let past there lays a second
+      // tap over the first and the learner's own voice is counted twice.
+      final (s, tap) = await midRelease();
+
+      await expectLater(s.start(track), throwsStateError);
+
+      // And what the dying tap hands over on its way out belongs to nothing:
+      // the stretch it was opened for is over and no stretch has replaced it.
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+      tap.finishDetach();
+      await pumpEventQueue();
+      await s.stop();
+      await pumpEventQueue();
+      expect(
+        sink.delivered,
+        isEmpty,
+        reason: 'a tap on its way out feeds no run at all',
+      );
+    });
+
+    test('does not stand this device aside for a timing race', () async {
+      // A release still deciding is a MILLISECOND, not a fact about the device:
+      // nothing retries it, and it is cleared by the release finishing rather
+      // than by anything this device could do about it. Blaming it would have a
+      // stop that merely landed mid-attach retire a perfectly good device for
+      // the rest of the call -- and the election would then hand the recording
+      // to a sibling with no tap at all.
+      final (s, tap) = await midRelease();
+
+      await expectLater(s.start(track), throwsStateError);
+      expect(s.canCapture, isTrue);
+
+      tap.finishDetach();
+      await pumpEventQueue();
+      await s.stop();
+    });
+
+    test('is waited for by a stop, not stepped over', () async {
+      // A stop that concludes "everything is off" while a release is still
+      // deciding walks past the tap that release is about to hold. Only a stop
+      // ever comes back to a held tap, so one held after the last stop of the
+      // call is held for the rest of it -- and every later start refuses.
+      final (s, tap) = await midRelease();
+
+      final stopping = s.stop();
+      await pumpEventQueue();
+      // The detach finally answers, with a refusal. That is retryable, and the
+      // retry belongs to the stop that is running right now.
+      tap.failDetach();
+      await stopping;
+
+      expect(
+        tap.detachAttempts,
+        2,
+        reason: 'the stop came back to the tap its own sweep would have missed',
+      );
+      await s.start(track);
+      expect(s.isRecording, isTrue, reason: 'and nothing is left held');
+    });
+  });
+
+  group('a tap that dies under a live recording', () {
+    test('ends the stretch and says so', () async {
+      // A tap can attach and then fail asynchronously, with nothing thrown and
+      // nothing returned. Left alone the recorder holds a detach it reads as a
+      // live recording for the rest of the call, over a tap that will never
+      // deliver a frame, and the analytics go silently empty.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      var lost = 0;
+      s.onCaptureLost = () => lost++;
+      await s.start(track);
+      expect(s.isRecording, isTrue);
+
+      tap.die();
+      await pumpEventQueue();
+
+      expect(s.isRecording, isFalse, reason: 'the stretch is over');
+      expect(tap.detached, isTrue, reason: 'through the one release path');
+      expect(lost, 1, reason: 'and whoever elects recorders was told');
+    });
+
+    test('does not end the stretch that replaced it', () async {
+      // The report carries the session it was opened for, exactly as the frame
+      // callback does. A tap that dies long after its own stretch ended must
+      // not stop the one running now.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+      final stale = tap.die;
+      await s.stop();
+      await s.start(track);
+
+      var lost = 0;
+      s.onCaptureLost = () => lost++;
+      stale();
+      await pumpEventQueue();
+
+      expect(s.isRecording, isTrue, reason: 'the live stretch is untouched');
+      expect(lost, 0);
+      await s.stop();
+    });
+
+    test('flushes what the learner had already said', () async {
+      // The tap died; the audio before it did not. Ending the stretch through
+      // the ordinary stop is what puts that tail in front of the sink rather
+      // than dropping it with the tap.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+
+      tap.die();
+      await pumpEventQueue();
+
+      expect(sink.delivered.map((c) => c.index), [0]);
+    });
+
+    test('lets a listener restart from inside the report', () async {
+      // The stop goes first, and it sets the gate and publishes itself before
+      // it awaits anything -- so a listener that starts again from straight
+      // inside this call finds a stop to wait for. Reporting first would hand
+      // that listener a recorder still marked as running, and its start would
+      // bounce off the "already running" guard instead.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      Future<void>? restarted;
+      s.onCaptureLost = () => restarted = s.start(track);
+      await s.start(track);
+
+      tap.die();
+      await pumpEventQueue();
+
+      await expectLater(
+        restarted,
+        completes,
+        reason: 'the restart queues behind the stop rather than racing it',
+      );
+      expect(s.isRecording, isTrue);
+      await s.stop();
+    });
+
+    test('a report from a tap whose open then failed ends nothing', () async {
+      // The session still matches -- a failed open does not move it -- so the
+      // only thing standing between a dead run and a second teardown is the
+      // check that a run is still going at all. Without it the death would
+      // stop a recorder that is already idle and tell the election it had lost
+      // a recording that never started.
+      final tap = _DiesAfterFailedOpenTap();
+      final s = service(withTap: tap);
+      await expectLater(s.start(track), throwsStateError);
+      var lost = 0;
+      s.onCaptureLost = () => lost++;
+
+      tap.die();
+      await pumpEventQueue();
+
+      expect(lost, 0, reason: 'there was no recording to lose');
+      expect(s.isRecording, isFalse);
+    });
+  });
+
+  group('a device whose tap keeps dying', () {
+    /// What the owner of the election does with the report, reduced to the part
+    /// that matters here: it clears its own record and elects again, and an
+    /// election that ranks device ids alone hands the recording straight back
+    /// to the device that just failed.
+    void restartOnLoss(CallCaptureService s) =>
+        s.onCaptureLost = () => unawaited(s.start(track));
+
+    test('stops attaching once two attempts have died', () async {
+      // Nothing differs between one attempt and the next: the same device
+      // attaches the same tap for the same reason, so a third go is a spin
+      // rather than a retry. On the web each turn builds and tears down an
+      // AudioContext and an AudioWorklet module, for the rest of the call.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      restartOnLoss(s);
+      await s.start(track);
+
+      for (var i = 0; i < 5; i++) {
+        tap.die();
+        await pumpEventQueue();
+      }
+
+      expect(tap.opens, 2, reason: 'the retry is bounded, not endless');
+      expect(
+        s.isRecording,
+        isFalse,
+        reason: 'and it says so rather than holding a tap it does not have',
+      );
+    });
+
+    test('says so, so a capable sibling can out-rank it', () async {
+      // The election reads this, and nothing else tells it. Without it a device
+      // whose tap point is broken goes on announcing that it can record, keeps
+      // winning the election on device id, and the call is transcribed by
+      // nobody -- while `start` quietly returns having attached nothing. The
+      // refusal to attach and the announcement have to move together.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      restartOnLoss(s);
+      await s.start(track);
+
+      tap.die();
+      await pumpEventQueue();
+      expect(
+        s.canCapture,
+        isTrue,
+        reason: 'one death is a transient; the second attempt IS the retry',
+      );
+
+      tap.die();
+      await pumpEventQueue();
+      expect(s.canCapture, isFalse);
+    });
+
+    test('a stretch that delivered audio starts the count again', () async {
+      // Consecutive, not cumulative. A delivered frame is the one piece of
+      // evidence available that this device's tap point works, so a death
+      // hours later is a fresh failure and not the second half of an old one.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      restartOnLoss(s);
+      await s.start(track);
+
+      tap.die();
+      await pumpEventQueue();
+      // The attach that replaced it works.
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+      tap.die();
+      await pumpEventQueue();
+
+      expect(tap.opens, 3, reason: 'the working stretch bought a fresh count');
+      expect(s.isRecording, isTrue);
+      await s.stop();
     });
   });
 }
@@ -1227,23 +1684,75 @@ class _SlowDetachTap implements CallAudioTap {
   final _detaching = Completer<void>();
   void finishDetach() => _detaching.complete();
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     this.onFrames = onFrames;
     return () => _detaching.future;
   }
 }
 
+/// A tap point that is not there the first time and is there the second, which
+/// is what Android's processing factory looks like when the first call of a
+/// session reaches it before WebRTC has finished initialising.
+class _RefusesUntilAskedAgainTap implements CallAudioTap {
+  int opens = 0;
+
+  @override
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async => ++opens == 1 ? null : () async {};
+}
+
+/// A tap that refuses the first detach outright and takes its time over the
+/// second, which is the only shape that leaves a release DECIDING inside a
+/// start's residue retry.
+class _FreesOnRetryTap implements CallAudioTap {
+  int opens = 0;
+  int detachAttempts = 0;
+  final _freeing = Completer<void>();
+
+  void finishDetach() => _freeing.complete();
+
+  @override
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
+    opens++;
+    return () {
+      detachAttempts++;
+      // Twice, because the stop that first asks retries the residue itself
+      // before it returns. The third ask is the one a START makes.
+      if (detachAttempts <= 2) throw StateError('not yet');
+      return _freeing.future;
+    };
+  }
+}
+
 class _NoTap implements CallAudioTap {
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
-      null;
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async => null;
 }
 
 /// A tap whose detach takes a moment, which is what opens the window for a
 /// second stop to arrive while the first is still unwinding.
 class _SlowTap implements CallAudioTap {
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async =>
       () async => Future<void>.delayed(const Duration(milliseconds: 20));
 }
 
@@ -1251,7 +1760,11 @@ class _SlowTap implements CallAudioTap {
 /// platform one does.
 class _TailOnDetachTap implements CallAudioTap {
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     return () async {
       onFrames(Int16List.fromList(List<int>.filled(8000, 1200)), 16000, 1);
     };
@@ -1263,7 +1776,11 @@ class _TailOnDetachTap implements CallAudioTap {
 /// A tap whose detach throws before it returns anything at all.
 class _ThrowsOnDetachTap implements CallAudioTap {
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async =>
       () => throw StateError('the platform refused, immediately');
 }
 
@@ -1275,11 +1792,14 @@ class _SilentDetachTap implements CallAudioTap {
   final finish = Completer<void>();
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
-      () {
-        detachCalls++;
-        return finish.future;
-      };
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async => () {
+    detachCalls++;
+    return finish.future;
+  };
 }
 
 class _StubbornSlowTap implements CallAudioTap {
@@ -1290,7 +1810,11 @@ class _StubbornSlowTap implements CallAudioTap {
   void finishAttaching() => _attached.complete();
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     await _attached.future;
     return () async {
       detachAttempts++;
@@ -1309,7 +1833,11 @@ class _DrivableTap implements CallAudioTap {
   CallAudioFrames? onFrames;
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     this.onFrames = onFrames;
     return () async => this.onFrames = null;
   }
@@ -1331,7 +1859,11 @@ class _FramesThenFailsTap implements CallAudioTap {
   void finishOpening() => _failing.complete();
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     this.onFrames = onFrames;
     onFrames(speech(100), captureSampleRate, 1);
     if (opens++ > 0) return () async {};
@@ -1349,7 +1881,11 @@ class _LeakingTap implements CallAudioTap {
   int opens = 0;
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     this.onFrames ??= onFrames;
     if (opens++ > 0) return () async {};
     throw StateError('the platform refused after installing the callback');
@@ -1363,8 +1899,99 @@ class _SlowToAttachTap implements CallAudioTap {
   void finishAttaching() => _attached.complete();
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     await _attached.future;
     return () async => detached = true;
+  }
+}
+
+/// A tap that attaches only when told to, and then will not let go until told
+/// again — so a test can hold a release open and act while it is deciding.
+///
+/// Its frame callback is kept from before the attach completed, because what
+/// the platform hands over on its way out is part of what a release has to get
+/// right.
+class _OvertakenTap implements CallAudioTap {
+  final _attached = Completer<void>();
+  Completer<void> _detaching = Completer<void>();
+  CallAudioFrames? onFrames;
+  int detachAttempts = 0;
+
+  void finishAttaching() => _attached.complete();
+
+  void finishDetach() => _detaching.complete();
+
+  /// The detach finally answers, with a refusal. Nothing is left in flight, so
+  /// this is the one case where asking again is safe — and the second ask
+  /// succeeds, so a test can tell "came back to it" from "gave up on it".
+  void failDetach() {
+    final refusing = _detaching;
+    _detaching = Completer<void>()..complete();
+    refusing.completeError(StateError('the platform would not let go'));
+  }
+
+  @override
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
+    this.onFrames = onFrames;
+    await _attached.future;
+    return () {
+      detachAttempts++;
+      return _detaching.future;
+    };
+  }
+}
+
+/// A tap that attaches cleanly and then dies where nobody asked it to, which is
+/// what a renderer whose capture failed asynchronously does.
+class _DyingTap implements CallAudioTap {
+  CallAudioFrames? onFrames;
+  bool detached = false;
+
+  /// How many times this tap has been attached, which is the only thing a test
+  /// can see about a recorder that keeps trying.
+  int opens = 0;
+
+  /// The report the tap was handed, so a test can fire it at a moment of its
+  /// choosing — including long after the stretch it belonged to ended.
+  late TapDied die;
+
+  @override
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
+    opens++;
+    this.onFrames = onFrames;
+    die = onDead;
+    return () async => detached = true;
+  }
+}
+
+/// A tap that takes the report and THEN fails to open.
+///
+/// Nothing shipped does this today — the renderer cannot throw once it has
+/// armed, and the Android tap never reports at all — but the contract permits
+/// it, and it is the one shape that produces a report whose session still
+/// matches a run that is already over.
+class _DiesAfterFailedOpenTap implements CallAudioTap {
+  late TapDied die;
+
+  @override
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
+    die = onDead;
+    throw StateError('the platform refused after taking the report');
   }
 }

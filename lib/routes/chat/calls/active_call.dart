@@ -71,6 +71,18 @@ class ActiveCall extends ChangeNotifier {
   Future<void>? _hangUp;
   bool _disposed = false;
 
+  /// Which of this account's other devices have said they CANNOT record at some
+  /// point during the stretch this device is recording now.
+  ///
+  /// The discard asks whether a successor was recording the seconds this device
+  /// is about to drop, and capability at the instant of the handover cannot
+  /// answer that: a sibling whose microphone came up a moment ago was not
+  /// recording anything before it did. Only ever added to while a stretch runs,
+  /// so a sibling that recovered stays disqualified for the rest of that
+  /// stretch and the tail is delivered — a duplicate is recoverable and audio
+  /// nobody else holds is not.
+  final Set<String> _unableWhileRecording = {};
+
   /// Set the moment anything asks the call to end. [start] checks it after every
   /// await, so a hangup that lands mid-connect stops the sequence instead of
   /// racing it to completion.
@@ -280,7 +292,30 @@ class ActiveCall extends ChangeNotifier {
     required this.media,
     required this.capture,
     CallForegroundControl? foreground,
-  }) : _foreground = foreground;
+  }) : _foreground = foreground {
+    // Wired here rather than at connect, so a tap that dies during the very
+    // first attach is heard too. The recorder is built per call, so nothing
+    // else is ever listening on this.
+    capture.onCaptureLost = _onCaptureLost;
+  }
+
+  /// The recorder stopped itself, because its tap died.
+  ///
+  /// [_capturing] is written only where THIS side performed the change, so a
+  /// stop nobody here issued leaves it describing a recording that no longer
+  /// exists. [_reconcile] would then read that stale true against a still-true
+  /// [_wanted] and return with nothing to do — for the rest of the call, while
+  /// this device goes on out-ranking its siblings and recording silence.
+  ///
+  /// Clearing it and re-electing is what makes the recovery immediate. The
+  /// truth-reading guard in [_reconcile] is the floor under this: it recovers
+  /// the call on the next presence tick even if this wiring is ever lost.
+  void _onCaptureLost() {
+    if (_ending || _disposed) return;
+    Logs().w('The recording lost its tap; electing a recorder again');
+    _capturing = false;
+    _electRecorder();
+  }
 
   /// The Android foreground service that keeps the call alive off-screen.
   /// Null on every platform that needs none.
@@ -437,19 +472,118 @@ class ActiveCall extends ChangeNotifier {
 
   void _electRecorder() {
     if (_ending) return;
+    // ACQUIRED, never swapped, and re-read on every election. An unmute
+    // republishes the audio track, so a device that connected before its
+    // microphone was up has one only later — and leaving early on the first
+    // election left it trackless for the whole call. Once one is held it stays
+    // held: `stopAudioCaptureOnMute: false` means a mute does not take it away,
+    // and the tap attaches to the track OBJECT, so swapping would move a live
+    // tap off the thing it is reading.
+    _track ??= media.publishedAudio;
     final track = _track;
-    if (track == null) return;
+    final roster = _roster;
 
     final me = calls.client.deviceID ?? '';
-    final elected = CaptureElection(
-      myDeviceId: me,
+
+    // Somewhere to record FROM and somewhere to record THROUGH, composed in the
+    // one place that can see both objects, and read ONCE — so what this device
+    // tells its siblings and what it ranks itself on come from the same
+    // instant.
+    //
+    // A trackless or tapless device is NOT skipped here. It ranks itself last
+    // and says so, which is what lets a capable sibling take the recording;
+    // leaving the election early instead published nothing, and every sibling
+    // went on deferring to it on device id while it recorded silence.
+    final canRecordHere = track != null && capture.canCapture;
+    // Unawaited, like the handover: this is a signal round trip, and nothing
+    // about the current stretch waits on it.
+    unawaited(
+      roster?.announceCanCapture(canRecordHere) ?? Future<void>.value(),
+    );
+
+    final siblings = [
       // Siblings only, from the SFU's own participant list. The election has to
       // agree with presence about who is in the call; reading a different source
       // would let it defer to a device that is not actually here.
-      siblingDeviceIds: (_roster?.siblingDeviceIds ?? const <String>[]).where(
-        (id) => id != me,
-      ),
-    ).shouldRecord;
+      for (final id in roster?.siblingDeviceIds ?? const <String>[])
+        if (id != me)
+          CaptureCandidate(
+            id,
+            canCapture: roster?.siblingCanCapture(id) ?? true,
+          ),
+    ];
+
+    // Capability is a fact about a SPAN when the discard reads it, and every
+    // election is only an instant. Seeded at the election that starts a
+    // stretch — [_capturing] is false right up to the moment the reconcile it
+    // queues actually attaches — and added to by every election after it, so
+    // what this holds while a stretch runs is every sibling that has said it
+    // cannot record at any point during it.
+    if (!_capturing) _unableWhileRecording.clear();
+    for (final sibling in siblings) {
+      if (!sibling.canCapture) _unableWhileRecording.add(sibling.deviceId);
+    }
+
+    // THE LANDED VALUE, and ONLY the landed value. Every device reaches the
+    // same verdict alone because every device ranks the same candidates the
+    // same way, and that holds only while each of them ranks itself on the
+    // number its siblings can read. The live answer is this device's private
+    // knowledge; ranking on it is the one way to be elected in your own view
+    // and nowhere else.
+    //
+    // It matters in BOTH directions, which is what an earlier
+    // `canRecordHere || announced` got wrong. Losing capability: the landed
+    // value is still "able", so this device keeps trying rather than standing
+    // aside while its siblings all defer to it — the case that disjunct was
+    // written for, and one the landed value already covers on its own.
+    // REGAINING it: the landed value is still "cannot", so this device does
+    // not take the recording back until the "yes" has been accepted. The
+    // disjunct made it take the recording back the instant its microphone came
+    // up — while the sibling that had stepped in still read the "no" and was
+    // still recording — so both devices captured the same seconds and each,
+    // being elected in its own view, delivered them.
+    final iCanCapture = roster?.announcedCanCapture ?? true;
+    final election = CaptureElection(
+      myDeviceId: me,
+      siblings: siblings,
+      iCanCapture: iCanCapture,
+    );
+    final elected = election.shouldRecord;
+
+    // Recorded SYNCHRONOUSLY, here, at the moment the election decides — never
+    // handed to the stop as an argument. Teardown stops the recorder directly,
+    // outside the serialised handover chain, so its stop can reach the flush
+    // while this election's reconcile is still queued; an argument would have
+    // arrived after the audio had already gone. And being level-triggered it
+    // cannot inherit an intent from an election that was later reversed.
+    final successor = elected ? null : election.recordingSuccessor;
+    capture.setDiscardOnStop(
+      successor != null &&
+          CaptureElection.discardsCapturedAudio(
+            myJoinedAt: roster?.myJoinTime,
+            successorJoinedAt: roster?.siblingJoinTime(successor.deviceId),
+            // What is being answered is whether the successor was recording
+            // the seconds this device is about to throw away — a question
+            // about the whole stretch, which is why the successor's half of it
+            // cannot be read off this instant alone. Getting it wrong destroys
+            // the only copy of what the learner said.
+            //
+            // The successor is able, and has been all along. One that
+            // out-ranked us because it JUST became able had no tap while we
+            // were recording — and reading only the live value here made a
+            // sibling whose microphone came up mid-call take our tail with it.
+            //
+            // And WE are able, so the device id is what displaced us. Two
+            // devices that have both concluded they cannot record are equally
+            // tied on capability and the id still decides between them, but
+            // whichever wins is recording nothing; it is the tie at FALSE
+            // rather than the tie itself that makes the difference.
+            successorRecordedTheSameStretch:
+                successor.canCapture &&
+                iCanCapture &&
+                !_unableWhileRecording.contains(successor.deviceId),
+          ),
+    );
 
     // Only while there is somebody who can actually hear it. A caller talking
     // while it rings is talking to nobody, and so is one talking through a
@@ -461,13 +595,13 @@ class ActiveCall extends ChangeNotifier {
     _wanted =
         elected &&
         _peerArrived &&
-        (_roster?.hasPeer ?? false) &&
+        (roster?.hasPeer ?? false) &&
         !_peerMembershipGone &&
         // Never while their return is in doubt: presence during a grace may be
         // the SFU's echo of someone already gone, and audio recorded into that
         // is audio nobody heard.
         _peerGrace == null &&
-        (_roster?.isConnected ?? false);
+        (roster?.isConnected ?? false);
     // Handovers are serialised. A device can be displaced and reinstated faster
     // than a flush completes, and starting a new recording while the previous
     // stop is still unwinding would let that stop cancel the new tap and close
@@ -482,15 +616,31 @@ class ActiveCall extends ChangeNotifier {
   /// answer instead of replaying a stale one. [_capturing] moves only once the
   /// change has actually happened, so a tap that fails to open is retried by the
   /// next election rather than remembered as open.
-  Future<void> _reconcile(AudioTrack track) async {
-    final wanted = _wanted && !_ending;
-    if (wanted == _capturing) return;
+  Future<void> _reconcile(AudioTrack? track) async {
+    // Nothing to record FROM is settled here rather than in the election. The
+    // election still has to rank a trackless device and announce what it found,
+    // so that a sibling with a microphone takes the recording instead of
+    // deferring to it; what it must not do is start a recorder with no track.
+    final recording = _wanted && !_ending ? track : null;
+    final wanted = recording != null;
+    // The truth, not the cache. [_capturing] records what this side last DID,
+    // and a recorder whose tap died has stopped without this side doing
+    // anything — so "already recording" can be a statement about a recording
+    // that no longer exists, and returning on it swallows the failure for the
+    // rest of the call. Asking the recorder itself costs one field read per
+    // election and makes the presence clock a floor under every way capture can
+    // be lost, including ones nothing here is wired to hear.
+    //
+    // Only consulted when a recording is WANTED. There is no equivalent lie in
+    // the other direction: nothing starts a recording behind this method's
+    // back.
+    if (wanted == _capturing && (!wanted || capture.isRecording)) return;
     try {
-      if (wanted) {
+      if (recording != null) {
         // Awaited: attaching a tap is a platform call that can fail, and
         // recording this as capturing before it succeeded would leave the
         // election believing a device is recording when it is not.
-        await capture.start(track);
+        await capture.start(recording);
         // Read back rather than assumed. A device with no point to record from
         // returns without attaching one, and calling that "recording" would stop
         // every later election from trying again.
@@ -499,6 +649,12 @@ class ActiveCall extends ChangeNotifier {
       } else {
         await capture.stop();
         _capturing = false;
+        // Only the two reasons that can actually reach here. Reaching this arm
+        // at all means [_capturing] was true, which means a stretch started,
+        // which means there was a track to start it with — and [_track] is
+        // acquired once and never given back. A third message about having
+        // nothing published read like an operator statement and could never be
+        // printed.
         Logs().i(
           _peerGrace != null
               ? 'Recording paused: waiting to see whether they come back'

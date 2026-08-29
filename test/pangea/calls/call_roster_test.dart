@@ -1,12 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
 
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 
-/// A roster whose two connection-dependent reads are supplied by the test.
+/// A roster whose SFU read and connection state are supplied by the test.
 ///
-/// Everything else — who counts as a peer, who counts as a sibling device, and
-/// the freeze while the connection is down — is the real implementation.
+/// Everything else — who counts as a peer, who counts as a sibling device, what
+/// makes a join time believable, and the freeze while the connection is down —
+/// is the real implementation.
 class TestRoster extends CallRoster {
   TestRoster({required super.room, required super.myUserId});
 
@@ -16,21 +19,75 @@ class TestRoster extends CallRoster {
   /// Whether the connection is still trying, as opposed to having given up.
   bool recovering = true;
 
-  @override
-  Iterable<String> get remoteIdentities => identities;
-
   /// identity -> (publications, muted). Unlisted identities have none.
   Map<String, (int, int)> audio = {};
 
+  /// identity -> the stamp the SFU put on their join.
+  Map<String, DateTime> joins = {};
+
+  /// Identities the SFU has not described yet. The SDK's `joinedAt` is
+  /// NON-NULLABLE, so for these it answers with a fresh read of this device's
+  /// own clock — which is not a join time at all, and is a different value
+  /// every time it is asked.
+  Set<String> undescribed = {};
+
+  /// identity -> published attributes.
+  Map<String, Map<String, String>> attributes = {};
+
+  /// This device's own join stamp. Null when the SFU has given us no local
+  /// participant at all.
+  DateTime? myJoin = DateTime.utc(2026, 8, 29, 12);
+
+  /// Whether the SFU has described THIS device.
+  bool myDescribed = true;
+
+  /// Strictly increasing, so a test can never pass by the local clock happening
+  /// to read the same twice inside one microsecond.
+  var _localClock = DateTime.utc(2030);
+  DateTime get _freshLocalRead =>
+      _localClock = _localClock.add(const Duration(seconds: 1));
+
+  /// What was written to the wire, in order, and how each write answered.
+  final List<Map<String, String>> published = [];
+
+  /// Held open by a test to keep a write in flight.
+  Completer<void>? holdPublish;
+
+  /// Set to make the write fail the way a token without the metadata grant
+  /// does: setAttributes throws rather than returning false.
+  Object? publishError;
+
   @override
-  Iterable<RemoteAudioState> get remoteAudio => identities.map((id) {
-    final (pubs, muted) = audio[id] ?? (0, 0);
-    return RemoteAudioState(
-      identity: id,
-      audioPublications: pubs,
-      mutedAudioPublications: muted,
-    );
-  });
+  RosterRead get read => RosterRead(
+    remotes: [
+      for (final id in identities)
+        RosterMember(
+          identity: id,
+          described: !undescribed.contains(id),
+          joinedAt: undescribed.contains(id)
+              ? _freshLocalRead
+              : (joins[id] ?? _defaultJoin),
+          audioPublications: (audio[id] ?? (0, 0)).$1,
+          mutedAudioPublications: (audio[id] ?? (0, 0)).$2,
+          attributes: attributes[id] ?? const {},
+        ),
+    ],
+    me: myJoin == null
+        ? null
+        : RosterMember(
+            identity: myUserId,
+            described: myDescribed,
+            joinedAt: myDescribed ? myJoin! : _freshLocalRead,
+          ),
+  );
+
+  @override
+  Future<bool> publishAttributes(Map<String, String> attributes) async {
+    published.add(attributes);
+    if (holdPublish != null) await holdPublish!.future;
+    if (publishError != null) throw publishError!;
+    return true;
+  }
 
   @override
   bool get roomConnected => connected;
@@ -38,6 +95,9 @@ class TestRoster extends CallRoster {
   @override
   bool get roomRecovering => !connected && recovering;
 }
+
+/// A believable join stamp for the tests that are not about join times.
+final _defaultJoin = DateTime.utc(2026, 8, 29, 12);
 
 void main() {
   const me = '@learner:pangea.localhost';
@@ -310,6 +370,219 @@ void main() {
       roster.recompute();
       expect(notifications, greaterThan(before), reason: 'the badge repaints');
       expect(roster.peerMuted, isTrue);
+    });
+  });
+
+  group('when the SFU says a device joined', () {
+    final joined = DateTime.utc(2026, 8, 29, 12, 0, 30);
+
+    test('a stamped join time is carried through', () {
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.joins = {'$me:MYOTHERPHONE': joined};
+      roster.recompute();
+
+      expect(roster.siblingJoinTime('MYOTHERPHONE'), joined);
+    });
+
+    test('a device the SFU has not described has no join time', () {
+      // The SDK's joinedAt is NON-NULLABLE: with no server info it answers with
+      // a fresh read of THIS device's clock. Believing that would place a
+      // sibling's join wherever we happened to be looking from -- and since the
+      // reading moves every time it is asked, it would also make every read of
+      // the roster look like a change.
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.undescribed = {'$me:MYOTHERPHONE'};
+      roster.recompute();
+
+      expect(roster.siblingJoinTime('MYOTHERPHONE'), isNull);
+
+      final settled = notifications;
+      roster.recompute();
+      roster.recompute();
+      expect(
+        notifications,
+        settled,
+        reason: 'and a moving clock read does not become a roster change',
+      );
+    });
+
+    test('a join time nobody stamped is not believed', () {
+      // Zero is the protocol default, which reads as 1970. An offset measured
+      // against 1970 is this device's ENTIRE clock rather than its disagreement
+      // with anything, which is why the transcript writer already refuses it.
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.joins = {
+        '$me:MYOTHERPHONE': DateTime.fromMillisecondsSinceEpoch(0, isUtc: true),
+      };
+      roster.recompute();
+
+      expect(roster.siblingJoinTime('MYOTHERPHONE'), isNull);
+    });
+
+    test('this device own join time follows the same rule', () {
+      roster.myJoin = joined;
+      roster.recompute();
+      expect(roster.myJoinTime, joined);
+
+      roster.myDescribed = false;
+      roster.recompute();
+      expect(roster.myJoinTime, isNull);
+    });
+
+    test('a join time arriving alone notifies listeners', () {
+      // The participant SET is unchanged -- the same device, in the same call.
+      // Only the SFU's description of it moved, and the election reads that.
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.undescribed = {'$me:MYOTHERPHONE'};
+      roster.recompute();
+      final before = notifications;
+
+      roster.undescribed = {};
+      roster.joins = {'$me:MYOTHERPHONE': joined};
+      roster.recompute();
+
+      expect(notifications, greaterThan(before));
+      expect(roster.siblingJoinTime('MYOTHERPHONE'), joined);
+    });
+  });
+
+  group('what a device says about whether it can record', () {
+    test('a device that has published nothing reads as able', () {
+      // Silence has to read as ABLE. An older build publishes no attribute at
+      // all, and reading that as "cannot" would have every device out-rank
+      // every sibling it had not yet heard from.
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.recompute();
+
+      expect(roster.siblingCanCapture('MYOTHERPHONE'), isTrue);
+    });
+
+    test('a device nobody can see reads as able too', () {
+      roster.recompute();
+      expect(roster.siblingCanCapture('NEVERHEARDOFIT'), isTrue);
+    });
+
+    test('a device that said it cannot is taken at its word', () {
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.attributes = {
+        '$me:MYOTHERPHONE': {CallRoster.canCaptureAttribute: 'no'},
+      };
+      roster.recompute();
+
+      expect(roster.siblingCanCapture('MYOTHERPHONE'), isFalse);
+    });
+
+    test('a capability change alone notifies listeners', () {
+      // Same participant set, same mute state, same join times. The predicate
+      // this replaced compared the participant SET, which dedups by identity --
+      // so a sibling losing its tap point landed in complete silence and the
+      // election never re-ran.
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.recompute();
+      final before = notifications;
+
+      roster.attributes = {
+        '$me:MYOTHERPHONE': {CallRoster.canCaptureAttribute: 'no'},
+      };
+      roster.recompute();
+
+      expect(notifications, greaterThan(before));
+      expect(roster.siblingCanCapture('MYOTHERPHONE'), isFalse);
+    });
+  });
+
+  group('telling the other devices whether this one can record', () {
+    test('nothing is written while there is nothing to say', () async {
+      // Siblings already read silence as able, so announcing "able" before
+      // anything has gone wrong is a signal round trip that buys nothing.
+      await roster.announceCanCapture(true);
+      expect(roster.published, isEmpty);
+      expect(roster.announcedCanCapture, isTrue);
+    });
+
+    test('a cannot is written and remembered', () async {
+      await roster.announceCanCapture(false);
+
+      expect(roster.published, [
+        {CallRoster.canCaptureAttribute: 'no'},
+      ]);
+      expect(roster.announcedCanCapture, isFalse);
+    });
+
+    test('a write that never reached the wire is not remembered', () async {
+      // The REAL publish, against a room with no local participant to publish
+      // as -- which is what this looks like before the SFU has answered the
+      // join. A silent no-op that returned normally would be indistinguishable
+      // from a write that landed, and remembering it as landed means nothing
+      // ever comes back to it: this device would stand aside on an answer its
+      // siblings never saw.
+      final unconnected = CallRoster(room: room, myUserId: me);
+      addTearDown(unconnected.dispose);
+
+      await unconnected.announceCanCapture(false);
+
+      expect(
+        unconnected.announcedCanCapture,
+        isTrue,
+        reason: 'what the siblings hold has not changed',
+      );
+    });
+
+    test('a write that failed leaves the intent outstanding', () async {
+      // setAttributes waits five seconds for the SFU and then throws, and
+      // completes with an error when the server refuses -- which is what a
+      // token minted without the metadata grant looks like from here.
+      roster.publishError = StateError('Signal request timed out');
+
+      await roster.announceCanCapture(false);
+
+      expect(roster.announcedCanCapture, isTrue);
+      expect(roster.published, hasLength(1), reason: 'it did not spin');
+    });
+
+    test(
+      'an outstanding intent is re-asserted on the next recompute',
+      () async {
+        // Level-triggered like everything else here, so the window in which the
+        // siblings hold a stale answer closes when the signal recovers rather
+        // than lasting the whole call.
+        roster.publishError = StateError('Signal request timed out');
+        await roster.announceCanCapture(false);
+        expect(roster.announcedCanCapture, isTrue);
+
+        roster.publishError = null;
+        roster.recompute();
+        await pumpEventQueue();
+
+        expect(roster.announcedCanCapture, isFalse);
+        expect(roster.published, hasLength(2));
+      },
+    );
+
+    test('the latest intent wins over a write already in flight', () async {
+      // The same rule the memoised stop in the recorder states: a caller whose
+      // intent differs from the write already flying must not be dropped in
+      // favour of it.
+      final held = Completer<void>();
+      roster.holdPublish = held;
+      final first = roster.announceCanCapture(false);
+      await pumpEventQueue();
+
+      roster.holdPublish = null;
+      final second = roster.announceCanCapture(true);
+      held.complete();
+      await first;
+      await second;
+
+      expect(
+        roster.announcedCanCapture,
+        isTrue,
+        reason: 'the siblings end up holding what was wanted last',
+      );
+      expect(roster.published, [
+        {CallRoster.canCaptureAttribute: 'no'},
+        {CallRoster.canCaptureAttribute: 'yes'},
+      ]);
     });
   });
 }
