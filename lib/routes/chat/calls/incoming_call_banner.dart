@@ -3,9 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show SchedulerPhase;
 
-import 'package:matrix/matrix.dart'
-    as matrix
-    show Client, Event, Logs, Room, User;
+import 'package:matrix/matrix.dart' as matrix;
 
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -24,6 +22,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// Wraps the app rather than living on the chat screen: a call is worth
 /// interrupting whatever someone is doing, and a learner reading a different
 /// conversation would otherwise never know they were being called.
+// The matrix import above is deliberately one line and carries no `show`
+// clause. `dart format` wraps a longer form across three lines, and
+// `import_sorter` -- which CI runs with --exit-if-changed -- cannot parse a
+// wrapped import, nor a comment sitting inside the import block: it exits 1
+// having printed nothing at all, which is a miserable thing to debug. Every
+// use here is qualified through the alias, so the clause bought nothing.
 class IncomingCallBanner extends StatefulWidget {
   /// Nullable because the router supplies it, and it is null before the first
   /// route resolves.
