@@ -3016,6 +3016,50 @@ void main() {
         reason: 'a live recording is already what was wanted',
       );
     });
+
+    test('the cleared record is what makes the restart stick', () async {
+      // The restart above can rescue a record nobody cleared -- it reaches the
+      // recorder either way, because the recorder answers that it is not
+      // recording -- so it cannot show whether the record was cleared at all.
+      // Here the recorder refuses to attach, and this side's own record is the
+      // only thing left describing the call. Left saying "recording", it says
+      // so for the rest of the call over a tap that is gone.
+      final (call, _, capture) = await recording();
+      capture.startError = StateError('the tap will not attach');
+
+      capture.loseTap();
+      await pumpEventQueue();
+
+      expect(
+        call.isRecording,
+        isFalse,
+        reason: 'a recording that ended is not still described as running',
+      );
+    });
+
+    test('a device that is not the recorder is left alone', () async {
+      // The other half of the truth-reading guard: the recorder is only ever
+      // consulted about a recording that is WANTED. Nothing starts a recording
+      // behind this method's back, so on a device that is deferring there is no
+      // lie to catch -- and consulting it anyway turns every presence tick into
+      // a stop against a recorder that is not recording, plus its log line,
+      // every two seconds for the whole call.
+      final (call, calls, _, capture) = await build();
+      calls.remotePresent = true;
+      calls.devicesInCall = ['AAAAAAAAAA', calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isFalse, reason: 'the premise of this test');
+      capture.stopSettledDeliveries.clear();
+
+      await call.tickReelectionForTest();
+      await call.tickReelectionForTest();
+
+      expect(
+        capture.stopSettledDeliveries,
+        isEmpty,
+        reason: 'deferring is not something to keep telling the recorder',
+      );
+    });
   });
   group('a peer who leaves while the call is still coming up', () {
     test('is still remembered as having been there', () async {

@@ -257,6 +257,29 @@ void main() {
     });
   });
 
+  group('how long a renderer is given to deliver its first frame', () {
+    test('is longer than the package spends before it can deliver', () {
+      // The budget belongs to the SETUP this watches, not to the interval
+      // between frames once a capture runs. addAudioRenderer registers
+      // synchronously and leaves livekit_client building the graph behind it,
+      // and on the web that build OPENS by waiting up to three seconds on an
+      // AudioContext resume the browser is allowed to stall. A budget equal to
+      // that stall alone -- which is what this was -- reports a healthy attach
+      // dead at the exact moment the package logs "continuing setup", and the
+      // restart pays the identical cost and is killed at the identical point.
+      const tap = TrackRendererTap(sampleRate: 16000, channels: 1);
+
+      expect(
+        tap.firstFrameTimeout,
+        greaterThanOrEqualTo(rendererStartupStall * 3),
+        reason:
+            'the stall is only where the setup STARTS -- the worklet module '
+            'and the graph come after it, so clearing it by a hair is not '
+            'clearing it',
+      );
+    });
+  });
+
   group('a renderer that attaches and then stays silent', () {
     /// Short enough that the tests need not wait a real attach out.
     const soon = Duration(milliseconds: 10);

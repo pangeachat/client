@@ -180,6 +180,38 @@ class CallCaptureService {
   /// tap held after the last stop of the call is held for good.
   Future<void>? _releasingWork;
 
+  /// How many taps this device has attached that then delivered nothing.
+  ///
+  /// CONSECUTIVE. A run that produces audio clears it, because a delivered
+  /// frame is the only evidence available that an attempt can differ from the
+  /// one before it. Never cleared by a stop: the death itself stops, so a reset
+  /// there would count nothing at all.
+  int _tapDeaths = 0;
+
+  /// How many of those are attempted before this device stops attaching taps.
+  ///
+  /// A death ends the stretch and re-runs the election, and the election ranks
+  /// on device id alone — so the device that just failed wins it again and
+  /// attaches the same tap for the same reason. Nothing between the attempts
+  /// differs, which makes repeating it a spin rather than a retry: on the web
+  /// every turn builds and tears down an AudioContext and an AudioWorklet
+  /// module, and on native it is a platform round trip each way, for the rest of
+  /// the call.
+  ///
+  /// Two, because the first death can honestly be a transient — a browser that
+  /// stalled an AudioContext resume before it had a user gesture and has one by
+  /// the second attempt. A third attempt after two identical failures is not
+  /// evidence of anything.
+  ///
+  /// Past it, [start] returns having attached nothing, which is the answer a
+  /// device with no tap point already gives: [isRecording] stays false, the
+  /// election settles, and the log says once that this device is out. WHICH
+  /// device records then is not something this can decide — the election has no
+  /// capability term yet, which is #410 item 6 — so a device that is alone
+  /// records nothing, exactly as it did before this watchdog existed. The
+  /// difference is that it now says so, once, instead of churning.
+  static const _tapDeathLimit = 2;
+
   /// Told that the tap this recorder was running has died on its own.
   ///
   /// Set by whoever owns the election. A stop this side performed by itself
@@ -269,7 +301,24 @@ class CallCaptureService {
       // The window is real rather than theoretical — a tap arriving after the
       // stop it belonged to is released outside the memoised stop, so nothing
       // above serialises against it.
+      //
+      // A REFUSAL rather than a wait, deliberately, even though [_releasingWork]
+      // publishes that release and could be awaited. The wait above works
+      // because nothing between it and `_running = true` yields: the snapshot of
+      // [_stopped] is still true when the guards run. A second await here would
+      // give a stop the whole length of a detach to land and complete unseen,
+      // and this start would then attach over the top of a call that had ended
+      // — reopening by hand the exact hole the first wait exists to close. What
+      // the refusal costs is this stretch, which the election offers again two
+      // seconds later; what the wait would cost is a tap attached after the last
+      // stop of the call, which nothing ever comes back to.
       throw StateError('The previous audio tap is still attached');
+    }
+    if (_tapDeaths >= _tapDeathLimit) {
+      // Nothing is attached and nothing is recording afterwards, which is the
+      // same answer this gives on a device that has no tap point at all. See
+      // [_tapDeathLimit] for why it is an answer rather than a throw.
+      return;
     }
     _stopping = false;
     _stopped = null;
@@ -611,6 +660,11 @@ class CallCaptureService {
     // hole that predates the positions below.
     if (session != _session || !_running || _stopping || _muted) return;
 
+    // Audio arrived, so this device's tap point works. That is the one fact
+    // that makes a later attach worth attempting again, and it is why
+    // [_tapDeaths] counts consecutive failures rather than a call's total.
+    if (_tapDeaths != 0) _tapDeaths = 0;
+
     final held = _chunker;
     // EITHER half of the format changing ends the run, for one reason: samples
     // already collected cannot be reinterpreted in a format they were not
@@ -782,12 +836,27 @@ class CallCaptureService {
   /// that is over.
   void _onTapDied(int session) {
     if (_session != session || !_running) return;
-    Logs().w('The call audio tap died mid-recording; ending this stretch');
+    // Counted BEFORE the stop and the report below, because both of them can
+    // reach [start] again — the report synchronously — and the count is what
+    // that start reads.
+    _tapDeaths++;
+    if (_tapDeaths >= _tapDeathLimit) {
+      Logs().e(
+        'The call audio tap attached and delivered nothing $_tapDeaths times '
+        'on this device; it will not be attached again during this call',
+      );
+    } else {
+      Logs().w('The call audio tap died mid-recording; ending this stretch');
+    }
     unawaited(stop());
     // AFTER the stop, which sets the gate and the in-flight stop synchronously
-    // before it awaits anything. Whoever hears this re-elects immediately, and
-    // the start that follows then has a stop to wait for rather than a race to
-    // win.
+    // before it awaits anything. That is what a listener restarting from
+    // straight inside this call needs: the start it makes finds a stop to wait
+    // for rather than a race to win, and does not bounce off the "already
+    // running" guard. The listener wired today happens to hop a microtask
+    // first, so it would survive either order — the ordering is a contract this
+    // offers every listener, not something the current one leans on, and it is
+    // pinned by a test that restarts synchronously.
     //
     // A stop this side performed by itself is invisible to the owner of the
     // election otherwise: its own record of "I am recording" is written only

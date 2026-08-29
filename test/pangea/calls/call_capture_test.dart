@@ -1347,6 +1347,102 @@ void main() {
 
       expect(sink.delivered.map((c) => c.index), [0]);
     });
+
+    test('lets a listener restart from inside the report', () async {
+      // The stop goes first, and it sets the gate and publishes itself before
+      // it awaits anything -- so a listener that starts again from straight
+      // inside this call finds a stop to wait for. Reporting first would hand
+      // that listener a recorder still marked as running, and its start would
+      // bounce off the "already running" guard instead.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      Future<void>? restarted;
+      s.onCaptureLost = () => restarted = s.start(track);
+      await s.start(track);
+
+      tap.die();
+      await pumpEventQueue();
+
+      await expectLater(
+        restarted,
+        completes,
+        reason: 'the restart queues behind the stop rather than racing it',
+      );
+      expect(s.isRecording, isTrue);
+      await s.stop();
+    });
+
+    test('a report from a tap whose open then failed ends nothing', () async {
+      // The session still matches -- a failed open does not move it -- so the
+      // only thing standing between a dead run and a second teardown is the
+      // check that a run is still going at all. Without it the death would
+      // stop a recorder that is already idle and tell the election it had lost
+      // a recording that never started.
+      final tap = _DiesAfterFailedOpenTap();
+      final s = service(withTap: tap);
+      await expectLater(s.start(track), throwsStateError);
+      var lost = 0;
+      s.onCaptureLost = () => lost++;
+
+      tap.die();
+      await pumpEventQueue();
+
+      expect(lost, 0, reason: 'there was no recording to lose');
+      expect(s.isRecording, isFalse);
+    });
+  });
+
+  group('a device whose tap keeps dying', () {
+    /// What the owner of the election does with the report, reduced to the part
+    /// that matters here: it clears its own record and elects again, and an
+    /// election that ranks device ids alone hands the recording straight back
+    /// to the device that just failed.
+    void restartOnLoss(CallCaptureService s) =>
+        s.onCaptureLost = () => unawaited(s.start(track));
+
+    test('stops attaching once two attempts have died', () async {
+      // Nothing differs between one attempt and the next: the same device
+      // attaches the same tap for the same reason, so a third go is a spin
+      // rather than a retry. On the web each turn builds and tears down an
+      // AudioContext and an AudioWorklet module, for the rest of the call.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      restartOnLoss(s);
+      await s.start(track);
+
+      for (var i = 0; i < 5; i++) {
+        tap.die();
+        await pumpEventQueue();
+      }
+
+      expect(tap.opens, 2, reason: 'the retry is bounded, not endless');
+      expect(
+        s.isRecording,
+        isFalse,
+        reason: 'and it says so rather than holding a tap it does not have',
+      );
+    });
+
+    test('a stretch that delivered audio starts the count again', () async {
+      // Consecutive, not cumulative. A delivered frame is the one piece of
+      // evidence available that this device's tap point works, so a death
+      // hours later is a fresh failure and not the second half of an old one.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      restartOnLoss(s);
+      await s.start(track);
+
+      tap.die();
+      await pumpEventQueue();
+      // The attach that replaced it works.
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+      tap.die();
+      await pumpEventQueue();
+
+      expect(tap.opens, 3, reason: 'the working stretch bought a fresh count');
+      expect(s.isRecording, isTrue);
+      await s.stop();
+    });
   });
 }
 
@@ -1588,6 +1684,10 @@ class _DyingTap implements CallAudioTap {
   CallAudioFrames? onFrames;
   bool detached = false;
 
+  /// How many times this tap has been attached, which is the only thing a test
+  /// can see about a recorder that keeps trying.
+  int opens = 0;
+
   /// The report the tap was handed, so a test can fire it at a moment of its
   /// choosing — including long after the stretch it belonged to ended.
   late TapDied die;
@@ -1598,8 +1698,29 @@ class _DyingTap implements CallAudioTap {
     CallAudioFrames onFrames, {
     required TapDied onDead,
   }) async {
+    opens++;
     this.onFrames = onFrames;
     die = onDead;
     return () async => detached = true;
+  }
+}
+
+/// A tap that takes the report and THEN fails to open.
+///
+/// Nothing shipped does this today — the renderer cannot throw once it has
+/// armed, and the Android tap never reports at all — but the contract permits
+/// it, and it is the one shape that produces a report whose session still
+/// matches a run that is already over.
+class _DiesAfterFailedOpenTap implements CallAudioTap {
+  late TapDied die;
+
+  @override
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
+    die = onDead;
+    throw StateError('the platform refused after taking the report');
   }
 }

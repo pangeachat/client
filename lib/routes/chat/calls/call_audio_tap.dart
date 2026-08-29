@@ -45,6 +45,24 @@ typedef CallAudioFrames =
 /// guaranteed to answer.
 typedef TapDied = void Function();
 
+/// What livekit_client itself may spend AFTER a renderer is registered and
+/// BEFORE it is in any position to deliver a frame.
+///
+/// `addAudioRenderer` registers synchronously and leaves the capture it starts
+/// running behind it, so a watchdog armed the moment it returns is timing the
+/// package's own setup and not a working tap's silence. On the web that setup
+/// OPENS with `await ctx.resume().toDart.timeout(const Duration(seconds: 3))`
+/// — livekit_client-2.11.0, audio_frame_capture_web.dart, whose comment says a
+/// browser may reject or stall a resume until it has seen a user gesture. Only
+/// afterwards does it compile the worklet module, build the graph and wire the
+/// port, and the first frame is a render quantum later again.
+///
+/// So this is the FLOOR any first-frame budget has to clear, and it is a
+/// property of the dependency rather than of a healthy attach. Named here so
+/// that the relationship is the thing under test: a budget that does not exceed
+/// it reports every stalled-but-recoverable browser dead.
+const rendererStartupStall = Duration(seconds: 3);
+
 /// Where a device reads its own outbound call audio from.
 ///
 /// The tap point is the whole correctness argument for attribution: it has to
@@ -85,16 +103,32 @@ class TrackRendererTap implements CallAudioTap {
   /// How long a registered renderer is given to produce its first frame.
   ///
   /// Injected the way the recorder's detach timeout is, so a test need not wait
-  /// it out. Three seconds is far longer than a working attach needs — once the
-  /// capture is running frames arrive every few tens of milliseconds — and
-  /// short enough that a device whose renderer never started can hand the
-  /// recording to another one while the conversation is still going on.
+  /// it out. The number is set against [rendererStartupStall] — the cost of the
+  /// SETUP this watches — rather than against the interval between frames once
+  /// a capture is running. Those are different quantities and the frame
+  /// interval is the wrong one: it describes a tap that already works, while
+  /// every second of the wait here is spent before one exists.
+  ///
+  /// This was three seconds, which reads as generous by the frame interval and
+  /// was in fact EQUAL to the package's resume stall on its own, with the whole
+  /// worklet build still to come after it. A browser doing exactly what livekit
+  /// budgets for would have had a healthy attach reported dead, and the restart
+  /// would have paid the identical cost and been killed at the identical point.
+  /// Fifteen seconds puts the documented setup path well inside the budget with
+  /// room for a main thread that is also negotiating the call.
+  ///
+  /// What the wait costs is how long a genuinely dead tap goes unnoticed —
+  /// bounded audio at the start of one stretch. What it buys is that the report
+  /// means something. It does NOT yet buy a handover: the election ranks on
+  /// device id alone, so the device that reports the death is the device that
+  /// tries again, a bounded number of times. Moving the recording to a sibling
+  /// needs capability ranking, which is #410 item 6 and is not here yet.
   final Duration firstFrameTimeout;
 
   const TrackRendererTap({
     required this.sampleRate,
     required this.channels,
-    this.firstFrameTimeout = const Duration(seconds: 3),
+    this.firstFrameTimeout = const Duration(seconds: 15),
   });
 
   @override
