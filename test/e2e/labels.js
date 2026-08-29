@@ -122,7 +122,7 @@ const KEYS = {
   mute: 'callMute',
   ret: 'callReturn',
   busy: 'callFailedBusy',
-  recordingNotice: 'callRecordingNotice',
+  recordingNotice: 'callTranscriptSharedNotice',
   transcriptLink: 'callTranscriptOpen',
 };
 

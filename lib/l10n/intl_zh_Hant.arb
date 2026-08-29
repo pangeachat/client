@@ -9877,7 +9877,6 @@
     "callUnmute": "解除靜音",
     "callCameraOn": "開啟相機",
     "callCameraOff": "關閉相機",
-    "callRecordingNotice": "此通話已轉錄以供您分析",
     "callNoMicrophone": "他們聽不到您的聲音：您的麥克風未啟動",
     "callIncoming": "來電",
     "callAnswer": "接聽",

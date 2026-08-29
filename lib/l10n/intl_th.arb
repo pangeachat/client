@@ -10403,7 +10403,6 @@
     "callUnmute": "เปิดเสียง",
     "callCameraOn": "เปิดกล้อง",
     "callCameraOff": "ปิดกล้อง",
-    "callRecordingNotice": "การโทรนี้จะถูกถอดเสียงเพื่อการวิเคราะห์ของคุณ",
     "callNoMicrophone": "พวกเขาไม่ได้ยินคุณ: ไมโครโฟนของคุณไม่ได้เริ่มทำงาน",
     "callIncoming": "สายเรียกเข้า",
     "callAnswer": "รับสาย",

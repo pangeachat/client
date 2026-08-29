@@ -10691,7 +10691,6 @@
     "callUnmute": "Slå lyd til",
     "callCameraOn": "Tænd kamera",
     "callCameraOff": "Sluk kamera",
-    "callRecordingNotice": "Dette opkald transskriberes til din analyse",
     "callNoMicrophone": "De kan ikke høre dig: din mikrofon startede ikke",
     "callIncoming": "Indgående opkald",
     "callAnswer": "Besvar",

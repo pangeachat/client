@@ -234,7 +234,7 @@ async function main() {
   // required to appear in the accessibility tree.
   const panelText = (await A.page.evaluate(() => document.body.innerText || ''))
     .replace(/\s+/g, ' ');
-  const notices = labels.labelsFor('callRecordingNotice')
+  const notices = labels.labelsFor('callTranscriptSharedNotice')
     .map((t) => t.split('.')[0].trim())
     .filter((t) => t.length > 12);
   h.check(s, 'the recording notice is shown to the caller',

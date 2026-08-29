@@ -9964,7 +9964,6 @@
     "callUnmute": "음소거 해제",
     "callCameraOn": "카메라 켜기",
     "callCameraOff": "카메라 끄기",
-    "callRecordingNotice": "이 통화는 분석을 위해 기록됩니다",
     "callNoMicrophone": "상대방이 들을 수 없습니다: 마이크가 시작되지 않았습니다",
     "callIncoming": "수신 전화",
     "callAnswer": "응답",

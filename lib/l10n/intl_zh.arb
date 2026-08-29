@@ -9771,7 +9771,6 @@
     "callUnmute": "取消静音",
     "callCameraOn": "打开摄像头",
     "callCameraOff": "关闭摄像头",
-    "callRecordingNotice": "此通话已转录，供您分析",
     "callNoMicrophone": "他们听不到您的声音：您的麦克风未启动",
     "callIncoming": "来电",
     "callAnswer": "接听",

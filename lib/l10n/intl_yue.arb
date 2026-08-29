@@ -10728,7 +10728,6 @@
     "callUnmute": "解除靜音",
     "callCameraOn": "開啟鏡頭",
     "callCameraOff": "關閉鏡頭",
-    "callRecordingNotice": "此通話已轉錄以供分析",
     "callNoMicrophone": "對方聽不到你說話：你的咪高峰未啟動",
     "callIncoming": "來電",
     "callAnswer": "接聽",

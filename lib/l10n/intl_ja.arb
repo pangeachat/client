@@ -10540,7 +10540,6 @@
     "callUnmute": "ミュート解除",
     "callCameraOn": "カメラをオンにする",
     "callCameraOff": "カメラをオフにする",
-    "callRecordingNotice": "この通話は分析のために文字起こしされます",
     "callNoMicrophone": "相手には聞こえません: マイクが起動しませんでした",
     "callIncoming": "着信",
     "callAnswer": "応答",

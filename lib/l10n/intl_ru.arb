@@ -10743,7 +10743,6 @@
     "callUnmute": "Включить звук",
     "callCameraOn": "Включить камеру",
     "callCameraOff": "Выключить камеру",
-    "callRecordingNotice": "Этот звонок записывается для вашей аналитики",
     "callNoMicrophone": "Вас не слышно: микрофон не включился",
     "callIncoming": "Входящий звонок",
     "callAnswer": "Ответить",

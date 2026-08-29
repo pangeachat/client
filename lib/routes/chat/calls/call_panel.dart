@@ -71,7 +71,7 @@ class CallPanel extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 24),
                         child: Text(
-                          l10n.callRecordingNotice,
+                          l10n.callTranscriptSharedNotice,
                           textAlign: TextAlign.center,
                           style: theme.textTheme.bodySmall?.copyWith(
                             color: Colors.white38,

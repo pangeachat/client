@@ -9808,7 +9808,6 @@
     "callUnmute": "Poista mykistys",
     "callCameraOn": "Kytke kamera päälle",
     "callCameraOff": "Kytke kamera pois päältä",
-    "callRecordingNotice": "Tämä puhelu litteroidaan analytiikkaasi varten",
     "callNoMicrophone": "He eivät kuule sinua: mikrofonisi ei käynnistynyt",
     "callIncoming": "Saapuva puhelu",
     "callAnswer": "Vastaa",
