@@ -85,10 +85,7 @@ class CallDelayedLeave {
   /// report rather than from the death, and while the SFU's retention exceeds
   /// `applyLeave - (2 * maxRestart + requestBudget) - endedDeliberatelyWithin`
   /// -- five seconds, as these numbers stand -- the server's cleanup still
-  /// beats the discriminator and a crash still reads as a hangup. Not that it
-  /// arrives before the SFU's report: it arrives AFTER that report and still
-  /// inside [ActiveCall.endedDeliberatelyWithin] of it, which is the only
-  /// thing the check turns on. Closing THAT needs the
+  /// lands first and a crash still reads as a hangup. Closing THAT needs the
   /// discriminator to stop inferring intent from timing, which is a change of
   /// its own and is tracked in pangeachat/.github#410.
   ///

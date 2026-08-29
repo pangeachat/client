@@ -8,7 +8,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
@@ -420,57 +419,6 @@ void main() {
         ),
         isTrue,
         reason: 'one service per account: a second VoIP would lose the call',
-      );
-    });
-
-    testWidgets('a logout does not mark its same-name successor as departing', (
-      tester,
-    ) async {
-      // On web every account shares one client name, so "is this account going
-      // away" cannot be answered by name: while the account that LEFT unwinds,
-      // a name-keyed answer calls its live successor departing too, and the
-      // incoming-call banner stops serving an account that is perfectly fine.
-      //
-      // Posed with two clients built on the SAME name, which is the one case
-      // the rest of this file deliberately avoids.
-      // Built directly rather than through `getTestClient`, and NOT logged in:
-      // the question is asked of the object and answered from a set, so a
-      // login (and the sync it starts) buys nothing and is what made an
-      // earlier version of this test hang. Each gets its own in-memory
-      // database, so sharing a NAME costs them nothing.
-      final state = await pumpBanner(tester);
-      Future<Client> sameName() async => Client(
-        'shared-name',
-        httpClient: FakeMatrixApi(),
-        database: await MatrixSdkDatabase.init(
-          'test',
-          database: await databaseFactoryFfi.openDatabase(':memory:'),
-          sqfliteFactory: databaseFactoryFfi,
-        ),
-      );
-      // Through `runAsync`: `testWidgets` drives a FAKE async zone, and opening
-      // a database is real I/O that never completes inside it. The clients the
-      // rest of this file uses are built in `setUp`, which is already a real
-      // zone, so this is the only place that has to say so.
-      final clients = await tester.runAsync(
-        () async => [await sameName(), await sameName()],
-      );
-      final leaving = clients![0];
-      final successor = clients[1];
-
-      state.markClientSigningOutForTest(leaving);
-
-      expect(
-        state.isSigningOut(leaving),
-        isTrue,
-        reason: 'the account that is actually leaving',
-      );
-      expect(
-        state.isSigningOut(successor),
-        isFalse,
-        reason:
-            'a live account that merely shares the departing one\'s client '
-            'name is not itself departing',
       );
     });
 

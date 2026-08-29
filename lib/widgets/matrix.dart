@@ -121,16 +121,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// its account is closing — the entries stay in their maps until disposal
   /// finishes, so a queued rebuild reads the closing service rather than
   /// creating a fresh one that would outlive the account and leak.
-  /// In-flight teardowns, keyed by what each one OWNS -- the client instance
-  /// when there is one, the name when there is not.
-  ///
-  /// Not by name alone. On web every account shares one client name, so a
-  /// name-keyed `??=` hands a SECOND account's teardown the FIRST account's
-  /// in-flight future: the second body never runs, and its call service,
-  /// analytics service and live call are never disposed at all. Keying by the
-  /// owner keeps one teardown per account while still collapsing repeats of
-  /// the same one.
-  final Map<Object, Future<void>> _disposingServices = {};
+  final Map<String, Future<void>> _disposingServices = {};
 
   /// Client names currently unwinding from a `loggedOut` event: from the
   /// moment the state change is observed until the client has been removed
@@ -142,21 +133,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// one still in this set, or the new login silently loses its
   /// `onLoginStateChanged` listener and the login dialog never closes
   /// (#8514).
-  /// The client INSTANCES currently unwinding a logout, and the only record of
-  /// it. Both questions anyone asks about teardown are views over this set.
-  ///
-  /// Identity-keyed on purpose: two Clients are the same account only when they
-  /// are the same object, and on web every account shares one client name.
-  ///
-  /// It was a `Set<String>` of names, which could not answer either question
-  /// properly. "Is THIS account going away" read true for a live successor
-  /// while its predecessor unwound. And the name question -- may a fresh login
-  /// reuse this slot -- had a counting bug: two same-name accounts tearing down
-  /// at once added one entry, so whichever finished FIRST cleared it and a new
-  /// login could take the slot while the other was still unwinding. Deriving
-  /// both from the instances removes the count entirely: the name is busy while
-  /// any client holding it is.
-  final Set<Client> _clientsSigningOut = Set<Client>.identity();
+  final Set<String> _clientsTearingDown = {};
   // Pangea#
   SharedPreferences get store => widget.store;
 
@@ -536,16 +513,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   /// Whether [getLoginClient] would hand back the current [client] instead
   /// of creating a fresh login candidate. Exposed for tests; see
-  /// [_clientsSigningOut].
+  /// [_clientsTearingDown].
   @visibleForTesting
   bool get canReuseClientForLogin =>
       widget.clients.isNotEmpty &&
       !client.isLogged() &&
-      !_anyClientSigningOutNamed(client.clientName);
-
-  /// Whether any client holding [clientName] is unwinding a logout.
-  bool _anyClientSigningOutNamed(String clientName) =>
-      _clientsSigningOut.any((c) => c.clientName == clientName);
+      !_clientsTearingDown.contains(client.clientName);
 
   /// Whether [account] is unwinding a logout.
   ///
@@ -554,33 +527,16 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// that removal waits for the teardown to finish. Anything that must not act
   /// for a departing account has to ask this as well as the client list: in
   /// between, the list still contains it.
-  ///
-  /// Answered about the INSTANCE, from [_clientsSigningOut]. Asked of the
-  /// name-keyed set instead, this would call a live successor departing for as
-  /// long as its predecessor took to unwind, and call a still-unwinding
-  /// account live the moment any same-name one finished.
-  bool isSigningOut(Client account) => _clientsSigningOut.contains(account);
+  bool isSigningOut(Client account) =>
+      _clientsTearingDown.contains(account.clientName);
 
   /// Test-only: marks [clientName] as unwinding a `loggedOut` event, exactly
   /// as the listener installed by [_registerSubs] does before its async
   /// teardown — lets tests exercise the [getLoginClient] race guard without
   /// a live `loggedOut` stream event (#8514).
   @visibleForTesting
-  void markClientTearingDownForTest(Client account) =>
-      _clientsSigningOut.add(account);
-
-  /// Test-only: the other half, so a test can pose one account's unwind
-  /// FINISHING while another of the same name is still going.
-  @visibleForTesting
-  void unmarkClientTearingDownForTest(Client account) =>
-      _clientsSigningOut.remove(account);
-
-  /// Test-only alias of [markClientTearingDownForTest], kept because the two
-  /// call sites read about different things -- one about login reuse, one about
-  /// whether an account is still served -- and they are now the same fact.
-  @visibleForTesting
-  void markClientSigningOutForTest(Client account) =>
-      markClientTearingDownForTest(account);
+  void markClientTearingDownForTest(String clientName) =>
+      _clientsTearingDown.add(clientName);
 
   Future<Client> getLoginClient() async {
     if (canReuseClientForLogin) {
@@ -878,7 +834,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // reuse this client for the whole unwind, not just once teardown
       // itself starts (#8514).
       if (state == LoginState.loggedOut) {
-        _clientsSigningOut.add(c);
+        _clientsTearingDown.add(c.clientName);
       }
       // A failure reporting the state change (e.g. Firebase analytics) must NOT
       // skip the loggedOut teardown below — otherwise the account's services +
@@ -895,12 +851,25 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // Pangea#
       final loggedInWithMultipleClients = widget.clients.length > 1;
       if (state == LoginState.loggedOut) {
-        await _cancelSubs(c.clientName, owner: c);
-        widget.clients.remove(c);
-        ClientManager.removeClientNameFromStore(c.clientName, store);
         // #Pangea
-        // InitWithRestoreExtension.deleteSessionBackup(name);
-        _clientsSigningOut.remove(c);
+        // In a `finally`, because the mark is what makes `getLoginClient`
+        // refuse to reuse this slot. A throw anywhere in the unwind -- a
+        // service `dispose()` that fails, a subscription that will not cancel
+        // -- used to skip the clear, and the account then stayed marked for
+        // the life of the app: signing in again could never reuse the client,
+        // with nothing on screen to say why. The clear belongs to reaching the
+        // END of the unwind, not to reaching it successfully.
+        // Pangea#
+        try {
+          await _cancelSubs(c.clientName);
+          widget.clients.remove(c);
+          ClientManager.removeClientNameFromStore(c.clientName, store);
+        } finally {
+          // #Pangea
+          // InitWithRestoreExtension.deleteSessionBackup(name);
+          _clientsTearingDown.remove(c.clientName);
+        }
+        // #Pangea
         // Said AFTER the account is out of the list, so a listener that
         // re-reads it sees the account gone rather than half-gone. The
         // incoming-call banner uses this to drop that account's ring
@@ -964,13 +933,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // Pangea#
   }
 
-  /// [owner], when given, is the client this teardown belongs to. Everything
-  /// keyed by NAME below is safe to clear either way -- a name really is what
-  /// identifies a subscription -- but the SERVICES are per client instance, and
-  /// on web every account shares one client name (`PlatformInfos.clientName`),
-  /// so a sign-out followed by a sign-in reuses it. Passing the client lets
-  /// [disposeAccountServices] refuse to dispose a successor's live service.
-  Future<void> _cancelSubs(String name, {Client? owner}) async {
+  Future<void> _cancelSubs(String name) async {
     onRoomKeyRequestSub[name]?.cancel();
     onRoomKeyRequestSub.remove(name);
     onKeyVerificationRequestSub[name]?.cancel();
@@ -982,7 +945,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     onUiaRequest[name]?.cancel();
     onUiaRequest.remove(name);
-    await disposeAccountServices(name, owner: owner);
+    await disposeAccountServices(name);
     // Pangea#
   }
 
@@ -1027,39 +990,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// service/database), and the map entries are removed only AFTER disposal
   /// completes — so [analyticsDataService] returns the still-closing service
   /// mid-teardown instead of resurrecting a fresh one for a logged-out account.
-  /// [owner] is the client this teardown belongs to, when there is one.
-  ///
-  /// Services are per client INSTANCE; the map that holds them is keyed by
-  /// client NAME. Those are the same thing right up until they are not: on web
-  /// every account uses one name (`PlatformInfos.clientName`), so signing out
-  /// and signing back in reuses it, and a teardown scheduled for the account
-  /// that LEFT can arrive after the new one has installed its own service
-  /// under that key. Disposing by name there tears down the live account's
-  /// call service, and the incoming-call banner stays subscribed to a disposed
-  /// instance that no later lookup can return -- an account that silently
-  /// stops ringing, which is the failure the eviction guard below was already
-  /// written to avoid at the OTHER end.
-  ///
-  /// So a teardown that names its owner acts only on that client's own things.
-  /// Widget disposal passes none, because there the whole app is going and
-  /// whatever is current is exactly what should go with it.
-  Future<void> disposeAccountServices(String clientName, {Client? owner}) {
-    final flightKey = owner ?? clientName;
-    return _disposingServices[flightKey] ??= () async {
+  Future<void> disposeAccountServices(String clientName) {
+    return _disposingServices[clientName] ??= () async {
       // #Pangea
       // Captured BEFORE any await, so the entry evicted in `finally` is the
       // one this teardown actually disposed and not whatever occupies the key
       // by the time it finishes.
-      final held = _callServices[clientName];
-      final heldAnalytics = _analyticsServices[clientName];
-      // ... and only what is OURS. See the doc above. A teardown with no owner
-      // (widget disposal) owns everything, because the app itself is going.
-      bool ours(Client? serviceClient) =>
-          owner == null || identical(serviceClient, owner);
-      final disposingCall = ours(held?.client) ? held : null;
-      final disposingAnalytics = ours(heldAnalytics?.accountClient)
-          ? heldAnalytics
-          : null;
+      final disposingCall = _callServices[clientName];
+      final disposingAnalytics = _analyticsServices[clientName];
       // Pangea#
       try {
         _activityAutoSaveServices[clientName]?.dispose();
@@ -1074,10 +1012,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // By the client OBJECT when we have one. Matching on the name alone
         // would let a departing account end the SUCCESSOR's call, for the same
         // reused-name reason described above.
-        if (live != null &&
-            (owner == null
-                ? live.room.client.clientName == clientName
-                : identical(live.room.client, owner))) {
+        if (live != null && live.room.client.clientName == clientName) {
           activeCall.value = null;
           live.dispose();
         }
@@ -1101,7 +1036,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         if (identical(_analyticsServices[clientName], disposingAnalytics)) {
           _analyticsServices.remove(clientName);
         }
-        _disposingServices.remove(flightKey);
+        _disposingServices.remove(clientName);
       }
     }();
   }
