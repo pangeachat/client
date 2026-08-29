@@ -29,8 +29,13 @@ bool choreoUnderPressure(Object error) {
   return status == 429 || status >= 500;
 }
 
-/// Bounds what this DEVICE has in flight to the choreographer, and stops it
-/// hammering one that is already failing.
+/// Bounds how many uploads this DEVICE is waiting on at once, and stops it
+/// hammering a choreographer that is already failing.
+///
+/// "Waiting on" and not "has open" — the distinction is real and the permit
+/// note in [run] explains it. An abandoned upload keeps its socket, because
+/// nothing this app sends is abortable, so this counts what the device is still
+/// expecting an answer to.
 ///
 /// A call ships up to 2.88 MB of WAV per chunk (`PcmChunker.maxBytes`) and hands
 /// each one over without waiting. Nothing counted how many were outstanding, and
@@ -47,9 +52,11 @@ bool choreoUnderPressure(Object error) {
 ///
 /// **A circuit breaker.** [failuresToOpen] consecutive server-classified
 /// failures open it for [openFor]; then exactly one caller is admitted as a
-/// probe, and whether IT succeeds decides. The probe is a real chunk upload:
-/// there is no synthetic prober and no background timer, so a device with
-/// nothing to send makes no requests at all.
+/// probe, and whether IT succeeds decides — a success that was already in
+/// flight when the breaker opened decides nothing, because it says nothing
+/// about the state that opened it. The probe is a real chunk upload: there is
+/// no synthetic prober and no background timer, so a device with nothing to
+/// send makes no requests at all.
 ///
 /// **What happens to audio while it is open is a decision, not a side effect.**
 /// Nothing is dropped here. A caller that arrives while the breaker is open
@@ -163,7 +170,7 @@ class CallUploadGate {
       }
       try {
         final result = await (left == null ? work() : work().timeout(left));
-        _recordSuccess();
+        _recordSuccess(wasProbe: probing);
         return result;
       } catch (error) {
         _recordFailure(error);
@@ -172,11 +179,19 @@ class CallUploadGate {
     } finally {
       // Released when we stop WAITING, not when the request truly finishes.
       // Nothing this app sends is abortable — `Requests.post` goes through the
-      // top-level `http.post`, which has no cancellation wired — so a timed-out
-      // upload keeps its socket. Tying the permit to that future would leak one
-      // per timeout and wedge the device for good after three. The honest
-      // reading of this cap is "uploads this device is still waiting on", not
-      // "sockets the OS still holds".
+      // top-level `http.post`, and `package:http`'s `AbortableRequest` is not
+      // wired into it — so a timed-out upload keeps its socket, and what this
+      // cap counts is "uploads this device is still waiting on", NOT "sockets
+      // the OS still holds". Both readings are worth having; only the first is
+      // available without changing the app's shared HTTP path.
+      //
+      // Tying the permit to the raw future instead would stall the device
+      // rather than wedge it — production reaches `SpeechToTextRepo`, whose own
+      // fetch is bounded at sixty seconds — but a stall of thirty seconds per
+      // timed-out attempt, on a cap of three, is a stall this feature cannot
+      // afford. The injected transcriber is a bare typedef with no deadline of
+      // its own, so a caller that supplies an unbounded one would wedge for
+      // good; the test uses exactly that.
       _settleProbe(probing);
       _releasePermit();
     }
@@ -282,7 +297,21 @@ class CallUploadGate {
     if (probe != null && !probe.isCompleted) probe.complete();
   }
 
-  void _recordSuccess() {
+  void _recordSuccess({required bool wasProbe}) {
+    if (!wasProbe && _openUntil != null) {
+      // Already in flight when somebody else opened the breaker. It is not the
+      // probe, and it says nothing about the state that opened it -- the
+      // requests that failed did so AFTER this one was admitted. Letting it
+      // close the breaker would admit every waiter with no cooldown at all,
+      // which is the one thing the breaker exists to impose; letting it merely
+      // clear the failure count would be worse still, because the probe that
+      // followed could then fail without reaching the threshold again and the
+      // doors would stay open on a backend that is still down.
+      //
+      // So it changes nothing. Whether the server is well is decided by the
+      // probe, which is what the cooldown is for.
+      return;
+    }
     _consecutiveFailures = 0;
     _openUntil = null;
   }

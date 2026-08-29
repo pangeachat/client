@@ -84,9 +84,11 @@ void main() {
     test('a permit is given back when the request is abandoned, not when it '
         'finally answers', () async {
       // Nothing this app sends is abortable, so a timed-out upload keeps its
-      // socket and its future never completes. A permit tied to that future
-      // would be gone for good, and three of them would wedge the device for
-      // the rest of the process.
+      // socket. A permit tied to the raw future would be held for however long
+      // the request took to give up on its own -- sixty seconds through
+      // `SpeechToTextRepo`, and for ever behind a transcriber with no deadline,
+      // which is what the fake here is. Three of those and the device stops
+      // sending. The permit has to come back when we stop WAITING.
       final gate = CallUploadGate(maxInFlight: 3, openFor: _openFor);
 
       await expectLater(
@@ -194,6 +196,50 @@ void main() {
         reason: 'a 429 and a hang are both the server',
       );
     });
+
+    test(
+      'a success already in flight when it opened does not close it',
+      () async {
+        // The upload was admitted while the breaker was shut, so the failures
+        // that opened it happened AFTER it went out -- it is not evidence about
+        // the state that opened the breaker and it is not the probe. Closing on
+        // it would let every waiter through with no cooldown at all; merely
+        // clearing the failure count would be worse, because the probe that
+        // followed could then fail without reaching the threshold again and the
+        // doors would stay open on a backend still down.
+        final gate = CallUploadGate(
+          maxInFlight: 3,
+          failuresToOpen: 2,
+          openFor: _openFor,
+        );
+        final slow = Completer<void>();
+        final inFlight = gate.run(() => slow.future, within: _budget);
+        await pumpEventQueue();
+
+        for (var i = 0; i < 2; i++) {
+          await expectLater(
+            gate.run(() async => throw _http(503), within: _budget),
+            throwsA(isA<PangeaHttpException>()),
+          );
+        }
+        expect(gate.isOpen, isTrue);
+        final counted = gate.consecutiveFailures;
+
+        slow.complete();
+        await inFlight;
+
+        expect(
+          gate.isOpen,
+          isTrue,
+          reason: 'the cooldown still has to be served',
+        );
+        expect(
+          gate.consecutiveFailures,
+          counted,
+          reason: 'and the run that opened it still stands',
+        );
+      },
+    );
 
     test('a 4xx in between breaks the run too', () async {
       // Consecutive has to mean consecutive. A 4xx is the server ANSWERING, so
