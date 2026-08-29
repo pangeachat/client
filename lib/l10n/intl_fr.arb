@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-23 22:00:22.664431",
+    "@@last_modified": "2026-08-28 11:37:29.372529",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -3163,14 +3163,12 @@
     "enableAutocorrectPopupTitle": "Ajoutez votre clavier de langue cible en allant sur :",
     "enableAutocorrectPopupSteps": "  • Paramètres\n  • Général\n  • Clavier\n  • Claviers\n  • Ajouter un nouveau clavier",
     "enableAutocorrectPopupDescription": "Une fois la langue sélectionnée, vous pouvez cliquer sur la petite icône de globe en bas à gauche de votre clavier pour activer le clavier nouvellement installé.",
-    "downloadGboardSteps": " • Télécharger Gboard\n  • Ouvrir l'application\n  • Langues\n  • Ajouter un clavier\n  • Sélectionner la langue\n  • Choisir le type de clavier\n  • Terminé",
     "enableAutocorrectWarning": "Attention ! Nécessite d'ajouter le clavier de votre langue cible",
     "displayName": "Nom d'affichage",
     "leaveRoomDescription": "Vous êtes sur le point de quitter cette conversation. Les autres utilisateurs verront que vous avez quitté la discussion.",
     "confirmUserId": "Veuillez confirmer votre nom d'utilisateur Pangea Chat pour supprimer votre compte.",
     "paidSubscriptionStarts": "À partir du {startDate}",
     "cancelInSubscriptionSettings": " • Annuler à tout moment dans les paramètres d'abonnement",
-    "downloadGboard": "Télécharger Gboard",
     "autocorrectNotAvailable": "Malheureusement, votre plateforme n'est pas actuellement prise en charge pour cette fonctionnalité. Restez à l'écoute pour de futures améliorations !",
     "pleaseUpdateApp": "Veuillez mettre à jour l'application pour continuer.",
     "chooseEmojiInstructionsBody": "Associez les emojis aux mots qu'ils représentent le mieux. Ne vous inquiétez pas ! Pas de pénalité si vous n'êtes pas d'accord. 😅",
@@ -5757,10 +5755,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5786,10 +5780,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10114,6 +10104,23 @@
     "autocorrectAndroidFallbackTitle": "Si votre clavier n'offre pas votre langue cible, installez Gboard et ajoutez la langue là :",
     "resendInSeconds": "Renvoyer dans ({seconds})",
     "mapLevelFallbackNotice": "Aucune activité {selected} pour l'instant — affichage des activités {shown} à la place.",
+    "openKeyboardSettings": "Ouvrir les paramètres du clavier",
+    "keyboardPromptAddKeyboardMessage": "Ajoutez un clavier pour votre langue cible afin que la correction automatique fonctionne.",
+    "keyboardPromptAddKeyboardAction": "Ajouter un clavier",
+    "keyboardPromptSwitchKeyboardMessage": "Appuyez sur l'icône du globe sur votre clavier pour passer à votre langue cible.",
+    "switchLanguageChipLabel": "Passer au {language}",
+    "languageDropdownLevel": "Niveau {level}",
+    "whatAreYouLearning": "Qu'apprenez-vous ?",
+    "languageSwitcherBaseLanguageLabel": "Votre langue de base",
+    "listenModeDescription": "Touchez un choix pour l'entendre. Rien n'est sélectionné.",
+    "rateActivityLiked": "J'ai aimé",
+    "rateActivityDisliked": "Je n'ai pas aimé",
+    "constructUseHrdDesc": "Entendu",
+    "timesHeard": "{count, plural, =1{Écouté une fois} other{Écouté {count} fois}}",
+    "allSettings": "Tous les paramètres",
+    "usedCorrectly": "{count, plural, =1{Utilisé correctement une fois} other{Utilisé correctement {count} fois}}",
+    "usedIncorrectly": "{count, plural, =1{Utilisé incorrectement une fois} other{Utilisé incorrectement {count} fois}}",
+    "usedWithoutScoring": "{count, plural, =1{Utilisé une fois sans marquer de point} other{Utilisé {count} fois sans marquer de point}}",
     "constructUsePvcDesc": "Produit lors d'un appel",
     "startCall": "Appeler",
     "startVideoCall": "Appel vidéo",
@@ -10159,8 +10166,5 @@
     "callHistoryNoAnswer": "Pas de réponse",
     "callHistoryDeclined": "Appel refusé",
     "callHistoryYouDeclined": "Vous avez refusé cet appel",
-    "switchLanguageChipLabel": "Passer au {language}",
-    "languageDropdownLevel": "Niveau {level}",
-    "whatAreYouLearning": "Qu'apprenez-vous ?",
-    "languageSwitcherBaseLanguageLabel": "Votre langue de base"
+    "starsEarnedInLanguage": "Étoiles gagnées en {language}"
 }

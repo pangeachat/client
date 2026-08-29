@@ -5,7 +5,7 @@ description: Learn a language while texting your friends.
 # Pangea#
 publish_to: none
 # On version bump also increase the build number for F-Droid
-version: 5.0.1+6
+version: 5.0.3+6
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -146,6 +146,10 @@ dependencies:
   # (routes/chat/composer_keyboard_context.dart, #8465).
   text_input_context:
     path: pangea_packages/text_input_context
+  # Reports the learner's enabled device keyboards, on iOS and Android
+  # (features/keyboards/keyboard_language_repo.dart, #8504).
+  keyboard_languages:
+    path: pangea_packages/keyboard_languages
   # Pangea#
   pangea_call_capture:
     path: pangea_packages/pangea_call_capture

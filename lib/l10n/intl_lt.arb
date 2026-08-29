@@ -2769,14 +2769,12 @@
     "enableAutocorrectPopupTitle": "Pridėkite savo tikslios kalbos klaviatūrą, eikite į:",
     "enableAutocorrectPopupSteps": "  • Nustatymai\n  • Bendra\n  • Klaviatūra\n  • Klaviatūros\n  • Pridėti naują klaviatūrą",
     "enableAutocorrectPopupDescription": "Pasirinkus kalbą, galite spustelėti mažą pasaulio ženklo piktogramą apatinėje kairėje klaviatūros dalyje, kad aktyvuotumėte naujai įdiegtą klaviatūrą.",
-    "downloadGboardSteps": "• Atsisiųskite Gboard\n  • Atidarykite programėlę\n  • Kalbos\n  • Pridėti klaviatūrą\n  • Pasirinkite kalbą\n  • Pasirinkite klaviatūros tipą\n  • Baigta",
     "enableAutocorrectWarning": "Įspėjimas! Reikia pridėti savo tikslo kalbos klaviatūrą",
     "displayName": "Rodomas vardas",
     "leaveRoomDescription": "Jūs ketinate išeiti iš šio pokalbio. Kiti vartotojai matys, kad išėjote iš pokalbio.",
     "confirmUserId": "Patvirtinkite savo Pangea pokalbio vartotojo vardą, kad galėtumėte ištrinti savo paskyrą.",
     "paidSubscriptionStarts": "Pradedama {startDate}",
     "cancelInSubscriptionSettings": "• Atšaukite bet kuriuo metu prenumeratos nustatymuose",
-    "downloadGboard": "Atsisiųsti Gboard",
     "autocorrectNotAvailable": "Deja, jūsų platforma šiuo metu nepalaikoma šiai funkcijai. Sekite naujienas dėl tolimesnio vystymo!",
     "pleaseUpdateApp": "Prašome atnaujinti programėlę, kad galėtumėte tęsti.",
     "chooseEmojiInstructionsBody": "Suderinkite emocijas su žodžiais, kuriuos jos geriausiai atitinka. Nesijaudinkite! Nėra jokių taškų mažinimo už nesutikimą. 😅",
@@ -2970,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-23 22:00:42.323381",
+    "@@last_modified": "2026-08-28 11:37:30.912771",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6168,10 +6166,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6197,10 +6191,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10540,6 +10530,23 @@
     "autocorrectAndroidFallbackTitle": "Jei jūsų klaviatūra nepasiūlo jūsų mokomosios kalbos, įdiekite „Gboard“ ir pridėkite kalbą ten:",
     "resendInSeconds": "Siųsti iš naujo ({seconds})",
     "mapLevelFallbackNotice": "Kol kas nėra {selected} veiklų – vietoj jų rodoma {shown}.",
+    "openKeyboardSettings": "Atidaryti klaviatūros nustatymus",
+    "keyboardPromptAddKeyboardMessage": "Pridėkite tikslinės kalbos klaviatūrą, kad veiktų automatinis taisymas.",
+    "keyboardPromptAddKeyboardAction": "Pridėti klaviatūrą",
+    "keyboardPromptSwitchKeyboardMessage": "Bakstelėkite gaublio piktogramą klaviatūroje, kad perjungtumėte į tikslinę kalbą.",
+    "switchLanguageChipLabel": "Perjungti į {language}",
+    "languageDropdownLevel": "{level} lygis",
+    "whatAreYouLearning": "Ko mokotės?",
+    "languageSwitcherBaseLanguageLabel": "Jūsų pagrindinė kalba",
+    "listenModeDescription": "Palieskite pasirinkimą, kad jį išgirstumėte. Nieko nepasirinkta.",
+    "rateActivityLiked": "Patiko",
+    "rateActivityDisliked": "Nepatiko",
+    "constructUseHrdDesc": "Girdėta",
+    "timesHeard": "{count, plural, =1{Išgirsta vieną kartą} other{Išgirsta {count} kartus}}",
+    "allSettings": "Visi nustatymai",
+    "usedCorrectly": "{count, plural, =1{Panaudota teisingai vieną kartą} other{Panaudota teisingai {count} kartų}}",
+    "usedIncorrectly": "{count, plural, =1{Panaudota neteisingai vieną kartą} other{Panaudota neteisingai {count} kartų}}",
+    "usedWithoutScoring": "{count, plural, =1{Panaudota vieną kartą be taškų} other{Panaudota {count} kartų be taškų}}",
     "constructUsePvcDesc": "Sukurtas pokalbio metu",
     "startCall": "Skambinti",
     "startVideoCall": "Vaizdo skambutis",
@@ -10585,8 +10592,5 @@
     "callHistoryNoAnswer": "Neatsiliepta",
     "callHistoryDeclined": "Skambutis atmestas",
     "callHistoryYouDeclined": "Jūs atmetėte šį skambutį",
-    "switchLanguageChipLabel": "Perjungti į {language}",
-    "languageDropdownLevel": "Lygis {level}",
-    "whatAreYouLearning": "Ko mokotės?",
-    "languageSwitcherBaseLanguageLabel": "Jūsų pagrindinė kalba"
+    "starsEarnedInLanguage": "Žvaigždžių gauta {language} kalba"
 }

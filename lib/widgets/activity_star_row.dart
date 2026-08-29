@@ -42,17 +42,25 @@ class ActivityStarRow extends StatelessWidget {
     }
     return Semantics(
       label: L10n.of(context).starsEarnedOfTotal(filled, total),
-      child: Wrap(
-        spacing: 2.0,
-        runSpacing: 2.0,
-        children: List.generate(
-          total,
-          (i) => Icon(
-            i < filled ? Icons.star : Icons.star_border,
-            size: iconSize,
-            color: i < filled
-                ? AppConfig.gold
-                : (emptyColor ?? AppConfig.grayText),
+      // Scale down rather than wrap. Every host gives this row a box that can't
+      // grow — the role card's fixed 125, the suggestion card, the map card's
+      // SizedBox(height: 16) — so a second run paints outside the card (#8595).
+      // Shrinking keeps it one row; [condensed] is the fallback for counts too
+      // high to stay readable at any scale.
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 2.0,
+          children: List.generate(
+            total,
+            (i) => Icon(
+              i < filled ? Icons.star : Icons.star_border,
+              size: iconSize,
+              color: i < filled
+                  ? AppConfig.gold
+                  : (emptyColor ?? AppConfig.grayText),
+            ),
           ),
         ),
       ),

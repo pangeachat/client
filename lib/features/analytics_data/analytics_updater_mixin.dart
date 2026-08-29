@@ -45,7 +45,7 @@ mixin AnalyticsUpdater<T extends StatefulWidget> on State<T> {
     if (update.targetID != null) {
       // totalPoints, not points: the animation shows the action's own value,
       // so uses on flower-level (capped) constructs still animate (#7756).
-      PointsGainedAnimation.show(update.targetID!, update.totalPoints, context);
+      PointsGainedAnimation.show(update.targetID!, update.totalPoints);
     }
   }
 
@@ -53,7 +53,6 @@ mixin AnalyticsUpdater<T extends StatefulWidget> on State<T> {
     final targetId = update.targetID;
     if (targetId != null) {
       GrowthAnimation.show(
-        context,
         targetId,
         "${targetId}_growth_${update.constructId.string}",
         update.level.icon(24),

@@ -16,7 +16,7 @@ Nothing is locked, so the question is not "is this allowed?" but "where should t
 
 From those, the resolver finds each quest's **anchor (next) Mission**: the **first Mission in quest order whose star total is below the satisfaction threshold**; once every Mission is satisfied, the anchor falls back to the **lowest-star Mission**, so a completed quest keeps pointing at the learner's weakest area instead of going silent. When several quests are in scope it yields, **per quest**, an anchor and that quest's own per-Mission star totals; consumers preference still-unsatisfied Missions and **accumulate** across quests (so an activity advancing several quests' unfinished Missions ranks higher) — the resolver just supplies the anchors and totals, the weighting lives in the consumer (see the [world map](world-map.instructions.md) Priority matrix).
 
-**Star totals are per course, never blended across them** ([client#7771](https://github.com/pangeachat/client/issues/7771)). Missions are a shared catalog reused across quests, so two joined courses routinely carry the same Mission with *different* activities. A star total only means something against the activity set it was summed over: rolling several courses together would clamp one course's effective threshold against another course's content and credit its stars, and would silently undo that course's activity pins. Accumulation across quests is the *consumer's* job (the map's band), not a property of the totals. Where two courses genuinely list the **same** activity, each counts it once on its own — that needs no merging, since both outlines carry it.
+**Progression star totals are per course, never blended across them** ([client#7771](https://github.com/pangeachat/client/issues/7771)) — the separate per-person total on a participant card is a different quantity, not an exception to this (below). Missions are a shared catalog reused across quests, so two joined courses routinely carry the same Mission with *different* activities. A star total only means something against the activity set it was summed over: rolling several courses together would clamp one course's effective threshold against another course's content and credit its stars, and would silently undo that course's activity pins. Accumulation across quests is the *consumer's* job (the map's band), not a property of the totals. Where two courses genuinely list the **same** activity, each counts it once on its own — that needs no merging, since both outlines carry it.
 
 **Fail soft.** A surface that asks before the resolver is built simply has no anchor yet and ranks on plain relevance — a cold open (e.g. an activity link opened without visiting the map first) is never blocked, because nothing is ever blocked. The resolver only sharpens ordering; its absence degrades to neutral ranking, not to a wall.
 
@@ -41,6 +41,17 @@ Every displayed threshold is the **effective threshold**: the configured stars-t
 - **Per quest (the panel header)**: a total star count summing each Mission's stars **capped at its effective threshold** — one over-practiced Mission can't inflate quest progress — over a bar that fills toward the sum of the quest's effective thresholds. The clamp is what keeps this denominator honest: it can never exceed the stars the course's activities actually offer.
 
 A course **preview** (not joined) shows no star display — there is no learner progress to show. This builds toward the world_v2 tabbed course card (Figma "Everything outside of Chat"); until that card ships, the display lives on the existing course objectives panel.
+
+## Two star quantities, and how a reader tells them apart
+
+Stars are displayed in two different senses, and both appear on the course page.
+
+- **Course progress** — the panel displays above: how far this learner is through *this course*, capped per Mission, scoped to the course's own activities. It answers "how much of this course is done".
+- **A member's star total** — on the participant cards in the course page's Participants section: how many stars that person has banked in the course's language across everything they have played, uncapped and not course-scoped. It answers "how much has this person done". It is read from their public profile, since a viewer cannot see the session rooms another member earned stars in ([profile.instructions.md](profile.instructions.md)); the course page is where classmates become visible to each other, which is why it is shown there.
+
+The participant card is roughly one avatar wide and has no room for a label, so the two are distinguished by **form**: course progress always displays as a fraction over a bar, a member's total always as a bare count with no denominator. The full sense — how many stars, in which language — is carried in the card's accessible name and its hover tooltip, which cost no space. A denominator added to the participant card would collapse the distinction and should not be — that is the confusion this rule exists to prevent.
+
+The participant card shows the member's total for **the course's language** beside their level, which is already a per-language number, so both values on the card share one scope.
 
 ## Activity cards on the course plan panel
 

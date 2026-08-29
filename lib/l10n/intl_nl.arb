@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-23 22:00:49.200697",
+    "@@last_modified": "2026-08-28 11:37:31.431801",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -3359,14 +3359,12 @@
     "enableAutocorrectPopupTitle": "Voeg je doeltaal-toetsenbord toe door naar te gaan:",
     "enableAutocorrectPopupSteps": "  • Instellingen\n  • Algemeen\n  • Toetsenbord\n  • Toetsenborden\n  • Nieuw toetsenbord toevoegen",
     "enableAutocorrectPopupDescription": "Zodra de taal is geselecteerd, kun je op het kleine wereldbol-icoon linksonder op je toetsenbord klikken om het nieuw geïnstalleerde toetsenbord te activeren.",
-    "downloadGboardSteps": " • Download Gboard\n  • Open app\n  • Talen\n  • Toetsenbord toevoegen\n  • Taal selecteren\n  • Toetsbordtype selecteren\n  • Gereed",
     "enableAutocorrectWarning": "Waarschuwing! Vereist het toevoegen van je doeltaaltoetsenbord",
     "displayName": "Weergavenaam",
     "leaveRoomDescription": "Je staat op het punt deze chat te verlaten. Andere gebruikers zien dat je de chat hebt verlaten.",
     "confirmUserId": "Bevestig je Pangea Chat-gebruikersnaam om je account te verwijderen.",
     "paidSubscriptionStarts": "Begint op {startDate}",
     "cancelInSubscriptionSettings": "• Annuleer op elk moment in abonnementinstellingen",
-    "downloadGboard": "Download Gboard",
     "autocorrectNotAvailable": "Helaas wordt uw platform momenteel niet ondersteund voor deze functie. Blijf op de hoogte voor verdere ontwikkeling!",
     "pleaseUpdateApp": "Update de app om door te gaan.",
     "chooseEmojiInstructionsBody": "Match emoji's met de woorden die ze het beste vertegenwoordigen. Maak je geen zorgen! Geen punten aftrek voor het oneens zijn. 😅",
@@ -5567,10 +5565,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5596,10 +5590,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9759,6 +9749,23 @@
     "autocorrectAndroidFallbackTitle": "Als je toetsenbord je doeltaal niet aanbiedt, installeer dan Gboard en voeg de taal daar toe:",
     "resendInSeconds": "Opnieuw verzenden ({seconds})",
     "mapLevelFallbackNotice": "Nog geen {selected} activiteiten — in plaats daarvan worden {shown} getoond.",
+    "openKeyboardSettings": "Toetsenbordinstellingen openen",
+    "keyboardPromptAddKeyboardMessage": "Voeg een toetsenbord toe voor je doeltaal, zodat autocorrectie werkt.",
+    "keyboardPromptAddKeyboardAction": "Toetsenbord toevoegen",
+    "keyboardPromptSwitchKeyboardMessage": "Tik op het wereldbolpictogram op je toetsenbord om over te schakelen naar je doeltaal.",
+    "switchLanguageChipLabel": "Overschakelen naar {language}",
+    "languageDropdownLevel": "Niveau {level}",
+    "whatAreYouLearning": "Wat leer je?",
+    "languageSwitcherBaseLanguageLabel": "Je basistaal",
+    "listenModeDescription": "Tik op een keuze om deze te horen. Er is niets geselecteerd.",
+    "rateActivityLiked": "Vond het leuk",
+    "rateActivityDisliked": "Vond het niet leuk",
+    "constructUseHrdDesc": "Gehoord",
+    "timesHeard": "{count, plural, =1{Eén keer gehoord} other{{count} keer gehoord}}",
+    "allSettings": "Alle instellingen",
+    "usedCorrectly": "{count, plural, =1{Eén keer correct gebruikt} other{Correct gebruikt: {count} keer}}",
+    "usedIncorrectly": "{count, plural, =1{Eén keer incorrect gebruikt} other{Incorrect gebruikt: {count} keer}}",
+    "usedWithoutScoring": "{count, plural, =1{Eén keer gebruikt zonder score} other{Gebruikt zonder score: {count} keer}}",
     "constructUsePvcDesc": "Geproduceerd in een oproep",
     "startCall": "Bellen",
     "startVideoCall": "Videogesprek",
@@ -9804,8 +9811,5 @@
     "callHistoryNoAnswer": "Geen antwoord",
     "callHistoryDeclined": "Oproep geweigerd",
     "callHistoryYouDeclined": "U hebt deze oproep geweigerd",
-    "switchLanguageChipLabel": "Overschakelen naar {language}",
-    "languageDropdownLevel": "Niveau {level}",
-    "whatAreYouLearning": "Wat leert u?",
-    "languageSwitcherBaseLanguageLabel": "Uw basistaal"
+    "starsEarnedInLanguage": "Sterren verdiend in {language}"
 }

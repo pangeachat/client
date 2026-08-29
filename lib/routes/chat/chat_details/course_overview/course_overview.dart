@@ -34,7 +34,8 @@ class CourseOverview extends StatefulWidget {
   final SpaceDetailsController controller;
   final Room room;
 
-  /// The More section's rows (admin actions disabled for non-admins).
+  /// The full settings list for the More section. The section shows only the
+  /// enabled rows inline; the All settings subpage shows them all (#8578).
   final List<ButtonDetails> moreButtons;
 
   /// Opens the invite flow — the Participants section header's action.
@@ -314,10 +315,12 @@ class _CourseOverviewState extends State<CourseOverview> {
                           )
                         : null,
                   ),
-                  CourseParticipantsPreview(room: room),
-                  CourseSectionButton(
-                    label: l10n.allParticipants,
-                    onPressed: () =>
+                  // The preview owns the "All participants" button: only it
+                  // knows how many cards fit, and the button shows only when
+                  // members were truncated (#8578).
+                  CourseParticipantsPreview(
+                    room: room,
+                    onShowAll: () =>
                         _openSubpage(SpaceSettingsTabs.participants),
                   ),
                 ],
@@ -328,12 +331,26 @@ class _CourseOverviewState extends State<CourseOverview> {
               padding: SpaceDetailsContent.sectionPadding,
               child: Column(
                 key: _sectionKeys[SpaceSettingsTabs.more],
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   CourseSectionHeader(
                     title: SpaceSettingsTabs.more.title(context),
                   ),
-                  _MoreButtonList(buttons: widget.moreButtons),
+                  // Only the settings this user can act on show inline; the
+                  // full list, grayed-out rows included, lives on the All
+                  // settings subpage. The button shows only when grayed-out
+                  // rows exist (non-admins) — for admins the inline list IS
+                  // the full list, so the subpage adds nothing (#8578).
+                  CourseSettingsButtonList(
+                    buttons: widget.moreButtons
+                        .where((b) => b.enabled)
+                        .toList(),
+                  ),
+                  if (widget.moreButtons.any((b) => b.visible && !b.enabled))
+                    CourseSectionButton(
+                      label: l10n.allSettings,
+                      onPressed: () => _openSubpage(SpaceSettingsTabs.more),
+                    ),
                 ],
               ),
             ),
@@ -344,12 +361,13 @@ class _CourseOverviewState extends State<CourseOverview> {
   }
 }
 
-/// The More section's rows: every course setting inline (no settings subpage),
-/// admin-only rows disabled for non-admins — one layout for all roles.
-class _MoreButtonList extends StatelessWidget {
+/// The course settings rows — shared by the More section's inline list (the
+/// settings enabled for this user) and the All settings subpage (every row,
+/// admin-only ones grayed out for non-admins) (#8578).
+class CourseSettingsButtonList extends StatelessWidget {
   final List<ButtonDetails> buttons;
 
-  const _MoreButtonList({required this.buttons});
+  const CourseSettingsButtonList({required this.buttons, super.key});
 
   @override
   Widget build(BuildContext context) {

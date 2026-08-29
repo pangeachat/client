@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-23 22:00:53.793517",
+    "@@last_modified": "2026-08-28 11:37:31.730573",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -3271,14 +3271,12 @@
     "enableAutocorrectPopupTitle": "Dodaj klawiaturę języka docelowego, przechodząc do:",
     "enableAutocorrectPopupSteps": "  • Ustawienia\n  • Ogólne\n  • Klawiatura\n  • Klawiatury\n  • Dodaj nową klawiaturę",
     "enableAutocorrectPopupDescription": "Po wybraniu języka możesz kliknąć małą ikonę globu w lewym dolnym rogu klawiatury, aby aktywować nowo zainstalowaną klawiaturę.",
-    "downloadGboardSteps": " • Pobierz Gboard\n  • Otwórz aplikację\n  • Języki\n  • Dodaj klawiaturę\n  • Wybierz język\n  • Wybierz typ klawiatury\n  • Gotowe",
     "enableAutocorrectWarning": "Uwaga! Wymaga dodania klawiatury języka docelowego",
     "displayName": "Nazwa wyświetlana",
     "leaveRoomDescription": "Zamierzasz opuścić ten czat. Inni użytkownicy zobaczą, że opuściłeś czat.",
     "confirmUserId": "Proszę potwierdź swoją nazwę użytkownika Pangea Chat, aby usunąć swoje konto.",
     "paidSubscriptionStarts": "Rozpoczyna się {startDate}",
     "cancelInSubscriptionSettings": "• Anuluj w dowolnym momencie w ustawieniach subskrypcji",
-    "downloadGboard": "Pobierz Gboard",
     "autocorrectNotAvailable": "Niestety, Twoja platforma nie jest obecnie obsługiwana dla tej funkcji. Bądź na bieżąco z dalszym rozwojem!",
     "pleaseUpdateApp": "Zaktualizuj aplikację, aby kontynuować.",
     "chooseEmojiInstructionsBody": "Dopasuj emotikony do słów, które najlepiej je reprezentują. Nie martw się! Brak punktów za niezgodę. 😅",
@@ -5482,10 +5480,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5511,10 +5505,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9844,6 +9834,23 @@
     "autocorrectAndroidFallbackTitle": "Jeśli Twoja klawiatura nie oferuje języka docelowego, zainstaluj Gboard i dodaj tam język:",
     "resendInSeconds": "Wyślij ponownie ({seconds})",
     "mapLevelFallbackNotice": "Brak aktywności {selected} — zamiast tego pokazano {shown}.",
+    "openKeyboardSettings": "Otwórz ustawienia klawiatury",
+    "keyboardPromptAddKeyboardMessage": "Dodaj klawiaturę dla języka docelowego, aby autokorekta działała.",
+    "keyboardPromptAddKeyboardAction": "Dodaj klawiaturę",
+    "keyboardPromptSwitchKeyboardMessage": "Stuknij ikonę globusa na klawiaturze, aby przełączyć się na język docelowy.",
+    "switchLanguageChipLabel": "Przełącz na {language}",
+    "languageDropdownLevel": "Poziom {level}",
+    "whatAreYouLearning": "Czego się uczysz?",
+    "languageSwitcherBaseLanguageLabel": "Twój język podstawowy",
+    "listenModeDescription": "Dotknij wyboru, aby go usłyszeć. Nic nie jest wybrane.",
+    "rateActivityLiked": "Podobało mi się",
+    "rateActivityDisliked": "Nie podobało mi się",
+    "constructUseHrdDesc": "Usłyszane",
+    "timesHeard": "{count, plural, =1{Usłyszano raz} other{Usłyszano {count} razy}}",
+    "allSettings": "Wszystkie ustawienia",
+    "usedCorrectly": "{count, plural, =1{Użyto poprawnie raz} other{Użyto poprawnie {count} razy}}",
+    "usedIncorrectly": "{count, plural, =1{Użyto niepoprawnie raz} other{Użyto niepoprawnie {count} razy}}",
+    "usedWithoutScoring": "{count, plural, =1{Użyto raz bez punktacji} other{Użyto {count} razy bez punktacji}}",
     "constructUsePvcDesc": "Wyprodukowano podczas rozmowy",
     "startCall": "Zadzwoń",
     "startVideoCall": "Rozmowa wideo",
@@ -9889,8 +9896,5 @@
     "callHistoryNoAnswer": "Brak odpowiedzi",
     "callHistoryDeclined": "Rozmowa odrzucona",
     "callHistoryYouDeclined": "Odrzuciłeś to połączenie",
-    "switchLanguageChipLabel": "Przełącz na {language}",
-    "languageDropdownLevel": "Poziom {level}",
-    "whatAreYouLearning": "Czego się uczysz?",
-    "languageSwitcherBaseLanguageLabel": "Twój język podstawowy"
+    "starsEarnedInLanguage": "Gwiazdki zdobyte w {language}"
 }

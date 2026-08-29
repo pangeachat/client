@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-23 22:01:11.659365",
+    "@@last_modified": "2026-08-28 11:37:33.604472",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -3250,14 +3250,12 @@
     "enableAutocorrectPopupTitle": "請前往以下位置加入您的目標語言鍵盤：",
     "enableAutocorrectPopupSteps": "  • 設定\n  • 一般\n  • 鍵盤\n  • 鍵盤\n  • 新增鍵盤",
     "enableAutocorrectPopupDescription": "選擇語言後，您可以點擊鍵盤左下角的小地球圖示來啟用新安裝的鍵盤。",
-    "downloadGboardSteps": " • 下載 Gboard\n  • 開啟應用程式\n  • 語言\n  • 添加鍵盤\n  • 選擇語言\n  • 選擇鍵盤類型\n  • 完成",
     "enableAutocorrectWarning": "警告！需要加入您的目標語言鍵盤",
     "displayName": "顯示名稱",
     "leaveRoomDescription": "您即將離開此聊天。其他用戶將看到您已離開聊天。",
     "confirmUserId": "請確認您的 Pangea 聊天用戶名稱以刪除您的帳戶。",
     "paidSubscriptionStarts": "自 {startDate} 起",
     "cancelInSubscriptionSettings": "• 可在訂閱設定中隨時取消",
-    "downloadGboard": "下載 Gboard",
     "autocorrectNotAvailable": "很抱歉，您的平台目前不支援此功能。請持續關注後續開發！",
     "pleaseUpdateApp": "請更新應用程式以繼續使用。",
     "chooseEmojiInstructionsBody": "將表情符號與它們最能代表的詞語配對。別擔心！不同意也不扣分。😅",
@@ -5504,10 +5502,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5533,10 +5527,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9865,6 +9855,23 @@
     "autocorrectAndroidFallbackTitle": "如果您的鍵盤不支援您的目標語言，請安裝 Gboard 並在其中新增該語言：",
     "resendInSeconds": "重新發送 ({seconds})",
     "mapLevelFallbackNotice": "尚未有{selected}活動—改為顯示{shown}。",
+    "openKeyboardSettings": "開啟鍵盤設定",
+    "keyboardPromptAddKeyboardMessage": "新增目標語言的鍵盤，以啟用自動校正功能。",
+    "keyboardPromptAddKeyboardAction": "新增鍵盤",
+    "keyboardPromptSwitchKeyboardMessage": "點擊鍵盤上的地球圖示，切換至您的目標語言。",
+    "switchLanguageChipLabel": "切換至{language}",
+    "languageDropdownLevel": "等級 {level}",
+    "whatAreYouLearning": "您正在學習什麼？",
+    "languageSwitcherBaseLanguageLabel": "您的基礎語言",
+    "listenModeDescription": "點擊一個選項來聽。沒有選取任何項目。",
+    "rateActivityLiked": "喜歡",
+    "rateActivityDisliked": "不喜歡",
+    "constructUseHrdDesc": "聽過",
+    "timesHeard": "{count, plural, =1{已聽過一次} other{已聽過 {count} 次}}",
+    "allSettings": "所有設定",
+    "usedCorrectly": "{count, plural, =1{正確使用一次} other{正確使用 {count} 次}}",
+    "usedIncorrectly": "{count, plural, =1{錯誤使用一次} other{錯誤使用 {count} 次}}",
+    "usedWithoutScoring": "{count, plural, =1{使用一次但未計分} other{使用 {count} 次但未計分}}",
     "constructUsePvcDesc": "在通話中產生",
     "startCall": "通話",
     "startVideoCall": "視訊通話",
@@ -9910,8 +9917,5 @@
     "callHistoryNoAnswer": "無人接聽",
     "callHistoryDeclined": "通話已拒絕",
     "callHistoryYouDeclined": "您拒絕了此通話",
-    "switchLanguageChipLabel": "切換至 {language}",
-    "languageDropdownLevel": "等級 {level}",
-    "whatAreYouLearning": "您正在學習什麼？",
-    "languageSwitcherBaseLanguageLabel": "您的基礎語言"
+    "starsEarnedInLanguage": "在{language}中獲得的星星"
 }

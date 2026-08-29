@@ -694,7 +694,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     pangeaController = PangeaController(matrixState: this);
     pangeaController.initControllers(client.userID);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _setAppLanguage();
+      setAppLanguage();
       _setLanguageListener();
       _checkScreenSize();
       // Debug-only: `?devlogin=1` signs the local build into the test account,
@@ -731,23 +731,27 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       return;
     }
 
-    _screenSizeWarning.onWindowHeight(windowHeight(context), navigatorContext);
+    _screenSizeWarning.onWindowMetrics(
+      height: windowHeight(context),
+      growableHeight: windowGrowableHeight(),
+      navigatorContext: navigatorContext,
+    );
   }
 
   StreamSubscription? _languageListener;
   StreamSubscription? _appLanguageSettingsListener;
   Future<void> _setLanguageListener() async {
     await pangeaController.userController.initialize();
-    // The initState call to _setAppLanguage ran before initialize() resolved,
+    // The initState call to setAppLanguage ran before initialize() resolved,
     // so it read Profile.emptyProfile and never saw the real user settings.
     // Re-apply now that the actual profile (and the toggle) are loaded.
-    _setAppLanguage();
+    setAppLanguage();
     GrammarConstructsProvider.fetchFeaturesAndTags();
 
     _languageListener?.cancel();
     _languageListener = pangeaController.userController.languageStream.stream
         .listen((update) {
-          _setAppLanguage();
+          setAppLanguage();
           analyticsDataService.updateService.onUpdateLanguages(update);
           GrammarConstructsProvider.fetchFeaturesAndTags();
         });
@@ -760,10 +764,17 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         .userController
         .settingsUpdateStream
         .stream
-        .listen((_) => _setAppLanguage());
+        .listen((_) => setAppLanguage());
   }
 
-  void _setAppLanguage() {
+  /// Resolves the app UI locale from the user's profile.
+  ///
+  /// Public because the login path has to re-apply it: this ran once from
+  /// [initState] and again when the profile first loaded, both of which are
+  /// long past by the time a later login lands (#8509). See
+  /// PangeaController._onLogin.
+  void setAppLanguage() {
+    if (!mounted) return;
     try {
       final settings = pangeaController.userController.profile.userSettings;
       // Immersion: show the app in the target language when the user opts in,
@@ -1148,6 +1159,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     _appLanguageSettingsListener?.cancel();
     _uriListener?.cancel();
     _screenSizeTimer?.cancel();
+    _screenSizeWarning.dismiss();
     notifPermissionNotifier.dispose();
     accounts.dispose();
     // Pangea#

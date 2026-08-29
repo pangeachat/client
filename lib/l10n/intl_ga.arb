@@ -3365,14 +3365,12 @@
     "enableAutocorrectPopupTitle": "Cuir do eochairfhocal teanga sprioc leis trí dul go:",
     "enableAutocorrectPopupSteps": "  • Socruithe\n  • Ginearálta\n  • Eochairfhocal\n  • Eochairfhocail\n  • Cuir Eochairfhocal Nua leis",
     "enableAutocorrectPopupDescription": "Nuair a roghnaítear an teanga, is féidir leat cliceáil ar an gcloch beag domhain ar chlé bun do do eochairfhocal chun an eochairfhocal nua a ghníomhachtú.",
-    "downloadGboardSteps": " • Íoslódáil Gboard\n  • Oscail an aip\n  • Teangacha\n  • Cuir eochairfhocal leis\n  • Roghnaigh Teanga\n  • Roghnaigh cineál eochairfhocal\n  • Críochnaithe",
     "enableAutocorrectWarning": "Rabhadh! Éilíonn sé do eochairfhocal teanga sprioc a chur leis",
     "displayName": "Ainm le feiceáil",
     "leaveRoomDescription": "Tá tú faoi láthair ag dul i dtaithí ar an gcomhrá seo. Feicfidh úsáideoirí eile go bhfuil tú imithe as an gcomhrá.",
     "confirmUserId": "Déan cinnte de do ainm úsáideora Pangea Chat chun do chuntas a scriosadh.",
     "paidSubscriptionStarts": "Ag tosú {startDate}",
     "cancelInSubscriptionSettings": "• Cuir ar ceal ag am ar bith sna socruithe síntiúis",
-    "downloadGboard": "Íoslódáil Gboard",
     "autocorrectNotAvailable": "Ar an drochuair, níl do chóras reatha tacaíocht don ghné seo faoi láthair. Fan ar an eolas le haghaidh forbairtí eile!",
     "pleaseUpdateApp": "Le do thoil, déan nuashonrú ar an aip chun leanúint ar aghaidh.",
     "chooseEmojiInstructionsBody": "Comhoiriúnigh na híomhánna le na focail is fearr a léiríonn iad. Ná bí buartha! Níl pointí caillte má aontaíonn tú nó nach n-aontaíonn tú. 😅",
@@ -3566,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-23 22:00:26.051069",
+    "@@last_modified": "2026-08-28 11:37:29.509867",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -5574,10 +5572,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5603,10 +5597,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9770,6 +9760,23 @@
     "autocorrectAndroidFallbackTitle": "Mura dtugann do mhéarchlár do sprioctheanga, suiteáil Gboard agus cuir an teanga leis ansin:",
     "resendInSeconds": "Seol arís ({seconds})",
     "mapLevelFallbackNotice": "Níl aon ghníomhaíocht {selected} ann fós — ag taispeáint {shown} ina ionad.",
+    "openKeyboardSettings": "Oscail Socruithe an Mhéarchláir",
+    "keyboardPromptAddKeyboardMessage": "Cuir méarchlár do do sprioc-theanga leis ionas go n-oibreoidh an ceartú uathoibríoch.",
+    "keyboardPromptAddKeyboardAction": "Cuir Méarchlár Leis",
+    "keyboardPromptSwitchKeyboardMessage": "Beartaigh an deilbhín cruinne ar do mhéarchlár chun aistriú chuig do sprioc-theanga.",
+    "switchLanguageChipLabel": "Athraigh go {language}",
+    "languageDropdownLevel": "Leibhéal {level}",
+    "whatAreYouLearning": "Cad atá tú ag foghlaim?",
+    "languageSwitcherBaseLanguageLabel": "Do bhuntheanga",
+    "listenModeDescription": "Tapáil rogha chun í a chloisteáil. Níl aon rud roghnaithe.",
+    "rateActivityLiked": "Thaitin sé liom",
+    "rateActivityDisliked": "Níor thaitin sé liom",
+    "constructUseHrdDesc": "Chuala",
+    "timesHeard": "{count, plural, =1{Éisteacht aon uair amháin} other{Éisteacht {count} uair}}",
+    "allSettings": "Gach socrú",
+    "usedCorrectly": "{count, plural, =1{Úsáidte i gceart uair amháin} other{Úsáidte i gceart {count} uair}}",
+    "usedIncorrectly": "{count, plural, =1{Úsáidte go mícheart uair amháin} other{Úsáidte go mícheart {count} uair}}",
+    "usedWithoutScoring": "{count, plural, =1{Úsáidte uair amháin gan scór} other{Úsáidte {count} uair gan scór}}",
     "constructUsePvcDesc": "Arna tháirgeadh i nglao",
     "startCall": "Glao",
     "startVideoCall": "Físghlao",
@@ -9815,8 +9822,5 @@
     "callHistoryNoAnswer": "Gan freagra",
     "callHistoryDeclined": "Glao diúltaithe",
     "callHistoryYouDeclined": "Dhiúltaigh tú don ghlao seo",
-    "switchLanguageChipLabel": "Athraigh go {language}",
-    "languageDropdownLevel": "Leibhéal {level}",
-    "whatAreYouLearning": "Cad atá tú ag foghlaim?",
-    "languageSwitcherBaseLanguageLabel": "Do bhuntheanga"
+    "starsEarnedInLanguage": "Réaltaí tuillte i {language}"
 }

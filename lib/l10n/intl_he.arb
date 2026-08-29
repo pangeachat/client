@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-23 22:00:27.170749",
+    "@@last_modified": "2026-08-28 11:37:29.465133",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2160,14 +2160,12 @@
     "enableAutocorrectPopupTitle": "הוסף את מקלדת שפת היעד שלך על ידי כניסה ל:",
     "enableAutocorrectPopupSteps": "  • הגדרות\n  • כללי\n  • מקלדת\n  • מקלדות\n  • הוסף מקלדת חדשה",
     "enableAutocorrectPopupDescription": "לאחר בחירת השפה, תוכל ללחוץ על סמל הגלובוס הקטן בפינה השמאלית התחתונה של המקלדת כדי להפעיל את המקלדת שהותקנה לאחרונה.",
-    "downloadGboardSteps": " • הורד את Gboard\n  • פתח את האפליקציה\n  • שפות\n  • הוסף מקלדת\n  • בחר שפה\n  • בחר סוג מקלדת\n  • סיום",
     "enableAutocorrectWarning": "אזהרה! דורש הוספת מקלדת שפת היעד שלך",
     "displayName": "שם תצוגה",
     "leaveRoomDescription": "אתה עומד לעזוב את השיחה הזו. משתמשים אחרים יראו שהייתה לך יציאה מהשיחה.",
     "confirmUserId": "אנא אשר את שם המשתמש שלך ב-Pangea Chat כדי למחוק את החשבון שלך.",
     "paidSubscriptionStarts": "החל מ-{startDate}",
     "cancelInSubscriptionSettings": "• בטל בכל עת בהגדרות המנוי",
-    "downloadGboard": "הורד את Gboard",
     "autocorrectNotAvailable": "לצערנו הפלטפורמה שלך כרגע לא נתמכת לתכונה זו. המשך לעקוב לפיתוח עתידי!",
     "pleaseUpdateApp": "אנא עדכן את האפליקציה כדי להמשיך.",
     "chooseEmojiInstructionsBody": "התאם את האימוג'ים למילים שהם מייצגים הכי טוב. אל תדאג! אין נקודות על אי הסכמה. 😅",
@@ -6301,10 +6299,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6330,10 +6324,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10673,6 +10663,23 @@
     "autocorrectAndroidFallbackTitle": "אם המקלדת שלך לא מציעה את שפת היעד שלך, התקן את Gboard והוסף את השפה שם:",
     "resendInSeconds": "שלח שוב בעוד ({seconds})",
     "mapLevelFallbackNotice": "אין פעילויות {selected} עדיין – מציג {shown} במקום.",
+    "openKeyboardSettings": "פתח הגדרות מקלדת",
+    "keyboardPromptAddKeyboardMessage": "הוסף מקלדת לשפת היעד שלך כדי שהתיקון האוטומטי יעבוד.",
+    "keyboardPromptAddKeyboardAction": "הוסף מקלדת",
+    "keyboardPromptSwitchKeyboardMessage": "הקש על סמל הגלובוס במקלדת שלך כדי לעבור לשפת היעד שלך.",
+    "switchLanguageChipLabel": "עבור ל{language}",
+    "languageDropdownLevel": "רמה {level}",
+    "whatAreYouLearning": "מה אתה לומד?",
+    "languageSwitcherBaseLanguageLabel": "שפת הבסיס שלך",
+    "listenModeDescription": "הקש על אפשרות כדי לשמוע אותה. שום דבר לא נבחר.",
+    "rateActivityLiked": "אהבתי",
+    "rateActivityDisliked": "לא אהבתי",
+    "constructUseHrdDesc": "נשמע",
+    "timesHeard": "{count, plural, =1{נשמע פעם אחת} other{נשמע {count} פעמים}}",
+    "allSettings": "כל ההגדרות",
+    "usedCorrectly": "{count, plural, =1{שימוש נכון פעם אחת} other{שימוש נכון {count} פעמים}}",
+    "usedIncorrectly": "{count, plural, =1{שימוש שגוי פעם אחת} other{שימוש שגוי {count} פעמים}}",
+    "usedWithoutScoring": "{count, plural, =1{שימוש פעם אחת ללא ניקוד} other{שימוש {count} פעמים ללא ניקוד}}",
     "constructUsePvcDesc": "נוצר בשיחה",
     "startCall": "התקשר",
     "startVideoCall": "שיחת וידאו",
@@ -10718,8 +10725,5 @@
     "callHistoryNoAnswer": "אין מענה",
     "callHistoryDeclined": "השיחה נדחתה",
     "callHistoryYouDeclined": "דחית את השיחה הזו",
-    "switchLanguageChipLabel": "החלף ל-{language}",
-    "languageDropdownLevel": "רמה {level}",
-    "whatAreYouLearning": "מה אתה לומד?",
-    "languageSwitcherBaseLanguageLabel": "שפת הבסיס שלך"
+    "starsEarnedInLanguage": "כוכבים שנצברו ב{language}"
 }

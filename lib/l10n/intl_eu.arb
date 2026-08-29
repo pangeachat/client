@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-23 22:00:23.047772",
+    "@@last_modified": "2026-08-28 11:37:28.998149",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3360,14 +3360,12 @@
     "enableAutocorrectPopupTitle": "Gehitu zure hizkuntza helburuaren teklatua honetara joanez:",
     "enableAutocorrectPopupSteps": "  • Ezarpenak\n  • Orokorra\n  • Teklatu\n  • Teklatuak\n  • Gehitu teklatu berria",
     "enableAutocorrectPopupDescription": "Hizkuntza aukeratu ondoren, teklatuaren behealdean ezkerreko globe ikono txikia klik egin dezakezu teklatu berria aktibatzeko.",
-    "downloadGboardSteps": " • Deskargatu Gboard\n  • Ireki aplikazioa\n  • Hizkuntzak\n  • Gehitu teklatua\n  • Aukeratu Hizkuntza\n  • Aukeratu teklatu mota\n  • Amaitu",
     "enableAutocorrectWarning": "Abisua! Zure hizkuntza helburuaren teklatua gehitzea eskatzen du",
     "displayName": "Erakutsi izena",
     "leaveRoomDescription": "Chat hau utzi nahi duzu. Beste erabiltzaileek ikusi ahal izango dute chatetik alde egin duzula.",
     "confirmUserId": "Mesedez, berretsi zure Pangea Chat erabiltzaile-izena zure kontua ezabatzeko",
     "paidSubscriptionStarts": "{startDate}tik aurrera",
     "cancelInSubscriptionSettings": "• Ezin duzu edozein momentutan bertan behera utzi harpidetza ezarpenetan",
-    "downloadGboard": "Deskargatu Gboard",
     "autocorrectNotAvailable": "Zoritxarrez, zure plataforma ez da oraindik ezagutzen ez duen ezaugarria. Egon adi aurrerago garapenean!",
     "pleaseUpdateApp": "Mesedez, eguneratu aplikazioa jarraitzeko.",
     "chooseEmojiInstructionsBody": "Baliokideak hitzak ondoen ordezkatzen dituzten emojiak parekatu. Ez kezkatu! Ez dago puntuazioaren zatiketarik adostasunik ez badago ere. 😅",
@@ -5567,10 +5565,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5596,10 +5590,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9759,6 +9749,23 @@
     "autocorrectAndroidFallbackTitle": "Zure teklatuak xede-hizkuntza eskaintzen ez badu, instalatu Gboard eta gehitu hizkuntza bertan:",
     "resendInSeconds": "Berriro bidali ({seconds})",
     "mapLevelFallbackNotice": "Oraindik ez dago {selected} jarduerarik; {shown} erakusten da horren ordez.",
+    "openKeyboardSettings": "Ireki teklatuaren ezarpenak",
+    "keyboardPromptAddKeyboardMessage": "Gehitu teklatua zure xede-hizkuntzarako, zuzenketa automatikoa funtziona dezan.",
+    "keyboardPromptAddKeyboardAction": "Gehitu teklatua",
+    "keyboardPromptSwitchKeyboardMessage": "Sakatu teklatuko globoaren ikonoa zure xede-hizkuntzara aldatzeko.",
+    "switchLanguageChipLabel": "{language} hizkuntzara aldatu",
+    "languageDropdownLevel": "{level} maila",
+    "whatAreYouLearning": "Zer ikasten ari zara?",
+    "languageSwitcherBaseLanguageLabel": "Zure oinarrizko hizkuntza",
+    "listenModeDescription": "Sakatu aukera bat hura entzuteko. Ez dago ezer hautatuta.",
+    "rateActivityLiked": "Gustatu zait",
+    "rateActivityDisliked": "Ez zait gustatu",
+    "constructUseHrdDesc": "Entzunda",
+    "timesHeard": "{count, plural, =1{Behin entzun da} other{{count} aldiz entzun da}}",
+    "allSettings": "Ezarpen guztiak",
+    "usedCorrectly": "{count, plural, =1{Behin zuzen erabilia} other{{count} aldiz zuzen erabilia}}",
+    "usedIncorrectly": "{count, plural, =1{Behin gaizki erabilia} other{{count} aldiz gaizki erabilia}}",
+    "usedWithoutScoring": "{count, plural, =1{Behin erabilia puntuaziorik gabe} other{{count} aldiz erabilia puntuaziorik gabe}}",
     "constructUsePvcDesc": "Deialdi batean sortua",
     "startCall": "Deitu",
     "startVideoCall": "Bideo-deia",
@@ -9804,8 +9811,5 @@
     "callHistoryNoAnswer": "Ez du erantzun",
     "callHistoryDeclined": "Deia baztertuta",
     "callHistoryYouDeclined": "Dei hau baztertu duzu",
-    "switchLanguageChipLabel": "Aldatu {language}(e)ra",
-    "languageDropdownLevel": "{level} maila",
-    "whatAreYouLearning": "Zer ikasten ari zara?",
-    "languageSwitcherBaseLanguageLabel": "Zure oinarrizko hizkuntza"
+    "starsEarnedInLanguage": "{language} hizkuntzan irabazitako izarrak"
 }

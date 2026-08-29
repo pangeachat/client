@@ -109,15 +109,27 @@ class TtsDeviceUtterance {
   }
 
   /// Plugin `completionHandler`.
-  void onEngineComplete() => _engineEnd();
+  void onEngineComplete() {
+    // The ONLY positive evidence that the utterance reached its end.
+    _engineReportedComplete = true;
+    _engineEnd();
+  }
 
   /// Plugin `cancelHandler` — the engine confirmed a stop.
-  void onEngineCancel() => _engineEnd();
+  void onEngineCancel() {
+    _engineReportedComplete = false;
+    _engineEnd();
+  }
 
   /// Plugin `errorHandler`. The Web Speech API reports interruptions here too
   /// (`interrupted` after speech began, `canceled` before); the message does
   /// not matter, only whether a start preceded it and whether a stop was asked.
-  void onEngineError(dynamic message) => _engineEnd();
+  void onEngineError(dynamic message) {
+    // Chrome reports an interruption here. Whatever ended this utterance, it
+    // was not a clean finish.
+    _engineReportedComplete = false;
+    _engineEnd();
+  }
 
   /// The plugin's `speak` future resolved. On native this means finished (or,
   /// on Android, stopped); on the web it means the engine fired `end`. Either
@@ -128,6 +140,36 @@ class TtsDeviceUtterance {
 
   /// The plugin's `speak` future threw.
   void onSpeakThrew() => _settle(TtsDeviceOutcome.failed);
+
+  /// Whether this utterance ran to its end.
+  ///
+  /// [TtsDeviceOutcome.played] deliberately does NOT answer this: for listening
+  /// minutes an utterance that was cut off still counts, because the learner
+  /// heard the part that played. Word-level exposure is the opposite — it is
+  /// all-or-nothing per lemma, and a read stopped after two words did not
+  /// expose the learner to the rest of the sentence.
+  ///
+  /// **Positive evidence only.** This is not "ended and we did not stop it":
+  /// an utterance cut short by a phone call, by audio focus moving to another
+  /// app, or by the browser cancelling `speechSynthesis` ends with no stop of
+  /// ours, and defining completion by the absence of our own stop would count
+  /// every one of those as fully heard. It requires the engine to have
+  /// reported a completion.
+  ///
+  /// The cost is under-counting on a platform whose plugin never fires
+  /// `completionHandler` — exposure would simply not be recorded there. That
+  /// is the right direction to fail for a research signal: a gap is visible,
+  /// a phantom is not.
+  ///
+  /// Captured at settle time rather than derived on read: [stopRequested] is
+  /// mutable, and a LATER request's stop must not retroactively reclassify an
+  /// utterance that had already finished.
+  bool get playedToEnd => _playedToEnd;
+  bool _playedToEnd = false;
+
+  /// Whether the engine reported this utterance COMPLETING, as opposed to
+  /// ending some other way.
+  bool _engineReportedComplete = false;
 
   TtsDeviceOutcome get _endedOutcome {
     if (started) return TtsDeviceOutcome.played;
@@ -141,6 +183,12 @@ class TtsDeviceUtterance {
 
   void _settle([TtsDeviceOutcome? outcome]) {
     dispose();
-    if (!_outcome.isCompleted) _outcome.complete(outcome ?? _endedOutcome);
+    if (_outcome.isCompleted) return;
+    // A clean finish is: audio started, the engine said it completed, and
+    // nothing asked it to stop. An explicit outcome is only ever passed for a
+    // failure, so it disqualifies too.
+    _playedToEnd =
+        outcome == null && started && !stopRequested && _engineReportedComplete;
+    _outcome.complete(outcome ?? _endedOutcome);
   }
 }

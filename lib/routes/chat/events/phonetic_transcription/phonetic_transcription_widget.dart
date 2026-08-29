@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -54,12 +55,23 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   /// stop reaching the course the learner was in.
   final String? roomId;
 
+  /// The lemma this widget's audio covers, for listening exposure.
+  ///
+  /// Threaded in rather than derived: this widget is handed a surface form, a
+  /// POS and morph features, never the construct. Deriving a lemma from the
+  /// form would file the hearing under the wrong word, so a caller that does
+  /// not know the construct declares an exemption and the default says so.
+  final ListeningExposureDeclaration exposure;
+
   const PhoneticTranscriptionWidget({
     super.key,
     required this.text,
     required this.textLanguage,
     required this.pos,
     required this.roomId,
+    this.exposure = const ListeningExposureDeclaration.exempt(
+      "caller declared no construct for this pronunciation",
+    ),
     this.morph,
     this.style,
     this.iconSize,
@@ -154,6 +166,7 @@ class _PhoneticTranscriptionWidgetState
           accessToken: () =>
               MatrixState.pangeaController.matrixState.client.accessToken,
         ),
+        exposure: widget.exposure,
         onStart: () {
           if (mounted) setState(() => _playingId = targetId);
         },
@@ -309,9 +322,18 @@ class _PhoneticTranscriptionWidgetState
                         message: L10n.of(
                           context,
                         ).subscribeToUnlockTranscriptions,
+                        // From the router, NOT `GoRouterState.of` — the word
+                        // card hosting this strip is an `OverlayEntry` on both
+                        // of its surfaces (the chat toolbar's word card, an
+                        // activity vocab chip's), and an entry sits beside the
+                        // route's page in the Navigator's overlay rather than
+                        // under it, where `GoRouterState.of` finds no
+                        // `ModalRoute` and throws (#8622).
                         onTap: () => context.go(
                           WorkspaceNav.openSettings(
-                            GoRouterState.of(context).uri,
+                            GoRouter.of(
+                              context,
+                            ).routeInformationProvider.value.uri,
                             page: 'subscription',
                           ),
                         ),

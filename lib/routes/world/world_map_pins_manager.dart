@@ -296,6 +296,8 @@ class WorldMapPinsManager {
         final timeline = await space.getTimeline();
         for (final e in timeline.events) {
           if (!e.originServerTs.isAfter(cutoff)) continue;
+          // Own pings recruit others, never their sender (#8610).
+          if (e.senderId == client.userID) continue;
           final id = e.content['pangea.activity.id'];
           if (id is String && id.isNotEmpty) pinged.add(id);
         }
@@ -706,6 +708,7 @@ class WorldMapPinsManager {
     final pins = (await ActivityMapRepo.bboxPins(
       bounds: bounds,
       l2: l2,
+      l1: l1,
     )).result;
     // An error is "no fresh answer for this viewport", never "no activities
     // here" — the read was suppressed by the rate-limit pause (#8360) or it

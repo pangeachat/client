@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-23 22:00:14.981292",
+    "@@last_modified": "2026-08-28 11:37:28.344893",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3243,14 +3243,12 @@
     "enableAutocorrectPopupTitle": "Afegeix el teclat del teu idioma objectiu anant a:",
     "enableAutocorrectPopupSteps": "  • Configuració\n  • General\n  • Teclat\n  • Teclats\n  • Afegeix un teclat nou",
     "enableAutocorrectPopupDescription": "Un cop seleccionat l'idioma, pots fer clic a la petita icona del globus a la part inferior esquerra del teclat per activar el teclat recentment instal·lat.",
-    "downloadGboardSteps": " • Descarrega Gboard\n  • Obre l'aplicació\n  • Idiomes\n  • Afegeix teclat\n  • Selecciona l'idioma\n  • Selecciona el tipus de teclat\n  • Fet",
     "enableAutocorrectWarning": "Avís! Requereix afegir el teclat del vostre idioma objectiu",
     "displayName": "Nom de visualització",
     "leaveRoomDescription": "Estàs a punt de sortir d'aquest xat. Els altres usuaris veuran que has sortit del xat.",
     "confirmUserId": "Confirma el teu nom d'usuari de Pangea Chat per eliminar el teu compte.",
     "paidSubscriptionStarts": "Comença {startDate}",
     "cancelInSubscriptionSettings": "• Cancel·la en qualsevol moment a la configuració de la subscripció",
-    "downloadGboard": "Baixa Gboard",
     "autocorrectNotAvailable": "Lamentablement, la teva plataforma actualment no és compatible amb aquesta funció. Estigues atent a futurs desenvolupaments!",
     "pleaseUpdateApp": "Actualitza l'aplicació per continuar.",
     "chooseEmojiInstructionsBody": "Combina emojis amb les paraules que millor els representen. No et preocupis! No hi haurà penalitzacions per estar en desacord. 😅",
@@ -5514,10 +5512,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5543,10 +5537,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9886,6 +9876,23 @@
     "autocorrectAndroidFallbackTitle": "Si el teu teclat no ofereix la teva llengua d'aprenentatge, instal·la Gboard i afegeix-hi la llengua:",
     "resendInSeconds": "Reenviar ({seconds})",
     "mapLevelFallbackNotice": "Encara no hi ha activitats {selected}; es mostren {shown} en el seu lloc.",
+    "openKeyboardSettings": "Obrir la configuració del teclat",
+    "keyboardPromptAddKeyboardMessage": "Afegeix un teclat per al teu idioma objectiu perquè funcioni la correcció automàtica.",
+    "keyboardPromptAddKeyboardAction": "Afegeix teclat",
+    "keyboardPromptSwitchKeyboardMessage": "Toca la icona del globus al teclat per canviar al teu idioma objectiu.",
+    "switchLanguageChipLabel": "Canviar a {language}",
+    "languageDropdownLevel": "Nivell {level}",
+    "whatAreYouLearning": "Què estàs aprenent?",
+    "languageSwitcherBaseLanguageLabel": "La teva llengua base",
+    "listenModeDescription": "Toca una opció per escoltar-la. No hi ha res seleccionat.",
+    "rateActivityLiked": "M'ha agradat",
+    "rateActivityDisliked": "No m'ha agradat",
+    "constructUseHrdDesc": "Sentit",
+    "timesHeard": "{count, plural, =1{Sentida una vegada} other{Sentida {count} vegades}}",
+    "allSettings": "Tots els ajustos",
+    "usedCorrectly": "{count, plural, =1{Usat correctament una vegada} other{Usat correctament {count} vegades}}",
+    "usedIncorrectly": "{count, plural, =1{Usat incorrectament una vegada} other{Usat incorrectament {count} vegades}}",
+    "usedWithoutScoring": "{count, plural, =1{Usat una vegada sense puntuació} other{Usat {count} vegades sense puntuació}}",
     "constructUsePvcDesc": "Produït en una trucada",
     "startCall": "Trucada",
     "startVideoCall": "Videotrucada",
@@ -9931,8 +9938,5 @@
     "callHistoryNoAnswer": "Sense resposta",
     "callHistoryDeclined": "Trucada rebutjada",
     "callHistoryYouDeclined": "Has rebutjat aquesta trucada",
-    "switchLanguageChipLabel": "Canviar a {language}",
-    "languageDropdownLevel": "Nivell {level}",
-    "whatAreYouLearning": "Què estàs aprenent?",
-    "languageSwitcherBaseLanguageLabel": "La teva llengua base"
+    "starsEarnedInLanguage": "Estrelles guanyades a {language}"
 }

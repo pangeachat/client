@@ -149,6 +149,11 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
       int independantUseOccurrences = 0;
       int assistedUseOccurrences = 0;
       for (final use in allUses) {
+        // Hearing a word is not a use WITH ASSISTANCE, it is not a use at all
+        // in the sense this column means, and a bucketed row stands for many
+        // hearings rather than one. Counting it here would put a wrong number
+        // under a wrong heading in a researcher-facing export.
+        if (use.useType == ConstructUseTypeEnum.hrd) continue;
         use.useType == ConstructUseTypeEnum.wa
             ? independantUseOccurrences++
             : assistedUseOccurrences++;
@@ -206,6 +211,9 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
         int independantUseOccurrences = 0;
         int assistedUseOccurrences = 0;
         for (final use in allUses) {
+          // Same reason as the per-construct export above: exposure is neither
+          // an assisted nor an independent use, and one row is not one hearing.
+          if (use.useType == ConstructUseTypeEnum.hrd) continue;
           use.useType == ConstructUseTypeEnum.wa
               ? independantUseOccurrences++
               : assistedUseOccurrences++;

@@ -21,7 +21,12 @@ class AnalyticsNavigationUtil {
     // card to the LEFT of the pinned summary, and a completed activity opens its
     // actual (locked) session chat as a left room panel beside it. See
     // routing.instructions.md.
-    final uri = GoRouterState.of(context).uri;
+    // From the router, NOT `GoRouterState.of` — the word card calls this from
+    // inside an `OverlayEntry` (its title, and its emoji snackbar), and an
+    // entry sits beside the route's page in the Navigator's overlay rather than
+    // under it, where `GoRouterState.of` finds no `ModalRoute` and throws
+    // (#8622).
+    final uri = GoRouter.of(context).routeInformationProvider.value.uri;
 
     // While a section has a live practice session, its analytics summary and
     // construct details are off-limits (no peeking at definitions

@@ -8,6 +8,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
@@ -167,6 +168,19 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
   }
 
   void _selectVocab(Vocab vocab, {bool isNew = false}) {
+    // Activating the chip whose card is already open closes it. A pointer gets
+    // that for free — the second tap never reaches the chip, it lands on the
+    // card's backdrop and dismisses it — but a screen reader activates the chip
+    // straight through the semantics tree, and re-opening a key that is already
+    // open is a no-op, so the card had no way to close (#8620). Asking the
+    // overlay rather than [_selectedVocab] keeps a card that failed to open
+    // (no render box) re-openable instead of stuck selected.
+    if (MatrixState.pAnyState.isOverlayOpen(overlayKey: _vocabKey(vocab))) {
+      // Clears [_selectedVocab] too, via the card's onClose.
+      MatrixState.pAnyState.closeOverlay(_vocabKey(vocab));
+      return;
+    }
+
     setState(() => _selectedVocab = vocab);
     if (isNew) _onSelectNewVocab(vocab);
     TtsController.tryToSpeak(
@@ -187,6 +201,9 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
         accessToken: () =>
             MatrixState.pangeaController.matrixState.client.accessToken,
       ),
+      exposure: ListeningExposureDeclaration.ofTokens([
+        vocab.asToken(),
+      ], langCode: widget.langCode),
     );
     _showWordCard(vocab);
   }

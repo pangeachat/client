@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-23 22:00:30.332781",
+    "@@last_modified": "2026-08-28 11:37:29.934705",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3278,14 +3278,12 @@
     "enableAutocorrectPopupTitle": "Tambahkan keyboard bahasa target Anda dengan pergi ke:",
     "enableAutocorrectPopupSteps": "  • Pengaturan\n  • Umum\n  • Keyboard\n  • Keyboard\n  • Tambah Keyboard Baru",
     "enableAutocorrectPopupDescription": "Setelah bahasa dipilih, Anda dapat mengklik ikon globe kecil di kiri bawah keyboard Anda untuk mengaktifkan keyboard yang baru diinstal.",
-    "downloadGboardSteps": " • Unduh Gboard\n  • Buka aplikasi\n  • Bahasa\n  • Tambah keyboard\n  • Pilih Bahasa\n  • Pilih jenis keyboard\n  • Selesai",
     "enableAutocorrectWarning": "Peringatan! Membutuhkan penambahan keyboard bahasa target Anda",
     "displayName": "Nama tampilan",
     "leaveRoomDescription": "Anda akan meninggalkan obrolan ini. Pengguna lain akan melihat bahwa Anda telah meninggalkan obrolan.",
     "confirmUserId": "Harap konfirmasi nama pengguna Pangea Chat Anda untuk menghapus akun Anda.",
     "paidSubscriptionStarts": "Dimulai {startDate}",
     "cancelInSubscriptionSettings": "• Batalkan kapan saja di pengaturan langganan",
-    "downloadGboard": "Unduh Gboard",
     "autocorrectNotAvailable": "Sayangnya platform Anda saat ini tidak didukung untuk fitur ini. Nantikan pengembangan lebih lanjut!",
     "pleaseUpdateApp": "Harap perbarui aplikasi untuk melanjutkan.",
     "chooseEmojiInstructionsBody": "Cocokkan emoji dengan kata yang paling mewakilinya. Jangan khawatir! Tidak ada poin yang dikurangi jika tidak setuju. 😅",
@@ -5490,10 +5488,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5519,10 +5513,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9832,6 +9822,23 @@
     "autocorrectAndroidFallbackTitle": "Jika keyboard Anda tidak menawarkan bahasa target Anda, instal Gboard dan tambahkan bahasa di sana:",
     "resendInSeconds": "Kirim ulang ({seconds})",
     "mapLevelFallbackNotice": "Belum ada aktivitas {selected} — menampilkan {shown} sebagai gantinya.",
+    "openKeyboardSettings": "Buka Pengaturan Papan Ketik",
+    "keyboardPromptAddKeyboardMessage": "Tambahkan papan ketik untuk bahasa target Anda agar koreksi otomatis berfungsi.",
+    "keyboardPromptAddKeyboardAction": "Tambahkan Papan Ketik",
+    "keyboardPromptSwitchKeyboardMessage": "Ketuk ikon bola dunia di papan ketik Anda untuk beralih ke bahasa target Anda.",
+    "switchLanguageChipLabel": "Beralih ke {language}",
+    "languageDropdownLevel": "Level {level}",
+    "whatAreYouLearning": "Apa yang sedang Anda pelajari?",
+    "languageSwitcherBaseLanguageLabel": "Bahasa dasar Anda",
+    "listenModeDescription": "Ketuk pilihan untuk mendengarnya. Tidak ada yang dipilih.",
+    "rateActivityLiked": "Suka",
+    "rateActivityDisliked": "Tidak suka",
+    "constructUseHrdDesc": "Mendengar",
+    "timesHeard": "{count, plural, =1{Didengar sekali} other{Didengar {count} kali}}",
+    "allSettings": "Semua pengaturan",
+    "usedCorrectly": "{count, plural, =1{Digunakan dengan benar sekali} other{Digunakan dengan benar {count} kali}}",
+    "usedIncorrectly": "{count, plural, =1{Digunakan dengan salah sekali} other{Digunakan dengan salah {count} kali}}",
+    "usedWithoutScoring": "{count, plural, =1{Digunakan sekali tanpa penilaian} other{Digunakan {count} kali tanpa penilaian}}",
     "constructUsePvcDesc": "Diproduksi dalam panggilan",
     "startCall": "Panggil",
     "startVideoCall": "Panggilan video",
@@ -9877,8 +9884,5 @@
     "callHistoryNoAnswer": "Tidak ada jawaban",
     "callHistoryDeclined": "Panggilan ditolak",
     "callHistoryYouDeclined": "Anda menolak panggilan ini",
-    "switchLanguageChipLabel": "Beralih ke {language}",
-    "languageDropdownLevel": "Level {level}",
-    "whatAreYouLearning": "Apa yang sedang Anda pelajari?",
-    "languageSwitcherBaseLanguageLabel": "Bahasa dasar Anda"
+    "starsEarnedInLanguage": "Bintang yang diperoleh dalam {language}"
 }

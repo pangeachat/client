@@ -6,6 +6,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/keyboards/keyboard_prompt_local_store.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/language_service.dart';
@@ -43,6 +44,21 @@ class UserController {
   final StreamController<Profile> settingsUpdateStream =
       StreamController.broadcast();
 
+  /// Fires whenever the published public profile changes — every level, XP
+  /// offset, analytics room id, country or bio write lands here.
+  ///
+  /// [PublicProfileModel] and the analytics entries inside it are mutated in
+  /// place, so a surface that read [publicProfile] during build has no way to
+  /// know it went stale. Reading through this stream in `build` is what keeps
+  /// the level on a language row, the analytics bar and the participant list
+  /// showing one number: without it a corrected level reached whichever surface
+  /// happened to rebuild next and nothing else (#8582).
+  /// Null means "no profile loaded" — logout clears it, and a surface still
+  /// mounted must stop showing the previous account's levels rather than hold
+  /// them until an unrelated rebuild (#8531).
+  final StreamController<PublicProfileModel?> publicProfileStream =
+      StreamController.broadcast();
+
   /// Cached version of the user profile, so it doesn't have
   /// to be read in from client's account data each time it is accessed.
   Profile? _cachedProfile;
@@ -69,6 +85,12 @@ class UserController {
   void setPublicProfile(PublicProfileModel? profile, {String? userId}) {
     _publicProfile = profile;
     _publicProfileUserId = profile == null ? null : userId;
+    _notifyPublicProfileChanged();
+  }
+
+  void _notifyPublicProfileChanged() {
+    if (publicProfileStream.isClosed) return;
+    publicProfileStream.add(_publicProfile);
   }
 
   /// Whether the loaded public profile belongs to the account that is active
@@ -154,7 +176,12 @@ class UserController {
   }) async {
     await initialize();
     final prevHash = profile.hashCode;
-    final Profile updatedProfile = update(profile);
+    // Every path that changes the target language funnels through here, so
+    // this is the single place the autocorrect reset needs to be enforced.
+    final updatedProfile = Profile.resetAutocorrectIfLanguageChanged(
+      profile,
+      update(profile),
+    );
 
     if (updatedProfile.hashCode == prevHash) {
       // no changes were made, so don't save
@@ -262,6 +289,12 @@ class UserController {
   /// Initializes the user's profile by waiting for account data to load, reading in account
   /// data to profile, and migrating from the pangea profile if the account data is not present.
   Future<void> _initialize() async {
+    // Profile.effectiveAutocorrect reads the observed-keyboard store
+    // synchronously (it is consumed from build methods), so the store has to
+    // be in memory before any real profile exists — otherwise autocorrect
+    // resolves off on iOS for whatever window the load takes.
+    await ObservedKeyboardStore.ready;
+
     // wait for account data to load
     // as long as it's not null, then this we've already migrated the profile
     if (client.prevBatch == null) {
@@ -305,7 +338,7 @@ class UserController {
           MatrixState.pangeaController.matrixState.analyticsDataService;
 
       final data = await analyticsService.derivedData(l2.langCodeShort);
-      updateAnalyticsProfile(level: data.level);
+      updateAnalyticsProfile(languageCode: l2.langCodeShort, level: data.level);
     }
   }
 
@@ -316,6 +349,13 @@ class UserController {
     setPublicProfile(null);
     _profileListener?.cancel();
     _profileListener = null;
+    // The publish queue is deliberately NOT reset here. Reassigning the chain
+    // cannot detach a callback already registered on the old future — Dart
+    // futures do not cancel — so it would not drop the queued save it looks
+    // like it drops, and starting a fresh chain while a request is still in
+    // flight lets the next publish overlap it: the last-write-wins loss the
+    // chain exists to prevent. A save that outlives the logout is instead
+    // refused, quietly, by the ownership check in [_publishProfile].
   }
 
   /// Reinitializes the user's profile
@@ -381,71 +421,166 @@ class UserController {
     return email?.address;
   }
 
-  Future<void> _savePublicProfileUpdate(
-    String type,
-    Map<String, dynamic> content,
-  ) async {
+  /// Serializes the profile publishes, which all write the one field with
+  /// whatever the profile holds at that moment.
+  ///
+  /// [_saveChain] is the tail of the running sequence; [_saveQueued] is true
+  /// while a save that has not yet serialized its payload is waiting on it.
+  Future<void> _saveChain = Future.value();
+  bool _saveQueued = false;
+
+  /// Publishes the current public profile, one write at a time.
+  ///
+  /// Coalesced rather than queued: every caller writes the SAME field with
+  /// whatever the profile holds now, so a save that is already waiting will
+  /// carry this caller's change too and running both would just repeat the
+  /// request. Overlapping them is the actual hazard — the whole profile goes up
+  /// as one blob and concurrent PUTs are last-write-wins on the wire, so an
+  /// older blob could land after a newer one and silently undo it. Four call
+  /// sites publish here, several without awaiting.
+  ///
+  /// The payload is built inside the chain, not by the caller, so a save that
+  /// waited its turn sends the state as of its turn rather than a snapshot
+  /// taken before the write it was queued behind.
+  Future<void> _savePublicProfileUpdate() {
+    // Announced HERE, before the queue wait — callers mutate the in-memory
+    // profile and then call this, and that mutated object is what every surface
+    // renders. Announcing from inside the publish would hold the update back
+    // for however long the chain ahead of it takes, which is the staleness the
+    // stream exists to remove (#8582).
+    _notifyPublicProfileChanged();
+
+    if (_saveQueued) return _saveChain;
+
+    _saveQueued = true;
+    _saveChain = _saveChain.then((_) async {
+      // Cleared before the payload is built: from here a new caller's change
+      // is not covered by this save and needs one of its own.
+      _saveQueued = false;
+      try {
+        await _publishProfile();
+      } catch (e, s) {
+        // Nothing may leave this chain in a failed state. A failed future
+        // short-circuits every `.then` registered after it, so a single throw
+        // would silently stop the profile publishing again for the rest of the
+        // session and strand _saveQueued — and most callers do not await, so it
+        // would surface only as an unhandled async error.
+        ErrorHandler.logError(e: e, s: s, data: {});
+      }
+    });
+    return _saveChain;
+  }
+
+  Future<void> _publishProfile() async {
     // Last line of defence, past every caller's own guard: the profile in hand
     // is written only to the account it was loaded for. Reported once a session
     // because a refusal repeats for as long as the mismatch lasts.
+    if (_publicProfile == null) {
+      // Nothing loaded: the profile was cleared while this publish sat in the
+      // queue, which is ordinary logout timing rather than a fault. Reporting
+      // it would drown the signal below, which is meant to be rare.
+      return;
+    }
+
     if (!_publicProfileIsOwn) {
       await ErrorHandler.logErrorOnce(
         key: 'public-profile-write-refused',
         e: "Refused to write a public profile that belongs to another account",
         s: StackTrace.current,
-        data: {
-          'loadedFor': _publicProfileUserId,
-          'activeUser': client.userID,
-          'type': type,
-        },
+        data: {'loadedFor': _publicProfileUserId, 'activeUser': client.userID},
         level: SentryLevel.warning,
       );
       return;
     }
 
+    final content = publicProfile!.toJson();
     try {
-      await client.setUserProfile(client.userID!, type, content);
+      // Bounded, because every later publish queues behind this one: the Matrix
+      // profile PUT has no timeout of its own, so a request that stalls rather
+      // than fails would wedge the chain for the rest of the session.
+      await client
+          .setUserProfile(
+            client.userID!,
+            PangeaEventTypes.profileAnalytics,
+            content,
+          )
+          .timeout(const Duration(seconds: 30));
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'type': type, 'content': content},
-      );
+      // Swallowed, so one failed publish cannot break the chain every later
+      // publish is queued behind.
+      ErrorHandler.logError(e: e, s: s, data: {'content': content});
     }
   }
 
+  /// Publishes [level] as the learner's level in [languageCode]'s language.
+  ///
+  /// [languageCode] is required, and callers pass the language the level was
+  /// actually computed from. It used to default to whatever `userL2` held when
+  /// the call ran, which is not the same thing: a level is computed from one
+  /// language's analytics across several awaits, and a switch landing in that
+  /// window filed the old language's level under the new language's key —
+  /// French's level 4 published as the learner's Dutch level (#8582).
   Future<void> updateAnalyticsProfile({
+    required String languageCode,
     required int level,
-    LanguageModel? baseLanguage,
-    LanguageModel? targetLanguage,
   }) async {
-    targetLanguage ??= userL2;
-    baseLanguage ??= userL1;
-    if (targetLanguage == null || !_publicProfileIsOwn) return;
+    if (!_publicProfileIsOwn) return;
 
-    final analyticsRoom = client.ownAnalyticsRoomLocal(lang: targetLanguage);
+    final analytics = publicProfile!.analytics;
+    final language = _shortCode(languageCode);
+    final analyticsRoomId = _ownAnalyticsRoomIdFor(language);
 
-    if (publicProfile!.analytics.targetLanguage == targetLanguage &&
-        publicProfile!.analytics.baseLanguage == baseLanguage &&
-        publicProfile!.analytics.languageAnalytics?[targetLanguage]?.level ==
-            level &&
-        publicProfile!.analytics.analyticsRoomIdByLanguage(targetLanguage) ==
-            analyticsRoom?.id) {
+    // target/base mirror the learner's current setting, which is independent
+    // of the language this level belongs to.
+    final targetLanguage = userL2?.langCodeShort;
+    final baseLanguage = userL1?.langCodeShort;
+
+    if (analytics.targetLanguage == targetLanguage &&
+        analytics.baseLanguage == baseLanguage &&
+        analytics.languageAnalytics?[language]?.level == level &&
+        analytics.analyticsRoomIdByLanguage(language) == analyticsRoomId) {
       return;
     }
 
-    publicProfile!.analytics.baseLanguage = baseLanguage;
-    publicProfile!.analytics.targetLanguage = targetLanguage;
-    publicProfile!.analytics.setLanguageInfo(
-      targetLanguage,
-      level,
-      analyticsRoom?.id,
-    );
+    if (targetLanguage != null) analytics.targetLanguage = targetLanguage;
+    if (baseLanguage != null) analytics.baseLanguage = baseLanguage;
+    analytics.setLanguageInfo(language, level, analyticsRoomId);
 
-    await _savePublicProfileUpdate(
-      PangeaEventTypes.profileAnalytics,
-      publicProfile!.toJson(),
-    );
+    await _savePublicProfileUpdate();
+  }
+
+  /// Publishes [stars] as the learner's banked star total in [languageCode],
+  /// raising the published number and never lowering it.
+  ///
+  /// Only the language being studied is published, as with the level: it is the
+  /// one other people read and the one this device is best placed to count.
+  /// See profile.instructions.md.
+  Future<void> updateAnalyticsStars({
+    required String languageCode,
+    required int stars,
+  }) async {
+    if (!_publicProfileIsOwn) return;
+
+    if (!publicProfile!.analytics.raiseStars(languageCode, stars)) return;
+    await _savePublicProfileUpdate();
+  }
+
+  static String _shortCode(String langCode) => langCode.split('-').first;
+
+  /// The id of this user's own analytics room for [language] (a short code).
+  ///
+  /// Goes through [ownAnalyticsRoomLocal] rather than scanning
+  /// [allMyAnalyticsRooms] directly, because a learner can end up with more
+  /// than one analytics room for a language and that lookup resolves the
+  /// CANONICAL one (the oldest). Analytics itself reads and writes the
+  /// canonical room, and instructor analytics access is granted through
+  /// whatever id is published here — so picking a different room publishes an
+  /// id the rest of the system ignores, and one that can change between calls
+  /// as room ordering shifts.
+  String? _ownAnalyticsRoomIdFor(String language) {
+    final model = PLanguageStore.byLangCode(language);
+    if (model == null) return null;
+    return client.ownAnalyticsRoomLocal(lang: model)?.id;
   }
 
   Future<void> _addAnalyticsRoomIdsToPublicProfile() async {
@@ -475,48 +610,36 @@ class UserController {
     );
 
     for (final analyticsRoom in analyticsRooms) {
-      final lang = analyticsRoom.madeForLang?.split("-").first;
-      if (lang == null || publicProfile?.analytics.languageAnalytics == null) {
-        continue;
-      }
-      final langKey = publicProfile!.analytics.languageAnalytics!.keys
-          .firstWhereOrNull((l) => l.langCodeShort == lang);
+      final madeForLang = analyticsRoom.madeForLang;
+      if (madeForLang == null) continue;
 
-      if (langKey == null) continue;
-      if (publicProfile!
-              .analytics
-              .languageAnalytics![langKey]!
-              .analyticsRoomId ==
-          analyticsRoom.id) {
-        continue;
-      }
+      final language = _shortCode(madeForLang);
+      final entry = publicProfile!.analytics.languageAnalytics?[language];
+      if (entry == null || entry.analyticsRoomId == analyticsRoom.id) continue;
 
       publicProfile!.analytics.setLanguageInfo(
-        langKey,
-        publicProfile!.analytics.languageAnalytics![langKey]!.level,
+        language,
+        entry.level,
         analyticsRoom.id,
       );
     }
 
-    await _savePublicProfileUpdate(
-      PangeaEventTypes.profileAnalytics,
-      publicProfile!.toJson(),
-    );
+    await _savePublicProfileUpdate();
   }
 
-  Future<void> addXPOffset(int offset) async {
-    final targetLanguage = userL2;
-    if (targetLanguage == null || !_publicProfileIsOwn) return;
+  /// Adds [offset] to the XP offset published for [languageCode]'s language.
+  /// The language is required for the same reason it is on
+  /// [updateAnalyticsProfile]: the offset is derived from one language's XP.
+  Future<void> addXPOffset(int offset, String languageCode) async {
+    if (!_publicProfileIsOwn) return;
 
+    final language = _shortCode(languageCode);
     publicProfile!.analytics.addXPOffset(
-      targetLanguage,
+      language,
       offset,
-      client.ownAnalyticsRoomLocal(lang: targetLanguage)?.id,
+      _ownAnalyticsRoomIdFor(language),
     );
-    await _savePublicProfileUpdate(
-      PangeaEventTypes.profileAnalytics,
-      publicProfile!.toJson(),
-    );
+    await _savePublicProfileUpdate();
   }
 
   Future<void> updatePublicProfile() async {
@@ -542,10 +665,7 @@ class UserController {
       userId: _publicProfileUserId,
     );
 
-    await _savePublicProfileUpdate(
-      PangeaEventTypes.profileAnalytics,
-      publicProfile!.toJson(),
-    );
+    await _savePublicProfileUpdate();
   }
 
   Future<AnalyticsProfileModel> getPublicAnalyticsProfile(String userId) async {
@@ -593,7 +713,7 @@ class UserController {
       case ToolSetting.autoIGC:
         return profile.toolSettings.autoIGC;
       case ToolSetting.enableAutocorrect:
-        return profile.toolSettings.enableAutocorrect;
+        return profile.effectiveAutocorrect;
       case ToolSetting.audioWords:
         return profile.toolSettings.audioWords;
       case ToolSetting.audioChoices:
@@ -659,6 +779,14 @@ class UserController {
       l2: target == null || target.isEmpty ? null : target,
     );
   }
+
+  /// The language content should display in: the target language (L2) when
+  /// the "app in target language" toggle is on, else the native language (L1).
+  /// Mirrors the app-copy locale resolution in `MatrixState.setAppLanguage`,
+  /// including its fallback to L1 when no target is set.
+  String? get displayLanguageCode => profile.userSettings.appLanguageIsTarget
+      ? (userL2Code ?? userL1Code)
+      : userL1Code;
 
   LanguageModel? get userL1 {
     if (userL1Code == null) return null;

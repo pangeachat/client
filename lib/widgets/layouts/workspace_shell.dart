@@ -246,6 +246,10 @@ class WorkspaceShell extends StatelessWidget {
       label: L10n.of(context).home,
       child: ScaffoldMessenger(
         child: FocusTraversalGroup(
+          // Tab order on the workspace (#7219): nav rail (1) → the map, whose
+          // reading order puts its search bar + filter pills first (2) → the
+          // user cluster / analytics bar (3). Unordered focusables (open
+          // panels, the narrow nav widget) follow in reading order.
           policy: OrderedTraversalPolicy(),
           child: Scaffold(
             // No bottomNavigationBar slot: the narrow chrome is the FLOATING nav
@@ -261,13 +265,16 @@ class WorkspaceShell extends StatelessWidget {
                 /// Persistent world map — the base layer everything overlays. Overlays pad the
                 /// camera so a course fit lands in the exposed area: left = rail + column +
                 /// detail; right = the panel zone.
-                WorldMap(
-                  key: _persistentWorldMapKey,
-                  leftOverlayWidth: l.mapLeftOverlay,
-                  rightOverlayWidth: l.allocation.mapRightOverlay,
-                  bottomOverlayHeight: l.mapBottomOverlay,
-                  availableVisibleMapWidth: l.availableVisibleMapWidth,
-                  focus: mapFocusFor(state),
+                FocusTraversalOrder(
+                  order: const NumericFocusOrder(2),
+                  child: WorldMap(
+                    key: _persistentWorldMapKey,
+                    leftOverlayWidth: l.mapLeftOverlay,
+                    rightOverlayWidth: l.allocation.mapRightOverlay,
+                    bottomOverlayHeight: l.mapBottomOverlay,
+                    availableVisibleMapWidth: l.availableVisibleMapWidth,
+                    focus: mapFocusFor(state),
+                  ),
                 ),
 
                 /// Headless: opens a DM invite link's DM once the shell is up
@@ -283,14 +290,22 @@ class WorkspaceShell extends StatelessWidget {
                     child: Stack(
                       fit: StackFit.expand,
                       children: [
-                        /// The route canvas, as one stable child
+                        /// The route canvas, as one stable child. ExcludeFocus
+                        /// (#7219): the canvas is permanently offstage, but
+                        /// Offstage does NOT remove its descendants from focus
+                        /// traversal — without this, navigating fills the
+                        /// canvas with invisible Tab stops and the visible
+                        /// chrome (the map search bar) becomes practically
+                        /// unreachable by keyboard.
                         Positioned(
                           left: l.leftInset,
                           top: 0,
                           bottom: 0,
                           right: 0,
                           width: null,
-                          child: Offstage(child: l.canvasChild),
+                          child: ExcludeFocus(
+                            child: Offstage(child: l.canvasChild),
+                          ),
                         ),
 
                         /// The narrow floating nav widget: the 4-item rail with the
@@ -338,11 +353,14 @@ class WorkspaceShell extends StatelessWidget {
                             padding: const EdgeInsets.all(
                               _ShellLayout.chromeMargin,
                             ),
-                            child: SpacesNavigationRail(
-                              state: state,
-                              showNavRail: l.navRail,
-                              naviRailWidth: FluffyThemes.navRailWidth + 1.0,
-                              activeSpaceId: activeSpaceIdFor(state.uri),
+                            child: FocusTraversalOrder(
+                              order: const NumericFocusOrder(1),
+                              child: SpacesNavigationRail(
+                                state: state,
+                                showNavRail: l.navRail,
+                                naviRailWidth: FluffyThemes.navRailWidth + 1.0,
+                                activeSpaceId: activeSpaceIdFor(state.uri),
+                              ),
                             ),
                           ),
                         ),
@@ -435,7 +453,10 @@ class WorkspaceShell extends StatelessWidget {
                           Positioned(
                             top: _ShellLayout.chromeMargin,
                             right: _ShellLayout.chromeMargin,
-                            child: WorldUserCluster(key: _userClusterKey),
+                            child: FocusTraversalOrder(
+                              order: const NumericFocusOrder(3),
+                              child: WorldUserCluster(key: _userClusterKey),
+                            ),
                           )
                         else if (l.analyticsBarVisible)
                           Positioned(
@@ -457,7 +478,10 @@ class WorkspaceShell extends StatelessWidget {
                                       child: child,
                                     ),
                                   ),
-                              child: WorldAnalyticsBar(key: _userClusterKey),
+                              child: FocusTraversalOrder(
+                                order: const NumericFocusOrder(3),
+                                child: WorldAnalyticsBar(key: _userClusterKey),
+                              ),
                             ),
                           ),
                       ],
@@ -539,25 +563,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     final uri = state.uri;
     final screenHeight = MediaQuery.sizeOf(context).height;
 
-    // The course-shortcut slot (routing.instructions.md): `+` when no courses
-    // are joined, the single course when one, the most-recently-opened course
-    // otherwise. The most-recent choice is device-local view state, never URL.
-    final joined = client.rooms
-        .where((r) => r.isSpace && r.membership == Membership.join)
-        .toList();
     final activeSpaceId = activeSpaceIdFor(uri);
-    if (activeSpaceId != null &&
-        joined.any((space) => space.id == activeSpaceId)) {
-      _lastCourseShortcutId = activeSpaceId;
-    }
-    final Room? shortcutCourse = joined.isEmpty
-        ? null
-        : joined.length == 1
-        ? joined.first
-        : joined.firstWhere(
-            (space) => space.id == _lastCourseShortcutId,
-            orElse: () => joined.first,
-          );
 
     // The cavity: the focused section surface hosted bare (the widget is the
     // card; the surface brings its own header/close). A course keys its height
@@ -714,188 +720,228 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       }
     }
 
+    // The hosted panel is built once per layer build, OUTSIDE the sync-driven
+    // StreamBuilder below, so a shortcut refresh hands MobileNavWidget the
+    // identical child instance and the cavity subtree is skipped, not rebuilt.
+    final Widget? cavityChild = cavityToken == null
+        ? null
+        : FocusTraversalGroup(
+            policy: OrderedTraversalPolicy(),
+            child: WorkspaceLeftPanel(
+              token: cavityToken,
+              currentUri: uri,
+              bare: true,
+              shareItems: state.navigatorShareItems(cavityToken),
+              courseCreationCompleter: state.navigatorCourseCompleter(
+                cavityToken,
+              ),
+            ),
+          );
+
     // Positioned.fill, NOT a bottom-anchored strip: the widget bottom-aligns
     // its own box, and its tap-outside barrier must span the whole screen so a
     // map tap collapses the cavity (live QA — a bottom-anchored mount clipped
     // the barrier to the widget's own bounds).
+    //
+    // The course-shortcut slot resolves against the live joined-course set, so
+    // it has to react to sync: without this, a course deleted while the layer
+    // is up stays in the slot until the next route-driven rebuild (#8599). The
+    // web rail rebuilds on every rate-limited room update
+    // (navigation_rail.dart); here the stream is further reduced to the slot's
+    // own fingerprint and distinct(), so the nav widget rebuilds only when the
+    // slot would actually render differently.
     return Positioned.fill(
-      child: MobileNavWidget(
-        activeSection: sectionFor(uri),
-        courseShortcutIcon: shortcutCourse != null
-            // The same knock badge the web rail's course avatar wears: the
-            // builder loads the member list (admins only) and rebuilds on
-            // member changes, so the red "!" appears while users are knocking
-            // and clears when the admin accepts/denies (#8139).
-            ? KnockingUsersBuilder(
-                room: shortcutCourse,
-                builder: (context, knockingUsers) {
-                  final avatar = CourseAvatar(
-                    avatar: shortcutCourse.avatar,
-                    displayname: shortcutCourse.getLocalizedDisplayname(
-                      MatrixLocals(l10n),
-                    ),
-                    size: 32,
-                  );
-                  return knockingUsers.isEmpty
-                      ? avatar
-                      : KnockingUsersBadge(
-                          position: BadgePosition.topEnd(top: -5, end: -7),
-                          child: avatar,
-                        );
-                },
-              )
-            : const Icon(Icons.add),
-        courseShortcutLabel: shortcutCourse != null
-            ? shortcutCourse.getLocalizedDisplayname(MatrixLocals(l10n))
-            : l10n.addCourse,
-        courseShortcutSelected:
-            shortcutCourse != null && shortcutCourse.id == activeSpaceId,
-        // Rail navigations clear the right list: on one column a section and
-        // a right panel are peers in the same slot, so opening a section must
-        // close an open analytics/settings panel instead of leaving it stale
-        // behind the sheet (routing.instructions.md → Single-column bottom
-        // nav; the mirror of the analytics bar's closeSections).
-        onCourseShortcutTap: () => context.go(
-          shortcutCourse != null
-              // No section param even for a knock-badged course: knocks
-              // surface in the Catch up card at the top of the page (#8357),
-              // which a scroll-to-Chats would skip right past.
-              ? WorkspaceNav.openCourseSection(
-                  uri,
-                  shortcutCourse.id,
-                  keepRoom: false,
-                  clearRight: true,
-                )
-              : WorkspaceNav.setSection(
-                  uri,
-                  const AddCoursePanelToken(),
-                  keepRoom: false,
-                  clearRight: true,
-                ),
-        ),
-        // The same all-chats unread badge the web rail's Chats item wears
-        // (navigation_rail.dart): identical top-level-chats filter, identical
-        // sync-driven rebuild — so the two tabs can't disagree (#8129).
-        chatsBadgeBuilder: (child) => StreamBuilder(
-          stream: client.onSync.stream
-              .where((s) => s.hasRoomUpdate)
-              .rateLimit(const Duration(seconds: 1)),
-          builder: (context, _) => UnreadRoomsBadge(
-            filter: (room) => room.firstSpaceParent == null,
-            // Sits at the icon's corner with the web rail's proportions: the
-            // rail badge covers ~30% of its 41px icon, so over this 24px icon
-            // the badge must ride further up-and-out — at (4,4) it covered
-            // half the glyph and read as touching it. The badge Stack is
-            // Clip.none and the rail row leaves 8px above the 48px button, so
-            // the small negative overhang stays fully visible.
-            badgePosition: BadgePosition.topEnd(top: -1, end: -1),
-            child: child,
-          ),
-        ),
-        // The same gold envelope the invited course's own avatar wears in the
-        // hub list, on the tab that opens it: a pending invitation is
-        // otherwise invisible until the learner opens the Courses hub (#8190).
-        // Same invited-space predicate as `sortedCourses`, so the badge shows
-        // exactly when the hub has an invited course to show.
-        coursesBadgeBuilder: (child) => StreamBuilder(
-          stream: client.onSync.stream
-              .where((s) => s.hasRoomUpdate)
-              .rateLimit(const Duration(seconds: 1)),
-          builder: (context, _) =>
-              client.rooms.any(
-                (r) => r.isSpace && r.membership == Membership.invite,
-              )
-              ? InvitedCourseBadge(
-                  // The unread badge's position on the sibling Chats tab —
-                  // both ride the corner of a 24px rail icon.
-                  position: BadgePosition.topEnd(top: -1, end: -1),
-                  child: child,
-                )
-              : child,
-        ),
-        onSectionTap: (section) => context.go(switch (section) {
-          // World is home: clear every panel and reveal the full map.
-          AppSection.world => WorkspaceNav.clearAll(),
-          AppSection.chats => WorkspaceNav.setSection(
-            uri,
-            const ChatsPanelToken(),
-            keepRoom: false,
-            clearRight: true,
-          ),
-          AppSection.courses => WorkspaceNav.setSection(
-            uri,
-            const AddCoursePanelToken(),
-            keepRoom: false,
-            clearRight: true,
-          ),
-        }),
-        cavitySection: cavitySection,
-        // The shortcut hosts the cavity when it is showing that surface: the
-        // shortcut's own course sheet, or — with no courses joined, where the
-        // slot is the `+` button — the add-course hub (#8098).
-        courseShortcutHostsCavity: courseShortcutHostsCavity(
-          cavityToken: cavityToken,
-          shortcutCourseId: shortcutCourse?.id,
-          activeSpaceId: activeSpaceId,
-        ),
-        cavityChild: cavityToken == null
-            ? null
-            : FocusTraversalGroup(
-                policy: OrderedTraversalPolicy(),
-                child: WorkspaceLeftPanel(
-                  token: cavityToken,
-                  currentUri: uri,
-                  bare: true,
-                  shareItems: state.navigatorShareItems(cavityToken),
-                  courseCreationCompleter: state.navigatorCourseCompleter(
-                    cavityToken,
-                  ),
-                ),
+      child: StreamBuilder(
+        stream: client.onSync.stream
+            .where((s) => s.hasRoomUpdate)
+            .rateLimit(const Duration(seconds: 1))
+            .map(
+              (_) => courseShortcutFingerprint(
+                resolveCourseShortcut(client, activeSpaceId: activeSpaceId),
               ),
-        cavityKey: cavityKey,
-        // The course scope (`?c=`): a course's height is remembered while this
-        // holds its id and forgotten when it leaves (World / a different
-        // course). Opening a chat or activity from the course keeps it, so the
-        // course reopens where it was left (#7332).
-        cavityContextId: activeSpaceId,
-        // A course card opens at peek (the map leads); sections and the
-        // activity plan open at half (the plan keeps its pin visible above —
-        // the Google Maps UX).
-        cavityDefaultsToPeek: cavityToken?.type.defaultCavityToPeek == true,
-        // Dismissing the activity plan sheet (drag down, or its own back/X)
-        // CLOSES the plan — dropping its token clears the map's activity
-        // focus (#7614; world-map.instructions.md). Map taps do NOT dismiss:
-        // the map stays live around the sheet (mapStaysLive below), so a tap
-        // on another pin moves the selection directly. Sections and the
-        // course card keep collapse-not-close.
-        onDismissed: isActivityCavity && cavityToken != null
-            ? () => context.go(WorkspaceNav.closeLeft(uri, cavityToken))
-            : null,
-        // The map stays interactive around the activity plan and course card
-        // sheets: taps/pans in the exposed map pass through — tap another pin
-        // to select it directly; panning never dismisses. Dismissal is the
-        // drag-down handle or the sheet's own close control (#7742).
-        mapStaysLive: isActivityCavity || isCourseCavity,
-        // Tapping the plan's minimized rest expands it to full, alongside
-        // dragging up.
-        tapBodyExpands: isActivityCavity,
-        // The activity plan covers the nav rail and owns the container; its
-        // app-bar X/back is the way out (which restores the rail).
-        hideRail: isActivityCavity,
-        // Publish whether the activity plan is at full — the shell hides the
-        // analytics bar under it. Any other cavity reports false, so
-        // switching away resets it.
-        onCavityFullChanged: (full) =>
-            ActivitySheetFull.set(value: isActivityCavity && full),
-        maxHeightFraction: maxHeightFraction,
-        preferredCavityHeightPx: preferredCavityHeight,
-        // The activity plan's open stop is deterministic: it never remembers a
-        // manual resize, so a maximized activity reopens minimized rather than
-        // carrying its height over (activity-start-page.instructions.md). Other
-        // cavities keep their remembered height.
-        rememberHeight: !isActivityCavity,
-        topAttachment: searchBar,
-        keyboardInset: widget.keyboardInset,
+            )
+            .distinct(),
+        builder: (context, _) {
+          // Resolved inside the builder so every emission — and every layer
+          // rebuild — reads the current joined-course set. All five
+          // shortcut-derived inputs (icon, label, selected, tap target,
+          // hostsCavity) come from this one resolution, which is what makes
+          // MobileNavWidget the smallest unit the stream can consistently wrap.
+          final shortcutCourse = resolveCourseShortcut(
+            client,
+            activeSpaceId: activeSpaceId,
+          );
+          return MobileNavWidget(
+            activeSection: sectionFor(uri),
+            courseShortcutIcon: shortcutCourse != null
+                // The same knock badge the web rail's course avatar wears: the
+                // builder loads the member list (admins only) and rebuilds on
+                // member changes, so the red "!" appears while users are knocking
+                // and clears when the admin accepts/denies (#8139).
+                ? KnockingUsersBuilder(
+                    room: shortcutCourse,
+                    builder: (context, knockingUsers) {
+                      final avatar = CourseAvatar(
+                        avatar: shortcutCourse.avatar,
+                        displayname: shortcutCourse.getLocalizedDisplayname(
+                          MatrixLocals(l10n),
+                        ),
+                        size: 32,
+                      );
+                      return knockingUsers.isEmpty
+                          ? avatar
+                          : KnockingUsersBadge(
+                              position: BadgePosition.topEnd(top: -5, end: -7),
+                              child: avatar,
+                            );
+                    },
+                  )
+                : const Icon(Icons.add),
+            courseShortcutLabel: shortcutCourse != null
+                ? shortcutCourse.getLocalizedDisplayname(MatrixLocals(l10n))
+                : l10n.addCourse,
+            // Not while the Courses hub is open: the hub keeps the `?c=` context
+            // it was opened over, and the Courses item — not the shortcut — is
+            // what should light for it (#8605; mirrors the web rail).
+            courseShortcutSelected:
+                shortcutCourse != null &&
+                shortcutCourse.id == activeSpaceId &&
+                !coursesHubIsOpen(uri),
+            // Rail navigations clear the right list: on one column a section and
+            // a right panel are peers in the same slot, so opening a section must
+            // close an open analytics/settings panel instead of leaving it stale
+            // behind the sheet (routing.instructions.md → Single-column bottom
+            // nav; the mirror of the analytics bar's closeSections).
+            onCourseShortcutTap: () => context.go(
+              shortcutCourse != null
+                  // No section param even for a knock-badged course: knocks
+                  // surface in the Catch up card at the top of the page (#8357),
+                  // which a scroll-to-Chats would skip right past.
+                  ? WorkspaceNav.openCourseSection(
+                      uri,
+                      shortcutCourse.id,
+                      keepRoom: false,
+                      clearRight: true,
+                    )
+                  : WorkspaceNav.setSection(
+                      uri,
+                      const AddCoursePanelToken(),
+                      keepRoom: false,
+                      clearRight: true,
+                    ),
+            ),
+            // The same all-chats unread badge the web rail's Chats item wears
+            // (navigation_rail.dart): identical top-level-chats filter, identical
+            // sync-driven rebuild — so the two tabs can't disagree (#8129).
+            chatsBadgeBuilder: (child) => StreamBuilder(
+              stream: client.onSync.stream
+                  .where((s) => s.hasRoomUpdate)
+                  .rateLimit(const Duration(seconds: 1)),
+              builder: (context, _) => UnreadRoomsBadge(
+                filter: (room) => room.firstSpaceParent == null,
+                // Sits at the icon's corner with the web rail's proportions: the
+                // rail badge covers ~30% of its 41px icon, so over this 24px icon
+                // the badge must ride further up-and-out — at (4,4) it covered
+                // half the glyph and read as touching it. The badge Stack is
+                // Clip.none and the rail row leaves 8px above the 48px button, so
+                // the small negative overhang stays fully visible.
+                badgePosition: BadgePosition.topEnd(top: -1, end: -1),
+                child: child,
+              ),
+            ),
+            // The same gold envelope the invited course's own avatar wears in the
+            // hub list, on the tab that opens it: a pending invitation is
+            // otherwise invisible until the learner opens the Courses hub (#8190).
+            // Same invited-space predicate as `sortedCourses`, so the badge shows
+            // exactly when the hub has an invited course to show.
+            coursesBadgeBuilder: (child) => StreamBuilder(
+              stream: client.onSync.stream
+                  .where((s) => s.hasRoomUpdate)
+                  .rateLimit(const Duration(seconds: 1)),
+              builder: (context, _) =>
+                  client.rooms.any(
+                    (r) => r.isSpace && r.membership == Membership.invite,
+                  )
+                  ? InvitedCourseBadge(
+                      // The unread badge's position on the sibling Chats tab —
+                      // both ride the corner of a 24px rail icon.
+                      position: BadgePosition.topEnd(top: -1, end: -1),
+                      child: child,
+                    )
+                  : child,
+            ),
+            onSectionTap: (section) => context.go(switch (section) {
+              // World is home: clear every panel and reveal the full map.
+              AppSection.world => WorkspaceNav.clearAll(),
+              AppSection.chats => WorkspaceNav.setSection(
+                uri,
+                const ChatsPanelToken(),
+                keepRoom: false,
+                clearRight: true,
+              ),
+              AppSection.courses => WorkspaceNav.setSection(
+                uri,
+                const AddCoursePanelToken(),
+                keepRoom: false,
+                clearRight: true,
+              ),
+            }),
+            cavitySection: cavitySection,
+            // The shortcut hosts the cavity when it is showing that surface: the
+            // shortcut's own course sheet, or — with no courses joined, where the
+            // slot is the `+` button — the add-course hub (#8098).
+            courseShortcutHostsCavity: courseShortcutHostsCavity(
+              cavityToken: cavityToken,
+              shortcutCourseId: shortcutCourse?.id,
+              activeSpaceId: activeSpaceId,
+            ),
+            cavityChild: cavityChild,
+            cavityKey: cavityKey,
+            // The course scope (`?c=`): a course's height is remembered while this
+            // holds its id and forgotten when it leaves (World / a different
+            // course). Opening a chat or activity from the course keeps it, so the
+            // course reopens where it was left (#7332).
+            cavityContextId: activeSpaceId,
+            // A course card opens at peek (the map leads); sections and the
+            // activity plan open at half (the plan keeps its pin visible above —
+            // the Google Maps UX).
+            cavityDefaultsToPeek: cavityToken?.type.defaultCavityToPeek == true,
+            // Dismissing the activity plan sheet (drag down, or its own back/X)
+            // CLOSES the plan — dropping its token clears the map's activity
+            // focus (#7614; world-map.instructions.md). Map taps do NOT dismiss:
+            // the map stays live around the sheet (mapStaysLive below), so a tap
+            // on another pin moves the selection directly. Sections and the
+            // course card keep collapse-not-close.
+            onDismissed: isActivityCavity && cavityToken != null
+                ? () => context.go(WorkspaceNav.closeLeft(uri, cavityToken))
+                : null,
+            // The map stays interactive around the activity plan and course card
+            // sheets: taps/pans in the exposed map pass through — tap another pin
+            // to select it directly; panning never dismisses. Dismissal is the
+            // drag-down handle or the sheet's own close control (#7742).
+            mapStaysLive: isActivityCavity || isCourseCavity,
+            // Tapping the plan's minimized rest expands it to full, alongside
+            // dragging up.
+            tapBodyExpands: isActivityCavity,
+            // The activity plan covers the nav rail and owns the container; its
+            // app-bar X/back is the way out (which restores the rail).
+            hideRail: isActivityCavity,
+            // Publish whether the activity plan is at full — the shell hides the
+            // analytics bar under it. Any other cavity reports false, so
+            // switching away resets it.
+            onCavityFullChanged: (full) =>
+                ActivitySheetFull.set(value: isActivityCavity && full),
+            maxHeightFraction: maxHeightFraction,
+            preferredCavityHeightPx: preferredCavityHeight,
+            // The activity plan's open stop is deterministic: it never remembers a
+            // manual resize, so a maximized activity reopens minimized rather than
+            // carrying its height over (activity-start-page.instructions.md). Other
+            // cavities keep their remembered height.
+            rememberHeight: !isActivityCavity,
+            topAttachment: searchBar,
+            keyboardInset: widget.keyboardInset,
+          );
+        },
       ),
     );
   }
@@ -906,6 +952,46 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
 /// URL (routing.instructions.md → Single-column bottom nav). Module-level so it
 /// survives shell rebuilds; resets with the process.
 String? _lastCourseShortcutId;
+
+@visibleForTesting
+void resetCourseShortcutMemoryForTest() => _lastCourseShortcutId = null;
+
+/// Resolves the narrow rail's course-shortcut slot against the CURRENT
+/// joined-course set (routing.instructions.md → Single-column bottom nav):
+/// null (the `+` add-course button) when no courses are joined, the single
+/// course when exactly one, the most-recently-opened course otherwise. When
+/// the remembered course is no longer joined — deleted, or left — the slot
+/// falls back to the first joined space (#8599; the SDK orders rooms by
+/// recency, so that is the most recently active course).
+///
+/// Also records [activeSpaceId] as the most-recent course while it is joined:
+/// calling this is what keeps the memory current, so every caller shares one
+/// definition of "most recent".
+Room? resolveCourseShortcut(Client client, {required String? activeSpaceId}) {
+  final joined = client.rooms
+      .where((r) => r.isSpace && r.membership == Membership.join)
+      .toList();
+  if (activeSpaceId != null &&
+      joined.any((space) => space.id == activeSpaceId)) {
+    _lastCourseShortcutId = activeSpaceId;
+  }
+  return joined.isEmpty
+      ? null
+      : joined.length == 1
+      ? joined.first
+      : joined.firstWhere(
+          (space) => space.id == _lastCourseShortcutId,
+          orElse: () => joined.first,
+        );
+}
+
+/// What the shortcut slot renders, reduced to one comparable string — the
+/// course's identity, avatar, and name ('' for the `+` button) — so the
+/// sync-driven rebuild in [_MobileNavLayerState] fires only when the slot
+/// would actually change (#8599), not on every room update.
+String courseShortcutFingerprint(Room? course) => course == null
+    ? ''
+    : '${course.id}|${course.avatar}|${course.getLocalizedDisplayname()}';
 
 /// Every layout fact the [WorkspaceShell] derives from the current route +
 /// viewport, resolved once per build into one immutable bundle so `build` reads

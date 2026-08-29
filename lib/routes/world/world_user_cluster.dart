@@ -150,9 +150,9 @@ class ClusterAvatar extends StatelessWidget {
           // activate it (e.g. open Settings); GestureDetector alone leaves the
           // button unactivatable via assistive tech. See issue #7185.
           onTap: onTap,
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
+          child: FocusRingTapTarget(
             onTap: onTap,
+            shape: const CircleBorder(),
             child: Avatar(
               mxContent: avatarUrl,
               name: name,
@@ -161,6 +161,49 @@ class ClusterAvatar extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// InkWell-backed tap target for the cluster's controls (#7219): focusable and
+/// Enter/Space-activatable where a bare GestureDetector is not, with a gold
+/// ring painted while focused — the controls' fills are opaque, so InkWell's
+/// behind-the-child focus highlight alone is invisible.
+class FocusRingTapTarget extends StatefulWidget {
+  final VoidCallback onTap;
+  final OutlinedBorder shape;
+  final Widget child;
+
+  const FocusRingTapTarget({
+    required this.onTap,
+    required this.shape,
+    required this.child,
+    super.key,
+  });
+
+  @override
+  State<FocusRingTapTarget> createState() => _FocusRingTapTargetState();
+}
+
+class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
+  bool _focused = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: widget.onTap,
+      customBorder: widget.shape,
+      onFocusChange: (focused) => setState(() => _focused = focused),
+      child: DecoratedBox(
+        decoration: ShapeDecoration(
+          shape: widget.shape.copyWith(
+            side: _focused
+                ? BorderSide(color: AppConfig.goldByTheme(context), width: 3.0)
+                : BorderSide.none,
+          ),
+        ),
+        child: widget.child,
       ),
     );
   }
@@ -577,11 +620,14 @@ class ClusterLanguageFlag extends StatelessWidget {
           excludeSemantics: true,
           // Expose the tap on the announced node for assistive tech (#7185).
           onTap: onTap,
-          // Opaque so the whole chip is tappable — not just the painted glyphs
-          // / flag pixels (a transparent-interior box defers the hit test).
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
+          // InkWell hit-tests its whole rect, so the entire chip is tappable —
+          // not just the painted glyphs / flag pixels.
+          child: FocusRingTapTarget(
             onTap: onTap,
+            // The chip's own outer rounding (its radius + borderWidth).
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
             child: LanguageFlagChip(
               language: language,
               langCode: language.langCode,

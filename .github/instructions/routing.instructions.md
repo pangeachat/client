@@ -748,7 +748,7 @@ until it is explicitly ended, finished, or times out.
   or a rail section drops the `practice` panel from the URL but keeps the
   session alive in memory; re-opening practice resumes exactly where it left
   off. No confirm dialog on leave. Session state is ephemeral view state, never
-  in the URL — a refresh or app restart starts fresh.
+  in the URL — a refresh, app restart, or logout starts fresh.
 - **One session at a time.** A single practice session is live across both
   sections. Starting practice in the other section, or restarting the same
   one, **replaces** it — confirming first only if the current one is
@@ -851,4 +851,4 @@ lists and only history-adding navigations emit — see
 
 ### Adding a panel
 
-Valid panels are listed in the [PanelTypeEnum](lib/features/navigation/panel_type_enum.dart). Each enum entry corresponds to a subclass of [PanelToken](lib/features/navigation/panel_token.dart), which contains a nullable subclass of [TokenParam](lib/features/navigation/token_params/token_param.dart), a class describing the panel's corresponding token param and containing parsing logic for any subpages or extra info the panel needs to render. Each PanelToken also has a corresponding subclass of [PanelDef](lib/features/navigation/token_params/panel_registry.dart), containing details about where and how the panel is rendered.
+Valid panels are listed in the [PanelTypeEnum](lib/features/navigation/panel_type_enum.dart). Each enum entry corresponds to a subclass of [PanelToken](../../lib/features/navigation/panel_token.dart), which contains a nullable subclass of [TokenParam](../../lib/features/navigation/token_params/token_param.dart), a class describing the panel's corresponding token param and containing parsing logic for any subpages or extra info the panel needs to render. Each PanelToken also has a corresponding subclass of [PanelDef](lib/features/navigation/token_params/panel_registry.dart), containing details about where and how the panel is rendered.

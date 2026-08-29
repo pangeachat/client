@@ -165,54 +165,79 @@ extension ActivitySummaryRoomExtension on Room {
     langCode,
   );
 
-  Future<void> fetchSummaries(String langCode, {String? feedback}) async {
-    if (_activitySummary(langCode)?.summary != null && feedback == null) return;
-    await _startRequestingActivitySummary(langCode);
-
-    final events = await getAllEvents();
-    final timeline = this.timeline ?? await getTimeline();
-    final messageEvents = getPangeaMessageEvents(
-      events,
-      timeline,
-      msgtypes: [MessageTypes.Text, MessageTypes.Audio],
-    );
-
-    // The plan body is canonical in CMS (reference-only room state); resolve it
-    // before building the request rather than assuming it is hydrated.
-    final activity =
-        activityPlan ??
-        await ActivityPlanRepo.instance.getPlan(activityId ?? '');
-    if (activity == null) {
-      await _stopRequestingActivitySummaryOnError(null, langCode);
-      return;
+  /// Returns whether the flow succeeded. Room state carries the loading/error
+  /// status for every viewer, but its writes need the network — so when the
+  /// network itself is what failed, the initiating client's only failure
+  /// signal is this return value (#8362). ActivityChatController turns it
+  /// into local error UI.
+  Future<bool> fetchSummaries(String langCode, {String? feedback}) async {
+    if (_activitySummary(langCode)?.summary != null && feedback == null) {
+      return true;
     }
-    final req = _constructSummaryRequest(
-      messageEvents,
-      langCode,
-      activity: activity,
-      feedback: feedback,
-    );
-    final analytics = _constrctSummaryAnalyticsModel(messageEvents, langCode);
 
-    final result = await ActivitySummaryRepo.get(id, req);
-    if (result.isError) {
-      if (_activitySummary(langCode)?.summary == null) {
-        await _stopRequestingActivitySummaryOnError(analytics, langCode);
-      }
-    } else {
-      await _stopRequestActivitySummaryOnSuccess(
-        result.result!,
-        analytics,
-        langCode,
+    try {
+      await _startRequestingActivitySummary(langCode);
+      final events = await getAllEvents();
+      final timeline = this.timeline ?? await getTimeline();
+      final messageEvents = getPangeaMessageEvents(
+        events,
+        timeline,
+        msgtypes: [MessageTypes.Text, MessageTypes.Audio],
       );
-    }
 
-    ActivitySummaryRepo.delete(id, req);
+      // The plan body is canonical in CMS (reference-only room state); resolve
+      // it before building the request rather than assuming it is hydrated.
+      final activity =
+          activityPlan ??
+          await ActivityPlanRepo.instance.getPlan(activityId ?? '');
+      if (activity == null) {
+        await _stopRequestingActivitySummaryOnError(null, langCode);
+        return false;
+      }
+      final req = _constructSummaryRequest(
+        messageEvents,
+        langCode,
+        activity: activity,
+        feedback: feedback,
+      );
+      final analytics = _constrctSummaryAnalyticsModel(messageEvents, langCode);
+
+      final result = await ActivitySummaryRepo.get(id, req);
+      var ok = false;
+      if (result.isError) {
+        if (_activitySummary(langCode)?.summary == null) {
+          await _stopRequestingActivitySummaryOnError(analytics, langCode);
+        }
+      } else {
+        await _stopRequestActivitySummaryOnSuccess(
+          result.result!,
+          analytics,
+          langCode,
+        );
+        ok = true;
+      }
+
+      ActivitySummaryRepo.delete(id, req);
+      return ok;
+    } catch (e, s) {
+      // ActivitySummaryRepo.get returns a Result and never throws, so a throw
+      // here is a Matrix call dying — a state write or the event/timeline
+      // fetch — typically the network going down mid-flow (#8362).
+      ErrorHandler.logError(e: e, s: s, data: {"roomID": id});
+      try {
+        await _stopRequestingActivitySummaryOnError(null, langCode);
+      } catch (_) {
+        // Offline the error state can't be recorded either; the return value
+        // is the initiating client's only remaining failure signal.
+      }
+      return false;
+    }
   }
 
-  Future<void> fetchSummariesByL1({String? feedback}) async {
+  Future<bool> fetchSummariesByL1({String? feedback}) async {
     final l1 = MatrixState.pangeaController.userController.userL1Code;
-    if (l1 == null) return;
+    // No L1 means nothing to fetch — not a failure a retry could fix.
+    if (l1 == null) return true;
     return fetchSummaries(l1, feedback: feedback);
   }
 }

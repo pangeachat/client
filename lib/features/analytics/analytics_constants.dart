@@ -31,5 +31,6 @@ class AnalyticsConstants {
   static const String level = 'level';
   static const String xpOffset = 'xp_offset';
   static const String analyticsRoomId = 'analytics_room_id';
+  static const String stars = 'stars';
   static const String roomIds = 'room_ids';
 }

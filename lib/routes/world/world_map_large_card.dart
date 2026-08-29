@@ -8,7 +8,7 @@ import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
+import 'package:fluffychat/pangea/common/widgets/activity_tile_body.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
 import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
@@ -18,8 +18,6 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/routes/world/world_map_star_dot.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
-import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
 /// Pops [child] (a [WorldMapLargeCard]) in on mount and shrinks it back out on
@@ -130,16 +128,24 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
 /// - **Ongoing/Pending** (dark-purple border) — same layout as Joinable, an
 ///   hourglass icon in place of the door: the learner holds a role, but the
 ///   room doesn't yet have enough people for the chat to have started.
-/// - **Ongoing/Active** (dark-purple border) — a chat-list tile: title, the
-///   last chat event, then the row of currently-gained stars — the only
-///   large-card state that shows stars.
+/// - **Ongoing/Active** (dark-purple border) — *is* a chat-list tile, sharing
+///   its body widget ([ActivityTileBody]) with the Chats-list tile for the same
+///   session: the activity's circular thumbnail leading, and beside it the
+///   title over the last chat event (with its sender's avatar) over the row of
+///   currently-gained stars — the only large-card state that shows stars, and
+///   the only one with an image.
 ///
-/// The full [plan] carries the goal total AND the L1-localized title (the
-/// hydration fetch localizes; choreo #2736) — null while it hydrates, so the
-/// title falls back to the canonical [card] title until the plan lands (and
-/// re-hydrates on an L1 change, per the map's L1 warmup). [liveRoom] is the
-/// learner's own session room for an Ongoing card (participants for Pending,
-/// last event for Active). Tapping the card opens the activity's plan page.
+/// Every state lays out against a leading gutter ([_LeadingGutter]) so its
+/// title sits directly above its content on one left edge, with the dismiss X
+/// in that gutter's top corner.
+///
+/// The full [plan] carries the goal total AND the title in the resolved
+/// display language (the hydration fetch localizes; #8397) — null while it
+/// hydrates, so the title falls back to the thin [card] title until the plan
+/// lands (and re-hydrates on an L1 change, per the map's L1 warmup).
+/// [liveRoom] is the learner's own session room for an Ongoing card
+/// (participants for Pending, last event for Active). Tapping the card opens
+/// the activity's plan page.
 class WorldMapLargeCard extends StatelessWidget {
   /// Height of the downward caret that tethers the card to its pin. The marker
   /// reserves this beneath the card so the tail isn't clipped (#7153).
@@ -218,6 +224,25 @@ class WorldMapLargeCard extends StatelessWidget {
       plan?.earnableStars ??
       0;
 
+  /// Inset between the card's border and its content.
+  static const double _cardPadding = 10.0;
+
+  /// Leading image size. Smaller than the chat list's [Avatar.defaultSize] 44
+  /// because the card is only [PinSize.largeMinWidth]–[PinSize.largeWidth]
+  /// wide: at 44 a two-line title had barely half the card left.
+  static const double _thumbnailSize = 40.0;
+
+  bool get _hasThumbnail =>
+      state == ActivityPinState.ongoingActive && liveRoom != null;
+
+  /// Width of the leading gutter. Holds the thumbnail where there is one; on a
+  /// plain card it is blank but still wide enough that the corner X, which
+  /// paints over the content rather than taking a slot in a row, clears the
+  /// text. Constant whether or not the card has an X, so an exiting card
+  /// (which drops its X) doesn't shift its text as it animates out.
+  double get _gutterWidth =>
+      _hasThumbnail ? _thumbnailSize + 8.0 : _DismissButton.size + 4.0;
+
   @override
   Widget build(BuildContext context) {
     // The outer frame (border + caret) maps the mid pin's BODY colour, so the
@@ -277,32 +302,60 @@ class WorldMapLargeCard extends StatelessWidget {
                 minWidth: PinSize.largeMinWidth,
                 maxWidth: PinSize.largeWidth,
               ),
-              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: accent, width: 4),
               ),
-              child: Column(
-                spacing: 8.0,
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              // The card's inset is carried by the CONTENT so this Stack spans
+              // the whole area inside the border, and the X can reach the
+              // corner without overhanging it: an overhang would still PAINT
+              // under `Clip.none`, but hit-testing stops at the parent's box,
+              // leaving most of the button dead to the touch. `passthrough`
+              // keeps the content laid out against the container's constraints.
+              child: Stack(
+                fit: StackFit.passthrough,
                 children: [
-                  _CardTitleRow(
-                    title: plan?.title ?? card.title,
-                    titleColor: titleColor,
-                    onClose: onClose,
+                  Padding(
+                    padding: const EdgeInsets.all(_cardPadding),
+                    child: _LeadingGutter(
+                      width: _gutterWidth,
+                      thumbnail: _hasThumbnail
+                          ? Avatar(
+                              mxContent: liveRoom!.avatar,
+                              name: plan?.title ?? card.title,
+                              size: _thumbnailSize,
+                            )
+                          : null,
+                      child: Column(
+                        spacing: 8.0,
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _CardTitleRow(
+                            title: plan?.title ?? card.title,
+                            titleColor: titleColor,
+                          ),
+                          _CardBody(
+                            card: card,
+                            state: state,
+                            accent: accent,
+                            titleColor: titleColor,
+                            liveRoom: liveRoom,
+                            participants: participants,
+                            openSlots: openSlots,
+                            starsTotal: _starsTotal,
+                            starsEarned: starsEarned,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  _CardBody(
-                    card: card,
-                    state: state,
-                    accent: accent,
-                    titleColor: titleColor,
-                    liveRoom: liveRoom,
-                    participants: participants,
-                    openSlots: openSlots,
-                    starsTotal: _starsTotal,
-                    starsEarned: starsEarned,
-                  ),
+                  if (onClose != null)
+                    Positioned(
+                      top: _cardPadding,
+                      left: _cardPadding,
+                      child: _DismissButton(onPressed: onClose!),
+                    ),
                 ],
               ),
             ),
@@ -334,8 +387,8 @@ class WorldMapLargeCard extends StatelessWidget {
     // the unread bubble once it's ongoingActive — never both (mutually exclusive
     // by state: the hand is gated to `!isOngoing`, the unread bubble needs a live
     // room in the ongoingActive state). Both white-bordered so they stand out
-    // from the same-coloured accent frame. The dismiss X lives inline in the
-    // title row ([_CardTitleRow]) where it can't overlap the title.
+    // from the same-coloured accent frame. The dismiss X is the opposite
+    // corner's affordance, but rides INSIDE the border rather than peeking.
     final Widget? topRightBadge = (pinged && !state.isOngoing)
         ? const WorldMapPingedBadge()
         : (state == ActivityPinState.ongoingActive && liveRoom != null)
@@ -383,30 +436,60 @@ class WorldMapLargeCard extends StatelessWidget {
   }
 }
 
-/// The large-card title row: the dismiss X inline at the left (so it can never
-/// overlap the title — #7207) followed by the bold, [titleColor]ed activity
-/// name (world-map.instructions.md, "Pin display", world-map Figma). The X is
-/// omitted when [onClose] is null (widget-test / exiting-card reuse).
+/// The card's leading column — [thumbnail] where the state has one, blank
+/// otherwise — with [child] beside it, giving every row one left edge. The
+/// thumbnail is the session room's avatar, set from the activity's image when
+/// the session launches, so it is the very picture the tile draws and costs no
+/// fetch here.
+class _LeadingGutter extends StatelessWidget {
+  final double width;
+  final Widget? thumbnail;
+  final Widget child;
+
+  const _LeadingGutter({
+    required this.width,
+    required this.thumbnail,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      // Min + Flexible, not Expanded: an available card still shrinks to its
+      // content rather than stretching to the full width.
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          width: width,
+          // Left-aligned so the gutter's spare width falls as the gap before
+          // the text; a bare child would take the gutter's tight width.
+          child: thumbnail == null
+              ? null
+              : Align(alignment: Alignment.centerLeft, child: thumbnail),
+        ),
+        Flexible(child: child),
+      ],
+    );
+  }
+}
+
+/// The large-card title row: the bold, [titleColor]ed activity name
+/// (world-map.instructions.md, "Pin display", world-map Figma). The dismiss X
+/// used to sit inline ahead of it (#7207); it now rides the card's top-left
+/// corner as a badge, where it neither crowds the title nor splits the
+/// thumbnail off from the text beside it (#8278).
 class _CardTitleRow extends StatelessWidget {
   final String title;
   final Color titleColor;
-  final VoidCallback? onClose;
 
-  const _CardTitleRow({
-    required this.title,
-    required this.titleColor,
-    this.onClose,
-  });
+  const _CardTitleRow({required this.title, required this.titleColor});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (onClose != null) ...[
-          _DismissButton(onPressed: onClose!),
-          const SizedBox(width: 2),
-        ],
         // Flexible so a long title wraps/ellipsizes within the (capped) card
         // width instead of overflowing the shrink-to-fit row.
         Flexible(
@@ -476,8 +559,8 @@ class _CardBody extends StatelessWidget {
       participants: liveRoom?.largeCardParticipantIds ?? participants,
       openSlots: liveRoom?.numRemainingRoles ?? openSlots,
     ),
-    ActivityPinState.ongoingActive => _OngoingActiveBody(
-      liveRoom: liveRoom,
+    ActivityPinState.ongoingActive => ActivityTileBody(
+      room: liveRoom,
       starsTotal: starsTotal,
       starsEarned: starsEarned,
     ),
@@ -547,99 +630,44 @@ class _AvailableBody extends StatelessWidget {
   }
 }
 
-/// The Ongoing/Active body: a chat-list tile — the last chat event beneath the
-/// title (rendered above by [_CardTitle]), then the row of currently-gained
-/// stars at the bottom. **The only large-card state that shows stars**
-/// (world-map.instructions.md, "Goal Progress").
-class _OngoingActiveBody extends StatelessWidget {
-  final Room? liveRoom;
-  final int starsTotal;
-  final int starsEarned;
-
-  const _OngoingActiveBody({
-    required this.liveRoom,
-    required this.starsTotal,
-    required this.starsEarned,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final lastEvent = liveRoom?.lastEvent;
-    final sender = lastEvent?.senderFromMemoryOrFallback;
-    final preview = lastEvent?.calcLocalizedBodyFallback(
-      MatrixLocals(L10n.of(context)),
-      hideReply: true,
-      hideEdit: true,
-      plaintextBody: true,
-      removeMarkdown: true,
-      withSenderNamePrefix: false,
-    );
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 8.0,
-      children: [
-        if (preview != null)
-          Semantics(
-            label: L10n.of(context).activityPreviewLabel,
-            container: true,
-            child: Row(
-              children: [
-                Avatar(
-                  mxContent: sender?.avatarUrl,
-                  name: sender?.localizedDisplayname(L10n.of(context)),
-                  size: 24,
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    preview,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 12),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        // Fixed height prevents the card from jumping when `plan` hydrates and
-        // the total goes from 0 → actual goal count.
-        Semantics(
-          container: true,
-          child: SizedBox(
-            height: 16,
-            child: ActivityStarRow(
-              total: starsTotal,
-              earned: starsEarned.clamp(0, starsTotal),
-              condensed: starsTotal > 12,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-/// The inline dismiss X: a bare close glyph with a circular hover/splash — the
-/// app's usual close-button treatment — sized compactly to sit on the title
-/// line. Tapping it demotes the card ([WorldMapLargeCard.onClose]); the
-/// gesture arena routes the tap here rather than to the card's open-on-tap.
+/// The dismiss X, as a corner badge: a close glyph on a surface-coloured disc
+/// with the same white ring the top-right badges wear, so it reads against both
+/// the card's accent border and the map behind it. Sized to sit in the border's
+/// corner curve. Tapping it demotes the card
+/// ([WorldMapLargeCard.onClose]); it sits ABOVE the card's content in the
+/// stack, and the gesture arena routes its tap here rather than to the card's
+/// open-on-tap beneath.
 class _DismissButton extends StatelessWidget {
+  /// Diameter — small enough to nestle in the card's 12px corner radius, big
+  /// enough to be a real tap target on a touch screen.
+  static const double size = 30.0;
+
   final VoidCallback onPressed;
 
   const _DismissButton({required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return IconButton(
       onPressed: onPressed,
       icon: const Icon(Icons.close),
       iconSize: 18,
       padding: EdgeInsets.zero,
       visualDensity: VisualDensity.compact,
-      constraints: const BoxConstraints(minWidth: 28, minHeight: 28),
+      constraints: const BoxConstraints(minWidth: size, minHeight: size),
       tooltip: L10n.of(context).close,
-      color: Theme.of(context).colorScheme.onSurfaceVariant,
+      color: theme.colorScheme.onSurfaceVariant,
+      style: IconButton.styleFrom(
+        // Without this the button's box is the 48px padded tap target, not the
+        // disc — it would overhang the gutter and swallow taps on the content
+        // it paints over.
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        backgroundColor: theme.colorScheme.surface,
+        shape: const CircleBorder(
+          side: BorderSide(color: Colors.white, width: 1.5),
+        ),
+      ),
     );
   }
 }

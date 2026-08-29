@@ -189,4 +189,39 @@ void main() {
       expect(build(activityId: null), isNull);
     });
   });
+
+  group('activeAccountPublishesStars', () {
+    // The services are per-account and all run at once, but they publish
+    // through one global controller that resolves the ACTIVE account. Counting
+    // a background account's rooms and publishing them under the active
+    // account's profile would file A's stars on B — permanently, since a
+    // published total is never lowered.
+    const a = '@a:example.invalid';
+    const b = '@b:example.invalid';
+
+    test('the active account publishes', () {
+      expect(
+        activeAccountPublishesStars(serviceUserId: a, activeUserId: a),
+        isTrue,
+      );
+    });
+
+    test('a background account does not', () {
+      expect(
+        activeAccountPublishesStars(serviceUserId: a, activeUserId: b),
+        isFalse,
+      );
+    });
+
+    test('nothing publishes while an account is still resolving', () {
+      expect(
+        activeAccountPublishesStars(serviceUserId: null, activeUserId: a),
+        isFalse,
+      );
+      expect(
+        activeAccountPublishesStars(serviceUserId: a, activeUserId: null),
+        isFalse,
+      );
+    });
+  });
 }

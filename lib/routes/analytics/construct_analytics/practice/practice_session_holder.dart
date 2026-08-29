@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
@@ -61,7 +61,12 @@ class PracticeSessionState {
 /// for [AnalyticsPracticeConstants.idleTimeout] is auto-ended, because a
 /// learner who hasn't come back in half an hour isn't coming back, and the
 /// wall-clock timer would otherwise run up an absurd elapsed time.
-class PracticeSessionHolder extends ChangeNotifier {
+///
+/// The watchdog [Timer] alone cannot enforce that: it does not run while the
+/// app is backgrounded or the device is asleep. So the deadline is also
+/// re-evaluated on wall-clock at the two moments the app can act on it —
+/// returning to the foreground, and opening a practice panel.
+class PracticeSessionHolder extends ChangeNotifier with WidgetsBindingObserver {
   PracticeSessionHolder._();
   static final PracticeSessionHolder instance = PracticeSessionHolder._();
 
@@ -74,6 +79,8 @@ class PracticeSessionHolder extends ChangeNotifier {
   Timer? _idleTimer;
 
   bool _timeoutNoticePending = false;
+
+  bool _observingLifecycle = false;
 
   /// Count of attached practice panel widgets — a COUNT because on a panel
   /// swap (vocab → grammar) the new panel's initState runs before the old
@@ -113,6 +120,7 @@ class PracticeSessionHolder extends ChangeNotifier {
   /// unfinished session happens at the tap site, before navigation.
   PracticeSessionState claim(ConstructTypeEnum type) {
     _ensureLanguageSubscription();
+    _ensureLifecycleObserver();
 
     // Evaluate before resuming, not after: a session the learner comes back to
     // an hour later has already expired, and reopening the panel must not be
@@ -199,6 +207,29 @@ class PracticeSessionHolder extends ChangeNotifier {
   /// Re-evaluate liveness after a session-flow transition the notifiers don't
   /// cover (session load finished/failed).
   void bump() => notifyListeners();
+
+  /// A backgrounded app runs no watchdog, so coming back to the foreground is
+  /// where a session that idled out while away is actually caught — otherwise
+  /// it survives until the learner next opens the practice panel, badge
+  /// counting up the whole time (#7812). This is also what re-arms the timer
+  /// against real elapsed time after a suspend.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state != AppLifecycleState.resumed) return;
+    evaluateIdleTimeout();
+  }
+
+  void _ensureLifecycleObserver() {
+    if (_observingLifecycle) return;
+    try {
+      WidgetsBinding.instance.addObserver(this);
+      _observingLifecycle = true;
+    } catch (_) {
+      // Unit tests exercise the holder without a binding. Nothing is lost but
+      // the resume hook, and those tests drive [didChangeAppLifecycleState]
+      // directly.
+    }
+  }
 
   void _ensureLanguageSubscription() {
     if (_languageSubscription != null) return;

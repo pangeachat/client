@@ -3202,14 +3202,12 @@
     "enableAutocorrectPopupTitle": "Προσθέστε το πληκτρολόγιο της γλώσσας στόχου πηγαίνοντας στα:",
     "enableAutocorrectPopupSteps": "  • Ρυθμίσεις\n  • Γενικά\n  • Πληκτρολόγιο\n  • Πληκτρολόγια\n  • Προσθήκη νέου πληκτρολογίου",
     "enableAutocorrectPopupDescription": "Μόλις επιλεγεί η γλώσσα, μπορείτε να κάνετε κλικ στο μικρό εικονίδιο του κόσμου στο κάτω αριστερό μέρος του πληκτρολογίου σας για να ενεργοποιήσετε το νέο εγκατεστημένο πληκτρολόγιο.",
-    "downloadGboardSteps": " • Κατεβάστε το Gboard\n  • Ανοίξτε την εφαρμογή\n  • Γλώσσες\n  • Προσθήκη πληκτρολογίου\n  • Επιλογή γλώσσας\n  • Επιλογή τύπου πληκτρολογίου\n  • Τέλος",
     "enableAutocorrectWarning": "Προειδοποίηση! Απαιτείται η προσθήκη του πληκτρολογίου της γλώσσας στόχου",
     "displayName": "Εμφανιζόμενο όνομα",
     "leaveRoomDescription": "Πρόκειται να φύγετε από αυτήν τη συνομιλία. Οι άλλοι χρήστες θα δουν ότι έχετε φύγει.",
     "confirmUserId": "Παρακαλούμε επιβεβαιώστε το όνομα χρήστη Pangea Chat για να διαγράψετε τον λογαριασμό σας.",
     "paidSubscriptionStarts": "Ξεκινάει {startDate}",
     "cancelInSubscriptionSettings": "• Ακύρωση οποιαδήποτε στιγμή στις ρυθμίσεις συνδρομής",
-    "downloadGboard": "Κατεβάστε το Gboard",
     "autocorrectNotAvailable": "Δυστυχώς, η πλατφόρμα σας δεν υποστηρίζεται αυτήν τη στιγμή για αυτήν τη λειτουργία. Μείνετε συντονισμένοι για περαιτέρω ανάπτυξη!",
     "pleaseUpdateApp": "Παρακαλούμε ενημερώστε την εφαρμογή για να συνεχίσετε.",
     "chooseEmojiInstructionsBody": "Ταιριάξτε emojis με τις λέξεις που καλύτερα αντιπροσωπεύουν. Μην ανησυχείτε! Δεν θα χάσετε πόντους αν διαφωνείτε. 😅",
@@ -3403,7 +3401,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-23 22:00:20.507684",
+    "@@last_modified": "2026-08-28 11:37:28.923544",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -6262,10 +6260,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6291,10 +6285,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10634,6 +10624,23 @@
     "autocorrectAndroidFallbackTitle": "Εάν το πληκτρολόγιό σας δεν προσφέρει τη γλώσσα-στόχο σας, εγκαταστήστε το Gboard και προσθέστε τη γλώσσα εκεί:",
     "resendInSeconds": "Επανάληψη αποστολής ({seconds})",
     "mapLevelFallbackNotice": "Δεν υπάρχουν ακόμα δραστηριότητες {selected} — εμφανίζονται {shown} αντ' αυτών.",
+    "openKeyboardSettings": "Άνοιγμα ρυθμίσεων πληκτρολογίου",
+    "keyboardPromptAddKeyboardMessage": "Προσθέστε ένα πληκτρολόγιο για τη γλώσσα-στόχο σας, ώστε να λειτουργεί η αυτόματη διόρθωση.",
+    "keyboardPromptAddKeyboardAction": "Προσθήκη πληκτρολογίου",
+    "keyboardPromptSwitchKeyboardMessage": "Πατήστε το εικονίδιο της υδρογείου στο πληκτρολόγιό σας για να μεταβείτε στη γλώσσα-στόχο σας.",
+    "switchLanguageChipLabel": "Μετάβαση σε {language}",
+    "languageDropdownLevel": "Επίπεδο {level}",
+    "whatAreYouLearning": "Τι μαθαίνεις;",
+    "languageSwitcherBaseLanguageLabel": "Η βασική σου γλώσσα",
+    "listenModeDescription": "Πατήστε μια επιλογή για να την ακούσετε. Τίποτα δεν έχει επιλεγεί.",
+    "rateActivityLiked": "Μου άρεσε",
+    "rateActivityDisliked": "Δεν μου άρεσε",
+    "constructUseHrdDesc": "Ακούστηκε",
+    "timesHeard": "{count, plural, =1{Ακούστηκε μία φορά} other{Ακούστηκε {count} φορές}}",
+    "allSettings": "Όλες οι ρυθμίσεις",
+    "usedCorrectly": "{count, plural, =1{Χρησιμοποιήθηκε σωστά μία φορά} other{Χρησιμοποιήθηκε σωστά {count} φορές}}",
+    "usedIncorrectly": "{count, plural, =1{Χρησιμοποιήθηκε λανθασμένα μία φορά} other{Χρησιμοποιήθηκε λανθασμένα {count} φορές}}",
+    "usedWithoutScoring": "{count, plural, =1{Χρησιμοποιήθηκε μία φορά χωρίς βαθμολογία} other{Χρησιμοποιήθηκε {count} φορές χωρίς βαθμολογία}}",
     "constructUsePvcDesc": "Παράγεται σε κλήση",
     "startCall": "Κλήση",
     "startVideoCall": "Βιντεοκλήση",
@@ -10679,8 +10686,5 @@
     "callHistoryNoAnswer": "Καμία απάντηση",
     "callHistoryDeclined": "Η κλήση απορρίφθηκε",
     "callHistoryYouDeclined": "Απορρίψατε αυτήν την κλήση",
-    "switchLanguageChipLabel": "Αλλαγή σε {language}",
-    "languageDropdownLevel": "Επίπεδο {level}",
-    "whatAreYouLearning": "Τι μαθαίνετε;",
-    "languageSwitcherBaseLanguageLabel": "Η βασική σας γλώσσα"
+    "starsEarnedInLanguage": "Αστέρια που κερδήθηκαν στα {language}"
 }
