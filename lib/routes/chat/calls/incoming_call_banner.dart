@@ -38,6 +38,18 @@ class IncomingCallBanner extends StatefulWidget {
     super.key,
   });
 
+  /// Drops remembered declines that can no longer change an outcome.
+  ///
+  /// The bound is [CallNotification.maxLifetime] rather than a number chosen
+  /// here: past it `shouldRing` rejects the notification as expired anyway, so
+  /// the entry can only take up room. Static and pure so the expiry rule can
+  /// be tested without a clock to inject.
+  @visibleForTesting
+  static void pruneDeclines(Map<String, DateTime> seen, DateTime now) =>
+      seen.removeWhere(
+        (_, at) => now.difference(at) > CallNotification.maxLifetime,
+      );
+
   @override
   State<IncomingCallBanner> createState() => _IncomingCallBannerState();
 }
@@ -147,16 +159,22 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// here: past it `shouldRing` rejects the notification as expired anyway, so
   /// a remembered decline can only take up room, never change an outcome.
   void _forget(matrix.Client account, String notificationEventId) {
-    final now = DateTime.now();
     final seen = _declined[account] ??= {};
-    seen[notificationEventId] = now;
-    seen.removeWhere(
-      (_, at) => now.difference(at) > CallNotification.maxLifetime,
-    );
+    seen[notificationEventId] = DateTime.now();
+    IncomingCallBanner.pruneDeclines(seen, DateTime.now());
   }
 
-  bool _wasDeclined(matrix.Client account, String notificationEventId) =>
-      _declined[account]?.containsKey(notificationEventId) ?? false;
+  /// Pruned on READ as well as on write. Writes alone are not enough: an
+  /// account that turns down a burst of calls and is then left alone never
+  /// writes again, so its entries would sit there for the life of the app.
+  /// Every read is an opportunity, and reads are the only event some accounts
+  /// ever get.
+  bool _wasDeclined(matrix.Client account, String notificationEventId) {
+    final seen = _declined[account];
+    if (seen == null) return false;
+    IncomingCallBanner.pruneDeclines(seen, DateTime.now());
+    return seen.containsKey(notificationEventId);
+  }
 
   @override
   void initState() {

@@ -435,6 +435,73 @@ void main() {
     expect(neverTranscribes.isCompleted, isFalse, reason: 'still transcribing');
   });
 
+  test('a session can be fullscreen from its first frame', () async {
+    // A call answered on an account that is NOT the foregrounded one has no
+    // chat pane to be shown in -- its room belongs to another account, so
+    // navigating there lands on RoomUnavailablePanel. GlobalCallTile presents
+    // it instead, and renders the full CallPanel only when the session is
+    // fullscreen; otherwise it renders CallMiniTile, which has neither hangup
+    // nor mute.
+    //
+    // So the flag has to travel with CONSTRUCTION. Toggling it after
+    // `activeCall.value` is assigned would paint one frame of a call the
+    // learner has just answered and cannot end, because that assignment is
+    // what makes the tile build.
+    final client = await _bareClient();
+    final session = CallSession.start(
+      room: matrix.Room(id: '!r:server', client: client),
+      video: false,
+      callService: _FakeCalls(client),
+      transcribe: (request) async =>
+          SpeechToTextResponseModel(results: const []),
+      userL1: 'en',
+      userL2: 'es',
+      analytics: (eventId, uses, language) async {},
+      onReleased: (_) {},
+      fullscreen: true,
+      mediaOverride: _FakeMedia(),
+      captureOverride: CallCaptureService(sink: _NullSink()),
+    );
+    await pumpEventQueue();
+
+    expect(
+      session.fullscreen,
+      isTrue,
+      reason: 'the first frame must already be the full panel',
+    );
+
+    // And the default is unchanged, so every existing caller -- placing a
+    // call, answering on the active account, returning from a rejoin offer --
+    // behaves exactly as before.
+    final (ordinary, _, _) = await build();
+    expect(ordinary.fullscreen, isFalse);
+    session.endCall();
+    ordinary.endCall();
+  });
+
+  test('showing a call fullscreen twice keeps it fullscreen', () async {
+    // The floating tile is the only way back to a call whose room cannot be
+    // navigated to -- one on an account that is not the foregrounded one --
+    // and it hands that tap to this. A TOGGLE would turn fullscreen back off
+    // on a double tap, or on two callbacks arriving before the tile rebuilds,
+    // dropping the learner into CallMiniTile, which has neither hangup nor
+    // mute: a live call with no way to end it.
+    final (session, _, _) = await build();
+
+    session.showFullscreen();
+    expect(session.fullscreen, isTrue);
+    session.showFullscreen();
+    expect(session.fullscreen, isTrue, reason: 'showing is not toggling');
+
+    // And it un-minimizes, because a minimized call is not being shown.
+    session.minimize();
+    expect(session.fullscreen, isFalse);
+    session.showFullscreen();
+    expect(session.minimized, isFalse);
+    expect(session.fullscreen, isTrue);
+    session.endCall();
+  });
+
   test('minimize, expand and fullscreen notify without overflowing', () async {
     // A blanket edit once made the session's notify helper call itself, and
     // nothing noticed because nothing constructed a session. This is the

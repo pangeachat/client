@@ -88,7 +88,10 @@ class GlobalCallTile extends StatelessWidget {
   void _openCall(BuildContext context, CallSession session) {
     session.expand();
     if (!identical(session.room.client, Matrix.of(context).client)) {
-      session.toggleFullscreen();
+      // Not a toggle: two taps arriving before this tile rebuilds would turn
+      // fullscreen back off and leave a call that has no room to navigate to
+      // in the mini tile, which cannot end it.
+      session.showFullscreen();
       return;
     }
     final router = FluffyChatApp.router;

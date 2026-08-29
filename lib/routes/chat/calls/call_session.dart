@@ -300,6 +300,21 @@ class CallSession extends ChangeNotifier {
     _notify();
   }
 
+  /// Makes the call cover the whole app, and KEEPS it there.
+  ///
+  /// Idempotent, which [toggleFullscreen] is not. This is reached from a tap
+  /// on the floating tile for a call whose room cannot be navigated to -- one
+  /// on an account that is not the foregrounded one -- and two taps delivered
+  /// before that tile rebuilds would turn fullscreen straight back off,
+  /// dropping the learner into `CallMiniTile`, which has neither hangup nor
+  /// mute. A toggle is the wrong verb for "show me this call".
+  void showFullscreen() {
+    if (_fullscreen && !_minimized) return;
+    _fullscreen = true;
+    _minimized = false;
+    _notify();
+  }
+
   bool get muted => _muted;
   bool get cameraOn => _camera;
 

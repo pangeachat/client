@@ -191,6 +191,32 @@ void main() {
     return state;
   }
 
+  group('the memory of a turned-down call', () {
+    test('is dropped once no ring could still be worth suppressing', () {
+      // The banner is mounted ONCE for the app's whole life, so anything it
+      // remembers per call is remembered for ever unless something drops it.
+      // The bound is a ring's longest life: past it `shouldRing` rejects the
+      // notification as expired anyway, so the entry cannot change an outcome.
+      final now = DateTime.now();
+      final seen = {
+        r'$fresh': now.subtract(const Duration(seconds: 1)),
+        r'$edge': now.subtract(CallNotification.maxLifetime),
+        r'$stale': now.subtract(
+          CallNotification.maxLifetime + const Duration(seconds: 1),
+        ),
+      };
+
+      IncomingCallBanner.pruneDeclines(seen, now);
+
+      expect(seen.keys, containsAll([r'$fresh', r'$edge']));
+      expect(
+        seen.containsKey(r'$stale'),
+        isFalse,
+        reason: 'a decline older than any ring can only take up room',
+      );
+    });
+  });
+
   group('a call to a second logged-in account', () {
     testWidgets('rings, even though another account is foregrounded', (
       tester,
