@@ -111,6 +111,22 @@ class _FakeCalls extends CallService {
   void abandonJoin(int attempt) {}
 }
 
+/// A membership echo that never arrives -- not late, not ever. `announce()`
+/// times out the way a slow sync or a homeserver hiccup does, and state never
+/// catches up either, so the late-anchor retry ActiveCall runs in the
+/// background exhausts its bounded attempts with nothing to show for them.
+/// The ring this device was placing is never sent: no push goes out, and the
+/// other side's phone never rings.
+class _NeverEchoesCalls extends _FakeCalls {
+  _NeverEchoesCalls(super.client);
+
+  @override
+  Future<String?> announce() async => null;
+
+  @override
+  String? membershipEventIdIn(matrix.Room room) => null;
+}
+
 class _FakeRoster extends CallRoster {
   _FakeRoster({required super.room, required super.myUserId});
 
@@ -1045,6 +1061,53 @@ void main() {
       expect(spy.cards.length, 1, reason: 'one call, one card');
       expect(spy.cards.single.answered, isTrue);
       expect(spy.cards.single.declined, isFalse);
+    });
+  });
+
+  group('a ring that never went out', () {
+    // pangeachat/.github#410: the membership echo can time out and, unlike
+    // the ordinary case, the late-anchor retry ActiveCall runs afterwards can
+    // ALSO come back empty -- the ring is truly never sent, no push ever
+    // goes out, the callee's phone never rings. But reaching the SFU on our
+    // own end does not depend on that echo, so the call still climbs to
+    // CallStage.connected regardless. Treating "we reached the SFU" as proof
+    // the call mattered wrote "No answer" for a call the other person was
+    // never told about -- an answer nobody was ever asked to give.
+    test('leaves no card; nobody was ever told about it', () async {
+      final client = await _bareClient();
+      final calls = _NeverEchoesCalls(client);
+      final media = _FakeMedia();
+      final spy = _SpyRecord();
+      final session = CallSession.start(
+        room: matrix.Room(id: '!phantom:server', client: client),
+        video: false,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+        recordOverride: spy,
+      );
+      await pumpEventQueue();
+
+      // Nobody ever joined -- there was nobody left to answer, because
+      // nobody was ever told this call existed.
+      session.endCall();
+      await pumpEventQueue();
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+      await pumpEventQueue();
+
+      expect(
+        spy.cards,
+        isEmpty,
+        reason:
+            'the ring never reached the other side; recording "no answer" '
+            'would state an answer that was never asked for',
+      );
     });
   });
 
