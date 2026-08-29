@@ -1,8 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart' show SchedulerPhase;
 
-import 'package:matrix/matrix.dart' as matrix show Event, Logs, Room, User;
+import 'package:matrix/matrix.dart'
+    as matrix
+    show Client, Event, Logs, Room, User;
 
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -35,16 +38,69 @@ class IncomingCallBanner extends StatefulWidget {
     super.key,
   });
 
+  /// Drops remembered declines that can no longer change an outcome.
+  ///
+  /// The bound is [CallNotification.maxLifetime] rather than a number chosen
+  /// here: past it `shouldRing` rejects the notification as expired anyway, so
+  /// the entry can only take up room. Static and pure so the expiry rule can
+  /// be tested without a clock to inject.
+  @visibleForTesting
+  static void pruneDeclines(Map<String, DateTime> seen, DateTime now) =>
+      seen.removeWhere(
+        (_, at) => now.difference(at) > CallNotification.maxLifetime,
+      );
+
   @override
   State<IncomingCallBanner> createState() => _IncomingCallBannerState();
+}
+
+/// One account's ring subscriptions, and the service they were made on.
+///
+/// Held together because they are cancelled together, and because the service
+/// kept here is the ONE that may act on a ring this account delivered. Reading
+/// it from here rather than resolving it later by name is what keeps a call to
+/// one account from being answered, declined or watched as another.
+class _AccountRings {
+  final CallService service;
+  final StreamSubscription<IncomingCallNotification> rings;
+  final StreamSubscription<matrix.Event> declines;
+
+  _AccountRings({
+    required this.service,
+    required this.rings,
+    required this.declines,
+  });
+
+  Future<void> cancel() async {
+    await rings.cancel();
+    await declines.cancel();
+  }
 }
 
 class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// The one hand that touches the ring sound. Injected in tests.
   late final RingPlayer _ringPlayer = widget.ringPlayerOverride ?? RingPlayer();
 
-  StreamSubscription<IncomingCallNotification>? _rings;
-  StreamSubscription<matrix.Event>? _ownDeclines;
+  /// Ring subscriptions for EVERY logged-in account, keyed by the [Client]
+  /// OBJECT.
+  ///
+  /// Keyed by object rather than by name deliberately. `Client` declares no
+  /// `operator ==`, so this is an identity map: an account that signs out and
+  /// one that signs back in are simply different keys, and no name can be
+  /// reused, shadowed, or fall back to whichever account happens to be active.
+  /// A name-keyed map is what made a call to a second account answerable as
+  /// the first.
+  final Map<matrix.Client, _AccountRings> _accounts = {};
+
+  /// Every startup ring-replay the app runs, in one chain.
+  ///
+  /// `ringsMissed()` loads a timeline per direct chat, and reconciles can
+  /// overlap — two accounts logging in a frame apart give two passes. Chaining
+  /// every scan onto one future means at most one is ever in flight, so the
+  /// cost stays at one account's worth of reads however many accounts arrive
+  /// at once.
+  Future<void> _replays = Future.value();
+
   StreamSubscription<void>? _callerGone;
   CallService? _service;
   Timer? _stillRinging;
@@ -82,12 +138,43 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     }
   }
 
-  /// Notification event ids the learner has turned down.
+  /// Notification event ids the learner has turned down, per account, with
+  /// when they were turned down.
   ///
   /// Keyed by the notification event, which is unique per call — so a decline
   /// holds for exactly the call it declined, and the next call from the same
   /// person (a different notification) rings normally.
-  final Set<String> _declined = {};
+  ///
+  /// Per ACCOUNT, because this banner now hears every account and a decline
+  /// on one says nothing about a ring on another. And timestamped, because
+  /// this widget is mounted once for the app's whole life: a flat set would
+  /// grow for as long as the learner stays signed in and never shrink.
+  /// [_forget] drops anything older than a ring can live.
+  final Map<matrix.Client, Map<String, DateTime>> _declined = {};
+
+  /// Remembers a turned-down call, and forgets the ones that can no longer
+  /// matter.
+  ///
+  /// The bound is [CallNotification.maxLifetime] rather than a number picked
+  /// here: past it `shouldRing` rejects the notification as expired anyway, so
+  /// a remembered decline can only take up room, never change an outcome.
+  void _forget(matrix.Client account, String notificationEventId) {
+    final seen = _declined[account] ??= {};
+    seen[notificationEventId] = DateTime.now();
+    IncomingCallBanner.pruneDeclines(seen, DateTime.now());
+  }
+
+  /// Pruned on READ as well as on write. Writes alone are not enough: an
+  /// account that turns down a burst of calls and is then left alone never
+  /// writes again, so its entries would sit there for the life of the app.
+  /// Every read is an opportunity, and reads are the only event some accounts
+  /// ever get.
+  bool _wasDeclined(matrix.Client account, String notificationEventId) {
+    final seen = _declined[account];
+    if (seen == null) return false;
+    IncomingCallBanner.pruneDeclines(seen, DateTime.now());
+    return seen.containsKey(notificationEventId);
+  }
 
   @override
   void initState() {
@@ -100,64 +187,163 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // The active account can change under this widget. Without re-subscribing,
-    // the banner would keep listening to the account active when it mounted and
-    // never ring for the one the learner switched to.
+    // Kept because an account can be added or removed under this widget. It is
+    // NOT the mechanism -- nothing about an account change triggers this
+    // callback, since `Matrix.of` registers no dependency and MatrixState
+    // hands back an identical child -- so [MatrixState.accounts] is what
+    // actually drives a reconcile. This is a cheap second chance, and the
+    // reconcile is idempotent.
     _listen();
   }
 
+  /// Reconciles the ring subscriptions against the accounts that are logged in
+  /// NOW, and re-resolves the active-account-scoped state.
+  ///
+  /// The one entry point. Called from a post-frame callback at mount, from
+  /// [didChangeDependencies], and from [MatrixState.accounts] -- so it must be
+  /// idempotent: a pass that finds nothing changed subscribes nothing and
+  /// cancels nothing.
   void _listen() {
     if (!mounted) return;
     final matrixState = Matrix.of(context);
+
+    // Every logged-in account, not the active one. A call arrives for
+    // whichever account it was placed to, and the learner does not know -- or
+    // care -- which of their accounts happens to be foregrounded when their
+    // phone rings.
+    final live = matrixState.widget.clients;
+
+    for (final account in _accounts.keys.toList()) {
+      if (live.contains(account)) continue;
+      unawaited(_accounts.remove(account)!.cancel());
+      // Everything that account left behind goes with it. A prompt for an
+      // account that has signed out cannot be answered or declined by anyone,
+      // and NOTHING watching its service may outlive it: the lifetime timer,
+      // "has the caller given up" and "did another of my devices answer" are
+      // all subscriptions on that service. They go through the ONE teardown
+      // that knows about all of them rather than being cancelled by hand
+      // here, which is how two of them were missed before.
+      if (_ringing?.event.room.client == account) _dismiss();
+      if (_rejoin?.room.client == account) _clearOffer();
+      // Its decline memory has nothing left to suppress.
+      _declined.remove(account);
+    }
+
+    for (final account in live) {
+      if (_accounts.containsKey(account)) continue;
+      // By the client OBJECT, never by its name. The name-keyed
+      // `callServiceFor` falls back to the ACTIVE account when it cannot
+      // resolve one, which here would subscribe a second account's rings to
+      // the first account's service -- and a call to one account would then be
+      // declined, answered and watched as the other.
+      final service = matrixState.callServiceForClient(account);
+      _accounts[account] = _AccountRings(
+        service: service,
+        rings: service.incomingRings.listen((ring) => _offer(ring, account)),
+        // Answering on one phone has to stop the others ringing. The decline
+        // this account sends carries the ring it refers to, so a device
+        // showing that ring can put its own prompt away -- otherwise it goes
+        // on offering to answer a call the caller is already tearing down.
+        declines: service.ownDeclines().listen((event) {
+          if (!mounted) return;
+          final target = service.declineTarget(event);
+          if (target == null) return;
+          // Remembered as well as dismissed, so a ring still working its way
+          // through the timeline cannot put the prompt back up.
+          _forget(account, target);
+          if (_ringing?.event.eventId == target &&
+              _ringing?.event.room.client == account) {
+            _dismiss();
+          }
+        }),
+      );
+      // A ring that landed before a reload is not on the live stream any more.
+      // Without this, refreshing the page while the phone was ringing lost the
+      // call outright, with no way left to answer it.
+      //
+      // Queued against the account's SUBSCRIPTION being created, so it runs
+      // once per account for the life of the app: a reconcile prompted by
+      // anything else finds this account already listening and does not scan
+      // again.
+      _queueReplay(service, account);
+    }
+
+    _followActiveAccount(matrixState);
+
+    // The signal that an account arrived or left. Nothing else delivers it:
+    // `Matrix.clients` is a plain list, and MatrixState hands back an
+    // identical child so its setState never rebuilds this subtree.
+    if (!identical(_accountsSignal, matrixState.accounts)) {
+      _accountsSignal?.removeListener(_onAccountsChanged);
+      _accountsSignal = matrixState.accounts..addListener(_onAccountsChanged);
+    }
+  }
+
+  ValueNotifier<int>? _accountsSignal;
+
+  /// Reconciles AFTER the frame, never inside it.
+  ///
+  /// Two of the three list mutations run from a login-state listener and one
+  /// from a logout teardown, all of which can land mid-build; reconciling
+  /// synchronously would be a setState during a build. [initState] already
+  /// defers for the same reason.
+  void _onAccountsChanged() {
+    final binding = WidgetsBinding.instance;
+    // Deferred ONLY when a build is actually in progress. An account can be
+    // added or removed from inside a login-state listener or a logout
+    // teardown, either of which can land mid-build, and reconciling there
+    // would be a setState during a build.
+    //
+    // Deferring unconditionally is wrong, and quietly so:
+    // `addPostFrameCallback` does not SCHEDULE a frame, it only queues work
+    // for the next one. Over an idle screen -- which is most of the time a
+    // banner is waiting for a call -- there may be no next frame for a long
+    // while, so an account that had just logged in would not start ringing
+    // until something unrelated happened to repaint. Reconciling
+    // immediately whenever it is safe means the subscription exists the
+    // moment the account does.
+    if (binding.schedulerPhase == SchedulerPhase.persistentCallbacks) {
+      binding.addPostFrameCallback((_) => _listen());
+      return;
+    }
+    _listen();
+  }
+
+  /// The active-account-scoped half: the rejoin offer, and the notifier that
+  /// clears it when a call starts anywhere.
+  ///
+  /// Deliberately still active-only. A "Return to your call" offer is one
+  /// app-wide slot, and offers from several accounts would need an
+  /// arbitration rule that ringing does not.
+  void _followActiveAccount(MatrixState matrixState) {
     final account = matrixState.client.clientName;
-    if (account == _listeningTo) return;
 
-    _rings?.cancel();
-    _ownDeclines?.cancel();
-    // A prompt belonging to the account we just left is not this one's, and
-    // NOTHING watching that account's service may outlive the switch. The
-    // per-ring watchers -- has the caller given up, did another of my devices
-    // answer -- are subscriptions on the OLD service, so they go through the
-    // one teardown that knows about all of them rather than being cancelled
-    // by hand here, which is how two of them were missed.
-    _dismiss();
-    _listeningTo = account;
-    _service = matrixState.callService;
-    // Both prompts belonged to the account we just left: a Return offer
-    // surviving the switch would rejoin the OLD account's call over the new
-    // account's connection.
-    _clearOffer();
-    _ringPlayer.stopAll();
-
-    _rings = matrixState.callService.incomingRings.listen(
-      (ring) => _offer(ring, account),
-    );
-
-    // Answering on one phone has to stop the others ringing. The decline this
-    // account sends carries the ring it refers to, so a device showing that ring
-    // can put its own prompt away — otherwise it goes on offering to answer a
-    // call the caller is already tearing down.
-    _ownDeclines = matrixState.callService.ownDeclines().listen((event) {
-      if (!mounted) return;
-      final target = matrixState.callService.declineTarget(event);
-      if (target == null) return;
-      // Remembered as well as dismissed, so a ring still working its way
-      // through the timeline cannot put the prompt back up.
-      _declined.add(target);
-      if (_ringing?.event.eventId == target) _dismiss();
-    });
-
-    // A ring that landed before a reload is not on the live stream any more.
-    // Without this, refreshing the page while the phone was ringing lost the
-    // call outright, with no way left to answer it.
-    unawaited(_replayMissed(matrixState, account));
-
-    // And a call this DEVICE was on when the reload happened is offered back.
     _activeCall?.removeListener(_onActiveCallChanged);
     _activeCall = matrixState.activeCall;
     _activeCall?.addListener(_onActiveCallChanged);
     _rejoinStore = matrixState.rejoinOffer;
+
+    if (account == _listeningTo) return;
+    _listeningTo = account;
+    _service = matrixState.callService;
+    // The offer belonged to the account we just left: returning through it
+    // would rejoin the OLD account's call over the new account's connection.
+    _clearOffer();
     unawaited(_offerRejoin(matrixState, account));
+  }
+
+  /// Puts every startup scan on one chain, so at most one is ever in flight.
+  ///
+  /// Each link swallows its own failure. A bare `.then` chain completes with
+  /// the error when one link throws, and EVERY later `.then` is skipped -- one
+  /// account's timeline failing to load would silently stop every account
+  /// added after it from ever recovering its missed calls.
+  void _queueReplay(CallService service, matrix.Client account) {
+    _replays = _replays.then((_) => _replayMissed(service, account)).catchError(
+      (Object e, StackTrace s) {
+        matrix.Logs().w('A missed-call scan failed', e, s);
+      },
+    );
   }
 
   /// A call starting anywhere in the app takes the one join claim this account
@@ -369,15 +555,21 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// Runs behind the live subscription deliberately: a ring that is still
   /// arriving normally should come through that, and [_offer] keeps whichever
   /// arrives first rather than letting the replay overwrite it.
-  Future<void> _replayMissed(MatrixState matrixState, String account) async {
+  /// Checked BEFORE the scan as well as after it. This is queued behind every
+  /// other account's scan, so it may not begin for some time, and by then its
+  /// account can have signed out -- `ringsMissed()` would then load timelines
+  /// and room state through a client that is being torn down. The subscription
+  /// map is the record of which accounts this banner is still serving.
+  Future<void> _replayMissed(CallService service, matrix.Client account) async {
+    if (!mounted || !_accounts.containsKey(account)) return;
     final List<IncomingCallNotification> missed;
     try {
-      missed = await matrixState.callService.ringsMissed();
+      missed = await service.ringsMissed();
     } catch (e, s) {
       matrix.Logs().w('Could not look for calls missed while away', e, s);
       return;
     }
-    if (!mounted || _listeningTo != account) return;
+    if (!mounted || !_accounts.containsKey(account)) return;
     for (final ring in missed) {
       _offer(ring, account);
     }
@@ -441,10 +633,40 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
         false;
   }
 
+  /// Whether [a] and [b] are the same conversation.
+  ///
+  /// A room id is server-global and two logged-in accounts can both be members
+  /// of one room, so an id alone stopped identifying a call the moment this
+  /// banner began hearing more than one account. Comparing ids only, account
+  /// B's ring for a room would read as a REDIAL of account A's ring for the
+  /// same room, replace the prompt, and be answered as the wrong account.
+  ///
+  /// This is the pair [MatrixState.startCall] tests when it decides to throw
+  /// [AlreadyInACall]; the banner has to agree with the thing it calls.
+  static bool _sameConversation(matrix.Room a, matrix.Room b) =>
+      identical(a.client, b.client) && a.id == b.id;
+
+  /// The service for the account a ring arrived on, or null when that account
+  /// is no longer signed in.
+  ///
+  /// The subscription map answers this by identity -- the service returned is
+  /// the exact one whose stream produced the ring. The liveness re-check is
+  /// not redundant: the reconcile runs from a post-frame callback, so between
+  /// a logout and that pass the record is still here for an account that has
+  /// already gone, and a late stream event, a watcher or a tap would act as an
+  /// account that has signed out.
+  CallService? _serviceFor(matrix.Room room) {
+    if (!mounted) return null;
+    final record = _accounts[room.client];
+    if (record == null) return null;
+    if (!Matrix.of(context).widget.clients.contains(room.client)) return null;
+    return record.service;
+  }
+
   /// Turns a call down as BUSY, so the caller hears an engaged tone instead
   /// of ringing into nothing until it times out as a missed call.
   void _declineBusy(IncomingCallNotification ring) {
-    final service = _service;
+    final service = _serviceFor(ring.event.room);
     if (service == null) return;
     unawaited(() async {
       try {
@@ -459,22 +681,31 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     }());
   }
 
-  void _offer(IncomingCallNotification ring, String account) {
-    // Checked against the account this subscription was made for, BEFORE any
-    // state is touched. Cancelling does not unqueue what has already been
-    // handed over, so a ring for the account the learner just left could
-    // still land here — and besides answering with the wrong account, it
-    // must not clear this account's offer or setState after dispose.
-    if (!mounted || _listeningTo != account) return;
+  void _offer(IncomingCallNotification ring, matrix.Client account) {
+    // Checked BEFORE any state is touched. Cancelling a subscription does not
+    // unqueue what it has already handed over, so a ring for an account that
+    // has just signed out could still land here — and besides being answered
+    // as the wrong account, it must not clear another account's offer, start
+    // a ring sound, or setState after dispose.
+    //
+    // Through [_serviceFor], which is the ONE liveness gate every ring-scoped
+    // action shares: the account is still subscribed AND still in `clients`.
+    // The map alone is not enough — the reconcile runs a frame late, so
+    // between a logout and that pass the record is still present for an
+    // account that has already gone.
+    if (!mounted) return;
+    if (_serviceFor(ring.event.room) == null) return;
+    if (!identical(ring.event.room.client, account)) return;
     // A call is already live somewhere in this app. Ringing here offers an
     // Answer that cannot happen: taking it throws AlreadyInACall and declines
     // busy at that point, so the learner is shown a call they can only
     // refuse -- and if they ignore the prompt instead, the caller rings out
     // and writes a missed call rather than being told the line is engaged.
     // The same-account case never gets this far (the service reads its own
-    // busy state); this is the one on ANOTHER account.
+    // busy state and declines from inside `incomingRings`); this is the one on
+    // ANOTHER account.
     final live = Matrix.of(context).activeCall.value;
-    if (live != null && live.room.id != ring.event.room.id) {
+    if (live != null && !_sameConversation(live.room, ring.event.room)) {
       matrix.Logs().i('A ring arrived while a call is live elsewhere; busy');
       _declineBusy(ring);
       return;
@@ -484,7 +715,8 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // it wins, and the offer goes (the caller has moved on, so the call the
     // offer would return to is over). A ring naming an older membership is
     // this account's own call's past, and the offer wins.
-    if (_rejoin?.room.id == ring.event.room.id) {
+    final standing = _rejoin;
+    if (standing != null && _sameConversation(standing.room, ring.event.room)) {
       if (!_ringIsLive(ring, _rejoin)) return;
       // The trace goes with the offer: a genuine newer call for this room
       // means the old one is finished, and a crumb left standing would
@@ -493,7 +725,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       _clearOffer();
     }
     // Never one already turned down.
-    if (_declined.contains(ring.event.eventId)) return;
+    if (_wasDeclined(account, ring.event.eventId)) return;
     final showing = _ringing;
     if (showing != null) {
       if (showing.event.eventId == ring.event.eventId) return;
@@ -508,7 +740,12 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       // on while the learner dealt with the first, which reads as a phantom
       // call; the cost is that a second caller during a call goes unanswered,
       // as they would on a phone.
-      if (showing.event.room.id != ring.event.room.id) return;
+      //
+      // By CONVERSATION, not by room id: a second account can be a member of
+      // the very room the prompt on screen belongs to, and reading its ring as
+      // a redial would replace the prompt with one for a different account --
+      // answered, and declined, as the wrong identity.
+      if (!_sameConversation(showing.event.room, ring.event.room)) return;
       // A redial replaces the ring it redials -- but only FORWARDS. The
       // startup replay hands rings over newest-first, so without this the
       // older one arrived second and overwrote the live redial, and the
@@ -546,7 +783,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
   void _watchSiblings(IncomingCallNotification ring) {
     _siblingAnswered?.cancel();
-    final service = _service;
+    final service = _serviceFor(ring.event.room);
     if (service == null) return;
     final room = ring.event.room;
     // Ordered against membership timestamps, which are the server's, so this
@@ -587,7 +824,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// the lifetime timer in charge, which is the behaviour this had before.
   void _watchCaller(IncomingCallNotification ring) {
     _callerGone?.cancel();
-    final service = _service;
+    final service = _serviceFor(ring.event.room);
     if (service == null) return;
     final room = ring.event.room;
     final callerId = ring.event.senderId;
@@ -614,8 +851,11 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
   @override
   void dispose() {
-    _rings?.cancel();
-    _ownDeclines?.cancel();
+    for (final account in _accounts.values) {
+      unawaited(account.cancel());
+    }
+    _accounts.clear();
+    _accountsSignal?.removeListener(_onAccountsChanged);
     _callerGone?.cancel();
     _stillRinging?.cancel();
     _activeCall?.removeListener(_onActiveCallChanged);
@@ -641,16 +881,23 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
   /// Turns the call down and tells the caller, so their phone stops ringing.
   void _decline(IncomingCallNotification ring) {
-    _declined.add(ring.event.eventId);
+    final room = ring.event.room;
+    _forget(room.client, ring.event.eventId);
+    final service = _serviceFor(room);
+    if (service == null) {
+      // The account signed out between the prompt going up and this tap.
+      // There is nobody to decline as, and nobody to tell.
+      _dismiss();
+      return;
+    }
     unawaited(
-      Matrix.of(context).callService
-          .decline(ring.event.room, notificationEventId: ring.event.eventId)
-          // The prompt is already gone and nothing is waiting on this, so an
-          // ordinary network failure would surface as an unhandled async error
-          // rather than as the caller simply ringing out.
-          .catchError((Object e, StackTrace s) {
-            matrix.Logs().w('Could not tell the caller we declined', e, s);
-          }),
+      service.decline(room, notificationEventId: ring.event.eventId)
+      // The prompt is already gone and nothing is waiting on this, so an
+      // ordinary network failure would surface as an unhandled async error
+      // rather than as the caller simply ringing out.
+      .catchError((Object e, StackTrace s) {
+        matrix.Logs().w('Could not tell the caller we declined', e, s);
+      }),
     );
     _dismiss();
   }
@@ -689,8 +936,28 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // moment someone tapped answer — and answering did nothing at all. The SFU
     // is the rendezvous point: join it, and let presence decide from there
     // whether anyone is actually on the other end.
+    // The account this ring reached must still be signed in. Between the
+    // prompt going up and this tap it can have logged out, and starting a
+    // call then would run it through whichever account is foregrounded now.
+    if (_serviceFor(ring.event.room) == null) {
+      matrix.Logs().w('Cannot answer: that account is no longer signed in');
+      return;
+    }
+    final matrixState = Matrix.of(context);
+    // Whether the call is for the account the learner is currently in.
+    //
+    // A call for ANOTHER account has no chat pane it could be shown in:
+    // `ChatPage` resolves its room through the ACTIVE client, so navigating
+    // there would land on RoomUnavailablePanel with a connected call playing
+    // behind it. It is presented as an app-level overlay instead -- fullscreen
+    // from its first frame, because the alternative overlay is CallMiniTile,
+    // which has neither hangup nor mute.
+    final onActiveAccount = identical(
+      ring.event.room.client,
+      matrixState.client,
+    );
     try {
-      Matrix.of(context).startCall(
+      matrixState.startCall(
         ring.event.room,
         video: ring.isVideo,
         // Anchors this side's speaking analytics: the answering device does
@@ -699,6 +966,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
         // The caller's own membership, named by their ring: the call's SHARED
         // identity, which every card for this call is stamped with.
         callerMembershipEventId: ring.membershipEventId,
+        fullscreen: !onActiveAccount,
       );
     } on AlreadyInACall {
       // A call is live somewhere else -- another account, or another room on
@@ -711,6 +979,13 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     }
     // The call lives in its own chat's pane, so answering also goes there.
     // Through the app's router directly: this banner is mounted above it.
+    //
+    // ONLY for the active account. Answering a call on another account leaves
+    // the learner exactly where they were, with the call over the top: their
+    // room list, their open chat and a half-typed message are all untouched.
+    // They asked to talk to somebody, not to be moved to another account --
+    // and with no in-app account switcher, moving them would strand them.
+    if (!onActiveAccount) return;
     final router = FluffyChatApp.router;
     final uri = router.routeInformationProvider.value.uri;
     router.go(WorkspaceNav.openRoomById(uri, ring.event.room.id));

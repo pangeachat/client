@@ -238,6 +238,32 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         ),
       );
 
+  // #Pangea
+  /// The calling service for a SPECIFIC client OBJECT.
+  ///
+  /// [callServiceFor] resolves by name and, on a miss, falls back to the
+  /// ACTIVE account. That is right for what it was written for — a rebuild
+  /// during a single-account logout, where throwing would take the route down
+  /// — and wrong for anything scoped to one call, where guessing means acting
+  /// as somebody else's account. A call to a second account being declined,
+  /// answered or watched as the first is the bug this exists to make
+  /// impossible.
+  ///
+  /// So the account is named by identity, and a cached service is handed back
+  /// only if it is really this client's. Names cannot collide between two LIVE
+  /// accounts — `ClientManager` stamps each login with a millisecond timestamp
+  /// — so a mismatch can only be a leftover from an account that has gone, and
+  /// the live client's own service replaces it rather than the caller being
+  /// refused for ever. [disposeAccountServices] evicts only the entry it
+  /// actually disposed, so that replacement cannot be undone by a teardown
+  /// finishing afterwards.
+  CallService callServiceForClient(Client client) {
+    final existing = _callServices[client.clientName];
+    if (existing != null && identical(existing.client, client)) return existing;
+    return _callServices[client.clientName] = CallService(client);
+  }
+  // Pangea#
+
   /// The one call this app is in, if any. Panels and tiles listen here; the
   /// session itself owns the call's lifecycle, so navigation never touches it.
   final ValueNotifier<call_ui.CallSession?> activeCall = ValueNotifier(null);
@@ -249,6 +275,28 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// and an offer held in one instance's setState died invisible while
   /// another instance rendered. One notifier, read by whichever is live.
   final ValueNotifier<RejoinOffer?> rejoinOffer = ValueNotifier(null);
+
+  /// Bumped whenever the account context changes: an account added by a login,
+  /// removed by a logout, or a different one made active.
+  ///
+  /// [Matrix.clients] is a plain list with no change signal of its own, and
+  /// [build] hands the SAME child widget back on every rebuild, so a `setState`
+  /// here does not rebuild the subtree — nothing below could learn that an
+  /// account had arrived or left. That is invisible for most widgets, which
+  /// read the active account on their next build anyway, and fatal for the
+  /// incoming-call banner: it holds a subscription per account, and an account
+  /// whose ring stream is never subscribed is an account that never rings.
+  ///
+  /// Covers two different things on purpose. The three mutations of
+  /// [Matrix.clients] change WHICH ACCOUNTS RING; [setActiveClient] changes
+  /// only which account the rejoin offer belongs to. Listeners reconcile both
+  /// and are written to be idempotent, so an active-only change costs a pass
+  /// that finds every subscription already in place.
+  final ValueNotifier<int> accounts = ValueNotifier(0);
+
+  /// Says the account context changed. Never assigns a meaningful value — the
+  /// count is a tick, and listeners re-read [Matrix.clients] themselves.
+  void _accountsChanged() => accounts.value++;
 
   /// Places or answers a call in [room], or brings the existing one back up.
   ///
@@ -263,6 +311,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     String? rejoinMembershipEventId,
     DateTime? rejoinSince,
     String? callerMembershipEventId,
+
+    /// Whether the call covers the whole app from its first frame, rather than
+    /// waiting to be presented inside its own chat. Only a call answered on an
+    /// account that is not the active one asks for this: its room belongs to
+    /// another account, so there is no chat pane it could be shown in. See
+    /// [call_ui.CallSession.fullscreen].
+    bool fullscreen = false,
   }) {
     final existing = activeCall.value;
     if (existing != null) {
@@ -318,7 +373,17 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       rejoinAnchor: rejoinMembershipEventId,
       rejoinSince: rejoinSince,
       callerMembershipEventId: callerMembershipEventId,
-      callService: callServiceFor(room.client.clientName),
+      // By the room's client OBJECT, not its name: the name-keyed getter
+      // falls back to the ACTIVE account, and this is the call's own service
+      // for its whole life. Resolving it the same way the incoming-call
+      // banner does also guarantees they hold the SAME instance -- the SDK's
+      // VoIP is per instance, and two would lose track of each other's call.
+      callService: callServiceForClient(room.client),
+      // Passed into the constructor, NOT toggled afterwards: the assignment
+      // to `activeCall` below is what makes GlobalCallTile build, so a session
+      // that becomes fullscreen after it would show one frame of the
+      // control-less mini tile first.
+      fullscreen: fullscreen,
       // The two strings Android renders for the ongoing call. They can only
       // come from here: the plugin has no translations, and the session has
       // no context.
@@ -390,6 +455,11 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     final i = widget.clients.indexWhere((c) => c == cl);
     if (i != -1) {
       _activeClient = i;
+      // #Pangea
+      // Nothing below this widget rebuilds on an active-account change (see
+      // [accounts]), so anything holding per-account state has to be told.
+      _accountsChanged();
+      // Pangea#
     } else {
       Logs().w('Tried to set an unknown client ${cl!.userID} as active');
     }
@@ -481,8 +551,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 // the previous (already logged-out, torn-down) account, so
                 // _onLogin's network calls hang against a dead client and
                 // the login dialog never closes (#8514).
+                // The bump below is said HERE rather than left to
+                // setActiveClient: the list changing and the ACTIVE account
+                // changing are two different facts, and only the first decides
+                // which accounts ring. A later edit that stopped making a new
+                // login active would otherwise stop it ever ringing.
                 if (!widget.clients.contains(_loginClientCandidate)) {
                   widget.clients.add(_loginClientCandidate!);
+                  _accountsChanged();
                 }
                 setActiveClient(_loginClientCandidate);
                 await MatrixState.pangeaController.handleLoginStateChange(
@@ -533,7 +609,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       uiaRequestHandler,
     );
     // Pangea#
-    if (widget.clients.isEmpty) widget.clients.add(candidate);
+    // #Pangea
+    if (widget.clients.isEmpty) {
+      widget.clients.add(candidate);
+      _accountsChanged();
+    }
+    // Pangea#
     return candidate;
   }
 
@@ -766,6 +847,11 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // #Pangea
         // InitWithRestoreExtension.deleteSessionBackup(name);
         _clientsTearingDown.remove(c.clientName);
+        // Said AFTER the account is out of the list, so a listener that
+        // re-reads it sees the account gone rather than half-gone. The
+        // incoming-call banner uses this to drop that account's ring
+        // subscriptions and put away a prompt nobody can answer any more.
+        _accountsChanged();
         // Pangea#
       }
       if (loggedInWithMultipleClients && state != LoginState.loggedIn) {
@@ -883,6 +969,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// mid-teardown instead of resurrecting a fresh one for a logged-out account.
   Future<void> disposeAccountServices(String clientName) {
     return _disposingServices[clientName] ??= () async {
+      // #Pangea
+      // Captured BEFORE any await, so the entry evicted in `finally` is the
+      // one this teardown actually disposed and not whatever occupies the key
+      // by the time it finishes.
+      final disposingCall = _callServices[clientName];
+      // Pangea#
       try {
         _activityAutoSaveServices[clientName]?.dispose();
         // The CALL first, and not just the service. Disposing the service
@@ -897,11 +989,21 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           activeCall.value = null;
           live.dispose();
         }
-        await _callServices[clientName]?.dispose();
+        await disposingCall?.dispose();
         await _analyticsServices[clientName]?.dispose();
       } finally {
         _activityAutoSaveServices.remove(clientName);
-        _callServices.remove(clientName);
+        // #Pangea
+        // Only if it is still the service this teardown disposed. Disposal
+        // awaits network work, and a new account can claim the same name in
+        // the meantime ([callServiceForClient] installs its own service on a
+        // mismatch). Removing unconditionally would strip the LIVE account's
+        // service and leave the incoming-call banner subscribed to a service
+        // nothing else can find — an account that silently stops ringing.
+        if (identical(_callServices[clientName], disposingCall)) {
+          _callServices.remove(clientName);
+        }
+        // Pangea#
         _analyticsServices.remove(clientName);
         _disposingServices.remove(clientName);
       }
@@ -1002,6 +1104,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     _uriListener?.cancel();
     _screenSizeTimer?.cancel();
     notifPermissionNotifier.dispose();
+    accounts.dispose();
     // Pangea#
 
     super.dispose();
