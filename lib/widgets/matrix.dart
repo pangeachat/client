@@ -143,6 +143,20 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// `onLoginStateChanged` listener and the login dialog never closes
   /// (#8514).
   final Set<String> _clientsTearingDown = {};
+
+  /// The client INSTANCES currently unwinding a logout.
+  ///
+  /// A companion to [_clientsTearingDown] rather than a replacement, because
+  /// the two answer different questions. `canReuseClientForLogin` asks about a
+  /// NAME -- may a fresh login reuse this slot -- and a name is the right key
+  /// for it. Anything asking "is THIS account going away" needs the instance:
+  /// on web every account shares one client name, so a name-keyed answer marks
+  /// a live successor as departing while its predecessor unwinds, and clears
+  /// for a still-unwinding account as soon as any same-name one finishes.
+  ///
+  /// Identity-keyed on purpose: two Clients are the same account only when
+  /// they are the same object.
+  final Set<Client> _clientsSigningOut = Set<Client>.identity();
   // Pangea#
   SharedPreferences get store => widget.store;
 
@@ -536,8 +550,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// that removal waits for the teardown to finish. Anything that must not act
   /// for a departing account has to ask this as well as the client list: in
   /// between, the list still contains it.
-  bool isSigningOut(Client account) =>
-      _clientsTearingDown.contains(account.clientName);
+  ///
+  /// Answered about the INSTANCE, from [_clientsSigningOut]. Asked of the
+  /// name-keyed set instead, this would call a live successor departing for as
+  /// long as its predecessor took to unwind, and call a still-unwinding
+  /// account live the moment any same-name one finished.
+  bool isSigningOut(Client account) => _clientsSigningOut.contains(account);
 
   /// Test-only: marks [clientName] as unwinding a `loggedOut` event, exactly
   /// as the listener installed by [_registerSubs] does before its async
@@ -546,6 +564,20 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   @visibleForTesting
   void markClientTearingDownForTest(String clientName) =>
       _clientsTearingDown.add(clientName);
+
+  /// Test-only: marks [account] as unwinding a `loggedOut` event.
+  ///
+  /// Populates BOTH sets, exactly as the `loggedOut` listener does, because a
+  /// test built on a hook that fills only one of them proves the hook and the
+  /// reader agree rather than proving anything about the accounts. With both
+  /// filled, a reader that consults the NAME set marks a live same-name
+  /// successor as departing -- which is the defect, and is what the test can
+  /// then actually catch.
+  @visibleForTesting
+  void markClientSigningOutForTest(Client account) {
+    _clientsTearingDown.add(account.clientName);
+    _clientsSigningOut.add(account);
+  }
 
   Future<Client> getLoginClient() async {
     if (canReuseClientForLogin) {
@@ -844,6 +876,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // itself starts (#8514).
       if (state == LoginState.loggedOut) {
         _clientsTearingDown.add(c.clientName);
+        _clientsSigningOut.add(c);
       }
       // A failure reporting the state change (e.g. Firebase analytics) must NOT
       // skip the loggedOut teardown below — otherwise the account's services +
@@ -866,6 +899,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // #Pangea
         // InitWithRestoreExtension.deleteSessionBackup(name);
         _clientsTearingDown.remove(c.clientName);
+        _clientsSigningOut.remove(c);
         // Said AFTER the account is out of the list, so a listener that
         // re-reads it sees the account gone rather than half-gone. The
         // incoming-call banner uses this to drop that account's ring
