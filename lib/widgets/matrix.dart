@@ -865,28 +865,31 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         } finally {
           // #Pangea
           // The account LEAVES whether or not its cleanup succeeded, and the
-          // mark clears only with it. Ordered this way because the two are one
-          // fact: "signing out" means "in the list but on the way out", so
-          // clearing the mark while the account is still listed hands it back
-          // to everything that asks -- a ring, a replay, a decline could then
-          // act as an account that has signed out, which is the hole the gate
-          // exists to close. Leaving the mark set instead strands the slot for
-          // the life of the app: `getLoginClient` would never reuse the
-          // client, with nothing on screen to say why. Neither is acceptable,
-          // and neither happens if the removal is not conditional on the
-          // cleanup either.
+          // mark clears with it. The two are one fact: "signing out" means "in
+          // the list but on the way out", so clearing the mark while the
+          // account is still listed hands it back to everything that asks -- a
+          // ring, a replay or a decline could act as an account that has
+          // signed out. Leaving the mark set instead strands the slot for the
+          // life of the app, with nothing on screen to say why.
+          //
+          // So the three statements below are deliberately adjacent, with
+          // nothing between them that can throw: the store write is
+          // best-effort and comes after, and the announcement is last, once a
+          // listener re-reading the list will see the account gone rather than
+          // half-gone. The banner uses it to drop that account's ring
+          // subscriptions and put away a prompt nobody can answer any more.
+          //
           // InitWithRestoreExtension.deleteSessionBackup(name);
           widget.clients.remove(c);
-          ClientManager.removeClientNameFromStore(c.clientName, store);
           _clientsTearingDown.remove(c.clientName);
+          try {
+            ClientManager.removeClientNameFromStore(c.clientName, store);
+          } catch (e, st) {
+            Logs().e('Could not forget the signed-out client name', e, st);
+          }
+          _accountsChanged();
+          // Pangea#
         }
-        // #Pangea
-        // Said AFTER the account is out of the list, so a listener that
-        // re-reads it sees the account gone rather than half-gone. The
-        // incoming-call banner uses this to drop that account's ring
-        // subscriptions and put away a prompt nobody can answer any more.
-        _accountsChanged();
-        // Pangea#
       }
       if (loggedInWithMultipleClients && state != LoginState.loggedIn) {
         // #Pangea
