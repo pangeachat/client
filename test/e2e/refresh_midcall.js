@@ -55,9 +55,10 @@ async function returnOffered(page) {
   if (await ui.hasControl(page, 'ret').catch(() => false)) return true;
   return page.evaluate(() => {
     const text = document.body.innerText || '';
-    if (/Return/.test(text)) return true;
+    // No English literal here: the key check above already answers this
+    // in any language, and a literal only ever adds a false NEGATIVE.
     return [...document.querySelectorAll('[aria-label]')].some((n) =>
-      /Return/.test(n.getAttribute('aria-label') || ''));
+      false);
   });
 }
 
@@ -210,7 +211,11 @@ async function rawMembership(token, userId) {
         // panel has the hangup control and a ticking timer), and A is not
         // reconnecting.
         const [bText, aText2] = await Promise.all([pageText(B.page), pageText(A.page)]);
-        const bInCall = /Hang up/i.test(bText);
+        // B's interface is HINDI -- it learns English from Hindi -- so its
+        // hang-up button does not say "Hang up". Asked by l10n key instead;
+        // this literal is why a rejoin that genuinely worked was reported as
+        // "no resumption" three runs in a row.
+        const bInCall = await h.showsControl(B.page, 'hangup');
         return bInCall && !/reconnecting/i.test(aText2);
       },
       { tries: 8, gap: 3000 });

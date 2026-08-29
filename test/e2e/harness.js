@@ -9,6 +9,7 @@
 // it was no longer exercising. Every check here fails loudly instead.
 const { launch } = require('./browser');
 const { login, wait } = require('./login');
+const labels = require('./labels');
 const ui = require('./ui');
 const mx = require('./matrix');
 const cfg = require('./config');
@@ -222,6 +223,27 @@ async function ensureRoom(p, roomLocalpart) {
   await openRoom(p.page, roomLocalpart);
 }
 
+/// Whether a page shows the control named by an l10n KEY, in ANY language.
+///
+/// The harness drives two accounts and one of them learns English FROM Hindi,
+/// so its whole interface is Hindi. Matching a user-visible string against an
+/// English literal therefore reads as "the product did not do it" for one
+/// participant and works for the other -- which is exactly how a working
+/// rejoin was reported three separate times as a product that would not
+/// resume a call. Nothing in this suite may match on user-visible text except
+/// through here or through `ui`'s control helpers.
+async function showsControl(page, key) {
+  if (await ui.hasControl(page, key).catch(() => false)) return true;
+  const names = labels.labelsFor(labels.KEYS[key] || key);
+  if (!names || !names.length) return false;
+  const blob = await page.evaluate(() => {
+    const aria = [...document.querySelectorAll('[aria-label]')]
+      .map((n) => n.getAttribute('aria-label') || '').join(' ');
+    return `${document.body.innerText || ''} ${aria}`;
+  }).catch(() => '');
+  return names.some((n) => n && blob.includes(n));
+}
+
 /// Kills a participant's browser the way a crash does: no unload, no goodbye.
 ///
 /// `browser.close()` is a POLITE close. Chrome runs the page's unload path on
@@ -379,7 +401,7 @@ function report() {
 }
 
 module.exports = {
-  wake, kill, refuseIfAnotherRunIsLive, openParticipant, openRoom, ensureRoom, actUntil,
+  wake, kill, showsControl, refuseIfAnotherRunIsLive, openParticipant, openRoom, ensureRoom, actUntil,
   recover, mark, since, compare, check, skipped, report, results, inconclusive,
   ui, mx, wait, cfg, APP,
 };

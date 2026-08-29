@@ -200,7 +200,7 @@ h.refuseIfAnotherRunIsLive();
   let offered = false;
   for (let i = 0; i < 10 && !offered; i++) {
     offered = await ui.hasControl(B.page, 'ret').catch(() => false) ||
-      /Return/.test(await text(B.page));
+      await h.showsControl(B.page, 'ret');
     if (!offered) await wait(1500);
   }
   if (!offered) {
@@ -256,7 +256,8 @@ h.refuseIfAnotherRunIsLive();
     await wait(14000);
     let back = false;
     for (let i = 0; i < 10 && !back; i++) {
-      back = /Return/.test(await text(B.page));
+      // By key: B's interface is Hindi, so the English word is never there.
+      back = await h.showsControl(B.page, 'ret');
       if (!back) await wait(1500);
     }
     if (back) {
