@@ -607,11 +607,32 @@ void main() {
       expect(roster.published, hasLength(1));
     });
 
-    test('both facts travel in ONE write', () async {
-      // `setAttributes` replaces the whole map and the publish merges over the
-      // copy it can see, so two announcements in flight at once would each
-      // merge over a picture taken before the other landed and one of them
-      // would be silently lost.
+    test('everything one turn decides travels in ONE write', () async {
+      // An election settles several facts in one synchronous pass and announces
+      // each as it decides it. Composing the write on the first of them puts
+      // every later one behind a whole round trip -- and the recording
+      // retraction is the LAST fact an election settles and the one that has to
+      // be on the wire before the audio stops. Queued behind a capability
+      // write, it arrives after.
+      final capability = roster.announceCanCapture(false);
+      final recording = roster.announceCapturing('5');
+      await capability;
+      await recording;
+
+      expect(roster.published, [
+        {
+          CallRoster.canCaptureAttribute: 'no',
+          CallRoster.capturingAttribute: CaptureReport.published('5'),
+        },
+      ]);
+      expect(roster.announcedCanCapture, isFalse);
+    });
+
+    test('a later turn still waits for the write already flying', () async {
+      // The batching is per TURN, not a free-for-all. `setAttributes` replaces
+      // the whole map and the publish merges over the copy it can see, so two
+      // writes in flight at once would each merge over a picture taken before
+      // the other landed and one of them would be silently lost.
       final held = Completer<void>();
       roster.holdPublish = held;
       final first = roster.announceCanCapture(false);
@@ -625,7 +646,6 @@ void main() {
         {CallRoster.canCaptureAttribute: 'no'},
         {CallRoster.capturingAttribute: CaptureReport.published('5')},
       ]);
-      expect(roster.announcedCanCapture, isFalse);
     });
 
     test('an outstanding run is re-asserted on the next recompute', () async {

@@ -202,7 +202,7 @@ void main() {
 
     /// A watch that saw the successor in one uninterrupted run all along.
     CaptureWatch watchedRecording([String run = '7']) =>
-        CaptureWatch()..observe(CaptureReport.of('AAAA', inRun(run)));
+        CaptureWatch()..observe([CaptureReport.of('AAAA', inRun(run))]);
 
     bool discards({
       String? published,
@@ -334,6 +334,9 @@ void main() {
     final aSecondLater = noon.add(const Duration(seconds: 1));
     const successor = CaptureCandidate('AAAA');
 
+    CaptureReport says(String? published, [String device = 'AAAA']) =>
+        CaptureReport.of(device, published);
+
     bool discardsWith(CaptureWatch watch, {String published = 'recording:7'}) =>
         CaptureElection.discardsCapturedAudio(
           successor: successor,
@@ -343,40 +346,89 @@ void main() {
           successorJoinedAt: noon,
         );
 
-    test('a denial anywhere in the stretch keeps our tail', () {
-      // It is recording NOW and its join stamp is early enough, so every
-      // instantaneous reading says discard. But it told us, while this stretch
-      // was running, that it was not -- so it started when it took over and
-      // holds none of what came before.
+    test('a run already running when we opened takes our tail', () {
       final watch = CaptureWatch()
-        ..observe(CaptureReport.of('AAAA', CaptureReport.published(null)))
-        ..observe(CaptureReport.of('AAAA', 'recording:7'));
+        ..observe([says('recording:7')])
+        ..observe([says('recording:7')]);
+
+      expect(discardsWith(watch), isTrue);
+    });
+
+    test('a run that began AFTER we opened keeps our tail', () {
+      // THE CASE A TOKEN ALONE CANNOT ANSWER. A run token proves continuity
+      // forward from the moment it was first seen and says nothing about the
+      // time before it. The sibling was silent when this stretch opened -- its
+      // `no` in flight, or overwritten by the run before we ever read it -- and
+      // its first frame came later. It holds the second half of our stretch and
+      // not the first, and destroying the whole tail destroys the first half
+      // with it.
+      final watch = CaptureWatch()
+        ..observe([says(null)])
+        ..observe([says('recording:7')]);
 
       expect(discardsWith(watch), isFalse);
     });
 
-    test('a run that changed mid-stretch keeps our tail', () {
-      // THE CASE A FLAG CANNOT SEE. Attribute writes are last-write-wins, so a
-      // sibling that stopped and restarted can leave a watcher reading "yes"
-      // before and "yes" after, with the `no` in between never delivered. The
-      // token changing is the only evidence the gap happened, and the audio in
-      // it belongs to nobody.
+    test('a sibling absent when we opened is never credited', () {
+      // Same rule, the other way it happens. Nothing this device observed says
+      // anything about what a sibling it could not see was doing, and an
+      // earlier join stamp does not fill that in: being in the room is not
+      // holding a copy.
       final watch = CaptureWatch()
-        ..observe(CaptureReport.of('AAAA', 'recording:7'))
-        ..observe(CaptureReport.of('AAAA', 'recording:8'));
+        ..observe(const [])
+        ..observe([says('recording:7')]);
+
+      expect(discardsWith(watch), isFalse);
+    });
+
+    test('a denial after we opened keeps our tail', () {
+      // It was recording when we started and it is recording now, so both
+      // instantaneous readings say discard. But it TOLD us, in between, that it
+      // had stopped -- so its run has a hole in it, and a hole anywhere is
+      // fatal because what is destroyed is the whole tail.
+      final watch = CaptureWatch()
+        ..observe([says('recording:7')])
+        ..observe([says(CaptureReport.published(null))])
+        ..observe([says('recording:7')]);
+
+      expect(discardsWith(watch), isFalse);
+    });
+
+    test('a run that changed after we opened keeps our tail', () {
+      // Attribute writes are last-write-wins, so a sibling that stopped and
+      // restarted can leave a watcher reading "recording" before and after with
+      // the `no` between them never delivered. The token changing is the only
+      // evidence the gap happened.
+      final watch = CaptureWatch()
+        ..observe([says('recording:7')])
+        ..observe([says('recording:8')]);
 
       expect(discardsWith(watch, published: 'recording:8'), isFalse);
     });
 
-    test('silence in the middle of a stretch is not a break', () {
-      // THE OTHER HALF, and the direction the previous version got wrong. A
-      // reading in which the sibling had published nothing yet is not the
-      // sibling saying it was idle -- it is us not having heard. Latching that
-      // into a denial kept a duplicate of a stretch the sibling really held,
-      // and no later attestation could lift it.
+    test('a run token that comes BACK does not restore standing', () {
+      // A DEFENCE rather than a case. A behaving device only ever moves its
+      // token forward, so the opening credit already refuses a run that has
+      // changed. This is what stops a sibling whose token is not actually
+      // monotonic -- a counter that reset, a token minted from something that
+      // repeats -- handing itself back a stretch it has already broken.
       final watch = CaptureWatch()
-        ..observe(CaptureReport.of('AAAA', null))
-        ..observe(CaptureReport.of('AAAA', 'recording:7'));
+        ..observe([says('recording:7')])
+        ..observe([says('recording:8')])
+        ..observe([says('recording:7')]);
+
+      expect(discardsWith(watch), isFalse);
+    });
+
+    test('silence after we opened is not a break', () {
+      // A dropped attribute update, or a write that failed and has not been
+      // re-asserted yet, is us not having heard -- not the sibling saying it
+      // stopped. Latching that into a denial kept duplicates of stretches the
+      // sibling really held.
+      final watch = CaptureWatch()
+        ..observe([says('recording:7')])
+        ..observe([says(null)])
+        ..observe([says('recording:7')]);
 
       expect(discardsWith(watch), isTrue);
     });
@@ -384,30 +436,35 @@ void main() {
     test('the same run seen over and over is one uninterrupted stretch', () {
       final watch = CaptureWatch();
       for (var i = 0; i < 5; i++) {
-        watch.observe(CaptureReport.of('AAAA', 'recording:7'));
+        watch.observe([says('recording:7')]);
       }
       expect(discardsWith(watch), isTrue);
     });
 
     test('a break against one sibling says nothing about another', () {
       final watch = CaptureWatch()
-        ..observe(CaptureReport.of('ZZZZ', CaptureReport.published(null)))
-        ..observe(CaptureReport.of('AAAA', 'recording:7'));
+        ..observe([says('recording:7'), says('recording:2', 'ZZZZ')])
+        ..observe([
+          says('recording:7'),
+          says(CaptureReport.published(null), 'ZZZZ'),
+        ]);
 
-      expect(watch.interrupted('ZZZZ'), isTrue);
+      expect(watch.heldThroughout('ZZZZ', '2'), isFalse);
       expect(discardsWith(watch), isTrue);
     });
 
     test('a new stretch forgets what the previous one watched', () {
       // What was watched while a DIFFERENT stretch was running says nothing
-      // about this one. Left uncleared, one sibling's hiccup would disqualify
-      // it for the rest of the call.
+      // about this one -- in both directions. A sibling credited by the last
+      // stretch has to earn it again, and one that broke during it is not
+      // disqualified for the rest of the call.
       final watch = CaptureWatch()
-        ..observe(CaptureReport.of('AAAA', CaptureReport.published(null)));
+        ..observe([says('recording:7')])
+        ..observe([says(CaptureReport.published(null))]);
       expect(discardsWith(watch), isFalse);
 
       watch.restart();
-      watch.observe(CaptureReport.of('AAAA', 'recording:7'));
+      watch.observe([says('recording:7')]);
 
       expect(discardsWith(watch), isTrue);
     });

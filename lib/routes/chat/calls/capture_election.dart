@@ -102,59 +102,87 @@ class CaptureReport {
 /// The discard asks whether a successor held the whole stretch about to be
 /// destroyed, and one reading answers only for the instant it was taken. This
 /// is the ledger that turns a sequence of instants into a statement about the
-/// span — and, just as importantly, the place that decides what counts as a
-/// break, so no call site has to.
+/// span — and, just as importantly, the place that decides what counts as
+/// holding it, so no call site has to.
 ///
-/// It records BREAKS ONLY, and only ones a sibling actually declared: a denial,
-/// or a run token different from the one it was first seen in. A stretch this
-/// device watched in silence is not a break, because silence is not a fact —
-/// that is the rule the previous version broke, latching "I have not heard from
-/// it" into a permanent "it was not recording" that no later attestation could
-/// lift.
+/// TWO THINGS, and the first is the one that is easy to leave out. A run has to
+/// have been ALREADY RUNNING when this stretch opened, and it has to have gone
+/// unbroken since. A run token proves continuity forward from the moment it was
+/// first seen and says nothing whatever about the time before that — so a
+/// sibling first seen recording halfway through holds only the half it was seen
+/// for, and crediting it destroys the other half. The opening snapshot is
+/// therefore the only place a sibling can be credited at all.
 ///
-/// What it CANNOT see is a sibling that was not in the roster at all. That gap
-/// is real and is covered elsewhere, by the join stamps: a successor whose join
-/// is provably earlier was in the call for the whole stretch even if this
-/// device could not see it for part of it.
+/// A sibling that is silent or denying at the opening is simply NOT CREDITED.
+/// That is not the same as being marked broken: silence still settles nothing,
+/// and a sibling that goes quiet later — a dropped attribute update, a write
+/// that failed — keeps the standing it opened with. The difference matters,
+/// because latching silence into a permanent denial once kept duplicates of
+/// stretches a sibling really held.
+///
+/// What it CANNOT see is a sibling that was not in the roster at the opening.
+/// Such a sibling is not credited either, for exactly the same reason, and that
+/// is the honest answer rather than a gap: nothing this device observed says
+/// anything about what that sibling was doing while it could not see it.
 class CaptureWatch {
-  /// The run each sibling was first seen in during the stretch running now.
-  final Map<String, String> _firstSeenRun = {};
+  /// The run each sibling was ALREADY IN when this stretch opened. A sibling
+  /// absent from here was never in a position to hold this stretch.
+  final Map<String, String> _openedIn = {};
 
-  /// Siblings that broke continuity while this stretch was running.
+  /// Credited siblings that have since been seen to break.
   final Set<String> _interrupted = {};
+
+  /// Whether the opening snapshot has been taken.
+  bool _opened = false;
 
   /// Starts a fresh stretch. Everything watched during the previous one says
   /// nothing about this one.
   void restart() {
-    _firstSeenRun.clear();
+    _openedIn.clear();
     _interrupted.clear();
+    _opened = false;
   }
 
-  /// Takes one reading of one sibling.
+  /// Takes ONE snapshot of every sibling.
   ///
-  /// Called for every sibling at every election, so what accumulates is the
-  /// whole of what this device saw while it was recording.
-  void observe(CaptureReport report) {
-    if (report.denies) {
-      _interrupted.add(report.deviceId);
+  /// A whole snapshot rather than a reading at a time, because "was it already
+  /// running when this stretch opened" is a question about the FIRST snapshot,
+  /// and a per-sibling call cannot tell the first reading of the STRETCH from
+  /// the first reading of that SIBLING. The two differ for every sibling that
+  /// appears late, which is the entire population this has to be careful about.
+  void observe(Iterable<CaptureReport> snapshot) {
+    if (!_opened) {
+      _opened = true;
+      for (final report in snapshot) {
+        final run = report.run;
+        // Only a sibling already recording when we started can hold what we
+        // are about to destroy. Silence and denial alike leave it uncredited.
+        if (run != null) _openedIn[report.deviceId] = run;
+      }
       return;
     }
-    final run = report.run;
-    if (run == null) return;
-    final first = _firstSeenRun[report.deviceId];
-    if (first == null) {
-      _firstSeenRun[report.deviceId] = run;
-    } else if (first != run) {
-      // It stopped and started again. The `no` in between may never have
-      // reached us — attributes are last-write-wins — so the token is the only
-      // evidence the gap happened, and the audio in it belongs to nobody.
-      _interrupted.add(report.deviceId);
+    for (final report in snapshot) {
+      final opened = _openedIn[report.deviceId];
+      // Nothing to break. A sibling that was never credited cannot lose
+      // standing it never had.
+      if (opened == null) continue;
+      if (report.denies) {
+        _interrupted.add(report.deviceId);
+      } else if (report.run != null && report.run != opened) {
+        // It stopped and started again. The `no` in between may never have
+        // reached us — attributes are last-write-wins — so the token is the
+        // only evidence the gap happened, and the audio in it belongs to
+        // nobody.
+        _interrupted.add(report.deviceId);
+      }
+      // Silence changes nothing. We have simply not heard from it since.
     }
   }
 
-  /// Whether anything this device watched rules the sibling out for the stretch
-  /// running now.
-  bool interrupted(String deviceId) => _interrupted.contains(deviceId);
+  /// Whether the sibling was recording [run] when this stretch opened and has
+  /// not been seen to break since.
+  bool heldThroughout(String deviceId, String run) =>
+      _openedIn[deviceId] == run && !_interrupted.contains(deviceId);
 }
 
 /// One device in the running to record a call, and whether it can.
@@ -347,11 +375,20 @@ class CaptureElection {
   /// the call site, because a lookup against the wrong device id is exactly the
   /// kind of mistake that reads correctly.
   ///
-  /// AND NOTHING WATCHED DURING THE STRETCH MAY HAVE BROKEN IT. A successor
-  /// that denied recording at any point while this stretch ran, or that has
-  /// changed run since it was first seen in one, holds a stretch with a hole in
-  /// it — and a hole anywhere is fatal, because what is being destroyed is the
-  /// whole tail and not the part that overlaps.
+  /// AND THAT RUN HAS TO HAVE BEEN ALREADY RUNNING WHEN OUR STRETCH OPENED,
+  /// AND UNBROKEN SINCE. This is the term that a run token alone does not
+  /// supply, and leaving it out is how a stretch came to be destroyed that
+  /// covered time the successor demonstrably did not hold. A token proves
+  /// continuity FORWARD from the moment it was first seen; it says nothing at
+  /// all about the time before that. A successor first seen recording halfway
+  /// through our stretch holds the second half, and destroying the whole tail
+  /// destroys the first half along with it. So the credit is granted only by
+  /// the OPENING snapshot, and [CaptureWatch] is where that lives.
+  ///
+  /// The join stamp does not stand in for this, and reading it as though it did
+  /// was the mistake. It says the successor was in the ROOM before us. Being in
+  /// the room is not holding a copy: a device can sit in a call for a minute
+  /// before its first frame arrives.
   ///
   /// AND THE JOIN STAMPS HAVE TO ORDER THE TWO DEVICES AT THE RESOLUTION THEY
   /// ACTUALLY CARRY. `Participant.joinedAt` is derived from a whole-SECOND
@@ -363,6 +400,24 @@ class CaptureElection {
   /// stamp a full resolution step earlier proves the successor was already
   /// there, and a stretch cannot begin before the device recording it joined.
   ///
+  /// WHAT THIS COSTS, because it is a real narrowing. A discard now needs this
+  /// device to have WATCHED the successor recording, from its own first frame
+  /// onwards. A successor that was merely present, or that this device could
+  /// not see for part of the stretch, or whose run this device only heard about
+  /// halfway through, keeps its tail delivered — a duplicate. That is the
+  /// intended direction: a duplicate is a wrong number in a learner's
+  /// analytics, and a discard that guessed wrong is a thing the learner said
+  /// that nothing anywhere still holds.
+  ///
+  /// It is also the only direction available. Proving a successor's run began
+  /// before our stretch, without having seen it, needs the two devices to order
+  /// events against a shared reference, and they have none: a device can
+  /// publish when its run began only on its own clock, and every bound that
+  /// crosses the gap between two devices runs the wrong way — the available
+  /// evidence can show that a sibling started too LATE, never that it started
+  /// early enough. So the opening snapshot is not a conservative approximation
+  /// of the answer, it IS the answer.
+  ///
   /// WHAT THIS STILL CANNOT DO, stated rather than papered over. Every reading
   /// here is of a snapshot the SFU sent at some earlier, unknowable instant, so
   /// a successor that stopped moments ago can still be showing as attesting.
@@ -373,9 +428,9 @@ class CaptureElection {
   /// and LiveKit exposes no server sequence or timestamp against which a
   /// snapshot could be called current. What narrows it is the publishing
   /// discipline on the other side — an attestation is asserted only after audio
-  /// has actually flowed, and retracted the moment stopping is INTENDED, so the
-  /// retraction is already on the wire before the audio stops. The residue is
-  /// the signal delay itself.
+  /// has actually flowed, and retracted the moment stopping is INTENDED, in the
+  /// first write to leave after that decision. The residue is the signal delay
+  /// itself.
   ///
   /// Note what is NOT here any more. Whether WE could record, and whether the
   /// successor merely out-ranked us on capability, both used to be terms. An
@@ -389,8 +444,9 @@ class CaptureElection {
     DateTime? successorJoinedAt,
   }) {
     if (successorReport.deviceId != successor.deviceId) return false;
-    if (successorReport.run == null) return false;
-    if (watch.interrupted(successor.deviceId)) return false;
+    final run = successorReport.run;
+    if (run == null) return false;
+    if (!watch.heldThroughout(successor.deviceId, run)) return false;
     if (myJoinedAt == null || successorJoinedAt == null) return false;
     return !successorJoinedAt.add(joinStampResolution).isAfter(myJoinedAt);
   }

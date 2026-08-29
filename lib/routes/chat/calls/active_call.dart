@@ -317,7 +317,38 @@ class ActiveCall extends ChangeNotifier {
   /// delivers its own tail rather than deferring to a copy it cannot see.
   void _onCaptureStarted() {
     if (_ending || _disposed) return;
+    // OPENED HERE, at the first frame, and not at the next election. The
+    // opening snapshot is what decides which siblings were already recording
+    // when this stretch began, so it has to be taken when the stretch begins.
+    // Taken at the following election instead, it would credit a sibling that
+    // started somewhere in between — and this device would then destroy the
+    // seconds before that sibling's first frame, which is exactly the audio
+    // nobody else holds.
+    _watchSiblings();
     _announceCaptureState();
+  }
+
+  /// Brings the ledger up to date with what the siblings are saying now.
+  ///
+  /// ONE SNAPSHOT per call, because the ledger's first question is about the
+  /// first snapshot of a stretch rather than about the first time each sibling
+  /// was seen.
+  void _watchSiblings() {
+    final roster = _roster;
+    final myRun = capture.captureRun;
+    // Only while this device is actually holding audio. What it saw at a moment
+    // it was recording nothing is not part of any stretch, and folding it in
+    // would judge a sibling over a gap that was ours.
+    if (roster == null || myRun == null) return;
+    if (myRun != _watchedRun) {
+      _watchedRun = myRun;
+      _watch.restart();
+    }
+    final me = calls.client.deviceID ?? '';
+    _watch.observe([
+      for (final id in roster.siblingDeviceIds)
+        if (id != me) roster.siblingCaptureReport(id),
+    ]);
   }
 
   /// Tells this account's other devices what this one is ACTUALLY doing.
@@ -561,32 +592,16 @@ class ActiveCall extends ChangeNotifier {
     ];
 
     // Whether a successor held our stretch is a fact about a SPAN, and every
-    // election is only an instant. Seeded at the election that starts a
-    // stretch — [_capturing] is false right up to the moment the reconcile it
-    // queues actually attaches — and added to by every election after it, so
-    // what this holds while a stretch runs is every sibling seen, at any point
-    // during it, not recording.
+    // election is only an instant. The ledger is opened at the first frame of
+    // the stretch and added to here, so what it holds is the whole of what this
+    // device watched while it was recording.
     //
-    // A sibling this device cannot see at all is not added, and that is the one
-    // gap in the span rather than an oversight: the convergence race is
-    // precisely the case where the other device is invisible for the seconds in
-    // question, and nothing observed locally can close it. The join stamps are
-    // what stand in for that window, at the resolution they actually carry.
-    final myRun = capture.captureRun;
-    if (myRun != null) {
-      if (myRun != _watchedRun) {
-        _watchedRun = myRun;
-        _watch.restart();
-      }
-      // Only while this device is actually holding audio. What it saw at a
-      // moment it was recording nothing is not part of any stretch, and folding
-      // it in would disqualify a sibling on the strength of a gap that was
-      // ours.
-      for (final sibling in siblings) {
-        final report = roster?.siblingCaptureReport(sibling.deviceId);
-        if (report != null) _watch.observe(report);
-      }
-    }
+    // A sibling this device could not see when the stretch opened is not
+    // credited by it, and nothing here makes up the difference. An earlier join
+    // stamp was once read as though it did: it says the sibling was in the
+    // ROOM first, which is not the same as holding a copy, because a device can
+    // sit in a call for a long time before its first frame arrives.
+    _watchSiblings();
 
     // THE LANDED VALUE, and ONLY the landed value. Every device reaches the
     // same verdict alone because every device ranks the same candidates the

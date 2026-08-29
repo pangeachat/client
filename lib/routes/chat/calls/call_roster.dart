@@ -599,11 +599,25 @@ class CallRoster extends ChangeNotifier {
   /// before the other landed and one of them would be silently lost. Everything
   /// outstanding goes in the same write for the same reason it costs nothing
   /// to: it is one round trip either way.
+  ///
+  /// AND THE FIRST WRITE WAITS FOR THE CALLER TO FINISH SPEAKING. An election
+  /// settles several facts in one synchronous pass and announces each as it
+  /// decides it; composing the write on the first of them puts every later one
+  /// behind a whole round trip. That is not a tidiness problem. The recording
+  /// retraction is the last fact an election settles and the one that has to
+  /// travel before the audio stops, and queueing it behind a capability write
+  /// is precisely how it ended up arriving after. Yielding once here costs
+  /// nothing — the write was always going to be asynchronous — and makes the
+  /// batching a property of the announcer rather than something every caller
+  /// has to arrange.
   Future<void> _announce(String key, String value) async {
     _wanted[key] = value;
     if (_announcing) return;
     _announcing = true;
     try {
+      // The yield. Anything else this turn wants said is in [_wanted] by the
+      // time the loop below composes its first write.
+      await Future<void>.value();
       while (true) {
         final pending = <String, String>{
           for (final entry in _wanted.entries)

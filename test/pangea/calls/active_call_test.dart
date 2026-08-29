@@ -361,6 +361,10 @@ class FakeCapture extends CallCaptureService {
   /// recording afterwards.
   bool attachesNothing = false;
 
+  /// Run immediately after the first frame of a run, inside the window between
+  /// it and the next election.
+  void Function()? afterFirstFrame;
+
   /// Whether this device has anywhere to record THROUGH. Modelled rather than
   /// inherited, because it is what the election reads and a double that always
   /// answered true could not stand up the case the ranking exists for.
@@ -426,7 +430,18 @@ class FakeCapture extends CallCaptureService {
     // A device with no working tap point attaches nothing and says so, exactly
     // as the real one does: start returns, and isRecording stays false.
     _recording = !attachesNothing && tapWorks;
-    if (_recording) _run++;
+    if (_recording) {
+      _run++;
+      // Modelled, because WHEN the first frame lands is load-bearing: the
+      // ledger of what the siblings were doing is opened by it, and a double
+      // that never delivered one would open the ledger at the next election
+      // instead -- judging a sibling on a reading taken after it changed.
+      onCaptureStarted?.call();
+      // The window between that frame and the next election, which in a real
+      // call is up to a whole presence tick. A test that wants to change what a
+      // sibling is doing INSIDE it has nowhere else to stand.
+      afterFirstFrame?.call();
+    }
   }
 
   /// Whether each stop was asked to wait for deliveries, in order. A list, not
@@ -497,7 +512,17 @@ final fakeJoinTime = DateTime.utc(2026, 8, 29, 12);
 /// real roster decides — who is a peer, who is a sibling device, and the freeze
 /// while disconnected — is the code under test rather than a stub.
 class FakeRoster extends CallRoster {
-  FakeRoster({required super.room, required super.myUserId});
+  FakeRoster({required super.room, required super.myUserId, this.trace});
+
+  /// Shared with the recorder, so a test can assert the ORDER of a write
+  /// against the stop it is supposed to precede. Microtask counting cannot say
+  /// that; a single ordered list can.
+  final Trace? trace;
+
+  /// OFF by default. Most tests in this file assert on the trace by exact
+  /// equality, and a double that volunteered extra steps into it would rewrite
+  /// what every one of them is checking.
+  bool traceWrites = false;
 
   Set<String> identities = {};
   bool connected = true;
@@ -552,12 +577,26 @@ class FakeRoster extends CallRoster {
   /// it was not recording; a string is the run it named.
   final List<String?> announcedCapturing = [];
 
+  /// Every write exactly as it went out. A list of MAPS, because what matters
+  /// for the retraction is not only that it was published but that it was not
+  /// queued behind another round trip.
+  final List<Map<String, String>> publishedMaps = [];
+
   /// Held open by a test to keep an announcement in flight, which is the state
   /// in which the live answer and the landed one differ.
   Completer<void>? holdAnnounce;
 
   @override
   Future<bool> publishAttributes(Map<String, String> attributes) async {
+    publishedMaps.add(Map.of(attributes));
+    final capturingWritten = attributes[CallRoster.capturingAttribute];
+    if (traceWrites && capturingWritten != null) {
+      trace?.call(
+        CaptureReport.of('me', capturingWritten).run == null
+            ? 'publish(not recording)'
+            : 'publish(recording)',
+      );
+    }
     final capability = attributes[CallRoster.canCaptureAttribute];
     if (capability != null) announced.add(capability != 'no');
     final capturing = attributes[CallRoster.capturingAttribute];
@@ -565,6 +604,12 @@ class FakeRoster extends CallRoster {
       announcedCapturing.add(CaptureReport.of('me', capturing).run);
     }
     if (holdAnnounce != null) await holdAnnounce!.future;
+    // A COMPLETED TURN, not a completed microtask. `setAttributes` is a signal
+    // round trip that waits up to five seconds for the SFU; a double that
+    // returned without ever yielding to the event loop would make a second
+    // write look nearly free, and hide the whole cost of queueing one behind
+    // another.
+    await Future<void>.delayed(Duration.zero);
     return true;
   }
 
@@ -696,6 +741,7 @@ void main() {
     final roster = FakeRoster(
       room: media.room,
       myUserId: calls.client.userID ?? '',
+      trace: trace,
     );
     media.fakeRoster = roster;
     calls.roster = roster;
@@ -1896,6 +1942,7 @@ void main() {
       final roster = FakeRoster(
         room: media.room,
         myUserId: calls.client.userID ?? '',
+        trace: trace,
       );
       media.fakeRoster = roster;
       calls.roster = roster;
@@ -2743,13 +2790,15 @@ void main() {
       CallRoster.capturingAttribute: CaptureReport.published(null),
     };
 
-    test('the displaced one drops a stretch the successor held', () async {
-      // The one shape that proves a duplicate. The other device joined a whole
-      // resolution step earlier -- the second its stamp names had ended before
-      // the second ours began -- and it names a run of captured audio that does
-      // not change while our stretch runs. Delivering this tail would credit
-      // the learner twice for saying something once, because the sink keys a
-      // result by capture session and two devices are two sessions.
+    test('a successor only seen AFTER we started keeps our tail', () async {
+      // It joined a whole resolution step earlier and it names a run, so both
+      // of the readings taken at the handover say discard. But this device was
+      // recording before it could see the sibling at all, and nothing it
+      // observed says what the sibling was doing then -- the run token proves
+      // continuity forward from the moment it was first seen and no further
+      // back. An earlier join stamp does not fill that in: it says the sibling
+      // was in the ROOM first, and a device can sit in a call for a long time
+      // before its first frame arrives.
       final (call, calls, _, capture) = await build();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
@@ -2765,8 +2814,8 @@ void main() {
 
       await calls.participantsBecome(['AAAAAAAAAA', calls.client.deviceID!]);
 
-      expect(call.isRecording, isFalse);
-      expect(capture.discardRequests.last, isTrue);
+      expect(call.isRecording, isFalse, reason: 'displaced all the same');
+      expect(capture.discardRequests.last, isFalse);
     });
 
     test('a successor that only says it CAN record keeps our tail', () async {
@@ -2802,9 +2851,13 @@ void main() {
     /// sibling only takes over once this one loses its tap. The sibling's
     /// opening statement is the variable each of the next three tests changes.
     Future<(ActiveCall, FakeCalls, FakeCapture)> recordingBeside(
-      Map<String, String> saying,
-    ) async {
+      Map<String, String> saying, {
+      void Function(FakeCalls calls)? afterFirstFrame,
+    }) async {
       final (call, calls, _, capture) = await build();
+      if (afterFirstFrame != null) {
+        capture.afterFirstFrame = () => afterFirstFrame(calls);
+      }
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
         '${calls.client.userID}:zzzzzzzzzz': (
@@ -2837,17 +2890,70 @@ void main() {
       expect(call.isRecording, isFalse, reason: 'the sibling has it now');
     }
 
-    test('a successor not yet heard from is not disqualified forever', () async {
-      // THE LATCH. The sibling joined earlier and IS recording, but its
-      // attribute had not reached us when our stretch began -- so our first
-      // election saw SILENCE. Reading that as "it was not recording" and
-      // remembering it keeps a duplicate of a stretch the sibling really holds,
-      // and no later attestation can lift it. Silence is not a denial.
+    test(
+      'a successor that goes quiet mid-stretch still takes our tail',
+      () async {
+        // Silence is not a denial. The sibling was already recording run 7 when
+        // this stretch opened; a dropped attribute update, or a write that failed
+        // and has not been re-asserted, leaves us hearing nothing from it for a
+        // while. Reading that as "it stopped" and remembering it keeps a
+        // duplicate of a stretch the sibling really holds.
+        final (call, calls, capture) = await recordingBeside(recording('7'));
+
+        calls.roster!.attributes = {
+          '${calls.client.userID}:zzzzzzzzzz': const {},
+        };
+        calls.roster!.recompute();
+        await pumpEventQueue();
+
+        await handOverTo(call, calls, capture);
+
+        expect(capture.discardRequests.last, isTrue);
+      },
+    );
+
+    test('the ledger opens at our first frame, not at a later election', () async {
+      // The gap between the two is up to a whole presence tick, and a sibling
+      // that changed what it was doing inside it would be judged on the later
+      // reading as though it were the opening one. Here the sibling was in run
+      // 7 when this stretch opened and has moved to run 8 by the time the next
+      // election looks -- a stop and a restart, with a hole in the middle that
+      // only the opening reading can reveal.
+      final (call, calls, capture) = await recordingBeside(
+        recording('7'),
+        // It stops and restarts INSIDE that window. Only a reading taken at our
+        // own first frame catches run 7; every later one sees run 8 alone, and
+        // reads a sibling that has already broken as one that never did.
+        afterFirstFrame: (calls) {
+          calls.roster!.attributes = {
+            '${calls.client.userID}:zzzzzzzzzz': recording('8'),
+          };
+          calls.roster!.recompute();
+        },
+      );
+
+      capture.loseTapForGood();
+      await pumpEventQueue();
+      await call.tickReelectionForTest();
+
+      expect(call.isRecording, isFalse, reason: 'the sibling has it now');
+      expect(capture.discardRequests.last, isFalse);
+    });
+
+    test('a successor first heard from mid-stretch keeps our tail', () async {
+      // The same observation sequence as the test above with the OPPOSITE truth
+      // underneath it, and this device cannot tell them apart: the sibling was
+      // silent when we opened because its `no` was in flight, or was overwritten
+      // by its own run before we ever read it, and its first frame came after
+      // ours. It holds the second half of this stretch and not the first. Since
+      // the two are indistinguishable, the tie goes to keeping the audio -- a
+      // duplicate is a wrong number, a discard is a thing the learner said that
+      // nothing anywhere still holds.
       final (call, calls, capture) = await recordingBeside(const {});
 
       await handOverTo(call, calls, capture);
 
-      expect(capture.discardRequests.last, isTrue);
+      expect(capture.discardRequests.last, isFalse);
     });
 
     test('a successor that SAID it was idle stays disqualified', () async {
@@ -2863,6 +2969,23 @@ void main() {
 
       expect(capture.discardRequests.last, isFalse);
     });
+
+    test(
+      'a successor recording the same run throughout takes our tail',
+      () async {
+        // The shape that proves a duplicate, and the only one that can. This
+        // device WATCHED the sibling recording run 7 from its own first frame
+        // through to the handover, so every second it is about to destroy is a
+        // second the sibling was holding. Delivering it would credit the learner
+        // twice for saying something once, because the sink keys a result by
+        // capture session and two devices are two sessions.
+        final (call, calls, capture) = await recordingBeside(recording('7'));
+
+        await handOverTo(call, calls, capture);
+
+        expect(capture.discardRequests.last, isTrue);
+      },
+    );
 
     test('a successor whose run changed mid-stretch keeps our tail', () async {
       // A sibling that stopped and started again holds a stretch with a hole in
@@ -2906,7 +3029,7 @@ void main() {
       // Teardown stops the recorder DIRECTLY, outside the serialised handover
       // chain, so its stop can reach the flush while this election's reconcile
       // is still queued. A request made inside the reconcile would arrive after
-      // the audio had already gone.
+      // the audio had already gone -- whatever its value would have been.
       final (call, calls, _, capture) = await build();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
@@ -2919,6 +3042,7 @@ void main() {
       calls.devicesInCall = [calls.client.deviceID!];
       await call.start(roomStub(calls.client), video: false);
       trace.steps.clear();
+      final before = capture.discardRequests.length;
       // Deliberately NOT pumped: the roster notifies synchronously, so this is
       // the instant after the election decided and before anything it queued
       // has run.
@@ -2929,7 +3053,11 @@ void main() {
         isNot(contains('capture.stop')),
         reason: 'the reconcile has not run yet',
       );
-      expect(capture.discardRequests.last, isTrue);
+      expect(
+        capture.discardRequests.length,
+        greaterThan(before),
+        reason: 'and the election has already stated the tail is fate',
+      );
     });
 
     test('a successor that arrived later keeps our tail', () async {
@@ -3057,6 +3185,7 @@ void main() {
       calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
       await call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
 
       expect(call.isRecording, isFalse);
       expect(calls.roster!.announcedCapturing, contains(null));
@@ -3069,6 +3198,7 @@ void main() {
       calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
       await call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
 
       expect(call.isRecording, isTrue);
       expect(calls.roster!.announcedCapturing.last, isNotNull);
@@ -3078,35 +3208,40 @@ void main() {
       // Every reading a sibling takes is of a snapshot published some
       // unknowable time earlier, so a "no" that waits for the audio to stop is
       // already too late: the sibling can still be reading the run while this
-      // device's tail is being flushed, and destroy its own copy on it. The
-      // retraction has to leave before the reconcile runs, not after.
-      final (call, calls, _, _) = await build();
+      // device's tail is being flushed, and destroy its own copy on it.
+      //
+      // THE ELECTION HERE SETTLES TWO FACTS AT ONCE, which is the case that
+      // caught it out. This device loses its tap and is displaced in the same
+      // pass, so the capability write and the retraction are decided together.
+      // Composed one at a time, the retraction goes out behind a whole signal
+      // round trip -- and lands after the audio it describes has stopped.
+      final (call, calls, _, capture) = await build();
       calls.roster!.myJoin = (true, joinedAt);
       calls.roster!.joins = {
-        '${calls.client.userID}:AAAAAAAAAA': (
+        '${calls.client.userID}:zzzzzzzzzz': (
           true,
-          joinedAt.subtract(const Duration(seconds: 1)),
+          joinedAt.subtract(const Duration(seconds: 20)),
         ),
       };
       calls.remotePresent = true;
-      calls.devicesInCall = [calls.client.deviceID!];
+      calls.devicesInCall = [calls.client.deviceID!, 'zzzzzzzzzz'];
       await call.start(roomStub(calls.client), video: false);
-      expect(calls.roster!.announcedCapturing.last, isNotNull);
+      await pumpEventQueue();
+      expect(call.isRecording, isTrue);
       trace.steps.clear();
+      calls.roster!.traceWrites = true;
 
-      // Not pumped: the roster notifies synchronously, so this is the instant
-      // after the election decided and before its reconcile has run.
+      capture.tapWorks = false;
       calls.devicesInCall = ['AAAAAAAAAA', calls.client.deviceID!];
+      await pumpEventQueue();
 
       expect(
-        trace.steps,
-        isNot(contains('capture.stop')),
-        reason: 'the audio has not stopped yet',
-      );
-      expect(
-        calls.roster!.announcedCapturing.last,
-        isNull,
-        reason: 'and the retraction is already on the wire',
+        trace.steps.indexOf('publish(not recording)'),
+        allOf(
+          greaterThanOrEqualTo(0),
+          lessThan(trace.steps.indexOf('capture.stop')),
+        ),
+        reason: 'the siblings hear it before the audio stops, not after',
       );
     });
 
@@ -3119,9 +3254,11 @@ void main() {
       calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
       await call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
       expect(calls.roster!.announcedCapturing.last, isNotNull);
 
       call.setMuted(true);
+      await pumpEventQueue();
 
       expect(calls.roster!.announcedCapturing.last, isNull);
     });
