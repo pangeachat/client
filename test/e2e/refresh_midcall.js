@@ -9,6 +9,7 @@
 // against a sleep. The Return button, like the ring banner, lives in an
 // overlay Flutter's semantics tree does not carry -- it is clicked through
 // the page text fallback and PROVEN by the call resuming on the server.
+const labels = require('./labels');
 const h = require('./harness');
 const { ui, mx, wait } = h;
 
@@ -24,19 +25,29 @@ async function pageText(page) {
 }
 
 async function clickReturn(page) {
-  // Semantics labels first -- innerText does not carry aria-labels, which is
-  // where Flutter surfaces button text -- then any DOM node whose text or
-  // label says Return.
-  const r = await ui.findRect(page, 'Return');
-  if (r) { await page.mouse.click(r.x, r.y); return true; }
-  return page.evaluate(() => {
+  // Through the LABEL SYSTEM, by l10n key, exactly as `returnOffered` reads it.
+  //
+  // This used to look for the literal string "Return", which is only the
+  // button's name in English. `calltester` learns English FROM Hindi, so its
+  // interface is Hindi and the button says so -- and the offer was therefore
+  // detected (that check goes by key) and then never clickable. Three checks
+  // failed on a button that was on screen the whole time, and the scenario
+  // read as "the app does not resume a refreshed call".
+  if (await ui.clickControl(page, 'ret').then(() => true).catch(() => false)) {
+    return true;
+  }
+  // Last resort, still locale-aware: any node carrying one of the key's known
+  // translations.
+  const names = labels.labelsFor('callReturn');
+  return page.evaluate((wanted) => {
     const nodes = [...document.querySelectorAll('flt-semantics, [role=button], button, [aria-label]')];
-    const hit = nodes.find((n) =>
-      /(^|\s)Return(\s|$)/.test(n.textContent || '') ||
-      /(^|\s)Return(\s|$)/.test(n.getAttribute && (n.getAttribute('aria-label') || '')));
+    const hit = nodes.find((n) => {
+      const t = `${n.textContent || ''} ${(n.getAttribute && n.getAttribute('aria-label')) || ''}`;
+      return wanted.some((w) => t.includes(w));
+    });
     if (hit) { hit.click(); return true; }
     return false;
-  });
+  }, names);
 }
 
 /// Whether the Return offer is on screen, read every way the page can say it.

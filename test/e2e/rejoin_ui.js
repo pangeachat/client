@@ -197,7 +197,15 @@ h.refuseIfAnotherRunIsLive();
   h.check('rejoin', 'B is offered the way back', offered, 'no Return banner');
 
   if (offered) {
-    for (let i = 0; i < 5; i++) { if (await clickByText(B.page, 'Return')) break; await wait(1200); }
+    // By l10n KEY, not by the English word: `calltester` learns English from
+    // Hindi, so its interface -- and this button -- is in Hindi. Asking for
+    // "Return" finds nothing and the scenario reads as a product that will not
+    // resume a call, when the button was on screen the whole time.
+    for (let i = 0; i < 5; i++) {
+      const took = await ui.clickControl(B.page, 'ret').then(() => true).catch(() => false);
+      if (took || await clickByText(B.page, 'Return')) break;
+      await wait(1200);
+    }
     await wait(9000);
     await ensurePanel(B.page);
     const secs = await liveClock(B.page);
