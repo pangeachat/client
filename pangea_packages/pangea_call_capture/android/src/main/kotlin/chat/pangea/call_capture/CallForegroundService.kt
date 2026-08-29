@@ -64,6 +64,53 @@ class CallForegroundService : Service() {
     var onAction: ((String) -> Unit)? = null
 
     /**
+     * Actions that arrived while nobody was listening, for the call currently
+     * being served.
+     *
+     * The claim is sent unawaited from Dart, so there is a window between the
+     * service showing its notification and the engine with the call owning the
+     * bridge. A Hang Up tapped in it used to reach a null listener and vanish,
+     * and so did `promotion-failed` -- the one message that tells the call it
+     * is NOT protected in the background, which is worse than a lost button.
+     *
+     * Bounded, because this is a hole to bridge and not a mailbox. Cleared
+     * whenever a different call starts being served, which is what makes
+     * draining it unconditionally safe: nothing in here can belong to a call
+     * other than the one a claim is arriving for, so a queued Hang Up can
+     * never end the call that replaced it. That is the same rule the
+     * generation check at the tap site enforces, kept true a second way.
+     */
+    private val pendingActions = ArrayDeque<String>()
+
+    /** Hands [action] to whoever is listening, or holds it until someone is. */
+    fun deliverAction(action: String) {
+      val ear = onAction
+      if (ear != null) {
+        ear(action)
+        return
+      }
+      synchronized(pendingActions) {
+        while (pendingActions.size >= 8) pendingActions.removeFirst()
+        pendingActions.addLast(action)
+      }
+    }
+
+    /** Forgets anything queued: a different call is being served now. */
+    fun forgetPendingActions() {
+      synchronized(pendingActions) { pendingActions.clear() }
+    }
+
+    /** Gives a newly-claimed listener whatever it missed. */
+    fun drainPendingActions(ear: (String) -> Unit) {
+      val due = synchronized(pendingActions) {
+        val copy = pendingActions.toList()
+        pendingActions.clear()
+        copy
+      }
+      due.forEach(ear)
+    }
+
+    /**
      * The one platform gate. startForegroundService, notification channels
      * and typed promotion all arrived in O; on the handful of API 24-25
      * devices the app still admits, the service simply does not exist --
@@ -213,6 +260,8 @@ class CallForegroundService : Service() {
           // cannot get here: the loser is refused by the `active` gate in
           // start() and never sends an intent at all.
           servingGeneration = gen
+          // Anything held for the previous call is now meaningless.
+          forgetPendingActions()
           peer = intent.getStringExtra(EXTRA_PEER) ?: peer
           muteLabel = intent.getStringExtra(EXTRA_MUTE) ?: muteLabel
           channelName = intent.getStringExtra(EXTRA_CHANNEL) ?: channelName
@@ -224,6 +273,8 @@ class CallForegroundService : Service() {
         muteLabel = intent.getStringExtra(EXTRA_MUTE) ?: ""
         channelName = intent.getStringExtra(EXTRA_CHANNEL) ?: ""
         servingGeneration = gen
+        // Anything held for the previous call is now meaningless.
+        forgetPendingActions()
         if (promote(camera = false)) {
           running = true
         } else {
@@ -237,7 +288,7 @@ class CallForegroundService : Service() {
           // is before this ran, so without this it goes on believing the call
           // is protected in the background by a service that has just stopped.
           active = false
-          onAction?.invoke("promotion-failed")
+          deliverAction("promotion-failed")
           stopSelf()
         }
       }
@@ -268,7 +319,7 @@ class CallForegroundService : Service() {
           !promote(camera = intent.getBooleanExtra(EXTRA_VIDEO, false))
         ) {
           Log.w("PangeaCall", "the camera type was refused; audio only")
-          onAction?.invoke("types-refused")
+          deliverAction("types-refused")
         }
       }
       ACTION_STOP -> {
@@ -305,15 +356,16 @@ class CallForegroundService : Service() {
           Log.i("PangeaCall", "ignoring a stale ${intent.action} for $actionGen")
           return START_NOT_STICKY
         }
-        val listener = onAction
         // Logged with whether anyone is listening: a claim that never
         // happened is otherwise indistinguishable from a button that does
         // nothing, which is exactly how this went unnoticed until a phone.
+        // It is no longer LOST when nobody is -- see [deliverAction] -- but
+        // the line still says which of the two happened.
         Log.i(
           "PangeaCall",
-          "notification action ${intent.action}; listener=${listener != null}",
+          "notification action ${intent.action}; listener=${onAction != null}",
         )
-        listener?.invoke(if (intent.action == ACTION_HANGUP) "hangup" else "mute")
+        deliverAction(if (intent.action == ACTION_HANGUP) "hangup" else "mute")
         // A hangup from the notification tears the call down, and the call's
         // own teardown stops this service; nothing more to do here.
       }

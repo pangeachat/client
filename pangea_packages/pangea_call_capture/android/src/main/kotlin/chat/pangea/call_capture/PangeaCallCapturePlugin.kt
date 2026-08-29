@@ -161,12 +161,22 @@ class PangeaCallCapturePlugin :
         // takes the claim WITH it, so a superseded engine detaching later
         // cannot clear a handler that is no longer its own.
         actionClaim = ++currentActionClaim
-        CallForegroundService.onAction = { action ->
+        val forward: (String) -> Unit = { action ->
           handler.post {
             Log.i("PangeaCallCapture", "forwarding notification action: $action")
             methodChannel?.invokeMethod("action", action)
           }
         }
+        CallForegroundService.onAction = forward
+        // Anything the service held while nobody was listening goes to the
+        // handler that just took the bridge. The claim is sent unawaited from
+        // Dart -- it has to be, `onAction` returns the epoch its caller needs
+        // synchronously -- so there is always a window between the
+        // notification appearing and this running. A Hang Up tapped in it used
+        // to reach a null listener and vanish; so did `promotion-failed`,
+        // which is the message telling the call it is NOT protected in the
+        // background.
+        CallForegroundService.drainPendingActions(forward)
         result.success(null)
       }
       "fgs_stop" -> {
