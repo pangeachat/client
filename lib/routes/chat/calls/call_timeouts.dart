@@ -25,11 +25,14 @@ import 'package:matrix/matrix.dart';
 /// 2. **`ActiveCall.endedDeliberatelyWithin`.** That constant separates "they
 ///    pressed end" from "their device died", and it was itself derived from
 ///    these two numbers: the earliest a SERVER-written retraction can appear is
-///    `applyLeave - restart` after a device stops heartbeating, and anything
+///    `applyLeave - (2 * maxRestart + requestBudget)` after a device stops
+///    heartbeating -- one restart may be lost, so the leave can already be
+///    that old when the device dies -- and anything
 ///    sooner than that cannot be the server's. Raising the restart interval
 ///    alone moves that retraction EARLIER, which is what would let a crash be
 ///    reported as a deliberate hangup. The two constants have to move together,
-///    and `endedDeliberatelyWithin < applyLeave - maxRestart` is what says so.
+///    and `endedDeliberatelyWithin < applyLeave - (2 * maxRestart +
+///    requestBudget)` is what says so.
 ///
 ///    **That relation is necessary, not sufficient, and the gap is not this
 ///    change's.** `ActiveCall` measures the window from when THIS CLIENT saw
@@ -39,7 +42,8 @@ import 'package:matrix/matrix.dart';
 ///    `applyLeave - restart`, the server's cleanup arrives first and a crash is
 ///    read as a hangup no matter what these two numbers are. It is true of the
 ///    SDK's 18s/4s as well; closing it would need
-///    `applyLeave - maxRestart > SFU retention + endedDeliberatelyWithin`,
+///    `applyLeave - (2 * maxRestart + requestBudget) > SFU retention +
+///    endedDeliberatelyWithin`,
 ///    which is a much longer apply-leave and a decision of its own. What these
 ///    numbers guarantee is only the direction: the earliest retraction is never
 ///    moved EARLIER than the SDK would have put it.
@@ -48,15 +52,36 @@ import 'package:matrix/matrix.dart';
 ///    reason not to is the load, which is the whole point of the change.
 ///
 /// What the longer [applyLeave] costs: a device that DIES rather than hanging
-/// up leaves its membership in room state for up to thirty seconds instead of
-/// eighteen. Nothing reads that as busy — `CallService.isBusy` is local session
+/// up leaves its membership in room state for up to forty-five seconds instead
+/// of eighteen. Nothing reads that as busy — `CallService.isBusy` is local session
 /// state — so the visible effect is that a dead call's Return offer can stand
 /// twelve seconds longer, which is a trade this feature had already accepted.
 class CallDelayedLeave {
   CallDelayedLeave._();
 
   /// How long after the last restart the homeserver applies the leave.
-  static const applyLeave = Duration(seconds: 30);
+  ///
+  /// Forty-five rather than thirty, and it is the crash discriminator that
+  /// sets the floor, not the load. A device may die with a delayed leave that
+  /// is already `2 * maxRestart + requestBudget` old -- the design tolerates
+  /// ONE lost restart, which is the whole reason that invariant exists -- so
+  /// the earliest a SERVER-written retraction can appear is
+  /// `applyLeave - (2 * maxRestart + requestBudget)`, not the
+  /// `applyLeave - maxRestart` this file first claimed. At thirty that is
+  /// three seconds, comfortably inside [ActiveCall.endedDeliberatelyWithin]'s
+  /// thirteen, so a crash could be reported to the other person as a
+  /// deliberate hangup -- and worse, three seconds is SOONER than the SDK's
+  /// own five, so the load fix was buying its req/s with exactly the
+  /// regression its second invariant was written to forbid.
+  ///
+  /// Raised rather than shrinking the interval, because the interval is what
+  /// costs money: load is one write per restart per participant, and
+  /// applyLeave appears nowhere in it. The whole cost of the change is that a
+  /// device which DIES leaves its membership standing for up to forty-five
+  /// seconds instead of thirty, so a dead call's Return offer can stand that
+  /// much longer -- the same trade this feature already accepted going from
+  /// the SDK's eighteen to thirty.
+  static const applyLeave = Duration(seconds: 45);
 
   /// The narrowest and widest restart interval a device may draw.
   ///

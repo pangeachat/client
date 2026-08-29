@@ -249,7 +249,11 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
         // showing that ring can put its own prompt away -- otherwise it goes
         // on offering to answer a call the caller is already tearing down.
         declines: service.ownDeclines().listen((event) {
-          if (!mounted) return;
+          // Through the same gate as everything else. Cancelling a stream does
+          // not unqueue what it has already handed over, so a decline for an
+          // account that has just signed out can still land here -- and it
+          // would then read that account's service and put its prompt away.
+          if (!_serving(account)) return;
           final target = service.declineTarget(event);
           if (target == null) return;
           // Remembered as well as dismissed, so a ring still working its way
@@ -565,7 +569,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// and room state through a client that is being torn down. The subscription
   /// map is the record of which accounts this banner is still serving.
   Future<void> _replayMissed(CallService service, matrix.Client account) async {
-    if (!mounted || !_accounts.containsKey(account)) return;
+    if (!_serving(account)) return;
     final List<IncomingCallNotification> missed;
     try {
       missed = await service.ringsMissed();
@@ -573,7 +577,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       matrix.Logs().w('Could not look for calls missed while away', e, s);
       return;
     }
-    if (!mounted || !_accounts.containsKey(account)) return;
+    if (!_serving(account)) return;
     for (final ring in missed) {
       _offer(ring, account);
     }
@@ -660,12 +664,29 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// already gone, and a late stream event, a watcher or a tap would act as an
   /// account that has signed out.
   CallService? _serviceFor(matrix.Room room) {
-    if (!mounted) return null;
-    final record = _accounts[room.client];
-    if (record == null) return null;
-    if (!Matrix.of(context).widget.clients.contains(room.client)) return null;
-    return record.service;
+    if (!_serving(room.client)) return null;
+    return _accounts[room.client]?.service;
   }
+
+  /// Whether this banner is still serving [account] -- the whole liveness rule,
+  /// in one place.
+  ///
+  /// Both halves are load-bearing and neither implies the other. The
+  /// subscription map is the record of which accounts this banner took on, and
+  /// `Matrix.clients` is the record of which are still signed in; the map is
+  /// reconciled from a post-frame callback, so between a logout and that pass
+  /// it still holds an account that has already gone.
+  ///
+  /// Stated ONCE because it was previously restated at each call site and the
+  /// restatements disagreed: the missed-call replay checked only the map, and
+  /// the own-declines watcher checked only `mounted`, so both could act as an
+  /// account that had signed out. Every ring-scoped path -- offering,
+  /// answering, declining, dismissing, replaying, watching -- goes through
+  /// here or through [_serviceFor], which is this plus the service lookup.
+  bool _serving(matrix.Client account) =>
+      mounted &&
+      _accounts.containsKey(account) &&
+      Matrix.of(context).widget.clients.contains(account);
 
   /// Turns a call down as BUSY, so the caller hears an engaged tone instead
   /// of ringing into nothing until it times out as a missed call.

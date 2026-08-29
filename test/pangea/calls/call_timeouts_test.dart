@@ -46,9 +46,20 @@ void main() {
       // older than these constants and the SDK's own 18s/4s has it too; it is
       // written down in [CallDelayedLeave] and in endedDeliberatelyWithin's own
       // comment. What this asserts is only that our numbers do not ADD to it.
+      // `applyLeave - maxRestart` is the WRONG bound and this test asserted it
+      // for a while. It assumes the delayed leave is at most one restart old,
+      // which contradicts the invariant asserted below: the interval is chosen
+      // so that one restart may be LOST and the membership still survive. A
+      // device can therefore die with a leave that is already
+      // `2 * maxRestart + requestBudget` old, and the homeserver applies it
+      // that much sooner.
       expect(
         ActiveCall.endedDeliberatelyWithin,
-        lessThan(CallDelayedLeave.applyLeave - CallDelayedLeave.maxRestart),
+        lessThan(
+          CallDelayedLeave.applyLeave -
+              (CallDelayedLeave.maxRestart * 2 +
+                  CallDelayedLeave.requestBudget),
+        ),
       );
     });
 
@@ -58,11 +69,17 @@ void main() {
       // as late as the SDK would have put it -- otherwise a load fix would have
       // bought its req/s by making a crash more likely to be reported to the
       // other person as a deliberate hangup.
+      // Measured with the same corrected bound on both sides, or the
+      // comparison flatters us: the SDK's shorter interval leaves it less
+      // exposed to a missed restart than ours does.
       final sdk = CallTimeouts();
-      expect(
-        CallDelayedLeave.applyLeave - CallDelayedLeave.maxRestart,
-        greaterThan(sdk.delayedEventApplyLeave - sdk.delayedEventRestart),
-      );
+      final ours =
+          CallDelayedLeave.applyLeave -
+          (CallDelayedLeave.maxRestart * 2 + CallDelayedLeave.requestBudget);
+      final theirs =
+          sdk.delayedEventApplyLeave -
+          (sdk.delayedEventRestart * 2 + CallDelayedLeave.requestBudget);
+      expect(ours, greaterThan(theirs));
     });
 
     test('one lost restart never costs the membership', () {

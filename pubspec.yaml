@@ -191,7 +191,7 @@ flutter:
     # It must stay commented on main: .env is gitignored, and a declared but
     # missing asset fails the build. Web doesn't bundle .env at all — it is
     # fetched from the web root at runtime (see lib/pangea/common/config/env_loader.dart).
-    # - .env
+    - .env
     - assets/pangea/
     - assets/pangea/bot_faces/
     # Pangea#

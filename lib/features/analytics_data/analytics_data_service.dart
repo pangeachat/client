@@ -89,6 +89,13 @@ class AnalyticsDataService {
   /// the account's open span + tracker).
   String? get accountUserId => _accountClient.userID;
 
+  /// The client instance this service belongs to.
+  ///
+  /// Exposed so a per-account teardown can tell "the service under this name"
+  /// from "the service that is MINE". On web every account shares one client
+  /// name, so those differ the moment someone signs out and back in.
+  Client get accountClient => _accountClient;
+
   /// The account's current bearer, for the best-effort dosage lane. Read live
   /// for the same reason as [accountUserId]: tokens refresh mid-session, and a
   /// snapshot taken at construction would post a heartbeat flush under a stale

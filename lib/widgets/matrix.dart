@@ -841,7 +841,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // Pangea#
       final loggedInWithMultipleClients = widget.clients.length > 1;
       if (state == LoginState.loggedOut) {
-        await _cancelSubs(c.clientName);
+        await _cancelSubs(c.clientName, owner: c);
         widget.clients.remove(c);
         ClientManager.removeClientNameFromStore(c.clientName, store);
         // #Pangea
@@ -910,7 +910,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // Pangea#
   }
 
-  Future<void> _cancelSubs(String name) async {
+  /// [owner], when given, is the client this teardown belongs to. Everything
+  /// keyed by NAME below is safe to clear either way -- a name really is what
+  /// identifies a subscription -- but the SERVICES are per client instance, and
+  /// on web every account shares one client name (`PlatformInfos.clientName`),
+  /// so a sign-out followed by a sign-in reuses it. Passing the client lets
+  /// [disposeAccountServices] refuse to dispose a successor's live service.
+  Future<void> _cancelSubs(String name, {Client? owner}) async {
     onRoomKeyRequestSub[name]?.cancel();
     onRoomKeyRequestSub.remove(name);
     onKeyVerificationRequestSub[name]?.cancel();
@@ -922,7 +928,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     onUiaRequest[name]?.cancel();
     onUiaRequest.remove(name);
-    await disposeAccountServices(name);
+    await disposeAccountServices(name, owner: owner);
     // Pangea#
   }
 
@@ -967,13 +973,38 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// service/database), and the map entries are removed only AFTER disposal
   /// completes — so [analyticsDataService] returns the still-closing service
   /// mid-teardown instead of resurrecting a fresh one for a logged-out account.
-  Future<void> disposeAccountServices(String clientName) {
+  /// [owner] is the client this teardown belongs to, when there is one.
+  ///
+  /// Services are per client INSTANCE; the map that holds them is keyed by
+  /// client NAME. Those are the same thing right up until they are not: on web
+  /// every account uses one name (`PlatformInfos.clientName`), so signing out
+  /// and signing back in reuses it, and a teardown scheduled for the account
+  /// that LEFT can arrive after the new one has installed its own service
+  /// under that key. Disposing by name there tears down the live account's
+  /// call service, and the incoming-call banner stays subscribed to a disposed
+  /// instance that no later lookup can return -- an account that silently
+  /// stops ringing, which is the failure the eviction guard below was already
+  /// written to avoid at the OTHER end.
+  ///
+  /// So a teardown that names its owner acts only on that client's own things.
+  /// Widget disposal passes none, because there the whole app is going and
+  /// whatever is current is exactly what should go with it.
+  Future<void> disposeAccountServices(String clientName, {Client? owner}) {
     return _disposingServices[clientName] ??= () async {
       // #Pangea
       // Captured BEFORE any await, so the entry evicted in `finally` is the
       // one this teardown actually disposed and not whatever occupies the key
       // by the time it finishes.
-      final disposingCall = _callServices[clientName];
+      final held = _callServices[clientName];
+      final heldAnalytics = _analyticsServices[clientName];
+      // ... and only what is OURS. See the doc above. A teardown with no owner
+      // (widget disposal) owns everything, because the app itself is going.
+      bool ours(Client? serviceClient) =>
+          owner == null || identical(serviceClient, owner);
+      final disposingCall = ours(held?.client) ? held : null;
+      final disposingAnalytics = ours(heldAnalytics?.accountClient)
+          ? heldAnalytics
+          : null;
       // Pangea#
       try {
         _activityAutoSaveServices[clientName]?.dispose();
@@ -985,12 +1016,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // could still hear a learner who had signed out, and the phone still
         // showed a call in progress for an account that was gone.
         final live = activeCall.value;
-        if (live != null && live.room.client.clientName == clientName) {
+        // By the client OBJECT when we have one. Matching on the name alone
+        // would let a departing account end the SUCCESSOR's call, for the same
+        // reused-name reason described above.
+        if (live != null &&
+            (owner == null
+                ? live.room.client.clientName == clientName
+                : identical(live.room.client, owner))) {
           activeCall.value = null;
           live.dispose();
         }
         await disposingCall?.dispose();
-        await _analyticsServices[clientName]?.dispose();
+        await disposingAnalytics?.dispose();
       } finally {
         _activityAutoSaveServices.remove(clientName);
         // #Pangea
@@ -1004,7 +1041,11 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           _callServices.remove(clientName);
         }
         // Pangea#
-        _analyticsServices.remove(clientName);
+        // On the same terms as the call service above: only if it is still
+        // the one this teardown disposed.
+        if (identical(_analyticsServices[clientName], disposingAnalytics)) {
+          _analyticsServices.remove(clientName);
+        }
         _disposingServices.remove(clientName);
       }
     }();
