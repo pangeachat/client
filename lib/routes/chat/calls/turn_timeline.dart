@@ -104,16 +104,15 @@ class CallTurn {
   });
 }
 
-/// The turn-by-turn view of a call transcript: one column, ordered by
-/// [CallTurn.at].
+/// The turn-by-turn view of a call transcript, ordered by [CallTurn.at].
 ///
-/// A call is a shared recording, not messages each side sent to the other, so
-/// drawing it as opposing chat bubbles would claim a back-and-forth the audio
-/// itself does not distinguish. It stays one column for that reason, and the
-/// rule doing most of the work of making a plain list of turns read as a
-/// conversation anyway is this: a speaker CHANGE draws an avatar, a name and
-/// a time; a turn from the same speaker as the one before it draws none of
-/// that, and indents underneath.
+/// Drawn as the chat it came from: your turns on one side, theirs on the
+/// other, in the same two fills `message.dart` uses so the two screens agree.
+/// A call between the same two people whose conversation this is reads as that
+/// conversation; one column of avatar, name, time and text read as a meeting
+/// minute. A speaker CHANGE opens a run, drawing their face, their name and a
+/// time; a turn from the same speaker draws none of those and squares off the
+/// corner adjacent to its neighbour.
 ///
 /// Deliberately not a [ListView] or [SliverList] itself -- the caller already
 /// owns a scrollable (the transcript dialog's, today), and a scrollable
