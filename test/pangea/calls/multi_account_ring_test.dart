@@ -56,6 +56,12 @@ void main() {
 
   /// The other account they are signed in to, and the one being called.
   late Client other;
+
+  /// An account that is NOT in `clients` — a client mid-logout, or one whose
+  /// service has already been evicted. Built here rather than inside a test:
+  /// `getTestClient` opens a database, and real async work inside
+  /// `testWidgets`' fake-async zone never completes.
+  late Client departed;
   late SharedPreferences store;
 
   setUpAll(() async {
@@ -83,11 +89,16 @@ void main() {
     // same call service and this whole file would prove nothing.
     active = await getTestClient(name: 'active-account');
     other = await getTestClient(name: 'other-account', deviceId: 'OTHERDEVICE');
+    departed = await getTestClient(
+      name: 'departed-account',
+      deviceId: 'GONEDEVICE',
+    );
   });
 
   tearDown(() async {
     await active.dispose();
     await other.dispose();
+    await departed.dispose();
   });
 
   /// A direct chat on [client], because only a direct chat rings.
@@ -297,6 +308,53 @@ void main() {
         find.byKey(const ValueKey(r'$second')),
         findsNothing,
         reason: "another account's call is not a redial of this one",
+      );
+    });
+  });
+
+  group("resolving an account's call service", () {
+    testWidgets('by client object, even when the name resolves to nobody', (
+      tester,
+    ) async {
+      // `callServiceFor(name)` ends in `orElse: () => client`, so a name it
+      // cannot place yields the ACTIVE account's service. Everything scoped to
+      // one call goes through the object-keyed getter instead, because
+      // guessing here means placing, answering or ending a call as somebody
+      // else's account.
+      //
+      // The distinguishing case is an account the list does NOT hold and that
+      // has no service cached yet -- a client mid-logout, or one whose service
+      // was already evicted. For an account still in `clients` both getters
+      // agree, so a test built on one would prove nothing.
+      final state = await pumpBanner(tester);
+
+      expect(
+        identical(state.callServiceForClient(departed).client, departed),
+        isTrue,
+        reason: "an account's own service, never the foregrounded account's",
+      );
+      expect(
+        identical(
+          state.callServiceForClient(other),
+          state.callServiceForClient(other),
+        ),
+        isTrue,
+        reason: 'one service per account: a second VoIP would lose the call',
+      );
+    });
+
+    testWidgets('and the name-keyed getter really does fall back', (
+      tester,
+    ) async {
+      // The behaviour the object-keyed getter exists to avoid, asserted so it
+      // stops being a claim in a comment. It is CORRECT for what it was
+      // written for -- a rebuild during a single-account logout -- and wrong
+      // for anything scoped to one call.
+      final state = await pumpBanner(tester);
+
+      expect(
+        identical(state.callServiceFor('no-such-account').client, active),
+        isTrue,
       );
     });
   });
