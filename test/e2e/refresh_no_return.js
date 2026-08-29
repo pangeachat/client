@@ -43,6 +43,12 @@ async function connectedCall(A, B, attempt) {
 }
 
 (async () => {
+  // Two runs driving the same two accounts fight over the same room, and
+  // the loser reports the PRODUCT broken -- 'the call controls never
+  // appeared' -- when in truth the other run took the room away. This is
+  // the scenario the README lists as not checking yet.
+  h.refuseIfAnotherRunIsLive();
+
   console.log('[1] open both participants');
   const A = await h.openParticipant('learner', ROOM, 9721);
   const B = await h.openParticipant('calltester', ROOM, 9722);
@@ -74,8 +80,13 @@ async function connectedCall(A, B, attempt) {
   if (!mA) { h.report(); process.exit(2); }
   await wait(5000);
 
-  console.log('[3] B dies for good (browser closed)');
-  await B.browser.close();
+  console.log('[3] B dies for good (browser KILLED, not closed)');
+  // SIGKILL, because the check below is about a device that DIED. A polite
+  // close runs the unload path, the app retracts B's membership on the way
+  // out, and A -- correctly -- reads that retraction as "they pressed end"
+  // and ends the call in about two seconds instead of holding B's place.
+  // The scenario then failed on a grace that had never been asked for.
+  await h.kill(B);
 
   // The full path: SFU reconnect window (~15-25s) -> roster drops B ->
   // 'reconnecting' shows -> 20s grace -> nobody returns -> the call ends on

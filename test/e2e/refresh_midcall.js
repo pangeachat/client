@@ -61,6 +61,12 @@ async function rawMembership(token, userId) {
 }
 
 (async () => {
+  // Two runs driving the same two accounts fight over the same room, and
+  // the loser reports the PRODUCT broken -- 'the call controls never
+  // appeared' -- when in truth the other run took the room away. This is
+  // the scenario the README lists as not checking yet.
+  h.refuseIfAnotherRunIsLive();
+
   console.log('[1] open both participants');
   const A = await h.openParticipant('learner', ROOM, 9711);
   const B = await h.openParticipant('calltester', ROOM, 9712);

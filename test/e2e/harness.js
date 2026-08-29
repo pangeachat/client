@@ -222,6 +222,41 @@ async function ensureRoom(p, roomLocalpart) {
   await openRoom(p.page, roomLocalpart);
 }
 
+/// Kills a participant's browser the way a crash does: no unload, no goodbye.
+///
+/// `browser.close()` is a POLITE close. Chrome runs the page's unload path on
+/// the way out, the app tears its call down, and the SDK RETRACTS the call
+/// membership -- which is precisely what a device that died cannot do. The
+/// survivor then sees a retraction land with the departure, reads it as "they
+/// pressed end" (correctly), and ends the call at once instead of holding the
+/// dropped peer's place for the grace.
+///
+/// So a scenario that means "this device is gone" cannot say `close()`. It has
+/// to take the process out from under Chrome, which is what SIGKILL does: no
+/// unload handler runs, nothing is retracted, and the membership is left
+/// standing exactly as a crash leaves it.
+///
+/// Verified from the room's own timeline: under `close()` the peer's
+/// retraction lands at the moment of the close, where a SERVER-applied leave
+/// could not arrive for another 19-30 seconds.
+async function kill(participant) {
+  const proc = participant.browser.process();
+  if (proc) {
+    proc.kill('SIGKILL');
+    // The socket dies with the process; puppeteer's own disconnect tidies the
+    // client side, and awaiting `close()` here would hang on a corpse.
+    participant.browser.disconnect?.();
+  } else {
+    // No handle to the process (a browser we connected to rather than
+    // launched). Say so rather than closing politely and pretending.
+    throw new Error(
+      'cannot kill this browser: no child process handle, so a "crash" here '
+      + 'would really be a polite close and would retract the membership',
+    );
+  }
+  await wait(1500);
+}
+
 /// Reloads a page the way a user does, and WAKES it up again.
 ///
 /// Flutter web only publishes a semantics tree once the placeholder has been
@@ -344,7 +379,7 @@ function report() {
 }
 
 module.exports = {
-  wake, refuseIfAnotherRunIsLive, openParticipant, openRoom, ensureRoom, actUntil,
+  wake, kill, refuseIfAnotherRunIsLive, openParticipant, openRoom, ensureRoom, actUntil,
   recover, mark, since, compare, check, skipped, report, results, inconclusive,
   ui, mx, wait, cfg, APP,
 };
