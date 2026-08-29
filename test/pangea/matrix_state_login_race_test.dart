@@ -98,8 +98,37 @@ void main() {
     // What `_registerSubs`'s listener does the instant it observes
     // `loggedOut`, before it awaits `handleLoginStateChange` and removes
     // the client from `Matrix.clients`.
-    state.markClientTearingDownForTest(client.clientName);
+    state.markClientTearingDownForTest(client);
 
     expect(state.canReuseClientForLogin, isFalse);
+  });
+
+  testWidgets('and keeps refusing while a SECOND same-name client unwinds', (
+    tester,
+  ) async {
+    // Two accounts sharing one client name is the normal case on web, and both
+    // can be unwinding at once. Tracked as a set of NAMES this was a counting
+    // bug: one entry for two teardowns, so whichever finished first cleared it
+    // and a fresh login could take the slot while the other was still tearing
+    // down -- the exact race this guard exists to prevent, reachable through
+    // the guard itself. The name is busy while any client holding it is.
+    final state = await pumpMatrix(tester, <Client>[client]);
+    // `prepareTestClient` hardcodes its client name, so a second one shares the
+    // first's -- which is the case under test. Built inside `runAsync` because
+    // `testWidgets` drives a fake async zone that real database I/O never
+    // completes in.
+    final sameName = await tester.runAsync(prepareTestClient);
+
+    state.markClientTearingDownForTest(client);
+    state.markClientTearingDownForTest(sameName!);
+
+    // The first one finishes its unwind. The second has not.
+    state.unmarkClientTearingDownForTest(client);
+
+    expect(
+      state.canReuseClientForLogin,
+      isFalse,
+      reason: 'the other client of that name is still unwinding',
+    );
   });
 }
