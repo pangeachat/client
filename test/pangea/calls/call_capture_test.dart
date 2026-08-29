@@ -1217,6 +1217,137 @@ void main() {
       await capture.start(track);
     });
   });
+
+  group('a release that is still deciding', () {
+    // All three of these stand the same choreography up, because it is the one
+    // window nothing else covers: `_running = true` is set BEFORE the open, so
+    // two merely overlapping starts are refused on the running guard whether
+    // or not a release is counted. What is needed is a release running with no
+    // stop wrapped around it, and only one thing produces that -- a tap that
+    // arrives after the stop it belonged to, which is let go outside the
+    // memoised stop.
+    Future<(CallCaptureService, _OvertakenTap)> midRelease() async {
+      final tap = _OvertakenTap();
+      // Long, so the release under test is still deciding rather than having
+      // timed out and held the tap already.
+      final s = service(withTap: tap, detach: const Duration(seconds: 30));
+      // Left running deliberately: it is the start that gets overtaken, and it
+      // does not finish until its own release does.
+      unawaited(s.start(track));
+      await pumpEventQueue();
+      // Lands while the open is still pending. It finds no detach to take, so
+      // it completes at once and clears the in-flight stop -- and from here
+      // nothing serialises against what the open is about to hand back.
+      await s.stop();
+      tap.finishAttaching();
+      await pumpEventQueue();
+      return (s, tap);
+    }
+
+    test('refuses a start over the tap it has not placed yet', () async {
+      // Across a release the tap it is working on is in NEITHER `_detach` nor
+      // the unreleased list, so both readers answer "nothing attached" about a
+      // tap that is still on the track. A start let past there lays a second
+      // tap over the first and the learner's own voice is counted twice.
+      final (s, tap) = await midRelease();
+
+      await expectLater(s.start(track), throwsStateError);
+
+      // And what the dying tap hands over on its way out belongs to nothing:
+      // the stretch it was opened for is over and no stretch has replaced it.
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+      tap.finishDetach();
+      await pumpEventQueue();
+      await s.stop();
+      await pumpEventQueue();
+      expect(
+        sink.delivered,
+        isEmpty,
+        reason: 'a tap on its way out feeds no run at all',
+      );
+    });
+
+    test('is waited for by a stop, not stepped over', () async {
+      // A stop that concludes "everything is off" while a release is still
+      // deciding walks past the tap that release is about to hold. Only a stop
+      // ever comes back to a held tap, so one held after the last stop of the
+      // call is held for the rest of it -- and every later start refuses.
+      final (s, tap) = await midRelease();
+
+      final stopping = s.stop();
+      await pumpEventQueue();
+      // The detach finally answers, with a refusal. That is retryable, and the
+      // retry belongs to the stop that is running right now.
+      tap.failDetach();
+      await stopping;
+
+      expect(
+        tap.detachAttempts,
+        2,
+        reason: 'the stop came back to the tap its own sweep would have missed',
+      );
+      await s.start(track);
+      expect(s.isRecording, isTrue, reason: 'and nothing is left held');
+    });
+  });
+
+  group('a tap that dies under a live recording', () {
+    test('ends the stretch and says so', () async {
+      // A tap can attach and then fail asynchronously, with nothing thrown and
+      // nothing returned. Left alone the recorder holds a detach it reads as a
+      // live recording for the rest of the call, over a tap that will never
+      // deliver a frame, and the analytics go silently empty.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      var lost = 0;
+      s.onCaptureLost = () => lost++;
+      await s.start(track);
+      expect(s.isRecording, isTrue);
+
+      tap.die();
+      await pumpEventQueue();
+
+      expect(s.isRecording, isFalse, reason: 'the stretch is over');
+      expect(tap.detached, isTrue, reason: 'through the one release path');
+      expect(lost, 1, reason: 'and whoever elects recorders was told');
+    });
+
+    test('does not end the stretch that replaced it', () async {
+      // The report carries the session it was opened for, exactly as the frame
+      // callback does. A tap that dies long after its own stretch ended must
+      // not stop the one running now.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+      final stale = tap.die;
+      await s.stop();
+      await s.start(track);
+
+      var lost = 0;
+      s.onCaptureLost = () => lost++;
+      stale();
+      await pumpEventQueue();
+
+      expect(s.isRecording, isTrue, reason: 'the live stretch is untouched');
+      expect(lost, 0);
+      await s.stop();
+    });
+
+    test('flushes what the learner had already said', () async {
+      // The tap died; the audio before it did not. Ending the stretch through
+      // the ordinary stop is what puts that tail in front of the sink rather
+      // than dropping it with the tap.
+      final tap = _DyingTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+
+      tap.die();
+      await pumpEventQueue();
+
+      expect(sink.delivered.map((c) => c.index), [0]);
+    });
+  });
 }
 
 /// A device that offers no point to read from after echo cancellation.
@@ -1227,7 +1358,11 @@ class _SlowDetachTap implements CallAudioTap {
   final _detaching = Completer<void>();
   void finishDetach() => _detaching.complete();
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     this.onFrames = onFrames;
     return () => _detaching.future;
   }
@@ -1235,15 +1370,22 @@ class _SlowDetachTap implements CallAudioTap {
 
 class _NoTap implements CallAudioTap {
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
-      null;
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async => null;
 }
 
 /// A tap whose detach takes a moment, which is what opens the window for a
 /// second stop to arrive while the first is still unwinding.
 class _SlowTap implements CallAudioTap {
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async =>
       () async => Future<void>.delayed(const Duration(milliseconds: 20));
 }
 
@@ -1251,7 +1393,11 @@ class _SlowTap implements CallAudioTap {
 /// platform one does.
 class _TailOnDetachTap implements CallAudioTap {
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     return () async {
       onFrames(Int16List.fromList(List<int>.filled(8000, 1200)), 16000, 1);
     };
@@ -1263,7 +1409,11 @@ class _TailOnDetachTap implements CallAudioTap {
 /// A tap whose detach throws before it returns anything at all.
 class _ThrowsOnDetachTap implements CallAudioTap {
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async =>
       () => throw StateError('the platform refused, immediately');
 }
 
@@ -1275,11 +1425,14 @@ class _SilentDetachTap implements CallAudioTap {
   final finish = Completer<void>();
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
-      () {
-        detachCalls++;
-        return finish.future;
-      };
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async => () {
+    detachCalls++;
+    return finish.future;
+  };
 }
 
 class _StubbornSlowTap implements CallAudioTap {
@@ -1290,7 +1443,11 @@ class _StubbornSlowTap implements CallAudioTap {
   void finishAttaching() => _attached.complete();
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     await _attached.future;
     return () async {
       detachAttempts++;
@@ -1309,7 +1466,11 @@ class _DrivableTap implements CallAudioTap {
   CallAudioFrames? onFrames;
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     this.onFrames = onFrames;
     return () async => this.onFrames = null;
   }
@@ -1331,7 +1492,11 @@ class _FramesThenFailsTap implements CallAudioTap {
   void finishOpening() => _failing.complete();
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     this.onFrames = onFrames;
     onFrames(speech(100), captureSampleRate, 1);
     if (opens++ > 0) return () async {};
@@ -1349,7 +1514,11 @@ class _LeakingTap implements CallAudioTap {
   int opens = 0;
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     this.onFrames ??= onFrames;
     if (opens++ > 0) return () async {};
     throw StateError('the platform refused after installing the callback');
@@ -1363,8 +1532,74 @@ class _SlowToAttachTap implements CallAudioTap {
   void finishAttaching() => _attached.complete();
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     await _attached.future;
+    return () async => detached = true;
+  }
+}
+
+/// A tap that attaches only when told to, and then will not let go until told
+/// again — so a test can hold a release open and act while it is deciding.
+///
+/// Its frame callback is kept from before the attach completed, because what
+/// the platform hands over on its way out is part of what a release has to get
+/// right.
+class _OvertakenTap implements CallAudioTap {
+  final _attached = Completer<void>();
+  Completer<void> _detaching = Completer<void>();
+  CallAudioFrames? onFrames;
+  int detachAttempts = 0;
+
+  void finishAttaching() => _attached.complete();
+
+  void finishDetach() => _detaching.complete();
+
+  /// The detach finally answers, with a refusal. Nothing is left in flight, so
+  /// this is the one case where asking again is safe — and the second ask
+  /// succeeds, so a test can tell "came back to it" from "gave up on it".
+  void failDetach() {
+    final refusing = _detaching;
+    _detaching = Completer<void>()..complete();
+    refusing.completeError(StateError('the platform would not let go'));
+  }
+
+  @override
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
+    this.onFrames = onFrames;
+    await _attached.future;
+    return () {
+      detachAttempts++;
+      return _detaching.future;
+    };
+  }
+}
+
+/// A tap that attaches cleanly and then dies where nobody asked it to, which is
+/// what a renderer whose capture failed asynchronously does.
+class _DyingTap implements CallAudioTap {
+  CallAudioFrames? onFrames;
+  bool detached = false;
+
+  /// The report the tap was handed, so a test can fire it at a moment of its
+  /// choosing — including long after the stretch it belonged to ended.
+  late TapDied die;
+
+  @override
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
+    this.onFrames = onFrames;
+    die = onDead;
     return () async => detached = true;
   }
 }

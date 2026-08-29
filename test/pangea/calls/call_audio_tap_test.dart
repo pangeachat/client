@@ -7,7 +7,13 @@ import 'package:pangea_call_capture/pangea_call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
 
 import 'package:livekit_client/livekit_client.dart'
-    show AudioFormat, AudioFrame, AudioTrack;
+    show
+        AudioFormat,
+        AudioFrame,
+        AudioFrameCallback,
+        AudioRendererOptions,
+        AudioTrack,
+        CancelListenFunc;
 
 /// A platform side that can be made to behave the ways a real one does.
 class FakeCapture extends PangeaCallCapture {
@@ -138,7 +144,11 @@ void main() {
       final tap = PostEchoCancellationTap(capture: platform);
       final got = <(Int16List, int)>[];
 
-      final detach = await tap.open(_noTrack, (s, r, c) => got.add((s, r)));
+      final detach = await tap.open(
+        _noTrack,
+        (s, r, c) => got.add((s, r)),
+        onDead: () {},
+      );
       await platform.emit([1, -1, 32767, -32768], 48000);
 
       expect(detach, isNotNull);
@@ -158,7 +168,7 @@ void main() {
         final platform = FakeCapture(attaches: false);
         final tap = PostEchoCancellationTap(capture: platform);
 
-        final detach = await tap.open(_noTrack, (_, _, _) {});
+        final detach = await tap.open(_noTrack, (_, _, _) {}, onDead: () {});
 
         expect(detach, isNull);
         expect(
@@ -173,7 +183,7 @@ void main() {
       final platform = FakeCapture(startThrows: StateError('no webrtc yet'));
       final tap = PostEchoCancellationTap(capture: platform);
 
-      final detach = await tap.open(_noTrack, (_, _, _) {});
+      final detach = await tap.open(_noTrack, (_, _, _) {}, onDead: () {});
 
       expect(detach, isNull);
       expect(platform.watching, isFalse);
@@ -186,7 +196,7 @@ void main() {
       final platform = FakeCapture();
       final tap = PostEchoCancellationTap(capture: platform);
 
-      final detach = await tap.open(_noTrack, (_, _, _) {});
+      final detach = await tap.open(_noTrack, (_, _, _) {}, onDead: () {});
       await detach!.call();
 
       expect(platform.teardown.first, 'stop');
@@ -196,7 +206,7 @@ void main() {
       final platform = FakeCapture();
       final tap = PostEchoCancellationTap(capture: platform);
 
-      final detach = await tap.open(_noTrack, (_, _, _) {});
+      final detach = await tap.open(_noTrack, (_, _, _) {}, onDead: () {});
       // Awaited with nothing pumped afterwards: a detach that only schedules the
       // work would leave the tap attached at the moment the caller believes the
       // recording has stopped.
@@ -219,7 +229,7 @@ void main() {
 
       await PostEchoCancellationTap(
         capture: platform,
-      ).open(_noTrack, (_, _, _) {});
+      ).open(_noTrack, (_, _, _) {}, onDead: () {});
 
       expect(
         listeningWhenStarted,
@@ -237,12 +247,109 @@ void main() {
       final platform = FakeCapture(attaches: false);
       final detach = await PostEchoCancellationTap(
         capture: platform,
-      ).open(_noTrack, (_, _, _) {});
+      ).open(_noTrack, (_, _, _) {}, onDead: () {});
       expect(detach, isNull);
       expect(
         platform.watching,
         isFalse,
         reason: 'a stale listener beside a later live one is the defect',
+      );
+    });
+  });
+
+  group('a renderer that attaches and then stays silent', () {
+    /// Short enough that the tests need not wait a real attach out.
+    const soon = Duration(milliseconds: 10);
+    const wellPast = Duration(milliseconds: 60);
+
+    TrackRendererTap watching() => const TrackRendererTap(
+      sampleRate: 16000,
+      channels: 1,
+      firstFrameTimeout: soon,
+    );
+
+    test('is reported, rather than passing for a live recording', () async {
+      // addAudioRenderer registers synchronously and starts the capture that
+      // feeds it asynchronously inside livekit_client. When that capture fails
+      // the package logs and goes quiet: nothing throws, nothing is returned,
+      // and open() hands back a detach anyway. The recorder then reads the
+      // attach as live and goes on believing it is recording for the whole
+      // call, over a renderer that will never deliver a frame.
+      final track = _RendererTrack();
+      var deaths = 0;
+
+      await watching().open(track, (_, _, _) {}, onDead: () => deaths++);
+      await Future<void>.delayed(wellPast);
+
+      expect(deaths, 1, reason: 'the silence has to become an event');
+    });
+
+    test('a delivered frame disarms it', () async {
+      // The other half of the same line. Reporting a working attach dead would
+      // stand a healthy device aside from every later election.
+      final track = _RendererTrack();
+      var deaths = 0;
+
+      await watching().open(track, (_, _, _) {}, onDead: () => deaths++);
+      track.emit();
+      await Future<void>.delayed(wellPast);
+
+      expect(deaths, 0);
+    });
+
+    test('a frame delivered inside the attach disarms it too', () async {
+      // A renderer may call back before addAudioRenderer has even returned, so
+      // the disarm can happen before there is a timer to disarm. Arming one
+      // afterwards would report a device dead for want of a frame it had
+      // already delivered.
+      final track = _RendererTrack(deliverDuringAttach: true);
+      var deaths = 0;
+
+      await watching().open(track, (_, _, _) {}, onDead: () => deaths++);
+      await Future<void>.delayed(wellPast);
+
+      expect(deaths, 0);
+    });
+
+    test('an ordinary detach before the first frame reports nothing', () async {
+      // A stretch of recording short enough to end before its first frame is
+      // not a failure. Reporting one would cost the device the next election
+      // over a recording that was stopped on purpose.
+      final track = _RendererTrack();
+      var deaths = 0;
+
+      final detach = await watching().open(
+        track,
+        (_, _, _) {},
+        onDead: () => deaths++,
+      );
+      await detach!.call();
+      await Future<void>.delayed(wellPast);
+
+      expect(deaths, 0);
+    });
+
+    test('reports without letting the tap go itself', () async {
+      // The report is all this does. Releasing a tap is the caller's single
+      // release path, and a renderer cancelled from in here as well is
+      // cancelled twice -- neither guaranteed idempotent nor guaranteed to
+      // answer the second time.
+      final track = _RendererTrack();
+      var deaths = 0;
+
+      final detach = await watching().open(
+        track,
+        (_, _, _) {},
+        onDead: () => deaths++,
+      );
+      await Future<void>.delayed(wellPast);
+      expect(deaths, 1, reason: 'it did report');
+
+      await detach!.call();
+      expect(
+        track.cancels,
+        1,
+        reason: 'and the caller performed the one and only detach',
       );
     });
   });
@@ -253,6 +360,47 @@ void main() {
 final _noTrack = _UnusedTrack();
 
 class _UnusedTrack implements AudioTrack {
+  @override
+  dynamic noSuchMethod(Invocation i) => super.noSuchMethod(i);
+}
+
+/// A track whose renderer really registers and whose cancel really cancels.
+///
+/// [_UnusedTrack] cannot stand in for this: its noSuchMethod throws, so
+/// [TrackRendererTap.open] itself had never been exercised at all -- only the
+/// static frame conversion beside it.
+class _RendererTrack implements AudioTrack {
+  /// Whether the renderer calls back from INSIDE addAudioRenderer, before it
+  /// has returned. Real ones may.
+  final bool deliverDuringAttach;
+
+  _RendererTrack({this.deliverDuringAttach = false});
+
+  AudioFrameCallback? _onFrame;
+  int cancels = 0;
+
+  @override
+  CancelListenFunc addAudioRenderer({
+    required AudioFrameCallback onFrame,
+    AudioRendererOptions options = const AudioRendererOptions(),
+  }) {
+    _onFrame = onFrame;
+    if (deliverDuringAttach) emit();
+    return () async {
+      cancels++;
+      _onFrame = null;
+    };
+  }
+
+  void emit() => _onFrame?.call(
+    AudioFrame(
+      sampleRate: 16000,
+      channels: 1,
+      data: Uint8List.fromList([0, 0, 1, 0]),
+      format: AudioFormat.Int16,
+    ),
+  );
+
   @override
   dynamic noSuchMethod(Invocation i) => super.noSuchMethod(i);
 }

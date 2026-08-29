@@ -31,6 +31,20 @@ typedef DetachTap = FutureOr<void> Function();
 typedef CallAudioFrames =
     void Function(Int16List samples, int sampleRate, int channels);
 
+/// Says that an attach which ALREADY ANSWERED has turned out to be dead.
+///
+/// Some tap points register synchronously and only then start the capture that
+/// feeds them, so the failure lands after open() has handed back a detach.
+/// Nothing throws and nothing is returned, so the recorder goes on holding what
+/// it reads as a live recording — for the rest of the call, over a tap that will
+/// never deliver a frame. This is how that silence becomes an event.
+///
+/// It only ever REPORTS. Letting the tap go stays the caller's, through the one
+/// release path it already owns: a tap that tore itself down from in here would
+/// be detached twice, and a second detach is neither guaranteed idempotent nor
+/// guaranteed to answer.
+typedef TapDied = void Function();
+
 /// Where a device reads its own outbound call audio from.
 ///
 /// The tap point is the whole correctness argument for attribution: it has to
@@ -45,7 +59,16 @@ abstract class CallAudioTap {
   /// attached — in which case nothing is recorded. That costs the call its
   /// analytics and leaves the conversation itself untouched, which is the right
   /// way round.
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames);
+  ///
+  /// [onDead] carries the one answer that cannot be given by returning or
+  /// throwing, because it is only known later: see [TapDied]. It is REQUIRED
+  /// rather than optional because "this attach can never turn out dead" is a
+  /// claim only a caller can make, and no caller of this can make it.
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  });
 }
 
 /// The WebRTC plugin's own renderer.
@@ -59,10 +82,27 @@ class TrackRendererTap implements CallAudioTap {
   final int sampleRate;
   final int channels;
 
-  const TrackRendererTap({required this.sampleRate, required this.channels});
+  /// How long a registered renderer is given to produce its first frame.
+  ///
+  /// Injected the way the recorder's detach timeout is, so a test need not wait
+  /// it out. Three seconds is far longer than a working attach needs — once the
+  /// capture is running frames arrive every few tens of milliseconds — and
+  /// short enough that a device whose renderer never started can hand the
+  /// recording to another one while the conversation is still going on.
+  final Duration firstFrameTimeout;
+
+  const TrackRendererTap({
+    required this.sampleRate,
+    required this.channels,
+    this.firstFrameTimeout = const Duration(seconds: 3),
+  });
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
     // The format REQUESTED below and the format the audio actually arrives in
     // are two different facts, and only the second one describes the samples.
     // On the web the renderer builds an AudioContext at the requested rate and
@@ -76,15 +116,60 @@ class TrackRendererTap implements CallAudioTap {
     // count is read straight off the platform's own event, exactly as the rate
     // is, and nothing promises it matches the request. So the whole format that
     // travels with the audio is the frame's own, never ours.
+    //
+    // Registering the renderer is where this tap's own failure mode lives, and
+    // it is a SILENT one. addAudioRenderer registers synchronously and starts
+    // the capture that feeds it asynchronously inside livekit_client; when that
+    // capture fails the package logs it and goes quiet. Nothing throws, nothing
+    // is returned, and the non-null detach below reads to the recorder as a
+    // live recording for the rest of the call. The watchdog under it is the
+    // only thing that turns that silence back into an event.
+    //
+    // NULLABLE and `?.cancel()` rather than `late final`: this closure is
+    // handed over BEFORE the variable is assigned, and a renderer that
+    // delivered its first frame synchronously from inside addAudioRenderer
+    // would read an uninitialised late field and crash the attach.
+    Timer? firstFrameTimer;
+    var gotFirstFrame = false;
     final cancel = track.addAudioRenderer(
-      onFrame: (frame) => deliver(frame, onFrames),
+      onFrame: (frame) {
+        gotFirstFrame = true;
+        firstFrameTimer?.cancel();
+        deliver(frame, onFrames);
+      },
       options: AudioRendererOptions(
         sampleRate: sampleRate,
         channels: channels,
         format: AudioFormat.Int16,
       ),
     );
-    return () => cancel();
+    // Armed only if the synchronous case above did not already happen: arming a
+    // watchdog for an event that has been and gone reports a healthy attach
+    // dead the moment the frames pause.
+    //
+    // A mute cannot fire this falsely. call_media.dart sets
+    // `stopAudioCaptureOnMute: false`, so a muted learner's track goes on
+    // delivering silent frames and the recorder drops them itself; silence
+    // reaching here is still a frame.
+    if (!gotFirstFrame) {
+      firstFrameTimer = Timer(firstFrameTimeout, () {
+        Logs().w(
+          'The call audio renderer attached but delivered nothing; '
+          'treating the tap as dead',
+        );
+        // Reported, never released. Cancelling the renderer from in here would
+        // detach it a second time behind the caller's own release path, which
+        // is the one place a tap is ever let go.
+        onDead();
+      });
+    }
+    return () {
+      // Cancelled by an ordinary teardown too. A recording short enough to stop
+      // before its first frame is not a failure, and reporting one would stand
+      // a healthy device aside.
+      firstFrameTimer?.cancel();
+      return cancel();
+    };
   }
 
   /// What a delivered frame becomes. Named so the rate rule above can be
@@ -104,7 +189,19 @@ class PostEchoCancellationTap implements CallAudioTap {
   const PostEchoCancellationTap({this.capture = const PangeaCallCapture()});
 
   @override
-  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+  Future<DetachTap?> open(
+    AudioTrack track,
+    CallAudioFrames onFrames, {
+    required TapDied onDead,
+  }) async {
+    // [onDead] goes unused here, and that is a statement rather than an
+    // oversight: this platform ADJUDICATES its attach. `capture.start()` answers
+    // true or false, so a tap that did not take is an answer in hand by the time
+    // this method returns, and there is no window of the kind the renderer's
+    // silent asynchronous start opens. A watchdog here would only be reporting
+    // the far weaker "attached, then went quiet", which is not what this tap
+    // does when it fails.
+    //
     // Retried briefly: the processing factory is created during WebRTC's own
     // initialization, and the first call of a session can reach here moments
     // before that finishes. Two short retries cover the race; a device where

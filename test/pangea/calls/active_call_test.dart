@@ -406,6 +406,19 @@ class FakeCapture extends CallCaptureService {
     await stop(settleDeliveries: false);
     trace('capture.finish');
   }
+
+  /// The tap died and this recorder said so, which is what the real one does:
+  /// it stops itself first and reports afterwards, so whoever hears it queues
+  /// its restart behind a stop that is already in flight.
+  void loseTap() {
+    unawaited(stop());
+    onCaptureLost?.call();
+  }
+
+  /// The recording is gone and NOBODY was told — the callback was never wired,
+  /// or was lost in a refactor. What is left is a recorder that answers
+  /// isRecording false while its owner still believes it is recording.
+  void loseTapUnannounced() => _recording = false;
 }
 
 /// The SFU's participant list, without an SFU.
@@ -2937,6 +2950,71 @@ void main() {
         reason: 'a tap that did not attach must be attempted again',
       );
       expect(call.isRecording, isTrue);
+    });
+  });
+
+  group('a recording whose tap dies mid-call', () {
+    /// A call with somebody on it and this device recording. Nothing is
+    /// captured while a call is still ringing, so the peer has to be here.
+    Future<(ActiveCall, FakeCalls, FakeCapture)> recording() async {
+      final (call, calls, _, capture) = await build();
+      calls.remotePresent = true;
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isTrue, reason: 'the premise of these tests');
+      trace.steps.clear();
+      return (call, calls, capture);
+    }
+
+    test('is re-attached at once when the recorder says so', () async {
+      // A stop the recorder performed by itself leaves this side's record of
+      // "I am recording" describing a recording that no longer exists, and
+      // that record is what every later election short-circuits on. Detecting
+      // the death and then swallowing it one layer up is the worse failure of
+      // the two: the device goes on out-ranking its siblings for the rest of
+      // the call while recording nothing.
+      final (call, _, capture) = await recording();
+
+      capture.loseTap();
+      await pumpEventQueue();
+
+      expect(
+        trace.steps.where((s) => s == 'capture.start'),
+        hasLength(1),
+        reason: 'the death re-enters the election rather than ending recording',
+      );
+      expect(call.isRecording, isTrue);
+    });
+
+    test('is recovered by the presence clock even if nobody says so', () async {
+      // The floor under the wiring above. An election that short-circuits on
+      // its own cached answer can never notice a recording that stopped
+      // without it; one that asks the recorder recovers the call on the next
+      // tick however the capture was lost, including in ways nothing here is
+      // wired to hear.
+      final (call, _, capture) = await recording();
+
+      capture.loseTapUnannounced();
+      await call.tickReelectionForTest();
+
+      expect(trace.steps.where((s) => s == 'capture.start'), hasLength(1));
+      expect(call.isRecording, isTrue);
+    });
+
+    test('a repeated election over a live recording changes nothing', () async {
+      // The counterweight. Asking the recorder rather than the cache must not
+      // turn every election into a restart -- the check is only there to catch
+      // a recording that has actually gone.
+      final (call, _, _) = await recording();
+
+      await call.tickReelectionForTest();
+      await call.tickReelectionForTest();
+
+      expect(
+        trace.steps.where((s) => s.startsWith('capture.')),
+        isEmpty,
+        reason: 'a live recording is already what was wanted',
+      );
     });
   });
   group('a peer who leaves while the call is still coming up', () {

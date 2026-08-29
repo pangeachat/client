@@ -280,7 +280,30 @@ class ActiveCall extends ChangeNotifier {
     required this.media,
     required this.capture,
     CallForegroundControl? foreground,
-  }) : _foreground = foreground;
+  }) : _foreground = foreground {
+    // Wired here rather than at connect, so a tap that dies during the very
+    // first attach is heard too. The recorder is built per call, so nothing
+    // else is ever listening on this.
+    capture.onCaptureLost = _onCaptureLost;
+  }
+
+  /// The recorder stopped itself, because its tap died.
+  ///
+  /// [_capturing] is written only where THIS side performed the change, so a
+  /// stop nobody here issued leaves it describing a recording that no longer
+  /// exists. [_reconcile] would then read that stale true against a still-true
+  /// [_wanted] and return with nothing to do — for the rest of the call, while
+  /// this device goes on out-ranking its siblings and recording silence.
+  ///
+  /// Clearing it and re-electing is what makes the recovery immediate. The
+  /// truth-reading guard in [_reconcile] is the floor under this: it recovers
+  /// the call on the next presence tick even if this wiring is ever lost.
+  void _onCaptureLost() {
+    if (_ending || _disposed) return;
+    Logs().w('The recording lost its tap; electing a recorder again');
+    _capturing = false;
+    _electRecorder();
+  }
 
   /// The Android foreground service that keeps the call alive off-screen.
   /// Null on every platform that needs none.
@@ -484,7 +507,18 @@ class ActiveCall extends ChangeNotifier {
   /// next election rather than remembered as open.
   Future<void> _reconcile(AudioTrack track) async {
     final wanted = _wanted && !_ending;
-    if (wanted == _capturing) return;
+    // The truth, not the cache. [_capturing] records what this side last DID,
+    // and a recorder whose tap died has stopped without this side doing
+    // anything — so "already recording" can be a statement about a recording
+    // that no longer exists, and returning on it swallows the failure for the
+    // rest of the call. Asking the recorder itself costs one field read per
+    // election and makes the presence clock a floor under every way capture can
+    // be lost, including ones nothing here is wired to hear.
+    //
+    // Only consulted when a recording is WANTED. There is no equivalent lie in
+    // the other direction: nothing starts a recording behind this method's
+    // back.
+    if (wanted == _capturing && (!wanted || capture.isRecording)) return;
     try {
       if (wanted) {
         // Awaited: attaching a tap is a platform call that can fail, and

@@ -156,6 +156,38 @@ class CallCaptureService {
   /// noticed, rather than storing a tap nothing is left tracking.
   int _session = 0;
 
+  /// How many releases are working on a tap right now.
+  ///
+  /// A tap is UNACCOUNTED FOR from the moment a release starts on it until it
+  /// has a definite home again — let go cleanly, or moved into [_unreleased].
+  /// Across that span [_detach] is already null and [_unreleased] is still
+  /// empty, so both of the questions the rest of this class asks about held
+  /// taps answer "nothing attached" about a tap that is very much attached.
+  ///
+  /// A counter rather than a flag because releases nest: [_releaseUnreleased]
+  /// calls [_release] for each entry it retries.
+  ///
+  /// Deliberately NOT extended over `tap.open`. [_running] is set before the
+  /// open, so the attach window is already covered, and an in-flight attach is
+  /// a millisecond timing race rather than anything true about the device.
+  int _releasing = 0;
+
+  /// The release of a tap that arrived after the stop it belonged to, which is
+  /// the one release that runs OUTSIDE the memoised stop.
+  ///
+  /// [_stop] waits for it before retrying residue, so a stop cannot walk past a
+  /// tap that is about to be held: only a stop ever comes back to one, and a
+  /// tap held after the last stop of the call is held for good.
+  Future<void>? _releasingWork;
+
+  /// Told that the tap this recorder was running has died on its own.
+  ///
+  /// Set by whoever owns the election. A stop this side performed by itself
+  /// leaves the owner's bookkeeping describing a recording that no longer
+  /// exists, and an owner that caches "I am recording" then has no reason ever
+  /// to start again. This is how the death reaches it.
+  void Function()? onCaptureLost;
+
   /// Chunks handed to the sink but not yet acknowledged. Awaited on [stop] so a
   /// hangup does not abandon audio the learner already spoke.
   final List<Future<void>> _inFlight = [];
@@ -227,10 +259,16 @@ class CallCaptureService {
     if (_running) {
       throw StateError('A call recording is already running');
     }
-    if (_detach != null || _unreleased.isNotEmpty) {
+    if (_detach != null || _unreleased.isNotEmpty || _releasing > 0) {
       // A previous tap never detached. Refuse rather than stack a second tap on
       // the same track: losing this stretch of analytics is recoverable,
       // counting it twice is not.
+      //
+      // [_releasing] counts too, and it is the case the other two miss: while a
+      // release is deciding, the tap it is working on is in neither of them.
+      // The window is real rather than theoretical — a tap arriving after the
+      // stop it belonged to is released outside the memoised stop, so nothing
+      // above serialises against it.
       throw StateError('The previous audio tap is still attached');
     }
     _stopping = false;
@@ -245,6 +283,10 @@ class CallCaptureService {
         track,
         (samples, sampleRate, channels) =>
             _onFrames(samples, sampleRate, channels, session),
+        // Carries the same session, for the same reason: a tap that dies long
+        // after the stretch it belonged to ended must not end the one running
+        // now.
+        onDead: () => _onTapDied(session),
       );
     } catch (_) {
       // Left clear so a transient failure can be retried by the next election.
@@ -272,7 +314,20 @@ class CallCaptureService {
       // that is already over, so it is released here rather than stored: by the
       // time it arrived another recording may already own [_detach], and writing
       // over that would leave the live tap untracked.
-      await _release(detach);
+      //
+      // Published while it runs, because this is the ONE release that happens
+      // outside [_stopped]: the stop that overtook this start has already
+      // completed and cleared it. A stop arriving now would otherwise finish
+      // its own residue sweep before this release has decided, and whatever
+      // this one goes on to hold would be held with nothing left to come back
+      // to it. Cleared only if it is still ours — a later overtaken start owns
+      // the field once it publishes its own.
+      final releasing = _releasingWork = _release(detach);
+      try {
+        await releasing;
+      } finally {
+        if (identical(_releasingWork, releasing)) _releasingWork = null;
+      }
       return;
     }
     _detach = detach;
@@ -301,6 +356,23 @@ class CallCaptureService {
   /// not the tap the current recording owns, and the two must not displace each
   /// other.
   Future<void> _release(DetachTap? detach) async {
+    // Counted SYNCHRONOUSLY, above everything, and given back only in the
+    // `finally` — so the count covers every branch below, including the clean
+    // one that ends up holding nothing. Counting from inside the branches that
+    // hold instead would leave exactly the window this exists to close: while a
+    // detach is still deciding, the tap is in neither [_detach] nor
+    // [_unreleased], and both readers conclude there is nothing attached.
+    _releasing++;
+    try {
+      await _releaseNow(detach);
+    } finally {
+      _releasing--;
+    }
+  }
+
+  /// The release itself. Split out only so [_release] can count around all of
+  /// it without wrapping every return in a guard.
+  Future<void> _releaseNow(DetachTap? detach) async {
     if (detach == null) return;
     // Invoked inside a guard, and through Future.value because a tap may detach
     // synchronously — the renderer's cancel does. It may also THROW
@@ -372,35 +444,43 @@ class CallCaptureService {
   /// inside this loop.
   Future<void> _releaseUnreleased() async {
     if (_unreleased.isEmpty) return;
-    final pending = List.of(_unreleased);
-    _unreleased.clear();
-    for (final tap in pending) {
-      final running = tap.running;
-      if (running == null) {
-        // It threw last time; nothing is in flight, so ask again.
-        await _release(tap.detach);
-        continue;
+    // Counted for the same reason [_release] is, and it has to begin ABOVE the
+    // clear below: between taking the list and putting back whatever would not
+    // come off, these taps are in no collection at all.
+    _releasing++;
+    try {
+      final pending = List.of(_unreleased);
+      _unreleased.clear();
+      for (final tap in pending) {
+        final running = tap.running;
+        if (running == null) {
+          // It threw last time; nothing is in flight, so ask again.
+          await _release(tap.detach);
+          continue;
+        }
+        var stillRunning = false;
+        try {
+          // Already running. Waiting is the only safe thing: asking again would
+          // stop the platform capture a second time while the first stop is
+          // still going.
+          await running.timeout(
+            detachTimeout,
+            onTimeout: () => stillRunning = true,
+          );
+        } catch (e, s) {
+          // It finally answered, with an error. Nothing is running now, so the
+          // next stop may ask again.
+          _hold(_UnreleasedTap(tap.detach, null));
+          Logs().w('The call audio tap refused to come off', e, s);
+          continue;
+        }
+        if (stillRunning) {
+          _hold(tap);
+          Logs().w('The call audio tap has still not come off');
+        }
       }
-      var stillRunning = false;
-      try {
-        // Already running. Waiting is the only safe thing: asking again would
-        // stop the platform capture a second time while the first stop is
-        // still going.
-        await running.timeout(
-          detachTimeout,
-          onTimeout: () => stillRunning = true,
-        );
-      } catch (e, s) {
-        // It finally answered, with an error. Nothing is running now, so the
-        // next stop may ask again.
-        _hold(_UnreleasedTap(tap.detach, null));
-        Logs().w('The call audio tap refused to come off', e, s);
-        continue;
-      }
-      if (stillRunning) {
-        _hold(tap);
-        Logs().w('The call audio tap has still not come off');
-      }
+    } finally {
+      _releasing--;
     }
   }
 
@@ -647,10 +727,18 @@ class CallCaptureService {
     // arrives, and returning early there would leave the tap attached. A tap
     // that would not let go counts too — this is the only thing that ever comes
     // back to one, so returning above it would strand it for good.
+    //
+    // And a release still deciding counts for the same reason, one step
+    // earlier: the tap it is working on is not in [_detach] or [_unreleased]
+    // YET, but it may be a moment from now. Concluding "everything is off" over
+    // the top of one meant the tap it went on to hold was held AFTER the last
+    // stop of the call, with nothing left that ever comes back to it — and the
+    // next start refuses for the rest of the call.
     if (!_running &&
         _chunker == null &&
         _detach == null &&
-        _unreleased.isEmpty) {
+        _unreleased.isEmpty &&
+        _releasing == 0) {
       return;
     }
     _session++;
@@ -671,11 +759,42 @@ class CallCaptureService {
     final detach = _detach;
     _detach = null;
     await _release(detach);
+    // Then the one release that is not ours: a tap from a start this stop
+    // overtook is let go outside [_stopped], so waiting here is what puts
+    // whatever it holds in front of the sweep below rather than behind it.
+    await _releasingWork;
     // And another go at anything that would not let go earlier. A tap detaches
     // on the next stop or not at all; nothing else ever comes back to it.
     await _releaseUnreleased();
 
     _endRun();
+  }
+
+  /// Takes the news that a tap which attached is never going to deliver.
+  ///
+  /// The platform side is already gone or was never really there, so this ends
+  /// the stretch through the ordinary [stop] — the tap still has to come off,
+  /// and the one release path is what does that.
+  ///
+  /// Gated on the session, so a report from a tap that outlived its own stretch
+  /// cannot end the one running now. Gated on [_running] as well, because a
+  /// death arriving while a stop is already unwinding is news about a recording
+  /// that is over.
+  void _onTapDied(int session) {
+    if (_session != session || !_running) return;
+    Logs().w('The call audio tap died mid-recording; ending this stretch');
+    unawaited(stop());
+    // AFTER the stop, which sets the gate and the in-flight stop synchronously
+    // before it awaits anything. Whoever hears this re-elects immediately, and
+    // the start that follows then has a stop to wait for rather than a race to
+    // win.
+    //
+    // A stop this side performed by itself is invisible to the owner of the
+    // election otherwise: its own record of "I am recording" is written only
+    // where IT made the change, so the death would be detected here and then
+    // swallowed one layer up — the device would go on winning every election
+    // and recording nothing for the rest of the call.
+    onCaptureLost?.call();
   }
 
   /// Ends the call's recording for good.
