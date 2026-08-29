@@ -190,10 +190,11 @@ class CallCaptureService {
 
   /// How many of those are attempted before this device stops attaching taps.
   ///
-  /// A death ends the stretch and re-runs the election, and the election ranks
-  /// on device id alone — so the device that just failed wins it again and
-  /// attaches the same tap for the same reason. Nothing between the attempts
-  /// differs, which makes repeating it a spin rather than a retry: on the web
+  /// A death ends the stretch and re-runs the election, and until the deaths
+  /// reach this limit [canCapture] is still true — so the device that just
+  /// failed wins the election again and attaches the same tap for the same
+  /// reason. Nothing between the attempts differs, which makes repeating it a
+  /// spin rather than a retry beyond a point: on the web
   /// every turn builds and tears down an AudioContext and an AudioWorklet
   /// module, and on native it is a platform round trip each way, for the rest of
   /// the call.
@@ -205,12 +206,53 @@ class CallCaptureService {
   ///
   /// Past it, [start] returns having attached nothing, which is the answer a
   /// device with no tap point already gives: [isRecording] stays false, the
-  /// election settles, and the log says once that this device is out. WHICH
-  /// device records then is not something this can decide — the election has no
-  /// capability term yet, which is #410 item 6 — so a device that is alone
-  /// records nothing, exactly as it did before this watchdog existed. The
-  /// difference is that it now says so, once, instead of churning.
+  /// election settles, and the log says once that this device is out. It also
+  /// turns [canCapture] false, which is how a sibling that CAN record comes to
+  /// out-rank this device rather than deferring to it on device id.
   static const _tapDeathLimit = 2;
+
+  /// Whether the platform has answered that this device has no working tap
+  /// point. Structural, and re-derived by every attach that gets far enough to
+  /// hear an answer.
+  bool _canCapture = true;
+
+  /// Whether this device can record RIGHT NOW.
+  ///
+  /// One boolean, read by the election, and false only ever because of a
+  /// CONCLUSION ABOUT THE DEVICE: a platform that answered it has no tap point,
+  /// residue that survived a retry, or taps that attached and delivered nothing
+  /// often enough that another attempt is a spin rather than a retry.
+  ///
+  /// Deliberately NOT false for a bad moment. A throw from the attach is a
+  /// transient, and so is a refusal whose only cause is a release still in
+  /// flight — publishing either as incapacity would have a healthy device stand
+  /// aside for the rest of a call over a millisecond of timing.
+  ///
+  /// True is the DEFAULT everywhere, including on a device that has never
+  /// tried: silence has to read as able, or the first election of a call would
+  /// have every device defer to every other one.
+  bool get canCapture => _canCapture && _tapDeaths < _tapDeathLimit;
+
+  /// Whether the tail of the current stretch is to be dropped instead of
+  /// delivered.
+  ///
+  /// A LEVEL-TRIGGERED REQUEST, written by whoever runs the election at the
+  /// moment it decides, and read at the flush. It is not an argument to [stop]
+  /// for two reasons. Teardown stops the recorder directly, outside the
+  /// election's own serialised chain, so a stop can reach the flush while the
+  /// election's reconcile is still queued — an argument would arrive after the
+  /// audio had already gone. And a memoised stop hands the first caller's
+  /// arguments to the second, so a handover's discard would have become a
+  /// hangup's.
+  ///
+  /// Only ever the TAIL: a chunk the chunker's own size or silence ceiling
+  /// already cut and handed to the sink earlier in this stretch is gone and is
+  /// not chased.
+  bool _discardOnStop = false;
+
+  /// Records that this stretch's tail is a duplicate of what another of this
+  /// account's devices already has.
+  void setDiscardOnStop(bool discard) => _discardOnStop = discard;
 
   /// Told that the tap this recorder was running has died on its own.
   ///
@@ -291,28 +333,61 @@ class CallCaptureService {
     if (_running) {
       throw StateError('A call recording is already running');
     }
-    if (_detach != null || _unreleased.isNotEmpty || _releasing > 0) {
-      // A previous tap never detached. Refuse rather than stack a second tap on
-      // the same track: losing this stretch of analytics is recoverable,
-      // counting it twice is not.
+    if (_detach != null || _unreleased.isNotEmpty) {
+      // A previous tap never detached. Retried HERE, before refusing, because
+      // this is the moment somebody actually wants to record — and the only
+      // other thing that ever comes back to a held tap is a stop, which a
+      // device that keeps winning the election never performs. Left to the
+      // stop alone, one detach that threw and would have succeeded on the
+      // second ask kept this device silent for the rest of the call and, worse,
+      // marked it as unable below.
+      final before = _session;
+      await _releaseUnreleased();
+      // That retry is the ONLY yield between the serialisation above and
+      // `_running = true`, so it is the one window in which a stop can land and
+      // finish unseen — the await at the top of this method has already been
+      // and gone. The session is what catches it: [_stop] bumps it
+      // synchronously, above every await of its own, and it cannot take the
+      // early return that would skip the bump — whichever of the two conditions
+      // brought us into this branch is exactly one of the terms in that guard,
+      // still true while the retry runs.
+      if (_session != before) {
+        // A stop ended the stretch this start was for. Attaching now would put
+        // a tap on a recording that is already over — and if that was the LAST
+        // stop of the call, nothing would ever come back to take it off. The
+        // election offers this device the recording again two seconds later,
+        // when there is a stretch to attach it to.
+        throw StateError('The recording stopped while the tap was coming off');
+      }
+      if (_detach != null || _unreleased.isNotEmpty) {
+        // It survived the retry. That is not a bad moment any more — it is a
+        // tap this device cannot let go of, and until it does no new recording
+        // may start over the top of it: two taps feeding one chunker would
+        // count the learner's own voice twice. Losing this stretch of analytics
+        // is recoverable, counting it twice is not.
+        _canCapture = false;
+        throw StateError('The previous audio tap is still attached');
+      }
+    }
+    if (_releasing > 0) {
+      // A release that is still DECIDING, which is the case the two collections
+      // above both miss: across that span the tap it is working on is in
+      // neither of them. The window is real rather than theoretical — a tap
+      // arriving after the stop it belonged to is released outside the memoised
+      // stop, so nothing above serialises against it.
       //
-      // [_releasing] counts too, and it is the case the other two miss: while a
-      // release is deciding, the tap it is working on is in neither of them.
-      // The window is real rather than theoretical — a tap arriving after the
-      // stop it belonged to is released outside the memoised stop, so nothing
-      // above serialises against it.
+      // A REFUSAL rather than a wait, deliberately, even though
+      // [_releasingWork] publishes that release and could be awaited. A wait
+      // here would give a stop the whole length of a detach to land and
+      // complete unseen, and this start would then attach over the top of a
+      // call that had ended.
       //
-      // A REFUSAL rather than a wait, deliberately, even though [_releasingWork]
-      // publishes that release and could be awaited. The wait above works
-      // because nothing between it and `_running = true` yields: the snapshot of
-      // [_stopped] is still true when the guards run. A second await here would
-      // give a stop the whole length of a detach to land and complete unseen,
-      // and this start would then attach over the top of a call that had ended
-      // — reopening by hand the exact hole the first wait exists to close. What
-      // the refusal costs is this stretch, which the election offers again two
-      // seconds later; what the wait would cost is a tap attached after the last
-      // stop of the call, which nothing ever comes back to.
-      throw StateError('The previous audio tap is still attached');
+      // And [_canCapture] is deliberately NOT touched. This is a millisecond of
+      // timing rather than anything true about the device, nothing retries it,
+      // and standing a healthy device aside for the rest of a call over a stop
+      // that merely landed mid-attach is the failure the distinction exists to
+      // prevent.
+      throw StateError('The previous audio tap is still coming off');
     }
     if (_tapDeaths >= _tapDeathLimit) {
       // Nothing is attached and nothing is recording afterwards, which is the
@@ -322,6 +397,9 @@ class CallCaptureService {
     }
     _stopping = false;
     _stopped = null;
+    // A discard belongs to the stretch the election decided it for. Carrying it
+    // into the next one would silently drop a tail nobody else recorded.
+    _discardOnStop = false;
     _running = true;
     final session = ++_session;
     final DetachTap? detach;
@@ -380,6 +458,12 @@ class CallCaptureService {
       return;
     }
     _detach = detach;
+    // The platform ANSWERED, about the device rather than about this attempt,
+    // and this is the only place that answer is heard. Re-derived rather than
+    // latched: a build where the tap point appears late — a processing factory
+    // that was still initialising — says so on the attach that finally works,
+    // and the election hears it on the next tick.
+    _canCapture = detach != null;
     if (detach == null) {
       // No tap on this device. Nothing is recorded, and the call is unaffected.
       _running = false;
@@ -583,7 +667,21 @@ class CallCaptureService {
     // And so a later stretch cannot claim to have been captured before this
     // one finished. See [_notBeforeMs].
     _notBeforeMs = chunker.endedAtMs;
-    if (tail != null) _hand(tail);
+    if (tail == null) return;
+    if (_discardOnStop) {
+      // Another of this account's devices was recording the same words at the
+      // same time, and delivering these would credit the learner twice for
+      // saying them once — the sink keys a result by capture session and chunk
+      // index, and two devices are two sessions, so nothing downstream absorbs
+      // it. The numbering above still moves: this stretch happened, and a later
+      // one that renumbered over it would be taken for a redelivery.
+      Logs().i(
+        'Dropping call audio chunk ${tail.index}: another device of this '
+        'account was recording the same stretch',
+      );
+      return;
+    }
+    _hand(tail);
   }
 
   /// Where a run that begins after an ABSENCE of capture sits, in absolute Unix

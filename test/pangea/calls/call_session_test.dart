@@ -135,7 +135,16 @@ class _FakeRoster extends CallRoster {
   bool connected = true;
 
   @override
-  Iterable<String> get remoteIdentities => identities;
+  RosterRead get read => RosterRead(
+    remotes: [
+      for (final id in identities)
+        RosterMember(
+          identity: id,
+          described: true,
+          joinedAt: DateTime.utc(2026, 8, 29, 12),
+        ),
+    ],
+  );
 
   @override
   bool get roomConnected => connected;

@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:flutter/services.dart';
+
 import 'package:livekit_client/livekit_client.dart';
 import 'package:matrix/matrix.dart' show Logs;
 import 'package:pangea_call_capture/pangea_call_capture.dart';
@@ -73,10 +75,21 @@ const rendererStartupStall = Duration(seconds: 3);
 abstract class CallAudioTap {
   /// Attaches to [track] and begins delivering audio.
   ///
-  /// Returns the function that detaches it, or null when no tap could be
-  /// attached — in which case nothing is recorded. That costs the call its
-  /// analytics and leaves the conversation itself untouched, which is the right
-  /// way round.
+  /// Exactly three answers, and the difference between them matters because
+  /// the caller stands the device aside on one of them.
+  ///
+  /// A DETACH: the tap is on, and that function is the only way it comes off.
+  ///
+  /// NULL: the platform has answered about THIS DEVICE — there is no tap point
+  /// here, and there will not be one during this call. Nothing is recorded,
+  /// which costs the call its analytics and leaves the conversation itself
+  /// untouched. The election reads it, ranks this device last, and hands the
+  /// recording to a sibling that can.
+  ///
+  /// A THROW: everything else. A platform call that failed, a race that was
+  /// lost, an attach that was overtaken — none of which say anything about
+  /// whether this device could record a moment from now, so none of them may be
+  /// answered with a null.
   ///
   /// [onDead] carries the one answer that cannot be given by returning or
   /// throwing, because it is only known later: see [TapDied]. It is REQUIRED
@@ -96,6 +109,10 @@ abstract class CallAudioTap {
 /// already run, and on the web the browser cancels echo before it hands over a
 /// track at all. The capture format is requested rather than accepted, so a
 /// chunk's bytes mean the same thing on each of them.
+///
+/// It NEVER answers null. Every platform this runs on has a renderer, so there
+/// is no such thing here as a device with no tap point — a renderer that will
+/// not attach is a failure, and a failure throws.
 class TrackRendererTap implements CallAudioTap {
   final int sampleRate;
   final int channels;
@@ -119,10 +136,12 @@ class TrackRendererTap implements CallAudioTap {
   ///
   /// What the wait costs is how long a genuinely dead tap goes unnoticed —
   /// bounded audio at the start of one stretch. What it buys is that the report
-  /// means something. It does NOT yet buy a handover: the election ranks on
-  /// device id alone, so the device that reports the death is the device that
-  /// tries again, a bounded number of times. Moving the recording to a sibling
-  /// needs capability ranking, which is #410 item 6 and is not here yet.
+  /// means something, and it now buys a handover too: once the deaths reach the
+  /// recorder's limit this device answers that it cannot record, tells its
+  /// siblings so, and the election hands the recording to one that can. A false
+  /// death therefore costs more than a wasted restart, which is why the budget
+  /// is set against the package's own setup rather than against a frame
+  /// interval.
   final Duration firstFrameTimeout;
 
   const TrackRendererTap({
@@ -243,13 +262,36 @@ class PostEchoCancellationTap implements CallAudioTap {
     // given up on with the warning below -- each refusal is logged, so a retry
     // can never quietly paper over a real absence.
     bool attached = false;
+    // The last failure that was NOT an answer about the device, so the ladder
+    // can end by rethrowing it rather than by returning a null the caller would
+    // read as "this device has no tap point". Cleared by any clean answer,
+    // refusal included: a platform that errored and then plainly said no HAS
+    // answered, and its earlier stumble is not the reason.
+    Object? unanswered;
+    StackTrace? unansweredAt;
     const delays = [Duration.zero, Duration(seconds: 1), Duration(seconds: 3)];
     for (var i = 0; i < delays.length; i++) {
       if (delays[i] != Duration.zero) await Future.delayed(delays[i]);
       try {
         attached = await capture.start();
+        unanswered = null;
+        unansweredAt = null;
+      } on MissingPluginException catch (e, s) {
+        // The ONE error that is an answer about the device rather than about
+        // the attempt: this build has no such plugin, so there is nothing to
+        // wait four seconds for and nothing a later call would find. Answered
+        // straight away, and answered with a null, because it is exactly the
+        // fact a null carries.
+        Logs().w(
+          'This build carries no call audio tap; nothing will be recorded',
+          e,
+          s,
+        );
+        return null;
       } catch (e, s) {
         Logs().e('Could not attach the call audio tap', e, s);
+        unanswered = e;
+        unansweredAt = s;
         attached = false;
       }
       if (attached) break;
@@ -260,6 +302,17 @@ class PostEchoCancellationTap implements CallAudioTap {
       }
     }
     if (!attached) {
+      final failure = unanswered;
+      if (failure != null) {
+        // The ladder never got a clean answer out of the platform, so nothing
+        // here says anything about the device. A null would stand it aside for
+        // the rest of the call over a platform call that failed; the throw says
+        // "this attempt failed", which is all that is known, and the next
+        // election tries again.
+        Error.throwWithStackTrace(failure, unansweredAt ?? StackTrace.current);
+      }
+      // Three clean refusals. THAT is a statement about the device, and it is
+      // the one thing a null is for.
       Logs().w('No call audio tap on this device; nothing will be recorded');
       return null;
     }

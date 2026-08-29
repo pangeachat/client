@@ -1,6 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 
 import 'package:livekit_client/livekit_client.dart' as lk;
+import 'package:matrix/matrix.dart' show Logs;
+
+import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
 /// One participant in a call, as the SFU names them.
 ///
@@ -17,7 +22,27 @@ class CallParticipant {
   /// mistaken for our own membership.
   final String? deviceId;
 
-  const CallParticipant({required this.userId, this.deviceId});
+  /// When the SFU saw them join, or null when nothing usable was stamped.
+  ///
+  /// DELIBERATELY OUT OF [==], along with [canCapture]. Presence dedups
+  /// participants by set equality, and a field that moves while the same people
+  /// are in the same call would make every read of the list a change. What
+  /// reads these is [CallRoster]'s own picture, through [state].
+  final DateTime? joinedAt;
+
+  /// Whether that device says it can record right now.
+  ///
+  /// True until it says otherwise. Silence has to read as ABLE: a sibling
+  /// running an older build, or one whose announcement has not landed yet,
+  /// must rank exactly as it did before capability existed.
+  final bool canCapture;
+
+  const CallParticipant({
+    required this.userId,
+    this.deviceId,
+    this.joinedAt,
+    this.canCapture = true,
+  });
 
   /// Splits a `@user:server:DEVICE` identity.
   ///
@@ -54,6 +79,29 @@ class CallParticipant {
     );
   }
 
+  /// The same participant carrying what the SFU says ABOUT them.
+  ///
+  /// Separate from [CallParticipant.parse] so the identity rules above — which
+  /// took two bug reports to get right — stay one piece of code with one set of
+  /// return paths.
+  CallParticipant describedBy({DateTime? joinedAt, bool canCapture = true}) =>
+      CallParticipant(
+        userId: userId,
+        deviceId: deviceId,
+        joinedAt: joinedAt,
+        canCapture: canCapture,
+      );
+
+  /// Everything about this participant that anyone downstream reads, INCLUDING
+  /// the two fields [==] leaves out.
+  ///
+  /// A record, so comparing two of them compares every field structurally. This
+  /// is what the roster's notify predicate is built from: a hand-maintained
+  /// list of "fields worth notifying about" is how a capability change came to
+  /// land in silence.
+  (String, String?, DateTime?, bool) get state =>
+      (userId, deviceId, joinedAt, canCapture);
+
   @override
   bool operator ==(Object other) =>
       other is CallParticipant &&
@@ -67,18 +115,63 @@ class CallParticipant {
   String toString() => 'CallParticipant($userId, $deviceId)';
 }
 
-/// One remote participant's audio publications, by identity.
+/// One participant exactly as the SFU currently describes them, before any of
+/// it is believed.
+///
+/// The raw facts travel rather than a tidied-up conclusion, because the tidying
+/// is the part that has to be tested: [CallRoster.usableJoinTime] is the rule
+/// that decides which join stamps mean anything, and a seam that applied it
+/// before handing the value over would leave a fake roster unable to stand up
+/// the cases the rule exists for.
 @immutable
-class RemoteAudioState {
+class RosterMember {
   final String identity;
   final int audioPublications;
   final int mutedAudioPublications;
 
-  const RemoteAudioState({
+  /// Whether the SFU has actually described this participant yet.
+  ///
+  /// livekit_client's `Participant.joinedAt` is NON-NULLABLE, and when it has
+  /// no server-side info to read it returns `DateTime.timestamp()` — a fresh
+  /// read of THIS device's clock, which is not a join time at all and is a
+  /// different value every time it is asked. So "described" has to travel
+  /// beside the stamp; without it there is no branch in which a join time can
+  /// be unknown, and the picture below would differ on every recompute.
+  final bool described;
+
+  /// The join time the SDK hands over, believed only when [described].
+  final DateTime joinedAt;
+
+  /// The participant's published attributes, which is how a sibling says
+  /// whether it can record.
+  final Map<String, String> attributes;
+
+  const RosterMember({
     required this.identity,
-    required this.audioPublications,
-    required this.mutedAudioPublications,
+    required this.described,
+    required this.joinedAt,
+    this.audioPublications = 0,
+    this.mutedAudioPublications = 0,
+    this.attributes = const {},
   });
+}
+
+/// ONE snapshot of everything the call lifecycle reads off the SFU.
+///
+/// Taken once per recompute and read many times, so presence, the mute
+/// indicator and the recorder election cannot disagree about what they saw. It
+/// is also the single surface a test overrides: a fake that supplied identities
+/// through one seam and join times through another could be made to describe a
+/// room the real one can never be in.
+@immutable
+class RosterRead {
+  /// Everyone else in the room, whichever account they belong to.
+  final List<RosterMember> remotes;
+
+  /// This device's own membership, or null before the SFU has given us one.
+  final RosterMember? me;
+
+  const RosterRead({required this.remotes, this.me});
 }
 
 /// Who is in the call right now, according to the SFU.
@@ -104,7 +197,28 @@ class CallRoster extends ChangeNotifier {
 
   final lk.Room _room;
 
-  Set<CallParticipant> _participants = const {};
+  /// The attribute a device publishes to tell its siblings whether it can
+  /// record, and the two values it takes.
+  ///
+  /// A value rather than the key's presence, because attributes are merged
+  /// rather than replaced and there is no clean way to take a key back.
+  static const canCaptureAttribute = 'pangea_can_capture';
+  static const _canRecord = 'yes';
+  static const _cannotRecord = 'no';
+
+  /// What a sibling's attributes say about whether it can record.
+  ///
+  /// Anything other than an explicit refusal reads as ABLE — no attribute, an
+  /// older build that publishes none, a value from a future version this build
+  /// does not understand. The exact counterpart of what [announceCanCapture]
+  /// writes, and the reason the two are next to each other.
+  static bool capableFromAttributes(Map<String, String> attributes) =>
+      attributes[canCaptureAttribute] != _cannotRecord;
+
+  /// The picture the last recompute produced. Everything public below is a view
+  /// of it, so the stored state and the state listeners were told about cannot
+  /// come apart.
+  _RosterPicture _picture = _RosterPicture.empty;
 
   /// Frozen while the connection is not up. A full reconnect empties the
   /// participant list and reports every participant as disconnected before
@@ -118,23 +232,72 @@ class CallRoster extends ChangeNotifier {
     recompute();
   }
 
-  /// The SFU's current participant list. Overridden in tests, which cannot
-  /// stand up a real connection.
+  /// EVERYTHING this reads off the SFU, in one snapshot per recompute.
+  ///
+  /// One seam rather than several, so a test's fake room and the real one
+  /// answer the same question at the same instant. Overridden in tests, which
+  /// cannot stand up a live connection.
   @protected
-  Iterable<String> get remoteIdentities => _room.remoteParticipants.keys;
+  RosterRead get read {
+    final me = _room.localParticipant;
+    return RosterRead(
+      remotes: [
+        for (final entry in _room.remoteParticipants.entries)
+          RosterMember(
+            identity: entry.key,
+            described: _described(entry.value.state),
+            joinedAt: entry.value.joinedAt,
+            audioPublications: entry.value.audioTrackPublications.length,
+            mutedAudioPublications: entry.value.audioTrackPublications
+                .where((p) => p.muted)
+                .length,
+            attributes: entry.value.attributes,
+          ),
+      ],
+      me: me == null
+          ? null
+          : RosterMember(
+              identity: me.identity,
+              described: _described(me.state),
+              joinedAt: me.joinedAt,
+              attributes: me.attributes,
+            ),
+    );
+  }
 
-  /// Each remote participant's audio publications, as counts. Overridden in
-  /// tests for the same reason as [remoteIdentities].
-  @protected
-  Iterable<RemoteAudioState> get remoteAudio =>
-      _room.remoteParticipants.entries.map((entry) {
-        final audio = entry.value.audioTrackPublications;
-        return RemoteAudioState(
-          identity: entry.key,
-          audioPublications: audio.length,
-          mutedAudioPublications: audio.where((p) => p.muted).length,
-        );
-      });
+  /// Whether the SFU has described a participant, read through the state it
+  /// reports.
+  ///
+  /// The SDK's own `hasInfo` says exactly this and is marked internal to its
+  /// package, so reading it here is a warning rather than an answer. The
+  /// participant state is the public projection of the same field: it starts
+  /// `unknown` and is set, from the server's own value, in the one method that
+  /// stores the participant info. The residual disagreement is a server state
+  /// this SDK version does not know, which reads as undescribed and therefore
+  /// as an unknown join time — the conservative direction, since an unknown
+  /// join time never discards audio.
+  static bool _described(lk.ParticipantState state) =>
+      state != lk.ParticipantState.unknown;
+
+  /// A join time worth believing, or null.
+  ///
+  /// Two ways it can be worthless and both have been seen. The SDK returns a
+  /// fresh read of THIS device's clock when it has no server info, which would
+  /// place a sibling's join wherever we happen to be looking from; and the
+  /// protocol default for an unstamped `joinedAt` is zero, which reads as 1970
+  /// — the same reading `ClockAnchor` already refuses on the wire, for the same
+  /// reason. Sharing that rule is deliberate: a number this file would not
+  /// believe about a clock is not a number the election should displace a
+  /// recording over.
+  static DateTime? usableJoinTime({
+    required bool described,
+    required DateTime joinedAt,
+  }) {
+    if (!described) return null;
+    final ms = joinedAt.millisecondsSinceEpoch;
+    if (ms <= 0 || ms >= ClockAnchor.clockCeilingMs) return null;
+    return joinedAt;
+  }
 
   @protected
   bool get roomConnected =>
@@ -149,14 +312,29 @@ class CallRoster extends ChangeNotifier {
       _room.connectionState == lk.ConnectionState.connecting ||
       _room.connectionState == lk.ConnectionState.reconnecting;
 
+  /// Publishes attributes for this device, and answers whether they went.
+  ///
+  /// FALSE when there is nobody to publish as. A silent no-op that returned
+  /// normally is indistinguishable from a write that landed, and a caller that
+  /// recorded it as landed would never come back to it.
+  @protected
+  Future<bool> publishAttributes(Map<String, String> attributes) async {
+    final me = _room.localParticipant;
+    if (me == null) return false;
+    // Merged over what is already there. The SFU replaces the whole attribute
+    // map, so writing only our key would delete anyone else's.
+    await me.setAttributes({...me.attributes, ...attributes});
+    return true;
+  }
+
   /// Everyone else in the call, whichever account they belong to.
-  Set<CallParticipant> get participants => _participants;
+  Set<CallParticipant> get participants => _picture.participants;
 
   /// Whether someone other than this account is in the call.
   ///
   /// This is what makes a call a conversation rather than one person alone in a
   /// room, and what tells the caller their call was answered.
-  bool get hasPeer => _participants.any((p) => p.userId != myUserId);
+  bool get hasPeer => participants.any((p) => p.userId != myUserId);
 
   /// Whether the person on the other end cannot currently be heard.
   ///
@@ -166,18 +344,16 @@ class CallRoster extends ChangeNotifier {
   /// publication and every one of them is muted -- one audible device means
   /// they can be heard, and no publications at all is "no signal yet", which
   /// is not a statement about their microphone.
-  bool get peerMuted => _peerMuted;
+  bool get peerMuted => _picture.peerMuted;
 
-  bool _peerMuted = false;
-
-  bool _readPeerMuted() {
+  bool _readPeerMuted(RosterRead snapshot) {
     var publications = 0;
     var muted = 0;
-    for (final state in remoteAudio) {
-      final who = CallParticipant.parse(state.identity, myUserId: myUserId);
+    for (final member in snapshot.remotes) {
+      final who = CallParticipant.parse(member.identity, myUserId: myUserId);
       if (who.userId == myUserId) continue;
-      publications += state.audioPublications;
-      muted += state.mutedAudioPublications;
+      publications += member.audioPublications;
+      muted += member.mutedAudioPublications;
     }
     return publications > 0 && muted == publications;
   }
@@ -186,10 +362,31 @@ class CallRoster extends ChangeNotifier {
   ///
   /// Drawn from the same list as everything else, so the recorder election and
   /// presence can never disagree about who is present.
-  Iterable<String> get siblingDeviceIds => _participants
+  Iterable<String> get siblingDeviceIds => participants
       .where((p) => p.userId == myUserId)
       .map((p) => p.deviceId)
       .whereType<String>();
+
+  /// When the SFU saw THIS device join, or null when it has not said.
+  DateTime? get myJoinTime => _picture.myJoinedAt;
+
+  /// When the SFU saw one of this account's other devices join.
+  DateTime? siblingJoinTime(String deviceId) => _sibling(deviceId)?.joinedAt;
+
+  /// Whether one of this account's other devices says it can record.
+  ///
+  /// A device this account cannot see reads as ABLE, for the same reason an
+  /// unannounced one does: the only safe way to be wrong about a sibling is to
+  /// defer to it.
+  bool siblingCanCapture(String deviceId) =>
+      _sibling(deviceId)?.canCapture ?? true;
+
+  CallParticipant? _sibling(String deviceId) {
+    for (final p in participants) {
+      if (p.userId == myUserId && p.deviceId == deviceId) return p;
+    }
+    return null;
+  }
 
   /// Whether the SFU connection is currently up.
   bool get isConnected => _connected;
@@ -219,28 +416,139 @@ class CallRoster extends ChangeNotifier {
         if (wasConnected) notifyListeners();
         return;
       }
-      if (wasConnected || _participants.isNotEmpty) {
-        _participants = const {};
+      if (wasConnected || _picture.participants.isNotEmpty) {
+        _picture = _RosterPicture.empty;
         notifyListeners();
       }
       return;
     }
 
-    final next = remoteIdentities
-        .map((id) => CallParticipant.parse(id, myUserId: myUserId))
-        .toSet();
-    // Level-triggered like the list itself: re-read whole on every
-    // notification, so a missed mute event costs one repaint, not the truth.
-    final nextMuted = _readPeerMuted();
-    final mutedChanged = nextMuted != _peerMuted;
-    _peerMuted = nextMuted;
-    // Notified on reconnection even when the list is unchanged, because the
+    // ONE read, and everything below is derived from it. Level-triggered like
+    // the list itself: re-read whole on every notification, so a missed mute
+    // event costs one repaint, not the truth.
+    final snapshot = read;
+    final next = _RosterPicture(
+      participants: {
+        for (final member in snapshot.remotes)
+          CallParticipant.parse(
+            member.identity,
+            myUserId: myUserId,
+          ).describedBy(
+            joinedAt: usableJoinTime(
+              described: member.described,
+              joinedAt: member.joinedAt,
+            ),
+            canCapture: capableFromAttributes(member.attributes),
+          ),
+      },
+      myJoinedAt: snapshot.me == null
+          ? null
+          : usableJoinTime(
+              described: snapshot.me!.described,
+              joinedAt: snapshot.me!.joinedAt,
+            ),
+      peerMuted: _readPeerMuted(snapshot),
+    );
+
+    // ONE inequality, over everything anyone downstream reads. The predicate
+    // this replaced compared the participant SET and one mute flag, and a set
+    // compares participants by identity alone — so a sibling's join time or its
+    // capability could change and land in complete silence, which is exactly
+    // the shape of change the election now depends on.
+    //
+    // Notified on reconnection even when nothing else changed, because the
     // frozen window ended and listeners gated on connectedness need to know.
-    if (wasConnected && !mutedChanged && setEquals(next, _participants)) {
-      return;
-    }
-    _participants = next;
+    final changed = !wasConnected || next != _picture;
+    // Stored whether or not anyone is told, so a skipped notification cannot
+    // leave the comparison arguing against a picture nobody holds any more.
+    _picture = next;
+    // Level-triggered like the rest of this: an announcement that could not be
+    // written earlier is tried again here, so the window in which this device's
+    // siblings hold a stale answer closes when the signal recovers rather than
+    // lasting the call.
+    _reassertAnnouncement();
+    if (!changed) return;
     notifyListeners();
+  }
+
+  /// What this device last told its siblings about whether it can record.
+  ///
+  /// Starts TRUE because that is what a sibling reads before anything has been
+  /// published: silence means able. Moved only once a write has actually
+  /// landed, which is what makes it safe to rank on.
+  bool _announcedCanCapture = true;
+
+  /// What it wants them to be told. Differs from [_announcedCanCapture]
+  /// precisely while an announcement is outstanding.
+  bool _wantedCanCapture = true;
+
+  /// Whether a write is on the wire right now.
+  bool _announcing = false;
+
+  /// What this device's siblings have ACTUALLY been told.
+  ///
+  /// Read by the election, which ranks this device on the landed value rather
+  /// than the live one: a device that stood aside the instant it found out,
+  /// while every sibling still read it as able, would tie them all on
+  /// capability and lose the device-id tiebreak to itself — and nobody would
+  /// record for as long as the signal stayed stuck.
+  bool get announcedCanCapture => _announcedCanCapture;
+
+  /// Tells this account's other devices whether this one can record.
+  ///
+  /// SINGLE-FLIGHT AND COALESCING. One write is on the wire at a time, and the
+  /// loop re-reads the wanted value after each one, so a caller whose intent
+  /// arrived mid-write is never dropped in favour of the value already flying —
+  /// the same rule the memoised stop in the recorder states.
+  Future<void> announceCanCapture(bool canCapture) async {
+    _wantedCanCapture = canCapture;
+    if (_announcing) return;
+    _announcing = true;
+    try {
+      while (_wantedCanCapture != _announcedCanCapture) {
+        final writing = _wantedCanCapture;
+        // A failed write RETURNS rather than spinning. The intent stays
+        // outstanding and the next recompute re-asserts it; retrying inside
+        // this loop would hammer a signal channel that has already answered.
+        if (!await _writeCanCapture(writing)) return;
+        // Recorded only once the write actually happened. Recording it first
+        // would have a device that never reached the SFU believe its siblings
+        // knew, and stand aside on their behalf.
+        _announcedCanCapture = writing;
+      }
+    } finally {
+      // Cleared HERE rather than from a completion callback, so there is no
+      // instant in which the loop has exited and a caller still reads the run
+      // as live — which would drop that caller's intent for good.
+      _announcing = false;
+    }
+  }
+
+  Future<bool> _writeCanCapture(bool canCapture) async {
+    try {
+      return await publishAttributes({
+        canCaptureAttribute: canCapture ? _canRecord : _cannotRecord,
+      });
+    } catch (e, s) {
+      // Loudly, and naming the likeliest cause: `setAttributes` waits five
+      // seconds for the SFU to answer and then throws, and it completes with an
+      // error when the server refuses — which is what a call token minted
+      // without the grant to update its own metadata looks like from here. The
+      // capability half of the election is inert while this fails, and it fails
+      // quietly enough to look like it works.
+      Logs().w(
+        'Could not tell this account other devices whether this one can '
+        'record; the call token most likely lacks CanUpdateOwnMetadata',
+        e,
+        s,
+      );
+      return false;
+    }
+  }
+
+  void _reassertAnnouncement() {
+    if (_wantedCanCapture == _announcedCanCapture) return;
+    unawaited(announceCanCapture(_wantedCanCapture));
   }
 
   @override
@@ -248,4 +556,43 @@ class CallRoster extends ChangeNotifier {
     _room.removeListener(recompute);
     super.dispose();
   }
+}
+
+/// Everything a listener can observe about the roster, in one comparable value.
+///
+/// The point is that the notify predicate is DERIVED from what is stored rather
+/// than hand-maintained beside it. Participants compare through
+/// [CallParticipant.state] rather than through their own `==`, which
+/// deliberately ignores the two fields the election reads.
+@immutable
+class _RosterPicture {
+  final Set<CallParticipant> participants;
+  final DateTime? myJoinedAt;
+  final bool peerMuted;
+
+  const _RosterPicture({
+    required this.participants,
+    required this.myJoinedAt,
+    required this.peerMuted,
+  });
+
+  static const empty = _RosterPicture(
+    participants: {},
+    myJoinedAt: null,
+    peerMuted: false,
+  );
+
+  Set<(String, String?, DateTime?, bool)> get _states =>
+      participants.map((p) => p.state).toSet();
+
+  @override
+  bool operator ==(Object other) =>
+      other is _RosterPicture &&
+      other.myJoinedAt == myJoinedAt &&
+      other.peerMuted == peerMuted &&
+      setEquals(other._states, _states);
+
+  @override
+  int get hashCode =>
+      Object.hash(myJoinedAt, peerMuted, Object.hashAllUnordered(_states));
 }

@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:flutter/services.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pangea_call_capture/pangea_call_capture.dart';
 
@@ -23,10 +25,19 @@ class FakeCapture extends PangeaCallCapture {
       );
   final bool attaches;
   final Object? startThrows;
+
+  /// How many of the FIRST attempts throw before the platform starts giving
+  /// clean answers. Models the case the ladder exists for: a processing factory
+  /// that is still initialising when the first call of a session reaches it.
+  final int throwsUntilAttempt;
   int starts = 0;
   int stops = 0;
 
-  FakeCapture({this.attaches = true, this.startThrows});
+  FakeCapture({
+    this.attaches = true,
+    this.startThrows,
+    this.throwsUntilAttempt = 0,
+  });
 
   @override
   Stream<CallAudioFrame> get frames => _frames.stream;
@@ -34,6 +45,9 @@ class FakeCapture extends PangeaCallCapture {
   @override
   Future<bool> start() async {
     starts++;
+    if (starts <= throwsUntilAttempt) {
+      throw StateError('the processing factory is not up yet');
+    }
     if (startThrows != null) throw startThrows!;
     return attaches;
   }
@@ -179,13 +193,57 @@ void main() {
       },
     );
 
-    test('a platform that throws is no tap either', () async {
-      final platform = FakeCapture(startThrows: StateError('no webrtc yet'));
+    test(
+      'a platform that only ever threw rethrows rather than answering null',
+      () async {
+        // A null is a statement about the DEVICE -- there is no tap point here --
+        // and the recorder stands the device aside for the rest of the call on
+        // it, so a sibling takes over. A platform call that failed says nothing of
+        // the kind: it says this attempt failed. Answering null there retired a
+        // perfectly good device over one bad round trip.
+        final platform = FakeCapture(startThrows: StateError('no webrtc yet'));
+        final tap = PostEchoCancellationTap(capture: platform);
+
+        await expectLater(
+          tap.open(_noTrack, (_, _, _) {}, onDead: () {}),
+          throwsStateError,
+        );
+        expect(platform.starts, 3, reason: 'and it did try the whole ladder');
+        expect(platform.watching, isFalse);
+      },
+    );
+
+    test('a platform that threw and then plainly refused answers null', () async {
+      // The error was not the reason in the end. Three refusals is the device
+      // answering, and an earlier stumble on the way there must not turn that
+      // answer into a throw -- which would leave the recorder retrying a device
+      // that has already said no, every two seconds, for the whole call.
+      final platform = FakeCapture(attaches: false, throwsUntilAttempt: 1);
       final tap = PostEchoCancellationTap(capture: platform);
 
       final detach = await tap.open(_noTrack, (_, _, _) {}, onDead: () {});
 
       expect(detach, isNull);
+      expect(platform.watching, isFalse);
+    });
+
+    test('a build with no plugin at all answers null immediately', () async {
+      // The one error that IS an answer about the device: there is no such
+      // plugin in this build, so there is nothing a retry could find and
+      // nothing to spend four seconds of the opening of a call waiting for.
+      final platform = FakeCapture(
+        startThrows: MissingPluginException('no pangea_call_capture here'),
+      );
+      final tap = PostEchoCancellationTap(capture: platform);
+
+      final detach = await tap.open(_noTrack, (_, _, _) {}, onDead: () {});
+
+      expect(detach, isNull);
+      expect(
+        platform.starts,
+        1,
+        reason: 'answered at once rather than climbing the ladder',
+      );
       expect(platform.watching, isFalse);
     });
 
