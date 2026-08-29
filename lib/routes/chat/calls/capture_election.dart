@@ -1,5 +1,59 @@
 import 'package:flutter/foundation.dart';
 
+/// One of this account's devices saying, of itself, that audio is reaching its
+/// recorder RIGHT NOW.
+///
+/// The only currency [CaptureElection.discardsCapturedAudio] accepts as proof
+/// that somebody else holds a stretch this device is about to destroy, and the
+/// reason it is a type rather than a boolean. A boolean can be assembled out of
+/// whatever a caller had to hand — and the bug this replaced was exactly that:
+/// a sibling's [CaptureCandidate.canCapture], which is TRUE FOR SILENCE, was
+/// read as though the sibling had said it was recording. There is no
+/// constructor here that turns confidence into evidence. The only way to hold
+/// one is to have read the value a sibling actually published.
+@immutable
+class CaptureAttestation {
+  /// Which device said it.
+  ///
+  /// Carried so that evidence about one sibling can never license destroying a
+  /// stretch a DIFFERENT sibling was supposed to be holding. The discard checks
+  /// it rather than trusting the call site to have looked the right device up.
+  final String deviceId;
+
+  const CaptureAttestation._(this.deviceId);
+
+  /// The value a device publishes while, and only while, audio is actually
+  /// arriving at its recorder.
+  static const attested = 'recording';
+
+  /// Minted from what a sibling published, and from nothing else.
+  ///
+  /// Null for silence, for an older build that publishes nothing, and for a
+  /// value from a future version this build does not understand. Every one of
+  /// those is an ABSENCE OF EVIDENCE rather than a denial, and the whole point
+  /// of this file is that absence never destroys audio.
+  ///
+  /// The polarity is deliberately the OPPOSITE of the capability attribute next
+  /// to it, and the two are not in tension. Capability RANKS, and being wrong
+  /// about it costs at most a couple of seconds in which the wrong device holds
+  /// the recording, which the next election takes back — so silence there reads
+  /// as ABLE and the fleet defers rather than deadlocking. This one AUTHORISES
+  /// DESTRUCTION, and being wrong about it costs a thing the learner said that
+  /// no device anywhere still holds. Nothing takes that back.
+  static CaptureAttestation? of(String deviceId, String? published) =>
+      published == attested ? CaptureAttestation._(deviceId) : null;
+
+  @override
+  bool operator ==(Object other) =>
+      other is CaptureAttestation && other.deviceId == deviceId;
+
+  @override
+  int get hashCode => deviceId.hashCode;
+
+  @override
+  String toString() => 'CaptureAttestation($deviceId)';
+}
+
 /// One device in the running to record a call, and whether it can.
 ///
 /// Two facts, because ranking on the device id alone hands the recording to
@@ -51,6 +105,15 @@ class CaptureCandidate {
 /// from. That costs a stretch of credit until the other device leaves the call.
 /// Losing credit is recoverable and inventing it is not, which is the trade
 /// this makes.
+///
+/// THAT TRADE GOVERNS WHO RECORDS, AND NOTHING ELSE. It is safe to make because
+/// standing aside is undone by the next election two seconds later: the device
+/// is still there, the microphone is still there, and the only thing spent is a
+/// stretch of a conversation that is still happening. Nothing in it licenses
+/// DESTROYING audio that has already been captured, which no later election
+/// undoes and no other copy replaces. The two decisions therefore take opposite
+/// defaults, and [discardsCapturedAudio] states the second one: rank
+/// optimistically about a sibling, and destroy only on proof.
 class CaptureElection {
   /// This device.
   final String myDeviceId;
@@ -140,38 +203,92 @@ class CaptureElection {
   /// two sessions, so nothing downstream absorbs that: the learner is credited
   /// twice for saying something once.
   ///
-  /// Three decisions, each of which changes the answer.
+  /// ONE RULE, and every term below is an application of it rather than a
+  /// separate judgement call:
   ///
-  /// EQUAL JOIN TIMES DISCARD. `Participant.joinedAt` is exposed in whole
-  /// SECONDS, so two devices answering the same ring read as having joined at
-  /// exactly the same time — which is precisely the reported case. A
-  /// strictly-earlier rule would deliver the duplicate this exists to stop.
+  ///   AUDIO IS DESTROYED ONLY ON POSITIVE EVIDENCE THAT ANOTHER DEVICE HOLDS
+  ///   THE SAME STRETCH. Every input has to be something a device affirmatively
+  ///   established. The absence of a denial is not evidence, and neither is a
+  ///   measurement too coarse to answer the question being asked of it.
   ///
-  /// A JOIN TIME NOBODY STAMPED IS NOT A JOIN TIME. Either side being unknown
-  /// answers false, because discarding a learner's speech on the strength of a
-  /// number that was never measured destroys audio no other device holds.
+  /// The rule is stated here once and enforced by the SHAPE of the arguments
+  /// rather than by each caller remembering it. [successorIsRecording] cannot
+  /// be spelled as a boolean somebody was confident about; the only way to hold
+  /// a [CaptureAttestation] is to have read the value a sibling published.
+  /// [seenNotRecording] is a set of observations rather than a verdict, so a
+  /// caller can hand over the wrong facts but not the wrong conclusion. The
+  /// version this replaced took a `bool` for the whole question, and the caller
+  /// assembled it from the nearest thing to hand that read like an answer.
   ///
-  /// AND THE SUCCESSOR HAS TO HAVE BEEN RECORDING THE SAME STRETCH. Join times
-  /// only establish that it was in the call; [successorRecordedTheSameStretch]
-  /// is the caller's statement that it was also able to record throughout, so
-  /// that the device id — not capability — is what displaced us, and was what
-  /// displaced us for the whole stretch.
+  /// FOUR THINGS HAVE TO BE TRUE, and each of them fails CLOSED.
   ///
-  /// A SPAN, deliberately, and not a reading taken at the handover. A successor
-  /// that out-ranked us only because it JUST became able had no tap while we
-  /// were recording, and a caller that compared the two capabilities at the
-  /// instant of the displacement could not tell that from a device that had
-  /// been able all along. Nor is a successor tied with us at "cannot"
-  /// recording, which the id also decides between: whichever of them wins is
-  /// recording nothing. Either way discarding throws away the only copy of what
-  /// the learner said.
+  /// THE SUCCESSOR HAS TO SAY IT IS RECORDING. Not that it CAN: capability is
+  /// true for silence by design, so a sibling whose tap attached and then never
+  /// produced a frame goes on advertising "able" until its own watchdog fires
+  /// fifteen seconds later — which is the failure the watchdog exists to
+  /// detect. Reading that as "it recorded" is how the one captured copy of a
+  /// learner's words came to be thrown away by the device that held it.
+  ///
+  /// THE ATTESTATION HAS TO BE ABOUT THE SUCCESSOR. Checked here rather than
+  /// left to the call site, because a lookup against the wrong device id is
+  /// exactly the kind of mistake that reads correctly.
+  ///
+  /// AND IT HAS TO COVER THE WHOLE STRETCH. [seenNotRecording] is every sibling
+  /// this device has observed, at any point while this stretch was running,
+  /// NOT recording. A successor that only started when it took over holds none
+  /// of what came before, whatever it is doing now.
+  ///
+  /// AND THE JOIN STAMPS HAVE TO ORDER THE TWO DEVICES AT THE RESOLUTION THEY
+  /// ACTUALLY CARRY. `Participant.joinedAt` is derived from a whole-SECOND
+  /// field, so a stamp of 12:00:00 means "somewhere in the second beginning at
+  /// 12:00:00" and two equal stamps order NOTHING. The rule this replaced read
+  /// equality as "the successor was here first", so a device that joined at
+  /// 12:00:00.001 and recorded until a sibling joined at 12:00:00.900 threw
+  /// away nine hundred milliseconds the sibling was not in the room for. Only a
+  /// stamp a full resolution step earlier proves the successor was already
+  /// there, and a stretch cannot begin before the device recording it joined.
+  ///
+  /// WHAT THIS GIVES UP, deliberately and with a way back. Two devices that
+  /// genuinely answered in the same instant read as equal, and equal no longer
+  /// discards — so that race now ends in a delivered duplicate rather than in a
+  /// gamble on whether the loser's opening second was the only copy. A
+  /// duplicate is a wrong number in a learner's analytics; a discard that
+  /// guessed wrong is something the learner said that nothing anywhere still
+  /// has. The way back is not a looser rule, it is a better measurement: the
+  /// SFU already sends a millisecond join stamp (`ParticipantInfo.joined_at_ms`)
+  /// and livekit_client 2.11.0 simply does not expose it. When it does,
+  /// [joinStampResolution] drops and the same rule discards the race again.
+  ///
+  /// Note what is NOT here any more. Whether WE could record, and whether the
+  /// successor merely out-ranked us on capability, both used to be terms. An
+  /// attestation is strictly stronger than either: a device that is recording
+  /// is not a device that lost the tiebreak while recording nothing.
   static bool discardsCapturedAudio({
+    required CaptureCandidate successor,
+    required CaptureAttestation? successorIsRecording,
+    required Set<String> seenNotRecording,
     DateTime? myJoinedAt,
     DateTime? successorJoinedAt,
-    required bool successorRecordedTheSameStretch,
   }) {
-    if (!successorRecordedTheSameStretch) return false;
+    if (successorIsRecording == null) return false;
+    if (successorIsRecording.deviceId != successor.deviceId) return false;
+    if (seenNotRecording.contains(successor.deviceId)) return false;
     if (myJoinedAt == null || successorJoinedAt == null) return false;
-    return !successorJoinedAt.isAfter(myJoinedAt);
+    return !successorJoinedAt.add(joinStampResolution).isAfter(myJoinedAt);
   }
+
+  /// The resolution the join stamps this compares are actually measured at.
+  ///
+  /// livekit_client builds `Participant.joinedAt` by multiplying a whole-second
+  /// protocol field by a thousand, so the milliseconds it appears to carry are
+  /// always zero and a stamp names a one-second window rather than an instant.
+  /// Widening a comparison by the resolution of its inputs is the whole
+  /// mechanism: it is what makes "the successor was already here" a fact rather
+  /// than a coin toss.
+  ///
+  /// Shrinking this is SAFE in the direction that matters and only ever gets
+  /// more discards right, but it must not be shrunk below what the source
+  /// actually measures. Too large refuses a discard that was sound; too small
+  /// destroys audio on an ordering nobody established.
+  static const joinStampResolution = Duration(seconds: 1);
 }

@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' show Logs;
 
+import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
 /// One participant in a call, as the SFU names them.
@@ -24,7 +25,8 @@ class CallParticipant {
 
   /// When the SFU saw them join, or null when nothing usable was stamped.
   ///
-  /// DELIBERATELY OUT OF [==], along with [canCapture]. Presence dedups
+  /// DELIBERATELY OUT OF [==], along with [canCapture] and [capturing].
+  /// Presence dedups
   /// participants by set equality, and a field that moves while the same people
   /// are in the same call would make every read of the list a change. What
   /// reads these is [CallRoster]'s own picture, through [state].
@@ -37,11 +39,26 @@ class CallParticipant {
   /// must rank exactly as it did before capability existed.
   final bool canCapture;
 
+  /// That device's own word that audio is reaching its recorder RIGHT NOW, or
+  /// null when it has not said so.
+  ///
+  /// Silence is null, and null is the DEFAULT — the opposite polarity from
+  /// [canCapture] beside it, because the two answer different questions.
+  /// [canCapture] ranks a fleet and has to defer to a sibling it has not heard
+  /// from; this one is the only thing that ever authorises throwing captured
+  /// audio away, and deferring there destroys the copy.
+  ///
+  /// Out of [==] for the same reason [joinedAt] is: presence dedups by set
+  /// equality and this moves while the same people are in the same call.
+  /// [state] is what carries it to the notify predicate.
+  final CaptureAttestation? capturing;
+
   const CallParticipant({
     required this.userId,
     this.deviceId,
     this.joinedAt,
     this.canCapture = true,
+    this.capturing,
   });
 
   /// Splits a `@user:server:DEVICE` identity.
@@ -84,23 +101,27 @@ class CallParticipant {
   /// Separate from [CallParticipant.parse] so the identity rules above — which
   /// took two bug reports to get right — stay one piece of code with one set of
   /// return paths.
-  CallParticipant describedBy({DateTime? joinedAt, bool canCapture = true}) =>
-      CallParticipant(
-        userId: userId,
-        deviceId: deviceId,
-        joinedAt: joinedAt,
-        canCapture: canCapture,
-      );
+  CallParticipant describedBy({
+    DateTime? joinedAt,
+    bool canCapture = true,
+    CaptureAttestation? capturing,
+  }) => CallParticipant(
+    userId: userId,
+    deviceId: deviceId,
+    joinedAt: joinedAt,
+    canCapture: canCapture,
+    capturing: capturing,
+  );
 
   /// Everything about this participant that anyone downstream reads, INCLUDING
-  /// the two fields [==] leaves out.
+  /// the three fields [==] leaves out.
   ///
   /// A record, so comparing two of them compares every field structurally. This
   /// is what the roster's notify predicate is built from: a hand-maintained
   /// list of "fields worth notifying about" is how a capability change came to
   /// land in silence.
-  (String, String?, DateTime?, bool) get state =>
-      (userId, deviceId, joinedAt, canCapture);
+  (String, String?, DateTime?, bool, CaptureAttestation?) get state =>
+      (userId, deviceId, joinedAt, canCapture, capturing);
 
   @override
   bool operator ==(Object other) =>
@@ -206,6 +227,17 @@ class CallRoster extends ChangeNotifier {
   static const _canRecord = 'yes';
   static const _cannotRecord = 'no';
 
+  /// The attribute a device publishes while audio is ACTUALLY reaching its
+  /// recorder, and the value it takes when it is not.
+  ///
+  /// A SECOND attribute rather than a richer value in the first one, because
+  /// the two mean opposite things about silence and must never be able to be
+  /// confused for one another. "I can record" is a claim about the device that
+  /// stays true across the whole call; this is a claim about right now that a
+  /// device is only entitled to make once a frame has actually arrived.
+  static const capturingAttribute = 'pangea_capturing';
+  static const _notCapturing = 'no';
+
   /// What a sibling's attributes say about whether it can record.
   ///
   /// Anything other than an explicit refusal reads as ABLE — no attribute, an
@@ -214,6 +246,20 @@ class CallRoster extends ChangeNotifier {
   /// writes, and the reason the two are next to each other.
   static bool capableFromAttributes(Map<String, String> attributes) =>
       attributes[canCaptureAttribute] != _cannotRecord;
+
+  /// A sibling's own word that it is recording, or null when it has not given
+  /// one.
+  ///
+  /// The counterpart of what [announceCapturing] writes, and the mirror image
+  /// of [capableFromAttributes] directly above: there, anything but a refusal
+  /// is a yes; here, anything but the affirmative value is a no. Both defaults
+  /// are the safe one for the question being asked. Deferring to an unheard
+  /// sibling costs a stretch of the recording; believing an unheard sibling
+  /// holds a copy costs the copy.
+  static CaptureAttestation? attestationFromAttributes(
+    String deviceId,
+    Map<String, String> attributes,
+  ) => CaptureAttestation.of(deviceId, attributes[capturingAttribute]);
 
   /// The picture the last recompute produced. Everything public below is a view
   /// of it, so the stored state and the state listeners were told about cannot
@@ -381,6 +427,16 @@ class CallRoster extends ChangeNotifier {
   bool siblingCanCapture(String deviceId) =>
       _sibling(deviceId)?.canCapture ?? true;
 
+  /// One of this account's other devices attesting that it is recording, or
+  /// null.
+  ///
+  /// A device this account cannot see attests to NOTHING, which is the opposite
+  /// default from [siblingCanCapture] and is not an inconsistency: a sibling we
+  /// cannot see is one we have heard nothing from, and nothing is not a
+  /// statement that it holds a copy of what the learner just said.
+  CaptureAttestation? siblingCaptureAttestation(String deviceId) =>
+      _sibling(deviceId)?.capturing;
+
   CallParticipant? _sibling(String deviceId) {
     for (final p in participants) {
       if (p.userId == myUserId && p.deviceId == deviceId) return p;
@@ -428,19 +484,7 @@ class CallRoster extends ChangeNotifier {
     // event costs one repaint, not the truth.
     final snapshot = read;
     final next = _RosterPicture(
-      participants: {
-        for (final member in snapshot.remotes)
-          CallParticipant.parse(
-            member.identity,
-            myUserId: myUserId,
-          ).describedBy(
-            joinedAt: usableJoinTime(
-              described: member.described,
-              joinedAt: member.joinedAt,
-            ),
-            canCapture: capableFromAttributes(member.attributes),
-          ),
-      },
+      participants: {for (final member in snapshot.remotes) _describe(member)},
       myJoinedAt: snapshot.me == null
           ? null
           : usableJoinTime(
@@ -471,50 +515,105 @@ class CallRoster extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// What this device last told its siblings about whether it can record.
+  /// One participant, as this roster believes them.
   ///
-  /// Starts TRUE because that is what a sibling reads before anything has been
-  /// published: silence means able. Moved only once a write has actually
-  /// landed, which is what makes it safe to rank on.
-  bool _announcedCanCapture = true;
+  /// A method rather than an expression inside [recompute] because three
+  /// separate rules apply to the same raw member — which join stamps are worth
+  /// believing, what silence says about capability, and what silence says about
+  /// recording — and each of them has the opposite default from at least one of
+  /// the others.
+  CallParticipant _describe(RosterMember member) {
+    final who = CallParticipant.parse(member.identity, myUserId: myUserId);
+    final deviceId = who.deviceId;
+    return who.describedBy(
+      joinedAt: usableJoinTime(
+        described: member.described,
+        joinedAt: member.joinedAt,
+      ),
+      canCapture: capableFromAttributes(member.attributes),
+      // An identity with no device segment attests to nothing. There is no
+      // device to attribute the statement to, and an attestation that named
+      // nobody could be matched against any successor at all.
+      capturing: deviceId == null
+          ? null
+          : attestationFromAttributes(deviceId, member.attributes),
+    );
+  }
 
-  /// What it wants them to be told. Differs from [_announcedCanCapture]
-  /// precisely while an announcement is outstanding.
-  bool _wantedCanCapture = true;
+  /// What this device's siblings have ACTUALLY been told, keyed by attribute.
+  ///
+  /// Seeded with what silence already says, so announcing a value a sibling
+  /// would have assumed anyway costs no round trip: able, and not recording.
+  /// Moved only once a write has landed, which is what makes it safe to rank
+  /// on — the election reads the landed value rather than the live one, because
+  /// a device that stood aside the instant it found out, while every sibling
+  /// still read it as able, would tie them all on capability and lose the
+  /// device-id tiebreak to itself, and nobody would record for as long as the
+  /// signal stayed stuck.
+  final Map<String, String> _announced = {
+    canCaptureAttribute: _canRecord,
+    capturingAttribute: _notCapturing,
+  };
+
+  /// What it wants them to be told. Differs from [_announced] precisely while
+  /// an announcement is outstanding.
+  final Map<String, String> _wanted = {};
 
   /// Whether a write is on the wire right now.
   bool _announcing = false;
 
-  /// What this device's siblings have ACTUALLY been told.
-  ///
-  /// Read by the election, which ranks this device on the landed value rather
-  /// than the live one: a device that stood aside the instant it found out,
-  /// while every sibling still read it as able, would tie them all on
-  /// capability and lose the device-id tiebreak to itself — and nobody would
-  /// record for as long as the signal stayed stuck.
-  bool get announcedCanCapture => _announcedCanCapture;
+  /// What this device's siblings have actually been told about its capability.
+  bool get announcedCanCapture =>
+      _announced[canCaptureAttribute] != _cannotRecord;
 
   /// Tells this account's other devices whether this one can record.
+  Future<void> announceCanCapture(bool canCapture) =>
+      _announce(canCaptureAttribute, canCapture ? _canRecord : _cannotRecord);
+
+  /// Tells them whether audio is reaching this device's recorder right now.
+  ///
+  /// Only ever said on the strength of a frame that actually arrived. This is
+  /// the one signal a displaced sibling is allowed to destroy its own captured
+  /// audio on, so a device that published it because it INTENDED to record
+  /// would be telling a sibling to throw away the only copy of what the learner
+  /// said.
+  Future<void> announceCapturing(bool capturing) => _announce(
+    capturingAttribute,
+    capturing ? CaptureAttestation.attested : _notCapturing,
+  );
+
+  /// Publishes one fact, and everything else outstanding along with it.
   ///
   /// SINGLE-FLIGHT AND COALESCING. One write is on the wire at a time, and the
-  /// loop re-reads the wanted value after each one, so a caller whose intent
+  /// loop re-reads the wanted values after each one, so a caller whose intent
   /// arrived mid-write is never dropped in favour of the value already flying —
   /// the same rule the memoised stop in the recorder states.
-  Future<void> announceCanCapture(bool canCapture) async {
-    _wantedCanCapture = canCapture;
+  ///
+  /// ONE loop for every attribute, not one per fact. `setAttributes` replaces
+  /// the whole map and [publishAttributes] merges over the copy it can see, so
+  /// two announcements in flight at once would each merge over a picture taken
+  /// before the other landed and one of them would be silently lost. Everything
+  /// outstanding goes in the same write for the same reason it costs nothing
+  /// to: it is one round trip either way.
+  Future<void> _announce(String key, String value) async {
+    _wanted[key] = value;
     if (_announcing) return;
     _announcing = true;
     try {
-      while (_wantedCanCapture != _announcedCanCapture) {
-        final writing = _wantedCanCapture;
+      while (true) {
+        final pending = <String, String>{
+          for (final entry in _wanted.entries)
+            if (_announced[entry.key] != entry.value) entry.key: entry.value,
+        };
+        if (pending.isEmpty) return;
         // A failed write RETURNS rather than spinning. The intent stays
         // outstanding and the next recompute re-asserts it; retrying inside
         // this loop would hammer a signal channel that has already answered.
-        if (!await _writeCanCapture(writing)) return;
+        if (!await _write(pending)) return;
         // Recorded only once the write actually happened. Recording it first
         // would have a device that never reached the SFU believe its siblings
         // knew, and stand aside on their behalf.
-        _announcedCanCapture = writing;
+        _announced.addAll(pending);
       }
     } finally {
       // Cleared HERE rather than from a completion callback, so there is no
@@ -524,21 +623,22 @@ class CallRoster extends ChangeNotifier {
     }
   }
 
-  Future<bool> _writeCanCapture(bool canCapture) async {
+  Future<bool> _write(Map<String, String> attributes) async {
     try {
-      return await publishAttributes({
-        canCaptureAttribute: canCapture ? _canRecord : _cannotRecord,
-      });
+      return await publishAttributes(attributes);
     } catch (e, s) {
       // Loudly, and naming the likeliest cause: `setAttributes` waits five
       // seconds for the SFU to answer and then throws, and it completes with an
       // error when the server refuses — which is what a call token minted
-      // without the grant to update its own metadata looks like from here. The
-      // capability half of the election is inert while this fails, and it fails
-      // quietly enough to look like it works.
+      // without the grant to update its own metadata looks like from here.
+      // Both halves of the election are inert while this fails, and it fails
+      // quietly enough to look like it works. The failure is SAFE in the
+      // direction that matters: siblings that never hear this device attest to
+      // recording will deliver their own tails rather than drop them.
       Logs().w(
-        'Could not tell this account other devices whether this one can '
-        'record; the call token most likely lacks CanUpdateOwnMetadata',
+        'Could not tell this account other devices what this one can do or is '
+        'doing (${attributes.keys.join(', ')}); the call token most likely '
+        'lacks CanUpdateOwnMetadata',
         e,
         s,
       );
@@ -547,8 +647,13 @@ class CallRoster extends ChangeNotifier {
   }
 
   void _reassertAnnouncement() {
-    if (_wantedCanCapture == _announcedCanCapture) return;
-    unawaited(announceCanCapture(_wantedCanCapture));
+    for (final entry in _wanted.entries) {
+      if (_announced[entry.key] == entry.value) continue;
+      // One call is enough: the loop it starts picks up every other
+      // outstanding value in the same write.
+      unawaited(_announce(entry.key, entry.value));
+      return;
+    }
   }
 
   @override
@@ -582,7 +687,7 @@ class _RosterPicture {
     peerMuted: false,
   );
 
-  Set<(String, String?, DateTime?, bool)> get _states =>
+  Set<(String, String?, DateTime?, bool, CaptureAttestation?)> get _states =>
       participants.map((p) => p.state).toSet();
 
   @override

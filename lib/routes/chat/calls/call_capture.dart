@@ -336,6 +336,36 @@ class CallCaptureService {
 
   bool get isRecording => _running;
 
+  /// Whether audio is ACTUALLY reaching this recorder right now.
+  ///
+  /// Not the same question as [isRecording], and the difference is the whole
+  /// reason this exists. [isRecording] says a tap was attached and nothing has
+  /// stopped it; a tap that attached and then produced nothing — the failure
+  /// the first-frame watchdog exists to catch — answers TRUE to that for the
+  /// fifteen seconds it takes the watchdog to fire. This answers true only
+  /// while a chunker exists, and a chunker is created by an arriving frame and
+  /// let go by the run that ends, so it is a statement about audio rather than
+  /// about intent.
+  ///
+  /// What a sibling is told, and therefore the only thing on which a displaced
+  /// device is entitled to throw its own captured audio away. It has to be the
+  /// stronger of the two.
+  ///
+  /// FALSE WHILE MUTED, which falls out rather than being special-cased: a mute
+  /// ends the run and lets the chunker go, because a gap in the transcript is
+  /// what a mute should be. A muted device is not holding anybody's words.
+  bool get capturingAudio => _running && !_stopping && _chunker != null;
+
+  /// Told that audio has begun arriving, at the first frame of a run.
+  ///
+  /// Set by whoever owns the election, and the counterpart of [onCaptureLost].
+  /// The state is level-triggered and would be picked up by the next election
+  /// anyway; this only makes the news PROMPT. That matters because the window
+  /// it shortens is the one in which a sibling, displacing this device, cannot
+  /// yet see that this device is recording — and delivers a duplicate rather
+  /// than deferring to a copy it could not tell was being held.
+  void Function()? onCaptureStarted;
+
   /// Begins recording [track].
   ///
   /// Requests the capture format explicitly rather than accepting whatever the
@@ -792,6 +822,14 @@ class CallCaptureService {
     // hole that predates the positions below.
     if (session != _session || !_running || _stopping || _muted) return;
 
+    // Whether this frame is the one that STARTS a run, which is exactly whether
+    // there was no chunker to put it in. A sample-rate change further down ends
+    // the run and opens another inside this one callback, with no yield
+    // between, so nothing outside ever saw it stop and it is not a new run to
+    // report — and it does not move this flag either way, because a chunker
+    // existed when the frame arrived.
+    final firstFrameOfRun = _chunker == null;
+
     // Audio arrived, so this device's tap point works. That is the one fact
     // that makes a later attach worth attempting again, and it is why
     // [_tapDeaths] counts consecutive failures rather than a call's total.
@@ -825,6 +863,9 @@ class CallCaptureService {
     for (final chunk in chunker.add(samples)) {
       _hand(chunk);
     }
+    // AFTER the chunker exists, so a listener that reads [capturingAudio]
+    // straight out of this call sees the fact it is being told about.
+    if (firstFrameOfRun) onCaptureStarted?.call();
   }
 
   void _hand(PcmChunk chunk) {

@@ -71,17 +71,19 @@ class ActiveCall extends ChangeNotifier {
   Future<void>? _hangUp;
   bool _disposed = false;
 
-  /// Which of this account's other devices have said they CANNOT record at some
+  /// Which of this account's other devices have been SEEN NOT RECORDING at some
   /// point during the stretch this device is recording now.
   ///
   /// The discard asks whether a successor was recording the seconds this device
-  /// is about to drop, and capability at the instant of the handover cannot
-  /// answer that: a sibling whose microphone came up a moment ago was not
-  /// recording anything before it did. Only ever added to while a stretch runs,
-  /// so a sibling that recovered stays disqualified for the rest of that
-  /// stretch and the tail is delivered — a duplicate is recoverable and audio
-  /// nobody else holds is not.
-  final Set<String> _unableWhileRecording = {};
+  /// is about to drop, and an attestation read at the instant of the handover
+  /// cannot answer that: a sibling that started recording when it took over
+  /// holds none of what came before. This is the span the instantaneous reading
+  /// is missing.
+  ///
+  /// Only ever added to while a stretch runs, so a sibling that started
+  /// recording midway stays disqualified for the rest of that stretch and the
+  /// tail is delivered.
+  final Set<String> _seenNotRecordingWhileRecording = {};
 
   /// Set the moment anything asks the call to end. [start] checks it after every
   /// await, so a hangup that lands mid-connect stops the sequence instead of
@@ -297,6 +299,30 @@ class ActiveCall extends ChangeNotifier {
     // first attach is heard too. The recorder is built per call, so nothing
     // else is ever listening on this.
     capture.onCaptureLost = _onCaptureLost;
+    capture.onCaptureStarted = _onCaptureStarted;
+  }
+
+  /// Audio has begun arriving at the recorder.
+  ///
+  /// Told to the siblings AT ONCE rather than waiting for the next election,
+  /// because until they hear it a sibling that displaces this device cannot
+  /// tell a device holding a copy from one whose tap attached and died — and
+  /// delivers its own tail rather than deferring to a copy it cannot see.
+  void _onCaptureStarted() {
+    if (_ending || _disposed) return;
+    _announceCaptureState();
+  }
+
+  /// Tells this account's other devices what this one is ACTUALLY doing.
+  ///
+  /// Level-triggered like everything else here: it publishes the current answer
+  /// rather than a transition, so a missed call costs one round trip and not
+  /// the truth. The roster coalesces, so calling it from several places is a
+  /// repetition rather than a race.
+  void _announceCaptureState() {
+    final roster = _roster;
+    if (roster == null) return;
+    unawaited(roster.announceCapturing(capture.capturingAudio));
   }
 
   /// The recorder stopped itself, because its tap died.
@@ -500,6 +526,10 @@ class ActiveCall extends ChangeNotifier {
     unawaited(
       roster?.announceCanCapture(canRecordHere) ?? Future<void>.value(),
     );
+    // The second half of what this device tells its siblings, and the one they
+    // are allowed to destroy audio on. Published from the same election so the
+    // two facts a sibling ranks and discards on were read at one instant.
+    _announceCaptureState();
 
     final siblings = [
       // Siblings only, from the SFU's own participant list. The election has to
@@ -513,15 +543,23 @@ class ActiveCall extends ChangeNotifier {
           ),
     ];
 
-    // Capability is a fact about a SPAN when the discard reads it, and every
+    // Whether a successor held our stretch is a fact about a SPAN, and every
     // election is only an instant. Seeded at the election that starts a
     // stretch — [_capturing] is false right up to the moment the reconcile it
     // queues actually attaches — and added to by every election after it, so
-    // what this holds while a stretch runs is every sibling that has said it
-    // cannot record at any point during it.
-    if (!_capturing) _unableWhileRecording.clear();
+    // what this holds while a stretch runs is every sibling seen, at any point
+    // during it, not recording.
+    //
+    // A sibling this device cannot see at all is not added, and that is the one
+    // gap in the span rather than an oversight: the convergence race is
+    // precisely the case where the other device is invisible for the seconds in
+    // question, and nothing observed locally can close it. The join stamps are
+    // what stand in for that window, at the resolution they actually carry.
+    if (!_capturing) _seenNotRecordingWhileRecording.clear();
     for (final sibling in siblings) {
-      if (!sibling.canCapture) _unableWhileRecording.add(sibling.deviceId);
+      if (roster?.siblingCaptureAttestation(sibling.deviceId) == null) {
+        _seenNotRecordingWhileRecording.add(sibling.deviceId);
+      }
     }
 
     // THE LANDED VALUE, and ONLY the landed value. Every device reaches the
@@ -557,31 +595,22 @@ class ActiveCall extends ChangeNotifier {
     // arrived after the audio had already gone. And being level-triggered it
     // cannot inherit an intent from an election that was later reversed.
     final successor = elected ? null : election.recordingSuccessor;
+    // FACTS, not a conclusion. Every argument below is something read off the
+    // roster, and the rule that turns them into a verdict lives in one place —
+    // so a term cannot be got wrong here without being wrong for every caller.
+    // The blocker this shape was adopted for was a boolean assembled right
+    // here, out of the nearest thing to hand that looked like it meant the
+    // successor had recorded.
     capture.setDiscardOnStop(
       successor != null &&
           CaptureElection.discardsCapturedAudio(
+            successor: successor,
+            successorIsRecording: roster?.siblingCaptureAttestation(
+              successor.deviceId,
+            ),
+            seenNotRecording: _seenNotRecordingWhileRecording,
             myJoinedAt: roster?.myJoinTime,
             successorJoinedAt: roster?.siblingJoinTime(successor.deviceId),
-            // What is being answered is whether the successor was recording
-            // the seconds this device is about to throw away — a question
-            // about the whole stretch, which is why the successor's half of it
-            // cannot be read off this instant alone. Getting it wrong destroys
-            // the only copy of what the learner said.
-            //
-            // The successor is able, and has been all along. One that
-            // out-ranked us because it JUST became able had no tap while we
-            // were recording — and reading only the live value here made a
-            // sibling whose microphone came up mid-call take our tail with it.
-            //
-            // And WE are able, so the device id is what displaced us. Two
-            // devices that have both concluded they cannot record are equally
-            // tied on capability and the id still decides between them, but
-            // whichever wins is recording nothing; it is the tie at FALSE
-            // rather than the tie itself that makes the difference.
-            successorRecordedTheSameStretch:
-                successor.canCapture &&
-                iCanCapture &&
-                !_unableWhileRecording.contains(successor.deviceId),
           ),
     );
 
@@ -665,6 +694,14 @@ class ActiveCall extends ChangeNotifier {
       // Recording is not the call. A tap that will not open, or will not close,
       // costs analytics — it must never take down a conversation.
       Logs().e('Could not change recording state', e, s);
+    } finally {
+      // A stretch that just ENDED has to be taken back at once, not on the next
+      // presence tick. The election that ordered this stop published "recording"
+      // because that was true when it ran, and a sibling reading that stale yes
+      // could drop its own tail believing this device was still holding the
+      // words. In the finally, because a stop that threw stopped the audio just
+      // the same.
+      _announceCaptureState();
     }
   }
 

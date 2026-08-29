@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
 
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
+import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 
 /// A roster whose SFU read and connection state are supplied by the test.
 ///
@@ -489,6 +490,129 @@ void main() {
       expect(notifications, greaterThan(before));
       expect(roster.siblingCanCapture('MYOTHERPHONE'), isFalse);
     });
+  });
+
+  group('what a device says about whether it IS recording', () {
+    test('a device that has published nothing attests to nothing', () async {
+      // The MIRROR IMAGE of the capability default directly above, and not an
+      // inconsistency. Deferring to a sibling we have not heard from costs a
+      // stretch of the recording; believing an unheard sibling holds a copy of
+      // what the learner said costs the copy.
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.recompute();
+
+      expect(roster.siblingCaptureAttestation('MYOTHERPHONE'), isNull);
+    });
+
+    test('a device nobody can see attests to nothing either', () {
+      roster.recompute();
+      expect(roster.siblingCaptureAttestation('NEVERHEARDOFIT'), isNull);
+    });
+
+    test('saying it CAN record is not saying it IS', () async {
+      // The blocker, at the seam it enters through. A device whose tap attached
+      // and then delivered nothing goes on advertising "able" until its own
+      // watchdog fires; nothing here may turn that into evidence that it
+      // recorded anything.
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.attributes = {
+        '$me:MYOTHERPHONE': {CallRoster.canCaptureAttribute: 'yes'},
+      };
+      roster.recompute();
+
+      expect(roster.siblingCanCapture('MYOTHERPHONE'), isTrue);
+      expect(roster.siblingCaptureAttestation('MYOTHERPHONE'), isNull);
+    });
+
+    test('a device that says it is recording is taken at its word', () {
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.attributes = {
+        '$me:MYOTHERPHONE': {
+          CallRoster.capturingAttribute: CaptureAttestation.attested,
+        },
+      };
+      roster.recompute();
+
+      expect(
+        roster.siblingCaptureAttestation('MYOTHERPHONE')?.deviceId,
+        'MYOTHERPHONE',
+      );
+    });
+
+    test('a change to it alone notifies listeners', () {
+      // Same participant set, same mute state, same join times, same
+      // capability. A sibling starting or stopping is exactly the shape of
+      // change the discard now depends on, and the predicate has to see it.
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.recompute();
+      final before = notifications;
+
+      roster.attributes = {
+        '$me:MYOTHERPHONE': {
+          CallRoster.capturingAttribute: CaptureAttestation.attested,
+        },
+      };
+      roster.recompute();
+
+      expect(notifications, greaterThan(before));
+      expect(roster.siblingCaptureAttestation('MYOTHERPHONE'), isNotNull);
+    });
+  });
+
+  group('telling the other devices what this one is doing', () {
+    test('nothing is written while there is nothing to say', () async {
+      // Siblings already read silence as NOT recording, so announcing that
+      // before anything has started is a round trip that buys nothing.
+      await roster.announceCapturing(false);
+      expect(roster.published, isEmpty);
+    });
+
+    test('a device that is recording says so', () async {
+      await roster.announceCapturing(true);
+
+      expect(roster.published, [
+        {CallRoster.capturingAttribute: CaptureAttestation.attested},
+      ]);
+    });
+
+    test('both facts travel in ONE write', () async {
+      // `setAttributes` replaces the whole map and the publish merges over the
+      // copy it can see, so two announcements in flight at once would each
+      // merge over a picture taken before the other landed and one of them
+      // would be silently lost.
+      final held = Completer<void>();
+      roster.holdPublish = held;
+      final first = roster.announceCanCapture(false);
+      await pumpEventQueue();
+      final second = roster.announceCapturing(true);
+      held.complete();
+      await first;
+      await second;
+
+      expect(roster.published, [
+        {CallRoster.canCaptureAttribute: 'no'},
+        {CallRoster.capturingAttribute: CaptureAttestation.attested},
+      ]);
+      expect(roster.announcedCanCapture, isFalse);
+    });
+
+    test(
+      'an outstanding attestation is re-asserted on the next recompute',
+      () async {
+        roster.publishError = StateError('Signal request timed out');
+        await roster.announceCapturing(true);
+        expect(roster.published, hasLength(1), reason: 'it did not spin');
+
+        roster.publishError = null;
+        roster.recompute();
+        await pumpEventQueue();
+
+        expect(roster.published, hasLength(2));
+        expect(roster.published.last, {
+          CallRoster.capturingAttribute: CaptureAttestation.attested,
+        });
+      },
+    );
   });
 
   group('telling the other devices whether this one can record', () {

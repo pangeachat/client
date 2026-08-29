@@ -1269,6 +1269,94 @@ void main() {
     });
   });
 
+  group('whether audio is actually reaching the recorder', () {
+    test(
+      'an attached tap that has delivered nothing is not capturing',
+      () async {
+        // The distinction the whole discard rests on. A tap that attached and
+        // then produced no frame -- the failure the first-frame watchdog exists
+        // to catch -- answers TRUE to isRecording for the fifteen seconds the
+        // watchdog takes to fire. A sibling told THAT would throw away the only
+        // copy of what the learner said.
+        final capture = service();
+        await capture.start(track);
+
+        expect(capture.isRecording, isTrue);
+        expect(capture.capturingAudio, isFalse);
+      },
+    );
+
+    test('a frame that arrives makes it true, and says so at once', () async {
+      // Announced promptly rather than at the next election, because the window
+      // it shortens is the one in which a sibling displacing this device cannot
+      // yet tell it from a device whose tap died.
+      var started = 0;
+      final capture = service();
+      capture.onCaptureStarted = () => started++;
+      await capture.start(track);
+      expect(started, 0);
+
+      track.emit(20);
+
+      expect(capture.capturingAudio, isTrue);
+      expect(started, 1);
+      await capture.stop();
+    });
+
+    test('the news is once per run, not once per format change', () async {
+      // A sample-rate change ends the run and opens a new chunker inside one
+      // callback, with no yield between, so nothing outside ever saw it stop.
+      // Reporting a fresh start there would tell the siblings something that
+      // did not happen.
+      var started = 0;
+      final capture = service();
+      capture.onCaptureStarted = () => started++;
+      await capture.start(track);
+      track.emit(20);
+      // The same run, at a different rate. It ends the chunker and opens
+      // another inside this one callback.
+      track.onFrame!(
+        AudioFrame(
+          sampleRate: 16000,
+          channels: captureChannels,
+          data: Int16List(320).buffer.asUint8List(),
+          format: AudioFormat.Int16,
+        ),
+      );
+
+      expect(started, 1);
+      expect(capture.capturingAudio, isTrue);
+      await capture.stop();
+    });
+
+    test('a stop takes it back', () async {
+      final capture = service();
+      await capture.start(track);
+      track.emit(20);
+      expect(capture.capturingAudio, isTrue);
+
+      await capture.stop();
+
+      expect(capture.capturingAudio, isFalse);
+    });
+
+    test('a mute takes it back too', () async {
+      // A mute ends the run and lets the chunker go, because a gap in the
+      // transcript is what a mute should be -- so a muted device is not holding
+      // anybody's words, and must not tell a sibling that it is.
+      final capture = service();
+      await capture.start(track);
+      track.emit(20);
+      expect(capture.capturingAudio, isTrue);
+
+      capture.setMuted(true);
+
+      expect(capture.isRecording, isTrue, reason: 'the tap is still attached');
+      expect(capture.capturingAudio, isFalse);
+      await capture.stop();
+    });
+  });
+
   group('whether this device can record at all', () {
     test('a device that has never tried says it can', () async {
       // Silence has to read as ABLE. A device that answered "cannot" before it

@@ -189,64 +189,105 @@ void main() {
   });
 
   group('deciding whether a displaced stretch is a duplicate', () {
-    final earlier = DateTime.utc(2026, 8, 29, 12, 0, 0);
-    final later = DateTime.utc(2026, 8, 29, 12, 0, 5);
+    // Whole seconds, because that is all `Participant.joinedAt` ever carries:
+    // livekit_client multiplies a whole-second protocol field by a thousand.
+    final noon = DateTime.utc(2026, 8, 29, 12, 0, 0);
+    final aSecondLater = noon.add(const Duration(seconds: 1));
+    final muchLater = noon.add(const Duration(seconds: 5));
 
-    test('two devices joining in the same second discard the loser tail', () {
-      // THE reported case. Both devices answer the same ring, each sees a
-      // roster that momentarily lacks the other, and both record the opening
-      // seconds. joinedAt is exposed in whole SECONDS, so the two stamps are
-      // EQUAL -- a strictly-earlier rule would deliver exactly the duplicate
-      // this exists to stop.
+    const successor = CaptureCandidate('AAAA');
+    final itIsRecording = CaptureAttestation.of(
+      'AAAA',
+      CaptureAttestation.attested,
+    );
+
+    bool discards({
+      CaptureAttestation? attestation,
+      Set<String> seenNotRecording = const {},
+      DateTime? mine,
+      DateTime? theirs,
+    }) => CaptureElection.discardsCapturedAudio(
+      successor: successor,
+      successorIsRecording: attestation,
+      seenNotRecording: seenNotRecording,
+      myJoinedAt: mine,
+      successorJoinedAt: theirs,
+    );
+
+    test('a successor recording since before we joined takes our tail', () {
+      // The one shape that proves it. Its join stamp is a whole resolution step
+      // earlier, so the second it names had ENDED before the second ours began
+      // -- it was in the call first however the sub-second truth fell -- and it
+      // says, of itself, that audio is reaching its recorder.
       expect(
-        CaptureElection.discardsCapturedAudio(
-          myJoinedAt: earlier,
-          successorJoinedAt: earlier,
-          successorRecordedTheSameStretch: true,
-        ),
+        discards(attestation: itIsRecording, mine: aSecondLater, theirs: noon),
         isTrue,
       );
     });
 
-    test('a successor that was here first discards too', () {
+    test('a successor that only says it CAN record keeps our tail', () {
+      // THE BLOCKER. Capability is true for silence by design, so a device
+      // whose tap attached and then never produced a frame goes on advertising
+      // "able" until its own watchdog fires fifteen seconds later. Nothing here
+      // may read that as "it recorded": the successor holds nothing, and this
+      // tail is the only copy of what the learner said.
       expect(
-        CaptureElection.discardsCapturedAudio(
-          myJoinedAt: later,
-          successorJoinedAt: earlier,
-          successorRecordedTheSameStretch: true,
-        ),
-        isTrue,
+        discards(attestation: null, mine: aSecondLater, theirs: noon),
+        isFalse,
       );
     });
 
-    test('a successor that arrived after us gets our tail delivered', () {
-      // It was not in the call while we were recording, so nobody else holds
-      // those words. Discarding them would destroy the only copy.
+    test('an attestation from a different device keeps our tail', () {
+      // Evidence about one sibling can never license destroying a stretch a
+      // DIFFERENT sibling was supposed to be holding. Checked here rather than
+      // trusted to the call site, because a lookup against the wrong device id
+      // is the kind of mistake that reads correctly.
       expect(
-        CaptureElection.discardsCapturedAudio(
-          myJoinedAt: earlier,
-          successorJoinedAt: later,
-          successorRecordedTheSameStretch: true,
+        discards(
+          attestation: CaptureAttestation.of(
+            'ZZZZ',
+            CaptureAttestation.attested,
+          ),
+          mine: aSecondLater,
+          theirs: noon,
         ),
         isFalse,
       );
     });
 
-    test('a successor that was not recording keeps our tail', () {
-      // A successor that had no tap during our stretch was not holding a copy
-      // of it, whatever its join time says, so discarding throws away audio
-      // nobody else has. The join times still SAY discard here, which is the
-      // point: this term overrules them.
-      //
-      // The conclusion is handed in, because deriving it needs a whole call's
-      // worth of capability history. Where it comes from is covered by the
-      // active_call tests 'a successor whose microphone just arrived keeps our
-      // tail' and 'a handover forced by capability keeps our tail'.
+    test('two devices joining in the same second keep their tails', () {
+      // A stamp of 12:00:00 means "somewhere in the second beginning at
+      // 12:00:00", so two equal stamps order NOTHING. The rule this replaced
+      // read equality as "the successor was here first": a device that joined
+      // at 12:00:00.001 and recorded until a sibling joined at 12:00:00.900
+      // threw away nine hundred milliseconds the sibling was never in the room
+      // for. Delivering costs a duplicate; discarding costs a copy nothing
+      // else has.
       expect(
-        CaptureElection.discardsCapturedAudio(
-          myJoinedAt: later,
-          successorJoinedAt: earlier,
-          successorRecordedTheSameStretch: false,
+        discards(attestation: itIsRecording, mine: noon, theirs: noon),
+        isFalse,
+      );
+    });
+
+    test('a successor that arrived after us keeps our tail', () {
+      expect(
+        discards(attestation: itIsRecording, mine: noon, theirs: muchLater),
+        isFalse,
+      );
+    });
+
+    test('a successor seen not recording during our stretch keeps it', () {
+      // It is recording NOW and its join stamp is early enough, so every
+      // instantaneous reading says discard. But it was watched, while this
+      // stretch was running, not recording -- so it started when it took over
+      // and holds none of what came before. This term is what overrules the
+      // other two.
+      expect(
+        discards(
+          attestation: itIsRecording,
+          seenNotRecording: {'AAAA'},
+          mine: aSecondLater,
+          theirs: noon,
         ),
         isFalse,
       );
@@ -256,21 +297,33 @@ void main() {
       // Discarding a learner's speech on the strength of a number nobody
       // stamped is the one outcome this must not produce.
       expect(
-        CaptureElection.discardsCapturedAudio(
-          myJoinedAt: null,
-          successorJoinedAt: earlier,
-          successorRecordedTheSameStretch: true,
-        ),
+        discards(attestation: itIsRecording, mine: null, theirs: noon),
         isFalse,
       );
       expect(
-        CaptureElection.discardsCapturedAudio(
-          myJoinedAt: earlier,
-          successorJoinedAt: null,
-          successorRecordedTheSameStretch: true,
-        ),
+        discards(attestation: itIsRecording, mine: aSecondLater, theirs: null),
         isFalse,
       );
+    });
+  });
+
+  group('what counts as a device saying it is recording', () {
+    test('only the value a device actually publishes mints one', () {
+      expect(
+        CaptureAttestation.of('AAAA', CaptureAttestation.attested)?.deviceId,
+        'AAAA',
+      );
+    });
+
+    test('silence, a refusal and a value from the future all mint none', () {
+      // Every one of these is an ABSENCE of evidence rather than a statement,
+      // and absence never destroys audio. An older build that publishes nothing
+      // and a future build that publishes something this one cannot read are
+      // the same case.
+      expect(CaptureAttestation.of('AAAA', null), isNull);
+      expect(CaptureAttestation.of('AAAA', 'no'), isNull);
+      expect(CaptureAttestation.of('AAAA', 'recording-v2'), isNull);
+      expect(CaptureAttestation.of('AAAA', ''), isNull);
     });
   });
 }
