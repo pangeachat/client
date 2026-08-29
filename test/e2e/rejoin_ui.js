@@ -5,6 +5,7 @@
 //  2 after the other side ends, nothing still claims "reconnecting"
 //  3 the Return banner's red end ENDS the call for the other side
 //  4 the chat list previews the call, not the membership plumbing
+const labels = require('./labels');
 const h = require('./harness');
 const { ui, mx, wait } = h;
 
@@ -61,6 +62,20 @@ async function liveClock(page, { gap = 3200 } = {}) {
     if (before.some((b) => v - b >= 2 && v - b <= 8)) return v;
   }
   return -1;
+}
+
+/// Clicks the first node carrying ANY of [names] -- the l10n key's known
+/// translations, so the account's own interface language does not matter.
+async function clickAnyLabel(page, names) {
+  return page.evaluate((wanted) => {
+    const nodes = [...document.querySelectorAll('flt-semantics, [role=button], button, [aria-label]')];
+    const hit = nodes.find((n) => {
+      const t = `${n.textContent || ''} ${(n.getAttribute && n.getAttribute('aria-label')) || ''}`;
+      return wanted.some((w) => w && t.includes(w));
+    });
+    if (hit) { hit.click(); return true; }
+    return false;
+  }, names);
 }
 
 async function clickByText(page, label) {
@@ -203,7 +218,11 @@ h.refuseIfAnotherRunIsLive();
     // resume a call, when the button was on screen the whole time.
     for (let i = 0; i < 5; i++) {
       const took = await ui.clickControl(B.page, 'ret').then(() => true).catch(() => false);
-      if (took || await clickByText(B.page, 'Return')) break;
+      // The fallback is locale-aware too. Leaving `clickByText(page,'Return')`
+      // here would keep the exact English-only path this fix exists to remove:
+      // when the key-based click cannot reach the overlay, we would be back to
+      // hunting for a word this account's interface does not use.
+      if (took || await clickAnyLabel(B.page, labels.labelsFor('callReturn'))) break;
       await wait(1200);
     }
     await wait(9000);
