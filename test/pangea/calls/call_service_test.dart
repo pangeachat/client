@@ -12,6 +12,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
+import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
@@ -456,6 +457,138 @@ void main() {
           isCurrent: true,
         ),
         isFalse,
+      );
+    });
+  });
+
+  group('a join given up on between its own steps', () {
+    // An await is a place a decision can be superseded, and nothing after one
+    // may act on the decision that preceded it. The check used to sit BELOW the
+    // token request, so a join abandoned while the session was being fetched
+    // still spent a choreographer request on itself -- and if that request
+    // failed, the throw carried straight past the check and the session was
+    // never handed back.
+    Future<(_JoinSteps, Room)> service({Object? tokenThrows}) async {
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(
+          user: '@test:fakeServer.notExisting',
+        ),
+        deviceId: 'GHTYAJCE',
+      );
+      final calls = _JoinSteps(client, focusDiscovery: _FixedFocus())
+        ..tokenThrows = tokenThrows;
+      return (calls, Room(id: '!r:fakeServer.notExisting', client: client));
+    }
+
+    test('never asks for a token on behalf of a call nobody wants', () async {
+      final (calls, room) = await service();
+      final joining = calls.join(room);
+      calls.duringFetch = () => calls.abandonJoin(calls.joinAttempt);
+
+      await expectLater(joining, throwsA(isA<StateError>()));
+
+      expect(calls.steps, [
+        'session',
+      ], reason: 'the token is a request made for a call that is over');
+      expect(
+        calls.session?.leaves,
+        1,
+        reason: 'and the session it did fetch is handed back',
+      );
+    });
+
+    test('hands its session back even when the token request fails', () async {
+      // The regression itself. The release lived below the token await, so a
+      // token that threw skipped it entirely -- and the membership stood until
+      // it expired minutes later, with nothing left holding a handle to it.
+      final (calls, room) = await service(
+        tokenThrows: StateError('the token service is down'),
+      );
+      final joining = calls.join(room);
+      calls.duringToken = () => calls.abandonJoin(calls.joinAttempt);
+
+      await expectLater(joining, throwsA(isA<StateError>()));
+
+      expect(calls.steps, ['session', 'token']);
+      expect(
+        calls.session?.leaves,
+        1,
+        reason: 'a failed token must not strand the session already fetched',
+      );
+    });
+
+    test(
+      'a token failure on a call still wanted is the caller\'s to hear',
+      () async {
+        // The other side of the same guard: when nothing superseded the join, the
+        // guard must return and let the original failure out rather than
+        // replacing it with an abandonment nobody performed.
+        final (calls, room) = await service(tokenThrows: const _TokenRefused());
+
+        await expectLater(calls.join(room), throwsA(isA<_TokenRefused>()));
+
+        expect(
+          calls.session?.leaves,
+          0,
+          reason: 'nothing superseded this join, so it hands nothing back',
+        );
+      },
+    );
+  });
+
+  group('an announce parked behind a leave that is still finishing', () {
+    // The same rule, on the other side of the join. The session is read before
+    // the wait, and the wait is bounded in SECONDS -- long enough for a hangup
+    // to run a whole retract inside it. Entering afterwards publishes a
+    // membership the service is no longer tracking, and the next retract finds
+    // nothing to leave and reports a success it has not achieved: the peer goes
+    // on seeing us in a call we left, until the membership expires.
+    test('does not enter a call that was retracted while it waited', () async {
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(
+          user: '@test:fakeServer.notExisting',
+        ),
+        deviceId: 'GHTYAJCE',
+      );
+      final calls = CallService(
+        client,
+        leaveWithin: const Duration(milliseconds: 50),
+      );
+      final session = _LeavingSession(
+        client: client,
+        room: Room(id: '!r:fakeServer.notExisting', client: client),
+        voip: calls.voip,
+        backend: LiveKitBackend(
+          livekitServiceUrl: 'http://sfu:7980',
+          livekitAlias: 'alias',
+          e2eeEnabled: false,
+        ),
+        groupCallId: 'call-id',
+        application: 'm.call',
+        scope: 'm.room',
+      );
+      calls.adoptSessionForTest(session);
+      // A leave from the LAST call that never answers, which is what parks the
+      // announce long enough for anything to happen inside it.
+      calls.setPendingLeaveForTest(Completer<void>().future);
+
+      final announcing = calls.announce();
+      await pumpEventQueue();
+      // The user hangs up. This one really does leave and really does release
+      // the session, so what the announce resumes into is the true end state.
+      await expectLater(calls.retract(), completion(isTrue));
+
+      expect(await announcing, isNull);
+      expect(
+        session.enters,
+        0,
+        reason: 'a membership published now is one nothing can take back',
       );
     });
   });
@@ -2006,6 +2139,86 @@ class _ThrowsAfterTheWrite extends LiveKitBackend {
   @override
   Future<void> dispose(GroupCallSession groupCall) async =>
       throw StateError('releasing the backend failed');
+}
+
+/// A homeserver that advertises a focus, without the `.well-known` round trip —
+/// so a test about the steps AFTER discovery does not have to serve one.
+class _FixedFocus extends RtcFocusDiscovery {
+  @override
+  Future<RtcFocus?> discover(Uri homeserver) async =>
+      const RtcFocus(serviceUrl: 'http://sfu:7980');
+}
+
+/// Records whether a session was handed back, and whether anything entered it,
+/// without a live SFU behind either.
+class _LeavingSession extends GroupCallSession {
+  _LeavingSession({
+    required super.client,
+    required super.room,
+    required super.voip,
+    required super.backend,
+    required super.groupCallId,
+    required super.application,
+    required super.scope,
+  });
+
+  int leaves = 0;
+  int enters = 0;
+
+  @override
+  Future<void> leave() async => leaves++;
+
+  @override
+  Future<void> enter({WrappedMediaStream? stream}) async => enters++;
+}
+
+/// A token failure that has nothing to do with the join being abandoned, so the
+/// two can be told apart by type.
+class _TokenRefused implements Exception {
+  const _TokenRefused();
+}
+
+/// Drives the two network steps of joining, so the checks BETWEEN them are
+/// observable. Neither step can be stood up here: one needs a live SFU and the
+/// other the choreographer.
+class _JoinSteps extends CallService {
+  _JoinSteps(super.client, {super.focusDiscovery});
+
+  final List<String> steps = [];
+
+  /// Run INSIDE the step it is named for, so a hangup lands exactly where the
+  /// ordering under test puts it.
+  void Function()? duringFetch;
+  void Function()? duringToken;
+
+  Object? tokenThrows;
+
+  _LeavingSession? session;
+
+  @override
+  Future<GroupCallSession> fetchSession(Room room, RtcFocus focus) async {
+    steps.add('session');
+    final fetched = session ??= _LeavingSession(
+      client: client,
+      room: room,
+      voip: voip,
+      backend: focus.backendForRoom(room.id),
+      groupCallId: 'call-id',
+      application: 'm.call',
+      scope: 'm.room',
+    );
+    duringFetch?.call();
+    return fetched;
+  }
+
+  @override
+  Future<CallToken> requestToken(Room room, RtcFocus focus) async {
+    steps.add('token');
+    duringToken?.call();
+    final failure = tokenThrows;
+    if (failure != null) throw failure;
+    return const CallToken(jwt: 'jwt', url: 'ws://sfu');
+  }
 }
 
 /// Discovery held open so a test can dispose the service mid-lookup.

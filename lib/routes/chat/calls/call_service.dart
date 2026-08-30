@@ -347,54 +347,118 @@ class CallService {
   /// rather than left to install itself over the top of whatever came after.
   int _joinAttempt = 0;
 
-  Future<CallToken> _join(Room room, int attempt) async {
-    final f = await resolveFocus();
-    // Before anything is constructed: discovery is a network round-trip and the
-    // account can log out inside it.
+  /// Stops a join the account no longer wants, handing back anything it had
+  /// already taken.
+  ///
+  /// AN AWAIT IS A PLACE A DECISION CAN BE SUPERSEDED, AND NOTHING AFTER ONE MAY
+  /// ACT ON THE DECISION THAT PRECEDED IT. Coming up is three network
+  /// round-trips, and both a hangup ([abandonJoin]) and a logout can land inside
+  /// any of them — so what this account wanted when a step was issued says
+  /// nothing about what it wants when that step answers. Called after EVERY
+  /// await in [_join] rather than once at the end, because the end is not
+  /// reached on the paths that matter: the check used to sit below the token
+  /// request, so a token that threw carried the failure out past it and the
+  /// session fetched a moment earlier was never handed back — a membership left
+  /// advertised for the minutes it takes to expire.
+  ///
+  /// The same shape as `_decisionHolds` and `_step` in `ActiveCall`, and as the
+  /// session gate in `CallCaptureService.start`.
+  ///
+  /// [session] is whatever this join is holding by the time it gets here, and
+  /// null before it holds anything. Handed back on exactly the terms
+  /// [releasesAbandonedSession] states, and BEFORE either throw below, so the
+  /// release is not something a caller has to remember to do on the way out.
+  Future<void> _stopIfSuperseded(
+    int attempt, {
+    GroupCallSession? session,
+  }) async {
+    if (!_disposed && attempt == _joinAttempt) return;
+    // The account went away while this join was in flight, or the join itself
+    // was given up on. Storing the session now would advertise a membership
+    // that nothing is left to retract, and it would stand until it expired
+    // minutes later.
+    if (session != null &&
+        releasesAbandonedSession(
+          joinInFlight: _joining,
+          isCurrent: identical(session, _current),
+        )) {
+      try {
+        await session.leave();
+      } catch (e, st) {
+        Logs().w('Could not leave a call abandoned during teardown', e, st);
+      }
+    }
+    // Disposal keeps saying so in its own words: it is the one of the two that
+    // means the whole service is gone rather than this one call, and the
+    // distinction is what a reader of the log needs.
     _stopIfDisposed();
+    throw StateError('the call was abandoned while joining');
+  }
+
+  /// The two network steps of joining, named so the sequence and the checks
+  /// between them can be observed. Neither can be stood up in a unit test — one
+  /// needs a live SFU and the other the choreographer — and the ordering is the
+  /// part worth testing.
+  ///
+  /// Room-scoped call id: one direct message room holds at most one live call,
+  /// and both clients derive the same id without coordinating.
+  @protected
+  Future<GroupCallSession> fetchSession(
+    Room room,
+    RtcFocus focus,
+  ) => voip.fetchOrCreateGroupCall(
+    room.id,
+    room,
+    focus.backendForRoom(room.id),
+    'm.call',
+    'm.room',
+    // Defaults to true, which pre-generates and broadcasts an E2EE key before the
+    // call even starts. With e2eeEnabled false the SDK returns early from that work
+    // anyway, so this changes no behaviour — it just stops us asking for key
+    // distribution we have deliberately turned off.
+    preShareKey: false,
+  );
+
+  @protected
+  Future<CallToken> requestToken(Room room, RtcFocus focus) =>
+      _tokens.requestToken(
+        client: client,
+        roomId: room.id,
+        focusServiceUrl: focus.serviceUrl,
+      );
+
+  Future<CallToken> _join(Room room, int attempt) async {
+    // A leave still finishing was waited for before this ran, and a hangup can
+    // land inside that wait like any other.
+    await _stopIfSuperseded(attempt);
+    final f = await resolveFocus();
+    // Before anything is constructed: discovery is a network round-trip, and
+    // both the account and the user's mind can change inside it.
+    await _stopIfSuperseded(attempt);
     if (f == null) {
       throw StateError('this homeserver advertises no MatrixRTC focus');
     }
 
-    // Room-scoped call id: one direct message room holds at most one live call, and
-    // both clients derive the same id without coordinating.
-    final session = await voip.fetchOrCreateGroupCall(
-      room.id,
-      room,
-      f.backendForRoom(room.id),
-      'm.call',
-      'm.room',
-      // Defaults to true, which pre-generates and broadcasts an E2EE key before the
-      // call even starts. With e2eeEnabled false the SDK returns early from that work
-      // anyway, so this changes no behaviour — it just stops us asking for key
-      // distribution we have deliberately turned off.
-      preShareKey: false,
-    );
+    final session = await fetchSession(room, f);
+    // BEFORE the token is asked for, not after. A join nobody wants any more
+    // must not spend a choreographer request on itself, and — the reason this
+    // moved — the session it is holding has to be handed back on a path that
+    // does not depend on that request ever answering.
+    await _stopIfSuperseded(attempt, session: session);
 
-    final grant = await _tokens.requestToken(
-      client: client,
-      roomId: room.id,
-      focusServiceUrl: f.serviceUrl,
-    );
-
-    final isCurrent = identical(session, _current);
-    if (_disposed || attempt != _joinAttempt) {
-      // The account went away while this join was in flight, or the join itself
-      // was given up on. Storing the session now would advertise a membership
-      // that nothing is left to retract, and it would stand until it expired
-      // minutes later.
-      if (releasesAbandonedSession(
-        joinInFlight: _joining,
-        isCurrent: isCurrent,
-      )) {
-        try {
-          await session.leave();
-        } catch (e, st) {
-          Logs().w('Could not leave a call abandoned during teardown', e, st);
-        }
-      }
-      throw StateError('the call was abandoned while joining');
+    final CallToken grant;
+    try {
+      grant = await requestToken(room, f);
+    } catch (_) {
+      // A token failure is the caller's to hear, but a join abandoned while it
+      // was in flight still owns a session, and the throw would carry straight
+      // past the check below and leave it advertised. Asked here so the release
+      // happens on the failing path too; when nothing superseded this join the
+      // guard returns and the original failure goes on out.
+      await _stopIfSuperseded(attempt, session: session);
+      rethrow;
     }
+    await _stopIfSuperseded(attempt, session: session);
 
     _current = session;
     return grant;
@@ -1440,6 +1504,22 @@ class CallService {
         // proceed. Its retract path owns any failure of the leave itself.
       }
       _stopIfDisposed();
+      // AN AWAIT IS A PLACE A DECISION CAN BE SUPERSEDED. The session was read
+      // before that wait, and the wait is bounded by seconds — long enough for
+      // a hangup to run a whole retract inside it, which nulls the current call
+      // and reports the membership taken back. Entering afterwards would
+      // publish a membership on a call the service is no longer tracking, and
+      // the next retract would find nothing to leave and report a success it
+      // had not achieved: the peer keeps seeing us in a call we have left,
+      // until it expires minutes later.
+      //
+      // Only a teardown changes this. Nothing else nulls the current call, and
+      // a join cannot claim it while one is held — so this is always the call
+      // being over rather than a race worth retrying.
+      if (!identical(_current, session)) {
+        Logs().i('The call ended while its membership was waiting to be sent');
+        return null;
+      }
     }
 
     // An enter already in flight is waited for, never doubled. The signal for
