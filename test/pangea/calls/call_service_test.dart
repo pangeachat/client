@@ -784,6 +784,119 @@ void main() {
         reason: 'a membership published now is one nothing can take back',
       );
     });
+
+    test('does not enter a call whose own hangup is still leaving it', () async {
+      // The same wait, superseded by THIS call rather than by a later one. The
+      // snapshot was taken before the hangup, so the announce never sees the
+      // leave the hangup issues -- and `_current` still points at the session
+      // for the whole time that leave is in flight, because retract clears it
+      // only once the leave has finished. Identity therefore says yes to the
+      // one session in the world that must not be entered: the enter would land
+      // beside a leave for the SAME session, and whichever landed last would
+      // decide whether the peer sees a call we left or misses one we joined.
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(
+          user: '@test:fakeServer.notExisting',
+        ),
+        deviceId: 'GHTYAJCE',
+      );
+      final calls = CallService(client);
+      final session = _LeavingSession(
+        client: client,
+        room: Room(id: '!r:fakeServer.notExisting', client: client),
+        voip: calls.voip,
+        backend: LiveKitBackend(
+          livekitServiceUrl: 'http://sfu:7980',
+          livekitAlias: 'alias',
+          e2eeEnabled: false,
+        ),
+        groupCallId: 'call-id',
+        application: 'm.call',
+        scope: 'm.room',
+      );
+      // This call's own hangup will not finish on its own, which is what keeps
+      // it in flight when the announce wakes up.
+      session.leaveGate = Completer<void>();
+      calls.adoptSessionForTest(session);
+      // The leave from the LAST call, which is what the announce parks on. It
+      // is completed by hand below, so the announce wakes on the leave finishing
+      // rather than on a timeout -- no clock is being raced here.
+      final lastCallsLeave = Completer<void>();
+      calls.setPendingLeaveForTest(lastCallsLeave.future);
+
+      final announcing = calls.announce();
+      await pumpEventQueue();
+
+      final retracting = calls.retract();
+      await pumpEventQueue();
+      expect(
+        session.leaves,
+        1,
+        reason: 'the hangup has issued its leave and is waiting on it',
+      );
+
+      lastCallsLeave.complete();
+
+      expect(await announcing, isNull);
+      expect(
+        session.enters,
+        0,
+        reason: 'an enter here races the leave of the call it belongs to',
+      );
+
+      session.leaveGate!.complete();
+      await expectLater(retracting, completion(isTrue));
+    });
+  });
+
+  group('a membership waiting behind a leave', () {
+    // The predicate the wait re-establishes itself on. Identity is one of its
+    // three terms and the only one an earlier version had.
+    test('is still wanted only while nothing is taking it back', () {
+      expect(
+        CallService.announceStillHolds(
+          isCurrent: true,
+          retractInFlight: false,
+          membershipAbandoned: false,
+        ),
+        isTrue,
+        reason: 'the ordinary case: the call is up and nobody is leaving it',
+      );
+      expect(
+        CallService.announceStillHolds(
+          isCurrent: false,
+          retractInFlight: false,
+          membershipAbandoned: false,
+        ),
+        isFalse,
+        reason: 'a hangup ran to completion inside the wait',
+      );
+      expect(
+        CallService.announceStillHolds(
+          isCurrent: true,
+          retractInFlight: true,
+          membershipAbandoned: false,
+        ),
+        isFalse,
+        reason:
+            'the hangup is still leaving this very session, and retract clears '
+            'the current call only once its leave has finished',
+      );
+      expect(
+        CallService.announceStillHolds(
+          isCurrent: true,
+          retractInFlight: false,
+          membershipAbandoned: true,
+        ),
+        isFalse,
+        reason:
+            'the hangup gave up on the leave, which KEEPS the session so a '
+            'retry has something to retry with -- not so it can be entered',
+      );
+    });
   });
 
   group('CallService availability', () {

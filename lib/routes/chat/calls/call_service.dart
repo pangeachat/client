@@ -272,8 +272,16 @@ class CallService {
   /// there are none.
   ///
   /// A SNAPSHOT of the set, so a leave issued while somebody is already waiting
-  /// does not extend that wait: it belongs to a later call than the one that
-  /// asked, and that later call takes its own snapshot when its turn comes.
+  /// does not extend that wait. Which is right for both kinds of leave that can
+  /// appear inside one, and for opposite reasons: a leave belonging to a LATER
+  /// call takes its own snapshot when its turn comes, while a leave belonging to
+  /// the very call that is waiting — this call's own hangup — is not something
+  /// to wait for at all, since waiting for it would be waiting for a session to
+  /// be left in order to enter it.
+  ///
+  /// So a waiter cannot decide anything by re-reading this: a `Future<void>`
+  /// does not say whose leave it is. [announce] asks the service's own state
+  /// instead — see [announceStillHolds].
   Future<void>? get _pendingLeaves =>
       _leaving.isEmpty ? null : Future.wait(_leaving.toList());
 
@@ -1561,17 +1569,20 @@ class CallService {
       _stopIfDisposed();
       // AN AWAIT IS A PLACE A DECISION CAN BE SUPERSEDED. The session was read
       // before that wait, and the wait is bounded by seconds — long enough for
-      // a hangup to run a whole retract inside it, which nulls the current call
-      // and reports the membership taken back. Entering afterwards would
+      // a hangup to run a whole retract inside it. Entering afterwards would
       // publish a membership on a call the service is no longer tracking, and
       // the next retract would find nothing to leave and report a success it
       // had not achieved: the peer keeps seeing us in a call we have left,
       // until it expires minutes later.
       //
-      // Only a teardown changes this. Nothing else nulls the current call, and
-      // a join cannot claim it while one is held — so this is always the call
-      // being over rather than a race worth retrying.
-      if (!identical(_current, session)) {
+      // What is re-established is not just WHICH session this is but whether it
+      // is still WANTED; see [announceStillHolds] for why identity alone says
+      // less than it looks like it says.
+      if (!announceStillHolds(
+        isCurrent: identical(_current, session),
+        retractInFlight: _retracting != null,
+        membershipAbandoned: _abandonedMembership,
+      )) {
         Logs().i('The call ended while its membership was waiting to be sent');
         return null;
       }
@@ -1623,6 +1634,37 @@ class CallService {
     }
     return _awaitMembershipEventId(session.room);
   }
+
+  /// Whether the call [announce] read before waiting is still one this service
+  /// wants a membership published for.
+  ///
+  /// Identity is necessary and NOT sufficient, because [_current] outlives the
+  /// decision to leave: [retract] captures the session, issues the leave, and
+  /// clears [_current] only in a `finally` once that leave has finished — and
+  /// when the leave was given up on it does not clear it at all, which is what
+  /// leaves a later retry something to retry WITH. So for the whole time this
+  /// call's own hangup is leaving the session, and afterwards if that hangup
+  /// failed, an identity check sees the session it read and says yes.
+  ///
+  /// Entering there puts an `enter()` beside a `leave()` for the SAME session,
+  /// and whichever lands last decides what the peer sees: a membership
+  /// resurrected after a hangup the learner watched succeed, or a fresh
+  /// membership taken straight back off them.
+  ///
+  /// The other way a session stops being current — a join abandoned in
+  /// [_stopIfSuperseded] — is covered by identity alone: that path leaves a
+  /// session only when it is NOT the current one (see
+  /// [releasesAbandonedSession]), so it never leaves the one an announce holds.
+  ///
+  /// [membershipAbandoned] cannot be a leftover from an earlier call: [join]
+  /// discards an abandoned membership, with the session it belongs to, before
+  /// any new call can be made.
+  @visibleForTesting
+  static bool announceStillHolds({
+    required bool isCurrent,
+    required bool retractInFlight,
+    required bool membershipAbandoned,
+  }) => isCurrent && !retractInFlight && !membershipAbandoned;
 
   /// Our own membership's event id, waiting briefly for the state write to echo.
   ///
