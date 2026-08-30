@@ -11,6 +11,7 @@ class RecordingMedia extends CallMedia {
   bool releaseDuringMic = false;
   bool releaseDuringCamera = false;
   bool cameraThrows = false;
+  bool micThrows = false;
   int disconnects = 0;
 
   @override
@@ -22,6 +23,7 @@ class RecordingMedia extends CallMedia {
   @override
   Future<void> enableMicrophone(bool on) async {
     steps.add('mic:$on');
+    if (micThrows) throw StateError('the microphone would not publish');
     if (releaseDuringMic) {
       releaseDuringMic = false;
       await disconnect();
@@ -79,6 +81,36 @@ void main() {
         media.cameraFailed,
         isTrue,
         reason: 'the UI has to be able to say so',
+      );
+    },
+  );
+
+  // The other half of the same rule. A camera that will not open is a degraded
+  // call; a microphone that will not open is no call at all -- so that throw
+  // stands, and what must not stand with it is the SFU connection the failed
+  // step was reached through. Left up, the peer sees a participant who
+  // publishes nothing, and nothing inside this object is left to close it.
+  test(
+    'a microphone that will not publish takes the connection with it',
+    () async {
+      final media = RecordingMedia()..micThrows = true;
+
+      await expectLater(
+        media.connect(grant, video: true),
+        throwsA(isA<StateError>()),
+        reason: 'the caller still has to learn the call failed, and why',
+      );
+
+      expect(media.steps, ['connect', 'mic:true', 'disconnect']);
+      expect(
+        media.disconnects,
+        1,
+        reason: 'a failed join must not leave this device in the SFU',
+      );
+      expect(
+        media.steps,
+        isNot(contains('camera:true')),
+        reason: 'and nothing further is opened',
       );
     },
   );

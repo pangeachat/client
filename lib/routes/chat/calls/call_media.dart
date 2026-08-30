@@ -87,11 +87,38 @@ class CallMedia {
   /// Connecting is several round-trips, and a hangup can land inside any of
   /// them. Each step checks first, so a call the user abandoned never ends up
   /// opening a microphone or a camera after teardown has run.
+  ///
+  /// COMING UP IS ALL OR NOTHING once the socket is up. A step that THROWS is
+  /// the same shape of leak as a step that was abandoned, and it was left to
+  /// the caller: the microphone is a required step by design — no microphone is
+  /// no call — so its throw used to leave this device sitting in the SFU, with
+  /// the peer seeing a participant who publishes nothing and a capture device
+  /// possibly still claimed. Releasing here is what makes a failed [connect]
+  /// mean the same thing as a connect that never happened.
   Future<void> connect(CallToken grant, {required bool video}) async {
     if (_released) return;
     await connectRoom(grant.url, grant.jwt);
     if (_released) return _releaseWhatOpened();
 
+    try {
+      await _publish(video: video);
+    } catch (_) {
+      // Released here rather than at the call site. `ActiveCall` does tear a
+      // failed start down today, so this is this object's own invariant rather
+      // than a leak it can see — and an invariant the next caller cannot
+      // forget. The throw itself is untouched: the caller still learns the call
+      // failed, and still learns why.
+      await _releaseWhatOpened();
+      rethrow;
+    }
+  }
+
+  /// The publishing half of coming up.
+  ///
+  /// Split out so the release above covers EVERY step of it, including any
+  /// added later — which is precisely how this class of bug recurs: the camera
+  /// step remembered to handle its own failure and the microphone step did not.
+  Future<void> _publish({required bool video}) async {
     // The microphone is published before the camera, and that is not a leak,
     // though a first read of it looks like one. This runs on exactly one path —
     // ActiveCall._start, reached only when the user PLACES or ANSWERS a call —
@@ -127,7 +154,8 @@ class CallMedia {
   bool get cameraFailed => _cameraFailed;
   bool _cameraFailed = false;
 
-  /// Releases anything a step finished opening after teardown had already run.
+  /// Releases what coming up had already opened, whether a step finished after
+  /// teardown had run or a step failed outright.
   ///
   /// Checking before each step is not enough on its own: a hangup landing while
   /// `enableMicrophone` is in flight cannot stop it, so the microphone opens
@@ -292,6 +320,14 @@ class CallMedia {
   ///
   /// Turning OFF only releases a device, so it is always safe and never guarded
   /// — muting a call that has already ended is a no-op, not a leak.
+  ///
+  /// What it does NOT borrow from [connect] is the all-or-nothing release on a
+  /// failure, and the difference is what the connection means at each point. In
+  /// [connect] the room is up for a call that has not started, so a required
+  /// step failing means there is no call to hold it open for. Here the call is
+  /// live and two people are talking: an unmute the platform refuses costs the
+  /// microphone, and tearing the conversation down over it would be the same
+  /// mistake the camera arm above exists to avoid.
   Future<void> _setCapture(Future<void> Function(bool) enable, bool on) async {
     if (!on) return enable(false);
     if (_released) return;
