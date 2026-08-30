@@ -723,6 +723,28 @@ class ActiveCall extends ChangeNotifier {
   /// answer instead of replaying a stale one. [_capturing] moves only once the
   /// change has actually happened, so a tap that fails to open is retried by the
   /// next election rather than remembered as open.
+  /// Whether a reconcile that decided [wanted] is still carrying out the
+  /// latest decision.
+  ///
+  /// AN AWAIT IS A PLACE A DECISION CAN BE SUPERSEDED. Elections are
+  /// synchronous listeners on the roster and are NOT serialised behind the
+  /// handover chain the way reconciles are, so one can run start to finish
+  /// while a reconcile is parked — setting [_wanted] the other way, telling the
+  /// siblings this device is still recording, and queueing a reconcile of its
+  /// own. A reconcile that resumed and acted on what it read before the await
+  /// would stop a recorder the latest election wants running, and the announcer
+  /// — reading the newer intent — would republish a run this device had just
+  /// stopped holding.
+  ///
+  /// Returning is the whole correction: [_electRecorder] queues a reconcile
+  /// every time it changes its mind, so the newer decision already has one
+  /// waiting behind this and there is nothing to hand over.
+  ///
+  /// The same shape as [_step] and as the session gate in
+  /// [CallCaptureService.start], which abandons rather than attaching a tap to
+  /// a recording that ended while it was opening.
+  bool _decisionHolds(bool wanted) => wanted == (_wanted && !_ending);
+
   Future<void> _reconcile(AudioTrack? track) async {
     // Nothing to record FROM is settled here rather than in the election. The
     // election still has to rank a trackless device and announce what it found,
@@ -751,6 +773,13 @@ class ActiveCall extends ChangeNotifier {
         // Read back rather than assumed. A device with no point to record from
         // returns without attaching one, and calling that "recording" would stop
         // every later election from trying again.
+        //
+        // NOT gated on [_decisionHolds] the way the stop below is, and the
+        // difference is that this line records what HAPPENED rather than acting
+        // on what was decided. A tap that attached while the election changed
+        // its mind is attached whatever the election now wants, and leaving
+        // this false would hide a running recorder from the reconcile queued
+        // behind this one — which would then have nothing to stop.
         _capturing = capture.isRecording;
         Logs().i('Recording this call on this device');
       } else {
@@ -758,6 +787,9 @@ class ActiveCall extends ChangeNotifier {
         // its own tail on our claim to be recording, so the claim has to be
         // corrected somewhere it can read before the audio it describes stops.
         await _retractCaptureState();
+        // RE-ESTABLISHED, because the line above waits for a signal round trip
+        // and an election can reverse this one inside it. See [_decisionHolds].
+        if (!_decisionHolds(wanted)) return;
         await capture.stop();
         _capturing = false;
         // Only the two reasons that can actually reach here. Reaching this arm

@@ -3302,6 +3302,67 @@ void main() {
       );
     });
 
+    test(
+      'a stop parked on its retraction obeys the election that reversed it',
+      () async {
+        // The wait for the retraction is a signal round trip, and elections are
+        // synchronous listeners on the roster -- they are not serialised behind
+        // the handover chain the way reconciles are. So one can run start to
+        // finish while the reconcile is parked, put this device back in charge,
+        // and tell the siblings it is still recording. A reconcile that resumed
+        // and stopped anyway would stop a recorder the latest election wants
+        // running, and the run it just republished would be one nobody holds.
+        final (call, calls, _, capture) = await build();
+        calls.roster!.myJoin = (true, joinedAt);
+        calls.roster!.joins = {
+          '${calls.client.userID}:zzzzzzzzzz': (
+            true,
+            joinedAt.subtract(const Duration(seconds: 20)),
+          ),
+        };
+        calls.remotePresent = true;
+        calls.devicesInCall = [calls.client.deviceID!, 'zzzzzzzzzz'];
+        await call.start(roomStub(calls.client), video: false);
+        await pumpEventQueue();
+        expect(call.isRecording, isTrue);
+        final run = capture.captureRun;
+        trace.steps.clear();
+
+        // Displaced. The reconcile parks on a retraction that cannot land yet.
+        final held = Completer<void>();
+        calls.roster!.holdAnnounce = held;
+        calls.devicesInCall = [
+          'AAAAAAAAAA',
+          calls.client.deviceID!,
+          'zzzzzzzzzz',
+        ];
+        await pumpEventQueue();
+        expect(
+          trace.steps,
+          isNot(contains('capture.stop')),
+          reason: 'the premise: it is waiting on the retraction',
+        );
+
+        // And put straight back in charge while it waits.
+        calls.roster!.holdAnnounce = null;
+        calls.devicesInCall = [calls.client.deviceID!, 'zzzzzzzzzz'];
+        held.complete();
+        await pumpEventQueue();
+
+        expect(
+          trace.steps,
+          isNot(contains('capture.stop')),
+          reason: 'the decision it was carrying out had been reversed',
+        );
+        expect(call.isRecording, isTrue);
+        expect(
+          capture.captureRun,
+          run,
+          reason: 'and the audio was never interrupted, so the run stands',
+        );
+      },
+    );
+
     test('a device alone does not hold its stop open for nobody', () async {
       // The wait is for the benefit of a sibling that could act on the stale
       // claim. With no sibling in the call there is nobody to mislead, and
