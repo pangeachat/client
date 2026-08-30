@@ -236,8 +236,21 @@ class _FakeMedia extends CallMedia {
   /// toggle that worked.
   bool cameraTakes = true;
 
+  /// Whether turning the microphone ON ends up publishing. False is the shape
+  /// the real media returns for an unmute it refused -- a call already
+  /// released, or no participant to publish through -- which comes back just as
+  /// quietly as one that worked.
+  bool micTakes = true;
+
+  /// What turning the microphone OFF answers, which is whether there was a
+  /// publication to stop at all. False is a mute that found nothing left to
+  /// mute -- a call whose room has already gone -- which the media documents as
+  /// a no-op rather than a failure.
+  bool muteFindsAPublication = true;
+
   @override
-  Future<bool> setMicrophoneEnabled(bool on) async => true;
+  Future<bool> setMicrophoneEnabled(bool on) async =>
+      on ? micTakes : muteFindsAPublication;
 
   @override
   Future<bool> setCameraEnabled(bool on) async => on && cameraTakes;
@@ -282,6 +295,21 @@ class _RecordingRoom extends matrix.Room {
     sent.add(content);
     sentTypes.add(type);
     return '\$card';
+  }
+}
+
+/// Records the recorder gate, which is the half of a mute the screen never
+/// shows. On Android the tap runs upstream of LiveKit's publish mute, so this
+/// gate is the only thing that stops a muted learner being recorded.
+class _GateSpyCapture extends CallCaptureService {
+  _GateSpyCapture() : super(sink: _NullSink());
+
+  final List<bool> gate = [];
+
+  @override
+  void setMuted(bool muted) {
+    gate.add(muted);
+    super.setMuted(muted);
   }
 }
 
@@ -1488,6 +1516,93 @@ void main() {
         captureOverride: CallCaptureService(sink: _NullSink()),
       );
       await pumpEventQueue();
+      expect(session.cameraOn, isTrue);
+    });
+  });
+
+  group('a toggle the media refused', () {
+    // Every one of these is a toggle that came back WITHOUT throwing, having
+    // changed nothing. Not throwing was read as having worked, so the screen
+    // and the recorder both followed the request rather than the effect.
+    Future<(CallSession, _FakeMedia, _GateSpyCapture)> callInProgress(
+      String id,
+    ) async {
+      final client = await _bareClient();
+      final media = _FakeMedia();
+      final capture = _GateSpyCapture();
+      final session = CallSession.start(
+        room: matrix.Room(id: id, client: client),
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: capture,
+      );
+      await pumpEventQueue();
+      return (session, media, capture);
+    }
+
+    test('an unmute that never published leaves the call muted', () async {
+      final (session, media, capture) = await callInProgress('!unmute:server');
+      await session.toggleMute();
+      expect(session.muted, isTrue, reason: 'the mute itself still works');
+
+      media.micTakes = false;
+      await session.toggleMute();
+
+      expect(
+        session.muted,
+        isTrue,
+        reason: 'the button must not say a learner nobody can hear is heard',
+      );
+      expect(
+        capture.gate,
+        [true],
+        reason: 'an unmute that did not take leaves the recorder gate up',
+      );
+    });
+
+    test('a mute still mutes when there was nothing left to stop', () async {
+      // The other half of the same answer, and the half an over-broad reading
+      // breaks: turning the microphone OFF answers whether there WAS a
+      // publication to stop, so false is a call whose room has already gone.
+      // Refusing the mute on that would leave a learner unable to mute at all.
+      final (session, media, capture) = await callInProgress('!mute:server');
+      media.muteFindsAPublication = false;
+
+      await session.toggleMute();
+
+      expect(session.muted, isTrue);
+      expect(capture.gate, [true], reason: 'and the gate goes up with it');
+    });
+
+    test('a camera that never opened leaves the control off', () async {
+      final (session, media, _) = await callInProgress('!cam3:server');
+      media.cameraTakes = false;
+
+      await session.toggleCamera();
+
+      expect(
+        session.cameraOn,
+        isFalse,
+        reason:
+            'a camera-on control offers to turn OFF a picture that never '
+            'came, and the first press then turns nothing off',
+      );
+    });
+
+    test('and a camera that did open turns the control on', () async {
+      // The control. Without it every assertion above would still hold with
+      // the toggle removed altogether.
+      final (session, _, _) = await callInProgress('!cam4:server');
+
+      await session.toggleCamera();
+
       expect(session.cameraOn, isTrue);
     });
   });

@@ -429,13 +429,31 @@ class CallSession extends ChangeNotifier {
     // the recorder tap runs upstream of LiveKit's publish mute, so without its
     // own gate a muted learner would still be recorded.
     if (next) call.setMuted(true);
+    final bool publishing;
     try {
-      await media.setMicrophoneEnabled(!next);
+      publishing = await media.setMicrophoneEnabled(!next);
     } catch (e, s) {
       // Fail closed: a mute that did not take must ungate again (the mic is
       // still live); an unmute that did not take leaves the gate up.
       if (next) call.setMuted(false);
       Logs().w('Could not ${next ? 'mute' : 'unmute'} the call', e, s);
+      return;
+    }
+    // The same rule, for the failure that does not throw. Turning the
+    // microphone on either publishes or throws, so `false` from an UNMUTE is
+    // the microphone not publishing -- a call already released, or no
+    // participant to publish through -- and it comes back as quietly as a
+    // toggle that worked. Leaving the gate up and `_muted` set is the second
+    // half of the rule above: the button must not say the learner is being
+    // heard while nothing of theirs is going out, and the recorder must not
+    // come off the gate for a microphone that never came back.
+    //
+    // Only the unmute direction is disproved by this answer. `false` from a
+    // MUTE means there was no publication to stop, which `CallMedia` documents
+    // as a no-op rather than a failure -- reading the answer both ways would
+    // leave a learner unable to mute a call whose room had already gone.
+    if (!next && !publishing) {
+      Logs().w('The call could not unmute; the microphone is not publishing');
       return;
     }
     if (!next) call.setMuted(false);
@@ -453,21 +471,34 @@ class CallSession extends ChangeNotifier {
       Logs().w('Could not turn the camera ${next ? 'on' : 'off'}', e, s);
       return;
     }
-    // Camera site (b): the toggle, both directions, only after the change
-    // actually took. Site (a) -- a call STARTED with video -- lives where the
-    // camera opens, inside the call's own connect step.
-    unawaited(call.setForegroundCamera(next));
-    // Only if the camera actually came on: turning it on the instant the call
-    // ends is a refused no-op that does not throw, and latching on the request
-    // alone wrote an ending voice call as a video call.
+    // Nothing downstream of here may act on the request alone. Turning the
+    // camera on the instant the call ends is a refused no-op that does NOT
+    // throw, and acting on it anyway wrote an ending voice call into the
+    // timeline as a video call, offered a camera-OFF button for a picture that
+    // was never coming, and told the foreground service the call was using a
+    // camera it had not opened.
     //
     // The proof is the toggle's own answer -- whether a track ended up
     // published -- rather than the connection being up, which is a proxy for it
     // and can outlast the refusal it was standing in for: the release the
     // refusal comes from is latched inside the media, while the socket it
-    // guards takes a round trip to close. This claim goes in the timeline and
-    // stays there, so it is the one that most needs to be read off the effect.
-    if (next && live) _usedVideo = true;
+    // guards takes a round trip to close.
+    //
+    // Only the ON direction is disproved by this answer, exactly as in
+    // [toggleMute]: `false` turning the camera OFF means there was no
+    // publication to stop, which is a no-op and not a failure.
+    if (next && !live) {
+      Logs().w('The call could not turn the camera on; nothing was published');
+      return;
+    }
+    // Camera site (b): the toggle, both directions, only after the change
+    // actually took. Site (a) -- a call STARTED with video -- lives where the
+    // camera opens, inside the call's own connect step.
+    unawaited(call.setForegroundCamera(next));
+    // The video claim goes in the timeline and stays there, so it is the one
+    // that most needs to be read off the effect; the guard above is what makes
+    // reaching here with `next` set mean the camera came on.
+    if (next) _usedVideo = true;
     if (_disposing || _over) return;
     _camera = next;
     _notify();
