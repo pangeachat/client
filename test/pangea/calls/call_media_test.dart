@@ -115,6 +115,88 @@ void main() {
     },
   );
 
+  group('announcing that the microphone is live', () {
+    // The permission the ongoing-call service waits for is granted at the
+    // MICROPHONE, and whoever is waiting on it has to hear so there and not one
+    // step later: the camera is published in between -- a second dialog on a
+    // video call -- and the learner can leave the app during any of it.
+    test('is announced at the microphone, before the camera opens', () async {
+      final media = RecordingMedia();
+      media.onMicrophoneLive = () => media.steps.add('mic-live');
+
+      await media.connect(grant, video: true);
+
+      expect(media.steps, ['connect', 'mic:true', 'mic-live', 'camera:true']);
+    });
+
+    test('is announced on a voice call too', () async {
+      // Nothing about the grant is video's: a voice call publishes no camera
+      // and its service needs the same permission.
+      final media = RecordingMedia();
+      media.onMicrophoneLive = () => media.steps.add('mic-live');
+
+      await media.connect(grant, video: false);
+
+      expect(media.steps, ['connect', 'mic:true', 'mic-live']);
+    });
+
+    test('a microphone that never opened announces nothing', () async {
+      // There is no grant to report: the step threw, the connection is being
+      // given back, and a listener told the microphone was live would act on a
+      // call that is already failing.
+      final media = RecordingMedia()..micThrows = true;
+      media.onMicrophoneLive = () => media.steps.add('mic-live');
+
+      await expectLater(
+        media.connect(grant, video: true),
+        throwsA(isA<StateError>()),
+      );
+
+      expect(media.steps, isNot(contains('mic-live')));
+    });
+
+    test('a hangup landing WHILE it opens announces nothing', () async {
+      // The microphone did open -- the check before the step cannot stop one
+      // already in flight -- and it is being released again. Announcing here
+      // would hand a live microphone to a listener at the moment the call it
+      // belongs to is coming down.
+      final media = RecordingMedia()..releaseDuringMic = true;
+      media.onMicrophoneLive = () => media.steps.add('mic-live');
+
+      await media.connect(grant, video: true);
+
+      expect(media.steps, isNot(contains('mic-live')));
+    });
+
+    test('a listener that throws costs nothing but its own news', () async {
+      // What listens is background survival, not the conversation. Left to
+      // propagate, a throw from a watcher would arrive as the MICROPHONE step
+      // failing -- the one failure coming up treats as fatal -- and would tear
+      // down a call whose audio was up and working.
+      final media = RecordingMedia();
+      media.onMicrophoneLive = () => throw StateError('a bug in a watcher');
+
+      await expectLater(media.connect(grant, video: true), completes);
+
+      expect(media.steps, ['connect', 'mic:true', 'camera:true']);
+      expect(media.disconnects, 0, reason: 'the call must not be torn down');
+    });
+
+    test('an unmute mid-call is not a fresh grant', () async {
+      // A grant happens once. Announced from the enable itself rather than from
+      // coming up, every unmute would re-announce it, and whoever is listening
+      // would take an action-per-publish out of a permission that has not
+      // changed since the call started.
+      final media = RecordingMedia();
+      await media.connect(grant, video: false);
+      media.onMicrophoneLive = () => media.steps.add('mic-live');
+
+      await media.setMicrophoneEnabled(true);
+
+      expect(media.steps, isNot(contains('mic-live')));
+    });
+  });
+
   test('a call whose camera came up reports no camera failure', () async {
     final media = RecordingMedia();
     await media.connect(grant, video: true);

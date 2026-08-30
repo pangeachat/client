@@ -79,6 +79,21 @@ class CallMedia {
   CallRoster roster({required String myUserId}) =>
       CallRoster(room: room, myUserId: myUserId);
 
+  /// Announced the instant the microphone is publishing, from inside [connect].
+  ///
+  /// The microphone is the one step of coming up that asks the PLATFORM for
+  /// something — the permission dialog, when the learner has not answered it
+  /// before — and things outside this object wait on that grant. The end of
+  /// [connect] is the same fact several steps later: the camera is published in
+  /// between, its own dialog can be up in that window, and a learner who leaves
+  /// the app during either one is already gone by the time [connect] returns.
+  /// Whatever has to act while the grant is fresh listens here instead.
+  ///
+  /// Announced once per call, from the coming-up path, and deliberately NOT
+  /// from [enableMicrophone], which every unmute also goes through: a grant is
+  /// something that happens once, not something to re-announce per publish.
+  void Function()? onMicrophoneLive;
+
   /// Connects to the SFU and publishes this device's media.
   ///
   /// Audio is published before video and awaited, so a caller can start
@@ -130,6 +145,11 @@ class CallMedia {
     // with it.
     await enableMicrophone(true);
     if (_released) return _releaseWhatOpened();
+    // AFTER the release check, never before it: a call the user abandoned while
+    // the microphone was opening is on its way down, and announcing a live
+    // microphone into that would have listeners acting on a call that no longer
+    // exists.
+    _announceMicrophone();
 
     if (!video) return;
     // A call fails only when the CALL cannot happen. No microphone is no
@@ -153,6 +173,22 @@ class CallMedia {
   /// rather than looking like a silent failure.
   bool get cameraFailed => _cameraFailed;
   bool _cameraFailed = false;
+
+  /// Tells the listener the microphone is live, and refuses to let that cost
+  /// the call.
+  ///
+  /// A listener throwing here would arrive at [connect] as the MICROPHONE step
+  /// failing, which is the one failure coming up treats as fatal — so a bug in
+  /// something merely watching the grant would tear down a call whose audio was
+  /// up and working, and the log would blame the microphone. What listens to
+  /// this is the call's survival in the background, never its existence.
+  void _announceMicrophone() {
+    try {
+      onMicrophoneLive?.call();
+    } catch (e, s) {
+      Logs().w('A listener on the live microphone threw', e, s);
+    }
+  }
 
   /// Releases what coming up had already opened, whether a step finished after
   /// teardown had run or a step failed outright.

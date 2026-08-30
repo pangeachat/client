@@ -307,6 +307,11 @@ class ActiveCall extends ChangeNotifier {
     // else is ever listening on this.
     capture.onCaptureLost = _onCaptureLost;
     capture.onCaptureStarted = _onCaptureStarted;
+    // Same reason and the same lifetime: the media is built for this call and
+    // nothing else listens on it. The grant this waits for lands INSIDE the
+    // first connect, so wiring it any later than construction would be wiring
+    // it after the moment it exists to catch.
+    media.onMicrophoneLive = _onMicrophoneLive;
   }
 
   /// Audio has begun arriving at the recorder.
@@ -422,7 +427,8 @@ class ActiveCall extends ChangeNotifier {
   final CallForegroundControl? _foreground;
 
   /// Whether the service refused the first start -- the microphone permission
-  /// dialog was still up -- and is owed a retry at the first post-grant step.
+  /// dialog was still up -- and is owed a retry the moment that grant lands.
+  /// Spent by [_onMicrophoneLive], re-armed by [foregroundRefused].
   bool _foregroundPending = false;
 
   /// Whether THIS call is the one the service runs for -- the PLATFORM'S
@@ -517,6 +523,49 @@ class ActiveCall extends ChangeNotifier {
     }
   }
 
+  /// The entry attempt, from the moment it is asked for to the moment the
+  /// platform has answered it. Null on a call that never asked.
+  Future<void>? _foregroundStarting;
+
+  /// The microphone is live, which is the one thing the refused start was
+  /// waiting for.
+  ///
+  /// This retry used to be taken where `media.connect` returns, and that is
+  /// post-grant but LATE: the grant happens at the microphone, and connect goes
+  /// on to publish the camera afterwards -- raising a second permission dialog
+  /// on a video call, and taking a further round trip on any call. Every one of
+  /// those moments is one the learner can spend leaving the app to answer the
+  /// dialog, and Android refuses a service start from the background. The one
+  /// legal window the first call gets was being spent on steps that have
+  /// nothing to do with the permission, so it is taken here, at the grant
+  /// itself.
+  ///
+  /// Once per call: the media announces this from the coming-up path only, and
+  /// what it spends is spent. A start the platform then refuses is re-armed by
+  /// [foregroundRefused], which carries its own budget for exactly that.
+  void _onMicrophoneLive() => unawaited(_retryForegroundOnGrant());
+
+  Future<void> _retryForegroundOnGrant() async {
+    // Settled first, because the entry start was fired unawaited before the
+    // join and may still be in the platform's hands. Reading the flag through
+    // that window would read "nothing is owed" of a start that is about to come
+    // back refused, and the call would then go into a pocket unprotected with
+    // its one retry never spent.
+    await _foregroundStarting;
+    if (!_foregroundPending) return;
+    // Checked AFTER the wait rather than before it, because the hangup this
+    // guards against is exactly the one that lands during it. A start issued
+    // for a call that is ending is a service with nothing left to stop it --
+    // [_startForeground] does reconcile a start that lands late, and this is
+    // the cheaper half of the same rule, taken before the platform is troubled.
+    if (_ending || _disposed) return;
+    // Spent BEFORE the attempt, so the grant produces exactly one. A refusal
+    // re-arms the flag from inside [_startForeground], and that re-arming is
+    // there for [foregroundRefused] to answer, not for this to read again.
+    _foregroundPending = false;
+    unawaited(_startForeground(video: _isVideoCall));
+  }
+
   /// The platform saying the ongoing-call service never actually started.
   ///
   /// `start()` has to answer before Android runs the service's own start
@@ -531,10 +580,10 @@ class ActiveCall extends ChangeNotifier {
     Logs().w('The call foreground service refused to start; not protected');
     _foregroundClaimed = false;
     _foregroundPending = true;
-    // And ASK AGAIN, here, rather than only at the one checkpoint after media
-    // connects. A refusal is asynchronous -- the platform answers `start()`
+    // And ASK AGAIN, here, rather than only at the one checkpoint the grant
+    // gives. A refusal is asynchronous -- the platform answers `start()`
     // before it runs the service -- so it can land at any moment of the call,
-    // including long after that checkpoint has passed. Left to the checkpoint
+    // including long after the microphone came up. Left to that checkpoint
     // alone, a call refused at second thirty went into the learner's pocket
     // believing it was protected by a service that had already stopped.
     //
@@ -1663,7 +1712,14 @@ class ActiveCall extends ChangeNotifier {
     // name. The same busy check join performs, read early for the same
     // answer. (The service itself also ignores a START while running, which
     // covers the sub-millisecond double-start this read cannot see.)
-    if (!calls.isBusy) unawaited(_startForeground(video: video));
+    if (!calls.isBusy) {
+      // Kept, not just fired. The retry has to know whether THIS attempt was
+      // refused, and asking while the platform is still answering reads a
+      // start that is about to be refused as one that never needed a retry.
+      final starting = _startForeground(video: video);
+      _foregroundStarting = starting;
+      unawaited(starting);
+    }
     // Subscribed before anything else, but only when PLACING. Two people
     // calling at the same moment is decided by seeing the other's ring, and the
     // window this has to cover starts when ours does — not when our media
@@ -1690,13 +1746,10 @@ class ActiveCall extends ChangeNotifier {
       _joined = true;
       _abandonIfEnding();
 
+      // The service's retry is NOT taken here. Connecting publishes the camera
+      // after the microphone, and the retry belongs at the grant rather than at
+      // the end of everything that follows it -- see [_onMicrophoneLive].
       await _step(() => media.connect(grant, video: video));
-      if (_foregroundPending) {
-        // Media connected, so the microphone permission is granted -- the
-        // dialog that refused the first start has been answered.
-        _foregroundPending = false;
-        unawaited(_startForeground(video: video));
-      }
       // Not when the camera never opened: the ongoing-call notification
       // would advertise a video call that is running on audio.
       if (video && !media.cameraFailed && _foreground != null) {

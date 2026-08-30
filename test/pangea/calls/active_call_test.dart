@@ -319,11 +319,21 @@ class FakeMedia extends CallMedia {
   /// Held open to reproduce a hangup landing mid-connect.
   Future<void>? beforeConnect;
 
+  /// Whether this double announces the live microphone the way the real object
+  /// does -- from INSIDE connect, with the camera and the rest of coming up
+  /// still to come. Turned off, it stands in for a connect that returned
+  /// without ever reaching that announcement, which is how a test tells the
+  /// grant apart from connect merely finishing.
+  bool announcesMicrophone = true;
+
   @override
   Future<void> connect(CallToken grant, {required bool video}) async {
     if (beforeConnect != null) await beforeConnect;
     trace('connect(video: $video)');
     if (connectError != null) throw connectError!;
+    // Untraced deliberately: this is a moment inside connect, not a step of
+    // it, and what listens is timed against the call's own steps.
+    if (announcesMicrophone) onMicrophoneLive?.call();
   }
 
   final _track = FakeTrack();
@@ -1933,7 +1943,7 @@ void main() {
   });
 
   group('the background-survival service', () {
-    Future<(ActiveCall, FakeCalls, FakeForeground)> withForeground({
+    Future<(ActiveCall, FakeCalls, FakeForeground, FakeMedia)> withForeground({
       bool startReturns = true,
     }) async {
       final calls = FakeCalls(await bareClient(), trace);
@@ -1952,14 +1962,14 @@ void main() {
         capture: FakeCapture(trace),
         foreground: fgs,
       );
-      return (call, calls, fgs);
+      return (call, calls, fgs, media);
     }
 
     // The leak this pins shut: the start is fired unawaited, so a hangup can
     // land while the platform is still answering. Teardown read the claim as
     // false, skipped the stop, and the ongoing-call service outlived the call.
     test('a start that lands after teardown stops itself', () async {
-      final (call, calls, fgs) = await withForeground();
+      final (call, calls, fgs, _) = await withForeground();
       calls.devicesInCall = [calls.client.deviceID!];
       calls.remotePresent = true;
       fgs.holdStart = Completer<void>();
@@ -1992,7 +2002,7 @@ void main() {
     // type from a live video call, or stopping a service it had just been
     // told it owned.
     test('every instruction carries the claim its start was given', () async {
-      final (call, calls, fgs) = await withForeground();
+      final (call, calls, fgs, _) = await withForeground();
       calls.devicesInCall = [calls.client.deviceID!];
       calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
@@ -2007,7 +2017,7 @@ void main() {
     });
 
     test('a refused promotion gives the claim back', () async {
-      final (call, calls, fgs) = await withForeground();
+      final (call, calls, fgs, _) = await withForeground();
       calls.devicesInCall = [calls.client.deviceID!];
       calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
@@ -2026,7 +2036,7 @@ void main() {
     });
 
     test('a refusal whose retry succeeds is stopped like any other', () async {
-      final (call, calls, fgs) = await withForeground();
+      final (call, calls, fgs, _) = await withForeground();
       calls.devicesInCall = [calls.client.deviceID!];
       calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
@@ -2047,7 +2057,7 @@ void main() {
       // can land at any second of the call -- including long after the one
       // checkpoint that used to be the only retry. A call refused at second
       // thirty went into a pocket believing it was protected.
-      final (call, calls, fgs) = await withForeground();
+      final (call, calls, fgs, _) = await withForeground();
       calls.devicesInCall = [calls.client.deviceID!];
       calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
@@ -2075,7 +2085,7 @@ void main() {
     });
 
     test('starts before anything is awaited, and stops in teardown', () async {
-      final (call, calls, _) = await withForeground();
+      final (call, calls, _, _) = await withForeground();
       calls.devicesInCall = [calls.client.deviceID!];
       calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
@@ -2097,7 +2107,7 @@ void main() {
     });
 
     test('a failed call still stops the service', () async {
-      final (call, calls, _) = await withForeground();
+      final (call, calls, _, _) = await withForeground();
       calls.devicesInCall = [calls.client.deviceID!];
       calls.joinError = StateError('no focus');
       await call.start(roomStub(calls.client), video: false);
@@ -2109,28 +2119,148 @@ void main() {
       );
     });
 
-    test('a refused start is retried once media proves the grant', () async {
-      // The service cannot run before the microphone permission exists; media
-      // connecting IS the proof the dialog was answered.
-      final (call, calls, fgs) = await withForeground(startReturns: false);
+    /// Every attempt the platform has been asked for, in the order it was
+    /// asked -- the entry start and any retry read the same way.
+    int startsAsked() =>
+        trace.steps.where((s) => s == 'fgs.start(video: false)').length;
+
+    test('a refused start is retried once the microphone is live', () async {
+      // The service cannot run before the microphone permission exists; the
+      // microphone publishing IS the proof the dialog was answered.
+      final (call, calls, fgs, _) = await withForeground(startReturns: false);
       calls.devicesInCall = [calls.client.deviceID!];
       calls.remotePresent = true;
-      fgsRetriesAfterGrant() =>
-          trace.steps.where((s) => s == 'fgs.start(video: false)').length;
       await call.start(roomStub(calls.client), video: false);
       expect(
-        fgsRetriesAfterGrant(),
+        startsAsked(),
         2,
-        reason: 'the entry attempt plus the post-connect retry',
+        reason: 'the entry attempt plus the retry the grant paid for',
       );
       await call.hangUp();
+    });
+
+    // The item this closes: the first call's service gets one legal window,
+    // and it was being spent on the steps BETWEEN the grant and the end of
+    // connect -- the camera, its own permission dialog, another round trip.
+    // The learner answering the microphone prompt has often left the app by
+    // then, and Android refuses a start from the background.
+    test('connect finishing is not what pays for the retry', () async {
+      final (call, calls, _, media) = await withForeground(startReturns: false);
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      // A connect that comes up without ever reaching the microphone
+      // announcement. Everything else about the call is unchanged, and it
+      // still returns perfectly well.
+      media.announcesMicrophone = false;
+
+      await call.start(roomStub(calls.client), video: false);
+
+      expect(
+        startsAsked(),
+        1,
+        reason: 'only the grant may spend the retry, never connect returning',
+      );
+      await call.hangUp();
+    });
+
+    test(
+      'a grant landing while the first start is still out is not lost',
+      () async {
+        // The entry start is fired unawaited before the join, so the platform can
+        // still be answering it when the microphone comes up. Read through that
+        // window the flag says nothing is owed -- of a start that is about to
+        // come back refused -- and the call would keep its retry forever.
+        final (call, calls, fgs, _) = await withForeground(startReturns: false);
+        calls.devicesInCall = [calls.client.deviceID!];
+        calls.remotePresent = true;
+        fgs.holdStart = Completer<void>();
+
+        await call.start(roomStub(calls.client), video: false);
+        expect(startsAsked(), 1, reason: 'the platform has not answered yet');
+
+        fgs.holdStart!.complete();
+        await pumpEventQueue();
+
+        expect(
+          startsAsked(),
+          2,
+          reason: 'the refusal arrived after the grant, and still owes a retry',
+        );
+        await call.hangUp();
+      },
+    );
+
+    test('a refusal landing on a retry already in flight adds nothing', () async {
+      // The refusal callback describes the ENTRY start, and it can arrive while
+      // the grant's own retry is still in the platform's hands. Both would then
+      // be answering the same debt, and the call would have two starts out at
+      // once for one permission that was granted once.
+      final (call, calls, fgs, media) = await withForeground(
+        startReturns: false,
+      );
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      final connecting = Completer<void>();
+      media.beforeConnect = connecting.future;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      expect(startsAsked(), 1, reason: 'the entry attempt, already refused');
+
+      // The grant lands and its retry is left with the platform, unanswered.
+      fgs.holdStart = Completer<void>();
+      connecting.complete();
+      await starting;
+      expect(startsAsked(), 2, reason: 'the grant paid for the retry');
+
+      call.foregroundRefused();
+      await pumpEventQueue();
+      fgs.holdStart!.complete();
+      await pumpEventQueue();
+
+      expect(
+        startsAsked(),
+        2,
+        reason: 'the debt was already being paid when the refusal arrived',
+      );
+      await call.hangUp();
+    });
+
+    test('a call that is ending is not worth a retry', () async {
+      // The grant lands inside connect, and a hangup lands there routinely. A
+      // service started for a call already coming down is one nothing is left
+      // to stop -- the late-start reconcile would take it back off the platform
+      // again, and troubling the platform at all is the thing to skip.
+      final (call, calls, _, media) = await withForeground(startReturns: false);
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      final connecting = Completer<void>();
+      media.beforeConnect = connecting.future;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      await call.hangUp();
+      connecting.complete();
+      await starting;
+      await pumpEventQueue();
+
+      expect(
+        startsAsked(),
+        1,
+        reason: 'the grant arrived for a call that no longer wanted it',
+      );
+      expect(
+        trace.steps,
+        isNot(contains(startsWith('fgs.stop'))),
+        reason: 'and nothing was started for teardown to take back',
+      );
     });
 
     test('a start the account will refuse never touches the service', () async {
       // The service is the LIVE call's; a second start is about to be
       // refused with AlreadyInACall, and firing the service first would
       // overwrite the standing call's notification with this one's name.
-      final (call, calls, _) = await withForeground();
+      final (call, calls, _, _) = await withForeground();
       calls.busy = true;
       calls.joinError = const AlreadyInACall();
       calls.devicesInCall = [calls.client.deviceID!];
@@ -2146,7 +2276,7 @@ void main() {
     });
 
     test('a call started with video escalates the service type', () async {
-      final (call, calls, _) = await withForeground();
+      final (call, calls, _, _) = await withForeground();
       calls.devicesInCall = [calls.client.deviceID!];
       calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: true);
