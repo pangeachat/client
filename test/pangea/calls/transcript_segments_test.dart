@@ -619,15 +619,12 @@ void main() {
       'a start before the previous end': [('hola', 0, 300), ('que', 250, 600)],
       'an end before its own start': [('hola', 0, 300), ('que', 500, 400)],
       'words out of order': [('hola', 500, 600), ('que', 100, 200)],
-      // Inside the jitter allowance measured against the previous END, and
-      // still backwards: the second word BEGINS before the first one did.
-      // That is not two estimates disagreeing about a boundary, it is the
-      // sequence saying the later word was spoken first -- and it used to be
-      // accepted AND reported as an exact time, so the interleave could put
-      // the other speaker in the middle of a phrase.
-      'a start before the previous START, within the jitter': [
-        ('hola', 100, 120),
-        ('que', 90, 130),
+      // Backwards by more than the allowance. Caught by the END rule -- which
+      // is the whole rule; see the note in `_isWellFormedSequence` about why a
+      // separate start rule cannot fire.
+      'a start well behind the previous word': [
+        ('hola', 1000, 1040),
+        ('que', 900, 1080),
       ],
       'a negative time': [('hola', -5, 300), ('que', 350, 600)],
       'an end past the chunk duration': [('hola', 0, 300), ('que', 350, 5000)],
@@ -707,6 +704,33 @@ void main() {
       ]);
 
       expect(segments.map((s) => s.atMs), everyElement(_chunkStart + 400));
+    });
+
+    test('a start a few ms behind its predecessor costs nothing either', () {
+      // The mirror of the test below, and the case that made forbidding
+      // backward starts outright worse than tolerating them. A recogniser puts
+      // 'now' 5ms before 'ready' began -- two estimates disagreeing, which
+      // cannot reorder two speakers. Refusing the sequence would cost the
+      // chunk its precision, and an imprecise chunk is placed at the END of
+      // its audio, so a phrase that finished at 1.08s would sort at 45s and
+      // let the other speaker's 1.5s turn render in front of it.
+      final segments = buildSegments([
+        _chunk(
+          'ready now',
+          timings: [('ready', 1000, 1040), ('now', 995, 1080)],
+          durationMs: 45000,
+        ),
+      ]);
+
+      expect(
+        segments.single.positionIsApproximate,
+        isFalse,
+        reason: 'five milliseconds is jitter, not disorder',
+      );
+      // Ordered near where the phrase was actually spoken -- and, decisively,
+      // well before the other speaker's 1500ms turn. Refused, it would have
+      // sorted at the chunk's end, 45000.
+      expect(segments.single.orderKeyMs, lessThan(_chunkStart + 1500));
     });
 
     test('a few ms of boundary jitter does NOT cost the chunk its cut', () {

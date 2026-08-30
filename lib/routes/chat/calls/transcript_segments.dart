@@ -626,7 +626,6 @@ const _boundaryJitter = 50;
 bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
   // Starts at zero, which is also what rejects a negative first start.
   var previousEnd = 0;
-  var previousStart = 0;
   for (final timing in timings) {
     final start = timing.startTimeMs;
     final end = timing.endTimeMs;
@@ -638,19 +637,21 @@ bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
     // before the chunk began.
     if (start < 0 || end < start || end > durationMs) return false;
     if (start < previousEnd - _boundaryJitter) return false;
-    // And STARTS must not go backwards, with no tolerance at all.
+    // There is deliberately NO separate check on STARTS going backwards, and
+    // it is worth saying why, because two rounds of review each asked for one.
     //
-    // The jitter above forgives an overlap between two neighbouring ESTIMATES
-    // -- a word that begins a few milliseconds before the previous one
-    // finished, which is disagreement about a boundary and not disorder. A
-    // word that begins before the previous word BEGAN is a different claim
-    // entirely: the sequence is telling us the speaker said the later word
-    // first. Tolerating that admitted a malformed sequence AND reported the
-    // chunk's time as exact, so the interleave could put another speaker's
-    // turn in the middle of a phrase whose own words disagreed about their
-    // order.
-    if (start < previousStart) return false;
-    previousStart = start;
+    // `previousEnd` is the running maximum of ends, and every word has already
+    // been required to satisfy `end >= start`, so `previousEnd >= previousStart`
+    // always. Any start far enough behind the previous START to be disorder is
+    // therefore already behind the previous END by at least as much, and the
+    // line above has rejected it. A start-based check cannot fire.
+    //
+    // Both attempts to add one made things worse rather than nothing. Forbidding
+    // backward starts outright cost the chunk its precision over five
+    // milliseconds of ordinary recogniser jitter -- and an imprecise chunk is
+    // placed at the END of its audio (see [orderKeyMs]), so a phrase that
+    // finished at 1.08s sorted at 45s and let the other speaker jump in front
+    // of it. Bounding it by the same jitter made it unreachable instead.
     // Read forward from the LATER of the two, so a tolerated overlap cannot
     // accumulate: ten words each 40ms early must not walk the sequence back
     // half a second.
