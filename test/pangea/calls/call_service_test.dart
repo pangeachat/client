@@ -383,6 +383,88 @@ void main() {
       );
     });
 
+    test('a newer leave does not UNRECORD an older one', () async {
+      // Two can be outstanding at once by the ordinary route: retract gives up
+      // waiting on its leave without stopping it, the redial that follows is
+      // abandoned mid-join, and the leave that abandonment issues for the
+      // session it was holding is a second one. Recorded in a single slot, the
+      // second replaces the first -- and when the second finishes it clears the
+      // slot, so the first is left in flight with nothing waiting for it. The
+      // call after that then sees nothing to wait for, publishes its membership
+      // into the session both leaves hold, and the first lands late and
+      // retracts a LIVE call's membership.
+      final service = CallService(
+        await bareClient(),
+        leaveWithin: const Duration(milliseconds: 50),
+      );
+      final older = Completer<void>();
+      final newer = Completer<void>();
+      service.setPendingLeaveForTest(older.future);
+      service.setPendingLeaveForTest(newer.future);
+      expect(
+        service.pendingLeaveCountForTest,
+        2,
+        reason: 'both leaves are in flight, so both are outstanding',
+      );
+
+      // The NEWER one finishes first, which is the ordering that hides the bug:
+      // it is the one that gets to say the room is clear.
+      newer.complete();
+      await pumpEventQueue();
+
+      expect(
+        service.pendingLeaveCountForTest,
+        1,
+        reason:
+            'the older leave is still running and still has to be waited for',
+      );
+
+      // And, as before, it is let go of only by its OWN completion.
+      older.complete();
+      await pumpEventQueue();
+      expect(service.hasPendingLeaveForTest, isFalse);
+    });
+
+    test(
+      'and the next call waits for the OLDER one, not just the last',
+      () async {
+        // The count above is bookkeeping; this is the thing the bookkeeping is
+        // for. A leave dropped from the tracker is exactly as invisible as one
+        // that was never recorded at all, and invisible is what lets a redial
+        // publish its membership straight into the session that leave holds.
+        final service = CallService(
+          await bareClient(),
+          leaveWithin: const Duration(seconds: 30),
+        );
+        var olderFinished = false;
+        service.setPendingLeaveForTest(
+          Future<void>.delayed(
+            const Duration(milliseconds: 100),
+          ).then((_) => olderFinished = true),
+        );
+        final newer = Completer<void>();
+        service.setPendingLeaveForTest(newer.future);
+        newer.complete();
+        await pumpEventQueue();
+
+        expect(
+          olderFinished,
+          isFalse,
+          reason:
+              'the older leave must still be running for this to prove '
+              'anything -- if it has already finished, the wait below is vacuous',
+        );
+
+        await service.settlePendingLeave();
+
+        expect(
+          olderFinished,
+          isTrue,
+          reason: 'the new call must not be built over a leave still running',
+        );
+      },
+    );
+
     test('is recorded by the hangup that issued it, too', () async {
       // The other site the funnel covers. A retract that gives up waiting has
       // NOT stopped its leave, and the session is fetched by room -- so unless

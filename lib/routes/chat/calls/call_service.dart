@@ -232,9 +232,23 @@ class CallService {
   /// at most twice this before the call gets on with ringing out.
   static const _ringWithin = Duration(seconds: 10);
 
-  /// A leave that was given up on but is still running. The next call in this
-  /// room waits for it rather than racing it.
-  Future<void>? _leaving;
+  /// EVERY leave that was given up on and is still running. The next call in
+  /// this room waits for all of them rather than racing any.
+  ///
+  /// A SET, not a slot, and the difference is the whole of what this holds. A
+  /// slot records the LATEST leave, which silently UNRECORDS the one before it
+  /// — and a leave dropped from the tracker is exactly as invisible to
+  /// [settlePendingLeave] and to the wait in [announce] as one that was never
+  /// funnelled through [_leave] at all. Two can be outstanding at once by the
+  /// ordinary route: [retract] gives up waiting on its leave without stopping
+  /// it, the redial that follows is abandoned mid-join, and the leave that
+  /// abandonment issues for the session it was holding is a second one. On a
+  /// slot the second finishes, clears it, and the first is left in flight with
+  /// nothing waiting for it — so the call after that publishes its membership
+  /// into the session both of them hold, and the first lands late and retracts
+  /// a LIVE call's membership. That is the exact failure the funnel exists to
+  /// prevent, moved one level down into what the funnel writes to.
+  final Set<Future<void>> _leaving = {};
 
   /// Records a leave still in flight, and forgets it the moment it finishes —
   /// never before.
@@ -246,18 +260,25 @@ class CallService {
   /// next call would then publish its membership straight into a session this
   /// leave is about to retract.
   void _setPendingLeave(Future<void> leaving) {
-    _leaving = leaving;
+    _leaving.add(leaving);
     unawaited(
       leaving
-          .whenComplete(() {
-            if (identical(_leaving, leaving)) _leaving = null;
-          })
+          .whenComplete(() => _leaving.remove(leaving))
           .catchError((Object _, StackTrace _) {}),
     );
   }
 
-  /// Issues a leave and records it as the pending one, in that order and with
-  /// nothing awaited in between.
+  /// Every leave still outstanding, as one future to wait on, or null when
+  /// there are none.
+  ///
+  /// A SNAPSHOT of the set, so a leave issued while somebody is already waiting
+  /// does not extend that wait: it belongs to a later call than the one that
+  /// asked, and that later call takes its own snapshot when its turn comes.
+  Future<void>? get _pendingLeaves =>
+      _leaving.isEmpty ? null : Future.wait(_leaving.toList());
+
+  /// Issues a leave and records it among the pending ones, in that order and
+  /// with nothing awaited in between.
   ///
   /// EVERY LEAVE THIS SERVICE ISSUES MUST BE ONE THE NEXT JOIN CAN WAIT FOR.
   /// [settlePendingLeave] and the wait in [announce] are the whole machinery for
@@ -281,25 +302,25 @@ class CallService {
     return leaving;
   }
 
-  /// Waits for a leave that was given up on to actually finish.
+  /// Waits for every leave that was given up on to actually finish.
   ///
   /// Bounded: waiting longer would hold up a call the learner is asking for now,
-  /// so after the window the call goes ahead. But the pending leave is NOT let
-  /// go of here — it clears itself when it completes — so every call that starts
-  /// while it is still running waits for it in turn rather than racing it. That
-  /// is the whole protection against a stale leave retracting a fresh call's
-  /// membership; dropping it on the first timeout threw that protection away for
-  /// every call after.
+  /// so after the window the call goes ahead. But the pending leaves are NOT let
+  /// go of here — each clears itself when it completes — so every call that
+  /// starts while any is still running waits for it in turn rather than racing
+  /// it. That is the whole protection against a stale leave retracting a fresh
+  /// call's membership; dropping it on the first timeout threw that protection
+  /// away for every call after.
   @visibleForTesting
   Future<void> settlePendingLeave() async {
-    final leaving = _leaving;
+    final leaving = _pendingLeaves;
     if (leaving == null) return;
-    Logs().i('Waiting for the last call to finish leaving');
+    Logs().i('Waiting for every leave still running to finish');
     try {
       await leaving.timeout(_leaveWithin);
     } catch (_) {
-      // Waited as long as is reasonable; the leave keeps running and is
-      // forgotten only when it finishes, not here.
+      // Waited as long as is reasonable; the leaves keep running and are
+      // forgotten only when they finish, not here.
     }
   }
 
@@ -308,9 +329,14 @@ class CallService {
   void setPendingLeaveForTest(Future<void> leaving) =>
       _setPendingLeave(leaving);
 
-  /// Whether a leave is still being waited for. For tests.
+  /// Whether any leave is still being waited for. For tests.
   @visibleForTesting
-  bool get hasPendingLeaveForTest => _leaving != null;
+  bool get hasPendingLeaveForTest => _leaving.isNotEmpty;
+
+  /// How many leaves are still outstanding. For tests: the count is what tells
+  /// a tracker that KEEPS both from one that has quietly replaced the first.
+  @visibleForTesting
+  int get pendingLeaveCountForTest => _leaving.length;
 
   /// Numbers each ring this session sends, so two calls sharing a membership
   /// cannot share a transaction id.
@@ -1522,10 +1548,10 @@ class CallService {
     // would wait for ever too. So past the window the enter goes ahead: the rare
     // cost is that stale leave landing late and retracting this membership,
     // which is recoverable, where a call held open for ever is not.
-    final pendingLeave = _leaving;
+    final pendingLeave = _pendingLeaves;
     if (pendingLeave != null) {
       _stopIfDisposed();
-      Logs().i('Holding the membership until the last leave finishes');
+      Logs().i('Holding the membership until every pending leave finishes');
       try {
         await pendingLeave.timeout(_leaveWithin);
       } catch (_) {
