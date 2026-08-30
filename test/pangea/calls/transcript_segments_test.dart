@@ -619,6 +619,16 @@ void main() {
       'a start before the previous end': [('hola', 0, 300), ('que', 250, 600)],
       'an end before its own start': [('hola', 0, 300), ('que', 500, 400)],
       'words out of order': [('hola', 500, 600), ('que', 100, 200)],
+      // Inside the jitter allowance measured against the previous END, and
+      // still backwards: the second word BEGINS before the first one did.
+      // That is not two estimates disagreeing about a boundary, it is the
+      // sequence saying the later word was spoken first -- and it used to be
+      // accepted AND reported as an exact time, so the interleave could put
+      // the other speaker in the middle of a phrase.
+      'a start before the previous START, within the jitter': [
+        ('hola', 100, 120),
+        ('que', 90, 130),
+      ],
       'a negative time': [('hola', -5, 300), ('que', 350, 600)],
       'an end past the chunk duration': [('hola', 0, 300), ('que', 350, 5000)],
       'a blank word missing a time': [
