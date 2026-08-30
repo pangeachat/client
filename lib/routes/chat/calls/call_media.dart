@@ -152,13 +152,21 @@ class CallMedia {
     // product connects; the recording also needs the audio track first. A
     // camera that then fails is handled below, and does not take the call
     // with it.
-    await enableMicrophone(true);
+    final microphoneLive = await enableMicrophone(true);
     if (_released) return _releaseWhatOpened();
     // AFTER the release check, never before it: a call the user abandoned while
     // the microphone was opening is on its way down, and announcing a live
     // microphone into that would have listeners acting on a call that no longer
     // exists.
-    _announceMicrophone();
+    //
+    // And only when a microphone actually opened. The step RETURNING is a
+    // different fact: with no local participant to publish through it comes
+    // back having opened nothing at all (see [_publishingAs]), and announcing
+    // off the return alone told the listener a permission had been granted
+    // that had not been asked for. What listens spends a one-per-call budget
+    // on the news, so a false grant does not merely mislead — it consumes the
+    // retry the real grant would have had.
+    if (microphoneLive) _announceMicrophone();
 
     if (!video) return;
     // A call fails only when the CALL cannot happen. No microphone is no
@@ -168,7 +176,12 @@ class CallMedia {
     // `Permissions-Policy: camera=()` on the web hosts, and a user who denies
     // the camera prompt after accepting the microphone.
     try {
-      await enableCamera(true);
+      // The same rule as the microphone above, at the other site that reports
+      // a capture step's outcome. A camera that quietly published nothing is a
+      // video call with no picture exactly as much as one that threw is, and
+      // reading only the throw left the screen showing a camera control for a
+      // camera that had never come on.
+      if (!await enableCamera(true)) _cameraFailed = true;
     } catch (e, s) {
       _cameraFailed = true;
       Logs().w('The camera would not open; continuing with audio only', e, s);
@@ -240,14 +253,34 @@ class CallMedia {
   // one-liner, which also rewrites the mid-call unmute path that shares it, and
   // nothing in this suite can reach a real publish to prove either. Recorded as
   // the known limitation it is rather than fixed blind.
+  // Both of these answer whether the change reached a real PUBLICATION, which
+  // is the only proof the device did anything. Returning was taken for that
+  // proof and is not: the `?.` these used to end in came back indistinguishable
+  // from success when there was no participant to publish through, and every
+  // reader downstream — the grant announcement, the camera-failed flag — was
+  // reading a step's return where it needed a step's effect.
+  //
+  // The publication is the SDK's own answer rather than an inference of ours.
+  // On the pinned livekit_client 2.11.0, `setSourceEnabled` turning a source ON
+  // either hands back the publication it made or throws (local.dart:815-825),
+  // so a null is that library saying it published nothing.
   @protected
-  Future<void> enableMicrophone(bool on) async => (await _publishingAs(
-    on,
-  ))?.setMicrophoneEnabled(on, audioCaptureOptions: microphone);
+  Future<bool> enableMicrophone(bool on) async {
+    final participant = await _publishingAs(on);
+    if (participant == null) return false;
+    final published = await participant.setMicrophoneEnabled(
+      on,
+      audioCaptureOptions: microphone,
+    );
+    return published != null;
+  }
 
   @protected
-  Future<void> enableCamera(bool on) async =>
-      (await _publishingAs(on))?.setCameraEnabled(on);
+  Future<bool> enableCamera(bool on) async {
+    final participant = await _publishingAs(on);
+    if (participant == null) return false;
+    return await participant.setCameraEnabled(on) != null;
+  }
 
   /// The participant a capture change acts through, or null when there is
   /// nothing to act on and that is fine.
@@ -362,10 +395,10 @@ class CallMedia {
   bool get captureRefused => _captureRefused;
   bool _captureRefused = false;
 
-  Future<void> setMicrophoneEnabled(bool on) =>
+  Future<bool> setMicrophoneEnabled(bool on) =>
       _setCapture(enableMicrophone, on);
 
-  Future<void> setCameraEnabled(bool on) => _setCapture(enableCamera, on);
+  Future<bool> setCameraEnabled(bool on) => _setCapture(enableCamera, on);
 
   /// Turns a capture device on or off during a call, on the same terms coming
   /// up uses.
@@ -388,11 +421,19 @@ class CallMedia {
   /// live and two people are talking: an unmute the platform refuses costs the
   /// microphone, and tearing the conversation down over it would be the same
   /// mistake the camera arm above exists to avoid.
-  Future<void> _setCapture(Future<void> Function(bool) enable, bool on) async {
+  /// Answers, like the steps it runs, whether the device is actually publishing
+  /// afterwards — so a caller latching anything off a toggle latches it off the
+  /// effect rather than off the request. A change refused for a released call,
+  /// or released again the moment it took, is not one that happened.
+  Future<bool> _setCapture(Future<bool> Function(bool) enable, bool on) async {
     if (!on) return enable(false);
-    if (_released) return;
-    await enable(true);
-    if (_released) return _releaseWhatOpened();
+    if (_released) return false;
+    final live = await enable(true);
+    if (_released) {
+      await _releaseWhatOpened();
+      return false;
+    }
+    return live;
   }
 
   /// Leaves the SFU and releases the capture devices.

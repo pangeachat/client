@@ -446,8 +446,9 @@ class CallSession extends ChangeNotifier {
 
   Future<void> toggleCamera() async {
     final next = !_camera;
+    final bool live;
     try {
-      await media.setCameraEnabled(next);
+      live = await media.setCameraEnabled(next);
     } catch (e, s) {
       Logs().w('Could not turn the camera ${next ? 'on' : 'off'}', e, s);
       return;
@@ -458,9 +459,15 @@ class CallSession extends ChangeNotifier {
     unawaited(call.setForegroundCamera(next));
     // Only if the camera actually came on: turning it on the instant the call
     // ends is a refused no-op that does not throw, and latching on the request
-    // alone wrote an ending voice call as a video call. The live connection is
-    // the proof it took.
-    if (next && media.isConnected) _usedVideo = true;
+    // alone wrote an ending voice call as a video call.
+    //
+    // The proof is the toggle's own answer -- whether a track ended up
+    // published -- rather than the connection being up, which is a proxy for it
+    // and can outlast the refusal it was standing in for: the release the
+    // refusal comes from is latched inside the media, while the socket it
+    // guards takes a round trip to close. This claim goes in the timeline and
+    // stays there, so it is the one that most needs to be read off the effect.
+    if (next && live) _usedVideo = true;
     if (_disposing || _over) return;
     _camera = next;
     _notify();

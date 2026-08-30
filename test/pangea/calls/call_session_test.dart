@@ -178,7 +178,7 @@ class _SpyRecord extends CallRecord {
         analytics: (eventId, uses, language) async {},
       );
 
-  final cards = <({bool answered, bool declined, bool write})>[];
+  final cards = <({bool answered, bool declined, bool write, bool video})>[];
 
   @override
   Future<void> writeCard({
@@ -195,6 +195,7 @@ class _SpyRecord extends CallRecord {
       answered: answered,
       declined: declined,
       write: writeTimelineEvent,
+      video: video,
     ));
   }
 }
@@ -229,8 +230,17 @@ class _FakeMedia extends CallMedia {
   CallRoster roster({required String myUserId}) =>
       fakeRoster ??= _FakeRoster(room: room, myUserId: myUserId);
 
+  /// Whether a camera toggle actually ends up publishing. False is the shape
+  /// the real media returns for a toggle it refused -- a call already released,
+  /// or no participant to publish through -- which returns just as quietly as a
+  /// toggle that worked.
+  bool cameraTakes = true;
+
   @override
-  Future<void> setMicrophoneEnabled(bool on) async {}
+  Future<bool> setMicrophoneEnabled(bool on) async => true;
+
+  @override
+  Future<bool> setCameraEnabled(bool on) async => on && cameraTakes;
 
   @override
   Future<void> disconnect() async {}
@@ -1149,6 +1159,64 @@ void main() {
       expect(spy.cards.length, 1, reason: 'one call, one card');
       expect(spy.cards.single.answered, isTrue);
       expect(spy.cards.single.declined, isFalse);
+    });
+
+    // What the card says about video is read off the camera toggle's ANSWER,
+    // not off anything standing in for it. The claim goes in the conversation
+    // and stays there, so a camera that never opened must not be recorded as
+    // one that did -- and a toggle the media refuses returns just as quietly as
+    // one that worked.
+    Future<List<({bool answered, bool declined, bool write, bool video})>>
+    cardsAfterTurningTheCameraOn({required bool cameraTakes}) async {
+      final client = await _bareClient();
+      final media = _FakeMedia()..cameraTakes = cameraTakes;
+      final spy = _SpyRecord();
+      final session = CallSession.start(
+        room: matrix.Room(id: '!card:server', client: client),
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+        recordOverride: spy,
+      );
+      await pumpEventQueue();
+      final roster = media.fakeRoster!;
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+      roster.recompute();
+      await pumpEventQueue();
+
+      await session.toggleCamera();
+
+      session.endCall();
+      await pumpEventQueue();
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+      await pumpEventQueue();
+      return spy.cards;
+    }
+
+    test('a camera that came on makes it a video call', () async {
+      final cards = await cardsAfterTurningTheCameraOn(cameraTakes: true);
+      expect(cards, hasLength(1));
+      expect(cards.single.video, isTrue);
+    });
+
+    test('a camera that did NOT come on leaves it a voice call', () async {
+      // The toggle refused and said so, which is the only difference between
+      // this call and the one above. Recorded as video, the conversation would
+      // show a video call the learner never had a picture on.
+      final cards = await cardsAfterTurningTheCameraOn(cameraTakes: false);
+      expect(cards, hasLength(1));
+      expect(
+        cards.single.video,
+        isFalse,
+        reason: 'a camera that never opened is not a video call',
+      );
     });
 
     test('a call that FAILED is recorded where every other one is', () async {
