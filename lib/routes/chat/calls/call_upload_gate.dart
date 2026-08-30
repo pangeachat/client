@@ -52,11 +52,12 @@ bool choreoUnderPressure(Object error) {
 ///
 /// **A circuit breaker.** [failuresToOpen] consecutive server-classified
 /// failures open it for [openFor]; then exactly one caller is admitted as a
-/// probe, and whether IT succeeds decides — a success that was already in
-/// flight when the breaker opened decides nothing, because it says nothing
-/// about the state that opened it. The probe is a real chunk upload: there is
-/// no synthetic prober and no background timer, so a device with nothing to
-/// send makes no requests at all.
+/// probe, and whether IT succeeds decides — an upload that was already in
+/// flight when the breaker opened decides nothing either way, because it says
+/// nothing about the state that opened it: not by succeeding, and not by
+/// failing with something the classifier does not count. The probe is a real
+/// chunk upload: there is no synthetic prober and no background timer, so a
+/// device with nothing to send makes no requests at all.
 ///
 /// **What happens to audio while it is open is a decision, not a side effect.**
 /// Nothing is dropped here. A caller that arrives while the breaker is open
@@ -159,6 +160,14 @@ class CallUploadGate {
   /// started at all: nothing reached the server, so it is not evidence about the
   /// server, and it is recorded nowhere — a breaker that counted its own
   /// refusals would hold itself open for ever with nothing able to close it.
+  ///
+  /// A PRECONDITION ON [work], because this gate cannot supply it: **[work] must
+  /// be safe to run again after this has given up on it.** Giving up is only
+  /// this device deciding to stop waiting — nothing here can abort a request in
+  /// flight, and there is no idempotency key to send — so a [work] abandoned at
+  /// the budget can still reach the server and succeed while its retry succeeds
+  /// too. A caller for which that is two of anything must not use this gate.
+  /// What makes today's one caller safe is set out in the permit note below.
   Future<T> run<T>(Future<T> Function() work, {Duration? within}) async {
     final deadline = within == null ? null : DateTime.now().add(within);
     final probing = await _admit(deadline);
@@ -173,7 +182,7 @@ class CallUploadGate {
         _recordSuccess(wasProbe: probing);
         return result;
       } catch (error) {
-        _recordFailure(error);
+        _recordFailure(error, wasProbe: probing);
         rethrow;
       }
     } finally {
@@ -192,6 +201,34 @@ class CallUploadGate {
       // afford. The injected transcriber is a bare typedef with no deadline of
       // its own, so a caller that supplies an unbounded one would wedge for
       // good; the test uses exactly that.
+      //
+      // WHAT THAT COSTS, AND WHY IT IS AFFORDABLE HERE. An abandoned upload can
+      // still land, so its retry can be a second real delivery of the same
+      // chunk — and a learner credited twice for saying something once is the
+      // exact harm the recorder election exists to prevent. This gate cannot
+      // close that on its own: it has no abort and no idempotency key, and
+      // adding one means changing the app's shared HTTP path and the route's
+      // contract with it. It is closed one and two layers up instead, and only
+      // because every layer is keyed by the chunk rather than by the attempt:
+      //
+      //  - `CallTranscriptSink` holds each result at `_byIndex[chunk.index]`
+      //    and builds each chunk's constructs once per index, so a second
+      //    answer overwrites the first rather than adding to it. Credit is
+      //    counted per chunk, and a chunk is one slot. Asserted directly, in
+      //    call_transcript_sink_test.dart: "a chunk is transcribed once however
+      //    often it is delivered" and "a use is built once and never rebuilt".
+      //  - `SpeechToTextRepo` (through `BaseRepo`) keys by a sha256 of the
+      //    audio: a retry issued while the first request is still running joins
+      //    that request instead of making a second one, and one issued after it
+      //    succeeded is served from the ten-minute cache. So in production the
+      //    second delivery is usually not a second upload either.
+      //
+      // Recorded here rather than left to be rediscovered, because it is a
+      // property of the CALLERS that this object depends on and cannot check.
+      // The precondition on [run] states it as the requirement it is. There is
+      // no test of it HERE, and there cannot be a useful one: a caller that
+      // stopped waiting never sees the abandoned answer, so from this side the
+      // second landing is invisible whether it is counted twice or not.
       _settleProbe(probing);
       _releasePermit();
     }
@@ -316,7 +353,13 @@ class CallUploadGate {
     _openUntil = null;
   }
 
-  void _recordFailure(Object error) {
+  /// ONLY A FAILURE THE CLASSIFIER CALLS PRESSURE MAY SPEND ADMISSION BUDGET.
+  /// Opening the breaker, and extending it, both cost the learner a cooldown in
+  /// which speech that has no second copy cannot be sent — so the evidence for
+  /// either has to be evidence [isServerFailure] actually counts. The one
+  /// exception is the PROBE, whose job is not to be pressure but to answer the
+  /// question the cooldown was opened to ask.
+  void _recordFailure(Object error, {required bool wasProbe}) {
     if (isServerFailure(error)) {
       _consecutiveFailures++;
     } else if (_openUntil == null) {
@@ -330,16 +373,32 @@ class CallUploadGate {
       // clearing the count there would throw the doors open on a backend still
       // down — which is the one thing the probe exists to prevent.
       _consecutiveFailures = 0;
+    } else if (!wasProbe) {
+      // Open, not the probe, and not pressure: an upload admitted while the
+      // breaker was still shut, answering now with a 4xx. Falling through to
+      // the re-open below did not merely decide nothing — it bought a whole
+      // fresh cooldown with a request the line above had just refused to count,
+      // so one malformed chunk of the learner's could hold their own speech
+      // back another window, and a trickle of late 4xx answers could hold it
+      // back indefinitely.
+      //
+      // Only the NON-pressure half is dropped, and the asymmetry against
+      // [_recordSuccess] — which ignores a non-probe SUCCESS entirely — is
+      // deliberate. A 5xx from that same older upload is the server failing
+      // now, whenever it was admitted, and it counts; a success is only
+      // evidence about a moment that has passed, and the probe is what decides
+      // whether the server is well. Both errors lean the same way: towards
+      // leaving the server alone.
+      return;
     }
-    // This also re-opens after a failed PROBE, and deliberately without a
-    // separate `wasProbe` clause. A probe only ever runs while the breaker is
-    // open, the branch above cannot lower the count there, and the only other
-    // thing that lowers it is a SUCCESS — which closes the breaker at the same
-    // moment. So a probe that did not succeed always finds the count still at
-    // or past the threshold, whatever it failed with, and a `wasProbe ||` in
-    // front of this would be a condition no test could tell apart from its
-    // absence. The guarantee it was there to state — a failed probe never
-    // throws the doors open, not even on a 4xx — is asserted directly instead.
+    // This also re-opens after a failed PROBE, whatever it failed with, and
+    // that is why the clause above excludes the probe rather than testing the
+    // error again. A probe only ever runs while the breaker is open, neither
+    // branch above can lower the count under it, and the only other thing that
+    // lowers it is a SUCCESS — which closes the breaker at the same moment. So
+    // a probe that did not succeed always finds the count still at or past the
+    // threshold, and a fresh cooldown is the right answer: the server was asked
+    // and did not answer well.
     if (_consecutiveFailures >= failuresToOpen) {
       _openUntil = DateTime.now().add(openFor);
     }

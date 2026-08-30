@@ -410,6 +410,51 @@ void main() {
       },
     );
 
+    test('an older upload answering 4xx does not extend it', () async {
+      // Admitted while the breaker was still shut, so it is not the probe --
+      // and a 4xx is not pressure by the gate's own classifier. Re-opening on
+      // it bought a whole second cooldown with evidence the line above had just
+      // refused to count, and what that costs is the learner's: their speech
+      // has no second copy and waits out every window this spends.
+      //
+      // The numbers are the point of this one. The late answer lands two thirds
+      // of the way through the cooldown, so an extension would be plainly
+      // visible at the moment the original one has expired.
+      const cooldown = Duration(milliseconds: 300);
+      final gate = CallUploadGate(
+        maxInFlight: 3,
+        failuresToOpen: 2,
+        openFor: cooldown,
+      );
+      final older = Completer<void>();
+      final inFlight = gate.run(
+        () => older.future,
+        within: const Duration(seconds: 5),
+      );
+      await pumpEventQueue();
+
+      for (var i = 0; i < 2; i++) {
+        await expectLater(
+          gate.run(() async => throw _http(503), within: _budget),
+          throwsA(isA<PangeaHttpException>()),
+        );
+      }
+      expect(gate.isOpen, isTrue);
+
+      await Future<void>.delayed(const Duration(milliseconds: 200));
+      older.completeError(_http(400));
+      await expectLater(inFlight, throwsA(isA<PangeaHttpException>()));
+
+      // Past the cooldown the two 503s bought, and well short of the second one
+      // a 400 would have bought.
+      await Future<void>.delayed(const Duration(milliseconds: 200));
+      expect(
+        gate.isOpen,
+        isFalse,
+        reason: 'the cooldown the server earned, and not one moment more',
+      );
+    });
+
     test('a probe that comes back 4xx does not count as the server being '
         'well again', () async {
       // A 4xx says nothing about load, so it does not advance the failure count
