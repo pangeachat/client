@@ -96,8 +96,16 @@ class CallPanel extends StatelessWidget {
   ///
   /// Held for three seconds (or an X) before the panel goes -- a call that
   /// vanishes the instant it ends reads as a drop, and the duration is the
-  /// one fact the learner looks for. The same segmented sum every other
-  /// surface reads, so no two of them can disagree.
+  /// one fact the learner looks for.
+  ///
+  /// The number is [CallSession.callDuration]: the same clock the timer on
+  /// screen was counting, frozen at the moment the call ended, so the figure
+  /// the learner watched reach 1:08 is the figure they are shown a second
+  /// later. Deliberately NOT the segmented talk time the card and the
+  /// analytics use -- that restarts at zero after a rejoin -- so this and the
+  /// card can differ for one call, by whatever the peer spent vanished inside
+  /// the grace window. Two numbers, each right for what it measures, and this
+  /// is the one the learner just watched.
   Widget _summary(BuildContext context, L10n l10n, ThemeData theme) {
     final peer = session.peer;
     final name =
@@ -396,15 +404,28 @@ Duration _elapsed(CallSession session) {
   // is the segmented time anyone could actually be heard, which is the right
   // answer for the card and the analytics and the wrong one for a timer that
   // is supposed to match the other person's screen.
+  //
+  // Not clamped here. This used to guard its own subtraction and nothing
+  // else, which left the line above -- the fallback taken whenever nobody has
+  // arrived yet -- unguarded, and it is the same wall clock underneath. The
+  // clamp belongs to the formatter, which is the thing that cannot express a
+  // negative, and which both this and the ended-call summary go through.
   final began = session.callStartedAt;
   if (began == null) return session.talkDuration;
-  final elapsed = DateTime.now().difference(began);
-  return elapsed.isNegative ? Duration.zero : elapsed;
+  return DateTime.now().difference(began);
 }
 
 /// `M:SS`, or `H:MM:SS` past an hour.
+///
+/// Nothing shorter than no time. The arithmetic below cannot express a
+/// negative -- Dart's modulo is never negative, so one second short of nothing
+/// formats as "0:59" and a minute short as "59:00", both perfectly plausible
+/// durations on a screen whose whole job is to state how long the call was.
+/// The clamp lives here, with the assumption, rather than at the call sites:
+/// the live timer remembered it and the ended-call summary did not, and the
+/// summary is the surface a learner actually reads the number off.
 String formatCallDuration(Duration d) {
-  final seconds = d.inSeconds;
+  final seconds = d.isNegative ? 0 : d.inSeconds;
   final s = (seconds % 60).toString().padLeft(2, '0');
   final m = (seconds ~/ 60) % 60;
   final h = seconds ~/ 3600;

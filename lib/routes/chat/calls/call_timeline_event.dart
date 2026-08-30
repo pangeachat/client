@@ -111,6 +111,21 @@ bool callCardMayTakeTheChatListLine(Event? current, Event incoming) {
   if (current == null) return true;
   if (!CallTimelineEvent.sameCall(incoming, current)) return true;
 
+  // The same question, asked of the card already holding the line. Rank
+  // arbitrates between two cards that can both be DRAWN; a card that renders
+  // as nothing has no line to defend, and letting it defend one kept the list
+  // showing a blank row for a call the conversation was drawing perfectly
+  // well.
+  //
+  // It happens on the ordinary path, not a hostile one. A local card enters
+  // the list while sending, its send then fails, and the peer's own card for
+  // the same call arrives afterwards -- later, so it loses on rank, so the
+  // errored copy kept the line forever. The conversation refuses to draw a
+  // card that never reached the homeserver and drew the peer's instead, and
+  // the two surfaces described one call differently again. The test above
+  // stops such a card TAKING the line; this stops it holding one.
+  if (!callCardCanBeSummarised(current)) return true;
+
   // Between two cards for one call, rank decides. Rank alone, with no
   // provenness test in front of it.
   //
@@ -348,12 +363,20 @@ class CallTimelineEvent extends StatelessWidget {
   }
 
   /// Whether two events are cards for the same call.
+  ///
+  /// Through the record's own reading of the field, which is what makes an
+  /// EMPTY key mean "no identity" here as well. It used to mean an identity
+  /// two cards could share: two unrelated finished calls in one room, both
+  /// carrying '', read as one call described twice, and the later of them was
+  /// hidden as a duplicate -- a real call gone from the conversation, and its
+  /// transcript with it. The card's own read of the key had always refused
+  /// the empty string; these two comparisons were the dissent.
   static bool sameCall(Event a, Event b) {
-    final key = a.content[CallRecord.callKeyField];
-    return key is String &&
+    final key = CallRecord.keyOf(a.content);
+    return key != null &&
         a.type == PangeaEventTypes.call &&
         b.type == PangeaEventTypes.call &&
-        b.content[CallRecord.callKeyField] == key;
+        CallRecord.keyOf(b.content) == key;
   }
 
   /// The rule itself, pure so it can be pinned directly: [event] is a
@@ -362,7 +385,7 @@ class CallTimelineEvent extends StatelessWidget {
   /// tie-break, so every client picks the same survivor of a double-write.
   @visibleForTesting
   static bool isDuplicateOfEarlier(Event event, Iterable<Event> all) {
-    if (event.content[CallRecord.callKeyField] is! String) return false;
+    if (CallRecord.keyOf(event.content) == null) return false;
 
     // Only a card written by one of the two people who were on the call can
     // suppress another. The key is the caller's membership event id, which
@@ -411,10 +434,7 @@ class CallTimelineEvent extends StatelessWidget {
   /// Also the card's dedup key, and the same value for both: there is one
   /// identity per call, and a transcript that hung off a different one could
   /// not be found from the card that represents it.
-  String? get _callKey {
-    final key = event.content[CallRecord.callKeyField];
-    return key is String && key.isNotEmpty ? key : null;
-  }
+  String? get _callKey => CallRecord.keyOf(event.content);
 
   /// Whether this card can lead anywhere.
   ///
@@ -548,8 +568,15 @@ class CallTimelineEvent extends StatelessWidget {
 
   /// `M:SS`, or `H:MM:SS` once a call runs past an hour. Seconds are always two
   /// digits so the colon does not jump around as a call ticks over.
+  ///
+  /// Nothing shorter than no time. The arithmetic below cannot express a
+  /// negative -- Dart's modulo is never negative, so one second short of
+  /// nothing formats as "0:59" and a minute short as "59:00", both perfectly
+  /// plausible durations -- and the assumption lives HERE, so the clamp
+  /// belongs here too rather than at whichever call sites happened to
+  /// remember it.
   static String formatDuration(Duration d) {
-    final seconds = d.inSeconds;
+    final seconds = d.isNegative ? 0 : d.inSeconds;
     final s = (seconds % 60).toString().padLeft(2, '0');
     final m = (seconds ~/ 60) % 60;
     final h = seconds ~/ 3600;

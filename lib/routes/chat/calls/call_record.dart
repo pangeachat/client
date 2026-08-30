@@ -226,10 +226,29 @@ class CallRecord {
     bool answered = true,
     bool declined = false,
     bool writeTimelineEvent = true,
+
+    /// Whether this call earned any trace at all -- somebody was rung, or
+    /// somebody arrived. A call that rang nobody and connected to nothing
+    /// leaves NOTHING, and that is a fact about the call rather than about
+    /// the record, so it is stated by the caller who watched it happen.
+    ///
+    /// Explicit because it used to be implied. The transcript below published
+    /// before anything here had established the call was worth recording, and
+    /// what kept a phantom call's half out of the room was a guard in the
+    /// session and a chain of coincidences in the call underneath it: a ring
+    /// that never went out also leaves no membership, so the key came through
+    /// null and publishing skipped itself. That is three classes agreeing by
+    /// luck about a rule none of them states. Defaulted true because every
+    /// caller that reaches here at all has already decided the call happened;
+    /// it is the refusal that has to be said out loud.
+    bool mattered = true,
     String? anchorEventId,
     String? callerId,
     String? callKey,
   }) async {
+    // Nothing at all, then: not the half below, not the credit, not the card
+    // the retry path would otherwise write.
+    if (!mattered) return;
     // Ahead of every guard below, because none of them are about the
     // transcript. Publishing lives outside the credit's control flow entirely:
     // it needs only the anchor, and it is a separate promise to the learner.
@@ -496,6 +515,34 @@ class CallRecord {
   /// writer of a card stamps. Kept as a constant so no path can misspell it.
   static const callKeyField = 'call_key';
 
+  /// A key a call can actually be identified by, or null.
+  ///
+  /// EMPTY IS NOT A KEY. Two cards both carrying '' are not two sightings of
+  /// one call; they are two calls whose identity was never learned. Reading
+  /// the empty string as a shared identity made the later of two such calls
+  /// count as a duplicate of the earlier one and disappear from the
+  /// conversation, taking its transcript's only tap target with it.
+  ///
+  /// The transcript half has always drawn this line -- CallTranscriptContent
+  /// refuses an empty key outright -- and the card's own read of the field
+  /// drew it too. The two places that decide whether two cards are the SAME
+  /// call did not, so one surface treated a value as an identity while
+  /// another treated it as nothing. This is that one line, drawn once, for
+  /// everything that reads or writes the field.
+  static String? usableKey(String? key) =>
+      key != null && key.isNotEmpty ? key : null;
+
+  /// The usable call key a card's content carries, or null.
+  ///
+  /// Defensive about the type as well as the emptiness: this is somebody
+  /// else's word, written by other clients and older versions of this one, and
+  /// a number where a string belongs must read as "no key" rather than take
+  /// the timeline row down.
+  static String? keyOf(Map<String, Object?> content) {
+    final key = content[callKeyField];
+    return key is String ? usableKey(key) : null;
+  }
+
   Future<String?> _write({
     required Duration duration,
     required bool video,
@@ -504,6 +551,18 @@ class CallRecord {
     required String? callerId,
     required String? callKey,
   }) async {
+    // A card cannot state a negative length. What this is measured from is the
+    // wall clock, and a step backwards mid-call -- an NTP correction, a
+    // learner changing the time on their phone -- makes the subtraction
+    // negative. The stamp below cannot express that: it renders one second
+    // short of nothing as "0:59", which is a plausible duration and
+    // indistinguishable afterwards from a real one. Clamped once, here, so the
+    // readable fallback and the number cannot disagree either.
+    final length = duration.isNegative ? Duration.zero : duration;
+    // See [usableKey]: an empty key identifies nothing, so it is left out
+    // altogether rather than stamped as an identity every reader would then
+    // have to know to disbelieve.
+    final key = usableKey(callKey);
     try {
       return await sendEvent(<String, dynamic>{
         'msgtype': PangeaEventTypes.call,
@@ -511,12 +570,12 @@ class CallRecord {
         // not understand the msgtype. Without it a call reads as an empty
         // message everywhere but here.
         'body': _fallbackText(
-          duration: duration,
+          duration: length,
           video: video,
           answered: answered,
           declined: declined,
         ),
-        'duration_ms': duration.inMilliseconds,
+        'duration_ms': length.inMilliseconds,
         'video': video,
         // A call nobody answered still belongs in the conversation. Every
         // calling product shows a missed call, and a learner who was away
@@ -542,7 +601,7 @@ class CallRecord {
         // apart from two calls -- the renderer draws only the first card per
         // key. Absent on calls whose identity was never learned; those render
         // unconditionally, as they always did.
-        callKeyField: ?callKey,
+        callKeyField: ?key,
       }, _txid);
     } catch (e, s) {
       Logs().e('Could not write the call to the room', e, s);

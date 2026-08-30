@@ -1123,6 +1123,112 @@ void main() {
             'would state an answer that was never asked for',
       );
     });
+
+    // The card is only half of what a call leaves behind. Nothing checked the
+    // other half, and the session's own refusal to record a phantom call used
+    // to be a return statement here rather than something the record was
+    // told -- so the record went on publishing and crediting on its own
+    // whenever anything called it directly, and what kept the room clean was
+    // that a ring which never went out leaves no membership to key a half to.
+    // Read through the ROOM, which sees every kind of event, rather than
+    // through a spy on one method.
+    test('and leaves nothing else in the room either', () async {
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!phantom:server', client: client);
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _NeverEchoesCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: _FakeMedia(),
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+
+      session.endCall();
+      await pumpEventQueue();
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+      await pumpEventQueue();
+
+      expect(
+        room.sent,
+        isEmpty,
+        reason: 'a call nobody was told about writes nothing anywhere',
+      );
+    });
+
+    // The same broken ring on a call somebody HAD already been rung for. The
+    // peer rings us and their app dies before it can write the card; the
+    // membership they left behind still reads as calling, so our call back
+    // looks like glare and the tie-break hands the writing to the dead
+    // device. Our own ring never goes out either. Every ingredient of the
+    // survivor recovery is present -- and asking only whether OUR ring went
+    // out concluded the call had rung nobody, so the card was never written
+    // and the survivor check was never even scheduled. Their ring is a ring.
+    test('their ring still counts, even when ours never went out', () async {
+      final client = await _bareClient();
+      client.accountData['m.direct'] = matrix.BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@friend:fakeServer.notExisting': ['!r:server'],
+        },
+      );
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final calls = _NeverEchoesCalls(client);
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        // We placed this one, so there is no ring of theirs to answer -- only
+        // the one that arrives mid-placement.
+        notificationEventId: null,
+        callerMembershipEventId: null,
+        mediaOverride: _FakeMedia(),
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      await calls.peerAlsoCalls(room);
+      await pumpEventQueue();
+      expect(
+        session.hadPeer,
+        isFalse,
+        reason: 'nobody ever joined; their device was already gone',
+      );
+
+      session.timelineEventsOverride = () async => const [];
+      session.endCall();
+      await pumpEventQueue();
+      await session.survivorCheckNowForTest();
+
+      expect(
+        room.cards,
+        hasLength(1),
+        reason: 'their ring reached this device, and it left no trace',
+      );
+      expect(
+        room.cards.single['answered'],
+        isFalse,
+        reason:
+            'nobody picked it up, and the survivor may not pretend they '
+            'did',
+      );
+      expect(
+        room.cards.single[CallRecord.callKeyField],
+        r'$their-membership',
+        reason: 'and it is stamped with the call BOTH sides would key on',
+      );
+    });
   });
 
   group('a call nobody can hear', () {

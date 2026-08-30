@@ -562,8 +562,21 @@ class CallSession extends ChangeNotifier {
   /// didn't. Every other placer (answering, rejoining, the sub-millisecond
   /// glare that never places) is untouched: none of them ring, so none of
   /// them relied on this in the first place.
+  ///
+  /// A ring is a ring whichever side sent it, which is what the guard above
+  /// first missed. [ActiveCall.peerAlsoPlaced] is set from THEIR ring
+  /// arriving here -- a real ring, from a device still holding a call -- so a
+  /// call back that looks like glare is a call somebody was already rung for,
+  /// and the guard asking only about OUR ring silenced it. That is the
+  /// survivor's shape exactly: the peer rings, dies before writing its card,
+  /// we call back, the tie-break hands the writing to the dead device, and
+  /// our own ring never goes out. Everything downstream of here was ready to
+  /// recover that call -- the survivor check runs on the same
+  /// [ActiveCall.peerAlsoPlaced] -- and this getter never let it start, so
+  /// the original ring left nothing in the conversation at all.
   bool get _mattered =>
-      (_reachedCall && (!call.placedCall || call.rangOut)) ||
+      (_reachedCall &&
+          (!call.placedCall || call.rangOut || call.peerAlsoPlaced)) ||
       call.hadPeer ||
       call.rangOut ||
       notificationEventId != null;
@@ -634,7 +647,10 @@ class CallSession extends ChangeNotifier {
   }
 
   void _scheduleSurvivorCheck(({String? key, String? caller}) identity) {
-    final key = identity.key;
+    // Through the record's own rule: an empty key identifies nothing, and a
+    // survivor writing under one would post a card that every reader either
+    // ignores or, worse, collapses against an unrelated call's.
+    final key = CallRecord.usableKey(identity.key);
     // Also when nobody ever arrived, IF we stood aside because we believed
     // they were calling too. A caller whose app dies between ringing and
     // being answered leaves a membership that still reads as "calling", so a
@@ -700,7 +716,7 @@ class CallSession extends ChangeNotifier {
     final already = events.any(
       (e) =>
           e.type == PangeaEventTypes.call &&
-          e.content[CallRecord.callKeyField] == key &&
+          CallRecord.keyOf(e.content) == key &&
           !e.status.isError &&
           // PROVEN, for the same reason as suppression: this decides whether
           // to SKIP writing the real card, so a card that cannot vouch for
@@ -740,11 +756,6 @@ class CallSession extends ChangeNotifier {
             try {
               await call.settled;
             } catch (_) {}
-            // Written when the call either got established, actually rang the
-            // other side, or was itself an answer. Placing alone is not enough:
-            // a call whose announce failed rang nobody, and a card for it would
-            // record a call that never began.
-            if (!_mattered) return;
             // The card is normally already in the timeline by now (written the
             // moment the call ended); this call credits the transcripts against
             // it, and writes the card itself only if that earlier attempt had
@@ -754,6 +765,20 @@ class CallSession extends ChangeNotifier {
             return _record.finish(
               duration: call.talkDuration,
               video: _usedVideo,
+              // Whether the call earned any trace: it got established, it
+              // actually rang the other side, or it was itself an answer.
+              // Placing alone is not enough -- a call whose announce failed
+              // rang nobody, and anything left behind for it would record a
+              // call that never began.
+              //
+              // Handed over rather than acted on here. Returning early instead
+              // left the record free to publish this device's transcript half
+              // for a call it was about to decide had never happened, and
+              // nothing in the record said otherwise; the half stayed out of
+              // the room only because such a call also has no key to publish
+              // under. One decision, stated once, enforced where the writing
+              // is.
+              mattered: _mattered,
               // Our own failure, not a statement about the speaker.
               captureRefused: microphoneRefused,
               answered: call.hadPeer,

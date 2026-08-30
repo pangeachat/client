@@ -178,6 +178,35 @@ void main() {
       expect(published, hasLength(1));
     });
 
+    test('a call that mattered to nobody publishes nothing at all', () async {
+      // A call that rang nobody and connected to nothing leaves NO trace, and
+      // this device's transcript half is a trace. The publish used to run
+      // ahead of everything -- deliberately, because it needs only the anchor
+      // -- which put it ahead of any question about whether the call had
+      // earned a record in the first place. Nothing here said otherwise; what
+      // kept the half out of the room was that such a call also has no
+      // membership, so the key arrived null and publishing skipped itself.
+      // Three classes agreeing by luck about a rule none of them stated.
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withPublisher: true,
+      );
+
+      await r.finish(
+        duration: kDur,
+        video: false,
+        // Everything a real teardown would carry: the words are there and the
+        // call has an identity to publish under. Only the fact that the call
+        // was worth recording is missing.
+        callKey: '\$anchor',
+        mattered: false,
+      );
+
+      expect(publishAttempts, isEmpty, reason: 'no half for a phantom call');
+      expect(written, isEmpty, reason: 'and no card either');
+      expect(recorded, isEmpty, reason: 'and nothing credited');
+    });
+
     test('publishes even when the card could not be written', () async {
       // The transcript needs only the anchor. Coupling it to the card's event
       // id meant a failed write cost the words as well, though nothing about
@@ -874,6 +903,44 @@ void main() {
         expect(written.single.containsKey(CallRecord.callKeyField), isFalse);
       },
     );
+
+    test('an EMPTY identity is written keyless too', () async {
+      // The empty string is not an identity, and stamping it as one hands
+      // every reader a value that compares equal to the next call's. The
+      // readers now agree that empty means nothing; the writer must not put
+      // one in the room for them to have to disbelieve.
+      final r = record(await sinkWith(() => spokenWord('hola')));
+      await r.writeCard(
+        duration: const Duration(seconds: 5),
+        video: false,
+        answered: true,
+        declined: false,
+        writeTimelineEvent: true,
+        callKey: '',
+      );
+      expect(written.single.containsKey(CallRecord.callKeyField), isFalse);
+    });
+
+    test('a card cannot state a length shorter than no time', () async {
+      // The wall clock can step backwards mid-call -- an NTP correction, a
+      // learner changing the time on their phone -- and the subtraction that
+      // produces this then goes negative. The readable fallback cannot
+      // express that: Dart's modulo is never negative, so one second short of
+      // nothing reads as "0:59". A plausible duration, in the room, on a
+      // field other clients render, indistinguishable afterwards from a real
+      // one -- and duration_ms went out negative beside it, where this app's
+      // own reader rejects it, so the two halves of one card disagreed.
+      final r = record(await sinkWith(() => spokenWord('hola')));
+      await r.writeCard(
+        duration: const Duration(seconds: -1),
+        video: false,
+        answered: true,
+        declined: false,
+        writeTimelineEvent: true,
+      );
+      expect(written.single['duration_ms'], 0);
+      expect(written.single['body'], 'Voice call (0:00)');
+    });
 
     test(
       'a transient publish failure is RETRIED, not merely permitted',

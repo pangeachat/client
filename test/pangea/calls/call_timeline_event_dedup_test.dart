@@ -91,6 +91,36 @@ void main() {
     expect(CallTimelineEvent.isDuplicateOfEarlier(legacy2, all), isFalse);
   });
 
+  test('an empty key is not an identity two calls can share', () {
+    // A card whose identity was never learned leaves the field out entirely,
+    // but an older or modified client can stamp it empty -- and the empty
+    // string compared equal to itself. Two unrelated finished calls in one
+    // room then read as one call described twice, and the later of them was
+    // hidden as a duplicate: a real call gone from the conversation, along
+    // with the tap that opens its transcript. The card's own read of the key
+    // had always refused the empty string; the comparison that decides
+    // whether two cards are the SAME call did not.
+    final first = card(r'$one', key: '', ts: 1000);
+    final second = card(r'$two', key: '', ts: 2000);
+    final all = [first, second];
+
+    expect(
+      CallTimelineEvent.sameCall(second, first),
+      isFalse,
+      reason: 'nothing is identified, so nothing is shared',
+    );
+    expect(
+      CallTimelineEvent.isDuplicateOfEarlier(second, all),
+      isFalse,
+      reason: 'the second call is a second call, and it has to draw',
+    );
+    expect(
+      callCardMayTakeTheChatListLine(first, second),
+      isTrue,
+      reason: 'and the chat list has to reach the same verdict',
+    );
+  });
+
   test('a card that never sent cannot suppress the one that did', () {
     // The failed optimistic echo is already hidden by its own rule; letting
     // it ALSO count as "the first card" would hide the real one and the call
@@ -379,6 +409,39 @@ void main() {
       failed.status = EventStatus.error;
 
       expect(callCardMayTakeTheChatListLine(real, failed), isFalse);
+    });
+
+    test('a card that renders as nothing cannot HOLD the line either', () {
+      // The other half of the rule above, and the one the ordinary path
+      // actually hits. Our own card enters the line while sending, its send
+      // then fails, and the peer's card for the same call arrives afterwards
+      // -- later, so it loses on rank, so the errored copy kept the line for
+      // good. The list then showed a blank row (an errored card summarises to
+      // nothing) while the conversation drew the peer's card perfectly well:
+      // the two surfaces disagreeing about one call, which is the only reason
+      // this rule exists. Rank is for two cards that can both be drawn.
+      asDirectChat();
+      final failed = card(
+        r'$mine',
+        key: 'k',
+        ts: 1000,
+        sender: '@test:fakeServer.notExisting',
+      );
+      failed.status = EventStatus.error;
+      final theirs = card(r'$theirs', key: 'k', ts: 2000);
+
+      expect(
+        callCardMayTakeTheChatListLine(failed, theirs),
+        isTrue,
+        reason:
+            'a card with nothing to say holds no line against one that '
+            'has',
+      );
+      expect(
+        CallTimelineEvent.isDuplicateOfEarlier(theirs, [failed, theirs]),
+        isFalse,
+        reason: 'and the conversation draws it, from the other direction',
+      );
     });
 
     test('the SAME event advancing its own status is always let through', () {
