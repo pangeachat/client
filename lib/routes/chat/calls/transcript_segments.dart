@@ -451,8 +451,9 @@ List<TranscriptSegment> buildSegments(
         ? null
         : _speechBeganAt(timings, chunk.durationMs);
 
-    // A word whose start the provider omitted cannot open a gap, so it joins
-    // whatever is being built rather than being dropped or guessed at.
+    // A word whose start the chunk cannot account for -- omitted, or a moment
+    // outside the audio -- cannot open a gap, so it joins whatever is being
+    // built rather than being dropped or guessed at.
     final words = <String>[];
 
     // When speech last stopped: the LATEST end among the DISPLAYED words seen
@@ -480,7 +481,21 @@ List<TranscriptSegment> buildSegments(
 
     for (var i = 0; i < timings.length; i++) {
       final timing = timings[i];
-      final start = timing.startTimeMs;
+      // BOTH sides of the subtraction below have to be moments this chunk can
+      // account for, and only the end was. A start outside the audio is not a
+      // moment speech happened, so it cannot measure a gap from one that was:
+      // `yes` at 0-100 and `no` at 500000 in a chunk one second long opened a
+      // gap of 499900 and cut one utterance into two turns, on nothing but a
+      // timestamp the chunk cannot support.
+      //
+      // `openedAt` below reads this same bounded value and is UNCHANGED by it,
+      // rather than being swept along for symmetry: it is only ever assigned
+      // under `placeable`, and a well-formed sequence has already had every one
+      // of its starts through this same rule, so the bounded value and the raw
+      // one are equal wherever `openedAt` can be reached at all. Reading the
+      // bounded one leaves nothing here that could take an out-of-chunk moment
+      // if that guarantee were ever loosened.
+      final start = momentWithinChunk(timing.startTimeMs, chunk.durationMs);
       final gapOpens =
           start != null &&
           previousEnd != null &&
@@ -695,6 +710,16 @@ bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
     // The ORDERING clause stays here rather than moving into the shared rule:
     // "this word ends after it starts" is a different rule from "this moment is
     // one the chunk can account for", and only the second is shared.
+    //
+    // Two of the four bounds this asks for cannot decide anything HERE, and
+    // both are kept anyway. A start past the chunk drags its end past it too
+    // (`end >= start`), and an end before the chunk sits before a start the
+    // line already requires to be non-negative -- so the ordering clause
+    // reaches each of those first. They are kept because they are not this
+    // function's clauses to drop: they belong to the shared rule, and every
+    // previous hole in this file came from a site deciding which parts of a
+    // rule it needed. A site that asks the whole question cannot be the site
+    // that misses half of it.
     if (momentWithinChunk(start, durationMs) == null ||
         momentWithinChunk(end, durationMs) == null) {
       return false;

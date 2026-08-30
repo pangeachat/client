@@ -835,6 +835,51 @@ void main() {
       );
     });
 
+    test('a start the chunk cannot account for cannot open a gap', () {
+      // The same rule as the end beside it, on the operand a sweep of this
+      // loop missed. A start past the chunk's own audio is not a moment speech
+      // happened, so it cannot be one side of a measured gap -- read raw it
+      // makes the gap 500000 - 100 and cuts one utterance into two turns, on
+      // nothing but a timestamp the chunk cannot support.
+      final segments = buildSegments([
+        _chunk(
+          'yes no',
+          timings: [('yes', 0, 100), ('no', 500000, 500100)],
+          durationMs: 1000,
+        ),
+      ]);
+
+      expect(segments.map((s) => s.text), ['yes no']);
+    });
+
+    test('an end before the chunk began cannot start the next gap', () {
+      // The lower half of that rule, at the same site. Read raw, `yes` ends at
+      // -100 and `no` at 800 opens a gap of exactly 900 measured from a moment
+      // before the audio existed: two turns out of one utterance again.
+      final segments = buildSegments([
+        _chunk(
+          'yes no',
+          timings: [('yes', 0, -100), ('no', 800, 900)],
+          durationMs: 1000,
+        ),
+      ]);
+
+      expect(segments.map((s) => s.text), ['yes no']);
+    });
+
+    test('a chunk timed entirely outside itself is placed at its start', () {
+      // Nothing here is evidence of when speech happened, so there is no
+      // estimate to be made and the chunk's own start is the honest answer.
+      // Adopting 5000 would place the turn five seconds past audio that ran for
+      // one, sorting it behind turns that really did follow it.
+      final segments = buildSegments([
+        _chunk('hola', timings: [('hola', 5000, 6000)], durationMs: 1000),
+      ]);
+
+      expect(segments.single.atMs, _chunkStart);
+      expect(segments.single.positionIsApproximate, isTrue);
+    });
+
     test('a bogus end is not evidence, and the ends after it read forward', () {
       // Both halves of "when speech last stopped", in the one chunk where they
       // meet: a chunk that reaches the cut carrying an end its own audio cannot
@@ -960,6 +1005,14 @@ void main() {
       'timings that are not a well-formed sequence': _chunk(
         'hola que',
         timings: [('hola', 0, 300), ('que', null, 600)],
+        durationMs: durationMs,
+      ),
+      // An end one millisecond past the audio it describes. Distinct from the
+      // entry above: that one is REFUSED for a missing start, so it never asks
+      // whether the moments it does have are ones the chunk can hold.
+      'an end past the chunk it came from': _chunk(
+        'hola que',
+        timings: [('hola', 300, 400), ('que', 500, durationMs + 1)],
         durationMs: durationMs,
       ),
       'timings that are all blank': _chunk(
