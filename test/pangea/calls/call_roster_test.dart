@@ -662,6 +662,130 @@ void main() {
       });
     });
 
+    test('a landed value is not visible while a newer one is flying', () async {
+      // The last COMPLETED write is not what a sibling reads. Here "no" landed,
+      // "recording:1" is on the wire behind it, and a caller asking to see "no"
+      // again would be told it is already true -- then stop its recorder just
+      // as the older write arrived at the SFU to say the opposite. That is the
+      // stale-positive window the wait exists to close, reopened by the fast
+      // path.
+      await roster.announceCapturing(null);
+      final held = Completer<void>();
+      roster.holdPublish = held;
+      final started = roster.announceCapturing('1');
+      await pumpEventQueue();
+      roster.holdPublish = null;
+
+      var settled = false;
+      final retraction = roster
+          .announceCapturing(null)
+          .then((_) => settled = true);
+      await pumpEventQueue();
+
+      expect(
+        settled,
+        isFalse,
+        reason: 'recording:1 is on the wire and lands after this',
+      );
+
+      held.complete();
+      await started;
+      await retraction;
+
+      expect(settled, isTrue);
+      expect(roster.published.last, {
+        CallRoster.capturingAttribute: CaptureReport.published(null),
+      });
+    });
+
+    test('a waiter is not released by the opposite value landing', () async {
+      // A waiter is for a VALUE, not for an attribute. This one asked to see
+      // "not recording"; what lands is a later "recording:9" that superseded it
+      // before it ever went out. Releasing on that would resume a stop on the
+      // strength of a write saying the exact opposite of what it waited for.
+      final first = Completer<void>();
+      roster.holdPublish = first;
+      final capability = roster.announceCanCapture(false);
+      await pumpEventQueue();
+
+      var settled = false;
+      final retraction = roster
+          .announceCapturing(null)
+          .then((_) => settled = true);
+      final resumed = roster.announceCapturing('9');
+
+      final second = Completer<void>();
+      roster.holdPublish = second;
+      first.complete();
+      await pumpEventQueue();
+
+      // Something else outstanding, so the loop is still running when
+      // recording:9 lands and the release cannot hide behind the loop exiting.
+      final third = Completer<void>();
+      roster.holdPublish = third;
+      final again = roster.announceCanCapture(true);
+      second.complete();
+      await pumpEventQueue();
+
+      expect(
+        roster.published.last,
+        isNot(contains(CallRoster.capturingAttribute)),
+        reason: 'the premise: recording:9 has landed and the loop moved on',
+      );
+      expect(
+        settled,
+        isFalse,
+        reason: 'it is still waiting to see "not recording", not "recording"',
+      );
+
+      third.complete();
+      await capability;
+      await resumed;
+      await again;
+      await retraction;
+    });
+
+    test('a waiter is released as soon as its own value is visible', () async {
+      // Not when the whole queue drains. A caller here is holding a recorder's
+      // stop open, and making it wait out writes about something else would
+      // keep a microphone running for round trips that have nothing to do with
+      // it.
+      final first = Completer<void>();
+      roster.holdPublish = first;
+      final capability = roster.announceCanCapture(false);
+      await pumpEventQueue();
+
+      var settled = false;
+      final retraction = roster
+          .announceCapturing(null)
+          .then((_) => settled = true);
+
+      final second = Completer<void>();
+      roster.holdPublish = second;
+      first.complete();
+      await pumpEventQueue();
+
+      // Queued behind it, so the announcer is still busy when the retraction
+      // itself lands.
+      final third = Completer<void>();
+      roster.holdPublish = third;
+      final again = roster.announceCanCapture(true);
+      second.complete();
+      await pumpEventQueue();
+
+      expect(
+        roster.published,
+        hasLength(3),
+        reason: 'the premise: a third write is on the wire',
+      );
+      expect(settled, isTrue, reason: 'its own value is visible already');
+
+      third.complete();
+      await capability;
+      await again;
+      await retraction;
+    });
+
     test('and is released rather than held when the write does not go', () async {
       // A recorder holding its microphone open on a signal channel that has
       // stopped answering would be a worse bug than the one the wait exists to
