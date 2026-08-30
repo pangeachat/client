@@ -128,6 +128,17 @@ class _NeverEchoesCalls extends _FakeCalls {
   String? membershipEventIdIn(matrix.Room room) => null;
 }
 
+/// A call that cannot be got into at all: the SFU refuses the join, so the
+/// session fails before it ever reaches the call and learns nothing about who
+/// was or was not there.
+class _UnjoinableCalls extends _FakeCalls {
+  _UnjoinableCalls(super.client);
+
+  @override
+  Future<CallToken> join(matrix.Room room) async =>
+      throw StateError('the SFU refused this join');
+}
+
 class _FakeRoster extends CallRoster {
   _FakeRoster({required super.room, required super.myUserId});
 
@@ -883,13 +894,21 @@ void main() {
       );
     });
 
-    test('a call that never had a peer schedules no survivor', () async {
-      final client = await _bareClient();
+    /// A plain CALLEE: rung, holding the caller's membership as the call's
+    /// key, with no glare anywhere near it.
+    Future<(CallSession, _RecordingRoom)> rungCallee(CallService calls) async {
+      final client = calls.client;
+      client.accountData['m.direct'] = matrix.BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@friend:fakeServer.notExisting': ['!r:server'],
+        },
+      );
       final room = _RecordingRoom(id: '!r:server', client: client);
       final session = CallSession.start(
         room: room,
         video: false,
-        callService: _FakeCalls(client),
+        callService: calls,
         transcribe: (request) async =>
             SpeechToTextResponseModel(results: const []),
         userL1: 'en',
@@ -903,13 +922,68 @@ void main() {
       );
       await pumpEventQueue();
       session.timelineEventsOverride = () async => const [];
+      return (session, room);
+    }
+
+    test('a caller who died leaves the CALLEE to write the card', () async {
+      // No glare, nothing exotic: the caller rings, its app dies before the
+      // hangup writes the card, and the callee answers into an empty call.
+      // The callee is the only device left that knows this call happened --
+      // it holds the ring and the key that came with it -- and it was
+      // refused, because the entitlement to stand in was read off "did
+      // somebody arrive" rather than "was somebody rung". A call that rang
+      // this very device left the conversation with nothing.
+      final client = await _bareClient();
+      final (session, room) = await rungCallee(_FakeCalls(client));
+      expect(
+        session.hadPeer,
+        isFalse,
+        reason: 'the caller was already gone when we got in',
+      );
+
       session.endCall();
       await pumpEventQueue();
+      expect(room.cards, isEmpty, reason: 'the callee never fast-writes');
 
       await session.survivorCheckNowForTest();
 
-      // A survivor writing a missed or declined outcome would be fabricating
-      // one it cannot know; only the caller decides those.
+      expect(room.cards, hasLength(1), reason: 'and the ring left no trace');
+      final card = room.cards.single;
+      expect(
+        card['answered'],
+        isFalse,
+        reason: 'nobody was there, and this side may only say what it saw',
+      );
+      expect(card['declined'], isFalse, reason: 'nor invent a refusal');
+      expect(card[CallRecord.callKeyField], r'$caller-membership');
+      expect(
+        card['caller'],
+        '@friend:fakeServer.notExisting',
+        reason: 'the card names who called, not who wrote it',
+      );
+    });
+
+    test('a call that never got in writes nothing; it never looked', () async {
+      // The other half of the same rule, and the reason a ring alone is not
+      // enough. This session failed before it reached the call, so it knows
+      // only that a ring arrived -- nothing whatever about the caller, who
+      // may be alive and still ringing. "Nobody answered" from here is a
+      // guess, and one that would land EARLIER than the truthful card the
+      // caller writes if the learner simply taps answer again and talks.
+      final client = await _bareClient();
+      final (session, room) = await rungCallee(_UnjoinableCalls(client));
+      expect(
+        session.isFailed,
+        isTrue,
+        reason:
+            'the call has to have actually failed for this to mean '
+            'anything',
+      );
+
+      session.dismissFailed();
+      await pumpEventQueue();
+      await session.survivorCheckNowForTest();
+
       expect(room.cards, isEmpty);
     });
   });
@@ -1075,6 +1149,52 @@ void main() {
       expect(spy.cards.length, 1, reason: 'one call, one card');
       expect(spy.cards.single.answered, isTrue);
       expect(spy.cards.single.declined, isFalse);
+    });
+
+    test('a call that FAILED is recorded where every other one is', () async {
+      // Failure used to leave by a different door. `dismissFailed` recorded
+      // the call, which reaches the record but not the card path -- and the
+      // card path is where the immediate write and the survivor check both
+      // live. So a failed call could never recover a dead writer's card, and
+      // one whose learner closed the tab rather than pressing the X was
+      // recorded only if something else happened to dispose the session.
+      // Which of the two owns "what does this call leave" had drifted; the
+      // answer is whichever sees the call's fate, and only one of them does.
+      final client = await _bareClient();
+      final spy = _SpyRecord();
+      final session = CallSession.start(
+        room: matrix.Room(id: '!card:server', client: client),
+        video: false,
+        callService: _UnjoinableCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        // Rung, so this is a call that mattered whatever became of it.
+        notificationEventId: r'$ring',
+        callerMembershipEventId: r'$caller-membership',
+        mediaOverride: _FakeMedia(),
+        captureOverride: CallCaptureService(sink: _NullSink()),
+        recordOverride: spy,
+      );
+      await pumpEventQueue();
+
+      expect(session.isFailed, isTrue, reason: 'the call did fail');
+      // Deliberately BEFORE any dismissal: the record hears about the call
+      // when it ends, not when the learner gets round to closing it.
+      expect(
+        spy.cards,
+        hasLength(1),
+        reason: 'a failed call goes through the same door as an ended one',
+      );
+      expect(
+        spy.cards.single.write,
+        isFalse,
+        reason: 'a callee still writes no card of its own',
+      );
+      expect(spy.cards.single.answered, isFalse);
     });
   });
 

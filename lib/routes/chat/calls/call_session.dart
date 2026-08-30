@@ -517,10 +517,22 @@ class CallSession extends ChangeNotifier {
       _busyToned = true;
       _tones.busy();
     }
-    if (outcome == CallOutcome.ended || outcome == CallOutcome.declined) {
+    if (outcome != null) {
       // The card FIRST and immediately: everything it states is known now, and
       // it must not wait for teardown and transcription behind it.
+      //
+      // EVERY outcome, a FAILURE included, which is what this used to miss.
+      // A failed call was recorded from [dismissFailed] instead, and that
+      // reaches the record but not this -- and this is where the card's fast
+      // path AND the survivor check both hang. So a call that rang somebody
+      // and then failed on our end could never recover a dead writer's card,
+      // and a learner who closed the tab rather than pressing the X left
+      // nothing behind at all. The two paths had drifted apart on which of
+      // them owns "what does this call leave", and the answer is: whichever
+      // one sees the call's fate, which is only ever this one.
       _writeCard();
+    }
+    if (outcome == CallOutcome.ended || outcome == CallOutcome.declined) {
       _finishRecording();
       // An ended conversation earns a moment on screen; everything else --
       // declined, missed, torn down unanswered -- goes at once, as it always
@@ -620,11 +632,11 @@ class CallSession extends ChangeNotifier {
   /// the card (a crashed browser, a killed tab), left no trace at all in the
   /// conversation. The surviving non-writer waits out the settle, re-reads
   /// the timeline, and writes a card carrying only what THIS side observed --
-  /// but only for calls it saw ANSWERED (a survivor can never fabricate a
-  /// missed/declined outcome), only with a ring- or glare-provenanced key (a
-  /// rejoined session's anchor may be its own membership, the wrong key), and
-  /// stamped with the same shared key so the renderer collapses the rare race
-  /// where both raced to write.
+  /// but only when it is entitled to stand in at all (see
+  /// [_mayStandInForTheWriter]), only with a ring- or glare-provenanced key
+  /// (a rejoined session's anchor may be its own membership, the wrong key),
+  /// and stamped with the same shared key so the renderer collapses the rare
+  /// race where both raced to write.
   ///
   /// ACCEPTED GAP, stated not hidden: if BOTH sides reload and rejoin, both
   /// sessions are provenance-blind and neither writes -- that call leaves no
@@ -646,21 +658,45 @@ class CallSession extends ChangeNotifier {
     await _survivorCheck(pending.key, pending.caller);
   }
 
+  /// Whether this device may stand in for a writer that never wrote.
+  ///
+  /// Its own question, and NOT the negation of [_writesTheCall]. That one is
+  /// about placing a call; this one is about a call somebody else was on and
+  /// nobody recorded, and reading the second off the first is what kept the
+  /// recovery from doing its job for an ordinary callee.
+  ///
+  /// Somebody else was on this call if they ARRIVED, or if a ring of theirs
+  /// reached this device -- the one we answered, or the one that made a call
+  /// back look like glare. One fact by three routes, and the gate knew only
+  /// two of them: a plain CALLEE, rung by a caller whose app then died, was
+  /// refused. That call rang somebody -- us -- and it left the conversation
+  /// with nothing, which is the whole failure this path exists to prevent.
+  ///
+  /// A ring on its own is not enough, and that is the true thing the old gate
+  /// was groping at by demanding somebody had arrived. A ring says the writer
+  /// EXISTED, not that it has finished. So a device standing in on the
+  /// strength of a ring must also have GONE AND LOOKED: reached the call and
+  /// found nobody there. That is an observation rather than an inference --
+  /// a caller is in the SFU before it rings, so an empty call is a caller who
+  /// has gone -- while a session that failed before it ever got in knows only
+  /// that a ring arrived. A card from there would be a guess, and one landing
+  /// EARLIER than the truthful card a living caller is still about to write.
+  ///
+  /// A fabrication is impossible in either direction: the survivor's card
+  /// carries [ActiveCall.hadPeer] and [ActiveCall.wasDeclined], this side's
+  /// own observations, so it can neither invent a conversation nor invent a
+  /// refusal.
+  bool get _mayStandInForTheWriter =>
+      call.hadPeer ||
+      ((call.peerAlsoPlaced || notificationEventId != null) && _reachedCall);
+
   void _scheduleSurvivorCheck(({String? key, String? caller}) identity) {
     // Through the record's own rule: an empty key identifies nothing, and a
     // survivor writing under one would post a card that every reader either
     // ignores or, worse, collapses against an unrelated call's.
     final key = CallRecord.usableKey(identity.key);
-    // Also when nobody ever arrived, IF we stood aside because we believed
-    // they were calling too. A caller whose app dies between ringing and
-    // being answered leaves a membership that still reads as "calling", so a
-    // call back can look like glare -- and if the tie-break then hands the
-    // writing to a device that is dead, the attempt vanishes from the
-    // conversation entirely. This is the same mechanism as a writer dying
-    // mid-call, and it covers the same failure.
-    final couldHaveBeenTheirs = call.hadPeer || call.peerAlsoPlaced;
     if (_writesTheCall ||
-        !couldHaveBeenTheirs ||
+        !_mayStandInForTheWriter ||
         call.rejoinedCall ||
         key == null) {
       return;

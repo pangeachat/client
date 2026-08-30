@@ -40,12 +40,13 @@ void main() {
     int ts = 1000,
     String sender = '@a:server',
     EventStatus status = EventStatus.synced,
+    bool answered = true,
   }) => Event(
     type: PangeaEventTypes.call,
     content: {
       'msgtype': PangeaEventTypes.call,
-      'body': 'Voice call',
-      'answered': true,
+      'body': answered ? 'Voice call' : 'Missed call',
+      'answered': answered,
       CallRecord.callKeyField: ?key,
     },
     senderId: sender,
@@ -119,6 +120,67 @@ void main() {
       isTrue,
       reason: 'and the chat list has to reach the same verdict',
     );
+  });
+
+  test('a card that SAW a conversation outranks one that saw none', () {
+    // Two honest devices can disagree about one call in exactly one
+    // direction. A conversation is something a device SAW -- nobody writes
+    // `answered` without the other person having been in the call with them
+    // -- while its absence is something a device INFERRED from not finding
+    // them. So the card that saw one is the better informed, whenever it
+    // arrives.
+    //
+    // On time alone the guess won whenever it was written first, which is the
+    // ordinary shape: a survivor concludes after its settle that nobody was
+    // there, and the caller's card for the call they went on to have lands
+    // minutes later and is hidden behind it, on both surfaces, for good.
+    client.accountData['m.direct'] = BasicEvent(
+      type: 'm.direct',
+      content: {
+        '@a:server': ['!r:server'],
+      },
+    );
+    final guess = card(r'$guess', key: 'k', ts: 1000, answered: false);
+    final seen = card(r'$seen', key: 'k', ts: 2000);
+    final all = [guess, seen];
+
+    expect(CallTimelineEvent.outranks(seen, guess), isTrue);
+    expect(
+      CallTimelineEvent.isDuplicateOfEarlier(seen, all),
+      isFalse,
+      reason: 'the call they actually had is the one the conversation draws',
+    );
+    expect(
+      CallTimelineEvent.isDuplicateOfEarlier(guess, all),
+      isTrue,
+      reason: 'and exactly one of the two still draws',
+    );
+    expect(
+      callCardMayTakeTheChatListLine(guess, seen),
+      isTrue,
+      reason: 'with the chat list reaching the same verdict',
+    );
+  });
+
+  test('two cards that agree are still settled by time', () {
+    // The refinement above must not reach any further than the disagreement
+    // it exists for. The writer and the survivor both record a conversation,
+    // and between those the earliest still wins -- which is the rule that
+    // makes two clients pick the same card without talking to each other.
+    client.accountData['m.direct'] = BasicEvent(
+      type: 'm.direct',
+      content: {
+        '@a:server': ['!r:server'],
+      },
+    );
+    final first = card(r'$first', key: 'k', ts: 1000);
+    final second = card(r'$second', key: 'k', ts: 2000);
+    expect(CallTimelineEvent.outranks(first, second), isTrue);
+    expect(CallTimelineEvent.outranks(second, first), isFalse);
+
+    final missedFirst = card(r'$a', key: 'j', ts: 1000, answered: false);
+    final missedSecond = card(r'$b', key: 'j', ts: 2000, answered: false);
+    expect(CallTimelineEvent.outranks(missedFirst, missedSecond), isTrue);
   });
 
   test('a card that never sent cannot suppress the one that did', () {

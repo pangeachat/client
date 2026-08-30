@@ -351,12 +351,26 @@ class CallTimelineEvent extends StatelessWidget {
 
   /// Which of two cards for the SAME call the surfaces agree to keep.
   ///
-  /// Earliest by origin_server_ts, with the event id as the final tie-break so
-  /// every client picks the same one. Exported because the chat list has to
-  /// reach the same verdict as the conversation from a different direction:
-  /// the conversation sees the whole timeline, the list sees only the incoming
+  /// A card that records a CONVERSATION first, then earliest by
+  /// origin_server_ts, with the event id as the final tie-break so every
+  /// client picks the same one. Exported because the chat list has to reach
+  /// the same verdict as the conversation from a different direction: the
+  /// conversation sees the whole timeline, the list sees only the incoming
   /// event and the one it already held.
+  ///
+  /// Time alone was right while both cards described one call the same way,
+  /// and wrong the moment they disagreed about whether it happened. Two
+  /// honest devices can only disagree in one direction: a conversation is
+  /// something a device SAW -- nobody writes `answered` without the other
+  /// person having been in the call with them -- while its absence is
+  /// something a device INFERRED from not finding them. So the card that saw
+  /// one is the better-informed of the two, whenever it arrives. Ordering on
+  /// time alone let a survivor's early "nobody was there" outrank, and
+  /// permanently hide, the caller's later card for a call they went on to
+  /// have.
   static bool outranks(Event a, Event b) {
+    final aTalked = a.content['answered'] == true;
+    if (aTalked != (b.content['answered'] == true)) return aTalked;
     final byTime = a.originServerTs.compareTo(b.originServerTs);
     if (byTime != 0) return byTime < 0;
     return a.eventId.compareTo(b.eventId) < 0;
