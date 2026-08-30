@@ -382,6 +382,45 @@ void main() {
         reason: 'the new call must not be built over a leave still running',
       );
     });
+
+    test('is recorded by the hangup that issued it, too', () async {
+      // The other site the funnel covers. A retract that gives up waiting has
+      // NOT stopped its leave, and the session is fetched by room -- so unless
+      // that leave is recorded here as well, the next call in this room races
+      // the very thing that is about to retract it. This site happened to get
+      // it right while the abandoned-join site did not; what makes that stay
+      // true is that there is now one way to leave, not two to keep in step.
+      final client = await bareClient();
+      final calls = CallService(
+        client,
+        leaveWithin: const Duration(milliseconds: 50),
+      );
+      final session = _LeavingSession(
+        client: client,
+        room: Room(id: '!r:fakeServer.notExisting', client: client),
+        voip: calls.voip,
+        backend: LiveKitBackend(
+          livekitServiceUrl: 'http://sfu:7980',
+          livekitAlias: 'alias',
+          e2eeEnabled: false,
+        ),
+        groupCallId: 'call-id',
+        application: 'm.call',
+        scope: 'm.room',
+      )..leaveGate = Completer<void>();
+      calls.adoptSessionForTest(session);
+
+      // Given up on after the bounded wait: the membership will expire by
+      // itself, and the learner is not locked out of calling meanwhile.
+      await expectLater(calls.retract(), completion(isFalse));
+
+      expect(session.leaves, 1);
+      expect(
+        calls.hasPendingLeaveForTest,
+        isTrue,
+        reason: 'the leave is still running, so the next call must wait for it',
+      );
+    });
   });
 
   group('a membership that could not be taken back', () {
@@ -468,7 +507,10 @@ void main() {
     // still spent a choreographer request on itself -- and if that request
     // failed, the throw carried straight past the check and the session was
     // never handed back.
-    Future<(_JoinSteps, Room)> service({Object? tokenThrows}) async {
+    Future<(_JoinSteps, Room)> service({
+      Object? tokenThrows,
+      Duration? leaveWithin,
+    }) async {
       final client = await bareClient();
       await client.login(
         LoginType.mLoginPassword,
@@ -478,8 +520,11 @@ void main() {
         ),
         deviceId: 'GHTYAJCE',
       );
-      final calls = _JoinSteps(client, focusDiscovery: _FixedFocus())
-        ..tokenThrows = tokenThrows;
+      final calls = _JoinSteps(
+        client,
+        focusDiscovery: _FixedFocus(),
+        leaveWithin: leaveWithin,
+      )..tokenThrows = tokenThrows;
       return (calls, Room(id: '!r:fakeServer.notExisting', client: client));
     }
 
@@ -537,6 +582,72 @@ void main() {
         );
       },
     );
+
+    test('hands it back as a leave the next call can wait for', () async {
+      // The rule: every leave this service issues has to be recorded as the
+      // pending one, because the next join's correctness is built out of
+      // waiting for it. This leave went straight at the session, so
+      // settlePendingLeave found nothing to wait for -- and since the session
+      // is fetched by ROOM, the redial was handed the very object this leave
+      // was about to retract. It published its membership into that session and
+      // then watched the older, dead call's leave take it back.
+      final (calls, room) = await service(
+        leaveWithin: const Duration(seconds: 30),
+      );
+      final held = Completer<void>();
+      // Released whatever happens, so an assertion that fails partway leaves no
+      // future parked on a gate nothing will ever open — otherwise a real
+      // regression here reports as a timeout minutes later instead of as the
+      // expectation it actually broke.
+      addTearDown(() {
+        if (!held.isCompleted) held.complete();
+      });
+
+      final abandoned = calls.join(room);
+      // Registered now rather than where it is awaited at the end: this join
+      // throws its abandonment the instant the held leave answers, and a
+      // rejection nothing is yet listening for is reported as an unhandled
+      // error instead of the expected one.
+      final abandonedThrows = expectLater(
+        abandoned,
+        throwsA(isA<StateError>()),
+      );
+      // The hangup lands inside the fetch, which is where the abandoned join
+      // hands the session back. The leave is held open from the same place, so
+      // the window it opens is a real one rather than one already closed.
+      calls.duringFetch = () {
+        calls.session!.leaveGate = held;
+        calls.abandonJoin(calls.joinAttempt);
+      };
+      await pumpEventQueue();
+      calls.duringFetch = null;
+
+      expect(calls.session?.leaves, 1, reason: 'precondition: it did leave');
+      expect(
+        calls.hasPendingLeaveForTest,
+        isTrue,
+        reason: 'a leave nothing recorded is invisible to the next join',
+      );
+
+      // The redial, while that leave is still in flight. It must park behind it
+      // rather than fetch the session out from under it.
+      final redial = calls.join(room);
+      await pumpEventQueue();
+      expect(
+        calls.steps,
+        ['session'],
+        reason: 'the second join must not reach the session mid-leave',
+      );
+
+      held.complete();
+      await expectLater(redial, completion(isA<CallToken>()));
+      expect(calls.steps, [
+        'session',
+        'session',
+        'token',
+      ], reason: 'and it goes ahead the moment the leave finishes');
+      await abandonedThrows;
+    });
   });
 
   group('an announce parked behind a leave that is still finishing', () {
@@ -2165,8 +2276,16 @@ class _LeavingSession extends GroupCallSession {
   int leaves = 0;
   int enters = 0;
 
+  /// Holds a leave open, so what the service does WHILE one is still in flight
+  /// is observable. Null means it answers at once, which is what every test
+  /// that does not care about the window gets.
+  Completer<void>? leaveGate;
+
   @override
-  Future<void> leave() async => leaves++;
+  Future<void> leave() async {
+    leaves++;
+    await leaveGate?.future;
+  }
 
   @override
   Future<void> enter({WrappedMediaStream? stream}) async => enters++;
@@ -2182,7 +2301,7 @@ class _TokenRefused implements Exception {
 /// observable. Neither step can be stood up here: one needs a live SFU and the
 /// other the choreographer.
 class _JoinSteps extends CallService {
-  _JoinSteps(super.client, {super.focusDiscovery});
+  _JoinSteps(super.client, {super.focusDiscovery, super.leaveWithin});
 
   final List<String> steps = [];
 

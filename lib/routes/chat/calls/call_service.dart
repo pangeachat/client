@@ -256,6 +256,31 @@ class CallService {
     );
   }
 
+  /// Issues a leave and records it as the pending one, in that order and with
+  /// nothing awaited in between.
+  ///
+  /// EVERY LEAVE THIS SERVICE ISSUES MUST BE ONE THE NEXT JOIN CAN WAIT FOR.
+  /// [settlePendingLeave] and the wait in [announce] are the whole machinery for
+  /// ordering a redial behind a leave that has not finished, and both of them
+  /// read [_leaving] — so a leave that was never recorded there is not merely
+  /// unwaited-for, it is invisible to the thing built to serialise leaves. The
+  /// session is fetched by ROOM, so the redial is handed the very object the
+  /// unrecorded leave still holds: it sees nothing to wait for, publishes its
+  /// membership into that session, and the older leave lands afterwards and
+  /// takes the LIVE call's membership back. That is worse than the abandoned
+  /// membership the leave was cleaning up, which expires by itself in minutes,
+  /// where a conversation dropped mid-sentence does not come back.
+  ///
+  /// A funnel rather than a rule to remember at each site, because remembering
+  /// is exactly what failed: [retract] recorded its leave and the abandoned-join
+  /// path did not, and nothing at either site said which of the two it was. With
+  /// one way to leave there is no second site to keep in step.
+  Future<void> _leave(GroupCallSession session) {
+    final leaving = session.leave();
+    _setPendingLeave(leaving);
+    return leaving;
+  }
+
   /// Waits for a leave that was given up on to actually finish.
   ///
   /// Bounded: waiting longer would hold up a call the learner is asking for now,
@@ -383,7 +408,11 @@ class CallService {
           isCurrent: identical(session, _current),
         )) {
       try {
-        await session.leave();
+        // Through [_leave], never straight at the session. This leave runs in
+        // the one window where nothing else is holding the room — the join that
+        // owned it has been given up on and the redial has not claimed it yet —
+        // so it is precisely the leave a redial has to be able to wait for.
+        await _leave(session);
       } catch (e, st) {
         Logs().w('Could not leave a call abandoned during teardown', e, st);
       }
@@ -1629,14 +1658,9 @@ class CallService {
           // and a leave that never came back held them open for as long as it
           // hung — in a call the learner had already left.
           //
-          // Kept, not dropped: giving up waiting does not stop it. The session
-          // is fetched by ROOM, so a redial lands on this same object, and a
-          // leave that finally answered after that would retract the membership
-          // the NEW call had just published — the peer would watch us walk out
-          // of a call we had only just joined.
-          final leaving = session.leave();
-          _setPendingLeave(leaving);
-          await leaving.timeout(_leaveWithin);
+          // Kept, not dropped: giving up waiting does not stop it, and [_leave]
+          // is what leaves the next call in this room something to wait for.
+          await _leave(session).timeout(_leaveWithin);
           _abandonedMembership = false;
           return true;
         } on TimeoutException catch (e, s) {
