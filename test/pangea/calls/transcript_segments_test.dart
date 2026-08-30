@@ -785,25 +785,40 @@ void main() {
       );
     });
 
-    test('an end the chunk cannot support does not silence later cuts', () {
-      // `dos` ends past the chunk's own audio, so it is no evidence of when
-      // speech stopped and the gap before `tres` is unmeasurable. It must not
-      // become a maximum nothing can exceed either: `cuatro` opens a full
-      // second after `tres` ended and that cut still has to happen.
+    test('a bogus end is not evidence, and the ends after it read forward', () {
+      // Both halves of "when speech last stopped", in the one chunk where they
+      // meet: a chunk that reaches the cut carrying an end its own audio cannot
+      // support. Each half decides one of the two cuts below, so neither can be
+      // dropped without changing what this reads.
+      //
+      // `dos` ends past the chunk, so it is no evidence of when speech stopped:
+      // the gap before `tres` is unmeasurable. Nor may it stand as a moment
+      // nothing can exceed -- `cuatro` opens a full second after `tres` ended,
+      // and measuring that gap against 500000 silences the cut.
+      //
+      // `cinco` then ends BEFORE `cuatro` did, which is what tells the latest
+      // end from the last one. From the last, 3470, `seis` opens a gap of 910
+      // and the phrase splits; from the latest, 3500, it is 880 and the words
+      // carry on.
       final segments = buildSegments([
         _chunk(
-          'uno dos tres cuatro',
+          'uno dos tres cuatro cinco seis',
           timings: [
             ('uno', 0, 300),
             ('dos', 350, 500000),
             ('tres', 2000, 2300),
             ('cuatro', 3300, 3500),
+            ('cinco', 3460, 3470),
+            ('seis', 4380, 4430),
           ],
           durationMs: 5000,
         ),
       ]);
 
-      expect(segments.map((s) => s.text), ['uno dos tres', 'cuatro']);
+      expect(segments.map((s) => s.text), [
+        'uno dos tres',
+        'cuatro cinco seis',
+      ]);
     });
 
     test('an overlap too large to be jitter still refuses the chunk', () {
