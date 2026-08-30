@@ -758,6 +758,54 @@ void main() {
       );
     });
 
+    test('a tolerated overlap does not move where the next gap starts', () {
+      // `que` is 40ms of jitter, inside the tolerance, and it ENDS before
+      // `hola` did. Reading "when speech last stopped" off the LAST word rather
+      // than the latest end put it at 980, which makes `tal`'s gap exactly 900
+      // and splits a phrase on a pause that never happened -- the real gap from
+      // 1010 is 870. The validator keeps a running maximum for this reason and
+      // the cut must read the same number.
+      final segments = buildSegments([
+        _chunk(
+          'hola que tal',
+          timings: [
+            ('hola', 1000, 1010),
+            ('que', 970, 980),
+            ('tal', 1880, 1900),
+          ],
+          durationMs: 3000,
+        ),
+      ]);
+
+      expect(segments.map((s) => s.text), ['hola que tal']);
+      expect(
+        segments.single.atMs,
+        _chunkStart + 1000,
+        reason: 'the sequence is well formed, so this is the trusted path',
+      );
+    });
+
+    test('an end the chunk cannot support does not silence later cuts', () {
+      // `dos` ends past the chunk's own audio, so it is no evidence of when
+      // speech stopped and the gap before `tres` is unmeasurable. It must not
+      // become a maximum nothing can exceed either: `cuatro` opens a full
+      // second after `tres` ended and that cut still has to happen.
+      final segments = buildSegments([
+        _chunk(
+          'uno dos tres cuatro',
+          timings: [
+            ('uno', 0, 300),
+            ('dos', 350, 500000),
+            ('tres', 2000, 2300),
+            ('cuatro', 3300, 3500),
+          ],
+          durationMs: 5000,
+        ),
+      ]);
+
+      expect(segments.map((s) => s.text), ['uno dos tres', 'cuatro']);
+    });
+
     test('an overlap too large to be jitter still refuses the chunk', () {
       // The guard this tolerance must not dissolve: a word claiming a moment
       // well before the previous one ended is disorder, not measurement noise.

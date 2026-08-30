@@ -453,7 +453,8 @@ List<TranscriptSegment> buildSegments(
     // whatever is being built rather than being dropped or guessed at.
     final words = <String>[];
 
-    // The end of the previous DISPLAYED word, never of the previous timing.
+    // When speech last stopped: the LATEST end among the DISPLAYED words seen
+    // since the last unmeasurable one, never the end of the previous timing.
     //
     // A blank entry between two words otherwise absorbs the gap between them.
     // `hello` at 0-100, a blank at 100-3000 and `world` at 3000-3100 is a
@@ -505,10 +506,32 @@ List<TranscriptSegment> buildSegments(
       if (word.isEmpty) continue;
       if (words.isEmpty && placeable) openedAt = start;
       words.add(word);
-      // An unknown end makes the NEXT gap unmeasurable. Keeping the previous
-      // word's end here measured that gap from the wrong place and split an
-      // utterance that had no pause in it.
-      previousEnd = timing.endTimeMs;
+      // The RUNNING MAXIMUM, which is the same shape `_isWellFormedSequence`
+      // keeps and for the same reason: a tolerated overlap means a word may end
+      // BEFORE the word before it did, so recording the LAST end rather than
+      // the LATEST walks "when speech last stopped" backwards, and the next gap
+      // is then measured from a moment speech had not yet reached. `a` at
+      // 1000-1010, `b` at 970-980 (accepted, 970 >= 1010 - 50), `c` at 1880:
+      // from `b`'s end the gap is exactly 900 and the phrase splits on a pause
+      // that never happened, when the real gap from 1010 is 870. The walk is
+      // bounded by `_boundaryJitter` -- `end >= start >= previousEnd - 50` for
+      // an accepted word -- so it only ever moves a cut that sat within 50ms of
+      // the threshold, and it only ever moves it towards splitting.
+      //
+      // An absent end makes the NEXT gap unmeasurable, and so does one this
+      // chunk cannot support: both are the absence of evidence about when
+      // speech stopped, and measuring the next gap from the wrong place is what
+      // split an utterance that had no pause in it. `_speechBeganAt` refuses
+      // out-of-chunk times for the same reason. Only a MALFORMED chunk reaches
+      // that second case -- a well-formed sequence lies inside its chunk by
+      // definition -- and the cut still runs on those, so without the bound one
+      // end hours away would become a maximum nothing could exceed and silence
+      // every remaining cut in the chunk.
+      final end = timing.endTimeMs;
+      final stoppedAt = previousEnd;
+      previousEnd = (end == null || end < 0 || end > chunk.durationMs)
+          ? null
+          : (stoppedAt == null || end > stoppedAt ? end : stoppedAt);
     }
 
     if (words.isNotEmpty) {
