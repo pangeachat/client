@@ -617,8 +617,11 @@ void main() {
     // behavioural test in this file, because none of them happened to aim at
     // that clause at that site.
     //
-    // A regression in any of the three now fails HERE, rather than depending on
-    // whether that site drew a behavioural test that discriminates.
+    // This proves the HELPER, and only that. It cannot see whether a caller
+    // still asks it, or still asks it with both bounds -- a site that inlines
+    // half the rule back passes this group untouched. What covers that is the
+    // behavioural test beside each site, one per operand, asserting where the
+    // turn lands rather than what it says.
     const durationMs = 1000;
 
     test('is the moment itself, anywhere inside the audio', () {
@@ -850,6 +853,11 @@ void main() {
       ]);
 
       expect(segments.map((s) => s.text), ['yes no']);
+      expect(
+        segments.single.atMs,
+        _chunkStart,
+        reason: 'and nothing adopts 500000 as the moment it was said',
+      );
     });
 
     test('an end before the chunk began cannot start the next gap', () {
@@ -865,6 +873,49 @@ void main() {
       ]);
 
       expect(segments.map((s) => s.text), ['yes no']);
+      // WHERE it lands, not just what it says. The words survive an unbounded
+      // -100 either way, so text alone leaves the estimate free to adopt it and
+      // stamp this turn a tenth of a second before the audio it came from.
+      expect(segments.single.atMs, _chunkStart);
+    });
+
+    test('a chunk timed entirely BEFORE itself is placed at its start', () {
+      // The mirror of the out-of-chunk case below, and the one that reaches the
+      // estimate on the START side: every mark here is before the audio began,
+      // so there is no evidence of when speech happened and the chunk's own
+      // start is the honest answer. Adopting -100 would stamp the turn before
+      // the recording that produced it.
+      final segments = buildSegments([
+        _chunk('hola', timings: [('hola', -100, -50)], durationMs: 1000),
+      ]);
+
+      expect(segments.single.atMs, _chunkStart);
+      expect(segments.single.positionIsApproximate, isTrue);
+    });
+
+    test('a start a millisecond early is not laundered by the jitter rule', () {
+      // The jitter allowance forgives a start up to 50ms behind the previous
+      // END, and `previousEnd` begins at zero -- so without the absolute lower
+      // bound, -1 is inside the allowance and the whole sequence reads as well
+      // formed. The cost is not this word: it is that EVERY LATER word is then
+      // stamped exactly, off a sequence admitted on a moment before the audio.
+      // `b` claims 1000 as its own, when nothing here is trustworthy enough to
+      // place a word at all.
+      final segments = buildSegments([
+        _chunk(
+          'a b',
+          timings: [('a', -1, 0), ('b', 1000, 1100)],
+          durationMs: 2000,
+        ),
+      ]);
+
+      expect(segments.map((s) => s.text), ['a', 'b']);
+      expect(
+        segments[1].positionIsApproximate,
+        isTrue,
+        reason: 'a sequence admitted on -1 cannot place any word exactly',
+      );
+      expect(segments[1].atMs, _chunkStart);
     });
 
     test('a chunk timed entirely outside itself is placed at its start', () {
@@ -881,10 +932,11 @@ void main() {
     });
 
     test('a bogus end is not evidence, and the ends after it read forward', () {
-      // Both halves of "when speech last stopped", in the one chunk where they
-      // meet: a chunk that reaches the cut carrying an end its own audio cannot
-      // support. Each half decides one of the two cuts below, so neither can be
-      // dropped without changing what this reads.
+      // Two rules in the one chunk where they meet -- the UPPER bound on an end,
+      // and the running maximum -- each deciding one of the two cuts below, so
+      // neither can be dropped without changing what this reads. The LOWER
+      // bound is not on trial here; `an end before the chunk began cannot start
+      // the next gap` is where that one is pinned.
       //
       // `dos` ends past the chunk, so it is no evidence of when speech stopped:
       // the gap before `tres` is unmeasurable. Nor may it stand as a moment
