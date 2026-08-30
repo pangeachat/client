@@ -107,9 +107,18 @@ class CallMedia {
   /// the same shape of leak as a step that was abandoned, and it was left to
   /// the caller: the microphone is a required step by design — no microphone is
   /// no call — so its throw used to leave this device sitting in the SFU, with
-  /// the peer seeing a participant who publishes nothing and a capture device
-  /// possibly still claimed. Releasing here is what makes a failed [connect]
-  /// mean the same thing as a connect that never happened.
+  /// the peer seeing a participant who publishes nothing.
+  ///
+  /// WHAT THE RELEASE COVERS IS NARROWER THAN IT LOOKS, and saying so is the
+  /// point of this paragraph. [_releaseWhatOpened] is `disconnect()`, which
+  /// gives back the socket and the tracks that were PUBLISHED over it — never a
+  /// capture track the SDK created and then failed to publish, which this
+  /// object is never handed and so could not close. The capture device is
+  /// nonetheless returned on the one path that reaches this catch, because the
+  /// SDK returns it rather than because anything here does: the microphone is
+  /// the only step whose throw arrives here at all — a camera failure is caught
+  /// inside [_publish] and a missing participant never throws — and the audio
+  /// half of the note above [enableMicrophone] is the half that cleans up.
   Future<void> connect(CallToken grant, {required bool video}) async {
     if (_released) return;
     await connectRoom(grant.url, grant.jwt);
@@ -205,17 +214,32 @@ class CallMedia {
   @protected
   Future<void> connectRoom(String url, String jwt) => room.connect(url, jwt);
 
-  @protected
-  // A note on failure, for both of these: livekit_client 2.11.0 creates the
-  // capture track and THEN publishes it, and if the publish throws it does not
-  // stop the track it just created — nor does room teardown, which only stops
-  // PUBLISHED tracks. The created track is never handed back, so there is no
-  // handle here to close it either. On a publish failure over an already
-  // connected room — rare, since the socket is up by the time these run — the
-  // device can stay claimed. This is upstream (the same on the SDK's main
-  // branch); closing it from here would mean publishing the track by hand
-  // instead of through these one-liners, which is not warranted for a failure
-  // this narrow. Recorded so it is a known limitation, not a surprise.
+  // A note on a publish that fails, for both of these. Read off the pinned
+  // livekit_client 2.11.0 rather than carried forward, because the two halves
+  // no longer behave the same and an answer good for one is wrong for the
+  // other. `setSourceEnabled` CREATES the capture track — the device is claimed
+  // at that moment — and only then publishes it, so a publish that throws is a
+  // moment where a device is open and unpublished. Room teardown does not reach
+  // one: `Room._cleanUp` calls `unpublishAllTracks`, which walks the
+  // participant's PUBLISHED tracks and nothing else, and the created track is
+  // never returned to us either.
+  //
+  // AUDIO is given back, by the SDK. `_publishAudioTrack` takes
+  // `shouldStopOnFailure = !track.isActive` before it starts the track — true
+  // for one `LocalAudioTrack.create` has just built, since `Track.start` is the
+  // only thing that sets that flag and `create` never calls it — and its own
+  // catch stops the track before rethrowing, which releases the microphone. So
+  // a microphone that fails to publish does NOT stay claimed, and [connect]
+  // saying a failed join leaves nothing behind is true.
+  //
+  // VIDEO is not. `_publishVideoTrack` has no equivalent catch, so a camera
+  // that fails to publish stays claimed for the rest of the call and past
+  // teardown — with the indicator light on, which is how a learner would first
+  // notice. Still upstream, and still narrow. Closing it here would mean
+  // creating and publishing the camera track by hand instead of through this
+  // one-liner, which also rewrites the mid-call unmute path that shares it, and
+  // nothing in this suite can reach a real publish to prove either. Recorded as
+  // the known limitation it is rather than fixed blind.
   @protected
   Future<void> enableMicrophone(bool on) async => (await _publishingAs(
     on,
