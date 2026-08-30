@@ -608,6 +608,56 @@ void main() {
     });
   });
 
+  group('the moment a chunk can account for', () {
+    // The rule three readers share: the sequence check, the earliest-speech
+    // estimate, and the cut's record of when speech last stopped. Each of them
+    // used to spell this bound out in its own words, and the cut's copy was
+    // missing the negative half -- reachable (`yes` 0..-100 then `no` at 800
+    // split two words that had no pause between them) and invisible to every
+    // behavioural test in this file, because none of them happened to aim at
+    // that clause at that site.
+    //
+    // A regression in any of the three now fails HERE, rather than depending on
+    // whether that site drew a behavioural test that discriminates.
+    const durationMs = 1000;
+
+    test('is the moment itself, anywhere inside the audio', () {
+      expect(
+        momentWithinChunk(0, durationMs),
+        0,
+        reason: 'the chunk\'s first moment; a word may begin on it',
+      );
+      expect(momentWithinChunk(500, durationMs), 500);
+      expect(
+        momentWithinChunk(durationMs, durationMs),
+        durationMs,
+        reason: 'the chunk\'s last moment; a word may end on it',
+      );
+    });
+
+    test('is nothing at all for a moment the audio cannot hold', () {
+      expect(
+        momentWithinChunk(null, durationMs),
+        isNull,
+        reason: 'absent is not evidence, and is the same answer as outside',
+      );
+      expect(
+        momentWithinChunk(-1, durationMs),
+        isNull,
+        reason: 'one millisecond before the chunk began is still before it',
+      );
+      expect(momentWithinChunk(-100, durationMs), isNull);
+      expect(
+        momentWithinChunk(durationMs + 1, durationMs),
+        isNull,
+        reason:
+            'one millisecond past the audio describes audio that does not '
+            'exist, exactly as an hour past it does',
+      );
+      expect(momentWithinChunk(500000, durationMs), isNull);
+    });
+  });
+
   group('timings that are not a well-formed sequence', () {
     // Every one of these leaves the chunk unpositioned and the WORDS untouched.
     // Six review rounds each found one more shape the rule of the day did not

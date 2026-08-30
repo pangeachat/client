@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 
 /// One readable stretch of a speaker's speech, and when it was said.
@@ -518,18 +520,23 @@ List<TranscriptSegment> buildSegments(
       // an accepted word -- so it only ever moves a cut that sat within 50ms of
       // the threshold, and it only ever moves it towards splitting.
       //
-      // An absent end makes the NEXT gap unmeasurable, and so does one this
-      // chunk cannot support: both are the absence of evidence about when
-      // speech stopped, and measuring the next gap from the wrong place is what
-      // split an utterance that had no pause in it. `_speechBeganAt` refuses
-      // out-of-chunk times for the same reason. Only a MALFORMED chunk reaches
-      // that second case -- a well-formed sequence lies inside its chunk by
-      // definition -- and the cut still runs on those, so without the bound one
-      // end hours away would become a maximum nothing could exceed and silence
-      // every remaining cut in the chunk.
-      final end = timing.endTimeMs;
+      // An end this chunk cannot account for makes the NEXT gap unmeasurable,
+      // exactly as an absent one does -- [momentWithinChunk] is where the two
+      // become one answer, and it is the same question `_speechBeganAt` and
+      // `_isWellFormedSequence` ask. Measuring the next gap from the wrong place
+      // is what split an utterance that had no pause in it.
+      //
+      // Only a MALFORMED chunk reaches the out-of-chunk case -- a well-formed
+      // sequence lies inside its chunk by definition -- but the cut runs on
+      // those too, so both bounds earn their keep here. Without the upper one,
+      // an end hours away becomes a maximum nothing can exceed and silences
+      // every remaining cut in the chunk. Without the lower one, an end BEFORE
+      // the chunk began pulls the maximum backwards: `yes` 0..-100 then `no` at
+      // 800 opens a gap of 900 against -100 and splits two words that had no
+      // pause between them at all.
+      final end = momentWithinChunk(timing.endTimeMs, chunk.durationMs);
       final stoppedAt = previousEnd;
-      previousEnd = (end == null || end < 0 || end > chunk.durationMs)
+      previousEnd = end == null
           ? null
           : (stoppedAt == null || end > stoppedAt ? end : stoppedAt);
     }
@@ -646,6 +653,32 @@ List<TranscriptSegment> buildSegments(
 /// far below any gap that could reorder two speakers against each other.
 const _boundaryJitter = 50;
 
+/// [at] when the chunk's own audio can account for it, and null when it cannot.
+///
+/// ONE definition, because three sites ask this question and each one used to
+/// answer it in its own words: the sequence check, the earliest-speech estimate,
+/// and the cut's record of when speech last stopped. Three rounds of review
+/// found the same class of defect in that arrangement -- an in-chunk bound
+/// written out longhand, one clause of it missing at one site, and the miss
+/// invisible unless that site happened to carry a behavioural test aimed at
+/// exactly that clause. The negative bound was missing from the cut for exactly
+/// that reason, and nothing failed.
+///
+/// A chunk holds a stretch of recorded audio and nothing else. A timestamp
+/// before it began or after it ended describes audio that does not exist, so it
+/// is not evidence of anything: not of the sequence being sound, not of when
+/// speech began, not of when it last stopped. ABSENT says the same thing --
+/// nothing is known -- which is why null belongs inside this answer rather than
+/// in a separate check at each site, and why the answer is the moment itself
+/// rather than a yes or no. A caller that has to re-test for null to use the
+/// value is a caller holding a second copy of half this rule.
+///
+/// Both bounds are inclusive. Zero is the chunk's first moment and [durationMs]
+/// its last, and a word may legitimately sit on either.
+@visibleForTesting
+int? momentWithinChunk(int? at, int durationMs) =>
+    at != null && at >= 0 && at <= durationMs ? at : null;
+
 bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
   // Starts at zero, which is also what rejects a negative first start.
   var previousEnd = 0;
@@ -658,7 +691,15 @@ bool _isWellFormedSequence(List<WordTiming> timings, int durationMs) {
     // admitted a negative first start -- the tolerance is for disagreement
     // between two neighbouring estimates, never for a word claiming a moment
     // before the chunk began.
-    if (start < 0 || end < start || end > durationMs) return false;
+    //
+    // The ORDERING clause stays here rather than moving into the shared rule:
+    // "this word ends after it starts" is a different rule from "this moment is
+    // one the chunk can account for", and only the second is shared.
+    if (momentWithinChunk(start, durationMs) == null ||
+        momentWithinChunk(end, durationMs) == null) {
+      return false;
+    }
+    if (end < start) return false;
     if (start < previousEnd - _boundaryJitter) return false;
     // There is deliberately NO separate check on STARTS going backwards, and
     // it is worth saying why, because two rounds of review each asked for one.
@@ -705,11 +746,12 @@ int? _speechBeganAt(List<WordTiming> timings, int durationMs) {
   // Taking only STARTS read a word whose start the provider omitted as no
   // evidence, so [hola null-300, que 350-600] answered 350 -- after `hola` had
   // already FINISHED. An end is a moment sound existed just as much as a start
-  // is. And a time past the chunk's own length describes audio that does not
-  // exist; `_isWellFormedSequence` already rejects those, so adopting one here
-  // would place the turn after the chunk it belongs to.
-  void consider(int? at) {
-    if (at == null || at < 0 || at > durationMs) return;
+  // is. And a time outside the chunk describes audio that does not exist;
+  // `_isWellFormedSequence` rejects those through the same [momentWithinChunk],
+  // so adopting one here would place the turn outside the chunk it belongs to.
+  void consider(int? raw) {
+    final at = momentWithinChunk(raw, durationMs);
+    if (at == null) return;
     if (earliest == null || at < earliest!) earliest = at;
   }
 
