@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
@@ -92,6 +94,36 @@ void main() {
           SentryLevel.error,
           reason: '$status is a code bug or a backend regression',
         );
+      }
+    });
+
+    test('names an instructor only when the caller consented to one', () async {
+      // The field picks which gate the server applies: absent, it demands the
+      // course toggle; present, it demands a knock from that instructor.
+      // Sending it when nobody was named would silently switch the
+      // required-course grant onto the consent gate.
+      final bodies = <Map<String, dynamic>>[];
+      final api = Api(
+        baseUri: Uri.parse('https://matrix.staging.pangea.chat'),
+        bearerToken: 'syt_test_token',
+        httpClient: MockClient((request) async {
+          bodies.add(jsonDecode(request.body) as Map<String, dynamic>);
+          return Response('', 200, request: request);
+        }),
+      );
+
+      await api.grantInstructorAnalyticsAccess(courseRoomId, analyticsRoomId);
+      await api.grantInstructorAnalyticsAccess(
+        courseRoomId,
+        analyticsRoomId,
+        instructorId: '@teacher:staging.pangea.chat',
+      );
+
+      expect(bodies.first.containsKey('mx_instructor_id'), isFalse);
+      expect(bodies.last['mx_instructor_id'], '@teacher:staging.pangea.chat');
+      for (final body in bodies) {
+        expect(body['mx_course_id'], courseRoomId);
+        expect(body['mx_analytics_room_id'], analyticsRoomId);
       }
     });
 

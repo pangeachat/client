@@ -6,10 +6,10 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/analytics_access/grant_analytics_access_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/routes/analytics/analytics_page_constants.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class SpaceAnalyticsRequestedDialog extends StatelessWidget {
@@ -21,10 +21,16 @@ class SpaceAnalyticsRequestedDialog extends StatelessWidget {
     required this.requestingUsers,
   });
 
-  /// Shows the review dialog and applies the decision: grant invites each
+  /// Shows the review dialog and applies the decision: grant force-joins each
   /// requesting admin into the learner's analytics rooms, deny kicks their
   /// knocks. [requests] maps each requesting admin to the analytics rooms
   /// they knocked on (AnalyticsRequestsBuilder's shape).
+  ///
+  /// Granting goes through the server-side grant endpoint rather than a plain
+  /// invite. An invite left the admin *invited*, and every analytics read 403s
+  /// until they are joined — so a teacher who asked from the dashboard, and
+  /// never opens the app to accept, stayed stuck on "pending" forever however
+  /// promptly the learner allowed them (#8177).
   static Future<void> show(
     BuildContext context,
     Room room,
@@ -45,9 +51,10 @@ class SpaceAnalyticsRequestedDialog extends StatelessWidget {
         for (final entry in requests.entries) {
           final futures = entry.value.map(
             (analyticsRoom) => resp
-                ? analyticsRoom.invite(
-                    entry.key.id,
-                    reason: PangeaEventTypes.analyticsInviteContent,
+                ? room.client.grantInstructorAnalyticsAccess(
+                    room.id,
+                    analyticsRoom.id,
+                    instructorId: entry.key.id,
                   )
                 : analyticsRoom.kick(entry.key.id),
           );
