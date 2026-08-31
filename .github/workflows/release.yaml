@@ -315,4 +315,11 @@ jobs:
       - name: Update packages
         run: flutter pub get
       - name: Update sentry
-        run: flutter packages pub run sentry_dart_plugin
+        # The plugin has failure paths that log and still exit 0 -- a failed CLI
+        # download falls back to a bare `sentry-cli` that is not on the runner,
+        # and the spawn exception is swallowed. Its own stdout is the only
+        # signal, so capture it and assert on it. See #8656.
+        run: |
+          set -o pipefail
+          flutter packages pub run sentry_dart_plugin 2>&1 | tee sentry-upload.log
+          ./scripts/assert-sentry-upload-ran.sh sentry-upload.log

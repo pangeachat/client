@@ -168,7 +168,11 @@ dev_dependencies:
   # via its platform interface (MockPlatformInterfaceMixin) so the recorder's
   # reset path does not hit a real platform channel.
   plugin_platform_interface: ^2.1.8
-  sentry_dart_plugin: ^1.0.0
+  # Pinned exactly, not ^: scripts/assert-sentry-upload-ran.sh matches this
+  # version's log strings to catch the plugin degrading and still exiting 0
+  # (#8656). Log output is not API, so even a patch bump can move it -- re-check
+  # those patterns when this pin changes.
+  sentry_dart_plugin: 1.7.1
   # Test-only: the streaming-STT transport tests build a fake WebSocketChannel
   # on StreamChannelMixin (routes/chat/events/streaming_stt/).
   stream_channel: ^2.1.4
