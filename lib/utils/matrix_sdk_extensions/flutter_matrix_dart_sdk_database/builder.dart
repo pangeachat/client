@@ -32,28 +32,24 @@ Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(
     await database.open();
     return database;
   } catch (e, s) {
-    // #Pangea
     ErrorHandler.logError(
       e: e,
       s: s,
       data: {"clientID": clientName},
       m: "Failed to open matrix sdk database. Retrying once on a clean file.",
     );
-    // Pangea#
     Logs().wtf('Unable to construct database!', e, s);
 
     try {
       // Send error notification:
-      // #Pangea
+      // Disabled for Pangea:
       // final l10n = await lookupL10n(PlatformDispatcher.instance.locale);
       // ClientManager.sendInitNotification(l10n.initAppError, e.toString());
-      // Pangea#
     } catch (e, s) {
       Logs().e('Unable to send error notification', e, s);
     }
 
     // Try to delete database so that it can created again on next init:
-    // #Pangea
     // Awaited, unlike upstream's fire-and-forget: the retry below reopens this
     // same path, so an unawaited delete races it. The handler also reports its
     // own error rather than re-reporting the open failure.
@@ -67,14 +63,6 @@ Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(
         m: "Failed to delete matrix database after failed construction.",
       );
     }
-    // database?.delete().catchError(
-    //   (e, s) => Logs().wtf(
-    //     'Unable to delete database, after failed construction',
-    //     e,
-    //     s,
-    //   ),
-    // );
-    // Pangea#
 
     // Delete database file:
     if (!kIsWeb) {
@@ -109,9 +97,7 @@ Future<MatrixSdkDatabase> _constructDatabase(String clientName) async {
   }
 
   final cipher = await getDatabaseCipher();
-  // #Pangea
   Sentry.addBreadcrumb(Breadcrumb(message: 'Database cipher: $cipher'));
-  // Pangea#
 
   Directory? fileStorageLocation;
   try {
@@ -131,9 +117,7 @@ Future<MatrixSdkDatabase> _constructDatabase(String clientName) async {
     ffiInit: SQfLiteEncryptionHelper.ffiInit,
   );
 
-  // #Pangea
   Sentry.addBreadcrumb(Breadcrumb(message: 'Database path: $path'));
-  // Pangea#
 
   // required for [getDatabasesPath]
   databaseFactory = factory;
@@ -146,9 +130,7 @@ Future<MatrixSdkDatabase> _constructDatabase(String clientName) async {
   final helper = cipher == null
       ? null
       : SQfLiteEncryptionHelper(factory: factory, path: path, cipher: cipher);
-  // #Pangea
   Sentry.addBreadcrumb(Breadcrumb(message: 'Database cipher helper: $helper'));
-  // Pangea#
 
   // check whether the DB is already encrypted and otherwise do so
   await helper?.ensureDatabaseFileEncrypted();
