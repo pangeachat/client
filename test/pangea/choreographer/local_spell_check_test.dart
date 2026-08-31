@@ -8,8 +8,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/igc_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/local_spell_check.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/match_rule_id_model.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_model.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/replacement_type_enum.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/span_choice_type_enum.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/span_data_model.dart';
 
 class _FakeSpellCheckService implements SpellCheckService {
   _FakeSpellCheckService(this.result, {this.error});
@@ -216,6 +220,81 @@ void main() {
       expect(controller.addLocalSpellMatches(const [], 'hello'), isFalse);
       expect(controller.matches, isEmpty);
       expect(controller.currentText, isNull);
+    });
+  });
+
+  group('IgcController.clearAfterFailedRequest', () {
+    late IgcController controller;
+
+    setUp(() {
+      controller = IgcController((_) {}, () {});
+    });
+
+    test('keeps the device spelling when the server is unreachable', () {
+      final spans = localSpansToSpanData(const [
+        SuggestionSpan(TextRange(start: 0, end: 5), ['world']),
+      ], 'wrold');
+      controller.addLocalSpellMatches(spans, 'wrold');
+
+      controller.clearAfterFailedRequest();
+
+      // Offline is when this is the only writing assistance available.
+      expect(controller.localSpellMatches, hasLength(1));
+      expect(controller.currentText, 'wrold');
+    });
+
+    test('still clears everything when there is no local spelling', () {
+      expect(controller.addLocalSpellMatches(const [], 'hello'), isFalse);
+
+      controller.clearAfterFailedRequest();
+
+      expect(controller.matches, isEmpty);
+      expect(controller.currentText, isNull);
+    });
+
+    test('does not keep server matches', () {
+      final local = localSpansToSpanData(const [
+        SuggestionSpan(TextRange(start: 0, end: 5), ['world']),
+      ], 'wrold es');
+      controller.addLocalSpellMatches(local, 'wrold es');
+      controller.matches.add(
+        PangeaMatchState(
+          match: SpanData(
+            message: null,
+            shortMessage: null,
+            choices: [
+              SpanChoice(value: 'está', type: SpanChoiceTypeEnum.suggestion),
+            ],
+            offset: 6,
+            length: 2,
+            fullText: 'wrold es',
+            type: ReplacementTypeEnum.verbConjugation,
+            rule: null,
+          ),
+          status: PangeaMatchStatusEnum.open,
+          original: PangeaMatch(
+            match: SpanData(
+              message: null,
+              shortMessage: null,
+              choices: null,
+              offset: 6,
+              length: 2,
+              fullText: 'wrold es',
+              type: ReplacementTypeEnum.verbConjugation,
+              rule: null,
+            ),
+            status: PangeaMatchStatusEnum.open,
+          ),
+        ),
+      );
+
+      controller.clearAfterFailedRequest();
+
+      expect(controller.matches, hasLength(1));
+      expect(
+        controller.matches.single.updatedMatch.match.rule?.id,
+        MatchRuleIdModel.localSpellCheck,
+      );
     });
   });
 }

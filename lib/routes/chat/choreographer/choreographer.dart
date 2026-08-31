@@ -204,13 +204,20 @@ class Choreographer extends ChangeNotifier {
     }
 
     _lastChecked = textController.text;
+
+    // Matches describe the text they were found in, so a keyboard edit makes
+    // them stale. This runs before the error check below, not after: local
+    // spelling matches outlive a failed request on purpose, and one of those
+    // accepted against the text it was found in would replace the wrong span
+    // and overwrite whatever the learner typed since.
+    if (textController.editType == EditTypeEnum.keyboard &&
+        igcController.currentText != null) {
+      igcController.clear();
+      notifyListeners();
+    }
+
     if (errorService.blockWritingAssistance) return;
     if (textController.editType == EditTypeEnum.keyboard) {
-      if (igcController.currentText != null) {
-        igcController.clear();
-        notifyListeners();
-      }
-
       _resetDebounceTimer();
       _debounceTimer ??= Timer(
         const Duration(milliseconds: ChoreoConstants.msBeforeIGCStart),

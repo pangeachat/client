@@ -135,6 +135,40 @@ class IgcController {
     (m) => m.updatedMatch.match.rule?.id == MatchRuleIdModel.localSpellCheck,
   );
 
+  /// The spelling the device found, whatever state the learner has left it in.
+  List<PangeaMatchState> get localSpellMatches => _matches
+      .where(
+        (m) =>
+            m.updatedMatch.match.rule?.id == MatchRuleIdModel.localSpellCheck,
+      )
+      .toList();
+
+  /// Resets what a failed `/grammar_v2` request invalidates, while keeping the
+  /// spelling the device found.
+  ///
+  /// A server failure says nothing about the local pass, which already
+  /// succeeded — and an unreachable server is exactly when its results are the
+  /// only writing assistance the learner has. [_currentText] is kept with them
+  /// because the highlights are drawn against it.
+  ///
+  /// Safe only because `Choreographer` discards these on the next keystroke
+  /// even while the error blocks assistance: a match outliving the text it was
+  /// found in would replace the wrong span when accepted.
+  /// See writing-assistance.instructions.md, "Local spelling matches".
+  void _clearAfterFailedRequest() {
+    final local = localSpellMatches;
+    final textFoundIn = _currentText;
+
+    clear();
+
+    if (local.isEmpty) return;
+    _currentText = textFoundIn;
+    _matches.addAll(local);
+  }
+
+  @visibleForTesting
+  void clearAfterFailedRequest() => _clearAfterFailedRequest();
+
   void clearCurrentText() => _currentText = null;
 
   /// Set the active match to the provided [match], if valid
@@ -378,7 +412,7 @@ class IgcController {
     if (res.isError) {
       debugPrint('IgcRepo.get error: ${res.asError}');
       onError(res.error!);
-      clear();
+      _clearAfterFailedRequest();
       return false;
     }
 

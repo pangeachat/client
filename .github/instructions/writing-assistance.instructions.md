@@ -218,7 +218,11 @@ Categories returned by `/grammar_v2`. Each gets a distinct color in the ring and
 
 Misspellings are the most common writing-assistance match and the least interesting one, and every one of them currently waits on a round trip to `/grammar_v2`. The device's own spell checker finds most of them straight away, so the learner can be offered the correction while the server call is still in flight.
 
-The local pass is a latency optimisation, not a second opinion. It reads the text as typed, asks for the learner's target language, and produces the same spelling matches the server would. The server stays the authority: when its response arrives it replaces the local spelling matches entirely, so a word both of them flagged ends as one match and one ring segment. The local checker only knows whether a word is in a dictionary; the server knows what the learner was trying to say.
+The local pass is a head start and a fallback, not a second opinion. It reads the text as typed, asks for the learner's target language, and produces the same spelling matches the server would. The server stays the authority: when its response arrives it replaces the local spelling matches entirely, so a word both of them flagged ends as one match and one ring segment. The local checker only knows whether a word is in a dictionary; the server knows what the learner was trying to say.
+
+**When the request fails, the local matches stay.** A server that is unreachable, erroring, or timing out is exactly when the device's own spelling is the only writing assistance the learner has, and the request failing says nothing about a local pass that already succeeded. Everything else the failed request touched is discarded as usual.
+
+Those surviving matches are discarded on the learner's next keystroke, like any other match — they describe the text they were found in, and one accepted against text the learner has since changed would replace the wrong span. This is the one thing that has to keep working for the fallback to be safe rather than harmful.
 
 A local match is presented exactly like a server spelling match — highlighted, given its own ring segment, opened by tapping, and recorded in `ChoreoRecordModel` on send. Like every spelling match it is never applied on the learner's behalf. That is what separates this from the device's own autocorrect, which rewrites a word without asking and so teaches the learner nothing and leaves no record behind. What the local pass changes is only *when* the learner sees the correction offered, not whether they choose it.
 
