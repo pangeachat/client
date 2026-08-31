@@ -16,10 +16,19 @@ import 'cipher.dart';
 import 'sqlcipher_stub.dart'
     if (dart.library.io) 'package:sqlcipher_flutter_libs/sqlcipher_flutter_libs.dart';
 
-Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(String clientName) async {
+/// Opens the Matrix SDK database, retrying once if the first attempt fails.
+///
+/// [constructDatabase] exists only so a test can fail the first attempt; it
+/// defaults to the real [_constructDatabase].
+Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(
+  String clientName, {
+  @visibleForTesting
+  Future<MatrixSdkDatabase> Function(String clientName)? constructDatabase,
+}) async {
+  final construct = constructDatabase ?? _constructDatabase;
   MatrixSdkDatabase? database;
   try {
-    database = await _constructDatabase(clientName);
+    database = await construct(clientName);
     await database.open();
     return database;
   } catch (e, s) {
@@ -28,7 +37,7 @@ Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(String clientName) async {
       e: e,
       s: s,
       data: {"clientID": clientName},
-      m: "Failed to open matrix sdk database. Openning fallback database.",
+      m: "Failed to open matrix sdk database. Retrying once on a clean file.",
     );
     // Pangea#
     Logs().wtf('Unable to construct database!', e, s);
@@ -44,23 +53,28 @@ Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(String clientName) async {
     }
 
     // Try to delete database so that it can created again on next init:
-    database?.delete().catchError(
-      // #Pangea
-      (err, s) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {},
-          m: "Failed to delete matrix database after failed construction.",
-        );
-      },
-      // (e, s) => Logs().wtf(
-      //   'Unable to delete database, after failed construction',
-      //   e,
-      //   s,
-      // ),
-      // Pangea#
-    );
+    // #Pangea
+    // Awaited, unlike upstream's fire-and-forget: the retry below reopens this
+    // same path, so an unawaited delete races it. The handler also reports its
+    // own error rather than re-reporting the open failure.
+    try {
+      await database?.delete();
+    } catch (deleteError, deleteStack) {
+      ErrorHandler.logError(
+        e: deleteError,
+        s: deleteStack,
+        data: {"clientID": clientName},
+        m: "Failed to delete matrix database after failed construction.",
+      );
+    }
+    // database?.delete().catchError(
+    //   (e, s) => Logs().wtf(
+    //     'Unable to delete database, after failed construction',
+    //     e,
+    //     s,
+    //   ),
+    // );
+    // Pangea#
 
     // Delete database file:
     if (!kIsWeb) {
@@ -68,7 +82,23 @@ Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(String clientName) async {
       if (await dbFile.exists()) await dbFile.delete();
     }
 
-    rethrow;
+    // The cleanup above is exactly what let the *next* launch succeed while
+    // this one died, so spend the retry here rather than a whole app launch
+    // (CLIENT-9FB, #8658). One extra attempt, not recursive, so a persistent
+    // failure still terminates.
+    try {
+      database = await construct(clientName);
+      await database.open();
+      return database;
+    } catch (retryError, retryStack) {
+      ErrorHandler.logError(
+        e: retryError,
+        s: retryStack,
+        data: {"clientID": clientName},
+        m: "Matrix sdk database retry failed after cleanup.",
+      );
+      rethrow;
+    }
   }
 }
 
