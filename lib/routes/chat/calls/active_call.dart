@@ -2027,18 +2027,27 @@ class ActiveCall extends ChangeNotifier {
     // Decided NOW: a decline that led here was recorded before this call, so
     // the outcome is already the right one, and the screen may close at once.
     _decide(_declinedByPeer ? CallOutcome.declined : CallOutcome.ended);
-    return _hangUp ??= () async {
-      try {
-        await _tearDown();
-        _to(_declinedByPeer ? CallStage.declined : CallStage.ended);
-      } finally {
-        // A teardown that could not retract must not be remembered as done.
-        // Memoizing it would make every later hangup return this same finished
-        // future, so the membership would stay advertised until it expired with
-        // nothing able to take it back.
-        if (_joined) _hangUp = null;
-      }
-    }();
+    // A teardown that could not retract must not be remembered as done.
+    // Memoizing it would make every later hangup return this same finished
+    // future, so the membership would stay advertised until it expired with
+    // nothing able to take it back.
+    //
+    // Cleared from HERE, the assigning side, and never from inside the body:
+    // an async body runs synchronously until its first await, so a body that
+    // ever gained a path returning before one would clear a latch that `??=`
+    // had not yet set and then be latched for ever. `whenComplete` is
+    // scheduled as a microtask, which cannot run before the assignment
+    // expression it belongs to has finished, so it cannot lose that race. Same
+    // rule as [CallService.retract], where losing it left the account unable to
+    // make or take another call.
+    return _hangUp ??= _endCall().whenComplete(() {
+      if (_joined) _hangUp = null;
+    });
+  }
+
+  Future<void> _endCall() async {
+    await _tearDown();
+    _to(_declinedByPeer ? CallStage.declined : CallStage.ended);
   }
 
   /// Gives the call back to the service.

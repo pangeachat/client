@@ -1704,7 +1704,26 @@ class CallService {
   /// lock the learner out of calling over a failure they cannot see. But the
   /// caller is told, because silently reporting success meant the one retry that
   /// could have helped never happened.
-  Future<bool> retract() => _retracting ??= () async {
+  ///
+  /// A MEMOIZED IN-FLIGHT FUTURE IS CLEARED BY THE CODE THAT ASSIGNS IT, NEVER
+  /// FROM INSIDE THE BODY IT MEMOIZES. An async body runs synchronously until
+  /// its first await, and this one has a path that returns without ever
+  /// awaiting -- there is nothing to retract. On that path the body, its
+  /// `finally` included, finishes BEFORE `??=` has assigned anything: the clear
+  /// ran against a latch that was still null, and the finished future was
+  /// latched afterwards with nothing left able to clear it. Every later retract
+  /// then answered from it -- true, immediately, having left nothing -- so the
+  /// membership stayed advertised, [_current] was never released, and this
+  /// account read as busy for the rest of its life: every call refused, every
+  /// ring auto-declined.
+  ///
+  /// `whenComplete` on the assigning side cannot lose that race. The callback
+  /// is scheduled as a microtask, which cannot run before the assignment
+  /// expression it is part of has finished.
+  Future<bool> retract() =>
+      _retracting ??= _retract().whenComplete(() => _retracting = null);
+
+  Future<bool> _retract() async {
     final session = _current;
     try {
       if (session == null) return !_abandonedMembership;
@@ -1770,9 +1789,8 @@ class CallService {
         _current = null;
         _claimedRoomId = null;
       }
-      _retracting = null;
     }
-  }();
+  }
 
   /// Finishes a `leave()` that wrote the membership away and then threw.
   ///

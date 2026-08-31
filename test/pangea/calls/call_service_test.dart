@@ -505,6 +505,66 @@ void main() {
     });
   });
 
+  group('a retract that answered without ever leaving', () {
+    test('does not latch every later retract onto its answer', () async {
+      // The in-flight latch is what makes concurrent hangups join one attempt.
+      // It is assigned by `_retracting ??= ...`, and the body it memoizes has a
+      // path that returns without ever awaiting -- there is no call to retract.
+      // An async body runs synchronously until its first await, so on that path
+      // the whole body, its `finally` included, finishes BEFORE the assignment
+      // lands: the clear runs first and the latch is set afterwards, with
+      // nothing left to clear it.
+      //
+      // Every later retract then returns that finished future -- true,
+      // immediately, having left nothing -- so the membership stays advertised
+      // and the session is never released. `isBusy` reads that session for
+      // ever: every new call refused, every incoming ring declined as busy.
+      final client = await bareClient();
+      final calls = CallService(
+        client,
+        leaveWithin: const Duration(milliseconds: 50),
+      );
+
+      // The path with nothing to retract: a hangup on a call that never came
+      // up, which is ordinary traffic rather than a corner.
+      await expectLater(
+        calls.retract(),
+        completion(isTrue),
+        reason: 'nothing was advertised, so nothing was left advertised',
+      );
+
+      // A real call now, and the hangup that has to take its membership back.
+      final session = _LeavingSession(
+        client: client,
+        room: Room(id: '!r:fakeServer.notExisting', client: client),
+        voip: calls.voip,
+        backend: LiveKitBackend(
+          livekitServiceUrl: 'http://sfu:7980',
+          livekitAlias: 'alias',
+          e2eeEnabled: false,
+        ),
+        groupCallId: 'call-id',
+        application: 'm.call',
+        scope: 'm.room',
+      );
+      calls.adoptSessionForTest(session);
+
+      await expectLater(calls.retract(), completion(isTrue));
+
+      expect(
+        session.leaves,
+        1,
+        reason: 'the second retract had a membership to take back and took it',
+      );
+      expect(
+        calls.hasJoinedSession,
+        isFalse,
+        reason: 'a session never released goes on refusing every later call',
+      );
+      expect(calls.isBusy, isFalse);
+    });
+  });
+
   group('a membership that could not be taken back', () {
     test('does not go on suppressing calls to this account', () {
       // Retracting is given up on when the server will not take it: the
