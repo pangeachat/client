@@ -49,7 +49,7 @@ class _StubUserController extends UserController {
 /// #8117 / #8264 / #8326 / #8334 / #8664 — the Audio section of learning
 /// settings: the per-surface audio toggles (Words, Choices, On new message, On
 /// message click), the known-good-voice gate on the two message toggles — which
-/// renders them disabled with an explanatory subtitle when it fails — and
+/// renders them disabled under an explanatory note when it fails — and
 /// keeping all of them current with profile changes made off this page.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
