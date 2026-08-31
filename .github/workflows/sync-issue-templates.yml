@@ -7,7 +7,7 @@ on:
 
 jobs:
   sync:
-    uses: pangeachat/workflows/.github/workflows/reusable-sync-issue-templates.yaml@a02f9792e74b0a406612be47549e3c3c5194632b # main
+    uses: pangeachat/workflows/.github/workflows/reusable-sync-issue-templates.yaml@89186d0882e8c4923b78175dfd5e295b2b0b9e9a # main
     permissions:
       contents: write
       pull-requests: write
