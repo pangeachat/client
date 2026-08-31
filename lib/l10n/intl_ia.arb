@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-31 12:03:24.615119",
+    "@@last_modified": "2026-08-31 12:49:33.783261",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10749,5 +10749,5 @@
     "callHistoryDeclined": "Appello declinate",
     "callHistoryYouDeclined": "Tu declinava iste appello",
     "starsEarnedInLanguage": "Stellas ganiate in {language}",
-    "readAloudNoVoiceSubtitle": "Nulle voce de alte qualitate in {language} es disponibile in iste apparato, ergo iste configuration es indisponibile. Tu pote ancora reproducer audio del barra de instrumentos de messages."
+    "readAloudNoVoiceNote": "Nulle voce de alte qualitate in {language} es disponibile in iste apparato, dunque iste configurationes non es disponibile. Tu pote ancora reproducer audio del barra de instrumentos del message."
 }

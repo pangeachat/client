@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-31 12:03:28.491693",
+    "@@last_modified": "2026-08-31 12:49:35.057848",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "زنګ رد شو",
     "callHistoryYouDeclined": "تاسو دا زنګ رد کړ",
     "starsEarnedInLanguage": "{language} کې ترلاسه شوي ستوري",
-    "readAloudNoVoiceSubtitle": "په دې وسیله کې د {language} لوړ کیفیت غږ شتون نلري، نو دا ترتیب شتون نلري. تاسو بیا هم کولی شئ د پیغام له اوزارپټي څخه آډیو پلی کړئ."
+    "readAloudNoVoiceNote": "پدې وسیله کې د {language} لوړ کیفیت غږ شتون نلري، نو دا تنظیمات شتون نلري. تاسو لاهم کولی شئ د پیغام له اوزارپټې څخه آډیو پلی کړئ."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-31 12:03:20.739494",
+    "@@last_modified": "2026-08-31 12:49:27.800951",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "Oproep geweier",
     "callHistoryYouDeclined": "Jy het hierdie oproep geweier",
     "starsEarnedInLanguage": "Sterre verdien in {language}",
-    "readAloudNoVoiceSubtitle": "Geen hoëgehalte {language}-stem is op hierdie toestel beskikbaar nie, so hierdie instelling is onbeskikbaar. Jy kan steeds oudio vanaf die boodskapnutsbalk speel."
+    "readAloudNoVoiceNote": "Geen hoëgehalte {language}-stem is op hierdie toestel beskikbaar nie, so hierdie instellings is onbeskikbaar. Jy kan steeds oudio vanaf die boodskapnutsbalk speel."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-31 12:03:24.877439",
+    "@@last_modified": "2026-08-31 12:49:31.397981",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "Ajụla oku",
     "callHistoryYouDeclined": "Ị jụrụ oku a",
     "starsEarnedInLanguage": "Kpakpando enwetara na {language}",
-    "readAloudNoVoiceSubtitle": "Enweghị olu {language} dị elu dị na ngwaọrụ a, yabụ ntọala a adịghị. Ị ka nwere ike ịkpọ ọdịyo site na ogwe ngwaọrụ ozi."
+    "readAloudNoVoiceNote": "Enweghị olu {language} dị elu dị na ngwaọrụ a, yabụ ntọala ndị a adịghị. Ị ka nwere ike ịkpọ ọdịyo site na ogwe ngwaọrụ ozi."
 }

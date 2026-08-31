@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-31 12:03:21.224559",
+    "@@last_modified": "2026-08-31 12:49:27.880007",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "Zəng rədd edildi",
     "callHistoryYouDeclined": "Bu zəngi siz rədd etdiniz",
     "starsEarnedInLanguage": "{language} dilində qazanılan ulduzlar",
-    "readAloudNoVoiceSubtitle": "Bu cihazda yüksək keyfiyyətli {language} səsi mövcud deyil, buna görə bu parametr əlçatan deyil. Mesaj alət çubuğundan səsi yenə də oxuda bilərsiniz."
+    "readAloudNoVoiceNote": "Bu cihazda yüksək keyfiyyətli {language} səsi mövcud deyil, buna görə də bu parametrlər əlçatan deyil. Mesaj alət çubuğundan səsi yenə də oxuda bilərsiniz."
 }

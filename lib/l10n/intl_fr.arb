@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-31 12:03:22.678392",
+    "@@last_modified": "2026-08-31 12:49:29.586266",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10168,5 +10168,5 @@
     "callHistoryDeclined": "Appel refusé",
     "callHistoryYouDeclined": "Vous avez refusé cet appel",
     "starsEarnedInLanguage": "Étoiles gagnées en {language}",
-    "readAloudNoVoiceSubtitle": "Aucune voix {language} de haute qualité n'est disponible sur cet appareil, ce paramètre est donc indisponible. Vous pouvez toujours écouter l'audio depuis la barre d'outils des messages."
+    "readAloudNoVoiceNote": "Aucune voix {language} de haute qualité n'est disponible sur cet appareil, ces paramètres sont donc inaccessibles. Vous pouvez toujours lire l'audio depuis la barre d'outils des messages."
 }

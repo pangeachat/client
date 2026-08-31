@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-31 12:03:28.007327",
+    "@@last_modified": "2026-08-31 12:49:34.089095",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "Samtalen avslått",
     "callHistoryYouDeclined": "Du avslo denne samtalen",
     "starsEarnedInLanguage": "Stjerner opptjent i {language}",
-    "readAloudNoVoiceSubtitle": "Ingen høykvalitets {language}-stemme er tilgjengelig på denne enheten, så denne innstillingen er utilgjengelig. Du kan fortsatt spille av lyd fra meldingsverktøylinjen."
+    "readAloudNoVoiceNote": "Ingen høykvalitets {language}-stemme er tilgjengelig på denne enheten, så disse innstillingene er utilgjengelige. Du kan fortsatt spille av lyd fra meldingsverktøylinjen."
 }

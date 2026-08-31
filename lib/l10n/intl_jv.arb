@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-31 12:03:25.485503",
+    "@@last_modified": "2026-08-31 12:49:31.775541",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "Telpon ditolak",
     "callHistoryYouDeclined": "Sampeyan nolak telpon iki",
     "starsEarnedInLanguage": "Lintang sing dipikolehi ing {language}",
-    "readAloudNoVoiceSubtitle": "Ora ana swara {language} kualitas dhuwur sing kasedhiya ing piranti iki, mula setelan iki ora kasedhiya. Sampeyan isih bisa muter audio saka bilah alat pesen."
+    "readAloudNoVoiceNote": "Ora ana swara {language} kualitas dhuwur sing kasedhiya ing piranti iki, mula setelan iki ora kasedhiya. Sampeyan isih bisa muter audio saka bilah alat pesen."
 }

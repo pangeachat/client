@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-31 12:03:30.744952",
+    "@@last_modified": "2026-08-31 12:49:36.584201",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "Thirrja u refuzua",
     "callHistoryYouDeclined": "Ju e refuzuat këtë thirrje",
     "starsEarnedInLanguage": "Yje të fituar në {language}",
-    "readAloudNoVoiceSubtitle": "Nuk ka zë me cilësi të lartë {language} në dispozicion në këtë pajisje, prandaj ky cilësim nuk është i disponueshëm. Mund të luani sërish audion nga shiriti i veglave të mesazheve."
+    "readAloudNoVoiceNote": "Nuk ka zë me cilësi të lartë {language} në dispozicion në këtë pajisje, kështu që këto cilësime nuk janë të disponueshme. Mund të luani ende audio nga shiriti i veglave të mesazheve."
 }

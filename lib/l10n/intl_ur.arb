@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-31 12:03:32.210947",
+    "@@last_modified": "2026-08-31 12:49:38.223913",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "کال رد کر دی گئی",
     "callHistoryYouDeclined": "آپ نے یہ کال رد کر دی",
     "starsEarnedInLanguage": "{language} میں حاصل کردہ ستارے",
-    "readAloudNoVoiceSubtitle": "اس ڈیوائس پر کوئی اعلیٰ معیار کی {language} آواز دستیاب نہیں ہے، لہذا یہ سیٹنگ دستیاب نہیں ہے۔ آپ اب بھی میسج ٹول بار سے آڈیو چلا سکتے ہیں۔"
+    "readAloudNoVoiceNote": "اس ڈیوائس پر اعلیٰ معیار کی {language} آواز دستیاب نہیں ہے، لہذا یہ ترتیبات دستیاب نہیں ہیں۔ آپ اب بھی میسج ٹول بار سے آڈیو چلا سکتے ہیں۔"
 }

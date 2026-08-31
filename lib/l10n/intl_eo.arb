@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:03:22.564911",
+    "@@last_modified": "2026-08-31 12:49:29.143995",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10758,5 +10758,5 @@
     "callHistoryDeclined": "Voko malakceptita",
     "callHistoryYouDeclined": "Vi malakceptis ĉi tiun vokon",
     "starsEarnedInLanguage": "Steloj gajnitaj en {language}",
-    "readAloudNoVoiceSubtitle": "Neniu altkvalita {language} voĉo disponeblas en ĉi tiu aparato, do ĉi tiu agordo ne haveblas. Vi ankoraŭ povas ludi sonon el la mesaĝa ilobreto."
+    "readAloudNoVoiceNote": "Neniu altkvalita {language} voĉo disponeblas en ĉi tiu aparato, do ĉi tiuj agordoj ne disponeblas. Vi ankoraŭ povas ludi sonon el la mesaĝa ilobreto."
 }

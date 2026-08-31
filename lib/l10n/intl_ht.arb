@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-31 12:03:24.280870",
+    "@@last_modified": "2026-08-31 12:49:30.513336",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "Apèl la refize",
     "callHistoryYouDeclined": "Ou refize apèl sa a",
     "starsEarnedInLanguage": "Etwal ou te touche nan {language}",
-    "readAloudNoVoiceSubtitle": "Pa gen okenn vwa {language} bon kalite ki disponib sou aparèy sa a, kidonk paramèt sa a pa disponib. Ou ka toujou jwe odyo nan ba zouti mesaj la."
+    "readAloudNoVoiceNote": "Pa gen yon vwa {language} ki gen bon kalite disponib sou aparèy sa a, kidonk paramèt sa yo pa disponib. Ou ka toujou jwe odyo nan ba zouti mesaj la."
 }

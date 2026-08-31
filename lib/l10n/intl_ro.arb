@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:03:29.415912",
+    "@@last_modified": "2026-08-31 12:49:35.473615",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10545,5 +10545,5 @@
     "callHistoryDeclined": "Apel refuzat",
     "callHistoryYouDeclined": "Ai refuzat acest apel",
     "starsEarnedInLanguage": "Stele câștigate în {language}",
-    "readAloudNoVoiceSubtitle": "Nicio voce de înaltă calitate pentru limba {language} nu este disponibilă pe acest dispozitiv, prin urmare această setare nu este disponibilă. Puteți reda în continuare conținutul audio din bara de instrumente a mesajelor."
+    "readAloudNoVoiceNote": "Nu este disponibilă nicio voce de înaltă calitate pentru {language} pe acest dispozitiv, așadar aceste setări nu sunt disponibile. Puteți reda în continuare audio din bara de instrumente a mesajului."
 }

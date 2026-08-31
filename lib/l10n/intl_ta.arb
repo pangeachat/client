@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:03:31.165496",
+    "@@last_modified": "2026-08-31 12:49:37.437021",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9905,5 +9905,5 @@
     "callHistoryDeclined": "அழைப்பு மறுக்கப்பட்டது",
     "callHistoryYouDeclined": "இந்த அழைப்பை நீங்கள் மறுத்தீர்கள்",
     "starsEarnedInLanguage": "{language} மொழியில் பெற்ற நட்சத்திரங்கள்",
-    "readAloudNoVoiceSubtitle": "இந்தச் சாதனத்தில் உயர்தர {language} குரல் கிடைக்காததால், இந்த அமைப்பு கிடைக்கவில்லை. மெசேஜ் கருவிப்பட்டியில் இருந்து ஆடியோவை இயக்கலாம்."
+    "readAloudNoVoiceNote": "இந்தச் சாதனத்தில் உயர்தர {language} குரல் இல்லை, எனவே இந்த அமைப்புகள் கிடைக்கவில்லை. மெசேஜ் கருவிப்பட்டியிலிருந்து நீங்கள் ஆடியோவை இயக்கலாம்."
 }

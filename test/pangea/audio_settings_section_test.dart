@@ -160,8 +160,10 @@ void main() {
     expect(find.text('On message click'), findsOneWidget);
     expect(find.byType(SwitchListTile), findsNWidgets(4));
 
-    // The retired single message-audio toggle is gone (#8264).
+    // The retired single message-audio toggle is gone (#8264), and the
+    // no-voice note only renders when the gate fails (#8664).
     expect(find.text('Incoming messages'), findsNothing);
+    expect(find.textContaining('message toolbar'), findsNothing);
   });
 
   testWidgets('turning off the message toggles updates the view model', (
@@ -197,7 +199,7 @@ void main() {
   });
 
   testWidgets('without a known-good voice the message toggles are disabled, '
-      'with the toolbar subtitle (#8664)', (tester) async {
+      'with one explanatory note above them (#8664)', (tester) async {
     deviceVoices = [
       {'name': 'Mónica', 'locale': 'es-ES', 'quality': 'default'},
     ];
@@ -214,13 +216,18 @@ void main() {
       expect(tile.onChanged, isNull);
       expect(tile.value, isFalse);
     }
+    // One shared note above the two tiles, which keep their own descriptions.
     expect(
       find.textContaining('No high-quality Spanish voice'),
-      findsNWidgets(2),
+      findsOneWidget,
     );
     expect(
       find.textContaining('play audio from the message toolbar'),
-      findsNWidgets(2),
+      findsOneWidget,
+    );
+    expect(
+      find.textContaining('Automatically read new received messages'),
+      findsOneWidget,
     );
 
     // A tap on a disabled toggle changes nothing and opens nothing.

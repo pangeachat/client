@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-31 12:03:22.618773",
+    "@@last_modified": "2026-08-31 12:49:29.484498",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9850,5 +9850,5 @@
     "callHistoryDeclined": "Puhelu hylättiin",
     "callHistoryYouDeclined": "Hylkäsit tämän puhelun",
     "starsEarnedInLanguage": "Tienatut tähdet kielessä {language}",
-    "readAloudNoVoiceSubtitle": "Tällä laitteella ei ole saatavilla korkealaatuista {language}-ääntä, joten tämä asetus ei ole käytettävissä. Voit silti toistaa ääntä viestipalkista."
+    "readAloudNoVoiceNote": "Tällä laitteella ei ole käytettävissä korkealaatuista {language}-ääntä, joten nämä asetukset eivät ole käytettävissä. Voit silti toistaa ääntä viestityökalupalkista."
 }

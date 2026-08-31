@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:03:31.207539",
+    "@@last_modified": "2026-08-31 12:49:36.649525",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10331,5 +10331,5 @@
     "callHistoryDeclined": "Samtal avböjt",
     "callHistoryYouDeclined": "Du avböjde detta samtal",
     "starsEarnedInLanguage": "Stjärnor intjänade i {language}",
-    "readAloudNoVoiceSubtitle": "Ingen högkvalitativ {language}-röst är tillgänglig på den här enheten, så den här inställningen är inte tillgänglig. Du kan fortfarande spela upp ljud från meddelandefältet."
+    "readAloudNoVoiceNote": "Ingen högkvalitativ röst för {language} är tillgänglig på den här enheten, så dessa inställningar är inte tillgängliga. Du kan fortfarande spela upp ljud från meddelandeverktygsfältet."
 }

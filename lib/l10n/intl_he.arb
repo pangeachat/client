@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:03:23.412769",
+    "@@last_modified": "2026-08-31 12:49:30.339760",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10727,5 +10727,5 @@
     "callHistoryDeclined": "השיחה נדחתה",
     "callHistoryYouDeclined": "דחית את השיחה הזו",
     "starsEarnedInLanguage": "כוכבים שנצברו ב{language}",
-    "readAloudNoVoiceSubtitle": "אין קול איכותי של {language} זמין במכשיר זה, ולכן הגדרה זו אינה זמינה. עדיין ניתן להשמיע אודיו מסרגל הכלים של ההודעה."
+    "readAloudNoVoiceNote": "אין קול {language} באיכות גבוהה זמין במכשיר זה, ולכן הגדרות אלה אינן זמינות. עדיין ניתן להשמיע אודיו מסרגל הכלים של ההודעה."
 }

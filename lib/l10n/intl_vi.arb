@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:03:32.442961",
+    "@@last_modified": "2026-08-31 12:49:37.985396",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7105,5 +7105,5 @@
     "callHistoryDeclined": "Cuộc gọi bị từ chối",
     "callHistoryYouDeclined": "Bạn đã từ chối cuộc gọi này",
     "starsEarnedInLanguage": "Số sao kiếm được bằng tiếng {language}",
-    "readAloudNoVoiceSubtitle": "Không có giọng đọc {language} chất lượng cao trên thiết bị này, nên cài đặt này không khả dụng. Bạn vẫn có thể phát âm thanh từ thanh công cụ tin nhắn."
+    "readAloudNoVoiceNote": "Không có giọng nói {language} chất lượng cao trên thiết bị này, nên các cài đặt này không khả dụng. Bạn vẫn có thể phát âm thanh từ thanh công cụ tin nhắn."
 }

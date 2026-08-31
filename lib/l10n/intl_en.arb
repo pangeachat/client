@@ -5128,8 +5128,8 @@
             }
         }
     },
-    "readAloudNoVoiceSubtitle": "No high-quality {language} voice is available on this device, so this setting is unavailable. You can still play audio from the message toolbar.",
-    "@readAloudNoVoiceSubtitle": {
+    "readAloudNoVoiceNote": "No high-quality {language} voice is available on this device, so these settings are unavailable. You can still play audio from the message toolbar.",
+    "@readAloudNoVoiceNote": {
         "type": "String",
         "placeholders": {
             "language": {

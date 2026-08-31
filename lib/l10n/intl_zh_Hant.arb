@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:03:32.895605",
+    "@@last_modified": "2026-08-31 12:49:38.680808",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9919,5 +9919,5 @@
     "callHistoryDeclined": "通話已拒絕",
     "callHistoryYouDeclined": "您拒絕了此通話",
     "starsEarnedInLanguage": "在{language}中獲得的星星",
-    "readAloudNoVoiceSubtitle": "此裝置沒有高品質的{language}語音，因此無法使用此設定。您仍然可以從訊息工具列播放音訊。"
+    "readAloudNoVoiceNote": "此裝置沒有高品質的{language}語音，因此這些設定無法使用。您仍然可以從訊息工具列播放音訊。"
 }

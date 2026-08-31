@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-31 12:03:23.551149",
+    "@@last_modified": "2026-08-31 12:49:30.367811",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "Ua hōʻole ʻia ke kelepona",
     "callHistoryYouDeclined": "Ua hōʻole ʻoe i kēia kelepona",
     "starsEarnedInLanguage": "Nā hōkū i loaʻa ma ka ʻōlelo {language}",
-    "readAloudNoVoiceSubtitle": "ʻAʻohe leo {language} maikaʻi i loaʻa ma kēia hāmeʻa, no laila ʻaʻole loaʻa kēia hoʻonohonoho. Hiki nō iā ʻoe ke hoʻokani leo mai ka pahu hana leka."
+    "readAloudNoVoiceNote": "ʻAʻohe leo {language} maikaʻi i loaʻa ma kēia hāmeʻa, no laila ʻaʻole loaʻa kēia mau hoʻonohonoho. Hiki nō iā ʻoe ke hoʻokani leo mai ka pahu hana leka."
 }

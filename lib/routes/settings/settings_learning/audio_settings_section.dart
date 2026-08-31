@@ -39,8 +39,8 @@ class AudioSettingsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     // Without a known-good voice the message-audio settings cannot do
-    // anything, so the toggles render disabled and the subtitle carries the
-    // explanation plus the toolbar alternative (#8664). See
+    // anything, so those toggles render disabled and a single note above them
+    // carries the explanation plus the toolbar alternative (#8664). See
     // message-read-aloud.instructions.md.
     final hasVoice = viewModel.hasKnownGoodVoice;
     final language = viewModel.selectedTargetLanguage?.displayName;
@@ -65,17 +65,17 @@ class AudioSettingsSection extends StatelessWidget {
                 onChange: (v) => viewModel.updateToolSetting(setting, v),
               ),
             ),
+        if (!hasVoice && language != null)
+          ListTile(
+            subtitle: Text(L10n.of(context).readAloudNoVoiceNote(language)),
+          ),
         ...ToolSetting.audioSettings
             .where((setting) => setting.isMessageAudioSetting)
             .map(
               (setting) => SwitchListTile.adaptive(
                 value: viewModel.getToolSetting(setting),
                 title: Text(setting.toolName(context)),
-                subtitle: Text(
-                  hasVoice || language == null
-                      ? setting.toolDescription(context)
-                      : L10n.of(context).readAloudNoVoiceSubtitle(language),
-                ),
+                subtitle: Text(setting.toolDescription(context)),
                 activeThumbColor: AppConfig.activeToggleColor,
                 onChanged: !hasVoice
                     ? null

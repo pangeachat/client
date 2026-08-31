@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-31 12:03:20.932960",
+    "@@last_modified": "2026-08-31 12:49:28.771040",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "ጥሪው ውድቅ ተደርጓል",
     "callHistoryYouDeclined": "ይህን ጥሪ እምቢ ብለዋል",
     "starsEarnedInLanguage": "በ{language} የተገኙ ኮከቦች",
-    "readAloudNoVoiceSubtitle": "በዚህ መሳሪያ ላይ ከፍተኛ ጥራት ያለው የ{language} ድምጽ አይገኝም፣ ስለዚህ ይህ ቅንብር አይገኝም። አሁንም ከመልዕክት የመሳሪያ አሞሌ ድምጽ ማጫወት ይችላሉ።"
+    "readAloudNoVoiceNote": "በዚህ መሳሪያ ላይ ከፍተኛ ጥራት ያለው የ{language} ድምጽ አይገኝም፣ ስለዚህ እነዚህ ቅንብሮች አይገኙም። አሁንም ከመልዕክት የመሳሪያ አሞሌ ድምጽ ማጫወት ይችላሉ።"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-31 12:03:26.158133",
+    "@@last_modified": "2026-08-31 12:49:32.553943",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "Uruff ofgeleent",
     "callHistoryYouDeclined": "Dir hutt dësen Uruff ofgeleent",
     "starsEarnedInLanguage": "Stären a {language} verdéngt",
-    "readAloudNoVoiceSubtitle": "Keng héichqualitativ {language} Stëmm ass op dësem Apparat verfügbar, dofir ass dës Astellung net disponibel. Dir kënnt ëmmer nach Audio vun der Message-Toolbar ofspillen."
+    "readAloudNoVoiceNote": "Keng héichqualitativ {language} Stëmm ass op dësem Apparat verfügbar, dofir sinn dës Astellungen net disponibel. Dir kënnt awer ëmmer nach Audio vun der Message-Toolbar ofspillen."
 }

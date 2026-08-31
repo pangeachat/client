@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-31 12:03:28.926493",
+    "@@last_modified": "2026-08-31 12:49:35.327299",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10730,5 +10730,5 @@
     "callHistoryDeclined": "Chamada recusada",
     "callHistoryYouDeclined": "Recusou esta chamada",
     "starsEarnedInLanguage": "Estrelas ganhas em {language}",
-    "readAloudNoVoiceSubtitle": "Não está disponível uma voz de alta qualidade para {language} neste dispositivo, por isso esta definição não está disponível. Pode continuar a reproduzir áudio a partir da barra de ferramentas da mensagem."
+    "readAloudNoVoiceNote": "Não está disponível uma voz de alta qualidade em {language} neste dispositivo, por isso estas definições não estão disponíveis. Pode continuar a reproduzir áudio a partir da barra de mensagens."
 }

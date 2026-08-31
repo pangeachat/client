@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-31 12:03:26.480283",
+    "@@last_modified": "2026-08-31 12:49:33.141120",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "Antso nolavina",
     "callHistoryYouDeclined": "Nolavinao ity antso ity",
     "starsEarnedInLanguage": "Kintana azo tamin'ny teny {language}",
-    "readAloudNoVoiceSubtitle": "Tsy misy feo {language} avo lenta azo ampiasaina amin'ity fitaovana ity, ka tsy azo ampiasaina ity toe-javatra ity. Mbola afaka milalao feo avy amin'ny fitaovana fandefasana hafatra ianao."
+    "readAloudNoVoiceNote": "Tsy misy feo {language} avo lenta azo ampiasaina amin'ity fitaovana ity, ka tsy misy ireo toe-javatra ireo. Mbola afaka milalao feo avy amin'ny fitaovana fandefasana hafatra ianao."
 }

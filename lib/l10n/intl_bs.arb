@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-31 12:03:20.838558",
+    "@@last_modified": "2026-08-31 12:49:27.834956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2217,5 +2217,5 @@
     "callHistoryDeclined": "Poziv odbijen",
     "callHistoryYouDeclined": "Odbili ste ovaj poziv",
     "starsEarnedInLanguage": "Zvijezde zarađene u {language}",
-    "readAloudNoVoiceSubtitle": "Na ovom uređaju nije dostupan visokokvalitetan glas za {language}, tako da ova postavka nije dostupna. I dalje možete reproducirati zvuk sa trake s alatima za poruke."
+    "readAloudNoVoiceNote": "Na ovom uređaju nije dostupan visokokvalitetan glas za {language}, tako da ova podešavanja nisu dostupna. I dalje možete puštati zvuk sa trake sa alatkama za poruke."
 }
