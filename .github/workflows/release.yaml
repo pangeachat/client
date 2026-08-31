@@ -316,3 +316,10 @@ jobs:
         run: flutter pub get
       - name: Update sentry
         run: flutter packages pub run sentry_dart_plugin
+      - name: Verify Sentry artifacts landed
+        # The plugin exits 0 as soon as the upload is handed off
+        # (sentry.properties sets wait_for_processing=false), so a clean exit is
+        # not evidence that anything landed -- and a release with no source maps
+        # is indistinguishable from a healthy one until someone opens a minified
+        # stack trace weeks later. See #8656.
+        run: ./scripts/verify-sentry-artifacts.sh
