@@ -184,7 +184,12 @@ class ChatDetailsContent extends StatelessWidget {
                       Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(32.0),
+                            // Horizontal padding stays tight so the title gets
+                            // as much room as possible on narrow screens (#8661).
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 32.0,
+                              horizontal: 16.0,
+                            ),
                             child: Stack(
                               children: [
                                 Hero(
@@ -317,9 +322,11 @@ class ChatDetailsContent extends StatelessWidget {
                                 ),
                               ),
                             Padding(
+                              // Matches the avatar's horizontal padding above
+                              // so the description stays aligned with it.
                               padding: const EdgeInsets.only(
-                                left: 32.0,
-                                right: 32.0,
+                                left: 16.0,
+                                right: 16.0,
                                 top: 16.0,
                                 bottom: 16.0,
                               ),
