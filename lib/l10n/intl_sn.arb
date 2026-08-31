@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Hauna mvumo yekukoka nhengo pano.",
     "callTranscriptRoomEncrypted": "Hurukuro iyi yakavharirwa uye zvakataurwa hazvina kukwanisa kuvhurwa pano, saka hazviratidzwe.",
     "callTranscriptParticipantsUnknown": "Hazvizivikanwe kuti ndiani mumwe aive parunhare urwu, saka mumwe munhu akataura anogona kunge asipo zvachose kubva pane zvakanyorwa izvi.",
-    "callTranscriptTooLongToSend": "Zvakarehwa na {name} zvakareba zvekuti zvisachengetwe nerunhare urwu, saka hapana chazvo chiri kuratidzwa."
+    "callTranscriptTooLongToSend": "Zvakarehwa na {name} zvakareba zvekuti zvisachengetwe nerunhare urwu, saka hapana chazvo chiri kuratidzwa.",
+    "callTranscriptMicrophoneRefused": "Chigadzirwa cha {name} hachina kumbovhura maikorofoni yekufona uku, saka hapana chavakarekodha uye zvavakarekodha hazvizivikanwe.",
+    "callTranscriptAudioLost": "Zvakataurwa na {name} zvakarekodhwa asi zvakarasika zvisati zvanyorwa, saka zvakataurwa hazvizivikanwe."
 }

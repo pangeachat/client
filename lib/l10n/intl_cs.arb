@@ -10335,5 +10335,7 @@
     "noPermissionToInviteUsers": "Nemáte oprávnění zvát sem členy.",
     "callTranscriptRoomEncrypted": "Tento chat je šifrovaný a přepis se zde nepodařilo odemknout, takže to, co bylo řečeno, se nezobrazuje.",
     "callTranscriptParticipantsUnknown": "Není známo, kdo další se tohoto hovoru zúčastnil, takže někdo, kdo mluvil, může v tomto přepisu zcela chybět.",
-    "callTranscriptTooLongToSend": "To, co řekl {name}, bylo příliš dlouhé na uložení s tímto hovorem, takže se nic z toho nezobrazuje."
+    "callTranscriptTooLongToSend": "To, co řekl {name}, bylo příliš dlouhé na uložení s tímto hovorem, takže se nic z toho nezobrazuje.",
+    "callTranscriptMicrophoneRefused": "Zařízení uživatele {name} nikdy neotevřelo mikrofon pro tento hovor, takže nic z toho, co řekl(a), nebylo nahráno a není známo, co bylo řečeno.",
+    "callTranscriptAudioLost": "To, co řekl(a) {name}, bylo nahráno, ale ztraceno předtím, než to mohlo být přepsáno, takže není známo, co bylo řečeno."
 }

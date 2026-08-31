@@ -10142,5 +10142,7 @@
     "noPermissionToInviteUsers": "Buraya üye davet etme izniniz yok.",
     "callTranscriptRoomEncrypted": "Bu sohbet şifreli ve dökümün kilidi burada açılamadı, bu yüzden konuşulanlar gösterilmiyor.",
     "callTranscriptParticipantsUnknown": "Bu aramada başka kimlerin olduğu bilinmiyor, bu nedenle konuşan biri bu dökümde tamamen eksik olabilir.",
-    "callTranscriptTooLongToSend": "{name} tarafından söylenenler bu aramayla kaydedilemeyecek kadar uzundu, bu yüzden hiçbiri gösterilmiyor."
+    "callTranscriptTooLongToSend": "{name} tarafından söylenenler bu aramayla kaydedilemeyecek kadar uzundu, bu yüzden hiçbiri gösterilmiyor.",
+    "callTranscriptMicrophoneRefused": "{name} adlı kullanıcının cihazı bu arama için hiçbir zaman mikrofon açmadığından, söyledikleri kaydedilmedi ve ne söylendiği bilinmiyor.",
+    "callTranscriptAudioLost": "{name} adlı kullanıcının söyledikleri kaydedildi ancak yazıya dökülmeden önce kayboldu, bu nedenle ne söylendiği bilinmiyor."
 }

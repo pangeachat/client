@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Ba ka da izinin gayyatar membobi a nan.",
     "callTranscriptRoomEncrypted": "Wannan taɗi an ɓoye shi kuma ba a iya buɗe rubutun a nan ba, don haka ba a nuna abin da aka faɗa ba.",
     "callTranscriptParticipantsUnknown": "Ba a san waɗanne mutane ne suka shiga wannan kiran ba, don haka wani da ya yi magana yana iya ɓacewa daga wannan rubutun gaba ɗaya.",
-    "callTranscriptTooLongToSend": "Abin da {name} ya faɗa ya yi tsawo da za a adana shi da wannan kiran, don haka ba a nuna ko ɗaya daga ciki ba."
+    "callTranscriptTooLongToSend": "Abin da {name} ya faɗa ya yi tsawo da za a adana shi da wannan kiran, don haka ba a nuna ko ɗaya daga ciki ba.",
+    "callTranscriptMicrophoneRefused": "Na'urar {name} ba ta taɓa buɗe makirufo don wannan kiran ba, don haka ba a yi rikodin abin da suka faɗa ba kuma ba a san abin da aka faɗa ba.",
+    "callTranscriptAudioLost": "An yi rikodin abin da {name} ya faɗa amma ya ɓace kafin a iya rubuta shi, don haka ba a san abin da aka faɗa ba."
 }

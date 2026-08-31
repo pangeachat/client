@@ -10786,5 +10786,7 @@
     "noPermissionToInviteUsers": "Nimate dovoljenja za povabilo članov sem.",
     "callTranscriptRoomEncrypted": "Ta klepet je šifriran in prepisa ni bilo mogoče odkleniti tukaj, zato ni prikazano, kar je bilo rečeno.",
     "callTranscriptParticipantsUnknown": "Ni znano, kdo je bil še na tem klicu, zato morda nekdo, ki je govoril, popolnoma manjka v tem prepisu.",
-    "callTranscriptTooLongToSend": "Kar je rekel {name}, je bilo predolgo za shranjevanje s tem klicem, zato ni prikazano nič od tega."
+    "callTranscriptTooLongToSend": "Kar je rekel {name}, je bilo predolgo za shranjevanje s tem klicem, zato ni prikazano nič od tega.",
+    "callTranscriptMicrophoneRefused": "Naprava uporabnika {name} ni nikoli odprla mikrofona za ta klic, zato ni bilo posneto nič, kar je rekel, in ni znano, kaj je bilo rečeno.",
+    "callTranscriptAudioLost": "Kar je rekel {name}, je bilo posneto, vendar izgubljeno, preden je bilo mogoče prepisati, zato ni znano, kaj je bilo rečeno."
 }

@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Chan eil cead agad buill a thoirt a-steach an seo.",
     "callTranscriptRoomEncrypted": "Tha an còmhradh seo crioptaichte agus cha b' urrainn an tar-sgrìobhadh fhuasgladh an seo, mar sin chan eil na chaidh a ràdh air a shealltainn.",
     "callTranscriptParticipantsUnknown": "Chan eil fios cò eile a bha air a' ghairm seo, mar sin dh'fhaodadh gun robh cuideigin a bhruidhinn a dhìth bhon tar-sgrìobhadh seo gu tur.",
-    "callTranscriptTooLongToSend": "Bha na thuirt {name} ro fhada airson a shàbhaladh leis a' ghairm seo, mar sin chan eil gin dheth air a shealltainn."
+    "callTranscriptTooLongToSend": "Bha na thuirt {name} ro fhada airson a shàbhaladh leis a' ghairm seo, mar sin chan eil gin dheth air a shealltainn.",
+    "callTranscriptMicrophoneRefused": "Cha do dh’fhosgail inneal {name} microfòn a-riamh airson a’ ghairm seo, mar sin cha deach dad a thuirt iad a chlàradh agus chan eil fios dè chaidh a ràdh.",
+    "callTranscriptAudioLost": "Chaidh na thuirt {name} a chlàradh ach chaidh a chall mus b’ urrainn a thras-sgrìobhadh, mar sin chan eil fios dè chaidh a ràdh."
 }

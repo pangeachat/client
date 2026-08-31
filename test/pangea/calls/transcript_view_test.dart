@@ -173,6 +173,10 @@ void main() {
     /// bug -- they were fixtures that had silently become foreign clients, and
     /// a foreign client's times are deliberately not printed.
     bool positionsMarked = true,
+
+    /// The writing device never opened a microphone. False in every fixture
+    /// that is not about it, which is the ordinary case.
+    bool captureRefused = false,
   }) => MatrixEvent(
     type: CallTranscriptContent.relType,
     eventId: '\$half-$sender',
@@ -197,7 +201,7 @@ void main() {
           chunksTranscribed: transcribed,
           chunksLost: lost,
           chunksSuppressed: suppressed,
-          captureRefused: false,
+          captureRefused: captureRefused,
           drainComplete: drainComplete,
         ).toJson(),
       ...?anchor?.toJson(),
@@ -863,6 +867,50 @@ void main() {
       // And the cause it does name is ours, not a half we failed to read.
       expect(find.textContaining('sent to be transcribed'), findsOneWidget);
       expect(find.textContaining('Nothing could be read'), findsNothing);
+    });
+
+    testWidgets('a microphone that never opened is not a read failure', (
+      tester,
+    ) async {
+      // The writing device refused capture, so there was never any audio. That
+      // is a fact about THEIR device, and until this branch existed it read as
+      // "nothing could be read", which points whoever chases it at the reader.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: const [],
+            captured: 0,
+            transcribed: 0,
+            captureRefused: true,
+          ),
+          half(_peer, texts: const ['muy bien']),
+        ]),
+      );
+
+      expect(find.textContaining('never opened a microphone'), findsOneWidget);
+      expect(find.textContaining('Nothing could be read'), findsNothing);
+      expect(find.textContaining('did not say anything'), findsNothing);
+    });
+
+    testWidgets('audio captured and then lost is not a read failure', (
+      tester,
+    ) async {
+      // Recorded, then lost before a transcriber saw it. Ours again, and a
+      // different sentence from the microphone case because a different device
+      // problem is worth chasing.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: const [], captured: 3, transcribed: 0, lost: 3),
+          half(_peer, texts: const ['muy bien']),
+        ]),
+      );
+
+      expect(find.textContaining('lost before it could be'), findsOneWidget);
+      expect(find.textContaining('Nothing could be read'), findsNothing);
+      expect(find.textContaining('did not say anything'), findsNothing);
     });
 
     testWidgets('a half OUR packer emptied is not blamed on reading', (

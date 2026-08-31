@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Þú hefur ekki leyfi til að bjóða meðlimum hingað.",
     "callTranscriptRoomEncrypted": "Þetta spjall er dulkóðað og ekki var hægt að opna afritið hér, svo það sem sagt var er ekki sýnt.",
     "callTranscriptParticipantsUnknown": "Ekki er vitað hverjir fleiri voru í þessu símtali, svo einhver sem talaði gæti vantað alveg í þetta afrit.",
-    "callTranscriptTooLongToSend": "Það sem {name} sagði var of langt til að vista með þessu símtali, svo ekkert af því er sýnt."
+    "callTranscriptTooLongToSend": "Það sem {name} sagði var of langt til að vista með þessu símtali, svo ekkert af því er sýnt.",
+    "callTranscriptMicrophoneRefused": "Tæki {name} opnaði aldrei hljóðnema fyrir þetta símtal, svo ekkert sem þau sögðu var tekið upp og því er ekki vitað hvað var sagt.",
+    "callTranscriptAudioLost": "Það sem {name} sagði var tekið upp en týndist áður en hægt var að umrita það, svo það er ekki vitað hvað var sagt."
 }

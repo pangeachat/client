@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Does gennych chi ddim caniatâd i wahodd aelodau yma.",
     "callTranscriptRoomEncrypted": "Mae'r sgwrs hon wedi'i hamgryptio ac ni ellid datgloi'r trawsgrifiad yma, felly ni ddangosir yr hyn a ddywedwyd.",
     "callTranscriptParticipantsUnknown": "Nid yw'n hysbys pwy arall oedd ar yr alwad hon, felly efallai bod rhywun a siaradodd ar goll o'r trawsgrifiad hwn yn gyfan gwbl.",
-    "callTranscriptTooLongToSend": "Roedd yr hyn a ddywedodd {name} yn rhy hir i'w gadw gyda'r alwad hon, felly ni ddangosir dim ohono."
+    "callTranscriptTooLongToSend": "Roedd yr hyn a ddywedodd {name} yn rhy hir i'w gadw gyda'r alwad hon, felly ni ddangosir dim ohono.",
+    "callTranscriptMicrophoneRefused": "Ni agorodd dyfais {name} feicroffon ar gyfer yr alwad hon, felly ni recordiwyd unrhyw beth a ddywedwyd ganddynt ac nid yw'r hyn a ddywedwyd yn hysbys.",
+    "callTranscriptAudioLost": "Recordiwyd yr hyn a ddywedodd {name} ond fe'i collwyd cyn y gellid ei drawsgrifio, felly nid yw'r hyn a ddywedwyd yn hysbys."
 }

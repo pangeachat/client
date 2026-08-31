@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Jy het nie toestemming om lede hierheen te nooi nie.",
     "callTranscriptRoomEncrypted": "Hierdie klets is geënkripteer en die transkripsie kon nie hier ontsluit word nie, so wat gesê is, word nie gewys nie.",
     "callTranscriptParticipantsUnknown": "Dit is onbekend wie anders op hierdie oproep was, so iemand wat gepraat het, mag dalk heeltemal uit hierdie transkripsie ontbreek.",
-    "callTranscriptTooLongToSend": "Wat {name} gesê het, was te lank om met hierdie oproep te stoor, so niks daarvan word gewys nie."
+    "callTranscriptTooLongToSend": "Wat {name} gesê het, was te lank om met hierdie oproep te stoor, so niks daarvan word gewys nie.",
+    "callTranscriptMicrophoneRefused": "{name} se toestel het nooit 'n mikrofoon vir hierdie oproep oopgemaak nie, so niks wat hulle gesê het, is opgeneem nie en wat gesê is, is onbekend.",
+    "callTranscriptAudioLost": "Wat {name} gesê het, is opgeneem, maar verlore voordat dit getranskribeer kon word, so wat gesê is, is onbekend."
 }

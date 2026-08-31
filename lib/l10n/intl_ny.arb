@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Mulibe chilolezo choitanira anthu kuno.",
     "callTranscriptRoomEncrypted": "Macheza awa ali otetezedwa ndipo zolembedwa sizingatsegulidwe pano, choncho zomwe zidanenedwa sizikuwonetsedwa.",
     "callTranscriptParticipantsUnknown": "Sikudziwika kuti ndani anali pa kuyitana uku, choncho wina amene adalankhula atha kusowa pa zolembedwa izi.",
-    "callTranscriptTooLongToSend": "Zomwe {name} adanena zinali zazitali kwambiri kuti zisungidwe ndi kuyitana uku, choncho palibe chomwe chikuwonetsedwa."
+    "callTranscriptTooLongToSend": "Zomwe {name} adanena zinali zazitali kwambiri kuti zisungidwe ndi kuyitana uku, choncho palibe chomwe chikuwonetsedwa.",
+    "callTranscriptMicrophoneRefused": "Chida cha {name} sichinatsegule maikolofoni pa kuyimba uku, choncho palibe chimene ananena chomwe chinalembedwa ndipo zomwe ananena sizikudziwika.",
+    "callTranscriptAudioLost": "Zomwe {name} ananena zinalembedwa koma zinatayika zisanathe kulembedwa, choncho zomwe ananena sizikudziwika."
 }

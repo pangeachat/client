@@ -507,10 +507,23 @@ String _emptyHalfNote(TranscriptHalf half, String name, L10n l10n) {
   // Asked as [TranscriptHalf.issue] rather than re-derived from
   // `accounting.truncated`, because OUR own trim sets that flag too -- and that
   // is `tooLongToRead`, a different device and a different answer. The one
-  // getter already ranks every cause that outranks this, so a half that also
-  // lost audio or refused a microphone still reports the bigger problem.
+  // getter already ranks every cause that outranks this. A half that also lost
+  // audio or refused a microphone is answered by the two branches below, which
+  // exist because until them those causes fell through to the reading failure.
   if (half.issue == HalfIssue.tooLongToSend) {
     return l10n.callTranscriptTooLongToSend(name);
+  }
+
+  // Both of these are the WRITING device's own failure, and both used to fall
+  // through to "nothing could be read" -- which points whoever chases it at the
+  // reader. They are asked after `tooLongToSend` rather than before it because
+  // that is the order `HalfIssue` itself ranks them in; asking the one getter is
+  // what keeps this sentence and the diagnostic log naming the same cause.
+  if (half.issue == HalfIssue.microphoneRefused) {
+    return l10n.callTranscriptMicrophoneRefused(name);
+  }
+  if (half.issue == HalfIssue.audioLost) {
+    return l10n.callTranscriptAudioLost(name);
   }
 
   // Last, and only here a true statement: something of theirs was there and we

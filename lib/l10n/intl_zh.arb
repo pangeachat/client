@@ -9841,5 +9841,7 @@
     "noPermissionToInviteUsers": "您无权在此邀请成员。",
     "callTranscriptRoomEncrypted": "此聊天已加密，无法在此处解锁文字记录，因此未显示所说内容。",
     "callTranscriptParticipantsUnknown": "无法得知还有谁参与了此通话，因此文字记录中可能完全缺少某位发言者。",
-    "callTranscriptTooLongToSend": "{name} 说的话太长，无法随此通话保存，因此未显示任何内容。"
+    "callTranscriptTooLongToSend": "{name} 说的话太长，无法随此通话保存，因此未显示任何内容。",
+    "callTranscriptMicrophoneRefused": "{name}的设备未在此通话中打开麦克风，因此未录制任何内容，也无法得知他们说了什么。",
+    "callTranscriptAudioLost": "{name}说的话已被录音，但在转录前丢失，因此无法得知他们说了什么。"
 }

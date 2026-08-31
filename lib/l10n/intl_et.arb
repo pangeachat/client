@@ -9838,5 +9838,7 @@
     "noPermissionToInviteUsers": "Sul pole siia liikmete kutsumiseks luba.",
     "callTranscriptRoomEncrypted": "See vestlus on krüpteeritud ja transkriptsiooni ei saanud siin avada, seega öeldut ei kuvata.",
     "callTranscriptParticipantsUnknown": "Pole teada, kes veel sellel kõnel osalesid, seega võib keegi, kes rääkis, sellest transkriptsioonist täielikult puududa.",
-    "callTranscriptTooLongToSend": "See, mida {name} ütles, oli selle kõnega salvestamiseks liiga pikk, seega ei kuvata sellest midagi."
+    "callTranscriptTooLongToSend": "See, mida {name} ütles, oli selle kõnega salvestamiseks liiga pikk, seega ei kuvata sellest midagi.",
+    "callTranscriptMicrophoneRefused": "{name} seade ei avanud selle kõne jaoks mikrofoni, seega ei salvestatud midagi, mida nad ütlesid, ja öeldu ei ole teada.",
+    "callTranscriptAudioLost": "See, mida {name} ütles, salvestati, kuid läks kaduma enne, kui seda transkribeerida sai, seega öeldu ei ole teada."
 }

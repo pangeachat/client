@@ -9878,5 +9878,7 @@
     "noPermissionToInviteUsers": "Sinulla ei ole lupaa kutsua jäseniä tänne.",
     "callTranscriptRoomEncrypted": "Tämä keskustelu on salattu, eikä tekstitystä voitu avata täällä, joten sanottua ei näytetä.",
     "callTranscriptParticipantsUnknown": "Ei tiedetä, ketkä muut osallistuivat tähän puheluun, joten joku puhunut henkilö saattaa puuttua tästä tekstityksestä kokonaan.",
-    "callTranscriptTooLongToSend": "Se, mitä {name} sanoi, oli liian pitkä tallennettavaksi tämän puhelun yhteyteen, joten sitä ei näytetä."
+    "callTranscriptTooLongToSend": "Se, mitä {name} sanoi, oli liian pitkä tallennettavaksi tämän puhelun yhteyteen, joten sitä ei näytetä.",
+    "callTranscriptMicrophoneRefused": "{name}-käyttäjän laite ei avannut mikrofonia tämän puhelun aikana, joten mitään sanottua ei tallennettu eikä tiedetä, mitä sanottiin.",
+    "callTranscriptAudioLost": "Mitä {name} sanoi, tallennettiin, mutta se katosi ennen kuin se voitiin litteroida, joten sanottua ei tiedetä."
 }

@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "ʻAʻohe ou ʻae e kono i nā lālā ma ʻaneʻi.",
     "callTranscriptRoomEncrypted": "Ua hoʻopunipuni ʻia kēia kamaʻilio ʻana a ʻaʻole hiki ke wehe ʻia ka palapala ma ʻaneʻi, no laila ʻaʻole i hōʻike ʻia nā mea i ʻōlelo ʻia.",
     "callTranscriptParticipantsUnknown": "ʻAʻole ʻike ʻia ʻo wai hou aʻe ma kēia kelepona, no laila, ʻaʻole paha i hōʻike ʻia kekahi mea nāna i ʻōlelo ma kēia palapala.",
-    "callTranscriptTooLongToSend": "Ua lōʻihi loa ka ʻōlelo a {name} no ka mālama ʻana me kēia kelepona, no laila ʻaʻole i hōʻike ʻia kekahi o ia mea."
+    "callTranscriptTooLongToSend": "Ua lōʻihi loa ka ʻōlelo a {name} no ka mālama ʻana me kēia kelepona, no laila ʻaʻole i hōʻike ʻia kekahi o ia mea.",
+    "callTranscriptMicrophoneRefused": "ʻAʻole i wehe ka mea hana a {name} i ka microphone no kēia kelepona, no laila, ʻaʻohe mea i hoʻopaʻa ʻia a ʻaʻole ʻike ʻia ka mea i ʻōlelo ʻia.",
+    "callTranscriptAudioLost": "Ua hoʻopaʻa ʻia ka mea a {name} i ʻōlelo ai akā ua nalowale ma mua o ka hiki ke kākau ʻia, no laila, ʻaʻole ʻike ʻia ka mea i ʻōlelo ʻia."
 }

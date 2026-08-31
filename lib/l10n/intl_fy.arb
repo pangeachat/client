@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Jo hawwe hjir gjin tastimming om leden út te noegjen.",
     "callTranscriptRoomEncrypted": "Dizze petear is fersifere en it transkript koe hjir net ûntskoattele wurde, dus wat sein is wurdt net werjûn.",
     "callTranscriptParticipantsUnknown": "It is net bekend wa't oars oan dizze oprop meidie, dus immen dy't spruts kin hielendal ûntbrekke yn dit transkript.",
-    "callTranscriptTooLongToSend": "Wat {name} sei wie te lang om op te slaan mei dizze oprop, dus neat derfan wurdt werjûn."
+    "callTranscriptTooLongToSend": "Wat {name} sei wie te lang om op te slaan mei dizze oprop, dus neat derfan wurdt werjûn.",
+    "callTranscriptMicrophoneRefused": "It apparaat fan {name} hat nea in mikrofoan iepene foar dit petear, dus neat fan wat se seine is opnommen en wat sein is, is net bekend.",
+    "callTranscriptAudioLost": "Wat {name} sei, is opnommen, mar ferlern gien foardat it transkribearre wurde koe, dus wat sein is, is net bekend."
 }

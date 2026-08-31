@@ -10610,5 +10610,7 @@
     "noPermissionToInviteUsers": "ここにメンバーを招待する権限がありません。",
     "callTranscriptRoomEncrypted": "このチャットは暗号化されているため、トランスクリプトをここでロック解除できませんでした。そのため、会話内容は表示されません。",
     "callTranscriptParticipantsUnknown": "この通話に他に誰が参加していたか不明なため、発言した人がこのトランスクリプトから完全に欠落している可能性があります。",
-    "callTranscriptTooLongToSend": "{name}の発言が長すぎたため、この通話と一緒に保存できませんでした。そのため、何も表示されません。"
+    "callTranscriptTooLongToSend": "{name}の発言が長すぎたため、この通話と一緒に保存できませんでした。そのため、何も表示されません。",
+    "callTranscriptMicrophoneRefused": "{name}さんのデバイスでこの通話のマイクが開かれなかったため、発言は録音されず、内容も不明です。",
+    "callTranscriptAudioLost": "{name}さんの発言は録音されましたが、書き起こされる前に失われたため、内容も不明です。"
 }

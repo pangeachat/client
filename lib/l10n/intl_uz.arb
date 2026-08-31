@@ -9845,5 +9845,7 @@
     "noPermissionToInviteUsers": "Bu yerga aʼzolarni taklif qilishga ruxsatingiz yoʻq.",
     "callTranscriptRoomEncrypted": "Bu chat shifrlangan va transkriptni bu yerda ochib bo‘lmadi, shuning uchun nima deyilgani ko‘rsatilmagan.",
     "callTranscriptParticipantsUnknown": "Bu qo‘ng‘iroqda yana kimlar borligi noma’lum, shuning uchun gapirgan odam bu transkriptda umuman bo‘lmasligi mumkin.",
-    "callTranscriptTooLongToSend": "{name} aytganlari bu qo‘ng‘iroq bilan saqlash uchun juda uzun edi, shuning uchun hech narsa ko‘rsatilmagan."
+    "callTranscriptTooLongToSend": "{name} aytganlari bu qo‘ng‘iroq bilan saqlash uchun juda uzun edi, shuning uchun hech narsa ko‘rsatilmagan.",
+    "callTranscriptMicrophoneRefused": "{name} qurilmasi bu qo‘ng‘iroq uchun mikrofonni hech qachon ochmagan, shuning uchun ular aytgan hech narsa yozib olinmagan va nima deyilgani noma’lum.",
+    "callTranscriptAudioLost": "{name} aytganlari yozib olingan, ammo transkripsiya qilinmasdan oldin yo‘qolgan, shuning uchun nima deyilgani noma’lum."
 }

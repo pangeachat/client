@@ -10359,5 +10359,7 @@
     "noPermissionToInviteUsers": "Du har inte behörighet att bjuda in medlemmar här.",
     "callTranscriptRoomEncrypted": "Den här chatten är krypterad och transkriptionen kunde inte låsas upp här, så det som sades visas inte.",
     "callTranscriptParticipantsUnknown": "Det är okänt vilka andra som deltog i samtalet, så någon som talade kan saknas helt från denna transkription.",
-    "callTranscriptTooLongToSend": "Det som {name} sa var för långt för att sparas med det här samtalet, så inget av det visas."
+    "callTranscriptTooLongToSend": "Det som {name} sa var för långt för att sparas med det här samtalet, så inget av det visas.",
+    "callTranscriptMicrophoneRefused": "{name}s enhet öppnade aldrig en mikrofon för det här samtalet, så inget de sa spelades in och vad som sades är okänt.",
+    "callTranscriptAudioLost": "Vad {name} sa spelades in men förlorades innan det kunde transkriberas, så vad som sades är okänt."
 }

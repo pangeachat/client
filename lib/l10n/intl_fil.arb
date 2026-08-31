@@ -10701,5 +10701,7 @@
     "noPermissionToInviteUsers": "Wala kang pahintulot na mag-imbita ng mga miyembro dito.",
     "callTranscriptRoomEncrypted": "Naka-encrypt ang chat na ito at hindi na-unlock ang transcript dito, kaya hindi ipinapakita ang sinabi.",
     "callTranscriptParticipantsUnknown": "Hindi alam kung sino pa ang kasama sa tawag na ito, kaya maaaring wala sa transcript na ito ang nagsalita.",
-    "callTranscriptTooLongToSend": "Masyadong mahaba ang sinabi ni {name} para i-save sa tawag na ito, kaya wala sa mga ito ang ipinapakita."
+    "callTranscriptTooLongToSend": "Masyadong mahaba ang sinabi ni {name} para i-save sa tawag na ito, kaya wala sa mga ito ang ipinapakita.",
+    "callTranscriptMicrophoneRefused": "Hindi kailanman binuksan ng device ni {name} ang mikropono para sa tawag na ito, kaya walang naitala sa sinabi nila at hindi alam kung ano ang sinabi.",
+    "callTranscriptAudioLost": "Naitala ang sinabi ni {name} ngunit nawala bago pa ito ma-transcribe, kaya hindi alam kung ano ang sinabi."
 }

@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Ha o na tumello ya ho mema ditho mona.",
     "callTranscriptRoomEncrypted": "Puisano ena e patiloe 'me mongolo o ngotsoeng ha oa ka oa notlolloa mona, kahoo se ileng sa buuoa ha se bontšoe.",
     "callTranscriptParticipantsUnknown": "Ha ho tsejoe hore na ke bo-mang ba bang ba neng ba le mohaleng ona, kahoo motho ea ileng a bua a ka 'na a haella ho tsoa mongolong ona ka ho feletseng.",
-    "callTranscriptTooLongToSend": "Se ileng sa buuoa ke {name} se ne se le selelele haholo hore se ka bolokoa le mohala ona, kahoo ha ho letho le bontšoa."
+    "callTranscriptTooLongToSend": "Se ileng sa buuoa ke {name} se ne se le selelele haholo hore se ka bolokoa le mohala ona, kahoo ha ho letho le bontšoa.",
+    "callTranscriptMicrophoneRefused": "Sesebediswa sa {name} ha sea ka sa bula maekrofounu bakeng sa mohala ona, kahoo ha ho letho leo ba le buileng le ileng la rekota mme seo ho ileng sa buuwa ha se tsejwe.",
+    "callTranscriptAudioLost": "Seo {name} a se buileng se ile sa rekota empa sa lahleha pele se ka ngolwa, kahoo seo ho ileng sa buuwa ha se tsejwe."
 }

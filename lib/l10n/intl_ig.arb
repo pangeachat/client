@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Ị nweghị ikike ịkpọ ndị otu ebe a.",
     "callTranscriptRoomEncrypted": "Nkata a ezoro ezo ma enweghị ike imeghe ndekọ ebe a, yabụ ihe ekwuru egosighị.",
     "callTranscriptParticipantsUnknown": "Amaghị onye ọzọ nọ na oku a, yabụ onye kwuru okwu nwere ike ọ gaghị adị na ndekọ a ma ọlị.",
-    "callTranscriptTooLongToSend": "Ihe {name} kwuru dị ogologo nke ukwuu ịchekwa na oku a, yabụ egosighị ya ma ọlị."
+    "callTranscriptTooLongToSend": "Ihe {name} kwuru dị ogologo nke ukwuu ịchekwa na oku a, yabụ egosighị ya ma ọlị.",
+    "callTranscriptMicrophoneRefused": "Ngwaọrụ {name} emegheghị igwe okwu maka oku a, yabụ na edekọghị ihe ọ bụla ha kwuru ma amaghị ihe e kwuru.",
+    "callTranscriptAudioLost": "Edekọrọ ihe {name} kwuru mana ọ furu efu tupu enwee ike idegharị ya, yabụ amaghị ihe e kwuru."
 }

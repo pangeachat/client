@@ -10473,5 +10473,7 @@
     "noPermissionToInviteUsers": "Cha bhfuil cead agat baill a thabhairt isteach anseo.",
     "callTranscriptRoomEncrypted": "Tá an comhrá seo criptithe agus níorbh fhéidir an trascríbhinn a dhíghlasáil anseo, mar sin níl an méid a dúradh á thaispeáint.",
     "callTranscriptParticipantsUnknown": "Ní fios cé eile a bhí ar an nglao seo, mar sin b'fhéidir go bhfuil duine éigin a labhair in easnamh ón trascríbhinn seo ar fad.",
-    "callTranscriptTooLongToSend": "Bhí an méid a dúirt {name} rófhada le sábháil leis an nglao seo, mar sin níl aon chuid de á thaispeáint."
+    "callTranscriptTooLongToSend": "Bhí an méid a dúirt {name} rófhada le sábháil leis an nglao seo, mar sin níl aon chuid de á thaispeáint.",
+    "callTranscriptMicrophoneRefused": "Níor osclaíodh micreafón ar ghléas {name} don ghlao seo, mar sin níor taifeadadh aon rud a dúirt siad agus ní fios cad a dúradh.",
+    "callTranscriptAudioLost": "Taifeadadh an méid a dúirt {name} ach cailleadh é sular féidir é a thrascríobh, mar sin ní fios cad a dúradh."
 }

@@ -9947,5 +9947,7 @@
     "noPermissionToInviteUsers": "您沒有權限邀請成員加入此處。",
     "callTranscriptRoomEncrypted": "此聊天已加密，無法在此處解鎖文字記錄，因此不顯示對話內容。",
     "callTranscriptParticipantsUnknown": "不知道還有誰參與了這次通話，因此文字記錄中可能完全缺少某位發言者。",
-    "callTranscriptTooLongToSend": "{name} 的發言內容太長，無法與本次通話一起儲存，因此不顯示任何內容。"
+    "callTranscriptTooLongToSend": "{name} 的發言內容太長，無法與本次通話一起儲存，因此不顯示任何內容。",
+    "callTranscriptMicrophoneRefused": "{name}的裝置從未為此通話開啟麥克風，因此他們所說的內容未被錄音，也無法得知。",
+    "callTranscriptAudioLost": "{name}所說的內容已被錄音，但在轉錄前遺失，因此無法得知。"
 }

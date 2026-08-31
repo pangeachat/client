@@ -9898,5 +9898,7 @@
     "noPermissionToInviteUsers": "Du har ikke tillatelse til å invitere medlemmer her.",
     "callTranscriptRoomEncrypted": "Denne chatten er kryptert og transkripsjonen kunne ikke låses opp her, så det som ble sagt vises ikke.",
     "callTranscriptParticipantsUnknown": "Det er ikke kjent hvem andre som var med på denne samtalen, så noen som snakket kan mangle helt fra denne transkripsjonen.",
-    "callTranscriptTooLongToSend": "Det {name} sa var for langt til å lagres med denne samtalen, så ingenting av det vises."
+    "callTranscriptTooLongToSend": "Det {name} sa var for langt til å lagres med denne samtalen, så ingenting av det vises.",
+    "callTranscriptMicrophoneRefused": "{name}s enhet åpnet aldri en mikrofon for denne samtalen, så ingenting de sa ble tatt opp, og hva som ble sagt er ukjent.",
+    "callTranscriptAudioLost": "Det {name} sa ble tatt opp, men gikk tapt før det kunne transkriberes, så hva som ble sagt er ukjent."
 }

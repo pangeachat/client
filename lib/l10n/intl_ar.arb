@@ -10147,5 +10147,7 @@
     "noPermissionToInviteUsers": "ليس لديك إذن لدعوة أعضاء هنا.",
     "callTranscriptRoomEncrypted": "هذه الدردشة مشفرة ولم يتم فك تشفير المحادثة هنا، لذلك لا يظهر ما قيل.",
     "callTranscriptParticipantsUnknown": "لا يُعرف من كان آخر في هذه المكالمة، لذلك قد يكون شخص تحدث مفقودًا تمامًا من هذا النص.",
-    "callTranscriptTooLongToSend": "ما قاله {name} كان طويلاً جدًا بحيث لا يمكن حفظه مع هذه المكالمة، لذلك لا يظهر أي منه."
+    "callTranscriptTooLongToSend": "ما قاله {name} كان طويلاً جدًا بحيث لا يمكن حفظه مع هذه المكالمة، لذلك لا يظهر أي منه.",
+    "callTranscriptMicrophoneRefused": "لم يفتح جهاز {name} ميكروفونًا لهذه المكالمة مطلقًا، لذا لم يتم تسجيل أي شيء قاله ولا يُعرف ما قيل.",
+    "callTranscriptAudioLost": "تم تسجيل ما قاله {name} ولكنه فُقد قبل أن يتم نسخه، لذا لا يُعرف ما قيل."
 }

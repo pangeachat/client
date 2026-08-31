@@ -10277,5 +10277,7 @@
     "noPermissionToInviteUsers": "Nemate dopuštenje za pozivanje članova ovdje.",
     "callTranscriptRoomEncrypted": "Ovaj je chat šifriran i transkript se ovdje ne može otključati, tako da ono što je rečeno nije prikazano.",
     "callTranscriptParticipantsUnknown": "Nije poznato tko je još bio u ovom pozivu, pa netko tko je govorio možda u potpunosti nedostaje iz ovog transkripta.",
-    "callTranscriptTooLongToSend": "Ono što je {name} rekao bilo je predugo za spremanje s ovim pozivom, tako da ništa od toga nije prikazano."
+    "callTranscriptTooLongToSend": "Ono što je {name} rekao bilo je predugo za spremanje s ovim pozivom, tako da ništa od toga nije prikazano.",
+    "callTranscriptMicrophoneRefused": "Uređaj korisnika {name} nikada nije otvorio mikrofon za ovaj poziv, tako da ništa što je rečeno nije snimljeno i ono što je rečeno nije poznato.",
+    "callTranscriptAudioLost": "Ono što je {name} rekao je snimljeno, ali je izgubljeno prije nego što je moglo biti transkribirano, tako da ono što je rečeno nije poznato."
 }

@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Huna ruhusa ya kualika wanachama hapa.",
     "callTranscriptRoomEncrypted": "Gumzo hili limesimbwa kwa njia fiche na nakala haikuweza kufunguliwa hapa, kwa hivyo yaliyosemwa hayaonyeshwi.",
     "callTranscriptParticipantsUnknown": "Haijulikani ni nani mwingine alikuwa kwenye simu hii, kwa hivyo huenda mtu aliyesema hayupo kabisa kwenye nakala hii.",
-    "callTranscriptTooLongToSend": "Kile alichosema {name} kilikuwa kirefu sana kuhifadhiwa na simu hii, kwa hivyo hakuna chochote kinachoonyeshwa."
+    "callTranscriptTooLongToSend": "Kile alichosema {name} kilikuwa kirefu sana kuhifadhiwa na simu hii, kwa hivyo hakuna chochote kinachoonyeshwa.",
+    "callTranscriptMicrophoneRefused": "Kifaa cha {name} hakikufungua maikrofoni kwa ajili ya simu hii, kwa hivyo hakuna chochote walichosema kilichorekodiwa na kile kilichosemwa hakijulikani.",
+    "callTranscriptAudioLost": "Kile {name} alisema kilirekodiwa lakini kilipotea kabla ya kuandikwa, kwa hivyo kile kilichosemwa hakijulikani."
 }

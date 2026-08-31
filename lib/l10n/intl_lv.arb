@@ -9841,5 +9841,7 @@
     "noPermissionToInviteUsers": "Jums nav atļaujas uzaicināt dalībniekus šeit.",
     "callTranscriptRoomEncrypted": "Šī tērzēšana ir šifrēta, un atšifrējumu nevarēja atbloķēt šeit, tāpēc netiek rādīts, kas tika teikts.",
     "callTranscriptParticipantsUnknown": "Nav zināms, kas vēl piedalījās šajā zvanā, tāpēc kāds, kurš runāja, var būt pilnībā iztrūkstošs šajā atšifrējumā.",
-    "callTranscriptTooLongToSend": "Tas, ko teica {name}, bija pārāk garš, lai saglabātu ar šo zvanu, tāpēc nekas no tā netiek rādīts."
+    "callTranscriptTooLongToSend": "Tas, ko teica {name}, bija pārāk garš, lai saglabātu ar šo zvanu, tāpēc nekas no tā netiek rādīts.",
+    "callTranscriptMicrophoneRefused": "{name} ierīce nekad neatvēra mikrofonu šim zvanam, tāpēc nekas no viņu teiktā netika ierakstīts un nav zināms, kas tika teikts.",
+    "callTranscriptAudioLost": "Tas, ko teica {name}, tika ierakstīts, bet pazaudēts pirms transkribēšanas, tāpēc nav zināms, kas tika teikts."
 }

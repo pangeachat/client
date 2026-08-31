@@ -10573,5 +10573,7 @@
     "noPermissionToInviteUsers": "Nu ai permisiunea de a invita membri aici.",
     "callTranscriptRoomEncrypted": "Acest chat este criptat, iar transcrierea nu a putut fi deblocată aici, așa că ceea ce s-a spus nu este afișat.",
     "callTranscriptParticipantsUnknown": "Nu se știe cine altcineva a participat la acest apel, așa că este posibil ca cineva care a vorbit să lipsească cu totul din această transcriere.",
-    "callTranscriptTooLongToSend": "Ceea ce a spus {name} a fost prea lung pentru a fi salvat cu acest apel, așa că nimic din cele spuse nu este afișat."
+    "callTranscriptTooLongToSend": "Ceea ce a spus {name} a fost prea lung pentru a fi salvat cu acest apel, așa că nimic din cele spuse nu este afișat.",
+    "callTranscriptMicrophoneRefused": "Dispozitivul lui {name} nu a deschis niciodată un microfon pentru acest apel, așa că nimic din ce a spus nu a fost înregistrat și ce a fost spus nu este cunoscut.",
+    "callTranscriptAudioLost": "Ceea ce a spus {name} a fost înregistrat, dar s-a pierdut înainte de a putea fi transcris, așa că ce a fost spus nu este cunoscut."
 }

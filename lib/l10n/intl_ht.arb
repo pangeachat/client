@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Ou pa gen pèmisyon pou envite manm isit la.",
     "callTranscriptRoomEncrypted": "Chat sa a chiffres epi transkripsyon an pa t' ka debloke isit la, kidonk sa ki te di a pa parèt.",
     "callTranscriptParticipantsUnknown": "Nou pa konnen ki lòt moun ki te sou apèl sa a, kidonk yon moun ki te pale ka manke nèt nan transkripsyon sa a.",
-    "callTranscriptTooLongToSend": "Sa {name} te di a te twò long pou sove ak apèl sa a, kidonk anyen ladan l' pa parèt."
+    "callTranscriptTooLongToSend": "Sa {name} te di a te twò long pou sove ak apèl sa a, kidonk anyen ladan l' pa parèt.",
+    "callTranscriptMicrophoneRefused": "Aparèy {name} la pa janm ouvri yon mikwofòn pou apèl sa a, kidonk anyen yo te di pa te anrejistre e sa ki te di a pa konnen.",
+    "callTranscriptAudioLost": "Sa {name} te di a te anrejistre men li te pèdi anvan li te ka transkri, kidonk sa ki te di a pa konnen."
 }

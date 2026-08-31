@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "እዚህ አባላትን ለመጋበዝ ፍቃድ የለዎትም።",
     "callTranscriptRoomEncrypted": "ይህ ውይይት የተመሰጠረ ነው እና ግልባጩ እዚህ ሊከፈት አልቻለም፣ ስለዚህ የተነገረው አይታይም።",
     "callTranscriptParticipantsUnknown": "በዚህ ጥሪ ላይ ሌሎች ማን እንደነበሩ አይታወቅም፣ ስለዚህ የተናገረ ሰው ከዚህ ግልባጭ ሙሉ በሙሉ ላይኖር ይችላል።",
-    "callTranscriptTooLongToSend": "{name} የተናገረው ከዚህ ጥሪ ጋር ለማስቀመጥ በጣም ረጅም ስለነበር ምንም አልታየም።"
+    "callTranscriptTooLongToSend": "{name} የተናገረው ከዚህ ጥሪ ጋር ለማስቀመጥ በጣም ረጅም ስለነበር ምንም አልታየም።",
+    "callTranscriptMicrophoneRefused": "የ{name} መሳሪያ ለዚህ ጥሪ ማይክሮፎን አልከፈተም፣ ስለዚህ የተናገሩት ነገር አልተቀዳም እና ምን እንደተባለ አይታወቅም።",
+    "callTranscriptAudioLost": "የ{name} የተናገሩት ነገር ተመዝግቧል ነገር ግን ከመተየቡ በፊት ጠፍቷል፣ ስለዚህ ምን እንደተባለ አይታወቅም።"
 }

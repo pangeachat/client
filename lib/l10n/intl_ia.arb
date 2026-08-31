@@ -10777,5 +10777,7 @@
     "noPermissionToInviteUsers": "Tu non ha permission de invitar membros hic.",
     "callTranscriptRoomEncrypted": "Iste chat es encryptate e le transcripto non poteva esser disserate hic, dunque lo que esseva dicite non es monstrate.",
     "callTranscriptParticipantsUnknown": "Il non es cognoscite qui altere participava in iste appello, dunque alcuno qui parlava pote mancar totalmente de iste transcripto.",
-    "callTranscriptTooLongToSend": "Lo que {name} diceva esseva troppo longe pro esser salvate con iste appello, dunque nihil de illo es monstrate."
+    "callTranscriptTooLongToSend": "Lo que {name} diceva esseva troppo longe pro esser salvate con iste appello, dunque nihil de illo es monstrate.",
+    "callTranscriptMicrophoneRefused": "Le apparato de {name} jammais aperiva un microphono pro iste appello, ergo nihil de lo que illes diceva esseva registrate e lo que esseva dicite non es cognoscite.",
+    "callTranscriptAudioLost": "Lo que {name} diceva esseva registrate ma perdite ante que illo poteva esser transcribite, ergo lo que esseva dicite non es cognoscite."
 }

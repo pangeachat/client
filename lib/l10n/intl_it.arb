@@ -9914,5 +9914,7 @@
     "noPermissionToInviteUsers": "Non hai il permesso di invitare membri qui.",
     "callTranscriptRoomEncrypted": "Questa chat è crittografata e la trascrizione non è stata sbloccata qui, quindi ciò che è stato detto non viene mostrato.",
     "callTranscriptParticipantsUnknown": "Non si sa chi altro abbia partecipato a questa chiamata, quindi qualcuno che ha parlato potrebbe mancare del tutto da questa trascrizione.",
-    "callTranscriptTooLongToSend": "Ciò che {name} ha detto era troppo lungo per essere salvato con questa chiamata, quindi non viene mostrato nulla."
+    "callTranscriptTooLongToSend": "Ciò che {name} ha detto era troppo lungo per essere salvato con questa chiamata, quindi non viene mostrato nulla.",
+    "callTranscriptMicrophoneRefused": "Il dispositivo di {name} non ha mai aperto un microfono per questa chiamata, quindi nulla di ciò che ha detto è stato registrato e ciò che è stato detto non è noto.",
+    "callTranscriptAudioLost": "Ciò che {name} ha detto è stato registrato ma perso prima che potesse essere trascritto, quindi ciò che è stato detto non è noto."
 }

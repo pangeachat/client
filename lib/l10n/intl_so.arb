@@ -2245,5 +2245,7 @@
     "noPermissionToInviteUsers": "Ma haysatid ogolaansho aad xubno ku casuunto halkan.",
     "callTranscriptRoomEncrypted": "Wadahadalkan waa la siray, qoraalkana halkan laguma furi karin, sidaa darteed waxa la yiri lama soo bandhigin.",
     "callTranscriptParticipantsUnknown": "Lama garanayo cidda kale ee wicitaankan ku jirtay, sidaa darteed qof hadlay ayaa laga yaabaa inuu gebi ahaanba ka maqan yahay qoraalkan.",
-    "callTranscriptTooLongToSend": "Waxa uu {name} yiri wuxuu ahaa mid aad u dheer oo aan lagu keydin karin wicitaankan, sidaa darteed waxba kama muuqdaan."
+    "callTranscriptTooLongToSend": "Waxa uu {name} yiri wuxuu ahaa mid aad u dheer oo aan lagu keydin karin wicitaankan, sidaa darteed waxba kama muuqdaan.",
+    "callTranscriptMicrophoneRefused": "Qalabka {name} ma furin makarafoonka wicitaankan, sidaa darteed waxba lagama duubin wixii ay yiraahdeen mana la oga waxa la yiri.",
+    "callTranscriptAudioLost": "Wixii {name} yiri waa la duubay laakiin waa la lumiyay ka hor inta aan la qorin, sidaa darteed waxa la yiri lama oga."
 }
