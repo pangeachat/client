@@ -429,14 +429,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   String? _noteFor(TranscriptHalf half, L10n l10n) {
     final name = _nameFor(half.senderId, l10n);
     if (half.state == HalfState.absent) return l10n.callTranscriptNone(name);
-    if (half.saidNothing) return l10n.callTranscriptSaidNothing(name);
-    // Ahead of the general empty-half line, which says nothing could be READ
-    // from what they said -- true of a corrupt or unreadable half, and wrong
-    // here: there was nothing to read because we never sent any of it.
-    if (half.audioSuppressedLocally) {
-      return l10n.callTranscriptNoSpeechDetected(name);
-    }
-    if (half.segments.isEmpty) return l10n.callTranscriptNothingRead(name);
+    if (half.segments.isEmpty) return _emptyHalfNote(half, name, l10n);
     if (half.state == HalfState.incomplete) {
       return l10n.callTranscriptPartial(name);
     }
@@ -458,6 +451,48 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
 
   Uri? _avatarOf(String userId) =>
       widget.room.unsafeGetUserFromMemoryOrFallback(userId).avatarUrl;
+}
+
+/// What to say about a half that carries no words.
+///
+/// ONE function for both shapes of this screen. The per-speaker sections and
+/// the notes under the timeline ask exactly this question and each carried its
+/// own copy of the ladder, which is a second place for a cause to be added to
+/// only one of them.
+///
+/// Ordered as [TranscriptHalf.issue] orders its causes, and the last two ask it
+/// outright, so the sentence a person reads and the line a bug report is
+/// diagnosed from can never name different reasons for the same half.
+String _emptyHalfNote(TranscriptHalf half, String name, L10n l10n) {
+  // Asked of the half rather than re-derived here. "They said nothing" is a
+  // definite claim about a person, and the only thing separating it from "we
+  // could not find out" is which state an empty half is in -- a distinction too
+  // easy to invert at each site that needs it.
+  if (half.saidNothing) return l10n.callTranscriptSaidNothing(name);
+
+  // An empty half whose audio our own detector held back was never read by
+  // anything, so neither silence nor a failure to read names its cause.
+  if (half.audioSuppressedLocally) {
+    return l10n.callTranscriptNoSpeechDetected(name);
+  }
+
+  // The writer had words and dropped every one of them to fit the event under
+  // the server's size limit. Nothing about that is a reading failure: the words
+  // existed, we read what arrived exactly as it was sent, and "nothing could be
+  // read from what they said" points whoever chases it at the wrong device.
+  //
+  // Asked as [TranscriptHalf.issue] rather than re-derived from
+  // `accounting.truncated`, because OUR own trim sets that flag too -- and that
+  // is `tooLongToRead`, a different device and a different answer. The one
+  // getter already ranks every cause that outranks this, so a half that also
+  // lost audio or refused a microphone still reports the bigger problem.
+  if (half.issue == HalfIssue.tooLongToSend) {
+    return l10n.callTranscriptTooLongToSend(name);
+  }
+
+  // Last, and only here a true statement: something of theirs was there and we
+  // are the ones who could not read it.
+  return l10n.callTranscriptNothingRead(name);
 }
 
 /// One speaker's side of the call.
@@ -510,24 +545,12 @@ class _HalfSection extends StatelessWidget {
       return [_Muted(text: l10n.callTranscriptNone(name))];
     }
 
+    // Shared with the notes drawn under the timeline, because it is the same
+    // question. Two copies of this ladder is how the writer-side packing loss
+    // came to read as a reading failure in the first place -- there is one
+    // ladder now, and adding a cause to it reaches both shapes of the screen.
     if (half.segments.isEmpty) {
-      return [
-        _Muted(
-          // Asked of the half rather than re-derived here. "They said nothing"
-          // is a definite claim about a person, and the only thing separating
-          // it from "we could not find out" is which state an empty half is
-          // in -- a distinction too easy to invert at each site that needs it.
-          //
-          // Three answers, not two: an empty half whose audio our own detector
-          // held back was never read by anything, and saying either that they
-          // were silent or that we could not read them names the wrong cause.
-          text: half.saidNothing
-              ? l10n.callTranscriptSaidNothing(name)
-              : half.audioSuppressedLocally
-              ? l10n.callTranscriptNoSpeechDetected(name)
-              : l10n.callTranscriptNothingRead(name),
-        ),
-      ];
+      return [_Muted(text: _emptyHalfNote(half, name, l10n))];
     }
 
     return [

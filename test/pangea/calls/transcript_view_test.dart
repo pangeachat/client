@@ -13,7 +13,9 @@ import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
 import '../get_test_client.dart';
 
@@ -201,6 +203,45 @@ void main() {
       ...?anchor?.toJson(),
     },
   );
+
+  /// A half OUR OWN writer packed down to nothing.
+  ///
+  /// Written by the real writer rather than hand-rolled, because the shape only
+  /// exists when one segment's text alone will not fit the budget: the binary
+  /// search then converges on zero, and the half ships marked truncated, with
+  /// every segment omitted and no words. A hand-written accounting could assert
+  /// that combination whether or not the packer can ever reach it.
+  Future<MatrixEvent> packedToNothing(String sender) async {
+    Map<String, dynamic>? written;
+    final wrote = await writeCallTranscript(
+      send: (content, _) async {
+        written = content;
+      },
+      callKey: _callKey,
+      senderId: sender,
+      segments: [TranscriptSegment('a' * 2000)],
+      chunksCaptured: 1,
+      chunksTranscribed: 1,
+      chunksLost: 0,
+      chunksSuppressed: 0,
+      captureRefused: false,
+      drainComplete: true,
+      maxBytes: 600,
+    );
+
+    expect(
+      wrote,
+      isTrue,
+      reason: 'the envelope alone fits, so the empty half IS sent',
+    );
+    return MatrixEvent(
+      type: CallTranscriptContent.relType,
+      eventId: '\$packed-$sender',
+      senderId: sender,
+      originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
+      content: written!,
+    );
+  }
 
   /// A fetcher serving one page and then saying it is exhausted.
   RelationsFetcher serving(List<MatrixEvent> events) =>
@@ -822,6 +863,66 @@ void main() {
       // And the cause it does name is ours, not a half we failed to read.
       expect(find.textContaining('sent to be transcribed'), findsOneWidget);
       expect(find.textContaining('Nothing could be read'), findsNothing);
+    });
+
+    testWidgets('a half OUR packer emptied is not blamed on reading', (
+      tester,
+    ) async {
+      // One segment whose text alone will not fit, so the packer drops every
+      // segment and the half goes out empty and marked truncated. The words
+      // existed and were packed out on the WRITING device; the read that
+      // followed worked perfectly. Saying nothing could be read from them
+      // blames the reader and sends anyone chasing it to the wrong device.
+      await pump(tester, serving([await packedToNothing(_me), half(_peer)]));
+
+      expect(find.textContaining('too long to save'), findsOneWidget);
+      expect(find.textContaining('Nothing could be read'), findsNothing);
+      expect(find.textContaining('did not say anything'), findsNothing);
+      expect(find.textContaining('No transcript from'), findsNothing);
+    });
+
+    testWidgets('the same half is not blamed on reading UNDER the timeline '
+        'either', (tester) async {
+      // The other shape of this screen, which asked the same question through
+      // its own copy of the ladder. A copy is a place a cause gets added to one
+      // site and not the other, which is exactly how this one survived.
+      await pump(
+        tester,
+        serving([
+          await packedToNothing(_me),
+          half(_peer, texts: ['muy bien'], atMs: [_callStart]),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      expect(find.textContaining('too long to save'), findsOneWidget);
+      expect(find.textContaining('Nothing could be read'), findsNothing);
+    });
+
+    testWidgets('an empty half OUR reader shortened is still a reading '
+        'failure', (tester) async {
+      // The half is empty and its accounting is marked truncated -- by US,
+      // because a second event from the same sender would not parse. Reading
+      // `truncated` off the accounting would call that "too long to save" and
+      // hand the writer the blame for our own trim. The cause is asked of
+      // `issue`, which ranks our failures ahead of the writer's admissions.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: const [], captured: 0, transcribed: 0),
+          MatrixEvent(
+            type: 'm.room.message',
+            eventId: r'$not-a-transcript',
+            senderId: _me,
+            originServerTs: DateTime.fromMillisecondsSinceEpoch(2000),
+            content: const {'body': 'no soy una transcripcion'},
+          ),
+          half(_peer),
+        ]),
+      );
+
+      expect(find.textContaining('Nothing could be read'), findsOneWidget);
+      expect(find.textContaining('too long to save'), findsNothing);
     });
 
     testWidgets('a silent speaker whose audio we DID send still reads as '

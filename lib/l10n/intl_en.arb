@@ -3783,6 +3783,14 @@
             }
         }
     },
+    "callTranscriptTooLongToSend": "What {name} said was too long to save with this call, so none of it is shown.",
+    "@callTranscriptTooLongToSend": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
     "callTranscriptPartial": "Part of what {name} said may be missing",
     "@callTranscriptPartial": {
         "placeholders": {
