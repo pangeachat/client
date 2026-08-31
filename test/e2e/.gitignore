@@ -1,3 +1,3 @@
 # The harness declares puppeteer-core in package.json; the install belongs to
 # whoever is running it, not to the repo.
-node_modules/
+node_modules
