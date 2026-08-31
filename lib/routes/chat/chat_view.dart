@@ -12,6 +12,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_finished_status_message.dart';
@@ -52,6 +53,23 @@ void _startCall(BuildContext context, Room room, {required bool video}) {
     Logs().i('Already on a call; showing that one instead');
   }
 }
+
+/// Whether this room should be OFFERED call buttons.
+///
+/// A bot DM is a direct chat, so `isDirectChat` alone is not enough. The bot
+/// has no VoIP: calling it rings nobody and the caller sits through the
+/// no-answer timeout for a call that was never going to connect. The room's
+/// other controls already hide themselves this way (see
+/// `pangea_chat_input_row`).
+///
+/// Deliberately NOT the same question as `CallService`'s inbound check, which
+/// asks whether a ring ALREADY IN this room could be a 1:1 call for us. That
+/// one treats "not known to be a DM" as a DM on purpose, because `m.direct`
+/// and the bot options may not have loaded when a call wakes the app, and
+/// guessing "no" there drops a real call. Guessing "no" here only withholds a
+/// button that would not have worked.
+@visibleForTesting
+bool roomOffersCalls(Room room) => room.isDirectChat && !room.isBotDM;
 
 class ChatView extends StatelessWidget {
   final ChatController controller;
@@ -98,7 +116,7 @@ class ChatView extends StatelessWidget {
     // answer is in rather than flickering on a guess. The future is memoized on
     // the service, so this is one request per account, not one per room opened.
     return [
-      if (controller.room.isDirectChat)
+      if (roomOffersCalls(controller.room))
         FutureBuilder(
           future: Matrix.of(context).callService.resolveFocus(),
           builder: (context, snapshot) => snapshot.data == null
