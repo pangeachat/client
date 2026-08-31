@@ -1,6 +1,7 @@
 package chat.pangea.keyboard_languages
 
 import android.content.Context
+import android.os.Build
 import android.view.inputmethod.InputMethodManager
 import android.view.textservice.TextServicesManager
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -46,13 +47,19 @@ class KeyboardLanguagesPlugin : FlutterPlugin, MethodCallHandler {
      * directly, which is what it did before this existed.
      */
     private fun spellCheckLanguages(): List<String> {
+        // getEnabledSpellCheckerInfos is API 31; below that it is not merely
+        // absent but throws NoSuchMethodError, which is an Error rather than
+        // an Exception — hence the version check AND the Throwable catch. The
+        // app supports API 24, so most of that range is older than this call.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return emptyList()
+
         return try {
             val tsm = applicationContext.getSystemService(Context.TEXT_SERVICES_MANAGER_SERVICE)
                 as? TextServicesManager ?: return emptyList()
             tsm.enabledSpellCheckerInfos.flatMap { info ->
                 (0 until info.subtypeCount).map { info.getSubtypeAt(it).locale }
             }.filter { it.isNotEmpty() }.distinct()
-        } catch (e: Exception) {
+        } catch (t: Throwable) {
             emptyList()
         }
     }

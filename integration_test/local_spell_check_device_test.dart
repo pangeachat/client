@@ -1,108 +1,97 @@
-import 'dart:ui';
-
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:keyboard_languages/keyboard_languages.dart';
+
+import 'package:fluffychat/routes/chat/choreographer/igc/local_spell_check.dart';
 
 /// Exercises the real platform spell checker, which no unit test can reach —
 /// every other test in this feature stands in a fake for the method channel.
 ///
-/// These assertions are the contract `local_spell_check.dart` is built on:
-/// that the channel answers at all, and that its offsets are UTF-16 code
-/// units rather than grapheme clusters. The rest is reported rather than
-/// asserted, because dictionary availability varies by device and OS version
-/// and a hard expectation would be flaky rather than informative.
+/// Run against a device or emulator:
+///   fvm flutter test integration_test/local_spell_check_device_test.dart -d [device-id]
+///
+/// A focused text field has to be on screen: iOS routes spell check through
+/// its text input plumbing and answers nothing without one.
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  // A fresh service per call: DefaultSpellCheckService caches its last
-  // results and merges into them, which would blur one probe into the next.
-  Future<List<SuggestionSpan>?> check(String text, Locale locale) =>
-      DefaultSpellCheckService().fetchSpellCheckSuggestions(locale, text);
-
-  test('the platform answers a spell check request', () async {
-    final result = await check('I have a speling mistake', const Locale('en'));
-
-    debugPrint('[probe] en misspelling -> $result');
-    expect(
-      result,
-      isNotNull,
-      reason: 'the channel returned null for a language iOS should know',
+  Future<void> pumpFocusedField(WidgetTester tester) async {
+    final focus = FocusNode();
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(body: TextField(focusNode: focus)),
+      ),
     );
-    expect(result, isNotEmpty, reason: 'a clear misspelling was not flagged');
-  });
+    focus.requestFocus();
+    await tester.pumpAndSettle();
+  }
 
-  test('offsets are UTF-16 code units, not graphemes', () async {
-    // The emoji is one grapheme and two UTF-16 code units. If the platform
-    // counted graphemes, the span would start at 2 instead of 3 — and
-    // GraphemeOffsetIndex.fromTextUtf16 would be converting the wrong unit.
-    const text = 'a 👍 speling';
-    final result = await check(text, const Locale('en'));
+  testWidgets('the device reports languages it can spell check', (
+    tester,
+  ) async {
+    await pumpFocusedField(tester);
 
-    debugPrint('[probe] emoji offsets -> $result');
-    expect(result, isNotNull);
-    expect(result, isNotEmpty);
+    final available = await KeyboardLanguages.getAvailableSpellCheckLanguages();
+    debugPrint('available (${available.length}): $available');
 
-    final span = result!.first;
     expect(
-      text.substring(span.range.start, span.range.end),
-      'speling',
-      reason: 'range does not slice the misspelled word in UTF-16 units',
-    );
-    expect(
-      span.range.start,
-      text.indexOf('speling'),
-      reason: 'offsets are not UTF-16 code units',
+      available,
+      isNotEmpty,
+      reason:
+          'no spell check languages reported — the local pass will never '
+          'run on this device, and resolveLocale falls back to asking blind',
     );
   });
 
-  test('clean text comes back empty rather than null', () async {
-    final result = await check('This sentence is spelled correctly.',
-        const Locale('en'));
+  testWidgets('a resolved locale actually returns spans', (tester) async {
+    await pumpFocusedField(tester);
 
-    debugPrint('[probe] clean text -> $result');
-    expect(
-      result,
-      isNotNull,
-      reason: 'clean text must be distinguishable from a failed lookup',
+    final available = await KeyboardLanguages.getAvailableSpellCheckLanguages();
+    final locale = LocalSpellCheck.resolveLocale('en', available);
+    debugPrint('resolved en -> ${locale?.toLanguageTag()}');
+    expect(locale, isNotNull);
+
+    final spans = await LocalSpellCheck.spans(
+      'I have a speling mistake',
+      locale!,
     );
-    expect(result, isEmpty);
+    debugPrint('spans: ${spans.map((s) => s.errorSpan).toList()}');
+
+    // The whole point of resolveLocale: iOS answers nothing for a tag outside
+    // its own list, so an unresolved bare code silently checks nothing.
+    expect(
+      spans,
+      isNotEmpty,
+      reason:
+          'resolved locale ${locale.toLanguageTag()} found no misspelling '
+          'in text that clearly contains one',
+    );
   });
 
-  test('REPORT: what an unavailable dictionary returns', () async {
-    // The whole no-dictionary fallback rests on this being null rather than
-    // an empty list. Reported, not asserted: whether a given locale is
-    // absent depends on the device, so a hard expectation would be flaky.
-    for (final tag in ['zu', 'yo', 'haw', 'cy', 'is']) {
-      final result = await check('qwrtplkjhgfd asdfghjkl', Locale(tag));
-      debugPrint(
-        '[probe] locale $tag -> ${result == null ? 'NULL' : '${result.length} spans'}',
-      );
-    }
-  });
+  testWidgets('REPORT: coverage of the languages this app teaches', (
+    tester,
+  ) async {
+    await pumpFocusedField(tester);
+    final available = await KeyboardLanguages.getAvailableSpellCheckLanguages();
 
-  test('REPORT: does a suggestion ever echo the flagged word', () async {
-    for (final word in ['Mumbai', 'Nairobi', 'kimchi', 'wrold', 'teh']) {
-      final result = await check(word, const Locale('en'));
-      final first = (result != null && result.isNotEmpty)
-          ? result.first.suggestions
-          : const <String>[];
-      debugPrint(
-        '[probe] "$word" -> ${result == null ? 'NULL' : first.take(3).toList()}'
-        '${first.isNotEmpty && first.first == word ? '  <-- ECHOES INPUT' : ''}',
-      );
-    }
-  });
-
-  test('REPORT: a non-English dictionary', () async {
-    for (final probe in {'es': 'Hoy es un dia bonto', 'fr': 'Je suis alle'}
-        .entries) {
-      final result = await check(probe.value, Locale(probe.key));
-      debugPrint(
-        '[probe] ${probe.key} "${probe.value}" -> '
-        '${result == null ? 'NULL' : result.map((s) => s.suggestions.take(2).toList()).toList()}',
-      );
+    for (final code in [
+      'en',
+      'es',
+      'fr',
+      'de',
+      'it',
+      'pt',
+      'ca',
+      'ja',
+      'ko',
+      'zh',
+      'ru',
+      'vi',
+    ]) {
+      final locale = LocalSpellCheck.resolveLocale(code, available);
+      debugPrint('$code -> ${locale?.toLanguageTag() ?? "NO DICTIONARY"}');
     }
   });
 }
