@@ -82,9 +82,8 @@ class ErrorHandler {
   /// is pure event volume. Returns whether this call reported.
   static Future<bool> logErrorOnce({
     required String key,
-    Object? e,
+    required Object e,
     StackTrace? s,
-    String? m,
     required Map<String, dynamic> data,
     SentryLevel? level,
   }) async {
@@ -92,7 +91,7 @@ class ErrorHandler {
     // consume the one report a genuine failure on this key is owed.
     if (!shouldReport(e)) return false;
     if (!_reportedOnceKeys.add(key)) return false;
-    await logError(e: e, s: s, m: m, data: data, level: level);
+    await logError(e: e, s: s, data: data, level: level);
     return true;
   }
 
@@ -106,27 +105,36 @@ class ErrorHandler {
   /// policy). An explicit [level] still wins: a caller with context the
   /// failure lacks may escalate.
   ///
+  /// There is deliberately no `m:` message parameter. One existed and was
+  /// silently dropped whenever [e] was non-null — `captureException(e ?? ...)`
+  /// only ever read it in the no-exception case — so 37 call sites passed a
+  /// hand-written message that reached `debugPrint` and nothing else, and
+  /// searching Sentry for one of our own strings returned nothing (#8660).
+  /// Put the description in [e] instead; it is what Sentry actually reports.
+  ///
+  /// [e] is required for the same reason: a report with no error attached
+  /// carried no information the moment `m` stopped backing it.
+  ///
   /// A [PangeaHttpException] additionally reaches Sentry with an explicit
   /// grouping key ([PangeaHttpException.fingerprintOf]) so it lands in an issue
   /// per status + endpoint. Sentry groups by stack trace otherwise, and these
   /// all share one frame in [Requests], so every HTTP failure in the app
   /// collapsed into a single catch-all issue (#8469).
   static Future<void> logError({
-    Object? e,
+    required Object e,
     StackTrace? s,
-    String? m,
     required Map<String, dynamic> data,
     SentryLevel? level,
   }) async {
     if (!shouldReport(e)) return;
 
-    debugPrint("error message: ${m ?? e}");
+    debugPrint("error message: $e");
 
     Sentry.addBreadcrumb(Breadcrumb(data: data));
     debugPrint(data.toString());
 
     Sentry.captureException(
-      e ?? Exception(m ?? "no message supplied"),
+      e,
       stackTrace: s ?? StackTrace.current,
       withScope: (scope) {
         scope.level = level ?? PangeaHttpException.severityOf(e);

@@ -32,12 +32,7 @@ Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(
     await database.open();
     return database;
   } catch (e, s) {
-    ErrorHandler.logError(
-      e: e,
-      s: s,
-      data: {"clientID": clientName},
-      m: "Failed to open matrix sdk database. Retrying once on a clean file.",
-    );
+    ErrorHandler.logError(e: e, s: s, data: {"clientID": clientName});
     Logs().wtf('Unable to construct database!', e, s);
 
     try {
@@ -60,7 +55,6 @@ Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(
         e: deleteError,
         s: deleteStack,
         data: {"clientID": clientName},
-        m: "Failed to delete matrix database after failed construction.",
       );
     }
 
@@ -83,7 +77,6 @@ Future<DatabaseApi> flutterMatrixSdkDatabaseBuilder(
         e: retryError,
         s: retryStack,
         data: {"clientID": clientName},
-        m: "Matrix sdk database retry failed after cleanup.",
       );
       rethrow;
     }

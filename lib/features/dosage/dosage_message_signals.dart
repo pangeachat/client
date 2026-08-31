@@ -181,7 +181,6 @@ class DosageMessageSignals {
           e: e,
           s: s,
           level: SentryLevel.warning,
-          m: "Best-effort dosage emit failed (swallowed)",
           data: {"roomId": roomId},
         ).catchError((_) {}),
       );
