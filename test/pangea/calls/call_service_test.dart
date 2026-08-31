@@ -565,6 +565,191 @@ void main() {
     });
   });
 
+  group('a retract that is running but holds no leave right now', () {
+    // `_leaving` holds a leave only while its future is outstanding, and its
+    // whenComplete removes one that FAILED just as readily as one that worked.
+    // A retract in flight is therefore not always holding a leave: between its
+    // retries it sleeps for a second, then two, with the failed one already
+    // forgotten -- and it is going to issue another. In that window join, whose
+    // only serialisation is settlePendingLeave, and announce, whose
+    // announceStillHolds re-check is nested INSIDE `if (pendingLeave != null)`,
+    // both see nothing to wait for and run straight over it.
+    //
+    // The same lesson as announceStillHolds, one step further along: what a
+    // redial has to be ordered behind is every leave this service is STILL
+    // GOING TO ISSUE, not merely the ones already on the wire.
+    const me = '@test:fakeServer.notExisting';
+    var roomSeq = 0;
+
+    /// A logged-in client whose room already carries OUR standing membership
+    /// for the call the session names.
+    ///
+    /// Required, and not scenery: the retract's catch asks whether the
+    /// membership is still there, and a leave that threw with nothing left in
+    /// state is treated as a write that landed -- which returns at once instead
+    /// of retrying. The retry loop, and the sleep inside it, exist only for a
+    /// leave that failed with the membership still standing.
+    Future<(_JoinSteps, Room, Room)> joinedWithStandingMembership() async {
+      final roomId = '!redial${roomSeq++}:fakeServer.notExisting';
+      final elsewhereId = '!elsewhere${roomSeq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                state: [
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: {
+                      'memberships': [
+                        {
+                          'call_id': 'call-id',
+                          'application': 'm.call',
+                          'scope': 'm.room',
+                          'foci_active': [
+                            {
+                              'type': 'livekit',
+                              'livekit_alias': 'alias',
+                              'livekit_service_url': 'http://sfu:7980',
+                            },
+                          ],
+                          'device_id': 'GHTYAJCE',
+                          'expires_ts': DateTime.now()
+                              .add(const Duration(minutes: 10))
+                              .millisecondsSinceEpoch,
+                          'membershipID': 'ours',
+                        },
+                      ],
+                    },
+                    senderId: me,
+                    eventId: '\$ours',
+                    originServerTs: DateTime.now(),
+                    stateKey: me,
+                  ),
+                ],
+              ),
+              elsewhereId: JoinedRoomUpdate(state: const []),
+            },
+          ),
+        ),
+      );
+      final calls = _JoinSteps(
+        client,
+        focusDiscovery: _FixedFocus(),
+        leaveWithin: const Duration(milliseconds: 50),
+      );
+      return (
+        calls,
+        client.getRoomById(roomId)!,
+        client.getRoomById(elsewhereId)!,
+      );
+    }
+
+    /// Drives a service to the window: a retract asleep between its retries,
+    /// with nothing outstanding in `_leaving` to show for it.
+    Future<(_JoinSteps, Room, Room, _LeavingSession, Future<bool>)>
+    retractSleepingBetweenRetries() async {
+      final (calls, room, elsewhere) = await joinedWithStandingMembership();
+      await calls.join(room);
+      final session = calls.session!;
+
+      // The first hangup gives up: its leave never answers, so the membership
+      // is left to expire and the session is KEPT for a later retry. That is
+      // what lets the redial below past join's guard at all -- an abandoned
+      // membership is discarded there rather than refusing the new call.
+      session.leaveGate = Completer<void>();
+      await expectLater(calls.retract(), completion(isFalse));
+      // And that leave has since finished, so nothing is outstanding. Without
+      // this the test would be exercising the window that IS covered.
+      session.leaveGate!.complete();
+      await pumpEventQueue();
+      expect(calls.hasPendingLeaveForTest, isFalse);
+
+      // The retry the design intends. Its first attempt fails with the
+      // membership still standing, which is what sends it round the loop.
+      session.leaveGate = null;
+      session.leaveThrowsInOrder.add(StateError('the server refused'));
+      final retracting = calls.retract();
+      await pumpEventQueue();
+
+      expect(
+        session.leaves,
+        2,
+        reason: 'the retry has issued its leave and had it refused',
+      );
+      expect(
+        calls.hasPendingLeaveForTest,
+        isFalse,
+        reason:
+            'the failed leave is forgotten, so this really is the window: a '
+            'retract in flight with nothing in _leaving to see it by',
+      );
+      return (calls, room, elsewhere, session, retracting);
+    }
+
+    test(
+      'a redial does not publish into the session it is about to leave',
+      () async {
+        final (calls, room, _, session, retracting) =
+            await retractSleepingBetweenRetries();
+
+        // The redial, inside the sleep. The session is fetched BY ROOM, so this
+        // is handed the very object the sleeping retract is holding.
+        await calls.join(room);
+        expect(calls.hasJoinedSession, isTrue);
+
+        final published = await calls.announce();
+
+        expect(
+          session.enters,
+          0,
+          reason:
+              'a membership published here is one the retract takes straight '
+              'back: the peer watches us join and immediately walk out',
+        );
+        expect(
+          published,
+          isNull,
+          reason:
+              'and the call is told it has no membership, rather than lied to',
+        );
+
+        await expectLater(retracting, completion(isTrue));
+      },
+    );
+
+    test('and its finally does not release a call it never held', () async {
+      // The other half. retract captured `_current` before it slept, and its
+      // finally clears `_current` on the way out without checking that it is
+      // still the same session -- so a call placed MEANWHILE, in another room,
+      // is dropped by the service: isBusy goes false with the call still up, a
+      // second incoming call can interrupt it, and nothing can retract it.
+      final (calls, _, elsewhere, _, retracting) =
+          await retractSleepingBetweenRetries();
+
+      await calls.join(elsewhere);
+      final live = calls.sessionsByRoom[elsewhere.id];
+      expect(live, isNotNull, reason: 'a different room, so a different call');
+
+      await expectLater(retracting, completion(isTrue));
+
+      expect(
+        calls.hasJoinedSession,
+        isTrue,
+        reason: 'the call in the other room is still up and still ours to end',
+      );
+      expect(calls.isBusy, isTrue);
+    });
+  });
+
   group('a membership that could not be taken back', () {
     test('does not go on suppressing calls to this account', () {
       // Retracting is given up on when the server will not take it: the
@@ -2536,10 +2721,18 @@ class _LeavingSession extends GroupCallSession {
   /// that does not care about the window gets.
   Completer<void>? leaveGate;
 
+  /// What each successive leave does, oldest first. An entry is thrown by the
+  /// attempt that takes it; once the list is empty every leave succeeds.
+  ///
+  /// A leave that FAILS is the only way into the retract's retry loop, and the
+  /// sleep between its attempts is a window nothing else can reach.
+  final List<Object> leaveThrowsInOrder = [];
+
   @override
   Future<void> leave() async {
     leaves++;
     await leaveGate?.future;
+    if (leaveThrowsInOrder.isNotEmpty) throw leaveThrowsInOrder.removeAt(0);
   }
 
   @override
@@ -2567,20 +2760,30 @@ class _JoinSteps extends CallService {
 
   Object? tokenThrows;
 
+  /// The first session this fetched, for the tests that only ever use one room.
   _LeavingSession? session;
+
+  /// One session per ROOM, which is how the real one is fetched: a direct
+  /// message holds at most one call, so two joins in the same room are handed
+  /// the very same object and two joins in different rooms are not.
+  final Map<String, _LeavingSession> sessionsByRoom = {};
 
   @override
   Future<GroupCallSession> fetchSession(Room room, RtcFocus focus) async {
     steps.add('session');
-    final fetched = session ??= _LeavingSession(
-      client: client,
-      room: room,
-      voip: voip,
-      backend: focus.backendForRoom(room.id),
-      groupCallId: 'call-id',
-      application: 'm.call',
-      scope: 'm.room',
+    final fetched = sessionsByRoom.putIfAbsent(
+      room.id,
+      () => _LeavingSession(
+        client: client,
+        room: room,
+        voip: voip,
+        backend: focus.backendForRoom(room.id),
+        groupCallId: 'call-id',
+        application: 'm.call',
+        scope: 'm.room',
+      ),
     );
+    session ??= fetched;
     duringFetch?.call();
     return fetched;
   }

@@ -282,8 +282,24 @@ class CallService {
   /// So a waiter cannot decide anything by re-reading this: a `Future<void>`
   /// does not say whose leave it is. [announce] asks the service's own state
   /// instead — see [announceStillHolds].
-  Future<void>? get _pendingLeaves =>
-      _leaving.isEmpty ? null : Future.wait(_leaving.toList());
+  ///
+  /// A RETRACT IN FLIGHT COUNTS, EVEN WHEN IT IS HOLDING NO LEAVE AT THIS
+  /// INSTANT. What a redial has to be ordered behind is every leave this
+  /// service is STILL GOING TO ISSUE, not merely the ones already on the wire.
+  /// [_leaving] holds a leave only while its future is outstanding, and it
+  /// forgets one that FAILED just as readily as one that worked — so between
+  /// the retract's retries, while it sleeps for a second and then two, there is
+  /// a retract that will issue another leave and nothing in [_leaving] to see
+  /// it by. In that window [settlePendingLeave] found nothing to wait for and
+  /// [announce] skipped its whole guard, [announceStillHolds] included, because
+  /// that guard is nested inside "is there a pending leave". The redial
+  /// published its membership into the session — fetched by ROOM, so the very
+  /// object the sleeping retract still holds — and the retract woke and took
+  /// the LIVE call's membership straight back off it.
+  Future<void>? get _pendingLeaves {
+    final outstanding = <Future<void>>[..._leaving, ?_retracting];
+    return outstanding.isEmpty ? null : Future.wait(outstanding);
+  }
 
   /// Issues a leave and records it among the pending ones, in that order and
   /// with nothing awaited in between.
@@ -1785,7 +1801,18 @@ class CallService {
       // Released only when the membership was actually taken back. Keeping a
       // session whose leave failed is what gives a later attempt something to
       // retry WITH; a new call is not blocked by it, because join discards it.
-      if (!_abandonedMembership) {
+      //
+      // And only while [_current] is still the session THIS retract captured.
+      // Identity is necessary here for the same reason [announceStillHolds]
+      // needs more than identity on the other side: a retract outlives the
+      // moment it read [_current]. It sleeps between its retries, and a redial
+      // landing in that window is let past join's guard by the very abandoned
+      // membership this attempt is retrying — so by the time this runs,
+      // [_current] can be a call in another room that is up and being spoken
+      // on. Clearing it there dropped that call out of the service: isBusy went
+      // false with the call still running, a second incoming call could
+      // interrupt it, and nothing was left able to retract it.
+      if (!_abandonedMembership && identical(_current, session)) {
         _current = null;
         _claimedRoomId = null;
       }
