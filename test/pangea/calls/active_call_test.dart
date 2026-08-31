@@ -40,8 +40,19 @@ class FakeCalls extends CallService {
   /// against that.
   DateTime? ourJoinAt = DateTime.now().subtract(const Duration(seconds: 5));
 
+  /// When each membership event was written, BY EVENT ID, for the tests that
+  /// need two of them to be different moments.
+  ///
+  /// The one answer this used to give every id made a stale anchor and a fresh
+  /// one indistinguishable by construction: a floor derived from the previous
+  /// call's membership and one derived from this call's came out identical, so
+  /// nothing here could see the difference between them. Empty by default, so
+  /// every test that does not care still gets [ourJoinAt] for any id.
+  Map<String, DateTime> writtenAt = const {};
+
   @override
-  DateTime? membershipWrittenAt(matrix.Room room, String eventId) => ourJoinAt;
+  DateTime? membershipWrittenAt(matrix.Room room, String eventId) =>
+      writtenAt[eventId] ?? ourJoinAt;
 
   /// Whether the device that rang is still holding a call. False is the
   /// "they rang, gave up, and their ring is still valid" case.
@@ -76,15 +87,26 @@ class FakeCalls extends CallService {
   /// which is neither presence nor departure.
   PeerPresence? peerPresenceOverride;
 
+  /// The floors the call passed down on the last presence read.
+  ///
+  /// RECORDED, not acted on. Re-implementing the real filter here would make
+  /// the test agree with a copy of the code it is testing; what the call is
+  /// answerable for is the floor it computes, and that is asserted directly.
+  DateTime? lastNotBefore;
+  DateTime? lastGoneAfter;
+
   @override
   PeerPresence peerPresenceInCurrentCall(
     matrix.Room room,
     String peerId, {
     DateTime? notBefore,
     DateTime? goneAfter,
-  }) =>
-      peerPresenceOverride ??
-      (peerMembershipPresent ? PeerPresence.live : PeerPresence.gone);
+  }) {
+    lastNotBefore = notBefore;
+    lastGoneAfter = goneAfter;
+    return peerPresenceOverride ??
+        (peerMembershipPresent ? PeerPresence.live : PeerPresence.gone);
+  }
 
   /// Whether the account already holds a call, for the start-entry read.
   bool busy = false;
@@ -1679,6 +1701,109 @@ void main() {
       reason: 'a call the user abandoned must not finish assembling itself',
     );
     expect(trace.steps, contains('retract'));
+  });
+
+  group('the floors a departure is measured against', () {
+    // Both floors are derived from this device's membership event, and that
+    // anchor is CORRECTABLE: it is filled lazily from room state, where the
+    // call id is the room id -- so any unexpired membership of ours in this
+    // room answers, including one a previous call left standing when its
+    // retract was given up on. announce() then overwrites it with the one this
+    // call actually wrote.
+    //
+    // A floor frozen against the old anchor is always OLDER than the truth,
+    // and both floors are lower bounds, so the error is always in the same
+    // direction: too permissive, always biased toward reading the peer as
+    // gone. On any tick where the peer is in the SFU but their new membership
+    // has not synced, their newest visible state is the previous call's
+    // emptied one -- which a too-old goneAfter lets through as a departure
+    // from THIS call. That is leftDeliberately, and the call the learner has
+    // just answered is torn down within a second or two with "The other
+    // participant ended the call" while they are still talking. It is verbatim
+    // the regression goneAfter was added to prevent.
+    test('move to the membership this call announced', () async {
+      final (call, calls, _, _) = await build();
+      calls.remotePresent = true;
+
+      final previousCall = DateTime.now().subtract(const Duration(minutes: 5));
+      final thisCall = DateTime.now();
+      // What room state answers before this call has announced.
+      calls.roomMembershipId = r'$previousCall';
+      // What announcing returns: the membership this call actually wrote.
+      calls.membershipId = r'$thisCall';
+      calls.writtenAt = {
+        r'$previousCall': previousCall,
+        r'$thisCall': thisCall,
+      };
+
+      // Held so the stale anchor is the only one there is while the presence
+      // reads below run. That is the ordinary shape of answering: the room's
+      // state is already here, and our own membership has not been written
+      // yet.
+      final announcing = Completer<void>();
+      calls.holdAnnounce = announcing;
+      final starting = call.start(
+        roomStub(calls.client),
+        video: false,
+        answering: true,
+      );
+      await pumpEventQueue();
+
+      // Twice: the first tick fills the anchor from room state, the second is
+      // the one that derives the floors from it.
+      await call.tickReelectionForTest();
+      await call.tickReelectionForTest();
+      expect(
+        calls.lastGoneAfter,
+        previousCall,
+        reason:
+            'the stale membership is the only anchor there is yet, so this '
+            'read has to be measuring against it for the test to mean anything',
+      );
+
+      announcing.complete();
+      await starting;
+      await call.tickReelectionForTest();
+
+      expect(
+        calls.lastGoneAfter,
+        thisCall,
+        reason:
+            'the anchor was corrected by announce, so the departure floor '
+            'must be too -- an older one lets the PREVIOUS call ending pass '
+            'as this one ending',
+      );
+      expect(
+        calls.lastNotBefore,
+        CallService.callFloorFrom(thisCall),
+        reason: 'the staleness floor is derived from the same anchor',
+      );
+    });
+
+    test('are still re-asked until the room can date the anchor', () async {
+      // The memo may not answer null from a cache. State lags a write, so the
+      // first read after the anchor lands can find nothing to date it by, and
+      // remembering that "no answer" would freeze the floors off for the whole
+      // call -- which is the same too-permissive direction.
+      final (call, calls, _, _) = await build();
+      calls.remotePresent = true;
+      calls.ourJoinAt = null;
+      calls.writtenAt = const {};
+
+      await call.start(roomStub(calls.client), video: false, answering: true);
+      await call.tickReelectionForTest();
+      expect(calls.lastGoneAfter, isNull, reason: 'nothing can date it yet');
+
+      final landed = DateTime.now();
+      calls.ourJoinAt = landed;
+      await call.tickReelectionForTest();
+
+      expect(
+        calls.lastGoneAfter,
+        landed,
+        reason: 'the write echoed, so the floor is available now',
+      );
+    });
   });
 
   group('when the other person leaves', () {

@@ -1055,6 +1055,7 @@ class ActiveCall extends ChangeNotifier {
   DateTime? _ourJoinAt(matrix.Room room) {
     final anchor = _membershipEventId;
     if (anchor == null) return null;
+    _floorsDerivedFrom(anchor);
     return _ourJoinAtValue ??= calls.membershipWrittenAt(room, anchor);
   }
 
@@ -1063,6 +1064,7 @@ class ActiveCall extends ChangeNotifier {
   DateTime? _stateFloor(matrix.Room room) {
     final anchor = _membershipEventId;
     if (anchor == null) return null;
+    _floorsDerivedFrom(anchor);
     final cached = _stateFloorAt;
     if (cached != null) return cached;
     final written = calls.membershipWrittenAt(room, anchor);
@@ -1071,6 +1073,41 @@ class ActiveCall extends ChangeNotifier {
   }
 
   DateTime? _stateFloorAt;
+
+  /// The anchor both floors above were derived from.
+  ///
+  /// A VALUE MEMOIZED FROM AN ANCHOR IS KEYED ON THAT ANCHOR, NOT ON WHETHER IT
+  /// HAS BEEN COMPUTED -- because [_membershipEventId] is CORRECTED, not merely
+  /// filled. It is answered lazily out of room state, where the call id is the
+  /// room id, so ANY unexpired membership of ours in this room qualifies --
+  /// including one a previous call left standing when its retract was given up
+  /// on. [announce] then overwrites it with the membership this call actually
+  /// wrote, and a floor computed before that would otherwise keep the previous
+  /// call's timestamp for the rest of this one.
+  ///
+  /// The error is always in the same direction. A stale anchor is always OLDER,
+  /// both floors are lower bounds, so a stale floor is always too PERMISSIVE:
+  /// always biased toward reading the peer as gone. On any tick where the peer
+  /// is in the SFU but their new membership has not synced, the newest state of
+  /// theirs we can see is the previous call's emptied membership -- and a
+  /// too-old `goneAfter` lets that through as a departure from THIS call.
+  /// [_peerMembershipGone] then reads leftDeliberately and hangs up on somebody
+  /// who is talking, seconds after the call was answered. That is verbatim the
+  /// regression `goneAfter` was added to prevent.
+  ///
+  /// [_dropBreadcrumb] is deliberately re-fired from three sites so it picks
+  /// the anchor up whenever it lands; these two are derived from the same
+  /// anchor and were computed once, which is the oversight this closes.
+  String? _floorsAnchor;
+
+  void _floorsDerivedFrom(String anchor) {
+    if (_floorsAnchor == anchor) return;
+    _floorsAnchor = anchor;
+    // Dropped, not recomputed: a null stays null and the reads above ask again,
+    // which is what already covers a write whose echo has not landed yet.
+    _ourJoinAtValue = null;
+    _stateFloorAt = null;
+  }
 
   Timer? _presenceClock;
 
