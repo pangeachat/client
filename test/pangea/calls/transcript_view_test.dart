@@ -140,10 +140,24 @@ void main() {
     /// per-speaker view is what most of these assert.
     List<int>? atMs,
 
-    /// What this device's clock read against the SFU's when it joined. Absent
-    /// on every half written before the field existed, which is the case most
-    /// of these fixtures are about.
-    ClockAnchor? anchor,
+    /// What this device's clock read against the SFU's when it joined.
+    ///
+    /// Present by default, and in step with the SFU, because that is what
+    /// `transcript_writer.dart` emits whenever `ClockAnchor.of` can read both
+    /// clocks -- the ordinary case. A fixture that models our own writer has to
+    /// carry the claims our writer makes, the same argument [positionsMarked]
+    /// already settles one field down.
+    ///
+    /// The offset is deliberately ZERO, so this default moves no position and
+    /// changes what no test asserts. What it does change is which QUESTION the
+    /// fixture asks: without an anchor, two speaking halves are two devices
+    /// whose clocks were never compared, and this screen no longer vouches for
+    /// times measured across those. The tests that are ABOUT a missing anchor
+    /// pass null explicitly.
+    ClockAnchor? anchor = const ClockAnchor(
+      sfuMs: _callStart - 2000,
+      deviceMs: _callStart - 2000,
+    ),
 
     /// How much later than its `at_ms` each segment could have begun, or null
     /// for a segment placed at its own first word. One entry per [texts] entry.
@@ -964,15 +978,71 @@ void main() {
       expect(top(tester, 'muy bien'), lessThan(top(tester, 'hola')));
     });
 
-    testWidgets('ONE anchored half corrects nothing', (tester) async {
+    testWidgets('ONE anchored half corrects nothing, and no longer hides it', (
+      tester,
+    ) async {
       // All or nothing. Moving our half by thirty seconds while the peer's
       // stays where their device put it changes their relative order on an
       // offset measured for only one of them -- we cannot say whether that
-      // helps or harms, so it is not done.
+      // helps or harms, so it is not done. That trade is unchanged.
+      //
+      // What the screen CLAIMS about the result is what changed. This case used
+      // to print plain m:ss on both halves: the reply rendered above the
+      // question it answered, with two confident timestamps and no warning,
+      // while the two clocks stood thirty seconds apart.
       await pump(tester, serving(exchange(mine: skewed(30000))));
 
       expect(find.byType(TurnTimeline), findsOneWidget);
+      // Still the uncorrected order. It is the limitation the caveat now
+      // discloses, rather than one this test pins as intended behaviour.
       expect(top(tester, 'muy bien'), lessThan(top(tester, 'hola')));
+      // And no time is vouched for. Both ends of a printed difference have to
+      // come off one clock, and here they do not.
+      expect(find.text('0:00'), findsNothing);
+      expect(find.text('0:25'), findsNothing);
+      expect(
+        find.textContaining('clocks could not be compared'),
+        findsOneWidget,
+      );
+      // NOT the writer's caveat. Both halves said how exact their times are,
+      // so explaining the missing times that way would be a confident,
+      // specific, wrong diagnosis -- the failure the rest of this screen is
+      // built to avoid.
+      expect(find.textContaining('how exact'), findsNothing);
+    });
+
+    testWidgets('a call with ONE voice on it still shows its times', (
+      tester,
+    ) async {
+      // The scope of the rule, and why it is not simply !clocksReconcilable.
+      // Refusing a time needs a SECOND clock to disagree with. A call where
+      // only one person spoke has none -- every turn is a difference between
+      // two readings of the same device -- so hedging here would silence a
+      // whole transcript to guard against a harm that cannot occur.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: ['hola', 'que tal'],
+            captured: 2,
+            transcribed: 2,
+            atMs: [_callStart, _callStart + 6000],
+            anchor: null,
+          ),
+          half(
+            _peer,
+            texts: const [],
+            captured: 1,
+            transcribed: 0,
+            anchor: null,
+          ),
+        ]),
+      );
+
+      expect(find.text('0:00'), findsOneWidget);
+      expect(find.text('0:06'), findsOneWidget);
+      expect(find.textContaining('clocks could not be compared'), findsNothing);
     });
 
     testWidgets('two clocks that agreed are left alone', (tester) async {

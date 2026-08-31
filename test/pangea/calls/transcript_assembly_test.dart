@@ -1656,6 +1656,53 @@ void main() {
       expect(transcript.clockShiftFor(_halfFor(transcript, alice)), 30000);
     });
 
+    test('two unreconciled voices are not on one clock', () {
+      // The question a screen that PRINTS times has to ask, and the reason it
+      // is not `clocksReconcilable`. Refusing to correct is a decision about
+      // the ORDER; whether a time may be shown is a decision about what we
+      // vouch for, and two speaking halves left on their own device clocks are
+      // exactly the pair no printed elapsed time can be measured across.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, anchor: _skewed(30000)),
+          _candidate(bob),
+        ],
+        expectedSenders: [alice, bob],
+      );
+
+      expect(transcript.clocksReconcilable, isFalse);
+      expect(transcript.turnsShareOneClock, isFalse);
+    });
+
+    test('a single voice is on one clock whatever its anchor says', () {
+      // No second clock exists to disagree with, so every time on screen is a
+      // difference between two readings of the SAME device. Hedging here would
+      // silence the times on every call where only one person spoke, to guard
+      // against a harm that cannot occur.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice),
+          _candidate(bob, texts: const [], accounting: const HalfAccounting()),
+        ],
+        expectedSenders: [alice, bob],
+      );
+
+      expect(transcript.clocksReconcilable, isFalse);
+      expect(transcript.turnsShareOneClock, isTrue);
+    });
+
+    test('two reconciled voices are on one clock', () {
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, anchor: _skewed(30000)),
+          _candidate(bob, anchor: _skewed(-500)),
+        ],
+        expectedSenders: [alice, bob],
+      );
+
+      expect(transcript.turnsShareOneClock, isTrue);
+    });
+
     test('the shift cannot reorder a half against itself', () {
       // The render gate is answered on the RAW positions and the shift is
       // applied after it, so the two have to agree. One constant subtracted

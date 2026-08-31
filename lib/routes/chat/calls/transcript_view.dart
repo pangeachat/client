@@ -172,20 +172,38 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
               .toList();
 
           // Said once, at the top, and only about what is actually DRAWN.
-          // The per-speaker view prints no times at all, so neither caveat has
+          // The per-speaker view prints no times at all, so no caveat here has
           // anything to explain there -- and a caveat that fires when nothing
           // on screen shows the thing it describes is noise that teaches the
           // reader to skip the next one.
+          //
+          // The clock one is asked of the TRANSCRIPT rather than of the turns,
+          // because it is why they carry no time: the two devices were never
+          // put on one clock, so nothing here is measured against the origin
+          // every printed time is a difference from.
+          final clocksUnreconciled =
+              turns.isNotEmpty && !transcript.turnsShareOneClock;
           final approximate = turns.any(
             (turn) => turn.time == TurnTime.atOrBefore,
           );
-          final unstated = turns.any((turn) => turn.time == TurnTime.unstated);
+
+          // Suppressed when the clocks are the reason, and only then. Every
+          // turn is unstated in that case, so this caveat would fire on all of
+          // them while blaming a writer that never said how exact its times are
+          // -- a confident, specific, wrong diagnosis, and the mistake the rest
+          // of this feature is built to avoid. The two are never both shown:
+          // the reader asked one question, and gets the operative answer.
+          final unstated =
+              !clocksUnreconciled &&
+              turns.any((turn) => turn.time == TurnTime.unstated);
 
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
             children: [
               if (transcript.readerStoppedEarly)
                 _Caveat(text: l10n.callTranscriptStoppedEarly),
+              if (clocksUnreconciled)
+                _Caveat(text: l10n.callTranscriptUnreconciledClocks),
               if (approximate)
                 _Caveat(text: l10n.callTranscriptApproximateTimes),
               if (unstated) _Caveat(text: l10n.callTranscriptUnstatedTimes),
@@ -253,6 +271,12 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       for (final half in transcript.halves)
         (half: half, shift: transcript.clockShiftFor(half)),
     ];
+
+    // Asked once for the whole transcript, because that is its scope: a turn's
+    // time is a difference against an origin taken across BOTH halves, so
+    // whether it can be vouched for is a fact about the call, not about the
+    // segment or the half it came from.
+    final onOneClock = transcript.turnsShareOneClock;
 
     // The moment each segment is PLACED at, which for one that knows only its
     // chunk is the END of that chunk's audio rather than the estimate inside
@@ -326,7 +350,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
             at: Duration(
               milliseconds: segment.orderKeyMs! - entry.shift - start,
             ),
-            time: _timeKindOf(segment, entry.half),
+            time: _timeKindOf(segment, entry.half, onOneClock),
             text: segment.text,
           ),
     ];
@@ -346,7 +370,30 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// can only move a turn LATER, so acting on one cannot invent precision, and
   /// a turn placed later than its device asked for is the safe direction. What
   /// may be SAID about the result is what the marker governs.
-  TurnTime _timeKindOf(TranscriptSegment segment, TranscriptHalf half) {
+  ///
+  /// The CLOCK decides before the marker, and it decides for the whole call.
+  /// The marker is a claim by one writer about its own positions; it says
+  /// nothing about whether that writer's clock was ever compared to the other
+  /// speaker's. Our own writer sets `positions_marked` on every half while its
+  /// anchor stays nullable -- `ClockAnchor.of` legitimately returns null when
+  /// LiveKit's `joinedAt` is the unstamped protocol default of zero -- so the
+  /// combination that defeats the marker is one we PRODUCE, not an exotic
+  /// foreign client. Without this, two halves that were never reconciled printed
+  /// plain `m:ss` while sitting on clocks that may disagree by minutes.
+  ///
+  /// Not corrected, and deliberately not: shifting one half by an offset
+  /// measured for only one of them might invert an order that was already
+  /// right, and we cannot say which. That trade is defensible. Presenting the
+  /// uncorrected result as a time this app vouches for is not, and the choice
+  /// between them is the same one already made for an unvouched origin: show
+  /// no number rather than one that looks exact and is off by however far the
+  /// two clocks stand apart.
+  TurnTime _timeKindOf(
+    TranscriptSegment segment,
+    TranscriptHalf half,
+    bool onOneClock,
+  ) {
+    if (!onOneClock) return TurnTime.unstated;
     if (!half.positionsMarked) return TurnTime.unstated;
     return segment.positionIsApproximate ? TurnTime.atOrBefore : TurnTime.exact;
   }

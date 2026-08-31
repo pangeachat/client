@@ -888,6 +888,29 @@ class CallTranscript {
       .where((half) => half.segments.isNotEmpty)
       .every((half) => half.clockAnchor != null);
 
+  /// Whether every turn the view will draw was read from ONE clock.
+  ///
+  /// [clocksReconcilable] answers a narrower question -- can every speaking
+  /// half be MOVED onto the shared clock -- and a screen that prints times
+  /// needs this one. A printed `m:ss` is a difference from the earliest turn
+  /// anywhere in the transcript, and a difference is only a real elapsed time
+  /// when both of its ends were read from the same clock. When two speaking
+  /// halves cannot be reconciled, [clockShiftFor] returns zero for both and
+  /// they are interleaved on RAW device wall clocks that may disagree by
+  /// minutes -- so a reply can render above the question it answers.
+  ///
+  /// A transcript with at most ONE speaking half is on one clock by
+  /// construction, whatever its anchor says. There is no second clock for it to
+  /// disagree with, so refusing its times would hedge against a harm that
+  /// cannot occur, and would silence every call where only one person spoke.
+  ///
+  /// This does NOT claim the times are RIGHT. A single device's clock can be
+  /// wrong about the hour; what it cannot be is wrong relative to itself, and
+  /// every time on screen is a difference between two of its own readings.
+  bool get turnsShareOneClock =>
+      clocksReconcilable ||
+      halves.where((half) => half.segments.isNotEmpty).length <= 1;
+
   /// How far to move one half's positions to put it on the shared clock.
   ///
   /// Zero unless [clocksReconcilable], which is what makes an old event, a
