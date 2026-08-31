@@ -21,11 +21,16 @@ class _FakeSpellCheckService implements SpellCheckService {
   final List<SuggestionSpan>? result;
   final Object? error;
 
+  /// Every (locale, text) the service was asked for, so a test can assert the
+  /// platform was reached at all — which is the whole point of the warm-up.
+  final List<(Locale, String)> calls = [];
+
   @override
   Future<List<SuggestionSpan>?> fetchSpellCheckSuggestions(
     Locale locale,
     String text,
   ) async {
+    calls.add((locale, text));
     if (error != null) throw error!;
     return result;
   }
@@ -250,6 +255,49 @@ void main() {
       );
 
       expect(await LocalSpellCheck.spans('', locale), isEmpty);
+    });
+  });
+
+  group('LocalSpellCheck.warmUp', () {
+    const locale = Locale('es', 'ES');
+
+    tearDown(() {
+      debugDefaultTargetPlatformOverride = null;
+      LocalSpellCheck.service = DefaultSpellCheckService();
+    });
+
+    test('opens the session on Android, where the first call comes back '
+        'empty', () async {
+      debugDefaultTargetPlatformOverride = TargetPlatform.android;
+      final fake = _FakeSpellCheckService(const []);
+      LocalSpellCheck.service = fake;
+
+      await LocalSpellCheck.warmUp(locale);
+
+      expect(fake.calls, hasLength(1));
+      expect(fake.calls.single.$1, locale);
+    });
+
+    test('is skipped on iOS, which answers its first call normally', () async {
+      debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+      final fake = _FakeSpellCheckService(const []);
+      LocalSpellCheck.service = fake;
+
+      await LocalSpellCheck.warmUp(locale);
+
+      expect(fake.calls, isEmpty);
+    });
+
+    test('a failing platform does not throw into the caller', () async {
+      debugDefaultTargetPlatformOverride = TargetPlatform.android;
+      LocalSpellCheck.service = _FakeSpellCheckService(
+        null,
+        error: MissingPluginException('no channel'),
+      );
+
+      // Fired unawaited at chat open, so a throw here would be an unhandled
+      // async error rather than something a caller could catch.
+      await expectLater(LocalSpellCheck.warmUp(locale), completes);
     });
   });
 

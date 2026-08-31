@@ -94,6 +94,12 @@ class Choreographer extends ChangeNotifier {
 
     orchestratorController = OrchestratorController(room: room);
 
+    // Warmed here rather than on first use: the session takes a round trip to
+    // open, and doing it when the chat opens means the learner's first
+    // message is checked rather than being the one that pays for it. Warmed
+    // again on a language change, because the session is per language.
+    unawaited(_warmUpLocalSpellCheck());
+
     _languageSub ??= MatrixState
         .pangeaController
         .userController
@@ -101,6 +107,7 @@ class Choreographer extends ChangeNotifier {
         .stream
         .listen((update) {
           clearWritingAssistance();
+          unawaited(_warmUpLocalSpellCheck());
         });
 
     _settingsUpdateSub ??= MatrixState
@@ -290,17 +297,33 @@ class Choreographer extends ChangeNotifier {
   /// against the server's seconds, and its highlights need a repaint of their
   /// own — the next one comes only when the response lands.
   /// See writing-assistance.instructions.md, "Local spelling matches".
-  Future<void> _runLocalSpellPass() async {
+  /// The locale to spell check the learner's target language with, or null
+  /// where the device offers nothing for it.
+  ///
+  /// The device is asked which languages it can check rather than being handed
+  /// the target language directly: iOS answers null for any tag outside its
+  /// own list, so a bare `es` would silently check nothing.
+  Future<Locale?> _spellCheckLocale() async {
     final l2 = MatrixState.pangeaController.userController.userL2;
-    if (l2 == null) return;
+    if (l2 == null) return null;
 
-    // The device is asked which languages it can check rather than being
-    // handed the target language directly: iOS answers null for any tag
-    // outside its own list, so a bare `es` would silently check nothing.
-    final locale = LocalSpellCheck.resolveLocale(
+    return LocalSpellCheck.resolveLocale(
       l2.langCode,
       await KeyboardLanguages.getAvailableSpellCheckLanguages(),
     );
+  }
+
+  /// Opens the device's spell check session before the learner starts typing,
+  /// so their first message is checked like every other one.
+  /// See writing-assistance.instructions.md, "Local spelling matches".
+  Future<void> _warmUpLocalSpellCheck() async {
+    final locale = await _spellCheckLocale();
+    if (locale == null) return;
+    await LocalSpellCheck.warmUp(locale);
+  }
+
+  Future<void> _runLocalSpellPass() async {
+    final locale = await _spellCheckLocale();
     if (locale == null) return;
 
     final text = textController.text;

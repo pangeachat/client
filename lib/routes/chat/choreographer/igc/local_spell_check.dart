@@ -63,6 +63,20 @@ abstract final class LocalSpellCheck {
         : Locale(parts.first, parts[1]);
   }
 
+  /// Opens the platform's spell check session ahead of time, so the learner's
+  /// first message is checked like every other one.
+  ///
+  /// Android answers the first request for a language with an empty list: its
+  /// checker replies through a callback that has not arrived yet. Without
+  /// this, the first message after opening a chat silently gets no local
+  /// spelling. The result is discarded — only the warm session it leaves
+  /// behind matters. iOS answers its first request normally, so it is left
+  /// alone rather than charged a round trip on every chat open.
+  static Future<void> warmUp(Locale locale) async {
+    if (defaultTargetPlatform != TargetPlatform.android) return;
+    await spans('warmup', locale);
+  }
+
   /// The misspellings the device reports in [text] for [locale].
   ///
   /// Empty whenever the local pass cannot contribute — no device checker, no
