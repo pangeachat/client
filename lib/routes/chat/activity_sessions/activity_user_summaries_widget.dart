@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
@@ -49,8 +50,6 @@ class ActivityUserSummaries extends StatelessWidget {
       );
     }
 
-    final goals = room.ownRole?.allGoals ?? const <ActivityRoleGoal>[];
-
     return Center(
       child: Stack(
         children: [
@@ -80,24 +79,6 @@ class ActivityUserSummaries extends StatelessWidget {
                     ],
                   ),
                 ),
-                // The goal header steps aside once the summary lands, so the
-                // learner's stars come along with it (#8289).
-                if (goals.isNotEmpty)
-                  Column(
-                    spacing: 8.0,
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      for (final goal in goals)
-                        GoalStatusWidget(
-                          goal: goal,
-                          complete: room.isOwnGoalCompleted(
-                            goal.id,
-                            goalSlug: goal.goalSlug,
-                          ),
-                        ),
-                    ],
-                  ),
                 ActivityParticipantSummaries(
                   summary: summary,
                   controller: controller,
@@ -168,6 +149,23 @@ ParticipantSummaryModel selectedParticipantSummary({
     summaries.firstWhereOrNull((p) => p.participantId == ownUserId) ??
     summaries.first;
 
+/// The plan role held by the participant whose card is up — the source of the
+/// goal list under the picker. Null when the room holds no role for them, or
+/// when the plan can no longer resolve that role (a pinned version evicted in
+/// favor of one with regenerated role ids), in which case there are no goals
+/// to show (#8672).
+ActivityRole? selectedParticipantRole({
+  required Map<String, ActivityRole>? planRoles,
+  required Iterable<ActivityRoleModel> assignedRoles,
+  required String participantId,
+}) {
+  final assigned = assignedRoles.firstWhereOrNull(
+    (role) => role.userId == participantId,
+  );
+  if (assigned == null) return null;
+  return planRoles?[assigned.id];
+}
+
 /// The feedback body of the summary: one participant's card at a time — the
 /// viewer's own by default — with a picker for everyone else. A single card is
 /// what keeps the section free of horizontal scrolling (#8289).
@@ -210,6 +208,12 @@ class ActivityParticipantSummaries extends StatelessWidget {
           highlightedUserId: highlightedRole?.userId,
           ownUserId: room.client.userID,
         );
+        final selectedRole = selectedParticipantRole(
+          planRoles: room.activityPlan?.roles,
+          assignedRoles: room.assignedRoles?.values ?? const [],
+          participantId: selected.participantId,
+        );
+        final awarded = room.orchestratorAwardedGoals;
         return Column(
           spacing: 12.0,
           mainAxisSize: MainAxisSize.min,
@@ -226,6 +230,27 @@ class ActivityParticipantSummaries extends StatelessWidget {
                       controller: controller,
                       selected:
                           participant.participantId == selected.participantId,
+                    ),
+                ],
+              ),
+            // The goal header steps aside once the summary lands, so the
+            // stars come along with it (#8289) — and they follow the picker,
+            // so a learner reading somebody else's card sees that person's
+            // goals, not their own (#8672).
+            if (selectedRole != null && selectedRole.allGoals.isNotEmpty)
+              Column(
+                spacing: 8.0,
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  for (final goal in selectedRole.allGoals)
+                    GoalStatusWidget(
+                      goal: goal,
+                      complete: awarded.isGoalCompletedForRole(
+                        selectedRole.id,
+                        goal.id,
+                        goalSlug: goal.goalSlug,
+                      ),
                     ),
                 ],
               ),
