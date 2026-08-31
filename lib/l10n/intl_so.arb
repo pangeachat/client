@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-28 11:37:32.566703",
+    "@@last_modified": "2026-08-31 12:49:36.305192",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Jawaab ma jirin",
     "callHistoryDeclined": "Wicitaankii waa la diiday",
     "callHistoryYouDeclined": "Wicitaankan waad diiday",
-    "starsEarnedInLanguage": "Xiddigaha lagu kasbaday {language}"
+    "starsEarnedInLanguage": "Xiddigaha lagu kasbaday {language}",
+    "readAloudNoVoiceNote": "Ma jiro cod tayo sare leh oo {language} ah oo laga heli karo qalabkan, sidaa darteed goobahan lama heli karo. Waxaad weli ka ciyaari kartaa codka qalabka fariinta."
 }

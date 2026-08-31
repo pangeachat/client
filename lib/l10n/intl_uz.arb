@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-28 11:37:33.321943",
+    "@@last_modified": "2026-08-31 12:49:37.924788",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9816,5 +9816,6 @@
     "callHistoryNoAnswer": "Javob yo'q",
     "callHistoryDeclined": "Qo'ng'iroq rad etildi",
     "callHistoryYouDeclined": "Siz bu qo'ng'iroqni rad etdingiz",
-    "starsEarnedInLanguage": "{language} tilida topilgan yulduzlar"
+    "starsEarnedInLanguage": "{language} tilida topilgan yulduzlar",
+    "readAloudNoVoiceNote": "Bu qurilmada yuqori sifatli {language} ovozi mavjud emas, shuning uchun bu sozlamalar ishlamaydi. Xabarlar panelidan audio tinglashingiz mumkin."
 }

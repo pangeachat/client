@@ -29,7 +29,9 @@ A learner who sends a voice message is in a spoken exchange, so the bot's reply 
 - **Bot only.** The backend-TTS exception applies to the bot's reply alone, so a busy activity room cannot turn every participant's message into a paid request.
 
 ### Enabling requires a qualifying voice
-Turning either message-audio toggle on first runs the same known-good-voice gate playback uses (see Audio source below), against the learner's selected L2. When no known-good voice exists, the toggle stays off and a popup explains how to get one where the learner currently is (#8113):
+Both message-audio toggles answer to the known-good-voice gate playback uses (see Audio source below), run against the learner's selected L2. When the device offers no known-good voice, the toggles render **disabled and off** whatever the account setting says — a default-on toggle would claim audio the device cannot produce (#8326), and a tappable one read as a default regression to QA (#8664). A single note above the two toggles carries the explanation in place: no high-quality voice for the L2 is available on this device, and a message's audio can still be played from the message toolbar (which fetches generated audio and is not gated on device voices). The Words and Choices toggles are deliberately outside this: without a known-good voice they still govern real audio — backend for Pro, best-available device voice otherwise, the sound-over-silence choice in [word-text-to-speech.instructions.md](word-text-to-speech.instructions.md) — so they stay enabled everywhere.
+
+While the gate passes, the toggles work normally. Turning one on re-runs the gate at tap time, because the page-open answer can be stale — the learner may have just downloaded a voice, or lost one (#8282). When that re-check fails, the toggles fall back to their disabled state and a popup explains how to get a qualifying voice where the learner currently is (#8113). Out of the disabled state the path back is opening the page again (or changing the target language), either of which re-runs the gate — a disabled toggle takes no taps, so a voice downloaded mid-visit shows up on the next visit. The popup's advice:
 
 - **Desktop web, non-Chromium** (Safari, Firefox): try Chrome or Edge. These browsers bundle their own high-quality voices; Safari exposes only plain-named compact system voices to the Web Speech API, so no Safari voice can ever pass the gate.
 - **Mobile web, any browser**: use the mobile app. Every iOS browser is WebKit underneath and shares Safari's voices, so recommending another browser there would not help.
@@ -38,7 +40,7 @@ Turning either message-audio toggle on first runs the same known-good-voice gate
 
 The advice hedges ("usually") rather than promises: the gate is per-language, and for a low-resource L2 even Chrome or Edge may lack a qualifying voice.
 
-The check is device-level while the setting is account-level. Enabling on a platform with a good voice does not make other platforms play; the silence rule under Audio source still governs playback everywhere. Silence remains correct at playback time — but at the moment of decision the learner deserves to know why nothing would play and what to change; silently doing nothing at toggle time read as broken (#7436).
+The check is device-level while the setting is account-level. Enabling on a platform with a good voice does not make other platforms play; the silence rule under Audio source still governs playback everywhere. Silence remains correct at playback time — but in settings the learner deserves to know why nothing would play and what they can do instead: a toggle that silently did nothing read as broken (#7436), and one that merely read off read as a wrong default (#8664). The disabled state with its subtitle says both, without waiting for a tap.
 
 ## What gets read
 A message is read on arrival (the **On new message** toggle) only when all of these hold:

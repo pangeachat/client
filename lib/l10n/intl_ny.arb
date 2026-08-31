@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-28 11:37:31.851073",
+    "@@last_modified": "2026-08-31 12:49:35.369473",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Palibe yankho",
     "callHistoryDeclined": "Kuyimba kwakanidwa",
     "callHistoryYouDeclined": "Mwakana kuyimba uku",
-    "starsEarnedInLanguage": "Nyenyezi zopezedwa mu {language}"
+    "starsEarnedInLanguage": "Nyenyezi zopezedwa mu {language}",
+    "readAloudNoVoiceNote": "Palibe mawu apamwamba a {language} omwe alipo pa chipangizochi, choncho zokonda izi sizikupezeka. Mukhoza kusewera mawu kuchokera pa chida chotumizira mauthenga."
 }

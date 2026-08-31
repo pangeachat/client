@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-28 11:37:30.488176",
+    "@@last_modified": "2026-08-31 12:49:32.225519",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Жауап жоқ",
     "callHistoryDeclined": "Қоңыраудан бас тартылды",
     "callHistoryYouDeclined": "Сіз бұл қоңыраудан бас тарттыңыз",
-    "starsEarnedInLanguage": "{language} тілінде жинаған жұлдыздар"
+    "starsEarnedInLanguage": "{language} тілінде жинаған жұлдыздар",
+    "readAloudNoVoiceNote": "Бұл құрылғыда жоғары сапалы {language} дауысы жоқ, сондықтан бұл параметрлер қолжетімсіз. Хабарлама құралдар тақтасынан аудионы ойната аласыз."
 }

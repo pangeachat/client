@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-28 11:37:31.545609",
+    "@@last_modified": "2026-08-31 12:49:34.223790",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "အဖြေမရှိပါ",
     "callHistoryDeclined": "ခေါ်ဆိုမှုကို ငြင်းပယ်လိုက်သည်",
     "callHistoryYouDeclined": "သင် ဤခေါ်ဆိုမှုကို ငြင်းပယ်ခဲ့သည်",
-    "starsEarnedInLanguage": "{language} တွင် ရရှိခဲ့သော ကြယ်များ"
+    "starsEarnedInLanguage": "{language} တွင် ရရှိခဲ့သော ကြယ်များ",
+    "readAloudNoVoiceNote": "ဤစက်တွင် အရည်အသွေးမြင့် {language} အသံမရှိသောကြောင့် ဤဆက်တင်များကို အသုံးမပြုနိုင်ပါ။ မက်ဆေ့ချ်တူးလ်ဘားမှ အသံကို ဖွင့်နိုင်ပါသေးသည်။"
 }

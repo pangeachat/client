@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-28 11:37:28.998149",
+    "@@last_modified": "2026-08-31 12:49:29.511858",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9812,5 +9812,6 @@
     "callHistoryNoAnswer": "Ez du erantzun",
     "callHistoryDeclined": "Deia baztertuta",
     "callHistoryYouDeclined": "Dei hau baztertu duzu",
-    "starsEarnedInLanguage": "{language} hizkuntzan irabazitako izarrak"
+    "starsEarnedInLanguage": "{language} hizkuntzan irabazitako izarrak",
+    "readAloudNoVoiceNote": "Ez dago kalitate handiko {language} ahotsik gailu honetan, beraz, ezarpen hauek ez daude erabilgarri. Mezu-barrako audioa erreproduzitu dezakezu oraindik."
 }

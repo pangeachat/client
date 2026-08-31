@@ -1938,7 +1938,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-28 11:37:30.445865",
+    "@@last_modified": "2026-08-31 12:49:31.742939",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10712,5 +10712,6 @@
     "callHistoryNoAnswer": "პასუხი არ არის",
     "callHistoryDeclined": "ზარი უარყოფილია",
     "callHistoryYouDeclined": "თქვენ უარყავით ეს ზარი",
-    "starsEarnedInLanguage": "ვარსკვლავები მოპოვებული {language}-ში"
+    "starsEarnedInLanguage": "ვარსკვლავები მოპოვებული {language}-ში",
+    "readAloudNoVoiceNote": "ამ მოწყობილობაზე არ არის ხელმისაწვდომი მაღალი ხარისხის {language} ხმა, ამიტომ ეს პარამეტრები მიუწვდომელია. თქვენ კვლავ შეგიძლიათ აუდიოს დაკვრა შეტყობინებების ხელსაწყოთა ზოლიდან."
 }

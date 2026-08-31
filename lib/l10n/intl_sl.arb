@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-28 11:37:36.712463",
+    "@@last_modified": "2026-08-31 12:49:36.104971",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10757,5 +10757,6 @@
     "callHistoryNoAnswer": "Ni odgovora",
     "callHistoryDeclined": "Klic zavrnjen",
     "callHistoryYouDeclined": "Zavrnili ste ta klic",
-    "starsEarnedInLanguage": "Zvezdice, pridobljene v {language}"
+    "starsEarnedInLanguage": "Zvezdice, pridobljene v {language}",
+    "readAloudNoVoiceNote": "Na tej napravi ni na voljo visokokakovosten glas za {language}, zato te nastavitve niso na voljo. Zvok lahko še vedno predvajate iz orodne vrstice sporočil."
 }

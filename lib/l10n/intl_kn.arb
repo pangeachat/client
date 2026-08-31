@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-28 11:37:30.451019",
+    "@@last_modified": "2026-08-31 12:49:31.953982",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "ಉತ್ತರವಿಲ್ಲ",
     "callHistoryDeclined": "ಕರೆ ನಿರಾಕರಿಸಲಾಗಿದೆ",
     "callHistoryYouDeclined": "ನೀವು ಈ ಕರೆಯನ್ನು ನಿರಾಕರಿಸಿದ್ದೀರಿ",
-    "starsEarnedInLanguage": "{language} ನಲ್ಲಿ ಗಳಿಸಿದ ನಕ್ಷತ್ರಗಳು"
+    "starsEarnedInLanguage": "{language} ನಲ್ಲಿ ಗಳಿಸಿದ ನಕ್ಷತ್ರಗಳು",
+    "readAloudNoVoiceNote": "ಈ ಸಾಧನದಲ್ಲಿ ಉತ್ತಮ ಗುಣಮಟ್ಟದ {language} ಧ್ವನಿ ಲಭ್ಯವಿಲ್ಲ, ಆದ್ದರಿಂದ ಈ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಲಭ್ಯವಿಲ್ಲ. ನೀವು ಇನ್ನೂ ಸಂದೇಶ ಟೂಲ್‌ಬಾರ್‌ನಿಂದ ಆಡಿಯೊವನ್ನು ಪ್ಲೇ ಮಾಡಬಹುದು."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-28 11:37:30.022496",
+    "@@last_modified": "2026-08-31 12:49:31.127414",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Անպատասխան",
     "callHistoryDeclined": "Զանգը մերժվեց",
     "callHistoryYouDeclined": "Դուք մերժեցիք այս զանգը",
-    "starsEarnedInLanguage": "{language}-ում վաստակած աստղեր"
+    "starsEarnedInLanguage": "{language}-ում վաստակած աստղեր",
+    "readAloudNoVoiceNote": "Այս սարքի վրա բարձրորակ {language} ձայն հասանելի չէ, ուստի այս կարգավորումները հասանելի չեն։ Դուք դեռ կարող եք ձայն նվագարկել հաղորդագրությունների գործիքագոտուց։"
 }

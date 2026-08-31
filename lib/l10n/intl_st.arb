@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-28 11:37:32.525651",
+    "@@last_modified": "2026-08-31 12:49:36.803564",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Ha ho karabo",
     "callHistoryDeclined": "Mohala o hanetsoe",
     "callHistoryYouDeclined": "U hanne mohala ona",
-    "starsEarnedInLanguage": "Dinaledi tse fumanweng ho {language}"
+    "starsEarnedInLanguage": "Dinaledi tse fumanweng ho {language}",
+    "readAloudNoVoiceNote": "Ha ho lentsoe la boleng bo holimo la {language} le fumanehang sesebelisoa sena, ka hona litlhophiso tsena ha li fumanehe. U ntse u ka bapala molumo ho tsoa ho toolbar ea molaetsa."
 }

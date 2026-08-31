@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-28 11:37:33.106032",
+    "@@last_modified": "2026-08-31 12:49:37.806194",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9812,5 +9812,6 @@
     "callHistoryNoAnswer": "Без відповіді",
     "callHistoryDeclined": "Дзвінок відхилено",
     "callHistoryYouDeclined": "Ви відхилили цей дзвінок",
-    "starsEarnedInLanguage": "Зірок зароблено в {language}"
+    "starsEarnedInLanguage": "Зірок зароблено в {language}",
+    "readAloudNoVoiceNote": "На цьому пристрої немає високоякісного голосу для {language}, тому ці налаштування недоступні. Ви все ще можете відтворювати аудіо з панелі повідомлень."
 }

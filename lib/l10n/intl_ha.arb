@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-28 11:37:29.910253",
+    "@@last_modified": "2026-08-31 12:49:30.464109",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Babu amsa",
     "callHistoryDeclined": "An ki kiran",
     "callHistoryYouDeclined": "Kun ki wannan kiran",
-    "starsEarnedInLanguage": "Taurari da aka samu a {language}"
+    "starsEarnedInLanguage": "Taurari da aka samu a {language}",
+    "readAloudNoVoiceNote": "Babu ingantacciyar murya ta {language} da ke samuwa a kan wannan na'urar, don haka waɗannan saitunan ba su samuwa. Har yanzu za ka iya kunna sauti daga maɓallin saƙo."
 }

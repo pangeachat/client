@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-28 11:37:33.204149",
+    "@@last_modified": "2026-08-31 12:49:38.363609",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "جاۋاب يوق",
     "callHistoryDeclined": "تېلېفون رەت قىلىندى",
     "callHistoryYouDeclined": "سىز بۇ تېلېفوننى رەت قىلدىڭىز",
-    "starsEarnedInLanguage": "{language}دا ئېرىشكەن چولپانلار"
+    "starsEarnedInLanguage": "{language}دا ئېرىشكەن چولپانلار",
+    "readAloudNoVoiceNote": "بۇ ئۈسكۈنىدە يۇقىرى سۈپەتلىك {language} ئاۋازى يوق، شۇڭا بۇ تەڭشەكلەر ئىشلەتمەيدۇ. سىز يەنىلا ئۇچۇر قورال بالدىقىدىن ئاۋاز قويالايسىز."
 }

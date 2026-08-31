@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-28 11:37:29.325698",
+    "@@last_modified": "2026-08-31 12:49:29.867798",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9812,5 +9812,6 @@
     "callHistoryNoAnswer": "Sen resposta",
     "callHistoryDeclined": "Chamada rexeitada",
     "callHistoryYouDeclined": "Rexeitaches esta chamada",
-    "starsEarnedInLanguage": "Estrelas gañadas en {language}"
+    "starsEarnedInLanguage": "Estrelas gañadas en {language}",
+    "readAloudNoVoiceNote": "Non hai dispoñible unha voz de {language} de alta calidade neste dispositivo, polo que esta configuración non está dispoñible. Aínda podes reproducir audio desde a barra de ferramentas de mensaxes."
 }

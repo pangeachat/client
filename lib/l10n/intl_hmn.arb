@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-28 11:37:29.654074",
+    "@@last_modified": "2026-08-31 12:49:30.430811",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Tsis teb",
     "callHistoryDeclined": "Tsis kam hu",
     "callHistoryYouDeclined": "Koj tsis kam hu no",
-    "starsEarnedInLanguage": "Cov hnub qub tau txais hauv {language}"
+    "starsEarnedInLanguage": "Cov hnub qub tau txais hauv {language}",
+    "readAloudNoVoiceNote": "Tsis muaj lub suab zoo {language} muaj nyob rau hauv lub cuab yeej no, yog li cov chaw no tsis muaj. Koj tseem tuaj yeem ua suab los ntawm cov lus toolbar."
 }

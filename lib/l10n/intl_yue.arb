@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-28 11:37:33.587385",
+    "@@last_modified": "2026-08-31 12:49:38.597558",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10769,5 +10769,6 @@
     "callHistoryNoAnswer": "無人接聽",
     "callHistoryDeclined": "通話已拒絕",
     "callHistoryYouDeclined": "你拒絕了此通話",
-    "starsEarnedInLanguage": "喺{language}賺取嘅星星"
+    "starsEarnedInLanguage": "喺{language}賺取嘅星星",
+    "readAloudNoVoiceNote": "此裝置沒有高品質嘅{language}語音，所以呢啲設定用唔到。你仍然可以喺訊息工具列播放音訊。"
 }
