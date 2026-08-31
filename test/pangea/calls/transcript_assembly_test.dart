@@ -1294,6 +1294,38 @@ void main() {
       expect(half.issue, HalfIssue.audioSuppressedLocally);
     });
 
+    test('lost audio is not explained away as speech we did not find', () {
+      // Empty for TWO reasons, and only one of them is ours to name. The trim
+      // never judged the lost chunk, so reporting "this app found no speech in
+      // it" states a verdict over audio nothing looked at, and buries the one
+      // chunk that might actually have carried the words.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: const [],
+            accounting: const HalfAccounting(
+              chunksCaptured: 2,
+              chunksTranscribed: 0,
+              chunksSuppressed: 1,
+              chunksLost: 1,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.state, HalfState.incomplete);
+      expect(half.saidNothing, isFalse);
+      expect(
+        half.issue,
+        isNot(HalfIssue.audioSuppressedLocally),
+        reason: 'a lost chunk is words that may be missing, not silence',
+      );
+    });
+
     test('a half that still carries words is left alone', () {
       // The flag-fatigue rule the case above must not cost. A quiet stretch is
       // ordinary, and a partly suppressed half that came back with speech is a

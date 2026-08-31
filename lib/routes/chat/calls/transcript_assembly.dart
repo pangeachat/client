@@ -94,7 +94,18 @@ bool suppressionExplainsEmptiness(
 ) =>
     segments.isEmpty &&
     accounting.chunksTranscribed == 0 &&
-    accounting.chunksSuppressed > 0;
+    accounting.chunksSuppressed > 0 &&
+    // Suppression must account for the emptiness on its OWN, or naming it as
+    // the reason buries a different one. A half with one chunk suppressed and
+    // one LOST is empty for two reasons, and only the lost chunk is audio that
+    // might have carried words -- saying "this app found no speech in it"
+    // there reports our trim's verdict over audio the trim never judged.
+    // `writerAdmitsGaps` already makes such a half incomplete on `chunksLost`,
+    // so the half still reads as missing words; what this keeps out is the
+    // WRONG EXPLANATION, which is the distinction this whole file is built to
+    // hold. Capture refused is left to `microphoneRefused` above it for the
+    // same reason.
+    accounting.chunksLost == 0;
 
 /// Where one device's wall clock sat relative to the SFU's, read at join.
 ///
