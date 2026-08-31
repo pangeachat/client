@@ -125,6 +125,10 @@ void main() {
     int captured = 1,
     int transcribed = 1,
     int lost = 0,
+
+    /// Chunks the writing device's own speech detector held back. Zero in every
+    /// fixture that is not about them, which is the ordinary case.
+    int suppressed = 0,
     bool drainComplete = true,
     bool declared = true,
 
@@ -176,6 +180,7 @@ void main() {
           chunksCaptured: captured,
           chunksTranscribed: transcribed,
           chunksLost: lost,
+          chunksSuppressed: suppressed,
           captureRefused: false,
           drainComplete: drainComplete,
         ).toJson(),
@@ -751,6 +756,53 @@ void main() {
 
       expect(find.textContaining('did not say anything'), findsOneWidget);
       expect(find.textContaining('No transcript from'), findsNothing);
+    });
+
+    testWidgets('a call OUR trim emptied is not reported as silence', (
+      tester,
+    ) async {
+      // The learner talked; the trim's thresholds -- unvalidated, calibrated on
+      // one recording -- found no speech in any chunk, so nothing was ever sent
+      // and nothing came back. The half is empty, its accounting is coherent
+      // and admits nothing, and the screen used to answer that with a flat "You
+      // did not say anything": our own detector's verdict printed as a fact
+      // about a person.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: const [],
+            captured: 3,
+            transcribed: 0,
+            suppressed: 3,
+          ),
+          half(_peer, texts: const ['muy bien']),
+        ]),
+      );
+
+      expect(find.textContaining('did not say anything'), findsNothing);
+      expect(find.textContaining('No transcript from'), findsNothing);
+      // And the cause it does name is ours, not a half we failed to read.
+      expect(find.textContaining('sent to be transcribed'), findsOneWidget);
+      expect(find.textContaining('Nothing could be read'), findsNothing);
+    });
+
+    testWidgets('a silent speaker whose audio we DID send still reads as '
+        'silent', (tester) async {
+      // The answer the fix must not destroy. Every chunk went to a provider and
+      // came back with no words, so the emptiness is the speaker's own and
+      // saying so is what the empty half was written for.
+      await pump(
+        tester,
+        serving([
+          half(_me, texts: const [], captured: 3, transcribed: 0),
+          half(_peer, texts: const ['muy bien']),
+        ]),
+      );
+
+      expect(find.textContaining('did not say anything'), findsOneWidget);
+      expect(find.textContaining('sent to be transcribed'), findsNothing);
     });
 
     testWidgets('an incomplete half shows its words AND says it is short', (

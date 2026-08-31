@@ -64,6 +64,38 @@ bool segmentsArePlaceable(List<TranscriptSegment> segments) {
   return true;
 }
 
+/// Whether a half is empty because THIS APP threw its audio away, rather than
+/// because the speaker said nothing.
+///
+/// [HalfAccounting.chunksSuppressed] counts chunks the writing device's own
+/// speech detector examined and chose not to send. That detector's thresholds
+/// are calibrated against a single recording and documented as unvalidated, so
+/// a short quiet answer inside a long chunk can fail them -- and when every
+/// chunk fails them, no request is ever issued and NO PROVIDER EVER READS THE
+/// AUDIO. The half is then empty for a reason that is entirely ours, and
+/// `present` plus no segments is [TranscriptHalf.saidNothing]: "you did not say
+/// anything", sourced from our own detector, about someone who may have talked
+/// the whole call.
+///
+/// All three terms are load-bearing, and the first is why this is NOT a term of
+/// [HalfAccounting.writerAdmitsGaps]:
+/// * `segments.isEmpty` -- a half that still carries words was PARTIALLY
+///   suppressed, and that is ordinary. Almost every real call has a quiet
+///   stretch, so flagging those would mark nearly every transcript incomplete
+///   and leave the flag meaning nothing when it matters: the trap already
+///   recorded on [HalfAccounting.chunksSuppressed] and [HalfAccounting.chunksLost].
+/// * `chunksTranscribed == 0` -- if any chunk came back with words, a provider
+///   did read this speaker, and what it did not find is not ours to explain.
+/// * `chunksSuppressed > 0` -- with nothing held back there is nothing of ours
+///   in the way, and an empty half is the speaker's own answer.
+bool suppressionExplainsEmptiness(
+  List<TranscriptSegment> segments,
+  HalfAccounting accounting,
+) =>
+    segments.isEmpty &&
+    accounting.chunksTranscribed == 0 &&
+    accounting.chunksSuppressed > 0;
+
 /// Where one device's wall clock sat relative to the SFU's, read at join.
 ///
 /// Every position in a half is stamped from the WRITING DEVICE's own wall
@@ -506,6 +538,11 @@ enum HalfIssue {
   /// This device never opened a microphone. A fact about us, not the speaker.
   microphoneRefused,
 
+  /// Every chunk behind an empty half was discarded by this app's own speech
+  /// detector, so nothing here was ever read by a transcriber. A fact about us
+  /// too, and the reason the half must not read as silence.
+  audioSuppressedLocally,
+
   /// Audio was captured and then lost before it could be transcribed.
   audioLost,
 
@@ -678,6 +715,14 @@ class TranscriptHalf {
     if (accounting.incoherent) return HalfIssue.accountingImpossible;
 
     if (accounting.captureRefused) return HalfIssue.microphoneRefused;
+
+    // Beside the microphone, and for the same reason: both are an empty half
+    // that our own device produced. It sits AHEAD of every check below because
+    // those are the writer's admissions and this is our doing -- the ordering
+    // this getter already states. `chunksSuppressed` is only ever non-zero when
+    // the wire carried a non-negative int under that name, so reading it from
+    // an undeclared accounting reports a count the writer really did send.
+    if (audioSuppressedLocally) return HalfIssue.audioSuppressedLocally;
     if (!accounting.declared) return HalfIssue.writerSaidNothing;
     if (accounting.chunksLost > 0) return HalfIssue.audioLost;
     if (accounting.truncated || accounting.segmentsOmitted > 0) {
@@ -711,6 +756,13 @@ class TranscriptHalf {
     return HalfIssue.none;
   }
 
+  /// Whether this half is empty because our own speech detector discarded its
+  /// audio. See [suppressionExplainsEmptiness], which is where the rule lives:
+  /// asking it here rather than re-deriving it is what keeps the screen and
+  /// [issue] answering the same question.
+  bool get audioSuppressedLocally =>
+      suppressionExplainsEmptiness(segments, accounting);
+
   /// Whether this half is a person who was recorded and said nothing.
   ///
   /// Silence is NOT a fourth [HalfState]; it is [HalfState.present] with no
@@ -719,6 +771,11 @@ class TranscriptHalf {
   /// find out". But the distinction is real and it is the single most
   /// dangerous one in this feature to get backwards, so it is asked here once
   /// rather than re-derived at each screen that needs it.
+  ///
+  /// It rests entirely on the state, which is why assembly refuses `present`
+  /// for a half whose emptiness is [suppressionExplainsEmptiness]. Nothing here
+  /// could tell those apart: an empty half looks the same either way, and the
+  /// only thing that knows a provider never saw the audio is the accounting.
   bool get saidNothing => state == HalfState.present && segments.isEmpty;
 
   /// How much speech this half actually carries.
@@ -981,7 +1038,16 @@ CallTranscript assembleTranscript({
         state:
             (!canConclude ||
                 wasUnreadable ||
-                candidate.accounting.writerAdmitsGaps)
+                candidate.accounting.writerAdmitsGaps ||
+                // Not folded into `writerAdmitsGaps`, which is about the
+                // ACCOUNTING alone and would then have to raise the flag on
+                // every partially suppressed half -- nearly all of them. This
+                // one needs the segments as well, and only the all-suppressed
+                // half it names is unsupported as `present`.
+                suppressionExplainsEmptiness(
+                  candidate.segments,
+                  candidate.accounting,
+                ))
             ? HalfState.incomplete
             : HalfState.present,
         readWasCutShort: !exhausted,

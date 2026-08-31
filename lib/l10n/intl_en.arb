@@ -3773,6 +3773,14 @@
             }
         }
     },
+    "callTranscriptNoSpeechDetected": "Nothing recorded from {name} was sent to be transcribed: this app found no speech in it and can be wrong about that, so what was said is not known.",
+    "@callTranscriptNoSpeechDetected": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
     "callTranscriptPartial": "Part of what {name} said may be missing",
     "@callTranscriptPartial": {
         "placeholders": {

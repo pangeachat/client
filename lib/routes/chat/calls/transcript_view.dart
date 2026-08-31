@@ -357,6 +357,12 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     final name = _nameFor(half.senderId, l10n);
     if (half.state == HalfState.absent) return l10n.callTranscriptNone(name);
     if (half.saidNothing) return l10n.callTranscriptSaidNothing(name);
+    // Ahead of the general empty-half line, which says nothing could be READ
+    // from what they said -- true of a corrupt or unreadable half, and wrong
+    // here: there was nothing to read because we never sent any of it.
+    if (half.audioSuppressedLocally) {
+      return l10n.callTranscriptNoSpeechDetected(name);
+    }
     if (half.segments.isEmpty) return l10n.callTranscriptNothingRead(name);
     if (half.state == HalfState.incomplete) {
       return l10n.callTranscriptPartial(name);
@@ -438,8 +444,14 @@ class _HalfSection extends StatelessWidget {
           // is a definite claim about a person, and the only thing separating
           // it from "we could not find out" is which state an empty half is
           // in -- a distinction too easy to invert at each site that needs it.
+          //
+          // Three answers, not two: an empty half whose audio our own detector
+          // held back was never read by anything, and saying either that they
+          // were silent or that we could not read them names the wrong cause.
           text: half.saidNothing
               ? l10n.callTranscriptSaidNothing(name)
+              : half.audioSuppressedLocally
+              ? l10n.callTranscriptNoSpeechDetected(name)
               : l10n.callTranscriptNothingRead(name),
         ),
       ];

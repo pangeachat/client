@@ -1263,6 +1263,90 @@ void main() {
       expect(quiet.incoherent, isFalse);
     });
 
+    test('a half OUR detector emptied is not a person who said nothing', () {
+      // Every chunk failed the trim's thresholds -- documented as unvalidated
+      // and calibrated on one recording -- so no request was ever issued and no
+      // provider read a second of this audio. The accounting is coherent and
+      // admits nothing, which is exactly why this half used to assemble as
+      // `present` with no segments: "you did not say anything", about a learner
+      // who may have talked the whole call.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: const [],
+            accounting: const HalfAccounting(
+              chunksCaptured: 3,
+              chunksTranscribed: 0,
+              chunksSuppressed: 3,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.state, HalfState.incomplete);
+      expect(half.saidNothing, isFalse);
+      // Named as OURS. Every other value here would send whoever reads the
+      // report to the wrong device, or to the wrong person.
+      expect(half.issue, HalfIssue.audioSuppressedLocally);
+    });
+
+    test('a half that still carries words is left alone', () {
+      // The flag-fatigue rule the case above must not cost. A quiet stretch is
+      // ordinary, and a partly suppressed half that came back with speech is a
+      // clean record: raising the flag here would raise it on nearly every
+      // call and leave it meaning nothing when it matters.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            texts: const ['hola'],
+            accounting: const HalfAccounting(
+              chunksCaptured: 4,
+              chunksTranscribed: 2,
+              chunksSuppressed: 2,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).state, HalfState.present);
+      expect(_halfFor(transcript, alice).issue, HalfIssue.none);
+    });
+
+    test(
+      'a speaker who was recorded and held nothing back still said nothing',
+      () {
+        // The answer this fix must not destroy. A muted speaker, or one who
+        // simply did not talk, writes an empty half with nothing suppressed --
+        // every chunk went to a provider and came back with no words. That is a
+        // complete, trusted record and it is the one case "they said nothing" is
+        // entitled to be said about.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              segments: const [],
+              accounting: const HalfAccounting(
+                chunksCaptured: 3,
+                chunksTranscribed: 0,
+                declared: true,
+              ),
+            ),
+          ],
+          expectedSenders: [alice],
+        );
+
+        expect(_halfFor(transcript, alice).state, HalfState.present);
+        expect(_halfFor(transcript, alice).saidNothing, isTrue);
+      },
+    );
+
     test('two halves differing only in what they held back are not equal', () {
       const a = HalfAccounting(
         chunksCaptured: 2,

@@ -192,6 +192,11 @@ Future<CallTranscript> fetchCallTranscript({
       'captured ${half.accounting.chunksCaptured}, '
       'transcribed ${half.accounting.chunksTranscribed}, '
       'lost ${half.accounting.chunksLost}, '
+      // Printed even though it is not a gap on its own. It is the ONE count
+      // that can explain an empty half nobody else can account for, and a
+      // report of "it said I said nothing" is exactly the report that needs
+      // to see it.
+      'suppressed ${half.accounting.chunksSuppressed}, '
       'micRefused ${half.accounting.captureRefused}, '
       'drained ${half.accounting.drainComplete}, '
       'declared ${half.accounting.declared}, '
