@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Sti turni sò stati arregistrati nantu à dui dispusitivi i cui orologi ùn pudianu esse paragunati, cusì ùn sò micca mostrati tempi è l'ordine in cui appariscenu pò esse sbagliatu.",
     "callTranscriptOpen": "Leghje a trascrizzione",
     "errorRateLimited": "Carichemu assai avà. Per piacè aspettate un mumentu è riprovate.",
-    "noPermissionToInviteUsers": "Ùn avete micca permessu d'invità membri quì."
+    "noPermissionToInviteUsers": "Ùn avete micca permessu d'invità membri quì.",
+    "callTranscriptRoomEncrypted": "Stu chatu hè criptatu è a trascrizzione ùn pudia micca esse sbluccata quì, cusì ciò chì hè statu dettu ùn hè micca mustratu.",
+    "callTranscriptParticipantsUnknown": "Ùn si sà quale altru era in sta chjama, cusì qualchissia chì hà parlatu puderia mancà cumpletamente da sta trascrizzione.",
+    "callTranscriptTooLongToSend": "Ciò chì {name} hà dettu era troppu longu per esse salvatu cù sta chjama, cusì nunda di questu hè mustratu."
 }

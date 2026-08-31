@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Dɛn rikɔd dɛn tɔn dɛn ya na tu divays dɛn we dɛn klɔk dɛn nɔ bin ebul fɔ kɔmpea, so nɔ tɛm nɔ de sho ɛn di ɔda we dɛn de apia kin rɔng.",
     "callTranscriptOpen": "Rid di transkrip",
     "errorRateLimited": "Wi de lod plenti naw. Duya wet smɔl ɛn tray bak.",
-    "noPermissionToInviteUsers": "Yu nɔ gɛt pɔmishɔn fɔ invayt pipul dɛn ya."
+    "noPermissionToInviteUsers": "Yu nɔ gɛt pɔmishɔn fɔ invayt pipul dɛn ya.",
+    "callTranscriptRoomEncrypted": "Dis chat gɛt ɛnkripshɔn ɛn di transkript nɔ kin ɔnlɔk ya, so wetin dɛn tɔk nɔ de sho.",
+    "callTranscriptParticipantsUnknown": "Nɔto dɛn sabi udat ɔda pɔsin bin de pan dis kɔl, so sɔm pɔsin we bin tɔk kin nɔ de insay dis transkript atɔl.",
+    "callTranscriptTooLongToSend": "Wetin {name} bin tɔk bin lɔng pas fɔ sev wit dis kɔl, so nɔn pan am nɔ de sho."
 }

@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Awọn aami wọnyi ni a gba silẹ lori awọn ẹrọ meji ti a ko le fi awọn aago wọn wé, nitorinaa ko si akoko ti a fihan ati pe aṣẹ ti wọn farahan ninu le jẹ aṣiṣe.",
     "callTranscriptOpen": "Ka ọrọ ipe naa",
     "errorRateLimited": "A ń gbé ọ̀pọ̀lọpọ̀ nǹkan wọlé lọ́wọ́lọ́wọ́. Jọ̀wọ́ dúró dé ìgbà díẹ̀ kí ó sì tún gbìyànjú.",
-    "noPermissionToInviteUsers": "O ko ni igbanilaaye lati pe awon omo egbe si ibi."
+    "noPermissionToInviteUsers": "O ko ni igbanilaaye lati pe awon omo egbe si ibi.",
+    "callTranscriptRoomEncrypted": "Ibaaraẹni-sọrọ yii ti wa ni ìfìpamọ́, a kò sì le ṣí ìwé àkọsílẹ̀ rẹ̀ níbí, nítorí náà ohun tí a sọ kò hàn.",
+    "callTranscriptParticipantsUnknown": "A kò mọ ẹni tí ó wà nínú ìpe yìí, nítorí náà ó ṣeé ṣe kí ẹnì kan tí ó sọ̀rọ̀ má sí nínú àkọsílẹ̀ yìí rárá.",
+    "callTranscriptTooLongToSend": "Ohun tí {name} sọ gùn jù láti fi pamọ́ pẹ̀lú ìpe yìí, nítorí náà kò sí èyíkéyìí nínú rẹ̀ tí ó hàn."
 }

@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Dës Äntwerte goufen op zwee Apparater opgeholl, deenen hir Aueren net verglach konnte ginn, sou datt keng Zäiten ugewisen ginn an d'Reiefolleg an där se optrieden, falsch ka sinn.",
     "callTranscriptOpen": "Transkript liesen",
     "errorRateLimited": "Mir lueden am Moment vill. Waart w.e.g. ee Moment a probéier et nach eng Kéier.",
-    "noPermissionToInviteUsers": "Dir hutt keng Erlaabnis fir Memberen hei z'invitéieren."
+    "noPermissionToInviteUsers": "Dir hutt keng Erlaabnis fir Memberen hei z'invitéieren.",
+    "callTranscriptRoomEncrypted": "Dëse Chat ass verschlësselt an den Transkript konnt hei net entschlësselt ginn, dofir gëtt net ugewisen, wat gesot gouf.",
+    "callTranscriptParticipantsUnknown": "Et ass net bekannt, wien nach an dësem Uruff war, dofir kann et sinn, datt een, deen geschwat huet, ganz aus dësem Transkript feelt.",
+    "callTranscriptTooLongToSend": "Wat de(n) {name} gesot huet, war ze laang fir mat dësem Uruff gespäichert ze ginn, dofir gëtt näischt dovunner ugewisen."
 }

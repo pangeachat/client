@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Giliran iki direkam ing rong piranti sing jam ora bisa dibandhingake, mula ora ana wektu sing ditampilake lan urutan sing katon bisa uga salah.",
     "callTranscriptOpen": "Waca transkrip",
     "errorRateLimited": "Saiki akeh sing diunggah. Mangga ngenteni sedhela banjur coba maneh.",
-    "noPermissionToInviteUsers": "Sampeyan ora duwe idin ngundang anggota ing kene."
+    "noPermissionToInviteUsers": "Sampeyan ora duwe idin ngundang anggota ing kene.",
+    "callTranscriptRoomEncrypted": "Obrolan iki dienkripsi lan transkrip ora bisa dibukak ing kene, mula apa sing diucapake ora ditampilake.",
+    "callTranscriptParticipantsUnknown": "Ora dingerteni sapa wae sing melu telpon iki, mula ana wong sing ngomong bisa uga ora ana ing transkrip iki.",
+    "callTranscriptTooLongToSend": "Apa sing diucapake {name} dawa banget kanggo disimpen karo telpon iki, mula ora ana sing ditampilake."
 }

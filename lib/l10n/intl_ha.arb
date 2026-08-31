@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "An yi rikodin waɗannan juyawar a kan na'urori biyu waɗanda ba za a iya kwatanta agogon su ba, don haka ba a nuna lokaci ba kuma tsarin da suka bayyana a ciki yana iya zama kuskure.",
     "callTranscriptOpen": "Karanta rubutun",
     "errorRateLimited": "Muna ɗora abubuwa da yawa a yanzu. Don Allah a jira kaɗan sannan a sake gwadawa.",
-    "noPermissionToInviteUsers": "Ba ka da izinin gayyatar membobi a nan."
+    "noPermissionToInviteUsers": "Ba ka da izinin gayyatar membobi a nan.",
+    "callTranscriptRoomEncrypted": "Wannan taɗi an ɓoye shi kuma ba a iya buɗe rubutun a nan ba, don haka ba a nuna abin da aka faɗa ba.",
+    "callTranscriptParticipantsUnknown": "Ba a san waɗanne mutane ne suka shiga wannan kiran ba, don haka wani da ya yi magana yana iya ɓacewa daga wannan rubutun gaba ɗaya.",
+    "callTranscriptTooLongToSend": "Abin da {name} ya faɗa ya yi tsawo da za a adana shi da wannan kiran, don haka ba a nuna ko ɗaya daga ciki ba."
 }

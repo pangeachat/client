@@ -7130,5 +7130,8 @@
     "callTranscriptUnreconciledClocks": "Những lượt này được ghi lại trên hai thiết bị mà đồng hồ của chúng không thể so sánh được, vì vậy không có thời gian nào được hiển thị và thứ tự chúng xuất hiện có thể sai.",
     "callTranscriptOpen": "Đọc bản ghi",
     "errorRateLimited": "Chúng tôi đang tải rất nhiều dữ liệu. Vui lòng đợi một lát và thử lại.",
-    "noPermissionToInviteUsers": "Bạn không có quyền mời thành viên tại đây."
+    "noPermissionToInviteUsers": "Bạn không có quyền mời thành viên tại đây.",
+    "callTranscriptRoomEncrypted": "Cuộc trò chuyện này được mã hóa và bản ghi không thể mở khóa ở đây, vì vậy những gì đã nói không được hiển thị.",
+    "callTranscriptParticipantsUnknown": "Không rõ ai khác đã tham gia cuộc gọi này, vì vậy có thể thiếu một số người đã nói trong bản ghi này.",
+    "callTranscriptTooLongToSend": "Những gì {name} đã nói quá dài để lưu cùng với cuộc gọi này, vì vậy không có gì được hiển thị."
 }

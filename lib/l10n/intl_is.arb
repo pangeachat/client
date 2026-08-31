@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Þessar beygjur voru teknar upp á tveimur tækjum þar sem ekki var hægt að bera saman klukkur, svo engir tímar eru sýndir og röðin sem þær birtast í gæti verið röng.",
     "callTranscriptOpen": "Lesa umskriftina",
     "errorRateLimited": "Við erum að hlaða mikið núna. Vinsamlegast bíddu smá stund og reyndu aftur.",
-    "noPermissionToInviteUsers": "Þú hefur ekki leyfi til að bjóða meðlimum hingað."
+    "noPermissionToInviteUsers": "Þú hefur ekki leyfi til að bjóða meðlimum hingað.",
+    "callTranscriptRoomEncrypted": "Þetta spjall er dulkóðað og ekki var hægt að opna afritið hér, svo það sem sagt var er ekki sýnt.",
+    "callTranscriptParticipantsUnknown": "Ekki er vitað hverjir fleiri voru í þessu símtali, svo einhver sem talaði gæti vantað alveg í þetta afrit.",
+    "callTranscriptTooLongToSend": "Það sem {name} sagði var of langt til að vista með þessu símtali, svo ekkert af því er sýnt."
 }

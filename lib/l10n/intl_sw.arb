@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Zamu hizi zilirekodiwa kwenye vifaa viwili ambavyo saa zake hazikuweza kulinganishwa, kwa hivyo hakuna nyakati zinazoonyeshwa na mpangilio zinaoonekana unaweza kuwa si sahihi.",
     "callTranscriptOpen": "Soma nakala",
     "errorRateLimited": "Tunapakia mengi kwa sasa. Tafadhali subiri kidogo kisha ujaribu tena.",
-    "noPermissionToInviteUsers": "Huna ruhusa ya kualika wanachama hapa."
+    "noPermissionToInviteUsers": "Huna ruhusa ya kualika wanachama hapa.",
+    "callTranscriptRoomEncrypted": "Gumzo hili limesimbwa kwa njia fiche na nakala haikuweza kufunguliwa hapa, kwa hivyo yaliyosemwa hayaonyeshwi.",
+    "callTranscriptParticipantsUnknown": "Haijulikani ni nani mwingine alikuwa kwenye simu hii, kwa hivyo huenda mtu aliyesema hayupo kabisa kwenye nakala hii.",
+    "callTranscriptTooLongToSend": "Kile alichosema {name} kilikuwa kirefu sana kuhifadhiwa na simu hii, kwa hivyo hakuna chochote kinachoonyeshwa."
 }

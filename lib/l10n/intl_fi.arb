@@ -9875,5 +9875,8 @@
     "callTranscriptUnreconciledClocks": "Nämä vuorot nauhoitettiin kahdella laitteella, joiden kelloja ei voitu verrata, joten aikoja ei näytetä ja niiden järjestys voi olla väärä.",
     "callTranscriptOpen": "Lue litterointi",
     "errorRateLimited": "Lataamme juuri nyt paljon. Odota hetki ja yritä uudelleen.",
-    "noPermissionToInviteUsers": "Sinulla ei ole lupaa kutsua jäseniä tänne."
+    "noPermissionToInviteUsers": "Sinulla ei ole lupaa kutsua jäseniä tänne.",
+    "callTranscriptRoomEncrypted": "Tämä keskustelu on salattu, eikä tekstitystä voitu avata täällä, joten sanottua ei näytetä.",
+    "callTranscriptParticipantsUnknown": "Ei tiedetä, ketkä muut osallistuivat tähän puheluun, joten joku puhunut henkilö saattaa puuttua tästä tekstityksestä kokonaan.",
+    "callTranscriptTooLongToSend": "Se, mitä {name} sanoi, oli liian pitkä tallennettavaksi tämän puhelun yhteyteen, joten sitä ei näytetä."
 }

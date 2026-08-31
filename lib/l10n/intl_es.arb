@@ -8057,5 +8057,8 @@
     "callTranscriptUnreconciledClocks": "Estos turnos se grabaron en dos dispositivos cuyos relojes no pudieron compararse, por lo que no se muestran las horas y el orden en que aparecen puede ser incorrecto.",
     "callTranscriptOpen": "Leer la transcripción",
     "errorRateLimited": "Estamos cargando mucho ahora mismo. Espera un momento y vuelve a intentarlo.",
-    "noPermissionToInviteUsers": "No tienes permiso para invitar miembros aquí."
+    "noPermissionToInviteUsers": "No tienes permiso para invitar miembros aquí.",
+    "callTranscriptRoomEncrypted": "Este chat está cifrado y la transcripción no se pudo desbloquear aquí, por lo que no se muestra lo que se dijo.",
+    "callTranscriptParticipantsUnknown": "No se sabe quién más estuvo en esta llamada, por lo que es posible que falte por completo en esta transcripción alguien que habló.",
+    "callTranscriptTooLongToSend": "Lo que dijo {name} fue demasiado largo para guardarlo con esta llamada, por lo que no se muestra nada."
 }

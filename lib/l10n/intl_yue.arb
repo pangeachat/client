@@ -10795,5 +10795,8 @@
     "callTranscriptUnreconciledClocks": "呢啲發言係喺兩個無法比較時鐘嘅裝置上錄製嘅，所以冇顯示時間，而且佢哋出現嘅順序可能係錯嘅。",
     "callTranscriptOpen": "閱讀轉錄",
     "errorRateLimited": "我哋而家載入好多嘢。請稍等片刻再試。",
-    "noPermissionToInviteUsers": "你沒有權限邀請成員加入。"
+    "noPermissionToInviteUsers": "你沒有權限邀請成員加入。",
+    "callTranscriptRoomEncrypted": "此聊天已加密，無法在此處解鎖對話記錄，因此不顯示對話內容。",
+    "callTranscriptParticipantsUnknown": "不知道還有誰參與了此通話，因此對話記錄中可能完全缺少某位發言者。",
+    "callTranscriptTooLongToSend": "{name} 的發言內容太長，無法與此通話一起儲存，因此不顯示任何內容。"
 }

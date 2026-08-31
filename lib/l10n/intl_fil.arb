@@ -10698,5 +10698,8 @@
     "callTranscriptUnreconciledClocks": "Ang mga paglikong ito ay na-record sa dalawang device na hindi maaaring paghambingin ang mga orasan, kaya walang ipinapakitang oras at maaaring mali ang pagkakasunod-sunod ng mga ito.",
     "callTranscriptOpen": "Basahin ang transcript",
     "errorRateLimited": "Marami kaming nilo-load ngayon. Mangyaring maghintay sandali at subukang muli.",
-    "noPermissionToInviteUsers": "Wala kang pahintulot na mag-imbita ng mga miyembro dito."
+    "noPermissionToInviteUsers": "Wala kang pahintulot na mag-imbita ng mga miyembro dito.",
+    "callTranscriptRoomEncrypted": "Naka-encrypt ang chat na ito at hindi na-unlock ang transcript dito, kaya hindi ipinapakita ang sinabi.",
+    "callTranscriptParticipantsUnknown": "Hindi alam kung sino pa ang kasama sa tawag na ito, kaya maaaring wala sa transcript na ito ang nagsalita.",
+    "callTranscriptTooLongToSend": "Masyadong mahaba ang sinabi ni {name} para i-save sa tawag na ito, kaya wala sa mga ito ang ipinapakita."
 }

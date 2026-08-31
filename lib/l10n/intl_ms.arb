@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Giliran ini dirakam pada dua peranti yang jamnya tidak dapat dibandingkan, jadi tiada masa ditunjukkan dan susunan ia muncul mungkin salah.",
     "callTranscriptOpen": "Baca transkrip",
     "errorRateLimited": "Kami sedang memuat banyak data sekarang. Sila tunggu sebentar dan cuba lagi.",
-    "noPermissionToInviteUsers": "Anda tidak mempunyai kebenaran untuk menjemput ahli di sini."
+    "noPermissionToInviteUsers": "Anda tidak mempunyai kebenaran untuk menjemput ahli di sini.",
+    "callTranscriptRoomEncrypted": "Sembang ini disulitkan dan transkrip tidak dapat dibuka kuncinya di sini, jadi apa yang dikatakan tidak ditunjukkan.",
+    "callTranscriptParticipantsUnknown": "Tidak diketahui siapa lagi yang berada dalam panggilan ini, jadi seseorang yang bercakap mungkin tiada langsung daripada transkrip ini.",
+    "callTranscriptTooLongToSend": "Apa yang dikatakan oleh {name} terlalu panjang untuk disimpan dengan panggilan ini, jadi tiada satu pun daripadanya ditunjukkan."
 }

@@ -9944,5 +9944,8 @@
     "callTranscriptUnreconciledClocks": "這些發言是在兩個時鐘無法比較的設備上錄製的，因此沒有顯示時間，並且它們出現的順序可能不正確。",
     "callTranscriptOpen": "閱讀通話記錄",
     "errorRateLimited": "我們正在載入大量內容。請稍候片刻再試一次。",
-    "noPermissionToInviteUsers": "您沒有權限邀請成員加入此處。"
+    "noPermissionToInviteUsers": "您沒有權限邀請成員加入此處。",
+    "callTranscriptRoomEncrypted": "此聊天已加密，無法在此處解鎖文字記錄，因此不顯示對話內容。",
+    "callTranscriptParticipantsUnknown": "不知道還有誰參與了這次通話，因此文字記錄中可能完全缺少某位發言者。",
+    "callTranscriptTooLongToSend": "{name} 的發言內容太長，無法與本次通話一起儲存，因此不顯示任何內容。"
 }

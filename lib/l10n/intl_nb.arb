@@ -9895,5 +9895,8 @@
     "callTranscriptUnreconciledClocks": "Disse turene ble tatt opp på to enheter hvis klokker ikke kunne sammenlignes, så ingen tider vises og rekkefølgen de vises i kan være feil.",
     "callTranscriptOpen": "Les utskriften",
     "errorRateLimited": "Vi laster inn mye akkurat nå. Vent litt og prøv igjen.",
-    "noPermissionToInviteUsers": "Du har ikke tillatelse til å invitere medlemmer her."
+    "noPermissionToInviteUsers": "Du har ikke tillatelse til å invitere medlemmer her.",
+    "callTranscriptRoomEncrypted": "Denne chatten er kryptert og transkripsjonen kunne ikke låses opp her, så det som ble sagt vises ikke.",
+    "callTranscriptParticipantsUnknown": "Det er ikke kjent hvem andre som var med på denne samtalen, så noen som snakket kan mangle helt fra denne transkripsjonen.",
+    "callTranscriptTooLongToSend": "Det {name} sa var for langt til å lagres med denne samtalen, så ingenting av det vises."
 }

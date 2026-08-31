@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Lokhu kujika kwarekhodwa kumadivayisi amabili amawashi awo ayengakwazi ukuqhathaniswa, ngakho-ke azikho izikhathi ezikhonjisiwe futhi ukuhleleka kwawo kungase kube nephutha.",
     "callTranscriptOpen": "Funda umbhalo",
     "errorRateLimited": "Silayisha okuningi okwamanje. Sicela ulinde isikhashana bese uzama futhi.",
-    "noPermissionToInviteUsers": "Awunayo imvume yokumema amalungu lapha."
+    "noPermissionToInviteUsers": "Awunayo imvume yokumema amalungu lapha.",
+    "callTranscriptRoomEncrypted": "Le ngxoxo ibethelwe futhi umbhalo obhaliwe awukwazanga ukuvulwa lapha, ngakho-ke lokho okwashiwo akukhonjisiwe.",
+    "callTranscriptParticipantsUnknown": "Akwaziwa ukuthi ubani omunye owayekulekholi, ngakho-ke umuntu okhulumile angase angabikho kulo mbhalo obhaliwe.",
+    "callTranscriptTooLongToSend": "Lokho okwashiwo ngu-{name} kwakukude kakhulu ukuthi kungagcinwa nale kholi, ngakho-ke akukho okukhonjisiwe."
 }

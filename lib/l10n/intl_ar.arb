@@ -10144,5 +10144,8 @@
     "callTranscriptUnreconciledClocks": "تم تسجيل هذه العبارات على جهازين لا يمكن مقارنة ساعتيهما، لذلك لا تظهر أي أوقات وقد يكون ترتيب ظهورها خاطئًا.",
     "callTranscriptOpen": "قراءة النسخة",
     "errorRateLimited": "نحن نحمّل الكثير حاليًا. يرجى الانتظار لحظة والمحاولة مرة أخرى.",
-    "noPermissionToInviteUsers": "ليس لديك إذن لدعوة أعضاء هنا."
+    "noPermissionToInviteUsers": "ليس لديك إذن لدعوة أعضاء هنا.",
+    "callTranscriptRoomEncrypted": "هذه الدردشة مشفرة ولم يتم فك تشفير المحادثة هنا، لذلك لا يظهر ما قيل.",
+    "callTranscriptParticipantsUnknown": "لا يُعرف من كان آخر في هذه المكالمة، لذلك قد يكون شخص تحدث مفقودًا تمامًا من هذا النص.",
+    "callTranscriptTooLongToSend": "ما قاله {name} كان طويلاً جدًا بحيث لا يمكن حفظه مع هذه المكالمة، لذلك لا يظهر أي منه."
 }

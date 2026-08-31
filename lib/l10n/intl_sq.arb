@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Këto radhë u regjistruan në dy pajisje, orët e të cilave nuk mund të krahasoheshin, kështu që nuk shfaqen kohë dhe rendi në të cilin shfaqen mund të jetë i gabuar.",
     "callTranscriptOpen": "Lexo transkriptin",
     "errorRateLimited": "Po ngarkojmë shumë tani. Ju lutemi prisni një moment dhe provoni përsëri.",
-    "noPermissionToInviteUsers": "Nuk keni leje të ftoni anëtarë këtu."
+    "noPermissionToInviteUsers": "Nuk keni leje të ftoni anëtarë këtu.",
+    "callTranscriptRoomEncrypted": "Ky bisedim është i koduar dhe transkripti nuk mund të zhbllokohej këtu, kështu që ajo që u tha nuk shfaqet.",
+    "callTranscriptParticipantsUnknown": "Nuk dihet kush tjetër ishte në këtë thirrje, kështu që dikush që foli mund të mungojë plotësisht nga ky transkript.",
+    "callTranscriptTooLongToSend": "Ajo që tha {name} ishte shumë e gjatë për t'u ruajtur me këtë thirrje, kështu që asgjë prej saj nuk shfaqet."
 }

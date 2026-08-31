@@ -9941,5 +9941,8 @@
     "callTranscriptUnreconciledClocks": "Ezeket a fordulatokat két olyan eszközön rögzítették, amelyek óráit nem lehetett összehasonlítani, így nem jelennek meg időpontok, és a megjelenésük sorrendje hibás lehet.",
     "callTranscriptOpen": "Olvassa el az átiratot",
     "errorRateLimited": "Jelenleg sok adatot töltünk be. Kérjük, várjon egy pillanatot, majd próbálja újra.",
-    "noPermissionToInviteUsers": "Nincs jogosultságod tagokat meghívni ide."
+    "noPermissionToInviteUsers": "Nincs jogosultságod tagokat meghívni ide.",
+    "callTranscriptRoomEncrypted": "Ez a csevegés titkosított, és az átiratot nem lehetett itt feloldani, így a mondottak nem jelennek meg.",
+    "callTranscriptParticipantsUnknown": "Nem ismert, hogy kik vettek még részt ebben a hívásban, így előfordulhat, hogy valaki, aki beszélt, teljesen hiányzik ebből az átiratból.",
+    "callTranscriptTooLongToSend": "{name} mondandója túl hosszú volt ahhoz, hogy elmentse a hívással, így semmi sem jelenik meg belőle."
 }

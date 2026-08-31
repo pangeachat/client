@@ -9965,5 +9965,8 @@
     "callTranscriptUnreconciledClocks": "Aquests torns es van gravar en dos dispositius els rellotges dels quals no es van poder comparar, així que no es mostren les hores i l'ordre en què apareixen podria ser incorrecte.",
     "callTranscriptOpen": "Llegeix la transcripció",
     "errorRateLimited": "Estem carregant moltes coses ara mateix. Espera un moment i torna-ho a provar.",
-    "noPermissionToInviteUsers": "No tens permís per convidar membres aquí."
+    "noPermissionToInviteUsers": "No tens permís per convidar membres aquí.",
+    "callTranscriptRoomEncrypted": "Aquest xat està xifrat i la transcripció no s'ha pogut desxifrar aquí, de manera que no es mostra el que s'ha dit.",
+    "callTranscriptParticipantsUnknown": "No se sap qui més hi havia en aquesta trucada, de manera que algú que va parlar pot faltar completament en aquesta transcripció.",
+    "callTranscriptTooLongToSend": "El que {name} va dir era massa llarg per desar-ho amb aquesta trucada, de manera que no es mostra res."
 }

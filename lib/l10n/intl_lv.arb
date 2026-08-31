@@ -9838,5 +9838,8 @@
     "callTranscriptUnreconciledClocks": "Šie pagriezieni tika ierakstīti divās ierīcēs, kuru pulksteņus nevarēja salīdzināt, tāpēc laiki netiek rādīti un to parādīšanās secība var būt nepareiza.",
     "callTranscriptOpen": "Lasīt transkriptu",
     "errorRateLimited": "Pašlaik notiek liela slodze. Lūdzu, uzgaidiet un mēģiniet vēlreiz.",
-    "noPermissionToInviteUsers": "Jums nav atļaujas uzaicināt dalībniekus šeit."
+    "noPermissionToInviteUsers": "Jums nav atļaujas uzaicināt dalībniekus šeit.",
+    "callTranscriptRoomEncrypted": "Šī tērzēšana ir šifrēta, un atšifrējumu nevarēja atbloķēt šeit, tāpēc netiek rādīts, kas tika teikts.",
+    "callTranscriptParticipantsUnknown": "Nav zināms, kas vēl piedalījās šajā zvanā, tāpēc kāds, kurš runāja, var būt pilnībā iztrūkstošs šajā atšifrējumā.",
+    "callTranscriptTooLongToSend": "Tas, ko teica {name}, bija pārāk garš, lai saglabātu ar šo zvanu, tāpēc nekas no tā netiek rādīts."
 }

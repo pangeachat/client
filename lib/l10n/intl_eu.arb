@@ -9838,5 +9838,8 @@
     "callTranscriptUnreconciledClocks": "Txanda hauek erlojuak alderatu ezin izan ziren bi gailutan grabatu ziren, beraz, ez da ordurik erakusten eta agertzen diren ordena oker egon daiteke.",
     "callTranscriptOpen": "Irakurri transkripzioa",
     "errorRateLimited": "Une honetan asko kargatzen ari gara. Mesedez, itxaron une bat eta saiatu berriro.",
-    "noPermissionToInviteUsers": "Ez duzu baimenik kideak hona gonbidatzeko."
+    "noPermissionToInviteUsers": "Ez duzu baimenik kideak hona gonbidatzeko.",
+    "callTranscriptRoomEncrypted": "Txat hau enkriptatuta dago eta transkripzioa ezin izan da hemen desblokeatu, beraz, esandakoa ez da erakusten.",
+    "callTranscriptParticipantsUnknown": "Ez da ezagutzen nor gehiago egon zen dei honetan, beraz, hitz egin zuen norbait falta izan daiteke transkripzio honetan.",
+    "callTranscriptTooLongToSend": "{name}k esandakoa luzeegia zen dei honekin gordetzeko, beraz, ez da ezer erakusten."
 }

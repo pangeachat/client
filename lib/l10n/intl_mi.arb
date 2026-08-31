@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "I hopukina ēnei wāhanga ki runga i ngā pūrere e rua kāore i taea te whakataurite i ō rāua karaka, nō reira kāore he wā e whakaatuhia ana, ā, tērā pea i hē te raupapa o te putanga mai.",
     "callTranscriptOpen": "Pānuitia te tuhinga",
     "errorRateLimited": "He nui ngā utanga i tēnei wā. Tēnā, tatari mai, ka ngana anō.",
-    "noPermissionToInviteUsers": "Kāore ō whakaaetanga ki te tono mema ki konei."
+    "noPermissionToInviteUsers": "Kāore ō whakaaetanga ki te tono mema ki konei.",
+    "callTranscriptRoomEncrypted": "Kua whakamunatia tēnei kōrerorero, ā, kāore i taea te wewete i te tuhinga o te kōrerorero i konei, nō reira kāore i te whakaaturia ngā kōrero.",
+    "callTranscriptParticipantsUnknown": "Kāore i te mōhiotia ko wai atu i runga i tēnei waea, nō reira tērā pea kei te ngaro tētahi i kōrero i tēnei tuhinga o te kōrerorero.",
+    "callTranscriptTooLongToSend": "He roa rawa ngā kōrero a {name} kia tiakina ki tēnei waea, nō reira kāore i te whakaaturia."
 }

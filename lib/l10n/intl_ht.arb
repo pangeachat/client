@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Vire sa yo te anrejistre sou de aparèy ki pa t' kapab konpare revèy yo, kidonk pa gen lè ki parèt epi lòd yo parèt la ka mal.",
     "callTranscriptOpen": "Li transkripsyon an",
     "errorRateLimited": "N ap chaje anpil kounye a. Tanpri tann yon ti moman epi eseye ankò.",
-    "noPermissionToInviteUsers": "Ou pa gen pèmisyon pou envite manm isit la."
+    "noPermissionToInviteUsers": "Ou pa gen pèmisyon pou envite manm isit la.",
+    "callTranscriptRoomEncrypted": "Chat sa a chiffres epi transkripsyon an pa t' ka debloke isit la, kidonk sa ki te di a pa parèt.",
+    "callTranscriptParticipantsUnknown": "Nou pa konnen ki lòt moun ki te sou apèl sa a, kidonk yon moun ki te pale ka manke nèt nan transkripsyon sa a.",
+    "callTranscriptTooLongToSend": "Sa {name} te di a te twò long pou sove ak apèl sa a, kidonk anyen ladan l' pa parèt."
 }

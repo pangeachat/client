@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Zoyankha izi zidajambulidwa pa zipangizo ziwiri zomwe nthawi zake sizinatheke kuyerekeza, choncho palibe nthawi zomwe zikuwonetsedwa ndipo dongosolo lomwe zikuwonekera likhoza kukhala lolakwika.",
     "callTranscriptOpen": "Werengani zolembedwazo",
     "errorRateLimited": "Tikukweza zambiri pakali pano. Chonde dikirani pang'ono ndikuyesanso.",
-    "noPermissionToInviteUsers": "Mulibe chilolezo choitanira anthu kuno."
+    "noPermissionToInviteUsers": "Mulibe chilolezo choitanira anthu kuno.",
+    "callTranscriptRoomEncrypted": "Macheza awa ali otetezedwa ndipo zolembedwa sizingatsegulidwe pano, choncho zomwe zidanenedwa sizikuwonetsedwa.",
+    "callTranscriptParticipantsUnknown": "Sikudziwika kuti ndani anali pa kuyitana uku, choncho wina amene adalankhula atha kusowa pa zolembedwa izi.",
+    "callTranscriptTooLongToSend": "Zomwe {name} adanena zinali zazitali kwambiri kuti zisungidwe ndi kuyitana uku, choncho palibe chomwe chikuwonetsedwa."
 }

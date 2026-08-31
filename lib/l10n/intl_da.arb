@@ -10758,5 +10758,8 @@
     "callTranscriptUnreconciledClocks": "Disse ture blev optaget på to enheder, hvis ure ikke kunne sammenlignes, så ingen tider vises, og rækkefølgen, de vises i, kan være forkert.",
     "callTranscriptOpen": "Læs transskriptionen",
     "errorRateLimited": "Vi indlæser meget lige nu. Vent venligst et øjeblik, og prøv igen.",
-    "noPermissionToInviteUsers": "Du har ikke tilladelse til at invitere medlemmer her."
+    "noPermissionToInviteUsers": "Du har ikke tilladelse til at invitere medlemmer her.",
+    "callTranscriptRoomEncrypted": "Denne chat er krypteret, og udskriften kunne ikke låses op her, så det, der blev sagt, vises ikke.",
+    "callTranscriptParticipantsUnknown": "Det vides ikke, hvem der ellers deltog i dette opkald, så en person, der talte, mangler muligvis helt fra denne udskrift.",
+    "callTranscriptTooLongToSend": "Det, {name} sagde, var for langt til at gemme med dette opkald, så intet af det vises."
 }

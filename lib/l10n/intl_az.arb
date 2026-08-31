@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Bu növbələr saatları müqayisə edilə bilməyən iki cihazda qeydə alınıb, buna görə də vaxtlar göstərilmir və onların görünmə ardıcıllığı səhv ola bilər.",
     "callTranscriptOpen": "Transkripti oxuyun",
     "errorRateLimited": "Hazırda çoxlu məlumat yükləyirik. Zəhmət olmasa bir az gözləyin və yenidən cəhd edin.",
-    "noPermissionToInviteUsers": "Bura üzv dəvət etmək icazəniz yoxdur."
+    "noPermissionToInviteUsers": "Bura üzv dəvət etmək icazəniz yoxdur.",
+    "callTranscriptRoomEncrypted": "Bu söhbət şifrələnib və transkript burada açıla bilmədi, buna görə deyilənlər göstərilmir.",
+    "callTranscriptParticipantsUnknown": "Bu zəngdə başqa kimin olduğu bilinmir, buna görə danışan kimsə bu transkriptdə tamamilə əskik ola bilər.",
+    "callTranscriptTooLongToSend": "{name} dedikləri bu zənglə saxlamaq üçün çox uzun idi, buna görə heç biri göstərilmir."
 }

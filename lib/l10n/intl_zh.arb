@@ -9838,5 +9838,8 @@
     "callTranscriptUnreconciledClocks": "这些发言是在两台无法比较时钟的设备上录制的，因此没有显示时间，并且它们出现的顺序可能不正确。",
     "callTranscriptOpen": "阅读通话记录",
     "errorRateLimited": "我们正在加载大量内容。请稍候片刻再试。",
-    "noPermissionToInviteUsers": "您无权在此邀请成员。"
+    "noPermissionToInviteUsers": "您无权在此邀请成员。",
+    "callTranscriptRoomEncrypted": "此聊天已加密，无法在此处解锁文字记录，因此未显示所说内容。",
+    "callTranscriptParticipantsUnknown": "无法得知还有谁参与了此通话，因此文字记录中可能完全缺少某位发言者。",
+    "callTranscriptTooLongToSend": "{name} 说的话太长，无法随此通话保存，因此未显示任何内容。"
 }

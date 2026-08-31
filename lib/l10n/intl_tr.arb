@@ -10139,5 +10139,8 @@
     "callTranscriptUnreconciledClocks": "Bu konuşmalar, saatleri karşılaştırılamayan iki cihazda kaydedildi, bu yüzden zaman gösterilmiyor ve görünme sıraları yanlış olabilir.",
     "callTranscriptOpen": "Dökümü oku",
     "errorRateLimited": "Şu anda çok fazla yükleme yapıyoruz. Lütfen bir süre bekleyip tekrar deneyin.",
-    "noPermissionToInviteUsers": "Buraya üye davet etme izniniz yok."
+    "noPermissionToInviteUsers": "Buraya üye davet etme izniniz yok.",
+    "callTranscriptRoomEncrypted": "Bu sohbet şifreli ve dökümün kilidi burada açılamadı, bu yüzden konuşulanlar gösterilmiyor.",
+    "callTranscriptParticipantsUnknown": "Bu aramada başka kimlerin olduğu bilinmiyor, bu nedenle konuşan biri bu dökümde tamamen eksik olabilir.",
+    "callTranscriptTooLongToSend": "{name} tarafından söylenenler bu aramayla kaydedilemeyecek kadar uzundu, bu yüzden hiçbiri gösterilmiyor."
 }

@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Recordiwyd y troeon hyn ar ddwy ddyfais na ellid cymharu eu clociau, felly ni ddangosir unrhyw amserau ac efallai bod y drefn y maent yn ymddangos ynddi yn anghywir.",
     "callTranscriptOpen": "Darllenwch y trawsgrifiad",
     "errorRateLimited": "Rydym yn llwytho llawer ar hyn o bryd. Arhoswch funud a cheisiwch eto.",
-    "noPermissionToInviteUsers": "Does gennych chi ddim caniatâd i wahodd aelodau yma."
+    "noPermissionToInviteUsers": "Does gennych chi ddim caniatâd i wahodd aelodau yma.",
+    "callTranscriptRoomEncrypted": "Mae'r sgwrs hon wedi'i hamgryptio ac ni ellid datgloi'r trawsgrifiad yma, felly ni ddangosir yr hyn a ddywedwyd.",
+    "callTranscriptParticipantsUnknown": "Nid yw'n hysbys pwy arall oedd ar yr alwad hon, felly efallai bod rhywun a siaradodd ar goll o'r trawsgrifiad hwn yn gyfan gwbl.",
+    "callTranscriptTooLongToSend": "Roedd yr hyn a ddywedodd {name} yn rhy hir i'w gadw gyda'r alwad hon, felly ni ddangosir dim ohono."
 }

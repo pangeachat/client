@@ -10787,5 +10787,8 @@
     "callTranscriptUnreconciledClocks": "Ovi obrti su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuje vreme i redosled njihovog pojavljivanja može biti pogrešan.",
     "callTranscriptOpen": "Pročitajte transkript",
     "errorRateLimited": "Trenutno se mnogo toga učitava. Sačekajte trenutak i pokušajte ponovo.",
-    "noPermissionToInviteUsers": "Nemate dozvolu da pozivate članove ovde."
+    "noPermissionToInviteUsers": "Nemate dozvolu da pozivate članove ovde.",
+    "callTranscriptRoomEncrypted": "Ovo ćaskanje je šifrovano i transkript nije mogao da se otključa ovde, tako da ono što je rečeno nije prikazano.",
+    "callTranscriptParticipantsUnknown": "Nije poznato ko je još bio u ovom pozivu, tako da neko ko je govorio možda u potpunosti nedostaje u ovom transkriptu.",
+    "callTranscriptTooLongToSend": "Ono što je {name} rekao/rekla je predugačko da bi se sačuvalo sa ovim pozivom, tako da ništa od toga nije prikazano."
 }

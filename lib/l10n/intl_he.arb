@@ -10752,5 +10752,8 @@
     "callTranscriptUnreconciledClocks": "תורות אלו הוקלטו בשני מכשירים שאת השעונים שלהם לא ניתן היה להשוות, ולכן לא מוצגות שעות וסדר הופעתם עשוי להיות שגוי.",
     "callTranscriptOpen": "קרא את התמלול",
     "errorRateLimited": "אנחנו טוענים הרבה כרגע. אנא המתן רגע ונסה שוב.",
-    "noPermissionToInviteUsers": "אין לך הרשאה להזמין חברים לכאן."
+    "noPermissionToInviteUsers": "אין לך הרשאה להזמין חברים לכאן.",
+    "callTranscriptRoomEncrypted": "צ'אט זה מוצפן ולא ניתן היה לפתוח את התמליל כאן, ולכן מה שנאמר אינו מוצג.",
+    "callTranscriptParticipantsUnknown": "לא ידוע מי עוד השתתף בשיחה זו, ולכן ייתכן שמישהו שדיבר חסר לחלוטין בתמליל זה.",
+    "callTranscriptTooLongToSend": "מה ש{name} אמר היה ארוך מדי מכדי לשמור עם שיחה זו, ולכן שום דבר מזה אינו מוצג."
 }

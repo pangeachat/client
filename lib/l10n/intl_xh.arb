@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Ezi zithuba zirekhodwe kwizixhobo ezibini iiwotshi zazo ezingakwazanga ukuthelekiswa, ngoko ke akukho maxesha aboniswayo kwaye ucwangco oluvela ngalo lusenokuba luphosakele.",
     "callTranscriptOpen": "Funda umbhalo",
     "errorRateLimited": "Silayisha okuninzi ngoku. Nceda ulinde umzuzwana uze uzame kwakhona.",
-    "noPermissionToInviteUsers": "Awunayo imvume yokumema amalungu apha."
+    "noPermissionToInviteUsers": "Awunayo imvume yokumema amalungu apha.",
+    "callTranscriptRoomEncrypted": "Le ncoko ifihliwe kwaye umbhalo-ngqangi awukwazanga ukuvulwa apha, ngoko ke oko kuthethweyo akuboniswa.",
+    "callTranscriptParticipantsUnknown": "Akukaziwa ukuba ngubani omnye owayekule fowuni, ngoko ke umntu othethileyo usenokungabikho kwaphela kulo mbhalo-ngqangi.",
+    "callTranscriptTooLongToSend": "Oko kuthethwe ngu-{name} bekude kakhulu ukuba kungagcinwa ngale fowuni, ngoko ke akukho nto iboniswayo."
 }

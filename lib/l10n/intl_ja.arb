@@ -10607,5 +10607,8 @@
     "callTranscriptUnreconciledClocks": "これらの発言は、時計を比較できなかった2つのデバイスで録音されたため、時刻は表示されず、表示される順序が間違っている可能性があります。",
     "callTranscriptOpen": "書き起こしを読む",
     "errorRateLimited": "現在、多くのリクエストを処理しています。しばらく待ってからもう一度お試しください。",
-    "noPermissionToInviteUsers": "ここにメンバーを招待する権限がありません。"
+    "noPermissionToInviteUsers": "ここにメンバーを招待する権限がありません。",
+    "callTranscriptRoomEncrypted": "このチャットは暗号化されているため、トランスクリプトをここでロック解除できませんでした。そのため、会話内容は表示されません。",
+    "callTranscriptParticipantsUnknown": "この通話に他に誰が参加していたか不明なため、発言した人がこのトランスクリプトから完全に欠落している可能性があります。",
+    "callTranscriptTooLongToSend": "{name}の発言が長すぎたため、この通話と一緒に保存できませんでした。そのため、何も表示されません。"
 }

@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Ovi redovi su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuju vremena i redoslijed njihovog pojavljivanja može biti pogrešan.",
     "callTranscriptOpen": "Pročitaj transkript",
     "errorRateLimited": "Trenutno učitavamo mnogo toga. Sačekajte trenutak i pokušajte ponovo.",
-    "noPermissionToInviteUsers": "Nemate dozvolu za pozivanje članova ovdje."
+    "noPermissionToInviteUsers": "Nemate dozvolu za pozivanje članova ovdje.",
+    "callTranscriptRoomEncrypted": "Ovaj chat je šifrovan i transkript se ovdje nije mogao otključati, tako da ono što je rečeno nije prikazano.",
+    "callTranscriptParticipantsUnknown": "Nije poznato ko je još bio u ovom pozivu, tako da neko ko je govorio možda u potpunosti nedostaje iz ovog transkripta.",
+    "callTranscriptTooLongToSend": "Ono što je {name} rekao/rekla je bilo predugo da bi se sačuvalo s ovim pozivom, tako da ništa od toga nije prikazano."
 }

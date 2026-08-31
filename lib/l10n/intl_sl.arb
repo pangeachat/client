@@ -10783,5 +10783,8 @@
     "callTranscriptUnreconciledClocks": "Ti govori so bili posneti na dveh napravah, katerih ur ni bilo mogoče primerjati, zato časi niso prikazani in vrstni red, v katerem se pojavijo, je lahko napačen.",
     "callTranscriptOpen": "Preberite prepis",
     "errorRateLimited": "Trenutno nalagamo veliko vsebine. Prosimo, počakajte trenutek in poskusite znova.",
-    "noPermissionToInviteUsers": "Nimate dovoljenja za povabilo članov sem."
+    "noPermissionToInviteUsers": "Nimate dovoljenja za povabilo članov sem.",
+    "callTranscriptRoomEncrypted": "Ta klepet je šifriran in prepisa ni bilo mogoče odkleniti tukaj, zato ni prikazano, kar je bilo rečeno.",
+    "callTranscriptParticipantsUnknown": "Ni znano, kdo je bil še na tem klicu, zato morda nekdo, ki je govoril, popolnoma manjka v tem prepisu.",
+    "callTranscriptTooLongToSend": "Kar je rekel {name}, je bilo predolgo za shranjevanje s tem klicem, zato ni prikazano nič od tega."
 }

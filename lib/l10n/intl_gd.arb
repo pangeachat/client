@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Chaidh na tionndaidhean sin a chlàradh air dà inneal nach b' urrainn na clocaichean aca a choimeas, agus mar sin chan eil amannan air an sealltainn agus dh'fhaodadh an òrdugh anns a bheil iad a' nochdadh a bhith ceàrr.",
     "callTranscriptOpen": "Leugh an tar-sgrìobhadh",
     "errorRateLimited": "Tha sinn a’ luchdachadh mòran an-dràsta. Fuirich mionaid agus feuch a-rithist, mas e do thoil e.",
-    "noPermissionToInviteUsers": "Chan eil cead agad buill a thoirt a-steach an seo."
+    "noPermissionToInviteUsers": "Chan eil cead agad buill a thoirt a-steach an seo.",
+    "callTranscriptRoomEncrypted": "Tha an còmhradh seo crioptaichte agus cha b' urrainn an tar-sgrìobhadh fhuasgladh an seo, mar sin chan eil na chaidh a ràdh air a shealltainn.",
+    "callTranscriptParticipantsUnknown": "Chan eil fios cò eile a bha air a' ghairm seo, mar sin dh'fhaodadh gun robh cuideigin a bhruidhinn a dhìth bhon tar-sgrìobhadh seo gu tur.",
+    "callTranscriptTooLongToSend": "Bha na thuirt {name} ro fhada airson a shàbhaladh leis a' ghairm seo, mar sin chan eil gin dheth air a shealltainn."
 }

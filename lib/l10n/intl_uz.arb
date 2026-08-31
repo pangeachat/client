@@ -9842,5 +9842,8 @@
     "callTranscriptUnreconciledClocks": "Bu navbatlar soatlari solishtirib bo'lmaydigan ikkita qurilmada yozib olingan, shuning uchun vaqtlar ko'rsatilmagan va ularning paydo bo'lish tartibi noto'g'ri bo'lishi mumkin.",
     "callTranscriptOpen": "Transkriptni o'qish",
     "errorRateLimited": "Hozirda juda koʻp narsalarni yuklayapmiz. Iltimos, biroz kutib turing va qayta urinib koʻring.",
-    "noPermissionToInviteUsers": "Bu yerga aʼzolarni taklif qilishga ruxsatingiz yoʻq."
+    "noPermissionToInviteUsers": "Bu yerga aʼzolarni taklif qilishga ruxsatingiz yoʻq.",
+    "callTranscriptRoomEncrypted": "Bu chat shifrlangan va transkriptni bu yerda ochib bo‘lmadi, shuning uchun nima deyilgani ko‘rsatilmagan.",
+    "callTranscriptParticipantsUnknown": "Bu qo‘ng‘iroqda yana kimlar borligi noma’lum, shuning uchun gapirgan odam bu transkriptda umuman bo‘lmasligi mumkin.",
+    "callTranscriptTooLongToSend": "{name} aytganlari bu qo‘ng‘iroq bilan saqlash uchun juda uzun edi, shuning uchun hech narsa ko‘rsatilmagan."
 }

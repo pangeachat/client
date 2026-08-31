@@ -9923,5 +9923,8 @@
     "callTranscriptUnreconciledClocks": "Te wypowiedzi zostały nagrane na dwóch urządzeniach, których zegarów nie można było porównać, więc nie są wyświetlane żadne czasy, a kolejność, w jakiej się pojawiają, może być błędna.",
     "callTranscriptOpen": "Przeczytaj transkrypcję",
     "errorRateLimited": "Obecnie ładujemy dużo danych. Poczekaj chwilę i spróbuj ponownie.",
-    "noPermissionToInviteUsers": "Nie masz uprawnień, aby zapraszać tu członków."
+    "noPermissionToInviteUsers": "Nie masz uprawnień, aby zapraszać tu członków.",
+    "callTranscriptRoomEncrypted": "Ten czat jest zaszyfrowany, a transkrypcja nie mogła zostać tutaj odblokowana, więc to, co zostało powiedziane, nie jest wyświetlane.",
+    "callTranscriptParticipantsUnknown": "Nie wiadomo, kto jeszcze brał udział w tej rozmowie, więc ktoś, kto mówił, może w ogóle brakować w tej transkrypcji.",
+    "callTranscriptTooLongToSend": "To, co powiedział {name}, było zbyt długie, aby zapisać to z tą rozmową, więc nic z tego nie jest wyświetlane."
 }

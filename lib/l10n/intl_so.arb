@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Hadalladan waxa lagu duubay laba qalab oo saacadahooda aan la isbarbar dhigi karin, sidaa darteed ma jiraan wakhtiyo la tusay, waxaana laga yaabaa in amarka ay ku soo muuqdaan uu khalad yahay.",
     "callTranscriptOpen": "Akhri qoraalka",
     "errorRateLimited": "Waxaan hadda soo shubaynaa wax badan. Fadlan sug in yar oo isku day mar kale.",
-    "noPermissionToInviteUsers": "Ma haysatid ogolaansho aad xubno ku casuunto halkan."
+    "noPermissionToInviteUsers": "Ma haysatid ogolaansho aad xubno ku casuunto halkan.",
+    "callTranscriptRoomEncrypted": "Wadahadalkan waa la siray, qoraalkana halkan laguma furi karin, sidaa darteed waxa la yiri lama soo bandhigin.",
+    "callTranscriptParticipantsUnknown": "Lama garanayo cidda kale ee wicitaankan ku jirtay, sidaa darteed qof hadlay ayaa laga yaabaa inuu gebi ahaanba ka maqan yahay qoraalkan.",
+    "callTranscriptTooLongToSend": "Waxa uu {name} yiri wuxuu ahaa mid aad u dheer oo aan lagu keydin karin wicitaankan, sidaa darteed waxba kama muuqdaan."
 }

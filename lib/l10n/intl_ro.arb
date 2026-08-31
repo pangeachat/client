@@ -10570,5 +10570,8 @@
     "callTranscriptUnreconciledClocks": "Aceste replici au fost înregistrate pe două dispozitive ale căror ceasuri nu au putut fi comparate, așa că nu sunt afișate ore și ordinea în care apar ar putea fi greșită.",
     "callTranscriptOpen": "Citiți transcrierea",
     "errorRateLimited": "Încărcăm multe acum. Te rugăm să aștepți un moment și să încerci din nou.",
-    "noPermissionToInviteUsers": "Nu ai permisiunea de a invita membri aici."
+    "noPermissionToInviteUsers": "Nu ai permisiunea de a invita membri aici.",
+    "callTranscriptRoomEncrypted": "Acest chat este criptat, iar transcrierea nu a putut fi deblocată aici, așa că ceea ce s-a spus nu este afișat.",
+    "callTranscriptParticipantsUnknown": "Nu se știe cine altcineva a participat la acest apel, așa că este posibil ca cineva care a vorbit să lipsească cu totul din această transcriere.",
+    "callTranscriptTooLongToSend": "Ceea ce a spus {name} a fost prea lung pentru a fi salvat cu acest apel, așa că nimic din cele spuse nu este afișat."
 }

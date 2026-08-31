@@ -10783,5 +10783,8 @@
     "callTranscriptUnreconciledClocks": "Tieto prejavy boli zaznamenané na dvoch zariadeniach, ktorých hodiny sa nedali porovnať, takže nie sú zobrazené žiadne časy a poradie, v akom sa zobrazujú, môže byť nesprávne.",
     "callTranscriptOpen": "Prečítať prepis",
     "errorRateLimited": "Práve teraz toho veľa načítavame. Skúste to znova o chvíľu.",
-    "noPermissionToInviteUsers": "Nemáte povolenie pozývať sem členov."
+    "noPermissionToInviteUsers": "Nemáte povolenie pozývať sem členov.",
+    "callTranscriptRoomEncrypted": "Tento chat je zašifrovaný a prepis sa tu nedal odomknúť, takže to, čo bolo povedané, sa nezobrazuje.",
+    "callTranscriptParticipantsUnknown": "Nie je známe, kto ďalší bol v tomto hovore, takže niekto, kto hovoril, môže v tomto prepise úplne chýbať.",
+    "callTranscriptTooLongToSend": "To, čo povedal {name}, bolo príliš dlhé na uloženie s týmto hovorom, takže sa nič z toho nezobrazuje."
 }

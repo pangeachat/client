@@ -10193,5 +10193,8 @@
     "callTranscriptUnreconciledClocks": "Ces tours ont été enregistrés sur deux appareils dont les horloges n'ont pas pu être comparées, donc aucune heure n'est affichée et l'ordre dans lequel ils apparaissent peut être erroné.",
     "callTranscriptOpen": "Lire la transcription",
     "errorRateLimited": "Nous avons beaucoup de demandes en ce moment. Veuillez patienter un instant et réessayer.",
-    "noPermissionToInviteUsers": "Vous n'avez pas la permission d'inviter des membres ici."
+    "noPermissionToInviteUsers": "Vous n'avez pas la permission d'inviter des membres ici.",
+    "callTranscriptRoomEncrypted": "Ce chat est chiffré et la transcription n'a pas pu être déverrouillée ici, donc ce qui a été dit n'est pas affiché.",
+    "callTranscriptParticipantsUnknown": "On ne sait pas qui d'autre a participé à cet appel, donc il est possible que quelqu'un qui a parlé soit absent de cette transcription.",
+    "callTranscriptTooLongToSend": "Ce que {name} a dit était trop long pour être enregistré avec cet appel, donc rien n'est affiché."
 }

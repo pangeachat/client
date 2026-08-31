@@ -2242,5 +2242,8 @@
     "callTranscriptUnreconciledClocks": "Giliran-giliran ieu dirékam dina dua alat anu jamna henteu tiasa dibandingkeun, janten teu aya waktos anu dipidangkeun sareng urutan munculna tiasa lepat.",
     "callTranscriptOpen": "Baca transkripna",
     "errorRateLimited": "Urang nuju ngamuat seueur ayeuna. Mangga antosan sakedap teras cobian deui.",
-    "noPermissionToInviteUsers": "Anjeun teu gaduh idin pikeun ngajak anggota ka dieu."
+    "noPermissionToInviteUsers": "Anjeun teu gaduh idin pikeun ngajak anggota ka dieu.",
+    "callTranscriptRoomEncrypted": "Obrolan ieu dienkripsi sareng transkripna teu tiasa dibuka di dieu, janten naon anu diucapkeun henteu dipidangkeun.",
+    "callTranscriptParticipantsUnknown": "Teu dipikanyaho saha deui anu aya dina telepon ieu, janten bilih aya anu nyarios teu kacatet dina transkrip ieu.",
+    "callTranscriptTooLongToSend": "Naon anu diucapkeun ku {name} panjang teuing pikeun disimpen sareng telepon ieu, janten teu aya anu dipidangkeun."
 }
