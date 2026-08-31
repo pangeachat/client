@@ -140,7 +140,9 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: playwright-report-${{ github.run_id }}
-          path: playwright-report/
+          path: |
+            playwright-report/
+            test-results/
           retention-days: 14
 
       - name: Post failure comment on triggering PR

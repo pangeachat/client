@@ -126,6 +126,12 @@ enum PanelTypesEnum {
 
   bool get defaultCavityToPeek => {PanelTypesEnum.course}.contains(this);
 
+  // The add-course subpages (start my own / browse public / enter a code,
+  // including the course preview they push) open at FULL height: they show
+  // list/form content unrelated to the map behind them, so a half-open sheet
+  // only de-emphasizes what the learner navigated here for (#8659).
+  bool get defaultCavityToFull => {PanelTypesEnum.addcoursepage}.contains(this);
+
   // Which rail item's OWN surface the cavity hosts, for the widget's
   // tap-the-active-item toggle. A course sheet / activity plan is neither
   // rail section's surface — the Courses tap must then navigate to the hub

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 10:32:17.011431",
+    "@@last_modified": "2026-08-31 15:04:32.360340",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9778,6 +9778,7 @@
     "callUnmute": "Reativar som",
     "callCameraOn": "Ligar câmera",
     "callCameraOff": "Desligar câmera",
+    "callRecordingNotice": "Esta chamada é transcrita para sua análise",
     "callNoMicrophone": "Eles não conseguem te ouvir: seu microfone não iniciou",
     "callIncoming": "Chamada recebida",
     "callAnswer": "Atender",
@@ -9812,19 +9813,20 @@
     "callHistoryDeclined": "Chamada recusada",
     "callHistoryYouDeclined": "Você recusou esta chamada",
     "starsEarnedInLanguage": "Estrelas ganhas em {language}",
+    "readAloudNoVoiceNote": "Não há voz de {language} de alta qualidade disponível neste dispositivo, então estas configurações não estão disponíveis. Você ainda pode reproduzir áudio da barra de ferramentas de mensagens.",
     "callTranscriptSharedNotice": "Esta chamada foi transcrita e salva. Você e a outra pessoa podem lê-la depois.",
     "callTranscriptTitle": "Transcrição da chamada",
     "callTranscriptLoadFailed": "Não foi possível carregar a transcrição",
     "callTranscriptRetry": "Tentar novamente",
-    "callTranscriptStoppedEarly": "Esta chamada tinha muito para ler de uma vez, então parte dela não é mostrada.",
+    "callTranscriptStoppedEarly": "Esta chamada tinha muito para ler de uma vez, então parte dela não foi exibida.",
     "callTranscriptNone": "Nenhuma transcrição de {name}",
     "callTranscriptSaidNothing": "{name} não disse nada",
-    "callTranscriptNothingRead": "Não foi possível ler nada do que {name} disse",
+    "callTranscriptNothingRead": "Nada pôde ser lido do que {name} disse",
+    "callTranscriptNoSpeechDetected": "Nada gravado de {name} foi enviado para transcrição: este aplicativo não encontrou fala e pode estar errado, então o que foi dito não é conhecido.",
     "callTranscriptPartial": "Parte do que {name} disse pode estar faltando",
     "callTranscriptByTime": "por {time}",
     "callTranscriptApproximateTimes": "Uma fala marcada \"por\" um horário foi dita naquele horário ou antes. Essas falas são mostradas naquele momento, então podem ter sido ditas antes.",
     "callTranscriptUnstatedTimes": "Algumas falas não mostram horário. O dispositivo que as gravou não informou a precisão de seus horários, então a posição delas nesta conversa pode estar errada.",
-    "callTranscriptOpen": "Ler a transcrição",
-    "callTranscriptNoSpeechDetected": "Nada gravado de {name} foi enviado para transcrição: este aplicativo não encontrou fala e pode estar errado, então o que foi dito não é conhecido.",
-    "callTranscriptUnreconciledClocks": "Essas falas foram gravadas em dois dispositivos cujos relógios não puderam ser comparados, então nenhum horário é exibido e a ordem em que aparecem pode estar errada."
+    "callTranscriptUnreconciledClocks": "Essas falas foram gravadas em dois dispositivos cujos relógios não puderam ser comparados, então nenhum horário é mostrado e a ordem em que aparecem pode estar errada.",
+    "callTranscriptOpen": "Ler a transcrição"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 10:32:12.493742",
+    "@@last_modified": "2026-08-31 15:04:22.203019",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9971,6 +9971,7 @@
     "callUnmute": "음소거 해제",
     "callCameraOn": "카메라 켜기",
     "callCameraOff": "카메라 끄기",
+    "callRecordingNotice": "이 통화는 분석을 위해 기록됩니다",
     "callNoMicrophone": "상대방이 들을 수 없습니다: 마이크가 시작되지 않았습니다",
     "callIncoming": "수신 전화",
     "callAnswer": "응답",
@@ -10005,19 +10006,20 @@
     "callHistoryDeclined": "통화 거절됨",
     "callHistoryYouDeclined": "이 통화를 거절했습니다",
     "starsEarnedInLanguage": "{language}에서 획득한 별",
+    "readAloudNoVoiceNote": "이 기기에서는 고품질 {language} 음성을 사용할 수 없으므로 이 설정을 사용할 수 없습니다. 메시지 도구 모음에서 오디오를 계속 재생할 수 있습니다.",
     "callTranscriptSharedNotice": "이 통화는 녹취되어 저장됩니다. 통화가 끝난 후 본인과 상대방 모두 확인할 수 있습니다.",
     "callTranscriptTitle": "통화 녹취록",
     "callTranscriptLoadFailed": "녹취록을 불러올 수 없습니다.",
     "callTranscriptRetry": "다시 시도",
     "callTranscriptStoppedEarly": "이 통화는 한 번에 읽기에는 너무 많은 내용이 있어서 일부가 표시되지 않습니다.",
-    "callTranscriptNone": "{name}님의 녹취록이 없습니다.",
+    "callTranscriptNone": "{name}님으로부터 받은 녹취록이 없습니다.",
     "callTranscriptSaidNothing": "{name}님이 아무 말도 하지 않았습니다.",
     "callTranscriptNothingRead": "{name}님이 말한 내용에서 읽을 수 있는 것이 없습니다.",
+    "callTranscriptNoSpeechDetected": "{name}님으로부터 녹음된 내용 중 녹취록으로 전송된 것이 없습니다. 이 앱에서 음성을 찾지 못했을 수 있으며, 이는 잘못된 정보일 수 있으므로 말한 내용을 알 수 없습니다.",
     "callTranscriptPartial": "{name}님이 말한 내용의 일부가 누락되었을 수 있습니다.",
-    "callTranscriptByTime": "{time} 기준",
-    "callTranscriptApproximateTimes": "시간 옆에 \"기준\"으로 표시된 발언은 해당 시간 또는 그 이전에 말한 것입니다. 해당 발언은 그 시점에 표시되므로 더 일찍 말했을 수도 있습니다.",
-    "callTranscriptUnstatedTimes": "일부 발언에는 시간이 표시되지 않습니다. 녹음 장치에서 시간의 정확도를 알려주지 않으므로 대화에서 해당 발언의 위치가 잘못되었을 수 있습니다.",
-    "callTranscriptOpen": "녹취록 읽기",
-    "callTranscriptNoSpeechDetected": "{name}으로부터 녹음된 내용 중 전사할 만한 것이 감지되지 않았습니다. 앱에서 음성을 찾지 못했지만, 오류일 수도 있으므로 어떤 내용이 말해졌는지는 알 수 없습니다.",
-    "callTranscriptUnreconciledClocks": "이 대화는 시계를 비교할 수 없는 두 기기에서 녹음되었으므로, 시간이 표시되지 않으며 나타나는 순서가 틀릴 수 있습니다."
+    "callTranscriptByTime": "{time}까지",
+    "callTranscriptApproximateTimes": "시간 옆에 \"까지\"로 표시된 발언은 해당 시간 또는 그 이전에 말한 것입니다. 해당 발언은 그 시점에 표시되므로 더 일찍 말했을 수도 있습니다.",
+    "callTranscriptUnstatedTimes": "일부 발언에는 시간이 표시되지 않습니다. 녹음한 기기에서 시간의 정확도를 알려주지 않아 대화에서 해당 발언의 위치가 잘못되었을 수 있습니다.",
+    "callTranscriptUnreconciledClocks": "이 발언들은 시계를 비교할 수 없는 두 기기에서 녹음되었으므로 시간이 표시되지 않으며, 나타나는 순서가 잘못되었을 수 있습니다.",
+    "callTranscriptOpen": "녹취록 읽기"
 }

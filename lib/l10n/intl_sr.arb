@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 10:32:18.495281",
+    "@@last_modified": "2026-08-31 15:04:36.817378",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10727,6 +10727,7 @@
     "callUnmute": "Uključi ton",
     "callCameraOn": "Uključi kameru",
     "callCameraOff": "Isključi kameru",
+    "callRecordingNotice": "Ovaj poziv se transkribuje za vašu analitiku",
     "callNoMicrophone": "Ne mogu vas čuti: vaš mikrofon se nije pokrenuo",
     "callIncoming": "Dolazni poziv",
     "callAnswer": "Javi se",
@@ -10761,19 +10762,20 @@
     "callHistoryDeclined": "Poziv odbijen",
     "callHistoryYouDeclined": "Odbili ste ovaj poziv",
     "starsEarnedInLanguage": "Zvezdice osvojene u {language}",
-    "callTranscriptSharedNotice": "Ovaj poziv je transkribovan i sačuvan. Vi i druga osoba ga možete pročitati kasnije.",
+    "readAloudNoVoiceNote": "Na ovom uređaju nije dostupan visokokvalitetan glas za {language}, tako da ova podešavanja nisu dostupna. I dalje možete reprodukovati zvuk sa trake sa porukama.",
+    "callTranscriptSharedNotice": "Ovaj poziv je transkribovan i sačuvan. Vi i druga osoba možete ga pročitati kasnije.",
     "callTranscriptTitle": "Transkript poziva",
     "callTranscriptLoadFailed": "Učitavanje transkripta nije uspelo",
     "callTranscriptRetry": "Pokušaj ponovo",
-    "callTranscriptStoppedEarly": "Ovaj poziv je imao previše teksta za čitanje odjednom, pa deo nije prikazan.",
+    "callTranscriptStoppedEarly": "Ovaj poziv je imao previše teksta za čitanje odjednom, tako da deo nije prikazan.",
     "callTranscriptNone": "Nema transkripta od {name}",
     "callTranscriptSaidNothing": "{name} nije ništa rekao/rekla",
     "callTranscriptNothingRead": "Ništa se nije moglo pročitati od onoga što je {name} rekao/rekla",
+    "callTranscriptNoSpeechDetected": "Ništa snimljeno od {name} nije poslato na transkripciju: ova aplikacija nije pronašla govor u tome i može biti pogrešna u vezi s tim, tako da se ne zna šta je rečeno.",
     "callTranscriptPartial": "Deo onoga što je {name} rekao/rekla možda nedostaje",
     "callTranscriptByTime": "do {time}",
-    "callTranscriptApproximateTimes": "Obrt označen sa „do“ vremena je izrečen u to vreme ili pre njega. Ti obrti su prikazani u tom trenutku, tako da su možda izrečeni ranije.",
-    "callTranscriptUnstatedTimes": "Neki obrti ne prikazuju vreme. Uređaj koji ih je snimio nije naveo koliko su tačna njegova vremena, tako da njihova pozicija u ovom razgovoru može biti pogrešna.",
-    "callTranscriptOpen": "Pročitaj transkript",
-    "callTranscriptNoSpeechDetected": "Ništa snimljeno od {name} nije poslato na transkripciju: ova aplikacija nije pronašla govor u tome i može pogrešiti u vezi sa tim, tako da se ne zna šta je rečeno.",
-    "callTranscriptUnreconciledClocks": "Ovi razgovori su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuje vreme i redosled pojavljivanja može biti pogrešan."
+    "callTranscriptApproximateTimes": "Obrt označen sa „do“ vremena je izgovoren u to vreme ili pre njega. Ti obrti su prikazani u tom trenutku, tako da su možda izgovoreni ranije.",
+    "callTranscriptUnstatedTimes": "Neki obrti ne pokazuju vreme. Uređaj koji ih je snimio nije naveo koliko su tačna njegova vremena, tako da njihov položaj u ovom razgovoru može biti pogrešan.",
+    "callTranscriptUnreconciledClocks": "Ovi obrti su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuje vreme i redosled njihovog pojavljivanja može biti pogrešan.",
+    "callTranscriptOpen": "Pročitajte transkript"
 }

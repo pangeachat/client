@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 10:32:17.178864",
+    "@@last_modified": "2026-08-31 15:04:33.231449",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10510,6 +10510,7 @@
     "callUnmute": "Cu sunet",
     "callCameraOn": "Activează camera",
     "callCameraOff": "Dezactivează camera",
+    "callRecordingNotice": "Acest apel este transcris pentru analizele tale",
     "callNoMicrophone": "Nu te pot auzi: microfonul tău nu a pornit",
     "callIncoming": "Apel primit",
     "callAnswer": "Răspunde",
@@ -10544,19 +10545,20 @@
     "callHistoryDeclined": "Apel refuzat",
     "callHistoryYouDeclined": "Ai refuzat acest apel",
     "starsEarnedInLanguage": "Stele câștigate în {language}",
+    "readAloudNoVoiceNote": "Nu este disponibilă nicio voce de înaltă calitate pentru {language} pe acest dispozitiv, așadar aceste setări nu sunt disponibile. Puteți reda în continuare audio din bara de instrumente a mesajului.",
     "callTranscriptSharedNotice": "Acest apel este transcris și salvat. Tu și cealaltă persoană îl puteți citi ulterior.",
     "callTranscriptTitle": "Transcrierea apelului",
     "callTranscriptLoadFailed": "Transcrierea nu a putut fi încărcată",
-    "callTranscriptRetry": "Reîncearcă",
+    "callTranscriptRetry": "Încearcă din nou",
     "callTranscriptStoppedEarly": "Acest apel a avut prea multe de citit dintr-o dată, așa că o parte din el nu este afișată.",
     "callTranscriptNone": "Nicio transcriere de la {name}",
     "callTranscriptSaidNothing": "{name} nu a spus nimic",
     "callTranscriptNothingRead": "Nimic nu a putut fi citit din ce a spus {name}",
+    "callTranscriptNoSpeechDetected": "Nimic înregistrat de la {name} nu a fost trimis pentru transcriere: această aplicație nu a găsit nicio vorbire în el și se poate înșela în privința asta, așa că ceea ce s-a spus nu este cunoscut.",
     "callTranscriptPartial": "O parte din ce a spus {name} ar putea lipsi",
-    "callTranscriptByTime": "până la {time}",
-    "callTranscriptApproximateTimes": "O replică marcată „până la” o anumită oră a fost spusă la sau înainte de aceasta. Aceste replici sunt afișate în acel moment, deci ar fi putut fi spuse mai devreme.",
+    "callTranscriptByTime": "la {time}",
+    "callTranscriptApproximateTimes": "O replică marcată „la” o anumită oră a fost spusă la sau înainte de aceasta. Aceste replici sunt afișate în acel moment, așa că este posibil să fi fost spuse mai devreme.",
     "callTranscriptUnstatedTimes": "Unele replici nu afișează ora. Dispozitivul care le-a înregistrat nu a specificat cât de exacte sunt orele sale, așa că poziția lor în această conversație ar putea fi greșită.",
-    "callTranscriptOpen": "Citește transcrierea",
-    "callTranscriptNoSpeechDetected": "Nimic înregistrat de la {name} nu a fost trimis pentru transcriere: această aplicație nu a găsit niciun discurs în el și se poate înșela în privința asta, așa că ceea ce a fost spus nu este cunoscut.",
-    "callTranscriptUnreconciledClocks": "Aceste replici au fost înregistrate pe două dispozitive ale căror ceasuri nu au putut fi comparate, așa că nu sunt afișate ore și ordinea în care apar poate fi greșită."
+    "callTranscriptUnreconciledClocks": "Aceste replici au fost înregistrate pe două dispozitive ale căror ceasuri nu au putut fi comparate, așa că nu sunt afișate ore și ordinea în care apar ar putea fi greșită.",
+    "callTranscriptOpen": "Citește transcrierea"
 }

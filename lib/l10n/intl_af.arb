@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-31 10:32:05.735084",
+    "@@last_modified": "2026-08-31 15:04:04.623448",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2182,6 +2182,7 @@
     "callUnmute": "Ontdemp",
     "callCameraOn": "Skakel kamera aan",
     "callCameraOff": "Skakel kamera af",
+    "callRecordingNotice": "Hierdie oproep word getranskribeer vir jou analise",
     "callNoMicrophone": "Hulle kan jou nie hoor nie: jou mikrofoon het nie begin nie",
     "callIncoming": "Inkomende oproep",
     "callAnswer": "Antwoord",
@@ -2216,6 +2217,7 @@
     "callHistoryDeclined": "Oproep geweier",
     "callHistoryYouDeclined": "Jy het hierdie oproep geweier",
     "starsEarnedInLanguage": "Sterre verdien in {language}",
+    "readAloudNoVoiceNote": "Geen hoëgehalte {language}-stem is op hierdie toestel beskikbaar nie, so hierdie instellings is onbeskikbaar. Jy kan steeds oudio vanaf die boodskapnutsbalk speel.",
     "callTranscriptSharedNotice": "Hierdie oproep is getranskribeer en gestoor. Jy en die ander persoon kan dit agterna lees.",
     "callTranscriptTitle": "Oproep-transkripsie",
     "callTranscriptLoadFailed": "Kon nie die transkripsie laai nie",
@@ -2224,11 +2226,11 @@
     "callTranscriptNone": "Geen transkripsie van {name} nie",
     "callTranscriptSaidNothing": "{name} het niks gesê nie",
     "callTranscriptNothingRead": "Niks kon gelees word uit wat {name} gesê het nie",
+    "callTranscriptNoSpeechDetected": "Niks wat van {name} opgeneem is, is gestuur om getranskribeer te word nie: hierdie toepassing het geen spraak daarin gevind nie en kan verkeerd wees daaroor, so wat gesê is, is onbekend.",
     "callTranscriptPartial": "'n Deel van wat {name} gesê het, mag dalk ontbreek",
     "callTranscriptByTime": "teen {time}",
-    "callTranscriptApproximateTimes": "'n Beurt wat \"teen\" 'n tyd gemerk is, is op of voor daardie tyd gesê. Daardie beurte word op daardie oomblik gewys, so dit mag dalk vroeër gesê gewees het.",
-    "callTranscriptUnstatedTimes": "Sommige beurte wys geen tyd nie. Die toestel wat dit opgeneem het, het nie gesê hoe akkuraat sy tye is nie, so waar dit in hierdie gesprek pas, mag dalk verkeerd wees.",
-    "callTranscriptOpen": "Lees die transkripsie",
-    "callTranscriptNoSpeechDetected": "Niks wat van {name} opgeneem is, is gestuur om getranskribeer te word nie: hierdie toepassing het geen spraak daarin gevind nie en kan verkeerd wees daaroor, so wat gesê is, is onbekend.",
-    "callTranscriptUnreconciledClocks": "Hierdie beurte is op twee toestelle opgeneem waarvan die horlosies nie vergelyk kon word nie, so geen tye word getoon nie en die volgorde waarin dit verskyn, kan verkeerd wees."
+    "callTranscriptApproximateTimes": "'n Beurt gemerk \"teen\" 'n tyd is op of voor daardie tyd gesê. Daardie beurte word op daardie oomblik gewys, so dit mag dalk vroeër gesê gewees het.",
+    "callTranscriptUnstatedTimes": "Sommige beurte wys geen tyd nie. Die toestel wat dit opgeneem het, het nie gesê hoe akkuraat sy tye is nie, so die posisie daarvan in hierdie gesprek mag dalk verkeerd wees.",
+    "callTranscriptUnreconciledClocks": "Hierdie beurte is op twee toestelle opgeneem waarvan die horlosies nie vergelyk kon word nie, so geen tye word gewys nie en die volgorde waarin dit verskyn, mag dalk verkeerd wees.",
+    "callTranscriptOpen": "Lees die transkripsie"
 }

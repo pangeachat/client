@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-31 10:32:19.421041",
+    "@@last_modified": "2026-08-31 15:04:39.281819",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2182,6 +2182,7 @@
     "callUnmute": "Washa sauti",
     "callCameraOn": "Washa kamera",
     "callCameraOff": "Zima kamera",
+    "callRecordingNotice": "Simu hii inanakiliwa kwa ajili ya uchambuzi wako",
     "callNoMicrophone": "Hawawezi kukusikia: maikrofoni yako haikuanza",
     "callIncoming": "Simu inayoingia",
     "callAnswer": "Jibu",
@@ -2216,6 +2217,7 @@
     "callHistoryDeclined": "Simu imekataliwa",
     "callHistoryYouDeclined": "Ulikataa simu hii",
     "starsEarnedInLanguage": "Nyota ulizopata katika {language}",
+    "readAloudNoVoiceNote": "Hakuna sauti ya ubora wa juu ya {language} inayopatikana kwenye kifaa hiki, kwa hivyo mipangilio hii haipatikani. Bado unaweza kucheza sauti kutoka kwenye upau wa zana wa ujumbe.",
     "callTranscriptSharedNotice": "Simu hii imeandikwa na kuhifadhiwa. Wewe na mtu mwingine mnaweza kuisoma baadaye.",
     "callTranscriptTitle": "Nakala ya simu",
     "callTranscriptLoadFailed": "Imeshindwa kupakia nakala",
@@ -2224,11 +2226,11 @@
     "callTranscriptNone": "Hakuna nakala kutoka kwa {name}",
     "callTranscriptSaidNothing": "{name} hakusema chochote",
     "callTranscriptNothingRead": "Hakuna kilichoweza kusomwa kutoka kwa alichosema {name}",
+    "callTranscriptNoSpeechDetected": "Hakuna kilichorekodiwa kutoka kwa {name} kilichotumwa kuandikwa: programu hii haikupata hotuba yoyote ndani yake na inaweza kuwa imekosea kuhusu hilo, kwa hivyo kile kilichosemwa hakijulikani.",
     "callTranscriptPartial": "Sehemu ya alichosema {name} inaweza kukosekana",
-    "callTranscriptByTime": "kwa {time}",
-    "callTranscriptApproximateTimes": "Zamu iliyowekwa alama \"kwa\" muda ilisemwa wakati huo au kabla yake. Zamu hizo zinaonyeshwa wakati huo, kwa hivyo zinaweza kuwa zilisemwa mapema.",
-    "callTranscriptUnstatedTimes": "Baadhi ya zamu hazionyeshi muda. Kifaa kilichozirekodi hakikusema jinsi nyakati zake zilivyo sahihi, kwa hivyo mahali zinapokaa kwenye mazungumzo haya kunaweza kuwa si sahihi.",
-    "callTranscriptOpen": "Soma nakala",
-    "callTranscriptNoSpeechDetected": "Hakuna kilichorekodiwa kutoka kwa {name} kilichotumwa ili kunukuliwa: programu hii haikupata hotuba yoyote ndani yake na inaweza kuwa imekosea kuhusu hilo, kwa hivyo kile kilichosemwa hakijulikani.",
-    "callTranscriptUnreconciledClocks": "Zamu hizi zilirekodiwa kwenye vifaa viwili ambavyo saa zake hazikuweza kulinganishwa, kwa hivyo hakuna nyakati zinazoonyeshwa na mpangilio wake unaweza kuwa si sahihi."
+    "callTranscriptByTime": "na {time}",
+    "callTranscriptApproximateTimes": "Zamu iliyotiwa alama \"na\" wakati ilisemwa wakati huo au kabla yake. Zamu hizo zinaonyeshwa wakati huo, kwa hivyo zinaweza kuwa zilisemwa mapema.",
+    "callTranscriptUnstatedTimes": "Baadhi ya zamu hazionyeshi wakati. Kifaa kilichozirekodi hakikusema jinsi nyakati zake zilivyo sahihi, kwa hivyo mahali zinapokaa katika mazungumzo haya kunaweza kuwa si sahihi.",
+    "callTranscriptUnreconciledClocks": "Zamu hizi zilirekodiwa kwenye vifaa viwili ambavyo saa zake hazikuweza kulinganishwa, kwa hivyo hakuna nyakati zinazoonyeshwa na mpangilio zinaoonekana unaweza kuwa si sahihi.",
+    "callTranscriptOpen": "Soma nakala"
 }

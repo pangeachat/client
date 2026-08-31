@@ -20,22 +20,12 @@ Future<AnalyticsDatabase> analyticsDatabaseBuilder(String name) async {
     await database.open();
     return database;
   } catch (e, s) {
-    ErrorHandler.logError(
-      e: e,
-      s: s,
-      data: {"clientID": name},
-      m: "Failed to open analytics database. Opening fallback database.",
-    );
+    ErrorHandler.logError(e: e, s: s, data: {"clientID": name});
 
     Logs().wtf('Unable to construct database!', e, s);
     // Try to delete database so that it can created again on next init:
     database?.delete().catchError((err, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {},
-        m: "Failed to delete analytics database after failed construction.",
-      );
+      ErrorHandler.logError(e: e, s: s, data: {});
     });
 
     // Delete database file:

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-31 10:32:07.848005",
+    "@@last_modified": "2026-08-31 15:04:11.144156",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10133,6 +10133,7 @@
     "callUnmute": "Activer le son",
     "callCameraOn": "Activer la caméra",
     "callCameraOff": "Désactiver la caméra",
+    "callRecordingNotice": "Cet appel est transcrit pour vos analyses",
     "callNoMicrophone": "Ils ne peuvent pas vous entendre : votre microphone n'a pas démarré",
     "callIncoming": "Appel entrant",
     "callAnswer": "Répondre",
@@ -10167,19 +10168,20 @@
     "callHistoryDeclined": "Appel refusé",
     "callHistoryYouDeclined": "Vous avez refusé cet appel",
     "starsEarnedInLanguage": "Étoiles gagnées en {language}",
-    "callTranscriptSharedNotice": "Cet appel est transcrit et enregistré. Vous et l'autre personne pourrez le lire après.",
+    "readAloudNoVoiceNote": "Aucune voix {language} de haute qualité n'est disponible sur cet appareil, ces paramètres sont donc inaccessibles. Vous pouvez toujours lire l'audio depuis la barre d'outils des messages.",
+    "callTranscriptSharedNotice": "Cet appel est transcrit et enregistré. Vous et l'autre personne pourrez le relire après.",
     "callTranscriptTitle": "Transcription de l'appel",
     "callTranscriptLoadFailed": "Impossible de charger la transcription",
     "callTranscriptRetry": "Réessayer",
-    "callTranscriptStoppedEarly": "Cet appel contenait trop d'informations à lire en une seule fois, une partie n'est donc pas affichée.",
+    "callTranscriptStoppedEarly": "Cet appel était trop long pour être lu en une seule fois, une partie n'est donc pas affichée.",
     "callTranscriptNone": "Aucune transcription de {name}",
     "callTranscriptSaidNothing": "{name} n'a rien dit",
     "callTranscriptNothingRead": "Rien n'a pu être lu de ce que {name} a dit",
+    "callTranscriptNoSpeechDetected": "Rien de ce qui a été enregistré de {name} n'a été envoyé pour être transcrit : cette application n'y a détecté aucune parole et peut se tromper à ce sujet, donc ce qui a été dit n'est pas connu.",
     "callTranscriptPartial": "Une partie de ce que {name} a dit pourrait manquer",
     "callTranscriptByTime": "par {time}",
-    "callTranscriptApproximateTimes": "Un tour marqué \"par\" une heure a été dit à ou avant celle-ci. Ces tours sont affichés à ce moment-là, ils ont donc pu être dits plus tôt.",
-    "callTranscriptUnstatedTimes": "Certains tours n'indiquent pas d'heure. L'appareil qui les a enregistrés n'a pas précisé l'exactitude de ses heures, leur position dans cette conversation peut donc être erronée.",
-    "callTranscriptOpen": "Lire la transcription",
-    "callTranscriptNoSpeechDetected": "Rien de ce qui a été enregistré de {name} n'a été envoyé pour être transcrit : cette application n'y a détecté aucune parole et peut se tromper à ce sujet, donc ce qui a été dit n'est pas connu.",
-    "callTranscriptUnreconciledClocks": "Ces interventions ont été enregistrées sur deux appareils dont les horloges n'ont pas pu être comparées, donc aucune heure n'est affichée et l'ordre dans lequel elles apparaissent peut être incorrect."
+    "callTranscriptApproximateTimes": "Un tour marqué « par » une heure a été dit à ou avant celle-ci. Ces tours sont affichés à ce moment-là, ils peuvent donc avoir été dits plus tôt.",
+    "callTranscriptUnstatedTimes": "Certains tours n'affichent pas d'heure. L'appareil qui les a enregistrés n'a pas précisé l'exactitude de ses heures, donc leur position dans cette conversation peut être erronée.",
+    "callTranscriptUnreconciledClocks": "Ces tours ont été enregistrés sur deux appareils dont les horloges n'ont pas pu être comparées, donc aucune heure n'est affichée et l'ordre dans lequel ils apparaissent peut être erroné.",
+    "callTranscriptOpen": "Lire la transcription"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 10:32:15.224254",
+    "@@last_modified": "2026-08-31 15:04:29.132012",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9835,6 +9835,7 @@
     "callUnmute": "Slå på lyd",
     "callCameraOn": "Slå på kamera",
     "callCameraOff": "Slå av kamera",
+    "callRecordingNotice": "Denne samtalen transkriberes for din analyse",
     "callNoMicrophone": "De kan ikke høre deg: mikrofonen din startet ikke",
     "callIncoming": "Innkommende anrop",
     "callAnswer": "Svar",
@@ -9869,6 +9870,7 @@
     "callHistoryDeclined": "Samtalen ble avslått",
     "callHistoryYouDeclined": "Du avslo denne samtalen",
     "starsEarnedInLanguage": "Stjerner opptjent i {language}",
+    "readAloudNoVoiceNote": "Ingen høykvalitets {language}-stemme er tilgjengelig på denne enheten, så disse innstillingene er utilgjengelige. Du kan fortsatt spille av lyd fra meldingsverktøylinjen.",
     "callTranscriptSharedNotice": "Denne samtalen er transkribert og lagret. Du og den andre personen kan lese den etterpå.",
     "callTranscriptTitle": "Samtaleutskrift",
     "callTranscriptLoadFailed": "Kunne ikke laste utskriften",
@@ -9877,11 +9879,11 @@
     "callTranscriptNone": "Ingen utskrift fra {name}",
     "callTranscriptSaidNothing": "{name} sa ingenting",
     "callTranscriptNothingRead": "Ingenting kunne leses fra det {name} sa",
+    "callTranscriptNoSpeechDetected": "Ingenting som ble tatt opp fra {name} ble sendt for transkribering: denne appen fant ingen tale i det og kan ta feil om det, så det som ble sagt er ukjent.",
     "callTranscriptPartial": "Deler av det {name} sa kan mangle",
-    "callTranscriptByTime": "innen {time}",
-    "callTranscriptApproximateTimes": "En replikk merket «innen» et tidspunkt ble sagt på eller før det. Disse replikkene vises på det tidspunktet, så de kan ha blitt sagt tidligere.",
-    "callTranscriptUnstatedTimes": "Noen replikker viser ingen tid. Enheten som spilte dem inn, sa ikke hvor nøyaktige tidspunktene er, så hvor de sitter i denne samtalen kan være feil.",
-    "callTranscriptOpen": "Les utskriften",
-    "callTranscriptNoSpeechDetected": "Ingenting som ble tatt opp fra {name} ble sendt for transkripsjon: denne appen fant ingen tale i det og kan ta feil om det, så det som ble sagt er ikke kjent.",
-    "callTranscriptUnreconciledClocks": "Disse turene ble tatt opp på to enheter hvis klokker ikke kunne sammenlignes, så ingen tider vises og rekkefølgen de vises i kan være feil."
+    "callTranscriptByTime": "ved {time}",
+    "callTranscriptApproximateTimes": "En tur merket \"ved\" et tidspunkt ble sagt på eller før det. Disse turene vises på det tidspunktet, så de kan ha blitt sagt tidligere.",
+    "callTranscriptUnstatedTimes": "Noen turer viser ingen tid. Enheten som tok dem opp, sa ikke hvor nøyaktige tidene var, så hvor de sitter i denne samtalen kan være feil.",
+    "callTranscriptUnreconciledClocks": "Disse turene ble tatt opp på to enheter hvis klokker ikke kunne sammenlignes, så ingen tider vises og rekkefølgen de vises i kan være feil.",
+    "callTranscriptOpen": "Les utskriften"
 }

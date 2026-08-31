@@ -53,7 +53,6 @@ Future<bool> reportCourseOutlineFailure(
     key: 'course-outline-resolve:$roomId',
     e: error,
     s: stack,
-    m: 'course outline failed to resolve',
     data: {'courseRoomId': roomId, 'questId': questId},
     level: courseOutlineErrorLevel(error),
   );

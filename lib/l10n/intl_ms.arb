@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-31 10:32:14.890423",
+    "@@last_modified": "2026-08-31 15:04:28.449231",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2182,6 +2182,7 @@
     "callUnmute": "Nyahsenyap",
     "callCameraOn": "Hidupkan kamera",
     "callCameraOff": "Matikan kamera",
+    "callRecordingNotice": "Panggilan ini ditranskripsi untuk analitik anda",
     "callNoMicrophone": "Mereka tidak dapat mendengar anda: mikrofon anda tidak bermula",
     "callIncoming": "Panggilan masuk",
     "callAnswer": "Jawab",
@@ -2216,7 +2217,8 @@
     "callHistoryDeclined": "Panggilan ditolak",
     "callHistoryYouDeclined": "Anda menolak panggilan ini",
     "starsEarnedInLanguage": "Bintang yang diperoleh dalam {language}",
-    "callTranscriptSharedNotice": "Panggilan ini ditranskripsi dan disimpan. Anda dan orang lain boleh membacanya selepas itu.",
+    "readAloudNoVoiceNote": "Tiada suara {language} berkualiti tinggi tersedia pada peranti ini, jadi tetapan ini tidak tersedia. Anda masih boleh memainkan audio daripada bar alat mesej.",
+    "callTranscriptSharedNotice": "Panggilan ini ditranskripsi dan disimpan. Anda dan orang lain boleh membacanya selepas ini.",
     "callTranscriptTitle": "Transkrip panggilan",
     "callTranscriptLoadFailed": "Tidak dapat memuatkan transkrip",
     "callTranscriptRetry": "Cuba lagi",
@@ -2224,11 +2226,11 @@
     "callTranscriptNone": "Tiada transkrip daripada {name}",
     "callTranscriptSaidNothing": "{name} tidak berkata apa-apa",
     "callTranscriptNothingRead": "Tiada apa-apa yang boleh dibaca daripada apa yang {name} katakan",
+    "callTranscriptNoSpeechDetected": "Tiada apa-apa yang dirakam daripada {name} dihantar untuk ditranskripsi: aplikasi ini tidak menemui sebarang pertuturan di dalamnya dan mungkin salah mengenainya, jadi apa yang dikatakan tidak diketahui.",
     "callTranscriptPartial": "Sebahagian daripada apa yang {name} katakan mungkin hilang",
     "callTranscriptByTime": "pada {time}",
-    "callTranscriptApproximateTimes": "Giliran yang ditandakan \"pada\" masa telah dikatakan pada atau sebelum itu. Giliran tersebut ditunjukkan pada masa itu, jadi ia mungkin telah dikatakan lebih awal.",
-    "callTranscriptUnstatedTimes": "Beberapa giliran tidak menunjukkan masa. Peranti yang merakamnya tidak menyatakan betapa tepat masanya, jadi kedudukannya dalam perbualan ini mungkin salah.",
-    "callTranscriptOpen": "Baca transkrip",
-    "callTranscriptNoSpeechDetected": "Tiada apa-apa yang dirakam daripada {name} telah dihantar untuk ditranskripsi: aplikasi ini tidak menemui sebarang ucapan di dalamnya dan mungkin salah mengenainya, jadi apa yang dikatakan tidak diketahui.",
-    "callTranscriptUnreconciledClocks": "Giliran ini telah dirakam pada dua peranti yang jamnya tidak dapat dibandingkan, jadi tiada masa ditunjukkan dan susunan ia muncul mungkin salah."
+    "callTranscriptApproximateTimes": "Giliran yang ditanda \"pada\" waktu tertentu telah dikatakan pada atau sebelum waktu itu. Giliran tersebut ditunjukkan pada saat itu, jadi ia mungkin telah dikatakan lebih awal.",
+    "callTranscriptUnstatedTimes": "Beberapa giliran tidak menunjukkan masa. Peranti yang merakamnya tidak menyatakan ketepatan masanya, jadi kedudukannya dalam perbualan ini mungkin salah.",
+    "callTranscriptUnreconciledClocks": "Giliran ini dirakam pada dua peranti yang jamnya tidak dapat dibandingkan, jadi tiada masa ditunjukkan dan susunan kemunculannya mungkin salah.",
+    "callTranscriptOpen": "Baca transkrip"
 }

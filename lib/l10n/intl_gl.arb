@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-31 10:32:09.092062",
+    "@@last_modified": "2026-08-31 15:04:12.730071",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9778,6 +9778,7 @@
     "callUnmute": "Activar son",
     "callCameraOn": "Acender cámara",
     "callCameraOff": "Apagar cámara",
+    "callRecordingNotice": "Esta chamada transcríbese para as túas análises",
     "callNoMicrophone": "Non te poden escoitar: o teu micrófono non se iniciou",
     "callIncoming": "Chamada entrante",
     "callAnswer": "Responder",
@@ -9812,6 +9813,7 @@
     "callHistoryDeclined": "Chamada rexeitada",
     "callHistoryYouDeclined": "Rexeitaches esta chamada",
     "starsEarnedInLanguage": "Estrelas gañadas en {language}",
+    "readAloudNoVoiceNote": "Non hai dispoñible unha voz de {language} de alta calidade neste dispositivo, polo que esta configuración non está dispoñible. Aínda podes reproducir audio desde a barra de ferramentas de mensaxes.",
     "callTranscriptSharedNotice": "Esta chamada transcríbese e gárdase. Ti e a outra persoa poderedes lela despois.",
     "callTranscriptTitle": "Transcrición da chamada",
     "callTranscriptLoadFailed": "Non se puido cargar a transcrición",
@@ -9820,11 +9822,11 @@
     "callTranscriptNone": "Non hai transcrición de {name}",
     "callTranscriptSaidNothing": "{name} non dixo nada",
     "callTranscriptNothingRead": "Non se puido ler nada do que dixo {name}",
-    "callTranscriptPartial": "Pode faltar parte do que dixo {name}",
+    "callTranscriptNoSpeechDetected": "Nada do gravado de {name} foi enviado para transcribir: esta aplicación non atopou fala e pode estar equivocada, polo que non se sabe o que se dixo.",
+    "callTranscriptPartial": "Parte do que dixo {name} pode faltar",
     "callTranscriptByTime": "por {time}",
-    "callTranscriptApproximateTimes": "Unha intervención marcada \"por\" unha hora foi dita nese momento ou antes. Esas intervencións móstranse nese momento, polo que puideron ser ditas antes.",
-    "callTranscriptUnstatedTimes": "Algunhas intervencións non mostran a hora. O dispositivo que as gravou non indicou a exactitude das súas horas, polo que a súa posición nesta conversa pode ser incorrecta.",
-    "callTranscriptOpen": "Ler a transcrición",
-    "callTranscriptNoSpeechDetected": "Non se enviou nada do gravado de {name} para transcribir: esta aplicación non atopou voz e pode estar equivocada, polo que non se sabe o que se dixo.",
-    "callTranscriptUnreconciledClocks": "Estas quendas foron gravadas en dous dispositivos cuxos reloxos non se puideron comparar, polo que non se mostran as horas e a orde na que aparecen pode ser incorrecta."
+    "callTranscriptApproximateTimes": "Unha quenda marcada \"por\" unha hora foi dita nese momento ou antes. Esas quendas móstranse nese momento, polo que puideron ser ditas antes.",
+    "callTranscriptUnstatedTimes": "Algunhas quendas non mostran hora. O dispositivo que as gravou non indicou a exactitude das súas horas, polo que a súa posición nesta conversa pode ser incorrecta.",
+    "callTranscriptUnreconciledClocks": "Estas quendas foron gravadas en dous dispositivos cuxos reloxos non puideron ser comparados, polo que non se mostran horas e a orde na que aparecen pode ser incorrecta.",
+    "callTranscriptOpen": "Ler a transcrición"
 }

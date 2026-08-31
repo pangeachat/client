@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-31 10:32:07.595427",
+    "@@last_modified": "2026-08-31 15:04:09.650383",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2182,6 +2182,7 @@
     "callUnmute": "Dad-ddistewi",
     "callCameraOn": "Trowch y camera ymlaen",
     "callCameraOff": "Trowch y camera i ffwrdd",
+    "callRecordingNotice": "Mae'r alwad hon yn cael ei thrawsgrifio ar gyfer eich dadansoddiadau",
     "callNoMicrophone": "Ni allant eich clywed: ni ddechreuodd eich meicroffon",
     "callIncoming": "Galwad sy'n dod i mewn",
     "callAnswer": "Ateb",
@@ -2216,6 +2217,7 @@
     "callHistoryDeclined": "Galwad wedi'i gwrthod",
     "callHistoryYouDeclined": "Gwrthodoch chi'r alwad hon",
     "starsEarnedInLanguage": "Sêr a enillwyd yn {language}",
+    "readAloudNoVoiceNote": "Nid oes llais {language} o ansawdd uchel ar gael ar y ddyfais hon, felly nid yw'r gosodiadau hyn ar gael. Gallwch barhau i chwarae sain o far offer y neges.",
     "callTranscriptSharedNotice": "Mae'r alwad hon wedi'i thrawsgrifio a'i chadw. Gallwch chi a'r person arall ei darllen wedyn.",
     "callTranscriptTitle": "Trawsgrifiad galwad",
     "callTranscriptLoadFailed": "Doedd dim modd llwytho'r trawsgrifiad",
@@ -2224,11 +2226,11 @@
     "callTranscriptNone": "Dim trawsgrifiad gan {name}",
     "callTranscriptSaidNothing": "Ni ddywedodd {name} unrhyw beth",
     "callTranscriptNothingRead": "Ni ellid darllen unrhyw beth o'r hyn a ddywedodd {name}",
-    "callTranscriptPartial": "Efallai bod rhan o'r hyn a ddywedodd {name} ar goll",
+    "callTranscriptNoSpeechDetected": "Ni anfonwyd unrhyw beth a recordiwyd gan {name} i'w drawsgrifio: ni chanfu'r ap hwn unrhyw leferydd ynddo a gall fod yn anghywir am hynny, felly nid yw'r hyn a ddywedwyd yn hysbys.",
+    "callTranscriptPartial": "Gall rhan o'r hyn a ddywedodd {name} fod ar goll",
     "callTranscriptByTime": "erbyn {time}",
-    "callTranscriptApproximateTimes": "Dywedwyd tro a nodwyd \"erbyn\" amser ar neu cyn hynny. Dangosir y troeon hynny ar y foment honno, felly efallai eu bod wedi'u dweud yn gynharach.",
-    "callTranscriptUnstatedTimes": "Nid yw rhai troeon yn dangos amser. Ni ddywedodd y ddyfais a'u recordiodd pa mor union yw ei hamseroedd, felly efallai bod eu lle yn y sgwrs hon yn anghywir.",
-    "callTranscriptOpen": "Darllenwch y trawsgrifiad",
-    "callTranscriptNoSpeechDetected": "Ni anfonwyd unrhyw beth a recordiwyd gan {name} i'w drawsgrifio: ni ddarganfu'r ap hwn unrhyw leferydd ynddo a gall fod yn anghywir am hynny, felly nid yw'n hysbys beth a ddywedwyd.",
-    "callTranscriptUnreconciledClocks": "Recordiwyd y troeon hyn ar ddau ddyfais na ellid cymharu eu clociau, felly ni ddangosir unrhyw amseroedd ac efallai y bydd y drefn y maent yn ymddangos ynddi yn anghywir."
+    "callTranscriptApproximateTimes": "Dywedwyd tro a nodwyd \"erbyn\" amser ar yr amser hwnnw neu cyn hynny. Dangosir y troeon hynny ar y foment honno, felly efallai eu bod wedi'u dweud yn gynharach.",
+    "callTranscriptUnstatedTimes": "Nid yw rhai troeon yn dangos amser. Ni ddywedodd y ddyfais a'u recordiodd pa mor union yw ei hamserau, felly gall y lle maent yn eistedd yn y sgwrs hon fod yn anghywir.",
+    "callTranscriptUnreconciledClocks": "Recordiwyd y troeon hyn ar ddwy ddyfais na ellid cymharu eu clociau, felly ni ddangosir unrhyw amserau ac efallai bod y drefn y maent yn ymddangos ynddi yn anghywir.",
+    "callTranscriptOpen": "Darllenwch y trawsgrifiad"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 10:32:07.237804",
+    "@@last_modified": "2026-08-31 15:04:09.647000",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10723,6 +10723,7 @@
     "callUnmute": "Malmutigi",
     "callCameraOn": "Enŝalti fotilon",
     "callCameraOff": "Malŝalti fotilon",
+    "callRecordingNotice": "Ĉi tiu voko estas transskribita por viaj analizoj",
     "callNoMicrophone": "Ili ne povas aŭdi vin: via mikrofono ne ekfunkciis",
     "callIncoming": "Alvenanta voko",
     "callAnswer": "Respondi",
@@ -10757,6 +10758,7 @@
     "callHistoryDeclined": "Voko malakceptita",
     "callHistoryYouDeclined": "Vi malakceptis ĉi tiun vokon",
     "starsEarnedInLanguage": "Steloj gajnitaj en {language}",
+    "readAloudNoVoiceNote": "Neniu altkvalita {language} voĉo disponeblas en ĉi tiu aparato, do ĉi tiuj agordoj ne disponeblas. Vi ankoraŭ povas ludi sonon el la mesaĝa ilobreto.",
     "callTranscriptSharedNotice": "Ĉi tiu voko estas transskribita kaj konservita. Vi kaj la alia persono povas legi ĝin poste.",
     "callTranscriptTitle": "Transskribo de voko",
     "callTranscriptLoadFailed": "Ne eblis ŝargi la transskribon",
@@ -10765,11 +10767,11 @@
     "callTranscriptNone": "Neniu transskribo de {name}",
     "callTranscriptSaidNothing": "{name} diris nenion",
     "callTranscriptNothingRead": "Nenio legeblis el tio, kion diris {name}",
+    "callTranscriptNoSpeechDetected": "Nenio registrita de {name} estis sendita por transskribo: ĉi tiu aplikaĵo trovis neniun paroladon en ĝi kaj povas erari pri tio, do kio estis dirita ne estas konata.",
     "callTranscriptPartial": "Parto de tio, kion diris {name}, eble mankas",
     "callTranscriptByTime": "je {time}",
     "callTranscriptApproximateTimes": "Vico markita \"je\" tempo estis dirita je aŭ antaŭ ĝi. Tiuj vicoj estas montritaj en tiu momento, do ili eble estis diritaj pli frue.",
-    "callTranscriptUnstatedTimes": "Iuj vicoj montras neniun tempon. La aparato, kiu registris ilin, ne diris, kiom precizaj estas ĝiaj tempoj, do ilia loko en ĉi tiu konversacio eble estas malĝusta.",
-    "callTranscriptOpen": "Legu la transskribon",
-    "callTranscriptNoSpeechDetected": "Nenio registrita de {name} estis sendita por transskribo: ĉi tiu aplikaĵo trovis neniun paroladon en ĝi kaj povas erari pri tio, do kio estis dirita ne estas konata.",
-    "callTranscriptUnreconciledClocks": "Ĉi tiuj vicoj estis registritaj sur du aparatoj kies horloĝoj ne povis esti komparitaj, do neniuj tempoj estas montritaj kaj la ordo en kiu ili aperas povas esti malĝusta."
+    "callTranscriptUnstatedTimes": "Kelkaj vicoj ne montras tempon. La aparato, kiu registris ilin, ne diris kiom precizaj estas ĝiaj tempoj, do ilia loko en ĉi tiu konversacio eble estas malĝusta.",
+    "callTranscriptUnreconciledClocks": "Ĉi tiuj vicoj estis registritaj per du aparatoj, kies horloĝoj ne povis esti komparitaj, do neniuj tempoj estas montritaj kaj la ordo en kiu ili aperas eble estas malĝusta.",
+    "callTranscriptOpen": "Legu la transskribon"
 }

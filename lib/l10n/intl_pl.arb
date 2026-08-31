@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-31 10:32:16.101129",
+    "@@last_modified": "2026-08-31 15:04:31.384602",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9863,6 +9863,7 @@
     "callUnmute": "Wyłącz wyciszenie",
     "callCameraOn": "Włącz kamerę",
     "callCameraOff": "Wyłącz kamerę",
+    "callRecordingNotice": "Ta rozmowa jest transkrybowana dla Twoich analiz",
     "callNoMicrophone": "Nie słyszą Cię: Twój mikrofon się nie uruchomił",
     "callIncoming": "Połączenie przychodzące",
     "callAnswer": "Odbierz",
@@ -9897,19 +9898,20 @@
     "callHistoryDeclined": "Rozmowa odrzucona",
     "callHistoryYouDeclined": "Odrzuciłeś to połączenie",
     "starsEarnedInLanguage": "Gwiazdki zdobyte w {language}",
+    "readAloudNoVoiceNote": "Brak wysokiej jakości głosu {language} na tym urządzeniu, więc te ustawienia są niedostępne. Nadal możesz odtwarzać dźwięk z paska narzędzi wiadomości.",
     "callTranscriptSharedNotice": "Ta rozmowa jest transkrybowana i zapisywana. Ty i druga osoba możecie ją później przeczytać.",
     "callTranscriptTitle": "Transkrypcja rozmowy",
     "callTranscriptLoadFailed": "Nie udało się załadować transkrypcji",
     "callTranscriptRetry": "Spróbuj ponownie",
-    "callTranscriptStoppedEarly": "Ta rozmowa była zbyt długa, aby wyświetlić ją w całości, więc część tekstu nie jest pokazana.",
+    "callTranscriptStoppedEarly": "Ta rozmowa zawierała zbyt wiele do przeczytania za jednym razem, więc część z niej nie jest wyświetlana.",
     "callTranscriptNone": "Brak transkrypcji od {name}",
     "callTranscriptSaidNothing": "{name} nic nie powiedział(a)",
-    "callTranscriptNothingRead": "Nie udało się odczytać niczego z tego, co powiedział(a) {name}",
+    "callTranscriptNothingRead": "Nic nie udało się odczytać z tego, co powiedział(a) {name}",
+    "callTranscriptNoSpeechDetected": "Nic nagranego od {name} nie zostało wysłane do transkrypcji: ta aplikacja nie wykryła w tym mowy i może się mylić, więc to, co zostało powiedziane, nie jest znane.",
     "callTranscriptPartial": "Część tego, co powiedział(a) {name}, może brakować",
     "callTranscriptByTime": "o {time}",
-    "callTranscriptApproximateTimes": "Wypowiedź oznaczona „o” danej godzinie została wypowiedziana o tej godzinie lub wcześniej. Te wypowiedzi są wyświetlane w tym momencie, więc mogły zostać wypowiedziane wcześniej.",
-    "callTranscriptUnstatedTimes": "Niektóre wypowiedzi nie mają podanego czasu. Urządzenie, które je nagrało, nie podało, jak dokładne są te czasy, więc ich umiejscowienie w tej rozmowie może być błędne.",
-    "callTranscriptOpen": "Przeczytaj transkrypcję",
-    "callTranscriptNoSpeechDetected": "Nic nagranego od {name} nie zostało wysłane do transkrypcji: ta aplikacja nie wykryła w nim mowy i może się mylić, więc to, co zostało powiedziane, nie jest znane.",
-    "callTranscriptUnreconciledClocks": "Te wypowiedzi zostały nagrane na dwóch urządzeniach, których zegarów nie można było porównać, więc nie wyświetlono czasów, a kolejność, w jakiej się pojawiają, może być błędna."
+    "callTranscriptApproximateTimes": "Wypowiedź oznaczona „o” danym czasie została wypowiedziana w tym czasie lub wcześniej. Te wypowiedzi są wyświetlane w tym momencie, więc mogły zostać wypowiedziane wcześniej.",
+    "callTranscriptUnstatedTimes": "Niektóre wypowiedzi nie pokazują czasu. Urządzenie, które je nagrało, nie określiło, jak dokładne są jego czasy, więc ich miejsce w tej rozmowie może być błędne.",
+    "callTranscriptUnreconciledClocks": "Te wypowiedzi zostały nagrane na dwóch urządzeniach, których zegarów nie można było porównać, więc nie są wyświetlane żadne czasy, a kolejność ich pojawiania się może być błędna.",
+    "callTranscriptOpen": "Przeczytaj transkrypcję"
 }

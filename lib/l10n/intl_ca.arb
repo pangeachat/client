@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 10:32:06.164415",
+    "@@last_modified": "2026-08-31 15:04:07.484646",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9905,6 +9905,7 @@
     "callUnmute": "Activar so",
     "callCameraOn": "Activar càmera",
     "callCameraOff": "Desactivar càmera",
+    "callRecordingNotice": "Aquesta trucada es transcriu per a les teves analítiques",
     "callNoMicrophone": "No et poden sentir: el teu micròfon no s'ha iniciat",
     "callIncoming": "Trucada entrant",
     "callAnswer": "Respondre",
@@ -9939,19 +9940,20 @@
     "callHistoryDeclined": "Trucada rebutjada",
     "callHistoryYouDeclined": "Has rebutjat aquesta trucada",
     "starsEarnedInLanguage": "Estrelles guanyades a {language}",
+    "readAloudNoVoiceNote": "No hi ha cap veu d'alta qualitat en {language} disponible en aquest dispositiu, per la qual cosa aquesta configuració no està disponible. Encara pots reproduir àudio des de la barra d'eines de missatges.",
     "callTranscriptSharedNotice": "Aquesta trucada s'ha transcrit i desat. Tu i l'altra persona la podreu llegir després.",
     "callTranscriptTitle": "Transcripció de la trucada",
     "callTranscriptLoadFailed": "No s'ha pogut carregar la transcripció",
     "callTranscriptRetry": "Torna-ho a provar",
-    "callTranscriptStoppedEarly": "Aquesta trucada tenia massa text per llegir-lo de cop, així que una part no es mostra.",
+    "callTranscriptStoppedEarly": "Aquesta trucada tenia massa text per llegir d'una vegada, així que part d'ella no es mostra.",
     "callTranscriptNone": "No hi ha transcripció de {name}",
     "callTranscriptSaidNothing": "{name} no ha dit res",
     "callTranscriptNothingRead": "No s'ha pogut llegir res del que ha dit {name}",
+    "callTranscriptNoSpeechDetected": "Res del que s'ha gravat de {name} s'ha enviat per transcriure: aquesta aplicació no hi ha trobat cap veu i pot estar equivocada, així que no se sap què s'ha dit.",
     "callTranscriptPartial": "Pot faltar una part del que ha dit {name}",
     "callTranscriptByTime": "a les {time}",
     "callTranscriptApproximateTimes": "Un torn marcat \"a les\" una hora es va dir en aquell moment o abans. Aquests torns es mostren en aquell moment, així que podrien haver-se dit abans.",
-    "callTranscriptUnstatedTimes": "Alguns torns no mostren l'hora. El dispositiu que els va gravar no va especificar la precisió de les seves hores, així que la seva posició en aquesta conversa podria ser incorrecta.",
-    "callTranscriptOpen": "Llegeix la transcripció",
-    "callTranscriptNoSpeechDetected": "No s'ha enviat res del que s'ha enregistrat de {name} per transcriure: aquesta aplicació no hi ha trobat cap veu i pot estar equivocada, de manera que no se sap què s'ha dit.",
-    "callTranscriptUnreconciledClocks": "Aquests torns es van enregistrar en dos dispositius els rellotges dels quals no es van poder comparar, de manera que no es mostren les hores i l'ordre en què apareixen pot ser incorrecte."
+    "callTranscriptUnstatedTimes": "Alguns torns no mostren l'hora. El dispositiu que els va gravar no va indicar la precisió de les seves hores, així que la seva posició en aquesta conversa pot ser incorrecta.",
+    "callTranscriptUnreconciledClocks": "Aquests torns es van gravar en dos dispositius els rellotges dels quals no es van poder comparar, així que no es mostren les hores i l'ordre en què apareixen pot ser incorrecte.",
+    "callTranscriptOpen": "Llegeix la transcripció"
 }

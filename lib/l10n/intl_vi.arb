@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 10:32:20.498388",
+    "@@last_modified": "2026-08-31 15:04:41.806987",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7070,6 +7070,7 @@
     "callUnmute": "Bật tiếng",
     "callCameraOn": "Bật camera",
     "callCameraOff": "Tắt camera",
+    "callRecordingNotice": "Cuộc gọi này được ghi lại để phân tích",
     "callNoMicrophone": "Họ không thể nghe thấy bạn: micrô của bạn chưa khởi động",
     "callIncoming": "Cuộc gọi đến",
     "callAnswer": "Trả lời",
@@ -7104,19 +7105,20 @@
     "callHistoryDeclined": "Cuộc gọi bị từ chối",
     "callHistoryYouDeclined": "Bạn đã từ chối cuộc gọi này",
     "starsEarnedInLanguage": "Số sao kiếm được bằng tiếng {language}",
-    "callTranscriptSharedNotice": "Cuộc gọi này được phiên âm và lưu lại. Bạn và người còn lại có thể đọc lại sau.",
+    "readAloudNoVoiceNote": "Không có giọng nói {language} chất lượng cao trên thiết bị này, nên các cài đặt này không khả dụng. Bạn vẫn có thể phát âm thanh từ thanh công cụ tin nhắn.",
+    "callTranscriptSharedNotice": "Cuộc gọi này đã được ghi lại và lưu. Bạn và người còn lại có thể đọc lại sau.",
     "callTranscriptTitle": "Bản ghi cuộc gọi",
     "callTranscriptLoadFailed": "Không thể tải bản ghi",
     "callTranscriptRetry": "Thử lại",
-    "callTranscriptStoppedEarly": "Cuộc gọi này có quá nhiều nội dung để đọc cùng lúc, nên một phần trong đó không được hiển thị.",
+    "callTranscriptStoppedEarly": "Cuộc gọi này có quá nhiều nội dung để đọc cùng lúc, nên một phần không được hiển thị.",
     "callTranscriptNone": "Không có bản ghi từ {name}",
-    "callTranscriptSaidNothing": "{name} không nói gì cả",
+    "callTranscriptSaidNothing": "{name} không nói gì",
     "callTranscriptNothingRead": "Không thể đọc được gì từ những gì {name} đã nói",
+    "callTranscriptNoSpeechDetected": "Không có nội dung nào được ghi từ {name} được gửi để phiên âm: ứng dụng này không tìm thấy giọng nói trong đó và có thể sai, vì vậy không biết những gì đã nói.",
     "callTranscriptPartial": "Một phần những gì {name} đã nói có thể bị thiếu",
     "callTranscriptByTime": "lúc {time}",
-    "callTranscriptApproximateTimes": "Một lượt nói được đánh dấu \"lúc\" một thời điểm đã được nói vào hoặc trước thời điểm đó. Những lượt nói đó được hiển thị vào thời điểm đó, nên chúng có thể đã được nói sớm hơn.",
-    "callTranscriptUnstatedTimes": "Một số lượt nói không hiển thị thời gian. Thiết bị ghi âm chúng không cho biết thời gian chính xác đến mức nào, nên vị trí của chúng trong cuộc trò chuyện này có thể không đúng.",
-    "callTranscriptOpen": "Đọc bản ghi",
-    "callTranscriptNoSpeechDetected": "Không có âm thanh nào được ghi từ {name} được gửi để phiên âm: ứng dụng này không tìm thấy giọng nói trong đó và có thể sai về điều đó, vì vậy những gì đã nói không được biết.",
-    "callTranscriptUnreconciledClocks": "Những lượt này được ghi lại trên hai thiết bị mà đồng hồ không thể so sánh được, vì vậy không có thời gian nào được hiển thị và thứ tự chúng xuất hiện có thể sai."
+    "callTranscriptApproximateTimes": "Một lượt được đánh dấu \"lúc\" một thời điểm đã được nói vào hoặc trước thời điểm đó. Những lượt đó được hiển thị vào thời điểm đó, vì vậy chúng có thể đã được nói sớm hơn.",
+    "callTranscriptUnstatedTimes": "Một số lượt không hiển thị thời gian. Thiết bị đã ghi lại chúng không cho biết thời gian của nó chính xác đến mức nào, vì vậy vị trí của chúng trong cuộc trò chuyện này có thể sai.",
+    "callTranscriptUnreconciledClocks": "Những lượt này được ghi lại trên hai thiết bị mà đồng hồ không thể so sánh, vì vậy không có thời gian nào được hiển thị và thứ tự chúng xuất hiện có thể sai.",
+    "callTranscriptOpen": "Đọc bản ghi"
 }

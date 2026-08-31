@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-31 10:32:07.084385",
+    "@@last_modified": "2026-08-31 15:04:08.481362",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9765,6 +9765,7 @@
     "callUnmute": "Stummschaltung aufheben",
     "callCameraOn": "Kamera einschalten",
     "callCameraOff": "Kamera ausschalten",
+    "callRecordingNotice": "Dieser Anruf wird für Ihre Analysen transkribiert",
     "callNoMicrophone": "Sie können Sie nicht hören: Ihr Mikrofon wurde nicht gestartet",
     "callIncoming": "Eingehender Anruf",
     "callAnswer": "Annehmen",
@@ -9799,6 +9800,7 @@
     "callHistoryDeclined": "Anruf abgelehnt",
     "callHistoryYouDeclined": "Sie haben diesen Anruf abgelehnt",
     "starsEarnedInLanguage": "In {language} verdiente Sterne",
+    "readAloudNoVoiceNote": "Auf diesem Gerät ist keine hochwertige {language}-Stimme verfügbar, daher sind diese Einstellungen nicht verfügbar. Sie können Audio weiterhin über die Nachrichten-Symbolleiste abspielen.",
     "callTranscriptSharedNotice": "Dieser Anruf wird transkribiert und gespeichert. Sie und die andere Person können ihn danach lesen.",
     "callTranscriptTitle": "Anruf-Transkript",
     "callTranscriptLoadFailed": "Transkript konnte nicht geladen werden",
@@ -9806,12 +9808,12 @@
     "callTranscriptStoppedEarly": "Dieser Anruf enthielt zu viel Text, um auf einmal gelesen zu werden, daher wird ein Teil davon nicht angezeigt.",
     "callTranscriptNone": "Kein Transkript von {name}",
     "callTranscriptSaidNothing": "{name} hat nichts gesagt",
-    "callTranscriptNothingRead": "Es konnte nichts von dem, was {name} gesagt hat, gelesen werden",
-    "callTranscriptPartial": "Ein Teil dessen, was {name} gesagt hat, fehlt möglicherweise",
+    "callTranscriptNothingRead": "Es konnte nichts von dem gelesen werden, was {name} gesagt hat",
+    "callTranscriptNoSpeechDetected": "Nichts von dem, was von {name} aufgenommen wurde, wurde zur Transkription gesendet: Diese App hat darin keine Sprache gefunden und kann sich irren, daher ist nicht bekannt, was gesagt wurde.",
+    "callTranscriptPartial": "Ein Teil dessen, was {name} gesagt hat, könnte fehlen",
     "callTranscriptByTime": "um {time}",
-    "callTranscriptApproximateTimes": "Eine Äußerung, die mit „um“ einer Uhrzeit markiert ist, wurde zu oder vor dieser Zeit gesagt. Diese Äußerungen werden zu diesem Zeitpunkt angezeigt, daher könnten sie früher gesagt worden sein.",
+    "callTranscriptApproximateTimes": "Eine mit „um“ und einer Uhrzeit markierte Äußerung wurde zu oder vor dieser Zeit getätigt. Diese Äußerungen werden zu diesem Zeitpunkt angezeigt, sie könnten also früher getätigt worden sein.",
     "callTranscriptUnstatedTimes": "Einige Äußerungen zeigen keine Uhrzeit an. Das Gerät, das sie aufgezeichnet hat, hat nicht angegeben, wie genau seine Zeiten sind, daher kann die Position in diesem Gespräch falsch sein.",
-    "callTranscriptOpen": "Transkript lesen",
-    "callTranscriptNoSpeechDetected": "Nichts, was von {name} aufgenommen wurde, wurde zur Transkription gesendet: Diese App hat darin keine Sprache gefunden und kann sich irren, daher ist nicht bekannt, was gesagt wurde.",
-    "callTranscriptUnreconciledClocks": "Diese Gesprächsbeiträge wurden auf zwei Geräten aufgezeichnet, deren Uhren nicht abgeglichen werden konnten. Daher werden keine Zeiten angezeigt und die Reihenfolge, in der sie erscheinen, kann falsch sein."
+    "callTranscriptUnreconciledClocks": "Diese Äußerungen wurden auf zwei Geräten aufgezeichnet, deren Uhren nicht verglichen werden konnten, daher werden keine Zeiten angezeigt und die Reihenfolge, in der sie erscheinen, kann falsch sein.",
+    "callTranscriptOpen": "Transkript lesen"
 }

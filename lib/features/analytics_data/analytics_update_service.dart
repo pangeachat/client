@@ -275,7 +275,6 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
         key: "listening-exposure-drain-failed",
         e: err,
         s: s,
-        m: "Could not persist buffered listening exposure; retrying next drain",
         data: {"rows": uses.length},
         level: SentryLevel.warning,
       );
@@ -289,7 +288,6 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     if (lang == null) {
       ErrorHandler.logError(
         e: "No L2 language set for user",
-        m: "Cannot send local analytics to analytics room",
         data: {"l2Override": l2Override},
         level: SentryLevel.warning,
       );
@@ -327,18 +325,12 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
       ErrorHandler.logErrorOnce(
         key: "analytics-update-database-closed",
         e: err,
-        m: "Analytics update stopped: analytics store closed",
         s: s,
         data: {"l2Override": l2Override},
         level: SentryLevel.warning,
       );
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        m: "Failed to update analytics",
-        s: s,
-        data: {"l2Override": l2Override},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {"l2Override": l2Override});
     } finally {
       _updateCompleter?.complete();
       _updateCompleter = null;

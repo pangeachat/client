@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-31 10:32:17.704335",
+    "@@last_modified": "2026-08-31 15:04:35.322374",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10723,6 +10723,7 @@
     "callUnmute": "Zrušiť stlmenie",
     "callCameraOn": "Zapnúť kameru",
     "callCameraOff": "Vypnúť kameru",
+    "callRecordingNotice": "Tento hovor je prepisovaný pre vašu analýzu",
     "callNoMicrophone": "Nepočujú vás: váš mikrofón sa nespustil",
     "callIncoming": "Prichádzajúci hovor",
     "callAnswer": "Prijať",
@@ -10757,19 +10758,20 @@
     "callHistoryDeclined": "Hovor odmietnutý",
     "callHistoryYouDeclined": "Tento hovor ste odmietli",
     "starsEarnedInLanguage": "Hviezdy získané v jazyku {language}",
+    "readAloudNoVoiceNote": "Na tomto zariadení nie je k dispozícii vysokokvalitný hlas pre jazyk {language}, takže tieto nastavenia nie sú dostupné. Zvuk môžete stále prehrávať z panela správ.",
     "callTranscriptSharedNotice": "Tento hovor je prepísaný a uložený. Vy a druhá osoba si ho môžete prečítať neskôr.",
     "callTranscriptTitle": "Prepis hovoru",
     "callTranscriptLoadFailed": "Prepis sa nepodarilo načítať",
     "callTranscriptRetry": "Skúsiť znova",
-    "callTranscriptStoppedEarly": "Tento hovor obsahoval príliš veľa textu na jedno prečítanie, takže niektoré časti nie sú zobrazené.",
+    "callTranscriptStoppedEarly": "Tento hovor obsahoval príliš veľa textu na prečítanie naraz, takže niektoré časti nie sú zobrazené.",
     "callTranscriptNone": "Žiadny prepis od {name}",
     "callTranscriptSaidNothing": "{name} nič nepovedal(a)",
     "callTranscriptNothingRead": "Z toho, čo povedal(a) {name}, sa nič nedalo prečítať",
-    "callTranscriptPartial": "Časť z toho, čo povedal(a) {name}, môže chýbať",
+    "callTranscriptNoSpeechDetected": "Nič zaznamenané od {name} nebolo odoslané na prepis: táto aplikácia v tom nenašla žiadnu reč a môže sa mýliť, takže to, čo bolo povedané, nie je známe.",
+    "callTranscriptPartial": "Časť toho, čo povedal(a) {name}, môže chýbať",
     "callTranscriptByTime": "o {time}",
-    "callTranscriptApproximateTimes": "Prejav označený „o“ určitým časom bol povedaný v tom čase alebo predtým. Tieto prejavy sú zobrazené v danom momente, takže mohli byť povedané skôr.",
-    "callTranscriptUnstatedTimes": "Niektoré prejavy neukazujú čas. Zariadenie, ktoré ich zaznamenalo, neuviedlo, ako presné sú jeho časy, takže ich umiestnenie v tejto konverzácii môže byť nesprávne.",
-    "callTranscriptOpen": "Prečítať prepis",
-    "callTranscriptNoSpeechDetected": "Nič zaznamenané od {name} nebolo odoslané na prepis: táto aplikácia v ňom nenašla žiadnu reč a môže sa mýliť, takže to, čo bolo povedané, nie je známe.",
-    "callTranscriptUnreconciledClocks": "Tieto záznamy boli zaznamenané na dvoch zariadeniach, ktorých hodiny nebolo možné porovnať, takže sa nezobrazujú žiadne časy a poradie, v akom sa zobrazujú, môže byť nesprávne."
+    "callTranscriptApproximateTimes": "Prejav označený „o“ určitým časom bol povedaný vtedy alebo predtým. Tieto prejavy sú zobrazené v danom momente, takže mohli byť povedané skôr.",
+    "callTranscriptUnstatedTimes": "Niektoré prejavy neukazujú čas. Zariadenie, ktoré ich zaznamenalo, neuviedlo, aké presné sú jeho časy, takže ich umiestnenie v tejto konverzácii môže byť nesprávne.",
+    "callTranscriptUnreconciledClocks": "Tieto prejavy boli zaznamenané na dvoch zariadeniach, ktorých hodiny sa nedali porovnať, takže nie sú zobrazené žiadne časy a poradie, v akom sa objavujú, môže byť nesprávne.",
+    "callTranscriptOpen": "Prečítať prepis"
 }

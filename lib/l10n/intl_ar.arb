@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-31 10:32:05.649123",
+    "@@last_modified": "2026-08-31 15:04:04.784378",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10084,6 +10084,7 @@
     "callUnmute": "إلغاء كتم الصوت",
     "callCameraOn": "تشغيل الكاميرا",
     "callCameraOff": "إيقاف تشغيل الكاميرا",
+    "callRecordingNotice": "يتم تسجيل هذه المكالمة لتحليلاتك",
     "callNoMicrophone": "لا يمكنهم سماعك: لم يبدأ الميكروفون الخاص بك",
     "callIncoming": "مكالمة واردة",
     "callAnswer": "رد",
@@ -10118,19 +10119,20 @@
     "callHistoryDeclined": "تم رفض المكالمة",
     "callHistoryYouDeclined": "لقد رفضت هذه المكالمة",
     "starsEarnedInLanguage": "النجوم المكتسبة في {language}",
-    "callTranscriptSharedNotice": "تم نسخ هذه المكالمة وحفظها. يمكنك أنت والشخص الآخر قراءتها لاحقًا.",
+    "readAloudNoVoiceNote": "لا يتوفر صوت {language} عالي الجودة على هذا الجهاز، لذا فإن هذه الإعدادات غير متاحة. لا يزال بإمكانك تشغيل الصوت من شريط أدوات الرسائل.",
+    "callTranscriptSharedNotice": "هذه المكالمة تم نسخها وحفظها. يمكنك أنت والشخص الآخر قراءتها لاحقًا.",
     "callTranscriptTitle": "نسخة المكالمة",
     "callTranscriptLoadFailed": "تعذر تحميل النسخة",
     "callTranscriptRetry": "حاول مرة أخرى",
     "callTranscriptStoppedEarly": "كانت هذه المكالمة تحتوي على الكثير للقراءة دفعة واحدة، لذلك لم يتم عرض جزء منها.",
     "callTranscriptNone": "لا توجد نسخة من {name}",
     "callTranscriptSaidNothing": "لم يقل {name} أي شيء",
-    "callTranscriptNothingRead": "لم يتمكن من قراءة أي شيء مما قاله {name}",
+    "callTranscriptNothingRead": "لم يتمكن قراءة أي شيء مما قاله {name}",
+    "callTranscriptNoSpeechDetected": "لم يتم إرسال أي شيء مسجل من {name} لنسخه: لم يعثر هذا التطبيق على كلام فيه وقد يكون مخطئًا في ذلك، لذا فإن ما قيل غير معروف.",
     "callTranscriptPartial": "قد يكون جزء مما قاله {name} مفقودًا",
     "callTranscriptByTime": "بواسطة {time}",
-    "callTranscriptApproximateTimes": "تم قول الدور الذي يحمل علامة \"بواسطة\" وقت معين في ذلك الوقت أو قبله. تظهر تلك الأدوار في تلك اللحظة، لذلك ربما قيلت في وقت سابق.",
-    "callTranscriptUnstatedTimes": "بعض الأدوار لا تظهر وقتًا. الجهاز الذي سجلها لم يذكر مدى دقة أوقاته، لذا قد يكون مكانها في هذه المحادثة خاطئًا.",
-    "callTranscriptOpen": "قراءة النسخة",
-    "callTranscriptNoSpeechDetected": "لم يتم إرسال أي شيء مسجل من {name} للنسخ: لم يعثر هذا التطبيق على أي كلام فيه وقد يكون مخطئًا في ذلك، لذا فإن ما قيل غير معروف.",
-    "callTranscriptUnreconciledClocks": "تم تسجيل هذه الأدوار على جهازين لا يمكن مقارنة ساعاتهما، لذا لا يتم عرض أي أوقات وقد يكون الترتيب الذي تظهر به خاطئًا."
+    "callTranscriptApproximateTimes": "العبارة التي تم وضع علامة \"بواسطة\" بجانبها وقت قيلت في ذلك الوقت أو قبله. تظهر هذه العبارات في تلك اللحظة، لذلك ربما قيلت في وقت أبكر.",
+    "callTranscriptUnstatedTimes": "بعض العبارات لا تظهر وقتًا. الجهاز الذي سجلها لم يذكر مدى دقة أوقاته، لذا فإن مكانها في هذه المحادثة قد يكون خاطئًا.",
+    "callTranscriptUnreconciledClocks": "تم تسجيل هذه العبارات على جهازين لم تتم مقارنة ساعتيهما، لذا لا تظهر أي أوقات وقد يكون ترتيب ظهورها خاطئًا.",
+    "callTranscriptOpen": "قراءة النسخة"
 }

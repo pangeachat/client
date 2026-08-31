@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 10:32:15.557225",
+    "@@last_modified": "2026-08-31 15:04:29.391974",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9778,6 +9778,7 @@
     "callUnmute": "Dempen opheffen",
     "callCameraOn": "Camera aanzetten",
     "callCameraOff": "Camera uitzetten",
+    "callRecordingNotice": "Dit gesprek wordt getranscribeerd voor uw analyses",
     "callNoMicrophone": "Ze kunnen u niet horen: uw microfoon is niet gestart",
     "callIncoming": "Inkomende oproep",
     "callAnswer": "Opnemen",
@@ -9812,6 +9813,7 @@
     "callHistoryDeclined": "Oproep geweigerd",
     "callHistoryYouDeclined": "U hebt deze oproep geweigerd",
     "starsEarnedInLanguage": "Sterren verdiend in {language}",
+    "readAloudNoVoiceNote": "Er is geen hoogwaardige {language}-stem beschikbaar op dit apparaat, dus deze instellingen zijn niet beschikbaar. Je kunt nog steeds audio afspelen via de berichtenwerkbalk.",
     "callTranscriptSharedNotice": "Dit gesprek is getranscribeerd en opgeslagen. Jij en de andere persoon kunnen het achteraf lezen.",
     "callTranscriptTitle": "Gesprekstranscript",
     "callTranscriptLoadFailed": "Transcript kon niet worden geladen",
@@ -9820,11 +9822,11 @@
     "callTranscriptNone": "Geen transcript van {name}",
     "callTranscriptSaidNothing": "{name} heeft niets gezegd",
     "callTranscriptNothingRead": "Er kon niets worden gelezen van wat {name} zei",
-    "callTranscriptPartial": "Een deel van wat {name} zei, ontbreekt mogelijk",
+    "callTranscriptNoSpeechDetected": "Niets opgenomen van {name} is ter transcriptie verzonden: deze app heeft er geen spraak in gevonden en kan zich daarin vergissen, dus wat er gezegd is, is onbekend.",
+    "callTranscriptPartial": "Een deel van wat {name} zei ontbreekt mogelijk",
     "callTranscriptByTime": "om {time}",
-    "callTranscriptApproximateTimes": "Een beurt gemarkeerd met \"om\" een tijd werd op of voor die tijd gezegd. Die beurten worden op dat moment getoond, dus ze kunnen eerder zijn gezegd.",
-    "callTranscriptUnstatedTimes": "Sommige beurten tonen geen tijd. Het apparaat dat ze heeft opgenomen, heeft niet aangegeven hoe exact de tijden zijn, dus de plaatsing ervan in dit gesprek kan onjuist zijn.",
-    "callTranscriptOpen": "Lees het transcript",
-    "callTranscriptNoSpeechDetected": "Er is niets opgenomen van {name} om te transcriberen: deze app heeft er geen spraak in gevonden en kan het mis hebben, dus wat er gezegd is, is onbekend.",
-    "callTranscriptUnreconciledClocks": "Deze beurten zijn opgenomen op twee apparaten waarvan de klokken niet konden worden vergeleken, dus er worden geen tijden weergegeven en de volgorde waarin ze verschijnen kan onjuist zijn."
+    "callTranscriptApproximateTimes": "Een beurt gemarkeerd \"om\" een tijd werd op of voor die tijd gezegd. Die beurten worden op dat moment getoond, dus ze kunnen eerder zijn gezegd.",
+    "callTranscriptUnstatedTimes": "Sommige beurten tonen geen tijd. Het apparaat dat ze opnam, gaf niet aan hoe exact de tijden zijn, dus de plaatsing ervan in dit gesprek kan onjuist zijn.",
+    "callTranscriptUnreconciledClocks": "Deze beurten zijn opgenomen op twee apparaten waarvan de klokken niet konden worden vergeleken, dus er worden geen tijden weergegeven en de volgorde waarin ze verschijnen kan onjuist zijn.",
+    "callTranscriptOpen": "Lees het transcript"
 }

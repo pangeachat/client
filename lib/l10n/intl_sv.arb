@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 10:32:18.704065",
+    "@@last_modified": "2026-08-31 15:04:37.735654",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10296,6 +10296,7 @@
     "callUnmute": "Slå på ljud",
     "callCameraOn": "Slå på kamera",
     "callCameraOff": "Stäng av kamera",
+    "callRecordingNotice": "Detta samtal transkriberas för din analys",
     "callNoMicrophone": "De kan inte höra dig: din mikrofon startade inte",
     "callIncoming": "Inkommande samtal",
     "callAnswer": "Svara",
@@ -10330,19 +10331,20 @@
     "callHistoryDeclined": "Samtal avböjt",
     "callHistoryYouDeclined": "Du avböjde detta samtal",
     "starsEarnedInLanguage": "Stjärnor intjänade i {language}",
-    "callTranscriptSharedNotice": "Samtalet transkriberas och sparas. Du och den andra personen kan läsa det efteråt.",
+    "readAloudNoVoiceNote": "Ingen högkvalitativ röst för {language} är tillgänglig på den här enheten, så dessa inställningar är inte tillgängliga. Du kan fortfarande spela upp ljud från meddelandeverktygsfältet.",
+    "callTranscriptSharedNotice": "Det här samtalet transkriberas och sparas. Du och den andra personen kan läsa det efteråt.",
     "callTranscriptTitle": "Samtalstranskription",
-    "callTranscriptLoadFailed": "Kunde inte läsa in transkriptionen",
+    "callTranscriptLoadFailed": "Kunde inte ladda transkriptionen",
     "callTranscriptRetry": "Försök igen",
-    "callTranscriptStoppedEarly": "Det här samtalet innehöll för mycket att läsa på en gång, så en del av det visas inte.",
+    "callTranscriptStoppedEarly": "Det här samtalet hade för mycket att läsa på en gång, så en del av det visas inte.",
     "callTranscriptNone": "Ingen transkription från {name}",
     "callTranscriptSaidNothing": "{name} sa ingenting",
     "callTranscriptNothingRead": "Inget kunde läsas från vad {name} sa",
+    "callTranscriptNoSpeechDetected": "Inget inspelat från {name} skickades för transkribering: den här appen hittade inget tal i det och kan ha fel om det, så vad som sades är okänt.",
     "callTranscriptPartial": "En del av vad {name} sa kan saknas",
     "callTranscriptByTime": "vid {time}",
-    "callTranscriptApproximateTimes": "En replik markerad \"vid\" en tid sades vid eller före den. Dessa repliker visas vid den tidpunkten, så de kan ha sagts tidigare.",
+    "callTranscriptApproximateTimes": "En replik markerad \"vid\" en tid sades vid eller före den. Dessa repliker visas vid det ögonblicket, så de kan ha sagts tidigare.",
     "callTranscriptUnstatedTimes": "Vissa repliker visar ingen tid. Enheten som spelade in dem angav inte hur exakta dess tider är, så var de befinner sig i denna konversation kan vara fel.",
-    "callTranscriptOpen": "Läs transkriptionen",
-    "callTranscriptNoSpeechDetected": "Inget inspelat från {name} skickades för transkribering: den här appen hittade inget tal i det och kan ha fel om det, så vad som sades är okänt.",
-    "callTranscriptUnreconciledClocks": "Dessa turer spelades in på två enheter vars klockor inte kunde jämföras, så inga tider visas och ordningen de visas i kan vara fel."
+    "callTranscriptUnreconciledClocks": "Dessa repliker spelades in på två enheter vars klockor inte kunde jämföras, så inga tider visas och ordningen de visas i kan vara fel.",
+    "callTranscriptOpen": "Läs transkriptionen"
 }

@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-31 10:32:06.666451",
+    "@@last_modified": "2026-08-31 15:04:07.707001",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10698,6 +10698,7 @@
     "callUnmute": "Slå lyd til",
     "callCameraOn": "Tænd kamera",
     "callCameraOff": "Sluk kamera",
+    "callRecordingNotice": "Dette opkald transskriberes til din analyse",
     "callNoMicrophone": "De kan ikke høre dig: din mikrofon startede ikke",
     "callIncoming": "Indgående opkald",
     "callAnswer": "Besvar",
@@ -10732,6 +10733,7 @@
     "callHistoryDeclined": "Opkald afvist",
     "callHistoryYouDeclined": "Du afviste dette opkald",
     "starsEarnedInLanguage": "Stjerner optjent i {language}",
+    "readAloudNoVoiceNote": "Der er ingen {language}-stemme i høj kvalitet tilgængelig på denne enhed, så disse indstillinger er utilgængelige. Du kan stadig afspille lyd fra meddelelsesværktøjslinjen.",
     "callTranscriptSharedNotice": "Dette opkald er transskriberet og gemt. Du og den anden person kan læse det bagefter.",
     "callTranscriptTitle": "Opkaldstranskription",
     "callTranscriptLoadFailed": "Kunne ikke indlæse transskriptionen",
@@ -10739,12 +10741,12 @@
     "callTranscriptStoppedEarly": "Dette opkald havde for meget at læse på én gang, så noget af det vises ikke.",
     "callTranscriptNone": "Ingen transskription fra {name}",
     "callTranscriptSaidNothing": "{name} sagde intet",
-    "callTranscriptNothingRead": "Intet kunne læses fra hvad {name} sagde",
-    "callTranscriptPartial": "En del af hvad {name} sagde mangler muligvis",
-    "callTranscriptByTime": "kl. {time}",
-    "callTranscriptApproximateTimes": "En tur markeret \"kl.\" et tidspunkt blev sagt på eller før det. Disse ture vises på det tidspunkt, så de kan være blevet sagt tidligere.",
-    "callTranscriptUnstatedTimes": "Nogle ture viser ingen tid. Enheden, der optog dem, sagde ikke, hvor nøjagtige dens tider er, så hvor de sidder i denne samtale, kan være forkert.",
-    "callTranscriptOpen": "Læs transskriptionen",
+    "callTranscriptNothingRead": "Intet kunne læses fra det, {name} sagde",
     "callTranscriptNoSpeechDetected": "Intet optaget fra {name} blev sendt til transskription: denne app fandt ingen tale i det og kan tage fejl, så det vides ikke, hvad der blev sagt.",
-    "callTranscriptUnreconciledClocks": "Disse ture blev optaget på to enheder, hvis ure ikke kunne sammenlignes, så der vises ingen tider, og rækkefølgen, de vises i, kan være forkert."
+    "callTranscriptPartial": "En del af det, {name} sagde, mangler muligvis",
+    "callTranscriptByTime": "ved {time}",
+    "callTranscriptApproximateTimes": "En tur markeret \"ved\" et tidspunkt blev sagt på eller før det. Disse ture vises på det tidspunkt, så de kan være blevet sagt tidligere.",
+    "callTranscriptUnstatedTimes": "Nogle ture viser ingen tid. Enheden, der optog dem, sagde ikke, hvor nøjagtige dens tider er, så hvor de sidder i denne samtale, kan være forkert.",
+    "callTranscriptUnreconciledClocks": "Disse ture blev optaget på to enheder, hvis ure ikke kunne sammenlignes, så ingen tider vises, og rækkefølgen, de vises i, kan være forkert.",
+    "callTranscriptOpen": "Læs transskriptionen"
 }

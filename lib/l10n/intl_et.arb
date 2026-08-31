@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-31 10:32:07.840139",
+    "@@last_modified": "2026-08-31 15:04:10.711542",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9775,6 +9775,7 @@
     "callUnmute": "Lülita vaigistus välja",
     "callCameraOn": "Lülita kaamera sisse",
     "callCameraOff": "Lülita kaamera välja",
+    "callRecordingNotice": "See kõne transkribeeritakse teie analüüsi jaoks",
     "callNoMicrophone": "Nad ei kuule teid: teie mikrofon ei käivitunud",
     "callIncoming": "Sissetulev kõne",
     "callAnswer": "Vasta",
@@ -9809,19 +9810,20 @@
     "callHistoryDeclined": "Kõnest keelduti",
     "callHistoryYouDeclined": "Keeldusite sellest kõnest",
     "starsEarnedInLanguage": "Tähti teenitud keeles {language}",
+    "readAloudNoVoiceNote": "Selles seadmes pole kvaliteetset {language} häält saadaval, seega pole need seaded kättesaadavad. Saate endiselt heli esitada sõnumiribalt.",
     "callTranscriptSharedNotice": "See kõne on transkribeeritud ja salvestatud. Sina ja teine inimene saate seda hiljem lugeda.",
     "callTranscriptTitle": "Kõne transkriptsioon",
     "callTranscriptLoadFailed": "Transkriptsiooni ei saanud laadida",
     "callTranscriptRetry": "Proovi uuesti",
-    "callTranscriptStoppedEarly": "Selles kõnes oli liiga palju lugeda korraga, nii et osa sellest ei kuvata.",
-    "callTranscriptNone": "Transkriptsioon puudub {name}",
+    "callTranscriptStoppedEarly": "Selles kõnes oli liiga palju lugeda korraga, seega osa sellest ei kuvata.",
+    "callTranscriptNone": "Transkriptsioon puudub {name} poolt",
     "callTranscriptSaidNothing": "{name} ei öelnud midagi",
     "callTranscriptNothingRead": "Midagi ei saanud lugeda sellest, mida {name} ütles",
+    "callTranscriptNoSpeechDetected": "Midagi {name} salvestatust ei saadetud transkribeerimiseks: see rakendus ei leidnud sellest kõnet ja võib selles eksida, seega pole teada, mis öeldi.",
     "callTranscriptPartial": "Osa sellest, mida {name} ütles, võib puududa",
     "callTranscriptByTime": "kell {time}",
-    "callTranscriptApproximateTimes": "Ajamärgiga „kell“ tähistatud pöörded öeldi sel ajal või enne seda. Need pöörded kuvatakse sel hetkel, seega võisid need olla öeldud varem.",
+    "callTranscriptApproximateTimes": "Aeg, mille juures on märgitud \"kell\", öeldi sel ajal või enne seda. Need pöörded kuvatakse sel hetkel, seega võisid need olla öeldud varem.",
     "callTranscriptUnstatedTimes": "Mõned pöörded ei näita aega. Seade, mis need salvestas, ei öelnud, kui täpsed selle ajad on, seega võib nende asukoht selles vestluses olla vale.",
-    "callTranscriptOpen": "Loe transkriptsiooni",
-    "callTranscriptNoSpeechDetected": "Midagi {name} salvestatust ei saadetud transkribeerimiseks: see rakendus ei leidnud sellest kõnet ja võib selles osas eksida, seega pole teada, mis öeldi.",
-    "callTranscriptUnreconciledClocks": "Need pöörded salvestati kahes seadmes, mille kellasid ei saanud võrrelda, seega ei kuvata aegu ja nende ilmumise järjekord võib olla vale."
+    "callTranscriptUnreconciledClocks": "Need pöörded salvestati kahel seadmel, mille kellasid ei saanud võrrelda, seega aegu ei kuvata ja nende ilmumise järjekord võib olla vale.",
+    "callTranscriptOpen": "Loe transkriptsiooni"
 }

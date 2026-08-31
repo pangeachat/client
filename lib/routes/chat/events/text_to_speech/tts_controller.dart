@@ -281,7 +281,7 @@ class TtsController {
 
       if (result != 1) {
         error_handler.ErrorHandler.logError(
-          m: 'Unexpected result from tts.stop',
+          e: Exception('Unexpected result from tts.stop'),
           data: {'result': result},
         );
       }
