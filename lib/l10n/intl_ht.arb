@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-30 21:15:13.188196",
+    "@@last_modified": "2026-08-31 10:32:10.405299",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "pa {time}",
     "callTranscriptApproximateTimes": "Yon entèvansyon ki make \"pa\" yon lè te di nan oswa anvan lè sa a. Entèvansyon sa yo parèt nan moman sa a, kidonk yo ka te di pi bonè.",
     "callTranscriptUnstatedTimes": "Gen kèk entèvansyon ki pa montre lè. Aparèy ki te anrejistre yo pa t di kijan lè li yo egzak, kidonk kote yo ye nan konvèsasyon sa a ka pa kòrèk.",
-    "callTranscriptOpen": "Li transkripsyon an"
+    "callTranscriptOpen": "Li transkripsyon an",
+    "callTranscriptNoSpeechDetected": "Pa gen anyen ki anrejistre nan men {name} ki te voye pou transkripsyon: aplikasyon sa a pa jwenn okenn diskou ladan l e li ka fè erè sou sa, kidonk sa ki te di a pa konnen.",
+    "callTranscriptUnreconciledClocks": "Vire sa yo te anrejistre sou de aparèy ki gen revèy pa t ka konpare, kidonk pa gen okenn lè ki parèt e lòd yo parèt la ka pa bon."
 }

@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-30 21:15:25.427002",
+    "@@last_modified": "2026-08-31 10:32:16.781856",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10741,5 +10741,7 @@
     "callTranscriptByTime": "por {time}",
     "callTranscriptApproximateTimes": "Uma vez marcada \"por\" uma hora foi dita nessa hora ou antes. Essas vezes são mostradas nesse momento, por isso podem ter sido ditas mais cedo.",
     "callTranscriptUnstatedTimes": "Algumas vezes não mostram hora. O dispositivo que as gravou não disse quão exatas são as suas horas, por isso a sua posição nesta conversa pode estar errada.",
-    "callTranscriptOpen": "Ler a transcrição"
+    "callTranscriptOpen": "Ler a transcrição",
+    "callTranscriptNoSpeechDetected": "Nada do que foi gravado de {name} foi enviado para ser transcrito: esta aplicação não detetou voz e pode estar errada, por isso não se sabe o que foi dito.",
+    "callTranscriptUnreconciledClocks": "Estas falas foram gravadas em dois dispositivos cujos relógios não puderam ser comparados, por isso não são apresentadas horas e a ordem em que aparecem pode estar errada."
 }

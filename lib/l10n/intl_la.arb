@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-30 21:15:18.361012",
+    "@@last_modified": "2026-08-31 10:32:13.257200",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "per {time}",
     "callTranscriptApproximateTimes": "Vicissitudo notata \"per\" tempus dicta est eo tempore vel antea. Illae vicissitudines illo momento ostenduntur, itaque antea dictae esse possunt.",
     "callTranscriptUnstatedTimes": "Nonnullae vicissitudines nullum tempus ostendunt. Apparatus qui eas notavit non dixit quam accurata essent tempora eius, itaque locus earum in hac conversatione falsus esse potest.",
-    "callTranscriptOpen": "Legere transcriptum"
+    "callTranscriptOpen": "Legere transcriptum",
+    "callTranscriptNoSpeechDetected": "Nihil ex {name} relatum ad transcribendum missum est: haec applicatio nullam vocem in eo invenit et de hoc errare potest, ergo quid dictum sit nescitur.",
+    "callTranscriptUnreconciledClocks": "Hae vices in duobus machinis quarum horologia comparari non poterant relatae sunt, ergo nulla tempora monstrantur et ordo quo apparent falsus esse potest."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-30 21:15:23.725441",
+    "@@last_modified": "2026-08-31 10:32:15.702028",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "innen {time}",
     "callTranscriptApproximateTimes": "En replikk merket \"innen\" et tidspunkt ble sagt på eller før det. Disse replikkene vises på det tidspunktet, så de kan ha blitt sagt tidligere.",
     "callTranscriptUnstatedTimes": "Noen replikker viser ingen tid. Enheten som spilte dem inn, sa ikke hvor nøyaktige tidspunktene er, så hvor de befinner seg i denne samtalen kan være feil.",
-    "callTranscriptOpen": "Les transkripsjonen"
+    "callTranscriptOpen": "Les transkripsjonen",
+    "callTranscriptNoSpeechDetected": "Ingenting innspilt fra {name} ble sendt for transkripsjon: denne appen fant ingen tale i det og kan ta feil om det, så hva som ble sagt er ukjent.",
+    "callTranscriptUnreconciledClocks": "Disse rundene ble spilt inn på to enheter hvis klokker ikke kunne sammenlignes, så ingen tider vises og rekkefølgen de vises i kan være feil."
 }

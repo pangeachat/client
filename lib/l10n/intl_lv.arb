@@ -3536,7 +3536,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-30 21:15:19.462349",
+    "@@last_modified": "2026-08-31 10:32:14.018463",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9824,5 +9824,7 @@
     "callTranscriptByTime": "līdz {time}",
     "callTranscriptApproximateTimes": "Replika, kas atzīmēta ar \"līdz\" noteiktam laikam, tika teikta tajā laikā vai pirms tā. Šīs replikas tiek rādītas tajā brīdī, tāpēc tās varētu būt teiktas agrāk.",
     "callTranscriptUnstatedTimes": "Dažām replikām nav norādīts laiks. Ierīce, kas tās ierakstīja, nenorādīja, cik precīzi ir tās laiki, tāpēc to vieta šajā sarunā var būt nepareiza.",
-    "callTranscriptOpen": "Lasīt atšifrējumu"
+    "callTranscriptOpen": "Lasīt atšifrējumu",
+    "callTranscriptNoSpeechDetected": "Nekas no {name} ierakstītā netika nosūtīts transkribēšanai: šī lietotne tajā neatrada runu un var kļūdīties, tāpēc nav zināms, kas tika teikts.",
+    "callTranscriptUnreconciledClocks": "Šie gājieni tika ierakstīti divās ierīcēs, kuru pulksteņus nevarēja salīdzināt, tāpēc laiki netiek rādīti un to parādīšanās secība var būt nepareiza."
 }

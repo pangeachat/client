@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-30 21:15:34.566256",
+    "@@last_modified": "2026-08-31 10:32:21.823976",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "nge-{time}",
     "callTranscriptApproximateTimes": "Ujiko oluphawulwe \"nge\" ixesha lwathethwa ngalo okanye ngaphambi kwalo. Ezo jiko ziboniswa ngalo mzuzu, ngoko ke zisenokuba zathethwa ngaphambili.",
     "callTranscriptUnstatedTimes": "Ezinye iijiko azibonisi xesha. Isixhobo esazirekhodayo asizange sitsho ukuba amaxesha aso achane kangakanani, ngoko ke indawo ezikuyo kule ncoko isenokuba ayichanekanga.",
-    "callTranscriptOpen": "Funda ulwazi"
+    "callTranscriptOpen": "Funda ulwazi",
+    "callTranscriptNoSpeechDetected": "Akukho nto irekhodwe ku-{name} ethunyelwe ukuba ikotshwe: le app ayifumananga ntetho kuyo kwaye inokuba iphosakele ngaloo nto, ngoko ke into ethethweyo ayaziwa.",
+    "callTranscriptUnreconciledClocks": "Ezi zithuba zarekhodwa kwizixhobo ezibini ezingenakuthelekiswa iiwotshi zazo, ngoko ke akukho maxesha abonisiweyo kwaye umyalelo evela ngawo unokuba uphosakele."
 }

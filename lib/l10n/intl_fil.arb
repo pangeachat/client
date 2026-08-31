@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-30 21:15:09.844382",
+    "@@last_modified": "2026-08-31 10:32:08.141161",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10684,5 +10684,7 @@
     "callTranscriptByTime": "sa {time}",
     "callTranscriptApproximateTimes": "Ang isang pagliko na minarkahang \"sa\" isang oras ay sinabi sa o bago nito. Ang mga pagliko na iyon ay ipinapakita sa sandaling iyon, kaya maaaring mas maaga itong nasabi.",
     "callTranscriptUnstatedTimes": "Ang ilang pagliko ay walang ipinapakitang oras. Ang device na nag-record sa mga ito ay hindi nagsabi kung gaano eksakto ang mga oras nito, kaya maaaring mali ang posisyon ng mga ito sa usapang ito.",
-    "callTranscriptOpen": "Basahin ang transcript"
+    "callTranscriptOpen": "Basahin ang transcript",
+    "callTranscriptNoSpeechDetected": "Walang naitala mula kay {name} na ipinadala para i-transcribe: walang nakitang pananalita ang app na ito at maaaring mali ito tungkol doon, kaya hindi alam kung ano ang sinabi.",
+    "callTranscriptUnreconciledClocks": "Ang mga pagliko na ito ay naitala sa dalawang device na hindi maihambing ang mga orasan, kaya walang ipinapakitang oras at maaaring mali ang pagkakasunod-sunod ng mga ito."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-30 21:15:30.332523",
+    "@@last_modified": "2026-08-31 10:32:19.623557",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "ka {time}",
     "callTranscriptApproximateTimes": "Nako e tshwailweng ka \"ka\" nako e itseng e boletsweng ka nako eo kapa pele ho yona. Dinako tseo di bontshitswe ka nako eo, kahoo di ka be di boletsweng pejana.",
     "callTranscriptUnstatedTimes": "Dinako tse ding ha di bontshe nako. Sesebediswa se di rekotileng ha se a ka sa bolela hore dinako tsa sona di nepahetse hakae, kahoo moo di leng teng moqoqong ona ho ka be ho fosahetse.",
-    "callTranscriptOpen": "Bala lengolo"
+    "callTranscriptOpen": "Bala lengolo",
+    "callTranscriptNoSpeechDetected": "Ha ho letho le tlalehiloeng ho {name} le ileng la romeloa hore le ngoloe: sesebelisoa sena ha sea fumana puo ho sona 'me se ka fosa ka seo, kahoo se ileng sa buuoa ha se tsejoe.",
+    "callTranscriptUnreconciledClocks": "Liphetoho tsena li tlalehiloe lisebelisoa tse peli tseo lioache tsa tsona li sa kang tsa bapisoa, kahoo ha ho linako tse bontšitsoeng 'me tatellano eo li hlahang ka eona e ka fosa."
 }

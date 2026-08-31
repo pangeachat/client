@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-30 21:15:14.641313",
+    "@@last_modified": "2026-08-31 10:32:11.249259",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10593,5 +10593,7 @@
     "callTranscriptByTime": "{time}まで",
     "callTranscriptApproximateTimes": "「by」と表示された時間は、その時点またはそれ以前に発言されたことを示します。それらの発言はその瞬間に表示されますが、実際にはもっと早く発言された可能性があります。",
     "callTranscriptUnstatedTimes": "一部の発言には時間が表示されていません。それらを記録したデバイスは時間の正確性を示さなかったため、会話中の位置が間違っている可能性があります。",
-    "callTranscriptOpen": "通話記録を読む"
+    "callTranscriptOpen": "通話記録を読む",
+    "callTranscriptNoSpeechDetected": "{name}からの録音は書き起こしのために送信されませんでした。このアプリは音声が検出されなかったと判断しましたが、これは誤りである可能性があり、何が話されたかは不明です。",
+    "callTranscriptUnreconciledClocks": "これらの発話は、時計を比較できなかった2つのデバイスで記録されたため、時間は表示されず、表示される順序が間違っている可能性があります。"
 }

@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-30 21:15:07.794403",
+    "@@last_modified": "2026-08-31 10:32:06.666451",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10744,5 +10744,7 @@
     "callTranscriptByTime": "kl. {time}",
     "callTranscriptApproximateTimes": "En tur markeret \"kl.\" et tidspunkt blev sagt på eller før det. Disse ture vises på det tidspunkt, så de kan være blevet sagt tidligere.",
     "callTranscriptUnstatedTimes": "Nogle ture viser ingen tid. Enheden, der optog dem, sagde ikke, hvor nøjagtige dens tider er, så hvor de sidder i denne samtale, kan være forkert.",
-    "callTranscriptOpen": "Læs transskriptionen"
+    "callTranscriptOpen": "Læs transskriptionen",
+    "callTranscriptNoSpeechDetected": "Intet optaget fra {name} blev sendt til transskription: denne app fandt ingen tale i det og kan tage fejl, så det vides ikke, hvad der blev sagt.",
+    "callTranscriptUnreconciledClocks": "Disse ture blev optaget på to enheder, hvis ure ikke kunne sammenlignes, så der vises ingen tider, og rækkefølgen, de vises i, kan være forkert."
 }

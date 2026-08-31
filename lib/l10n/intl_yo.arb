@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-30 21:15:34.747426",
+    "@@last_modified": "2026-08-31 10:32:21.616365",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "nípasẹ̀ {time}",
     "callTranscriptApproximateTimes": "Ìgbésẹ̀ tí a fi àmì \"nípasẹ̀\" àkókò sí ni a sọ ní tàbí ṣáájú rẹ̀. Àwọn ìgbésẹ̀ wọ̀nyẹn ni a fi hàn ní àkókò náà, nítorí náà, ó lè ti jẹ́ pé a sọ wọ́n tẹ́lẹ̀.",
     "callTranscriptUnstatedTimes": "Àwọn ìgbésẹ̀ kan kò fi àkókò hàn. Ẹrọ tí ó gba wọ́n sílẹ̀ kò sọ bí àkókò rẹ̀ ṣe péye tó, nítorí náà, ibi tí wọ́n wà nínú ìjíròrò yìí lè jẹ́ àṣìṣe.",
-    "callTranscriptOpen": "Ka àkọsílẹ̀ náà"
+    "callTranscriptOpen": "Ka àkọsílẹ̀ náà",
+    "callTranscriptNoSpeechDetected": "Ko si ohun ti a gba silẹ lati ọdọ {name} ti a fi ranṣẹ lati kọ silẹ: ohun elo yii ko rii ọrọ ninu rẹ ati pe o le jẹ aṣiṣe nipa iyẹn, nitorinaa ohun ti a sọ ko mọ.",
+    "callTranscriptUnreconciledClocks": "Awọn iyipada wọnyi ni a gba silẹ lori awọn ẹrọ meji ti a ko le fiwera awọn aago wọn, nitorinaa ko si akoko ti o han ati pe aṣẹ ti wọn han le jẹ aṣiṣe."
 }

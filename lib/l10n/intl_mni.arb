@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-30 21:15:25.843141",
+    "@@last_modified": "2026-08-31 10:32:15.103062",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "{time} ना",
     "callTranscriptApproximateTimes": "“by” অমসুং মতम অমনা खुदोनचेनবা অমা হায়বদি অদুগী মতমদা নত্ত্রগা অদুগী মমাংদা হায়খিবনি। অদুগী মতমদা অদু ওইরি, মরম অদুনা মখোই মমাংদা হায়খিবসু য়াওবা য়াই।",
     "callTranscriptUnstatedTimes": "खरा মতম উৎতে। মখোই রেকোর্ড তৌবা দিভাইসনা অদুগী মতম কয়া চুনবা হায়খিদ্রে, মরম অদুনা ৱারীসীন অসিদা মখোই কদাইদা লৈবগে হায়বদু লানবা য়াই।",
-    "callTranscriptOpen": "ট্রান্সক্রিপ্ট পাউ"
+    "callTranscriptOpen": "ট্রান্সক্রিপ্ট পাউ",
+    "callTranscriptNoSpeechDetected": "{name} tagi record touba khara transcript touba ngamkhide: asi app asina aduda speech amata phangkhide aduga adu lalli haibasu yai, aduna kari hairamge haibadu khangdre.",
+    "callTranscriptUnreconciledClocks": "Turn sing asi device ani da record toubani aduga adugi clock singdu compare touba ngamkhide, aduna matam amata uttre aduga adugi order su lalle haibasu yai."
 }

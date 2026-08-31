@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-30 21:15:36.188100",
+    "@@last_modified": "2026-08-31 10:32:22.316139",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "ngo-{time}",
     "callTranscriptApproximateTimes": "Ukuphendula okumakwe \"ngo\" isikhathi kwashiwo ngaso noma ngaphambi kwaso. Lokho kuphendula kukhonjiswa ngaleso sikhathi, ngakho-ke kungenzeka kwashiwo ngaphambili.",
     "callTranscriptUnstatedTimes": "Okunye ukuphendula akukhombisi isikhathi. Idivayisi eyakuqopha ayizange isho ukuthi izikhathi zayo ziqondile kangakanani, ngakho-ke lapho zihlala khona kule ngxoxo kungase kube iphutha.",
-    "callTranscriptOpen": "Funda umbhalo"
+    "callTranscriptOpen": "Funda umbhalo",
+    "callTranscriptNoSpeechDetected": "Akukho okurekhodiwe okuvela ku-{name} okuthunyelwe ukuze kubhalwe: lolu hlelo lokusebenza alutholanga nkulumo kulo futhi lungase lube nephutha ngalokho, ngakho-ke lokho okwashiwo akwaziwa.",
+    "callTranscriptUnreconciledClocks": "Lokhu kushintshana kurekhodwe kumadivayisi amabili amawashi awo angakwazanga ukuqhathaniswa, ngakho-ke azikho izikhathi ezibonisiwe futhi ukuhleleka kwawo kungase kube nephutha."
 }

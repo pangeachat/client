@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-30 21:15:12.759103",
+    "@@last_modified": "2026-08-31 10:32:09.346310",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "ma ka hola {time}",
     "callTranscriptApproximateTimes": "Ua ʻōlelo ʻia kahi huli i kaha ʻia \"ma ka hola\" i ka manawa a i ʻole ma mua. Hōʻike ʻia kēlā mau huli i kēlā manawa, no laila ua ʻōlelo ʻia paha ma mua.",
     "callTranscriptUnstatedTimes": "ʻAʻole hōʻike kekahi mau huli i ka manawa. ʻAʻole i ʻōlelo ka mea i hoʻopaʻa i ia mau mea i ka pololei o kona mau manawa, no laila ua hewa paha kahi i noho ai lākou i kēia kamaʻilio.",
-    "callTranscriptOpen": "E heluhelu i ka palapala"
+    "callTranscriptOpen": "E heluhelu i ka palapala",
+    "callTranscriptNoSpeechDetected": "ʻAʻohe mea i hoʻopaʻa ʻia mai {name} i hoʻouna ʻia no ka unuhi ʻana: ʻaʻohe ʻōlelo i loaʻa i kēia polokalamu ma loko a hiki ke hewa, no laila ʻaʻole ʻike ʻia ka mea i ʻōlelo ʻia.",
+    "callTranscriptUnreconciledClocks": "Ua hoʻopaʻa ʻia kēia mau huli ma nā mea hana ʻelua ʻaʻole hiki ke hoʻohālikelike ʻia nā uaki, no laila ʻaʻohe manawa i hōʻike ʻia a hewa paha ke kaʻina o ko lākou puka ʻana."
 }

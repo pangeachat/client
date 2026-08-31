@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-30 21:15:13.612333",
+    "@@last_modified": "2026-08-31 10:32:09.778771",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "los ntawm {time}",
     "callTranscriptApproximateTimes": "Ib ntu cim \"los ntawm\" ib lub sij hawm tau hais thaum lossis ua ntej ntawd. Cov ntu ntawd tau qhia rau lub sij hawm ntawd, yog li ntawd lawv tej zaum tau hais ua ntej.",
     "callTranscriptUnstatedTimes": "Qee cov ntu tsis qhia lub sij hawm. Lub cuab yeej uas sau lawv tsis tau hais tias nws lub sij hawm raug npaum li cas, yog li ntawd qhov chaw lawv nyob hauv kev sib tham no tej zaum yuav tsis raug.",
-    "callTranscriptOpen": "Nyeem cov lus sau"
+    "callTranscriptOpen": "Nyeem cov lus sau",
+    "callTranscriptNoSpeechDetected": "Tsis muaj dab tsi raug kaw los ntawm {name} raug xa mus sau: daim ntawv thov no tsis pom muaj lus hais hauv nws thiab tej zaum yuav tsis yog, yog li tsis paub tias tau hais dab tsi.",
+    "callTranscriptUnreconciledClocks": "Cov lus teb no tau raug kaw rau ob lub cuab yeej uas nws lub moos tsis tuaj yeem sib piv, yog li tsis muaj sijhawm qhia thiab qhov kev txiav txim uas lawv tshwm sim tej zaum yuav tsis yog."
 }

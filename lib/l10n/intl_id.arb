@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-30 21:15:13.716866",
+    "@@last_modified": "2026-08-31 10:32:12.282230",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9897,5 +9897,7 @@
     "callTranscriptByTime": "pada {time}",
     "callTranscriptApproximateTimes": "Giliran yang ditandai \"pada\" waktu diucapkan pada atau sebelum itu. Giliran tersebut ditampilkan pada saat itu, jadi mungkin telah diucapkan lebih awal.",
     "callTranscriptUnstatedTimes": "Beberapa giliran tidak menunjukkan waktu. Perangkat yang merekamnya tidak mengatakan seberapa tepat waktunya, jadi posisi mereka dalam percakapan ini mungkin salah.",
-    "callTranscriptOpen": "Baca transkripnya"
+    "callTranscriptOpen": "Baca transkripnya",
+    "callTranscriptNoSpeechDetected": "Tidak ada yang direkam dari {name} yang dikirim untuk ditranskripsikan: aplikasi ini tidak menemukan ucapan di dalamnya dan mungkin salah, jadi apa yang dikatakan tidak diketahui.",
+    "callTranscriptUnreconciledClocks": "Giliran ini direkam di dua perangkat yang jamnya tidak dapat dibandingkan, jadi tidak ada waktu yang ditampilkan dan urutan kemunculannya mungkin salah."
 }

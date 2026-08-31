@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-30 21:15:15.176035",
+    "@@last_modified": "2026-08-31 10:32:11.339917",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10456,5 +10456,7 @@
     "callTranscriptByTime": "faoi {time}",
     "callTranscriptApproximateTimes": "Dúradh casadh a raibh \"faoi\" am marcáilte air ag an am sin nó roimhe. Taispeántar na casadh sin ag an nóiméad sin, mar sin b'fhéidir gur dúradh iad níos luaithe.",
     "callTranscriptUnstatedTimes": "Ní thaispeánann roinnt casadh aon am. Níor dúirt an gléas a thaifead iad cé chomh cruinn is atá a chuid ama, mar sin d'fhéadfadh go mbeadh a suíomh sa chomhrá seo mícheart.",
-    "callTranscriptOpen": "Léigh an tras-scríbhinn"
+    "callTranscriptOpen": "Léigh an tras-scríbhinn",
+    "callTranscriptNoSpeechDetected": "Níor seoladh aon rud a taifeadadh ó {name} le tras-scríobh: ní bhfuair an aip seo aon chaint ann agus d'fhéadfadh sé a bheith mícheart faoi sin, mar sin níl a fhios cad a dúradh.",
+    "callTranscriptUnreconciledClocks": "Taifeadadh na sealanna seo ar dhá ghléas nach bhféadfaí a gcuid cloig a chur i gcomparáid, mar sin ní thaispeántar aon amanna agus d'fhéadfadh an t-ord ina bhfuil siad a bheith mícheart."
 }

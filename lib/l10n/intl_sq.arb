@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-30 21:15:28.470495",
+    "@@last_modified": "2026-08-31 10:32:18.492566",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "nga {time}",
     "callTranscriptApproximateTimes": "Një kthesë e shënuar \"nga\" një kohë u tha në ose para saj. Ato kthesa shfaqen në atë moment, kështu që mund të jenë thënë më herët.",
     "callTranscriptUnstatedTimes": "Disa kthesa nuk tregojnë kohë. Pajisja që i regjistroi nuk tha sa të sakta janë kohët e saj, kështu që vendi ku ato ndodhen në këtë bisedë mund të jetë i gabuar.",
-    "callTranscriptOpen": "Lexo transkriptin"
+    "callTranscriptOpen": "Lexo transkriptin",
+    "callTranscriptNoSpeechDetected": "Asgjë e regjistruar nga {name} nuk u dërgua për transkriptim: ky aplikacion nuk gjeti asnjë fjalë në të dhe mund të gabojë për këtë, kështu që nuk dihet se çfarë u tha.",
+    "callTranscriptUnreconciledClocks": "Këto kthesa u regjistruan në dy pajisje, orët e të cilave nuk mund të krahasoheshin, kështu që nuk shfaqen kohë dhe rendi në të cilin shfaqen mund të jetë i gabuar."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-30 21:15:22.331355",
+    "@@last_modified": "2026-08-31 10:32:15.224254",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9881,5 +9881,7 @@
     "callTranscriptByTime": "innen {time}",
     "callTranscriptApproximateTimes": "En replikk merket «innen» et tidspunkt ble sagt på eller før det. Disse replikkene vises på det tidspunktet, så de kan ha blitt sagt tidligere.",
     "callTranscriptUnstatedTimes": "Noen replikker viser ingen tid. Enheten som spilte dem inn, sa ikke hvor nøyaktige tidspunktene er, så hvor de sitter i denne samtalen kan være feil.",
-    "callTranscriptOpen": "Les utskriften"
+    "callTranscriptOpen": "Les utskriften",
+    "callTranscriptNoSpeechDetected": "Ingenting som ble tatt opp fra {name} ble sendt for transkripsjon: denne appen fant ingen tale i det og kan ta feil om det, så det som ble sagt er ikke kjent.",
+    "callTranscriptUnreconciledClocks": "Disse turene ble tatt opp på to enheter hvis klokker ikke kunne sammenlignes, så ingen tider vises og rekkefølgen de vises i kan være feil."
 }

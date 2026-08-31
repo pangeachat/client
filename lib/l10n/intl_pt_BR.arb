@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-30 21:15:25.433338",
+    "@@last_modified": "2026-08-31 10:32:17.011431",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9824,5 +9824,7 @@
     "callTranscriptByTime": "por {time}",
     "callTranscriptApproximateTimes": "Uma fala marcada \"por\" um horário foi dita naquele horário ou antes. Essas falas são mostradas naquele momento, então podem ter sido ditas antes.",
     "callTranscriptUnstatedTimes": "Algumas falas não mostram horário. O dispositivo que as gravou não informou a precisão de seus horários, então a posição delas nesta conversa pode estar errada.",
-    "callTranscriptOpen": "Ler a transcrição"
+    "callTranscriptOpen": "Ler a transcrição",
+    "callTranscriptNoSpeechDetected": "Nada gravado de {name} foi enviado para transcrição: este aplicativo não encontrou fala e pode estar errado, então o que foi dito não é conhecido.",
+    "callTranscriptUnreconciledClocks": "Essas falas foram gravadas em dois dispositivos cujos relógios não puderam ser comparados, então nenhum horário é exibido e a ordem em que aparecem pode estar errada."
 }

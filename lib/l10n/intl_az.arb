@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-30 21:15:04.878536",
+    "@@last_modified": "2026-08-31 10:32:05.918682",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "{time} tərəfindən",
     "callTranscriptApproximateTimes": "Vaxtla \"tərəfindən\" işarələnmiş bir növbə o vaxtda və ya ondan əvvəl deyilmişdir. Bu növbələr o anda göstərilir, buna görə də daha əvvəl deyilmiş ola bilər.",
     "callTranscriptUnstatedTimes": "Bəzi növbələrdə vaxt göstərilmir. Onları qeyd edən cihaz vaxtlarının nə qədər dəqiq olduğunu bildirmədi, buna görə də bu söhbətdəki yerləri səhv ola bilər.",
-    "callTranscriptOpen": "Transkripti oxuyun"
+    "callTranscriptOpen": "Transkripti oxuyun",
+    "callTranscriptNoSpeechDetected": "{name} tərəfindən yazılan heç bir şey transkripsiya üçün göndərilmədi: bu proqramda heç bir nitq tapılmadı və bu səhv ola bilər, buna görə də nə deyiləcəyi bilinmir.",
+    "callTranscriptUnreconciledClocks": "Bu növbələr saatları müqayisə edilə bilməyən iki cihazda qeydə alınıb, buna görə də heç bir vaxt göstərilmir və onların görünmə ardıcıllığı səhv ola bilər."
 }

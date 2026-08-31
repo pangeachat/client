@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-30 21:15:21.760326",
+    "@@last_modified": "2026-08-31 10:32:14.456348",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "i te {time}",
     "callTranscriptApproximateTimes": "Ko te hurihanga i tohua \"i te\" wā i kōrerohia i taua wā, i mua rānei i taua wā. Ka whakaaturia aua hurihanga i taua wā, nō reira tērā pea i kōrerohia i mua ake.",
     "callTranscriptUnstatedTimes": "Kāore ētahi hurihanga e whakaatu wā. Kāore te pūrere i tuhi i aua hurihanga i kī he pēhea te tika o ōna wā, nō reira tērā pea he hē te wāhi o aua hurihanga i roto i tēnei kōrerorero.",
-    "callTranscriptOpen": "Pānuitia te tuhinga"
+    "callTranscriptOpen": "Pānuitia te tuhinga",
+    "callTranscriptNoSpeechDetected": "Kāore he mea i hopukina mai i a {name} i tukuna kia tuhia: kāore tēnei taupānga i kite i tētahi kōrero i roto, ā, tērā pea he hē tēnā, nō reira kāore i te mōhiotia he aha ngā kōrero i kōrerotia.",
+    "callTranscriptUnreconciledClocks": "I hopukina ēnei hurihanga i runga i ngā pūrere e rua kāore i taea te whakataurite i ō rāua karaka, nō reira kāore he wā e whakaatuhia ana, ā, tērā pea he hē te raupapa e puta ai."
 }

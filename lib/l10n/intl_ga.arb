@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-30 21:15:11.475926",
+    "@@last_modified": "2026-08-31 10:32:09.040673",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9835,5 +9835,7 @@
     "callTranscriptByTime": "faoi {time}",
     "callTranscriptApproximateTimes": "Dúradh cas a bhfuil \"faoi\" am marcáilte air ag an am sin nó roimhe. Taispeántar na casanna sin ag an nóiméad sin, mar sin seans gur dúradh níos luaithe iad.",
     "callTranscriptUnstatedTimes": "Ní thaispeánann roinnt casanna aon am. Níor dúirt an gléas a thaifead iad cé chomh cruinn is atá a chuid amanna, mar sin d'fhéadfadh an áit a bhfuil siad sa chomhrá seo a bheith mícheart.",
-    "callTranscriptOpen": "Léigh an tras-scríbhinn"
+    "callTranscriptOpen": "Léigh an tras-scríbhinn",
+    "callTranscriptNoSpeechDetected": "Níor seoladh aon rud a taifeadadh ó {name} lena thras-scríobh: níor aimsigh an aip seo aon chaint ann agus d'fhéadfadh sé a bheith mícheart faoi sin, mar sin ní fios cad a dúradh.",
+    "callTranscriptUnreconciledClocks": "Taifeadadh na sealanna seo ar dhá ghléas nach bhféadfaí a gcuid cloig a chur i gcomparáid, mar sin ní thaispeántar aon amanna agus d'fhéadfadh an t-ord ina bhfuil siad le feiceáil a bheith mícheart."
 }

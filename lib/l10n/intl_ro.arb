@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-30 21:15:26.591067",
+    "@@last_modified": "2026-08-31 10:32:17.178864",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10556,5 +10556,7 @@
     "callTranscriptByTime": "până la {time}",
     "callTranscriptApproximateTimes": "O replică marcată „până la” o anumită oră a fost spusă la sau înainte de aceasta. Aceste replici sunt afișate în acel moment, deci ar fi putut fi spuse mai devreme.",
     "callTranscriptUnstatedTimes": "Unele replici nu afișează ora. Dispozitivul care le-a înregistrat nu a specificat cât de exacte sunt orele sale, așa că poziția lor în această conversație ar putea fi greșită.",
-    "callTranscriptOpen": "Citește transcrierea"
+    "callTranscriptOpen": "Citește transcrierea",
+    "callTranscriptNoSpeechDetected": "Nimic înregistrat de la {name} nu a fost trimis pentru transcriere: această aplicație nu a găsit niciun discurs în el și se poate înșela în privința asta, așa că ceea ce a fost spus nu este cunoscut.",
+    "callTranscriptUnreconciledClocks": "Aceste replici au fost înregistrate pe două dispozitive ale căror ceasuri nu au putut fi comparate, așa că nu sunt afișate ore și ordinea în care apar poate fi greșită."
 }

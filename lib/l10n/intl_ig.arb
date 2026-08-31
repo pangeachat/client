@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-30 21:15:15.426208",
+    "@@last_modified": "2026-08-31 10:32:11.371312",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "site na {time}",
     "callTranscriptApproximateTimes": "Oge akara \"site na\" oge ka ekwuru n'oge ahụ ma ọ bụ tupu ya. Egosiri oge ndị ahụ n'oge ahụ, ya mere, enwere ike ikwu ha na mbụ.",
     "callTranscriptUnstatedTimes": "Ụfọdụ oge anaghị egosi oge. Ngwaọrụ dekọrọ ha ekwughị otú oge ya si dị kpọmkwem, ya mere, ebe ha nọ na mkparịta ụka a nwere ike ịdị njọ.",
-    "callTranscriptOpen": "Gụọ adekọ ahụ"
+    "callTranscriptOpen": "Gụọ adekọ ahụ",
+    "callTranscriptNoSpeechDetected": "Enweghị ihe edekọrọ site na {name} ezigara ka edegharịa ya: ngwa a ahụghị okwu ọ bụla n'ime ya ma nwee ike ịmejọ maka nke ahụ, yabụ amaghị ihe ekwuru.",
+    "callTranscriptUnreconciledClocks": "Edekọrọ ntụgharị ndị a na ngwaọrụ abụọ nke elekere ha enweghị ike iji tụnyere, yabụ egosighi oge ọ bụla na usoro ha pụtara nwere ike ịdị njọ."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-30 21:15:11.395400",
+    "@@last_modified": "2026-08-31 10:32:09.694777",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "ro {time}",
     "callTranscriptApproximateTimes": "Chaidh tionndadh a tha air a chomharrachadh \"ro\" àm a ràdh aig an àm sin no roimhe. Tha na tionndaidhean sin air an sealltainn aig an àm sin, is mar sin dh'fhaodadh gun deach an ràdh na bu tràithe.",
     "callTranscriptUnstatedTimes": "Chan eil àm air a shealltainn air cuid de thionndaidhean. Cha tuirt an uidheam a chlàraich iad dè cho mionaideach 's a tha na h-uairean aige, is mar sin dh'fhaodadh far a bheil iad sa chòmhradh seo a bhith ceàrr.",
-    "callTranscriptOpen": "Leugh an tar-sgrìobhadh"
+    "callTranscriptOpen": "Leugh an tar-sgrìobhadh",
+    "callTranscriptNoSpeechDetected": "Cha deach dad a chaidh a chlàradh bho {name} a chur a-steach airson a thar-sgrìobhadh: cha do lorg an aplacaid seo cainnt sam bith ann agus faodaidh e a bhith ceàrr mu dheidhinn sin, mar sin chan eil fios dè chaidh a ràdh.",
+    "callTranscriptUnreconciledClocks": "Chaidh na tionndaidhean sin a chlàradh air dà inneal nach b' urrainn na clocaichean aca a choimeas, mar sin chan eil amannan air an sealltainn agus dh'fhaodadh an òrdugh anns a bheil iad a' nochdadh a bhith ceàrr."
 }

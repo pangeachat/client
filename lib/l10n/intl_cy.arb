@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-30 21:15:07.810458",
+    "@@last_modified": "2026-08-31 10:32:07.595427",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "erbyn {time}",
     "callTranscriptApproximateTimes": "Dywedwyd tro a nodwyd \"erbyn\" amser ar neu cyn hynny. Dangosir y troeon hynny ar y foment honno, felly efallai eu bod wedi'u dweud yn gynharach.",
     "callTranscriptUnstatedTimes": "Nid yw rhai troeon yn dangos amser. Ni ddywedodd y ddyfais a'u recordiodd pa mor union yw ei hamseroedd, felly efallai bod eu lle yn y sgwrs hon yn anghywir.",
-    "callTranscriptOpen": "Darllenwch y trawsgrifiad"
+    "callTranscriptOpen": "Darllenwch y trawsgrifiad",
+    "callTranscriptNoSpeechDetected": "Ni anfonwyd unrhyw beth a recordiwyd gan {name} i'w drawsgrifio: ni ddarganfu'r ap hwn unrhyw leferydd ynddo a gall fod yn anghywir am hynny, felly nid yw'n hysbys beth a ddywedwyd.",
+    "callTranscriptUnreconciledClocks": "Recordiwyd y troeon hyn ar ddau ddyfais na ellid cymharu eu clociau, felly ni ddangosir unrhyw amseroedd ac efallai y bydd y drefn y maent yn ymddangos ynddi yn anghywir."
 }

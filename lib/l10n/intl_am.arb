@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-30 21:15:05.762864",
+    "@@last_modified": "2026-08-31 10:32:05.911023",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "በ{time}",
     "callTranscriptApproximateTimes": "በሰዓት ምልክት የተደረገበት ተራ በዚያ ሰዓት ወይም ከዚያ በፊት የተነገረ ነው። እነዚያ ተራዎች በዚያ ቅጽበት ይታያሉ፣ ስለዚህ ቀደም ብለው ተነግረው ሊሆን ይችላል።",
     "callTranscriptUnstatedTimes": "አንዳንድ ተራዎች ጊዜ አያሳዩም። እነሱን የቀረጸው መሳሪያ ሰዓቶቹ ምን ያህል ትክክል እንደሆኑ አልገለጸም፣ ስለዚህ በዚህ ውይይት ውስጥ የት እንደሚቀመጡ የተሳሳተ ሊሆን ይችላል።",
-    "callTranscriptOpen": "ግልባጩን ያንብቡ"
+    "callTranscriptOpen": "ግልባጩን ያንብቡ",
+    "callTranscriptNoSpeechDetected": "ከ{name} የተቀዳው ምንም ነገር እንዲገለበጥ አልተላከም፦ ይህ መተግበሪያ ምንም ንግግር አላገኘም እናም በዚህ ጉዳይ ላይ ስህተት ሊሆን ይችላል፣ ስለዚህ የተነገረው አይታወቅም።",
+    "callTranscriptUnreconciledClocks": "እነዚህ ንግግሮች የተቀዱት ሰዓታቸው ሊነፃፀር በማይችሉ ሁለት መሳሪያዎች ላይ ነው፣ ስለዚህ ምንም ሰዓቶች አይታዩም እና የሚታዩበት ቅደም ተከተል የተሳሳተ ሊሆን ይችላል።"
 }

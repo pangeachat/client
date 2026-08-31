@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-30 21:15:25.160150",
+    "@@last_modified": "2026-08-31 10:32:16.101129",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9909,5 +9909,7 @@
     "callTranscriptByTime": "o {time}",
     "callTranscriptApproximateTimes": "Wypowiedź oznaczona „o” danej godzinie została wypowiedziana o tej godzinie lub wcześniej. Te wypowiedzi są wyświetlane w tym momencie, więc mogły zostać wypowiedziane wcześniej.",
     "callTranscriptUnstatedTimes": "Niektóre wypowiedzi nie mają podanego czasu. Urządzenie, które je nagrało, nie podało, jak dokładne są te czasy, więc ich umiejscowienie w tej rozmowie może być błędne.",
-    "callTranscriptOpen": "Przeczytaj transkrypcję"
+    "callTranscriptOpen": "Przeczytaj transkrypcję",
+    "callTranscriptNoSpeechDetected": "Nic nagranego od {name} nie zostało wysłane do transkrypcji: ta aplikacja nie wykryła w nim mowy i może się mylić, więc to, co zostało powiedziane, nie jest znane.",
+    "callTranscriptUnreconciledClocks": "Te wypowiedzi zostały nagrane na dwóch urządzeniach, których zegarów nie można było porównać, więc nie wyświetlono czasów, a kolejność, w jakiej się pojawiają, może być błędna."
 }

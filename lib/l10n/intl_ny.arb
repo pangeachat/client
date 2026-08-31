@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-30 21:15:24.923900",
+    "@@last_modified": "2026-08-31 10:32:16.837899",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "ndi {time}",
     "callTranscriptApproximateTimes": "Kutembenuka komwe kudalembedwa kuti \"ndi\" nthawi kunanenedwa panthawiyo kapena isanachitike. Kutembenuka kumeneko kumawonetsedwa panthawiyo, kotero kuti kukananenedwa kale.",
     "callTranscriptUnstatedTimes": "Kutembenuka kwina sikukuwonetsa nthawi. Chipangizo chomwe chidazilemba sichinanene kuti nthawi zake ndi zolondola bwanji, kotero kuti malo ake pakukambirana uku akhoza kukhala olakwika.",
-    "callTranscriptOpen": "Werengani zolembedwazo"
+    "callTranscriptOpen": "Werengani zolembedwazo",
+    "callTranscriptNoSpeechDetected": "Palibe chomwe chinalembedwa kuchokera kwa {name} chomwe chinatumizidwa kuti chimasuliridwe: pulogalamuyi sinapeze mawu aliwonse mmenemo ndipo ikhoza kulakwitsa pa izi, kotero zomwe zinanenedwa sizikudziwika.",
+    "callTranscriptUnreconciledClocks": "Zokambiranazi zinalembedwa pazida ziwiri zomwe nthawi zake sizingafanizidwe, kotero palibe nthawi zomwe zikuwonetsedwa ndipo dongosolo lomwe zikuwonekera likhoza kukhala lolakwika."
 }

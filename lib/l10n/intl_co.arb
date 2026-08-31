@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-30 21:15:07.800804",
+    "@@last_modified": "2026-08-31 10:32:06.632906",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "da {time}",
     "callTranscriptApproximateTimes": "Un turnu marcatu \"da\" un tempu hè statu dettu à o prima. Quelli turni sò mustrati à quellu mumentu, cusì puderianu esse stati detti prima.",
     "callTranscriptUnstatedTimes": "Certi turni ùn mostranu micca tempu. U dispusitivu chì l'hà arregistratu ùn hà micca dettu quantu sò esatti i so tempi, cusì induve si trovanu in sta cunversazione pò esse sbagliatu.",
-    "callTranscriptOpen": "Leghje a trascrizzione"
+    "callTranscriptOpen": "Leghje a trascrizzione",
+    "callTranscriptNoSpeechDetected": "Nunda arregistratu da {name} hè statu mandatu per esse trascritto: sta app ùn hà trovu nisun discorsu in ellu è pò sbaglià si, dunque ciò chì hè statu dettu ùn hè micca cunnisciutu.",
+    "callTranscriptUnreconciledClocks": "Sti turni sò stati arregistrati nantu à dui apparecchi chì i so orologi ùn pudianu esse paragunati, dunque ùn sò micca mostrati i tempi è l'ordine in cui appariscenu pò esse sbagliatu."
 }

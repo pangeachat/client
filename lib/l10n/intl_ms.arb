@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-30 21:15:21.459237",
+    "@@last_modified": "2026-08-31 10:32:14.890423",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "pada {time}",
     "callTranscriptApproximateTimes": "Giliran yang ditandakan \"pada\" masa telah dikatakan pada atau sebelum itu. Giliran tersebut ditunjukkan pada masa itu, jadi ia mungkin telah dikatakan lebih awal.",
     "callTranscriptUnstatedTimes": "Beberapa giliran tidak menunjukkan masa. Peranti yang merakamnya tidak menyatakan betapa tepat masanya, jadi kedudukannya dalam perbualan ini mungkin salah.",
-    "callTranscriptOpen": "Baca transkrip"
+    "callTranscriptOpen": "Baca transkrip",
+    "callTranscriptNoSpeechDetected": "Tiada apa-apa yang dirakam daripada {name} telah dihantar untuk ditranskripsi: aplikasi ini tidak menemui sebarang ucapan di dalamnya dan mungkin salah mengenainya, jadi apa yang dikatakan tidak diketahui.",
+    "callTranscriptUnreconciledClocks": "Giliran ini telah dirakam pada dua peranti yang jamnya tidak dapat dibandingkan, jadi tiada masa ditunjukkan dan susunan ia muncul mungkin salah."
 }

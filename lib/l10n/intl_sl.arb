@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-30 21:15:27.615940",
+    "@@last_modified": "2026-08-31 10:32:17.801991",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10769,5 +10769,7 @@
     "callTranscriptByTime": "ob {time}",
     "callTranscriptApproximateTimes": "Govor, označen z »ob« določenem času, je bil izrečen takrat ali prej. Ti govori so prikazani v tistem trenutku, zato so bili morda izrečeni prej.",
     "callTranscriptUnstatedTimes": "Nekateri govori ne prikazujejo časa. Naprava, ki jih je posnela, ni navedla, kako natančni so njeni časi, zato je lahko njihova umestitev v pogovoru napačna.",
-    "callTranscriptOpen": "Preberi prepis"
+    "callTranscriptOpen": "Preberi prepis",
+    "callTranscriptNoSpeechDetected": "Nič, kar je posnel {name}, ni bilo poslano v prepis: ta aplikacija v tem ni našla govora in se lahko moti, zato ni znano, kaj je bilo rečeno.",
+    "callTranscriptUnreconciledClocks": "Ti obrati so bili posneti na dveh napravah, katerih ur ni bilo mogoče primerjati, zato ni prikazanih nobenih časov in vrstni red, v katerem se pojavijo, je lahko napačen."
 }

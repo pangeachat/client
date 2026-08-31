@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-30 21:15:07.802569",
+    "@@last_modified": "2026-08-31 10:32:06.164415",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9951,5 +9951,7 @@
     "callTranscriptByTime": "a les {time}",
     "callTranscriptApproximateTimes": "Un torn marcat \"a les\" una hora es va dir en aquell moment o abans. Aquests torns es mostren en aquell moment, així que podrien haver-se dit abans.",
     "callTranscriptUnstatedTimes": "Alguns torns no mostren l'hora. El dispositiu que els va gravar no va especificar la precisió de les seves hores, així que la seva posició en aquesta conversa podria ser incorrecta.",
-    "callTranscriptOpen": "Llegeix la transcripció"
+    "callTranscriptOpen": "Llegeix la transcripció",
+    "callTranscriptNoSpeechDetected": "No s'ha enviat res del que s'ha enregistrat de {name} per transcriure: aquesta aplicació no hi ha trobat cap veu i pot estar equivocada, de manera que no se sap què s'ha dit.",
+    "callTranscriptUnreconciledClocks": "Aquests torns es van enregistrar en dos dispositius els rellotges dels quals no es van poder comparar, de manera que no es mostren les hores i l'ordre en què apareixen pot ser incorrecte."
 }

@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-30 21:15:33.189856",
+    "@@last_modified": "2026-08-31 10:32:20.690289",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10781,5 +10781,7 @@
     "callTranscriptByTime": "於 {time}",
     "callTranscriptApproximateTimes": "標示「於」某個時間嘅發言係喺嗰個時間或之前講嘅。呢啲發言會喺嗰一刻顯示，所以可能早過嗰個時間講。",
     "callTranscriptUnstatedTimes": "部分發言冇顯示時間。錄音裝置冇說明時間嘅準確性，所以佢哋喺對話中嘅位置可能唔準確。",
-    "callTranscriptOpen": "閱讀通話記錄"
+    "callTranscriptOpen": "閱讀通話記錄",
+    "callTranscriptNoSpeechDetected": "從 {name} 錄製嘅內容冇語音被傳送去轉錄：呢個應用程式喺入面搵唔到語音，可能係錯嘅，所以唔知道講咗啲乜。",
+    "callTranscriptUnreconciledClocks": "呢啲回合係喺兩部時鐘無法比較嘅裝置上錄製嘅，所以冇顯示時間，而且佢哋出現嘅順序可能係錯嘅。"
 }

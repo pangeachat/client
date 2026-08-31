@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-30 21:15:07.870258",
+    "@@last_modified": "2026-08-31 10:32:07.237804",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10769,5 +10769,7 @@
     "callTranscriptByTime": "je {time}",
     "callTranscriptApproximateTimes": "Vico markita \"je\" tempo estis dirita je aŭ antaŭ ĝi. Tiuj vicoj estas montritaj en tiu momento, do ili eble estis diritaj pli frue.",
     "callTranscriptUnstatedTimes": "Iuj vicoj montras neniun tempon. La aparato, kiu registris ilin, ne diris, kiom precizaj estas ĝiaj tempoj, do ilia loko en ĉi tiu konversacio eble estas malĝusta.",
-    "callTranscriptOpen": "Legu la transskribon"
+    "callTranscriptOpen": "Legu la transskribon",
+    "callTranscriptNoSpeechDetected": "Nenio registrita de {name} estis sendita por transskribo: ĉi tiu aplikaĵo trovis neniun paroladon en ĝi kaj povas erari pri tio, do kio estis dirita ne estas konata.",
+    "callTranscriptUnreconciledClocks": "Ĉi tiuj vicoj estis registritaj sur du aparatoj kies horloĝoj ne povis esti komparitaj, do neniuj tempoj estas montritaj kaj la ordo en kiu ili aperas povas esti malĝusta."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-30 21:15:29.412155",
+    "@@last_modified": "2026-08-31 10:32:18.582491",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "i le {time}",
     "callTranscriptApproximateTimes": "O se taimi ua faailogaina \"i le\" o se taimi na fai mai ai pe muamua atu. O na taimi e faʻaalia i lena taimi, o lea atonu na fai muamua.",
     "callTranscriptUnstatedTimes": "O nisi taimi e le o faʻaalia ai se taimi. O le masini na puʻeina e leʻi taʻuina mai le saʻo o ona taimi, o lea atonu e sese le mea o loʻo i ai i lenei talanoaga.",
-    "callTranscriptOpen": "Faitau le tusitusiga"
+    "callTranscriptOpen": "Faitau le tusitusiga",
+    "callTranscriptNoSpeechDetected": "E leai se mea na pu'eina mai ia {name} na lafoina e fa'aliliuina: e le'i maua e lenei app se tautalaga i totonu ma e mafai ona sese i lena mea, o lea e le o iloa le mea na fai mai ai.",
+    "callTranscriptUnreconciledClocks": "O nei suiga na pu'eina i masini e lua e le mafai ona fa'atusatusa a latou uati, o lea e le o fa'aalia ai ni taimi ma atonu e sese le fa'asologa o lo'o fa'aalia ai."
 }

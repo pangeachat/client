@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-30 21:15:09.765563",
+    "@@last_modified": "2026-08-31 10:32:07.840139",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9821,5 +9821,7 @@
     "callTranscriptByTime": "kell {time}",
     "callTranscriptApproximateTimes": "Ajamärgiga „kell“ tähistatud pöörded öeldi sel ajal või enne seda. Need pöörded kuvatakse sel hetkel, seega võisid need olla öeldud varem.",
     "callTranscriptUnstatedTimes": "Mõned pöörded ei näita aega. Seade, mis need salvestas, ei öelnud, kui täpsed selle ajad on, seega võib nende asukoht selles vestluses olla vale.",
-    "callTranscriptOpen": "Loe transkriptsiooni"
+    "callTranscriptOpen": "Loe transkriptsiooni",
+    "callTranscriptNoSpeechDetected": "Midagi {name} salvestatust ei saadetud transkribeerimiseks: see rakendus ei leidnud sellest kõnet ja võib selles osas eksida, seega pole teada, mis öeldi.",
+    "callTranscriptUnreconciledClocks": "Need pöörded salvestati kahes seadmes, mille kellasid ei saanud võrrelda, seega ei kuvata aegu ja nende ilmumise järjekord võib olla vale."
 }

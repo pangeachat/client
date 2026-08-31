@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-30 21:15:18.951987",
+    "@@last_modified": "2026-08-31 10:32:13.873652",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "vun {time}",
     "callTranscriptApproximateTimes": "Eng Äntwert, déi mat enger Zäit \"vun\" markéiert ass, gouf zu oder virun där Zäit gesot. Dës Äntwerte ginn zu deem Moment ugewisen, sou datt se eventuell méi fréi gesot goufen.",
     "callTranscriptUnstatedTimes": "Verschidden Äntwerte weisen keng Zäit un. Den Apparat, deen se opgeholl huet, huet net uginn, wéi genee seng Zäite sinn, sou datt hir Positioun an dësem Gespréich falsch ka sinn.",
-    "callTranscriptOpen": "Transkript liesen"
+    "callTranscriptOpen": "Transkript liesen",
+    "callTranscriptNoSpeechDetected": "Näischt, wat vum {name} opgeholl gouf, gouf fir d'Transkriptioun geschéckt: Dës App huet keng Ried dran fonnt a ka falsch leien, sou datt net gewosst ass, wat gesot gouf.",
+    "callTranscriptUnreconciledClocks": "Dës Gespréicher goufen op zwee Apparater opgeholl, deenen hir Aueren net verglach konnte ginn, sou datt keng Zäite ugewisen ginn an d'Reiefolleg, an där se erschéngen, falsch ka sinn."
 }

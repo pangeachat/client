@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-30 21:15:19.687572",
+    "@@last_modified": "2026-08-31 10:32:14.132224",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "amin'ny {time}",
     "callTranscriptApproximateTimes": "Ny fehezanteny voamarika hoe \"amin'ny\" fotoana iray dia nolazaina tamin'io fotoana io na talohan'io. Aseho amin'io fotoana io ireo fehezanteny ireo, ka mety ho nolazaina talohan'io.",
     "callTranscriptUnstatedTimes": "Misy fehezanteny sasany tsy mampiseho fotoana. Ny fitaovana nandrakitra azy ireo dia tsy nilaza ny marina momba ny fotoanany, ka mety ho diso ny toerana misy azy ireo amin'ity resaka ity.",
-    "callTranscriptOpen": "Vakio ny dika soratra"
+    "callTranscriptOpen": "Vakio ny dika soratra",
+    "callTranscriptNoSpeechDetected": "Tsy nisy feo voarakitra avy amin'i {name} nalefa hosoratana: tsy nahita feo tao anatiny ity fampiharana ity ary mety ho diso izany, ka tsy fantatra izay voalaza.",
+    "callTranscriptUnreconciledClocks": "Voarakitra tamin'ny fitaovana roa tsy azo nampitahaina ny famantaranandrony ireo fifanakalozan-kevitra ireo, ka tsy misy fotoana aseho ary mety ho diso ny filaharany."
 }

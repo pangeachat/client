@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-30 21:15:10.734310",
+    "@@last_modified": "2026-08-31 10:32:07.898612",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9824,5 +9824,7 @@
     "callTranscriptByTime": "{time}rako",
     "callTranscriptApproximateTimes": "Ordu batekin \"-rako\" markatutako txanda bat ordu horretan edo lehenago esan zen. Txanda horiek une horretan erakusten dira, beraz, lehenago esan izan zitezkeen.",
     "callTranscriptUnstatedTimes": "Txanda batzuek ez dute ordurik erakusten. Horiek grabatu zituen gailuak ez zuen esan bere orduak zein zehatzak diren, beraz, elkarrizketa honetan duten kokapena okerra izan daiteke.",
-    "callTranscriptOpen": "Irakurri transkripzioa"
+    "callTranscriptOpen": "Irakurri transkripzioa",
+    "callTranscriptNoSpeechDetected": "{name} erabiltzailearen grabazioan ez da ahotsik detektatu transkribatzeko: aplikazio honek ez du ahotsik aurkitu bertan, eta horretan oker egon daiteke; beraz, ez dakigu zer esan den.",
+    "callTranscriptUnreconciledClocks": "Txanda hauek erlojuak alderatu ezin izan diren bi gailutan grabatu dira; beraz, ez da ordurik erakusten eta agertzen diren ordena okerra izan daiteke."
 }

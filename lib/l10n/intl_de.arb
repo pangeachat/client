@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-30 21:15:07.822064",
+    "@@last_modified": "2026-08-31 10:32:07.084385",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9811,5 +9811,7 @@
     "callTranscriptByTime": "um {time}",
     "callTranscriptApproximateTimes": "Eine Äußerung, die mit „um“ einer Uhrzeit markiert ist, wurde zu oder vor dieser Zeit gesagt. Diese Äußerungen werden zu diesem Zeitpunkt angezeigt, daher könnten sie früher gesagt worden sein.",
     "callTranscriptUnstatedTimes": "Einige Äußerungen zeigen keine Uhrzeit an. Das Gerät, das sie aufgezeichnet hat, hat nicht angegeben, wie genau seine Zeiten sind, daher kann die Position in diesem Gespräch falsch sein.",
-    "callTranscriptOpen": "Transkript lesen"
+    "callTranscriptOpen": "Transkript lesen",
+    "callTranscriptNoSpeechDetected": "Nichts, was von {name} aufgenommen wurde, wurde zur Transkription gesendet: Diese App hat darin keine Sprache gefunden und kann sich irren, daher ist nicht bekannt, was gesagt wurde.",
+    "callTranscriptUnreconciledClocks": "Diese Gesprächsbeiträge wurden auf zwei Geräten aufgezeichnet, deren Uhren nicht abgeglichen werden konnten. Daher werden keine Zeiten angezeigt und die Reihenfolge, in der sie erscheinen, kann falsch sein."
 }

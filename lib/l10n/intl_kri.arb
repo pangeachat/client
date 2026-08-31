@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-30 21:15:18.343458",
+    "@@last_modified": "2026-08-31 10:32:12.994101",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "bay {time}",
     "callTranscriptApproximateTimes": "Wan tɔn we dɛn mak \"bay\" wan tɛm bin tɔk da tɛm ɔ bifo dat. Dɛn de sho dɛn tɔn dɛn da mɔmɛnt de, so dɛn go bin tɔk am bifo dat.",
     "callTranscriptUnstatedTimes": "Sɔm tɔn dɛn nɔ de sho tɛm. Di divays we bin rikɔd dɛn nɔ bin se aw i de sho di tɛm dɛn kɔrɛkt, so usay dɛn de insay dis kɔnvɛseshɔn go bi se i nɔ kɔrɛkt.",
-    "callTranscriptOpen": "Rid di transkript"
+    "callTranscriptOpen": "Rid di transkript",
+    "callTranscriptNoSpeechDetected": "Nɔtin we dɛn rɛkɔd frɔm {name} nɔ bin gɛt spich insay, so dɛn nɔ sɛn am fɔ rayt. Di ap kin mek mistek, so wi nɔ no wetin dɛn bin tɔk.",
+    "callTranscriptUnreconciledClocks": "Dɛn rɛkɔd dɛn tɔk ya pan tu divays dɛn we dɛn klɔk nɔ bin match, so nɔ tɛm nɔ de sho, ɛn di ɔda we dɛn de sho kin bi rɔŋ."
 }

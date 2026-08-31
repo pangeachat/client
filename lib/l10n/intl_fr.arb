@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-30 21:15:09.421590",
+    "@@last_modified": "2026-08-31 10:32:07.848005",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10179,5 +10179,7 @@
     "callTranscriptByTime": "par {time}",
     "callTranscriptApproximateTimes": "Un tour marqué \"par\" une heure a été dit à ou avant celle-ci. Ces tours sont affichés à ce moment-là, ils ont donc pu être dits plus tôt.",
     "callTranscriptUnstatedTimes": "Certains tours n'indiquent pas d'heure. L'appareil qui les a enregistrés n'a pas précisé l'exactitude de ses heures, leur position dans cette conversation peut donc être erronée.",
-    "callTranscriptOpen": "Lire la transcription"
+    "callTranscriptOpen": "Lire la transcription",
+    "callTranscriptNoSpeechDetected": "Rien de ce qui a été enregistré de {name} n'a été envoyé pour être transcrit : cette application n'y a détecté aucune parole et peut se tromper à ce sujet, donc ce qui a été dit n'est pas connu.",
+    "callTranscriptUnreconciledClocks": "Ces interventions ont été enregistrées sur deux appareils dont les horloges n'ont pas pu être comparées, donc aucune heure n'est affichée et l'ordre dans lequel elles apparaissent peut être incorrect."
 }

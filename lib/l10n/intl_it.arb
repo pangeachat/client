@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-30 21:15:23.433277",
+    "@@last_modified": "2026-08-31 10:32:10.818935",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9897,5 +9897,7 @@
     "callTranscriptByTime": "entro le {time}",
     "callTranscriptApproximateTimes": "Un intervento contrassegnato \"entro\" un'ora è stato detto a quell'ora o prima. Tali interventi vengono mostrati in quel momento, quindi potrebbero essere stati detti prima.",
     "callTranscriptUnstatedTimes": "Alcuni interventi non mostrano l'ora. Il dispositivo che li ha registrati non ha specificato l'esattezza delle sue ore, quindi la loro posizione in questa conversazione potrebbe essere errata.",
-    "callTranscriptOpen": "Leggi la trascrizione"
+    "callTranscriptOpen": "Leggi la trascrizione",
+    "callTranscriptNoSpeechDetected": "Nessuna registrazione da {name} è stata inviata per la trascrizione: questa app non ha rilevato alcun parlato e potrebbe sbagliarsi, quindi non si sa cosa sia stato detto.",
+    "callTranscriptUnreconciledClocks": "Questi turni sono stati registrati su due dispositivi i cui orologi non potevano essere confrontati, quindi non vengono visualizzati orari e l'ordine in cui appaiono potrebbe essere sbagliato."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-30 21:15:07.798139",
+    "@@last_modified": "2026-08-31 10:32:06.637005",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10318,5 +10318,7 @@
     "callTranscriptByTime": "v {time}",
     "callTranscriptApproximateTimes": "Replika označená „v“ určitým časem byla řečena v tento čas nebo před ním. Tyto repliky jsou zobrazeny v daném okamžiku, takže mohly být řečeny dříve.",
     "callTranscriptUnstatedTimes": "Některé repliky neukazují čas. Zařízení, které je nahrávalo, neudalo, jak přesné jsou jeho časy, takže jejich umístění v této konverzaci může být chybné.",
-    "callTranscriptOpen": "Přečíst přepis"
+    "callTranscriptOpen": "Přečíst přepis",
+    "callTranscriptNoSpeechDetected": "Nic nahraného od {name} nebylo odesláno k přepisu: tato aplikace v tom nenašla žádnou řeč a může se mýlit, takže není známo, co bylo řečeno.",
+    "callTranscriptUnreconciledClocks": "Tyto tahy byly zaznamenány na dvou zařízeních, jejichž hodiny nebylo možné porovnat, takže nejsou zobrazeny žádné časy a pořadí, ve kterém se objevují, může být špatné."
 }

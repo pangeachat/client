@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-30 21:15:27.448328",
+    "@@last_modified": "2026-08-31 10:32:17.704335",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10769,5 +10769,7 @@
     "callTranscriptByTime": "o {time}",
     "callTranscriptApproximateTimes": "Prejav označený „o“ určitým časom bol povedaný v tom čase alebo predtým. Tieto prejavy sú zobrazené v danom momente, takže mohli byť povedané skôr.",
     "callTranscriptUnstatedTimes": "Niektoré prejavy neukazujú čas. Zariadenie, ktoré ich zaznamenalo, neuviedlo, ako presné sú jeho časy, takže ich umiestnenie v tejto konverzácii môže byť nesprávne.",
-    "callTranscriptOpen": "Prečítať prepis"
+    "callTranscriptOpen": "Prečítať prepis",
+    "callTranscriptNoSpeechDetected": "Nič zaznamenané od {name} nebolo odoslané na prepis: táto aplikácia v ňom nenašla žiadnu reč a môže sa mýliť, takže to, čo bolo povedané, nie je známe.",
+    "callTranscriptUnreconciledClocks": "Tieto záznamy boli zaznamenané na dvoch zariadeniach, ktorých hodiny nebolo možné porovnať, takže sa nezobrazujú žiadne časy a poradie, v akom sa zobrazujú, môže byť nesprávne."
 }

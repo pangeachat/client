@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-30 21:15:05.760882",
+    "@@last_modified": "2026-08-31 10:32:05.735084",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "teen {time}",
     "callTranscriptApproximateTimes": "'n Beurt wat \"teen\" 'n tyd gemerk is, is op of voor daardie tyd gesê. Daardie beurte word op daardie oomblik gewys, so dit mag dalk vroeër gesê gewees het.",
     "callTranscriptUnstatedTimes": "Sommige beurte wys geen tyd nie. Die toestel wat dit opgeneem het, het nie gesê hoe akkuraat sy tye is nie, so waar dit in hierdie gesprek pas, mag dalk verkeerd wees.",
-    "callTranscriptOpen": "Lees die transkripsie"
+    "callTranscriptOpen": "Lees die transkripsie",
+    "callTranscriptNoSpeechDetected": "Niks wat van {name} opgeneem is, is gestuur om getranskribeer te word nie: hierdie toepassing het geen spraak daarin gevind nie en kan verkeerd wees daaroor, so wat gesê is, is onbekend.",
+    "callTranscriptUnreconciledClocks": "Hierdie beurte is op twee toestelle opgeneem waarvan die horlosies nie vergelyk kon word nie, so geen tye word getoon nie en die volgorde waarin dit verskyn, kan verkeerd wees."
 }

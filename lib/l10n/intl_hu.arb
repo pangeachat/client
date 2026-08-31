@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-30 21:15:13.249344",
+    "@@last_modified": "2026-08-31 10:32:10.554322",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9927,5 +9927,7 @@
     "callTranscriptByTime": "{time}kor",
     "callTranscriptApproximateTimes": "Az „ekkor” időponttal jelölt fordulókat az adott időpontban vagy azelőtt mondták. Ezek a fordulók abban a pillanatban jelennek meg, így lehet, hogy korábban hangzottak el.",
     "callTranscriptUnstatedTimes": "Néhány fordulónál nincs időpont feltüntetve. Az őket rögzítő eszköz nem jelezte, mennyire pontosak az időpontjai, így előfordulhat, hogy a beszélgetésben elfoglalt helyük hibás.",
-    "callTranscriptOpen": "Olvassa el az átiratot"
+    "callTranscriptOpen": "Olvassa el az átiratot",
+    "callTranscriptNoSpeechDetected": "{name} felvételéből semmi sem került átírásra: az alkalmazás nem talált benne beszédet, és tévedhet, így nem tudjuk, mi hangzott el.",
+    "callTranscriptUnreconciledClocks": "Ezeket a fordulókat két olyan eszközön rögzítették, amelyek óráit nem lehetett összehasonlítani, így nem jelennek meg időpontok, és a megjelenésük sorrendje hibás lehet."
 }

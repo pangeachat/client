@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-30 21:15:04.814733",
+    "@@last_modified": "2026-08-31 10:32:05.351871",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "do {time}",
     "callTranscriptApproximateTimes": "Izjava označena sa \"do\" određenog vremena izrečena je u to vrijeme ili prije. Te izjave su prikazane u tom trenutku, tako da su možda izrečene ranije.",
     "callTranscriptUnstatedTimes": "Neke izjave ne pokazuju vrijeme. Uređaj koji ih je snimio nije naveo koliko su precizna njegova vremena, tako da njihov položaj u ovom razgovoru može biti pogrešan.",
-    "callTranscriptOpen": "Pročitajte transkript"
+    "callTranscriptOpen": "Pročitajte transkript",
+    "callTranscriptNoSpeechDetected": "Ništa snimljeno od {name} nije poslano na transkripciju: ova aplikacija nije pronašla govor u tome i može biti pogrešna u vezi s tim, tako da se ne zna šta je rečeno.",
+    "callTranscriptUnreconciledClocks": "Ovi razgovori su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuje vrijeme i redoslijed pojavljivanja može biti pogrešan."
 }

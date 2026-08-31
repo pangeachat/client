@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-30 21:15:29.157010",
+    "@@last_modified": "2026-08-31 10:32:18.495281",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10773,5 +10773,7 @@
     "callTranscriptByTime": "do {time}",
     "callTranscriptApproximateTimes": "Obrt označen sa „do“ vremena je izrečen u to vreme ili pre njega. Ti obrti su prikazani u tom trenutku, tako da su možda izrečeni ranije.",
     "callTranscriptUnstatedTimes": "Neki obrti ne prikazuju vreme. Uređaj koji ih je snimio nije naveo koliko su tačna njegova vremena, tako da njihova pozicija u ovom razgovoru može biti pogrešna.",
-    "callTranscriptOpen": "Pročitaj transkript"
+    "callTranscriptOpen": "Pročitaj transkript",
+    "callTranscriptNoSpeechDetected": "Ništa snimljeno od {name} nije poslato na transkripciju: ova aplikacija nije pronašla govor u tome i može pogrešiti u vezi sa tim, tako da se ne zna šta je rečeno.",
+    "callTranscriptUnreconciledClocks": "Ovi razgovori su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuje vreme i redosled pojavljivanja može biti pogrešan."
 }

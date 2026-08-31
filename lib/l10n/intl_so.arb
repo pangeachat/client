@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-30 21:15:29.792197",
+    "@@last_modified": "2026-08-31 10:32:18.874694",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "markay ahayd {time}",
     "callTranscriptApproximateTimes": "Hadalka lagu calaamadeeyay \"markay ahayd\" wakhti waxa la yidhi wakhtigaas ama ka hor. Hadalladaas waxa la tusay wakhtigaas, sidaa darteed waxa laga yaabaa in la yidhi goor hore.",
     "callTranscriptUnstatedTimes": "Hadallada qaar ma muujiyaan wakhti. Qalabkii duubay ma sheegin sida ay wakhtiyadiisu u saxan yihiin, sidaa darteed meesha ay ku jiraan wadahadalkan ayaa laga yaabaa inay khaldan tahay.",
-    "callTranscriptOpen": "Akhri qoraalka"
+    "callTranscriptOpen": "Akhri qoraalka",
+    "callTranscriptNoSpeechDetected": "Waxba lagama duubin {name} lama dirin si loo qoro: app-kan wax hadal ah kama helin, taasina way khaldami kartaa, sidaa darteed lama oga waxa la yiri.",
+    "callTranscriptUnreconciledClocks": "Hadalladan waxaa lagu duubay laba qalab oo saacadahooda aan la isbarbardhigi karin, sidaa darteed ma jiraan waqtiyo la muujiyay, waxaana laga yaabaa in habka ay u muuqdaan uu khaldan yahay."
 }

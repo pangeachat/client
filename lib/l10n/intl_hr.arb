@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-30 21:15:13.401119",
+    "@@last_modified": "2026-08-31 10:32:10.095817",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10260,5 +10260,7 @@
     "callTranscriptByTime": "do {time}",
     "callTranscriptApproximateTimes": "Izjava označena s „do” nekog vremena izrečena je u to vrijeme ili prije njega. Te su izjave prikazane u tom trenutku, pa su možda izrečene ranije.",
     "callTranscriptUnstatedTimes": "Neke izjave ne prikazuju vrijeme. Uređaj koji ih je snimio nije naveo koliko su točna vremena, pa njihov položaj u ovom razgovoru može biti pogrešan.",
-    "callTranscriptOpen": "Pročitaj transkript"
+    "callTranscriptOpen": "Pročitaj transkript",
+    "callTranscriptNoSpeechDetected": "Ništa snimljeno od {name} nije poslano na transkripciju: ova aplikacija nije pronašla govor u tome i može biti u krivu, tako da se ne zna što je rečeno.",
+    "callTranscriptUnreconciledClocks": "Ovi su se razgovori snimali na dva uređaja čiji se satovi nisu mogli usporediti, tako da se ne prikazuje vrijeme i redoslijed pojavljivanja može biti pogrešan."
 }

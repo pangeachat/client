@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-30 21:15:10.862976",
+    "@@last_modified": "2026-08-31 10:32:09.168227",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2228,5 +2228,7 @@
     "callTranscriptByTime": "om {time}",
     "callTranscriptApproximateTimes": "In beurt markearre \"om\" in tiid waard op of foar dy tiid sein. Dy beurten wurde op dat momint werjûn, dus se kinne earder sein wêze.",
     "callTranscriptUnstatedTimes": "Guon beurten litte gjin tiid sjen. It apparaat dat se opnaam, sei net hoe presys de tiden binne, dus wêr't se yn dit petear sitte, kin ferkeard wêze.",
-    "callTranscriptOpen": "Lês de útprint"
+    "callTranscriptOpen": "Lês de útprint",
+    "callTranscriptNoSpeechDetected": "Neat opnommen fan {name} is stjoerd om transkribearre te wurden: dizze app fûn der gjin spraak yn en kin dêr mis wêze, dus wat sein is, is net bekend.",
+    "callTranscriptUnreconciledClocks": "Dizze beurten binne opnommen op twa apparaten wêrfan de klokken net fergelike wurde koene, dus der wurde gjin tiden werjûn en de folchoarder wêryn se ferskine kin ferkeard wêze."
 }

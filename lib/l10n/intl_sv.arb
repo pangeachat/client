@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-30 21:15:29.555287",
+    "@@last_modified": "2026-08-31 10:32:18.704065",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10342,5 +10342,7 @@
     "callTranscriptByTime": "vid {time}",
     "callTranscriptApproximateTimes": "En replik markerad \"vid\" en tid sades vid eller före den. Dessa repliker visas vid den tidpunkten, så de kan ha sagts tidigare.",
     "callTranscriptUnstatedTimes": "Vissa repliker visar ingen tid. Enheten som spelade in dem angav inte hur exakta dess tider är, så var de befinner sig i denna konversation kan vara fel.",
-    "callTranscriptOpen": "Läs transkriptionen"
+    "callTranscriptOpen": "Läs transkriptionen",
+    "callTranscriptNoSpeechDetected": "Inget inspelat från {name} skickades för transkribering: den här appen hittade inget tal i det och kan ha fel om det, så vad som sades är okänt.",
+    "callTranscriptUnreconciledClocks": "Dessa turer spelades in på två enheter vars klockor inte kunde jämföras, så inga tider visas och ordningen de visas i kan vara fel."
 }
