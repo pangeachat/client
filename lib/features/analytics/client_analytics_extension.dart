@@ -84,7 +84,9 @@ extension AnalyticsClientExtension on Client {
       debugger(when: kDebugMode);
       analyticsRoom.join().onError(
         (error, stackTrace) => ErrorHandler.logError(
-          e: error,
+          // `onError` hands back a nullable error here; [logError] now requires
+          // one, so name the failure rather than reporting a bare null.
+          e: error ?? Exception('Failed to join analytics room'),
           s: stackTrace,
           data: {"langCode": lang.langCodeShort, "userID": userID},
         ),
