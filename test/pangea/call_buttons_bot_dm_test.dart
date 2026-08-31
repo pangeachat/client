@@ -248,10 +248,16 @@ void main() {
 
   // The header's app bar cannot be mounted in a widget test -- `_appBarActions`
   // needs a live ChatController, which needs the whole chat route -- so this
-  // reads the source instead. It is the cheapest honest pin on the one thing
-  // the widget tests above cannot see: that the app bar still gets its call
-  // buttons from ChatCallButtons, and holds no second, ungated copy of them.
-  test('the chat header renders the buttons through ChatCallButtons', () {
+  // scans its source text instead. What that buys is one thing: the app bar
+  // dropping ChatCallButtons, which is the regression that would silently take
+  // calling away from every DM.
+  //
+  // It is a substring scan and sees nothing else. An inline call button added
+  // back at the site is caught only if it is written with one of the two icon
+  // literals below; the same button reached through a helper or a wrapper
+  // widget, given a different or aliased icon, or made a text button, passes
+  // this untouched. It does not check that anything renders.
+  test('the chat header still lists ChatCallButtons in its app bar actions', () {
     final source = File('lib/routes/chat/chat_view.dart').readAsStringSync();
     final start = source.indexOf('List<Widget> _appBarActions(');
     expect(start, greaterThan(-1), reason: '_appBarActions must still exist');
@@ -260,13 +266,15 @@ void main() {
     expect(
       body.contains('ChatCallButtons('),
       isTrue,
-      reason: 'the app bar must still mount the gated buttons',
+      reason: 'the app bar must still list the gated buttons in its actions',
     );
     for (final inlined in ['Icons.call_outlined', 'Icons.videocam_outlined']) {
       expect(
         body.contains(inlined),
         isFalse,
-        reason: 'a call button written here again would bypass the gate',
+        reason:
+            'a call button written here with this icon would bypass the gate; '
+            'one written any other way is past what this scan can see',
       );
     }
   });

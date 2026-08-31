@@ -30,8 +30,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 ///   redelivers, so guessing "no" loses the call outright. Here the same
 ///   fallback would start OFFERING calls in any two-person GROUP room, and v1
 ///   is direct messages only -- that is a product change, not a bug fix. What
-///   leaving it out costs is the buttons staying hidden until `m.direct` has
-///   loaded and the header rebuilds: late buttons, not a dropped call.
+///   leaving it out costs is the buttons staying hidden, with nothing here
+///   that brings them back: the header rebuilds off `client.onRoomState` for
+///   this room (`chat_view.dart`), and `m.direct` arrives on `onAccountData`,
+///   which nothing on this path listens to. So they appear on whatever
+///   unrelated rebuild happens next, and there is no telling when that is.
+///   Still late buttons rather than a dropped call, but late by an unbounded
+///   amount.
 /// - `isBotDM` falls back to the room's `bot_options` state for a bot room
 ///   that `m.direct` files under some other user id. Until that state has
 ///   synced such a room reads as an ordinary DM and IS offered the buttons.
