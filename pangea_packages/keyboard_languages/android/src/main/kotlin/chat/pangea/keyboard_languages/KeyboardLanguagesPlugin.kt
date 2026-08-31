@@ -2,6 +2,7 @@ package chat.pangea.keyboard_languages
 
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
+import android.view.textservice.TextServicesManager
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -27,12 +28,33 @@ class KeyboardLanguagesPlugin : FlutterPlugin, MethodCallHandler {
     override fun onMethodCall(call: MethodCall, result: Result) {
         when (call.method) {
             "getEnabledLanguageTags" -> result.success(enabledLanguageTags())
+            "getAvailableSpellCheckLanguages" -> result.success(spellCheckLanguages())
             else -> result.notImplemented()
         }
     }
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)
+    }
+
+    /**
+     * The locales the enabled spell checkers can check, so the caller can ask
+     * for one the device actually has rather than guessing.
+     *
+     * Empty means "unknown" — an older Android, no spell checker enabled, or a
+     * failure — and the caller falls back to asking for the target language
+     * directly, which is what it did before this existed.
+     */
+    private fun spellCheckLanguages(): List<String> {
+        return try {
+            val tsm = applicationContext.getSystemService(Context.TEXT_SERVICES_MANAGER_SERVICE)
+                as? TextServicesManager ?: return emptyList()
+            tsm.enabledSpellCheckerInfos.flatMap { info ->
+                (0 until info.subtypeCount).map { info.getSubtypeAt(it).locale }
+            }.filter { it.isNotEmpty() }.distinct()
+        } catch (e: Exception) {
+            emptyList()
+        }
     }
 
     /**

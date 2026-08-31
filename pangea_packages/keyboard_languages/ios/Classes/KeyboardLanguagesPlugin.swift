@@ -19,6 +19,11 @@ public class KeyboardLanguagesPlugin: NSObject, FlutterPlugin {
     case "getEnabledLanguageTags":
       let tags = UITextInputMode.activeInputModes.compactMap { $0.primaryLanguage }
       result(tags)
+    case "getAvailableSpellCheckLanguages":
+      // Reported with underscores (`en_US`), and a language is usable only if
+      // it appears here: iOS returns null for a tag it does not list, so
+      // asking for a bare `es` fails while its own `es_ES` succeeds.
+      result(UITextChecker.availableLanguages)
     case "getCurrentInputModeLanguage":
       result(KeyboardLanguagesPlugin.currentInputModeLanguage())
     default:

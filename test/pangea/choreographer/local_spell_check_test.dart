@@ -34,6 +34,120 @@ class _FakeSpellCheckService implements SpellCheckService {
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  group('LocalSpellCheck.resolveLocale', () {
+    // Exactly what UITextChecker.availableLanguages returned on an iOS 18.3
+    // simulator: underscores, some languages bare, others only regional.
+    const iosAvailable = [
+      'en_US',
+      'lt_LT',
+      'nb_NO',
+      'ga_IE',
+      'sl_SI',
+      'cs_CZ',
+      'hu_HU',
+      'da_DK',
+      'en_CA',
+      'en_SG',
+      'bg_BG',
+      'ar',
+      'es_MX',
+      'fi_FI',
+      'es_ES',
+      'hi',
+      'he_IL',
+      'is_IS',
+      'it_IT',
+      'nl_NL',
+      'nn',
+      'ro_RO',
+      'te',
+      'uk_UA',
+      'vi_VN',
+      'ru_RU',
+      'en_GB',
+      'fr_FR',
+      'pa',
+      'en_ZA',
+      'en_AU',
+      'de_DE',
+      'pt_BR',
+      'pl_PL',
+      'el_GR',
+      'en_NZ',
+      'id_ID',
+      'sv_SE',
+      'tr_TR',
+      'ars',
+      'en_IN',
+      'pt_PT',
+    ];
+
+    test('a bare target language resolves to a regional dictionary', () {
+      // The bug this exists for: every supported L2 is a bare code, and iOS
+      // returns null for a tag it does not list.
+      expect(
+        LocalSpellCheck.resolveLocale('es', iosAvailable)?.toLanguageTag(),
+        'es-MX',
+      );
+      expect(
+        LocalSpellCheck.resolveLocale('fr', iosAvailable)?.toLanguageTag(),
+        'fr-FR',
+      );
+    });
+
+    test('a language listed bare stays bare', () {
+      expect(
+        LocalSpellCheck.resolveLocale('ar', iosAvailable)?.toLanguageTag(),
+        'ar',
+      );
+    });
+
+    test('an exact regional match wins over a sibling region', () {
+      // pt_BR is listed before pt_PT, so only an exact match gets pt-PT —
+      // which matters because the two spell differently.
+      expect(
+        LocalSpellCheck.resolveLocale('pt-PT', iosAvailable)?.toLanguageTag(),
+        'pt-PT',
+      );
+      expect(
+        LocalSpellCheck.resolveLocale('pt', iosAvailable)?.toLanguageTag(),
+        'pt-BR',
+      );
+    });
+
+    test('underscores in the target are accepted too', () {
+      expect(
+        LocalSpellCheck.resolveLocale('pt_PT', iosAvailable)?.toLanguageTag(),
+        'pt-PT',
+      );
+    });
+
+    test('a language the device cannot check resolves to null', () {
+      // Skips the pass rather than asking and getting null back.
+      expect(LocalSpellCheck.resolveLocale('zu', iosAvailable), isNull);
+      expect(LocalSpellCheck.resolveLocale('cy', iosAvailable), isNull);
+    });
+
+    test('an unknown device list falls back to asking directly', () {
+      // Empty means the platform could not tell us, not that nothing works —
+      // Android may still answer a bare code.
+      expect(
+        LocalSpellCheck.resolveLocale('es', const [])?.toLanguageTag(),
+        'es',
+      );
+    });
+
+    test(
+      'a target with a region the device lacks falls back to the language',
+      () {
+        expect(
+          LocalSpellCheck.resolveLocale('es-AR', iosAvailable)?.toLanguageTag(),
+          'es-MX',
+        );
+      },
+    );
+  });
+
   group('localSpansToSpanData (pure conversion)', () {
     test('maps a misspelling to a spell span with its suggestions', () {
       final spans = localSpansToSpanData(const [

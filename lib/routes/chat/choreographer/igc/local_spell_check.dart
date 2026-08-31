@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import 'package:characters/characters.dart';
+import 'package:collection/collection.dart';
 
 import 'package:fluffychat/routes/chat/choreographer/igc/match_rule_id_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/replacement_type_enum.dart';
@@ -26,6 +27,41 @@ abstract final class LocalSpellCheck {
       !kIsWeb &&
       (defaultTargetPlatform == TargetPlatform.android ||
           defaultTargetPlatform == TargetPlatform.iOS);
+
+  /// The locale to spell check [languageCode] with, chosen from what the
+  /// device actually offers, or null when it offers nothing for that language
+  /// and the pass should be skipped.
+  ///
+  /// Necessary because a language cannot be requested by name: iOS answers
+  /// null for any tag outside its own list, so a bare `es` fails while the
+  /// `es_ES` it advertises succeeds. An empty [available] means the platform
+  /// could not tell us, so the language is asked for directly — which is what
+  /// happened before this check existed.
+  static Locale? resolveLocale(String languageCode, List<String> available) {
+    final wanted = languageCode.replaceAll('_', '-').toLowerCase();
+    final wantedPrimary = wanted.split('-').first;
+    if (wantedPrimary.isEmpty) return null;
+    if (available.isEmpty) return Locale(wantedPrimary);
+
+    final normalized = available.map((t) => t.replaceAll('_', '-')).toList();
+
+    // An exact match first, so a learner whose target language names a region
+    // gets that region's dictionary rather than an arbitrary sibling.
+    final exact = normalized.firstWhereOrNull(
+      (tag) => tag.toLowerCase() == wanted,
+    );
+    final match =
+        exact ??
+        normalized.firstWhereOrNull(
+          (tag) => tag.split('-').first.toLowerCase() == wantedPrimary,
+        );
+    if (match == null) return null;
+
+    final parts = match.split('-');
+    return parts.length == 1
+        ? Locale(parts.first)
+        : Locale(parts.first, parts[1]);
+  }
 
   /// The misspellings the device reports in [text] for [locale].
   ///

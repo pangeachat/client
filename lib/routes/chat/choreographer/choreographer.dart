@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:async/async.dart';
+import 'package:keyboard_languages/keyboard_languages.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
@@ -290,7 +291,16 @@ class Choreographer extends ChangeNotifier {
   /// own — the next one comes only when the response lands.
   /// See writing-assistance.instructions.md, "Local spelling matches".
   Future<void> _runLocalSpellPass() async {
-    final locale = MatrixState.pangeaController.userController.userL2?.locale;
+    final l2 = MatrixState.pangeaController.userController.userL2;
+    if (l2 == null) return;
+
+    // The device is asked which languages it can check rather than being
+    // handed the target language directly: iOS answers null for any tag
+    // outside its own list, so a bare `es` would silently check nothing.
+    final locale = LocalSpellCheck.resolveLocale(
+      l2.langCode,
+      await KeyboardLanguages.getAvailableSpellCheckLanguages(),
+    );
     if (locale == null) return;
 
     final text = textController.text;

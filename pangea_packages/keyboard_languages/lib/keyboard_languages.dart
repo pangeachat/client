@@ -29,6 +29,30 @@ abstract final class KeyboardLanguages {
     }
   }
 
+  /// The languages the device can spell check, exactly as the platform names
+  /// them — iOS uses underscores (`en_US`), and lists some languages bare
+  /// (`ar`, `hi`) and others only with a region (`es_ES`, `es_MX`).
+  ///
+  /// A language is checkable only if it appears here: iOS answers null for a
+  /// tag it does not list, so asking for a bare `es` fails while its own
+  /// `es_ES` succeeds. Callers must resolve the language they want against
+  /// this list rather than constructing a tag themselves.
+  ///
+  /// Empty means "unknown" — unimplemented, no checker enabled, or a failed
+  /// call — not "nothing is checkable".
+  static Future<List<String>> getAvailableSpellCheckLanguages() async {
+    try {
+      final tags = await _channel.invokeListMethod<String>(
+        'getAvailableSpellCheckLanguages',
+      );
+      return tags ?? [];
+    } on PlatformException {
+      return [];
+    } on MissingPluginException {
+      return [];
+    }
+  }
+
   /// The primary language of whatever keyboard mode is active on the
   /// currently focused text input, or null when nothing is focused, the
   /// platform doesn't implement this, or the call fails.
