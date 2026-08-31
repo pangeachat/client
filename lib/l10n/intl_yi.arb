@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-28 11:37:33.483696",
+    "@@last_modified": "2026-08-30 21:15:34.640080",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "קיין ענטפער",
     "callHistoryDeclined": "רוף אפגעזאגט",
     "callHistoryYouDeclined": "איר האט אפגעזאגט דעם רוף",
-    "starsEarnedInLanguage": "שטערן פֿאַרדינט אין {language}"
+    "starsEarnedInLanguage": "שטערן פֿאַרדינט אין {language}",
+    "callTranscriptSharedNotice": "דער רוף איז טראַנסקריבירט און געראַטעוועט. איר און דער אַנדערער מענטש קענען עס לייענען דערנאָכדעם.",
+    "callTranscriptTitle": "רוף טראַנסקריפּט",
+    "callTranscriptLoadFailed": "נישט געקענט לאָדן דעם טראַנסקריפּט",
+    "callTranscriptRetry": "פּרוּוו ווידער",
+    "callTranscriptStoppedEarly": "דער רוף האָט געהאַט צו פיל צו לייענען אין איין מאָל, אַזוי אַ טייל פון אים ווערט נישט געוויזן.",
+    "callTranscriptNone": "קיין טראַנסקריפּט פון {name}",
+    "callTranscriptSaidNothing": "{name} האָט גאָרנישט געזאָגט",
+    "callTranscriptNothingRead": "גאָרנישט האָט געקענט ווערן געלייענט פון וואָס {name} האָט געזאָגט",
+    "callTranscriptPartial": "אַ טייל פון וואָס {name} האָט געזאָגט קען פעלן",
+    "callTranscriptByTime": "לויט {time}",
+    "callTranscriptApproximateTimes": "אַ ריי וואָס איז אָנגעצייכנט \"לויט\" אַ צייט איז געזאָגט געוואָרן ביי אָדער פריער. די רייען ווערן געוויזן אין יענעם מאָמענט, אַזוי זיי קענען זיין געזאָגט געוואָרן פריער.",
+    "callTranscriptUnstatedTimes": "עטלעכע רייען ווייזן נישט קיין צייט. די מיטל וואָס האָט זיי אויפגענומען האָט נישט געזאָגט ווי גענוי אירע צייטן זענען, אַזוי וואו זיי זיצן אין דעם שמועס קען זיין פאַלש.",
+    "callTranscriptOpen": "לייען דעם טראַנסקריפּט"
 }

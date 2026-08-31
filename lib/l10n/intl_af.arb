@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-28 11:37:28.356373",
+    "@@last_modified": "2026-08-30 21:15:05.760882",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Geen antwoord",
     "callHistoryDeclined": "Oproep geweier",
     "callHistoryYouDeclined": "Jy het hierdie oproep geweier",
-    "starsEarnedInLanguage": "Sterre verdien in {language}"
+    "starsEarnedInLanguage": "Sterre verdien in {language}",
+    "callTranscriptSharedNotice": "Hierdie oproep is getranskribeer en gestoor. Jy en die ander persoon kan dit agterna lees.",
+    "callTranscriptTitle": "Oproep-transkripsie",
+    "callTranscriptLoadFailed": "Kon nie die transkripsie laai nie",
+    "callTranscriptRetry": "Probeer weer",
+    "callTranscriptStoppedEarly": "Hierdie oproep het te veel gehad om in een slag te lees, so 'n deel daarvan word nie gewys nie.",
+    "callTranscriptNone": "Geen transkripsie van {name} nie",
+    "callTranscriptSaidNothing": "{name} het niks gesê nie",
+    "callTranscriptNothingRead": "Niks kon gelees word uit wat {name} gesê het nie",
+    "callTranscriptPartial": "'n Deel van wat {name} gesê het, mag dalk ontbreek",
+    "callTranscriptByTime": "teen {time}",
+    "callTranscriptApproximateTimes": "'n Beurt wat \"teen\" 'n tyd gemerk is, is op of voor daardie tyd gesê. Daardie beurte word op daardie oomblik gewys, so dit mag dalk vroeër gesê gewees het.",
+    "callTranscriptUnstatedTimes": "Sommige beurte wys geen tyd nie. Die toestel wat dit opgeneem het, het nie gesê hoe akkuraat sy tye is nie, so waar dit in hierdie gesprek pas, mag dalk verkeerd wees.",
+    "callTranscriptOpen": "Lees die transkripsie"
 }

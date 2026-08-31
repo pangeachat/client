@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-28 11:37:32.472823",
+    "@@last_modified": "2026-08-30 21:15:28.470495",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Pa përgjigje",
     "callHistoryDeclined": "Thirrja u refuzua",
     "callHistoryYouDeclined": "Ju e refuzuat këtë thirrje",
-    "starsEarnedInLanguage": "Yje të fituar në {language}"
+    "starsEarnedInLanguage": "Yje të fituar në {language}",
+    "callTranscriptSharedNotice": "Kjo thirrje transkriptohet dhe ruhet. Ju dhe personi tjetër mund ta lexoni më pas.",
+    "callTranscriptTitle": "Transkripti i thirrjes",
+    "callTranscriptLoadFailed": "Nuk mund të ngarkohej transkripti",
+    "callTranscriptRetry": "Provo përsëri",
+    "callTranscriptStoppedEarly": "Kjo thirrje kishte shumë për t'u lexuar menjëherë, kështu që një pjesë e saj nuk shfaqet.",
+    "callTranscriptNone": "Asnjë transkript nga {name}",
+    "callTranscriptSaidNothing": "{name} nuk tha asgjë",
+    "callTranscriptNothingRead": "Asgjë nuk mund të lexohej nga ajo që tha {name}",
+    "callTranscriptPartial": "Një pjesë e asaj që tha {name} mund të mungojë",
+    "callTranscriptByTime": "nga {time}",
+    "callTranscriptApproximateTimes": "Një kthesë e shënuar \"nga\" një kohë u tha në ose para saj. Ato kthesa shfaqen në atë moment, kështu që mund të jenë thënë më herët.",
+    "callTranscriptUnstatedTimes": "Disa kthesa nuk tregojnë kohë. Pajisja që i regjistroi nuk tha sa të sakta janë kohët e saj, kështu që vendi ku ato ndodhen në këtë bisedë mund të jetë i gabuar.",
+    "callTranscriptOpen": "Lexo transkriptin"
 }

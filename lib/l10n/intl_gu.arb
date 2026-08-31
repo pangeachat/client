@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-28 11:37:29.397291",
+    "@@last_modified": "2026-08-30 21:15:11.390706",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "કોઈ જવાબ નથી",
     "callHistoryDeclined": "કૉલ નકારવામાં આવ્યો",
     "callHistoryYouDeclined": "તમે આ કૉલ નકાર્યો",
-    "starsEarnedInLanguage": "{language} માં મેળવેલા સ્ટાર્સ"
+    "starsEarnedInLanguage": "{language} માં મેળવેલા સ્ટાર્સ",
+    "callTranscriptSharedNotice": "આ કૉલ ટ્રાન્સક્રાઇબ કરીને સેવ કરવામાં આવ્યો છે. તમે અને અન્ય વ્યક્તિ તેને પછીથી વાંચી શકો છો.",
+    "callTranscriptTitle": "કૉલ ટ્રાન્સક્રિપ્ટ",
+    "callTranscriptLoadFailed": "ટ્રાન્સક્રિપ્ટ લોડ થઈ શકી નથી",
+    "callTranscriptRetry": "ફરી પ્રયાસ કરો",
+    "callTranscriptStoppedEarly": "આ કૉલમાં એકસાથે વાંચવા માટે ઘણું બધું હતું, તેથી તેનો અમુક ભાગ બતાવવામાં આવ્યો નથી.",
+    "callTranscriptNone": "{name} તરફથી કોઈ ટ્રાન્સક્રિપ્ટ નથી",
+    "callTranscriptSaidNothing": "{name} એ કંઈ કહ્યું નથી",
+    "callTranscriptNothingRead": "{name} એ જે કહ્યું તેમાંથી કંઈ વાંચી શકાયું નથી",
+    "callTranscriptPartial": "{name} એ જે કહ્યું તેનો અમુક ભાગ ખૂટતો હોઈ શકે છે",
+    "callTranscriptByTime": "{time} સુધીમાં",
+    "callTranscriptApproximateTimes": "સમય દ્વારા \"ચિહ્નિત\" થયેલ વારો તે સમયે અથવા તે પહેલાં કહેવામાં આવ્યો હતો. તે વારા તે ક્ષણે બતાવવામાં આવે છે, તેથી તે પહેલાં કહેવામાં આવ્યા હોઈ શકે છે.",
+    "callTranscriptUnstatedTimes": "કેટલાક વારા કોઈ સમય દર્શાવતા નથી. તેમને રેકોર્ડ કરનાર ઉપકરણે તેના સમય કેટલા ચોક્કસ છે તે જણાવ્યું નથી, તેથી આ વાતચીતમાં તેમનું સ્થાન ખોટું હોઈ શકે છે.",
+    "callTranscriptOpen": "ટ્રાન્સક્રિપ્ટ વાંચો"
 }

@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-28 11:37:32.986042",
+    "@@last_modified": "2026-08-30 21:15:30.961135",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10443,5 +10443,18 @@
     "callHistoryNoAnswer": "ไม่มีการตอบรับ",
     "callHistoryDeclined": "ปฏิเสธสาย",
     "callHistoryYouDeclined": "คุณปฏิเสธสายนี้",
-    "starsEarnedInLanguage": "ดาวที่ได้รับใน {language}"
+    "starsEarnedInLanguage": "ดาวที่ได้รับใน {language}",
+    "callTranscriptSharedNotice": "การโทรนี้จะถูกถอดเสียงและบันทึกไว้ คุณและอีกฝ่ายสามารถอ่านได้ในภายหลัง",
+    "callTranscriptTitle": "บทสนทนาจากการโทร",
+    "callTranscriptLoadFailed": "ไม่สามารถโหลดบทสนทนาได้",
+    "callTranscriptRetry": "ลองอีกครั้ง",
+    "callTranscriptStoppedEarly": "การโทรนี้มีเนื้อหามากเกินกว่าที่จะอ่านได้ในคราวเดียว ดังนั้นจึงแสดงเนื้อหาบางส่วนเท่านั้น",
+    "callTranscriptNone": "ไม่มีบทสนทนาจาก {name}",
+    "callTranscriptSaidNothing": "{name} ไม่ได้พูดอะไรเลย",
+    "callTranscriptNothingRead": "ไม่สามารถอ่านอะไรจากสิ่งที่ {name} พูดได้",
+    "callTranscriptPartial": "ส่วนหนึ่งของสิ่งที่ {name} พูดอาจหายไป",
+    "callTranscriptByTime": "โดย {time}",
+    "callTranscriptApproximateTimes": "ข้อความที่ระบุว่า \"โดย\" เวลา หมายถึงพูด ณ เวลาดังกล่าวหรือก่อนหน้านั้น ข้อความเหล่านั้นจะแสดง ณ เวลานั้น ดังนั้นอาจพูดก่อนหน้านั้น",
+    "callTranscriptUnstatedTimes": "ข้อความบางส่วนไม่แสดงเวลา อุปกรณ์ที่บันทึกไม่ได้ระบุว่าเวลาที่บันทึกมีความแม่นยำเพียงใด ดังนั้นตำแหน่งของข้อความเหล่านั้นในการสนทนานี้อาจไม่ถูกต้อง",
+    "callTranscriptOpen": "อ่านบทสนทนา"
 }

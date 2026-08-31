@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-28 11:37:32.110474",
+    "@@last_modified": "2026-08-30 21:15:28.102742",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "ڪو جواب نه",
     "callHistoryDeclined": "ڪال رد ڪئي وئي",
     "callHistoryYouDeclined": "توهان هي ڪال رد ڪئي",
-    "starsEarnedInLanguage": "{language} ۾ حاصل ڪيل ستارا"
+    "starsEarnedInLanguage": "{language} ۾ حاصل ڪيل ستارا",
+    "callTranscriptSharedNotice": "هي ڪال لکيل ۽ محفوظ ٿيل آهي. توهان ۽ ٻيو شخص ان کي بعد ۾ پڙهي سگهو ٿا.",
+    "callTranscriptTitle": "ڪال ٽرانسڪرپٽ",
+    "callTranscriptLoadFailed": "ٽرانسڪرپٽ لوڊ نه ٿي سگهيو",
+    "callTranscriptRetry": "ٻيهر ڪوشش ڪريو",
+    "callTranscriptStoppedEarly": "هن ڪال ۾ هڪ ئي وقت پڙهڻ لاءِ تمام گهڻو هو، تنهنڪري ان جو ڪجهه حصو نه ڏيکاريو ويو آهي.",
+    "callTranscriptNone": "{name} کان ڪو به ٽرانسڪرپٽ ناهي",
+    "callTranscriptSaidNothing": "{name} ڪجهه به نه چيو",
+    "callTranscriptNothingRead": "{name} جيڪو چيو ان مان ڪجهه به پڙهي نه سگهيو",
+    "callTranscriptPartial": "{name} جيڪو چيو ان جو ڪجهه حصو غائب ٿي سگهي ٿو",
+    "callTranscriptByTime": "{time} تائين",
+    "callTranscriptApproximateTimes": "هڪ موڙ جنهن تي \"by\" وقت لکيل آهي، اهو ان وقت يا ان کان اڳ چيو ويو هو. اهي موڙ ان وقت ڏيکاريا ويا آهن، تنهنڪري اهي اڳ ۾ چيا ويا هوندا.",
+    "callTranscriptUnstatedTimes": "ڪجهه موڙ ڪو به وقت نه ڏيکاريندا آهن. انھن کي رڪارڊ ڪندڙ ڊوائيس اهو نه ٻڌايو ته ان جا وقت ڪيترا صحيح آهن، تنهنڪري اهي هن گفتگو ۾ ڪٿي آهن اهو غلط ٿي سگهي ٿو.",
+    "callTranscriptOpen": "ٽرانسڪرپٽ پڙهو"
 }

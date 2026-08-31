@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-28 11:37:30.451019",
+    "@@last_modified": "2026-08-30 21:15:16.801158",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "ಉತ್ತರವಿಲ್ಲ",
     "callHistoryDeclined": "ಕರೆ ನಿರಾಕರಿಸಲಾಗಿದೆ",
     "callHistoryYouDeclined": "ನೀವು ಈ ಕರೆಯನ್ನು ನಿರಾಕರಿಸಿದ್ದೀರಿ",
-    "starsEarnedInLanguage": "{language} ನಲ್ಲಿ ಗಳಿಸಿದ ನಕ್ಷತ್ರಗಳು"
+    "starsEarnedInLanguage": "{language} ನಲ್ಲಿ ಗಳಿಸಿದ ನಕ್ಷತ್ರಗಳು",
+    "callTranscriptSharedNotice": "ಈ ಕರೆಯನ್ನು ಲಿಪ್ಯಂತರ ಮಾಡಲಾಗಿದೆ ಮತ್ತು ಉಳಿಸಲಾಗಿದೆ. ನೀವು ಮತ್ತು ಇನ್ನೊಬ್ಬ ವ್ಯಕ್ತಿ ನಂತರ ಅದನ್ನು ಓದಬಹುದು.",
+    "callTranscriptTitle": "ಕರೆ ಲಿಪ್ಯಂತರ",
+    "callTranscriptLoadFailed": "ಲಿಪ್ಯಂತರವನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ",
+    "callTranscriptRetry": "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
+    "callTranscriptStoppedEarly": "ಈ ಕರೆಯಲ್ಲಿ ಒಂದೇ ಬಾರಿಗೆ ಓದಲು ತುಂಬಾ ಇತ್ತು, ಆದ್ದರಿಂದ ಅದರ ಕೆಲವು ಭಾಗವನ್ನು ತೋರಿಸಲಾಗಿಲ್ಲ.",
+    "callTranscriptNone": "{name} ನಿಂದ ಯಾವುದೇ ಲಿಪ್ಯಂತರವಿಲ್ಲ",
+    "callTranscriptSaidNothing": "{name} ಏನನ್ನೂ ಹೇಳಲಿಲ್ಲ",
+    "callTranscriptNothingRead": "{name} ಹೇಳಿದ್ದರಿಂದ ಏನನ್ನೂ ಓದಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ",
+    "callTranscriptPartial": "{name} ಹೇಳಿದ ಭಾಗವು ಕಾಣೆಯಾಗಿರಬಹುದು",
+    "callTranscriptByTime": "{time} ರ ಹೊತ್ತಿಗೆ",
+    "callTranscriptApproximateTimes": "ಸಮಯದ \"ಹೊತ್ತಿಗೆ\" ಎಂದು ಗುರುತಿಸಲಾದ ಸರದಿ ಆ ಸಮಯದಲ್ಲಿ ಅಥವಾ ಅದಕ್ಕೂ ಮೊದಲು ಹೇಳಲಾಗಿದೆ. ಆ ಸರದಿಗಳನ್ನು ಆ ಕ್ಷಣದಲ್ಲಿ ತೋರಿಸಲಾಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಅವುಗಳನ್ನು ಮೊದಲೇ ಹೇಳಿರಬಹುದು.",
+    "callTranscriptUnstatedTimes": "ಕೆಲವು ಸರದಿಗಳು ಸಮಯವನ್ನು ತೋರಿಸುವುದಿಲ್ಲ. ಅವುಗಳನ್ನು ರೆಕಾರ್ಡ್ ಮಾಡಿದ ಸಾಧನವು ಅದರ ಸಮಯಗಳು ಎಷ್ಟು ನಿಖರವಾಗಿವೆ ಎಂದು ಹೇಳಲಿಲ್ಲ, ಆದ್ದರಿಂದ ಈ ಸಂಭಾಷಣೆಯಲ್ಲಿ ಅವು ಎಲ್ಲಿವೆ ಎಂಬುದು ತಪ್ಪಾಗಿರಬಹುದು.",
+    "callTranscriptOpen": "ಲಿಪ್ಯಂತರವನ್ನು ಓದಿ"
 }

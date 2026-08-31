@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:32.008276",
+    "@@last_modified": "2026-08-30 21:15:26.591067",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10543,5 +10543,18 @@
     "callHistoryNoAnswer": "Fără răspuns",
     "callHistoryDeclined": "Apel refuzat",
     "callHistoryYouDeclined": "Ai refuzat acest apel",
-    "starsEarnedInLanguage": "Stele câștigate în {language}"
+    "starsEarnedInLanguage": "Stele câștigate în {language}",
+    "callTranscriptSharedNotice": "Acest apel este transcris și salvat. Tu și cealaltă persoană îl puteți citi ulterior.",
+    "callTranscriptTitle": "Transcrierea apelului",
+    "callTranscriptLoadFailed": "Transcrierea nu a putut fi încărcată",
+    "callTranscriptRetry": "Reîncearcă",
+    "callTranscriptStoppedEarly": "Acest apel a avut prea multe de citit dintr-o dată, așa că o parte din el nu este afișată.",
+    "callTranscriptNone": "Nicio transcriere de la {name}",
+    "callTranscriptSaidNothing": "{name} nu a spus nimic",
+    "callTranscriptNothingRead": "Nimic nu a putut fi citit din ce a spus {name}",
+    "callTranscriptPartial": "O parte din ce a spus {name} ar putea lipsi",
+    "callTranscriptByTime": "până la {time}",
+    "callTranscriptApproximateTimes": "O replică marcată „până la” o anumită oră a fost spusă la sau înainte de aceasta. Aceste replici sunt afișate în acel moment, deci ar fi putut fi spuse mai devreme.",
+    "callTranscriptUnstatedTimes": "Unele replici nu afișează ora. Dispozitivul care le-a înregistrat nu a specificat cât de exacte sunt orele sale, așa că poziția lor în această conversație ar putea fi greșită.",
+    "callTranscriptOpen": "Citește transcrierea"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-28 11:37:29.855818",
+    "@@last_modified": "2026-08-30 21:15:13.249344",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9914,5 +9914,18 @@
     "callHistoryNoAnswer": "Nincs válasz",
     "callHistoryDeclined": "Hívás elutasítva",
     "callHistoryYouDeclined": "Elutasítottad ezt a hívást",
-    "starsEarnedInLanguage": "{language} nyelven szerzett csillagok"
+    "starsEarnedInLanguage": "{language} nyelven szerzett csillagok",
+    "callTranscriptSharedNotice": "Ez a hívás átírva és elmentve. Ön és a másik személy is elolvashatja utána.",
+    "callTranscriptTitle": "Hívás átirata",
+    "callTranscriptLoadFailed": "Nem sikerült betölteni az átiratot",
+    "callTranscriptRetry": "Próbálja újra",
+    "callTranscriptStoppedEarly": "Ez a hívás túl sok olvasnivalót tartalmazott egyszerre, ezért egy része nem látható.",
+    "callTranscriptNone": "Nincs átirat {name}től",
+    "callTranscriptSaidNothing": "{name} nem mondott semmit",
+    "callTranscriptNothingRead": "Semmit sem lehetett kiolvasni abból, amit {name} mondott",
+    "callTranscriptPartial": "Lehet, hogy hiányzik {name} mondanivalójának egy része",
+    "callTranscriptByTime": "{time}kor",
+    "callTranscriptApproximateTimes": "Az „ekkor” időponttal jelölt fordulókat az adott időpontban vagy azelőtt mondták. Ezek a fordulók abban a pillanatban jelennek meg, így lehet, hogy korábban hangzottak el.",
+    "callTranscriptUnstatedTimes": "Néhány fordulónál nincs időpont feltüntetve. Az őket rögzítő eszköz nem jelezte, mennyire pontosak az időpontjai, így előfordulhat, hogy a beszélgetésben elfoglalt helyük hibás.",
+    "callTranscriptOpen": "Olvassa el az átiratot"
 }

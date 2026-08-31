@@ -3094,7 +3094,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-28 11:37:29.482879",
+    "@@last_modified": "2026-08-30 21:15:12.125610",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10443,5 +10443,18 @@
     "callHistoryNoAnswer": "कोई जवाब नहीं",
     "callHistoryDeclined": "कॉल अस्वीकृत",
     "callHistoryYouDeclined": "आपने यह कॉल अस्वीकृत कर दी",
-    "starsEarnedInLanguage": "{language} में अर्जित सितारे"
+    "starsEarnedInLanguage": "{language} में अर्जित सितारे",
+    "callTranscriptSharedNotice": "यह कॉल ट्रांसक्राइब्ड और सेव की गई है। आप और दूसरा व्यक्ति इसे बाद में पढ़ सकते हैं।",
+    "callTranscriptTitle": "कॉल ट्रांसक्रिप्ट",
+    "callTranscriptLoadFailed": "ट्रांसक्रिप्ट लोड नहीं हो सकी",
+    "callTranscriptRetry": "पुनः प्रयास करें",
+    "callTranscriptStoppedEarly": "इस कॉल में एक बार में पढ़ने के लिए बहुत कुछ था, इसलिए इसका कुछ हिस्सा नहीं दिखाया गया है।",
+    "callTranscriptNone": "{name} से कोई ट्रांसक्रिप्ट नहीं",
+    "callTranscriptSaidNothing": "{name} ने कुछ नहीं कहा",
+    "callTranscriptNothingRead": "{name} ने जो कहा उसमें से कुछ भी पढ़ा नहीं जा सका",
+    "callTranscriptPartial": "{name} ने जो कहा उसका कुछ हिस्सा गायब हो सकता है",
+    "callTranscriptByTime": "{time} तक",
+    "callTranscriptApproximateTimes": "एक मोड़ जिस पर \"तक\" का समय अंकित है, वह उस समय या उससे पहले कहा गया था। वे मोड़ उस क्षण दिखाए जाते हैं, इसलिए वे पहले कहे गए हो सकते हैं।",
+    "callTranscriptUnstatedTimes": "कुछ मोड़ों पर कोई समय नहीं दिखाया गया है। उन्हें रिकॉर्ड करने वाले डिवाइस ने यह नहीं बताया कि उसके समय कितने सटीक हैं, इसलिए वे इस बातचीत में कहाँ बैठते हैं, यह गलत हो सकता है।",
+    "callTranscriptOpen": "ट्रांसक्रिप्ट पढ़ें"
 }

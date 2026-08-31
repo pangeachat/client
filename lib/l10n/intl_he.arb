@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:29.465133",
+    "@@last_modified": "2026-08-30 21:15:12.112931",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10725,5 +10725,18 @@
     "callHistoryNoAnswer": "אין מענה",
     "callHistoryDeclined": "השיחה נדחתה",
     "callHistoryYouDeclined": "דחית את השיחה הזו",
-    "starsEarnedInLanguage": "כוכבים שנצברו ב{language}"
+    "starsEarnedInLanguage": "כוכבים שנצברו ב{language}",
+    "callTranscriptSharedNotice": "שיחה זו תומללה ונשמרה. אתם והאדם השני תוכלו לקרוא אותה לאחר מכן.",
+    "callTranscriptTitle": "תמלול שיחה",
+    "callTranscriptLoadFailed": "לא ניתן היה לטעון את התמלול",
+    "callTranscriptRetry": "נסה שוב",
+    "callTranscriptStoppedEarly": "שיחה זו הכילה יותר מדי תוכן לקריאה בפעם אחת, ולכן חלק ממנה אינו מוצג.",
+    "callTranscriptNone": "אין תמלול מ{name}",
+    "callTranscriptSaidNothing": "{name} לא אמר/ה דבר",
+    "callTranscriptNothingRead": "לא ניתן היה לקרוא דבר ממה ש{name} אמר/ה",
+    "callTranscriptPartial": "חלק ממה ש{name} אמר/ה עשוי להיות חסר",
+    "callTranscriptByTime": "ב-{time}",
+    "callTranscriptApproximateTimes": "תור המסומן \"ב-\" שעה נאמר בשעה זו או לפניה. תורות אלו מוצגים באותו רגע, ולכן ייתכן שנאמרו מוקדם יותר.",
+    "callTranscriptUnstatedTimes": "חלק מהתורות אינם מציגים שעה. המכשיר שהקליט אותם לא ציין עד כמה השעות שלו מדויקות, ולכן מיקומם בשיחה זו עשוי להיות שגוי.",
+    "callTranscriptOpen": "קרא את התמלול"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-28 11:37:32.719891",
+    "@@last_modified": "2026-08-30 21:15:30.553073",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Teu diangkat",
     "callHistoryDeclined": "Telepon ditolak",
     "callHistoryYouDeclined": "Anjeun nolak telepon ieu",
-    "starsEarnedInLanguage": "Béntang anu dimeunangkeun dina basa {language}"
+    "starsEarnedInLanguage": "Béntang anu dimeunangkeun dina basa {language}",
+    "callTranscriptSharedNotice": "Telepon ieu ditranskripsi sareng disimpen. Anjeun sareng jalmi sanés tiasa maca saatosna.",
+    "callTranscriptTitle": "Transkrip telepon",
+    "callTranscriptLoadFailed": "Henteu tiasa ngamuat transkrip",
+    "callTranscriptRetry": "Cobi deui",
+    "callTranscriptStoppedEarly": "Telepon ieu seueur teuing anu kedah dibaca sakaligus, janten sababaraha diantarana henteu ditingalikeun.",
+    "callTranscriptNone": "Teu aya transkrip ti {name}",
+    "callTranscriptSaidNothing": "{name} teu nyarios nanaon",
+    "callTranscriptNothingRead": "Teu aya anu tiasa dibaca tina naon anu diucapkeun ku {name}",
+    "callTranscriptPartial": "Sabagian tina naon anu diucapkeun ku {name} tiasa leungit",
+    "callTranscriptByTime": "ku {time}",
+    "callTranscriptApproximateTimes": "Giliran anu ditandaan \"ku\" waktos diucapkeun dina atanapi sateuacan éta. Giliran éta ditingalikeun dina waktos éta, janten tiasa waé diucapkeun langkung awal.",
+    "callTranscriptUnstatedTimes": "Sababaraha giliran henteu nunjukkeun waktos. Alat anu ngarékam éta henteu nyarios kumaha pasti waktosna, janten dimana aranjeunna dina paguneman ieu tiasa salah.",
+    "callTranscriptOpen": "Maca transkrip"
 }

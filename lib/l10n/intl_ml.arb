@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-28 11:37:31.524130",
+    "@@last_modified": "2026-08-30 21:15:20.426513",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "മറുപടിയില്ല",
     "callHistoryDeclined": "കോൾ നിരസിച്ചു",
     "callHistoryYouDeclined": "നിങ്ങൾ ഈ കോൾ നിരസിച്ചു",
-    "starsEarnedInLanguage": "{language} ഭാഷയിൽ നേടിയ നക്ഷത്രങ്ങൾ"
+    "starsEarnedInLanguage": "{language} ഭാഷയിൽ നേടിയ നക്ഷത്രങ്ങൾ",
+    "callTranscriptSharedNotice": "ഈ കോൾ ട്രാൻസ്ക്രൈബ് ചെയ്യുകയും സേവ് ചെയ്യുകയും ചെയ്തിട്ടുണ്ട്. നിങ്ങൾക്കും മറ്റേയാൾക്കും ഇത് പിന്നീട് വായിക്കാം.",
+    "callTranscriptTitle": "കോൾ ട്രാൻസ്ക്രിപ്റ്റ്",
+    "callTranscriptLoadFailed": "ട്രാൻസ്ക്രിപ്റ്റ് ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല",
+    "callTranscriptRetry": "വീണ്ടും ശ്രമിക്കുക",
+    "callTranscriptStoppedEarly": "ഈ കോളിൽ ഒരുമിച്ച് വായിക്കാൻ കഴിയുന്നതിലും അധികം ഉള്ളടക്കം ഉള്ളതുകൊണ്ട്, അതിൽ ചിലത് കാണിക്കുന്നില്ല.",
+    "callTranscriptNone": "{name} എന്നയാളിൽ നിന്നുള്ള ട്രാൻസ്ക്രിപ്റ്റ് ലഭ്യമല്ല",
+    "callTranscriptSaidNothing": "{name} ഒന്നും പറഞ്ഞില്ല",
+    "callTranscriptNothingRead": "{name} പറഞ്ഞതിൽ നിന്ന് ഒന്നും വായിക്കാൻ കഴിഞ്ഞില്ല",
+    "callTranscriptPartial": "{name} പറഞ്ഞതിന്റെ ഒരു ഭാഗം നഷ്ടപ്പെട്ടിരിക്കാം",
+    "callTranscriptByTime": "{time} വരെ",
+    "callTranscriptApproximateTimes": "ഒരു സമയത്താൽ \"by\" എന്ന് അടയാളപ്പെടുത്തിയ ഒരു സംഭാഷണം ആ സമയത്തോ അതിനുമുമ്പോ പറഞ്ഞതാണ്. ആ സംഭാഷണങ്ങൾ ആ നിമിഷത്തിൽ കാണിക്കുന്നു, അതിനാൽ അവ നേരത്തെ പറഞ്ഞിരിക്കാം.",
+    "callTranscriptUnstatedTimes": "ചില സംഭാഷണങ്ങൾക്ക് സമയം കാണിക്കുന്നില്ല. അവ റെക്കോർഡ് ചെയ്ത ഉപകരണം അതിന്റെ സമയങ്ങൾ എത്ര കൃത്യമാണെന്ന് പറഞ്ഞിട്ടില്ല, അതിനാൽ ഈ സംഭാഷണത്തിൽ അവ എവിടെയാണ് വരുന്നത് എന്നത് തെറ്റായിരിക്കാം.",
+    "callTranscriptOpen": "ട്രാൻസ്ക്രിപ്റ്റ് വായിക്കുക"
 }

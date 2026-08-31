@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:28.430219",
+    "@@last_modified": "2026-08-30 21:15:04.622944",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10439,5 +10439,18 @@
     "callHistoryNoAnswer": "কোনো উত্তর নেই",
     "callHistoryDeclined": "কল প্রত্যাখ্যান করা হয়েছে",
     "callHistoryYouDeclined": "আপনি এই কলটি প্রত্যাখ্যান করেছেন",
-    "starsEarnedInLanguage": "{language}-এ অর্জিত স্টার"
+    "starsEarnedInLanguage": "{language}-এ অর্জিত স্টার",
+    "callTranscriptSharedNotice": "এই কলটি প্রতিলিপি করা হয়েছে এবং সংরক্ষণ করা হয়েছে। আপনি এবং অন্য ব্যক্তি এটি পরে পড়তে পারবেন।",
+    "callTranscriptTitle": "কল প্রতিলিপি",
+    "callTranscriptLoadFailed": "প্রতিলিপি লোড করা যায়নি",
+    "callTranscriptRetry": "আবার চেষ্টা করুন",
+    "callTranscriptStoppedEarly": "এই কলে একবারে পড়ার মতো অনেক কিছু ছিল, তাই এর কিছু অংশ দেখানো হয়নি।",
+    "callTranscriptNone": "{name} থেকে কোনো প্রতিলিপি নেই",
+    "callTranscriptSaidNothing": "{name} কিছু বলেনি",
+    "callTranscriptNothingRead": "{name} যা বলেছে তা থেকে কিছুই পড়া যায়নি",
+    "callTranscriptPartial": "{name} যা বলেছে তার কিছু অংশ অনুপস্থিত থাকতে পারে",
+    "callTranscriptByTime": "{time} দ্বারা",
+    "callTranscriptApproximateTimes": "একটি টার্ন যা একটি সময় দ্বারা \"চিহ্নিত\" করা হয়েছে তা সেই সময়ে বা তার আগে বলা হয়েছিল। সেই টার্নগুলি সেই মুহূর্তে দেখানো হয়, তাই সেগুলি আগে বলা হয়ে থাকতে পারে।",
+    "callTranscriptUnstatedTimes": "কিছু টার্নে কোনো সময় দেখানো হয়নি। যে ডিভাইসটি সেগুলি রেকর্ড করেছে সেটি তার সময়গুলি কতটা সঠিক তা বলেনি, তাই এই কথোপকথনে তাদের অবস্থান ভুল হতে পারে।",
+    "callTranscriptOpen": "প্রতিলিপি পড়ুন"
 }

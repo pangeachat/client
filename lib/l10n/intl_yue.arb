@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-28 11:37:33.587385",
+    "@@last_modified": "2026-08-30 21:15:33.189856",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10768,5 +10768,18 @@
     "callHistoryNoAnswer": "無人接聽",
     "callHistoryDeclined": "通話已拒絕",
     "callHistoryYouDeclined": "你拒絕了此通話",
-    "starsEarnedInLanguage": "喺{language}賺取嘅星星"
+    "starsEarnedInLanguage": "喺{language}賺取嘅星星",
+    "callTranscriptSharedNotice": "此通話已轉錄並儲存。你同對方之後都可以睇返。",
+    "callTranscriptTitle": "通話記錄",
+    "callTranscriptLoadFailed": "無法載入通話記錄",
+    "callTranscriptRetry": "再試一次",
+    "callTranscriptStoppedEarly": "此通話內容太多，無法一次過顯示，因此部分內容未有顯示。",
+    "callTranscriptNone": "冇 {name} 嘅通話記錄",
+    "callTranscriptSaidNothing": "{name} 冇講過嘢",
+    "callTranscriptNothingRead": "無法從 {name} 嘅說話中讀取任何內容",
+    "callTranscriptPartial": "{name} 講嘅嘢可能部分遺失咗",
+    "callTranscriptByTime": "於 {time}",
+    "callTranscriptApproximateTimes": "標示「於」某個時間嘅發言係喺嗰個時間或之前講嘅。呢啲發言會喺嗰一刻顯示，所以可能早過嗰個時間講。",
+    "callTranscriptUnstatedTimes": "部分發言冇顯示時間。錄音裝置冇說明時間嘅準確性，所以佢哋喺對話中嘅位置可能唔準確。",
+    "callTranscriptOpen": "閱讀通話記錄"
 }

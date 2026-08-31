@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-28 11:37:29.520009",
+    "@@last_modified": "2026-08-30 21:15:11.395400",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Gun fhreagairt",
     "callHistoryDeclined": "Gairm air a diùltadh",
     "callHistoryYouDeclined": "Dhiùlt thu a' ghairm seo",
-    "starsEarnedInLanguage": "Rionnagan a choisinn thu ann an {language}"
+    "starsEarnedInLanguage": "Rionnagan a choisinn thu ann an {language}",
+    "callTranscriptSharedNotice": "Chaidh an gairm seo a thras-sgrìobhadh is a shàbhaladh. Faodaidh tu fhèin is an neach eile a leughadh an dèidh sin.",
+    "callTranscriptTitle": "Tar-sgrìobhadh gairm",
+    "callTranscriptLoadFailed": "Cha b' urrainn dhuinn an tar-sgrìobhadh a luchdachadh",
+    "callTranscriptRetry": "Feuch a-rithist",
+    "callTranscriptStoppedEarly": "Bha cus ri leughadh sa ghairm seo ann an aon dol, is mar sin chan eil cuid dheth ga shealltainn.",
+    "callTranscriptNone": "Chan eil tar-sgrìobhadh ann bho {name}",
+    "callTranscriptSaidNothing": "Cha tuirt {name} dad",
+    "callTranscriptNothingRead": "Cha b' urrainn dhuinn dad a leughadh bho na thuirt {name}",
+    "callTranscriptPartial": "Dh'fhaodadh pàirt de na thuirt {name} a bhith a dhìth",
+    "callTranscriptByTime": "ro {time}",
+    "callTranscriptApproximateTimes": "Chaidh tionndadh a tha air a chomharrachadh \"ro\" àm a ràdh aig an àm sin no roimhe. Tha na tionndaidhean sin air an sealltainn aig an àm sin, is mar sin dh'fhaodadh gun deach an ràdh na bu tràithe.",
+    "callTranscriptUnstatedTimes": "Chan eil àm air a shealltainn air cuid de thionndaidhean. Cha tuirt an uidheam a chlàraich iad dè cho mionaideach 's a tha na h-uairean aige, is mar sin dh'fhaodadh far a bheil iad sa chòmhradh seo a bhith ceàrr.",
+    "callTranscriptOpen": "Leugh an tar-sgrìobhadh"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-28 11:37:33.791565",
+    "@@last_modified": "2026-08-30 21:15:36.188100",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Ayikho impendulo",
     "callHistoryDeclined": "Ikholi yenqatshiwe",
     "callHistoryYouDeclined": "Uyenqabile le kholi",
-    "starsEarnedInLanguage": "Izinkanyezi ezizuziwe ngesi-{language}"
+    "starsEarnedInLanguage": "Izinkanyezi ezizuziwe ngesi-{language}",
+    "callTranscriptSharedNotice": "Le ngxoxo ibhaliwe futhi yalondolozwa. Wena nomunye umuntu ningayifunda ngemuva kwalokho.",
+    "callTranscriptTitle": "Umbhalo wengxoxo",
+    "callTranscriptLoadFailed": "Ayikwazanga ukulayisha umbhalo",
+    "callTranscriptRetry": "Zama futhi",
+    "callTranscriptStoppedEarly": "Le ngxoxo ibiningi kakhulu ukuthi ingafundwa ngesikhathi esisodwa, ngakho-ke okunye akukhonjisiwe.",
+    "callTranscriptNone": "Ayikho ingxoxo evela ku-{name}",
+    "callTranscriptSaidNothing": "{name} akashongo lutho",
+    "callTranscriptNothingRead": "Akukho okungafundwa kulokho okushiwo u-{name}",
+    "callTranscriptPartial": "Ingxenye yalokho okushiwo u-{name} ingase ingekho",
+    "callTranscriptByTime": "ngo-{time}",
+    "callTranscriptApproximateTimes": "Ukuphendula okumakwe \"ngo\" isikhathi kwashiwo ngaso noma ngaphambi kwaso. Lokho kuphendula kukhonjiswa ngaleso sikhathi, ngakho-ke kungenzeka kwashiwo ngaphambili.",
+    "callTranscriptUnstatedTimes": "Okunye ukuphendula akukhombisi isikhathi. Idivayisi eyakuqopha ayizange isho ukuthi izikhathi zayo ziqondile kangakanani, ngakho-ke lapho zihlala khona kule ngxoxo kungase kube iphutha.",
+    "callTranscriptOpen": "Funda umbhalo"
 }

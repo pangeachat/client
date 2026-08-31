@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-28 11:37:29.032332",
+    "@@last_modified": "2026-08-30 21:15:10.088549",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9848,5 +9848,18 @@
     "callHistoryNoAnswer": "Ei vastausta",
     "callHistoryDeclined": "Puhelu hylättiin",
     "callHistoryYouDeclined": "Hylkäsit tämän puhelun",
-    "starsEarnedInLanguage": "Tienatut tähdet kielessä {language}"
+    "starsEarnedInLanguage": "Tienatut tähdet kielessä {language}",
+    "callTranscriptSharedNotice": "Tämä puhelu on litteroitu ja tallennettu. Sinä ja toinen henkilö voitte lukea sen jälkikäteen.",
+    "callTranscriptTitle": "Puhelun litterointi",
+    "callTranscriptLoadFailed": "Litterointia ei voitu ladata",
+    "callTranscriptRetry": "Yritä uudelleen",
+    "callTranscriptStoppedEarly": "Tässä puhelussa oli liikaa luettavaa kerralla, joten osa siitä ei näy.",
+    "callTranscriptNone": "Ei litterointia kohteesta {name}",
+    "callTranscriptSaidNothing": "{name} ei sanonut mitään",
+    "callTranscriptNothingRead": "Mitään ei voitu lukea siitä, mitä {name} sanoi",
+    "callTranscriptPartial": "Osa siitä, mitä {name} sanoi, saattaa puuttua",
+    "callTranscriptByTime": "klo {time}",
+    "callTranscriptApproximateTimes": "Aikaleimalla \"klo\" merkitty vuoro sanottiin kyseisenä ajankohtana tai sitä ennen. Nämä vuorot näytetään kyseisellä hetkellä, joten ne on saatettu sanoa aiemmin.",
+    "callTranscriptUnstatedTimes": "Joissakin vuoroissa ei näy aikaa. Laitteessa, joka ne tallensi, ei kerrottu, kuinka tarkkoja sen ajat ovat, joten niiden sijainti tässä keskustelussa saattaa olla väärä.",
+    "callTranscriptOpen": "Lue litterointi"
 }

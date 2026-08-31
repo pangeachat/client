@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-28 11:37:29.419140",
+    "@@last_modified": "2026-08-30 21:15:09.844382",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10671,5 +10671,18 @@
     "callHistoryNoAnswer": "Walang sumagot",
     "callHistoryDeclined": "Tanggihan ang tawag",
     "callHistoryYouDeclined": "Tinanggihan mo ang tawag na ito",
-    "starsEarnedInLanguage": "Mga star na nakuha sa {language}"
+    "starsEarnedInLanguage": "Mga star na nakuha sa {language}",
+    "callTranscriptSharedNotice": "Ang tawag na ito ay na-transcribe at na-save. Maaari ninyo itong basahin pagkatapos.",
+    "callTranscriptTitle": "Transcript ng tawag",
+    "callTranscriptLoadFailed": "Hindi ma-load ang transcript",
+    "callTranscriptRetry": "Subukang muli",
+    "callTranscriptStoppedEarly": "Masyadong mahaba ang tawag na ito para basahin nang sabay-sabay, kaya hindi ipinapakita ang ilan sa mga ito.",
+    "callTranscriptNone": "Walang transcript mula kay {name}",
+    "callTranscriptSaidNothing": "Walang sinabi si {name}",
+    "callTranscriptNothingRead": "Walang nabasa mula sa sinabi ni {name}",
+    "callTranscriptPartial": "Maaaring may nawawalang bahagi sa sinabi ni {name}",
+    "callTranscriptByTime": "sa {time}",
+    "callTranscriptApproximateTimes": "Ang isang pagliko na minarkahang \"sa\" isang oras ay sinabi sa o bago nito. Ang mga pagliko na iyon ay ipinapakita sa sandaling iyon, kaya maaaring mas maaga itong nasabi.",
+    "callTranscriptUnstatedTimes": "Ang ilang pagliko ay walang ipinapakitang oras. Ang device na nag-record sa mga ito ay hindi nagsabi kung gaano eksakto ang mga oras nito, kaya maaaring mali ang posisyon ng mga ito sa usapang ito.",
+    "callTranscriptOpen": "Basahin ang transcript"
 }

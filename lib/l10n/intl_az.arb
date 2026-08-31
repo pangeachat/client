@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-28 11:37:28.276450",
+    "@@last_modified": "2026-08-30 21:15:04.878536",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Cavab yoxdur",
     "callHistoryDeclined": "Zəng rədd edildi",
     "callHistoryYouDeclined": "Bu zəngi siz rədd etdiniz",
-    "starsEarnedInLanguage": "{language} dilində qazanılan ulduzlar"
+    "starsEarnedInLanguage": "{language} dilində qazanılan ulduzlar",
+    "callTranscriptSharedNotice": "Bu zəng yazılıb və saxlanılıb. Siz və digər şəxs onu sonra oxuya bilərsiniz.",
+    "callTranscriptTitle": "Zəng transkripti",
+    "callTranscriptLoadFailed": "Transkript yüklənə bilmədi",
+    "callTranscriptRetry": "Yenidən cəhd edin",
+    "callTranscriptStoppedEarly": "Bu zəngdə bir dəfəyə oxunacaq çox şey var idi, buna görə də bəziləri göstərilmir.",
+    "callTranscriptNone": "{name} tərəfindən heç bir transkript yoxdur",
+    "callTranscriptSaidNothing": "{name} heç nə demədi",
+    "callTranscriptNothingRead": "{name} dediklərindən heç nə oxunmadı",
+    "callTranscriptPartial": "{name} dediklərinin bir hissəsi əskik ola bilər",
+    "callTranscriptByTime": "{time} tərəfindən",
+    "callTranscriptApproximateTimes": "Vaxtla \"tərəfindən\" işarələnmiş bir növbə o vaxtda və ya ondan əvvəl deyilmişdir. Bu növbələr o anda göstərilir, buna görə də daha əvvəl deyilmiş ola bilər.",
+    "callTranscriptUnstatedTimes": "Bəzi növbələrdə vaxt göstərilmir. Onları qeyd edən cihaz vaxtlarının nə qədər dəqiq olduğunu bildirmədi, buna görə də bu söhbətdəki yerləri səhv ola bilər.",
+    "callTranscriptOpen": "Transkripti oxuyun"
 }

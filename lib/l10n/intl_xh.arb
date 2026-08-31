@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-28 11:37:33.330815",
+    "@@last_modified": "2026-08-30 21:15:34.566256",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Akukho mpendulo",
     "callHistoryDeclined": "Umnxeba uyaliwe",
     "callHistoryYouDeclined": "Uwuyile lo mnxeba",
-    "starsEarnedInLanguage": "Ii-star ozifumene ngesi-{language}"
+    "starsEarnedInLanguage": "Ii-star ozifumene ngesi-{language}",
+    "callTranscriptSharedNotice": "Olu lwazi lufakelwe kwaye lugciniwe. Wena nomnye umntu ningalufunda emva koko.",
+    "callTranscriptTitle": "Ulwazi lwefowuni",
+    "callTranscriptLoadFailed": "Ayikwazanga ukulayisha ulwazi",
+    "callTranscriptRetry": "Zama kwakhona",
+    "callTranscriptStoppedEarly": "Le fowuni ibinento eninzi kakhulu yokufunda ngaxeshanye, ngoko ke inxalenye yayo ayiboniswanga.",
+    "callTranscriptNone": "Akukho lwazi oluvela ku-{name}",
+    "callTranscriptSaidNothing": "{name} akathethanga nto",
+    "callTranscriptNothingRead": "Akukho nto inokufundwa kwinto ethethwe ngu-{name}",
+    "callTranscriptPartial": "Inxalenye yento ethethwe ngu-{name} isenokuba ilahlekile",
+    "callTranscriptByTime": "nge-{time}",
+    "callTranscriptApproximateTimes": "Ujiko oluphawulwe \"nge\" ixesha lwathethwa ngalo okanye ngaphambi kwalo. Ezo jiko ziboniswa ngalo mzuzu, ngoko ke zisenokuba zathethwa ngaphambili.",
+    "callTranscriptUnstatedTimes": "Ezinye iijiko azibonisi xesha. Isixhobo esazirekhodayo asizange sitsho ukuba amaxesha aso achane kangakanani, ngoko ke indawo ezikuyo kule ncoko isenokuba ayichanekanga.",
+    "callTranscriptOpen": "Funda ulwazi"
 }

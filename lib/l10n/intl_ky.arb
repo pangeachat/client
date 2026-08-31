@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-28 11:37:30.580285",
+    "@@last_modified": "2026-08-30 21:15:18.339945",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Жооп жок",
     "callHistoryDeclined": "Чакыруудан баш тартылды",
     "callHistoryYouDeclined": "Сиз бул чалуудан баш тарттыңыз",
-    "starsEarnedInLanguage": "{language} тилинде алынган жылдыздар"
+    "starsEarnedInLanguage": "{language} тилинде алынган жылдыздар",
+    "callTranscriptSharedNotice": "Бул чалуу жазылып, сакталды. Сиз жана башка адам аны кийин окуй аласыз.",
+    "callTranscriptTitle": "Чакыруу транскрипти",
+    "callTranscriptLoadFailed": "Транскриптти жүктөө мүмкүн болгон жок",
+    "callTranscriptRetry": "Кайра аракет кылыңыз",
+    "callTranscriptStoppedEarly": "Бул чалууда бир убакта окуй турган өтө көп нерсе бар болчу, ошондуктан анын бир бөлүгү көрсөтүлгөн жок.",
+    "callTranscriptNone": "{name}дан транскрипт жок",
+    "callTranscriptSaidNothing": "{name} эч нерсе айткан жок",
+    "callTranscriptNothingRead": "{name} айткандарынан эч нерсе окулган жок",
+    "callTranscriptPartial": "{name} айткандарынын бир бөлүгү жок болушу мүмкүн",
+    "callTranscriptByTime": "{time} боюнча",
+    "callTranscriptApproximateTimes": "Убакыт боюнча белгиленген кезек ошол убакта же ага чейин айтылган. Ал кезектер ошол учурда көрсөтүлөт, ошондуктан алар мурда айтылган болушу мүмкүн.",
+    "callTranscriptUnstatedTimes": "Кээ бир кезектерде убакыт көрсөтүлгөн эмес. Аларды жаздырган аппарат анын убакыттары канчалык так экенин айткан эмес, ошондуктан алардын бул сүйлөшүүдөгү орду туура эмес болушу мүмкүн.",
+    "callTranscriptOpen": "Транскриптти окуу"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-28 11:37:31.169980",
+    "@@last_modified": "2026-08-30 21:15:22.023270",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Хариулаагүй",
     "callHistoryDeclined": "Дуудлагаас татгалзсан",
     "callHistoryYouDeclined": "Та энэ дуудлагаас татгалзсан",
-    "starsEarnedInLanguage": "{language} хэлээр цуглуулсан од"
+    "starsEarnedInLanguage": "{language} хэлээр цуглуулсан од",
+    "callTranscriptSharedNotice": "Энэ дуудлагыг бичиж, хадгалсан. Та болон нөгөө хүн дараа нь унших боломжтой.",
+    "callTranscriptTitle": "Дуудлагын хуулбар",
+    "callTranscriptLoadFailed": "Хуулбарыг ачаалж чадсангүй",
+    "callTranscriptRetry": "Дахин оролдох",
+    "callTranscriptStoppedEarly": "Энэ дуудлага нэг дор уншихад хэтэрхий их байсан тул зарим хэсгийг нь харуулаагүй.",
+    "callTranscriptNone": "{name}-ээс хуулбар байхгүй",
+    "callTranscriptSaidNothing": "{name} юу ч хэлээгүй",
+    "callTranscriptNothingRead": "{name}-ийн хэлсэн зүйлээс юу ч уншиж чадсангүй",
+    "callTranscriptPartial": "{name}-ийн хэлсэн зүйлийн зарим хэсэг дутуу байж магадгүй",
+    "callTranscriptByTime": "{time}-д",
+    "callTranscriptApproximateTimes": "Цагаар тэмдэглэгдсэн эргэлт нь тухайн цагт эсвэл өмнө нь хэлэгдсэн. Эдгээр эргэлтүүд тухайн мөчид харагдах тул өмнө нь хэлэгдсэн байж магадгүй.",
+    "callTranscriptUnstatedTimes": "Зарим эргэлтүүд цаг хугацааг харуулахгүй. Тэдгээрийг бичсэн төхөөрөмж нь цаг хугацаагаа хэр нарийн болохыг хэлээгүй тул энэ ярианд хаана байрлаж байгаа нь буруу байж магадгүй.",
+    "callTranscriptOpen": "Хуулбарыг унших"
 }

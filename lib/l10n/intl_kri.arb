@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-28 11:37:30.566664",
+    "@@last_modified": "2026-08-30 21:15:18.343458",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Nɔ pikɔp",
     "callHistoryDeclined": "Kɔl diklɛn",
     "callHistoryYouDeclined": "Yu diklɛn dis kɔl",
-    "starsEarnedInLanguage": "Stars wehn yu earn insai {language}"
+    "starsEarnedInLanguage": "Stars wehn yu earn insai {language}",
+    "callTranscriptSharedNotice": "Dis kol dɛn rayt am dɔŋ ɛn dɛn sev am. Yu ɛn di ɔda pɛsin go ebul rid am afta.",
+    "callTranscriptTitle": "Kol transkript",
+    "callTranscriptLoadFailed": "Dɛn nɔ ebul fɔ lod di transkript",
+    "callTranscriptRetry": "Tray igen",
+    "callTranscriptStoppedEarly": "Dis kol bin gɛt tumɔs fɔ rid insay wan tɛm, so sɔm pat nɔ de sho.",
+    "callTranscriptNone": "Nɔn transkript frɔm {name}",
+    "callTranscriptSaidNothing": "{name} nɔ bin tɔk ɛnitin",
+    "callTranscriptNothingRead": "Nɔtin nɔ bin ebul fɔ rid frɔm wetin {name} bin tɔk",
+    "callTranscriptPartial": "Sɔm pat frɔm wetin {name} bin tɔk go bi se i misin",
+    "callTranscriptByTime": "bay {time}",
+    "callTranscriptApproximateTimes": "Wan tɔn we dɛn mak \"bay\" wan tɛm bin tɔk da tɛm ɔ bifo dat. Dɛn de sho dɛn tɔn dɛn da mɔmɛnt de, so dɛn go bin tɔk am bifo dat.",
+    "callTranscriptUnstatedTimes": "Sɔm tɔn dɛn nɔ de sho tɛm. Di divays we bin rikɔd dɛn nɔ bin se aw i de sho di tɛm dɛn kɔrɛkt, so usay dɛn de insay dis kɔnvɛseshɔn go bi se i nɔ kɔrɛkt.",
+    "callTranscriptOpen": "Rid di transkript"
 }

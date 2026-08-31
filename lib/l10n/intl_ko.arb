@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:30.509980",
+    "@@last_modified": "2026-08-30 21:15:16.444021",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10004,5 +10004,18 @@
     "callHistoryNoAnswer": "응답 없음",
     "callHistoryDeclined": "통화 거절됨",
     "callHistoryYouDeclined": "이 통화를 거절했습니다",
-    "starsEarnedInLanguage": "{language}에서 획득한 별"
+    "starsEarnedInLanguage": "{language}에서 획득한 별",
+    "callTranscriptSharedNotice": "이 통화는 녹취되어 저장됩니다. 통화가 끝난 후 본인과 상대방 모두 확인할 수 있습니다.",
+    "callTranscriptTitle": "통화 녹취록",
+    "callTranscriptLoadFailed": "녹취록을 불러올 수 없습니다.",
+    "callTranscriptRetry": "다시 시도",
+    "callTranscriptStoppedEarly": "이 통화는 한 번에 읽기에는 너무 많은 내용이 있어서 일부가 표시되지 않습니다.",
+    "callTranscriptNone": "{name}님의 녹취록이 없습니다.",
+    "callTranscriptSaidNothing": "{name}님이 아무 말도 하지 않았습니다.",
+    "callTranscriptNothingRead": "{name}님이 말한 내용에서 읽을 수 있는 것이 없습니다.",
+    "callTranscriptPartial": "{name}님이 말한 내용의 일부가 누락되었을 수 있습니다.",
+    "callTranscriptByTime": "{time} 기준",
+    "callTranscriptApproximateTimes": "시간 옆에 \"기준\"으로 표시된 발언은 해당 시간 또는 그 이전에 말한 것입니다. 해당 발언은 그 시점에 표시되므로 더 일찍 말했을 수도 있습니다.",
+    "callTranscriptUnstatedTimes": "일부 발언에는 시간이 표시되지 않습니다. 녹음 장치에서 시간의 정확도를 알려주지 않으므로 대화에서 해당 발언의 위치가 잘못되었을 수 있습니다.",
+    "callTranscriptOpen": "녹취록 읽기"
 }

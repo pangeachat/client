@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:33.280331",
+    "@@last_modified": "2026-08-30 21:15:32.510530",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7103,5 +7103,18 @@
     "callHistoryNoAnswer": "Không trả lời",
     "callHistoryDeclined": "Cuộc gọi bị từ chối",
     "callHistoryYouDeclined": "Bạn đã từ chối cuộc gọi này",
-    "starsEarnedInLanguage": "Số sao kiếm được bằng tiếng {language}"
+    "starsEarnedInLanguage": "Số sao kiếm được bằng tiếng {language}",
+    "callTranscriptSharedNotice": "Cuộc gọi này được phiên âm và lưu lại. Bạn và người còn lại có thể đọc lại sau.",
+    "callTranscriptTitle": "Bản ghi cuộc gọi",
+    "callTranscriptLoadFailed": "Không thể tải bản ghi",
+    "callTranscriptRetry": "Thử lại",
+    "callTranscriptStoppedEarly": "Cuộc gọi này có quá nhiều nội dung để đọc cùng lúc, nên một phần trong đó không được hiển thị.",
+    "callTranscriptNone": "Không có bản ghi từ {name}",
+    "callTranscriptSaidNothing": "{name} không nói gì cả",
+    "callTranscriptNothingRead": "Không thể đọc được gì từ những gì {name} đã nói",
+    "callTranscriptPartial": "Một phần những gì {name} đã nói có thể bị thiếu",
+    "callTranscriptByTime": "lúc {time}",
+    "callTranscriptApproximateTimes": "Một lượt nói được đánh dấu \"lúc\" một thời điểm đã được nói vào hoặc trước thời điểm đó. Những lượt nói đó được hiển thị vào thời điểm đó, nên chúng có thể đã được nói sớm hơn.",
+    "callTranscriptUnstatedTimes": "Một số lượt nói không hiển thị thời gian. Thiết bị ghi âm chúng không cho biết thời gian chính xác đến mức nào, nên vị trí của chúng trong cuộc trò chuyện này có thể không đúng.",
+    "callTranscriptOpen": "Đọc bản ghi"
 }

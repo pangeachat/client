@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-28 11:37:30.150158",
+    "@@last_modified": "2026-08-30 21:15:15.426208",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Enweghị azịza",
     "callHistoryDeclined": "Ajụla oku",
     "callHistoryYouDeclined": "Ị jụrụ oku a",
-    "starsEarnedInLanguage": "Kpakpando enwetara na {language}"
+    "starsEarnedInLanguage": "Kpakpando enwetara na {language}",
+    "callTranscriptSharedNotice": "Adekọ oku a ka edekọrọ ma chekwaa. Gị na onye nke ọzọ nwere ike ịgụ ya ma emechaa.",
+    "callTranscriptTitle": "Adekọ oku",
+    "callTranscriptLoadFailed": "Enweghị ike ibu adekọ ahụ",
+    "callTranscriptRetry": "Gbalịa ọzọ",
+    "callTranscriptStoppedEarly": "Oku a nwere ihe dị ukwuu ịgụ n'otu oge, ya mere, egosighị ụfọdụ n'ime ya.",
+    "callTranscriptNone": "Enweghị adekọ site na {name}",
+    "callTranscriptSaidNothing": "{name} ekwughị ihe ọ bụla",
+    "callTranscriptNothingRead": "Enweghị ike ịgụ ihe ọ bụla site na ihe {name} kwuru",
+    "callTranscriptPartial": "Akụkụ nke ihe {name} kwuru nwere ike ịna-efu",
+    "callTranscriptByTime": "site na {time}",
+    "callTranscriptApproximateTimes": "Oge akara \"site na\" oge ka ekwuru n'oge ahụ ma ọ bụ tupu ya. Egosiri oge ndị ahụ n'oge ahụ, ya mere, enwere ike ikwu ha na mbụ.",
+    "callTranscriptUnstatedTimes": "Ụfọdụ oge anaghị egosi oge. Ngwaọrụ dekọrọ ha ekwughị otú oge ya si dị kpọmkwem, ya mere, ebe ha nọ na mkparịta ụka a nwere ike ịdị njọ.",
+    "callTranscriptOpen": "Gụọ adekọ ahụ"
 }

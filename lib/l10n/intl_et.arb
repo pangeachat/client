@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-28 11:37:28.897859",
+    "@@last_modified": "2026-08-30 21:15:09.765563",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9808,5 +9808,18 @@
     "callHistoryNoAnswer": "Vastamata",
     "callHistoryDeclined": "Kõnest keelduti",
     "callHistoryYouDeclined": "Keeldusite sellest kõnest",
-    "starsEarnedInLanguage": "Tähti teenitud keeles {language}"
+    "starsEarnedInLanguage": "Tähti teenitud keeles {language}",
+    "callTranscriptSharedNotice": "See kõne on transkribeeritud ja salvestatud. Sina ja teine inimene saate seda hiljem lugeda.",
+    "callTranscriptTitle": "Kõne transkriptsioon",
+    "callTranscriptLoadFailed": "Transkriptsiooni ei saanud laadida",
+    "callTranscriptRetry": "Proovi uuesti",
+    "callTranscriptStoppedEarly": "Selles kõnes oli liiga palju lugeda korraga, nii et osa sellest ei kuvata.",
+    "callTranscriptNone": "Transkriptsioon puudub {name}",
+    "callTranscriptSaidNothing": "{name} ei öelnud midagi",
+    "callTranscriptNothingRead": "Midagi ei saanud lugeda sellest, mida {name} ütles",
+    "callTranscriptPartial": "Osa sellest, mida {name} ütles, võib puududa",
+    "callTranscriptByTime": "kell {time}",
+    "callTranscriptApproximateTimes": "Ajamärgiga „kell“ tähistatud pöörded öeldi sel ajal või enne seda. Need pöörded kuvatakse sel hetkel, seega võisid need olla öeldud varem.",
+    "callTranscriptUnstatedTimes": "Mõned pöörded ei näita aega. Seade, mis need salvestas, ei öelnud, kui täpsed selle ajad on, seega võib nende asukoht selles vestluses olla vale.",
+    "callTranscriptOpen": "Loe transkriptsiooni"
 }

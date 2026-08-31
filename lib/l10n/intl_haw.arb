@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-28 11:37:29.667421",
+    "@@last_modified": "2026-08-30 21:15:12.759103",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "ʻAʻohe pane",
     "callHistoryDeclined": "Ua hōʻole ʻia ke kelepona",
     "callHistoryYouDeclined": "Ua hōʻole ʻoe i kēia kelepona",
-    "starsEarnedInLanguage": "Nā hōkū i loaʻa ma ka ʻōlelo {language}"
+    "starsEarnedInLanguage": "Nā hōkū i loaʻa ma ka ʻōlelo {language}",
+    "callTranscriptSharedNotice": "Ua kākau ʻia a mālama ʻia kēia kelepona. Hiki iā ʻoe a me kekahi kanaka ke heluhelu ma hope.",
+    "callTranscriptTitle": "Palapala kelepona",
+    "callTranscriptLoadFailed": "ʻAʻole hiki ke hoʻouka i ka palapala",
+    "callTranscriptRetry": "E hoʻāʻo hou",
+    "callTranscriptStoppedEarly": "Nui loa ka heluhelu ʻana o kēia kelepona i ka manawa hoʻokahi, no laila ʻaʻole i hōʻike ʻia kekahi hapa.",
+    "callTranscriptNone": "ʻAʻohe palapala mai {name}",
+    "callTranscriptSaidNothing": "ʻAʻole i ʻōlelo ʻo {name} i kekahi mea",
+    "callTranscriptNothingRead": "ʻAʻohe mea i hiki ke heluhelu ʻia mai ka mea a {name} i ʻōlelo ai",
+    "callTranscriptPartial": "Ua nalowale paha kekahi hapa o ka mea a {name} i ʻōlelo ai",
+    "callTranscriptByTime": "ma ka hola {time}",
+    "callTranscriptApproximateTimes": "Ua ʻōlelo ʻia kahi huli i kaha ʻia \"ma ka hola\" i ka manawa a i ʻole ma mua. Hōʻike ʻia kēlā mau huli i kēlā manawa, no laila ua ʻōlelo ʻia paha ma mua.",
+    "callTranscriptUnstatedTimes": "ʻAʻole hōʻike kekahi mau huli i ka manawa. ʻAʻole i ʻōlelo ka mea i hoʻopaʻa i ia mau mea i ka pololei o kona mau manawa, no laila ua hewa paha kahi i noho ai lākou i kēia kamaʻilio.",
+    "callTranscriptOpen": "E heluhelu i ka palapala"
 }

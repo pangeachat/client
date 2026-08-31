@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-28 11:37:36.712463",
+    "@@last_modified": "2026-08-30 21:15:27.615940",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10756,5 +10756,18 @@
     "callHistoryNoAnswer": "Ni odgovora",
     "callHistoryDeclined": "Klic zavrnjen",
     "callHistoryYouDeclined": "Zavrnili ste ta klic",
-    "starsEarnedInLanguage": "Zvezdice, pridobljene v {language}"
+    "starsEarnedInLanguage": "Zvezdice, pridobljene v {language}",
+    "callTranscriptSharedNotice": "Ta klic je prepisan in shranjen. Vi in druga oseba ga lahko prebereta pozneje.",
+    "callTranscriptTitle": "Prepis klica",
+    "callTranscriptLoadFailed": "Prepisa ni bilo mogoče naložiti",
+    "callTranscriptRetry": "Poskusi znova",
+    "callTranscriptStoppedEarly": "Ta klic je imel preveč besedila za enkratno branje, zato del ni prikazan.",
+    "callTranscriptNone": "Ni prepisa od {name}",
+    "callTranscriptSaidNothing": "{name} ni rekel ničesar",
+    "callTranscriptNothingRead": "Iz tega, kar je rekel {name}, ni bilo mogoče prebrati ničesar",
+    "callTranscriptPartial": "Del tega, kar je rekel {name}, morda manjka",
+    "callTranscriptByTime": "ob {time}",
+    "callTranscriptApproximateTimes": "Govor, označen z »ob« določenem času, je bil izrečen takrat ali prej. Ti govori so prikazani v tistem trenutku, zato so bili morda izrečeni prej.",
+    "callTranscriptUnstatedTimes": "Nekateri govori ne prikazujejo časa. Naprava, ki jih je posnela, ni navedla, kako natančni so njeni časi, zato je lahko njihova umestitev v pogovoru napačna.",
+    "callTranscriptOpen": "Preberi prepis"
 }

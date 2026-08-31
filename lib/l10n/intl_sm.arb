@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-28 11:37:32.430456",
+    "@@last_modified": "2026-08-30 21:15:29.412155",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Leai se tali",
     "callHistoryDeclined": "Ua te'ena le valaau",
     "callHistoryYouDeclined": "Na e te'ena lenei valaau",
-    "starsEarnedInLanguage": "Fetu na maua i le gagana {language}"
+    "starsEarnedInLanguage": "Fetu na maua i le gagana {language}",
+    "callTranscriptSharedNotice": "Ua tusia ma faasaoina lenei valaau. E mafai ona e faitauina ma le isi tagata pe a uma.",
+    "callTranscriptTitle": "Tusitusiga o le valaau",
+    "callTranscriptLoadFailed": "E le mafai ona utaina le tusitusiga",
+    "callTranscriptRetry": "Toe taumafai",
+    "callTranscriptStoppedEarly": "E tele naua mea e faitau i le tasi valaau, o lea e le o faʻaalia ai nisi vaega.",
+    "callTranscriptNone": "Leai se tusitusiga mai ia {name}",
+    "callTranscriptSaidNothing": "E leai se tala a {name}",
+    "callTranscriptNothingRead": "E leai se mea na mafai ona faitauina mai le tala a {name}",
+    "callTranscriptPartial": "Atonu o loʻo misi se vaega o le tala a {name}",
+    "callTranscriptByTime": "i le {time}",
+    "callTranscriptApproximateTimes": "O se taimi ua faailogaina \"i le\" o se taimi na fai mai ai pe muamua atu. O na taimi e faʻaalia i lena taimi, o lea atonu na fai muamua.",
+    "callTranscriptUnstatedTimes": "O nisi taimi e le o faʻaalia ai se taimi. O le masini na puʻeina e leʻi taʻuina mai le saʻo o ona taimi, o lea atonu e sese le mea o loʻo i ai i lenei talanoaga.",
+    "callTranscriptOpen": "Faitau le tusitusiga"
 }

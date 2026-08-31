@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-28 11:37:33.106032",
+    "@@last_modified": "2026-08-30 21:15:31.790201",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9811,5 +9811,18 @@
     "callHistoryNoAnswer": "Без відповіді",
     "callHistoryDeclined": "Дзвінок відхилено",
     "callHistoryYouDeclined": "Ви відхилили цей дзвінок",
-    "starsEarnedInLanguage": "Зірок зароблено в {language}"
+    "starsEarnedInLanguage": "Зірок зароблено в {language}",
+    "callTranscriptSharedNotice": "Цей дзвінок розшифровано та збережено. Ви та інша особа зможете прочитати його пізніше.",
+    "callTranscriptTitle": "Розшифровка дзвінка",
+    "callTranscriptLoadFailed": "Не вдалося завантажити розшифровку",
+    "callTranscriptRetry": "Спробувати ще раз",
+    "callTranscriptStoppedEarly": "Цей дзвінок містив забагато тексту для одночасного відображення, тому частина його не показана.",
+    "callTranscriptNone": "Немає розшифровки від {name}",
+    "callTranscriptSaidNothing": "{name} нічого не сказав(ла)",
+    "callTranscriptNothingRead": "Нічого не вдалося прочитати з того, що сказав(ла) {name}",
+    "callTranscriptPartial": "Частина сказаного {name} може бути відсутня",
+    "callTranscriptByTime": "до {time}",
+    "callTranscriptApproximateTimes": "Репліка, позначена «до» певного часу, була сказана в цей час або раніше. Ці репліки відображаються в цей момент, тому вони могли бути сказані раніше.",
+    "callTranscriptUnstatedTimes": "Деякі репліки не мають часу. Пристрій, який їх записав, не вказав точність свого часу, тому їхнє місце в цій розмові може бути неправильним.",
+    "callTranscriptOpen": "Прочитати розшифровку"
 }

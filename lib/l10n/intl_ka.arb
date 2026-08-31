@@ -1938,7 +1938,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-28 11:37:30.445865",
+    "@@last_modified": "2026-08-30 21:15:16.336060",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10711,5 +10711,18 @@
     "callHistoryNoAnswer": "პასუხი არ არის",
     "callHistoryDeclined": "ზარი უარყოფილია",
     "callHistoryYouDeclined": "თქვენ უარყავით ეს ზარი",
-    "starsEarnedInLanguage": "ვარსკვლავები მოპოვებული {language}-ში"
+    "starsEarnedInLanguage": "ვარსკვლავები მოპოვებული {language}-ში",
+    "callTranscriptSharedNotice": "ეს ზარი ჩაწერილია და შენახულია. თქვენ და სხვა პირს შეგიძლიათ მისი წაკითხვა მოგვიანებით.",
+    "callTranscriptTitle": "ზარის ჩანაწერი",
+    "callTranscriptLoadFailed": "ჩანაწერის ჩატვირთვა ვერ მოხერხდა",
+    "callTranscriptRetry": "ხელახლა ცდა",
+    "callTranscriptStoppedEarly": "ამ ზარს ერთ ჯერზე ძალიან ბევრი წასაკითხი ჰქონდა, ამიტომ მისი ნაწილი არ არის ნაჩვენები.",
+    "callTranscriptNone": "არ არის ჩანაწერი {name}-ისგან",
+    "callTranscriptSaidNothing": "{name}-ს არაფერი უთქვამს",
+    "callTranscriptNothingRead": "ვერაფერი წაიკითხა, რაც {name}-მ თქვა",
+    "callTranscriptPartial": "რაც {name}-მ თქვა, ნაწილი შეიძლება აკლია",
+    "callTranscriptByTime": "{time}-ის მიხედვით",
+    "callTranscriptApproximateTimes": "დროით მონიშნული „მიერ“ ნათქვამი იყო ამ დროს ან მანამდე. ეს მონაცვლეობები ნაჩვენებია იმ მომენტში, ამიტომ შესაძლოა ისინი ადრე იყო ნათქვამი.",
+    "callTranscriptUnstatedTimes": "ზოგიერთ მონაცვლეობას დრო არ აქვს მითითებული. მოწყობილობამ, რომელმაც ისინი ჩაწერა, არ თქვა, რამდენად ზუსტია მისი დრო, ამიტომ მათი ადგილი ამ საუბარში შეიძლება არასწორი იყოს.",
+    "callTranscriptOpen": "ჩანაწერის წაკითხვა"
 }

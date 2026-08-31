@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-28 11:37:30.060011",
+    "@@last_modified": "2026-08-30 21:15:15.431371",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Ekkert svar",
     "callHistoryDeclined": "Símtali hafnað",
     "callHistoryYouDeclined": "Þú hafnaðir þessu símtali",
-    "starsEarnedInLanguage": "Stjörnur unnar í {language}"
+    "starsEarnedInLanguage": "Stjörnur unnar í {language}",
+    "callTranscriptSharedNotice": "Þetta símtal er ritað og vistað. Þú og hinn aðilinn getið lesið það eftir á.",
+    "callTranscriptTitle": "Umskrift símtals",
+    "callTranscriptLoadFailed": "Ekki tókst að hlaða inn umskriftina",
+    "callTranscriptRetry": "Reyna aftur",
+    "callTranscriptStoppedEarly": "Þetta símtal var of langt til að lesa í einu, svo hluti þess er ekki sýndur.",
+    "callTranscriptNone": "Engin umskrift frá {name}",
+    "callTranscriptSaidNothing": "{name} sagði ekkert",
+    "callTranscriptNothingRead": "Ekkert var hægt að lesa úr því sem {name} sagði",
+    "callTranscriptPartial": "Hluti af því sem {name} sagði gæti vantað",
+    "callTranscriptByTime": "kl. {time}",
+    "callTranscriptApproximateTimes": "Beygja merkt „kl.“ á tilteknum tíma var sögð á eða fyrir þann tíma. Þessar beygjur eru sýndar á þeim tímapunkti, svo þær gætu hafa verið sagðar fyrr.",
+    "callTranscriptUnstatedTimes": "Sumar beygjur sýna engan tíma. Tækið sem tók þær upp sagði ekki hversu nákvæmur tíminn er, svo staðsetning þeirra í þessu samtali gæti verið röng.",
+    "callTranscriptOpen": "Lesa umskriftina"
 }

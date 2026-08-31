@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-28 11:37:30.022496",
+    "@@last_modified": "2026-08-30 21:15:14.855673",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Անպատասխան",
     "callHistoryDeclined": "Զանգը մերժվեց",
     "callHistoryYouDeclined": "Դուք մերժեցիք այս զանգը",
-    "starsEarnedInLanguage": "{language}-ում վաստակած աստղեր"
+    "starsEarnedInLanguage": "{language}-ում վաստակած աստղեր",
+    "callTranscriptSharedNotice": "Այս զանգը տառադարձված է և պահպանված։ Դուք և մյուս անձը կարող եք կարդալ այն հետո։",
+    "callTranscriptTitle": "Զանգի տառադարձում",
+    "callTranscriptLoadFailed": "Հնարավոր չեղավ բեռնել տառադարձումը",
+    "callTranscriptRetry": "Կրկին փորձել",
+    "callTranscriptStoppedEarly": "Այս զանգը չափազանց շատ տեքստ ուներ մեկ անգամից կարդալու համար, ուստի դրա մի մասը ցուցադրված չէ։",
+    "callTranscriptNone": "Տառադարձում չկա {name}-ից",
+    "callTranscriptSaidNothing": "{name}-ը ոչինչ չի ասել",
+    "callTranscriptNothingRead": "Ոչինչ հնարավոր չեղավ կարդալ այն բանից, ինչ ասել է {name}-ը",
+    "callTranscriptPartial": "Այն բանի մի մասը, ինչ ասել է {name}-ը, հնարավոր է բացակայի",
+    "callTranscriptByTime": "ըստ {time}-ի",
+    "callTranscriptApproximateTimes": "Ժամանակով «ըստ» նշված խոսքն ասվել է այդ ժամին կամ դրանից առաջ։ Այդ խոսքերը ցուցադրվում են այդ պահին, ուստի դրանք հնարավոր է ասվել են ավելի վաղ։",
+    "callTranscriptUnstatedTimes": "Որոշ խոսքեր ժամանակ չեն ցուցադրում։ Դրանք ձայնագրող սարքը չի նշել, թե որքան ճշգրիտ են դրա ժամերը, ուստի դրանց դիրքը այս խոսակցության մեջ կարող է սխալ լինել։",
+    "callTranscriptOpen": "Կարդալ տառադարձումը"
 }

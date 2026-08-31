@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-28 11:37:32.525651",
+    "@@last_modified": "2026-08-30 21:15:30.332523",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Ha ho karabo",
     "callHistoryDeclined": "Mohala o hanetsoe",
     "callHistoryYouDeclined": "U hanne mohala ona",
-    "starsEarnedInLanguage": "Dinaledi tse fumanweng ho {language}"
+    "starsEarnedInLanguage": "Dinaledi tse fumanweng ho {language}",
+    "callTranscriptSharedNotice": "Mohala ona o ngotswe mme o bolokilwe. Wena le motho e mong le ka o bala hamorao.",
+    "callTranscriptTitle": "Lengolo la mohala",
+    "callTranscriptLoadFailed": "Ho hlolehile ho kenya lengolo",
+    "callTranscriptRetry": "Leka hape",
+    "callTranscriptStoppedEarly": "Mohala ona o ne o na le ho hongata haholo hoo o ka balwang hang, kahoo karolo e 'ngoe ea oona ha e bontswe.",
+    "callTranscriptNone": "Ha ho lengolo le tswang ho {name}",
+    "callTranscriptSaidNothing": "{name} ha a ka a bua letho",
+    "callTranscriptNothingRead": "Ha ho letho le ka balwang ho seo {name} a se buileng",
+    "callTranscriptPartial": "Karolo ya seo {name} a se buileng e ka be e le siyo",
+    "callTranscriptByTime": "ka {time}",
+    "callTranscriptApproximateTimes": "Nako e tshwailweng ka \"ka\" nako e itseng e boletsweng ka nako eo kapa pele ho yona. Dinako tseo di bontshitswe ka nako eo, kahoo di ka be di boletsweng pejana.",
+    "callTranscriptUnstatedTimes": "Dinako tse ding ha di bontshe nako. Sesebediswa se di rekotileng ha se a ka sa bolela hore dinako tsa sona di nepahetse hakae, kahoo moo di leng teng moqoqong ona ho ka be ho fosahetse.",
+    "callTranscriptOpen": "Bala lengolo"
 }

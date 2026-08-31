@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-28 11:37:28.447465",
+    "@@last_modified": "2026-08-30 21:15:04.859820",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9825,5 +9825,18 @@
     "callHistoryNoAnswer": "Без адказу",
     "callHistoryDeclined": "Званок адхілены",
     "callHistoryYouDeclined": "Вы адхілілі гэты званок",
-    "starsEarnedInLanguage": "Зароблена зорак у {language}"
+    "starsEarnedInLanguage": "Зароблена зорак у {language}",
+    "callTranscriptSharedNotice": "Гэты званок расшыфраваны і захаваны. Вы і іншы чалавек можаце прачытаць яго пасля.",
+    "callTranscriptTitle": "Стэнаграма званка",
+    "callTranscriptLoadFailed": "Не ўдалося загрузіць стэнаграму",
+    "callTranscriptRetry": "Паспрабаваць яшчэ раз",
+    "callTranscriptStoppedEarly": "Гэты званок быў занадта доўгім, каб прачытаць яго адразу, таму частка яго не паказана.",
+    "callTranscriptNone": "Няма стэнаграмы ад {name}",
+    "callTranscriptSaidNothing": "{name} нічога не сказаў",
+    "callTranscriptNothingRead": "Нічога не ўдалося прачытаць з таго, што сказаў {name}",
+    "callTranscriptPartial": "Частка таго, што сказаў {name}, можа адсутнічаць",
+    "callTranscriptByTime": "у {time}",
+    "callTranscriptApproximateTimes": "Рэпліка, пазначаная \"у\" пэўны час, была сказана ў гэты час або раней. Гэтыя рэплікі паказаны ў гэты момант, таму яны маглі быць сказаны раней.",
+    "callTranscriptUnstatedTimes": "Некаторыя рэплікі не паказваюць часу. Прылада, якая іх запісвала, не паведаміла, наколькі дакладны яе час, таму іх месца ў гэтай размове можа быць няправільным.",
+    "callTranscriptOpen": "Прачытаць стэнаграму"
 }

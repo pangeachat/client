@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-28 11:37:31.730573",
+    "@@last_modified": "2026-08-30 21:15:25.160150",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9896,5 +9896,18 @@
     "callHistoryNoAnswer": "Brak odpowiedzi",
     "callHistoryDeclined": "Rozmowa odrzucona",
     "callHistoryYouDeclined": "Odrzuciłeś to połączenie",
-    "starsEarnedInLanguage": "Gwiazdki zdobyte w {language}"
+    "starsEarnedInLanguage": "Gwiazdki zdobyte w {language}",
+    "callTranscriptSharedNotice": "Ta rozmowa jest transkrybowana i zapisywana. Ty i druga osoba możecie ją później przeczytać.",
+    "callTranscriptTitle": "Transkrypcja rozmowy",
+    "callTranscriptLoadFailed": "Nie udało się załadować transkrypcji",
+    "callTranscriptRetry": "Spróbuj ponownie",
+    "callTranscriptStoppedEarly": "Ta rozmowa była zbyt długa, aby wyświetlić ją w całości, więc część tekstu nie jest pokazana.",
+    "callTranscriptNone": "Brak transkrypcji od {name}",
+    "callTranscriptSaidNothing": "{name} nic nie powiedział(a)",
+    "callTranscriptNothingRead": "Nie udało się odczytać niczego z tego, co powiedział(a) {name}",
+    "callTranscriptPartial": "Część tego, co powiedział(a) {name}, może brakować",
+    "callTranscriptByTime": "o {time}",
+    "callTranscriptApproximateTimes": "Wypowiedź oznaczona „o” danej godzinie została wypowiedziana o tej godzinie lub wcześniej. Te wypowiedzi są wyświetlane w tym momencie, więc mogły zostać wypowiedziane wcześniej.",
+    "callTranscriptUnstatedTimes": "Niektóre wypowiedzi nie mają podanego czasu. Urządzenie, które je nagrało, nie podało, jak dokładne są te czasy, więc ich umiejscowienie w tej rozmowie może być błędne.",
+    "callTranscriptOpen": "Przeczytaj transkrypcję"
 }

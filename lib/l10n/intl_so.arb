@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-28 11:37:32.566703",
+    "@@last_modified": "2026-08-30 21:15:29.792197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Jawaab ma jirin",
     "callHistoryDeclined": "Wicitaankii waa la diiday",
     "callHistoryYouDeclined": "Wicitaankan waad diiday",
-    "starsEarnedInLanguage": "Xiddigaha lagu kasbaday {language}"
+    "starsEarnedInLanguage": "Xiddigaha lagu kasbaday {language}",
+    "callTranscriptSharedNotice": "Wicitaankan waa la qoray oo waa la kaydiyay. Adiga iyo qofka kaleba waad akhrisan kartaan ka dib.",
+    "callTranscriptTitle": "Qoraalka wicitaanka",
+    "callTranscriptLoadFailed": "Lama soo shubin karin qoraalka",
+    "callTranscriptRetry": "Isku day mar kale",
+    "callTranscriptStoppedEarly": "Wicitaankan waxa uu lahaa wax badan oo hal mar la akhriyo, sidaa darteed qayb ka mid ah lama tusin.",
+    "callTranscriptNone": "Ma jiro qoraal ka yimid {name}",
+    "callTranscriptSaidNothing": "{name} waxba ma odhan",
+    "callTranscriptNothingRead": "Waxba lagama akhrin karin waxa uu {name} yidhi",
+    "callTranscriptPartial": "Qayb ka mid ah waxa uu {name} yidhi ayaa laga yaabaa inay maqan tahay",
+    "callTranscriptByTime": "markay ahayd {time}",
+    "callTranscriptApproximateTimes": "Hadalka lagu calaamadeeyay \"markay ahayd\" wakhti waxa la yidhi wakhtigaas ama ka hor. Hadalladaas waxa la tusay wakhtigaas, sidaa darteed waxa laga yaabaa in la yidhi goor hore.",
+    "callTranscriptUnstatedTimes": "Hadallada qaar ma muujiyaan wakhti. Qalabkii duubay ma sheegin sida ay wakhtiyadiisu u saxan yihiin, sidaa darteed meesha ay ku jiraan wadahadalkan ayaa laga yaabaa inay khaldan tahay.",
+    "callTranscriptOpen": "Akhri qoraalka"
 }

@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-28 11:37:31.872754",
+    "@@last_modified": "2026-08-30 21:15:25.427002",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10728,5 +10728,18 @@
     "callHistoryNoAnswer": "Sem resposta",
     "callHistoryDeclined": "Chamada recusada",
     "callHistoryYouDeclined": "Recusou esta chamada",
-    "starsEarnedInLanguage": "Estrelas ganhas em {language}"
+    "starsEarnedInLanguage": "Estrelas ganhas em {language}",
+    "callTranscriptSharedNotice": "Esta chamada é transcrita e guardada. Você e a outra pessoa podem lê-la depois.",
+    "callTranscriptTitle": "Transcrição da chamada",
+    "callTranscriptLoadFailed": "Não foi possível carregar a transcrição",
+    "callTranscriptRetry": "Tentar novamente",
+    "callTranscriptStoppedEarly": "Esta chamada tinha demasiado para ler de uma só vez, por isso parte dela não é mostrada.",
+    "callTranscriptNone": "Nenhuma transcrição de {name}",
+    "callTranscriptSaidNothing": "{name} não disse nada",
+    "callTranscriptNothingRead": "Nada pôde ser lido do que {name} disse",
+    "callTranscriptPartial": "Parte do que {name} disse pode estar em falta",
+    "callTranscriptByTime": "por {time}",
+    "callTranscriptApproximateTimes": "Uma vez marcada \"por\" uma hora foi dita nessa hora ou antes. Essas vezes são mostradas nesse momento, por isso podem ter sido ditas mais cedo.",
+    "callTranscriptUnstatedTimes": "Algumas vezes não mostram hora. O dispositivo que as gravou não disse quão exatas são as suas horas, por isso a sua posição nesta conversa pode estar errada.",
+    "callTranscriptOpen": "Ler a transcrição"
 }

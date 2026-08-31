@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-28 11:37:29.079701",
+    "@@last_modified": "2026-08-30 21:15:08.597184",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8030,5 +8030,18 @@
     "callHistoryNoAnswer": "Sin respuesta",
     "callHistoryDeclined": "Llamada rechazada",
     "callHistoryYouDeclined": "Rechazaste esta llamada",
-    "starsEarnedInLanguage": "Estrellas ganadas en {language}"
+    "starsEarnedInLanguage": "Estrellas ganadas en {language}",
+    "callTranscriptSharedNotice": "Esta llamada está transcrita y guardada. Tú y la otra persona podéis leerla después.",
+    "callTranscriptTitle": "Transcripción de la llamada",
+    "callTranscriptLoadFailed": "No se pudo cargar la transcripción",
+    "callTranscriptRetry": "Intentar de nuevo",
+    "callTranscriptStoppedEarly": "Esta llamada tenía demasiado texto para leer de una vez, por lo que parte de ella no se muestra.",
+    "callTranscriptNone": "No hay transcripción de {name}",
+    "callTranscriptSaidNothing": "{name} no dijo nada",
+    "callTranscriptNothingRead": "No se pudo leer nada de lo que dijo {name}",
+    "callTranscriptPartial": "Parte de lo que dijo {name} puede faltar",
+    "callTranscriptByTime": "por {time}",
+    "callTranscriptApproximateTimes": "Un turno marcado \"por\" una hora se dijo en o antes de ese momento. Esos turnos se muestran en ese momento, por lo que pueden haberse dicho antes.",
+    "callTranscriptUnstatedTimes": "Algunos turnos no muestran la hora. El dispositivo que los grabó no indicó cuán exactas son sus horas, por lo que su ubicación en esta conversación puede ser incorrecta.",
+    "callTranscriptOpen": "Leer la transcripción"
 }

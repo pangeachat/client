@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-28 11:37:31.392031",
+    "@@last_modified": "2026-08-30 21:15:23.736166",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "L-ebda tweġiba",
     "callHistoryDeclined": "Sejħa rrifjutata",
     "callHistoryYouDeclined": "Int irrifjutajt din is-sejħa",
-    "starsEarnedInLanguage": "Stilel miksuba bil-{language}"
+    "starsEarnedInLanguage": "Stilel miksuba bil-{language}",
+    "callTranscriptSharedNotice": "Din is-sejħa hija traskritta u ssejvjata. Int u l-persuna l-oħra tistgħu taqrawha wara.",
+    "callTranscriptTitle": "Traskrizzjoni tas-sejħa",
+    "callTranscriptLoadFailed": "Ma setgħetx titgħabba t-traskrizzjoni",
+    "callTranscriptRetry": "Erġa' pprova",
+    "callTranscriptStoppedEarly": "Din is-sejħa kellha wisq x'tinqara f'daqqa, għalhekk xi partijiet mhumiex murija.",
+    "callTranscriptNone": "L-ebda traskrizzjoni minn {name}",
+    "callTranscriptSaidNothing": "{name} ma qal(et) xejn",
+    "callTranscriptNothingRead": "Ma setgħetx tinqara xejn minn dak li qal(et) {name}",
+    "callTranscriptPartial": "Parti minn dak li qal(et) {name} jista' jkun nieqes",
+    "callTranscriptByTime": "sa {time}",
+    "callTranscriptApproximateTimes": "Replika mmarkata \"sa\" ħin intqal f'dak il-ħin jew qablu. Dawk ir-repliki jintwerew f'dak il-mument, għalhekk setgħu ntqalu qabel.",
+    "callTranscriptUnstatedTimes": "Xi repliki ma jurux ħin. L-apparat li rreġistrahom ma qalx kemm huma preċiżi l-ħinijiet tiegħu, għalhekk fejn jinsabu f'din il-konverżazzjoni jista' jkun żbaljat.",
+    "callTranscriptOpen": "Aqra t-traskrizzjoni"
 }

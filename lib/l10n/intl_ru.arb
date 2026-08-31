@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-28 11:37:32.179532",
+    "@@last_modified": "2026-08-30 21:15:26.666124",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10783,5 +10783,18 @@
     "callHistoryNoAnswer": "Нет ответа",
     "callHistoryDeclined": "Звонок отклонен",
     "callHistoryYouDeclined": "Вы отклонили этот звонок",
-    "starsEarnedInLanguage": "Звезд заработано на {language}"
+    "starsEarnedInLanguage": "Звезд заработано на {language}",
+    "callTranscriptSharedNotice": "Этот звонок расшифрован и сохранен. Вы и другой человек сможете прочитать его позже.",
+    "callTranscriptTitle": "Расшифровка звонка",
+    "callTranscriptLoadFailed": "Не удалось загрузить расшифровку",
+    "callTranscriptRetry": "Повторить",
+    "callTranscriptStoppedEarly": "Этот звонок был слишком длинным, чтобы прочитать его за один раз, поэтому часть его не показана.",
+    "callTranscriptNone": "Нет расшифровки от {name}",
+    "callTranscriptSaidNothing": "{name} ничего не сказал(а)",
+    "callTranscriptNothingRead": "Ничего не удалось прочитать из того, что сказал(а) {name}",
+    "callTranscriptPartial": "Часть того, что сказал(а) {name}, может отсутствовать",
+    "callTranscriptByTime": "к {time}",
+    "callTranscriptApproximateTimes": "Реплика, помеченная «к» определенному времени, была произнесена в это время или раньше. Эти реплики показаны в этот момент, поэтому они могли быть произнесены раньше.",
+    "callTranscriptUnstatedTimes": "Некоторые реплики не показывают время. Устройство, которое их записало, не указало, насколько точны его временные метки, поэтому их место в этом разговоре может быть неверным.",
+    "callTranscriptOpen": "Прочитать расшифровку"
 }

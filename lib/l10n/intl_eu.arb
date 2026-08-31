@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-28 11:37:28.998149",
+    "@@last_modified": "2026-08-30 21:15:10.734310",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9811,5 +9811,18 @@
     "callHistoryNoAnswer": "Ez du erantzun",
     "callHistoryDeclined": "Deia baztertuta",
     "callHistoryYouDeclined": "Dei hau baztertu duzu",
-    "starsEarnedInLanguage": "{language} hizkuntzan irabazitako izarrak"
+    "starsEarnedInLanguage": "{language} hizkuntzan irabazitako izarrak",
+    "callTranscriptSharedNotice": "Dei hau transkribatu eta gorde egin da. Zuk eta beste pertsonak irakurri ahal izango duzue geroago.",
+    "callTranscriptTitle": "Deiaren transkripzioa",
+    "callTranscriptLoadFailed": "Ezin izan da transkripzioa kargatu",
+    "callTranscriptRetry": "Saiatu berriro",
+    "callTranscriptStoppedEarly": "Dei honek irakurtzeko gehiegi zuen aldi berean, beraz, zati bat ez da erakusten.",
+    "callTranscriptNone": "Ez dago transkripziorik {name}tik",
+    "callTranscriptSaidNothing": "{name}k ez du ezer esan",
+    "callTranscriptNothingRead": "Ezin izan da ezer irakurri {name}k esandakotik",
+    "callTranscriptPartial": "{name}k esandakoaren zati bat falta izan daiteke",
+    "callTranscriptByTime": "{time}rako",
+    "callTranscriptApproximateTimes": "Ordu batekin \"-rako\" markatutako txanda bat ordu horretan edo lehenago esan zen. Txanda horiek une horretan erakusten dira, beraz, lehenago esan izan zitezkeen.",
+    "callTranscriptUnstatedTimes": "Txanda batzuek ez dute ordurik erakusten. Horiek grabatu zituen gailuak ez zuen esan bere orduak zein zehatzak diren, beraz, elkarrizketa honetan duten kokapena okerra izan daiteke.",
+    "callTranscriptOpen": "Irakurri transkripzioa"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-28 11:37:33.783117",
+    "@@last_modified": "2026-08-30 21:15:34.747426",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Ko si idahun",
     "callHistoryDeclined": "Ipe ti kọ",
     "callHistoryYouDeclined": "O kọ ipe yii",
-    "starsEarnedInLanguage": "Àwọn ìràwọ̀ tí ó jẹ́ gbígbà ní {language}"
+    "starsEarnedInLanguage": "Àwọn ìràwọ̀ tí ó jẹ́ gbígbà ní {language}",
+    "callTranscriptSharedNotice": "A ti kọ ati fipamọ ipe yii. Iwọ ati ẹnikeji rẹ le ka a lẹhinna.",
+    "callTranscriptTitle": "Àkọsílẹ̀ ipe",
+    "callTranscriptLoadFailed": "Kò lè gbé àkọsílẹ̀ náà wọlé",
+    "callTranscriptRetry": "Gbìyànjú lẹ́ẹ̀kan sí",
+    "callTranscriptStoppedEarly": "Ipe yii pọ̀ jù láti kà ní ẹ̀ẹ̀kan, nítorí náà, a kò fi apá kan rẹ̀ hàn.",
+    "callTranscriptNone": "Kò sí àkọsílẹ̀ láti ọ̀dọ̀ {name}",
+    "callTranscriptSaidNothing": "{name} kò sọ ohunkóhun",
+    "callTranscriptNothingRead": "Kò sí ohun tí a lè kà láti inú ohun tí {name} sọ",
+    "callTranscriptPartial": "Apá kan ohun tí {name} sọ lè ti sọnù",
+    "callTranscriptByTime": "nípasẹ̀ {time}",
+    "callTranscriptApproximateTimes": "Ìgbésẹ̀ tí a fi àmì \"nípasẹ̀\" àkókò sí ni a sọ ní tàbí ṣáájú rẹ̀. Àwọn ìgbésẹ̀ wọ̀nyẹn ni a fi hàn ní àkókò náà, nítorí náà, ó lè ti jẹ́ pé a sọ wọ́n tẹ́lẹ̀.",
+    "callTranscriptUnstatedTimes": "Àwọn ìgbésẹ̀ kan kò fi àkókò hàn. Ẹrọ tí ó gba wọ́n sílẹ̀ kò sọ bí àkókò rẹ̀ ṣe péye tó, nítorí náà, ibi tí wọ́n wà nínú ìjíròrò yìí lè jẹ́ àṣìṣe.",
+    "callTranscriptOpen": "Ka àkọsílẹ̀ náà"
 }

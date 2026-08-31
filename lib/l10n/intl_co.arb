@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-28 11:37:28.875662",
+    "@@last_modified": "2026-08-30 21:15:07.800804",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Nisuna risposta",
     "callHistoryDeclined": "Chjama ricusata",
     "callHistoryYouDeclined": "Avete ricusatu sta chjama",
-    "starsEarnedInLanguage": "Stelle guadagnate in {language}"
+    "starsEarnedInLanguage": "Stelle guadagnate in {language}",
+    "callTranscriptSharedNotice": "Sta chjama hè trascritta è salvata. Voi è l'altra persona pudete leghje dopu.",
+    "callTranscriptTitle": "Trascrizzione di a chjama",
+    "callTranscriptLoadFailed": "Ùn si hè pussutu caricà a trascrizzione",
+    "callTranscriptRetry": "Pruvate di novu",
+    "callTranscriptStoppedEarly": "Sta chjama avia troppu da leghje in una volta, dunque una parte ùn hè micca mustrata.",
+    "callTranscriptNone": "Nisuna trascrizzione da {name}",
+    "callTranscriptSaidNothing": "{name} ùn hà dettu nunda",
+    "callTranscriptNothingRead": "Nunda ùn si hè pussutu leghje da ciò chì {name} hà dettu",
+    "callTranscriptPartial": "Una parte di ciò chì {name} hà dettu pò mancà",
+    "callTranscriptByTime": "da {time}",
+    "callTranscriptApproximateTimes": "Un turnu marcatu \"da\" un tempu hè statu dettu à o prima. Quelli turni sò mustrati à quellu mumentu, cusì puderianu esse stati detti prima.",
+    "callTranscriptUnstatedTimes": "Certi turni ùn mostranu micca tempu. U dispusitivu chì l'hà arregistratu ùn hà micca dettu quantu sò esatti i so tempi, cusì induve si trovanu in sta cunversazione pò esse sbagliatu.",
+    "callTranscriptOpen": "Leghje a trascrizzione"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-28 11:37:29.372529",
+    "@@last_modified": "2026-08-30 21:15:09.421590",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10166,5 +10166,18 @@
     "callHistoryNoAnswer": "Pas de réponse",
     "callHistoryDeclined": "Appel refusé",
     "callHistoryYouDeclined": "Vous avez refusé cet appel",
-    "starsEarnedInLanguage": "Étoiles gagnées en {language}"
+    "starsEarnedInLanguage": "Étoiles gagnées en {language}",
+    "callTranscriptSharedNotice": "Cet appel est transcrit et enregistré. Vous et l'autre personne pourrez le lire après.",
+    "callTranscriptTitle": "Transcription de l'appel",
+    "callTranscriptLoadFailed": "Impossible de charger la transcription",
+    "callTranscriptRetry": "Réessayer",
+    "callTranscriptStoppedEarly": "Cet appel contenait trop d'informations à lire en une seule fois, une partie n'est donc pas affichée.",
+    "callTranscriptNone": "Aucune transcription de {name}",
+    "callTranscriptSaidNothing": "{name} n'a rien dit",
+    "callTranscriptNothingRead": "Rien n'a pu être lu de ce que {name} a dit",
+    "callTranscriptPartial": "Une partie de ce que {name} a dit pourrait manquer",
+    "callTranscriptByTime": "par {time}",
+    "callTranscriptApproximateTimes": "Un tour marqué \"par\" une heure a été dit à ou avant celle-ci. Ces tours sont affichés à ce moment-là, ils ont donc pu être dits plus tôt.",
+    "callTranscriptUnstatedTimes": "Certains tours n'indiquent pas d'heure. L'appareil qui les a enregistrés n'a pas précisé l'exactitude de ses heures, leur position dans cette conversation peut donc être erronée.",
+    "callTranscriptOpen": "Lire la transcription"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-28 11:37:29.325698",
+    "@@last_modified": "2026-08-30 21:15:10.731440",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9811,5 +9811,18 @@
     "callHistoryNoAnswer": "Sen resposta",
     "callHistoryDeclined": "Chamada rexeitada",
     "callHistoryYouDeclined": "Rexeitaches esta chamada",
-    "starsEarnedInLanguage": "Estrelas gañadas en {language}"
+    "starsEarnedInLanguage": "Estrelas gañadas en {language}",
+    "callTranscriptSharedNotice": "Esta chamada transcríbese e gárdase. Ti e a outra persoa poderedes lela despois.",
+    "callTranscriptTitle": "Transcrición da chamada",
+    "callTranscriptLoadFailed": "Non se puido cargar a transcrición",
+    "callTranscriptRetry": "Tentar de novo",
+    "callTranscriptStoppedEarly": "Esta chamada tiña demasiado texto para ler dunha soa vez, polo que parte dela non se mostra.",
+    "callTranscriptNone": "Non hai transcrición de {name}",
+    "callTranscriptSaidNothing": "{name} non dixo nada",
+    "callTranscriptNothingRead": "Non se puido ler nada do que dixo {name}",
+    "callTranscriptPartial": "Pode faltar parte do que dixo {name}",
+    "callTranscriptByTime": "por {time}",
+    "callTranscriptApproximateTimes": "Unha intervención marcada \"por\" unha hora foi dita nese momento ou antes. Esas intervencións móstranse nese momento, polo que puideron ser ditas antes.",
+    "callTranscriptUnstatedTimes": "Algunhas intervencións non mostran a hora. O dispositivo que as gravou non indicou a exactitude das súas horas, polo que a súa posición nesta conversa pode ser incorrecta.",
+    "callTranscriptOpen": "Ler a transcrición"
 }

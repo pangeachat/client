@@ -3536,7 +3536,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-28 11:37:30.928981",
+    "@@last_modified": "2026-08-30 21:15:19.462349",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9811,5 +9811,18 @@
     "callHistoryNoAnswer": "Nav atbildes",
     "callHistoryDeclined": "Zvans noraidīts",
     "callHistoryYouDeclined": "Jūs noraidījāt šo zvanu",
-    "starsEarnedInLanguage": "Iegūtās zvaigznes valodā {language}"
+    "starsEarnedInLanguage": "Iegūtās zvaigznes valodā {language}",
+    "callTranscriptSharedNotice": "Šis zvans ir pārrakstīts un saglabāts. Jūs un otra persona varat to izlasīt vēlāk.",
+    "callTranscriptTitle": "Zvana atšifrējums",
+    "callTranscriptLoadFailed": "Nevarēja ielādēt atšifrējumu",
+    "callTranscriptRetry": "Mēģināt vēlreiz",
+    "callTranscriptStoppedEarly": "Šajā zvanā bija pārāk daudz teksta, ko lasīt vienā reizē, tāpēc daļa no tā netiek rādīta.",
+    "callTranscriptNone": "Nav atšifrējuma no {name}",
+    "callTranscriptSaidNothing": "{name} neko neteica",
+    "callTranscriptNothingRead": "Neko nevarēja nolasīt no tā, ko teica {name}",
+    "callTranscriptPartial": "Daļa no tā, ko teica {name}, varētu trūkt",
+    "callTranscriptByTime": "līdz {time}",
+    "callTranscriptApproximateTimes": "Replika, kas atzīmēta ar \"līdz\" noteiktam laikam, tika teikta tajā laikā vai pirms tā. Šīs replikas tiek rādītas tajā brīdī, tāpēc tās varētu būt teiktas agrāk.",
+    "callTranscriptUnstatedTimes": "Dažām replikām nav norādīts laiks. Ierīce, kas tās ierakstīja, nenorādīja, cik precīzi ir tās laiki, tāpēc to vieta šajā sarunā var būt nepareiza.",
+    "callTranscriptOpen": "Lasīt atšifrējumu"
 }

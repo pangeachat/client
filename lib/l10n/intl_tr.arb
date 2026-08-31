@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-28 11:37:33.004561",
+    "@@last_modified": "2026-08-30 21:15:31.338573",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10112,5 +10112,18 @@
     "callHistoryNoAnswer": "Cevap yok",
     "callHistoryDeclined": "Arama reddedildi",
     "callHistoryYouDeclined": "Bu aramayı reddettiniz",
-    "starsEarnedInLanguage": "{language} dilinde kazanılan yıldızlar"
+    "starsEarnedInLanguage": "{language} dilinde kazanılan yıldızlar",
+    "callTranscriptSharedNotice": "Bu arama yazıya döküldü ve kaydedildi. Siz ve diğer kişi daha sonra okuyabilirsiniz.",
+    "callTranscriptTitle": "Arama dökümü",
+    "callTranscriptLoadFailed": "Döküm yüklenemedi",
+    "callTranscriptRetry": "Tekrar dene",
+    "callTranscriptStoppedEarly": "Bu arama tek seferde okunabilecek olandan çok fazlasını içeriyordu, bu yüzden bir kısmı gösterilmiyor.",
+    "callTranscriptNone": "{name} adlı kişiden döküm yok",
+    "callTranscriptSaidNothing": "{name} hiçbir şey söylemedi",
+    "callTranscriptNothingRead": "{name} adlı kişinin söylediklerinden hiçbir şey okunamadı",
+    "callTranscriptPartial": "{name} adlı kişinin söylediklerinin bir kısmı eksik olabilir",
+    "callTranscriptByTime": "{time} itibarıyla",
+    "callTranscriptApproximateTimes": "Bir zaman \"itibarıyla\" işaretlenmiş bir konuşma, o anda veya öncesinde söylenmiştir. Bu konuşmalar o anda gösterilir, bu yüzden daha önce söylenmiş olabilir.",
+    "callTranscriptUnstatedTimes": "Bazı konuşmalarda zaman belirtilmemiştir. Bunları kaydeden cihaz, zamanlarının ne kadar kesin olduğunu belirtmedi, bu yüzden bu konuşmadaki yerleri yanlış olabilir.",
+    "callTranscriptOpen": "Dökümü oku"
 }

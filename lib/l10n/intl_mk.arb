@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-28 11:37:31.013578",
+    "@@last_modified": "2026-08-30 21:15:20.825552",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Нема одговор",
     "callHistoryDeclined": "Повикот е одбиен",
     "callHistoryYouDeclined": "Го одбивте овој повик",
-    "starsEarnedInLanguage": "Освоени ѕвезди во {language}"
+    "starsEarnedInLanguage": "Освоени ѕвезди во {language}",
+    "callTranscriptSharedNotice": "Овој повик е транскрибиран и зачуван. Вие и другото лице можете да го прочитате потоа.",
+    "callTranscriptTitle": "Транскрипт на повик",
+    "callTranscriptLoadFailed": "Не можеше да се вчита транскриптот",
+    "callTranscriptRetry": "Обидете се повторно",
+    "callTranscriptStoppedEarly": "Овој повик имаше премногу за читање одеднаш, па дел од него не е прикажан.",
+    "callTranscriptNone": "Нема транскрипт од {name}",
+    "callTranscriptSaidNothing": "{name} не кажа ништо",
+    "callTranscriptNothingRead": "Ништо не можеше да се прочита од она што го кажа {name}",
+    "callTranscriptPartial": "Дел од она што го кажа {name} може да недостасува",
+    "callTranscriptByTime": "до {time}",
+    "callTranscriptApproximateTimes": "Ред означен „до“ одредено време е кажан во или пред тоа. Тие редови се прикажани во тој момент, па можеби биле кажани порано.",
+    "callTranscriptUnstatedTimes": "Некои редови не покажуваат време. Уредот што ги сними не кажа колку се точни неговите времиња, па местото каде што се наоѓаат во овој разговор може да е погрешно.",
+    "callTranscriptOpen": "Прочитајте го транскриптот"
 }

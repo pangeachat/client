@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:32.726344",
+    "@@last_modified": "2026-08-30 21:15:29.555287",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10329,5 +10329,18 @@
     "callHistoryNoAnswer": "Inget svar",
     "callHistoryDeclined": "Samtal avböjt",
     "callHistoryYouDeclined": "Du avböjde detta samtal",
-    "starsEarnedInLanguage": "Stjärnor intjänade i {language}"
+    "starsEarnedInLanguage": "Stjärnor intjänade i {language}",
+    "callTranscriptSharedNotice": "Samtalet transkriberas och sparas. Du och den andra personen kan läsa det efteråt.",
+    "callTranscriptTitle": "Samtalstranskription",
+    "callTranscriptLoadFailed": "Kunde inte läsa in transkriptionen",
+    "callTranscriptRetry": "Försök igen",
+    "callTranscriptStoppedEarly": "Det här samtalet innehöll för mycket att läsa på en gång, så en del av det visas inte.",
+    "callTranscriptNone": "Ingen transkription från {name}",
+    "callTranscriptSaidNothing": "{name} sa ingenting",
+    "callTranscriptNothingRead": "Inget kunde läsas från vad {name} sa",
+    "callTranscriptPartial": "En del av vad {name} sa kan saknas",
+    "callTranscriptByTime": "vid {time}",
+    "callTranscriptApproximateTimes": "En replik markerad \"vid\" en tid sades vid eller före den. Dessa repliker visas vid den tidpunkten, så de kan ha sagts tidigare.",
+    "callTranscriptUnstatedTimes": "Vissa repliker visar ingen tid. Enheten som spelade in dem angav inte hur exakta dess tider är, så var de befinner sig i denna konversation kan vara fel.",
+    "callTranscriptOpen": "Läs transkriptionen"
 }

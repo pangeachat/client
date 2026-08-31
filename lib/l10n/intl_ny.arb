@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-28 11:37:31.851073",
+    "@@last_modified": "2026-08-30 21:15:24.923900",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Palibe yankho",
     "callHistoryDeclined": "Kuyimba kwakanidwa",
     "callHistoryYouDeclined": "Mwakana kuyimba uku",
-    "starsEarnedInLanguage": "Nyenyezi zopezedwa mu {language}"
+    "starsEarnedInLanguage": "Nyenyezi zopezedwa mu {language}",
+    "callTranscriptSharedNotice": "Kuyimba uku kwalembedwa ndipo kwasungidwa. Inu ndi munthu winayo mutha kukuwerenga pambuyo pake.",
+    "callTranscriptTitle": "Zolembedwa za kuyimba",
+    "callTranscriptLoadFailed": "Zolembedwazo sizinatheke kutsitsa",
+    "callTranscriptRetry": "Yesaninso",
+    "callTranscriptStoppedEarly": "Kuyimba uku kunali ndi zambiri zoti muwerenge nthawi imodzi, chifukwa chake zina sizikuwonetsedwa.",
+    "callTranscriptNone": "Palibe zolembedwa kuchokera kwa {name}",
+    "callTranscriptSaidNothing": "{name} sananene chilichonse",
+    "callTranscriptNothingRead": "Palibe chomwe chikanawerengedwa kuchokera pa zomwe {name} adanena",
+    "callTranscriptPartial": "Gawo lina la zomwe {name} adanena likhoza kusowa",
+    "callTranscriptByTime": "ndi {time}",
+    "callTranscriptApproximateTimes": "Kutembenuka komwe kudalembedwa kuti \"ndi\" nthawi kunanenedwa panthawiyo kapena isanachitike. Kutembenuka kumeneko kumawonetsedwa panthawiyo, kotero kuti kukananenedwa kale.",
+    "callTranscriptUnstatedTimes": "Kutembenuka kwina sikukuwonetsa nthawi. Chipangizo chomwe chidazilemba sichinanene kuti nthawi zake ndi zolondola bwanji, kotero kuti malo ake pakukambirana uku akhoza kukhala olakwika.",
+    "callTranscriptOpen": "Werengani zolembedwazo"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-28 11:37:28.455415",
+    "@@last_modified": "2026-08-30 21:15:05.762864",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "ምንም ምላሽ የለም",
     "callHistoryDeclined": "ጥሪው ውድቅ ተደርጓል",
     "callHistoryYouDeclined": "ይህን ጥሪ እምቢ ብለዋል",
-    "starsEarnedInLanguage": "በ{language} የተገኙ ኮከቦች"
+    "starsEarnedInLanguage": "በ{language} የተገኙ ኮከቦች",
+    "callTranscriptSharedNotice": "ይህ ጥሪ ተገልብጦ ተቀምጧል። እርስዎ እና ሌላኛው ሰው በኋላ ማንበብ ትችላላችሁ።",
+    "callTranscriptTitle": "የጥሪ ግልባጭ",
+    "callTranscriptLoadFailed": "ግልባጩን መጫን አልተቻለም",
+    "callTranscriptRetry": "እንደገና ይሞክሩ",
+    "callTranscriptStoppedEarly": "ይህ ጥሪ በአንድ ጊዜ ለማንበብ በጣም ብዙ ስለነበር፣ የተወሰነው አልታየም።",
+    "callTranscriptNone": "ከ{name} ምንም ግልባጭ የለም",
+    "callTranscriptSaidNothing": "{name} ምንም አልተናገረም",
+    "callTranscriptNothingRead": "ከ{name} ከተናገረው ምንም ሊነበብ አልቻለም",
+    "callTranscriptPartial": "የ{name} ከተናገረው የተወሰነው ክፍል ላይኖር ይችላል",
+    "callTranscriptByTime": "በ{time}",
+    "callTranscriptApproximateTimes": "በሰዓት ምልክት የተደረገበት ተራ በዚያ ሰዓት ወይም ከዚያ በፊት የተነገረ ነው። እነዚያ ተራዎች በዚያ ቅጽበት ይታያሉ፣ ስለዚህ ቀደም ብለው ተነግረው ሊሆን ይችላል።",
+    "callTranscriptUnstatedTimes": "አንዳንድ ተራዎች ጊዜ አያሳዩም። እነሱን የቀረጸው መሳሪያ ሰዓቶቹ ምን ያህል ትክክል እንደሆኑ አልገለጸም፣ ስለዚህ በዚህ ውይይት ውስጥ የት እንደሚቀመጡ የተሳሳተ ሊሆን ይችላል።",
+    "callTranscriptOpen": "ግልባጩን ያንብቡ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-28 11:37:31.255297",
+    "@@last_modified": "2026-08-30 21:15:21.459237",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Tiada jawapan",
     "callHistoryDeclined": "Panggilan ditolak",
     "callHistoryYouDeclined": "Anda menolak panggilan ini",
-    "starsEarnedInLanguage": "Bintang yang diperoleh dalam {language}"
+    "starsEarnedInLanguage": "Bintang yang diperoleh dalam {language}",
+    "callTranscriptSharedNotice": "Panggilan ini ditranskripsi dan disimpan. Anda dan orang lain boleh membacanya selepas itu.",
+    "callTranscriptTitle": "Transkrip panggilan",
+    "callTranscriptLoadFailed": "Tidak dapat memuatkan transkrip",
+    "callTranscriptRetry": "Cuba lagi",
+    "callTranscriptStoppedEarly": "Panggilan ini terlalu banyak untuk dibaca sekali gus, jadi sebahagian daripadanya tidak ditunjukkan.",
+    "callTranscriptNone": "Tiada transkrip daripada {name}",
+    "callTranscriptSaidNothing": "{name} tidak berkata apa-apa",
+    "callTranscriptNothingRead": "Tiada apa-apa yang boleh dibaca daripada apa yang {name} katakan",
+    "callTranscriptPartial": "Sebahagian daripada apa yang {name} katakan mungkin hilang",
+    "callTranscriptByTime": "pada {time}",
+    "callTranscriptApproximateTimes": "Giliran yang ditandakan \"pada\" masa telah dikatakan pada atau sebelum itu. Giliran tersebut ditunjukkan pada masa itu, jadi ia mungkin telah dikatakan lebih awal.",
+    "callTranscriptUnstatedTimes": "Beberapa giliran tidak menunjukkan masa. Peranti yang merakamnya tidak menyatakan betapa tepat masanya, jadi kedudukannya dalam perbualan ini mungkin salah.",
+    "callTranscriptOpen": "Baca transkrip"
 }

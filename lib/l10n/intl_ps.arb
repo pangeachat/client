@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-28 11:37:31.883995",
+    "@@last_modified": "2026-08-30 21:15:27.043978",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "ځواب نشته",
     "callHistoryDeclined": "زنګ رد شو",
     "callHistoryYouDeclined": "تاسو دا زنګ رد کړ",
-    "starsEarnedInLanguage": "{language} کې ترلاسه شوي ستوري"
+    "starsEarnedInLanguage": "{language} کې ترلاسه شوي ستوري",
+    "callTranscriptSharedNotice": "دا زنګ لیکل شوی او خوندي شوی دی. تاسو او بل کس کولی شئ وروسته یې ولولئ.",
+    "callTranscriptTitle": "د زنګ لیکنه",
+    "callTranscriptLoadFailed": "لیکنه پورته نه شوه",
+    "callTranscriptRetry": "بیا هڅه وکړئ",
+    "callTranscriptStoppedEarly": "دا زنګ په یوځل د لوستلو لپاره ډیر څه درلودل، نو ځینې یې نه دي ښودل شوي.",
+    "callTranscriptNone": "د {name} څخه هیڅ لیکنه نشته",
+    "callTranscriptSaidNothing": "{name} هیڅ ونه ویل",
+    "callTranscriptNothingRead": "د {name} له ویلو څخه هیڅ شی نه لوستل کیږي",
+    "callTranscriptPartial": "د {name} د ویلو یوه برخه ممکن ورکه وي",
+    "callTranscriptByTime": "د {time} لخوا",
+    "callTranscriptApproximateTimes": "یو وار چې د یو وخت \"لخوا\" په نښه شوی وي په هغه وخت یا مخکې ویل شوی و. دا وارونه په هغه شیبه کې ښودل شوي، نو ممکن مخکې ویل شوي وي.",
+    "callTranscriptUnstatedTimes": "ځینې وارونه هیڅ وخت نه ښیې. هغه وسیله چې دوی یې ثبت کړي، نه دي ویلي چې د هغې وختونه څومره دقیق دي، نو په دې خبرو اترو کې د دوی ځای ممکن غلط وي.",
+    "callTranscriptOpen": "لیکنه ولولئ"
 }

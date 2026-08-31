@@ -3401,7 +3401,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-28 11:37:28.923544",
+    "@@last_modified": "2026-08-30 21:15:08.096095",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10686,5 +10686,18 @@
     "callHistoryNoAnswer": "Καμία απάντηση",
     "callHistoryDeclined": "Η κλήση απορρίφθηκε",
     "callHistoryYouDeclined": "Απορρίψατε αυτήν την κλήση",
-    "starsEarnedInLanguage": "Αστέρια που κερδήθηκαν στα {language}"
+    "starsEarnedInLanguage": "Αστέρια που κερδήθηκαν στα {language}",
+    "callTranscriptSharedNotice": "Αυτή η κλήση μεταγράφεται και αποθηκεύεται. Εσείς και το άλλο άτομο μπορείτε να τη διαβάσετε αργότερα.",
+    "callTranscriptTitle": "Απομαγνητοφώνηση κλήσης",
+    "callTranscriptLoadFailed": "Δεν ήταν δυνατή η φόρτωση της απομαγνητοφώνησης",
+    "callTranscriptRetry": "Προσπαθήστε ξανά",
+    "callTranscriptStoppedEarly": "Αυτή η κλήση είχε πάρα πολλά για να διαβαστούν με τη μία, οπότε ένα μέρος της δεν εμφανίζεται.",
+    "callTranscriptNone": "Καμία απομαγνητοφώνηση από τον/την {name}",
+    "callTranscriptSaidNothing": "Ο/Η {name} δεν είπε τίποτα",
+    "callTranscriptNothingRead": "Τίποτα δεν μπόρεσε να διαβαστεί από αυτά που είπε ο/η {name}",
+    "callTranscriptPartial": "Μέρος αυτών που είπε ο/η {name} ενδέχεται να λείπει",
+    "callTranscriptByTime": "έως {time}",
+    "callTranscriptApproximateTimes": "Μια σειρά που επισημαίνεται \"έως\" μια ώρα ειπώθηκε την ώρα αυτή ή πριν από αυτήν. Αυτές οι σειρές εμφανίζονται εκείνη τη στιγμή, οπότε μπορεί να έχουν ειπωθεί νωρίτερα.",
+    "callTranscriptUnstatedTimes": "Ορισμένες σειρές δεν εμφανίζουν ώρα. Η συσκευή που τις κατέγραψε δεν ανέφερε πόσο ακριβείς είναι οι ώρες της, οπότε η θέση τους σε αυτήν τη συνομιλία μπορεί να είναι λανθασμένη.",
+    "callTranscriptOpen": "Διαβάστε την απομαγνητοφώνηση"
 }

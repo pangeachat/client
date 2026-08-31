@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:32.436990",
+    "@@last_modified": "2026-08-30 21:15:29.157010",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10760,5 +10760,18 @@
     "callHistoryNoAnswer": "Nema odgovora",
     "callHistoryDeclined": "Poziv odbijen",
     "callHistoryYouDeclined": "Odbili ste ovaj poziv",
-    "starsEarnedInLanguage": "Zvezdice osvojene u {language}"
+    "starsEarnedInLanguage": "Zvezdice osvojene u {language}",
+    "callTranscriptSharedNotice": "Ovaj poziv je transkribovan i sačuvan. Vi i druga osoba ga možete pročitati kasnije.",
+    "callTranscriptTitle": "Transkript poziva",
+    "callTranscriptLoadFailed": "Učitavanje transkripta nije uspelo",
+    "callTranscriptRetry": "Pokušaj ponovo",
+    "callTranscriptStoppedEarly": "Ovaj poziv je imao previše teksta za čitanje odjednom, pa deo nije prikazan.",
+    "callTranscriptNone": "Nema transkripta od {name}",
+    "callTranscriptSaidNothing": "{name} nije ništa rekao/rekla",
+    "callTranscriptNothingRead": "Ništa se nije moglo pročitati od onoga što je {name} rekao/rekla",
+    "callTranscriptPartial": "Deo onoga što je {name} rekao/rekla možda nedostaje",
+    "callTranscriptByTime": "do {time}",
+    "callTranscriptApproximateTimes": "Obrt označen sa „do“ vremena je izrečen u to vreme ili pre njega. Ti obrti su prikazani u tom trenutku, tako da su možda izrečeni ranije.",
+    "callTranscriptUnstatedTimes": "Neki obrti ne prikazuju vreme. Uređaj koji ih je snimio nije naveo koliko su tačna njegova vremena, tako da njihova pozicija u ovom razgovoru može biti pogrešna.",
+    "callTranscriptOpen": "Pročitaj transkript"
 }

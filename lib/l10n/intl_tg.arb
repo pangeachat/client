@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-28 11:37:33.074195",
+    "@@last_modified": "2026-08-30 21:15:31.824386",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Ҷавоб нест",
     "callHistoryDeclined": "Занг рад карда шуд",
     "callHistoryYouDeclined": "Шумо ин зангро рад кардед",
-    "starsEarnedInLanguage": "Ситораҳои бадастомада дар {language}"
+    "starsEarnedInLanguage": "Ситораҳои бадастомада дар {language}",
+    "callTranscriptSharedNotice": "Ин занг сабт ва захира шудааст. Шумо ва шахси дигар метавонед онро баъдтар хонед.",
+    "callTranscriptTitle": "Транскрипти занг",
+    "callTranscriptLoadFailed": "Транскриптро бор кардан ғайриимкон буд",
+    "callTranscriptRetry": "Аз нав кӯшиш кунед",
+    "callTranscriptStoppedEarly": "Ин занг барои якбора хондан хеле зиёд буд, аз ин рӯ, баъзеи он нишон дода нашудааст.",
+    "callTranscriptNone": "Транскрипт аз {name} нест",
+    "callTranscriptSaidNothing": "{name} чизе нагуфт",
+    "callTranscriptNothingRead": "Аз гуфтаҳои {name} чизе хонда нашуд",
+    "callTranscriptPartial": "Қисме аз гуфтаҳои {name} метавонад гум шуда бошад",
+    "callTranscriptByTime": "то {time}",
+    "callTranscriptApproximateTimes": "Навбате, ки бо вақт \"то\" ишора шудааст, дар он вақт ё пеш аз он гуфта шудааст. Ин навбатҳо дар он лаҳза нишон дода мешаванд, аз ин рӯ, онҳо метавонанд қаблан гуфта шуда бошанд.",
+    "callTranscriptUnstatedTimes": "Баъзе навбатҳо вақтро нишон намедиҳанд. Дастгоҳе, ки онҳоро сабт кардааст, нагуфт, ки вақтҳои он то чӣ андоза дақиқанд, аз ин рӯ, ҷойгиршавии онҳо дар ин сӯҳбат метавонад нодуруст бошад.",
+    "callTranscriptOpen": "Транскриптро хонед"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-28 11:37:32.263191",
+    "@@last_modified": "2026-08-30 21:15:27.865976",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "පිළිතුරක් නැත",
     "callHistoryDeclined": "ඇමතුම ප්‍රතික්ෂේප කරන ලදී",
     "callHistoryYouDeclined": "ඔබ මෙම ඇමතුම ප්‍රතික්ෂේප කළා",
-    "starsEarnedInLanguage": "{language} භාෂාවෙන් උපයාගත් තරු"
+    "starsEarnedInLanguage": "{language} භාෂාවෙන් උපයාගත් තරු",
+    "callTranscriptSharedNotice": "මෙම ඇමතුම පිටපත් කර සුරැකේ. ඔබට සහ අනෙක් පුද්ගලයාට එය පසුව කියවිය හැක.",
+    "callTranscriptTitle": "ඇමතුම් පිටපත",
+    "callTranscriptLoadFailed": "පිටපත පූරණය කිරීමට නොහැකි විය",
+    "callTranscriptRetry": "නැවත උත්සාහ කරන්න",
+    "callTranscriptStoppedEarly": "මෙම ඇමතුමේ එකවර කියවීමට බොහෝ දේ තිබූ නිසා, එහි සමහරක් නොපෙන්වයි.",
+    "callTranscriptNone": "{name} වෙතින් පිටපතක් නැත",
+    "callTranscriptSaidNothing": "{name} කිසිවක් කීවේ නැත",
+    "callTranscriptNothingRead": "{name} පැවසූ දෙයින් කිසිවක් කියවීමට නොහැකි විය",
+    "callTranscriptPartial": "{name} පැවසූ දේවලින් කොටසක් අතුරුදහන් වී තිබිය හැක",
+    "callTranscriptByTime": "{time} වන විට",
+    "callTranscriptApproximateTimes": "වේලාවක් \"by\" ලෙස සලකුණු කර ඇති වාරයක් එම වේලාවේදී හෝ ඊට පෙර පවසා ඇත. එම වාරයන් එම මොහොතේ පෙන්වනු ලැබේ, එබැවින් ඒවා කලින් පවසා තිබිය හැක.",
+    "callTranscriptUnstatedTimes": "සමහර වාරයන් වේලාවක් නොපෙන්වයි. ඒවා පටිගත කළ උපාංගය එහි වේලාවන් කෙතරම් නිවැරදිදැයි කීවේ නැත, එබැවින් මෙම සංවාදයේ ඒවා පිහිටා ඇති ස්ථානය වැරදි විය හැක.",
+    "callTranscriptOpen": "පිටපත කියවන්න"
 }

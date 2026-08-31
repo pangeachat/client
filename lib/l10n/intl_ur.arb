@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-28 11:37:33.261056",
+    "@@last_modified": "2026-08-30 21:15:32.463981",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "کوئی جواب نہیں",
     "callHistoryDeclined": "کال رد کر دی گئی",
     "callHistoryYouDeclined": "آپ نے یہ کال رد کر دی",
-    "starsEarnedInLanguage": "{language} میں حاصل کردہ ستارے"
+    "starsEarnedInLanguage": "{language} میں حاصل کردہ ستارے",
+    "callTranscriptSharedNotice": "اس کال کو نقل کیا گیا ہے اور محفوظ کیا گیا ہے۔ آپ اور دوسرا شخص اسے بعد میں پڑھ سکتے ہیں۔",
+    "callTranscriptTitle": "کال ٹرانسکرپٹ",
+    "callTranscriptLoadFailed": "ٹرانسکرپٹ لوڈ نہیں ہو سکا",
+    "callTranscriptRetry": "دوبارہ کوشش کریں",
+    "callTranscriptStoppedEarly": "اس کال میں ایک ساتھ پڑھنے کے لیے بہت کچھ تھا، اس لیے اس کا کچھ حصہ نہیں دکھایا گیا ہے۔",
+    "callTranscriptNone": "{name} سے کوئی ٹرانسکرپٹ نہیں",
+    "callTranscriptSaidNothing": "{name} نے کچھ نہیں کہا",
+    "callTranscriptNothingRead": "{name} نے جو کہا اس سے کچھ بھی نہیں پڑھا جا سکا",
+    "callTranscriptPartial": "{name} نے جو کہا اس کا کچھ حصہ غائب ہو سکتا ہے",
+    "callTranscriptByTime": "{time} تک",
+    "callTranscriptApproximateTimes": "ایک باری جس پر \"تک\" کا نشان ہے، وہ اس وقت یا اس سے پہلے کہی گئی تھی۔ وہ باریاں اس لمحے دکھائی جاتی ہیں، لہذا وہ پہلے کہی گئی ہو سکتی ہیں۔",
+    "callTranscriptUnstatedTimes": "کچھ باریوں میں کوئی وقت نہیں دکھایا گیا ہے۔ جس ڈیوائس نے انہیں ریکارڈ کیا تھا اس نے یہ نہیں بتایا کہ اس کے اوقات کتنے درست ہیں، لہذا وہ اس گفتگو میں جہاں ہیں وہ غلط ہو سکتے ہیں۔",
+    "callTranscriptOpen": "ٹرانسکرپٹ پڑھیں"
 }

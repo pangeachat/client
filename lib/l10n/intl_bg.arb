@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-28 11:37:28.418389",
+    "@@last_modified": "2026-08-30 21:15:04.628578",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Без отговор",
     "callHistoryDeclined": "Разговорът е отхвърлен",
     "callHistoryYouDeclined": "Вие отхвърлихте този разговор",
-    "starsEarnedInLanguage": "Спечелени звезди на {language}"
+    "starsEarnedInLanguage": "Спечелени звезди на {language}",
+    "callTranscriptSharedNotice": "Това обаждане е транскрибирано и запазено. Вие и другият човек можете да го прочетете след това.",
+    "callTranscriptTitle": "Препис на разговора",
+    "callTranscriptLoadFailed": "Неуспешно зареждане на преписа",
+    "callTranscriptRetry": "Опитай пак",
+    "callTranscriptStoppedEarly": "Това обаждане съдържаше твърде много текст за еднократно четене, затова част от него не е показана.",
+    "callTranscriptNone": "Няма препис от {name}",
+    "callTranscriptSaidNothing": "{name} не каза нищо",
+    "callTranscriptNothingRead": "Нищо не може да бъде прочетено от казаното от {name}",
+    "callTranscriptPartial": "Част от казаното от {name} може да липсва",
+    "callTranscriptByTime": "към {time}",
+    "callTranscriptApproximateTimes": "Реплика, отбелязана „към“ дадено време, е казана по това време или преди него. Тези реплики са показани в този момент, така че може да са били казани по-рано.",
+    "callTranscriptUnstatedTimes": "Някои реплики не показват време. Устройството, което ги е записало, не е посочило колко точни са времената му, така че мястото им в този разговор може да е грешно.",
+    "callTranscriptOpen": "Прочетете преписа"
 }

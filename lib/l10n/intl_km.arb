@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-28 11:37:30.435988",
+    "@@last_modified": "2026-08-30 21:15:16.421190",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "គ្មានការឆ្លើយតប",
     "callHistoryDeclined": "ការហៅត្រូវបានបដិសេធ",
     "callHistoryYouDeclined": "អ្នកបានបដិសេធការហៅនេះ",
-    "starsEarnedInLanguage": "ផ្កាយដែលទទួលបានក្នុង{language}"
+    "starsEarnedInLanguage": "ផ្កាយដែលទទួលបានក្នុង{language}",
+    "callTranscriptSharedNotice": "ការហៅនេះត្រូវបានចម្លង និងរក្សាទុក។ អ្នក និងអ្នកផ្សេងទៀតអាចអានវាបាននៅពេលក្រោយ។",
+    "callTranscriptTitle": "ប្រតិចារិកការហៅ",
+    "callTranscriptLoadFailed": "មិនអាចផ្ទុកប្រតិចារិកបានទេ",
+    "callTranscriptRetry": "ព្យាយាម​ម្ដង​ទៀត",
+    "callTranscriptStoppedEarly": "ការហៅនេះមានច្រើនពេកដែលត្រូវអានក្នុងពេលតែមួយ ដូច្នេះផ្នែកខ្លះនៃវាគឺមិនត្រូវបានបង្ហាញទេ។",
+    "callTranscriptNone": "គ្មានប្រតិចារិកពី {name} ទេ",
+    "callTranscriptSaidNothing": "{name} មិនបាននិយាយអ្វីទាំងអស់",
+    "callTranscriptNothingRead": "គ្មានអ្វីអាចអានបានពីអ្វីដែល {name} បាននិយាយនោះទេ",
+    "callTranscriptPartial": "ផ្នែកខ្លះនៃអ្វីដែល {name} បាននិយាយអាចនឹងបាត់បង់",
+    "callTranscriptByTime": "ដោយ {time}",
+    "callTranscriptApproximateTimes": "វេនដែលសម្គាល់ថា \"ដោយ\" ពេលវេលាត្រូវបាននិយាយនៅពេលនោះ ឬមុនពេលនោះ។ វេនទាំងនោះត្រូវបានបង្ហាញនៅពេលនោះ ដូច្នេះពួកគេអាចត្រូវបាននិយាយមុននេះ។",
+    "callTranscriptUnstatedTimes": "វេនខ្លះមិនបង្ហាញពេលវេលាទេ។ ឧបករណ៍ដែលបានកត់ត្រាពួកវាមិនបាននិយាយថាពេលវេលារបស់វាត្រឹមត្រូវប៉ុណ្ណានោះទេ ដូច្នេះទីតាំងរបស់ពួកវានៅក្នុងការសន្ទនានេះអាចនឹងខុស។",
+    "callTranscriptOpen": "អានប្រតិចារិក"
 }

@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-28 11:37:28.844534",
+    "@@last_modified": "2026-08-30 21:15:07.794403",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10731,5 +10731,18 @@
     "callHistoryNoAnswer": "Intet svar",
     "callHistoryDeclined": "Opkald afvist",
     "callHistoryYouDeclined": "Du afviste dette opkald",
-    "starsEarnedInLanguage": "Stjerner optjent i {language}"
+    "starsEarnedInLanguage": "Stjerner optjent i {language}",
+    "callTranscriptSharedNotice": "Dette opkald er transskriberet og gemt. Du og den anden person kan læse det bagefter.",
+    "callTranscriptTitle": "Opkaldstranskription",
+    "callTranscriptLoadFailed": "Kunne ikke indlæse transskriptionen",
+    "callTranscriptRetry": "Prøv igen",
+    "callTranscriptStoppedEarly": "Dette opkald havde for meget at læse på én gang, så noget af det vises ikke.",
+    "callTranscriptNone": "Ingen transskription fra {name}",
+    "callTranscriptSaidNothing": "{name} sagde intet",
+    "callTranscriptNothingRead": "Intet kunne læses fra hvad {name} sagde",
+    "callTranscriptPartial": "En del af hvad {name} sagde mangler muligvis",
+    "callTranscriptByTime": "kl. {time}",
+    "callTranscriptApproximateTimes": "En tur markeret \"kl.\" et tidspunkt blev sagt på eller før det. Disse ture vises på det tidspunkt, så de kan være blevet sagt tidligere.",
+    "callTranscriptUnstatedTimes": "Nogle ture viser ingen tid. Enheden, der optog dem, sagde ikke, hvor nøjagtige dens tider er, så hvor de sidder i denne samtale, kan være forkert.",
+    "callTranscriptOpen": "Læs transskriptionen"
 }

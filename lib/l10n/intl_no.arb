@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-28 11:37:31.552856",
+    "@@last_modified": "2026-08-30 21:15:23.725441",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Ikke noe svar",
     "callHistoryDeclined": "Samtalen avslått",
     "callHistoryYouDeclined": "Du avslo denne samtalen",
-    "starsEarnedInLanguage": "Stjerner opptjent i {language}"
+    "starsEarnedInLanguage": "Stjerner opptjent i {language}",
+    "callTranscriptSharedNotice": "Denne samtalen er transkribert og lagret. Du og den andre personen kan lese den etterpå.",
+    "callTranscriptTitle": "Samtaletranskripsjon",
+    "callTranscriptLoadFailed": "Kunne ikke laste transkripsjonen",
+    "callTranscriptRetry": "Prøv igjen",
+    "callTranscriptStoppedEarly": "Denne samtalen hadde for mye å lese på en gang, så noe av den vises ikke.",
+    "callTranscriptNone": "Ingen transkripsjon fra {name}",
+    "callTranscriptSaidNothing": "{name} sa ingenting",
+    "callTranscriptNothingRead": "Ingenting kunne leses fra det {name} sa",
+    "callTranscriptPartial": "Deler av det {name} sa kan mangle",
+    "callTranscriptByTime": "innen {time}",
+    "callTranscriptApproximateTimes": "En replikk merket \"innen\" et tidspunkt ble sagt på eller før det. Disse replikkene vises på det tidspunktet, så de kan ha blitt sagt tidligere.",
+    "callTranscriptUnstatedTimes": "Noen replikker viser ingen tid. Enheten som spilte dem inn, sa ikke hvor nøyaktige tidspunktene er, så hvor de befinner seg i denne samtalen kan være feil.",
+    "callTranscriptOpen": "Les transkripsjonen"
 }

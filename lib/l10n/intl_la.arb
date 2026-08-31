@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-28 11:37:30.633832",
+    "@@last_modified": "2026-08-30 21:15:18.361012",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Nullum responsum",
     "callHistoryDeclined": "Colloquium recusatum",
     "callHistoryYouDeclined": "Hoc colloquium recusavisti",
-    "starsEarnedInLanguage": "Stellae in {language} meritae"
+    "starsEarnedInLanguage": "Stellae in {language} meritae",
+    "callTranscriptSharedNotice": "Haec vocatio transcripta et servata est. Tu et alter eam postea legere potestis.",
+    "callTranscriptTitle": "Transcriptum vocationis",
+    "callTranscriptLoadFailed": "Transcriptum onerari non potuit",
+    "callTranscriptRetry": "Iterum tenta",
+    "callTranscriptStoppedEarly": "Haec vocatio nimium habuit legendi uno tempore, itaque pars eius non ostenditur.",
+    "callTranscriptNone": "Nullum transcriptum ab {name}",
+    "callTranscriptSaidNothing": "{name} nihil dixit",
+    "callTranscriptNothingRead": "Nihil legi potuit ex iis quae {name} dixit",
+    "callTranscriptPartial": "Pars eorum quae {name} dixit deesse potest",
+    "callTranscriptByTime": "per {time}",
+    "callTranscriptApproximateTimes": "Vicissitudo notata \"per\" tempus dicta est eo tempore vel antea. Illae vicissitudines illo momento ostenduntur, itaque antea dictae esse possunt.",
+    "callTranscriptUnstatedTimes": "Nonnullae vicissitudines nullum tempus ostendunt. Apparatus qui eas notavit non dixit quam accurata essent tempora eius, itaque locus earum in hac conversatione falsus esse potest.",
+    "callTranscriptOpen": "Legere transcriptum"
 }

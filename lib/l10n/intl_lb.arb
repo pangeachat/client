@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-28 11:37:30.665984",
+    "@@last_modified": "2026-08-30 21:15:18.951987",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Keng Äntwert",
     "callHistoryDeclined": "Uruff ofgeleent",
     "callHistoryYouDeclined": "Dir hutt dësen Uruff ofgeleent",
-    "starsEarnedInLanguage": "Stären a {language} verdéngt"
+    "starsEarnedInLanguage": "Stären a {language} verdéngt",
+    "callTranscriptSharedNotice": "Dësen Uruff gëtt transkribéiert a gespäichert. Dir an déi aner Persoun kënnen et duerno liesen.",
+    "callTranscriptTitle": "Uruff Transkript",
+    "callTranscriptLoadFailed": "Konnt den Transkript net lueden",
+    "callTranscriptRetry": "Nach eng Kéier probéieren",
+    "callTranscriptStoppedEarly": "Dësen Uruff hat ze vill Text op eemol, dofir gëtt en Deel dovun net ugewisen.",
+    "callTranscriptNone": "Keen Transkript vum {name}",
+    "callTranscriptSaidNothing": "{name} huet näischt gesot",
+    "callTranscriptNothingRead": "Näischt konnt gelies ginn vun deem wat {name} gesot huet",
+    "callTranscriptPartial": "En Deel vun deem wat {name} gesot huet, feelt eventuell",
+    "callTranscriptByTime": "vun {time}",
+    "callTranscriptApproximateTimes": "Eng Äntwert, déi mat enger Zäit \"vun\" markéiert ass, gouf zu oder virun där Zäit gesot. Dës Äntwerte ginn zu deem Moment ugewisen, sou datt se eventuell méi fréi gesot goufen.",
+    "callTranscriptUnstatedTimes": "Verschidden Äntwerte weisen keng Zäit un. Den Apparat, deen se opgeholl huet, huet net uginn, wéi genee seng Zäite sinn, sou datt hir Positioun an dësem Gespréich falsch ka sinn.",
+    "callTranscriptOpen": "Transkript liesen"
 }

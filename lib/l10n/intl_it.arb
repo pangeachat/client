@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:30.255718",
+    "@@last_modified": "2026-08-30 21:15:23.433277",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9884,5 +9884,18 @@
     "callHistoryNoAnswer": "Nessuna risposta",
     "callHistoryDeclined": "Chiamata rifiutata",
     "callHistoryYouDeclined": "Hai rifiutato questa chiamata",
-    "starsEarnedInLanguage": "Stelle guadagnate in {language}"
+    "starsEarnedInLanguage": "Stelle guadagnate in {language}",
+    "callTranscriptSharedNotice": "Questa chiamata è trascritta e salvata. Tu e l'altra persona potete leggerla in seguito.",
+    "callTranscriptTitle": "Trascrizione della chiamata",
+    "callTranscriptLoadFailed": "Impossibile caricare la trascrizione",
+    "callTranscriptRetry": "Riprova",
+    "callTranscriptStoppedEarly": "Questa chiamata conteneva troppe informazioni da leggere in una volta sola, quindi parte di essa non viene mostrata.",
+    "callTranscriptNone": "Nessuna trascrizione da {name}",
+    "callTranscriptSaidNothing": "{name} non ha detto nulla",
+    "callTranscriptNothingRead": "Non è stato possibile leggere nulla di ciò che {name} ha detto",
+    "callTranscriptPartial": "Parte di ciò che {name} ha detto potrebbe mancare",
+    "callTranscriptByTime": "entro le {time}",
+    "callTranscriptApproximateTimes": "Un intervento contrassegnato \"entro\" un'ora è stato detto a quell'ora o prima. Tali interventi vengono mostrati in quel momento, quindi potrebbero essere stati detti prima.",
+    "callTranscriptUnstatedTimes": "Alcuni interventi non mostrano l'ora. Il dispositivo che li ha registrati non ha specificato l'esattezza delle sue ore, quindi la loro posizione in questa conversazione potrebbe essere errata.",
+    "callTranscriptOpen": "Leggi la trascrizione"
 }

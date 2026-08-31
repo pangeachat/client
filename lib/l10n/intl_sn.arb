@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-28 11:37:32.643281",
+    "@@last_modified": "2026-08-30 21:15:29.096386",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Hapana mhinduro",
     "callHistoryDeclined": "Kufona kwarambwa",
     "callHistoryYouDeclined": "Waramba kufona uku",
-    "starsEarnedInLanguage": "Nyeredzi dzawanikwa mu{language}"
+    "starsEarnedInLanguage": "Nyeredzi dzawanikwa mu{language}",
+    "callTranscriptSharedNotice": "Kufona uku kwakanyorwa uye kwachengetwa. Iwe nemumwe wako munogona kukuverenga pashure.",
+    "callTranscriptTitle": "Zvakataurwa pakufona",
+    "callTranscriptLoadFailed": "Zvakataurwa hazvina kukwanisa kurodha",
+    "callTranscriptRetry": "Edza zvakare",
+    "callTranscriptStoppedEarly": "Kufona uku kwakanga kune zvakawanda zvekuverenga kamwechete, saka zvimwe hazvina kuratidzwa.",
+    "callTranscriptNone": "Hapana zvakataurwa kubva kuna {name}",
+    "callTranscriptSaidNothing": "{name} haana kutaura chinhu",
+    "callTranscriptNothingRead": "Hapana chakaverengwa kubva pane zvakataurwa na {name}",
+    "callTranscriptPartial": "Chikamu chezvakataurwa na {name} chinogona kunge chisipo",
+    "callTranscriptByTime": "na {time}",
+    "callTranscriptApproximateTimes": "Kutaura kwakanyorwa kuti \"na\" nguva kwakataurwa panguva iyoyo kana pamberi payo. Kutaura ikoko kunoratidzwa panguva iyoyo, saka kunogona kunge kwakataurwa kare.",
+    "callTranscriptUnstatedTimes": "Zvimwe zvakataurwa hazviratidzi nguva. Chishandiso chakazvinyora hachina kutaura kuti nguva dzacho dzakanyatsojeka sei, saka panogara zvakataurwa izvi muhurukuro iyi panogona kunge pasina kururama.",
+    "callTranscriptOpen": "Verenga zvakataurwa"
 }

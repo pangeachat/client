@@ -1325,7 +1325,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-28 11:37:32.980008",
+    "@@last_modified": "2026-08-30 21:15:30.917571",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10761,5 +10761,18 @@
     "callHistoryNoAnswer": "సమాధానం లేదు",
     "callHistoryDeclined": "కాల్ తిరస్కరించబడింది",
     "callHistoryYouDeclined": "మీరు ఈ కాల్‌ను తిరస్కరించారు",
-    "starsEarnedInLanguage": "{language}లో సంపాదించిన నక్షత్రాలు"
+    "starsEarnedInLanguage": "{language}లో సంపాదించిన నక్షత్రాలు",
+    "callTranscriptSharedNotice": "ఈ కాల్ ట్రాన్స్‌క్రైబ్ చేయబడింది మరియు సేవ్ చేయబడింది. మీరు మరియు అవతలి వ్యక్తి తర్వాత దీన్ని చదవగలరు.",
+    "callTranscriptTitle": "కాల్ ట్రాన్స్‌క్రిప్ట్",
+    "callTranscriptLoadFailed": "ట్రాన్స్‌క్రిప్ట్‌ను లోడ్ చేయలేకపోయాము",
+    "callTranscriptRetry": "మళ్ళీ ప్రయత్నించండి",
+    "callTranscriptStoppedEarly": "ఈ కాల్‌లో ఒకేసారి చదవడానికి చాలా ఎక్కువ ఉంది, కాబట్టి అందులో కొంత భాగం చూపబడలేదు.",
+    "callTranscriptNone": "{name} నుండి ట్రాన్స్‌క్రిప్ట్ లేదు",
+    "callTranscriptSaidNothing": "{name} ఏమీ చెప్పలేదు",
+    "callTranscriptNothingRead": "{name} చెప్పిన దాని నుండి ఏమీ చదవబడలేదు",
+    "callTranscriptPartial": "{name} చెప్పిన దానిలో కొంత భాగం మిస్ అయి ఉండవచ్చు",
+    "callTranscriptByTime": "{time} ద్వారా",
+    "callTranscriptApproximateTimes": "సమయం ద్వారా \"గుర్తించబడిన\" ఒక వంతు ఆ సమయంలో లేదా అంతకు ముందు చెప్పబడింది. ఆ వంతులు ఆ క్షణంలో చూపబడతాయి, కాబట్టి అవి అంతకు ముందు చెప్పబడి ఉండవచ్చు.",
+    "callTranscriptUnstatedTimes": "కొన్ని వంతులకు సమయం చూపబడదు. వాటిని రికార్డ్ చేసిన పరికరం దాని సమయాలు ఎంత ఖచ్చితమైనవో చెప్పలేదు, కాబట్టి ఈ సంభాషణలో అవి ఎక్కడ ఉన్నాయో తప్పు కావచ్చు.",
+    "callTranscriptOpen": "ట్రాన్స్‌క్రిప్ట్‌ను చదవండి"
 }

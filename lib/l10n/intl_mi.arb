@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-28 11:37:30.993364",
+    "@@last_modified": "2026-08-30 21:15:21.760326",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Kāore he whakautu",
     "callHistoryDeclined": "Kua whakakorea te waea",
     "callHistoryYouDeclined": "I whakakorea e koe tēnei waea",
-    "starsEarnedInLanguage": "Whetū i whiwhi i te reo {language}"
+    "starsEarnedInLanguage": "Whetū i whiwhi i te reo {language}",
+    "callTranscriptSharedNotice": "Kua tuhia, kua tiakina tēnei waea. Ka taea e koe me tētahi atu te pānui i muri mai.",
+    "callTranscriptTitle": "Tuhinga waea",
+    "callTranscriptLoadFailed": "Kāore i taea te uta i te tuhinga",
+    "callTranscriptRetry": "Whakamātauria anō",
+    "callTranscriptStoppedEarly": "He roa rawa tēnei waea kia pānuitia katoatia i te wā kotahi, nō reira kāore i whakaaturia ētahi wāhanga.",
+    "callTranscriptNone": "Kāore he tuhinga mai i a {name}",
+    "callTranscriptSaidNothing": "Kāore a {name} i kōrero i tētahi mea",
+    "callTranscriptNothingRead": "Kāore i taea te pānui i tētahi mea mai i ngā kōrero a {name}",
+    "callTranscriptPartial": "Tērā pea kei te ngaro tētahi wāhanga o ngā kōrero a {name}",
+    "callTranscriptByTime": "i te {time}",
+    "callTranscriptApproximateTimes": "Ko te hurihanga i tohua \"i te\" wā i kōrerohia i taua wā, i mua rānei i taua wā. Ka whakaaturia aua hurihanga i taua wā, nō reira tērā pea i kōrerohia i mua ake.",
+    "callTranscriptUnstatedTimes": "Kāore ētahi hurihanga e whakaatu wā. Kāore te pūrere i tuhi i aua hurihanga i kī he pēhea te tika o ōna wā, nō reira tērā pea he hē te wāhi o aua hurihanga i roto i tēnei kōrerorero.",
+    "callTranscriptOpen": "Pānuitia te tuhinga"
 }

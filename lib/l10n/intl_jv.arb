@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-28 11:37:30.373171",
+    "@@last_modified": "2026-08-30 21:15:16.145865",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Ora ana wangsulan",
     "callHistoryDeclined": "Telpon ditolak",
     "callHistoryYouDeclined": "Sampeyan nolak telpon iki",
-    "starsEarnedInLanguage": "Lintang sing dipikolehi ing {language}"
+    "starsEarnedInLanguage": "Lintang sing dipikolehi ing {language}",
+    "callTranscriptSharedNotice": "Telpon iki wis ditranskripsi lan disimpen. Sampeyan lan wong liya bisa maca sawise iki.",
+    "callTranscriptTitle": "Transkrip telpon",
+    "callTranscriptLoadFailed": "Ora bisa ngemot transkrip",
+    "callTranscriptRetry": "Coba maneh",
+    "callTranscriptStoppedEarly": "Telpon iki kakehan sing kudu diwaca sekaligus, mula sawetara ora ditampilake.",
+    "callTranscriptNone": "Ora ana transkrip saka {name}",
+    "callTranscriptSaidNothing": "{name} ora ngomong apa-apa",
+    "callTranscriptNothingRead": "Ora ana sing bisa diwaca saka sing diomongake {name}",
+    "callTranscriptPartial": "Bagéan saka sing diomongake {name} bisa uga ilang",
+    "callTranscriptByTime": "dening {time}",
+    "callTranscriptApproximateTimes": "Giliran sing ditandhani \"dening\" wektu diucapake ing utawa sadurunge. Giliran kasebut ditampilake ing wektu kasebut, mula bisa uga diucapake luwih awal.",
+    "callTranscriptUnstatedTimes": "Sawetara giliran ora nuduhake wektu. Piranti sing ngrekam ora ngandhani sepira persis wektune, mula posisi ing obrolan iki bisa uga salah.",
+    "callTranscriptOpen": "Waca transkrip"
 }

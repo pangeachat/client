@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-28 11:37:28.248668",
+    "@@last_modified": "2026-08-30 21:15:04.619235",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10117,5 +10117,18 @@
     "callHistoryNoAnswer": "لا يوجد رد",
     "callHistoryDeclined": "تم رفض المكالمة",
     "callHistoryYouDeclined": "لقد رفضت هذه المكالمة",
-    "starsEarnedInLanguage": "النجوم المكتسبة في {language}"
+    "starsEarnedInLanguage": "النجوم المكتسبة في {language}",
+    "callTranscriptSharedNotice": "تم نسخ هذه المكالمة وحفظها. يمكنك أنت والشخص الآخر قراءتها لاحقًا.",
+    "callTranscriptTitle": "نسخة المكالمة",
+    "callTranscriptLoadFailed": "تعذر تحميل النسخة",
+    "callTranscriptRetry": "حاول مرة أخرى",
+    "callTranscriptStoppedEarly": "كانت هذه المكالمة تحتوي على الكثير للقراءة دفعة واحدة، لذلك لم يتم عرض جزء منها.",
+    "callTranscriptNone": "لا توجد نسخة من {name}",
+    "callTranscriptSaidNothing": "لم يقل {name} أي شيء",
+    "callTranscriptNothingRead": "لم يتمكن من قراءة أي شيء مما قاله {name}",
+    "callTranscriptPartial": "قد يكون جزء مما قاله {name} مفقودًا",
+    "callTranscriptByTime": "بواسطة {time}",
+    "callTranscriptApproximateTimes": "تم قول الدور الذي يحمل علامة \"بواسطة\" وقت معين في ذلك الوقت أو قبله. تظهر تلك الأدوار في تلك اللحظة، لذلك ربما قيلت في وقت سابق.",
+    "callTranscriptUnstatedTimes": "بعض الأدوار لا تظهر وقتًا. الجهاز الذي سجلها لم يذكر مدى دقة أوقاته، لذا قد يكون مكانها في هذه المحادثة خاطئًا.",
+    "callTranscriptOpen": "قراءة النسخة"
 }

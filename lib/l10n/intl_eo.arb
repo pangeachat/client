@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:28.887444",
+    "@@last_modified": "2026-08-30 21:15:07.870258",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10756,5 +10756,18 @@
     "callHistoryNoAnswer": "Neniu respondo",
     "callHistoryDeclined": "Voko malakceptita",
     "callHistoryYouDeclined": "Vi malakceptis ĉi tiun vokon",
-    "starsEarnedInLanguage": "Steloj gajnitaj en {language}"
+    "starsEarnedInLanguage": "Steloj gajnitaj en {language}",
+    "callTranscriptSharedNotice": "Ĉi tiu voko estas transskribita kaj konservita. Vi kaj la alia persono povas legi ĝin poste.",
+    "callTranscriptTitle": "Transskribo de voko",
+    "callTranscriptLoadFailed": "Ne eblis ŝargi la transskribon",
+    "callTranscriptRetry": "Provu denove",
+    "callTranscriptStoppedEarly": "Ĉi tiu voko havis tro multe por legi samtempe, do parto de ĝi ne estas montrita.",
+    "callTranscriptNone": "Neniu transskribo de {name}",
+    "callTranscriptSaidNothing": "{name} diris nenion",
+    "callTranscriptNothingRead": "Nenio legeblis el tio, kion diris {name}",
+    "callTranscriptPartial": "Parto de tio, kion diris {name}, eble mankas",
+    "callTranscriptByTime": "je {time}",
+    "callTranscriptApproximateTimes": "Vico markita \"je\" tempo estis dirita je aŭ antaŭ ĝi. Tiuj vicoj estas montritaj en tiu momento, do ili eble estis diritaj pli frue.",
+    "callTranscriptUnstatedTimes": "Iuj vicoj montras neniun tempon. La aparato, kiu registris ilin, ne diris, kiom precizaj estas ĝiaj tempoj, do ilia loko en ĉi tiu konversacio eble estas malĝusta.",
+    "callTranscriptOpen": "Legu la transskribon"
 }

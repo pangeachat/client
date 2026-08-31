@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-28 11:37:30.488176",
+    "@@last_modified": "2026-08-30 21:15:16.339990",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Жауап жоқ",
     "callHistoryDeclined": "Қоңыраудан бас тартылды",
     "callHistoryYouDeclined": "Сіз бұл қоңыраудан бас тарттыңыз",
-    "starsEarnedInLanguage": "{language} тілінде жинаған жұлдыздар"
+    "starsEarnedInLanguage": "{language} тілінде жинаған жұлдыздар",
+    "callTranscriptSharedNotice": "Бұл қоңырау транскрипцияланып, сақталды. Сіз және басқа адам оны кейін оқи аласыздар.",
+    "callTranscriptTitle": "Қоңырау транскрипциясы",
+    "callTranscriptLoadFailed": "Транскрипцияны жүктеу мүмкін болмады",
+    "callTranscriptRetry": "Қайталау",
+    "callTranscriptStoppedEarly": "Бұл қоңырауда бірден оқуға тым көп нәрсе болды, сондықтан оның бір бөлігі көрсетілмеген.",
+    "callTranscriptNone": "{name} транскрипциясы жоқ",
+    "callTranscriptSaidNothing": "{name} ештеңе айтқан жоқ",
+    "callTranscriptNothingRead": "{name} айтқан ештеңе оқылмады",
+    "callTranscriptPartial": "{name} айтқан сөздердің бір бөлігі жоқ болуы мүмкін",
+    "callTranscriptByTime": "{time} бойынша",
+    "callTranscriptApproximateTimes": "Уақытпен \"бойынша\" белгіленген кезек сол уақытта немесе одан бұрын айтылған. Бұл кезектер сол сәтте көрсетіледі, сондықтан олар ертерек айтылған болуы мүмкін.",
+    "callTranscriptUnstatedTimes": "Кейбір кезектерде уақыт көрсетілмеген. Оларды жазған құрылғы уақыттарының қаншалықты дәл екенін айтпады, сондықтан олардың осы әңгімедегі орны қате болуы мүмкін.",
+    "callTranscriptOpen": "Транскрипцияны оқу"
 }

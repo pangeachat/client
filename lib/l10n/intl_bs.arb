@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-28 11:37:28.336233",
+    "@@last_modified": "2026-08-30 21:15:04.814733",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Nema odgovora",
     "callHistoryDeclined": "Poziv odbijen",
     "callHistoryYouDeclined": "Odbili ste ovaj poziv",
-    "starsEarnedInLanguage": "Zvijezde zarađene u {language}"
+    "starsEarnedInLanguage": "Zvijezde zarađene u {language}",
+    "callTranscriptSharedNotice": "Ovaj poziv je transkribovan i sačuvan. Vi i druga osoba ga možete pročitati kasnije.",
+    "callTranscriptTitle": "Transkript poziva",
+    "callTranscriptLoadFailed": "Učitavanje transkripta nije uspjelo",
+    "callTranscriptRetry": "Pokušaj ponovo",
+    "callTranscriptStoppedEarly": "Ovaj poziv je imao previše teksta za čitanje odjednom, tako da dio nije prikazan.",
+    "callTranscriptNone": "Nema transkripta od {name}",
+    "callTranscriptSaidNothing": "{name} nije ništa rekao/rekla",
+    "callTranscriptNothingRead": "Ništa se nije moglo pročitati iz onoga što je {name} rekao/rekla",
+    "callTranscriptPartial": "Dio onoga što je {name} rekao/rekla možda nedostaje",
+    "callTranscriptByTime": "do {time}",
+    "callTranscriptApproximateTimes": "Izjava označena sa \"do\" određenog vremena izrečena je u to vrijeme ili prije. Te izjave su prikazane u tom trenutku, tako da su možda izrečene ranije.",
+    "callTranscriptUnstatedTimes": "Neke izjave ne pokazuju vrijeme. Uređaj koji ih je snimio nije naveo koliko su precizna njegova vremena, tako da njihov položaj u ovom razgovoru može biti pogrešan.",
+    "callTranscriptOpen": "Pročitajte transkript"
 }

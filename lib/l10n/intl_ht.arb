@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-28 11:37:29.939288",
+    "@@last_modified": "2026-08-30 21:15:13.188196",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Pa gen repons",
     "callHistoryDeclined": "Apèl la refize",
     "callHistoryYouDeclined": "Ou refize apèl sa a",
-    "starsEarnedInLanguage": "Etwal ou te touche nan {language}"
+    "starsEarnedInLanguage": "Etwal ou te touche nan {language}",
+    "callTranscriptSharedNotice": "Apèl sa a transkri epi sove. Ou menm ak lòt moun nan ka li l apre.",
+    "callTranscriptTitle": "Transkripsyon apèl la",
+    "callTranscriptLoadFailed": "Nou pa t ka chaje transkripsyon an",
+    "callTranscriptRetry": "Eseye ankò",
+    "callTranscriptStoppedEarly": "Apèl sa a te gen twòp bagay pou li nan yon sèl fwa, kidonk kèk pati pa parèt.",
+    "callTranscriptNone": "Pa gen transkripsyon nan men {name}",
+    "callTranscriptSaidNothing": "{name} pa t di anyen",
+    "callTranscriptNothingRead": "Nou pa t ka li anyen nan sa {name} te di",
+    "callTranscriptPartial": "Yon pati nan sa {name} te di ka manke",
+    "callTranscriptByTime": "pa {time}",
+    "callTranscriptApproximateTimes": "Yon entèvansyon ki make \"pa\" yon lè te di nan oswa anvan lè sa a. Entèvansyon sa yo parèt nan moman sa a, kidonk yo ka te di pi bonè.",
+    "callTranscriptUnstatedTimes": "Gen kèk entèvansyon ki pa montre lè. Aparèy ki te anrejistre yo pa t di kijan lè li yo egzak, kidonk kote yo ye nan konvèsasyon sa a ka pa kòrèk.",
+    "callTranscriptOpen": "Li transkripsyon an"
 }

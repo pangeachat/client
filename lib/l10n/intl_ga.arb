@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-28 11:37:29.509867",
+    "@@last_modified": "2026-08-30 21:15:11.475926",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9822,5 +9822,18 @@
     "callHistoryNoAnswer": "Gan freagra",
     "callHistoryDeclined": "Glao diúltaithe",
     "callHistoryYouDeclined": "Dhiúltaigh tú don ghlao seo",
-    "starsEarnedInLanguage": "Réaltaí tuillte i {language}"
+    "starsEarnedInLanguage": "Réaltaí tuillte i {language}",
+    "callTranscriptSharedNotice": "Tá an glao seo trascríofa agus sábháilte. Is féidir leat féin agus leis an duine eile é a léamh ina dhiaidh sin.",
+    "callTranscriptTitle": "Tras-scríbhinn Glao",
+    "callTranscriptLoadFailed": "Níorbh fhéidir an tras-scríbhinn a luchtú",
+    "callTranscriptRetry": "Bain triail eile as",
+    "callTranscriptStoppedEarly": "Bhí an iomarca le léamh sa ghlao seo in aon turas amháin, mar sin níl cuid de le feiceáil.",
+    "callTranscriptNone": "Níl aon tras-scríbhinn ó {name}",
+    "callTranscriptSaidNothing": "Níor dúirt {name} tada",
+    "callTranscriptNothingRead": "Níorbh fhéidir tada a léamh ón méid a dúirt {name}",
+    "callTranscriptPartial": "D'fhéadfadh cuid den méid a dúirt {name} a bheith in easnamh",
+    "callTranscriptByTime": "faoi {time}",
+    "callTranscriptApproximateTimes": "Dúradh cas a bhfuil \"faoi\" am marcáilte air ag an am sin nó roimhe. Taispeántar na casanna sin ag an nóiméad sin, mar sin seans gur dúradh níos luaithe iad.",
+    "callTranscriptUnstatedTimes": "Ní thaispeánann roinnt casanna aon am. Níor dúirt an gléas a thaifead iad cé chomh cruinn is atá a chuid amanna, mar sin d'fhéadfadh an áit a bhfuil siad sa chomhrá seo a bheith mícheart.",
+    "callTranscriptOpen": "Léigh an tras-scríbhinn"
 }

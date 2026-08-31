@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-28 11:37:33.646161",
+    "@@last_modified": "2026-08-30 21:15:33.935368",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9811,5 +9811,18 @@
     "callHistoryNoAnswer": "无人接听",
     "callHistoryDeclined": "通话已拒绝",
     "callHistoryYouDeclined": "您拒绝了此通话",
-    "starsEarnedInLanguage": "在{language}中获得的星星"
+    "starsEarnedInLanguage": "在{language}中获得的星星",
+    "callTranscriptSharedNotice": "此通话已转录并保存。您和对方之后可以阅读。",
+    "callTranscriptTitle": "通话记录",
+    "callTranscriptLoadFailed": "无法加载通话记录",
+    "callTranscriptRetry": "重试",
+    "callTranscriptStoppedEarly": "此通话内容太多，无法一次性显示，因此部分内容未显示。",
+    "callTranscriptNone": "没有来自{name}的通话记录",
+    "callTranscriptSaidNothing": "{name}没有说什么",
+    "callTranscriptNothingRead": "无法从{name}所说的话中读取任何内容",
+    "callTranscriptPartial": "{name}所说的话可能部分缺失",
+    "callTranscriptByTime": "于{time}",
+    "callTranscriptApproximateTimes": "标记为“于”某个时间的发言是在该时间或之前说的。这些发言会显示在该时间点，因此它们可能说得更早。",
+    "callTranscriptUnstatedTimes": "有些发言没有显示时间。记录它们的设备没有说明其时间的精确度，因此它们在对话中的位置可能不正确。",
+    "callTranscriptOpen": "阅读通话记录"
 }

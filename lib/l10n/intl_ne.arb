@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-28 11:37:31.436313",
+    "@@last_modified": "2026-08-30 21:15:23.965960",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "जवाफ छैन",
     "callHistoryDeclined": "कल अस्वीकृत भयो",
     "callHistoryYouDeclined": "तपाईंले यो कल अस्वीकार गर्नुभयो",
-    "starsEarnedInLanguage": "{language} मा कमाएका ताराहरू"
+    "starsEarnedInLanguage": "{language} मा कमाएका ताराहरू",
+    "callTranscriptSharedNotice": "यो कल ट्रान्सक्राइब गरिएको छ र सुरक्षित गरिएको छ। तपाईं र अर्को व्यक्तिले यसलाई पछि पढ्न सक्नुहुन्छ।",
+    "callTranscriptTitle": "कल ट्रान्सक्रिप्ट",
+    "callTranscriptLoadFailed": "ट्रान्सक्रिप्ट लोड गर्न सकिएन",
+    "callTranscriptRetry": "फेरि प्रयास गर्नुहोस्",
+    "callTranscriptStoppedEarly": "यो कलमा एकैचोटि पढ्न धेरै कुरा थियो, त्यसैले यसको केही अंश देखाइएको छैन।",
+    "callTranscriptNone": "{name} बाट कुनै ट्रान्सक्रिप्ट छैन",
+    "callTranscriptSaidNothing": "{name} ले केही बोलेनन्",
+    "callTranscriptNothingRead": "{name} ले बोलेको कुराबाट केही पढ्न सकिएन",
+    "callTranscriptPartial": "{name} ले बोलेको कुराको केही अंश छुटेको हुन सक्छ",
+    "callTranscriptByTime": "{time} द्वारा",
+    "callTranscriptApproximateTimes": "समय \"द्वारा\" चिन्ह लगाइएको पालो त्यो समयमा वा त्यसभन्दा अघि भनिएको थियो। ती पालोहरू त्यस क्षणमा देखाइन्छन्, त्यसैले तिनीहरू पहिले भनिएको हुन सक्छ।",
+    "callTranscriptUnstatedTimes": "केही पालोहरूमा समय देखाइएको छैन। तिनीहरूलाई रेकर्ड गर्ने उपकरणले यसको समय कति सटीक छ भनेर भनेन, त्यसैले तिनीहरू यस कुराकानीमा कहाँ छन् भन्ने गलत हुन सक्छ।",
+    "callTranscriptOpen": "ट्रान्सक्रिप्ट पढ्नुहोस्"
 }

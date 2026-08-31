@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-28 11:37:28.871137",
+    "@@last_modified": "2026-08-30 21:15:07.798139",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10305,5 +10305,18 @@
     "callHistoryNoAnswer": "Bez odpovědi",
     "callHistoryDeclined": "Hovor odmítnut",
     "callHistoryYouDeclined": "Tento hovor jste odmítli",
-    "starsEarnedInLanguage": "Hvězdy získané v jazyce {language}"
+    "starsEarnedInLanguage": "Hvězdy získané v jazyce {language}",
+    "callTranscriptSharedNotice": "Tento hovor je přepsán a uložen. Vy i druhá osoba si ho můžete přečíst později.",
+    "callTranscriptTitle": "Přepis hovoru",
+    "callTranscriptLoadFailed": "Přepis se nepodařilo načíst",
+    "callTranscriptRetry": "Zkusit znovu",
+    "callTranscriptStoppedEarly": "Tento hovor byl příliš dlouhý na přečtení najednou, takže část není zobrazena.",
+    "callTranscriptNone": "Žádný přepis od {name}",
+    "callTranscriptSaidNothing": "{name} nic neřekl/a",
+    "callTranscriptNothingRead": "Z toho, co {name} řekl/a, nebylo možné nic přečíst",
+    "callTranscriptPartial": "Část toho, co {name} řekl/a, může chybět",
+    "callTranscriptByTime": "v {time}",
+    "callTranscriptApproximateTimes": "Replika označená „v“ určitým časem byla řečena v tento čas nebo před ním. Tyto repliky jsou zobrazeny v daném okamžiku, takže mohly být řečeny dříve.",
+    "callTranscriptUnstatedTimes": "Některé repliky neukazují čas. Zařízení, které je nahrávalo, neudalo, jak přesné jsou jeho časy, takže jejich umístění v této konverzaci může být chybné.",
+    "callTranscriptOpen": "Přečíst přepis"
 }

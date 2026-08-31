@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-28 11:37:28.909140",
+    "@@last_modified": "2026-08-30 21:15:07.810458",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Dim ateb",
     "callHistoryDeclined": "Galwad wedi'i gwrthod",
     "callHistoryYouDeclined": "Gwrthodoch chi'r alwad hon",
-    "starsEarnedInLanguage": "Sêr a enillwyd yn {language}"
+    "starsEarnedInLanguage": "Sêr a enillwyd yn {language}",
+    "callTranscriptSharedNotice": "Mae'r alwad hon wedi'i thrawsgrifio a'i chadw. Gallwch chi a'r person arall ei darllen wedyn.",
+    "callTranscriptTitle": "Trawsgrifiad galwad",
+    "callTranscriptLoadFailed": "Doedd dim modd llwytho'r trawsgrifiad",
+    "callTranscriptRetry": "Rhowch gynnig arall",
+    "callTranscriptStoppedEarly": "Roedd gan yr alwad hon ormod i'w ddarllen ar unwaith, felly nid yw rhan ohoni'n cael ei dangos.",
+    "callTranscriptNone": "Dim trawsgrifiad gan {name}",
+    "callTranscriptSaidNothing": "Ni ddywedodd {name} unrhyw beth",
+    "callTranscriptNothingRead": "Ni ellid darllen unrhyw beth o'r hyn a ddywedodd {name}",
+    "callTranscriptPartial": "Efallai bod rhan o'r hyn a ddywedodd {name} ar goll",
+    "callTranscriptByTime": "erbyn {time}",
+    "callTranscriptApproximateTimes": "Dywedwyd tro a nodwyd \"erbyn\" amser ar neu cyn hynny. Dangosir y troeon hynny ar y foment honno, felly efallai eu bod wedi'u dweud yn gynharach.",
+    "callTranscriptUnstatedTimes": "Nid yw rhai troeon yn dangos amser. Ni ddywedodd y ddyfais a'u recordiodd pa mor union yw ei hamseroedd, felly efallai bod eu lle yn y sgwrs hon yn anghywir.",
+    "callTranscriptOpen": "Darllenwch y trawsgrifiad"
 }

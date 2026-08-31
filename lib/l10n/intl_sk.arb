@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-28 11:37:32.315642",
+    "@@last_modified": "2026-08-30 21:15:27.448328",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10756,5 +10756,18 @@
     "callHistoryNoAnswer": "Bez odpovede",
     "callHistoryDeclined": "Hovor odmietnutý",
     "callHistoryYouDeclined": "Tento hovor ste odmietli",
-    "starsEarnedInLanguage": "Hviezdy získané v jazyku {language}"
+    "starsEarnedInLanguage": "Hviezdy získané v jazyku {language}",
+    "callTranscriptSharedNotice": "Tento hovor je prepísaný a uložený. Vy a druhá osoba si ho môžete prečítať neskôr.",
+    "callTranscriptTitle": "Prepis hovoru",
+    "callTranscriptLoadFailed": "Prepis sa nepodarilo načítať",
+    "callTranscriptRetry": "Skúsiť znova",
+    "callTranscriptStoppedEarly": "Tento hovor obsahoval príliš veľa textu na jedno prečítanie, takže niektoré časti nie sú zobrazené.",
+    "callTranscriptNone": "Žiadny prepis od {name}",
+    "callTranscriptSaidNothing": "{name} nič nepovedal(a)",
+    "callTranscriptNothingRead": "Z toho, čo povedal(a) {name}, sa nič nedalo prečítať",
+    "callTranscriptPartial": "Časť z toho, čo povedal(a) {name}, môže chýbať",
+    "callTranscriptByTime": "o {time}",
+    "callTranscriptApproximateTimes": "Prejav označený „o“ určitým časom bol povedaný v tom čase alebo predtým. Tieto prejavy sú zobrazené v danom momente, takže mohli byť povedané skôr.",
+    "callTranscriptUnstatedTimes": "Niektoré prejavy neukazujú čas. Zariadenie, ktoré ich zaznamenalo, neuviedlo, ako presné sú jeho časy, takže ich umiestnenie v tejto konverzácii môže byť nesprávne.",
+    "callTranscriptOpen": "Prečítať prepis"
 }

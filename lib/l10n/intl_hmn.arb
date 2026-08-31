@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-28 11:37:29.654074",
+    "@@last_modified": "2026-08-30 21:15:13.612333",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Tsis teb",
     "callHistoryDeclined": "Tsis kam hu",
     "callHistoryYouDeclined": "Koj tsis kam hu no",
-    "starsEarnedInLanguage": "Cov hnub qub tau txais hauv {language}"
+    "starsEarnedInLanguage": "Cov hnub qub tau txais hauv {language}",
+    "callTranscriptSharedNotice": "Hu no tau sau thiab khaws cia lawm. Koj thiab lwm tus tuaj yeem nyeem tau tom qab.",
+    "callTranscriptTitle": "Hu cov lus sau",
+    "callTranscriptLoadFailed": "Nyeem tsis tau cov lus sau",
+    "callTranscriptRetry": "Sim dua",
+    "callTranscriptStoppedEarly": "Hu no muaj ntau dhau los nyeem ib zaug, yog li ntawd qee yam tsis tau qhia.",
+    "callTranscriptNone": "Tsis muaj lus sau los ntawm {name}",
+    "callTranscriptSaidNothing": "{name} tsis tau hais dab tsi",
+    "callTranscriptNothingRead": "Nyeem tsis tau dab tsi los ntawm qhov {name} hais",
+    "callTranscriptPartial": "Ib feem ntawm qhov {name} hais tej zaum yuav ploj lawm",
+    "callTranscriptByTime": "los ntawm {time}",
+    "callTranscriptApproximateTimes": "Ib ntu cim \"los ntawm\" ib lub sij hawm tau hais thaum lossis ua ntej ntawd. Cov ntu ntawd tau qhia rau lub sij hawm ntawd, yog li ntawd lawv tej zaum tau hais ua ntej.",
+    "callTranscriptUnstatedTimes": "Qee cov ntu tsis qhia lub sij hawm. Lub cuab yeej uas sau lawv tsis tau hais tias nws lub sij hawm raug npaum li cas, yog li ntawd qhov chaw lawv nyob hauv kev sib tham no tej zaum yuav tsis raug.",
+    "callTranscriptOpen": "Nyeem cov lus sau"
 }

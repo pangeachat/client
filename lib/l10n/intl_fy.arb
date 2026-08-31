@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-28 11:37:29.450076",
+    "@@last_modified": "2026-08-30 21:15:10.862976",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "Gjin antwurd",
     "callHistoryDeclined": "Oprop wegere",
     "callHistoryYouDeclined": "Jo hawwe dizze oprop wegere",
-    "starsEarnedInLanguage": "Stjerren fertsjinne yn {language}"
+    "starsEarnedInLanguage": "Stjerren fertsjinne yn {language}",
+    "callTranscriptSharedNotice": "Dit petear is transkribearre en bewarre. Jo en de oare persoan kinne it neitiid lêze.",
+    "callTranscriptTitle": "Petearútprint",
+    "callTranscriptLoadFailed": "De útprint koe net laden wurde",
+    "callTranscriptRetry": "Op 'e nij besykje",
+    "callTranscriptStoppedEarly": "Dit petear hie tefolle om yn ien kear te lêzen, dus in part wurdt net werjûn.",
+    "callTranscriptNone": "Gjin útprint fan {name}",
+    "callTranscriptSaidNothing": "{name} hat neat sein",
+    "callTranscriptNothingRead": "Der koe neat lêzen wurde fan wat {name} sei",
+    "callTranscriptPartial": "In part fan wat {name} sei kin ûntbrekke",
+    "callTranscriptByTime": "om {time}",
+    "callTranscriptApproximateTimes": "In beurt markearre \"om\" in tiid waard op of foar dy tiid sein. Dy beurten wurde op dat momint werjûn, dus se kinne earder sein wêze.",
+    "callTranscriptUnstatedTimes": "Guon beurten litte gjin tiid sjen. It apparaat dat se opnaam, sei net hoe presys de tiden binne, dus wêr't se yn dit petear sitte, kin ferkeard wêze.",
+    "callTranscriptOpen": "Lês de útprint"
 }

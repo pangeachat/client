@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-28 11:37:28.860659",
+    "@@last_modified": "2026-08-30 21:15:07.822064",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9798,5 +9798,18 @@
     "callHistoryNoAnswer": "Keine Antwort",
     "callHistoryDeclined": "Anruf abgelehnt",
     "callHistoryYouDeclined": "Sie haben diesen Anruf abgelehnt",
-    "starsEarnedInLanguage": "In {language} verdiente Sterne"
+    "starsEarnedInLanguage": "In {language} verdiente Sterne",
+    "callTranscriptSharedNotice": "Dieser Anruf wird transkribiert und gespeichert. Sie und die andere Person können ihn danach lesen.",
+    "callTranscriptTitle": "Anruf-Transkript",
+    "callTranscriptLoadFailed": "Transkript konnte nicht geladen werden",
+    "callTranscriptRetry": "Erneut versuchen",
+    "callTranscriptStoppedEarly": "Dieser Anruf enthielt zu viel Text, um auf einmal gelesen zu werden, daher wird ein Teil davon nicht angezeigt.",
+    "callTranscriptNone": "Kein Transkript von {name}",
+    "callTranscriptSaidNothing": "{name} hat nichts gesagt",
+    "callTranscriptNothingRead": "Es konnte nichts von dem, was {name} gesagt hat, gelesen werden",
+    "callTranscriptPartial": "Ein Teil dessen, was {name} gesagt hat, fehlt möglicherweise",
+    "callTranscriptByTime": "um {time}",
+    "callTranscriptApproximateTimes": "Eine Äußerung, die mit „um“ einer Uhrzeit markiert ist, wurde zu oder vor dieser Zeit gesagt. Diese Äußerungen werden zu diesem Zeitpunkt angezeigt, daher könnten sie früher gesagt worden sein.",
+    "callTranscriptUnstatedTimes": "Einige Äußerungen zeigen keine Uhrzeit an. Das Gerät, das sie aufgezeichnet hat, hat nicht angegeben, wie genau seine Zeiten sind, daher kann die Position in diesem Gespräch falsch sein.",
+    "callTranscriptOpen": "Transkript lesen"
 }

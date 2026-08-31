@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-28 11:37:28.470866",
+    "@@last_modified": "2026-08-30 21:15:05.764364",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2215,5 +2215,18 @@
     "callHistoryNoAnswer": "কোনো উত্তৰ নাই",
     "callHistoryDeclined": "কল প্ৰত্যাখ্যান কৰা হ'ল",
     "callHistoryYouDeclined": "আপুনি এই কলটো প্ৰত্যাখ্যান কৰিলে",
-    "starsEarnedInLanguage": "{language} ত অৰ্জন কৰা তাৰকাসমূহ"
+    "starsEarnedInLanguage": "{language} ত অৰ্জন কৰা তাৰকাসমূহ",
+    "callTranscriptSharedNotice": "এই কলটো লিপিবদ্ধ কৰা হৈছে আৰু সংৰক্ষণ কৰা হৈছে। আপুনি আৰু আনজনে পিছত ইয়াক পঢ়িব পাৰিব।",
+    "callTranscriptTitle": "কল ট্ৰান্সক্ৰিপ্ট",
+    "callTranscriptLoadFailed": "ট্ৰান্সক্ৰিপ্ট লোড কৰিব পৰা নগ'ল",
+    "callTranscriptRetry": "পুনৰ চেষ্টা কৰক",
+    "callTranscriptStoppedEarly": "এই কলটোত একেলগে পঢ়িবলৈ বহুত বেছি আছিল, সেয়েহে ইয়াৰ কিছু অংশ দেখুওৱা হোৱা নাই।",
+    "callTranscriptNone": "{name} ৰ পৰা কোনো ট্ৰান্সক্ৰিপ্ট নাই",
+    "callTranscriptSaidNothing": "{name} এ একো কোৱা নাছিল",
+    "callTranscriptNothingRead": "{name} এ কোৱা কথাৰ পৰা একো পঢ়িব পৰা নগ'ল",
+    "callTranscriptPartial": "{name} এ কোৱা কথাৰ কিছু অংশ হেৰুৱাব পাৰে",
+    "callTranscriptByTime": "{time} দ্বাৰা",
+    "callTranscriptApproximateTimes": "এটা সময়ৰ দ্বাৰা চিহ্নিত এটা পাল সেই সময়ত বা তাৰ আগতে কোৱা হৈছিল। সেই পালবোৰ সেই মুহূৰ্তত দেখুওৱা হয়, সেয়েহে সেইবোৰ আগতে কোৱা হ'ব পাৰে।",
+    "callTranscriptUnstatedTimes": "কিছুমান পালত কোনো সময় দেখুওৱা নহয়। যি ডিভাইচটোৱে সেইবোৰ ৰেকৰ্ড কৰিছিল, সেয়া ইয়াৰ সময় কিমান সঠিক সেয়া কোৱা নাছিল, সেয়েহে এই বাৰ্তালাপত সেইবোৰ ক'ত আছে সেয়া ভুল হ'ব পাৰে।",
+    "callTranscriptOpen": "ট্ৰান্সক্ৰিপ্ট পঢ়ক"
 }
