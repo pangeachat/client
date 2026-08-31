@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-28 11:37:32.817075",
+    "@@last_modified": "2026-08-31 12:49:37.024035",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Hakuna jibu",
     "callHistoryDeclined": "Simu imekataliwa",
     "callHistoryYouDeclined": "Ulikataa simu hii",
-    "starsEarnedInLanguage": "Nyota ulizopata katika {language}"
+    "starsEarnedInLanguage": "Nyota ulizopata katika {language}",
+    "readAloudNoVoiceNote": "Hakuna sauti ya ubora wa juu ya {language} inayopatikana kwenye kifaa hiki, kwa hivyo mipangilio hii haipatikani. Bado unaweza kucheza sauti kutoka kwenye upau wa zana wa ujumbe."
 }

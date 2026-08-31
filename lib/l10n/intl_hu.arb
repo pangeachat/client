@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-28 11:37:29.855818",
+    "@@last_modified": "2026-08-31 12:49:30.687592",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9915,5 +9915,6 @@
     "callHistoryNoAnswer": "Nincs válasz",
     "callHistoryDeclined": "Hívás elutasítva",
     "callHistoryYouDeclined": "Elutasítottad ezt a hívást",
-    "starsEarnedInLanguage": "{language} nyelven szerzett csillagok"
+    "starsEarnedInLanguage": "{language} nyelven szerzett csillagok",
+    "readAloudNoVoiceNote": "Nincs elérhető jó minőségű {language} hang ezen az eszközön, ezért ezek a beállítások nem érhetők el. Továbbra is lejátszhat hangot az üzenetsávból."
 }

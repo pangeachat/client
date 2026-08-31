@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-28 11:37:28.470866",
+    "@@last_modified": "2026-08-31 12:49:27.954650",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "কোনো উত্তৰ নাই",
     "callHistoryDeclined": "কল প্ৰত্যাখ্যান কৰা হ'ল",
     "callHistoryYouDeclined": "আপুনি এই কলটো প্ৰত্যাখ্যান কৰিলে",
-    "starsEarnedInLanguage": "{language} ত অৰ্জন কৰা তাৰকাসমূহ"
+    "starsEarnedInLanguage": "{language} ত অৰ্জন কৰা তাৰকাসমূহ",
+    "readAloudNoVoiceNote": "এই ডিভাইচত কোনো উচ্চ মানদণ্ডৰ {language} ভইচ উপলব্ধ নহয়, সেয়েহে এই ছেটিংছসমূহ উপলব্ধ নহয়। আপুনি এতিয়াও মেছেজ টুলবাৰৰ পৰা অডিঅ' প্লে কৰিব পাৰে।"
 }

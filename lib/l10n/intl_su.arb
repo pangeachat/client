@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-28 11:37:32.719891",
+    "@@last_modified": "2026-08-31 12:49:36.938389",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Teu diangkat",
     "callHistoryDeclined": "Telepon ditolak",
     "callHistoryYouDeclined": "Anjeun nolak telepon ieu",
-    "starsEarnedInLanguage": "Béntang anu dimeunangkeun dina basa {language}"
+    "starsEarnedInLanguage": "Béntang anu dimeunangkeun dina basa {language}",
+    "readAloudNoVoiceNote": "Teu aya sora {language} kualitas luhur dina alat ieu, janten setélan ieu teu sayogi. Anjeun tiasa tetep muterkeun audio tina toolbar pesen."
 }

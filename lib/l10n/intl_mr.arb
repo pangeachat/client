@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-28 11:37:31.162563",
+    "@@last_modified": "2026-08-31 12:49:33.431967",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "उत्तर नाही",
     "callHistoryDeclined": "कॉल नाकारला",
     "callHistoryYouDeclined": "तुम्ही हा कॉल नाकारला",
-    "starsEarnedInLanguage": "{language} मध्ये मिळवलेले तारे"
+    "starsEarnedInLanguage": "{language} मध्ये मिळवलेले तारे",
+    "readAloudNoVoiceNote": "या डिव्हाइसवर उच्च-गुणवत्तेचा {language} आवाज उपलब्ध नाही, त्यामुळे या सेटिंग्ज उपलब्ध नाहीत. तुम्ही तरीही मेसेज टूलबारमधून ऑडिओ प्ले करू शकता."
 }

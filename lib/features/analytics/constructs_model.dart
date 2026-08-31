@@ -40,7 +40,7 @@ class ConstructAnalyticsModel {
     } else {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
-        m: "Analytics room with non-list uses",
+        e: Exception("Analytics room with non-list uses"),
         data: {"usesKey": _usesKey},
       );
     }

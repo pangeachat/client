@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-28 11:37:30.580285",
+    "@@last_modified": "2026-08-31 12:49:32.295975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Жооп жок",
     "callHistoryDeclined": "Чакыруудан баш тартылды",
     "callHistoryYouDeclined": "Сиз бул чалуудан баш тарттыңыз",
-    "starsEarnedInLanguage": "{language} тилинде алынган жылдыздар"
+    "starsEarnedInLanguage": "{language} тилинде алынган жылдыздар",
+    "readAloudNoVoiceNote": "Бул түзмөктө жогорку сапаттагы {language} үнү жок болгондуктан, бул жөндөөлөр жеткиликтүү эмес. Сиз дагы эле билдирүү куралдар панелиндеги аудиону ойной аласыз."
 }

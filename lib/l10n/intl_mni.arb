@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-28 11:37:36.005426",
+    "@@last_modified": "2026-08-31 12:49:34.810525",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "পাউখুম পীরকখিদে",
     "callHistoryDeclined": "কল লৌদ্রে",
     "callHistoryYouDeclined": "অদোম্না হায়রিবা কল অসি লৌদ্রে",
-    "starsEarnedInLanguage": "{language} da phangba thawanmichak"
+    "starsEarnedInLanguage": "{language} da phangba thawanmichak",
+    "readAloudNoVoiceNote": "ꯑꯦꯟꯗ꯭ꯔꯣꯏꯗ ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯗ {language} ꯒꯤ ꯐꯖꯕ ꯈꯣꯡꯎꯞ ꯑꯃꯠꯇ ꯂꯩꯇꯦ, ꯃꯔꯃꯗꯤ ꯁꯦꯇꯤꯡꯁ ꯑꯁꯤ ꯁꯤꯖꯤꯟꯅꯕ ꯌꯥꯗꯦ. ꯅꯍꯥꯛꯅ ꯃꯦꯁꯦꯖ ꯇꯨꯜꯕꯥꯔ ꯗꯒꯤ ꯑꯣꯗꯤꯑꯣ ꯊꯥꯡꯒꯠꯄ ꯌꯥꯏ."
 }

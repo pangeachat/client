@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-28 11:37:33.646161",
+    "@@last_modified": "2026-08-31 12:49:38.586717",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9812,5 +9812,6 @@
     "callHistoryNoAnswer": "无人接听",
     "callHistoryDeclined": "通话已拒绝",
     "callHistoryYouDeclined": "您拒绝了此通话",
-    "starsEarnedInLanguage": "在{language}中获得的星星"
+    "starsEarnedInLanguage": "在{language}中获得的星星",
+    "readAloudNoVoiceNote": "此设备上没有高质量的{language}语音，因此这些设置不可用。您仍然可以从消息工具栏播放音频。"
 }

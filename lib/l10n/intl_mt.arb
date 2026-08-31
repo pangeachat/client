@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-28 11:37:31.392031",
+    "@@last_modified": "2026-08-31 12:49:33.899318",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "L-ebda tweġiba",
     "callHistoryDeclined": "Sejħa rrifjutata",
     "callHistoryYouDeclined": "Int irrifjutajt din is-sejħa",
-    "starsEarnedInLanguage": "Stilel miksuba bil-{language}"
+    "starsEarnedInLanguage": "Stilel miksuba bil-{language}",
+    "readAloudNoVoiceNote": "L-ebda vuċi ta' kwalità għolja bil-{language} mhija disponibbli fuq dan l-apparat, għalhekk dawn is-settings mhumiex disponibbli. Xorta tista' ddoqq l-awdjo mit-toolbar tal-messaġġi."
 }

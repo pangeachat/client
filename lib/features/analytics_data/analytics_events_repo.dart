@@ -107,7 +107,6 @@ class AnalyticsEventsRepo {
         e: err,
         s: s,
         level: SentryLevel.warning,
-        m: "Best-effort analytics dual-write POST failed (swallowed)",
         data: {
           "analytics_room_id": analyticsRoomId,
           "matrix_event_id": matrixEventId,

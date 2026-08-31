@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-28 11:37:31.524130",
+    "@@last_modified": "2026-08-31 12:49:33.427595",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "മറുപടിയില്ല",
     "callHistoryDeclined": "കോൾ നിരസിച്ചു",
     "callHistoryYouDeclined": "നിങ്ങൾ ഈ കോൾ നിരസിച്ചു",
-    "starsEarnedInLanguage": "{language} ഭാഷയിൽ നേടിയ നക്ഷത്രങ്ങൾ"
+    "starsEarnedInLanguage": "{language} ഭാഷയിൽ നേടിയ നക്ഷത്രങ്ങൾ",
+    "readAloudNoVoiceNote": "ഈ ഉപകരണത്തിൽ ഉയർന്ന നിലവാരമുള്ള {language} വോയിസ് ലഭ്യമല്ലാത്തതിനാൽ, ഈ ക്രമീകരണങ്ങൾ ലഭ്യമല്ല. സന്ദേശ ടൂൾബാറിൽ നിന്ന് നിങ്ങൾക്ക് ഇപ്പോഴും ഓഡിയോ പ്ലേ ചെയ്യാൻ കഴിയും."
 }

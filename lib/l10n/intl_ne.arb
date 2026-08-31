@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-28 11:37:31.436313",
+    "@@last_modified": "2026-08-31 12:49:34.469057",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "जवाफ छैन",
     "callHistoryDeclined": "कल अस्वीकृत भयो",
     "callHistoryYouDeclined": "तपाईंले यो कल अस्वीकार गर्नुभयो",
-    "starsEarnedInLanguage": "{language} मा कमाएका ताराहरू"
+    "starsEarnedInLanguage": "{language} मा कमाएका ताराहरू",
+    "readAloudNoVoiceNote": "यस यन्त्रमा उच्च गुणस्तरको {language} आवाज उपलब्ध छैन, त्यसैले यी सेटिङहरू उपलब्ध छैनन्। तपाईं अझै पनि सन्देश उपकरणपट्टीबाट अडियो बजाउन सक्नुहुन्छ।"
 }

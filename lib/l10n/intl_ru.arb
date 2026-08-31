@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-28 11:37:32.179532",
+    "@@last_modified": "2026-08-31 12:49:35.609143",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10784,5 +10784,6 @@
     "callHistoryNoAnswer": "Нет ответа",
     "callHistoryDeclined": "Звонок отклонен",
     "callHistoryYouDeclined": "Вы отклонили этот звонок",
-    "starsEarnedInLanguage": "Звезд заработано на {language}"
+    "starsEarnedInLanguage": "Звезд заработано на {language}",
+    "readAloudNoVoiceNote": "На этом устройстве нет высококачественного голоса для языка {language}, поэтому эти настройки недоступны. Вы по-прежнему можете воспроизводить аудио с панели инструментов сообщений."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:28.956419",
+    "@@last_modified": "2026-08-31 12:49:29.347294",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9900,5 +9900,6 @@
     "callHistoryNoAnswer": "بدون پاسخ",
     "callHistoryDeclined": "تماس رد شد",
     "callHistoryYouDeclined": "شما این تماس را رد کردید",
-    "starsEarnedInLanguage": "ستاره‌های کسب شده در {language}"
+    "starsEarnedInLanguage": "ستاره‌های کسب شده در {language}",
+    "readAloudNoVoiceNote": "صدای باکیفیت {language} در این دستگاه موجود نیست، بنابراین این تنظیمات در دسترس نیستند. همچنان می‌توانید صدا را از نوار ابزار پیام پخش کنید."
 }

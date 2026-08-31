@@ -5128,6 +5128,15 @@
             }
         }
     },
+    "readAloudNoVoiceNote": "No high-quality {language} voice is available on this device, so these settings are unavailable. You can still play audio from the message toolbar.",
+    "@readAloudNoVoiceNote": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
     "readAloudNoVoiceDesktopWeb": "This browser doesn't offer a high-quality {language} voice, so messages can't be read aloud well here. Chrome and Edge usually include high-quality voices.",
     "@readAloudNoVoiceDesktopWeb": {
         "type": "String",

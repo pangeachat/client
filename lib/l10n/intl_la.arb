@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-28 11:37:30.633832",
+    "@@last_modified": "2026-08-31 12:49:35.419767",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Nullum responsum",
     "callHistoryDeclined": "Colloquium recusatum",
     "callHistoryYouDeclined": "Hoc colloquium recusavisti",
-    "starsEarnedInLanguage": "Stellae in {language} meritae"
+    "starsEarnedInLanguage": "Stellae in {language} meritae",
+    "readAloudNoVoiceNote": "Nulla vox {language} optima in hac machina praesto est, ergo haec optiones non praesto sunt. Adhuc potes audire audio ex vecte nuntiorum."
 }

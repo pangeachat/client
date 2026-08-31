@@ -61,7 +61,6 @@ class MessageAudioCardState extends State<MessageAudioCard> {
         ErrorHandler.logError(
           e: e,
           s: s,
-          m: 'something wrong getting audio in MessageAudioCardState',
           data: {
             'widget.messageEvent.messageDisplayLangCode':
                 widget.messageEvent.messageDisplayLangCode,
