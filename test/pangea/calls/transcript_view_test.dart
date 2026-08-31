@@ -1229,20 +1229,51 @@ void main() {
 
   group('callParticipants', () {
     test('is derived locally and cannot be influenced by room content', () {
-      expect(callParticipants(me: _me, peerId: _peer), [_peer, _me]);
+      expect(callParticipants(me: _me, peerId: _peer).ids, [_peer, _me]);
     });
 
     test('with no peer known, no claim is made about a second person', () {
       // Honest degradation: showing only our own half says nothing false
       // about anyone. Filling the gap from the card is what let a stranger in.
-      expect(callParticipants(me: _me, peerId: null), [_me]);
+      expect(callParticipants(me: _me, peerId: null).ids, [_me]);
     });
 
     test('is stable across reads, so sections do not reorder', () {
       expect(
-        callParticipants(me: _me, peerId: _peer),
-        callParticipants(me: _me, peerId: _peer),
+        callParticipants(me: _me, peerId: _peer).ids,
+        callParticipants(me: _me, peerId: _peer).ids,
       );
+    });
+
+    test('a known peer is not an answer while our own id is missing', () {
+      // The shape the guard asserted but never checked. It asked only whether
+      // the PEER was known, over a list built from the peer AND this account,
+      // so this combination reported a one-id list as authoritative -- and an
+      // authoritative list with no id of ours in it is one assembly may drop
+      // OUR OWN half against, with no section, on a read it calls complete.
+      final participants = callParticipants(me: null, peerId: _peer);
+
+      expect(participants.ids, [_peer]);
+      expect(participants.known, isFalse);
+    });
+
+    test('the list and the claim about it cannot disagree', () {
+      // Asserted mechanically over every combination rather than at the one
+      // case that was wrong. A hand-picked case is what left the other three
+      // unchecked, and this list needs BOTH ids whichever one goes missing.
+      for (final me in [_me, null]) {
+        for (final peer in [_peer, null]) {
+          final participants = callParticipants(me: me, peerId: peer);
+
+          expect(
+            participants.known,
+            participants.ids.length == 2,
+            reason:
+                'me=$me peer=$peer: the list is an answer only when both '
+                'sides of the call are in it',
+          );
+        }
+      }
     });
   });
 

@@ -29,7 +29,7 @@ Future<void> showCallTranscript(
   ),
 );
 
-/// Who could have written a half of THIS CALL.
+/// Who could have written a half of THIS CALL, and whether that is an answer.
 ///
 /// A 1:1 call has exactly two sides, and both are known locally: this account,
 /// and the room's direct-chat peer. Nothing here comes from room content.
@@ -52,12 +52,32 @@ Future<void> showCallTranscript(
 /// asserted: assembly reports a named participant who wrote nothing as ABSENT
 /// rather than omitting them, and DROPS a half from anyone not named -- which
 /// is what stops a stranger writing themselves a section.
+///
+/// The list and whether it is an ANSWER come back together, because they are
+/// one fact read two ways and splitting them is how the second came to
+/// contradict the first. The caller built the list from the peer AND this
+/// account, then asked only whether the PEER was known -- so a null `userID`
+/// produced a one-id list that reported itself authoritative, and an
+/// authoritative list missing our own id is one assembly may DROP our own half
+/// against: no section, on a read it calls complete. That is the failure
+/// `assembleTranscript` exists to prevent, reached through the guard meant to
+/// prevent it. Not provokable while a signed-in client renders a Room, which is
+/// exactly how a guard that asserts more than it checks survives review.
 @visibleForTesting
-List<String> callParticipants({required String? me, required String? peerId}) {
+({List<String> ids, bool known}) callParticipants({
+  required String? me,
+  required String? peerId,
+}) {
   final ids = <String>{?me, ?peerId};
 
-  // Sorted, so the sections do not reorder between two reads of the same call.
-  return ids.toList()..sort();
+  return (
+    // Sorted, so the sections do not reorder between two reads of the same
+    // call.
+    ids: ids.toList()..sort(),
+    // Every id this list is BUILT from, not only the one that is usually
+    // missing. A list is an answer when nothing that goes into it was absent.
+    known: me != null && peerId != null,
+  );
 }
 
 class CallTranscriptView extends StatefulWidget {
@@ -91,18 +111,21 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // Worked out ONCE and both facts carried together: who we think took part,
     // and whether that is an answer or a guess. Read separately, the second
     // one is what gets forgotten -- and a guess presented as an answer is how
-    // a real half comes to be discarded in silence.
-    final peer = callPeerOf(widget.room);
+    // a real half comes to be discarded in silence. It was read separately
+    // here, and the guess it presented as an answer was a list with no id of
+    // our own in it.
+    final me = widget.room.client.userID;
+    final participants = callParticipants(
+      me: me,
+      peerId: callPeerOf(widget.room),
+    );
     return fetchCallTranscript(
       fetch: widget.fetcher ?? relationsFetcherFor(widget.room.client),
       roomId: widget.room.id,
       callKey: widget.callKey,
-      selfId: widget.room.client.userID,
-      expectedSenders: callParticipants(
-        me: widget.room.client.userID,
-        peerId: peer,
-      ),
-      participantsKnown: peer != null,
+      selfId: me,
+      expectedSenders: participants.ids,
+      participantsKnown: participants.known,
       encrypted: widget.room.encrypted,
     );
   }
