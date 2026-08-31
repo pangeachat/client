@@ -5261,5 +5261,7 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "teachOptionSelected": "Teach selected",
+    "learnOptionSelected": "Learn selected"
 }
