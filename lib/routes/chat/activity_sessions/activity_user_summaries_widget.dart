@@ -82,7 +82,6 @@ class ActivityUserSummaries extends StatelessWidget {
                 ActivityParticipantSummaries(
                   summary: summary,
                   controller: controller,
-                  dividerAbove: goals.isNotEmpty,
                 ),
               ],
             ),
@@ -174,17 +173,10 @@ class ActivityParticipantSummaries extends StatelessWidget {
   final ActivitySummaryResponseModel summary;
   final ChatController controller;
 
-  /// Rules the section off from the earned stars above it. The picker swaps
-  /// only the card below the rule, and the stars are the learner's own either
-  /// way — without the rule, switching participants reads as if it changed
-  /// them (#8678).
-  final bool dividerAbove;
-
   const ActivityParticipantSummaries({
     super.key,
     required this.summary,
     required this.controller,
-    this.dividerAbove = false,
   });
 
   Room get room => controller.room;
@@ -226,7 +218,6 @@ class ActivityParticipantSummaries extends StatelessWidget {
           spacing: 12.0,
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (dividerAbove) const Divider(height: 1),
             if (roleSummaries.length > 1)
               Wrap(
                 spacing: 8.0,
