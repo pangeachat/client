@@ -228,12 +228,15 @@ A local match is presented exactly like a server spelling match — highlighted,
 
 ### When the local pass runs
 
-The gate is whether the device has a dictionary for the learner's target language. It is not the active keyboard, and not the autocorrect setting: the spell checker is asked for a specific language and answers for that language whatever the learner is typing on, so keyboard state has no bearing on whether its answer is usable. Where no dictionary is available the pass is skipped and writing assistance behaves as it does today.
+The gate is whether the device can check the learner's target language, and it has to be asked rather than assumed. It is not the active keyboard and not the autocorrect setting — keyboard state has no bearing on whether the answer is usable — but a language counts only if the device names it: iOS answers nothing for a tag outside the list it advertises, so the target language is resolved against that list instead of being requested directly. Where the device offers nothing for the language, the pass is skipped and writing assistance behaves as it does today.
 
 | Platform | Local pass |
 | --- | --- |
-| iOS, Android | Runs when a target-language dictionary is available |
+| iOS | Runs for the 18 of 24 fully supported target languages it has a dictionary for. Catalan, Japanese, Korean and Chinese have none, and are skipped. |
+| Android | Runs where a spell checker is enabled and has the language. Its session is opened at chat open — see below. |
 | Web | Never — no device spell checker is reachable, so writing assistance stays server-only |
+
+**Android's spell check session is opened before the learner types.** Its checker replies through a callback, and the first request of a session answers before that reply arrives — so without preparation the first message after opening a chat would get no local spelling. A discarded request at chat open leaves the session ready, and is repeated when the target language changes, because the session belongs to a language. iOS answers its first request normally and is not warmed.
 
 The value concentrates where device autocorrect is off, since an active autocorrect has usually fixed these misspellings before writing assistance sees them. On iOS that means every learner not yet observed using a target-language keyboard — which is also when they are most exposed. Whether autocorrect is on for a given learner is owned by [target-language-keyboard.instructions.md](target-language-keyboard.instructions.md).
 
