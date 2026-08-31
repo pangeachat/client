@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-28 11:37:30.115577",
+    "@@last_modified": "2026-08-31 12:03:24.542147",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10581,5 +10581,6 @@
     "callHistoryNoAnswer": "応答なし",
     "callHistoryDeclined": "通話が拒否されました",
     "callHistoryYouDeclined": "この通話を拒否しました",
-    "starsEarnedInLanguage": "{language}で獲得したスター"
+    "starsEarnedInLanguage": "{language}で獲得したスター",
+    "readAloudNoVoiceSubtitle": "このデバイスでは高品質の{language}音声が利用できないため、この設定は使用できません。メッセージツールバーから引き続き音声を再生できます。"
 }

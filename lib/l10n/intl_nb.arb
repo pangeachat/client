@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:31.396172",
+    "@@last_modified": "2026-08-31 12:03:27.201928",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9869,5 +9869,6 @@
     "callHistoryNoAnswer": "Ikke noe svar",
     "callHistoryDeclined": "Samtalen ble avslått",
     "callHistoryYouDeclined": "Du avslo denne samtalen",
-    "starsEarnedInLanguage": "Stjerner opptjent i {language}"
+    "starsEarnedInLanguage": "Stjerner opptjent i {language}",
+    "readAloudNoVoiceSubtitle": "Ingen høykvalitets {language}-stemme er tilgjengelig på denne enheten, så denne innstillingen er utilgjengelig. Du kan fortsatt spille av lyd fra meldingsverktøylinjen."
 }

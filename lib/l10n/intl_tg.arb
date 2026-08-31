@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-28 11:37:33.074195",
+    "@@last_modified": "2026-08-31 12:03:31.752172",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Ҷавоб нест",
     "callHistoryDeclined": "Занг рад карда шуд",
     "callHistoryYouDeclined": "Шумо ин зангро рад кардед",
-    "starsEarnedInLanguage": "Ситораҳои бадастомада дар {language}"
+    "starsEarnedInLanguage": "Ситораҳои бадастомада дар {language}",
+    "readAloudNoVoiceSubtitle": "Дар ин дастгоҳ овози баландсифати {language} мавҷуд нест, бинобар ин ин танзимот дастнорас аст. Шумо ба ҳар ҳол метавонед аудиоро аз панели паёмҳо навозед."
 }

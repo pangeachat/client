@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-28 11:37:28.897859",
+    "@@last_modified": "2026-08-31 12:03:22.662994",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9809,5 +9809,6 @@
     "callHistoryNoAnswer": "Vastamata",
     "callHistoryDeclined": "Kõnest keelduti",
     "callHistoryYouDeclined": "Keeldusite sellest kõnest",
-    "starsEarnedInLanguage": "Tähti teenitud keeles {language}"
+    "starsEarnedInLanguage": "Tähti teenitud keeles {language}",
+    "readAloudNoVoiceSubtitle": "Selles seadmes pole kvaliteetset {language} häält saadaval, seega on see säte keelatud. Saate endiselt heli esitada sõnumiribalt."
 }

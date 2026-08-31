@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-28 11:37:30.845634",
+    "@@last_modified": "2026-08-31 12:03:26.164025",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "وەڵام نەدرایەوە",
     "callHistoryDeclined": "پەیوەندییەکە ڕەتکرایەوە",
     "callHistoryYouDeclined": "تۆ ئەم پەیوەندییەت ڕەتکردەوە",
-    "starsEarnedInLanguage": "ئەستێرە بەدەستهاتووەکان لە {language}"
+    "starsEarnedInLanguage": "ئەستێرە بەدەستهاتووەکان لە {language}",
+    "readAloudNoVoiceSubtitle": "هیچ دەنگێکی کوالیتی بەرزی {language} لەسەر ئەم ئامێرە بەردەست نییە، بۆیە ئەم ڕێکخستنە بەردەست نییە. هێشتا دەتوانیت دەنگ لە شریتی ئامرازی پەیامەکە لێبدەیت."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-28 11:37:29.945057",
+    "@@last_modified": "2026-08-31 12:03:23.830004",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10248,5 +10248,6 @@
     "callHistoryNoAnswer": "Nema odgovora",
     "callHistoryDeclined": "Poziv odbijen",
     "callHistoryYouDeclined": "Odbili ste ovaj poziv",
-    "starsEarnedInLanguage": "Zvijezde osvojene u {language}"
+    "starsEarnedInLanguage": "Zvijezde osvojene u {language}",
+    "readAloudNoVoiceSubtitle": "Na ovom uređaju nije dostupan visokokvalitetan glas za {language}, stoga ova postavka nije dostupna. I dalje možete reproducirati zvuk s alatne trake poruka."
 }

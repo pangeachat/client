@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-28 11:37:33.791565",
+    "@@last_modified": "2026-08-31 12:03:33.594527",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Ayikho impendulo",
     "callHistoryDeclined": "Ikholi yenqatshiwe",
     "callHistoryYouDeclined": "Uyenqabile le kholi",
-    "starsEarnedInLanguage": "Izinkanyezi ezizuziwe ngesi-{language}"
+    "starsEarnedInLanguage": "Izinkanyezi ezizuziwe ngesi-{language}",
+    "readAloudNoVoiceSubtitle": "Ayikho izwi lekhwalithi ephezulu yesi-{language} elitholakala kule divayisi, ngakho-ke leli zilungiselelo alitholakali. Usengadlala umsindo kusuka kubha yamathuluzi yemiyalezo."
 }

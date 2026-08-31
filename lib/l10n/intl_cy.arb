@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-28 11:37:28.909140",
+    "@@last_modified": "2026-08-31 12:03:21.901727",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Dim ateb",
     "callHistoryDeclined": "Galwad wedi'i gwrthod",
     "callHistoryYouDeclined": "Gwrthodoch chi'r alwad hon",
-    "starsEarnedInLanguage": "Sêr a enillwyd yn {language}"
+    "starsEarnedInLanguage": "Sêr a enillwyd yn {language}",
+    "readAloudNoVoiceSubtitle": "Nid oes llais {language} o ansawdd uchel ar gael ar y ddyfais hon, felly nid yw'r gosodiad hwn ar gael. Gallwch barhau i chwarae sain o far offer y neges."
 }

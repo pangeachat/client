@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-28 11:37:32.430456",
+    "@@last_modified": "2026-08-31 12:03:30.266135",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Leai se tali",
     "callHistoryDeclined": "Ua te'ena le valaau",
     "callHistoryYouDeclined": "Na e te'ena lenei valaau",
-    "starsEarnedInLanguage": "Fetu na maua i le gagana {language}"
+    "starsEarnedInLanguage": "Fetu na maua i le gagana {language}",
+    "readAloudNoVoiceSubtitle": "E leai se leo {language} maualuga o loʻo avanoa i lenei masini, o lea e le mafai ai ona faʻaaoga lenei faʻatulagaga. E mafai lava ona e taina le leo mai le pa meafaigaluega o feʻau."
 }

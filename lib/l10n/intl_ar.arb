@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-28 11:37:28.248668",
+    "@@last_modified": "2026-08-31 12:03:20.731259",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10118,5 +10118,6 @@
     "callHistoryNoAnswer": "لا يوجد رد",
     "callHistoryDeclined": "تم رفض المكالمة",
     "callHistoryYouDeclined": "لقد رفضت هذه المكالمة",
-    "starsEarnedInLanguage": "النجوم المكتسبة في {language}"
+    "starsEarnedInLanguage": "النجوم المكتسبة في {language}",
+    "readAloudNoVoiceSubtitle": "لا يتوفر صوت عالي الجودة للغة {language} على هذا الجهاز، لذا فإن هذا الإعداد غير متاح. لا يزال بإمكانك تشغيل الصوت من شريط أدوات الرسائل."
 }

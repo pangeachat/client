@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:31.962740",
+    "@@last_modified": "2026-08-31 12:03:28.642581",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9812,5 +9812,6 @@
     "callHistoryNoAnswer": "Sem resposta",
     "callHistoryDeclined": "Chamada recusada",
     "callHistoryYouDeclined": "Você recusou esta chamada",
-    "starsEarnedInLanguage": "Estrelas ganhas em {language}"
+    "starsEarnedInLanguage": "Estrelas ganhas em {language}",
+    "readAloudNoVoiceSubtitle": "Nenhuma voz de alta qualidade em {language} está disponível neste dispositivo, então esta configuração não está disponível. Você ainda pode reproduzir áudio na barra de ferramentas da mensagem."
 }

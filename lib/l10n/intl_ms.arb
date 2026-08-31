@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-28 11:37:31.255297",
+    "@@last_modified": "2026-08-31 12:03:27.040276",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Tiada jawapan",
     "callHistoryDeclined": "Panggilan ditolak",
     "callHistoryYouDeclined": "Anda menolak panggilan ini",
-    "starsEarnedInLanguage": "Bintang yang diperoleh dalam {language}"
+    "starsEarnedInLanguage": "Bintang yang diperoleh dalam {language}",
+    "readAloudNoVoiceSubtitle": "Tiada suara {language} berkualiti tinggi tersedia pada peranti ini, jadi tetapan ini tidak tersedia. Anda masih boleh memainkan audio daripada bar alat mesej."
 }

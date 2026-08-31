@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-28 11:37:31.730573",
+    "@@last_modified": "2026-08-31 12:03:28.270511",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9897,5 +9897,6 @@
     "callHistoryNoAnswer": "Brak odpowiedzi",
     "callHistoryDeclined": "Rozmowa odrzucona",
     "callHistoryYouDeclined": "Odrzuciłeś to połączenie",
-    "starsEarnedInLanguage": "Gwiazdki zdobyte w {language}"
+    "starsEarnedInLanguage": "Gwiazdki zdobyte w {language}",
+    "readAloudNoVoiceSubtitle": "Brak wysokiej jakości głosu {language} na tym urządzeniu, więc to ustawienie jest niedostępne. Nadal możesz odtwarzać dźwięk z paska narzędzi wiadomości."
 }

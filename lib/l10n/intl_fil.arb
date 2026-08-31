@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-28 11:37:29.419140",
+    "@@last_modified": "2026-08-31 12:03:22.624312",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10672,5 +10672,6 @@
     "callHistoryNoAnswer": "Walang sumagot",
     "callHistoryDeclined": "Tanggihan ang tawag",
     "callHistoryYouDeclined": "Tinanggihan mo ang tawag na ito",
-    "starsEarnedInLanguage": "Mga star na nakuha sa {language}"
+    "starsEarnedInLanguage": "Mga star na nakuha sa {language}",
+    "readAloudNoVoiceSubtitle": "Walang available na de-kalidad na {language} na boses sa device na ito, kaya hindi available ang setting na ito. Maaari mo pa ring i-play ang audio mula sa toolbar ng mensahe."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-28 11:37:32.110474",
+    "@@last_modified": "2026-08-31 12:03:29.743688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "ڪو جواب نه",
     "callHistoryDeclined": "ڪال رد ڪئي وئي",
     "callHistoryYouDeclined": "توهان هي ڪال رد ڪئي",
-    "starsEarnedInLanguage": "{language} ۾ حاصل ڪيل ستارا"
+    "starsEarnedInLanguage": "{language} ۾ حاصل ڪيل ستارا",
+    "readAloudNoVoiceSubtitle": "هن ڊوائيس تي ڪا به اعليٰ معيار واري {language} آواز موجود ناهي، تنهنڪري هي سيٽنگ دستياب ناهي. توهان اڃا به پيغام ٽول بار مان آڊيو هلائي سگهو ٿا."
 }

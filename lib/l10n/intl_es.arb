@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-28 11:37:29.079701",
+    "@@last_modified": "2026-08-31 12:03:22.332628",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8031,5 +8031,6 @@
     "callHistoryNoAnswer": "Sin respuesta",
     "callHistoryDeclined": "Llamada rechazada",
     "callHistoryYouDeclined": "Rechazaste esta llamada",
-    "starsEarnedInLanguage": "Estrellas ganadas en {language}"
+    "starsEarnedInLanguage": "Estrellas ganadas en {language}",
+    "readAloudNoVoiceSubtitle": "No hay una voz de {language} de alta calidad disponible en este dispositivo, por lo que esta configuración no está disponible. Aún puedes reproducir audio desde la barra de herramientas de mensajes."
 }

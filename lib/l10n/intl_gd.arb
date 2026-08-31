@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-28 11:37:29.520009",
+    "@@last_modified": "2026-08-31 12:03:23.673210",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Gun fhreagairt",
     "callHistoryDeclined": "Gairm air a diùltadh",
     "callHistoryYouDeclined": "Dhiùlt thu a' ghairm seo",
-    "starsEarnedInLanguage": "Rionnagan a choisinn thu ann an {language}"
+    "starsEarnedInLanguage": "Rionnagan a choisinn thu ann an {language}",
+    "readAloudNoVoiceSubtitle": "Chan eil guth {language} de chàileachd àrd ri fhaighinn air an inneal seo, agus mar sin chan eil an roghainn seo ri fhaighinn. Faodaidh tu fhathast claisneachd a chluich bhon bhàr-innealan teachdaireachd."
 }

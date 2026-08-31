@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-28 11:37:29.450076",
+    "@@last_modified": "2026-08-31 12:03:22.981181",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Gjin antwurd",
     "callHistoryDeclined": "Oprop wegere",
     "callHistoryYouDeclined": "Jo hawwe dizze oprop wegere",
-    "starsEarnedInLanguage": "Stjerren fertsjinne yn {language}"
+    "starsEarnedInLanguage": "Stjerren fertsjinne yn {language}",
+    "readAloudNoVoiceSubtitle": "Gjin stim fan hege kwaliteit yn it {language} is beskikber op dit apparaat, dus dizze ynstelling is net beskikber. Jo kinne noch altyd audio ôfspylje fia de berjochtbalke."
 }

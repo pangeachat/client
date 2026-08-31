@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-28 11:37:28.418389",
+    "@@last_modified": "2026-08-31 12:03:21.449425",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Без отговор",
     "callHistoryDeclined": "Разговорът е отхвърлен",
     "callHistoryYouDeclined": "Вие отхвърлихте този разговор",
-    "starsEarnedInLanguage": "Спечелени звезди на {language}"
+    "starsEarnedInLanguage": "Спечелени звезди на {language}",
+    "readAloudNoVoiceSubtitle": "На това устройство няма наличен висококачествен глас на {language}, така че тази настройка не е достъпна. Все още можете да възпроизвеждате аудио от лентата с инструменти за съобщения."
 }

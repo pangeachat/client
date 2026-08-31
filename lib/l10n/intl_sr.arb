@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:32.436990",
+    "@@last_modified": "2026-08-31 12:03:30.389491",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10761,5 +10761,6 @@
     "callHistoryNoAnswer": "Nema odgovora",
     "callHistoryDeclined": "Poziv odbijen",
     "callHistoryYouDeclined": "Odbili ste ovaj poziv",
-    "starsEarnedInLanguage": "Zvezdice osvojene u {language}"
+    "starsEarnedInLanguage": "Zvezdice osvojene u {language}",
+    "readAloudNoVoiceSubtitle": "Na ovom uređaju nije dostupan visokokvalitetan glas za {language}, tako da ovo podešavanje nije dostupno. I dalje možete puštati zvuk sa trake sa alatkama za poruke."
 }

@@ -1325,7 +1325,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-28 11:37:32.980008",
+    "@@last_modified": "2026-08-31 12:03:31.170336",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10762,5 +10762,6 @@
     "callHistoryNoAnswer": "సమాధానం లేదు",
     "callHistoryDeclined": "కాల్ తిరస్కరించబడింది",
     "callHistoryYouDeclined": "మీరు ఈ కాల్‌ను తిరస్కరించారు",
-    "starsEarnedInLanguage": "{language}లో సంపాదించిన నక్షత్రాలు"
+    "starsEarnedInLanguage": "{language}లో సంపాదించిన నక్షత్రాలు",
+    "readAloudNoVoiceSubtitle": "ఈ పరికరంలో అధిక-నాణ్యత గల {language} వాయిస్ అందుబాటులో లేదు, కాబట్టి ఈ సెట్టింగ్ అందుబాటులో లేదు. మీరు ఇప్పటికీ మెసేజ్ టూల్‌బార్ నుండి ఆడియోను ప్లే చేయవచ్చు."
 }

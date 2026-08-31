@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-28 11:37:30.789320",
+    "@@last_modified": "2026-08-31 12:03:26.425108",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "ບໍ່ມີຄົນຮັບ",
     "callHistoryDeclined": "ປະຕິເສດການໂທ",
     "callHistoryYouDeclined": "ທ່ານປະຕິເສດການໂທນີ້",
-    "starsEarnedInLanguage": "ດາວທີ່ໄດ້ຮັບໃນ {language}"
+    "starsEarnedInLanguage": "ດາວທີ່ໄດ້ຮັບໃນ {language}",
+    "readAloudNoVoiceSubtitle": "ບໍ່ມີສຽງ {language} ຄຸນນະພາບສູງຢູ່ໃນອຸປະກອນນີ້, ສະນັ້ນການຕັ້ງຄ່ານີ້ຈຶ່ງບໍ່ສາມາດໃຊ້ໄດ້. ທ່ານຍັງສາມາດຫຼິ້ນສຽງຈາກແຖບເຄື່ອງມືຂໍ້ຄວາມໄດ້."
 }

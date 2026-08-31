@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:30.509980",
+    "@@last_modified": "2026-08-31 12:03:25.412484",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,6 @@
     "callHistoryNoAnswer": "응답 없음",
     "callHistoryDeclined": "통화 거절됨",
     "callHistoryYouDeclined": "이 통화를 거절했습니다",
-    "starsEarnedInLanguage": "{language}에서 획득한 별"
+    "starsEarnedInLanguage": "{language}에서 획득한 별",
+    "readAloudNoVoiceSubtitle": "이 기기에서는 고품질 {language} 음성을 사용할 수 없어 이 설정을 이용할 수 없습니다. 메시지 도구 모음에서 오디오를 재생할 수 있습니다."
 }

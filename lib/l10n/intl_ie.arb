@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-28 11:37:29.926013",
+    "@@last_modified": "2026-08-31 12:03:24.770717",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10444,5 +10444,6 @@
     "callHistoryNoAnswer": "Gan freagra",
     "callHistoryDeclined": "Glao diúltaithe",
     "callHistoryYouDeclined": "Dhiúltaigh tú don ghlao seo",
-    "starsEarnedInLanguage": "Réaltaí tuillte i {language}"
+    "starsEarnedInLanguage": "Réaltaí tuillte i {language}",
+    "readAloudNoVoiceSubtitle": "Níl guth ardcháilíochta {language} ar fáil ar an ngléas seo, mar sin níl an socrú seo ar fáil. Is féidir leat fuaim a sheinm fós ón mbarra uirlisí teachtaireachta."
 }

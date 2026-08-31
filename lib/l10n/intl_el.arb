@@ -3401,7 +3401,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-28 11:37:28.923544",
+    "@@last_modified": "2026-08-31 12:03:22.544020",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10687,5 +10687,6 @@
     "callHistoryNoAnswer": "Καμία απάντηση",
     "callHistoryDeclined": "Η κλήση απορρίφθηκε",
     "callHistoryYouDeclined": "Απορρίψατε αυτήν την κλήση",
-    "starsEarnedInLanguage": "Αστέρια που κερδήθηκαν στα {language}"
+    "starsEarnedInLanguage": "Αστέρια που κερδήθηκαν στα {language}",
+    "readAloudNoVoiceSubtitle": "Δεν υπάρχει διαθέσιμη φωνή υψηλής ποιότητας για τα {language} σε αυτήν τη συσκευή, επομένως αυτή η ρύθμιση δεν είναι διαθέσιμη. Μπορείτε να αναπαράγετε ήχο από τη γραμμή εργαλείων μηνυμάτων."
 }

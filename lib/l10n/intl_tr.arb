@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-28 11:37:33.004561",
+    "@@last_modified": "2026-08-31 12:03:31.402349",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10113,5 +10113,6 @@
     "callHistoryNoAnswer": "Cevap yok",
     "callHistoryDeclined": "Arama reddedildi",
     "callHistoryYouDeclined": "Bu aramayı reddettiniz",
-    "starsEarnedInLanguage": "{language} dilinde kazanılan yıldızlar"
+    "starsEarnedInLanguage": "{language} dilinde kazanılan yıldızlar",
+    "readAloudNoVoiceSubtitle": "Bu cihazda yüksek kaliteli bir {language} sesi mevcut değil, bu nedenle bu ayar kullanılamıyor. Mesaj araç çubuğundan yine de ses çalabilirsiniz."
 }

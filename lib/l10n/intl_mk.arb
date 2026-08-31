@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-28 11:37:31.013578",
+    "@@last_modified": "2026-08-31 12:03:26.504798",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Нема одговор",
     "callHistoryDeclined": "Повикот е одбиен",
     "callHistoryYouDeclined": "Го одбивте овој повик",
-    "starsEarnedInLanguage": "Освоени ѕвезди во {language}"
+    "starsEarnedInLanguage": "Освоени ѕвезди во {language}",
+    "readAloudNoVoiceSubtitle": "Нема достапен висококвалитетен глас на {language} на овој уред, па оваа поставка не е достапна. Сè уште можете да пуштате аудио од лентата со алатки за пораки."
 }

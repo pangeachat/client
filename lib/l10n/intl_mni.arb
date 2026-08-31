@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-28 11:37:36.005426",
+    "@@last_modified": "2026-08-31 12:03:30.750281",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "পাউখুম পীরকখিদে",
     "callHistoryDeclined": "কল লৌদ্রে",
     "callHistoryYouDeclined": "অদোম্না হায়রিবা কল অসি লৌদ্রে",
-    "starsEarnedInLanguage": "{language} da phangba thawanmichak"
+    "starsEarnedInLanguage": "{language} da phangba thawanmichak",
+    "readAloudNoVoiceSubtitle": "Masigi device asida high-quality {language} gi khonjel leitede, maram aduna asi set touba ngamlaroi. Nangna message toolbar dagi audio play touba ngammi."
 }

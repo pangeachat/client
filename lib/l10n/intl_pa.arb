@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-28 11:37:31.715030",
+    "@@last_modified": "2026-08-31 12:03:28.428051",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "ਕੋਈ ਜਵਾਬ ਨਹੀਂ",
     "callHistoryDeclined": "ਕਾਲ ਅਸਵੀਕਾਰ ਕੀਤੀ ਗਈ",
     "callHistoryYouDeclined": "ਤੁਸੀਂ ਇਹ ਕਾਲ ਅਸਵੀਕਾਰ ਕੀਤੀ",
-    "starsEarnedInLanguage": "{language} ਵਿੱਚ ਕਮਾਏ ਸਿਤਾਰੇ"
+    "starsEarnedInLanguage": "{language} ਵਿੱਚ ਕਮਾਏ ਸਿਤਾਰੇ",
+    "readAloudNoVoiceSubtitle": "ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਕੋਈ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਉਪਲਬਧ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਹ ਸੈਟਿੰਗ ਅਣਉਪਲਬਧ ਹੈ। ਤੁਸੀਂ ਅਜੇ ਵੀ ਸੁਨੇਹਾ ਟੂਲਬਾਰ ਤੋਂ ਆਡੀਓ ਚਲਾ ਸਕਦੇ ਹੋ।"
 }

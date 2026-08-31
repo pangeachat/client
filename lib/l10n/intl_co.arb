@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-28 11:37:28.875662",
+    "@@last_modified": "2026-08-31 12:03:21.766334",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Nisuna risposta",
     "callHistoryDeclined": "Chjama ricusata",
     "callHistoryYouDeclined": "Avete ricusatu sta chjama",
-    "starsEarnedInLanguage": "Stelle guadagnate in {language}"
+    "starsEarnedInLanguage": "Stelle guadagnate in {language}",
+    "readAloudNoVoiceSubtitle": "Nisuna voce di alta qualità in {language} hè dispunibule nant'à stu dispusitivu, dunque sta cunfigurazione ùn hè micca dispunibule. Pudete sempre ghjucà l'audio da a barra di strumenti di i messaghji."
 }

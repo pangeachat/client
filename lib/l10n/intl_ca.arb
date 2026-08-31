@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:28.344893",
+    "@@last_modified": "2026-08-31 12:03:21.632915",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9939,5 +9939,6 @@
     "callHistoryNoAnswer": "Sense resposta",
     "callHistoryDeclined": "Trucada rebutjada",
     "callHistoryYouDeclined": "Has rebutjat aquesta trucada",
-    "starsEarnedInLanguage": "Estrelles guanyades a {language}"
+    "starsEarnedInLanguage": "Estrelles guanyades a {language}",
+    "readAloudNoVoiceSubtitle": "No hi ha cap veu d'alta qualitat en {language} disponible en aquest dispositiu, per la qual cosa aquesta configuració no està disponible. Encara podeu reproduir àudio des de la barra d'eines de missatges."
 }

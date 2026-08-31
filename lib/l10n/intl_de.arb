@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-28 11:37:28.860659",
+    "@@last_modified": "2026-08-31 12:03:22.063664",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9799,5 +9799,6 @@
     "callHistoryNoAnswer": "Keine Antwort",
     "callHistoryDeclined": "Anruf abgelehnt",
     "callHistoryYouDeclined": "Sie haben diesen Anruf abgelehnt",
-    "starsEarnedInLanguage": "In {language} verdiente Sterne"
+    "starsEarnedInLanguage": "In {language} verdiente Sterne",
+    "readAloudNoVoiceSubtitle": "Auf diesem Gerät ist keine hochwertige {language}-Stimme verfügbar, daher ist diese Einstellung nicht verfügbar. Sie können Audio weiterhin über die Nachrichten-Symbolleiste abspielen."
 }

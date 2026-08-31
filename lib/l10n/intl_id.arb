@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-28 11:37:29.934705",
+    "@@last_modified": "2026-08-31 12:03:24.273188",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9885,5 +9885,6 @@
     "callHistoryNoAnswer": "Tidak ada jawaban",
     "callHistoryDeclined": "Panggilan ditolak",
     "callHistoryYouDeclined": "Anda menolak panggilan ini",
-    "starsEarnedInLanguage": "Bintang yang diperoleh dalam {language}"
+    "starsEarnedInLanguage": "Bintang yang diperoleh dalam {language}",
+    "readAloudNoVoiceSubtitle": "Tidak ada suara {language} berkualitas tinggi yang tersedia di perangkat ini, jadi pengaturan ini tidak tersedia. Anda masih dapat memutar audio dari bilah alat pesan."
 }

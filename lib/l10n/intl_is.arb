@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-28 11:37:30.060011",
+    "@@last_modified": "2026-08-31 12:03:24.556490",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Ekkert svar",
     "callHistoryDeclined": "Símtali hafnað",
     "callHistoryYouDeclined": "Þú hafnaðir þessu símtali",
-    "starsEarnedInLanguage": "Stjörnur unnar í {language}"
+    "starsEarnedInLanguage": "Stjörnur unnar í {language}",
+    "readAloudNoVoiceSubtitle": "Engin hágæða {language} rödd er í boði á þessu tæki, svo þessi stilling er óvirk. Þú getur samt spilað hljóð úr skilaboðastikunni."
 }

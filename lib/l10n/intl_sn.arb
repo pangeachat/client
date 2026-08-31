@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-28 11:37:32.643281",
+    "@@last_modified": "2026-08-31 12:03:30.332063",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Hapana mhinduro",
     "callHistoryDeclined": "Kufona kwarambwa",
     "callHistoryYouDeclined": "Waramba kufona uku",
-    "starsEarnedInLanguage": "Nyeredzi dzawanikwa mu{language}"
+    "starsEarnedInLanguage": "Nyeredzi dzawanikwa mu{language}",
+    "readAloudNoVoiceSubtitle": "Hapana izwi remhando yepamusoro rechi{language} riripo pachigadzirwa ichi, saka marongero aya haawanikwe. Unogona kuridza odhiyo kubva kubha renhume."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-28 11:37:30.993364",
+    "@@last_modified": "2026-08-31 12:03:26.695418",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Kāore he whakautu",
     "callHistoryDeclined": "Kua whakakorea te waea",
     "callHistoryYouDeclined": "I whakakorea e koe tēnei waea",
-    "starsEarnedInLanguage": "Whetū i whiwhi i te reo {language}"
+    "starsEarnedInLanguage": "Whetū i whiwhi i te reo {language}",
+    "readAloudNoVoiceSubtitle": "Kāore he reo {language} kounga teitei e wātea ana i tēnei pūrere, nō reira kāore tēnei tautuhinga e wātea ana. Ka taea tonu e koe te purei ororongo mai i te paeutauta karere."
 }

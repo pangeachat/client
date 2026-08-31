@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-28 11:37:30.566664",
+    "@@last_modified": "2026-08-31 12:03:25.333568",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2216,5 +2216,6 @@
     "callHistoryNoAnswer": "Nɔ pikɔp",
     "callHistoryDeclined": "Kɔl diklɛn",
     "callHistoryYouDeclined": "Yu diklɛn dis kɔl",
-    "starsEarnedInLanguage": "Stars wehn yu earn insai {language}"
+    "starsEarnedInLanguage": "Stars wehn yu earn insai {language}",
+    "readAloudNoVoiceSubtitle": "No high-quality {language} voice is available on this device, so this setting is unavailable. You can still play audio from the message toolbar."
 }
