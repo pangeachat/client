@@ -1,3 +1,5 @@
+import 'dart:ui' as ui show SemanticsHitTestBehavior;
+
 import 'package:flutter/material.dart';
 
 import 'package:livekit_client/livekit_client.dart' as lk;
@@ -26,69 +28,79 @@ class CallPanel extends StatelessWidget {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
 
-    return ListenableBuilder(
-      listenable: session,
-      builder: (context, _) {
-        if (session.showingSummary) return _summary(context, l10n, theme);
-        final tracks = session.videoTracks();
-        return Material(
-          // Its own dark surface: every calling product darkens the call
-          // area, and a flat container colour reads as an unfinished page.
-          color: const Color(0xFF14131A),
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              if (tracks.isNotEmpty)
-                _videoLayer(tracks)
-              else
-                _voiceBackdrop(theme),
-              SafeArea(
-                child: Column(
-                  children: [
-                    _topBar(l10n),
-                    Expanded(
-                      child: tracks.isNotEmpty
-                          ? const SizedBox.shrink()
-                          // Scrollable so a short pane shrinks the panel
-                          // rather than pushing the controls off the bottom.
-                          : Center(
-                              child: SingleChildScrollView(
-                                child: _peerPanel(context, l10n, theme),
+    // Opaque for the same reason the minimized bar is (#8681): the panel
+    // covers the app in fullscreen and the chat underneath it in the pane, and
+    // its dark Material publishes no semantics node of its own -- so on web
+    // with the semantics tree on, every node it covers stayed clickable
+    // straight through it. Only its own controls should be reachable while it
+    // is up, and they are its children, which keep their clicks.
+    return Semantics(
+      container: true,
+      hitTestBehavior: ui.SemanticsHitTestBehavior.opaque,
+      child: ListenableBuilder(
+        listenable: session,
+        builder: (context, _) {
+          if (session.showingSummary) return _summary(context, l10n, theme);
+          final tracks = session.videoTracks();
+          return Material(
+            // Its own dark surface: every calling product darkens the call
+            // area, and a flat container colour reads as an unfinished page.
+            color: const Color(0xFF14131A),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                if (tracks.isNotEmpty)
+                  _videoLayer(tracks)
+                else
+                  _voiceBackdrop(theme),
+                SafeArea(
+                  child: Column(
+                    children: [
+                      _topBar(l10n),
+                      Expanded(
+                        child: tracks.isNotEmpty
+                            ? const SizedBox.shrink()
+                            // Scrollable so a short pane shrinks the panel
+                            // rather than pushing the controls off the bottom.
+                            : Center(
+                                child: SingleChildScrollView(
+                                  child: _peerPanel(context, l10n, theme),
+                                ),
                               ),
+                      ),
+                      if (tracks.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: Text(
+                            callStatusLine(l10n, session),
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: Colors.white70,
                             ),
-                    ),
-                    if (tracks.isNotEmpty)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: Text(
-                          callStatusLine(l10n, session),
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: Colors.white70,
                           ),
                         ),
-                      ),
-                    if (!session.isFailed)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Text(
-                          l10n.callRecordingNotice,
-                          textAlign: TextAlign.center,
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: Colors.white38,
+                      if (!session.isFailed)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          child: Text(
+                            l10n.callRecordingNotice,
+                            textAlign: TextAlign.center,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: Colors.white38,
+                            ),
                           ),
                         ),
-                      ),
-                    if (session.isFailed)
-                      _failedControls(l10n)
-                    else
-                      _controls(l10n),
-                  ],
+                      if (session.isFailed)
+                        _failedControls(l10n)
+                      else
+                        _controls(l10n),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        );
-      },
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -431,106 +443,128 @@ class CallMiniTile extends StatelessWidget {
     final theme = Theme.of(context);
     return ListenableBuilder(
       listenable: session,
-      builder: (context, _) => DecoratedBox(
-        decoration: BoxDecoration(
-          color: const Color(0xFF1E1D26),
-          borderRadius: BorderRadius.circular(14),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.35),
-              blurRadius: 14,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Material(
-          color: Colors.transparent,
-          borderRadius: BorderRadius.circular(14),
-          child: InkWell(
+      // The tile floats over the app, so it has to WIN the clicks it covers.
+      // On web with the semantics tree on (staging forces it via
+      // ENABLE_SEMANTICS) a click is dispatched by the `flt-semantics` DOM
+      // element under the cursor, not by Flutter's hit test -- and without
+      // this the InkWell below is not a container boundary, so the engine
+      // parents the whole page underneath it. Its node then blankets the
+      // viewport while every page node nested inside it sits ON TOP: a tap on
+      // the tile opened whatever button it covered (#8681, the Courses
+      // panel's add-course icons), and a tap anywhere else on the page
+      // expanded the call. `container` splits the tile back out into its own
+      // node, and `opaque` is what earns it `pointer-events: all` and a
+      // z-index above its earlier-painted siblings -- the same tool
+      // `ModalRoute` uses, and the same fix as #8181 and #7803. The tile's own
+      // mute and hang-up buttons are children of this node, so they keep
+      // their clicks.
+      builder: (context, _) => Semantics(
+        container: true,
+        hitTestBehavior: ui.SemanticsHitTestBehavior.opaque,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: const Color(0xFF1E1D26),
             borderRadius: BorderRadius.circular(14),
-            onTap: onOpen,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-              child: Row(
-                children: [
-                  Avatar(
-                    mxContent: session.peer?.avatarUrl,
-                    name:
-                        session.peer?.calcDisplayname() ??
-                        session.room.getLocalizedDisplayname(),
-                    size: 32,
-                    showPresence: false,
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.35),
+                blurRadius: 14,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: Material(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(14),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(14),
+              onTap: onOpen,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 8,
+                ),
+                child: Row(
+                  children: [
+                    Avatar(
+                      mxContent: session.peer?.avatarUrl,
+                      name:
                           session.peer?.calcDisplayname() ??
-                              session.room.getLocalizedDisplayname(),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
+                          session.room.getLocalizedDisplayname(),
+                      size: 32,
+                      showPresence: false,
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            session.peer?.calcDisplayname() ??
+                                session.room.getLocalizedDisplayname(),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                        ),
-                        Text(
-                          callStatusLine(l10n, session),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: Colors.white70,
+                          Text(
+                            callStatusLine(l10n, session),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: Colors.white70,
+                            ),
                           ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Semantics(
+                      label: session.muted ? l10n.callUnmute : l10n.callMute,
+                      button: true,
+                      // a11y-ignore: the name is on the Semantics above. This
+                      // tile also renders from GlobalCallTile, which sits above
+                      // the router and so has no Overlay ancestor -- a Tooltip
+                      // there throws, and one in the banner stopped calls being
+                      // answered at all.
+                      child: IconButton(
+                        // a11y-ignore: named by the Semantics above
+                        visualDensity: VisualDensity.compact,
+                        icon: Icon(
+                          session.muted ? Icons.mic_off : Icons.mic,
+                          size: 20,
+                          color: Colors.white,
                         ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 6),
-                  Semantics(
-                    label: session.muted ? l10n.callUnmute : l10n.callMute,
-                    button: true,
-                    // a11y-ignore: the name is on the Semantics above. This
-                    // tile also renders from GlobalCallTile, which sits above
-                    // the router and so has no Overlay ancestor -- a Tooltip
-                    // there throws, and one in the banner stopped calls being
-                    // answered at all.
-                    child: IconButton(
-                      // a11y-ignore: named by the Semantics above
-                      visualDensity: VisualDensity.compact,
-                      icon: Icon(
-                        session.muted ? Icons.mic_off : Icons.mic,
-                        size: 20,
-                        color: Colors.white,
+                        onPressed:
+                            session.stage == CallStage.connected &&
+                                !session.isReconnecting
+                            ? session.toggleMute
+                            : null,
                       ),
-                      onPressed:
-                          session.stage == CallStage.connected &&
-                              !session.isReconnecting
-                          ? session.toggleMute
-                          : null,
                     ),
-                  ),
-                  Semantics(
-                    label: l10n.callHangUp,
-                    button: true,
-                    // a11y-ignore: as above -- named by the Semantics, and no
-                    // Overlay above the router for a Tooltip to use.
-                    child: IconButton(
-                      // a11y-ignore: named by the Semantics above
-                      visualDensity: VisualDensity.compact,
-                      icon: const Icon(
-                        Icons.call_end,
-                        size: 20,
-                        color: Color(0xFFEF5350),
+                    Semantics(
+                      label: l10n.callHangUp,
+                      button: true,
+                      // a11y-ignore: as above -- named by the Semantics, and no
+                      // Overlay above the router for a Tooltip to use.
+                      child: IconButton(
+                        // a11y-ignore: named by the Semantics above
+                        visualDensity: VisualDensity.compact,
+                        icon: const Icon(
+                          Icons.call_end,
+                          size: 20,
+                          color: Color(0xFFEF5350),
+                        ),
+                        onPressed: session.isFailed
+                            ? session.dismissFailed
+                            : session.endCall,
                       ),
-                      onPressed: session.isFailed
-                          ? session.dismissFailed
-                          : session.endCall,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
