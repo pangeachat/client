@@ -106,12 +106,23 @@ class CallDelayedLeave {
   /// keeps them there for the length of the call. Each device draws once and
   /// keeps its draw, which de-phases the cohort within a couple of periods.
   ///
-  /// Nine to eleven rather than eight to ten, and the reason is the tick count:
-  /// only restarts landing before `applyLeave - requestBudget` (25s) are of any
-  /// use, so a device tolerates an outage of `floor(25/T) * T`. Across [8s,10s]
-  /// that count drops from three to two at 8.33s, and the worst case in the
-  /// range is 16.7s. Across [9s,11s] it is two throughout and the worst case is
-  /// 18s — a wider spread, a better floor, and a lower mean rate.
+  /// Nine to eleven rather than eight to ten, and the reason is NOT the one
+  /// this comment used to give. That argument was the tick count: only restarts
+  /// landing before `applyLeave - requestBudget` are of any use, so a device
+  /// tolerates an outage of `floor(W/T) * T`, and at the `applyLeave` of the
+  /// day W was 25s and [9s,11s] came out ahead. [applyLeave] has since moved to
+  /// 45s, so W is 40s, and recomputed there the same criterion picks the range
+  /// it was used to reject: across [8s,10s] the worst case is ~32s (four ticks
+  /// just above 8s), across [9s,11s] it is ~30s (three ticks just above 10s).
+  ///
+  /// The range stands anyway, on the argument that did not depend on W. Both
+  /// clear the delayed-leave invariant with room -- `2 * 11s + 5s = 27s`,
+  /// against an [applyLeave] of 45s -- so the ~2s of outage tolerance is not
+  /// buying anything either way, and what separates them is load: the spread is
+  /// two seconds in both, which is what de-phases a cohort, but the mean period
+  /// is ten seconds rather than nine, and load is one membership write per
+  /// restart per participant. A class of thirty on a call pays that difference
+  /// every ten seconds for the length of it.
   static const minRestart = Duration(seconds: 9);
   static const maxRestart = Duration(seconds: 11);
 
