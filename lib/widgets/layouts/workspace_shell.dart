@@ -694,9 +694,8 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       // arrives asynchronously, so a height derived from the joined-course
       // count leaves their lists too short to build a single row — browse then
       // reads as "no courses" until the learner drags the sheet up (#7542).
-      // They fall through to the default (roughly half the screen), which is
-      // what routing.instructions.md specifies for sections other than the
-      // chats sheet and the Courses hub.
+      // They open at FULL height instead (`defaultCavityToFull`, #8659): their
+      // content has nothing to do with the map behind them, so the sheet leads.
       final groups = client.coursesByRole(l10n);
       preferredCavityHeight =
           _chatsSheetHeaderAllowance +
@@ -902,10 +901,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             // course). Opening a chat or activity from the course keeps it, so the
             // course reopens where it was left (#7332).
             cavityContextId: activeSpaceId,
-            // A course card opens at peek (the map leads); sections and the
-            // activity plan open at half (the plan keeps its pin visible above —
-            // the Google Maps UX).
+            // A course card opens at peek (the map leads); the add-course
+            // subpages open at full (their content is unrelated to the map,
+            // #8659); other sections and the activity plan open at half (the
+            // plan keeps its pin visible above — the Google Maps UX).
             cavityDefaultsToPeek: cavityToken?.type.defaultCavityToPeek == true,
+            cavityDefaultsToFull: cavityToken?.type.defaultCavityToFull == true,
             // Dismissing the activity plan sheet (drag down, or its own back/X)
             // CLOSES the plan — dropping its token clears the map's activity
             // focus (#7614; world-map.instructions.md). Map taps do NOT dismiss:
