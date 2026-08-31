@@ -1795,7 +1795,24 @@ class CallService {
       // forever would refuse every later call over a failure the learner can
       // neither see nor act on.
       Logs().w('Gave up retracting the membership; it will expire');
-      _abandonedMembership = true;
+      // Only while [_current] is still the session THIS retract captured, for
+      // the reason spelled out in the `finally` below: a retract sleeps
+      // between its retries, and a redial landing in that window is let past
+      // join's guard by this very flag. Written unconditionally, a retract
+      // that gives up AFTER that redial says "abandoned" about a call that is
+      // up and being spoken on -- and the flag is service-wide, so `isBusy`
+      // reads false on a live call (a second incoming call can interrupt it)
+      // and the next `join` discards it as abandoned. The flag describes one
+      // session; it is not ours to write once that session is not the one in
+      // hand.
+      //
+      // Only the SET is guarded, deliberately. Clearing this flag is safe from
+      // any caller -- it can only ever free a call that would otherwise be
+      // wrongly refused. Guarding the clear the same way would strand a stale
+      // `true` whenever [_current] had already moved on, and a stale `true`
+      // against a live session is precisely the state that makes `isBusy` read
+      // false on a call that is up.
+      if (identical(_current, session)) _abandonedMembership = true;
       return false;
     } finally {
       // Released only when the membership was actually taken back. Keeping a

@@ -726,6 +726,43 @@ void main() {
       },
     );
 
+    test('and it does not call a live call abandoned on its way out', () async {
+      // The third way the same sleeping retract can reach past its own call.
+      // `_abandonedMembership` is service-wide, so a retract that GIVES UP
+      // after a redial has landed says "abandoned" about the call now in hand.
+      // The cost is not cosmetic: `isBusy` is computed from that flag, so a
+      // live call reads as not-busy and a second incoming call can interrupt
+      // it, and the next join discards it as unretractable.
+      final (calls, _, elsewhere, session, retracting) =
+          await retractSleepingBetweenRetries();
+
+      // Every remaining attempt fails, so this retract gives up rather than
+      // succeeding -- that is the path that writes the flag.
+      session.leaveThrowsInOrder.addAll([
+        StateError('still refused'),
+        StateError('and again'),
+        StateError('and again'),
+      ]);
+
+      await calls.join(elsewhere);
+      expect(calls.sessionsByRoom[elsewhere.id], isNotNull);
+
+      await expectLater(retracting, completion(isFalse));
+
+      expect(
+        calls.isBusy,
+        isTrue,
+        reason:
+            'the call in the other room is up, so the service must still '
+            'refuse a second one',
+      );
+      expect(
+        calls.hasJoinedSession,
+        isTrue,
+        reason: 'and a later hangup must still have something to retract',
+      );
+    });
+
     test('and its finally does not release a call it never held', () async {
       // The other half. retract captured `_current` before it slept, and its
       // finally clears `_current` on the way out without checking that it is
