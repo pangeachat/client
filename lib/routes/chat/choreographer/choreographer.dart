@@ -316,10 +316,19 @@ class Choreographer extends ChangeNotifier {
   /// Opens the device's spell check session before the learner starts typing,
   /// so their first message is checked like every other one.
   /// See writing-assistance.instructions.md, "Local spelling matches".
+  /// Nothing here can be allowed to escape: this is fired unawaited from the
+  /// constructor, so a throw would surface as an unhandled async error with no
+  /// caller to catch it — landing on whatever happens to be running, which in
+  /// a test run means an unrelated test. A warm-up that fails silently costs
+  /// the learner one unchecked message; one that throws costs more than that.
   Future<void> _warmUpLocalSpellCheck() async {
-    final locale = await _spellCheckLocale();
-    if (locale == null) return;
-    await LocalSpellCheck.warmUp(locale);
+    try {
+      final locale = await _spellCheckLocale();
+      if (locale == null) return;
+      await LocalSpellCheck.warmUp(locale);
+    } catch (_) {
+      // Deliberately swallowed — see above.
+    }
   }
 
   Future<void> _runLocalSpellPass() async {
