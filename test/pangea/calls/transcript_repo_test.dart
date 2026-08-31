@@ -146,7 +146,7 @@ void main() {
       );
 
       expect(_halfFor(transcript, bob).state, HalfState.absent);
-      expect(transcript.readerStoppedEarly, isFalse);
+      expect(transcript.readLimits, isEmpty);
     });
 
     test('hitting the PAGE cap reports incomplete, never absent', () async {
@@ -167,7 +167,7 @@ void main() {
       expect(p.froms, hasLength(3), reason: 'stops at the cap');
       expect(_halfFor(transcript, bob).state, HalfState.incomplete);
       expect(_halfFor(transcript, alice).state, HalfState.incomplete);
-      expect(transcript.readerStoppedEarly, isTrue);
+      expect(transcript.readLimits, {TranscriptReadLimit.readerCeiling});
     });
 
     test('hitting the EVENT cap reports incomplete, never absent', () async {
@@ -184,7 +184,7 @@ void main() {
       );
 
       expect(_halfFor(transcript, bob).state, HalfState.incomplete);
-      expect(transcript.readerStoppedEarly, isTrue);
+      expect(transcript.readLimits, {TranscriptReadLimit.readerCeiling});
     });
 
     test('a cap hit inside the LAST page is not exhaustion', () async {
@@ -208,7 +208,7 @@ void main() {
       );
 
       expect(_halfFor(transcript, bob).state, HalfState.incomplete);
-      expect(transcript.readerStoppedEarly, isTrue);
+      expect(transcript.readLimits, {TranscriptReadLimit.readerCeiling});
     });
 
     test('an event of the wrong TYPE under this relation is ignored', () async {
@@ -383,7 +383,7 @@ void main() {
         transcript.halves.map((h) => h.state),
         everyElement(HalfState.incomplete),
       );
-      expect(transcript.readerStoppedEarly, isTrue);
+      expect(transcript.readLimits, {TranscriptReadLimit.roomEncrypted});
     });
 
     test('an unencrypted room still concludes absence normally', () async {

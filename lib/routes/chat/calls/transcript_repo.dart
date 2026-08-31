@@ -162,9 +162,14 @@ Future<CallTranscript> fetchCallTranscript({
     candidates: candidates,
     expectedSenders: expectedSenders,
     participantsKnown: participantsKnown,
-    // An encrypted room is never an exhausted read, whatever the server said
-    // about paging: we reached the end of a list we could not read.
-    exhausted: exhausted && !encrypted,
+    // An encrypted room is never a read this reader may conclude from,
+    // whatever the server said about paging: we reached the end of a list we
+    // could not read. It travels as ITSELF and is no longer folded into
+    // `exhausted`, which is what made it indistinguishable downstream from our
+    // own page ceiling -- so the screen offered "too much to read in one go"
+    // for a room it simply could not decrypt.
+    exhausted: exhausted,
+    encrypted: encrypted,
     unreadableSenders: unreadable,
   );
 

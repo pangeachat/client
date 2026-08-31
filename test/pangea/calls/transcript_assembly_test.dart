@@ -80,7 +80,7 @@ void main() {
 
       expect(_halfFor(transcript, bob).state, HalfState.incomplete);
       expect(_halfFor(transcript, alice).state, HalfState.incomplete);
-      expect(transcript.readerStoppedEarly, isTrue);
+      expect(transcript.readLimits, {TranscriptReadLimit.readerCeiling});
     });
 
     test(
@@ -800,7 +800,7 @@ void main() {
       );
 
       // And the read does not present itself as whole while that is true.
-      expect(transcript.readerStoppedEarly, isTrue);
+      expect(transcript.readLimits, {TranscriptReadLimit.participantsUnknown});
       expect(_halfFor(transcript, alice).state, HalfState.incomplete);
     });
 
@@ -820,8 +820,8 @@ void main() {
       );
 
       expect(
-        transcript.readerStoppedEarly,
-        isTrue,
+        transcript.readLimits,
+        {TranscriptReadLimit.participantsUnknown},
         reason: 'not knowing who was on the call is itself a reason to hedge',
       );
       expect(_halfFor(transcript, alice).state, HalfState.incomplete);
@@ -837,7 +837,7 @@ void main() {
       );
 
       expect(transcript.halves.map((h) => h.senderId), [alice, bob]);
-      expect(transcript.readerStoppedEarly, isFalse);
+      expect(transcript.readLimits, isEmpty);
       expect(_halfFor(transcript, alice).state, HalfState.present);
     });
 
@@ -850,8 +850,89 @@ void main() {
         exhausted: false,
       );
 
-      expect(transcript.readerStoppedEarly, isTrue);
+      expect(transcript.readLimits, {TranscriptReadLimit.readerCeiling});
       expect(_halfFor(transcript, bob).state, HalfState.incomplete);
+    });
+  });
+
+  group('why a read could not conclude', () {
+    // "They said nothing", "their words are missing" and "we stopped reading
+    // early" are three different answers, and so are the three reasons a read
+    // cannot conclude at all. They travelled as one boolean named for exactly
+    // one of them, so the only sentence anything downstream could offer was
+    // the reader's own page ceiling -- a specific, confident, wrong cause for
+    // a room we could not decrypt and for a call whose participants we could
+    // not name.
+
+    test('an encrypted room names ENCRYPTION, not our own ceiling', () {
+      // The server said there was no more and we read all of it; every event
+      // simply came back sealed. Nothing about this read was cut short, and
+      // telling the reader the call was too long sends them after a length
+      // problem that does not exist.
+      final transcript = assembleTranscript(
+        candidates: const [],
+        expectedSenders: [alice, bob],
+        encrypted: true,
+      );
+
+      expect(transcript.readLimits, {TranscriptReadLimit.roomEncrypted});
+      expect(
+        transcript.halves.map((h) => h.state),
+        everyElement(HalfState.incomplete),
+      );
+    });
+
+    test('an encrypted room whose relations are EMPTY still blames '
+        'encryption per half', () {
+      // The one shape that has no unreadable sender to point at: the server
+      // returns an empty chunk, so nothing arrives to be rejected. Encryption
+      // has to reach the per-half diagnosis as OUR failure to read the
+      // content, or the half falls through to "we could not work out who was
+      // on the call" -- which we could, and did.
+      final transcript = assembleTranscript(
+        candidates: const [],
+        expectedSenders: [alice, bob],
+        encrypted: true,
+      );
+
+      expect(
+        _halfFor(transcript, alice).issue,
+        HalfIssue.couldNotRead,
+        reason: 'the participants were known; the events were not readable',
+      );
+    });
+
+    test('every limit that applies is carried, and none swallows another', () {
+      // Independent facts about one read. Picking a winner is the same
+      // collapse one level down, and the two that are not shown are the two
+      // the reader most needs: a whole PERSON may be missing from the screen,
+      // and we may have stopped before the end.
+      final transcript = assembleTranscript(
+        candidates: const [],
+        expectedSenders: [alice],
+        exhausted: false,
+        participantsKnown: false,
+        encrypted: true,
+      );
+
+      expect(transcript.readLimits, {
+        TranscriptReadLimit.roomEncrypted,
+        TranscriptReadLimit.participantsUnknown,
+        TranscriptReadLimit.readerCeiling,
+      });
+    });
+
+    test('an ordinary read carries no limit at all', () {
+      // The guard on the whole set. A limit that fired on every call would put
+      // three caveats above every transcript and teach the reader to skip
+      // them.
+      final transcript = assembleTranscript(
+        candidates: [_candidate(alice), _candidate(bob)],
+        expectedSenders: [alice, bob],
+      );
+
+      expect(transcript.readLimits, isEmpty);
+      expect(transcript.readWasInconclusive, isFalse);
     });
   });
 

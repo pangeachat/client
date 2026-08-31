@@ -857,16 +857,58 @@ class TranscriptCandidate {
   bool get timelineEligible => segmentsArePlaceable(segments);
 }
 
+/// Why a read of one call could not conclude what it contains.
+///
+/// Three causes, kept apart for the same reason [HalfState] keeps its three
+/// states apart. They were carried as ONE boolean named for the first of them,
+/// so the screen had one sentence to offer for all three and offered the
+/// reader's own page ceiling every time: a room whose events we could not
+/// decrypt, and a call whose participants we could not name, were both
+/// explained to the reader as a call that was too long to read. A specific,
+/// confident, wrong cause is worse than an unspecific true one, and the shape
+/// that produces it is a boolean standing for a question with three answers.
+///
+/// Reported as a SET, not a winner. They are independent facts about one read
+/// and any of them can hold at once; picking one to show would be the same
+/// collapse a level down, and each is separately true and separately
+/// actionable.
+enum TranscriptReadLimit {
+  /// The room encrypts its events. Nothing on the relations path decrypts, so
+  /// every half comes back typed `m.room.encrypted` and is filtered out as
+  /// not-a-transcript. Length had nothing to do with it.
+  roomEncrypted,
+
+  /// We could not name who was on the call, so the list of expected senders is
+  /// a guess. A speaker missing from it gets no section at all -- which is the
+  /// one limit that removes a whole PERSON from the screen rather than some
+  /// words.
+  participantsUnknown,
+
+  /// We stopped at our own page or event ceiling, before the server said there
+  /// was no more. Ours, and the only one of the three that length explains.
+  readerCeiling,
+}
+
 /// The assembled transcript of one call.
 class CallTranscript {
   final List<TranscriptHalf> halves;
 
-  /// True when the reader stopped before the server said there was no more —
-  /// its own page or byte ceiling. Absence cannot be concluded from a capped
-  /// read, only from an exhausted one.
-  final bool readerStoppedEarly;
+  /// Every reason this read could not conclude what the call contains, or
+  /// empty when nothing stopped it. See [TranscriptReadLimit]: absence may
+  /// only be concluded from a read with no limits on it at all.
+  final Set<TranscriptReadLimit> readLimits;
 
-  const CallTranscript({required this.halves, this.readerStoppedEarly = false});
+  const CallTranscript({
+    required this.halves,
+    this.readLimits = const <TranscriptReadLimit>{},
+  });
+
+  /// Whether anything at all stopped this read from concluding.
+  ///
+  /// The question every caller that does not care WHICH should ask. A caller
+  /// that puts a sentence in front of a person does care, and reads
+  /// [readLimits].
+  bool get readWasInconclusive => readLimits.isNotEmpty;
 
   bool get isEmpty => halves.every((half) => half.segments.isEmpty);
 
@@ -950,6 +992,13 @@ class CallTranscript {
 ///
 /// [participantsKnown] is whether [expectedSenders] is an ANSWER or a GUESS.
 ///
+/// [encrypted] is whether the room encrypts its events, which is a THIRD way
+/// for this read to be inconclusive and arrives here as its own fact rather
+/// than folded into [exhausted]. Folding it in was how the screen came to
+/// explain an undecryptable room as a call that was too long to read: the two
+/// were indistinguishable by the time anything could say so. See
+/// [TranscriptReadLimit].
+///
 /// This function discards any half whose sender is not expected, and that is
 /// right when the list is known: such a half is a stranger's, and giving it a
 /// section in a two-person call would lend an attack the standing of a record.
@@ -976,6 +1025,7 @@ CallTranscript assembleTranscript({
   required List<String> expectedSenders,
   bool exhausted = true,
   bool participantsKnown = true,
+  bool encrypted = false,
 
   /// Senders whose event the reader found and could not parse.
   ///
@@ -1007,20 +1057,45 @@ CallTranscript assembleTranscript({
   // rule this function exists to enforce.
   final senders = <String>{...expectedSenders};
 
-  // The single question every state below turns on: may this read draw a
-  // conclusion about what a speaker did? Two independent ways for the answer
-  // to be no, and both have to hold for a conclusion to be safe -- we saw
-  // everything the server had, and we know whose halves we were looking for.
+  // Every reason this read may not draw a conclusion about what a speaker did.
   //
-  // The second half of that used to be narrower than the sentence above it: it
-  // asked whether an UNPLACEABLE half had turned up while the participants
-  // were unknown. That catches the peer who wrote something, because their
-  // half cannot be placed -- and misses the peer who wrote NOTHING entirely.
-  // With nobody identifiable there is then no unplaceable half, no second
-  // sender to report absent, and the screen shows one side of a conversation
-  // and says nothing is missing. Not knowing who was on a call is by itself a
-  // reason not to declare its record whole.
-  final canConclude = exhausted && participantsKnown;
+  // Collected rather than counted, because a caller has to be able to SAY
+  // which. Three independent ways for the answer to be no -- we saw everything
+  // the server had, we could read what it gave us, and we know whose halves we
+  // were looking for -- and each is a different sentence to a person reading
+  // the call.
+  //
+  // The participants one used to be narrower than that sentence: it asked
+  // whether an UNPLACEABLE half had turned up while the participants were
+  // unknown. That catches the peer who wrote something, because their half
+  // cannot be placed -- and misses the peer who wrote NOTHING entirely. With
+  // nobody identifiable there is then no unplaceable half, no second sender to
+  // report absent, and the screen shows one side of a conversation and says
+  // nothing is missing. Not knowing who was on a call is by itself a reason not
+  // to declare its record whole.
+  final readLimits = <TranscriptReadLimit>{
+    if (encrypted) TranscriptReadLimit.roomEncrypted,
+    if (!participantsKnown) TranscriptReadLimit.participantsUnknown,
+    if (!exhausted) TranscriptReadLimit.readerCeiling,
+  };
+
+  // The single question every state below turns on: may this read draw a
+  // conclusion about what a speaker did? Only a read with nothing at all
+  // standing in its way.
+  final canConclude = readLimits.isEmpty;
+
+  // OUR failure to read this half's content, which for the per-half diagnosis
+  // is what an encrypted room is: the events came back sealed, so the reader
+  // saw none of them, whatever the server said about paging. It has to be
+  // asked as a fact about the CONTENT rather than about the paging, or an
+  // encrypted room whose relations list is simply empty reports its halves as
+  // `participantsUnknown` -- a confident, specific, wrong cause, and the one
+  // this change exists to stop.
+  //
+  // Not the same question as [canConclude]: an unnamed participant list is a
+  // fact about the CALL and says nothing about our read of any particular
+  // half. See [TranscriptHalf.readWasCutShort].
+  final readWasCutShort = !exhausted || encrypted;
 
   final halves = <TranscriptHalf>[];
   for (final senderId in senders) {
@@ -1047,7 +1122,7 @@ CallTranscript assembleTranscript({
           state: (canConclude && !wasUnreadable)
               ? HalfState.absent
               : HalfState.incomplete,
-          readWasCutShort: !exhausted,
+          readWasCutShort: readWasCutShort,
           participantsWereAGuess: !participantsKnown,
           arrival: wasUnreadable ? HalfArrival.rejected : HalfArrival.none,
           // No anchor, for the same reason there is no accounting: nobody
@@ -1084,7 +1159,7 @@ CallTranscript assembleTranscript({
                 ))
             ? HalfState.incomplete
             : HalfState.present,
-        readWasCutShort: !exhausted,
+        readWasCutShort: readWasCutShort,
         participantsWereAGuess: !participantsKnown,
         arrival: wasUnreadable
             ? HalfArrival.placedWithLoss
@@ -1102,10 +1177,12 @@ CallTranscript assembleTranscript({
 
   return CallTranscript(
     halves: List.unmodifiable(halves),
-    // Reported whenever a conclusion was unsafe, whichever of the two reasons
-    // it was. The view says the same thing to the learner either way: some of
-    // this call could not be read.
-    readerStoppedEarly: !canConclude,
+    // Every reason, carried through. This used to be one boolean set from
+    // `!canConclude`, which is all the view needed to know THAT a conclusion
+    // was unsafe and nothing it needed to say WHY -- so it said the only thing
+    // the boolean's name suggested, and told a reader whose room we could not
+    // decrypt that the call had been too long.
+    readLimits: Set.unmodifiable(readLimits),
   );
 }
 

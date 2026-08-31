@@ -200,7 +200,33 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
             children: [
-              if (transcript.readerStoppedEarly)
+              // One caveat per REASON the read could not conclude, and every
+              // reason that applies. They used to share a single line -- the
+              // one about a call being too long -- so a room we could not
+              // decrypt and a peer we could not name were both explained away
+              // as length. That is the failure this whole feature is built
+              // against, reached from the only direction still open: not a
+              // claim about what somebody said, but a confident, specific,
+              // wrong account of why we cannot say.
+              //
+              // Not one winner. Unlike the clock caveats below, none of these
+              // makes another WRONG -- they are independent facts about one
+              // read, and suppressing a true one to keep the list short is the
+              // same collapse in miniature. Ordered by how much of the screen
+              // each explains: encryption accounts for the whole of it, an
+              // unnamed participant for a person missing from it, our own
+              // ceiling for words missing from a section that is there.
+              if (transcript.readLimits.contains(
+                TranscriptReadLimit.roomEncrypted,
+              ))
+                _Caveat(text: l10n.callTranscriptRoomEncrypted),
+              if (transcript.readLimits.contains(
+                TranscriptReadLimit.participantsUnknown,
+              ))
+                _Caveat(text: l10n.callTranscriptParticipantsUnknown),
+              if (transcript.readLimits.contains(
+                TranscriptReadLimit.readerCeiling,
+              ))
                 _Caveat(text: l10n.callTranscriptStoppedEarly),
               if (clocksUnreconciled)
                 _Caveat(text: l10n.callTranscriptUnreconciledClocks),

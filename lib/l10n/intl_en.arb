@@ -3749,6 +3749,8 @@
     "callTranscriptLoadFailed": "Could not load the transcript",
     "callTranscriptRetry": "Try again",
     "callTranscriptStoppedEarly": "This call had too much to read in one go, so some of it is not shown.",
+    "callTranscriptRoomEncrypted": "This chat is encrypted and the transcript could not be unlocked here, so what was said is not shown.",
+    "callTranscriptParticipantsUnknown": "It is not known who else was on this call, so someone who spoke may be missing from this transcript altogether.",
     "callTranscriptNone": "No transcript from {name}",
     "@callTranscriptNone": {
         "placeholders": {

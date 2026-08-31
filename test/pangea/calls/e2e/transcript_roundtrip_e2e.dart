@@ -151,7 +151,7 @@ void main() {
         transcript.halves.firstWhere((h) => h.senderId == bob.userId).state,
         HalfState.absent,
       );
-      expect(transcript.readerStoppedEarly, isFalse);
+      expect(transcript.readLimits, isEmpty);
     });
 
     test('an abandoned drain still reads as incomplete off the wire', () async {

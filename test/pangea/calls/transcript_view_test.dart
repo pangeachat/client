@@ -709,9 +709,18 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(
-        find.textContaining('not shown'),
+        find.textContaining('not known who else was on this call'),
         findsOneWidget,
-        reason: 'the screen admits it could not read all of this call',
+        reason:
+            'the screen admits it could not read all of this call, and says '
+            'which of the three reasons it was',
+      );
+      expect(
+        find.textContaining('too much to read'),
+        findsNothing,
+        reason:
+            'the peer is unknown, not the call too long -- a specific wrong '
+            'cause is worse than no cause at all',
       );
       expect(find.textContaining('No transcript from'), findsNothing);
       expect(find.textContaining('did not say anything'), findsNothing);
@@ -740,6 +749,19 @@ void main() {
       expect(find.textContaining('No transcript from'), findsNothing);
       expect(find.textContaining('did not say anything'), findsNothing);
       expect(find.textContaining('Nothing could be read'), findsWidgets);
+      expect(
+        find.textContaining('could not be unlocked'),
+        findsOneWidget,
+        reason: 'the caveat names encryption, which is the actual cause',
+      );
+      expect(
+        find.textContaining('too much to read'),
+        findsNothing,
+        reason:
+            'this call was not too long; every event came back sealed, and '
+            'saying otherwise sends the reader after a length problem that '
+            'does not exist',
+      );
     });
 
     testWidgets('a speaker who wrote NO half is not reported as silent', (
@@ -915,7 +937,12 @@ void main() {
       ];
       await pump(tester, serving(events));
 
-      expect(find.textContaining('not shown'), findsOneWidget);
+      // The one case where the length sentence is the TRUE one: this room is
+      // not encrypted and its peer is known, so our own ceiling is the only
+      // reason anything is missing.
+      expect(find.textContaining('too much to read'), findsOneWidget);
+      expect(find.textContaining('could not be unlocked'), findsNothing);
+      expect(find.textContaining('not known who else'), findsNothing);
       expect(find.textContaining('No transcript from'), findsNothing);
     });
   });
