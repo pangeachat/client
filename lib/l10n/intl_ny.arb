@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-01 11:50:19.283399",
+    "@@last_modified": "2026-09-01 12:28:01.530469",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Kuyankha komwe kudalembedwa kuti \"ndi\" nthawi kunanenedwa panthawiyo kapena isanachitike. Zoyankha zimenezo zikuwonetsedwa panthawiyo, choncho zikhoza kukhala zidanenedwa kale.",
     "callTranscriptUnstatedTimes": "Zoyankha zina sizikuwonetsa nthawi. Chipangizo chomwe chidazijambula sichinanene kuti nthawi zake ndi zolondola bwanji, choncho malo ake pa zokambiranazi akhoza kukhala olakwika.",
     "callTranscriptUnreconciledClocks": "Zoyankha izi zidajambulidwa pa zipangizo ziwiri zomwe nthawi zake sizinatheke kuyerekeza, choncho palibe nthawi zomwe zikuwonetsedwa ndipo dongosolo lomwe zikuwonekera likhoza kukhala lolakwika.",
-    "callTranscriptOpen": "Werengani zolembedwazo"
+    "callTranscriptOpen": "Werengani zolembedwazo",
+    "errorRateLimited": "Tikukweza zambiri pakali pano. Chonde dikirani pang'ono ndikuyesanso."
 }

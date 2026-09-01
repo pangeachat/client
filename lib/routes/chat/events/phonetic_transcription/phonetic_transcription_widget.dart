@@ -340,6 +340,7 @@ class _PhoneticTranscriptionWidgetState
                       )
                     : ErrorIndicator(
                         message: L10n.of(context).failedToFetchTranscription,
+                        error: error,
                       ),
               _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
             },

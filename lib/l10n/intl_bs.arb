@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-01 11:49:53.625813",
+    "@@last_modified": "2026-09-01 12:27:56.028170",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Red označen \"do\" vremena je rečen u to vrijeme ili prije. Ti redovi su prikazani u tom trenutku, tako da su možda rečeni ranije.",
     "callTranscriptUnstatedTimes": "Neki redovi ne prikazuju vrijeme. Uređaj koji ih je snimio nije naveo koliko su tačna njegova vremena, tako da njihov položaj u ovom razgovoru može biti pogrešan.",
     "callTranscriptUnreconciledClocks": "Ovi redovi su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuju vremena i redoslijed njihovog pojavljivanja može biti pogrešan.",
-    "callTranscriptOpen": "Pročitaj transkript"
+    "callTranscriptOpen": "Pročitaj transkript",
+    "errorRateLimited": "Trenutno učitavamo mnogo toga. Sačekajte trenutak i pokušajte ponovo."
 }

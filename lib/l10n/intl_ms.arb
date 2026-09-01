@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-01 11:50:15.045905",
+    "@@last_modified": "2026-09-01 12:28:00.810415",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Giliran yang ditandakan \"oleh\" masa telah dikatakan pada atau sebelum itu. Giliran tersebut ditunjukkan pada masa itu, jadi ia mungkin telah dikatakan lebih awal.",
     "callTranscriptUnstatedTimes": "Beberapa giliran tidak menunjukkan masa. Peranti yang merakamnya tidak menyatakan betapa tepat masanya, jadi kedudukannya dalam perbualan ini mungkin salah.",
     "callTranscriptUnreconciledClocks": "Giliran ini dirakam pada dua peranti yang jamnya tidak dapat dibandingkan, jadi tiada masa ditunjukkan dan susunan ia muncul mungkin salah.",
-    "callTranscriptOpen": "Baca transkrip"
+    "callTranscriptOpen": "Baca transkrip",
+    "errorRateLimited": "Kami sedang memuat banyak data sekarang. Sila tunggu sebentar dan cuba lagi."
 }

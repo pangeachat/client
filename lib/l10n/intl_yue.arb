@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-01 11:50:31.097136",
+    "@@last_modified": "2026-09-01 12:28:04.011057",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10793,5 +10793,6 @@
     "callTranscriptApproximateTimes": "標示「喺」某個時間嘅發言係喺嗰個時間或之前講嘅。呢啲發言會喺嗰個時間點顯示，所以可能早過嗰個時間講。",
     "callTranscriptUnstatedTimes": "部分發言冇顯示時間。錄製佢哋嘅裝置冇說明佢嘅時間有幾準確，所以佢哋喺呢次對話中嘅位置可能係錯嘅。",
     "callTranscriptUnreconciledClocks": "呢啲發言係喺兩個無法比較時鐘嘅裝置上錄製嘅，所以冇顯示時間，而且佢哋出現嘅順序可能係錯嘅。",
-    "callTranscriptOpen": "閱讀轉錄"
+    "callTranscriptOpen": "閱讀轉錄",
+    "errorRateLimited": "我哋而家載入好多嘢。請稍等片刻再試。"
 }

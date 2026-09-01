@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-01 11:50:06.333301",
+    "@@last_modified": "2026-09-01 12:27:58.944021",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10772,5 +10772,6 @@
     "callTranscriptApproximateTimes": "Un turno marcate \"per\" un hora esseva dicite a o ante illo. Iste turnos es monstrate a ille momento, dunque illos pote haber essite dicite plus tosto.",
     "callTranscriptUnstatedTimes": "Alicun turnos monstra nulle hora. Le apparato que los registrava non diceva quanto exacte su horas es, dunque ubi illos se trova in iste conversation pote esser errate.",
     "callTranscriptUnreconciledClocks": "Iste turnos esseva registrate in duo apparatos cuje horologios non poteva esser comparate, dunque nulle horas es monstrate e le ordine in que illos appare pote esser errate.",
-    "callTranscriptOpen": "Leger le transcription"
+    "callTranscriptOpen": "Leger le transcription",
+    "errorRateLimited": "Nos carga multo nunc. Per favor, attende un momento e reproba."
 }

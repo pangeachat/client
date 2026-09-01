@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 11:50:16.493757",
+    "@@last_modified": "2026-09-01 12:28:01.023057",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9893,5 +9893,6 @@
     "callTranscriptApproximateTimes": "En tur merket «ved» et tidspunkt ble sagt på eller før det. Disse turene vises på det tidspunktet, så de kan ha blitt sagt tidligere.",
     "callTranscriptUnstatedTimes": "Noen turer viser ingen tid. Enheten som tok dem opp, sa ikke hvor nøyaktige tidene var, så hvor de sitter i denne samtalen kan være feil.",
     "callTranscriptUnreconciledClocks": "Disse turene ble tatt opp på to enheter hvis klokker ikke kunne sammenlignes, så ingen tider vises og rekkefølgen de vises i kan være feil.",
-    "callTranscriptOpen": "Les utskriften"
+    "callTranscriptOpen": "Les utskriften",
+    "errorRateLimited": "Vi laster inn mye akkurat nå. Vent litt og prøv igjen."
 }

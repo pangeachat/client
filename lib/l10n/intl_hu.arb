@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-01 11:50:06.292243",
+    "@@last_modified": "2026-09-01 12:27:58.825374",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9939,5 +9939,6 @@
     "callTranscriptApproximateTimes": "Az „idő szerint” jelölt fordulatot az adott időpontban vagy azelőtt mondták. Ezek a fordulatok abban a pillanatban jelennek meg, így lehet, hogy korábban hangzottak el.",
     "callTranscriptUnstatedTimes": "Néhány fordulat nem mutat időt. Az őket rögzítő eszköz nem jelezte, hogy mennyire pontosak az időpontjai, így a beszélgetésben elfoglalt helyük hibás lehet.",
     "callTranscriptUnreconciledClocks": "Ezeket a fordulatokat két olyan eszközön rögzítették, amelyek óráit nem lehetett összehasonlítani, így nem jelennek meg időpontok, és a megjelenésük sorrendje hibás lehet.",
-    "callTranscriptOpen": "Olvassa el az átiratot"
+    "callTranscriptOpen": "Olvassa el az átiratot",
+    "errorRateLimited": "Jelenleg sok adatot töltünk be. Kérjük, várjon egy pillanatot, majd próbálja újra."
 }

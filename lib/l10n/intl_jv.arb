@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-01 11:50:08.040704",
+    "@@last_modified": "2026-09-01 12:27:59.565818",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Giliran sing ditandhani \"dening\" wektu diucapake ing utawa sadurunge. Giliran kasebut ditampilake ing wektu kasebut, mula bisa uga diucapake luwih awal.",
     "callTranscriptUnstatedTimes": "Sawetara giliran ora nuduhake wektu. Piranti sing ngrekam ora ngandhani sepira tepat wektune, mula panggonane ing obrolan iki bisa uga salah.",
     "callTranscriptUnreconciledClocks": "Giliran iki direkam ing rong piranti sing jam ora bisa dibandhingake, mula ora ana wektu sing ditampilake lan urutan sing katon bisa uga salah.",
-    "callTranscriptOpen": "Waca transkrip"
+    "callTranscriptOpen": "Waca transkrip",
+    "errorRateLimited": "Saiki akeh sing diunggah. Mangga ngenteni sedhela banjur coba maneh."
 }

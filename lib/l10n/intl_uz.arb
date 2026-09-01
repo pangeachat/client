@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-01 11:50:30.189874",
+    "@@last_modified": "2026-09-01 12:28:03.807244",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9840,5 +9840,6 @@
     "callTranscriptApproximateTimes": "Vaqt \"bo'yicha\" belgilangan navbat o'sha vaqtda yoki undan oldin aytilgan. Bu navbatlar o'sha paytda ko'rsatiladi, shuning uchun ular oldinroq aytilgan bo'lishi mumkin.",
     "callTranscriptUnstatedTimes": "Ba'zi navbatlarda vaqt ko'rsatilmagan. Ularni yozib olgan qurilma o'z vaqtlarining qanchalik aniqligini aytmadi, shuning uchun ular bu suhbatda qayerda joylashgani noto'g'ri bo'lishi mumkin.",
     "callTranscriptUnreconciledClocks": "Bu navbatlar soatlari solishtirib bo'lmaydigan ikkita qurilmada yozib olingan, shuning uchun vaqtlar ko'rsatilmagan va ularning paydo bo'lish tartibi noto'g'ri bo'lishi mumkin.",
-    "callTranscriptOpen": "Transkriptni o'qish"
+    "callTranscriptOpen": "Transkriptni o'qish",
+    "errorRateLimited": "Hozirda juda koʻp narsalarni yuklayapmiz. Iltimos, biroz kutib turing va qayta urinib koʻring."
 }

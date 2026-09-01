@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-01 11:50:00.270147",
+    "@@last_modified": "2026-09-01 12:27:57.436297",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10191,5 +10191,6 @@
     "callTranscriptApproximateTimes": "Un tour marqué \"à\" une heure a été dit à ou avant celle-ci. Ces tours sont affichés à ce moment-là, ils peuvent donc avoir été dits plus tôt.",
     "callTranscriptUnstatedTimes": "Certains tours n'affichent pas d'heure. L'appareil qui les a enregistrés n'a pas précisé l'exactitude de ses heures, donc leur position dans cette conversation peut être erronée.",
     "callTranscriptUnreconciledClocks": "Ces tours ont été enregistrés sur deux appareils dont les horloges n'ont pas pu être comparées, donc aucune heure n'est affichée et l'ordre dans lequel ils apparaissent peut être erroné.",
-    "callTranscriptOpen": "Lire la transcription"
+    "callTranscriptOpen": "Lire la transcription",
+    "errorRateLimited": "Nous avons beaucoup de demandes en ce moment. Veuillez patienter un instant et réessayer."
 }

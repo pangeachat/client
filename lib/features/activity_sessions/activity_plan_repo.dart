@@ -38,7 +38,14 @@ class ActivityPlanLookup {
   final ActivityPlanLookupStatus status;
   final ActivityPlanModel? plan;
 
-  const ActivityPlanLookup(this.status, [this.plan]);
+  /// The failure behind a [ActivityPlanLookupStatus.failed] lookup, so a
+  /// display surface can tell a throttle (429 — "wait a moment") from other
+  /// transient failures ("check your connection") (#8705). Null when the
+  /// lookup never produced an error: found, a persisted removed verdict, or
+  /// declined because the controller isn't up yet.
+  final Object? error;
+
+  const ActivityPlanLookup(this.status, [this.plan, this.error]);
 }
 
 /// The single cached read path for activity plans.
@@ -346,7 +353,7 @@ class ActivityPlanRepo
       if (status == ActivityPlanLookupStatus.removed) {
         _confirmedRemoved.mark(activityId);
       }
-      return ActivityPlanLookup(status);
+      return ActivityPlanLookup(status, null, error);
     }
 
     _confirmedRemoved.unmark(activityId);

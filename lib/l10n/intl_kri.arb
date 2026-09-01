@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-01 11:50:11.258237",
+    "@@last_modified": "2026-09-01 12:27:59.720525",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Wan tɔn we dɛn mak \"bay\" wan tɛm bin dɛn tɔk na dat tɛm ɔ bifo dat. Dɛn tɔn dɛn de sho na dat mɔmɛnt, so dɛn kin bin tɔk am bifo dat.",
     "callTranscriptUnstatedTimes": "Sɔm tɔn dɛn nɔ de sho tɛm. Di divays we rikɔd dɛn nɔ bin tɛl aw i gɛt di rait tɛm, so usay dɛn de insay dis kɔnvɛseshɔn kin rɔng.",
     "callTranscriptUnreconciledClocks": "Dɛn rikɔd dɛn tɔn dɛn ya na tu divays dɛn we dɛn klɔk dɛn nɔ bin ebul fɔ kɔmpea, so nɔ tɛm nɔ de sho ɛn di ɔda we dɛn de apia kin rɔng.",
-    "callTranscriptOpen": "Rid di transkrip"
+    "callTranscriptOpen": "Rid di transkrip",
+    "errorRateLimited": "Wi de lod plenti naw. Duya wet smɔl ɛn tray bak."
 }

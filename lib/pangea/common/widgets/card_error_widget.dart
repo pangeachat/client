@@ -3,13 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/bot/utils/bot_style.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 
 class CardErrorWidget extends StatelessWidget {
   final String error;
-  const CardErrorWidget(this.error, {super.key});
+
+  /// The failure behind this card, when the caller has it — a throttle
+  /// replaces [error] per [rateLimitAwareCopy].
+  final Object? cause;
+
+  const CardErrorWidget(this.error, {this.cause, super.key});
 
   @override
   Widget build(BuildContext context) {
+    final error = rateLimitAwareCopy(context, cause, this.error);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(

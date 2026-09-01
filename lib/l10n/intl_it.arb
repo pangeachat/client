@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 11:50:07.421498",
+    "@@last_modified": "2026-09-01 12:27:59.109765",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9909,5 +9909,6 @@
     "callTranscriptApproximateTimes": "Un turno contrassegnato \"entro\" un'ora è stato detto a quell'ora o prima. Questi turni sono mostrati in quel momento, quindi potrebbero essere stati detti prima.",
     "callTranscriptUnstatedTimes": "Alcuni turni non mostrano l'ora. Il dispositivo che li ha registrati non ha specificato l'esattezza dei suoi orari, quindi la loro posizione in questa conversazione potrebbe essere errata.",
     "callTranscriptUnreconciledClocks": "Questi turni sono stati registrati su due dispositivi i cui orologi non potevano essere confrontati, quindi non vengono mostrati orari e l'ordine in cui appaiono potrebbe essere errato.",
-    "callTranscriptOpen": "Leggi la trascrizione"
+    "callTranscriptOpen": "Leggi la trascrizione",
+    "errorRateLimited": "Stiamo caricando molti dati in questo momento. Attendi un momento e riprova."
 }

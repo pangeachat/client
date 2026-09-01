@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-01 11:50:14.935193",
+    "@@last_modified": "2026-09-01 12:28:00.385287",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Ko te wāhanga i tohua \"i te\" tētahi wā i kōrerotia i taua wā, i mua rānei. Ka whakaatuhia aua wāhanga i taua wā, nō reira tērā pea i kōrerotia i mua ake.",
     "callTranscriptUnstatedTimes": "Kāore ētahi wāhanga e whakaatu ana i te wā. Kāore te pūrere i hopu i aua wāhanga i kī he pēhea te tika o ōna wā, nō reira tērā pea i hē te wāhi e noho ana i roto i tēnei kōrerorero.",
     "callTranscriptUnreconciledClocks": "I hopukina ēnei wāhanga ki runga i ngā pūrere e rua kāore i taea te whakataurite i ō rāua karaka, nō reira kāore he wā e whakaatuhia ana, ā, tērā pea i hē te raupapa o te putanga mai.",
-    "callTranscriptOpen": "Pānuitia te tuhinga"
+    "callTranscriptOpen": "Pānuitia te tuhinga",
+    "errorRateLimited": "He nui ngā utanga i tēnei wā. Tēnā, tatari mai, ka ngana anō."
 }

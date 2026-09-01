@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-01 11:50:24.952608",
+    "@@last_modified": "2026-09-01 12:28:02.708256",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Kutaura kwakanyorwa kuti \"na\" nguva kwakataurwa panguva iyoyo kana pamberi payo. Kutaura ikoko kunoratidzwa panguva iyoyo, saka kunogona kunge kwakataurwa kare.",
     "callTranscriptUnstatedTimes": "Zvimwe zvinyorwa hazviratidzi nguva. Chishandiso chakazvinyora hachina kutaura kuti nguva dzacho dzakanyatsonaka sei, saka nzvimbo yazvo muhurukuro iyi inogona kunge yakakanganisika.",
     "callTranscriptUnreconciledClocks": "Zvinyorwa izvi zvakanyorwa pazvishandiso zviviri zvine mawachi asina kukwanisa kuenzaniswa, saka hapana nguva dzinoratidzwa uye kurongeka kwazvo kunogona kunge kwakakanganisika.",
-    "callTranscriptOpen": "Verenga zvinyorwa"
+    "callTranscriptOpen": "Verenga zvinyorwa",
+    "errorRateLimited": "Tiri kurodha zvakawanda izvozvi. Ndapota mirira kwekanguva woedza zvakare."
 }

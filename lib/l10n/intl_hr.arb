@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-01 11:50:05.392145",
+    "@@last_modified": "2026-09-01 12:27:58.547481",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10272,5 +10272,6 @@
     "callTranscriptApproximateTimes": "Redak označen s \"u\" vremenom izgovoren je u to vrijeme ili prije njega. Ti su redci prikazani u tom trenutku, pa su možda izgovoreni ranije.",
     "callTranscriptUnstatedTimes": "Neki redci ne prikazuju vrijeme. Uređaj koji ih je snimio nije naveo koliko su točna njegova vremena, pa mjesto gdje se nalaze u ovom razgovoru može biti pogrešno.",
     "callTranscriptUnreconciledClocks": "Ovi su redci snimljeni na dva uređaja čiji se satovi nisu mogli usporediti, pa se ne prikazuju vremena i redoslijed kojim se pojavljuju može biti pogrešan.",
-    "callTranscriptOpen": "Pročitaj transkript"
+    "callTranscriptOpen": "Pročitaj transkript",
+    "errorRateLimited": "Trenutno je veliko opterećenje. Pričekajte trenutak i pokušajte ponovno."
 }

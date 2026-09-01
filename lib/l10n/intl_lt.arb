@@ -2968,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-01 11:50:12.384711",
+    "@@last_modified": "2026-09-01 12:28:00.297252",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10617,5 +10617,6 @@
     "callTranscriptApproximateTimes": "Posūkis, pažymėtas „iki“ tam tikro laiko, buvo pasakytas tuo metu arba anksčiau. Tie posūkiai rodomi tuo momentu, todėl jie galėjo būti pasakyti anksčiau.",
     "callTranscriptUnstatedTimes": "Kai kurie posūkiai nerodo laiko. Įrenginys, kuris juos įrašė, nenurodė, kokie tikslūs yra jo laikai, todėl jų vieta šiame pokalbyje gali būti neteisinga.",
     "callTranscriptUnreconciledClocks": "Šie posūkiai buvo įrašyti dviem įrenginiais, kurių laikrodžių nebuvo galima palyginti, todėl laikai nerodomi ir jų pasirodymo tvarka gali būti neteisinga.",
-    "callTranscriptOpen": "Skaityti stenogramą"
+    "callTranscriptOpen": "Skaityti stenogramą",
+    "errorRateLimited": "Šiuo metu daug ką įkeliame. Palaukite ir bandykite dar kartą."
 }

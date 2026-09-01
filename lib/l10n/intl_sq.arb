@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-01 11:50:23.980349",
+    "@@last_modified": "2026-09-01 12:28:02.501828",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Një radhë e shënuar \"nga\" një kohë u tha në ose para saj. Ato radhë shfaqen në atë moment, kështu që mund të jenë thënë më herët.",
     "callTranscriptUnstatedTimes": "Disa radhë nuk tregojnë kohë. Pajisja që i regjistroi nuk tha sa të sakta janë kohët e saj, kështu që vendi ku ato ndodhen në këtë bisedë mund të jetë i gabuar.",
     "callTranscriptUnreconciledClocks": "Këto radhë u regjistruan në dy pajisje, orët e të cilave nuk mund të krahasoheshin, kështu që nuk shfaqen kohë dhe rendi në të cilin shfaqen mund të jetë i gabuar.",
-    "callTranscriptOpen": "Lexo transkriptin"
+    "callTranscriptOpen": "Lexo transkriptin",
+    "errorRateLimited": "Po ngarkojmë shumë tani. Ju lutemi prisni një moment dhe provoni përsëri."
 }

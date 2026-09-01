@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-01 11:50:03.250446",
+    "@@last_modified": "2026-09-01 12:27:58.320938",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9847,5 +9847,6 @@
     "callTranscriptApproximateTimes": "Dúradh casadh atá marcáilte \"faoi\" am ag an am sin nó roimhe. Taispeántar na casadh sin ag an nóiméad sin, mar sin d'fhéadfadh siad a bheith ráite níos luaithe.",
     "callTranscriptUnstatedTimes": "Ní thaispeánann roinnt casadh aon am. Níor dúirt an gléas a thaifead iad cé chomh cruinn is atá a chuid ama, mar sin d'fhéadfadh an áit a bhfuil siad sa chomhrá seo a bheith mícheart.",
     "callTranscriptUnreconciledClocks": "Taifeadadh na casadh seo ar dhá ghléas nach bhféadfaí a gcuid cloig a chur i gcomparáid, mar sin ní thaispeántar aon amanna agus d'fhéadfadh an t-ord ina bhfuil siad le feiceáil a bheith mícheart.",
-    "callTranscriptOpen": "Léigh an tras-scríbhinn"
+    "callTranscriptOpen": "Léigh an tras-scríbhinn",
+    "errorRateLimited": "Táimid ag luchtú go leor faoi láthair. Fan nóiméad le do thoil agus bain triail eile as."
 }

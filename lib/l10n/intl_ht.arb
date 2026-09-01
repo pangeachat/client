@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-01 11:50:05.240074",
+    "@@last_modified": "2026-09-01 12:27:58.867212",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Yon vire ki make \"pa\" yon lè te di nan oswa anvan li. Vire sa yo parèt nan moman sa a, kidonk yo ka te di pi bonè.",
     "callTranscriptUnstatedTimes": "Gen kèk vire ki pa montre lè. Aparèy ki te anrejistre yo pa t' di ki jan lè yo egzak, kidonk kote yo chita nan konvèsasyon sa a ka mal.",
     "callTranscriptUnreconciledClocks": "Vire sa yo te anrejistre sou de aparèy ki pa t' kapab konpare revèy yo, kidonk pa gen lè ki parèt epi lòd yo parèt la ka mal.",
-    "callTranscriptOpen": "Li transkripsyon an"
+    "callTranscriptOpen": "Li transkripsyon an",
+    "errorRateLimited": "N ap chaje anpil kounye a. Tanpri tann yon ti moman epi eseye ankò."
 }

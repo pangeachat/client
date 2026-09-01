@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-01 11:50:26.722441",
+    "@@last_modified": "2026-09-01 12:28:03.050296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Zamu iliyotiwa alama \"na\" wakati ilisemwa wakati huo au kabla yake. Zamu hizo zinaonyeshwa wakati huo, kwa hivyo zinaweza kuwa zilisemwa mapema.",
     "callTranscriptUnstatedTimes": "Baadhi ya zamu hazionyeshi wakati. Kifaa kilichozirekodi hakikusema jinsi nyakati zake zilivyo sahihi, kwa hivyo mahali zinapokaa katika mazungumzo haya kunaweza kuwa si sahihi.",
     "callTranscriptUnreconciledClocks": "Zamu hizi zilirekodiwa kwenye vifaa viwili ambavyo saa zake hazikuweza kulinganishwa, kwa hivyo hakuna nyakati zinazoonyeshwa na mpangilio zinaoonekana unaweza kuwa si sahihi.",
-    "callTranscriptOpen": "Soma nakala"
+    "callTranscriptOpen": "Soma nakala",
+    "errorRateLimited": "Tunapakia mengi kwa sasa. Tafadhali subiri kidogo kisha ujaribu tena."
 }

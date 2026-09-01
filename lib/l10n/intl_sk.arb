@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-01 11:50:22.221063",
+    "@@last_modified": "2026-09-01 12:28:02.458875",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10781,5 +10781,6 @@
     "callTranscriptApproximateTimes": "Prejav označený „o“ určitým časom bol povedaný vtedy alebo predtým. Tieto prejavy sú zobrazené v danom momente, takže mohli byť povedané skôr.",
     "callTranscriptUnstatedTimes": "Niektoré prejavy neukazujú čas. Zariadenie, ktoré ich zaznamenalo, neuviedlo, aké presné sú jeho časy, takže ich umiestnenie v tejto konverzácii môže byť nesprávne.",
     "callTranscriptUnreconciledClocks": "Tieto prejavy boli zaznamenané na dvoch zariadeniach, ktorých hodiny sa nedali porovnať, takže nie sú zobrazené žiadne časy a poradie, v akom sa zobrazujú, môže byť nesprávne.",
-    "callTranscriptOpen": "Prečítať prepis"
+    "callTranscriptOpen": "Prečítať prepis",
+    "errorRateLimited": "Práve teraz toho veľa načítavame. Skúste to znova o chvíľu."
 }

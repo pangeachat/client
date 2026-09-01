@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-01 11:50:17.258990",
+    "@@last_modified": "2026-09-01 12:28:01.359254",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Dawra mmarkata \"sa\" ħin intqal f'dak il-ħin jew qabel. Dawk id-dawriet jintwerew f'dak il-mument, għalhekk setgħu ntqalu qabel.",
     "callTranscriptUnstatedTimes": "Xi dawriet ma juru l-ebda ħin. L-apparat li rreġistrahom ma qalx kemm huma eżatti l-ħinijiet tiegħu, għalhekk fejn jinsabu f'din il-konverżazzjoni jista' jkun żbaljat.",
     "callTranscriptUnreconciledClocks": "Dawn id-dawriet ġew irreġistrati fuq żewġ apparati li l-arloġġi tagħhom ma setgħux jitqabblu, għalhekk ma jintwerew l-ebda ħinijiet u l-ordni li jidhru fiha tista' tkun żbaljata.",
-    "callTranscriptOpen": "Aqra t-traskrizzjoni"
+    "callTranscriptOpen": "Aqra t-traskrizzjoni",
+    "errorRateLimited": "Qed nitgħabbew ħafna bħalissa. Jekk jogħġbok stenna ftit u erġa' pprova."
 }

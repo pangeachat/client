@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 11:50:29.495133",
+    "@@last_modified": "2026-09-01 12:28:03.612251",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7128,5 +7128,6 @@
     "callTranscriptApproximateTimes": "Một lượt được đánh dấu \"lúc\" một thời điểm đã được nói vào hoặc trước thời điểm đó. Những lượt đó được hiển thị vào thời điểm đó, vì vậy chúng có thể đã được nói sớm hơn.",
     "callTranscriptUnstatedTimes": "Một số lượt không hiển thị thời gian. Thiết bị đã ghi lại chúng không cho biết thời gian của nó chính xác đến mức nào, vì vậy vị trí của chúng trong cuộc trò chuyện này có thể sai.",
     "callTranscriptUnreconciledClocks": "Những lượt này được ghi lại trên hai thiết bị mà đồng hồ của chúng không thể so sánh được, vì vậy không có thời gian nào được hiển thị và thứ tự chúng xuất hiện có thể sai.",
-    "callTranscriptOpen": "Đọc bản ghi"
+    "callTranscriptOpen": "Đọc bản ghi",
+    "errorRateLimited": "Chúng tôi đang tải rất nhiều dữ liệu. Vui lòng đợi một lát và thử lại."
 }

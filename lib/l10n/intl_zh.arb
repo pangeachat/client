@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-01 11:50:30.891920",
+    "@@last_modified": "2026-09-01 12:28:04.583613",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9836,5 +9836,6 @@
     "callTranscriptApproximateTimes": "标记为“于”某个时间的发言是在该时间或之前说的。这些发言在该时刻显示，因此它们可能说得更早。",
     "callTranscriptUnstatedTimes": "有些发言没有显示时间。录制它们的设备没有说明其时间的准确性，因此它们在对话中的位置可能不正确。",
     "callTranscriptUnreconciledClocks": "这些发言是在两台无法比较时钟的设备上录制的，因此没有显示时间，并且它们出现的顺序可能不正确。",
-    "callTranscriptOpen": "阅读通话记录"
+    "callTranscriptOpen": "阅读通话记录",
+    "errorRateLimited": "我们正在加载大量内容。请稍候片刻再试。"
 }

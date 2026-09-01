@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 11:50:20.189010",
+    "@@last_modified": "2026-09-01 12:28:02.395164",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10568,5 +10568,6 @@
     "callTranscriptApproximateTimes": "O replică marcată „la” o anumită oră a fost spusă la sau înainte de aceasta. Aceste replici sunt afișate în acel moment, deci ar fi putut fi spuse mai devreme.",
     "callTranscriptUnstatedTimes": "Unele replici nu afișează ora. Dispozitivul care le-a înregistrat nu a specificat cât de exacte sunt orele sale, așa că poziția lor în această conversație ar putea fi greșită.",
     "callTranscriptUnreconciledClocks": "Aceste replici au fost înregistrate pe două dispozitive ale căror ceasuri nu au putut fi comparate, așa că nu sunt afișate ore și ordinea în care apar ar putea fi greșită.",
-    "callTranscriptOpen": "Citiți transcrierea"
+    "callTranscriptOpen": "Citiți transcrierea",
+    "errorRateLimited": "Încărcăm multe acum. Te rugăm să aștepți un moment și să încerci din nou."
 }

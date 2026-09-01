@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-01 11:50:32.896645",
+    "@@last_modified": "2026-09-01 12:28:04.048169",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Isithuba esiphawulwe \"nge\" xesha sithethwe ngalo okanye ngaphambi kwalo. Ezo zithuba ziboniswa ngaloo mzuzu, ngoko ke zisenokuba zithetwe ngaphambili.",
     "callTranscriptUnstatedTimes": "Ezinye izithuba azibonisi xesha. Isixhobo esizirekhodileyo asizange sitsho ukuba achane kangakanani amaxesha aso, ngoko ke indawo azikuyo kule nxoxo isenokuba iphosakele.",
     "callTranscriptUnreconciledClocks": "Ezi zithuba zirekhodwe kwizixhobo ezibini iiwotshi zazo ezingakwazanga ukuthelekiswa, ngoko ke akukho maxesha aboniswayo kwaye ucwangco oluvela ngalo lusenokuba luphosakele.",
-    "callTranscriptOpen": "Funda umbhalo"
+    "callTranscriptOpen": "Funda umbhalo",
+    "errorRateLimited": "Silayisha okuninzi ngoku. Nceda ulinde umzuzwana uze uzame kwakhona."
 }

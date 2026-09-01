@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-01 11:50:00.610292",
+    "@@last_modified": "2026-09-01 12:27:57.464907",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9836,5 +9836,6 @@
     "callTranscriptApproximateTimes": "Ordu batekin \"-rako\" markatutako txanda bat ordu horretan edo lehenago esan zen. Txanda horiek une horretan erakusten dira, beraz, lehenago esan izan zitezkeen.",
     "callTranscriptUnstatedTimes": "Txanda batzuek ez dute ordurik erakusten. Horiek grabatu zituen gailuak ez zuen esan zein zehatzak diren bere orduak, beraz, elkarrizketa honetan duten kokapena oker egon daiteke.",
     "callTranscriptUnreconciledClocks": "Txanda hauek erlojuak alderatu ezin izan ziren bi gailutan grabatu ziren, beraz, ez da ordurik erakusten eta agertzen diren ordena oker egon daiteke.",
-    "callTranscriptOpen": "Irakurri transkripzioa"
+    "callTranscriptOpen": "Irakurri transkripzioa",
+    "errorRateLimited": "Une honetan asko kargatzen ari gara. Mesedez, itxaron une bat eta saiatu berriro."
 }

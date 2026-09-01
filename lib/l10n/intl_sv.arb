@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 11:50:25.776411",
+    "@@last_modified": "2026-09-01 12:28:03.066600",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10354,5 +10354,6 @@
     "callTranscriptApproximateTimes": "Ett inlägg markerat \"vid\" en tid sades vid eller före den. Dessa inlägg visas vid det ögonblicket, så de kan ha sagts tidigare.",
     "callTranscriptUnstatedTimes": "Vissa inlägg visar ingen tid. Enheten som spelade in dem angav inte hur exakta dess tider är, så var de befinner sig i denna konversation kan vara fel.",
     "callTranscriptUnreconciledClocks": "Dessa inlägg spelades in på två enheter vars klockor inte kunde jämföras, så inga tider visas och ordningen de visas i kan vara fel.",
-    "callTranscriptOpen": "Läs transkriptionen"
+    "callTranscriptOpen": "Läs transkriptionen",
+    "errorRateLimited": "Vi laddar mycket just nu. Vänta ett ögonblick och försök igen."
 }

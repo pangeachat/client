@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-01 11:49:59.192509",
+    "@@last_modified": "2026-09-01 12:27:56.730004",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Un turnu marcatu \"da\" un tempu hè statu dettu à o prima di quellu. Quelli turni sò mostrati à quellu mumentu, cusì puderianu esse stati detti prima.",
     "callTranscriptUnstatedTimes": "Certi turni ùn mostranu micca u tempu. U dispusitivu chì l'hà arregistratu ùn hà micca dettu quantu sò precisi i so tempi, cusì induve si trovanu in sta cunversazione pò esse sbagliatu.",
     "callTranscriptUnreconciledClocks": "Sti turni sò stati arregistrati nantu à dui dispusitivi i cui orologi ùn pudianu esse paragunati, cusì ùn sò micca mostrati tempi è l'ordine in cui appariscenu pò esse sbagliatu.",
-    "callTranscriptOpen": "Leghje a trascrizzione"
+    "callTranscriptOpen": "Leghje a trascrizzione",
+    "errorRateLimited": "Carichemu assai avà. Per piacè aspettate un mumentu è riprovate."
 }
