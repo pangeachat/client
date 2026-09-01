@@ -970,11 +970,6 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     activityController.confettiNotifier.addListener(_activityConfettiListener);
-    if (activityController.hasSummary) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        activityController.showConfetti();
-      });
-    }
 
     activeGoalNotifier = ValueNotifier(room.currentGoal);
 
