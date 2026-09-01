@@ -5,6 +5,7 @@ import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 
 const _callKey = '\$membership:example.com';
+const _alice = '@alice:example.com';
 
 CallTranscriptContent _content({
   List<String> texts = const ['hola', 'que tal'],
@@ -13,11 +14,13 @@ CallTranscriptContent _content({
     chunksTranscribed: 3,
   ),
   String? langCode = 'es',
+  String? deviceId,
 }) => CallTranscriptContent(
   callKey: _callKey,
   segments: [for (final text in texts) TranscriptSegment(text)],
   accounting: accounting,
   langCode: langCode,
+  deviceId: deviceId,
 );
 
 void main() {
@@ -366,10 +369,10 @@ void main() {
   });
 
   group('txnId', () {
-    test('is stable for the same call and sender', () {
+    test('is stable for the same call, sender and device', () {
       expect(
-        CallTranscriptContent.txnId(_callKey, '@alice:example.com'),
-        CallTranscriptContent.txnId(_callKey, '@alice:example.com'),
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
       );
     });
 
@@ -377,20 +380,104 @@ void main() {
       // Both halves are written against the same call_key; a shared txn id
       // would make the server collapse one speaker into the other.
       expect(
-        CallTranscriptContent.txnId(_callKey, '@alice:example.com'),
-        isNot(CallTranscriptContent.txnId(_callKey, '@bob:example.com')),
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
+        isNot(
+          CallTranscriptContent.txnId(_callKey, '@bob:example.com', 'PHONE'),
+        ),
       );
     });
 
     test('separates two calls by the same sender', () {
       expect(
-        CallTranscriptContent.txnId(_callKey, '@alice:example.com'),
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
         isNot(
-          CallTranscriptContent.txnId(
-            '\$other:example.com',
-            '@alice:example.com',
-          ),
+          CallTranscriptContent.txnId('\$other:example.com', _alice, 'PHONE'),
         ),
+      );
+    });
+
+    test('separates two DEVICES of one account in one call', () {
+      // The defect this field exists for. Keyed by (call, sender) alone, the
+      // learner's two devices sent one transaction id for two different halves
+      // of what they said -- so the second was a resend of the first as far as
+      // the server was concerned.
+      expect(
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
+        isNot(CallTranscriptContent.txnId(_callKey, _alice, 'LAPTOP')),
+      );
+    });
+
+    test('a device this reader would refuse scopes as no device at all', () {
+      // One rule for the wire and the key. A device id the event will not carry
+      // must not silently scope the transaction id either, or a resend from
+      // that writer would land as a second half.
+      expect(
+        CallTranscriptContent.txnId(_callKey, _alice, ''),
+        CallTranscriptContent.txnId(_callKey, _alice, null),
+      );
+      expect(
+        CallTranscriptContent.txnId(_callKey, _alice, 'D' * 256),
+        CallTranscriptContent.txnId(_callKey, _alice, null),
+      );
+    });
+
+    test('a resend from ONE device still collapses', () {
+      // The whole job of the id, and the one the device segment must not cost:
+      // the same device retrying the same half writes one event, not two.
+      expect(
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
+        CallTranscriptContent.txnId(_callKey, _alice, 'PHONE'),
+      );
+    });
+  });
+
+  group('device_id on the wire', () {
+    test('round-trips, and is absent when the writer did not say', () {
+      expect(
+        CallTranscriptContent.fromJson(
+          _content(deviceId: 'PHONE').toJson(),
+        )!.deviceId,
+        'PHONE',
+      );
+      expect(_content().toJson().containsKey('device_id'), isFalse);
+      expect(
+        CallTranscriptContent.fromJson(_content().toJson())!.deviceId,
+        isNull,
+      );
+    });
+
+    test('an unusable device id reads as ABSENT, never as a device', () {
+      // Room content is untrusted, and this value is a grouping key: an empty
+      // string would group every half carrying it together, and an unbounded
+      // one is a key held while a transcript is assembled.
+      for (final raw in <Object>[
+        '',
+        'D' * (CallTranscriptContent.maxDeviceIdChars + 1),
+        7,
+        <String>['PHONE'],
+      ]) {
+        final parsed = CallTranscriptContent.fromJson({
+          'call_key': _callKey,
+          'segments': [
+            {'text': 'hola'},
+          ],
+          'device_id': raw,
+        });
+        expect(parsed, isNotNull, reason: 'the words survive a bad device id');
+        expect(parsed!.deviceId, isNull);
+        expect(parsed.segments.single.text, 'hola');
+      }
+    });
+
+    test('a device id the reader would refuse is never written', () {
+      // The same rule guards both directions, so this writer cannot put a value
+      // on the wire that its own reader will drop.
+      expect(_content(deviceId: '').toJson().containsKey('device_id'), isFalse);
+      expect(
+        _content(
+          deviceId: 'D' * (CallTranscriptContent.maxDeviceIdChars + 1),
+        ).toJson().containsKey('device_id'),
+        isFalse,
       );
     });
   });

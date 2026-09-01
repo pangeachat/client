@@ -177,9 +177,14 @@ void main() {
     /// The writing device never opened a microphone. False in every fixture
     /// that is not about it, which is the ordinary case.
     bool captureRefused = false,
+
+    /// Which of the sender's devices wrote this half. Null in every fixture
+    /// that is not about two devices, which is both the ordinary case and the
+    /// shape of every half written before the field existed.
+    String? deviceId,
   }) => MatrixEvent(
     type: CallTranscriptContent.relType,
-    eventId: '\$half-$sender',
+    eventId: '\$half-$sender-${deviceId ?? ''}',
     senderId: sender,
     originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
     content: {
@@ -192,6 +197,7 @@ void main() {
             if (spanMs?[i] != null) 'at_span_ms': spanMs![i],
           },
       ],
+      'device_id': ?deviceId,
       if (positionsMarked) 'positions_marked': true,
       // From the writer's own serialiser, so a fixture cannot drift out of the
       // declaration contract when a field is added to it.
@@ -223,6 +229,10 @@ void main() {
       },
       callKey: _callKey,
       senderId: sender,
+      // No device, so the event this builds is byte-for-byte the shape every
+      // other fixture here uses and the packing assertion turns on nothing
+      // else.
+      deviceId: null,
       segments: [TranscriptSegment('a' * 2000)],
       chunksCaptured: 1,
       chunksTranscribed: 1,
@@ -1141,6 +1151,91 @@ void main() {
       // twenty-five the two clocks' disagreement made of it.
       expect(find.text('0:00'), findsOneWidget);
       expect(find.text('0:05'), findsOneWidget);
+    });
+
+    testWidgets('a learner two devices read as ONE side of the conversation', (
+      tester,
+    ) async {
+      // The whole change, end to end and on screen. The learner answered on a
+      // phone and a laptop, both recorded, and each wrote its own half. Keyed
+      // by the account alone one of those two halves was discarded here and
+      // the survivor was drawn as the whole of what they said.
+      //
+      // The two devices' clocks disagree by forty seconds between them, so the
+      // raw stamps put the last thing said first. What orders these three
+      // turns is the anchor each device wrote at join -- the same correction
+      // that already spans two SPEAKERS, applied between one speaker's own
+      // devices.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: ['hola'],
+            atMs: [_callStart + 30000],
+            anchor: skewed(30000),
+            deviceId: 'PHONE',
+          ),
+          half(
+            _peer,
+            texts: ['muy bien'],
+            atMs: [_callStart + 5000],
+            anchor: skewed(0),
+          ),
+          half(
+            _me,
+            texts: ['adios'],
+            atMs: [_callStart],
+            anchor: skewed(-10000),
+            deviceId: 'LAPTOP',
+          ),
+        ]),
+      );
+
+      expect(find.byType(TurnTimeline), findsOneWidget);
+      // Neither half was dropped: both of the learner's devices are on screen.
+      expect(find.text('hola'), findsOneWidget);
+      expect(find.text('adios'), findsOneWidget);
+      // In the order they were spoken, across all three devices.
+      expect(top(tester, 'hola'), lessThan(top(tester, 'muy bien')));
+      expect(top(tester, 'muy bien'), lessThan(top(tester, 'adios')));
+      // And on the real clock: 0s, 5s, 10s. The raw stamps say 30s, 5s and 0s.
+      expect(find.text('0:00'), findsOneWidget);
+      expect(find.text('0:05'), findsOneWidget);
+      expect(find.text('0:10'), findsOneWidget);
+    });
+
+    testWidgets('the same two devices, unanchored, keep every word', (
+      tester,
+    ) async {
+      // What is lost when the clocks cannot be reconciled, kept as a fixture
+      // beside the case above. The words are all still here -- no half is
+      // discarded, which is the part that matters -- and what is withheld is
+      // the ordering claim: no time is printed, because nothing here can say
+      // which device's stamp came first.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: ['hola'],
+            atMs: [_callStart + 30000],
+            anchor: null,
+            deviceId: 'PHONE',
+          ),
+          half(
+            _me,
+            texts: ['adios'],
+            atMs: [_callStart],
+            anchor: null,
+            deviceId: 'LAPTOP',
+          ),
+        ]),
+      );
+
+      expect(find.text('hola'), findsOneWidget);
+      expect(find.text('adios'), findsOneWidget);
+      expect(find.text('0:00'), findsNothing);
     });
 
     testWidgets('the same halves without anchors still read in device order', (

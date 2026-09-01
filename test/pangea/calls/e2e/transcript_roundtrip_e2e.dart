@@ -66,6 +66,7 @@ void main() {
           send: alice.sender(roomId, CallTranscriptContent.relType),
           callKey: callKey,
           senderId: alice.userId,
+          deviceId: 'ALICEPHONE',
           segments: const [
             TranscriptSegment('hola que tal'),
             TranscriptSegment('me llamo alice'),
@@ -85,6 +86,7 @@ void main() {
           send: bob.sender(roomId, CallTranscriptContent.relType),
           callKey: callKey,
           senderId: bob.userId,
+          deviceId: 'BOBPHONE',
           segments: const [TranscriptSegment('muy bien gracias')],
           chunksCaptured: 1,
           chunksTranscribed: 1,
@@ -135,6 +137,7 @@ void main() {
         send: alice.sender(roomId, CallTranscriptContent.relType),
         callKey: key,
         senderId: alice.userId,
+        deviceId: 'ALICEPHONE',
         segments: const [TranscriptSegment('solo yo')],
         chunksCaptured: 1,
         chunksTranscribed: 1,
@@ -167,6 +170,7 @@ void main() {
         send: alice.sender(roomId, CallTranscriptContent.relType),
         callKey: key,
         senderId: alice.userId,
+        deviceId: 'ALICEPHONE',
         segments: const [TranscriptSegment('lo que alcance a decir')],
         chunksCaptured: 4,
         chunksTranscribed: 2,
@@ -202,6 +206,7 @@ void main() {
         send: alice.sender(roomId, CallTranscriptContent.relType),
         callKey: key,
         senderId: alice.userId,
+        deviceId: 'ALICEPHONE',
         segments: [
           for (var i = 0; i < 4000; i++)
             TranscriptSegment('una frase larga de relleno numero $i'),
@@ -228,6 +233,65 @@ void main() {
       expect(half.segments, isNotEmpty);
       expect(half.accounting.truncated, isTrue);
       expect(half.state, HalfState.incomplete);
+    });
+
+    test('two of ONE account devices both survive the round trip', () async {
+      // The defect, against a real homeserver rather than a fake. Both halves
+      // are written by the same Matrix USER, seconds apart, under the same
+      // call key -- which is exactly what two of a learner's devices do when
+      // both answer. Keyed by (call, sender) alone the second PUT is a resend
+      // of the first as far as the server is concerned, so only one event ever
+      // exists to be read back; and even where two land, the reader kept one.
+      final key = await alice.sendMarker(roomId);
+
+      await writeCallTranscript(
+        send: alice.sender(roomId, CallTranscriptContent.relType),
+        callKey: key,
+        senderId: alice.userId,
+        deviceId: 'ALICEPHONE',
+        segments: const [TranscriptSegment('desde el telefono')],
+        chunksCaptured: 1,
+        chunksTranscribed: 1,
+        chunksLost: 0,
+        chunksSuppressed: 0,
+        chunksDiscarded: 0,
+        captureDroppedMs: 0,
+        captureRefused: false,
+        drainComplete: true,
+      );
+
+      await writeCallTranscript(
+        send: alice.sender(roomId, CallTranscriptContent.relType),
+        callKey: key,
+        senderId: alice.userId,
+        deviceId: 'ALICELAPTOP',
+        segments: const [TranscriptSegment('y desde el portatil')],
+        chunksCaptured: 1,
+        chunksTranscribed: 1,
+        chunksLost: 0,
+        chunksSuppressed: 0,
+        chunksDiscarded: 0,
+        captureDroppedMs: 0,
+        captureRefused: false,
+        drainComplete: true,
+      );
+
+      final transcript = await fetchCallTranscript(
+        fetch: alice.relationsFetcher(),
+        roomId: roomId,
+        callKey: key,
+        expectedSenders: [alice.userId],
+      );
+
+      final half = transcript.halves.single;
+      expect(half.deviceCount, 2, reason: 'both events reached the room');
+      expect(half.segments.map((s) => s.text), [
+        'desde el telefono',
+        'y desde el portatil',
+      ]);
+      // And the merged half says what it is rather than reading as one
+      // device's clean record of everything that speaker said.
+      expect(half.issue, HalfIssue.assembledFromSeveralDevices);
     });
   }, skip: skip);
 }

@@ -48,6 +48,13 @@ Future<bool> writeCallTranscript({
   required TranscriptSender send,
   required String? callKey,
   required String senderId,
+
+  /// Which of this account's devices is writing. Required rather than
+  /// defaulted, like every count beside it: a caller that omitted it would
+  /// publish a half indistinguishable from the other device's, and the reader
+  /// would keep one of the two. Null is a first-class answer for a client that
+  /// cannot name its own device -- the field is then simply left off the event.
+  required String? deviceId,
   required List<TranscriptSegment> segments,
   required int chunksCaptured,
   required int chunksTranscribed,
@@ -103,10 +110,12 @@ Future<bool> writeCallTranscript({
           declared: true,
         ),
         langCode: langCode,
-        // Inside the closure, so the packer measures the event that actually
-        // goes on the wire. Sizing without it and adding it afterwards would
-        // grow a half past the budget it was just checked against, and the
-        // server rejects the WHOLE half rather than its tail.
+        deviceId: deviceId,
+        // These two are inside the closure with everything else, so the packer
+        // measures the event that actually goes on the wire. Sizing without a
+        // field and adding it afterwards would grow a half past the budget it
+        // was just checked against, and the server rejects the WHOLE half
+        // rather than its tail.
         clockAnchor: clockAnchor,
         // Always, and only here. `buildSegments` marks every position it could
         // not pin down to a word, so a half from this writer carries the claim
@@ -145,7 +154,10 @@ Future<bool> writeCallTranscript({
     return false;
   }
 
-  await send(content.toJson(), CallTranscriptContent.txnId(callKey, senderId));
+  await send(
+    content.toJson(),
+    CallTranscriptContent.txnId(callKey, senderId, deviceId),
+  );
   return true;
 }
 

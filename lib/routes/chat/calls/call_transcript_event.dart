@@ -1,14 +1,21 @@
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 
-/// The `pangea.call_transcript` event: one speaker's side of one call.
+/// The `pangea.call_transcript` event: one recording of one side of one call.
 ///
-/// One event per speaker, never split into parts. Parts were the first design
-/// and every review found another corner in them — a sequence counter that has
-/// to survive process death across a rejoin, a declared part count a reader
-/// must not trust, non-contiguous numbering from a buggy writer, and no clean
-/// answer for what "absent" means while parts are still arriving. A half is one
-/// event or it is missing, and both are decidable at a glance.
+/// One event per DEVICE, never split into parts. It was one event per SPEAKER
+/// until two of a learner's devices turned out to be able to record one call
+/// between them, which is two recordings of one side and not two parts of one
+/// recording: a device id is not a sequence number, and a device still writes
+/// once. See [deviceId], and `assembleTranscript` for how the halves are read
+/// back as one side of the conversation.
+///
+/// Parts were the first design and every review found another corner in them —
+/// a sequence counter that has to survive process death across a rejoin, a
+/// declared part count a reader must not trust, non-contiguous numbering from a
+/// buggy writer, and no clean answer for what "absent" means while parts are
+/// still arriving. A device's half is one event or it is missing, and both are
+/// decidable at a glance.
 ///
 /// Anchored by relation to `call_key` — the caller's membership event, which
 /// BOTH sides know as soon as the call starts. The call card is written by only
@@ -29,6 +36,24 @@ class CallTranscriptContent {
 
   /// The language this half was transcribed in, when the provider reported one.
   final String? langCode;
+
+  /// Which of the sender's DEVICES wrote this half.
+  ///
+  /// OPTIONAL on the wire, in both directions, and the whole reason the field
+  /// exists is that two devices of one account can both be in one call and both
+  /// record. Keyed by sender alone, their halves are indistinguishable: the
+  /// reader groups by sender, keeps one, and presents it as the whole of what
+  /// that person said. See `assembleTranscript`.
+  ///
+  /// ABSENT MEANS "THIS WRITER DID NOT SAY", and never "this is a different
+  /// device from the last one". Every half written before this field existed
+  /// carries nothing, so does any foreign client's, and so does one of ours on
+  /// a client that cannot name its own device. All of those key alike, which
+  /// is deliberate: it leaves the pre-existing behaviour of such halves exactly
+  /// as it was — one is kept — rather than turning every old half into its own
+  /// device and inventing a second speaker's worth of duplicates in rooms that
+  /// already exist.
+  final String? deviceId;
 
   /// Where this device's wall clock sat relative to the SFU's, read at join.
   ///
@@ -57,6 +82,7 @@ class CallTranscriptContent {
     required this.segments,
     required this.accounting,
     this.langCode,
+    this.deviceId,
     this.clockAnchor,
     this.positionsMarked = false,
   });
@@ -82,11 +108,36 @@ class CallTranscriptContent {
   /// while still costing a full scan.
   static const maxRawEntries = 4000;
 
+  /// The longest device id this reader will key a half by.
+  ///
+  /// A device id is an opaque short token — Synapse mints ten characters — and
+  /// this value is a GROUPING KEY held in a map while a transcript is
+  /// assembled. Room content is untrusted and an event has kilobytes of room
+  /// in it, so the ceiling is here for the same reason [maxSegments] is: a
+  /// bound on what one hostile event can make the reader hold.
+  static const maxDeviceIdChars = 255;
+
+  /// [raw] when it is a device id this reader will act on, and null otherwise.
+  ///
+  /// ONE rule, guarding the wire in both directions — [fromJson] reads through
+  /// it, [toJson] writes through it, and [txnId] scopes through it. A value
+  /// this reader would refuse is therefore never written, and never scopes a
+  /// transaction id it is absent from.
+  ///
+  /// Empty is not a device. It would otherwise be a device id that reads as
+  /// present and groups every half carrying it together, which is the absent
+  /// case wearing a name.
+  static String? usableDeviceId(Object? raw) =>
+      raw is String && raw.isNotEmpty && raw.length <= maxDeviceIdChars
+      ? raw
+      : null;
+
   Map<String, dynamic> toJson() => {
     'call_key': callKey,
     'segments': [for (final segment in segments) segment.toJson()],
     ...accounting.toJson(),
     if (langCode != null) 'lang_code': langCode,
+    'device_id': ?usableDeviceId(deviceId),
     if (positionsMarked) 'positions_marked': true,
     ...?clockAnchor?.toJson(),
     'm.relates_to': {'rel_type': relType, 'event_id': callKey},
@@ -275,6 +326,12 @@ class CallTranscriptContent {
           ? accounting.readerFoundUnreadable()
           : accounting.readerTruncated(),
       langCode: langCode is String && langCode.isNotEmpty ? langCode : null,
+      // A malformed device id is ABSENT, on the same terms as a malformed
+      // anchor: it decides which halves of one account are grouped together,
+      // and refusing the event over it would cost every word to save a
+      // grouping. What it costs instead is stated where [deviceId] is declared
+      // -- such a half keys alike with every other half that did not say.
+      deviceId: usableDeviceId(content['device_id']),
       positionsMarked: positionsMarked,
       // A malformed anchor is ABSENT, never a reason to reject the half. It
       // decides only where these words sit against the OTHER speaker's, and
@@ -285,11 +342,23 @@ class CallTranscriptContent {
 
   /// The transaction id for sending this half.
   ///
-  /// Deterministic in `(call_key, sender)` so that a RESEND after a network
-  /// failure collapses server-side instead of writing a second copy of the same
-  /// speech. It is not an update mechanism and nothing may treat it as one: the
-  /// content is computed once, after the drain settles, so no attempt ever
-  /// carries different bytes.
-  static String txnId(String callKey, String senderId) =>
-      'pangea.call_transcript:$callKey:$senderId';
+  /// Deterministic in `(call_key, sender, device)` so that a RESEND after a
+  /// network failure collapses server-side instead of writing a second copy of
+  /// the same speech. It is not an update mechanism and nothing may treat it as
+  /// one: the content is computed once, after the drain settles, so no attempt
+  /// ever carries different bytes.
+  ///
+  /// The DEVICE is in the key because a resend is always from the same device,
+  /// while two devices of one account in one call are two different halves of
+  /// what that person said. Keyed by `(call_key, sender)` the id asserted a
+  /// cardinality it was never entitled to: one half per ACCOUNT, when what it
+  /// was ever protecting against was one device sending twice.
+  ///
+  /// A writer that cannot name its own device scopes to the empty segment,
+  /// which is the same key every such writer uses. That costs nothing it was
+  /// not already paying: a client that does not know its device id cannot tell
+  /// its halves apart on the read side either, and it is one device.
+  static String txnId(String callKey, String senderId, String? deviceId) =>
+      'pangea.call_transcript:$callKey:$senderId:'
+      '${usableDeviceId(deviceId) ?? ''}';
 }
