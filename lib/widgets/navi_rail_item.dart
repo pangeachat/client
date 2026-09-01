@@ -22,9 +22,10 @@ class NaviRailItem extends StatelessWidget {
   /// When set, the item wears an explicit gold [FocusRingTapTarget] ring of
   /// this shape while focused, instead of relying on InkWell's
   /// behind-the-child focus highlight — which an opaque [icon] (the course
-  /// avatar circle) swallows to imperceptibility (#8724). Null keeps the
-  /// plain InkWell: the section glyphs are transparent, so the ink highlight
-  /// already shows through them.
+  /// avatar banner) swallows to imperceptibility (#8724). Pass the icon's own
+  /// silhouette (the rail passes MapBorder) so the ring traces the control
+  /// rather than floating over it. Null keeps the plain InkWell: the section
+  /// glyphs are transparent, so the ink highlight already shows through them.
   final OutlinedBorder? focusRingShape;
 
   const NaviRailItem({

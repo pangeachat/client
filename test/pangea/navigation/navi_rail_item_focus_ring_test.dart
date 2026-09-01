@@ -5,6 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 
+import 'package:fluffychat/features/course_plans/map_border.dart';
+import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/navi_rail_item.dart';
@@ -12,10 +14,11 @@ import '../../utils/test_client.dart';
 
 /// Covers the course-avatar half of #8724 (finding 5 of the 2026-09 a11y
 /// triage, #8689): a rail item's InkWell paints its focus highlight on a
-/// transparent Material BEHIND the icon, so an opaque icon — the course
-/// avatar circle — hides all but ~350 of its pixels (measured imperceptible
-/// on staging). With [NaviRailItem.focusRingShape] set, the item wears the
-/// app's explicit gold focus ring instead, and Enter still activates it.
+/// transparent Material BEHIND the icon, so the opaque course-avatar banner
+/// hides all but ~350 of its pixels (measured imperceptible on staging).
+/// With [NaviRailItem.focusRingShape] set, the item wears the app's explicit
+/// gold focus ring — a [MapBorder], tracing the avatar's own silhouette in
+/// the foreground — and Enter still activates it.
 class _FakeMatrixState extends MatrixState {
   _FakeMatrixState(this._client);
 
@@ -68,20 +71,22 @@ void main() {
                       toolTip: 'My course',
                       isSelected: false,
                       onTap: () => opened++,
-                      // An opaque circle standing in for the course avatar —
-                      // the exact shape that swallowed the behind-the-child
+                      // An opaque banner standing in for the course avatar —
+                      // the exact fill that swallowed the behind-the-child
                       // highlight.
-                      icon: Container(
-                        width: 56,
-                        height: 56,
-                        decoration: const BoxDecoration(
+                      icon: ClipPath(
+                        clipper: MapClipper(),
+                        child: Container(
+                          width: 56,
+                          height: 56,
                           color: Colors.blueGrey,
-                          shape: BoxShape.circle,
                         ),
                       ),
                       naviRailWidth: 80,
                       backgroundColor: Colors.transparent,
-                      focusRingShape: const CircleBorder(),
+                      // The production shape (_SpaceItem): the ring traces
+                      // the avatar's own banner silhouette.
+                      focusRingShape: const MapBorder(),
                     ),
                     // A focusable after the item, so the last Tab can move
                     // focus OFF it (with one focusable, Tab wraps in place).

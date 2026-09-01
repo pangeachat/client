@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MapClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
+  /// The folded-map banner outline, shared with MapBorder (map_border.dart)
+  /// so the course avatar's focus ring traces exactly the silhouette this
+  /// clips (#8724).
+  static Path pathFor(Size size) {
     final double w = size.width;
     final double h = size.height;
 
@@ -20,6 +22,9 @@ class MapClipper extends CustomClipper<Path> {
     path.close();
     return path;
   }
+
+  @override
+  Path getClip(Size size) => pathFor(size);
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;

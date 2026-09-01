@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/course_plans/map_border.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -308,10 +309,12 @@ class _SpaceItem extends StatelessWidget {
         isSelected: selected,
         backgroundColor: Colors.transparent,
         borderRadius: BorderRadius.circular(0),
-        // The avatar is an opaque circle, so InkWell's behind-the-child focus
+        // The avatar is an opaque banner, so InkWell's behind-the-child focus
         // highlight is imperceptible on it — wear the explicit gold ring
-        // instead (#8724). The transparent section glyphs above keep theirs.
-        focusRingShape: const CircleBorder(),
+        // instead, traced along the avatar's own MapClipper silhouette (a
+        // circle floats over the notched banner and reads as stray arcs)
+        // (#8724). The transparent section glyphs above keep the ink tint.
+        focusRingShape: const MapBorder(),
         onTap: () => _onTapSpace(context),
         icon: CourseAvatar(
           avatar: space.avatar,

@@ -8,6 +8,11 @@ import 'package:fluffychat/config/app_config.dart';
 /// behind-the-child focus highlight, so these need an explicit ring. Worn by
 /// the top-right cluster's avatar and language flag, and (via
 /// [NaviRailItem.focusRingShape]) the nav rail's course avatars (#8724).
+///
+/// The ring paints in the FOREGROUND: a background decoration is painted
+/// before the child, so an opaque child swallows the stroke down to a
+/// near-invisible sliver — the very failure this widget exists to fix
+/// (#8724 review).
 class FocusRingTapTarget extends StatefulWidget {
   final VoidCallback onTap;
   final OutlinedBorder shape;
@@ -34,6 +39,7 @@ class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
       customBorder: widget.shape,
       onFocusChange: (focused) => setState(() => _focused = focused),
       child: DecoratedBox(
+        position: DecorationPosition.foreground,
         decoration: ShapeDecoration(
           shape: widget.shape.copyWith(
             side: _focused

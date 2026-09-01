@@ -327,6 +327,9 @@ class _PillFocusRingState extends State<_PillFocusRing> {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
+      // Foreground, or the pill's opaque fill paints over the stroke and
+      // leaves a near-invisible sliver (#8724 review).
+      position: DecorationPosition.foreground,
       decoration: ShapeDecoration(
         shape: StadiumBorder(
           side: _focused
