@@ -60,10 +60,15 @@ class CallMedia {
   /// callback this object hands over. That gap let a regression through twice:
   /// a version that stored the stamps and paired them with a later clock
   /// reading passed every test in this file.
+  ///
+  /// [watchParticipantStamps] is the real subscription unless a test replaces
+  /// it, for the same reason and with the same gap: neither of the two signal
+  /// frames it reads can be delivered through a real `Room` here.
   CallMedia({
     Room? room,
     DateTime Function()? now,
     JoinStampWatch? watchJoinStamp,
+    ParticipantStampWatch? watchParticipantStamps,
   }) : room = room ?? Room(),
        now = now ?? DateTime.now {
     // Attached HERE, in the constructor, and not on the connect path. The join
@@ -84,6 +89,25 @@ class CallMedia {
       this.room,
       anchorClocksTo,
     );
+    // The second watch, attached here for the reason above and one more of its
+    // own: the join response names every device ALREADY in the room, and it is
+    // the only frame GUARANTEED to name them -- a later update names one only
+    // when its state changes, which nothing here controls. A subscription
+    // opened after the connect would still catch every later join and might
+    // never hear of the devices that were there first.
+    //
+    // [recordJoinStamps] rather than [anchorClocksTo]. These are statements
+    // about the SFU's clock alone; nothing on this path reads a device clock,
+    // and nothing on it may begin to, because a participant update restates a
+    // join from some earlier moment and a pair built here would measure the
+    // time since that join. [watchSfuParticipantStamps] is deliberately a
+    // different function from the one above so that no edit here can reach the
+    // anchor.
+    _stopParticipantStampWatch =
+        (watchParticipantStamps ?? watchSfuParticipantStamps)(
+          this.room,
+          recordJoinStamps,
+        );
   }
 
   /// The audio this device is publishing, or null before the microphone is on.
@@ -261,6 +285,54 @@ class CallMedia {
   Future<void> connectRoom(String url, String jwt) => room.connect(url, jwt);
 
   CancelListenFunc? _stopJoinStampWatch;
+  CancelListenFunc? _stopParticipantStampWatch;
+
+  /// The SFU's join stamps for one participant, or null when nothing in this
+  /// call has named them.
+  ///
+  /// Keyed by the identity the SFU used, which is the string the token service
+  /// builds out of the account and the device — the same one `CallParticipant`
+  /// parses a device id back out of.
+  ///
+  /// RAW, both halves, exactly as the frame carried them. Zero means the server
+  /// said nothing: `joined_at_ms` has only been sent since livekit-server
+  /// v1.8.4, so a stamp with no millisecond half is an ordinary answer from an
+  /// older SFU rather than a fault, and what to make of it is the reader's. The
+  /// coarse half travels beside it so a reader can tell a refinement from a
+  /// contradiction without a second source, which is the check
+  /// [anchorClocksTo] already makes for this device's own pair.
+  ///
+  /// Exposed so a comparison between two devices' joins can be made at the
+  /// resolution the wire actually carries. Narrowing
+  /// `CaptureElection.joinStampResolution` to match decides which captured
+  /// audio is DESTROYED, so it is its own change with its own review.
+  ({int secondsMs, int ms})? sfuJoinStampsFor(String identity) =>
+      _sfuJoinStamps[identity];
+
+  final Map<String, ({int secondsMs, int ms})> _sfuJoinStamps = {};
+
+  /// Records what the SFU last said about each participant a frame named.
+  ///
+  /// THE LATEST STATEMENT WINS. livekit_client's own `Participant.joinedAt`
+  /// reads whichever `ParticipantInfo` it last accepted — participant.dart:92
+  /// reads the stored info and participant.dart:236 replaces it — so keeping
+  /// the first here would leave this and the coarse reading every other caller
+  /// takes off the participant describing different frames.
+  ///
+  /// KNOWN LIMIT: that alignment is close rather than exact. livekit_client
+  /// refuses an update carrying the same sid and a lower `version`
+  /// (participant.dart:221) and this does not, so an out-of-order update moves
+  /// this and not the reading beside it. Whoever compares the two owes that
+  /// check; this holds statements and does not adjudicate between them.
+  @visibleForTesting
+  void recordJoinStamps(List<SfuParticipantStamps> stamps) {
+    for (final stamp in stamps) {
+      _sfuJoinStamps[stamp.identity] = (
+        secondsMs: stamp.secondsMs,
+        ms: stamp.ms,
+      );
+    }
+  }
 
   // A note on a publish that fails, for both of these. Read off the pinned
   // livekit_client 2.11.0 rather than carried forward, because the two halves
@@ -553,12 +625,14 @@ class CallMedia {
 
   Future<void> dispose() async {
     await disconnect();
-    // Tidiness rather than a leak fix, and cheap enough to state plainly: the
-    // subscription lives on the room's own signal emitter, which the dispose
+    // Tidiness rather than a leak fix, and cheap enough to state plainly: both
+    // subscriptions live on the room's own signal emitter, which the dispose
     // below closes anyway. Cancelling first means teardown does not depend on
     // that being true of a future livekit_client.
     await _stopJoinStampWatch?.call();
     _stopJoinStampWatch = null;
+    await _stopParticipantStampWatch?.call();
+    _stopParticipantStampWatch = null;
     await room.dispose();
   }
 }

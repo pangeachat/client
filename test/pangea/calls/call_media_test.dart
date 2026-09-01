@@ -582,12 +582,12 @@ void main() {
       expect(reads, 1, reason: 'exactly one clock read, taken there and then');
     });
 
-    test('the watch is live before anything could connect', () {
-      // That the REAL watcher is the default, and that it is attached before
-      // anything could connect. The test above replaces the watcher, so it
-      // would pass just as well against a default that subscribed to nothing;
-      // this one uses a real `Room` and counts what actually landed on its
-      // signal emitter.
+    test('the watches are live before anything could connect', () {
+      // That the REAL watchers are the defaults, and that they are attached
+      // before anything could connect. The test above replaces one of them, so
+      // it would pass just as well against a default that subscribed to
+      // nothing; this one uses a real `Room` and counts what actually landed on
+      // its signal emitter.
       //
       // WHAT NEITHER TEST CAN SEE, stated so nobody reads them as more than
       // they are: that livekit_client still emits `SignalJoinResponseEvent`,
@@ -599,33 +599,45 @@ void main() {
       // A DELTA, not a count. livekit_client subscribes to that emitter itself
       // when the `SignalClient` is built, so the absolute number is not ours to
       // predict -- asserting one was this test's own first failure.
+      //
+      // THREE: the clock anchor's join-stamp watch, and the participant-stamp
+      // watch's two -- the join response and the later updates are separate
+      // frames. Both attaches are constructor-time and for the same reason: the
+      // join response is the only frame guaranteed to name the devices already
+      // in the room, so a subscription opened after the connect may never hear
+      // of them.
       final room = Room();
       final before = joinStampWatchCount(room);
 
       CallMedia(room: room);
       expect(
         joinStampWatchCount(room) - before,
-        1,
-        reason: 'constructing the media must attach the join-stamp watch',
+        3,
+        reason: 'constructing the media must attach both stamp watches',
       );
     });
 
-    test('the watch is given back when the call is disposed', () async {
+    test('BOTH watches are given back when the call is disposed', () async {
       // The claim this replaces was `expect(media.dispose(), completes)`, which
       // proved only that teardown did not throw -- it never checked that the
-      // subscription was released. Asserted through the injected watcher
-      // because that is the only way to see the canceller itself run: a real
-      // room disposes its own emitter, which would clear the listener whether
-      // or not this object gave it back.
-      var cancelled = false;
+      // subscription was released. Asserted through the injected watchers
+      // because that is the only way to see the cancellers themselves run: a
+      // real room disposes its own emitter, which would clear the listeners
+      // whether or not this object gave them back.
+      var joinCancelled = false;
+      var participantsCancelled = false;
       final media = CallMedia(
         watchJoinStamp: (room, onStamp) =>
-            () async => cancelled = true,
+            () async => joinCancelled = true,
+        watchParticipantStamps: (room, onStamps) =>
+            () async => participantsCancelled = true,
       );
 
-      expect(cancelled, isFalse);
+      expect(joinCancelled, isFalse);
+      expect(participantsCancelled, isFalse);
       await media.dispose();
-      expect(cancelled, isTrue);
+      expect(joinCancelled, isTrue);
+      expect(participantsCancelled, isTrue);
     });
 
     group('what the anchor makes of a pair of stamps', () {
@@ -702,6 +714,113 @@ void main() {
 
         expect(media.clockAnchor, isNull);
       });
+    });
+  });
+
+  group('the SFU join stamps this call holds for other devices', () {
+    const mine = '@ann:pangea.chat:MINE';
+    const sibling = '@ann:pangea.chat:SIBLING';
+
+    final sfuJoin = DateTime.utc(2026, 8, 26, 9);
+    final sfuSecondsMs = sfuJoin.millisecondsSinceEpoch;
+
+    /// The media, plus the callback it actually handed the participant watch.
+    ///
+    /// Through the injected seam for the same reason the anchor's pairing test
+    /// uses one: calling [CallMedia.recordJoinStamps] by hand proves a reading
+    /// is stored and says nothing about WHICH callback this object subscribed
+    /// with. A version that subscribed with an empty closure would pass every
+    /// assertion below if they were made by hand.
+    (CallMedia, void Function(List<SfuParticipantStamps>)) mediaWatching() {
+      late void Function(List<SfuParticipantStamps>) handedOver;
+      final media = CallMedia(
+        watchParticipantStamps: (room, onStamps) {
+          handedOver = onStamps;
+          return () async {};
+        },
+      );
+      return (media, handedOver);
+    }
+
+    test('holds what the server said, keyed by the identity it said it of', () {
+      // RAW, both halves. The fine half of the sibling here is zero because an
+      // SFU older than livekit-server v1.8.4 never sets field 17, and that is
+      // an ordinary answer rather than a fault -- so it is passed on rather
+      // than repaired, and the coarse half stays beside it so a reader can tell
+      // a refinement from a contradiction without a second source.
+      final (media, handedOver) = mediaWatching();
+
+      expect(media.sfuJoinStampsFor(sibling), isNull);
+
+      handedOver([
+        (identity: mine, secondsMs: sfuSecondsMs, ms: sfuSecondsMs + 437),
+        (identity: sibling, secondsMs: sfuSecondsMs - 2000, ms: 0),
+      ]);
+
+      expect(media.sfuJoinStampsFor(mine), (
+        secondsMs: sfuSecondsMs,
+        ms: sfuSecondsMs + 437,
+      ));
+      expect(media.sfuJoinStampsFor(sibling), (
+        secondsMs: sfuSecondsMs - 2000,
+        ms: 0,
+      ));
+    });
+
+    test('a device nothing has named is unknown, never zero', () {
+      // The distinction the whole store rests on. Zero is a server that said
+      // nothing about the millisecond field while still naming the device;
+      // absent is nobody having named the device at all. A reader that got
+      // zeros for a device it has never heard of would be told a join time of
+      // 1970 for a device that may have joined before it.
+      final (media, handedOver) = mediaWatching();
+
+      handedOver([
+        (identity: mine, secondsMs: sfuSecondsMs, ms: sfuSecondsMs + 437),
+      ]);
+
+      expect(media.sfuJoinStampsFor(sibling), isNull);
+    });
+
+    test('the LATEST statement about a device is the one held', () {
+      // livekit_client's own `Participant.joinedAt` reads whichever
+      // `ParticipantInfo` it last accepted, so keeping the first here would
+      // leave this and the coarse reading every other caller takes off the
+      // participant describing different frames.
+      final (media, handedOver) = mediaWatching();
+
+      handedOver([(identity: sibling, secondsMs: sfuSecondsMs, ms: 0)]);
+      handedOver([
+        (
+          identity: sibling,
+          secondsMs: sfuSecondsMs + 60000,
+          ms: sfuSecondsMs + 60012,
+        ),
+      ]);
+
+      expect(media.sfuJoinStampsFor(sibling), (
+        secondsMs: sfuSecondsMs + 60000,
+        ms: sfuSecondsMs + 60012,
+      ));
+    });
+
+    test('a stamp recorded here never becomes a clock anchor', () {
+      // The separation the two watches exist for. These stamps also arrive on
+      // participant updates, which restate a join from some earlier and
+      // unknowable moment -- so a pair built here would measure the time since
+      // that join rather than the disagreement between two clocks, which is the
+      // failure `anchorClocksTo` refuses a fallback over.
+      //
+      // The stamp is a real, self-consistent time and the clock is the default
+      // one, so an anchor WOULD be built if this path reached it. Null here is
+      // the absence of a route, not a reading being refused.
+      final (media, handedOver) = mediaWatching();
+
+      handedOver([
+        (identity: mine, secondsMs: sfuSecondsMs, ms: sfuSecondsMs + 437),
+      ]);
+
+      expect(media.clockAnchor, isNull);
     });
   });
 }

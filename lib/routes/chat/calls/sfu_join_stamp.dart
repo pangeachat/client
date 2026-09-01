@@ -4,7 +4,15 @@ import 'package:flutter/foundation.dart';
 
 import 'package:livekit_client/livekit_client.dart';
 import 'package:livekit_client/src/internal/events.dart';
+import 'package:livekit_client/src/proto/livekit_models.pb.dart' as pb;
 import 'package:livekit_client/src/proto/livekit_rtc.pb.dart';
+
+/// The shape of [watchSfuJoinStamp], so a caller can accept it as a seam.
+typedef JoinStampWatch =
+    CancelListenFunc Function(
+      Room room,
+      void Function(({int secondsMs, int ms}) stamps) onStamp,
+    );
 
 /// The SFU's stamp for this device's join, in MILLISECONDS, read off the join
 /// response as it arrives.
@@ -16,13 +24,14 @@ import 'package:livekit_client/src/proto/livekit_rtc.pb.dart';
 /// the same instant to the millisecond, and on the pinned livekit_client 2.11.0
 /// nothing public hands it over: the `ParticipantInfo` that holds it is a
 /// private member of `Participant`, and the join response it rides in is
-/// consumed inside `Room.connect` without being stored. The signal event is
+/// consumed inside `Room.connect` without being stored. The signal events are
 /// the only place it is reachable at all.
 ///
-/// So this file deep-imports `src/internal/events.dart` for
-/// `SignalJoinResponseEvent`, and reads `Room.engine`, which is `@internal`.
-/// Both are suppressed at the top of THIS file and nowhere else, so the whole
-/// of the app's dependence on livekit_client's internals is these few lines.
+/// So this file deep-imports `src/internal/events.dart` for the signal events
+/// and `src/proto/` for the messages they carry, and reads `Room.engine`, which
+/// is `@internal`. Both are suppressed at the top of THIS file and nowhere
+/// else, so the whole of the app's dependence on livekit_client's internals is
+/// these few lines.
 ///
 /// WHAT BREAKS IF THE PACKAGE CHANGES, and it is worth being blunt because a
 /// deep import is a deliberate cost somebody else will pay. A livekit_client
@@ -90,13 +99,6 @@ import 'package:livekit_client/src/proto/livekit_rtc.pb.dart';
 /// Returns the canceller for the subscription. Cancelling is tidiness rather
 /// than a leak fix — the subscription belongs to the room's own signal emitter
 /// and dies when the room is disposed.
-/// The shape of [watchSfuJoinStamp], so a caller can accept it as a seam.
-typedef JoinStampWatch =
-    CancelListenFunc Function(
-      Room room,
-      void Function(({int secondsMs, int ms}) stamps) onStamp,
-    );
-
 CancelListenFunc watchSfuJoinStamp(
   Room room,
   void Function(({int secondsMs, int ms})) onStamp,
@@ -124,18 +126,160 @@ CancelListenFunc watchSfuJoinStamp(
 /// are for OUR join rather than the peer's. It is a default, all-zero message
 /// when the frame carried none, which is why this returns zeros rather than
 /// throwing on a truncated one.
-/// How many join-stamp watches are attached to [room]'s signal emitter.
+@visibleForTesting
+({int secondsMs, int ms}) sfuJoinStampsOf(JoinResponse response) => (
+  secondsMs: response.participant.joinedAt.toInt() * 1000,
+  ms: response.participant.joinedAtMs.toInt(),
+);
+
+/// ONE participant's join stamps, beside the identity the SFU named them by.
 ///
-/// Exists so a test can pin WHEN the watch is attached without importing any of
-/// this file's internals itself. The device half of the clock anchor is only
+/// The identity travels with the stamps because these describe devices this
+/// code has no other handle on. [sfuJoinStampsOf] answers about US and needs no
+/// key; this answers about whoever the frame described, and a reading nobody
+/// can attribute orders nothing.
+typedef SfuParticipantStamps = ({String identity, int secondsMs, int ms});
+
+/// The shape of [watchSfuParticipantStamps], so a caller can accept it as a
+/// seam.
+typedef ParticipantStampWatch =
+    CancelListenFunc Function(
+      Room room,
+      void Function(List<SfuParticipantStamps> stamps) onStamps,
+    );
+
+/// Every join stamp the SFU states about anyone in this call, ours included, in
+/// MILLISECONDS, read off the signalling as it arrives.
+///
+/// SEPARATE FROM [watchSfuJoinStamp] rather than folded into it, and the
+/// separation is a safety property rather than tidiness. That watch feeds the
+/// clock anchor, whose two halves have to be read at the same instant, so it
+/// may only fire on a frame carrying a FRESH join — the join response. The
+/// stamps here also arrive on participant updates, which restate a join that
+/// happened at some earlier and unknowable moment; pairing one of those with a
+/// device clock read now would measure the time since that join rather than the
+/// disagreement between two clocks, which is the exact failure
+/// `CallMedia.anchorClocksTo` describes. Keeping them apart means no edit to
+/// this watch can reach the anchor.
+///
+/// TWO EVENTS, because there are two ways a device becomes visible.
+/// `SignalJoinResponseEvent` carries `participant` — us — and
+/// `other_participants` (field 3), which is everyone already in the room when
+/// we arrived. A device that joins AFTER us is delivered by
+/// `SignalParticipantUpdateEvent`. Those are the two sources livekit_client's
+/// own `Room` builds its remote participants from in an ordinary call —
+/// room.dart:548 walks `other_participants`, room.dart:397 hands every update
+/// to the same builder — so short of the room move excluded below, a device
+/// this app can see at all is a device that came through one of them. Both are
+/// emitted on this same signal emitter, at signal_client.dart:280 and
+/// signal_client.dart:295, and both carry the `ParticipantInfo` this reads.
+///
+/// TWO SUBSCRIPTIONS rather than one listener switching on the event type, and
+/// the reason is that [joinStampWatchCount] is the only observation a unit test
+/// has of what this attached. Two subscriptions make a dropped half show up
+/// there as a count; one switch would hide it. Neither event can be delivered
+/// through a real `Room` in a unit test: livekit_client's own join handler
+/// builds peer connections through a platform channel, and its update handler
+/// waits ten seconds for a `RoomConnectedEvent` no unit test can produce, once
+/// for every participant the update names (room.dart:785).
+///
+/// NOT subscribed: `SignalRoomMovedEvent`, which carries participants of its
+/// own and is livekit_client's third route into the same builder
+/// (room.dart:663). Moving a participant between rooms is a server-initiated
+/// LiveKit feature this app never asks for — its call tokens are issued per
+/// room — so subscribing would add surface nothing here can exercise.
+/// `SignalReconnectResponseEvent` carries no participants at all, so a resume
+/// restates nothing and there is nothing there to read.
+///
+/// What is handed over is what the SERVER sent, in arrival order, and this
+/// keeps no memory between calls: it reports statements, and holding them is
+/// the caller's. Zero is the ordinary reading for a server that never set the
+/// millisecond field, for the same proto3 reason [sfuJoinStampsOf] carries.
+///
+/// Returns one canceller for both subscriptions.
+CancelListenFunc watchSfuParticipantStamps(
+  Room room,
+  void Function(List<SfuParticipantStamps>) onStamps,
+) {
+  final events = room.engine.signalClient.events;
+  final cancels = [
+    events.on<SignalJoinResponseEvent>(
+      (event) => onStamps(sfuParticipantStampsOf(event.response)),
+    ),
+    events.on<SignalParticipantUpdateEvent>(
+      (event) => onStamps(sfuParticipantStampsOfUpdate(event.participants)),
+    ),
+  ];
+  return () async {
+    for (final cancel in cancels) {
+      await cancel();
+    }
+  };
+}
+
+/// One participant's stamps, as the SFU stated them.
+///
+/// The same two fields [sfuJoinStampsOf] reads, off the same message type, and
+/// silently wrong in the same way if they are confused: `joined_at` (field 6,
+/// whole SECONDS) and `joined_at_ms` (field 17) are both int64 on
+/// `ParticipantInfo`. `secondsMs` is scaled the way livekit_client scales
+/// `Participant.joinedAt`, so a caller holds the reading it would otherwise get
+/// off the participant beside the finer one meant to refine it — and both out
+/// of the same frame, so one can be checked against the other without reaching
+/// for a second source.
+@visibleForTesting
+SfuParticipantStamps sfuStampsOf(pb.ParticipantInfo info) => (
+  identity: info.identity,
+  secondsMs: info.joinedAt.toInt() * 1000,
+  ms: info.joinedAtMs.toInt(),
+);
+
+/// Everyone a join response describes: this device, then everyone already in
+/// the room when it arrived.
+///
+/// Ours is in the list rather than left to [sfuJoinStampsOf], because ordering
+/// two devices needs both sides read under one rule, and the coarse half of
+/// each pair has to come out of the same frame as the fine half it refines.
+///
+/// A frame carrying no participant yields the default, all-zero message — an
+/// entry naming nobody, holding a reading that already means "not said" —
+/// rather than a throw. This runs inside `Room.connect`, on a frame nothing has
+/// validated, and an exception here would fail a call whose audio was about to
+/// work perfectly well.
+@visibleForTesting
+List<SfuParticipantStamps> sfuParticipantStampsOf(JoinResponse response) => [
+  sfuStampsOf(response.participant),
+  for (final other in response.otherParticipants) sfuStampsOf(other),
+];
+
+/// The same reading for the participants a later update names.
+///
+/// This is the half that makes the seam cover the whole call rather than only
+/// the moment this device came in: a device that joins after us is never in any
+/// join response we saw.
+///
+/// An update also restates devices already known, and says so about ones that
+/// have LEFT — livekit_client reads `state == DISCONNECTED` off these same
+/// messages. Neither is filtered. A stamp is a statement about when the SFU saw
+/// that identity join, which is no less true for the device having gone since,
+/// and a reader that cares about presence has the roster for it.
+@visibleForTesting
+List<SfuParticipantStamps> sfuParticipantStampsOfUpdate(
+  List<pb.ParticipantInfo> participants,
+) => [for (final info in participants) sfuStampsOf(info)];
+
+/// How many of this file's watches are attached to [room]'s signal emitter.
+///
+/// Exists so a test can pin WHEN the watches are attached without importing any
+/// of this file's internals itself. The device half of the clock anchor is only
 /// contemporaneous with the SFU half if the subscription is already live when
-/// the join response lands, and that is a property of the ATTACH SITE, not of
-/// anything the callback does — so a test that only exercises the callback
-/// cannot see it, and a regression that moves the attach later passes silently.
-/// This is the cheapest honest look at the attach site available: a real
-/// `Room` can be built in a unit test, but a join response cannot be delivered
-/// through one, because emitting on its signal emitter wakes livekit_client's
-/// own handler and that reaches a platform channel.
+/// the join response lands, and that same frame is the only one guaranteed to
+/// name the devices already in the room. Both are properties of the ATTACH
+/// SITE, not of anything the callbacks do — so a test that only exercises a
+/// callback cannot see them, and a regression that moves an attach later passes
+/// silently. This is the cheapest honest look at the attach site available: a
+/// real `Room` can be built in a unit test, but neither signal frame can be
+/// delivered through one, for the reasons [watchSfuParticipantStamps] sets out.
 ///
 /// It counts EVERY subscription on that emitter, not only ours: livekit_client
 /// registers its own logging listener there when the `SignalClient` is built,
@@ -144,9 +288,3 @@ CancelListenFunc watchSfuJoinStamp(
 @visibleForTesting
 int joinStampWatchCount(Room room) =>
     room.engine.signalClient.events.listeners.length;
-
-@visibleForTesting
-({int secondsMs, int ms}) sfuJoinStampsOf(JoinResponse response) => (
-  secondsMs: response.participant.joinedAt.toInt() * 1000,
-  ms: response.participant.joinedAtMs.toInt(),
-);
