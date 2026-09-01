@@ -20,6 +20,7 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 
 import 'package:pangea_call_capture/pangea_call_capture.dart'
     show CallForegroundControl;
+import 'call_token_repo_test.dart' show jwtWith;
 
 /// Records the order every step ran in, which is the property under test: the
 /// call comes up in one order and down in the reverse, and the failure paths
@@ -286,6 +287,10 @@ class FakeCalls extends CallService {
   @override
   int get joinAttempt => 0;
 
+  /// The grant a successful join hands back. Settable so a test can supply a
+  /// token whose claims say something, which is what the roster is told.
+  CallToken grant = const CallToken(jwt: 'jwt', url: 'ws://sfu');
+
   @override
   Future<CallToken> join(matrix.Room room) async {
     trace('join');
@@ -294,7 +299,7 @@ class FakeCalls extends CallService {
     joinClaimed = true;
     if (holdJoin != null) await holdJoin!.future;
     if (joinError != null) throw joinError!;
-    return const CallToken(jwt: 'jwt', url: 'ws://sfu');
+    return grant;
   }
 
   /// The membership this account holds, as the room would report it. Overridden
@@ -363,8 +368,17 @@ class FakeMedia extends CallMedia {
   /// Supplied by the test rather than built from a live connection.
   FakeRoster? fakeRoster;
 
+  /// What the call told the roster about the token it dialled with.
+  MetadataGrant? rosterGrant;
+
   @override
-  CallRoster roster({required String myUserId}) => fakeRoster!;
+  CallRoster roster({
+    required String myUserId,
+    MetadataGrant metadataGrant = MetadataGrant.unknown,
+  }) {
+    rosterGrant = metadataGrant;
+    return fakeRoster!;
+  }
 
   @override
   AudioTrack? get publishedAudio => hasTrack ? _track : null;
@@ -730,6 +744,9 @@ class FakeTrack implements AudioTrack {
 class _NullSink implements CallAudioSink {
   @override
   Future<void> deliver(PcmChunk chunk, {Duration? within}) async {}
+  @override
+  void discarded(PcmChunk chunk) {}
+
   @override
   Future<bool> close() async => true;
 }
@@ -3425,6 +3442,42 @@ void main() {
 
       expect(call.isRecording, isFalse);
       expect(capture.discardRequests.last, isFalse);
+    });
+  });
+
+  group('what the roster is told about the token', () {
+    // The roster is built from the media, which only dials with the token; the
+    // token itself is the call's. Without carrying it across, a write the SFU
+    // REFUSED and an SFU that stopped answering arrive at the roster's report
+    // as the same thrown error — and only one of them is a deployment we have
+    // to change. That indistinguishability is why the refusal read as an
+    // ordinary flake for the life of the feature.
+    test('carries a grant that cannot publish attributes', () async {
+      final (call, calls, media, _) = await build();
+      calls.grant = CallToken(
+        url: 'ws://sfu',
+        jwt: jwtWith({
+          'video': {'roomJoin': true, 'canPublish': true},
+        }),
+      );
+
+      await call.start(roomStub(calls.client), video: false);
+
+      expect(media.rosterGrant, MetadataGrant.absent);
+    });
+
+    test('and one that can', () async {
+      final (call, calls, media, _) = await build();
+      calls.grant = CallToken(
+        url: 'ws://sfu',
+        jwt: jwtWith({
+          'video': {'roomJoin': true, 'canUpdateOwnMetadata': true},
+        }),
+      );
+
+      await call.start(roomStub(calls.client), video: false);
+
+      expect(media.rosterGrant, MetadataGrant.granted);
     });
   });
 

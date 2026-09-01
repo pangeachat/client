@@ -1813,7 +1813,13 @@ class ActiveCall extends ChangeNotifier {
       // poll. Membership is room state on a multi-minute expiry: it lags a join
       // and cannot see a crash until it lapses, which is why the poll existed
       // at all. The SFU knows immediately, so neither is needed.
-      final roster = media.roster(myUserId: calls.client.userID ?? '');
+      final roster = media.roster(
+        myUserId: calls.client.userID ?? '',
+        // What the token said about publishing attributes, carried so that a
+        // roster write that fails can say whether it was ever allowed to
+        // succeed. See [CallRoster.metadataGrant]; nothing here ranks on it.
+        metadataGrant: grant.metadataGrant,
+      );
       _roster = roster;
       roster.addListener(_onParticipantsChanged);
       // And the call's own clock beside the roster's events, so no state can

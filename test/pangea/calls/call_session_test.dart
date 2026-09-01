@@ -227,8 +227,10 @@ class _FakeMedia extends CallMedia {
   lk.AudioTrack? get publishedAudio => null;
 
   @override
-  CallRoster roster({required String myUserId}) =>
-      fakeRoster ??= _FakeRoster(room: room, myUserId: myUserId);
+  CallRoster roster({
+    required String myUserId,
+    MetadataGrant metadataGrant = MetadataGrant.unknown,
+  }) => fakeRoster ??= _FakeRoster(room: room, myUserId: myUserId);
 
   /// Whether a camera toggle actually ends up publishing. False is the shape
   /// the real media returns for a toggle it refused -- a call already released,
@@ -349,6 +351,9 @@ class _LabelSpyForeground extends CallForegroundControl {
 class _NullSink implements CallAudioSink {
   @override
   Future<void> deliver(PcmChunk chunk, {Duration? within}) async {}
+
+  @override
+  void discarded(PcmChunk chunk) {}
 
   @override
   Future<bool> close() async => true;

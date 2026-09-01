@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' show Logs;
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
@@ -216,6 +218,21 @@ class RosterRead {
 class CallRoster extends ChangeNotifier {
   final String myUserId;
 
+  /// What this call's token said about publishing attributes, as read when it
+  /// was issued.
+  ///
+  /// Carried here so that a failed write can be told apart from an outage. From
+  /// inside [_write] the two are the same thrown error, and only one of them is
+  /// a deployment we have to change — which is exactly why the refusal read as
+  /// an ordinary flake for the life of the feature.
+  ///
+  /// NOTHING RANKS ON IT. The election reads what has actually been announced
+  /// ([announcedCanCapture]), and that stays the right input: a token WITH the
+  /// grant can still fail to write, so the observed failure is strictly better
+  /// evidence than the predicted one. This is here to say WHY, not to change
+  /// what anyone decides.
+  final MetadataGrant metadataGrant;
+
   final lk.Room _room;
 
   /// The attribute a device publishes to tell its siblings whether it can
@@ -274,7 +291,11 @@ class CallRoster extends ChangeNotifier {
   /// person leaving — which would have ended the call.
   bool _connected = false;
 
-  CallRoster({required lk.Room room, required this.myUserId}) : _room = room {
+  CallRoster({
+    required lk.Room room,
+    required this.myUserId,
+    this.metadataGrant = MetadataGrant.unknown,
+  }) : _room = room {
     _room.addListener(recompute);
     recompute();
   }
@@ -760,9 +781,48 @@ class CallRoster extends ChangeNotifier {
         e,
         s,
       );
+      // AND SOMEWHERE IT CAN BE COUNTED. The sentence above was written
+      // correctly, and named the right cause, while the failure it describes ran
+      // in production for the life of the feature: [Logs] reaches the in-app log
+      // viewer and nothing else, so nobody who was not already looking at a
+      // device ever saw one.
+      //
+      // ONCE PER SESSION, because this is level-triggered rather than bounded.
+      // Every recompute re-asserts an outstanding intent, so a channel that has
+      // stopped answering fails again on every room notification for the whole
+      // call — a report per failure would be one issue per participant event.
+      // The first one carries the signal and Sentry's affected-user count
+      // carries the size.
+      //
+      // Severity is left to [ErrorHandler]'s table, which reads this as an
+      // error. That is the reading this failure was owed: it is never the
+      // learner's doing, and its safe direction — siblings that hear nothing
+      // deliver their own tails rather than drop them — is what let it look
+      // like it was working.
+      ErrorHandler.logErrorOnce(
+        key: attributesUnpublishedKey,
+        e: e,
+        s: s,
+        m:
+            "This device could not tell the account's other devices what it can "
+            'do or is doing; the recorder election is running without its '
+            'capability layer',
+        data: {
+          // Attribute NAMES, never the values: a published run names a stretch
+          // of a learner's conversation.
+          'attributes': attributes.keys.toList()..sort(),
+          // The half that tells a refusal from an outage. See [metadataGrant].
+          'tokenGrant': metadataGrant.name,
+        },
+      );
       return false;
     }
   }
+
+  /// The session-throttle key the unpublished-attributes report is filed under.
+  ///
+  /// Named so the report and the test that pins its budget spend one string.
+  static const attributesUnpublishedKey = 'call_roster.attributes_unpublished';
 
   void _reassertAnnouncement() {
     for (final entry in _wanted.entries) {

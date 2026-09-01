@@ -133,8 +133,16 @@ class CallMedia {
   /// Built here because this object owns the LiveKit room the roster reads, and
   /// presence must come from the same connection the media does. Overridable so
   /// a test can supply a roster without standing up a real connection.
-  CallRoster roster({required String myUserId}) =>
-      CallRoster(room: room, myUserId: myUserId);
+  ///
+  /// [metadataGrant] is passed through rather than read here: it is a fact about
+  /// the TOKEN, which the caller holds and this object only dials with. It
+  /// defaults to unknown so a caller with no token to hand — every test that
+  /// does not care — is not made to state one.
+  CallRoster roster({
+    required String myUserId,
+    MetadataGrant metadataGrant = MetadataGrant.unknown,
+  }) =>
+      CallRoster(room: room, myUserId: myUserId, metadataGrant: metadataGrant);
 
   /// Announced the instant the microphone is publishing, from inside [connect].
   ///

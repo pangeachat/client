@@ -2,9 +2,13 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
+import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
+import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
+import '../sentry_capture_harness.dart';
 
 /// A roster whose SFU read and connection state are supplied by the test.
 ///
@@ -12,7 +16,11 @@ import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 /// makes a join time believable, and the freeze while the connection is down —
 /// is the real implementation.
 class TestRoster extends CallRoster {
-  TestRoster({required super.room, required super.myUserId});
+  TestRoster({
+    required super.room,
+    required super.myUserId,
+    super.metadataGrant,
+  });
 
   Set<String> identities = {};
   bool connected = true;
@@ -99,6 +107,39 @@ class TestRoster extends CallRoster {
 
 /// A believable join stamp for the tests that are not about join times.
 final _defaultJoin = DateTime.utc(2026, 8, 29, 12);
+
+/// Counts the Sentry events a stretch of work produces, without letting any
+/// leave the test.
+///
+/// Distinct from [SentryCaptureHarness], which answers what ONE event carried.
+/// The question here is how MANY, which is the only way to pin a throttle: a
+/// report that fires per failure and a report that fires once are the same
+/// single event when you only look at the first.
+class _EventCount {
+  int events = 0;
+
+  Future<void> init() {
+    events = 0;
+    return Sentry.init((options) {
+      options.dsn = 'https://public@sentry.invalid/1';
+      // OFF, so this counts what the CODE emits rather than what the SDK
+      // happens to swallow. Sentry drops a repeat of the same exception by
+      // default, which quietly made an unthrottled report look throttled: the
+      // first version of this test passed against a call site with no throttle
+      // at all. Deduplication is a small ring buffer keyed on the exception, so
+      // relying on it would be relying on the failure always arriving as the
+      // same object — which across a whole call it does not.
+      options.enableDeduplication = false;
+      options.beforeSend = (event, hint) {
+        events++;
+        // Dropped: nothing should leave the test.
+        return null;
+      };
+    });
+  }
+
+  Future<void> close() => Sentry.close();
+}
 
 void main() {
   const me = '@learner:pangea.localhost';
@@ -926,6 +967,148 @@ void main() {
         {CallRoster.canCaptureAttribute: 'no'},
         {CallRoster.canCaptureAttribute: 'yes'},
       ]);
+    });
+  });
+
+  /// The trigger bug, and the reason it ran unnoticed.
+  ///
+  /// The warning this write already logged named the right cause — a call token
+  /// without CanUpdateOwnMetadata — and named it correctly for the life of the
+  /// feature. [Logs] reaches the in-app log viewer and nothing else, so the
+  /// sentence was only ever read by someone already holding the device. These
+  /// pin that it now reaches somewhere it can be counted.
+  group('reporting a write that never reached the siblings', () {
+    setUp(ErrorHandler.resetReportedOnceKeysForTest);
+    tearDown(ErrorHandler.resetReportedOnceKeysForTest);
+
+    /// Whether the roster's report key is still unspent.
+    ///
+    /// [ErrorHandler.logErrorOnce] spends its key synchronously and answers
+    /// false once spent, which is the seam that observes a fire-and-forget
+    /// report. Sentry is uninitialised here, so nothing leaves the test.
+    Future<bool> keyUnspent() => ErrorHandler.logErrorOnce(
+      key: CallRoster.attributesUnpublishedKey,
+      e: Exception('probe'),
+      data: const {},
+    );
+
+    test('a write that failed is reported', () async {
+      roster.publishError = StateError('Signal request timed out');
+
+      await roster.announceCanCapture(false);
+
+      expect(
+        await keyUnspent(),
+        isFalse,
+        reason: 'the failed write should have spent the report',
+      );
+    });
+
+    test('a write that lands reports nothing', () async {
+      await roster.announceCanCapture(false);
+
+      expect(roster.published, hasLength(1), reason: 'it really did write');
+      expect(await keyUnspent(), isTrue);
+    });
+
+    test('a write with nobody to publish as reports nothing', () async {
+      // The REAL publish against a room with no local participant, which is
+      // what this looks like before the SFU has answered the join. It returns
+      // false rather than throwing: nothing failed, there was simply nobody to
+      // say it to yet, and the next recompute says it.
+      final unconnected = CallRoster(room: room, myUserId: me);
+      addTearDown(unconnected.dispose);
+
+      await unconnected.announceCanCapture(false);
+
+      expect(await keyUnspent(), isTrue);
+    });
+
+    group('how much of it reaches Sentry', () {
+      final counter = _EventCount();
+      setUp(counter.init);
+      tearDown(counter.close);
+
+      test('one event, however many times the write fails', () async {
+        // THE WHOLE RISK OF WIRING THIS UP. Announcing is level-triggered
+        // rather than bounded: every recompute re-asserts an outstanding
+        // intent, so a signal channel that has stopped answering fails again on
+        // every room notification for the length of the call. An event per
+        // failure would be one Sentry issue per participant event, and a team
+        // that gets that learns to ignore Sentry — which is worse than never
+        // having wired it.
+        roster.publishError = StateError('Signal request timed out');
+        await roster.announceCanCapture(false);
+        for (var i = 0; i < 5; i++) {
+          roster.recompute();
+          await pumpEventQueue();
+        }
+
+        expect(
+          roster.published.length,
+          greaterThan(1),
+          reason: 'the re-asserts really did fail again',
+        );
+        expect(counter.events, 1);
+      });
+    });
+
+    group('what the report carries', () {
+      final harness = SentryCaptureHarness();
+      setUp(harness.init);
+      tearDown(harness.close);
+
+      /// The breadcrumb data of the single event a failed write produces.
+      Future<Map<String, dynamic>?> dataOf(TestRoster r) async {
+        r.publishError = StateError('Signal request timed out');
+        final event = await harness.capture(() => r.announceCanCapture(false));
+        return event.breadcrumbs?.last.data;
+      }
+
+      test(
+        'names the token grant, so a refusal is not read as an outage',
+        () async {
+          // The whole point of carrying the grant this far. From in here a
+          // refusal and an SFU that stopped answering are the same thrown error,
+          // and only one of them is a deployment we have to change.
+          final refused = TestRoster(
+            room: room,
+            myUserId: me,
+            metadataGrant: MetadataGrant.absent,
+          );
+          addTearDown(refused.dispose);
+
+          expect((await dataOf(refused))?['tokenGrant'], 'absent');
+        },
+      );
+
+      test('and says so differently when the token DID carry it', () async {
+        final granted = TestRoster(
+          room: room,
+          myUserId: me,
+          metadataGrant: MetadataGrant.granted,
+        );
+        addTearDown(granted.dispose);
+
+        expect((await dataOf(granted))?['tokenGrant'], 'granted');
+      });
+
+      test('names the attributes, and never their values', () async {
+        // A published run names a stretch of a learner's conversation. Sentry
+        // is not where that belongs, so only the keys travel.
+        roster.publishError = StateError('Signal request timed out');
+        final event = await harness.capture(
+          () => roster.announceCapturing('a-distinctive-run-id'),
+        );
+        final data = event.breadcrumbs?.last.data;
+
+        expect(data?['attributes'], [CallRoster.capturingAttribute]);
+        expect(
+          data.toString(),
+          isNot(contains('a-distinctive-run-id')),
+          reason: 'the value written must not travel with the key',
+        );
+      });
     });
   });
 }
