@@ -199,23 +199,91 @@ void main() {
       expect(vocab.single.uses.last.timeStamp, at(31));
     });
 
+    test('clearLocalConstructData with every batch key removes local uses and '
+        'aggregates only', () async {
+      await db.updateServerAnalytics([
+        events.event(usesFor('casa', count: 2, xpEach: 5), ts: at(10)),
+      ], testLang);
+      await db.updateLocalAnalytics(usesFor('perro', count: 2), testLang);
+      final batchKeys = (await db.getLocalUseBatches(testLang)).keys;
+      await db.clearLocalConstructData(testLang, batchKeys: batchKeys);
+
+      expect(await db.getLocalUses(testLang), isEmpty);
+      final vocab = await db.getAggregatedConstructs(
+        ConstructTypeEnum.vocab,
+        testLang,
+      );
+      expect(vocab.map((c) => c.lemma), ['casa']);
+    });
+
     test(
-      'clearLocalConstructData removes local uses and aggregates only',
+      'clearLocalConstructData keeps batches written after the flush snapshot '
+      'and rebuilds their aggregates (#7720)',
       () async {
         await db.updateServerAnalytics([
           events.event(usesFor('casa', count: 2, xpEach: 5), ts: at(10)),
         ], testLang);
         await db.updateLocalAnalytics(usesFor('perro', count: 2), testLang);
-        await db.clearLocalConstructData(testLang);
+        // The batches an in-flight upload would have snapshotted.
+        final sentKeys = (await db.getLocalUseBatches(testLang)).keys.toList();
+        // A batch recorded while that upload is in flight, plus another
+        // language's batch — neither may be touched by the clear.
+        await db.updateLocalAnalytics(
+          usesFor('gato', count: 3, xpEach: 5, startMinute: 30),
+          testLang,
+        );
+        await db.updateLocalAnalytics(usesFor('house', count: 1), 'en');
 
-        expect(await db.getLocalUses(testLang), isEmpty);
+        await db.clearLocalConstructData(testLang, batchKeys: sentKeys);
+
+        final localLemmas = (await db.getLocalUses(
+          testLang,
+        )).map((u) => u.lemma);
+        expect(localLemmas, everyElement('gato'));
+        expect(localLemmas.length, 3);
+
         final vocab = await db.getAggregatedConstructs(
           ConstructTypeEnum.vocab,
           testLang,
         );
-        expect(vocab.map((c) => c.lemma), ['casa']);
+        expect(vocab.map((c) => c.lemma).toSet(), {'casa', 'gato'});
+        expect(vocab.firstWhere((c) => c.lemma == 'gato').points, 15);
+
+        expect((await db.getLocalUses('en')).map((u) => u.lemma), ['house']);
+        expect(
+          (await db.getAggregatedConstructs(
+            ConstructTypeEnum.vocab,
+            'en',
+          )).map((c) => c.lemma),
+          ['house'],
+        );
       },
     );
+
+    test('batches written back-to-back never share a storage key', () async {
+      for (var i = 0; i < 10; i++) {
+        await db.updateLocalAnalytics(usesFor('w$i', count: 1), testLang);
+      }
+      expect(await db.getLocalConstructCount(testLang), 10);
+      expect((await db.getLocalUses(testLang)).length, 10);
+    });
+
+    test('getLocalUseBatches keys each batch to its own uses', () async {
+      await db.updateLocalAnalytics(usesFor('perro', count: 2), testLang);
+      await db.updateLocalAnalytics(
+        usesFor('gato', count: 1, startMinute: 30),
+        testLang,
+      );
+      final batches = await db.getLocalUseBatches(testLang);
+      expect(batches.length, 2);
+      expect(
+        batches.values.map((uses) => uses.map((u) => u.lemma).toSet()).toList(),
+        containsAll([
+          {'perro'},
+          {'gato'},
+        ]),
+      );
+    });
   });
 
   group('getConstructUse(s)', () {
