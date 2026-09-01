@@ -10606,5 +10606,6 @@
     "callTranscriptUnstatedTimes": "一部の発言には時刻が表示されていません。それらを録音したデバイスは時刻の正確性を示さなかったため、会話中の表示順が間違っている可能性があります。",
     "callTranscriptUnreconciledClocks": "これらの発言は、時計を比較できなかった2つのデバイスで録音されたため、時刻は表示されず、表示される順序が間違っている可能性があります。",
     "callTranscriptOpen": "書き起こしを読む",
-    "errorRateLimited": "現在、多くのリクエストを処理しています。しばらく待ってからもう一度お試しください。"
+    "errorRateLimited": "現在、多くのリクエストを処理しています。しばらく待ってからもう一度お試しください。",
+    "noPermissionToInviteUsers": "ここにメンバーを招待する権限がありません。"
 }

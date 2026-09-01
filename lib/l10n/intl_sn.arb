@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Zvimwe zvinyorwa hazviratidzi nguva. Chishandiso chakazvinyora hachina kutaura kuti nguva dzacho dzakanyatsonaka sei, saka nzvimbo yazvo muhurukuro iyi inogona kunge yakakanganisika.",
     "callTranscriptUnreconciledClocks": "Zvinyorwa izvi zvakanyorwa pazvishandiso zviviri zvine mawachi asina kukwanisa kuenzaniswa, saka hapana nguva dzinoratidzwa uye kurongeka kwazvo kunogona kunge kwakakanganisika.",
     "callTranscriptOpen": "Verenga zvinyorwa",
-    "errorRateLimited": "Tiri kurodha zvakawanda izvozvi. Ndapota mirira kwekanguva woedza zvakare."
+    "errorRateLimited": "Tiri kurodha zvakawanda izvozvi. Ndapota mirira kwekanguva woedza zvakare.",
+    "noPermissionToInviteUsers": "Hauna mvumo yekukoka nhengo pano."
 }

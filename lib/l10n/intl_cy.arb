@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Nid yw rhai troeon yn dangos amser. Ni ddywedodd y ddyfais a'u recordiodd pa mor union yw ei hamserau, felly gall y lle maent yn eistedd yn y sgwrs hon fod yn anghywir.",
     "callTranscriptUnreconciledClocks": "Recordiwyd y troeon hyn ar ddwy ddyfais na ellid cymharu eu clociau, felly ni ddangosir unrhyw amserau ac efallai bod y drefn y maent yn ymddangos ynddi yn anghywir.",
     "callTranscriptOpen": "Darllenwch y trawsgrifiad",
-    "errorRateLimited": "Rydym yn llwytho llawer ar hyn o bryd. Arhoswch funud a cheisiwch eto."
+    "errorRateLimited": "Rydym yn llwytho llawer ar hyn o bryd. Arhoswch funud a cheisiwch eto.",
+    "noPermissionToInviteUsers": "Does gennych chi ddim caniatâd i wahodd aelodau yma."
 }

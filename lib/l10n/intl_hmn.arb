@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Qee cov ntu tsis qhia lub sijhawm. Lub cuab yeej uas sau tseg lawv tsis tau hais tias nws lub sijhawm yog npaum li cas, yog li ntawd qhov chaw lawv nyob hauv kev sib tham no tej zaum yuav tsis yog.",
     "callTranscriptUnreconciledClocks": "Cov ntu no tau raug sau tseg ntawm ob lub cuab yeej uas nws lub moos tsis tuaj yeem muab piv, yog li ntawd tsis muaj sijhawm qhia thiab qhov kev txiav txim lawv tshwm sim tej zaum yuav tsis yog.",
     "callTranscriptOpen": "Nyeem cov lus sau tseg",
-    "errorRateLimited": "Tam sim no peb tab tom thauj ntau yam. Thov tos ib pliag mam sim dua."
+    "errorRateLimited": "Tam sim no peb tab tom thauj ntau yam. Thov tos ib pliag mam sim dua.",
+    "noPermissionToInviteUsers": "Koj tsis muaj cai caw lwm tus tuaj koom ntawm no."
 }

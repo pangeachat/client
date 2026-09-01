@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Ang ubang mga turno walay gipakita nga oras. Ang device nga nagrekord niini wala magsulti kung unsa ka tukma ang mga oras niini, mao nga ang ilang posisyon sa kini nga panag-istoryahanay mahimong sayop.",
     "callTranscriptUnreconciledClocks": "Kini nga mga turno narekord sa duha ka device kansang mga orasan dili matandi, mao nga walay mga oras nga gipakita ug ang han-ay sa ilang pagpakita mahimong sayop.",
     "callTranscriptOpen": "Basaha ang transcript",
-    "errorRateLimited": "Daghang ginakarga karon. Palihog paghulat kadiyot ug sulayi pag-usab."
+    "errorRateLimited": "Daghang ginakarga karon. Palihog paghulat kadiyot ug sulayi pag-usab.",
+    "noPermissionToInviteUsers": "Wala kay pagtugot sa pag-imbitar og mga miyembro dinhi."
 }

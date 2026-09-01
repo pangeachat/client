@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Sawetara giliran ora nuduhake wektu. Piranti sing ngrekam ora ngandhani sepira tepat wektune, mula panggonane ing obrolan iki bisa uga salah.",
     "callTranscriptUnreconciledClocks": "Giliran iki direkam ing rong piranti sing jam ora bisa dibandhingake, mula ora ana wektu sing ditampilake lan urutan sing katon bisa uga salah.",
     "callTranscriptOpen": "Waca transkrip",
-    "errorRateLimited": "Saiki akeh sing diunggah. Mangga ngenteni sedhela banjur coba maneh."
+    "errorRateLimited": "Saiki akeh sing diunggah. Mangga ngenteni sedhela banjur coba maneh.",
+    "noPermissionToInviteUsers": "Sampeyan ora duwe idin ngundang anggota ing kene."
 }

@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Sababaraha giliran henteu nunjukkeun waktos. Alat anu ngarékamna henteu nyarios kumaha pastina waktosna, janten tempatna dina paguneman ieu tiasa lepat.",
     "callTranscriptUnreconciledClocks": "Giliran-giliran ieu dirékam dina dua alat anu jamna henteu tiasa dibandingkeun, janten teu aya waktos anu dipidangkeun sareng urutan munculna tiasa lepat.",
     "callTranscriptOpen": "Baca transkripna",
-    "errorRateLimited": "Urang nuju ngamuat seueur ayeuna. Mangga antosan sakedap teras cobian deui."
+    "errorRateLimited": "Urang nuju ngamuat seueur ayeuna. Mangga antosan sakedap teras cobian deui.",
+    "noPermissionToInviteUsers": "Anjeun teu gaduh idin pikeun ngajak anggota ka dieu."
 }

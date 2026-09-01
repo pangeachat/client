@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Baadhi ya zamu hazionyeshi wakati. Kifaa kilichozirekodi hakikusema jinsi nyakati zake zilivyo sahihi, kwa hivyo mahali zinapokaa katika mazungumzo haya kunaweza kuwa si sahihi.",
     "callTranscriptUnreconciledClocks": "Zamu hizi zilirekodiwa kwenye vifaa viwili ambavyo saa zake hazikuweza kulinganishwa, kwa hivyo hakuna nyakati zinazoonyeshwa na mpangilio zinaoonekana unaweza kuwa si sahihi.",
     "callTranscriptOpen": "Soma nakala",
-    "errorRateLimited": "Tunapakia mengi kwa sasa. Tafadhali subiri kidogo kisha ujaribu tena."
+    "errorRateLimited": "Tunapakia mengi kwa sasa. Tafadhali subiri kidogo kisha ujaribu tena.",
+    "noPermissionToInviteUsers": "Huna ruhusa ya kualika wanachama hapa."
 }

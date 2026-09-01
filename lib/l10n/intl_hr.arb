@@ -10273,5 +10273,6 @@
     "callTranscriptUnstatedTimes": "Neki redci ne prikazuju vrijeme. Uređaj koji ih je snimio nije naveo koliko su točna njegova vremena, pa mjesto gdje se nalaze u ovom razgovoru može biti pogrešno.",
     "callTranscriptUnreconciledClocks": "Ovi su redci snimljeni na dva uređaja čiji se satovi nisu mogli usporediti, pa se ne prikazuju vremena i redoslijed kojim se pojavljuju može biti pogrešan.",
     "callTranscriptOpen": "Pročitaj transkript",
-    "errorRateLimited": "Trenutno je veliko opterećenje. Pričekajte trenutak i pokušajte ponovno."
+    "errorRateLimited": "Trenutno je veliko opterećenje. Pričekajte trenutak i pokušajte ponovno.",
+    "noPermissionToInviteUsers": "Nemate dopuštenje za pozivanje članova ovdje."
 }

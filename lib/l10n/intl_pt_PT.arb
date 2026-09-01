@@ -10754,5 +10754,6 @@
     "callTranscriptUnstatedTimes": "Algumas intervenções não mostram a hora. O dispositivo que as gravou não disse quão exatas são as suas horas, por isso a sua posição nesta conversa pode estar errada.",
     "callTranscriptUnreconciledClocks": "Estas intervenções foram gravadas em dois dispositivos cujos relógios não puderam ser comparados, por isso não são mostradas horas e a ordem em que aparecem pode estar errada.",
     "callTranscriptOpen": "Ler a transcrição",
-    "errorRateLimited": "Estamos a carregar muito neste momento. Por favor, aguarde um momento e tente novamente."
+    "errorRateLimited": "Estamos a carregar muito neste momento. Por favor, aguarde um momento e tente novamente.",
+    "noPermissionToInviteUsers": "Não tem permissão para convidar membros aqui."
 }

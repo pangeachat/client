@@ -10192,5 +10192,6 @@
     "callTranscriptUnstatedTimes": "Certains tours n'affichent pas d'heure. L'appareil qui les a enregistrés n'a pas précisé l'exactitude de ses heures, donc leur position dans cette conversation peut être erronée.",
     "callTranscriptUnreconciledClocks": "Ces tours ont été enregistrés sur deux appareils dont les horloges n'ont pas pu être comparées, donc aucune heure n'est affichée et l'ordre dans lequel ils apparaissent peut être erroné.",
     "callTranscriptOpen": "Lire la transcription",
-    "errorRateLimited": "Nous avons beaucoup de demandes en ce moment. Veuillez patienter un instant et réessayer."
+    "errorRateLimited": "Nous avons beaucoup de demandes en ce moment. Veuillez patienter un instant et réessayer.",
+    "noPermissionToInviteUsers": "Vous n'avez pas la permission d'inviter des membres ici."
 }

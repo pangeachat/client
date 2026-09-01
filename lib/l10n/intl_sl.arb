@@ -10782,5 +10782,6 @@
     "callTranscriptUnstatedTimes": "Nekateri govori ne prikazujejo časa. Naprava, ki jih je posnela, ni navedla, kako natančni so njeni časi, zato je lahko njihov položaj v tem pogovoru napačen.",
     "callTranscriptUnreconciledClocks": "Ti govori so bili posneti na dveh napravah, katerih ur ni bilo mogoče primerjati, zato časi niso prikazani in vrstni red, v katerem se pojavijo, je lahko napačen.",
     "callTranscriptOpen": "Preberite prepis",
-    "errorRateLimited": "Trenutno nalagamo veliko vsebine. Prosimo, počakajte trenutek in poskusite znova."
+    "errorRateLimited": "Trenutno nalagamo veliko vsebine. Prosimo, počakajte trenutek in poskusite znova.",
+    "noPermissionToInviteUsers": "Nimate dovoljenja za povabilo članov sem."
 }

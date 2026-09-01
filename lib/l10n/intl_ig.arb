@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Ụfọdụ ntụgharị egosighị oge. Ngwaọrụ dekọrọ ha ekwughị otú oge ya si dị n'eziokwu, ya mere, ebe ha nọ na mkparịta ụka a nwere ike ịdị njọ.",
     "callTranscriptUnreconciledClocks": "Edekọrọ ntụgharị ndị a na ngwaọrụ abụọ nke enweghị ike iji elekere ha tụnyere, ya mere, egosighị oge ọ bụla ma usoro ha pụtara n'ime ya nwere ike ịdị njọ.",
     "callTranscriptOpen": "Gụọ adekọ ahụ",
-    "errorRateLimited": "Anyị na-ebu ọtụtụ ihe ugbu a. Biko chere obere oge wee nwaa ọzọ."
+    "errorRateLimited": "Anyị na-ebu ọtụtụ ihe ugbu a. Biko chere obere oge wee nwaa ọzọ.",
+    "noPermissionToInviteUsers": "Ị nweghị ikike ịkpọ ndị otu ebe a."
 }

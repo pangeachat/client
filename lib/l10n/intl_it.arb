@@ -9910,5 +9910,6 @@
     "callTranscriptUnstatedTimes": "Alcuni turni non mostrano l'ora. Il dispositivo che li ha registrati non ha specificato l'esattezza dei suoi orari, quindi la loro posizione in questa conversazione potrebbe essere errata.",
     "callTranscriptUnreconciledClocks": "Questi turni sono stati registrati su due dispositivi i cui orologi non potevano essere confrontati, quindi non vengono mostrati orari e l'ordine in cui appaiono potrebbe essere errato.",
     "callTranscriptOpen": "Leggi la trascrizione",
-    "errorRateLimited": "Stiamo caricando molti dati in questo momento. Attendi un momento e riprova."
+    "errorRateLimited": "Stiamo caricando molti dati in questo momento. Attendi un momento e riprova.",
+    "noPermissionToInviteUsers": "Non hai il permesso di invitare membri qui."
 }

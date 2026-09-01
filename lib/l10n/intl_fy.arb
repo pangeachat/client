@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Guon beurten litte gjin tiid sjen. It apparaat dat se opnaam, sei net hoe presys de tiden binne, dus wêr't se yn dit petear sitte, kin ferkeard wêze.",
     "callTranscriptUnreconciledClocks": "Dizze beurten waarden opnommen op twa apparaten wêrfan de klokken net fergelike wurde koene, dus der wurde gjin tiden werjûn en de folchoarder wêryn't se ferskine kin ferkeard wêze.",
     "callTranscriptOpen": "Lês de útprint",
-    "errorRateLimited": "Wy lade op it stuit in protte. Wachtsje asjebleft efkes en besykje it opnij."
+    "errorRateLimited": "Wy lade op it stuit in protte. Wachtsje asjebleft efkes en besykje it opnij.",
+    "noPermissionToInviteUsers": "Jo hawwe hjir gjin tastimming om leden út te noegjen."
 }

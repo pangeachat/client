@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Dinako tse ding ha di bontshe nako. Sesebediswa se ileng sa di rekota ha se a ka sa bolela hore dinako tsa sona di nepahetse hakae, kahoo moo di leng teng puisanong ena ho ka nna ha fosa.",
     "callTranscriptUnreconciledClocks": "Dinako tsena di ile tsa rekotwa ka disebediswa tse pedi tseo diwache tsa tsona di sa kang tsa bapisoa, kahoo ha ho dinako tse bontshwang mme tatellano eo di hlahang ka yona e ka nna ya fosa.",
     "callTranscriptOpen": "Bala puisano e ngotsweng",
-    "errorRateLimited": "Re ntse re laolla haholo hona joale. Ka kopo, ema hanyane ebe o leka hape."
+    "errorRateLimited": "Re ntse re laolla haholo hona joale. Ka kopo, ema hanyane ebe o leka hape.",
+    "noPermissionToInviteUsers": "Ha o na tumello ya ho mema ditho mona."
 }

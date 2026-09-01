@@ -7129,5 +7129,6 @@
     "callTranscriptUnstatedTimes": "Một số lượt không hiển thị thời gian. Thiết bị đã ghi lại chúng không cho biết thời gian của nó chính xác đến mức nào, vì vậy vị trí của chúng trong cuộc trò chuyện này có thể sai.",
     "callTranscriptUnreconciledClocks": "Những lượt này được ghi lại trên hai thiết bị mà đồng hồ của chúng không thể so sánh được, vì vậy không có thời gian nào được hiển thị và thứ tự chúng xuất hiện có thể sai.",
     "callTranscriptOpen": "Đọc bản ghi",
-    "errorRateLimited": "Chúng tôi đang tải rất nhiều dữ liệu. Vui lòng đợi một lát và thử lại."
+    "errorRateLimited": "Chúng tôi đang tải rất nhiều dữ liệu. Vui lòng đợi một lát và thử lại.",
+    "noPermissionToInviteUsers": "Bạn không có quyền mời thành viên tại đây."
 }

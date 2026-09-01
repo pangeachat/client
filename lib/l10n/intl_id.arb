@@ -9910,5 +9910,6 @@
     "callTranscriptUnstatedTimes": "Beberapa giliran tidak menunjukkan waktu. Perangkat yang merekamnya tidak mengatakan seberapa tepat waktunya, jadi posisi mereka dalam percakapan ini mungkin salah.",
     "callTranscriptUnreconciledClocks": "Giliran ini direkam pada dua perangkat yang jamnya tidak dapat dibandingkan, jadi tidak ada waktu yang ditampilkan dan urutan kemunculannya mungkin salah.",
     "callTranscriptOpen": "Baca transkrip",
-    "errorRateLimited": "Kami sedang memuat banyak data sekarang. Mohon tunggu sebentar dan coba lagi."
+    "errorRateLimited": "Kami sedang memuat banyak data sekarang. Mohon tunggu sebentar dan coba lagi.",
+    "noPermissionToInviteUsers": "Anda tidak memiliki izin untuk mengundang anggota di sini."
 }

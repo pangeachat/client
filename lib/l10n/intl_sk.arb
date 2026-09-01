@@ -10782,5 +10782,6 @@
     "callTranscriptUnstatedTimes": "Niektoré prejavy neukazujú čas. Zariadenie, ktoré ich zaznamenalo, neuviedlo, aké presné sú jeho časy, takže ich umiestnenie v tejto konverzácii môže byť nesprávne.",
     "callTranscriptUnreconciledClocks": "Tieto prejavy boli zaznamenané na dvoch zariadeniach, ktorých hodiny sa nedali porovnať, takže nie sú zobrazené žiadne časy a poradie, v akom sa zobrazujú, môže byť nesprávne.",
     "callTranscriptOpen": "Prečítať prepis",
-    "errorRateLimited": "Práve teraz toho veľa načítavame. Skúste to znova o chvíľu."
+    "errorRateLimited": "Práve teraz toho veľa načítavame. Skúste to znova o chvíľu.",
+    "noPermissionToInviteUsers": "Nemáte povolenie pozývať sem členov."
 }

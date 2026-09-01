@@ -10782,5 +10782,6 @@
     "callTranscriptUnstatedTimes": "Iuj vicoj ne montras tempon. La aparato, kiu registris ilin, ne diris kiom precizaj estas ĝiaj tempoj, do kie ili sidas en ĉi tiu konversacio eble estas malĝusta.",
     "callTranscriptUnreconciledClocks": "Ĉi tiuj vicoj estis registritaj per du aparatoj, kies horloĝoj ne povis esti komparitaj, do neniuj tempoj estas montritaj kaj la ordo en kiu ili aperas eble estas malĝusta.",
     "callTranscriptOpen": "Legu la transskribon",
-    "errorRateLimited": "Ni ŝarĝas multe nun. Bonvolu atendi momenton kaj reprovi."
+    "errorRateLimited": "Ni ŝarĝas multe nun. Bonvolu atendi momenton kaj reprovi.",
+    "noPermissionToInviteUsers": "Vi ne rajtas inviti membrojn ĉi tien."
 }

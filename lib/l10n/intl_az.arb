@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Bəzi növbələrdə vaxt göstərilmir. Onları qeyd edən cihaz vaxtlarının nə qədər dəqiq olduğunu bildirmədi, buna görə də bu söhbətdəki yerləri səhv ola bilər.",
     "callTranscriptUnreconciledClocks": "Bu növbələr saatları müqayisə edilə bilməyən iki cihazda qeydə alınıb, buna görə də vaxtlar göstərilmir və onların görünmə ardıcıllığı səhv ola bilər.",
     "callTranscriptOpen": "Transkripti oxuyun",
-    "errorRateLimited": "Hazırda çoxlu məlumat yükləyirik. Zəhmət olmasa bir az gözləyin və yenidən cəhd edin."
+    "errorRateLimited": "Hazırda çoxlu məlumat yükləyirik. Zəhmət olmasa bir az gözləyin və yenidən cəhd edin.",
+    "noPermissionToInviteUsers": "Bura üzv dəvət etmək icazəniz yoxdur."
 }

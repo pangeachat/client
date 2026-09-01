@@ -10469,5 +10469,6 @@
     "callTranscriptUnstatedTimes": "Ní thaispeánann roinnt casanna aon am. Níor dúirt an gléas a thaifead iad cé chomh cruinn agus atá a chuid ama, mar sin d'fhéadfadh an áit a bhfuil siad sa chomhrá seo a bheith mícheart.",
     "callTranscriptUnreconciledClocks": "Taifeadadh na casanna seo ar dhá ghléas nach bhféadfaí a gcuid cloig a chur i gcomparáid, mar sin ní thaispeántar aon amanna agus d'fhéadfadh an t-ord ina bhfuil siad le feiceáil a bheith mícheart.",
     "callTranscriptOpen": "Léigh an tras-scríbhinn",
-    "errorRateLimited": "Táimid ag luchtú go leor faoi láthair. Fan nóiméad le do thoil agus bain triail eile as."
+    "errorRateLimited": "Táimid ag luchtú go leor faoi láthair. Fan nóiméad le do thoil agus bain triail eile as.",
+    "noPermissionToInviteUsers": "Cha bhfuil cead agat baill a thabhairt isteach anseo."
 }

@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Sommige beurte wys geen tyd nie. Die toestel wat dit opgeneem het, het nie gesê hoe akkuraat sy tye is nie, so waar dit in hierdie gesprek sit, mag verkeerd wees.",
     "callTranscriptUnreconciledClocks": "Hierdie beurte is op twee toestelle opgeneem waarvan die horlosies nie vergelyk kon word nie, so geen tye word gewys nie en die volgorde waarin dit verskyn, mag verkeerd wees.",
     "callTranscriptOpen": "Lees die transkripsie",
-    "errorRateLimited": "Ons laai tans baie. Wag asseblief 'n oomblik en probeer weer."
+    "errorRateLimited": "Ons laai tans baie. Wag asseblief 'n oomblik en probeer weer.",
+    "noPermissionToInviteUsers": "Jy het nie toestemming om lede hierheen te nooi nie."
 }

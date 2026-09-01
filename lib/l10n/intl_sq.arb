@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Disa radhë nuk tregojnë kohë. Pajisja që i regjistroi nuk tha sa të sakta janë kohët e saj, kështu që vendi ku ato ndodhen në këtë bisedë mund të jetë i gabuar.",
     "callTranscriptUnreconciledClocks": "Këto radhë u regjistruan në dy pajisje, orët e të cilave nuk mund të krahasoheshin, kështu që nuk shfaqen kohë dhe rendi në të cilin shfaqen mund të jetë i gabuar.",
     "callTranscriptOpen": "Lexo transkriptin",
-    "errorRateLimited": "Po ngarkojmë shumë tani. Ju lutemi prisni një moment dhe provoni përsëri."
+    "errorRateLimited": "Po ngarkojmë shumë tani. Ju lutemi prisni një moment dhe provoni përsëri.",
+    "noPermissionToInviteUsers": "Nuk keni leje të ftoni anëtarë këtu."
 }

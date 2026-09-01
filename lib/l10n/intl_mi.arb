@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Kāore ētahi wāhanga e whakaatu ana i te wā. Kāore te pūrere i hopu i aua wāhanga i kī he pēhea te tika o ōna wā, nō reira tērā pea i hē te wāhi e noho ana i roto i tēnei kōrerorero.",
     "callTranscriptUnreconciledClocks": "I hopukina ēnei wāhanga ki runga i ngā pūrere e rua kāore i taea te whakataurite i ō rāua karaka, nō reira kāore he wā e whakaatuhia ana, ā, tērā pea i hē te raupapa o te putanga mai.",
     "callTranscriptOpen": "Pānuitia te tuhinga",
-    "errorRateLimited": "He nui ngā utanga i tēnei wā. Tēnā, tatari mai, ka ngana anō."
+    "errorRateLimited": "He nui ngā utanga i tēnei wā. Tēnā, tatari mai, ka ngana anō.",
+    "noPermissionToInviteUsers": "Kāore ō whakaaetanga ki te tono mema ki konei."
 }

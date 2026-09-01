@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Verschidden Äntwerte weisen keng Zäit. Den Apparat, deen se opgeholl huet, huet net gesot wéi genee seng Zäite sinn, sou datt hir Positioun an dësem Gespréich falsch ka sinn.",
     "callTranscriptUnreconciledClocks": "Dës Äntwerte goufen op zwee Apparater opgeholl, deenen hir Aueren net verglach konnte ginn, sou datt keng Zäiten ugewisen ginn an d'Reiefolleg an där se optrieden, falsch ka sinn.",
     "callTranscriptOpen": "Transkript liesen",
-    "errorRateLimited": "Mir lueden am Moment vill. Waart w.e.g. ee Moment a probéier et nach eng Kéier."
+    "errorRateLimited": "Mir lueden am Moment vill. Waart w.e.g. ee Moment a probéier et nach eng Kéier.",
+    "noPermissionToInviteUsers": "Dir hutt keng Erlaabnis fir Memberen hei z'invitéieren."
 }
