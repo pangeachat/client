@@ -10,6 +10,20 @@ import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/sfu_join_stamp.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
+/// The SFU's stamp for a join and this device's clock at the moment it arrived.
+///
+/// Named fields rather than positions, because the two halves are a server
+/// clock and a device clock and the anchor is their DIFFERENCE — passing them
+/// the wrong way round would report the offset negated, which doubles the skew
+/// instead of removing it. All three are read from one join response, so
+/// [sfuMs] can be checked against [sfuSecondsMs] without a second source and
+/// [deviceMs] needs no argument about what instant it belongs to.
+///
+/// [sfuSecondsMs] is proto field 6 scaled the way `Participant.joinedAt` scales
+/// it; [sfuMs] is field 17, the same instant to the millisecond, and zero when
+/// the server did not send it.
+typedef SfuJoinReading = ({int sfuSecondsMs, int sfuMs, int deviceMs});
+
 /// This device's media for one call.
 ///
 /// The Matrix session says a call exists and who is in it; this connects the
@@ -230,27 +244,40 @@ class CallMedia {
     // BEFORE the connect, and that ordering is the whole of it. The join
     // response is delivered and consumed inside `Room.connect`, and nothing
     // keeps it afterwards, so a subscription opened once this returns has
-    // already missed the only frame carrying the millisecond stamp. Attaching
-    // here also means a reconnect's fresh join response is still seen.
+    // already missed the only frame the readings arrive in. Attaching here also
+    // means a reconnect's fresh join response is still seen.
     //
-    // Missing it is not a failure. [anchorClocksTo] falls back to the
-    // second-resolution reading, which is what this correction ran on before
-    // the stamp existed.
-    _stopJoinStampWatch ??= watchSfuJoinStamp(
-      room,
-      (ms) => _sfuJoinedAtMs ??= ms,
-    );
+    // Missing it is not a failure. [anchorClocksTo] falls back to reading the
+    // participant and this device's clock after the connect, which is what this
+    // correction did before the join response was watched at all.
+    _stopJoinStampWatch ??= watchSfuJoinStamp(room, (stamps) {
+      // THIS is where the device clock is read, and the reason the watch
+      // exists at all rather than just a finer number. An anchor is a PAIR and
+      // only its DIFFERENCE means anything, so the device half has to be read
+      // at the moment the server half describes. Read after the connect
+      // instead, it also carries however long the connect took on this
+      // device -- ICE, DTLS and negotiation, which vary between two phones by
+      // far more than the second of resolution the fine stamp removes. Here
+      // the two are one network leg apart by construction.
+      _seenAtJoin ??= (
+        sfuSecondsMs: stamps.secondsMs,
+        sfuMs: stamps.ms,
+        deviceMs: now().millisecondsSinceEpoch,
+      );
+    });
     return room.connect(url, jwt);
   }
 
-  /// The SFU's millisecond stamp for this device's join, once the join response
-  /// has carried one, or null while it has not.
+  /// What the SFU said and what this device's clock said, read together.
   ///
-  /// Latched on the FIRST reading for the same reason the anchor itself is: a
-  /// reconnect restamps the join, and pairing a later server stamp with the
-  /// device clock this half's positions are already based on would measure the
-  /// gap between the two joins rather than the disagreement between the clocks.
-  int? _sfuJoinedAtMs;
+  /// All three come out of the SAME join response, so the fine stamp can be
+  /// checked against the coarse one without reaching for a second source, and
+  /// the device reading needs no argument about what it is contemporaneous
+  /// with. Latched on the FIRST join response: a reconnect restamps the join,
+  /// and the offset is a property of the CLOCKS rather than of any one join, so
+  /// the earliest self-consistent pair is as good a measurement as a later one
+  /// and does not risk being spliced onto readings from the other.
+  SfuJoinReading? _seenAtJoin;
   CancelListenFunc? _stopJoinStampWatch;
 
   // A note on a publish that fails, for both of these. Read off the pinned
@@ -357,12 +384,12 @@ class CallMedia {
   /// captured, and the later mute and camera calls that also come through here
   /// find the latch already taken.
   LocalParticipant _anchored(LocalParticipant participant) {
-    // Stamped by the SFU, so both devices in the call read the SAME clock
-    // here. `joinedAt` is whole SECONDS -- livekit_client reads proto field 6
-    // and multiplies by a thousand -- so on its own it quantises the offset to
-    // a second. [_sfuJoinedAtMs] is the SAME instant to the millisecond when
-    // the server sent field 17 beside it; when it did not, the seconds reading
-    // is what this has always used and still uses.
+    // The FALLBACK reading, and only that. When the join response was seen,
+    // [_seenAtJoin] already holds a better pair and this participant is not
+    // consulted for the anchor at all. `joinedAt` is whole SECONDS --
+    // livekit_client reads proto field 6 and multiplies by a thousand -- and by
+    // the time this runs the connect has finished, so the device clock read
+    // beside it is minutes-of-skew accurate and no better.
     //
     // `joinedAt` falls back to this device's own clock when the participant
     // carries no server info, which would read as two clocks in perfect
@@ -370,39 +397,49 @@ class CallMedia {
     // local participant through `createFromInfo`, which sets that info before
     // the object exists. Named because it is an upstream property this
     // correction leans on, not one this code can enforce.
-    anchorClocksTo(participant.joinedAt, sfuJoinedAtMs: _sfuJoinedAtMs);
+    anchorClocksTo(participant.joinedAt, seenAtJoin: _seenAtJoin);
     return participant;
   }
 
-  /// Takes both clock readings, once, against the SFU's stamp for this join.
+  /// Takes both clock readings, once, for this join.
   ///
-  /// The device's own clock is read INSIDE this method rather than handed to
-  /// it, so the two CLOCKS cannot be passed the wrong way round at the call
-  /// site — a swap there would report the offset negated, which doubles the
-  /// skew instead of removing it. [sfuJoinedAtMs] does not weaken that: it is
-  /// another reading of the SAME server stamp, never of this device, so no
-  /// argument here can carry a device clock. It also puts the whole rule under
-  /// test: a LiveKit connection cannot be stood up in a unit test, so anything
-  /// left inside [_anchored] is only reachable from a real call, and what is
-  /// left there now is one expression.
+  /// TWO WAYS TO GET A PAIR, and the whole method is choosing between them.
+  /// [seenAtJoin] is the good one: three readings out of a single join
+  /// response, so the server's instant and this device's are one network leg
+  /// apart and the fine stamp can be checked against the coarse one from the
+  /// same frame. The fallback pairs the participant's stamp with this device's
+  /// clock read HERE — after the connect has finished — and that gap is real:
+  /// it swallows ICE, DTLS and negotiation, which differ between two phones by
+  /// far more than a second. It is kept because it is the only reading left
+  /// when no join response was seen, and a coarse anchor beats none.
   ///
-  /// KNOWN LIMIT: the device clock is read HERE, at join, while every position
-  /// this half carries is stamped from a base the capture service reads at the
-  /// FIRST AUDIO of the call. Both are the same clock, so the offset applies —
-  /// unless that clock is corrected in between, in which case the offset
-  /// describes the clock the positions are not on. Seconds apart in practice,
-  /// and the alternative is worse: `joinedAt` is fixed at join, so pairing it
-  /// with a later device reading would measure the call's own length instead.
+  /// Nothing here can carry a device clock into the SFU half or the reverse.
+  /// The fallback reads this device inside the method, and [seenAtJoin]'s
+  /// halves are named fields on one value rather than positions — a swap there
+  /// would report the offset negated, which doubles the skew instead of
+  /// removing it. It also puts the whole rule under test: a LiveKit connection
+  /// cannot be stood up in a unit test, so anything left inside [_anchored] is
+  /// only reachable from a real call, and what is left there now is one
+  /// expression.
+  ///
+  /// KNOWN LIMIT: the device clock is read at JOIN either way, while every
+  /// position this half carries is stamped from a base the capture service
+  /// reads at the FIRST AUDIO of the call. Both are the same clock, so the
+  /// offset applies — unless that clock is corrected in between, in which case
+  /// the offset describes the clock the positions are not on. Seconds apart in
+  /// practice, and the alternative is worse: the SFU stamp is fixed at join, so
+  /// pairing it with a later device reading would measure the call's own length.
   @visibleForTesting
-  void anchorClocksTo(DateTime sfuJoinedAt, {int? sfuJoinedAtMs}) {
-    _clockAnchor ??= ClockAnchor.of(
-      sfuMs: _sfuReading(sfuJoinedAt.millisecondsSinceEpoch, sfuJoinedAtMs),
-      // The same wall clock every position in this half is stamped from, read
-      // as close to the SFU's own instant as this device can observe it. What
-      // separates them is the join response's flight time -- tens of
-      // milliseconds.
-      deviceMs: now().millisecondsSinceEpoch,
-    );
+  void anchorClocksTo(DateTime sfuJoinedAt, {SfuJoinReading? seenAtJoin}) {
+    _clockAnchor ??= seenAtJoin != null
+        ? ClockAnchor.of(
+            sfuMs: _sfuReading(seenAtJoin.sfuSecondsMs, seenAtJoin.sfuMs),
+            deviceMs: seenAtJoin.deviceMs,
+          )
+        : ClockAnchor.of(
+            sfuMs: sfuJoinedAt.millisecondsSinceEpoch,
+            deviceMs: now().millisecondsSinceEpoch,
+          );
   }
 
   /// The SFU reading to anchor on: [ms] when it is the same join [seconds]
@@ -420,12 +457,12 @@ class CallMedia {
   /// refuses it, and a millisecond field arriving beside it must not turn that
   /// refusal into an answer however well-formed it looks on its own.
   ///
-  /// Same join, or no deal. `joined_at` is `joined_at_ms` truncated to the
-  /// second, so a stamp for the same join sits at most 999ms past the second
-  /// the other one reports. Anything outside that window is a reading of some
-  /// OTHER moment — a later join after a reconnect is the way that happens —
-  /// and correcting a half by it would move that speaker onto a clock nothing
-  /// was measured against.
+  /// The two must agree. `joined_at` is `joined_at_ms` truncated to the second,
+  /// so a server that set both puts the fine one at most 999ms past the second
+  /// the coarse one reports. Both come out of the same frame, so anything
+  /// outside that window is a server contradicting itself, and correcting a
+  /// half by it would move that speaker onto a clock nothing was measured
+  /// against.
   ///
   /// That window is also what refuses a zero, which is the case that matters
   /// most in practice: proto3 leaves default values off the wire, so a server

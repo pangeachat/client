@@ -127,16 +127,28 @@ bool suppressionExplainsEmptiness(
 /// Both readings travel rather than the difference alone. The pair is what a
 /// bug report can be read back from, and it costs one integer.
 ///
-/// RESOLUTION IS NOT GUARANTEED, and a reader of a merged transcript should
-/// know which they are looking at. The SFU sends the join stamp twice: proto
-/// field 6, `joined_at`, in whole SECONDS, which is all livekit_client's
-/// `Participant.joinedAt` exposes; and proto field 17, `joined_at_ms`, the same
-/// instant in MILLISECONDS. `CallMedia` prefers the millisecond one and falls
-/// back to the second one, so an offset is good to a millisecond when the SFU
-/// sent field 17 and to a second when it did not. livekit-server has only sent
-/// it since v1.8.4, and either half of a call may have been written against an
-/// older one. At second resolution the correction still removes minutes of
-/// skew, and still will not separate two turns spoken less than a second apart.
+/// WHAT THE OFFSET IS ACTUALLY GOOD TO, which is NOT the resolution of either
+/// reading. Both halves are read as one observation of the join response, so
+/// what separates them is the SFU's own send delay plus one network leg to this
+/// device — tens of milliseconds on an ordinary connection. That flight time
+/// lands entirely in the offset, and it lands one way: the device reading is
+/// always the later of the two. Two halves therefore disagree by roughly the
+/// DIFFERENCE of their two one-way latencies to the SFU, not by their sum, and
+/// not by anything either device's connect took.
+///
+/// Resolution sits under that error rather than over it. The SFU sends the
+/// stamp twice: proto field 6, `joined_at`, in whole SECONDS, which is all
+/// livekit_client's `Participant.joinedAt` exposes, and proto field 17,
+/// `joined_at_ms`, the same instant in MILLISECONDS. `CallMedia` prefers the
+/// fine one and falls back to the coarse one, so resolution costs nothing when
+/// the SFU sent field 17 and up to a second when it did not. livekit-server has
+/// only sent it since v1.8.4, and either half of a call may have been written
+/// against an older one.
+///
+/// So: sub-second placement on a network worth the name, a second when one side
+/// ran an older SFU, and in both cases the minutes of raw clock skew are gone.
+/// Two turns spoken within one device's latency of each other are not ordered
+/// by this and were never going to be.
 class ClockAnchor {
   /// The SFU's clock at the moment this device joined the call.
   final int sfuMs;

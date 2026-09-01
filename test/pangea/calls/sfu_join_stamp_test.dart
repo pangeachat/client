@@ -38,39 +38,45 @@ List<int> _joinResponseBytes({int? joinedAtSeconds, int? joinedAtMs}) {
   return [0x12, ..._varint(participant.length), ...participant];
 }
 
-int _stampFrom(List<int> joinResponse) =>
-    sfuJoinStampMsOf(JoinResponse.fromBuffer(joinResponse));
+({int secondsMs, int ms}) _stampsFrom(List<int> joinResponse) =>
+    sfuJoinStampsOf(JoinResponse.fromBuffer(joinResponse));
 
 void main() {
   group('the SFU join stamp read past the livekit_client API', () {
-    test('reads the MILLISECOND field, not the second one', () {
-      // The whole point of the deep import. `Participant.joinedAt` answers
-      // 1787994000000 for this frame — the second, times a thousand — and the
-      // 437ms it drops is everything this change buys.
+    test('reads BOTH stamps, and does not confuse them', () {
+      // The whole point of the deep import is the 437ms. `secondsMs` has to be
+      // the coarse field scaled the way `Participant.joinedAt` scales it, so
+      // the caller can check one against the other without a second source —
+      // reading field 6 where field 17 was meant would compile and produce a
+      // number that looks perfectly reasonable.
       expect(
-        _stampFrom(
+        _stampsFrom(
           _joinResponseBytes(
             joinedAtSeconds: 1787994000,
             joinedAtMs: 1787994000437,
           ),
         ),
-        1787994000437,
+        (secondsMs: 1787994000000, ms: 1787994000437),
       );
     });
 
-    test('is zero when the server sent no millisecond field', () {
+    test('the fine stamp is zero when the server sent no such field', () {
       // An SFU older than livekit-server v1.8.4. Proto3 leaves defaults off the
       // wire, so absent arrives as zero, and this passes that on rather than
       // judging it — what to do about it is decided in one place, in
-      // `CallMedia.anchorClocksTo`.
-      expect(_stampFrom(_joinResponseBytes(joinedAtSeconds: 1787994000)), 0);
+      // `CallMedia.anchorClocksTo`. The coarse stamp is unaffected, which is
+      // what lets an older server still get the paired device reading.
+      expect(_stampsFrom(_joinResponseBytes(joinedAtSeconds: 1787994000)), (
+        secondsMs: 1787994000000,
+        ms: 0,
+      ));
     });
 
-    test('a frame with no participant at all is zero, not a throw', () {
+    test('a frame with no participant at all is zeros, not a throw', () {
       // This runs inside `Room.connect`, on a frame nothing has validated. An
       // exception here would come back out of the connect and fail a call whose
       // audio was about to work perfectly well.
-      expect(_stampFrom(const []), 0);
+      expect(_stampsFrom(const []), (secondsMs: 0, ms: 0));
     });
   });
 }

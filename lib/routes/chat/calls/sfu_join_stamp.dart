@@ -39,12 +39,19 @@ import 'package:livekit_client/src/proto/livekit_rtc.pb.dart';
 /// `Participant`, or the `ParticipantInfo` behind it — delete this file and
 /// read it off the participant in `CallMedia`. Nothing else imports it.
 ///
-/// [onStamp] is handed the value the SERVER sent, not a value this function
-/// has judged. Zero is the ordinary reading for a server that never set the
-/// field: proto3 does not put default values on the wire, so "absent" and
-/// "zero" arrive identically and neither is a time. Deciding what to do about
-/// that is the caller's, and it is decided in one place — see
+/// [onStamp] is handed the values the SERVER sent, not values this function has
+/// judged. Zero is the ordinary reading for a server that never set the
+/// millisecond field: proto3 does not put default values on the wire, so
+/// "absent" and "zero" arrive identically and neither is a time. Deciding what
+/// to do about that is the caller's, and it is decided in one place — see
 /// `CallMedia.anchorClocksTo`.
+///
+/// The caller should read its OWN clock inside [onStamp] rather than later. The
+/// anchor is a PAIR, and it is the difference between the two halves that moves
+/// a speaker's turns, so a device reading taken at some other moment folds
+/// whatever happened in between into the offset. Here the two are contemporaneous
+/// by construction: this fires as the frame is parsed off the socket, one network
+/// leg after the SFU stamped it.
 ///
 /// Fires again on a full reconnect, which sends a fresh join response. The
 /// caller latches the first reading it can use; this makes no attempt to
@@ -53,26 +60,35 @@ import 'package:livekit_client/src/proto/livekit_rtc.pb.dart';
 /// Returns the canceller for the subscription. Cancelling is tidiness rather
 /// than a leak fix — the subscription belongs to the room's own signal emitter
 /// and dies when the room is disposed.
-CancelListenFunc watchSfuJoinStamp(Room room, void Function(int) onStamp) =>
-    room.engine.signalClient.events.on<SignalJoinResponseEvent>(
-      (event) => onStamp(sfuJoinStampMsOf(event.response)),
-    );
+CancelListenFunc watchSfuJoinStamp(
+  Room room,
+  void Function(({int secondsMs, int ms})) onStamp,
+) => room.engine.signalClient.events.on<SignalJoinResponseEvent>(
+  (event) => onStamp(sfuJoinStampsOf(event.response)),
+);
 
-/// The millisecond join stamp inside one join response.
+/// BOTH join stamps inside one join response, in milliseconds.
 ///
-/// Split out from the subscription above because this half is the part a test
-/// can reach and the part that can be silently WRONG. `joined_at` and
+/// Both, from the SAME frame, because that is what lets the caller check one
+/// against the other without reaching for a second source. `secondsMs` is field
+/// 6 scaled the way livekit_client scales it for `Participant.joinedAt`, so it
+/// is the value the caller would otherwise read off the participant — only
+/// earlier, and beside the finer reading it is meant to refine.
+///
+/// Split out from the subscription above because this is the part a test can
+/// reach and the part that can be silently WRONG. `joined_at` and
 /// `joined_at_ms` are both int64 on the same message, so reading the coarse one
-/// by mistake compiles, runs, and produces a plausible number a thousand times
-/// too small in its fractional part. The subscription cannot be reached from a
-/// unit test at all: emitting a join response on a real room's signal emitter
-/// wakes livekit_client's own handler for it, which builds peer connections
-/// through a platform channel.
+/// where the fine one was meant compiles, runs, and produces a plausible number.
+/// The subscription cannot be reached from a unit test at all: emitting a join
+/// response on a real room's signal emitter wakes livekit_client's own handler
+/// for it, which builds peer connections through a platform channel.
 ///
-/// `participant` is this device's own entry in the join response, so the stamp
-/// is for OUR join rather than the peer's. It is a default, all-zero message
-/// when the frame carried none, which is why this returns zero rather than
+/// `participant` is this device's own entry in the join response, so the stamps
+/// are for OUR join rather than the peer's. It is a default, all-zero message
+/// when the frame carried none, which is why this returns zeros rather than
 /// throwing on a truncated one.
 @visibleForTesting
-int sfuJoinStampMsOf(JoinResponse response) =>
-    response.participant.joinedAtMs.toInt();
+({int secondsMs, int ms}) sfuJoinStampsOf(JoinResponse response) => (
+  secondsMs: response.participant.joinedAt.toInt() * 1000,
+  ms: response.participant.joinedAtMs.toInt(),
+);

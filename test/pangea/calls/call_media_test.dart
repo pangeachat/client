@@ -486,75 +486,124 @@ void main() {
       expect(media.clockAnchor?.offsetMs, 30000);
     });
 
-    group('the millisecond stamp the SFU sends beside the second one', () {
-      // The SFU joined 437ms into the second `joinedAt` reports, and
-      // `joinedAt` cannot say so: livekit_client reads proto field 6 and
-      // multiplies by a thousand. Field 17 can.
-      final sfuJoinMs = sfuJoin.millisecondsSinceEpoch + 437;
+    group('the pair read out of the join response', () {
+      // The join response arrives one network leg after the SFU stamped it,
+      // and the connect that follows it takes far longer -- ICE, DTLS,
+      // negotiation. So the three readings below are what a device sees at the
+      // moment of the join, and `deviceAtJoin` is what its clock says a whole
+      // connect later.
+      //
+      // The SFU joined 437ms into the second `joinedAt` reports, and `joinedAt`
+      // cannot say so: livekit_client reads proto field 6 and multiplies by a
+      // thousand. Field 17 can.
+      final sfuSecondsMs = sfuJoin.millisecondsSinceEpoch;
+      final sfuJoinMs = sfuSecondsMs + 437;
+
+      SfuJoinReading seen({int? sfuMs, required int deviceMs}) => (
+        sfuSecondsMs: sfuSecondsMs,
+        sfuMs: sfuMs ?? sfuJoinMs,
+        deviceMs: deviceMs,
+      );
 
       test('is what the offset is measured against when it is sent', () {
-        // 29563, not 30000. The 437ms is the whole of what the deep import
-        // buys, and reading it here is the only place it can be spent.
-        final media = mediaAt(deviceAtJoin)
-          ..anchorClocksTo(sfuJoin, sfuJoinedAtMs: sfuJoinMs);
+        // A device 100ms ahead of the SFU, observed at the join. 100, not the
+        // 30000 the post-connect reading would have produced.
+        final media = mediaAt(
+          deviceAtJoin,
+        )..anchorClocksTo(sfuJoin, seenAtJoin: seen(deviceMs: sfuJoinMs + 100));
 
         expect(media.clockAnchor?.sfuMs, sfuJoinMs);
-        expect(media.clockAnchor?.offsetMs, 29563);
+        expect(media.clockAnchor?.offsetMs, 100);
       });
 
-      test('leaves the anchor exactly as it was when it is absent', () {
-        // The whole fallback, stated twice because the wire says it twice.
-        // Null is livekit_client never having reported one — no join response
-        // seen, or a package that stopped emitting the event. Zero is an SFU
-        // older than livekit-server v1.8.4, which does not set the field at
-        // all: proto3 leaves defaults off the wire, so absent arrives as zero.
-        // Neither is a time, and both must land on the second-resolution
-        // reading this correction ran on before field 17 existed.
-        for (final absent in <int?>[null, 0]) {
-          final media = mediaAt(deviceAtJoin)
-            ..anchorClocksTo(sfuJoin, sfuJoinedAtMs: absent);
+      test('is the device clock AT THE JOIN, not after the connect', () {
+        // The half this test exists for, and the one a finer SFU stamp alone
+        // does not fix. An anchor is a pair and only its DIFFERENCE matters, so
+        // pairing a millisecond-accurate server instant with a device clock
+        // read once `Room.connect` returns folds the whole connect into the
+        // offset -- and a connect takes wildly different times on two phones,
+        // far more than the second of resolution the fine stamp removes.
+        //
+        // Two devices, both genuinely 100ms ahead of the SFU. One connects
+        // fast, one slowly. Read at the join they agree; read after the connect
+        // they would disagree by 2.4 seconds, which is enough to render a reply
+        // above the question it answers.
+        final fast = mediaAt(
+          sfuJoin.add(const Duration(milliseconds: 600)),
+        )..anchorClocksTo(sfuJoin, seenAtJoin: seen(deviceMs: sfuJoinMs + 100));
+        final slow = mediaAt(
+          sfuJoin.add(const Duration(seconds: 3)),
+        )..anchorClocksTo(sfuJoin, seenAtJoin: seen(deviceMs: sfuJoinMs + 100));
 
-          expect(
-            media.clockAnchor?.sfuMs,
-            sfuJoin.millisecondsSinceEpoch,
-            reason: 'a stamp of $absent must not move the anchor',
+        expect(fast.clockAnchor?.offsetMs, 100);
+        expect(
+          slow.clockAnchor?.offsetMs,
+          fast.clockAnchor?.offsetMs,
+          reason: 'how long the connect took must not reach the offset',
+        );
+      });
+
+      test('a server that sends no fine stamp still gets the paired clock', () {
+        // An SFU older than livekit-server v1.8.4. Proto3 leaves defaults off
+        // the wire, so absent arrives as zero: the SFU half falls back to the
+        // coarse stamp, which is all that server said. The DEVICE half is
+        // unaffected -- it was read at the join either way -- so the accuracy
+        // fix lands even where the resolution one cannot.
+        final media = mediaAt(deviceAtJoin)
+          ..anchorClocksTo(
+            sfuJoin,
+            seenAtJoin: seen(sfuMs: 0, deviceMs: sfuSecondsMs + 537),
           );
-          expect(media.clockAnchor?.offsetMs, 30000);
-        }
+
+        expect(media.clockAnchor?.sfuMs, sfuSecondsMs);
+        expect(media.clockAnchor?.offsetMs, 537);
       });
 
-      test('is refused when it is not the same join the second one is', () {
-        // `joined_at` is `joined_at_ms` truncated to the second, so a stamp
-        // for the same join sits at most 999ms past it. A reading outside that
-        // window is some OTHER moment — a reconnect's later join is how that
-        // happens — and correcting this speaker's half by it would move them
-        // onto a clock nothing here was measured against. Falls back rather
-        // than being repaired, because a refinement that does not refine is
-        // not a better answer, it is a different one.
+      test('no join response seen leaves the anchor exactly as it was', () {
+        // The fallback, and the only path left when livekit_client stops
+        // emitting the event or the deep import stops finding it. Both halves
+        // are read the way they were before the join response was watched at
+        // all: the participant's coarse stamp, and this device's clock after
+        // the connect.
+        final media = mediaAt(deviceAtJoin)..anchorClocksTo(sfuJoin);
+
+        expect(media.clockAnchor?.sfuMs, sfuSecondsMs);
+        expect(media.clockAnchor?.offsetMs, 30000);
+      });
+
+      test('a fine stamp that contradicts the coarse one is refused', () {
+        // `joined_at` is `joined_at_ms` truncated to the second, and both come
+        // out of the SAME frame, so a fine stamp more than 999ms past the
+        // coarse one is a server contradicting itself. Falls back to the coarse
+        // stamp rather than being repaired, because a refinement that does not
+        // refine is not a better answer, it is a different one.
         //
         // Each of these also has to leave an ANCHOR behind rather than merely
         // decline the refinement. A stamp this app cannot use must cost the
         // precision and nothing else; carrying an absurd one through to
-        // [ClockAnchor.of] would lose a correction the second reading had
+        // [ClockAnchor.of] would lose a correction the coarse reading had
         // already earned, which is the last entry here.
         for (final wrong in <int>[
-          sfuJoin.millisecondsSinceEpoch - 1,
-          sfuJoin.millisecondsSinceEpoch + 1000,
-          sfuJoin.millisecondsSinceEpoch + 60000,
+          sfuSecondsMs - 1,
+          sfuSecondsMs + 1000,
+          sfuSecondsMs + 60000,
           ClockAnchor.clockCeilingMs,
         ]) {
           final media = mediaAt(deviceAtJoin)
-            ..anchorClocksTo(sfuJoin, sfuJoinedAtMs: wrong);
+            ..anchorClocksTo(
+              sfuJoin,
+              seenAtJoin: seen(sfuMs: wrong, deviceMs: sfuJoinMs + 100),
+            );
 
           expect(
             media.clockAnchor?.sfuMs,
-            sfuJoin.millisecondsSinceEpoch,
+            sfuSecondsMs,
             reason: '$wrong is not a finer reading of this join',
           );
         }
       });
 
-      test('cannot rescue a second reading the anchor refuses', () {
+      test('cannot rescue a coarse reading the anchor refuses', () {
         // A REFINEMENT ONLY. Zero seconds is the unstamped protocol default,
         // and an offset measured against 1970 is this device's entire clock
         // rather than its disagreement with anything — so the anchor refuses
@@ -563,7 +612,7 @@ void main() {
         final media = mediaAt(deviceAtJoin)
           ..anchorClocksTo(
             DateTime.fromMillisecondsSinceEpoch(0, isUtc: true),
-            sfuJoinedAtMs: 437,
+            seenAtJoin: (sfuSecondsMs: 0, sfuMs: 437, deviceMs: 437),
           );
 
         expect(media.clockAnchor, isNull);
