@@ -841,11 +841,9 @@ class CallRoster extends ChangeNotifier {
         key: attributesUnpublishedKey,
         e: e,
         s: s,
-        m:
-            "This device could not tell the account's other devices what it can "
-            'do or is doing; the recorder election is running without its '
-            'capability layer',
         data: {
+          // What the throw itself does not say. See [attributesUnpublishedCost].
+          'lost': attributesUnpublishedCost,
           // Attribute NAMES, never the values: a published run names a stretch
           // of a learner's conversation.
           'attributes': attributes.keys.toList()..sort(),
@@ -861,6 +859,25 @@ class CallRoster extends ChangeNotifier {
   ///
   /// Named so the report and the test that pins its budget spend one string.
   static const attributesUnpublishedKey = 'call_roster.attributes_unpublished';
+
+  /// What a write that never reached the siblings COSTS, carried on the report.
+  ///
+  /// In `data` rather than in the exception, because it belongs to neither of
+  /// the two places a report can otherwise put a sentence. The thrown `e` is
+  /// whatever the signal channel raised — a five-second timeout, a refusal —
+  /// and no shape of it says what is lost when it fails. Wrapping `e` to say so
+  /// would change the runtime type that the severity table and the fingerprint
+  /// both read, which is exactly why #8660 deleted these sentences rather than
+  /// folding them in; and handing the reporter a description it does not report
+  /// is the same #8660 defect, a string that reaches `debugPrint` and nowhere
+  /// else. `data` is on the Sentry event, so it is searchable there.
+  ///
+  /// Named, like [attributesUnpublishedKey], so the report and the test that
+  /// pins it spend one string.
+  static const attributesUnpublishedCost =
+      "This device could not tell the account's other devices what it can "
+      'do or is doing; the recorder election is running without its '
+      'capability layer';
 
   void _reassertAnnouncement() {
     for (final entry in _wanted.entries) {

@@ -317,9 +317,20 @@ class CallRecord {
           // and two calls are two.
           ErrorHandler.logErrorOnce(
             key: '$analyticsLostKey:${callKey ?? _txid}',
-            e: lastError,
+            // The caught cause wherever there is one, so its runtime type
+            // reaches the severity table and the fingerprint intact. The
+            // sentence stands in ONLY for the branch that threw nothing -- an
+            // anchor that was never written -- because a description the
+            // reporter is not given as `e` reaches `debugPrint` and nowhere
+            // else (#8660), and that branch would otherwise have no alarm at
+            // all. Where there is a cause it owns the title; `anchored` below
+            // is what tells the two branches apart in the event.
+            e:
+                lastError ??
+                Exception(
+                  "This call's speech was never credited to the learner",
+                ),
             s: lastStack,
-            m: "This call's speech was never credited to the learner",
             data: {
               // Whether there was anything to anchor the uses to at all, which
               // is the one branch that reaches here without an exception.
@@ -465,8 +476,8 @@ class CallRecord {
 
     // Kept so the report at the bottom can carry the CAUSE. Each attempt logs
     // its own failure, but only the last one is worth an event -- and an event
-    // reported with no exception is titled by its own message, which says what
-    // was lost and nothing whatever about why.
+    // titled by a hand-written sentence says what was lost and nothing
+    // whatever about why.
     Object? lastError;
     StackTrace? lastStack;
 
@@ -518,11 +529,18 @@ class CallRecord {
     // the key collapses.
     ErrorHandler.logErrorOnce(
       key: '$transcriptNotPublishedKey:$callKey',
-      e: lastError,
+      // The last attempt's cause, which every path that reaches here has: the
+      // loop only falls through by throwing three times. The sentence is the
+      // fallback the type demands rather than a case that happens -- and it is
+      // the right fallback, because a report with no exception would otherwise
+      // carry nothing a search could find.
+      e:
+          lastError ??
+          Exception(
+            'This device published no transcript half; the speaker will read '
+            'as absent from a call they spoke in',
+          ),
       s: lastStack,
-      m:
-          'This device published no transcript half; the speaker will read as '
-          'absent from a call they spoke in',
       // COUNTS AND SIZES, never a word of it. What was said is the learner's,
       // and Sentry is not where it belongs -- but how MUCH was lost is what
       // tells a dropped connection at hangup from a half that was empty anyway.

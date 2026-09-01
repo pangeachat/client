@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import '../sentry_capture_harness.dart';
 
 /// A JWT carrying [payload], shaped exactly as one on the wire is.
 ///
@@ -311,6 +313,61 @@ void main() {
       final token = await tokenFrom(jwtWith({'video': _grantAsShipped}));
       expect(token.url, 'ws://sfu');
       expect(token.metadataGrant, MetadataGrant.absent);
+    });
+
+    /// That the report REACHES Sentry, rather than that the key was spent.
+    ///
+    /// The tests above observe the throttle; these observe the event, and they
+    /// are the ones that would have caught #8660. A description handed to the
+    /// reporter as anything other than the exception it captures reaches
+    /// `debugPrint` and nothing else, so a suite that only checks the key was
+    /// spent passes on a report nobody can find.
+    group('what the report carries', () {
+      final harness = SentryCaptureHarness();
+      setUp(harness.init);
+      tearDown(harness.close);
+
+      /// The single event issuing an unclaimed token produces.
+      Future<SentryEvent> issueEvent() =>
+          harness.capture(() => tokenFrom(jwtWith({'video': _grantAsShipped})));
+
+      test('the sentence itself, as the title Sentry groups on', () async {
+        // The #8660 acceptance criterion: searching Sentry for a string we
+        // wrote finds the event. Nothing threw here — the token is simply
+        // minted without a claim — so unless the sentence IS the captured
+        // exception, this deployment-wide misconfiguration arrives titled by
+        // something nobody would search for.
+        expect(
+          (await issueEvent()).throwable.toString(),
+          contains(
+            'The call token carries no ${CallToken.ownMetadataClaim} grant; '
+            "this account's devices cannot tell each other what they are "
+            'recording',
+          ),
+        );
+      });
+
+      test('an error, which is the reading this was owed', () async {
+        // Decided at the one sink from the failure itself: nothing here
+        // carries an HTTP status to soften it, and nothing is transient — it
+        // stays true until the authorization service is changed.
+        final event = await issueEvent();
+        // Named in the reason because two SentryLevels both render as
+        // "Instance of 'SentryLevel'" in a failure, which says nothing about
+        // which way the table went.
+        expect(
+          event.level,
+          SentryLevel.error,
+          reason: 'nothing here is transient; got ${event.level?.name}',
+        );
+      });
+
+      test('the claim names the token DID carry, for triage', () async {
+        expect(
+          (await issueEvent()).breadcrumbs?.last.data?['videoGrantClaims'],
+          ['canPublish', 'canSubscribe', 'room', 'roomJoin'],
+        );
+      });
     });
   });
 }

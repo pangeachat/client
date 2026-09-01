@@ -246,9 +246,15 @@ class CallTokenRepo {
     if (token.metadataGrant != MetadataGrant.absent) return;
     ErrorHandler.logErrorOnce(
       key: missingMetadataGrantKey,
-      m:
-          'The call token carries no ${CallToken.ownMetadataClaim} grant; this '
-          "account's devices cannot tell each other what they are recording",
+      // Wrapped, because nothing threw: the token is simply wrong, and this
+      // sentence is the entire alarm. It has to BE the exception to reach
+      // Sentry -- a description handed to the reporter any other way went to
+      // `debugPrint` and nowhere else, which is what #8660 removed. Wrapping
+      // costs nothing here: there is no caught type to preserve.
+      e: Exception(
+        'The call token carries no ${CallToken.ownMetadataClaim} grant; this '
+        "account's devices cannot tell each other what they are recording",
+      ),
       // Claim NAMES only. They are fixed strings from the token service, and
       // the values beside them are not: a room grant carries the room.
       data: {'videoGrantClaims': _videoGrantClaims(token.jwt)},

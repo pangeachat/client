@@ -1173,6 +1173,47 @@ void main() {
           reason: 'the value written must not travel with the key',
         );
       });
+
+      test('leaves the caught cause owning the title', () async {
+        // The thrown object arrives untouched. #8660 removed these sentences
+        // rather than folding them into `e` because wrapping changes the
+        // runtime type that the severity table and the fingerprint both read,
+        // so carrying one must not cost that.
+        final failure = StateError('Signal request timed out');
+        roster.publishError = failure;
+
+        final event = await harness.capture(
+          () => roster.announceCanCapture(false),
+        );
+
+        expect(event.throwable, same(failure));
+      });
+
+      test('and says what the failure COSTS, which the throw cannot', () async {
+        // The sentence the in-app warning has always carried, somewhere it can
+        // actually be read. It cannot ride in `e` — see above — and handing it
+        // to the reporter as a description it does not report is the #8660
+        // defect itself, a string that reaches `debugPrint` and nowhere else.
+        // `data` is on the event, so it is searchable there.
+        final event = await eventFor(roster);
+
+        expect(
+          event.breadcrumbs?.last.data?['lost'],
+          CallRoster.attributesUnpublishedCost,
+        );
+        // The reason it is carried at all: a five-second signal timeout says
+        // nothing whatever about what stops working when it fires.
+        expect(
+          event.throwable.toString(),
+          isNot(contains('recorder election')),
+        );
+        expect(
+          CallRoster.attributesUnpublishedCost,
+          contains(
+            'the recorder election is running without its capability layer',
+          ),
+        );
+      });
     });
   });
 }

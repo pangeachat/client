@@ -1277,6 +1277,51 @@ void main() {
           reason: 'the size of the loss travels; its content does not',
         );
       });
+
+      test('the caught cause, so its type reaches the tables', () async {
+        // #8660 removed these sentences rather than folding them into `e`
+        // precisely because wrapping changes the runtime type that the
+        // severity table and the fingerprint both read. Where something threw,
+        // that object has to arrive untouched.
+        final failure = StateError('the homeserver said no');
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withPublisher: true,
+          publishError: failure,
+        );
+
+        final event = await harness.capture(
+          () => r.finish(duration: kDur, video: false, callKey: '\$anchor'),
+        );
+
+        expect(event.throwable, same(failure));
+      });
+
+      test('and the sentence, on the loss that has nothing to throw', () async {
+        // The uncredited-speech branch, which reaches its report with no
+        // exception in every way it can be reached: the card was never
+        // written, or the store refused and `_finish` swallowed it. So the
+        // sentence is what titles this event in practice, and it has to BE
+        // the exception to get there — handed to the reporter any other way
+        // it reaches `debugPrint` and nowhere else (#8660), and a learner's
+        // whole conversation goes uncredited under a title no one searches.
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          eventId: null,
+        );
+
+        final event = await harness.capture(
+          () => r.finish(duration: kDur, video: false, callKey: '\$anchor'),
+        );
+
+        expect(
+          event.throwable.toString(),
+          contains("This call's speech was never credited to the learner"),
+        );
+        // The half that tells this branch from the store refusing: both
+        // arrive with no exception, and only one of them wrote a card.
+        expect(event.breadcrumbs?.last.data?['anchored'], isFalse);
+      });
     });
   });
 }
