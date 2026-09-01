@@ -8,6 +8,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics_access/grant_analytics_access_extension.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'sentry_capture_harness.dart';
 
 /// The grant call is the one live raw-`Response` throw site of #8362: it
 /// bypasses `Requests` entirely (Synapse endpoint, Matrix SDK client and
@@ -44,7 +45,10 @@ void main() {
 
   group('grantInstructorAnalyticsAccess', () {
     test('a 200 completes without throwing', () async {
-      expect(await grantFailure(apiReturning(200)), isNull);
+      expect(
+        await grantFailure(apiReturning(200, body: '{"errors":[]}')),
+        isNull,
+      );
     });
 
     test('throws the typed exception, never the response', () async {
@@ -137,6 +141,94 @@ void main() {
 
       expect(error.detail, isNull);
       expect(error.toString(), isNot(contains('secret learner text')));
+    });
+  });
+
+  group('grantInstructorAnalyticsAccess partial failure', () {
+    // #8695: the endpoint answers 200 with per-instructor failures in `errors`.
+    // Reading only the status code left an instructor absent from a student's
+    // analytics room with nothing reported anywhere.
+    const partialBody =
+        '{"instructors_joined":[],'
+        '"errors":[{"user_id":"@teacher:staging.pangea.chat",'
+        '"error":"duplicate key value violates unique constraint"}]}';
+
+    late SentryCaptureHarness harness;
+
+    setUp(() async {
+      harness = SentryCaptureHarness();
+      await harness.init();
+    });
+
+    tearDown(() => harness.close());
+
+    test('reports a 200 that carries per-instructor errors', () async {
+      final event = await harness.capture(() {
+        apiReturning(
+          200,
+          body: partialBody,
+        ).grantInstructorAnalyticsAccess(courseRoomId, analyticsRoomId);
+      });
+
+      expect(
+        event.throwable.toString(),
+        contains('returned per-instructor errors'),
+      );
+      // Silent data loss, not a routine status — this has to page.
+      expect(event.level, SentryLevel.error);
+    });
+
+    test('a partial failure still does not throw', () async {
+      // The instructors that were granted still are. Turning that into a total
+      // failure would change what all three call sites do.
+      expect(await grantFailure(apiReturning(200, body: partialBody)), isNull);
+    });
+
+    test('an empty errors array reports nothing', () async {
+      var reported = false;
+      await Sentry.close();
+      await Sentry.init((options) {
+        options.dsn = 'https://public@sentry.invalid/1';
+        options.beforeSend = (event, hint) {
+          reported = true;
+          return null;
+        };
+      });
+
+      await apiReturning(
+        200,
+        body:
+            '{"instructors_joined":[{"user_id":"@t:x","action":"joined"}],'
+            '"errors":[]}',
+      ).grantInstructorAnalyticsAccess(courseRoomId, analyticsRoomId);
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+
+      expect(reported, isFalse);
+    });
+
+    test('a body that will not parse is reported too', () async {
+      // Not a failed grant, but we can no longer tell a granted instructor from
+      // an ungranted one — the same silence, one layer up.
+      final event = await harness.capture(() {
+        apiReturning(
+          200,
+          body: 'not json',
+        ).grantInstructorAnalyticsAccess(courseRoomId, analyticsRoomId);
+      });
+
+      expect(event.throwable.toString(), contains('unreadable body'));
+    });
+
+    test('never carries instructor identities', () async {
+      // Server-side reasons are diagnosable; MXIDs are PII we do not ship.
+      final event = await harness.capture(() {
+        apiReturning(
+          200,
+          body: partialBody,
+        ).grantInstructorAnalyticsAccess(courseRoomId, analyticsRoomId);
+      });
+
+      expect(event.toJson().toString(), isNot(contains('@teacher:')));
     });
   });
 }
