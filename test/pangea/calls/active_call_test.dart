@@ -17,10 +17,10 @@ import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'call_token_repo_test.dart' show jwtWith;
 
 import 'package:pangea_call_capture/pangea_call_capture.dart'
     show CallForegroundControl;
-import 'call_token_repo_test.dart' show jwtWith;
 
 /// Records the order every step ran in, which is the property under test: the
 /// call comes up in one order and down in the reverse, and the failure paths

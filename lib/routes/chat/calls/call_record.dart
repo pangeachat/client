@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -265,6 +268,12 @@ class CallRecord {
     // Dropping one made a failed write unretryable in practice: the two callers
     // are the same hangup, and the discarded one was the only other chance.
     return _inFlight ??= () async {
+      // The cause of the LAST attempt, so the report below can carry it. Null
+      // when every attempt returned without throwing and the credit still did
+      // not land -- an anchor that was never written, which is a failure with
+      // no exception to name.
+      Object? lastError;
+      StackTrace? lastStack;
       try {
         // Both callers are the same hangup, and the screen is gone afterwards —
         // there is no later attempt. A transient failure at hangup would
@@ -288,6 +297,8 @@ class CallRecord {
             // Caught here rather than around each step, so a failure is visible
             // to the loop and can be retried — and so nothing escapes into the
             // hangup path, which does not await this.
+            lastError = e;
+            lastStack = s;
             Logs().w(
               'Recording the call failed (attempt ${attempt + 1})',
               e,
@@ -297,12 +308,36 @@ class CallRecord {
         }
         if (!_credited) {
           Logs().e('Gave up recording this call; its analytics are lost');
+          // The learner spoke and earned nothing for it. Like the half above,
+          // this leaves NOTHING behind: uncredited speech is indistinguishable
+          // from a call in which nobody said anything, and the proficiency
+          // drawn from those counts is quietly short by a whole conversation.
+          //
+          // Keyed per call for the same reason: three attempts are one loss,
+          // and two calls are two.
+          ErrorHandler.logErrorOnce(
+            key: '$analyticsLostKey:${callKey ?? _txid}',
+            e: lastError,
+            s: lastStack,
+            m: "This call's speech was never credited to the learner",
+            data: {
+              // Whether there was anything to anchor the uses to at all, which
+              // is the one branch that reaches here without an exception.
+              'anchored': _anchorId != null,
+              'answered': answered,
+              'seconds': duration.inSeconds,
+            },
+          );
         }
       } finally {
         _inFlight = null;
       }
     }();
   }
+
+  /// The session-throttle key the uncredited-speech report is filed under, minus
+  /// the call it is about.
+  static const analyticsLostKey = 'call_record.analytics_lost';
 
   Future<void> _finish({
     required Duration duration,
@@ -428,6 +463,13 @@ class CallRecord {
     // Marked before the first await so concurrent callers cannot both publish.
     _published = true;
 
+    // Kept so the report at the bottom can carry the CAUSE. Each attempt logs
+    // its own failure, but only the last one is worth an event, and an event
+    // without the exception that produced it groups by this file and says
+    // nothing about why.
+    Object? lastError;
+    StackTrace? lastStack;
+
     for (var attempt = 0; attempt < 3; attempt++) {
       if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
       try {
@@ -447,6 +489,8 @@ class CallRecord {
         // Swallowed rather than rethrown, so a transcript failure cannot drag
         // the credit into its own retry loop, which is once-only and cannot
         // survive being re-entered.
+        lastError = e;
+        lastStack = s;
         Logs().w('Publishing the call transcript failed', e, s);
       }
     }
@@ -459,7 +503,49 @@ class CallRecord {
       'The call transcript was not published after 3 attempts; '
       'this speaker will read as absent',
     );
+    // AND COUNTED. A half that does not publish makes this speaker read as
+    // absent, which is the SAME reading as a device that never ran the feature
+    // at all -- so nothing anywhere knows how many calls should have produced
+    // two halves and produced one. That number is the whole point of reporting
+    // this: the loss is invisible in the data it leaves behind, and only the
+    // device that suffered it can say it happened.
+    //
+    // ONCE PER CALL, not per attempt and not per session. The three attempts
+    // above are one loss and belong in one event; two calls that each lost
+    // their half are two losses and each is owed its own, because the count of
+    // them is what is being asked for. [_published] is released above, so a
+    // later finish can try and fail again -- and that is the same loss, which
+    // the key collapses.
+    ErrorHandler.logErrorOnce(
+      key: '$transcriptNotPublishedKey:$callKey',
+      e: lastError,
+      s: lastStack,
+      m:
+          'This device published no transcript half; the speaker will read as '
+          'absent from a call they spoke in',
+      // COUNTS AND SIZES, never a word of it. What was said is the learner's,
+      // and Sentry is not where it belongs -- but how MUCH was lost is what
+      // tells a dropped connection at hangup from a half that was empty anyway.
+      data: {
+        'segments': segments.length,
+        'bytes': segments.fold<int>(
+          0,
+          (sum, segment) => sum + utf8.encode(segment.text).length,
+        ),
+        'chunksCaptured': chunksCaptured,
+        'chunksTranscribed': chunksTranscribed,
+        'chunksLost': chunksLost,
+        'chunksSuppressed': chunksSuppressed,
+        'captureRefused': captureRefused,
+        'drainComplete': drainComplete,
+      },
+    );
   }
+
+  /// The session-throttle key the unpublished-half report is filed under, minus
+  /// the call it is about. Named so the report and its budget test agree.
+  static const transcriptNotPublishedKey =
+      'call_record.transcript_not_published';
 
   bool _published = false;
 

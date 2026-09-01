@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
@@ -107,39 +106,6 @@ class TestRoster extends CallRoster {
 
 /// A believable join stamp for the tests that are not about join times.
 final _defaultJoin = DateTime.utc(2026, 8, 29, 12);
-
-/// Counts the Sentry events a stretch of work produces, without letting any
-/// leave the test.
-///
-/// Distinct from [SentryCaptureHarness], which answers what ONE event carried.
-/// The question here is how MANY, which is the only way to pin a throttle: a
-/// report that fires per failure and a report that fires once are the same
-/// single event when you only look at the first.
-class _EventCount {
-  int events = 0;
-
-  Future<void> init() {
-    events = 0;
-    return Sentry.init((options) {
-      options.dsn = 'https://public@sentry.invalid/1';
-      // OFF, so this counts what the CODE emits rather than what the SDK
-      // happens to swallow. Sentry drops a repeat of the same exception by
-      // default, which quietly made an unthrottled report look throttled: the
-      // first version of this test passed against a call site with no throttle
-      // at all. Deduplication is a small ring buffer keyed on the exception, so
-      // relying on it would be relying on the failure always arriving as the
-      // same object — which across a whole call it does not.
-      options.enableDeduplication = false;
-      options.beforeSend = (event, hint) {
-        events++;
-        // Dropped: nothing should leave the test.
-        return null;
-      };
-    });
-  }
-
-  Future<void> close() => Sentry.close();
-}
 
 void main() {
   const me = '@learner:pangea.localhost';
@@ -1025,7 +991,7 @@ void main() {
     });
 
     group('how much of it reaches Sentry', () {
-      final counter = _EventCount();
+      final counter = SentryEventCounter();
       setUp(counter.init);
       tearDown(counter.close);
 
