@@ -3,7 +3,6 @@ import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' show Response;
 import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
@@ -15,6 +14,7 @@ import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
+import 'package:fluffychat/pangea/common/utils/confirmed_removed_cache.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/persistent_repo_cache.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -83,8 +83,8 @@ class ActivityPlanRepo
   final Set<String> _hydrating = {};
   final Set<String> _revalidated = {};
 
-  /// Activity ids the backend confirmed removed (404), with when, so the repo
-  /// stops re-fetching a known-missing id.
+  /// Activity ids the backend confirmed removed (404), so the repo stops
+  /// re-fetching a known-missing id.
   ///
   /// Enforced in [lookup], the shared read path — NOT only in [ensure], which
   /// is where this gate first lived. [getPlan] delegates to [lookup] and
@@ -95,78 +95,26 @@ class ActivityPlanRepo
   /// single activity id). Keyed by activity id, not by storage key: the
   /// activity is gone, so no l1 or pinned version of it can resolve either.
   ///
-  /// PERSISTED, with [_removedRetention]. In-session suppression alone left
-  /// every NEW session re-fetching — and re-reporting — every known-dead id
-  /// once, which at ~20 dead ids was still ~120 Sentry events/day across a
-  /// handful of users (CLIENT-EB0, #8691). Retention is checked only at load:
-  /// a verdict never lapses mid-session (same as before persistence), but the
-  /// next session past the window re-checks, so a repaired activity comes
-  /// back without every user hard-refreshing. An explicit refresh
-  /// ([resetBackoff]) and the logout/language-change box erase still clear it
-  /// immediately.
-  final Map<String, DateTime> _confirmedRemoved = {};
-
-  static const Duration _removedRetention = Duration(hours: 24);
-
-  /// Reserved key for the persisted `{activityId: confirmedAtMillis}` map,
-  /// beside the plan entries in the same box. Plan storage keys are
-  /// `${activityId}_${l1}_${version}` (uuids in practice), so the underscored
-  /// name cannot collide.
-  static const String _removedStorageKey = '__confirmed_removed_ids__';
-
-  /// Loads the persisted verdicts once; every read of [_confirmedRemoved] on
-  /// the fetch path awaits it. A failed load degrades to the in-session
-  /// behavior this gate had before it was persisted — it must never wedge the
-  /// read path (the memoized-failure trap described on [_request]).
-  late final Future<void> _removedLoad = _loadConfirmedRemoved();
-
-  Future<void> _loadConfirmedRemoved() async {
-    try {
-      await GetStorage.init(_storageBoxName);
-      final raw = GetStorage(_storageBoxName).read(_removedStorageKey);
-      if (raw is! Map) return;
-      final cutoff = now().subtract(_removedRetention);
-      var lapsed = false;
-      for (final entry in raw.entries) {
-        final id = entry.key;
-        final millis = entry.value;
-        if (id is! String || millis is! int) continue;
-        final confirmedAt = DateTime.fromMillisecondsSinceEpoch(millis);
-        if (confirmedAt.isAfter(cutoff)) {
-          // putIfAbsent: an id confirmed by THIS session before the load
-          // finished keeps its fresher timestamp.
-          _confirmedRemoved.putIfAbsent(id, () => confirmedAt);
-        } else {
-          lapsed = true;
-        }
-      }
-      if (lapsed) _persistConfirmedRemoved();
-    } catch (_) {
-      // Degrade to in-session suppression.
-    }
-  }
-
-  /// Fire-and-forget write-through; suppression must never wait on disk.
-  /// Sequenced behind [_removedLoad] so a write cannot race the initial read.
-  void _persistConfirmedRemoved() {
-    _removedLoad.whenComplete(() {
-      GetStorage(_storageBoxName)
-          .write(_removedStorageKey, {
-            for (final entry in _confirmedRemoved.entries)
-              entry.key: entry.value.millisecondsSinceEpoch,
-          })
-          .catchError((_) {});
-    });
-  }
+  /// PERSISTED across sessions ([ConfirmedRemovedCache]): in-session
+  /// suppression alone left every NEW session re-fetching — and re-reporting —
+  /// every known-dead id once, which at ~20 dead ids was still ~120 Sentry
+  /// events/day across a handful of users (CLIENT-EB0, #8691). The verdicts
+  /// live beside the plan entries in the same box: plan storage keys are
+  /// `${activityId}_${l1}_${version}` (uuids in practice), so the reserved
+  /// underscored key cannot collide.
+  final ConfirmedRemovedCache _confirmedRemoved = ConfirmedRemovedCache(
+    boxName: _storageBoxName,
+    storageKey: '__confirmed_removed_ids__',
+    retention: const Duration(hours: 24),
+    now: () => ActivityPlanRepo.now(),
+  );
 
   /// Whether the backend has confirmed [activityId] gone — this session, or a
-  /// prior one within [_removedRetention]. For callers outside this repo's
+  /// prior one within the retention window. For callers outside this repo's
   /// read path (`QuestRepo.activityLearningObjectiveRefs`) that would
   /// otherwise re-fetch a known-dead id.
-  Future<bool> isConfirmedRemoved(String activityId) async {
-    await _removedLoad;
-    return _confirmedRemoved.containsKey(activityId);
-  }
+  Future<bool> isConfirmedRemoved(String activityId) =>
+      _confirmedRemoved.contains(activityId);
 
   /// Earliest wall-clock time [ensure] may re-attempt a key.
   ///
@@ -256,13 +204,12 @@ class ActivityPlanRepo
   /// Drops all suppression state, persisted verdicts included. Exposed for
   /// tests and for an explicit user-initiated refresh, which must never be
   /// suppressed — which is why [_confirmedRemoved] clears here too. Besides
-  /// [_removedRetention] lapsing, it is the only way back out of the removed
+  /// the retention window lapsing, it is the only way back out of the removed
   /// gate, since nothing else can clear an id the repo refuses to re-request.
   @visibleForTesting
   void resetBackoff() {
     _nextAttempt.clear();
     _confirmedRemoved.clear();
-    _persistConfirmedRemoved();
     _rateLimitedUntil = null;
     // The backlog goes too. Dropping it loses nothing: clearing [_nextAttempt]
     // above un-parks every queued key, so `build()` re-offers them on the next
@@ -373,11 +320,10 @@ class ActivityPlanRepo
     // answer the backend already gave for this id, so re-asking can only cost a
     // round trip and another 404. Checked ahead of [_request] so the gate does
     // not depend on the controller being up, mirroring [ensure]'s ordering.
-    // The load is awaited here — on the one path every fetch drains into — so
-    // a verdict persisted by a PRIOR session suppresses a cold start's first
-    // reads too, not just re-reads (CLIENT-EB0).
-    await _removedLoad;
-    if (_confirmedRemoved.containsKey(activityId)) {
+    // The persisted-verdict load is awaited here — on the one path every fetch
+    // drains into — so a verdict persisted by a PRIOR session suppresses a
+    // cold start's first reads too, not just re-reads (CLIENT-EB0).
+    if (await _confirmedRemoved.contains(activityId)) {
       return const ActivityPlanLookup(ActivityPlanLookupStatus.removed);
     }
     final request = _request(activityId, l1, version: version);
@@ -398,15 +344,12 @@ class ActivityPlanRepo
       }
       final status = classifyLookupError(error);
       if (status == ActivityPlanLookupStatus.removed) {
-        _confirmedRemoved[activityId] = now();
-        _persistConfirmedRemoved();
+        _confirmedRemoved.mark(activityId);
       }
       return ActivityPlanLookup(status);
     }
 
-    if (_confirmedRemoved.remove(activityId) != null) {
-      _persistConfirmedRemoved();
-    }
+    _confirmedRemoved.unmark(activityId);
     final resolved = await resolveMedia(result.asValue!.value.plan);
     _resolved[request.storageKey] = resolved;
     // Cleared only on a fully-mapped success. `.plan` above is a lazy getter
@@ -499,13 +442,13 @@ class ActivityPlanRepo
     bool revalidate = false,
   }) {
     // A confirmed-removed id can't hydrate; re-fetching on every rebuild of
-    // the sync getter would loop 404s. [lookup] gates on the same map, so this
-    // is not what makes the suppression correct — it is what keeps a hydration
-    // that cannot succeed from spending a `_hydrating` slot and a 60s
-    // `_nextAttempt` park, and what lets the caller see `false`. Synchronous,
-    // so on a cold start it cannot see not-yet-loaded persisted verdicts;
-    // [lookup] awaits the load and catches those.
-    if (_confirmedRemoved.containsKey(activityId)) return false;
+    // the sync getter would loop 404s. [lookup] gates on the same cache, so
+    // this is not what makes the suppression correct — it is what keeps a
+    // hydration that cannot succeed from spending a `_hydrating` slot and a
+    // 60s `_nextAttempt` park, and what lets the caller see `false`.
+    // Synchronous, so on a cold start it cannot see not-yet-loaded persisted
+    // verdicts; [lookup] awaits the load and catches those.
+    if (_confirmedRemoved.containsSync(activityId)) return false;
     final request = _request(activityId, l1, version: version);
     // Declines WITHOUT parking the key: the controller lands within a frame or
     // two of startup, so the next rebuild must be free to fetch. Parking here
