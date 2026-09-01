@@ -50,9 +50,22 @@ class CallMedia {
   /// that disagreement is not reachable from a test any other way.
   final DateTime Function() now;
 
-  CallMedia({Room? room, DateTime Function()? now})
-    : room = room ?? Room(),
-      now = now ?? DateTime.now {
+  /// [watchJoinStamp] is the real subscription unless a test replaces it.
+  ///
+  /// Injected for one reason: a join response cannot be delivered through a
+  /// real `Room` in a unit test — emitting on its signal emitter wakes
+  /// livekit_client's own handler, which reaches a platform channel. Without a
+  /// seam here, the only thing a test could reach is [anchorClocksTo] called by
+  /// hand, which proves a reading is consumed and says nothing about WHICH
+  /// callback this object hands over. That gap let a regression through twice:
+  /// a version that stored the stamps and paired them with a later clock
+  /// reading passed every test in this file.
+  CallMedia({
+    Room? room,
+    DateTime Function()? now,
+    JoinStampWatch? watchJoinStamp,
+  }) : room = room ?? Room(),
+       now = now ?? DateTime.now {
     // Attached HERE, in the constructor, and not on the connect path. The join
     // response is delivered and consumed inside `Room.connect`, so a
     // subscription opened once that returns has already missed the only frame
@@ -66,7 +79,10 @@ class CallMedia {
     // the device clock ITSELF, so the two halves of the anchor are taken in one
     // place at one moment and there is no window in which a caller could pair
     // the SFU's instant with some later reading of ours.
-    _stopJoinStampWatch = watchSfuJoinStamp(this.room, anchorClocksTo);
+    _stopJoinStampWatch = (watchJoinStamp ?? watchSfuJoinStamp)(
+      this.room,
+      anchorClocksTo,
+    );
   }
 
   /// The audio this device is publishing, or null before the microphone is on.

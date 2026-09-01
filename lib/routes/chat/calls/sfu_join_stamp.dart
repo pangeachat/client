@@ -27,13 +27,24 @@ import 'package:livekit_client/src/proto/livekit_rtc.pb.dart';
 /// WHAT BREAKS IF THE PACKAGE CHANGES. A rename or a move of
 /// `SignalJoinResponseEvent`, of `Room.engine`, or of the signal emitter fails
 /// this file at ANALYSIS time, which is the good failure — the gate says so
-/// before anything ships. The bad failure is silent: if a future version stops
-/// emitting the event, or emits it before a caller can subscribe, this simply
-/// never fires, the caller never learns a millisecond value, and the anchor
-/// falls back to the second-resolution reading it used before. That is the
-/// same answer this code gives for a server that does not send the field, and
-/// it is why the caller must treat a missing stamp as ordinary rather than as
-/// an error.
+/// before anything ships.
+///
+/// The bad failure is silent: if a future version stops emitting the event, or
+/// emits it before this can subscribe, [onStamp] is never called at all. There
+/// is then NO ANCHOR — not a coarser one. Do not confuse this with a server
+/// that sends no `joined_at_ms`, which is a different failure with a different
+/// outcome: there the event DOES arrive, carrying a zero, and the caller falls
+/// back to the coarse seconds reading in the same frame. Nothing arriving and
+/// something arriving empty look alike from a distance and are not alike here.
+///
+/// No anchor is the deliberate outcome rather than a gap to be patched. The
+/// transcript then shows both halves in full on their own devices' clocks and
+/// declines to interleave them, so a reader gets no cross-speaker times instead
+/// of wrong ones. Anything that reconstructs an anchor from readings taken at
+/// two different moments measures how long that device's connect took, not the
+/// disagreement between two clocks — see `CallMedia.anchorClocksTo`. Fix a
+/// silent break by making the event arrive again, never by manufacturing a pair
+/// somewhere else.
 ///
 /// If livekit_client ever exposes the field properly — a `joinedAtMs` getter on
 /// `Participant`, or the `ParticipantInfo` behind it — delete this file and
@@ -60,6 +71,13 @@ import 'package:livekit_client/src/proto/livekit_rtc.pb.dart';
 /// Returns the canceller for the subscription. Cancelling is tidiness rather
 /// than a leak fix — the subscription belongs to the room's own signal emitter
 /// and dies when the room is disposed.
+/// The shape of [watchSfuJoinStamp], so a caller can accept it as a seam.
+typedef JoinStampWatch =
+    CancelListenFunc Function(
+      Room room,
+      void Function(({int secondsMs, int ms}) stamps) onStamp,
+    );
+
 CancelListenFunc watchSfuJoinStamp(
   Room room,
   void Function(({int secondsMs, int ms})) onStamp,

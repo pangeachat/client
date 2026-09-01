@@ -451,21 +451,22 @@ void main() {
       expect(RealSteps().clockAnchor, isNull);
     });
 
-    test('no second source can stand in for the join response', () {
-      // The rule, stated as the absence it is. There was once a fallback that
-      // paired the participant's stamp with this device's clock read after
-      // `Room.connect` returned, and it looked like a lesser anchor while being
-      // a wrong one: the offset carried however long the connect took, so two
-      // devices genuinely 100ms apart could anchor seconds apart and a reply
-      // would render above the question it answered -- confidently, with no
-      // missing-clock notice anywhere. An anchor this device cannot vouch for
-      // is ABSENT, not approximate. Nothing but a join response makes one.
+    test('the publish path does not manufacture an anchor of its own', () async {
+      // Named for the path it drives. `setMicrophoneEnabled` runs the real
+      // `_publishingAs`, which is exactly where the removed fallback used to
+      // sit: it read the local participant's coarse stamp and paired it with
+      // this device's clock read after `Room.connect` had returned. That looked
+      // like a lesser anchor while being a wrong one -- the offset carried
+      // however long the connect took, so two devices genuinely 100ms apart
+      // could anchor seconds apart and a reply would render above the question
+      // it answered, confidently, with no missing-clock notice anywhere.
+      //
+      // An anchor this device cannot vouch for is ABSENT, not approximate. With
+      // no join response there is no participant either, so this walks the
+      // whole wait-then-give-up path and must still come back with nothing.
       final media = mediaAt(deviceAtJoin);
-      expect(media.clockAnchor, isNull);
-
-      // And a connected, publishing call changes nothing while the watch has
-      // not fired: coming up is not evidence about anybody's clock.
-      media.publishedAudio;
+      expect(await media.setMicrophoneEnabled(true), isFalse);
+      expect(media.captureRefused, isTrue);
       expect(media.clockAnchor, isNull);
     });
 
@@ -516,20 +517,57 @@ void main() {
       expect(media.clockAnchor?.offsetMs, 30000);
     });
 
-    test('the watch is live before anything could connect', () {
-      // WHERE the reading is acquired, which no test of [anchorClocksTo] can
-      // see. The device half is only contemporaneous with the SFU half if the
-      // subscription is already attached when the join response lands, and the
-      // join response is consumed inside `Room.connect`. Attaching it from the
-      // constructor is what makes that true with no ordering left to get
-      // wrong; this refuses to let it drift back onto the connect path.
+    test('the reading is paired the moment the watcher hands it over', () {
+      // The half the listener count cannot see, and the regression that got
+      // through twice: a version that stored the stamps and paired them with a
+      // clock read after `connect` subscribed in the constructor exactly like
+      // this one, so counting subscriptions said nothing about it.
       //
-      // WHAT THIS CANNOT SEE, stated so nobody reads it as more than it is: it
-      // does not prove livekit_client still emits `SignalJoinResponseEvent`,
-      // nor that it emits before the connect returns, nor that the callback
-      // reads the clock. Emitting a join response through a real room wakes
-      // livekit_client's own handler, which reaches a platform channel, so
-      // only a real call proves those.
+      // The watcher is replaced, so the callback CallMedia actually hands over
+      // can be invoked directly -- a real join response cannot be delivered
+      // through a real room. The clock ADVANCES a second per read, so a later
+      // reading is a different number: pairing at the moment of the callback
+      // gives deviceMs == the first read, and anything that defers gives a
+      // later one.
+      late void Function(({int secondsMs, int ms})) handedOver;
+      var reads = 0;
+      final media = CallMedia(
+        now: () => sfuJoin.add(Duration(seconds: reads++)),
+        watchJoinStamp: (room, onStamp) {
+          handedOver = onStamp;
+          return () async {};
+        },
+      );
+
+      // Nothing yet: constructing must not read the clock or invent an anchor.
+      expect(media.clockAnchor, isNull);
+      expect(reads, 0);
+
+      handedOver((secondsMs: sfuSecondsMs, ms: sfuSecondsMs + 437));
+
+      expect(media.clockAnchor?.sfuMs, sfuSecondsMs + 437);
+      expect(
+        media.clockAnchor?.deviceMs,
+        sfuSecondsMs,
+        reason: 'the device half must be the clock read AT the callback',
+      );
+      expect(reads, 1, reason: 'exactly one clock read, taken there and then');
+    });
+
+    test('the watch is live before anything could connect', () {
+      // That the REAL watcher is the default, and that it is attached before
+      // anything could connect. The test above replaces the watcher, so it
+      // would pass just as well against a default that subscribed to nothing;
+      // this one uses a real `Room` and counts what actually landed on its
+      // signal emitter.
+      //
+      // WHAT NEITHER TEST CAN SEE, stated so nobody reads them as more than
+      // they are: that livekit_client still emits `SignalJoinResponseEvent`,
+      // and that it emits before `Room.connect` returns. Both are livekit's
+      // behaviour, not ours, and a join response cannot be delivered through a
+      // real room here — emitting on its signal emitter wakes livekit's own
+      // handler, which reaches a platform channel. Only a real two-device call
+      // covers that last gap; a rename or a move fails at analysis time.
       // A DELTA, not a count. livekit_client subscribes to that emitter itself
       // when the `SignalClient` is built, so the absolute number is not ours to
       // predict -- asserting one was this test's own first failure.
