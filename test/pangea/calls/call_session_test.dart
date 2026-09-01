@@ -413,12 +413,15 @@ void main() {
       // connected reads as a working feature and ships a dark one.
       final client = await _bareClient();
       final room = _RecordingRoom(id: '!r:server', client: client);
-      // A device thirty seconds ahead of the SFU, latched at join exactly as
-      // the real media does when the local participant first appears.
+      // A device thirty seconds ahead of the SFU, latched exactly as the real
+      // media does when the join response arrives.
       final sfuJoin = DateTime.utc(2026, 8, 26, 9);
-      final media = _FakeMedia(
-        now: () => sfuJoin.add(const Duration(seconds: 30)),
-      )..anchorClocksTo(sfuJoin);
+      final media =
+          _FakeMedia(now: () => sfuJoin.add(const Duration(seconds: 30)))
+            ..anchorClocksTo((
+              secondsMs: sfuJoin.millisecondsSinceEpoch,
+              ms: sfuJoin.millisecondsSinceEpoch,
+            ));
       final session = CallSession.start(
         room: room,
         video: false,

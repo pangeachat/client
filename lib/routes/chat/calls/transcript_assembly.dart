@@ -149,6 +149,15 @@ bool suppressionExplainsEmptiness(
 /// ran an older SFU, and in both cases the minutes of raw clock skew are gone.
 /// Two turns spoken within one device's latency of each other are not ordered
 /// by this and were never going to be.
+///
+/// AND WHERE THERE IS NO OBSERVATION THERE IS NO ANCHOR. `CallMedia` builds one
+/// only from a join response it actually saw; it will not assemble a pair out
+/// of whatever readings are lying around when the call ends. A pair taken at
+/// two different moments is not a worse measurement of the clocks, it is a
+/// measurement of something else -- of how long that device's connect took --
+/// and it arrives looking exactly as confident as a real one. Absent is the
+/// honest answer, and it is cheap: a half with no anchor is shown in full on
+/// its own device's clock, and only the ORDERING between halves is declined.
 class ClockAnchor {
   /// The SFU's clock at the moment this device joined the call.
   final int sfuMs;

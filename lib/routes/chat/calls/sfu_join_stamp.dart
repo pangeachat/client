@@ -87,6 +87,27 @@ CancelListenFunc watchSfuJoinStamp(
 /// are for OUR join rather than the peer's. It is a default, all-zero message
 /// when the frame carried none, which is why this returns zeros rather than
 /// throwing on a truncated one.
+/// How many join-stamp watches are attached to [room]'s signal emitter.
+///
+/// Exists so a test can pin WHEN the watch is attached without importing any of
+/// this file's internals itself. The device half of the clock anchor is only
+/// contemporaneous with the SFU half if the subscription is already live when
+/// the join response lands, and that is a property of the ATTACH SITE, not of
+/// anything the callback does — so a test that only exercises the callback
+/// cannot see it, and a regression that moves the attach later passes silently.
+/// This is the cheapest honest look at the attach site available: a real
+/// `Room` can be built in a unit test, but a join response cannot be delivered
+/// through one, because emitting on its signal emitter wakes livekit_client's
+/// own handler and that reaches a platform channel.
+///
+/// It counts EVERY subscription on that emitter, not only ours: livekit_client
+/// registers its own logging listener there when the `SignalClient` is built,
+/// so a fresh `Room` already reports one. A caller must therefore compare
+/// counts across the construction it is pinning rather than expect a number.
+@visibleForTesting
+int joinStampWatchCount(Room room) =>
+    room.engine.signalClient.events.listeners.length;
+
 @visibleForTesting
 ({int secondsMs, int ms}) sfuJoinStampsOf(JoinResponse response) => (
   secondsMs: response.participant.joinedAt.toInt() * 1000,
