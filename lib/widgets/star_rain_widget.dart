@@ -14,6 +14,14 @@ class StarRainWidget extends StatefulWidget {
 
   static const String practiceCompleteKey = "completed-activity-star-rain";
 
+  // WCAG 2.2.2 (Pause, Stop, Hide) applies to auto-starting motion that runs
+  // longer than five seconds alongside content the user is reading — which the
+  // activity summary under this overlay is. Staying below that limit is what
+  // lets the celebration ship without a pause/stop control, so the sum of these
+  // two must remain under 5s.
+  static const Duration rainDuration = Duration(seconds: 4);
+  static const Duration opacityDuration = Duration(milliseconds: 800);
+
   const StarRainWidget({super.key, required this.overlayKey});
 
   static void show(BuildContext context, String overlayKey) {
@@ -40,9 +48,9 @@ class _StarRainWidgetState extends State<StarRainWidget> {
   int numParticles = 2;
   double _fadeOpacity = 1.0;
 
-  final rainDuration = const Duration(seconds: 8);
+  final rainDuration = StarRainWidget.rainDuration;
   final blastDuration = const Duration(seconds: 1);
-  final opacityDuration = const Duration(milliseconds: 800);
+  final opacityDuration = StarRainWidget.opacityDuration;
 
   @override
   void initState() {
@@ -53,7 +61,7 @@ class _StarRainWidgetState extends State<StarRainWidget> {
     _blastController.play();
     _rainController.play();
 
-    Future.delayed(const Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 2), () {
       if (!mounted) return;
       if (_rainController.state == ConfettiControllerState.playing) {
         setState(() {
