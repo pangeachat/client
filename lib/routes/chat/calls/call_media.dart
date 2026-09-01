@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart' show Logs;
 
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import 'package:fluffychat/routes/chat/calls/sfu_join_stamp.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
 /// This device's media for one call.
@@ -225,7 +226,32 @@ class CallMedia {
   /// them can be observed. A real LiveKit room cannot be stood up in a unit
   /// test, and the ordering is the part worth testing.
   @protected
-  Future<void> connectRoom(String url, String jwt) => room.connect(url, jwt);
+  Future<void> connectRoom(String url, String jwt) {
+    // BEFORE the connect, and that ordering is the whole of it. The join
+    // response is delivered and consumed inside `Room.connect`, and nothing
+    // keeps it afterwards, so a subscription opened once this returns has
+    // already missed the only frame carrying the millisecond stamp. Attaching
+    // here also means a reconnect's fresh join response is still seen.
+    //
+    // Missing it is not a failure. [anchorClocksTo] falls back to the
+    // second-resolution reading, which is what this correction ran on before
+    // the stamp existed.
+    _stopJoinStampWatch ??= watchSfuJoinStamp(
+      room,
+      (ms) => _sfuJoinedAtMs ??= ms,
+    );
+    return room.connect(url, jwt);
+  }
+
+  /// The SFU's millisecond stamp for this device's join, once the join response
+  /// has carried one, or null while it has not.
+  ///
+  /// Latched on the FIRST reading for the same reason the anchor itself is: a
+  /// reconnect restamps the join, and pairing a later server stamp with the
+  /// device clock this half's positions are already based on would measure the
+  /// gap between the two joins rather than the disagreement between the clocks.
+  int? _sfuJoinedAtMs;
+  CancelListenFunc? _stopJoinStampWatch;
 
   // A note on a publish that fails, for both of these. Read off the pinned
   // livekit_client 2.11.0 rather than carried forward, because the two halves
@@ -332,11 +358,11 @@ class CallMedia {
   /// find the latch already taken.
   LocalParticipant _anchored(LocalParticipant participant) {
     // Stamped by the SFU, so both devices in the call read the SAME clock
-    // here. Whole SECONDS: the millisecond field exists in the protocol and
-    // livekit_client 2.11.0 keeps it behind a private member, so the offset
-    // this yields is good to about a second. That is the documented limit of
-    // the correction, and it is two orders of magnitude better than the skew
-    // it exists to remove.
+    // here. `joinedAt` is whole SECONDS -- livekit_client reads proto field 6
+    // and multiplies by a thousand -- so on its own it quantises the offset to
+    // a second. [_sfuJoinedAtMs] is the SAME instant to the millisecond when
+    // the server sent field 17 beside it; when it did not, the seconds reading
+    // is what this has always used and still uses.
     //
     // `joinedAt` falls back to this device's own clock when the participant
     // carries no server info, which would read as two clocks in perfect
@@ -344,19 +370,21 @@ class CallMedia {
     // local participant through `createFromInfo`, which sets that info before
     // the object exists. Named because it is an upstream property this
     // correction leans on, not one this code can enforce.
-    anchorClocksTo(participant.joinedAt);
+    anchorClocksTo(participant.joinedAt, sfuJoinedAtMs: _sfuJoinedAtMs);
     return participant;
   }
 
   /// Takes both clock readings, once, against the SFU's stamp for this join.
   ///
-  /// ONE argument, deliberately. The device's own clock is read INSIDE this
-  /// method rather than handed to it, so the two readings cannot be passed the
-  /// wrong way round at the call site — a swap there would report the offset
-  /// negated, which doubles the skew instead of removing it. It also puts the
-  /// whole rule under test: a LiveKit connection cannot be stood up in a unit
-  /// test, so anything left inside [_anchored] is only reachable from a real
-  /// call, and what is left there now is one expression.
+  /// The device's own clock is read INSIDE this method rather than handed to
+  /// it, so the two CLOCKS cannot be passed the wrong way round at the call
+  /// site — a swap there would report the offset negated, which doubles the
+  /// skew instead of removing it. [sfuJoinedAtMs] does not weaken that: it is
+  /// another reading of the SAME server stamp, never of this device, so no
+  /// argument here can carry a device clock. It also puts the whole rule under
+  /// test: a LiveKit connection cannot be stood up in a unit test, so anything
+  /// left inside [_anchored] is only reachable from a real call, and what is
+  /// left there now is one expression.
   ///
   /// KNOWN LIMIT: the device clock is read HERE, at join, while every position
   /// this half carries is stamped from a base the capture service reads at the
@@ -366,15 +394,59 @@ class CallMedia {
   /// and the alternative is worse: `joinedAt` is fixed at join, so pairing it
   /// with a later device reading would measure the call's own length instead.
   @visibleForTesting
-  void anchorClocksTo(DateTime sfuJoinedAt) {
+  void anchorClocksTo(DateTime sfuJoinedAt, {int? sfuJoinedAtMs}) {
     _clockAnchor ??= ClockAnchor.of(
-      sfuMs: sfuJoinedAt.millisecondsSinceEpoch,
+      sfuMs: _sfuReading(sfuJoinedAt.millisecondsSinceEpoch, sfuJoinedAtMs),
       // The same wall clock every position in this half is stamped from, read
       // as close to the SFU's own instant as this device can observe it. What
       // separates them is the join response's flight time -- tens of
-      // milliseconds, inside the second of quantisation above.
+      // milliseconds.
       deviceMs: now().millisecondsSinceEpoch,
     );
+  }
+
+  /// The SFU reading to anchor on: [ms] when it is the same join [seconds]
+  /// reports only stated more precisely, and [seconds] whenever it is not.
+  ///
+  /// A REFINEMENT ONLY, and every branch here exists to keep it one. The
+  /// millisecond field may improve a reading this app already believes; it may
+  /// never create one, rescue one, or replace one with a different instant. So
+  /// a reading that fails any check falls back rather than being repaired,
+  /// which leaves the correction exactly where it was before field 17 existed.
+  ///
+  /// Never on a reading the anchor would refuse. Zero seconds is the unstamped
+  /// protocol default, and an offset measured against 1970 is this device's
+  /// ENTIRE clock rather than its disagreement with anything — so [ClockAnchor]
+  /// refuses it, and a millisecond field arriving beside it must not turn that
+  /// refusal into an answer however well-formed it looks on its own.
+  ///
+  /// Same join, or no deal. `joined_at` is `joined_at_ms` truncated to the
+  /// second, so a stamp for the same join sits at most 999ms past the second
+  /// the other one reports. Anything outside that window is a reading of some
+  /// OTHER moment — a later join after a reconnect is the way that happens —
+  /// and correcting a half by it would move that speaker onto a clock nothing
+  /// was measured against.
+  ///
+  /// That window is also what refuses a zero, which is the case that matters
+  /// most in practice: proto3 leaves default values off the wire, so a server
+  /// that never set `joined_at_ms` and one that set it to zero arrive
+  /// identically, and zero sits half a century before the second reading rather
+  /// than inside it. livekit-server has only sent the field since v1.8.4, so
+  /// an older SFU is the ordinary way here rather than a corruption, and it
+  /// costs nothing but precision.
+  ///
+  /// So the blast radius of a wrong millisecond value is bounded by the window
+  /// that let it through: a stamp this accepts is inside the second the coarse
+  /// reading already named, so the most it can move a half is the second it was
+  /// allowed to refine. [ClockAnchor.of] keeps the last word on the value that
+  /// wins, and refuses it outright if it is not a time at all.
+  static int _sfuReading(int seconds, int? ms) {
+    if (ms == null || seconds <= 0) return seconds;
+    final refines = ms - seconds;
+    if (refines < 0 || refines >= Duration.millisecondsPerSecond) {
+      return seconds;
+    }
+    return ms;
   }
 
   /// Where this device's wall clock sat relative to the SFU's, or null when a
@@ -452,6 +524,12 @@ class CallMedia {
 
   Future<void> dispose() async {
     await disconnect();
+    // Tidiness rather than a leak fix, and cheap enough to state plainly: the
+    // subscription lives on the room's own signal emitter, which the dispose
+    // below closes anyway. Cancelling first means teardown does not depend on
+    // that being true of a future livekit_client.
+    await _stopJoinStampWatch?.call();
+    _stopJoinStampWatch = null;
     await room.dispose();
   }
 }

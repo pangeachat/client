@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
 /// Records what actually reached the SFU layer, so a step that runs after
 /// teardown is visible rather than merely improbable.
@@ -483,6 +484,90 @@ void main() {
         ..anchorClocksTo(sfuJoin);
 
       expect(media.clockAnchor?.offsetMs, 30000);
+    });
+
+    group('the millisecond stamp the SFU sends beside the second one', () {
+      // The SFU joined 437ms into the second `joinedAt` reports, and
+      // `joinedAt` cannot say so: livekit_client reads proto field 6 and
+      // multiplies by a thousand. Field 17 can.
+      final sfuJoinMs = sfuJoin.millisecondsSinceEpoch + 437;
+
+      test('is what the offset is measured against when it is sent', () {
+        // 29563, not 30000. The 437ms is the whole of what the deep import
+        // buys, and reading it here is the only place it can be spent.
+        final media = mediaAt(deviceAtJoin)
+          ..anchorClocksTo(sfuJoin, sfuJoinedAtMs: sfuJoinMs);
+
+        expect(media.clockAnchor?.sfuMs, sfuJoinMs);
+        expect(media.clockAnchor?.offsetMs, 29563);
+      });
+
+      test('leaves the anchor exactly as it was when it is absent', () {
+        // The whole fallback, stated twice because the wire says it twice.
+        // Null is livekit_client never having reported one — no join response
+        // seen, or a package that stopped emitting the event. Zero is an SFU
+        // older than livekit-server v1.8.4, which does not set the field at
+        // all: proto3 leaves defaults off the wire, so absent arrives as zero.
+        // Neither is a time, and both must land on the second-resolution
+        // reading this correction ran on before field 17 existed.
+        for (final absent in <int?>[null, 0]) {
+          final media = mediaAt(deviceAtJoin)
+            ..anchorClocksTo(sfuJoin, sfuJoinedAtMs: absent);
+
+          expect(
+            media.clockAnchor?.sfuMs,
+            sfuJoin.millisecondsSinceEpoch,
+            reason: 'a stamp of $absent must not move the anchor',
+          );
+          expect(media.clockAnchor?.offsetMs, 30000);
+        }
+      });
+
+      test('is refused when it is not the same join the second one is', () {
+        // `joined_at` is `joined_at_ms` truncated to the second, so a stamp
+        // for the same join sits at most 999ms past it. A reading outside that
+        // window is some OTHER moment — a reconnect's later join is how that
+        // happens — and correcting this speaker's half by it would move them
+        // onto a clock nothing here was measured against. Falls back rather
+        // than being repaired, because a refinement that does not refine is
+        // not a better answer, it is a different one.
+        //
+        // Each of these also has to leave an ANCHOR behind rather than merely
+        // decline the refinement. A stamp this app cannot use must cost the
+        // precision and nothing else; carrying an absurd one through to
+        // [ClockAnchor.of] would lose a correction the second reading had
+        // already earned, which is the last entry here.
+        for (final wrong in <int>[
+          sfuJoin.millisecondsSinceEpoch - 1,
+          sfuJoin.millisecondsSinceEpoch + 1000,
+          sfuJoin.millisecondsSinceEpoch + 60000,
+          ClockAnchor.clockCeilingMs,
+        ]) {
+          final media = mediaAt(deviceAtJoin)
+            ..anchorClocksTo(sfuJoin, sfuJoinedAtMs: wrong);
+
+          expect(
+            media.clockAnchor?.sfuMs,
+            sfuJoin.millisecondsSinceEpoch,
+            reason: '$wrong is not a finer reading of this join',
+          );
+        }
+      });
+
+      test('cannot rescue a second reading the anchor refuses', () {
+        // A REFINEMENT ONLY. Zero seconds is the unstamped protocol default,
+        // and an offset measured against 1970 is this device's entire clock
+        // rather than its disagreement with anything — so the anchor refuses
+        // it. A millisecond field arriving beside it must not turn that
+        // refusal into an answer, however well-formed it looks on its own.
+        final media = mediaAt(deviceAtJoin)
+          ..anchorClocksTo(
+            DateTime.fromMillisecondsSinceEpoch(0, isUtc: true),
+            sfuJoinedAtMs: 437,
+          );
+
+        expect(media.clockAnchor, isNull);
+      });
     });
   });
 }

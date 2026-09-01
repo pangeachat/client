@@ -127,11 +127,16 @@ bool suppressionExplainsEmptiness(
 /// Both readings travel rather than the difference alone. The pair is what a
 /// bug report can be read back from, and it costs one integer.
 ///
-/// KNOWN LIMIT: the LiveKit Dart API exposes `joinedAt` only in whole SECONDS
-/// -- `joinedAtMs` exists in the protocol but only behind a private field --
-/// so an offset carries up to a second of quantisation, and the two halves can
-/// disagree by up to a second after correction. That removes minutes of skew
-/// and will not separate two turns spoken less than a second apart.
+/// RESOLUTION IS NOT GUARANTEED, and a reader of a merged transcript should
+/// know which they are looking at. The SFU sends the join stamp twice: proto
+/// field 6, `joined_at`, in whole SECONDS, which is all livekit_client's
+/// `Participant.joinedAt` exposes; and proto field 17, `joined_at_ms`, the same
+/// instant in MILLISECONDS. `CallMedia` prefers the millisecond one and falls
+/// back to the second one, so an offset is good to a millisecond when the SFU
+/// sent field 17 and to a second when it did not. livekit-server has only sent
+/// it since v1.8.4, and either half of a call may have been written against an
+/// older one. At second resolution the correction still removes minutes of
+/// skew, and still will not separate two turns spoken less than a second apart.
 class ClockAnchor {
   /// The SFU's clock at the moment this device joined the call.
   final int sfuMs;
