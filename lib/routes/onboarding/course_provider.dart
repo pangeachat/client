@@ -52,7 +52,14 @@ class ClientCourseProvider implements CourseProvider {
     );
     final joinResp = result.result;
     if (joinResp == null) {
-      throw result.asError ?? "Failed to join space with code";
+      // Rethrow the underlying failure with its own stack: throwing the
+      // Result wrapper gave Sentry the blind "Instance of 'ErrorResult'"
+      // title (#8693).
+      final error = result.asError;
+      if (error != null) {
+        Error.throwWithStackTrace(error.error, error.stackTrace);
+      }
+      throw Exception("Failed to join space with code");
     }
 
     return joinResp.roomId;

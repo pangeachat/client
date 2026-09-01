@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
-import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -21,6 +20,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
@@ -150,7 +150,7 @@ class SpaceCodeController {
     } catch (e, s) {
       completer.complete(Result.error(e, s));
       ErrorHandler.logError(e: e, s: s, data: {"spaceCode": spaceCode});
-      if (e is StreamedResponse && e.statusCode == 429 && context != null) {
+      if (PangeaHttpException.statusCodeOf(e) == 429 && context != null) {
         await showDialog(
           context: context,
           builder: (context) => const TooManyRequestsDialog(),
@@ -174,7 +174,7 @@ class SpaceCodeController {
       onError: (e, s) => e is BannedFromRoomException
           ? L10n.of(context).removedFromCourseError
           : (notFoundError ?? L10n.of(context).unableToFindRoom),
-      showError: (err) => err is! StreamedResponse || err.statusCode != 429,
+      showError: (err) => PangeaHttpException.statusCodeOf(err) != 429,
     );
 
     if (resp.isError) throw resp.error!;
