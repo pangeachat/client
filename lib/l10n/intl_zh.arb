@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-31 12:49:38.586717",
+    "@@last_modified": "2026-09-01 10:41:43.135124",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9813,5 +9813,13 @@
     "callHistoryDeclined": "通话已拒绝",
     "callHistoryYouDeclined": "您拒绝了此通话",
     "starsEarnedInLanguage": "在{language}中获得的星星",
-    "readAloudNoVoiceNote": "此设备上没有高质量的{language}语音，因此这些设置不可用。您仍然可以从消息工具栏播放音频。"
+    "readAloudNoVoiceNote": "此设备上没有高质量的{language}语音，因此这些设置不可用。您仍然可以从消息工具栏播放音频。",
+    "teachOptionSelected": "已选择“教学”",
+    "learnOptionSelected": "已选择“学习”",
+    "selectedTargetLanguage": "已选择 {lang} 作为目标语言",
+    "selectedBaseLanguage": "已选择 {lang} 作为基础语言",
+    "resetTargetLanguage": "重置目标语言",
+    "resetBaseLanguage": "重置基础语言",
+    "selectedLanguageLevel": "已选择 {level} 作为语言水平",
+    "resetLanguageLevel": "重置语言水平"
 }

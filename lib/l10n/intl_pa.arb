@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-31 12:49:34.954859",
+    "@@last_modified": "2026-09-01 10:41:37.742927",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "ਕਾਲ ਅਸਵੀਕਾਰ ਕੀਤੀ ਗਈ",
     "callHistoryYouDeclined": "ਤੁਸੀਂ ਇਹ ਕਾਲ ਅਸਵੀਕਾਰ ਕੀਤੀ",
     "starsEarnedInLanguage": "{language} ਵਿੱਚ ਕਮਾਏ ਸਿਤਾਰੇ",
-    "readAloudNoVoiceNote": "ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਕੋਈ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਉਪਲਬਧ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਹ ਸੈਟਿੰਗਾਂ ਅਣਉਪਲਬਧ ਹਨ। ਤੁਸੀਂ ਅਜੇ ਵੀ ਸੁਨੇਹਾ ਟੂਲਬਾਰ ਤੋਂ ਆਡੀਓ ਚਲਾ ਸਕਦੇ ਹੋ।"
+    "readAloudNoVoiceNote": "ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਕੋਈ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਉਪਲਬਧ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਹ ਸੈਟਿੰਗਾਂ ਅਣਉਪਲਬਧ ਹਨ। ਤੁਸੀਂ ਅਜੇ ਵੀ ਸੁਨੇਹਾ ਟੂਲਬਾਰ ਤੋਂ ਆਡੀਓ ਚਲਾ ਸਕਦੇ ਹੋ।",
+    "teachOptionSelected": "ਸਿਖਾਓ ਚੁਣਿਆ ਗਿਆ",
+    "learnOptionSelected": "ਸਿੱਖੋ ਚੁਣਿਆ ਗਿਆ",
+    "selectedTargetLanguage": "ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਵਜੋਂ {lang} ਚੁਣੀ ਗਈ",
+    "selectedBaseLanguage": "ਮੂਲ ਭਾਸ਼ਾ ਵਜੋਂ {lang} ਚੁਣੀ ਗਈ",
+    "resetTargetLanguage": "ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਰੀਸੈਟ ਕਰੋ",
+    "resetBaseLanguage": "ਮੂਲ ਭਾਸ਼ਾ ਰੀਸੈਟ ਕਰੋ",
+    "selectedLanguageLevel": "ਭਾਸ਼ਾ ਪੱਧਰ ਵਜੋਂ {level} ਚੁਣਿਆ ਗਿਆ",
+    "resetLanguageLevel": "ਭਾਸ਼ਾ ਪੱਧਰ ਰੀਸੈਟ ਕਰੋ"
 }

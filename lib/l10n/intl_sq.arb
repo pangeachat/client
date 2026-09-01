@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-31 12:49:36.584201",
+    "@@last_modified": "2026-09-01 10:41:39.245124",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Thirrja u refuzua",
     "callHistoryYouDeclined": "Ju e refuzuat këtë thirrje",
     "starsEarnedInLanguage": "Yje të fituar në {language}",
-    "readAloudNoVoiceNote": "Nuk ka zë me cilësi të lartë {language} në dispozicion në këtë pajisje, kështu që këto cilësime nuk janë të disponueshme. Mund të luani ende audio nga shiriti i veglave të mesazheve."
+    "readAloudNoVoiceNote": "Nuk ka zë me cilësi të lartë {language} në dispozicion në këtë pajisje, kështu që këto cilësime nuk janë të disponueshme. Mund të luani ende audio nga shiriti i veglave të mesazheve.",
+    "teachOptionSelected": "Mëso i zgjedhur",
+    "learnOptionSelected": "Mëso i zgjedhur",
+    "selectedTargetLanguage": "U zgjodh {lang} si gjuhë e synuar",
+    "selectedBaseLanguage": "U zgjodh {lang} si gjuhë bazë",
+    "resetTargetLanguage": "Rivendos gjuhën e synuar",
+    "resetBaseLanguage": "Rivendos gjuhën bazë",
+    "selectedLanguageLevel": "U zgjodh {level} si nivel gjuhe",
+    "resetLanguageLevel": "Rivendos nivelin e gjuhës"
 }

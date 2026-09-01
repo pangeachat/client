@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-31 12:49:38.538267",
+    "@@last_modified": "2026-09-01 10:41:40.499526",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Занг рад карда шуд",
     "callHistoryYouDeclined": "Шумо ин зангро рад кардед",
     "starsEarnedInLanguage": "Ситораҳои бадастомада дар {language}",
-    "readAloudNoVoiceNote": "Дар ин дастгоҳ овози баландсифати {language} мавҷуд нест, аз ин рӯ ин танзимот дастнорасанд. Шумо ба ҳар ҳол метавонед аудиоро аз панели паёмҳо навозед."
+    "readAloudNoVoiceNote": "Дар ин дастгоҳ овози баландсифати {language} мавҷуд нест, аз ин рӯ ин танзимот дастнорасанд. Шумо ба ҳар ҳол метавонед аудиоро аз панели паёмҳо навозед.",
+    "teachOptionSelected": "Омӯзиш интихоб шуд",
+    "learnOptionSelected": "Омӯхтан интихоб шуд",
+    "selectedTargetLanguage": "{lang} ҳамчун забони мақсад интихоб шуд",
+    "selectedBaseLanguage": "{lang} ҳамчун забони асосӣ интихоб шуд",
+    "resetTargetLanguage": "Забони мақсадро аз нав танзим кунед",
+    "resetBaseLanguage": "Забони асосиро аз нав танзим кунед",
+    "selectedLanguageLevel": "Сатҳи забон {level} интихоб шуд",
+    "resetLanguageLevel": "Сатҳи забонро аз нав танзим кунед"
 }

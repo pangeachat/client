@@ -5261,5 +5261,34 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "teachOptionSelected": "Teach selected",
+    "learnOptionSelected": "Learn selected",
+    "selectedTargetLanguage": "Selected {lang} as target language",
+    "@selectedTargetLanguage": {
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "selectedBaseLanguage": "Selected {lang} as base language",
+    "@selectedBaseLanguage": {
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "resetTargetLanguage": "Reset target language",
+    "resetBaseLanguage": "Reset base language",
+    "selectedLanguageLevel": "Selected {level} as language level",
+    "@selectedLanguageLevel": {
+        "placeholders": {
+            "level": {
+                "type": "String"
+            }
+        }
+    },
+    "resetLanguageLevel": "Reset language level"
 }

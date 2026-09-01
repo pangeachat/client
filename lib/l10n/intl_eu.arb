@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-31 12:49:29.511858",
+    "@@last_modified": "2026-09-01 10:41:29.894578",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9813,5 +9813,13 @@
     "callHistoryDeclined": "Deia baztertuta",
     "callHistoryYouDeclined": "Dei hau baztertu duzu",
     "starsEarnedInLanguage": "{language} hizkuntzan irabazitako izarrak",
-    "readAloudNoVoiceNote": "Ez dago kalitate handiko {language} ahotsik gailu honetan, beraz, ezarpen hauek ez daude erabilgarri. Mezu-barrako audioa erreproduzitu dezakezu oraindik."
+    "readAloudNoVoiceNote": "Ez dago kalitate handiko {language} ahotsik gailu honetan, beraz, ezarpen hauek ez daude erabilgarri. Mezu-barrako audioa erreproduzitu dezakezu oraindik.",
+    "teachOptionSelected": "Irakatsi hautatuta",
+    "learnOptionSelected": "Ikasi hautatuta",
+    "selectedTargetLanguage": "{lang} hautatuta xede-hizkuntza gisa",
+    "selectedBaseLanguage": "{lang} hautatuta oinarri-hizkuntza gisa",
+    "resetTargetLanguage": "Berrezarri xede-hizkuntza",
+    "resetBaseLanguage": "Berrezarri oinarri-hizkuntza",
+    "selectedLanguageLevel": "{level} hautatuta hizkuntza-maila gisa",
+    "resetLanguageLevel": "Berrezarri hizkuntza-maila"
 }

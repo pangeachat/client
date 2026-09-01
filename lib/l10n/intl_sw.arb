@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-31 12:49:37.024035",
+    "@@last_modified": "2026-09-01 10:41:40.246025",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Simu imekataliwa",
     "callHistoryYouDeclined": "Ulikataa simu hii",
     "starsEarnedInLanguage": "Nyota ulizopata katika {language}",
-    "readAloudNoVoiceNote": "Hakuna sauti ya ubora wa juu ya {language} inayopatikana kwenye kifaa hiki, kwa hivyo mipangilio hii haipatikani. Bado unaweza kucheza sauti kutoka kwenye upau wa zana wa ujumbe."
+    "readAloudNoVoiceNote": "Hakuna sauti ya ubora wa juu ya {language} inayopatikana kwenye kifaa hiki, kwa hivyo mipangilio hii haipatikani. Bado unaweza kucheza sauti kutoka kwenye upau wa zana wa ujumbe.",
+    "teachOptionSelected": "Kufundisha kumechaguliwa",
+    "learnOptionSelected": "Kujifunza kumechaguliwa",
+    "selectedTargetLanguage": "Umechagua {lang} kama lugha lengwa",
+    "selectedBaseLanguage": "Umechagua {lang} kama lugha msingi",
+    "resetTargetLanguage": "Weka upya lugha lengwa",
+    "resetBaseLanguage": "Weka upya lugha msingi",
+    "selectedLanguageLevel": "Umechagua kiwango cha lugha {level}",
+    "resetLanguageLevel": "Weka upya kiwango cha lugha"
 }

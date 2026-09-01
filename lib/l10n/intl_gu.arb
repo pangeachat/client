@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-31 12:49:30.089869",
+    "@@last_modified": "2026-09-01 10:41:30.764995",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "કૉલ નકારવામાં આવ્યો",
     "callHistoryYouDeclined": "તમે આ કૉલ નકાર્યો",
     "starsEarnedInLanguage": "{language} માં મેળવેલા સ્ટાર્સ",
-    "readAloudNoVoiceNote": "આ ઉપકરણ પર ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ ઉપલબ્ધ નથી, તેથી આ સેટિંગ્સ ઉપલબ્ધ નથી. તમે હજી પણ મેસેજ ટૂલબારમાંથી ઑડિયો પ્લે કરી શકો છો."
+    "readAloudNoVoiceNote": "આ ઉપકરણ પર ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ ઉપલબ્ધ નથી, તેથી આ સેટિંગ્સ ઉપલબ્ધ નથી. તમે હજી પણ મેસેજ ટૂલબારમાંથી ઑડિયો પ્લે કરી શકો છો.",
+    "teachOptionSelected": "શિક્ષણ પસંદ કર્યું",
+    "learnOptionSelected": "શીખવું પસંદ કર્યું",
+    "selectedTargetLanguage": "લક્ષ્ય ભાષા તરીકે {lang} પસંદ કરી",
+    "selectedBaseLanguage": "મૂળ ભાષા તરીકે {lang} પસંદ કરી",
+    "resetTargetLanguage": "લક્ષ્ય ભાષા રીસેટ કરો",
+    "resetBaseLanguage": "મૂળ ભાષા રીસેટ કરો",
+    "selectedLanguageLevel": "ભાષા સ્તર તરીકે {level} પસંદ કર્યું",
+    "resetLanguageLevel": "ભાષા સ્તર રીસેટ કરો"
 }

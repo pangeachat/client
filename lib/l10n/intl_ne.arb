@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-31 12:49:34.469057",
+    "@@last_modified": "2026-09-01 10:41:36.588982",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "कल अस्वीकृत भयो",
     "callHistoryYouDeclined": "तपाईंले यो कल अस्वीकार गर्नुभयो",
     "starsEarnedInLanguage": "{language} मा कमाएका ताराहरू",
-    "readAloudNoVoiceNote": "यस यन्त्रमा उच्च गुणस्तरको {language} आवाज उपलब्ध छैन, त्यसैले यी सेटिङहरू उपलब्ध छैनन्। तपाईं अझै पनि सन्देश उपकरणपट्टीबाट अडियो बजाउन सक्नुहुन्छ।"
+    "readAloudNoVoiceNote": "यस यन्त्रमा उच्च गुणस्तरको {language} आवाज उपलब्ध छैन, त्यसैले यी सेटिङहरू उपलब्ध छैनन्। तपाईं अझै पनि सन्देश उपकरणपट्टीबाट अडियो बजाउन सक्नुहुन्छ।",
+    "teachOptionSelected": "सिकाउन चयन गरियो",
+    "learnOptionSelected": "सिक्न चयन गरियो",
+    "selectedTargetLanguage": "लक्ष्य भाषाको रूपमा {lang} चयन गरियो",
+    "selectedBaseLanguage": "आधार भाषाको रूपमा {lang} चयन गरियो",
+    "resetTargetLanguage": "लक्ष्य भाषा रिसेट गर्नुहोस्",
+    "resetBaseLanguage": "आधार भाषा रिसेट गर्नुहोस्",
+    "selectedLanguageLevel": "भाषा स्तरको रूपमा {level} चयन गरियो",
+    "resetLanguageLevel": "भाषा स्तर रिसेट गर्नुहोस्"
 }

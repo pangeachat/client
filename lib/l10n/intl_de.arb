@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-31 12:49:28.714850",
+    "@@last_modified": "2026-09-01 10:41:28.543618",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9800,5 +9800,13 @@
     "callHistoryDeclined": "Anruf abgelehnt",
     "callHistoryYouDeclined": "Sie haben diesen Anruf abgelehnt",
     "starsEarnedInLanguage": "In {language} verdiente Sterne",
-    "readAloudNoVoiceNote": "Auf diesem Gerät ist keine hochwertige {language}-Stimme verfügbar, daher sind diese Einstellungen nicht verfügbar. Sie können Audio weiterhin über die Nachrichten-Symbolleiste abspielen."
+    "readAloudNoVoiceNote": "Auf diesem Gerät ist keine hochwertige {language}-Stimme verfügbar, daher sind diese Einstellungen nicht verfügbar. Sie können Audio weiterhin über die Nachrichten-Symbolleiste abspielen.",
+    "teachOptionSelected": "Lehren ausgewählt",
+    "learnOptionSelected": "Lernen ausgewählt",
+    "selectedTargetLanguage": "{lang} als Zielsprache ausgewählt",
+    "selectedBaseLanguage": "{lang} als Ausgangssprache ausgewählt",
+    "resetTargetLanguage": "Zielsprache zurücksetzen",
+    "resetBaseLanguage": "Ausgangssprache zurücksetzen",
+    "selectedLanguageLevel": "{level} als Sprachniveau ausgewählt",
+    "resetLanguageLevel": "Sprachniveau zurücksetzen"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-31 12:49:33.431967",
+    "@@last_modified": "2026-09-01 10:41:36.481812",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "कॉल नाकारला",
     "callHistoryYouDeclined": "तुम्ही हा कॉल नाकारला",
     "starsEarnedInLanguage": "{language} मध्ये मिळवलेले तारे",
-    "readAloudNoVoiceNote": "या डिव्हाइसवर उच्च-गुणवत्तेचा {language} आवाज उपलब्ध नाही, त्यामुळे या सेटिंग्ज उपलब्ध नाहीत. तुम्ही तरीही मेसेज टूलबारमधून ऑडिओ प्ले करू शकता."
+    "readAloudNoVoiceNote": "या डिव्हाइसवर उच्च-गुणवत्तेचा {language} आवाज उपलब्ध नाही, त्यामुळे या सेटिंग्ज उपलब्ध नाहीत. तुम्ही तरीही मेसेज टूलबारमधून ऑडिओ प्ले करू शकता.",
+    "teachOptionSelected": "शिकवा निवडले",
+    "learnOptionSelected": "शिका निवडले",
+    "selectedTargetLanguage": "लक्ष्य भाषा म्हणून {lang} निवडले",
+    "selectedBaseLanguage": "मूळ भाषा म्हणून {lang} निवडले",
+    "resetTargetLanguage": "लक्ष्य भाषा रीसेट करा",
+    "resetBaseLanguage": "मूळ भाषा रीसेट करा",
+    "selectedLanguageLevel": "भाषा स्तर म्हणून {level} निवडले",
+    "resetLanguageLevel": "भाषा स्तर रीसेट करा"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-31 12:49:30.464109",
+    "@@last_modified": "2026-09-01 10:41:30.974507",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "An ki kiran",
     "callHistoryYouDeclined": "Kun ki wannan kiran",
     "starsEarnedInLanguage": "Taurari da aka samu a {language}",
-    "readAloudNoVoiceNote": "Babu ingantacciyar murya ta {language} da ke samuwa a kan wannan na'urar, don haka waɗannan saitunan ba su samuwa. Har yanzu za ka iya kunna sauti daga maɓallin saƙo."
+    "readAloudNoVoiceNote": "Babu ingantacciyar murya ta {language} da ke samuwa a kan wannan na'urar, don haka waɗannan saitunan ba su samuwa. Har yanzu za ka iya kunna sauti daga maɓallin saƙo.",
+    "teachOptionSelected": "An zaɓi koyarwa",
+    "learnOptionSelected": "An zaɓi koyo",
+    "selectedTargetLanguage": "An zaɓi {lang} a matsayin harshen da ake so",
+    "selectedBaseLanguage": "An zaɓi {lang} a matsayin harshen tushe",
+    "resetTargetLanguage": "Sake saita harshen da ake so",
+    "resetBaseLanguage": "Sake saita harshen tushe",
+    "selectedLanguageLevel": "An zaɓi matakin harshe {level}",
+    "resetLanguageLevel": "Sake saita matakin harshe"
 }

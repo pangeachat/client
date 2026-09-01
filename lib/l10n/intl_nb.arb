@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:49:34.245314",
+    "@@last_modified": "2026-09-01 10:41:36.720674",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9870,5 +9870,13 @@
     "callHistoryDeclined": "Samtalen ble avslått",
     "callHistoryYouDeclined": "Du avslo denne samtalen",
     "starsEarnedInLanguage": "Stjerner opptjent i {language}",
-    "readAloudNoVoiceNote": "Ingen høykvalitets {language}-stemme er tilgjengelig på denne enheten, så disse innstillingene er utilgjengelige. Du kan fortsatt spille av lyd fra meldingsverktøylinjen."
+    "readAloudNoVoiceNote": "Ingen høykvalitets {language}-stemme er tilgjengelig på denne enheten, så disse innstillingene er utilgjengelige. Du kan fortsatt spille av lyd fra meldingsverktøylinjen.",
+    "teachOptionSelected": "Lære bort valgt",
+    "learnOptionSelected": "Lære valgt",
+    "selectedTargetLanguage": "{lang} valgt som målspråk",
+    "selectedBaseLanguage": "{lang} valgt som grunnspråk",
+    "resetTargetLanguage": "Tilbakestill målspråk",
+    "resetBaseLanguage": "Tilbakestill grunnspråk",
+    "selectedLanguageLevel": "{level} valgt som språknivå",
+    "resetLanguageLevel": "Tilbakestill språknivå"
 }

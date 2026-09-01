@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:49:37.437021",
+    "@@last_modified": "2026-09-01 10:41:40.431886",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9905,5 +9905,13 @@
     "callHistoryDeclined": "அழைப்பு மறுக்கப்பட்டது",
     "callHistoryYouDeclined": "இந்த அழைப்பை நீங்கள் மறுத்தீர்கள்",
     "starsEarnedInLanguage": "{language} மொழியில் பெற்ற நட்சத்திரங்கள்",
-    "readAloudNoVoiceNote": "இந்தச் சாதனத்தில் உயர்தர {language} குரல் இல்லை, எனவே இந்த அமைப்புகள் கிடைக்கவில்லை. மெசேஜ் கருவிப்பட்டியிலிருந்து நீங்கள் ஆடியோவை இயக்கலாம்."
+    "readAloudNoVoiceNote": "இந்தச் சாதனத்தில் உயர்தர {language} குரல் இல்லை, எனவே இந்த அமைப்புகள் கிடைக்கவில்லை. மெசேஜ் கருவிப்பட்டியிலிருந்து நீங்கள் ஆடியோவை இயக்கலாம்.",
+    "teachOptionSelected": "கற்பித்தல் தேர்வு செய்யப்பட்டது",
+    "learnOptionSelected": "கற்றல் தேர்வு செய்யப்பட்டது",
+    "selectedTargetLanguage": "இலக்கு மொழியாக {lang} தேர்ந்தெடுக்கப்பட்டது",
+    "selectedBaseLanguage": "அடிப்படை மொழியாக {lang} தேர்ந்தெடுக்கப்பட்டது",
+    "resetTargetLanguage": "இலக்கு மொழியை மீட்டமை",
+    "resetBaseLanguage": "அடிப்படை மொழியை மீட்டமை",
+    "selectedLanguageLevel": "மொழி நிலை {level} எனத் தேர்ந்தெடுக்கப்பட்டது",
+    "resetLanguageLevel": "மொழி நிலையை மீட்டமை"
 }

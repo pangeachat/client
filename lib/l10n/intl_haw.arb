@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-31 12:49:30.367811",
+    "@@last_modified": "2026-09-01 10:41:31.191727",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Ua hōʻole ʻia ke kelepona",
     "callHistoryYouDeclined": "Ua hōʻole ʻoe i kēia kelepona",
     "starsEarnedInLanguage": "Nā hōkū i loaʻa ma ka ʻōlelo {language}",
-    "readAloudNoVoiceNote": "ʻAʻohe leo {language} maikaʻi i loaʻa ma kēia hāmeʻa, no laila ʻaʻole loaʻa kēia mau hoʻonohonoho. Hiki nō iā ʻoe ke hoʻokani leo mai ka pahu hana leka."
+    "readAloudNoVoiceNote": "ʻAʻohe leo {language} maikaʻi i loaʻa ma kēia hāmeʻa, no laila ʻaʻole loaʻa kēia mau hoʻonohonoho. Hiki nō iā ʻoe ke hoʻokani leo mai ka pahu hana leka.",
+    "teachOptionSelected": "Ua koho ʻia ke aʻo ʻana",
+    "learnOptionSelected": "Ua koho ʻia ke aʻo ʻana",
+    "selectedTargetLanguage": "Ua koho ʻia ʻo {lang} i ʻōlelo pahuhopu",
+    "selectedBaseLanguage": "Ua koho ʻia ʻo {lang} i ʻōlelo kumu",
+    "resetTargetLanguage": "Hoʻihoʻi hou i ka ʻōlelo pahuhopu",
+    "resetBaseLanguage": "Hoʻihoʻi hou i ka ʻōlelo kumu",
+    "selectedLanguageLevel": "Ua koho ʻia ʻo {level} i pae ʻōlelo",
+    "resetLanguageLevel": "Hoʻihoʻi hou i ka pae ʻōlelo"
 }

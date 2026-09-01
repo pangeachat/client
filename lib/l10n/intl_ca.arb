@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:49:28.307963",
+    "@@last_modified": "2026-09-01 10:41:51.991440",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9940,5 +9940,13 @@
     "callHistoryDeclined": "Trucada rebutjada",
     "callHistoryYouDeclined": "Has rebutjat aquesta trucada",
     "starsEarnedInLanguage": "Estrelles guanyades a {language}",
-    "readAloudNoVoiceNote": "No hi ha cap veu d'alta qualitat en {language} disponible en aquest dispositiu, per la qual cosa aquesta configuració no està disponible. Encara pots reproduir àudio des de la barra d'eines de missatges."
+    "readAloudNoVoiceNote": "No hi ha cap veu d'alta qualitat en {language} disponible en aquest dispositiu, per la qual cosa aquesta configuració no està disponible. Encara pots reproduir àudio des de la barra d'eines de missatges.",
+    "teachOptionSelected": "Ensenyar seleccionat",
+    "learnOptionSelected": "Aprendre seleccionat",
+    "selectedTargetLanguage": "S'ha seleccionat {lang} com a idioma objectiu",
+    "selectedBaseLanguage": "S'ha seleccionat {lang} com a idioma base",
+    "resetTargetLanguage": "Restablir idioma objectiu",
+    "resetBaseLanguage": "Restablir idioma base",
+    "selectedLanguageLevel": "S'ha seleccionat {level} com a nivell d'idioma",
+    "resetLanguageLevel": "Restablir nivell d'idioma"
 }

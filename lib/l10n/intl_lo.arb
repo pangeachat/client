@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-31 12:49:32.727838",
+    "@@last_modified": "2026-09-01 10:41:35.075165",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "ປະຕິເສດການໂທ",
     "callHistoryYouDeclined": "ທ່ານປະຕິເສດການໂທນີ້",
     "starsEarnedInLanguage": "ດາວທີ່ໄດ້ຮັບໃນ {language}",
-    "readAloudNoVoiceNote": "ບໍ່ມີສຽງ {language} ທີ່ມີຄຸນນະພາບສູງຢູ່ໃນອຸປະກອນນີ້, ສະນັ້ນການຕັ້ງຄ່າເຫຼົ່ານີ້ຈຶ່ງບໍ່ສາມາດໃຊ້ໄດ້. ທ່ານຍັງສາມາດຫຼິ້ນສຽງຈາກແຖບເຄື່ອງມືຂໍ້ຄວາມໄດ້."
+    "readAloudNoVoiceNote": "ບໍ່ມີສຽງ {language} ທີ່ມີຄຸນນະພາບສູງຢູ່ໃນອຸປະກອນນີ້, ສະນັ້ນການຕັ້ງຄ່າເຫຼົ່ານີ້ຈຶ່ງບໍ່ສາມາດໃຊ້ໄດ້. ທ່ານຍັງສາມາດຫຼິ້ນສຽງຈາກແຖບເຄື່ອງມືຂໍ້ຄວາມໄດ້.",
+    "teachOptionSelected": "ເລືອກສອນ",
+    "learnOptionSelected": "ເລືອກຮຽນ",
+    "selectedTargetLanguage": "ເລືອກ {lang} ເປັນພາສາເປົ້າໝາຍ",
+    "selectedBaseLanguage": "ເລືອກ {lang} ເປັນພາສາພື້ນຖານ",
+    "resetTargetLanguage": "ຕັ້ງຄ່າພາສາເປົ້າໝາຍຄືນໃໝ່",
+    "resetBaseLanguage": "ຕັ້ງຄ່າພາສາພື້ນຖານຄືນໃໝ່",
+    "selectedLanguageLevel": "ເລືອກ {level} ເປັນລະດັບພາສາ",
+    "resetLanguageLevel": "ຕັ້ງຄ່າລະດັບພາສາຄືນໃໝ່"
 }

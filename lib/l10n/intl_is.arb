@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-31 12:49:31.230278",
+    "@@last_modified": "2026-09-01 10:41:32.472288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Símtali hafnað",
     "callHistoryYouDeclined": "Þú hafnaðir þessu símtali",
     "starsEarnedInLanguage": "Stjörnur unnar í {language}",
-    "readAloudNoVoiceNote": "Engin hágæða {language} rödd er í boði á þessu tæki, svo þessar stillingar eru ekki tiltækar. Þú getur samt spilað hljóð úr skilaboðastikunni."
+    "readAloudNoVoiceNote": "Engin hágæða {language} rödd er í boði á þessu tæki, svo þessar stillingar eru ekki tiltækar. Þú getur samt spilað hljóð úr skilaboðastikunni.",
+    "teachOptionSelected": "Kennslumáti valinn",
+    "learnOptionSelected": "Námsmáti valinn",
+    "selectedTargetLanguage": "{lang} valið sem markmál",
+    "selectedBaseLanguage": "{lang} valið sem grunnmál",
+    "resetTargetLanguage": "Endurstilla markmál",
+    "resetBaseLanguage": "Endurstilla grunnmál",
+    "selectedLanguageLevel": "{level} valið sem tungumálastig",
+    "resetLanguageLevel": "Endurstilla tungumálastig"
 }

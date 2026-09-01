@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-31 12:49:29.593270",
+    "@@last_modified": "2026-09-01 10:41:30.215618",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Oprop wegere",
     "callHistoryYouDeclined": "Jo hawwe dizze oprop wegere",
     "starsEarnedInLanguage": "Stjerren fertsjinne yn {language}",
-    "readAloudNoVoiceNote": "Gjin stim fan hege kwaliteit foar {language} is beskikber op dit apparaat, dus dizze ynstellings binne net beskikber. Jo kinne noch altyd audio ôfspylje fia de berjochtbalke."
+    "readAloudNoVoiceNote": "Gjin stim fan hege kwaliteit foar {language} is beskikber op dit apparaat, dus dizze ynstellings binne net beskikber. Jo kinne noch altyd audio ôfspylje fia de berjochtbalke.",
+    "teachOptionSelected": "Leare selektearre",
+    "learnOptionSelected": "Leare selektearre",
+    "selectedTargetLanguage": "{lang} selektearre as doeltaal",
+    "selectedBaseLanguage": "{lang} selektearre as basistaal",
+    "resetTargetLanguage": "Doeltaal weromsette",
+    "resetBaseLanguage": "Basistaal weromsette",
+    "selectedLanguageLevel": "{level} selektearre as taalnivo",
+    "resetLanguageLevel": "Taalnivo weromsette"
 }

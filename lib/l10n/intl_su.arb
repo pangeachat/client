@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-31 12:49:36.938389",
+    "@@last_modified": "2026-09-01 10:41:40.001175",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Telepon ditolak",
     "callHistoryYouDeclined": "Anjeun nolak telepon ieu",
     "starsEarnedInLanguage": "Béntang anu dimeunangkeun dina basa {language}",
-    "readAloudNoVoiceNote": "Teu aya sora {language} kualitas luhur dina alat ieu, janten setélan ieu teu sayogi. Anjeun tiasa tetep muterkeun audio tina toolbar pesen."
+    "readAloudNoVoiceNote": "Teu aya sora {language} kualitas luhur dina alat ieu, janten setélan ieu teu sayogi. Anjeun tiasa tetep muterkeun audio tina toolbar pesen.",
+    "teachOptionSelected": "Ngajar dipilih",
+    "learnOptionSelected": "Diajar dipilih",
+    "selectedTargetLanguage": "{lang} dipilih salaku basa target",
+    "selectedBaseLanguage": "{lang} dipilih salaku basa dasar",
+    "resetTargetLanguage": "Reset basa target",
+    "resetBaseLanguage": "Reset basa dasar",
+    "selectedLanguageLevel": "{level} dipilih salaku tingkat basa",
+    "resetLanguageLevel": "Reset tingkat basa"
 }

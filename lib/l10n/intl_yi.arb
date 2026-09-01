@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-31 12:49:38.781928",
+    "@@last_modified": "2026-09-01 10:41:42.030621",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "רוף אפגעזאגט",
     "callHistoryYouDeclined": "איר האט אפגעזאגט דעם רוף",
     "starsEarnedInLanguage": "שטערן פֿאַרדינט אין {language}",
-    "readAloudNoVoiceNote": "קיין הויך-קוואַליטעט {language} שטימע איז נישט בנימצא אויף דעם מיטל, אַזוי די סעטטינגס זענען נישט בנימצא. איר קענט נאָך שפּילן אַודיאָ פֿון די מעסעדזש מכשיר."
+    "readAloudNoVoiceNote": "קיין הויך-קוואַליטעט {language} שטימע איז נישט בנימצא אויף דעם מיטל, אַזוי די סעטטינגס זענען נישט בנימצא. איר קענט נאָך שפּילן אַודיאָ פֿון די מעסעדזש מכשיר.",
+    "teachOptionSelected": "לערנען אויסגעקליבן",
+    "learnOptionSelected": "לערנען אויסגעקליבן",
+    "selectedTargetLanguage": "אויסגעקליבן {lang} אלס צילשפראך",
+    "selectedBaseLanguage": "אויסגעקליבן {lang} אלס באַזע שפּראַך",
+    "resetTargetLanguage": "באַשטעטיק צילשפראך",
+    "resetBaseLanguage": "באַשטעטיק באַזע שפּראַך",
+    "selectedLanguageLevel": "אויסגעקליבן {level} אלס שפּראַך ניוואָ",
+    "resetLanguageLevel": "באַשטעטיק שפּראַך ניוואָ"
 }

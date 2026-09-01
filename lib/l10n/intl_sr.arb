@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:49:36.274558",
+    "@@last_modified": "2026-09-01 10:41:39.792504",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10762,5 +10762,13 @@
     "callHistoryDeclined": "Poziv odbijen",
     "callHistoryYouDeclined": "Odbili ste ovaj poziv",
     "starsEarnedInLanguage": "Zvezdice osvojene u {language}",
-    "readAloudNoVoiceNote": "Na ovom uređaju nije dostupan visokokvalitetan glas za {language}, tako da ova podešavanja nisu dostupna. I dalje možete reprodukovati zvuk sa trake sa porukama."
+    "readAloudNoVoiceNote": "Na ovom uređaju nije dostupan visokokvalitetan glas za {language}, tako da ova podešavanja nisu dostupna. I dalje možete reprodukovati zvuk sa trake sa porukama.",
+    "teachOptionSelected": "Predavanje odabrano",
+    "learnOptionSelected": "Učenje odabrano",
+    "selectedTargetLanguage": "Odabran {lang} kao ciljni jezik",
+    "selectedBaseLanguage": "Odabran {lang} kao osnovni jezik",
+    "resetTargetLanguage": "Poništi ciljni jezik",
+    "resetBaseLanguage": "Poništi osnovni jezik",
+    "selectedLanguageLevel": "Odabran {level} kao nivo jezika",
+    "resetLanguageLevel": "Poništi nivo jezika"
 }

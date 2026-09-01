@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:material_symbols_icons/symbols.dart';
 
@@ -47,6 +48,11 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
   void _setSelectedType(UserType type) {
     _step.setUserType(type);
     _selectedType.value = type;
+    SemanticsService.sendAnnouncement(
+      View.of(context),
+      type.selectedMessage(L10n.of(context)),
+      Directionality.of(context),
+    );
   }
 
   @override
@@ -87,23 +93,29 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
                           opacity: type != null && type != UserType.teacher
                               ? 0.5
                               : 1.0,
-                          child: ElevatedButton(
-                            onPressed: () => _setSelectedType(UserType.teacher),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: type == UserType.teacher
-                                  ? theme.colorScheme.primaryContainer
-                                  : theme.colorScheme.surfaceContainer,
-                              foregroundColor: type == UserType.teacher
-                                  ? theme.colorScheme.onPrimaryContainer
-                                  : theme.colorScheme.onSurface,
-                            ),
-                            child: Row(
-                              spacing: 8.0,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.school_outlined, size: 24.0),
-                                Text(L10n.of(context).teach),
-                              ],
+                          child: MergeSemantics(
+                            child: Semantics(
+                              selected: type == UserType.teacher,
+                              child: ElevatedButton(
+                                onPressed: () =>
+                                    _setSelectedType(UserType.teacher),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: type == UserType.teacher
+                                      ? theme.colorScheme.primaryContainer
+                                      : theme.colorScheme.surfaceContainer,
+                                  foregroundColor: type == UserType.teacher
+                                      ? theme.colorScheme.onPrimaryContainer
+                                      : theme.colorScheme.onSurface,
+                                ),
+                                child: Row(
+                                  spacing: 8.0,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.school_outlined, size: 24.0),
+                                    Text(L10n.of(context).teach),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -114,23 +126,29 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
                           opacity: type != null && type != UserType.student
                               ? 0.5
                               : 1.0,
-                          child: ElevatedButton(
-                            onPressed: () => _setSelectedType(UserType.student),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: type == UserType.student
-                                  ? theme.colorScheme.primaryContainer
-                                  : theme.colorScheme.surfaceContainer,
-                              foregroundColor: type == UserType.student
-                                  ? theme.colorScheme.onPrimaryContainer
-                                  : theme.colorScheme.onSurface,
-                            ),
-                            child: Row(
-                              spacing: 8.0,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Symbols.dictionary, size: 24.0),
-                                Text(L10n.of(context).learn),
-                              ],
+                          child: MergeSemantics(
+                            child: Semantics(
+                              selected: type == UserType.student,
+                              child: ElevatedButton(
+                                onPressed: () =>
+                                    _setSelectedType(UserType.student),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: type == UserType.student
+                                      ? theme.colorScheme.primaryContainer
+                                      : theme.colorScheme.surfaceContainer,
+                                  foregroundColor: type == UserType.student
+                                      ? theme.colorScheme.onPrimaryContainer
+                                      : theme.colorScheme.onSurface,
+                                ),
+                                child: Row(
+                                  spacing: 8.0,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Symbols.dictionary, size: 24.0),
+                                    Text(L10n.of(context).learn),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),

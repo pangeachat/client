@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-31 12:49:35.057848",
+    "@@last_modified": "2026-09-01 10:41:37.764684",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "زنګ رد شو",
     "callHistoryYouDeclined": "تاسو دا زنګ رد کړ",
     "starsEarnedInLanguage": "{language} کې ترلاسه شوي ستوري",
-    "readAloudNoVoiceNote": "پدې وسیله کې د {language} لوړ کیفیت غږ شتون نلري، نو دا تنظیمات شتون نلري. تاسو لاهم کولی شئ د پیغام له اوزارپټې څخه آډیو پلی کړئ."
+    "readAloudNoVoiceNote": "پدې وسیله کې د {language} لوړ کیفیت غږ شتون نلري، نو دا تنظیمات شتون نلري. تاسو لاهم کولی شئ د پیغام له اوزارپټې څخه آډیو پلی کړئ.",
+    "teachOptionSelected": "تدریس انتخاب شو",
+    "learnOptionSelected": "زده کړه انتخاب شوه",
+    "selectedTargetLanguage": "{lang} د هدف ژبې په توګه وټاکل شوه",
+    "selectedBaseLanguage": "{lang} د اساس ژبې په توګه وټاکل شوه",
+    "resetTargetLanguage": "هدف ژبه بیا تنظیم کړئ",
+    "resetBaseLanguage": "اساس ژبه بیا تنظیم کړئ",
+    "selectedLanguageLevel": "{level} د ژبې د کچې په توګه وټاکل شوه",
+    "resetLanguageLevel": "د ژبې کچه بیا تنظیم کړئ"
 }

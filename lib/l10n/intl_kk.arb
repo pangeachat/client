@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-31 12:49:32.225519",
+    "@@last_modified": "2026-09-01 10:41:33.857944",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Қоңыраудан бас тартылды",
     "callHistoryYouDeclined": "Сіз бұл қоңыраудан бас тарттыңыз",
     "starsEarnedInLanguage": "{language} тілінде жинаған жұлдыздар",
-    "readAloudNoVoiceNote": "Бұл құрылғыда жоғары сапалы {language} дауысы жоқ, сондықтан бұл параметрлер қолжетімсіз. Хабарлама құралдар тақтасынан аудионы ойната аласыз."
+    "readAloudNoVoiceNote": "Бұл құрылғыда жоғары сапалы {language} дауысы жоқ, сондықтан бұл параметрлер қолжетімсіз. Хабарлама құралдар тақтасынан аудионы ойната аласыз.",
+    "teachOptionSelected": "Оқыту таңдалды",
+    "learnOptionSelected": "Үйрену таңдалды",
+    "selectedTargetLanguage": "Нысана тілі ретінде {lang} таңдалды",
+    "selectedBaseLanguage": "Негізгі тіл ретінде {lang} таңдалды",
+    "resetTargetLanguage": "Нысана тілін қалпына келтіру",
+    "resetBaseLanguage": "Негізгі тілді қалпына келтіру",
+    "selectedLanguageLevel": "Тіл деңгейі ретінде {level} таңдалды",
+    "resetLanguageLevel": "Тіл деңгейін қалпына келтіру"
 }

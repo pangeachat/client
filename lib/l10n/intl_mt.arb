@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-31 12:49:33.899318",
+    "@@last_modified": "2026-09-01 10:41:36.450770",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Sejħa rrifjutata",
     "callHistoryYouDeclined": "Int irrifjutajt din is-sejħa",
     "starsEarnedInLanguage": "Stilel miksuba bil-{language}",
-    "readAloudNoVoiceNote": "L-ebda vuċi ta' kwalità għolja bil-{language} mhija disponibbli fuq dan l-apparat, għalhekk dawn is-settings mhumiex disponibbli. Xorta tista' ddoqq l-awdjo mit-toolbar tal-messaġġi."
+    "readAloudNoVoiceNote": "L-ebda vuċi ta' kwalità għolja bil-{language} mhija disponibbli fuq dan l-apparat, għalhekk dawn is-settings mhumiex disponibbli. Xorta tista' ddoqq l-awdjo mit-toolbar tal-messaġġi.",
+    "teachOptionSelected": "Għażilt li tgħallem",
+    "learnOptionSelected": "Għażilt li titgħallem",
+    "selectedTargetLanguage": "Għażilt il-{lang} bħala l-lingwa mira",
+    "selectedBaseLanguage": "Għażilt il-{lang} bħala l-lingwa bażi",
+    "resetTargetLanguage": "Irrisettja l-lingwa mira",
+    "resetBaseLanguage": "Irrisettja l-lingwa bażi",
+    "selectedLanguageLevel": "Għażilt il-{level} bħala l-livell tal-lingwa",
+    "resetLanguageLevel": "Irrisettja l-livell tal-lingwa"
 }

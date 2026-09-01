@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-31 12:49:36.883085",
+    "@@last_modified": "2026-09-01 10:41:39.089545",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Kufona kwarambwa",
     "callHistoryYouDeclined": "Waramba kufona uku",
     "starsEarnedInLanguage": "Nyeredzi dzawanikwa mu{language}",
-    "readAloudNoVoiceNote": "Hapana izwi remhando yepamusoro rechi{language} riripo pachigadzirwa ichi, saka marongero aya haawanikwe. Unogona kuridza odhiyo kubva kubhari remeseji."
+    "readAloudNoVoiceNote": "Hapana izwi remhando yepamusoro rechi{language} riripo pachigadzirwa ichi, saka marongero aya haawanikwe. Unogona kuridza odhiyo kubva kubhari remeseji.",
+    "teachOptionSelected": "Kudzidzisa kwasarudzwa",
+    "learnOptionSelected": "Kudzidza kwasarudzwa",
+    "selectedTargetLanguage": "Wasarudza {lang} serurimi rwechinangwa",
+    "selectedBaseLanguage": "Wasarudza {lang} serurimi rwekutanga",
+    "resetTargetLanguage": "Seta patsva rurimi rwechinangwa",
+    "resetBaseLanguage": "Seta patsva rurimi rwekutanga",
+    "selectedLanguageLevel": "Wasarudza {level} sezinga rerurimi",
+    "resetLanguageLevel": "Seta patsva zinga rerurimi"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:49:38.680808",
+    "@@last_modified": "2026-09-01 10:41:45.719026",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9919,5 +9919,13 @@
     "callHistoryDeclined": "通話已拒絕",
     "callHistoryYouDeclined": "您拒絕了此通話",
     "starsEarnedInLanguage": "在{language}中獲得的星星",
-    "readAloudNoVoiceNote": "此裝置沒有高品質的{language}語音，因此這些設定無法使用。您仍然可以從訊息工具列播放音訊。"
+    "readAloudNoVoiceNote": "此裝置沒有高品質的{language}語音，因此這些設定無法使用。您仍然可以從訊息工具列播放音訊。",
+    "teachOptionSelected": "已選擇教學",
+    "learnOptionSelected": "已選擇學習",
+    "selectedTargetLanguage": "已選擇 {lang} 作為目標語言",
+    "selectedBaseLanguage": "已選擇 {lang} 作為基礎語言",
+    "resetTargetLanguage": "重設目標語言",
+    "resetBaseLanguage": "重設基礎語言",
+    "selectedLanguageLevel": "已選擇 {level} 作為語言程度",
+    "resetLanguageLevel": "重設語言程度"
 }

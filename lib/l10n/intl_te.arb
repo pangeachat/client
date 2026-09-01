@@ -1325,7 +1325,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-31 12:49:37.505260",
+    "@@last_modified": "2026-09-01 10:41:40.605560",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10763,5 +10763,13 @@
     "callHistoryDeclined": "కాల్ తిరస్కరించబడింది",
     "callHistoryYouDeclined": "మీరు ఈ కాల్‌ను తిరస్కరించారు",
     "starsEarnedInLanguage": "{language}లో సంపాదించిన నక్షత్రాలు",
-    "readAloudNoVoiceNote": "ఈ పరికరంలో అధిక-నాణ్యత గల {language} వాయిస్ అందుబాటులో లేదు, కాబట్టి ఈ సెట్టింగ్‌లు అందుబాటులో లేవు. మీరు ఇప్పటికీ మెసేజ్ టూల్‌బార్ నుండి ఆడియోను ప్లే చేయవచ్చు."
+    "readAloudNoVoiceNote": "ఈ పరికరంలో అధిక-నాణ్యత గల {language} వాయిస్ అందుబాటులో లేదు, కాబట్టి ఈ సెట్టింగ్‌లు అందుబాటులో లేవు. మీరు ఇప్పటికీ మెసేజ్ టూల్‌బార్ నుండి ఆడియోను ప్లే చేయవచ్చు.",
+    "teachOptionSelected": "బోధించు ఎంపిక చేయబడింది",
+    "learnOptionSelected": "నేర్చుకోండి ఎంపిక చేయబడింది",
+    "selectedTargetLanguage": "లక్ష్య భాషగా {lang} ఎంపిక చేయబడింది",
+    "selectedBaseLanguage": "బేస్ భాషగా {lang} ఎంపిక చేయబడింది",
+    "resetTargetLanguage": "లక్ష్య భాషను రీసెట్ చేయండి",
+    "resetBaseLanguage": "బేస్ భాషను రీసెట్ చేయండి",
+    "selectedLanguageLevel": "భాషా స్థాయిగా {level} ఎంపిక చేయబడింది",
+    "resetLanguageLevel": "భాషా స్థాయిని రీసెట్ చేయండి"
 }

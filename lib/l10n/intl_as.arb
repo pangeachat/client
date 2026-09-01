@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-31 12:49:27.954650",
+    "@@last_modified": "2026-09-01 10:41:27.706804",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "কল প্ৰত্যাখ্যান কৰা হ'ল",
     "callHistoryYouDeclined": "আপুনি এই কলটো প্ৰত্যাখ্যান কৰিলে",
     "starsEarnedInLanguage": "{language} ত অৰ্জন কৰা তাৰকাসমূহ",
-    "readAloudNoVoiceNote": "এই ডিভাইচত কোনো উচ্চ মানদণ্ডৰ {language} ভইচ উপলব্ধ নহয়, সেয়েহে এই ছেটিংছসমূহ উপলব্ধ নহয়। আপুনি এতিয়াও মেছেজ টুলবাৰৰ পৰা অডিঅ' প্লে কৰিব পাৰে।"
+    "readAloudNoVoiceNote": "এই ডিভাইচত কোনো উচ্চ মানদণ্ডৰ {language} ভইচ উপলব্ধ নহয়, সেয়েহে এই ছেটিংছসমূহ উপলব্ধ নহয়। আপুনি এতিয়াও মেছেজ টুলবাৰৰ পৰা অডিঅ' প্লে কৰিব পাৰে।",
+    "teachOptionSelected": "শিক্ষাবলৈ বাছনি কৰা হৈছে",
+    "learnOptionSelected": "শিকিবলৈ বাছনি কৰা হৈছে",
+    "selectedTargetLanguage": "লক্ষ্য ভাষা হিচাপে {lang} বাছনি কৰা হৈছে",
+    "selectedBaseLanguage": "মূল ভাষা হিচাপে {lang} বাছনি কৰা হৈছে",
+    "resetTargetLanguage": "লক্ষ্য ভাষা পুনৰ নিৰ্ধাৰণ কৰক",
+    "resetBaseLanguage": "মূল ভাষা পুনৰ নিৰ্ধাৰণ কৰক",
+    "selectedLanguageLevel": "ভাষাৰ স্তৰ হিচাপে {level} বাছনি কৰা হৈছে",
+    "resetLanguageLevel": "ভাষাৰ স্তৰ পুনৰ নিৰ্ধাৰণ কৰক"
 }

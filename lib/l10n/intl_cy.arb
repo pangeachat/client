@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-31 12:49:28.667815",
+    "@@last_modified": "2026-09-01 10:41:28.649355",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Galwad wedi'i gwrthod",
     "callHistoryYouDeclined": "Gwrthodoch chi'r alwad hon",
     "starsEarnedInLanguage": "Sêr a enillwyd yn {language}",
-    "readAloudNoVoiceNote": "Nid oes llais {language} o ansawdd uchel ar gael ar y ddyfais hon, felly nid yw'r gosodiadau hyn ar gael. Gallwch barhau i chwarae sain o far offer y neges."
+    "readAloudNoVoiceNote": "Nid oes llais {language} o ansawdd uchel ar gael ar y ddyfais hon, felly nid yw'r gosodiadau hyn ar gael. Gallwch barhau i chwarae sain o far offer y neges.",
+    "teachOptionSelected": "A ddewiswyd i addysgu",
+    "learnOptionSelected": "A ddewiswyd i ddysgu",
+    "selectedTargetLanguage": "Dewiswyd {lang} fel iaith darged",
+    "selectedBaseLanguage": "Dewiswyd {lang} fel iaith sylfaen",
+    "resetTargetLanguage": "Ailosod iaith darged",
+    "resetBaseLanguage": "Ailosod iaith sylfaen",
+    "selectedLanguageLevel": "Dewiswyd {level} fel lefel iaith",
+    "resetLanguageLevel": "Ailosod lefel iaith"
 }

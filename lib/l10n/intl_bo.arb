@@ -2920,7 +2920,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-31 12:49:28.629026",
+    "@@last_modified": "2026-09-01 10:41:27.976731",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9424,5 +9424,13 @@
     "callHistoryDeclined": "འབོད་བརྡ་མ་བླངས།",
     "callHistoryYouDeclined": "ཁྱེད་ཀྱིས་འབོད་བརྡ་འདི་མ་བླངས།",
     "starsEarnedInLanguage": "{language}ནང་བསགས་པའི་སྐར་མ་",
-    "readAloudNoVoiceNote": "འཕྲུལ་ཆས་འདིའི་ནང་ {language} སྐད་ཀྱི་སྤུས་ཚད་མཐོ་བའི་སྒྲ་མེད་པས། སྒྲིག་འགོད་འདི་དག་བེད་སྤྱོད་བྱེད་མི་ཐུབ། ཁྱེད་ཀྱིས་ད་དུང་འཕྲིན་གྱི་ལག་ཆ་ནས་སྒྲ་གཏོང་ཐུབ།"
+    "readAloudNoVoiceNote": "འཕྲུལ་ཆས་འདིའི་ནང་ {language} སྐད་ཀྱི་སྤུས་ཚད་མཐོ་བའི་སྒྲ་མེད་པས། སྒྲིག་འགོད་འདི་དག་བེད་སྤྱོད་བྱེད་མི་ཐུབ། ཁྱེད་ཀྱིས་ད་དུང་འཕྲིན་གྱི་ལག་ཆ་ནས་སྒྲ་གཏོང་ཐུབ།",
+    "teachOptionSelected": "སློབ་ཁྲིད་བྱེད་རྒྱུ་བདམས་ཟིན།",
+    "learnOptionSelected": "སློབ་སྦྱོང་བྱེད་རྒྱུ་བདམས་ཟིན།",
+    "selectedTargetLanguage": "དམིགས་ཡུལ་གྱི་སྐད་ཡིག་ {lang} བདམས་ཟིན།",
+    "selectedBaseLanguage": "གཞི་རྩའི་སྐད་ཡིག་ {lang} བདམས་ཟིན།",
+    "resetTargetLanguage": "དམིགས་ཡུལ་གྱི་སྐད་ཡིག་སླར་གསོ་བྱེད།",
+    "resetBaseLanguage": "གཞི་རྩའི་སྐད་ཡིག་སླར་གསོ་བྱེད།",
+    "selectedLanguageLevel": "སྐད་ཡིག་གི་ཆུ་ཚད་ {level} བདམས་ཟིན།",
+    "resetLanguageLevel": "སྐད་ཡིག་གི་ཆུ་ཚད་སླར་གསོ་བྱེད།"
 }

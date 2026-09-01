@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-31 12:49:28.771040",
+    "@@last_modified": "2026-09-01 10:41:28.861871",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "ጥሪው ውድቅ ተደርጓል",
     "callHistoryYouDeclined": "ይህን ጥሪ እምቢ ብለዋል",
     "starsEarnedInLanguage": "በ{language} የተገኙ ኮከቦች",
-    "readAloudNoVoiceNote": "በዚህ መሳሪያ ላይ ከፍተኛ ጥራት ያለው የ{language} ድምጽ አይገኝም፣ ስለዚህ እነዚህ ቅንብሮች አይገኙም። አሁንም ከመልዕክት የመሳሪያ አሞሌ ድምጽ ማጫወት ይችላሉ።"
+    "readAloudNoVoiceNote": "በዚህ መሳሪያ ላይ ከፍተኛ ጥራት ያለው የ{language} ድምጽ አይገኝም፣ ስለዚህ እነዚህ ቅንብሮች አይገኙም። አሁንም ከመልዕክት የመሳሪያ አሞሌ ድምጽ ማጫወት ይችላሉ።",
+    "teachOptionSelected": "ማስተማር ተመርጧል",
+    "learnOptionSelected": "መማር ተመርጧል",
+    "selectedTargetLanguage": "ዒላማ ቋንቋ {lang} ተመርጧል",
+    "selectedBaseLanguage": "መሠረት ቋንቋ {lang} ተመርጧል",
+    "resetTargetLanguage": "ዒላማ ቋንቋን ዳግም አስጀምር",
+    "resetBaseLanguage": "መሠረት ቋንቋን ዳግም አስጀምር",
+    "selectedLanguageLevel": "የቋንቋ ደረጃ {level} ተመርጧል",
+    "resetLanguageLevel": "የቋንቋ ደረጃን ዳግም አስጀምር"
 }

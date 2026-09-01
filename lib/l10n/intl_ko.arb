@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:49:31.906844",
+    "@@last_modified": "2026-09-01 10:41:33.754659",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10006,5 +10006,13 @@
     "callHistoryDeclined": "통화 거절됨",
     "callHistoryYouDeclined": "이 통화를 거절했습니다",
     "starsEarnedInLanguage": "{language}에서 획득한 별",
-    "readAloudNoVoiceNote": "이 기기에서는 고품질 {language} 음성을 사용할 수 없으므로 이 설정을 사용할 수 없습니다. 메시지 도구 모음에서 오디오를 계속 재생할 수 있습니다."
+    "readAloudNoVoiceNote": "이 기기에서는 고품질 {language} 음성을 사용할 수 없으므로 이 설정을 사용할 수 없습니다. 메시지 도구 모음에서 오디오를 계속 재생할 수 있습니다.",
+    "teachOptionSelected": "가르치기 선택됨",
+    "learnOptionSelected": "배우기 선택됨",
+    "selectedTargetLanguage": "목표 언어로 {lang} 선택됨",
+    "selectedBaseLanguage": "기본 언어로 {lang} 선택됨",
+    "resetTargetLanguage": "목표 언어 재설정",
+    "resetBaseLanguage": "기본 언어 재설정",
+    "selectedLanguageLevel": "언어 레벨로 {level} 선택됨",
+    "resetLanguageLevel": "언어 레벨 재설정"
 }

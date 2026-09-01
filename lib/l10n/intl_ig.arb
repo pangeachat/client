@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-31 12:49:31.397981",
+    "@@last_modified": "2026-09-01 10:41:32.656072",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Ajụla oku",
     "callHistoryYouDeclined": "Ị jụrụ oku a",
     "starsEarnedInLanguage": "Kpakpando enwetara na {language}",
-    "readAloudNoVoiceNote": "Enweghị olu {language} dị elu dị na ngwaọrụ a, yabụ ntọala ndị a adịghị. Ị ka nwere ike ịkpọ ọdịyo site na ogwe ngwaọrụ ozi."
+    "readAloudNoVoiceNote": "Enweghị olu {language} dị elu dị na ngwaọrụ a, yabụ ntọala ndị a adịghị. Ị ka nwere ike ịkpọ ọdịyo site na ogwe ngwaọrụ ozi.",
+    "teachOptionSelected": "Akụzi ahọpụtara",
+    "learnOptionSelected": "Mụta ahọpụtara",
+    "selectedTargetLanguage": "Ahọpụtara {lang} dị ka asụsụ ebumnuche",
+    "selectedBaseLanguage": "Ahọpụtara {lang} dị ka asụsụ ntọala",
+    "resetTargetLanguage": "Tọgharịa asụsụ ebumnuche",
+    "resetBaseLanguage": "Tọgharịa asụsụ ntọala",
+    "selectedLanguageLevel": "Ahọpụtara {level} dị ka ọkwa asụsụ",
+    "resetLanguageLevel": "Tọgharịa ọkwa asụsụ"
 }

@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-31 12:49:37.924788",
+    "@@last_modified": "2026-09-01 10:41:41.429871",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9817,5 +9817,13 @@
     "callHistoryDeclined": "Qo'ng'iroq rad etildi",
     "callHistoryYouDeclined": "Siz bu qo'ng'iroqni rad etdingiz",
     "starsEarnedInLanguage": "{language} tilida topilgan yulduzlar",
-    "readAloudNoVoiceNote": "Bu qurilmada yuqori sifatli {language} ovozi mavjud emas, shuning uchun bu sozlamalar ishlamaydi. Xabarlar panelidan audio tinglashingiz mumkin."
+    "readAloudNoVoiceNote": "Bu qurilmada yuqori sifatli {language} ovozi mavjud emas, shuning uchun bu sozlamalar ishlamaydi. Xabarlar panelidan audio tinglashingiz mumkin.",
+    "teachOptionSelected": "Oʻqitish tanlandi",
+    "learnOptionSelected": "Oʻrganish tanlandi",
+    "selectedTargetLanguage": "Maqsadli til sifatida {lang} tanlandi",
+    "selectedBaseLanguage": "Asosiy til sifatida {lang} tanlandi",
+    "resetTargetLanguage": "Maqsadli tilni tiklash",
+    "resetBaseLanguage": "Asosiy tilni tiklash",
+    "selectedLanguageLevel": "Til darajasi sifatida {level} tanlandi",
+    "resetLanguageLevel": "Til darajasini tiklash"
 }

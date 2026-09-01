@@ -3094,7 +3094,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-31 12:49:30.308927",
+    "@@last_modified": "2026-09-01 10:41:30.903924",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10445,5 +10445,13 @@
     "callHistoryDeclined": "कॉल अस्वीकृत",
     "callHistoryYouDeclined": "आपने यह कॉल अस्वीकृत कर दी",
     "starsEarnedInLanguage": "{language} में अर्जित सितारे",
-    "readAloudNoVoiceNote": "इस डिवाइस पर कोई उच्च-गुणवत्ता वाली {language} आवाज़ उपलब्ध नहीं है, इसलिए ये सेटिंग्स अनुपलब्ध हैं। आप अभी भी मैसेज टूलबार से ऑडियो चला सकते हैं।"
+    "readAloudNoVoiceNote": "इस डिवाइस पर कोई उच्च-गुणवत्ता वाली {language} आवाज़ उपलब्ध नहीं है, इसलिए ये सेटिंग्स अनुपलब्ध हैं। आप अभी भी मैसेज टूलबार से ऑडियो चला सकते हैं।",
+    "teachOptionSelected": "सिखाना चुना गया",
+    "learnOptionSelected": "सीखना चुना गया",
+    "selectedTargetLanguage": "लक्ष्य भाषा के रूप में {lang} चुना गया",
+    "selectedBaseLanguage": "आधार भाषा के रूप में {lang} चुना गया",
+    "resetTargetLanguage": "लक्ष्य भाषा रीसेट करें",
+    "resetBaseLanguage": "आधार भाषा रीसेट करें",
+    "selectedLanguageLevel": "भाषा स्तर के रूप में {level} चुना गया",
+    "resetLanguageLevel": "भाषा स्तर रीसेट करें"
 }

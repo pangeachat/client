@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-31 12:49:35.078423",
+    "@@last_modified": "2026-09-01 10:41:37.718272",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "କଲ୍ ପ୍ରତ୍ୟାଖ୍ୟାନ କରାଗଲା",
     "callHistoryYouDeclined": "ଆପଣ ଏହି କଲ୍ ପ୍ରତ୍ୟାଖ୍ୟାନ କରିଛନ୍ତି",
     "starsEarnedInLanguage": "{language}ରେ ଅର୍ଜିତ ତାରକା",
-    "readAloudNoVoiceNote": "ଏହି ଡିଭାଇସରେ ଉଚ୍ଚ-ଗୁଣବତ୍ତା ବିଶିଷ୍ଟ {language} ଭଏସ୍ ଉପଲବ୍ଧ ନାହିଁ, ତେଣୁ ଏହି ସେଟିଂଗୁଡ଼ିକ ଉପଲବ୍ଧ ନୁହେଁ। ଆପଣ ଏବେ ବି ମେସେଜ୍ ଟୁଲ୍‌ବାରରୁ ଅଡିଓ ପ୍ଲେ କରିପାରିବେ।"
+    "readAloudNoVoiceNote": "ଏହି ଡିଭାଇସରେ ଉଚ୍ଚ-ଗୁଣବତ୍ତା ବିଶିଷ୍ଟ {language} ଭଏସ୍ ଉପଲବ୍ଧ ନାହିଁ, ତେଣୁ ଏହି ସେଟିଂଗୁଡ଼ିକ ଉପଲବ୍ଧ ନୁହେଁ। ଆପଣ ଏବେ ବି ମେସେଜ୍ ଟୁଲ୍‌ବାରରୁ ଅଡିଓ ପ୍ଲେ କରିପାରିବେ।",
+    "teachOptionSelected": "ଶିକ୍ଷା ଦେବାକୁ ବଛାଯାଇଛି",
+    "learnOptionSelected": "ଶିକ୍ଷା କରିବାକୁ ବଛାଯାଇଛି",
+    "selectedTargetLanguage": "ଲକ୍ଷ୍ୟ ଭାଷା ଭାବରେ {lang} ବଛାଯାଇଛି",
+    "selectedBaseLanguage": "ମୂଳ ଭାଷା ଭାବରେ {lang} ବଛାଯାଇଛି",
+    "resetTargetLanguage": "ଲକ୍ଷ୍ୟ ଭାଷାକୁ ପୁନଃସେଟ୍ କରନ୍ତୁ",
+    "resetBaseLanguage": "ମୂଳ ଭାଷାକୁ ପୁନଃସେଟ୍ କରନ୍ତୁ",
+    "selectedLanguageLevel": "ଭାଷା ସ୍ତର ଭାବରେ {level} ବଛାଯାଇଛି",
+    "resetLanguageLevel": "ଭାଷା ସ୍ତରକୁ ପୁନଃସେଟ୍ କରନ୍ତୁ"
 }

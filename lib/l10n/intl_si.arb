@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-31 12:49:36.006949",
+    "@@last_modified": "2026-09-01 10:41:39.005936",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "ඇමතුම ප්‍රතික්ෂේප කරන ලදී",
     "callHistoryYouDeclined": "ඔබ මෙම ඇමතුම ප්‍රතික්ෂේප කළා",
     "starsEarnedInLanguage": "{language} භාෂාවෙන් උපයාගත් තරු",
-    "readAloudNoVoiceNote": "මෙම උපාංගයේ උසස් තත්ත්වයේ {language} හඬක් නොමැති බැවින්, මෙම සැකසුම් ලබා ගත නොහැක. ඔබට තවමත් පණිවිඩ තීරුවෙන් ශ්‍රව්‍ය වාදනය කළ හැක."
+    "readAloudNoVoiceNote": "මෙම උපාංගයේ උසස් තත්ත්වයේ {language} හඬක් නොමැති බැවින්, මෙම සැකසුම් ලබා ගත නොහැක. ඔබට තවමත් පණිවිඩ තීරුවෙන් ශ්‍රව්‍ය වාදනය කළ හැක.",
+    "teachOptionSelected": "ඉගැන්වීම තෝරා ඇත",
+    "learnOptionSelected": "ඉගෙනීම තෝරා ඇත",
+    "selectedTargetLanguage": "ඉලක්ක භාෂාව ලෙස {lang} තෝරා ඇත",
+    "selectedBaseLanguage": "මූලික භාෂාව ලෙස {lang} තෝරා ඇත",
+    "resetTargetLanguage": "ඉලක්ක භාෂාව යළි සකසන්න",
+    "resetBaseLanguage": "මූලික භාෂාව යළි සකසන්න",
+    "selectedLanguageLevel": "භාෂා මට්ටම ලෙස {level} තෝරා ඇත",
+    "resetLanguageLevel": "භාෂා මට්ටම යළි සකසන්න"
 }

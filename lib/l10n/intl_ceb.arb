@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-31 12:49:28.691657",
+    "@@last_modified": "2026-09-01 10:41:28.350633",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Gibaliwala ang tawag",
     "callHistoryYouDeclined": "Gibaliwala nimo kini nga tawag",
     "starsEarnedInLanguage": "Mga bituon nga nakuha sa {language}",
-    "readAloudNoVoiceNote": "Walay taas nga kalidad nga tingog sa {language} ang anaa niini nga device, busa dili magamit kini nga mga setting. Makapaminaw ka gihapon og audio gikan sa message toolbar."
+    "readAloudNoVoiceNote": "Walay taas nga kalidad nga tingog sa {language} ang anaa niini nga device, busa dili magamit kini nga mga setting. Makapaminaw ka gihapon og audio gikan sa message toolbar.",
+    "teachOptionSelected": "Napili ang pagtudlo",
+    "learnOptionSelected": "Napili ang pagkat-on",
+    "selectedTargetLanguage": "Napili ang {lang} isip target nga pinulongan",
+    "selectedBaseLanguage": "Napili ang {lang} isip base nga pinulongan",
+    "resetTargetLanguage": "I-reset ang target nga pinulongan",
+    "resetBaseLanguage": "I-reset ang base nga pinulongan",
+    "selectedLanguageLevel": "Napili ang {level} isip lebel sa pinulongan",
+    "resetLanguageLevel": "I-reset ang lebel sa pinulongan"
 }

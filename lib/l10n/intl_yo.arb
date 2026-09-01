@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-31 12:49:39.034320",
+    "@@last_modified": "2026-09-01 10:41:42.151138",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Ipe ti kọ",
     "callHistoryYouDeclined": "O kọ ipe yii",
     "starsEarnedInLanguage": "Àwọn ìràwọ̀ tí ó jẹ́ gbígbà ní {language}",
-    "readAloudNoVoiceNote": "Kò sí ohùn {language} tó dára tó lórí ẹ̀rọ yìí, nítorí náà àwọn ètò wọ̀nyí kò sí. O ṣì lè ṣiṣẹ́ ohùn láti ibi ìgbékalẹ̀ ìránṣẹ́."
+    "readAloudNoVoiceNote": "Kò sí ohùn {language} tó dára tó lórí ẹ̀rọ yìí, nítorí náà àwọn ètò wọ̀nyí kò sí. O ṣì lè ṣiṣẹ́ ohùn láti ibi ìgbékalẹ̀ ìránṣẹ́.",
+    "teachOptionSelected": "Kọ́ni tí a yàn",
+    "learnOptionSelected": "Kọ́ tí a yàn",
+    "selectedTargetLanguage": "Èdè àfojúsùn tí a yàn ni {lang}",
+    "selectedBaseLanguage": "Èdè ìpìlẹ̀ tí a yàn ni {lang}",
+    "resetTargetLanguage": "Tún èdè àfojúsùn bẹ̀rẹ̀",
+    "resetBaseLanguage": "Tún èdè ìpìlẹ̀ bẹ̀rẹ̀",
+    "selectedLanguageLevel": "Ìpele èdè tí a yàn ni {level}",
+    "resetLanguageLevel": "Tún ìpele èdè bẹ̀rẹ̀"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-31 12:49:29.604983",
+    "@@last_modified": "2026-09-01 10:41:29.671064",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9810,5 +9810,13 @@
     "callHistoryDeclined": "Kõnest keelduti",
     "callHistoryYouDeclined": "Keeldusite sellest kõnest",
     "starsEarnedInLanguage": "Tähti teenitud keeles {language}",
-    "readAloudNoVoiceNote": "Selles seadmes pole kvaliteetset {language} häält saadaval, seega pole need seaded kättesaadavad. Saate endiselt heli esitada sõnumiribalt."
+    "readAloudNoVoiceNote": "Selles seadmes pole kvaliteetset {language} häält saadaval, seega pole need seaded kättesaadavad. Saate endiselt heli esitada sõnumiribalt.",
+    "teachOptionSelected": "Õpetamine valitud",
+    "learnOptionSelected": "Õppimine valitud",
+    "selectedTargetLanguage": "Sihtkeeleks valitud {lang}",
+    "selectedBaseLanguage": "Baaskeeleks valitud {lang}",
+    "resetTargetLanguage": "Lähtesta sihtkeel",
+    "resetBaseLanguage": "Lähtesta baaskeel",
+    "selectedLanguageLevel": "Keeletasemeks valitud {level}",
+    "resetLanguageLevel": "Lähtesta keeletase"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-31 12:49:32.553943",
+    "@@last_modified": "2026-09-01 10:41:34.646689",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Uruff ofgeleent",
     "callHistoryYouDeclined": "Dir hutt dësen Uruff ofgeleent",
     "starsEarnedInLanguage": "Stären a {language} verdéngt",
-    "readAloudNoVoiceNote": "Keng héichqualitativ {language} Stëmm ass op dësem Apparat verfügbar, dofir sinn dës Astellungen net disponibel. Dir kënnt awer ëmmer nach Audio vun der Message-Toolbar ofspillen."
+    "readAloudNoVoiceNote": "Keng héichqualitativ {language} Stëmm ass op dësem Apparat verfügbar, dofir sinn dës Astellungen net disponibel. Dir kënnt awer ëmmer nach Audio vun der Message-Toolbar ofspillen.",
+    "teachOptionSelected": "Léieren ausgewielt",
+    "learnOptionSelected": "Léieren ausgewielt",
+    "selectedTargetLanguage": "{lang} als Zilssprooch ausgewielt",
+    "selectedBaseLanguage": "{lang} als Basisssprooch ausgewielt",
+    "resetTargetLanguage": "Zilssprooch zrécksetzen",
+    "resetBaseLanguage": "Basisssprooch zrécksetzen",
+    "selectedLanguageLevel": "{level} als Sproochniveau ausgewielt",
+    "resetLanguageLevel": "Sproochniveau zrécksetzen"
 }

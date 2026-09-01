@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-31 12:49:33.033367",
+    "@@last_modified": "2026-09-01 10:41:35.647523",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Повикот е одбиен",
     "callHistoryYouDeclined": "Го одбивте овој повик",
     "starsEarnedInLanguage": "Освоени ѕвезди во {language}",
-    "readAloudNoVoiceNote": "Нема достапен висококвалитетен глас на {language} на овој уред, па овие поставки не се достапни. Сепак можете да пуштате аудио од лентата со алатки за пораки."
+    "readAloudNoVoiceNote": "Нема достапен висококвалитетен глас на {language} на овој уред, па овие поставки не се достапни. Сепак можете да пуштате аудио од лентата со алатки за пораки.",
+    "teachOptionSelected": "Избрано е „Предавај“",
+    "learnOptionSelected": "Избрано е „Учи“",
+    "selectedTargetLanguage": "Избран е {lang} како целен јазик",
+    "selectedBaseLanguage": "Избран е {lang} како основен јазик",
+    "resetTargetLanguage": "Ресетирај целен јазик",
+    "resetBaseLanguage": "Ресетирај основен јазик",
+    "selectedLanguageLevel": "Избрано е {level} како ниво на јазик",
+    "resetLanguageLevel": "Ресетирај ниво на јазик"
 }

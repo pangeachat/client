@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:49:37.985396",
+    "@@last_modified": "2026-09-01 10:41:41.123330",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7105,5 +7105,13 @@
     "callHistoryDeclined": "Cuộc gọi bị từ chối",
     "callHistoryYouDeclined": "Bạn đã từ chối cuộc gọi này",
     "starsEarnedInLanguage": "Số sao kiếm được bằng tiếng {language}",
-    "readAloudNoVoiceNote": "Không có giọng nói {language} chất lượng cao trên thiết bị này, nên các cài đặt này không khả dụng. Bạn vẫn có thể phát âm thanh từ thanh công cụ tin nhắn."
+    "readAloudNoVoiceNote": "Không có giọng nói {language} chất lượng cao trên thiết bị này, nên các cài đặt này không khả dụng. Bạn vẫn có thể phát âm thanh từ thanh công cụ tin nhắn.",
+    "teachOptionSelected": "Đã chọn Dạy",
+    "learnOptionSelected": "Đã chọn Học",
+    "selectedTargetLanguage": "Đã chọn {lang} làm ngôn ngữ mục tiêu",
+    "selectedBaseLanguage": "Đã chọn {lang} làm ngôn ngữ cơ sở",
+    "resetTargetLanguage": "Đặt lại ngôn ngữ mục tiêu",
+    "resetBaseLanguage": "Đặt lại ngôn ngữ cơ sở",
+    "selectedLanguageLevel": "Đã chọn {level} làm trình độ ngôn ngữ",
+    "resetLanguageLevel": "Đặt lại trình độ ngôn ngữ"
 }
