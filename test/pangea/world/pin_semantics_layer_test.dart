@@ -1,3 +1,5 @@
+import 'dart:ui' as ui show SemanticsHitTestBehavior;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -125,6 +127,34 @@ void main() {
         reason:
             'a screen-reader double-tap on the mirrored pin must open the '
             'activity (#7591)',
+      );
+      semantics.dispose();
+    },
+  );
+
+  testWidgets(
+    'a mirrored pin is transparent to native pointer hit-testing (#7525)',
+    (tester) async {
+      final semantics = tester.ensureSemantics();
+      final controller = MapController();
+
+      await tester.pumpWidget(composed(controller: controller, onTap: (_) {}));
+      await tester.pumpAndSettle();
+      controller.move(const LatLng(0, 0), 3);
+      await tester.pumpAndSettle();
+
+      final node = tester.getSemantics(
+        find.bySemanticsLabel(RegExp('Test Activity')),
+      );
+      expect(
+        node.hitTestBehavior,
+        ui.SemanticsHitTestBehavior.transparent,
+        reason:
+            'without an explicit transparent hitTestBehavior the web engine '
+            "infers pointer-events: all from the node's tap action, and the "
+            'mirror captures native mouse events for anything painted over '
+            "the map at the pin's position — the activity video's iframe "
+            'controls went dead this way (#7525)',
       );
       semantics.dispose();
     },
