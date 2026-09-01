@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -82,6 +83,36 @@ class ErrorHandler {
   /// Keys already reported this session via [logErrorOnce].
   static final Set<String> _reportedOnceKeys = {};
 
+  /// The grouping key and session cap key for the expired-token condition.
+  static const List<String> _expiredTokenFingerprint = [
+    'pangea-auth',
+    'expired-matrix-token',
+  ];
+
+  /// Whether [e] is an expired (or otherwise invalidated) Matrix access token
+  /// surfacing as a failed call. One expired token fails every surface at
+  /// once — each call in flight at app boot 401s before the SDK's soft-logout
+  /// refresh lands — so the condition scattered into seven per-endpoint
+  /// Sentry issues (CLIENT-EHD/-EBG/-EBK/-EBM/-EBH/-EED/-EBJ, #8698) at
+  /// ~30 events/day. [logError] collapses everything matching here into one
+  /// grouping ([_expiredTokenFingerprint]) and one report per app session.
+  ///
+  /// Three shapes, all the same condition:
+  /// - the Matrix SDK's own `M_UNKNOWN_TOKEN` failure;
+  /// - a choreo 401 — choreo validates the bearer via Synapse WhoAmI, and an
+  ///   expired token makes that check itself 401;
+  /// - a Pangea Synapse-module 401 — the homeserver rejecting the bearer
+  ///   directly.
+  ///
+  /// Any other 401 (e.g. one with no expired-token detail) keeps its own
+  /// per-endpoint grouping and is never capped.
+  static bool _isExpiredTokenError(Object e) {
+    if (e is MatrixException) return e.error == MatrixError.M_UNKNOWN_TOKEN;
+    if (e is! PangeaHttpException || e.statusCode != 401) return false;
+    return (e.detail?.contains('Matrix WhoAmI non-200 (401)') ?? false) ||
+        e.path.startsWith('/_synapse/client/pangea');
+  }
+
   @visibleForTesting
   static void resetReportedOnceKeysForTest() => _reportedOnceKeys.clear();
 
@@ -138,6 +169,15 @@ class ErrorHandler {
   }) async {
     if (!shouldReport(e)) return;
 
+    // One expired token is one condition regardless of which call surfaced
+    // it: a single grouping, one report per app session ([logErrorOnce]
+    // semantics — the first event carries the signal, Sentry tallies users),
+    // and warning severity per the 401 row of the severity table.
+    final expiredToken = _isExpiredTokenError(e);
+    if (expiredToken && !_reportedOnceKeys.add(_expiredTokenFingerprint.last)) {
+      return;
+    }
+
     debugPrint("error message: $e");
 
     Sentry.addBreadcrumb(Breadcrumb(data: data));
@@ -147,8 +187,14 @@ class ErrorHandler {
       e,
       stackTrace: s ?? StackTrace.current,
       withScope: (scope) {
-        scope.level = level ?? PangeaHttpException.severityOf(e);
-        final fingerprint = PangeaHttpException.fingerprintOf(e);
+        scope.level =
+            level ??
+            (expiredToken
+                ? SentryLevel.warning
+                : PangeaHttpException.severityOf(e));
+        final fingerprint = expiredToken
+            ? _expiredTokenFingerprint
+            : PangeaHttpException.fingerprintOf(e);
         if (fingerprint != null) scope.fingerprint = fingerprint;
       },
     );
