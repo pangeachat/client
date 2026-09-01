@@ -195,7 +195,15 @@ class _FilterMenuEntry {
 /// fills the pill light-purple with a leading check; otherwise it is a plain
 /// white "All …" pill. [icon] is an optional category glyph shown on the pill
 /// when active (the party-size people icon).
-class _FilterDropdownPill extends StatelessWidget {
+///
+/// Built on [MenuAnchor] + [MenuItemButton] rather than PopupMenuButton
+/// (#8724 review): the popup-menu route opened without moving focus into the
+/// menu, leaving a keyboard or VoiceOver user no visible way to reach its
+/// items or close it. Here the first item takes focus the moment the menu
+/// opens, arrows rove the items, Enter selects, and Escape closes with focus
+/// returned to the pill. The pill itself is a [FocusRingTapTarget], which
+/// also gives it the gold focus ring PopupMenuButton's opaque child swallowed.
+class _FilterDropdownPill extends StatefulWidget {
   final String label;
   final Widget? icon;
   final bool active;
@@ -209,65 +217,103 @@ class _FilterDropdownPill extends StatelessWidget {
   });
 
   @override
+  State<_FilterDropdownPill> createState() => _FilterDropdownPillState();
+}
+
+class _FilterDropdownPillState extends State<_FilterDropdownPill> {
+  final MenuController _menuController = MenuController();
+
+  /// The pill's focus node, handed to [MenuAnchor.childFocusNode] so closing
+  /// the menu (Escape, or selecting an item) returns focus to the pill.
+  final FocusNode _buttonFocusNode = FocusNode(debugLabel: 'FilterPill');
+
+  @override
+  void dispose() {
+    _buttonFocusNode.dispose();
+    super.dispose();
+  }
+
+  void _toggleMenu() {
+    if (_menuController.isOpen) {
+      _menuController.close();
+    } else {
+      _menuController.open();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
-    final bg = active ? scheme.primaryContainer : scheme.surface;
-    final fg = active ? scheme.onPrimaryContainer : scheme.onSurfaceVariant;
+    final bg = widget.active ? scheme.primaryContainer : scheme.surface;
+    final fg = widget.active
+        ? scheme.onPrimaryContainer
+        : scheme.onSurfaceVariant;
 
-    return PopupMenuButton<_FilterMenuEntry>(
-      position: PopupMenuPosition.under,
-      onSelected: (e) => e.onSelected(),
-      itemBuilder: (context) => [
-        for (final e in entries)
-          PopupMenuItem<_FilterMenuEntry>(
-            value: e,
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 22,
-                  child: e.selected
-                      ? Icon(Icons.check, size: 18, color: scheme.primary)
-                      : null,
-                ),
-                if (e.icon != null) ...[
-                  Icon(e.icon, size: 18, color: scheme.onSurfaceVariant),
-                  const SizedBox(width: 8),
+    return MenuAnchor(
+      controller: _menuController,
+      childFocusNode: _buttonFocusNode,
+      menuChildren: [
+        for (final e in widget.entries)
+          MenuItemButton(
+            // Focus lands on the first item as the menu opens, so a keyboard
+            // or screen-reader user is IN the menu immediately — arrows move,
+            // Enter selects, Escape closes (#8724 review).
+            autofocus: e == widget.entries.first,
+            onPressed: e.onSelected,
+            child: ConstrainedBox(
+              // Bound the row so a label longer than the old popup-menu's max
+              // width (the ACTFL level titles, long translations) wraps
+              // instead of stretching the menu.
+              constraints: const BoxConstraints(maxWidth: 260),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: 22,
+                    child: e.selected
+                        ? Icon(Icons.check, size: 18, color: scheme.primary)
+                        : null,
+                  ),
+                  if (e.icon != null) ...[
+                    Icon(e.icon, size: 18, color: scheme.onSurfaceVariant),
+                    const SizedBox(width: 8),
+                  ],
+                  Flexible(child: Text(e.label)),
                 ],
-                // Flexible so a label longer than the menu's max width (the
-                // ACTFL level titles, long translations) wraps instead of
-                // overflowing the row.
-                Flexible(child: Text(e.label)),
-              ],
+              ),
             ),
           ),
       ],
-      child: _PillFocusRing(
+      builder: (context, controller, child) => FocusRingTapTarget(
+        onTap: _toggleMenu,
+        focusNode: _buttonFocusNode,
+        shape: const StadiumBorder(),
         child: Container(
           decoration: BoxDecoration(
             color: bg,
             borderRadius: BorderRadius.circular(99),
             border: Border.all(
-              color: active ? Colors.transparent : scheme.outlineVariant,
+              color: widget.active ? Colors.transparent : scheme.outlineVariant,
             ),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (active) ...[
+              if (widget.active) ...[
                 Icon(Icons.check, size: 16, color: fg),
                 const SizedBox(width: 4),
               ],
-              if (icon != null) ...[
+              if (widget.icon != null) ...[
                 IconTheme.merge(
                   data: IconThemeData(size: 16, color: fg),
-                  child: icon!,
+                  child: widget.icon!,
                 ),
                 const SizedBox(width: 4),
               ],
               Text(
-                label,
+                widget.label,
                 style: theme.textTheme.labelLarge?.copyWith(
                   color: fg,
                   fontWeight: FontWeight.w600,
@@ -278,80 +324,6 @@ class _FilterDropdownPill extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-/// The pill's visible focus indicator (#8724): the app's gold focus ring (the
-/// FocusRingTapTarget look), drawn while the enclosing [PopupMenuButton]'s own
-/// InkWell holds focus. The pill's opaque fill swallows that InkWell's
-/// behind-the-child focus highlight (the #7219 failure mode — measured at
-/// exactly 0 changed pixels), and nesting a FocusRingTapTarget here would add
-/// a second, invisible Tab stop per pill — so this listens to the ancestor
-/// focus node instead of owning one.
-class _PillFocusRing extends StatefulWidget {
-  final Widget child;
-
-  const _PillFocusRing({required this.child});
-
-  @override
-  State<_PillFocusRing> createState() => _PillFocusRingState();
-}
-
-class _PillFocusRingState extends State<_PillFocusRing> {
-  FocusNode? _node;
-  bool _focused = false;
-
-  void _onFocusChange() {
-    final focused = _node?.hasFocus ?? false;
-    if (focused != _focused) setState(() => _focused = focused);
-  }
-
-  void _onHighlightModeChanged(FocusHighlightMode _) {
-    if (mounted) setState(() {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    FocusManager.instance.addHighlightModeListener(_onHighlightModeChanged);
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final node = Focus.maybeOf(context);
-    if (!identical(node, _node)) {
-      _node?.removeListener(_onFocusChange);
-      _node = node?..addListener(_onFocusChange);
-      _focused = node?.hasFocus ?? false;
-    }
-  }
-
-  @override
-  void dispose() {
-    FocusManager.instance.removeHighlightModeListener(_onHighlightModeChanged);
-    _node?.removeListener(_onFocusChange);
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // Keyboard affordance only (FocusRingTapTarget.highlightsEnabled — the
-    // Material focus-highlight gate): touch users never see the ring.
-    final showRing = _focused && FocusRingTapTarget.highlightsEnabled;
-    return DecoratedBox(
-      // Foreground, or the pill's opaque fill paints over the stroke and
-      // leaves a near-invisible sliver (#8724 review).
-      position: DecorationPosition.foreground,
-      decoration: ShapeDecoration(
-        shape: StadiumBorder(
-          side: showRing
-              ? FocusRingTapTarget.ringSide(context)
-              : BorderSide.none,
-        ),
-      ),
-      child: widget.child,
     );
   }
 }

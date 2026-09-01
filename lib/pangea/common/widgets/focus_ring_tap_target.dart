@@ -37,10 +37,16 @@ class FocusRingTapTarget extends StatefulWidget {
   final OutlinedBorder shape;
   final Widget child;
 
+  /// Optional external focus node for the InkWell — for callers that need to
+  /// hand the node elsewhere too (the filter pill gives its node to
+  /// [MenuAnchor.childFocusNode] so a closing menu returns focus here).
+  final FocusNode? focusNode;
+
   const FocusRingTapTarget({
     required this.onTap,
     required this.shape,
     required this.child,
+    this.focusNode,
     super.key,
   });
 
@@ -72,6 +78,7 @@ class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
     final showRing = _focused && FocusRingTapTarget.highlightsEnabled;
     return InkWell(
       onTap: widget.onTap,
+      focusNode: widget.focusNode,
       customBorder: widget.shape,
       onFocusChange: (focused) => setState(() => _focused = focused),
       child: DecoratedBox(

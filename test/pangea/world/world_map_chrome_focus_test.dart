@@ -70,7 +70,11 @@ void main() {
     );
   }
 
-  Widget filterBar({VoidCallback? onReset, WorldMapFilter? filter}) {
+  Widget filterBar({
+    VoidCallback? onReset,
+    WorldMapFilter? filter,
+    ValueChanged<ActivityPinState?>? onSetStatus,
+  }) {
     return MaterialApp(
       localizationsDelegates: L10n.localizationsDelegates,
       supportedLocales: L10n.supportedLocales,
@@ -81,7 +85,7 @@ void main() {
             filter: filter ?? const WorldMapFilter(),
             onSetLevel: (_) {},
             onSetPartySize: (_) {},
-            onSetStatus: (_) {},
+            onSetStatus: onSetStatus ?? (_) {},
             onReset: onReset ?? () {},
           ),
         ),
@@ -90,10 +94,11 @@ void main() {
   }
 
   testWidgets(
-    'Tab reaches each filter pill with a visible gold ring; Enter opens the '
-    'dropdown',
+    'Tab reaches each filter pill with a visible gold ring; the dropdown is '
+    'fully keyboard-operable',
     (tester) async {
-      await tester.pumpWidget(filterBar());
+      final statusCalls = <ActivityPinState?>[];
+      await tester.pumpWidget(filterBar(onSetStatus: statusCalls.add));
       await tester.pumpAndSettle();
       final l10n = L10n.of(tester.element(find.byType(WorldMapFilterBar)));
 
@@ -111,9 +116,8 @@ void main() {
       await tester.pumpAndSettle();
       expectRingOn(tester, l10n.mapFilterAllStatuses);
 
-      // Enter opens the focused pill's dropdown (keyboard operability, not
-      // just reachability): the menu adds a second "All statuses" — the
-      // leading option row above the status values.
+      // Enter opens the focused pill's dropdown: the menu adds a second
+      // "All statuses" — the leading option row above the status values.
       await tester.sendKeyEvent(LogicalKeyboardKey.enter);
       await tester.pumpAndSettle();
       expect(
@@ -123,9 +127,42 @@ void main() {
       );
       expect(find.text(l10n.mapStatusOpenToJoin), findsOneWidget);
 
+      // Focus lands on the FIRST item as the menu opens (#8724 review — the
+      // old popup menu opened with focus nowhere, so a keyboard/VO user had
+      // no way in): one ArrowDown reaches the second item, and Enter selects
+      // it and closes the menu.
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+      await tester.pumpAndSettle();
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.pumpAndSettle();
+      expect(
+        statusCalls,
+        [ActivityPinState.available],
+        reason:
+            'ArrowDown from the auto-focused first item must reach '
+            '"Available", and Enter must select it; focus is on '
+            '${FocusManager.instance.primaryFocus}',
+      );
+      expect(
+        find.text(l10n.mapStatusOpenToJoin),
+        findsNothing,
+        reason: 'selecting an item must close the menu',
+      );
+
+      // Closing returned focus to the pill — the ring is back on it.
+      expectRingOn(tester, l10n.mapFilterAllStatuses);
+
+      // Escape closes an open menu without selecting, back to the pill.
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.pumpAndSettle();
+      expect(find.text(l10n.mapStatusOpenToJoin), findsOneWidget);
       await tester.sendKeyEvent(LogicalKeyboardKey.escape);
       await tester.pumpAndSettle();
       expect(find.text(l10n.mapStatusOpenToJoin), findsNothing);
+      expect(statusCalls, [
+        ActivityPinState.available,
+      ], reason: 'Escape must close without selecting');
+      expectRingOn(tester, l10n.mapFilterAllStatuses);
     },
   );
 
