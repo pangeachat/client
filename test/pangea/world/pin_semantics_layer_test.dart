@@ -11,6 +11,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/pin_semantics_layer.dart';
+import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// Covers #7591 at the COMPOSED level — the level the standalone pin tests in
@@ -364,6 +365,131 @@ void main() {
     );
     expect(find.byKey(PinSemanticsLayerState.ringKey), findsNothing);
     mapFocusNode.dispose();
+    semantics.dispose();
+  });
+
+  // The user-visible traversal contract (#8714): from the roved ring, ONE Tab
+  // reaches the next real control — nothing invisible in between. Pumps the
+  // view's actual map children (attribution widget, a large card with its
+  // dismiss X) because both live inside the ExcludeSemantics'd subtree, where
+  // a focusable is hidden from AT but NOT from Tab order: each one shipped is
+  // an invisible dead Tab stop (2.4.7). Mirrors world_map_view.dart's
+  // composition — if a new focusable is added to the map subtree without
+  // ExcludeFocus, this fails.
+  testWidgets('one Tab exits the layer to the next control — no dead stops', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    final controller = MapController();
+    final mapFocusNode = FocusNode(
+      debugLabel: 'FlutterMap',
+      skipTraversal: true,
+    );
+    final searchFocusNode = FocusNode(debugLabel: 'SearchStandIn');
+
+    await tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        // Material ancestor for the TextField stand-in.
+        home: Scaffold(
+          body: Stack(
+            children: [
+              Positioned.fill(
+                child: ExcludeSemantics(
+                  child: FlutterMap(
+                    mapController: controller,
+                    options: MapOptions(
+                      initialCenter: const LatLng(0, 0),
+                      initialZoom: 3,
+                      interactionOptions: InteractionOptions(
+                        keyboardOptions: KeyboardOptions(
+                          focusNode: mapFocusNode,
+                          autofocus: false,
+                        ),
+                      ),
+                    ),
+                    children: [
+                      MarkerLayer(
+                        markers: [
+                          Marker(
+                            point: const LatLng(10, 40),
+                            width: 260,
+                            height: 180,
+                            child: WorldMapLargeCard(
+                              card: card,
+                              state: ActivityPinState.available,
+                              pinged: false,
+                              plan: null,
+                              starsEarned: 0,
+                              participants: const [],
+                              openSlots: 0,
+                              onTap: () {},
+                              onClose: () {},
+                            ),
+                          ),
+                        ],
+                      ),
+                      // The view wraps the attribution in ExcludeFocus — its
+                      // internal expand IconButton is otherwise a focusable the
+                      // browser ring can't mark on the canvas.
+                      ExcludeFocus(
+                        child: RichAttributionWidget(
+                          alignment: AttributionAlignment.bottomLeft,
+                          attributions: [
+                            TextSourceAttribution(
+                              'OpenStreetMap contributors',
+                              onTap: () {},
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned.fill(
+                child: PinSemanticsLayer(
+                  mapController: controller,
+                  cards: const [card],
+                  stateOf: (_) => ActivityPinState.available,
+                  onTap: (_) {},
+                ),
+              ),
+              Positioned(
+                top: 12,
+                left: 12,
+                width: 200,
+                child: TextField(focusNode: searchFocusNode),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    controller.move(const LatLng(0, 0), 3);
+    await tester.pumpAndSettle();
+
+    // Tab 1: into the layer (ring roves the pin).
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.pumpAndSettle();
+    expect(find.byKey(PinSemanticsLayerState.ringKey), findsOneWidget);
+
+    // Tab 2: MUST land on the search field — an intermediate stop is an
+    // invisible focusable inside the map subtree.
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.pumpAndSettle();
+    expect(
+      searchFocusNode.hasFocus,
+      isTrue,
+      reason:
+          'one Tab from the roved ring must reach the next real control; '
+          'focus landed on ${FocusManager.instance.primaryFocus} instead — '
+          'an invisible dead stop in the map subtree (2.4.7, #8714)',
+    );
+    mapFocusNode.dispose();
+    searchFocusNode.dispose();
     semantics.dispose();
   });
 

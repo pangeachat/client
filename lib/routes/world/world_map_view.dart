@@ -1082,22 +1082,31 @@ class _WorldMapViewState extends State<WorldMapView> {
                             ),
                           ),
                         ),
-                        RichAttributionWidget(
-                          // #7218: bottom-LEFT so the attribution and its expand popup don't
-                          // sit under the bottom-right zoom/World controls (where it was
-                          // covered and hard to read, especially in dark mode).
-                          alignment: AttributionAlignment.bottomLeft,
-                          attributions: [
-                            TextSourceAttribution(
-                              'OpenStreetMap contributors',
-                              // OSM's attribution requirement is credit +
-                              // link (#8603); a dead onTap rendered the
-                              // credit without its required target.
-                              onTap: () => launchUrlString(
-                                'https://www.openstreetmap.org/copyright',
+                        // Pointer-only, like everything drawn in this
+                        // ExcludeSemantics'd subtree: the widget's internal
+                        // expand button is a focusable the exclusion hides
+                        // from AT but NOT from Tab order, and its bottom-left
+                        // position slotted it (invisibly focused) between the
+                        // pin layer's single stop and the search bar (2.4.7,
+                        // #8714 — the composed traversal test guards this).
+                        ExcludeFocus(
+                          child: RichAttributionWidget(
+                            // #7218: bottom-LEFT so the attribution and its expand popup don't
+                            // sit under the bottom-right zoom/World controls (where it was
+                            // covered and hard to read, especially in dark mode).
+                            alignment: AttributionAlignment.bottomLeft,
+                            attributions: [
+                              TextSourceAttribution(
+                                'OpenStreetMap contributors',
+                                // OSM's attribution requirement is credit +
+                                // link (#8603); a dead onTap rendered the
+                                // credit without its required target.
+                                onTap: () => launchUrlString(
+                                  'https://www.openstreetmap.org/copyright',
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),
