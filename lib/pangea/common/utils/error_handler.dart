@@ -80,6 +80,12 @@ class ErrorHandler {
   /// copied per call site drifts; a rule with one home cannot.
   static bool shouldReport(Object? e) => e is! UnsubscribedException;
 
+  /// The Sentry context a report's `m` description lands in when the event's
+  /// title is already owned by an exception. Named, so the sink and the suite
+  /// that pins the message is never dropped cannot drift apart.
+  @visibleForTesting
+  static const String messageContext = 'pangea_report';
+
   /// Keys already reported this session via [logErrorOnce].
   static final Set<String> _reportedOnceKeys = {};
 
@@ -106,7 +112,7 @@ class ErrorHandler {
   ///
   /// Any other 401 (e.g. one with no expired-token detail) keeps its own
   /// per-endpoint grouping and is never capped.
-  static bool _isExpiredTokenError(Object e) {
+  static bool _isExpiredTokenError(Object? e) {
     if (e is MatrixException) return e.error == MatrixError.M_UNKNOWN_TOKEN;
     if (e is! PangeaHttpException || e.statusCode != 401) return false;
     return (e.detail?.contains('Matrix WhoAmI non-200 (401)') ?? false) ||
@@ -123,8 +129,9 @@ class ErrorHandler {
   /// is pure event volume. Returns whether this call reported.
   static Future<bool> logErrorOnce({
     required String key,
-    required Object e,
+    Object? e,
     StackTrace? s,
+    String? m,
     required Map<String, dynamic> data,
     SentryLevel? level,
   }) async {
@@ -132,7 +139,7 @@ class ErrorHandler {
     // consume the one report a genuine failure on this key is owed.
     if (!shouldReport(e)) return false;
     if (!_reportedOnceKeys.add(key)) return false;
-    await logError(e: e, s: s, data: data, level: level);
+    await logError(e: e, s: s, m: m, data: data, level: level);
     return true;
   }
 
@@ -146,15 +153,27 @@ class ErrorHandler {
   /// policy). An explicit [level] still wins: a caller with context the
   /// failure lacks may escalate.
   ///
-  /// There is deliberately no `m:` message parameter. One existed and was
-  /// silently dropped whenever [e] was non-null — `captureException(e ?? ...)`
-  /// only ever read it in the no-exception case — so 37 call sites passed a
-  /// hand-written message that reached `debugPrint` and nothing else, and
-  /// searching Sentry for one of our own strings returned nothing (#8660).
-  /// Put the description in [e] instead; it is what Sentry actually reports.
+  /// [m] describes what failed, for a failure that carries no exception of its
+  /// own — a state that is wrong rather than a throw, e.g. a token minted
+  /// without a claim it was supposed to carry. With no [e] it BECOMES the
+  /// reported exception, so it is the event title Sentry groups and searches
+  /// on. [e] is nullable for that case alone: a failure that leaves nothing
+  /// else behind is exactly the one worth an alarm
+  /// (call-device-ownership.instructions.md), and requiring an exception meant
+  /// the only way to raise it was to invent one.
   ///
-  /// [e] is required for the same reason: a report with no error attached
-  /// carried no information the moment `m` stopped backing it.
+  /// [m] is never silently dropped, which is the trap it fell into before.
+  /// `captureException(e ?? Exception(m))` read it only in the no-exception
+  /// case, so 37 sites passed a message that reached `debugPrint` and nothing
+  /// else and searching Sentry for one of our own strings returned nothing
+  /// (#8660). Alongside an [e] it now reaches the event as the
+  /// [messageContext] context. It is deliberately NOT folded into [e]:
+  /// wrapping would change the runtime type that
+  /// [PangeaHttpException.severityOf] and [PangeaHttpException.fingerprintOf]
+  /// both read, and preserving that type is why #8660 dropped those messages
+  /// rather than merging them. So [m] is recoverable from every event it was
+  /// given to — as the title when it is the only thing there, as context when
+  /// an exception owns the title.
   ///
   /// A [PangeaHttpException] additionally reaches Sentry with an explicit
   /// grouping key ([PangeaHttpException.fingerprintOf]) so it lands in an issue
@@ -162,8 +181,9 @@ class ErrorHandler {
   /// all share one frame in [Requests], so every HTTP failure in the app
   /// collapsed into a single catch-all issue (#8469).
   static Future<void> logError({
-    required Object e,
+    Object? e,
     StackTrace? s,
+    String? m,
     required Map<String, dynamic> data,
     SentryLevel? level,
   }) async {
@@ -178,13 +198,16 @@ class ErrorHandler {
       return;
     }
 
-    debugPrint("error message: $e");
+    debugPrint("error message: ${m ?? e}");
 
     Sentry.addBreadcrumb(Breadcrumb(data: data));
     debugPrint(data.toString());
 
     Sentry.captureException(
-      e,
+      // The caught exception wherever there is one, so its type reaches the
+      // severity table and the fingerprint intact. [m] stands in only when
+      // there is nothing to report but the description.
+      e ?? Exception(m ?? 'no message supplied'),
       stackTrace: s ?? StackTrace.current,
       withScope: (scope) {
         scope.level =
@@ -196,6 +219,9 @@ class ErrorHandler {
             ? _expiredTokenFingerprint
             : PangeaHttpException.fingerprintOf(e);
         if (fingerprint != null) scope.fingerprint = fingerprint;
+        // Only where the exception already owns the title. With no [e], [m] IS
+        // the title, and repeating it here would be noise in every event.
+        if (m != null && e != null) scope.setContexts(messageContext, m);
       },
     );
   }

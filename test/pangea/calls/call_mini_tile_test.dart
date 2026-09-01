@@ -40,13 +40,26 @@ class _StubMedia extends CallMedia {
 }
 
 class _NullSink implements CallAudioSink {
+  /// Chunks the recorder set aside because a sibling device was recording the
+  /// same stretch. Kept rather than dropped, because dropping them is the very
+  /// loss [CallAudioSink.discarded] exists to close: a sink that forgets a
+  /// discard leaves the chunk in no count at all, and nothing downstream can
+  /// then tell a correct discard from a wrong one. A fake that answered `{}`
+  /// would be modelling the bug rather than the sink.
+  final List<PcmChunk> discardedChunks = [];
+
   @override
   Future<void> deliver(PcmChunk chunk, {Duration? within}) async {}
+
+  @override
+  void discarded(PcmChunk chunk) => discardedChunks.add(chunk);
 
   @override
   // True: a sink holding nothing has nothing outstanding, so everything it was
   // given did settle. Returning false here would tell the one caller that
   // publishes a transcript that this half is knowingly short of what was said.
+  // Discards do not change that: they were set aside on purpose, so they are
+  // not outstanding work.
   Future<bool> close() async => true;
 }
 
