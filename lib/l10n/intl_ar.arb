@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-31 12:49:27.647296",
+    "@@last_modified": "2026-09-01 10:41:27.094486",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10119,5 +10119,13 @@
     "callHistoryDeclined": "تم رفض المكالمة",
     "callHistoryYouDeclined": "لقد رفضت هذه المكالمة",
     "starsEarnedInLanguage": "النجوم المكتسبة في {language}",
-    "readAloudNoVoiceNote": "لا يتوفر صوت {language} عالي الجودة على هذا الجهاز، لذا فإن هذه الإعدادات غير متاحة. لا يزال بإمكانك تشغيل الصوت من شريط أدوات الرسائل."
+    "readAloudNoVoiceNote": "لا يتوفر صوت {language} عالي الجودة على هذا الجهاز، لذا فإن هذه الإعدادات غير متاحة. لا يزال بإمكانك تشغيل الصوت من شريط أدوات الرسائل.",
+    "teachOptionSelected": "تم اختيار التدريس",
+    "learnOptionSelected": "تم اختيار التعلم",
+    "selectedTargetLanguage": "تم اختيار {lang} كلغة مستهدفة",
+    "selectedBaseLanguage": "تم اختيار {lang} كلغة أساسية",
+    "resetTargetLanguage": "إعادة تعيين اللغة المستهدفة",
+    "resetBaseLanguage": "إعادة تعيين اللغة الأساسية",
+    "selectedLanguageLevel": "تم اختيار {level} كمستوى للغة",
+    "resetLanguageLevel": "إعادة تعيين مستوى اللغة"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-31 12:49:36.803564",
+    "@@last_modified": "2026-09-01 10:41:40.180795",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Mohala o hanetsoe",
     "callHistoryYouDeclined": "U hanne mohala ona",
     "starsEarnedInLanguage": "Dinaledi tse fumanweng ho {language}",
-    "readAloudNoVoiceNote": "Ha ho lentsoe la boleng bo holimo la {language} le fumanehang sesebelisoa sena, ka hona litlhophiso tsena ha li fumanehe. U ntse u ka bapala molumo ho tsoa ho toolbar ea molaetsa."
+    "readAloudNoVoiceNote": "Ha ho lentsoe la boleng bo holimo la {language} le fumanehang sesebelisoa sena, ka hona litlhophiso tsena ha li fumanehe. U ntse u ka bapala molumo ho tsoa ho toolbar ea molaetsa.",
+    "teachOptionSelected": "Ho ruta ho kgethilwe",
+    "learnOptionSelected": "Ho ithuta ho kgethilwe",
+    "selectedTargetLanguage": "O kgethile {lang} e le puo eo o batlang ho e ithuta",
+    "selectedBaseLanguage": "O kgethile {lang} e le puo ya motheo",
+    "resetTargetLanguage": "Seta botjha puo eo o batlang ho e ithuta",
+    "resetBaseLanguage": "Seta botjha puo ya motheo",
+    "selectedLanguageLevel": "O kgethile boemo ba puo ba {level}",
+    "resetLanguageLevel": "Seta botjha boemo ba puo"
 }

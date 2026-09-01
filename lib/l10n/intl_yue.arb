@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-31 12:49:38.597558",
+    "@@last_modified": "2026-09-01 10:41:41.784096",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10770,5 +10770,13 @@
     "callHistoryDeclined": "通話已拒絕",
     "callHistoryYouDeclined": "你拒絕了此通話",
     "starsEarnedInLanguage": "喺{language}賺取嘅星星",
-    "readAloudNoVoiceNote": "此裝置沒有高品質嘅{language}語音，所以呢啲設定用唔到。你仍然可以喺訊息工具列播放音訊。"
+    "readAloudNoVoiceNote": "此裝置沒有高品質嘅{language}語音，所以呢啲設定用唔到。你仍然可以喺訊息工具列播放音訊。",
+    "teachOptionSelected": "已選擇「教」",
+    "learnOptionSelected": "已選擇「學」",
+    "selectedTargetLanguage": "已選擇 {lang} 作為目標語言",
+    "selectedBaseLanguage": "已選擇 {lang} 作為基礎語言",
+    "resetTargetLanguage": "重設目標語言",
+    "resetBaseLanguage": "重設基礎語言",
+    "selectedLanguageLevel": "已選擇 {level} 作為語言程度",
+    "resetLanguageLevel": "重設語言程度"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:49:29.347294",
+    "@@last_modified": "2026-09-01 10:41:29.557636",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9901,5 +9901,13 @@
     "callHistoryDeclined": "تماس رد شد",
     "callHistoryYouDeclined": "شما این تماس را رد کردید",
     "starsEarnedInLanguage": "ستاره‌های کسب شده در {language}",
-    "readAloudNoVoiceNote": "صدای باکیفیت {language} در این دستگاه موجود نیست، بنابراین این تنظیمات در دسترس نیستند. همچنان می‌توانید صدا را از نوار ابزار پیام پخش کنید."
+    "readAloudNoVoiceNote": "صدای باکیفیت {language} در این دستگاه موجود نیست، بنابراین این تنظیمات در دسترس نیستند. همچنان می‌توانید صدا را از نوار ابزار پیام پخش کنید.",
+    "teachOptionSelected": "آموزش انتخاب شد",
+    "learnOptionSelected": "یادگیری انتخاب شد",
+    "selectedTargetLanguage": "{lang} به عنوان زبان هدف انتخاب شد",
+    "selectedBaseLanguage": "{lang} به عنوان زبان پایه انتخاب شد",
+    "resetTargetLanguage": "بازنشانی زبان هدف",
+    "resetBaseLanguage": "بازنشانی زبان پایه",
+    "selectedLanguageLevel": "{level} به عنوان سطح زبان انتخاب شد",
+    "resetLanguageLevel": "بازنشانی سطح زبان"
 }

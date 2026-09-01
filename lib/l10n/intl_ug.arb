@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-31 12:49:38.363609",
+    "@@last_modified": "2026-09-01 10:41:42.351279",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "تېلېفون رەت قىلىندى",
     "callHistoryYouDeclined": "سىز بۇ تېلېفوننى رەت قىلدىڭىز",
     "starsEarnedInLanguage": "{language}دا ئېرىشكەن چولپانلار",
-    "readAloudNoVoiceNote": "بۇ ئۈسكۈنىدە يۇقىرى سۈپەتلىك {language} ئاۋازى يوق، شۇڭا بۇ تەڭشەكلەر ئىشلەتمەيدۇ. سىز يەنىلا ئۇچۇر قورال بالدىقىدىن ئاۋاز قويالايسىز."
+    "readAloudNoVoiceNote": "بۇ ئۈسكۈنىدە يۇقىرى سۈپەتلىك {language} ئاۋازى يوق، شۇڭا بۇ تەڭشەكلەر ئىشلەتمەيدۇ. سىز يەنىلا ئۇچۇر قورال بالدىقىدىن ئاۋاز قويالايسىز.",
+    "teachOptionSelected": "ئوقۇتۇش تاللىنىدۇ",
+    "learnOptionSelected": "ئۆگىنىش تاللىنىدۇ",
+    "selectedTargetLanguage": "{lang} نى نىشان تىل قىلىپ تاللىدى",
+    "selectedBaseLanguage": "{lang} نى ئاساسىي تىل قىلىپ تاللىدى",
+    "resetTargetLanguage": "نىشان تىلنى ئەسلىگە قايتۇرۇش",
+    "resetBaseLanguage": "ئاساسىي تىلنى ئەسلىگە قايتۇرۇش",
+    "selectedLanguageLevel": "{level} نى تىل سەۋىيىسى قىلىپ تاللىدى",
+    "resetLanguageLevel": "تىل سەۋىيىسىنى ئەسلىگە قايتۇرۇش"
 }

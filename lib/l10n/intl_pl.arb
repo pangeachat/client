@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-31 12:49:34.780564",
+    "@@last_modified": "2026-09-01 10:41:37.613820",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9898,5 +9898,13 @@
     "callHistoryDeclined": "Rozmowa odrzucona",
     "callHistoryYouDeclined": "Odrzuciłeś to połączenie",
     "starsEarnedInLanguage": "Gwiazdki zdobyte w {language}",
-    "readAloudNoVoiceNote": "Brak wysokiej jakości głosu {language} na tym urządzeniu, więc te ustawienia są niedostępne. Nadal możesz odtwarzać dźwięk z paska narzędzi wiadomości."
+    "readAloudNoVoiceNote": "Brak wysokiej jakości głosu {language} na tym urządzeniu, więc te ustawienia są niedostępne. Nadal możesz odtwarzać dźwięk z paska narzędzi wiadomości.",
+    "teachOptionSelected": "Wybrano opcję „Ucz”",
+    "learnOptionSelected": "Wybrano opcję „Ucz się”",
+    "selectedTargetLanguage": "Wybrano język docelowy: {lang}",
+    "selectedBaseLanguage": "Wybrano język podstawowy: {lang}",
+    "resetTargetLanguage": "Zresetuj język docelowy",
+    "resetBaseLanguage": "Zresetuj język podstawowy",
+    "selectedLanguageLevel": "Wybrano poziom języka: {level}",
+    "resetLanguageLevel": "Zresetuj poziom języka"
 }

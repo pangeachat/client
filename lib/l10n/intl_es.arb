@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-31 12:49:29.159937",
+    "@@last_modified": "2026-09-01 10:41:29.402785",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8032,5 +8032,13 @@
     "callHistoryDeclined": "Llamada rechazada",
     "callHistoryYouDeclined": "Rechazaste esta llamada",
     "starsEarnedInLanguage": "Estrellas ganadas en {language}",
-    "readAloudNoVoiceNote": "No hay una voz de {language} de alta calidad disponible en este dispositivo, por lo que esta configuración no está disponible. Aún puedes reproducir audio desde la barra de herramientas del mensaje."
+    "readAloudNoVoiceNote": "No hay una voz de {language} de alta calidad disponible en este dispositivo, por lo que esta configuración no está disponible. Aún puedes reproducir audio desde la barra de herramientas del mensaje.",
+    "teachOptionSelected": "Enseñar seleccionado",
+    "learnOptionSelected": "Aprender seleccionado",
+    "selectedTargetLanguage": "{lang} seleccionado como idioma objetivo",
+    "selectedBaseLanguage": "{lang} seleccionado como idioma base",
+    "resetTargetLanguage": "Restablecer idioma objetivo",
+    "resetBaseLanguage": "Restablecer idioma base",
+    "selectedLanguageLevel": "{level} seleccionado como nivel de idioma",
+    "resetLanguageLevel": "Restablecer nivel de idioma"
 }

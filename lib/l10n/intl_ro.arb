@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:49:35.473615",
+    "@@last_modified": "2026-09-01 10:41:37.902211",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10545,5 +10545,13 @@
     "callHistoryDeclined": "Apel refuzat",
     "callHistoryYouDeclined": "Ai refuzat acest apel",
     "starsEarnedInLanguage": "Stele câștigate în {language}",
-    "readAloudNoVoiceNote": "Nu este disponibilă nicio voce de înaltă calitate pentru {language} pe acest dispozitiv, așadar aceste setări nu sunt disponibile. Puteți reda în continuare audio din bara de instrumente a mesajului."
+    "readAloudNoVoiceNote": "Nu este disponibilă nicio voce de înaltă calitate pentru {language} pe acest dispozitiv, așadar aceste setări nu sunt disponibile. Puteți reda în continuare audio din bara de instrumente a mesajului.",
+    "teachOptionSelected": "Predare selectată",
+    "learnOptionSelected": "Învățare selectată",
+    "selectedTargetLanguage": "Limba țintă selectată: {lang}",
+    "selectedBaseLanguage": "Limba de bază selectată: {lang}",
+    "resetTargetLanguage": "Resetare limbă țintă",
+    "resetBaseLanguage": "Resetare limbă de bază",
+    "selectedLanguageLevel": "Nivel de limbă selectat: {level}",
+    "resetLanguageLevel": "Resetare nivel de limbă"
 }

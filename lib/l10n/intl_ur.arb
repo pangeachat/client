@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-31 12:49:38.223913",
+    "@@last_modified": "2026-09-01 10:41:41.270145",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "کال رد کر دی گئی",
     "callHistoryYouDeclined": "آپ نے یہ کال رد کر دی",
     "starsEarnedInLanguage": "{language} میں حاصل کردہ ستارے",
-    "readAloudNoVoiceNote": "اس ڈیوائس پر اعلیٰ معیار کی {language} آواز دستیاب نہیں ہے، لہذا یہ ترتیبات دستیاب نہیں ہیں۔ آپ اب بھی میسج ٹول بار سے آڈیو چلا سکتے ہیں۔"
+    "readAloudNoVoiceNote": "اس ڈیوائس پر اعلیٰ معیار کی {language} آواز دستیاب نہیں ہے، لہذا یہ ترتیبات دستیاب نہیں ہیں۔ آپ اب بھی میسج ٹول بار سے آڈیو چلا سکتے ہیں۔",
+    "teachOptionSelected": "سکھانے کا اختیار منتخب کیا گیا",
+    "learnOptionSelected": "سیکھنے کا اختیار منتخب کیا گیا",
+    "selectedTargetLanguage": "ہدف زبان کے طور پر {lang} منتخب کی گئی",
+    "selectedBaseLanguage": "بنیادی زبان کے طور پر {lang} منتخب کی گئی",
+    "resetTargetLanguage": "ہدف زبان دوبارہ سیٹ کریں",
+    "resetBaseLanguage": "بنیادی زبان دوبارہ سیٹ کریں",
+    "selectedLanguageLevel": "زبان کی سطح کے طور پر {level} منتخب کی گئی",
+    "resetLanguageLevel": "زبان کی سطح دوبارہ سیٹ کریں"
 }

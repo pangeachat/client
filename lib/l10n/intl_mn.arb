@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-31 12:49:38.827799",
+    "@@last_modified": "2026-09-01 10:41:35.734925",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Дуудлагаас татгалзсан",
     "callHistoryYouDeclined": "Та энэ дуудлагаас татгалзсан",
     "starsEarnedInLanguage": "{language} хэлээр цуглуулсан од",
-    "readAloudNoVoiceNote": "Энэ төхөөрөмжид өндөр чанартай {language} дуу хоолой байхгүй тул эдгээр тохиргоог ашиглах боломжгүй. Та мессежийн хэрэгслийн самбараас аудио тоглуулах боломжтой хэвээр байна."
+    "readAloudNoVoiceNote": "Энэ төхөөрөмжид өндөр чанартай {language} дуу хоолой байхгүй тул эдгээр тохиргоог ашиглах боломжгүй. Та мессежийн хэрэгслийн самбараас аудио тоглуулах боломжтой хэвээр байна.",
+    "teachOptionSelected": "Заахыг сонгосон",
+    "learnOptionSelected": "Сурахыг сонгосон",
+    "selectedTargetLanguage": "Зорилтот хэлээр {lang}-г сонгосон",
+    "selectedBaseLanguage": "Үндсэн хэлээр {lang}-г сонгосон",
+    "resetTargetLanguage": "Зорилтот хэлийг дахин тохируулах",
+    "resetBaseLanguage": "Үндсэн хэлийг дахин тохируулах",
+    "selectedLanguageLevel": "Хэлний түвшинг {level} гэж сонгосон",
+    "resetLanguageLevel": "Хэлний түвшинг дахин тохируулах"
 }

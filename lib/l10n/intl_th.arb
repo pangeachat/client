@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-31 12:49:37.637686",
+    "@@last_modified": "2026-09-01 10:41:40.161066",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10445,5 +10445,13 @@
     "callHistoryDeclined": "ปฏิเสธสาย",
     "callHistoryYouDeclined": "คุณปฏิเสธสายนี้",
     "starsEarnedInLanguage": "ดาวที่ได้รับใน {language}",
-    "readAloudNoVoiceNote": "ไม่มีเสียง {language} คุณภาพสูงบนอุปกรณ์นี้ การตั้งค่าเหล่านี้จึงไม่พร้อมใช้งาน คุณยังสามารถเล่นเสียงจากแถบเครื่องมือข้อความได้"
+    "readAloudNoVoiceNote": "ไม่มีเสียง {language} คุณภาพสูงบนอุปกรณ์นี้ การตั้งค่าเหล่านี้จึงไม่พร้อมใช้งาน คุณยังสามารถเล่นเสียงจากแถบเครื่องมือข้อความได้",
+    "teachOptionSelected": "เลือกสอน",
+    "learnOptionSelected": "เลือกเรียน",
+    "selectedTargetLanguage": "เลือก {lang} เป็นภาษาเป้าหมาย",
+    "selectedBaseLanguage": "เลือก {lang} เป็นภาษาหลัก",
+    "resetTargetLanguage": "รีเซ็ตภาษาเป้าหมาย",
+    "resetBaseLanguage": "รีเซ็ตภาษาหลัก",
+    "selectedLanguageLevel": "เลือกระดับภาษา {level}",
+    "resetLanguageLevel": "รีเซ็ตระดับภาษา"
 }

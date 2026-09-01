@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-31 12:49:35.765424",
+    "@@last_modified": "2026-09-01 10:41:38.934267",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10758,5 +10758,13 @@
     "callHistoryDeclined": "Hovor odmietnutý",
     "callHistoryYouDeclined": "Tento hovor ste odmietli",
     "starsEarnedInLanguage": "Hviezdy získané v jazyku {language}",
-    "readAloudNoVoiceNote": "Na tomto zariadení nie je k dispozícii vysokokvalitný hlas pre jazyk {language}, takže tieto nastavenia nie sú dostupné. Zvuk môžete stále prehrávať z panela správ."
+    "readAloudNoVoiceNote": "Na tomto zariadení nie je k dispozícii vysokokvalitný hlas pre jazyk {language}, takže tieto nastavenia nie sú dostupné. Zvuk môžete stále prehrávať z panela správ.",
+    "teachOptionSelected": "Učiť vybrané",
+    "learnOptionSelected": "Učiť sa vybrané",
+    "selectedTargetLanguage": "Vybraný cieľový jazyk: {lang}",
+    "selectedBaseLanguage": "Vybraný základný jazyk: {lang}",
+    "resetTargetLanguage": "Obnoviť cieľový jazyk",
+    "resetBaseLanguage": "Obnoviť základný jazyk",
+    "selectedLanguageLevel": "Vybraná úroveň jazyka: {level}",
+    "resetLanguageLevel": "Obnoviť úroveň jazyka"
 }

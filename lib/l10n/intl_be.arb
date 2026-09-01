@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-31 12:49:27.790811",
+    "@@last_modified": "2026-09-01 10:41:27.246050",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9827,5 +9827,13 @@
     "callHistoryDeclined": "Званок адхілены",
     "callHistoryYouDeclined": "Вы адхілілі гэты званок",
     "starsEarnedInLanguage": "Зароблена зорак у {language}",
-    "readAloudNoVoiceNote": "На гэтай прыладзе няма высакаякаснага голасу {language}, таму гэтыя налады недаступныя. Вы ўсё яшчэ можаце прайграваць аўдыя з панэлі інструментаў паведамленняў."
+    "readAloudNoVoiceNote": "На гэтай прыладзе няма высакаякаснага голасу {language}, таму гэтыя налады недаступныя. Вы ўсё яшчэ можаце прайграваць аўдыя з панэлі інструментаў паведамленняў.",
+    "teachOptionSelected": "Выбрана опцыя «Выкладаць»",
+    "learnOptionSelected": "Выбрана опцыя «Вучыцца»",
+    "selectedTargetLanguage": "Выбрана мэтавая мова: {lang}",
+    "selectedBaseLanguage": "Выбрана базавая мова: {lang}",
+    "resetTargetLanguage": "Скінуць мэтавую мову",
+    "resetBaseLanguage": "Скінуць базавую мову",
+    "selectedLanguageLevel": "Выбраны ўзровень мовы: {level}",
+    "resetLanguageLevel": "Скінуць узровень мовы"
 }

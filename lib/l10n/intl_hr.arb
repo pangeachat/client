@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-31 12:49:30.587200",
+    "@@last_modified": "2026-09-01 10:41:31.828858",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10249,5 +10249,13 @@
     "callHistoryDeclined": "Poziv odbijen",
     "callHistoryYouDeclined": "Odbili ste ovaj poziv",
     "starsEarnedInLanguage": "Zvijezde osvojene u {language}",
-    "readAloudNoVoiceNote": "Na ovom uređaju nije dostupan visokokvalitetan glas za {language}, stoga ove postavke nisu dostupne. I dalje možete reproducirati zvuk s alatne trake poruka."
+    "readAloudNoVoiceNote": "Na ovom uređaju nije dostupan visokokvalitetan glas za {language}, stoga ove postavke nisu dostupne. I dalje možete reproducirati zvuk s alatne trake poruka.",
+    "teachOptionSelected": "Odabrano podučavanje",
+    "learnOptionSelected": "Odabrano učenje",
+    "selectedTargetLanguage": "Odabran {lang} kao ciljni jezik",
+    "selectedBaseLanguage": "Odabran {lang} kao osnovni jezik",
+    "resetTargetLanguage": "Poništi ciljni jezik",
+    "resetBaseLanguage": "Poništi osnovni jezik",
+    "selectedLanguageLevel": "Odabrana razina jezika: {level}",
+    "resetLanguageLevel": "Poništi razinu jezika"
 }

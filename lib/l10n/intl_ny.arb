@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-31 12:49:35.369473",
+    "@@last_modified": "2026-09-01 10:41:37.498196",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Kuyimba kwakanidwa",
     "callHistoryYouDeclined": "Mwakana kuyimba uku",
     "starsEarnedInLanguage": "Nyenyezi zopezedwa mu {language}",
-    "readAloudNoVoiceNote": "Palibe mawu apamwamba a {language} omwe alipo pa chipangizochi, choncho zokonda izi sizikupezeka. Mukhoza kusewera mawu kuchokera pa chida chotumizira mauthenga."
+    "readAloudNoVoiceNote": "Palibe mawu apamwamba a {language} omwe alipo pa chipangizochi, choncho zokonda izi sizikupezeka. Mukhoza kusewera mawu kuchokera pa chida chotumizira mauthenga.",
+    "teachOptionSelected": "Kuphunzitsa kwasankhidwa",
+    "learnOptionSelected": "Kuphunzira kwasankhidwa",
+    "selectedTargetLanguage": "Mwasankha {lang} ngati chilankhulo chofuna kuphunzira",
+    "selectedBaseLanguage": "Mwasankha {lang} ngati chilankhulo choyambira",
+    "resetTargetLanguage": "Bwezerani chilankhulo chofuna kuphunzira",
+    "resetBaseLanguage": "Bwezerani chilankhulo choyambira",
+    "selectedLanguageLevel": "Mwasankha mulingo wa chilankhulo {level}",
+    "resetLanguageLevel": "Bwezerani mulingo wa chilankhulo"
 }

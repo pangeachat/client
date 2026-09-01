@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-31 12:49:33.427595",
+    "@@last_modified": "2026-09-01 10:41:35.465963",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "കോൾ നിരസിച്ചു",
     "callHistoryYouDeclined": "നിങ്ങൾ ഈ കോൾ നിരസിച്ചു",
     "starsEarnedInLanguage": "{language} ഭാഷയിൽ നേടിയ നക്ഷത്രങ്ങൾ",
-    "readAloudNoVoiceNote": "ഈ ഉപകരണത്തിൽ ഉയർന്ന നിലവാരമുള്ള {language} വോയിസ് ലഭ്യമല്ലാത്തതിനാൽ, ഈ ക്രമീകരണങ്ങൾ ലഭ്യമല്ല. സന്ദേശ ടൂൾബാറിൽ നിന്ന് നിങ്ങൾക്ക് ഇപ്പോഴും ഓഡിയോ പ്ലേ ചെയ്യാൻ കഴിയും."
+    "readAloudNoVoiceNote": "ഈ ഉപകരണത്തിൽ ഉയർന്ന നിലവാരമുള്ള {language} വോയിസ് ലഭ്യമല്ലാത്തതിനാൽ, ഈ ക്രമീകരണങ്ങൾ ലഭ്യമല്ല. സന്ദേശ ടൂൾബാറിൽ നിന്ന് നിങ്ങൾക്ക് ഇപ്പോഴും ഓഡിയോ പ്ലേ ചെയ്യാൻ കഴിയും.",
+    "teachOptionSelected": "പഠിപ്പിക്കുക എന്നത് തിരഞ്ഞെടുത്തു",
+    "learnOptionSelected": "പഠിക്കുക എന്നത് തിരഞ്ഞെടുത്തു",
+    "selectedTargetLanguage": "ലക്ഷ്യഭാഷയായി {lang} തിരഞ്ഞെടുത്തു",
+    "selectedBaseLanguage": "അടിസ്ഥാന ഭാഷയായി {lang} തിരഞ്ഞെടുത്തു",
+    "resetTargetLanguage": "ലക്ഷ്യഭാഷ റീസെറ്റ് ചെയ്യുക",
+    "resetBaseLanguage": "അടിസ്ഥാന ഭാഷ റീസെറ്റ് ചെയ്യുക",
+    "selectedLanguageLevel": "ഭാഷാ നിലയായി {level} തിരഞ്ഞെടുത്തു",
+    "resetLanguageLevel": "ഭാഷാ നില റീസെറ്റ് ചെയ്യുക"
 }

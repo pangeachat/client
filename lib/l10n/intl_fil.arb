@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-31 12:49:29.839643",
+    "@@last_modified": "2026-09-01 10:41:29.695833",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10673,5 +10673,13 @@
     "callHistoryDeclined": "Tanggihan ang tawag",
     "callHistoryYouDeclined": "Tinanggihan mo ang tawag na ito",
     "starsEarnedInLanguage": "Mga star na nakuha sa {language}",
-    "readAloudNoVoiceNote": "Walang available na de-kalidad na boses sa {language} sa device na ito, kaya hindi available ang mga setting na ito. Puwede mo pa ring i-play ang audio mula sa toolbar ng mensahe."
+    "readAloudNoVoiceNote": "Walang available na de-kalidad na boses sa {language} sa device na ito, kaya hindi available ang mga setting na ito. Puwede mo pa ring i-play ang audio mula sa toolbar ng mensahe.",
+    "teachOptionSelected": "Napili ang pagtuturo",
+    "learnOptionSelected": "Napili ang pag-aaral",
+    "selectedTargetLanguage": "Napili ang {lang} bilang target na wika",
+    "selectedBaseLanguage": "Napili ang {lang} bilang base na wika",
+    "resetTargetLanguage": "I-reset ang target na wika",
+    "resetBaseLanguage": "I-reset ang base na wika",
+    "selectedLanguageLevel": "Napili ang {level} bilang antas ng wika",
+    "resetLanguageLevel": "I-reset ang antas ng wika"
 }

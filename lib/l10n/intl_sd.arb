@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-31 12:49:35.976651",
+    "@@last_modified": "2026-09-01 10:41:39.040043",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "ڪال رد ڪئي وئي",
     "callHistoryYouDeclined": "توهان هي ڪال رد ڪئي",
     "starsEarnedInLanguage": "{language} ۾ حاصل ڪيل ستارا",
-    "readAloudNoVoiceNote": "هن ڊوائيس تي ڪا به اعليٰ معيار جي {language} آواز موجود ناهي، تنهنڪري اهي سيٽنگون دستياب ناهن. توهان اڃا به پيغام جي ٽول بار مان آڊيو هلائي سگهو ٿا."
+    "readAloudNoVoiceNote": "هن ڊوائيس تي ڪا به اعليٰ معيار جي {language} آواز موجود ناهي، تنهنڪري اهي سيٽنگون دستياب ناهن. توهان اڃا به پيغام جي ٽول بار مان آڊيو هلائي سگهو ٿا.",
+    "teachOptionSelected": "سيکارڻ چونڊيو ويو",
+    "learnOptionSelected": "سکڻ چونڊيو ويو",
+    "selectedTargetLanguage": "هدف ٻولي طور {lang} چونڊيو ويو",
+    "selectedBaseLanguage": "بنيادي ٻولي طور {lang} چونڊيو ويو",
+    "resetTargetLanguage": "هدف ٻولي ري سيٽ ڪريو",
+    "resetBaseLanguage": "بنيادي ٻولي ري سيٽ ڪريو",
+    "selectedLanguageLevel": "ٻولي جي سطح طور {level} چونڊيو ويو",
+    "resetLanguageLevel": "ٻولي جي سطح ري سيٽ ڪريو"
 }

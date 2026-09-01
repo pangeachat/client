@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:49:30.339760",
+    "@@last_modified": "2026-09-01 10:41:31.272400",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10727,5 +10727,13 @@
     "callHistoryDeclined": "השיחה נדחתה",
     "callHistoryYouDeclined": "דחית את השיחה הזו",
     "starsEarnedInLanguage": "כוכבים שנצברו ב{language}",
-    "readAloudNoVoiceNote": "אין קול {language} באיכות גבוהה זמין במכשיר זה, ולכן הגדרות אלה אינן זמינות. עדיין ניתן להשמיע אודיו מסרגל הכלים של ההודעה."
+    "readAloudNoVoiceNote": "אין קול {language} באיכות גבוהה זמין במכשיר זה, ולכן הגדרות אלה אינן זמינות. עדיין ניתן להשמיע אודיו מסרגל הכלים של ההודעה.",
+    "teachOptionSelected": "האפשרות 'ללמד' נבחרה",
+    "learnOptionSelected": "האפשרות 'ללמוד' נבחרה",
+    "selectedTargetLanguage": "{lang} נבחרה כשפת יעד",
+    "selectedBaseLanguage": "{lang} נבחרה כשפת בסיס",
+    "resetTargetLanguage": "איפוס שפת יעד",
+    "resetBaseLanguage": "איפוס שפת בסיס",
+    "selectedLanguageLevel": "רמת השפה {level} נבחרה",
+    "resetLanguageLevel": "איפוס רמת השפה"
 }

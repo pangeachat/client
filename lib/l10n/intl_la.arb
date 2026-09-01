@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-31 12:49:35.419767",
+    "@@last_modified": "2026-09-01 10:41:34.259786",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Colloquium recusatum",
     "callHistoryYouDeclined": "Hoc colloquium recusavisti",
     "starsEarnedInLanguage": "Stellae in {language} meritae",
-    "readAloudNoVoiceNote": "Nulla vox {language} optima in hac machina praesto est, ergo haec optiones non praesto sunt. Adhuc potes audire audio ex vecte nuntiorum."
+    "readAloudNoVoiceNote": "Nulla vox {language} optima in hac machina praesto est, ergo haec optiones non praesto sunt. Adhuc potes audire audio ex vecte nuntiorum.",
+    "teachOptionSelected": "Doceō electum",
+    "learnOptionSelected": "Disco electum",
+    "selectedTargetLanguage": "{lang} ut lingua meta electa est",
+    "selectedBaseLanguage": "{lang} ut lingua fundamentalis electa est",
+    "resetTargetLanguage": "Linguam metam reponere",
+    "resetBaseLanguage": "Linguam fundamentalem reponere",
+    "selectedLanguageLevel": "{level} ut gradus linguae electus est",
+    "resetLanguageLevel": "Gradum linguae reponere"
 }

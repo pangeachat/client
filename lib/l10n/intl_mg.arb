@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-31 12:49:33.141120",
+    "@@last_modified": "2026-09-01 10:41:35.349633",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Antso nolavina",
     "callHistoryYouDeclined": "Nolavinao ity antso ity",
     "starsEarnedInLanguage": "Kintana azo tamin'ny teny {language}",
-    "readAloudNoVoiceNote": "Tsy misy feo {language} avo lenta azo ampiasaina amin'ity fitaovana ity, ka tsy misy ireo toe-javatra ireo. Mbola afaka milalao feo avy amin'ny fitaovana fandefasana hafatra ianao."
+    "readAloudNoVoiceNote": "Tsy misy feo {language} avo lenta azo ampiasaina amin'ity fitaovana ity, ka tsy misy ireo toe-javatra ireo. Mbola afaka milalao feo avy amin'ny fitaovana fandefasana hafatra ianao.",
+    "teachOptionSelected": "Nifidy ny hampianatra",
+    "learnOptionSelected": "Nifidy ny hianatra",
+    "selectedTargetLanguage": "Voafidy ny {lang} ho fiteny kendrena",
+    "selectedBaseLanguage": "Voafidy ny {lang} ho fiteny fototra",
+    "resetTargetLanguage": "Averina amin'ny laoniny ny fiteny kendrena",
+    "resetBaseLanguage": "Averina amin'ny laoniny ny fiteny fototra",
+    "selectedLanguageLevel": "Voafidy ny {level} ho haavon'ny fiteny",
+    "resetLanguageLevel": "Averina amin'ny laoniny ny haavon'ny fiteny"
 }

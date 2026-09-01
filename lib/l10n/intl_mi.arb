@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-31 12:49:33.429521",
+    "@@last_modified": "2026-09-01 10:41:35.553122",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Kua whakakorea te waea",
     "callHistoryYouDeclined": "I whakakorea e koe tēnei waea",
     "starsEarnedInLanguage": "Whetū i whiwhi i te reo {language}",
-    "readAloudNoVoiceNote": "Kāore he reo {language} kounga teitei e wātea ana i tēnei pūrere, nō reira kāore ēnei tautuhinga e wātea ana. Ka taea tonu e koe te purei oro mai i te paeutauta karere."
+    "readAloudNoVoiceNote": "Kāore he reo {language} kounga teitei e wātea ana i tēnei pūrere, nō reira kāore ēnei tautuhinga e wātea ana. Ka taea tonu e koe te purei oro mai i te paeutauta karere.",
+    "teachOptionSelected": "Kua tohua te whakaako",
+    "learnOptionSelected": "Kua tohua te ako",
+    "selectedTargetLanguage": "Kua tohua a {lang} hei reo whāinga",
+    "selectedBaseLanguage": "Kua tohua a {lang} hei reo tūāpapa",
+    "resetTargetLanguage": "Tautuhi anō i te reo whāinga",
+    "resetBaseLanguage": "Tautuhi anō i te reo tūāpapa",
+    "selectedLanguageLevel": "Kua tohua a {level} hei taumata reo",
+    "resetLanguageLevel": "Tautuhi anō i te taumata reo"
 }

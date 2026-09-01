@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-31 12:49:29.849248",
+    "@@last_modified": "2026-09-01 10:41:30.821864",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9824,5 +9824,13 @@
     "callHistoryDeclined": "Glao diúltaithe",
     "callHistoryYouDeclined": "Dhiúltaigh tú don ghlao seo",
     "starsEarnedInLanguage": "Réaltaí tuillte i {language}",
-    "readAloudNoVoiceNote": "Níl guth ardcháilíochta {language} ar fáil ar an ngléas seo, mar sin níl na socruithe seo ar fáil. Is féidir leat fuaim a sheinm fós ó bharra uirlisí na teachtaireachta."
+    "readAloudNoVoiceNote": "Níl guth ardcháilíochta {language} ar fáil ar an ngléas seo, mar sin níl na socruithe seo ar fáil. Is féidir leat fuaim a sheinm fós ó bharra uirlisí na teachtaireachta.",
+    "teachOptionSelected": "Múin roghnaithe",
+    "learnOptionSelected": "Foghlaim roghnaithe",
+    "selectedTargetLanguage": "Roghnaíodh {lang} mar sprioctheanga",
+    "selectedBaseLanguage": "Roghnaíodh {lang} mar bhunteanga",
+    "resetTargetLanguage": "Athshocraigh sprioctheanga",
+    "resetBaseLanguage": "Athshocraigh bunteanga",
+    "selectedLanguageLevel": "Roghnaíodh {level} mar leibhéal teanga",
+    "resetLanguageLevel": "Athshocraigh leibhéal teanga"
 }

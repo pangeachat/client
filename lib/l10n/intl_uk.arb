@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-31 12:49:37.806194",
+    "@@last_modified": "2026-09-01 10:41:41.218118",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9813,5 +9813,13 @@
     "callHistoryDeclined": "Дзвінок відхилено",
     "callHistoryYouDeclined": "Ви відхилили цей дзвінок",
     "starsEarnedInLanguage": "Зірок зароблено в {language}",
-    "readAloudNoVoiceNote": "На цьому пристрої немає високоякісного голосу для {language}, тому ці налаштування недоступні. Ви все ще можете відтворювати аудіо з панелі повідомлень."
+    "readAloudNoVoiceNote": "На цьому пристрої немає високоякісного голосу для {language}, тому ці налаштування недоступні. Ви все ще можете відтворювати аудіо з панелі повідомлень.",
+    "teachOptionSelected": "Вибрано «Викладати»",
+    "learnOptionSelected": "Вибрано «Вивчати»",
+    "selectedTargetLanguage": "Вибрано {lang} як цільову мову",
+    "selectedBaseLanguage": "Вибрано {lang} як базову мову",
+    "resetTargetLanguage": "Скинути цільову мову",
+    "resetBaseLanguage": "Скинути базову мову",
+    "selectedLanguageLevel": "Вибрано {level} як рівень володіння мовою",
+    "resetLanguageLevel": "Скинути рівень володіння мовою"
 }

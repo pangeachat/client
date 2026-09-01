@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-31 12:49:34.810525",
+    "@@last_modified": "2026-09-01 10:41:36.101896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "কল লৌদ্রে",
     "callHistoryYouDeclined": "অদোম্না হায়রিবা কল অসি লৌদ্রে",
     "starsEarnedInLanguage": "{language} da phangba thawanmichak",
-    "readAloudNoVoiceNote": "ꯑꯦꯟꯗ꯭ꯔꯣꯏꯗ ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯗ {language} ꯒꯤ ꯐꯖꯕ ꯈꯣꯡꯎꯞ ꯑꯃꯠꯇ ꯂꯩꯇꯦ, ꯃꯔꯃꯗꯤ ꯁꯦꯇꯤꯡꯁ ꯑꯁꯤ ꯁꯤꯖꯤꯟꯅꯕ ꯌꯥꯗꯦ. ꯅꯍꯥꯛꯅ ꯃꯦꯁꯦꯖ ꯇꯨꯜꯕꯥꯔ ꯗꯒꯤ ꯑꯣꯗꯤꯑꯣ ꯊꯥꯡꯒꯠꯄ ꯌꯥꯏ."
+    "readAloudNoVoiceNote": "ꯑꯦꯟꯗ꯭ꯔꯣꯏꯗ ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯗ {language} ꯒꯤ ꯐꯖꯕ ꯈꯣꯡꯎꯞ ꯑꯃꯠꯇ ꯂꯩꯇꯦ, ꯃꯔꯃꯗꯤ ꯁꯦꯇꯤꯡꯁ ꯑꯁꯤ ꯁꯤꯖꯤꯟꯅꯕ ꯌꯥꯗꯦ. ꯅꯍꯥꯛꯅ ꯃꯦꯁꯦꯖ ꯇꯨꯜꯕꯥꯔ ꯗꯒꯤ ꯑꯣꯗꯤꯑꯣ ꯊꯥꯡꯒꯠꯄ ꯌꯥꯏ.",
+    "teachOptionSelected": "খুদম লোন খনখ্রে",
+    "learnOptionSelected": "তম্নবা খনখ্রে",
+    "selectedTargetLanguage": "{lang} অসি পান্দম লোন ওইনা খনখ্রে",
+    "selectedBaseLanguage": "{lang} অসি মফম লোন ওইনা খনখ্রে",
+    "resetTargetLanguage": "পান্দম লোন হিংথোকখ্রে",
+    "resetBaseLanguage": "মফম লোন হিংথোকখ্রে",
+    "selectedLanguageLevel": "{level} অসি লোনগী থাক ওইনা খনখ্রে",
+    "resetLanguageLevel": "লোনগী থাক হিংথোকখ্রে"
 }

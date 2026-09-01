@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-31 12:49:34.089095",
+    "@@last_modified": "2026-09-01 10:41:36.965150",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Samtalen avslått",
     "callHistoryYouDeclined": "Du avslo denne samtalen",
     "starsEarnedInLanguage": "Stjerner opptjent i {language}",
-    "readAloudNoVoiceNote": "Ingen høykvalitets {language}-stemme er tilgjengelig på denne enheten, så disse innstillingene er utilgjengelige. Du kan fortsatt spille av lyd fra meldingsverktøylinjen."
+    "readAloudNoVoiceNote": "Ingen høykvalitets {language}-stemme er tilgjengelig på denne enheten, så disse innstillingene er utilgjengelige. Du kan fortsatt spille av lyd fra meldingsverktøylinjen.",
+    "teachOptionSelected": "Undervisning valgt",
+    "learnOptionSelected": "Læring valgt",
+    "selectedTargetLanguage": "Valgte {lang} som målspråk",
+    "selectedBaseLanguage": "Valgte {lang} som grunnspråk",
+    "resetTargetLanguage": "Tilbakestill målspråk",
+    "resetBaseLanguage": "Tilbakestill grunnspråk",
+    "selectedLanguageLevel": "Valgte {level} som språknivå",
+    "resetLanguageLevel": "Tilbakestill språknivå"
 }

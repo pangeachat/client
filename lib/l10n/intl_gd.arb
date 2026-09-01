@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-31 12:49:30.273677",
+    "@@last_modified": "2026-09-01 10:41:30.946502",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2217,5 +2217,13 @@
     "callHistoryDeclined": "Gairm air a diùltadh",
     "callHistoryYouDeclined": "Dhiùlt thu a' ghairm seo",
     "starsEarnedInLanguage": "Rionnagan a choisinn thu ann an {language}",
-    "readAloudNoVoiceNote": "Chan eil guth {language} de chàileachd àrd ri fhaighinn air an inneal seo, agus mar sin chan eil na roghainnean seo rim faotainn. Faodaidh tu fhathast claisneachd a chluich bhon bhàr-innealan teachdaireachd."
+    "readAloudNoVoiceNote": "Chan eil guth {language} de chàileachd àrd ri fhaighinn air an inneal seo, agus mar sin chan eil na roghainnean seo rim faotainn. Faodaidh tu fhathast claisneachd a chluich bhon bhàr-innealan teachdaireachd.",
+    "teachOptionSelected": "Teagaisg air a thaghadh",
+    "learnOptionSelected": "Ionnsaich air a thaghadh",
+    "selectedTargetLanguage": "Chaidh {lang} a thaghadh mar chànan targaid",
+    "selectedBaseLanguage": "Chaidh {lang} a thaghadh mar bhun-chànan",
+    "resetTargetLanguage": "Ath-shuidhich cànan targaid",
+    "resetBaseLanguage": "Ath-shuidhich bun-chànan",
+    "selectedLanguageLevel": "Chaidh {level} a thaghadh mar ìre cànain",
+    "resetLanguageLevel": "Ath-shuidhich ìre cànain"
 }

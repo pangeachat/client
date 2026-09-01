@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-31 12:49:37.892662",
+    "@@last_modified": "2026-09-01 10:41:40.789508",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10114,5 +10114,13 @@
     "callHistoryDeclined": "Arama reddedildi",
     "callHistoryYouDeclined": "Bu aramayı reddettiniz",
     "starsEarnedInLanguage": "{language} dilinde kazanılan yıldızlar",
-    "readAloudNoVoiceNote": "Bu cihazda yüksek kaliteli {language} sesi mevcut değil, bu nedenle bu ayarlar kullanılamıyor. Mesaj araç çubuğundan yine de ses çalabilirsiniz."
+    "readAloudNoVoiceNote": "Bu cihazda yüksek kaliteli {language} sesi mevcut değil, bu nedenle bu ayarlar kullanılamıyor. Mesaj araç çubuğundan yine de ses çalabilirsiniz.",
+    "teachOptionSelected": "Öğretme seçildi",
+    "learnOptionSelected": "Öğrenme seçildi",
+    "selectedTargetLanguage": "Hedef dil olarak {lang} seçildi",
+    "selectedBaseLanguage": "Temel dil olarak {lang} seçildi",
+    "resetTargetLanguage": "Hedef dili sıfırla",
+    "resetBaseLanguage": "Temel dili sıfırla",
+    "selectedLanguageLevel": "Dil seviyesi olarak {level} seçildi",
+    "resetLanguageLevel": "Dil seviyesini sıfırla"
 }

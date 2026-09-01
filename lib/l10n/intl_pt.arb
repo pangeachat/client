@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:49:34.992181",
+    "@@last_modified": "2026-09-01 10:41:37.671062",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10757,5 +10757,13 @@
     "callHistoryDeclined": "Chamada recusada",
     "callHistoryYouDeclined": "Você recusou esta chamada",
     "starsEarnedInLanguage": "Estrelas ganhas em {language}",
-    "readAloudNoVoiceNote": "Nenhuma voz {language} de alta qualidade está disponível neste dispositivo, então estas configurações não estão disponíveis. Você ainda pode reproduzir áudio na barra de ferramentas da mensagem."
+    "readAloudNoVoiceNote": "Nenhuma voz {language} de alta qualidade está disponível neste dispositivo, então estas configurações não estão disponíveis. Você ainda pode reproduzir áudio na barra de ferramentas da mensagem.",
+    "teachOptionSelected": "Ensinar selecionado",
+    "learnOptionSelected": "Aprender selecionado",
+    "selectedTargetLanguage": "{lang} selecionado como idioma de destino",
+    "selectedBaseLanguage": "{lang} selecionado como idioma base",
+    "resetTargetLanguage": "Redefinir idioma de destino",
+    "resetBaseLanguage": "Redefinir idioma base",
+    "selectedLanguageLevel": "{level} selecionado como nível de idioma",
+    "resetLanguageLevel": "Redefinir nível de idioma"
 }

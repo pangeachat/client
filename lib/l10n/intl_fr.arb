@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-31 12:49:29.586266",
+    "@@last_modified": "2026-09-01 10:41:29.856984",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10168,5 +10168,13 @@
     "callHistoryDeclined": "Appel refusé",
     "callHistoryYouDeclined": "Vous avez refusé cet appel",
     "starsEarnedInLanguage": "Étoiles gagnées en {language}",
-    "readAloudNoVoiceNote": "Aucune voix {language} de haute qualité n'est disponible sur cet appareil, ces paramètres sont donc inaccessibles. Vous pouvez toujours lire l'audio depuis la barre d'outils des messages."
+    "readAloudNoVoiceNote": "Aucune voix {language} de haute qualité n'est disponible sur cet appareil, ces paramètres sont donc inaccessibles. Vous pouvez toujours lire l'audio depuis la barre d'outils des messages.",
+    "teachOptionSelected": "Enseigner sélectionné",
+    "learnOptionSelected": "Apprendre sélectionné",
+    "selectedTargetLanguage": "{lang} sélectionné comme langue cible",
+    "selectedBaseLanguage": "{lang} sélectionné comme langue de base",
+    "resetTargetLanguage": "Réinitialiser la langue cible",
+    "resetBaseLanguage": "Réinitialiser la langue de base",
+    "selectedLanguageLevel": "Niveau de langue {level} sélectionné",
+    "resetLanguageLevel": "Réinitialiser le niveau de langue"
 }

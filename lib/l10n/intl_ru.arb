@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-31 12:49:35.609143",
+    "@@last_modified": "2026-09-01 10:41:38.707846",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10785,5 +10785,13 @@
     "callHistoryDeclined": "Звонок отклонен",
     "callHistoryYouDeclined": "Вы отклонили этот звонок",
     "starsEarnedInLanguage": "Звезд заработано на {language}",
-    "readAloudNoVoiceNote": "На этом устройстве нет высококачественного голоса для языка {language}, поэтому эти настройки недоступны. Вы по-прежнему можете воспроизводить аудио с панели инструментов сообщений."
+    "readAloudNoVoiceNote": "На этом устройстве нет высококачественного голоса для языка {language}, поэтому эти настройки недоступны. Вы по-прежнему можете воспроизводить аудио с панели инструментов сообщений.",
+    "teachOptionSelected": "Выбрано «Преподавать»",
+    "learnOptionSelected": "Выбрано «Учить»",
+    "selectedTargetLanguage": "Выбран {lang} как целевой язык",
+    "selectedBaseLanguage": "Выбран {lang} как базовый язык",
+    "resetTargetLanguage": "Сбросить целевой язык",
+    "resetBaseLanguage": "Сбросить базовый язык",
+    "selectedLanguageLevel": "Выбран {level} как уровень языка",
+    "resetLanguageLevel": "Сбросить уровень языка"
 }

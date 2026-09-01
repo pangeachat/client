@@ -2968,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-31 12:49:32.646354",
+    "@@last_modified": "2026-09-01 10:41:34.931470",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10594,5 +10594,13 @@
     "callHistoryDeclined": "Skambutis atmestas",
     "callHistoryYouDeclined": "Jūs atmetėte šį skambutį",
     "starsEarnedInLanguage": "Žvaigždžių gauta {language} kalba",
-    "readAloudNoVoiceNote": "Šiame įrenginyje nėra aukštos kokybės {language} balso, todėl šie nustatymai nepasiekiami. Vis tiek galite leisti garsą iš pranešimų įrankių juostos."
+    "readAloudNoVoiceNote": "Šiame įrenginyje nėra aukštos kokybės {language} balso, todėl šie nustatymai nepasiekiami. Vis tiek galite leisti garsą iš pranešimų įrankių juostos.",
+    "teachOptionSelected": "Mokyti pasirinkta",
+    "learnOptionSelected": "Mokytis pasirinkta",
+    "selectedTargetLanguage": "Pasirinkta {lang} kaip tikslinė kalba",
+    "selectedBaseLanguage": "Pasirinkta {lang} kaip pagrindinė kalba",
+    "resetTargetLanguage": "Atstatyti tikslinę kalbą",
+    "resetBaseLanguage": "Atstatyti pagrindinę kalbą",
+    "selectedLanguageLevel": "Pasirinktas {level} kaip kalbos lygis",
+    "resetLanguageLevel": "Atstatyti kalbos lygį"
 }

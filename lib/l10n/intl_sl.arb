@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-31 12:49:36.104971",
+    "@@last_modified": "2026-09-01 10:41:38.629962",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10758,5 +10758,13 @@
     "callHistoryDeclined": "Klic zavrnjen",
     "callHistoryYouDeclined": "Zavrnili ste ta klic",
     "starsEarnedInLanguage": "Zvezdice, pridobljene v {language}",
-    "readAloudNoVoiceNote": "Na tej napravi ni na voljo visokokakovosten glas za {language}, zato te nastavitve niso na voljo. Zvok lahko še vedno predvajate iz orodne vrstice sporočil."
+    "readAloudNoVoiceNote": "Na tej napravi ni na voljo visokokakovosten glas za {language}, zato te nastavitve niso na voljo. Zvok lahko še vedno predvajate iz orodne vrstice sporočil.",
+    "teachOptionSelected": "Učenje izbrano",
+    "learnOptionSelected": "Učenje izbrano",
+    "selectedTargetLanguage": "Izbran {lang} kot ciljni jezik",
+    "selectedBaseLanguage": "Izbran {lang} kot osnovni jezik",
+    "resetTargetLanguage": "Ponastavi ciljni jezik",
+    "resetBaseLanguage": "Ponastavi osnovni jezik",
+    "selectedLanguageLevel": "Izbrana {level} kot raven jezika",
+    "resetLanguageLevel": "Ponastavi raven jezika"
 }

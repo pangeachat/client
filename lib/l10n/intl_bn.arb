@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 12:49:27.762916",
+    "@@last_modified": "2026-09-01 10:41:27.241026",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10441,5 +10441,13 @@
     "callHistoryDeclined": "কল প্রত্যাখ্যান করা হয়েছে",
     "callHistoryYouDeclined": "আপনি এই কলটি প্রত্যাখ্যান করেছেন",
     "starsEarnedInLanguage": "{language}-এ অর্জিত স্টার",
-    "readAloudNoVoiceNote": "এই ডিভাইসে উচ্চ-মানের {language} ভয়েস উপলব্ধ নেই, তাই এই সেটিংসগুলি অনুপলব্ধ। আপনি এখনও মেসেজ টুলবার থেকে অডিও চালাতে পারবেন।"
+    "readAloudNoVoiceNote": "এই ডিভাইসে উচ্চ-মানের {language} ভয়েস উপলব্ধ নেই, তাই এই সেটিংসগুলি অনুপলব্ধ। আপনি এখনও মেসেজ টুলবার থেকে অডিও চালাতে পারবেন।",
+    "teachOptionSelected": "শেখানো নির্বাচিত",
+    "learnOptionSelected": "শেখা নির্বাচিত",
+    "selectedTargetLanguage": "লক্ষ্য ভাষা হিসেবে {lang} নির্বাচিত",
+    "selectedBaseLanguage": "ভিত্তি ভাষা হিসেবে {lang} নির্বাচিত",
+    "resetTargetLanguage": "লক্ষ্য ভাষা রিসেট করুন",
+    "resetBaseLanguage": "ভিত্তি ভাষা রিসেট করুন",
+    "selectedLanguageLevel": "ভাষা স্তর হিসেবে {level} নির্বাচিত",
+    "resetLanguageLevel": "ভাষা স্তর রিসেট করুন"
 }
