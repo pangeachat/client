@@ -7,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/pangea/morphs/grammar_construct_example.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
+import 'package:fluffychat/routes/chat/choreographer/igc/autocorrect_span.dart';
 import 'package:fluffychat/routes/chat/events/tokens/token_rendering_util.dart';
 import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
 
@@ -179,4 +180,60 @@ void main() {
     );
     expect(large.width / normal.width, closeTo(2.0, 0.05));
   });
+
+  testWidgets('autocorrected text in the composer scales once, not twice', (
+    tester,
+  ) async {
+    // `EditableText` scales `WidgetSpan` children geometrically, exactly like
+    // `RichText` does. If the `AutocorrectSpan` also passes the device scaler
+    // to its own `RichText`, corrected text renders at scale squared and grows
+    // past the rest of the input (#8704).
+    Future<Size> spanTextSize(double scale) async {
+      await pumpAt(
+        tester,
+        scale,
+        TextField(controller: _AutocorrectSpanController(), style: style),
+      );
+      final box = tester.renderObject<RenderBox>(
+        find.byWidgetPredicate(
+          (w) => w is RichText && w.text.toPlainText() == 'hello',
+        ),
+      );
+      return box.size * box.getTransformTo(null).storage[0];
+    }
+
+    final normal = await spanTextSize(1.0);
+    final large = await spanTextSize(2.0);
+
+    expect(
+      large.height / normal.height,
+      closeTo(2.0, 0.05),
+      reason:
+          'corrected text must grow by the device scaler, not by its square — '
+          'the placeholder transform already scales the span child',
+    );
+    expect(large.width / normal.width, closeTo(2.0, 0.05));
+  });
+}
+
+class _AutocorrectSpanController extends TextEditingController {
+  _AutocorrectSpanController() : super(text: 'hello');
+
+  @override
+  TextSpan buildTextSpan({
+    required BuildContext context,
+    TextStyle? style,
+    required bool withComposing,
+  }) => TextSpan(
+    style: style,
+    children: [
+      AutocorrectSpan(
+        transformTargetId: 'autocorrect_scale_test',
+        currentText: 'hello',
+        originalText: 'helo',
+        onUndo: () {},
+        style: style ?? const TextStyle(),
+      ),
+    ],
+  );
 }
