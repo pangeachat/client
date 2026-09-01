@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
@@ -241,40 +242,99 @@ class _FilterDropdownPill extends StatelessWidget {
             ),
           ),
       ],
-      child: Container(
-        decoration: BoxDecoration(
-          color: bg,
-          borderRadius: BorderRadius.circular(99),
-          border: Border.all(
-            color: active ? Colors.transparent : scheme.outlineVariant,
+      child: _PillFocusRing(
+        child: Container(
+          decoration: BoxDecoration(
+            color: bg,
+            borderRadius: BorderRadius.circular(99),
+            border: Border.all(
+              color: active ? Colors.transparent : scheme.outlineVariant,
+            ),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (active) ...[
+                Icon(Icons.check, size: 16, color: fg),
+                const SizedBox(width: 4),
+              ],
+              if (icon != null) ...[
+                IconTheme.merge(
+                  data: IconThemeData(size: 16, color: fg),
+                  child: icon!,
+                ),
+                const SizedBox(width: 4),
+              ],
+              Text(
+                label,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: fg,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Icon(Icons.arrow_drop_down, size: 18, color: fg),
+            ],
           ),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (active) ...[
-              Icon(Icons.check, size: 16, color: fg),
-              const SizedBox(width: 4),
-            ],
-            if (icon != null) ...[
-              IconTheme.merge(
-                data: IconThemeData(size: 16, color: fg),
-                child: icon!,
-              ),
-              const SizedBox(width: 4),
-            ],
-            Text(
-              label,
-              style: theme.textTheme.labelLarge?.copyWith(
-                color: fg,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Icon(Icons.arrow_drop_down, size: 18, color: fg),
-          ],
+      ),
+    );
+  }
+}
+
+/// The pill's visible focus indicator (#8724): the app's gold focus ring (the
+/// FocusRingTapTarget look), drawn while the enclosing [PopupMenuButton]'s own
+/// InkWell holds focus. The pill's opaque fill swallows that InkWell's
+/// behind-the-child focus highlight (the #7219 failure mode — measured at
+/// exactly 0 changed pixels), and nesting a FocusRingTapTarget here would add
+/// a second, invisible Tab stop per pill — so this listens to the ancestor
+/// focus node instead of owning one.
+class _PillFocusRing extends StatefulWidget {
+  final Widget child;
+
+  const _PillFocusRing({required this.child});
+
+  @override
+  State<_PillFocusRing> createState() => _PillFocusRingState();
+}
+
+class _PillFocusRingState extends State<_PillFocusRing> {
+  FocusNode? _node;
+  bool _focused = false;
+
+  void _onFocusChange() {
+    final focused = _node?.hasFocus ?? false;
+    if (focused != _focused) setState(() => _focused = focused);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final node = Focus.maybeOf(context);
+    if (!identical(node, _node)) {
+      _node?.removeListener(_onFocusChange);
+      _node = node?..addListener(_onFocusChange);
+      _focused = node?.hasFocus ?? false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _node?.removeListener(_onFocusChange);
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: ShapeDecoration(
+        shape: StadiumBorder(
+          side: _focused
+              ? BorderSide(color: AppConfig.goldByTheme(context), width: 3.0)
+              : BorderSide.none,
         ),
       ),
+      child: widget.child,
     );
   }
 }

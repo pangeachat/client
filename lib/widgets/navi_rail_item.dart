@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 import '../config/themes.dart';
@@ -18,6 +19,14 @@ class NaviRailItem extends StatelessWidget {
   final BorderRadius? borderRadius;
   final double naviRailWidth;
 
+  /// When set, the item wears an explicit gold [FocusRingTapTarget] ring of
+  /// this shape while focused, instead of relying on InkWell's
+  /// behind-the-child focus highlight — which an opaque [icon] (the course
+  /// avatar circle) swallows to imperceptibility (#8724). Null keeps the
+  /// plain InkWell: the section glyphs are transparent, so the ink highlight
+  /// already shows through them.
+  final OutlinedBorder? focusRingShape;
+
   const NaviRailItem({
     required this.toolTip,
     required this.isSelected,
@@ -28,6 +37,7 @@ class NaviRailItem extends StatelessWidget {
     required this.naviRailWidth,
     this.backgroundColor,
     this.borderRadius,
+    this.focusRingShape,
     super.key,
   });
   @override
@@ -111,11 +121,17 @@ class NaviRailItem extends StatelessWidget {
                                 // while the rail scrolls don't spawn tooltips
                                 // and stall the scroll (#8215).
                                 waitDuration: const Duration(milliseconds: 500),
-                                child: InkWell(
-                                  borderRadius: borderRadius,
-                                  onTap: onTap,
-                                  child: icon,
-                                ),
+                                child: focusRingShape != null
+                                    ? FocusRingTapTarget(
+                                        onTap: onTap,
+                                        shape: focusRingShape!,
+                                        child: icon,
+                                      )
+                                    : InkWell(
+                                        borderRadius: borderRadius,
+                                        onTap: onTap,
+                                        child: icon,
+                                      ),
                               ),
                             ),
                           ),

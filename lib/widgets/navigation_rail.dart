@@ -308,6 +308,10 @@ class _SpaceItem extends StatelessWidget {
         isSelected: selected,
         backgroundColor: Colors.transparent,
         borderRadius: BorderRadius.circular(0),
+        // The avatar is an opaque circle, so InkWell's behind-the-child focus
+        // highlight is imperceptible on it — wear the explicit gold ring
+        // instead (#8724). The transparent section glyphs above keep theirs.
+        focusRingShape: const CircleBorder(),
         onTap: () => _onTapSpace(context),
         icon: CourseAvatar(
           avatar: space.avatar,
