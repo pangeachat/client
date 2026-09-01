@@ -228,6 +228,8 @@ void main() {
       chunksTranscribed: 1,
       chunksLost: 0,
       chunksSuppressed: 0,
+      chunksDiscarded: 0,
+      captureDroppedMs: 0,
       captureRefused: false,
       drainComplete: true,
       maxBytes: 600,

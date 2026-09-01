@@ -191,6 +191,11 @@ class CallSession extends ChangeNotifier {
       userL1: userL1,
       userL2: userL2,
     );
+    // Built here rather than inline below, because the half published at the
+    // end of the call has to state how much audio the CAPTURE PATH lost --
+    // audio that never became a chunk, so the sink has never heard of it and
+    // no count it keeps can carry it.
+    final capture = captureOverride ?? CallCaptureService(sink: transcripts);
     final record =
         recordOverride ??
         CallRecord(
@@ -228,6 +233,16 @@ class CallSession extends ChangeNotifier {
                 chunksSuppressed: chunksSuppressed,
                 captureRefused: captureRefused,
                 drainComplete: drainComplete,
+                // Read here rather than threaded through the record's
+                // publisher, the same seam that already closes over the
+                // clock anchor below. Both are frozen long before this can
+                // run -- the recorder ends its last run, which is the only
+                // thing that discards a chunk or counts a dropped one, and
+                // only then closes the sink the record waits on -- so the
+                // record's rule that a resend must carry the same bytes
+                // holds for them as it does for the counts it reads once.
+                chunksDiscarded: transcripts.chunksDiscarded,
+                captureDroppedMs: capture.captureDroppedMs,
                 // The room inflates what it is handed, and the server's limit
                 // applies to the inflated event.
                 encrypted: room.encrypted,
@@ -252,7 +267,7 @@ class CallSession extends ChangeNotifier {
       call: ActiveCall(
         calls: callService,
         media: media,
-        capture: captureOverride ?? CallCaptureService(sink: transcripts),
+        capture: capture,
         // Android's background survival; every other platform passes null
         // and the call behaves exactly as before.
         foreground:

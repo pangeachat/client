@@ -53,6 +53,13 @@ Future<bool> writeCallTranscript({
   required int chunksTranscribed,
   required int chunksLost,
   required int chunksSuppressed,
+  required int chunksDiscarded,
+
+  // How much audio the capture path lost before it could become a chunk.
+  // Required rather than defaulted, like every count beside it: zero is a
+  // claim that nothing went, and a caller that forgot this would publish a
+  // clean half over a hole in the recording.
+  required int captureDroppedMs,
   required bool captureRefused,
   required bool drainComplete,
   String? langCode,
@@ -85,6 +92,8 @@ Future<bool> writeCallTranscript({
           chunksTranscribed: chunksTranscribed,
           chunksLost: chunksLost,
           chunksSuppressed: chunksSuppressed,
+          chunksDiscarded: chunksDiscarded,
+          captureDroppedMs: captureDroppedMs,
           captureRefused: captureRefused,
           truncated: omitted > 0,
           segmentsOmitted: omitted,

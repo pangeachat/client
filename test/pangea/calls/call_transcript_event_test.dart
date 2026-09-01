@@ -420,6 +420,23 @@ void main() {
       expect(parsed.accounting.incoherent, isTrue);
     });
 
+    test('a mic that never opened cannot have dropped audio either', () {
+      // The same rule reaching one count further. This check has already
+      // stopped holding twice, each time a count was added and not named here,
+      // so a half could say the microphone never opened AND that its capture
+      // path threw audio away -- two statements that cannot both be true.
+      final parsed = parse({
+        'segments': <dynamic>[],
+        ...const HalfAccounting(
+          captureRefused: true,
+          captureDroppedMs: 800,
+          drainComplete: true,
+        ).toJson(),
+      });
+
+      expect(parsed.accounting.incoherent, isTrue);
+    });
+
     test('an honest refusal is still believed', () {
       // The counterweight: a real refusal carries no chunks and no words.
       final parsed = parse({

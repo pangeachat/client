@@ -32,6 +32,8 @@ Future<bool> _write(
   int chunksTranscribed = 2,
   int chunksLost = 0,
   int chunksSuppressed = 0,
+  int chunksDiscarded = 0,
+  int captureDroppedMs = 0,
   bool drainComplete = true,
   bool encrypted = false,
   String? langCode = 'es',
@@ -46,6 +48,8 @@ Future<bool> _write(
   chunksTranscribed: chunksTranscribed,
   chunksLost: chunksLost,
   chunksSuppressed: chunksSuppressed,
+  chunksDiscarded: chunksDiscarded,
+  captureDroppedMs: captureDroppedMs,
   captureRefused: false,
   drainComplete: drainComplete,
   encrypted: encrypted,
@@ -55,6 +59,48 @@ Future<bool> _write(
 );
 
 void main() {
+  group('what the half says about audio it did not send', () {
+    test('the two counts reach the wire and come back', () async {
+      // The published event is the only artefact a study can read afterwards.
+      // A count that stops at this writer is a count nobody will ever see.
+      final sent = _Sent();
+      await _write(sent, chunksDiscarded: 2, captureDroppedMs: 800);
+
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      expect(parsed.accounting.chunksDiscarded, 2);
+      expect(parsed.accounting.captureDroppedMs, 800);
+    });
+
+    test('dropped audio makes the half admit a gap', () async {
+      final sent = _Sent();
+      await _write(sent, captureDroppedMs: 800);
+
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      expect(parsed.accounting.writerAdmitsGaps, isTrue);
+    });
+
+    test('a deferred chunk does not', () async {
+      // A correct discard loses nothing, so a handover must not publish a
+      // transcript that reads as missing words.
+      final sent = _Sent();
+      await _write(sent, chunksCaptured: 3, chunksDiscarded: 1);
+
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      expect(parsed.accounting.chunksDiscarded, 1);
+      expect(parsed.accounting.writerAdmitsGaps, isFalse);
+    });
+
+    test('an ordinary half claims neither', () async {
+      final sent = _Sent();
+      await _write(sent);
+
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      expect(parsed.accounting.chunksDiscarded, 0);
+      expect(parsed.accounting.captureDroppedMs, 0);
+      expect(parsed.accounting.writerAdmitsGaps, isFalse);
+    });
+  });
+
   group('writeCallTranscript', () {
     test('writes one half, anchored so it can be found again', () async {
       final sent = _Sent();
@@ -370,6 +416,8 @@ void main() {
         chunksTranscribed: 2,
         chunksLost: 0,
         chunksSuppressed: 0,
+        chunksDiscarded: 0,
+        captureDroppedMs: 0,
         captureRefused: false,
         drainComplete: true,
       );
@@ -402,6 +450,8 @@ void main() {
         chunksTranscribed: 400,
         chunksLost: 0,
         chunksSuppressed: 0,
+        chunksDiscarded: 0,
+        captureDroppedMs: 0,
         captureRefused: false,
         drainComplete: true,
         maxBytes: 2000,

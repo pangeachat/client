@@ -105,7 +105,38 @@ bool suppressionExplainsEmptiness(
     // WRONG EXPLANATION, which is the distinction this whole file is built to
     // hold. Capture refused is left to `microphoneRefused` above it for the
     // same reason.
-    accounting.chunksLost == 0;
+    accounting.chunksLost == 0 &&
+    // Both of these are audio our trim never judged, exactly like a lost
+    // chunk, so naming the trim as the reason for the emptiness would report a
+    // verdict it never gave. Dropped audio is already a gap; a discarded chunk
+    // is not, and [discardExplainsEmptiness] is what keeps an empty half that
+    // deferred to a sibling from reading as silence once this rule declines to
+    // explain it.
+    accounting.captureDroppedMs == 0 &&
+    accounting.chunksDiscarded == 0;
+
+/// Whether an empty half is empty because this device handed the stretch to a
+/// sibling rather than because the speaker said nothing.
+///
+/// [HalfAccounting.chunksDiscarded] is deliberately not a term of
+/// [HalfAccounting.writerAdmitsGaps]: a correct discard loses nothing, and a
+/// half that still carries words is not incomplete for having deferred one
+/// chunk. But an EMPTY half that deferred everything has produced no evidence
+/// about the speaker at all, and `present` plus no segments is
+/// [TranscriptHalf.saidNothing] -- "you did not say anything", said about
+/// somebody whose words this device chose not to send.
+///
+/// The sibling's half is where those words are, and when it exists it wins the
+/// duplicate contest by carrying more content. This is for when it does not:
+/// the sibling crashed, or never wrote, and the only half left is the one that
+/// deferred to it.
+bool discardExplainsEmptiness(
+  List<TranscriptSegment> segments,
+  HalfAccounting accounting,
+) =>
+    segments.isEmpty &&
+    accounting.chunksTranscribed == 0 &&
+    accounting.chunksDiscarded > 0;
 
 /// Where one device's wall clock sat relative to the SFU's, read at join.
 ///
@@ -300,6 +331,33 @@ class HalfAccounting {
   /// anyone who wants to know how much audio a device decided against sending.
   final int chunksSuppressed;
 
+  /// Chunks the WRITER'S DEVICE captured and deliberately did not send,
+  /// because another of the same account's devices was recording the same
+  /// stretch.
+  ///
+  /// NOT part of [writerAdmitsGaps]. A correct discard is not a gap: the words
+  /// are in the sibling's half, and flagging this one incomplete would report
+  /// missing speech that is present one event away.
+  ///
+  /// It is carried so that the claim can be QUESTIONED. The discard is the one
+  /// decision in the capture path that destroys audio on the strength of a
+  /// belief about a device we cannot see, and a wrong one leaves the words in
+  /// neither half. Chunk indices do not line up across devices, so this is not
+  /// a lookup: it is the only thing that tells a reader there is a stretch to
+  /// go and find in the other half at all.
+  final int chunksDiscarded;
+
+  /// How much audio the writer's own capture path lost before it could become
+  /// a chunk, in milliseconds.
+  ///
+  /// A gap, and a term of [writerAdmitsGaps], unlike the two counts above. It
+  /// is speech that was captured and thrown away with no copy anywhere.
+  ///
+  /// Milliseconds rather than chunks because this audio never was one: it went
+  /// inside the platform, between the microphone and the code that cuts
+  /// chunks, so no chunk index describes it and no count of chunks can.
+  final int captureDroppedMs;
+
   /// Whether the microphone never opened at all.
   ///
   /// A speaker who was muted and a speaker we could not record both arrive
@@ -328,6 +386,8 @@ class HalfAccounting {
     this.chunksTranscribed = 0,
     this.chunksLost = 0,
     this.chunksSuppressed = 0,
+    this.chunksDiscarded = 0,
+    this.captureDroppedMs = 0,
     this.captureRefused = false,
     this.truncated = false,
     this.segmentsOmitted = 0,
@@ -346,6 +406,12 @@ class HalfAccounting {
       !drainComplete ||
       segmentsOmitted > 0 ||
       chunksLost > 0 ||
+      // Audio that went before it was ever a chunk. It has to be named
+      // separately because every other term here counts chunks, and a stretch
+      // the capture path dropped is in none of those counts -- which is
+      // exactly how a half came to publish `chunksLost: 0` and read clean over
+      // a hole in the recording.
+      captureDroppedMs > 0 ||
       captureRefused ||
       incoherent;
 
@@ -387,6 +453,8 @@ class HalfAccounting {
     'chunks_transcribed': chunksTranscribed,
     'chunks_lost': chunksLost,
     'chunks_suppressed': chunksSuppressed,
+    'chunks_discarded': chunksDiscarded,
+    'capture_dropped_ms': captureDroppedMs,
     'capture_refused': captureRefused,
     'truncated': truncated,
     'segments_omitted': segmentsOmitted,
@@ -399,6 +467,8 @@ class HalfAccounting {
     chunksTranscribed: chunksTranscribed,
     chunksLost: chunksLost,
     chunksSuppressed: chunksSuppressed,
+    chunksDiscarded: chunksDiscarded,
+    captureDroppedMs: captureDroppedMs,
     captureRefused: captureRefused,
     truncated: truncated,
     segmentsOmitted: segmentsOmitted,
@@ -418,6 +488,8 @@ class HalfAccounting {
     chunksTranscribed: chunksTranscribed,
     chunksLost: chunksLost,
     chunksSuppressed: chunksSuppressed,
+    chunksDiscarded: chunksDiscarded,
+    captureDroppedMs: captureDroppedMs,
     captureRefused: captureRefused,
     truncated: true,
     segmentsOmitted: segmentsOmitted,
@@ -433,6 +505,8 @@ class HalfAccounting {
     chunksTranscribed: chunksTranscribed,
     chunksLost: chunksLost,
     chunksSuppressed: chunksSuppressed,
+    chunksDiscarded: chunksDiscarded,
+    captureDroppedMs: captureDroppedMs,
     captureRefused: captureRefused,
     truncated: true,
     segmentsOmitted: segmentsOmitted,
@@ -485,18 +559,33 @@ class HalfAccounting {
         // it: `'2'` as a string or -1 would otherwise parse to the optimistic
         // zero and leave hostile content reading as a fully declared half.
         (!raw.containsKey('chunks_suppressed') ||
-            nonNegativeInt(raw['chunks_suppressed']));
+            nonNegativeInt(raw['chunks_suppressed'])) &&
+        // Same rule again for the same reason, and stated per key rather than
+        // as a loop so that adding a key without deciding this is not
+        // possible: absent is a client older than the count, present and
+        // malformed is content this reader must not take a declaration from.
+        (!raw.containsKey('chunks_discarded') ||
+            nonNegativeInt(raw['chunks_discarded'])) &&
+        (!raw.containsKey('capture_dropped_ms') ||
+            nonNegativeInt(raw['capture_dropped_ms']));
 
     final captured = intOr('chunks_captured', 0);
     final rawTranscribed = intOr('chunks_transcribed', 0);
     final rawLost = intOr('chunks_lost', 0);
     final rawSuppressed = intOr('chunks_suppressed', 0);
+    final rawDiscarded = intOr('chunks_discarded', 0);
     return HalfAccounting(
       declared: wellFormed,
       // Checked against the SUM, not each count alone: adding chunks_lost added
       // a second way to exceed what was captured, and a rule that names one
       // count stops holding the moment another is introduced.
-      incoherent: rawTranscribed + rawLost + rawSuppressed > captured,
+      //
+      // `capture_dropped_ms` is deliberately absent from it. The four terms
+      // here are chunks and the fifth is milliseconds of audio that never
+      // became one, so it is not a share of the same total and adding it would
+      // compare two different things.
+      incoherent:
+          rawTranscribed + rawLost + rawSuppressed + rawDiscarded > captured,
       chunksCaptured: captured,
       // Clamped: a half claiming more transcribed than captured is malformed,
       // and letting it through would make `writerAdmitsGaps` read false for a
@@ -504,6 +593,8 @@ class HalfAccounting {
       chunksTranscribed: rawTranscribed.clamp(0, captured),
       chunksLost: rawLost,
       chunksSuppressed: rawSuppressed,
+      chunksDiscarded: rawDiscarded,
+      captureDroppedMs: intOr('capture_dropped_ms', 0),
       captureRefused: raw['capture_refused'] == true,
       truncated: raw['truncated'] == true,
       segmentsOmitted: intOr('segments_omitted', 0),
@@ -532,6 +623,8 @@ class HalfAccounting {
       other.chunksTranscribed == chunksTranscribed &&
       other.chunksLost == chunksLost &&
       other.chunksSuppressed == chunksSuppressed &&
+      other.chunksDiscarded == chunksDiscarded &&
+      other.captureDroppedMs == captureDroppedMs &&
       other.captureRefused == captureRefused &&
       other.truncated == truncated &&
       other.segmentsOmitted == segmentsOmitted &&
@@ -547,6 +640,8 @@ class HalfAccounting {
     chunksTranscribed,
     chunksLost,
     chunksSuppressed,
+    chunksDiscarded,
+    captureDroppedMs,
     captureRefused,
     truncated,
     segmentsOmitted,
@@ -597,6 +692,15 @@ enum HalfIssue {
 
   /// Audio was captured and then lost before it could be transcribed.
   audioLost,
+
+  /// The writer's capture path threw audio away before it could become a
+  /// chunk, so a stretch of the recording is missing with no chunk to name it.
+  audioDroppedAtCapture,
+
+  /// Every chunk behind an empty half was handed to another of the same
+  /// account's devices instead of being sent. A fact about which device did
+  /// the recording, not about whether the speaker spoke.
+  audioHeldByAnotherDevice,
 
   /// Words were dropped to fit the event under the server's size limit.
   tooLongToSend,
@@ -775,8 +879,23 @@ class TranscriptHalf {
     // the wire carried a non-negative int under that name, so reading it from
     // an undeclared accounting reports a count the writer really did send.
     if (audioSuppressedLocally) return HalfIssue.audioSuppressedLocally;
+    // Beside it, and for the same reason: both are an empty half our own
+    // device produced, and both would otherwise fall through to a cause that
+    // names the reader rather than the decision that emptied the half. The two
+    // cannot both hold -- [suppressionExplainsEmptiness] declines any half
+    // that also deferred a chunk -- so the order between them decides nothing;
+    // what matters is that they sit above the writer's own admissions.
+    if (audioHeldByAnotherDevice) return HalfIssue.audioHeldByAnotherDevice;
     if (!accounting.declared) return HalfIssue.writerSaidNothing;
     if (accounting.chunksLost > 0) return HalfIssue.audioLost;
+    // Immediately after the chunks that were lost, because it is the same
+    // failure one layer down: audio this device captured and could not keep.
+    // Without its own name it reached the unexplained-gap branch at the bottom
+    // of this ladder, which reports `couldNotRead` -- our READ, about a half we
+    // read perfectly and a device that dropped the audio before we saw it.
+    if (accounting.captureDroppedMs > 0) {
+      return HalfIssue.audioDroppedAtCapture;
+    }
     if (accounting.truncated || accounting.segmentsOmitted > 0) {
       return HalfIssue.tooLongToSend;
     }
@@ -814,6 +933,16 @@ class TranscriptHalf {
   /// [issue] answering the same question.
   bool get audioSuppressedLocally =>
       suppressionExplainsEmptiness(segments, accounting);
+
+  /// Whether this half is empty because this device deferred every chunk to a
+  /// sibling.
+  ///
+  /// Delegated to [discardExplainsEmptiness] rather than re-derived, for the
+  /// reason [audioSuppressedLocally] delegates its own: assembly asks the same
+  /// question when it refuses `present` for such a half, and two copies of a
+  /// rule this load-bearing would eventually answer differently.
+  bool get audioHeldByAnotherDevice =>
+      discardExplainsEmptiness(segments, accounting);
 
   /// Whether this half is a person who was recorded and said nothing.
   ///
@@ -1195,6 +1324,16 @@ CallTranscript assembleTranscript({
                 // one needs the segments as well, and only the all-suppressed
                 // half it names is unsupported as `present`.
                 suppressionExplainsEmptiness(
+                  candidate.segments,
+                  candidate.accounting,
+                ) ||
+                // Here rather than in `writerAdmitsGaps` for the same reason,
+                // and a different one besides: a discard is not a gap, so a
+                // half that still carries words must not read as incomplete
+                // for having deferred one chunk. Only the EMPTY half this
+                // names is unsupported as `present`, because `present` plus no
+                // segments is read as the speaker having said nothing.
+                discardExplainsEmptiness(
                   candidate.segments,
                   candidate.accounting,
                 ))

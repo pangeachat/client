@@ -1847,4 +1847,319 @@ void main() {
       );
     });
   });
+
+  group('audio the capture path dropped', () {
+    test('is a gap, and the half says so', () {
+      // The failure this exists to end. Those frames never reached Dart, so
+      // they are in NO chunk count -- and a half carrying only chunk counts
+      // published `chunks_lost: 0`, `drain_complete: true`, `declared: true`
+      // and read as a complete record of a recording with a hole in it.
+      const dropped = HalfAccounting(
+        chunksCaptured: 4,
+        chunksTranscribed: 4,
+        captureDroppedMs: 800,
+        declared: true,
+      );
+
+      expect(dropped.writerAdmitsGaps, isTrue);
+      expect(dropped.chunksLost, 0, reason: 'no chunk was ever lost');
+    });
+
+    test('a half without it still reads clean', () {
+      // The flag has to stay meaningful. A term that fired on ordinary calls
+      // would mark every transcript incomplete, which is the trap already
+      // recorded on suppressed and lost chunks.
+      const clean = HalfAccounting(
+        chunksCaptured: 4,
+        chunksTranscribed: 4,
+        declared: true,
+      );
+
+      expect(clean.writerAdmitsGaps, isFalse);
+    });
+
+    test('the count survives the wire', () {
+      const written = HalfAccounting(
+        chunksCaptured: 4,
+        chunksTranscribed: 4,
+        captureDroppedMs: 800,
+        declared: true,
+      );
+
+      final read = HalfAccounting.fromJson(written.toJson());
+      expect(read.captureDroppedMs, 800);
+      expect(read, written);
+      // The field name is the wire contract, and it is milliseconds because
+      // this audio never became a chunk that an index could name.
+      expect(written.toJson()['capture_dropped_ms'], 800);
+    });
+
+    test('a half from a client that predates it still asserts', () {
+      final old = HalfAccounting.fromJson({
+        'chunks_captured': 3,
+        'chunks_transcribed': 3,
+        'chunks_lost': 0,
+        'chunks_suppressed': 0,
+        'capture_refused': false,
+        'truncated': false,
+        'segments_omitted': 0,
+        'drain_complete': true,
+      });
+
+      expect(old.declared, isTrue);
+      expect(old.captureDroppedMs, 0);
+      expect(old.writerAdmitsGaps, isFalse);
+    });
+
+    test('a present but malformed count is not a declaration', () {
+      for (final junk in <Object>['800', -1, 1.5, true]) {
+        final half = HalfAccounting.fromJson({
+          'chunks_captured': 3,
+          'chunks_transcribed': 3,
+          'chunks_lost': 0,
+          'chunks_suppressed': 0,
+          'capture_dropped_ms': junk,
+          'capture_refused': false,
+          'truncated': false,
+          'segments_omitted': 0,
+          'drain_complete': true,
+        });
+
+        expect(
+          half.declared,
+          isFalse,
+          reason: 'capture_dropped_ms of $junk is not an assertion',
+        );
+      }
+    });
+
+    test('is not counted against what was captured', () {
+      // Milliseconds of audio that never became a chunk are not a share of a
+      // chunk total. Folding them into that sum would compare two different
+      // things and call an honest half impossible.
+      final half = HalfAccounting.fromJson({
+        'chunks_captured': 2,
+        'chunks_transcribed': 2,
+        'chunks_lost': 0,
+        'chunks_suppressed': 0,
+        'capture_dropped_ms': 9000,
+        'capture_refused': false,
+        'truncated': false,
+        'segments_omitted': 0,
+        'drain_complete': true,
+      });
+
+      expect(half.incoherent, isFalse);
+    });
+
+    test('is named as its own cause, not as a read we cut short', () {
+      // Without a name of its own it reached the unexplained-gap branch, which
+      // reports `couldNotRead` -- OUR read, about a half we read perfectly and
+      // a device that dropped the audio before we ever saw it.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            accounting: const HalfAccounting(
+              chunksCaptured: 4,
+              chunksTranscribed: 4,
+              captureDroppedMs: 800,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.state, HalfState.incomplete);
+      expect(half.issue, HalfIssue.audioDroppedAtCapture);
+    });
+
+    test('is not explained away as speech our detector did not find', () {
+      // Empty for two reasons, and the trim never judged the dropped audio.
+      // Naming the trim reports a verdict over audio nothing looked at and
+      // buries the stretch that might actually have carried the words.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: const [],
+            accounting: const HalfAccounting(
+              chunksCaptured: 2,
+              chunksTranscribed: 0,
+              chunksSuppressed: 2,
+              captureDroppedMs: 800,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.audioSuppressedLocally, isFalse);
+      expect(half.issue, HalfIssue.audioDroppedAtCapture);
+    });
+  });
+
+  group('a chunk deferred to another device', () {
+    test('is not a gap', () {
+      // A correct discard loses nothing: the words are in the sibling's half.
+      // Flagging it would report missing speech that is present one event away
+      // and leave the flag meaning nothing when audio really is gone.
+      const deferred = HalfAccounting(
+        chunksCaptured: 3,
+        chunksTranscribed: 2,
+        chunksDiscarded: 1,
+        declared: true,
+      );
+
+      expect(deferred.writerAdmitsGaps, isFalse);
+    });
+
+    test('the count survives the wire', () {
+      const written = HalfAccounting(
+        chunksCaptured: 3,
+        chunksTranscribed: 2,
+        chunksDiscarded: 1,
+        declared: true,
+      );
+
+      final read = HalfAccounting.fromJson(written.toJson());
+      expect(read.chunksDiscarded, 1);
+      expect(read, written);
+      expect(written.toJson()['chunks_discarded'], 1);
+    });
+
+    test('a half from a client that predates it still asserts', () {
+      final old = HalfAccounting.fromJson({
+        'chunks_captured': 3,
+        'chunks_transcribed': 3,
+        'chunks_lost': 0,
+        'chunks_suppressed': 0,
+        'capture_refused': false,
+        'truncated': false,
+        'segments_omitted': 0,
+        'drain_complete': true,
+      });
+
+      expect(old.declared, isTrue);
+      expect(old.chunksDiscarded, 0);
+    });
+
+    test('a present but malformed count is not a declaration', () {
+      for (final junk in <Object>['1', -1, 1.5, true]) {
+        final half = HalfAccounting.fromJson({
+          'chunks_captured': 3,
+          'chunks_transcribed': 3,
+          'chunks_lost': 0,
+          'chunks_suppressed': 0,
+          'chunks_discarded': junk,
+          'capture_refused': false,
+          'truncated': false,
+          'segments_omitted': 0,
+          'drain_complete': true,
+        });
+
+        expect(
+          half.declared,
+          isFalse,
+          reason: 'chunks_discarded of $junk is not an assertion',
+        );
+      }
+    });
+
+    test('counts against what was captured', () {
+      // Transcribed, lost, suppressed and deferred are disjoint subsets of
+      // captured. The sum rule already had to learn about lost and suppressed
+      // one at a time; naming only three of four repeats that exactly.
+      final tooMany = HalfAccounting.fromJson({
+        'chunks_captured': 2,
+        'chunks_transcribed': 1,
+        'chunks_lost': 0,
+        'chunks_suppressed': 0,
+        'chunks_discarded': 2,
+        'capture_refused': false,
+        'truncated': false,
+        'segments_omitted': 0,
+        'drain_complete': true,
+      });
+
+      expect(tooMany.incoherent, isTrue);
+    });
+
+    test('a half that still carries words is complete', () {
+      // The point of keeping it out of `writerAdmitsGaps`. An ordinary
+      // handover defers one tail, and that transcript is whole.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            accounting: const HalfAccounting(
+              chunksCaptured: 3,
+              chunksTranscribed: 2,
+              chunksDiscarded: 1,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).state, HalfState.present);
+      expect(_halfFor(transcript, alice).issue, HalfIssue.none);
+    });
+
+    test('an EMPTY half that deferred everything is not silence', () {
+      // The sibling's half is where these words are, and when it exists it
+      // wins the duplicate contest by carrying more. This is the case where it
+      // does not -- the sibling crashed, or never wrote -- and `present` with
+      // no segments is read as "you did not say anything", about a speaker
+      // whose words this device chose not to send.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: const [],
+            accounting: const HalfAccounting(
+              chunksCaptured: 2,
+              chunksTranscribed: 0,
+              chunksDiscarded: 2,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.saidNothing, isFalse);
+      expect(half.state, HalfState.incomplete);
+      expect(half.issue, HalfIssue.audioHeldByAnotherDevice);
+    });
+
+    test('is not explained away as speech our detector did not find', () {
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: const [],
+            accounting: const HalfAccounting(
+              chunksCaptured: 2,
+              chunksTranscribed: 0,
+              chunksSuppressed: 1,
+              chunksDiscarded: 1,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.audioSuppressedLocally, isFalse);
+      expect(half.issue, HalfIssue.audioHeldByAnotherDevice);
+    });
+  });
 }

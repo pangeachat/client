@@ -25,6 +25,21 @@ abstract class CallAudioSink {
   /// it is not a second attempt at all.
   Future<void> deliver(PcmChunk chunk, {Duration? within});
 
+  /// Records a chunk this recorder captured and deliberately did NOT deliver,
+  /// because another of this account's devices was recording the same stretch.
+  ///
+  /// Not a delivery and not a failure, so it belongs in neither [deliver] nor
+  /// its error path: the audio was read, cut, and then set aside on purpose.
+  /// It is here so that the sink's accounting still knows the chunk existed.
+  /// Without it the chunk was in no count at all -- the half published a clean
+  /// record of a stretch it had thrown away, and nothing downstream could tell
+  /// a correct discard from a wrong one, in either direction.
+  ///
+  /// Synchronous, and never fails: it records a fact rather than performing
+  /// work, and it is called from the flush that ends a run, where an
+  /// unawaited future would be an unhandled error at a hangup.
+  void discarded(PcmChunk chunk);
+
   /// Signals that no further chunks are coming for this call.
   ///
   /// Returns whether every outstanding transcription settled. FALSE means the
@@ -290,6 +305,20 @@ class CallCaptureService {
   /// hangup does not abandon audio the learner already spoke.
   final List<Future<void>> _inFlight = [];
 
+  /// How much of this call's audio the capture path lost before it could be
+  /// cut into a chunk, in milliseconds.
+  ///
+  /// Reported BY the tap, and only by a tap that accounts for its own drops.
+  /// It is a different fact from every count the sink keeps: those are all
+  /// about chunks, and this audio never became one -- so it is invisible to
+  /// `chunksCaptured`, `chunksLost` and `chunksSuppressed` alike, and a half
+  /// that carried only those read as complete over a hole in the recording.
+  ///
+  /// Per call, never reset, because a half describes a call rather than a
+  /// stretch of one.
+  int get captureDroppedMs => _captureDroppedMs;
+  int _captureDroppedMs = 0;
+
   /// [deliveryTimeout] is how long one attempt is given before it is treated as
   /// failed. Injectable so the stall can be tested without waiting for it.
   CallCaptureService({
@@ -494,8 +523,8 @@ class CallCaptureService {
       // for the hole that closes.
       detach = await tap.open(
         track,
-        (samples, sampleRate, channels) =>
-            _onFrames(samples, sampleRate, channels, session),
+        (samples, sampleRate, channels, {droppedMs = 0}) =>
+            _onFrames(samples, sampleRate, channels, session, droppedMs),
         // Carries the same session, for the same reason: a tap that dies long
         // after the stretch it belonged to ended must not end the one running
         // now.
@@ -765,6 +794,14 @@ class CallCaptureService {
         'Dropping call audio chunk ${tail.index}: another device of this '
         'account was recording the same stretch',
       );
+      // Told to the sink, not merely logged. A log is gone by the time anybody
+      // reads the transcript, and this is the one decision in the capture path
+      // that destroys audio on the strength of a claim about ANOTHER device --
+      // so the half has to carry the fact that it was made. A sibling's half
+      // showing the same stretch is what makes a discard verifiable after the
+      // event, and nothing could check it at all while this returned in
+      // silence.
+      sink.discarded(tail);
       return;
     }
     _hand(tail);
@@ -833,7 +870,13 @@ class CallCaptureService {
   /// the negotiated codec does. A change ends the current chunk rather than
   /// reinterpreting samples already collected at the old rate, which would
   /// stretch or compress what the learner said.
-  void _onFrames(Int16List samples, int sampleRate, int channels, int session) {
+  void _onFrames(
+    Int16List samples,
+    int sampleRate,
+    int channels,
+    int session,
+    int droppedMs,
+  ) {
     // Gated on the SESSION, not on [_running] alone. When `tap.open` throws
     // there is no detach handle, so a tap installed before the throw cannot be
     // tracked in [_unreleased] and never comes off — and the next start sets
@@ -843,6 +886,22 @@ class CallCaptureService {
     // session it was opened for can only ever feed that one, which closes a
     // hole that predates the positions below.
     if (session != _session || !_running || _stopping || _muted) return;
+
+    // Handled FIRST, above everything that touches the samples, because the
+    // gap sits before them: the audio it stands for was captured, and lost,
+    // between the previous callback and this one.
+    //
+    // The gap is given to the chunker only when there IS one to give it to. A
+    // run that has not started yet is placed from the clock at its first frame
+    // -- a reading already taken after the gap -- so telling a chunker built
+    // here about audio dropped before it existed would move the run later than
+    // the speech it holds. The total counts it either way: it is lost audio
+    // whether or not a run was open to lose it from.
+    if (droppedMs > 0) {
+      _captureDroppedMs += droppedMs;
+      final cut = _chunker?.skip(droppedMs);
+      if (cut != null) _hand(cut);
+    }
 
     // Whether this frame is the one that STARTS a run, which is exactly whether
     // there was no chunker to put it in. A sample-rate change further down ends

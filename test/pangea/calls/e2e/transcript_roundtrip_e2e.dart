@@ -74,6 +74,8 @@ void main() {
           chunksTranscribed: 2,
           chunksLost: 0,
           chunksSuppressed: 0,
+          chunksDiscarded: 0,
+          captureDroppedMs: 0,
           captureRefused: false,
           drainComplete: true,
           langCode: 'es',
@@ -88,6 +90,8 @@ void main() {
           chunksTranscribed: 1,
           chunksLost: 0,
           chunksSuppressed: 0,
+          chunksDiscarded: 0,
+          captureDroppedMs: 0,
           captureRefused: false,
           drainComplete: true,
           langCode: 'es',
@@ -136,6 +140,8 @@ void main() {
         chunksTranscribed: 1,
         chunksLost: 0,
         chunksSuppressed: 0,
+        chunksDiscarded: 0,
+        captureDroppedMs: 0,
         captureRefused: false,
         drainComplete: true,
       );
@@ -167,6 +173,8 @@ void main() {
         // The abandoned drain is the gap here, not a lost chunk.
         chunksLost: 0,
         chunksSuppressed: 0,
+        chunksDiscarded: 0,
+        captureDroppedMs: 0,
         captureRefused: false,
         drainComplete: false,
       );
@@ -202,6 +210,8 @@ void main() {
         chunksTranscribed: 40,
         chunksLost: 0,
         chunksSuppressed: 0,
+        chunksDiscarded: 0,
+        captureDroppedMs: 0,
         captureRefused: false,
         drainComplete: true,
       );

@@ -239,6 +239,18 @@ class CallTranscriptContent {
               accounting.chunksTranscribed > 0 ||
               accounting.chunksLost > 0 ||
               accounting.chunksSuppressed > 0 ||
+              // Named for the rule stated above rather than for reach: a
+              // deferred chunk with nothing captured already fails the
+              // captured-total check in `HalfAccounting.fromJson`, so this
+              // term cannot today be the one that decides. It is here so the
+              // enumeration stays complete if that check ever changes, and it
+              // is deliberately not covered by a test -- one would pass with
+              // this line removed.
+              accounting.chunksDiscarded > 0 ||
+              // This one DOES decide: dropped audio is milliseconds rather
+              // than a share of the captured chunk total, so no other rule
+              // sees it.
+              accounting.captureDroppedMs > 0 ||
               accounting.segmentsOmitted > 0 ||
               segments.isNotEmpty);
 
