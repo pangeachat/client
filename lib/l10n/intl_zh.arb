@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-01 12:28:04.583613",
+    "@@last_modified": "2026-09-01 14:46:22.575728",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9838,5 +9838,6 @@
     "callTranscriptUnreconciledClocks": "这些发言是在两台无法比较时钟的设备上录制的，因此没有显示时间，并且它们出现的顺序可能不正确。",
     "callTranscriptOpen": "阅读通话记录",
     "errorRateLimited": "我们正在加载大量内容。请稍候片刻再试。",
-    "noPermissionToInviteUsers": "您无权在此邀请成员。"
+    "noPermissionToInviteUsers": "您无权在此邀请成员。",
+    "mapPinsKeyboardHint": "使用方向键在地图上的活动之间移动，然后按 Enter 键打开一个活动。"
 }

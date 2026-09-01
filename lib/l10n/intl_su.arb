@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-01 12:28:03.051701",
+    "@@last_modified": "2026-09-01 14:46:21.401469",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Giliran-giliran ieu dirékam dina dua alat anu jamna henteu tiasa dibandingkeun, janten teu aya waktos anu dipidangkeun sareng urutan munculna tiasa lepat.",
     "callTranscriptOpen": "Baca transkripna",
     "errorRateLimited": "Urang nuju ngamuat seueur ayeuna. Mangga antosan sakedap teras cobian deui.",
-    "noPermissionToInviteUsers": "Anjeun teu gaduh idin pikeun ngajak anggota ka dieu."
+    "noPermissionToInviteUsers": "Anjeun teu gaduh idin pikeun ngajak anggota ka dieu.",
+    "mapPinsKeyboardHint": "Anggo kenop panah pikeun mindahkeun antara kagiatan dina peta, teras pencét Enter pikeun muka hiji."
 }

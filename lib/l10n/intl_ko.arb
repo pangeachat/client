@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:27:59.676925",
+    "@@last_modified": "2026-09-01 14:46:18.089376",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10031,5 +10031,6 @@
     "callTranscriptUnreconciledClocks": "이 발화들은 시계를 비교할 수 없는 두 기기에서 녹음되었으므로 시간이 표시되지 않으며, 나타나는 순서가 잘못되었을 수 있습니다.",
     "callTranscriptOpen": "녹취록 읽기",
     "errorRateLimited": "현재 로딩 중입니다. 잠시 기다렸다가 다시 시도해 주세요.",
-    "noPermissionToInviteUsers": "여기에 멤버를 초대할 권한이 없습니다."
+    "noPermissionToInviteUsers": "여기에 멤버를 초대할 권한이 없습니다.",
+    "mapPinsKeyboardHint": "화살표 키를 사용하여 지도에서 활동 간에 이동하고 Enter 키를 눌러 활동을 엽니다."
 }

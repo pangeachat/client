@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-01 12:28:01.722910",
+    "@@last_modified": "2026-09-01 14:46:20.087868",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9923,5 +9923,6 @@
     "callTranscriptUnreconciledClocks": "Te wypowiedzi zostały nagrane na dwóch urządzeniach, których zegarów nie można było porównać, więc nie są wyświetlane żadne czasy, a kolejność, w jakiej się pojawiają, może być błędna.",
     "callTranscriptOpen": "Przeczytaj transkrypcję",
     "errorRateLimited": "Obecnie ładujemy dużo danych. Poczekaj chwilę i spróbuj ponownie.",
-    "noPermissionToInviteUsers": "Nie masz uprawnień, aby zapraszać tu członków."
+    "noPermissionToInviteUsers": "Nie masz uprawnień, aby zapraszać tu członków.",
+    "mapPinsKeyboardHint": "Użyj klawiszy strzałek, aby poruszać się między aktywnościami na mapie, i naciśnij Enter, aby otworzyć wybraną."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:28:01.156073",
+    "@@last_modified": "2026-09-01 14:46:19.460000",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9838,5 +9838,6 @@
     "callTranscriptUnreconciledClocks": "Deze beurten zijn opgenomen op twee apparaten waarvan de klokken niet konden worden vergeleken, dus er worden geen tijden weergegeven en de volgorde waarin ze verschijnen kan onjuist zijn.",
     "callTranscriptOpen": "Lees het transcript",
     "errorRateLimited": "We laden momenteel veel. Wacht even en probeer het opnieuw.",
-    "noPermissionToInviteUsers": "Je hebt hier geen toestemming om leden uit te nodigen."
+    "noPermissionToInviteUsers": "Je hebt hier geen toestemming om leden uit te nodigen.",
+    "mapPinsKeyboardHint": "Gebruik de pijltjestoetsen om tussen activiteiten op de kaart te bewegen en druk op Enter om er een te openen."
 }

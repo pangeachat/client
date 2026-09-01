@@ -2,6 +2,7 @@ import 'dart:ui' as ui show SemanticsHitTestBehavior;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -244,6 +245,125 @@ void main() {
       isFalse,
       reason: 'the mirror is semantics-only; pointer taps belong to the pins',
     );
+    semantics.dispose();
+  });
+
+  // Keyboard access (#8714): one Tab stop, arrow-key roving in card order,
+  // Enter activates, Esc back to group level, the authored ring marks the
+  // roved pin. See world-map.instructions.md → Keyboard access.
+  testWidgets('the layer is one Tab stop and arrows rove the pins', (
+    tester,
+  ) async {
+    const second = QuestActivityCard(
+      activityId: 'a2',
+      title: 'Second Activity',
+      l2: 'es',
+      // [longitude, latitude] — northeast of the first card, still on screen.
+      coordinates: [20, 10],
+      learningObjectiveRefs: [],
+    );
+    final semantics = tester.ensureSemantics();
+    final controller = MapController();
+    // Mirror the view's #7219 config: the map's own (invisible) focus target
+    // stays out of Tab traversal and never autofocuses — with flutter_map's
+    // defaults it would grab focus at mount and scramble the tab ring.
+    final mapFocusNode = FocusNode(
+      debugLabel: 'FlutterMap',
+      skipTraversal: true,
+    );
+    QuestActivityCard? opened;
+
+    await tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Stack(
+          children: [
+            Positioned.fill(
+              child: ExcludeSemantics(
+                child: FlutterMap(
+                  mapController: controller,
+                  options: MapOptions(
+                    initialCenter: const LatLng(0, 0),
+                    initialZoom: 3,
+                    interactionOptions: InteractionOptions(
+                      keyboardOptions: KeyboardOptions(
+                        focusNode: mapFocusNode,
+                        autofocus: false,
+                      ),
+                    ),
+                  ),
+                  children: const [],
+                ),
+              ),
+            ),
+            Positioned.fill(
+              child: PinSemanticsLayer(
+                mapController: controller,
+                cards: const [card, second],
+                stateOf: (_) => ActivityPinState.available,
+                onTap: (c) => opened = c,
+              ),
+            ),
+            // A focusable after the layer, to prove Tab leaves in one press.
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: TextButton(onPressed: () {}, child: const Text('after')),
+            ),
+          ],
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    controller.move(const LatLng(0, 0), 3);
+    await tester.pumpAndSettle();
+
+    Offset ringCenter() =>
+        tester.getCenter(find.byKey(PinSemanticsLayerState.ringKey));
+    Offset pinCenter(String title) =>
+        tester.getCenter(find.bySemanticsLabel(RegExp(title)));
+
+    // Tab enters the group and roves the first (highest-ranked) pin: the
+    // authored ring appears on it — never an unmarked focusable.
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.pumpAndSettle();
+    expect(find.byKey(PinSemanticsLayerState.ringKey), findsOneWidget);
+    expect(ringCenter(), pinCenter('Test Activity'));
+
+    // Enter is a tap on the roved pin.
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    expect(opened?.activityId, 'a1');
+
+    // Arrows rove in card (ranking) order, clamped at the ends — no wrap.
+    await tester.sendKeyEvent(LogicalKeyboardKey.arrowRight);
+    await tester.pumpAndSettle();
+    expect(ringCenter(), pinCenter('Second Activity'));
+    await tester.sendKeyEvent(LogicalKeyboardKey.arrowRight);
+    await tester.pumpAndSettle();
+    expect(ringCenter(), pinCenter('Second Activity'));
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    expect(opened?.activityId, 'a2');
+    await tester.sendKeyEvent(LogicalKeyboardKey.arrowLeft);
+    await tester.pumpAndSettle();
+    expect(ringCenter(), pinCenter('Test Activity'));
+
+    // Esc steps back to the group level: ring gone, focus kept on the group.
+    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+    await tester.pumpAndSettle();
+    expect(find.byKey(PinSemanticsLayerState.ringKey), findsNothing);
+    expect(FocusManager.instance.primaryFocus?.debugLabel, 'PinSemanticsLayer');
+
+    // The very next Tab leaves the layer — one stop total, not one per pin.
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.pumpAndSettle();
+    expect(
+      FocusManager.instance.primaryFocus?.debugLabel,
+      isNot('PinSemanticsLayer'),
+      reason: 'per-pin Tab stops are the 93-press wall #8714 forbids',
+    );
+    expect(find.byKey(PinSemanticsLayerState.ringKey), findsNothing);
+    mapFocusNode.dispose();
     semantics.dispose();
   });
 

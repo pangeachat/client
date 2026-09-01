@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-01 12:27:56.182388",
+    "@@last_modified": "2026-09-01 14:46:14.867709",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Bu növbələr saatları müqayisə edilə bilməyən iki cihazda qeydə alınıb, buna görə də vaxtlar göstərilmir və onların görünmə ardıcıllığı səhv ola bilər.",
     "callTranscriptOpen": "Transkripti oxuyun",
     "errorRateLimited": "Hazırda çoxlu məlumat yükləyirik. Zəhmət olmasa bir az gözləyin və yenidən cəhd edin.",
-    "noPermissionToInviteUsers": "Bura üzv dəvət etmək icazəniz yoxdur."
+    "noPermissionToInviteUsers": "Bura üzv dəvət etmək icazəniz yoxdur.",
+    "mapPinsKeyboardHint": "Xəritədəki fəaliyyətlər arasında hərəkət etmək üçün ox düymələrindən istifadə edin və birini açmaq üçün Enter düyməsini basın."
 }

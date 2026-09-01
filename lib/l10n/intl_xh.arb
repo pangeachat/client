@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-01 12:28:04.048169",
+    "@@last_modified": "2026-09-01 14:46:22.524119",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Ezi zithuba zirekhodwe kwizixhobo ezibini iiwotshi zazo ezingakwazanga ukuthelekiswa, ngoko ke akukho maxesha aboniswayo kwaye ucwangco oluvela ngalo lusenokuba luphosakele.",
     "callTranscriptOpen": "Funda umbhalo",
     "errorRateLimited": "Silayisha okuninzi ngoku. Nceda ulinde umzuzwana uze uzame kwakhona.",
-    "noPermissionToInviteUsers": "Awunayo imvume yokumema amalungu apha."
+    "noPermissionToInviteUsers": "Awunayo imvume yokumema amalungu apha.",
+    "mapPinsKeyboardHint": "Sebenzisa amaqhosha otolo ukuhamba phakathi kwemisebenzi kwimephu, kwaye ucinezele u-Enter ukuze uvule enye."
 }

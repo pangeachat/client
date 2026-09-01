@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-01 12:27:58.547481",
+    "@@last_modified": "2026-09-01 14:46:17.003696",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10274,5 +10274,6 @@
     "callTranscriptUnreconciledClocks": "Ovi su redci snimljeni na dva uređaja čiji se satovi nisu mogli usporediti, pa se ne prikazuju vremena i redoslijed kojim se pojavljuju može biti pogrešan.",
     "callTranscriptOpen": "Pročitaj transkript",
     "errorRateLimited": "Trenutno je veliko opterećenje. Pričekajte trenutak i pokušajte ponovno.",
-    "noPermissionToInviteUsers": "Nemate dopuštenje za pozivanje članova ovdje."
+    "noPermissionToInviteUsers": "Nemate dopuštenje za pozivanje članova ovdje.",
+    "mapPinsKeyboardHint": "Koristite tipke sa strelicama za kretanje između aktivnosti na karti, a pritisnite Enter za otvaranje jedne."
 }

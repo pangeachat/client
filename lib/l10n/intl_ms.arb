@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-01 12:28:00.810415",
+    "@@last_modified": "2026-09-01 14:46:19.278236",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Giliran ini dirakam pada dua peranti yang jamnya tidak dapat dibandingkan, jadi tiada masa ditunjukkan dan susunan ia muncul mungkin salah.",
     "callTranscriptOpen": "Baca transkrip",
     "errorRateLimited": "Kami sedang memuat banyak data sekarang. Sila tunggu sebentar dan cuba lagi.",
-    "noPermissionToInviteUsers": "Anda tidak mempunyai kebenaran untuk menjemput ahli di sini."
+    "noPermissionToInviteUsers": "Anda tidak mempunyai kebenaran untuk menjemput ahli di sini.",
+    "mapPinsKeyboardHint": "Gunakan kekunci anak panah untuk bergerak antara aktiviti pada peta, dan tekan Enter untuk membuka satu."
 }

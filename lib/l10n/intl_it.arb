@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:27:59.109765",
+    "@@last_modified": "2026-09-01 14:46:17.575787",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9911,5 +9911,6 @@
     "callTranscriptUnreconciledClocks": "Questi turni sono stati registrati su due dispositivi i cui orologi non potevano essere confrontati, quindi non vengono mostrati orari e l'ordine in cui appaiono potrebbe essere errato.",
     "callTranscriptOpen": "Leggi la trascrizione",
     "errorRateLimited": "Stiamo caricando molti dati in questo momento. Attendi un momento e riprova.",
-    "noPermissionToInviteUsers": "Non hai il permesso di invitare membri qui."
+    "noPermissionToInviteUsers": "Non hai il permesso di invitare membri qui.",
+    "mapPinsKeyboardHint": "Usa i tasti freccia per spostarti tra le attività sulla mappa e premi Invio per aprirne una."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:27:56.710296",
+    "@@last_modified": "2026-09-01 14:46:15.409218",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9965,5 +9965,6 @@
     "callTranscriptUnreconciledClocks": "Aquests torns es van gravar en dos dispositius els rellotges dels quals no es van poder comparar, així que no es mostren les hores i l'ordre en què apareixen podria ser incorrecte.",
     "callTranscriptOpen": "Llegeix la transcripció",
     "errorRateLimited": "Estem carregant moltes coses ara mateix. Espera un moment i torna-ho a provar.",
-    "noPermissionToInviteUsers": "No tens permís per convidar membres aquí."
+    "noPermissionToInviteUsers": "No tens permís per convidar membres aquí.",
+    "mapPinsKeyboardHint": "Utilitza les tecles de fletxa per moure't entre les activitats del mapa i prem Retorn per obrir-ne una."
 }

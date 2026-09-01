@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:28:02.395164",
+    "@@last_modified": "2026-09-01 14:46:20.346326",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10570,5 +10570,6 @@
     "callTranscriptUnreconciledClocks": "Aceste replici au fost înregistrate pe două dispozitive ale căror ceasuri nu au putut fi comparate, așa că nu sunt afișate ore și ordinea în care apar ar putea fi greșită.",
     "callTranscriptOpen": "Citiți transcrierea",
     "errorRateLimited": "Încărcăm multe acum. Te rugăm să aștepți un moment și să încerci din nou.",
-    "noPermissionToInviteUsers": "Nu ai permisiunea de a invita membri aici."
+    "noPermissionToInviteUsers": "Nu ai permisiunea de a invita membri aici.",
+    "mapPinsKeyboardHint": "Folosește tastele săgeți pentru a te deplasa între activitățile de pe hartă și apasă Enter pentru a deschide una."
 }

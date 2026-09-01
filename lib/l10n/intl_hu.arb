@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-01 12:27:58.825374",
+    "@@last_modified": "2026-09-01 14:46:17.021162",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9941,5 +9941,6 @@
     "callTranscriptUnreconciledClocks": "Ezeket a fordulatokat két olyan eszközön rögzítették, amelyek óráit nem lehetett összehasonlítani, így nem jelennek meg időpontok, és a megjelenésük sorrendje hibás lehet.",
     "callTranscriptOpen": "Olvassa el az átiratot",
     "errorRateLimited": "Jelenleg sok adatot töltünk be. Kérjük, várjon egy pillanatot, majd próbálja újra.",
-    "noPermissionToInviteUsers": "Nincs jogosultságod tagokat meghívni ide."
+    "noPermissionToInviteUsers": "Nincs jogosultságod tagokat meghívni ide.",
+    "mapPinsKeyboardHint": "A térképen lévő tevékenységek közötti mozgáshoz használja a nyílbillentyűket, a megnyitáshoz pedig nyomja meg az Entert."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-01 12:27:57.445753",
+    "@@last_modified": "2026-09-01 14:46:15.771294",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8057,5 +8057,6 @@
     "callTranscriptUnreconciledClocks": "Estos turnos se grabaron en dos dispositivos cuyos relojes no pudieron compararse, por lo que no se muestran las horas y el orden en que aparecen puede ser incorrecto.",
     "callTranscriptOpen": "Leer la transcripción",
     "errorRateLimited": "Estamos cargando mucho ahora mismo. Espera un momento y vuelve a intentarlo.",
-    "noPermissionToInviteUsers": "No tienes permiso para invitar miembros aquí."
+    "noPermissionToInviteUsers": "No tienes permiso para invitar miembros aquí.",
+    "mapPinsKeyboardHint": "Usa las teclas de flecha para moverte entre las actividades del mapa y presiona Enter para abrir una."
 }

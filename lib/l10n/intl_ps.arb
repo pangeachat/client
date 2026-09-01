@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-01 12:28:01.929962",
+    "@@last_modified": "2026-09-01 14:46:20.371075",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "دا وارونه په دوو وسیلو کې ثبت شوي چې ساعتونه یې پرتله کیدی نشي، نو هیڅ وخت نه ښودل کیږي او د دوی د څرګندیدو ترتیب ممکن غلط وي.",
     "callTranscriptOpen": "متن ولولئ",
     "errorRateLimited": "موږ اوس مهال ډېر څه باروو. مهرباني وکړئ یوه شیبه انتظار وکړئ او بیا هڅه وکړئ.",
-    "noPermissionToInviteUsers": "تاسو دلته د غړو بللو اجازه نلرئ."
+    "noPermissionToInviteUsers": "تاسو دلته د غړو بللو اجازه نلرئ.",
+    "mapPinsKeyboardHint": "د نقشې پر فعالیتونو د تګ راتګ لپاره د غشي کیلي وکاروئ، او د یوې پرانیستلو لپاره Enter کېکاږئ."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:28:02.730034",
+    "@@last_modified": "2026-09-01 14:46:20.938845",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10787,5 +10787,6 @@
     "callTranscriptUnreconciledClocks": "Ovi obrti su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuje vreme i redosled njihovog pojavljivanja može biti pogrešan.",
     "callTranscriptOpen": "Pročitajte transkript",
     "errorRateLimited": "Trenutno se mnogo toga učitava. Sačekajte trenutak i pokušajte ponovo.",
-    "noPermissionToInviteUsers": "Nemate dozvolu da pozivate članove ovde."
+    "noPermissionToInviteUsers": "Nemate dozvolu da pozivate članove ovde.",
+    "mapPinsKeyboardHint": "Koristite tastere sa strelicama za kretanje između aktivnosti na mapi, a pritisnite Enter da biste otvorili jednu."
 }

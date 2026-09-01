@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:28:01.771387",
+    "@@last_modified": "2026-09-01 14:46:20.119293",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10782,5 +10782,6 @@
     "callTranscriptUnreconciledClocks": "Estas falas foram gravadas em dois dispositivos cujos relógios não puderam ser comparados, por isso não são mostradas horas e a ordem em que aparecem pode estar errada.",
     "callTranscriptOpen": "Ler a transcrição",
     "errorRateLimited": "Estamos carregando muita coisa agora. Por favor, aguarde um momento e tente novamente.",
-    "noPermissionToInviteUsers": "Você não tem permissão para convidar membros aqui."
+    "noPermissionToInviteUsers": "Você não tem permissão para convidar membros aqui.",
+    "mapPinsKeyboardHint": "Use as teclas de seta para mover-se entre as atividades no mapa e pressione Enter para abrir uma."
 }

@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-01 12:28:02.346132",
+    "@@last_modified": "2026-09-01 14:46:20.802937",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10783,5 +10783,6 @@
     "callTranscriptUnreconciledClocks": "Ti govori so bili posneti na dveh napravah, katerih ur ni bilo mogoče primerjati, zato časi niso prikazani in vrstni red, v katerem se pojavijo, je lahko napačen.",
     "callTranscriptOpen": "Preberite prepis",
     "errorRateLimited": "Trenutno nalagamo veliko vsebine. Prosimo, počakajte trenutek in poskusite znova.",
-    "noPermissionToInviteUsers": "Nimate dovoljenja za povabilo članov sem."
+    "noPermissionToInviteUsers": "Nimate dovoljenja za povabilo članov sem.",
+    "mapPinsKeyboardHint": "Z uporabo puščičnih tipk se premikajte med aktivnostmi na zemljevidu in pritisnite Enter, da odprete eno."
 }
