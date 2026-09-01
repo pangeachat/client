@@ -311,9 +311,11 @@ class CallMedia {
   /// [anchorClocksTo] already makes for this device's own pair.
   ///
   /// Exposed so a comparison between two devices' joins can be made at the
-  /// resolution the wire actually carries. Narrowing
-  /// `CaptureElection.joinStampResolution` to match decides which captured
-  /// audio is DESTROYED, so it is its own change with its own review.
+  /// resolution the wire actually carries. `CaptureElection` reads it for
+  /// exactly that, and DESTROYS captured audio on the answer, so what is handed
+  /// over has to stay raw: the reader decides, per PAIR, whether both halves
+  /// are millisecond-real, and a store that had already repaired one would have
+  /// taken that decision away from it.
   ({int secondsMs, int ms})? sfuJoinStampsFor(String identity) =>
       _sfuJoinStamps[identity];
 
@@ -517,46 +519,19 @@ class CallMedia {
   /// The SFU reading to anchor on: [ms] when it is the same join [seconds]
   /// reports only stated more precisely, and [seconds] whenever it is not.
   ///
-  /// A REFINEMENT ONLY, and every branch here exists to keep it one. The
-  /// millisecond field may improve a reading this app already believes; it may
-  /// never create one, rescue one, or replace one with a different instant. So
-  /// a reading that fails any check falls back rather than being repaired,
-  /// which leaves the correction exactly where it was before field 17 existed.
+  /// A REFINEMENT ONLY, and the rule that keeps it one now lives on
+  /// [ClockAnchor.millisecondRefinement] rather than here — because the
+  /// recorder election asks the same question of a SIBLING's stamps and answers
+  /// it by DESTROYING captured audio. Two copies of that window could drift
+  /// apart, and the half that drifted would be the half that deletes speech.
   ///
-  /// Never on a reading the anchor would refuse. Zero seconds is the unstamped
-  /// protocol default, and an offset measured against 1970 is this device's
-  /// ENTIRE clock rather than its disagreement with anything — so [ClockAnchor]
-  /// refuses it, and a millisecond field arriving beside it must not turn that
-  /// refusal into an answer however well-formed it looks on its own.
-  ///
-  /// The two must agree. `joined_at` is `joined_at_ms` truncated to the second,
-  /// so a server that set both puts the fine one at most 999ms past the second
-  /// the coarse one reports. Both come out of the same frame, so anything
-  /// outside that window is a server contradicting itself, and correcting a
-  /// half by it would move that speaker onto a clock nothing was measured
-  /// against.
-  ///
-  /// That window is also what refuses a zero, which is the case that matters
-  /// most in practice: proto3 leaves default values off the wire, so a server
-  /// that never set `joined_at_ms` and one that set it to zero arrive
-  /// identically, and zero sits half a century before the second reading rather
-  /// than inside it. livekit-server has only sent the field since v1.8.4, so
-  /// an older SFU is the ordinary way here rather than a corruption, and it
-  /// costs nothing but precision.
-  ///
-  /// So the blast radius of a wrong millisecond value is bounded by the window
-  /// that let it through: a stamp this accepts is inside the second the coarse
-  /// reading already named, so the most it can move a half is the second it was
-  /// allowed to refine. [ClockAnchor.of] keeps the last word on the value that
-  /// wins, and refuses it outright if it is not a time at all.
-  static int _sfuReading(int seconds, int ms) {
-    if (seconds <= 0) return seconds;
-    final refines = ms - seconds;
-    if (refines < 0 || refines >= Duration.millisecondsPerSecond) {
-      return seconds;
-    }
-    return ms;
-  }
+  /// What stays here is the FALLBACK, which is this caller's alone. A reading
+  /// the rule refuses leaves the correction exactly where it was before field
+  /// 17 existed, rather than being repaired; [ClockAnchor.of] keeps the last
+  /// word on the value that wins, and refuses it outright if it is not a time
+  /// at all.
+  static int _sfuReading(int seconds, int ms) =>
+      ClockAnchor.millisecondRefinement(seconds, ms) ?? seconds;
 
   /// Where this device's wall clock sat relative to the SFU's, or null when a
   /// usable pair of readings was never taken.

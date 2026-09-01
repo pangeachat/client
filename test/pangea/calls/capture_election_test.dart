@@ -329,6 +329,272 @@ void main() {
     });
   });
 
+  group('ordering two joins at the resolution the PAIR carries', () {
+    // The SFU sends each join twice: `joined_at` in whole seconds, which is all
+    // `Participant.joinedAt` exposes, and `joined_at_ms` -- set only since
+    // livekit-server v1.8.4 -- which states the same instant to the
+    // millisecond. Whether a comparison may be made at the millisecond is
+    // therefore a question about the two stamps in hand, never about the call.
+    final noon = DateTime.utc(2026, 8, 29, 12, 0, 0);
+    final noonMs = noon.millisecondsSinceEpoch;
+    final aSecondLater = noon.add(const Duration(seconds: 1));
+
+    const successor = CaptureCandidate('AAAA');
+
+    /// A server that set both fields: the same join, stated twice.
+    ({int secondsMs, int ms}) at(int offsetMs) =>
+        (secondsMs: noonMs, ms: noonMs + offsetMs);
+
+    /// A server older than v1.8.4. Field 17 is unset, and proto3 puts nothing
+    /// on the wire for an unset field, so it arrives as a zero that no reader
+    /// can tell from a server that set it to zero on purpose.
+    ({int secondsMs, int ms}) coarseOnly(int secondsOffset) =>
+        (secondsMs: noonMs + secondsOffset * 1000, ms: 0);
+
+    /// Both devices recording the same run all along, so the ONLY thing any of
+    /// these cases turns on is the join stamps.
+    bool discards({
+      DateTime? mine,
+      DateTime? theirs,
+      ({int secondsMs, int ms})? myStamps,
+      ({int secondsMs, int ms})? theirStamps,
+    }) => CaptureElection.discardsCapturedAudio(
+      successor: successor,
+      successorReport: CaptureReport.of('AAAA', CaptureReport.published('7')),
+      watch: CaptureWatch()
+        ..observe([CaptureReport.of('AAAA', CaptureReport.published('7'))]),
+      myJoinedAt: mine,
+      successorJoinedAt: theirs,
+      mySfuStamps: myStamps,
+      successorSfuStamps: theirStamps,
+    );
+
+    test('a successor milliseconds earlier in OUR second takes our tail', () {
+      // The narrowing, and the whole reason for it. Both devices are stamped
+      // inside the second beginning at noon, so the coarse readings order
+      // NOTHING and the tail was delivered as a duplicate. The server stated
+      // both joins to the millisecond, and at that resolution the successor
+      // was in the room 452ms before us -- an ordering nobody had to guess.
+      expect(
+        discards(
+          mine: noon,
+          theirs: noon,
+          myStamps: at(500),
+          theirStamps: at(48),
+        ),
+        isTrue,
+      );
+      expect(
+        discards(mine: noon, theirs: noon),
+        isFalse,
+        reason: 'the same two joins, compared at the second, order nothing',
+      );
+    });
+
+    test('one millisecond earlier is a whole resolution step', () {
+      // The boundary. At this resolution the comparison is a strict inequality:
+      // one millisecond is the finest thing the source measures, so a stamp one
+      // millisecond earlier is a stamp a full step earlier.
+      expect(
+        discards(
+          mine: noon,
+          theirs: noon,
+          myStamps: at(49),
+          theirStamps: at(48),
+        ),
+        isTrue,
+      );
+    });
+
+    test('two devices stamped in the SAME millisecond keep their tails', () {
+      // Equality orders nothing at any resolution, which is the mistake that
+      // started all of this -- at the second it destroyed up to 999ms the
+      // sibling was never in the room for.
+      expect(
+        discards(
+          mine: noon,
+          theirs: noon,
+          myStamps: at(48),
+          theirStamps: at(48),
+        ),
+        isFalse,
+      );
+    });
+
+    test('a successor stamped LATER keeps our tail', () {
+      // The shape the two-device experiment actually produced: the sibling
+      // joined 48ms AFTER us. It holds none of what we recorded before it
+      // arrived.
+      expect(
+        discards(
+          mine: noon,
+          theirs: noon,
+          myStamps: at(0),
+          theirStamps: at(48),
+        ),
+        isFalse,
+      );
+    });
+
+    test('a pair the whole-second rule discarded on still discards', () {
+      // Narrowing only ever ADDS discards. A successor whose whole second ended
+      // before ours began is stamped strictly earlier to the millisecond too,
+      // so nothing this rule can see could reverse the coarse verdict -- and a
+      // narrowing that took discards away would be leaving duplicates behind
+      // rather than making anything safer.
+      expect(
+        discards(
+          mine: aSecondLater,
+          theirs: noon,
+          myStamps: at(1500),
+          theirStamps: at(48),
+        ),
+        isTrue,
+      );
+      expect(
+        discards(mine: aSecondLater, theirs: noon),
+        isTrue,
+        reason: 'the same pair at the second',
+      );
+    });
+
+    test('a sibling behind an older SFU is compared at the second', () {
+      // THE MIXED PAIR, and the case worth being most careful about. Our own
+      // join is known to the millisecond and the sibling's is not, and mixing
+      // them -- our 500ms against the second the sibling's stamp NAMES -- would
+      // read as the sibling arriving 500ms first and destroy the tail. Those
+      // are two different measurements: one names an instant, the other names
+      // the whole second it fell in. Falling back is a refusal to narrow, and
+      // it costs a duplicate.
+      expect(
+        discards(
+          mine: noon,
+          theirs: noon,
+          myStamps: at(500),
+          theirStamps: coarseOnly(0),
+        ),
+        isFalse,
+      );
+      expect(
+        discards(
+          mine: aSecondLater,
+          theirs: noon,
+          myStamps: at(1500),
+          theirStamps: coarseOnly(0),
+        ),
+        isTrue,
+        reason: 'the fallback still orders a pair a whole second apart',
+      );
+    });
+
+    test('our OWN older SFU falls back the same way', () {
+      // Symmetric, because the rule is about the pair rather than about either
+      // device. A sibling stated to the millisecond proves nothing against a
+      // reading of ours that names a whole second.
+      expect(
+        discards(
+          mine: noon,
+          theirs: noon,
+          myStamps: coarseOnly(0),
+          theirStamps: at(48),
+        ),
+        isFalse,
+      );
+    });
+
+    test('a device the store never named is compared at the second', () {
+      // Absent is not zero. Nobody having named the device is a different
+      // answer from a server naming it and saying nothing about field 17, and
+      // both of them land on the coarse comparison rather than on a join time
+      // of 1970.
+      expect(discards(mine: noon, theirs: noon, myStamps: at(500)), isFalse);
+      expect(discards(mine: noon, theirs: noon, theirStamps: at(48)), isFalse);
+    });
+
+    test('a fine stamp that contradicts its coarse half is not a reading', () {
+      // `joined_at` is `joined_at_ms` truncated to the second, so both halves
+      // come out of one frame and a fine half outside that second is a server
+      // contradicting itself. Neither direction is repaired into an answer.
+      expect(
+        discards(
+          mine: noon,
+          theirs: noon,
+          myStamps: at(500),
+          theirStamps: (secondsMs: noonMs, ms: noonMs + 1000),
+        ),
+        isFalse,
+      );
+      expect(
+        discards(
+          mine: noon,
+          theirs: noon,
+          myStamps: at(500),
+          theirStamps: (secondsMs: noonMs, ms: noonMs - 1),
+        ),
+        isFalse,
+      );
+    });
+
+    test('a fine stamp with no coarse half to refine is not a reading', () {
+      // Zero seconds is the unstamped protocol default. A millisecond field
+      // arriving beside it looks perfectly well-formed on its own, and it is
+      // still a refinement of nothing.
+      expect(
+        discards(
+          mine: noon,
+          theirs: noon,
+          myStamps: at(500),
+          theirStamps: (secondsMs: 0, ms: noonMs),
+        ),
+        isFalse,
+      );
+      // And the value that is INSIDE the window of a zero coarse half, which
+      // is the one the window alone cannot refuse: half a second past 1970.
+      expect(
+        discards(
+          mine: noon,
+          theirs: noon,
+          myStamps: at(500),
+          theirStamps: (secondsMs: 0, ms: 500),
+        ),
+        isFalse,
+      );
+    });
+
+    test('a stamp beyond any believable clock is not a reading', () {
+      // The ceiling `CallRoster.usableJoinTime` already applies to the coarse
+      // reading, applied here for the same reason: a number this app would not
+      // believe about a clock is not a number the election may destroy audio
+      // over. Without it the fine path would accept a stamp the coarse path
+      // threw away.
+      const beyond = 4102444800000; // ClockAnchor.clockCeilingMs, 2100-01-01.
+      expect(
+        discards(
+          mine: noon,
+          theirs: noon,
+          myStamps: (secondsMs: beyond + 1000, ms: beyond + 1500),
+          theirStamps: at(48),
+        ),
+        isFalse,
+      );
+    });
+
+    test('a fine pair decides even where the SDK described neither join', () {
+      // The one place the two sources disagree in the fine path's favour. The
+      // roster reads `Participant.joinedAt` and refuses it while the SDK
+      // reports the participant undescribed, because there it answers with a
+      // fresh read of THIS device's clock. The store has no such failure: it
+      // holds only what arrived in a signal frame naming that identity, so a
+      // stamp in it IS the SFU having described the device.
+      expect(discards(myStamps: at(500), theirStamps: at(48)), isTrue);
+      expect(
+        discards(myStamps: at(48), theirStamps: at(500)),
+        isFalse,
+        reason: 'and it still refuses when the pair orders the other way',
+      );
+    });
+  });
+
   group('what a watcher makes of a stretch it watched', () {
     final noon = DateTime.utc(2026, 8, 29, 12, 0, 0);
     final aSecondLater = noon.add(const Duration(seconds: 1));

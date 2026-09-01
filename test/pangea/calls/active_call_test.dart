@@ -591,6 +591,11 @@ class FakeRoster extends CallRoster {
   /// This device's own membership, once the SFU has given us one.
   (bool, DateTime)? myJoin;
 
+  /// The identity the SFU names THIS device by, when a test cares which string
+  /// that is. The real one is minted by the token service and is never the bare
+  /// user id.
+  String? myMemberIdentity;
+
   @override
   RosterRead get read => RosterRead(
     remotes: [
@@ -605,7 +610,7 @@ class FakeRoster extends CallRoster {
     me: myJoin == null
         ? null
         : RosterMember(
-            identity: myUserId,
+            identity: myMemberIdentity ?? myUserId,
             described: myJoin!.$1,
             joinedAt: myJoin!.$2,
           ),
@@ -3361,6 +3366,83 @@ void main() {
 
       expect(call.isRecording, isFalse);
       expect(capture.discardRequests.last, isFalse);
+    });
+
+    /// The same handover [recordingBeside] sets up -- a sibling recording run 7
+    /// from before our first frame, taking over when our tap dies -- with both
+    /// devices stamped inside ONE second, so the coarse readings order nothing
+    /// and only the SFU's millisecond stamps can decide.
+    ///
+    /// [siblingMs] and [mineMs] are offsets into that second. The identity our
+    /// own stamp is filed under is deliberately NOT `'$userId:$deviceId'`: the
+    /// key is the string the SFU used, and a call site that composed one out of
+    /// the parts this device holds would look up a device nobody named, fall
+    /// back to the second, and look perfectly correct while doing it.
+    Future<bool> discardsWithFineStamps({
+      required int siblingMs,
+      required int mineMs,
+      bool siblingSentFineField = true,
+    }) async {
+      final (call, calls, media, capture) = await build();
+      const myIdentity = '@somebody:elsewhere:PHONE:2';
+      final siblingIdentity = '${calls.client.userID}:zzzzzzzzzz';
+      final secondsMs = joinedAt.millisecondsSinceEpoch;
+      calls.roster!.myMemberIdentity = myIdentity;
+      calls.roster!.myJoin = (true, joinedAt);
+      calls.roster!.joins = {siblingIdentity: (true, joinedAt)};
+      calls.roster!.attributes = {siblingIdentity: recording('7')};
+      media.recordJoinStamps([
+        (identity: myIdentity, secondsMs: secondsMs, ms: secondsMs + mineMs),
+        (
+          identity: siblingIdentity,
+          secondsMs: secondsMs,
+          // Zero is what an SFU older than livekit-server v1.8.4 leaves on the
+          // wire, and it is indistinguishable from one that set the field to
+          // zero on purpose.
+          ms: siblingSentFineField ? secondsMs + siblingMs : 0,
+        ),
+      ]);
+      calls.remotePresent = true;
+      calls.devicesInCall = [calls.client.deviceID!, 'zzzzzzzzzz'];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isTrue, reason: 'the premise of these tests');
+
+      capture.loseTapForGood();
+      await pumpEventQueue();
+      await call.tickReelectionForTest();
+      expect(call.isRecording, isFalse, reason: 'the sibling has it now');
+
+      return capture.discardRequests.last;
+    }
+
+    test('the SFU millisecond stamps order a pair one second cannot', () async {
+      // The narrowing, end to end. Everything else is identical to the test
+      // above -- which keeps its tail because two whole-second stamps order
+      // nothing -- and the millisecond readings the SFU sent for the same two
+      // joins put the sibling in the room 452ms first.
+      expect(await discardsWithFineStamps(siblingMs: 48, mineMs: 500), isTrue);
+    });
+
+    test('the same pair the other way round still keeps our tail', () async {
+      // The shape the two-device experiment actually produced, and the reason
+      // the finer reading is not simply more discards: the sibling joined AFTER
+      // us inside the same second, so it holds none of what we recorded first.
+      expect(await discardsWithFineStamps(siblingMs: 500, mineMs: 48), isFalse);
+    });
+
+    test('a sibling behind an older SFU is still judged by the second', () async {
+      // A pair, not a deployment. Our own join is stated to the millisecond and
+      // the sibling's is not, and the two readings measure different things --
+      // one an instant, the other the second it fell in. Comparing them anyway
+      // would put the sibling 500ms ahead of us and destroy the tail.
+      expect(
+        await discardsWithFineStamps(
+          siblingMs: 48,
+          mineMs: 500,
+          siblingSentFineField: false,
+        ),
+        isFalse,
+      );
     });
 
     test('the request is in before the reconcile that stops the tap', () async {

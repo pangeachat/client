@@ -740,6 +740,18 @@ class ActiveCall extends ChangeNotifier {
     final successorReport = successor == null
         ? null
         : roster?.siblingCaptureReport(successor.deviceId);
+    // The SFU's own words about each join, keyed the way the SFU keys them.
+    // The identities come from the roster rather than being assembled out of
+    // the account and the device id: the store is keyed by the string the SFU
+    // used, and a second copy of the identity rules here is a second place for
+    // them to be wrong. A device the SFU has not named has no identity to look
+    // up, and an identity the store never heard of reads as absent — both land
+    // on the coarse comparison, which is where they landed before this was
+    // read at all.
+    final myIdentity = roster?.myIdentity;
+    final successorIdentity = successor == null
+        ? null
+        : roster?.siblingIdentity(successor.deviceId);
     capture.setDiscardOnStop(
       successor != null &&
           successorReport != null &&
@@ -749,6 +761,12 @@ class ActiveCall extends ChangeNotifier {
             watch: _watch,
             myJoinedAt: roster?.myJoinTime,
             successorJoinedAt: roster?.siblingJoinTime(successor.deviceId),
+            mySfuStamps: myIdentity == null
+                ? null
+                : media.sfuJoinStampsFor(myIdentity),
+            successorSfuStamps: successorIdentity == null
+                ? null
+                : media.sfuJoinStampsFor(successorIdentity),
           ),
     );
 

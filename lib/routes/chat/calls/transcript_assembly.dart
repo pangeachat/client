@@ -242,6 +242,50 @@ class ClockAnchor {
   /// its disagreement with anything.
   static bool _usable(int ms) => ms > 0 && ms < clockCeilingMs;
 
+  /// [ms] when it states the same join [secondsMs] does, only to the
+  /// millisecond, and null when it does not.
+  ///
+  /// The SFU sends the instant twice -- proto field 6, `joined_at`, in whole
+  /// SECONDS, and field 17, `joined_at_ms` -- and this is the one rule that
+  /// decides whether the second of them may be believed. A REFINEMENT ONLY:
+  /// the fine field may improve a reading its coarse half already supports; it
+  /// may never create one, rescue one, or name a different instant.
+  ///
+  /// Never over a coarse reading this class would itself refuse. Zero seconds
+  /// is the unstamped protocol default, so a millisecond field arriving beside
+  /// it must not turn that refusal into an answer however well-formed it looks
+  /// alone.
+  ///
+  /// The two must agree, and the window is what makes the check possible
+  /// without a second source. `joined_at` is `joined_at_ms` truncated to the
+  /// second, so a server that set both puts the fine one at most 999ms past
+  /// the second the coarse one names. Both arrive in the same frame, so
+  /// anything outside that window is a server contradicting itself.
+  ///
+  /// The window is also what refuses a zero, which is the case that matters
+  /// most in practice: proto3 leaves default values off the wire, so a server
+  /// that never set `joined_at_ms` and one that set it to zero arrive
+  /// identically, and zero sits half a century before the second reading
+  /// rather than inside it. There is no "was field 17 present" flag to consult
+  /// and none to invent. livekit-server has only sent the field since v1.8.4,
+  /// so an older SFU is the ordinary way here rather than a corruption.
+  ///
+  /// TWO CALLERS, and both of them destroy something when they are wrong, so
+  /// the rule is stated once. `CallMedia` anchors this device's clock on the
+  /// value; `CaptureElection` orders two devices' joins by it and DISCARDS
+  /// captured audio on the answer. Neither may hold its own copy of the
+  /// window.
+  ///
+  /// The blast radius of a wrong value is bounded by the window that let it
+  /// through: a reading this accepts sits inside the second the coarse reading
+  /// already named.
+  static int? millisecondRefinement(int secondsMs, int ms) {
+    if (secondsMs <= 0) return null;
+    final refines = ms - secondsMs;
+    if (refines < 0 || refines >= Duration.millisecondsPerSecond) return null;
+    return ms;
+  }
+
   Map<String, dynamic> toJson() => {
     'sfu_joined_at_ms': sfuMs,
     'device_joined_at_ms': deviceMs,

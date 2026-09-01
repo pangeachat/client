@@ -47,6 +47,12 @@ class TestRoster extends CallRoster {
   /// participant at all.
   DateTime? myJoin = DateTime.utc(2026, 8, 29, 12);
 
+  /// The identity the SFU names THIS device by, when a test cares which string
+  /// that is. The token service appends the device to the account id, so the
+  /// real one is never the bare user id -- and nothing downstream may assume it
+  /// is composed of parts this device holds.
+  String? myMemberIdentity;
+
   /// Whether the SFU has described THIS device.
   bool myDescribed = true;
 
@@ -84,7 +90,7 @@ class TestRoster extends CallRoster {
     me: myJoin == null
         ? null
         : RosterMember(
-            identity: myUserId,
+            identity: myMemberIdentity ?? myUserId,
             described: myDescribed,
             joinedAt: myDescribed ? myJoin! : _freshLocalRead,
           ),
@@ -137,7 +143,11 @@ void main() {
 
       expect(roster.hasPeer, isTrue);
       expect(roster.participants, {
-        const CallParticipant(userId: peer, deviceId: 'THEIRPHONE'),
+        const CallParticipant(
+          identity: '$peer:THEIRPHONE',
+          userId: peer,
+          deviceId: 'THEIRPHONE',
+        ),
       });
     });
 
@@ -175,6 +185,53 @@ void main() {
     });
   });
 
+  group('the identity the SFU named a device by', () {
+    test('a sibling answers with the string the SFU used', () {
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.recompute();
+
+      expect(roster.siblingIdentity('MYOTHERPHONE'), '$me:MYOTHERPHONE');
+    });
+
+    test('a device this account cannot see has no identity', () {
+      roster.recompute();
+
+      expect(roster.siblingIdentity('MYOTHERPHONE'), isNull);
+    });
+
+    test('this device answers with the SFU string, not one composed', () {
+      // The identity is the token service's, and this device holds no rule for
+      // reproducing it. Here the SFU names us by something an account id and a
+      // device id could not be joined into, which is the case a caller that
+      // built the key itself would look up and miss.
+      roster.myMemberIdentity = '$me:PHONE:2';
+      roster.recompute();
+
+      expect(roster.myIdentity, '$me:PHONE:2');
+    });
+
+    test('an identity outlives a join stamp the SFU has not given', () {
+      // Deliberately not filtered the way the join time beside it is. An
+      // identity is what the SFU CALLS this device rather than a reading of
+      // anything, so it is exactly as true on a membership the SDK reports as
+      // undescribed -- where `joinedAt` answers with a fresh read of this
+      // device's own clock and is refused.
+      roster.myDescribed = false;
+      roster.myMemberIdentity = '$me:MYPHONE';
+      roster.recompute();
+
+      expect(roster.myJoinTime, isNull);
+      expect(roster.myIdentity, '$me:MYPHONE');
+    });
+
+    test('no membership at all means no identity', () {
+      roster.myJoin = null;
+      roster.recompute();
+
+      expect(roster.myIdentity, isNull);
+    });
+  });
+
   group('naming participants', () {
     test('splits a user id from its device', () {
       final p = CallParticipant.parse('@learner:pangea.localhost:ABCDEF');
@@ -198,11 +255,39 @@ void main() {
       const mine = '@learner:localhost:8448';
       expect(
         CallParticipant.parse(mine, myUserId: mine),
-        const CallParticipant(userId: mine),
+        const CallParticipant(identity: mine, userId: mine),
       );
       expect(
         CallParticipant.parse('$mine:PHONE', myUserId: mine),
-        const CallParticipant(userId: mine, deviceId: 'PHONE'),
+        const CallParticipant(
+          identity: '$mine:PHONE',
+          userId: mine,
+          deviceId: 'PHONE',
+        ),
+      );
+    });
+
+    test('a participant carries the identity it was parsed from', () {
+      // The whole string, kept rather than rebuilt. `CallMedia`'s join-stamp
+      // store is keyed by it, and the election destroys captured audio on what
+      // comes back out of that store -- so a reader that reassembled
+      // `'$userId:$deviceId'` at the lookup would be a second copy of the
+      // splitting rules, in the one place where being wrong reads as "the SFU
+      // never named that device" and silently costs the finer comparison.
+      for (final identity in [
+        '@learner:pangea.localhost:ABCDEF',
+        '@learner:pangea.localhost',
+        'not-an-identity',
+      ]) {
+        expect(CallParticipant.parse(identity).identity, identity);
+      }
+      // And on the two paths that only exist because our own id may carry a
+      // port, which are the paths a rebuild gets wrong.
+      const ported = '@learner:localhost:8448';
+      expect(CallParticipant.parse(ported, myUserId: ported).identity, ported);
+      expect(
+        CallParticipant.parse('$ported:PHONE', myUserId: ported).identity,
+        '$ported:PHONE',
       );
     });
 

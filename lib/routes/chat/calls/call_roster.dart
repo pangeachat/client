@@ -18,6 +18,18 @@ import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 /// know about who is present is derivable from it.
 @immutable
 class CallParticipant {
+  /// The identity string the SFU named them by, kept rather than rebuilt.
+  ///
+  /// [userId] and [deviceId] are what this class parsed OUT of it, and every
+  /// reader that needs the whole string back — `CallMedia`'s join-stamp store
+  /// is keyed by it — has to be handed the original. Reassembling
+  /// `'$userId:$deviceId'` at a call site would put a second copy of the
+  /// splitting rules there, in a place where getting them wrong reads
+  /// perfectly: the ambiguous cases [parse] exists for are exactly the ones a
+  /// rebuilt string gets right by accident until the day a homeserver carries
+  /// a port.
+  final String identity;
+
   final String userId;
 
   /// Null when the identity carries no device segment. Treated as a distinct
@@ -56,6 +68,7 @@ class CallParticipant {
   final CaptureReport? capturing;
 
   const CallParticipant({
+    required this.identity,
     required this.userId,
     this.deviceId,
     this.joinedAt,
@@ -73,14 +86,20 @@ class CallParticipant {
   /// when the only other participant was themselves.
   factory CallParticipant.parse(String identity, {String? myUserId}) {
     if (myUserId != null && myUserId.isNotEmpty) {
-      if (identity == myUserId) return CallParticipant(userId: myUserId);
+      if (identity == myUserId) {
+        return CallParticipant(identity: identity, userId: myUserId);
+      }
       if (identity.startsWith('$myUserId:')) {
         final rest = identity.substring(myUserId.length + 1);
         // Only when what follows is a single segment. Another user whose id
         // extends ours — ours with a port, say — would otherwise be read as one
         // of our own devices, and a real peer would not count as present.
         if (!rest.contains(':')) {
-          return CallParticipant(userId: myUserId, deviceId: rest);
+          return CallParticipant(
+            identity: identity,
+            userId: myUserId,
+            deviceId: rest,
+          );
         }
       }
     }
@@ -90,9 +109,10 @@ class CallParticipant {
     if (split <= 0 ||
         !identity.startsWith('@') ||
         identity.indexOf(':') == split) {
-      return CallParticipant(userId: identity);
+      return CallParticipant(identity: identity, userId: identity);
     }
     return CallParticipant(
+      identity: identity,
       userId: identity.substring(0, split),
       deviceId: identity.substring(split + 1),
     );
@@ -108,6 +128,7 @@ class CallParticipant {
     bool canCapture = true,
     CaptureReport? capturing,
   }) => CallParticipant(
+    identity: identity,
     userId: userId,
     deviceId: deviceId,
     joinedAt: joinedAt,
@@ -122,8 +143,8 @@ class CallParticipant {
   /// is what the roster's notify predicate is built from: a hand-maintained
   /// list of "fields worth notifying about" is how a capability change came to
   /// land in silence.
-  (String, String?, DateTime?, bool, CaptureReport?) get state =>
-      (userId, deviceId, joinedAt, canCapture, capturing);
+  (String, String, String?, DateTime?, bool, CaptureReport?) get state =>
+      (identity, userId, deviceId, joinedAt, canCapture, capturing);
 
   @override
   bool operator ==(Object other) =>
@@ -441,6 +462,18 @@ class CallRoster extends ChangeNotifier {
   /// When the SFU saw one of this account's other devices join.
   DateTime? siblingJoinTime(String deviceId) => _sibling(deviceId)?.joinedAt;
 
+  /// The identity the SFU named THIS device by, or null before it has named
+  /// one.
+  ///
+  /// The key `CallMedia`'s join-stamp store is held under, and the reason it is
+  /// read from here rather than assembled from the account and the device id:
+  /// the string is the SFU's, and only the SFU's copy of it is certain to
+  /// match the one the store was keyed with.
+  String? get myIdentity => _picture.myIdentity;
+
+  /// The identity the SFU named one of this account's other devices by.
+  String? siblingIdentity(String deviceId) => _sibling(deviceId)?.identity;
+
   /// Whether one of this account's other devices says it can record.
   ///
   /// A device this account cannot see reads as ABLE, for the same reason an
@@ -514,6 +547,11 @@ class CallRoster extends ChangeNotifier {
               described: snapshot.me!.described,
               joinedAt: snapshot.me!.joinedAt,
             ),
+      // NOT filtered by [usableJoinTime] beside it, because it is not a
+      // reading of anything: an identity is what the SFU CALLS this device,
+      // and it is exactly as true on a membership the SFU has not yet
+      // described as on one it has.
+      myIdentity: snapshot.me?.identity,
       peerMuted: _readPeerMuted(snapshot),
     );
 
@@ -866,31 +904,44 @@ class _Announcement {
 class _RosterPicture {
   final Set<CallParticipant> participants;
   final DateTime? myJoinedAt;
+
+  /// Null exactly when the SFU has given this device no membership at all,
+  /// which is a different absence from [myJoinedAt]'s: an identity is not a
+  /// time, so it survives a membership the SFU has named but not yet
+  /// described.
+  final String? myIdentity;
   final bool peerMuted;
 
   const _RosterPicture({
     required this.participants,
     required this.myJoinedAt,
+    required this.myIdentity,
     required this.peerMuted,
   });
 
   static const empty = _RosterPicture(
     participants: {},
     myJoinedAt: null,
+    myIdentity: null,
     peerMuted: false,
   );
 
-  Set<(String, String?, DateTime?, bool, CaptureReport?)> get _states =>
+  Set<(String, String, String?, DateTime?, bool, CaptureReport?)> get _states =>
       participants.map((p) => p.state).toSet();
 
   @override
   bool operator ==(Object other) =>
       other is _RosterPicture &&
       other.myJoinedAt == myJoinedAt &&
+      other.myIdentity == myIdentity &&
       other.peerMuted == peerMuted &&
       setEquals(other._states, _states);
 
   @override
-  int get hashCode =>
-      Object.hash(myJoinedAt, peerMuted, Object.hashAllUnordered(_states));
+  int get hashCode => Object.hash(
+    myJoinedAt,
+    myIdentity,
+    peerMuted,
+    Object.hashAllUnordered(_states),
+  );
 }
