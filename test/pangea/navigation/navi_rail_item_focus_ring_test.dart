@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:fluffychat/features/course_plans/map_border.dart';
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/navi_rail_item.dart';
 import '../../utils/test_client.dart';
@@ -35,11 +36,21 @@ void main() {
     client = await prepareTestClient();
   });
 
-  tearDownAll(() => client.dispose());
+  // Rings render only in traditional (keyboard) highlight mode; pin it — the
+  // test binding's platform defaults to touch.
+  setUp(() {
+    FocusManager.instance.highlightStrategy =
+        FocusHighlightStrategy.alwaysTraditional;
+  });
 
-  /// Whether the tree currently paints the gold focus ring (the 3px-side
-  /// ShapeDecoration FocusRingTapTarget draws while focused — the same
-  /// assertion cluster_keyboard_focus_test uses).
+  tearDownAll(() {
+    FocusManager.instance.highlightStrategy = FocusHighlightStrategy.automatic;
+    client.dispose();
+  });
+
+  /// Whether the tree currently paints the gold focus ring (the
+  /// [FocusRingTapTarget.ringWidth]-side ShapeDecoration drawn while focused
+  /// — the same assertion cluster_keyboard_focus_test uses).
   bool showsFocusRing(WidgetTester tester) {
     return tester.widgetList<DecoratedBox>(find.byType(DecoratedBox)).any((
       box,
@@ -47,7 +58,8 @@ void main() {
       final decoration = box.decoration;
       return decoration is ShapeDecoration &&
           decoration.shape is OutlinedBorder &&
-          (decoration.shape as OutlinedBorder).side.width == 3.0;
+          (decoration.shape as OutlinedBorder).side.width ==
+              FocusRingTapTarget.ringWidth;
     });
   }
 

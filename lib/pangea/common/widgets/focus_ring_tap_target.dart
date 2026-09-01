@@ -13,7 +13,26 @@ import 'package:fluffychat/config/app_config.dart';
 /// before the child, so an opaque child swallows the stroke down to a
 /// near-invisible sliver — the very failure this widget exists to fix
 /// (#8724 review).
+///
+/// The ring is a keyboard affordance, not decoration: it renders only while
+/// [FocusManager.highlightMode] is traditional — the same gate Material's own
+/// focus highlights use — so touch users never see it, and pointer clicks
+/// (which don't move Flutter focus) don't summon it (#8724 review).
 class FocusRingTapTarget extends StatefulWidget {
+  /// One ring look for every explicit focus ring (also the filter pills' ring
+  /// in world_map_filter_bar.dart): thin enough to sit quietly on the chrome,
+  /// still unmissable while tabbing.
+  static const double ringWidth = 2.0;
+
+  static BorderSide ringSide(BuildContext context) =>
+      BorderSide(color: AppConfig.goldByTheme(context), width: ringWidth);
+
+  /// Whether explicit focus rings should render at all right now — Flutter's
+  /// gate for Material focus highlights: traditional (keyboard-driven) yes,
+  /// touch no.
+  static bool get highlightsEnabled =>
+      FocusManager.instance.highlightMode == FocusHighlightMode.traditional;
+
   final VoidCallback onTap;
   final OutlinedBorder shape;
   final Widget child;
@@ -33,7 +52,24 @@ class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
   bool _focused = false;
 
   @override
+  void initState() {
+    super.initState();
+    FocusManager.instance.addHighlightModeListener(_onHighlightModeChanged);
+  }
+
+  @override
+  void dispose() {
+    FocusManager.instance.removeHighlightModeListener(_onHighlightModeChanged);
+    super.dispose();
+  }
+
+  void _onHighlightModeChanged(FocusHighlightMode _) {
+    if (mounted) setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final showRing = _focused && FocusRingTapTarget.highlightsEnabled;
     return InkWell(
       onTap: widget.onTap,
       customBorder: widget.shape,
@@ -42,8 +78,8 @@ class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
         position: DecorationPosition.foreground,
         decoration: ShapeDecoration(
           shape: widget.shape.copyWith(
-            side: _focused
-                ? BorderSide(color: AppConfig.goldByTheme(context), width: 3.0)
+            side: showRing
+                ? FocusRingTapTarget.ringSide(context)
                 : BorderSide.none,
           ),
         ),

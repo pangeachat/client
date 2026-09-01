@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -307,6 +307,16 @@ class _PillFocusRingState extends State<_PillFocusRing> {
     if (focused != _focused) setState(() => _focused = focused);
   }
 
+  void _onHighlightModeChanged(FocusHighlightMode _) {
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    FocusManager.instance.addHighlightModeListener(_onHighlightModeChanged);
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -320,20 +330,24 @@ class _PillFocusRingState extends State<_PillFocusRing> {
 
   @override
   void dispose() {
+    FocusManager.instance.removeHighlightModeListener(_onHighlightModeChanged);
     _node?.removeListener(_onFocusChange);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    // Keyboard affordance only (FocusRingTapTarget.highlightsEnabled — the
+    // Material focus-highlight gate): touch users never see the ring.
+    final showRing = _focused && FocusRingTapTarget.highlightsEnabled;
     return DecoratedBox(
       // Foreground, or the pill's opaque fill paints over the stroke and
       // leaves a near-invisible sliver (#8724 review).
       position: DecorationPosition.foreground,
       decoration: ShapeDecoration(
         shape: StadiumBorder(
-          side: _focused
-              ? BorderSide(color: AppConfig.goldByTheme(context), width: 3.0)
+          side: showRing
+              ? FocusRingTapTarget.ringSide(context)
               : BorderSide.none,
         ),
       ),

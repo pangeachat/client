@@ -7,6 +7,7 @@ import 'package:latlong2/latlong.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/world/pin_semantics_layer.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_filter_bar.dart';
@@ -25,8 +26,20 @@ import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 /// widgets from AT but NOT from Tab order, so any focusable inside it without
 /// ExcludeFocus is an invisible dead stop (2.4.7).
 void main() {
-  /// The gold focus ring: the 3px-side ShapeDecoration drawn while focused
-  /// (same assertion as cluster_keyboard_focus_test — one shared ring look).
+  // Rings render only in traditional (keyboard) highlight mode; the test
+  // binding's platform defaults to touch, so pin the mode for the ring
+  // assertions. The touch-gate test below overrides it per-test.
+  setUp(() {
+    FocusManager.instance.highlightStrategy =
+        FocusHighlightStrategy.alwaysTraditional;
+  });
+  tearDownAll(() {
+    FocusManager.instance.highlightStrategy = FocusHighlightStrategy.automatic;
+  });
+
+  /// The gold focus ring: the [FocusRingTapTarget.ringWidth]-side
+  /// ShapeDecoration drawn while focused (same assertion as
+  /// cluster_keyboard_focus_test — one shared ring look).
   Finder goldRing() => find.byWidgetPredicate(
     (w) =>
         w is DecoratedBox &&
@@ -35,7 +48,7 @@ void main() {
         ((w.decoration as ShapeDecoration).shape as OutlinedBorder)
                 .side
                 .width ==
-            3.0,
+            FocusRingTapTarget.ringWidth,
   );
 
   /// The pill label the (single) current gold ring encloses — which control
@@ -115,6 +128,27 @@ void main() {
       expect(find.text(l10n.mapStatusOpenToJoin), findsNothing);
     },
   );
+
+  testWidgets('no ring in touch highlight mode — a keyboard affordance only', (
+    tester,
+  ) async {
+    // The Material focus-highlight gate (#8724 review): touch interaction
+    // must never paint the explicit rings.
+    FocusManager.instance.highlightStrategy =
+        FocusHighlightStrategy.alwaysTouch;
+    await tester.pumpWidget(filterBar());
+    await tester.pumpAndSettle();
+
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.pumpAndSettle();
+    expect(
+      goldRing(),
+      findsNothing,
+      reason:
+          'focus rings are keyboard affordances; in touch highlight mode '
+          'they must not render',
+    );
+  });
 
   testWidgets('the ring follows focus off a pill instead of sticking', (
     tester,
