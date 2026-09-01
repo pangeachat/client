@@ -34,16 +34,26 @@ class ErrorHandler {
     // capturing directly, so a failure arriving here gets the same severity
     // table and grouping key as one reported from a repo — a raw
     // [Sentry.captureException] gets neither.
-    FlutterError.onError = (FlutterErrorDetails details) async {
-      if (!kDebugMode || PlatformInfos.isMobile) {
-        await logError(e: details.exception, s: details.stack, data: {});
-      }
-    };
+    FlutterError.onError = onFlutterError;
 
     PlatformDispatcher.instance.onError = (exception, stack) {
       logError(e: exception, s: stack, data: {});
       return true;
     };
+  }
+
+  /// The [FlutterError.onError] sink. Overriding the default sink must not
+  /// drop [FlutterError.presentError]: without it a debug build discards
+  /// every framework error — no console output, no `flutter run` log line —
+  /// and a rendering bug thrown on every frame produces nothing anywhere a
+  /// developer looks (#8677). Release builds skip it, so their surfacing is
+  /// exactly what it was: [logError] alone.
+  @visibleForTesting
+  static Future<void> onFlutterError(FlutterErrorDetails details) async {
+    if (kDebugMode) FlutterError.presentError(details);
+    if (!kDebugMode || PlatformInfos.isMobile) {
+      await logError(e: details.exception, s: details.stack, data: {});
+    }
   }
 
   /// Puts [Environment.sentryBuildTags] on the global scope, so every event
