@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-01 15:39:51.987908",
+    "@@last_modified": "2026-09-01 17:05:23.794185",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Multa nunc oneramus. Paululum exspecta et iterum conare.",
     "noPermissionToInviteUsers": "Non licet tibi sodales huc invitare.",
     "mapPinsKeyboardHint": "Sagittis utere ad movendum inter actiones in tabula, et preme Intro ut unam aperias.",
-    "selectMessageLabel": "Nuntium elige"
+    "selectMessageLabel": "Nuntium elige",
+    "archivedChat": "Sermo archivatus",
+    "activityReview": "Actio recognita",
+    "activityPanel": "Actio",
+    "coursePage": "Pagina cursus"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-01 15:39:50.063017",
+    "@@last_modified": "2026-09-01 17:05:15.028157",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9837,5 +9837,9 @@
     "errorRateLimited": "Meil on praegu palju koormust. Palun oota hetk ja proovi uuesti.",
     "noPermissionToInviteUsers": "Sul pole siia liikmete kutsumiseks luba.",
     "mapPinsKeyboardHint": "Kasutage nooleklahve kaardil tegevuste vahel liikumiseks ja vajutage sisestusklahvi, et avada üks.",
-    "selectMessageLabel": "Vali sõnum"
+    "selectMessageLabel": "Vali sõnum",
+    "archivedChat": "Arhiveeritud vestlus",
+    "activityReview": "Tegevuste ülevaade",
+    "activityPanel": "Tegevus",
+    "coursePage": "Kursuse leht"
 }

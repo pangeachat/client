@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-01 15:39:52.479868",
+    "@@last_modified": "2026-09-01 17:05:23.428167",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Вчитуваме многу во моментов. Ве молиме почекајте малку и обидете се повторно.",
     "noPermissionToInviteUsers": "Немате дозвола да поканувате членови овде.",
     "mapPinsKeyboardHint": "Користете ги стрелките за да се движите помеѓу активностите на мапата, и притиснете Enter за да отворите една.",
-    "selectMessageLabel": "Избери порака"
+    "selectMessageLabel": "Избери порака",
+    "archivedChat": "Архивиран разговор",
+    "activityReview": "Преглед на активност",
+    "activityPanel": "Активност",
+    "coursePage": "Страница на курс"
 }

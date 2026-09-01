@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-01 15:39:50.385230",
+    "@@last_modified": "2026-09-01 17:05:15.445471",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9877,5 +9877,9 @@
     "errorRateLimited": "Lataamme juuri nyt paljon. Odota hetki ja yritä uudelleen.",
     "noPermissionToInviteUsers": "Sinulla ei ole lupaa kutsua jäseniä tänne.",
     "mapPinsKeyboardHint": "Käytä nuolinäppäimiä siirtyäksesi kartan aktiviteettien välillä ja avaa aktiviteetti painamalla Enter-näppäintä.",
-    "selectMessageLabel": "Valitse viesti"
+    "selectMessageLabel": "Valitse viesti",
+    "archivedChat": "Arkistoitu keskustelu",
+    "activityReview": "Aktiviteettikatsaus",
+    "activityPanel": "Aktiviteetti",
+    "coursePage": "Kurssisivu"
 }

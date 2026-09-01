@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-01 15:39:53.014664",
+    "@@last_modified": "2026-09-01 17:05:26.562662",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "ਅਸੀਂ ਇਸ ਸਮੇਂ ਬਹੁਤ ਕੁਝ ਲੋਡ ਕਰ ਰਹੇ ਹਾਂ। ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਪਲ ਉਡੀਕ ਕਰੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
     "noPermissionToInviteUsers": "ਤੁਹਾਨੂੰ ਇੱਥੇ ਮੈਂਬਰਾਂ ਨੂੰ ਸੱਦਾ ਦੇਣ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ।",
     "mapPinsKeyboardHint": "ਨਕਸ਼ੇ 'ਤੇ ਗਤੀਵਿਧੀਆਂ ਵਿਚਕਾਰ ਜਾਣ ਲਈ ਤੀਰ ਕੁੰਜੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰੋ, ਅਤੇ ਕਿਸੇ ਇੱਕ ਨੂੰ ਖੋਲ੍ਹਣ ਲਈ Enter ਦਬਾਓ।",
-    "selectMessageLabel": "ਸੁਨੇਹਾ ਚੁਣੋ"
+    "selectMessageLabel": "ਸੁਨੇਹਾ ਚੁਣੋ",
+    "archivedChat": "ਪੁਰਾਲੇਖਬੱਧ ਚੈਟ",
+    "activityReview": "ਗਤੀਵਿਧੀ ਸਮੀਖਿਆ",
+    "activityPanel": "ਗਤੀਵਿਧੀ",
+    "coursePage": "ਕੋਰਸ ਪੰਨਾ"
 }

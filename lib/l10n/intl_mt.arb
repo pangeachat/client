@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-01 15:39:52.698658",
+    "@@last_modified": "2026-09-01 17:05:23.788714",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Qed nitgħabbew ħafna bħalissa. Jekk jogħġbok stenna ftit u erġa' pprova.",
     "noPermissionToInviteUsers": "M'għandekx permess tistieden membri hawn.",
     "mapPinsKeyboardHint": "Uża l-vleġeġ biex tiċċaqlaq bejn l-attivitajiet fuq il-mappa, u agħfas Enter biex tiftaħ waħda.",
-    "selectMessageLabel": "Agħżel messaġġ"
+    "selectMessageLabel": "Agħżel messaġġ",
+    "archivedChat": "Chat arkivjata",
+    "activityReview": "Reviżjoni tal-attività",
+    "activityPanel": "Attività",
+    "coursePage": "Paġna tal-kors"
 }

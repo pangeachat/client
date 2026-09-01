@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-01 15:39:51.911141",
+    "@@last_modified": "2026-09-01 17:05:20.763929",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Wi de lod plenti naw. Duya wet smɔl ɛn tray bak.",
     "noPermissionToInviteUsers": "Yu nɔ gɛt pɔmishɔn fɔ invayt pipul dɛn ya.",
     "mapPinsKeyboardHint": "Yuz di arrow keys fɔ muv bitwin aktivitis dɛn na di map, ɛn pres Enter fɔ opin wan.",
-    "selectMessageLabel": "Pik mɛsej"
+    "selectMessageLabel": "Pik mɛsej",
+    "archivedChat": "Chat we dɛn kip",
+    "activityReview": "Luk bak na wetin yu dɔn du",
+    "activityPanel": "Wetin yu dɔn du",
+    "coursePage": "Di pej fɔ di kos"
 }

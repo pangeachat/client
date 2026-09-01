@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:53.911399",
+    "@@last_modified": "2026-09-01 17:05:28.063251",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10358,5 +10358,9 @@
     "errorRateLimited": "Vi laddar mycket just nu. Vänta ett ögonblick och försök igen.",
     "noPermissionToInviteUsers": "Du har inte behörighet att bjuda in medlemmar här.",
     "mapPinsKeyboardHint": "Använd piltangenterna för att flytta mellan aktiviteter på kartan och tryck på Retur för att öppna en.",
-    "selectMessageLabel": "Välj meddelande"
+    "selectMessageLabel": "Välj meddelande",
+    "archivedChat": "Arkiverad chatt",
+    "activityReview": "Aktivitetsöversikt",
+    "activityPanel": "Aktivitet",
+    "coursePage": "Kurssida"
 }

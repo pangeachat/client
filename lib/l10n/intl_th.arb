@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-01 15:39:54.243794",
+    "@@last_modified": "2026-09-01 17:05:29.317606",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10472,5 +10472,9 @@
     "errorRateLimited": "ขณะนี้เรากำลังโหลดข้อมูลจำนวนมาก โปรดรอสักครู่แล้วลองอีกครั้ง",
     "noPermissionToInviteUsers": "คุณไม่มีสิทธิ์เชิญสมาชิกที่นี่",
     "mapPinsKeyboardHint": "ใช้ปุ่มลูกศรเพื่อเลื่อนไปมาระหว่างกิจกรรมบนแผนที่ และกด Enter เพื่อเปิดกิจกรรม",
-    "selectMessageLabel": "เลือกข้อความ"
+    "selectMessageLabel": "เลือกข้อความ",
+    "archivedChat": "แชทที่เก็บถาวร",
+    "activityReview": "รีวิวกิจกรรม",
+    "activityPanel": "กิจกรรม",
+    "coursePage": "หน้าหลักสูตร"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-01 15:39:49.332621",
+    "@@last_modified": "2026-09-01 17:05:12.522995",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Ons laai tans baie. Wag asseblief 'n oomblik en probeer weer.",
     "noPermissionToInviteUsers": "Jy het nie toestemming om lede hierheen te nooi nie.",
     "mapPinsKeyboardHint": "Gebruik die pyltjiesleutels om tussen aktiwiteite op die kaart te beweeg, en druk Enter om een oop te maak.",
-    "selectMessageLabel": "Kies boodskap"
+    "selectMessageLabel": "Kies boodskap",
+    "archivedChat": "Gearchiveerde klets",
+    "activityReview": "Aktiwiteitsoorsig",
+    "activityPanel": "Aktiwiteit",
+    "coursePage": "Kursusbladsy"
 }

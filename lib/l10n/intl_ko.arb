@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:51.695837",
+    "@@last_modified": "2026-09-01 17:05:20.487637",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10033,5 +10033,9 @@
     "errorRateLimited": "현재 로딩 중입니다. 잠시 기다렸다가 다시 시도해 주세요.",
     "noPermissionToInviteUsers": "여기에 멤버를 초대할 권한이 없습니다.",
     "mapPinsKeyboardHint": "화살표 키를 사용하여 지도에서 활동 간에 이동하고 Enter 키를 눌러 활동을 엽니다.",
-    "selectMessageLabel": "메시지 선택"
+    "selectMessageLabel": "메시지 선택",
+    "archivedChat": "보관된 채팅",
+    "activityReview": "활동 검토",
+    "activityPanel": "활동",
+    "coursePage": "코스 페이지"
 }

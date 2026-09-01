@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-01 15:39:52.962249",
+    "@@last_modified": "2026-09-01 17:05:24.001011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "हामी अहिले धेरै लोड गर्दैछौं। कृपया एक क्षण पर्खनुहोस् र फेरि प्रयास गर्नुहोस्।",
     "noPermissionToInviteUsers": "तपाईंसँग यहाँ सदस्यहरूलाई आमन्त्रित गर्ने अनुमति छैन।",
     "mapPinsKeyboardHint": "नक्सामा गतिविधिहरू बीच सार्न तीर कुञ्जीहरू प्रयोग गर्नुहोस्, र एउटा खोल्न इन्टर थिच्नुहोस्।",
-    "selectMessageLabel": "सन्देश चयन गर्नुहोस्"
+    "selectMessageLabel": "सन्देश चयन गर्नुहोस्",
+    "archivedChat": "संग्रहित च्याट",
+    "activityReview": "गतिविधि समीक्षा",
+    "activityPanel": "गतिविधि",
+    "coursePage": "पाठ्यक्रम पृष्ठ"
 }

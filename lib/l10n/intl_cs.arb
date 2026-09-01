@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-01 15:39:49.757195",
+    "@@last_modified": "2026-09-01 17:05:13.067430",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10334,5 +10334,9 @@
     "errorRateLimited": "Právě teď toho hodně načítáme. Počkejte prosím chvilku a zkuste to znovu.",
     "noPermissionToInviteUsers": "Nemáte oprávnění zvát sem členy.",
     "mapPinsKeyboardHint": "Pomocí kláves se šipkami se pohybujte mezi aktivitami na mapě a stisknutím klávesy Enter jednu otevřete.",
-    "selectMessageLabel": "Vybrat zprávu"
+    "selectMessageLabel": "Vybrat zprávu",
+    "archivedChat": "Archivovaný chat",
+    "activityReview": "Přehled aktivit",
+    "activityPanel": "Aktivita",
+    "coursePage": "Stránka kurzu"
 }

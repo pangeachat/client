@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-01 15:39:49.454480",
+    "@@last_modified": "2026-09-01 17:05:12.240385",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9854,5 +9854,9 @@
     "errorRateLimited": "Зараз мы шмат загружаем. Калі ласка, пачакайце і паспрабуйце яшчэ раз.",
     "noPermissionToInviteUsers": "У вас няма дазволу запрашаць удзельнікаў сюды.",
     "mapPinsKeyboardHint": "Выкарыстоўвайце клавішы са стрэлкамі для перамяшчэння паміж заняткамі на карце і націсніце Enter, каб адкрыць адзін.",
-    "selectMessageLabel": "Выбраць паведамленне"
+    "selectMessageLabel": "Выбраць паведамленне",
+    "archivedChat": "Заархіваваны чат",
+    "activityReview": "Агляд дзейнасці",
+    "activityPanel": "Дзейнасць",
+    "coursePage": "Старонка курса"
 }

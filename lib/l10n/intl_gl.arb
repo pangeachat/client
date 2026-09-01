@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-01 15:39:50.513317",
+    "@@last_modified": "2026-09-01 17:05:15.456336",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9840,5 +9840,9 @@
     "errorRateLimited": "Estamos cargando moito agora mesmo. Agarda un momento e téntao de novo.",
     "noPermissionToInviteUsers": "Non tes permiso para convidar membros aquí.",
     "mapPinsKeyboardHint": "Usa as teclas de frecha para moverte entre as actividades no mapa e preme Intro para abrir unha.",
-    "selectMessageLabel": "Seleccionar mensaxe"
+    "selectMessageLabel": "Seleccionar mensaxe",
+    "archivedChat": "Chat arquivado",
+    "activityReview": "Revisión da actividade",
+    "activityPanel": "Actividade",
+    "coursePage": "Páxina do curso"
 }

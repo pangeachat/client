@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-01 15:39:52.975330",
+    "@@last_modified": "2026-09-01 17:05:27.223256",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9925,5 +9925,9 @@
     "errorRateLimited": "Obecnie ładujemy dużo danych. Poczekaj chwilę i spróbuj ponownie.",
     "noPermissionToInviteUsers": "Nie masz uprawnień, aby zapraszać tu członków.",
     "mapPinsKeyboardHint": "Użyj klawiszy strzałek, aby poruszać się między aktywnościami na mapie, i naciśnij Enter, aby otworzyć wybraną.",
-    "selectMessageLabel": "Wybierz wiadomość"
+    "selectMessageLabel": "Wybierz wiadomość",
+    "archivedChat": "Archiwum czatu",
+    "activityReview": "Przegląd aktywności",
+    "activityPanel": "Aktywność",
+    "coursePage": "Strona kursu"
 }

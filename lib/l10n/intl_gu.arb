@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-01 15:39:50.598459",
+    "@@last_modified": "2026-09-01 17:05:16.931329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "અમે અત્યારે ઘણું લોડ કરી રહ્યા છીએ. કૃપા કરીને થોડીવાર રાહ જુઓ અને ફરી પ્રયાસ કરો.",
     "noPermissionToInviteUsers": "તમને અહીં સભ્યોને આમંત્રિત કરવાની પરવાનગી નથી.",
     "mapPinsKeyboardHint": "નકશા પરની પ્રવૃત્તિઓ વચ્ચે ખસેડવા માટે તીર કીનો ઉપયોગ કરો અને તેને ખોલવા માટે Enter દબાવો.",
-    "selectMessageLabel": "સંદેશ પસંદ કરો"
+    "selectMessageLabel": "સંદેશ પસંદ કરો",
+    "archivedChat": "આર્કાઇવ કરેલી ચેટ",
+    "activityReview": "પ્રવૃત્તિ સમીક્ષા",
+    "activityPanel": "પ્રવૃત્તિ",
+    "coursePage": "કોર્સ પેજ"
 }

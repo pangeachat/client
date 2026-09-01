@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-01 15:39:50.274645",
+    "@@last_modified": "2026-09-01 17:05:13.901618",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9840,5 +9840,9 @@
     "errorRateLimited": "Une honetan asko kargatzen ari gara. Mesedez, itxaron une bat eta saiatu berriro.",
     "noPermissionToInviteUsers": "Ez duzu baimenik kideak hona gonbidatzeko.",
     "mapPinsKeyboardHint": "Erabili gezi-teklak mapako jardueren artean mugitzeko, eta sakatu Sartu bat irekitzeko.",
-    "selectMessageLabel": "Mezua hautatu"
+    "selectMessageLabel": "Mezua hautatu",
+    "archivedChat": "Artxibatutako txata",
+    "activityReview": "Jardueraren berrikuspena",
+    "activityPanel": "Jarduera",
+    "coursePage": "Ikastaroaren orria"
 }

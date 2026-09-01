@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-01 15:39:53.560365",
+    "@@last_modified": "2026-09-01 17:05:27.579023",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "අපි දැනට බොහෝ දේ පූරණය කරමින් සිටිමු. කරුණාකර මොහොතක් රැඳී සිට නැවත උත්සාහ කරන්න.",
     "noPermissionToInviteUsers": "ඔබට මෙහි සාමාජිකයන්ට ආරාධනා කිරීමට අවසර නැත.",
     "mapPinsKeyboardHint": "සිතියමේ ඇති ක්‍රියාකාරකම් අතර ගමන් කිරීමට ඊතල යතුරු භාවිතා කරන්න, සහ එකක් විවෘත කිරීමට Enter ඔබන්න.",
-    "selectMessageLabel": "පණිවිඩය තෝරන්න"
+    "selectMessageLabel": "පණිවිඩය තෝරන්න",
+    "archivedChat": "සංරක්ෂිත කතාබස්",
+    "activityReview": "ක්‍රියාකාරකම් සමාලෝචනය",
+    "activityPanel": "ක්‍රියාකාරකම්",
+    "coursePage": "පාඨමාලා පිටුව"
 }

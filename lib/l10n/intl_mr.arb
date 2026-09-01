@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-01 15:39:52.578481",
+    "@@last_modified": "2026-09-01 17:05:23.146783",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "आम्ही सध्या बरेच काही लोड करत आहोत. कृपया थोडा वेळ थांबा आणि पुन्हा प्रयत्न करा.",
     "noPermissionToInviteUsers": "तुम्हाला येथे सदस्यांना आमंत्रित करण्याची परवानगी नाही.",
     "mapPinsKeyboardHint": "नकाशावरील अ‍ॅक्टिव्हिटीमध्ये फिरण्यासाठी बाण की वापरा आणि अ‍ॅक्टिव्हिटी उघडण्यासाठी एंटर दाबा.",
-    "selectMessageLabel": "संदेश निवडा"
+    "selectMessageLabel": "संदेश निवडा",
+    "archivedChat": "संग्रहित गप्पा",
+    "activityReview": "गतिविधी पुनरावलोकन",
+    "activityPanel": "गतिविधी",
+    "coursePage": "अभ्यासक्रम पृष्ठ"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:49.965578",
+    "@@last_modified": "2026-09-01 17:05:14.391608",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10785,5 +10785,9 @@
     "errorRateLimited": "Ni ŝarĝas multe nun. Bonvolu atendi momenton kaj reprovi.",
     "noPermissionToInviteUsers": "Vi ne rajtas inviti membrojn ĉi tien.",
     "mapPinsKeyboardHint": "Uzu la sagoklavojn por moviĝi inter agadoj sur la mapo, kaj premu Enigi por malfermi unu.",
-    "selectMessageLabel": "Elektu mesaĝon"
+    "selectMessageLabel": "Elektu mesaĝon",
+    "archivedChat": "Arkivita babilado",
+    "activityReview": "Agada revizio",
+    "activityPanel": "Agado",
+    "coursePage": "Kurso-paĝo"
 }

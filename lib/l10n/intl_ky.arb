@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-01 15:39:51.961675",
+    "@@last_modified": "2026-09-01 17:05:23.933202",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Учурда көп нерсе жүктөлүп жатат. Бир аз күтүп, кайра аракет кылыңыз.",
     "noPermissionToInviteUsers": "Бул жерге мүчөлөрдү чакырууга уруксатыңыз жок.",
     "mapPinsKeyboardHint": "Картадагы аракеттердин ортосунда жылдыруу үчүн жебе баскычтарын колдонуңуз жана ачуу үчүн Enter баскычын басыңыз.",
-    "selectMessageLabel": "Кабарды тандоо"
+    "selectMessageLabel": "Кабарды тандоо",
+    "archivedChat": "Архивделген чат",
+    "activityReview": "Иш-аракеттерди карап чыгуу",
+    "activityPanel": "Иш-аракет",
+    "coursePage": "Курс баракчасы"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:52.764848",
+    "@@last_modified": "2026-09-01 17:05:24.739276",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9897,5 +9897,9 @@
     "errorRateLimited": "Vi laster inn mye akkurat nå. Vent litt og prøv igjen.",
     "noPermissionToInviteUsers": "Du har ikke tillatelse til å invitere medlemmer her.",
     "mapPinsKeyboardHint": "Bruk piltastene til å flytte mellom aktiviteter på kartet, og trykk Enter for å åpne en.",
-    "selectMessageLabel": "Velg melding"
+    "selectMessageLabel": "Velg melding",
+    "archivedChat": "Arkivert chat",
+    "activityReview": "Aktivitetsgjennomgang",
+    "activityPanel": "Aktivitet",
+    "coursePage": "Kursside"
 }

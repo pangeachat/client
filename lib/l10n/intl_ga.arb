@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-01 15:39:50.418913",
+    "@@last_modified": "2026-09-01 17:05:14.709477",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9851,5 +9851,9 @@
     "errorRateLimited": "Táimid ag luchtú go leor faoi láthair. Fan nóiméad le do thoil agus bain triail eile as.",
     "noPermissionToInviteUsers": "Níl cead agat cuireadh a thabhairt do bhaill anseo.",
     "mapPinsKeyboardHint": "Bain úsáid as na heochracha saighde chun bogadh idir gníomhaíochtaí ar an léarscáil, agus brúigh Iontráil chun ceann a oscailt.",
-    "selectMessageLabel": "Roghnaigh teachtaireacht"
+    "selectMessageLabel": "Roghnaigh teachtaireacht",
+    "archivedChat": "Comhrá cartlainne",
+    "activityReview": "Athbhreithniú gníomhaíochta",
+    "activityPanel": "Gníomhaíocht",
+    "coursePage": "Leathanach cúrsa"
 }

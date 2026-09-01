@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-01 15:39:53.453739",
+    "@@last_modified": "2026-09-01 17:05:26.510834",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10785,5 +10785,9 @@
     "errorRateLimited": "Trenutno nalagamo veliko vsebine. Prosimo, počakajte trenutek in poskusite znova.",
     "noPermissionToInviteUsers": "Nimate dovoljenja za povabilo članov sem.",
     "mapPinsKeyboardHint": "Z uporabo puščičnih tipk se premikajte med aktivnostmi na zemljevidu in pritisnite Enter, da odprete eno.",
-    "selectMessageLabel": "Izberite sporočilo"
+    "selectMessageLabel": "Izberite sporočilo",
+    "archivedChat": "Arhiviran klepet",
+    "activityReview": "Pregled dejavnosti",
+    "activityPanel": "Dejavnost",
+    "coursePage": "Stran tečaja"
 }

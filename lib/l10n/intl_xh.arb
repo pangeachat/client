@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-01 15:39:54.595709",
+    "@@last_modified": "2026-09-01 17:05:30.481057",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Silayisha okuninzi ngoku. Nceda ulinde umzuzwana uze uzame kwakhona.",
     "noPermissionToInviteUsers": "Awunayo imvume yokumema amalungu apha.",
     "mapPinsKeyboardHint": "Sebenzisa amaqhosha otolo ukuhamba phakathi kwemisebenzi kwimephu, kwaye ucinezele u-Enter ukuze uvule enye.",
-    "selectMessageLabel": "Khetha umyalezo"
+    "selectMessageLabel": "Khetha umyalezo",
+    "archivedChat": "Ingxoxo egciniweyo",
+    "activityReview": "Uhlaziyo lomsebenzi",
+    "activityPanel": "Umsebenzi",
+    "coursePage": "Iphepha lekhosi"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-01 15:39:52.497420",
+    "@@last_modified": "2026-09-01 17:05:30.330675",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Одоогоор бид маш их ачаалж байна. Түр хүлээгээд дахин оролдоно уу.",
     "noPermissionToInviteUsers": "Та энд гишүүд урих зөвшөөрөлгүй байна.",
     "mapPinsKeyboardHint": "Газрын зураг дээрх үйл ажиллагаануудын хооронд шилжихийн тулд сумтай товчлууруудыг ашиглана уу, мөн нээхийн тулд Enter дарна уу.",
-    "selectMessageLabel": "Зурвас сонгох"
+    "selectMessageLabel": "Зурвас сонгох",
+    "archivedChat": "Архивлагдсан чат",
+    "activityReview": "Үйл ажиллагааны тойм",
+    "activityPanel": "Үйл ажиллагаа",
+    "coursePage": "Хичээлийн хуудас"
 }

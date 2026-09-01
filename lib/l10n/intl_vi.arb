@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:54.504397",
+    "@@last_modified": "2026-09-01 17:05:30.061575",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7132,5 +7132,9 @@
     "errorRateLimited": "Chúng tôi đang tải rất nhiều dữ liệu. Vui lòng đợi một lát và thử lại.",
     "noPermissionToInviteUsers": "Bạn không có quyền mời thành viên tại đây.",
     "mapPinsKeyboardHint": "Sử dụng các phím mũi tên để di chuyển giữa các hoạt động trên bản đồ và nhấn Enter để mở một hoạt động.",
-    "selectMessageLabel": "Chọn tin nhắn"
+    "selectMessageLabel": "Chọn tin nhắn",
+    "archivedChat": "Trò chuyện đã lưu trữ",
+    "activityReview": "Xem lại hoạt động",
+    "activityPanel": "Hoạt động",
+    "coursePage": "Trang khóa học"
 }

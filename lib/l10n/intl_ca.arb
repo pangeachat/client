@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:49.676324",
+    "@@last_modified": "2026-09-01 17:05:12.985685",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9967,5 +9967,9 @@
     "errorRateLimited": "Estem carregant moltes coses ara mateix. Espera un moment i torna-ho a provar.",
     "noPermissionToInviteUsers": "No tens permís per convidar membres aquí.",
     "mapPinsKeyboardHint": "Utilitza les tecles de fletxa per moure't entre les activitats del mapa i prem Retorn per obrir-ne una.",
-    "selectMessageLabel": "Selecciona un missatge"
+    "selectMessageLabel": "Selecciona un missatge",
+    "archivedChat": "Xat arxivat",
+    "activityReview": "Revisió d'activitat",
+    "activityPanel": "Activitat",
+    "coursePage": "Pàgina del curs"
 }

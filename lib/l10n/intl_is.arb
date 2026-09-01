@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-01 15:39:51.416936",
+    "@@last_modified": "2026-09-01 17:05:18.433893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Við erum að hlaða mikið núna. Vinsamlegast bíddu smá stund og reyndu aftur.",
     "noPermissionToInviteUsers": "Þú hefur ekki leyfi til að bjóða meðlimum hingað.",
     "mapPinsKeyboardHint": "Notaðu örvatakkana til að færa þig á milli verkefna á kortinu og ýttu á Enter til að opna eitt.",
-    "selectMessageLabel": "Velja skilaboð"
+    "selectMessageLabel": "Velja skilaboð",
+    "archivedChat": "Geymt spjall",
+    "activityReview": "Yfirlit yfir virkni",
+    "activityPanel": "Virkni",
+    "coursePage": "Námskeiðssíða"
 }

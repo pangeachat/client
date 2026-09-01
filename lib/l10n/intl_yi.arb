@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-01 15:39:54.840149",
+    "@@last_modified": "2026-09-01 17:05:31.155153",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "מיר לאָדן איצט אַ סך. ביטע וואַרטן אַ מאָמענט און פּרוּווט ווידער.",
     "noPermissionToInviteUsers": "איר האָט נישט קיין דערלויבעניש צו פאַרבעטן מיטגלידער אַהער.",
     "mapPinsKeyboardHint": "ניצט די פֿײַל שליסלען צו רירן צווישן אַקטיוויטעטן אויף דער מאַפּע, און דרוקט אַרײַן צו עפֿענען אײנעם.",
-    "selectMessageLabel": "קלייַבן אָנזאָג"
+    "selectMessageLabel": "קלייַבן אָנזאָג",
+    "archivedChat": "אַרטשיוועד שמועס",
+    "activityReview": "אַקטיוויטעט איבערבליק",
+    "activityPanel": "אַקטיוויטעט",
+    "coursePage": "קורס בלאַט"
 }

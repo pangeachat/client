@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-01 15:39:53.328450",
+    "@@last_modified": "2026-09-01 17:05:26.230431",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10757,5 +10757,9 @@
     "errorRateLimited": "Estamos a carregar muito neste momento. Por favor, aguarde um momento e tente novamente.",
     "noPermissionToInviteUsers": "Não tem permissão para convidar membros aqui.",
     "mapPinsKeyboardHint": "Use as teclas de seta para se mover entre as atividades no mapa e prima Enter para abrir uma.",
-    "selectMessageLabel": "Selecionar mensagem"
+    "selectMessageLabel": "Selecionar mensagem",
+    "archivedChat": "Conversa arquivada",
+    "activityReview": "Revisão da atividade",
+    "activityPanel": "Atividade",
+    "coursePage": "Página do curso"
 }

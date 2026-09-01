@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-01 15:39:51.672581",
+    "@@last_modified": "2026-09-01 17:05:19.950917",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "ನಾವು ಇದೀಗ ಬಹಳಷ್ಟು ಲೋಡ್ ಮಾಡುತ್ತಿದ್ದೇವೆ. ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಸಮಯ ಕಾಯಿರಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
     "noPermissionToInviteUsers": "ಇಲ್ಲಿ ಸದಸ್ಯರನ್ನು ಆಹ್ವಾನಿಸಲು ನಿಮಗೆ ಅನುಮತಿಯಿಲ್ಲ.",
     "mapPinsKeyboardHint": "ನಕ್ಷೆಯಲ್ಲಿರುವ ಚಟುವಟಿಕೆಗಳ ನಡುವೆ ಚಲಿಸಲು ಬಾಣದ ಕೀಲಿಗಳನ್ನು ಬಳಸಿ, ಮತ್ತು ಒಂದನ್ನು ತೆರೆಯಲು Enter ಒತ್ತಿರಿ.",
-    "selectMessageLabel": "ಸಂದೇಶವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+    "selectMessageLabel": "ಸಂದೇಶವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+    "archivedChat": "ಆರ್ಕೈವ್ ಮಾಡಿದ ಚಾಟ್",
+    "activityReview": "ಚಟುವಟಿಕೆ ವಿಮರ್ಶೆ",
+    "activityPanel": "ಚಟುವಟಿಕೆ",
+    "coursePage": "ಕೋರ್ಸ್ ಪುಟ"
 }

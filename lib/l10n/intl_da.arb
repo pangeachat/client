@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-01 15:39:49.836111",
+    "@@last_modified": "2026-09-01 17:05:13.282264",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10760,5 +10760,9 @@
     "errorRateLimited": "Vi indlæser meget lige nu. Vent venligst et øjeblik, og prøv igen.",
     "noPermissionToInviteUsers": "Du har ikke tilladelse til at invitere medlemmer her.",
     "mapPinsKeyboardHint": "Brug piletasterne til at flytte mellem aktiviteter på kortet, og tryk på Enter for at åbne en.",
-    "selectMessageLabel": "Vælg besked"
+    "selectMessageLabel": "Vælg besked",
+    "archivedChat": "Arkiveret chat",
+    "activityReview": "Aktivitetsoversigt",
+    "activityPanel": "Aktivitet",
+    "coursePage": "Kursside"
 }

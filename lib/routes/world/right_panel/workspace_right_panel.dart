@@ -97,33 +97,31 @@ class WorkspaceRightPanel extends StatelessWidget {
           )
         : () => _close(context);
 
-    switch (token) {
-      case AnalyticsPanelToken(param: final param):
-        return RightPanelAnalyticsSubpage(
-          param: param,
-          icon: leadingIcon,
-          onLeading: onLeading,
-          tooltip: leadingTooltip,
-        );
-      case SettingsPanelToken():
-        return PanelCardWithHeader(
-          title: l10n.settings,
-          icon: leadingIcon,
-          onLeading: () => context.go(
-            WorkspaceNav.closeSettings(
-              GoRouter.of(context).routeInformationProvider.value.uri,
-            ),
+    final Widget panel = switch (token) {
+      AnalyticsPanelToken(param: final param) => RightPanelAnalyticsSubpage(
+        param: param,
+        icon: leadingIcon,
+        onLeading: onLeading,
+        tooltip: leadingTooltip,
+      ),
+      SettingsPanelToken() => PanelCardWithHeader(
+        title: l10n.settings,
+        icon: leadingIcon,
+        onLeading: () => context.go(
+          WorkspaceNav.closeSettings(
+            GoRouter.of(context).routeInformationProvider.value.uri,
           ),
-          tooltip: leadingTooltip,
-          child: RightPanelSettingsSubpage(
-            closeButton: IconButton(
-              tooltip: leadingTooltip,
-              icon: Icon(leadingIcon),
-              onPressed: onLeading,
-            ),
+        ),
+        tooltip: leadingTooltip,
+        child: RightPanelSettingsSubpage(
+          closeButton: IconButton(
+            tooltip: leadingTooltip,
+            icon: Icon(leadingIcon),
+            onPressed: onLeading,
           ),
-        );
-      case SettingsPagePanelToken(param: final param):
+        ),
+      ),
+      SettingsPagePanelToken(param: final param) => () {
         final settingsPage = SettingsPageEnum.fromString(param?.subpage);
         final settingsCloseButton = IconButton(
           tooltip: leadingTooltip,
@@ -153,49 +151,56 @@ class WorkspaceRightPanel extends StatelessWidget {
                   closeButton: settingsCloseButton,
                 ),
               );
-      case VocabAnalyticsPanelToken(param: final param):
-        return PanelCard(
-          child: ConstructAnalyticsView(
-            view: ConstructTypeEnum.vocab,
-            construct: param?.constructId,
-            closeButton: IconButton(
-              tooltip: leadingTooltip,
-              icon: Icon(leadingIcon),
-              onPressed: onLeading,
-            ),
+      }(),
+      VocabAnalyticsPanelToken(param: final param) => PanelCard(
+        child: ConstructAnalyticsView(
+          view: ConstructTypeEnum.vocab,
+          construct: param?.constructId,
+          closeButton: IconButton(
+            tooltip: leadingTooltip,
+            icon: Icon(leadingIcon),
+            onPressed: onLeading,
           ),
-        );
-      case GrammarAnalyticsPanelToken(param: final param):
-        return PanelCard(
-          child: ConstructAnalyticsView(
-            view: ConstructTypeEnum.morph,
-            construct: param?.constructId,
-            closeButton: IconButton(
-              tooltip: leadingTooltip,
-              icon: Icon(leadingIcon),
-              onPressed: onLeading,
-            ),
+        ),
+      ),
+      GrammarAnalyticsPanelToken(param: final param) => PanelCard(
+        child: ConstructAnalyticsView(
+          view: ConstructTypeEnum.morph,
+          construct: param?.constructId,
+          closeButton: IconButton(
+            tooltip: leadingTooltip,
+            icon: Icon(leadingIcon),
+            onPressed: onLeading,
           ),
-        );
-      case AnalyticsPracticePanelToken(param: final param):
-        if (param == null) {
-          return SizedBox.shrink();
-        }
+        ),
+      ),
+      AnalyticsPracticePanelToken(param: final param) =>
+        param == null
+            ? const SizedBox.shrink()
+            : RightPanelAnalyticsPracticeSubpage(
+                param: param,
+                icon: leadingIcon,
+                tooltip: leadingTooltip,
+                close: () => _close(context),
+              ),
+      _ => PanelCardWithHeader(
+        title: l10n.oopsSomethingWentWrong,
+        icon: leadingIcon,
+        onLeading: onLeading,
+        tooltip: leadingTooltip,
+        child: const SizedBox.shrink(),
+      ),
+    };
 
-        return RightPanelAnalyticsPracticeSubpage(
-          param: param,
-          icon: leadingIcon,
-          tooltip: leadingTooltip,
-          close: () => _close(context),
-        );
-      default:
-        return PanelCardWithHeader(
-          title: l10n.oopsSomethingWentWrong,
-          icon: leadingIcon,
-          onLeading: onLeading,
-          tooltip: leadingTooltip,
-          child: const SizedBox.shrink(),
-        );
-    }
+    // Every workspace panel is one named semantic group (#8729) — authored
+    // here, where every right-column token resolves, so a panel cannot miss
+    // it by drawing its own chrome. The settings-page title reuses the same
+    // computed subpage title its close label carries, so the group and its
+    // "Close X" always agree.
+    return Semantics(
+      label: l10n.pageLabel(closeButtonLabel ?? token.type.displayName(l10n)),
+      container: true,
+      child: panel,
+    );
   }
 }
