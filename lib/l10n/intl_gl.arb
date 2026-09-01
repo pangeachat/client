@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-01 14:46:16.479600",
+    "@@last_modified": "2026-09-01 15:39:50.513317",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9839,5 +9839,6 @@
     "callTranscriptOpen": "Ler a transcrición",
     "errorRateLimited": "Estamos cargando moito agora mesmo. Agarda un momento e téntao de novo.",
     "noPermissionToInviteUsers": "Non tes permiso para convidar membros aquí.",
-    "mapPinsKeyboardHint": "Usa as teclas de frecha para moverte entre as actividades no mapa e preme Intro para abrir unha."
+    "mapPinsKeyboardHint": "Usa as teclas de frecha para moverte entre as actividades no mapa e preme Intro para abrir unha.",
+    "selectMessageLabel": "Seleccionar mensaxe"
 }

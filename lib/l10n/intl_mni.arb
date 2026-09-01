@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-01 14:46:19.664342",
+    "@@last_modified": "2026-09-01 15:39:52.535097",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "ৱারী অদু পাও",
     "errorRateLimited": "ঐখোয়না হৌজিক কয়া লোড তৌরি। খুদক্তা ঙাইবীয়ু অমসুং অমুক হন্না হোৎনৌ।",
     "noPermissionToInviteUsers": "ꯃꯁꯤꯗ ꯃꯦꯝꯕꯔꯁꯤꯡ ꯀꯧꯅꯕꯒꯤ ꯏꯖꯥꯠ ꯅꯠꯠꯔꯒ ꯄꯔꯃꯤꯁꯟ ꯅꯠꯠꯔꯤ.",
-    "mapPinsKeyboardHint": "Map ta chatnaba activities singgi marakta saronba hotnabagidamak arrow keys sing adu sijinbiyu, aduga amabu hangdoknaba Enter thinbiyu."
+    "mapPinsKeyboardHint": "Map ta chatnaba activities singgi marakta saronba hotnabagidamak arrow keys sing adu sijinbiyu, aduga amabu hangdoknaba Enter thinbiyu.",
+    "selectMessageLabel": "মেসেজ খল্লু"
 }

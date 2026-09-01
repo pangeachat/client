@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 14:46:22.018366",
+    "@@last_modified": "2026-09-01 15:39:54.504397",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7131,5 +7131,6 @@
     "callTranscriptOpen": "Đọc bản ghi",
     "errorRateLimited": "Chúng tôi đang tải rất nhiều dữ liệu. Vui lòng đợi một lát và thử lại.",
     "noPermissionToInviteUsers": "Bạn không có quyền mời thành viên tại đây.",
-    "mapPinsKeyboardHint": "Sử dụng các phím mũi tên để di chuyển giữa các hoạt động trên bản đồ và nhấn Enter để mở một hoạt động."
+    "mapPinsKeyboardHint": "Sử dụng các phím mũi tên để di chuyển giữa các hoạt động trên bản đồ và nhấn Enter để mở một hoạt động.",
+    "selectMessageLabel": "Chọn tin nhắn"
 }

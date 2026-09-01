@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-01 14:46:18.667793",
+    "@@last_modified": "2026-09-01 15:39:52.089728",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "ອ່ານບົດບັນທຶກ",
     "errorRateLimited": "ພວກເຮົາກຳລັງໂຫຼດຫຼາຍຢ່າງໃນຕອນນີ້. ກະລຸນາລໍຖ້າຈັກໜ້ອຍແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
     "noPermissionToInviteUsers": "ທ່ານບໍ່ມີສິດໃນການເຊີນສະມາຊິກມາທີ່ນີ້.",
-    "mapPinsKeyboardHint": "ໃຊ້ປຸ່ມລູກສອນເພື່ອຍ້າຍລະຫວ່າງກິດຈະກຳຕ່າງໆໃນແຜນທີ່, ແລະກົດ Enter ເພື່ອເປີດກິດຈະກຳ."
+    "mapPinsKeyboardHint": "ໃຊ້ປຸ່ມລູກສອນເພື່ອຍ້າຍລະຫວ່າງກິດຈະກຳຕ່າງໆໃນແຜນທີ່, ແລະກົດ Enter ເພື່ອເປີດກິດຈະກຳ.",
+    "selectMessageLabel": "ເລືອກຂໍ້ຄວາມ"
 }

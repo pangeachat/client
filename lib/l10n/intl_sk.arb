@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-01 14:46:20.986732",
+    "@@last_modified": "2026-09-01 15:39:53.458582",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10784,5 +10784,6 @@
     "callTranscriptOpen": "Prečítať prepis",
     "errorRateLimited": "Práve teraz toho veľa načítavame. Skúste to znova o chvíľu.",
     "noPermissionToInviteUsers": "Nemáte povolenie pozývať sem členov.",
-    "mapPinsKeyboardHint": "Použite klávesy so šípkami na pohyb medzi aktivitami na mape a stlačte Enter na otvorenie jednej z nich."
+    "mapPinsKeyboardHint": "Použite klávesy so šípkami na pohyb medzi aktivitami na mape a stlačte Enter na otvorenie jednej z nich.",
+    "selectMessageLabel": "Vybrať správu"
 }

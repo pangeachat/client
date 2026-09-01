@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-01 14:46:16.617145",
+    "@@last_modified": "2026-09-01 15:39:50.694531",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Karanta rubutun",
     "errorRateLimited": "Muna ɗora abubuwa da yawa a yanzu. Don Allah a jira kaɗan sannan a sake gwadawa.",
     "noPermissionToInviteUsers": "Ba ka da izinin gayyatar membobi a nan.",
-    "mapPinsKeyboardHint": "Yi amfani da maɓallan kibiya don motsawa tsakanin ayyuka akan taswira, kuma danna Shigar don buɗe ɗaya."
+    "mapPinsKeyboardHint": "Yi amfani da maɓallan kibiya don motsawa tsakanin ayyuka akan taswira, kuma danna Shigar don buɗe ɗaya.",
+    "selectMessageLabel": "Zaɓi saƙo"
 }

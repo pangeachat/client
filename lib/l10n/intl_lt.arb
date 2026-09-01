@@ -2968,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-01 14:46:18.831481",
+    "@@last_modified": "2026-09-01 15:39:52.255962",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10620,5 +10620,6 @@
     "callTranscriptOpen": "Skaityti stenogramą",
     "errorRateLimited": "Šiuo metu daug ką įkeliame. Palaukite ir bandykite dar kartą.",
     "noPermissionToInviteUsers": "Neturite leidimo kviesti narių čia.",
-    "mapPinsKeyboardHint": "Naudokite rodyklių klavišus norėdami judėti tarp veiklų žemėlapyje, ir paspauskite Enter norėdami atidaryti vieną."
+    "mapPinsKeyboardHint": "Naudokite rodyklių klavišus norėdami judėti tarp veiklų žemėlapyje, ir paspauskite Enter norėdami atidaryti vieną.",
+    "selectMessageLabel": "Pasirinkti pranešimą"
 }

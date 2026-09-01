@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 14:46:17.245667",
+    "@@last_modified": "2026-09-01 15:39:50.980930",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9912,5 +9912,6 @@
     "callTranscriptOpen": "Baca transkrip",
     "errorRateLimited": "Kami sedang memuat banyak data sekarang. Mohon tunggu sebentar dan coba lagi.",
     "noPermissionToInviteUsers": "Anda tidak memiliki izin untuk mengundang anggota di sini.",
-    "mapPinsKeyboardHint": "Gunakan tombol panah untuk berpindah antar aktivitas di peta, dan tekan Enter untuk membuka salah satunya."
+    "mapPinsKeyboardHint": "Gunakan tombol panah untuk berpindah antar aktivitas di peta, dan tekan Enter untuk membuka salah satunya.",
+    "selectMessageLabel": "Pilih pesan"
 }

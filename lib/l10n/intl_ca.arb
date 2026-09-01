@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 14:46:15.409218",
+    "@@last_modified": "2026-09-01 15:39:49.676324",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9966,5 +9966,6 @@
     "callTranscriptOpen": "Llegeix la transcripció",
     "errorRateLimited": "Estem carregant moltes coses ara mateix. Espera un moment i torna-ho a provar.",
     "noPermissionToInviteUsers": "No tens permís per convidar membres aquí.",
-    "mapPinsKeyboardHint": "Utilitza les tecles de fletxa per moure't entre les activitats del mapa i prem Retorn per obrir-ne una."
+    "mapPinsKeyboardHint": "Utilitza les tecles de fletxa per moure't entre les activitats del mapa i prem Retorn per obrir-ne una.",
+    "selectMessageLabel": "Selecciona un missatge"
 }

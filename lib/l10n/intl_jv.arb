@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-01 14:46:17.865928",
+    "@@last_modified": "2026-09-01 15:39:51.532560",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Waca transkrip",
     "errorRateLimited": "Saiki akeh sing diunggah. Mangga ngenteni sedhela banjur coba maneh.",
     "noPermissionToInviteUsers": "Sampeyan ora duwe idin ngundang anggota ing kene.",
-    "mapPinsKeyboardHint": "Gunakake tombol panah kanggo mindhah antarane aktivitas ing peta, banjur pencet Enter kanggo mbukak salah siji."
+    "mapPinsKeyboardHint": "Gunakake tombol panah kanggo mindhah antarane aktivitas ing peta, banjur pencet Enter kanggo mbukak salah siji.",
+    "selectMessageLabel": "Pilih pesen"
 }

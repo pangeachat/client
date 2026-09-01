@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-01 14:46:17.003696",
+    "@@last_modified": "2026-09-01 15:39:51.000973",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10275,5 +10275,6 @@
     "callTranscriptOpen": "Pročitaj transkript",
     "errorRateLimited": "Trenutno je veliko opterećenje. Pričekajte trenutak i pokušajte ponovno.",
     "noPermissionToInviteUsers": "Nemate dopuštenje za pozivanje članova ovdje.",
-    "mapPinsKeyboardHint": "Koristite tipke sa strelicama za kretanje između aktivnosti na karti, a pritisnite Enter za otvaranje jedne."
+    "mapPinsKeyboardHint": "Koristite tipke sa strelicama za kretanje između aktivnosti na karti, a pritisnite Enter za otvaranje jedne.",
+    "selectMessageLabel": "Odaberi poruku"
 }

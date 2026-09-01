@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 14:46:19.451222",
+    "@@last_modified": "2026-09-01 15:39:52.764848",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9896,5 +9896,6 @@
     "callTranscriptOpen": "Les utskriften",
     "errorRateLimited": "Vi laster inn mye akkurat nå. Vent litt og prøv igjen.",
     "noPermissionToInviteUsers": "Du har ikke tillatelse til å invitere medlemmer her.",
-    "mapPinsKeyboardHint": "Bruk piltastene til å flytte mellom aktiviteter på kartet, og trykk Enter for å åpne en."
+    "mapPinsKeyboardHint": "Bruk piltastene til å flytte mellom aktiviteter på kartet, og trykk Enter for å åpne en.",
+    "selectMessageLabel": "Velg melding"
 }

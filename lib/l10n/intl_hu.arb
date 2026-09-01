@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-01 14:46:17.021162",
+    "@@last_modified": "2026-09-01 15:39:50.964940",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9942,5 +9942,6 @@
     "callTranscriptOpen": "Olvassa el az átiratot",
     "errorRateLimited": "Jelenleg sok adatot töltünk be. Kérjük, várjon egy pillanatot, majd próbálja újra.",
     "noPermissionToInviteUsers": "Nincs jogosultságod tagokat meghívni ide.",
-    "mapPinsKeyboardHint": "A térképen lévő tevékenységek közötti mozgáshoz használja a nyílbillentyűket, a megnyitáshoz pedig nyomja meg az Entert."
+    "mapPinsKeyboardHint": "A térképen lévő tevékenységek közötti mozgáshoz használja a nyílbillentyűket, a megnyitáshoz pedig nyomja meg az Entert.",
+    "selectMessageLabel": "Üzenet kiválasztása"
 }

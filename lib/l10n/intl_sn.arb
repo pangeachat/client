@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-01 14:46:21.084634",
+    "@@last_modified": "2026-09-01 15:39:53.772654",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Verenga zvinyorwa",
     "errorRateLimited": "Tiri kurodha zvakawanda izvozvi. Ndapota mirira kwekanguva woedza zvakare.",
     "noPermissionToInviteUsers": "Hauna mvumo yekukoka nhengo pano.",
-    "mapPinsKeyboardHint": "Shandisa miseve kufamba pakati pezviitiko pamepu, wobva wadzvanya Enter kuti uvhure chimwe."
+    "mapPinsKeyboardHint": "Shandisa miseve kufamba pakati pezviitiko pamepu, wobva wadzvanya Enter kuti uvhure chimwe.",
+    "selectMessageLabel": "Sarudza meseji"
 }

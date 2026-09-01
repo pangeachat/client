@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 14:46:15.555693",
+    "@@last_modified": "2026-09-01 15:39:49.965578",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10784,5 +10784,6 @@
     "callTranscriptOpen": "Legu la transskribon",
     "errorRateLimited": "Ni ŝarĝas multe nun. Bonvolu atendi momenton kaj reprovi.",
     "noPermissionToInviteUsers": "Vi ne rajtas inviti membrojn ĉi tien.",
-    "mapPinsKeyboardHint": "Uzu la sagoklavojn por moviĝi inter agadoj sur la mapo, kaj premu Enigi por malfermi unu."
+    "mapPinsKeyboardHint": "Uzu la sagoklavojn por moviĝi inter agadoj sur la mapo, kaj premu Enigi por malfermi unu.",
+    "selectMessageLabel": "Elektu mesaĝon"
 }

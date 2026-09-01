@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 14:46:19.460000",
+    "@@last_modified": "2026-09-01 15:39:52.917148",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9839,5 +9839,6 @@
     "callTranscriptOpen": "Lees het transcript",
     "errorRateLimited": "We laden momenteel veel. Wacht even en probeer het opnieuw.",
     "noPermissionToInviteUsers": "Je hebt hier geen toestemming om leden uit te nodigen.",
-    "mapPinsKeyboardHint": "Gebruik de pijltjestoetsen om tussen activiteiten op de kaart te bewegen en druk op Enter om er een te openen."
+    "mapPinsKeyboardHint": "Gebruik de pijltjestoetsen om tussen activiteiten op de kaart te bewegen en druk op Enter om er een te openen.",
+    "selectMessageLabel": "Bericht selecteren"
 }

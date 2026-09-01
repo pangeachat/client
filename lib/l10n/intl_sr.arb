@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 14:46:20.938845",
+    "@@last_modified": "2026-09-01 15:39:53.741196",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10788,5 +10788,6 @@
     "callTranscriptOpen": "Pročitajte transkript",
     "errorRateLimited": "Trenutno se mnogo toga učitava. Sačekajte trenutak i pokušajte ponovo.",
     "noPermissionToInviteUsers": "Nemate dozvolu da pozivate članove ovde.",
-    "mapPinsKeyboardHint": "Koristite tastere sa strelicama za kretanje između aktivnosti na mapi, a pritisnite Enter da biste otvorili jednu."
+    "mapPinsKeyboardHint": "Koristite tastere sa strelicama za kretanje između aktivnosti na mapi, a pritisnite Enter da biste otvorili jednu.",
+    "selectMessageLabel": "Izaberite poruku"
 }
