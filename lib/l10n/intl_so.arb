@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "Lama garanayo cidda kale ee wicitaankan ku jirtay, sidaa darteed qof hadlay ayaa laga yaabaa inuu gebi ahaanba ka maqan yahay qoraalkan.",
     "callTranscriptTooLongToSend": "Waxa uu {name} yiri wuxuu ahaa mid aad u dheer oo aan lagu keydin karin wicitaankan, sidaa darteed waxba kama muuqdaan.",
     "callTranscriptMicrophoneRefused": "Qalabka {name} ma furin makarafoonka wicitaankan, sidaa darteed waxba lagama duubin wixii ay yiraahdeen mana la oga waxa la yiri.",
-    "callTranscriptAudioLost": "Wixii {name} yiri waa la duubay laakiin waa la lumiyay ka hor inta aan la qorin, sidaa darteed waxa la yiri lama oga."
+    "callTranscriptAudioLost": "Wixii {name} yiri waa la duubay laakiin waa la lumiyay ka hor inta aan la qorin, sidaa darteed waxa la yiri lama oga.",
+    "mapPinsKeyboardHint": "Isticmaal furayaasha fallaadha si aad ugu kala guurto hawlaha khariidada, oo taabo Gelida si aad u furto mid ka mid ah."
 }

@@ -10337,5 +10337,6 @@
     "callTranscriptParticipantsUnknown": "Není známo, kdo další se tohoto hovoru zúčastnil, takže někdo, kdo mluvil, může v tomto přepisu zcela chybět.",
     "callTranscriptTooLongToSend": "To, co řekl {name}, bylo příliš dlouhé na uložení s tímto hovorem, takže se nic z toho nezobrazuje.",
     "callTranscriptMicrophoneRefused": "Zařízení uživatele {name} nikdy neotevřelo mikrofon pro tento hovor, takže nic z toho, co řekl(a), nebylo nahráno a není známo, co bylo řečeno.",
-    "callTranscriptAudioLost": "To, co řekl(a) {name}, bylo nahráno, ale ztraceno předtím, než to mohlo být přepsáno, takže není známo, co bylo řečeno."
+    "callTranscriptAudioLost": "To, co řekl(a) {name}, bylo nahráno, ale ztraceno předtím, než to mohlo být přepsáno, takže není známo, co bylo řečeno.",
+    "mapPinsKeyboardHint": "Pomocí kláves se šipkami se pohybujte mezi aktivitami na mapě a stisknutím klávesy Enter jednu otevřete."
 }

@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "Kāore i te mōhiotia ko wai atu i runga i tēnei waea, nō reira tērā pea kei te ngaro tētahi i kōrero i tēnei tuhinga o te kōrerorero.",
     "callTranscriptTooLongToSend": "He roa rawa ngā kōrero a {name} kia tiakina ki tēnei waea, nō reira kāore i te whakaaturia.",
     "callTranscriptMicrophoneRefused": "Kāore rawa te pūrere a {name} i whakatuwhera i te hopuoro mō tēnei waea, nō reira kāore i hopukina āna kōrero, ā, kāore e mōhiotia ana ngā kōrero i kōrerotia.",
-    "callTranscriptAudioLost": "I hopukina ngā kōrero a {name} engari i ngaro i mua i te tuhi, nō reira kāore e mōhiotia ana ngā kōrero i kōrerotia."
+    "callTranscriptAudioLost": "I hopukina ngā kōrero a {name} engari i ngaro i mua i te tuhi, nō reira kāore e mōhiotia ana ngā kōrero i kōrerotia.",
+    "mapPinsKeyboardHint": "Whakamahia ngā kī pere hei neke i waenga i ngā mahi i runga i te mahere, ka pēhi i te Enter hei whakatuwhera i tētahi."
 }

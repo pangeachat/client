@@ -9946,5 +9946,6 @@
     "callTranscriptParticipantsUnknown": "Nem ismert, hogy kik vettek még részt ebben a hívásban, így előfordulhat, hogy valaki, aki beszélt, teljesen hiányzik ebből az átiratból.",
     "callTranscriptTooLongToSend": "{name} mondandója túl hosszú volt ahhoz, hogy elmentse a hívással, így semmi sem jelenik meg belőle.",
     "callTranscriptMicrophoneRefused": "{name} eszköze nem nyitott meg mikrofont ehhez a híváshoz, így semmi sem került rögzítésre abból, amit mondott, és nem ismert, hogy mi hangzott el.",
-    "callTranscriptAudioLost": "Amit {name} mondott, az rögzítésre került, de elveszett, mielőtt átírható lett volna, így nem ismert, hogy mi hangzott el."
+    "callTranscriptAudioLost": "Amit {name} mondott, az rögzítésre került, de elveszett, mielőtt átírható lett volna, így nem ismert, hogy mi hangzott el.",
+    "mapPinsKeyboardHint": "A térképen lévő tevékenységek közötti mozgáshoz használja a nyílbillentyűket, a megnyitáshoz pedig nyomja meg az Entert."
 }

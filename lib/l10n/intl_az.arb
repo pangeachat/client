@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "Bu zəngdə başqa kimin olduğu bilinmir, buna görə danışan kimsə bu transkriptdə tamamilə əskik ola bilər.",
     "callTranscriptTooLongToSend": "{name} dedikləri bu zənglə saxlamaq üçün çox uzun idi, buna görə heç biri göstərilmir.",
     "callTranscriptMicrophoneRefused": "{name} cihazı bu zəng üçün heç vaxt mikrofon açmayıb, ona görə də dedikləri qeydə alınmayıb və nə dedikləri bilinmir.",
-    "callTranscriptAudioLost": "{name} dedikləri qeydə alınıb, lakin transkripsiya edilməzdən əvvəl itirilib, ona görə də nə dedikləri bilinmir."
+    "callTranscriptAudioLost": "{name} dedikləri qeydə alınıb, lakin transkripsiya edilməzdən əvvəl itirilib, ona görə də nə dedikləri bilinmir.",
+    "mapPinsKeyboardHint": "Xəritədəki fəaliyyətlər arasında hərəkət etmək üçün ox düymələrindən istifadə edin və birini açmaq üçün Enter düyməsini basın."
 }

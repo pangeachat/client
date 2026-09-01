@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "Et ass net bekannt, wien nach an dësem Uruff war, dofir kann et sinn, datt een, deen geschwat huet, ganz aus dësem Transkript feelt.",
     "callTranscriptTooLongToSend": "Wat de(n) {name} gesot huet, war ze laang fir mat dësem Uruff gespäichert ze ginn, dofir gëtt näischt dovunner ugewisen.",
     "callTranscriptMicrophoneRefused": "Dem {name} säin Apparat huet ni e Mikro fir dësen Uruff opgemaach, sou datt näischt opgeholl gouf a wat gesot gouf ass net bekannt.",
-    "callTranscriptAudioLost": "Wat de {name} gesot huet, gouf opgeholl, awer verluer ier et transkribéiert konnt ginn, sou datt wat gesot gouf net bekannt ass."
+    "callTranscriptAudioLost": "Wat de {name} gesot huet, gouf opgeholl, awer verluer ier et transkribéiert konnt ginn, sou datt wat gesot gouf net bekannt ass.",
+    "mapPinsKeyboardHint": "Benotzt d'Pfeiltasten fir tëscht den Aktivitéiten op der Kaart ze navigéieren, an dréckt Enter fir eng opzemaachen."
 }

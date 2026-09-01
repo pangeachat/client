@@ -9916,5 +9916,6 @@
     "callTranscriptParticipantsUnknown": "Tidak diketahui siapa lagi yang ada di panggilan ini, jadi seseorang yang berbicara mungkin tidak ada dalam transkrip ini sama sekali.",
     "callTranscriptTooLongToSend": "Apa yang dikatakan {name} terlalu panjang untuk disimpan dengan panggilan ini, jadi tidak ada yang ditampilkan.",
     "callTranscriptMicrophoneRefused": "Perangkat {name} tidak pernah membuka mikrofon untuk panggilan ini, jadi tidak ada yang mereka katakan yang direkam dan apa yang dikatakan tidak diketahui.",
-    "callTranscriptAudioLost": "Apa yang dikatakan {name} direkam tetapi hilang sebelum dapat ditranskripsi, jadi apa yang dikatakan tidak diketahui."
+    "callTranscriptAudioLost": "Apa yang dikatakan {name} direkam tetapi hilang sebelum dapat ditranskripsi, jadi apa yang dikatakan tidak diketahui.",
+    "mapPinsKeyboardHint": "Gunakan tombol panah untuk berpindah antar aktivitas di peta, dan tekan Enter untuk membuka salah satunya."
 }

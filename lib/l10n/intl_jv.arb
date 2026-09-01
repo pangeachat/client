@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "Ora dingerteni sapa wae sing melu telpon iki, mula ana wong sing ngomong bisa uga ora ana ing transkrip iki.",
     "callTranscriptTooLongToSend": "Apa sing diucapake {name} dawa banget kanggo disimpen karo telpon iki, mula ora ana sing ditampilake.",
     "callTranscriptMicrophoneRefused": "Piranti {name} ora tau mbukak mikropon kanggo telpon iki, mula ora ana sing direkam lan ora dingerteni apa sing diucapake.",
-    "callTranscriptAudioLost": "Apa sing diucapake {name} direkam nanging ilang sadurunge bisa ditranskripsi, mula ora dingerteni apa sing diucapake."
+    "callTranscriptAudioLost": "Apa sing diucapake {name} direkam nanging ilang sadurunge bisa ditranskripsi, mula ora dingerteni apa sing diucapake.",
+    "mapPinsKeyboardHint": "Gunakake tombol panah kanggo mindhah antarane aktivitas ing peta, banjur pencet Enter kanggo mbukak salah siji."
 }

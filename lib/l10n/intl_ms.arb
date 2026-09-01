@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "Tidak diketahui siapa lagi yang berada dalam panggilan ini, jadi seseorang yang bercakap mungkin tiada langsung daripada transkrip ini.",
     "callTranscriptTooLongToSend": "Apa yang dikatakan oleh {name} terlalu panjang untuk disimpan dengan panggilan ini, jadi tiada satu pun daripadanya ditunjukkan.",
     "callTranscriptMicrophoneRefused": "Peranti {name} tidak pernah membuka mikrofon untuk panggilan ini, jadi tiada apa yang mereka katakan telah dirakam dan apa yang dikatakan tidak diketahui.",
-    "callTranscriptAudioLost": "Apa yang {name} katakan telah dirakam tetapi hilang sebelum ia boleh ditranskripsi, jadi apa yang dikatakan tidak diketahui."
+    "callTranscriptAudioLost": "Apa yang {name} katakan telah dirakam tetapi hilang sebelum ia boleh ditranskripsi, jadi apa yang dikatakan tidak diketahui.",
+    "mapPinsKeyboardHint": "Gunakan kekunci anak panah untuk bergerak antara aktiviti pada peta, dan tekan Enter untuk membuka satu."
 }

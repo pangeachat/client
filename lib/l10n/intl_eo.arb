@@ -10788,5 +10788,6 @@
     "callTranscriptParticipantsUnknown": "Ne estas sciate, kiu alia partoprenis en ĉi tiu voko, do iu, kiu parolis, eble tute mankas en ĉi tiu transskribo.",
     "callTranscriptTooLongToSend": "Kion diris {name} estis tro longa por konservi kun ĉi tiu voko, do nenio el ĝi estas montrita.",
     "callTranscriptMicrophoneRefused": "La aparato de {name} neniam malfermis mikrofonon por ĉi tiu voko, do nenio dirita de ili estis registrita kaj kio estis dirita ne estas konata.",
-    "callTranscriptAudioLost": "Kion diris {name} estis registrita sed perdiĝis antaŭ ol ĝi povus esti transskribita, do kio estis dirita ne estas konata."
+    "callTranscriptAudioLost": "Kion diris {name} estis registrita sed perdiĝis antaŭ ol ĝi povus esti transskribita, do kio estis dirita ne estas konata.",
+    "mapPinsKeyboardHint": "Uzu la sagoklavojn por moviĝi inter agadoj sur la mapo, kaj premu Enigi por malfermi unu."
 }

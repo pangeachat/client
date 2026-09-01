@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "Akwaziwa ukuthi ubani omunye owayekulekholi, ngakho-ke umuntu okhulumile angase angabikho kulo mbhalo obhaliwe.",
     "callTranscriptTooLongToSend": "Lokho okwashiwo ngu-{name} kwakukude kakhulu ukuthi kungagcinwa nale kholi, ngakho-ke akukho okukhonjisiwe.",
     "callTranscriptMicrophoneRefused": "Idivayisi ka-{name} ayizange ivule imakrofoni kulolu lwazi, ngakho-ke akukho abakushilo okwarekhodwa futhi okwashiwo akwaziwa.",
-    "callTranscriptAudioLost": "Okushiwo ngu-{name} kwarekhodwa kodwa kwalahleka ngaphambi kokuba kubhalwe, ngakho-ke okwashiwo akwaziwa."
+    "callTranscriptAudioLost": "Okushiwo ngu-{name} kwarekhodwa kodwa kwalahleka ngaphambi kokuba kubhalwe, ngakho-ke okwashiwo akwaziwa.",
+    "mapPinsKeyboardHint": "Sebenzisa izinkinobho zemicibisholo ukuze uhambe phakathi kwemisebenzi kumephu, bese ucindezela u-Enter ukuze uvule eyodwa."
 }

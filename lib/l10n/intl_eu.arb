@@ -9843,5 +9843,6 @@
     "callTranscriptParticipantsUnknown": "Ez da ezagutzen nor gehiago egon zen dei honetan, beraz, hitz egin zuen norbait falta izan daiteke transkripzio honetan.",
     "callTranscriptTooLongToSend": "{name}k esandakoa luzeegia zen dei honekin gordetzeko, beraz, ez da ezer erakusten.",
     "callTranscriptMicrophoneRefused": "{name} gailuak ez zuen mikrofonoa ireki dei honetarako, beraz, ez zen ezer grabatu eta ez da ezagutzen zer esan zen.",
-    "callTranscriptAudioLost": "{name}k esandakoa grabatu zen, baina galdu egin zen transkribatu aurretik, beraz, ez da ezagutzen zer esan zen."
+    "callTranscriptAudioLost": "{name}k esandakoa grabatu zen, baina galdu egin zen transkribatu aurretik, beraz, ez da ezagutzen zer esan zen.",
+    "mapPinsKeyboardHint": "Erabili gezi-teklak mapako jardueren artean mugitzeko, eta sakatu Sartu bat irekitzeko."
 }

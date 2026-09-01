@@ -10624,5 +10624,6 @@
     "callTranscriptParticipantsUnknown": "Nežinoma, kas dar dalyvavo šiame skambutyje, todėl gali būti, kad šioje stenogramoje trūksta kalbėjusio asmens.",
     "callTranscriptTooLongToSend": "Tai, ką pasakė {name}, buvo per ilga, kad būtų išsaugota su šiuo skambučiu, todėl niekas iš to nerodoma.",
     "callTranscriptMicrophoneRefused": "{name} įrenginys niekada neatidarė mikrofono šiam skambučiui, todėl niekas, ką jie pasakė, nebuvo įrašyta ir kas buvo pasakyta, nėra žinoma.",
-    "callTranscriptAudioLost": "Tai, ką pasakė {name}, buvo įrašyta, bet prarasta prieš transkribuojant, todėl kas buvo pasakyta, nėra žinoma."
+    "callTranscriptAudioLost": "Tai, ką pasakė {name}, buvo įrašyta, bet prarasta prieš transkribuojant, todėl kas buvo pasakyta, nėra žinoma.",
+    "mapPinsKeyboardHint": "Naudokite rodyklių klavišus norėdami judėti tarp veiklų žemėlapyje, ir paspauskite Enter norėdami atidaryti vieną."
 }

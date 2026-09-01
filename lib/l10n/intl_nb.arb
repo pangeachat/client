@@ -9900,5 +9900,6 @@
     "callTranscriptParticipantsUnknown": "Det er ikke kjent hvem andre som var med på denne samtalen, så noen som snakket kan mangle helt fra denne transkripsjonen.",
     "callTranscriptTooLongToSend": "Det {name} sa var for langt til å lagres med denne samtalen, så ingenting av det vises.",
     "callTranscriptMicrophoneRefused": "{name}s enhet åpnet aldri en mikrofon for denne samtalen, så ingenting de sa ble tatt opp, og hva som ble sagt er ukjent.",
-    "callTranscriptAudioLost": "Det {name} sa ble tatt opp, men gikk tapt før det kunne transkriberes, så hva som ble sagt er ukjent."
+    "callTranscriptAudioLost": "Det {name} sa ble tatt opp, men gikk tapt før det kunne transkriberes, så hva som ble sagt er ukjent.",
+    "mapPinsKeyboardHint": "Bruk piltastene til å flytte mellom aktiviteter på kartet, og trykk Enter for å åpne en."
 }

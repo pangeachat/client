@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "Tsy fantatra hoe iza avy no niaraka tamin'ity antso ity, ka mety tsy hita tanteraka amin'ity dika soratra ity ny olona iray niteny.",
     "callTranscriptTooLongToSend": "Lava loatra ny tenin'i {name} ka tsy voatahiry tamin'ity antso ity, ka tsy misy aseho izany.",
     "callTranscriptMicrophoneRefused": "Tsy nanokatra mikrô ny fitaovan'i {name} nandritra ity antso ity, ka tsy nisy voarakitra izay nolazainy ary tsy fantatra izay voalaza.",
-    "callTranscriptAudioLost": "Voarakitra izay nolazain'i {name} saingy very talohan'ny nahafahana nanoratra azy, ka tsy fantatra izay voalaza."
+    "callTranscriptAudioLost": "Voarakitra izay nolazain'i {name} saingy very talohan'ny nahafahana nanoratra azy, ka tsy fantatra izay voalaza.",
+    "mapPinsKeyboardHint": "Ampiasao ny zana-tsipìka hivezivezena eo amin'ireo asa eo amin'ny sarintany, ary tsindrio ny Enter hanokafana iray."
 }

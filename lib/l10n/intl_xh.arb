@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "Akukaziwa ukuba ngubani omnye owayekule fowuni, ngoko ke umntu othethileyo usenokungabikho kwaphela kulo mbhalo-ngqangi.",
     "callTranscriptTooLongToSend": "Oko kuthethwe ngu-{name} bekude kakhulu ukuba kungagcinwa ngale fowuni, ngoko ke akukho nto iboniswayo.",
     "callTranscriptMicrophoneRefused": "Isixhobo sika-{name} asizange siyivule imakrofoni kule fowuni, ngoko ke akukho nto ayithethileyo erekhodiweyo kwaye akwaziwa ukuba uthethe ntoni.",
-    "callTranscriptAudioLost": "Into ethethwe ngu-{name} irekhodiwe kodwa ilahlekile phambi kokuba ibhalwe phantsi, ngoko ke akwaziwa ukuba uthethe ntoni."
+    "callTranscriptAudioLost": "Into ethethwe ngu-{name} irekhodiwe kodwa ilahlekile phambi kokuba ibhalwe phantsi, ngoko ke akwaziwa ukuba uthethe ntoni.",
+    "mapPinsKeyboardHint": "Sebenzisa amaqhosha otolo ukuhamba phakathi kwemisebenzi kwimephu, kwaye ucinezele u-Enter ukuze uvule enye."
 }

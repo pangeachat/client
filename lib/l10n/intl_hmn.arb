@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "Tsis paub tias leej twg ntxiv nyob hauv qhov kev hu no, yog li tej zaum ib tus neeg uas tau hais lus yuav tsis pom tag nrho hauv daim ntawv sau no.",
     "callTranscriptTooLongToSend": "Qhov {name} tau hais ntev dhau lawm kom txuag tau nrog qhov kev hu no, yog li tsis pom ib feem ntawm nws.",
     "callTranscriptMicrophoneRefused": "{name} lub cuab yeej tsis tau qhib lub microphone rau qhov kev hu no, yog li tsis muaj dab tsi lawv hais tau raug kaw tseg thiab tsis paub tias lawv hais dab tsi.",
-    "callTranscriptAudioLost": "Qhov {name} hais tau raug kaw tseg tab sis ploj ua ntej yuav muab sau ua ntawv, yog li tsis paub tias lawv hais dab tsi."
+    "callTranscriptAudioLost": "Qhov {name} hais tau raug kaw tseg tab sis ploj ua ntej yuav muab sau ua ntawv, yog li tsis paub tias lawv hais dab tsi.",
+    "mapPinsKeyboardHint": "Siv cov yuam sij xub kom txav mus los ntawm cov haujlwm hauv daim ntawv qhia, thiab nias Enter kom qhib ib qho."
 }

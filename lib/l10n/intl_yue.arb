@@ -10800,5 +10800,6 @@
     "callTranscriptParticipantsUnknown": "不知道還有誰參與了此通話，因此對話記錄中可能完全缺少某位發言者。",
     "callTranscriptTooLongToSend": "{name} 的發言內容太長，無法與此通話一起儲存，因此不顯示任何內容。",
     "callTranscriptMicrophoneRefused": "{name}嘅裝置喺呢次通話中從未開啟過咪高峰，所以佢講過嘅嘢冇被錄音，亦都唔知講過啲乜。",
-    "callTranscriptAudioLost": "{name}講過嘅嘢雖然被錄音，但喺轉錄之前遺失咗，所以唔知講過啲乜。"
+    "callTranscriptAudioLost": "{name}講過嘅嘢雖然被錄音，但喺轉錄之前遺失咗，所以唔知講過啲乜。",
+    "mapPinsKeyboardHint": "使用方向鍵在地圖上的活動之間移動，然後按 Enter 鍵打開一個活動。"
 }

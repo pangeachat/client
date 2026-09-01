@@ -9843,5 +9843,6 @@
     "callTranscriptParticipantsUnknown": "Het is niet bekend wie er nog meer aan dit gesprek deelnam, dus het kan zijn dat iemand die sprak volledig ontbreekt in dit transcript.",
     "callTranscriptTooLongToSend": "Wat {name} zei, was te lang om op te slaan bij dit gesprek, dus niets ervan wordt weergegeven.",
     "callTranscriptMicrophoneRefused": "Het apparaat van {name} heeft geen microfoon geopend voor dit gesprek, dus er is niets opgenomen van wat er gezegd is en wat er gezegd is, is onbekend.",
-    "callTranscriptAudioLost": "Wat {name} zei, is opgenomen, maar is verloren gegaan voordat het kon worden getranscribeerd, dus wat er gezegd is, is onbekend."
+    "callTranscriptAudioLost": "Wat {name} zei, is opgenomen, maar is verloren gegaan voordat het kon worden getranscribeerd, dus wat er gezegd is, is onbekend.",
+    "mapPinsKeyboardHint": "Gebruik de pijltjestoetsen om tussen activiteiten op de kaart te bewegen en druk op Enter om er een te openen."
 }

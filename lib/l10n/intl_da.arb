@@ -10763,5 +10763,6 @@
     "callTranscriptParticipantsUnknown": "Det vides ikke, hvem der ellers deltog i dette opkald, så en person, der talte, mangler muligvis helt fra denne udskrift.",
     "callTranscriptTooLongToSend": "Det, {name} sagde, var for langt til at gemme med dette opkald, så intet af det vises.",
     "callTranscriptMicrophoneRefused": "{name}s enhed åbnede aldrig en mikrofon til dette opkald, så intet af det, de sagde, blev optaget, og hvad der blev sagt, er ukendt.",
-    "callTranscriptAudioLost": "Hvad {name} sagde, blev optaget, men gik tabt, før det kunne transskriberes, så hvad der blev sagt, er ukendt."
+    "callTranscriptAudioLost": "Hvad {name} sagde, blev optaget, men gik tabt, før det kunne transskriberes, så hvad der blev sagt, er ukendt.",
+    "mapPinsKeyboardHint": "Brug piletasterne til at flytte mellem aktiviteter på kortet, og tryk på Enter for at åbne en."
 }

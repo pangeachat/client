@@ -9970,5 +9970,6 @@
     "callTranscriptParticipantsUnknown": "No se sap qui més hi havia en aquesta trucada, de manera que algú que va parlar pot faltar completament en aquesta transcripció.",
     "callTranscriptTooLongToSend": "El que {name} va dir era massa llarg per desar-ho amb aquesta trucada, de manera que no es mostra res.",
     "callTranscriptMicrophoneRefused": "El dispositiu de {name} no va obrir mai un micròfon per a aquesta trucada, així que no es va gravar res del que va dir i no se sap què es va dir.",
-    "callTranscriptAudioLost": "El que {name} va dir es va gravar però es va perdre abans que es pogués transcriure, així que no se sap què es va dir."
+    "callTranscriptAudioLost": "El que {name} va dir es va gravar però es va perdre abans que es pogués transcriure, així que no se sap què es va dir.",
+    "mapPinsKeyboardHint": "Utilitza les tecles de fletxa per moure't entre les activitats del mapa i prem Retorn per obrir-ne una."
 }

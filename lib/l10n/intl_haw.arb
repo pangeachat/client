@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "ʻAʻole ʻike ʻia ʻo wai hou aʻe ma kēia kelepona, no laila, ʻaʻole paha i hōʻike ʻia kekahi mea nāna i ʻōlelo ma kēia palapala.",
     "callTranscriptTooLongToSend": "Ua lōʻihi loa ka ʻōlelo a {name} no ka mālama ʻana me kēia kelepona, no laila ʻaʻole i hōʻike ʻia kekahi o ia mea.",
     "callTranscriptMicrophoneRefused": "ʻAʻole i wehe ka mea hana a {name} i ka microphone no kēia kelepona, no laila, ʻaʻohe mea i hoʻopaʻa ʻia a ʻaʻole ʻike ʻia ka mea i ʻōlelo ʻia.",
-    "callTranscriptAudioLost": "Ua hoʻopaʻa ʻia ka mea a {name} i ʻōlelo ai akā ua nalowale ma mua o ka hiki ke kākau ʻia, no laila, ʻaʻole ʻike ʻia ka mea i ʻōlelo ʻia."
+    "callTranscriptAudioLost": "Ua hoʻopaʻa ʻia ka mea a {name} i ʻōlelo ai akā ua nalowale ma mua o ka hiki ke kākau ʻia, no laila, ʻaʻole ʻike ʻia ka mea i ʻōlelo ʻia.",
+    "mapPinsKeyboardHint": "E hoʻohana i nā kī pua e neʻe ai ma waena o nā hana ma ka palapala ʻāina, a e kaomi iā Enter e wehe i kekahi."
 }

@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "कोल् अदुदा कना-कना য়াओখিबा अदु खङदे, मर्मदी ৱारी-शारी तौখিবা মীওই অমদি ৱारी-शारी तौবগী মফম अदुदा য়াओদবা য়াওगनि।",
     "callTranscriptTooLongToSend": "{name} ना हैখিবা অদু কোल् অসিগা লোইননা থম্নবগীদমক হেন্না য়াম্না শাংবা তারে, মরমদি অদুগী মতাংদা করিগুম্বা অমত্তা উৎখিদে।",
     "callTranscriptMicrophoneRefused": "{name}gi device na hairiba call asida microphone amata hangkhide, aduna mahakna haikhiba khudingmak record toukhide aduga kari haikhibano haibasi khangdre.",
-    "callTranscriptAudioLost": "{name}na haikhiba adu record toukhre adubu transcribe touba ngamdringei makhei mangkhre, aduna kari haikhibano haibasi khangdre."
+    "callTranscriptAudioLost": "{name}na haikhiba adu record toukhre adubu transcribe touba ngamdringei makhei mangkhre, aduna kari haikhibano haibasi khangdre.",
+    "mapPinsKeyboardHint": "Map ta chatnaba activities singgi marakta saronba hotnabagidamak arrow keys sing adu sijinbiyu, aduga amabu hangdoknaba Enter thinbiyu."
 }

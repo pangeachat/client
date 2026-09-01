@@ -10475,5 +10475,6 @@
     "callTranscriptParticipantsUnknown": "Ní fios cé eile a bhí ar an nglao seo, mar sin b'fhéidir go bhfuil duine éigin a labhair in easnamh ón trascríbhinn seo ar fad.",
     "callTranscriptTooLongToSend": "Bhí an méid a dúirt {name} rófhada le sábháil leis an nglao seo, mar sin níl aon chuid de á thaispeáint.",
     "callTranscriptMicrophoneRefused": "Níor osclaíodh micreafón ar ghléas {name} don ghlao seo, mar sin níor taifeadadh aon rud a dúirt siad agus ní fios cad a dúradh.",
-    "callTranscriptAudioLost": "Taifeadadh an méid a dúirt {name} ach cailleadh é sular féidir é a thrascríobh, mar sin ní fios cad a dúradh."
+    "callTranscriptAudioLost": "Taifeadadh an méid a dúirt {name} ach cailleadh é sular féidir é a thrascríobh, mar sin ní fios cad a dúradh.",
+    "mapPinsKeyboardHint": "Bain úsáid as na heochracha saighde chun bogadh idir gníomhaíochtaí ar an léarscáil, agus brúigh Iontráil chun ceann a oscailt."
 }

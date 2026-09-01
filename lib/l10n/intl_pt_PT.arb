@@ -10760,5 +10760,6 @@
     "callTranscriptParticipantsUnknown": "Não se sabe quem mais esteve nesta chamada, por isso alguém que falou pode estar completamente ausente desta transcrição.",
     "callTranscriptTooLongToSend": "O que {name} disse era demasiado longo para guardar com esta chamada, por isso nada é mostrado.",
     "callTranscriptMicrophoneRefused": "O dispositivo de {name} nunca abriu um microfone para esta chamada, por isso nada do que disseram foi gravado e o que foi dito não é conhecido.",
-    "callTranscriptAudioLost": "O que {name} disse foi gravado, mas perdeu-se antes de poder ser transcrito, por isso o que foi dito não é conhecido."
+    "callTranscriptAudioLost": "O que {name} disse foi gravado, mas perdeu-se antes de poder ser transcrito, por isso o que foi dito não é conhecido.",
+    "mapPinsKeyboardHint": "Use as teclas de seta para se mover entre as atividades no mapa e prima Enter para abrir uma."
 }

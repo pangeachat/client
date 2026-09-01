@@ -649,23 +649,30 @@ class _DismissButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return IconButton(
-      onPressed: onPressed,
-      icon: const Icon(Icons.close),
-      iconSize: 18,
-      padding: EdgeInsets.zero,
-      visualDensity: VisualDensity.compact,
-      constraints: const BoxConstraints(minWidth: size, minHeight: size),
-      tooltip: L10n.of(context).close,
-      color: theme.colorScheme.onSurfaceVariant,
-      style: IconButton.styleFrom(
-        // Without this the button's box is the 48px padded tap target, not the
-        // disc — it would overhang the gutter and swallow taps on the content
-        // it paints over.
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        backgroundColor: theme.colorScheme.surface,
-        shape: const CircleBorder(
-          side: BorderSide(color: Colors.white, width: 1.5),
+    // Pointer-only: the card draws inside the ExcludeSemantics'd map subtree,
+    // which hides this button from assistive tech but NOT from Tab traversal —
+    // leaving it in makes an invisible dead Tab stop per visible card (2.4.7).
+    // The keyboard path to pins is the mirror layer's single roving stop
+    // (#8714, world-map.instructions.md → Keyboard access).
+    return ExcludeFocus(
+      child: IconButton(
+        onPressed: onPressed,
+        icon: const Icon(Icons.close),
+        iconSize: 18,
+        padding: EdgeInsets.zero,
+        visualDensity: VisualDensity.compact,
+        constraints: const BoxConstraints(minWidth: size, minHeight: size),
+        tooltip: L10n.of(context).close,
+        color: theme.colorScheme.onSurfaceVariant,
+        style: IconButton.styleFrom(
+          // Without this the button's box is the 48px padded tap target, not the
+          // disc — it would overhang the gutter and swallow taps on the content
+          // it paints over.
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          backgroundColor: theme.colorScheme.surface,
+          shape: const CircleBorder(
+            side: BorderSide(color: Colors.white, width: 1.5),
+          ),
         ),
       ),
     );

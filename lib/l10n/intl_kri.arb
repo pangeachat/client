@@ -2247,5 +2247,6 @@
     "callTranscriptParticipantsUnknown": "Nɔto dɛn sabi udat ɔda pɔsin bin de pan dis kɔl, so sɔm pɔsin we bin tɔk kin nɔ de insay dis transkript atɔl.",
     "callTranscriptTooLongToSend": "Wetin {name} bin tɔk bin lɔng pas fɔ sev wit dis kɔl, so nɔn pan am nɔ de sho.",
     "callTranscriptMicrophoneRefused": "{name} in divays nɔba opin mayk fɔ dis kɔl, so notin we dɛn se nɔ bin de rikɔd ɛn nɔbɔdi nɔ no wetin dɛn se.",
-    "callTranscriptAudioLost": "Wetin {name} se bin de rikɔd, bɔt i lɔs bifo dɛn kin rayt am, so nɔbɔdi nɔ no wetin dɛn se."
+    "callTranscriptAudioLost": "Wetin {name} se bin de rikɔd, bɔt i lɔs bifo dɛn kin rayt am, so nɔbɔdi nɔ no wetin dɛn se.",
+    "mapPinsKeyboardHint": "Yuz di arrow keys fɔ muv bitwin aktivitis dɛn na di map, ɛn pres Enter fɔ opin wan."
 }
