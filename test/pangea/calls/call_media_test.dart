@@ -641,11 +641,17 @@ void main() {
 
       test('a server that sends no fine stamp still anchors', () {
         // An SFU older than livekit-server v1.8.4, which the probe confirms
-        // omits field 17 entirely. Proto3 leaves defaults off the wire, so
-        // absent arrives as zero: the SFU half falls back to the coarse stamp,
-        // which is all that server said, and the DEVICE half is unaffected
-        // because it was read at the join either way. This fallback is sound
-        // precisely because it does not change WHEN either half was read.
+        // omits field 17 entirely. This test starts at `ms: 0` and covers only
+        // what the anchor does with it: the SFU half falls back to the coarse
+        // stamp, which is all that server said, and the DEVICE half is
+        // unaffected because it was read at the join either way. The step
+        // BEFORE this -- an absent field 17 arriving as zero, which is proto3
+        // leaving defaults off the wire -- is the extractor's, and is proven in
+        // `sfu_join_stamp_test.dart`. Neither test covers the path end to end;
+        // together they cover it.
+        //
+        // The fallback is sound precisely because it does not change WHEN
+        // either half was read.
         final media = mediaAt(deviceAtJoin)..anchorClocksTo(stamps(ms: 0));
 
         expect(media.clockAnchor?.sfuMs, sfuSecondsMs);

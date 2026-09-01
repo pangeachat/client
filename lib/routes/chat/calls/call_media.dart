@@ -403,8 +403,12 @@ class CallMedia {
   /// wrong. `ClockAnchor` already refuses a reading it cannot vouch for rather
   /// than rescuing it into a wrong one, and this now does the same: a call
   /// whose join response was never seen carries NO anchor. That costs the
-  /// correction and never a word — the reader shows every half it has, and
-  /// declines to reorder halves it cannot put on one clock.
+  /// correction and never a word — the reader shows every half it has. It does
+  /// NOT stop them being interleaved: `clockShiftFor` is zero for every half
+  /// when the clocks cannot be reconciled, so they still merge on raw device
+  /// clocks and a reply can still render above its question. What is withheld
+  /// is the printed TIMES, so at least the wrong order is never dressed up as
+  /// a measured one.
   ///
   /// The device clock is read INSIDE this method rather than handed to it, so
   /// the two clocks cannot be passed the wrong way round at the call site — a
