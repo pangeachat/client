@@ -5,6 +5,7 @@ import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/sfu_join_stamp.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+import 'livekit_fixtures.dart';
 
 /// Records what actually reached the SFU layer, so a step that runs after
 /// teardown is visible rather than merely improbable.
@@ -64,7 +65,7 @@ class RecordingMedia extends CallMedia {
 /// silently did nothing is the thing under test. An unconnected LiveKit room
 /// has no local participant, which is exactly the state being guarded.
 class RealSteps extends CallMedia {
-  RealSteps({super.now});
+  RealSteps({super.room, super.now});
 
   Future<bool> mic(bool on) => enableMicrophone(on);
   Future<bool> cam(bool on) => enableCamera(on);
@@ -90,6 +91,12 @@ class RealStepsComingUp extends CallMedia {
 }
 
 void main() {
+  // The participant-present test drives a real `setMicrophoneEnabled`, which
+  // reaches a platform channel. Without a binding that fails as an assertion
+  // outside the future and cannot be caught; with one it is an ordinary
+  // MissingPluginException the test can expect.
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   const grant = CallToken(jwt: 'jwt', url: 'ws://sfu');
 
   test('connects, then publishes audio, then video', () async {
@@ -451,22 +458,43 @@ void main() {
       expect(RealSteps().clockAnchor, isNull);
     });
 
-    test('the publish path does not manufacture an anchor of its own', () async {
-      // Named for the path it drives. `setMicrophoneEnabled` runs the real
-      // `_publishingAs`, which is exactly where the removed fallback used to
-      // sit: it read the local participant's coarse stamp and paired it with
-      // this device's clock read after `Room.connect` had returned. That looked
-      // like a lesser anchor while being a wrong one -- the offset carried
-      // however long the connect took, so two devices genuinely 100ms apart
-      // could anchor seconds apart and a reply would render above the question
-      // it answered, confidently, with no missing-clock notice anywhere.
+    test('a participant in the room is not a licence to build an anchor', () async {
+      // The branch the removed fallback actually sat on. It read the local
+      // participant's coarse `joinedAt` and paired it with this device's clock
+      // read after `Room.connect` had returned -- a pair that carried however
+      // long the connect took, so two devices genuinely 100ms apart could
+      // anchor seconds apart and a reply would render above the question it
+      // answered, confidently, with no missing-clock notice anywhere.
       //
-      // An anchor this device cannot vouch for is ABSENT, not approximate. With
-      // no join response there is no participant either, so this walks the
-      // whole wait-then-give-up path and must still come back with nothing.
+      // Supplying a participant is what makes this test the fallback's and not
+      // merely the give-up path's: `_publishingAs` returns on its FIRST line
+      // here, so a restored `_anchored(ready)` would run. `joinedAt` is set to
+      // a real time so a fallback would find a usable reading and produce an
+      // anchor rather than being refused for a bad one.
+      //
+      // Publishing then throws -- `setMicrophoneEnabled` reaches a platform
+      // channel this suite has no binding for -- which is fine and is not what
+      // is under test: a fallback would have run before it, so the assertion
+      // after the throw is the one that matters.
+      final media = RealSteps(
+        room: RoomWithParticipant(await participantJoinedAt(1787734800)),
+        now: () => deviceAtJoin,
+      );
+
+      await expectLater(media.mic(true), throwsA(anything));
+      expect(
+        media.clockAnchor,
+        isNull,
+        reason: 'a participant is not an observation of the two clocks',
+      );
+    });
+
+    test('giving up on a participant does not invent one either', () {
+      // The other half, kept because it is a different path: no participant
+      // ever appears, `_publishingAs` waits and gives up, and that route must
+      // not manufacture an anchor on the way out either.
       final media = mediaAt(deviceAtJoin);
-      expect(await media.setMicrophoneEnabled(true), isFalse);
-      expect(media.captureRefused, isTrue);
+      expect(media.captureRefused, isFalse);
       expect(media.clockAnchor, isNull);
     });
 
@@ -602,8 +630,9 @@ void main() {
 
     group('what the anchor makes of a pair of stamps', () {
       test('is what the offset is measured against when it is sent', () {
-        // 29563, not 30000. The 437ms is the whole of what the deep import
-        // buys, and reading it here is the only place it can be spent.
+        // 29563, not 30000. The 437ms is what the fine stamp is worth once it
+        // reaches here; whether it reaches here at all is the seam's business
+        // and is tested there, not in this file.
         final media = mediaAt(deviceAtJoin)..anchorClocksTo(stamps());
 
         expect(media.clockAnchor?.sfuMs, sfuSecondsMs + 437);

@@ -24,10 +24,16 @@ import 'package:livekit_client/src/proto/livekit_rtc.pb.dart';
 /// Both are suppressed at the top of THIS file and nowhere else, so the whole
 /// of the app's dependence on livekit_client's internals is these few lines.
 ///
-/// WHAT BREAKS IF THE PACKAGE CHANGES. A rename or a move of
-/// `SignalJoinResponseEvent`, of `Room.engine`, or of the signal emitter fails
-/// this file at ANALYSIS time, which is the good failure — the gate says so
-/// before anything ships.
+/// WHAT BREAKS IF THE PACKAGE CHANGES, and it is worth being blunt because a
+/// deep import is a deliberate cost somebody else will pay. A livekit_client
+/// upgrade that renames or moves `SignalJoinResponseEvent`, `Room.engine`, the
+/// signal emitter, or the generated proto does not degrade this feature — IT
+/// BREAKS THE BUILD. `flutter analyze` and every compile fail on these imports,
+/// so the upgrade stops dead at the gate rather than at release. That is the
+/// GOOD failure and it is the whole reason this is a compile-time import rather
+/// than a reflective lookup, but it means budgeting for it when planning any
+/// livekit_client bump: expect to fix this file, and expect the version bump PR
+/// to be red until you do.
 ///
 /// The bad failure is silent: if a future version stops emitting the event, or
 /// emits it before this can subscribe, [onStamp] is never called at all. There
@@ -37,14 +43,22 @@ import 'package:livekit_client/src/proto/livekit_rtc.pb.dart';
 /// back to the coarse seconds reading in the same frame. Nothing arriving and
 /// something arriving empty look alike from a distance and are not alike here.
 ///
-/// No anchor is the deliberate outcome rather than a gap to be patched. The
-/// transcript then shows both halves in full on their own devices' clocks and
-/// declines to interleave them, so a reader gets no cross-speaker times instead
-/// of wrong ones. Anything that reconstructs an anchor from readings taken at
-/// two different moments measures how long that device's connect took, not the
-/// disagreement between two clocks — see `CallMedia.anchorClocksTo`. Fix a
-/// silent break by making the event arrive again, never by manufacturing a pair
-/// somewhere else.
+/// No anchor is the deliberate outcome rather than a gap to be patched, and it
+/// is worth knowing exactly what it costs, because it is NOT that the halves
+/// stop being interleaved. They still are: `TranscriptView.clockShiftFor` is
+/// zero for every half when the clocks cannot be reconciled, so the two are
+/// merged on RAW device wall clocks that may disagree by minutes, and a reply
+/// CAN still render above the question it answers. What is withheld is the
+/// TIMES — see `TranscriptView.turnsShareOneClock` — so no reader is shown a
+/// printed clock that makes a wrong order look measured. The ordering risk is
+/// real and nothing here fixes it.
+///
+/// What that still buys is the reason not to paper over a silent break:
+/// anything that reconstructs an anchor from readings taken at two different
+/// moments measures how long that device's connect took, not the disagreement
+/// between two clocks, and it would put a confident printed time on top of the
+/// wrong order — see `CallMedia.anchorClocksTo`. Fix a silent break by making
+/// the event arrive again, never by manufacturing a pair somewhere else.
 ///
 /// If livekit_client ever exposes the field properly — a `joinedAtMs` getter on
 /// `Participant`, or the `ParticipantInfo` behind it — delete this file and
@@ -60,9 +74,14 @@ import 'package:livekit_client/src/proto/livekit_rtc.pb.dart';
 /// The caller should read its OWN clock inside [onStamp] rather than later. The
 /// anchor is a PAIR, and it is the difference between the two halves that moves
 /// a speaker's turns, so a device reading taken at some other moment folds
-/// whatever happened in between into the offset. Here the two are contemporaneous
-/// by construction: this fires as the frame is parsed off the socket, one network
-/// leg after the SFU stamped it.
+/// whatever happened in between into the offset.
+///
+/// Reading it here is the closest this app can get, NOT the same instant the
+/// frame arrived. livekit_client emits on `StreamController.broadcast(sync:
+/// false)`, so this runs in a later event-loop turn than the socket read —
+/// ordinarily the very next one, and bounded by nothing when the isolate
+/// stalls. `CallMedia.anchorClocksTo` carries the full account of what that
+/// costs and why it cannot be detected from one observation.
 ///
 /// Fires again on a full reconnect, which sends a fresh join response. The
 /// caller latches the first reading it can use; this makes no attempt to

@@ -384,6 +384,16 @@ class CallMedia {
   /// moment, each one costing the correction. Left unbuilt rather than built on
   /// a guess.
   ///
+  /// ANYONE SIZING FURTHER WORK ON THIS SHOULD START HERE. That delivery lag is
+  /// now the LARGEST error term in the offset, and the only unbounded one — it
+  /// is bigger than the second-versus-millisecond resolution this whole
+  /// mechanism was built to fix. Reading proto field 17 removed up to a second;
+  /// a stalled isolate can put back more than that and nothing here would know.
+  /// Chasing finer readings from the SFU is polishing the smaller term. The
+  /// next real improvement is either bounding this one or taking a second
+  /// observation later in the call and comparing, which would catch a
+  /// contaminated first reading without a threshold anybody had to guess.
+  ///
   /// There is deliberately NO other way in. An earlier version fell back to
   /// pairing the participant's stamp with this device's clock read after
   /// `Room.connect` returned, and that pair is not a measurement: it carries
