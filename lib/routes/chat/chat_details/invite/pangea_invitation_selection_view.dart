@@ -41,6 +41,15 @@ class PangeaInvitationSelectionView extends StatelessWidget {
 
     final theme = Theme.of(context);
 
+    // The invite page is URL-addressable, so hiding entry buttons (#7875)
+    // can't keep a member without invite power out of it — and for them every
+    // invite action can only fail with M_FORBIDDEN (#8694 / CLIENT-DCA). The
+    // page stays browsable (it doubles as a roster view); only the invite
+    // affordances disable, with a note saying why. Sharing the class code
+    // stays available: the join-code module issues its invites through a
+    // member that has the power.
+    final canInvite = room.canInvite;
+
     return Semantics(
       label: L10n.of(context).pageLabel(L10n.of(context).inviteContact),
       container: true,
@@ -80,6 +89,12 @@ class PangeaInvitationSelectionView extends StatelessWidget {
             child: Column(
               spacing: 12.0,
               children: [
+                if (!canInvite)
+                  Text(
+                    L10n.of(context).noPermissionToInviteUsers,
+                    style: theme.textTheme.bodySmall,
+                    textAlign: TextAlign.center,
+                  ),
                 PangeaSearchBar(
                   labelText: L10n.of(context).searchUsersHint,
                   controller: controller.controller,
@@ -164,7 +179,12 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                           theme.colorScheme.onPrimaryContainer,
                                     ),
                                     label: Text(L10n.of(context).acceptAll),
-                                    onPressed: controller.acceptAllKnocking,
+                                    // Accepting a knock issues an
+                                    // invite, so it needs the same
+                                    // power the invite buttons do.
+                                    onPressed: canInvite
+                                        ? controller.acceptAllKnocking
+                                        : null,
                                   )
                                 : const SizedBox.shrink(),
                           ),
@@ -216,6 +236,7 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                                             .foundProfiles[i]
                                                             .userId,
                                                       ),
+                                                  canInvite: canInvite,
                                                   onTap: () =>
                                                       controller.inviteAction(
                                                         controller
@@ -245,8 +266,10 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                                           .summary
                                                           .mJoinedMemberCount ??
                                                       1,
-                                                  onPressed: controller
-                                                      .inviteAllInSpace,
+                                                  onPressed: canInvite
+                                                      ? controller
+                                                            .inviteAllInSpace
+                                                      : null,
                                                 )
                                               : const SizedBox();
                                         }
@@ -294,6 +317,7 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                           isMember: participants.contains(
                                             contacts[i].id,
                                           ),
+                                          canInvite: canInvite,
                                           onTap: () => controller.inviteAction(
                                             contacts[i].id,
                                           ),
@@ -321,6 +345,10 @@ class _InviteContactListTile extends StatelessWidget {
   final Profile profile;
   final User? user;
   final bool isMember;
+
+  /// Whether the viewer holds the room's invite power — false disables the
+  /// trailing invite button (#8694).
+  final bool canInvite;
   final void Function() onTap;
   final PangeaInvitationSelectionController controller;
 
@@ -328,6 +356,7 @@ class _InviteContactListTile extends StatelessWidget {
     required this.profile,
     this.user,
     required this.isMember,
+    required this.canInvite,
     required this.onTap,
     required this.controller,
   });
@@ -440,7 +469,7 @@ class _InviteContactListTile extends StatelessWidget {
                 ),
               )
             : TextButton.icon(
-                onPressed: isMember ? null : onTap,
+                onPressed: isMember || !canInvite ? null : onTap,
                 label: Text(isMember ? l10n.participant : l10n.invite),
                 icon: Icon(isMember ? Icons.check : Icons.add),
               ),

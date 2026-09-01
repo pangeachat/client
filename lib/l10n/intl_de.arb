@@ -9824,5 +9824,6 @@
     "callTranscriptUnstatedTimes": "Einige Äußerungen zeigen keine Uhrzeit an. Das Gerät, das sie aufgenommen hat, hat nicht angegeben, wie genau seine Uhrzeiten sind, daher kann die Position in diesem Gespräch falsch sein.",
     "callTranscriptUnreconciledClocks": "Diese Äußerungen wurden auf zwei Geräten aufgezeichnet, deren Uhren nicht verglichen werden konnten, daher werden keine Uhrzeiten angezeigt und die Reihenfolge, in der sie erscheinen, kann falsch sein.",
     "callTranscriptOpen": "Transkript lesen",
-    "errorRateLimited": "Wir laden gerade sehr viel. Bitte warten Sie einen Moment und versuchen Sie es dann erneut."
+    "errorRateLimited": "Wir laden gerade sehr viel. Bitte warten Sie einen Moment und versuchen Sie es dann erneut.",
+    "noPermissionToInviteUsers": "Du hast keine Berechtigung, hier Mitglieder einzuladen."
 }

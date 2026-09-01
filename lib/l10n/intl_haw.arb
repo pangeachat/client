@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "ʻAʻole hōʻike kekahi mau huli i ka manawa. ʻAʻole i ʻōlelo ka mea i hoʻopaʻa iā lākou i ka pololei o kona mau manawa, no laila ua hewa paha ko lākou wahi i loko o kēia kamaʻilio.",
     "callTranscriptUnreconciledClocks": "Ua hoʻopaʻa ʻia kēia mau huli ma nā mea ʻelua ʻaʻole hiki ke hoʻohālikelike ʻia ko lāua mau uaki, no laila ʻaʻohe manawa i hōʻike ʻia a ua hewa paha ke ʻano o ko lāua puka ʻana mai.",
     "callTranscriptOpen": "Heluhelu i ka palapala",
-    "errorRateLimited": "Ke hoʻouka nei mākou i nā mea he nui i kēia manawa. E ʻoluʻolu e kali iki a hoʻāʻo hou."
+    "errorRateLimited": "Ke hoʻouka nei mākou i nā mea he nui i kēia manawa. E ʻoluʻolu e kali iki a hoʻāʻo hou.",
+    "noPermissionToInviteUsers": "ʻAʻohe ou ʻae e kono i nā lālā ma ʻaneʻi."
 }

@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Sumar beygjur sýna engan tíma. Tækið sem tók þær upp sagði ekki hversu nákvæmir tímar þess eru, svo staðsetning þeirra í þessu samtali gæti verið röng.",
     "callTranscriptUnreconciledClocks": "Þessar beygjur voru teknar upp á tveimur tækjum þar sem ekki var hægt að bera saman klukkur, svo engir tímar eru sýndir og röðin sem þær birtast í gæti verið röng.",
     "callTranscriptOpen": "Lesa umskriftina",
-    "errorRateLimited": "Við erum að hlaða mikið núna. Vinsamlegast bíddu smá stund og reyndu aftur."
+    "errorRateLimited": "Við erum að hlaða mikið núna. Vinsamlegast bíddu smá stund og reyndu aftur.",
+    "noPermissionToInviteUsers": "Þú hefur ekki leyfi til að bjóða meðlimum hingað."
 }

@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Gen kèk vire ki pa montre lè. Aparèy ki te anrejistre yo pa t' di ki jan lè yo egzak, kidonk kote yo chita nan konvèsasyon sa a ka mal.",
     "callTranscriptUnreconciledClocks": "Vire sa yo te anrejistre sou de aparèy ki pa t' kapab konpare revèy yo, kidonk pa gen lè ki parèt epi lòd yo parèt la ka mal.",
     "callTranscriptOpen": "Li transkripsyon an",
-    "errorRateLimited": "N ap chaje anpil kounye a. Tanpri tann yon ti moman epi eseye ankò."
+    "errorRateLimited": "N ap chaje anpil kounye a. Tanpri tann yon ti moman epi eseye ankò.",
+    "noPermissionToInviteUsers": "Ou pa gen pèmisyon pou envite manm isit la."
 }

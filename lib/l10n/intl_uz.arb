@@ -9841,5 +9841,6 @@
     "callTranscriptUnstatedTimes": "Ba'zi navbatlarda vaqt ko'rsatilmagan. Ularni yozib olgan qurilma o'z vaqtlarining qanchalik aniqligini aytmadi, shuning uchun ular bu suhbatda qayerda joylashgani noto'g'ri bo'lishi mumkin.",
     "callTranscriptUnreconciledClocks": "Bu navbatlar soatlari solishtirib bo'lmaydigan ikkita qurilmada yozib olingan, shuning uchun vaqtlar ko'rsatilmagan va ularning paydo bo'lish tartibi noto'g'ri bo'lishi mumkin.",
     "callTranscriptOpen": "Transkriptni o'qish",
-    "errorRateLimited": "Hozirda juda koʻp narsalarni yuklayapmiz. Iltimos, biroz kutib turing va qayta urinib koʻring."
+    "errorRateLimited": "Hozirda juda koʻp narsalarni yuklayapmiz. Iltimos, biroz kutib turing va qayta urinib koʻring.",
+    "noPermissionToInviteUsers": "Bu yerga aʼzolarni taklif qilishga ruxsatingiz yoʻq."
 }

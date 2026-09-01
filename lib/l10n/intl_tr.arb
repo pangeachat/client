@@ -10138,5 +10138,6 @@
     "callTranscriptUnstatedTimes": "Bazı konuşmalarda zaman belirtilmemiştir. Bunları kaydeden cihaz, zamanlarının ne kadar kesin olduğunu belirtmedi, bu yüzden bu konuşmadaki yerleri yanlış olabilir.",
     "callTranscriptUnreconciledClocks": "Bu konuşmalar, saatleri karşılaştırılamayan iki cihazda kaydedildi, bu yüzden zaman gösterilmiyor ve görünme sıraları yanlış olabilir.",
     "callTranscriptOpen": "Dökümü oku",
-    "errorRateLimited": "Şu anda çok fazla yükleme yapıyoruz. Lütfen bir süre bekleyip tekrar deneyin."
+    "errorRateLimited": "Şu anda çok fazla yükleme yapıyoruz. Lütfen bir süre bekleyip tekrar deneyin.",
+    "noPermissionToInviteUsers": "Buraya üye davet etme izniniz yok."
 }

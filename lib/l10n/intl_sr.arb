@@ -10786,5 +10786,6 @@
     "callTranscriptUnstatedTimes": "Neki obrti ne pokazuju vreme. Uređaj koji ih je snimio nije naveo koliko su tačna njegova vremena, tako da mesto gde se nalaze u ovom razgovoru može biti pogrešno.",
     "callTranscriptUnreconciledClocks": "Ovi obrti su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuje vreme i redosled njihovog pojavljivanja može biti pogrešan.",
     "callTranscriptOpen": "Pročitajte transkript",
-    "errorRateLimited": "Trenutno se mnogo toga učitava. Sačekajte trenutak i pokušajte ponovo."
+    "errorRateLimited": "Trenutno se mnogo toga učitava. Sačekajte trenutak i pokušajte ponovo.",
+    "noPermissionToInviteUsers": "Nemate dozvolu da pozivate članove ovde."
 }

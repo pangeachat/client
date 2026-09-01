@@ -9837,5 +9837,6 @@
     "callTranscriptUnstatedTimes": "Sommige beurten tonen geen tijd. Het apparaat dat ze heeft opgenomen, heeft niet aangegeven hoe exact de tijden zijn, dus de plaatsing ervan in dit gesprek kan onjuist zijn.",
     "callTranscriptUnreconciledClocks": "Deze beurten zijn opgenomen op twee apparaten waarvan de klokken niet konden worden vergeleken, dus er worden geen tijden weergegeven en de volgorde waarin ze verschijnen kan onjuist zijn.",
     "callTranscriptOpen": "Lees het transcript",
-    "errorRateLimited": "We laden momenteel veel. Wacht even en probeer het opnieuw."
+    "errorRateLimited": "We laden momenteel veel. Wacht even en probeer het opnieuw.",
+    "noPermissionToInviteUsers": "Je hebt hier geen toestemming om leden uit te nodigen."
 }

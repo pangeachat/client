@@ -10569,5 +10569,6 @@
     "callTranscriptUnstatedTimes": "Unele replici nu afișează ora. Dispozitivul care le-a înregistrat nu a specificat cât de exacte sunt orele sale, așa că poziția lor în această conversație ar putea fi greșită.",
     "callTranscriptUnreconciledClocks": "Aceste replici au fost înregistrate pe două dispozitive ale căror ceasuri nu au putut fi comparate, așa că nu sunt afișate ore și ordinea în care apar ar putea fi greșită.",
     "callTranscriptOpen": "Citiți transcrierea",
-    "errorRateLimited": "Încărcăm multe acum. Te rugăm să aștepți un moment și să încerci din nou."
+    "errorRateLimited": "Încărcăm multe acum. Te rugăm să aștepți un moment și să încerci din nou.",
+    "noPermissionToInviteUsers": "Nu ai permisiunea de a invita membri aici."
 }

@@ -9964,5 +9964,6 @@
     "callTranscriptUnstatedTimes": "Alguns torns no mostren l'hora. El dispositiu que els va gravar no va indicar la precisió de les seves hores, així que la seva posició en aquesta conversa podria ser incorrecta.",
     "callTranscriptUnreconciledClocks": "Aquests torns es van gravar en dos dispositius els rellotges dels quals no es van poder comparar, així que no es mostren les hores i l'ordre en què apareixen podria ser incorrecte.",
     "callTranscriptOpen": "Llegeix la transcripció",
-    "errorRateLimited": "Estem carregant moltes coses ara mateix. Espera un moment i torna-ho a provar."
+    "errorRateLimited": "Estem carregant moltes coses ara mateix. Espera un moment i torna-ho a provar.",
+    "noPermissionToInviteUsers": "No tens permís per convidar membres aquí."
 }

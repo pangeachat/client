@@ -9943,5 +9943,6 @@
     "callTranscriptUnstatedTimes": "有些發言沒有顯示時間。錄製它們的設備沒有說明其時間的精確度，因此它們在本次對話中的位置可能不正確。",
     "callTranscriptUnreconciledClocks": "這些發言是在兩個時鐘無法比較的設備上錄製的，因此沒有顯示時間，並且它們出現的順序可能不正確。",
     "callTranscriptOpen": "閱讀通話記錄",
-    "errorRateLimited": "我們正在載入大量內容。請稍候片刻再試一次。"
+    "errorRateLimited": "我們正在載入大量內容。請稍候片刻再試一次。",
+    "noPermissionToInviteUsers": "您沒有權限邀請成員加入此處。"
 }

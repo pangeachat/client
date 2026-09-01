@@ -9922,5 +9922,6 @@
     "callTranscriptUnstatedTimes": "Niektóre wypowiedzi nie pokazują czasu. Urządzenie, które je nagrało, nie podało, jak dokładne są jego czasy, więc ich miejsce w tej rozmowie może być błędne.",
     "callTranscriptUnreconciledClocks": "Te wypowiedzi zostały nagrane na dwóch urządzeniach, których zegarów nie można było porównać, więc nie są wyświetlane żadne czasy, a kolejność, w jakiej się pojawiają, może być błędna.",
     "callTranscriptOpen": "Przeczytaj transkrypcję",
-    "errorRateLimited": "Obecnie ładujemy dużo danych. Poczekaj chwilę i spróbuj ponownie."
+    "errorRateLimited": "Obecnie ładujemy dużo danych. Poczekaj chwilę i spróbuj ponownie.",
+    "noPermissionToInviteUsers": "Nie masz uprawnień, aby zapraszać tu członków."
 }

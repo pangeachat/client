@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Zoyankha zina sizikuwonetsa nthawi. Chipangizo chomwe chidazijambula sichinanene kuti nthawi zake ndi zolondola bwanji, choncho malo ake pa zokambiranazi akhoza kukhala olakwika.",
     "callTranscriptUnreconciledClocks": "Zoyankha izi zidajambulidwa pa zipangizo ziwiri zomwe nthawi zake sizinatheke kuyerekeza, choncho palibe nthawi zomwe zikuwonetsedwa ndipo dongosolo lomwe zikuwonekera likhoza kukhala lolakwika.",
     "callTranscriptOpen": "Werengani zolembedwazo",
-    "errorRateLimited": "Tikukweza zambiri pakali pano. Chonde dikirani pang'ono ndikuyesanso."
+    "errorRateLimited": "Tikukweza zambiri pakali pano. Chonde dikirani pang'ono ndikuyesanso.",
+    "noPermissionToInviteUsers": "Mulibe chilolezo choitanira anthu kuno."
 }

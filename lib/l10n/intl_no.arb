@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Noen replikker viser ingen tid. Enheten som tok dem opp, sa ikke hvor nøyaktige tidene var, så hvor de sitter i denne samtalen kan være feil.",
     "callTranscriptUnreconciledClocks": "Disse replikkene ble tatt opp på to enheter hvis klokker ikke kunne sammenlignes, så ingen tider vises og rekkefølgen de vises i kan være feil.",
     "callTranscriptOpen": "Les utskriften",
-    "errorRateLimited": "Vi laster inn mye akkurat nå. Vent litt og prøv igjen."
+    "errorRateLimited": "Vi laster inn mye akkurat nå. Vent litt og prøv igjen.",
+    "noPermissionToInviteUsers": "Du har ikke tillatelse til å invitere medlemmer her."
 }

@@ -9837,5 +9837,6 @@
     "callTranscriptUnstatedTimes": "Txanda batzuek ez dute ordurik erakusten. Horiek grabatu zituen gailuak ez zuen esan zein zehatzak diren bere orduak, beraz, elkarrizketa honetan duten kokapena oker egon daiteke.",
     "callTranscriptUnreconciledClocks": "Txanda hauek erlojuak alderatu ezin izan ziren bi gailutan grabatu ziren, beraz, ez da ordurik erakusten eta agertzen diren ordena oker egon daiteke.",
     "callTranscriptOpen": "Irakurri transkripzioa",
-    "errorRateLimited": "Une honetan asko kargatzen ari gara. Mesedez, itxaron une bat eta saiatu berriro."
+    "errorRateLimited": "Une honetan asko kargatzen ari gara. Mesedez, itxaron une bat eta saiatu berriro.",
+    "noPermissionToInviteUsers": "Ez duzu baimenik kideak hona gonbidatzeko."
 }

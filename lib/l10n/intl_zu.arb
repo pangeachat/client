@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Okunye ukujika akukhombisi isikhathi. Idivayisi eyakuqopha ayishongo ukuthi izikhathi zayo ziqondile kangakanani, ngakho-ke lapho zihlala khona kule ngxoxo kungase kube nephutha.",
     "callTranscriptUnreconciledClocks": "Lokhu kujika kwarekhodwa kumadivayisi amabili amawashi awo ayengakwazi ukuqhathaniswa, ngakho-ke azikho izikhathi ezikhonjisiwe futhi ukuhleleka kwawo kungase kube nephutha.",
     "callTranscriptOpen": "Funda umbhalo",
-    "errorRateLimited": "Silayisha okuningi okwamanje. Sicela ulinde isikhashana bese uzama futhi."
+    "errorRateLimited": "Silayisha okuningi okwamanje. Sicela ulinde isikhashana bese uzama futhi.",
+    "noPermissionToInviteUsers": "Awunayo imvume yokumema amalungu lapha."
 }

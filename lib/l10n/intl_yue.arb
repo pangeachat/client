@@ -10794,5 +10794,6 @@
     "callTranscriptUnstatedTimes": "部分發言冇顯示時間。錄製佢哋嘅裝置冇說明佢嘅時間有幾準確，所以佢哋喺呢次對話中嘅位置可能係錯嘅。",
     "callTranscriptUnreconciledClocks": "呢啲發言係喺兩個無法比較時鐘嘅裝置上錄製嘅，所以冇顯示時間，而且佢哋出現嘅順序可能係錯嘅。",
     "callTranscriptOpen": "閱讀轉錄",
-    "errorRateLimited": "我哋而家載入好多嘢。請稍等片刻再試。"
+    "errorRateLimited": "我哋而家載入好多嘢。請稍等片刻再試。",
+    "noPermissionToInviteUsers": "你沒有權限邀請成員加入。"
 }

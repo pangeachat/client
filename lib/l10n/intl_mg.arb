@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Misy fehezanteny sasany tsy mampiseho fotoana. Tsy nilaza ny fitaovana nandrakitra azy ireo hoe ohatrinona ny fahamarinan’ny fotoanany, ka mety ho diso ny toerana misy azy ireo amin’ity resaka ity.",
     "callTranscriptUnreconciledClocks": "Voarakitra tamin’ny fitaovana roa tsy azo nampitahaina ny famantaranandrony ireo fehezanteny ireo, ka tsy misy fotoana aseho ary mety ho diso ny filaharany.",
     "callTranscriptOpen": "Vakio ny dika soratra",
-    "errorRateLimited": "Misy entana maro alaina izao. Andraso kely ary avereno indray."
+    "errorRateLimited": "Misy entana maro alaina izao. Andraso kely ary avereno indray.",
+    "noPermissionToInviteUsers": "Tsy manana alalana hanasa mpikambana eto ianao."
 }

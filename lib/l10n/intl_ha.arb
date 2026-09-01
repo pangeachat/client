@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Wasu juyawar ba su nuna lokaci ba. Na'urar da ta yi rikodin su ba ta faɗi yadda lokutanta suke daidai ba, don haka inda suke zaune a cikin wannan tattaunawar yana iya zama kuskure.",
     "callTranscriptUnreconciledClocks": "An yi rikodin waɗannan juyawar a kan na'urori biyu waɗanda ba za a iya kwatanta agogon su ba, don haka ba a nuna lokaci ba kuma tsarin da suka bayyana a ciki yana iya zama kuskure.",
     "callTranscriptOpen": "Karanta rubutun",
-    "errorRateLimited": "Muna ɗora abubuwa da yawa a yanzu. Don Allah a jira kaɗan sannan a sake gwadawa."
+    "errorRateLimited": "Muna ɗora abubuwa da yawa a yanzu. Don Allah a jira kaɗan sannan a sake gwadawa.",
+    "noPermissionToInviteUsers": "Ba ka da izinin gayyatar membobi a nan."
 }

@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "O nisi taimi e leai se taimi e faʻaalia. O le masini na puʻeina ai e leʻi taʻu mai le saʻo o ona taimi, o lea e mafai ona sese le nofoaga o loʻo i ai i lenei talanoaga.",
     "callTranscriptUnreconciledClocks": "O nei taimi na puʻeina i masini e lua e le mafai ona faʻatusatusa a latou uati, o lea e leai ni taimi e faʻaalia ma e mafai ona sese le faʻasologa o loʻo faʻaalia ai.",
     "callTranscriptOpen": "Faitau le tusitusiga",
-    "errorRateLimited": "O lo'o matou utaina le tele o mea i le taimi nei. Fa'amolemole fa'atali mo sina taimi ona toe taumafai lea."
+    "errorRateLimited": "O lo'o matou utaina le tele o mea i le taimi nei. Fa'amolemole fa'atali mo sina taimi ona toe taumafai lea.",
+    "noPermissionToInviteUsers": "E leai sau faatagaga e valaaulia ai tagata iinei."
 }

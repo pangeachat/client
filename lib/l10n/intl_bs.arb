@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Neki redovi ne prikazuju vrijeme. Uređaj koji ih je snimio nije naveo koliko su tačna njegova vremena, tako da njihov položaj u ovom razgovoru može biti pogrešan.",
     "callTranscriptUnreconciledClocks": "Ovi redovi su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuju vremena i redoslijed njihovog pojavljivanja može biti pogrešan.",
     "callTranscriptOpen": "Pročitaj transkript",
-    "errorRateLimited": "Trenutno učitavamo mnogo toga. Sačekajte trenutak i pokušajte ponovo."
+    "errorRateLimited": "Trenutno učitavamo mnogo toga. Sačekajte trenutak i pokušajte ponovo.",
+    "noPermissionToInviteUsers": "Nemate dozvolu za pozivanje članova ovdje."
 }

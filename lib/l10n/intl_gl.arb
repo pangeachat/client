@@ -9837,5 +9837,6 @@
     "callTranscriptUnstatedTimes": "Algunhas intervencións non mostran a hora. O dispositivo que as gravou non indicou a exactitude das súas horas, polo que a súa posición nesta conversa pode ser incorrecta.",
     "callTranscriptUnreconciledClocks": "Estas intervencións foron gravadas en dous dispositivos cuxos reloxos non se puideron comparar, polo que non se mostran as horas e a orde na que aparecen pode ser incorrecta.",
     "callTranscriptOpen": "Ler a transcrición",
-    "errorRateLimited": "Estamos cargando moito agora mesmo. Agarda un momento e téntao de novo."
+    "errorRateLimited": "Estamos cargando moito agora mesmo. Agarda un momento e téntao de novo.",
+    "noPermissionToInviteUsers": "Non tes permiso para convidar membros aquí."
 }

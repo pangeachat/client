@@ -5347,5 +5347,7 @@
             }
         }
     },
-    "resetLanguageLevel": "Reset language level"
+    "resetLanguageLevel": "Reset language level",
+    "noPermissionToInviteUsers": "You don't have permission to invite members here.",
+    "@noPermissionToInviteUsers": {}
 }

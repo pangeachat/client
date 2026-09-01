@@ -10355,5 +10355,6 @@
     "callTranscriptUnstatedTimes": "Vissa inlägg visar ingen tid. Enheten som spelade in dem angav inte hur exakta dess tider är, så var de befinner sig i denna konversation kan vara fel.",
     "callTranscriptUnreconciledClocks": "Dessa inlägg spelades in på två enheter vars klockor inte kunde jämföras, så inga tider visas och ordningen de visas i kan vara fel.",
     "callTranscriptOpen": "Läs transkriptionen",
-    "errorRateLimited": "Vi laddar mycket just nu. Vänta ett ögonblick och försök igen."
+    "errorRateLimited": "Vi laddar mycket just nu. Vänta ett ögonblick och försök igen.",
+    "noPermissionToInviteUsers": "Du har inte behörighet att bjuda in medlemmar här."
 }

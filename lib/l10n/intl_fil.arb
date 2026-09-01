@@ -10697,5 +10697,6 @@
     "callTranscriptUnstatedTimes": "Ang ilang pagliko ay walang ipinapakitang oras. Ang device na nag-record sa mga ito ay hindi nagsabi kung gaano eksakto ang mga oras nito, kaya maaaring mali ang pagkakasunod-sunod ng mga ito sa usapang ito.",
     "callTranscriptUnreconciledClocks": "Ang mga paglikong ito ay na-record sa dalawang device na hindi maaaring paghambingin ang mga orasan, kaya walang ipinapakitang oras at maaaring mali ang pagkakasunod-sunod ng mga ito.",
     "callTranscriptOpen": "Basahin ang transcript",
-    "errorRateLimited": "Marami kaming nilo-load ngayon. Mangyaring maghintay sandali at subukang muli."
+    "errorRateLimited": "Marami kaming nilo-load ngayon. Mangyaring maghintay sandali at subukang muli.",
+    "noPermissionToInviteUsers": "Wala kang pahintulot na mag-imbita ng mga miyembro dito."
 }

@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Sɔm tɔn dɛn nɔ de sho tɛm. Di divays we rikɔd dɛn nɔ bin tɛl aw i gɛt di rait tɛm, so usay dɛn de insay dis kɔnvɛseshɔn kin rɔng.",
     "callTranscriptUnreconciledClocks": "Dɛn rikɔd dɛn tɔn dɛn ya na tu divays dɛn we dɛn klɔk dɛn nɔ bin ebul fɔ kɔmpea, so nɔ tɛm nɔ de sho ɛn di ɔda we dɛn de apia kin rɔng.",
     "callTranscriptOpen": "Rid di transkrip",
-    "errorRateLimited": "Wi de lod plenti naw. Duya wet smɔl ɛn tray bak."
+    "errorRateLimited": "Wi de lod plenti naw. Duya wet smɔl ɛn tray bak.",
+    "noPermissionToInviteUsers": "Yu nɔ gɛt pɔmishɔn fɔ invayt pipul dɛn ya."
 }

@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Hadallada qaarkood ma muujiyaan wakhti. Qalabkii duubay ma sheegin sida saxda ah ee wakhtiyadiisu yihiin, sidaa darteed meesha ay ku jiraan wadahadalkan ayaa laga yaabaa inay khalad tahay.",
     "callTranscriptUnreconciledClocks": "Hadalladan waxa lagu duubay laba qalab oo saacadahooda aan la isbarbar dhigi karin, sidaa darteed ma jiraan wakhtiyo la tusay, waxaana laga yaabaa in amarka ay ku soo muuqdaan uu khalad yahay.",
     "callTranscriptOpen": "Akhri qoraalka",
-    "errorRateLimited": "Waxaan hadda soo shubaynaa wax badan. Fadlan sug in yar oo isku day mar kale."
+    "errorRateLimited": "Waxaan hadda soo shubaynaa wax badan. Fadlan sug in yar oo isku day mar kale.",
+    "noPermissionToInviteUsers": "Ma haysatid ogolaansho aad xubno ku casuunto halkan."
 }

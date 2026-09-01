@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Diẹ ninu awọn aami ko fihan akoko. Ẹrọ ti o gba wọn silẹ ko sọ bi akoko rẹ ṣe peye to, nitorinaa ipo wọn ninu ibaraẹnisọrọ yii le jẹ aṣiṣe.",
     "callTranscriptUnreconciledClocks": "Awọn aami wọnyi ni a gba silẹ lori awọn ẹrọ meji ti a ko le fi awọn aago wọn wé, nitorinaa ko si akoko ti a fihan ati pe aṣẹ ti wọn farahan ninu le jẹ aṣiṣe.",
     "callTranscriptOpen": "Ka ọrọ ipe naa",
-    "errorRateLimited": "A ń gbé ọ̀pọ̀lọpọ̀ nǹkan wọlé lọ́wọ́lọ́wọ́. Jọ̀wọ́ dúró dé ìgbà díẹ̀ kí ó sì tún gbìyànjú."
+    "errorRateLimited": "A ń gbé ọ̀pọ̀lọpọ̀ nǹkan wọlé lọ́wọ́lọ́wọ́. Jọ̀wọ́ dúró dé ìgbà díẹ̀ kí ó sì tún gbìyànjú.",
+    "noPermissionToInviteUsers": "O ko ni igbanilaaye lati pe awon omo egbe si ibi."
 }

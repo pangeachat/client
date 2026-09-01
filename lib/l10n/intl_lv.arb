@@ -9837,5 +9837,6 @@
     "callTranscriptUnstatedTimes": "Dažos pagriezienos nav norādīts laiks. Ierīce, kas tos ierakstīja, nenorādīja, cik precīzi ir tās laiki, tāpēc to atrašanās vieta šajā sarunā var būt nepareiza.",
     "callTranscriptUnreconciledClocks": "Šie pagriezieni tika ierakstīti divās ierīcēs, kuru pulksteņus nevarēja salīdzināt, tāpēc laiki netiek rādīti un to parādīšanās secība var būt nepareiza.",
     "callTranscriptOpen": "Lasīt transkriptu",
-    "errorRateLimited": "Pašlaik notiek liela slodze. Lūdzu, uzgaidiet un mēģiniet vēlreiz."
+    "errorRateLimited": "Pašlaik notiek liela slodze. Lūdzu, uzgaidiet un mēģiniet vēlreiz.",
+    "noPermissionToInviteUsers": "Jums nav atļaujas uzaicināt dalībniekus šeit."
 }

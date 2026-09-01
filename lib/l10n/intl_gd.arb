@@ -2241,5 +2241,6 @@
     "callTranscriptUnstatedTimes": "Chan eil ùine air a shealltainn air cuid de thionndaidhean. Cha tuirt an inneal a chlàraich iad dè cho mionaideach 's a tha na h-amannan aige, agus mar sin dh'fhaodadh far a bheil iad sa chòmhradh seo a bhith ceàrr.",
     "callTranscriptUnreconciledClocks": "Chaidh na tionndaidhean sin a chlàradh air dà inneal nach b' urrainn na clocaichean aca a choimeas, agus mar sin chan eil amannan air an sealltainn agus dh'fhaodadh an òrdugh anns a bheil iad a' nochdadh a bhith ceàrr.",
     "callTranscriptOpen": "Leugh an tar-sgrìobhadh",
-    "errorRateLimited": "Tha sinn a’ luchdachadh mòran an-dràsta. Fuirich mionaid agus feuch a-rithist, mas e do thoil e."
+    "errorRateLimited": "Tha sinn a’ luchdachadh mòran an-dràsta. Fuirich mionaid agus feuch a-rithist, mas e do thoil e.",
+    "noPermissionToInviteUsers": "Chan eil cead agad buill a thoirt a-steach an seo."
 }
