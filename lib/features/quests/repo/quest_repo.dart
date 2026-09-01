@@ -8,6 +8,7 @@ import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
@@ -382,6 +383,12 @@ class QuestRepo {
   static Future<Result<List<String>>> activityLearningObjectiveRefs(
     String activityId,
   ) async {
+    // The shared negative cache: the backend already confirmed this id gone
+    // (this session or a prior one), so re-asking can only produce the same
+    // 404 this method maps to "no refs" below (CLIENT-EB0, #8691).
+    if (await ActivityPlanRepo.instance.isConfirmedRemoved(activityId)) {
+      return Result.value(const []);
+    }
     try {
       final response = await Requests(
         accessToken: MatrixState.pangeaController.userController.accessToken,
