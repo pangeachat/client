@@ -76,9 +76,10 @@ class CallMedia {
     // other path.
     //
     // [anchorClocksTo] rather than a closure that stores the reading: it reads
-    // the device clock ITSELF, so the two halves of the anchor are taken in one
-    // place at one moment and there is no window in which a caller could pair
-    // the SFU's instant with some later reading of ours.
+    // the device clock ITSELF, so no window is opened HERE between being told
+    // about the join and pairing the two halves. That is all this line can
+    // claim. The delay before it -- livekit_client's async delivery of the
+    // event -- is not ours to close, and is described on [anchorClocksTo].
     _stopJoinStampWatch = (watchJoinStamp ?? watchSfuJoinStamp)(
       this.room,
       anchorClocksTo,
@@ -356,10 +357,32 @@ class CallMedia {
   ///
   /// ONE OBSERVATION OR NONE, which is the rule this method exists to keep.
   /// An anchor is a PAIR and only its DIFFERENCE means anything, so the two
-  /// halves have to describe the same instant. Here they do by construction:
-  /// [stamps] arrives as the join response is parsed off the socket, and the
-  /// device clock is read on the next line. What separates them is one network
-  /// leg.
+  /// halves have to describe the same instant.
+  ///
+  /// WHAT IS ACTUALLY GUARANTEED IS NARROWER THAN THAT, and the difference is
+  /// worth stating because it is the remaining error in the whole correction.
+  /// The device clock is read the moment this APP IS TOLD about the join
+  /// response, not the moment the frame arrived. livekit_client delivers
+  /// `SignalJoinResponseEvent` over an async broadcast stream
+  /// (`StreamController.broadcast(sync: false)`), so this runs in a later
+  /// event-loop turn than the socket read. Ordinarily that is the very next
+  /// turn and the gap does not show: a probe against a local SFU measured 7ms
+  /// end to end, server stamp to device reading. But NOTHING BOUNDS IT. An
+  /// isolate stalled by a long frame, a GC pause, or a suspended app delivers
+  /// the same event late, and every millisecond of that lag is added to the
+  /// offset as though it were clock skew — a five-second stall records a
+  /// five-second disagreement between two clocks that agree perfectly.
+  ///
+  /// Not detectable from in here, and the reason is the same one that makes the
+  /// anchor necessary: `deviceMs - sfuMs` is the skew and the lag added
+  /// together, and one observation cannot separate them. Catching it would take
+  /// an INDEPENDENT measurement — the cheapest being an event-loop lag probe, a
+  /// periodic timer compared against its own nominal interval, running for the
+  /// life of the call — plus a lateness threshold nobody here has data to set.
+  /// It would buy refusing a contaminated anchor; it would cost a timer per
+  /// call and false refusals on a device that merely paused at the wrong
+  /// moment, each one costing the correction. Left unbuilt rather than built on
+  /// a guess.
   ///
   /// There is deliberately NO other way in. An earlier version fell back to
   /// pairing the participant's stamp with this device's clock read after

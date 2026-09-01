@@ -145,10 +145,18 @@ bool suppressionExplainsEmptiness(
 /// only sent it since v1.8.4, and either half of a call may have been written
 /// against an older one.
 ///
-/// So: sub-second placement on a network worth the name, a second when one side
-/// ran an older SFU, and in both cases the minutes of raw clock skew are gone.
-/// Two turns spoken within one device's latency of each other are not ordered
-/// by this and were never going to be.
+/// So: on a network worth the name the OFFSET is sub-second, a second when one
+/// side ran an older SFU, and in both cases the minutes of raw clock skew are
+/// gone. That is a claim about the offset, not about where a turn lands, and
+/// two further things sit between the two. The offset is measured AT JOIN,
+/// while a half's positions are stamped from a base the capture service reads
+/// at FIRST AUDIO; both come off the same device clock, so the correction
+/// carries across -- unless that clock is STEPPED in between, which nothing
+/// here would notice and nothing here vouches for. And the reading is only as
+/// contemporaneous as livekit_client's delivery of the join response, which is
+/// immediate in the ordinary case and bounded by nothing in the pathological
+/// one (see `CallMedia.anchorClocksTo`). Two turns spoken within one device's
+/// latency of each other are not ordered by this and were never going to be.
 ///
 /// AND WHERE THERE IS NO OBSERVATION THERE IS NO ANCHOR. `CallMedia` builds one
 /// only from a join response it actually saw; it will not assemble a pair out
@@ -156,8 +164,15 @@ bool suppressionExplainsEmptiness(
 /// two different moments is not a worse measurement of the clocks, it is a
 /// measurement of something else -- of how long that device's connect took --
 /// and it arrives looking exactly as confident as a real one. Absent is the
-/// honest answer, and it is cheap: a half with no anchor is shown in full on
-/// its own device's clock, and only the ORDERING between halves is declined.
+/// honest answer. What it costs is worth stating exactly, because it is NOT
+/// that the transcript declines to interleave. It still interleaves:
+/// [clockShiftFor] is zero for every half when the clocks cannot be reconciled,
+/// so the halves are merged on RAW device wall clocks that may disagree by
+/// minutes, and a reply CAN still render above the question it answers. What is
+/// withheld is the TIMES -- see [turnsShareOneClock] -- so at least no reader is
+/// shown a printed clock that makes a wrong order look measured. The ordering
+/// risk is real and is not fixed by any of this; suppressing the times is the
+/// part this layer can honestly do.
 class ClockAnchor {
   /// The SFU's clock at the moment this device joined the call.
   final int sfuMs;

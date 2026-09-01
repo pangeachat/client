@@ -574,18 +574,33 @@ void main() {
       final room = Room();
       final before = joinStampWatchCount(room);
 
-      final media = CallMedia(room: room);
+      CallMedia(room: room);
       expect(
         joinStampWatchCount(room) - before,
         1,
         reason: 'constructing the media must attach the join-stamp watch',
       );
-
-      // And it is given back, so a call that ends does not leave one behind.
-      expect(media.dispose(), completes);
     });
 
-    group('the pair read out of the join response', () {
+    test('the watch is given back when the call is disposed', () async {
+      // The claim this replaces was `expect(media.dispose(), completes)`, which
+      // proved only that teardown did not throw -- it never checked that the
+      // subscription was released. Asserted through the injected watcher
+      // because that is the only way to see the canceller itself run: a real
+      // room disposes its own emitter, which would clear the listener whether
+      // or not this object gave it back.
+      var cancelled = false;
+      final media = CallMedia(
+        watchJoinStamp: (room, onStamp) =>
+            () async => cancelled = true,
+      );
+
+      expect(cancelled, isFalse);
+      await media.dispose();
+      expect(cancelled, isTrue);
+    });
+
+    group('what the anchor makes of a pair of stamps', () {
       test('is what the offset is measured against when it is sent', () {
         // 29563, not 30000. The 437ms is the whole of what the deep import
         // buys, and reading it here is the only place it can be spent.
