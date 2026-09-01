@@ -135,6 +135,15 @@ class ActivityAutoSaveService {
   /// only ever raises the number, so a run that counted an incomplete set is
   /// ignored rather than believed. See profile.instructions.md.
   void _publishStarTotal() {
+    // `initState` runs `initMatrix()` — which starts this service — BEFORE it
+    // assigns `MatrixState.pangeaController`, and a restored, already-synced
+    // session reaches [start]'s sweep without ever awaiting, so the first
+    // publish can land while that `late` field is still unset and reading it
+    // throws (#8712). Skipping is free: the next sweep republishes, and the
+    // total only ever rises, so a skipped run costs nothing a later one does
+    // not correct.
+    if (!MatrixState.isPangeaControllerInitialized) return;
+
     final userController = MatrixState.pangeaController.userController;
 
     // A background account publishes on its next sweep after it is switched to
