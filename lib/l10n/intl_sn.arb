@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-01 12:28:02.708256",
+    "@@last_modified": "2026-09-01 14:46:21.084634",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Zvinyorwa izvi zvakanyorwa pazvishandiso zviviri zvine mawachi asina kukwanisa kuenzaniswa, saka hapana nguva dzinoratidzwa uye kurongeka kwazvo kunogona kunge kwakakanganisika.",
     "callTranscriptOpen": "Verenga zvinyorwa",
     "errorRateLimited": "Tiri kurodha zvakawanda izvozvi. Ndapota mirira kwekanguva woedza zvakare.",
-    "noPermissionToInviteUsers": "Hauna mvumo yekukoka nhengo pano."
+    "noPermissionToInviteUsers": "Hauna mvumo yekukoka nhengo pano.",
+    "mapPinsKeyboardHint": "Shandisa miseve kufamba pakati pezviitiko pamepu, wobva wadzvanya Enter kuti uvhure chimwe."
 }

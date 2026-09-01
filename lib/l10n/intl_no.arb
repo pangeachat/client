@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-01 12:28:01.380005",
+    "@@last_modified": "2026-09-01 14:46:19.581993",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Disse replikkene ble tatt opp på to enheter hvis klokker ikke kunne sammenlignes, så ingen tider vises og rekkefølgen de vises i kan være feil.",
     "callTranscriptOpen": "Les utskriften",
     "errorRateLimited": "Vi laster inn mye akkurat nå. Vent litt og prøv igjen.",
-    "noPermissionToInviteUsers": "Du har ikke tillatelse til å invitere medlemmer her."
+    "noPermissionToInviteUsers": "Du har ikke tillatelse til å invitere medlemmer her.",
+    "mapPinsKeyboardHint": "Bruk piltastene til å flytte mellom aktiviteter på kartet, og trykk Enter for å åpne en."
 }

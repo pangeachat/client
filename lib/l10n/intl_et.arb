@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-01 12:27:57.777183",
+    "@@last_modified": "2026-09-01 14:46:15.889791",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9835,5 +9835,6 @@
     "callTranscriptUnreconciledClocks": "Need pöörded salvestati kahel seadmel, mille kellasid ei saanud võrrelda, seega aegu ei kuvata ja nende ilmumise järjekord võib olla vale.",
     "callTranscriptOpen": "Loe transkriptsiooni",
     "errorRateLimited": "Meil on praegu palju koormust. Palun oota hetk ja proovi uuesti.",
-    "noPermissionToInviteUsers": "Sul pole siia liikmete kutsumiseks luba."
+    "noPermissionToInviteUsers": "Sul pole siia liikmete kutsumiseks luba.",
+    "mapPinsKeyboardHint": "Kasutage nooleklahve kaardil tegevuste vahel liikumiseks ja vajutage sisestusklahvi, et avada üks."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:28:04.208736",
+    "@@last_modified": "2026-09-01 14:46:22.697934",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9944,5 +9944,6 @@
     "callTranscriptUnreconciledClocks": "這些發言是在兩個時鐘無法比較的設備上錄製的，因此沒有顯示時間，並且它們出現的順序可能不正確。",
     "callTranscriptOpen": "閱讀通話記錄",
     "errorRateLimited": "我們正在載入大量內容。請稍候片刻再試一次。",
-    "noPermissionToInviteUsers": "您沒有權限邀請成員加入此處。"
+    "noPermissionToInviteUsers": "您沒有權限邀請成員加入此處。",
+    "mapPinsKeyboardHint": "使用方向鍵在地圖上的活動之間移動，然後按 Enter 鍵開啟活動。"
 }

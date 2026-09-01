@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-01 12:27:57.464907",
+    "@@last_modified": "2026-09-01 14:46:16.067096",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9838,5 +9838,6 @@
     "callTranscriptUnreconciledClocks": "Txanda hauek erlojuak alderatu ezin izan ziren bi gailutan grabatu ziren, beraz, ez da ordurik erakusten eta agertzen diren ordena oker egon daiteke.",
     "callTranscriptOpen": "Irakurri transkripzioa",
     "errorRateLimited": "Une honetan asko kargatzen ari gara. Mesedez, itxaron une bat eta saiatu berriro.",
-    "noPermissionToInviteUsers": "Ez duzu baimenik kideak hona gonbidatzeko."
+    "noPermissionToInviteUsers": "Ez duzu baimenik kideak hona gonbidatzeko.",
+    "mapPinsKeyboardHint": "Erabili gezi-teklak mapako jardueren artean mugitzeko, eta sakatu Sartu bat irekitzeko."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-01 12:28:03.103453",
+    "@@last_modified": "2026-09-01 14:46:21.313456",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Dinako tsena di ile tsa rekotwa ka disebediswa tse pedi tseo diwache tsa tsona di sa kang tsa bapisoa, kahoo ha ho dinako tse bontshwang mme tatellano eo di hlahang ka yona e ka nna ya fosa.",
     "callTranscriptOpen": "Bala puisano e ngotsweng",
     "errorRateLimited": "Re ntse re laolla haholo hona joale. Ka kopo, ema hanyane ebe o leka hape.",
-    "noPermissionToInviteUsers": "Ha o na tumello ya ho mema ditho mona."
+    "noPermissionToInviteUsers": "Ha o na tumello ya ho mema ditho mona.",
+    "mapPinsKeyboardHint": "Sebelisa metsu ho tsamaea lipakeng tsa mesebetsi 'mapeng, 'me u tobetse Enter ho bula o mong."
 }

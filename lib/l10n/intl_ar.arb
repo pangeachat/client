@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-01 12:27:56.014241",
+    "@@last_modified": "2026-09-01 14:46:14.695306",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10144,5 +10144,6 @@
     "callTranscriptUnreconciledClocks": "تم تسجيل هذه العبارات على جهازين لا يمكن مقارنة ساعتيهما، لذلك لا تظهر أي أوقات وقد يكون ترتيب ظهورها خاطئًا.",
     "callTranscriptOpen": "قراءة النسخة",
     "errorRateLimited": "نحن نحمّل الكثير حاليًا. يرجى الانتظار لحظة والمحاولة مرة أخرى.",
-    "noPermissionToInviteUsers": "ليس لديك إذن لدعوة أعضاء هنا."
+    "noPermissionToInviteUsers": "ليس لديك إذن لدعوة أعضاء هنا.",
+    "mapPinsKeyboardHint": "استخدم مفاتيح الأسهم للتنقل بين الأنشطة على الخريطة، واضغط على Enter لفتح أحدها."
 }

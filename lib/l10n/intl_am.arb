@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-01 12:27:56.202016",
+    "@@last_modified": "2026-09-01 14:46:14.729529",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "እነዚህ ተራዎች ሰዓታቸው ሊነፃፀር በማይችሉ ሁለት መሳሪያዎች ላይ ተመዝግበዋል፣ ስለዚህ ምንም ጊዜ አይታይም እና የሚታዩበት ቅደም ተከተል ስህተት ሊሆን ይችላል።",
     "callTranscriptOpen": "ግልባጩን ያንብቡ",
     "errorRateLimited": "በአሁኑ ጊዜ ብዙ እየጫንን ነው። እባክዎ ትንሽ ይጠብቁ እና እንደገና ይሞክሩ።",
-    "noPermissionToInviteUsers": "እዚህ አባላትን ለመጋበዝ ፍቃድ የለዎትም።"
+    "noPermissionToInviteUsers": "እዚህ አባላትን ለመጋበዝ ፍቃድ የለዎትም።",
+    "mapPinsKeyboardHint": "በካርታው ላይ ባሉ እንቅስቃሴዎች መካከል ለመንቀሳቀስ የቀስት ቁልፎችን ይጠቀሙ እና አንዱን ለመክፈት አስገባን ይጫኑ።"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-01 12:27:56.750857",
+    "@@last_modified": "2026-09-01 14:46:15.358240",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Kini nga mga turno narekord sa duha ka device kansang mga orasan dili matandi, mao nga walay mga oras nga gipakita ug ang han-ay sa ilang pagpakita mahimong sayop.",
     "callTranscriptOpen": "Basaha ang transcript",
     "errorRateLimited": "Daghang ginakarga karon. Palihog paghulat kadiyot ug sulayi pag-usab.",
-    "noPermissionToInviteUsers": "Wala kay pagtugot sa pag-imbitar og mga miyembro dinhi."
+    "noPermissionToInviteUsers": "Wala kay pagtugot sa pag-imbitar og mga miyembro dinhi.",
+    "mapPinsKeyboardHint": "Gamita ang arrow keys sa paglihok taliwala sa mga kalihokan sa mapa, ug pindota ang Enter aron maablihan ang usa."
 }

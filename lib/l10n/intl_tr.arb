@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-01 12:28:03.409922",
+    "@@last_modified": "2026-09-01 14:46:21.965836",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10139,5 +10139,6 @@
     "callTranscriptUnreconciledClocks": "Bu konuşmalar, saatleri karşılaştırılamayan iki cihazda kaydedildi, bu yüzden zaman gösterilmiyor ve görünme sıraları yanlış olabilir.",
     "callTranscriptOpen": "Dökümü oku",
     "errorRateLimited": "Şu anda çok fazla yükleme yapıyoruz. Lütfen bir süre bekleyip tekrar deneyin.",
-    "noPermissionToInviteUsers": "Buraya üye davet etme izniniz yok."
+    "noPermissionToInviteUsers": "Buraya üye davet etme izniniz yok.",
+    "mapPinsKeyboardHint": "Haritadaki etkinlikler arasında gezinmek için ok tuşlarını kullanın ve birini açmak için Enter tuşuna basın."
 }

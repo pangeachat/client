@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-01 12:27:59.124202",
+    "@@last_modified": "2026-09-01 14:46:17.472327",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Þessar beygjur voru teknar upp á tveimur tækjum þar sem ekki var hægt að bera saman klukkur, svo engir tímar eru sýndir og röðin sem þær birtast í gæti verið röng.",
     "callTranscriptOpen": "Lesa umskriftina",
     "errorRateLimited": "Við erum að hlaða mikið núna. Vinsamlegast bíddu smá stund og reyndu aftur.",
-    "noPermissionToInviteUsers": "Þú hefur ekki leyfi til að bjóða meðlimum hingað."
+    "noPermissionToInviteUsers": "Þú hefur ekki leyfi til að bjóða meðlimum hingað.",
+    "mapPinsKeyboardHint": "Notaðu örvatakkana til að færa þig á milli verkefna á kortinu og ýttu á Enter til að opna eitt."
 }

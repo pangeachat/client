@@ -4987,6 +4987,8 @@
     "filteredActivitiesLabel": "Filtered activity list",
     "mapZoomLabel": "Map zoom controls",
     "activityMapLabel": "Activity map",
+    "mapPinsKeyboardHint": "Use the arrow keys to move between activities on the map, and press Enter to open one.",
+    "@mapPinsKeyboardHint": {},
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Greek",

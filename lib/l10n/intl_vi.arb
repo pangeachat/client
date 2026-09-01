@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:28:03.612251",
+    "@@last_modified": "2026-09-01 14:46:22.018366",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7130,5 +7130,6 @@
     "callTranscriptUnreconciledClocks": "Những lượt này được ghi lại trên hai thiết bị mà đồng hồ của chúng không thể so sánh được, vì vậy không có thời gian nào được hiển thị và thứ tự chúng xuất hiện có thể sai.",
     "callTranscriptOpen": "Đọc bản ghi",
     "errorRateLimited": "Chúng tôi đang tải rất nhiều dữ liệu. Vui lòng đợi một lát và thử lại.",
-    "noPermissionToInviteUsers": "Bạn không có quyền mời thành viên tại đây."
+    "noPermissionToInviteUsers": "Bạn không có quyền mời thành viên tại đây.",
+    "mapPinsKeyboardHint": "Sử dụng các phím mũi tên để di chuyển giữa các hoạt động trên bản đồ và nhấn Enter để mở một hoạt động."
 }

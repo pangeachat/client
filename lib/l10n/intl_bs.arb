@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-01 12:27:56.028170",
+    "@@last_modified": "2026-09-01 14:46:14.538886",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Ovi redovi su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuju vremena i redoslijed njihovog pojavljivanja može biti pogrešan.",
     "callTranscriptOpen": "Pročitaj transkript",
     "errorRateLimited": "Trenutno učitavamo mnogo toga. Sačekajte trenutak i pokušajte ponovo.",
-    "noPermissionToInviteUsers": "Nemate dozvolu za pozivanje članova ovdje."
+    "noPermissionToInviteUsers": "Nemate dozvolu za pozivanje članova ovdje.",
+    "mapPinsKeyboardHint": "Koristite tipke sa strelicama za kretanje između aktivnosti na mapi, i pritisnite Enter da otvorite jednu."
 }

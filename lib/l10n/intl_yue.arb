@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-01 12:28:04.011057",
+    "@@last_modified": "2026-09-01 14:46:22.582161",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10795,5 +10795,6 @@
     "callTranscriptUnreconciledClocks": "呢啲發言係喺兩個無法比較時鐘嘅裝置上錄製嘅，所以冇顯示時間，而且佢哋出現嘅順序可能係錯嘅。",
     "callTranscriptOpen": "閱讀轉錄",
     "errorRateLimited": "我哋而家載入好多嘢。請稍等片刻再試。",
-    "noPermissionToInviteUsers": "你沒有權限邀請成員加入。"
+    "noPermissionToInviteUsers": "你沒有權限邀請成員加入。",
+    "mapPinsKeyboardHint": "使用方向鍵在地圖上的活動之間移動，然後按 Enter 鍵打開一個活動。"
 }

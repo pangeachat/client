@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-01 12:28:01.359254",
+    "@@last_modified": "2026-09-01 14:46:19.657714",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Dawn id-dawriet ġew irreġistrati fuq żewġ apparati li l-arloġġi tagħhom ma setgħux jitqabblu, għalhekk ma jintwerew l-ebda ħinijiet u l-ordni li jidhru fiha tista' tkun żbaljata.",
     "callTranscriptOpen": "Aqra t-traskrizzjoni",
     "errorRateLimited": "Qed nitgħabbew ħafna bħalissa. Jekk jogħġbok stenna ftit u erġa' pprova.",
-    "noPermissionToInviteUsers": "M'għandekx permess tistieden membri hawn."
+    "noPermissionToInviteUsers": "M'għandekx permess tistieden membri hawn.",
+    "mapPinsKeyboardHint": "Uża l-vleġeġ biex tiċċaqlaq bejn l-attivitajiet fuq il-mappa, u agħfas Enter biex tiftaħ waħda."
 }

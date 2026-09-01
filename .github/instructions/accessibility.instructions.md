@@ -76,7 +76,7 @@ Author these as you build.
 1. **Every control says what it does.** If it has no visible text, it needs a `tooltip:` / label. "Send message", not "tap here".
 2. **Every image is described or silenced.** A `semanticLabel:` if it carries meaning, `excludeFromSemantics: true` if it's decoration. No image is left to announce its filename.
 3. **Never rely on color alone.** Pair color with text, an icon, or a shape (pin state, grammar tags, error states).
-4. **Mouse work must be keyboard work.** Reachable with Tab, triggerable with Enter/Space, with a visible focus ring; nothing traps focus.
+4. **Mouse work must be keyboard work.** Reachable with Tab, triggerable with Enter/Space, with a visible focus ring; nothing traps focus. A surface with many canvas-drawn targets gets one Tab stop with arrow-key roving inside — the pattern is defined in the world map's keyboard-access section ([world-map.instructions.md](world-map.instructions.md)).
 5. **Visible label = accessible name.** What a sighted user reads and what a screen reader speaks should match.
 6. **Group and label inputs.** Each field has a label; errors are stated in text, not just a red border.
 7. **Announce what changes.** Loading, success, and error states reach assistive tech (live regions), not just a visual flash.

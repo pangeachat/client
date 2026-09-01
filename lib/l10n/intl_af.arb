@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-01 12:27:58.019720",
+    "@@last_modified": "2026-09-01 14:46:14.605163",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Hierdie beurte is op twee toestelle opgeneem waarvan die horlosies nie vergelyk kon word nie, so geen tye word gewys nie en die volgorde waarin dit verskyn, mag verkeerd wees.",
     "callTranscriptOpen": "Lees die transkripsie",
     "errorRateLimited": "Ons laai tans baie. Wag asseblief 'n oomblik en probeer weer.",
-    "noPermissionToInviteUsers": "Jy het nie toestemming om lede hierheen te nooi nie."
+    "noPermissionToInviteUsers": "Jy het nie toestemming om lede hierheen te nooi nie.",
+    "mapPinsKeyboardHint": "Gebruik die pyltjiesleutels om tussen aktiwiteite op die kaart te beweeg, en druk Enter om een oop te maak."
 }

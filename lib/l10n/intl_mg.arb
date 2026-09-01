@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-01 12:28:00.387257",
+    "@@last_modified": "2026-09-01 14:46:18.820221",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Voarakitra tamin’ny fitaovana roa tsy azo nampitahaina ny famantaranandrony ireo fehezanteny ireo, ka tsy misy fotoana aseho ary mety ho diso ny filaharany.",
     "callTranscriptOpen": "Vakio ny dika soratra",
     "errorRateLimited": "Misy entana maro alaina izao. Andraso kely ary avereno indray.",
-    "noPermissionToInviteUsers": "Tsy manana alalana hanasa mpikambana eto ianao."
+    "noPermissionToInviteUsers": "Tsy manana alalana hanasa mpikambana eto ianao.",
+    "mapPinsKeyboardHint": "Ampiasao ny zana-tsipìka hivezivezena eo amin'ireo asa eo amin'ny sarintany, ary tsindrio ny Enter hanokafana iray."
 }

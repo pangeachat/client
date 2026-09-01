@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-01 12:27:57.436297",
+    "@@last_modified": "2026-09-01 14:46:15.952991",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10193,5 +10193,6 @@
     "callTranscriptUnreconciledClocks": "Ces tours ont été enregistrés sur deux appareils dont les horloges n'ont pas pu être comparées, donc aucune heure n'est affichée et l'ordre dans lequel ils apparaissent peut être erroné.",
     "callTranscriptOpen": "Lire la transcription",
     "errorRateLimited": "Nous avons beaucoup de demandes en ce moment. Veuillez patienter un instant et réessayer.",
-    "noPermissionToInviteUsers": "Vous n'avez pas la permission d'inviter des membres ici."
+    "noPermissionToInviteUsers": "Vous n'avez pas la permission d'inviter des membres ici.",
+    "mapPinsKeyboardHint": "Utilisez les touches fléchées pour vous déplacer entre les activités sur la carte, et appuyez sur Entrée pour en ouvrir une."
 }

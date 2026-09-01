@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:27:58.836580",
+    "@@last_modified": "2026-09-01 14:46:17.245667",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9911,5 +9911,6 @@
     "callTranscriptUnreconciledClocks": "Giliran ini direkam pada dua perangkat yang jamnya tidak dapat dibandingkan, jadi tidak ada waktu yang ditampilkan dan urutan kemunculannya mungkin salah.",
     "callTranscriptOpen": "Baca transkrip",
     "errorRateLimited": "Kami sedang memuat banyak data sekarang. Mohon tunggu sebentar dan coba lagi.",
-    "noPermissionToInviteUsers": "Anda tidak memiliki izin untuk mengundang anggota di sini."
+    "noPermissionToInviteUsers": "Anda tidak memiliki izin untuk mengundang anggota di sini.",
+    "mapPinsKeyboardHint": "Gunakan tombol panah untuk berpindah antar aktivitas di peta, dan tekan Enter untuk membuka salah satunya."
 }

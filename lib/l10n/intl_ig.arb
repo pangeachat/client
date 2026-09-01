@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-01 12:27:59.206589",
+    "@@last_modified": "2026-09-01 14:46:17.434004",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Edekọrọ ntụgharị ndị a na ngwaọrụ abụọ nke enweghị ike iji elekere ha tụnyere, ya mere, egosighị oge ọ bụla ma usoro ha pụtara n'ime ya nwere ike ịdị njọ.",
     "callTranscriptOpen": "Gụọ adekọ ahụ",
     "errorRateLimited": "Anyị na-ebu ọtụtụ ihe ugbu a. Biko chere obere oge wee nwaa ọzọ.",
-    "noPermissionToInviteUsers": "Ị nweghị ikike ịkpọ ndị otu ebe a."
+    "noPermissionToInviteUsers": "Ị nweghị ikike ịkpọ ndị otu ebe a.",
+    "mapPinsKeyboardHint": "Jiri igodo akụ gaa n'etiti ihe omume dị na maapụ, wee pịa Tinye ka imepe otu."
 }

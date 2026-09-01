@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-01 12:28:03.050296",
+    "@@last_modified": "2026-09-01 14:46:21.454538",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Zamu hizi zilirekodiwa kwenye vifaa viwili ambavyo saa zake hazikuweza kulinganishwa, kwa hivyo hakuna nyakati zinazoonyeshwa na mpangilio zinaoonekana unaweza kuwa si sahihi.",
     "callTranscriptOpen": "Soma nakala",
     "errorRateLimited": "Tunapakia mengi kwa sasa. Tafadhali subiri kidogo kisha ujaribu tena.",
-    "noPermissionToInviteUsers": "Huna ruhusa ya kualika wanachama hapa."
+    "noPermissionToInviteUsers": "Huna ruhusa ya kualika wanachama hapa.",
+    "mapPinsKeyboardHint": "Tumia vitufe vya vishale kusogeza kati ya shughuli kwenye ramani, na ubonyeze Enter kufungua moja."
 }

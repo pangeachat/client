@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-01 12:28:02.988878",
+    "@@last_modified": "2026-09-01 14:46:21.221655",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Hadalladan waxa lagu duubay laba qalab oo saacadahooda aan la isbarbar dhigi karin, sidaa darteed ma jiraan wakhtiyo la tusay, waxaana laga yaabaa in amarka ay ku soo muuqdaan uu khalad yahay.",
     "callTranscriptOpen": "Akhri qoraalka",
     "errorRateLimited": "Waxaan hadda soo shubaynaa wax badan. Fadlan sug in yar oo isku day mar kale.",
-    "noPermissionToInviteUsers": "Ma haysatid ogolaansho aad xubno ku casuunto halkan."
+    "noPermissionToInviteUsers": "Ma haysatid ogolaansho aad xubno ku casuunto halkan.",
+    "mapPinsKeyboardHint": "Isticmaal furayaasha fallaadha si aad ugu kala guurto hawlaha khariidada, oo taabo Gelida si aad u furto mid ka mid ah."
 }

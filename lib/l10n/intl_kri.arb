@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-01 12:27:59.720525",
+    "@@last_modified": "2026-09-01 14:46:18.481067",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Dɛn rikɔd dɛn tɔn dɛn ya na tu divays dɛn we dɛn klɔk dɛn nɔ bin ebul fɔ kɔmpea, so nɔ tɛm nɔ de sho ɛn di ɔda we dɛn de apia kin rɔng.",
     "callTranscriptOpen": "Rid di transkrip",
     "errorRateLimited": "Wi de lod plenti naw. Duya wet smɔl ɛn tray bak.",
-    "noPermissionToInviteUsers": "Yu nɔ gɛt pɔmishɔn fɔ invayt pipul dɛn ya."
+    "noPermissionToInviteUsers": "Yu nɔ gɛt pɔmishɔn fɔ invayt pipul dɛn ya.",
+    "mapPinsKeyboardHint": "Yuz di arrow keys fɔ muv bitwin aktivitis dɛn na di map, ɛn pres Enter fɔ opin wan."
 }

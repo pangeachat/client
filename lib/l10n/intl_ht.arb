@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-01 12:27:58.867212",
+    "@@last_modified": "2026-09-01 14:46:16.991423",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Vire sa yo te anrejistre sou de aparèy ki pa t' kapab konpare revèy yo, kidonk pa gen lè ki parèt epi lòd yo parèt la ka mal.",
     "callTranscriptOpen": "Li transkripsyon an",
     "errorRateLimited": "N ap chaje anpil kounye a. Tanpri tann yon ti moman epi eseye ankò.",
-    "noPermissionToInviteUsers": "Ou pa gen pèmisyon pou envite manm isit la."
+    "noPermissionToInviteUsers": "Ou pa gen pèmisyon pou envite manm isit la.",
+    "mapPinsKeyboardHint": "Sèvi ak flèch yo pou w deplase ant aktivite yo sou kat la, epi peze Antre pou w ouvri youn."
 }

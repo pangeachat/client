@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-01 12:27:56.874503",
+    "@@last_modified": "2026-09-01 14:46:15.465373",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9825,5 +9825,6 @@
     "callTranscriptUnreconciledClocks": "Diese Äußerungen wurden auf zwei Geräten aufgezeichnet, deren Uhren nicht verglichen werden konnten, daher werden keine Uhrzeiten angezeigt und die Reihenfolge, in der sie erscheinen, kann falsch sein.",
     "callTranscriptOpen": "Transkript lesen",
     "errorRateLimited": "Wir laden gerade sehr viel. Bitte warten Sie einen Moment und versuchen Sie es dann erneut.",
-    "noPermissionToInviteUsers": "Du hast keine Berechtigung, hier Mitglieder einzuladen."
+    "noPermissionToInviteUsers": "Du hast keine Berechtigung, hier Mitglieder einzuladen.",
+    "mapPinsKeyboardHint": "Verwenden Sie die Pfeiltasten, um zwischen den Aktivitäten auf der Karte zu wechseln, und drücken Sie die Eingabetaste, um eine zu öffnen."
 }

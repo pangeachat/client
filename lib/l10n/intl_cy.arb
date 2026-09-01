@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-01 12:27:56.910576",
+    "@@last_modified": "2026-09-01 14:46:15.336661",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2242,5 +2242,6 @@
     "callTranscriptUnreconciledClocks": "Recordiwyd y troeon hyn ar ddwy ddyfais na ellid cymharu eu clociau, felly ni ddangosir unrhyw amserau ac efallai bod y drefn y maent yn ymddangos ynddi yn anghywir.",
     "callTranscriptOpen": "Darllenwch y trawsgrifiad",
     "errorRateLimited": "Rydym yn llwytho llawer ar hyn o bryd. Arhoswch funud a cheisiwch eto.",
-    "noPermissionToInviteUsers": "Does gennych chi ddim caniatâd i wahodd aelodau yma."
+    "noPermissionToInviteUsers": "Does gennych chi ddim caniatâd i wahodd aelodau yma.",
+    "mapPinsKeyboardHint": "Defnyddiwch y bysellau saeth i symud rhwng gweithgareddau ar y map, a gwasgwch Enter i agor un."
 }

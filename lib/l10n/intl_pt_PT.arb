@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-01 12:28:01.919126",
+    "@@last_modified": "2026-09-01 14:46:20.332486",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10755,5 +10755,6 @@
     "callTranscriptUnreconciledClocks": "Estas intervenções foram gravadas em dois dispositivos cujos relógios não puderam ser comparados, por isso não são mostradas horas e a ordem em que aparecem pode estar errada.",
     "callTranscriptOpen": "Ler a transcrição",
     "errorRateLimited": "Estamos a carregar muito neste momento. Por favor, aguarde um momento e tente novamente.",
-    "noPermissionToInviteUsers": "Não tem permissão para convidar membros aqui."
+    "noPermissionToInviteUsers": "Não tem permissão para convidar membros aqui.",
+    "mapPinsKeyboardHint": "Use as teclas de seta para se mover entre as atividades no mapa e prima Enter para abrir uma."
 }
