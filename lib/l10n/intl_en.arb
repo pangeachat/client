@@ -5281,5 +5281,14 @@
         }
     },
     "resetTargetLanguage": "Reset target language",
-    "resetBaseLanguage": "Reset base language"
+    "resetBaseLanguage": "Reset base language",
+    "selectedLanguageLevel": "Selected {level} as language level",
+    "@selectedLanguageLevel": {
+        "placeholders": {
+            "level": {
+                "type": "String"
+            }
+        }
+    },
+    "resetLanguageLevel": "Reset language level"
 }

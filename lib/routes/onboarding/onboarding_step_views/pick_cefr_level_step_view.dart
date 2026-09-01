@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
@@ -54,6 +55,15 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
   void _setLevel(LanguageLevelTypeEnum? level) {
     _step.selectCefrLevel(level);
     _selectedLevel.value = level;
+
+    final l10n = L10n.of(context);
+    SemanticsService.sendAnnouncement(
+      View.of(context),
+      level != null
+          ? l10n.selectedLanguageLevel(level.title(context))
+          : l10n.resetLanguageLevel,
+      Directionality.of(context),
+    );
   }
 
   @override
@@ -114,40 +124,46 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
                             opacity: selectedLevel != null && !selected
                                 ? 0.5
                                 : 1.0,
-                            child: ElevatedButton(
-                              onPressed: () =>
-                                  _setLevel(selected ? null : level),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: selected
-                                    ? theme.colorScheme.primaryContainer
-                                    : theme.colorScheme.surfaceContainer,
-                                foregroundColor: selected
-                                    ? theme.colorScheme.onPrimaryContainer
-                                    : theme.colorScheme.onSurface,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                              ),
-                              child: Column(
-                                spacing: 8.0,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
+                            child: MergeSemantics(
+                              child: Semantics(
+                                selected: selected,
+                                child: ElevatedButton(
+                                  onPressed: () =>
+                                      _setLevel(selected ? null : level),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: selected
+                                        ? theme.colorScheme.primaryContainer
+                                        : theme.colorScheme.surfaceContainer,
+                                    foregroundColor: selected
+                                        ? theme.colorScheme.onPrimaryContainer
+                                        : theme.colorScheme.onSurface,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    spacing: 8.0,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            level.title(context),
+                                            style: theme.textTheme.titleMedium
+                                                ?.copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
                                       Text(
-                                        level.title(context),
-                                        style: theme.textTheme.titleMedium
-                                            ?.copyWith(
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                        level.description(context),
+                                        style: theme.textTheme.labelLarge,
                                       ),
                                     ],
                                   ),
-                                  Text(
-                                    level.description(context),
-                                    style: theme.textTheme.labelLarge,
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
                           );
