@@ -19,8 +19,11 @@ class AutocorrectSpan extends WidgetSpan {
            link: MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link,
            child: Builder(
              builder: (context) {
+               // A WidgetSpan child is already scaled by the placeholder it
+               // sits in; scaling its text here too squares the device text
+               // size, so corrected text grows past the rest of the input
+               // (#8704).
                return RichText(
-                 textScaler: MediaQuery.textScalerOf(context),
                  key: MatrixState.pAnyState
                      .layerLinkAndKey(transformTargetId)
                      .key,
