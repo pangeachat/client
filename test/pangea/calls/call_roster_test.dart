@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
@@ -1024,12 +1025,24 @@ void main() {
       setUp(harness.init);
       tearDown(harness.close);
 
-      /// The breadcrumb data of the single event a failed write produces.
-      Future<Map<String, dynamic>?> dataOf(TestRoster r) async {
+      /// The single event a failed write produces.
+      Future<SentryEvent> eventFor(TestRoster r) {
         r.publishError = StateError('Signal request timed out');
-        final event = await harness.capture(() => r.announceCanCapture(false));
-        return event.breadcrumbs?.last.data;
+        return harness.capture(() => r.announceCanCapture(false));
       }
+
+      /// Its breadcrumb data.
+      Future<Map<String, dynamic>?> dataOf(TestRoster r) async =>
+          (await eventFor(r)).breadcrumbs?.last.data;
+
+      test('an error, which is the reading this failure was owed', () async {
+        // Severity is decided at the one sink from the failure itself, never by
+        // a judgment made here -- which is what this pins: no level is passed
+        // at the call site. A signal channel we control that has stopped
+        // answering is never the learner's doing, and its SAFE direction is
+        // exactly what let it look like it was working.
+        expect((await eventFor(roster)).level, SentryLevel.error);
+      });
 
       test(
         'names the token grant, so a refusal is not read as an outage',

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
@@ -1264,6 +1265,9 @@ void main() {
         );
         final data = event.breadcrumbs?.last.data;
 
+        // Severity decided at the one sink, from the failure itself. Silent
+        // data loss is not a warning, and nothing here overrides the table.
+        expect(event.level, SentryLevel.error);
         expect(data?['segments'], 1);
         expect(data?['bytes'], 'hippopotamus'.length);
         expect(data?['chunksCaptured'], 1);
