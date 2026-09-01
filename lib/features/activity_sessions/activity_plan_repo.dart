@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
+import 'package:fluffychat/pangea/common/utils/confirmed_removed_cache.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/persistent_repo_cache.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -63,22 +64,27 @@ class ActivityPlanRepo
     with ChangeNotifier {
   ActivityPlanRepo._internal()
     : super(
-        cache: PersistentRepoCache<ActivityPlanFetchResponse>(
-          'activity_plan_storage',
-        ),
+        cache: PersistentRepoCache<ActivityPlanFetchResponse>(_storageBoxName),
         responseFromJson: ActivityPlanFetchResponse.fromJson,
         cacheDuration: const Duration(hours: 1),
       );
 
+  /// A fresh instance over the same persisted storage — the next app session,
+  /// for tests. Production code uses [instance] only.
+  @visibleForTesting
+  ActivityPlanRepo.forTesting() : this._internal();
+
   static final ActivityPlanRepo _instance = ActivityPlanRepo._internal();
   static ActivityPlanRepo get instance => _instance;
+
+  static const String _storageBoxName = 'activity_plan_storage';
 
   final Map<String, ActivityPlanModel> _resolved = {};
   final Set<String> _hydrating = {};
   final Set<String> _revalidated = {};
 
-  /// Activity ids the backend confirmed removed (404) this app session, so the
-  /// repo stops re-fetching a known-missing id.
+  /// Activity ids the backend confirmed removed (404), so the repo stops
+  /// re-fetching a known-missing id.
   ///
   /// Enforced in [lookup], the shared read path — NOT only in [ensure], which
   /// is where this gate first lived. [getPlan] delegates to [lookup] and
@@ -88,7 +94,27 @@ class ActivityPlanRepo
   /// stayed open (Sentry CLIENT-DWH: 753 events / 9 users in 24h, all for a
   /// single activity id). Keyed by activity id, not by storage key: the
   /// activity is gone, so no l1 or pinned version of it can resolve either.
-  final Set<String> _confirmedRemoved = {};
+  ///
+  /// PERSISTED across sessions ([ConfirmedRemovedCache]): in-session
+  /// suppression alone left every NEW session re-fetching — and re-reporting —
+  /// every known-dead id once, which at ~20 dead ids was still ~120 Sentry
+  /// events/day across a handful of users (CLIENT-EB0, #8691). The verdicts
+  /// live beside the plan entries in the same box: plan storage keys are
+  /// `${activityId}_${l1}_${version}` (uuids in practice), so the reserved
+  /// underscored key cannot collide.
+  final ConfirmedRemovedCache _confirmedRemoved = ConfirmedRemovedCache(
+    boxName: _storageBoxName,
+    storageKey: '__confirmed_removed_ids__',
+    retention: const Duration(hours: 24),
+    now: () => ActivityPlanRepo.now(),
+  );
+
+  /// Whether the backend has confirmed [activityId] gone — this session, or a
+  /// prior one within the retention window. For callers outside this repo's
+  /// read path (`QuestRepo.activityLearningObjectiveRefs`) that would
+  /// otherwise re-fetch a known-dead id.
+  Future<bool> isConfirmedRemoved(String activityId) =>
+      _confirmedRemoved.contains(activityId);
 
   /// Earliest wall-clock time [ensure] may re-attempt a key.
   ///
@@ -175,11 +201,11 @@ class ActivityPlanRepo
   @visibleForTesting
   static DateTime Function() now = DateTime.now;
 
-  /// Drops all suppression state. Exposed for tests and for an explicit
-  /// user-initiated refresh, which must never be suppressed — which is why
-  /// [_confirmedRemoved] clears here too. It is the only way back out of the
-  /// removed gate, since nothing else can clear an id the repo refuses to
-  /// re-request.
+  /// Drops all suppression state, persisted verdicts included. Exposed for
+  /// tests and for an explicit user-initiated refresh, which must never be
+  /// suppressed — which is why [_confirmedRemoved] clears here too. Besides
+  /// the retention window lapsing, it is the only way back out of the removed
+  /// gate, since nothing else can clear an id the repo refuses to re-request.
   @visibleForTesting
   void resetBackoff() {
     _nextAttempt.clear();
@@ -294,7 +320,10 @@ class ActivityPlanRepo
     // answer the backend already gave for this id, so re-asking can only cost a
     // round trip and another 404. Checked ahead of [_request] so the gate does
     // not depend on the controller being up, mirroring [ensure]'s ordering.
-    if (_confirmedRemoved.contains(activityId)) {
+    // The persisted-verdict load is awaited here — on the one path every fetch
+    // drains into — so a verdict persisted by a PRIOR session suppresses a
+    // cold start's first reads too, not just re-reads (CLIENT-EB0).
+    if (await _confirmedRemoved.contains(activityId)) {
       return const ActivityPlanLookup(ActivityPlanLookupStatus.removed);
     }
     final request = _request(activityId, l1, version: version);
@@ -315,12 +344,12 @@ class ActivityPlanRepo
       }
       final status = classifyLookupError(error);
       if (status == ActivityPlanLookupStatus.removed) {
-        _confirmedRemoved.add(activityId);
+        _confirmedRemoved.mark(activityId);
       }
       return ActivityPlanLookup(status);
     }
 
-    _confirmedRemoved.remove(activityId);
+    _confirmedRemoved.unmark(activityId);
     final resolved = await resolveMedia(result.asValue!.value.plan);
     _resolved[request.storageKey] = resolved;
     // Cleared only on a fully-mapped success. `.plan` above is a lazy getter
@@ -356,6 +385,16 @@ class ActivityPlanRepo
       PangeaHttpException.statusCodeOf(error) == 404
       ? ActivityPlanLookupStatus.removed
       : ActivityPlanLookupStatus.failed;
+
+  /// A gone activity re-fails identically on every surface that references
+  /// it; the first event per session carries the whole signal (CLIENT-EB0).
+  /// Keyed by activity id — not storage key — matching [_confirmedRemoved]:
+  /// the activity is gone, so every l1/version variant is the same fact.
+  @override
+  String? reportOnceKey(ActivityPlanFetchRequest request, Object error) =>
+      PangeaHttpException.statusCodeOf(error) == 404
+      ? 'activity-plan-404:${request.activityId}'
+      : null;
 
   /// Synchronous lookup for `room.activityPlan`: the media-resolved plan if
   /// [getPlan] has run, else the raw (TTL-checked) cached plan, else null — in
@@ -403,11 +442,13 @@ class ActivityPlanRepo
     bool revalidate = false,
   }) {
     // A confirmed-removed id can't hydrate; re-fetching on every rebuild of
-    // the sync getter would loop 404s. [lookup] gates on the same set, so this
-    // is not what makes the suppression correct — it is what keeps a hydration
-    // that cannot succeed from spending a `_hydrating` slot and a 60s
-    // `_nextAttempt` park, and what lets the caller see `false`.
-    if (_confirmedRemoved.contains(activityId)) return false;
+    // the sync getter would loop 404s. [lookup] gates on the same cache, so
+    // this is not what makes the suppression correct — it is what keeps a
+    // hydration that cannot succeed from spending a `_hydrating` slot and a
+    // 60s `_nextAttempt` park, and what lets the caller see `false`.
+    // Synchronous, so on a cold start it cannot see not-yet-loaded persisted
+    // verdicts; [lookup] awaits the load and catches those.
+    if (_confirmedRemoved.containsSync(activityId)) return false;
     final request = _request(activityId, l1, version: version);
     // Declines WITHOUT parking the key: the controller lands within a frame or
     // two of startup, so the next rebuild must be free to fetch. Parking here
