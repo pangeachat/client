@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-01 14:46:14.867709",
+    "@@last_modified": "2026-09-01 15:39:49.334467",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Transkripti oxuyun",
     "errorRateLimited": "Hazırda çoxlu məlumat yükləyirik. Zəhmət olmasa bir az gözləyin və yenidən cəhd edin.",
     "noPermissionToInviteUsers": "Bura üzv dəvət etmək icazəniz yoxdur.",
-    "mapPinsKeyboardHint": "Xəritədəki fəaliyyətlər arasında hərəkət etmək üçün ox düymələrindən istifadə edin və birini açmaq üçün Enter düyməsini basın."
+    "mapPinsKeyboardHint": "Xəritədəki fəaliyyətlər arasında hərəkət etmək üçün ox düymələrindən istifadə edin və birini açmaq üçün Enter düyməsini basın.",
+    "selectMessageLabel": "Mesajı seçin"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-01 14:46:18.366200",
+    "@@last_modified": "2026-09-01 15:39:51.987908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Lege transcriptum",
     "errorRateLimited": "Multa nunc oneramus. Paululum exspecta et iterum conare.",
     "noPermissionToInviteUsers": "Non licet tibi sodales huc invitare.",
-    "mapPinsKeyboardHint": "Sagittis utere ad movendum inter actiones in tabula, et preme Intro ut unam aperias."
+    "mapPinsKeyboardHint": "Sagittis utere ad movendum inter actiones in tabula, et preme Intro ut unam aperias.",
+    "selectMessageLabel": "Nuntium elige"
 }

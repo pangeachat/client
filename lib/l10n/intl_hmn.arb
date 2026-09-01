@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-01 14:46:16.997506",
+    "@@last_modified": "2026-09-01 15:39:50.882198",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Nyeem cov lus sau tseg",
     "errorRateLimited": "Tam sim no peb tab tom thauj ntau yam. Thov tos ib pliag mam sim dua.",
     "noPermissionToInviteUsers": "Koj tsis muaj cai caw lwm tus tuaj koom ntawm no.",
-    "mapPinsKeyboardHint": "Siv cov yuam sij xub kom txav mus los ntawm cov haujlwm hauv daim ntawv qhia, thiab nias Enter kom qhib ib qho."
+    "mapPinsKeyboardHint": "Siv cov yuam sij xub kom txav mus los ntawm cov haujlwm hauv daim ntawv qhia, thiab nias Enter kom qhib ib qho.",
+    "selectMessageLabel": "Xaiv lus"
 }

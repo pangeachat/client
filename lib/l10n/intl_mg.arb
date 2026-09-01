@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-01 14:46:18.820221",
+    "@@last_modified": "2026-09-01 15:39:52.486419",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Vakio ny dika soratra",
     "errorRateLimited": "Misy entana maro alaina izao. Andraso kely ary avereno indray.",
     "noPermissionToInviteUsers": "Tsy manana alalana hanasa mpikambana eto ianao.",
-    "mapPinsKeyboardHint": "Ampiasao ny zana-tsipìka hivezivezena eo amin'ireo asa eo amin'ny sarintany, ary tsindrio ny Enter hanokafana iray."
+    "mapPinsKeyboardHint": "Ampiasao ny zana-tsipìka hivezivezena eo amin'ireo asa eo amin'ny sarintany, ary tsindrio ny Enter hanokafana iray.",
+    "selectMessageLabel": "Fidio hafatra"
 }

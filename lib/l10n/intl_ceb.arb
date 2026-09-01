@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-01 14:46:15.358240",
+    "@@last_modified": "2026-09-01 15:39:49.785811",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Basaha ang transcript",
     "errorRateLimited": "Daghang ginakarga karon. Palihog paghulat kadiyot ug sulayi pag-usab.",
     "noPermissionToInviteUsers": "Wala kay pagtugot sa pag-imbitar og mga miyembro dinhi.",
-    "mapPinsKeyboardHint": "Gamita ang arrow keys sa paglihok taliwala sa mga kalihokan sa mapa, ug pindota ang Enter aron maablihan ang usa."
+    "mapPinsKeyboardHint": "Gamita ang arrow keys sa paglihok taliwala sa mga kalihokan sa mapa, ug pindota ang Enter aron maablihan ang usa.",
+    "selectMessageLabel": "Pagpili og mensahe"
 }

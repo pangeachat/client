@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-01 14:46:20.087868",
+    "@@last_modified": "2026-09-01 15:39:52.975330",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9924,5 +9924,6 @@
     "callTranscriptOpen": "Przeczytaj transkrypcję",
     "errorRateLimited": "Obecnie ładujemy dużo danych. Poczekaj chwilę i spróbuj ponownie.",
     "noPermissionToInviteUsers": "Nie masz uprawnień, aby zapraszać tu członków.",
-    "mapPinsKeyboardHint": "Użyj klawiszy strzałek, aby poruszać się między aktywnościami na mapie, i naciśnij Enter, aby otworzyć wybraną."
+    "mapPinsKeyboardHint": "Użyj klawiszy strzałek, aby poruszać się między aktywnościami na mapie, i naciśnij Enter, aby otworzyć wybraną.",
+    "selectMessageLabel": "Wybierz wiadomość"
 }

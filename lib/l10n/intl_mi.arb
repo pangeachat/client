@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-01 14:46:18.904547",
+    "@@last_modified": "2026-09-01 15:39:52.478051",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Pānuitia te tuhinga",
     "errorRateLimited": "He nui ngā utanga i tēnei wā. Tēnā, tatari mai, ka ngana anō.",
     "noPermissionToInviteUsers": "Kāore ō whakaaetanga ki te tono mema ki konei.",
-    "mapPinsKeyboardHint": "Whakamahia ngā kī pere hei neke i waenga i ngā mahi i runga i te mahere, ka pēhi i te Enter hei whakatuwhera i tētahi."
+    "mapPinsKeyboardHint": "Whakamahia ngā kī pere hei neke i waenga i ngā mahi i runga i te mahere, ka pēhi i te Enter hei whakatuwhera i tētahi.",
+    "selectMessageLabel": "Tīpakohia te karere"
 }

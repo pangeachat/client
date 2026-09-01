@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-01 14:46:20.261726",
+    "@@last_modified": "2026-09-01 15:39:52.958544",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Werengani zolembedwazo",
     "errorRateLimited": "Tikukweza zambiri pakali pano. Chonde dikirani pang'ono ndikuyesanso.",
     "noPermissionToInviteUsers": "Mulibe chilolezo choitanira anthu kuno.",
-    "mapPinsKeyboardHint": "Gwiritsani ntchito mivi yoyenda pakati pa zochitika pa mapu, ndikusindikiza Enter kuti mutsegule imodzi."
+    "mapPinsKeyboardHint": "Gwiritsani ntchito mivi yoyenda pakati pa zochitika pa mapu, ndikusindikiza Enter kuti mutsegule imodzi.",
+    "selectMessageLabel": "Sankhani uthenga"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-01 14:46:19.657714",
+    "@@last_modified": "2026-09-01 15:39:52.698658",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Aqra t-traskrizzjoni",
     "errorRateLimited": "Qed nitgħabbew ħafna bħalissa. Jekk jogħġbok stenna ftit u erġa' pprova.",
     "noPermissionToInviteUsers": "M'għandekx permess tistieden membri hawn.",
-    "mapPinsKeyboardHint": "Uża l-vleġeġ biex tiċċaqlaq bejn l-attivitajiet fuq il-mappa, u agħfas Enter biex tiftaħ waħda."
+    "mapPinsKeyboardHint": "Uża l-vleġeġ biex tiċċaqlaq bejn l-attivitajiet fuq il-mappa, u agħfas Enter biex tiftaħ waħda.",
+    "selectMessageLabel": "Agħżel messaġġ"
 }

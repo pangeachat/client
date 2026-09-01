@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-01 14:46:22.931121",
+    "@@last_modified": "2026-09-01 15:39:54.838663",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Funda umbhalo",
     "errorRateLimited": "Silayisha okuningi okwamanje. Sicela ulinde isikhashana bese uzama futhi.",
     "noPermissionToInviteUsers": "Awunayo imvume yokumema amalungu lapha.",
-    "mapPinsKeyboardHint": "Sebenzisa izinkinobho zemicibisholo ukuze uhambe phakathi kwemisebenzi kumephu, bese ucindezela u-Enter ukuze uvule eyodwa."
+    "mapPinsKeyboardHint": "Sebenzisa izinkinobho zemicibisholo ukuze uhambe phakathi kwemisebenzi kumephu, bese ucindezela u-Enter ukuze uvule eyodwa.",
+    "selectMessageLabel": "Khetha umlayezo"
 }

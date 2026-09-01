@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-01 14:46:17.472327",
+    "@@last_modified": "2026-09-01 15:39:51.416936",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Lesa umskriftina",
     "errorRateLimited": "Við erum að hlaða mikið núna. Vinsamlegast bíddu smá stund og reyndu aftur.",
     "noPermissionToInviteUsers": "Þú hefur ekki leyfi til að bjóða meðlimum hingað.",
-    "mapPinsKeyboardHint": "Notaðu örvatakkana til að færa þig á milli verkefna á kortinu og ýttu á Enter til að opna eitt."
+    "mapPinsKeyboardHint": "Notaðu örvatakkana til að færa þig á milli verkefna á kortinu og ýttu á Enter til að opna eitt.",
+    "selectMessageLabel": "Velja skilaboð"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-01 14:46:16.367068",
+    "@@last_modified": "2026-09-01 15:39:50.477431",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Leugh an tar-sgrìobhadh",
     "errorRateLimited": "Tha sinn a’ luchdachadh mòran an-dràsta. Fuirich mionaid agus feuch a-rithist, mas e do thoil e.",
     "noPermissionToInviteUsers": "Chan eil cead agad buill a thoirt a-steach an seo.",
-    "mapPinsKeyboardHint": "Cleachd na saigheadan gus gluasad eadar gnìomhan air a’ mhapa, agus brùth Enter gus fear fhosgladh."
+    "mapPinsKeyboardHint": "Cleachd na saigheadan gus gluasad eadar gnìomhan air a’ mhapa, agus brùth Enter gus fear fhosgladh.",
+    "selectMessageLabel": "Tagh teachdaireachd"
 }

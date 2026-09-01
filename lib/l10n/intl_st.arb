@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-01 14:46:21.313456",
+    "@@last_modified": "2026-09-01 15:39:54.346409",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Bala puisano e ngotsweng",
     "errorRateLimited": "Re ntse re laolla haholo hona joale. Ka kopo, ema hanyane ebe o leka hape.",
     "noPermissionToInviteUsers": "Ha o na tumello ya ho mema ditho mona.",
-    "mapPinsKeyboardHint": "Sebelisa metsu ho tsamaea lipakeng tsa mesebetsi 'mapeng, 'me u tobetse Enter ho bula o mong."
+    "mapPinsKeyboardHint": "Sebelisa metsu ho tsamaea lipakeng tsa mesebetsi 'mapeng, 'me u tobetse Enter ho bula o mong.",
+    "selectMessageLabel": "Kgetha molaetsa"
 }

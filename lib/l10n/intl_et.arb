@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-01 14:46:15.889791",
+    "@@last_modified": "2026-09-01 15:39:50.063017",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9836,5 +9836,6 @@
     "callTranscriptOpen": "Loe transkriptsiooni",
     "errorRateLimited": "Meil on praegu palju koormust. Palun oota hetk ja proovi uuesti.",
     "noPermissionToInviteUsers": "Sul pole siia liikmete kutsumiseks luba.",
-    "mapPinsKeyboardHint": "Kasutage nooleklahve kaardil tegevuste vahel liikumiseks ja vajutage sisestusklahvi, et avada üks."
+    "mapPinsKeyboardHint": "Kasutage nooleklahve kaardil tegevuste vahel liikumiseks ja vajutage sisestusklahvi, et avada üks.",
+    "selectMessageLabel": "Vali sõnum"
 }

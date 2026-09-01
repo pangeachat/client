@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 14:46:21.416323",
+    "@@last_modified": "2026-09-01 15:39:53.911399",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10357,5 +10357,6 @@
     "callTranscriptOpen": "Läs transkriptionen",
     "errorRateLimited": "Vi laddar mycket just nu. Vänta ett ögonblick och försök igen.",
     "noPermissionToInviteUsers": "Du har inte behörighet att bjuda in medlemmar här.",
-    "mapPinsKeyboardHint": "Använd piltangenterna för att flytta mellan aktiviteter på kartan och tryck på Retur för att öppna en."
+    "mapPinsKeyboardHint": "Använd piltangenterna för att flytta mellan aktiviteter på kartan och tryck på Retur för att öppna en.",
+    "selectMessageLabel": "Välj meddelande"
 }

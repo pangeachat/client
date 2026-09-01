@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-01 14:46:21.221655",
+    "@@last_modified": "2026-09-01 15:39:53.949224",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Akhri qoraalka",
     "errorRateLimited": "Waxaan hadda soo shubaynaa wax badan. Fadlan sug in yar oo isku day mar kale.",
     "noPermissionToInviteUsers": "Ma haysatid ogolaansho aad xubno ku casuunto halkan.",
-    "mapPinsKeyboardHint": "Isticmaal furayaasha fallaadha si aad ugu kala guurto hawlaha khariidada, oo taabo Gelida si aad u furto mid ka mid ah."
+    "mapPinsKeyboardHint": "Isticmaal furayaasha fallaadha si aad ugu kala guurto hawlaha khariidada, oo taabo Gelida si aad u furto mid ka mid ah.",
+    "selectMessageLabel": "Dooro fariin"
 }

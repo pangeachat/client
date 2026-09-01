@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-01 14:46:16.498347",
+    "@@last_modified": "2026-09-01 15:39:50.598459",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "ટ્રાન્સક્રિપ્ટ વાંચો",
     "errorRateLimited": "અમે અત્યારે ઘણું લોડ કરી રહ્યા છીએ. કૃપા કરીને થોડીવાર રાહ જુઓ અને ફરી પ્રયાસ કરો.",
     "noPermissionToInviteUsers": "તમને અહીં સભ્યોને આમંત્રિત કરવાની પરવાનગી નથી.",
-    "mapPinsKeyboardHint": "નકશા પરની પ્રવૃત્તિઓ વચ્ચે ખસેડવા માટે તીર કીનો ઉપયોગ કરો અને તેને ખોલવા માટે Enter દબાવો."
+    "mapPinsKeyboardHint": "નકશા પરની પ્રવૃત્તિઓ વચ્ચે ખસેડવા માટે તીર કીનો ઉપયોગ કરો અને તેને ખોલવા માટે Enter દબાવો.",
+    "selectMessageLabel": "સંદેશ પસંદ કરો"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-01 14:46:21.073040",
+    "@@last_modified": "2026-09-01 15:39:53.764330",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Lexo transkriptin",
     "errorRateLimited": "Po ngarkojmë shumë tani. Ju lutemi prisni një moment dhe provoni përsëri.",
     "noPermissionToInviteUsers": "Nuk keni leje të ftoni anëtarë këtu.",
-    "mapPinsKeyboardHint": "Përdorni tastet me shigjeta për të lëvizur mes aktiviteteve në hartë dhe shtypni Enter për të hapur njërin."
+    "mapPinsKeyboardHint": "Përdorni tastet me shigjeta për të lëvizur mes aktiviteteve në hartë dhe shtypni Enter për të hapur njërin.",
+    "selectMessageLabel": "Zgjidh mesazhin"
 }

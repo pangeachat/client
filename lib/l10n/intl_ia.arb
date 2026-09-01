@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-01 14:46:17.155257",
+    "@@last_modified": "2026-09-01 15:39:51.156759",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10775,5 +10775,6 @@
     "callTranscriptOpen": "Leger le transcription",
     "errorRateLimited": "Nos carga multo nunc. Per favor, attende un momento e reproba.",
     "noPermissionToInviteUsers": "Tu non ha permission de invitar membros hic.",
-    "mapPinsKeyboardHint": "Usa le sagittas pro mover inter activitates super le mappa, e preme Enter pro aperir un."
+    "mapPinsKeyboardHint": "Usa le sagittas pro mover inter activitates super le mappa, e preme Enter pro aperir un.",
+    "selectMessageLabel": "Selige message"
 }

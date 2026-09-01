@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-01 14:46:16.232197",
+    "@@last_modified": "2026-09-01 15:39:50.707134",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Lês de útprint",
     "errorRateLimited": "Wy lade op it stuit in protte. Wachtsje asjebleft efkes en besykje it opnij.",
     "noPermissionToInviteUsers": "Jo hawwe hjir gjin tastimming om leden út te noegjen.",
-    "mapPinsKeyboardHint": "Brûk de pylkestoetsen om te bewegen tusken aktiviteiten op de kaart, en druk op Enter om ien te iepenjen."
+    "mapPinsKeyboardHint": "Brûk de pylkestoetsen om te bewegen tusken aktiviteiten op de kaart, en druk op Enter om ien te iepenjen.",
+    "selectMessageLabel": "Berjocht selektearje"
 }

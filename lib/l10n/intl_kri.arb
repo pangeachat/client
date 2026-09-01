@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-01 14:46:18.481067",
+    "@@last_modified": "2026-09-01 15:39:51.911141",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Rid di transkrip",
     "errorRateLimited": "Wi de lod plenti naw. Duya wet smɔl ɛn tray bak.",
     "noPermissionToInviteUsers": "Yu nɔ gɛt pɔmishɔn fɔ invayt pipul dɛn ya.",
-    "mapPinsKeyboardHint": "Yuz di arrow keys fɔ muv bitwin aktivitis dɛn na di map, ɛn pres Enter fɔ opin wan."
+    "mapPinsKeyboardHint": "Yuz di arrow keys fɔ muv bitwin aktivitis dɛn na di map, ɛn pres Enter fɔ opin wan.",
+    "selectMessageLabel": "Pik mɛsej"
 }

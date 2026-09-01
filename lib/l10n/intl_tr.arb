@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-01 14:46:21.965836",
+    "@@last_modified": "2026-09-01 15:39:54.336848",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10140,5 +10140,6 @@
     "callTranscriptOpen": "Dökümü oku",
     "errorRateLimited": "Şu anda çok fazla yükleme yapıyoruz. Lütfen bir süre bekleyip tekrar deneyin.",
     "noPermissionToInviteUsers": "Buraya üye davet etme izniniz yok.",
-    "mapPinsKeyboardHint": "Haritadaki etkinlikler arasında gezinmek için ok tuşlarını kullanın ve birini açmak için Enter tuşuna basın."
+    "mapPinsKeyboardHint": "Haritadaki etkinlikler arasında gezinmek için ok tuşlarını kullanın ve birini açmak için Enter tuşuna basın.",
+    "selectMessageLabel": "Mesaj seç"
 }

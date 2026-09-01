@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-01 14:46:16.166690",
+    "@@last_modified": "2026-09-01 15:39:50.241916",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10699,5 +10699,6 @@
     "callTranscriptOpen": "Basahin ang transcript",
     "errorRateLimited": "Marami kaming nilo-load ngayon. Mangyaring maghintay sandali at subukang muli.",
     "noPermissionToInviteUsers": "Wala kang pahintulot na mag-imbita ng mga miyembro dito.",
-    "mapPinsKeyboardHint": "Gamitin ang mga arrow key para lumipat sa pagitan ng mga aktibidad sa mapa, at pindutin ang Enter para buksan ang isa."
+    "mapPinsKeyboardHint": "Gamitin ang mga arrow key para lumipat sa pagitan ng mga aktibidad sa mapa, at pindutin ang Enter para buksan ang isa.",
+    "selectMessageLabel": "Pumili ng mensahe"
 }

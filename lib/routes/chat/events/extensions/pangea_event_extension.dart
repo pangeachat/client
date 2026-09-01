@@ -94,6 +94,13 @@ extension PangeaEvent on Event {
       content[MessageConstants.messageTags] ==
       MessageConstants.messageTagActivityPlan;
 
+  /// Whether `ChatController.showToolbar` would actually open reading
+  /// assistance for this event — its silent-return guard, shared so the
+  /// per-message select overlay publishes button semantics only for events
+  /// the tap can act on (#8721).
+  bool get canOpenToolbar =>
+      !redacted && text != '' && status != EventStatus.sending;
+
   bool get isVisibleLastEvent {
     if (content.tryGet(MessageConstants.transcription) != null) {
       return false;

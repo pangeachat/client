@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-01 14:46:16.067096",
+    "@@last_modified": "2026-09-01 15:39:50.274645",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9839,5 +9839,6 @@
     "callTranscriptOpen": "Irakurri transkripzioa",
     "errorRateLimited": "Une honetan asko kargatzen ari gara. Mesedez, itxaron une bat eta saiatu berriro.",
     "noPermissionToInviteUsers": "Ez duzu baimenik kideak hona gonbidatzeko.",
-    "mapPinsKeyboardHint": "Erabili gezi-teklak mapako jardueren artean mugitzeko, eta sakatu Sartu bat irekitzeko."
+    "mapPinsKeyboardHint": "Erabili gezi-teklak mapako jardueren artean mugitzeko, eta sakatu Sartu bat irekitzeko.",
+    "selectMessageLabel": "Mezua hautatu"
 }

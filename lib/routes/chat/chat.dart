@@ -91,6 +91,7 @@ import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event_cache.dart';
+import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/representation_content_model.dart';
 import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
@@ -2889,11 +2890,9 @@ class ChatController extends State<ChatPageWithRoom>
     /// client/.github/instructions/message-read-aloud.instructions.md
     bool isTutorial = false,
   }) async {
-    if (event.redacted ||
-        event.text == '' ||
-        event.status == EventStatus.sending) {
-      return;
-    }
+    // Shared with the message select overlay's semantics gate (#8721): a
+    // message this returns on must announce no select button.
+    if (!event.canOpenToolbar) return;
 
     // Close emoji picker, if open
     if (showEmojiPicker) {

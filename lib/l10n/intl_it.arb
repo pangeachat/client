@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 14:46:17.575787",
+    "@@last_modified": "2026-09-01 15:39:51.843420",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9912,5 +9912,6 @@
     "callTranscriptOpen": "Leggi la trascrizione",
     "errorRateLimited": "Stiamo caricando molti dati in questo momento. Attendi un momento e riprova.",
     "noPermissionToInviteUsers": "Non hai il permesso di invitare membri qui.",
-    "mapPinsKeyboardHint": "Usa i tasti freccia per spostarti tra le attività sulla mappa e premi Invio per aprirne una."
+    "mapPinsKeyboardHint": "Usa i tasti freccia per spostarti tra le attività sulla mappa e premi Invio per aprirne una.",
+    "selectMessageLabel": "Seleziona messaggio"
 }

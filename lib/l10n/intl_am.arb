@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-01 14:46:14.729529",
+    "@@last_modified": "2026-09-01 15:39:49.312725",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "ግልባጩን ያንብቡ",
     "errorRateLimited": "በአሁኑ ጊዜ ብዙ እየጫንን ነው። እባክዎ ትንሽ ይጠብቁ እና እንደገና ይሞክሩ።",
     "noPermissionToInviteUsers": "እዚህ አባላትን ለመጋበዝ ፍቃድ የለዎትም።",
-    "mapPinsKeyboardHint": "በካርታው ላይ ባሉ እንቅስቃሴዎች መካከል ለመንቀሳቀስ የቀስት ቁልፎችን ይጠቀሙ እና አንዱን ለመክፈት አስገባን ይጫኑ።"
+    "mapPinsKeyboardHint": "በካርታው ላይ ባሉ እንቅስቃሴዎች መካከል ለመንቀሳቀስ የቀስት ቁልፎችን ይጠቀሙ እና አንዱን ለመክፈት አስገባን ይጫኑ።",
+    "selectMessageLabel": "መልዕክት ምረጥ"
 }

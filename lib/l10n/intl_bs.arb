@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-01 14:46:14.538886",
+    "@@last_modified": "2026-09-01 15:39:49.226406",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Pročitaj transkript",
     "errorRateLimited": "Trenutno učitavamo mnogo toga. Sačekajte trenutak i pokušajte ponovo.",
     "noPermissionToInviteUsers": "Nemate dozvolu za pozivanje članova ovdje.",
-    "mapPinsKeyboardHint": "Koristite tipke sa strelicama za kretanje između aktivnosti na mapi, i pritisnite Enter da otvorite jednu."
+    "mapPinsKeyboardHint": "Koristite tipke sa strelicama za kretanje između aktivnosti na mapi, i pritisnite Enter da otvorite jednu.",
+    "selectMessageLabel": "Odaberite poruku"
 }

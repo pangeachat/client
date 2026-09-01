@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-01 14:46:18.597201",
+    "@@last_modified": "2026-09-01 15:39:51.964982",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Transkript liesen",
     "errorRateLimited": "Mir lueden am Moment vill. Waart w.e.g. ee Moment a probéier et nach eng Kéier.",
     "noPermissionToInviteUsers": "Dir hutt keng Erlaabnis fir Memberen hei z'invitéieren.",
-    "mapPinsKeyboardHint": "Benotzt d'Pfeiltasten fir tëscht den Aktivitéiten op der Kaart ze navigéieren, an dréckt Enter fir eng opzemaachen."
+    "mapPinsKeyboardHint": "Benotzt d'Pfeiltasten fir tëscht den Aktivitéiten op der Kaart ze navigéieren, an dréckt Enter fir eng opzemaachen.",
+    "selectMessageLabel": "Message auswielen"
 }

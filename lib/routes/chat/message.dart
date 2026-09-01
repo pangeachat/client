@@ -21,6 +21,7 @@ import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/custom_room_display_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/routes/chat/pangea_message_reactions.dart';
 import 'package:fluffychat/routes/chat/room_creation_state_event.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
@@ -422,30 +423,46 @@ class Message extends StatelessWidget {
                                 bottom: 0,
                                 left: 0,
                                 right: 0,
-                                child: InkWell(
-                                  hoverColor: longPressSelect
-                                      ? Colors.transparent
-                                      : null,
-                                  enableFeedback: !selected,
-                                  // #Pangea
-                                  // onTap: longPressSelect
-                                  //     ? null
-                                  //     : () => onSelect(event),
-                                  onTap: () => showToolbar(pangeaMessageEvent),
-                                  onLongPress: () =>
-                                      showToolbar(pangeaMessageEvent),
-                                  // Pangea#
-                                  borderRadius: BorderRadius.circular(
-                                    AppConfig.borderRadius / 2,
-                                  ),
-                                  child: Material(
-                                    borderRadius: BorderRadius.circular(
-                                      AppConfig.borderRadius / 2,
+                                // The overlay has no text child, so without a
+                                // label it announces as a nameless button on
+                                // every message (#8721) — and where the tap
+                                // would silently no-op it must publish no
+                                // button at all.
+                                child: ExcludeSemantics(
+                                  excluding:
+                                      pangeaMessageEvent == null ||
+                                      !event.canOpenToolbar,
+                                  child: Semantics(
+                                    label: L10n.of(context).selectMessageLabel,
+                                    child: InkWell(
+                                      hoverColor: longPressSelect
+                                          ? Colors.transparent
+                                          : null,
+                                      enableFeedback: !selected,
+                                      // #Pangea
+                                      // onTap: longPressSelect
+                                      //     ? null
+                                      //     : () => onSelect(event),
+                                      onTap: () =>
+                                          showToolbar(pangeaMessageEvent),
+                                      onLongPress: () =>
+                                          showToolbar(pangeaMessageEvent),
+                                      // Pangea#
+                                      borderRadius: BorderRadius.circular(
+                                        AppConfig.borderRadius / 2,
+                                      ),
+                                      child: Material(
+                                        borderRadius: BorderRadius.circular(
+                                          AppConfig.borderRadius / 2,
+                                        ),
+                                        color: selected || highlightMarker
+                                            ? theme
+                                                  .colorScheme
+                                                  .secondaryContainer
+                                                  .withAlpha(128)
+                                            : Colors.transparent,
+                                      ),
                                     ),
-                                    color: selected || highlightMarker
-                                        ? theme.colorScheme.secondaryContainer
-                                              .withAlpha(128)
-                                        : Colors.transparent,
                                   ),
                                 ),
                               ),

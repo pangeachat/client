@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-01 14:46:15.771294",
+    "@@last_modified": "2026-09-01 15:39:49.844604",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8058,5 +8058,6 @@
     "callTranscriptOpen": "Leer la transcripción",
     "errorRateLimited": "Estamos cargando mucho ahora mismo. Espera un momento y vuelve a intentarlo.",
     "noPermissionToInviteUsers": "No tienes permiso para invitar miembros aquí.",
-    "mapPinsKeyboardHint": "Usa las teclas de flecha para moverte entre las actividades del mapa y presiona Enter para abrir una."
+    "mapPinsKeyboardHint": "Usa las teclas de flecha para moverte entre las actividades del mapa y presiona Enter para abrir una.",
+    "selectMessageLabel": "Seleccionar mensaje"
 }

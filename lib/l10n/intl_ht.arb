@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-01 14:46:16.991423",
+    "@@last_modified": "2026-09-01 15:39:51.014355",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Li transkripsyon an",
     "errorRateLimited": "N ap chaje anpil kounye a. Tanpri tann yon ti moman epi eseye ankò.",
     "noPermissionToInviteUsers": "Ou pa gen pèmisyon pou envite manm isit la.",
-    "mapPinsKeyboardHint": "Sèvi ak flèch yo pou w deplase ant aktivite yo sou kat la, epi peze Antre pou w ouvri youn."
+    "mapPinsKeyboardHint": "Sèvi ak flèch yo pou w deplase ant aktivite yo sou kat la, epi peze Antre pou w ouvri youn.",
+    "selectMessageLabel": "Chwazi mesaj"
 }

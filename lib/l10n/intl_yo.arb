@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-01 14:46:22.942369",
+    "@@last_modified": "2026-09-01 15:39:54.841648",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2243,5 +2243,6 @@
     "callTranscriptOpen": "Ka ọrọ ipe naa",
     "errorRateLimited": "A ń gbé ọ̀pọ̀lọpọ̀ nǹkan wọlé lọ́wọ́lọ́wọ́. Jọ̀wọ́ dúró dé ìgbà díẹ̀ kí ó sì tún gbìyànjú.",
     "noPermissionToInviteUsers": "O ko ni igbanilaaye lati pe awon omo egbe si ibi.",
-    "mapPinsKeyboardHint": "Lo àwọn bọtini ọfà láti lọ láàárín àwọn iṣẹ́-ṣíṣe lórí maapu, kí o sì tẹ Tẹ́ẹ́rẹ̀ láti ṣí ọ̀kan."
+    "mapPinsKeyboardHint": "Lo àwọn bọtini ọfà láti lọ láàárín àwọn iṣẹ́-ṣíṣe lórí maapu, kí o sì tẹ Tẹ́ẹ́rẹ̀ láti ṣí ọ̀kan.",
+    "selectMessageLabel": "Yan ifiranṣẹ"
 }
