@@ -218,6 +218,10 @@ class ActivityParticipantSummaries extends StatelessWidget {
           spacing: 12.0,
           mainAxisSize: MainAxisSize.min,
           children: [
+            // Everything below the rule is about the picked participant —
+            // their stars and their feedback, swapping together. Above it is
+            // the session as a whole, which no pick changes (#8678).
+            const Divider(height: 1),
             if (roleSummaries.length > 1)
               Wrap(
                 spacing: 8.0,
