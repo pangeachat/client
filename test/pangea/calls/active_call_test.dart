@@ -751,6 +751,26 @@ class _NullSink implements CallAudioSink {
   Future<bool> close() async => true;
 }
 
+/// A logged-in client that can be made to forget its device id mid-call.
+///
+/// The SDK clears the id on logout and offers no way to set one, and a call
+/// cannot start without one at all -- so the only window in which an election
+/// can see a null is a logout landing while a call is already up. This is the
+/// one way to stand a test in that window.
+class ForgetfulClient extends Client {
+  ForgetfulClient(
+    super.clientName, {
+    super.httpClient,
+    required super.database,
+  });
+
+  /// Set to reproduce the logout, from the moment it is set onward.
+  bool forgotDevice = false;
+
+  @override
+  String? get deviceID => forgotDevice ? null : super.deviceID;
+}
+
 void main() {
   setUpAll(sqfliteFfiInit);
 
@@ -758,8 +778,8 @@ void main() {
 
   /// Logged in, because the recording election ranks this device against its
   /// siblings by device id and a client that never logged in has none.
-  Future<Client> bareClient() async {
-    final client = Client(
+  Future<ForgetfulClient> bareClient() async {
+    final client = ForgetfulClient(
       'active-call-test',
       httpClient: FakeMatrixApi(),
       database: await MatrixSdkDatabase.init(
@@ -2763,6 +2783,52 @@ void main() {
       await calls.participantsBecome(['zzzzzzzzzz', calls.client.deviceID!]);
       expect(call.isRecording, isTrue);
       expect(trace.steps, isNot(contains('capture.stop')));
+    });
+
+    /// A device the SDK cannot name, which is a logout landing mid-call.
+    ///
+    /// The election breaks its tie on device id, and the empty string this used
+    /// to substitute for a missing one sorts BEFORE every real id — so such a
+    /// device elected ITSELF over every sibling, unconditionally, and both went
+    /// on to deliver the same stretch. Duplicate analytics is the one outcome
+    /// the election exists to prevent.
+    test('a device with no id stands aside rather than winning', () async {
+      final (call, calls, _, _) = await build();
+      final myDeviceId = calls.client.deviceID!;
+      calls.remotePresent = true;
+      calls.devicesInCall = [myDeviceId];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isTrue);
+      trace.steps.clear();
+
+      (calls.client as ForgetfulClient).forgotDevice = true;
+      // A sibling this device BEAT while it still had a name, so the outcome
+      // here can only have come from the missing id.
+      await calls.participantsBecome(['zzzzzzzzzz']);
+
+      expect(call.isRecording, isFalse);
+      expect(
+        trace.steps,
+        contains('capture.stop'),
+        reason: 'and what it already holds is flushed, not dropped',
+      );
+    });
+
+    test('a device with no id still records when it is alone', () async {
+      // Standing aside is for somebody. Alone there is nobody to produce a
+      // duplicate with, and refusing would cost the call's analytics to
+      // prevent nothing.
+      final (call, calls, _, _) = await build();
+      final myDeviceId = calls.client.deviceID!;
+      calls.remotePresent = true;
+      calls.devicesInCall = ['AAAAAAAAAA', myDeviceId];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isFalse, reason: 'the other device sorts lower');
+
+      (calls.client as ForgetfulClient).forgotDevice = true;
+      await calls.participantsBecome([]);
+
+      expect(call.isRecording, isTrue);
     });
 
     test('a recorder that will not start does not fail the call', () async {

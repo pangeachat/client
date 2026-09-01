@@ -639,7 +639,15 @@ class ActiveCall extends ChangeNotifier {
     final track = _track;
     final roster = _roster;
 
-    final me = calls.client.deviceID ?? '';
+    // NULL, not the empty string this used to fall back to. The election breaks
+    // a tie on device id and '' sorts BEFORE every real one, so a device the SDK
+    // could not name out-ranked every sibling unconditionally and elected
+    // itself — the exact duplicate-analytics outcome the election exists to
+    // prevent. The window is narrow, because a call cannot start without a
+    // device id at all: it takes a logout landing mid-call. What it costs is
+    // not narrow, because both devices then deliver the same stretch and the
+    // learner is credited twice for saying something once.
+    final me = calls.client.deviceID;
 
     // Somewhere to record FROM and somewhere to record THROUGH, composed in the
     // one place that can see both objects, and read ONCE — so what this device
@@ -700,11 +708,21 @@ class ActiveCall extends ChangeNotifier {
     // being elected in its own view, delivered them.
     final iCanCapture = roster?.announcedCanCapture ?? true;
     final election = CaptureElection(
-      myDeviceId: me,
+      myDeviceId: me ?? '',
       siblings: siblings,
       iCanCapture: iCanCapture,
     );
-    final elected = election.shouldRecord;
+    // STANDS ASIDE, and the guard sits here rather than inside the election
+    // because namelessness is not a rank. [CaptureElection] is a total order
+    // over NAMED devices, and every device reaching the same verdict alone
+    // depends on that order being one every device can compute; a device with
+    // no id is not lower in it, it is absent from it. This is the one site that
+    // knows the SDK may have no id to give.
+    //
+    // Only when there is somebody to stand aside FOR. Alone in the call it
+    // still records: there is nobody to produce a duplicate with, and refusing
+    // would cost the call's analytics to prevent nothing.
+    final elected = (me != null || siblings.isEmpty) && election.shouldRecord;
 
     // Recorded SYNCHRONOUSLY, here, at the moment the election decides — never
     // handed to the stop as an argument. Teardown stops the recorder directly,
