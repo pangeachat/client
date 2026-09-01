@@ -504,6 +504,14 @@ class AnalyticsDataService {
     return _analyticsClientGetter.database.getLocalUses(language);
   }
 
+  /// See [AnalyticsDatabase.getLocalUseBatches].
+  Future<Map<String, List<OneConstructUse>>> getLocalUseBatches(
+    String language,
+  ) async {
+    await _ensureInitialized();
+    return _analyticsClientGetter.database.getLocalUseBatches(language);
+  }
+
   Future<int> getLocalConstructCount(String language) async {
     await _ensureInitialized();
     return _analyticsClientGetter.database.getLocalConstructCount(language);
@@ -930,15 +938,24 @@ class AnalyticsDataService {
     _invalidateCaches();
   }
 
-  /// Drop the local (not-yet-uploaded) uses and aggregates, then re-derive
-  /// the XP total. This runs right after the uploaded copy has echoed back
-  /// from the analytics room; the recompute that echo triggered saw the
-  /// uses on both sides, so the total is settled here rather than on the
-  /// next unrelated sync.
-  Future<void> clearLocalAnalytics(String language) async {
+  /// Drop the uploaded local batches ([batchKeys]) and rebuild the local
+  /// aggregates from whatever is still pending, then re-derive the XP total.
+  /// This runs right after the uploaded copy has echoed back from the
+  /// analytics room; the recompute that echo triggered saw the uses on both
+  /// sides, so the total is settled here rather than on the next unrelated
+  /// sync. Only the uploaded batches may be dropped — uses recorded while the
+  /// upload was in flight were not in it, and clearing the whole language
+  /// destroyed them before they were ever sent (#7720).
+  Future<void> clearLocalAnalytics(
+    String language,
+    Iterable<String> batchKeys,
+  ) async {
     _invalidateCaches();
     await _ensureInitialized();
-    await _analyticsClientGetter.database.clearLocalConstructData(language);
+    await _analyticsClientGetter.database.clearLocalConstructData(
+      language,
+      batchKeys: batchKeys,
+    );
     _invalidateCaches();
     await _recomputeTotalXP(language);
   }
