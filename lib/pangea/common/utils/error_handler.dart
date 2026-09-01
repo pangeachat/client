@@ -216,6 +216,10 @@ class ErrorCopy {
       }
 
       switch (errorCode) {
+        // Waiting is the remedy, so the generic "try again later" default
+        // would overstate the outage (#8705).
+        case 429:
+          return l10n.errorRateLimited;
         case 502:
         case 504:
         case 500:

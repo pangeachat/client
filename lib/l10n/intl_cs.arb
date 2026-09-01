@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-01 11:49:57.273343",
+    "@@last_modified": "2026-09-01 12:27:56.850664",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10330,5 +10330,6 @@
     "callTranscriptApproximateTimes": "Replika označená „v“ čase byla řečena v daný čas nebo před ním. Tyto repliky jsou zobrazeny v daném okamžiku, takže mohly být řečeny dříve.",
     "callTranscriptUnstatedTimes": "Některé repliky neukazují čas. Zařízení, které je nahrálo, neřeklo, jak přesné jsou jeho časy, takže jejich umístění v této konverzaci může být chybné.",
     "callTranscriptUnreconciledClocks": "Tyto repliky byly nahrány na dvou zařízeních, jejichž hodiny nebylo možné porovnat, takže nejsou zobrazeny žádné časy a pořadí, ve kterém se objevují, může být chybné.",
-    "callTranscriptOpen": "Přečíst přepis"
+    "callTranscriptOpen": "Přečíst přepis",
+    "errorRateLimited": "Právě teď toho hodně načítáme. Počkejte prosím chvilku a zkuste to znovu."
 }

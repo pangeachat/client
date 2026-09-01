@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-01 11:50:14.508943",
+    "@@last_modified": "2026-09-01 12:28:00.387257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Ny fehezanteny voamarika hoe “amin’ny” fotoana iray dia nolazaina tamin’io fotoana io na talohan’io. Aseho amin’io fotoana io ireo fehezanteny ireo, ka mety ho nolazaina talohan’izay.",
     "callTranscriptUnstatedTimes": "Misy fehezanteny sasany tsy mampiseho fotoana. Tsy nilaza ny fitaovana nandrakitra azy ireo hoe ohatrinona ny fahamarinan’ny fotoanany, ka mety ho diso ny toerana misy azy ireo amin’ity resaka ity.",
     "callTranscriptUnreconciledClocks": "Voarakitra tamin’ny fitaovana roa tsy azo nampitahaina ny famantaranandrony ireo fehezanteny ireo, ka tsy misy fotoana aseho ary mety ho diso ny filaharany.",
-    "callTranscriptOpen": "Vakio ny dika soratra"
+    "callTranscriptOpen": "Vakio ny dika soratra",
+    "errorRateLimited": "Misy entana maro alaina izao. Andraso kely ary avereno indray."
 }

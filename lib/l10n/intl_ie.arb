@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-01 11:50:07.316239",
+    "@@last_modified": "2026-09-01 12:27:59.220859",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10468,5 +10468,6 @@
     "callTranscriptApproximateTimes": "Dúradh cas a marcáladh \"faoi\" am ag an am sin nó roimhe. Taispeántar na casanna sin ag an nóiméad sin, mar sin d'fhéadfadh siad a bheith ráite níos luaithe.",
     "callTranscriptUnstatedTimes": "Ní thaispeánann roinnt casanna aon am. Níor dúirt an gléas a thaifead iad cé chomh cruinn agus atá a chuid ama, mar sin d'fhéadfadh an áit a bhfuil siad sa chomhrá seo a bheith mícheart.",
     "callTranscriptUnreconciledClocks": "Taifeadadh na casanna seo ar dhá ghléas nach bhféadfaí a gcuid cloig a chur i gcomparáid, mar sin ní thaispeántar aon amanna agus d'fhéadfadh an t-ord ina bhfuil siad le feiceáil a bheith mícheart.",
-    "callTranscriptOpen": "Léigh an tras-scríbhinn"
+    "callTranscriptOpen": "Léigh an tras-scríbhinn",
+    "errorRateLimited": "Táimid ag luchtú go leor faoi láthair. Fan nóiméad le do thoil agus bain triail eile as."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 11:50:09.888508",
+    "@@last_modified": "2026-09-01 12:27:59.676925",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10029,5 +10029,6 @@
     "callTranscriptApproximateTimes": "시간 옆에 \"까지\"라고 표시된 발화는 해당 시간 또는 그 이전에 말한 내용입니다. 해당 발화는 그 순간에 표시되므로 더 일찍 말했을 수도 있습니다.",
     "callTranscriptUnstatedTimes": "일부 발화에는 시간이 표시되지 않습니다. 녹음한 기기에서 시간의 정확도를 알려주지 않아 대화에서 해당 발화의 위치가 잘못되었을 수 있습니다.",
     "callTranscriptUnreconciledClocks": "이 발화들은 시계를 비교할 수 없는 두 기기에서 녹음되었으므로 시간이 표시되지 않으며, 나타나는 순서가 잘못되었을 수 있습니다.",
-    "callTranscriptOpen": "녹취록 읽기"
+    "callTranscriptOpen": "녹취록 읽기",
+    "errorRateLimited": "현재 로딩 중입니다. 잠시 기다렸다가 다시 시도해 주세요."
 }

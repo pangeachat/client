@@ -413,8 +413,9 @@ class _MessageSelectModeContent extends StatelessWidget {
                 ),
               ],
             ),
-            AsyncError(error: final _) => ErrorIndicator(
+            AsyncError(error: final error) => ErrorIndicator(
               message: L10n.of(context).translationError,
+              error: error,
               style: style.copyWith(fontStyle: FontStyle.italic),
             ),
             AsyncLoaded(value: final value) => Row(

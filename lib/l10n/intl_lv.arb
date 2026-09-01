@@ -3536,7 +3536,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-01 11:50:13.108227",
+    "@@last_modified": "2026-09-01 12:28:00.347127",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9836,5 +9836,6 @@
     "callTranscriptApproximateTimes": "Pagrieziens, kas apzīmēts ar \"līdz\" noteiktam laikam, tika teikts tajā laikā vai pirms tā. Šie pagriezieni tiek parādīti tajā brīdī, tāpēc tie var būt teikti agrāk.",
     "callTranscriptUnstatedTimes": "Dažos pagriezienos nav norādīts laiks. Ierīce, kas tos ierakstīja, nenorādīja, cik precīzi ir tās laiki, tāpēc to atrašanās vieta šajā sarunā var būt nepareiza.",
     "callTranscriptUnreconciledClocks": "Šie pagriezieni tika ierakstīti divās ierīcēs, kuru pulksteņus nevarēja salīdzināt, tāpēc laiki netiek rādīti un to parādīšanās secība var būt nepareiza.",
-    "callTranscriptOpen": "Lasīt transkriptu"
+    "callTranscriptOpen": "Lasīt transkriptu",
+    "errorRateLimited": "Pašlaik notiek liela slodze. Lūdzu, uzgaidiet un mēģiniet vēlreiz."
 }

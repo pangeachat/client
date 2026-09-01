@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-01 11:50:03.654918",
+    "@@last_modified": "2026-09-01 12:27:58.183610",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Ua ʻōlelo ʻia kahi huli i kaha ʻia \"ma\" ka manawa ma ia manawa a i ʻole ma mua. Hōʻike ʻia kēlā mau huli i kēlā manawa, no laila ua ʻōlelo ʻia paha ma mua.",
     "callTranscriptUnstatedTimes": "ʻAʻole hōʻike kekahi mau huli i ka manawa. ʻAʻole i ʻōlelo ka mea i hoʻopaʻa iā lākou i ka pololei o kona mau manawa, no laila ua hewa paha ko lākou wahi i loko o kēia kamaʻilio.",
     "callTranscriptUnreconciledClocks": "Ua hoʻopaʻa ʻia kēia mau huli ma nā mea ʻelua ʻaʻole hiki ke hoʻohālikelike ʻia ko lāua mau uaki, no laila ʻaʻohe manawa i hōʻike ʻia a ua hewa paha ke ʻano o ko lāua puka ʻana mai.",
-    "callTranscriptOpen": "Heluhelu i ka palapala"
+    "callTranscriptOpen": "Heluhelu i ka palapala",
+    "errorRateLimited": "Ke hoʻouka nei mākou i nā mea he nui i kēia manawa. E ʻoluʻolu e kali iki a hoʻāʻo hou."
 }

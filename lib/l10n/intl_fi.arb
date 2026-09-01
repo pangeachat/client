@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-01 11:50:01.018828",
+    "@@last_modified": "2026-09-01 12:27:57.569771",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9873,5 +9873,6 @@
     "callTranscriptApproximateTimes": "Aikaan \"klo\" merkitty vuoro sanottiin kyseisenä aikana tai ennen sitä. Nämä vuorot näytetään kyseisellä hetkellä, joten ne on saatettu sanoa aiemmin.",
     "callTranscriptUnstatedTimes": "Joissakin vuoroissa ei näy aikaa. Laitteet, jotka nauhoittivat ne, eivät kertoneet, kuinka tarkkoja niiden ajat ovat, joten niiden sijainti tässä keskustelussa voi olla väärä.",
     "callTranscriptUnreconciledClocks": "Nämä vuorot nauhoitettiin kahdella laitteella, joiden kelloja ei voitu verrata, joten aikoja ei näytetä ja niiden järjestys voi olla väärä.",
-    "callTranscriptOpen": "Lue litterointi"
+    "callTranscriptOpen": "Lue litterointi",
+    "errorRateLimited": "Lataamme juuri nyt paljon. Odota hetki ja yritä uudelleen."
 }

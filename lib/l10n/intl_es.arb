@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-01 11:49:59.242452",
+    "@@last_modified": "2026-09-01 12:27:57.445753",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8055,5 +8055,6 @@
     "callTranscriptApproximateTimes": "Un turno marcado \"por\" una hora se dijo en o antes de ese momento. Esos turnos se muestran en ese momento, por lo que pueden haber sido dichos antes.",
     "callTranscriptUnstatedTimes": "Algunos turnos no muestran la hora. El dispositivo que los grabó no indicó cuán exactas son sus horas, por lo que el lugar que ocupan en esta conversación puede ser incorrecto.",
     "callTranscriptUnreconciledClocks": "Estos turnos se grabaron en dos dispositivos cuyos relojes no pudieron compararse, por lo que no se muestran las horas y el orden en que aparecen puede ser incorrecto.",
-    "callTranscriptOpen": "Leer la transcripción"
+    "callTranscriptOpen": "Leer la transcripción",
+    "errorRateLimited": "Estamos cargando mucho ahora mismo. Espera un momento y vuelve a intentarlo."
 }

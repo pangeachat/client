@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-01 11:50:02.805676",
+    "@@last_modified": "2026-09-01 12:27:58.025742",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9836,5 +9836,6 @@
     "callTranscriptApproximateTimes": "Unha intervención marcada \"por\" unha hora foi dita nese momento ou antes. Esas intervencións móstranse nese momento, polo que puideron ser ditas antes.",
     "callTranscriptUnstatedTimes": "Algunhas intervencións non mostran a hora. O dispositivo que as gravou non indicou a exactitude das súas horas, polo que a súa posición nesta conversa pode ser incorrecta.",
     "callTranscriptUnreconciledClocks": "Estas intervencións foron gravadas en dous dispositivos cuxos reloxos non se puideron comparar, polo que non se mostran as horas e a orde na que aparecen pode ser incorrecta.",
-    "callTranscriptOpen": "Ler a transcrición"
+    "callTranscriptOpen": "Ler a transcrición",
+    "errorRateLimited": "Estamos cargando moito agora mesmo. Agarda un momento e téntao de novo."
 }

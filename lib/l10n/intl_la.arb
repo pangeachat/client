@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-01 11:50:11.055329",
+    "@@last_modified": "2026-09-01 12:28:00.198823",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Vicissitudo notata \"a\" tempore dicta est eo vel ante. Illae vicissitudines illo momento ostenduntur, itaque antea dictae esse possunt.",
     "callTranscriptUnstatedTimes": "Quaedam vicissitudines nullum tempus ostendunt. Apparatus qui eas recordatus est non dixit quam exactae essent eius tempora, itaque locus earum in hac colloquio falsus esse potest.",
     "callTranscriptUnreconciledClocks": "Hae vicissitudines in duobus apparatibus recordatae sunt quorum horologia comparari non potuerunt, itaque nulla tempora ostenduntur et ordo quo apparent falsus esse potest.",
-    "callTranscriptOpen": "Lege transcriptum"
+    "callTranscriptOpen": "Lege transcriptum",
+    "errorRateLimited": "Multa nunc oneramus. Paululum exspecta et iterum conare."
 }

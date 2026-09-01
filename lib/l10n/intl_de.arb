@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-01 11:49:57.336151",
+    "@@last_modified": "2026-09-01 12:27:56.874503",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9823,5 +9823,6 @@
     "callTranscriptApproximateTimes": "Eine mit „um“ einer Uhrzeit markierte Äußerung wurde zu oder vor dieser Zeit gesagt. Diese Äußerungen werden zu diesem Zeitpunkt angezeigt, sie könnten also früher gesagt worden sein.",
     "callTranscriptUnstatedTimes": "Einige Äußerungen zeigen keine Uhrzeit an. Das Gerät, das sie aufgenommen hat, hat nicht angegeben, wie genau seine Uhrzeiten sind, daher kann die Position in diesem Gespräch falsch sein.",
     "callTranscriptUnreconciledClocks": "Diese Äußerungen wurden auf zwei Geräten aufgezeichnet, deren Uhren nicht verglichen werden konnten, daher werden keine Uhrzeiten angezeigt und die Reihenfolge, in der sie erscheinen, kann falsch sein.",
-    "callTranscriptOpen": "Transkript lesen"
+    "callTranscriptOpen": "Transkript lesen",
+    "errorRateLimited": "Wir laden gerade sehr viel. Bitte warten Sie einen Moment und versuchen Sie es dann erneut."
 }

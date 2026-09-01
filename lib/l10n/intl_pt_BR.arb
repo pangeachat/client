@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 11:50:19.197340",
+    "@@last_modified": "2026-09-01 12:28:01.885596",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9836,5 +9836,6 @@
     "callTranscriptApproximateTimes": "Uma fala marcada \"por\" um horário foi dita naquele horário ou antes. Essas falas são mostradas naquele momento, então podem ter sido ditas antes.",
     "callTranscriptUnstatedTimes": "Algumas falas não mostram horário. O dispositivo que as gravou não informou a precisão de seus horários, então a posição delas nesta conversa pode estar errada.",
     "callTranscriptUnreconciledClocks": "Essas falas foram gravadas em dois dispositivos cujos relógios não puderam ser comparados, então nenhum horário é mostrado e a ordem em que aparecem pode estar errada.",
-    "callTranscriptOpen": "Ler a transcrição"
+    "callTranscriptOpen": "Ler a transcrição",
+    "errorRateLimited": "Estamos carregando muita coisa agora. Por favor, aguarde um momento e tente novamente."
 }

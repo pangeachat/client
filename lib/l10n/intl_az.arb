@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-01 11:49:54.832109",
+    "@@last_modified": "2026-09-01 12:27:56.182388",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Vaxtla \"tərəfindən\" qeyd olunan növbə o vaxtda və ya ondan əvvəl deyilmişdir. Bu növbələr həmin anda göstərilir, buna görə də daha əvvəl deyilmiş ola bilər.",
     "callTranscriptUnstatedTimes": "Bəzi növbələrdə vaxt göstərilmir. Onları qeyd edən cihaz vaxtlarının nə qədər dəqiq olduğunu bildirmədi, buna görə də bu söhbətdəki yerləri səhv ola bilər.",
     "callTranscriptUnreconciledClocks": "Bu növbələr saatları müqayisə edilə bilməyən iki cihazda qeydə alınıb, buna görə də vaxtlar göstərilmir və onların görünmə ardıcıllığı səhv ola bilər.",
-    "callTranscriptOpen": "Transkripti oxuyun"
+    "callTranscriptOpen": "Transkripti oxuyun",
+    "errorRateLimited": "Hazırda çoxlu məlumat yükləyirik. Zəhmət olmasa bir az gözləyin və yenidən cəhd edin."
 }

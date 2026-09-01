@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-01 11:50:07.907900",
+    "@@last_modified": "2026-09-01 12:27:59.124202",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Beygja merkt „kl.“ á tilteknum tíma var sögð á eða fyrir hann. Þessar beygjur eru sýndar á þeim tímapunkti, svo þær gætu hafa verið sagðar fyrr.",
     "callTranscriptUnstatedTimes": "Sumar beygjur sýna engan tíma. Tækið sem tók þær upp sagði ekki hversu nákvæmir tímar þess eru, svo staðsetning þeirra í þessu samtali gæti verið röng.",
     "callTranscriptUnreconciledClocks": "Þessar beygjur voru teknar upp á tveimur tækjum þar sem ekki var hægt að bera saman klukkur, svo engir tímar eru sýndir og röðin sem þær birtast í gæti verið röng.",
-    "callTranscriptOpen": "Lesa umskriftina"
+    "callTranscriptOpen": "Lesa umskriftina",
+    "errorRateLimited": "Við erum að hlaða mikið núna. Vinsamlegast bíddu smá stund og reyndu aftur."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-01 11:49:58.176495",
+    "@@last_modified": "2026-09-01 12:27:56.910576",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Dywedwyd tro a nodwyd \"erbyn\" amser ar yr amser hwnnw neu cyn hynny. Dangosir y troeon hynny ar y foment honno, felly efallai eu bod wedi'u dweud yn gynharach.",
     "callTranscriptUnstatedTimes": "Nid yw rhai troeon yn dangos amser. Ni ddywedodd y ddyfais a'u recordiodd pa mor union yw ei hamserau, felly gall y lle maent yn eistedd yn y sgwrs hon fod yn anghywir.",
     "callTranscriptUnreconciledClocks": "Recordiwyd y troeon hyn ar ddwy ddyfais na ellid cymharu eu clociau, felly ni ddangosir unrhyw amserau ac efallai bod y drefn y maent yn ymddangos ynddi yn anghywir.",
-    "callTranscriptOpen": "Darllenwch y trawsgrifiad"
+    "callTranscriptOpen": "Darllenwch y trawsgrifiad",
+    "errorRateLimited": "Rydym yn llwytho llawer ar hyn o bryd. Arhoswch funud a cheisiwch eto."
 }

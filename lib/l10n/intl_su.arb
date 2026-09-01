@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-01 11:50:25.781195",
+    "@@last_modified": "2026-09-01 12:28:03.051701",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2240,5 +2240,6 @@
     "callTranscriptApproximateTimes": "Giliran anu ditandaan \"ku\" waktos diucapkeun dina atanapi sateuacanna. Giliran-giliran éta dipidangkeun dina waktos éta, janten tiasa waé diucapkeun langkung awal.",
     "callTranscriptUnstatedTimes": "Sababaraha giliran henteu nunjukkeun waktos. Alat anu ngarékamna henteu nyarios kumaha pastina waktosna, janten tempatna dina paguneman ieu tiasa lepat.",
     "callTranscriptUnreconciledClocks": "Giliran-giliran ieu dirékam dina dua alat anu jamna henteu tiasa dibandingkeun, janten teu aya waktos anu dipidangkeun sareng urutan munculna tiasa lepat.",
-    "callTranscriptOpen": "Baca transkripna"
+    "callTranscriptOpen": "Baca transkripna",
+    "errorRateLimited": "Urang nuju ngamuat seueur ayeuna. Mangga antosan sakedap teras cobian deui."
 }
