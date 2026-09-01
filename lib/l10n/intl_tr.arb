@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-01 10:41:40.789508",
+    "@@last_modified": "2026-09-01 11:50:28.077325",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10122,5 +10122,20 @@
     "resetTargetLanguage": "Hedef dili sıfırla",
     "resetBaseLanguage": "Temel dili sıfırla",
     "selectedLanguageLevel": "Dil seviyesi olarak {level} seçildi",
-    "resetLanguageLevel": "Dil seviyesini sıfırla"
+    "resetLanguageLevel": "Dil seviyesini sıfırla",
+    "callTranscriptSharedNotice": "Bu arama yazıya döküldü ve kaydedildi. Siz ve diğer kişi daha sonra okuyabilirsiniz.",
+    "callTranscriptTitle": "Arama dökümü",
+    "callTranscriptLoadFailed": "Döküm yüklenemedi",
+    "callTranscriptRetry": "Tekrar dene",
+    "callTranscriptStoppedEarly": "Bu arama tek seferde okunmak için çok fazlaydı, bu yüzden bir kısmı gösterilmiyor.",
+    "callTranscriptNone": "{name} adlı kişiden döküm yok",
+    "callTranscriptSaidNothing": "{name} hiçbir şey söylemedi",
+    "callTranscriptNothingRead": "{name} adlı kişinin söylediklerinden hiçbir şey okunamadı",
+    "callTranscriptNoSpeechDetected": "{name} adlı kişiden kaydedilen hiçbir şey yazıya dökülmek üzere gönderilmedi: bu uygulama içinde konuşma bulamadı ve bu konuda yanılıyor olabilir, bu yüzden ne söylendiği bilinmiyor.",
+    "callTranscriptPartial": "{name} adlı kişinin söylediklerinin bir kısmı eksik olabilir",
+    "callTranscriptByTime": "{time} itibarıyla",
+    "callTranscriptApproximateTimes": "Bir zamanla \"itibarıyla\" işaretlenmiş bir konuşma o anda veya öncesinde söylenmiştir. Bu konuşmalar o anda gösterilir, bu yüzden daha önce söylenmiş olabilir.",
+    "callTranscriptUnstatedTimes": "Bazı konuşmalarda zaman belirtilmemiştir. Bunları kaydeden cihaz, zamanlarının ne kadar kesin olduğunu belirtmedi, bu yüzden bu konuşmadaki yerleri yanlış olabilir.",
+    "callTranscriptUnreconciledClocks": "Bu konuşmalar, saatleri karşılaştırılamayan iki cihazda kaydedildi, bu yüzden zaman gösterilmiyor ve görünme sıraları yanlış olabilir.",
+    "callTranscriptOpen": "Dökümü oku"
 }

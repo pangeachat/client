@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 10:41:29.644921",
+    "@@last_modified": "2026-09-01 11:49:58.755143",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10766,5 +10766,20 @@
     "resetTargetLanguage": "Restarigi celolingvon",
     "resetBaseLanguage": "Restarigi bazlingvon",
     "selectedLanguageLevel": "Elektita {level} kiel lingvonivelo",
-    "resetLanguageLevel": "Restarigi lingvonivelon"
+    "resetLanguageLevel": "Restarigi lingvonivelon",
+    "callTranscriptSharedNotice": "Ĉi tiu voko estas transskribita kaj konservita. Vi kaj la alia persono povas legi ĝin poste.",
+    "callTranscriptTitle": "Transskribo de voko",
+    "callTranscriptLoadFailed": "Ne eblis ŝargi la transskribon",
+    "callTranscriptRetry": "Provu denove",
+    "callTranscriptStoppedEarly": "Ĉi tiu voko havis tro multe por legi samtempe, do parto de ĝi ne estas montrita.",
+    "callTranscriptNone": "Neniu transskribo de {name}",
+    "callTranscriptSaidNothing": "{name} diris nenion",
+    "callTranscriptNothingRead": "Nenio legeblis el tio, kion {name} diris",
+    "callTranscriptNoSpeechDetected": "Nenio registrita de {name} estis sendita por transskribo: ĉi tiu aplikaĵo trovis neniun paroladon en ĝi kaj povas erari pri tio, do kio estis dirita ne estas konata.",
+    "callTranscriptPartial": "Parto de tio, kion {name} diris, eble mankas",
+    "callTranscriptByTime": "je {time}",
+    "callTranscriptApproximateTimes": "Vico markita \"je\" tempo estis dirita je aŭ antaŭ ĝi. Tiuj vicoj estas montritaj en tiu momento, do ili eble estis dirita pli frue.",
+    "callTranscriptUnstatedTimes": "Iuj vicoj ne montras tempon. La aparato, kiu registris ilin, ne diris kiom precizaj estas ĝiaj tempoj, do kie ili sidas en ĉi tiu konversacio eble estas malĝusta.",
+    "callTranscriptUnreconciledClocks": "Ĉi tiuj vicoj estis registritaj per du aparatoj, kies horloĝoj ne povis esti komparitaj, do neniuj tempoj estas montritaj kaj la ordo en kiu ili aperas eble estas malĝusta.",
+    "callTranscriptOpen": "Legu la transskribon"
 }

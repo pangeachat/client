@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-01 10:41:31.828858",
+    "@@last_modified": "2026-09-01 11:50:05.392145",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10257,5 +10257,20 @@
     "resetTargetLanguage": "Poništi ciljni jezik",
     "resetBaseLanguage": "Poništi osnovni jezik",
     "selectedLanguageLevel": "Odabrana razina jezika: {level}",
-    "resetLanguageLevel": "Poništi razinu jezika"
+    "resetLanguageLevel": "Poništi razinu jezika",
+    "callTranscriptSharedNotice": "Ovaj je poziv transkribiran i spremljen. Vi i druga osoba možete ga pročitati poslije.",
+    "callTranscriptTitle": "Transkript poziva",
+    "callTranscriptLoadFailed": "Učitavanje transkripta nije uspjelo",
+    "callTranscriptRetry": "Pokušaj ponovo",
+    "callTranscriptStoppedEarly": "Ovaj je poziv imao previše teksta za čitanje odjednom, pa dio nije prikazan.",
+    "callTranscriptNone": "Nema transkripta od {name}",
+    "callTranscriptSaidNothing": "{name} nije ništa rekao/rekla",
+    "callTranscriptNothingRead": "Ništa se nije moglo pročitati iz onoga što je {name} rekao/rekla",
+    "callTranscriptNoSpeechDetected": "Ništa snimljeno od {name} nije poslano na transkripciju: ova aplikacija nije pronašla govor u tome i može pogriješiti u tome, tako da se ne zna što je rečeno.",
+    "callTranscriptPartial": "Dio onoga što je {name} rekao/rekla možda nedostaje",
+    "callTranscriptByTime": "u {time}",
+    "callTranscriptApproximateTimes": "Redak označen s \"u\" vremenom izgovoren je u to vrijeme ili prije njega. Ti su redci prikazani u tom trenutku, pa su možda izgovoreni ranije.",
+    "callTranscriptUnstatedTimes": "Neki redci ne prikazuju vrijeme. Uređaj koji ih je snimio nije naveo koliko su točna njegova vremena, pa mjesto gdje se nalaze u ovom razgovoru može biti pogrešno.",
+    "callTranscriptUnreconciledClocks": "Ovi su redci snimljeni na dva uređaja čiji se satovi nisu mogli usporediti, pa se ne prikazuju vremena i redoslijed kojim se pojavljuju može biti pogrešan.",
+    "callTranscriptOpen": "Pročitaj transkript"
 }

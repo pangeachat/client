@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-01 10:41:29.894578",
+    "@@last_modified": "2026-09-01 11:50:00.610292",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9821,5 +9821,20 @@
     "resetTargetLanguage": "Berrezarri xede-hizkuntza",
     "resetBaseLanguage": "Berrezarri oinarri-hizkuntza",
     "selectedLanguageLevel": "{level} hautatuta hizkuntza-maila gisa",
-    "resetLanguageLevel": "Berrezarri hizkuntza-maila"
+    "resetLanguageLevel": "Berrezarri hizkuntza-maila",
+    "callTranscriptSharedNotice": "Dei hau transkribatu eta gorde egin da. Zuk eta beste pertsonak gero irakurri ahal izango duzue.",
+    "callTranscriptTitle": "Deiaren transkripzioa",
+    "callTranscriptLoadFailed": "Ezin izan da transkripzioa kargatu",
+    "callTranscriptRetry": "Saiatu berriro",
+    "callTranscriptStoppedEarly": "Dei honek irakurtzeko gehiegi zuen aldi berean, beraz, zati bat ez da erakusten.",
+    "callTranscriptNone": "Ez dago transkripziorik {name}-ren aldetik",
+    "callTranscriptSaidNothing": "{name}-k ez zuen ezer esan",
+    "callTranscriptNothingRead": "Ezin izan da ezer irakurri {name}-k esandakotik",
+    "callTranscriptNoSpeechDetected": "{name}-tik grabatutako ezer ez zen transkribatzeko bidali: aplikazio honek ez zuen hizketarik aurkitu bertan eta horretan oker egon daiteke, beraz, esandakoa ez da ezagutzen.",
+    "callTranscriptPartial": "{name}-k esandakoaren zati bat falta izan daiteke",
+    "callTranscriptByTime": "{time}-rako",
+    "callTranscriptApproximateTimes": "Ordu batekin \"-rako\" markatutako txanda bat ordu horretan edo lehenago esan zen. Txanda horiek une horretan erakusten dira, beraz, lehenago esan izan zitezkeen.",
+    "callTranscriptUnstatedTimes": "Txanda batzuek ez dute ordurik erakusten. Horiek grabatu zituen gailuak ez zuen esan zein zehatzak diren bere orduak, beraz, elkarrizketa honetan duten kokapena oker egon daiteke.",
+    "callTranscriptUnreconciledClocks": "Txanda hauek erlojuak alderatu ezin izan ziren bi gailutan grabatu ziren, beraz, ez da ordurik erakusten eta agertzen diren ordena oker egon daiteke.",
+    "callTranscriptOpen": "Irakurri transkripzioa"
 }

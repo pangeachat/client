@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-01 10:41:35.553122",
+    "@@last_modified": "2026-09-01 11:50:14.935193",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Tautuhi anō i te reo whāinga",
     "resetBaseLanguage": "Tautuhi anō i te reo tūāpapa",
     "selectedLanguageLevel": "Kua tohua a {level} hei taumata reo",
-    "resetLanguageLevel": "Tautuhi anō i te taumata reo"
+    "resetLanguageLevel": "Tautuhi anō i te taumata reo",
+    "callTranscriptSharedNotice": "Kua tuhia, kua tiakina hoki tēnei waea. Ka taea e koe me tētahi atu te pānui i muri mai.",
+    "callTranscriptTitle": "Tuhinga waea",
+    "callTranscriptLoadFailed": "Kāore i taea te uta i te tuhinga",
+    "callTranscriptRetry": "Whakamātauria anō",
+    "callTranscriptStoppedEarly": "He roa rawa tēnei waea kia pānuitia i te wā kotahi, nō reira kāore i whakaaturia ētahi wāhanga.",
+    "callTranscriptNone": "Kāore he tuhinga mai i a {name}",
+    "callTranscriptSaidNothing": "Kāore a {name} i kōrero i tētahi mea",
+    "callTranscriptNothingRead": "Kāore he mea i taea te pānui mai i ngā kōrero a {name}",
+    "callTranscriptNoSpeechDetected": "Kāore he mea i hopukina mai i a {name} i tukuna kia tuhia: kāore i kitea he kōrero e tēnei taupānga, ā, tērā pea i hē, nō reira kāore i te mōhiotia ngā kōrero.",
+    "callTranscriptPartial": "Tērā pea kei te ngaro ētahi wāhanga o ngā kōrero a {name}",
+    "callTranscriptByTime": "i te {time}",
+    "callTranscriptApproximateTimes": "Ko te wāhanga i tohua \"i te\" tētahi wā i kōrerotia i taua wā, i mua rānei. Ka whakaatuhia aua wāhanga i taua wā, nō reira tērā pea i kōrerotia i mua ake.",
+    "callTranscriptUnstatedTimes": "Kāore ētahi wāhanga e whakaatu ana i te wā. Kāore te pūrere i hopu i aua wāhanga i kī he pēhea te tika o ōna wā, nō reira tērā pea i hē te wāhi e noho ana i roto i tēnei kōrerorero.",
+    "callTranscriptUnreconciledClocks": "I hopukina ēnei wāhanga ki runga i ngā pūrere e rua kāore i taea te whakataurite i ō rāua karaka, nō reira kāore he wā e whakaatuhia ana, ā, tērā pea i hē te raupapa o te putanga mai.",
+    "callTranscriptOpen": "Pānuitia te tuhinga"
 }

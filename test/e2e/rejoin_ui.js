@@ -5,6 +5,7 @@
 //  2 after the other side ends, nothing still claims "reconnecting"
 //  3 the Return banner's red end ENDS the call for the other side
 //  4 the chat list previews the call, not the membership plumbing
+const labels = require('./labels');
 const h = require('./harness');
 const { ui, mx, wait } = h;
 
@@ -36,10 +37,10 @@ function allClocks(pageText) {
 /// timeline's "Voice call 0:13" cards -- frozen numbers that pass for a
 /// running one.
 async function ensurePanel(page) {
-  if (await ui.hasLabel(page, 'Hang up').catch(() => false)) return true;
+  if (await ui.hasControl(page, 'hangup').catch(() => false)) return true;
   await ui.clickPanel(page, 'fullscreen').catch(() => {});
   await wait(1500);
-  return ui.hasLabel(page, 'Hang up').catch(() => false);
+  return ui.hasControl(page, 'hangup').catch(() => false);
 }
 
 /// The one that is actually RUNNING, proved by watching it move.
@@ -63,6 +64,20 @@ async function liveClock(page, { gap = 3200 } = {}) {
   return -1;
 }
 
+/// Clicks the first node carrying ANY of [names] -- the l10n key's known
+/// translations, so the account's own interface language does not matter.
+async function clickAnyLabel(page, names) {
+  return page.evaluate((wanted) => {
+    const nodes = [...document.querySelectorAll('flt-semantics, [role=button], button, [aria-label]')];
+    const hit = nodes.find((n) => {
+      const t = `${n.textContent || ''} ${(n.getAttribute && n.getAttribute('aria-label')) || ''}`;
+      return wanted.some((w) => w && t.includes(w));
+    });
+    if (hit) { hit.click(); return true; }
+    return false;
+  }, names);
+}
+
 async function clickByText(page, label) {
   return page.evaluate((want) => {
     const nodes = [...document.querySelectorAll('flt-semantics, [role=button], button, [aria-label]')];
@@ -76,7 +91,7 @@ async function clickByText(page, label) {
 
 async function connect(A, B, mA) {
   const rang = await h.actUntil('place',
-    async () => { await h.ensureRoom(A, ROOM); await ui.clickLabel(A.page, 'Call', { exact: true }).catch(() => {}); },
+    async () => { await h.ensureRoom(A, ROOM); await ui.clickControl(A.page, 'call').catch(() => {}); },
     async () => (await h.since(A.token, ROOM_ID, mA)).some((e) => e.type === mx.RING && e.sender === A.userId),
     { tries: 3, gap: 4000 });
   if (!rang) return false;
@@ -184,8 +199,8 @@ h.refuseIfAnotherRunIsLive();
 
   let offered = false;
   for (let i = 0; i < 10 && !offered; i++) {
-    offered = await ui.hasLabel(B.page, 'Return').catch(() => false) ||
-      /Return/.test(await text(B.page));
+    offered = await ui.hasControl(B.page, 'ret').catch(() => false) ||
+      await h.showsControl(B.page, 'ret');
     if (!offered) await wait(1500);
   }
   if (!offered) {
@@ -197,7 +212,19 @@ h.refuseIfAnotherRunIsLive();
   h.check('rejoin', 'B is offered the way back', offered, 'no Return banner');
 
   if (offered) {
-    for (let i = 0; i < 5; i++) { if (await clickByText(B.page, 'Return')) break; await wait(1200); }
+    // By l10n KEY, not by the English word: `calltester` learns English from
+    // Hindi, so its interface -- and this button -- is in Hindi. Asking for
+    // "Return" finds nothing and the scenario reads as a product that will not
+    // resume a call, when the button was on screen the whole time.
+    for (let i = 0; i < 5; i++) {
+      const took = await ui.clickControl(B.page, 'ret').then(() => true).catch(() => false);
+      // The fallback is locale-aware too. Leaving `clickByText(page,'Return')`
+      // here would keep the exact English-only path this fix exists to remove:
+      // when the key-based click cannot reach the overlay, we would be back to
+      // hunting for a word this account's interface does not use.
+      if (took || await clickAnyLabel(B.page, labels.labelsFor('callReturn'))) break;
+      await wait(1200);
+    }
     await wait(9000);
     await ensurePanel(B.page);
     const secs = await liveClock(B.page);
@@ -229,7 +256,8 @@ h.refuseIfAnotherRunIsLive();
     await wait(14000);
     let back = false;
     for (let i = 0; i < 10 && !back; i++) {
-      back = /Return/.test(await text(B.page));
+      // By key: B's interface is Hindi, so the English word is never there.
+      back = await h.showsControl(B.page, 'ret');
       if (!back) await wait(1500);
     }
     if (back) {

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-01 10:41:32.788756",
+    "@@last_modified": "2026-09-01 11:50:07.337451",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10590,5 +10590,20 @@
     "resetTargetLanguage": "目標言語をリセット",
     "resetBaseLanguage": "母国語をリセット",
     "selectedLanguageLevel": "言語レベルとして{level}を選択しました",
-    "resetLanguageLevel": "言語レベルをリセット"
+    "resetLanguageLevel": "言語レベルをリセット",
+    "callTranscriptSharedNotice": "この通話は書き起こされ、保存されます。通話後、あなたと相手が内容を確認できます。",
+    "callTranscriptTitle": "通話の書き起こし",
+    "callTranscriptLoadFailed": "書き起こしを読み込めませんでした",
+    "callTranscriptRetry": "再試行",
+    "callTranscriptStoppedEarly": "この通話は一度に読むには情報量が多すぎたため、一部が表示されていません。",
+    "callTranscriptNone": "{name}からの書き起こしはありません",
+    "callTranscriptSaidNothing": "{name}は何も話しませんでした",
+    "callTranscriptNothingRead": "{name}が話した内容から何も読み取れませんでした",
+    "callTranscriptNoSpeechDetected": "{name}から録音された内容は書き起こしのために送信されませんでした。このアプリは音声が検出されなかったと判断しましたが、誤っている可能性もあります。そのため、話された内容は不明です。",
+    "callTranscriptPartial": "{name}が話した内容の一部が欠落している可能性があります",
+    "callTranscriptByTime": "{time}まで",
+    "callTranscriptApproximateTimes": "「まで」と表示された発言は、その時刻またはそれ以前に話されました。それらの発言はその瞬間に表示されますが、実際にはもっと早く話された可能性があります。",
+    "callTranscriptUnstatedTimes": "一部の発言には時刻が表示されていません。それらを録音したデバイスは時刻の正確性を示さなかったため、会話中の表示順が間違っている可能性があります。",
+    "callTranscriptUnreconciledClocks": "これらの発言は、時計を比較できなかった2つのデバイスで録音されたため、時刻は表示されず、表示される順序が間違っている可能性があります。",
+    "callTranscriptOpen": "書き起こしを読む"
 }

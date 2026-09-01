@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-01 10:41:37.613820",
+    "@@last_modified": "2026-09-01 11:50:19.303550",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9906,5 +9906,20 @@
     "resetTargetLanguage": "Zresetuj język docelowy",
     "resetBaseLanguage": "Zresetuj język podstawowy",
     "selectedLanguageLevel": "Wybrano poziom języka: {level}",
-    "resetLanguageLevel": "Zresetuj poziom języka"
+    "resetLanguageLevel": "Zresetuj poziom języka",
+    "callTranscriptSharedNotice": "Ta rozmowa jest transkrybowana i zapisywana. Ty i druga osoba możecie ją później przeczytać.",
+    "callTranscriptTitle": "Transkrypcja rozmowy",
+    "callTranscriptLoadFailed": "Nie udało się załadować transkrypcji",
+    "callTranscriptRetry": "Spróbuj ponownie",
+    "callTranscriptStoppedEarly": "Ta rozmowa była zbyt długa, aby wyświetlić ją od razu w całości, więc część nie jest pokazana.",
+    "callTranscriptNone": "Brak transkrypcji od {name}",
+    "callTranscriptSaidNothing": "{name} nic nie powiedział(a)",
+    "callTranscriptNothingRead": "Nic nie można było odczytać z tego, co powiedział(a) {name}",
+    "callTranscriptNoSpeechDetected": "Nic nagranego od {name} nie zostało wysłane do transkrypcji: ta aplikacja nie wykryła w tym mowy i może się mylić, więc to, co zostało powiedziane, nie jest znane.",
+    "callTranscriptPartial": "Część tego, co powiedział(a) {name}, może brakować",
+    "callTranscriptByTime": "o {time}",
+    "callTranscriptApproximateTimes": "Wypowiedź oznaczona „o” danym czasie została wypowiedziana w tym czasie lub wcześniej. Te wypowiedzi są pokazane w tym momencie, więc mogły zostać wypowiedziane wcześniej.",
+    "callTranscriptUnstatedTimes": "Niektóre wypowiedzi nie pokazują czasu. Urządzenie, które je nagrało, nie podało, jak dokładne są jego czasy, więc ich miejsce w tej rozmowie może być błędne.",
+    "callTranscriptUnreconciledClocks": "Te wypowiedzi zostały nagrane na dwóch urządzeniach, których zegarów nie można było porównać, więc nie są wyświetlane żadne czasy, a kolejność, w jakiej się pojawiają, może być błędna.",
+    "callTranscriptOpen": "Przeczytaj transkrypcję"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-01 10:41:39.245124",
+    "@@last_modified": "2026-09-01 11:50:23.980349",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Rivendos gjuhën e synuar",
     "resetBaseLanguage": "Rivendos gjuhën bazë",
     "selectedLanguageLevel": "U zgjodh {level} si nivel gjuhe",
-    "resetLanguageLevel": "Rivendos nivelin e gjuhës"
+    "resetLanguageLevel": "Rivendos nivelin e gjuhës",
+    "callTranscriptSharedNotice": "Kjo thirrje transkriptohet dhe ruhet. Ju dhe personi tjetër mund ta lexoni më pas.",
+    "callTranscriptTitle": "Transkripti i thirrjes",
+    "callTranscriptLoadFailed": "Nuk u ngarkua dot transkripti",
+    "callTranscriptRetry": "Provo sërish",
+    "callTranscriptStoppedEarly": "Kjo thirrje kishte shumë për t'u lexuar menjëherë, kështu që një pjesë e saj nuk shfaqet.",
+    "callTranscriptNone": "Asnjë transkript nga {name}",
+    "callTranscriptSaidNothing": "{name} nuk tha asgjë",
+    "callTranscriptNothingRead": "Asgjë nuk mund të lexohej nga ajo që tha {name}",
+    "callTranscriptNoSpeechDetected": "Asgjë e regjistruar nga {name} nuk u dërgua për t'u transkriptuar: ky aplikacion nuk gjeti asnjë fjalë në të dhe mund të gabojë për këtë, kështu që ajo që u tha nuk dihet.",
+    "callTranscriptPartial": "Një pjesë e asaj që tha {name} mund të mungojë",
+    "callTranscriptByTime": "nga {time}",
+    "callTranscriptApproximateTimes": "Një radhë e shënuar \"nga\" një kohë u tha në ose para saj. Ato radhë shfaqen në atë moment, kështu që mund të jenë thënë më herët.",
+    "callTranscriptUnstatedTimes": "Disa radhë nuk tregojnë kohë. Pajisja që i regjistroi nuk tha sa të sakta janë kohët e saj, kështu që vendi ku ato ndodhen në këtë bisedë mund të jetë i gabuar.",
+    "callTranscriptUnreconciledClocks": "Këto radhë u regjistruan në dy pajisje, orët e të cilave nuk mund të krahasoheshin, kështu që nuk shfaqen kohë dhe rendi në të cilin shfaqen mund të jetë i gabuar.",
+    "callTranscriptOpen": "Lexo transkriptin"
 }

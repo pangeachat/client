@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-01 10:41:29.758107",
+    "@@last_modified": "2026-09-01 11:50:01.018828",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9858,5 +9858,20 @@
     "resetTargetLanguage": "Nollaa kohdekieli",
     "resetBaseLanguage": "Nollaa peruskieli",
     "selectedLanguageLevel": "Kielitasoksi valittu {level}",
-    "resetLanguageLevel": "Nollaa kielitaso"
+    "resetLanguageLevel": "Nollaa kielitaso",
+    "callTranscriptSharedNotice": "Tämä puhelu on litteroitu ja tallennettu. Sinä ja toinen henkilö voitte lukea sen jälkeenpäin.",
+    "callTranscriptTitle": "Puhelun litterointi",
+    "callTranscriptLoadFailed": "Litterointia ei voitu ladata",
+    "callTranscriptRetry": "Yritä uudelleen",
+    "callTranscriptStoppedEarly": "Tässä puhelussa oli liikaa luettavaa yhdellä kertaa, joten osa siitä ei näy.",
+    "callTranscriptNone": "Ei litterointia käyttäjältä {name}",
+    "callTranscriptSaidNothing": "{name} ei sanonut mitään",
+    "callTranscriptNothingRead": "Mitään ei voitu lukea siitä, mitä {name} sanoi",
+    "callTranscriptNoSpeechDetected": "Mitään käyttäjältä {name} nauhoitettua ei lähetetty litteroitavaksi: tämä sovellus ei havainnut siinä puhetta ja voi olla väärässä, joten sitä, mitä sanottiin, ei tiedetä.",
+    "callTranscriptPartial": "Osa siitä, mitä {name} sanoi, saattaa puuttua",
+    "callTranscriptByTime": "klo {time}",
+    "callTranscriptApproximateTimes": "Aikaan \"klo\" merkitty vuoro sanottiin kyseisenä aikana tai ennen sitä. Nämä vuorot näytetään kyseisellä hetkellä, joten ne on saatettu sanoa aiemmin.",
+    "callTranscriptUnstatedTimes": "Joissakin vuoroissa ei näy aikaa. Laitteet, jotka nauhoittivat ne, eivät kertoneet, kuinka tarkkoja niiden ajat ovat, joten niiden sijainti tässä keskustelussa voi olla väärä.",
+    "callTranscriptUnreconciledClocks": "Nämä vuorot nauhoitettiin kahdella laitteella, joiden kelloja ei voitu verrata, joten aikoja ei näytetä ja niiden järjestys voi olla väärä.",
+    "callTranscriptOpen": "Lue litterointi"
 }

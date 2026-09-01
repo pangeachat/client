@@ -18,6 +18,11 @@ Int16List frame(int ms, {double amplitude = 0.3, int sampleRate = 24000}) {
   return out;
 }
 
+/// When the run these chunkers stand for began. Any plausible Unix
+/// millisecond: what the tests assert is that a chunk sits an exact number of
+/// FRAMES after it, so the value itself only has to be nameable.
+const runStart = 1700000000000;
+
 int totalSamples(List<PcmChunk> chunks) =>
     chunks.fold(0, (sum, c) => sum + c.pcm.lengthInBytes ~/ 2);
 
@@ -29,6 +34,7 @@ void main() {
   }) => PcmChunker(
     sampleRate: 24000,
     channels: 1,
+    runStartedAtMs: runStart,
     targetDuration: target,
     maxDuration: max,
     minSilence: minSilence,
@@ -200,6 +206,7 @@ void main() {
       final c = PcmChunker(
         sampleRate: 16000,
         channels: 2,
+        runStartedAtMs: runStart,
         targetDuration: const Duration(milliseconds: 100),
         maxDuration: const Duration(milliseconds: 200),
         minSilence: const Duration(milliseconds: 50),
@@ -208,6 +215,76 @@ void main() {
       final chunk = c.flush()!;
       expect(chunk.sampleRate, 16000);
       expect(chunk.channels, 2);
+    });
+  });
+
+  group('where a chunk sits', () {
+    test('an oversized batch is positioned by frames, not by the loop', () {
+      // One add() can cut several chunks in a single pass. Reading a clock at
+      // each cut would stamp them all at whatever moment the loop reached them,
+      // which is a fact about CPU time rather than about when anybody spoke.
+      final c = chunker();
+      final emitted = c.add(frame(10000)); // 10s against a 4s ceiling
+      expect(emitted.length, greaterThanOrEqualTo(2));
+
+      var framesBefore = 0;
+      for (final chunk in emitted) {
+        expect(chunk.startedAtMs, runStart + framesBefore * 1000 ~/ 24000);
+        framesBefore += chunk.pcm.lengthInBytes ~/ 2;
+      }
+    });
+
+    test('positions do not drift over a long call at an awkward rate', () {
+      // 44.1 kHz in 7ms frames, so a chunk's length is not a whole number of
+      // milliseconds and the truncation has somewhere to hide. Summing each
+      // chunk's own duration loses a fraction per chunk and keeps it; a single
+      // conversion from an exact frame count loses nothing.
+      const rate = 44100;
+      final c = PcmChunker(
+        sampleRate: rate,
+        channels: 1,
+        runStartedAtMs: runStart,
+        targetDuration: const Duration(seconds: 1),
+        maxDuration: const Duration(seconds: 2),
+        minSilence: const Duration(milliseconds: 200),
+      );
+
+      final emitted = <PcmChunk>[];
+      for (var i = 0; i < 4000; i++) {
+        final quiet = i % 160 >= 130;
+        emitted.addAll(
+          c.add(frame(7, amplitude: quiet ? 0 : 0.3, sampleRate: rate)),
+        );
+      }
+      expect(emitted.length, greaterThan(10));
+
+      var framesBefore = 0;
+      var summed = runStart;
+      for (final chunk in emitted) {
+        expect(chunk.startedAtMs, runStart + framesBefore * 1000 ~/ rate);
+        framesBefore += chunk.pcm.lengthInBytes ~/ 2;
+        summed += chunk.duration.inMilliseconds;
+      }
+
+      expect(
+        summed,
+        isNot(runStart + framesBefore * 1000 ~/ rate),
+        reason: 'and summing truncated durations really would have drifted',
+      );
+    });
+
+    test('a run ends where its frames end, flushed or not', () {
+      // The caller that starts the NEXT run reads this as the floor that run
+      // cannot begin before, and it reads it either side of the flush. An
+      // answer that counted only the frames already cut into chunks would
+      // report the run ending before its last words.
+      final c = chunker();
+      c.add(frame(500));
+
+      final beforeFlush = c.endedAtMs;
+      expect(beforeFlush, runStart + 500);
+      c.flush();
+      expect(c.endedAtMs, beforeFlush);
     });
   });
 
@@ -249,7 +326,12 @@ void main() {
       // Android hands over the audio module's own rate, routinely 48 kHz, which
       // is three times the bytes for the same ninety seconds — and the route
       // caps a request by size, not by duration.
-      final c = PcmChunker(sampleRate: 48000, channels: 1, firstIndex: 0);
+      final c = PcmChunker(
+        sampleRate: 48000,
+        channels: 1,
+        firstIndex: 0,
+        runStartedAtMs: runStart,
+      );
       final emitted = <PcmChunk>[];
       // Two minutes of unbroken speech at the higher rate.
       for (var i = 0; i < 240; i++) {

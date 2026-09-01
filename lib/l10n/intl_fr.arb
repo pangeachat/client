@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-01 10:41:29.856984",
+    "@@last_modified": "2026-09-01 11:50:00.270147",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10176,5 +10176,20 @@
     "resetTargetLanguage": "Réinitialiser la langue cible",
     "resetBaseLanguage": "Réinitialiser la langue de base",
     "selectedLanguageLevel": "Niveau de langue {level} sélectionné",
-    "resetLanguageLevel": "Réinitialiser le niveau de langue"
+    "resetLanguageLevel": "Réinitialiser le niveau de langue",
+    "callTranscriptSharedNotice": "Cet appel est transcrit et enregistré. Vous et l'autre personne pourrez le relire après.",
+    "callTranscriptTitle": "Transcription de l'appel",
+    "callTranscriptLoadFailed": "Impossible de charger la transcription",
+    "callTranscriptRetry": "Réessayer",
+    "callTranscriptStoppedEarly": "Cet appel était trop long pour être lu en une seule fois, une partie n'est donc pas affichée.",
+    "callTranscriptNone": "Aucune transcription de {name}",
+    "callTranscriptSaidNothing": "{name} n'a rien dit",
+    "callTranscriptNothingRead": "Rien n'a pu être lu de ce que {name} a dit",
+    "callTranscriptNoSpeechDetected": "Rien de ce qui a été enregistré de {name} n'a été envoyé pour être transcrit : cette application n'y a détecté aucune parole et peut se tromper à ce sujet, donc ce qui a été dit n'est pas connu.",
+    "callTranscriptPartial": "Une partie de ce que {name} a dit pourrait manquer",
+    "callTranscriptByTime": "à {time}",
+    "callTranscriptApproximateTimes": "Un tour marqué \"à\" une heure a été dit à ou avant celle-ci. Ces tours sont affichés à ce moment-là, ils peuvent donc avoir été dits plus tôt.",
+    "callTranscriptUnstatedTimes": "Certains tours n'affichent pas d'heure. L'appareil qui les a enregistrés n'a pas précisé l'exactitude de ses heures, donc leur position dans cette conversation peut être erronée.",
+    "callTranscriptUnreconciledClocks": "Ces tours ont été enregistrés sur deux appareils dont les horloges n'ont pas pu être comparées, donc aucune heure n'est affichée et l'ordre dans lequel ils apparaissent peut être erroné.",
+    "callTranscriptOpen": "Lire la transcription"
 }

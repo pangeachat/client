@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 10:41:51.991440",
+    "@@last_modified": "2026-09-01 11:49:56.298260",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9948,5 +9948,20 @@
     "resetTargetLanguage": "Restablir idioma objectiu",
     "resetBaseLanguage": "Restablir idioma base",
     "selectedLanguageLevel": "S'ha seleccionat {level} com a nivell d'idioma",
-    "resetLanguageLevel": "Restablir nivell d'idioma"
+    "resetLanguageLevel": "Restablir nivell d'idioma",
+    "callTranscriptSharedNotice": "Aquesta trucada s'ha transcrit i desat. Tu i l'altra persona la podreu llegir després.",
+    "callTranscriptTitle": "Transcripció de la trucada",
+    "callTranscriptLoadFailed": "No s'ha pogut carregar la transcripció",
+    "callTranscriptRetry": "Torna-ho a provar",
+    "callTranscriptStoppedEarly": "Aquesta trucada tenia massa text per llegir-lo de cop, així que una part no es mostra.",
+    "callTranscriptNone": "No hi ha transcripció de {name}",
+    "callTranscriptSaidNothing": "{name} no ha dit res",
+    "callTranscriptNothingRead": "No s'ha pogut llegir res del que ha dit {name}",
+    "callTranscriptNoSpeechDetected": "No s'ha enviat res del que s'ha gravat de {name} per transcriure: aquesta aplicació no hi ha trobat cap veu i pot ser que s'equivoqui, així que no se sap què s'ha dit.",
+    "callTranscriptPartial": "Pot ser que falti una part del que ha dit {name}",
+    "callTranscriptByTime": "a les {time}",
+    "callTranscriptApproximateTimes": "Un torn marcat \"a les\" una hora es va dir en aquell moment o abans. Aquests torns es mostren en aquell moment, així que podrien haver-se dit abans.",
+    "callTranscriptUnstatedTimes": "Alguns torns no mostren l'hora. El dispositiu que els va gravar no va indicar la precisió de les seves hores, així que la seva posició en aquesta conversa podria ser incorrecta.",
+    "callTranscriptUnreconciledClocks": "Aquests torns es van gravar en dos dispositius els rellotges dels quals no es van poder comparar, així que no es mostren les hores i l'ordre en què apareixen podria ser incorrecte.",
+    "callTranscriptOpen": "Llegeix la transcripció"
 }

@@ -5,7 +5,215 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+
+/// The other side of a 1:1 conversation, or null when it cannot be told.
+///
+/// ONE answer, because several places need it and each one that worked it out
+/// for itself got a different answer. The transcript reader had a fallback for
+/// a missing m.direct, the direction of a call did not, and the card's own
+/// legitimacy check did not either -- so the same unsynced account data showed
+/// a real speaker no row at all in one place and the wrong arrow in another.
+///
+/// m.direct first: it records who the conversation is WITH and survives them
+/// leaving the room, which membership does not. Failing that, membership --
+/// server-enforced state, not content anyone can write.
+///
+/// Joined members are tried before ever-members. A pair with a third person
+/// who joined and left is still a pair now, and looking only at the wider set
+/// made it ambiguous and gave up. Ambiguity yields null rather than a guess:
+/// naming the wrong person is worse than naming nobody, in both consumers.
+String? callPeerOf(Room room) {
+  final direct = room.directChatMatrixID;
+  if (direct != null) return direct;
+
+  final me = room.client.userID;
+  Set<String> others(List<Membership> filter) => room
+      .getParticipants(filter)
+      .map((m) => m.id)
+      .where((id) => id != me)
+      .toSet();
+
+  final joined = others(const [Membership.join]);
+  if (joined.length == 1) return joined.single;
+
+  final ever = others(const [Membership.join, Membership.leave]);
+  return ever.length == 1 ? ever.single : null;
+}
+
+/// The two people a 1:1 call in [room] can have been between.
+///
+/// Local state only. A Matrix sender id is stamped by the homeserver rather
+/// than chosen by the writer, so a card or a half claiming to come from
+/// somebody else cannot pass a check against this set.
+///
+/// PRIVATE, and it stays private. This is the raw set, and reading it directly
+/// is how "the peer is unknown" gets mistaken for "the peer is nobody" -- it
+/// holds one id in that case, and `contains` then answers false for a real
+/// person. Every caller wants the RULE, which is [callCardCouldBeReal].
+Set<String> _callSides(Room room) => {?room.client.userID, ?callPeerOf(room)};
+
+/// Whether a newly arrived event may take over the room's chat-list line.
+///
+/// Only interesting when it and the line's current event are cards for the
+/// SAME call, which happens for real: the writer's card is sent at hangup, its
+/// delivery to the other device is delayed past the settle window by ordinary
+/// network flakiness, and that device writes a survivor card carrying the same
+/// call key and its own independently measured duration. Both are genuine.
+///
+/// The conversation keeps the earlier one. The list had no idea that rule
+/// existed and simply took whatever arrived last, so the two surfaces
+/// deterministically described one call with two different durations. Not a
+/// coincidence -- the survivor card is always the later one, so it always won
+/// the line.
+///
+/// Both cards must be able to vouch for themselves before this arbitrates:
+/// letting one that cannot displace one that can would remove a real record
+/// from the list, which is the thing the strict predicate exists to stop.
+bool callCardMayTakeTheChatListLine(Event? current, Event incoming) {
+  // Only call cards are ours to arbitrate. Everything else the room sends
+  // reaches the line the way it always did.
+  if (incoming.type != PangeaEventTypes.call) return true;
+
+  // A record advancing through its OWN lifecycle is not a rival card, and it
+  // must never be refused. A locally sent event is echoed at status sending
+  // and, if the send fails, echoed again as the same event id with status
+  // error. Comparing those two by rank is a tie -- same timestamp, same id --
+  // which refused the update and froze the line on the stale sending copy
+  // forever. The chat list then showed a cheerful "Voice call" for a call the
+  // peer never received, while the conversation correctly showed nothing.
+  //
+  // "The same record" also covers the hop from the local echo to the version
+  // the server accepted, which arrives under a DIFFERENT id: the echo is keyed
+  // by the transaction id, and the accepted event carries that transaction id
+  // back. Both echoes share one timestamp, so without this the tie would be
+  // settled by comparing a transaction id string against a `$`-prefixed event
+  // id -- which resolves correctly today only because this app's transaction
+  // ids happen to start with a letter, which sorts after `$`. That is luck,
+  // not an invariant, and rank arbitration was built for two independently
+  // authored rival cards rather than for one record confirming itself.
+  if (current != null && _sameRecord(current, incoming)) return true;
+
+  // Something that cannot produce a line must not be allowed to take it.
+  // Otherwise it wins the slot and renders as nothing, and a real call that
+  // IS being drawn in the conversation loses its summary entirely -- a blank
+  // row rather than a wrong one.
+  //
+  // This is the direction the previous version could not see. It asked
+  // whether EITHER side was unproven, which conflated two different things:
+  // unproven because nobody is identifiable, and unproven because this sender
+  // is identifiably not a participant. The first is a shrug and the second is
+  // a refusal, and treating them alike let a forged card blank the line for a
+  // real one.
+  if (!callCardCanBeSummarised(incoming)) return false;
+
+  if (current == null) return true;
+  if (!CallTimelineEvent.sameCall(incoming, current)) return true;
+
+  // The same question, asked of the card already holding the line. Rank
+  // arbitrates between two cards that can both be DRAWN; a card that renders
+  // as nothing has no line to defend, and letting it defend one kept the list
+  // showing a blank row for a call the conversation was drawing perfectly
+  // well.
+  //
+  // It happens on the ordinary path, not a hostile one. A local card enters
+  // the list while sending, its send then fails, and the peer's own card for
+  // the same call arrives afterwards -- later, so it loses on rank, so the
+  // errored copy kept the line forever. The conversation refuses to draw a
+  // card that never reached the homeserver and drew the peer's instead, and
+  // the two surfaces described one call differently again. The test above
+  // stops such a card TAKING the line; this stops it holding one.
+  if (!callCardCanBeSummarised(current)) return true;
+
+  // Between two cards for one call, rank decides. Rank alone, with no
+  // provenness test in front of it.
+  //
+  // There used to be one: where neither card could vouch for itself, this
+  // returned true and let the newcomer through, on the reasoning that the
+  // conversation might draw both so the list could not mirror a single
+  // choice. That reasoning let the last arrival win, and "unproven" is the
+  // ordinary state whenever the peer is not identifiable -- so a card from
+  // anyone at all, carrying a real call's key, took the line from the real
+  // one. The same shrug-is-not-a-refusal mistake this file has now made in
+  // four places: unknown was read as permission.
+  //
+  // Rank is the answer in every case, proven or not, because it is the rule
+  // the CONVERSATION uses. Deferring to it is what makes the two surfaces
+  // agree, which is the only reason this function exists -- and the earlier
+  // card wins, so a card arriving later can never displace one already shown.
+  return CallTimelineEvent.outranks(incoming, current);
+}
+
+/// Whether these are two sightings of ONE record rather than rival cards.
+///
+/// The same event id, or the local echo and the accepted event that carries
+/// its transaction id back.
+bool _sameRecord(Event current, Event incoming) =>
+    current.eventId == incoming.eventId ||
+    incoming.transactionId == current.eventId ||
+    current.transactionId == incoming.eventId;
+
+/// Whether the chat list would have anything to say about this card.
+///
+/// One answer, asked by the two places that need it: [callPreviewLine], which
+/// renders the line, and [callCardMayTakeTheChatListLine], which decides who
+/// holds it. They were separate judgements, and the gap between them is how a
+/// card that renders as nothing came to win the slot from one that renders.
+bool callCardCanBeSummarised(Event event) =>
+    !event.status.isError && callCardCouldBeReal(event);
+
+/// Whether this call card could have been written by somebody on the call.
+///
+/// COULD, not IS, and the difference is the whole of it. Anyone in the room
+/// can send an event of this type, so a card from a third party must not draw:
+/// it would put a call on screen that never happened, with a duration and a
+/// transcript affordance. But [callPeerOf] answers null when it cannot tell
+/// who the other side is -- an ordinary thing once that person leaves the room
+/// -- and reading that null as "they were not a participant" hid the real card
+/// for a call that really happened, on every surface, along with the
+/// transcript it opens.
+///
+/// Null is not a denial. When the peer is unknown nobody is excluded, which
+/// costs a forged card being DRAWN in a room we could not resolve, and saves
+/// every real call in a room the other person has left. Losing a real call is
+/// the worse of the two and much the likelier: the forgery needs a hostile
+/// room member, and the peer leaving needs nothing at all.
+///
+/// This answer is for SHOWING a card and nothing else. Deciding whether one
+/// card may displace another, or stand in for one not yet written, is a
+/// different question with the opposite risk -- see [callCardIsProvenReal].
+bool callCardCouldBeReal(Event event) {
+  final peer = callPeerOf(event.room);
+  if (peer == null) return true;
+  return _callSides(event.room).contains(event.senderId);
+}
+
+/// Whether this card is PROVEN to come from somebody on the call.
+///
+/// The same question as [callCardCouldBeReal] with the unknown resolved the
+/// other way, because the consequence runs the other way. Showing a card we
+/// cannot vouch for adds something visible and harmless. Letting a card we
+/// cannot vouch for suppress another, or count as one already written,
+/// REMOVES a real record -- and removal is silent, and takes the transcript's
+/// only tap target with it.
+///
+/// One principle, two answers: an unknown is resolved toward keeping records,
+/// never toward removing them.
+///
+/// The cost is stated plainly: when the peer cannot be identified, two
+/// genuine cards for one call both draw, because neither can prove itself
+/// entitled to suppress the other. A visible duplicate of a call that really
+/// happened is a far better failure than a real call disappearing, which is
+/// what the permissive answer allowed -- a third party who was in the room
+/// during the call knows the call key, and a card carrying it and an earlier
+/// timestamp suppressed the truthful one and told the survivor not to bother
+/// writing at all.
+bool callCardIsProvenReal(Event event) {
+  final peer = callPeerOf(event.room);
+  if (peer == null) return false;
+  return _callSides(event.room).contains(event.senderId);
+}
 
 /// Whether this account placed the call.
 ///
@@ -18,7 +226,34 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 bool callWasOutgoing(Event event) {
   final me = event.room.client.userID;
   final caller = event.content['caller'];
-  if (caller is String) return caller == me;
+
+  // Believed only when it names one of the two real sides of this call. It
+  // cannot be checked against the sender -- the card is written by the
+  // survivor as often as by the caller, which is the whole reason the field
+  // exists -- so it is checked against the only two people a 1:1 call can
+  // have. That rejects a stranger, and rejects a value that is not a user id
+  // at all.
+  //
+  // What it does NOT do, and cannot: stop the peer claiming that either of
+  // the two of us dialled. They are a real party to the call and they wrote
+  // the card, and there is no independent record of who pressed the button --
+  // if there were, this field would not be needed. So a modified peer client
+  // can still show the other person the wrong arrow for a call they were both
+  // on. That is the honest limit here: the label can be wrong between two
+  // people who were really talking, and no third party can be inserted.
+  // When the peer cannot be worked out we cannot confirm the name -- and
+  // rejecting it then discarded a TRUTHFUL value written by our own side: a
+  // survivor card correctly naming the peer who called, read back as a call we
+  // placed. An unconfirmable name is still only ever one of the two people in
+  // a 1:1 room, so believing it costs at most the arrow, which the peer could
+  // flip anyway.
+  final peer = callPeerOf(event.room);
+  if (caller is String && (caller == me || peer == null || caller == peer)) {
+    return caller == me;
+  }
+
+  // Anything else, including a non-string: fall back to the writer, which is
+  // where this stood before the field existed.
   return event.senderId == me;
 }
 
@@ -30,7 +265,18 @@ bool callWasOutgoing(Event event) {
 /// "No messages yet" on a room where two people had just talked -- and the
 /// SDK's own fallback for an unknown message type is no better ("User sent a
 /// pangea.call event"). A call is worth a line of its own.
-String callPreviewLine(L10n l10n, Event event) {
+/// Null when there is nothing to say about this call.
+///
+/// A send that failed is kept in the LOCAL timeline and marked errored;
+/// nothing retries it and the peer never receives it. The card in the
+/// conversation already refuses to draw one, because a record only one side
+/// holds reads as a call that never happened. The list had no such check, so
+/// the same event vanished from the conversation and stayed in the chat list
+/// as a plausible "Voice call - 2:14" the other person had never seen. The two
+/// surfaces are supposed to agree; that is the whole reason this function
+/// exists.
+String? callPreviewLine(L10n l10n, Event event) {
+  if (!callCardCanBeSummarised(event)) return null;
   final outgoing = callWasOutgoing(event);
   final declined = event.content['declined'] == true;
   final answered = event.content['answered'] == true;
@@ -44,7 +290,7 @@ String callPreviewLine(L10n l10n, Event event) {
   }
   final label = video ? l10n.callHistoryVideoCall : l10n.callHistoryVoiceCall;
   final duration = CallRecord.durationOf(event.content);
-  if (duration == Duration.zero) return label;
+  if (duration == null) return label;
   return '$label · ${CallTimelineEvent.formatDuration(duration)}';
 }
 
@@ -82,7 +328,11 @@ class CallTimelineEvent extends StatelessWidget {
 
   /// Read through the record's own rule, so the card and the thing that wrote
   /// it cannot disagree about what a duration is.
-  Duration get _duration => CallRecord.durationOf(event.content);
+  /// Null when the card states no usable duration. Distinct from a call that
+  /// really lasted no time: the card drew "0:00" for both, stating a length
+  /// the data did not support, while the chat list showed no length at all for
+  /// one of them -- two surfaces contradicting each other about one call.
+  Duration? get _duration => CallRecord.durationOf(event.content);
 
   /// Whether another card for the SAME call precedes this one.
   ///
@@ -99,24 +349,86 @@ class CallTimelineEvent extends StatelessWidget {
     return t != null && isDuplicateOfEarlier(event, t.events);
   }
 
+  /// Which of two cards for the SAME call the surfaces agree to keep.
+  ///
+  /// A card that records a CONVERSATION first, then earliest by
+  /// origin_server_ts, with the event id as the final tie-break so every
+  /// client picks the same one. Exported because the chat list has to reach
+  /// the same verdict as the conversation from a different direction: the
+  /// conversation sees the whole timeline, the list sees only the incoming
+  /// event and the one it already held.
+  ///
+  /// Time alone was right while both cards described one call the same way,
+  /// and wrong the moment they disagreed about whether it happened. Two
+  /// honest devices can only disagree in one direction: a conversation is
+  /// something a device SAW -- nobody writes `answered` without the other
+  /// person having been in the call with them -- while its absence is
+  /// something a device INFERRED from not finding them. So the card that saw
+  /// one is the better-informed of the two, whenever it arrives. Ordering on
+  /// time alone let a survivor's early "nobody was there" outrank, and
+  /// permanently hide, the caller's later card for a call they went on to
+  /// have.
+  static bool outranks(Event a, Event b) {
+    final aTalked = a.content['answered'] == true;
+    if (aTalked != (b.content['answered'] == true)) return aTalked;
+    final byTime = a.originServerTs.compareTo(b.originServerTs);
+    if (byTime != 0) return byTime < 0;
+    return a.eventId.compareTo(b.eventId) < 0;
+  }
+
+  /// Whether two events are cards for the same call.
+  ///
+  /// Through the record's own reading of the field, which is what makes an
+  /// EMPTY key mean "no identity" here as well. It used to mean an identity
+  /// two cards could share: two unrelated finished calls in one room, both
+  /// carrying '', read as one call described twice, and the later of them was
+  /// hidden as a duplicate -- a real call gone from the conversation, and its
+  /// transcript with it. The card's own read of the key had always refused
+  /// the empty string; these two comparisons were the dissent.
+  static bool sameCall(Event a, Event b) {
+    final key = CallRecord.keyOf(a.content);
+    return key != null &&
+        a.type == PangeaEventTypes.call &&
+        b.type == PangeaEventTypes.call &&
+        CallRecord.keyOf(b.content) == key;
+  }
+
   /// The rule itself, pure so it can be pinned directly: [event] is a
   /// duplicate iff some other sent call card in [all] carries the same key
   /// and sorts earlier -- origin_server_ts first, event id as the final
   /// tie-break, so every client picks the same survivor of a double-write.
   @visibleForTesting
   static bool isDuplicateOfEarlier(Event event, Iterable<Event> all) {
-    final key = event.content[CallRecord.callKeyField];
-    if (key is! String) return false;
+    if (CallRecord.keyOf(event.content) == null) return false;
+
+    // Only a card written by one of the two people who were on the call can
+    // suppress another. The key is the caller's membership event id, which
+    // both sides know DURING the call, long before either writes its card --
+    // so without this, anyone else in the room could write a card carrying the
+    // right key the moment the call starts, win the earliest-timestamp
+    // tie-break below, and permanently hide the truthful card behind their
+    // own. Setting `declined` on the forgery also removed the tap target that
+    // opens the transcript, so the real halves became unreachable while still
+    // existing. Sender ids are stamped by the homeserver, not by the writer,
+    // which is what makes this check worth anything.
     for (final other in all) {
       if (identical(other, event) || other.eventId == event.eventId) continue;
-      if (other.type != PangeaEventTypes.call) continue;
-      if (other.content[CallRecord.callKeyField] != key) continue;
+      // Through the shared match, not a second copy of it. Two independent
+      // implementations of "are these the same call" drift the moment one is
+      // edited.
+      if (!sameCall(event, other)) continue;
       if (other.status.isError) continue;
-      final byTime = other.originServerTs.compareTo(event.originServerTs);
-      if (byTime < 0 ||
-          (byTime == 0 && other.eventId.compareTo(event.eventId) < 0)) {
-        return true;
-      }
+      // PROVEN, not merely possible. Suppression removes a record, so a card
+      // that cannot vouch for itself does not get to do it: otherwise a third
+      // party who was in the room during the call -- and therefore knows the
+      // call key, which is ordinary room state -- could post a card with an
+      // earlier timestamp and make the truthful one disappear.
+      //
+      // When the peer cannot be identified this means two genuine cards for
+      // one call both draw. That is the trade, and it is the right way round:
+      // a visible duplicate of a real call beats a real call vanishing.
+      if (!callCardIsProvenReal(other)) continue;
+      if (outranks(other, event)) return true;
     }
     return false;
   }
@@ -131,12 +443,32 @@ class CallTimelineEvent extends StatelessWidget {
   /// the other cannot see.
   bool get _neverSent => event.status.isError;
 
+  /// The anchor both devices related their transcript halves to.
+  ///
+  /// Also the card's dedup key, and the same value for both: there is one
+  /// identity per call, and a transcript that hung off a different one could
+  /// not be found from the card that represents it.
+  String? get _callKey => CallRecord.keyOf(event.content);
+
+  /// Whether this card can lead anywhere.
+  ///
+  /// A call that never connected has nothing to transcribe, and a call whose
+  /// key was never learned has nothing to query -- both are unopenable, and
+  /// offering the tap anyway would promise a page that can only apologise.
+  ///
+  /// A call that DID connect may still turn out to have no halves. That is not
+  /// knowable without a read, so the tap is offered and the screen answers
+  /// honestly rather than the card guessing.
+  bool get _openable => _answered && !_declined && _callKey != null;
+
   @override
   Widget build(BuildContext context) {
     // Nothing, rather than a phantom. The call itself still happened; what
     // failed is the record of it, and a record only one side holds is worse
     // than no record -- it reads as an extra call that never took place.
     if (_neverSent) return const SizedBox.shrink();
+    // A card from somebody who was not on the call is not a record of it.
+    if (!callCardCouldBeReal(event)) return const SizedBox.shrink();
     if (_duplicateOfEarlier) return const SizedBox.shrink();
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
@@ -154,37 +486,76 @@ class CallTimelineEvent extends StatelessWidget {
         child: Material(
           color: theme.colorScheme.surface.withAlpha(128),
           borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(_icon(missed), size: 16, color: color),
-                const SizedBox(width: 7),
-                Flexible(
-                  child: Text(
-                    _label(l10n, missed),
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: color,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
+          // The whole card is the tap target, so the whole card is what has to
+          // announce itself. The notes icon below carries a Tooltip, and a
+          // tooltip is a MOUSE HOVER: it says nothing to a screen reader and
+          // nothing at all on a phone, which is where most calls happen. Before
+          // this, the only way to discover the transcript was to guess that a
+          // finished call was tappable.
+          child: Semantics(
+            button: _openable,
+            label: _openable ? l10n.callTranscriptOpen : null,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
+              // Null when there is nothing to open, which also removes the
+              // ripple: an affordance that leads nowhere is worse than none.
+              onTap: _openable ? () => _openTranscript(context) : null,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 6,
                 ),
-                if (connected) ...[
-                  Text(
-                    '  ${formatDuration(_duration)}',
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.onSurfaceVariant,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(_icon(missed), size: 16, color: color),
+                    const SizedBox(width: 7),
+                    Flexible(
+                      child: Text(
+                        _label(l10n, missed),
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: color,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                  ),
-                ],
-              ],
+                    if (connected && _duration != null) ...[
+                      Text(
+                        '  ${formatDuration(_duration!)}',
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                    if (_openable) ...[
+                      const SizedBox(width: 7),
+                      Tooltip(
+                        message: l10n.callTranscriptOpen,
+                        child: Icon(
+                          Icons.notes,
+                          size: 15,
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  /// Guarded by [_openable], so the key is known to be there. Read again
+  /// rather than captured, because the build that drew the card and the tap
+  /// that follows it are separate moments.
+  void _openTranscript(BuildContext context) {
+    final key = _callKey;
+    if (key == null) return;
+    showCallTranscript(context, room: event.room, callKey: key);
   }
 
   IconData _icon(bool missed) {
@@ -211,8 +582,15 @@ class CallTimelineEvent extends StatelessWidget {
 
   /// `M:SS`, or `H:MM:SS` once a call runs past an hour. Seconds are always two
   /// digits so the colon does not jump around as a call ticks over.
+  ///
+  /// Nothing shorter than no time. The arithmetic below cannot express a
+  /// negative -- Dart's modulo is never negative, so one second short of
+  /// nothing formats as "0:59" and a minute short as "59:00", both perfectly
+  /// plausible durations -- and the assumption lives HERE, so the clamp
+  /// belongs here too rather than at whichever call sites happened to
+  /// remember it.
   static String formatDuration(Duration d) {
-    final seconds = d.inSeconds;
+    final seconds = d.isNegative ? 0 : d.inSeconds;
     final s = (seconds % 60).toString().padLeft(2, '0');
     final m = (seconds ~/ 60) % 60;
     final h = seconds ~/ 3600;

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-01 10:41:29.671064",
+    "@@last_modified": "2026-09-01 11:49:59.607599",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9818,5 +9818,20 @@
     "resetTargetLanguage": "Lähtesta sihtkeel",
     "resetBaseLanguage": "Lähtesta baaskeel",
     "selectedLanguageLevel": "Keeletasemeks valitud {level}",
-    "resetLanguageLevel": "Lähtesta keeletase"
+    "resetLanguageLevel": "Lähtesta keeletase",
+    "callTranscriptSharedNotice": "See kõne on transkribeeritud ja salvestatud. Sina ja teine inimene saate seda hiljem lugeda.",
+    "callTranscriptTitle": "Kõne transkriptsioon",
+    "callTranscriptLoadFailed": "Transkriptsiooni ei õnnestunud laadida",
+    "callTranscriptRetry": "Proovi uuesti",
+    "callTranscriptStoppedEarly": "See kõne sisaldas liiga palju teksti, et seda korraga lugeda, seega osa sellest ei kuvata.",
+    "callTranscriptNone": "Transkriptsioon puudub {name} kohta",
+    "callTranscriptSaidNothing": "{name} ei öelnud midagi",
+    "callTranscriptNothingRead": "Midagi {name} öeldust ei õnnestunud lugeda",
+    "callTranscriptNoSpeechDetected": "Midagi {name} salvestatust ei saadetud transkribeerimiseks: see rakendus ei tuvastanud selles kõnet ja võib selles eksida, seega pole teada, mis öeldi.",
+    "callTranscriptPartial": "Osa {name} öeldust võib puududa",
+    "callTranscriptByTime": "kell {time}",
+    "callTranscriptApproximateTimes": "Aeg, mis on märgitud \"kell\" ajaga, öeldi sel ajal või enne seda. Need pöörded kuvatakse sel hetkel, seega võisid need olla öeldud varem.",
+    "callTranscriptUnstatedTimes": "Mõned pöörded ei näita aega. Seade, mis need salvestas, ei öelnud, kui täpsed selle ajad on, seega võib nende asukoht selles vestluses olla vale.",
+    "callTranscriptUnreconciledClocks": "Need pöörded salvestati kahel seadmel, mille kellasid ei saanud võrrelda, seega aegu ei kuvata ja nende ilmumise järjekord võib olla vale.",
+    "callTranscriptOpen": "Loe transkriptsiooni"
 }

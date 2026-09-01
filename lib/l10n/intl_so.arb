@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-01 10:41:39.332825",
+    "@@last_modified": "2026-09-01 11:50:25.822401",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Dib u deji luqadda bartilmaameedka",
     "resetBaseLanguage": "Dib u deji luqadda aasaasiga ah",
     "selectedLanguageLevel": "Waxaa loo doortay {level} heerka luqadda",
-    "resetLanguageLevel": "Dib u deji heerka luqadda"
+    "resetLanguageLevel": "Dib u deji heerka luqadda",
+    "callTranscriptSharedNotice": "Wicitaankan waa la qoray oo waa la kaydiyay. Adiga iyo qofka kaleba waad akhrisan kartaan gadaal.",
+    "callTranscriptTitle": "Qoraalka wicitaanka",
+    "callTranscriptLoadFailed": "Lama soo shubin karin qoraalka",
+    "callTranscriptRetry": "Isku day mar kale",
+    "callTranscriptStoppedEarly": "Wicitaankan waxa uu lahaa wax badan oo la akhriyo hal mar, sidaa darteed qayb ka mid ah lama tusin.",
+    "callTranscriptNone": "Ma jiro qoraal ka yimid {name}",
+    "callTranscriptSaidNothing": "{name} waxba ma odhan",
+    "callTranscriptNothingRead": "Waxba lagama akhrin karin wixii uu {name} yidhi",
+    "callTranscriptNoSpeechDetected": "Waxba lagama duubin {name} lama dirin in la qoro: app-kan wax hadal ah kuma helin, waana laga yaabaa inuu khalad ka yahay arrintaas, sidaa darteed lama oga wixii la yidhi.",
+    "callTranscriptPartial": "Qayb ka mid ah wixii uu {name} yidhi ayaa laga yaabaa inay maqan tahay",
+    "callTranscriptByTime": "markay ahayd {time}",
+    "callTranscriptApproximateTimes": "Hadalka lagu calaamadeeyay \"markay ahayd\" wakhti waxa la yidhi wakhtigaas ama ka hor. Hadalladaas waxa la tusay wakhtigaas, sidaa darteed waxa laga yaabaa in la yidhi goor hore.",
+    "callTranscriptUnstatedTimes": "Hadallada qaarkood ma muujiyaan wakhti. Qalabkii duubay ma sheegin sida saxda ah ee wakhtiyadiisu yihiin, sidaa darteed meesha ay ku jiraan wadahadalkan ayaa laga yaabaa inay khalad tahay.",
+    "callTranscriptUnreconciledClocks": "Hadalladan waxa lagu duubay laba qalab oo saacadahooda aan la isbarbar dhigi karin, sidaa darteed ma jiraan wakhtiyo la tusay, waxaana laga yaabaa in amarka ay ku soo muuqdaan uu khalad yahay.",
+    "callTranscriptOpen": "Akhri qoraalka"
 }

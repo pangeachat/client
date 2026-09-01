@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:matrix/matrix.dart' show Logs;
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
@@ -7,6 +9,66 @@ import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+
+/// Tolerance belongs where untrusted data ENTERS, and a defect in one field
+/// must never cost a field that does not depend on it.
+///
+/// A speech provider's response is untrusted in exactly the way room content
+/// is, and the parse below used to couple every field to every other one. A
+/// missing `word`, a non-numeric `confidence`, a NaN, a single non-map entry in
+/// `word_timings` -- any of them threw, the throw propagated out of the whole
+/// response parse, and the one caller that catches it marks the chunk FAILED
+/// and counts it lost. So one malformed timing entry cost up to ninety seconds
+/// of somebody's speech. Timings are what POSITION the words; they must never
+/// be able to destroy them.
+///
+/// So the fields BESIDE the text degrade to their absent value, and the fields
+/// that ARE the text still fail the parse. Those are not the same choice, and
+/// the difference is what the failure would claim. A transcript we cannot read
+/// leaves nothing to save, and reporting that chunk as SILENCE would be a
+/// statement about the speaker produced entirely from our own parse failure --
+/// the exact mistake `capture_refused` exists to prevent, one layer down. A
+/// chunk that fails is counted as lost, which is what actually happened.
+///
+/// Tolerance is decided by what an element MEANS to the reader, never by what
+/// makes the throw go away. Three rounds on this file each widened it a notch
+/// too far, and each notch cost truth at the edge.
+///
+/// A FIELD beside the text -- a position, a token, a confidence, a language tag
+/// -- DESCRIBES the words. It cannot stand in for them, so an unreadable one
+/// degrades to its absent value and the words still stand.
+///
+/// An ALTERNATIVE is the provider's own ranked reading of the SAME audio.
+/// Position there is a preference, not an identity, so an unreadable
+/// alternative is dropped and the next one stands: a lower-ranked reading of
+/// what was said still beats losing the chunk.
+///
+/// A RESULT is a different SEGMENT of the audio, and its position IS its
+/// identity. Every reader in all three repos takes `results[0].transcripts[0]`,
+/// so dropping a result promotes a different piece of the recording into the
+/// place the first one meant -- handing the reader speech from somewhere else
+/// and saying nothing about it. There is no tolerance to be had here. An
+/// unreadable result fails the parse, and the chunk is counted lost, which is
+/// what actually happened.
+///
+/// Dropping is not degrading to empty, and after a compaction the two become
+/// indistinguishable -- which is how a malformed first result followed by an
+/// empty second came to read as SILENCE. A response that arrived carrying
+/// content none of which could be read must never resolve to an empty model,
+/// because downstream that reads as the provider finding nothing sayable: a
+/// claim about the speaker produced entirely from our own failure.
+///
+/// A response that genuinely carried nothing is a different fact and parses
+/// fine. `results: []` is the frozen exhausted-fallback answer, and a result
+/// with `transcripts: []` is a provider that read the audio and heard nothing.
+/// Those are answers, not failures, and an empty list is not an unreadable one.
+
+/// A finite number, or null.
+///
+/// `is num` alone is not enough: NaN and infinity are numbers to it and then
+/// throw from `round()` and `toInt()`, which is how a provider's NaN reached
+/// the catch that marks a chunk lost.
+num? _finite(Object? value) => value is num && value.isFinite ? value : null;
 
 class SpeechToTextResponseModel extends BaseResponse {
   final List<SpeechToTextResult> results;
@@ -74,11 +136,32 @@ class SpeechToTextResponseModel extends BaseResponse {
     // HTTP 200, not an error. That's a valid, empty transcript, not a parse
     // failure, so it must not throw here (R0-2); the caller decides whether
     // an empty model is usable.
+    //
+    // Still a hard cast, because `results` is the payload container: a response
+    // with no readable container at all is not an answer about anybody.
+    final raw = json['results'] as List;
+
+    // Positional, and nothing is ever dropped or compacted here. A result is a
+    // SEGMENT of the audio and its index is its identity, so removing one would
+    // slide a different segment into the place every reader takes as the first.
+    // Failing costs this chunk; substituting would hand somebody speech from
+    // elsewhere in the recording and say nothing about it.
+    final results = <SpeechToTextResult>[];
+    for (var i = 0; i < raw.length; i++) {
+      final result = SpeechToTextResult.fromJson(raw[i]);
+      if (result == null) {
+        throw FormatException(
+          'Unreadable result at position $i of the speech-to-text response',
+        );
+      }
+      results.add(result);
+    }
+
     return SpeechToTextResponseModel(
-      results: (json['results'] as List)
-          .map((e) => SpeechToTextResult.fromJson(e))
-          .toList(),
-      service: json['service'] as String?,
+      results: results,
+      // Provenance, not content. A non-string here used to throw and take the
+      // transcript with it.
+      service: json['service'] is String ? json['service'] as String : null,
     );
   }
 
@@ -120,12 +203,61 @@ class SpeechToTextResult {
 
   SpeechToTextResult({required this.transcripts});
 
-  factory SpeechToTextResult.fromJson(Map<String, dynamic> json) =>
-      SpeechToTextResult(
-        transcripts: (json['transcripts'] as List)
-            .map((e) => Transcript.fromJson(e))
-            .toList(),
-      );
+  /// One result, or null when nothing in it can be read.
+  ///
+  /// Null is FATAL to the only caller, which throws naming this result's
+  /// position -- a result's index is its identity, so there is nothing safe to
+  /// do with one we cannot read. Null rather than throwing from here only so
+  /// that the position can be named in the message.
+  ///
+  /// A result whose `transcripts` list is EMPTY is not unreadable, and neither
+  /// is one whose only alternative carries an empty transcript. Both are a
+  /// provider that read the audio and heard nothing, which is an answer, and
+  /// they survive as one -- but only while nothing was dropped to get there.
+  static SpeechToTextResult? fromJson(Object? raw) {
+    if (raw is! Map) return null;
+    final entries = raw['transcripts'];
+    if (entries is! List) return null;
+
+    final transcripts = <Transcript>[];
+    // Whether anything was dropped from IN FRONT of the surviving first, which
+    // is the only drop that changes what the reader is handed. A malformed
+    // alternative sitting BEHIND a survivor was never going to be read, so it
+    // was never a stand-in for anything and its loss costs nothing.
+    var droppedBeforeFirst = false;
+    for (final entry in entries) {
+      final transcript = Transcript.fromJson(entry);
+      if (transcript == null) {
+        if (transcripts.isEmpty) droppedBeforeFirst = true;
+        continue;
+      }
+      transcripts.add(transcript);
+    }
+
+    // Dropping is only honest when a readable alternative SURVIVES to stand in
+    // the dropped one's place -- and the reader takes `transcripts.first`, so
+    // the stand-in has to be that one, and it has to carry words. An empty
+    // survivor is not a stand-in: it leaves the screen saying the speaker said
+    // NOTHING, which is a claim about a person produced from content we could
+    // not read.
+    //
+    // Asked of what was DROPPED, never of what survived. An empty transcript is
+    // a legitimate answer -- `hasUsableTranscript` exists to gate exactly that,
+    // and persisted embeds carry it -- so the two are told apart by whether we
+    // lost something, which is the only thing that distinguishes them. Reading
+    // the answer off the survivors is the same mistake the result level made.
+    //
+    // Scoped to drops AHEAD of the survivor, for the same reason the stand-in
+    // is the first one: a valid empty alternative followed by a malformed one
+    // is the provider saying it heard nothing, and counting that as a lost
+    // chunk turns legitimate silence into loss -- the same lie in the other
+    // direction.
+    if (droppedBeforeFirst &&
+        (transcripts.isEmpty || transcripts.first.text.isEmpty)) {
+      return null;
+    }
+    return SpeechToTextResult(transcripts: transcripts);
+  }
 
   Map<String, dynamic> toJson() => {
     "transcripts": transcripts.map((e) => e.toJson()).toList(),
@@ -157,20 +289,90 @@ class Transcript {
   /// Returns the number of words per minute rounded to one decimal place.
   double? get wordsPerMinute => wordsPerHr != null ? wordsPerHr! / 60 : null;
 
-  factory Transcript.fromJson(Map<String, dynamic> json) => Transcript(
-    text: json['transcript'],
-    confidence: json[ChoreoConstants.confidence] <= 100
-        ? json[ChoreoConstants.confidence]
-        : json[ChoreoConstants.confidence] / 100,
-    sttTokens: (json['stt_tokens'] as List)
-        .map((e) => STTToken.fromJson(e))
-        .toList(),
-    langCode: json[ModelKey.langCode],
-    wordsPerHr: json['words_per_hr'],
-    wordTimings: (json['word_timings'] as List?)
-        ?.map((e) => WordTiming.fromJson(e as Map<String, dynamic>))
-        .toList(),
-  );
+  /// One transcript alternative, or null when its TEXT cannot be read.
+  ///
+  /// The text is the only field left that can make an alternative unreadable;
+  /// everything beside it degrades to its absent value instead. Null rather
+  /// than throwing so a malformed alternative is dropped and the readable ones
+  /// still stand -- an empty text is not unreadable, it is a real answer that
+  /// `hasUsableTranscript` already reports as unusable.
+  static Transcript? fromJson(Object? raw) {
+    if (raw is! Map) return null;
+    final text = raw['transcript'];
+    if (text is! String) return null;
+
+    return Transcript(
+      text: text,
+      confidence: _confidence(raw[ChoreoConstants.confidence]),
+      sttTokens: _tokens(raw['stt_tokens']),
+      // Empty means UNKNOWN, and a caller that writes a language tag has to
+      // treat it as such rather than putting an empty tag on the wire.
+      langCode: raw[ModelKey.langCode] is String
+          ? raw[ModelKey.langCode] as String
+          : '',
+      wordsPerHr: _finite(raw['words_per_hr'])?.toInt(),
+      wordTimings: _timings(raw['word_timings']),
+    );
+  }
+
+  /// The transcript's own confidence, on the frozen 0..100 scale.
+  ///
+  /// Over 100 is the double-scaled shape this has always divided by 100. That
+  /// division produces a DOUBLE, which was then assigned straight to an int
+  /// field -- so a confidence of 250 threw a type error out of the parse and
+  /// cost the chunk its words, and an absent or non-numeric one threw before
+  /// the comparison even ran. Rounded and clamped now, like the per-word one,
+  /// so a conforming 0..100 int still passes through untouched.
+  static int _confidence(Object? raw) {
+    final value = _finite(raw);
+    if (value == null) return 0;
+    return (value <= 100 ? value : value / 100).round().clamp(0, 100);
+  }
+
+  /// The word timings, or null when any one of them cannot be read.
+  ///
+  /// ALL or nothing. Keeping the readable ones would hand the segment builder
+  /// a list that no longer accounts for the whole transcript -- which is not a
+  /// finer cut of it but a partial one, and a partial one moves where the cuts
+  /// land. Null is a state the whole pipeline already handles: it yields one
+  /// segment for the chunk, with no position claimed for it.
+  static List<WordTiming>? _timings(Object? raw) {
+    if (raw is! List) return null;
+    final timings = <WordTiming>[];
+    for (final entry in raw) {
+      final timing = WordTiming.fromJson(entry);
+      if (timing == null) return null;
+      timings.add(timing);
+    }
+    return timings;
+  }
+
+  /// The tokens, or empty when any one of them cannot be read.
+  ///
+  /// All or nothing for the same reason the timings are: a partial token list
+  /// under-credits the learner silently. Empty is a state this app already
+  /// produces and already handles -- the skip-tokenize send path embeds
+  /// `stt_tokens: []` deliberately, and every consumer gates on
+  /// [SpeechToTextResponseModel.hasUsableTokens].
+  ///
+  /// Caught HERE rather than by loosening [STTToken] or [PangeaToken]. Those
+  /// are read by the toolbar, by practice and by analytics, and making them
+  /// tolerant would let a real contract break degrade quietly everywhere
+  /// instead of failing where somebody would notice. Tolerance belongs at the
+  /// boundary untrusted data crosses, and nowhere further in.
+  static List<STTToken> _tokens(Object? raw) {
+    if (raw is! List) return const [];
+    try {
+      return [for (final entry in raw) STTToken.fromJson(entry)];
+    } catch (e, s) {
+      Logs().w(
+        'A speech-to-text token could not be read; tokens dropped',
+        e,
+        s,
+      );
+      return const [];
+    }
+  }
 
   Transcript copyWith({List<STTToken>? sttTokens}) => Transcript(
     text: text,
@@ -222,12 +424,36 @@ class WordTiming {
   /// or an out-of-range number) ever leaking a contract violation into the app.
   static int _normalizeConfidence(num raw) => raw.round().clamp(0, 100);
 
-  factory WordTiming.fromJson(Map<String, dynamic> json) => WordTiming(
-    word: json['word'] as String,
-    startTimeMs: (json['start_time_ms'] as num?)?.toInt(),
-    endTimeMs: (json['end_time_ms'] as num?)?.toInt(),
-    confidence: _normalizeConfidence(json['confidence'] as num),
-  );
+  /// One timing entry, or null when it cannot be read.
+  ///
+  /// Nullable rather than throwing, and a static method rather than a factory
+  /// because a factory cannot return null. See the note at the top of this
+  /// file: an entry we cannot parse costs the timings, never the words.
+  static WordTiming? fromJson(Object? raw) {
+    if (raw is! Map) return null;
+    final word = raw['word'];
+    final confidence = _finite(raw['confidence']);
+    if (word is! String || confidence == null) return null;
+
+    // Present-but-unreadable is NOT the same as absent. The contract allows a
+    // provider to omit a timestamp and this app is careful never to fabricate
+    // one, so reading a garbage timestamp as the omission would quietly hand
+    // the cutter a timing set that still reconstructs the text and still
+    // cuts -- at boundaries taken from a number nobody sent.
+    final start = raw['start_time_ms'];
+    final end = raw['end_time_ms'];
+    if ((start != null && _finite(start) == null) ||
+        (end != null && _finite(end) == null)) {
+      return null;
+    }
+
+    return WordTiming(
+      word: word,
+      startTimeMs: (start as num?)?.toInt(),
+      endTimeMs: (end as num?)?.toInt(),
+      confidence: _normalizeConfidence(confidence),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
     "word": word,

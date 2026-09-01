@@ -12,8 +12,11 @@ import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
+import 'package:fluffychat/routes/chat/calls/call_upload_gate.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 
@@ -109,6 +112,33 @@ class _FakeCalls extends CallService {
   void abandonJoin(int attempt) {}
 }
 
+/// A membership echo that never arrives -- not late, not ever. `announce()`
+/// times out the way a slow sync or a homeserver hiccup does, and state never
+/// catches up either, so the late-anchor retry ActiveCall runs in the
+/// background exhausts its bounded attempts with nothing to show for them.
+/// The ring this device was placing is never sent: no push goes out, and the
+/// other side's phone never rings.
+class _NeverEchoesCalls extends _FakeCalls {
+  _NeverEchoesCalls(super.client);
+
+  @override
+  Future<String?> announce() async => null;
+
+  @override
+  String? membershipEventIdIn(matrix.Room room) => null;
+}
+
+/// A call that cannot be got into at all: the SFU refuses the join, so the
+/// session fails before it ever reaches the call and learns nothing about who
+/// was or was not there.
+class _UnjoinableCalls extends _FakeCalls {
+  _UnjoinableCalls(super.client);
+
+  @override
+  Future<CallToken> join(matrix.Room room) async =>
+      throw StateError('the SFU refused this join');
+}
+
 class _FakeRoster extends CallRoster {
   _FakeRoster({required super.room, required super.myUserId});
 
@@ -116,7 +146,16 @@ class _FakeRoster extends CallRoster {
   bool connected = true;
 
   @override
-  Iterable<String> get remoteIdentities => identities;
+  RosterRead get read => RosterRead(
+    remotes: [
+      for (final id in identities)
+        RosterMember(
+          identity: id,
+          described: true,
+          joinedAt: DateTime.utc(2026, 8, 29, 12),
+        ),
+    ],
+  );
 
   @override
   bool get roomConnected => connected;
@@ -139,7 +178,7 @@ class _SpyRecord extends CallRecord {
         analytics: (eventId, uses, language) async {},
       );
 
-  final cards = <({bool answered, bool declined, bool write})>[];
+  final cards = <({bool answered, bool declined, bool write, bool video})>[];
 
   @override
   Future<void> writeCard({
@@ -156,11 +195,15 @@ class _SpyRecord extends CallRecord {
       answered: answered,
       declined: declined,
       write: writeTimelineEvent,
+      video: video,
     ));
   }
 }
 
 class _FakeMedia extends CallMedia {
+  /// A device clock the test states, so a latched anchor is exact.
+  _FakeMedia({super.now});
+
   _FakeRoster? fakeRoster;
 
   /// A camera that refuses to open, as a blocked web host or a denied prompt
@@ -187,8 +230,30 @@ class _FakeMedia extends CallMedia {
   CallRoster roster({required String myUserId}) =>
       fakeRoster ??= _FakeRoster(room: room, myUserId: myUserId);
 
+  /// Whether a camera toggle actually ends up publishing. False is the shape
+  /// the real media returns for a toggle it refused -- a call already released,
+  /// or no participant to publish through -- which returns just as quietly as a
+  /// toggle that worked.
+  bool cameraTakes = true;
+
+  /// Whether turning the microphone ON ends up publishing. False is the shape
+  /// the real media returns for an unmute it refused -- a call already
+  /// released, or no participant to publish through -- which comes back just as
+  /// quietly as one that worked.
+  bool micTakes = true;
+
+  /// What turning the microphone OFF answers, which is whether there was a
+  /// publication to stop at all. False is a mute that found nothing left to
+  /// mute -- a call whose room has already gone -- which the media documents as
+  /// a no-op rather than a failure.
+  bool muteFindsAPublication = true;
+
   @override
-  Future<void> setMicrophoneEnabled(bool on) async {}
+  Future<bool> setMicrophoneEnabled(bool on) async =>
+      on ? micTakes : muteFindsAPublication;
+
+  @override
+  Future<bool> setCameraEnabled(bool on) async => on && cameraTakes;
 
   @override
   Future<void> disconnect() async {}
@@ -203,6 +268,18 @@ class _RecordingRoom extends matrix.Room {
   _RecordingRoom({required super.id, required super.client});
 
   final List<Map<String, dynamic>> sent = [];
+  final List<String> sentTypes = [];
+
+  /// Only the call CARDS.
+  ///
+  /// A session writes more than one kind of event -- the card the conversation
+  /// shows, and this device's transcript half. Assertions about what the
+  /// conversation shows must say so, or adding any second event type breaks
+  /// them for reasons that have nothing to do with what they are testing.
+  List<Map<String, dynamic>> get cards => [
+    for (var i = 0; i < sent.length; i++)
+      if (sentTypes[i] == PangeaEventTypes.call) sent[i],
+  ];
 
   @override
   Future<String?> sendEvent(
@@ -216,7 +293,23 @@ class _RecordingRoom extends matrix.Room {
     bool displayPendingEvent = true,
   }) async {
     sent.add(content);
+    sentTypes.add(type);
     return '\$card';
+  }
+}
+
+/// Records the recorder gate, which is the half of a mute the screen never
+/// shows. On Android the tap runs upstream of LiveKit's publish mute, so this
+/// gate is the only thing that stops a muted learner being recorded.
+class _GateSpyCapture extends CallCaptureService {
+  _GateSpyCapture() : super(sink: _NullSink());
+
+  final List<bool> gate = [];
+
+  @override
+  void setMuted(bool muted) {
+    gate.add(muted);
+    super.setMuted(muted);
   }
 }
 
@@ -258,7 +351,7 @@ class _NullSink implements CallAudioSink {
   Future<void> deliver(PcmChunk chunk, {Duration? within}) async {}
 
   @override
-  Future<void> close() async {}
+  Future<bool> close() async => true;
 }
 
 Future<matrix.Client> _bareClient() async {
@@ -285,6 +378,10 @@ Future<matrix.Client> _bareClient() async {
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  // The session builds a sink on the process-wide upload gate, and one test
+  // here leaves a transcription that never answers. See call_record_test.
+  setUp(CallUploadGate.resetShared);
+
   Future<(CallSession, _FakeCalls, List<CallSession>)> build() async {
     final client = await _bareClient();
     final calls = _FakeCalls(client);
@@ -305,6 +402,83 @@ void main() {
     await pumpEventQueue();
     return (session, calls, released);
   }
+
+  test(
+    'a live session actually WRITES a transcript half to the room',
+    () async {
+      // The feature is only real if something calls it. Everything underneath
+      // was built and green while nothing in the app ever wrote a transcript:
+      // CallRecord.publishTranscript was optional and no caller supplied it. A
+      // suite that proves every part works and never checks the parts are
+      // connected reads as a working feature and ships a dark one.
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      // A device thirty seconds ahead of the SFU, latched at join exactly as
+      // the real media does when the local participant first appears.
+      final sfuJoin = DateTime.utc(2026, 8, 26, 9);
+      final media = _FakeMedia(
+        now: () => sfuJoin.add(const Duration(seconds: 30)),
+      )..anchorClocksTo(sfuJoin);
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+
+      final publish = session.transcriptPublisher;
+      expect(
+        publish,
+        isNotNull,
+        reason: 'the live call must supply a publisher, not leave it null',
+      );
+
+      await publish!(
+        callKey: r'$anchor:server',
+        segments: const [TranscriptSegment('hola que tal')],
+        chunksCaptured: 1,
+        chunksTranscribed: 1,
+        chunksLost: 0,
+        chunksSuppressed: 0,
+        captureRefused: false,
+        drainComplete: true,
+        langCode: 'es',
+      );
+
+      final index = room.sentTypes.indexOf(CallTranscriptContent.relType);
+      expect(
+        index,
+        isNonNegative,
+        reason: 'the publisher must reach the room, not merely exist',
+      );
+
+      final written = room.sent[index];
+      expect(written['call_key'], r'$anchor:server');
+      expect(written['m.relates_to'], {
+        'rel_type': CallTranscriptContent.relType,
+        'event_id': r'$anchor:server',
+      });
+      expect((written['segments'] as List).single['text'], 'hola que tal');
+
+      // And the join-time clock readings reach the event. This is the seam
+      // between the media that latched them and the half that carries them,
+      // and it is the one step the reader-side tests cannot see: without it
+      // every published half is unanchored, the correction never applies, and
+      // nothing else in the suite would notice.
+      expect(
+        CallTranscriptContent.fromJson(written)!.clockAnchor?.offsetMs,
+        30000,
+      );
+    },
+  );
 
   test('the call card is written at hangup, not after transcription', () async {
     // The card states the duration, who called and whether it was answered --
@@ -333,11 +507,78 @@ void main() {
     await pumpEventQueue();
 
     expect(
-      room.sent.map((e) => e['type'] ?? 'pangea.call'),
+      room.cards.map((e) => e['type'] ?? 'pangea.call'),
       isNotEmpty,
       reason: 'the card must not wait for speech-to-text that may never return',
     );
     expect(neverTranscribes.isCompleted, isFalse, reason: 'still transcribing');
+  });
+
+  test('a session can be fullscreen from its first frame', () async {
+    // A call answered on an account that is NOT the foregrounded one has no
+    // chat pane to be shown in -- its room belongs to another account, so
+    // navigating there lands on RoomUnavailablePanel. GlobalCallTile presents
+    // it instead, and renders the full CallPanel only when the session is
+    // fullscreen; otherwise it renders CallMiniTile, which has neither hangup
+    // nor mute.
+    //
+    // So the flag has to travel with CONSTRUCTION. Toggling it after
+    // `activeCall.value` is assigned would paint one frame of a call the
+    // learner has just answered and cannot end, because that assignment is
+    // what makes the tile build.
+    final client = await _bareClient();
+    final session = CallSession.start(
+      room: matrix.Room(id: '!r:server', client: client),
+      video: false,
+      callService: _FakeCalls(client),
+      transcribe: (request) async =>
+          SpeechToTextResponseModel(results: const []),
+      userL1: 'en',
+      userL2: 'es',
+      analytics: (eventId, uses, language) async {},
+      onReleased: (_) {},
+      fullscreen: true,
+      mediaOverride: _FakeMedia(),
+      captureOverride: CallCaptureService(sink: _NullSink()),
+    );
+    await pumpEventQueue();
+
+    expect(
+      session.fullscreen,
+      isTrue,
+      reason: 'the first frame must already be the full panel',
+    );
+
+    // And the default is unchanged, so every existing caller -- placing a
+    // call, answering on the active account, returning from a rejoin offer --
+    // behaves exactly as before.
+    final (ordinary, _, _) = await build();
+    expect(ordinary.fullscreen, isFalse);
+    session.endCall();
+    ordinary.endCall();
+  });
+
+  test('showing a call fullscreen twice keeps it fullscreen', () async {
+    // The floating tile is the only way back to a call whose room cannot be
+    // navigated to -- one on an account that is not the foregrounded one --
+    // and it hands that tap to this. A TOGGLE would turn fullscreen back off
+    // on a double tap, or on two callbacks arriving before the tile rebuilds,
+    // dropping the learner into CallMiniTile, which has neither hangup nor
+    // mute: a live call with no way to end it.
+    final (session, _, _) = await build();
+
+    session.showFullscreen();
+    expect(session.fullscreen, isTrue);
+    session.showFullscreen();
+    expect(session.fullscreen, isTrue, reason: 'showing is not toggling');
+
+    // And it un-minimizes, because a minimized call is not being shown.
+    session.minimize();
+    expect(session.fullscreen, isFalse);
+    session.showFullscreen();
+    expect(session.minimized, isFalse);
+    expect(session.fullscreen, isTrue);
+    session.endCall();
   });
 
   test('minimize, expand and fullscreen notify without overflowing', () async {
@@ -473,7 +714,7 @@ void main() {
 
         await session.survivorCheckNowForTest();
         expect(
-          room.sent,
+          room.cards,
           hasLength(1),
           reason: 'a real attempt has to leave a trace even so',
         );
@@ -485,12 +726,12 @@ void main() {
       session.timelineEventsOverride = () async => const [];
       session.endCall();
       await pumpEventQueue();
-      expect(room.sent, isEmpty, reason: 'the answerer never fast-writes');
+      expect(room.cards, isEmpty, reason: 'the answerer never fast-writes');
 
       await session.survivorCheckNowForTest();
 
-      expect(room.sent, hasLength(1), reason: 'the survivor card');
-      final card = room.sent.single;
+      expect(room.cards, hasLength(1), reason: 'the survivor card');
+      final card = room.cards.single;
       expect(card[CallRecord.callKeyField], r'$caller-membership');
       expect(card['answered'], isTrue);
       expect(card['declined'], isFalse);
@@ -515,7 +756,127 @@ void main() {
 
       await session.survivorCheckNowForTest();
 
-      expect(room.sent, isEmpty, reason: 'their card exists; nothing to add');
+      expect(room.cards, isEmpty, reason: 'their card exists; nothing to add');
+    });
+
+    test("a stranger's card does not stop the survivor writing", () async {
+      // The key is the caller's membership event id, which every room member
+      // can see DURING the call. Checking only type and key let anyone post a
+      // card carrying it inside the settle window: this check found it, the
+      // real survivor card was never written, and the timeline then correctly
+      // refused to draw the forgery -- leaving the call with no card from
+      // anybody, and its transcript unreachable.
+      final (session, room, _) = await answeredCall();
+      final client = room.client;
+      session.timelineEventsOverride = () async => [
+        matrix.Event(
+          type: PangeaEventTypes.call,
+          content: {CallRecord.callKeyField: r'$caller-membership'},
+          senderId: '@stranger:evil.example',
+          eventId: r'$forged',
+          originServerTs: DateTime.now(),
+          room: matrix.Room(id: '!r:server', client: client),
+        ),
+      ];
+      session.endCall();
+      await pumpEventQueue();
+
+      await session.survivorCheckNowForTest();
+
+      expect(room.cards, hasLength(1), reason: 'the real card is written');
+    });
+
+    test('a card whose send FAILED does not stop the survivor either', () async {
+      // It is kept locally and marked errored, nothing retries it, and the
+      // peer never receives it -- so treating it as already written suppresses
+      // the one write that would have reached them.
+      final (session, room, _) = await answeredCall();
+      final client = room.client;
+      session.timelineEventsOverride = () async => [
+        matrix.Event(
+          type: PangeaEventTypes.call,
+          content: {CallRecord.callKeyField: r'$caller-membership'},
+          senderId: '@friend:fakeServer.notExisting',
+          eventId: r'$never-sent',
+          originServerTs: DateTime.now(),
+          room: matrix.Room(id: '!r:server', client: client),
+          status: matrix.EventStatus.error,
+        ),
+      ];
+      session.endCall();
+      await pumpEventQueue();
+
+      await session.survivorCheckNowForTest();
+
+      expect(room.cards, hasLength(1));
+    });
+
+    test("an unvouchable card does not stop the survivor writing", () async {
+      // The other half of the same attack. This check decides whether to SKIP
+      // writing the real card, so a card that cannot prove it came from a
+      // party to the call must not be able to stop us -- otherwise a stranger
+      // who was in the room during the call posts one carrying the key, the
+      // survivor stays quiet, the timeline correctly refuses to draw the
+      // forgery, and the call ends with no card from anybody.
+      final (session, room, _) = await answeredCall();
+      final client = room.client;
+      client.accountData.remove('m.direct');
+      session.timelineEventsOverride = () async => [
+        matrix.Event(
+          type: PangeaEventTypes.call,
+          content: {CallRecord.callKeyField: r'$caller-membership'},
+          senderId: '@third:server',
+          eventId: r'$unvouchable',
+          originServerTs: DateTime.now(),
+          room: matrix.Room(id: '!r:server', client: client),
+        ),
+      ];
+      session.endCall();
+      await pumpEventQueue();
+
+      await session.survivorCheckNowForTest();
+
+      expect(room.cards, hasLength(1), reason: 'the real card is written');
+    });
+
+    test('a refused microphone is declared, not read as silence', () async {
+      // The state a phone lands in when the browser will not grant it a
+      // microphone -- exactly what the local two-device test produces. The
+      // sink sees no chunks, so the half looks identical to a muted
+      // speaker's, and the screen then tells the learner that somebody who
+      // talked the whole call "did not say anything": a confident claim about
+      // a person, sourced entirely from our own failure.
+      //
+      // Driven through the real hangup rather than by calling finish()
+      // directly. Passing the flag in by hand proves the parameter exists and
+      // nothing about whether the session fills it in, which is the part that
+      // was missing.
+      final (session, room, media) = await answeredCall();
+      media.refuseCapture = true;
+      session.timelineEventsOverride = () async => const [];
+      session.endCall();
+      await pumpEventQueue();
+
+      final index = room.sentTypes.indexOf(CallTranscriptContent.relType);
+      expect(index, isNonNegative, reason: 'a half was written');
+      expect(
+        room.sent[index]['capture_refused'],
+        isTrue,
+        reason: 'and it says the microphone never opened',
+      );
+    });
+
+    test('an ordinary call does not claim its microphone failed', () async {
+      // The counterweight: the flag must not fire on every call, or it would
+      // hedge every transcript and mean nothing.
+      final (session, room, _) = await answeredCall();
+      session.timelineEventsOverride = () async => const [];
+      session.endCall();
+      await pumpEventQueue();
+
+      final index = room.sentTypes.indexOf(CallTranscriptContent.relType);
+      expect(index, isNonNegative);
+      expect(room.sent[index]['capture_refused'], isFalse);
     });
 
     test('the survivor never invents an answered call', () async {
@@ -563,21 +924,29 @@ void main() {
       await pumpEventQueue();
       await session.survivorCheckNowForTest();
 
-      expect(room.sent, hasLength(1), reason: 'the attempt is still recorded');
+      expect(room.cards, hasLength(1), reason: 'the attempt is still recorded');
       expect(
-        room.sent.single['answered'],
+        room.cards.single['answered'],
         isFalse,
         reason: 'nobody answered it, and the survivor may not pretend they did',
       );
     });
 
-    test('a call that never had a peer schedules no survivor', () async {
-      final client = await _bareClient();
+    /// A plain CALLEE: rung, holding the caller's membership as the call's
+    /// key, with no glare anywhere near it.
+    Future<(CallSession, _RecordingRoom)> rungCallee(CallService calls) async {
+      final client = calls.client;
+      client.accountData['m.direct'] = matrix.BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@friend:fakeServer.notExisting': ['!r:server'],
+        },
+      );
       final room = _RecordingRoom(id: '!r:server', client: client);
       final session = CallSession.start(
         room: room,
         video: false,
-        callService: _FakeCalls(client),
+        callService: calls,
         transcribe: (request) async =>
             SpeechToTextResponseModel(results: const []),
         userL1: 'en',
@@ -591,14 +960,69 @@ void main() {
       );
       await pumpEventQueue();
       session.timelineEventsOverride = () async => const [];
+      return (session, room);
+    }
+
+    test('a caller who died leaves the CALLEE to write the card', () async {
+      // No glare, nothing exotic: the caller rings, its app dies before the
+      // hangup writes the card, and the callee answers into an empty call.
+      // The callee is the only device left that knows this call happened --
+      // it holds the ring and the key that came with it -- and it was
+      // refused, because the entitlement to stand in was read off "did
+      // somebody arrive" rather than "was somebody rung". A call that rang
+      // this very device left the conversation with nothing.
+      final client = await _bareClient();
+      final (session, room) = await rungCallee(_FakeCalls(client));
+      expect(
+        session.hadPeer,
+        isFalse,
+        reason: 'the caller was already gone when we got in',
+      );
+
       session.endCall();
       await pumpEventQueue();
+      expect(room.cards, isEmpty, reason: 'the callee never fast-writes');
 
       await session.survivorCheckNowForTest();
 
-      // A survivor writing a missed or declined outcome would be fabricating
-      // one it cannot know; only the caller decides those.
-      expect(room.sent, isEmpty);
+      expect(room.cards, hasLength(1), reason: 'and the ring left no trace');
+      final card = room.cards.single;
+      expect(
+        card['answered'],
+        isFalse,
+        reason: 'nobody was there, and this side may only say what it saw',
+      );
+      expect(card['declined'], isFalse, reason: 'nor invent a refusal');
+      expect(card[CallRecord.callKeyField], r'$caller-membership');
+      expect(
+        card['caller'],
+        '@friend:fakeServer.notExisting',
+        reason: 'the card names who called, not who wrote it',
+      );
+    });
+
+    test('a call that never got in writes nothing; it never looked', () async {
+      // The other half of the same rule, and the reason a ring alone is not
+      // enough. This session failed before it reached the call, so it knows
+      // only that a ring arrived -- nothing whatever about the caller, who
+      // may be alive and still ringing. "Nobody answered" from here is a
+      // guess, and one that would land EARLIER than the truthful card the
+      // caller writes if the learner simply taps answer again and talks.
+      final client = await _bareClient();
+      final (session, room) = await rungCallee(_UnjoinableCalls(client));
+      expect(
+        session.isFailed,
+        isTrue,
+        reason:
+            'the call has to have actually failed for this to mean '
+            'anything',
+      );
+
+      session.dismissFailed();
+      await pumpEventQueue();
+      await session.survivorCheckNowForTest();
+
+      expect(room.cards, isEmpty);
     });
   });
 
@@ -764,6 +1188,263 @@ void main() {
       expect(spy.cards.single.answered, isTrue);
       expect(spy.cards.single.declined, isFalse);
     });
+
+    // What the card says about video is read off the camera toggle's ANSWER,
+    // not off anything standing in for it. The claim goes in the conversation
+    // and stays there, so a camera that never opened must not be recorded as
+    // one that did -- and a toggle the media refuses returns just as quietly as
+    // one that worked.
+    Future<List<({bool answered, bool declined, bool write, bool video})>>
+    cardsAfterTurningTheCameraOn({required bool cameraTakes}) async {
+      final client = await _bareClient();
+      final media = _FakeMedia()..cameraTakes = cameraTakes;
+      final spy = _SpyRecord();
+      final session = CallSession.start(
+        room: matrix.Room(id: '!card:server', client: client),
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+        recordOverride: spy,
+      );
+      await pumpEventQueue();
+      final roster = media.fakeRoster!;
+      roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+      roster.recompute();
+      await pumpEventQueue();
+
+      await session.toggleCamera();
+
+      session.endCall();
+      await pumpEventQueue();
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+      await pumpEventQueue();
+      return spy.cards;
+    }
+
+    test('a camera that came on makes it a video call', () async {
+      final cards = await cardsAfterTurningTheCameraOn(cameraTakes: true);
+      expect(cards, hasLength(1));
+      expect(cards.single.video, isTrue);
+    });
+
+    test('a camera that did NOT come on leaves it a voice call', () async {
+      // The toggle refused and said so, which is the only difference between
+      // this call and the one above. Recorded as video, the conversation would
+      // show a video call the learner never had a picture on.
+      final cards = await cardsAfterTurningTheCameraOn(cameraTakes: false);
+      expect(cards, hasLength(1));
+      expect(
+        cards.single.video,
+        isFalse,
+        reason: 'a camera that never opened is not a video call',
+      );
+    });
+
+    test('a call that FAILED is recorded where every other one is', () async {
+      // Failure used to leave by a different door. `dismissFailed` recorded
+      // the call, which reaches the record but not the card path -- and the
+      // card path is where the immediate write and the survivor check both
+      // live. So a failed call could never recover a dead writer's card, and
+      // one whose learner closed the tab rather than pressing the X was
+      // recorded only if something else happened to dispose the session.
+      // Which of the two owns "what does this call leave" had drifted; the
+      // answer is whichever sees the call's fate, and only one of them does.
+      final client = await _bareClient();
+      final spy = _SpyRecord();
+      final session = CallSession.start(
+        room: matrix.Room(id: '!card:server', client: client),
+        video: false,
+        callService: _UnjoinableCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        // Rung, so this is a call that mattered whatever became of it.
+        notificationEventId: r'$ring',
+        callerMembershipEventId: r'$caller-membership',
+        mediaOverride: _FakeMedia(),
+        captureOverride: CallCaptureService(sink: _NullSink()),
+        recordOverride: spy,
+      );
+      await pumpEventQueue();
+
+      expect(session.isFailed, isTrue, reason: 'the call did fail');
+      // Deliberately BEFORE any dismissal: the record hears about the call
+      // when it ends, not when the learner gets round to closing it.
+      expect(
+        spy.cards,
+        hasLength(1),
+        reason: 'a failed call goes through the same door as an ended one',
+      );
+      expect(
+        spy.cards.single.write,
+        isFalse,
+        reason: 'a callee still writes no card of its own',
+      );
+      expect(spy.cards.single.answered, isFalse);
+    });
+  });
+
+  group('a ring that never went out', () {
+    // pangeachat/.github#410: the membership echo can time out and, unlike
+    // the ordinary case, the late-anchor retry ActiveCall runs afterwards can
+    // ALSO come back empty -- the ring is truly never sent, no push ever
+    // goes out, the callee's phone never rings. But reaching the SFU on our
+    // own end does not depend on that echo, so the call still climbs to
+    // CallStage.connected regardless. Treating "we reached the SFU" as proof
+    // the call mattered wrote "No answer" for a call the other person was
+    // never told about -- an answer nobody was ever asked to give.
+    test('leaves no card; nobody was ever told about it', () async {
+      final client = await _bareClient();
+      final calls = _NeverEchoesCalls(client);
+      final media = _FakeMedia();
+      final spy = _SpyRecord();
+      final session = CallSession.start(
+        room: matrix.Room(id: '!phantom:server', client: client),
+        video: false,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+        recordOverride: spy,
+      );
+      await pumpEventQueue();
+
+      // Nobody ever joined -- there was nobody left to answer, because
+      // nobody was ever told this call existed.
+      session.endCall();
+      await pumpEventQueue();
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+      await pumpEventQueue();
+
+      expect(
+        spy.cards,
+        isEmpty,
+        reason:
+            'the ring never reached the other side; recording "no answer" '
+            'would state an answer that was never asked for',
+      );
+    });
+
+    // The card is only half of what a call leaves behind. Nothing checked the
+    // other half, and the session's own refusal to record a phantom call used
+    // to be a return statement here rather than something the record was
+    // told -- so the record went on publishing and crediting on its own
+    // whenever anything called it directly, and what kept the room clean was
+    // that a ring which never went out leaves no membership to key a half to.
+    // Read through the ROOM, which sees every kind of event, rather than
+    // through a spy on one method.
+    test('and leaves nothing else in the room either', () async {
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!phantom:server', client: client);
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: _NeverEchoesCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: _FakeMedia(),
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+
+      session.endCall();
+      await pumpEventQueue();
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+      await pumpEventQueue();
+
+      expect(
+        room.sent,
+        isEmpty,
+        reason: 'a call nobody was told about writes nothing anywhere',
+      );
+    });
+
+    // The same broken ring on a call somebody HAD already been rung for. The
+    // peer rings us and their app dies before it can write the card; the
+    // membership they left behind still reads as calling, so our call back
+    // looks like glare and the tie-break hands the writing to the dead
+    // device. Our own ring never goes out either. Every ingredient of the
+    // survivor recovery is present -- and asking only whether OUR ring went
+    // out concluded the call had rung nobody, so the card was never written
+    // and the survivor check was never even scheduled. Their ring is a ring.
+    test('their ring still counts, even when ours never went out', () async {
+      final client = await _bareClient();
+      client.accountData['m.direct'] = matrix.BasicEvent(
+        type: 'm.direct',
+        content: {
+          '@friend:fakeServer.notExisting': ['!r:server'],
+        },
+      );
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final calls = _NeverEchoesCalls(client);
+      final session = CallSession.start(
+        room: room,
+        video: false,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        // We placed this one, so there is no ring of theirs to answer -- only
+        // the one that arrives mid-placement.
+        notificationEventId: null,
+        callerMembershipEventId: null,
+        mediaOverride: _FakeMedia(),
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      await calls.peerAlsoCalls(room);
+      await pumpEventQueue();
+      expect(
+        session.hadPeer,
+        isFalse,
+        reason: 'nobody ever joined; their device was already gone',
+      );
+
+      session.timelineEventsOverride = () async => const [];
+      session.endCall();
+      await pumpEventQueue();
+      await session.survivorCheckNowForTest();
+
+      expect(
+        room.cards,
+        hasLength(1),
+        reason: 'their ring reached this device, and it left no trace',
+      );
+      expect(
+        room.cards.single['answered'],
+        isFalse,
+        reason:
+            'nobody picked it up, and the survivor may not pretend they '
+            'did',
+      );
+      expect(
+        room.cards.single[CallRecord.callKeyField],
+        r'$their-membership',
+        reason: 'and it is stamped with the call BOTH sides would key on',
+      );
+    });
   });
 
   group('a call nobody can hear', () {
@@ -835,6 +1516,93 @@ void main() {
         captureOverride: CallCaptureService(sink: _NullSink()),
       );
       await pumpEventQueue();
+      expect(session.cameraOn, isTrue);
+    });
+  });
+
+  group('a toggle the media refused', () {
+    // Every one of these is a toggle that came back WITHOUT throwing, having
+    // changed nothing. Not throwing was read as having worked, so the screen
+    // and the recorder both followed the request rather than the effect.
+    Future<(CallSession, _FakeMedia, _GateSpyCapture)> callInProgress(
+      String id,
+    ) async {
+      final client = await _bareClient();
+      final media = _FakeMedia();
+      final capture = _GateSpyCapture();
+      final session = CallSession.start(
+        room: matrix.Room(id: id, client: client),
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: capture,
+      );
+      await pumpEventQueue();
+      return (session, media, capture);
+    }
+
+    test('an unmute that never published leaves the call muted', () async {
+      final (session, media, capture) = await callInProgress('!unmute:server');
+      await session.toggleMute();
+      expect(session.muted, isTrue, reason: 'the mute itself still works');
+
+      media.micTakes = false;
+      await session.toggleMute();
+
+      expect(
+        session.muted,
+        isTrue,
+        reason: 'the button must not say a learner nobody can hear is heard',
+      );
+      expect(
+        capture.gate,
+        [true],
+        reason: 'an unmute that did not take leaves the recorder gate up',
+      );
+    });
+
+    test('a mute still mutes when there was nothing left to stop', () async {
+      // The other half of the same answer, and the half an over-broad reading
+      // breaks: turning the microphone OFF answers whether there WAS a
+      // publication to stop, so false is a call whose room has already gone.
+      // Refusing the mute on that would leave a learner unable to mute at all.
+      final (session, media, capture) = await callInProgress('!mute:server');
+      media.muteFindsAPublication = false;
+
+      await session.toggleMute();
+
+      expect(session.muted, isTrue);
+      expect(capture.gate, [true], reason: 'and the gate goes up with it');
+    });
+
+    test('a camera that never opened leaves the control off', () async {
+      final (session, media, _) = await callInProgress('!cam3:server');
+      media.cameraTakes = false;
+
+      await session.toggleCamera();
+
+      expect(
+        session.cameraOn,
+        isFalse,
+        reason:
+            'a camera-on control offers to turn OFF a picture that never '
+            'came, and the first press then turns nothing off',
+      );
+    });
+
+    test('and a camera that did open turns the control on', () async {
+      // The control. Without it every assertion above would still hold with
+      // the toggle removed altogether.
+      final (session, _, _) = await callInProgress('!cam4:server');
+
+      await session.toggleCamera();
+
       expect(session.cameraOn, isTrue);
     });
   });

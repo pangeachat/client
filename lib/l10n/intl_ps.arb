@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-01 10:41:37.764684",
+    "@@last_modified": "2026-09-01 11:50:20.752979",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "هدف ژبه بیا تنظیم کړئ",
     "resetBaseLanguage": "اساس ژبه بیا تنظیم کړئ",
     "selectedLanguageLevel": "{level} د ژبې د کچې په توګه وټاکل شوه",
-    "resetLanguageLevel": "د ژبې کچه بیا تنظیم کړئ"
+    "resetLanguageLevel": "د ژبې کچه بیا تنظیم کړئ",
+    "callTranscriptSharedNotice": "دا زنګ لیکل شوی او خوندي شوی دی. تاسو او بل کس کولی شئ وروسته یې ولولئ.",
+    "callTranscriptTitle": "د زنګ متن",
+    "callTranscriptLoadFailed": "د متن بارول ممکن نه وو",
+    "callTranscriptRetry": "بیا هڅه وکړئ",
+    "callTranscriptStoppedEarly": "دا زنګ په یوځل د لوستلو لپاره ډیر څه درلودل، نو ځینې یې نه دي ښودل شوي.",
+    "callTranscriptNone": "له {name} څخه هیڅ متن نشته",
+    "callTranscriptSaidNothing": "{name} هیڅ ونه ویل",
+    "callTranscriptNothingRead": "له هغه څه څخه چې {name} وویل هیڅ شی نه لوستل کیږي",
+    "callTranscriptNoSpeechDetected": "له {name} څخه ثبت شوی هیڅ شی د لیکلو لپاره نه دی لیږل شوی: دې اپلیکیشن په دې کې هیڅ وینا ونه موندله او په دې اړه غلط کیدی شي، نو هغه څه چې ویل شوي ندي معلوم.",
+    "callTranscriptPartial": "د هغه څه یوه برخه چې {name} وویل ممکن ورکه وي",
+    "callTranscriptByTime": "د {time} لخوا",
+    "callTranscriptApproximateTimes": "یو وار چې د یو وخت لخوا \"نښه شوی\" و، په هغه وخت یا له هغه څخه مخکې ویل شوی و. دا وارونه په هغه شیبه کې ښودل شوي، نو ممکن مخکې ویل شوي وي.",
+    "callTranscriptUnstatedTimes": "ځینې وارونه هیڅ وخت نه ښیې. هغه وسیله چې دوی یې ثبت کړي، ونه ویل چې د هغې وختونه څومره دقیق دي، نو په دې خبرو اترو کې د دوی ځای ممکن غلط وي.",
+    "callTranscriptUnreconciledClocks": "دا وارونه په دوو وسیلو کې ثبت شوي چې ساعتونه یې پرتله کیدی نشي، نو هیڅ وخت نه ښودل کیږي او د دوی د څرګندیدو ترتیب ممکن غلط وي.",
+    "callTranscriptOpen": "متن ولولئ"
 }

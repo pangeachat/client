@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 10:41:37.671062",
+    "@@last_modified": "2026-09-01 11:50:19.416050",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10765,5 +10765,20 @@
     "resetTargetLanguage": "Redefinir idioma de destino",
     "resetBaseLanguage": "Redefinir idioma base",
     "selectedLanguageLevel": "{level} selecionado como nível de idioma",
-    "resetLanguageLevel": "Redefinir nível de idioma"
+    "resetLanguageLevel": "Redefinir nível de idioma",
+    "callTranscriptSharedNotice": "Esta chamada é transcrita e guardada. Você e a outra pessoa podem lê-la depois.",
+    "callTranscriptTitle": "Transcrição da chamada",
+    "callTranscriptLoadFailed": "Não foi possível carregar a transcrição",
+    "callTranscriptRetry": "Tentar novamente",
+    "callTranscriptStoppedEarly": "Esta chamada tinha muito para ler de uma só vez, por isso parte dela não é mostrada.",
+    "callTranscriptNone": "Nenhuma transcrição de {name}",
+    "callTranscriptSaidNothing": "{name} não disse nada",
+    "callTranscriptNothingRead": "Nada pôde ser lido do que {name} disse",
+    "callTranscriptNoSpeechDetected": "Nada gravado de {name} foi enviado para ser transcrito: esta aplicação não encontrou fala e pode estar errada, por isso o que foi dito não é conhecido.",
+    "callTranscriptPartial": "Parte do que {name} disse pode estar em falta",
+    "callTranscriptByTime": "por {time}",
+    "callTranscriptApproximateTimes": "Uma fala marcada \"por\" uma hora foi dita nessa hora ou antes. Essas falas são mostradas nesse momento, por isso podem ter sido ditas mais cedo.",
+    "callTranscriptUnstatedTimes": "Algumas falas não mostram a hora. O dispositivo que as gravou não indicou a exatidão dos seus horários, por isso a sua posição nesta conversa pode estar errada.",
+    "callTranscriptUnreconciledClocks": "Estas falas foram gravadas em dois dispositivos cujos relógios não puderam ser comparados, por isso não são mostradas horas e a ordem em que aparecem pode estar errada.",
+    "callTranscriptOpen": "Ler a transcrição"
 }

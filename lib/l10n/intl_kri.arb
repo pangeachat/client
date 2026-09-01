@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-01 10:41:34.118864",
+    "@@last_modified": "2026-09-01 11:50:11.258237",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Chenj di langwej we yu want fɔ lan",
     "resetBaseLanguage": "Chenj di langwej we yu dɔn sabi",
     "selectedLanguageLevel": "Dɛn pik {level} fɔ bi di langwej level",
-    "resetLanguageLevel": "Chenj di langwej level"
+    "resetLanguageLevel": "Chenj di langwej level",
+    "callTranscriptSharedNotice": "Dis kol gɛt transkrip ɛn dɛn sev am. Yu ɛn di ɔda pɔsin go ebul rid am afta.",
+    "callTranscriptTitle": "Kol transkrip",
+    "callTranscriptLoadFailed": "Dɛn nɔ ebul fɔ lod di transkrip",
+    "callTranscriptRetry": "Tray bak",
+    "callTranscriptStoppedEarly": "Dis kol bin gɛt bɔku tin fɔ rid insay wan tɛm, so sɔm pat nɔ de sho.",
+    "callTranscriptNone": "Nɔn transkrip frɔm {name}",
+    "callTranscriptSaidNothing": "{name} nɔ bin tɔk ɛnitin",
+    "callTranscriptNothingRead": "Nɔtin nɔ bin ebul fɔ rid frɔm wetin {name} bin tɔk",
+    "callTranscriptNoSpeechDetected": "Nɔtin we dɛn rikɔd frɔm {name} nɔ bin dɛn sɛn fɔ transkrayb: dis ap nɔ bin fɛn spich insay am ɛn i kin rɔng bɔt dat, so wetin dɛn bin tɔk nɔ dɛn no.",
+    "callTranscriptPartial": "Sɔm pat frɔm wetin {name} bin tɔk kin misin",
+    "callTranscriptByTime": "bay {time}",
+    "callTranscriptApproximateTimes": "Wan tɔn we dɛn mak \"bay\" wan tɛm bin dɛn tɔk na dat tɛm ɔ bifo dat. Dɛn tɔn dɛn de sho na dat mɔmɛnt, so dɛn kin bin tɔk am bifo dat.",
+    "callTranscriptUnstatedTimes": "Sɔm tɔn dɛn nɔ de sho tɛm. Di divays we rikɔd dɛn nɔ bin tɛl aw i gɛt di rait tɛm, so usay dɛn de insay dis kɔnvɛseshɔn kin rɔng.",
+    "callTranscriptUnreconciledClocks": "Dɛn rikɔd dɛn tɔn dɛn ya na tu divays dɛn we dɛn klɔk dɛn nɔ bin ebul fɔ kɔmpea, so nɔ tɛm nɔ de sho ɛn di ɔda we dɛn de apia kin rɔng.",
+    "callTranscriptOpen": "Rid di transkrip"
 }

@@ -11,6 +11,8 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
+import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
@@ -380,6 +382,409 @@ void main() {
         reason: 'the new call must not be built over a leave still running',
       );
     });
+
+    test('a newer leave does not UNRECORD an older one', () async {
+      // Two can be outstanding at once by the ordinary route: retract gives up
+      // waiting on its leave without stopping it, the redial that follows is
+      // abandoned mid-join, and the leave that abandonment issues for the
+      // session it was holding is a second one. Recorded in a single slot, the
+      // second replaces the first -- and when the second finishes it clears the
+      // slot, so the first is left in flight with nothing waiting for it. The
+      // call after that then sees nothing to wait for, publishes its membership
+      // into the session both leaves hold, and the first lands late and
+      // retracts a LIVE call's membership.
+      final service = CallService(
+        await bareClient(),
+        leaveWithin: const Duration(milliseconds: 50),
+      );
+      final older = Completer<void>();
+      final newer = Completer<void>();
+      service.setPendingLeaveForTest(older.future);
+      service.setPendingLeaveForTest(newer.future);
+      expect(
+        service.pendingLeaveCountForTest,
+        2,
+        reason: 'both leaves are in flight, so both are outstanding',
+      );
+
+      // The NEWER one finishes first, which is the ordering that hides the bug:
+      // it is the one that gets to say the room is clear.
+      newer.complete();
+      await pumpEventQueue();
+
+      expect(
+        service.pendingLeaveCountForTest,
+        1,
+        reason:
+            'the older leave is still running and still has to be waited for',
+      );
+
+      // And, as before, it is let go of only by its OWN completion.
+      older.complete();
+      await pumpEventQueue();
+      expect(service.hasPendingLeaveForTest, isFalse);
+    });
+
+    test(
+      'and the next call waits for the OLDER one, not just the last',
+      () async {
+        // The count above is bookkeeping; this is the thing the bookkeeping is
+        // for. A leave dropped from the tracker is exactly as invisible as one
+        // that was never recorded at all, and invisible is what lets a redial
+        // publish its membership straight into the session that leave holds.
+        final service = CallService(
+          await bareClient(),
+          leaveWithin: const Duration(seconds: 30),
+        );
+        var olderFinished = false;
+        service.setPendingLeaveForTest(
+          Future<void>.delayed(
+            const Duration(milliseconds: 100),
+          ).then((_) => olderFinished = true),
+        );
+        final newer = Completer<void>();
+        service.setPendingLeaveForTest(newer.future);
+        newer.complete();
+        await pumpEventQueue();
+
+        expect(
+          olderFinished,
+          isFalse,
+          reason:
+              'the older leave must still be running for this to prove '
+              'anything -- if it has already finished, the wait below is vacuous',
+        );
+
+        await service.settlePendingLeave();
+
+        expect(
+          olderFinished,
+          isTrue,
+          reason: 'the new call must not be built over a leave still running',
+        );
+      },
+    );
+
+    test('is recorded by the hangup that issued it, too', () async {
+      // The other site the funnel covers. A retract that gives up waiting has
+      // NOT stopped its leave, and the session is fetched by room -- so unless
+      // that leave is recorded here as well, the next call in this room races
+      // the very thing that is about to retract it. This site happened to get
+      // it right while the abandoned-join site did not; what makes that stay
+      // true is that there is now one way to leave, not two to keep in step.
+      final client = await bareClient();
+      final calls = CallService(
+        client,
+        leaveWithin: const Duration(milliseconds: 50),
+      );
+      final session = _LeavingSession(
+        client: client,
+        room: Room(id: '!r:fakeServer.notExisting', client: client),
+        voip: calls.voip,
+        backend: LiveKitBackend(
+          livekitServiceUrl: 'http://sfu:7980',
+          livekitAlias: 'alias',
+          e2eeEnabled: false,
+        ),
+        groupCallId: 'call-id',
+        application: 'm.call',
+        scope: 'm.room',
+      )..leaveGate = Completer<void>();
+      calls.adoptSessionForTest(session);
+
+      // Given up on after the bounded wait: the membership will expire by
+      // itself, and the learner is not locked out of calling meanwhile.
+      await expectLater(calls.retract(), completion(isFalse));
+
+      expect(session.leaves, 1);
+      expect(
+        calls.hasPendingLeaveForTest,
+        isTrue,
+        reason: 'the leave is still running, so the next call must wait for it',
+      );
+    });
+  });
+
+  group('a retract that answered without ever leaving', () {
+    test('does not latch every later retract onto its answer', () async {
+      // The in-flight latch is what makes concurrent hangups join one attempt.
+      // It is assigned by `_retracting ??= ...`, and the body it memoizes has a
+      // path that returns without ever awaiting -- there is no call to retract.
+      // An async body runs synchronously until its first await, so on that path
+      // the whole body, its `finally` included, finishes BEFORE the assignment
+      // lands: the clear runs first and the latch is set afterwards, with
+      // nothing left to clear it.
+      //
+      // Every later retract then returns that finished future -- true,
+      // immediately, having left nothing -- so the membership stays advertised
+      // and the session is never released. `isBusy` reads that session for
+      // ever: every new call refused, every incoming ring declined as busy.
+      final client = await bareClient();
+      final calls = CallService(
+        client,
+        leaveWithin: const Duration(milliseconds: 50),
+      );
+
+      // The path with nothing to retract: a hangup on a call that never came
+      // up, which is ordinary traffic rather than a corner.
+      await expectLater(
+        calls.retract(),
+        completion(isTrue),
+        reason: 'nothing was advertised, so nothing was left advertised',
+      );
+
+      // A real call now, and the hangup that has to take its membership back.
+      final session = _LeavingSession(
+        client: client,
+        room: Room(id: '!r:fakeServer.notExisting', client: client),
+        voip: calls.voip,
+        backend: LiveKitBackend(
+          livekitServiceUrl: 'http://sfu:7980',
+          livekitAlias: 'alias',
+          e2eeEnabled: false,
+        ),
+        groupCallId: 'call-id',
+        application: 'm.call',
+        scope: 'm.room',
+      );
+      calls.adoptSessionForTest(session);
+
+      await expectLater(calls.retract(), completion(isTrue));
+
+      expect(
+        session.leaves,
+        1,
+        reason: 'the second retract had a membership to take back and took it',
+      );
+      expect(
+        calls.hasJoinedSession,
+        isFalse,
+        reason: 'a session never released goes on refusing every later call',
+      );
+      expect(calls.isBusy, isFalse);
+    });
+  });
+
+  group('a retract that is running but holds no leave right now', () {
+    // `_leaving` holds a leave only while its future is outstanding, and its
+    // whenComplete removes one that FAILED just as readily as one that worked.
+    // A retract in flight is therefore not always holding a leave: between its
+    // retries it sleeps for a second, then two, with the failed one already
+    // forgotten -- and it is going to issue another. In that window join, whose
+    // only serialisation is settlePendingLeave, and announce, whose
+    // announceStillHolds re-check is nested INSIDE `if (pendingLeave != null)`,
+    // both see nothing to wait for and run straight over it.
+    //
+    // The same lesson as announceStillHolds, one step further along: what a
+    // redial has to be ordered behind is every leave this service is STILL
+    // GOING TO ISSUE, not merely the ones already on the wire.
+    const me = '@test:fakeServer.notExisting';
+    var roomSeq = 0;
+
+    /// A logged-in client whose room already carries OUR standing membership
+    /// for the call the session names.
+    ///
+    /// Required, and not scenery: the retract's catch asks whether the
+    /// membership is still there, and a leave that threw with nothing left in
+    /// state is treated as a write that landed -- which returns at once instead
+    /// of retrying. The retry loop, and the sleep inside it, exist only for a
+    /// leave that failed with the membership still standing.
+    Future<(_JoinSteps, Room, Room)> joinedWithStandingMembership() async {
+      final roomId = '!redial${roomSeq++}:fakeServer.notExisting';
+      final elsewhereId = '!elsewhere${roomSeq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                state: [
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: {
+                      'memberships': [
+                        {
+                          'call_id': 'call-id',
+                          'application': 'm.call',
+                          'scope': 'm.room',
+                          'foci_active': [
+                            {
+                              'type': 'livekit',
+                              'livekit_alias': 'alias',
+                              'livekit_service_url': 'http://sfu:7980',
+                            },
+                          ],
+                          'device_id': 'GHTYAJCE',
+                          'expires_ts': DateTime.now()
+                              .add(const Duration(minutes: 10))
+                              .millisecondsSinceEpoch,
+                          'membershipID': 'ours',
+                        },
+                      ],
+                    },
+                    senderId: me,
+                    eventId: '\$ours',
+                    originServerTs: DateTime.now(),
+                    stateKey: me,
+                  ),
+                ],
+              ),
+              elsewhereId: JoinedRoomUpdate(state: const []),
+            },
+          ),
+        ),
+      );
+      final calls = _JoinSteps(
+        client,
+        focusDiscovery: _FixedFocus(),
+        leaveWithin: const Duration(milliseconds: 50),
+      );
+      return (
+        calls,
+        client.getRoomById(roomId)!,
+        client.getRoomById(elsewhereId)!,
+      );
+    }
+
+    /// Drives a service to the window: a retract asleep between its retries,
+    /// with nothing outstanding in `_leaving` to show for it.
+    Future<(_JoinSteps, Room, Room, _LeavingSession, Future<bool>)>
+    retractSleepingBetweenRetries() async {
+      final (calls, room, elsewhere) = await joinedWithStandingMembership();
+      await calls.join(room);
+      final session = calls.session!;
+
+      // The first hangup gives up: its leave never answers, so the membership
+      // is left to expire and the session is KEPT for a later retry. That is
+      // what lets the redial below past join's guard at all -- an abandoned
+      // membership is discarded there rather than refusing the new call.
+      session.leaveGate = Completer<void>();
+      await expectLater(calls.retract(), completion(isFalse));
+      // And that leave has since finished, so nothing is outstanding. Without
+      // this the test would be exercising the window that IS covered.
+      session.leaveGate!.complete();
+      await pumpEventQueue();
+      expect(calls.hasPendingLeaveForTest, isFalse);
+
+      // The retry the design intends. Its first attempt fails with the
+      // membership still standing, which is what sends it round the loop.
+      session.leaveGate = null;
+      session.leaveThrowsInOrder.add(StateError('the server refused'));
+      final retracting = calls.retract();
+      await pumpEventQueue();
+
+      expect(
+        session.leaves,
+        2,
+        reason: 'the retry has issued its leave and had it refused',
+      );
+      expect(
+        calls.hasPendingLeaveForTest,
+        isFalse,
+        reason:
+            'the failed leave is forgotten, so this really is the window: a '
+            'retract in flight with nothing in _leaving to see it by',
+      );
+      return (calls, room, elsewhere, session, retracting);
+    }
+
+    test(
+      'a redial does not publish into the session it is about to leave',
+      () async {
+        final (calls, room, _, session, retracting) =
+            await retractSleepingBetweenRetries();
+
+        // The redial, inside the sleep. The session is fetched BY ROOM, so this
+        // is handed the very object the sleeping retract is holding.
+        await calls.join(room);
+        expect(calls.hasJoinedSession, isTrue);
+
+        final published = await calls.announce();
+
+        expect(
+          session.enters,
+          0,
+          reason:
+              'a membership published here is one the retract takes straight '
+              'back: the peer watches us join and immediately walk out',
+        );
+        expect(
+          published,
+          isNull,
+          reason:
+              'and the call is told it has no membership, rather than lied to',
+        );
+
+        await expectLater(retracting, completion(isTrue));
+      },
+    );
+
+    test('and it does not call a live call abandoned on its way out', () async {
+      // The third way the same sleeping retract can reach past its own call.
+      // `_abandonedMembership` is service-wide, so a retract that GIVES UP
+      // after a redial has landed says "abandoned" about the call now in hand.
+      // The cost is not cosmetic: `isBusy` is computed from that flag, so a
+      // live call reads as not-busy and a second incoming call can interrupt
+      // it, and the next join discards it as unretractable.
+      final (calls, _, elsewhere, session, retracting) =
+          await retractSleepingBetweenRetries();
+
+      // Every remaining attempt fails, so this retract gives up rather than
+      // succeeding -- that is the path that writes the flag.
+      session.leaveThrowsInOrder.addAll([
+        StateError('still refused'),
+        StateError('and again'),
+        StateError('and again'),
+      ]);
+
+      await calls.join(elsewhere);
+      expect(calls.sessionsByRoom[elsewhere.id], isNotNull);
+
+      await expectLater(retracting, completion(isFalse));
+
+      expect(
+        calls.isBusy,
+        isTrue,
+        reason:
+            'the call in the other room is up, so the service must still '
+            'refuse a second one',
+      );
+      expect(
+        calls.hasJoinedSession,
+        isTrue,
+        reason: 'and a later hangup must still have something to retract',
+      );
+    });
+
+    test('and its finally does not release a call it never held', () async {
+      // The other half. retract captured `_current` before it slept, and its
+      // finally clears `_current` on the way out without checking that it is
+      // still the same session -- so a call placed MEANWHILE, in another room,
+      // is dropped by the service: isBusy goes false with the call still up, a
+      // second incoming call can interrupt it, and nothing can retract it.
+      final (calls, _, elsewhere, _, retracting) =
+          await retractSleepingBetweenRetries();
+
+      await calls.join(elsewhere);
+      final live = calls.sessionsByRoom[elsewhere.id];
+      expect(live, isNotNull, reason: 'a different room, so a different call');
+
+      await expectLater(retracting, completion(isTrue));
+
+      expect(
+        calls.hasJoinedSession,
+        isTrue,
+        reason: 'the call in the other room is still up and still ours to end',
+      );
+      expect(calls.isBusy, isTrue);
+    });
   });
 
   group('a membership that could not be taken back', () {
@@ -459,6 +864,323 @@ void main() {
     });
   });
 
+  group('a join given up on between its own steps', () {
+    // An await is a place a decision can be superseded, and nothing after one
+    // may act on the decision that preceded it. The check used to sit BELOW the
+    // token request, so a join abandoned while the session was being fetched
+    // still spent a choreographer request on itself -- and if that request
+    // failed, the throw carried straight past the check and the session was
+    // never handed back.
+    Future<(_JoinSteps, Room)> service({
+      Object? tokenThrows,
+      Duration? leaveWithin,
+    }) async {
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(
+          user: '@test:fakeServer.notExisting',
+        ),
+        deviceId: 'GHTYAJCE',
+      );
+      final calls = _JoinSteps(
+        client,
+        focusDiscovery: _FixedFocus(),
+        leaveWithin: leaveWithin,
+      )..tokenThrows = tokenThrows;
+      return (calls, Room(id: '!r:fakeServer.notExisting', client: client));
+    }
+
+    test('never asks for a token on behalf of a call nobody wants', () async {
+      final (calls, room) = await service();
+      final joining = calls.join(room);
+      calls.duringFetch = () => calls.abandonJoin(calls.joinAttempt);
+
+      await expectLater(joining, throwsA(isA<StateError>()));
+
+      expect(calls.steps, [
+        'session',
+      ], reason: 'the token is a request made for a call that is over');
+      expect(
+        calls.session?.leaves,
+        1,
+        reason: 'and the session it did fetch is handed back',
+      );
+    });
+
+    test('hands its session back even when the token request fails', () async {
+      // The regression itself. The release lived below the token await, so a
+      // token that threw skipped it entirely -- and the membership stood until
+      // it expired minutes later, with nothing left holding a handle to it.
+      final (calls, room) = await service(
+        tokenThrows: StateError('the token service is down'),
+      );
+      final joining = calls.join(room);
+      calls.duringToken = () => calls.abandonJoin(calls.joinAttempt);
+
+      await expectLater(joining, throwsA(isA<StateError>()));
+
+      expect(calls.steps, ['session', 'token']);
+      expect(
+        calls.session?.leaves,
+        1,
+        reason: 'a failed token must not strand the session already fetched',
+      );
+    });
+
+    test(
+      'a token failure on a call still wanted is the caller\'s to hear',
+      () async {
+        // The other side of the same guard: when nothing superseded the join, the
+        // guard must return and let the original failure out rather than
+        // replacing it with an abandonment nobody performed.
+        final (calls, room) = await service(tokenThrows: const _TokenRefused());
+
+        await expectLater(calls.join(room), throwsA(isA<_TokenRefused>()));
+
+        expect(
+          calls.session?.leaves,
+          0,
+          reason: 'nothing superseded this join, so it hands nothing back',
+        );
+      },
+    );
+
+    test('hands it back as a leave the next call can wait for', () async {
+      // The rule: every leave this service issues has to be recorded as the
+      // pending one, because the next join's correctness is built out of
+      // waiting for it. This leave went straight at the session, so
+      // settlePendingLeave found nothing to wait for -- and since the session
+      // is fetched by ROOM, the redial was handed the very object this leave
+      // was about to retract. It published its membership into that session and
+      // then watched the older, dead call's leave take it back.
+      final (calls, room) = await service(
+        leaveWithin: const Duration(seconds: 30),
+      );
+      final held = Completer<void>();
+      // Released whatever happens, so an assertion that fails partway leaves no
+      // future parked on a gate nothing will ever open — otherwise a real
+      // regression here reports as a timeout minutes later instead of as the
+      // expectation it actually broke.
+      addTearDown(() {
+        if (!held.isCompleted) held.complete();
+      });
+
+      final abandoned = calls.join(room);
+      // Registered now rather than where it is awaited at the end: this join
+      // throws its abandonment the instant the held leave answers, and a
+      // rejection nothing is yet listening for is reported as an unhandled
+      // error instead of the expected one.
+      final abandonedThrows = expectLater(
+        abandoned,
+        throwsA(isA<StateError>()),
+      );
+      // The hangup lands inside the fetch, which is where the abandoned join
+      // hands the session back. The leave is held open from the same place, so
+      // the window it opens is a real one rather than one already closed.
+      calls.duringFetch = () {
+        calls.session!.leaveGate = held;
+        calls.abandonJoin(calls.joinAttempt);
+      };
+      await pumpEventQueue();
+      calls.duringFetch = null;
+
+      expect(calls.session?.leaves, 1, reason: 'precondition: it did leave');
+      expect(
+        calls.hasPendingLeaveForTest,
+        isTrue,
+        reason: 'a leave nothing recorded is invisible to the next join',
+      );
+
+      // The redial, while that leave is still in flight. It must park behind it
+      // rather than fetch the session out from under it.
+      final redial = calls.join(room);
+      await pumpEventQueue();
+      expect(
+        calls.steps,
+        ['session'],
+        reason: 'the second join must not reach the session mid-leave',
+      );
+
+      held.complete();
+      await expectLater(redial, completion(isA<CallToken>()));
+      expect(calls.steps, [
+        'session',
+        'session',
+        'token',
+      ], reason: 'and it goes ahead the moment the leave finishes');
+      await abandonedThrows;
+    });
+  });
+
+  group('an announce parked behind a leave that is still finishing', () {
+    // The same rule, on the other side of the join. The session is read before
+    // the wait, and the wait is bounded in SECONDS -- long enough for a hangup
+    // to run a whole retract inside it. Entering afterwards publishes a
+    // membership the service is no longer tracking, and the next retract finds
+    // nothing to leave and reports a success it has not achieved: the peer goes
+    // on seeing us in a call we left, until the membership expires.
+    test('does not enter a call that was retracted while it waited', () async {
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(
+          user: '@test:fakeServer.notExisting',
+        ),
+        deviceId: 'GHTYAJCE',
+      );
+      final calls = CallService(
+        client,
+        leaveWithin: const Duration(milliseconds: 50),
+      );
+      final session = _LeavingSession(
+        client: client,
+        room: Room(id: '!r:fakeServer.notExisting', client: client),
+        voip: calls.voip,
+        backend: LiveKitBackend(
+          livekitServiceUrl: 'http://sfu:7980',
+          livekitAlias: 'alias',
+          e2eeEnabled: false,
+        ),
+        groupCallId: 'call-id',
+        application: 'm.call',
+        scope: 'm.room',
+      );
+      calls.adoptSessionForTest(session);
+      // A leave from the LAST call that never answers, which is what parks the
+      // announce long enough for anything to happen inside it.
+      calls.setPendingLeaveForTest(Completer<void>().future);
+
+      final announcing = calls.announce();
+      await pumpEventQueue();
+      // The user hangs up. This one really does leave and really does release
+      // the session, so what the announce resumes into is the true end state.
+      await expectLater(calls.retract(), completion(isTrue));
+
+      expect(await announcing, isNull);
+      expect(
+        session.enters,
+        0,
+        reason: 'a membership published now is one nothing can take back',
+      );
+    });
+
+    test('does not enter a call whose own hangup is still leaving it', () async {
+      // The same wait, superseded by THIS call rather than by a later one. The
+      // snapshot was taken before the hangup, so the announce never sees the
+      // leave the hangup issues -- and `_current` still points at the session
+      // for the whole time that leave is in flight, because retract clears it
+      // only once the leave has finished. Identity therefore says yes to the
+      // one session in the world that must not be entered: the enter would land
+      // beside a leave for the SAME session, and whichever landed last would
+      // decide whether the peer sees a call we left or misses one we joined.
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(
+          user: '@test:fakeServer.notExisting',
+        ),
+        deviceId: 'GHTYAJCE',
+      );
+      final calls = CallService(client);
+      final session = _LeavingSession(
+        client: client,
+        room: Room(id: '!r:fakeServer.notExisting', client: client),
+        voip: calls.voip,
+        backend: LiveKitBackend(
+          livekitServiceUrl: 'http://sfu:7980',
+          livekitAlias: 'alias',
+          e2eeEnabled: false,
+        ),
+        groupCallId: 'call-id',
+        application: 'm.call',
+        scope: 'm.room',
+      );
+      // This call's own hangup will not finish on its own, which is what keeps
+      // it in flight when the announce wakes up.
+      session.leaveGate = Completer<void>();
+      calls.adoptSessionForTest(session);
+      // The leave from the LAST call, which is what the announce parks on. It
+      // is completed by hand below, so the announce wakes on the leave finishing
+      // rather than on a timeout -- no clock is being raced here.
+      final lastCallsLeave = Completer<void>();
+      calls.setPendingLeaveForTest(lastCallsLeave.future);
+
+      final announcing = calls.announce();
+      await pumpEventQueue();
+
+      final retracting = calls.retract();
+      await pumpEventQueue();
+      expect(
+        session.leaves,
+        1,
+        reason: 'the hangup has issued its leave and is waiting on it',
+      );
+
+      lastCallsLeave.complete();
+
+      expect(await announcing, isNull);
+      expect(
+        session.enters,
+        0,
+        reason: 'an enter here races the leave of the call it belongs to',
+      );
+
+      session.leaveGate!.complete();
+      await expectLater(retracting, completion(isTrue));
+    });
+  });
+
+  group('a membership waiting behind a leave', () {
+    // The predicate the wait re-establishes itself on. Identity is one of its
+    // three terms and the only one an earlier version had.
+    test('is still wanted only while nothing is taking it back', () {
+      expect(
+        CallService.announceStillHolds(
+          isCurrent: true,
+          retractInFlight: false,
+          membershipAbandoned: false,
+        ),
+        isTrue,
+        reason: 'the ordinary case: the call is up and nobody is leaving it',
+      );
+      expect(
+        CallService.announceStillHolds(
+          isCurrent: false,
+          retractInFlight: false,
+          membershipAbandoned: false,
+        ),
+        isFalse,
+        reason: 'a hangup ran to completion inside the wait',
+      );
+      expect(
+        CallService.announceStillHolds(
+          isCurrent: true,
+          retractInFlight: true,
+          membershipAbandoned: false,
+        ),
+        isFalse,
+        reason:
+            'the hangup is still leaving this very session, and retract clears '
+            'the current call only once its leave has finished',
+      );
+      expect(
+        CallService.announceStillHolds(
+          isCurrent: true,
+          retractInFlight: false,
+          membershipAbandoned: true,
+        ),
+        isFalse,
+        reason:
+            'the hangup gave up on the leave, which KEEPS the session so a '
+            'retry has something to retry with -- not so it can be entered',
+      );
+    });
+  });
+
   group('CallService availability', () {
     test('is unavailable when the homeserver advertises no RTC focus', () async {
       // The ordinary state for a homeserver without MatrixRTC configured. Callers
@@ -477,6 +1199,29 @@ void main() {
       final service = CallService(await bareClient());
       expect(service.voipConstructed, isFalse);
     });
+
+    test(
+      'the SDK is given this app\'s delayed-leave timings, not its own',
+      () async {
+        // The SDK's defaults put a delayed-leave restart on the wire every four
+        // seconds per participant, all devices on the same period. The numbers
+        // that replace them, and why the two had to move together, are derived in
+        // call_timeouts_test.dart; this is the wiring -- without it every one of
+        // those numbers is a constant nothing reads.
+        final service = CallService(await bareClient());
+        final timeouts = service.voip.timeouts!;
+
+        expect(timeouts.delayedEventApplyLeave, CallDelayedLeave.applyLeave);
+        expect(
+          timeouts.delayedEventRestart,
+          greaterThanOrEqualTo(CallDelayedLeave.minRestart),
+        );
+        expect(
+          timeouts.delayedEventRestart,
+          lessThanOrEqualTo(CallDelayedLeave.maxRestart),
+        );
+      },
+    );
 
     test(
       'joining without a focus fails loudly rather than half-starting a call',
@@ -1982,6 +2727,112 @@ class _ThrowsAfterTheWrite extends LiveKitBackend {
   @override
   Future<void> dispose(GroupCallSession groupCall) async =>
       throw StateError('releasing the backend failed');
+}
+
+/// A homeserver that advertises a focus, without the `.well-known` round trip —
+/// so a test about the steps AFTER discovery does not have to serve one.
+class _FixedFocus extends RtcFocusDiscovery {
+  @override
+  Future<RtcFocus?> discover(Uri homeserver) async =>
+      const RtcFocus(serviceUrl: 'http://sfu:7980');
+}
+
+/// Records whether a session was handed back, and whether anything entered it,
+/// without a live SFU behind either.
+class _LeavingSession extends GroupCallSession {
+  _LeavingSession({
+    required super.client,
+    required super.room,
+    required super.voip,
+    required super.backend,
+    required super.groupCallId,
+    required super.application,
+    required super.scope,
+  });
+
+  int leaves = 0;
+  int enters = 0;
+
+  /// Holds a leave open, so what the service does WHILE one is still in flight
+  /// is observable. Null means it answers at once, which is what every test
+  /// that does not care about the window gets.
+  Completer<void>? leaveGate;
+
+  /// What each successive leave does, oldest first. An entry is thrown by the
+  /// attempt that takes it; once the list is empty every leave succeeds.
+  ///
+  /// A leave that FAILS is the only way into the retract's retry loop, and the
+  /// sleep between its attempts is a window nothing else can reach.
+  final List<Object> leaveThrowsInOrder = [];
+
+  @override
+  Future<void> leave() async {
+    leaves++;
+    await leaveGate?.future;
+    if (leaveThrowsInOrder.isNotEmpty) throw leaveThrowsInOrder.removeAt(0);
+  }
+
+  @override
+  Future<void> enter({WrappedMediaStream? stream}) async => enters++;
+}
+
+/// A token failure that has nothing to do with the join being abandoned, so the
+/// two can be told apart by type.
+class _TokenRefused implements Exception {
+  const _TokenRefused();
+}
+
+/// Drives the two network steps of joining, so the checks BETWEEN them are
+/// observable. Neither step can be stood up here: one needs a live SFU and the
+/// other the choreographer.
+class _JoinSteps extends CallService {
+  _JoinSteps(super.client, {super.focusDiscovery, super.leaveWithin});
+
+  final List<String> steps = [];
+
+  /// Run INSIDE the step it is named for, so a hangup lands exactly where the
+  /// ordering under test puts it.
+  void Function()? duringFetch;
+  void Function()? duringToken;
+
+  Object? tokenThrows;
+
+  /// The first session this fetched, for the tests that only ever use one room.
+  _LeavingSession? session;
+
+  /// One session per ROOM, which is how the real one is fetched: a direct
+  /// message holds at most one call, so two joins in the same room are handed
+  /// the very same object and two joins in different rooms are not.
+  final Map<String, _LeavingSession> sessionsByRoom = {};
+
+  @override
+  Future<GroupCallSession> fetchSession(Room room, RtcFocus focus) async {
+    steps.add('session');
+    final fetched = sessionsByRoom.putIfAbsent(
+      room.id,
+      () => _LeavingSession(
+        client: client,
+        room: room,
+        voip: voip,
+        backend: focus.backendForRoom(room.id),
+        groupCallId: 'call-id',
+        application: 'm.call',
+        scope: 'm.room',
+      ),
+    );
+    session ??= fetched;
+    duringFetch?.call();
+    return fetched;
+  }
+
+  @override
+  Future<CallToken> requestToken(Room room, RtcFocus focus) async {
+    steps.add('token');
+    duringToken?.call();
+    final failure = tokenThrows;
+    if (failure != null) throw failure;
+    return const CallToken(jwt: 'jwt', url: 'ws://sfu');
+  }
 }
 
 /// Discovery held open so a test can dispose the service mid-lookup.

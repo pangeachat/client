@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-01 10:41:29.402785",
+    "@@last_modified": "2026-09-01 11:49:59.242452",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8040,5 +8040,20 @@
     "resetTargetLanguage": "Restablecer idioma objetivo",
     "resetBaseLanguage": "Restablecer idioma base",
     "selectedLanguageLevel": "{level} seleccionado como nivel de idioma",
-    "resetLanguageLevel": "Restablecer nivel de idioma"
+    "resetLanguageLevel": "Restablecer nivel de idioma",
+    "callTranscriptSharedNotice": "Esta llamada se transcribe y se guarda. Tú y la otra persona pueden leerla después.",
+    "callTranscriptTitle": "Transcripción de la llamada",
+    "callTranscriptLoadFailed": "No se pudo cargar la transcripción",
+    "callTranscriptRetry": "Intentar de nuevo",
+    "callTranscriptStoppedEarly": "Esta llamada tenía demasiado para leer de una vez, por lo que parte de ella no se muestra.",
+    "callTranscriptNone": "No hay transcripción de {name}",
+    "callTranscriptSaidNothing": "{name} no dijo nada",
+    "callTranscriptNothingRead": "No se pudo leer nada de lo que dijo {name}",
+    "callTranscriptNoSpeechDetected": "Nada de lo grabado de {name} fue enviado para transcribir: esta aplicación no encontró voz en ello y puede estar equivocada, por lo que no se sabe lo que se dijo.",
+    "callTranscriptPartial": "Parte de lo que dijo {name} puede faltar",
+    "callTranscriptByTime": "por {time}",
+    "callTranscriptApproximateTimes": "Un turno marcado \"por\" una hora se dijo en o antes de ese momento. Esos turnos se muestran en ese momento, por lo que pueden haber sido dichos antes.",
+    "callTranscriptUnstatedTimes": "Algunos turnos no muestran la hora. El dispositivo que los grabó no indicó cuán exactas son sus horas, por lo que el lugar que ocupan en esta conversación puede ser incorrecto.",
+    "callTranscriptUnreconciledClocks": "Estos turnos se grabaron en dos dispositivos cuyos relojes no pudieron compararse, por lo que no se muestran las horas y el orden en que aparecen puede ser incorrecto.",
+    "callTranscriptOpen": "Leer la transcripción"
 }

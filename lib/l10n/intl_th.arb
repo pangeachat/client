@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-01 10:41:40.161066",
+    "@@last_modified": "2026-09-01 11:50:28.289604",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10453,5 +10453,20 @@
     "resetTargetLanguage": "รีเซ็ตภาษาเป้าหมาย",
     "resetBaseLanguage": "รีเซ็ตภาษาหลัก",
     "selectedLanguageLevel": "เลือกระดับภาษา {level}",
-    "resetLanguageLevel": "รีเซ็ตระดับภาษา"
+    "resetLanguageLevel": "รีเซ็ตระดับภาษา",
+    "callTranscriptSharedNotice": "การโทรนี้ถูกถอดเสียงและบันทึกไว้ คุณและอีกฝ่ายสามารถอ่านได้ในภายหลัง",
+    "callTranscriptTitle": "บทสนทนาจากการโทร",
+    "callTranscriptLoadFailed": "ไม่สามารถโหลดบทสนทนาได้",
+    "callTranscriptRetry": "ลองอีกครั้ง",
+    "callTranscriptStoppedEarly": "การโทรนี้มีเนื้อหามากเกินกว่าที่จะอ่านได้ในครั้งเดียว ดังนั้นจึงแสดงเพียงบางส่วนเท่านั้น",
+    "callTranscriptNone": "ไม่มีบทสนทนาจาก {name}",
+    "callTranscriptSaidNothing": "{name} ไม่ได้พูดอะไรเลย",
+    "callTranscriptNothingRead": "ไม่สามารถอ่านอะไรจากสิ่งที่ {name} พูดได้",
+    "callTranscriptNoSpeechDetected": "ไม่มีเสียงที่บันทึกจาก {name} ถูกส่งไปถอดเสียง: แอปนี้ไม่พบเสียงพูดในนั้นและอาจผิดพลาดได้ ดังนั้นจึงไม่ทราบว่าพูดอะไรไป",
+    "callTranscriptPartial": "ส่วนหนึ่งของสิ่งที่ {name} พูดอาจหายไป",
+    "callTranscriptByTime": "โดย {time}",
+    "callTranscriptApproximateTimes": "ข้อความที่ระบุว่า \"โดย\" เวลา หมายถึงพูด ณ เวลานั้นหรือก่อนหน้านั้น ข้อความเหล่านั้นจะแสดง ณ เวลานั้น ดังนั้นอาจพูดไปก่อนหน้านั้น",
+    "callTranscriptUnstatedTimes": "ข้อความบางส่วนไม่แสดงเวลา อุปกรณ์ที่บันทึกไม่ได้ระบุว่าเวลาที่บันทึกมีความแม่นยำเพียงใด ดังนั้นลำดับที่ปรากฏในการสนทนานี้อาจผิดพลาดได้",
+    "callTranscriptUnreconciledClocks": "ข้อความเหล่านี้ถูกบันทึกบนอุปกรณ์สองเครื่องที่ไม่สามารถเปรียบเทียบเวลาได้ ดังนั้นจึงไม่แสดงเวลาและลำดับที่ปรากฏอาจผิดพลาดได้",
+    "callTranscriptOpen": "อ่านบทสนทนา"
 }

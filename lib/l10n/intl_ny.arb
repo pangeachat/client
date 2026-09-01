@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-01 10:41:37.498196",
+    "@@last_modified": "2026-09-01 11:50:19.283399",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Bwezerani chilankhulo chofuna kuphunzira",
     "resetBaseLanguage": "Bwezerani chilankhulo choyambira",
     "selectedLanguageLevel": "Mwasankha mulingo wa chilankhulo {level}",
-    "resetLanguageLevel": "Bwezerani mulingo wa chilankhulo"
+    "resetLanguageLevel": "Bwezerani mulingo wa chilankhulo",
+    "callTranscriptSharedNotice": "Kuyitana uku kwalembedwa ndipo kwasungidwa. Inu ndi munthu winayo mutha kukuwerenga pambuyo pake.",
+    "callTranscriptTitle": "Zolembedwa za kuyitana",
+    "callTranscriptLoadFailed": "Zolembedwazo sizinatheke kutsitsa",
+    "callTranscriptRetry": "Yesaninso",
+    "callTranscriptStoppedEarly": "Kuyitana uku kunali ndi zambiri zoti ziwerengedwe nthawi imodzi, choncho zina sizikuwonetsedwa.",
+    "callTranscriptNone": "Palibe zolembedwa kuchokera kwa {name}",
+    "callTranscriptSaidNothing": "{name} sananene chilichonse",
+    "callTranscriptNothingRead": "Palibe chilichonse chomwe chidawerengedwa kuchokera pa zomwe {name} adanena",
+    "callTranscriptNoSpeechDetected": "Palibe chilichonse chojambulidwa kuchokera kwa {name} chomwe chidatumizidwa kuti chikalembedwe: pulogalamu iyi sinawone mawu aliwonse ndipo ikhoza kulakwitsa pa izi, choncho zomwe zidanenedwa sizikudziwika.",
+    "callTranscriptPartial": "Gawo lina la zomwe {name} adanena likhoza kusowa",
+    "callTranscriptByTime": "ndi {time}",
+    "callTranscriptApproximateTimes": "Kuyankha komwe kudalembedwa kuti \"ndi\" nthawi kunanenedwa panthawiyo kapena isanachitike. Zoyankha zimenezo zikuwonetsedwa panthawiyo, choncho zikhoza kukhala zidanenedwa kale.",
+    "callTranscriptUnstatedTimes": "Zoyankha zina sizikuwonetsa nthawi. Chipangizo chomwe chidazijambula sichinanene kuti nthawi zake ndi zolondola bwanji, choncho malo ake pa zokambiranazi akhoza kukhala olakwika.",
+    "callTranscriptUnreconciledClocks": "Zoyankha izi zidajambulidwa pa zipangizo ziwiri zomwe nthawi zake sizinatheke kuyerekeza, choncho palibe nthawi zomwe zikuwonetsedwa ndipo dongosolo lomwe zikuwonekera likhoza kukhala lolakwika.",
+    "callTranscriptOpen": "Werengani zolembedwazo"
 }

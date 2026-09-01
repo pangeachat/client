@@ -27,7 +27,7 @@ const types = async () => {
 
   console.log('[1] the laptop places a VIDEO call, the phone answers');
   const rang = await h.actUntil('place video',
-    async () => { await h.ensureRoom(A, ROOM); await ui.clickLabel(A.page, 'Video call', { exact: true }).catch(() => {}); },
+    async () => { await h.ensureRoom(A, ROOM); await ui.clickControl(A.page, 'videoCall').catch(() => {}); },
     async () => (await h.since(A.token, ROOM_ID, mA)).some((e) => e.type === mx.RING && e.sender === A.userId),
     { tries: 3, gap: 4000 });
   console.log('   rang:', rang);

@@ -1,3 +1,4 @@
+const labelsModule = require('./labels');
 // Driving the Flutter web app WITHOUT pixel coordinates.
 //
 // The old driver clicked fixed points like (680,126). Every layout change broke
@@ -21,48 +22,157 @@ async function enableSemantics(page) {
   return r;
 }
 
-/// Every labelled node currently on screen. The debugging tool when a click
-/// cannot find its target -- it says what WAS there instead.
-async function labels(page) {
-  return page.evaluate(() =>
-    Array.from(document.querySelectorAll('flt-semantics[aria-label]'))
-      .map((e) => e.getAttribute('aria-label'))
-      .filter((s) => s && s.trim()),
-  );
-}
-
-async function findRect(page, label, { exact = false } = {}) {
-  return page.evaluate(
-    (label, exact) => {
-      const nodes = Array.from(
-        document.querySelectorAll('flt-semantics[aria-label]'),
-      );
-      const matches = nodes.filter((e) => {
-        const l = e.getAttribute('aria-label') || '';
-        const ok = exact ? l === label : l.toLowerCase().includes(label.toLowerCase());
-        if (!ok) return false;
-        const r = e.getBoundingClientRect();
-        return r.width > 0 && r.height > 0;
+/// Every semantics node on screen: the names it answers to, its role, and
+/// where it is. One crossing of the browser boundary; every question below is
+/// answered from it, in node.
+///
+/// A NAME IS NOT ONLY AN ARIA-LABEL. Flutter's web engine publishes a node's
+/// accessible name two ways and the choice is the ENGINE's, not the app's: a
+/// node that has child semantics nodes carries `aria-label`, and a LEAF carries
+/// its name as its own DOM TEXT instead. This file used to read only the
+/// attribute, so every leaf control was invisible to it -- and a leaf is
+/// exactly what a tappable widget with no inner semantics becomes.
+///
+/// What that cost: `hasControl(page, 'transcriptLink')` could never once be
+/// true. The call card publishes "Read the transcript" as text, so the check
+/// that asks whether the card offers the transcript failed on every run of a
+/// feature that was working perfectly -- and the check it gates, the one about
+/// nobody being wrongly called silent, has therefore never run at all. It
+/// looked like a routing bug: `ui.labels()` came back with the map's labels
+/// and nothing of the chat, so an OPEN room read as the bare world map with
+/// the deep link swallowed. There turned out to be a real swallow as well (see
+/// harness.js's [openRoom]), which is exactly why an unreadable screen is
+/// expensive: it made a rare bug and a common one look like the same thing.
+///
+/// login.js already read both (its own `nameOf`), which is why signing in kept
+/// working while everything after it did not; unstick.js and refresh_midcall.js
+/// each grew their own leaf-text fallback. This is the one place that knows.
+///
+/// A merged leaf's name is the CONCATENATION of everything merged into it --
+/// "Read the transcript\nRead the transcript\nVoice call\n  0:38" is a single
+/// node -- so its text is offered LINE BY LINE rather than whole. Matching the
+/// blob would need a substring test, and substrings are precisely what
+/// `findControl` refuses: "Call" is a substring of "Video call", and that
+/// mistake places a video call where a scenario asked for a voice one.
+async function scan(page) {
+  return page.evaluate(() => {
+    const nodes = Array.from(document.querySelectorAll('flt-semantics'));
+    const out = [];
+    for (const e of nodes) {
+      const names = [];
+      const aria = (e.getAttribute('aria-label') || '').trim();
+      if (aria) names.push(aria);
+      // The node's OWN text only. Descendant text would make every ancestor
+      // answer to every name beneath it, up to the root -- and the root is a
+      // full-screen node, so a click would land in the middle of the window.
+      for (const child of e.childNodes) {
+        if (child.nodeType !== Node.TEXT_NODE) continue;
+        for (const line of (child.textContent || '').split('\n')) {
+          const t = line.trim();
+          if (t) names.push(t);
+        }
+      }
+      if (!names.length) continue;
+      const r = e.getBoundingClientRect();
+      if (r.width <= 0 || r.height <= 0) continue;
+      const x = r.x + r.width / 2;
+      const y = r.y + r.height / 2;
+      const onScreen =
+        x >= 0 && y >= 0 && x < window.innerWidth && y < window.innerHeight;
+      // Would a click at that point actually reach this node? Being inside the
+      // window is not enough: Flutter does NOT clip the semantics DOM to its
+      // scroll views, so a card scrolled out of a chat list keeps a node
+      // positioned wherever it would have been -- often over the app bar, at a
+      // perfectly plausible-looking coordinate. Clicking it presses whatever is
+      // genuinely there instead, and nothing about the miss looks like a miss.
+      // The node itself, or something INSIDE it (a labelled button's own
+      // tappable child). Never an ancestor: `flutter-view` contains every
+      // node on the page, so accepting one would call everything reachable
+      // and answer the question with "yes" for ever.
+      const at = onScreen ? document.elementFromPoint(x, y) : null;
+      out.push({
+        names,
+        role: e.getAttribute('role'),
+        x,
+        y,
+        onScreen,
+        hittable: !!at && (at === e || e.contains(at)),
       });
-      if (!matches.length) return null;
-      // A real control, in preference to anything else carrying the same label.
-      // An IconButton's TOOLTIP repeats its label, so once the pointer has
-      // rested on the call button a second node with aria-label "Call" exists --
-      // and clicking that one does nothing at all. That is what made the second
-      // call in a session silently fail to place.
-      const hit = matches.find((e) => e.getAttribute('role') === 'button') || matches[0];
-      const r = hit.getBoundingClientRect();
-      return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
-    },
-    label,
-    exact,
+    }
+    return out;
+  });
+}
+
+/// Every name currently on screen, in document order, deduplicated. The
+/// debugging tool when a click cannot find its target -- it says what WAS
+/// there instead.
+async function labels(page) {
+  const seen = new Set();
+  for (const node of await scan(page)) {
+    for (const name of node.names) seen.add(name);
+  }
+  return [...seen];
+}
+
+/// Which of the nodes that answer to a name gets clicked, as a point.
+///
+/// A real control, in preference to anything else carrying the same name. An
+/// IconButton's TOOLTIP repeats its label, so once the pointer has rested on
+/// the call button a second node saying "Call" exists -- and clicking that one
+/// does nothing at all. That is what made the second call in a session
+/// silently fail to place.
+///
+/// Reachable first, then merely on screen, then anything. A long timeline holds
+/// twenty cards with the same name and most of them are scrolled out of the
+/// list's clip; their nodes stay in the tree at coordinates that are sometimes
+/// negative and sometimes -- worse -- land on the app bar, where a click
+/// presses something else entirely and the miss looks like a working click.
+///
+/// ASKING and CLICKING want opposite answers when nothing is reachable, so
+/// they get them. [reachable] keeps only the first tier: a click that cannot
+/// land is not a click, and pressing whatever else happens to occupy the
+/// coordinate is the failure this ranking exists to stop -- so the caller is
+/// told nothing was found, waits, and eventually says so. Without it the lower
+/// tiers stand, because "is this control on the page" is still worth answering
+/// about something the screen is holding out of reach, and `hasControl` stays
+/// at least as willing to find a control as it was before this existed.
+function choose(matches, { reachable = false } = {}) {
+  const tiers = reachable
+    ? [matches.filter((n) => n.hittable)]
+    : [
+        matches.filter((n) => n.hittable),
+        matches.filter((n) => n.onScreen),
+        matches,
+      ];
+  const best = tiers.find((t) => t.length);
+  if (!best) return null;
+  const hit = best.find((n) => n.role === 'button') || best[0];
+  return { x: hit.x, y: hit.y };
+}
+
+/// The point a named element sits at, or null.
+///
+/// Permissive by default, because most callers are ASKING. Pass
+/// `reachable: true` when the answer will be clicked -- every helper here whose
+/// name begins with `click` already does.
+async function findRect(page, label, { exact = false, reachable = false } = {}) {
+  const wanted = exact
+    ? (name) => name === label
+    : (name) => name.toLowerCase().includes(label.toLowerCase());
+  return choose(
+    (await scan(page)).filter((n) => n.names.some(wanted)),
+    { reachable },
   );
 }
 
-async function waitForLabel(page, label, { timeout = 15000, exact = false } = {}) {
+async function waitForLabel(
+  page,
+  label,
+  { timeout = 15000, exact = false, reachable = false } = {},
+) {
   const until = Date.now() + timeout;
   for (;;) {
-    const r = await findRect(page, label, { exact });
+    const r = await findRect(page, label, { exact, reachable });
     if (r) return r;
     if (Date.now() > until) {
       throw new Error(
@@ -76,7 +186,7 @@ async function waitForLabel(page, label, { timeout = 15000, exact = false } = {}
 /// Clicks a labelled element, failing loudly if it is not there. A click that
 /// misses must never look like a click that worked.
 async function clickLabel(page, label, opts = {}) {
-  const r = await waitForLabel(page, label, opts);
+  const r = await waitForLabel(page, label, { ...opts, reachable: true });
   await page.mouse.click(r.x, r.y);
   return r;
 }
@@ -85,7 +195,95 @@ async function hasLabel(page, label) {
   return (await findRect(page, label)) !== null;
 }
 
-module.exports = { wait, enableSemantics, labels, findRect, waitForLabel, clickLabel, hasLabel };
+/// The same questions, asked about a CONTROL rather than an English string.
+///
+/// The app renders in the user's own language, so "is the call button there"
+/// cannot be asked as "is the text 'Call' there". Each of these tries every
+/// string the app could draw for that control -- see labels.js -- and answers
+/// on the first one the screen actually has.
+/// EXACT by default, and that is not a detail.
+///
+/// A control's candidates are whole labels, so a substring match is never what
+/// is wanted here -- and it is actively dangerous: "Call" is a substring of
+/// "Video call", so a loose match places a VIDEO call when the scenario asked
+/// for a voice one, and the failure surfaces four assertions later as a card
+/// reading "Missed video call". Every call site this replaced passed
+/// `exact: true` for that reason; losing it in the abstraction put the bug
+/// back.
+///
+/// Asked of ONE reading of the screen, not one per translation. A control has
+/// around a hundred candidate strings, and probing them in turn crossed the
+/// browser boundary a hundred times for a single question -- slow enough that
+/// the screen could change while the answer was being computed, which is the
+/// shape of a check that fails for a reason that is not a bug.
+async function findControl(page, name, opts = {}) {
+  const { exact = true, reachable = false } = opts;
+  const candidates = labelsModule.candidates(name);
+  const matches = (name_) =>
+    exact
+      ? candidates.includes(name_)
+      : candidates.some((c) => name_.toLowerCase().includes(c.toLowerCase()));
+  return choose(
+    (await scan(page)).filter((n) => n.names.some(matches)),
+    { reachable },
+  );
+}
+
+async function hasControl(page, name, opts = {}) {
+  return (await findControl(page, name, opts)) !== null;
+}
+
+/// Waits for a control to appear, then clicks it.
+///
+/// WAITS, like `clickLabel` does. An earlier version of this probed once and
+/// gave up, which quietly changed what several scenarios were asking: "the
+/// call button is usable again right after hanging up" stopped meaning "it
+/// comes back" and started meaning "it is back this instant". The suite
+/// caught it, which is the whole reason it exists.
+async function clickControl(page, name, { timeout = 15000, ...opts } = {}) {
+  const until = Date.now() + timeout;
+  for (;;) {
+    const rect = await findControl(page, name, { ...opts, reachable: true });
+    if (rect) {
+      await page.mouse.click(rect.x, rect.y);
+      return rect;
+    }
+    if (Date.now() > until) {
+      // "Not there" and "there, but behind something / scrolled out of its
+      // list" are different bugs and want different next steps. This used to
+      // claim the first for both.
+      const outOfReach = await findControl(page, name, opts);
+      throw new Error(
+        `${name} ${outOfReach
+          ? 'is on the page, but at no point a click could reach'
+          : 'never appeared'}. Tried ` +
+          `${labelsModule.candidates(name).length} translations. ` +
+          `On screen: ${JSON.stringify(await labels(page))}`,
+      );
+    }
+    await wait(300);
+  }
+}
+
+/// The same wait, without the click.
+async function waitForControl(page, name, { timeout = 15000, ...opts } = {}) {
+  const until = Date.now() + timeout;
+  for (;;) {
+    const rect = await findControl(page, name, opts);
+    if (rect) return rect;
+    if (Date.now() > until) {
+      throw new Error(
+        `${name} never appeared. On screen: ${JSON.stringify(await labels(page))}`,
+      );
+    }
+    await wait(300);
+  }
+}
+
+module.exports = {
+  wait, enableSemantics, scan, choose, labels, findRect, waitForLabel,
+  clickLabel, hasLabel, findControl, hasControl, clickControl, waitForControl,
+};
 
 // ---------------------------------------------------------------------------
 // The incoming-call banner.
@@ -107,14 +305,14 @@ const BANNER = {
   message: { x: 443, y: 126 },
 };
 
-const BANNER_LABELS = { answer: 'Answer', decline: 'Decline', message: 'Message' };
+const BANNER_LABELS = { answer: 'answer', decline: 'decline', message: 'message' };
 
 /// Same rule as the panel: label first, confirmed position as the fallback,
 /// and the caller proves on the server that it landed.
 async function clickBanner(page, which) {
   const label = BANNER_LABELS[which];
   if (label) {
-    const r = await findRect(page, label);
+    const r = await findRect(page, label, { reachable: true });
     if (r) {
       await page.mouse.click(r.x, r.y);
       return 'label';
@@ -156,7 +354,7 @@ const PANEL_LABELS = {
 async function clickPanel(page, which) {
   const label = PANEL_LABELS[which];
   if (label) {
-    const r = await findRect(page, label);
+    const r = await findRect(page, label, { reachable: true });
     if (r) {
       await page.mouse.click(r.x, r.y);
       return 'label';

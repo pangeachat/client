@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-01 10:41:41.909870",
+    "@@last_modified": "2026-09-01 11:50:32.896645",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Setha kwakhona ulwimi ekujoliswe kulo",
     "resetBaseLanguage": "Setha kwakhona ulwimi olusisiseko",
     "selectedLanguageLevel": "Ukhethe inqanaba lesi-{level} njengenqanaba lolwimi",
-    "resetLanguageLevel": "Setha kwakhona inqanaba lolwimi"
+    "resetLanguageLevel": "Setha kwakhona inqanaba lolwimi",
+    "callTranscriptSharedNotice": "Le nxoxo ibhalwe phantsi kwaye igciniwe. Wena nomnye umntu ningayifunda emva koko.",
+    "callTranscriptTitle": "Umbhalo wenxoxo",
+    "callTranscriptLoadFailed": "Ayikwazanga ukulayisha umbhalo",
+    "callTranscriptRetry": "Zama kwakhona",
+    "callTranscriptStoppedEarly": "Le nxoxo ibininzi kakhulu ukuba ingafundwa ngaxeshanye, ngoko ke inxalenye yayo ayiboniswanga.",
+    "callTranscriptNone": "Akukho mbhalo ovela ku-{name}",
+    "callTranscriptSaidNothing": "U-{name} akathethanga nto",
+    "callTranscriptNothingRead": "Akukho nto ifundekayo kwinto ethethwe ngu-{name}",
+    "callTranscriptNoSpeechDetected": "Akukho nto irekhodwe ku-{name} ethunyelwe ukuba ibhalwe phantsi: le app ayifumananga ntetho kuyo kwaye inokuba iphosakele ngaloo nto, ngoko ke into ethethweyo ayaziwa.",
+    "callTranscriptPartial": "Inxalenye yento ethethwe ngu-{name} isenokuba ilahlekile",
+    "callTranscriptByTime": "nge-{time}",
+    "callTranscriptApproximateTimes": "Isithuba esiphawulwe \"nge\" xesha sithethwe ngalo okanye ngaphambi kwalo. Ezo zithuba ziboniswa ngaloo mzuzu, ngoko ke zisenokuba zithetwe ngaphambili.",
+    "callTranscriptUnstatedTimes": "Ezinye izithuba azibonisi xesha. Isixhobo esizirekhodileyo asizange sitsho ukuba achane kangakanani amaxesha aso, ngoko ke indawo azikuyo kule nxoxo isenokuba iphosakele.",
+    "callTranscriptUnreconciledClocks": "Ezi zithuba zirekhodwe kwizixhobo ezibini iiwotshi zazo ezingakwazanga ukuthelekiswa, ngoko ke akukho maxesha aboniswayo kwaye ucwangco oluvela ngalo lusenokuba luphosakele.",
+    "callTranscriptOpen": "Funda umbhalo"
 }

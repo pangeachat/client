@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-01 10:41:32.397751",
+    "@@last_modified": "2026-09-01 11:50:06.292243",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9924,5 +9924,20 @@
     "resetTargetLanguage": "Célnyelv visszaállítása",
     "resetBaseLanguage": "Alapnyelv visszaállítása",
     "selectedLanguageLevel": "A nyelvi szint a következőre lett beállítva: {level}",
-    "resetLanguageLevel": "Nyelvi szint visszaállítása"
+    "resetLanguageLevel": "Nyelvi szint visszaállítása",
+    "callTranscriptSharedNotice": "Ez a hívás átírva és elmentve. Ön és a másik személy később elolvashatja.",
+    "callTranscriptTitle": "Hívás átirata",
+    "callTranscriptLoadFailed": "Nem sikerült betölteni az átiratot",
+    "callTranscriptRetry": "Próbálja újra",
+    "callTranscriptStoppedEarly": "Ez a hívás túl sok olvasnivalót tartalmazott egyszerre, ezért egy része nem látható.",
+    "callTranscriptNone": "Nincs átirat {name} részéről",
+    "callTranscriptSaidNothing": "{name} semmit sem mondott",
+    "callTranscriptNothingRead": "Semmi sem olvasható abból, amit {name} mondott",
+    "callTranscriptNoSpeechDetected": "{name} által rögzített semmi sem került átírásra: ez az alkalmazás nem talált benne beszédet, és tévedhet ebben, így nem ismert, hogy mi hangzott el.",
+    "callTranscriptPartial": "Lehet, hogy hiányzik {name} mondanivalójának egy része",
+    "callTranscriptByTime": "{time} szerint",
+    "callTranscriptApproximateTimes": "Az „idő szerint” jelölt fordulatot az adott időpontban vagy azelőtt mondták. Ezek a fordulatok abban a pillanatban jelennek meg, így lehet, hogy korábban hangzottak el.",
+    "callTranscriptUnstatedTimes": "Néhány fordulat nem mutat időt. Az őket rögzítő eszköz nem jelezte, hogy mennyire pontosak az időpontjai, így a beszélgetésben elfoglalt helyük hibás lehet.",
+    "callTranscriptUnreconciledClocks": "Ezeket a fordulatokat két olyan eszközön rögzítették, amelyek óráit nem lehetett összehasonlítani, így nem jelennek meg időpontok, és a megjelenésük sorrendje hibás lehet.",
+    "callTranscriptOpen": "Olvassa el az átiratot"
 }

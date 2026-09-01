@@ -4,7 +4,6 @@ import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart';
 
 import 'package:livekit_client/livekit_client.dart' as lk;
-import 'package:matrix/matrix.dart' as matrix show Event, Room, User;
 import 'package:matrix/matrix.dart' show Logs;
 import 'package:permission_handler/permission_handler.dart';
 
@@ -13,9 +12,17 @@ import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/ring_player.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+
+import 'package:matrix/matrix.dart'
+    as matrix
+    show Event, EventStatusExtension, Room, User;
 
 import 'package:pangea_call_capture/pangea_call_capture.dart'
     show CallForegroundControl;
@@ -59,6 +66,20 @@ class CallSession extends ChangeNotifier {
   final ActiveCall call;
   final CallRecord _record;
 
+  /// The transcript publisher this session wired up, exposed so a test can
+  /// prove the wiring EXISTS. Everything under this feature was built and
+  /// green while nothing in the app ever wrote a transcript, because the
+  /// publisher was optional and no caller supplied it. Parts that all work
+  /// and are not connected read as a working feature and ship a dark one.
+  @visibleForTesting
+  TranscriptPublisher? get transcriptPublisher => _record.publishTranscript;
+
+  /// The record this session writes through, exposed so a test can drive the
+  /// REAL finish path. Calling the publisher directly proves only that a
+  /// parameter exists; what needs proving is that the session fills it in.
+  @visibleForTesting
+  CallRecord get record => _record;
+
   final String? _myUserId;
   final String? _peerUserId;
 
@@ -96,9 +117,11 @@ class CallSession extends ChangeNotifier {
     this.callerMembershipEventId,
     this.platformLabels,
     this.tonesOverride,
+    bool fullscreen = false,
   }) : _record = record,
        _myUserId = myUserId,
        _peerUserId = peerUserId,
+       _fullscreen = fullscreen,
        _onReleased = onReleased {
     _camera = videoRequested;
     // What the ongoing-call notification says. The call only knows the room;
@@ -151,6 +174,11 @@ class CallSession extends ChangeNotifier {
     DateTime? rejoinSince,
     String? callerMembershipEventId,
     ({String mute, String channel})? platformLabels,
+
+    /// Whether the call covers the whole app from its first frame. See
+    /// [CallSession.fullscreen]: only a call answered on a non-active account
+    /// asks for this, because it has no chat pane to be presented in.
+    bool fullscreen = false,
     @visibleForTesting RingPlayer? tonesOverride,
     @visibleForTesting CallMedia? mediaOverride,
     @visibleForTesting CallCaptureService? captureOverride,
@@ -170,6 +198,50 @@ class CallSession extends ChangeNotifier {
           transcripts: transcripts,
           sendEvent: (content, txid) =>
               room.sendEvent(content, type: PangeaEventTypes.call, txid: txid),
+          // The transcript half this device writes when the call ends. Built
+          // here rather than inside CallRecord so the record stays testable
+          // without a room, and so the ONE place that knows about the room --
+          // its id, and whether it encrypts -- is the place that knows.
+          publishTranscript:
+              ({
+                required String callKey,
+                required List<TranscriptSegment> segments,
+                required int chunksCaptured,
+                required int chunksTranscribed,
+                required int chunksLost,
+                required int chunksSuppressed,
+                required bool captureRefused,
+                required bool drainComplete,
+                String? langCode,
+              }) => writeCallTranscript(
+                send: (content, txid) => room.sendEvent(
+                  content,
+                  type: CallTranscriptContent.relType,
+                  txid: txid,
+                ),
+                callKey: callKey,
+                senderId: room.client.userID ?? '',
+                segments: segments,
+                chunksCaptured: chunksCaptured,
+                chunksTranscribed: chunksTranscribed,
+                chunksLost: chunksLost,
+                chunksSuppressed: chunksSuppressed,
+                captureRefused: captureRefused,
+                drainComplete: drainComplete,
+                // The room inflates what it is handed, and the server's limit
+                // applies to the inflated event.
+                encrypted: room.encrypted,
+                langCode: langCode,
+                // Read from the LATCH here, not measured here. It was taken
+                // when this device joined the SFU, minutes before this runs,
+                // and reading the two clocks now would measure the call's own
+                // length instead of the disagreement between them.
+                //
+                // Closed over rather than threaded through CallRecord: the
+                // record is deliberately free of anything to do with media,
+                // and this is the same seam that already knows the room.
+                clockAnchor: media.clockAnchor,
+              ),
           analytics: analytics,
         );
     return CallSession._(
@@ -197,6 +269,7 @@ class CallSession extends ChangeNotifier {
       rejoinSince: rejoinSince,
       callerMembershipEventId: callerMembershipEventId,
       platformLabels: platformLabels,
+      fullscreen: fullscreen,
       tonesOverride: tonesOverride,
     );
   }
@@ -208,12 +281,37 @@ class CallSession extends ChangeNotifier {
   /// Whether the call is showing over the whole app rather than inside its
   /// chat pane. A choice, not the default: the pane is where the call lives,
   /// and this is the "make it big" button every video product offers.
+  ///
+  /// Seeded by the constructor rather than only toggled, because one caller
+  /// needs it true from the very first frame. A call answered on an account
+  /// that is not the foregrounded one has no chat pane to live in -- its room
+  /// belongs to another account, so navigating there would land on
+  /// `RoomUnavailablePanel` -- and it is presented by [GlobalCallTile]
+  /// instead. That tile renders the full [CallPanel] only when this is true;
+  /// otherwise it renders `CallMiniTile`, which has neither hangup nor mute.
+  /// Toggling after the session is published to `activeCall` would paint one
+  /// frame of a call the learner has just answered and cannot end.
   bool get fullscreen => _fullscreen;
-  bool _fullscreen = false;
+  bool _fullscreen;
 
   void toggleFullscreen() {
     _fullscreen = !_fullscreen;
     if (_fullscreen) _minimized = false;
+    _notify();
+  }
+
+  /// Makes the call cover the whole app, and KEEPS it there.
+  ///
+  /// Idempotent, which [toggleFullscreen] is not. This is reached from a tap
+  /// on the floating tile for a call whose room cannot be navigated to -- one
+  /// on an account that is not the foregrounded one -- and two taps delivered
+  /// before that tile rebuilds would turn fullscreen straight back off,
+  /// dropping the learner into `CallMiniTile`, which has neither hangup nor
+  /// mute. A toggle is the wrong verb for "show me this call".
+  void showFullscreen() {
+    if (_fullscreen && !_minimized) return;
+    _fullscreen = true;
+    _minimized = false;
     _notify();
   }
 
@@ -331,13 +429,31 @@ class CallSession extends ChangeNotifier {
     // the recorder tap runs upstream of LiveKit's publish mute, so without its
     // own gate a muted learner would still be recorded.
     if (next) call.setMuted(true);
+    final bool publishing;
     try {
-      await media.setMicrophoneEnabled(!next);
+      publishing = await media.setMicrophoneEnabled(!next);
     } catch (e, s) {
       // Fail closed: a mute that did not take must ungate again (the mic is
       // still live); an unmute that did not take leaves the gate up.
       if (next) call.setMuted(false);
       Logs().w('Could not ${next ? 'mute' : 'unmute'} the call', e, s);
+      return;
+    }
+    // The same rule, for the failure that does not throw. Turning the
+    // microphone on either publishes or throws, so `false` from an UNMUTE is
+    // the microphone not publishing -- a call already released, or no
+    // participant to publish through -- and it comes back as quietly as a
+    // toggle that worked. Leaving the gate up and `_muted` set is the second
+    // half of the rule above: the button must not say the learner is being
+    // heard while nothing of theirs is going out, and the recorder must not
+    // come off the gate for a microphone that never came back.
+    //
+    // Only the unmute direction is disproved by this answer. `false` from a
+    // MUTE means there was no publication to stop, which `CallMedia` documents
+    // as a no-op rather than a failure -- reading the answer both ways would
+    // leave a learner unable to mute a call whose room had already gone.
+    if (!next && !publishing) {
+      Logs().w('The call could not unmute; the microphone is not publishing');
       return;
     }
     if (!next) call.setMuted(false);
@@ -348,21 +464,41 @@ class CallSession extends ChangeNotifier {
 
   Future<void> toggleCamera() async {
     final next = !_camera;
+    final bool live;
     try {
-      await media.setCameraEnabled(next);
+      live = await media.setCameraEnabled(next);
     } catch (e, s) {
       Logs().w('Could not turn the camera ${next ? 'on' : 'off'}', e, s);
+      return;
+    }
+    // Nothing downstream of here may act on the request alone. Turning the
+    // camera on the instant the call ends is a refused no-op that does NOT
+    // throw, and acting on it anyway wrote an ending voice call into the
+    // timeline as a video call, offered a camera-OFF button for a picture that
+    // was never coming, and told the foreground service the call was using a
+    // camera it had not opened.
+    //
+    // The proof is the toggle's own answer -- whether a track ended up
+    // published -- rather than the connection being up, which is a proxy for it
+    // and can outlast the refusal it was standing in for: the release the
+    // refusal comes from is latched inside the media, while the socket it
+    // guards takes a round trip to close.
+    //
+    // Only the ON direction is disproved by this answer, exactly as in
+    // [toggleMute]: `false` turning the camera OFF means there was no
+    // publication to stop, which is a no-op and not a failure.
+    if (next && !live) {
+      Logs().w('The call could not turn the camera on; nothing was published');
       return;
     }
     // Camera site (b): the toggle, both directions, only after the change
     // actually took. Site (a) -- a call STARTED with video -- lives where the
     // camera opens, inside the call's own connect step.
     unawaited(call.setForegroundCamera(next));
-    // Only if the camera actually came on: turning it on the instant the call
-    // ends is a refused no-op that does not throw, and latching on the request
-    // alone wrote an ending voice call as a video call. The live connection is
-    // the proof it took.
-    if (next && media.isConnected) _usedVideo = true;
+    // The video claim goes in the timeline and stays there, so it is the one
+    // that most needs to be read off the effect; the guard above is what makes
+    // reaching here with `next` set mean the camera came on.
+    if (next) _usedVideo = true;
     if (_disposing || _over) return;
     _camera = next;
     _notify();
@@ -419,10 +555,22 @@ class CallSession extends ChangeNotifier {
       _busyToned = true;
       _tones.busy();
     }
-    if (outcome == CallOutcome.ended || outcome == CallOutcome.declined) {
+    if (outcome != null) {
       // The card FIRST and immediately: everything it states is known now, and
       // it must not wait for teardown and transcription behind it.
+      //
+      // EVERY outcome, a FAILURE included, which is what this used to miss.
+      // A failed call was recorded from [dismissFailed] instead, and that
+      // reaches the record but not this -- and this is where the card's fast
+      // path AND the survivor check both hang. So a call that rang somebody
+      // and then failed on our end could never recover a dead writer's card,
+      // and a learner who closed the tab rather than pressing the X left
+      // nothing behind at all. The two paths had drifted apart on which of
+      // them owns "what does this call leave", and the answer is: whichever
+      // one sees the call's fate, which is only ever this one.
       _writeCard();
+    }
+    if (outcome == CallOutcome.ended || outcome == CallOutcome.declined) {
       _finishRecording();
       // An ended conversation earns a moment on screen; everything else --
       // declined, missed, torn down unanswered -- goes at once, as it always
@@ -447,8 +595,38 @@ class CallSession extends ChangeNotifier {
   /// Whether this call is worth a timeline entry at all: did it reach the SFU,
   /// did it actually ring somebody, or was it itself an answer. A call that
   /// rang nobody and connected to nothing leaves no trace, correctly.
+  ///
+  /// [_reachedCall] only means OUR OWN join to the SFU went through — it says
+  /// nothing about whether the other side was ever told. That distinction did
+  /// not used to matter: reaching "connected" required the ring to have gone
+  /// out first, so one implied the other. It stopped being true the moment
+  /// ringing could be skipped and retried in the background (a late
+  /// membership echo) — a PLACED call can now reach the SFU while its ring is
+  /// still pending, or never sent at all if the retry itself runs out. When
+  /// that happens and nobody ever joins, [_reachedCall] is the only thing left
+  /// standing in for "this mattered", and it is lying: hanging up would write
+  /// "no answer" for a call the other person was never rung for. So a placed
+  /// call only counts on [_reachedCall] once it is also known to have rung —
+  /// [call.rangOut] already covers that case on its own, this guard just keeps
+  /// [_reachedCall] from covering it a second time, dishonestly, when it
+  /// didn't. Every other placer (answering, rejoining, the sub-millisecond
+  /// glare that never places) is untouched: none of them ring, so none of
+  /// them relied on this in the first place.
+  ///
+  /// A ring is a ring whichever side sent it, which is what the guard above
+  /// first missed. [ActiveCall.peerAlsoPlaced] is set from THEIR ring
+  /// arriving here -- a real ring, from a device still holding a call -- so a
+  /// call back that looks like glare is a call somebody was already rung for,
+  /// and the guard asking only about OUR ring silenced it. That is the
+  /// survivor's shape exactly: the peer rings, dies before writing its card,
+  /// we call back, the tie-break hands the writing to the dead device, and
+  /// our own ring never goes out. Everything downstream of here was ready to
+  /// recover that call -- the survivor check runs on the same
+  /// [ActiveCall.peerAlsoPlaced] -- and this getter never let it start, so
+  /// the original ring left nothing in the conversation at all.
   bool get _mattered =>
-      _reachedCall ||
+      (_reachedCall &&
+          (!call.placedCall || call.rangOut || call.peerAlsoPlaced)) ||
       call.hadPeer ||
       call.rangOut ||
       notificationEventId != null;
@@ -492,11 +670,11 @@ class CallSession extends ChangeNotifier {
   /// the card (a crashed browser, a killed tab), left no trace at all in the
   /// conversation. The surviving non-writer waits out the settle, re-reads
   /// the timeline, and writes a card carrying only what THIS side observed --
-  /// but only for calls it saw ANSWERED (a survivor can never fabricate a
-  /// missed/declined outcome), only with a ring- or glare-provenanced key (a
-  /// rejoined session's anchor may be its own membership, the wrong key), and
-  /// stamped with the same shared key so the renderer collapses the rare race
-  /// where both raced to write.
+  /// but only when it is entitled to stand in at all (see
+  /// [_mayStandInForTheWriter]), only with a ring- or glare-provenanced key
+  /// (a rejoined session's anchor may be its own membership, the wrong key),
+  /// and stamped with the same shared key so the renderer collapses the rare
+  /// race where both raced to write.
   ///
   /// ACCEPTED GAP, stated not hidden: if BOTH sides reload and rejoin, both
   /// sessions are provenance-blind and neither writes -- that call leaves no
@@ -518,18 +696,45 @@ class CallSession extends ChangeNotifier {
     await _survivorCheck(pending.key, pending.caller);
   }
 
+  /// Whether this device may stand in for a writer that never wrote.
+  ///
+  /// Its own question, and NOT the negation of [_writesTheCall]. That one is
+  /// about placing a call; this one is about a call somebody else was on and
+  /// nobody recorded, and reading the second off the first is what kept the
+  /// recovery from doing its job for an ordinary callee.
+  ///
+  /// Somebody else was on this call if they ARRIVED, or if a ring of theirs
+  /// reached this device -- the one we answered, or the one that made a call
+  /// back look like glare. One fact by three routes, and the gate knew only
+  /// two of them: a plain CALLEE, rung by a caller whose app then died, was
+  /// refused. That call rang somebody -- us -- and it left the conversation
+  /// with nothing, which is the whole failure this path exists to prevent.
+  ///
+  /// A ring on its own is not enough, and that is the true thing the old gate
+  /// was groping at by demanding somebody had arrived. A ring says the writer
+  /// EXISTED, not that it has finished. So a device standing in on the
+  /// strength of a ring must also have GONE AND LOOKED: reached the call and
+  /// found nobody there. That is an observation rather than an inference --
+  /// a caller is in the SFU before it rings, so an empty call is a caller who
+  /// has gone -- while a session that failed before it ever got in knows only
+  /// that a ring arrived. A card from there would be a guess, and one landing
+  /// EARLIER than the truthful card a living caller is still about to write.
+  ///
+  /// A fabrication is impossible in either direction: the survivor's card
+  /// carries [ActiveCall.hadPeer] and [ActiveCall.wasDeclined], this side's
+  /// own observations, so it can neither invent a conversation nor invent a
+  /// refusal.
+  bool get _mayStandInForTheWriter =>
+      call.hadPeer ||
+      ((call.peerAlsoPlaced || notificationEventId != null) && _reachedCall);
+
   void _scheduleSurvivorCheck(({String? key, String? caller}) identity) {
-    final key = identity.key;
-    // Also when nobody ever arrived, IF we stood aside because we believed
-    // they were calling too. A caller whose app dies between ringing and
-    // being answered leaves a membership that still reads as "calling", so a
-    // call back can look like glare -- and if the tie-break then hands the
-    // writing to a device that is dead, the attempt vanishes from the
-    // conversation entirely. This is the same mechanism as a writer dying
-    // mid-call, and it covers the same failure.
-    final couldHaveBeenTheirs = call.hadPeer || call.peerAlsoPlaced;
+    // Through the record's own rule: an empty key identifies nothing, and a
+    // survivor writing under one would post a card that every reader either
+    // ignores or, worse, collapses against an unrelated call's.
+    final key = CallRecord.usableKey(identity.key);
     if (_writesTheCall ||
-        !couldHaveBeenTheirs ||
+        !_mayStandInForTheWriter ||
         call.rejoinedCall ||
         key == null) {
       return;
@@ -567,10 +772,33 @@ class CallSession extends ChangeNotifier {
 
   Future<void> _survivorCheck(String key, String? caller) async {
     final events = await _timelineEvents();
+    // Through the same question the timeline asks, not a private copy of it.
+    //
+    // This decided "a card for this call already exists" on type and key
+    // alone. The key is the caller's membership event id, which every room
+    // member can see DURING the call -- so anyone could post a card carrying
+    // it inside the settle window, this check would find it, and the real
+    // survivor card would never be written. The timeline then correctly
+    // refuses to draw the forgery, and the call is left with no card from
+    // anybody: gone from the conversation and from the chat list, taking the
+    // transcript it opens with it.
+    //
+    // A send that failed does not count either. It is kept locally and marked
+    // errored, nothing retries it, and the peer never receives it, so treating
+    // it as a card already written suppresses the one write that would have
+    // reached them.
     final already = events.any(
       (e) =>
           e.type == PangeaEventTypes.call &&
-          e.content[CallRecord.callKeyField] == key,
+          CallRecord.keyOf(e.content) == key &&
+          !e.status.isError &&
+          // PROVEN, for the same reason as suppression: this decides whether
+          // to SKIP writing the real card, so a card that cannot vouch for
+          // itself must not be able to stop us. Where the peer is unknown we
+          // write, and the conversation may show two cards for one call --
+          // which is visible and harmless, unlike the call having no card at
+          // all because a stranger's forgery told us one already existed.
+          callCardIsProvenReal(e),
     );
     if (already) return;
     Logs().i('No card arrived for this call; the survivor writes it');
@@ -602,11 +830,6 @@ class CallSession extends ChangeNotifier {
             try {
               await call.settled;
             } catch (_) {}
-            // Written when the call either got established, actually rang the
-            // other side, or was itself an answer. Placing alone is not enough:
-            // a call whose announce failed rang nobody, and a card for it would
-            // record a call that never began.
-            if (!_mattered) return;
             // The card is normally already in the timeline by now (written the
             // moment the call ended); this call credits the transcripts against
             // it, and writes the card itself only if that earlier attempt had
@@ -616,6 +839,22 @@ class CallSession extends ChangeNotifier {
             return _record.finish(
               duration: call.talkDuration,
               video: _usedVideo,
+              // Whether the call earned any trace: it got established, it
+              // actually rang the other side, or it was itself an answer.
+              // Placing alone is not enough -- a call whose announce failed
+              // rang nobody, and anything left behind for it would record a
+              // call that never began.
+              //
+              // Handed over rather than acted on here. Returning early instead
+              // left the record free to publish this device's transcript half
+              // for a call it was about to decide had never happened, and
+              // nothing in the record said otherwise; the half stayed out of
+              // the room only because such a call also has no key to publish
+              // under. One decision, stated once, enforced where the writing
+              // is.
+              mattered: _mattered,
+              // Our own failure, not a statement about the speaker.
+              captureRefused: microphoneRefused,
               answered: call.hadPeer,
               declined: call.wasDeclined,
               writeTimelineEvent: _writesTheCall,

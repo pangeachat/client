@@ -16,6 +16,21 @@ import '../get_test_client.dart';
 /// the learner nothing while burying the last real message. Exactly one call
 /// event is worth a preview, and it is the card, which carries a plain body
 /// written for this.
+/// A real direct chat with `@a:server`.
+///
+/// The card's stated caller is believed only when it names one of the two real
+/// sides of the call, and the peer is read from m.direct -- so a room that is
+/// not a direct chat has no second side for the caller to be.
+Room _directChat(Client client) {
+  client.accountData['m.direct'] = BasicEvent(
+    type: 'm.direct',
+    content: {
+      '@a:server': ['!r:server'],
+    },
+  );
+  return Room(id: '!r:server', client: client);
+}
+
 void main() {
   late Client client;
 
@@ -29,7 +44,7 @@ void main() {
     senderId: '@a:server',
     eventId: '\$e',
     originServerTs: DateTime.now(),
-    room: Room(id: '!r:server', client: client),
+    room: _directChat(client),
   );
 
   test('the call plumbing never becomes a room preview', () {
@@ -72,7 +87,7 @@ void main() {
     senderId: sender,
     eventId: r'$card',
     originServerTs: DateTime.now(),
-    room: Room(id: '!r:server', client: client),
+    room: _directChat(client),
   );
 
   Future<String> preview(WidgetTester tester, Event event) async {
@@ -91,6 +106,30 @@ void main() {
     );
     await tester.pumpAndSettle();
     return tester.widget<Text>(find.byType(Text)).data!;
+  }
+
+  /// The same, but able to express "the list shows nothing here".
+  ///
+  /// Distinct from an empty string: a call the conversation refuses to draw
+  /// gets no line at all, and a helper that insists on exactly one Text cannot
+  /// tell that from a failure.
+  Future<String?> previewOrNothing(WidgetTester tester, Event event) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: ChatListItemSubtitle(
+            room: event.room,
+            style: const TextStyle(),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final texts = tester.widgetList<Text>(find.byType(Text));
+    return texts.isEmpty ? null : texts.first.data;
   }
 
   testWidgets('an answered call reads as a call, with its length', (
@@ -143,5 +182,43 @@ void main() {
     final event = card(video: true, durationMs: 62000);
     event.room.lastEvent = event;
     expect(await preview(tester, event), 'Video call · 1:02');
+  });
+
+  testWidgets('a call the conversation refuses to draw is not in the list', (
+    tester,
+  ) async {
+    // The card in the conversation already refuses to draw a send that
+    // failed: nothing retries it, the peer never receives it, and a record
+    // only one side holds reads as a call that never happened. The list had
+    // no such check, so the same event vanished from the conversation and
+    // stayed here as a plausible "Voice call" the other person never saw.
+    final failed = card(durationMs: 8000);
+    failed.status = EventStatus.error;
+    failed.room.lastEvent = failed;
+
+    expect(await previewOrNothing(tester, failed), isNull);
+  });
+
+  testWidgets('a card from somebody who was not on the call gets no line', (
+    tester,
+  ) async {
+    // The two surfaces are supposed to agree about the same call, and the
+    // conversation refuses to draw this one at all.
+    final forged = card(sender: '@stranger:evil.example');
+    forged.room.lastEvent = forged;
+
+    expect(await previewOrNothing(tester, forged), isNull);
+  });
+
+  testWidgets('an unshowable card does not claim the whole room is empty', (
+    tester,
+  ) async {
+    // The room may be full of real messages that simply are not the newest
+    // event. "Empty chat" is a claim about all of it.
+    final failed = card();
+    failed.status = EventStatus.error;
+    failed.room.lastEvent = failed;
+
+    expect(await previewOrNothing(tester, failed), isNull);
   });
 }

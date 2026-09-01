@@ -2,6 +2,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 /// Writes the call to the room and returns the event id, or null if it could
@@ -39,8 +40,29 @@ class CallAnalyticsNotStored implements Exception {
   String toString() => 'CallAnalyticsNotStored: $cause';
 }
 
+/// Publishes this device's transcript half. See `transcript_writer.dart`.
+typedef TranscriptPublisher =
+    Future<void> Function({
+      required String callKey,
+      required List<TranscriptSegment> segments,
+      required int chunksCaptured,
+      required int chunksTranscribed,
+      required int chunksLost,
+      required int chunksSuppressed,
+      required bool captureRefused,
+      required bool drainComplete,
+      String? langCode,
+    });
+
 class CallRecord {
   final CallEventSender sendEvent;
+
+  /// Publishes this device's transcript half, if the feature is wired up.
+  ///
+  /// Optional so every existing construction of a record keeps working
+  /// unchanged, and so a deployment can leave transcripts unpublished without
+  /// touching this class.
+  final TranscriptPublisher? publishTranscript;
   final CallAnalyticsSink analytics;
   final CallTranscriptSink transcripts;
   final String roomId;
@@ -75,6 +97,7 @@ class CallRecord {
     required this.analytics,
     required this.transcripts,
     required this.roomId,
+    this.publishTranscript,
   });
 
   /// Writes the call and records what was said.
@@ -195,13 +218,48 @@ class CallRecord {
   Future<void> finish({
     required Duration duration,
     required bool video,
+
+    /// Whether this device's microphone never opened. Distinct from a speaker
+    /// who was muted: one is a fact about them, the other about us, and they
+    /// reach the accounting as the same zero chunks unless told apart here.
+    bool captureRefused = false,
     bool answered = true,
     bool declined = false,
     bool writeTimelineEvent = true,
+
+    /// Whether this call earned any trace at all -- somebody was rung, or
+    /// somebody arrived. A call that rang nobody and connected to nothing
+    /// leaves NOTHING, and that is a fact about the call rather than about
+    /// the record, so it is stated by the caller who watched it happen.
+    ///
+    /// Explicit because it used to be implied. The transcript below published
+    /// before anything here had established the call was worth recording, and
+    /// what kept a phantom call's half out of the room was a guard in the
+    /// session and a chain of coincidences in the call underneath it: a ring
+    /// that never went out also leaves no membership, so the key came through
+    /// null and publishing skipped itself. That is three classes agreeing by
+    /// luck about a rule none of them states. Defaulted true because every
+    /// caller that reaches here at all has already decided the call happened;
+    /// it is the refusal that has to be said out loud.
+    bool mattered = true,
     String? anchorEventId,
     String? callerId,
     String? callKey,
   }) async {
+    // Nothing at all, then: not the half below, not the credit, not the card
+    // the retry path would otherwise write.
+    if (!mattered) return;
+    // Ahead of every guard below, because none of them are about the
+    // transcript. Publishing lives outside the credit's control flow entirely:
+    // it needs only the anchor, and it is a separate promise to the learner.
+    //
+    // Both couplings were real. Inside _finish it sat after the card's event id
+    // was resolved, so a card that failed to write ALSO cost the transcript --
+    // though publishing never needed the card. And behind the _credited check
+    // it was unreachable whenever an earlier finish had credited without a
+    // call key, which is exactly the sequence the ordinary lifecycle produces.
+    await _publishTranscript(callKey, captureRefused);
+
     if (_credited) return;
     // Concurrent callers join the in-flight attempt rather than being dropped.
     // Dropping one made a failed write unretryable in practice: the two callers
@@ -323,19 +381,114 @@ class CallRecord {
     }
   }
 
+  /// Publishes this device's half of the conversation, at most once.
+  ///
+  /// Separate from the analytics credit on purpose: a learner's XP and the
+  /// readable record of what they said are different promises, and one failing
+  /// must not cost the other. A transcript that does not publish is a gap in
+  /// the history; a credit applied twice is a learner's proficiency quietly
+  /// wrong, which is why only the latter is guarded by [_credited].
+  /// Publishes this device's half, retrying a transient failure.
+  ///
+  /// The retry is HERE and not shared with the card's. Publishing was moved out
+  /// of `_finish` so a failed card could not cost the transcript and so the
+  /// credit guard could not make it unreachable -- both real couplings -- but
+  /// moving it out took it out of the card's retry loop as well, and nothing
+  /// replaced that. The flag below was reset on failure so a later attempt
+  /// could try again, the log said so, and no later attempt existed: `finish()`
+  /// runs once per call behind a latch, and the screen is gone afterwards.
+  /// Permitting a retry is not the same as performing one.
+  ///
+  /// A resend is safe because the transaction id is deterministic in
+  /// (call_key, sender): a half that did land is collapsed by the server rather
+  /// than written twice. That property is what makes retrying the correct
+  /// answer here, and it is why refusing to retry was never buying anything --
+  /// duplicates were already impossible, so the refusal only threw the half
+  /// away. A speaker whose one send failed then reads as ABSENT: told they said
+  /// nothing, when they spoke and their device tried to say so.
+  Future<void> _publishTranscript(String? callKey, bool captureRefused) async {
+    final publish = publishTranscript;
+    if (publish == null || _published || callKey == null) return;
+
+    // Read ONCE, before the first attempt. The sink is closed by now, and a
+    // retry must resend the same half rather than whatever the sink reports
+    // later -- the deterministic transaction id only collapses a resend if the
+    // resend is actually the same event.
+    final segments = transcripts.segments;
+    final chunksCaptured = transcripts.chunksCaptured;
+    final chunksTranscribed = transcripts.chunksTranscribed;
+    final chunksLost = transcripts.chunksLost;
+    final chunksSuppressed = transcripts.chunksSuppressed;
+    // Meaningful only once the sink has closed, which the capture service does
+    // before this runs. Read earlier it would be the optimistic default and a
+    // half could claim a completeness nothing had checked.
+    final drainComplete = transcripts.drainComplete;
+    final langCode = transcripts.langCode;
+
+    // Marked before the first await so concurrent callers cannot both publish.
+    _published = true;
+
+    for (var attempt = 0; attempt < 3; attempt++) {
+      if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
+      try {
+        await publish(
+          callKey: callKey,
+          segments: segments,
+          chunksCaptured: chunksCaptured,
+          chunksTranscribed: chunksTranscribed,
+          chunksLost: chunksLost,
+          chunksSuppressed: chunksSuppressed,
+          captureRefused: captureRefused,
+          drainComplete: drainComplete,
+          langCode: langCode,
+        );
+        return;
+      } catch (e, s) {
+        // Swallowed rather than rethrown, so a transcript failure cannot drag
+        // the credit into its own retry loop, which is once-only and cannot
+        // survive being re-entered.
+        Logs().w('Publishing the call transcript failed', e, s);
+      }
+    }
+
+    // Every attempt failed. Released so anything that does call again may try,
+    // and logged as a LOSS rather than as a retryable condition -- the previous
+    // wording claimed a retry that nothing performed.
+    _published = false;
+    Logs().e(
+      'The call transcript was not published after 3 attempts; '
+      'this speaker will read as absent',
+    );
+  }
+
+  bool _published = false;
+
   /// How long a call in the timeline lasted, read from its content.
   ///
   /// Defensive because this event is written by other clients and by older
   /// versions of this one: a cast that throws while drawing the timeline takes
   /// down the whole row rather than one number in it.
-  static Duration durationOf(Map<String, Object?> content) {
+  static Duration? durationOf(Map<String, Object?> content) {
+    // Finite, not merely parseable. `num.tryParse` accepts "NaN" and
+    // "Infinity", and `.round()` on either throws -- so a card carrying one of
+    // those words took the whole row down rather than reading as a call of
+    // unknown length. Room content, so it is somebody else's word.
     final ms = content['duration_ms'];
-    if (ms is num) return Duration(milliseconds: ms.round());
-    if (ms is String) {
-      final parsed = num.tryParse(ms);
-      if (parsed != null) return Duration(milliseconds: parsed.round());
+    final parsed = ms is num
+        ? ms
+        : ms is String
+        ? num.tryParse(ms)
+        : null;
+    // Non-negative as well as finite. A call cannot have lasted less than no
+    // time, and the value is somebody else's word.
+    if (parsed != null && parsed.isFinite && parsed >= 0) {
+      return Duration(milliseconds: parsed.round());
     }
-    return Duration.zero;
+    // Null, not zero. A card stating no usable length and a call that really
+    // lasted none are different facts, and collapsing them made one surface
+    // print "0:00" for a malformed card while the other printed nothing -- a
+    // length the data does not support, and two views of one call disagreeing.
+    return null;
   }
 
   /// What a client that cannot draw a call card shows instead.
@@ -362,6 +515,34 @@ class CallRecord {
   /// writer of a card stamps. Kept as a constant so no path can misspell it.
   static const callKeyField = 'call_key';
 
+  /// A key a call can actually be identified by, or null.
+  ///
+  /// EMPTY IS NOT A KEY. Two cards both carrying '' are not two sightings of
+  /// one call; they are two calls whose identity was never learned. Reading
+  /// the empty string as a shared identity made the later of two such calls
+  /// count as a duplicate of the earlier one and disappear from the
+  /// conversation, taking its transcript's only tap target with it.
+  ///
+  /// The transcript half has always drawn this line -- CallTranscriptContent
+  /// refuses an empty key outright -- and the card's own read of the field
+  /// drew it too. The two places that decide whether two cards are the SAME
+  /// call did not, so one surface treated a value as an identity while
+  /// another treated it as nothing. This is that one line, drawn once, for
+  /// everything that reads or writes the field.
+  static String? usableKey(String? key) =>
+      key != null && key.isNotEmpty ? key : null;
+
+  /// The usable call key a card's content carries, or null.
+  ///
+  /// Defensive about the type as well as the emptiness: this is somebody
+  /// else's word, written by other clients and older versions of this one, and
+  /// a number where a string belongs must read as "no key" rather than take
+  /// the timeline row down.
+  static String? keyOf(Map<String, Object?> content) {
+    final key = content[callKeyField];
+    return key is String ? usableKey(key) : null;
+  }
+
   Future<String?> _write({
     required Duration duration,
     required bool video,
@@ -370,6 +551,18 @@ class CallRecord {
     required String? callerId,
     required String? callKey,
   }) async {
+    // A card cannot state a negative length. What this is measured from is the
+    // wall clock, and a step backwards mid-call -- an NTP correction, a
+    // learner changing the time on their phone -- makes the subtraction
+    // negative. The stamp below cannot express that: it renders one second
+    // short of nothing as "0:59", which is a plausible duration and
+    // indistinguishable afterwards from a real one. Clamped once, here, so the
+    // readable fallback and the number cannot disagree either.
+    final length = duration.isNegative ? Duration.zero : duration;
+    // See [usableKey]: an empty key identifies nothing, so it is left out
+    // altogether rather than stamped as an identity every reader would then
+    // have to know to disbelieve.
+    final key = usableKey(callKey);
     try {
       return await sendEvent(<String, dynamic>{
         'msgtype': PangeaEventTypes.call,
@@ -377,12 +570,12 @@ class CallRecord {
         // not understand the msgtype. Without it a call reads as an empty
         // message everywhere but here.
         'body': _fallbackText(
-          duration: duration,
+          duration: length,
           video: video,
           answered: answered,
           declined: declined,
         ),
-        'duration_ms': duration.inMilliseconds,
+        'duration_ms': length.inMilliseconds,
         'video': video,
         // A call nobody answered still belongs in the conversation. Every
         // calling product shows a missed call, and a learner who was away
@@ -408,7 +601,7 @@ class CallRecord {
         // apart from two calls -- the renderer draws only the first card per
         // key. Absent on calls whose identity was never learned; those render
         // unconditionally, as they always did.
-        callKeyField: ?callKey,
+        callKeyField: ?key,
       }, _txid);
     } catch (e, s) {
       Logs().e('Could not write the call to the room', e, s);

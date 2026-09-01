@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-01 10:41:36.481812",
+    "@@last_modified": "2026-09-01 11:50:14.966273",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "लक्ष्य भाषा रीसेट करा",
     "resetBaseLanguage": "मूळ भाषा रीसेट करा",
     "selectedLanguageLevel": "भाषा स्तर म्हणून {level} निवडले",
-    "resetLanguageLevel": "भाषा स्तर रीसेट करा"
+    "resetLanguageLevel": "भाषा स्तर रीसेट करा",
+    "callTranscriptSharedNotice": "हा कॉल ट्रान्सक्राईब केला आहे आणि सेव्ह केला आहे. तुम्ही आणि दुसरी व्यक्ती तो नंतर वाचू शकता.",
+    "callTranscriptTitle": "कॉल ट्रान्सक्रिप्ट",
+    "callTranscriptLoadFailed": "ट्रान्सक्रिप्ट लोड करता आले नाही",
+    "callTranscriptRetry": "पुन्हा प्रयत्न करा",
+    "callTranscriptStoppedEarly": "या कॉलमध्ये एकाच वेळी वाचण्यासाठी खूप काही होते, त्यामुळे काही भाग दाखवला नाही.",
+    "callTranscriptNone": "{name} कडून कोणतेही ट्रान्सक्रिप्ट नाही",
+    "callTranscriptSaidNothing": "{name} काहीही बोलले नाही",
+    "callTranscriptNothingRead": "{name} जे बोलले त्यातून काहीही वाचता आले नाही",
+    "callTranscriptNoSpeechDetected": "{name} कडून रेकॉर्ड केलेले काहीही ट्रान्सक्राईब करण्यासाठी पाठवले नाही: या ॲपने त्यात कोणतेही भाषण आढळले नाही आणि ते चुकीचे असू शकते, त्यामुळे काय बोलले हे माहित नाही.",
+    "callTranscriptPartial": "{name} जे बोलले त्याचा काही भाग गहाळ असू शकतो",
+    "callTranscriptByTime": "{time} पर्यंत",
+    "callTranscriptApproximateTimes": "वेळेनुसार \"बाय\" म्हणून चिन्हांकित केलेला टर्न त्या वेळी किंवा त्यापूर्वी बोलला गेला. ते टर्न त्या क्षणी दाखवले जातात, त्यामुळे ते आधी बोलले गेले असावेत.",
+    "callTranscriptUnstatedTimes": "काही टर्न वेळ दाखवत नाहीत. ज्या डिव्हाइसने ते रेकॉर्ड केले त्याने त्याच्या वेळेची अचूकता सांगितली नाही, त्यामुळे या संभाषणात ते कुठे बसतात हे चुकीचे असू शकते.",
+    "callTranscriptUnreconciledClocks": "हे टर्न दोन डिव्हाइसवर रेकॉर्ड केले गेले ज्यांची घड्याळे तुलना करता आली नाहीत, त्यामुळे कोणतीही वेळ दाखवली नाही आणि ते ज्या क्रमाने दिसतात तो चुकीचा असू शकतो.",
+    "callTranscriptOpen": "ट्रान्सक्रिप्ट वाचा"
 }

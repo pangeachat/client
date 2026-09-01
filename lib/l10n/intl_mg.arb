@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-01 10:41:35.349633",
+    "@@last_modified": "2026-09-01 11:50:14.508943",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Averina amin'ny laoniny ny fiteny kendrena",
     "resetBaseLanguage": "Averina amin'ny laoniny ny fiteny fototra",
     "selectedLanguageLevel": "Voafidy ny {level} ho haavon'ny fiteny",
-    "resetLanguageLevel": "Averina amin'ny laoniny ny haavon'ny fiteny"
+    "resetLanguageLevel": "Averina amin'ny laoniny ny haavon'ny fiteny",
+    "callTranscriptSharedNotice": "Voarakitra sy voatahiry ity antso ity. Afaka mamaky izany ianao sy ilay olona iray hafa aorian’izay.",
+    "callTranscriptTitle": "Dika soratra antso",
+    "callTranscriptLoadFailed": "Tsy afaka nampiditra ny dika soratra",
+    "callTranscriptRetry": "Andramo indray",
+    "callTranscriptStoppedEarly": "Be loatra ny zavatra hovakiana tamin’ity antso ity ka tsy naseho ny ampahany tamin’izany.",
+    "callTranscriptNone": "Tsy misy dika soratra avy amin’i {name}",
+    "callTranscriptSaidNothing": "Tsy niteny na inona na inona i {name}",
+    "callTranscriptNothingRead": "Tsy nisy azo novakiana tamin’izay nolazain’i {name}",
+    "callTranscriptNoSpeechDetected": "Tsy nisy zavatra voarakitra avy amin’i {name} nalefa hosoratana: tsy nahita kabary tao ity fampiharana ity ary mety ho diso momba izany, ka tsy fantatra izay nolazaina.",
+    "callTranscriptPartial": "Mety ho tsy hita ny ampahany tamin’izay nolazain’i {name}",
+    "callTranscriptByTime": "amin’ny {time}",
+    "callTranscriptApproximateTimes": "Ny fehezanteny voamarika hoe “amin’ny” fotoana iray dia nolazaina tamin’io fotoana io na talohan’io. Aseho amin’io fotoana io ireo fehezanteny ireo, ka mety ho nolazaina talohan’izay.",
+    "callTranscriptUnstatedTimes": "Misy fehezanteny sasany tsy mampiseho fotoana. Tsy nilaza ny fitaovana nandrakitra azy ireo hoe ohatrinona ny fahamarinan’ny fotoanany, ka mety ho diso ny toerana misy azy ireo amin’ity resaka ity.",
+    "callTranscriptUnreconciledClocks": "Voarakitra tamin’ny fitaovana roa tsy azo nampitahaina ny famantaranandrony ireo fehezanteny ireo, ka tsy misy fotoana aseho ary mety ho diso ny filaharany.",
+    "callTranscriptOpen": "Vakio ny dika soratra"
 }

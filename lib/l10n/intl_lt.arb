@@ -2968,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-01 10:41:34.931470",
+    "@@last_modified": "2026-09-01 11:50:12.384711",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10602,5 +10602,20 @@
     "resetTargetLanguage": "Atstatyti tikslinę kalbą",
     "resetBaseLanguage": "Atstatyti pagrindinę kalbą",
     "selectedLanguageLevel": "Pasirinktas {level} kaip kalbos lygis",
-    "resetLanguageLevel": "Atstatyti kalbos lygį"
+    "resetLanguageLevel": "Atstatyti kalbos lygį",
+    "callTranscriptSharedNotice": "Šis pokalbis yra perrašytas ir išsaugotas. Jūs ir kitas asmuo galite jį perskaityti vėliau.",
+    "callTranscriptTitle": "Pokalbio stenograma",
+    "callTranscriptLoadFailed": "Nepavyko įkelti stenogramos",
+    "callTranscriptRetry": "Bandyti dar kartą",
+    "callTranscriptStoppedEarly": "Šiame pokalbyje buvo per daug teksto, kad būtų galima perskaityti iš karto, todėl dalis jo nerodoma.",
+    "callTranscriptNone": "Nėra stenogramos iš {name}",
+    "callTranscriptSaidNothing": "{name} nieko nesakė",
+    "callTranscriptNothingRead": "Nieko negalima perskaityti iš to, ką pasakė {name}",
+    "callTranscriptNoSpeechDetected": "Niekas, kas buvo įrašyta iš {name}, nebuvo išsiųsta transkribuoti: ši programa nerado jame jokios kalbos ir gali klysti, todėl nežinoma, kas buvo pasakyta.",
+    "callTranscriptPartial": "Dalis to, ką pasakė {name}, gali trūkti",
+    "callTranscriptByTime": "iki {time}",
+    "callTranscriptApproximateTimes": "Posūkis, pažymėtas „iki“ tam tikro laiko, buvo pasakytas tuo metu arba anksčiau. Tie posūkiai rodomi tuo momentu, todėl jie galėjo būti pasakyti anksčiau.",
+    "callTranscriptUnstatedTimes": "Kai kurie posūkiai nerodo laiko. Įrenginys, kuris juos įrašė, nenurodė, kokie tikslūs yra jo laikai, todėl jų vieta šiame pokalbyje gali būti neteisinga.",
+    "callTranscriptUnreconciledClocks": "Šie posūkiai buvo įrašyti dviem įrenginiais, kurių laikrodžių nebuvo galima palyginti, todėl laikai nerodomi ir jų pasirodymo tvarka gali būti neteisinga.",
+    "callTranscriptOpen": "Skaityti stenogramą"
 }

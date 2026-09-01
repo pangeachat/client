@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-01 10:41:30.821864",
+    "@@last_modified": "2026-09-01 11:50:03.250446",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9832,5 +9832,20 @@
     "resetTargetLanguage": "Athshocraigh sprioctheanga",
     "resetBaseLanguage": "Athshocraigh bunteanga",
     "selectedLanguageLevel": "Roghnaíodh {level} mar leibhéal teanga",
-    "resetLanguageLevel": "Athshocraigh leibhéal teanga"
+    "resetLanguageLevel": "Athshocraigh leibhéal teanga",
+    "callTranscriptSharedNotice": "Tá an glao seo trascríofa agus sábháilte. Is féidir leat féin agus leis an duine eile é a léamh ina dhiaidh sin.",
+    "callTranscriptTitle": "Tras-scríbhinn Glao",
+    "callTranscriptLoadFailed": "Níorbh fhéidir an tras-scríbhinn a luchtú",
+    "callTranscriptRetry": "Bain triail eile as",
+    "callTranscriptStoppedEarly": "Bhí an iomarca le léamh sa ghlao seo in aon turas amháin, mar sin níl cuid de le feiceáil.",
+    "callTranscriptNone": "Níl aon tras-scríbhinn ó {name}",
+    "callTranscriptSaidNothing": "Níor dúirt {name} tada",
+    "callTranscriptNothingRead": "Níorbh fhéidir tada a léamh ón méid a dúirt {name}",
+    "callTranscriptNoSpeechDetected": "Níor seoladh tada a taifeadadh ó {name} le tras-scríobh: níor aimsigh an aip seo aon chaint ann agus d'fhéadfadh sé a bheith mícheart faoi sin, mar sin níl a fhios cad a dúradh.",
+    "callTranscriptPartial": "D'fhéadfadh cuid den méid a dúirt {name} a bheith in easnamh",
+    "callTranscriptByTime": "faoi {time}",
+    "callTranscriptApproximateTimes": "Dúradh casadh atá marcáilte \"faoi\" am ag an am sin nó roimhe. Taispeántar na casadh sin ag an nóiméad sin, mar sin d'fhéadfadh siad a bheith ráite níos luaithe.",
+    "callTranscriptUnstatedTimes": "Ní thaispeánann roinnt casadh aon am. Níor dúirt an gléas a thaifead iad cé chomh cruinn is atá a chuid ama, mar sin d'fhéadfadh an áit a bhfuil siad sa chomhrá seo a bheith mícheart.",
+    "callTranscriptUnreconciledClocks": "Taifeadadh na casadh seo ar dhá ghléas nach bhféadfaí a gcuid cloig a chur i gcomparáid, mar sin ní thaispeántar aon amanna agus d'fhéadfadh an t-ord ina bhfuil siad le feiceáil a bheith mícheart.",
+    "callTranscriptOpen": "Léigh an tras-scríbhinn"
 }

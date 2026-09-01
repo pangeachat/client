@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 10:41:39.792504",
+    "@@last_modified": "2026-09-01 11:50:24.673477",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10770,5 +10770,20 @@
     "resetTargetLanguage": "Poništi ciljni jezik",
     "resetBaseLanguage": "Poništi osnovni jezik",
     "selectedLanguageLevel": "Odabran {level} kao nivo jezika",
-    "resetLanguageLevel": "Poništi nivo jezika"
+    "resetLanguageLevel": "Poništi nivo jezika",
+    "callTranscriptSharedNotice": "Ovaj poziv je transkribovan i sačuvan. Vi i druga osoba možete ga pročitati kasnije.",
+    "callTranscriptTitle": "Transkript poziva",
+    "callTranscriptLoadFailed": "Učitavanje transkripta nije uspelo",
+    "callTranscriptRetry": "Pokušaj ponovo",
+    "callTranscriptStoppedEarly": "Ovaj poziv je imao previše teksta za čitanje odjednom, tako da deo nije prikazan.",
+    "callTranscriptNone": "Nema transkripta od {name}",
+    "callTranscriptSaidNothing": "{name} nije ništa rekao/rekla",
+    "callTranscriptNothingRead": "Ništa se nije moglo pročitati od onoga što je {name} rekao/rekla",
+    "callTranscriptNoSpeechDetected": "Ništa snimljeno od {name} nije poslato na transkripciju: ova aplikacija nije pronašla govor u tome i može biti pogrešna u vezi s tim, tako da se ne zna šta je rečeno.",
+    "callTranscriptPartial": "Deo onoga što je {name} rekao/rekla možda nedostaje",
+    "callTranscriptByTime": "do {time}",
+    "callTranscriptApproximateTimes": "Obrt označen „do“ određenog vremena izgovoren je u to vreme ili pre njega. Ti obrti su prikazani u tom trenutku, tako da su možda izgovoreni ranije.",
+    "callTranscriptUnstatedTimes": "Neki obrti ne pokazuju vreme. Uređaj koji ih je snimio nije naveo koliko su tačna njegova vremena, tako da mesto gde se nalaze u ovom razgovoru može biti pogrešno.",
+    "callTranscriptUnreconciledClocks": "Ovi obrti su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuje vreme i redosled njihovog pojavljivanja može biti pogrešan.",
+    "callTranscriptOpen": "Pročitajte transkript"
 }

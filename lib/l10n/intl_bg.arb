@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-01 10:41:27.626921",
+    "@@last_modified": "2026-09-01 11:49:53.919057",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Нулиране на езика за учене",
     "resetBaseLanguage": "Нулиране на основния език",
     "selectedLanguageLevel": "Избрано ниво на език: {level}",
-    "resetLanguageLevel": "Нулиране на нивото на език"
+    "resetLanguageLevel": "Нулиране на нивото на език",
+    "callTranscriptSharedNotice": "Това обаждане е транскрибирано и запазено. Вие и другият човек можете да го прочетете след това.",
+    "callTranscriptTitle": "Препис на разговора",
+    "callTranscriptLoadFailed": "Не може да се зареди преписът",
+    "callTranscriptRetry": "Опитай отново",
+    "callTranscriptStoppedEarly": "Това обаждане имаше твърде много за четене наведнъж, така че част от него не е показана.",
+    "callTranscriptNone": "Няма препис от {name}",
+    "callTranscriptSaidNothing": "{name} не каза нищо",
+    "callTranscriptNothingRead": "Нищо не може да се прочете от това, което {name} каза",
+    "callTranscriptNoSpeechDetected": "Нищо записано от {name} не беше изпратено за транскрибиране: това приложение не откри реч в него и може да греши, така че казаното не е известно.",
+    "callTranscriptPartial": "Част от казаното от {name} може да липсва",
+    "callTranscriptByTime": "към {time}",
+    "callTranscriptApproximateTimes": "Реплика, отбелязана „към“ даден час, е казана по това време или преди него. Тези реплики са показани в този момент, така че може да са били казани по-рано.",
+    "callTranscriptUnstatedTimes": "Някои реплики не показват време. Устройството, което ги е записало, не е посочило колко точни са часовете му, така че мястото им в този разговор може да е грешно.",
+    "callTranscriptUnreconciledClocks": "Тези реплики са записани на две устройства, чиито часовници не могат да бъдат сравнени, така че не се показват времена и редът, в който се появяват, може да е грешен.",
+    "callTranscriptOpen": "Прочетете преписа"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-01 10:41:28.350633",
+    "@@last_modified": "2026-09-01 11:49:56.668197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "I-reset ang target nga pinulongan",
     "resetBaseLanguage": "I-reset ang base nga pinulongan",
     "selectedLanguageLevel": "Napili ang {level} isip lebel sa pinulongan",
-    "resetLanguageLevel": "I-reset ang lebel sa pinulongan"
+    "resetLanguageLevel": "I-reset ang lebel sa pinulongan",
+    "callTranscriptSharedNotice": "Kini nga tawag gi-transcribe ug gi-save. Ikaw ug ang laing tawo makabasa niini pagkahuman.",
+    "callTranscriptTitle": "Transcript sa tawag",
+    "callTranscriptLoadFailed": "Dili ma-load ang transcript",
+    "callTranscriptRetry": "Sulayi pag-usab",
+    "callTranscriptStoppedEarly": "Kini nga tawag daghan kaayong basahon sa usa ka higayon, mao nga ang uban niini wala gipakita.",
+    "callTranscriptNone": "Walay transcript gikan kang {name}",
+    "callTranscriptSaidNothing": "Walay gisulti si {name}",
+    "callTranscriptNothingRead": "Walay nabasa gikan sa gisulti ni {name}",
+    "callTranscriptNoSpeechDetected": "Walay narekord gikan kang {name} ang gipadala aron i-transcribe: walay nakit-an nga sinultihan ang kini nga app niini ug mahimong sayop kini, mao nga wala mahibal-an kung unsa ang gisulti.",
+    "callTranscriptPartial": "Ang bahin sa gisulti ni {name} mahimong nawala",
+    "callTranscriptByTime": "sa {time}",
+    "callTranscriptApproximateTimes": "Ang usa ka turno nga gimarkahan og \"sa\" usa ka oras gisulti sa o sa wala pa kini. Kadtong mga turno gipakita nianang higayona, mao nga mahimo kining gisulti sa sayo pa.",
+    "callTranscriptUnstatedTimes": "Ang ubang mga turno walay gipakita nga oras. Ang device nga nagrekord niini wala magsulti kung unsa ka tukma ang mga oras niini, mao nga ang ilang posisyon sa kini nga panag-istoryahanay mahimong sayop.",
+    "callTranscriptUnreconciledClocks": "Kini nga mga turno narekord sa duha ka device kansang mga orasan dili matandi, mao nga walay mga oras nga gipakita ug ang han-ay sa ilang pagpakita mahimong sayop.",
+    "callTranscriptOpen": "Basaha ang transcript"
 }

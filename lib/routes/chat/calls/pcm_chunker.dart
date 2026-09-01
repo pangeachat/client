@@ -19,11 +19,22 @@ class PcmChunk {
   /// Zero-based position within the capture session.
   final int index;
 
+  /// When this chunk's audio began, in absolute Unix milliseconds.
+  ///
+  /// Computed from the run's start plus the exact count of frames emitted
+  /// before it, never from a clock read at the cut. A cut happens inside a
+  /// callback that is already carrying audio captured milliseconds ago, and one
+  /// callback can cut several chunks — reading a clock at each would stamp them
+  /// all at whatever moment the loop happened to reach them, which is a fact
+  /// about CPU time rather than about when anybody spoke.
+  final int startedAtMs;
+
   const PcmChunk({
     required this.pcm,
     required this.sampleRate,
     required this.channels,
     required this.index,
+    required this.startedAtMs,
   });
 
   int get _bytesPerFrame => 2 * channels;
@@ -113,9 +124,29 @@ class PcmChunker {
   /// stretch look like a redelivery of the first, and it would be discarded.
   int _nextIndex;
 
+  /// When this run's audio began, in absolute Unix milliseconds.
+  ///
+  /// Taken at construction by whoever builds the chunker, and never read from a
+  /// clock in here. That is what keeps [add] pure and synchronous, which is
+  /// what lets the splitting logic be tested by feeding it audio; and it is
+  /// what makes a chunk's position a property of the AUDIO rather than of when
+  /// the code got round to looking at it.
+  final int runStartedAtMs;
+
+  /// Frames this chunker has already handed out in completed chunks.
+  ///
+  /// The clock the whole design turns on. A chunk's position is measured in
+  /// FRAMES rather than by summing the durations of the chunks before it,
+  /// because [PcmChunk.duration] truncates to whole microseconds and then again
+  /// to whole milliseconds — and a sum of truncated values drifts a little per
+  /// chunk, for as long as the call lasts. A single conversion from an exact
+  /// frame count does not drift at all, and costs one multiply per chunk.
+  int _framesEmitted = 0;
+
   PcmChunker({
     required this.sampleRate,
     required this.channels,
+    required this.runStartedAtMs,
     int firstIndex = 0,
     this.targetDuration = const Duration(seconds: 45),
     this.maxDuration = const Duration(seconds: 90),
@@ -130,6 +161,22 @@ class PcmChunker {
   /// The index the next chunk would take. A caller resuming after a gap passes
   /// this to the chunker that follows.
   int get nextIndex => _nextIndex;
+
+  /// When this run's audio ends, in absolute Unix milliseconds.
+  ///
+  /// Counted over every frame the chunker has taken in, cut or still buffered,
+  /// so the answer is the same before and after a [flush] rather than depending
+  /// on which side of one the caller asks from.
+  ///
+  /// The caller that starts the NEXT run uses this as the floor that run cannot
+  /// begin before. Computed here from this chunker's own exact frame count, and
+  /// deliberately not recomputed by the caller from the chunks' durations —
+  /// that is the truncating sum this replaces.
+  int get endedAtMs => _atMs(_framesEmitted + _framesBuffered);
+
+  /// Absolute milliseconds [frames] into this run: the single conversion,
+  /// exact frames in and one truncation out.
+  int _atMs(int frames) => runStartedAtMs + frames * 1000 ~/ sampleRate;
 
   int get _framesPerWindow => max(1, sampleRate * _windowMs ~/ 1000);
   int get _targetFrames => sampleRate * targetDuration.inMilliseconds ~/ 1000;
@@ -202,6 +249,12 @@ class PcmChunker {
   PcmChunk? _cut() {
     if (_framesBuffered == 0) return null;
     final pcm = _buffer.takeBytes();
+    // Stamped from the frames that came BEFORE this chunk, then counted in.
+    // Exact frame arithmetic settles the oversized-batch split for free: when
+    // one add() cuts several chunks in a single pass, the second sits exactly
+    // one chunk's audio after the first, whatever the loop did with CPU time.
+    final startedAtMs = _atMs(_framesEmitted);
+    _framesEmitted += _framesBuffered;
     _framesBuffered = 0;
     _quietFrames = 0;
 
@@ -210,6 +263,7 @@ class PcmChunker {
       sampleRate: sampleRate,
       channels: channels,
       index: _nextIndex++,
+      startedAtMs: startedAtMs,
     );
   }
 

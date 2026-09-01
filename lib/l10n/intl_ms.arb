@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-01 10:41:36.037291",
+    "@@last_modified": "2026-09-01 11:50:15.045905",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Tetapkan semula bahasa sasaran",
     "resetBaseLanguage": "Tetapkan semula bahasa asas",
     "selectedLanguageLevel": "{level} dipilih sebagai tahap bahasa",
-    "resetLanguageLevel": "Tetapkan semula tahap bahasa"
+    "resetLanguageLevel": "Tetapkan semula tahap bahasa",
+    "callTranscriptSharedNotice": "Panggilan ini ditranskripsi dan disimpan. Anda dan orang lain boleh membacanya selepas itu.",
+    "callTranscriptTitle": "Transkrip panggilan",
+    "callTranscriptLoadFailed": "Tidak dapat memuatkan transkrip",
+    "callTranscriptRetry": "Cuba lagi",
+    "callTranscriptStoppedEarly": "Panggilan ini terlalu banyak untuk dibaca sekaligus, jadi sebahagian daripadanya tidak ditunjukkan.",
+    "callTranscriptNone": "Tiada transkrip daripada {name}",
+    "callTranscriptSaidNothing": "{name} tidak berkata apa-apa",
+    "callTranscriptNothingRead": "Tiada apa-apa yang boleh dibaca daripada apa yang {name} katakan",
+    "callTranscriptNoSpeechDetected": "Tiada apa-apa yang dirakam daripada {name} dihantar untuk ditranskripsi: aplikasi ini tidak menemui sebarang ucapan di dalamnya dan mungkin salah mengenainya, jadi apa yang dikatakan tidak diketahui.",
+    "callTranscriptPartial": "Sebahagian daripada apa yang {name} katakan mungkin hilang",
+    "callTranscriptByTime": "oleh {time}",
+    "callTranscriptApproximateTimes": "Giliran yang ditandakan \"oleh\" masa telah dikatakan pada atau sebelum itu. Giliran tersebut ditunjukkan pada masa itu, jadi ia mungkin telah dikatakan lebih awal.",
+    "callTranscriptUnstatedTimes": "Beberapa giliran tidak menunjukkan masa. Peranti yang merakamnya tidak menyatakan betapa tepat masanya, jadi kedudukannya dalam perbualan ini mungkin salah.",
+    "callTranscriptUnreconciledClocks": "Giliran ini dirakam pada dua peranti yang jamnya tidak dapat dibandingkan, jadi tiada masa ditunjukkan dan susunan ia muncul mungkin salah.",
+    "callTranscriptOpen": "Baca transkrip"
 }

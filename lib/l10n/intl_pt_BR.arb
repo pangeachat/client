@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 10:41:38.026508",
+    "@@last_modified": "2026-09-01 11:50:19.197340",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9821,5 +9821,20 @@
     "resetTargetLanguage": "Redefinir idioma de destino",
     "resetBaseLanguage": "Redefinir idioma base",
     "selectedLanguageLevel": "{level} selecionado como nível de idioma",
-    "resetLanguageLevel": "Redefinir nível de idioma"
+    "resetLanguageLevel": "Redefinir nível de idioma",
+    "callTranscriptSharedNotice": "Esta chamada foi transcrita e salva. Você e a outra pessoa podem lê-la depois.",
+    "callTranscriptTitle": "Transcrição da chamada",
+    "callTranscriptLoadFailed": "Não foi possível carregar a transcrição",
+    "callTranscriptRetry": "Tentar novamente",
+    "callTranscriptStoppedEarly": "Esta chamada tinha muito para ler de uma vez, então parte dela não foi mostrada.",
+    "callTranscriptNone": "Nenhuma transcrição de {name}",
+    "callTranscriptSaidNothing": "{name} não disse nada",
+    "callTranscriptNothingRead": "Nada pôde ser lido do que {name} disse",
+    "callTranscriptNoSpeechDetected": "Nada gravado de {name} foi enviado para transcrição: este aplicativo não encontrou fala e pode estar errado, então o que foi dito não é conhecido.",
+    "callTranscriptPartial": "Parte do que {name} disse pode estar faltando",
+    "callTranscriptByTime": "por {time}",
+    "callTranscriptApproximateTimes": "Uma fala marcada \"por\" um horário foi dita naquele horário ou antes. Essas falas são mostradas naquele momento, então podem ter sido ditas antes.",
+    "callTranscriptUnstatedTimes": "Algumas falas não mostram horário. O dispositivo que as gravou não informou a precisão de seus horários, então a posição delas nesta conversa pode estar errada.",
+    "callTranscriptUnreconciledClocks": "Essas falas foram gravadas em dois dispositivos cujos relógios não puderam ser comparados, então nenhum horário é mostrado e a ordem em que aparecem pode estar errada.",
+    "callTranscriptOpen": "Ler a transcrição"
 }

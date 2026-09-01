@@ -1,6 +1,7 @@
 // Scenario suite. Each one drives both clients, then asserts what BOTH
 // participants' timelines contain -- the check no unit test and no code review
 // can make, and the one that would have caught the ghost-card bug.
+const labels = require('./labels');
 const h = require('./harness');
 const { ui, mx, wait } = h;
 
@@ -59,7 +60,7 @@ async function placeCall(scenario, caller, markId, roomLocalpart) {
     'place call',
     async () => {
       await h.ensureRoom(caller, roomLocalpart);
-      await ui.clickLabel(caller.page, 'Call', { exact: true }).catch(() => {});
+      await ui.clickControl(caller.page, 'call').catch(() => {});
     },
     async () => (await h.since(caller.token, ROOM_ID, markId)).some(
       (e) => e.type === mx.RING && e.sender === caller.userId,
@@ -109,7 +110,7 @@ async function run() {
       console.log(`\n[${s}]`);
       await h.ensureRoom(A, ROOM_LOCALPART); await h.ensureRoom(B, ROOM_LOCALPART);
       const mA = await h.mark(A.token, ROOM_ID), mB = await h.mark(B.token, ROOM_ID);
-      await ui.clickLabel(A.page, 'Call', { exact: true });
+      await ui.clickControl(A.page, 'call');
       await wait(5000);
       // The banner is not in the accessibility tree, so it is clicked by
       // position -- and the click is PROVEN by the membership it must produce.
@@ -182,17 +183,17 @@ async function run() {
       console.log(`\n[${s}]`);
       await h.ensureRoom(A, ROOM_LOCALPART); await h.ensureRoom(B, ROOM_LOCALPART);
       const mA = await h.mark(A.token, ROOM_ID), mB = await h.mark(B.token, ROOM_ID);
-      await ui.clickLabel(A.page, 'Call', { exact: true });
+      await ui.clickControl(A.page, 'call');
       await wait(4000);
       await ui.clickPanel(A.page, 'hangup');
       await wait(2500);
       // Straight back in. This is what used to say "you are in a call".
       let redialled = true;
-      try { await ui.clickLabel(A.page, 'Call', { exact: true, timeout: 8000 }); }
+      try { await ui.clickControl(A.page, 'call', { timeout: 8000 }); }
       catch (e) { redialled = false; }
       h.check(s, 'the call button is usable again right after hanging up', redialled, 'Call was not clickable');
       await wait(6000);
-      const busy = await ui.hasLabel(A.page, 'already in a call');
+      const busy = await ui.hasControl(A.page, 'busy');
       h.check(s, 'no "already in a call" error', !busy, 'the redial was refused');
       await ui.clickPanel(A.page, 'hangup');
       await wait(9000);
@@ -238,7 +239,7 @@ async function run() {
       const mA = await h.mark(A.token, ROOM_ID), mB = await h.mark(B.token, ROOM_ID);
       const rang = await h.actUntil(
         'place video call',
-        async () => { await h.ensureRoom(A, ROOM_LOCALPART); await ui.clickLabel(A.page, 'Video call', { exact: true }).catch(() => {}); },
+        async () => { await h.ensureRoom(A, ROOM_LOCALPART); await ui.clickControl(A.page, 'videoCall').catch(() => {}); },
         async () => (await h.since(A.token, ROOM_ID, mA)).some((e) => e.type === mx.RING && e.sender === A.userId),
         { tries: 4, gap: 4000 },
       );
@@ -284,7 +285,14 @@ async function run() {
       const dec = c.aCards.filter((x) => x.declined);
       h.check(s, 'exactly one declined card', dec.length === 1, JSON.stringify(c.aCards.map((x) => x.label)));
       const msg = (await h.since(A.token, ROOM_ID, mA)).find((e) => e.type === 'm.room.message' && e.sender === B.userId);
-      h.check(s, 'the caller received the reply text', !!msg && /talk right now/i.test(msg.content?.body || ''),
+      // Matched against every language the app can send it in, not against
+      // the English one. The REPLY is composed on the callee's device, in the
+      // callee's language -- so asserting the English string tests the
+      // fixture's language settings rather than the product.
+      const body = msg?.content?.body || '';
+      const replies = labels.labelsFor('callReplyCantTalk');
+      h.check(s, 'the caller received the reply text',
+        !!msg && replies.some((r) => body.includes(r)),
         JSON.stringify(msg && msg.content && msg.content.body));
     }
 
@@ -367,8 +375,8 @@ async function run() {
       console.log(`\n[${s}]`);
       const mA = await h.mark(A.token, ROOM_ID), mB = await h.mark(B.token, ROOM_ID);
       await Promise.all([
-        ui.clickLabel(A.page, 'Call', { exact: true }).catch(() => {}),
-        ui.clickLabel(B.page, 'Call', { exact: true }).catch(() => {}),
+        ui.clickControl(A.page, 'call').catch(() => {}),
+        ui.clickControl(B.page, 'call').catch(() => {}),
       ]);
       await wait(8000);
       // Whatever the tie-break decided, end everything.

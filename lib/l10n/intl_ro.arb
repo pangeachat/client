@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 10:41:37.902211",
+    "@@last_modified": "2026-09-01 11:50:20.189010",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10553,5 +10553,20 @@
     "resetTargetLanguage": "Resetare limbă țintă",
     "resetBaseLanguage": "Resetare limbă de bază",
     "selectedLanguageLevel": "Nivel de limbă selectat: {level}",
-    "resetLanguageLevel": "Resetare nivel de limbă"
+    "resetLanguageLevel": "Resetare nivel de limbă",
+    "callTranscriptSharedNotice": "Acest apel este transcris și salvat. Tu și cealaltă persoană îl puteți citi ulterior.",
+    "callTranscriptTitle": "Transcrierea apelului",
+    "callTranscriptLoadFailed": "Transcrierea nu a putut fi încărcată",
+    "callTranscriptRetry": "Reîncercați",
+    "callTranscriptStoppedEarly": "Acest apel a avut prea multe de citit dintr-o dată, așa că o parte din el nu este afișată.",
+    "callTranscriptNone": "Nicio transcriere de la {name}",
+    "callTranscriptSaidNothing": "{name} nu a spus nimic",
+    "callTranscriptNothingRead": "Nimic nu a putut fi citit din ce a spus {name}",
+    "callTranscriptNoSpeechDetected": "Nimic înregistrat de la {name} nu a fost trimis pentru transcriere: această aplicație nu a găsit nicio vorbire în el și se poate înșela în privința asta, așa că ceea ce s-a spus nu este cunoscut.",
+    "callTranscriptPartial": "O parte din ce a spus {name} ar putea lipsi",
+    "callTranscriptByTime": "la {time}",
+    "callTranscriptApproximateTimes": "O replică marcată „la” o anumită oră a fost spusă la sau înainte de aceasta. Aceste replici sunt afișate în acel moment, deci ar fi putut fi spuse mai devreme.",
+    "callTranscriptUnstatedTimes": "Unele replici nu afișează ora. Dispozitivul care le-a înregistrat nu a specificat cât de exacte sunt orele sale, așa că poziția lor în această conversație ar putea fi greșită.",
+    "callTranscriptUnreconciledClocks": "Aceste replici au fost înregistrate pe două dispozitive ale căror ceasuri nu au putut fi comparate, așa că nu sunt afișate ore și ordinea în care apar ar putea fi greșită.",
+    "callTranscriptOpen": "Citiți transcrierea"
 }

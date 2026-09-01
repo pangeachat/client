@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-01 10:41:36.965150",
+    "@@last_modified": "2026-09-01 11:50:17.184484",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Tilbakestill målspråk",
     "resetBaseLanguage": "Tilbakestill grunnspråk",
     "selectedLanguageLevel": "Valgte {level} som språknivå",
-    "resetLanguageLevel": "Tilbakestill språknivå"
+    "resetLanguageLevel": "Tilbakestill språknivå",
+    "callTranscriptSharedNotice": "Denne samtalen er transkribert og lagret. Du og den andre personen kan lese den etterpå.",
+    "callTranscriptTitle": "Samtaleutskrift",
+    "callTranscriptLoadFailed": "Kunne ikke laste utskriften",
+    "callTranscriptRetry": "Prøv igjen",
+    "callTranscriptStoppedEarly": "Denne samtalen hadde for mye å lese på en gang, så noe av den vises ikke.",
+    "callTranscriptNone": "Ingen utskrift fra {name}",
+    "callTranscriptSaidNothing": "{name} sa ingenting",
+    "callTranscriptNothingRead": "Ingenting kunne leses fra det {name} sa",
+    "callTranscriptNoSpeechDetected": "Ingenting som ble tatt opp fra {name} ble sendt for transkripsjon: denne appen fant ingen tale i det og kan ta feil om det, så det som ble sagt er ikke kjent.",
+    "callTranscriptPartial": "En del av det {name} sa kan mangle",
+    "callTranscriptByTime": "ved {time}",
+    "callTranscriptApproximateTimes": "En replikk merket \"ved\" et tidspunkt ble sagt på eller før det. Disse replikkene vises på det tidspunktet, så de kan ha blitt sagt tidligere.",
+    "callTranscriptUnstatedTimes": "Noen replikker viser ingen tid. Enheten som tok dem opp, sa ikke hvor nøyaktige tidene var, så hvor de sitter i denne samtalen kan være feil.",
+    "callTranscriptUnreconciledClocks": "Disse replikkene ble tatt opp på to enheter hvis klokker ikke kunne sammenlignes, så ingen tider vises og rekkefølgen de vises i kan være feil.",
+    "callTranscriptOpen": "Les utskriften"
 }

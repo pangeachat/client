@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-01 10:41:42.151138",
+    "@@last_modified": "2026-09-01 11:50:32.984157",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Tún èdè àfojúsùn bẹ̀rẹ̀",
     "resetBaseLanguage": "Tún èdè ìpìlẹ̀ bẹ̀rẹ̀",
     "selectedLanguageLevel": "Ìpele èdè tí a yàn ni {level}",
-    "resetLanguageLevel": "Tún ìpele èdè bẹ̀rẹ̀"
+    "resetLanguageLevel": "Tún ìpele èdè bẹ̀rẹ̀",
+    "callTranscriptSharedNotice": "A ti kọ ọrọ ipe yii silẹ ti a si ti fi pamọ. Iwọ ati ẹnikeji rẹ le ka a lẹhinna.",
+    "callTranscriptTitle": "Ọrọ ipe",
+    "callTranscriptLoadFailed": "Ko le gbe ọrọ ipe naa wọle",
+    "callTranscriptRetry": "Tun gbiyanju",
+    "callTranscriptStoppedEarly": "Ipe yii pọ ju lati ka ni ẹẹkan, nitorinaa a ko fi diẹ ninu rẹ han.",
+    "callTranscriptNone": "Ko si ọrọ ipe lati ọdọ {name}",
+    "callTranscriptSaidNothing": "{name} ko sọ ohunkohun",
+    "callTranscriptNothingRead": "Ko si ohunkohun ti a le ka lati inu ohun ti {name} sọ",
+    "callTranscriptNoSpeechDetected": "Ko si ohunkohun ti a gba silẹ lati ọdọ {name} ti a fi ranṣẹ lati kọ silẹ: ohun elo yii ko ri ọrọ ninu rẹ o si le ṣe aṣiṣe nipa iyẹn, nitorinaa a ko mọ ohun ti a sọ.",
+    "callTranscriptPartial": "Apakan ohun ti {name} sọ le ti sọnu",
+    "callTranscriptByTime": "nipasẹ {time}",
+    "callTranscriptApproximateTimes": "Aami \"nipasẹ\" akoko kan tumọ si pe a sọ ọ ni tabi ṣaaju akoko naa. Awọn aami wọnyẹn ni a fihan ni akoko yẹn, nitorinaa wọn le ti sọ tẹlẹ.",
+    "callTranscriptUnstatedTimes": "Diẹ ninu awọn aami ko fihan akoko. Ẹrọ ti o gba wọn silẹ ko sọ bi akoko rẹ ṣe peye to, nitorinaa ipo wọn ninu ibaraẹnisọrọ yii le jẹ aṣiṣe.",
+    "callTranscriptUnreconciledClocks": "Awọn aami wọnyi ni a gba silẹ lori awọn ẹrọ meji ti a ko le fi awọn aago wọn wé, nitorinaa ko si akoko ti a fihan ati pe aṣẹ ti wọn farahan ninu le jẹ aṣiṣe.",
+    "callTranscriptOpen": "Ka ọrọ ipe naa"
 }

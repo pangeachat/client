@@ -737,6 +737,49 @@ class UserController {
     return target == null || target.isEmpty ? null : target;
   }
 
+  /// The base/target language codes for [client]'s OWN account, read straight
+  /// from that client's account data.
+  ///
+  /// [userL1Code]/[userL2Code] above go through [profile], which is cached on
+  /// THIS controller and reads [client] — the getter resolving whichever
+  /// account is FOREGROUNDED. That is what a settings screen wants. It is not
+  /// what a call wants: a call binds its call service and its analytics sink to
+  /// the ROOM's account, and stamps the room's account onto the transcript half
+  /// it publishes, so reading the languages through the foregrounded account
+  /// lets a learner signed into two accounts have a call transcribed against
+  /// the wrong pair — and the target language decides the whole provider chain
+  /// server-side, so wrong means EMPTY, not merely approximate
+  /// (pangeachat/.github#410).
+  ///
+  /// Takes the client explicitly and never reads or writes [_cachedProfile], so
+  /// it can neither answer with, nor corrupt the cache for, any account but the
+  /// one it was asked about. Deliberately READ-ONLY: [profile]'s legacy path
+  /// also SAVES the migrated blob, and that write lands on the foregrounded
+  /// account — a call must not write to any account, least of all one it does
+  /// not own. The legacy FORMAT is still read; only the write is dropped, and
+  /// the migration still happens the next time a profile surface reads it.
+  ///
+  /// L1 keeps [userL1Code]'s device-level fallback to the system language, so a
+  /// single-account learner sees exactly what they saw before. L2 has none: an
+  /// unset target language answers null, never something borrowed.
+  static ({String? l1, String? l2}) languageCodesFor(matrix.Client client) {
+    final settings =
+        Profile.fromAccountData(
+          client.accountData[UserConstants.userProfile]?.content,
+        )?.userSettings ??
+        UserSettings.migrateFromAccountData(client: client) ??
+        UserSettings();
+
+    final source = settings.sourceLanguage;
+    final target = settings.targetLanguage;
+    return (
+      l1: source == null || source.isEmpty
+          ? LanguageService.systemLanguage?.langCode
+          : source,
+      l2: target == null || target.isEmpty ? null : target,
+    );
+  }
+
   /// The language content should display in: the target language (L2) when
   /// the "app in target language" toggle is on, else the native language (L1).
   /// Mirrors the app-copy locale resolution in `MatrixState.setAppLanguage`,

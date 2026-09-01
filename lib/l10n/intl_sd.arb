@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-01 10:41:39.040043",
+    "@@last_modified": "2026-09-01 11:50:23.503388",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "هدف ٻولي ري سيٽ ڪريو",
     "resetBaseLanguage": "بنيادي ٻولي ري سيٽ ڪريو",
     "selectedLanguageLevel": "ٻولي جي سطح طور {level} چونڊيو ويو",
-    "resetLanguageLevel": "ٻولي جي سطح ري سيٽ ڪريو"
+    "resetLanguageLevel": "ٻولي جي سطح ري سيٽ ڪريو",
+    "callTranscriptSharedNotice": "هي ڪال لکيل ۽ محفوظ ٿيل آهي. توهان ۽ ٻيو شخص ان کي بعد ۾ پڙهي سگهو ٿا.",
+    "callTranscriptTitle": "ڪال ٽرانسڪرپٽ",
+    "callTranscriptLoadFailed": "ٽرانسڪرپٽ لوڊ نه ٿي سگهيو",
+    "callTranscriptRetry": "ٻيهر ڪوشش ڪريو",
+    "callTranscriptStoppedEarly": "هن ڪال ۾ هڪ ئي وقت پڙهڻ لاءِ تمام گهڻو هو، تنهنڪري ان جو ڪجهه حصو نه ڏيکاريو ويو آهي.",
+    "callTranscriptNone": "{name} کان ڪو به ٽرانسڪرپٽ ناهي",
+    "callTranscriptSaidNothing": "{name} ڪجهه به نه چيو",
+    "callTranscriptNothingRead": "{name} جيڪو چيو ان مان ڪجهه به پڙهي نه سگهيو",
+    "callTranscriptNoSpeechDetected": "{name} کان رڪارڊ ڪيل ڪجهه به ٽرانسڪرائب ڪرڻ لاءِ نه موڪليو ويو: هن ايپ ان ۾ ڪا به تقرير نه ڳولي ۽ ان بابت غلط ٿي سگهي ٿي، تنهنڪري جيڪو چيو ويو اهو معلوم ناهي.",
+    "callTranscriptPartial": "{name} جيڪو چيو ان جو ڪجهه حصو غائب ٿي سگهي ٿو",
+    "callTranscriptByTime": "{time} تائين",
+    "callTranscriptApproximateTimes": "هڪ موڙ جنهن تي \"by\" وقت جو نشان لڳل هو، اهو ان وقت يا ان کان اڳ چيو ويو هو. اهي موڙ ان وقت ڏيکاريا ويا آهن، تنهنڪري اهي اڳ ۾ چيا ويا هوندا.",
+    "callTranscriptUnstatedTimes": "ڪجهه موڙ ڪو به وقت نه ڏيکاريندا آهن. ڊوائيس جنهن انهن کي رڪارڊ ڪيو اهو نه ٻڌايو ته ان جا وقت ڪيترا صحيح آهن، تنهنڪري اهي هن گفتگو ۾ ڪٿي آهن اهو غلط ٿي سگهي ٿو.",
+    "callTranscriptUnreconciledClocks": "اهي موڙ ٻن ڊوائيسن تي رڪارڊ ڪيا ويا جن جي گھڙين جو مقابلو نه ٿي سگهيو، تنهنڪري ڪو به وقت نه ڏيکاريو ويو آهي ۽ انهن جي ظاهر ٿيڻ جو ترتيب غلط ٿي سگهي ٿو.",
+    "callTranscriptOpen": "ٽرانسڪرپٽ پڙهو"
 }

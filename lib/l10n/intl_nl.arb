@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 10:41:36.804845",
+    "@@last_modified": "2026-09-01 11:50:16.839733",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9821,5 +9821,20 @@
     "resetTargetLanguage": "Doeltaal resetten",
     "resetBaseLanguage": "Basistaal resetten",
     "selectedLanguageLevel": "{level} geselecteerd als taalniveau",
-    "resetLanguageLevel": "Taalniveau resetten"
+    "resetLanguageLevel": "Taalniveau resetten",
+    "callTranscriptSharedNotice": "Dit gesprek is getranscribeerd en opgeslagen. Jij en de andere persoon kunnen het achteraf lezen.",
+    "callTranscriptTitle": "Gesprekstranscript",
+    "callTranscriptLoadFailed": "Transcript kon niet worden geladen",
+    "callTranscriptRetry": "Opnieuw proberen",
+    "callTranscriptStoppedEarly": "Dit gesprek bevatte te veel om in één keer te lezen, dus een deel ervan wordt niet weergegeven.",
+    "callTranscriptNone": "Geen transcript van {name}",
+    "callTranscriptSaidNothing": "{name} heeft niets gezegd",
+    "callTranscriptNothingRead": "Er kon niets worden gelezen van wat {name} zei",
+    "callTranscriptNoSpeechDetected": "Niets opgenomen van {name} is ter transcriptie verzonden: deze app heeft er geen spraak in gevonden en kan zich daarin vergissen, dus wat er gezegd is, is onbekend.",
+    "callTranscriptPartial": "Een deel van wat {name} zei ontbreekt mogelijk",
+    "callTranscriptByTime": "om {time}",
+    "callTranscriptApproximateTimes": "Een beurt gemarkeerd \"om\" een tijd werd op of voor die tijd gezegd. Die beurten worden op dat moment getoond, dus ze kunnen eerder zijn gezegd.",
+    "callTranscriptUnstatedTimes": "Sommige beurten tonen geen tijd. Het apparaat dat ze heeft opgenomen, heeft niet aangegeven hoe exact de tijden zijn, dus de plaatsing ervan in dit gesprek kan onjuist zijn.",
+    "callTranscriptUnreconciledClocks": "Deze beurten zijn opgenomen op twee apparaten waarvan de klokken niet konden worden vergeleken, dus er worden geen tijden weergegeven en de volgorde waarin ze verschijnen kan onjuist zijn.",
+    "callTranscriptOpen": "Lees het transcript"
 }

@@ -1938,7 +1938,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-01 10:41:33.525560",
+    "@@last_modified": "2026-09-01 11:50:09.958663",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10721,5 +10721,20 @@
     "resetTargetLanguage": "სამიზნე ენის გადაყენება",
     "resetBaseLanguage": "საბაზისო ენის გადაყენება",
     "selectedLanguageLevel": "არჩეულია {level} ენის დონედ",
-    "resetLanguageLevel": "ენის დონის გადაყენება"
+    "resetLanguageLevel": "ენის დონის გადაყენება",
+    "callTranscriptSharedNotice": "ეს ზარი ჩაწერილია და შენახულია. თქვენ და მეორე პირს შეგიძლიათ მისი წაკითხვა მოგვიანებით.",
+    "callTranscriptTitle": "ზარის ჩანაწერი",
+    "callTranscriptLoadFailed": "ჩანაწერის ჩატვირთვა ვერ მოხერხდა",
+    "callTranscriptRetry": "ხელახლა ცდა",
+    "callTranscriptStoppedEarly": "ამ ზარში ერთ ჯერზე წასაკითხი ძალიან ბევრი იყო, ამიტომ მისი ნაწილი არ არის ნაჩვენები.",
+    "callTranscriptNone": "{name}-ის ჩანაწერი არ არის",
+    "callTranscriptSaidNothing": "{name}-ს არაფერი უთქვამს",
+    "callTranscriptNothingRead": "ვერაფერი წაიკითხა იქიდან, რაც {name}-მ თქვა",
+    "callTranscriptNoSpeechDetected": "{name}-დან ჩაწერილი არაფერი გაიგზავნა ჩასაწერად: ამ აპლიკაციამ მასში მეტყველება ვერ იპოვა და შეიძლება ცდებოდეს ამაში, ამიტომ უცნობია, რა ითქვა.",
+    "callTranscriptPartial": "რაც {name}-მ თქვა, ნაწილი შეიძლება აკლია",
+    "callTranscriptByTime": "{time}-ის მიხედვით",
+    "callTranscriptApproximateTimes": "მობრუნება, რომელიც მონიშნულია „მიხედვით“ დროით, ნათქვამი იყო ამ დროს ან მანამდე. ეს მობრუნებები ნაჩვენებია ამ მომენტში, ამიტომ ისინი შესაძლოა ადრე იყო ნათქვამი.",
+    "callTranscriptUnstatedTimes": "ზოგიერთ მობრუნებას დრო არ აქვს მითითებული. მოწყობილობამ, რომელმაც ისინი ჩაწერა, არ თქვა, რამდენად ზუსტია მისი დრო, ამიტომ მათი ადგილი ამ საუბარში შეიძლება არასწორი იყოს.",
+    "callTranscriptUnreconciledClocks": "ეს მობრუნებები ჩაიწერა ორ მოწყობილობაზე, რომელთა საათების შედარება ვერ მოხერხდა, ამიტომ დრო არ არის ნაჩვენები და მათი გამოჩენის თანმიმდევრობა შეიძლება არასწორი იყოს.",
+    "callTranscriptOpen": "ჩანაწერის წაკითხვა"
 }

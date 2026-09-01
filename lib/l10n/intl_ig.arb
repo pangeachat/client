@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-01 10:41:32.656072",
+    "@@last_modified": "2026-09-01 11:50:07.790157",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Tọgharịa asụsụ ebumnuche",
     "resetBaseLanguage": "Tọgharịa asụsụ ntọala",
     "selectedLanguageLevel": "Ahọpụtara {level} dị ka ọkwa asụsụ",
-    "resetLanguageLevel": "Tọgharịa ọkwa asụsụ"
+    "resetLanguageLevel": "Tọgharịa ọkwa asụsụ",
+    "callTranscriptSharedNotice": "Adekọ oku a ka edekọrọ ma chekwaa ya. Gị na onye nke ọzọ nwere ike ịgụ ya ma emechaa.",
+    "callTranscriptTitle": "Adekọ oku",
+    "callTranscriptLoadFailed": "Enweghị ike ibunye adekọ ahụ",
+    "callTranscriptRetry": "Gbalịa ọzọ",
+    "callTranscriptStoppedEarly": "Oku a nwere ihe dị ukwuu ịgụ n'otu oge, ya mere, egosighị ụfọdụ n'ime ya.",
+    "callTranscriptNone": "Enweghị adekọ sitere na {name}",
+    "callTranscriptSaidNothing": "{name} ekwughị ihe ọ bụla",
+    "callTranscriptNothingRead": "Enweghị ihe ọ bụla enwere ike ịgụ site n'ihe {name} kwuru",
+    "callTranscriptNoSpeechDetected": "Ezigaghị ihe ọ bụla edekọrọ site na {name} ka edekọọ: ngwa a ahụghị okwu ọ bụla n'ime ya ma nwee ike ịdị njọ gbasara nke ahụ, ya mere, amaghị ihe e kwuru.",
+    "callTranscriptPartial": "Akụkụ nke ihe {name} kwuru nwere ike ịdị na-efu",
+    "callTranscriptByTime": "site na {time}",
+    "callTranscriptApproximateTimes": "Ekwuru ntụgharị akara \"site na\" oge n'oge ahụ ma ọ bụ tupu ya. A na-egosi ntụgharị ndị ahụ n'oge ahụ, ya mere, enwere ike ikwu ha na mbụ.",
+    "callTranscriptUnstatedTimes": "Ụfọdụ ntụgharị egosighị oge. Ngwaọrụ dekọrọ ha ekwughị otú oge ya si dị n'eziokwu, ya mere, ebe ha nọ na mkparịta ụka a nwere ike ịdị njọ.",
+    "callTranscriptUnreconciledClocks": "Edekọrọ ntụgharị ndị a na ngwaọrụ abụọ nke enweghị ike iji elekere ha tụnyere, ya mere, egosighị oge ọ bụla ma usoro ha pụtara n'ime ya nwere ike ịdị njọ.",
+    "callTranscriptOpen": "Gụọ adekọ ahụ"
 }

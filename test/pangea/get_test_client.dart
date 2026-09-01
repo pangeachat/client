@@ -9,9 +9,19 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 /// asked for reads as a bug in the code under test: `hasFriendDM` was true on
 /// a "brand new account" because the account was never brand new. Stop the
 /// sync and start from empty, so the room list is the test's own doing.
-Future<Client> getTestClient() async {
+///
+/// [name] is the client NAME, which is the key every per-account service in
+/// [MatrixState] is held under — the call services, the analytics services.
+/// A test that wants two logged-in accounts has to give them different names
+/// or they resolve to the same service and prove nothing. [deviceId] is
+/// separate because the same account on two devices is a different scenario
+/// from two accounts.
+Future<Client> getTestClient({
+  String name = 'testclient',
+  String deviceId = 'GHTYAJCE',
+}) async {
   final client = Client(
-    'testclient',
+    name,
     httpClient: FakeMatrixApi(),
     database: await MatrixSdkDatabase.init(
       'test',
@@ -26,7 +36,7 @@ Future<Client> getTestClient() async {
     identifier: AuthenticationUserIdentifier(
       user: '@test:fakeServer.notExisting',
     ),
-    deviceId: 'GHTYAJCE',
+    deviceId: deviceId,
   );
 
   await client.abortSync();

@@ -9,6 +9,7 @@
 // against a sleep. The Return button, like the ring banner, lives in an
 // overlay Flutter's semantics tree does not carry -- it is clicked through
 // the page text fallback and PROVEN by the call resuming on the server.
+const labels = require('./labels');
 const h = require('./harness');
 const { ui, mx, wait } = h;
 
@@ -24,29 +25,40 @@ async function pageText(page) {
 }
 
 async function clickReturn(page) {
-  // Semantics labels first -- innerText does not carry aria-labels, which is
-  // where Flutter surfaces button text -- then any DOM node whose text or
-  // label says Return.
-  const r = await ui.findRect(page, 'Return');
-  if (r) { await page.mouse.click(r.x, r.y); return true; }
-  return page.evaluate(() => {
+  // Through the LABEL SYSTEM, by l10n key, exactly as `returnOffered` reads it.
+  //
+  // This used to look for the literal string "Return", which is only the
+  // button's name in English. `calltester` learns English FROM Hindi, so its
+  // interface is Hindi and the button says so -- and the offer was therefore
+  // detected (that check goes by key) and then never clickable. Three checks
+  // failed on a button that was on screen the whole time, and the scenario
+  // read as "the app does not resume a refreshed call".
+  if (await ui.clickControl(page, 'ret').then(() => true).catch(() => false)) {
+    return true;
+  }
+  // Last resort, still locale-aware: any node carrying one of the key's known
+  // translations.
+  const names = labels.labelsFor('callReturn');
+  return page.evaluate((wanted) => {
     const nodes = [...document.querySelectorAll('flt-semantics, [role=button], button, [aria-label]')];
-    const hit = nodes.find((n) =>
-      /(^|\s)Return(\s|$)/.test(n.textContent || '') ||
-      /(^|\s)Return(\s|$)/.test(n.getAttribute && (n.getAttribute('aria-label') || '')));
+    const hit = nodes.find((n) => {
+      const t = `${n.textContent || ''} ${(n.getAttribute && n.getAttribute('aria-label')) || ''}`;
+      return wanted.some((w) => t.includes(w));
+    });
     if (hit) { hit.click(); return true; }
     return false;
-  });
+  }, names);
 }
 
 /// Whether the Return offer is on screen, read every way the page can say it.
 async function returnOffered(page) {
-  if (await ui.hasLabel(page, 'Return').catch(() => false)) return true;
+  if (await ui.hasControl(page, 'ret').catch(() => false)) return true;
   return page.evaluate(() => {
     const text = document.body.innerText || '';
-    if (/Return/.test(text)) return true;
+    // No English literal here: the key check above already answers this
+    // in any language, and a literal only ever adds a false NEGATIVE.
     return [...document.querySelectorAll('[aria-label]')].some((n) =>
-      /Return/.test(n.getAttribute('aria-label') || ''));
+      false);
   });
 }
 
@@ -61,6 +73,12 @@ async function rawMembership(token, userId) {
 }
 
 (async () => {
+  // Two runs driving the same two accounts fight over the same room, and
+  // the loser reports the PRODUCT broken -- 'the call controls never
+  // appeared' -- when in truth the other run took the room away. This is
+  // the scenario the README lists as not checking yet.
+  h.refuseIfAnotherRunIsLive();
+
   console.log('[1] open both participants');
   const A = await h.openParticipant('learner', ROOM, 9711);
   const B = await h.openParticipant('calltester', ROOM, 9712);
@@ -91,7 +109,7 @@ async function rawMembership(token, userId) {
 
   console.log('[2] A places, B answers');
   const rang = await h.actUntil('place',
-    async () => { await h.ensureRoom(A, ROOM); await ui.clickLabel(A.page, 'Call', { exact: true }).catch(() => {}); },
+    async () => { await h.ensureRoom(A, ROOM); await ui.clickControl(A.page, 'call').catch(() => {}); },
     async () => (await h.since(A.token, ROOM_ID, mA)).some((e) => e.type === mx.RING && e.sender === A.userId),
     { tries: 3, gap: 4000 });
   if (!rang) { console.log('FAIL: never rang'); process.exit(2); }
@@ -193,7 +211,11 @@ async function rawMembership(token, userId) {
         // panel has the hangup control and a ticking timer), and A is not
         // reconnecting.
         const [bText, aText2] = await Promise.all([pageText(B.page), pageText(A.page)]);
-        const bInCall = /Hang up/i.test(bText);
+        // B's interface is HINDI -- it learns English from Hindi -- so its
+        // hang-up button does not say "Hang up". Asked by l10n key instead;
+        // this literal is why a rejoin that genuinely worked was reported as
+        // "no resumption" three runs in a row.
+        const bInCall = await h.showsControl(B.page, 'hangup');
         return bInCall && !/reconnecting/i.test(aText2);
       },
       { tries: 8, gap: 3000 });

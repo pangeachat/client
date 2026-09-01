@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-01 10:41:32.832199",
+    "@@last_modified": "2026-09-01 11:50:08.040704",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Reset basa target",
     "resetBaseLanguage": "Reset basa dhasar",
     "selectedLanguageLevel": "{level} dipilih minangka level basa",
-    "resetLanguageLevel": "Reset level basa"
+    "resetLanguageLevel": "Reset level basa",
+    "callTranscriptSharedNotice": "Telpon iki direkam lan disimpen. Sampeyan lan wong liyane bisa maca sawise iki.",
+    "callTranscriptTitle": "Transkrip telpon",
+    "callTranscriptLoadFailed": "Gagal ngemot transkrip",
+    "callTranscriptRetry": "Coba maneh",
+    "callTranscriptStoppedEarly": "Telpon iki kakehan sing kudu diwaca sekaligus, mula sawetara ora ditampilake.",
+    "callTranscriptNone": "Ora ana transkrip saka {name}",
+    "callTranscriptSaidNothing": "{name} ora ngomong apa-apa",
+    "callTranscriptNothingRead": "Ora ana sing bisa diwaca saka sing diucapake {name}",
+    "callTranscriptNoSpeechDetected": "Ora ana sing direkam saka {name} sing dikirim kanggo ditranskrip: aplikasi iki ora nemokake omongan ing kono lan bisa uga salah babagan iki, mula apa sing diucapake ora dingerteni.",
+    "callTranscriptPartial": "Bagéan saka sing diucapake {name} bisa uga ilang",
+    "callTranscriptByTime": "dening {time}",
+    "callTranscriptApproximateTimes": "Giliran sing ditandhani \"dening\" wektu diucapake ing utawa sadurunge. Giliran kasebut ditampilake ing wektu kasebut, mula bisa uga diucapake luwih awal.",
+    "callTranscriptUnstatedTimes": "Sawetara giliran ora nuduhake wektu. Piranti sing ngrekam ora ngandhani sepira tepat wektune, mula panggonane ing obrolan iki bisa uga salah.",
+    "callTranscriptUnreconciledClocks": "Giliran iki direkam ing rong piranti sing jam ora bisa dibandhingake, mula ora ana wektu sing ditampilake lan urutan sing katon bisa uga salah.",
+    "callTranscriptOpen": "Waca transkrip"
 }

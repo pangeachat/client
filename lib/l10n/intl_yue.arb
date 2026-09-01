@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-01 10:41:41.784096",
+    "@@last_modified": "2026-09-01 11:50:31.097136",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10778,5 +10778,20 @@
     "resetTargetLanguage": "重設目標語言",
     "resetBaseLanguage": "重設基礎語言",
     "selectedLanguageLevel": "已選擇 {level} 作為語言程度",
-    "resetLanguageLevel": "重設語言程度"
+    "resetLanguageLevel": "重設語言程度",
+    "callTranscriptSharedNotice": "此通話已轉錄並儲存。你同對方之後可以睇返。",
+    "callTranscriptTitle": "通話轉錄",
+    "callTranscriptLoadFailed": "無法載入轉錄",
+    "callTranscriptRetry": "再試一次",
+    "callTranscriptStoppedEarly": "此通話內容太多，未能一次過顯示所有內容，因此部分內容未有顯示。",
+    "callTranscriptNone": "冇 {name} 嘅轉錄",
+    "callTranscriptSaidNothing": "{name} 冇講過嘢",
+    "callTranscriptNothingRead": "無法從 {name} 嘅說話中讀取任何內容",
+    "callTranscriptNoSpeechDetected": "從 {name} 錄製嘅內容冇語音被傳送去轉錄：呢個應用程式冇喺入面搵到語音，而且可能出錯，所以唔知講咗啲乜。",
+    "callTranscriptPartial": "{name} 講嘅嘢可能部分遺失咗",
+    "callTranscriptByTime": "喺 {time}",
+    "callTranscriptApproximateTimes": "標示「喺」某個時間嘅發言係喺嗰個時間或之前講嘅。呢啲發言會喺嗰個時間點顯示，所以可能早過嗰個時間講。",
+    "callTranscriptUnstatedTimes": "部分發言冇顯示時間。錄製佢哋嘅裝置冇說明佢嘅時間有幾準確，所以佢哋喺呢次對話中嘅位置可能係錯嘅。",
+    "callTranscriptUnreconciledClocks": "呢啲發言係喺兩個無法比較時鐘嘅裝置上錄製嘅，所以冇顯示時間，而且佢哋出現嘅順序可能係錯嘅。",
+    "callTranscriptOpen": "閱讀轉錄"
 }

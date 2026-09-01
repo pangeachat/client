@@ -71,6 +71,27 @@ class ActiveCall extends ChangeNotifier {
   Future<void>? _hangUp;
   bool _disposed = false;
 
+  /// What this device has watched its siblings do while it was recording.
+  ///
+  /// The discard asks whether a successor was recording the seconds this device
+  /// is about to drop, and a report read at the instant of the handover cannot
+  /// answer that: a sibling that started recording when it took over holds none
+  /// of what came before. This is the span the instantaneous reading is
+  /// missing. The ledger decides for itself what counts as a break, so nothing
+  /// here has to.
+  final CaptureWatch _watch = CaptureWatch();
+
+  /// Which run of OUR OWN captured audio the ledger describes.
+  ///
+  /// Keyed to the run rather than to "am I recording", because those differ at
+  /// exactly the moment that matters. A stretch ENDING also reads as not
+  /// recording, and clearing the ledger there threw away the record of what the
+  /// successor was doing immediately before the decision that reads it — which
+  /// is the whole stretch's worth of watching, discarded one election too
+  /// early. A ledger is opened by a new stretch of our audio starting and by
+  /// nothing else.
+  String? _watchedRun;
+
   /// Set the moment anything asks the call to end. [start] checks it after every
   /// await, so a hangup that lands mid-connect stops the sequence instead of
   /// racing it to completion.
@@ -280,14 +301,134 @@ class ActiveCall extends ChangeNotifier {
     required this.media,
     required this.capture,
     CallForegroundControl? foreground,
-  }) : _foreground = foreground;
+  }) : _foreground = foreground {
+    // Wired here rather than at connect, so a tap that dies during the very
+    // first attach is heard too. The recorder is built per call, so nothing
+    // else is ever listening on this.
+    capture.onCaptureLost = _onCaptureLost;
+    capture.onCaptureStarted = _onCaptureStarted;
+    // Same reason and the same lifetime: the media is built for this call and
+    // nothing else listens on it. The grant this waits for lands INSIDE the
+    // first connect, so wiring it any later than construction would be wiring
+    // it after the moment it exists to catch.
+    media.onMicrophoneLive = _onMicrophoneLive;
+  }
+
+  /// Audio has begun arriving at the recorder.
+  ///
+  /// Told to the siblings AT ONCE rather than waiting for the next election,
+  /// because until they hear it a sibling that displaces this device cannot
+  /// tell a device holding a copy from one whose tap attached and died — and
+  /// delivers its own tail rather than deferring to a copy it cannot see.
+  void _onCaptureStarted() {
+    if (_ending || _disposed) return;
+    // OPENED HERE, at the first frame, and not at the next election. The
+    // opening snapshot is what decides which siblings were already recording
+    // when this stretch began, so it has to be taken when the stretch begins.
+    // Taken at the following election instead, it would credit a sibling that
+    // started somewhere in between — and this device would then destroy the
+    // seconds before that sibling's first frame, which is exactly the audio
+    // nobody else holds.
+    _watchSiblings();
+    unawaited(_announceCaptureState());
+  }
+
+  /// Brings the ledger up to date with what the siblings are saying now.
+  ///
+  /// ONE SNAPSHOT per call, because the ledger's first question is about the
+  /// first snapshot of a stretch rather than about the first time each sibling
+  /// was seen.
+  void _watchSiblings() {
+    final roster = _roster;
+    final myRun = capture.captureRun;
+    // Only while this device is actually holding audio. What it saw at a moment
+    // it was recording nothing is not part of any stretch, and folding it in
+    // would judge a sibling over a gap that was ours.
+    if (roster == null || myRun == null) return;
+    if (myRun != _watchedRun) {
+      _watchedRun = myRun;
+      _watch.restart();
+    }
+    final me = calls.client.deviceID ?? '';
+    _watch.observe([
+      for (final id in roster.siblingDeviceIds)
+        if (id != me) roster.siblingCaptureReport(id),
+    ]);
+  }
+
+  /// Tells this account's other devices what this one is ACTUALLY doing.
+  ///
+  /// GATED ON [_wanted] AS WELL AS ON THE RECORDER, which is what makes the
+  /// retraction early rather than late. A sibling reads this to decide whether
+  /// to destroy its own captured audio, and every reading it takes is of a
+  /// snapshot published some unknowable time earlier — so the moment this
+  /// device DECIDES to stop is the moment the "no" has to start travelling, not
+  /// the moment the audio actually stops. The assertion is the other way round
+  /// and waits for a frame: intent is not evidence that anything was recorded.
+  ///
+  /// Level-triggered like everything else here: it publishes the current answer
+  /// rather than a transition, so a missed call costs one round trip and not
+  /// the truth. The roster coalesces, so calling it from several places is a
+  /// repetition rather than a race.
+  Future<void> _announceCaptureState() {
+    final roster = _roster;
+    if (roster == null) return Future<void>.value();
+    return roster.announceCapturing(_wanted ? capture.captureRun : null);
+  }
+
+  /// Retracts the run, and waits for the word to actually reach the SFU.
+  ///
+  /// THE ONE PLACE ANYTHING WAITS ON A SIGNAL WRITE, and the reason is that
+  /// this is an ORDER rather than a race. A sibling is entitled to destroy its
+  /// own captured audio on our claim to be recording; the claim stops being
+  /// true the moment we stop, so the correction has to be somewhere the sibling
+  /// can read it BEFORE that moment. Publishing early and hoping the write wins
+  /// is not the same thing: the announcer serialises, so a capability write
+  /// already in flight defers the retraction by a whole round trip, and inside
+  /// that window a sibling reads a run we no longer hold.
+  ///
+  /// A BOUNDED wait, and a fourth alongside the three the recorder's own stop
+  /// already performs. The announcer releases its callers when a write lands,
+  /// when one fails, and when the loop gives up, so nothing here can hold a
+  /// microphone open on a channel that has stopped answering.
+  ///
+  /// And only when there is somebody to mislead. A device alone in the call has
+  /// no sibling that could act on the stale claim, and holding its stop open
+  /// for a round trip to tell nobody anything would be a cost with no benefit —
+  /// the audio it captures meanwhile is audio recorded after this device was
+  /// told to stop, which is exactly what [_wanted] exists to prevent.
+  Future<void> _retractCaptureState() async {
+    final roster = _roster;
+    final retracted = _announceCaptureState();
+    if (roster == null || !roster.hasSiblings) return;
+    await retracted;
+  }
+
+  /// The recorder stopped itself, because its tap died.
+  ///
+  /// [_capturing] is written only where THIS side performed the change, so a
+  /// stop nobody here issued leaves it describing a recording that no longer
+  /// exists. [_reconcile] would then read that stale true against a still-true
+  /// [_wanted] and return with nothing to do — for the rest of the call, while
+  /// this device goes on out-ranking its siblings and recording silence.
+  ///
+  /// Clearing it and re-electing is what makes the recovery immediate. The
+  /// truth-reading guard in [_reconcile] is the floor under this: it recovers
+  /// the call on the next presence tick even if this wiring is ever lost.
+  void _onCaptureLost() {
+    if (_ending || _disposed) return;
+    Logs().w('The recording lost its tap; electing a recorder again');
+    _capturing = false;
+    _electRecorder();
+  }
 
   /// The Android foreground service that keeps the call alive off-screen.
   /// Null on every platform that needs none.
   final CallForegroundControl? _foreground;
 
   /// Whether the service refused the first start -- the microphone permission
-  /// dialog was still up -- and is owed a retry at the first post-grant step.
+  /// dialog was still up -- and is owed a retry the moment that grant lands.
+  /// Spent by [_onMicrophoneLive], re-armed by [foregroundRefused].
   bool _foregroundPending = false;
 
   /// Whether THIS call is the one the service runs for -- the PLATFORM'S
@@ -382,6 +523,49 @@ class ActiveCall extends ChangeNotifier {
     }
   }
 
+  /// The entry attempt, from the moment it is asked for to the moment the
+  /// platform has answered it. Null on a call that never asked.
+  Future<void>? _foregroundStarting;
+
+  /// The microphone is live, which is the one thing the refused start was
+  /// waiting for.
+  ///
+  /// This retry used to be taken where `media.connect` returns, and that is
+  /// post-grant but LATE: the grant happens at the microphone, and connect goes
+  /// on to publish the camera afterwards -- raising a second permission dialog
+  /// on a video call, and taking a further round trip on any call. Every one of
+  /// those moments is one the learner can spend leaving the app to answer the
+  /// dialog, and Android refuses a service start from the background. The one
+  /// legal window the first call gets was being spent on steps that have
+  /// nothing to do with the permission, so it is taken here, at the grant
+  /// itself.
+  ///
+  /// Once per call: the media announces this from the coming-up path only, and
+  /// what it spends is spent. A start the platform then refuses is re-armed by
+  /// [foregroundRefused], which carries its own budget for exactly that.
+  void _onMicrophoneLive() => unawaited(_retryForegroundOnGrant());
+
+  Future<void> _retryForegroundOnGrant() async {
+    // Settled first, because the entry start was fired unawaited before the
+    // join and may still be in the platform's hands. Reading the flag through
+    // that window would read "nothing is owed" of a start that is about to come
+    // back refused, and the call would then go into a pocket unprotected with
+    // its one retry never spent.
+    await _foregroundStarting;
+    if (!_foregroundPending) return;
+    // Checked AFTER the wait rather than before it, because the hangup this
+    // guards against is exactly the one that lands during it. A start issued
+    // for a call that is ending is a service with nothing left to stop it --
+    // [_startForeground] does reconcile a start that lands late, and this is
+    // the cheaper half of the same rule, taken before the platform is troubled.
+    if (_ending || _disposed) return;
+    // Spent BEFORE the attempt, so the grant produces exactly one. A refusal
+    // re-arms the flag from inside [_startForeground], and that re-arming is
+    // there for [foregroundRefused] to answer, not for this to read again.
+    _foregroundPending = false;
+    unawaited(_startForeground(video: _isVideoCall));
+  }
+
   /// The platform saying the ongoing-call service never actually started.
   ///
   /// `start()` has to answer before Android runs the service's own start
@@ -396,10 +580,10 @@ class ActiveCall extends ChangeNotifier {
     Logs().w('The call foreground service refused to start; not protected');
     _foregroundClaimed = false;
     _foregroundPending = true;
-    // And ASK AGAIN, here, rather than only at the one checkpoint after media
-    // connects. A refusal is asynchronous -- the platform answers `start()`
+    // And ASK AGAIN, here, rather than only at the one checkpoint the grant
+    // gives. A refusal is asynchronous -- the platform answers `start()`
     // before it runs the service -- so it can land at any moment of the call,
-    // including long after that checkpoint has passed. Left to the checkpoint
+    // including long after the microphone came up. Left to that checkpoint
     // alone, a call refused at second thirty went into the learner's pocket
     // believing it was protected by a service that had already stopped.
     //
@@ -418,7 +602,14 @@ class ActiveCall extends ChangeNotifier {
   /// Gates the recording to match the microphone button. Muting stops LiveKit
   /// publishing to the peer; this stops the recorder capturing too, which on
   /// Android it otherwise would — the tap there is upstream of the publish mute.
-  void setMuted(bool muted) => capture.setMuted(muted);
+  void setMuted(bool muted) {
+    capture.setMuted(muted);
+    // A mute ends the run, which is a break in what this device is holding and
+    // therefore something its siblings have to be told at once rather than on
+    // the next presence tick. Synchronous with the mute, so there is no instant
+    // in which the audio has stopped and the siblings still read a run.
+    unawaited(_announceCaptureState());
+  }
 
   /// Starts or stops recording to match which device should be recording now.
   ///
@@ -437,19 +628,111 @@ class ActiveCall extends ChangeNotifier {
 
   void _electRecorder() {
     if (_ending) return;
+    // ACQUIRED, never swapped, and re-read on every election. An unmute
+    // republishes the audio track, so a device that connected before its
+    // microphone was up has one only later — and leaving early on the first
+    // election left it trackless for the whole call. Once one is held it stays
+    // held: `stopAudioCaptureOnMute: false` means a mute does not take it away,
+    // and the tap attaches to the track OBJECT, so swapping would move a live
+    // tap off the thing it is reading.
+    _track ??= media.publishedAudio;
     final track = _track;
-    if (track == null) return;
+    final roster = _roster;
 
     final me = calls.client.deviceID ?? '';
-    final elected = CaptureElection(
-      myDeviceId: me,
+
+    // Somewhere to record FROM and somewhere to record THROUGH, composed in the
+    // one place that can see both objects, and read ONCE — so what this device
+    // tells its siblings and what it ranks itself on come from the same
+    // instant.
+    //
+    // A trackless or tapless device is NOT skipped here. It ranks itself last
+    // and says so, which is what lets a capable sibling take the recording;
+    // leaving the election early instead published nothing, and every sibling
+    // went on deferring to it on device id while it recorded silence.
+    final canRecordHere = track != null && capture.canCapture;
+    // Unawaited, like the handover: this is a signal round trip, and nothing
+    // about the current stretch waits on it.
+    unawaited(
+      roster?.announceCanCapture(canRecordHere) ?? Future<void>.value(),
+    );
+    final siblings = [
       // Siblings only, from the SFU's own participant list. The election has to
       // agree with presence about who is in the call; reading a different source
       // would let it defer to a device that is not actually here.
-      siblingDeviceIds: (_roster?.siblingDeviceIds ?? const <String>[]).where(
-        (id) => id != me,
-      ),
-    ).shouldRecord;
+      for (final id in roster?.siblingDeviceIds ?? const <String>[])
+        if (id != me)
+          CaptureCandidate(
+            id,
+            canCapture: roster?.siblingCanCapture(id) ?? true,
+          ),
+    ];
+
+    // Whether a successor held our stretch is a fact about a SPAN, and every
+    // election is only an instant. The ledger is opened at the first frame of
+    // the stretch and added to here, so what it holds is the whole of what this
+    // device watched while it was recording.
+    //
+    // A sibling this device could not see when the stretch opened is not
+    // credited by it, and nothing here makes up the difference. An earlier join
+    // stamp was once read as though it did: it says the sibling was in the
+    // ROOM first, which is not the same as holding a copy, because a device can
+    // sit in a call for a long time before its first frame arrives.
+    _watchSiblings();
+
+    // THE LANDED VALUE, and ONLY the landed value. Every device reaches the
+    // same verdict alone because every device ranks the same candidates the
+    // same way, and that holds only while each of them ranks itself on the
+    // number its siblings can read. The live answer is this device's private
+    // knowledge; ranking on it is the one way to be elected in your own view
+    // and nowhere else.
+    //
+    // It matters in BOTH directions, which is what an earlier
+    // `canRecordHere || announced` got wrong. Losing capability: the landed
+    // value is still "able", so this device keeps trying rather than standing
+    // aside while its siblings all defer to it — the case that disjunct was
+    // written for, and one the landed value already covers on its own.
+    // REGAINING it: the landed value is still "cannot", so this device does
+    // not take the recording back until the "yes" has been accepted. The
+    // disjunct made it take the recording back the instant its microphone came
+    // up — while the sibling that had stepped in still read the "no" and was
+    // still recording — so both devices captured the same seconds and each,
+    // being elected in its own view, delivered them.
+    final iCanCapture = roster?.announcedCanCapture ?? true;
+    final election = CaptureElection(
+      myDeviceId: me,
+      siblings: siblings,
+      iCanCapture: iCanCapture,
+    );
+    final elected = election.shouldRecord;
+
+    // Recorded SYNCHRONOUSLY, here, at the moment the election decides — never
+    // handed to the stop as an argument. Teardown stops the recorder directly,
+    // outside the serialised handover chain, so its stop can reach the flush
+    // while this election's reconcile is still queued; an argument would have
+    // arrived after the audio had already gone. And being level-triggered it
+    // cannot inherit an intent from an election that was later reversed.
+    final successor = elected ? null : election.recordingSuccessor;
+    // FACTS, not a conclusion. Every argument below is something read off the
+    // roster, and the rule that turns them into a verdict lives in one place —
+    // so a term cannot be got wrong here without being wrong for every caller.
+    // The blocker this shape was adopted for was a boolean assembled right
+    // here, out of the nearest thing to hand that looked like it meant the
+    // successor had recorded.
+    final successorReport = successor == null
+        ? null
+        : roster?.siblingCaptureReport(successor.deviceId);
+    capture.setDiscardOnStop(
+      successor != null &&
+          successorReport != null &&
+          CaptureElection.discardsCapturedAudio(
+            successor: successor,
+            successorReport: successorReport,
+            watch: _watch,
+            myJoinedAt: roster?.myJoinTime,
+            successorJoinedAt: roster?.siblingJoinTime(successor.deviceId),
+          ),
+    );
 
     // Only while there is somebody who can actually hear it. A caller talking
     // while it rings is talking to nobody, and so is one talking through a
@@ -461,13 +744,20 @@ class ActiveCall extends ChangeNotifier {
     _wanted =
         elected &&
         _peerArrived &&
-        (_roster?.hasPeer ?? false) &&
+        (roster?.hasPeer ?? false) &&
         !_peerMembershipGone &&
         // Never while their return is in doubt: presence during a grace may be
         // the SFU's echo of someone already gone, and audio recorded into that
         // is audio nobody heard.
         _peerGrace == null &&
-        (_roster?.isConnected ?? false);
+        (roster?.isConnected ?? false);
+    // The second half of what this device tells its siblings, and the one they
+    // are allowed to destroy audio on. Published HERE, below [_wanted], rather
+    // than beside the capability announcement above: a device that has just
+    // decided to stop has to say so before its reconcile runs, because the
+    // reconcile is where the audio actually stops and the retraction needs a
+    // head start on it, not a chase.
+    unawaited(_announceCaptureState());
     // Handovers are serialised. A device can be displaced and reinstated faster
     // than a flush completes, and starting a new recording while the previous
     // stop is still unwinding would let that stop cancel the new tap and close
@@ -482,23 +772,81 @@ class ActiveCall extends ChangeNotifier {
   /// answer instead of replaying a stale one. [_capturing] moves only once the
   /// change has actually happened, so a tap that fails to open is retried by the
   /// next election rather than remembered as open.
-  Future<void> _reconcile(AudioTrack track) async {
-    final wanted = _wanted && !_ending;
-    if (wanted == _capturing) return;
+  /// Whether a reconcile that decided [wanted] is still carrying out the
+  /// latest decision.
+  ///
+  /// AN AWAIT IS A PLACE A DECISION CAN BE SUPERSEDED. Elections are
+  /// synchronous listeners on the roster and are NOT serialised behind the
+  /// handover chain the way reconciles are, so one can run start to finish
+  /// while a reconcile is parked — setting [_wanted] the other way, telling the
+  /// siblings this device is still recording, and queueing a reconcile of its
+  /// own. A reconcile that resumed and acted on what it read before the await
+  /// would stop a recorder the latest election wants running, and the announcer
+  /// — reading the newer intent — would republish a run this device had just
+  /// stopped holding.
+  ///
+  /// Returning is the whole correction: [_electRecorder] queues a reconcile
+  /// every time it changes its mind, so the newer decision already has one
+  /// waiting behind this and there is nothing to hand over.
+  ///
+  /// The same shape as [_step] and as the session gate in
+  /// [CallCaptureService.start], which abandons rather than attaching a tap to
+  /// a recording that ended while it was opening.
+  bool _decisionHolds(bool wanted) => wanted == (_wanted && !_ending);
+
+  Future<void> _reconcile(AudioTrack? track) async {
+    // Nothing to record FROM is settled here rather than in the election. The
+    // election still has to rank a trackless device and announce what it found,
+    // so that a sibling with a microphone takes the recording instead of
+    // deferring to it; what it must not do is start a recorder with no track.
+    final recording = _wanted && !_ending ? track : null;
+    final wanted = recording != null;
+    // The truth, not the cache. [_capturing] records what this side last DID,
+    // and a recorder whose tap died has stopped without this side doing
+    // anything — so "already recording" can be a statement about a recording
+    // that no longer exists, and returning on it swallows the failure for the
+    // rest of the call. Asking the recorder itself costs one field read per
+    // election and makes the presence clock a floor under every way capture can
+    // be lost, including ones nothing here is wired to hear.
+    //
+    // Only consulted when a recording is WANTED. There is no equivalent lie in
+    // the other direction: nothing starts a recording behind this method's
+    // back.
+    if (wanted == _capturing && (!wanted || capture.isRecording)) return;
     try {
-      if (wanted) {
+      if (recording != null) {
         // Awaited: attaching a tap is a platform call that can fail, and
         // recording this as capturing before it succeeded would leave the
         // election believing a device is recording when it is not.
-        await capture.start(track);
+        await capture.start(recording);
         // Read back rather than assumed. A device with no point to record from
         // returns without attaching one, and calling that "recording" would stop
         // every later election from trying again.
+        //
+        // NOT gated on [_decisionHolds] the way the stop below is, and the
+        // difference is that this line records what HAPPENED rather than acting
+        // on what was decided. A tap that attached while the election changed
+        // its mind is attached whatever the election now wants, and leaving
+        // this false would hide a running recorder from the reconcile queued
+        // behind this one — which would then have nothing to stop.
         _capturing = capture.isRecording;
         Logs().i('Recording this call on this device');
       } else {
+        // FIRST, and awaited. See [_retractCaptureState]: a sibling may destroy
+        // its own tail on our claim to be recording, so the claim has to be
+        // corrected somewhere it can read before the audio it describes stops.
+        await _retractCaptureState();
+        // RE-ESTABLISHED, because the line above waits for a signal round trip
+        // and an election can reverse this one inside it. See [_decisionHolds].
+        if (!_decisionHolds(wanted)) return;
         await capture.stop();
         _capturing = false;
+        // Only the two reasons that can actually reach here. Reaching this arm
+        // at all means [_capturing] was true, which means a stretch started,
+        // which means there was a track to start it with — and [_track] is
+        // acquired once and never given back. A third message about having
+        // nothing published read like an operator statement and could never be
+        // printed.
         Logs().i(
           _peerGrace != null
               ? 'Recording paused: waiting to see whether they come back'
@@ -509,6 +857,14 @@ class ActiveCall extends ChangeNotifier {
       // Recording is not the call. A tap that will not open, or will not close,
       // costs analytics — it must never take down a conversation.
       Logs().e('Could not change recording state', e, s);
+    } finally {
+      // A stretch that just ENDED has to be taken back at once, not on the next
+      // presence tick. The election that ordered this stop published "recording"
+      // because that was true when it ran, and a sibling reading that stale yes
+      // could drop its own tail believing this device was still holding the
+      // words. In the finally, because a stop that threw stopped the audio just
+      // the same.
+      unawaited(_announceCaptureState());
     }
   }
 
@@ -569,14 +925,23 @@ class ActiveCall extends ChangeNotifier {
   /// late retraction is not a decision anyone made. The window separates the
   /// two without either side needing a new message.
   ///
-  /// Thirteen seconds, and the number is derived rather than guessed. The SDK
-  /// asks the homeserver to apply the delayed leave 18s after the last
-  /// restart, and restarts it every 4s, so the EARLIEST a server-written
-  /// retraction can appear is about 14s after a device stopped heartbeating.
-  /// Anything sooner cannot be the server's, so thirteen is as much room for
-  /// slow delivery as can be taken without ever mistaking the server's
-  /// cleanup for a decision -- and it stays inside [peerGraceWindow], so a
-  /// genuine vanish is unaffected.
+  /// Thirteen seconds, and the number is derived rather than guessed. The app
+  /// asks the homeserver to apply the delayed leave `CallDelayedLeave
+  /// .applyLeave` after the last restart and restarts it every
+  /// `CallDelayedLeave.maxRestart` at the slowest, so the EARLIEST a
+  /// server-written retraction can appear is the difference between those two
+  /// after a device stopped heartbeating. Anything sooner cannot be the
+  /// server's, so this is as much room for slow delivery as can be taken while
+  /// the retraction's own AGE still separates the two -- and it stays inside
+  /// [peerGraceWindow], so this check never shortens the grace a vanish gets.
+  /// It does not follow that the cleanup is never mistaken for a decision; the
+  /// two residuals below are the reasons why.
+  ///
+  /// Those two are the app's numbers, not the SDK's defaults, and they were
+  /// raised together precisely so this one stayed true; call_timeouts_test.dart
+  /// asserts the relation rather than leaving it to this comment. Raising the
+  /// restart interval alone moves that retraction EARLIER and is what would
+  /// break it.
   ///
   /// The original four seconds was chosen for how quickly a hangup normally
   /// arrives, not for what it had to be distinguished FROM, and any sync
@@ -588,6 +953,17 @@ class ActiveCall extends ChangeNotifier {
   /// their departure and delivered late from one written late and delivered
   /// at once. A sync slower than this degrades to the ordinary grace, which
   /// is the behaviour we had before and costs at most seven more seconds.
+  ///
+  /// And the residual in the OTHER direction, which is the worse one and is
+  /// not fixed here: the SFU keeps a departed participant for its own retention
+  /// ([peerGraceWindow] is matched to it), so when that retention outlasts the
+  /// homeserver's cleanup, the retraction arrives first -- or inside this
+  /// window -- and a crash reads as a hangup. Nothing local separates the two
+  /// at that moment: a deliberate hangup ALSO retracts while the SFU still
+  /// lists the person. Only the timing tells them apart, and it would take an
+  /// apply-leave longer than the SFU's retention plus this window to do it.
+  /// True of the SDK's own defaults as well, and tracked rather than papered
+  /// over.
   static const endedDeliberatelyWithin = Duration(seconds: 13);
 
   /// When the peer was first seen to be gone, or null while they are here.
@@ -679,6 +1055,7 @@ class ActiveCall extends ChangeNotifier {
   DateTime? _ourJoinAt(matrix.Room room) {
     final anchor = _membershipEventId;
     if (anchor == null) return null;
+    _floorsDerivedFrom(anchor);
     return _ourJoinAtValue ??= calls.membershipWrittenAt(room, anchor);
   }
 
@@ -687,6 +1064,7 @@ class ActiveCall extends ChangeNotifier {
   DateTime? _stateFloor(matrix.Room room) {
     final anchor = _membershipEventId;
     if (anchor == null) return null;
+    _floorsDerivedFrom(anchor);
     final cached = _stateFloorAt;
     if (cached != null) return cached;
     final written = calls.membershipWrittenAt(room, anchor);
@@ -695,6 +1073,41 @@ class ActiveCall extends ChangeNotifier {
   }
 
   DateTime? _stateFloorAt;
+
+  /// The anchor both floors above were derived from.
+  ///
+  /// A VALUE MEMOIZED FROM AN ANCHOR IS KEYED ON THAT ANCHOR, NOT ON WHETHER IT
+  /// HAS BEEN COMPUTED -- because [_membershipEventId] is CORRECTED, not merely
+  /// filled. It is answered lazily out of room state, where the call id is the
+  /// room id, so ANY unexpired membership of ours in this room qualifies --
+  /// including one a previous call left standing when its retract was given up
+  /// on. [announce] then overwrites it with the membership this call actually
+  /// wrote, and a floor computed before that would otherwise keep the previous
+  /// call's timestamp for the rest of this one.
+  ///
+  /// The error is always in the same direction. A stale anchor is always OLDER,
+  /// both floors are lower bounds, so a stale floor is always too PERMISSIVE:
+  /// always biased toward reading the peer as gone. On any tick where the peer
+  /// is in the SFU but their new membership has not synced, the newest state of
+  /// theirs we can see is the previous call's emptied membership -- and a
+  /// too-old `goneAfter` lets that through as a departure from THIS call.
+  /// [_peerMembershipGone] then reads leftDeliberately and hangs up on somebody
+  /// who is talking, seconds after the call was answered. That is verbatim the
+  /// regression `goneAfter` was added to prevent.
+  ///
+  /// [_dropBreadcrumb] is deliberately re-fired from three sites so it picks
+  /// the anchor up whenever it lands; these two are derived from the same
+  /// anchor and were computed once, which is the oversight this closes.
+  String? _floorsAnchor;
+
+  void _floorsDerivedFrom(String anchor) {
+    if (_floorsAnchor == anchor) return;
+    _floorsAnchor = anchor;
+    // Dropped, not recomputed: a null stays null and the reads above ask again,
+    // which is what already covers a write whose echo has not landed yet.
+    _ourJoinAtValue = null;
+    _stateFloorAt = null;
+  }
 
   Timer? _presenceClock;
 
@@ -1336,7 +1749,14 @@ class ActiveCall extends ChangeNotifier {
     // name. The same busy check join performs, read early for the same
     // answer. (The service itself also ignores a START while running, which
     // covers the sub-millisecond double-start this read cannot see.)
-    if (!calls.isBusy) unawaited(_startForeground(video: video));
+    if (!calls.isBusy) {
+      // Kept, not just fired. The retry has to know whether THIS attempt was
+      // refused, and asking while the platform is still answering reads a
+      // start that is about to be refused as one that never needed a retry.
+      final starting = _startForeground(video: video);
+      _foregroundStarting = starting;
+      unawaited(starting);
+    }
     // Subscribed before anything else, but only when PLACING. Two people
     // calling at the same moment is decided by seeing the other's ring, and the
     // window this has to cover starts when ours does — not when our media
@@ -1363,13 +1783,10 @@ class ActiveCall extends ChangeNotifier {
       _joined = true;
       _abandonIfEnding();
 
+      // The service's retry is NOT taken here. Connecting publishes the camera
+      // after the microphone, and the retry belongs at the grant rather than at
+      // the end of everything that follows it -- see [_onMicrophoneLive].
       await _step(() => media.connect(grant, video: video));
-      if (_foregroundPending) {
-        // Media connected, so the microphone permission is granted -- the
-        // dialog that refused the first start has been answered.
-        _foregroundPending = false;
-        unawaited(_startForeground(video: video));
-      }
       // Not when the camera never opened: the ongoing-call notification
       // would advertise a video call that is running on audio.
       if (video && !media.cameraFailed && _foreground != null) {
@@ -1647,18 +2064,27 @@ class ActiveCall extends ChangeNotifier {
     // Decided NOW: a decline that led here was recorded before this call, so
     // the outcome is already the right one, and the screen may close at once.
     _decide(_declinedByPeer ? CallOutcome.declined : CallOutcome.ended);
-    return _hangUp ??= () async {
-      try {
-        await _tearDown();
-        _to(_declinedByPeer ? CallStage.declined : CallStage.ended);
-      } finally {
-        // A teardown that could not retract must not be remembered as done.
-        // Memoizing it would make every later hangup return this same finished
-        // future, so the membership would stay advertised until it expired with
-        // nothing able to take it back.
-        if (_joined) _hangUp = null;
-      }
-    }();
+    // A teardown that could not retract must not be remembered as done.
+    // Memoizing it would make every later hangup return this same finished
+    // future, so the membership would stay advertised until it expired with
+    // nothing able to take it back.
+    //
+    // Cleared from HERE, the assigning side, and never from inside the body:
+    // an async body runs synchronously until its first await, so a body that
+    // ever gained a path returning before one would clear a latch that `??=`
+    // had not yet set and then be latched for ever. `whenComplete` is
+    // scheduled as a microtask, which cannot run before the assignment
+    // expression it belongs to has finished, so it cannot lose that race. Same
+    // rule as [CallService.retract], where losing it left the account unable to
+    // make or take another call.
+    return _hangUp ??= _endCall().whenComplete(() {
+      if (_joined) _hangUp = null;
+    });
+  }
+
+  Future<void> _endCall() async {
+    await _tearDown();
+    _to(_declinedByPeer ? CallStage.declined : CallStage.ended);
   }
 
   /// Gives the call back to the service.

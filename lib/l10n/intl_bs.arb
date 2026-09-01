@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-01 10:41:27.044554",
+    "@@last_modified": "2026-09-01 11:49:53.625813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Poništi ciljni jezik",
     "resetBaseLanguage": "Poništi osnovni jezik",
     "selectedLanguageLevel": "Odabran nivo jezika: {level}",
-    "resetLanguageLevel": "Poništi nivo jezika"
+    "resetLanguageLevel": "Poništi nivo jezika",
+    "callTranscriptSharedNotice": "Ovaj poziv je transkribovan i sačuvan. Vi i druga osoba ga možete pročitati kasnije.",
+    "callTranscriptTitle": "Transkript poziva",
+    "callTranscriptLoadFailed": "Učitavanje transkripta nije uspjelo",
+    "callTranscriptRetry": "Pokušaj ponovo",
+    "callTranscriptStoppedEarly": "Ovaj poziv je imao previše teksta za čitanje odjednom, tako da dio nije prikazan.",
+    "callTranscriptNone": "Nema transkripta od {name}",
+    "callTranscriptSaidNothing": "{name} nije ništa rekao/rekla",
+    "callTranscriptNothingRead": "Ništa se nije moglo pročitati od onoga što je {name} rekao/rekla",
+    "callTranscriptNoSpeechDetected": "Ništa snimljeno od {name} nije poslano na transkripciju: ova aplikacija nije pronašla govor u tome i može pogriješiti u vezi s tim, tako da se ne zna šta je rečeno.",
+    "callTranscriptPartial": "Dio onoga što je {name} rekao/rekla možda nedostaje",
+    "callTranscriptByTime": "do {time}",
+    "callTranscriptApproximateTimes": "Red označen \"do\" vremena je rečen u to vrijeme ili prije. Ti redovi su prikazani u tom trenutku, tako da su možda rečeni ranije.",
+    "callTranscriptUnstatedTimes": "Neki redovi ne prikazuju vrijeme. Uređaj koji ih je snimio nije naveo koliko su tačna njegova vremena, tako da njihov položaj u ovom razgovoru može biti pogrešan.",
+    "callTranscriptUnreconciledClocks": "Ovi redovi su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuju vremena i redoslijed njihovog pojavljivanja može biti pogrešan.",
+    "callTranscriptOpen": "Pročitaj transkript"
 }

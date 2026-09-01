@@ -44,7 +44,10 @@ class _NullSink implements CallAudioSink {
   Future<void> deliver(PcmChunk chunk, {Duration? within}) async {}
 
   @override
-  Future<void> close() async {}
+  // True: a sink holding nothing has nothing outstanding, so everything it was
+  // given did settle. Returning false here would tell the one caller that
+  // publishes a transcript that this half is knowingly short of what was said.
+  Future<bool> close() async => true;
 }
 
 void main() {

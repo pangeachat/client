@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-01 10:41:28.543618",
+    "@@last_modified": "2026-09-01 11:49:57.336151",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9808,5 +9808,20 @@
     "resetTargetLanguage": "Zielsprache zurücksetzen",
     "resetBaseLanguage": "Ausgangssprache zurücksetzen",
     "selectedLanguageLevel": "{level} als Sprachniveau ausgewählt",
-    "resetLanguageLevel": "Sprachniveau zurücksetzen"
+    "resetLanguageLevel": "Sprachniveau zurücksetzen",
+    "callTranscriptSharedNotice": "Dieser Anruf wird transkribiert und gespeichert. Sie und die andere Person können ihn danach lesen.",
+    "callTranscriptTitle": "Anruf-Transkript",
+    "callTranscriptLoadFailed": "Transkript konnte nicht geladen werden",
+    "callTranscriptRetry": "Erneut versuchen",
+    "callTranscriptStoppedEarly": "Dieser Anruf enthielt zu viel Text, um auf einmal gelesen zu werden, daher wird ein Teil davon nicht angezeigt.",
+    "callTranscriptNone": "Kein Transkript von {name}",
+    "callTranscriptSaidNothing": "{name} hat nichts gesagt",
+    "callTranscriptNothingRead": "Es konnte nichts von dem, was {name} gesagt hat, gelesen werden",
+    "callTranscriptNoSpeechDetected": "Nichts, was von {name} aufgenommen wurde, wurde zur Transkription gesendet: Diese App hat darin keine Sprache gefunden und kann sich irren, daher ist nicht bekannt, was gesagt wurde.",
+    "callTranscriptPartial": "Ein Teil dessen, was {name} gesagt hat, könnte fehlen",
+    "callTranscriptByTime": "um {time}",
+    "callTranscriptApproximateTimes": "Eine mit „um“ einer Uhrzeit markierte Äußerung wurde zu oder vor dieser Zeit gesagt. Diese Äußerungen werden zu diesem Zeitpunkt angezeigt, sie könnten also früher gesagt worden sein.",
+    "callTranscriptUnstatedTimes": "Einige Äußerungen zeigen keine Uhrzeit an. Das Gerät, das sie aufgenommen hat, hat nicht angegeben, wie genau seine Uhrzeiten sind, daher kann die Position in diesem Gespräch falsch sein.",
+    "callTranscriptUnreconciledClocks": "Diese Äußerungen wurden auf zwei Geräten aufgezeichnet, deren Uhren nicht verglichen werden konnten, daher werden keine Uhrzeiten angezeigt und die Reihenfolge, in der sie erscheinen, kann falsch sein.",
+    "callTranscriptOpen": "Transkript lesen"
 }

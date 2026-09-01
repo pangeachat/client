@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-01 10:41:28.513040",
+    "@@last_modified": "2026-09-01 11:49:57.273343",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10315,5 +10315,20 @@
     "resetTargetLanguage": "Resetovat cílový jazyk",
     "resetBaseLanguage": "Resetovat základní jazyk",
     "selectedLanguageLevel": "Vybrána úroveň jazyka {level}",
-    "resetLanguageLevel": "Resetovat úroveň jazyka"
+    "resetLanguageLevel": "Resetovat úroveň jazyka",
+    "callTranscriptSharedNotice": "Tento hovor je přepsán a uložen. Vy i druhá osoba si jej můžete přečíst později.",
+    "callTranscriptTitle": "Přepis hovoru",
+    "callTranscriptLoadFailed": "Přepis se nepodařilo načíst",
+    "callTranscriptRetry": "Zkusit znovu",
+    "callTranscriptStoppedEarly": "Tento hovor byl příliš dlouhý na to, aby se zobrazil najednou, takže část není zobrazena.",
+    "callTranscriptNone": "Žádný přepis od {name}",
+    "callTranscriptSaidNothing": "{name} nic neřekl/a",
+    "callTranscriptNothingRead": "Z toho, co řekl/a {name}, nebylo nic přečteno",
+    "callTranscriptNoSpeechDetected": "Nic nahraného od {name} nebylo odesláno k přepisu: tato aplikace v něm nenašla žádnou řeč a může se mýlit, takže není známo, co bylo řečeno.",
+    "callTranscriptPartial": "Část toho, co řekl/a {name}, může chybět",
+    "callTranscriptByTime": "v {time}",
+    "callTranscriptApproximateTimes": "Replika označená „v“ čase byla řečena v daný čas nebo před ním. Tyto repliky jsou zobrazeny v daném okamžiku, takže mohly být řečeny dříve.",
+    "callTranscriptUnstatedTimes": "Některé repliky neukazují čas. Zařízení, které je nahrálo, neřeklo, jak přesné jsou jeho časy, takže jejich umístění v této konverzaci může být chybné.",
+    "callTranscriptUnreconciledClocks": "Tyto repliky byly nahrány na dvou zařízeních, jejichž hodiny nebylo možné porovnat, takže nejsou zobrazeny žádné časy a pořadí, ve kterém se objevují, může být chybné.",
+    "callTranscriptOpen": "Přečíst přepis"
 }

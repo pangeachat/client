@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-01 10:41:40.246025",
+    "@@last_modified": "2026-09-01 11:50:26.722441",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Weka upya lugha lengwa",
     "resetBaseLanguage": "Weka upya lugha msingi",
     "selectedLanguageLevel": "Umechagua kiwango cha lugha {level}",
-    "resetLanguageLevel": "Weka upya kiwango cha lugha"
+    "resetLanguageLevel": "Weka upya kiwango cha lugha",
+    "callTranscriptSharedNotice": "Simu hii imeandikwa na kuhifadhiwa. Wewe na mtu mwingine mnaweza kuisoma baadaye.",
+    "callTranscriptTitle": "Nakala ya simu",
+    "callTranscriptLoadFailed": "Imeshindwa kupakia nakala",
+    "callTranscriptRetry": "Jaribu tena",
+    "callTranscriptStoppedEarly": "Simu hii ilikuwa na mengi sana ya kusoma kwa mara moja, kwa hivyo sehemu yake haionyeshwi.",
+    "callTranscriptNone": "Hakuna nakala kutoka kwa {name}",
+    "callTranscriptSaidNothing": "{name} hakusema chochote",
+    "callTranscriptNothingRead": "Hakuna kilichoweza kusomwa kutoka kwa alichosema {name}",
+    "callTranscriptNoSpeechDetected": "Hakuna kilichorekodiwa kutoka kwa {name} kilichotumwa kuandikwa: programu hii haikupata hotuba yoyote ndani yake na inaweza kuwa imekosea kuhusu hilo, kwa hivyo kile kilichosemwa hakijulikani.",
+    "callTranscriptPartial": "Sehemu ya alichosema {name} inaweza kukosekana",
+    "callTranscriptByTime": "na {time}",
+    "callTranscriptApproximateTimes": "Zamu iliyotiwa alama \"na\" wakati ilisemwa wakati huo au kabla yake. Zamu hizo zinaonyeshwa wakati huo, kwa hivyo zinaweza kuwa zilisemwa mapema.",
+    "callTranscriptUnstatedTimes": "Baadhi ya zamu hazionyeshi wakati. Kifaa kilichozirekodi hakikusema jinsi nyakati zake zilivyo sahihi, kwa hivyo mahali zinapokaa katika mazungumzo haya kunaweza kuwa si sahihi.",
+    "callTranscriptUnreconciledClocks": "Zamu hizi zilirekodiwa kwenye vifaa viwili ambavyo saa zake hazikuweza kulinganishwa, kwa hivyo hakuna nyakati zinazoonyeshwa na mpangilio zinaoonekana unaweza kuwa si sahihi.",
+    "callTranscriptOpen": "Soma nakala"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-01 10:41:39.005936",
+    "@@last_modified": "2026-09-01 11:50:22.702305",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "ඉලක්ක භාෂාව යළි සකසන්න",
     "resetBaseLanguage": "මූලික භාෂාව යළි සකසන්න",
     "selectedLanguageLevel": "භාෂා මට්ටම ලෙස {level} තෝරා ඇත",
-    "resetLanguageLevel": "භාෂා මට්ටම යළි සකසන්න"
+    "resetLanguageLevel": "භාෂා මට්ටම යළි සකසන්න",
+    "callTranscriptSharedNotice": "මෙම ඇමතුම පිටපත් කර සුරැකේ. ඔබට සහ අනෙක් පුද්ගලයාට පසුව එය කියවිය හැක.",
+    "callTranscriptTitle": "ඇමතුම් පිටපත",
+    "callTranscriptLoadFailed": "පිටපත පූරණය කිරීමට නොහැකි විය",
+    "callTranscriptRetry": "නැවත උත්සාහ කරන්න",
+    "callTranscriptStoppedEarly": "මෙම ඇමතුමේ එකවර කියවීමට බොහෝ දේ තිබූ නිසා, එහි සමහරක් නොපෙන්වයි.",
+    "callTranscriptNone": "{name} වෙතින් පිටපතක් නැත",
+    "callTranscriptSaidNothing": "{name} කිසිවක් කීවේ නැත",
+    "callTranscriptNothingRead": "{name} පැවසූ දෙයින් කිසිවක් කියවීමට නොහැකි විය",
+    "callTranscriptNoSpeechDetected": "{name} වෙතින් පටිගත කරන ලද කිසිවක් පිටපත් කිරීමට යවා නැත: මෙම යෙදුම එහි කථාවක් සොයා නොගත් අතර එය වැරදි විය හැක, එබැවින් පැවසූ දේ නොදනී.",
+    "callTranscriptPartial": "{name} පැවසූ දේවලින් කොටසක් අතුරුදහන් වී තිබිය හැක",
+    "callTranscriptByTime": "{time} වන විට",
+    "callTranscriptApproximateTimes": "වේලාවක් \"by\" ලෙස සලකුණු කර ඇති වාරයක් එම වේලාවේදී හෝ ඊට පෙර පැවසූවකි. එම වාරයන් එම මොහොතේ පෙන්වනු ලැබේ, එබැවින් ඒවා කලින් පවසා තිබිය හැක.",
+    "callTranscriptUnstatedTimes": "සමහර වාරයන් වේලාවක් නොපෙන්වයි. ඒවා පටිගත කළ උපාංගය එහි වේලාවන් කෙතරම් නිවැරදිදැයි කීවේ නැත, එබැවින් ඒවා මෙම සංවාදයේ ඇති ස්ථානය වැරදි විය හැක.",
+    "callTranscriptUnreconciledClocks": "මෙම වාරයන් පටිගත කර ඇත්තේ ඒවායේ ඔරලෝසු සංසන්දනය කළ නොහැකි උපාංග දෙකක වන අතර, එබැවින් වේලාවන් නොපෙන්වන අතර ඒවා දිස්වන අනුපිළිවෙල වැරදි විය හැක.",
+    "callTranscriptOpen": "පිටපත කියවන්න"
 }

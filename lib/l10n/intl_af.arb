@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-01 10:41:27.414751",
+    "@@last_modified": "2026-09-01 11:49:53.416943",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Stel teikentaal terug",
     "resetBaseLanguage": "Stel basistaal terug",
     "selectedLanguageLevel": "{level} as taalvlak gekies",
-    "resetLanguageLevel": "Stel taalvlak terug"
+    "resetLanguageLevel": "Stel taalvlak terug",
+    "callTranscriptSharedNotice": "Hierdie oproep is getranskribeer en gestoor. Jy en die ander persoon kan dit agterna lees.",
+    "callTranscriptTitle": "Oproep-transkripsie",
+    "callTranscriptLoadFailed": "Kon nie die transkripsie laai nie",
+    "callTranscriptRetry": "Probeer weer",
+    "callTranscriptStoppedEarly": "Hierdie oproep het te veel gehad om in een slag te lees, so 'n deel daarvan word nie gewys nie.",
+    "callTranscriptNone": "Geen transkripsie van {name} nie",
+    "callTranscriptSaidNothing": "{name} het niks gesê nie",
+    "callTranscriptNothingRead": "Niks kon gelees word uit wat {name} gesê het nie",
+    "callTranscriptNoSpeechDetected": "Niks wat van {name} opgeneem is, is gestuur om getranskribeer te word nie: hierdie toepassing het geen spraak daarin gevind nie en kan verkeerd wees daaroor, so wat gesê is, is onbekend.",
+    "callTranscriptPartial": "'n Deel van wat {name} gesê het, mag ontbreek",
+    "callTranscriptByTime": "teen {time}",
+    "callTranscriptApproximateTimes": "'n Beurt gemerk \"teen\" 'n tyd is op of voor dit gesê. Daardie beurte word op daardie oomblik gewys, so dit mag vroeër gesê gewees het.",
+    "callTranscriptUnstatedTimes": "Sommige beurte wys geen tyd nie. Die toestel wat dit opgeneem het, het nie gesê hoe akkuraat sy tye is nie, so waar dit in hierdie gesprek sit, mag verkeerd wees.",
+    "callTranscriptUnreconciledClocks": "Hierdie beurte is op twee toestelle opgeneem waarvan die horlosies nie vergelyk kon word nie, so geen tye word gewys nie en die volgorde waarin dit verskyn, mag verkeerd wees.",
+    "callTranscriptOpen": "Lees die transkripsie"
 }

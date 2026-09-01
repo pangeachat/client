@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 10:41:41.123330",
+    "@@last_modified": "2026-09-01 11:50:29.495133",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7113,5 +7113,20 @@
     "resetTargetLanguage": "Đặt lại ngôn ngữ mục tiêu",
     "resetBaseLanguage": "Đặt lại ngôn ngữ cơ sở",
     "selectedLanguageLevel": "Đã chọn {level} làm trình độ ngôn ngữ",
-    "resetLanguageLevel": "Đặt lại trình độ ngôn ngữ"
+    "resetLanguageLevel": "Đặt lại trình độ ngôn ngữ",
+    "callTranscriptSharedNotice": "Cuộc gọi này được phiên âm và lưu lại. Bạn và người còn lại có thể đọc lại sau.",
+    "callTranscriptTitle": "Bản ghi cuộc gọi",
+    "callTranscriptLoadFailed": "Không thể tải bản ghi",
+    "callTranscriptRetry": "Thử lại",
+    "callTranscriptStoppedEarly": "Cuộc gọi này có quá nhiều nội dung để đọc cùng lúc, nên một phần không được hiển thị.",
+    "callTranscriptNone": "Không có bản ghi từ {name}",
+    "callTranscriptSaidNothing": "{name} không nói gì",
+    "callTranscriptNothingRead": "Không có gì có thể đọc được từ những gì {name} đã nói",
+    "callTranscriptNoSpeechDetected": "Không có gì được ghi lại từ {name} được gửi để phiên âm: ứng dụng này không tìm thấy giọng nói trong đó và có thể sai về điều đó, vì vậy không biết những gì đã nói.",
+    "callTranscriptPartial": "Một phần những gì {name} đã nói có thể bị thiếu",
+    "callTranscriptByTime": "lúc {time}",
+    "callTranscriptApproximateTimes": "Một lượt được đánh dấu \"lúc\" một thời điểm đã được nói vào hoặc trước thời điểm đó. Những lượt đó được hiển thị vào thời điểm đó, vì vậy chúng có thể đã được nói sớm hơn.",
+    "callTranscriptUnstatedTimes": "Một số lượt không hiển thị thời gian. Thiết bị đã ghi lại chúng không cho biết thời gian của nó chính xác đến mức nào, vì vậy vị trí của chúng trong cuộc trò chuyện này có thể sai.",
+    "callTranscriptUnreconciledClocks": "Những lượt này được ghi lại trên hai thiết bị mà đồng hồ của chúng không thể so sánh được, vì vậy không có thời gian nào được hiển thị và thứ tự chúng xuất hiện có thể sai.",
+    "callTranscriptOpen": "Đọc bản ghi"
 }

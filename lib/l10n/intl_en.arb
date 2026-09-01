@@ -3697,7 +3697,7 @@
     "callUnmute": "Unmute",
     "callCameraOn": "Turn camera on",
     "callCameraOff": "Turn camera off",
-    "callRecordingNotice": "This call is transcribed for your analytics",
+    "callTranscriptSharedNotice": "This call is transcribed and saved. You and the other person can read it afterwards.",
     "callNoMicrophone": "They cannot hear you: your microphone did not start",
     "callIncoming": "Incoming call",
     "callAnswer": "Answer",
@@ -3745,6 +3745,62 @@
     "callHistoryNoAnswer": "No answer",
     "callHistoryDeclined": "Call declined",
     "callHistoryYouDeclined": "You declined this call",
+    "callTranscriptTitle": "Call transcript",
+    "callTranscriptLoadFailed": "Could not load the transcript",
+    "callTranscriptRetry": "Try again",
+    "callTranscriptStoppedEarly": "This call had too much to read in one go, so some of it is not shown.",
+    "callTranscriptNone": "No transcript from {name}",
+    "@callTranscriptNone": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptSaidNothing": "{name} did not say anything",
+    "@callTranscriptSaidNothing": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptNothingRead": "Nothing could be read from what {name} said",
+    "@callTranscriptNothingRead": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptNoSpeechDetected": "Nothing recorded from {name} was sent to be transcribed: this app found no speech in it and can be wrong about that, so what was said is not known.",
+    "@callTranscriptNoSpeechDetected": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptPartial": "Part of what {name} said may be missing",
+    "@callTranscriptPartial": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptByTime": "by {time}",
+    "@callTranscriptByTime": {
+        "placeholders": {
+            "time": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptApproximateTimes": "A turn marked \"by\" a time was said at or before it. Those turns are shown at that moment, so they may have been said earlier.",
+    "callTranscriptUnstatedTimes": "Some turns show no time. The device that recorded them did not say how exact its times are, so where they sit in this conversation may be wrong.",
+    "callTranscriptUnreconciledClocks": "These turns were recorded on two devices whose clocks could not be compared, so no times are shown and the order they appear in may be wrong.",
+    "callTranscriptOpen": "Read the transcript",
     "leaveSpaceDescription": "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.",
     "constructUseCorMmDesc": "Correct message meaning",
     "constructUseIncMmDesc": "Incorrect message meaning",

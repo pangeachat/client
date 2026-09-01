@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-01 10:41:39.089545",
+    "@@last_modified": "2026-09-01 11:50:24.952608",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Seta patsva rurimi rwechinangwa",
     "resetBaseLanguage": "Seta patsva rurimi rwekutanga",
     "selectedLanguageLevel": "Wasarudza {level} sezinga rerurimi",
-    "resetLanguageLevel": "Seta patsva zinga rerurimi"
+    "resetLanguageLevel": "Seta patsva zinga rerurimi",
+    "callTranscriptSharedNotice": "Kufona uku kwakanyorwa uye kwachengetwa. Iwe nemumwe munhu munogona kukuverenga pashure.",
+    "callTranscriptTitle": "Zvinyorwa zvekufona",
+    "callTranscriptLoadFailed": "Zvinyorwa hazvina kukwanisa kurodha",
+    "callTranscriptRetry": "Edza zvakare",
+    "callTranscriptStoppedEarly": "Kufona uku kwaive nezvakawanda zvekuverenga kamwechete, saka zvimwe hazvina kuratidzwa.",
+    "callTranscriptNone": "Hapana zvinyorwa kubva kuna {name}",
+    "callTranscriptSaidNothing": "{name} haana kutaura chinhu",
+    "callTranscriptNothingRead": "Hapana chakaverengwa kubva pane zvakataurwa na {name}",
+    "callTranscriptNoSpeechDetected": "Hapana chakanzwika kubva kuna {name} chakaendeswa kunyorwa: app iyi haina kuwana kutaura mairi uye inogona kunge yakakanganisa, saka zvakataurwa hazvizivikanwe.",
+    "callTranscriptPartial": "Chikamu chezvakataurwa na {name} chinogona kunge chisipo",
+    "callTranscriptByTime": "na {time}",
+    "callTranscriptApproximateTimes": "Kutaura kwakanyorwa kuti \"na\" nguva kwakataurwa panguva iyoyo kana pamberi payo. Kutaura ikoko kunoratidzwa panguva iyoyo, saka kunogona kunge kwakataurwa kare.",
+    "callTranscriptUnstatedTimes": "Zvimwe zvinyorwa hazviratidzi nguva. Chishandiso chakazvinyora hachina kutaura kuti nguva dzacho dzakanyatsonaka sei, saka nzvimbo yazvo muhurukuro iyi inogona kunge yakakanganisika.",
+    "callTranscriptUnreconciledClocks": "Zvinyorwa izvi zvakanyorwa pazvishandiso zviviri zvine mawachi asina kukwanisa kuenzaniswa, saka hapana nguva dzinoratidzwa uye kurongeka kwazvo kunogona kunge kwakakanganisika.",
+    "callTranscriptOpen": "Verenga zvinyorwa"
 }

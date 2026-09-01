@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 10:41:33.020408",
+    "@@last_modified": "2026-09-01 11:50:07.421498",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9894,5 +9894,20 @@
     "resetTargetLanguage": "Reimposta lingua di destinazione",
     "resetBaseLanguage": "Reimposta lingua base",
     "selectedLanguageLevel": "Selezionato {level} come livello di lingua",
-    "resetLanguageLevel": "Reimposta livello di lingua"
+    "resetLanguageLevel": "Reimposta livello di lingua",
+    "callTranscriptSharedNotice": "Questa chiamata è trascritta e salvata. Tu e l'altra persona potrete leggerla in seguito.",
+    "callTranscriptTitle": "Trascrizione della chiamata",
+    "callTranscriptLoadFailed": "Impossibile caricare la trascrizione",
+    "callTranscriptRetry": "Riprova",
+    "callTranscriptStoppedEarly": "Questa chiamata era troppo lunga per essere letta tutta in una volta, quindi parte di essa non viene mostrata.",
+    "callTranscriptNone": "Nessuna trascrizione da {name}",
+    "callTranscriptSaidNothing": "{name} non ha detto nulla",
+    "callTranscriptNothingRead": "Non è stato possibile leggere nulla di ciò che {name} ha detto",
+    "callTranscriptNoSpeechDetected": "Nulla di quanto registrato da {name} è stato inviato per la trascrizione: questa app non ha rilevato alcun parlato e potrebbe sbagliarsi, quindi non si sa cosa sia stato detto.",
+    "callTranscriptPartial": "Parte di ciò che {name} ha detto potrebbe mancare",
+    "callTranscriptByTime": "entro le {time}",
+    "callTranscriptApproximateTimes": "Un turno contrassegnato \"entro\" un'ora è stato detto a quell'ora o prima. Questi turni sono mostrati in quel momento, quindi potrebbero essere stati detti prima.",
+    "callTranscriptUnstatedTimes": "Alcuni turni non mostrano l'ora. Il dispositivo che li ha registrati non ha specificato l'esattezza dei suoi orari, quindi la loro posizione in questa conversazione potrebbe essere errata.",
+    "callTranscriptUnreconciledClocks": "Questi turni sono stati registrati su due dispositivi i cui orologi non potevano essere confrontati, quindi non vengono mostrati orari e l'ordine in cui appaiono potrebbe essere errato.",
+    "callTranscriptOpen": "Leggi la trascrizione"
 }

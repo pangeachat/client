@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-01 10:41:31.881735",
+    "@@last_modified": "2026-09-01 11:50:05.240074",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Reyajiste lang sib",
     "resetBaseLanguage": "Reyajiste lang baz",
     "selectedLanguageLevel": "Chwazi {level} kòm nivo lang",
-    "resetLanguageLevel": "Reyajiste nivo lang"
+    "resetLanguageLevel": "Reyajiste nivo lang",
+    "callTranscriptSharedNotice": "Apèl sa a transkri epi sove. Ou menm ak lòt moun nan ka li li apre sa.",
+    "callTranscriptTitle": "Transkripsyon apèl la",
+    "callTranscriptLoadFailed": "Nou pa t' kapab chaje transkripsyon an",
+    "callTranscriptRetry": "Eseye ankò",
+    "callTranscriptStoppedEarly": "Apèl sa a te gen twòp pou li nan yon sèl fwa, kidonk kèk pati pa parèt.",
+    "callTranscriptNone": "Pa gen transkripsyon de {name}",
+    "callTranscriptSaidNothing": "{name} pa t' di anyen",
+    "callTranscriptNothingRead": "Nou pa t' kapab li anyen nan sa {name} te di",
+    "callTranscriptNoSpeechDetected": "Anyen ki te anrejistre nan men {name} pa te voye pou transkri: aplikasyon sa a pa t' jwenn okenn pawòl ladan l' epi li ka fè erè sou sa, kidonk sa ki te di a pa konnen.",
+    "callTranscriptPartial": "Yon pati nan sa {name} te di ka manke",
+    "callTranscriptByTime": "pa {time}",
+    "callTranscriptApproximateTimes": "Yon vire ki make \"pa\" yon lè te di nan oswa anvan li. Vire sa yo parèt nan moman sa a, kidonk yo ka te di pi bonè.",
+    "callTranscriptUnstatedTimes": "Gen kèk vire ki pa montre lè. Aparèy ki te anrejistre yo pa t' di ki jan lè yo egzak, kidonk kote yo chita nan konvèsasyon sa a ka mal.",
+    "callTranscriptUnreconciledClocks": "Vire sa yo te anrejistre sou de aparèy ki pa t' kapab konpare revèy yo, kidonk pa gen lè ki parèt epi lòd yo parèt la ka mal.",
+    "callTranscriptOpen": "Li transkripsyon an"
 }

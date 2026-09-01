@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-01 10:41:30.717934",
+    "@@last_modified": "2026-09-01 11:50:02.805676",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9821,5 +9821,20 @@
     "resetTargetLanguage": "Restablecer idioma obxectivo",
     "resetBaseLanguage": "Restablecer idioma base",
     "selectedLanguageLevel": "Seleccionado {level} como nivel de idioma",
-    "resetLanguageLevel": "Restablecer nivel de idioma"
+    "resetLanguageLevel": "Restablecer nivel de idioma",
+    "callTranscriptSharedNotice": "Esta chamada transcríbese e gárdase. Vostede e a outra persoa poden lela despois.",
+    "callTranscriptTitle": "Transcrición da chamada",
+    "callTranscriptLoadFailed": "Non se puido cargar a transcrición",
+    "callTranscriptRetry": "Tentar de novo",
+    "callTranscriptStoppedEarly": "Esta chamada tiña demasiado texto para ler dunha soa vez, polo que parte dela non se mostra.",
+    "callTranscriptNone": "Sen transcrición de {name}",
+    "callTranscriptSaidNothing": "{name} non dixo nada",
+    "callTranscriptNothingRead": "Non se puido ler nada do que dixo {name}",
+    "callTranscriptNoSpeechDetected": "Nada do gravado de {name} foi enviado para transcribir: esta aplicación non atopou voz e pode estar equivocada, polo que non se sabe o que se dixo.",
+    "callTranscriptPartial": "Pode faltar parte do que dixo {name}",
+    "callTranscriptByTime": "por {time}",
+    "callTranscriptApproximateTimes": "Unha intervención marcada \"por\" unha hora foi dita nese momento ou antes. Esas intervencións móstranse nese momento, polo que puideron ser ditas antes.",
+    "callTranscriptUnstatedTimes": "Algunhas intervencións non mostran a hora. O dispositivo que as gravou non indicou a exactitude das súas horas, polo que a súa posición nesta conversa pode ser incorrecta.",
+    "callTranscriptUnreconciledClocks": "Estas intervencións foron gravadas en dous dispositivos cuxos reloxos non se puideron comparar, polo que non se mostran as horas e a orde na que aparecen pode ser incorrecta.",
+    "callTranscriptOpen": "Ler a transcrición"
 }

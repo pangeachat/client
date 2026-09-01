@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-01 10:41:41.270145",
+    "@@last_modified": "2026-09-01 11:50:29.148808",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "ہدف زبان دوبارہ سیٹ کریں",
     "resetBaseLanguage": "بنیادی زبان دوبارہ سیٹ کریں",
     "selectedLanguageLevel": "زبان کی سطح کے طور پر {level} منتخب کی گئی",
-    "resetLanguageLevel": "زبان کی سطح دوبارہ سیٹ کریں"
+    "resetLanguageLevel": "زبان کی سطح دوبارہ سیٹ کریں",
+    "callTranscriptSharedNotice": "یہ کال نقل کی گئی ہے اور محفوظ کی گئی ہے۔ آپ اور دوسرا شخص اسے بعد میں پڑھ سکتے ہیں۔",
+    "callTranscriptTitle": "کال ٹرانسکرپٹ",
+    "callTranscriptLoadFailed": "ٹرانسکرپٹ لوڈ نہیں ہو سکا",
+    "callTranscriptRetry": "دوبارہ کوشش کریں",
+    "callTranscriptStoppedEarly": "اس کال میں ایک ساتھ پڑھنے کے لیے بہت کچھ تھا، اس لیے اس کا کچھ حصہ نہیں دکھایا گیا ہے۔",
+    "callTranscriptNone": "{name} سے کوئی ٹرانسکرپٹ نہیں",
+    "callTranscriptSaidNothing": "{name} نے کچھ نہیں کہا",
+    "callTranscriptNothingRead": "{name} نے جو کچھ کہا اس سے کچھ بھی پڑھا نہیں جا سکا",
+    "callTranscriptNoSpeechDetected": "{name} سے ریکارڈ کی گئی کوئی بھی چیز ٹرانسکرائب کرنے کے لیے نہیں بھیجی گئی: اس ایپ کو اس میں کوئی تقریر نہیں ملی اور یہ اس بارے میں غلط ہو سکتی ہے، لہذا جو کچھ کہا گیا وہ معلوم نہیں ہے۔",
+    "callTranscriptPartial": "{name} نے جو کچھ کہا اس کا کچھ حصہ غائب ہو سکتا ہے",
+    "callTranscriptByTime": "{time} تک",
+    "callTranscriptApproximateTimes": "ایک باری جس پر وقت کے ساتھ \"تک\" کا نشان لگایا گیا تھا، وہ اس وقت یا اس سے پہلے کہی گئی تھی۔ وہ باریاں اس لمحے دکھائی جاتی ہیں، لہذا وہ پہلے کہی گئی ہو سکتی ہیں۔",
+    "callTranscriptUnstatedTimes": "کچھ باریوں میں وقت نہیں دکھایا گیا ہے۔ جس ڈیوائس نے انہیں ریکارڈ کیا اس نے یہ نہیں بتایا کہ اس کے اوقات کتنے درست ہیں، لہذا وہ اس گفتگو میں کہاں بیٹھتے ہیں یہ غلط ہو سکتا ہے۔",
+    "callTranscriptUnreconciledClocks": "یہ باریاں دو ڈیوائسز پر ریکارڈ کی گئی تھیں جن کی گھڑیوں کا موازنہ نہیں کیا جا سکا، لہذا کوئی وقت نہیں دکھایا گیا اور جس ترتیب میں وہ ظاہر ہوتے ہیں وہ غلط ہو سکتی ہے۔",
+    "callTranscriptOpen": "ٹرانسکرپٹ پڑھیں"
 }

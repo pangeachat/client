@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-01 10:41:34.259786",
+    "@@last_modified": "2026-09-01 11:50:11.055329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Linguam metam reponere",
     "resetBaseLanguage": "Linguam fundamentalem reponere",
     "selectedLanguageLevel": "{level} ut gradus linguae electus est",
-    "resetLanguageLevel": "Gradum linguae reponere"
+    "resetLanguageLevel": "Gradum linguae reponere",
+    "callTranscriptSharedNotice": "Haec vocatio transcribitur et servatur. Tu et alter postea legere potestis.",
+    "callTranscriptTitle": "Transcriptum vocationis",
+    "callTranscriptLoadFailed": "Transcriptum onerari non potuit",
+    "callTranscriptRetry": "Iterum conare",
+    "callTranscriptStoppedEarly": "Haec vocatio nimium habuit legendi uno tempore, itaque pars eius non ostenditur.",
+    "callTranscriptNone": "Nullum transcriptum a {name}",
+    "callTranscriptSaidNothing": "{name} nihil dixit",
+    "callTranscriptNothingRead": "Nihil legi potuit ex iis quae {name} dixit",
+    "callTranscriptNoSpeechDetected": "Nihil a {name} recordatum ad transcribendum missum est: haec applicatio nullam orationem in eo invenit et in hoc errare potest, itaque quid dictum sit nescitur.",
+    "callTranscriptPartial": "Pars eorum quae {name} dixit deesse potest",
+    "callTranscriptByTime": "a {time}",
+    "callTranscriptApproximateTimes": "Vicissitudo notata \"a\" tempore dicta est eo vel ante. Illae vicissitudines illo momento ostenduntur, itaque antea dictae esse possunt.",
+    "callTranscriptUnstatedTimes": "Quaedam vicissitudines nullum tempus ostendunt. Apparatus qui eas recordatus est non dixit quam exactae essent eius tempora, itaque locus earum in hac colloquio falsus esse potest.",
+    "callTranscriptUnreconciledClocks": "Hae vicissitudines in duobus apparatibus recordatae sunt quorum horologia comparari non potuerunt, itaque nulla tempora ostenduntur et ordo quo apparent falsus esse potest.",
+    "callTranscriptOpen": "Lege transcriptum"
 }

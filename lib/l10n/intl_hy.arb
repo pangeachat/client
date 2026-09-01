@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-01 10:41:32.481006",
+    "@@last_modified": "2026-09-01 11:50:08.545170",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2225,5 +2225,20 @@
     "resetTargetLanguage": "Վերականգնել թիրախ լեզուն",
     "resetBaseLanguage": "Վերականգնել հիմնական լեզուն",
     "selectedLanguageLevel": "Ընտրվել է {level}-ը որպես լեզվի մակարդակ",
-    "resetLanguageLevel": "Վերականգնել լեզվի մակարդակը"
+    "resetLanguageLevel": "Վերականգնել լեզվի մակարդակը",
+    "callTranscriptSharedNotice": "Այս զանգը տառադարձված է և պահպանված։ Դուք և մյուս անձը կարող եք այն կարդալ հետո։",
+    "callTranscriptTitle": "Զանգի տառադարձում",
+    "callTranscriptLoadFailed": "Հնարավոր չէր բեռնել տառադարձումը",
+    "callTranscriptRetry": "Կրկին փորձել",
+    "callTranscriptStoppedEarly": "Այս զանգը չափազանց շատ բան ուներ կարդալու մեկ անգամից, ուստի դրա մի մասը ցուցադրված չէ։",
+    "callTranscriptNone": "Տառադարձում չկա {name}-ից",
+    "callTranscriptSaidNothing": "{name}-ը ոչինչ չի ասել",
+    "callTranscriptNothingRead": "Ոչինչ չհաջողվեց կարդալ այն ամենից, ինչ ասել է {name}-ը",
+    "callTranscriptNoSpeechDetected": "{name}-ից ձայնագրված ոչինչ չի ուղարկվել տառադարձման. այս հավելվածը դրանում խոսք չի հայտնաբերել և կարող է սխալվել այդ հարցում, ուստի ասվածը հայտնի չէ։",
+    "callTranscriptPartial": "Այն ամենի մի մասը, ինչ ասել է {name}-ը, հնարավոր է բացակայի",
+    "callTranscriptByTime": "ըստ {time}-ի",
+    "callTranscriptApproximateTimes": "Ժամանակով «ըստ» նշված խոսքն ասվել է այդ ժամին կամ դրանից առաջ։ Այդ խոսքերը ցուցադրվում են այդ պահին, ուստի դրանք հնարավոր է ասվել են ավելի վաղ։",
+    "callTranscriptUnstatedTimes": "Որոշ խոսքեր ժամանակ չեն ցույց տալիս։ Դրանք ձայնագրող սարքը չի նշել, թե որքան ճշգրիտ են դրա ժամանակները, ուստի դրանց դիրքը այս խոսակցության մեջ կարող է սխալ լինել։",
+    "callTranscriptUnreconciledClocks": "Այս խոսքերը ձայնագրվել են երկու սարքի վրա, որոնց ժամացույցները հնարավոր չէր համեմատել, ուստի ժամանակներ չեն ցուցադրվում, և դրանց հայտնվելու հերթականությունը կարող է սխալ լինել։",
+    "callTranscriptOpen": "Կարդալ տառադարձումը"
 }

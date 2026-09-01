@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
+import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/pangea_voip_delegate.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
@@ -92,7 +93,9 @@ class CallService {
     RtcFocusDiscovery? focusDiscovery,
     Duration? joinWithin,
     Duration? leaveWithin,
+    CallTimeouts? timeouts,
   }) : delegate = delegate ?? PangeaVoipDelegate(),
+       timeouts = timeouts ?? pangeaCallTimeouts(),
        _tokens = tokenRepo ?? CallTokenRepo(),
        _discovery = focusDiscovery ?? RtcFocusDiscovery(),
        _joinWithin = joinWithin ?? const Duration(seconds: 30),
@@ -155,7 +158,18 @@ class CallService {
   /// `delegate.handleNewGroupCall` before returning, and it dereferences
   /// `delegate.mediaDevices` inline — so it must not run until the delegate is fully
   /// live, and should not run at all for an account that never places a call.
-  VoIP get voip => _voip ??= VoIP(client, delegate);
+  ///
+  /// [timeouts] is passed rather than left to the SDK's defaults. Those put a
+  /// delayed-leave restart on the wire every four seconds per participant, and
+  /// every device on the same period; see [CallDelayedLeave] for what replaces
+  /// them and why the two numbers had to move together.
+  VoIP get voip => _voip ??= VoIP(client, delegate, timeouts: timeouts);
+
+  /// The delayed-leave timings this account's calls run with, drawn once.
+  ///
+  /// Held here rather than built inside [voip] so the draw is stable across the
+  /// account's calls and so a test can read what was actually passed.
+  final CallTimeouts timeouts;
 
   /// Joins (or starts) the call in [room], returning the grant needed to connect
   /// its media.
@@ -218,9 +232,23 @@ class CallService {
   /// at most twice this before the call gets on with ringing out.
   static const _ringWithin = Duration(seconds: 10);
 
-  /// A leave that was given up on but is still running. The next call in this
-  /// room waits for it rather than racing it.
-  Future<void>? _leaving;
+  /// EVERY leave that was given up on and is still running. The next call in
+  /// this room waits for all of them rather than racing any.
+  ///
+  /// A SET, not a slot, and the difference is the whole of what this holds. A
+  /// slot records the LATEST leave, which silently UNRECORDS the one before it
+  /// — and a leave dropped from the tracker is exactly as invisible to
+  /// [settlePendingLeave] and to the wait in [announce] as one that was never
+  /// funnelled through [_leave] at all. Two can be outstanding at once by the
+  /// ordinary route: [retract] gives up waiting on its leave without stopping
+  /// it, the redial that follows is abandoned mid-join, and the leave that
+  /// abandonment issues for the session it was holding is a second one. On a
+  /// slot the second finishes, clears it, and the first is left in flight with
+  /// nothing waiting for it — so the call after that publishes its membership
+  /// into the session both of them hold, and the first lands late and retracts
+  /// a LIVE call's membership. That is the exact failure the funnel exists to
+  /// prevent, moved one level down into what the funnel writes to.
+  final Set<Future<void>> _leaving = {};
 
   /// Records a leave still in flight, and forgets it the moment it finishes —
   /// never before.
@@ -232,35 +260,91 @@ class CallService {
   /// next call would then publish its membership straight into a session this
   /// leave is about to retract.
   void _setPendingLeave(Future<void> leaving) {
-    _leaving = leaving;
+    _leaving.add(leaving);
     unawaited(
       leaving
-          .whenComplete(() {
-            if (identical(_leaving, leaving)) _leaving = null;
-          })
+          .whenComplete(() => _leaving.remove(leaving))
           .catchError((Object _, StackTrace _) {}),
     );
   }
 
-  /// Waits for a leave that was given up on to actually finish.
+  /// Every leave still outstanding, as one future to wait on, or null when
+  /// there are none.
+  ///
+  /// A SNAPSHOT of the set, so a leave issued while somebody is already waiting
+  /// does not extend that wait. Which is right for both kinds of leave that can
+  /// appear inside one, and for opposite reasons: a leave belonging to a LATER
+  /// call takes its own snapshot when its turn comes, while a leave belonging to
+  /// the very call that is waiting — this call's own hangup — is not something
+  /// to wait for at all, since waiting for it would be waiting for a session to
+  /// be left in order to enter it.
+  ///
+  /// So a waiter cannot decide anything by re-reading this: a `Future<void>`
+  /// does not say whose leave it is. [announce] asks the service's own state
+  /// instead — see [announceStillHolds].
+  ///
+  /// A RETRACT IN FLIGHT COUNTS, EVEN WHEN IT IS HOLDING NO LEAVE AT THIS
+  /// INSTANT. What a redial has to be ordered behind is every leave this
+  /// service is STILL GOING TO ISSUE, not merely the ones already on the wire.
+  /// [_leaving] holds a leave only while its future is outstanding, and it
+  /// forgets one that FAILED just as readily as one that worked — so between
+  /// the retract's retries, while it sleeps for a second and then two, there is
+  /// a retract that will issue another leave and nothing in [_leaving] to see
+  /// it by. In that window [settlePendingLeave] found nothing to wait for and
+  /// [announce] skipped its whole guard, [announceStillHolds] included, because
+  /// that guard is nested inside "is there a pending leave". The redial
+  /// published its membership into the session — fetched by ROOM, so the very
+  /// object the sleeping retract still holds — and the retract woke and took
+  /// the LIVE call's membership straight back off it.
+  Future<void>? get _pendingLeaves {
+    final outstanding = <Future<void>>[..._leaving, ?_retracting];
+    return outstanding.isEmpty ? null : Future.wait(outstanding);
+  }
+
+  /// Issues a leave and records it among the pending ones, in that order and
+  /// with nothing awaited in between.
+  ///
+  /// EVERY LEAVE THIS SERVICE ISSUES MUST BE ONE THE NEXT JOIN CAN WAIT FOR.
+  /// [settlePendingLeave] and the wait in [announce] are the whole machinery for
+  /// ordering a redial behind a leave that has not finished, and both of them
+  /// read [_leaving] — so a leave that was never recorded there is not merely
+  /// unwaited-for, it is invisible to the thing built to serialise leaves. The
+  /// session is fetched by ROOM, so the redial is handed the very object the
+  /// unrecorded leave still holds: it sees nothing to wait for, publishes its
+  /// membership into that session, and the older leave lands afterwards and
+  /// takes the LIVE call's membership back. That is worse than the abandoned
+  /// membership the leave was cleaning up, which expires by itself in minutes,
+  /// where a conversation dropped mid-sentence does not come back.
+  ///
+  /// A funnel rather than a rule to remember at each site, because remembering
+  /// is exactly what failed: [retract] recorded its leave and the abandoned-join
+  /// path did not, and nothing at either site said which of the two it was. With
+  /// one way to leave there is no second site to keep in step.
+  Future<void> _leave(GroupCallSession session) {
+    final leaving = session.leave();
+    _setPendingLeave(leaving);
+    return leaving;
+  }
+
+  /// Waits for every leave that was given up on to actually finish.
   ///
   /// Bounded: waiting longer would hold up a call the learner is asking for now,
-  /// so after the window the call goes ahead. But the pending leave is NOT let
-  /// go of here — it clears itself when it completes — so every call that starts
-  /// while it is still running waits for it in turn rather than racing it. That
-  /// is the whole protection against a stale leave retracting a fresh call's
-  /// membership; dropping it on the first timeout threw that protection away for
-  /// every call after.
+  /// so after the window the call goes ahead. But the pending leaves are NOT let
+  /// go of here — each clears itself when it completes — so every call that
+  /// starts while any is still running waits for it in turn rather than racing
+  /// it. That is the whole protection against a stale leave retracting a fresh
+  /// call's membership; dropping it on the first timeout threw that protection
+  /// away for every call after.
   @visibleForTesting
   Future<void> settlePendingLeave() async {
-    final leaving = _leaving;
+    final leaving = _pendingLeaves;
     if (leaving == null) return;
-    Logs().i('Waiting for the last call to finish leaving');
+    Logs().i('Waiting for every leave still running to finish');
     try {
       await leaving.timeout(_leaveWithin);
     } catch (_) {
-      // Waited as long as is reasonable; the leave keeps running and is
-      // forgotten only when it finishes, not here.
+      // Waited as long as is reasonable; the leaves keep running and are
+      // forgotten only when they finish, not here.
     }
   }
 
@@ -269,9 +353,14 @@ class CallService {
   void setPendingLeaveForTest(Future<void> leaving) =>
       _setPendingLeave(leaving);
 
-  /// Whether a leave is still being waited for. For tests.
+  /// Whether any leave is still being waited for. For tests.
   @visibleForTesting
-  bool get hasPendingLeaveForTest => _leaving != null;
+  bool get hasPendingLeaveForTest => _leaving.isNotEmpty;
+
+  /// How many leaves are still outstanding. For tests: the count is what tells
+  /// a tracker that KEEPS both from one that has quietly replaced the first.
+  @visibleForTesting
+  int get pendingLeaveCountForTest => _leaving.length;
 
   /// Numbers each ring this session sends, so two calls sharing a membership
   /// cannot share a transaction id.
@@ -333,54 +422,122 @@ class CallService {
   /// rather than left to install itself over the top of whatever came after.
   int _joinAttempt = 0;
 
-  Future<CallToken> _join(Room room, int attempt) async {
-    final f = await resolveFocus();
-    // Before anything is constructed: discovery is a network round-trip and the
-    // account can log out inside it.
+  /// Stops a join the account no longer wants, handing back anything it had
+  /// already taken.
+  ///
+  /// AN AWAIT IS A PLACE A DECISION CAN BE SUPERSEDED, AND NOTHING AFTER ONE MAY
+  /// ACT ON THE DECISION THAT PRECEDED IT. Coming up is three network
+  /// round-trips, and both a hangup ([abandonJoin]) and a logout can land inside
+  /// any of them — so what this account wanted when a step was issued says
+  /// nothing about what it wants when that step answers. Called after EVERY
+  /// await in [_join] rather than once at the end, because the end is not
+  /// reached on the paths that matter: the check used to sit below the token
+  /// request, so a token that threw carried the failure out past it and the
+  /// session fetched a moment earlier was never handed back — a membership left
+  /// advertised for the minutes it takes to expire.
+  ///
+  /// The same shape as `_decisionHolds` and `_step` in `ActiveCall`, and as the
+  /// session gate in `CallCaptureService.start`.
+  ///
+  /// [session] is whatever this join is holding by the time it gets here, and
+  /// null before it holds anything. Handed back on exactly the terms
+  /// [releasesAbandonedSession] states, and BEFORE either throw below, so the
+  /// release is not something a caller has to remember to do on the way out.
+  Future<void> _stopIfSuperseded(
+    int attempt, {
+    GroupCallSession? session,
+  }) async {
+    if (!_disposed && attempt == _joinAttempt) return;
+    // The account went away while this join was in flight, or the join itself
+    // was given up on. Storing the session now would advertise a membership
+    // that nothing is left to retract, and it would stand until it expired
+    // minutes later.
+    if (session != null &&
+        releasesAbandonedSession(
+          joinInFlight: _joining,
+          isCurrent: identical(session, _current),
+        )) {
+      try {
+        // Through [_leave], never straight at the session. This leave runs in
+        // the one window where nothing else is holding the room — the join that
+        // owned it has been given up on and the redial has not claimed it yet —
+        // so it is precisely the leave a redial has to be able to wait for.
+        await _leave(session);
+      } catch (e, st) {
+        Logs().w('Could not leave a call abandoned during teardown', e, st);
+      }
+    }
+    // Disposal keeps saying so in its own words: it is the one of the two that
+    // means the whole service is gone rather than this one call, and the
+    // distinction is what a reader of the log needs.
     _stopIfDisposed();
+    throw StateError('the call was abandoned while joining');
+  }
+
+  /// The two network steps of joining, named so the sequence and the checks
+  /// between them can be observed. Neither can be stood up in a unit test — one
+  /// needs a live SFU and the other the choreographer — and the ordering is the
+  /// part worth testing.
+  ///
+  /// Room-scoped call id: one direct message room holds at most one live call,
+  /// and both clients derive the same id without coordinating.
+  @protected
+  Future<GroupCallSession> fetchSession(
+    Room room,
+    RtcFocus focus,
+  ) => voip.fetchOrCreateGroupCall(
+    room.id,
+    room,
+    focus.backendForRoom(room.id),
+    'm.call',
+    'm.room',
+    // Defaults to true, which pre-generates and broadcasts an E2EE key before the
+    // call even starts. With e2eeEnabled false the SDK returns early from that work
+    // anyway, so this changes no behaviour — it just stops us asking for key
+    // distribution we have deliberately turned off.
+    preShareKey: false,
+  );
+
+  @protected
+  Future<CallToken> requestToken(Room room, RtcFocus focus) =>
+      _tokens.requestToken(
+        client: client,
+        roomId: room.id,
+        focusServiceUrl: focus.serviceUrl,
+      );
+
+  Future<CallToken> _join(Room room, int attempt) async {
+    // A leave still finishing was waited for before this ran, and a hangup can
+    // land inside that wait like any other.
+    await _stopIfSuperseded(attempt);
+    final f = await resolveFocus();
+    // Before anything is constructed: discovery is a network round-trip, and
+    // both the account and the user's mind can change inside it.
+    await _stopIfSuperseded(attempt);
     if (f == null) {
       throw StateError('this homeserver advertises no MatrixRTC focus');
     }
 
-    // Room-scoped call id: one direct message room holds at most one live call, and
-    // both clients derive the same id without coordinating.
-    final session = await voip.fetchOrCreateGroupCall(
-      room.id,
-      room,
-      f.backendForRoom(room.id),
-      'm.call',
-      'm.room',
-      // Defaults to true, which pre-generates and broadcasts an E2EE key before the
-      // call even starts. With e2eeEnabled false the SDK returns early from that work
-      // anyway, so this changes no behaviour — it just stops us asking for key
-      // distribution we have deliberately turned off.
-      preShareKey: false,
-    );
+    final session = await fetchSession(room, f);
+    // BEFORE the token is asked for, not after. A join nobody wants any more
+    // must not spend a choreographer request on itself, and — the reason this
+    // moved — the session it is holding has to be handed back on a path that
+    // does not depend on that request ever answering.
+    await _stopIfSuperseded(attempt, session: session);
 
-    final grant = await _tokens.requestToken(
-      client: client,
-      roomId: room.id,
-      focusServiceUrl: f.serviceUrl,
-    );
-
-    final isCurrent = identical(session, _current);
-    if (_disposed || attempt != _joinAttempt) {
-      // The account went away while this join was in flight, or the join itself
-      // was given up on. Storing the session now would advertise a membership
-      // that nothing is left to retract, and it would stand until it expired
-      // minutes later.
-      if (releasesAbandonedSession(
-        joinInFlight: _joining,
-        isCurrent: isCurrent,
-      )) {
-        try {
-          await session.leave();
-        } catch (e, st) {
-          Logs().w('Could not leave a call abandoned during teardown', e, st);
-        }
-      }
-      throw StateError('the call was abandoned while joining');
+    final CallToken grant;
+    try {
+      grant = await requestToken(room, f);
+    } catch (_) {
+      // A token failure is the caller's to hear, but a join abandoned while it
+      // was in flight still owns a session, and the throw would carry straight
+      // past the check below and leave it advertised. Asked here so the release
+      // happens on the failing path too; when nothing superseded this join the
+      // guard returns and the original failure goes on out.
+      await _stopIfSuperseded(attempt, session: session);
+      rethrow;
     }
+    await _stopIfSuperseded(attempt, session: session);
 
     _current = session;
     return grant;
@@ -1415,10 +1572,10 @@ class CallService {
     // would wait for ever too. So past the window the enter goes ahead: the rare
     // cost is that stale leave landing late and retracting this membership,
     // which is recoverable, where a call held open for ever is not.
-    final pendingLeave = _leaving;
+    final pendingLeave = _pendingLeaves;
     if (pendingLeave != null) {
       _stopIfDisposed();
-      Logs().i('Holding the membership until the last leave finishes');
+      Logs().i('Holding the membership until every pending leave finishes');
       try {
         await pendingLeave.timeout(_leaveWithin);
       } catch (_) {
@@ -1426,6 +1583,25 @@ class CallService {
         // proceed. Its retract path owns any failure of the leave itself.
       }
       _stopIfDisposed();
+      // AN AWAIT IS A PLACE A DECISION CAN BE SUPERSEDED. The session was read
+      // before that wait, and the wait is bounded by seconds — long enough for
+      // a hangup to run a whole retract inside it. Entering afterwards would
+      // publish a membership on a call the service is no longer tracking, and
+      // the next retract would find nothing to leave and report a success it
+      // had not achieved: the peer keeps seeing us in a call we have left,
+      // until it expires minutes later.
+      //
+      // What is re-established is not just WHICH session this is but whether it
+      // is still WANTED; see [announceStillHolds] for why identity alone says
+      // less than it looks like it says.
+      if (!announceStillHolds(
+        isCurrent: identical(_current, session),
+        retractInFlight: _retracting != null,
+        membershipAbandoned: _abandonedMembership,
+      )) {
+        Logs().i('The call ended while its membership was waiting to be sent');
+        return null;
+      }
     }
 
     // An enter already in flight is waited for, never doubled. The signal for
@@ -1475,6 +1651,37 @@ class CallService {
     return _awaitMembershipEventId(session.room);
   }
 
+  /// Whether the call [announce] read before waiting is still one this service
+  /// wants a membership published for.
+  ///
+  /// Identity is necessary and NOT sufficient, because [_current] outlives the
+  /// decision to leave: [retract] captures the session, issues the leave, and
+  /// clears [_current] only in a `finally` once that leave has finished — and
+  /// when the leave was given up on it does not clear it at all, which is what
+  /// leaves a later retry something to retry WITH. So for the whole time this
+  /// call's own hangup is leaving the session, and afterwards if that hangup
+  /// failed, an identity check sees the session it read and says yes.
+  ///
+  /// Entering there puts an `enter()` beside a `leave()` for the SAME session,
+  /// and whichever lands last decides what the peer sees: a membership
+  /// resurrected after a hangup the learner watched succeed, or a fresh
+  /// membership taken straight back off them.
+  ///
+  /// The other way a session stops being current — a join abandoned in
+  /// [_stopIfSuperseded] — is covered by identity alone: that path leaves a
+  /// session only when it is NOT the current one (see
+  /// [releasesAbandonedSession]), so it never leaves the one an announce holds.
+  ///
+  /// [membershipAbandoned] cannot be a leftover from an earlier call: [join]
+  /// discards an abandoned membership, with the session it belongs to, before
+  /// any new call can be made.
+  @visibleForTesting
+  static bool announceStillHolds({
+    required bool isCurrent,
+    required bool retractInFlight,
+    required bool membershipAbandoned,
+  }) => isCurrent && !retractInFlight && !membershipAbandoned;
+
   /// Our own membership's event id, waiting briefly for the state write to echo.
   ///
   /// `enter()` writes the membership but does not return its id, and the id only
@@ -1513,7 +1720,26 @@ class CallService {
   /// lock the learner out of calling over a failure they cannot see. But the
   /// caller is told, because silently reporting success meant the one retry that
   /// could have helped never happened.
-  Future<bool> retract() => _retracting ??= () async {
+  ///
+  /// A MEMOIZED IN-FLIGHT FUTURE IS CLEARED BY THE CODE THAT ASSIGNS IT, NEVER
+  /// FROM INSIDE THE BODY IT MEMOIZES. An async body runs synchronously until
+  /// its first await, and this one has a path that returns without ever
+  /// awaiting -- there is nothing to retract. On that path the body, its
+  /// `finally` included, finishes BEFORE `??=` has assigned anything: the clear
+  /// ran against a latch that was still null, and the finished future was
+  /// latched afterwards with nothing left able to clear it. Every later retract
+  /// then answered from it -- true, immediately, having left nothing -- so the
+  /// membership stayed advertised, [_current] was never released, and this
+  /// account read as busy for the rest of its life: every call refused, every
+  /// ring auto-declined.
+  ///
+  /// `whenComplete` on the assigning side cannot lose that race. The callback
+  /// is scheduled as a microtask, which cannot run before the assignment
+  /// expression it is part of has finished.
+  Future<bool> retract() =>
+      _retracting ??= _retract().whenComplete(() => _retracting = null);
+
+  Future<bool> _retract() async {
     final session = _current;
     try {
       if (session == null) return !_abandonedMembership;
@@ -1535,14 +1761,9 @@ class CallService {
           // and a leave that never came back held them open for as long as it
           // hung — in a call the learner had already left.
           //
-          // Kept, not dropped: giving up waiting does not stop it. The session
-          // is fetched by ROOM, so a redial lands on this same object, and a
-          // leave that finally answered after that would retract the membership
-          // the NEW call had just published — the peer would watch us walk out
-          // of a call we had only just joined.
-          final leaving = session.leave();
-          _setPendingLeave(leaving);
-          await leaving.timeout(_leaveWithin);
+          // Kept, not dropped: giving up waiting does not stop it, and [_leave]
+          // is what leaves the next call in this room something to wait for.
+          await _leave(session).timeout(_leaveWithin);
           _abandonedMembership = false;
           return true;
         } on TimeoutException catch (e, s) {
@@ -1574,19 +1795,46 @@ class CallService {
       // forever would refuse every later call over a failure the learner can
       // neither see nor act on.
       Logs().w('Gave up retracting the membership; it will expire');
-      _abandonedMembership = true;
+      // Only while [_current] is still the session THIS retract captured, for
+      // the reason spelled out in the `finally` below: a retract sleeps
+      // between its retries, and a redial landing in that window is let past
+      // join's guard by this very flag. Written unconditionally, a retract
+      // that gives up AFTER that redial says "abandoned" about a call that is
+      // up and being spoken on -- and the flag is service-wide, so `isBusy`
+      // reads false on a live call (a second incoming call can interrupt it)
+      // and the next `join` discards it as abandoned. The flag describes one
+      // session; it is not ours to write once that session is not the one in
+      // hand.
+      //
+      // Only the SET is guarded, deliberately. Clearing this flag is safe from
+      // any caller -- it can only ever free a call that would otherwise be
+      // wrongly refused. Guarding the clear the same way would strand a stale
+      // `true` whenever [_current] had already moved on, and a stale `true`
+      // against a live session is precisely the state that makes `isBusy` read
+      // false on a call that is up.
+      if (identical(_current, session)) _abandonedMembership = true;
       return false;
     } finally {
       // Released only when the membership was actually taken back. Keeping a
       // session whose leave failed is what gives a later attempt something to
       // retry WITH; a new call is not blocked by it, because join discards it.
-      if (!_abandonedMembership) {
+      //
+      // And only while [_current] is still the session THIS retract captured.
+      // Identity is necessary here for the same reason [announceStillHolds]
+      // needs more than identity on the other side: a retract outlives the
+      // moment it read [_current]. It sleeps between its retries, and a redial
+      // landing in that window is let past join's guard by the very abandoned
+      // membership this attempt is retrying — so by the time this runs,
+      // [_current] can be a call in another room that is up and being spoken
+      // on. Clearing it there dropped that call out of the service: isBusy went
+      // false with the call still running, a second incoming call could
+      // interrupt it, and nothing was left able to retract it.
+      if (!_abandonedMembership && identical(_current, session)) {
         _current = null;
         _claimedRoomId = null;
       }
-      _retracting = null;
     }
-  }();
+  }
 
   /// Finishes a `leave()` that wrote the membership away and then threw.
   ///
