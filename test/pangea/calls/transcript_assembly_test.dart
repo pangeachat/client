@@ -18,6 +18,7 @@ TranscriptCandidate _candidate(
   ),
   ClockAnchor? anchor,
   bool positionsMarked = false,
+  String? deviceId,
 }) => TranscriptCandidate(
   senderId: sender,
   originServerTs: ts,
@@ -25,6 +26,7 @@ TranscriptCandidate _candidate(
   accounting: accounting,
   clockAnchor: anchor,
   positionsMarked: positionsMarked,
+  deviceId: deviceId,
 );
 
 /// A device whose clock ran [aheadMs] ahead of the SFU's at join.
@@ -2160,6 +2162,654 @@ void main() {
       final half = _halfFor(transcript, alice);
       expect(half.audioSuppressedLocally, isFalse);
       expect(half.issue, HalfIssue.audioHeldByAnotherDevice);
+    });
+  });
+
+  group('two devices of one account', () {
+    // The defect this whole change exists for. Both devices answered, both
+    // recorded, and both wrote -- and keyed by sender alone the reader kept
+    // ONE of them and presented it, with its own accounting, as the whole of
+    // what that person said.
+
+    test('both halves are kept, not one', () {
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, texts: ['hola'], deviceId: 'ONE'),
+          _candidate(alice, texts: ['que tal'], deviceId: 'TWO'),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(transcript.halves, hasLength(1));
+      expect(_halfFor(transcript, alice).segments.map((s) => s.text), [
+        'hola',
+        'que tal',
+      ]);
+    });
+
+    test('the shorter half is NOT discarded by the duplicate rule', () {
+      // Exactly the loss, stated in the shape it took: the rule that chooses
+      // between two copies of ONE recording read a second DEVICE's half as a
+      // copy and threw away every word only it had heard.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, texts: ['hola que tal amigo mio'], deviceId: 'ONE'),
+          _candidate(alice, texts: ['si'], deviceId: 'TWO'),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(
+        _halfFor(transcript, alice).segments.map((s) => s.text),
+        contains('si'),
+      );
+    });
+
+    test('within ONE device the duplicate rule still keeps one', () {
+      // The rule is not retired, only scoped. A resend, or a buggy writer's
+      // empty half landing before the real one, is still two copies of one
+      // recording and still resolves to one.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, texts: const [], ts: 100, deviceId: 'ONE'),
+          _candidate(
+            alice,
+            texts: ['hola', 'que tal'],
+            ts: 900,
+            deviceId: 'ONE',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).segments.map((s) => s.text), [
+        'hola',
+        'que tal',
+      ]);
+      expect(_halfFor(transcript, alice).deviceCount, 1);
+    });
+
+    test('halves that name no device are ONE device between them', () {
+      // Stated in the design and it is the rollout case: two halves written by
+      // two OLD builds carry no device field, key alike, and one is still
+      // kept -- exactly as before this change. Nothing here reaches a call
+      // where both devices are on an old build, and pretending otherwise would
+      // turn every old half into its own device and invent duplicates in the
+      // rooms that already exist.
+      // The two are DISTINGUISHABLE and the same length, so the tie-break
+      // decides and the assertion cannot pass on either half arbitrarily.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, texts: ['antes'], ts: 100),
+          _candidate(alice, texts: ['tarde'], ts: 900),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.segments.map((s) => s.text), ['antes']);
+      expect(half.deviceCount, 1);
+      expect(half.issue, HalfIssue.none);
+    });
+
+    test('one old build and one updated one keeps BOTH', () {
+      // The mixed-version case, which is the one an updated writer reaches.
+      // The old half keys to the absent bucket and the new half to its own
+      // device, so neither displaces the other.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, texts: ['de la vieja'], ts: 100),
+          _candidate(alice, texts: ['de la nueva'], ts: 900, deviceId: 'TWO'),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.segments.map((s) => s.text), ['de la vieja', 'de la nueva']);
+      expect(half.deviceCount, 2);
+    });
+
+    test('speech both devices heard is KEPT twice, never guessed away', () {
+      // A stretch both devices were recording is in both halves, and this
+      // reader does not try to tell that apart from a learner saying something
+      // twice. It cannot: the words are identical either way, and the wrong
+      // guess deletes speech somebody actually said. The duplicate is kept and
+      // DECLARED -- `deviceCount` is what says it is there.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: [_placed('si', 1000)],
+            anchor: _skewed(0),
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            segments: [_placed('si', 1000)],
+            anchor: _skewed(0),
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.segments.map((s) => s.text), ['si', 'si']);
+      expect(half.deviceCount, 2);
+      expect(half.issue, HalfIssue.assembledFromSeveralDevices);
+    });
+
+    test('a merged half never reads as one device clean record', () {
+      // Both contributors are clean, so every rule about completeness is
+      // satisfied -- and the half is still not what `HalfIssue.none` says it
+      // is, which is one device's record of everything that speaker said.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, deviceId: 'ONE'),
+          _candidate(alice, deviceId: 'TWO'),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(
+        _halfFor(transcript, alice).issue,
+        HalfIssue.assembledFromSeveralDevices,
+      );
+    });
+
+    test('and it does not displace a cause a learner is shown', () {
+      // The one placement decision in the ladder. The empty-half note asks
+      // `issue` for the writer's own failures, so a multi-device fact reported
+      // ahead of one of those would replace a specific true cause with a
+      // general one in front of a learner.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: const [],
+            accounting: const HalfAccounting(
+              chunksCaptured: 0,
+              chunksTranscribed: 0,
+              captureRefused: true,
+              declared: true,
+            ),
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            segments: const [],
+            accounting: const HalfAccounting(
+              chunksCaptured: 0,
+              chunksTranscribed: 0,
+              captureRefused: true,
+              declared: true,
+            ),
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.deviceCount, 2);
+      expect(half.issue, HalfIssue.microphoneRefused);
+    });
+
+    test('a sender who wrote nothing reports no devices, not one', () {
+      expect(
+        _halfFor(
+          assembleTranscript(
+            candidates: [_candidate(alice)],
+            expectedSenders: [alice, bob],
+          ),
+          bob,
+        ).deviceCount,
+        0,
+      );
+    });
+  });
+
+  group('ordering two devices against each other', () {
+    // ONE sorts before TWO, so ONE's clock is the one the merged half is
+    // expressed on. The device order is fixed rather than chosen by content,
+    // which is what makes two reads of a call assemble the same half.
+
+    test('turns interleave on the clocks both devices anchored', () {
+      // TWO's clock runs five seconds ahead of ONE's, so its raw stamps sort
+      // after everything ONE wrote. Corrected by the difference of the two
+      // anchors, its turns fall between them -- which is where they were said.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: [_placed('uno', 1000), _placed('tres', 3000)],
+            anchor: _skewed(0),
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            segments: [_placed('dos', 7000), _placed('cuatro', 9000)],
+            anchor: _skewed(5000),
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.segments.map((s) => s.text), [
+        'uno',
+        'dos',
+        'tres',
+        'cuatro',
+      ]);
+      expect(half.segments.map((s) => s.atMs), [1000, 2000, 3000, 4000]);
+      expect(half.clockAnchor, _skewed(0));
+      expect(half.timelineEligible, isTrue);
+    });
+
+    test('and the merged half still lands on the SFU clock beside the peer', () {
+      // One anchor describing every position in the half is what keeps the
+      // rest of the file working: a single constant still moves the whole half
+      // onto the clock both speakers observed.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: [_placed('uno', 31000)],
+            anchor: _skewed(30000),
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            segments: [_placed('dos', 42000)],
+            anchor: _skewed(40000),
+            deviceId: 'TWO',
+          ),
+          _candidate(
+            bob,
+            segments: [_placed('y yo', 1500)],
+            anchor: _skewed(0),
+          ),
+        ],
+        expectedSenders: [alice, bob],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(transcript.clocksReconcilable, isTrue);
+      final shift = transcript.clockShiftFor(half);
+      expect(shift, 30000);
+      // Both of alice's devices, on the SFU's clock: 1000ms and 2000ms in.
+      expect(half.segments.map((s) => s.atMs! - shift), [1000, 2000]);
+    });
+
+    test('a device that wrote nothing does not veto the ordering', () {
+      // An empty half places nothing, so its silence about a clock cannot
+      // decide whether the speaking halves can be interleaved -- the carve-out
+      // `clocksReconcilable` already makes one level up.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: [_placed('uno', 1000)],
+            anchor: _skewed(0),
+            deviceId: 'ONE',
+          ),
+          _candidate(alice, segments: const [], deviceId: 'TWO'),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.clockAnchor, _skewed(0));
+      expect(half.positionsMarked, isFalse);
+      expect(half.deviceCount, 2);
+    });
+
+    test('an unanchored second device is laid end to end, and SAYS so', () {
+      // Two clocks that were never compared cannot be interleaved, and no
+      // second ordering scheme is invented to do it anyway. Every word is
+      // kept, none is reordered within its own device, and the merged half
+      // carries no anchor and marks nothing -- which is what stops a time
+      // being printed over an order this reader could not establish.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: [_placed('uno', 1000)],
+            anchor: _skewed(0),
+            positionsMarked: true,
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            segments: [_placed('dos', 500)],
+            positionsMarked: true,
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.segments.map((s) => s.text), ['uno', 'dos']);
+      expect(half.clockAnchor, isNull);
+      expect(transcript.clocksReconcilable, isFalse);
+
+      // And this is why the marker has to go as well as the anchor. Alice is
+      // the only speaker here, so `turnsShareOneClock` says yes on the grounds
+      // that there is no second half to disagree with -- true of one device
+      // and false of the two this half was assembled from. The unmarked
+      // positions are the only thing left between the reader and an `m:ss`
+      // printed over an order this reader could not establish.
+      expect(transcript.turnsShareOneClock, isTrue);
+      expect(half.positionsMarked, isFalse);
+    });
+
+    test('an unplaced segment anywhere stops the interleave', () {
+      // A segment with no position cannot be ordered against the other
+      // device's, and interleaving the rest around it would put a real turn
+      // somewhere nothing supports.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: [_placed('uno', 1000)],
+            anchor: _skewed(0),
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            segments: const [TranscriptSegment('dos')],
+            anchor: _skewed(5000),
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.segments.map((s) => s.text), ['uno', 'dos']);
+      expect(half.clockAnchor, isNull);
+      expect(half.timelineEligible, isFalse);
+    });
+
+    test('a shift that leaves the range is refused, not adopted', () {
+      // Anchors come off room content. One at either end of the ceiling can
+      // move a position before the epoch, and a merge that took the number
+      // would order two speakers by it.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: [_placed('uno', 1000)],
+            anchor: ClockAnchor(sfuMs: _sfuJoin, deviceMs: 1),
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            segments: [_placed('dos', 2000)],
+            anchor: ClockAnchor(sfuMs: 1, deviceMs: _sfuJoin),
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.segments.map((s) => s.text), ['uno', 'dos']);
+      expect(half.segments.map((s) => s.atMs), [1000, 2000]);
+      expect(half.clockAnchor, isNull);
+    });
+
+    test('the marker survives only if EVERY speaking device made it', () {
+      // The same argument `HalfAccounting.declared` makes about completeness:
+      // one writer that never said which of its positions are exact leaves
+      // segments in this half nobody vouched for.
+      final marked = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: [_placed('uno', 1000)],
+            anchor: _skewed(0),
+            positionsMarked: true,
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            segments: [_placed('dos', 2000)],
+            anchor: _skewed(0),
+            positionsMarked: true,
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+      expect(_halfFor(marked, alice).positionsMarked, isTrue);
+
+      final mixed = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: [_placed('uno', 1000)],
+            anchor: _skewed(0),
+            positionsMarked: true,
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            segments: [_placed('dos', 2000)],
+            anchor: _skewed(0),
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+      expect(_halfFor(mixed, alice).positionsMarked, isFalse);
+    });
+  });
+
+  group('what several devices accounting adds up to', () {
+    HalfAccounting declared({
+      int captured = 2,
+      int transcribed = 2,
+      int lost = 0,
+      bool refused = false,
+      bool drained = true,
+      bool declared = true,
+    }) => HalfAccounting(
+      chunksCaptured: captured,
+      chunksTranscribed: transcribed,
+      chunksLost: lost,
+      captureRefused: refused,
+      drainComplete: drained,
+      declared: declared,
+    );
+
+    test('the counts are summed, so a gap on one device is a gap', () {
+      // Every count is non-zero on BOTH devices, so a merge that took one
+      // device's number instead of adding them cannot land on the same answer
+      // by accident.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            accounting: declared(captured: 5, transcribed: 4, lost: 1),
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            accounting: declared(captured: 3, transcribed: 1, lost: 2),
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.accounting.chunksCaptured, 8);
+      expect(half.accounting.chunksTranscribed, 5);
+      expect(half.accounting.chunksLost, 3);
+      expect(half.state, HalfState.incomplete);
+      expect(half.issue, HalfIssue.audioLost);
+    });
+
+    test('one writer that declared nothing voids the merged declaration', () {
+      // A merged half may only carry the claim EVERY contributor made.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, accounting: declared(), deviceId: 'ONE'),
+          _candidate(
+            alice,
+            accounting: const HalfAccounting(),
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.accounting.declared, isFalse);
+      expect(half.state, HalfState.incomplete);
+      expect(half.issue, HalfIssue.writerSaidNothing);
+    });
+
+    test('one abandoned drain leaves the merged record short', () {
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(alice, accounting: declared(), deviceId: 'ONE'),
+          _candidate(
+            alice,
+            accounting: declared(drained: false),
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).issue, HalfIssue.drainAbandoned);
+    });
+
+    test('a refused microphone on ONE device is not the account answer', () {
+      // The one field where OR would be a confident, specific, wrong answer.
+      // `captureRefused` exists to say an empty half is a fact about US rather
+      // than about the speaker, and a half full of words from the other device
+      // is not that fact -- reporting it would blame a microphone for a
+      // recording that happened.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            texts: ['hola que tal'],
+            accounting: declared(),
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            segments: const [],
+            accounting: declared(captured: 0, transcribed: 0, refused: true),
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.accounting.captureRefused, isFalse);
+      expect(half.issue, isNot(HalfIssue.microphoneRefused));
+      expect(half.segments.map((s) => s.text), ['hola que tal']);
+    });
+  });
+
+  group('more devices than one half may be assembled from', () {
+    List<TranscriptCandidate> devices(int count) => [
+      for (var i = 0; i < count; i++)
+        _candidate(
+          alice,
+          // Longer text on the later devices, so "kept the fullest" and "kept
+          // the first" are distinguishable answers.
+          texts: [List.filled(i + 1, 'hola').join(' ')],
+          deviceId: 'DEVICE${i.toString().padLeft(3, '0')}',
+        ),
+    ];
+
+    test('a hostile sender cannot make one half unbounded', () {
+      final wrote = kMaxDevicesPerSender + 3;
+      final transcript = assembleTranscript(
+        candidates: devices(wrote),
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      // Stated against what was WRITTEN, not against the ceiling: an assertion
+      // that reads the same constant the ceiling is set from cannot tell a
+      // ceiling from no ceiling at all.
+      expect(half.segments.length, lessThan(wrote));
+      expect(half.segments, hasLength(kMaxDevicesPerSender));
+    });
+
+    test('what it stopped at is stated, not silent', () {
+      final transcript = assembleTranscript(
+        candidates: devices(kMaxDevicesPerSender + 3),
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      // The count of devices that WROTE, whatever the ceiling then used.
+      expect(half.deviceCount, kMaxDevicesPerSender + 3);
+      expect(half.accounting.readerShortened, isTrue);
+      expect(half.state, HalfState.incomplete);
+      expect(half.issue, HalfIssue.tooLongToRead);
+    });
+
+    test('and it keeps the halves carrying the most speech', () {
+      final transcript = assembleTranscript(
+        candidates: devices(kMaxDevicesPerSender + 3),
+        expectedSenders: [alice],
+      );
+
+      // The three shortest are the ones turned away, and what is kept is still
+      // in device order rather than in order of size.
+      final texts = _halfFor(transcript, alice).segments.map((s) => s.text);
+      expect(texts.first.split(' '), hasLength(4));
+      expect(texts.last.split(' '), hasLength(kMaxDevicesPerSender + 3));
+    });
+
+    test('an equal-length tie is settled by the device, not by the sort', () {
+      // Which half of a learner's speech is shown is not a thing to leave to a
+      // sort implementation. `List.sort` is not documented as stable, so with
+      // every half the same length the comparator has to settle it -- and it
+      // settles it on the device, which is fixed.
+      final transcript = assembleTranscript(
+        candidates: [
+          for (var i = 0; i < kMaxDevicesPerSender + 2; i++)
+            _candidate(
+              alice,
+              // Same length, different words, so the kept set is identifiable
+              // and the length cannot be what chose it.
+              texts: ['dice$i'],
+              deviceId: 'DEVICE${i.toString().padLeft(3, '0')}',
+            ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      expect(_halfFor(transcript, alice).segments.map((s) => s.text), [
+        for (var i = 0; i < kMaxDevicesPerSender; i++) 'dice$i',
+      ]);
+    });
+
+    test('the ceiling does not fire on the case it exists for', () {
+      // Two devices is the shape this feature is about, and a ceiling that
+      // bit there would drop the half it was added to preserve.
+      final transcript = assembleTranscript(
+        candidates: devices(2),
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.segments, hasLength(2));
+      expect(half.accounting.readerShortened, isFalse);
     });
   });
 }

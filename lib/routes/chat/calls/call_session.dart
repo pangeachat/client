@@ -226,6 +226,13 @@ class CallSession extends ChangeNotifier {
                 ),
                 callKey: callKey,
                 senderId: room.client.userID ?? '',
+                // The ACCOUNT above, and the DEVICE here, because they answer
+                // two different questions and one of them used to answer both.
+                // Two of a learner's devices in one call write two halves of
+                // what that person said; keyed by the account alone those two
+                // halves are indistinguishable, and the reader keeps one and
+                // presents it as the whole of it.
+                deviceId: room.client.deviceID,
                 segments: segments,
                 chunksCaptured: chunksCaptured,
                 chunksTranscribed: chunksTranscribed,

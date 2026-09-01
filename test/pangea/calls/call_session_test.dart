@@ -272,6 +272,14 @@ class _RecordingRoom extends matrix.Room {
   final List<Map<String, dynamic>> sent = [];
   final List<String> sentTypes = [];
 
+  /// The transaction id each event was sent under, positionally beside [sent].
+  ///
+  /// Recorded because the id is what stops the server collapsing two events
+  /// into one, and nothing else in this suite can see it: a transcript half
+  /// whose id is not scoped to the writing device is a half the homeserver may
+  /// treat as a resend of the learner's OTHER device's.
+  final List<String?> sentTxids = [];
+
   /// Only the call CARDS.
   ///
   /// A session writes more than one kind of event -- the card the conversation
@@ -296,6 +304,7 @@ class _RecordingRoom extends matrix.Room {
   }) async {
     sent.add(content);
     sentTypes.add(type);
+    sentTxids.add(txid);
     return '\$card';
   }
 }
@@ -484,6 +493,25 @@ void main() {
       expect(
         CallTranscriptContent.fromJson(written)!.clockAnchor?.offsetMs,
         30000,
+      );
+
+      // And the WRITING DEVICE, on the same terms. This is the other seam only
+      // a live session can prove: the sender is the account, and handing the
+      // account where the device belongs is exactly the defect -- two of a
+      // learner's devices then write two halves nothing can tell apart, and the
+      // reader keeps one and presents it as the whole of what they said.
+      expect(client.deviceID, isNotNull);
+      expect(written['device_id'], client.deviceID);
+
+      // Right down to the transaction id, which is what stops the homeserver
+      // reading the second device's half as a resend of the first's.
+      expect(
+        room.sentTxids[index],
+        CallTranscriptContent.txnId(
+          r'$anchor:server',
+          client.userID!,
+          client.deviceID,
+        ),
       );
     },
   );

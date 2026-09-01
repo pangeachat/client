@@ -9,6 +9,7 @@ import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 
 const _callKey = '\$membership:example.com';
 const _sender = '@alice:example.com';
+const _device = 'PHONE';
 
 /// Records what would have gone to the homeserver.
 class _Sent {
@@ -38,11 +39,13 @@ Future<bool> _write(
   bool encrypted = false,
   String? langCode = 'es',
   ClockAnchor? clockAnchor,
+  String? deviceId = _device,
   int maxBytes = kMaxHalfBytes,
 }) => writeCallTranscript(
   send: sent.call,
   callKey: callKey,
   senderId: _sender,
+  deviceId: deviceId,
   segments: [for (final t in texts) TranscriptSegment(t)],
   chunksCaptured: chunksCaptured,
   chunksTranscribed: chunksTranscribed,
@@ -114,7 +117,33 @@ void main() {
       });
       expect(
         sent.txnIds.single,
-        CallTranscriptContent.txnId(_callKey, _sender),
+        CallTranscriptContent.txnId(_callKey, _sender, _device),
+      );
+    });
+
+    test('the writing device reaches the wire and comes back', () async {
+      // The seam the reader's grouping rests on. Without it every half this
+      // app writes is indistinguishable from the learner's other device's, and
+      // the reader keeps one of the two -- which is the defect, reached from
+      // the writer instead of the reader.
+      final sent = _Sent();
+      await _write(sent);
+
+      expect(sent.only['device_id'], _device);
+      expect(CallTranscriptContent.fromJson(sent.only)!.deviceId, _device);
+    });
+
+    test('a writer that cannot name its device says nothing instead', () async {
+      // Absent is the honest answer for a client that does not know, and it is
+      // the same absence an older build leaves. Writing a placeholder would be
+      // a device id that groups every such half together under a name.
+      final sent = _Sent();
+      await _write(sent, deviceId: null);
+
+      expect(sent.only.containsKey('device_id'), isFalse);
+      expect(
+        sent.txnIds.single,
+        CallTranscriptContent.txnId(_callKey, _sender, null),
       );
     });
 
@@ -408,6 +437,7 @@ void main() {
         send: sent.call,
         callKey: _callKey,
         senderId: _sender,
+        deviceId: _device,
         segments: const [
           TranscriptSegment('hola', atMs: 1700000000000),
           TranscriptSegment('que tal', atMs: 1700000001000, spanMs: 44000),
@@ -438,6 +468,7 @@ void main() {
         send: sent.call,
         callKey: _callKey,
         senderId: _sender,
+        deviceId: _device,
         segments: [
           for (var i = 0; i < 400; i++)
             TranscriptSegment(

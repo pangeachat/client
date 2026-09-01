@@ -778,6 +778,19 @@ enum HalfIssue {
   /// can be vouched for. An older or foreign client.
   timesUnstated,
 
+  /// This account wrote halves from more than one DEVICE, and what is shown
+  /// was assembled from all of them.
+  ///
+  /// Not a failure, and not a gap: every word both devices heard is here. What
+  /// it says is that this is not one device's record, so a stretch both
+  /// devices captured appears twice — see [TranscriptHalf.deviceCount] for why
+  /// the reader keeps the duplicate rather than guessing which repetition was
+  /// the speaker's own. It is reported so that the transcript never reads as a
+  /// clean single-device record when it is not one, and so that duplicate
+  /// credit is COUNTABLE: `transcript_repo` logs the count for every half,
+  /// whatever [issue] ends up naming.
+  assembledFromSeveralDevices,
+
   /// No half from this speaker at all, on a read that reached the end.
   neverWritten,
 
@@ -864,6 +877,27 @@ class TranscriptHalf {
   /// fact and already has the same kind of tie-break.
   final bool positionsMarked;
 
+  /// How many of this sender's DEVICES wrote a half of this call.
+  ///
+  /// One in the ordinary case, zero when nothing was found, and more than one
+  /// when two of a learner's devices were both in the call and both recorded.
+  /// Halves that name no device count as one between them — see
+  /// `CallTranscriptContent.deviceId` for why absence is a single key rather
+  /// than a device apiece.
+  ///
+  /// The count of devices that WROTE, not of the halves that were assembled: a
+  /// read that stopped at [kMaxDevicesPerSender] still says how many it found,
+  /// and says separately, through [HalfAccounting.readerShortened], that it did
+  /// not use them all.
+  ///
+  /// It is here because the merged half must not read as one device's clean
+  /// record. Two devices' halves of one call overlap wherever both were
+  /// recording, so a stretch both heard appears twice, and NOTHING here tries
+  /// to tell that apart from a learner saying something twice — the words are
+  /// identical in both cases and the wrong guess deletes speech somebody
+  /// actually said. The duplicate is kept and declared instead of guessed at.
+  final int deviceCount;
+
   const TranscriptHalf({
     required this.senderId,
     required this.segments,
@@ -873,6 +907,7 @@ class TranscriptHalf {
     required this.participantsWereAGuess,
     this.clockAnchor,
     this.positionsMarked = false,
+    this.deviceCount = 1,
     required this.arrival,
   });
 
@@ -950,6 +985,16 @@ class TranscriptHalf {
     // name who was on the call is true but not useful next to "the microphone
     // never opened" or "two chunks of audio were lost".
     if (participantsWereAGuess) return HalfIssue.participantsUnknown;
+
+    // BELOW every cause above, deliberately, and it is the one placement
+    // decision in this ladder that is about a SENTENCE rather than about
+    // ranking. The empty-half note in `transcript_view` asks this getter for
+    // the writer's own failures -- a refused microphone, lost audio, a half
+    // too long to send -- so a multi-device fact reported ahead of one of those
+    // would replace a specific true cause with a general one, in front of a
+    // learner. It cannot be hidden by sitting here: `transcript_repo` prints
+    // the count for every half, whatever this returns.
+    if (deviceCount > 1) return HalfIssue.assembledFromSeveralDevices;
 
     // After all of those, because a half that lost audio or never opened a
     // microphone has a bigger problem than the resolution of its clock.
@@ -1032,6 +1077,12 @@ class TranscriptHalf {
 /// duplicates.
 class TranscriptCandidate {
   final String senderId;
+
+  /// Which of the sender's devices wrote this event, or null when it did not
+  /// say. See `CallTranscriptContent.deviceId`: absence is ONE key shared by
+  /// every half that did not say, never a device of its own.
+  final String? deviceId;
+
   final int originServerTs;
   final List<TranscriptSegment> segments;
   final HalfAccounting accounting;
@@ -1050,6 +1101,7 @@ class TranscriptCandidate {
     required this.originServerTs,
     required this.segments,
     required this.accounting,
+    this.deviceId,
     this.clockAnchor,
     this.positionsMarked = false,
   });
@@ -1193,12 +1245,376 @@ class CallTranscript {
       clocksReconcilable ? (half.clockAnchor?.offsetMs ?? 0) : 0;
 }
 
+/// How many of one sender's devices a single half may be assembled from.
+///
+/// A ceiling on untrusted content, not a statement about how many devices a
+/// learner may own. Every half is bounded by
+/// `CallTranscriptContent.maxSegments` and `maxTotalChars` as it is parsed, and
+/// keying by sender alone kept exactly one of them — so one hostile room member
+/// could not make the screen draw more than one half's worth of widgets however
+/// many events they wrote. Keying by DEVICE removes that bound: a peer writing
+/// two hundred events under two hundred invented device ids would otherwise
+/// assemble into one half two hundred times the size, and the transcript dialog
+/// builds every segment eagerly.
+///
+/// Four, because the case this feature exists for is two, three is a learner
+/// with a tablet, and beyond that the read is a ceiling rather than a call. What
+/// happens past it is stated rather than silent: the halves carrying the most
+/// speech are assembled, [HalfAccounting.readerShortened] says the reader
+/// dropped something, and [TranscriptHalf.deviceCount] still reports how many
+/// devices were FOUND.
+const kMaxDevicesPerSender = 4;
+
+/// One sender's halves, once every device that wrote one has been taken into
+/// account. The shape [assembleTranscript] needs to build a [TranscriptHalf].
+class _AssembledHalf {
+  final List<TranscriptSegment> segments;
+  final HalfAccounting accounting;
+  final ClockAnchor? clockAnchor;
+  final bool positionsMarked;
+
+  /// How many devices WROTE, including any the ceiling above turned away.
+  final int deviceCount;
+
+  const _AssembledHalf({
+    required this.segments,
+    required this.accounting,
+    required this.clockAnchor,
+    required this.positionsMarked,
+    required this.deviceCount,
+  });
+}
+
+/// Adds two counts without letting the total wrap.
+///
+/// Counts come off untrusted content, where `chunks_lost` may be any
+/// non-negative int the JSON could hold. Two of those summed can pass 2^63 and
+/// come back NEGATIVE, and a negative count reads as zero to every rule that
+/// asks whether a half admits a gap — so a half that lost audio would assemble
+/// as a clean record. Saturating is a wrong number; wrapping is a wrong answer.
+int _saturatingSum(int a, int b) {
+  const ceiling = 0x7FFFFFFFFFFFFFFF;
+  return a > ceiling - b ? ceiling : a + b;
+}
+
+/// What several devices' accountings add up to for one speaker.
+///
+/// Each field composes the way a claim about SEVERAL devices composes, which is
+/// not always the way the same field composes for one:
+///
+/// * The counts are summed. They describe chunks each device cut from its own
+///   recording, so the total describes what this account's devices captured
+///   between them — and it DOUBLE-COUNTS whatever both were recording at once,
+///   exactly as the merged segments do. That is the duplication this merge
+///   preserves rather than guesses at, and the accounting says the same thing
+///   the words do.
+/// * [HalfAccounting.declared] is AND. A merged half may only carry the claim
+///   EVERY contributor made; inheriting one writer's declaration would put a
+///   claim in another writer's mouth it never made.
+/// * [HalfAccounting.drainComplete] is AND for the same reason, from the other
+///   direction: one device that never finished transcribing leaves the merged
+///   record short whatever the other managed.
+/// * [HalfAccounting.captureRefused] is AND, and it is the one field where OR
+///   would be a confident, specific, wrong answer. It exists to say an empty
+///   half is a fact about US rather than about the speaker. If one device's
+///   microphone never opened and the other's recorded the call, the ACCOUNT's
+///   half is not that fact, and reporting it would blame a microphone for a
+///   half that is full of words. What that device did not capture is already in
+///   the counts it contributed, which are zero.
+/// * Everything that means "not whole" — truncated, incoherent, reader-side
+///   shortening, unreadable content — is OR. One contributor's gap is the
+///   merged half's gap.
+HalfAccounting _mergeAccounting(
+  List<HalfAccounting> parts, {
+  required bool readerDroppedADevice,
+}) {
+  var captured = 0;
+  var transcribed = 0;
+  var lost = 0;
+  var suppressed = 0;
+  var discarded = 0;
+  var droppedMs = 0;
+  var omitted = 0;
+  var refused = true;
+  var drained = true;
+  var declared = true;
+  var truncated = readerDroppedADevice;
+  var incoherent = false;
+  var readerShortened = readerDroppedADevice;
+  var unreadable = false;
+
+  for (final part in parts) {
+    captured = _saturatingSum(captured, part.chunksCaptured);
+    transcribed = _saturatingSum(transcribed, part.chunksTranscribed);
+    lost = _saturatingSum(lost, part.chunksLost);
+    suppressed = _saturatingSum(suppressed, part.chunksSuppressed);
+    discarded = _saturatingSum(discarded, part.chunksDiscarded);
+    droppedMs = _saturatingSum(droppedMs, part.captureDroppedMs);
+    omitted = _saturatingSum(omitted, part.segmentsOmitted);
+    refused = refused && part.captureRefused;
+    drained = drained && part.drainComplete;
+    declared = declared && part.declared;
+    truncated = truncated || part.truncated;
+    incoherent = incoherent || part.incoherent;
+    readerShortened = readerShortened || part.readerShortened;
+    unreadable = unreadable || part.unreadableContent;
+  }
+
+  return HalfAccounting(
+    chunksCaptured: captured,
+    chunksTranscribed: transcribed,
+    chunksLost: lost,
+    chunksSuppressed: suppressed,
+    chunksDiscarded: discarded,
+    captureDroppedMs: droppedMs,
+    captureRefused: refused,
+    truncated: truncated,
+    segmentsOmitted: omitted,
+    drainComplete: drained,
+    declared: declared,
+    incoherent: incoherent,
+    readerShortened: readerShortened,
+    unreadableContent: unreadable,
+  );
+}
+
+/// [segment] moved from one device's wall clock onto another's, or null when
+/// the result is not a time this reader would have accepted in the first place.
+///
+/// Both anchors are readings of the SAME join against the SFU's clock, so the
+/// difference of their offsets is the constant that separates the two devices'
+/// stamps. [TranscriptSegment.spanMs] is a delta and is invariant under it,
+/// which is why only the position moves.
+///
+/// Null on any position the shift pushes out of range. The anchors come off
+/// room content and are bounded but not benign: one at either end of
+/// [ClockAnchor.clockCeilingMs] can move a position before the epoch or past
+/// what survives a JSON round trip, and a merge that quietly adopted such a
+/// number would order two speakers by it.
+TranscriptSegment? _shifted(TranscriptSegment segment, int deltaMs) {
+  if (deltaMs == 0) return segment;
+  final at = segment.atMs;
+  if (at == null) return null;
+  final moved = at + deltaMs;
+  if (moved < 0 || moved >= TranscriptSegment.atMsCeiling) return null;
+  if (moved + (segment.spanMs ?? 0) >= TranscriptSegment.atMsCeiling) {
+    return null;
+  }
+  return TranscriptSegment(segment.text, atMs: moved, spanMs: segment.spanMs);
+}
+
+/// Which of one sender's device halves to keep when there are more of them than
+/// [kMaxDevicesPerSender]: the ones carrying the most speech.
+///
+/// The DEVICE breaks the tie, rather than the order the list happened to arrive
+/// in. `List.sort` is not documented as stable, so two halves of equal length
+/// would otherwise be chosen between differently on two reads of the same call
+/// -- and which half of a learner's speech is shown is not a thing to leave to
+/// a sort implementation.
+int _byMostSpeech(TranscriptCandidate a, TranscriptCandidate b) {
+  final byContent = b.contentLength.compareTo(a.contentLength);
+  return byContent != 0
+      ? byContent
+      : (a.deviceId ?? '').compareTo(b.deviceId ?? '');
+}
+
+/// Every device's half of one speaker, combined into the one half the view
+/// reads.
+///
+/// [perDevice] is the winning candidate from each of that sender's devices, in
+/// device order, and it is never empty.
+///
+/// ONE DEVICE IS THE ORDINARY CASE and it is returned untouched: same segments,
+/// same anchor, same claim about its positions. Everything below runs only when
+/// a learner had two devices in one call, which is what this whole change
+/// exists for.
+///
+/// HOW THE MERGE ORDERS. Each half's positions are stamped from its own
+/// device's wall clock and those clocks disagree — this codebase has already
+/// lost a bug to it. The correction that already exists is the one used here:
+/// every half carries the anchor it read against the SFU at join, so the
+/// difference of two anchors' offsets is the constant that puts one device's
+/// stamps on the other's clock. The merged half keeps the FIRST speaking
+/// device's anchor and every other device's positions are moved onto that
+/// device's clock, which leaves the half exactly what the rest of this file
+/// expects: one anchor describing every position in it, and one constant
+/// ([CallTranscript.clockShiftFor]) still enough to put the whole half on the
+/// SFU's clock beside the other speaker's. No second ordering scheme, and the
+/// event timestamps are not consulted — a send that took five seconds would
+/// read as five seconds of skew.
+///
+/// WHERE IT CANNOT ORDER, IT SAYS SO INSTEAD OF GUESSING. Two speaking devices
+/// can only be interleaved when both anchored their clocks and every segment
+/// carries a position. Failing that, the halves are laid end to end in device
+/// order — every word kept, none reordered within its own device — and the
+/// merged half carries NO anchor and does not mark its positions. Both of those
+/// are read downstream: an unanchored speaking half makes
+/// [CallTranscript.clocksReconcilable] false for the whole call, and unmarked
+/// positions make every turn [TurnTime.unstated], so no printed time rests on a
+/// sequence this reader could not order. The concatenation will usually fail
+/// [segmentsArePlaceable] as well, which drops the call to the per-speaker
+/// view — the shape that claims nothing about ordering, which is the right
+/// shape for a merge that could not establish one.
+///
+/// A merge that DID order can land there too, and it is worth saying so rather
+/// than being surprised by it. The sort is by [TranscriptSegment.orderKeyMs],
+/// which is what the view places a turn at, so the keys come out
+/// non-decreasing; the `atMs` sequence beside them need not, because one
+/// device's approximate turn can carry an earlier position and a later key than
+/// the other's exact one. [segmentsArePlaceable] asks for both, so such a call
+/// renders per speaker. Every word is still shown, in the order the merge
+/// established — what is lost is the interleaved SHAPE, which is the same cost
+/// this file already accepts for a half that carries an unplaced segment.
+///
+/// WHAT IT DOES NOT DO IS DE-DUPLICATE. Two devices recording one person
+/// capture the same speech wherever they were both recording, so the merged
+/// half repeats it. Nothing here tries to collapse that, and the reason is
+/// recorded one function up at [totalContentLength]: repeated text is also what
+/// a learner saying something twice looks like, the two are indistinguishable
+/// in the words, and the wrong guess deletes speech somebody actually said.
+/// A visible duplicate is a duplicate somebody can count;
+/// [TranscriptHalf.deviceCount] is what says it is there.
+_AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
+  final found = perDevice.length;
+
+  // Past the ceiling, the halves carrying the most speech are the ones kept.
+  // See [_byMostSpeech] for what settles a tie, and why it cannot be left to
+  // the sort.
+  final kept = found <= kMaxDevicesPerSender
+      ? perDevice
+      : ([
+          ...perDevice,
+        ]..sort(_byMostSpeech)).take(kMaxDevicesPerSender).toList();
+  final droppedADevice = kept.length < found;
+  if (droppedADevice) {
+    // Back into device order: the selection above is by content, and the ORDER
+    // of a concatenation must not depend on how much each device happened to
+    // say.
+    kept.sort((a, b) => (a.deviceId ?? '').compareTo(b.deviceId ?? ''));
+  }
+
+  final accounting = _mergeAccounting([
+    for (final candidate in kept) candidate.accounting,
+  ], readerDroppedADevice: droppedADevice);
+
+  // The ones that put anything on the timeline. A device that wrote an empty
+  // half orders nothing, so neither its anchor nor its silence about one may
+  // decide whether the speaking halves can be interleaved -- the same carve-out
+  // [CallTranscript.clocksReconcilable] already makes one level up.
+  final speaking = [
+    for (final candidate in kept)
+      if (candidate.segments.isNotEmpty) candidate,
+  ];
+
+  if (speaking.length <= 1) {
+    // Nothing to order against, so nothing is moved and nothing is withheld:
+    // whatever the one speaking device asserted is what the half asserts. This
+    // is the shape a merge takes in the case the rest of the design aims for,
+    // where the device that does not carry on writes an empty half or none.
+    final only = speaking.firstOrNull;
+    return _AssembledHalf(
+      segments: only?.segments ?? const [],
+      accounting: accounting,
+      clockAnchor:
+          only?.clockAnchor ??
+          // An empty half places nothing, so this anchor can never move a turn
+          // -- `clocksReconcilable` asks only halves that carry words. It is
+          // carried rather than dropped so a half that said what its clock read
+          // is not made to look like one that never said.
+          kept.map((candidate) => candidate.clockAnchor).nonNulls.firstOrNull,
+      positionsMarked: only?.positionsMarked ?? false,
+      deviceCount: found,
+    );
+  }
+
+  // The clock every position in the merged half will be expressed on. The
+  // first speaking device's, taken in device order, so it does not depend on
+  // how much either device happened to say.
+  final reference = speaking.first.clockAnchor;
+  final ordered = <({int group, int index, TranscriptSegment segment})>[];
+  var orderable = reference != null;
+
+  if (reference != null) {
+    for (var group = 0; group < speaking.length && orderable; group++) {
+      final candidate = speaking[group];
+      final anchor = candidate.clockAnchor;
+      if (anchor == null) {
+        // One device that never compared its clock to the SFU's is enough.
+        // Ordering the others around it would place its turns by an offset
+        // measured for somebody else.
+        orderable = false;
+        break;
+      }
+      final delta = reference.offsetMs - anchor.offsetMs;
+      for (var index = 0; index < candidate.segments.length; index++) {
+        final moved = _shifted(candidate.segments[index], delta);
+        if (moved == null || moved.atMs == null) {
+          // One unplaced segment anywhere is enough: it cannot be ordered
+          // against the other device's, and interleaving the rest around it
+          // would put a real turn in a position nothing supports.
+          orderable = false;
+          break;
+        }
+        ordered.add((group: group, index: index, segment: moved));
+      }
+    }
+  }
+
+  if (!orderable) {
+    return _AssembledHalf(
+      segments: [for (final candidate in kept) ...candidate.segments],
+      accounting: accounting,
+      // Null and false, and both are load-bearing. The positions in this list
+      // come from two clocks that were never compared, so no anchor describes
+      // them and no claim about their exactness survives the mixing. Together
+      // they stop any time being printed over an order this reader could not
+      // establish -- including in a call where this is the only speaking half,
+      // which [CallTranscript.turnsShareOneClock] would otherwise call one
+      // clock on the strength of there being no second speaker.
+      clockAnchor: null,
+      positionsMarked: false,
+      deviceCount: found,
+    );
+  }
+
+  // By the moment each turn is PLACED at -- the latest it could have been said
+  // -- which is the same key the view orders by, so the merged half reads in
+  // the order it will be drawn in. The group and the index behind it make the
+  // comparison a strict total order: two devices can legitimately stamp the
+  // same instant, and `List.sort` is not stable.
+  ordered.sort((a, b) {
+    final byKey = a.segment.orderKeyMs!.compareTo(b.segment.orderKeyMs!);
+    if (byKey != 0) return byKey;
+    final byGroup = a.group.compareTo(b.group);
+    return byGroup != 0 ? byGroup : a.index.compareTo(b.index);
+  });
+
+  return _AssembledHalf(
+    segments: [for (final entry in ordered) entry.segment],
+    accounting: accounting,
+    clockAnchor: reference,
+    // Every speaking contributor, on the same terms as [HalfAccounting.declared]
+    // and for the same reason: the claim is about the segments being shown, and
+    // one writer that never made it leaves segments here nobody vouched for.
+    positionsMarked: speaking.every((candidate) => candidate.positionsMarked),
+    deviceCount: found,
+  );
+}
+
 /// Assembles the halves of one call.
 ///
 /// [candidates] are every parsed transcript event found for the call, in any
 /// order. [expectedSenders] is who took part, so a speaker who wrote nothing is
 /// reported as absent rather than silently omitted — the difference between
 /// "they said nothing" and "we never looked" is the whole point.
+///
+/// ONE HALF PER SENDER still, and no longer one EVENT per sender. A learner
+/// with two devices in one call writes two events, and both are that person's
+/// speech: they are grouped by device, chosen between within a device, and
+/// combined across devices into the one half a speaker gets. See
+/// [_assembleDevices] for how that combination orders, what it refuses to
+/// order, and why it keeps a duplicate rather than guess which repetition was
+/// real.
 ///
 /// [exhausted] is whether retrieval reached the end of the server's relations,
 /// as opposed to stopping at the reader's own cap. A capped read can never
@@ -1249,12 +1665,33 @@ CallTranscript assembleTranscript({
   /// could not read".
   Set<String> unreadableSenders = const {},
 }) {
-  final bySender = <String, TranscriptCandidate>{};
+  // BY SENDER AND BY DEVICE, because a sender is not a recorder.
+  //
+  // Keyed by sender alone, two of one learner's devices in one call wrote two
+  // halves that were indistinguishable here: the second was discarded and the
+  // first was presented, with its own accounting, as the whole of what that
+  // person said. That is the loss this grouping exists to stop, and it is worse
+  // than a refused send because nothing about it is visible.
+  //
+  // The inner key is the device or the empty string, and the empty string is
+  // ONE key shared by every half that did not name a device -- events written
+  // before the field existed, foreign clients, and a client that cannot name
+  // its own device. See `CallTranscriptContent.deviceId`. That is what keeps
+  // the rooms that already exist reading exactly as they did: two halves from
+  // two old builds still key alike, so one is still kept, and this change
+  // reaches them only once one of the two devices is updated.
+  final bySender = <String, Map<String, TranscriptCandidate>>{};
 
   for (final candidate in candidates) {
-    final held = bySender[candidate.senderId];
+    final byDevice = bySender.putIfAbsent(candidate.senderId, () => {});
+    final key = candidate.deviceId ?? '';
+    final held = byDevice[key];
+    // Still one half per DEVICE, chosen exactly as before. A resend, or a buggy
+    // writer's empty half landing before the real one, is a duplicate from one
+    // recorder and the choice between them is unchanged; what is no longer
+    // treated as a duplicate is a second DEVICE's half of the same call.
     if (held == null || _beats(candidate, held)) {
-      bySender[candidate.senderId] = candidate;
+      byDevice[key] = candidate;
     }
   }
 
@@ -1313,7 +1750,18 @@ CallTranscript assembleTranscript({
 
   final halves = <TranscriptHalf>[];
   for (final senderId in senders) {
-    final candidate = bySender[senderId];
+    final byDevice = bySender[senderId];
+
+    // In device order, so a call assembles the same way every time it is read.
+    // The empty key sorts first, which is only a convention -- what matters is
+    // that it is FIXED, because it decides the order of a concatenation this
+    // reader could not put on one clock.
+    final perDevice = byDevice == null
+        ? const <TranscriptCandidate>[]
+        : (byDevice.keys.toList()..sort())
+              .map((key) => byDevice[key]!)
+              .toList();
+    final candidate = perDevice.isEmpty ? null : _assembleDevices(perDevice);
 
     // Something arrived from them that we could not read. It is not absence,
     // whatever else the read managed, and it is not the writer's fault.
@@ -1343,6 +1791,10 @@ CallTranscript assembleTranscript({
           // wrote one. A synthesised offset of zero would be this reader
           // asserting the two clocks agreed, about a device that never told us
           // what its clock said.
+          //
+          // No device wrote either, which is a different statement from the
+          // one device the default would make.
+          deviceCount: 0,
         ),
       );
       continue;
@@ -1388,13 +1840,16 @@ CallTranscript assembleTranscript({
         arrival: wasUnreadable
             ? HalfArrival.placedWithLoss
             : HalfArrival.placed,
-        // From the candidate that WON, never from any other copy: the offset
-        // has to describe the positions actually being shown, and two copies
-        // from one sender can carry different anchors if the device rejoined.
+        // From what was actually assembled, never from any copy that lost: the
+        // offset has to describe the positions being shown, and two copies from
+        // one device can carry different anchors if it rejoined. Across DEVICES
+        // it is the anchor every position in this half has been moved onto, or
+        // null when they could not be -- see [_assembleDevices].
         clockAnchor: candidate.clockAnchor,
         // Same rule, same reason: the claim has to describe the segments being
-        // shown, and only the winning copy supplied those.
+        // shown, and only the copies that supplied them may make it.
         positionsMarked: candidate.positionsMarked,
+        deviceCount: candidate.deviceCount,
       ),
     );
   }
@@ -1410,7 +1865,14 @@ CallTranscript assembleTranscript({
   );
 }
 
-/// Which of two events from the SAME sender to believe.
+/// Which of two events from the SAME sender AND THE SAME DEVICE to believe.
+///
+/// The device half of that is not decoration. This rule reads two events as
+/// copies of one recording and keeps one, which is right for a resend or for a
+/// buggy writer's empty first attempt, and wrong for the other half of a
+/// conversation: a second DEVICE's event is not a copy, and discarding it
+/// destroyed speech while the survivor claimed to be whole. Two events reach
+/// this function only after `assembleTranscript` has grouped them by device.
 ///
 /// The one carrying more actual text, breaking ties by the earlier event.
 /// Deliberately not "the earliest wins": a buggy client that emits an empty
