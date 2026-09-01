@@ -1,3 +1,5 @@
+import 'dart:ui' as ui show SemanticsHitTestBehavior;
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
@@ -25,6 +27,18 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 /// `IgnorePointer` — that strips pointer-related semantics actions (the tap)
 /// from the subtree, which is the exact loss this layer exists to repair.
 /// A semantics tap (what a screen-reader double-tap sends) reaches [onTap].
+///
+/// Flutter-side transparency is not enough on web (#7525): with the semantics
+/// tree on, native clicks are hit-tested against the semantics DOM, and the
+/// web engine defaults a tappable node's element to `pointer-events: all`.
+/// That re-creates #8013 pin-sized: a mirror node captures native mouse
+/// events for anything painted over the map at its position — an open
+/// panel's inert surface, or the activity video's `<iframe>`, whose controls
+/// go dead. Each pin therefore sets `hitTestBehavior: transparent`
+/// (`pointer-events: none`). Screen-reader activation survives: an AT press
+/// is dispatched as a DOM click AT the element, bypassing CSS pointer
+/// hit-testing, and the engine forwards a standalone click on a tap-handling
+/// node to the framework as a semantics tap.
 class PinSemanticsLayer extends StatelessWidget {
   final MapController mapController;
 
@@ -100,6 +114,11 @@ class PinSemanticsLayer extends StatelessWidget {
                       // label gets the group's prefixed onto it.
                       container: true,
                       button: true,
+                      // Web: keep the node's DOM element out of native
+                      // pointer hit-testing (see the class doc, #7525) —
+                      // AT activation arrives as a targeted click, not a
+                      // hit-tested one, so it still lands.
+                      hitTestBehavior: ui.SemanticsHitTestBehavior.transparent,
                       label:
                           "${l10n.activityLabel(card.title)}, "
                           "${stateOf(card.activityId).label(l10n)}",
