@@ -464,9 +464,9 @@ class CallRecord {
     _published = true;
 
     // Kept so the report at the bottom can carry the CAUSE. Each attempt logs
-    // its own failure, but only the last one is worth an event, and an event
-    // without the exception that produced it groups by this file and says
-    // nothing about why.
+    // its own failure, but only the last one is worth an event -- and an event
+    // reported with no exception is titled by its own message, which says what
+    // was lost and nothing whatever about why.
     Object? lastError;
     StackTrace? lastStack;
 
