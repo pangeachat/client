@@ -9844,5 +9844,6 @@
     "callTranscriptTooLongToSend": "O que dixo {name} era demasiado longo para gardalo con esta chamada, polo que non se mostra nada.",
     "callTranscriptMicrophoneRefused": "O dispositivo de {name} nunca abriu un micrófono para esta chamada, polo que non se gravou nada do que dixo e descoñécese o que se dixo.",
     "callTranscriptAudioLost": "O que {name} dixo foi gravado pero perdeuse antes de que puidese ser transcrito, polo que se descoñece o que se dixo.",
-    "mapPinsKeyboardHint": "Usa as teclas de frecha para moverte entre as actividades no mapa e preme Intro para abrir unha."
+    "mapPinsKeyboardHint": "Usa as teclas de frecha para moverte entre as actividades no mapa e preme Intro para abrir unha.",
+    "selectMessageLabel": "Seleccionar mensaxe"
 }

@@ -10576,5 +10576,6 @@
     "callTranscriptTooLongToSend": "Ceea ce a spus {name} a fost prea lung pentru a fi salvat cu acest apel, așa că nimic din cele spuse nu este afișat.",
     "callTranscriptMicrophoneRefused": "Dispozitivul lui {name} nu a deschis niciodată un microfon pentru acest apel, așa că nimic din ce a spus nu a fost înregistrat și ce a fost spus nu este cunoscut.",
     "callTranscriptAudioLost": "Ceea ce a spus {name} a fost înregistrat, dar s-a pierdut înainte de a putea fi transcris, așa că ce a fost spus nu este cunoscut.",
-    "mapPinsKeyboardHint": "Folosește tastele săgeți pentru a te deplasa între activitățile de pe hartă și apasă Enter pentru a deschide una."
+    "mapPinsKeyboardHint": "Folosește tastele săgeți pentru a te deplasa între activitățile de pe hartă și apasă Enter pentru a deschide una.",
+    "selectMessageLabel": "Selectează mesajul"
 }

@@ -10780,5 +10780,6 @@
     "callTranscriptTooLongToSend": "Lo que {name} diceva esseva troppo longe pro esser salvate con iste appello, dunque nihil de illo es monstrate.",
     "callTranscriptMicrophoneRefused": "Le apparato de {name} jammais aperiva un microphono pro iste appello, ergo nihil de lo que illes diceva esseva registrate e lo que esseva dicite non es cognoscite.",
     "callTranscriptAudioLost": "Lo que {name} diceva esseva registrate ma perdite ante que illo poteva esser transcribite, ergo lo que esseva dicite non es cognoscite.",
-    "mapPinsKeyboardHint": "Usa le sagittas pro mover inter activitates super le mappa, e preme Enter pro aperir un."
+    "mapPinsKeyboardHint": "Usa le sagittas pro mover inter activitates super le mappa, e preme Enter pro aperir un.",
+    "selectMessageLabel": "Selige message"
 }

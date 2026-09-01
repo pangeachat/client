@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Roedd yr hyn a ddywedodd {name} yn rhy hir i'w gadw gyda'r alwad hon, felly ni ddangosir dim ohono.",
     "callTranscriptMicrophoneRefused": "Ni agorodd dyfais {name} feicroffon ar gyfer yr alwad hon, felly ni recordiwyd unrhyw beth a ddywedwyd ganddynt ac nid yw'r hyn a ddywedwyd yn hysbys.",
     "callTranscriptAudioLost": "Recordiwyd yr hyn a ddywedodd {name} ond fe'i collwyd cyn y gellid ei drawsgrifio, felly nid yw'r hyn a ddywedwyd yn hysbys.",
-    "mapPinsKeyboardHint": "Defnyddiwch y bysellau saeth i symud rhwng gweithgareddau ar y map, a gwasgwch Enter i agor un."
+    "mapPinsKeyboardHint": "Defnyddiwch y bysellau saeth i symud rhwng gweithgareddau ar y map, a gwasgwch Enter i agor un.",
+    "selectMessageLabel": "Dewis neges"
 }

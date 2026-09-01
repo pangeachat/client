@@ -9841,5 +9841,6 @@
     "callTranscriptTooLongToSend": "See, mida {name} ütles, oli selle kõnega salvestamiseks liiga pikk, seega ei kuvata sellest midagi.",
     "callTranscriptMicrophoneRefused": "{name} seade ei avanud selle kõne jaoks mikrofoni, seega ei salvestatud midagi, mida nad ütlesid, ja öeldu ei ole teada.",
     "callTranscriptAudioLost": "See, mida {name} ütles, salvestati, kuid läks kaduma enne, kui seda transkribeerida sai, seega öeldu ei ole teada.",
-    "mapPinsKeyboardHint": "Kasutage nooleklahve kaardil tegevuste vahel liikumiseks ja vajutage sisestusklahvi, et avada üks."
+    "mapPinsKeyboardHint": "Kasutage nooleklahve kaardil tegevuste vahel liikumiseks ja vajutage sisestusklahvi, et avada üks.",
+    "selectMessageLabel": "Vali sõnum"
 }

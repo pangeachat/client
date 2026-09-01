@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Ang gisulti ni {name} taas ra kaayo aron ma-save sa kini nga tawag, busa wala’y bisan usa niini ang gipakita.",
     "callTranscriptMicrophoneRefused": "Ang device ni {name} wala gyud nag-abli og mikropono para ani nga tawag, mao nga walay natala sa ilang gisulti ug dili mahibal-an kung unsa ang gisulti.",
     "callTranscriptAudioLost": "Ang gisulti ni {name} natala apan nawala sa wala pa kini ma-transcribe, mao nga dili mahibal-an kung unsa ang gisulti.",
-    "mapPinsKeyboardHint": "Gamita ang arrow keys sa paglihok taliwala sa mga kalihokan sa mapa, ug pindota ang Enter aron maablihan ang usa."
+    "mapPinsKeyboardHint": "Gamita ang arrow keys sa paglihok taliwala sa mga kalihokan sa mapa, ug pindota ang Enter aron maablihan ang usa.",
+    "selectMessageLabel": "Pagpili og mensahe"
 }

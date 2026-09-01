@@ -9881,5 +9881,6 @@
     "callTranscriptTooLongToSend": "Se, mitä {name} sanoi, oli liian pitkä tallennettavaksi tämän puhelun yhteyteen, joten sitä ei näytetä.",
     "callTranscriptMicrophoneRefused": "{name}-käyttäjän laite ei avannut mikrofonia tämän puhelun aikana, joten mitään sanottua ei tallennettu eikä tiedetä, mitä sanottiin.",
     "callTranscriptAudioLost": "Mitä {name} sanoi, tallennettiin, mutta se katosi ennen kuin se voitiin litteroida, joten sanottua ei tiedetä.",
-    "mapPinsKeyboardHint": "Käytä nuolinäppäimiä siirtyäksesi kartan aktiviteettien välillä ja avaa aktiviteetti painamalla Enter-näppäintä."
+    "mapPinsKeyboardHint": "Käytä nuolinäppäimiä siirtyäksesi kartan aktiviteettien välillä ja avaa aktiviteetti painamalla Enter-näppäintä.",
+    "selectMessageLabel": "Valitse viesti"
 }

@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Quod {name} dixit nimis longum erat ad servandum cum hoc colloquio, ergo nihil eius ostenditur.",
     "callTranscriptMicrophoneRefused": "Instrumentum {name} microphonum huic vocationi numquam aperuit, itaque nihil ab eo dictum est relatum et quid dictum sit nescitur.",
     "callTranscriptAudioLost": "Quod {name} dixit relatum est sed amissum antequam transcribi posset, itaque quid dictum sit nescitur.",
-    "mapPinsKeyboardHint": "Sagittis utere ad movendum inter actiones in tabula, et preme Intro ut unam aperias."
+    "mapPinsKeyboardHint": "Sagittis utere ad movendum inter actiones in tabula, et preme Intro ut unam aperias.",
+    "selectMessageLabel": "Nuntium elige"
 }

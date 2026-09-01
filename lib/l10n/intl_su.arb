@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Naon anu diucapkeun ku {name} panjang teuing pikeun disimpen sareng telepon ieu, janten teu aya anu dipidangkeun.",
     "callTranscriptMicrophoneRefused": "Parabot {name} teu kungsi muka mikropon pikeun telepon ieu, janten teu aya nu kacatet tina omonganana sareng naon anu diucapkeun teu dipikanyaho.",
     "callTranscriptAudioLost": "Omongan {name} kacatet tapi leungit sateuacan tiasa ditranskripsi, janten naon anu diucapkeun teu dipikanyaho.",
-    "mapPinsKeyboardHint": "Anggo kenop panah pikeun mindahkeun antara kagiatan dina peta, teras pencét Enter pikeun muka hiji."
+    "mapPinsKeyboardHint": "Anggo kenop panah pikeun mindahkeun antara kagiatan dina peta, teras pencét Enter pikeun muka hiji.",
+    "selectMessageLabel": "Pilih pesen"
 }

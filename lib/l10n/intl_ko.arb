@@ -10037,5 +10037,6 @@
     "callTranscriptTooLongToSend": "{name}님이 말한 내용이 너무 길어 이 통화에 저장할 수 없으므로, 아무것도 표시되지 않습니다.",
     "callTranscriptMicrophoneRefused": "{name}님의 기기에서 이 통화에 마이크를 열지 않아 아무것도 녹음되지 않았으며, 발언 내용도 알 수 없습니다.",
     "callTranscriptAudioLost": "{name}님이 말한 내용은 녹음되었지만, 필사되기 전에 손실되어 발언 내용을 알 수 없습니다.",
-    "mapPinsKeyboardHint": "화살표 키를 사용하여 지도에서 활동 간에 이동하고 Enter 키를 눌러 활동을 엽니다."
+    "mapPinsKeyboardHint": "화살표 키를 사용하여 지도에서 활동 간에 이동하고 Enter 키를 눌러 활동을 엽니다.",
+    "selectMessageLabel": "메시지 선택"
 }

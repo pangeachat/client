@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "{name} የተናገረው ከዚህ ጥሪ ጋር ለማስቀመጥ በጣም ረጅም ስለነበር ምንም አልታየም።",
     "callTranscriptMicrophoneRefused": "የ{name} መሳሪያ ለዚህ ጥሪ ማይክሮፎን አልከፈተም፣ ስለዚህ የተናገሩት ነገር አልተቀዳም እና ምን እንደተባለ አይታወቅም።",
     "callTranscriptAudioLost": "የ{name} የተናገሩት ነገር ተመዝግቧል ነገር ግን ከመተየቡ በፊት ጠፍቷል፣ ስለዚህ ምን እንደተባለ አይታወቅም።",
-    "mapPinsKeyboardHint": "በካርታው ላይ ባሉ እንቅስቃሴዎች መካከል ለመንቀሳቀስ የቀስት ቁልፎችን ይጠቀሙ እና አንዱን ለመክፈት አስገባን ይጫኑ።"
+    "mapPinsKeyboardHint": "በካርታው ላይ ባሉ እንቅስቃሴዎች መካከል ለመንቀሳቀስ የቀስት ቁልፎችን ይጠቀሙ እና አንዱን ለመክፈት አስገባን ይጫኑ።",
+    "selectMessageLabel": "መልዕክት ምረጥ"
 }

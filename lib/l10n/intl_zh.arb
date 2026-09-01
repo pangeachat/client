@@ -9844,5 +9844,6 @@
     "callTranscriptTooLongToSend": "{name} 说的话太长，无法随此通话保存，因此未显示任何内容。",
     "callTranscriptMicrophoneRefused": "{name}的设备未在此通话中打开麦克风，因此未录制任何内容，也无法得知他们说了什么。",
     "callTranscriptAudioLost": "{name}说的话已被录音，但在转录前丢失，因此无法得知他们说了什么。",
-    "mapPinsKeyboardHint": "使用方向键在地图上的活动之间移动，然后按 Enter 键打开一个活动。"
+    "mapPinsKeyboardHint": "使用方向键在地图上的活动之间移动，然后按 Enter 键打开一个活动。",
+    "selectMessageLabel": "选择消息"
 }

@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Ajo që tha {name} ishte shumë e gjatë për t'u ruajtur me këtë thirrje, kështu që asgjë prej saj nuk shfaqet.",
     "callTranscriptMicrophoneRefused": "Pajisja e {name} nuk e hapi mikrofonin për këtë thirrje, kështu që asgjë që tha nuk u regjistrua dhe ajo që u tha nuk dihet.",
     "callTranscriptAudioLost": "Ajo që tha {name} u regjistrua, por u humb para se të transkriptohej, kështu që ajo që u tha nuk dihet.",
-    "mapPinsKeyboardHint": "Përdorni tastet me shigjeta për të lëvizur mes aktiviteteve në hartë dhe shtypni Enter për të hapur njërin."
+    "mapPinsKeyboardHint": "Përdorni tastet me shigjeta për të lëvizur mes aktiviteteve në hartë dhe shtypni Enter për të hapur njërin.",
+    "selectMessageLabel": "Zgjidh mesazhin"
 }

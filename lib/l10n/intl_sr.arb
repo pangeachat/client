@@ -10793,5 +10793,6 @@
     "callTranscriptTooLongToSend": "Ono što je {name} rekao/rekla je predugačko da bi se sačuvalo sa ovim pozivom, tako da ništa od toga nije prikazano.",
     "callTranscriptMicrophoneRefused": "Uređaj korisnika {name} nikada nije otvorio mikrofon za ovaj poziv, tako da ništa što je rečeno nije snimljeno i ono što je rečeno nije poznato.",
     "callTranscriptAudioLost": "Ono što je {name} rekao/rekla je snimljeno, ali je izgubljeno pre nego što je moglo biti transkribovano, tako da ono što je rečeno nije poznato.",
-    "mapPinsKeyboardHint": "Koristite tastere sa strelicama za kretanje između aktivnosti na mapi, a pritisnite Enter da biste otvorili jednu."
+    "mapPinsKeyboardHint": "Koristite tastere sa strelicama za kretanje između aktivnosti na mapi, a pritisnite Enter da biste otvorili jednu.",
+    "selectMessageLabel": "Izaberite poruku"
 }

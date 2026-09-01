@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Zvakarehwa na {name} zvakareba zvekuti zvisachengetwe nerunhare urwu, saka hapana chazvo chiri kuratidzwa.",
     "callTranscriptMicrophoneRefused": "Chigadzirwa cha {name} hachina kumbovhura maikorofoni yekufona uku, saka hapana chavakarekodha uye zvavakarekodha hazvizivikanwe.",
     "callTranscriptAudioLost": "Zvakataurwa na {name} zvakarekodhwa asi zvakarasika zvisati zvanyorwa, saka zvakataurwa hazvizivikanwe.",
-    "mapPinsKeyboardHint": "Shandisa miseve kufamba pakati pezviitiko pamepu, wobva wadzvanya Enter kuti uvhure chimwe."
+    "mapPinsKeyboardHint": "Shandisa miseve kufamba pakati pezviitiko pamepu, wobva wadzvanya Enter kuti uvhure chimwe.",
+    "selectMessageLabel": "Sarudza meseji"
 }

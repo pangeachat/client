@@ -9844,5 +9844,6 @@
     "callTranscriptTooLongToSend": "Tas, ko teica {name}, bija pārāk garš, lai saglabātu ar šo zvanu, tāpēc nekas no tā netiek rādīts.",
     "callTranscriptMicrophoneRefused": "{name} ierīce nekad neatvēra mikrofonu šim zvanam, tāpēc nekas no viņu teiktā netika ierakstīts un nav zināms, kas tika teikts.",
     "callTranscriptAudioLost": "Tas, ko teica {name}, tika ierakstīts, bet pazaudēts pirms transkribēšanas, tāpēc nav zināms, kas tika teikts.",
-    "mapPinsKeyboardHint": "Izmantojiet bulttaustiņus, lai pārvietotos starp aktivitātēm kartē, un nospiediet taustiņu Enter, lai atvērtu kādu no tām."
+    "mapPinsKeyboardHint": "Izmantojiet bulttaustiņus, lai pārvietotos starp aktivitātēm kartē, un nospiediet taustiņu Enter, lai atvērtu kādu no tām.",
+    "selectMessageLabel": "Atlasīt ziņojumu"
 }

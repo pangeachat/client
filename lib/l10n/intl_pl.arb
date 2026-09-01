@@ -9929,5 +9929,6 @@
     "callTranscriptTooLongToSend": "To, co powiedział {name}, było zbyt długie, aby zapisać to z tą rozmową, więc nic z tego nie jest wyświetlane.",
     "callTranscriptMicrophoneRefused": "Urządzenie użytkownika {name} nie otworzyło mikrofonu podczas tej rozmowy, więc nic, co powiedział(a), nie zostało nagrane i nie wiadomo, co zostało powiedziane.",
     "callTranscriptAudioLost": "To, co powiedział(a) {name}, zostało nagrane, ale utracone przed transkrypcją, więc nie wiadomo, co zostało powiedziane.",
-    "mapPinsKeyboardHint": "Użyj klawiszy strzałek, aby poruszać się między aktywnościami na mapie, i naciśnij Enter, aby otworzyć wybraną."
+    "mapPinsKeyboardHint": "Użyj klawiszy strzałek, aby poruszać się między aktywnościami na mapie, i naciśnij Enter, aby otworzyć wybraną.",
+    "selectMessageLabel": "Wybierz wiadomość"
 }

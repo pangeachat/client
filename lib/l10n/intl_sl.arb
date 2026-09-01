@@ -10789,5 +10789,6 @@
     "callTranscriptTooLongToSend": "Kar je rekel {name}, je bilo predolgo za shranjevanje s tem klicem, zato ni prikazano nič od tega.",
     "callTranscriptMicrophoneRefused": "Naprava uporabnika {name} ni nikoli odprla mikrofona za ta klic, zato ni bilo posneto nič, kar je rekel, in ni znano, kaj je bilo rečeno.",
     "callTranscriptAudioLost": "Kar je rekel {name}, je bilo posneto, vendar izgubljeno, preden je bilo mogoče prepisati, zato ni znano, kaj je bilo rečeno.",
-    "mapPinsKeyboardHint": "Z uporabo puščičnih tipk se premikajte med aktivnostmi na zemljevidu in pritisnite Enter, da odprete eno."
+    "mapPinsKeyboardHint": "Z uporabo puščičnih tipk se premikajte med aktivnostmi na zemljevidu in pritisnite Enter, da odprete eno.",
+    "selectMessageLabel": "Izberite sporočilo"
 }

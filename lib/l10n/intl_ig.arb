@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Ihe {name} kwuru dị ogologo nke ukwuu ịchekwa na oku a, yabụ egosighị ya ma ọlị.",
     "callTranscriptMicrophoneRefused": "Ngwaọrụ {name} emegheghị igwe okwu maka oku a, yabụ na edekọghị ihe ọ bụla ha kwuru ma amaghị ihe e kwuru.",
     "callTranscriptAudioLost": "Edekọrọ ihe {name} kwuru mana ọ furu efu tupu enwee ike idegharị ya, yabụ amaghị ihe e kwuru.",
-    "mapPinsKeyboardHint": "Jiri igodo akụ gaa n'etiti ihe omume dị na maapụ, wee pịa Tinye ka imepe otu."
+    "mapPinsKeyboardHint": "Jiri igodo akụ gaa n'etiti ihe omume dị na maapụ, wee pịa Tinye ka imepe otu.",
+    "selectMessageLabel": "Họrọ ozi"
 }

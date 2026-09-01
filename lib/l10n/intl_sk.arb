@@ -10789,5 +10789,6 @@
     "callTranscriptTooLongToSend": "To, čo povedal {name}, bolo príliš dlhé na uloženie s týmto hovorom, takže sa nič z toho nezobrazuje.",
     "callTranscriptMicrophoneRefused": "Zariadenie používateľa {name} nikdy neotvorilo mikrofón pre tento hovor, takže nič z toho, čo povedal, nebolo zaznamenané a nie je známe, čo bolo povedané.",
     "callTranscriptAudioLost": "To, čo povedal {name}, bolo zaznamenané, ale stratilo sa predtým, než to mohlo byť prepísané, takže nie je známe, čo bolo povedané.",
-    "mapPinsKeyboardHint": "Použite klávesy so šípkami na pohyb medzi aktivitami na mape a stlačte Enter na otvorenie jednej z nich."
+    "mapPinsKeyboardHint": "Použite klávesy so šípkami na pohyb medzi aktivitami na mape a stlačte Enter na otvorenie jednej z nich.",
+    "selectMessageLabel": "Vybrať správu"
 }

@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Wat {name} gesê het, was te lank om met hierdie oproep te stoor, so niks daarvan word gewys nie.",
     "callTranscriptMicrophoneRefused": "{name} se toestel het nooit 'n mikrofoon vir hierdie oproep oopgemaak nie, so niks wat hulle gesê het, is opgeneem nie en wat gesê is, is onbekend.",
     "callTranscriptAudioLost": "Wat {name} gesê het, is opgeneem, maar verlore voordat dit getranskribeer kon word, so wat gesê is, is onbekend.",
-    "mapPinsKeyboardHint": "Gebruik die pyltjiesleutels om tussen aktiwiteite op die kaart te beweeg, en druk Enter om een oop te maak."
+    "mapPinsKeyboardHint": "Gebruik die pyltjiesleutels om tussen aktiwiteite op die kaart te beweeg, en druk Enter om een oop te maak.",
+    "selectMessageLabel": "Kies boodskap"
 }

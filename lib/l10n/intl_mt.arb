@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Dak li qal {name} kien twil wisq biex jiġi ssejvjat ma' din is-sejħa, għalhekk xejn minnu mhu muri.",
     "callTranscriptMicrophoneRefused": "L-apparat ta' {name} qatt ma fetaħ mikrofonu għal din is-sejħa, għalhekk xejn minn dak li qalu ma ġie rreġistrat u dak li ntqal mhuwiex magħruf.",
     "callTranscriptAudioLost": "Dak li qal {name} ġie rreġistrat iżda ntilef qabel ma seta' jiġi traskritt, għalhekk dak li ntqal mhuwiex magħruf.",
-    "mapPinsKeyboardHint": "Uża l-vleġeġ biex tiċċaqlaq bejn l-attivitajiet fuq il-mappa, u agħfas Enter biex tiftaħ waħda."
+    "mapPinsKeyboardHint": "Uża l-vleġeġ biex tiċċaqlaq bejn l-attivitajiet fuq il-mappa, u agħfas Enter biex tiftaħ waħda.",
+    "selectMessageLabel": "Agħżel messaġġ"
 }

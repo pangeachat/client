@@ -9831,5 +9831,6 @@
     "callTranscriptTooLongToSend": "Was {name} gesagt hat, war zu lang, um mit diesem Anruf gespeichert zu werden, daher wird nichts davon angezeigt.",
     "callTranscriptMicrophoneRefused": "{name}s Gerät hat für diesen Anruf kein Mikrofon geöffnet, daher wurde nichts, was {name} gesagt hat, aufgezeichnet und der Inhalt ist unbekannt.",
     "callTranscriptAudioLost": "Was {name} gesagt hat, wurde aufgezeichnet, ging aber verloren, bevor es transkribiert werden konnte, daher ist der Inhalt unbekannt.",
-    "mapPinsKeyboardHint": "Verwenden Sie die Pfeiltasten, um zwischen den Aktivitäten auf der Karte zu wechseln, und drücken Sie die Eingabetaste, um eine zu öffnen."
+    "mapPinsKeyboardHint": "Verwenden Sie die Pfeiltasten, um zwischen den Aktivitäten auf der Karte zu wechseln, und drücken Sie die Eingabetaste, um eine zu öffnen.",
+    "selectMessageLabel": "Nachricht auswählen"
 }

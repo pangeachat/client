@@ -10145,5 +10145,6 @@
     "callTranscriptTooLongToSend": "{name} tarafından söylenenler bu aramayla kaydedilemeyecek kadar uzundu, bu yüzden hiçbiri gösterilmiyor.",
     "callTranscriptMicrophoneRefused": "{name} adlı kullanıcının cihazı bu arama için hiçbir zaman mikrofon açmadığından, söyledikleri kaydedilmedi ve ne söylendiği bilinmiyor.",
     "callTranscriptAudioLost": "{name} adlı kullanıcının söyledikleri kaydedildi ancak yazıya dökülmeden önce kayboldu, bu nedenle ne söylendiği bilinmiyor.",
-    "mapPinsKeyboardHint": "Haritadaki etkinlikler arasında gezinmek için ok tuşlarını kullanın ve birini açmak için Enter tuşuna basın."
+    "mapPinsKeyboardHint": "Haritadaki etkinlikler arasında gezinmek için ok tuşlarını kullanın ve birini açmak için Enter tuşuna basın.",
+    "selectMessageLabel": "Mesaj seç"
 }

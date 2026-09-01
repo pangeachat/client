@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Se ileng sa buuoa ke {name} se ne se le selelele haholo hore se ka bolokoa le mohala ona, kahoo ha ho letho le bontšoa.",
     "callTranscriptMicrophoneRefused": "Sesebediswa sa {name} ha sea ka sa bula maekrofounu bakeng sa mohala ona, kahoo ha ho letho leo ba le buileng le ileng la rekota mme seo ho ileng sa buuwa ha se tsejwe.",
     "callTranscriptAudioLost": "Seo {name} a se buileng se ile sa rekota empa sa lahleha pele se ka ngolwa, kahoo seo ho ileng sa buuwa ha se tsejwe.",
-    "mapPinsKeyboardHint": "Sebelisa metsu ho tsamaea lipakeng tsa mesebetsi 'mapeng, 'me u tobetse Enter ho bula o mong."
+    "mapPinsKeyboardHint": "Sebelisa metsu ho tsamaea lipakeng tsa mesebetsi 'mapeng, 'me u tobetse Enter ho bula o mong.",
+    "selectMessageLabel": "Kgetha molaetsa"
 }

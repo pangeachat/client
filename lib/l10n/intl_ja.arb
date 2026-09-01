@@ -10613,5 +10613,6 @@
     "callTranscriptTooLongToSend": "{name}の発言が長すぎたため、この通話と一緒に保存できませんでした。そのため、何も表示されません。",
     "callTranscriptMicrophoneRefused": "{name}さんのデバイスでこの通話のマイクが開かれなかったため、発言は録音されず、内容も不明です。",
     "callTranscriptAudioLost": "{name}さんの発言は録音されましたが、書き起こされる前に失われたため、内容も不明です。",
-    "mapPinsKeyboardHint": "矢印キーでマップ上のアクティビティ間を移動し、Enterキーを押して開きます。"
+    "mapPinsKeyboardHint": "矢印キーでマップ上のアクティビティ間を移動し、Enterキーを押して開きます。",
+    "selectMessageLabel": "メッセージを選択"
 }

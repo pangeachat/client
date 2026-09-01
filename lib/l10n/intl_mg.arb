@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Lava loatra ny tenin'i {name} ka tsy voatahiry tamin'ity antso ity, ka tsy misy aseho izany.",
     "callTranscriptMicrophoneRefused": "Tsy nanokatra mikrô ny fitaovan'i {name} nandritra ity antso ity, ka tsy nisy voarakitra izay nolazainy ary tsy fantatra izay voalaza.",
     "callTranscriptAudioLost": "Voarakitra izay nolazain'i {name} saingy very talohan'ny nahafahana nanoratra azy, ka tsy fantatra izay voalaza.",
-    "mapPinsKeyboardHint": "Ampiasao ny zana-tsipìka hivezivezena eo amin'ireo asa eo amin'ny sarintany, ary tsindrio ny Enter hanokafana iray."
+    "mapPinsKeyboardHint": "Ampiasao ny zana-tsipìka hivezivezena eo amin'ireo asa eo amin'ny sarintany, ary tsindrio ny Enter hanokafana iray.",
+    "selectMessageLabel": "Fidio hafatra"
 }

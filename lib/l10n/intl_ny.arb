@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Zomwe {name} adanena zinali zazitali kwambiri kuti zisungidwe ndi kuyitana uku, choncho palibe chomwe chikuwonetsedwa.",
     "callTranscriptMicrophoneRefused": "Chida cha {name} sichinatsegule maikolofoni pa kuyimba uku, choncho palibe chimene ananena chomwe chinalembedwa ndipo zomwe ananena sizikudziwika.",
     "callTranscriptAudioLost": "Zomwe {name} ananena zinalembedwa koma zinatayika zisanathe kulembedwa, choncho zomwe ananena sizikudziwika.",
-    "mapPinsKeyboardHint": "Gwiritsani ntchito mivi yoyenda pakati pa zochitika pa mapu, ndikusindikiza Enter kuti mutsegule imodzi."
+    "mapPinsKeyboardHint": "Gwiritsani ntchito mivi yoyenda pakati pa zochitika pa mapu, ndikusindikiza Enter kuti mutsegule imodzi.",
+    "selectMessageLabel": "Sankhani uthenga"
 }

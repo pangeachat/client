@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Kile alichosema {name} kilikuwa kirefu sana kuhifadhiwa na simu hii, kwa hivyo hakuna chochote kinachoonyeshwa.",
     "callTranscriptMicrophoneRefused": "Kifaa cha {name} hakikufungua maikrofoni kwa ajili ya simu hii, kwa hivyo hakuna chochote walichosema kilichorekodiwa na kile kilichosemwa hakijulikani.",
     "callTranscriptAudioLost": "Kile {name} alisema kilirekodiwa lakini kilipotea kabla ya kuandikwa, kwa hivyo kile kilichosemwa hakijulikani.",
-    "mapPinsKeyboardHint": "Tumia vitufe vya vishale kusogeza kati ya shughuli kwenye ramani, na ubonyeze Enter kufungua moja."
+    "mapPinsKeyboardHint": "Tumia vitufe vya vishale kusogeza kati ya shughuli kwenye ramani, na ubonyeze Enter kufungua moja.",
+    "selectMessageLabel": "Chagua ujumbe"
 }

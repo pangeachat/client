@@ -10199,5 +10199,6 @@
     "callTranscriptTooLongToSend": "Ce que {name} a dit était trop long pour être enregistré avec cet appel, donc rien n'est affiché.",
     "callTranscriptMicrophoneRefused": "L'appareil de {name} n'a pas ouvert de microphone pour cet appel, donc rien de ce qu'il a dit n'a été enregistré et ce qui a été dit n'est pas connu.",
     "callTranscriptAudioLost": "Ce que {name} a dit a été enregistré mais perdu avant de pouvoir être transcrit, donc ce qui a été dit n'est pas connu.",
-    "mapPinsKeyboardHint": "Utilisez les touches fléchées pour vous déplacer entre les activités sur la carte, et appuyez sur Entrée pour en ouvrir une."
+    "mapPinsKeyboardHint": "Utilisez les touches fléchées pour vous déplacer entre les activités sur la carte, et appuyez sur Entrée pour en ouvrir une.",
+    "selectMessageLabel": "Sélectionner le message"
 }

@@ -2248,5 +2248,6 @@
     "callTranscriptTooLongToSend": "Ciò chì {name} hà dettu era troppu longu per esse salvatu cù sta chjama, cusì nunda di questu hè mustratu.",
     "callTranscriptMicrophoneRefused": "U dispusitivu di {name} ùn hà mai apertu un microfonu per sta chjama, dunque nunda di ciò ch'elli anu dettu hè statu arregistratu è ciò chì hè statu dettu ùn hè micca cunnisciutu.",
     "callTranscriptAudioLost": "Ciò chì {name} hà dettu hè statu arregistratu ma persu prima ch'ellu pudessi esse trascrittu, dunque ciò chì hè statu dettu ùn hè micca cunnisciutu.",
-    "mapPinsKeyboardHint": "Aduprate e chjave di freccia per spustà trà l'attività nantu à a carta, è premete Enter per apre una."
+    "mapPinsKeyboardHint": "Aduprate e chjave di freccia per spustà trà l'attività nantu à a carta, è premete Enter per apre una.",
+    "selectMessageLabel": "Selezziunà u messagiu"
 }
