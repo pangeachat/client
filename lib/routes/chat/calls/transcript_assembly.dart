@@ -1293,7 +1293,13 @@ class _AssembledHalf {
 /// asks whether a half admits a gap — so a half that lost audio would assemble
 /// as a clean record. Saturating is a wrong number; wrapping is a wrong answer.
 int _saturatingSum(int a, int b) {
-  const ceiling = 0x7FFFFFFFFFFFFFFF;
+  // 2^53 - 1, not the VM's 2^63 - 1. An int is a double on the web, where
+  // 0x7FFFFFFFFFFFFFFF is not exactly representable and dart2js refuses to
+  // compile it at all -- the release build fails outright. Below this bound an
+  // integer is exact on both, so saturating here is the same arithmetic
+  // everywhere rather than a ceiling that silently differs by platform. Two
+  // counts that reach it are already far past anything a call could produce.
+  const ceiling = 9007199254740991;
   return a > ceiling - b ? ceiling : a + b;
 }
 

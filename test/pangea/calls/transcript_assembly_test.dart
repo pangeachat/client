@@ -2654,6 +2654,49 @@ void main() {
       expect(half.issue, HalfIssue.audioLost);
     });
 
+    test('two hostile counts saturate rather than wrapping to a clean half', () {
+      // `chunks_lost` comes off untrusted content and may be any non-negative
+      // int the JSON holds. Two summed must not come back NEGATIVE, because a
+      // negative count reads as zero to every rule that asks whether a half
+      // admits a gap -- a half that lost audio would then assemble as a clean
+      // record. Saturating is a wrong number; wrapping is a wrong answer.
+      //
+      // The bound is 2^53 - 1, not the VM's 2^63 - 1: an int is a double on the
+      // web, where the wider literal is not exactly representable and dart2js
+      // refuses to compile it at all.
+      const nearCeiling = 9007199254740991 - 1;
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            accounting: declared(
+              captured: 1,
+              transcribed: 0,
+              lost: nearCeiling,
+            ),
+            deviceId: 'ONE',
+          ),
+          _candidate(
+            alice,
+            accounting: declared(
+              captured: 1,
+              transcribed: 0,
+              lost: nearCeiling,
+            ),
+            deviceId: 'TWO',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.accounting.chunksLost, isNonNegative);
+      expect(half.accounting.chunksLost, 9007199254740991);
+      // The point of the bound: the half still admits the gap.
+      expect(half.state, HalfState.incomplete);
+      expect(half.issue, HalfIssue.audioLost);
+    });
+
     test('one writer that declared nothing voids the merged declaration', () {
       // A merged half may only carry the claim EVERY contributor made.
       final transcript = assembleTranscript(
