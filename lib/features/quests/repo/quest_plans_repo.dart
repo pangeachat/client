@@ -1,7 +1,9 @@
 import 'package:fluffychat/features/course_plans/courses/course_filter.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -99,14 +101,26 @@ class QuestPlansRepo {
   /// [CoursePlanProvider.loadCourse] as the fallback path when a course id
   /// doesn't resolve in v1 ``course-plans`` (the id-space is shared, so an
   /// id that 404s in v1 may still resolve in v3).
+  ///
+  /// Shares [QuestRepo.removedQuests] — both read the same ``quest-plans``
+  /// collection by id, so a 404 either sees is the same fact. A remembered
+  /// verdict answers null without a request, the same value this method's own
+  /// 404 handling returns (#8691); callers' handling of a missing quest —
+  /// e.g. onboarding continuing without course details (#8593) — is unchanged.
   static Future<CoursePlanModel?> get(String questId) async {
+    if (await QuestRepo.removedQuests.contains(questId)) return null;
     try {
-      return await _client().findById<CoursePlanModel?>(
+      final plan = await _client().findById<CoursePlanModel?>(
         _collection,
         questId,
         _fromQuestPlanJson,
       );
-    } catch (_) {
+      QuestRepo.removedQuests.unmark(questId);
+      return plan;
+    } catch (e) {
+      if (PangeaHttpException.statusCodeOf(e) == 404) {
+        QuestRepo.removedQuests.mark(questId);
+      }
       return null;
     }
   }

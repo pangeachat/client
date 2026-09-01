@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 15:04:31.617344",
+    "@@last_modified": "2026-09-01 11:50:19.416050",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10758,6 +10758,14 @@
     "callHistoryYouDeclined": "Você recusou esta chamada",
     "starsEarnedInLanguage": "Estrelas ganhas em {language}",
     "readAloudNoVoiceNote": "Nenhuma voz {language} de alta qualidade está disponível neste dispositivo, então estas configurações não estão disponíveis. Você ainda pode reproduzir áudio na barra de ferramentas da mensagem.",
+    "teachOptionSelected": "Ensinar selecionado",
+    "learnOptionSelected": "Aprender selecionado",
+    "selectedTargetLanguage": "{lang} selecionado como idioma de destino",
+    "selectedBaseLanguage": "{lang} selecionado como idioma base",
+    "resetTargetLanguage": "Redefinir idioma de destino",
+    "resetBaseLanguage": "Redefinir idioma base",
+    "selectedLanguageLevel": "{level} selecionado como nível de idioma",
+    "resetLanguageLevel": "Redefinir nível de idioma",
     "callTranscriptSharedNotice": "Esta chamada é transcrita e guardada. Você e a outra pessoa podem lê-la depois.",
     "callTranscriptTitle": "Transcrição da chamada",
     "callTranscriptLoadFailed": "Não foi possível carregar a transcrição",

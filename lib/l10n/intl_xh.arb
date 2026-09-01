@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-31 15:04:44.134731",
+    "@@last_modified": "2026-09-01 11:50:32.896645",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2218,6 +2218,14 @@
     "callHistoryYouDeclined": "Uwuyile lo mnxeba",
     "starsEarnedInLanguage": "Ii-star ozifumene ngesi-{language}",
     "readAloudNoVoiceNote": "Akukho lizwi le-{language} elikumgangatho ophezulu olukhoyo kwesi sixhobo, ngoko ke ezi setingi azikho. Usengadlala iaudio kwibar yesixhobo somyalezo.",
+    "teachOptionSelected": "Ukufundisa kukhethiwe",
+    "learnOptionSelected": "Ukufunda kukhethiwe",
+    "selectedTargetLanguage": "Ukhethe isi-{lang} njengolwimi ekujoliswe kulo",
+    "selectedBaseLanguage": "Ukhethe isi-{lang} njengolwimi olusisiseko",
+    "resetTargetLanguage": "Setha kwakhona ulwimi ekujoliswe kulo",
+    "resetBaseLanguage": "Setha kwakhona ulwimi olusisiseko",
+    "selectedLanguageLevel": "Ukhethe inqanaba lesi-{level} njengenqanaba lolwimi",
+    "resetLanguageLevel": "Setha kwakhona inqanaba lolwimi",
     "callTranscriptSharedNotice": "Le nxoxo ibhalwe phantsi kwaye igciniwe. Wena nomnye umntu ningayifunda emva koko.",
     "callTranscriptTitle": "Umbhalo wenxoxo",
     "callTranscriptLoadFailed": "Ayikwazanga ukulayisha umbhalo",
@@ -2230,7 +2238,7 @@
     "callTranscriptPartial": "Inxalenye yento ethethwe ngu-{name} isenokuba ilahlekile",
     "callTranscriptByTime": "nge-{time}",
     "callTranscriptApproximateTimes": "Isithuba esiphawulwe \"nge\" xesha sithethwe ngalo okanye ngaphambi kwalo. Ezo zithuba ziboniswa ngaloo mzuzu, ngoko ke zisenokuba zithetwe ngaphambili.",
-    "callTranscriptUnstatedTimes": "Ezinye izithuba azibonisi xesha. Isixhobo esizirekhodeyo asizange sitsho ukuba achane kangakanani amaxesha aso, ngoko ke indawo azikuyo kule ncoko isenokuba iphosakele.",
+    "callTranscriptUnstatedTimes": "Ezinye izithuba azibonisi xesha. Isixhobo esizirekhodileyo asizange sitsho ukuba achane kangakanani amaxesha aso, ngoko ke indawo azikuyo kule nxoxo isenokuba iphosakele.",
     "callTranscriptUnreconciledClocks": "Ezi zithuba zirekhodwe kwizixhobo ezibini iiwotshi zazo ezingakwazanga ukuthelekiswa, ngoko ke akukho maxesha aboniswayo kwaye ucwangco oluvela ngalo lusenokuba luphosakele.",
     "callTranscriptOpen": "Funda umbhalo"
 }

@@ -4,6 +4,7 @@ import 'package:http/http.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 extension GrantAnalyticsAccessExtension on Api {
   /// Force-joins the course's instructors into the caller's own analytics room,
@@ -36,14 +37,63 @@ extension GrantAnalyticsAccessExtension on Api {
         'mx_instructor_id': ?instructorId,
       }),
     );
-    final response = await httpClient.send(request);
+    final response = await Response.fromStream(await httpClient.send(request));
     if (response.statusCode != 200) {
       // This call bypasses `Requests` (Synapse endpoint, Matrix SDK client and
       // token), so it raises the typed failure itself rather than throwing the
       // response — see repos-and-error-handling.instructions.md.
-      throw PangeaHttpException.fromResponse(
-        await Response.fromStream(response),
-      );
+      throw PangeaHttpException.fromResponse(response);
     }
+
+    _reportGrantFailures(response, courseRoomId, analyticsRoomId);
+  }
+
+  /// The endpoint answers 200 even when it could not grant some instructors,
+  /// listing each failure in `errors`. Reading only the status code turns that
+  /// into silent data loss — the instructor is simply absent from this
+  /// student's analytics room and nobody finds out — so the failures are
+  /// reported here, which every caller passes through.
+  ///
+  /// Reports without throwing: the instructors that were granted still are, and
+  /// making a partial success read as a total failure would change what all
+  /// three call sites do.
+  void _reportGrantFailures(
+    Response response,
+    String courseRoomId,
+    String analyticsRoomId,
+  ) {
+    final data = {
+      'course_room_id': courseRoomId,
+      'analytics_room_id': analyticsRoomId,
+    };
+
+    final Object? decoded;
+    try {
+      decoded = jsonDecode(response.body);
+    } catch (_) {
+      // Not a failed grant, but we can no longer tell a granted instructor from
+      // an ungranted one — which is the silence this reporting exists to break.
+      ErrorHandler.logError(
+        e: 'grant_instructor_analytics_access returned an unreadable body',
+        data: data,
+      );
+      return;
+    }
+
+    final errors = decoded is Map<String, dynamic> ? decoded['errors'] : null;
+    if (errors is! List || errors.isEmpty) return;
+
+    ErrorHandler.logError(
+      e: 'grant_instructor_analytics_access returned per-instructor errors',
+      data: {
+        ...data,
+        'failure_count': errors.length,
+        // Server-side reasons only — instructor IDs stay out of Sentry.
+        'grant_errors': errors
+            .map((error) => error is Map ? error['error']?.toString() : null)
+            .nonNulls
+            .toList(),
+      },
+    );
   }
 }

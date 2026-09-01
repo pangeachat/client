@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 15:04:36.817378",
+    "@@last_modified": "2026-09-01 11:50:24.673477",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10763,6 +10763,14 @@
     "callHistoryYouDeclined": "Odbili ste ovaj poziv",
     "starsEarnedInLanguage": "Zvezdice osvojene u {language}",
     "readAloudNoVoiceNote": "Na ovom uređaju nije dostupan visokokvalitetan glas za {language}, tako da ova podešavanja nisu dostupna. I dalje možete reprodukovati zvuk sa trake sa porukama.",
+    "teachOptionSelected": "Predavanje odabrano",
+    "learnOptionSelected": "Učenje odabrano",
+    "selectedTargetLanguage": "Odabran {lang} kao ciljni jezik",
+    "selectedBaseLanguage": "Odabran {lang} kao osnovni jezik",
+    "resetTargetLanguage": "Poništi ciljni jezik",
+    "resetBaseLanguage": "Poništi osnovni jezik",
+    "selectedLanguageLevel": "Odabran {level} kao nivo jezika",
+    "resetLanguageLevel": "Poništi nivo jezika",
     "callTranscriptSharedNotice": "Ovaj poziv je transkribovan i sačuvan. Vi i druga osoba možete ga pročitati kasnije.",
     "callTranscriptTitle": "Transkript poziva",
     "callTranscriptLoadFailed": "Učitavanje transkripta nije uspelo",
@@ -10774,8 +10782,8 @@
     "callTranscriptNoSpeechDetected": "Ništa snimljeno od {name} nije poslato na transkripciju: ova aplikacija nije pronašla govor u tome i može biti pogrešna u vezi s tim, tako da se ne zna šta je rečeno.",
     "callTranscriptPartial": "Deo onoga što je {name} rekao/rekla možda nedostaje",
     "callTranscriptByTime": "do {time}",
-    "callTranscriptApproximateTimes": "Obrt označen sa „do“ vremena je izgovoren u to vreme ili pre njega. Ti obrti su prikazani u tom trenutku, tako da su možda izgovoreni ranije.",
-    "callTranscriptUnstatedTimes": "Neki obrti ne pokazuju vreme. Uređaj koji ih je snimio nije naveo koliko su tačna njegova vremena, tako da njihov položaj u ovom razgovoru može biti pogrešan.",
+    "callTranscriptApproximateTimes": "Obrt označen „do“ određenog vremena izgovoren je u to vreme ili pre njega. Ti obrti su prikazani u tom trenutku, tako da su možda izgovoreni ranije.",
+    "callTranscriptUnstatedTimes": "Neki obrti ne pokazuju vreme. Uređaj koji ih je snimio nije naveo koliko su tačna njegova vremena, tako da mesto gde se nalaze u ovom razgovoru može biti pogrešno.",
     "callTranscriptUnreconciledClocks": "Ovi obrti su snimljeni na dva uređaja čiji se satovi nisu mogli uporediti, tako da se ne prikazuje vreme i redosled njihovog pojavljivanja može biti pogrešan.",
     "callTranscriptOpen": "Pročitajte transkript"
 }

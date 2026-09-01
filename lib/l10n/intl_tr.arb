@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-31 15:04:40.323182",
+    "@@last_modified": "2026-09-01 11:50:28.077325",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10115,6 +10115,14 @@
     "callHistoryYouDeclined": "Bu aramayı reddettiniz",
     "starsEarnedInLanguage": "{language} dilinde kazanılan yıldızlar",
     "readAloudNoVoiceNote": "Bu cihazda yüksek kaliteli {language} sesi mevcut değil, bu nedenle bu ayarlar kullanılamıyor. Mesaj araç çubuğundan yine de ses çalabilirsiniz.",
+    "teachOptionSelected": "Öğretme seçildi",
+    "learnOptionSelected": "Öğrenme seçildi",
+    "selectedTargetLanguage": "Hedef dil olarak {lang} seçildi",
+    "selectedBaseLanguage": "Temel dil olarak {lang} seçildi",
+    "resetTargetLanguage": "Hedef dili sıfırla",
+    "resetBaseLanguage": "Temel dili sıfırla",
+    "selectedLanguageLevel": "Dil seviyesi olarak {level} seçildi",
+    "resetLanguageLevel": "Dil seviyesini sıfırla",
     "callTranscriptSharedNotice": "Bu arama yazıya döküldü ve kaydedildi. Siz ve diğer kişi daha sonra okuyabilirsiniz.",
     "callTranscriptTitle": "Arama dökümü",
     "callTranscriptLoadFailed": "Döküm yüklenemedi",
@@ -10126,7 +10134,7 @@
     "callTranscriptNoSpeechDetected": "{name} adlı kişiden kaydedilen hiçbir şey yazıya dökülmek üzere gönderilmedi: bu uygulama içinde konuşma bulamadı ve bu konuda yanılıyor olabilir, bu yüzden ne söylendiği bilinmiyor.",
     "callTranscriptPartial": "{name} adlı kişinin söylediklerinin bir kısmı eksik olabilir",
     "callTranscriptByTime": "{time} itibarıyla",
-    "callTranscriptApproximateTimes": "Bir zamanla \"itibarıyla\" işaretlenmiş bir konuşma o anda veya daha önce söylenmiştir. Bu konuşmalar o anda gösterilir, bu yüzden daha önce söylenmiş olabilir.",
+    "callTranscriptApproximateTimes": "Bir zamanla \"itibarıyla\" işaretlenmiş bir konuşma o anda veya öncesinde söylenmiştir. Bu konuşmalar o anda gösterilir, bu yüzden daha önce söylenmiş olabilir.",
     "callTranscriptUnstatedTimes": "Bazı konuşmalarda zaman belirtilmemiştir. Bunları kaydeden cihaz, zamanlarının ne kadar kesin olduğunu belirtmedi, bu yüzden bu konuşmadaki yerleri yanlış olabilir.",
     "callTranscriptUnreconciledClocks": "Bu konuşmalar, saatleri karşılaştırılamayan iki cihazda kaydedildi, bu yüzden zaman gösterilmiyor ve görünme sıraları yanlış olabilir.",
     "callTranscriptOpen": "Dökümü oku"

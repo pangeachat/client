@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-31 15:04:07.707001",
+    "@@last_modified": "2026-09-01 11:49:56.849491",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10734,6 +10734,14 @@
     "callHistoryYouDeclined": "Du afviste dette opkald",
     "starsEarnedInLanguage": "Stjerner optjent i {language}",
     "readAloudNoVoiceNote": "Der er ingen {language}-stemme i høj kvalitet tilgængelig på denne enhed, så disse indstillinger er utilgængelige. Du kan stadig afspille lyd fra meddelelsesværktøjslinjen.",
+    "teachOptionSelected": "Undervis valgt",
+    "learnOptionSelected": "Lær valgt",
+    "selectedTargetLanguage": "{lang} valgt som målsprog",
+    "selectedBaseLanguage": "{lang} valgt som grundsprog",
+    "resetTargetLanguage": "Nulstil målsprog",
+    "resetBaseLanguage": "Nulstil grundsprog",
+    "selectedLanguageLevel": "{level} valgt som sprogniveau",
+    "resetLanguageLevel": "Nulstil sprogniveau",
     "callTranscriptSharedNotice": "Dette opkald er transskriberet og gemt. Du og den anden person kan læse det bagefter.",
     "callTranscriptTitle": "Opkaldstranskription",
     "callTranscriptLoadFailed": "Kunne ikke indlæse transskriptionen",

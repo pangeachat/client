@@ -16,6 +16,7 @@ import 'package:fluffychat/routes/onboarding/onboarding_steps/user_type_onboardi
 import 'package:fluffychat/routes/onboarding/trial_info_provider.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../get_test_client.dart';
+import 'announcement_capture.dart';
 
 class _FakeMatrixState extends MatrixState {
   _FakeMatrixState(this._client);
@@ -127,5 +128,40 @@ void main() {
     expect(selectedColor, theme.colorScheme.primaryContainer);
     expect(ctaColor, theme.colorScheme.primary);
     expect(ctaColor, isNot(selectedColor));
+  });
+
+  // #8690 — the choice must reach assistive tech, not just sighted users: the
+  // chosen option carries the semantics selected flag, and each selection is
+  // announced to the screen reader.
+  testWidgets('the chosen option reads as selected and is announced', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    final announcements = captureAnnouncements(tester);
+    await pumpStep(tester);
+
+    await tester.tap(find.widgetWithText(ElevatedButton, 'Learn'));
+    await tester.pump();
+
+    expect(
+      tester.getSemantics(find.widgetWithText(ElevatedButton, 'Learn')),
+      isSemantics(isSelected: true),
+    );
+    expect(
+      tester.getSemantics(find.widgetWithText(ElevatedButton, 'Teach')),
+      isSemantics(isSelected: false, hasSelectedState: true),
+    );
+    expect(announcements, ['Learn selected']);
+
+    await tester.tap(find.widgetWithText(ElevatedButton, 'Teach'));
+    await tester.pump();
+
+    expect(
+      tester.getSemantics(find.widgetWithText(ElevatedButton, 'Teach')),
+      isSemantics(isSelected: true),
+    );
+    expect(announcements, ['Learn selected', 'Teach selected']);
+
+    semantics.dispose();
   });
 }

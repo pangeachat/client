@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 15:04:14.723325",
+    "@@last_modified": "2026-09-01 11:50:03.201391",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10728,19 +10728,27 @@
     "callHistoryYouDeclined": "דחית את השיחה הזו",
     "starsEarnedInLanguage": "כוכבים שנצברו ב{language}",
     "readAloudNoVoiceNote": "אין קול {language} באיכות גבוהה זמין במכשיר זה, ולכן הגדרות אלה אינן זמינות. עדיין ניתן להשמיע אודיו מסרגל הכלים של ההודעה.",
+    "teachOptionSelected": "האפשרות 'ללמד' נבחרה",
+    "learnOptionSelected": "האפשרות 'ללמוד' נבחרה",
+    "selectedTargetLanguage": "{lang} נבחרה כשפת יעד",
+    "selectedBaseLanguage": "{lang} נבחרה כשפת בסיס",
+    "resetTargetLanguage": "איפוס שפת יעד",
+    "resetBaseLanguage": "איפוס שפת בסיס",
+    "selectedLanguageLevel": "רמת השפה {level} נבחרה",
+    "resetLanguageLevel": "איפוס רמת השפה",
     "callTranscriptSharedNotice": "שיחה זו תומללה ונשמרה. אתה והאדם השני יכולים לקרוא אותה לאחר מכן.",
     "callTranscriptTitle": "תמלול שיחה",
-    "callTranscriptLoadFailed": "הטעינה של התמלול נכשלה",
+    "callTranscriptLoadFailed": "לא ניתן היה לטעון את התמלול",
     "callTranscriptRetry": "נסה שוב",
-    "callTranscriptStoppedEarly": "שיחה זו הכילה יותר מדי תוכן לקריאה בבת אחת, ולכן חלק ממנה אינו מוצג.",
+    "callTranscriptStoppedEarly": "שיחה זו הכילה יותר מדי תוכן לקריאה בפעם אחת, ולכן חלק ממנה אינו מוצג.",
     "callTranscriptNone": "אין תמלול מ{name}",
     "callTranscriptSaidNothing": "{name} לא אמר/ה דבר",
     "callTranscriptNothingRead": "לא ניתן היה לקרוא דבר ממה ש{name} אמר/ה",
-    "callTranscriptNoSpeechDetected": "שום דבר שהוקלט מ{name} לא נשלח לתמלול: האפליקציה הזו לא מצאה בו דיבור ויכולה לטעות בכך, ולכן מה שנאמר אינו ידוע.",
+    "callTranscriptNoSpeechDetected": "שום דבר שהוקלט מ{name} לא נשלח לתמלול: אפליקציה זו לא מצאה בו דיבור ויכולה לטעות בכך, ולכן מה שנאמר אינו ידוע.",
     "callTranscriptPartial": "חלק ממה ש{name} אמר/ה עשוי להיות חסר",
     "callTranscriptByTime": "ב-{time}",
     "callTranscriptApproximateTimes": "תור המסומן \"ב-\" שעה נאמר בשעה זו או לפניה. תורות אלו מוצגים באותו רגע, ולכן ייתכן שנאמרו מוקדם יותר.",
     "callTranscriptUnstatedTimes": "חלק מהתורות אינם מציגים שעה. המכשיר שהקליט אותם לא ציין עד כמה השעות שלו מדויקות, ולכן מיקומם בשיחה זו עשוי להיות שגוי.",
     "callTranscriptUnreconciledClocks": "תורות אלו הוקלטו בשני מכשירים שאת השעונים שלהם לא ניתן היה להשוות, ולכן לא מוצגות שעות וסדר הופעתם עשוי להיות שגוי.",
-    "callTranscriptOpen": "קרא/י את התמלול"
+    "callTranscriptOpen": "קרא את התמלול"
 }

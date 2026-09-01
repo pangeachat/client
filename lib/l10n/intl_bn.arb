@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 15:04:04.423803",
+    "@@last_modified": "2026-09-01 11:49:54.091886",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10442,6 +10442,14 @@
     "callHistoryYouDeclined": "আপনি এই কলটি প্রত্যাখ্যান করেছেন",
     "starsEarnedInLanguage": "{language}-এ অর্জিত স্টার",
     "readAloudNoVoiceNote": "এই ডিভাইসে উচ্চ-মানের {language} ভয়েস উপলব্ধ নেই, তাই এই সেটিংসগুলি অনুপলব্ধ। আপনি এখনও মেসেজ টুলবার থেকে অডিও চালাতে পারবেন।",
+    "teachOptionSelected": "শেখানো নির্বাচিত",
+    "learnOptionSelected": "শেখা নির্বাচিত",
+    "selectedTargetLanguage": "লক্ষ্য ভাষা হিসেবে {lang} নির্বাচিত",
+    "selectedBaseLanguage": "ভিত্তি ভাষা হিসেবে {lang} নির্বাচিত",
+    "resetTargetLanguage": "লক্ষ্য ভাষা রিসেট করুন",
+    "resetBaseLanguage": "ভিত্তি ভাষা রিসেট করুন",
+    "selectedLanguageLevel": "ভাষা স্তর হিসেবে {level} নির্বাচিত",
+    "resetLanguageLevel": "ভাষা স্তর রিসেট করুন",
     "callTranscriptSharedNotice": "এই কলটি প্রতিলিপি করা হয়েছে এবং সংরক্ষণ করা হয়েছে। আপনি এবং অন্য ব্যক্তি এটি পরে পড়তে পারবেন।",
     "callTranscriptTitle": "কল প্রতিলিপি",
     "callTranscriptLoadFailed": "প্রতিলিপি লোড করা যায়নি",
@@ -10455,6 +10463,6 @@
     "callTranscriptByTime": "{time} দ্বারা",
     "callTranscriptApproximateTimes": "একটি নির্দিষ্ট সময় দ্বারা চিহ্নিত একটি পালা সেই সময়ে বা তার আগে বলা হয়েছিল। সেই পালাগুলি সেই মুহূর্তে দেখানো হয়, তাই সেগুলি আগে বলা হয়ে থাকতে পারে।",
     "callTranscriptUnstatedTimes": "কিছু পালায় কোনো সময় দেখানো হয়নি। যে ডিভাইসটি সেগুলি রেকর্ড করেছে সেটি তার সময়ের নির্ভুলতা সম্পর্কে কিছু বলেনি, তাই এই কথোপকথনে তাদের অবস্থান ভুল হতে পারে।",
-    "callTranscriptUnreconciledClocks": "এই পালাগুলি দুটি ডিভাইসে রেকর্ড করা হয়েছিল যার ঘড়িগুলির তুলনা করা যায়নি, তাই কোনো সময় দেখানো হয়নি এবং তাদের প্রদর্শনের ক্রম ভুল হতে পারে।",
+    "callTranscriptUnreconciledClocks": "এই পালাগুলি দুটি ডিভাইসে রেকর্ড করা হয়েছিল যার ঘড়িগুলি তুলনা করা যায়নি, তাই কোনো সময় দেখানো হয়নি এবং তাদের প্রদর্শনের ক্রম ভুল হতে পারে।",
     "callTranscriptOpen": "প্রতিলিপি পড়ুন"
 }

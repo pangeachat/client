@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-31 15:04:19.251894",
+    "@@last_modified": "2026-09-01 11:50:07.316239",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10446,6 +10446,14 @@
     "callHistoryYouDeclined": "Dhiúltaigh tú don ghlao seo",
     "starsEarnedInLanguage": "Réaltaí tuillte i {language}",
     "readAloudNoVoiceNote": "Níl guth {language} ardchaighdeáin ar fáil ar an ngléas seo, mar sin níl na socruithe seo ar fáil. Is féidir leat fuaim a sheinm fós ó bharra uirlisí na teachtaireachta.",
+    "teachOptionSelected": "Teach selected",
+    "learnOptionSelected": "Learn selected",
+    "selectedTargetLanguage": "Selected {lang} as target language",
+    "selectedBaseLanguage": "Selected {lang} as base language",
+    "resetTargetLanguage": "Reset target language",
+    "resetBaseLanguage": "Reset base language",
+    "selectedLanguageLevel": "Selected {level} as language level",
+    "resetLanguageLevel": "Reset language level",
     "callTranscriptSharedNotice": "Tá an glao seo tras-scríofa agus sábháilte. Is féidir leat féin agus leis an duine eile é a léamh ina dhiaidh sin.",
     "callTranscriptTitle": "Tras-scríbhinn an ghlao",
     "callTranscriptLoadFailed": "Níorbh fhéidir an tras-scríbhinn a luchtú",
@@ -10458,7 +10466,7 @@
     "callTranscriptPartial": "D'fhéadfadh cuid den méid a dúirt {name} a bheith in easnamh",
     "callTranscriptByTime": "faoi {time}",
     "callTranscriptApproximateTimes": "Dúradh cas a marcáladh \"faoi\" am ag an am sin nó roimhe. Taispeántar na casanna sin ag an nóiméad sin, mar sin d'fhéadfadh siad a bheith ráite níos luaithe.",
-    "callTranscriptUnstatedTimes": "Ní thaispeánann roinnt casanna aon am. Níor dúirt an gléas a thaifead iad cé chomh cruinn is atá a chuid ama, mar sin d'fhéadfadh an áit a bhfuil siad sa chomhrá seo a bheith mícheart.",
-    "callTranscriptUnreconciledClocks": "Taifeadadh na casanna seo ar dhá ghléas nach bhféadfaí a gcuid clog a chur i gcomparáid, mar sin ní thaispeántar aon amanna agus d'fhéadfadh an t-ord ina bhfuil siad le feiceáil a bheith mícheart.",
+    "callTranscriptUnstatedTimes": "Ní thaispeánann roinnt casanna aon am. Níor dúirt an gléas a thaifead iad cé chomh cruinn agus atá a chuid ama, mar sin d'fhéadfadh an áit a bhfuil siad sa chomhrá seo a bheith mícheart.",
+    "callTranscriptUnreconciledClocks": "Taifeadadh na casanna seo ar dhá ghléas nach bhféadfaí a gcuid cloig a chur i gcomparáid, mar sin ní thaispeántar aon amanna agus d'fhéadfadh an t-ord ina bhfuil siad le feiceáil a bheith mícheart.",
     "callTranscriptOpen": "Léigh an tras-scríbhinn"
 }

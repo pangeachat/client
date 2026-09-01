@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-31 15:04:37.735654",
+    "@@last_modified": "2026-09-01 11:50:25.776411",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10332,7 +10332,15 @@
     "callHistoryYouDeclined": "Du avböjde detta samtal",
     "starsEarnedInLanguage": "Stjärnor intjänade i {language}",
     "readAloudNoVoiceNote": "Ingen högkvalitativ röst för {language} är tillgänglig på den här enheten, så dessa inställningar är inte tillgängliga. Du kan fortfarande spela upp ljud från meddelandeverktygsfältet.",
-    "callTranscriptSharedNotice": "Det här samtalet transkriberas och sparas. Du och den andra personen kan läsa det efteråt.",
+    "teachOptionSelected": "Undervisa valt",
+    "learnOptionSelected": "Lär dig valt",
+    "selectedTargetLanguage": "{lang} valt som målspråk",
+    "selectedBaseLanguage": "{lang} valt som basspråk",
+    "resetTargetLanguage": "Återställ målspråk",
+    "resetBaseLanguage": "Återställ basspråk",
+    "selectedLanguageLevel": "{level} valt som språknivå",
+    "resetLanguageLevel": "Återställ språknivå",
+    "callTranscriptSharedNotice": "Det här samtalet är transkriberat och sparat. Du och den andra personen kan läsa det efteråt.",
     "callTranscriptTitle": "Samtalstranskription",
     "callTranscriptLoadFailed": "Kunde inte ladda transkriptionen",
     "callTranscriptRetry": "Försök igen",
@@ -10343,8 +10351,8 @@
     "callTranscriptNoSpeechDetected": "Inget inspelat från {name} skickades för transkribering: den här appen hittade inget tal i det och kan ha fel om det, så vad som sades är okänt.",
     "callTranscriptPartial": "En del av vad {name} sa kan saknas",
     "callTranscriptByTime": "vid {time}",
-    "callTranscriptApproximateTimes": "En replik markerad \"vid\" en tid sades vid eller före den. Dessa repliker visas vid det ögonblicket, så de kan ha sagts tidigare.",
-    "callTranscriptUnstatedTimes": "Vissa repliker visar ingen tid. Enheten som spelade in dem angav inte hur exakta dess tider är, så var de befinner sig i denna konversation kan vara fel.",
-    "callTranscriptUnreconciledClocks": "Dessa repliker spelades in på två enheter vars klockor inte kunde jämföras, så inga tider visas och ordningen de visas i kan vara fel.",
+    "callTranscriptApproximateTimes": "Ett inlägg markerat \"vid\" en tid sades vid eller före den. Dessa inlägg visas vid det ögonblicket, så de kan ha sagts tidigare.",
+    "callTranscriptUnstatedTimes": "Vissa inlägg visar ingen tid. Enheten som spelade in dem angav inte hur exakta dess tider är, så var de befinner sig i denna konversation kan vara fel.",
+    "callTranscriptUnreconciledClocks": "Dessa inlägg spelades in på två enheter vars klockor inte kunde jämföras, så inga tider visas och ordningen de visas i kan vara fel.",
     "callTranscriptOpen": "Läs transkriptionen"
 }
