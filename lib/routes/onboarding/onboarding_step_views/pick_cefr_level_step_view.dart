@@ -42,7 +42,7 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
     // is a fresh null, and without this the page showed nothing selected while
     // Next stayed enabled off the still-set state (#7583).
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _setLevel(_step.state.languageLevel ?? userLevel),
+      (_) => _setLevel(_step.state.languageLevel ?? userLevel, announce: false),
     );
   }
 
@@ -52,9 +52,12 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
     super.dispose();
   }
 
-  void _setLevel(LanguageLevelTypeEnum? level) {
+  /// [announce] is false only for the entry seed above — a screen reader
+  /// should hear a selection the user made, not the page restoring state.
+  void _setLevel(LanguageLevelTypeEnum? level, {bool announce = true}) {
     _step.selectCefrLevel(level);
     _selectedLevel.value = level;
+    if (!announce) return;
 
     final l10n = L10n.of(context);
     SemanticsService.sendAnnouncement(

@@ -81,8 +81,8 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
     _selectedBaseLanguage.addListener(_onBaseLanguageChanged);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _setBaseLanguage(baseLanguage);
-      _setTargetLanguage(targetLanguage);
+      _setBaseLanguage(baseLanguage, announce: false);
+      _setTargetLanguage(targetLanguage, announce: false);
     });
   }
 
@@ -104,7 +104,9 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
     return base.langCodeShort == target.langCodeShort;
   }
 
-  void _setBaseLanguage(LanguageModel? lang) {
+  /// [announce] is false only for the entry seed above — a screen reader
+  /// should hear a selection the user made, not the page restoring state.
+  void _setBaseLanguage(LanguageModel? lang, {bool announce = true}) {
     if (_step.state.baseLanguage == lang &&
         _selectedBaseLanguage.value == lang) {
       return;
@@ -112,6 +114,7 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
 
     _step.selectBaseLanguage(lang);
     _selectedBaseLanguage.value = lang;
+    if (!announce) return;
 
     final l10n = L10n.of(context);
     SemanticsService.sendAnnouncement(
@@ -123,7 +126,7 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
     );
   }
 
-  void _setTargetLanguage(LanguageModel? lang) {
+  void _setTargetLanguage(LanguageModel? lang, {bool announce = true}) {
     if (_step.state.targetLanguage == lang &&
         _selectedTargetLanguage.value == lang) {
       return;
@@ -131,6 +134,7 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
 
     _step.selectTargetLanguage(lang);
     _selectedTargetLanguage.value = lang;
+    if (!announce) return;
 
     final l10n = L10n.of(context);
     SemanticsService.sendAnnouncement(
