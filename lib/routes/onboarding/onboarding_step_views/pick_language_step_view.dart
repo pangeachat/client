@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:provider/provider.dart';
@@ -111,6 +112,15 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
 
     _step.selectBaseLanguage(lang);
     _selectedBaseLanguage.value = lang;
+
+    final l10n = L10n.of(context);
+    SemanticsService.sendAnnouncement(
+      View.of(context),
+      lang != null
+          ? l10n.selectedBaseLanguage(lang.getDisplayName(l10n))
+          : l10n.resetBaseLanguage,
+      Directionality.of(context),
+    );
   }
 
   void _setTargetLanguage(LanguageModel? lang) {
@@ -121,6 +131,15 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
 
     _step.selectTargetLanguage(lang);
     _selectedTargetLanguage.value = lang;
+
+    final l10n = L10n.of(context);
+    SemanticsService.sendAnnouncement(
+      View.of(context),
+      lang != null
+          ? l10n.selectedTargetLanguage(lang.getDisplayName(l10n))
+          : l10n.resetTargetLanguage,
+      Directionality.of(context),
+    );
   }
 
   void _onBaseLanguageChanged() {
@@ -180,6 +199,11 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                   child: ValueListenableBuilder(
                     valueListenable: _searchController,
                     builder: (context, val, _) {
+                      final filtered = _languages
+                          .where(
+                            (l) => LanguageModel.search(l, val.text, context),
+                          )
+                          .toList();
                       return Semantics(
                         label: _searchController.text.isNotEmpty
                             ? L10n.of(
@@ -188,6 +212,7 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                             : L10n.of(context).languageListLabel,
                         container: true,
                         child: CustomScrollView(
+                          semanticChildCount: filtered.length,
                           slivers: [
                             SliverPadding(
                               padding: const EdgeInsets.only(
@@ -197,15 +222,6 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                               sliver: ValueListenableBuilder(
                                 valueListenable: _selectedTargetLanguage,
                                 builder: (context, selected, _) {
-                                  final filtered = _languages
-                                      .where(
-                                        (l) => LanguageModel.search(
-                                          l,
-                                          val.text,
-                                          context,
-                                        ),
-                                      )
-                                      .toList();
                                   final flagSize = 56.0;
                                   return SliverGrid(
                                     delegate: SliverChildBuilderDelegate((
@@ -215,54 +231,57 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                                       final l = filtered[index];
                                       final isSelected = selected == l;
                                       final hasSelection = selected != null;
-                                      return Opacity(
-                                        opacity: hasSelection && !isSelected
-                                            ? 0.5
-                                            : 1.0,
-                                        child: SizedBox.expand(
-                                          child: Material(
-                                            color: isSelected
-                                                ? AppConfig.goldLight.withAlpha(
-                                                    100,
-                                                  )
-                                                : theme
-                                                      .colorScheme
-                                                      .surfaceContainer,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(16.0),
-                                              side: isSelected
-                                                  ? BorderSide(
-                                                      color: AppConfig
-                                                          .yellowDark
-                                                          .withAlpha(100),
-                                                      width: 4.0,
-                                                    )
-                                                  : BorderSide(
-                                                      color: theme
-                                                          .colorScheme
-                                                          .surfaceContainerHigh,
-                                                      width: 2.0,
-                                                    ),
-                                            ),
-                                            child: InkWell(
-                                              onTap: () => _setTargetLanguage(
-                                                isSelected ? null : l,
+                                      return Semantics(
+                                        button: true,
+                                        selected: isSelected,
+                                        child: Opacity(
+                                          opacity: hasSelection && !isSelected
+                                              ? 0.5
+                                              : 1.0,
+                                          child: SizedBox.expand(
+                                            child: Material(
+                                              color: isSelected
+                                                  ? AppConfig.goldLight
+                                                        .withAlpha(100)
+                                                  : theme
+                                                        .colorScheme
+                                                        .surfaceContainer,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(16.0),
+                                                side: isSelected
+                                                    ? BorderSide(
+                                                        color: AppConfig
+                                                            .yellowDark
+                                                            .withAlpha(100),
+                                                        width: 4.0,
+                                                      )
+                                                    : BorderSide(
+                                                        color: theme
+                                                            .colorScheme
+                                                            .surfaceContainerHigh,
+                                                        width: 2.0,
+                                                      ),
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(16.0),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                      vertical: 12.0,
-                                                      horizontal: 8.0,
-                                                    ),
-                                                child:
-                                                    LanguageDisplayNamePrefixWidget(
-                                                      l,
-                                                      style: textStyle,
-                                                      iconSize: flagSize,
-                                                    ),
+                                              child: InkWell(
+                                                onTap: () => _setTargetLanguage(
+                                                  isSelected ? null : l,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(16.0),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.symmetric(
+                                                        vertical: 12.0,
+                                                        horizontal: 8.0,
+                                                      ),
+                                                  child:
+                                                      LanguageDisplayNamePrefixWidget(
+                                                        l,
+                                                        style: textStyle,
+                                                        iconSize: flagSize,
+                                                      ),
+                                                ),
                                               ),
                                             ),
                                           ),

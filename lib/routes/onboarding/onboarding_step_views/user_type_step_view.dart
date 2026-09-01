@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+
+import 'package:material_symbols_icons/symbols.dart';
+
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/user_type_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 class UserTypeStepView extends StatefulWidget {
   final UserTypeOnboardingStep step;
