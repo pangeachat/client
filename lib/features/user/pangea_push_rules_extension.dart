@@ -1,5 +1,6 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
@@ -27,7 +28,22 @@ extension PangeaPushRulesExtension on Client {
     return joined || invited;
   }
 
+  /// Both call sites (PangeaController) fire this without awaiting, so a
+  /// failure has nowhere to go: on web it escapes to the browser's global
+  /// handler and lands in Sentry raw — no severity table, no grouping key
+  /// (CLIENT-EHD,
+  /// an expired token failing `setPushRule`). Reported here through the one
+  /// sink instead; the rules are re-attempted on the next login or analytics
+  /// room, so there is nothing else for a caller to do with the failure.
   Future<void> setPangeaPushRules() async {
+    try {
+      await _setPangeaPushRules();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }
+  }
+
+  Future<void> _setPangeaPushRules() async {
     if (!isLogged()) return;
     if (prevBatch == null) await onSync.stream.first;
 
