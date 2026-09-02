@@ -23,6 +23,8 @@ Every subscription surface — the settings paywall, the selected-plan page, the
 
 Content sits directly on the art. There is no panel behind it: an opaque panel covers the artwork the backdrop exists to show, which is what made the star and its two characters invisible (#8751). The blocks that need a reading surface already carry one — the PRO features box and the plan chips are framed cards with their own fill — and the art shows in the gaps between them.
 
+Removing the panel is not enough on its own. The art is painted to cover the surface, which on a portrait screen scales it to the height exactly and so pins the character star to a fixed slice of the body whatever the screen size, while content height varies independently. So the surfaces keep the bottom of the body clear of content — `starBandFraction` — and the characters live there. The band is what makes the guarantee hold at every width, every scroll position and every text size rather than only on the screens someone happened to check. The onboarding free-trial step waives it, because its own layout already ends above the band.
+
 The art's opacity is a contrast budget rather than a taste setting. Body text placed on the backdrop has to clear WCAG AA in both themes, and that fixes the ceiling at `starBackgroundOpacity`. Raising it to make the art bolder puts unreadable text back on the paywall.
 
 Two kinds of content cannot clear that budget at any opacity, so they keep a surface of their own: the discount-code field, which the user types into, and the red and green status messages about an entered code. Those two colours are close to the surface's luminance whatever sits behind them.

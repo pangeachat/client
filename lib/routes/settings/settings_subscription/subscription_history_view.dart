@@ -55,119 +55,114 @@ class SubscriptionHistoryView extends StatelessWidget {
         centerTitle: false,
         titleSpacing: 0,
       ),
-      body: Stack(
-        children: [
-          const StarBackdrop(),
-          SingleChildScrollView(
+      body: StarBackdrop(
+        child: SingleChildScrollView(
+          child: Container(
+            alignment: Alignment.topCenter,
             child: Container(
-              alignment: Alignment.topCenter,
-              child: Container(
-                padding: EdgeInsets.all(16.0),
-                constraints: BoxConstraints(maxWidth: 400),
-                child: Column(
-                  spacing: 16.0,
-                  children: [
-                    ValueListenableBuilder(
-                      valueListenable: subscriptionStatusNotifier,
-                      builder: (context, subscriptionStatusState, _) =>
-                          switch (subscriptionStatusState) {
-                            SubscriptionLoading() => Center(
-                              child: CircularProgressIndicator.adaptive(),
-                            ),
-                            SubscriptionError() => SizedBox.shrink(),
-                            SubscriptionActive(
-                              response: final subscriptionStatus,
-                            ) ||
-                            SubscriptionInactive(
-                              response: final subscriptionStatus,
-                            ) => () {
-                              return ValueListenableBuilder(
-                                valueListenable: subscriptionPlanNotifier,
-                                builder: (context, subscriptionPlan, _) {
-                                  final displayEntitlement =
-                                      subscriptionStatus.cardDisplayEntitlement;
+              padding: EdgeInsets.all(16.0),
+              constraints: BoxConstraints(maxWidth: 400),
+              child: Column(
+                spacing: 16.0,
+                children: [
+                  ValueListenableBuilder(
+                    valueListenable: subscriptionStatusNotifier,
+                    builder: (context, subscriptionStatusState, _) =>
+                        switch (subscriptionStatusState) {
+                          SubscriptionLoading() => Center(
+                            child: CircularProgressIndicator.adaptive(),
+                          ),
+                          SubscriptionError() => SizedBox.shrink(),
+                          SubscriptionActive(
+                            response: final subscriptionStatus,
+                          ) ||
+                          SubscriptionInactive(
+                            response: final subscriptionStatus,
+                          ) => () {
+                            return ValueListenableBuilder(
+                              valueListenable: subscriptionPlanNotifier,
+                              builder: (context, subscriptionPlan, _) {
+                                final displayEntitlement =
+                                    subscriptionStatus.cardDisplayEntitlement;
 
-                                  final activeTrial =
-                                      subscriptionStatus.activeTrial;
+                                final activeTrial =
+                                    subscriptionStatus.activeTrial;
 
-                                  final trialDescription = activeTrial
-                                      ?.paymentPeriodDescription(l10n);
+                                final trialDescription = activeTrial
+                                    ?.paymentPeriodDescription(l10n);
 
-                                  return Column(
-                                    spacing: 20.0,
-                                    children: [
-                                      if (activeTrial != null &&
-                                          trialDescription != null)
-                                        Text(
-                                          trialDescription,
-                                          style: isColumnMode
-                                              ? theme.textTheme.titleMedium
-                                              : theme.textTheme.titleSmall,
-                                        ),
-                                      // The manage action is offered only once
-                                      // a billing portal actually resolved. A
-                                      // user with no billing account has no
-                                      // saved card to change, so the button is
-                                      // absent rather than permanently dead
-                                      // (#8374).
-                                      ValueListenableBuilder(
-                                        valueListenable:
-                                            canManageSubscriptionNotifier,
-                                        builder: (context, canManage, _) =>
-                                            UserSubscriptionPlanCard(
-                                              subscriptionTitle:
-                                                  displayEntitlement
-                                                      ?.subscriptionTitle(
-                                                        l10n,
-                                                      ) ??
-                                                  l10n.currentSubscription,
-                                              paymentPeriodDescription:
-                                                  displayEntitlement
-                                                      ?.paymentPeriodDescription(
-                                                        l10n,
-                                                      ),
-                                              priceDisplay:
-                                                  subscriptionPlan
-                                                      ?.priceDisplay ??
-                                                  displayEntitlement
-                                                      ?.priceDisplay(l10n),
-                                              showCancel: true,
-                                              canCancelNotifier:
-                                                  canCancelSubscriptionNotifier,
-                                              onCancel: onCancelSubscription,
-                                              showManage: canManage,
-                                              canManageNotifier:
-                                                  canManageSubscriptionNotifier,
-                                              onManage: onManageSubscription,
-                                            ),
+                                return Column(
+                                  spacing: 20.0,
+                                  children: [
+                                    if (activeTrial != null &&
+                                        trialDescription != null)
+                                      Text(
+                                        trialDescription,
+                                        style: isColumnMode
+                                            ? theme.textTheme.titleMedium
+                                            : theme.textTheme.titleSmall,
                                       ),
-                                    ],
-                                  );
-                                },
-                              );
-                            }(),
-                          },
-                    ),
-                    ValueListenableBuilder(
-                      valueListenable: invoiceHistoryNotifier,
-                      builder: (context, invoiceHistoryState, _) =>
-                          switch (invoiceHistoryState) {
-                            AsyncLoading() || AsyncIdle() => Center(
-                              child: CircularProgressIndicator.adaptive(),
-                            ),
-                            AsyncError() => SizedBox.shrink(),
-                            AsyncLoaded(value: final invoices) =>
-                              invoices.isEmpty
-                                  ? Text(L10n.of(context).noPaymentHistoryFound)
-                                  : _InvoiceHistoryList(invoices),
-                          },
-                    ),
-                  ],
-                ),
+                                    // The manage action is offered only once
+                                    // a billing portal actually resolved. A
+                                    // user with no billing account has no
+                                    // saved card to change, so the button is
+                                    // absent rather than permanently dead
+                                    // (#8374).
+                                    ValueListenableBuilder(
+                                      valueListenable:
+                                          canManageSubscriptionNotifier,
+                                      builder: (context, canManage, _) =>
+                                          UserSubscriptionPlanCard(
+                                            subscriptionTitle:
+                                                displayEntitlement
+                                                    ?.subscriptionTitle(l10n) ??
+                                                l10n.currentSubscription,
+                                            paymentPeriodDescription:
+                                                displayEntitlement
+                                                    ?.paymentPeriodDescription(
+                                                      l10n,
+                                                    ),
+                                            priceDisplay:
+                                                subscriptionPlan
+                                                    ?.priceDisplay ??
+                                                displayEntitlement
+                                                    ?.priceDisplay(l10n),
+                                            showCancel: true,
+                                            canCancelNotifier:
+                                                canCancelSubscriptionNotifier,
+                                            onCancel: onCancelSubscription,
+                                            showManage: canManage,
+                                            canManageNotifier:
+                                                canManageSubscriptionNotifier,
+                                            onManage: onManageSubscription,
+                                          ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }(),
+                        },
+                  ),
+                  ValueListenableBuilder(
+                    valueListenable: invoiceHistoryNotifier,
+                    builder: (context, invoiceHistoryState, _) =>
+                        switch (invoiceHistoryState) {
+                          AsyncLoading() || AsyncIdle() => Center(
+                            child: CircularProgressIndicator.adaptive(),
+                          ),
+                          AsyncError() => SizedBox.shrink(),
+                          AsyncLoaded(value: final invoices) =>
+                            invoices.isEmpty
+                                ? Text(L10n.of(context).noPaymentHistoryFound)
+                                : _InvoiceHistoryList(invoices),
+                        },
+                  ),
+                ],
               ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }

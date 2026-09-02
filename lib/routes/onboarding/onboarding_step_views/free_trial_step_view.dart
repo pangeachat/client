@@ -47,118 +47,112 @@ class FreeTrialStepView extends StatelessWidget {
           ),
           automaticallyImplyLeading: false,
         ),
-        body: Stack(
-          children: [
-            const StarBackdrop(),
-            Center(
-              child: Container(
-                // Matches the wizard shell in onboarding_page.dart.
-                width: double.infinity,
-                constraints: const BoxConstraints(maxWidth: 600.0),
-                padding: const EdgeInsets.only(
-                  left: 16.0,
-                  right: 16.0,
-                  bottom: 20.0,
-                ),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Center(
-                        child: Semantics(
-                          label:
-                              '${L10n.of(context).thanksForSigningUp} ${L10n.of(context).sevenDaysFree}',
-                          container: true,
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                Column(
-                                  spacing: 16.0,
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.all(2.0),
-                                      decoration: BoxDecoration(
-                                        color: theme.colorScheme.surface,
-                                        borderRadius: BorderRadius.circular(
-                                          AppConfig.borderRadius,
-                                        ),
+        body: StarBackdrop(
+          reserveStarBand: false,
+          child: Center(
+            child: Container(
+              // Matches the wizard shell in onboarding_page.dart.
+              width: double.infinity,
+              constraints: const BoxConstraints(maxWidth: 600.0),
+              padding: const EdgeInsets.only(
+                left: 16.0,
+                right: 16.0,
+                bottom: 20.0,
+              ),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Semantics(
+                        label:
+                            '${L10n.of(context).thanksForSigningUp} ${L10n.of(context).sevenDaysFree}',
+                        container: true,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Column(
+                                spacing: 16.0,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(2.0),
+                                    decoration: BoxDecoration(
+                                      color: theme.colorScheme.surface,
+                                      borderRadius: BorderRadius.circular(
+                                        AppConfig.borderRadius,
                                       ),
-                                      child: ExcludeSemantics(
-                                        child: Column(
-                                          spacing: 8.0,
-                                          children: [
-                                            Text(
-                                              L10n.of(
-                                                context,
-                                              ).thanksForSigningUp,
-                                              style: mediumTextStyle,
-                                              textAlign: TextAlign.center,
+                                    ),
+                                    child: ExcludeSemantics(
+                                      child: Column(
+                                        spacing: 8.0,
+                                        children: [
+                                          Text(
+                                            L10n.of(context).thanksForSigningUp,
+                                            style: mediumTextStyle,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          Text(
+                                            L10n.of(context).sevenDaysFree,
+                                            style: largeTextStyle?.copyWith(
+                                              color: gold,
+                                              fontWeight: FontWeight.w900,
                                             ),
-                                            Text(
-                                              L10n.of(context).sevenDaysFree,
-                                              style: largeTextStyle?.copyWith(
-                                                color: gold,
-                                                fontWeight: FontWeight.w900,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ],
-                                        ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    ProFeaturesCard(
-                                      titlePadding: const EdgeInsets.all(4.0),
-                                      padding: const EdgeInsets.all(12.0),
-                                      borderRadius: 12.0,
-                                      frameColor: gold,
-                                      borderWidth: 2,
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.all(2.0),
-                                      decoration: BoxDecoration(
-                                        color: theme.colorScheme.surface,
-                                        borderRadius: BorderRadius.circular(
-                                          AppConfig.borderRadius,
-                                        ),
-                                      ),
-                                      child: Semantics(
-                                        container: true,
-                                        child: Text(
-                                          L10n.of(
-                                            context,
-                                          ).manageTrialInSettings,
-                                          textAlign: TextAlign.center,
-                                          style: mediumTextStyle,
-                                        ),
+                                  ),
+                                  ProFeaturesCard(
+                                    titlePadding: const EdgeInsets.all(4.0),
+                                    padding: const EdgeInsets.all(12.0),
+                                    borderRadius: 12.0,
+                                    frameColor: gold,
+                                    borderWidth: 2,
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.all(2.0),
+                                    decoration: BoxDecoration(
+                                      color: theme.colorScheme.surface,
+                                      borderRadius: BorderRadius.circular(
+                                        AppConfig.borderRadius,
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                    child: Semantics(
+                                      container: true,
+                                      child: Text(
+                                        L10n.of(context).manageTrialInSettings,
+                                        textAlign: TextAlign.center,
+                                        style: mediumTextStyle,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ),
                     ),
-                    Semantics(
-                      container: true,
-                      child: OnboardingForwardButton(
-                        onPressed: forward,
-                        label: L10n.of(context).claimTrial,
-                      ),
+                  ),
+                  Semantics(
+                    container: true,
+                    child: OnboardingForwardButton(
+                      onPressed: forward,
+                      label: L10n.of(context).claimTrial,
                     ),
-                    const SizedBox(height: 8),
-                    Semantics(
-                      container: true,
-                      child: Text(
-                        L10n.of(context).noCreditCardRequired,
-                        style: mediumTextStyle,
-                      ),
+                  ),
+                  const SizedBox(height: 8),
+                  Semantics(
+                    container: true,
+                    child: Text(
+                      L10n.of(context).noCreditCardRequired,
+                      style: mediumTextStyle,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
