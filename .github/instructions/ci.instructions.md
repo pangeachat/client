@@ -12,9 +12,9 @@ What gates a merge to `main`, why `integrate.yaml` is shaped the way it is, and 
 
 | Check | Required | Runtime | Why |
 |---|---|---|---|
-| `code_tests` | **yes** | ~10s | The gate the two jobs below report through, and the only name branch protection asks for — which is what lets the work under it be reshaped without a protection change. Red if either of them is red. |
-| `code_lint` | via `code_tests` | ~3m30s | Format / import-sort / license / analyze. Installed after red `dart format` merges broke `main` (pangeachat/client#7680). |
-| `code_test_shards` (4 jobs) | via `code_tests` | ~4m30s each, in parallel | The Dart test suite. |
+| `code_tests` | **yes** | ~5s | The gate the two jobs below report through, and the only name branch protection asks for — which is what lets the work under it be reshaped without a protection change. Red if either of them is red. |
+| `code_lint` | via `code_tests` | ~3m | Format / import-sort / license / analyze. Installed after red `dart format` merges broke `main` (pangeachat/client#7680). |
+| `code_test_shards` (4 jobs) | via `code_tests` | ~3m-5m each, in parallel | The Dart test suite. |
 | `accessibility_floor_check` | **yes** | ~5s | The source-level accessible-names gate [accessibility.instructions.md](accessibility.instructions.md) counts on to fail the build. Runs in parallel, so it costs nothing on the critical path. |
 | `build_debug_web` | no | ~7m | Runs on every PR and is visible when red, but does not block: as the slowest PR job it would set the merge-latency floor for every PR, including doc-only ones. A break is caught by the push-to-`main` run instead. |
 | `e2e_locator_check` | no | ~7s | |
@@ -30,7 +30,7 @@ Branch protection is **non-strict** — a PR need not be rebased onto the latest
 
 ### Why the test suite is split by file
 
-A test run spends about half its time compiling test files and the other half running them — measured September 2026, when one unsplit run took 850 seconds, roughly 440 of them compiling. Both halves divide cleanly across runners, so splitting the roughly 470 test files four ways and giving each shard a quarter of them took the required check from about 18 minutes to about 5.
+A test run spends about half its time compiling test files and the other half running them — measured September 2026, when one unsplit run took 850 seconds, roughly 440 of them compiling. Both halves divide cleanly across runners, so splitting the roughly 470 test files four ways and giving each shard a quarter of them took the required check from about 15 minutes to under 6 — measured against an unsharded run of the same commit, which ran the same 4712 tests.
 
 The split has to be by file. `flutter test` offers its own `--total-shards`, but that one slices the tests *inside* each file, so every shard still loads and compiles all of them — which caps the gain near half, not a quarter. Files are handed out round-robin over the sorted list rather than in contiguous blocks, so no single shard inherits all of a slow directory.
 
