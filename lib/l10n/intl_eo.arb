@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:41:20.767389",
+    "@@last_modified": "2026-09-02 12:25:24.741927",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10790,5 +10790,9 @@
     "activityReview": "Agada revizio",
     "activityPanel": "Agado",
     "coursePage": "Kurso-paĝo",
-    "suggestedActivities": "Sugestitaj Agadoj"
+    "suggestedActivities": "Sugestitaj Agadoj",
+    "constructLevelSeeds": "Semoj, novaj vortoj",
+    "constructLevelGreens": "Verdaĵoj, kreskantaj vortoj",
+    "constructLevelFlowers": "Floroj, regataj vortoj",
+    "filterAndSearch": "Filtri kaj serĉi"
 }

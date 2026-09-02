@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-02 11:41:28.842195",
+    "@@last_modified": "2026-09-02 12:25:32.115674",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Mapitio ya shughuli",
     "activityPanel": "Shughuli",
     "coursePage": "Ukurasa wa kozi",
-    "suggestedActivities": "Shughuli Zilizopendekezwa"
+    "suggestedActivities": "Shughuli Zilizopendekezwa",
+    "constructLevelSeeds": "Mbegu, maneno mapya",
+    "constructLevelGreens": "Kijani, maneno yanayokua",
+    "constructLevelFlowers": "Maua, maneno yaliyobobea",
+    "filterAndSearch": "Chuja na utafute"
 }

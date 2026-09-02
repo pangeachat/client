@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-02 11:41:22.468268",
+    "@@last_modified": "2026-09-02 12:25:26.997750",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10614,5 +10614,9 @@
     "activityReview": "アクティビティレビュー",
     "activityPanel": "アクティビティ",
     "coursePage": "コースページ",
-    "suggestedActivities": "おすすめのアクティビティ"
+    "suggestedActivities": "おすすめのアクティビティ",
+    "constructLevelSeeds": "シード、新しい単語",
+    "constructLevelGreens": "グリーン、成長中の単語",
+    "constructLevelFlowers": "フラワー、習得済みの単語",
+    "filterAndSearch": "フィルターと検索"
 }

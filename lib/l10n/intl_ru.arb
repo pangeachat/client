@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-02 11:41:26.876530",
+    "@@last_modified": "2026-09-02 12:25:30.834151",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10817,5 +10817,9 @@
     "activityReview": "Обзор активности",
     "activityPanel": "Активность",
     "coursePage": "Страница курса",
-    "suggestedActivities": "Предлагаемые действия"
+    "suggestedActivities": "Предлагаемые действия",
+    "constructLevelSeeds": "Семена, новые слова",
+    "constructLevelGreens": "Всходы, растущие слова",
+    "constructLevelFlowers": "Цветы, освоенные слова",
+    "filterAndSearch": "Фильтр и поиск"
 }

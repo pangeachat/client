@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:41:22.853299",
+    "@@last_modified": "2026-09-02 12:25:27.736097",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10038,5 +10038,9 @@
     "activityReview": "활동 검토",
     "activityPanel": "활동",
     "coursePage": "코스 페이지",
-    "suggestedActivities": "추천 활동"
+    "suggestedActivities": "추천 활동",
+    "constructLevelSeeds": "씨앗, 새로운 단어",
+    "constructLevelGreens": "새싹, 성장하는 단어",
+    "constructLevelFlowers": "꽃, 마스터한 단어",
+    "filterAndSearch": "필터 및 검색"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-02 11:41:21.418632",
+    "@@last_modified": "2026-09-02 12:25:25.353745",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Aktiviteitsbeoardieling",
     "activityPanel": "Aktiviteit",
     "coursePage": "Kurcusside",
-    "suggestedActivities": "Foarstelde aktiviteiten"
+    "suggestedActivities": "Foarstelde aktiviteiten",
+    "constructLevelSeeds": "Siedsjes, nije wurden",
+    "constructLevelGreens": "Griene, groeiende wurden",
+    "constructLevelFlowers": "Blommen, behearske wurden",
+    "filterAndSearch": "Filterje en sykje"
 }

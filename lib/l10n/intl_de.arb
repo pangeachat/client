@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-02 11:41:20.294396",
+    "@@last_modified": "2026-09-02 12:25:24.288138",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9832,5 +9832,9 @@
     "activityReview": "Aktivitätsprüfung",
     "activityPanel": "Aktivität",
     "coursePage": "Kursseite",
-    "suggestedActivities": "Vorgeschlagene Aktivitäten"
+    "suggestedActivities": "Vorgeschlagene Aktivitäten",
+    "constructLevelSeeds": "Samen, neue Wörter",
+    "constructLevelGreens": "Grün, wachsende Wörter",
+    "constructLevelFlowers": "Blüten, gemeisterte Wörter",
+    "filterAndSearch": "Filtern und suchen"
 }

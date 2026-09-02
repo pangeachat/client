@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-02 11:41:19.818297",
+    "@@last_modified": "2026-09-02 12:25:23.642625",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Fəaliyyətə baxış",
     "activityPanel": "Fəaliyyət",
     "coursePage": "Kurs səhifəsi",
-    "suggestedActivities": "Təklif olunan fəaliyyətlər"
+    "suggestedActivities": "Təklif olunan fəaliyyətlər",
+    "constructLevelSeeds": "Toxumlar, yeni sözlər",
+    "constructLevelGreens": "Yaşıllıqlar, böyüyən sözlər",
+    "constructLevelFlowers": "Güllər, mənimsənilmiş sözlər",
+    "filterAndSearch": "Filtrlə və axtar"
 }

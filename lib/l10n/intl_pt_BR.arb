@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:41:26.457166",
+    "@@last_modified": "2026-09-02 12:25:30.627413",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9845,5 +9845,9 @@
     "activityReview": "Revisão de atividade",
     "activityPanel": "Atividade",
     "coursePage": "Página do curso",
-    "suggestedActivities": "Atividades Sugeridas"
+    "suggestedActivities": "Atividades Sugeridas",
+    "constructLevelSeeds": "Sementes, palavras novas",
+    "constructLevelGreens": "Verdes, palavras em crescimento",
+    "constructLevelFlowers": "Flores, palavras dominadas",
+    "filterAndSearch": "Filtrar e pesquisar"
 }

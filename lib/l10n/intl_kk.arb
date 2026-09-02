@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-02 11:41:25.207830",
+    "@@last_modified": "2026-09-02 12:25:27.582043",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Әрекетті шолу",
     "activityPanel": "Әрекет",
     "coursePage": "Курс беті",
-    "suggestedActivities": "Ұсынылған әрекеттер"
+    "suggestedActivities": "Ұсынылған әрекеттер",
+    "constructLevelSeeds": "Тұқымдар, жаңа сөздер",
+    "constructLevelGreens": "Көктер, өсіп келе жатқан сөздер",
+    "constructLevelFlowers": "Гүлдер, меңгерілген сөздер",
+    "filterAndSearch": "Сүзгілеу және іздеу"
 }

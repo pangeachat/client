@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-02 11:41:20.417375",
+    "@@last_modified": "2026-09-02 12:25:24.176540",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Adolygiad gweithgaredd",
     "activityPanel": "Gweithgaredd",
     "coursePage": "Tudalen cwrs",
-    "suggestedActivities": "Gweithgareddau Awgrymedig"
+    "suggestedActivities": "Gweithgareddau Awgrymedig",
+    "constructLevelSeeds": "Hadau, geiriau newydd",
+    "constructLevelGreens": "Gwyrddion, geiriau sy'n tyfu",
+    "constructLevelFlowers": "Blodau, geiriau wedi'u meistroli",
+    "filterAndSearch": "Hidlo a chwilio"
 }

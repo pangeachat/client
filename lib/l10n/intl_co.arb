@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-02 11:41:20.329592",
+    "@@last_modified": "2026-09-02 12:25:23.981754",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Revisione di l'attività",
     "activityPanel": "Attività",
     "coursePage": "Pagina di u corsu",
-    "suggestedActivities": "Attività suggerite"
+    "suggestedActivities": "Attività suggerite",
+    "constructLevelSeeds": "Semi, parolle nove",
+    "constructLevelGreens": "Verdura, parolle chì crescenu",
+    "constructLevelFlowers": "Fiori, parolle ammaestrate",
+    "filterAndSearch": "Filtrà è circà"
 }

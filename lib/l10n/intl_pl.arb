@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-02 11:41:26.043435",
+    "@@last_modified": "2026-09-02 12:25:30.343247",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9930,5 +9930,9 @@
     "activityReview": "Przegląd aktywności",
     "activityPanel": "Aktywność",
     "coursePage": "Strona kursu",
-    "suggestedActivities": "Sugerowane aktywności"
+    "suggestedActivities": "Sugerowane aktywności",
+    "constructLevelSeeds": "Nasiona, nowe słowa",
+    "constructLevelGreens": "Kiełki, rosnące słowa",
+    "constructLevelFlowers": "Kwiaty, opanowane słowa",
+    "filterAndSearch": "Filtruj i szukaj"
 }

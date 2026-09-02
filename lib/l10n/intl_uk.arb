@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-02 11:41:36.031450",
+    "@@last_modified": "2026-09-02 12:25:32.665192",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9845,5 +9845,9 @@
     "activityReview": "Огляд активності",
     "activityPanel": "Активність",
     "coursePage": "Сторінка курсу",
-    "suggestedActivities": "Пропоновані заняття"
+    "suggestedActivities": "Пропоновані заняття",
+    "constructLevelSeeds": "Насіння, нові слова",
+    "constructLevelGreens": "Зелень, слова, що ростуть",
+    "constructLevelFlowers": "Квіти, опановані слова",
+    "filterAndSearch": "Фільтрувати та шукати"
 }

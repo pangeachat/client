@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-02 11:41:23.507653",
+    "@@last_modified": "2026-09-02 12:25:27.933243",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Actio recognita",
     "activityPanel": "Actio",
     "coursePage": "Pagina cursus",
-    "suggestedActivities": "Actiones Suasoriae"
+    "suggestedActivities": "Actiones Suasoriae",
+    "constructLevelSeeds": "Semina, verba nova",
+    "constructLevelGreens": "Virentia, verba crescentia",
+    "constructLevelFlowers": "Flores, verba perfecta",
+    "filterAndSearch": "Spargere et quaerere"
 }

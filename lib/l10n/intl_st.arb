@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-02 11:41:28.689672",
+    "@@last_modified": "2026-09-02 12:25:32.178510",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Tlhahlobo ya tshebetso",
     "activityPanel": "Tshebetso",
     "coursePage": "Leqephe la thupelo",
-    "suggestedActivities": "Mesebetsi e Khothalletsoang"
+    "suggestedActivities": "Mesebetsi e Khothalletsoang",
+    "constructLevelSeeds": "Peo, mantsoe a macha",
+    "constructLevelGreens": "Mahlaka, mantsoe a ntseng a hola",
+    "constructLevelFlowers": "Lipalesa, mantsoe a tsejoang hantle",
+    "filterAndSearch": "Hlotha le ho batla"
 }

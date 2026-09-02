@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-02 11:41:26.341373",
+    "@@last_modified": "2026-09-02 12:25:30.596323",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2249,5 +2249,9 @@
     "activityReview": "فعالیت بیاکتنه",
     "activityPanel": "فعالیت",
     "coursePage": "د کورس پاڼه",
-    "suggestedActivities": "وړاندیز شوي فعالیتونه"
+    "suggestedActivities": "وړاندیز شوي فعالیتونه",
+    "constructLevelSeeds": "تخمونه، نوې کلمې",
+    "constructLevelGreens": "شنه، وده کوونکې کلمې",
+    "constructLevelFlowers": "ګلان، ماسټر شوې کلمې",
+    "filterAndSearch": "فلټر او لټون"
 }

@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-02 11:41:26.556456",
+    "@@last_modified": "2026-09-02 12:25:30.648688",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10762,5 +10762,9 @@
     "activityReview": "Revisão da atividade",
     "activityPanel": "Atividade",
     "coursePage": "Página do curso",
-    "suggestedActivities": "Atividades Sugeridas"
+    "suggestedActivities": "Atividades Sugeridas",
+    "constructLevelSeeds": "Sementes, novas palavras",
+    "constructLevelGreens": "Verdes, palavras em crescimento",
+    "constructLevelFlowers": "Flores, palavras dominadas",
+    "filterAndSearch": "Filtrar e pesquisar"
 }

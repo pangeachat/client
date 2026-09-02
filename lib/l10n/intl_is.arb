@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-02 11:41:22.315754",
+    "@@last_modified": "2026-09-02 12:25:26.900072",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Yfirlit yfir virkni",
     "activityPanel": "Virkni",
     "coursePage": "Námskeiðssíða",
-    "suggestedActivities": "Tillögur að verkefnum"
+    "suggestedActivities": "Tillögur að verkefnum",
+    "constructLevelSeeds": "Fræ, ný orð",
+    "constructLevelGreens": "Grænt, vaxandi orð",
+    "constructLevelFlowers": "Blóm, orð sem hefur verið náð tökum á",
+    "filterAndSearch": "Sía og leita"
 }

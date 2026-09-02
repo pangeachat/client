@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:41:28.206082",
+    "@@last_modified": "2026-09-02 12:25:31.923562",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10794,5 +10794,9 @@
     "activityReview": "Pregled aktivnosti",
     "activityPanel": "Aktivnost",
     "coursePage": "Stranica kursa",
-    "suggestedActivities": "Predložene aktivnosti"
+    "suggestedActivities": "Predložene aktivnosti",
+    "constructLevelSeeds": "Seme, nove reči",
+    "constructLevelGreens": "Zelenilo, reči u razvoju",
+    "constructLevelFlowers": "Cveće, savladane reči",
+    "filterAndSearch": "Filtriraj i pretraži"
 }

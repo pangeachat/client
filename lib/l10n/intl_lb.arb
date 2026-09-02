@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-02 11:41:23.455354",
+    "@@last_modified": "2026-09-02 12:25:28.146662",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Aktivitéitsiwwerbléck",
     "activityPanel": "Aktivitéit",
     "coursePage": "Cours Säit",
-    "suggestedActivities": "Virgeschloe Aktivitéiten"
+    "suggestedActivities": "Virgeschloe Aktivitéiten",
+    "constructLevelSeeds": "Somen, nei Wierder",
+    "constructLevelGreens": "Gréngs, wuessend Wierder",
+    "constructLevelFlowers": "Blummen, beherrschte Wierder",
+    "filterAndSearch": "Filteren a sichen"
 }

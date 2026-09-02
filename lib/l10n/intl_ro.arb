@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:41:26.604418",
+    "@@last_modified": "2026-09-02 12:25:30.688551",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10577,5 +10577,9 @@
     "activityReview": "Revizuirea activității",
     "activityPanel": "Activitate",
     "coursePage": "Pagina cursului",
-    "suggestedActivities": "Activități sugerate"
+    "suggestedActivities": "Activități sugerate",
+    "constructLevelSeeds": "Semințe, cuvinte noi",
+    "constructLevelGreens": "Verdețuri, cuvinte în creștere",
+    "constructLevelFlowers": "Flori, cuvinte stăpânite",
+    "filterAndSearch": "Filtrează și caută"
 }

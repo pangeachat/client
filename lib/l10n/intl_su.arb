@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-02 11:41:28.635272",
+    "@@last_modified": "2026-09-02 12:25:31.963110",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Tinjauan kagiatan",
     "activityPanel": "Kagiatan",
     "coursePage": "Kaca kursus",
-    "suggestedActivities": "Kagiatan nu Disarankeun"
+    "suggestedActivities": "Kagiatan nu Disarankeun",
+    "constructLevelSeeds": "Siki, kecap anyar",
+    "constructLevelGreens": "Héjo, kecap nu tumuwuh",
+    "constructLevelFlowers": "Kembang, kecap nu geus dikawasa",
+    "filterAndSearch": "Saring jeung teang"
 }

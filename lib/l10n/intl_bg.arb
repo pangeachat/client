@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-02 11:41:19.539547",
+    "@@last_modified": "2026-09-02 12:25:23.231548",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Преглед на активността",
     "activityPanel": "Активност",
     "coursePage": "Страница на курса",
-    "suggestedActivities": "Предложени дейности"
+    "suggestedActivities": "Предложени дейности",
+    "constructLevelSeeds": "Семена, нови думи",
+    "constructLevelGreens": "Кълнове, растящи думи",
+    "constructLevelFlowers": "Цветя, овладени думи",
+    "filterAndSearch": "Филтриране и търсене"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-02 11:41:32.547945",
+    "@@last_modified": "2026-09-02 12:25:37.992284",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Luk bak na wetin yu dɔn du",
     "activityPanel": "Wetin yu dɔn du",
     "coursePage": "Di pej fɔ di kos",
-    "suggestedActivities": "Sɔm Tin Dɛn We Yu Fɔ Du"
+    "suggestedActivities": "Sɔm Tin Dɛn We Yu Fɔ Du",
+    "constructLevelSeeds": "Sid dɛn, nyu wɔd dɛn",
+    "constructLevelGreens": "Grin dɛn, wɔd dɛn we de gro",
+    "constructLevelFlowers": "Fula dɛn, wɔd dɛn we yu dɔn sabi fayn",
+    "filterAndSearch": "Fulta ɛn Sɛch"
 }

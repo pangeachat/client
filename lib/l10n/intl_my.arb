@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-09-02 11:41:25.154130",
+    "@@last_modified": "2026-09-02 12:25:30.219902",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2249,5 +2249,9 @@
     "activityReview": "လုပ်ဆောင်ချက် ပြန်လည်သုံးသပ်ခြင်း",
     "activityPanel": "လုပ်ဆောင်ချက်",
     "coursePage": "သင်တန်းစာမျက်နှာ",
-    "suggestedActivities": "အကြံပြုထားသော လှုပ်ရှားမှုများ"
+    "suggestedActivities": "အကြံပြုထားသော လှုပ်ရှားမှုများ",
+    "constructLevelSeeds": "မျိုးစေ့များ၊ စကားလုံးအသစ်များ",
+    "constructLevelGreens": "အပင်ငယ်များ၊ ကြီးထွားလာသော စကားလုံးများ",
+    "constructLevelFlowers": "ပန်းများ၊ ကျွမ်းကျင်သော စကားလုံးများ",
+    "filterAndSearch": "စစ်ထုတ်ပြီး ရှာဖွေပါ"
 }

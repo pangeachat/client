@@ -1938,7 +1938,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-02 11:41:23.114606",
+    "@@last_modified": "2026-09-02 12:25:27.390368",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10745,5 +10745,9 @@
     "activityReview": "აქტივობის მიმოხილვა",
     "activityPanel": "აქტივობა",
     "coursePage": "კურსის გვერდი",
-    "suggestedActivities": "შემოთავაზებული აქტივობები"
+    "suggestedActivities": "შემოთავაზებული აქტივობები",
+    "constructLevelSeeds": "თესლები, ახალი სიტყვები",
+    "constructLevelGreens": "ნერგები, მზარდი სიტყვები",
+    "constructLevelFlowers": "ყვავილები, ათვისებული სიტყვები",
+    "filterAndSearch": "გაფილტვრა და ძიება"
 }

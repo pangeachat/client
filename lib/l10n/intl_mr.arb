@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-02 11:41:24.817520",
+    "@@last_modified": "2026-09-02 12:25:29.073736",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2249,5 +2249,9 @@
     "activityReview": "गतिविधी पुनरावलोकन",
     "activityPanel": "गतिविधी",
     "coursePage": "अभ्यासक्रम पृष्ठ",
-    "suggestedActivities": "सुचवलेले उपक्रम"
+    "suggestedActivities": "सुचवलेले उपक्रम",
+    "constructLevelSeeds": "सीड्स, नवीन शब्द",
+    "constructLevelGreens": "ग्रीन्स, वाढणारे शब्द",
+    "constructLevelFlowers": "फ्लॉवर्स, पारंगत शब्द",
+    "filterAndSearch": "फिल्टर करा आणि शोधा"
 }

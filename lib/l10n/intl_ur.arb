@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-02 11:41:30.489266",
+    "@@last_modified": "2026-09-02 12:25:32.761997",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2249,5 +2249,9 @@
     "activityReview": "سرگرمی کا جائزہ",
     "activityPanel": "سرگرمی",
     "coursePage": "کورس کا صفحہ",
-    "suggestedActivities": "تجویز کردہ سرگرمیاں"
+    "suggestedActivities": "تجویز کردہ سرگرمیاں",
+    "constructLevelSeeds": "بیج، نئے الفاظ",
+    "constructLevelGreens": "سبزیاں، بڑھتے ہوئے الفاظ",
+    "constructLevelFlowers": "پھول، مہارت حاصل کیے ہوئے الفاظ",
+    "filterAndSearch": "فلٹر اور تلاش کریں"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-02 11:41:27.515010",
+    "@@last_modified": "2026-09-02 12:25:31.283361",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2249,5 +2249,9 @@
     "activityReview": "ක්‍රියාකාරකම් සමාලෝචනය",
     "activityPanel": "ක්‍රියාකාරකම්",
     "coursePage": "පාඨමාලා පිටුව",
-    "suggestedActivities": "යෝජිත ක්‍රියාකාරකම්"
+    "suggestedActivities": "යෝජිත ක්‍රියාකාරකම්",
+    "constructLevelSeeds": "බීජ, නව වචන",
+    "constructLevelGreens": "කොළ, වැඩෙන වචන",
+    "constructLevelFlowers": "මල්, ප්‍රගුණ කළ වචන",
+    "filterAndSearch": "පෙරහන් කර සොයන්න"
 }

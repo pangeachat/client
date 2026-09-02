@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-02 11:41:32.625784",
+    "@@last_modified": "2026-09-02 12:25:26.472814",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Rov saib dua tej yam ua",
     "activityPanel": "Kev ua ub no",
     "coursePage": "Nplooj ntawv kawm",
-    "suggestedActivities": "Cov Kev Ua Si Pom Zoo"
+    "suggestedActivities": "Cov Kev Ua Si Pom Zoo",
+    "constructLevelSeeds": "Noob, cov lus tshiab",
+    "constructLevelGreens": "Ntsuab, cov lus loj hlob",
+    "constructLevelFlowers": "Paj, cov lus kawm tiav",
+    "filterAndSearch": "Lim thiab tshawb"
 }

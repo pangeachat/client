@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-02 11:41:28.085357",
+    "@@last_modified": "2026-09-02 12:25:31.587212",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Dib u eegista hawsha",
     "activityPanel": "Hawsha",
     "coursePage": "Bogga koorsada",
-    "suggestedActivities": "Hawlaha La Soo Jeediyay"
+    "suggestedActivities": "Hawlaha La Soo Jeediyay",
+    "constructLevelSeeds": "Abuur, ereyo cusub",
+    "constructLevelGreens": "Cagaar, ereyo koraya",
+    "constructLevelFlowers": "Ubax, ereyo la bartay",
+    "filterAndSearch": "Shaandhee oo raadi"
 }

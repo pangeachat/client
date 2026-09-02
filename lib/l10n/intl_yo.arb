@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-02 11:41:30.904347",
+    "@@last_modified": "2026-09-02 12:25:33.931631",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Àtúnyẹ̀wò ìṣesí",
     "activityPanel": "Ìṣesí",
     "coursePage": "Ojúewé ẹ̀kọ́",
-    "suggestedActivities": "Àwọn Iṣẹ́ Àbá"
+    "suggestedActivities": "Àwọn Iṣẹ́ Àbá",
+    "constructLevelSeeds": "Àwọn irúgbìn, àwọn ọ̀rọ̀ tuntun",
+    "constructLevelGreens": "Àwọn ewéko, àwọn ọ̀rọ̀ tí ń dàgbà",
+    "constructLevelFlowers": "Àwọn òdòdó, àwọn ọ̀rọ̀ tí a ti kọ́ dáradára",
+    "filterAndSearch": "Ṣe àlàyé àti wá"
 }

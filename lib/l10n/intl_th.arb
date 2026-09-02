@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-02 11:41:29.315283",
+    "@@last_modified": "2026-09-02 12:25:32.267098",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10477,5 +10477,9 @@
     "activityReview": "รีวิวกิจกรรม",
     "activityPanel": "กิจกรรม",
     "coursePage": "หน้าหลักสูตร",
-    "suggestedActivities": "กิจกรรมแนะนำ"
+    "suggestedActivities": "กิจกรรมแนะนำ",
+    "constructLevelSeeds": "เมล็ดพันธุ์, คำศัพท์ใหม่",
+    "constructLevelGreens": "ต้นอ่อน, คำศัพท์ที่กำลังเติบโต",
+    "constructLevelFlowers": "ดอกไม้, คำศัพท์ที่เชี่ยวชาญแล้ว",
+    "filterAndSearch": "กรองและค้นหา"
 }

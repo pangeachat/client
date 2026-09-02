@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:41:21.536522",
+    "@@last_modified": "2026-09-02 12:25:25.732130",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10759,5 +10759,9 @@
     "activityReview": "סקירת פעילות",
     "activityPanel": "פעילות",
     "coursePage": "דף קורס",
-    "suggestedActivities": "פעילויות מוצעות"
+    "suggestedActivities": "פעילויות מוצעות",
+    "constructLevelSeeds": "זרעים, מילים חדשות",
+    "constructLevelGreens": "עלים, מילים בצמיחה",
+    "constructLevelFlowers": "פרחים, מילים שנלמדו",
+    "filterAndSearch": "סינון וחיפוש"
 }

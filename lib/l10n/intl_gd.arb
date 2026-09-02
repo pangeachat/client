@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-02 11:41:21.278540",
+    "@@last_modified": "2026-09-02 12:25:26.052320",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Ath-sgrùdadh gnìomhachd",
     "activityPanel": "Gnìomhachd",
     "coursePage": "Duilleag cùrsa",
-    "suggestedActivities": "Gnìomhan a thathar a' moladh"
+    "suggestedActivities": "Gnìomhan a thathar a' moladh",
+    "constructLevelSeeds": "Sìol, faclan ùra",
+    "constructLevelGreens": "Uaine, faclan a' fàs",
+    "constructLevelFlowers": "Flùraichean, faclan maighstireil",
+    "filterAndSearch": "Sìoladh is sgrùdadh"
 }

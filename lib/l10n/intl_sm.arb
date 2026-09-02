@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-02 11:41:27.475311",
+    "@@last_modified": "2026-09-02 12:25:31.530292",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Iloiloga o gaioiga",
     "activityPanel": "Gaioiga",
     "coursePage": "Itulau o le kosi",
-    "suggestedActivities": "Fautuaga mo Galuega"
+    "suggestedActivities": "Fautuaga mo Galuega",
+    "constructLevelSeeds": "Fatulaau, upu fou",
+    "constructLevelGreens": "Laʻau, upu o loʻo tupu",
+    "constructLevelFlowers": "Fugalaau, upu ua atamai",
+    "filterAndSearch": "Faamama ma suʻe"
 }

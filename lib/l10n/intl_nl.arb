@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:41:25.540925",
+    "@@last_modified": "2026-09-02 12:25:29.481771",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9845,5 +9845,9 @@
     "activityReview": "Activiteitenoverzicht",
     "activityPanel": "Activiteit",
     "coursePage": "Cursuspagina",
-    "suggestedActivities": "Voorgestelde activiteiten"
+    "suggestedActivities": "Voorgestelde activiteiten",
+    "constructLevelSeeds": "Zaden, nieuwe woorden",
+    "constructLevelGreens": "Groenten, groeiende woorden",
+    "constructLevelFlowers": "Bloemen, beheerste woorden",
+    "filterAndSearch": "Filteren en zoeken"
 }

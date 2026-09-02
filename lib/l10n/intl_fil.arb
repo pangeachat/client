@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-02 11:41:21.019652",
+    "@@last_modified": "2026-09-02 12:25:25.086166",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10705,5 +10705,9 @@
     "activityReview": "Pagsusuri ng aktibidad",
     "activityPanel": "Aktibidad",
     "coursePage": "Pahina ng kurso",
-    "suggestedActivities": "Mga Iminungkahing Aktibidad"
+    "suggestedActivities": "Mga Iminungkahing Aktibidad",
+    "constructLevelSeeds": "Buto, mga bagong salita",
+    "constructLevelGreens": "Mga Gulay, lumalagong salita",
+    "constructLevelFlowers": "Mga Bulaklak, mga salitang bihasa",
+    "filterAndSearch": "I-filter at hanapin"
 }

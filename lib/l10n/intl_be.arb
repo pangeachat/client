@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-02 11:41:19.521771",
+    "@@last_modified": "2026-09-02 12:25:23.482578",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9859,5 +9859,9 @@
     "activityReview": "Агляд дзейнасці",
     "activityPanel": "Дзейнасць",
     "coursePage": "Старонка курса",
-    "suggestedActivities": "Прапанаваныя заняткі"
+    "suggestedActivities": "Прапанаваныя заняткі",
+    "constructLevelSeeds": "Насенне, новыя словы",
+    "constructLevelGreens": "Парасткі, словы ў росце",
+    "constructLevelFlowers": "Кветкі, засвоеныя словы",
+    "filterAndSearch": "Фільтраваць і шукаць"
 }

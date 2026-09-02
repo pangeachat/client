@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-02 11:41:21.600634",
+    "@@last_modified": "2026-09-02 12:25:25.740192",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Nānā hana",
     "activityPanel": "Hana",
     "coursePage": "ʻAoʻao papa",
-    "suggestedActivities": "Nā Hana I Manaʻo ʻia"
+    "suggestedActivities": "Nā Hana I Manaʻo ʻia",
+    "constructLevelSeeds": "Nā Hua, nā huaʻōlelo hou",
+    "constructLevelGreens": "Nā Meakanu, nā huaʻōlelo ulu",
+    "constructLevelFlowers": "Nā Pua, nā huaʻōlelo i aʻo ʻia",
+    "filterAndSearch": "Kānana a huli"
 }

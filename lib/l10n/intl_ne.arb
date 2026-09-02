@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-02 11:41:25.622126",
+    "@@last_modified": "2026-09-02 12:25:29.497786",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2249,5 +2249,9 @@
     "activityReview": "गतिविधि समीक्षा",
     "activityPanel": "गतिविधि",
     "coursePage": "पाठ्यक्रम पृष्ठ",
-    "suggestedActivities": "सुझाएका गतिविधिहरू"
+    "suggestedActivities": "सुझाएका गतिविधिहरू",
+    "constructLevelSeeds": "बीउ, नयाँ शब्दहरू",
+    "constructLevelGreens": "हरियाली, बढ्दो शब्दहरू",
+    "constructLevelFlowers": "फूलहरू, निपुण शब्दहरू",
+    "filterAndSearch": "फिल्टर गर्नुहोस् र खोज्नुहोस्"
 }

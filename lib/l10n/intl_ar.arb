@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-02 11:41:19.504016",
+    "@@last_modified": "2026-09-02 12:25:23.222483",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10151,5 +10151,9 @@
     "activityReview": "مراجعة النشاط",
     "activityPanel": "النشاط",
     "coursePage": "صفحة الدورة التدريبية",
-    "suggestedActivities": "الأنشطة المقترحة"
+    "suggestedActivities": "الأنشطة المقترحة",
+    "constructLevelSeeds": "البذور، كلمات جديدة",
+    "constructLevelGreens": "الخضروات، كلمات متنامية",
+    "constructLevelFlowers": "الزهور، كلمات متقنة",
+    "filterAndSearch": "تصفية وبحث"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-02 11:41:19.600775",
+    "@@last_modified": "2026-09-02 12:25:23.176601",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Aktiwiteitsoorsig",
     "activityPanel": "Aktiwiteit",
     "coursePage": "Kursusbladsy",
-    "suggestedActivities": "Voorgestelde Aktiwiteite"
+    "suggestedActivities": "Voorgestelde Aktiwiteite",
+    "constructLevelSeeds": "Sade, nuwe woorde",
+    "constructLevelGreens": "Groente, groeiende woorde",
+    "constructLevelFlowers": "Blomme, woorde bemeester",
+    "filterAndSearch": "Filtreer en soek"
 }

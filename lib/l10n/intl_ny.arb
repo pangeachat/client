@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-02 11:41:25.870734",
+    "@@last_modified": "2026-09-02 12:25:30.146629",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Kuwunika zochitika",
     "activityPanel": "Zochitika",
     "coursePage": "Tsamba la maphunziro",
-    "suggestedActivities": "Zochita Zoperekedwa"
+    "suggestedActivities": "Zochita Zoperekedwa",
+    "constructLevelSeeds": "Mbeu, mawu atsopano",
+    "constructLevelGreens": "Zobiriwira, mawu akukula",
+    "constructLevelFlowers": "Maluwa, mawu odziwika bwino",
+    "filterAndSearch": "Sefa ndi kusaka"
 }

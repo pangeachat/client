@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-02 11:41:27.741303",
+    "@@last_modified": "2026-09-02 12:25:31.533665",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Ongororo yezviitiko",
     "activityPanel": "Zviitiko",
     "coursePage": "Peji rekosi",
-    "suggestedActivities": "Zviitiko Zvinokurudzirwa"
+    "suggestedActivities": "Zviitiko Zvinokurudzirwa",
+    "constructLevelSeeds": "Mbeu, mazwi matsva",
+    "constructLevelGreens": "Muriwo, mazwi ari kukura",
+    "constructLevelFlowers": "Maruva, mazwi akadzidzwa",
+    "filterAndSearch": "Sefa nekutsvaga"
 }

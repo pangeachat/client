@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:41:20.822195",
+    "@@last_modified": "2026-09-02 12:25:24.796097",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9933,5 +9933,9 @@
     "activityReview": "بازبینی فعالیت",
     "activityPanel": "فعالیت",
     "coursePage": "صفحهٔ دوره",
-    "suggestedActivities": "فعالیت‌های پیشنهادی"
+    "suggestedActivities": "فعالیت‌های پیشنهادی",
+    "constructLevelSeeds": "دانه‌ها، کلمات جدید",
+    "constructLevelGreens": "جوانه‌ها، کلمات در حال رشد",
+    "constructLevelFlowers": "گل‌ها، کلمات تسلط یافته",
+    "filterAndSearch": "فیلتر و جستجو"
 }

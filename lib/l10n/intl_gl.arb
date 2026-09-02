@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-02 11:41:21.186232",
+    "@@last_modified": "2026-09-02 12:25:25.499356",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9845,5 +9845,9 @@
     "activityReview": "Revisión da actividade",
     "activityPanel": "Actividade",
     "coursePage": "Páxina do curso",
-    "suggestedActivities": "Actividades suxeridas"
+    "suggestedActivities": "Actividades suxeridas",
+    "constructLevelSeeds": "Sementes, palabras novas",
+    "constructLevelGreens": "Verdes, palabras en crecemento",
+    "constructLevelFlowers": "Flores, palabras dominadas",
+    "filterAndSearch": "Filtrar e buscar"
 }

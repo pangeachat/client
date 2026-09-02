@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-02 11:41:22.113164",
+    "@@last_modified": "2026-09-02 12:25:27.183594",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10477,5 +10477,9 @@
     "activityReview": "Athbhreithniú gníomhaíochta",
     "activityPanel": "Gníomhaíocht",
     "coursePage": "Leathanach cúrsa",
-    "suggestedActivities": "Gníomhaíochtaí Molta"
+    "suggestedActivities": "Gníomhaíochtaí Molta",
+    "constructLevelSeeds": "Síolta, focail nua",
+    "constructLevelGreens": "Glasaigh, focail ag fás",
+    "constructLevelFlowers": "Bláthanna, focail máistrithe",
+    "filterAndSearch": "Scag agus cuardaigh"
 }
