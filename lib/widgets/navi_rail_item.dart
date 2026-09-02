@@ -92,47 +92,58 @@ class NaviRailItem extends StatelessWidget {
                       duration: FluffyThemes.animationDuration,
                       curve: FluffyThemes.animationCurve,
                       child: MergeSemantics(
-                        child: UnreadRoomsBadge(
-                          filter: unreadBadgeFilter ?? (_) => false,
-                          badgePosition: BadgePosition.topEnd(
-                            top: 1,
-                            end: isColumnMode ? 8 : 4,
-                          ),
-                          child: Container(
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.symmetric(
-                              horizontal: isColumnMode ? 16.0 : 12.0,
-                              vertical: isColumnMode ? 8.0 : 6.0,
+                        // The same isSelected that drives the visual highlight
+                        // (indicator bar + fill) is announced to assistive
+                        // tech, so visible and spoken state cannot drift
+                        // (#8743).
+                        child: Semantics(
+                          selected: isSelected,
+                          child: UnreadRoomsBadge(
+                            filter: unreadBadgeFilter ?? (_) => false,
+                            badgePosition: BadgePosition.topEnd(
+                              top: 1,
+                              end: isColumnMode ? 8 : 4,
                             ),
-                            // Material + InkWell give the item real Material
-                            // interaction states — hover overlay, pressed
-                            // ripple, focus. The InkWell's own borderRadius
-                            // bounds the ripple; no Material clip, so angular
-                            // icons (e.g. the Pangea mark) aren't cut.
-                            child: Material(
-                              color:
-                                  backgroundColor ??
-                                  (isSelected
-                                      ? theme.colorScheme.primaryContainer
-                                      : theme.colorScheme.surfaceContainerHigh),
-                              borderRadius: borderRadius,
-                              child: Tooltip(
-                                message: toolTip,
-                                // Delay so items sweeping under the cursor
-                                // while the rail scrolls don't spawn tooltips
-                                // and stall the scroll (#8215).
-                                waitDuration: const Duration(milliseconds: 500),
-                                child: focusRingShape != null
-                                    ? FocusRingTapTarget(
-                                        onTap: onTap,
-                                        shape: focusRingShape!,
-                                        child: icon,
-                                      )
-                                    : InkWell(
-                                        borderRadius: borderRadius,
-                                        onTap: onTap,
-                                        child: icon,
-                                      ),
+                            child: Container(
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.symmetric(
+                                horizontal: isColumnMode ? 16.0 : 12.0,
+                                vertical: isColumnMode ? 8.0 : 6.0,
+                              ),
+                              // Material + InkWell give the item real Material
+                              // interaction states — hover overlay, pressed
+                              // ripple, focus. The InkWell's own borderRadius
+                              // bounds the ripple; no Material clip, so angular
+                              // icons (e.g. the Pangea mark) aren't cut.
+                              child: Material(
+                                color:
+                                    backgroundColor ??
+                                    (isSelected
+                                        ? theme.colorScheme.primaryContainer
+                                        : theme
+                                              .colorScheme
+                                              .surfaceContainerHigh),
+                                borderRadius: borderRadius,
+                                child: Tooltip(
+                                  message: toolTip,
+                                  // Delay so items sweeping under the cursor
+                                  // while the rail scrolls don't spawn tooltips
+                                  // and stall the scroll (#8215).
+                                  waitDuration: const Duration(
+                                    milliseconds: 500,
+                                  ),
+                                  child: focusRingShape != null
+                                      ? FocusRingTapTarget(
+                                          onTap: onTap,
+                                          shape: focusRingShape!,
+                                          child: icon,
+                                        )
+                                      : InkWell(
+                                          borderRadius: borderRadius,
+                                          onTap: onTap,
+                                          child: icon,
+                                        ),
+                                ),
                               ),
                             ),
                           ),
