@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_filled_extension.dart';
 import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
@@ -103,8 +104,17 @@ class PlayWithBotLoadingDialogState extends State<PlayWithBotLoadingDialog> {
   /// The bot claims its seats server-side, so the client that asked it to play
   /// is the one that knows the session just filled (#8735). Fire-and-forget:
   /// the announcement is best-effort and must not hold this dialog open.
+  ///
+  /// Gated on the plan, not on the seat count alone: with no plan hydrated
+  /// [Room.numRemainingRoles] is `max(0, 0 - assigned)`, which reads "unknown"
+  /// as "no seat left" and announced a fill on rooms that are not sessions at
+  /// all. Skipping is safe by design — a missed announcement only means
+  /// coursemates correct on their next discovery pass — so an unhydrated plan
+  /// waits, exactly as it does on the seat-claim path ([Room.joinActivity]).
   void _announceIfFilled() {
-    if (widget.room.numRemainingRoles > 0) return;
+    if (widget.room.activityPlan == null || widget.room.numRemainingRoles > 0) {
+      return;
+    }
     unawaited(widget.room.announceActivitySessionFilled());
   }
 
