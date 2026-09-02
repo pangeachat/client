@@ -570,7 +570,7 @@ const KEY_SEARCH_PAGE = 500;
 ///
 /// Returns whether it FINISHED as well as what it found. A search that ran out
 /// of pages, or one whose key the room cannot produce, has not established
-/// there was no earlier half -- it has established nothing, and [freshCallKey]
+/// there was no earlier half -- it has established nothing, and [callKeyVerdict]
 /// treats it that way.
 async function halvesUnder(token, callKey, before) {
   const anchor = await mx.eventById(token, ROOM_ID, callKey);
@@ -1098,24 +1098,87 @@ function sendAttributionVerdict({ sent, devices, halves }) {
 
 /// Whether this call's key is one no earlier call already wrote a half under.
 ///
-/// THREE things have to hold, and only one of them is about what was found.
+/// Whether this call's key is one no earlier call used.
+///
+/// FOUR things have to hold, and only one of them is about what was found in
+/// the room.
 ///
 /// A key that could NOT BE READ is not a fresh key. `reusedKey` is only ever
-/// set when there was a key to look an earlier call up by, so `reusedKey ===
-/// null` on its own reads a ring whose key never arrived as a clean call -- and
-/// a build emitting no call key at all would walk straight past the one check
+/// set when there was a key to look an earlier call up by, so "nothing found"
+/// on its own reads a ring whose key never arrived as a clean call -- and a
+/// build emitting no call key at all would walk straight past the one check
 /// standing between it and a call whose whole transcript the homeserver
 /// silently discards.
 ///
-/// And a SEARCH THAT DID NOT FINISH is not a clean call either. [halvesUnder]
-/// walks the room back to the key's own event; when it runs out of pages, or
-/// cannot find the event that IS the key, it has read part of the history and
-/// proved nothing about the rest. "No earlier half in what I read" is not "no
-/// earlier half", and the difference is exactly the reuse this exists to catch.
-const freshCallKey = (callKey, reused, searched) =>
-  typeof callKey === 'string' && callKey.length > 0
-  && searched === true
-  && reused === null;
+/// A SEARCH THAT DID NOT FINISH is not a clean call either. [halvesUnder] walks
+/// the room back to the key's own event; when it runs out of pages, or cannot
+/// find the event that IS the key, it has read part of the history and proved
+/// nothing about the rest. "No earlier half in what I read" is not "no earlier
+/// half".
+///
+/// AND NEITHER IS A KEY AN EARLIER ATTEMPT OF THIS RUN ALREADY RANG WITH, which
+/// is the hole the other three left. The search looks for halves ALREADY IN THE
+/// ROOM before this ring, and a torn-down attempt's half is written after its
+/// drain -- which has no bound. So the race can abandon a call, ring again
+/// reusing its key before the first call's half has landed, find nothing
+/// because nothing has landed yet, and pass; the abandoned half then arrives
+/// after the mark carrying the same key, and the final reads see two learner
+/// halves and a peer half all under one key and call it one call. The retry
+/// loop would have manufactured the exact bug this file exists to detect and
+/// then read the result as clean.
+///
+/// The fixed settle between attempts makes that unlikely and is not evidence of
+/// anything: a sleep is not a wait for a drain of unbounded length. What settles
+/// it is that the harness SAW both rings. Every attempt's key is remembered, and
+/// a winning key that an earlier attempt already rang with is a reuse observed
+/// directly rather than inferred from an absence.
+function callKeyVerdict({ callKey, reused, searched, searchWhy, ranBefore }) {
+  if (typeof callKey !== 'string' || callKey.length === 0) {
+    return {
+      ok: false,
+      why: `the ring carried no call key (${JSON.stringify(callKey)}), so this `
+        + 'was never asked at all: the room was never searched for an earlier '
+        + 'call under this key, and nothing else can be scoped to this call '
+        + "either -- the halves' keys, the reader's log line and the "
+        + 'transaction ids all name it. A ring whose `m.relates_to` carries no '
+        + 'event id is the finding',
+    };
+  }
+  if (ranBefore) {
+    return {
+      ok: false,
+      why: `attempt ${ranBefore.attempt} rang with call key ${callKey}, which `
+        + `attempt ${ranBefore.first} of this same run had already rung with. `
+        + 'The caller anchors a call on its own membership event id and reuses '
+        + 'it when the retract has not echoed back, so these are two calls '
+        + 'sharing one key: every writer computes a transaction id it has '
+        + 'already used, the homeserver hands back the earlier event, and the '
+        + "halves of both calls arrive as one call's transcript. This run "
+        + 'produced that state itself and cannot tell the two calls apart '
+        + 'afterwards',
+    };
+  }
+  if (searched !== true) {
+    return {
+      ok: false,
+      why: `the search for an earlier half under ${callKey} did not finish: `
+        + `${searchWhy}. It found none in what it read, which is not the same `
+        + 'answer as there being none -- and this check is what stands between '
+        + 'the run and a call whose whole transcript the homeserver discards',
+    };
+  }
+  if (reused) {
+    return {
+      ok: false,
+      why: `attempt ${reused.attempt} rang with call key ${reused.callKey}, `
+        + `which ${reused.earlier} earlier half/halves in this room already `
+        + 'carry. Every writer in that call computes the transaction id it '
+        + 'already used, the homeserver hands back the earlier event, and the '
+        + "whole of that call's transcript is lost with nothing logged",
+    };
+  }
+  return { ok: true, why: '' };
+}
 
 /// Whether every half belongs to THE call this run placed.
 ///
@@ -1286,12 +1349,22 @@ async function main() {
   // server-side question about "the learner" is asked with one token.
   const LEARNER = A1.userId;
 
-  // Nothing of the learner's may be in a call before this one starts. A live
+  // Nothing of the learner's should be in a call before this one starts. A live
   // membership left behind by an earlier run is a THIRD device in the
   // election, and it would answer this scenario's central question with a
   // number that is nothing to do with what it drove.
+  //
+  // NAMED FOR THE STATE, not for the world, because only one of its two answers
+  // is decisive. A device PRESENT here really is a device in a call -- nothing
+  // invents a sibling -- so a red is trustworthy and the run stops on it. A
+  // state that reads empty is one writer's view and the product means it to be
+  // (see [joinedDevices]), so the pass says the state is clear and not that
+  // nothing is in a call. That is the whole of what a precondition gate can
+  // ask here, and the rest of the file no longer rests on it: a third device
+  // would write a third half, and the halves are counted.
   const before = await mx.liveMembershipDevices(A1.token, ROOM_ID, LEARNER);
-  h.check(s, 'the learner starts with no device in a call', before.length === 0,
+  h.check(s, "the learner's call membership state is clear before this run",
+    before.length === 0,
     `already in a call on ${before.length} device(s): ${before.join(', ')}`);
   if (before.length) { h.report(); await finish([A1, A2, B], 2); }
 
@@ -1324,6 +1397,11 @@ async function main() {
   let reusedKey = null;
   let keySearch = { covered: false, halves: [], scanned: 0,
     why: 'no attempt got as far as looking' };
+  // Every attempt's key, in the order the rings carried them. A winning key
+  // that appears twice here is a reuse this run caused and then would have
+  // read as one call -- see [callKeyVerdict].
+  const ringKeys = [];
+  let ranBefore = null;
   for (let attempt = 1; attempt <= attempts; attempt++) {
     attemptsUsed = attempt;
     // Retried against the RING EVENT rather than against the click, which is
@@ -1353,6 +1431,16 @@ async function main() {
     const ring = (await sinceScoped(B.token, markRing))
       .find((e) => e.type === mx.RING && e.sender === B.userId);
     callKey = ring?.content?.['m.relates_to']?.event_id ?? null;
+    // OBSERVED, not inferred. The room search below can only find halves that
+    // have already landed, and an abandoned attempt's half lands after a drain
+    // of no fixed length -- so a key reused within this run is invisible to it
+    // for as long as the previous call is still draining. Both rings went past
+    // this line, though, so the reuse is a fact the harness holds directly.
+    if (typeof callKey === 'string' && callKey.length > 0) {
+      const first = ringKeys.indexOf(callKey);
+      if (first !== -1) ranBefore = { callKey, attempt, first: first + 1 };
+      ringKeys.push(callKey);
+    }
 
     // Both taps in flight together. PROVEN by the memberships, never by the
     // clicks: the ring banner is an overlay Flutter keeps out of the
@@ -1368,7 +1456,7 @@ async function main() {
       await wait(1000);
     }
     // A call key this room has already written a half under is a call whose
-    // transcript is destroyed before it is written -- see [freshCallKey]. There
+    // transcript is destroyed before it is written -- see [callKeyVerdict]. There
     // is nothing to learn from such a call, so the race is run again; the fact
     // that it happened is remembered and reported below rather than retried
     // away.
@@ -1376,7 +1464,7 @@ async function main() {
     // The search's OWN RESULT is carried out of the loop beside what it found.
     // It walks the room back to the key's own event and can run out of pages;
     // an unfinished search has not learned that no earlier half exists, and
-    // [freshCallKey] refuses it rather than reading it as a clean call.
+    // [callKeyVerdict] refuses it rather than reading it as a clean call.
     const earlier = callKey
       ? await halvesUnder(A1.token, callKey, ring?.origin_server_ts ?? 0)
       : { covered: false, halves: [], scanned: 0,
@@ -1385,11 +1473,13 @@ async function main() {
     if (earlier.halves.length) {
       reusedKey = { callKey, earlier: earlier.halves.length, attempt };
     }
-    if (inCall.length >= 2 && earlier.covered && !earlier.halves.length) break;
+    if (inCall.length >= 2 && earlier.covered && !earlier.halves.length
+      && !ranBefore) break;
 
     console.log(`   (attempt ${attempt}: ${inCall.length} of the learner's ` +
       `devices got in${earlier.halves.length ? ', and the call key was already used' : ''}` +
       `${earlier.covered ? '' : ', and the call-key search did not finish'}` +
+      `${ranBefore ? ', and the key was one an earlier attempt already rang with' : ''}` +
       '; tearing the call down and racing again)');
     // All the way down, and PROVEN down. A half-joined call left standing would
     // have the next ring suppressed as busy on one device and answered on the
@@ -1405,9 +1495,14 @@ async function main() {
         { tries: 4, gap: 2500 },
       );
     }
-    // And SETTLED. The caller anchors the next call on its own membership event
-    // id, read from its local room state, so a call placed before the retract
-    // has echoed back reuses the id the last call used.
+    // And SETTLED -- as a MITIGATION, never as evidence. The caller anchors the
+    // next call on its own membership event id, read from its local room state,
+    // so a call placed before the retract has echoed back reuses the id the last
+    // call used, and this makes that less likely. It does not make it known: a
+    // sleep is not a wait for a drain of unbounded length, and the abandoned
+    // call's half can land long after it. Whether the reuse happened is settled
+    // by comparing the rings' keys, above, which is an observation rather than
+    // an interval.
     await wait(10000);
   }
 
@@ -1441,41 +1536,21 @@ async function main() {
   // retried away, because a scenario that quietly re-rolls until it gets a clean
   // call would hide exactly the thing a real-stack run is for.
   //
-  // AND A RING WITH NO KEY ON IT FAILS THE SAME CHECK. The lookup above is
-  // conditional -- there is nothing to look an earlier call up BY without a key
-  // -- so for as long as the check read `reusedKey === null` a build that
-  // emitted no call key passed it by never being asked. That is the check
-  // passing hardest at the moment it is least able to speak, and it is the one
-  // shape this file refuses.
-  //
-  // AND SO DOES A SEARCH THAT DID NOT FINISH. This used to read the last 300
-  // events, which answers "no earlier half in the last 300 events" and was
-  // named for "no earlier call already wrote under this key" -- a reuse older
-  // than the window is invisible to it, and this is the check standing between
-  // the run and a confirmed bug, so the gap is load-bearing. [halvesUnder] now
-  // walks back to the key's OWN event, which is the point before which no half
-  // under that key can exist, and says whether it got there. See
-  // [freshCallKey].
-  h.check(s, 'this call has a call key no earlier call already wrote under',
-    freshCallKey(callKey, reusedKey, keySearch.covered),
-    reusedKey
-      ? `attempt ${reusedKey.attempt} rang with call key ${reusedKey.callKey}, ` +
-        `which ${reusedKey.earlier} earlier half/halves in this room already ` +
-        'carry. Every writer in that call computes the transaction id it ' +
-        'already used, the homeserver hands back the earlier event, and the ' +
-        'whole of that call\'s transcript is lost with nothing logged'
-      : !callKey
-        ? `the ring carried no call key (${JSON.stringify(callKey)}), so this ` +
-          'was never asked at all: the room was never searched for an earlier ' +
-          'call under this key, and nothing below can be scoped to this call ' +
-          'either -- the halves\' keys, the reader\'s log line and the ' +
-          'transaction ids all name it. A ring whose `m.relates_to` carries ' +
-          'no event id is the finding'
-        : `the search for an earlier half under ${callKey} did not finish: ` +
-          `${keySearch.why}. It found none in what it read, which is not the ` +
-          'same answer as there being none -- and this check is what stands ' +
-          'between the run and a call whose whole transcript the homeserver ' +
-          'discards');
+  // AND THREE MORE WAYS IT CAN FAIL, none of which is "an earlier half was
+  // found". A ring with no key on it was never asked the question at all; a
+  // search that ran out of pages read part of the history and proved nothing
+  // about the rest; and a key an earlier attempt of THIS RUN already rang with
+  // is a reuse the harness watched happen, which the room search cannot see
+  // while the abandoned call is still draining. See [callKeyVerdict].
+  const keyVerdict = callKeyVerdict({
+    callKey,
+    reused: reusedKey,
+    searched: keySearch.covered,
+    searchWhy: keySearch.why,
+    ranBefore,
+  });
+  h.check(s, 'this call has a call key no earlier call used',
+    keyVerdict.ok, keyVerdict.why);
 
   if (inCall.length < 2) {
     await A1.page.screenshot({ path: shot('two-devices-nojoin-one.png') }).catch(() => {});
@@ -1651,10 +1726,33 @@ async function main() {
   // and failed on a hangup that had plainly worked -- the count it compared
   // against was itself a snapshot of a race (see [joinedDevices]).
   //
-  // Both taps every round, retried against the account's memberships being
-  // gone. Clicking a hangup that has already happened is harmless; a device
-  // still in the call after five rounds is not.
-  const learnerLeft = await h.actUntil(
+  // TWO CHECKS STOOD HERE AND BOTH CONCLUDED FROM AN ABSENCE.
+  //
+  // "Both learner devices left the call" and "the peer left the call" each read
+  // a membership state and passed when it came back empty -- the same
+  // observable the handover checks were deleted over, asked one step later.
+  // After the handover the state can omit the survivor, so a survivor whose
+  // hangup click MISSED still reads as zero and both checks went green while a
+  // device sat in the call. Presence in this state is decisive; absence is one
+  // writer's opinion, and a claim that a device LEFT needs the second.
+  //
+  // WHAT THEY WERE REALLY FOR is knowable, and by presence. Their own failure
+  // messages say it: a device that never hung up is a device whose half "has
+  // not been written yet", and a peer still in the call is "a half that never
+  // arrives". A call ends, it drains, and it writes a half -- so the half
+  // ARRIVING is the decisive record that that participant's call ended, and it
+  // is already required three times over below: three halves reaching the room,
+  // exactly one from the peer, exactly two from the learner. The claims are
+  // deleted rather than reworded, and nothing is lost from the run.
+  //
+  // THE HANGUPS THEMSELVES STAY. What follows drives the clicks; its stopping
+  // condition is still a membership read, and that is all right for a DRIVER --
+  // it decides when to stop clicking, never what was true. Clicking a hangup
+  // that has already happened is harmless, so stopping early costs at most a
+  // half that does not arrive, which the wait below reports. The observations
+  // are kept for that report and asserted nowhere.
+  const hangups = { learner: null, peer: null };
+  hangups.learner = await h.actUntil(
     'hang up both learner devices',
     async () => {
       await ui.clickPanel(A1.page, 'hangup').catch(() => {});
@@ -1664,23 +1762,14 @@ async function main() {
       (await mx.liveMembershipDevices(A1.token, ROOM_ID, LEARNER)).length === 0,
     { tries: 5, gap: 3000 },
   );
-  h.check(s, 'both learner devices left the call', learnerLeft,
-    'the learner still holds ' +
-      `${(await mx.liveMembershipDevices(A1.token, ROOM_ID, LEARNER)).length} ` +
-      'live membership(s), so at least one device never hung up and its half ' +
-      'has not been written yet');
-  // The peer's hangup is a step, not a gesture: its half is written when it
-  // leaves, so a peer still in the call is a third half that never arrives --
-  // and the wait below would then run its full two minutes and carry on.
-  // Ignoring this result is how that came to look like a slow homeserver.
-  const peerLeft = await h.actUntil(
+  hangups.peer = await h.actUntil(
     'hangup on the peer',
     () => ui.clickPanel(B.page, 'hangup'),
     async () => !(await mx.hasMembership(B.token, ROOM_ID, B.userId)),
   );
-  h.check(s, 'the peer left the call', peerLeft,
-    'the peer still holds a live call membership, so it has not drained and ' +
-      'its half of the transcript will not be written at all');
+  console.log(`   (the membership state went quiet for the learner: ` +
+    `${hangups.learner}, for the peer: ${hangups.peer} -- a diagnostic for the ` +
+    'wait below, and not evidence that either left)');
 
   // The halves are written after the drain, not at hangup, so this waits for
   // the SERVER to have them rather than sleeping a guessed interval. Three are
@@ -1737,7 +1826,11 @@ async function main() {
       `of waiting for three (${mine.length} learner, ${theirs.length} peer). ` +
       'Two devices of the learner and one of the peer each write one at the ' +
       'end of the call, so a missing half is a device that never drained -- ' +
-      `the raw events are in ${shot('two-devices-halves.json')}`);
+      `the raw events are in ${shot('two-devices-halves.json')}. This is also ` +
+      'where a hangup that never took surfaces, since a device still in the ' +
+      'call writes nothing: the membership state went quiet for the learner ' +
+      `${hangups.learner} and for the peer ${hangups.peer}, which is a hint ` +
+      'about the clicks rather than proof either device left');
 
   // The peer's, specifically. `mine.length === 2` below says nothing about it,
   // and the cross-account check at the end is worthless without it.
@@ -1840,6 +1933,13 @@ async function main() {
   } catch (e) {
     sends.error = e && e.message ? e.message : String(e);
   }
+  // COUNTED BEFORE THEY ARE DEDUPED, because the dedupe is what hid the thing
+  // worth seeing. Two PUTs under ONE transaction id collapse to a single entry
+  // here, so "this device was seen sending a half" passed on a device that had
+  // been seen sending it TWICE -- and a duplicate send under one key is exactly
+  // what a reused call key produces, the homeserver returning the first event
+  // and writing nothing for the second. The set is still what the id checks
+  // compare; the raw count is asserted beside it.
   const sentIds = {
     one: [...new Set(sends.one.map((r) => r.txnId))],
     two: [...new Set(sends.two.map((r) => r.txnId))],
@@ -1851,16 +1951,22 @@ async function main() {
   // A device that sent no half at all cannot be compared, and saying so here
   // rather than further down keeps "the harness saw nothing" apart from "the
   // two ids matched" -- opposite findings that a single check would blur.
-  h.check(s, 'each learner device was seen SENDING a transcript half',
-    !sends.error && sentIds.one.length === 1 && sentIds.two.length === 1,
+  h.check(s, 'each learner device was seen sending EXACTLY ONE transcript half',
+    !sends.error
+      && sends.one.length === 1 && sentIds.one.length === 1
+      && sends.two.length === 1 && sentIds.two.length === 1,
     sends.error
       ? `the send log could not be read: ${sends.error}`
-      : `device one sent ${sends.one.length} transcript half/halves under ` +
-        `${sentIds.one.length} distinct transaction id(s), device two sent ` +
-        `${sends.two.length} under ${sentIds.two.length}. One each is what a ` +
-        'call produces; a device with several DISTINCT ids has sent the same ' +
-        'speech twice under keys that do not collide, and a device with none ' +
-        'either never wrote or wrote through a transport this does not watch');
+      : `device one made ${sends.one.length} transcript PUT(s) under ` +
+        `${sentIds.one.length} distinct transaction id(s), device two made ` +
+        `${sends.two.length} under ${sentIds.two.length}. One PUT each is what ` +
+        'a call produces. Several DISTINCT ids is the same speech sent twice ' +
+        'under keys that do not collide; several PUTs under ONE id is a send ' +
+        'the server answered from its transaction cache -- either the client ' +
+        'retried after a failure, or two halves were written under one key and ' +
+        'the second was discarded with nothing logged, which is what a reused ' +
+        'call key does. None at all is a device that never wrote, or wrote ' +
+        'through a transport this does not watch');
 
   h.check(s, 'the two transcript sends carried DIFFERENT transaction ids',
     sentUnderDifferentIds(sentIds.one, sentIds.two),
@@ -2071,6 +2177,16 @@ async function main() {
   let dialogOpen = false;
   if (card) {
     await openNewestTranscript(A1.page);
+    // THE ONE INTERVAL LEFT THAT A CONCLUSION RESTS ON, and it is sound only
+    // because of which way it can be wrong. Nothing here observes the panel
+    // finishing its render, so this is a guess about a machine -- but a panel
+    // still drawing has FEWER turns in the tree, never more, so a guess that
+    // is too short shows up as the turn count falling short of the halves and
+    // a red run. It cannot manufacture a pass. Every other interval in this
+    // file is a poll gap whose expiry is asserted, or elapsed time nothing
+    // reads; the settle between race attempts used to be a third kind -- a
+    // conclusion drawn from a sleep -- and is now a mitigation with the ring
+    // keys as the evidence.
     await wait(6000);
     await A1.page.screenshot({ path: shot('two-devices-transcript.png') }).catch(() => {});
     // The dialog's own title, from the page TEXT rather than from a label --
@@ -2273,7 +2389,7 @@ module.exports = {
   sentUnderDifferentIds,
   idsSentMatchDerived,
   sendAttributionVerdict,
-  freshCallKey,
+  callKeyVerdict,
   oneCallKeyAcross,
   fixtureIn,
   differentFixturesVerdict,
