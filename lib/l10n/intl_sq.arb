@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-01 12:28:02.501828",
+    "@@last_modified": "2026-09-01 23:37:21.995610",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2249,5 +2249,8 @@
     "callTranscriptMicrophoneRefused": "Pajisja e {name} nuk e hapi mikrofonin për këtë thirrje, kështu që asgjë që tha nuk u regjistrua dhe ajo që u tha nuk dihet.",
     "callTranscriptAudioLost": "Ajo që tha {name} u regjistrua, por u humb para se të transkriptohej, kështu që ajo që u tha nuk dihet.",
     "mapPinsKeyboardHint": "Përdorni tastet me shigjeta për të lëvizur mes aktiviteteve në hartë dhe shtypni Enter për të hapur njërin.",
-    "selectMessageLabel": "Zgjidh mesazhin"
+    "selectMessageLabel": "Zgjidh mesazhin",
+    "callTranscriptAudioDropped": "Ajo që tha {name} humbi nga pajisja e tij/saj përpara se të regjistrohej, kështu që nuk dihet se çfarë u tha.",
+    "callTranscriptHeldByOtherDevice": "Ajo që tha {name} iu la për t'u regjistruar një pajisjeje tjetër të tij/saj, kështu që asgjë nuk u dërgua nga kjo pajisje dhe nuk dihet se çfarë u tha këtu.",
+    "callTranscriptDeviceNeverWrote": "Një pjesë e asaj që tha {name} iu la një pajisjeje tjetër të tyre për ta regjistruar, dhe asgjë nuk mbërriti nga ajo pajisje, kështu që ajo pjesë nuk dihet."
 }

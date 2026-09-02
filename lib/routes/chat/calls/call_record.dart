@@ -446,12 +446,19 @@ class CallRecord {
   /// Permitting a retry is not the same as performing one.
   ///
   /// A resend is safe because the transaction id is deterministic in
-  /// (call_key, sender): a half that did land is collapsed by the server rather
-  /// than written twice. That property is what makes retrying the correct
-  /// answer here, and it is why refusing to retry was never buying anything --
-  /// duplicates were already impossible, so the refusal only threw the half
-  /// away. A speaker whose one send failed then reads as ABSENT: told they said
-  /// nothing, when they spoke and their device tried to say so.
+  /// (call_key, sender, device): a half that did land is collapsed by the
+  /// server rather than written twice. That property is what makes retrying the
+  /// correct answer here, and it is why refusing to retry was never buying
+  /// anything -- duplicates were already impossible, so the refusal only threw
+  /// the half away. A speaker whose one send failed then reads as ABSENT: told
+  /// they said nothing, when they spoke and their device tried to say so.
+  ///
+  /// The property is only worth anything if every attempt actually produces
+  /// that id, so THE PUBLISHER MUST NOT READ THE ACCOUNT OR THE DEVICE PER
+  /// ATTEMPT. `CallSession` latches both when it builds the publisher; a
+  /// publisher that read them off the live client instead would send the retry
+  /// of a signed-out device under a different key, which is a second event
+  /// carrying the same speech.
   Future<void> _publishTranscript(String? callKey, bool captureRefused) async {
     final publish = publishTranscript;
     if (publish == null || _published || callKey == null) return;

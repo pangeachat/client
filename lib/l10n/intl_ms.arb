@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-01 12:28:00.810415",
+    "@@last_modified": "2026-09-01 23:37:18.235190",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2249,5 +2249,8 @@
     "callTranscriptMicrophoneRefused": "Peranti {name} tidak pernah membuka mikrofon untuk panggilan ini, jadi tiada apa yang mereka katakan telah dirakam dan apa yang dikatakan tidak diketahui.",
     "callTranscriptAudioLost": "Apa yang {name} katakan telah dirakam tetapi hilang sebelum ia boleh ditranskripsi, jadi apa yang dikatakan tidak diketahui.",
     "mapPinsKeyboardHint": "Gunakan kekunci anak panah untuk bergerak antara aktiviti pada peta, dan tekan Enter untuk membuka satu.",
-    "selectMessageLabel": "Pilih mesej"
+    "selectMessageLabel": "Pilih mesej",
+    "callTranscriptAudioDropped": "Apa yang {name} katakan telah hilang oleh peranti mereka sebelum ia sempat dirakam, jadi apa yang dikatakan tidak diketahui.",
+    "callTranscriptHeldByOtherDevice": "Apa yang {name} katakan telah diserahkan kepada peranti mereka yang lain untuk dirakam, jadi tiada apa-apa yang dihantar dari peranti ini dan apa yang dikatakan tidak diketahui di sini.",
+    "callTranscriptDeviceNeverWrote": "Sebahagian daripada apa yang {name} katakan telah diserahkan kepada peranti mereka yang lain untuk dirakam, dan tiada apa-apa daripada peranti itu yang tiba, jadi bahagian itu tidak diketahui."
 }

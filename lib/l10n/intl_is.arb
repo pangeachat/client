@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-01 12:27:59.124202",
+    "@@last_modified": "2026-09-01 23:37:10.676261",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2249,5 +2249,8 @@
     "callTranscriptMicrophoneRefused": "Tæki {name} opnaði aldrei hljóðnema fyrir þetta símtal, svo ekkert sem þau sögðu var tekið upp og því er ekki vitað hvað var sagt.",
     "callTranscriptAudioLost": "Það sem {name} sagði var tekið upp en týndist áður en hægt var að umrita það, svo það er ekki vitað hvað var sagt.",
     "mapPinsKeyboardHint": "Notaðu örvatakkana til að færa þig á milli verkefna á kortinu og ýttu á Enter til að opna eitt.",
-    "selectMessageLabel": "Velja skilaboð"
+    "selectMessageLabel": "Velja skilaboð",
+    "callTranscriptAudioDropped": "Það sem {name} sagði glataðist úr tækinu þeirra áður en það náðist að taka það upp, svo það er óvitað hvað sagt var.",
+    "callTranscriptHeldByOtherDevice": "Það sem {name} sagði var skilið eftir fyrir annað tæki þeirra til að taka upp, svo ekkert af því var sent úr þessu tæki og það er óvitað hér hvað sagt var.",
+    "callTranscriptDeviceNeverWrote": "Hluti af því sem {name} sagði var skráður í öðru tæki þeirra, og ekkert barst frá því tæki, svo sá hluti er óþekktur."
 }

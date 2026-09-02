@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-01 12:28:04.011057",
+    "@@last_modified": "2026-09-01 23:37:26.332709",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10802,5 +10802,8 @@
     "callTranscriptMicrophoneRefused": "{name}嘅裝置喺呢次通話中從未開啟過咪高峰，所以佢講過嘅嘢冇被錄音，亦都唔知講過啲乜。",
     "callTranscriptAudioLost": "{name}講過嘅嘢雖然被錄音，但喺轉錄之前遺失咗，所以唔知講過啲乜。",
     "mapPinsKeyboardHint": "使用方向鍵在地圖上的活動之間移動，然後按 Enter 鍵打開一個活動。",
-    "selectMessageLabel": "選擇訊息"
+    "selectMessageLabel": "選擇訊息",
+    "callTranscriptAudioDropped": "{name} 嘅裝置喺錄音之前就遺失咗佢講嘅嘢，所以唔知道佢講咗啲咩。",
+    "callTranscriptHeldByOtherDevice": "{name} 講嘅嘢交咗俾佢另一部裝置錄音，所以呢部機冇傳送任何內容，亦都唔知道佢講咗啲咩。",
+    "callTranscriptDeviceNeverWrote": "{name} 部分嘅說話內容由佢哋另一部裝置錄音，但係我哋收唔到嗰部裝置嘅任何資料，所以嗰部分嘅內容就唔清楚喇。"
 }

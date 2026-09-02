@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-01 12:28:01.722910",
+    "@@last_modified": "2026-09-01 23:37:18.842333",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9930,5 +9930,8 @@
     "callTranscriptMicrophoneRefused": "Urządzenie użytkownika {name} nie otworzyło mikrofonu podczas tej rozmowy, więc nic, co powiedział(a), nie zostało nagrane i nie wiadomo, co zostało powiedziane.",
     "callTranscriptAudioLost": "To, co powiedział(a) {name}, zostało nagrane, ale utracone przed transkrypcją, więc nie wiadomo, co zostało powiedziane.",
     "mapPinsKeyboardHint": "Użyj klawiszy strzałek, aby poruszać się między aktywnościami na mapie, i naciśnij Enter, aby otworzyć wybraną.",
-    "selectMessageLabel": "Wybierz wiadomość"
+    "selectMessageLabel": "Wybierz wiadomość",
+    "callTranscriptAudioDropped": "To, co powiedziała osoba {name}, zostało utracone przez jej urządzenie, zanim mogło zostać nagrane, więc nie wiadomo, co zostało powiedziane.",
+    "callTranscriptHeldByOtherDevice": "To, co powiedziała osoba {name}, zostało przekazane do nagrania na inne jej urządzenie, więc nic nie zostało wysłane z tego urządzenia i nie wiadomo, co zostało powiedziane.",
+    "callTranscriptDeviceNeverWrote": "Część wypowiedzi {name} została nagrana na innym urządzeniu, z którego nic nie dotarło, więc ta część nie jest znana."
 }

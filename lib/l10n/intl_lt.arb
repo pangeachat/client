@@ -2968,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-01 12:28:00.297252",
+    "@@last_modified": "2026-09-01 23:37:14.522762",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10626,5 +10626,8 @@
     "callTranscriptMicrophoneRefused": "{name} įrenginys niekada neatidarė mikrofono šiam skambučiui, todėl niekas, ką jie pasakė, nebuvo įrašyta ir kas buvo pasakyta, nėra žinoma.",
     "callTranscriptAudioLost": "Tai, ką pasakė {name}, buvo įrašyta, bet prarasta prieš transkribuojant, todėl kas buvo pasakyta, nėra žinoma.",
     "mapPinsKeyboardHint": "Naudokite rodyklių klavišus norėdami judėti tarp veiklų žemėlapyje, ir paspauskite Enter norėdami atidaryti vieną.",
-    "selectMessageLabel": "Pasirinkti pranešimą"
+    "selectMessageLabel": "Pasirinkti pranešimą",
+    "callTranscriptAudioDropped": "Tai, ką pasakė {name}, buvo prarasta jo įrenginyje dar prieš įrašant, todėl nežinoma, kas buvo pasakyta.",
+    "callTranscriptHeldByOtherDevice": "Tai, ką pasakė {name}, buvo palikta įrašyti kitam jo įrenginiui, todėl iš šio įrenginio niekas nebuvo išsiųsta ir čia nežinoma, kas buvo pasakyta.",
+    "callTranscriptDeviceNeverWrote": "Dalis to, ką pasakė {name}, buvo palikta įrašyti kitam jo įrenginiui, tačiau iš to įrenginio nieko nebuvo gauta, todėl ta dalis nežinoma."
 }

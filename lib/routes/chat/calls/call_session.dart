@@ -196,6 +196,31 @@ class CallSession extends ChangeNotifier {
     // audio that never became a chunk, so the sink has never heard of it and
     // no count it keeps can carry it.
     final capture = captureOverride ?? CallCaptureService(sink: transcripts);
+
+    // WHO IS WRITING THIS HALF, READ ONCE, HERE, WHILE THE CALL IS BEING SET UP.
+    //
+    // These two are not description, they are the IDENTITY the transcript
+    // half's transaction id is built from -- `(call key, sender, device)` --
+    // and an idempotency key has to be frozen for the whole operation rather
+    // than re-read per attempt. `CallRecord` retries a failed publish three
+    // times and freezes everything else it sends before the first one, for
+    // exactly this reason: a resend only collapses server-side if it is the
+    // same event. Read inside the closure below, these two were the one part
+    // of the key that could change between attempts. A send that the server
+    // accepted but whose response was lost, followed by a client that dropped
+    // its login before the retry, published the same speech under a second
+    // transaction id with no `device_id` on it -- so the homeserver stored two
+    // events and the reader, which now groups by device, showed the learner
+    // two devices and merged the duplicate speech. That is the precise loss the
+    // per-device keying exists to prevent, coming back in through the retry.
+    //
+    // Frozen at BUILD rather than at publish, because this is the device that
+    // did the recording and the recording is what the half is about. By the
+    // time the last chunk has drained, `client.deviceID` answers a different
+    // question: which device is signed in NOW.
+    final writerUserId = room.client.userID ?? '';
+    final writerDeviceId = room.client.deviceID;
+
     final record =
         recordOverride ??
         CallRecord(
@@ -225,14 +250,17 @@ class CallSession extends ChangeNotifier {
                   txid: txid,
                 ),
                 callKey: callKey,
-                senderId: room.client.userID ?? '',
+                // Both taken from the latches above, never read off the client
+                // here: this closure runs once per RETRY, and the transaction
+                // id built from these two is what makes a retry a retry.
+                senderId: writerUserId,
                 // The ACCOUNT above, and the DEVICE here, because they answer
                 // two different questions and one of them used to answer both.
                 // Two of a learner's devices in one call write two halves of
                 // what that person said; keyed by the account alone those two
                 // halves are indistinguishable, and the reader keeps one and
                 // presents it as the whole of it.
-                deviceId: room.client.deviceID,
+                deviceId: writerDeviceId,
                 segments: segments,
                 chunksCaptured: chunksCaptured,
                 chunksTranscribed: chunksTranscribed,

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:27:56.710296",
+    "@@last_modified": "2026-09-01 23:37:03.229003",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9972,5 +9972,8 @@
     "callTranscriptMicrophoneRefused": "El dispositiu de {name} no va obrir mai un micròfon per a aquesta trucada, així que no es va gravar res del que va dir i no se sap què es va dir.",
     "callTranscriptAudioLost": "El que {name} va dir es va gravar però es va perdre abans que es pogués transcriure, així que no se sap què es va dir.",
     "mapPinsKeyboardHint": "Utilitza les tecles de fletxa per moure't entre les activitats del mapa i prem Retorn per obrir-ne una.",
-    "selectMessageLabel": "Selecciona un missatge"
+    "selectMessageLabel": "Selecciona un missatge",
+    "callTranscriptAudioDropped": "El que ha dit {name} s'ha perdut al seu dispositiu abans que es pogués enregistrar, així que no se sap què ha dit.",
+    "callTranscriptHeldByOtherDevice": "El que ha dit {name} s'ha deixat a un altre dels seus dispositius perquè ho enregistrés, així que no s'ha enviat res des d'aquest i no se sap què ha dit aquí.",
+    "callTranscriptDeviceNeverWrote": "Una part del que va dir {name} es va deixar perquè un altre dels seus dispositius ho enregistrés, i no ha arribat res d'aquest dispositiu, així que aquesta part no es coneix."
 }

@@ -64,56 +64,128 @@ bool segmentsArePlaceable(List<TranscriptSegment> segments) {
   return true;
 }
 
-/// Whether a half is empty because THIS APP threw its audio away, rather than
-/// because the speaker said nothing.
+/// Audio an accounting says did not make it into this half.
 ///
-/// [HalfAccounting.chunksSuppressed] counts chunks the writing device's own
-/// speech detector examined and chose not to send. That detector's thresholds
-/// are calibrated against a single recording and documented as unvalidated, so
-/// a short quiet answer inside a long chunk can fail them -- and when every
-/// chunk fails them, no request is ever issued and NO PROVIDER EVER READS THE
-/// AUDIO. The half is then empty for a reason that is entirely ours, and
-/// `present` plus no segments is [TranscriptHalf.saidNothing]: "you did not say
-/// anything", sourced from our own detector, about someone who may have talked
-/// the whole call.
+/// ONE inventory, because two different questions are asked of exactly these
+/// four claims and both were getting their own hand-kept list. Each question
+/// below is an exhaustive `switch` over this enum, so a claim added here does
+/// not compile until BOTH have an answer for it:
 ///
-/// All three terms are load-bearing, and the first is why this is NOT a term of
-/// [HalfAccounting.writerAdmitsGaps]:
+/// * [amountEmptiedBy] / [explainsEmptiness] -- when the half carries no words
+///   at all, which of these emptied it, and which one the learner is told.
+/// * [leavesAGap] -- whether that audio is missing from the TRANSCRIPT, not
+///   merely from this half. A half can be short of a stretch without being
+///   empty, and that question is not answered by the emptiness one.
+///
+/// Each of these is OUR OWN doing rather than the speaker's, and each has a
+/// different thing to say about where the speech went -- which is why an empty
+/// half must be able to name one of them rather than fall through to
+/// [TranscriptHalf.saidNothing], "you did not say anything", said about
+/// somebody who may have talked the whole call.
+///
+/// **Listed WORST FIRST, and that order is load-bearing.** An explanation is
+/// only true if nothing worse also emptied the half: a half with one chunk
+/// discarded and one LOST is empty for two reasons, and naming the discard
+/// tells the learner another device is holding speech that is in fact gone. So
+/// [explainsEmptiness] reads the order rather than each rule restating it, and
+/// a cause added here takes its rank once instead of having to be remembered at
+/// every site that ranks one.
+///
+/// Worst is "nobody has this audio at all": a lost chunk and a stretch the
+/// capture path dropped are both speech with no copy anywhere. Below them sit
+/// the two that destroyed nothing -- a chunk another of this account's devices
+/// is holding, and a chunk our own detector judged silent -- because those name
+/// where the words went rather than admitting they are gone. Between the two
+/// gaps, a lost chunk comes first for the reason [TranscriptHalf.issue] already
+/// gives: dropped audio is the same failure one layer down.
+///
+/// [HalfAccounting.captureRefused] is deliberately NOT one of these. It is not
+/// a quantity of audio that went missing, it is the statement that none was
+/// ever taken, and [TranscriptHalf.issue] already ranks it above all of these.
+enum MissingAudio {
+  /// Chunks captured and then lost -- see [HalfAccounting.chunksLost]. Audio
+  /// that might have carried words, with no copy anywhere.
+  lost,
+
+  /// Audio the capture path threw away before it was ever a chunk -- see
+  /// [HalfAccounting.captureDroppedMs]. A gap too, in milliseconds rather than
+  /// chunks because it never became one.
+  droppedAtCapture,
+
+  /// Chunks deliberately handed to another of this account's devices -- see
+  /// [HalfAccounting.chunksDiscarded]. Not a gap: the words are one event away,
+  /// unless that sibling never wrote.
+  heldForASibling,
+
+  /// Chunks this app's own speech detector held back -- see
+  /// [HalfAccounting.chunksSuppressed]. That detector's thresholds are
+  /// calibrated against a single recording and documented as unvalidated, so a
+  /// short quiet answer inside a long chunk can fail them -- and when every
+  /// chunk fails them, no request is ever issued and NO PROVIDER EVER READS THE
+  /// AUDIO. The emptiness is then entirely ours, sourced from our own detector.
+  suppressedByUs,
+}
+
+/// How much audio [cause] accounts for, in whatever unit that cause counts.
+///
+/// A `switch` with no default, deliberately: adding a value to [MissingAudio]
+/// stops this compiling until somebody says which claim it reads, and that
+/// compile error is the whole reason the causes are an enum rather than four
+/// predicates written side by side.
+int amountEmptiedBy(MissingAudio cause, HalfAccounting accounting) =>
+    switch (cause) {
+      MissingAudio.lost => accounting.chunksLost,
+      MissingAudio.droppedAtCapture => accounting.captureDroppedMs,
+      MissingAudio.heldForASibling => accounting.chunksDiscarded,
+      MissingAudio.suppressedByUs => accounting.chunksSuppressed,
+    };
+
+/// Whether [cause] is why this half carries no words.
+///
+/// Four terms, and every one of them is load-bearing. The first is also why
+/// none of this is a term of [HalfAccounting.writerAdmitsGaps]:
 /// * `segments.isEmpty` -- a half that still carries words was PARTIALLY
-///   suppressed, and that is ordinary. Almost every real call has a quiet
-///   stretch, so flagging those would mark nearly every transcript incomplete
-///   and leave the flag meaning nothing when it matters: the trap already
-///   recorded on [HalfAccounting.chunksSuppressed] and [HalfAccounting.chunksLost].
+///   emptied, and that is ordinary. Almost every real call has a quiet stretch,
+///   so flagging those would mark nearly every transcript incomplete and leave
+///   the flag meaning nothing when it matters: the trap already recorded on
+///   [HalfAccounting.chunksSuppressed] and [HalfAccounting.chunksLost].
 /// * `chunksTranscribed == 0` -- if any chunk came back with words, a provider
 ///   did read this speaker, and what it did not find is not ours to explain.
-/// * `chunksSuppressed > 0` -- with nothing held back there is nothing of ours
-///   in the way, and an empty half is the speaker's own answer.
-bool suppressionExplainsEmptiness(
+/// * this cause is present -- with nothing of ours in the way, an empty half is
+///   the speaker's own answer.
+/// * nothing WORSE is present -- an explanation must account for the emptiness
+///   on its own, or naming it buries a truer one. This is the term the discard
+///   rule was written without: an empty half that both lost a chunk and
+///   deferred one read as "another device is holding your speech", which is a
+///   true statement about the discard displacing a truer one about the loss.
+///   `writerAdmitsGaps` already makes such a half incomplete on `chunksLost`,
+///   so it still reads as missing words either way; what this keeps out is the
+///   WRONG EXPLANATION, which is the distinction this whole file is built to
+///   hold.
+///
+/// The ranking is read off [MissingAudio] rather than restated here, so every
+/// explanation is the worst one that applies and no two can hold at once.
+bool explainsEmptiness(
+  MissingAudio cause,
   List<TranscriptSegment> segments,
   HalfAccounting accounting,
 ) =>
     segments.isEmpty &&
     accounting.chunksTranscribed == 0 &&
-    accounting.chunksSuppressed > 0 &&
-    // Suppression must account for the emptiness on its OWN, or naming it as
-    // the reason buries a different one. A half with one chunk suppressed and
-    // one LOST is empty for two reasons, and only the lost chunk is audio that
-    // might have carried words -- saying "this app found no speech in it"
-    // there reports our trim's verdict over audio the trim never judged.
-    // `writerAdmitsGaps` already makes such a half incomplete on `chunksLost`,
-    // so the half still reads as missing words; what this keeps out is the
-    // WRONG EXPLANATION, which is the distinction this whole file is built to
-    // hold. Capture refused is left to `microphoneRefused` above it for the
-    // same reason.
-    accounting.chunksLost == 0 &&
-    // Both of these are audio our trim never judged, exactly like a lost
-    // chunk, so naming the trim as the reason for the emptiness would report a
-    // verdict it never gave. Dropped audio is already a gap; a discarded chunk
-    // is not, and [discardExplainsEmptiness] is what keeps an empty half that
-    // deferred to a sibling from reading as silence once this rule declines to
-    // explain it.
-    accounting.captureDroppedMs == 0 &&
-    accounting.chunksDiscarded == 0;
+    amountEmptiedBy(cause, accounting) > 0 &&
+    MissingAudio.values
+        .takeWhile((worse) => worse != cause)
+        .every((worse) => amountEmptiedBy(worse, accounting) == 0);
+
+/// Whether a half is empty because THIS APP's speech detector threw its audio
+/// away, rather than because the speaker said nothing.
+///
+/// See [MissingAudio.suppressedByUs] for what the count means and
+/// [explainsEmptiness] for when it is allowed to be the answer.
+bool suppressionExplainsEmptiness(
+  List<TranscriptSegment> segments,
+  HalfAccounting accounting,
+) => explainsEmptiness(MissingAudio.suppressedByUs, segments, accounting);
 
 /// Whether an empty half is empty because this device handed the stretch to a
 /// sibling rather than because the speaker said nothing.
@@ -133,10 +205,95 @@ bool suppressionExplainsEmptiness(
 bool discardExplainsEmptiness(
   List<TranscriptSegment> segments,
   HalfAccounting accounting,
-) =>
-    segments.isEmpty &&
-    accounting.chunksTranscribed == 0 &&
-    accounting.chunksDiscarded > 0;
+) => explainsEmptiness(MissingAudio.heldForASibling, segments, accounting);
+
+/// Whether [claim]'s audio is missing from the TRANSCRIPT -- gone from this
+/// half and from every other half of the same speaker in the same assembly.
+///
+/// The second question this inventory exists for, and the one
+/// [HalfAccounting.writerAdmitsGaps] could not answer on its own. That getter
+/// reads the accounting and nothing else, so it can only judge a claim whose
+/// meaning is settled by the accounting. One of these four is not:
+///
+/// **A discard is only innocent while a sibling's half is actually here.** The
+/// writing device destroyed that audio on the strength of a belief about a
+/// device IT COULD NOT SEE -- that another of the account's devices was
+/// recording the same stretch and would publish it. `chunksDiscarded` is
+/// deliberately excluded from `writerAdmitsGaps` on exactly that belief, and
+/// nothing was checking it. When the sibling crashes, or is closed, or never
+/// publishes, the belief is false: the stretch is in no half in existence, and
+/// the half that deferred it went on asserting it was whole. A half that still
+/// carried WORDS never even reached [discardExplainsEmptiness], which asks for
+/// an empty one, so an ordinary handover that lost its sibling read as a clean,
+/// complete transcript over a hole.
+///
+/// So the condition is supplied rather than assumed. [aSiblingWrote] can only
+/// be answered where the assembly is -- it is `deviceCount > 1`, whether
+/// another device of this account put a half in this call at all -- and making
+/// it a required argument is what stops the question being asked anywhere that
+/// cannot answer it.
+///
+/// **WHAT [aSiblingWrote] HONESTLY ESTABLISHES, AND WHAT IT DOES NOT.** It
+/// establishes that another of this account's devices published a half for this
+/// call and the reader is holding it. It does NOT establish that the half spans
+/// the discarded stretch, and nothing available can:
+/// * a discarded chunk carries a COUNT and nothing else -- no position, no
+///   duration, no index -- so there is no stretch to compare anything against;
+/// * chunk indices do not line up across devices, so the count is not a lookup
+///   into the sibling's half either;
+/// * and the obvious temporal test, "the sibling's words run past mine", is
+///   wrong in both directions. A sibling that recorded the stretch and heard
+///   silence produces no segment there, so its absence is not evidence of a
+///   gap; and a sibling that recorded past that moment may still have lost the
+///   chunk that mattered, so its presence is not evidence of coverage.
+///
+/// A sibling that admits its OWN gaps needs no test here: `_mergeAccounting`
+/// ANDs every claim of completeness, so its truncation, its lost chunks and its
+/// abandoned drain are already the merged half's. Presence is exactly the
+/// residual, and it is the whole of what this can say.
+///
+/// The safe direction is refusing to claim completeness. A half wrongly marked
+/// incomplete costs a learner one honest sentence saying part may be missing; a
+/// half wrongly marked complete costs them the speech itself, silently.
+bool leavesAGap(
+  MissingAudio claim,
+  HalfAccounting accounting, {
+  required bool aSiblingWrote,
+}) => switch (claim) {
+  // Captured and then lost, and audio that went before it was ever a chunk.
+  // Both are gaps unconditionally: nothing anywhere has a copy, and no other
+  // device's half can supply one.
+  MissingAudio.lost => accounting.chunksLost > 0,
+  MissingAudio.droppedAtCapture => accounting.captureDroppedMs > 0,
+
+  // The conditional one. See above: the condition is the entire content of
+  // this claim, and it is why the argument is required rather than defaulted.
+  MissingAudio.heldForASibling =>
+    accounting.chunksDiscarded > 0 && !aSiblingWrote,
+
+  // NEVER a gap, and this is the one exclusion that needs no condition. Our
+  // detector EXAMINED this audio and judged it silent; the audio was not
+  // destroyed on a belief about anything else, and the judgement is recorded
+  // for anyone who wants to question it. It can be WRONG about a speaker it was
+  // never calibrated for, which is what [suppressionExplainsEmptiness] exists
+  // to stop reading as silence -- but a wrong verdict on audio somebody looked
+  // at is a different thing from a stretch nobody has, and flagging every
+  // partially suppressed half would raise the flag on nearly every real call.
+  MissingAudio.suppressedByUs => false,
+};
+
+/// Whether ANY audio this accounting describes is missing from the transcript.
+///
+/// Asked over the whole inventory rather than one term at a time, so a claim
+/// added to [MissingAudio] reaches every caller of this at once. That is the
+/// half of the completeness question [HalfAccounting.writerAdmitsGaps] cannot
+/// hold, and the two are asked together wherever a half's state is decided.
+bool anyAudioLeftAGap(
+  HalfAccounting accounting, {
+  required bool aSiblingWrote,
+}) => MissingAudio.values.any(
+  (claim) => leavesAGap(claim, accounting, aSiblingWrote: aSiblingWrote),
+);
 
 /// Where one device's wall clock sat relative to the SFU's, read at join.
 ///
@@ -444,6 +601,14 @@ class HalfAccounting {
 
   /// Whether this half is known NOT to be everything that was said — either
   /// because the writer says so, or because it never said otherwise.
+  ///
+  /// THE ACCOUNTING ALONE, WHICH IS NOT THE WHOLE OF COMPLETENESS. One claim a
+  /// half can make — [chunksDiscarded] — means a gap or nothing at all
+  /// depending on whether a DIFFERENT device published, and no getter here can
+  /// see that. [leavesAGap] is where the conditional half of the question
+  /// lives, and every site that decides whether a half is whole asks both.
+  /// This getter was the whole of it once, and a handover whose sibling never
+  /// wrote read as a complete transcript over a stretch nobody had.
   bool get writerAdmitsGaps =>
       !declared ||
       truncated ||
@@ -746,6 +911,17 @@ enum HalfIssue {
   /// the recording, not about whether the speaker spoke.
   audioHeldByAnotherDevice,
 
+  /// A stretch was handed to another of the account's devices and NO half from
+  /// that device is here, so the audio is in no transcript at all.
+  ///
+  /// The same decision as [audioHeldByAnotherDevice], reported on a half that
+  /// still carries words. The discard is the one step in the capture path that
+  /// destroys audio on the strength of a belief about a device this one cannot
+  /// see; when that belief turns out false the stretch is simply gone, and the
+  /// half it was cut from is otherwise a perfectly ordinary record — which is
+  /// how it came to read as a complete one.
+  audioLeftToADeviceThatNeverWrote,
+
   /// Words were dropped to fit the event under the server's size limit.
   tooLongToSend,
 
@@ -960,10 +1136,16 @@ class TranscriptHalf {
     if (audioSuppressedLocally) return HalfIssue.audioSuppressedLocally;
     // Beside it, and for the same reason: both are an empty half our own
     // device produced, and both would otherwise fall through to a cause that
-    // names the reader rather than the decision that emptied the half. The two
-    // cannot both hold -- [suppressionExplainsEmptiness] declines any half
-    // that also deferred a chunk -- so the order between them decides nothing;
-    // what matters is that they sit above the writer's own admissions.
+    // names the reader rather than the decision that emptied the half.
+    //
+    // THE ORDER OF THESE TWO AGAINST THE GAPS BELOW DECIDES NOTHING, and that
+    // is deliberate rather than lucky. [MissingAudio] ranks every way a half
+    // can be emptied, and [explainsEmptiness] refuses any cause with a worse
+    // one beside it -- so neither of these getters can be true of a half that
+    // also lost a chunk or dropped audio at capture, and neither can be true
+    // when the other is. Ranking that lived in this ladder alone is what let a
+    // half that discarded one chunk and LOST another read as "another device is
+    // holding your speech", above the branch that would have said it was gone.
     if (audioHeldByAnotherDevice) return HalfIssue.audioHeldByAnotherDevice;
     if (!accounting.declared) return HalfIssue.writerSaidNothing;
     if (accounting.chunksLost > 0) return HalfIssue.audioLost;
@@ -974,6 +1156,20 @@ class TranscriptHalf {
     // read perfectly and a device that dropped the audio before we saw it.
     if (accounting.captureDroppedMs > 0) {
       return HalfIssue.audioDroppedAtCapture;
+    }
+    // After both gaps that are certainly gone, because this one might not be:
+    // the words may still exist on a device that simply never published. Above
+    // everything below it because it is the same KIND of fact as those two --
+    // a stretch of this call that is in no half we hold.
+    //
+    // BELOW `audioHeldByAnotherDevice`, which is the same uncovered discard
+    // seen on an EMPTY half and already says the whole of it. This one exists
+    // for the half that still carries words, which never reached that branch
+    // at all: it asks for `segments.isEmpty`, so an ordinary handover that
+    // transcribed its early chunks and deferred its tail fell straight past
+    // every check here and reported `none`.
+    if (discardWentUncovered) {
+      return HalfIssue.audioLeftToADeviceThatNeverWrote;
     }
     if (accounting.truncated || accounting.segmentsOmitted > 0) {
       return HalfIssue.tooLongToSend;
@@ -1032,6 +1228,19 @@ class TranscriptHalf {
   /// rule this load-bearing would eventually answer differently.
   bool get audioHeldByAnotherDevice =>
       discardExplainsEmptiness(segments, accounting);
+
+  /// Whether a stretch this device handed to a sibling is in no half at all.
+  ///
+  /// [deviceCount] is the answer to the only question [leavesAGap] cannot ask
+  /// itself: it counts the DEVICES of this account whose halves went into this
+  /// one, so more than one means a sibling did publish and the reader is
+  /// holding it. See [leavesAGap] for what that establishes and, at length, for
+  /// what it cannot.
+  bool get discardWentUncovered => leavesAGap(
+    MissingAudio.heldForASibling,
+    accounting,
+    aSiblingWrote: deviceCount > 1,
+  );
 
   /// Whether this half is a person who was recorded and said nothing.
   ///
@@ -1830,14 +2039,35 @@ CallTranscript assembleTranscript({
                   candidate.accounting,
                 ) ||
                 // Here rather than in `writerAdmitsGaps` for the same reason,
-                // and a different one besides: a discard is not a gap, so a
-                // half that still carries words must not read as incomplete
-                // for having deferred one chunk. Only the EMPTY half this
-                // names is unsupported as `present`, because `present` plus no
-                // segments is read as the speaker having said nothing.
+                // and a different one besides: a correctly covered discard is
+                // not a gap, so a half that still carries words must not read
+                // as incomplete for having deferred one chunk to a sibling
+                // that DID write. Only the EMPTY half this names is
+                // unsupported as `present`, because `present` plus no segments
+                // is read as the speaker having said nothing.
                 discardExplainsEmptiness(
                   candidate.segments,
                   candidate.accounting,
+                ) ||
+                // And the other half of that same sentence, which nothing was
+                // asking. "A correctly covered discard is not a gap" is a
+                // claim about a DIFFERENT DEVICE, made by the writer at
+                // capture time on a belief it could not check, and this is the
+                // only place in the system that can see whether it held. A
+                // handover whose sibling crashed published words plus a
+                // deferred tail, cleared every check above -- the tail is not
+                // in `writerAdmitsGaps`, and the rule above it wants an empty
+                // half -- and read as a COMPLETE record of a call it was
+                // missing a stretch of.
+                //
+                // Asked over the whole of [MissingAudio] rather than for the
+                // discard alone, so the completeness question is stated once
+                // against the one inventory instead of a term at a time. The
+                // two gaps it also covers are already in `writerAdmitsGaps`,
+                // and agreeing twice is the cheapest thing here.
+                anyAudioLeftAGap(
+                  candidate.accounting,
+                  aSiblingWrote: candidate.deviceCount > 1,
                 ))
             ? HalfState.incomplete
             : HalfState.present,

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-01 12:28:04.746831",
+    "@@last_modified": "2026-09-01 23:37:26.806838",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2249,5 +2249,8 @@
     "callTranscriptMicrophoneRefused": "Ẹrọ {name} kò ṣí gbohungbohun rárá fún ipe yìí, nítorí náà kò sí ohun tí wọ́n sọ tí a gbà sílẹ̀, bẹ́ẹ̀ sì ni a kò mọ ohun tí wọ́n sọ.",
     "callTranscriptAudioLost": "Ohun tí {name} sọ ni a gbà sílẹ̀ ṣùgbọ́n ó sọnù kí a tó lè kọ ọ́ sílẹ̀, nítorí náà a kò mọ ohun tí wọ́n sọ.",
     "mapPinsKeyboardHint": "Lo àwọn bọtini ọfà láti lọ láàárín àwọn iṣẹ́-ṣíṣe lórí maapu, kí o sì tẹ Tẹ́ẹ́rẹ̀ láti ṣí ọ̀kan.",
-    "selectMessageLabel": "Yan ifiranṣẹ"
+    "selectMessageLabel": "Yan ifiranṣẹ",
+    "callTranscriptAudioDropped": "Ohun tí {name} sọ ti sọnù nípasẹ̀ ẹ̀rọ wọn kí ó tó lè gbà á sílẹ̀, nítorí náà a kò mọ ohun tí wọ́n sọ.",
+    "callTranscriptHeldByOtherDevice": "Ohun tí {name} sọ ni a fi sílẹ̀ fún ẹ̀rọ wọn mìíràn láti gbà á sílẹ̀, nítorí náà kò sí èyíkéyìí tí a fi ránṣẹ́ láti orí èyí, a kò sì mọ ohun tí wọ́n sọ níbí.",
+    "callTranscriptDeviceNeverWrote": "Apá kan ohun tí {name} sọ ni a fi sílẹ̀ fún ẹ̀rọ mìíràn láti gbà sílẹ̀, kò sì sí ohun tó dé láti inú ẹ̀rọ náà, nítorí náà a kò mọ apá yẹn."
 }

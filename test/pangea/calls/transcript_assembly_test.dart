@@ -2091,13 +2091,66 @@ void main() {
       expect(tooMany.incoherent, isTrue);
     });
 
-    test('a half that still carries words is complete', () {
-      // The point of keeping it out of `writerAdmitsGaps`. An ordinary
-      // handover defers one tail, and that transcript is whole.
+    test(
+      'a half that still carries words is complete WHEN THE SIBLING WROTE',
+      () {
+        // The point of keeping it out of `writerAdmitsGaps`. An ordinary
+        // handover defers one tail, and that transcript is whole.
+        //
+        // The fixture said "handover" and set up ONE device, which is the
+        // opposite of a handover and is the case below. A discard is only
+        // innocent because another device holds the stretch; a test that asserts
+        // the innocence has to put that device in the room, or it is asserting
+        // the assumption rather than checking it.
+        final transcript = assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              deviceId: 'PHONE',
+              accounting: const HalfAccounting(
+                chunksCaptured: 3,
+                chunksTranscribed: 2,
+                chunksDiscarded: 1,
+                declared: true,
+              ),
+            ),
+            _candidate(
+              alice,
+              texts: const ['y despues'],
+              deviceId: 'LAPTOP',
+              accounting: const HalfAccounting(
+                chunksCaptured: 2,
+                chunksTranscribed: 2,
+                declared: true,
+              ),
+            ),
+          ],
+          expectedSenders: [alice],
+        );
+
+        final half = _halfFor(transcript, alice);
+        expect(half.state, HalfState.present);
+        expect(half.discardWentUncovered, isFalse);
+        // Not `none`: two devices of one account is itself worth reporting, and
+        // that is what this half is. What matters here is that nothing calls it
+        // short of a stretch.
+        expect(half.issue, HalfIssue.assembledFromSeveralDevices);
+      },
+    );
+
+    test('a half that still carries words is NOT complete when it did not', () {
+      // The defect the fixture above was hiding. Device A transcribed its early
+      // chunks, then discarded its stop-tail because it believed a sibling held
+      // that stretch -- and the sibling crashed, or was closed, or never
+      // published. The belief was checked by nobody: `chunksDiscarded` is not a
+      // term of `writerAdmitsGaps`, and the rule that catches a deferred half
+      // asks for an EMPTY one, so this half cleared every test and read as a
+      // clean, complete record of a call it is missing a stretch of.
       final transcript = assembleTranscript(
         candidates: [
           _candidate(
             alice,
+            deviceId: 'PHONE',
             accounting: const HalfAccounting(
               chunksCaptured: 3,
               chunksTranscribed: 2,
@@ -2109,8 +2162,15 @@ void main() {
         expectedSenders: [alice],
       );
 
-      expect(_halfFor(transcript, alice).state, HalfState.present);
-      expect(_halfFor(transcript, alice).issue, HalfIssue.none);
+      final half = _halfFor(transcript, alice);
+      expect(
+        half.segments,
+        isNotEmpty,
+        reason: 'the words it DID get are kept',
+      );
+      expect(half.discardWentUncovered, isTrue);
+      expect(half.state, HalfState.incomplete);
+      expect(half.issue, HalfIssue.audioLeftToADeviceThatNeverWrote);
     });
 
     test('an EMPTY half that deferred everything is not silence', () {
@@ -2163,6 +2223,241 @@ void main() {
       expect(half.audioSuppressedLocally, isFalse);
       expect(half.issue, HalfIssue.audioHeldByAnotherDevice);
     });
+  });
+
+  group('every way an empty half can have been emptied', () {
+    // MECHANICAL over [MissingAudio], and over every COMBINATION of them,
+    // because the defect these replaced three hand-written cases for is a
+    // combination: a half that discarded one chunk and LOST another named the
+    // discard, told the learner another device was holding speech that was in
+    // fact gone, and did it from a rule that only ever looked at one count.
+    //
+    // Written against the enum rather than a list of fixtures, so a cause added
+    // to [MissingAudio] is immediately asserted here in every pairing with
+    // every other -- the inventory cannot drift because there is no inventory.
+
+    /// A half emptied by exactly [causes] and nothing else.
+    ///
+    /// `chunksCaptured` is generous so no combination trips [incoherent],
+    /// which would answer every question below with the same issue and hide
+    /// what is actually being asked.
+    HalfAccounting emptiedBy(Set<MissingAudio> causes) => HalfAccounting(
+      chunksCaptured: 8,
+      chunksLost: causes.contains(MissingAudio.lost) ? 1 : 0,
+      captureDroppedMs: causes.contains(MissingAudio.droppedAtCapture)
+          ? 250
+          : 0,
+      chunksDiscarded: causes.contains(MissingAudio.heldForASibling) ? 1 : 0,
+      chunksSuppressed: causes.contains(MissingAudio.suppressedByUs) ? 1 : 0,
+      declared: true,
+    );
+
+    /// What the reader must SAY when [cause] is the worst thing that emptied a
+    /// half.
+    ///
+    /// Restated here rather than read off the production ladder: a test that
+    /// asks the code under test what it thinks the answer is asserts nothing.
+    HalfIssue issueNaming(MissingAudio cause) => switch (cause) {
+      MissingAudio.lost => HalfIssue.audioLost,
+      MissingAudio.droppedAtCapture => HalfIssue.audioDroppedAtCapture,
+      MissingAudio.heldForASibling => HalfIssue.audioHeldByAnotherDevice,
+      MissingAudio.suppressedByUs => HalfIssue.audioSuppressedLocally,
+    };
+
+    /// Every non-empty combination of causes, built from the enum.
+    List<Set<MissingAudio>> combinations() {
+      final all = MissingAudio.values;
+      return [
+        for (var mask = 1; mask < 1 << all.length; mask++)
+          {
+            for (var i = 0; i < all.length; i++)
+              if (mask & (1 << i) != 0) all[i],
+          },
+      ];
+    }
+
+    TranscriptHalf assembled(HalfAccounting accounting) => _halfFor(
+      assembleTranscript(
+        candidates: [
+          _candidate(alice, segments: const [], accounting: accounting),
+        ],
+        expectedSenders: [alice],
+      ),
+      alice,
+    );
+
+    test('is never read as the speaker having said nothing', () {
+      // The single most dangerous claim this feature can make. It must not
+      // survive ANY combination of our own doings, and the exclusivity rule
+      // below is exactly the kind of narrowing that could take it away again:
+      // an explanation that declines to explain must not leave the half
+      // looking clean.
+      for (final causes in combinations()) {
+        final half = assembled(emptiedBy(causes));
+        expect(
+          half.saidNothing,
+          isFalse,
+          reason: '$causes must not read as silence',
+        );
+        expect(
+          half.state,
+          HalfState.incomplete,
+          reason: '$causes leaves a half nothing may call present',
+        );
+      }
+    });
+
+    test('is explained by the WORST cause present, and only that one', () {
+      for (final causes in combinations()) {
+        final accounting = emptiedBy(causes);
+        // [MissingAudio] is declared worst-first, so the worst present cause
+        // is the first of the enum's own values that this half carries.
+        final worst = MissingAudio.values.firstWhere(causes.contains);
+
+        for (final cause in MissingAudio.values) {
+          expect(
+            explainsEmptiness(cause, const [], accounting),
+            cause == worst,
+            reason: 'of $causes, only $worst may explain the emptiness',
+          );
+        }
+      }
+    });
+
+    test('names the worst cause present to the reader', () {
+      for (final causes in combinations()) {
+        final worst = MissingAudio.values.firstWhere(causes.contains);
+        expect(
+          assembled(emptiedBy(causes)).issue,
+          issueNaming(worst),
+          reason: 'a half emptied by $causes must report $worst',
+        );
+      }
+    });
+
+    test('explains nothing about a half that still carries words', () {
+      // The first term of the rule, asserted over the whole enum: a half that
+      // was PARTIALLY emptied is ordinary, and almost every real call has a
+      // quiet stretch in it.
+      for (final causes in combinations()) {
+        final accounting = emptiedBy(causes);
+        for (final cause in MissingAudio.values) {
+          expect(
+            explainsEmptiness(cause, [TranscriptSegment('hola')], accounting),
+            isFalse,
+            reason: '$cause cannot explain a half that has words in it',
+          );
+        }
+      }
+    });
+  });
+
+  group('audio missing from the transcript, not merely from this half', () {
+    // MECHANICAL over [MissingAudio], and over the coverage question, because
+    // the defect it replaces was a claim EXCLUDED from the completeness test on
+    // a condition nobody checked. `chunksDiscarded` is not a gap "because the
+    // sibling holds it" -- a belief the writing device formed about a device it
+    // could not see, at capture time, and which read-time never questioned.
+    //
+    // Written against the enum so that a claim added to it is asserted here in
+    // both coverage states without anybody remembering to.
+
+    /// A half that carries WORDS and makes exactly [claim]'s admission.
+    ///
+    /// Non-empty deliberately: an empty half is caught by the emptiness rules
+    /// one group up, and it is the half that still has words in it that walked
+    /// past every check and reported itself whole.
+    HalfAccounting admitting(MissingAudio claim) => HalfAccounting(
+      chunksCaptured: 8,
+      chunksTranscribed: 2,
+      chunksLost: claim == MissingAudio.lost ? 1 : 0,
+      captureDroppedMs: claim == MissingAudio.droppedAtCapture ? 250 : 0,
+      chunksDiscarded: claim == MissingAudio.heldForASibling ? 1 : 0,
+      chunksSuppressed: claim == MissingAudio.suppressedByUs ? 1 : 0,
+      declared: true,
+    );
+
+    /// The same half, assembled with or without a second device of the account.
+    TranscriptHalf assembled(
+      HalfAccounting accounting, {
+      required bool withASibling,
+    }) => _halfFor(
+      assembleTranscript(
+        candidates: [
+          _candidate(alice, deviceId: 'PHONE', accounting: accounting),
+          if (withASibling)
+            _candidate(
+              alice,
+              texts: const ['y despues'],
+              deviceId: 'LAPTOP',
+              accounting: const HalfAccounting(
+                chunksCaptured: 2,
+                chunksTranscribed: 2,
+                declared: true,
+              ),
+            ),
+        ],
+        expectedSenders: [alice],
+      ),
+      alice,
+    );
+
+    test('a claim that leaves a gap never reads as a complete record', () {
+      // The invariant, stated once over the whole inventory. Whatever
+      // [leavesAGap] says is missing from the transcript, the half it came from
+      // must not be `present` -- which is the state the screen reads as a
+      // trusted, whole record of what somebody said.
+      for (final claim in MissingAudio.values) {
+        for (final withASibling in [true, false]) {
+          final accounting = admitting(claim);
+          if (!leavesAGap(claim, accounting, aSiblingWrote: withASibling)) {
+            continue;
+          }
+          expect(
+            assembled(accounting, withASibling: withASibling).state,
+            HalfState.incomplete,
+            reason:
+                '$claim leaves a gap with sibling=$withASibling, so the half '
+                'may not claim to be everything that was said',
+          );
+        }
+      }
+    });
+
+    test('the deferred stretch is the ONE claim a sibling can answer for', () {
+      // Every other claim means the audio is gone wherever else you look, so
+      // its answer must not move when a second device turns up. A new claim
+      // that DOES depend on another device is a second conditional exclusion
+      // and needs the same read-time check this one just got.
+      for (final claim in MissingAudio.values) {
+        final accounting = admitting(claim);
+        final covered = leavesAGap(claim, accounting, aSiblingWrote: true);
+        final uncovered = leavesAGap(claim, accounting, aSiblingWrote: false);
+        expect(
+          covered == uncovered,
+          claim != MissingAudio.heldForASibling,
+          reason:
+              'whether $claim is a gap must turn on a sibling only for a '
+              'deferred stretch',
+        );
+      }
+    });
+
+    test(
+      'an ordinary handover is not made incomplete by having handed over',
+      () {
+        // The other wrong answer, and the one the exclusion exists to prevent.
+        // Two devices, one defers its tail to the other, and the transcript is
+        // whole -- flagging that would report missing speech that is present in
+        // the same half, on every two-device call there is.
+        final accounting = admitting(MissingAudio.heldForASibling);
+        final half = assembled(accounting, withASibling: true);
+
+        expect(half.deviceCount, 2);
+        expect(half.discardWentUncovered, isFalse);
+        expect(half.state, HalfState.present);
+      },
+    );
   });
 
   group('two devices of one account', () {

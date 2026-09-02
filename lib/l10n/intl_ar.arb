@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-01 12:27:56.014241",
+    "@@last_modified": "2026-09-01 23:37:01.308853",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10151,5 +10151,8 @@
     "callTranscriptMicrophoneRefused": "لم يفتح جهاز {name} ميكروفونًا لهذه المكالمة مطلقًا، لذا لم يتم تسجيل أي شيء قاله ولا يُعرف ما قيل.",
     "callTranscriptAudioLost": "تم تسجيل ما قاله {name} ولكنه فُقد قبل أن يتم نسخه، لذا لا يُعرف ما قيل.",
     "mapPinsKeyboardHint": "استخدم مفاتيح الأسهم للتنقل بين الأنشطة على الخريطة، واضغط على Enter لفتح أحدها.",
-    "selectMessageLabel": "تحديد رسالة"
+    "selectMessageLabel": "تحديد رسالة",
+    "callTranscriptAudioDropped": "ما قاله {name} قد فُقد من جهازه قبل أن يتم تسجيله، لذا فما قيل غير معروف.",
+    "callTranscriptHeldByOtherDevice": "ما قاله {name} تُرك لجهاز آخر من أجهزته لتسجيله، لذا لم يتم إرسال أي شيء منه من هذا الجهاز وما قيل غير معروف هنا.",
+    "callTranscriptDeviceNeverWrote": "جزء مما قاله {name} تُرك لجهاز آخر من أجهزته لتسجيله، ولم يصل أي شيء من ذلك الجهاز، لذا فإن هذا الجزء غير معروف."
 }

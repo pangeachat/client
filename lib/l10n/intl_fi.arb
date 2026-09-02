@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-01 12:27:57.569771",
+    "@@last_modified": "2026-09-01 23:37:05.697870",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9882,5 +9882,8 @@
     "callTranscriptMicrophoneRefused": "{name}-käyttäjän laite ei avannut mikrofonia tämän puhelun aikana, joten mitään sanottua ei tallennettu eikä tiedetä, mitä sanottiin.",
     "callTranscriptAudioLost": "Mitä {name} sanoi, tallennettiin, mutta se katosi ennen kuin se voitiin litteroida, joten sanottua ei tiedetä.",
     "mapPinsKeyboardHint": "Käytä nuolinäppäimiä siirtyäksesi kartan aktiviteettien välillä ja avaa aktiviteetti painamalla Enter-näppäintä.",
-    "selectMessageLabel": "Valitse viesti"
+    "selectMessageLabel": "Valitse viesti",
+    "callTranscriptAudioDropped": "Se, mitä {name} sanoi, katosi hänen laitteeltaan ennen kuin se ehdittiin nauhoittaa, joten sanottua ei tiedetä.",
+    "callTranscriptHeldByOtherDevice": "Se, mitä {name} sanoi, jätettiin hänen toisen laitteensa nauhoitettavaksi, joten tältä laitteelta ei lähetetty mitään eikä sanottua tiedetä täällä.",
+    "callTranscriptDeviceNeverWrote": "Osa siitä, mitä {name} sanoi, jätettiin toisen hänen laitteensa tallennettavaksi, eikä siltä laitteelta saapunut mitään, joten sitä osaa ei tiedetä."
 }

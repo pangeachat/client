@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-01 12:28:00.255762",
+    "@@last_modified": "2026-09-01 23:37:13.231603",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2249,5 +2249,8 @@
     "callTranscriptMicrophoneRefused": "Dem {name} säin Apparat huet ni e Mikro fir dësen Uruff opgemaach, sou datt näischt opgeholl gouf a wat gesot gouf ass net bekannt.",
     "callTranscriptAudioLost": "Wat de {name} gesot huet, gouf opgeholl, awer verluer ier et transkribéiert konnt ginn, sou datt wat gesot gouf net bekannt ass.",
     "mapPinsKeyboardHint": "Benotzt d'Pfeiltasten fir tëscht den Aktivitéiten op der Kaart ze navigéieren, an dréckt Enter fir eng opzemaachen.",
-    "selectMessageLabel": "Message auswielen"
+    "selectMessageLabel": "Message auswielen",
+    "callTranscriptAudioDropped": "Dat, wat den/d' {name} gesot huet, ass vu sengem/hirem Apparat verluer gaangen, ier et iwwerhaapt konnt opgeholl ginn. Wat gesot gouf, ass also net bekannt.",
+    "callTranscriptHeldByOtherDevice": "Dat, wat den/d' {name} gesot huet, gouf engem anere vu sengen/hiren Apparater iwwerlooss fir opzehuelen, dofir gouf näischt vun dësem Apparat geschéckt a wat gesot gouf, ass hei net bekannt.",
+    "callTranscriptDeviceNeverWrote": "En Deel vun deem, wat den/d' {name} gesot huet, sollt vun engem anere vun hiren Apparater opgeholl ginn, an näischt vun deem Apparat ass ukomm, dofir ass deen Deel net bekannt."
 }

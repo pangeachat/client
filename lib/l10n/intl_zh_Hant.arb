@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:28:04.208736",
+    "@@last_modified": "2026-09-01 23:37:26.665285",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9951,5 +9951,8 @@
     "callTranscriptMicrophoneRefused": "{name}的裝置從未為此通話開啟麥克風，因此他們所說的內容未被錄音，也無法得知。",
     "callTranscriptAudioLost": "{name}所說的內容已被錄音，但在轉錄前遺失，因此無法得知。",
     "mapPinsKeyboardHint": "使用方向鍵在地圖上的活動之間移動，然後按 Enter 鍵開啟活動。",
-    "selectMessageLabel": "選擇訊息"
+    "selectMessageLabel": "選擇訊息",
+    "callTranscriptAudioDropped": "{name} 的裝置在錄製前遺失了他們說的內容，因此無法得知他們說了什麼。",
+    "callTranscriptHeldByOtherDevice": "{name} 的發言已交由他們的另一台裝置錄製，因此這台裝置沒有傳送任何內容，也無法得知他們說了什麼。",
+    "callTranscriptDeviceNeverWrote": "{name} 的部分發言內容由其另一台裝置錄製，但該裝置的內容並未傳送過來，因此該部分內容不明。"
 }

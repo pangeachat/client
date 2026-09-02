@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:27:58.836580",
+    "@@last_modified": "2026-09-01 23:37:09.944525",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9918,5 +9918,8 @@
     "callTranscriptMicrophoneRefused": "Perangkat {name} tidak pernah membuka mikrofon untuk panggilan ini, jadi tidak ada yang mereka katakan yang direkam dan apa yang dikatakan tidak diketahui.",
     "callTranscriptAudioLost": "Apa yang dikatakan {name} direkam tetapi hilang sebelum dapat ditranskripsi, jadi apa yang dikatakan tidak diketahui.",
     "mapPinsKeyboardHint": "Gunakan tombol panah untuk berpindah antar aktivitas di peta, dan tekan Enter untuk membuka salah satunya.",
-    "selectMessageLabel": "Pilih pesan"
+    "selectMessageLabel": "Pilih pesan",
+    "callTranscriptAudioDropped": "Apa yang dikatakan {name} hilang dari perangkatnya bahkan sebelum dapat direkam, jadi apa yang dikatakan tidak diketahui.",
+    "callTranscriptHeldByOtherDevice": "Apa yang dikatakan {name} diserahkan ke perangkatnya yang lain untuk direkam, jadi tidak ada yang dikirim dari perangkat ini dan apa yang dikatakan tidak diketahui di sini.",
+    "callTranscriptDeviceNeverWrote": "Sebagian dari apa yang dikatakan {name} diserahkan ke perangkat lain untuk direkam, dan tidak ada yang diterima dari perangkat itu, jadi bagian itu tidak diketahui."
 }

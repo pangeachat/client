@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-01 12:27:56.910576",
+    "@@last_modified": "2026-09-01 23:37:03.761011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2249,5 +2249,8 @@
     "callTranscriptMicrophoneRefused": "Ni agorodd dyfais {name} feicroffon ar gyfer yr alwad hon, felly ni recordiwyd unrhyw beth a ddywedwyd ganddynt ac nid yw'r hyn a ddywedwyd yn hysbys.",
     "callTranscriptAudioLost": "Recordiwyd yr hyn a ddywedodd {name} ond fe'i collwyd cyn y gellid ei drawsgrifio, felly nid yw'r hyn a ddywedwyd yn hysbys.",
     "mapPinsKeyboardHint": "Defnyddiwch y bysellau saeth i symud rhwng gweithgareddau ar y map, a gwasgwch Enter i agor un.",
-    "selectMessageLabel": "Dewis neges"
+    "selectMessageLabel": "Dewis neges",
+    "callTranscriptAudioDropped": "Cafodd yr hyn ddywedodd {name} ei golli gan eu dyfais cyn y gellid hyd yn oed ei recordio, felly nid yw'n hysbys beth a ddywedwyd.",
+    "callTranscriptHeldByOtherDevice": "Gadawyd yr hyn ddywedodd {name} i un arall o'u dyfeisiau ei recordio, felly ni anfonwyd dim ohono o'r un hon ac nid yw'n hysbys yma beth a ddywedwyd.",
+    "callTranscriptDeviceNeverWrote": "Cafodd rhan o'r hyn a ddywedodd {name} ei adael i un arall o'u dyfeisiau ei recordio, ac ni ddaeth dim o'r ddyfais honno, felly nid yw'r rhan honno'n hysbys."
 }

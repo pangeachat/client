@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-01 12:27:56.750857",
+    "@@last_modified": "2026-09-01 23:37:03.535681",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2249,5 +2249,8 @@
     "callTranscriptMicrophoneRefused": "Ang device ni {name} wala gyud nag-abli og mikropono para ani nga tawag, mao nga walay natala sa ilang gisulti ug dili mahibal-an kung unsa ang gisulti.",
     "callTranscriptAudioLost": "Ang gisulti ni {name} natala apan nawala sa wala pa kini ma-transcribe, mao nga dili mahibal-an kung unsa ang gisulti.",
     "mapPinsKeyboardHint": "Gamita ang arrow keys sa paglihok taliwala sa mga kalihokan sa mapa, ug pindota ang Enter aron maablihan ang usa.",
-    "selectMessageLabel": "Pagpili og mensahe"
+    "selectMessageLabel": "Pagpili og mensahe",
+    "callTranscriptAudioDropped": "Ang gisulti ni {name} nawala sa ilang device sa wala pa kini ma-record, mao nga wala mahibal-an kung unsa ang gisulti.",
+    "callTranscriptHeldByOtherDevice": "Ang gisulti ni {name} gibilin sa lain nilang device aron i-record, mao nga walay gipadala gikan niini ug wala mahibal-an dinhi kung unsa ang gisulti.",
+    "callTranscriptDeviceNeverWrote": "Ang bahin sa gisulti ni {name} gibilin sa lain nilang device aron i-record, ug walay niabot gikan sa maong device, mao nga wala mahibal-an ang maong bahin."
 }

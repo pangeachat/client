@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-01 12:28:00.387257",
+    "@@last_modified": "2026-09-01 23:37:14.567680",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2249,5 +2249,8 @@
     "callTranscriptMicrophoneRefused": "Tsy nanokatra mikrô ny fitaovan'i {name} nandritra ity antso ity, ka tsy nisy voarakitra izay nolazainy ary tsy fantatra izay voalaza.",
     "callTranscriptAudioLost": "Voarakitra izay nolazain'i {name} saingy very talohan'ny nahafahana nanoratra azy, ka tsy fantatra izay voalaza.",
     "mapPinsKeyboardHint": "Ampiasao ny zana-tsipìka hivezivezena eo amin'ireo asa eo amin'ny sarintany, ary tsindrio ny Enter hanokafana iray.",
-    "selectMessageLabel": "Fidio hafatra"
+    "selectMessageLabel": "Fidio hafatra",
+    "callTranscriptAudioDropped": "Very ny fitaovan'i {name} ny zavatra nolazainy ka tsy voarakitra akory, noho izany dia tsy fantatra izay voalaza.",
+    "callTranscriptHeldByOtherDevice": "Navela ho an'ny fitaovana hafa an'i {name} ny firaketana ny zavatra nolazainy, ka tsy nisy nalefa avy amin'ity fitaovana ity ary tsy fantatra eto izay voalaza.",
+    "callTranscriptDeviceNeverWrote": "Ny ampahany amin'ny zavatra nolazain'i {name} dia navela ho an'ny fitaovana hafa an'izy ireo horaisina, ary tsy nisy na inona na inona avy amin'io fitaovana io tonga, ka tsy fantatra io ampahany io."
 }

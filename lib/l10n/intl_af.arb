@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-01 12:27:58.019720",
+    "@@last_modified": "2026-09-01 23:37:01.432052",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2249,5 +2249,8 @@
     "callTranscriptMicrophoneRefused": "{name} se toestel het nooit 'n mikrofoon vir hierdie oproep oopgemaak nie, so niks wat hulle gesê het, is opgeneem nie en wat gesê is, is onbekend.",
     "callTranscriptAudioLost": "Wat {name} gesê het, is opgeneem, maar verlore voordat dit getranskribeer kon word, so wat gesê is, is onbekend.",
     "mapPinsKeyboardHint": "Gebruik die pyltjiesleutels om tussen aktiwiteite op die kaart te beweeg, en druk Enter om een oop te maak.",
-    "selectMessageLabel": "Kies boodskap"
+    "selectMessageLabel": "Kies boodskap",
+    "callTranscriptAudioDropped": "Wat {name} gesê het, is deur hul toestel verloor voordat dit opgeneem kon word, so wat gesê is, is nie bekend nie.",
+    "callTranscriptHeldByOtherDevice": "Wat {name} gesê het, is aan 'n ander van hul toestelle oorgelaat om op te neem, so niks daarvan is van hierdie een af gestuur nie en wat gesê is, is nie hier bekend nie.",
+    "callTranscriptDeviceNeverWrote": "'n Deel van wat {name} gesê het, is aan 'n ander van hul toestelle oorgelaat om op te neem, en niks het van daardie toestel af deurgekom nie, so daardie deel is onbekend."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-01 12:27:57.464907",
+    "@@last_modified": "2026-09-01 23:37:05.573156",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9845,5 +9845,8 @@
     "callTranscriptMicrophoneRefused": "{name} gailuak ez zuen mikrofonoa ireki dei honetarako, beraz, ez zen ezer grabatu eta ez da ezagutzen zer esan zen.",
     "callTranscriptAudioLost": "{name}k esandakoa grabatu zen, baina galdu egin zen transkribatu aurretik, beraz, ez da ezagutzen zer esan zen.",
     "mapPinsKeyboardHint": "Erabili gezi-teklak mapako jardueren artean mugitzeko, eta sakatu Sartu bat irekitzeko.",
-    "selectMessageLabel": "Mezua hautatu"
+    "selectMessageLabel": "Mezua hautatu",
+    "callTranscriptAudioDropped": "{name} erabiltzailearen gailuak esandakoa galdu egin du grabatu aurretik; beraz, ez da jakin zer esan duen.",
+    "callTranscriptHeldByOtherDevice": "{name} erabiltzaileak esandakoa bere beste gailu batek grabatu du; beraz, gailu honek ez du ezer bidali eta ez da jakin zer esan duen.",
+    "callTranscriptDeviceNeverWrote": "{name}-(e)k esandakoaren zati bat bere beste gailuetako batean grabatu behar zen, baina gailu horretatik ez da ezer iritsi; beraz, zati hori ezezaguna da."
 }

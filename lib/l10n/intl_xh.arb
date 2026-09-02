@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-01 12:28:04.048169",
+    "@@last_modified": "2026-09-01 23:37:26.688767",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2249,5 +2249,8 @@
     "callTranscriptMicrophoneRefused": "Isixhobo sika-{name} asizange siyivule imakrofoni kule fowuni, ngoko ke akukho nto ayithethileyo erekhodiweyo kwaye akwaziwa ukuba uthethe ntoni.",
     "callTranscriptAudioLost": "Into ethethwe ngu-{name} irekhodiwe kodwa ilahlekile phambi kokuba ibhalwe phantsi, ngoko ke akwaziwa ukuba uthethe ntoni.",
     "mapPinsKeyboardHint": "Sebenzisa amaqhosha otolo ukuhamba phakathi kwemisebenzi kwimephu, kwaye ucinezele u-Enter ukuze uvule enye.",
-    "selectMessageLabel": "Khetha umyalezo"
+    "selectMessageLabel": "Khetha umyalezo",
+    "callTranscriptAudioDropped": "Into ethethwe ngu-{name} ilahlekile kwisixhobo sakhe phambi kokuba irekhodwe, ngoko ke into ethethiweyo ayaziwa.",
+    "callTranscriptHeldByOtherDevice": "Into ethethwe ngu-{name} ishiywe kwesinye isixhobo sakhe ukuba siyirekhode, ngoko ke akukho nto ithunyelweyo kule kwaye into ethethiweyo ayaziwa apha.",
+    "callTranscriptDeviceNeverWrote": "Inxalenye yento ethethwe ngu-{name} ishiywe kwenye yezixhobo zabo ukuba iyirekhode, kwaye akukho nto ifikileyo kweso sixhobo, ngoko ke loo nxalenye ayaziwa."
 }

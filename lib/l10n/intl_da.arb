@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-01 12:27:56.771309",
+    "@@last_modified": "2026-09-01 23:37:04.042083",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10765,5 +10765,8 @@
     "callTranscriptMicrophoneRefused": "{name}s enhed åbnede aldrig en mikrofon til dette opkald, så intet af det, de sagde, blev optaget, og hvad der blev sagt, er ukendt.",
     "callTranscriptAudioLost": "Hvad {name} sagde, blev optaget, men gik tabt, før det kunne transskriberes, så hvad der blev sagt, er ukendt.",
     "mapPinsKeyboardHint": "Brug piletasterne til at flytte mellem aktiviteter på kortet, og tryk på Enter for at åbne en.",
-    "selectMessageLabel": "Vælg besked"
+    "selectMessageLabel": "Vælg besked",
+    "callTranscriptAudioDropped": "Hvad {name} sagde, gik tabt på deres enhed, før det kunne optages, så det vides ikke, hvad der blev sagt.",
+    "callTranscriptHeldByOtherDevice": "Hvad {name} sagde, blev overladt til en af deres andre enheder at optage, så intet af det blev sendt fra denne, og det vides ikke her, hvad der blev sagt.",
+    "callTranscriptDeviceNeverWrote": "En del af, hvad {name} sagde, blev overladt til en af deres andre enheder at optage, og der ankom intet fra den enhed, så den del er ukendt."
 }

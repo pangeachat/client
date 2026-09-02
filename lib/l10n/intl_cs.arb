@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-01 12:27:56.850664",
+    "@@last_modified": "2026-09-01 23:37:03.667128",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10339,5 +10339,8 @@
     "callTranscriptMicrophoneRefused": "Zařízení uživatele {name} nikdy neotevřelo mikrofon pro tento hovor, takže nic z toho, co řekl(a), nebylo nahráno a není známo, co bylo řečeno.",
     "callTranscriptAudioLost": "To, co řekl(a) {name}, bylo nahráno, ale ztraceno předtím, než to mohlo být přepsáno, takže není známo, co bylo řečeno.",
     "mapPinsKeyboardHint": "Pomocí kláves se šipkami se pohybujte mezi aktivitami na mapě a stisknutím klávesy Enter jednu otevřete.",
-    "selectMessageLabel": "Vybrat zprávu"
+    "selectMessageLabel": "Vybrat zprávu",
+    "callTranscriptAudioDropped": "To, co řekl(a) {name}, bylo ztraceno v jeho/jejím zařízení ještě předtím, než to mohlo být nahráno, takže není známo, co bylo řečeno.",
+    "callTranscriptHeldByOtherDevice": "To, co řekl(a) {name}, bylo ponecháno k nahrání jinému z jeho/jejího zařízení, takže z tohoto nebylo nic odesláno a není zde známo, co bylo řečeno.",
+    "callTranscriptDeviceNeverWrote": "Část toho, co {name} řekl(a), byla ponechána k záznamu jinému z jeho/jejích zařízení a z tohoto zařízení nic nedorazilo, takže tato část není známa."
 }
