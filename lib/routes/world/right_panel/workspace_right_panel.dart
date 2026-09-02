@@ -16,6 +16,7 @@ import 'package:fluffychat/routes/world/right_panel/right_panel_analytics_practi
 import 'package:fluffychat/routes/world/right_panel/right_panel_analytics_subpage.dart';
 import 'package:fluffychat/routes/world/right_panel/right_panel_settings_subpage.dart';
 import 'package:fluffychat/routes/world/settings_page_enum.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 
 /// Renders one right-column panel token as a rounded card floating over the map.
 /// The header carries the close (a summary/review) or back (a detail blooming
@@ -208,6 +209,8 @@ class WorkspaceRightPanel extends StatelessWidget {
     return Semantics(
       label: l10n.pageLabel(closeButtonLabel ?? token.type.displayName(l10n)),
       container: true,
+      // Browse-order key on the group itself (#8755) — see WorkspaceLeftPanel.
+      sortKey: BrowseOrder.rightPanels,
       // Keep descendants as their own nodes: without this, loose text with no
       // container of its own (the Level drilldown's "LVL 15 … XP" header)
       // merges INTO the panel's name, announcing as one garbled label.

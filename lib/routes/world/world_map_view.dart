@@ -3,6 +3,7 @@ import 'dart:ui' as ui show SemanticsHitTestBehavior;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -41,6 +42,7 @@ import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The per-frame pin draw model resolved by [_WorldMapViewState._resolvePinRender]:
@@ -1169,59 +1171,86 @@ class _WorldMapViewState extends State<WorldMapView> {
           ) -
           12,
     );
-    return Semantics(
-      label: L10n.of(context).activityMapLabel,
-      container: true,
-      child: Stack(
+    // The map's semantic container is ANCHORED to a thin strip at the far
+    // right edge (#8755): VoiceOver ignores DOM order for overlapping
+    // positioned siblings and sorts them by horizontal center (verified by
+    // live DOM mutation), so a full-bleed container always read mid-sweep
+    // regardless of sort keys. The strip's center sits past the user
+    // cluster's, so the map group sorts last. Its children — the semantic
+    // mirrors (pins #7591, attribution #8753) and the real zoom controls —
+    // overflow leftward to their true positions through
+    // [MapSemanticsAnchor], whose render object is both the group's
+    // semantics boundary and a beyond-bounds hit-tester (a chain of
+    // framework proxies can't do this: each strip-sized proxy re-rejects
+    // out-of-bounds pointer hits). The search/context slot stays outside as
+    // its own keyed sibling under BrowseOrder.mapChrome. The visual map is
+    // a plain sibling underneath (its own semantics are excluded — #8013).
+    return LayoutBuilder(
+      builder: (context, viewConstraints) => Stack(
         children: [
           Positioned.fill(child: map),
-          // Screen-reader pins (#7591): the map subtree above is
-          // ExcludeSemantics'd (#8013), so the drawn pins' names and tap
-          // actions are re-authored here, outside it. The layer is
-          // pointer-transparent — pointer behavior stays with the real pins.
-          Positioned.fill(
-            child: PinSemanticsLayer(
-              mapController: widget.controller.mapController,
-              cards: [...render.largeCards, ...render.nonLargeCards],
-              stateOf: render.stateOf,
-              onTap: widget.controller.openActivity,
-              // Seat summary for live pins (#8753) — the same derivation the
-              // drawn seat circles use, so announced and drawn never drift.
-              liveDetailOf: (card) {
-                final state = render.stateOf(card.activityId);
-                if (state != ActivityPinState.joinable &&
-                    state != ActivityPinState.ongoingPending) {
-                  return null;
-                }
-                final (:participants, :openSlots) = _sessionParticipants(
-                  card.activityId,
-                  state,
-                );
-                final total = participants.length + openSlots;
-                if (total == 0) return null;
-                return L10n.of(
-                  context,
-                ).participantsOfTotal(participants.length, total);
-              },
-            ),
-          ),
-          // Screen-reader mirror of the map attribution (#8753): the visual
-          // control draws inside the ExcludeSemantics'd map subtree, so the
-          // OSM credit-plus-link (#8603) was unreachable by AT. Same trick as
-          // the pins — a semantics-only node at its position, pointer-
-          // transparent, whose semantic tap opens the copyright page.
           Positioned(
-            left: PlatformInfos.isMobile ? 12 : 8,
-            bottom: PlatformInfos.isMobile ? 12 : 8,
-            width: 32,
-            height: 32,
-            child: Semantics(
-              link: true,
-              label: L10n.of(context).mapAttributionLabel,
-              hitTestBehavior: ui.SemanticsHitTestBehavior.transparent,
-              onTap: () =>
-                  launchUrlString('https://www.openstreetmap.org/copyright'),
-              child: const SizedBox.expand(),
+            top: 0,
+            bottom: 0,
+            right: 0,
+            width: semanticsAnchorWidth,
+            child: MapSemanticsAnchor(
+              label: L10n.of(context).activityMapLabel,
+              sortKey: BrowseOrder.map,
+              fullSize: viewConstraints.biggest,
+              child: Stack(
+                children: [
+                  // Screen-reader pins (#7591): the map subtree above is
+                  // ExcludeSemantics'd (#8013), so the drawn pins' names and tap
+                  // actions are re-authored here, outside it. The layer is
+                  // pointer-transparent — pointer behavior stays with the real pins.
+                  Positioned.fill(
+                    child: PinSemanticsLayer(
+                      mapController: widget.controller.mapController,
+                      cards: [...render.largeCards, ...render.nonLargeCards],
+                      stateOf: render.stateOf,
+                      onTap: widget.controller.openActivity,
+                      // Seat summary for live pins (#8753) — the same derivation the
+                      // drawn seat circles use, so announced and drawn never drift.
+                      liveDetailOf: (card) {
+                        final state = render.stateOf(card.activityId);
+                        if (state != ActivityPinState.joinable &&
+                            state != ActivityPinState.ongoingPending) {
+                          return null;
+                        }
+                        final (:participants, :openSlots) =
+                            _sessionParticipants(card.activityId, state);
+                        final total = participants.length + openSlots;
+                        if (total == 0) return null;
+                        return L10n.of(
+                          context,
+                        ).participantsOfTotal(participants.length, total);
+                      },
+                    ),
+                  ),
+                  // Screen-reader mirror of the map attribution (#8753): the visual
+                  // control draws inside the ExcludeSemantics'd map subtree, so the
+                  // OSM credit-plus-link (#8603) was unreachable by AT. Same trick as
+                  // the pins — a semantics-only node at its position, pointer-
+                  // transparent, whose semantic tap opens the copyright page.
+                  Positioned(
+                    left: PlatformInfos.isMobile ? 12 : 8,
+                    bottom: PlatformInfos.isMobile ? 12 : 8,
+                    width: 32,
+                    height: 32,
+                    child: Semantics(
+                      link: true,
+                      label: L10n.of(context).mapAttributionLabel,
+                      hitTestBehavior: ui.SemanticsHitTestBehavior.transparent,
+                      onTap: () => launchUrlString(
+                        'https://www.openstreetmap.org/copyright',
+                      ),
+                      child: const SizedBox.expand(),
+                    ),
+                  ),
+                  controls,
+                ],
+              ),
             ),
           ),
           // Column mode only: on a narrow screen the search rides the floating
@@ -1242,7 +1271,10 @@ class _WorldMapViewState extends State<WorldMapView> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          CourseContextBar(spaceId: courseScopeSpaceId),
+                          CourseContextBar(
+                            spaceId: courseScopeSpaceId,
+                            sortKey: BrowseOrder.mapChrome,
+                          ),
                           // The bar replaces the search field and the pills,
                           // not the empty-view card: those pills still apply
                           // in course scope, so without the card an emptied
@@ -1253,6 +1285,7 @@ class _WorldMapViewState extends State<WorldMapView> {
                             Padding(
                               padding: const EdgeInsets.only(top: 8.0),
                               child: WorldMapEmptyViewCard(
+                                sortKey: BrowseOrder.mapChrome,
                                 verdict: widget.controller.emptyVerdict,
                                 canZoomOut: widget.controller.canZoomOut,
                                 onWidenSearch: widget.controller.widenFilters,
@@ -1283,10 +1316,127 @@ class _WorldMapViewState extends State<WorldMapView> {
                       onZoomOut: widget.controller.resetToWorld,
                     ),
             ),
-          controls,
         ],
       ),
     );
+  }
+}
+
+/// The width of the map's semantics anchor strip at the right edge (#8755).
+/// Small enough to sit past the user cluster's horizontal center at any
+/// window width, large enough that assistive tech does not drop it as
+/// zero-sized.
+const double semanticsAnchorWidth = 8.0;
+
+/// The map group's right-edge semantics anchor (#8755). Lays itself out at
+/// the strip size its parent gives it but its child at [fullSize],
+/// right-aligned, so the child's content keeps its true on-screen position.
+/// Its render object is the group's semantics boundary — the node's rect
+/// (what VoiceOver sorts overlapping siblings by) is the strip — and it
+/// hit-tests the child beyond its own bounds, which a stack of framework
+/// proxies cannot: every strip-sized proxy (Semantics, OverflowBox)
+/// re-rejects out-of-bounds pointer positions, so clickable children like
+/// the zoom controls would go dead.
+class MapSemanticsAnchor extends SingleChildRenderObjectWidget {
+  const MapSemanticsAnchor({
+    super.key,
+    required this.label,
+    required this.sortKey,
+    required this.fullSize,
+    required Widget super.child,
+  });
+
+  final String label;
+  final SemanticsSortKey sortKey;
+  final Size fullSize;
+
+  @override
+  RenderObject createRenderObject(BuildContext context) =>
+      RenderMapSemanticsAnchor(
+        label: label,
+        sortKey: sortKey,
+        fullSize: fullSize,
+        textDirection: Directionality.of(context),
+      );
+
+  @override
+  void updateRenderObject(
+    BuildContext context,
+    RenderMapSemanticsAnchor renderObject,
+  ) {
+    renderObject
+      ..label = label
+      ..sortKey = sortKey
+      ..fullSize = fullSize
+      ..textDirection = Directionality.of(context);
+  }
+}
+
+class RenderMapSemanticsAnchor extends RenderShiftedBox {
+  RenderMapSemanticsAnchor({
+    required String label,
+    required SemanticsSortKey sortKey,
+    required Size fullSize,
+    required TextDirection textDirection,
+  }) : _label = label,
+       _sortKey = sortKey,
+       _fullSize = fullSize,
+       _textDirection = textDirection,
+       super(null);
+
+  String _label;
+  set label(String value) {
+    if (value == _label) return;
+    _label = value;
+    markNeedsSemanticsUpdate();
+  }
+
+  SemanticsSortKey _sortKey;
+  set sortKey(SemanticsSortKey value) {
+    if (value == _sortKey) return;
+    _sortKey = value;
+    markNeedsSemanticsUpdate();
+  }
+
+  Size _fullSize;
+  set fullSize(Size value) {
+    if (value == _fullSize) return;
+    _fullSize = value;
+    markNeedsLayout();
+  }
+
+  TextDirection _textDirection;
+  set textDirection(TextDirection value) {
+    if (value == _textDirection) return;
+    _textDirection = value;
+    markNeedsSemanticsUpdate();
+  }
+
+  @override
+  void performLayout() {
+    size = constraints.biggest;
+    final child = this.child!;
+    child.layout(BoxConstraints.tight(_fullSize));
+    (child.parentData! as BoxParentData).offset = Offset(
+      size.width - _fullSize.width,
+      0,
+    );
+  }
+
+  // The child overflows the strip by design; skip the own-bounds check a
+  // RenderBox does before consulting children.
+  @override
+  bool hitTest(BoxHitTestResult result, {required Offset position}) =>
+      hitTestChildren(result, position: position);
+
+  @override
+  void describeSemanticsConfiguration(SemanticsConfiguration config) {
+    super.describeSemanticsConfiguration(config);
+    config
+      ..isSemanticBoundary = true
+      ..label = _label
+      ..textDirection = _textDirection
+      ..sortKey = _sortKey;
   }
 }
 

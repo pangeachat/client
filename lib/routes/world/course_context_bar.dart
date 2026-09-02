@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
@@ -33,7 +34,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 class CourseContextBar extends StatefulWidget {
   final String spaceId;
 
-  const CourseContextBar({required this.spaceId, super.key});
+  /// Browse-order key for the bar's semantic container — the map view passes
+  /// [BrowseOrder.mapChrome] (#8755); the shell's single-column floating bar
+  /// passes none.
+  final SemanticsSortKey? sortKey;
+
+  const CourseContextBar({required this.spaceId, this.sortKey, super.key});
 
   @override
   State<CourseContextBar> createState() => _CourseContextBarState();
@@ -108,6 +114,7 @@ class _CourseContextBarState extends State<CourseContextBar> {
 
     return Semantics(
       label: L10n.of(context).goToCourse(name),
+      sortKey: widget.sortKey,
       button: true,
       container: true,
       child: Material(

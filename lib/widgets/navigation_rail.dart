@@ -21,6 +21,7 @@ import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/navi_rail_item.dart';
 
@@ -73,6 +74,10 @@ class SpacesNavigationRail extends StatelessWidget {
         child: Semantics(
           label: L10n.of(context).navOptionsLabel,
           container: true,
+          // Browse-order key on the labeled container itself (#8755) — a
+          // shell-level wrapper annotation formed an extra unlabeled node
+          // that VoiceOver reordered by its own heuristics.
+          sortKey: BrowseOrder.rail,
           child: FocusTraversalGroup(
             policy: OrderedTraversalPolicy(),
             child: StreamBuilder(

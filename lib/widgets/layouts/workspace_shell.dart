@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart' show OrdinalSortKey;
 
 import 'package:badges/badges.dart' show BadgePosition;
 import 'package:go_router/go_router.dart';
@@ -224,6 +225,30 @@ int? recencyFocusHint(List<PanelToken> allTokens, List<String> recency) {
 /// side-effects, then assembles the [Stack] from the named `_…Layer` helpers
 /// below — each of which reads only from the bundle. The dense derivation all
 /// lives in [_ShellLayout.resolve].
+/// The workspace's screen-reader browse order (#8755): reading order, not
+/// paint order — the nav rail first, then the open panels, the top-right
+/// chrome, and the map (the backdrop everything overlays) last. Chosen in
+/// review; the browse-order twin of the #7219 focus-order annotations. The
+/// keys live ON each region's own labeled container (not on shell wrappers):
+/// a wrapper annotation forms an extra unlabeled generic node around the
+/// region, and VoiceOver applies its own ordering heuristics to exactly that
+/// shape instead of following the DOM. See routing.instructions.md.
+class BrowseOrder {
+  static const rail = OrdinalSortKey(1);
+  static const leftPanels = OrdinalSortKey(2);
+  static const rightPanels = OrdinalSortKey(3);
+  static const cluster = OrdinalSortKey(4);
+
+  /// The map's search/context slot (and its empty-view card) reads after
+  /// the cluster and before the map group. It is a separate top-level node,
+  /// not a child of the map group, which is anchored to a right-edge strip
+  /// for VoiceOver ordering (#8755, see WorldMapView.build); everything
+  /// else on the map — pins, attribution, zoom controls — lives inside
+  /// that group.
+  static const mapChrome = OrdinalSortKey(5);
+  static const map = OrdinalSortKey(6);
+}
+
 class WorkspaceShell extends StatelessWidget {
   // #Pangea
   final GoRouterState state;
@@ -245,6 +270,13 @@ class WorkspaceShell extends StatelessWidget {
 
     return Semantics(
       label: L10n.of(context).home,
+      // Container + explicit children, NOT a loose label: a label-only
+      // Semantics over this multi-region subtree absorbs the regions' sort
+      // keys and the browse order (#8755) silently reverts to geometry —
+      // probe-bisected. As a proper boundary the regions keep their own
+      // keyed nodes.
+      container: true,
+      explicitChildNodes: true,
       child: ScaffoldMessenger(
         child: FocusTraversalGroup(
           // Tab order on the workspace (#7219): nav rail (1) → the map, whose
