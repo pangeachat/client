@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-02 13:00:13.357233",
+    "@@last_modified": "2026-09-02 14:37:08.592788",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9844,7 +9844,6 @@
     "activityReview": "Jardueraren berrikuspena",
     "activityPanel": "Jarduera",
     "coursePage": "Ikastaroaren orria",
-    "suggestedActivities": "Iradokitako jarduerak",
     "constructLevelSeeds": "Haziak, hitz berriak",
     "constructLevelGreens": "Landareak, hazten ari diren hitzak",
     "constructLevelFlowers": "Loreak, menderatutako hitzak",
@@ -9852,5 +9851,6 @@
     "participantsOfTotal": "{total} jokalarietatik {filled}",
     "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
     "availableLabel": "Oraindik ez da hasi",
-    "suggestedChats": "Iradokitako txatak"
+    "seeAll": "Ikusi guztiak",
+    "seeAllSection": "Ikusi {section} guztiak"
 }

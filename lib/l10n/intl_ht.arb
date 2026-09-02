@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-02 13:00:14.596840",
+    "@@last_modified": "2026-09-02 14:37:10.518805",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Revizyon aktivite",
     "activityPanel": "Aktivite",
     "coursePage": "Paj kou",
-    "suggestedActivities": "Aktivite Sijere",
     "constructLevelSeeds": "Gren, nouvo mo",
     "constructLevelGreens": "Vèt, mo k ap grandi",
     "constructLevelFlowers": "Flè, mo ou metrize",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} sou {total} jwè",
     "mapAttributionLabel": "Kontribitè OpenStreetMap, copyright ak lisans",
     "availableLabel": "Pokò kòmanse",
-    "suggestedChats": "Sijesyon Chat"
+    "seeAll": "Gade tout",
+    "seeAllSection": "Gade tout {section}"
 }

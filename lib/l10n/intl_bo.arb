@@ -2920,7 +2920,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-02 13:00:12.454828",
+    "@@last_modified": "2026-09-02 14:37:07.255065",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9455,7 +9455,6 @@
     "activityReview": "བྱེད་སྒོ་བསྐྱར་ཞིབ།",
     "activityPanel": "བྱེད་སྒོ།",
     "coursePage": "སློབ་ཚན་ཤོག་ངོས།",
-    "suggestedActivities": "བྱེད་སྒོ་འཆར་འགོད།",
     "constructLevelSeeds": "ས་བོན། ཚིག་གསར་པ།",
     "constructLevelGreens": "ལྗང་མྱུག འཕེལ་བཞིན་པའི་ཚིག",
     "constructLevelFlowers": "མེ་ཏོག བྱང་ཆུབ་པའི་ཚིག",
@@ -9463,5 +9462,6 @@
     "participantsOfTotal": "རྩེད་མཁན་ {total} ནང་ནས་ {filled}",
     "mapAttributionLabel": "OpenStreetMap ལ་མཉམ་ཞུགས་བྱེད་མཁན་ཚོ། བདག་དབང་དང་ཆོག་མཆན།",
     "availableLabel": "ད་དུང་མ་འགོ་བཙུགས།",
-    "suggestedChats": "གྲོས་འདོན་གྱི་ཁ་བརྡ།"
+    "seeAll": "ཚང་མ་གཟིགས།",
+    "seeAllSection": "{section} ཚང་མ་གཟིགས།"
 }

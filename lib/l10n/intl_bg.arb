@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-02 13:00:12.181098",
+    "@@last_modified": "2026-09-02 14:37:07.084616",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Преглед на активността",
     "activityPanel": "Активност",
     "coursePage": "Страница на курса",
-    "suggestedActivities": "Предложени дейности",
     "constructLevelSeeds": "Семена, нови думи",
     "constructLevelGreens": "Кълнове, растящи думи",
     "constructLevelFlowers": "Цветя, овладени думи",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} от {total} играчи",
     "mapAttributionLabel": "Сътрудници на OpenStreetMap, авторски права и лиценз",
     "availableLabel": "Все още не е започнало",
-    "suggestedChats": "Предложени чатове"
+    "seeAll": "Виж всички",
+    "seeAllSection": "Виж всички {section}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-02 13:00:14.695733",
+    "@@last_modified": "2026-09-02 14:37:09.346984",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10280,7 +10280,6 @@
     "activityReview": "Pregled aktivnosti",
     "activityPanel": "Aktivnost",
     "coursePage": "Stranica tečaja",
-    "suggestedActivities": "Predložene aktivnosti",
     "constructLevelSeeds": "Sjemenke, nove riječi",
     "constructLevelGreens": "Zelenje, riječi u nastajanju",
     "constructLevelFlowers": "Cvijeće, usvojene riječi",
@@ -10288,5 +10287,6 @@
     "participantsOfTotal": "{filled} od {total} igrača",
     "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
     "availableLabel": "Još nije započeto",
-    "suggestedChats": "Predloženi razgovori"
+    "seeAll": "Vidi sve",
+    "seeAllSection": "Vidi sve {section}"
 }

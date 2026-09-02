@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-02 13:00:22.498323",
+    "@@last_modified": "2026-09-02 14:37:14.190988",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9848,7 +9848,6 @@
     "activityReview": "Faoliyatni ko'rib chiqish",
     "activityPanel": "Faoliyat",
     "coursePage": "Kurs sahifasi",
-    "suggestedActivities": "Tavsiya etilgan mashg'ulotlar",
     "constructLevelSeeds": "Urugʻlar, yangi soʻzlar",
     "constructLevelGreens": "Koʻkatlar, oʻsayotgan soʻzlar",
     "constructLevelFlowers": "Gullar, oʻzlashtirilgan soʻzlar",
@@ -9856,5 +9855,6 @@
     "participantsOfTotal": "{total} o'yinchidan {filled} nafari",
     "mapAttributionLabel": "OpenStreetMap ishtirokchilari, mualliflik huquqi va litsenziyasi",
     "availableLabel": "Hali boshlanmadi",
-    "suggestedChats": "Tavsiya etilgan chatlar"
+    "seeAll": "Hammasini koʻrish",
+    "seeAllSection": "Barcha {section}ni koʻrish"
 }

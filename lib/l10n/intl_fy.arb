@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-02 13:00:13.586415",
+    "@@last_modified": "2026-09-02 14:37:08.549074",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Aktiviteitsbeoardieling",
     "activityPanel": "Aktiviteit",
     "coursePage": "Kurcusside",
-    "suggestedActivities": "Foarstelde aktiviteiten",
     "constructLevelSeeds": "Siedsjes, nije wurden",
     "constructLevelGreens": "Griene, groeiende wurden",
     "constructLevelFlowers": "Blommen, behearske wurden",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} fan {total} spilers",
     "mapAttributionLabel": "OpenStreetMap-meiwurkers, copyright en lisinsje",
     "availableLabel": "Noch net begûn",
-    "suggestedChats": "Foarstelde petearen"
+    "seeAll": "Alles sjen",
+    "seeAllSection": "Alles sjen yn {section}"
 }

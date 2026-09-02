@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-02 13:00:20.793916",
+    "@@last_modified": "2026-09-02 14:37:13.748439",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Tlhahlobo ya tshebetso",
     "activityPanel": "Tshebetso",
     "coursePage": "Leqephe la thupelo",
-    "suggestedActivities": "Mesebetsi e Khothalletsoang",
     "constructLevelSeeds": "Peo, mantsoe a macha",
     "constructLevelGreens": "Mahlaka, mantsoe a ntseng a hola",
     "constructLevelFlowers": "Lipalesa, mantsoe a tsejoang hantle",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "Libapali tse {filled} ho tse {total}",
     "mapAttributionLabel": "Bafani ba OpenStreetMap, litokelo tsa ho kopitsa le laesense",
     "availableLabel": "Ha e so qale",
-    "suggestedChats": "Lipuisano tse Khothalelitsoeng"
+    "seeAll": "Bona kaofela",
+    "seeAllSection": "Bona {section} kaofela"
 }

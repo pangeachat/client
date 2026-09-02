@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-02 13:00:17.130093",
+    "@@last_modified": "2026-09-02 14:37:11.460928",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2248,7 +2248,6 @@
     "activityReview": "ກວດສອບກິດຈະກຳ",
     "activityPanel": "ກິດຈະກຳ",
     "coursePage": "ໜ້າຫຼັກສູດ",
-    "suggestedActivities": "ກິດຈະກຳທີ່ແນະນຳ",
     "constructLevelSeeds": "ແກ່ນ, ຄຳສັບໃໝ່",
     "constructLevelGreens": "ຕົ້ນອ່ອນ, ຄຳສັບທີ່ກຳລັງຮຽນ",
     "constructLevelFlowers": "ດອກໄມ້, ຄຳສັບທີ່ຮຽນຈົບແລ້ວ",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} ຈາກ {total} ຜູ້ຫຼິ້ນ",
     "mapAttributionLabel": "ຜູ້ປະກອບສ່ວນ OpenStreetMap, ລິຂະສິດ ແລະ ໃບອະນຸຍາດ",
     "availableLabel": "ຍັງບໍ່ທັນເລີ່ມຕົ້ນ",
-    "suggestedChats": "ການສົນທະນາທີ່ແນະນຳ"
+    "seeAll": "ເບິ່ງທັງໝົດ",
+    "seeAllSection": "ເບິ່ງທັງໝົດ {section}"
 }

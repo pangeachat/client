@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:21.048507",
+    "@@last_modified": "2026-09-02 14:37:13.702126",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9936,7 +9936,6 @@
     "activityReview": "செயல்பாட்டு ஆய்வு",
     "activityPanel": "செயல்பாடு",
     "coursePage": "பாடப்பக்கம்",
-    "suggestedActivities": "பரிந்துரைக்கப்பட்ட செயல்பாடுகள்",
     "constructLevelSeeds": "விதைகள், புதிய சொற்கள்",
     "constructLevelGreens": "கீரைகள், வளரும் சொற்கள்",
     "constructLevelFlowers": "மலர்கள், தேர்ச்சி பெற்ற சொற்கள்",
@@ -9944,5 +9943,6 @@
     "participantsOfTotal": "{total} வீரர்களில் {filled} பேர்",
     "mapAttributionLabel": "OpenStreetMap பங்களிப்பாளர்கள், பதிப்புரிமை மற்றும் உரிமம்",
     "availableLabel": "இன்னும் தொடங்கவில்லை",
-    "suggestedChats": "பரிந்துரைக்கப்பட்ட உரையாடல்கள்"
+    "seeAll": "அனைத்தையும் காட்டு",
+    "seeAllSection": "அனைத்தையும் காட்டு {section}"
 }

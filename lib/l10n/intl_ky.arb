@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-02 13:00:16.344777",
+    "@@last_modified": "2026-09-02 14:37:10.962585",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Иш-аракеттерди карап чыгуу",
     "activityPanel": "Иш-аракет",
     "coursePage": "Курс баракчасы",
-    "suggestedActivities": "Сунушталган иш-чаралар",
     "constructLevelSeeds": "Үрөндөр, жаңы сөздөр",
     "constructLevelGreens": "Көк чөптөр, өсүп жаткан сөздөр",
     "constructLevelFlowers": "Гүлдөр, өздөштүрүлгөн сөздөр",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} / {total} оюнчу",
     "mapAttributionLabel": "OpenStreetMap салымчылары, автордук укук жана лицензия",
     "availableLabel": "Башталган жок",
-    "suggestedChats": "Сунушталган баарлашуулар"
+    "seeAll": "Баарын көрүү",
+    "seeAllSection": "Баарын көрүү {section}"
 }

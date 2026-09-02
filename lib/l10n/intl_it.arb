@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:15.316066",
+    "@@last_modified": "2026-09-02 14:37:10.043236",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9917,7 +9917,6 @@
     "activityReview": "Revisione attività",
     "activityPanel": "Attività",
     "coursePage": "Pagina del corso",
-    "suggestedActivities": "Attività suggerite",
     "constructLevelSeeds": "Semi, nuove parole",
     "constructLevelGreens": "Germogli, parole in crescita",
     "constructLevelFlowers": "Fiori, parole padroneggiate",
@@ -9925,5 +9924,6 @@
     "participantsOfTotal": "{filled} di {total} giocatori",
     "mapAttributionLabel": "Contributori OpenStreetMap, copyright e licenza",
     "availableLabel": "Non ancora iniziato",
-    "suggestedChats": "Chat suggerite"
+    "seeAll": "Vedi tutto",
+    "seeAllSection": "Vedi tutto {section}"
 }

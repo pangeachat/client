@@ -1,7 +1,7 @@
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
-/// How many activities the course page's Suggested Activities row holds. A
+/// How many activities the course page's Activities row holds. A
 /// shortlist, not the plan: the full ordered course plan is one tap away behind
 /// "See full course plan". A hand-set lever, like the ranking weights it caps.
 const int kSuggestedActivitiesCap = 5;

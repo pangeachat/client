@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-02 13:00:12.489717",
+    "@@last_modified": "2026-09-02 14:37:07.913503",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Pagrepaso sa kalihokan",
     "activityPanel": "Kalihokan",
     "coursePage": "Panid sa kurso",
-    "suggestedActivities": "Gisugyot nga mga Kalihokan",
     "constructLevelSeeds": "Mga liso, bag-ong mga pulong",
     "constructLevelGreens": "Mga utanon, nagtubo nga mga pulong",
     "constructLevelFlowers": "Mga bulak, hanas nga mga pulong",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} sa {total} ka magdudula",
     "mapAttributionLabel": "Mga nag-amot sa OpenStreetMap, copyright ug lisensya",
     "availableLabel": "Wala pa nagsugod",
-    "suggestedChats": "Gisugyot nga mga Chat"
+    "seeAll": "Tan-awa tanan",
+    "seeAllSection": "Tan-awa tanan {section}"
 }

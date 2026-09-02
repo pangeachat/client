@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:14.107605",
+    "@@last_modified": "2026-09-02 14:37:09.501678",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10758,7 +10758,6 @@
     "activityReview": "סקירת פעילות",
     "activityPanel": "פעילות",
     "coursePage": "דף קורס",
-    "suggestedActivities": "פעילויות מוצעות",
     "constructLevelSeeds": "זרעים, מילים חדשות",
     "constructLevelGreens": "עלים, מילים בצמיחה",
     "constructLevelFlowers": "פרחים, מילים שנלמדו",
@@ -10766,5 +10765,6 @@
     "participantsOfTotal": "{filled} מתוך {total} שחקנים",
     "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
     "availableLabel": "טרם התחיל",
-    "suggestedChats": "צ'אטים מוצעים"
+    "seeAll": "הצג הכל",
+    "seeAllSection": "הצג הכל {section}"
 }

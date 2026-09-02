@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-02 13:00:21.630494",
+    "@@last_modified": "2026-09-02 14:37:12.598608",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10761,7 +10761,6 @@
     "activityReview": "Revisão da atividade",
     "activityPanel": "Atividade",
     "coursePage": "Página do curso",
-    "suggestedActivities": "Atividades Sugeridas",
     "constructLevelSeeds": "Sementes, novas palavras",
     "constructLevelGreens": "Verdes, palavras em crescimento",
     "constructLevelFlowers": "Flores, palavras dominadas",
@@ -10769,5 +10768,6 @@
     "participantsOfTotal": "{filled} de {total} jogadores",
     "mapAttributionLabel": "Contribuidores do OpenStreetMap, direitos de autor e licença",
     "availableLabel": "Ainda não começou",
-    "suggestedChats": "Conversas Sugeridas"
+    "seeAll": "Ver tudo",
+    "seeAllSection": "Ver tudo em {section}"
 }

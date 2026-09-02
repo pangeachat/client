@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-02 13:00:17.913499",
+    "@@last_modified": "2026-09-02 14:37:11.975456",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Reviżjoni tal-attività",
     "activityPanel": "Attività",
     "coursePage": "Paġna tal-kors",
-    "suggestedActivities": "Attivitajiet Suġġeriti",
     "constructLevelSeeds": "Żrieragħ, kliem ġdid",
     "constructLevelGreens": "Ħdura, kliem li qed jikber",
     "constructLevelFlowers": "Fjuri, kliem mhaddem",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} minn {total} plejers",
     "mapAttributionLabel": "Kontributuri, drittijiet tal-awtur u liċenzja ta' OpenStreetMap",
     "availableLabel": "Għadu ma bediex",
-    "suggestedChats": "Chats Suġġeriti"
+    "seeAll": "Ara kollox",
+    "seeAllSection": "Ara kollox {section}"
 }

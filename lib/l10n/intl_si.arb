@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-02 13:00:19.769147",
+    "@@last_modified": "2026-09-02 14:37:13.130966",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2248,7 +2248,6 @@
     "activityReview": "ක්‍රියාකාරකම් සමාලෝචනය",
     "activityPanel": "ක්‍රියාකාරකම්",
     "coursePage": "පාඨමාලා පිටුව",
-    "suggestedActivities": "යෝජිත ක්‍රියාකාරකම්",
     "constructLevelSeeds": "බීජ, නව වචන",
     "constructLevelGreens": "කොළ, වැඩෙන වචන",
     "constructLevelFlowers": "මල්, ප්‍රගුණ කළ වචන",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{total} ක්‍රීඩකයන්ගෙන් {filled}ක්",
     "mapAttributionLabel": "OpenStreetMap දායකයින්, ප්‍රකාශන හිමිකම සහ බලපත්‍රය",
     "availableLabel": "තවම ආරම්භ කර නැත",
-    "suggestedChats": "යෝජිත කතාබස්"
+    "seeAll": "සියල්ල බලන්න",
+    "seeAllSection": "සියලු {section} බලන්න"
 }

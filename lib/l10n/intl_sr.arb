@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:20.292971",
+    "@@last_modified": "2026-09-02 14:37:13.672765",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10793,7 +10793,6 @@
     "activityReview": "Pregled aktivnosti",
     "activityPanel": "Aktivnost",
     "coursePage": "Stranica kursa",
-    "suggestedActivities": "Predložene aktivnosti",
     "constructLevelSeeds": "Seme, nove reči",
     "constructLevelGreens": "Zelenilo, reči u razvoju",
     "constructLevelFlowers": "Cveće, savladane reči",
@@ -10801,5 +10800,6 @@
     "participantsOfTotal": "{filled} od {total} igrača",
     "mapAttributionLabel": "OpenStreetMap saradnici, autorska prava i licenca",
     "availableLabel": "Još nije počelo",
-    "suggestedChats": "Predložena ćaskanja"
+    "seeAll": "Pogledaj sve",
+    "seeAllSection": "Pogledaj sve {section}"
 }

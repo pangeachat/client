@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-02 13:00:14.933376",
+    "@@last_modified": "2026-09-02 14:37:10.153974",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2248,7 +2248,6 @@
     "activityReview": "Գործունեության վերանայում",
     "activityPanel": "Գործունեություն",
     "coursePage": "Դասընթացի էջ",
-    "suggestedActivities": "Առաջարկվող գործողություններ",
     "constructLevelSeeds": "Սերմեր, նոր բառեր",
     "constructLevelGreens": "Կանաչիներ, աճող բառեր",
     "constructLevelFlowers": "Ծաղիկներ, յուրացված բառեր",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} / {total} խաղացող",
     "mapAttributionLabel": "OpenStreetMap-ի մասնակիցներ, հեղինակային իրավունք և լիցենզիա",
     "availableLabel": "Դեռ չի սկսվել",
-    "suggestedChats": "Առաջարկվող զրույցներ"
+    "seeAll": "Տեսնել բոլորը",
+    "seeAllSection": "Տեսնել բոլոր {section}"
 }

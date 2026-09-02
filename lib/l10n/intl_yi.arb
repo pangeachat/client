@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-02 13:00:22.933288",
+    "@@last_modified": "2026-09-02 14:37:14.177861",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2248,7 +2248,6 @@
     "activityReview": "אַקטיוויטעט איבערבליק",
     "activityPanel": "אַקטיוויטעט",
     "coursePage": "קורס בלאַט",
-    "suggestedActivities": "פֿאָרגעלייגט אַקטיוויטעטן",
     "constructLevelSeeds": "זוימען, נײַע ווערטער",
     "constructLevelGreens": "גרינסן, וואַקסנדיקע ווערטער",
     "constructLevelFlowers": "בלומען, באַהערשטע ווערטער",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} פֿון {total} שפּילער",
     "mapAttributionLabel": "OpenStreetMap מיטארבעטער, קאפירעכט און ליצענץ",
     "availableLabel": "נאָך נישט אָנגעהויבן",
-    "suggestedChats": "פֿאָרגעלייגט שמועסן"
+    "seeAll": "זען אַלע",
+    "seeAllSection": "זען אַלע {section}"
 }

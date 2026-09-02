@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-02 13:00:16.984368",
+    "@@last_modified": "2026-09-02 14:37:11.661403",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Преглед на активност",
     "activityPanel": "Активност",
     "coursePage": "Страница на курс",
-    "suggestedActivities": "Предложени активности",
     "constructLevelSeeds": "Семиња, нови зборови",
     "constructLevelGreens": "Зеленило, зборови во развој",
     "constructLevelFlowers": "Цвеќиња, совладани зборови",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} од {total} играчи",
     "mapAttributionLabel": "Соработници на OpenStreetMap, авторски права и лиценца",
     "availableLabel": "Сè уште не е започнато",
-    "suggestedChats": "Предложени разговори"
+    "seeAll": "Видете ги сите",
+    "seeAllSection": "Видете ги сите {section}"
 }

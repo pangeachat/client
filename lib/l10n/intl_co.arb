@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-02 13:00:12.610338",
+    "@@last_modified": "2026-09-02 14:37:07.950215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Revisione di l'attività",
     "activityPanel": "Attività",
     "coursePage": "Pagina di u corsu",
-    "suggestedActivities": "Attività suggerite",
     "constructLevelSeeds": "Semi, parolle nove",
     "constructLevelGreens": "Verdura, parolle chì crescenu",
     "constructLevelFlowers": "Fiori, parolle ammaestrate",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} di {total} ghjucadori",
     "mapAttributionLabel": "Cuntributori OpenStreetMap, copyright è licenza",
     "availableLabel": "Micca principiatu ancu",
-    "suggestedChats": "Chjachjare Suggerite"
+    "seeAll": "Vede tuttu",
+    "seeAllSection": "Vede tuttu {section}"
 }

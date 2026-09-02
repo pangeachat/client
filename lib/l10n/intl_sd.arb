@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-02 13:00:19.640376",
+    "@@last_modified": "2026-09-02 14:37:13.141668",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2248,7 +2248,6 @@
     "activityReview": "سرگرمي جو جائزو",
     "activityPanel": "سرگرمي",
     "coursePage": "ڪورس جو صفحو",
-    "suggestedActivities": "تجويز ڪيل سرگرميون",
     "constructLevelSeeds": "سيڊس، نوان لفظ",
     "constructLevelGreens": "گرينس، وڌندڙ لفظ",
     "constructLevelFlowers": "فلاورس، ماهر لفظ",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{total} رانديگرن مان {filled}",
     "mapAttributionLabel": "اوپن اسٽريٽ ميپ جا حصو وٺندڙ، ڪاپي رائيٽ ۽ لائسنس",
     "availableLabel": "اڃا شروع نه ٿيو آهي",
-    "suggestedChats": "تجويز ڪيل چيٽس"
+    "seeAll": "سڀ ڏسو",
+    "seeAllSection": "سڀ ڏسو {section}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-02 13:00:15.264910",
+    "@@last_modified": "2026-09-02 14:37:10.217502",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Yfirlit yfir virkni",
     "activityPanel": "Virkni",
     "coursePage": "Námskeiðssíða",
-    "suggestedActivities": "Tillögur að verkefnum",
     "constructLevelSeeds": "Fræ, ný orð",
     "constructLevelGreens": "Grænt, vaxandi orð",
     "constructLevelFlowers": "Blóm, orð sem hefur verið náð tökum á",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} af {total} spilurum",
     "mapAttributionLabel": "OpenStreetMap þátttakendur, höfundarréttur og leyfi",
     "availableLabel": "Ekki byrjað enn",
-    "suggestedChats": "Stungin upp á spjalli"
+    "seeAll": "Sjá allt",
+    "seeAllSection": "Sjá allt {section}"
 }

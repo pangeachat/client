@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-02 13:00:14.384625",
+    "@@last_modified": "2026-09-02 14:37:09.376280",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Ath-sgrùdadh gnìomhachd",
     "activityPanel": "Gnìomhachd",
     "coursePage": "Duilleag cùrsa",
-    "suggestedActivities": "Gnìomhan a thathar a' moladh",
     "constructLevelSeeds": "Sìol, faclan ùra",
     "constructLevelGreens": "Uaine, faclan a' fàs",
     "constructLevelFlowers": "Flùraichean, faclan maighstireil",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} de {total} cluicheadairean",
     "mapAttributionLabel": "Luchd-tabhartais OpenStreetMap, dlighe-sgrìobhaidh agus cead",
     "availableLabel": "Gun a bhith air tòiseachadh fhathast",
-    "suggestedChats": "Còmhraidhean a thathar a' moladh"
+    "seeAll": "Faic na h-uile",
+    "seeAllSection": "Faic na h-uile {section}"
 }

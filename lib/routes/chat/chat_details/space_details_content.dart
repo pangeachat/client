@@ -44,9 +44,9 @@ enum SpaceSettingsTabs {
 
   /// The section's display title — the pushed subpage's header title, and the
   /// course page's section header wherever the two say the same thing, so
-  /// they can't drift. The sections whose inline content is a shortlist name
-  /// that instead ("Suggested Activities", "Suggested Chats", #8744) and
-  /// don't read from here; the full list keeps the plain name on the subpage.
+  /// they can't drift. The one section they don't share is the course plan:
+  /// its subpage is the plan, while the course page heads that section
+  /// "Activities" after the row it actually shows (#8744).
   String title(BuildContext context) => switch (this) {
     SpaceSettingsTabs.course => L10n.of(context).coursePlan,
     SpaceSettingsTabs.chat => L10n.of(context).chats,

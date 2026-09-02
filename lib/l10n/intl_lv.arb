@@ -3536,7 +3536,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-02 13:00:16.947748",
+    "@@last_modified": "2026-09-02 14:37:11.488838",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9844,7 +9844,6 @@
     "activityReview": "Aktivitātes pārskats",
     "activityPanel": "Aktivitāte",
     "coursePage": "Kursa lapa",
-    "suggestedActivities": "Ieteiktās aktivitātes",
     "constructLevelSeeds": "Sēklas, jauni vārdi",
     "constructLevelGreens": "Zaļumi, augoši vārdi",
     "constructLevelFlowers": "Ziedi, apgūtie vārdi",
@@ -9852,5 +9851,6 @@
     "participantsOfTotal": "{filled} no {total} spēlētājiem",
     "mapAttributionLabel": "OpenStreetMap līdzstrādnieki, autortiesības un licence",
     "availableLabel": "Vēl nav sācies",
-    "suggestedChats": "Ieteiktās tērzēšanas"
+    "seeAll": "Skatīt visu",
+    "seeAllSection": "Skatīt visu sadaļu {section}"
 }

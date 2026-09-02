@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-02 13:00:22.928844",
+    "@@last_modified": "2026-09-02 14:37:14.361804",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10801,7 +10801,6 @@
     "activityReview": "活動回顧",
     "activityPanel": "活動",
     "coursePage": "課程頁面",
-    "suggestedActivities": "建議活動",
     "constructLevelSeeds": "種子，新詞",
     "constructLevelGreens": "綠葉，成長中嘅詞語",
     "constructLevelFlowers": "花朵，已掌握嘅詞語",
@@ -10809,5 +10808,6 @@
     "participantsOfTotal": "{filled}/{total} 位玩家",
     "mapAttributionLabel": "OpenStreetMap 貢獻者、版權及許可",
     "availableLabel": "尚未開始",
-    "suggestedChats": "建議對話"
+    "seeAll": "查看全部",
+    "seeAllSection": "查看全部{section}"
 }

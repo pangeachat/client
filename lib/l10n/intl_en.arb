@@ -168,15 +168,19 @@
         "type": "String",
         "placeholders": {}
     },
-    "suggestedActivities": "Suggested Activities",
-    "@suggestedActivities": {
+    "seeAll": "See all",
+    "@seeAll": {
         "type": "String",
         "placeholders": {}
     },
-    "suggestedChats": "Suggested Chats",
-    "@suggestedChats": {
+    "seeAllSection": "See all {section}",
+    "@seeAllSection": {
         "type": "String",
-        "placeholders": {}
+        "placeholders": {
+            "section": {
+                "type": "String"
+            }
+        }
     },
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},

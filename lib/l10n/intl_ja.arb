@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-02 13:00:15.562600",
+    "@@last_modified": "2026-09-02 14:37:10.089492",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10613,7 +10613,6 @@
     "activityReview": "アクティビティレビュー",
     "activityPanel": "アクティビティ",
     "coursePage": "コースページ",
-    "suggestedActivities": "おすすめのアクティビティ",
     "constructLevelSeeds": "シード、新しい単語",
     "constructLevelGreens": "グリーン、成長中の単語",
     "constructLevelFlowers": "フラワー、習得済みの単語",
@@ -10621,5 +10620,6 @@
     "participantsOfTotal": "{total}人中{filled}人",
     "mapAttributionLabel": "OpenStreetMapの寄与者、著作権とライセンス",
     "availableLabel": "未開始",
-    "suggestedChats": "おすすめチャット"
+    "seeAll": "すべて見る",
+    "seeAllSection": "{section}をすべて見る"
 }

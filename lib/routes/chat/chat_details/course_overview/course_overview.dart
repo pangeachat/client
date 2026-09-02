@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -9,6 +10,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
@@ -215,22 +217,21 @@ class _CourseOverviewState extends State<CourseOverview> {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          // The section header names what the row IS — a
-                          // ranked shortlist — not the plan it is drawn from;
-                          // the plan keeps its own name on the subpage this
-                          // section links to.
+                          // The header names the section, not the shortlist
+                          // it happens to show — "Suggested" is implicit in a
+                          // ranked row and only added words (#8744). The
+                          // plan the row is drawn from keeps its own name on
+                          // the subpage this section links to.
                           CourseSectionHeader(
-                            title: l10n.suggestedActivities,
+                            title: l10n.activities,
+                            // Already this app's glyph for a course's
+                            // syllabus (the More section's "Change course
+                            // plan"), which is where these activities come
+                            // from.
+                            icon: Icons.assignment_outlined,
                             trailing: hasPlan
                                 ? CourseSectionButton(
-                                    label: l10n.seeFullCoursePlan,
-                                    // The map is already this app's glyph for
-                                    // a course plan (the "Add course plan"
-                                    // button, the course chats list) — the
-                                    // journey the issue's star-or-airplane
-                                    // asked for, in the vocabulary already in
-                                    // use.
-                                    icon: Icons.map_outlined,
+                                    section: l10n.activities,
                                     onPressed: () =>
                                         _openSubpage(SpaceSettingsTabs.course),
                                   )
@@ -270,16 +271,31 @@ class _CourseOverviewState extends State<CourseOverview> {
               children: [
                 Padding(
                   padding: SpaceDetailsContent.sectionPadding,
-                  // Like Suggested Activities, the header names what the rows
-                  // ARE — the course's most useful chats right now, not every
-                  // chat in it. The full list keeps the plain "Chats" name on
-                  // the subpage the button opens (#8744).
                   child: CourseSectionHeader(
-                    title: l10n.suggestedChats,
-                    trailing: CourseSectionButton(
-                      label: l10n.allChats,
-                      icon: Icons.chat_bubble_outline,
-                      onPressed: () => _openSubpage(SpaceSettingsTabs.chat),
+                    title: SpaceSettingsTabs.chat.title(context),
+                    icon: Icons.forum_outlined,
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // Creating a course chat is buried in the More
+                        // section's settings list; teachers asked for it
+                        // where the chats are (#8744). Same permission gate
+                        // as that row — the shortcut can't do what the
+                        // setting wouldn't.
+                        if (room.isRoomAdmin &&
+                            room.canChangeStateEvent(EventTypes.SpaceChild))
+                          IconButton(
+                            icon: const Icon(Symbols.chat_add_on),
+                            iconSize: 20.0,
+                            visualDensity: VisualDensity.compact,
+                            tooltip: l10n.createGroupChat,
+                            onPressed: widget.controller.addGroupChat,
+                          ),
+                        CourseSectionButton(
+                          section: SpaceSettingsTabs.chat.title(context),
+                          onPressed: () => _openSubpage(SpaceSettingsTabs.chat),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -322,16 +338,16 @@ class _CourseOverviewState extends State<CourseOverview> {
                 key: _sectionKeys[SpaceSettingsTabs.more],
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // The button shows only when grayed-out rows exist
+                  // The link shows only when grayed-out rows exist
                   // (non-admins) — for admins the inline list IS the full
                   // list, so the subpage adds nothing (#8578).
                   CourseSectionHeader(
                     title: SpaceSettingsTabs.more.title(context),
+                    icon: Icons.settings_outlined,
                     trailing:
                         widget.moreButtons.any((b) => b.visible && !b.enabled)
                         ? CourseSectionButton(
-                            label: l10n.allSettings,
-                            icon: Icons.settings_outlined,
+                            section: SpaceSettingsTabs.more.title(context),
                             onPressed: () =>
                                 _openSubpage(SpaceSettingsTabs.more),
                           )

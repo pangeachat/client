@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-02 13:00:19.503896",
+    "@@last_modified": "2026-09-02 14:37:13.135369",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10789,7 +10789,6 @@
     "activityReview": "Prehľad aktivity",
     "activityPanel": "Aktivita",
     "coursePage": "Stránka kurzu",
-    "suggestedActivities": "Navrhované aktivity",
     "constructLevelSeeds": "Semienka, nové slová",
     "constructLevelGreens": "Lístky, rastúce slová",
     "constructLevelFlowers": "Kvety, zvládnuté slová",
@@ -10797,5 +10796,6 @@
     "participantsOfTotal": "{filled} z {total} hráčov",
     "mapAttributionLabel": "Prispievatelia OpenStreetMap, autorské práva a licencia",
     "availableLabel": "Ešte nezačalo",
-    "suggestedChats": "Navrhované chaty"
+    "seeAll": "Zobraziť všetko",
+    "seeAllSection": "Zobraziť všetko: {section}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-02 13:00:15.285595",
+    "@@last_modified": "2026-09-02 14:37:10.096984",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Nyocha ọrụ",
     "activityPanel": "Ọrụ",
     "coursePage": "Ibe ọmụmụ",
-    "suggestedActivities": "Atụmatụ Ihe Omume",
     "constructLevelSeeds": "Mkpuru osisi, okwu ọhụrụ",
     "constructLevelGreens": "Akwụkwọ ndụ akwụkwọ ndụ, okwu na-eto eto",
     "constructLevelFlowers": "Okooko osisi, okwu ndị a mụtara nke ọma",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} n'ime {total} ndị egwuregwu",
     "mapAttributionLabel": "Ndị nyere aka na OpenStreetMap, nwebisiinka na ikike",
     "availableLabel": "Ebebeghị mmalite",
-    "suggestedChats": "Nkata Atụrụ Aro"
+    "seeAll": "Hụ ihe niile",
+    "seeAllSection": "Hụ {section} niile"
 }

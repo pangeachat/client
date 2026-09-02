@@ -56,14 +56,14 @@ class CourseObjectivesList extends StatefulWidget {
   /// `Expanded`).
   final bool shrinkWrap;
 
-  /// Render the course page's Suggested Activities row instead of the plan:
+  /// Render the course page's Activities row instead of the plan:
   /// one Mission-less carousel of the plan's activities ranked by the world
   /// map's Priority matrix (#8741). The full, Mission-by-Mission plan is its
   /// "See all" subpage. See quests.instructions.md.
   final bool suggestedOnly;
 
   /// Mission headers collapse/expand their carousels (the full course plan
-  /// subpage, #8357). Off in previews and the Suggested Activities row.
+  /// subpage, #8357). Off in previews and the Activities row.
   final bool collapsibleMissions;
 
   final QuestObjectivesLoader objectivesProvider;
@@ -348,7 +348,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   Widget build(BuildContext context) {
     return Semantics(
       label: widget.suggestedOnly
-          ? L10n.of(context).suggestedActivities
+          ? L10n.of(context).activities
           : L10n.of(context).coursePlan,
       container: true,
       child: ValueListenableBuilder(

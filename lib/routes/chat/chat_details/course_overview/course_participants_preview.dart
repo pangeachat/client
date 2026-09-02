@@ -15,16 +15,15 @@ import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 /// (every member, invite tile) is the section's "All participants" subpage —
 /// RoomParticipantsSection.
 ///
-/// This widget owns the whole section because both of its decisions turn on
+/// This widget owns the whole section because two of its decisions turn on
 /// the same measurement — how many cards fit:
 ///
 /// - the cards themselves are cut to that count (#8578);
-/// - the header's action is "All participants" when members were truncated,
-///   and the invite button when they were not (#8744). A subpage repeating
-///   the same cards is not worth offering, and a section that fits every
-///   member is exactly the one whose useful next step is inviting more. When
-///   the button does show, invite is still one tap away — the subpage it
-///   opens carries its own invite tile.
+/// - the header's "See all" shows only when members were truncated — a
+///   subpage repeating the same cards is not worth offering. Invite sits
+///   beside it whenever this user may invite, whether or not the list was
+///   cut (#8744): a section showing every member is exactly the one whose
+///   useful next step is inviting more, and a full one still is.
 class CourseParticipantsPreview extends StatelessWidget {
   final Room room;
 
@@ -65,30 +64,28 @@ class CourseParticipantsPreview extends StatelessWidget {
                       .toInt()
                 : maxParticipants;
             final truncated = participants.length > fit;
+            final title = SpaceSettingsTabs.participants.title(context);
+            final actions = [
+              if (room.canInvite)
+                IconButton(
+                  icon: const Icon(Icons.person_add_outlined),
+                  iconSize: 20.0,
+                  visualDensity: VisualDensity.compact,
+                  tooltip: L10n.of(context).invite,
+                  onPressed: onInvite,
+                ),
+              if (truncated)
+                CourseSectionButton(section: title, onPressed: onShowAll),
+            ];
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 CourseSectionHeader(
-                  title: SpaceSettingsTabs.participants.title(context),
-                  trailing: truncated
-                      ? CourseSectionButton(
-                          label: L10n.of(context).allParticipants,
-                          icon: Icons.group_outlined,
-                          onPressed: onShowAll,
-                        )
-                      : room.canInvite
-                      ? FilledButton.tonalIcon(
-                          onPressed: onInvite,
-                          icon: const Icon(Icons.person_add_outlined, size: 16),
-                          label: Text(
-                            L10n.of(context).invite,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          style: FilledButton.styleFrom(
-                            visualDensity: VisualDensity.compact,
-                          ),
-                        )
-                      : null,
+                  title: title,
+                  icon: Icons.group_outlined,
+                  trailing: actions.isEmpty
+                      ? null
+                      : Row(mainAxisSize: MainAxisSize.min, children: actions),
                 ),
                 const SizedBox(height: 8.0),
                 Semantics(

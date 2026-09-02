@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-02 13:00:11.714952",
+    "@@last_modified": "2026-09-02 14:37:07.079639",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10150,7 +10150,6 @@
     "activityReview": "مراجعة النشاط",
     "activityPanel": "النشاط",
     "coursePage": "صفحة الدورة التدريبية",
-    "suggestedActivities": "الأنشطة المقترحة",
     "constructLevelSeeds": "البذور، كلمات جديدة",
     "constructLevelGreens": "الخضروات، كلمات متنامية",
     "constructLevelFlowers": "الزهور، كلمات متقنة",
@@ -10158,5 +10157,6 @@
     "participantsOfTotal": "{filled} من أصل {total} لاعبين",
     "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
     "availableLabel": "لم تبدأ بعد",
-    "suggestedChats": "محادثات مقترحة"
+    "seeAll": "مشاهدة الكل",
+    "seeAllSection": "مشاهدة كل {section}"
 }

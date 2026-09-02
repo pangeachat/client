@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-02 13:00:11.893923",
+    "@@last_modified": "2026-09-02 14:37:07.208036",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Fəaliyyətə baxış",
     "activityPanel": "Fəaliyyət",
     "coursePage": "Kurs səhifəsi",
-    "suggestedActivities": "Təklif olunan fəaliyyətlər",
     "constructLevelSeeds": "Toxumlar, yeni sözlər",
     "constructLevelGreens": "Yaşıllıqlar, böyüyən sözlər",
     "constructLevelFlowers": "Güllər, mənimsənilmiş sözlər",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{total} oyunçudan {filled} nəfəri",
     "mapAttributionLabel": "OpenStreetMap iştirakçıları, müəllif hüquqları və lisenziya",
     "availableLabel": "Hələ başlamayıb",
-    "suggestedChats": "Təklif olunan söhbətlər"
+    "seeAll": "Hamısına baxın",
+    "seeAllSection": "Bütün {section} baxın"
 }

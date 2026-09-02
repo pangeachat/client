@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-02 13:00:15.081729",
+    "@@last_modified": "2026-09-02 14:37:10.149680",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9947,7 +9947,6 @@
     "activityReview": "Tevékenység áttekintése",
     "activityPanel": "Tevékenység",
     "coursePage": "Tanfolyam oldal",
-    "suggestedActivities": "Javasolt tevékenységek",
     "constructLevelSeeds": "Magok, új szavak",
     "constructLevelGreens": "Hajtások, fejlődő szavak",
     "constructLevelFlowers": "Virágok, elsajátított szavak",
@@ -9955,5 +9954,6 @@
     "participantsOfTotal": "{filled}/{total} játékos",
     "mapAttributionLabel": "OpenStreetMap közreműködők, szerzői jogok és licenc",
     "availableLabel": "Még nem kezdődött el",
-    "suggestedChats": "Javasolt csevegések"
+    "seeAll": "Összes megtekintése",
+    "seeAllSection": "Összes {section} megtekintése"
 }

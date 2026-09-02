@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:23.003275",
+    "@@last_modified": "2026-09-02 14:37:15.164624",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9950,7 +9950,6 @@
     "activityReview": "活動回顧",
     "activityPanel": "活動",
     "coursePage": "課程頁面",
-    "suggestedActivities": "建議活動",
     "constructLevelSeeds": "種子，新單字",
     "constructLevelGreens": "綠芽，成長中的單字",
     "constructLevelFlowers": "花朵，已掌握的單字",
@@ -9958,5 +9957,6 @@
     "participantsOfTotal": "{filled} / {total} 位玩家",
     "mapAttributionLabel": "OpenStreetMap 貢獻者、版權與許可",
     "availableLabel": "尚未開始",
-    "suggestedChats": "建議聊天"
+    "seeAll": "查看全部",
+    "seeAllSection": "查看全部{section}"
 }

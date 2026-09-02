@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-02 13:00:18.638035",
+    "@@last_modified": "2026-09-02 14:37:12.319980",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Kuwunika zochitika",
     "activityPanel": "Zochitika",
     "coursePage": "Tsamba la maphunziro",
-    "suggestedActivities": "Zochita Zoperekedwa",
     "constructLevelSeeds": "Mbeu, mawu atsopano",
     "constructLevelGreens": "Zobiriwira, mawu akukula",
     "constructLevelFlowers": "Maluwa, mawu odziwika bwino",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} mwa osewera {total}",
     "mapAttributionLabel": "Othandizira a OpenStreetMap, umwini ndi chilolezo",
     "availableLabel": "Sanayambebe",
-    "suggestedChats": "Macheza Opangira"
+    "seeAll": "Onani zonse",
+    "seeAllSection": "Onani zonse {section}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-02 13:00:18.627036",
+    "@@last_modified": "2026-09-02 14:37:10.918666",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Luk bak na wetin yu dɔn du",
     "activityPanel": "Wetin yu dɔn du",
     "coursePage": "Di pej fɔ di kos",
-    "suggestedActivities": "Sɔm Tin Dɛn We Yu Fɔ Du",
     "constructLevelSeeds": "Sid dɛn, nyu wɔd dɛn",
     "constructLevelGreens": "Grin dɛn, wɔd dɛn we de gro",
     "constructLevelFlowers": "Fula dɛn, wɔd dɛn we yu dɔn sabi fayn",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} pan {total} pleya dem",
     "mapAttributionLabel": "OpenStreetMap pipal wey de gi am say, in kopyrayt ɛn layɛns",
     "availableLabel": "Nɔt yɛt stat",
-    "suggestedChats": "Sɔjɛst Chati dɛn"
+    "seeAll": "Si ɔl",
+    "seeAllSection": "Si ɔl {section}"
 }

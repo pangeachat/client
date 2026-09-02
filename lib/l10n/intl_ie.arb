@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-02 13:00:15.142011",
+    "@@last_modified": "2026-09-02 14:37:10.078723",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10476,7 +10476,6 @@
     "activityReview": "Athbhreithniú gníomhaíochta",
     "activityPanel": "Gníomhaíocht",
     "coursePage": "Leathanach cúrsa",
-    "suggestedActivities": "Gníomhaíochtaí Molta",
     "constructLevelSeeds": "Síolta, focail nua",
     "constructLevelGreens": "Glasaigh, focail ag fás",
     "constructLevelFlowers": "Bláthanna, focail máistrithe",
@@ -10484,5 +10483,6 @@
     "participantsOfTotal": "{filled} de {total} imreoirí",
     "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
     "availableLabel": "Níor cuireadh tús leis fós",
-    "suggestedChats": "Comhráite Molta"
+    "seeAll": "Féach ar fad",
+    "seeAllSection": "Féach ar {section} ar fad"
 }

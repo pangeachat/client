@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-02 13:00:22.258669",
+    "@@last_modified": "2026-09-02 14:37:14.415416",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2248,7 +2248,6 @@
     "activityReview": "سرگرمی کا جائزہ",
     "activityPanel": "سرگرمی",
     "coursePage": "کورس کا صفحہ",
-    "suggestedActivities": "تجویز کردہ سرگرمیاں",
     "constructLevelSeeds": "بیج، نئے الفاظ",
     "constructLevelGreens": "سبزیاں، بڑھتے ہوئے الفاظ",
     "constructLevelFlowers": "پھول، مہارت حاصل کیے ہوئے الفاظ",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{total} کھلاڑیوں میں سے {filled}",
     "mapAttributionLabel": "اوپن سٹریٹ میپ کے معاونین، کاپی رائٹ اور لائسنس",
     "availableLabel": "ابھی شروع نہیں ہوا",
-    "suggestedChats": "تجویز کردہ چیٹس"
+    "seeAll": "سب دیکھیں",
+    "seeAllSection": "تمام {section} دیکھیں"
 }

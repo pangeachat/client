@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-02 13:00:20.933462",
+    "@@last_modified": "2026-09-02 14:37:13.203177",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10789,7 +10789,6 @@
     "activityReview": "Pregled dejavnosti",
     "activityPanel": "Dejavnost",
     "coursePage": "Stran tečaja",
-    "suggestedActivities": "Predlagane dejavnosti",
     "constructLevelSeeds": "Semena, nove besede",
     "constructLevelGreens": "Zelenje, rastoče besede",
     "constructLevelFlowers": "Rože, obvladane besede",
@@ -10797,5 +10796,6 @@
     "participantsOfTotal": "{filled} od {total} igralcev",
     "mapAttributionLabel": "Sodelavci OpenStreetMap, avtorske pravice in licenca",
     "availableLabel": "Še ni začeto",
-    "suggestedChats": "Predlagani klepeti"
+    "seeAll": "Poglej vse",
+    "seeAllSection": "Poglej vse {section}"
 }

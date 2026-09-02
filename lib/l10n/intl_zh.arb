@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-02 13:00:23.007599",
+    "@@last_modified": "2026-09-02 14:37:15.169677",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9844,7 +9844,6 @@
     "activityReview": "活动回顾",
     "activityPanel": "活动",
     "coursePage": "课程页面",
-    "suggestedActivities": "建议活动",
     "constructLevelSeeds": "种子，新词",
     "constructLevelGreens": "绿植，成长词",
     "constructLevelFlowers": "花朵，掌握词",
@@ -9852,5 +9851,6 @@
     "participantsOfTotal": "{filled}/{total} 位玩家",
     "mapAttributionLabel": "OpenStreetMap 贡献者，版权和许可",
     "availableLabel": "尚未开始",
-    "suggestedChats": "推荐聊天"
+    "seeAll": "查看全部",
+    "seeAllSection": "查看全部{section}"
 }

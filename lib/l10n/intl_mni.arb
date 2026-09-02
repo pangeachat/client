@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-02 13:00:17.719427",
+    "@@last_modified": "2026-09-02 14:37:13.140520",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2248,7 +2248,6 @@
     "activityReview": "এক্টিভিটি রিকন",
     "activityPanel": "এক্টিভিটি",
     "coursePage": "কোর্স পেজ",
-    "suggestedActivities": "খঙহনবা থবকশিং",
     "constructLevelSeeds": "Seeds, অহোংবা ৱাহৈশিং",
     "constructLevelGreens": "Greens, চাউরক্লিবা ৱাহৈশিং",
     "constructLevelFlowers": "Flowers, থোইদোকপা ৱাহৈশিং",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{total} players sing {filled} na yaore",
     "mapAttributionLabel": "OpenStreetMap contributors, copyright amadi license",
     "availableLabel": "Hanna houkhidri",
-    "suggestedChats": "ꯁꯖꯦꯁꯇꯦꯗ ꯆꯦꯠꯁꯤꯡ"
+    "seeAll": "পুম্নমক উ",
+    "seeAllSection": "পুম্নমক উ {section}"
 }

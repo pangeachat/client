@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-02 13:00:20.281430",
+    "@@last_modified": "2026-09-02 14:37:13.121714",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Iloiloga o gaioiga",
     "activityPanel": "Gaioiga",
     "coursePage": "Itulau o le kosi",
-    "suggestedActivities": "Fautuaga mo Galuega",
     "constructLevelSeeds": "Fatulaau, upu fou",
     "constructLevelGreens": "Laʻau, upu o loʻo tupu",
     "constructLevelFlowers": "Fugalaau, upu ua atamai",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} o le {total} tagata taaalo",
     "mapAttributionLabel": "OpenStreetMap tagata foaʻi, puletaofia ma laisene",
     "availableLabel": "E leʻi amataina",
-    "suggestedChats": "Talanoaga Fautuaina"
+    "seeAll": "Vaʻai uma",
+    "seeAllSection": "Vaʻai uma {section}"
 }

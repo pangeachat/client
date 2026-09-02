@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-02 13:00:11.719550",
+    "@@last_modified": "2026-09-02 14:37:07.298296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Aktiwiteitsoorsig",
     "activityPanel": "Aktiwiteit",
     "coursePage": "Kursusbladsy",
-    "suggestedActivities": "Voorgestelde Aktiwiteite",
     "constructLevelSeeds": "Sade, nuwe woorde",
     "constructLevelGreens": "Groente, groeiende woorde",
     "constructLevelFlowers": "Blomme, woorde bemeester",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} van {total} spelers",
     "mapAttributionLabel": "OpenStreetMap bydraers, kopiereg en lisensie",
     "availableLabel": "Nog nie begin nie",
-    "suggestedChats": "Voorgestelde Gesprekke"
+    "seeAll": "Sien alles",
+    "seeAllSection": "Sien alle {section}"
 }

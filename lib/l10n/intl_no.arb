@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-02 13:00:18.486295",
+    "@@last_modified": "2026-09-02 14:37:12.158997",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2248,7 +2248,6 @@
     "activityReview": "Aktivitetsoversikt",
     "activityPanel": "Aktivitet",
     "coursePage": "Kursside",
-    "suggestedActivities": "Foreslåtte aktiviteter",
     "constructLevelSeeds": "Frø, nye ord",
     "constructLevelGreens": "Grønt, voksende ord",
     "constructLevelFlowers": "Blomster, mestret ord",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} av {total} spillere",
     "mapAttributionLabel": "OpenStreetMap-bidragsytere, opphavsrett og lisens",
     "availableLabel": "Ikke startet ennå",
-    "suggestedChats": "Foreslåtte chatter"
+    "seeAll": "Se alle",
+    "seeAllSection": "Se alle {section}"
 }

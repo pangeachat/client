@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-02 13:00:12.743712",
+    "@@last_modified": "2026-09-02 14:37:07.908776",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10764,7 +10764,6 @@
     "activityReview": "Aktivitetsoversigt",
     "activityPanel": "Aktivitet",
     "coursePage": "Kursside",
-    "suggestedActivities": "Foreslåede aktiviteter",
     "constructLevelSeeds": "Frø, nye ord",
     "constructLevelGreens": "Grønt, voksende ord",
     "constructLevelFlowers": "Blomster, mestret ord",
@@ -10772,5 +10771,6 @@
     "participantsOfTotal": "{filled} af {total} spillere",
     "mapAttributionLabel": "OpenStreetMap-bidragydere, ophavsret og licens",
     "availableLabel": "Ikke startet endnu",
-    "suggestedChats": "Foreslåede chats"
+    "seeAll": "Se alle",
+    "seeAllSection": "Se alle {section}"
 }

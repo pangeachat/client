@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:19.339967",
+    "@@last_modified": "2026-09-02 14:37:12.723105",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9844,7 +9844,6 @@
     "activityReview": "Revisão de atividade",
     "activityPanel": "Atividade",
     "coursePage": "Página do curso",
-    "suggestedActivities": "Atividades Sugeridas",
     "constructLevelSeeds": "Sementes, palavras novas",
     "constructLevelGreens": "Verdes, palavras em crescimento",
     "constructLevelFlowers": "Flores, palavras dominadas",
@@ -9852,5 +9851,6 @@
     "participantsOfTotal": "{filled} de {total} jogadores",
     "mapAttributionLabel": "Colaboradores do OpenStreetMap, direitos autorais e licença",
     "availableLabel": "Ainda não começou",
-    "suggestedChats": "Conversas Sugeridas"
+    "seeAll": "Ver tudo",
+    "seeAllSection": "Ver tudo em {section}"
 }

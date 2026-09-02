@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-02 13:00:16.401431",
+    "@@last_modified": "2026-09-02 14:37:11.061297",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2248,7 +2248,6 @@
     "activityReview": "پێداچوونەوەی چالاکی",
     "activityPanel": "چالاکی",
     "coursePage": "پەڕەی خول",
-    "suggestedActivities": "چالاکییە پێشنیارکراوەکان",
     "constructLevelSeeds": "تۆو، وشەی نوێ",
     "constructLevelGreens": "سەوزایی، وشە گەشەسەندووەکان",
     "constructLevelFlowers": "گوڵەکان، وشە شارەزاکان",
@@ -2256,5 +2255,6 @@
     "participantsOfTotal": "{filled} لە {total} یاریزان",
     "mapAttributionLabel": "بەشداربووانی OpenStreetMap، مافی لەبەرگرتنەوە و مۆڵەت",
     "availableLabel": "هێشتا دەستی پێنەکردووە",
-    "suggestedChats": "چاتە پێشنیارکراوەکان"
+    "seeAll": "هەمووی ببینە",
+    "seeAllSection": "هەموو {section} ببینە"
 }

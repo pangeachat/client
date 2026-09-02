@@ -37,11 +37,11 @@ class _TestMatrix extends Matrix {
   MatrixState createState() => _TestMatrixState();
 }
 
-/// Coverage for #8744: the Participants section's header offers exactly one
-/// action, and which one turns on whether the card line was truncated. A
-/// section showing every member has nothing to open — its useful next step is
-/// inviting more; a truncated one hands over "All participants" instead, and
-/// invite stays reachable on the subpage that opens.
+/// Coverage for #8744: the Participants header carries invite whenever this
+/// user may invite — a section showing every member is exactly the one whose
+/// useful next step is inviting more, and a full one still is — while "See
+/// all" appears only when the card line was truncated, since a subpage
+/// repeating the same cards is not worth offering.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -187,25 +187,32 @@ void main() {
     await tester.pump(const Duration(seconds: 10));
   }
 
-  testWidgets('a section that fits every member offers invite', (tester) async {
+  /// The invite control is icon-only now, so it is found by its tooltip —
+  /// which is also its accessible name.
+  Finder inviteButton() => find.byTooltip('Invite');
+
+  testWidgets('a section that fits every member offers invite, not See all', (
+    tester,
+  ) async {
     await pumpPreview(tester, courseRoom(members: fits));
 
     expect(find.byType(ParticipantCard), findsNWidgets(fits));
-    expect(find.text('Invite'), findsOneWidget);
-    expect(find.text('All participants'), findsNothing);
+    expect(inviteButton(), findsOneWidget);
+    // Nothing was cut, so the subpage would only repeat these same cards.
+    expect(find.text('See all'), findsNothing);
 
     await drain(tester);
   });
 
-  testWidgets('a truncated section offers All participants instead', (
+  testWidgets('a truncated section keeps invite and adds See all', (
     tester,
   ) async {
     await pumpPreview(tester, courseRoom(members: fits + 3));
 
     // Only the cards that fit the line render; the rest are on the subpage.
     expect(find.byType(ParticipantCard), findsNWidgets(fits));
-    expect(find.text('All participants'), findsOneWidget);
-    expect(find.text('Invite'), findsNothing);
+    expect(find.text('See all'), findsOneWidget);
+    expect(inviteButton(), findsOneWidget);
 
     await drain(tester);
   });
