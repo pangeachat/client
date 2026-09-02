@@ -12,7 +12,7 @@ What gates a merge to `main`, why `integrate.yaml` is shaped the way it is, and 
 
 | Check | Required | Runtime | Why |
 |---|---|---|---|
-| `code_tests` | **yes** | ~5s | The gate the two jobs below report through, and the only name branch protection asks for — which is what lets the work under it be reshaped without a protection change. Red if either of them is red. |
+| `code_tests` | **yes** | ~6m (the gate itself ~5s) | The gate the two jobs below report through, and the only name branch protection asks for — which is what lets the work under it be reshaped without a protection change. Red if either of them is red. |
 | `code_lint` | via `code_tests` | ~3m | Format / import-sort / license / analyze. Installed after red `dart format` merges broke `main` (pangeachat/client#7680). |
 | `code_test_shards` (4 jobs) | via `code_tests` | ~3m-5m each, in parallel | The Dart test suite. |
 | `accessibility_floor_check` | **yes** | ~5s | The source-level accessible-names gate [accessibility.instructions.md](accessibility.instructions.md) counts on to fail the build. Runs in parallel, so it costs nothing on the critical path. |
@@ -30,11 +30,13 @@ Branch protection is **non-strict** — a PR need not be rebased onto the latest
 
 ### Why the test suite is split by file
 
-A test run spends about half its time compiling test files and the other half running them — measured September 2026, when one unsplit run took 850 seconds, roughly 440 of them compiling. Both halves divide cleanly across runners, so splitting the roughly 470 test files four ways and giving each shard a quarter of them took the required check from about 15 minutes to under 6 — measured against an unsharded run of the same commit, which ran the same 4712 tests.
+A test run spends about half its time compiling test files and the other half running them — measured September 2026, when one unsplit run took 850 seconds, roughly 440 of them compiling. Both halves divide across runners, so splitting the roughly 470 test files four ways took the required check from about 15 minutes to under 6 — measured against an unsharded run of the same commit, which ran the same 4700 tests and skipped the same 10.
 
-The split has to be by file. `flutter test` offers its own `--total-shards`, but that one slices the tests *inside* each file, so every shard still loads and compiles all of them — which caps the gain near half, not a quarter. Files are handed out round-robin over the sorted list rather than in contiguous blocks, so no single shard inherits all of a slow directory.
+The split has to be by file. `flutter test` offers its own `--total-shards`, but that one slices the tests *inside* each file, so every shard still loads and compiles all of them — which caps the gain near half, whatever the shard count. Files are handed out round-robin over the sorted list rather than in contiguous blocks, so no single shard inherits all of a slow directory.
 
-Two consequences worth knowing before editing. Each shard starts its compiler cold, so a fifth or sixth shard buys less than the fourth did; past that point the fixed setup cost, about a minute per shard, dominates. And the shard list is built with the same rule `flutter test` uses to discover tests — every file under `test/` whose name ends in `_test.dart` — so the two must stay in step. A shard that matches no files fails loudly rather than falling through to running everything, because the silent version of that mistake looks like a green build.
+Four shards do not make it four times faster. The shards in the run this was measured on took 159, 182, 229 and 263 seconds, so the slowest ran 1.65 times the fastest and the real speedup on the test step was about 2.7. Round-robin balances *files*, and files differ in cost; a shard that draws several expensive ones sets the pace. Their total also exceeds the single unsplit run by about a sixth, because each shard repeats the fixed setup and starts its compiler cold. Both are the price of the parallelism, and the trade is still worth it — but time imbalance, not file count, is what caps the gain.
+
+Three consequences worth knowing before editing. A fifth or sixth shard buys less than the fourth did, because each one repeats the fixed setup — about a minute — and starts its compiler cold. The organisation is also on GitHub's Free plan, which allows 20 concurrent jobs across every repo it owns, and this change takes one pull request from four jobs to nine; when that pool is contended the shards queue and the gain erodes, so the timings above are a quiet-runner best case. And the shard list must keep matching what `flutter test` itself discovers — every file under `test/` whose name ends in `_test.dart`, symbolic links included, since Flutter resolves them. A shard that matches no files fails loudly rather than falling through to running everything, because the silent version of that mistake looks like a green build.
 
 ## Version, build number, and commit
 
