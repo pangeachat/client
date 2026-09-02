@@ -134,10 +134,32 @@ CORRECTED (the one-device "handover"), no assertion weakened, no gate touched.
 for it** — the exhaustive switch from `2b52c593dd` earning its keep in real
 work rather than in a mutation.
 
+## Blocking before merge — one billable step, not run
+
+`6d62dd6fe0` adds a third English key, `callTranscriptDeviceNeverWrote`.
+`python scripts/translate/check_l10n_sync.py --base 81c0c3d43a` reports
+**115 locales missing 1 key** and **exits 1**. The workflow has no
+`continue-on-error`, so this FAILS the build — the script's own docstring still
+says "notify-only" and is stale.
+
+Not run here: `uv run scripts/translate/translate_new_keys.py --keys
+callTranscriptDeviceNeverWrote` is a billable Vertex AI call across 115
+locales, and a real API call needs sign-off first. Same step the owner already
+took for the other two strings in `2119494882`. Run `flutter gen-l10n`
+afterwards.
+
+The string cannot be dropped or aliased onto an existing one.
+`callTranscriptHeldByOtherDevice` says *"none of it was sent from this one"*,
+and the half this fires on DID send chunks — reusing it would be the same wrong
+statement the display fix exists to remove.
+
 ## Open for the owner
 
-`call-device-ownership.instructions.md` names `CallTranscriptContent.txnId` and
-the `senderId` its call site passes, but says nothing about the key having to
-be **frozen for the operation**. That is the invariant finding 3 broke and it
-is now only stated in code comments. Whether it belongs in the doc is an
-instructions-doc change and needs review — not made here.
+The txn-id invariant flagged after finding 3 was taken up by the owner in
+`08b44ff243`. Nothing further open there.
+
+Still open: an EMPTY half with a **covered** discard reports
+`audioHeldByAnotherDevice`, whose sentence points at a device that is in fact
+merged into the same half and also empty. Named under finding 4; not fixed,
+because tightening it risks the `present` → "you did not say anything"
+regression that mutation 4 caught.
