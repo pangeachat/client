@@ -18,6 +18,10 @@ class ActivitySessionConstants {
   static const String activityId = 'activity_id';
   static const String activityPlanEndAt = 'end_at';
 
+  /// `pangea.activity_session_filled` content: the session room that filled
+  /// (its `activity_id` rides under [activityId]).
+  static const String sessionRoomId = 'session_room_id';
+
   /// Reference-shape `pangea.activity_plan` state event fields. The session
   /// room stores `{ activity_id, version_id, source_course_id? }` and the plan
   /// body is fetched live from CMS — see activities.instructions.md.
