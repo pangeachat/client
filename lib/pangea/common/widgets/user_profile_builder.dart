@@ -205,8 +205,8 @@ class UserProfileName extends StatelessWidget {
               ? (style ?? const TextStyle()).copyWith(
                   color:
                       (theme.brightness == Brightness.light
-                          ? name?.darkColor
-                          : name?.lightColorText) ??
+                          ? name?.nameOnLight
+                          : name?.nameOnDark) ??
                       theme.colorScheme.primary,
                 )
               : style,

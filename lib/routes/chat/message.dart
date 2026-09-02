@@ -591,9 +591,9 @@ class Message extends StatelessWidget {
                                                                   Brightness
                                                                       .light
                                                               ? displayname
-                                                                    .color
+                                                                    .nameOnLight
                                                               : displayname
-                                                                    .lightColorText),
+                                                                    .nameOnDark),
                                                           // #Pangea
                                                           // shadows:
                                                           //     !wallpaperMode

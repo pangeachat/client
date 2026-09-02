@@ -71,6 +71,18 @@ class Avatar extends StatelessWidget {
         mxContent.toString().isEmpty ||
         mxContent.toString() == 'null';
     final borderRadius = this.borderRadius ?? BorderRadius.circular(size / 2);
+    final fallbackFill = backgroundColor ?? name?.lightColorAvatar;
+    // The 12 generated avatar colours span hues where white ink is unreadable
+    // (a yellow-green at 1.38:1) and hues where black is, so the ink is picked
+    // per fill rather than fixed. The fill is translucent, so it is judged
+    // against what it actually composites over (#8762).
+    final fallbackInk =
+        textColor ??
+        (fallbackFill ?? Colors.transparent).readableInk(
+          behind: theme.brightness == Brightness.light
+              ? Colors.white
+              : Colors.black,
+        );
     final presenceUserId = this.presenceUserId;
     final container = Stack(
       children: [
@@ -96,16 +108,14 @@ class Avatar extends StatelessWidget {
                 // #Pangea
                 : noPic
                 ? Container(
-                    decoration: BoxDecoration(
-                      color: backgroundColor ?? name?.lightColorAvatar,
-                    ),
+                    decoration: BoxDecoration(color: fallbackFill),
                     alignment: Alignment.center,
                     child: Text(
                       fallbackLetters,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontFamily: 'RobotoMono',
-                        color: textColor ?? Colors.white,
+                        color: fallbackInk,
                         fontWeight: FontWeight.bold,
                         fontSize: (size / 2.5).roundToDouble(),
                       ),
@@ -137,16 +147,14 @@ class Avatar extends StatelessWidget {
                     height: size,
                     placeholder: (_) => noPic
                         ? Container(
-                            decoration: BoxDecoration(
-                              color: backgroundColor ?? name?.lightColorAvatar,
-                            ),
+                            decoration: BoxDecoration(color: fallbackFill),
                             alignment: Alignment.center,
                             child: Text(
                               fallbackLetters,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: 'RobotoMono',
-                                color: textColor ?? Colors.white,
+                                color: fallbackInk,
                                 fontWeight: FontWeight.bold,
                                 fontSize: (size / 2.5).roundToDouble(),
                               ),
