@@ -29,6 +29,7 @@ import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/friend_dm_prompt.dart';
+import 'package:fluffychat/routes/world/course_context_bar.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -273,6 +274,11 @@ class WorkspaceShell extends StatelessWidget {
                     rightOverlayWidth: l.allocation.mapRightOverlay,
                     bottomOverlayHeight: l.mapBottomOverlay,
                     availableVisibleMapWidth: l.availableVisibleMapWidth,
+                    // The map's top-left slot: the search overlay on the world
+                    // map, the course context bar under a `?c=` scope whose
+                    // panel is closed (#8736).
+                    courseScopeSpaceId: activeSpaceIdFor(state.uri),
+                    coursePanelOpen: l.coursePanelVisible,
                     focus: mapFocusFor(state),
                   ),
                 ),
@@ -550,12 +556,6 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
 
-  /// The learner tapped the minimized search icon back open over a
-  /// course-scoped map. Ephemeral view state; re-minimizes when the scope
-  /// changes (routing.instructions.md → Single-column search bar).
-  bool _searchRestored = false;
-  String? _lastScopeId;
-
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
@@ -587,21 +587,16 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     final mapController =
         _persistentWorldMapKey.currentState as WorldMapController?;
     // Not over a selected activity or an open section sheet: the bar only rides
-    // the exposed map band, which those cover (#7640). Over a bare COURSE-scoped
-    // map it shows minimized — the compact icon, restorable by tap and
-    // re-minimizing when the scope changes.
-    if (_lastScopeId != activeSpaceId) {
-      _lastScopeId = activeSpaceId;
-      _searchRestored = false;
-    }
-    final showsSearchBar = cavityToken == null;
+    // the exposed map band, which those cover (#7640). Over a COURSE-scoped map
+    // the slot belongs to the course context bar instead (#8736, reversing
+    // #7716 and the compact-icon minimize it rested at) — the scoped map has to
+    // say which course scopes it, on narrow as on web.
+    final showsSearchBar = cavityToken == null && activeSpaceId == null;
     final searchBar = showsSearchBar && mapController != null
         ? MobileSearchBar(
             hintText: l10n.mapSearchHint,
             query: mapController.filter.query,
             onQueryChanged: mapController.setQuery,
-            minimized: activeSpaceId != null && !_searchRestored,
-            onRestore: () => setState(() => _searchRestored = true),
             // The verdict-driven empty-view card (the web overlay's twin):
             // when the view shows no matches, the controller diagnoses WHY
             // (off-screen matches / pill-excluded matches / a dead query) and
@@ -639,6 +634,17 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           )
         : null;
 
+    // The course context bar takes the search bar's slot while a course is
+    // selected and its cavity is closed — the narrow twin of the web slot
+    // (#8736). With the course card itself open in the cavity the cavity's own
+    // header already names the course, so neither rides above it.
+    final topAttachment = activeSpaceId != null && cavityToken == null
+        ? Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            child: CourseContextBar(spaceId: activeSpaceId),
+          )
+        : searchBar;
+
     // Full height: the widget grows until whatever rides above it sits
     // immediately below the analytics bar (routing.instructions.md).
     // [MobileNavWidget.maxHeightFraction] caps the CAVITY only — the rail row
@@ -651,7 +657,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // widget push the search bar under the analytics bar.
     final reserved = _ShellLayout.navChromeReserved(
       screenPadding: widget.screenPadding,
-      hasSearchBar: searchBar != null,
+      hasSearchBar: topAttachment != null,
       // The activity plan has no rail and covers the analytics bar at full, so
       // its full-height bound extends through both bands.
       reserveAnalyticsBar: !isActivityCavity,
@@ -939,7 +945,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             // carrying its height over (activity-start-page.instructions.md). Other
             // cavities keep their remembered height.
             rememberHeight: !isActivityCavity,
-            topAttachment: searchBar,
+            topAttachment: topAttachment,
             keyboardInset: widget.keyboardInset,
           );
         },
@@ -1100,6 +1106,12 @@ class _ShellLayout {
   /// exposed map above the sheet (#7640). 0 everywhere else.
   final double mapBottomOverlay;
 
+  /// Whether a course panel is actually DRAWN — open in `?left=` and not
+  /// folded away by the allocator. The map's course context bar stands down
+  /// only for a panel the learner can see; a folded one names the course
+  /// nowhere, which is exactly the state the bar exists for (#8736).
+  final bool coursePanelVisible;
+
   /// The map actually visible between the open side panels (viewport − left
   /// overlay − right overlay) — drives the pin-density budget
   /// ([budgetForWidth] in world_map_pin_budget.dart).
@@ -1124,6 +1136,7 @@ class _ShellLayout {
     required this.leftInset,
     required this.mapLeftOverlay,
     required this.mapBottomOverlay,
+    required this.coursePanelVisible,
     required this.availableVisibleMapWidth,
     required this.mapContext,
     required this.focusedLeftToken,
@@ -1210,6 +1223,11 @@ class _ShellLayout {
       railWidth: columnWidth,
       focusHint: focusHint,
     );
+
+    final coursePanelVisible = [
+      for (var i = 0; i < leftTokens.length; i++)
+        if (layout.left[i].vis != PanelVis.hidden) leftTokens[i].type,
+    ].any((type) => type.isCoursePanel);
 
     // The narrow focus: the one panel the allocator seats full-screen, if any.
     // [focusedIsRight] distinguishes a right panel (renders under the expanded
@@ -1341,6 +1359,7 @@ class _ShellLayout {
       leftInset: leftInset,
       mapLeftOverlay: mapLeftOverlay,
       mapBottomOverlay: mapBottomOverlay,
+      coursePanelVisible: coursePanelVisible,
       availableVisibleMapWidth: availableVisibleMapWidth,
       mapContext: mapContext,
       focusedLeftToken: focusedLeftToken,
