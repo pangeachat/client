@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_page.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -29,21 +28,21 @@ class RightPanelAnalyticsPracticeSubpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final type = param.constructType;
-    return Semantics(
-      label: L10n.of(context).pageLabel(L10n.of(context).practice),
-      container: true,
-      child: PanelCard(
-        child: Navigator(
-          key: MatrixState.pAnyState
-              .layerLinkAndKey("${type.name}_analytics_practice_page")
-              .key,
-          onGenerateRoute: (_) => MaterialPageRoute(
-            builder: (_) => AnalyticsPractice(
-              type: type,
-              closeIcon: icon,
-              closeTooltip: tooltip,
-              close: close,
-            ),
+    // The dispatcher's named group (#8729) is this panel's one container. It
+    // is also the semantic boundary that confines the nested Navigator's
+    // ModalBarrier BlockSemantics (#8459) — the wrapper that used to sit here
+    // duplicated the identical "Practice page" group inside it.
+    return PanelCard(
+      child: Navigator(
+        key: MatrixState.pAnyState
+            .layerLinkAndKey("${type.name}_analytics_practice_page")
+            .key,
+        onGenerateRoute: (_) => MaterialPageRoute(
+          builder: (_) => AnalyticsPractice(
+            type: type,
+            closeIcon: icon,
+            closeTooltip: tooltip,
+            close: close,
           ),
         ),
       ),

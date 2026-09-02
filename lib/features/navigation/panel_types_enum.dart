@@ -186,7 +186,8 @@ enum PanelTypesEnum {
       case PanelTypesEnum.chats:
         return l10n.chats;
       case PanelTypesEnum.newprivatechat:
-        return l10n.newChat;
+        // Matches the panel's visible header title.
+        return l10n.newDirectMessage;
       case PanelTypesEnum.archive:
         return l10n.archive;
       case PanelTypesEnum.archivedroom:
@@ -203,6 +204,8 @@ enum PanelTypesEnum {
       case PanelTypesEnum.coursepage:
         return l10n.coursePage;
       case PanelTypesEnum.addcourse:
+        // The hub's visible header title is "Courses", not "Add a course".
+        return l10n.courses;
       case PanelTypesEnum.addcoursepage:
         return l10n.addCourse;
       case PanelTypesEnum.settings:
