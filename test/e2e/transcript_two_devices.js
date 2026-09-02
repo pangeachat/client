@@ -257,6 +257,36 @@ async function joinedDevices(token, userId, mark) {
   return [...ids];
 }
 
+/// How many turns the transcript panel drew.
+///
+/// One timestamp per drawn segment, counted off the semantics tree because the
+/// WORDS are not in it -- CanvasKit draws them and neither the page text nor a
+/// semantics name carries one. The timestamps are there, and all of them:
+/// Flutter does not clip its semantics to a scroll view, so a turn below the
+/// fold still counts.
+///
+/// Counted INSIDE a node's name rather than by matching whole names, and that
+/// is the whole of the difficulty. The engine publishes the panel's turn list
+/// as ONE merged `aria-label` with the times separated by newlines, and
+/// `ui.scan` splits only a node's own TEXT that way, never an attribute -- so a
+/// filter on whole names matched nothing at all and reported a panel of
+/// nineteen turns as empty. A check that always reads zero always fails, which
+/// is the same worthlessness as one that always passes, from the other side.
+///
+/// The MAXIMUM over nodes rather than the sum, because a timestamp is not
+/// unique to the panel: every call card behind the dialog carries its own
+/// duration in the same shape. The transcript's node is the one holding all of
+/// them, and a card's single stray time cannot beat it.
+function countTurns(nodes) {
+  let most = 0;
+  for (const node of nodes) {
+    const blob = node.names.join('\n');
+    const times = blob.match(/(?:^|\n)\s*\d{1,2}:\d{2}\s*(?=$|\n)/g);
+    if (times && times.length > most) most = times.length;
+  }
+  return most;
+}
+
 /// Opens the transcript of the NEWEST call card on screen.
 ///
 /// `ui.clickControl` ranks its matches by whether a click can reach them and
@@ -823,10 +853,7 @@ async function main() {
       .catch(() => '');
     const titles = labels.labelsFor('callTranscriptTitle').filter(Boolean);
     dialogOpen = titles.some((t) => text.includes(t));
-    turnsDrawn = (await ui.scan(A1.page))
-      .flatMap((n) => n.names)
-      .filter((name) => /^\d{1,2}:\d{2}$/.test(name.trim()))
-      .length;
+    turnsDrawn = countTurns(await ui.scan(A1.page));
     // Kept, because "the screen drew four turns and the room holds nineteen"
     // is a sentence somebody has to be able to check, and a screenshot cannot
     // be grepped.
