@@ -34,6 +34,14 @@ class PangeaEventTypes {
   static const activityRole = "pangea.activity_roles";
   static const activitySummary = "pangea.activity_summary";
 
+  /// Timeline event a client sends into a course space when its seat claim (or
+  /// the bot's, on its behalf) fills the last open role of a session listed
+  /// there. Coursemates never sync the session room, so this is the sync tick
+  /// that re-runs their joinable-session discovery and drops the now-full
+  /// session from their course page (#8735). A custom type rather than
+  /// m.room.message: it matches no push rule, so it never notifies or badges.
+  static const activitySessionFilled = "pangea.activity_session_filled";
+
   /// Written once by the room admin when they choose "play with bot", marking
   /// the bot as a deliberate activity participant. Its presence is the bot's gate
   /// to claim a role; without it the bot stays idle or moderates silently. Admin-
