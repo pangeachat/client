@@ -2,7 +2,6 @@ import 'package:flutter/painting.dart';
 
 import 'package:characters/characters.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_word_diff.dart';
 import 'package:fluffychat/routes/chat/events/tokens/highlight_style.dart';
 
@@ -10,16 +9,24 @@ import 'package:fluffychat/routes/chat/events/tokens/highlight_style.dart';
 /// spans, per the D10 contract: the diff signal is an UNDERLINE (default) or a
 /// BACKFILL (when [fill]) — NOT the text color, which stays the inherited
 /// default. CHANGED runs use [AppConfig.warning] (orange), UNCHANGED runs use
-/// [AppConfig.success] (green) — the SAME [highlightTextStyle] mechanism, only
-/// the color differs. Each run merges onto [baseStyle]. Pure (no [BuildContext]);
-/// concatenating the spans' text reconstructs [edited] verbatim. Shared by the
-/// live editable field (`EditableTranscriptController.buildTextSpan`) and the
-/// read-only [TranscriptDiffView].
+/// green — the SAME [highlightTextStyle] mechanism, only the color differs.
+/// Each run merges onto [baseStyle]. Pure (no [BuildContext]); concatenating
+/// the spans' text reconstructs [edited] verbatim. Shared by the live editable
+/// field (`EditableTranscriptController.buildTextSpan`) and the read-only
+/// [TranscriptDiffView].
+///
+/// [changedColor] and [unchangedColor] come from the caller rather than from
+/// [AppConfig] directly, so this stays pure while the colours stay
+/// theme-aware: the bright originals measured 1.94:1 and 3.01:1 on light
+/// surfaces, under the 3:1 an underline carrying the diff signal needs
+/// (#8764).
 List<TextSpan> sttDiffTextSpans(
   String original,
   String edited, {
   TextStyle? baseStyle,
   bool fill = false,
+  required Color changedColor,
+  required Color unchangedColor,
 }) {
   final base = baseStyle ?? const TextStyle();
   return [
@@ -31,7 +38,7 @@ List<TextSpan> sttDiffTextSpans(
               ? base
               : base.merge(
                   highlightTextStyle(
-                    color: run.changed ? AppConfig.warning : AppConfig.success,
+                    color: run.changed ? changedColor : unchangedColor,
                     fill: fill,
                   ),
                 ),

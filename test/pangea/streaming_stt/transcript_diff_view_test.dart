@@ -9,6 +9,9 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_resp
 import 'package:fluffychat/routes/chat/events/streaming_stt/transcript_diff_view.dart';
 import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
 
+// These pump under MaterialApp's default (light) theme, so the diff colours
+// resolve to the deepened light-theme pair — the bright originals measured
+// 1.94:1 and 3.01:1 there, under the 3:1 an underline needs (#8764).
 void main() {
   const messageForeground = Color(0xFFF4EEFF);
 
@@ -76,7 +79,7 @@ void main() {
           (widget) => widget is UnderlineText && widget.text == 'hola',
         ),
       );
-      expect(changed.underlineColor, AppConfig.warning);
+      expect(changed.underlineColor, AppConfig.warningDeep);
       final original = tester.widget<Text>(find.text('ola'));
       expect(original.style?.decoration, TextDecoration.lineThrough);
       expect(original.style?.color, messageForeground.withAlpha(160));
@@ -103,7 +106,7 @@ void main() {
         (widget) => widget is UnderlineText && widget.text == 'bonito',
       ),
     );
-    expect(inserted.underlineColor, AppConfig.warning);
+    expect(inserted.underlineColor, AppConfig.warningDeep);
     expect(find.text('bonito', findRichText: true), findsOneWidget);
   });
 
@@ -117,7 +120,7 @@ void main() {
           (widget) => widget is UnderlineText && widget.text == word,
         ),
       );
-      expect(rendered.underlineColor, AppConfig.success);
+      expect(rendered.underlineColor, AppConfig.successDeep);
     }
     expect(find.byType(Text), findsNothing);
   });

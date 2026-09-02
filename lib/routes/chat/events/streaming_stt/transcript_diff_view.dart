@@ -80,8 +80,8 @@ class TranscriptDiffView extends StatelessWidget {
                 .firstOrNull;
             return (
               idleUnderlineColor: changed
-                  ? AppConfig.warning
-                  : AppConfig.success,
+                  ? AppConfig.warningByTheme(context)
+                  : AppConfig.successByTheme(context),
               secondaryText: source,
               secondaryStyle: source == null
                   ? null

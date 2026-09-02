@@ -119,6 +119,21 @@ abstract class AppConfig {
   static const Color goldMedalText = Color(0xFFC29B32); // level number
   static const Color goldPale = Color(0xFFFCF2D0); // shield inner field
   static const Color success = Color(0xFF33D057);
+
+  /// [success] and [warning] deepened for use as **foreground** — text, an
+  /// icon, a diff underline — where the light theme's pale surfaces leave the
+  /// bright fills unreadable. [success] measures 1.94:1 on the light surface
+  /// and 1.57:1 on a card; [warning] 3.01:1 and 2.44:1. Both are fine in dark,
+  /// so only the light branch deepens (#8764). The fill uses — chips, pills,
+  /// toggles, backfills — keep the bright originals.
+  static const Color successDeep = Color(0xFF18862F);
+  static const Color warningDeep = Color(0xFFB4690A);
+
+  static Color successByTheme(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.light ? successDeep : success;
+
+  static Color warningByTheme(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.light ? warningDeep : warning;
   static const Color error = Colors.red;
   static const Color warning = Color.fromARGB(255, 210, 124, 12);
   static const Color activeToggleColor = Color(0xFF33D057);

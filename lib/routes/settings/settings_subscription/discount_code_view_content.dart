@@ -67,10 +67,14 @@ class DiscountCodeViewContent extends StatelessWidget {
           spacing: 10.0,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.error_outline, color: AppConfig.error, size: 24.0),
+            Icon(
+              Icons.error_outline,
+              color: theme.colorScheme.error,
+              size: 24.0,
+            ),
             Text(
               L10n.of(context).invalidDiscountCode,
-              style: TextStyle(color: AppConfig.error),
+              style: TextStyle(color: theme.colorScheme.error),
             ),
           ],
         ),
@@ -104,12 +108,12 @@ class DiscountCodeViewContent extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.error_outline,
-                              color: AppConfig.error,
+                              color: theme.colorScheme.error,
                               size: 24.0,
                             ),
                             Text(
                               L10n.of(context).oopsSomethingWentWrong,
-                              style: TextStyle(color: AppConfig.error),
+                              style: TextStyle(color: theme.colorScheme.error),
                             ),
                           ],
                         ),
@@ -142,11 +146,17 @@ class DiscountCodeViewContent extends StatelessWidget {
                   spacing: 10.0,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.check, color: AppConfig.success, size: 24.0),
+                    Icon(
+                      Icons.check,
+                      color: AppConfig.successByTheme(context),
+                      size: 24.0,
+                    ),
                     if (discountCopy != null)
                       Text(
                         L10n.of(context).discountApplied(discountCopy),
-                        style: TextStyle(color: AppConfig.success),
+                        style: TextStyle(
+                          color: AppConfig.successByTheme(context),
+                        ),
                       ),
                   ],
                 ),

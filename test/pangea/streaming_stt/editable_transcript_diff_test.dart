@@ -6,6 +6,9 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/editable_transcript.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_partial_model.dart';
 
+// These pump under MaterialApp's default (light) theme, so the diff colours
+// resolve to the deepened light-theme pair — the bright originals measured
+// 1.94:1 and 3.01:1 there, under the 3:1 an underline needs (#8764).
 void main() {
   test('constructing from a settled final seeds controller.diffBase', () {
     final t = EditableTranscript(originalAsrText: 'hola mundo');
@@ -57,7 +60,7 @@ void main() {
     );
     final spans = span.children!.cast<TextSpan>();
     final changed = spans.firstWhere((s) => s.text == 'hola');
-    expect(changed.style?.decorationColor, AppConfig.warning);
+    expect(changed.style?.decorationColor, AppConfig.warningDeep);
     c.dispose();
   });
 
