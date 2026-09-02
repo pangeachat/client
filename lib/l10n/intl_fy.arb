@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Filterje en sykje",
     "participantsOfTotal": "{filled} fan {total} spilers",
     "mapAttributionLabel": "OpenStreetMap-meiwurkers, copyright en lisinsje",
-    "availableLabel": "Noch net begûn"
+    "availableLabel": "Noch net begûn",
+    "suggestedChats": "Foarstelde petearen"
 }

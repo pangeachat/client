@@ -10206,5 +10206,6 @@
     "filterAndSearch": "Filtrer et rechercher",
     "participantsOfTotal": "{filled} sur {total} joueurs",
     "mapAttributionLabel": "Contributeurs OpenStreetMap, droits d'auteur et licence",
-    "availableLabel": "Pas encore commencé"
+    "availableLabel": "Pas encore commencé",
+    "suggestedChats": "Discussions suggérées"
 }

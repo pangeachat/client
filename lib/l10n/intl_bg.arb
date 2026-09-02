@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Филтриране и търсене",
     "participantsOfTotal": "{filled} от {total} играчи",
     "mapAttributionLabel": "Сътрудници на OpenStreetMap, авторски права и лиценз",
-    "availableLabel": "Все още не е започнало"
+    "availableLabel": "Все още не е започнало",
+    "suggestedChats": "Предложени чатове"
 }

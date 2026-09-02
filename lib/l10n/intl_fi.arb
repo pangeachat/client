@@ -9888,5 +9888,6 @@
     "filterAndSearch": "Suodata ja hae",
     "participantsOfTotal": "{filled}/{total} pelaajaa",
     "mapAttributionLabel": "OpenStreetMapin tekijät, tekijänoikeudet ja lisenssi",
-    "availableLabel": "Ei vielä aloitettu"
+    "availableLabel": "Ei vielä aloitettu",
+    "suggestedChats": "Ehdotetut keskustelut"
 }

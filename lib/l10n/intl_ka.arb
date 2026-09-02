@@ -10751,5 +10751,6 @@
     "filterAndSearch": "გაფილტვრა და ძიება",
     "participantsOfTotal": "{filled} / {total} მოთამაშე",
     "mapAttributionLabel": "OpenStreetMap-ის კონტრიბუტორები, საავტორო უფლებები და ლიცენზია",
-    "availableLabel": "ჯერ არ დაწყებულა"
+    "availableLabel": "ჯერ არ დაწყებულა",
+    "suggestedChats": "შემოთავაზებული ჩეთები"
 }

@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Sía og leita",
     "participantsOfTotal": "{filled} af {total} spilurum",
     "mapAttributionLabel": "OpenStreetMap þátttakendur, höfundarréttur og leyfi",
-    "availableLabel": "Ekki byrjað enn"
+    "availableLabel": "Ekki byrjað enn",
+    "suggestedChats": "Stungin upp á spjalli"
 }

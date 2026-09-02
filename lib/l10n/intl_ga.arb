@@ -9862,5 +9862,6 @@
     "filterAndSearch": "Scag agus cuardaigh",
     "participantsOfTotal": "{filled} de {total} imreoirí",
     "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
-    "availableLabel": "Níl sé tosaithe fós"
+    "availableLabel": "Níl sé tosaithe fós",
+    "suggestedChats": "Comhráite Molta"
 }

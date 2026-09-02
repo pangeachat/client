@@ -2255,5 +2255,6 @@
     "filterAndSearch": "فلټر او لټون",
     "participantsOfTotal": "د {total} لوبغاړو څخه {filled}",
     "mapAttributionLabel": "د OpenStreetMap مرسته کوونکي، د چاپ حق او جواز",
-    "availableLabel": "تر اوسه نه دی پیل شوی"
+    "availableLabel": "تر اوسه نه دی پیل شوی",
+    "suggestedChats": "وړاندیز شوي چیټونه"
 }

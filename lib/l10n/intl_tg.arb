@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Филтр ва ҷустуҷӯ",
     "participantsOfTotal": "{filled} аз {total} бозигар",
     "mapAttributionLabel": "Мусоидаткунандагони OpenStreetMap, ҳуқуқи муаллифӣ ва иҷозатнома",
-    "availableLabel": "Ҳанӯз оғоз нашудааст"
+    "availableLabel": "Ҳанӯз оғоз нашудааст",
+    "suggestedChats": "Чатҳои пешниҳодшуда"
 }

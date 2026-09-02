@@ -10369,5 +10369,6 @@
     "filterAndSearch": "Filtrera och sök",
     "participantsOfTotal": "{filled} av {total} spelare",
     "mapAttributionLabel": "OpenStreetMap-bidragsgivare, upphovsrätt och licens",
-    "availableLabel": "Ej påbörjad"
+    "availableLabel": "Ej påbörjad",
+    "suggestedChats": "Föreslagna chattar"
 }

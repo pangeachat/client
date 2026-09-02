@@ -10157,5 +10157,6 @@
     "filterAndSearch": "تصفية وبحث",
     "participantsOfTotal": "{filled} من أصل {total} لاعبين",
     "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
-    "availableLabel": "لم تبدأ بعد"
+    "availableLabel": "لم تبدأ بعد",
+    "suggestedChats": "محادثات مقترحة"
 }

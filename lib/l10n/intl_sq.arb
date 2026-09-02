@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Filtro dhe kërko",
     "participantsOfTotal": "{filled} nga {total} lojtarë",
     "mapAttributionLabel": "Kontribuesit e OpenStreetMap, të drejtat e autorit dhe licenca",
-    "availableLabel": "Ende pa filluar"
+    "availableLabel": "Ende pa filluar",
+    "suggestedChats": "Biseda të sugjeruara"
 }

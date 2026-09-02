@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Tapis dan cari",
     "participantsOfTotal": "{filled} daripada {total} pemain",
     "mapAttributionLabel": "Penyumbang OpenStreetMap, hak cipta dan lesen",
-    "availableLabel": "Belum bermula"
+    "availableLabel": "Belum bermula",
+    "suggestedChats": "Sembang Dicadangkan"
 }

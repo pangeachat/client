@@ -10483,5 +10483,6 @@
     "filterAndSearch": "กรองและค้นหา",
     "participantsOfTotal": "{filled} จากผู้เล่นทั้งหมด {total} คน",
     "mapAttributionLabel": "ผู้ร่วมให้ข้อมูล OpenStreetMap, ลิขสิทธิ์และใบอนุญาต",
-    "availableLabel": "ยังไม่เริ่ม"
+    "availableLabel": "ยังไม่เริ่ม",
+    "suggestedChats": "แชทแนะนำ"
 }

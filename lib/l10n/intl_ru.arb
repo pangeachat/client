@@ -10823,5 +10823,6 @@
     "filterAndSearch": "Фильтр и поиск",
     "participantsOfTotal": "{filled} из {total} игроков",
     "mapAttributionLabel": "Участники OpenStreetMap, авторские права и лицензия",
-    "availableLabel": "Еще не началось"
+    "availableLabel": "Еще не началось",
+    "suggestedChats": "Предлагаемые чаты"
 }

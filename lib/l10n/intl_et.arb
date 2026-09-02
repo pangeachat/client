@@ -9848,5 +9848,6 @@
     "filterAndSearch": "Filtreeri ja otsi",
     "participantsOfTotal": "{filled}/{total} mängijat",
     "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
-    "availableLabel": "Pole veel alanud"
+    "availableLabel": "Pole veel alanud",
+    "suggestedChats": "Soovitatud vestlused"
 }

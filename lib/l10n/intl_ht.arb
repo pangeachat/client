@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Filtre epi chèche",
     "participantsOfTotal": "{filled} sou {total} jwè",
     "mapAttributionLabel": "Kontribitè OpenStreetMap, copyright ak lisans",
-    "availableLabel": "Pokò kòmanse"
+    "availableLabel": "Pokò kòmanse",
+    "suggestedChats": "Sijesyon Chat"
 }

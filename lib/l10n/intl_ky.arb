@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Чыпкалоо жана издөө",
     "participantsOfTotal": "{filled} / {total} оюнчу",
     "mapAttributionLabel": "OpenStreetMap салымчылары, автордук укук жана лицензия",
-    "availableLabel": "Башталган жок"
+    "availableLabel": "Башталган жок",
+    "suggestedChats": "Сунушталган баарлашуулар"
 }

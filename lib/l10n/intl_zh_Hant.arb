@@ -9957,5 +9957,6 @@
     "filterAndSearch": "篩選與搜尋",
     "participantsOfTotal": "{filled} / {total} 位玩家",
     "mapAttributionLabel": "OpenStreetMap 貢獻者、版權與許可",
-    "availableLabel": "尚未開始"
+    "availableLabel": "尚未開始",
+    "suggestedChats": "建議聊天"
 }

@@ -9838,5 +9838,6 @@
     "filterAndSearch": "Filtern und suchen",
     "participantsOfTotal": "{filled} von {total} Spielern",
     "mapAttributionLabel": "OpenStreetMap-Mitwirkende, Copyright und Lizenz",
-    "availableLabel": "Noch nicht gestartet"
+    "availableLabel": "Noch nicht gestartet",
+    "suggestedChats": "Vorgeschlagene Chats"
 }

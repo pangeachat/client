@@ -2255,5 +2255,6 @@
     "filterAndSearch": "አጣራ እና ፈልግ",
     "participantsOfTotal": "{filled} ከ {total} ተጫዋቾች",
     "mapAttributionLabel": "የOpenStreetMap አስተዋፅዖ አድራጊዎች፣ የቅጂ መብት እና ፈቃድ",
-    "availableLabel": "ገና አልተጀመረም"
+    "availableLabel": "ገና አልተጀመረም",
+    "suggestedChats": "የተጠቆሙ ውይይቶች"
 }

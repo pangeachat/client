@@ -5,21 +5,34 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_button.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
 import 'package:fluffychat/routes/chat/chat_details/participant_card.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 
-/// The course page's Participants section highlight: a single left-aligned
-/// line of [ParticipantCard]s, truncated to the cards that fit the available
-/// width (at most [maxParticipants]). No invite tile — the section header
-/// carries the invite button. The full wrapped list (every member, invite
-/// tile) is the section's "All participants" subpage —
-/// RoomParticipantsSection. The preview owns the "All participants" button
-/// (it knows how many cards fit) and shows it only when members were
-/// truncated — a subpage repeating the same cards is not offered (#8578).
+/// The course page's Participants section: its header and, below, a single
+/// left-aligned line of [ParticipantCard]s, truncated to the cards that fit
+/// the available width (at most [maxParticipants]). The full wrapped list
+/// (every member, invite tile) is the section's "All participants" subpage —
+/// RoomParticipantsSection.
+///
+/// This widget owns the whole section because both of its decisions turn on
+/// the same measurement — how many cards fit:
+///
+/// - the cards themselves are cut to that count (#8578);
+/// - the header's action is "All participants" when members were truncated,
+///   and the invite button when they were not (#8744). A subpage repeating
+///   the same cards is not worth offering, and a section that fits every
+///   member is exactly the one whose useful next step is inviting more. When
+///   the button does show, invite is still one tap away — the subpage it
+///   opens carries its own invite tile.
 class CourseParticipantsPreview extends StatelessWidget {
   final Room room;
 
   /// Opens the section's "All participants" subpage.
   final VoidCallback onShowAll;
+
+  /// Opens the invite flow.
+  final VoidCallback onInvite;
 
   static const int maxParticipants = 8;
 
@@ -28,6 +41,7 @@ class CourseParticipantsPreview extends StatelessWidget {
   const CourseParticipantsPreview({
     required this.room,
     required this.onShowAll,
+    required this.onInvite,
     super.key,
   });
 
@@ -50,9 +64,33 @@ class CourseParticipantsPreview extends StatelessWidget {
                       .clamp(1, maxParticipants)
                       .toInt()
                 : maxParticipants;
+            final truncated = participants.length > fit;
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                CourseSectionHeader(
+                  title: SpaceSettingsTabs.participants.title(context),
+                  trailing: truncated
+                      ? CourseSectionButton(
+                          label: L10n.of(context).allParticipants,
+                          icon: Icons.group_outlined,
+                          onPressed: onShowAll,
+                        )
+                      : room.canInvite
+                      ? FilledButton.tonalIcon(
+                          onPressed: onInvite,
+                          icon: const Icon(Icons.person_add_outlined, size: 16),
+                          label: Text(
+                            L10n.of(context).invite,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                          style: FilledButton.styleFrom(
+                            visualDensity: VisualDensity.compact,
+                          ),
+                        )
+                      : null,
+                ),
+                const SizedBox(height: 8.0),
                 Semantics(
                   label: L10n.of(
                     context,
@@ -81,11 +119,6 @@ class CourseParticipantsPreview extends StatelessWidget {
                         .toList(),
                   ),
                 ),
-                if (participants.length > fit)
-                  CourseSectionButton(
-                    label: L10n.of(context).allParticipants,
-                    onPressed: onShowAll,
-                  ),
               ],
             );
           },

@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Tace da bincike",
     "participantsOfTotal": "{filled} cikin {total} 'yan wasa",
     "mapAttributionLabel": "Masu ba da gudummawa na OpenStreetMap, haƙƙin mallaka da lasisi",
-    "availableLabel": "Bai fara ba tukuna"
+    "availableLabel": "Bai fara ba tukuna",
+    "suggestedChats": "Taɗi da Aka Ba da Shawara"
 }

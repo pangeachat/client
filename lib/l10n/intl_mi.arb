@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Tātari me te rapu",
     "participantsOfTotal": "{filled} o te {total} ngā kaitākaro",
     "mapAttributionLabel": "Ngā kaituku OpenStreetMap, te mana pupuri me te raihana",
-    "availableLabel": "Kāore anō kia tīmata"
+    "availableLabel": "Kāore anō kia tīmata",
+    "suggestedChats": "Kōrerorero Kua Tūtohua"
 }

@@ -10044,5 +10044,6 @@
     "filterAndSearch": "필터 및 검색",
     "participantsOfTotal": "{total}명 중 {filled}명",
     "mapAttributionLabel": "OpenStreetMap 기여자, 저작권 및 라이선스",
-    "availableLabel": "아직 시작 안 함"
+    "availableLabel": "아직 시작 안 함",
+    "suggestedChats": "추천 채팅"
 }

@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Saring lan goleki",
     "participantsOfTotal": "{filled} saka {total} pemain",
     "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta lan lisensi",
-    "availableLabel": "Durung diwiwiti"
+    "availableLabel": "Durung diwiwiti",
+    "suggestedChats": "Obrolan sing Disaranake"
 }

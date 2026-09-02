@@ -8070,5 +8070,6 @@
     "filterAndSearch": "Filtrar y buscar",
     "participantsOfTotal": "{filled} de {total} jugadores",
     "mapAttributionLabel": "Colaboradores de OpenStreetMap, derechos de autor y licencia",
-    "availableLabel": "Aún no ha comenzado"
+    "availableLabel": "Aún no ha comenzado",
+    "suggestedChats": "Chats sugeridos"
 }

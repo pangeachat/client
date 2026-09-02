@@ -10483,5 +10483,6 @@
     "filterAndSearch": "फ़िल्टर करें और खोजें",
     "participantsOfTotal": "{total} खिलाड़ियों में से {filled}",
     "mapAttributionLabel": "OpenStreetMap योगदानकर्ता, कॉपीराइट और लाइसेंस",
-    "availableLabel": "अभी तक शुरू नहीं हुआ"
+    "availableLabel": "अभी तक शुरू नहीं हुआ",
+    "suggestedChats": "सुझाई गई चैट"
 }

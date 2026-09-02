@@ -2255,5 +2255,6 @@
     "filterAndSearch": "ફિલ્ટર કરો અને શોધો",
     "participantsOfTotal": "{total} ખેલાડીઓમાંથી {filled}",
     "mapAttributionLabel": "OpenStreetMap ફાળો આપનારાઓ, કૉપિરાઇટ અને લાઇસન્સ",
-    "availableLabel": "હજુ શરૂ થયું નથી"
+    "availableLabel": "હજુ શરૂ થયું નથી",
+    "suggestedChats": "સૂચવેલી ચેટ્સ"
 }

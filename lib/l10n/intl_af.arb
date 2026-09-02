@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Filtreer en soek",
     "participantsOfTotal": "{filled} van {total} spelers",
     "mapAttributionLabel": "OpenStreetMap bydraers, kopiereg en lisensie",
-    "availableLabel": "Nog nie begin nie"
+    "availableLabel": "Nog nie begin nie",
+    "suggestedChats": "Voorgestelde Gesprekke"
 }

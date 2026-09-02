@@ -10808,5 +10808,6 @@
     "filterAndSearch": "篩選同搜尋",
     "participantsOfTotal": "{filled}/{total} 位玩家",
     "mapAttributionLabel": "OpenStreetMap 貢獻者、版權及許可",
-    "availableLabel": "尚未開始"
+    "availableLabel": "尚未開始",
+    "suggestedChats": "建議對話"
 }

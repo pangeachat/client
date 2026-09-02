@@ -2255,5 +2255,6 @@
     "filterAndSearch": "فلٹر اور تلاش کریں",
     "participantsOfTotal": "{total} کھلاڑیوں میں سے {filled}",
     "mapAttributionLabel": "اوپن سٹریٹ میپ کے معاونین، کاپی رائٹ اور لائسنس",
-    "availableLabel": "ابھی شروع نہیں ہوا"
+    "availableLabel": "ابھی شروع نہیں ہوا",
+    "suggestedChats": "تجویز کردہ چیٹس"
 }

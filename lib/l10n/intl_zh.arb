@@ -9851,5 +9851,6 @@
     "filterAndSearch": "筛选和搜索",
     "participantsOfTotal": "{filled}/{total} 位玩家",
     "mapAttributionLabel": "OpenStreetMap 贡献者，版权和许可",
-    "availableLabel": "尚未开始"
+    "availableLabel": "尚未开始",
+    "suggestedChats": "推荐聊天"
 }

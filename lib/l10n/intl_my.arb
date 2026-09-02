@@ -2255,5 +2255,6 @@
     "filterAndSearch": "စစ်ထုတ်ပြီး ရှာဖွေပါ",
     "participantsOfTotal": "{total} ကစားသမားများထဲမှ {filled}",
     "mapAttributionLabel": "OpenStreetMap ပံ့ပိုးသူများ၊ မူပိုင်ခွင့်နှင့် လိုင်စင်",
-    "availableLabel": "မစတင်သေးပါ"
+    "availableLabel": "မစတင်သေးပါ",
+    "suggestedChats": "အကြံပြုထားသော ချတ်များ"
 }

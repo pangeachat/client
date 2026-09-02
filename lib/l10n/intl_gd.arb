@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Sìoladh is sgrùdadh",
     "participantsOfTotal": "{filled} de {total} cluicheadairean",
     "mapAttributionLabel": "Luchd-tabhartais OpenStreetMap, dlighe-sgrìobhaidh agus cead",
-    "availableLabel": "Gun a bhith air tòiseachadh fhathast"
+    "availableLabel": "Gun a bhith air tòiseachadh fhathast",
+    "suggestedChats": "Còmhraidhean a thathar a' moladh"
 }

@@ -10801,5 +10801,6 @@
     "filterAndSearch": "ఫిల్టర్ చేసి వెతకండి",
     "participantsOfTotal": "{total} ఆటగాళ్ళలో {filled} మంది",
     "mapAttributionLabel": "ఓపెన్‌స్ట్రీట్‌మ్యాప్ కంట్రిబ్యూటర్లు, కాపీరైట్ మరియు లైసెన్స్",
-    "availableLabel": "ఇంకా ప్రారంభం కాలేదు"
+    "availableLabel": "ఇంకా ప్రారంభం కాలేదు",
+    "suggestedChats": "సూచించిన చాట్‌లు"
 }

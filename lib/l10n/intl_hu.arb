@@ -9954,5 +9954,6 @@
     "filterAndSearch": "Szűrés és keresés",
     "participantsOfTotal": "{filled}/{total} játékos",
     "mapAttributionLabel": "OpenStreetMap közreműködők, szerzői jogok és licenc",
-    "availableLabel": "Még nem kezdődött el"
+    "availableLabel": "Még nem kezdődött el",
+    "suggestedChats": "Javasolt csevegések"
 }

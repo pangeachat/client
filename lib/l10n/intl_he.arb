@@ -10765,5 +10765,6 @@
     "filterAndSearch": "סינון וחיפוש",
     "participantsOfTotal": "{filled} מתוך {total} שחקנים",
     "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
-    "availableLabel": "טרם התחיל"
+    "availableLabel": "טרם התחיל",
+    "suggestedChats": "צ'אטים מוצעים"
 }

@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Spargere et quaerere",
     "participantsOfTotal": "{filled} ex {total} lusoribus",
     "mapAttributionLabel": "OpenStreetMap contributores, ius auctoris et licentia",
-    "availableLabel": "Nondum inceptum"
+    "availableLabel": "Nondum inceptum",
+    "suggestedChats": "Colloquia Suasoria"
 }

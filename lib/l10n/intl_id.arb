@@ -9924,5 +9924,6 @@
     "filterAndSearch": "Filter dan cari",
     "participantsOfTotal": "{filled} dari {total} pemain",
     "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta, dan lisensi",
-    "availableLabel": "Belum dimulai"
+    "availableLabel": "Belum dimulai",
+    "suggestedChats": "Obrolan yang Disarankan"
 }

@@ -10632,5 +10632,6 @@
     "filterAndSearch": "Filtruoti ir ieškoti",
     "participantsOfTotal": "{filled} iš {total} žaidėjų",
     "mapAttributionLabel": "„OpenStreetMap“ bendradarbiai, autorių teisės ir licencija",
-    "availableLabel": "Dar neprasidėjo"
+    "availableLabel": "Dar neprasidėjo",
+    "suggestedChats": "Siūlomi pokalbiai"
 }

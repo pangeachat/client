@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Saring jeung teang",
     "participantsOfTotal": "{filled} tina {total} pamaén",
     "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta sareng lisénsi",
-    "availableLabel": "Teu acan dimimitian"
+    "availableLabel": "Teu acan dimimitian",
+    "suggestedChats": "Obrolan nu Disarankeun"
 }

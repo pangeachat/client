@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Sefa ndi kusaka",
     "participantsOfTotal": "{filled} mwa osewera {total}",
     "mapAttributionLabel": "Othandizira a OpenStreetMap, umwini ndi chilolezo",
-    "availableLabel": "Sanayambebe"
+    "availableLabel": "Sanayambebe",
+    "suggestedChats": "Macheza Opangira"
 }

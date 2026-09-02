@@ -10796,5 +10796,6 @@
     "filterAndSearch": "Filtri kaj serĉi",
     "participantsOfTotal": "{filled} el {total} ludantoj",
     "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
-    "availableLabel": "Ankoraŭ ne komencita"
+    "availableLabel": "Ankoraŭ ne komencita",
+    "suggestedChats": "Sugestitaj Babilejoj"
 }

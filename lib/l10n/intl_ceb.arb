@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Filter ug pangita",
     "participantsOfTotal": "{filled} sa {total} ka magdudula",
     "mapAttributionLabel": "Mga nag-amot sa OpenStreetMap, copyright ug lisensya",
-    "availableLabel": "Wala pa nagsugod"
+    "availableLabel": "Wala pa nagsugod",
+    "suggestedChats": "Gisugyot nga mga Chat"
 }

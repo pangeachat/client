@@ -10620,5 +10620,6 @@
     "filterAndSearch": "フィルターと検索",
     "participantsOfTotal": "{total}人中{filled}人",
     "mapAttributionLabel": "OpenStreetMapの寄与者、著作権とライセンス",
-    "availableLabel": "未開始"
+    "availableLabel": "未開始",
+    "suggestedChats": "おすすめチャット"
 }

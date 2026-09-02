@@ -9851,5 +9851,6 @@
     "filterAndSearch": "Filtrēt un meklēt",
     "participantsOfTotal": "{filled} no {total} spēlētājiem",
     "mapAttributionLabel": "OpenStreetMap līdzstrādnieki, autortiesības un licence",
-    "availableLabel": "Vēl nav sācies"
+    "availableLabel": "Vēl nav sācies",
+    "suggestedChats": "Ieteiktās tērzēšanas"
 }

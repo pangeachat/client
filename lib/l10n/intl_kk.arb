@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Сүзгілеу және іздеу",
     "participantsOfTotal": "{total} ойыншының {filled}-і",
     "mapAttributionLabel": "OpenStreetMap қатысушылары, авторлық құқық және лицензия",
-    "availableLabel": "Әлі басталған жоқ"
+    "availableLabel": "Әлі басталған жоқ",
+    "suggestedChats": "Ұсынылған чаттар"
 }

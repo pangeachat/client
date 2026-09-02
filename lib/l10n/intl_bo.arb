@@ -9462,5 +9462,6 @@
     "filterAndSearch": "ཚགས་འདེམས་དང་འཚོལ་བཤེར།",
     "participantsOfTotal": "རྩེད་མཁན་ {total} ནང་ནས་ {filled}",
     "mapAttributionLabel": "OpenStreetMap ལ་མཉམ་ཞུགས་བྱེད་མཁན་ཚོ། བདག་དབང་དང་ཆོག་མཆན།",
-    "availableLabel": "ད་དུང་མ་འགོ་བཙུགས།"
+    "availableLabel": "ད་དུང་མ་འགོ་བཙུགས།",
+    "suggestedChats": "གྲོས་འདོན་གྱི་ཁ་བརྡ།"
 }

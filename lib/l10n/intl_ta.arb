@@ -9943,5 +9943,6 @@
     "filterAndSearch": "வடிகட்டி தேடு",
     "participantsOfTotal": "{total} வீரர்களில் {filled} பேர்",
     "mapAttributionLabel": "OpenStreetMap பங்களிப்பாளர்கள், பதிப்புரிமை மற்றும் உரிமம்",
-    "availableLabel": "இன்னும் தொடங்கவில்லை"
+    "availableLabel": "இன்னும் தொடங்கவில்லை",
+    "suggestedChats": "பரிந்துரைக்கப்பட்ட உரையாடல்கள்"
 }

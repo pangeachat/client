@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Lim thiab tshawb",
     "participantsOfTotal": "{filled} ntawm {total} tus neeg ua si",
     "mapAttributionLabel": "OpenStreetMap cov neeg koom tes, txoj cai luam tawm thiab daim ntawv tso cai",
-    "availableLabel": "Tsis tau pib"
+    "availableLabel": "Tsis tau pib",
+    "suggestedChats": "Kev Sib Tham Pom Zoo"
 }

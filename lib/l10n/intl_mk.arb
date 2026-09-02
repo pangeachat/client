@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Филтрирај и пребарај",
     "participantsOfTotal": "{filled} од {total} играчи",
     "mapAttributionLabel": "Соработници на OpenStreetMap, авторски права и лиценца",
-    "availableLabel": "Сè уште не е започнато"
+    "availableLabel": "Сè уште не е започнато",
+    "suggestedChats": "Предложени разговори"
 }

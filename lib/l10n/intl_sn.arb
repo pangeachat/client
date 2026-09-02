@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Sefa nekutsvaga",
     "participantsOfTotal": "Vatambi {filled} pa {total}",
     "mapAttributionLabel": "Vabatsiri veOpenStreetMap, kodzero yekukopa uye rezinesi",
-    "availableLabel": "Hatisati tatanga"
+    "availableLabel": "Hatisati tatanga",
+    "suggestedChats": "Chats Dzinokurudzirwa"
 }

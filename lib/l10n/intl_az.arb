@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Filtrlə və axtar",
     "participantsOfTotal": "{total} oyunçudan {filled} nəfəri",
     "mapAttributionLabel": "OpenStreetMap iştirakçıları, müəllif hüquqları və lisenziya",
-    "availableLabel": "Hələ başlamayıb"
+    "availableLabel": "Hələ başlamayıb",
+    "suggestedChats": "Təklif olunan söhbətlər"
 }

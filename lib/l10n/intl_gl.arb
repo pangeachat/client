@@ -9851,5 +9851,6 @@
     "filterAndSearch": "Filtrar e buscar",
     "participantsOfTotal": "{filled} de {total} xogadores",
     "mapAttributionLabel": "Colaboradores de OpenStreetMap, dereitos de autor e licenza",
-    "availableLabel": "Aínda sen comezar"
+    "availableLabel": "Aínda sen comezar",
+    "suggestedChats": "Chats suxeridos"
 }

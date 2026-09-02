@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Hluza uze ukhangele",
     "participantsOfTotal": "{filled} kubadlali abali-{total}",
     "mapAttributionLabel": "Abanikeli be-OpenStreetMap, ilungelo lokushicilela kunye nelayisensi",
-    "availableLabel": "Ayikaqali"
+    "availableLabel": "Ayikaqali",
+    "suggestedChats": "Iingxoxo Ezicetywayo"
 }

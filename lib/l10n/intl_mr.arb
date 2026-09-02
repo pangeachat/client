@@ -2255,5 +2255,6 @@
     "filterAndSearch": "फिल्टर करा आणि शोधा",
     "participantsOfTotal": "{total} पैकी {filled} खेळाडू",
     "mapAttributionLabel": "ओपनस्ट्रीटमॅप योगदानकर्ते, कॉपीराइट आणि परवाना",
-    "availableLabel": "अद्याप सुरू झाले नाही"
+    "availableLabel": "अद्याप सुरू झाले नाही",
+    "suggestedChats": "सुचवलेल्या गप्पा"
 }

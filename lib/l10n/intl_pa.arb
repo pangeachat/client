@@ -2255,5 +2255,6 @@
     "filterAndSearch": "ਫਿਲਟਰ ਕਰੋ ਅਤੇ ਖੋਜੋ",
     "participantsOfTotal": "{total} ਖਿਡਾਰੀਆਂ ਵਿੱਚੋਂ {filled}",
     "mapAttributionLabel": "ਓਪਨਸਟ੍ਰੀਟਮੈਪ ਯੋਗਦਾਨੀ, ਕਾਪੀਰਾਈਟ ਅਤੇ ਲਾਇਸੰਸ",
-    "availableLabel": "ਅਜੇ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋਇਆ"
+    "availableLabel": "ਅਜੇ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋਇਆ",
+    "suggestedChats": "ਸੁਝਾਏ ਗਏ ਚੈਟਸ"
 }

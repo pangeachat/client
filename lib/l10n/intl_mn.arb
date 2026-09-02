@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Шүүж хайх",
     "participantsOfTotal": "{total} тоглогчоос {filled} нь",
     "mapAttributionLabel": "OpenStreetMap-ийн хувь нэмэр оруулагчид, зохиогчийн эрх, лиценз",
-    "availableLabel": "Эхлээгүй байна"
+    "availableLabel": "Эхлээгүй байна",
+    "suggestedChats": "Санал болгосон чатууд"
 }

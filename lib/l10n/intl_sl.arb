@@ -10796,5 +10796,6 @@
     "filterAndSearch": "Filtriraj in išči",
     "participantsOfTotal": "{filled} od {total} igralcev",
     "mapAttributionLabel": "Sodelavci OpenStreetMap, avtorske pravice in licenca",
-    "availableLabel": "Še ni začeto"
+    "availableLabel": "Še ni začeto",
+    "suggestedChats": "Predlagani klepeti"
 }

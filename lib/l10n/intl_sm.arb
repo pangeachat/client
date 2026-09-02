@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Faamama ma suʻe",
     "participantsOfTotal": "{filled} o le {total} tagata taaalo",
     "mapAttributionLabel": "OpenStreetMap tagata foaʻi, puletaofia ma laisene",
-    "availableLabel": "E leʻi amataina"
+    "availableLabel": "E leʻi amataina",
+    "suggestedChats": "Talanoaga Fautuaina"
 }

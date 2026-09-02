@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Զտել և որոնել",
     "participantsOfTotal": "{filled} / {total} խաղացող",
     "mapAttributionLabel": "OpenStreetMap-ի մասնակիցներ, հեղինակային իրավունք և լիցենզիա",
-    "availableLabel": "Դեռ չի սկսվել"
+    "availableLabel": "Դեռ չի սկսվել",
+    "suggestedChats": "Առաջարկվող զրույցներ"
 }

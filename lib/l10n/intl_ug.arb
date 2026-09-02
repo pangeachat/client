@@ -2255,5 +2255,6 @@
     "filterAndSearch": "سۈزۈش ۋە ئىزدەش",
     "participantsOfTotal": "{total} قويغۇچنىڭ {filled} ى",
     "mapAttributionLabel": "OpenStreetMap تۆھپىكارلىرى، نەشر ھوقۇقى ۋە ئىجازەتنامىسى",
-    "availableLabel": "تېخى باشلانمىدى"
+    "availableLabel": "تېخى باشلانمىدى",
+    "suggestedChats": "تەكلىپ قىلىنغان پاراڭلار"
 }

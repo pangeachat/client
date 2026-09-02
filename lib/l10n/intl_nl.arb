@@ -9851,5 +9851,6 @@
     "filterAndSearch": "Filteren en zoeken",
     "participantsOfTotal": "{filled} van de {total} spelers",
     "mapAttributionLabel": "OpenStreetMap-medewerkers, auteursrecht en licentie",
-    "availableLabel": "Nog niet gestart"
+    "availableLabel": "Nog niet gestart",
+    "suggestedChats": "Voorgestelde chats"
 }

@@ -10796,5 +10796,6 @@
     "filterAndSearch": "Filtrovať a hľadať",
     "participantsOfTotal": "{filled} z {total} hráčov",
     "mapAttributionLabel": "Prispievatelia OpenStreetMap, autorské práva a licencia",
-    "availableLabel": "Ešte nezačalo"
+    "availableLabel": "Ešte nezačalo",
+    "suggestedChats": "Navrhované chaty"
 }

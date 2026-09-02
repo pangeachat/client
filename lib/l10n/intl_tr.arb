@@ -10152,5 +10152,6 @@
     "filterAndSearch": "Filtrele ve ara",
     "participantsOfTotal": "{total} oyuncudan {filled} tanesi",
     "mapAttributionLabel": "OpenStreetMap katılımcıları, telif hakkı ve lisans",
-    "availableLabel": "Henüz başlamadı"
+    "availableLabel": "Henüz başlamadı",
+    "suggestedChats": "Önerilen Sohbetler"
 }

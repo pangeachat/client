@@ -2255,5 +2255,6 @@
     "filterAndSearch": "ഫിൽട്ടർ ചെയ്ത് തിരയുക",
     "participantsOfTotal": "{total} കളിക്കാരിൽ {filled} പേർ",
     "mapAttributionLabel": "OpenStreetMap സംഭാവന ചെയ്യുന്നവർ, പകർപ്പവകാശം, ലൈസൻസ്",
-    "availableLabel": "ഇതുവരെ ആരംഭിച്ചിട്ടില്ല"
+    "availableLabel": "ഇതുവരെ ആരംഭിച്ചിട്ടില്ല",
+    "suggestedChats": "നിർദ്ദേശിച്ച ചാറ്റുകൾ"
 }

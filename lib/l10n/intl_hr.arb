@@ -10287,5 +10287,6 @@
     "filterAndSearch": "Filtriraj i pretraži",
     "participantsOfTotal": "{filled} od {total} igrača",
     "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
-    "availableLabel": "Još nije započeto"
+    "availableLabel": "Još nije započeto",
+    "suggestedChats": "Predloženi razgovori"
 }

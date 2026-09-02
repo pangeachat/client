@@ -9978,5 +9978,6 @@
     "filterAndSearch": "Filtra i cerca",
     "participantsOfTotal": "{filled} de {total} jugadors",
     "mapAttributionLabel": "Col·laboradors d'OpenStreetMap, drets d'autor i llicència",
-    "availableLabel": "Encara no ha començat"
+    "availableLabel": "Encara no ha començat",
+    "suggestedChats": "Xats suggerits"
 }

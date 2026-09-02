@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Fulta ɛn Sɛch",
     "participantsOfTotal": "{filled} pan {total} pleya dem",
     "mapAttributionLabel": "OpenStreetMap pipal wey de gi am say, in kopyrayt ɛn layɛns",
-    "availableLabel": "Nɔt yɛt stat"
+    "availableLabel": "Nɔt yɛt stat",
+    "suggestedChats": "Sɔjɛst Chati dɛn"
 }

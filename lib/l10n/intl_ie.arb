@@ -10483,5 +10483,6 @@
     "filterAndSearch": "Scag agus cuardaigh",
     "participantsOfTotal": "{filled} de {total} imreoirí",
     "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
-    "availableLabel": "Níor cuireadh tús leis fós"
+    "availableLabel": "Níor cuireadh tús leis fós",
+    "suggestedChats": "Comhráite Molta"
 }

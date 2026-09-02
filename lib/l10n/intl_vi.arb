@@ -7143,5 +7143,6 @@
     "filterAndSearch": "Lọc và tìm kiếm",
     "participantsOfTotal": "{filled} trên {total} người chơi",
     "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
-    "availableLabel": "Chưa bắt đầu"
+    "availableLabel": "Chưa bắt đầu",
+    "suggestedChats": "Đoạn chat gợi ý"
 }

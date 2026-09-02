@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Filteren a sichen",
     "participantsOfTotal": "{filled} vun {total} Spiller",
     "mapAttributionLabel": "OpenStreetMap Mataarbechter, Copyright a Lizenz",
-    "availableLabel": "Nach net ugefaangen"
+    "availableLabel": "Nach net ugefaangen",
+    "suggestedChats": "Virgeschloe Chats"
 }

@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Chuja na utafute",
     "participantsOfTotal": "{filled} kati ya wachezaji {total}",
     "mapAttributionLabel": "Wachangiaji wa OpenStreetMap, hakimiliki na leseni",
-    "availableLabel": "Bado haijaanza"
+    "availableLabel": "Bado haijaanza",
+    "suggestedChats": "Gumzo Zilizopendekezwa"
 }

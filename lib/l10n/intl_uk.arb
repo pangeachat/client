@@ -9851,5 +9851,6 @@
     "filterAndSearch": "Фільтрувати та шукати",
     "participantsOfTotal": "{filled} з {total} гравців",
     "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
-    "availableLabel": "Ще не розпочато"
+    "availableLabel": "Ще не розпочато",
+    "suggestedChats": "Пропоновані чати"
 }

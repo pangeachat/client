@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Kānana a huli",
     "participantsOfTotal": "{filled} o {total} mau mea pāʻani",
     "mapAttributionLabel": "Nā mea hāʻawi OpenStreetMap, kuleana kope a me ka laikini",
-    "availableLabel": "ʻAʻole i hoʻomaka"
+    "availableLabel": "ʻAʻole i hoʻomaka",
+    "suggestedChats": "Nā Kūkākūkā Manaʻo"
 }

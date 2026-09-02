@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Sivana sy karoka",
     "participantsOfTotal": "{filled} amin'ny mpilalao {total}",
     "mapAttributionLabel": "Mpanome anjara OpenStreetMap, zon'ny mpamorona ary fahazoan-dàlana",
-    "availableLabel": "Mbola tsy nanomboka"
+    "availableLabel": "Mbola tsy nanomboka",
+    "suggestedChats": "Chat atolotra"
 }

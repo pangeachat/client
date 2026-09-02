@@ -2255,5 +2255,6 @@
     "filterAndSearch": "ត្រង និងស្វែងរក",
     "participantsOfTotal": "អ្នកលេង {filled} នៃ {total} នាក់",
     "mapAttributionLabel": "អ្នករួមចំណែក OpenStreetMap, ការរក្សាសិទ្ធិ និងអាជ្ញាប័ណ្ណ",
-    "availableLabel": "មិនទាន់ចាប់ផ្ដើមនៅឡើយ"
+    "availableLabel": "មិនទាន់ចាប់ផ្ដើមនៅឡើយ",
+    "suggestedChats": "ការជជែកដែលបានណែនាំ"
 }

@@ -10479,5 +10479,6 @@
     "filterAndSearch": "ফিল্টার এবং অনুসন্ধান",
     "participantsOfTotal": "{total} জন খেলোয়াড়ের মধ্যে {filled} জন",
     "mapAttributionLabel": "OpenStreetMap অবদানকারী, কপিরাইট এবং লাইসেন্স",
-    "availableLabel": "এখনো শুরু হয়নি"
+    "availableLabel": "এখনো শুরু হয়নি",
+    "suggestedChats": "প্রস্তাবিত চ্যাট"
 }

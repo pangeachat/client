@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Hidlo a chwilio",
     "participantsOfTotal": "{filled} o {total} chwaraewr",
     "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
-    "availableLabel": "Heb ddechrau eto"
+    "availableLabel": "Heb ddechrau eto",
+    "suggestedChats": "Sgyrsiau Awgrymedig"
 }

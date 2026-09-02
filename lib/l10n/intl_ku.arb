@@ -2255,5 +2255,6 @@
     "filterAndSearch": "پاڵاوتن و گەڕان",
     "participantsOfTotal": "{filled} لە {total} یاریزان",
     "mapAttributionLabel": "بەشداربووانی OpenStreetMap، مافی لەبەرگرتنەوە و مۆڵەت",
-    "availableLabel": "هێشتا دەستی پێنەکردووە"
+    "availableLabel": "هێشتا دەستی پێنەکردووە",
+    "suggestedChats": "چاتە پێشنیارکراوەکان"
 }

@@ -9939,5 +9939,6 @@
     "filterAndSearch": "فیلتر و جستجو",
     "participantsOfTotal": "{filled} از {total} بازیکن",
     "mapAttributionLabel": "مشارکت‌کنندگان OpenStreetMap، حق تکثیر و مجوز",
-    "availableLabel": "هنوز شروع نشده است"
+    "availableLabel": "هنوز شروع نشده است",
+    "suggestedChats": "گفتگوهای پیشنهادی"
 }

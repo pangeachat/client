@@ -10726,5 +10726,6 @@
     "filterAndSearch": "Φιλτράρισμα και αναζήτηση",
     "participantsOfTotal": "{filled} από {total} παίκτες",
     "mapAttributionLabel": "Συνεισφέροντες στο OpenStreetMap, πνευματικά δικαιώματα και άδεια",
-    "availableLabel": "Δεν έχει ξεκινήσει ακόμα"
+    "availableLabel": "Δεν έχει ξεκινήσει ακόμα",
+    "suggestedChats": "Προτεινόμενες συνομιλίες"
 }

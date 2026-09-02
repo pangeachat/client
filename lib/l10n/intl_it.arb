@@ -9924,5 +9924,6 @@
     "filterAndSearch": "Filtra e cerca",
     "participantsOfTotal": "{filled} di {total} giocatori",
     "mapAttributionLabel": "Contributori OpenStreetMap, copyright e licenza",
-    "availableLabel": "Non ancora iniziato"
+    "availableLabel": "Non ancora iniziato",
+    "suggestedChats": "Chat suggerite"
 }

@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Iffiltra u fittex",
     "participantsOfTotal": "{filled} minn {total} plejers",
     "mapAttributionLabel": "Kontributuri, drittijiet tal-awtur u liċenzja ta' OpenStreetMap",
-    "availableLabel": "Għadu ma bediex"
+    "availableLabel": "Għadu ma bediex",
+    "suggestedChats": "Chats Suġġeriti"
 }

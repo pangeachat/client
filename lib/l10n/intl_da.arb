@@ -10771,5 +10771,6 @@
     "filterAndSearch": "Filtrer og søg",
     "participantsOfTotal": "{filled} af {total} spillere",
     "mapAttributionLabel": "OpenStreetMap-bidragydere, ophavsret og licens",
-    "availableLabel": "Ikke startet endnu"
+    "availableLabel": "Ikke startet endnu",
+    "suggestedChats": "Foreslåede chats"
 }

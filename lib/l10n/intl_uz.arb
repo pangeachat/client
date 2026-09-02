@@ -9855,5 +9855,6 @@
     "filterAndSearch": "Filtrlash va qidirish",
     "participantsOfTotal": "{total} o'yinchidan {filled} nafari",
     "mapAttributionLabel": "OpenStreetMap ishtirokchilari, mualliflik huquqi va litsenziyasi",
-    "availableLabel": "Hali boshlanmadi"
+    "availableLabel": "Hali boshlanmadi",
+    "suggestedChats": "Tavsiya etilgan chatlar"
 }

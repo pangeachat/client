@@ -9851,5 +9851,6 @@
     "filterAndSearch": "Iragazi eta bilatu",
     "participantsOfTotal": "{total} jokalarietatik {filled}",
     "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
-    "availableLabel": "Oraindik ez da hasi"
+    "availableLabel": "Oraindik ez da hasi",
+    "suggestedChats": "Iradokitako txatak"
 }

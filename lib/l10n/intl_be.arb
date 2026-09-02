@@ -9865,5 +9865,6 @@
     "filterAndSearch": "Фільтраваць і шукаць",
     "participantsOfTotal": "{filled} з {total} гульцоў",
     "mapAttributionLabel": "Удзельнікі OpenStreetMap, аўтарскія правы і ліцэнзія",
-    "availableLabel": "Пакуль не пачалося"
+    "availableLabel": "Пакуль не пачалося",
+    "suggestedChats": "Прапанаваныя чаты"
 }

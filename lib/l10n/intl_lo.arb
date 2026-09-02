@@ -2255,5 +2255,6 @@
     "filterAndSearch": "ກັ່ນຕອງ ແລະ ຄົ້ນຫາ",
     "participantsOfTotal": "{filled} ຈາກ {total} ຜູ້ຫຼິ້ນ",
     "mapAttributionLabel": "ຜູ້ປະກອບສ່ວນ OpenStreetMap, ລິຂະສິດ ແລະ ໃບອະນຸຍາດ",
-    "availableLabel": "ຍັງບໍ່ທັນເລີ່ມຕົ້ນ"
+    "availableLabel": "ຍັງບໍ່ທັນເລີ່ມຕົ້ນ",
+    "suggestedChats": "ການສົນທະນາທີ່ແນະນຳ"
 }

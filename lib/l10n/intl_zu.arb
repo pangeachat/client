@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Hlunga bese usesha",
     "participantsOfTotal": "{filled} kwabangu-{total} abadlali",
     "mapAttributionLabel": "Abanikeli be-OpenStreetMap, i-copyright nelayisense",
-    "availableLabel": "Ayikaqali"
+    "availableLabel": "Ayikaqali",
+    "suggestedChats": "Izingxoxo Ezihlongozwayo"
 }

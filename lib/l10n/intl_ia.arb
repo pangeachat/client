@@ -10787,5 +10787,6 @@
     "filterAndSearch": "Filtrar e cercar",
     "participantsOfTotal": "{filled} de {total} jocatores",
     "mapAttributionLabel": "Contribuentes de OpenStreetMap, derectos de autor e licentia",
-    "availableLabel": "Non ancora comenciate"
+    "availableLabel": "Non ancora comenciate",
+    "suggestedChats": "Conversas suggirite"
 }

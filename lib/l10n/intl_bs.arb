@@ -2255,5 +2255,6 @@
     "filterAndSearch": "Filtriraj i pretraži",
     "participantsOfTotal": "{filled} od {total} igrača",
     "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
-    "availableLabel": "Još nije počelo"
+    "availableLabel": "Još nije počelo",
+    "suggestedChats": "Predloženi razgovori"
 }
