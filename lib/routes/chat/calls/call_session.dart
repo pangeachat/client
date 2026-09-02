@@ -278,6 +278,14 @@ class CallSession extends ChangeNotifier {
                 // holds for them as it does for the counts it reads once.
                 chunksDiscarded: transcripts.chunksDiscarded,
                 captureDroppedMs: capture.captureDroppedMs,
+                // Read from the same seam and frozen by the same ordering: a
+                // run's extent is recorded where the run ends, and the last run
+                // has ended before the sink this record waits on is closed. The
+                // count above says a stretch was handed over; these say WHICH,
+                // which is what lets a reader ask whether the sibling that was
+                // supposed to hold it actually did.
+                keptSpans: capture.keptSpans,
+                discardedSpans: capture.discardedSpans,
                 // The room inflates what it is handed, and the server's limit
                 // applies to the inflated event.
                 encrypted: room.encrypted,

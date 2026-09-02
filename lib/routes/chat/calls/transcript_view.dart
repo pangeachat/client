@@ -539,12 +539,22 @@ String emptyHalfNote(TranscriptHalf half, String name, L10n l10n) {
 
     // Reachable here only in one narrow shape -- an empty half whose chunks
     // WERE transcribed and came back with no words, and which also deferred a
-    // stretch to a device that never wrote. `audioHeldByAnotherDevice` above
-    // answers every other empty half that deferred anything. Its ordinary home
-    // is a half that still carries words, where the note under the timeline
-    // says part of it may be missing; this is the sentence for the case where
-    // there is nothing left to say that about.
-    HalfIssue.audioLeftToADeviceThatNeverWrote =>
+    // stretch no sibling's half holds. `audioHeldByAnotherDevice` above answers
+    // every other empty half that deferred anything. Its ordinary home is a
+    // half that still carries words, where the note under the timeline says
+    // part of it may be missing; this is the sentence for the case where there
+    // is nothing left to say that about.
+    //
+    // KNOWN COPY DRIFT, recorded rather than papered over. This sentence says
+    // "nothing from that device arrived", which was the whole of the condition
+    // while a sibling WRITING excused a discard. The condition is now
+    // containment -- no half of theirs states it held that stretch -- and a
+    // sibling that wrote a half of some other stretch reaches this branch with
+    // its half very much here. The conclusion the sentence draws is still true
+    // and it is the part a learner acts on; the middle clause is narrower than
+    // what it now describes. Re-wording it is a translation across every locale
+    // and is the owner's call, so it is flagged rather than made here.
+    HalfIssue.audioLeftToADeviceThatDidNotHoldIt =>
       l10n.callTranscriptDeviceNeverWrote(name),
 
     // Everything else, and only here a true statement: something of theirs was

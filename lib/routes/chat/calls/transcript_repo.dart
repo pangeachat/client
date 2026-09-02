@@ -145,6 +145,11 @@ Future<CallTranscript> fetchCallTranscript({
           // the writing device's own measurement against the SFU.
           clockAnchor: content.clockAnchor,
           positionsMarked: content.positionsMarked,
+          // What this device says it holds, and what it says it handed over.
+          // Carried through untouched, like the anchor above: assembly is the
+          // only place that can compare one device's statement with another's.
+          keptSpans: content.keptSpans,
+          discardedSpans: content.discardedSpans,
         ),
       );
     }

@@ -15,13 +15,22 @@ CallTranscriptContent _content({
   ),
   String? langCode = 'es',
   String? deviceId,
+  List<CaptureSpan> keptSpans = const [],
+  List<CaptureSpan> discardedSpans = const [],
 }) => CallTranscriptContent(
   callKey: _callKey,
   segments: [for (final text in texts) TranscriptSegment(text)],
   accounting: accounting,
   langCode: langCode,
   deviceId: deviceId,
+  keptSpans: keptSpans,
+  discardedSpans: discardedSpans,
 );
+
+/// A stretch of a call, as a device's own clock saw it. A real instant,
+/// because the reader refuses a reading no clock could hold.
+CaptureSpan _span(int fromMs, int toMs) =>
+    CaptureSpan(fromMs: 1787994000000 + fromMs, toMs: 1787994000000 + toMs);
 
 void main() {
   group('CallTranscriptContent json', () {
@@ -864,6 +873,134 @@ void main() {
       ).toJson();
 
       expect(json.containsKey('positions_marked'), isFalse);
+    });
+  });
+
+  group('the stretches a half holds and hands over, on the wire', () {
+    test('round-trip, and absent when the writer did not say', () {
+      final parsed = CallTranscriptContent.fromJson(
+        _content(
+          keptSpans: [_span(0, 20000), _span(30000, 45000)],
+          discardedSpans: [_span(20000, 24000)],
+        ).toJson(),
+      )!;
+
+      expect(parsed.keptSpans, [_span(0, 20000), _span(30000, 45000)]);
+      expect(parsed.discardedSpans, [_span(20000, 24000)]);
+
+      // Absence is what an older build and a foreign client both send, and it
+      // has to be the same bytes as a writer with nothing to state.
+      final silent = _content().toJson();
+      expect(silent.containsKey('kept_spans'), isFalse);
+      expect(silent.containsKey('discarded_spans'), isFalse);
+      final read = CallTranscriptContent.fromJson(silent)!;
+      expect(read.keptSpans, isEmpty);
+      expect(read.discardedSpans, isEmpty);
+    });
+
+    test('one unreadable entry voids the whole statement', () {
+      // A partially read coverage list is a DIFFERENT claim from the one the
+      // writer made, and which direction it is wrong in depends on which list
+      // lost an entry. Refusing the statement is right about both.
+      for (final broken in <Object>[
+        <Object>[
+          [1787994000000, 1787994020000],
+          'not a span',
+        ],
+        <Object>[
+          [1787994000000],
+        ],
+        <Object>[
+          [1787994000000, 1787994000000, 1787994000000],
+        ],
+        <Object>[
+          ['1787994000000', 1787994020000],
+        ],
+        // Ends before it begins.
+        <Object>[
+          [1787994020000, 1787994000000],
+        ],
+        // Covers no moment at all.
+        <Object>[
+          [1787994000000, 1787994000000],
+        ],
+        // Negative, and past any date a clock can hold.
+        <Object>[
+          [-1, 1787994020000],
+        ],
+        <Object>[
+          [1787994000000, ClockAnchor.clockCeilingMs],
+        ],
+      ]) {
+        final parsed = CallTranscriptContent.fromJson({
+          'call_key': _callKey,
+          'segments': [
+            {'text': 'hola'},
+          ],
+          'kept_spans': broken,
+          'discarded_spans': broken,
+        });
+        expect(parsed, isNotNull, reason: 'the words survive a bad statement');
+        expect(parsed!.keptSpans, isEmpty, reason: 'against $broken');
+        expect(parsed.discardedSpans, isEmpty, reason: 'against $broken');
+        expect(parsed.segments.single.text, 'hola');
+      }
+    });
+
+    test('a list past the ceiling states nothing, in both directions', () {
+      // The bound is on the WORK one event can make the reader do: coverage
+      // compares every discarded stretch against every kept one across a
+      // sender's devices. Past it the half says nothing rather than something
+      // shortened, and the same rule stops this writer sending what its own
+      // reader would refuse.
+      List<CaptureSpan> spans(int count) => [
+        for (var i = 0; i < count; i++) _span(i * 100, i * 100 + 50),
+      ];
+
+      final atCeiling = _content(
+        keptSpans: spans(CallTranscriptContent.maxSpans),
+      ).toJson();
+      expect(atCeiling.containsKey('kept_spans'), isTrue);
+      expect(
+        CallTranscriptContent.fromJson(atCeiling)!.keptSpans,
+        hasLength(CallTranscriptContent.maxSpans),
+      );
+
+      final over = _content(
+        keptSpans: spans(CallTranscriptContent.maxSpans + 1),
+        discardedSpans: spans(CallTranscriptContent.maxSpans + 1),
+      ).toJson();
+      expect(over.containsKey('kept_spans'), isFalse);
+      expect(over.containsKey('discarded_spans'), isFalse);
+
+      // And the reader refuses one that reached it some other way.
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': _callKey,
+        'segments': [
+          {'text': 'hola'},
+        ],
+        'kept_spans': [
+          for (final span in spans(CallTranscriptContent.maxSpans + 1))
+            span.toJson(),
+        ],
+      })!;
+      expect(parsed.keptSpans, isEmpty);
+    });
+
+    test('a stretch this writer would refuse is never built', () {
+      // The same rule guards the writer, so a span that cannot describe audio
+      // is never on the wire to be read.
+      expect(CaptureSpan.of(fromMs: 1000, toMs: 1000), isNull);
+      expect(CaptureSpan.of(fromMs: 2000, toMs: 1000), isNull);
+      expect(CaptureSpan.of(fromMs: -1, toMs: 1000), isNull);
+      expect(
+        CaptureSpan.of(fromMs: 1000, toMs: ClockAnchor.clockCeilingMs),
+        isNull,
+      );
+      expect(
+        CaptureSpan.of(fromMs: 1000, toMs: 2000),
+        const CaptureSpan(fromMs: 1000, toMs: 2000),
+      );
     });
   });
 }
