@@ -28,7 +28,9 @@ The harness expects, on that stack:
 - Synapse answering at `PROBE_HS` (default `http://localhost:8008`).
 - The app served at `APP_URL` (default `http://localhost:8091`).
 - Two accounts, `learner` and `calltester`, that already exist and already
-  share a room.
+  share a room. `transcript_two_devices.js` signs `learner` in TWICE, in two
+  Chrome profiles -- one account, two Matrix devices -- and needs a third wav
+  so the two devices do not say the same thing.
 - `CALL_ROOM` naming that room's localpart. The default,
   `!HgavfyvZrMpYhLFMLt`, is a fixture of one local stack, not a constant of
   the product -- a stack seeded differently sets its own.
@@ -47,6 +49,7 @@ them:
 | `CALL_WORK_DIR` | `$TMPDIR/callweb` | Chrome profiles and fake-microphone audio |
 | `CALL_SHOT_DIR` | `$CALL_WORK_DIR/shots` | every screenshot and captured log |
 | `CALL_CALLER_WAV` / `CALL_CALLEE_WAV` | `$CALL_WORK_DIR/caller.wav`, `callee.wav` | what the fake microphones play |
+| `CALL_CALLER2_WAV` | `$CALL_WORK_DIR/caller2.wav` | what the learner's SECOND device plays (`transcript_two_devices.js` only) |
 | `CHROME` | the macOS app bundle path | the browser to drive |
 | `PHONE_SERIAL` | *none -- throws* | which phone (`adb devices`) |
 | `PHONE_PKG` | `com.talktolearn.chat` | add the suffix if your build carries one |
@@ -54,7 +57,20 @@ them:
 
 The wav files are optional: without them Chrome uses a generated tone and says
 so once. Point them at real speech before judging anything that transcribes a
-call.
+call. `caller.wav` and `callee.wav` are in `fixtures/`; the third is not, and
+`transcript_two_devices.js` refuses to start without it rather than running two
+devices on one voice, which is the one fixture mistake that would make its
+central check pass while the feature was broken. Any twenty seconds of English
+containing `lantern`, `bicycle`, `harbor` and `November` will do -- on macOS:
+
+    say -v Samantha -r 150 -o /tmp/second.aiff \
+      'I left the lantern burning by the window all night. [[slnc 900]] My
+       bicycle is still chained to the railing outside the front door. [[slnc
+       900]] We walked all the way down to the harbor before the rain started.
+       [[slnc 900]] Nothing very much has happened around here since November.'
+    afconvert -f WAVE -d LEI16@48000 -c 1 /tmp/second.aiff "$CALL_WORK_DIR/caller2.wav"
+
+If the words change, `DEVICE_TWO_SAYS` in that file changes with them.
 
 ## Running
 
@@ -71,6 +87,25 @@ the app looks broken ("the call controls never appeared") when in truth another
 run just took the room away. `scenarios.js`, `rejoin_ui.js`, `device_four.js`,
 `device_redial.js`, `device_rejoin_summary.js` and `device_video.js` refuse to
 start while another run is alive; the rest do not check yet.
+
+`transcript_two_devices.js` needs both learner fixtures and, on a machine whose
+device ids land the wrong way round, a say-so about which device leaves at the
+handover:
+
+    cd client
+    CALL_LEARNER_ONE_WAV=$CALL_WORK_DIR/learner_one.wav \
+    CALL_LEARNER_TWO_WAV=$CALL_WORK_DIR/learner_two.wav \
+    CALL_HANDOVER_DEVICE=one \
+      node test/e2e/transcript_two_devices.js
+
+Both wav paths are the defaults, so they can be left out once the files are
+there. `CALL_HANDOVER_DEVICE` picks which of the two devices hangs up mid-call
+and it selects a DEVICE, never an outcome: only the device holding the recording
+leaving puts speech in both halves, `CaptureElection` decides which one that is
+from a device id nobody chooses, and persistent profiles keep their ids -- so if
+a run keeps reporting the handover check inconclusive, it is leaving the
+passenger, and this is the knob. Everything else in the file is asserted either
+way.
 
 The whole browser set, sequentially, stopping at the first failure:
 
@@ -97,6 +132,8 @@ Browser only:
 | `refresh_no_return.js` | The same grace when the peer never comes back: reconnecting is shown, the grace lapses, the survivor ends the call itself, and it is written as a call that HAPPENED rather than a miss. |
 | `rejoin_ui.js` | The four review fixes browser-to-browser: a rejoined clock continues rather than restarting, nothing still claims "reconnecting" after the other side ends, the Return banner's red end ends the call for both, and the chat list previews the call. |
 | `grey_hover.js` | The CanvasKit grey box: hovers every control on a live ring and fails if a large flat grey block appears that was not there before. |
+| `transcript.js` | What the two people can READ afterwards: the consent notice, each speaker's own words under their own name, turn positions on the wire, and nobody who spoke reported as silent. |
+| `transcript_two_devices.js` | ONE account signed in TWICE in one call. Both devices write a half, the halves name different devices and are sent under different transaction ids, the reader assembles the account's half from both, and no word either device heard is missing from the screen. It also refuses a call whose key an earlier call already used -- see below. |
 
 Physical Android phone required (all of these; each needs `PHONE_SERIAL`):
 
@@ -140,6 +177,37 @@ Not a scenario:
   retries. The app's home animates continuously, so the dump never reaches
   idle there at all -- `device_four.js` and `device_rejoin_summary.js` use
   screenshots instead and are read by eye.
+- **Two devices of one account in one call is a RACE, and the race is lost
+  more often than it is won.** `answeredOnAnotherDevice` dismisses the second
+  device's prompt as soon as the first device's membership lands, so there is
+  no way in for a device that answers even a second late.
+  `transcript_two_devices.js` therefore fires both taps together and, when only
+  one gets in, tears the call all the way down and places it again -- up to
+  four times. Three attempts to win it once is normal.
+- **The call membership state under-reports during that race.**
+  `com.famedly.call.member` is ONE state event per account holding a list of
+  that account's devices, and two devices answering in the same instant each
+  write the whole list from their own view -- so the later write can drop the
+  earlier device. Measured: two events seven milliseconds apart, each naming
+  only its own writer, while both devices really were in the call and both
+  wrote a transcript half for it. The scenario reads the UNION over the
+  timeline rather than the current state for that reason, and anything else
+  asking "is the second device in the call" needs the same care.
+- **The transcript panel's WORDS cannot be read from the DOM.** It is drawn by
+  CanvasKit, and measured here: with six sentences plainly on screen, neither
+  `document.body.innerText` nor any `flt-semantics` name carried one of them.
+  What DOES reach the tree is each turn's timestamp and each speaker's name, and
+  all of them -- Flutter does not clip semantics to a scroll view, so a turn
+  below the fold is still there. So a check about the transcript's CONTENT is
+  written on the turn COUNT (`transcript_two_devices.js`) or read off a
+  screenshot by eye, the way the phone scenarios already do. A check written on
+  the words can only ever fail, and one written on their absence -- "nobody who
+  spoke is reported as silent" -- can only ever pass. `transcript.js` still has
+  the second of those.
+- **A Chrome profile's login is per ORIGIN.** Serving a second build on another
+  port and pointing `APP_URL` at it does not reuse the session: the profile
+  signs in again and Synapse mints NEW devices. Fine, and worth knowing before
+  reading two runs against two ports as if the device ids were comparable.
 - **Phone tap positions are calibrated to one device** (960x2142), in
   `device.js`'s `BANNER` and `TAP` tables. On another handset they miss --
   and because every tap is followed by a server-side check, that shows up as
@@ -203,3 +271,25 @@ is inside the engine.
   caused a null dereference that stopped the second call in a session from
   placing at all. Caught here and reverted (175e32c51b) before it could ship,
   and fixed properly in c784e7c5d6.
+- **A whole call's transcript destroyed by a reused call key.** A redial two
+  seconds after a hangup rang with the PREVIOUS call's membership event id, so
+  both calls shared a `call_key`. The transcript transaction id is
+  `(call key, sender, device)`, and this homeserver collapses a repeated
+  transaction id from the same device -- so every writer in the second call
+  recomputed an id it had already used, the server handed back the earlier
+  event, and forty-eight seconds of conversation reached the room as nothing at
+  all, with no error logged anywhere. The second call's CARD landed, sharing the
+  first's key, so the renderer's first-per-key rule drew a 48-second call as an
+  11.8-second one. `transcript_two_devices.js` refuses a call whose key an
+  earlier half already used, which is what turned this from silence into a
+  failure.
+- **A call that stops being recorded when one of an account's devices leaves.**
+  Two of the learner's devices in one call; the one holding the recording hung
+  up at thirty-five seconds; the survivor held the call alone for another forty
+  and captured NOTHING -- zero chunks, no refusal, no loss, nothing dropped.
+  Reproduced on two runs. The election is supposed to re-run on the roster
+  change and hand the recording to the survivor. Read the caveat the check
+  itself prints before acting on it: this stack's LiveKit token lacks
+  `CanUpdateOwnMetadata`, so the capability layer the election leans on is dead
+  here and the app says so in its own log on every run -- which is either the
+  cause or the thing that has to be ruled out first.

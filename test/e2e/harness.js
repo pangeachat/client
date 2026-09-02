@@ -37,12 +37,18 @@ function refuseIfAnotherRunIsLive() {
     // everyone believes it is watching.
     out = execSync(
       'pgrep -f "node ([^ ]*/)?(scenarios|rejoin_ui|refresh_[a-z_]+|grey_hover'
-        + '|list_preview|device[a-z_0-9]*)\\.js" || true',
+        + '|list_preview|transcript[a-z_0-9]*|device[a-z_0-9]*)\\.js" || true',
       { encoding: 'utf8' },
     );
   } catch (_) {
     return;
   }
+  // `transcript` was missing from that list for as long as transcript.js has
+  // existed, so the guard it CALLS could never fire for the run it was
+  // guarding: two transcript runs fought over the room and neither noticed. A
+  // guard that never fires is worse than no guard, because everyone believes
+  // it is watching.
+  //
   // Our own pid, and the shell pgrep runs in -- whose command line contains
   // the pattern itself.
   const mine = new Set([process.pid, process.ppid]);

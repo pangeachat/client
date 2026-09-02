@@ -196,14 +196,17 @@ function countType(events, type) {
   return events.filter((e) => e.type === type).length;
 }
 
-/// How many LIVE call memberships this account has in the room.
+/// WHICH of this account's devices are in the call in this room, right now.
 ///
-/// Only non-expired ones count. Every login creates a new device, and a leave
-/// only removes the entry for the device doing the leaving, so the state
-/// accumulates entries from every past session. Counting them all made a
-/// perfectly good hangup look like it had failed -- the stale entries are all
-/// long expired, which is exactly how the SDK itself filters them.
-async function liveMemberships(token, roomId, userId) {
+/// One entry per DEVICE, which is the shape of the state event: a leave removes
+/// only the leaving device's entry, so the account's row is a list rather than a
+/// flag. Only non-expired entries count, for the reason [liveMemberships] gives.
+///
+/// The IDS rather than a count, because the question two devices of one account
+/// raise is not "how many" but "which two" -- a transcript half names the device
+/// that wrote it, and that name only means something next to the devices that
+/// were actually in the call.
+async function liveMembershipDevices(token, roomId, userId) {
   try {
     const st = await api(
       `/_matrix/client/v3/rooms/${encodeURIComponent(roomId)}/state/com.famedly.call.member/${encodeURIComponent(userId)}`,
@@ -211,14 +214,31 @@ async function liveMemberships(token, roomId, userId) {
     );
     const mems = Array.isArray(st.memberships) ? st.memberships : [];
     const now = Date.now();
-    return mems.filter((m) => typeof m.expires_ts === 'number' && m.expires_ts > now).length;
+    return mems
+      .filter((m) => typeof m.expires_ts === 'number' && m.expires_ts > now)
+      .map((m) => (typeof m.device_id === 'string' ? m.device_id : ''))
+      .filter((id) => id.length > 0);
   } catch (_) {
-    return 0;
+    return [];
   }
+}
+
+/// How many LIVE call memberships this account has in the room.
+///
+/// Only non-expired ones count. Every login creates a new device, and a leave
+/// only removes the entry for the device doing the leaving, so the state
+/// accumulates entries from every past session. Counting them all made a
+/// perfectly good hangup look like it had failed -- the stale entries are all
+/// long expired, which is exactly how the SDK itself filters them.
+///
+/// Counted off [liveMembershipDevices] rather than beside it: an entry naming no
+/// device is not a device in the call, and two answers to one question drift.
+async function liveMemberships(token, roomId, userId) {
+  return (await liveMembershipDevices(token, roomId, userId)).length;
 }
 
 async function hasMembership(token, roomId, userId) {
   return (await liveMemberships(token, roomId, userId)) > 0;
 }
 
-module.exports = { api, login, logout, displayName, targetLanguage, baseLang, hasMembership, liveMemberships, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };
+module.exports = { api, login, logout, displayName, targetLanguage, baseLang, hasMembership, liveMemberships, liveMembershipDevices, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };
