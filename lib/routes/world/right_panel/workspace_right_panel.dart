@@ -83,6 +83,14 @@ class WorkspaceRightPanel extends StatelessWidget {
         settingsToken.param?.subpage,
       ).title(l10n);
     }
+    // An analytics drilldown (Level / Vocab / Grammar / Activities) is named
+    // by its own visible title, like a settings page — "Stats page" for the
+    // Level drilldown mislabeled both its group and its close control (#8729).
+    if (token is AnalyticsPanelToken) {
+      closeButtonLabel = (token as AnalyticsPanelToken).param?.subpage.tooltip(
+        context,
+      );
+    }
 
     final leadingTooltip = aff.showBack
         ? MaterialLocalizations.of(context).backButtonTooltip
@@ -200,6 +208,10 @@ class WorkspaceRightPanel extends StatelessWidget {
     return Semantics(
       label: l10n.pageLabel(closeButtonLabel ?? token.type.displayName(l10n)),
       container: true,
+      // Keep descendants as their own nodes: without this, loose text with no
+      // container of its own (the Level drilldown's "LVL 15 … XP" header)
+      // merges INTO the panel's name, announcing as one garbled label.
+      explicitChildNodes: true,
       child: panel,
     );
   }

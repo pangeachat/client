@@ -139,6 +139,9 @@ class WorkspaceLeftPanel extends StatelessWidget {
         context,
       ).pageLabel(token.type.displayName(L10n.of(context))),
       container: true,
+      // Keep descendants as their own nodes so loose text without a container
+      // never merges into the panel's name (see WorkspaceRightPanel).
+      explicitChildNodes: true,
       child: bare ? surface : PanelCard(child: surface),
     );
   }
