@@ -289,6 +289,8 @@ if a context is set, the world otherwise.
 
 Every workspace panel announces as one named semantic group — "Settings page", "Vocab page", "Chats page" — before its content, so a screen-reader user always knows which panel they entered and can treat panels as landmarks. The group is authored where every column token resolves ([`WorkspaceLeftPanel`](../../lib/routes/world/left_panel/workspace_left_panel.dart), [`WorkspaceRightPanel`](../../lib/routes/world/right_panel/workspace_right_panel.dart)), never in a panel's own view or chrome, so a panel cannot lose its group by drawing its own header — the failure that left the analytics panels and the whole left column ungrouped while settings was grouped (#8729). The group's name and the panel's "Close X" label share one source ([`PanelTypesEnum`](../../lib/features/navigation/panel_types_enum.dart), `displayName` beside `closeButtonLabel`), so the two can never disagree.
 
+A screen reader browses the workspace in reading order, not paint order: the nav rail first, then the open left panels, the open right panels, the user cluster / analytics bar, and the map — the backdrop everything overlays — last (#8755). The order is authored with ordinal sort keys at the shell's region mounts ([`WorkspaceShell`](../../lib/widgets/layouts/workspace_shell.dart)), the browse-order twin of the #7219 focus-order annotations at the same mounts, so the two orders are maintained together and cannot drift apart.
+
 ### Closing a panel: X or back arrow
 
 Every panel shows exactly one of two close affordances, derived from the
