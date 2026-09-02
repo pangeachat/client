@@ -1170,62 +1170,91 @@ class _WorldMapViewState extends State<WorldMapView> {
           ) -
           12,
     );
-    return Semantics(
-      label: L10n.of(context).activityMapLabel,
-      // The backdrop reads LAST in the workspace browse order (#8755); the
-      // key lives on this labeled container, not a shell wrapper.
-      sortKey: BrowseOrder.map,
-      container: true,
-      child: Stack(
+    // The map's semantic container is ANCHORED to a thin strip at the far
+    // right edge (#8755): VoiceOver ignores DOM order for overlapping
+    // positioned siblings and sorts them by horizontal center (verified by
+    // live DOM mutation), so a full-bleed container always read mid-sweep
+    // regardless of sort keys. The strip's center sits past the user
+    // cluster's, so the map group sorts last. Only the pointer-transparent
+    // semantic mirrors (pins #7591, attribution #8753) live inside it,
+    // overflowing leftward to their true positions — a strip-sized ancestor
+    // rejects pointer hits beyond its bounds, so anything clickable (the
+    // search/context slot, the zoom controls) stays outside as its own
+    // keyed sibling under BrowseOrder.mapChrome. The visual map is a plain
+    // sibling underneath (its own semantics are excluded — #8013).
+    return LayoutBuilder(
+      builder: (context, viewConstraints) => Stack(
         children: [
           Positioned.fill(child: map),
-          // Screen-reader pins (#7591): the map subtree above is
-          // ExcludeSemantics'd (#8013), so the drawn pins' names and tap
-          // actions are re-authored here, outside it. The layer is
-          // pointer-transparent — pointer behavior stays with the real pins.
-          Positioned.fill(
-            child: PinSemanticsLayer(
-              mapController: widget.controller.mapController,
-              cards: [...render.largeCards, ...render.nonLargeCards],
-              stateOf: render.stateOf,
-              onTap: widget.controller.openActivity,
-              // Seat summary for live pins (#8753) — the same derivation the
-              // drawn seat circles use, so announced and drawn never drift.
-              liveDetailOf: (card) {
-                final state = render.stateOf(card.activityId);
-                if (state != ActivityPinState.joinable &&
-                    state != ActivityPinState.ongoingPending) {
-                  return null;
-                }
-                final (:participants, :openSlots) = _sessionParticipants(
-                  card.activityId,
-                  state,
-                );
-                final total = participants.length + openSlots;
-                if (total == 0) return null;
-                return L10n.of(
-                  context,
-                ).participantsOfTotal(participants.length, total);
-              },
-            ),
-          ),
-          // Screen-reader mirror of the map attribution (#8753): the visual
-          // control draws inside the ExcludeSemantics'd map subtree, so the
-          // OSM credit-plus-link (#8603) was unreachable by AT. Same trick as
-          // the pins — a semantics-only node at its position, pointer-
-          // transparent, whose semantic tap opens the copyright page.
           Positioned(
-            left: PlatformInfos.isMobile ? 12 : 8,
-            bottom: PlatformInfos.isMobile ? 12 : 8,
-            width: 32,
-            height: 32,
+            top: 0,
+            bottom: 0,
+            right: 0,
+            width: semanticsAnchorWidth,
             child: Semantics(
-              link: true,
-              label: L10n.of(context).mapAttributionLabel,
-              hitTestBehavior: ui.SemanticsHitTestBehavior.transparent,
-              onTap: () =>
-                  launchUrlString('https://www.openstreetmap.org/copyright'),
-              child: const SizedBox.expand(),
+              label: L10n.of(context).activityMapLabel,
+              sortKey: BrowseOrder.map,
+              container: true,
+              child: OverflowBox(
+                alignment: Alignment.centerRight,
+                minWidth: viewConstraints.maxWidth,
+                maxWidth: viewConstraints.maxWidth,
+                minHeight: viewConstraints.maxHeight,
+                maxHeight: viewConstraints.maxHeight,
+                child: Stack(
+                  children: [
+                    // Screen-reader pins (#7591): the map subtree above is
+                    // ExcludeSemantics'd (#8013), so the drawn pins' names and tap
+                    // actions are re-authored here, outside it. The layer is
+                    // pointer-transparent — pointer behavior stays with the real pins.
+                    Positioned.fill(
+                      child: PinSemanticsLayer(
+                        mapController: widget.controller.mapController,
+                        cards: [...render.largeCards, ...render.nonLargeCards],
+                        stateOf: render.stateOf,
+                        onTap: widget.controller.openActivity,
+                        // Seat summary for live pins (#8753) — the same derivation the
+                        // drawn seat circles use, so announced and drawn never drift.
+                        liveDetailOf: (card) {
+                          final state = render.stateOf(card.activityId);
+                          if (state != ActivityPinState.joinable &&
+                              state != ActivityPinState.ongoingPending) {
+                            return null;
+                          }
+                          final (:participants, :openSlots) =
+                              _sessionParticipants(card.activityId, state);
+                          final total = participants.length + openSlots;
+                          if (total == 0) return null;
+                          return L10n.of(
+                            context,
+                          ).participantsOfTotal(participants.length, total);
+                        },
+                      ),
+                    ),
+                    // Screen-reader mirror of the map attribution (#8753): the visual
+                    // control draws inside the ExcludeSemantics'd map subtree, so the
+                    // OSM credit-plus-link (#8603) was unreachable by AT. Same trick as
+                    // the pins — a semantics-only node at its position, pointer-
+                    // transparent, whose semantic tap opens the copyright page.
+                    Positioned(
+                      left: PlatformInfos.isMobile ? 12 : 8,
+                      bottom: PlatformInfos.isMobile ? 12 : 8,
+                      width: 32,
+                      height: 32,
+                      child: Semantics(
+                        link: true,
+                        label: L10n.of(context).mapAttributionLabel,
+                        hitTestBehavior:
+                            ui.SemanticsHitTestBehavior.transparent,
+                        onTap: () => launchUrlString(
+                          'https://www.openstreetmap.org/copyright',
+                        ),
+                        child: const SizedBox.expand(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
           // Column mode only: on a narrow screen the search rides the floating
@@ -1246,7 +1275,10 @@ class _WorldMapViewState extends State<WorldMapView> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          CourseContextBar(spaceId: courseScopeSpaceId),
+                          CourseContextBar(
+                            spaceId: courseScopeSpaceId,
+                            sortKey: BrowseOrder.mapChrome,
+                          ),
                           // The bar replaces the search field and the pills,
                           // not the empty-view card: those pills still apply
                           // in course scope, so without the card an emptied
@@ -1257,6 +1289,7 @@ class _WorldMapViewState extends State<WorldMapView> {
                             Padding(
                               padding: const EdgeInsets.only(top: 8.0),
                               child: WorldMapEmptyViewCard(
+                                sortKey: BrowseOrder.mapChrome,
                                 verdict: widget.controller.emptyVerdict,
                                 canZoomOut: widget.controller.canZoomOut,
                                 onWidenSearch: widget.controller.widenFilters,
@@ -1293,6 +1326,12 @@ class _WorldMapViewState extends State<WorldMapView> {
     );
   }
 }
+
+/// The width of the map's semantics anchor strip at the right edge (#8755).
+/// Small enough to sit past the user cluster's horizontal center at any
+/// window width, large enough that assistive tech does not drop it as
+/// zero-sized.
+const double semanticsAnchorWidth = 8.0;
 
 /// Wraps a pin layer in the app's shimmer palette while [active] (the L1 warmup
 /// — see [WorldMapController.warmingPins]), else renders it untouched.
@@ -1357,6 +1396,7 @@ class _MapZoomControls extends StatelessWidget {
               WorldMapConstants.canZoomOut(zoom, controller.minZoom);
           return Semantics(
             label: l10n.mapZoomLabel,
+            sortKey: BrowseOrder.mapChrome,
             container: true,
             child: Column(
               mainAxisSize: MainAxisSize.min,

@@ -238,7 +238,15 @@ class BrowseOrder {
   static const leftPanels = OrdinalSortKey(2);
   static const rightPanels = OrdinalSortKey(3);
   static const cluster = OrdinalSortKey(4);
-  static const map = OrdinalSortKey(5);
+
+  /// The map's own chrome — search/context slot, zoom controls, empty-view
+  /// card — reads after the cluster and before the map backdrop. These are
+  /// separate top-level nodes (not children of the map group) because the
+  /// map group is anchored to a right-edge strip for VoiceOver ordering
+  /// (#8755, see WorldMapView.build) and content inside a strip-sized
+  /// container would be unreachable by pointer.
+  static const mapChrome = OrdinalSortKey(5);
+  static const map = OrdinalSortKey(6);
 }
 
 class WorkspaceShell extends StatelessWidget {
