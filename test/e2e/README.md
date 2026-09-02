@@ -168,7 +168,7 @@ Browser only:
 | `rejoin_ui.js` | The four review fixes browser-to-browser: a rejoined clock continues rather than restarting, nothing still claims "reconnecting" after the other side ends, the Return banner's red end ends the call for both, and the chat list previews the call. |
 | `grey_hover.js` | The CanvasKit grey box: hovers every control on a live ring and fails if a large flat grey block appears that was not there before. |
 | `transcript.js` | What the two people can READ afterwards: the consent notice, each speaker's own words under their own name, turn positions on the wire, and nobody who spoke reported as silent. |
-| `transcript_two_devices.js` | ONE account signed in TWICE in one call. Both devices write a half, the halves name different devices, each half carries the fixture its own browser played and the transaction id that browser was SEEN sending (read off its own outgoing requests -- see below), the device that stays says in its own log that it took the recording over, the reader says it assembled the account's half from both, and the panel draws at least as many turns as the halves carry. It also refuses a call whose key an earlier call already used, searching back to the event that IS the key -- see below. It does NOT claim to know when a device left the call, or how much of the tail the survivor recorded; neither is observable here. |
+| `transcript_two_devices.js` | ONE account signed in TWICE in one call. Both devices write TWO distinct halves, the halves name different devices, each half carries the fixture its own browser played and the transaction id that browser was SEEN sending for THIS call (read off its own outgoing requests, scoped by the call key inside them -- see below), the device that stays says in its own log that it took the recording over, the reader says it assembled the account's half from both, and the panel draws at least as many turns as the halves carry. It also refuses a call whose key an earlier call already used, searching back to the event that IS the key -- see below. It does NOT claim to know when a device left the call, or how much of the tail the survivor recorded; neither is observable here. |
 
 Physical Android phone required (all of these; each needs `PHONE_SERIAL`):
 
@@ -305,6 +305,28 @@ Not a scenario:
   `/_matrix/client/` URLs if you copy this: the app also talks to the
   choreographer with a bearer of its own, and taking whichever went past last
   yields `M_UNKNOWN_TOKEN` and reads as a browser that could not be identified.
+- **A page's send log outlives the call, so scope it.** The watcher below
+  records every transcript PUT a page makes for the life of the process, and the
+  retry loop can place and tear down calls before the winning one -- a torn-down
+  call writes its halves too. Reading the log unscoped answers "was this device
+  seen sending a half" partly out of a call nobody is asking about: a device that
+  never wrote a half for the winning call, but had written one for an abandoned
+  attempt, reads as a device seen sending exactly one. The scope needs nothing
+  marked browser-side, because the send declares its own call -- the call key is
+  a field of the transaction id, in the PUT path -- so it is the exact
+  counterpart of `content.call_key` on the events. Match it as a PREFIX: a user
+  id and a v1 event id both contain colons, so splitting the id on them is
+  ambiguous.
+- **A "since this mark" read widens silently when the mark ages out.** The
+  harness's `since` pulls a window of the timeline, finds the marker and returns
+  what follows -- and when the marker is no longer in the window it returns the
+  WHOLE window instead. Every caller means "what happened since I marked", and
+  the fallback quietly answers "the last N events": a wider set, in the
+  permissive direction, with nothing to show the question changed. In
+  `transcript_two_devices.js` that reached far -- the ring lookup would take an
+  abandoned attempt's ring and scope the entire run to the wrong call key -- so
+  that file reads through its own `sinceScoped`, which throws instead. Worth the
+  same care anywhere else a scenario marks and reads back.
 - **A Chrome profile's login is per ORIGIN.** Serving a second build on another
   port and pointing `APP_URL` at it does not reuse the session: the profile
   signs in again and Synapse mints NEW devices. Fine, and worth knowing before
