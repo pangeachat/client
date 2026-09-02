@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-02 12:25:23.222483",
+    "@@last_modified": "2026-09-02 13:00:11.714952",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9935,7 +9935,6 @@
     "ongoingPendingLabel": "في انتظار انضمام الآخرين",
     "joinableLabel": "قابل للانضمام",
     "inProgressLabel": "اكتمل سابقًا",
-    "availableLabel": "إنشاء نشاط",
     "rateActivityTitle": "كيف كان هذا النشاط؟",
     "rateActivityCommentHint": "أضف تعليقًا (اختياري)",
     "rateActivityCommentRejected": "تعذّر نشر تعليقك. حاول إعادة صياغته، أو أرسل تقييمك بدون تعليق.",
@@ -10155,5 +10154,8 @@
     "constructLevelSeeds": "البذور، كلمات جديدة",
     "constructLevelGreens": "الخضروات، كلمات متنامية",
     "constructLevelFlowers": "الزهور، كلمات متقنة",
-    "filterAndSearch": "تصفية وبحث"
+    "filterAndSearch": "تصفية وبحث",
+    "participantsOfTotal": "{filled} من أصل {total} لاعبين",
+    "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
+    "availableLabel": "لم تبدأ بعد"
 }

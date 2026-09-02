@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-02 12:25:23.981754",
+    "@@last_modified": "2026-09-02 13:00:12.610338",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Aspittendu chì l'altri si uniscenu",
     "joinableLabel": "Unibile",
     "inProgressLabel": "Cumpiitu prima",
-    "availableLabel": "Creà attività",
     "rateActivityTitle": "Cumu era sta attività?",
     "rateActivityCommentHint": "Aghjunghje un cummentu (facultativu)",
     "rateActivityCommentRejected": "U vostru cummentu ùn hà pussutu esse publicatu. Pruvate à riformulallu, o inviate a vostra valutazione senza cummentu.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Semi, parolle nove",
     "constructLevelGreens": "Verdura, parolle chì crescenu",
     "constructLevelFlowers": "Fiori, parolle ammaestrate",
-    "filterAndSearch": "Filtrà è circà"
+    "filterAndSearch": "Filtrà è circà",
+    "participantsOfTotal": "{filled} di {total} ghjucadori",
+    "mapAttributionLabel": "Cuntributori OpenStreetMap, copyright è licenza",
+    "availableLabel": "Micca principiatu ancu"
 }

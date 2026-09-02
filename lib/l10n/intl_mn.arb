@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-02 12:25:29.069307",
+    "@@last_modified": "2026-09-02 13:00:18.461719",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Бусдыг нэгдэхийг хүлээж байна",
     "joinableLabel": "Нэгдэх боломжтой",
     "inProgressLabel": "Өмнө нь дууссан",
-    "availableLabel": "Үйлдэл үүсгэх",
     "rateActivityTitle": "Энэ дасгал ямар байсан бэ?",
     "rateActivityCommentHint": "Сэтгэгдэл нэмэх (заавал биш)",
     "rateActivityCommentRejected": "Таны сэтгэгдлийг нийтлэх боломжгүй байсан. Үгээ өөрчлөн бичих эсвэл сэтгэгдэлгүйгээр үнэлгээгээ илгээнэ үү.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Үр, шинэ үгс",
     "constructLevelGreens": "Ногоон, ургаж буй үгс",
     "constructLevelFlowers": "Цэцэг, эзэмшсэн үгс",
-    "filterAndSearch": "Шүүж хайх"
+    "filterAndSearch": "Шүүж хайх",
+    "participantsOfTotal": "{total} тоглогчоос {filled} нь",
+    "mapAttributionLabel": "OpenStreetMap-ийн хувь нэмэр оруулагчид, зохиогчийн эрх, лиценз",
+    "availableLabel": "Эхлээгүй байна"
 }

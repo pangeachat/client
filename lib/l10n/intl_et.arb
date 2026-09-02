@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-02 12:25:24.835299",
+    "@@last_modified": "2026-09-02 13:00:13.366056",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9626,7 +9626,6 @@
     "ongoingPendingLabel": "Ootan teiste liitumist",
     "joinableLabel": "Liitutav",
     "inProgressLabel": "Varem lõpetatud",
-    "availableLabel": "Loo tegevus",
     "rateActivityTitle": "Kuidas see tegevus oli?",
     "rateActivityCommentHint": "Lisa kommentaar (valikuline)",
     "rateActivityCommentRejected": "Sinu kommentaari ei saanud postitada. Proovi seda ümber sõnastada või esita oma hinnang ilma kommentaarita.",
@@ -9846,5 +9845,8 @@
     "constructLevelSeeds": "Seemned, uued sõnad",
     "constructLevelGreens": "Rohelised, kasvavad sõnad",
     "constructLevelFlowers": "Lilled, omandatud sõnad",
-    "filterAndSearch": "Filtreeri ja otsi"
+    "filterAndSearch": "Filtreeri ja otsi",
+    "participantsOfTotal": "{filled}/{total} mängijat",
+    "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
+    "availableLabel": "Pole veel alanud"
 }

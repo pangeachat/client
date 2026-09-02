@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-02 12:25:25.434536",
+    "@@last_modified": "2026-09-02 13:00:13.357233",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9629,7 +9629,6 @@
     "ongoingPendingLabel": "Besteak batzeko zain",
     "joinableLabel": "Batu daiteke",
     "inProgressLabel": "Aurretik osatua",
-    "availableLabel": "Sortu jarduera",
     "rateActivityTitle": "Zer iruditu zaizu jarduera hau?",
     "rateActivityCommentHint": "Gehitu iruzkin bat (aukerakoa)",
     "rateActivityCommentRejected": "Ezin izan da zure iruzkina argitaratu. Saiatu berriro idazten, edo bidali zure balorazioa iruzkinik gabe.",
@@ -9849,5 +9848,8 @@
     "constructLevelSeeds": "Haziak, hitz berriak",
     "constructLevelGreens": "Landareak, hazten ari diren hitzak",
     "constructLevelFlowers": "Loreak, menderatutako hitzak",
-    "filterAndSearch": "Iragazi eta bilatu"
+    "filterAndSearch": "Iragazi eta bilatu",
+    "participantsOfTotal": "{total} jokalarietatik {filled}",
+    "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
+    "availableLabel": "Oraindik ez da hasi"
 }

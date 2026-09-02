@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-02 12:25:29.991870",
+    "@@last_modified": "2026-09-02 13:00:17.719427",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "অথেনবশিং য়াওনবা ঙাইরি",
     "joinableLabel": "য়াওবা য়াবা",
     "inProgressLabel": "মমাংদা লোইশিনখ্রে",
-    "availableLabel": "থবক শেম্মু",
     "rateActivityTitle": "ꯁꯤ ꯑꯦꯛꯇꯤꯕꯤꯇꯤ ꯑꯁꯤ ꯀꯔꯝꯅ ꯂꯩꯕꯒꯦ?",
     "rateActivityCommentHint": "ꯑꯦꯗꯤꯁꯅꯦꯜ ꯀꯃꯦꯟꯇ ꯑꯃ ꯍꯥꯞꯄꯤꯌꯨ (ꯑꯣꯞꯁꯅꯦꯜ)",
     "rateActivityCommentRejected": "ꯅꯍꯥꯛꯀꯤ ꯀꯃꯦꯟꯇ ꯑꯗꯨ ꯄꯣꯁ꯭ꯠ ꯇꯧꯕ ꯉꯃꯈꯤꯗꯦ꯫ ꯑꯃꯨꯛ ꯍꯟꯅ ꯍꯥꯏꯗꯣꯛꯄ ꯍꯣꯠꯅꯧ, ꯅꯠꯠꯔꯒ ꯀꯃꯦꯟꯇ ꯂꯩꯇꯅ ꯅꯍꯥꯛꯀꯤ ꯔꯦꯇꯤꯡ ꯑꯗꯨ ꯁꯕꯃꯤꯠ ꯇꯧ꯫",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Seeds, অহোংবা ৱাহৈশিং",
     "constructLevelGreens": "Greens, চাউরক্লিবা ৱাহৈশিং",
     "constructLevelFlowers": "Flowers, থোইদোকপা ৱাহৈশিং",
-    "filterAndSearch": "Filter অমসুং search"
+    "filterAndSearch": "Filter অমসুং search",
+    "participantsOfTotal": "{total} players sing {filled} na yaore",
+    "mapAttributionLabel": "OpenStreetMap contributors, copyright amadi license",
+    "availableLabel": "Hanna houkhidri"
 }

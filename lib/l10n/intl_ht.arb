@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-02 12:25:26.261320",
+    "@@last_modified": "2026-09-02 13:00:14.596840",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Ap tann lòt moun rantre",
     "joinableLabel": "Ou ka rantre",
     "inProgressLabel": "Deja fini",
-    "availableLabel": "Kreye aktivite",
     "rateActivityTitle": "Kijan aktivite sa a te ye?",
     "rateActivityCommentHint": "Ajoute yon kòmantè (opsyonèl)",
     "rateActivityCommentRejected": "Kòmantè ou a pa t' kapab poste. Eseye reformule li, oswa soumèt evalyasyon ou san yon kòmantè.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Gren, nouvo mo",
     "constructLevelGreens": "Vèt, mo k ap grandi",
     "constructLevelFlowers": "Flè, mo ou metrize",
-    "filterAndSearch": "Filtre epi chèche"
+    "filterAndSearch": "Filtre epi chèche",
+    "participantsOfTotal": "{filled} sou {total} jwè",
+    "mapAttributionLabel": "Kontribitè OpenStreetMap, copyright ak lisans",
+    "availableLabel": "Pokò kòmanse"
 }

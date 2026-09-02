@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-02 12:25:27.246731",
+    "@@last_modified": "2026-09-02 13:00:15.894534",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Ngenteni liyane gabung",
     "joinableLabel": "Bisa digabung",
     "inProgressLabel": "Wis rampung sadurunge",
-    "availableLabel": "Gawe aktivitas",
     "rateActivityTitle": "Piye kegiyatan iki?",
     "rateActivityCommentHint": "Tambah komentar (opsional)",
     "rateActivityCommentRejected": "Komentarmu ora bisa dikirim. Coba ganti tembung, utawa kirim ratingmu tanpa komentar.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Winih, tembung anyar",
     "constructLevelGreens": "Godhong, tembung sing tuwuh",
     "constructLevelFlowers": "Kembang, tembung sing wis dikuasai",
-    "filterAndSearch": "Saring lan goleki"
+    "filterAndSearch": "Saring lan goleki",
+    "participantsOfTotal": "{filled} saka {total} pemain",
+    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta lan lisensi",
+    "availableLabel": "Durung diwiwiti"
 }

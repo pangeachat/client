@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-02 12:25:31.530292",
+    "@@last_modified": "2026-09-02 13:00:20.281430",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Faʻatali mo isi e auai",
     "joinableLabel": "Mafai ona auai",
     "inProgressLabel": "Ua maeʻa muamua",
-    "availableLabel": "Fausia se gaioiga",
     "rateActivityTitle": "Na fa'afefea lenei gaioiga?",
     "rateActivityCommentHint": "Fa'aopoopo se fa'amatalaga (filifiliga)",
     "rateActivityCommentRejected": "E le'i mafai ona lafo lau fa'amatalaga. Taumafai e toe fa'aleleia, pe lafo lau fua faatatau e aunoa ma se fa'amatalaga.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Fatulaau, upu fou",
     "constructLevelGreens": "Laʻau, upu o loʻo tupu",
     "constructLevelFlowers": "Fugalaau, upu ua atamai",
-    "filterAndSearch": "Faamama ma suʻe"
+    "filterAndSearch": "Faamama ma suʻe",
+    "participantsOfTotal": "{filled} o le {total} tagata taaalo",
+    "mapAttributionLabel": "OpenStreetMap tagata foaʻi, puletaofia ma laisene",
+    "availableLabel": "E leʻi amataina"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-02 12:25:28.146662",
+    "@@last_modified": "2026-09-02 13:00:16.594080",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Waarden op anerer fir matzemaachen",
     "joinableLabel": "Kann matgemaach ginn",
     "inProgressLabel": "Virdru fäerdeg",
-    "availableLabel": "Aktivitéit erstellen",
     "rateActivityTitle": "Wéi war dës Aktivitéit?",
     "rateActivityCommentHint": "Kommentar derbäisetzen (fakultativ)",
     "rateActivityCommentRejected": "Äre Kommentar konnt net gepost ginn. Probéiert en ëmzeschreiwen, oder schéckt Är Bewäertung ouni Kommentar of.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Somen, nei Wierder",
     "constructLevelGreens": "Gréngs, wuessend Wierder",
     "constructLevelFlowers": "Blummen, beherrschte Wierder",
-    "filterAndSearch": "Filteren a sichen"
+    "filterAndSearch": "Filteren a sichen",
+    "participantsOfTotal": "{filled} vun {total} Spiller",
+    "mapAttributionLabel": "OpenStreetMap Mataarbechter, Copyright a Lizenz",
+    "availableLabel": "Nach net ugefaangen"
 }

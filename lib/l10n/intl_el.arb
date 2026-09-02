@@ -3401,7 +3401,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-09-02 12:25:24.597155",
+    "@@last_modified": "2026-09-02 13:00:13.116218",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10504,7 +10504,6 @@
     "ongoingPendingLabel": "Αναμονή για να συνδεθούν οι άλλοι",
     "joinableLabel": "Διαθέσιμο για συμμετοχή",
     "inProgressLabel": "Ολοκληρώθηκε προηγουμένως",
-    "availableLabel": "Δημιουργία δραστηριότητας",
     "rateActivityTitle": "Πώς ήταν αυτή η δραστηριότητα;",
     "rateActivityCommentHint": "Προσθέστε ένα σχόλιο (προαιρετικό)",
     "rateActivityCommentRejected": "Το σχόλιό σας δεν μπόρεσε να δημοσιευτεί. Δοκιμάστε να το αναδιατυπώσετε ή υποβάλετε την αξιολόγησή σας χωρίς σχόλιο.",
@@ -10724,5 +10723,8 @@
     "constructLevelSeeds": "Σπόροι, νέες λέξεις",
     "constructLevelGreens": "Πράσινα, αναπτυσσόμενες λέξεις",
     "constructLevelFlowers": "Λουλούδια, λέξεις που έχετε κατακτήσει",
-    "filterAndSearch": "Φιλτράρισμα και αναζήτηση"
+    "filterAndSearch": "Φιλτράρισμα και αναζήτηση",
+    "participantsOfTotal": "{filled} από {total} παίκτες",
+    "mapAttributionLabel": "Συνεισφέροντες στο OpenStreetMap, πνευματικά δικαιώματα και άδεια",
+    "availableLabel": "Δεν έχει ξεκινήσει ακόμα"
 }

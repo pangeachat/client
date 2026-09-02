@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-09-02 12:25:30.219902",
+    "@@last_modified": "2026-09-02 13:00:18.110100",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "အခြားသူများ ပါဝင်ရန် စောင့်ဆိုင်းနေသည်",
     "joinableLabel": "ပါဝင်နိုင်သည်",
     "inProgressLabel": "ယခင်က ပြီးစီးခဲ့သည်",
-    "availableLabel": "လုပ်ဆောင်ချက် ဖန်တီးပါ",
     "rateActivityTitle": "ဒီလှုပ်ရှားမှု ဘယ်လိုလဲ။",
     "rateActivityCommentHint": "မှတ်ချက်တစ်ခု ထည့်ပါ (ရွေးချယ်နိုင်သည်)",
     "rateActivityCommentRejected": "သင့်မှတ်ချက်ကို ပို့စ်တင်၍မရပါ။ စကားလုံးများကို ပြန်လည်ပြင်ဆင်ကြည့်ပါ၊ သို့မဟုတ် မှတ်ချက်မပါဘဲ သင့်အဆင့်သတ်မှတ်ချက်ကို တင်သွင်းပါ။",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "မျိုးစေ့များ၊ စကားလုံးအသစ်များ",
     "constructLevelGreens": "အပင်ငယ်များ၊ ကြီးထွားလာသော စကားလုံးများ",
     "constructLevelFlowers": "ပန်းများ၊ ကျွမ်းကျင်သော စကားလုံးများ",
-    "filterAndSearch": "စစ်ထုတ်ပြီး ရှာဖွေပါ"
+    "filterAndSearch": "စစ်ထုတ်ပြီး ရှာဖွေပါ",
+    "participantsOfTotal": "{total} ကစားသမားများထဲမှ {filled}",
+    "mapAttributionLabel": "OpenStreetMap ပံ့ပိုးသူများ၊ မူပိုင်ခွင့်နှင့် လိုင်စင်",
+    "availableLabel": "မစတင်သေးပါ"
 }

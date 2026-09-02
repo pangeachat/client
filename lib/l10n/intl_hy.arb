@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-02 12:25:26.834368",
+    "@@last_modified": "2026-09-02 13:00:14.933376",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Սպասում ենք մյուսների միանալուն",
     "joinableLabel": "Միանալու հնարավորություն կա",
     "inProgressLabel": "Նախկինում ավարտված",
-    "availableLabel": "Ստեղծել գործունեություն",
     "rateActivityTitle": "Ինչպե՞ս անցավ այս ակտիվությունը։",
     "rateActivityCommentHint": "Ավելացնել մեկնաբանություն (ըստ ցանկության)",
     "rateActivityCommentRejected": "Ձեր մեկնաբանությունը չհաջողվեց հրապարակել։ Փորձեք վերաձևակերպել այն կամ ուղարկեք Ձեր գնահատականն առանց մեկնաբանության։",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Սերմեր, նոր բառեր",
     "constructLevelGreens": "Կանաչիներ, աճող բառեր",
     "constructLevelFlowers": "Ծաղիկներ, յուրացված բառեր",
-    "filterAndSearch": "Զտել և որոնել"
+    "filterAndSearch": "Զտել և որոնել",
+    "participantsOfTotal": "{filled} / {total} խաղացող",
+    "mapAttributionLabel": "OpenStreetMap-ի մասնակիցներ, հեղինակային իրավունք և լիցենզիա",
+    "availableLabel": "Դեռ չի սկսվել"
 }

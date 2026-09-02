@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-02 12:25:28.776097",
+    "@@last_modified": "2026-09-02 13:00:17.510312",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "E tatari ana kia uru mai ētahi atu",
     "joinableLabel": "Ka taea te uru atu",
     "inProgressLabel": "Kua oti i mua",
-    "availableLabel": "Waihanga mahi",
     "rateActivityTitle": "Pēhea tēnei mahi?",
     "rateActivityCommentHint": "Tāpirihia he kōrero (kōwhiringa)",
     "rateActivityCommentRejected": "Kāore i taea te tuku i tō kōrero. Whakamātauria te whakahou, te tuku rānei i tō whakatauranga me te kore he kōrero.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Kākano, kupu hou",
     "constructLevelGreens": "Kākāriki, kupu e tupu ana",
     "constructLevelFlowers": "Puawai, kupu kua rangatira",
-    "filterAndSearch": "Tātari me te rapu"
+    "filterAndSearch": "Tātari me te rapu",
+    "participantsOfTotal": "{filled} o te {total} ngā kaitākaro",
+    "mapAttributionLabel": "Ngā kaituku OpenStreetMap, te mana pupuri me te raihana",
+    "availableLabel": "Kāore anō kia tīmata"
 }

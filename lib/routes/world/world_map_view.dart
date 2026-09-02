@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'dart:ui' as ui show SemanticsHitTestBehavior;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -1184,6 +1185,43 @@ class _WorldMapViewState extends State<WorldMapView> {
               cards: [...render.largeCards, ...render.nonLargeCards],
               stateOf: render.stateOf,
               onTap: widget.controller.openActivity,
+              // Seat summary for live pins (#8753) — the same derivation the
+              // drawn seat circles use, so announced and drawn never drift.
+              liveDetailOf: (card) {
+                final state = render.stateOf(card.activityId);
+                if (state != ActivityPinState.joinable &&
+                    state != ActivityPinState.ongoingPending) {
+                  return null;
+                }
+                final (:participants, :openSlots) = _sessionParticipants(
+                  card.activityId,
+                  state,
+                );
+                final total = participants.length + openSlots;
+                if (total == 0) return null;
+                return L10n.of(
+                  context,
+                ).participantsOfTotal(participants.length, total);
+              },
+            ),
+          ),
+          // Screen-reader mirror of the map attribution (#8753): the visual
+          // control draws inside the ExcludeSemantics'd map subtree, so the
+          // OSM credit-plus-link (#8603) was unreachable by AT. Same trick as
+          // the pins — a semantics-only node at its position, pointer-
+          // transparent, whose semantic tap opens the copyright page.
+          Positioned(
+            left: PlatformInfos.isMobile ? 12 : 8,
+            bottom: PlatformInfos.isMobile ? 12 : 8,
+            width: 32,
+            height: 32,
+            child: Semantics(
+              link: true,
+              label: L10n.of(context).mapAttributionLabel,
+              hitTestBehavior: ui.SemanticsHitTestBehavior.transparent,
+              onTap: () =>
+                  launchUrlString('https://www.openstreetmap.org/copyright'),
+              child: const SizedBox.expand(),
             ),
           ),
           // Column mode only: on a narrow screen the search rides the floating

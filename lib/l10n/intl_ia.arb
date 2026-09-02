@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-02 12:25:26.541179",
+    "@@last_modified": "2026-09-02 13:00:15.185798",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10565,7 +10565,6 @@
     "ongoingPendingLabel": "Attendente que alteres se junge",
     "joinableLabel": "Adheribile",
     "inProgressLabel": "Previemente completate",
-    "availableLabel": "Crear activitate",
     "rateActivityTitle": "Como esse activitate esseva?",
     "rateActivityCommentHint": "Adde un commento (optional)",
     "rateActivityCommentRejected": "Vostre commento non poteva esser publicate. Essaya reformular lo, o submitte tu evalutation sin un commento.",
@@ -10785,5 +10784,8 @@
     "constructLevelSeeds": "Semines, nove parolas",
     "constructLevelGreens": "Verdures, parolas crescente",
     "constructLevelFlowers": "Flores, parolas maestrate",
-    "filterAndSearch": "Filtrar e cercar"
+    "filterAndSearch": "Filtrar e cercar",
+    "participantsOfTotal": "{filled} de {total} jocatores",
+    "mapAttributionLabel": "Contribuentes de OpenStreetMap, derectos de autor e licentia",
+    "availableLabel": "Non ancora comenciate"
 }

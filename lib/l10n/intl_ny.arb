@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-02 12:25:30.146629",
+    "@@last_modified": "2026-09-02 13:00:18.638035",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Kudikirira ena kuti alowe",
     "joinableLabel": "Olowa",
     "inProgressLabel": "Zamalizidwa kale",
-    "availableLabel": "Pangani zochitika",
     "rateActivityTitle": "Zimene munachita zinali bwanji?",
     "rateActivityCommentHint": "Onjezani ndemanga (ngati mukufuna)",
     "rateActivityCommentRejected": "Ndemanga yanu sinathe kutumizidwa. Yesani kusintha mawu, kapena tumizani ndemanga yanu popanda ndemanga.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Mbeu, mawu atsopano",
     "constructLevelGreens": "Zobiriwira, mawu akukula",
     "constructLevelFlowers": "Maluwa, mawu odziwika bwino",
-    "filterAndSearch": "Sefa ndi kusaka"
+    "filterAndSearch": "Sefa ndi kusaka",
+    "participantsOfTotal": "{filled} mwa osewera {total}",
+    "mapAttributionLabel": "Othandizira a OpenStreetMap, umwini ndi chilolezo",
+    "availableLabel": "Sanayambebe"
 }

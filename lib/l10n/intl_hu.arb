@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-02 12:25:26.404439",
+    "@@last_modified": "2026-09-02 13:00:15.081729",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9732,7 +9732,6 @@
     "ongoingPendingLabel": "Várakozás a többiekre",
     "joinableLabel": "Csatlakozható",
     "inProgressLabel": "Korábban befejezett",
-    "availableLabel": "Tevékenység létrehozása",
     "rateActivityTitle": "Milyen volt ez a tevékenység?",
     "rateActivityCommentHint": "Megjegyzés hozzáadása (opcionális)",
     "rateActivityCommentRejected": "A megjegyzésedet nem sikerült közzétenni. Próbáld meg átfogalmazni, vagy küldd be az értékelésedet megjegyzés nélkül.",
@@ -9952,5 +9951,8 @@
     "constructLevelSeeds": "Magok, új szavak",
     "constructLevelGreens": "Hajtások, fejlődő szavak",
     "constructLevelFlowers": "Virágok, elsajátított szavak",
-    "filterAndSearch": "Szűrés és keresés"
+    "filterAndSearch": "Szűrés és keresés",
+    "participantsOfTotal": "{filled}/{total} játékos",
+    "mapAttributionLabel": "OpenStreetMap közreműködők, szerzői jogok és licenc",
+    "availableLabel": "Még nem kezdődött el"
 }

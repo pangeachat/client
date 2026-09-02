@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-02 12:25:32.178510",
+    "@@last_modified": "2026-09-02 13:00:20.793916",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Ho letetsoe hore ba bang ba kene",
     "joinableLabel": "E ka kopaneloa",
     "inProgressLabel": "E phethiloe pejana",
-    "availableLabel": "Theha ts'ebetso",
     "rateActivityTitle": "Ketsahalo ee e bile jwang?",
     "rateActivityCommentHint": "Kenya maikutlo (ka boikhethelo)",
     "rateActivityCommentRejected": "Maikutlo a hao ha a kgone ho romelwa. Leka ho a ngola botjha, kapa o romelle tekanyetso ya hao ntle le maikutlo.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Peo, mantsoe a macha",
     "constructLevelGreens": "Mahlaka, mantsoe a ntseng a hola",
     "constructLevelFlowers": "Lipalesa, mantsoe a tsejoang hantle",
-    "filterAndSearch": "Hlotha le ho batla"
+    "filterAndSearch": "Hlotha le ho batla",
+    "participantsOfTotal": "Libapali tse {filled} ho tse {total}",
+    "mapAttributionLabel": "Bafani ba OpenStreetMap, litokelo tsa ho kopitsa le laesense",
+    "availableLabel": "Ha e so qale"
 }

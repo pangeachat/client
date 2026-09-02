@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-02 12:25:26.209885",
+    "@@last_modified": "2026-09-02 13:00:15.954675",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9640,7 +9640,6 @@
     "ongoingPendingLabel": "Ag fanacht le daoine eile a bheith páirteach",
     "joinableLabel": "Inscortha",
     "inProgressLabel": "Críochnaithe roimhe seo",
-    "availableLabel": "Cruthaigh gníomhaíocht",
     "rateActivityTitle": "Cén chaoi a raibh an ghníomhaíocht seo?",
     "rateActivityCommentHint": "Cuir trácht leis (roghnach)",
     "rateActivityCommentRejected": "Níorbh fhéidir do thrácht a phostáil. Bain triail as é a athfhocail, nó cuir isteach do rátáil gan trácht.",
@@ -9860,5 +9859,8 @@
     "constructLevelSeeds": "Síolta, focail nua",
     "constructLevelGreens": "Glasaigh, focail ag fás",
     "constructLevelFlowers": "Bláthanna, focail máistrithe",
-    "filterAndSearch": "Scag agus cuardaigh"
+    "filterAndSearch": "Scag agus cuardaigh",
+    "participantsOfTotal": "{filled} de {total} imreoirí",
+    "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
+    "availableLabel": "Níl sé tosaithe fós"
 }

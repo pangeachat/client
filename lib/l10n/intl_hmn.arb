@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-02 12:25:26.472814",
+    "@@last_modified": "2026-09-02 13:00:14.951005",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Tos lwm tus tuaj koom",
     "joinableLabel": "Koom tau",
     "inProgressLabel": "Ua tiav lawm",
-    "availableLabel": "Tsim kev ua si",
     "rateActivityTitle": "Kev ua noj ua haus no zoo li cas?",
     "rateActivityCommentHint": "Ntxiv lus (yeem)",
     "rateActivityCommentRejected": "Koj cov lus tsis tuaj yeem tshaj tawm. Sim hloov cov lus, lossis xa koj qhov kev ntsuas yam tsis muaj lus.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Noob, cov lus tshiab",
     "constructLevelGreens": "Ntsuab, cov lus loj hlob",
     "constructLevelFlowers": "Paj, cov lus kawm tiav",
-    "filterAndSearch": "Lim thiab tshawb"
+    "filterAndSearch": "Lim thiab tshawb",
+    "participantsOfTotal": "{filled} ntawm {total} tus neeg ua si",
+    "mapAttributionLabel": "OpenStreetMap cov neeg koom tes, txoj cai luam tawm thiab daim ntawv tso cai",
+    "availableLabel": "Tsis tau pib"
 }

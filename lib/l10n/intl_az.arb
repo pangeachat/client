@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-02 12:25:23.642625",
+    "@@last_modified": "2026-09-02 13:00:11.893923",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Başqalarının qoşulması gözlənilir",
     "joinableLabel": "Qoşula bilər",
     "inProgressLabel": "Əvvəllər tamamlanıb",
-    "availableLabel": "Fəaliyyət yarat",
     "rateActivityTitle": "Bu fəaliyyət necə idi?",
     "rateActivityCommentHint": "Şərh əlavə edin (könüllü)",
     "rateActivityCommentRejected": "Şərhiniz göndərilə bilmədi. Yenidən yazmağa çalışın və ya şərhi olmadan qiymətləndirmənizi göndərin.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Toxumlar, yeni sözlər",
     "constructLevelGreens": "Yaşıllıqlar, böyüyən sözlər",
     "constructLevelFlowers": "Güllər, mənimsənilmiş sözlər",
-    "filterAndSearch": "Filtrlə və axtar"
+    "filterAndSearch": "Filtrlə və axtar",
+    "participantsOfTotal": "{total} oyunçudan {filled} nəfəri",
+    "mapAttributionLabel": "OpenStreetMap iştirakçıları, müəllif hüquqları və lisenziya",
+    "availableLabel": "Hələ başlamayıb"
 }

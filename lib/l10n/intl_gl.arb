@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-02 12:25:25.499356",
+    "@@last_modified": "2026-09-02 13:00:14.037561",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9629,7 +9629,6 @@
     "ongoingPendingLabel": "Agardando a que se unan outros",
     "joinableLabel": "Dispoñible para unirse",
     "inProgressLabel": "Completado previamente",
-    "availableLabel": "Crear actividade",
     "rateActivityTitle": "Que che pareceu esta actividade?",
     "rateActivityCommentHint": "Engadir un comentario (opcional)",
     "rateActivityCommentRejected": "Non se puido publicar o teu comentario. Tenta reformulalo ou envía a túa valoración sen un comentario.",
@@ -9849,5 +9848,8 @@
     "constructLevelSeeds": "Sementes, palabras novas",
     "constructLevelGreens": "Verdes, palabras en crecemento",
     "constructLevelFlowers": "Flores, palabras dominadas",
-    "filterAndSearch": "Filtrar e buscar"
+    "filterAndSearch": "Filtrar e buscar",
+    "participantsOfTotal": "{filled} de {total} xogadores",
+    "mapAttributionLabel": "Colaboradores de OpenStreetMap, dereitos de autor e licenza",
+    "availableLabel": "Aínda sen comezar"
 }

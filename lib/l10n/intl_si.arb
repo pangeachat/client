@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-02 12:25:31.283361",
+    "@@last_modified": "2026-09-02 13:00:19.769147",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "අනෙක් අය සම්බන්ධ වන තෙක් බලා සිටීම",
     "joinableLabel": "එක්විය හැක",
     "inProgressLabel": "මීට පෙර සම්පූර්ණ කරන ලදී",
-    "availableLabel": "ක්‍රියාකාරකම් සාදන්න",
     "rateActivityTitle": "මෙම ක්‍රියාකාරකම කෙබඳුද?",
     "rateActivityCommentHint": "අදහසක් එක් කරන්න (විකල්ප)",
     "rateActivityCommentRejected": "ඔබගේ අදහස පළ කිරීමට නොහැකි විය. එය නැවත සකස් කිරීමට උත්සාහ කරන්න, නැතහොත් අදහසක් නොමැතිව ඔබගේ ශ්‍රේණිගත කිරීම ඉදිරිපත් කරන්න.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "බීජ, නව වචන",
     "constructLevelGreens": "කොළ, වැඩෙන වචන",
     "constructLevelFlowers": "මල්, ප්‍රගුණ කළ වචන",
-    "filterAndSearch": "පෙරහන් කර සොයන්න"
+    "filterAndSearch": "පෙරහන් කර සොයන්න",
+    "participantsOfTotal": "{total} ක්‍රීඩකයන්ගෙන් {filled}ක්",
+    "mapAttributionLabel": "OpenStreetMap දායකයින්, ප්‍රකාශන හිමිකම සහ බලපත්‍රය",
+    "availableLabel": "තවම ආරම්භ කර නැත"
 }

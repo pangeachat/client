@@ -1325,7 +1325,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-02 12:25:32.328623",
+    "@@last_modified": "2026-09-02 13:00:21.550009",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10579,7 +10579,6 @@
     "ongoingPendingLabel": "ఇతరులు చేరడం కోసం వేచి ఉంది",
     "joinableLabel": "చేరవచ్చు",
     "inProgressLabel": "గతంలో పూర్తయింది",
-    "availableLabel": "కార్యకలాపాన్ని సృష్టించండి",
     "rateActivityTitle": "ఈ కార్యాచరణ ఎలా ఉంది?",
     "rateActivityCommentHint": "వ్యాఖ్యను జోడించండి (ఐచ్ఛికం)",
     "rateActivityCommentRejected": "మీ వ్యాఖ్య పోస్ట్ చేయబడలేదు. దయచేసి దాన్ని తిరిగి వ్రాయడానికి ప్రయత్నించండి లేదా వ్యాఖ్య లేకుండా మీ రేటింగ్‌ను సమర్పించండి.",
@@ -10799,5 +10798,8 @@
     "constructLevelSeeds": "సీడ్స్, కొత్త పదాలు",
     "constructLevelGreens": "గ్రీన్స్, పెరుగుతున్న పదాలు",
     "constructLevelFlowers": "ఫ్లవర్స్, నేర్చుకున్న పదాలు",
-    "filterAndSearch": "ఫిల్టర్ చేసి వెతకండి"
+    "filterAndSearch": "ఫిల్టర్ చేసి వెతకండి",
+    "participantsOfTotal": "{total} ఆటగాళ్ళలో {filled} మంది",
+    "mapAttributionLabel": "ఓపెన్‌స్ట్రీట్‌మ్యాప్ కంట్రిబ్యూటర్లు, కాపీరైట్ మరియు లైసెన్స్",
+    "availableLabel": "ఇంకా ప్రారంభం కాలేదు"
 }

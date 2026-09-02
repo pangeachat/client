@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 12:25:27.736097",
+    "@@last_modified": "2026-09-02 13:00:30.946909",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9822,7 +9822,6 @@
     "ongoingPendingLabel": "다른 사용자의 참여를 기다리는 중",
     "joinableLabel": "참여 가능",
     "inProgressLabel": "이전에 완료됨",
-    "availableLabel": "활동 만들기",
     "rateActivityTitle": "이 활동은 어떠셨나요?",
     "rateActivityCommentHint": "댓글 추가 (선택 사항)",
     "rateActivityCommentRejected": "댓글을 게시할 수 없습니다. 다시 작성하거나 댓글 없이 평가를 제출해 주세요.",
@@ -10042,5 +10041,8 @@
     "constructLevelSeeds": "씨앗, 새로운 단어",
     "constructLevelGreens": "새싹, 성장하는 단어",
     "constructLevelFlowers": "꽃, 마스터한 단어",
-    "filterAndSearch": "필터 및 검색"
+    "filterAndSearch": "필터 및 검색",
+    "participantsOfTotal": "{total}명 중 {filled}명",
+    "mapAttributionLabel": "OpenStreetMap 기여자, 저작권 및 라이선스",
+    "availableLabel": "아직 시작 안 함"
 }

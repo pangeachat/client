@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-02 12:25:29.497786",
+    "@@last_modified": "2026-09-02 13:00:18.636893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "अरू सामेल हुनको लागि पर्खँदै",
     "joinableLabel": "सामेल हुन योग्य",
     "inProgressLabel": "पहिले नै पूरा भयो",
-    "availableLabel": "गतिविधि सिर्जना गर्नुहोस्",
     "rateActivityTitle": "यो गतिविधि कस्तो लाग्यो?",
     "rateActivityCommentHint": "टिप्पणी थप्नुहोस् (ऐच्छिक)",
     "rateActivityCommentRejected": "तपाईंको टिप्पणी पोस्ट गर्न सकिएन। यसलाई पुन: शब्दबद्ध गर्ने प्रयास गर्नुहोस्, वा टिप्पणी बिना आफ्नो मूल्याङ्कन पेश गर्नुहोस्।",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "बीउ, नयाँ शब्दहरू",
     "constructLevelGreens": "हरियाली, बढ्दो शब्दहरू",
     "constructLevelFlowers": "फूलहरू, निपुण शब्दहरू",
-    "filterAndSearch": "फिल्टर गर्नुहोस् र खोज्नुहोस्"
+    "filterAndSearch": "फिल्टर गर्नुहोस् र खोज्नुहोस्",
+    "participantsOfTotal": "{total} खेलाडीहरू मध्ये {filled}",
+    "mapAttributionLabel": "OpenStreetMap योगदानकर्ताहरू, प्रतिलिपि अधिकार र इजाजतपत्र",
+    "availableLabel": "अहिलेसम्म सुरु भएको छैन"
 }

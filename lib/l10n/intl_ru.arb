@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-02 12:25:30.834151",
+    "@@last_modified": "2026-09-02 13:00:19.373333",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10601,7 +10601,6 @@
     "ongoingPendingLabel": "Ожидание присоединения других",
     "joinableLabel": "Можно присоединиться",
     "inProgressLabel": "Ранее завершено",
-    "availableLabel": "Создать активность",
     "rateActivityTitle": "Как вам это занятие?",
     "rateActivityCommentHint": "Добавить комментарий (необязательно)",
     "rateActivityCommentRejected": "Ваш комментарий не удалось опубликовать. Попробуйте перефразировать его или отправьте оценку без комментария.",
@@ -10821,5 +10820,8 @@
     "constructLevelSeeds": "Семена, новые слова",
     "constructLevelGreens": "Всходы, растущие слова",
     "constructLevelFlowers": "Цветы, освоенные слова",
-    "filterAndSearch": "Фильтр и поиск"
+    "filterAndSearch": "Фильтр и поиск",
+    "participantsOfTotal": "{filled} из {total} игроков",
+    "mapAttributionLabel": "Участники OpenStreetMap, авторские права и лицензия",
+    "availableLabel": "Еще не началось"
 }

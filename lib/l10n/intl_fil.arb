@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-02 12:25:25.086166",
+    "@@last_modified": "2026-09-02 13:00:13.349251",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10489,7 +10489,6 @@
     "ongoingPendingLabel": "Naghihintay sa iba na sumali",
     "joinableLabel": "Pwedeng salihan",
     "inProgressLabel": "Nakumpleto na",
-    "availableLabel": "Gumawa ng aktibidad",
     "rateActivityTitle": "Kumusta ang aktibidad na ito?",
     "rateActivityCommentHint": "Magdagdag ng komento (opsyonal)",
     "rateActivityCommentRejected": "Hindi maipaskil ang iyong komento. Subukang baguhin ang pagkakasalita nito, o isumite ang iyong rating nang walang komento.",
@@ -10709,5 +10708,8 @@
     "constructLevelSeeds": "Buto, mga bagong salita",
     "constructLevelGreens": "Mga Gulay, lumalagong salita",
     "constructLevelFlowers": "Mga Bulaklak, mga salitang bihasa",
-    "filterAndSearch": "I-filter at hanapin"
+    "filterAndSearch": "I-filter at hanapin",
+    "participantsOfTotal": "{filled} sa {total} na manlalaro",
+    "mapAttributionLabel": "Mga contributor ng OpenStreetMap, copyright at lisensya",
+    "availableLabel": "Hindi pa nagsisimula"
 }

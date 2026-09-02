@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-02 12:25:24.626878",
+    "@@last_modified": "2026-09-02 13:00:13.275556",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7848,7 +7848,6 @@
     "ongoingPendingLabel": "Esperando que se unan otros",
     "joinableLabel": "Unirse",
     "inProgressLabel": "Completado anteriormente",
-    "availableLabel": "Crear actividad",
     "rateActivityTitle": "¿Qué te pareció esta actividad?",
     "rateActivityCommentHint": "Añade un comentario (opcional)",
     "rateActivityCommentRejected": "No se pudo publicar tu comentario. Intenta reformularlo o envía tu calificación sin un comentario.",
@@ -8068,5 +8067,8 @@
     "constructLevelSeeds": "Semillas, palabras nuevas",
     "constructLevelGreens": "Brotes, palabras en crecimiento",
     "constructLevelFlowers": "Flores, palabras dominadas",
-    "filterAndSearch": "Filtrar y buscar"
+    "filterAndSearch": "Filtrar y buscar",
+    "participantsOfTotal": "{filled} de {total} jugadores",
+    "mapAttributionLabel": "Colaboradores de OpenStreetMap, derechos de autor y licencia",
+    "availableLabel": "Aún no ha comenzado"
 }

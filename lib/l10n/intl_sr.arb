@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 12:25:31.923562",
+    "@@last_modified": "2026-09-02 13:00:20.292971",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10578,7 +10578,6 @@
     "ongoingPendingLabel": "Čekanje da se drugi pridruže",
     "joinableLabel": "Moguće pridruživanje",
     "inProgressLabel": "Prethodno završeno",
-    "availableLabel": "Kreiraj aktivnost",
     "rateActivityTitle": "Kako vam se svidela ova aktivnost?",
     "rateActivityCommentHint": "Dodajte komentar (opciono)",
     "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte da ga preformulišete ili pošaljite ocenu bez komentara.",
@@ -10798,5 +10797,8 @@
     "constructLevelSeeds": "Seme, nove reči",
     "constructLevelGreens": "Zelenilo, reči u razvoju",
     "constructLevelFlowers": "Cveće, savladane reči",
-    "filterAndSearch": "Filtriraj i pretraži"
+    "filterAndSearch": "Filtriraj i pretraži",
+    "participantsOfTotal": "{filled} od {total} igrača",
+    "mapAttributionLabel": "OpenStreetMap saradnici, autorska prava i licenca",
+    "availableLabel": "Još nije počelo"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-02 12:25:27.282071",
+    "@@last_modified": "2026-09-02 13:00:15.285595",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Na-eche ka ndị ọzọ sonye",
     "joinableLabel": "Enwere ike isonye",
     "inProgressLabel": "Emechara na mbụ",
-    "availableLabel": "Mepụta ọrụ",
     "rateActivityTitle": "Kedu ka ihe omume a siri dị?",
     "rateActivityCommentHint": "Tinye okwu (nhọrọ)",
     "rateActivityCommentRejected": "Enweghị ike izipu okwu gị. Gbalịa ịgbanwe ya, ma ọ bụ ziga ọkwa gị na-enweghị okwu.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Mkpuru osisi, okwu ọhụrụ",
     "constructLevelGreens": "Akwụkwọ ndụ akwụkwọ ndụ, okwu na-eto eto",
     "constructLevelFlowers": "Okooko osisi, okwu ndị a mụtara nke ọma",
-    "filterAndSearch": "Nyochaa ma chọọ"
+    "filterAndSearch": "Nyochaa ma chọọ",
+    "participantsOfTotal": "{filled} n'ime {total} ndị egwuregwu",
+    "mapAttributionLabel": "Ndị nyere aka na OpenStreetMap, nwebisiinka na ikike",
+    "availableLabel": "Ebebeghị mmalite"
 }

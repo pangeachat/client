@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-02 12:25:28.665296",
+    "@@last_modified": "2026-09-02 13:00:16.984368",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Се чекаат други да се приклучат",
     "joinableLabel": "Приклучи се",
     "inProgressLabel": "Претходно завршено",
-    "availableLabel": "Креирај активност",
     "rateActivityTitle": "Како беше оваа активност?",
     "rateActivityCommentHint": "Додајте коментар (изборно)",
     "rateActivityCommentRejected": "Вашиот коментар не можеше да биде објавен. Обидете се да го преформулирате, или поднесете ја вашата оцена без коментар.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Семиња, нови зборови",
     "constructLevelGreens": "Зеленило, зборови во развој",
     "constructLevelFlowers": "Цвеќиња, совладани зборови",
-    "filterAndSearch": "Филтрирај и пребарај"
+    "filterAndSearch": "Филтрирај и пребарај",
+    "participantsOfTotal": "{filled} од {total} играчи",
+    "mapAttributionLabel": "Соработници на OpenStreetMap, авторски права и лиценца",
+    "availableLabel": "Сè уште не е започнато"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-02 12:25:23.999691",
+    "@@last_modified": "2026-09-02 13:00:12.525744",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10123,7 +10123,6 @@
     "ongoingPendingLabel": "Čekání na připojení ostatních",
     "joinableLabel": "Připojitelné",
     "inProgressLabel": "Dříve dokončeno",
-    "availableLabel": "Vytvořit aktivitu",
     "rateActivityTitle": "Jaká byla tato aktivita?",
     "rateActivityCommentHint": "Přidat komentář (volitelné)",
     "rateActivityCommentRejected": "Váš komentář nemohl být zveřejněn. Zkuste ho přeformulovat, nebo odešlete hodnocení bez komentáře.",
@@ -10343,5 +10342,8 @@
     "constructLevelSeeds": "Semínka, nová slova",
     "constructLevelGreens": "Zelené, rostoucí slova",
     "constructLevelFlowers": "Květy, zvládnutá slova",
-    "filterAndSearch": "Filtrovat a hledat"
+    "filterAndSearch": "Filtrovat a hledat",
+    "participantsOfTotal": "{filled} z {total} hráčů",
+    "mapAttributionLabel": "Přispěvatelé OpenStreetMap, autorská práva a licence",
+    "availableLabel": "Ještě nezačalo"
 }

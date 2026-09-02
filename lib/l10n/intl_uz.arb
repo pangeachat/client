@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-02 12:25:32.956198",
+    "@@last_modified": "2026-09-02 13:00:22.498323",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9633,7 +9633,6 @@
     "ongoingPendingLabel": "Boshqalarning qo'shilishini kuting",
     "joinableLabel": "Qo'shilish mumkin",
     "inProgressLabel": "Avvalroq yakunlangan",
-    "availableLabel": "Faoliyat yaratish",
     "rateActivityTitle": "Bu mashg'ulot qanday bo'ldi?",
     "rateActivityCommentHint": "Izoh qo'shish (ixtiyoriy)",
     "rateActivityCommentRejected": "Izohingiz joylashtirilmadi. Uni qayta yozib ko'ring yoki izohsiz baholang.",
@@ -9853,5 +9852,8 @@
     "constructLevelSeeds": "Urugʻlar, yangi soʻzlar",
     "constructLevelGreens": "Koʻkatlar, oʻsayotgan soʻzlar",
     "constructLevelFlowers": "Gullar, oʻzlashtirilgan soʻzlar",
-    "filterAndSearch": "Filtrlash va qidirish"
+    "filterAndSearch": "Filtrlash va qidirish",
+    "participantsOfTotal": "{total} o'yinchidan {filled} nafari",
+    "mapAttributionLabel": "OpenStreetMap ishtirokchilari, mualliflik huquqi va litsenziyasi",
+    "availableLabel": "Hali boshlanmadi"
 }

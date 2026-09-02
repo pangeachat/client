@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-02 12:25:27.760624",
+    "@@last_modified": "2026-09-02 13:00:16.241514",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "ಇತರರು ಸೇರಿಕೊಳ್ಳಲು ಕಾಯಲಾಗುತ್ತಿದೆ",
     "joinableLabel": "ಸೇರಬಹುದು",
     "inProgressLabel": "ಹಿಂದೆ ಪೂರ್ಣಗೊಂಡಿದೆ",
-    "availableLabel": "ಚಟುವಟಿಕೆ ರಚಿಸಿ",
     "rateActivityTitle": "ಈ ಚಟುವಟಿಕೆ ಹೇಗಿತ್ತು?",
     "rateActivityCommentHint": "ಕಾಮೆಂಟ್ ಸೇರಿಸಿ (ಐಚ್ಛಿಕ)",
     "rateActivityCommentRejected": "ನಿಮ್ಮ ಕಾಮೆಂಟ್ ಪೋಸ್ಟ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಅದನ್ನು ಮರುರೂಪಿಸಲು ಪ್ರಯತ್ನಿಸಿ, ಅಥವಾ ಕಾಮೆಂಟ್ ಇಲ್ಲದೆ ನಿಮ್ಮ ರೇಟಿಂಗ್ ಅನ್ನು ಸಲ್ಲಿಸಿ.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "ಬೀಜಗಳು, ಹೊಸ ಪದಗಳು",
     "constructLevelGreens": "ಸಸಿಗಳು, ಬೆಳೆಯುತ್ತಿರುವ ಪದಗಳು",
     "constructLevelFlowers": "ಹೂವುಗಳು, ಕರಗತವಾದ ಪದಗಳು",
-    "filterAndSearch": "ಫಿಲ್ಟರ್ ಮಾಡಿ ಮತ್ತು ಹುಡುಕಿ"
+    "filterAndSearch": "ಫಿಲ್ಟರ್ ಮಾಡಿ ಮತ್ತು ಹುಡುಕಿ",
+    "participantsOfTotal": "{total} ಆಟಗಾರರಲ್ಲಿ {filled}",
+    "mapAttributionLabel": "ಓಪನ್‌ಸ್ಟ್ರೀಟ್‌ಮ್ಯಾಪ್ ಕೊಡುಗೆದಾರರು, ಹಕ್ಕುಸ್ವಾಮ್ಯ ಮತ್ತು ಪರವಾನಗಿ",
+    "availableLabel": "ಇನ್ನೂ ಪ್ರಾರಂಭವಾಗಿಲ್ಲ"
 }

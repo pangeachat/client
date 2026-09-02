@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-02 12:25:28.149560",
+    "@@last_modified": "2026-09-02 13:00:16.401431",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "چاوەڕێی ئەوانی تر دەکەین بۆ بەشداریکردن",
     "joinableLabel": "بەشداریکردن",
     "inProgressLabel": "پێشتر تەواوکراوە",
-    "availableLabel": "چالاکی دروست بکە",
     "rateActivityTitle": "ئەم چالاکییە چۆن بوو؟",
     "rateActivityCommentHint": "سەرنجێک زیاد بکە (بەخواستی خۆت)",
     "rateActivityCommentRejected": "سەرنجەکەت بڵاونەکرایەوە. هەوڵبدە دووبارە بینووسیتەوە، یان هەڵسەنگاندنەکەت بەبێ سەرنج بنێرە.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "تۆو، وشەی نوێ",
     "constructLevelGreens": "سەوزایی، وشە گەشەسەندووەکان",
     "constructLevelFlowers": "گوڵەکان، وشە شارەزاکان",
-    "filterAndSearch": "پاڵاوتن و گەڕان"
+    "filterAndSearch": "پاڵاوتن و گەڕان",
+    "participantsOfTotal": "{filled} لە {total} یاریزان",
+    "mapAttributionLabel": "بەشداربووانی OpenStreetMap، مافی لەبەرگرتنەوە و مۆڵەت",
+    "availableLabel": "هێشتا دەستی پێنەکردووە"
 }

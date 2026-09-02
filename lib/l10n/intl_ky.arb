@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-02 12:25:28.402643",
+    "@@last_modified": "2026-09-02 13:00:16.344777",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Башкалардын кошулушун күтүүдө",
     "joinableLabel": "Кошулууга болот",
     "inProgressLabel": "Буга чейин аяктаган",
-    "availableLabel": "Иш-аракет түзүү",
     "rateActivityTitle": "Бул иш-аракет кандай болду?",
     "rateActivityCommentHint": "Комментарий кошуу (милдеттүү эмес)",
     "rateActivityCommentRejected": "Комментарийиңиз жарыяланган жок. Кайра жазып көрүңүз же комментарийсиз баа бериңиз.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Үрөндөр, жаңы сөздөр",
     "constructLevelGreens": "Көк чөптөр, өсүп жаткан сөздөр",
     "constructLevelFlowers": "Гүлдөр, өздөштүрүлгөн сөздөр",
-    "filterAndSearch": "Чыпкалоо жана издөө"
+    "filterAndSearch": "Чыпкалоо жана издөө",
+    "participantsOfTotal": "{filled} / {total} оюнчу",
+    "mapAttributionLabel": "OpenStreetMap салымчылары, автордук укук жана лицензия",
+    "availableLabel": "Башталган жок"
 }
