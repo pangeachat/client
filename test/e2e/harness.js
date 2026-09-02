@@ -61,7 +61,14 @@ function refuseIfAnotherRunIsLive() {
   }
 }
 
-async function openParticipant(name, roomLocalpart, port) {
+/// [prepare] runs against the blank page, BEFORE the app is ever loaded.
+///
+/// The one hook a scenario cannot add afterwards. Anything installed with
+/// `evaluateOnNewDocument` has to be registered while the tab is still
+/// `about:blank` or the app's first requests -- the ones that carry the
+/// session's own identity -- go out unwatched, and a scenario that needs to
+/// know which Matrix DEVICE a browser is would be left guessing.
+async function openParticipant(name, roomLocalpart, port, { prepare } = {}) {
   const a = ACCOUNTS[name];
   // The flutter service worker in a persisted profile serves the PREVIOUS
   // build on reload -- every "regression" it manufactures looks exactly like
@@ -75,6 +82,7 @@ async function openParticipant(name, roomLocalpart, port) {
   const page = (await browser.pages())[0];
   const errors = [];
   page.on('pageerror', (e) => errors.push(String(e.stack || e.message || e).slice(0, 600)));
+  if (prepare) await prepare(page);
   // Tagged by participant: one shared tag meant the second login's
   // screenshots overwrote the first's, and the evidence for a failure was
   // whichever browser happened to fail last.

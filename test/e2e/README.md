@@ -99,13 +99,14 @@ handover:
       node test/e2e/transcript_two_devices.js
 
 Both wav paths are the defaults, so they can be left out once the files are
-there. `CALL_HANDOVER_DEVICE` picks which of the two devices hangs up mid-call
-and it selects a DEVICE, never an outcome: only the device holding the recording
-leaving puts speech in both halves, `CaptureElection` decides which one that is
-from a device id nobody chooses, and persistent profiles keep their ids -- so if
-a run keeps reporting the handover check inconclusive, it is leaving the
-passenger, and this is the knob. Everything else in the file is asserted either
-way.
+there. `CALL_HANDOVER_DEVICE` is an OVERRIDE and is not normally needed: the run
+works out which device holds the recording by itself -- `CaptureElection` gives
+it to the lower device id, and the scenario pairs each browser with its Matrix
+device (see below) -- and hangs that one up, so speech lands in both halves by
+construction rather than by luck. Set it only to force the other device. A run
+that ends with one half empty FAILS on `BOTH of the learner devices
+transcribed`, naming this knob; it does not quietly report the merge check as
+inconclusive, which is what it used to do.
 
 The whole browser set, sequentially, stopping at the first failure:
 
@@ -116,6 +117,13 @@ The whole browser set, sequentially, stopping at the first failure:
 
 Screenshots, captured logcat, and failure evidence all land in
 `$CALL_SHOT_DIR`; the scenarios print the path they wrote.
+
+Each scenario prints a summary with three columns -- PASS, FAIL, and SKIP, the
+last for a check that could not be asked at all this run. **A SKIP is not a
+pass.** `transcript_two_devices.js` exits non-zero on one, because it once
+exited 0 while the one check speaking to its central claim had stood aside and
+established nothing. The other files still exit on failures alone; read their
+INCONCLUSIVE lines rather than the exit code.
 
 Two Chrome profiles are reused between runs, so a login survives. A stale one
 is the usual cause of "browser is already running"; `unstick.js` (below) is
@@ -133,7 +141,7 @@ Browser only:
 | `rejoin_ui.js` | The four review fixes browser-to-browser: a rejoined clock continues rather than restarting, nothing still claims "reconnecting" after the other side ends, the Return banner's red end ends the call for both, and the chat list previews the call. |
 | `grey_hover.js` | The CanvasKit grey box: hovers every control on a live ring and fails if a large flat grey block appears that was not there before. |
 | `transcript.js` | What the two people can READ afterwards: the consent notice, each speaker's own words under their own name, turn positions on the wire, and nobody who spoke reported as silent. |
-| `transcript_two_devices.js` | ONE account signed in TWICE in one call. Both devices write a half, the halves name different devices and are sent under different transaction ids, the reader assembles the account's half from both, and no word either device heard is missing from the screen. It also refuses a call whose key an earlier call already used -- see below. |
+| `transcript_two_devices.js` | ONE account signed in TWICE in one call. Both devices write a half, the halves name different devices, the two devices are SEEN sending under different transaction ids (read off their own outgoing requests -- see below), the reader says it assembled the account's half from both, and no word either device heard is missing from the screen. It also refuses a call whose key an earlier call already used -- see below. |
 
 Physical Android phone required (all of these; each needs `PHONE_SERIAL`):
 
@@ -204,6 +212,32 @@ Not a scenario:
   the words can only ever fail, and one written on their absence -- "nobody who
   spoke is reported as silent" -- can only ever pass. `transcript.js` still has
   the second of those.
+- **A drawn-turn count cannot prove a MERGE on its own.** It catches a reader
+  that dropped a half with turns in it; it cannot catch one that dropped an
+  EMPTY half, because both draw the same screen -- and an empty half is the
+  ordinary outcome, since `CaptureElection` lets only one of an account's
+  devices record. So `transcript_two_devices.js` proves the merge off the app's
+  own read-time log instead, which states how many devices a half was assembled
+  from (`... devices 2`) and is written unconditionally for any half assembled
+  from more than one. The turn count is still asked every run, and a run that
+  did not reach two speaking halves FAILS rather than standing the count aside:
+  a scenario that could not reach the state it tests has not passed.
+- **A transaction id exists only in the request that carried it.** Matrix
+  returns `unsigned.transaction_id` to the sending DEVICE's own sync and to
+  nobody else, and the harness holds a different device's token -- so the id a
+  send used cannot be read back off the room. Recomputing it from the event that
+  arrived proves the event carries enough to derive an id, which is a strictly
+  weaker sentence: a client regressed to a sender-only key, on a homeserver that
+  accepted both devices' requests, lands two events a recomputation derives two
+  distinct ids from. `transcript_two_devices.js` therefore wraps `fetch` and
+  `XMLHttpRequest` on each learner page before the app loads and reads the id out
+  of the PUT path (`.../send/{type}/{txnId}`). The same hook lifts the session's
+  bearer token, which is the only way to ask which Matrix device a browser is --
+  nothing the app puts on the page carries the id, and `/devices` cannot tell two
+  Chrome profiles on one laptop apart. Scope the token capture to
+  `/_matrix/client/` URLs if you copy this: the app also talks to the
+  choreographer with a bearer of its own, and taking whichever went past last
+  yields `M_UNKNOWN_TOKEN` and reads as a browser that could not be identified.
 - **A Chrome profile's login is per ORIGIN.** Serving a second build on another
   port and pointing `APP_URL` at it does not reuse the session: the profile
   signs in again and Synapse mints NEW devices. Fine, and worth knowing before

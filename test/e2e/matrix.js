@@ -46,6 +46,21 @@ async function login(user, password) {
   return { token: r.access_token, userId: r.user_id, deviceId: r.device_id };
 }
 
+/// WHICH DEVICE a token belongs to.
+///
+/// The only way to ask a running browser which Matrix device it is. Nothing the
+/// app puts on the page carries the id, and the harness's own login is a
+/// DIFFERENT device from the one the browser holds -- so a scenario that has to
+/// pair a browser with a device id has to ask the homeserver with that
+/// browser's own token.
+async function whoami(token) {
+  const r = await api('/_matrix/client/v3/account/whoami', { token });
+  return {
+    userId: r.user_id,
+    deviceId: typeof r.device_id === 'string' ? r.device_id : null,
+  };
+}
+
 /// Gives a session back.
 ///
 /// Every login creates a DEVICE, and the two fixture accounts are reused
@@ -241,4 +256,4 @@ async function hasMembership(token, roomId, userId) {
   return (await liveMemberships(token, roomId, userId)) > 0;
 }
 
-module.exports = { api, login, logout, displayName, targetLanguage, baseLang, hasMembership, liveMemberships, liveMembershipDevices, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };
+module.exports = { api, login, logout, whoami, displayName, targetLanguage, baseLang, hasMembership, liveMemberships, liveMembershipDevices, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };
