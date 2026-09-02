@@ -73,5 +73,29 @@ void main() {
       expect(backend, isA<MeshBackend>());
       expect(backend.type, 'mesh');
     });
+
+    test('a join hands back the membership event id it published', () {
+      // A CALL'S WHOLE IDENTITY COMES FROM THIS RETURN VALUE. Nothing in the
+      // published membership distinguishes two calls placed by one process --
+      // the call id is the room, the membership id is per VoIP instance, and
+      // only `expires_ts` moves, on a clock that can step backwards -- so the
+      // event id the server assigns to the write is the only witness there is.
+      // CallService captures it in `announce` and keys the transcript and the
+      // card on it.
+      //
+      // Pinned HERE because nothing else would notice it going. `void` is a top
+      // type in Dart, so a return narrowed back to `Future<void>` still
+      // compiles at every call site that awaits it; the call would simply stop
+      // having an anchor, silently, at runtime. The typed tear-offs below are
+      // the assertion -- they only type-check while the ids are returned.
+      Future<String?> Function({WrappedMediaStream? stream}) entering(
+        GroupCallSession session,
+      ) => session.enter;
+      Future<String?> Function() writingMembership(GroupCallSession session) =>
+          session.sendMemberStateEvent;
+
+      expect(entering, isA<Function>());
+      expect(writingMembership, isA<Function>());
+    });
   });
 }
