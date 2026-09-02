@@ -131,6 +131,10 @@ void main() {
     /// Chunks the writing device's own speech detector held back. Zero in every
     /// fixture that is not about them, which is the ordinary case.
     int suppressed = 0,
+
+    /// Chunks handed to another of this account's devices. Zero in every
+    /// fixture that is not about a handover, which is the ordinary case.
+    int discarded = 0,
     bool drainComplete = true,
     bool declared = true,
 
@@ -207,6 +211,7 @@ void main() {
           chunksTranscribed: transcribed,
           chunksLost: lost,
           chunksSuppressed: suppressed,
+          chunksDiscarded: discarded,
           captureRefused: captureRefused,
           drainComplete: drainComplete,
         ).toJson(),
@@ -985,6 +990,59 @@ void main() {
       expect(find.textContaining('too long to save'), findsNothing);
     });
 
+    testWidgets('a handover whose sibling never wrote SAYS it is short', (
+      tester,
+    ) async {
+      // The scenario end to end, on the screen. One device transcribed its
+      // early chunks and discarded its stop-tail believing a sibling held that
+      // stretch; the sibling crashed and published nothing. The words that did
+      // arrive are shown -- and until this, so was nothing else: the half read
+      // as a clean, complete record, with no note at all, over a stretch that
+      // exists in no transcript anywhere.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: const ['hola que tal'],
+            captured: 3,
+            transcribed: 2,
+            discarded: 1,
+            deviceId: 'PHONE',
+          ),
+          half(_peer, texts: const ['muy bien']),
+        ]),
+      );
+
+      expect(find.textContaining('hola que tal'), findsOneWidget);
+      expect(find.textContaining('may be missing'), findsOneWidget);
+    });
+
+    testWidgets('and a handover whose sibling DID write says nothing of the '
+        'kind', (tester) async {
+      // The other wrong answer. Two devices, one defers its tail to the other,
+      // and the transcript is whole -- telling a learner part of it may be
+      // missing on every ordinary two-device call would make the note mean
+      // nothing by the time it mattered.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: const ['hola que tal'],
+            captured: 3,
+            transcribed: 2,
+            discarded: 1,
+            deviceId: 'PHONE',
+          ),
+          half(_me, texts: const ['y despues'], deviceId: 'LAPTOP'),
+          half(_peer, texts: const ['muy bien']),
+        ]),
+      );
+
+      expect(find.textContaining('may be missing'), findsNothing);
+    });
+
     testWidgets('a silent speaker whose audio we DID send still reads as '
         'silent', (tester) async {
       // The answer the fix must not destroy. Every chunk went to a provider and
@@ -1485,7 +1543,7 @@ void main() {
   });
 
   group('what an empty half is told to the learner as', () {
-    // MECHANICAL over [EmptinessCause], because the defect it replaces is one
+    // MECHANICAL over [MissingAudio], because the defect it replaces is one
     // of coverage rather than of logic: `audioDroppedAtCapture` and
     // `audioHeldByAnotherDevice` were both added to [HalfIssue], both ranked in
     // [TranscriptHalf.issue], and neither ever reached a sentence -- so a
@@ -1506,13 +1564,13 @@ void main() {
     });
 
     /// The half a device writes when [cause] alone emptied it.
-    TranscriptHalf emptiedBy(EmptinessCause cause) {
+    TranscriptHalf emptiedBy(MissingAudio cause) {
       final accounting = HalfAccounting(
         chunksCaptured: 4,
-        chunksLost: cause == EmptinessCause.lost ? 1 : 0,
-        captureDroppedMs: cause == EmptinessCause.droppedAtCapture ? 250 : 0,
-        chunksDiscarded: cause == EmptinessCause.heldForASibling ? 1 : 0,
-        chunksSuppressed: cause == EmptinessCause.suppressedByUs ? 1 : 0,
+        chunksLost: cause == MissingAudio.lost ? 1 : 0,
+        captureDroppedMs: cause == MissingAudio.droppedAtCapture ? 250 : 0,
+        chunksDiscarded: cause == MissingAudio.heldForASibling ? 1 : 0,
+        chunksSuppressed: cause == MissingAudio.suppressedByUs ? 1 : 0,
         declared: true,
       );
       return assembleTranscript(
@@ -1529,8 +1587,8 @@ void main() {
     }
 
     test('every cause gets a sentence of its own', () {
-      final said = <EmptinessCause, String>{
-        for (final cause in EmptinessCause.values)
+      final said = <MissingAudio, String>{
+        for (final cause in MissingAudio.values)
           cause: emptyHalfNote(emptiedBy(cause), 'Ana', l10n),
       };
 
@@ -1551,10 +1609,53 @@ void main() {
 
       expect(
         said.values.toSet(),
-        hasLength(EmptinessCause.values.length),
+        hasLength(MissingAudio.values.length),
         reason:
             'two causes sharing a sentence sends whoever chases it to one '
             'device for two different problems',
+      );
+    });
+
+    test('a stretch left to a device that never wrote gets its own', () {
+      // The one shape in which this cause reaches an empty half at all: the
+      // chunks that WERE sent came back with no words, so the emptiness is not
+      // what the discard explains -- and a stretch still went to a device whose
+      // half never arrived. Every other empty half that deferred anything is
+      // answered by `audioHeldByAnotherDevice` above it.
+      final half = assembleTranscript(
+        candidates: const [
+          TranscriptCandidate(
+            senderId: _peer,
+            originServerTs: 1000,
+            segments: [],
+            accounting: HalfAccounting(
+              chunksCaptured: 4,
+              chunksTranscribed: 2,
+              chunksDiscarded: 1,
+              declared: true,
+            ),
+            deviceId: 'PHONE',
+          ),
+        ],
+        expectedSenders: [_peer],
+      ).halves.single;
+
+      expect(half.issue, HalfIssue.audioLeftToADeviceThatNeverWrote);
+      expect(
+        emptyHalfNote(half, 'Ana', l10n),
+        l10n.callTranscriptDeviceNeverWrote('Ana'),
+      );
+      expect(
+        emptyHalfNote(half, 'Ana', l10n),
+        isNot(l10n.callTranscriptNothingRead('Ana')),
+        reason: 'nothing reached a reader to fail at',
+      );
+      expect(
+        l10n.callTranscriptDeviceNeverWrote('Ana'),
+        isNot(l10n.callTranscriptHeldByOtherDevice('Ana')),
+        reason:
+            'a sibling that never wrote and a sibling holding the words are '
+            'different things to go and do something about',
       );
     });
 

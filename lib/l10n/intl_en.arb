@@ -3799,6 +3799,10 @@
   "@callTranscriptHeldByOtherDevice": {
     "placeholders": { "name": { "type": "String" } }
   },
+  "callTranscriptDeviceNeverWrote": "Part of what {name} said was left to another of their devices to record, and nothing from that device arrived, so that part is not known.",
+  "@callTranscriptDeviceNeverWrote": {
+    "placeholders": { "name": { "type": "String" } }
+  },
   "callTranscriptTooLongToSend": "What {name} said was too long to save with this call, so none of it is shown.",
     "@callTranscriptTooLongToSend": {
         "placeholders": {

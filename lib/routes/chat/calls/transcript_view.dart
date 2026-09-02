@@ -537,6 +537,16 @@ String emptyHalfNote(TranscriptHalf half, String name, L10n l10n) {
       name,
     ),
 
+    // Reachable here only in one narrow shape -- an empty half whose chunks
+    // WERE transcribed and came back with no words, and which also deferred a
+    // stretch to a device that never wrote. `audioHeldByAnotherDevice` above
+    // answers every other empty half that deferred anything. Its ordinary home
+    // is a half that still carries words, where the note under the timeline
+    // says part of it may be missing; this is the sentence for the case where
+    // there is nothing left to say that about.
+    HalfIssue.audioLeftToADeviceThatNeverWrote =>
+      l10n.callTranscriptDeviceNeverWrote(name),
+
     // Everything else, and only here a true statement: something of theirs was
     // there and WE are the ones who could not make a record of it. Listed one
     // by one rather than under a wildcard, because a wildcard is exactly the
