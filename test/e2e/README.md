@@ -147,10 +147,12 @@ Screenshots, captured logcat, and failure evidence all land in
 
 Each scenario prints a summary with three columns -- PASS, FAIL, and SKIP, the
 last for a check that could not be asked at all this run. **A SKIP is not a
-pass.** `transcript_two_devices.js` exits non-zero on one, because it once
-exited 0 while the one check speaking to its central claim had stood aside and
-established nothing. The other files still exit on failures alone; read their
-INCONCLUSIVE lines rather than the exit code.
+pass**, and every scenario's exit code says so: `h.report()` returns every
+result that is not a pass and sets a non-zero exit code itself, so a run whose
+only statement about its central claim stood aside is red. That used to be
+arithmetic one scenario kept for itself, which meant the rest exited 0 on a
+skip -- and the nine files that call `report()` without reading its return
+value exited 0 on FAILURES too.
 
 Two Chrome profiles are reused between runs, so a login survives. A stale one
 is the usual cause of "browser is already running"; `unstick.js` (below) is
@@ -167,7 +169,7 @@ Browser only:
 | `refresh_no_return.js` | The same grace when the peer never comes back: reconnecting is shown, the grace lapses, the survivor ends the call itself, and it is written as a call that HAPPENED rather than a miss. |
 | `rejoin_ui.js` | The four review fixes browser-to-browser: a rejoined clock continues rather than restarting, nothing still claims "reconnecting" after the other side ends, the Return banner's red end ends the call for both, and the chat list previews the call. |
 | `grey_hover.js` | The CanvasKit grey box: hovers every control on a live ring and fails if a large flat grey block appears that was not there before. |
-| `transcript.js` | What the two people can READ afterwards: the consent notice, each speaker's own words under their own name, turn positions on the wire, and nobody who spoke reported as silent. |
+| `transcript.js` | What the two people can READ afterwards: the consent notice, each speaker's own words under their own name, and turn positions on the wire. Whether the screen wrongly calls a speaker silent is NOT checked -- that prose is drawn by CanvasKit and reaches neither tree, so it is read off the screenshot by eye. |
 | `transcript_two_devices.js` | ONE account signed in TWICE in one call. Both devices write TWO distinct halves, the halves name different devices, each half carries the fixture its own browser played and the transaction id that browser was SEEN sending for THIS call (read off its own outgoing requests, scoped by the call key inside them -- see below), the device that stays says in its own log that it took the recording over, the reader says it assembled the account's half from both, and the panel draws at least as many turns as the halves carry. It also refuses a call whose key an earlier call used -- searching back to the event that IS the key, and comparing the keys of every ring the run itself placed -- see below. It does NOT claim to know when any device left the call, or how much of the tail the survivor recorded; neither is observable here. |
 
 Physical Android phone required (all of these; each needs `PHONE_SERIAL`):
@@ -237,8 +239,11 @@ Not a scenario:
   written on the turn COUNT (`transcript_two_devices.js`) or read off a
   screenshot by eye, the way the phone scenarios already do. A check written on
   the words can only ever fail, and one written on their absence -- "nobody who
-  spoke is reported as silent" -- can only ever pass. `transcript.js` still has
-  the second of those. A count cannot match a drawn turn to a written one
+  spoke is reported as silent" -- can only ever pass. `transcript.js` had the
+  second of those and it is gone: a note recording that a check cannot fail does
+  not make it honest, it leaves a green line that means nothing. Whether a
+  speaker is wrongly called silent is read off `transcript-screen.png` by eye,
+  the way the phone scenarios work. A count cannot match a drawn turn to a written one
   either, only their numbers, so the check in `transcript_two_devices.js` is
   named for the floor it establishes -- the panel drew at least as many turns as
   the halves carry -- rather than for the per-turn claim it cannot reach.
