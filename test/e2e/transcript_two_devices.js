@@ -45,7 +45,9 @@
 //      count cannot tell a merge from a reader that dropped an empty half;
 //      this can, so it is the check the merge rests on rather than the screen.
 //   5. NOTHING IS LOST. The panel draws at least as many turns as the halves
-//      carry, and none of the peer's words end up under the learner.
+//      carry, and none of the peer's own fixture words -- proven to be in the
+//      peer's half first, or the search is over words nobody spoke -- end up
+//      under the learner.
 //
 // AND EVERY ONE OF THEM FAILS WHEN IT CANNOT BE ASKED. A check that reports
 // SKIP, and a wait that runs out and carries on, are both ways of not knowing,
@@ -60,9 +62,20 @@
 // costs nothing until the day the stronger claim is false. A count of segments
 // under a name about speech; a whole-call capture total under a name about the
 // stretch after a handover; a set comparison under a name about a particular
-// half; a distinct-key count that a set of `undefined` satisfies. Where a claim
-// cannot be reached with the observables here, the NAME is narrowed to what is
-// reached and the comment says what is left over -- never the other way round.
+// half; a distinct-key count that a set of `undefined` satisfies; a search of
+// the last 300 events under a name about the room.
+//
+// AND WHEN THE SUBJECT OF A CLAIM IS NOT OBSERVABLE, THE CLAIM GOES. Two checks
+// here asked when a device LEFT the call, and nothing in this stack witnesses
+// that moment: the membership state is one writer's view and the product means
+// it to be, a half arrives after an unbounded drain, and the harness's click is
+// a request. Each rewrite kept the claim and reached for a different proxy, and
+// each proxy had its own defeating sequence -- which is the tell that the
+// problem was never the measurement. They are DELETED, not narrowed, and what
+// replaced them is a smaller thing that is actually seen: the device that
+// stayed announcing, in its own log, that it took the recording over. A name
+// narrowed onto a claim the evidence still does not reach is the same fault in
+// quieter language.
 //
 // WHAT THE PRODUCT DOES THAT SHAPES THIS FILE.
 //
@@ -359,8 +372,13 @@ const PEER_SAYS = ['course', 'orange', 'quarter', 'gardens'];
 
 /// How long the survivor holds the call by itself after the handover.
 ///
-/// Named because a check below quotes it: "captured nothing in the forty
-/// seconds it held the call alone" is only a finding next to the number.
+/// Long enough for the survivor's own fixture to be transcribed, which is what
+/// puts words in BOTH halves and is the whole reason the handover is driven.
+///
+/// NOT a bound any check is written on. `PcmChunker` targets 45 seconds, so a
+/// tail this length is ONE chunk and its segments cannot say how much of the
+/// tail was recorded -- a check that read them as "the rest of the call" is
+/// gone rather than reworded. See the note in [3].
 const HANDOVER_TAIL_MS = 40000;
 
 /// The language every fixture is in. See `transcript.js`: speech-to-text is
@@ -440,18 +458,84 @@ async function halvesSince(token, mark) {
   return events.filter((e) => e.type === TRANSCRIPT);
 }
 
+/// How many pages of history the search below will walk before giving up.
+///
+/// A ceiling on the WORK, never on the claim: running into it is reported as a
+/// search that did not finish, which fails the check that uses it. The normal
+/// case costs one page -- a fresh key's own event is at the live end of the
+/// room -- and only a key an old call already used walks back at all, which is
+/// the case worth paying for.
+const KEY_SEARCH_PAGES = 20;
+const KEY_SEARCH_PAGE = 500;
+
 /// Halves already in the room under [callKey], written before [before].
 ///
 /// Asked of the room's history rather than of this run, because the thing it
 /// is looking for is a call key an EARLIER call already used -- and an earlier
 /// call may be one nobody here placed.
+///
+/// SEARCHED BACK TO THE KEY'S OWN EVENT, and that boundary is what makes the
+/// answer a NO rather than a not-here. This read the last 300 events and
+/// reported "no earlier half" from it, which is a different sentence: a reuse
+/// older than 300 events is invisible to it, and the two answers read alike
+/// until the day they differ. They differ for real -- the call-key reuse this
+/// guards is a confirmed bug, not a hypothetical.
+///
+/// The boundary is knowable because a call key IS an event id: the caller's own
+/// membership event. Nothing can have been written under a key before the event
+/// that IS the key, so history older than that event cannot hold a half under
+/// it, and a search that has walked back past its timestamp has covered
+/// everything there is to cover.
+///
+/// Returns whether it FINISHED as well as what it found. A search that ran out
+/// of pages, or one whose key the room cannot produce, has not established
+/// there was no earlier half -- it has established nothing, and [freshCallKey]
+/// treats it that way.
 async function halvesUnder(token, callKey, before) {
-  const events = await mx.timeline(token, ROOM_ID, 300);
-  return events.filter(
-    (e) => e.type === TRANSCRIPT
-      && e.content?.call_key === callKey
-      && (e.origin_server_ts || 0) < before,
-  );
+  const anchor = await mx.eventById(token, ROOM_ID, callKey);
+  const anchorTs = typeof anchor?.origin_server_ts === 'number'
+    ? anchor.origin_server_ts
+    : null;
+  if (anchorTs === null) {
+    return {
+      covered: false,
+      halves: [],
+      scanned: 0,
+      why: `the room has no event ${callKey}, so the moment the call this key `
+        + 'names began is unknown and there is no boundary to search back to',
+    };
+  }
+  const halves = [];
+  let from = null;
+  let scanned = 0;
+  for (let page = 0; page < KEY_SEARCH_PAGES; page++) {
+    const { chunk, end } = await mx.messagesBack(token, ROOM_ID, {
+      from,
+      limit: KEY_SEARCH_PAGE,
+    });
+    scanned += chunk.length;
+    for (const e of chunk) {
+      if (e.type === TRANSCRIPT
+        && e.content?.call_key === callKey
+        && (e.origin_server_ts || 0) < before) halves.push(e);
+    }
+    // The start of the room is a complete answer, and so is having walked back
+    // past the key's own event.
+    if (!chunk.length || !end) return { covered: true, halves, scanned, why: '' };
+    const oldest = Math.min(...chunk.map((e) => e.origin_server_ts || 0));
+    if (oldest <= anchorTs) return { covered: true, halves, scanned, why: '' };
+    from = end;
+  }
+  return {
+    covered: false,
+    halves,
+    scanned,
+    why: `${scanned} events searched over ${KEY_SEARCH_PAGES} pages without `
+      + `reaching ${new Date(anchorTs).toISOString()}, when the call this key `
+      + 'names began. Everything between that moment and where the search '
+      + 'stopped is unread, so an earlier half under this key would not have '
+      + 'been seen',
+  };
 }
 
 /// Which of the learner's devices JOINED this call, according to the server.
@@ -709,74 +793,110 @@ function fixtureMatchesDeviceVerdict(fixtures, deviceIds) {
   };
 }
 
-/// Whether a half holds speech recorded AFTER a moment.
+/// Whether the peer's fixture reached its own half, and stayed out of the
+/// learner's.
 ///
-/// `chunks_captured` is a WHOLE-HALF total and cannot answer this. A device
-/// that is not the recorder still captures and then DISCARDS --
-/// `CallAudioSink.discarded` exists for exactly that -- and the join race hands
-/// both devices a roster that momentarily lacks the other, so a survivor can
-/// hold a positive capture count made entirely of chunks it took BEFORE the
-/// handover and threw away. A survivor that then recorded nothing at all for
-/// the tail is the one real failure a run of this file has found, and the count
-/// passes it.
+/// THE DETECTOR HAS TO BE VALIDATED BEFORE IT MEANS ANYTHING, and it was not.
+/// [PEER_SAYS] is a list of words this file EXPECTS the peer to say, and the
+/// crossing test looks for them under the LEARNER. If the peer's wav changed,
+/// or speech-to-text missed those sentinels while catching other words, the
+/// list matches nothing the peer actually said -- and a product that then put
+/// the peer's REAL words under the learner leaves the list empty and the check
+/// passes, having searched for words nobody spoke.
 ///
-/// SEGMENT POSITIONS are what can answer it. `at_ms` is on the wire, one per
-/// segment, and only for audio that was delivered and transcribed -- a
-/// discarded chunk produces none. It is the WRITER'S OWN wall clock,
-/// uncorrected: the reader's `ClockAnchor` correction is applied at read time
-/// and is not in the event, and every browser here runs on the one laptop, so
-/// it is the same clock the moment passed in was read from.
+/// `peerWords.size > 0` does not close that hole. The peer having said
+/// SOMETHING is not the peer having said the words the test is written on, and
+/// only the second makes the search capable of finding anything. So the peer's
+/// own half is asked for the sentinels FIRST, and the crossing is then looked
+/// for among the ones it actually carries -- the same fixture verification the
+/// two learner devices get, applied to the third microphone.
 ///
-/// WHAT IT DOES NOT PROVE, and the check is named accordingly: that the
-/// survivor recorded ALL of the tail. It proves speech was recorded after the
-/// handover was asked for. A survivor that took over, captured four seconds and
-/// stopped passes this; the accounting it publishes alongside -- lost chunks,
-/// dropped milliseconds, an incomplete drain -- is what would say so, and no
-/// check here reads it yet.
-///
-/// A half whose segments carry no position at all FAILS rather than falling
-/// back on the count: a run cannot say WHEN a half recorded if nothing in it
-/// says when.
-function recordedAfterVerdict(half, sinceMs) {
-  const c = half?.content ?? {};
-  const captured = c.chunks_captured ?? 0;
-  const segs = Array.isArray(c.segments) ? c.segments : [];
-  const at = segs
-    .map((seg) => (seg && typeof seg.at_ms === 'number' ? seg.at_ms : null))
-    .filter((ms) => ms !== null);
-  if (!(captured > 0)) {
-    return { ok: false, why: `captured ${captured} chunk(s) in the whole call` };
-  }
-  if (!segs.length) {
+/// It is still a detector for a WHOLESALE crossing rather than a partial one: a
+/// merge that reached across accounts puts the peer's half under the learner
+/// entire, so any sentinel the peer's half carries would arrive with it. A
+/// crossing of some turns and not others could miss the ones carrying these
+/// words, and no reading of the words alone can close that.
+function peerCrossingVerdict(theirs, mine) {
+  const peerWords = new Set(theirs.flatMap((e) => [...words(spoken(e))]));
+  const heard = PEER_SAYS.filter((w) => peerWords.has(w));
+  const crossed = heard.filter((w) => mine.has(w));
+  if (mine.size === 0) {
     return {
       ok: false,
-      why: `captured ${captured} chunk(s) and published no segment at all, so `
-        + 'none of what it heard was transcribed',
+      why: 'the learner\'s halves carry no words at all, so nothing of the '
+        + 'peer\'s could be found in them however badly the merge went',
     };
   }
-  if (!at.length) {
+  if (peerWords.size === 0) {
     return {
       ok: false,
-      why: `published ${segs.length} segment(s) and not one of them carries an `
-        + 'at_ms, so WHEN this half recorded cannot be asked of it -- and a '
-        + 'capture count cannot answer it, because a device that stood aside '
-        + 'captures and discards',
+      why: 'the peer\'s half came back with no words at all -- which is what a '
+        + 'peer that never drained produces -- so there is nothing of the '
+        + 'peer\'s to look for',
     };
   }
-  const after = at.filter((ms) => ms >= sinceMs);
-  const latest = Math.max(...at);
+  if (heard.length === 0) {
+    return {
+      ok: false,
+      why: `the peer's half carries ${peerWords.size} word(s) and not one of `
+        + `${JSON.stringify(PEER_SAYS)}, so this test is written on words the `
+        + 'peer did not say. It would report a crossing ruled out while a '
+        + "merge that put the peer's actual words under the learner went "
+        + 'unnoticed. Point CALL_CALLEE_WAV at the fixture PEER_SAYS describes, '
+        + 'or move PEER_SAYS to the wav',
+    };
+  }
   return {
-    ok: after.length > 0,
-    after: after.length,
-    total: at.length,
-    why: after.length
-      ? ''
-      : `published ${at.length} positioned segment(s) and every one of them is `
-        + `from BEFORE the handover was asked for -- the last at `
-        + `${new Date(latest).toISOString()}, `
-        + `${Math.round((sinceMs - latest) / 1000)}s before it`,
+    ok: crossed.length === 0,
+    heard,
+    why: crossed.length
+      ? `the learner's halves carry ${crossed.join(' ')} -- words the peer's own `
+        + 'half carries too, so the merge crossed ACCOUNTS rather than devices'
+      : '',
   };
 }
+
+/// THE APP'S OWN STATEMENT THAT THIS DEVICE TOOK THE RECORDING OVER.
+///
+/// WHY A LOG LINE AND NOT THE SERVER, which is the question two rounds of this
+/// file got wrong. There is no observable here for the MOMENT a device left the
+/// call. The call membership state is one event per ACCOUNT written by whichever
+/// device wrote last, from its own view of the roster -- so a device's ABSENCE
+/// from it is one writer's opinion and never a departure ([joinedDevices]
+/// measures it lying). A transcript half arrives after an unbounded drain. The
+/// harness's own click is a request, not a leave. Each of those was tried here
+/// as a stand-in for the instant, and each has a sequence that defeats it.
+///
+/// So the instant is given up on and the EVENT is asked for instead, of the one
+/// party that observes it directly. `ActiveCall` logs this line when the
+/// election flips THIS device into recording -- and only then: the write is
+/// guarded on the state actually changing, and `_capturing` is read back off
+/// the recorder (`capture.isRecording`) before the line is printed, so it
+/// states what happened rather than what was wanted. A device logs it when its
+/// sibling stops being the recorder, which is the handover, seen by the device
+/// the handover is FOR.
+///
+/// [STOOD_ASIDE] is its opposite number and is what the survivor says at the
+/// join, when the other device holds the recording. It is not read as a check;
+/// it is printed with the failure so a run that never handed over can be told
+/// from one that never elected at all.
+const TOOK_OVER = 'Recording this call on this device';
+const STOOD_ASIDE = 'Another device of this account is recording this call';
+
+/// Whether a page said it took the recording over AFTER [from].
+///
+/// SCOPED BY POSITION IN THE PAGE'S OWN OUTPUT, not by a clock. The device that
+/// holds the recording at the join says [TOOK_OVER] then too, so an unscoped
+/// search answers about the wrong moment; the caller marks the log's length
+/// before it clicks, and only what the page said afterwards counts.
+const tookOverRecording = (lines, from = 0) =>
+  lines.slice(from).some((l) => l.includes(TOOK_OVER));
+
+/// What a page said about the recording, for a failure message.
+const recordingLinesIn = (lines, from = 0) =>
+  lines.slice(from).filter(
+    (l) => l.includes(TOOK_OVER) || l.includes(STOOD_ASIDE) || l.includes('Recording paused'),
+  );
 
 /// Whether every half the call should produce actually arrived.
 ///
@@ -880,14 +1000,24 @@ function sendAttributionVerdict({ sent, devices, halves }) {
 
 /// Whether this call's key is one no earlier call already wrote a half under.
 ///
+/// THREE things have to hold, and only one of them is about what was found.
+///
 /// A key that could NOT BE READ is not a fresh key. `reusedKey` is only ever
 /// set when there was a key to look an earlier call up by, so `reusedKey ===
 /// null` on its own reads a ring whose key never arrived as a clean call -- and
 /// a build emitting no call key at all would walk straight past the one check
 /// standing between it and a call whose whole transcript the homeserver
 /// silently discards.
-const freshCallKey = (callKey, reused) =>
-  typeof callKey === 'string' && callKey.length > 0 && reused === null;
+///
+/// And a SEARCH THAT DID NOT FINISH is not a clean call either. [halvesUnder]
+/// walks the room back to the key's own event; when it runs out of pages, or
+/// cannot find the event that IS the key, it has read part of the history and
+/// proved nothing about the rest. "No earlier half in what I read" is not "no
+/// earlier half", and the difference is exactly the reuse this exists to catch.
+const freshCallKey = (callKey, reused, searched) =>
+  typeof callKey === 'string' && callKey.length > 0
+  && searched === true
+  && reused === null;
 
 /// Whether every half belongs to THE call this run placed.
 ///
@@ -901,82 +1031,6 @@ const oneCallKeyAcross = (halves, callKey) =>
   halves.length > 0
   && typeof callKey === 'string' && callKey.length > 0
   && halves.every((e) => e.content?.call_key === callKey);
-
-/// Whether the server recorded a HANDOVER: one device gone, the other still in.
-///
-/// WHY IT IS NOT "the live count went down". The live membership state is a
-/// snapshot a race can lie in -- `joinedDevices` measures it doing exactly that
-/// -- so it can say ONE while two devices are in the call. Read that as a
-/// baseline and the whole check collapses: state says one before the click, the
-/// click misses, state still says one, and "one device left and the other
-/// stayed" is reported off a server observable that never changed. That is the
-/// shape this used to have.
-///
-/// So THREE things, and the first is the one that makes it a handover at all:
-///
-///   - the server wrote a NEW membership event for this account after the click
-///     was asked for. Something changed; nothing here is read off a state that
-///     was already in this shape.
-///   - the device that was told to leave is gone from the live membership --
-///     and it is a device the server saw JOIN this call, so its absence is a
-///     departure rather than a device that was never there.
-///   - a DIFFERENT device the server saw join is still in it.
-///
-/// [leaver] may be null when the browser could not be paired with a device id.
-/// The fallback then demands what it can: a live set that really did shrink,
-/// from a baseline observed to hold BOTH devices, down to exactly one of them.
-/// It cannot be satisfied by a baseline that was already one, which is the
-/// hole. If the baseline never held two, this refuses -- an unjudgeable state
-/// is not a handover.
-function handoverVerdict({ changed, live, leaver, joined, baseline }) {
-  const inCall = [...(joined || [])];
-  const now = [...(live || [])];
-  if (!changed || !changed.length) {
-    return {
-      ok: false,
-      why: 'the server recorded no new call-membership event for the account '
-        + 'after the hangup was asked for, so nothing about the call changed',
-    };
-  }
-  if (leaver) {
-    if (!inCall.includes(leaver)) {
-      return {
-        ok: false,
-        why: `the device told to leave (${leaver}) is not one the server saw `
-          + `join this call (${JSON.stringify(inCall)})`,
-      };
-    }
-    if (now.includes(leaver)) {
-      return { ok: false, why: `${leaver} is still in the call (${JSON.stringify(now)})` };
-    }
-    const stayed = now.filter((d) => d !== leaver && inCall.includes(d));
-    return {
-      ok: stayed.length > 0,
-      why: stayed.length
-        ? ''
-        : `${leaver} left, but no other device of the call is still in it `
-          + `(${JSON.stringify(now)})`,
-    };
-  }
-  const base = [...(baseline || [])];
-  if (base.length < 2) {
-    return {
-      ok: false,
-      why: 'the harness could not pair either browser with a device id, and the '
-        + 'live membership never showed BOTH devices before the hangup '
-        + `(${JSON.stringify(base)}) -- so a set that reads as one afterwards `
-        + 'cannot be told from a set that already did',
-    };
-  }
-  return {
-    ok: now.length === 1 && base.includes(now[0]),
-    why: now.length === 1 && base.includes(now[0])
-      ? ''
-      : `the live membership went from ${JSON.stringify(base)} to `
-        + `${JSON.stringify(now)}, which is not one of those two devices left `
-        + 'behind by the other',
-  };
-}
 
 /// How many turns the transcript panel drew.
 ///
@@ -1170,6 +1224,8 @@ async function main() {
   let callKey = null;
   let attemptsUsed = 0;
   let reusedKey = null;
+  let keySearch = { covered: false, halves: [], scanned: 0,
+    why: 'no attempt got as far as looking' };
   for (let attempt = 1; attempt <= attempts; attempt++) {
     attemptsUsed = attempt;
     // Retried against the RING EVENT rather than against the click, which is
@@ -1218,14 +1274,24 @@ async function main() {
     // is nothing to learn from such a call, so the race is run again; the fact
     // that it happened is remembered and reported below rather than retried
     // away.
+    //
+    // The search's OWN RESULT is carried out of the loop beside what it found.
+    // It walks the room back to the key's own event and can run out of pages;
+    // an unfinished search has not learned that no earlier half exists, and
+    // [freshCallKey] refuses it rather than reading it as a clean call.
     const earlier = callKey
       ? await halvesUnder(A1.token, callKey, ring?.origin_server_ts ?? 0)
-      : [];
-    if (earlier.length) reusedKey = { callKey, earlier: earlier.length, attempt };
-    if (inCall.length >= 2 && !earlier.length) break;
+      : { covered: false, halves: [], scanned: 0,
+        why: 'the ring carried no call key, so there was nothing to search by' };
+    keySearch = earlier;
+    if (earlier.halves.length) {
+      reusedKey = { callKey, earlier: earlier.halves.length, attempt };
+    }
+    if (inCall.length >= 2 && earlier.covered && !earlier.halves.length) break;
 
     console.log(`   (attempt ${attempt}: ${inCall.length} of the learner's ` +
-      `devices got in${earlier.length ? ', and the call key was already used' : ''}` +
+      `devices got in${earlier.halves.length ? ', and the call key was already used' : ''}` +
+      `${earlier.covered ? '' : ', and the call-key search did not finish'}` +
       '; tearing the call down and racing again)');
     // All the way down, and PROVEN down. A half-joined call left standing would
     // have the next ring suppressed as busy on one device and answered on the
@@ -1277,26 +1343,41 @@ async function main() {
   // retried away, because a scenario that quietly re-rolls until it gets a clean
   // call would hide exactly the thing a real-stack run is for.
   //
-  // AND A RING WITH NO KEY ON IT FAILS THE SAME CHECK. The lookup below is
+  // AND A RING WITH NO KEY ON IT FAILS THE SAME CHECK. The lookup above is
   // conditional -- there is nothing to look an earlier call up BY without a key
   // -- so for as long as the check read `reusedKey === null` a build that
   // emitted no call key passed it by never being asked. That is the check
   // passing hardest at the moment it is least able to speak, and it is the one
-  // shape this file refuses. See [freshCallKey].
+  // shape this file refuses.
+  //
+  // AND SO DOES A SEARCH THAT DID NOT FINISH. This used to read the last 300
+  // events, which answers "no earlier half in the last 300 events" and was
+  // named for "no earlier call already wrote under this key" -- a reuse older
+  // than the window is invisible to it, and this is the check standing between
+  // the run and a confirmed bug, so the gap is load-bearing. [halvesUnder] now
+  // walks back to the key's OWN event, which is the point before which no half
+  // under that key can exist, and says whether it got there. See
+  // [freshCallKey].
   h.check(s, 'this call has a call key no earlier call already wrote under',
-    freshCallKey(callKey, reusedKey),
+    freshCallKey(callKey, reusedKey, keySearch.covered),
     reusedKey
       ? `attempt ${reusedKey.attempt} rang with call key ${reusedKey.callKey}, ` +
         `which ${reusedKey.earlier} earlier half/halves in this room already ` +
         'carry. Every writer in that call computes the transaction id it ' +
         'already used, the homeserver hands back the earlier event, and the ' +
         'whole of that call\'s transcript is lost with nothing logged'
-      : `the ring carried no call key (${JSON.stringify(callKey)}), so this ` +
-        'was never asked at all: the room was never searched for an earlier ' +
-        'call under this key, and nothing below can be scoped to this call ' +
-        'either -- the halves\' keys, the reader\'s log line and the ' +
-        'transaction ids all name it. A ring whose `m.relates_to` carries no ' +
-        'event id is the finding');
+      : !callKey
+        ? `the ring carried no call key (${JSON.stringify(callKey)}), so this ` +
+          'was never asked at all: the room was never searched for an earlier ' +
+          'call under this key, and nothing below can be scoped to this call ' +
+          'either -- the halves\' keys, the reader\'s log line and the ' +
+          'transaction ids all name it. A ring whose `m.relates_to` carries ' +
+          'no event id is the finding'
+        : `the search for an earlier half under ${callKey} did not finish: ` +
+          `${keySearch.why}. It found none in what it read, which is not the ` +
+          'same answer as there being none -- and this check is what stands ' +
+          'between the run and a call whose whole transcript the homeserver ' +
+          'discards');
 
   if (inCall.length < 2) {
     await A1.page.screenshot({ path: shot('two-devices-nojoin-one.png') }).catch(() => {});
@@ -1383,58 +1464,80 @@ async function main() {
     (paired && !forced ? ` -- it holds ${predicted}, the lower of the two ids` : '') +
     (!paired && !forced ? ' -- A GUESS: neither browser could be paired with a device id' : ''));
 
-  // The baseline the fallback needs, and it is POLLED rather than read once.
-  // The live state under-reports during the join race (see [joinedDevices]); by
-  // now the devices have been in the call for thirty-five seconds and it should
-  // have caught up, but "should" is not a measurement. Whatever it ends up
-  // holding is what [handoverVerdict] is handed, and a baseline that never
-  // showed two is a baseline it refuses to conclude from.
-  let baseline = [];
-  for (let i = 0; i < 8; i++) {
-    baseline = await mx.liveMembershipDevices(A1.token, ROOM_ID, LEARNER);
-    if (baseline.length >= 2) break;
-    await wait(2000);
-  }
-  // Taken BEFORE the click, so "the server wrote a new membership event" means
-  // one that this hangup could have caused.
-  const mHandover = await h.mark(A1.token, ROOM_ID);
-  const observe = async () => handoverVerdict({
-    changed: (await h.since(A1.token, ROOM_ID, mHandover))
-      .filter((e) => e.type === MEMBER && e.sender === LEARNER),
-    live: await mx.liveMembershipDevices(A1.token, ROOM_ID, LEARNER),
-    leaver: leaverDevice,
-    joined: inCall,
-    baseline,
-  });
-  // WHEN THE HANDOVER WAS ASKED FOR, on the clock a half's segments are
-  // positioned on. Read here rather than derived from the membership event the
-  // hangup causes, and the reason is which way an anchor may be wrong: the
-  // survivor takes over on the LiveKit roster change, which can land before the
-  // server writes the membership, so anchoring on the server's record could
-  // sit AFTER the survivor's first chunk and fail a handover that worked. The
-  // click cannot: nothing the leaver's departure caused happened before it was
-  // asked for. So this anchor is at or before the true departure -- it can only
-  // let a little pre-departure audio count, never reject post-handover audio.
+  // AND THIS IS WHERE THE HANDOVER IS ASKED ABOUT -- OF THE DEVICE THAT STAYED,
+  // AND NOT OF THE SERVER.
   //
-  // A LOCAL clock reading, which is what makes it comparable at all. `at_ms` is
-  // the writing browser's own wall clock, uncorrected on the wire, and every
-  // browser here is a Chrome on this laptop.
-  const askedAt = Date.now();
+  // TWO CHECKS USED TO STAND HERE and neither could prove its name, for one
+  // reason: THERE IS NO OBSERVABLE IN THIS STACK FOR THE MOMENT A DEVICE LEFT.
+  //
+  //   - The call membership state is one event per ACCOUNT, written by whichever
+  //     device wrote last, holding that writer's view of the roster. A device's
+  //     absence from it is an opinion, not a departure -- [joinedDevices] above
+  //     measures the state doing exactly that, and the product means it to.
+  //     So "the leaver is gone from the live set" is satisfied by a state that
+  //     was already wrong before the click, and "a new membership event was
+  //     written" is satisfied by the survivor refreshing its own entry.
+  //   - A transcript half arrives after a drain of no fixed length, so its
+  //     arrival cannot date the leave it followed.
+  //   - The harness's own click is a REQUEST. It is not the leave, and a click
+  //     that missed looks exactly like one that worked.
+  //
+  // Each of those was tried as a stand-in for the instant, in successive
+  // rewrites, and each has a sequence that defeats it. The mistake was not the
+  // choice of stand-in: it was keeping a claim whose SUBJECT nothing here can
+  // witness and going looking for a better proxy for it. So the claim changed.
+  //
+  // WHAT IS WITNESSED is what the surviving device SAYS about the recording.
+  // `ActiveCall` logs [TOOK_OVER] when the election flips it into recording,
+  // guarded on the state changing and printed after reading the recorder back --
+  // so the device that stayed announces the takeover itself, from the roster it
+  // can see, and no state read of the harness's stands between. That is the
+  // event the handover exists to cause, and it is the only part of it this run
+  // can prove. The hangup is retried against it rather than against a server
+  // observable, for the same reason.
+  //
+  // WHAT IS NOT PROVED, said plainly rather than folded into a name: that the
+  // leaver left at any particular moment, and that the survivor recorded ALL of
+  // the tail rather than some of it. The 45-second chunker means a 40-second
+  // tail is one chunk, so segment positions cannot separate two seconds of
+  // recording from forty. What catches a survivor that recorded nothing is not
+  // this check but the three below it -- both halves carrying words, each
+  // carrying its own fixture, and the reader assembling from two devices.
+  const survivorName = leaverName === 'two' ? 'one' : 'two';
+  const survivorLog = leaverName === 'two' ? logA1 : logA2;
+  // The page's own output up to this point. What the check looks for has to be
+  // a line THIS hangup produced: the device holding the recording says the same
+  // sentence at the join, and an unscoped search answers about that instead.
+  const saidBefore = survivorLog.length;
   const handed = await h.actUntil(
-    `device ${leaverName} leaves mid-call`,
+    `device ${leaverName} leaves and device ${survivorName} takes the recording over`,
     () => ui.clickPanel(leaver.page, 'hangup').then(() => {}, () => {}),
-    async () => (await observe()).ok,
+    async () => tookOverRecording(survivorLog, saidBefore),
     { tries: 4, gap: 3000 },
   );
-  const verdict = await observe();
+  // A DIAGNOSTIC and deliberately not a check. The live set is the state this
+  // whole block stopped asking, and printing it keeps it available to whoever
+  // reads a failure without letting it stand for anything.
   const stillIn = await mx.liveMembershipDevices(A1.token, ROOM_ID, LEARNER);
-  console.log(`   (after the handover the call holds ${JSON.stringify(stillIn)})`);
-  h.check(s, 'one device left and the other stayed in the call', handed,
-    `${verdict.why || 'the handover was not observed'}. The learner holds ` +
-      `${JSON.stringify(stillIn)}; the server saw ${JSON.stringify(inCall)} ` +
-      `join, and the live membership read ${JSON.stringify(baseline)} before ` +
-      'the hangup. Either the device that was told to leave never did, or ' +
-      'both did, and neither leaves the survivor recording a stretch of its own');
+  console.log(`   (the live membership now reads ${JSON.stringify(stillIn)} -- ` +
+    'a state that under-reports, printed rather than checked)');
+  h.check(s, 'the device that stayed says it took the recording over', handed,
+    `device ${survivorName} (${deviceIds[survivorName] || 'unidentified'}) never ` +
+      `said "${TOOK_OVER}" after device ${leaverName} was told to hang up. What ` +
+      `it did say about the recording: ${JSON.stringify(recordingLinesIn(survivorLog, saidBefore))}. ` +
+      'Either the hangup never took, or the election did not re-run, or it ran ' +
+      'and left the recording where it was. The recorder is the lower of ' +
+      `${JSON.stringify([...inCall].sort())}, which is ${predicted}` +
+      (paired
+        ? `, and device ${leaverName} is ${leaverDevice} -- so the device told ` +
+          'to leave was the one holding it'
+        : ', and neither browser could be paired with a device id, so the ' +
+          'leaver was a guess: set CALL_HANDOVER_DEVICE to the other one and ' +
+          'run again') +
+      '. NOTE the one local condition that could explain it: this stack\'s ' +
+      'LiveKit token lacks CanUpdateOwnMetadata, and the app says so itself -- ' +
+      '"the recorder election is running without its capability layer" is in ' +
+      'the log written below on every run here');
 
   // Long enough for the survivor's own fixture to be transcribed. Its wav
   // repeats the same sentences three times over precisely so that this
@@ -1712,66 +1815,26 @@ async function main() {
     mine.length > 0 && new Set(mine.map((e) => e.event_id)).size === mine.length,
     `event ids: ${JSON.stringify(mine.map((e) => e.event_id))}`);
 
-  // AND THE SURVIVOR RECORDED WHAT CAME AFTER.
+  // NOTHING HERE ASKS THE SURVIVOR'S HALF WHEN IT RECORDED, and the absence is
+  // deliberate. A check stood here that read `chunks_captured > 0` -- a
+  // whole-call total a device accumulates even while standing aside, since a
+  // non-recorder captures and discards -- and then one that required a segment
+  // positioned after the harness's own click. Neither proved "the rest of the
+  // call": the first is not about the tail at all, and the second is satisfied
+  // by a chunk that straddles the click, which is audio from before the leave.
   //
-  // The handover is only a handover if the device that stayed picked the
-  // recording up: `CaptureElection` re-runs whenever the roster changes, and
-  // with its only sibling gone the survivor ranks first and records. A survivor
-  // that recorded nothing after it means the learner went on talking into a
-  // call nobody was recording, for as long as the call lasted.
+  // The tail is 40 seconds and `PcmChunker` targets 45, so the survivor's tail
+  // is ONE chunk whose position sits at its start. There is no reading of it
+  // that separates a survivor which recorded two seconds from one which
+  // recorded forty, and no name for such a check that is not more than the
+  // evidence. It is gone rather than reworded.
   //
-  // A WHOLE-HALF CAPTURE COUNT CANNOT SAY THIS, and it is what stood here.
-  // `chunks_captured > 0` is a total over the entire call, and a device that is
-  // not the recorder still captures and then DISCARDS -- the join race hands
-  // both devices a roster that momentarily lacks the other, so the survivor
-  // routinely holds a positive count from BEFORE the handover. A survivor that
-  // took those chunks, stood aside, and then never took the recording over
-  // passed the check meant to catch exactly that -- which is the one real
-  // failure a run of this file has found.
-  //
-  // So it is asked of the segment POSITIONS, which exist only for audio that
-  // was delivered and transcribed, against the moment the hangup was asked for.
-  // See [recordedAfterVerdict], including what this still does not prove: that
-  // the survivor recorded ALL of the tail rather than some of it. The name says
-  // AFTER for that reason.
-  //
-  // Asked only when a device really did leave one behind.
-  const survivorHalf = handed
-    ? mine.find((e) => stillIn.includes(e.content?.device_id))
-    : null;
-  if (!handed) {
-    h.skipped(s, 'the device that stayed recorded the call AFTER the handover',
-      'no handover happened, so no device was left to take the recording over');
-  } else if (!survivorHalf) {
-    // A FAILURE, not a shrug. Every fact this needs is proved above by a check
-    // of its own -- the account wrote two halves, each NAMES its device, and
-    // those devices are the ones the server saw in the call -- so once a device
-    // has stayed, one of the halves is its. No half matching it means one of
-    // those checks is lying or the device that stayed wrote nothing, and both
-    // are findings. It used to skip here, which reported the pre-keying world
-    // (a half naming no device) as a question rather than as the answer.
-    h.check(s, 'the device that stayed recorded the call AFTER the handover',
-      false,
-      `a device stayed (${stillIn.join(', ')}) but no half names it ` +
-        `(${JSON.stringify(mine.map((e) => e.content?.device_id))}). The ` +
-        'survivor either wrote no half at all, or wrote one that names a ' +
-        'device the server never saw in this call');
-  } else {
-    const rest = recordedAfterVerdict(survivorHalf, askedAt);
-    h.check(s, 'the device that stayed recorded the call AFTER the handover',
-      rest.ok,
-      `the surviving device ${survivorHalf.content?.device_id} ${rest.why}, ` +
-        `over the ${HANDOVER_TAIL_MS / 1000}s it held the call alone. Its own ` +
-        `accounting: captured ${survivorHalf.content?.chunks_captured}, ` +
-        `refused ${survivorHalf.content?.capture_refused}, lost ` +
-        `${survivorHalf.content?.chunks_lost}, dropped ` +
-        `${survivorHalf.content?.capture_dropped_ms}ms. Everything said after ` +
-        'the other device left went unrecorded. NOTE the one local condition ' +
-        'that could explain it: this stack\'s LiveKit token lacks ' +
-        'CanUpdateOwnMetadata, and the app says so itself -- "the recorder ' +
-        'election is running without its capability layer" is in the log ' +
-        'written below on every run here');
-  }
+  // What the survivor's half is still asked, elsewhere and honestly: that it
+  // carries words at all (`BOTH of the learner devices transcribed`), that the
+  // words are its OWN fixture (`each half carries the fixture its OWN browser
+  // played`), and that the reader assembled the account's half from two
+  // devices. A survivor that recorded nothing fails all three -- which is how
+  // the one real failure a run of this file has found was caught.
 
   console.log('[6] which device said what');
   const byDevice = new Map();
@@ -2006,21 +2069,20 @@ async function main() {
   // across ACCOUNTS would put the peer's words under the learner and this file
   // would read it as a successful device merge.
   //
-  // ONE CHECK, and it fails on an empty comparison as well as on a crossing.
-  // Splitting the two put "there was nothing to compare" in the SKIP column,
-  // where it cost nothing: a peer whose half came back wordless -- which is
-  // exactly what a peer that never drained produces -- turned the only
-  // cross-account check in the file into a line nobody reads.
-  const peerWords = new Set(theirs.flatMap((e) => [...words(spoken(e))]));
-  const crossed = PEER_SAYS.filter((w) => allMine.has(w));
-  h.check(s, "the peer's speech did not end up under the learner",
-    peerWords.size > 0 && allMine.size > 0 && crossed.length === 0,
-    crossed.length
-      ? `the learner's half carries the peer's words ${crossed.join(' ')} -- the `
-        + 'merge crossed accounts, not devices'
-      : `nothing to compare: the learner has ${allMine.size} word(s), the peer `
-        + `${peerWords.size}. A comparison against an empty set cannot find a `
-        + 'crossing, so it may not report one was ruled out');
+  // ONE CHECK, and it fails on a detector that cannot detect as well as on a
+  // crossing. Splitting the two put "there was nothing to compare" in the SKIP
+  // column, where it cost nothing.
+  //
+  // AND THE DETECTOR IS VALIDATED FIRST. Requiring only that the peer said
+  // SOMETHING left the search itself unchecked: PEER_SAYS is what this file
+  // expects the peer to say, and if the wav changed or speech-to-text caught
+  // different words, the search runs over words nobody spoke and comes back
+  // empty for a reason that has nothing to do with the product. The peer's own
+  // half now has to carry the sentinels before their absence under the learner
+  // is allowed to mean anything. See [peerCrossingVerdict].
+  const peerCrossing = peerCrossingVerdict(theirs, allMine);
+  h.check(s, "the peer's own fixture words reached its half and NOT the learner's",
+    peerCrossing.ok, peerCrossing.why);
 
   console.log('[8] no unhandled errors on any of the three');
   for (const p of [A1, A2, B]) {
@@ -2072,6 +2134,8 @@ if (require.main === module) {
 module.exports = {
   txnIdOf,
   transcriptSendsOf,
+  halvesUnder,
+  KEY_SEARCH_PAGES,
   recorderAmong,
   mergeCountsIn,
   provesTwoDeviceMerge,
@@ -2085,8 +2149,9 @@ module.exports = {
   fixtureIn,
   differentFixturesVerdict,
   fixtureMatchesDeviceVerdict,
-  recordedAfterVerdict,
-  handoverVerdict,
+  peerCrossingVerdict,
+  tookOverRecording,
+  recordingLinesIn,
   countTurns,
   spoken,
   words,
