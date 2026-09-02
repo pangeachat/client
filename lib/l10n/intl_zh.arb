@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-01 15:39:54.896716",
+    "@@last_modified": "2026-09-01 17:05:30.561404",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9840,5 +9840,9 @@
     "errorRateLimited": "我们正在加载大量内容。请稍候片刻再试。",
     "noPermissionToInviteUsers": "您无权在此邀请成员。",
     "mapPinsKeyboardHint": "使用方向键在地图上的活动之间移动，然后按 Enter 键打开一个活动。",
-    "selectMessageLabel": "选择消息"
+    "selectMessageLabel": "选择消息",
+    "archivedChat": "已归档聊天",
+    "activityReview": "活动回顾",
+    "activityPanel": "活动",
+    "coursePage": "课程页面"
 }

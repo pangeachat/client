@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:54.979446",
+    "@@last_modified": "2026-09-01 17:05:31.125960",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9946,5 +9946,9 @@
     "errorRateLimited": "我們正在載入大量內容。請稍候片刻再試一次。",
     "noPermissionToInviteUsers": "您沒有權限邀請成員加入此處。",
     "mapPinsKeyboardHint": "使用方向鍵在地圖上的活動之間移動，然後按 Enter 鍵開啟活動。",
-    "selectMessageLabel": "選擇訊息"
+    "selectMessageLabel": "選擇訊息",
+    "archivedChat": "已封存的聊天",
+    "activityReview": "活動回顧",
+    "activityPanel": "活動",
+    "coursePage": "課程頁面"
 }

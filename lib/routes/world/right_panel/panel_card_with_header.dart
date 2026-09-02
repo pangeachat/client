@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 
@@ -24,24 +23,23 @@ class PanelCardWithHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      label: L10n.of(context).pageLabel(title),
-      container: true,
-      child: PanelCard(
-        child: Column(
-          children: [
-            PanelHeader(
-              leading: IconButton(
-                tooltip: tooltip,
-                icon: Icon(icon),
-                onPressed: onLeading,
-              ),
-              title: title,
-              trailing: trailing,
+    // No Semantics group of its own: the panel dispatchers author the one
+    // named group every workspace panel gets (#8729) — a second one here
+    // nested a group inside a group on every headered panel.
+    return PanelCard(
+      child: Column(
+        children: [
+          PanelHeader(
+            leading: IconButton(
+              tooltip: tooltip,
+              icon: Icon(icon),
+              onPressed: onLeading,
             ),
-            Expanded(child: child),
-          ],
-        ),
+            title: title,
+            trailing: trailing,
+          ),
+          Expanded(child: child),
+        ],
       ),
     );
   }

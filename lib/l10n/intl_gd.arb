@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-01 15:39:50.477431",
+    "@@last_modified": "2026-09-01 17:05:14.624141",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Tha sinn a’ luchdachadh mòran an-dràsta. Fuirich mionaid agus feuch a-rithist, mas e do thoil e.",
     "noPermissionToInviteUsers": "Chan eil cead agad buill a thoirt a-steach an seo.",
     "mapPinsKeyboardHint": "Cleachd na saigheadan gus gluasad eadar gnìomhan air a’ mhapa, agus brùth Enter gus fear fhosgladh.",
-    "selectMessageLabel": "Tagh teachdaireachd"
+    "selectMessageLabel": "Tagh teachdaireachd",
+    "archivedChat": "Còmhradh tasgaichte",
+    "activityReview": "Ath-sgrùdadh gnìomhachd",
+    "activityPanel": "Gnìomhachd",
+    "coursePage": "Duilleag cùrsa"
 }

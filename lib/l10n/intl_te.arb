@@ -1325,7 +1325,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-01 15:39:54.194153",
+    "@@last_modified": "2026-09-01 17:05:31.807479",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10790,5 +10790,9 @@
     "errorRateLimited": "మేము ప్రస్తుతం చాలా లోడ్ చేస్తున్నాము. దయచేసి కొద్దిసేపు వేచి ఉండి, మళ్లీ ప్రయత్నించండి.",
     "noPermissionToInviteUsers": "ఇక్కడ సభ్యులను ఆహ్వానించడానికి మీకు అనుమతి లేదు.",
     "mapPinsKeyboardHint": "మ్యాప్‌లోని కార్యకలాపాల మధ్య తరలించడానికి బాణం కీలను ఉపయోగించండి మరియు ఒకదాన్ని తెరవడానికి Enter నొక్కండి.",
-    "selectMessageLabel": "సందేశాన్ని ఎంచుకోండి"
+    "selectMessageLabel": "సందేశాన్ని ఎంచుకోండి",
+    "archivedChat": "ఆర్కైవ్ చేసిన చాట్",
+    "activityReview": "కార్యకలాపాల సమీక్ష",
+    "activityPanel": "కార్యకలాపం",
+    "coursePage": "కోర్సు పేజీ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-01 15:39:50.882198",
+    "@@last_modified": "2026-09-01 17:05:17.039485",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Tam sim no peb tab tom thauj ntau yam. Thov tos ib pliag mam sim dua.",
     "noPermissionToInviteUsers": "Koj tsis muaj cai caw lwm tus tuaj koom ntawm no.",
     "mapPinsKeyboardHint": "Siv cov yuam sij xub kom txav mus los ntawm cov haujlwm hauv daim ntawv qhia, thiab nias Enter kom qhib ib qho.",
-    "selectMessageLabel": "Xaiv lus"
+    "selectMessageLabel": "Xaiv lus",
+    "archivedChat": "Cov lus sib tham qub",
+    "activityReview": "Rov saib dua tej yam ua",
+    "activityPanel": "Kev ua ub no",
+    "coursePage": "Nplooj ntawv kawm"
 }

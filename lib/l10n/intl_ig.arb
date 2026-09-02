@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-01 15:39:51.415833",
+    "@@last_modified": "2026-09-01 17:05:18.449172",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Anyị na-ebu ọtụtụ ihe ugbu a. Biko chere obere oge wee nwaa ọzọ.",
     "noPermissionToInviteUsers": "Ị nweghị ikike ịkpọ ndị otu ebe a.",
     "mapPinsKeyboardHint": "Jiri igodo akụ gaa n'etiti ihe omume dị na maapụ, wee pịa Tinye ka imepe otu.",
-    "selectMessageLabel": "Họrọ ozi"
+    "selectMessageLabel": "Họrọ ozi",
+    "archivedChat": "Nkata echekwara",
+    "activityReview": "Nyocha ọrụ",
+    "activityPanel": "Ọrụ",
+    "coursePage": "Ibe ọmụmụ"
 }

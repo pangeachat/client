@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-01 15:39:54.346409",
+    "@@last_modified": "2026-09-01 17:05:28.540001",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Re ntse re laolla haholo hona joale. Ka kopo, ema hanyane ebe o leka hape.",
     "noPermissionToInviteUsers": "Ha o na tumello ya ho mema ditho mona.",
     "mapPinsKeyboardHint": "Sebelisa metsu ho tsamaea lipakeng tsa mesebetsi 'mapeng, 'me u tobetse Enter ho bula o mong.",
-    "selectMessageLabel": "Kgetha molaetsa"
+    "selectMessageLabel": "Kgetha molaetsa",
+    "archivedChat": "Puisano e bolokilweng",
+    "activityReview": "Tlhahlobo ya tshebetso",
+    "activityPanel": "Tshebetso",
+    "coursePage": "Leqephe la thupelo"
 }

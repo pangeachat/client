@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-01 15:39:52.519050",
+    "@@last_modified": "2026-09-01 17:05:22.810744",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Kami sedang memuat banyak data sekarang. Sila tunggu sebentar dan cuba lagi.",
     "noPermissionToInviteUsers": "Anda tidak mempunyai kebenaran untuk menjemput ahli di sini.",
     "mapPinsKeyboardHint": "Gunakan kekunci anak panah untuk bergerak antara aktiviti pada peta, dan tekan Enter untuk membuka satu.",
-    "selectMessageLabel": "Pilih mesej"
+    "selectMessageLabel": "Pilih mesej",
+    "archivedChat": "Sembang yang diarkibkan",
+    "activityReview": "Semakan aktiviti",
+    "activityPanel": "Aktiviti",
+    "coursePage": "Halaman kursus"
 }

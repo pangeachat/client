@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-01 15:39:49.226406",
+    "@@last_modified": "2026-09-01 17:05:12.203660",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Trenutno učitavamo mnogo toga. Sačekajte trenutak i pokušajte ponovo.",
     "noPermissionToInviteUsers": "Nemate dozvolu za pozivanje članova ovdje.",
     "mapPinsKeyboardHint": "Koristite tipke sa strelicama za kretanje između aktivnosti na mapi, i pritisnite Enter da otvorite jednu.",
-    "selectMessageLabel": "Odaberite poruku"
+    "selectMessageLabel": "Odaberite poruku",
+    "archivedChat": "Arhivirani razgovor",
+    "activityReview": "Pregled aktivnosti",
+    "activityPanel": "Aktivnost",
+    "coursePage": "Stranica kursa"
 }

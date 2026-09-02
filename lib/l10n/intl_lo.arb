@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-01 15:39:52.089728",
+    "@@last_modified": "2026-09-01 17:05:24.396280",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "ພວກເຮົາກຳລັງໂຫຼດຫຼາຍຢ່າງໃນຕອນນີ້. ກະລຸນາລໍຖ້າຈັກໜ້ອຍແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
     "noPermissionToInviteUsers": "ທ່ານບໍ່ມີສິດໃນການເຊີນສະມາຊິກມາທີ່ນີ້.",
     "mapPinsKeyboardHint": "ໃຊ້ປຸ່ມລູກສອນເພື່ອຍ້າຍລະຫວ່າງກິດຈະກຳຕ່າງໆໃນແຜນທີ່, ແລະກົດ Enter ເພື່ອເປີດກິດຈະກຳ.",
-    "selectMessageLabel": "ເລືອກຂໍ້ຄວາມ"
+    "selectMessageLabel": "ເລືອກຂໍ້ຄວາມ",
+    "archivedChat": "ແຊັດທີ່ເກັບໄວ້",
+    "activityReview": "ກວດສອບກິດຈະກຳ",
+    "activityPanel": "ກິດຈະກຳ",
+    "coursePage": "ໜ້າຫຼັກສູດ"
 }

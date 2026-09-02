@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:53.240619",
+    "@@last_modified": "2026-09-01 17:05:25.865015",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9840,5 +9840,9 @@
     "errorRateLimited": "Estamos carregando muita coisa agora. Por favor, aguarde um momento e tente novamente.",
     "noPermissionToInviteUsers": "Você não tem permissão para convidar membros aqui.",
     "mapPinsKeyboardHint": "Use as setas para mover entre as atividades no mapa e pressione Enter para abrir uma.",
-    "selectMessageLabel": "Selecionar mensagem"
+    "selectMessageLabel": "Selecionar mensagem",
+    "archivedChat": "Chat arquivado",
+    "activityReview": "Revisão de atividade",
+    "activityPanel": "Atividade",
+    "coursePage": "Página do curso"
 }

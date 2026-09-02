@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-01 15:39:53.156754",
+    "@@last_modified": "2026-09-01 17:05:25.114009",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "موږ اوس مهال ډېر څه باروو. مهرباني وکړئ یوه شیبه انتظار وکړئ او بیا هڅه وکړئ.",
     "noPermissionToInviteUsers": "تاسو دلته د غړو بللو اجازه نلرئ.",
     "mapPinsKeyboardHint": "د نقشې پر فعالیتونو د تګ راتګ لپاره د غشي کیلي وکاروئ، او د یوې پرانیستلو لپاره Enter کېکاږئ.",
-    "selectMessageLabel": "پیغام وټاکئ"
+    "selectMessageLabel": "پیغام وټاکئ",
+    "archivedChat": "آرشیف شوی چیٹ",
+    "activityReview": "فعالیت بیاکتنه",
+    "activityPanel": "فعالیت",
+    "coursePage": "د کورس پاڼه"
 }

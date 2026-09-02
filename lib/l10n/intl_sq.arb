@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-01 15:39:53.764330",
+    "@@last_modified": "2026-09-01 17:05:28.037883",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Po ngarkojmë shumë tani. Ju lutemi prisni një moment dhe provoni përsëri.",
     "noPermissionToInviteUsers": "Nuk keni leje të ftoni anëtarë këtu.",
     "mapPinsKeyboardHint": "Përdorni tastet me shigjeta për të lëvizur mes aktiviteteve në hartë dhe shtypni Enter për të hapur njërin.",
-    "selectMessageLabel": "Zgjidh mesazhin"
+    "selectMessageLabel": "Zgjidh mesazhin",
+    "archivedChat": "Bisedë e arkivuar",
+    "activityReview": "Rishikimi i aktivitetit",
+    "activityPanel": "Aktiviteti",
+    "coursePage": "Faqja e kursit"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-01 15:39:52.350121",
+    "@@last_modified": "2026-09-01 17:05:22.135352",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "ഞങ്ങൾ ഇപ്പോൾ ധാരാളം ലോഡ് ചെയ്യുന്നുണ്ട്. ദയവായി അൽപസമയം കാത്തിരുന്ന് വീണ്ടും ശ്രമിക്കുക.",
     "noPermissionToInviteUsers": "ഇവിടെ അംഗങ്ങളെ ക്ഷണിക്കാൻ നിങ്ങൾക്ക് അനുമതിയില്ല.",
     "mapPinsKeyboardHint": "മാപ്പിലെ പ്രവർത്തനങ്ങൾക്കിടയിൽ നീങ്ങാൻ അമ്പടയാള കീകൾ ഉപയോഗിക്കുക, ഒരെണ്ണം തുറക്കാൻ Enter അമർത്തുക.",
-    "selectMessageLabel": "സന്ദേശം തിരഞ്ഞെടുക്കുക"
+    "selectMessageLabel": "സന്ദേശം തിരഞ്ഞെടുക്കുക",
+    "archivedChat": "ആർക്കൈവ് ചെയ്ത ചാറ്റ്",
+    "activityReview": "പ്രവർത്തന അവലോകനം",
+    "activityPanel": "പ്രവർത്തനം",
+    "coursePage": "കോഴ്‌സ് പേജ്"
 }

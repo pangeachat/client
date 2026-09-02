@@ -1938,7 +1938,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-01 15:39:51.595784",
+    "@@last_modified": "2026-09-01 17:05:20.938684",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10740,5 +10740,9 @@
     "errorRateLimited": "ამჟამად ბევრი რამ იტვირთება. გთხოვთ, ცოტა ხანი მოიცადოთ და ხელახლა სცადოთ.",
     "noPermissionToInviteUsers": "აქ წევრების მოწვევის ნებართვა არ გაქვთ.",
     "mapPinsKeyboardHint": "გამოიყენეთ ისრის ღილაკები რუკაზე აქტივობებს შორის გადასაადგილებლად და Enter-ზე დააჭირეთ ერთ-ერთის გასახსნელად.",
-    "selectMessageLabel": "შეტყობინების არჩევა"
+    "selectMessageLabel": "შეტყობინების არჩევა",
+    "archivedChat": "დაარქივებული ჩეთი",
+    "activityReview": "აქტივობის მიმოხილვა",
+    "activityPanel": "აქტივობა",
+    "coursePage": "კურსის გვერდი"
 }

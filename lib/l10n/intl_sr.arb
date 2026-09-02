@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:53.741196",
+    "@@last_modified": "2026-09-01 17:05:29.900287",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10789,5 +10789,9 @@
     "errorRateLimited": "Trenutno se mnogo toga učitava. Sačekajte trenutak i pokušajte ponovo.",
     "noPermissionToInviteUsers": "Nemate dozvolu da pozivate članove ovde.",
     "mapPinsKeyboardHint": "Koristite tastere sa strelicama za kretanje između aktivnosti na mapi, a pritisnite Enter da biste otvorili jednu.",
-    "selectMessageLabel": "Izaberite poruku"
+    "selectMessageLabel": "Izaberite poruku",
+    "archivedChat": "Arhivirani razgovor",
+    "activityReview": "Pregled aktivnosti",
+    "activityPanel": "Aktivnost",
+    "coursePage": "Stranica kursa"
 }

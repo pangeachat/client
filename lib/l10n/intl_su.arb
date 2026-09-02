@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-01 15:39:53.808265",
+    "@@last_modified": "2026-09-01 17:05:28.090393",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Urang nuju ngamuat seueur ayeuna. Mangga antosan sakedap teras cobian deui.",
     "noPermissionToInviteUsers": "Anjeun teu gaduh idin pikeun ngajak anggota ka dieu.",
     "mapPinsKeyboardHint": "Anggo kenop panah pikeun mindahkeun antara kagiatan dina peta, teras pencét Enter pikeun muka hiji.",
-    "selectMessageLabel": "Pilih pesen"
+    "selectMessageLabel": "Pilih pesen",
+    "archivedChat": "Obrolan nu diarsipkeun",
+    "activityReview": "Tinjauan kagiatan",
+    "activityPanel": "Kagiatan",
+    "coursePage": "Kaca kursus"
 }

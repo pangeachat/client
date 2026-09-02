@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-01 15:39:51.000973",
+    "@@last_modified": "2026-09-01 17:05:16.608269",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10276,5 +10276,9 @@
     "errorRateLimited": "Trenutno je veliko opterećenje. Pričekajte trenutak i pokušajte ponovno.",
     "noPermissionToInviteUsers": "Nemate dopuštenje za pozivanje članova ovdje.",
     "mapPinsKeyboardHint": "Koristite tipke sa strelicama za kretanje između aktivnosti na karti, a pritisnite Enter za otvaranje jedne.",
-    "selectMessageLabel": "Odaberi poruku"
+    "selectMessageLabel": "Odaberi poruku",
+    "archivedChat": "Arhivirani razgovor",
+    "activityReview": "Pregled aktivnosti",
+    "activityPanel": "Aktivnost",
+    "coursePage": "Stranica tečaja"
 }

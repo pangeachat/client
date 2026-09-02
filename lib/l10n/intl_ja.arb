@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-01 15:39:51.422411",
+    "@@last_modified": "2026-09-01 17:05:18.537447",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10609,5 +10609,9 @@
     "errorRateLimited": "現在、多くのリクエストを処理しています。しばらく待ってからもう一度お試しください。",
     "noPermissionToInviteUsers": "ここにメンバーを招待する権限がありません。",
     "mapPinsKeyboardHint": "矢印キーでマップ上のアクティビティ間を移動し、Enterキーを押して開きます。",
-    "selectMessageLabel": "メッセージを選択"
+    "selectMessageLabel": "メッセージを選択",
+    "archivedChat": "アーカイブ済みチャット",
+    "activityReview": "アクティビティレビュー",
+    "activityPanel": "アクティビティ",
+    "coursePage": "コースページ"
 }

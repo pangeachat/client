@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-01 15:39:51.920513",
+    "@@last_modified": "2026-09-01 17:05:21.808979",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "ئێستا زۆر شت بار دەکەین. تکایە کەمێک چاوەڕێ بکە و دووبارە هەوڵ بدەوە.",
     "noPermissionToInviteUsers": "ڕێگەت پێنادرێت ئەندامان بانگهێشت بکەیت بۆ ئێرە.",
     "mapPinsKeyboardHint": "کلیلەکانی ئاڕاستە بەکاربهێنە بۆ جووڵانەوە لەنێوان چالاکییەکانی سەر نەخشەکە، و Enter دابگرە بۆ کردنەوەی یەکێکیان.",
-    "selectMessageLabel": "پەیام هەڵبژێرە"
+    "selectMessageLabel": "پەیام هەڵبژێرە",
+    "archivedChat": "چاتی ئەرشیفکراو",
+    "activityReview": "پێداچوونەوەی چالاکی",
+    "activityPanel": "چالاکی",
+    "coursePage": "پەڕەی خول"
 }

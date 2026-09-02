@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-01 15:39:49.533506",
+    "@@last_modified": "2026-09-01 17:05:13.121552",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10146,5 +10146,9 @@
     "errorRateLimited": "نحن نحمّل الكثير حاليًا. يرجى الانتظار لحظة والمحاولة مرة أخرى.",
     "noPermissionToInviteUsers": "ليس لديك إذن لدعوة أعضاء هنا.",
     "mapPinsKeyboardHint": "استخدم مفاتيح الأسهم للتنقل بين الأنشطة على الخريطة، واضغط على Enter لفتح أحدها.",
-    "selectMessageLabel": "تحديد رسالة"
+    "selectMessageLabel": "تحديد رسالة",
+    "archivedChat": "الدردشة المؤرشفة",
+    "activityReview": "مراجعة النشاط",
+    "activityPanel": "النشاط",
+    "coursePage": "صفحة الدورة التدريبية"
 }

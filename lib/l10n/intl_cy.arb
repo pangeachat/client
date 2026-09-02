@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-01 15:39:49.834112",
+    "@@last_modified": "2026-09-01 17:05:13.399910",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Rydym yn llwytho llawer ar hyn o bryd. Arhoswch funud a cheisiwch eto.",
     "noPermissionToInviteUsers": "Does gennych chi ddim caniatâd i wahodd aelodau yma.",
     "mapPinsKeyboardHint": "Defnyddiwch y bysellau saeth i symud rhwng gweithgareddau ar y map, a gwasgwch Enter i agor un.",
-    "selectMessageLabel": "Dewis neges"
+    "selectMessageLabel": "Dewis neges",
+    "archivedChat": "Sgwrs wedi'i harchifo",
+    "activityReview": "Adolygiad gweithgaredd",
+    "activityPanel": "Gweithgaredd",
+    "coursePage": "Tudalen cwrs"
 }

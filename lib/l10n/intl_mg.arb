@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-01 15:39:52.486419",
+    "@@last_modified": "2026-09-01 17:05:21.910698",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Misy entana maro alaina izao. Andraso kely ary avereno indray.",
     "noPermissionToInviteUsers": "Tsy manana alalana hanasa mpikambana eto ianao.",
     "mapPinsKeyboardHint": "Ampiasao ny zana-tsipìka hivezivezena eo amin'ireo asa eo amin'ny sarintany, ary tsindrio ny Enter hanokafana iray.",
-    "selectMessageLabel": "Fidio hafatra"
+    "selectMessageLabel": "Fidio hafatra",
+    "archivedChat": "Chat voatahiry",
+    "activityReview": "Famerenana ny asa",
+    "activityPanel": "Asa",
+    "coursePage": "Pejy fampianarana"
 }

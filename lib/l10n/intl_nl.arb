@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:52.917148",
+    "@@last_modified": "2026-09-01 17:05:24.747779",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9840,5 +9840,9 @@
     "errorRateLimited": "We laden momenteel veel. Wacht even en probeer het opnieuw.",
     "noPermissionToInviteUsers": "Je hebt hier geen toestemming om leden uit te nodigen.",
     "mapPinsKeyboardHint": "Gebruik de pijltjestoetsen om tussen activiteiten op de kaart te bewegen en druk op Enter om er een te openen.",
-    "selectMessageLabel": "Bericht selecteren"
+    "selectMessageLabel": "Bericht selecteren",
+    "archivedChat": "Gearchiveerde chat",
+    "activityReview": "Activiteitenoverzicht",
+    "activityPanel": "Activiteit",
+    "coursePage": "Cursuspagina"
 }

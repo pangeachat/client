@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-01 15:39:52.958544",
+    "@@last_modified": "2026-09-01 17:05:25.635842",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Tikukweza zambiri pakali pano. Chonde dikirani pang'ono ndikuyesanso.",
     "noPermissionToInviteUsers": "Mulibe chilolezo choitanira anthu kuno.",
     "mapPinsKeyboardHint": "Gwiritsani ntchito mivi yoyenda pakati pa zochitika pa mapu, ndikusindikiza Enter kuti mutsegule imodzi.",
-    "selectMessageLabel": "Sankhani uthenga"
+    "selectMessageLabel": "Sankhani uthenga",
+    "archivedChat": "Macheza osungidwa",
+    "activityReview": "Kuwunika zochitika",
+    "activityPanel": "Zochitika",
+    "coursePage": "Tsamba la maphunziro"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-01 15:39:49.312725",
+    "@@last_modified": "2026-09-01 17:05:12.471957",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "በአሁኑ ጊዜ ብዙ እየጫንን ነው። እባክዎ ትንሽ ይጠብቁ እና እንደገና ይሞክሩ።",
     "noPermissionToInviteUsers": "እዚህ አባላትን ለመጋበዝ ፍቃድ የለዎትም።",
     "mapPinsKeyboardHint": "በካርታው ላይ ባሉ እንቅስቃሴዎች መካከል ለመንቀሳቀስ የቀስት ቁልፎችን ይጠቀሙ እና አንዱን ለመክፈት አስገባን ይጫኑ።",
-    "selectMessageLabel": "መልዕክት ምረጥ"
+    "selectMessageLabel": "መልዕክት ምረጥ",
+    "archivedChat": "የታገደ ውይይት",
+    "activityReview": "የእንቅስቃሴ ግምገማ",
+    "activityPanel": "እንቅስቃሴ",
+    "coursePage": "የኮርስ ገጽ"
 }

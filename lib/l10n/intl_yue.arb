@@ -1264,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-01 15:39:54.791613",
+    "@@last_modified": "2026-09-01 17:05:31.231270",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10797,5 +10797,9 @@
     "errorRateLimited": "我哋而家載入好多嘢。請稍等片刻再試。",
     "noPermissionToInviteUsers": "你沒有權限邀請成員加入。",
     "mapPinsKeyboardHint": "使用方向鍵在地圖上的活動之間移動，然後按 Enter 鍵打開一個活動。",
-    "selectMessageLabel": "選擇訊息"
+    "selectMessageLabel": "選擇訊息",
+    "archivedChat": "已封存嘅對話",
+    "activityReview": "活動回顧",
+    "activityPanel": "活動",
+    "coursePage": "課程頁面"
 }

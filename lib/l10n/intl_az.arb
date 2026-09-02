@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-01 15:39:49.334467",
+    "@@last_modified": "2026-09-01 17:05:13.226030",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2244,5 +2244,9 @@
     "errorRateLimited": "Hazırda çoxlu məlumat yükləyirik. Zəhmət olmasa bir az gözləyin və yenidən cəhd edin.",
     "noPermissionToInviteUsers": "Bura üzv dəvət etmək icazəniz yoxdur.",
     "mapPinsKeyboardHint": "Xəritədəki fəaliyyətlər arasında hərəkət etmək üçün ox düymələrindən istifadə edin və birini açmaq üçün Enter düyməsini basın.",
-    "selectMessageLabel": "Mesajı seçin"
+    "selectMessageLabel": "Mesajı seçin",
+    "archivedChat": "Arxivlənmiş söhbət",
+    "activityReview": "Fəaliyyətə baxış",
+    "activityPanel": "Fəaliyyət",
+    "coursePage": "Kurs səhifəsi"
 }

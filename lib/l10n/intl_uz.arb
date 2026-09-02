@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-01 15:39:54.366482",
+    "@@last_modified": "2026-09-01 17:05:29.794497",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9844,5 +9844,9 @@
     "errorRateLimited": "Hozirda juda koʻp narsalarni yuklayapmiz. Iltimos, biroz kutib turing va qayta urinib koʻring.",
     "noPermissionToInviteUsers": "Bu yerga aʼzolarni taklif qilishga ruxsatingiz yoʻq.",
     "mapPinsKeyboardHint": "Xaritadagi mashg'ulotlar orasida harakatlanish uchun o'q tugmalaridan foydalaning va birini ochish uchun Enter tugmasini bosing.",
-    "selectMessageLabel": "Xabarni tanlang"
+    "selectMessageLabel": "Xabarni tanlang",
+    "archivedChat": "Arxivlangan chat",
+    "activityReview": "Faoliyatni ko'rib chiqish",
+    "activityPanel": "Faoliyat",
+    "coursePage": "Kurs sahifasi"
 }
