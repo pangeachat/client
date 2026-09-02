@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-01 17:05:21.610299",
+    "@@last_modified": "2026-09-02 11:41:22.113164",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10476,5 +10476,6 @@
     "archivedChat": "Comhrá cartlainne",
     "activityReview": "Athbhreithniú gníomhaíochta",
     "activityPanel": "Gníomhaíocht",
-    "coursePage": "Leathanach cúrsa"
+    "coursePage": "Leathanach cúrsa",
+    "suggestedActivities": "Gníomhaíochtaí Molta"
 }

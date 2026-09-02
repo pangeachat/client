@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-01 17:05:21.808979",
+    "@@last_modified": "2026-09-02 11:41:23.145977",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "چاتی ئەرشیفکراو",
     "activityReview": "پێداچوونەوەی چالاکی",
     "activityPanel": "چالاکی",
-    "coursePage": "پەڕەی خول"
+    "coursePage": "پەڕەی خول",
+    "suggestedActivities": "چالاکییە پێشنیارکراوەکان"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-01 17:05:18.433893",
+    "@@last_modified": "2026-09-02 11:41:22.315754",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Geymt spjall",
     "activityReview": "Yfirlit yfir virkni",
     "activityPanel": "Virkni",
-    "coursePage": "Námskeiðssíða"
+    "coursePage": "Námskeiðssíða",
+    "suggestedActivities": "Tillögur að verkefnum"
 }

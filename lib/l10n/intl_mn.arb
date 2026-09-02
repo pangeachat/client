@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-01 17:05:30.330675",
+    "@@last_modified": "2026-09-02 11:41:30.494941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Архивлагдсан чат",
     "activityReview": "Үйл ажиллагааны тойм",
     "activityPanel": "Үйл ажиллагаа",
-    "coursePage": "Хичээлийн хуудас"
+    "coursePage": "Хичээлийн хуудас",
+    "suggestedActivities": "Санал болгож буй үйл ажиллагаанууд"
 }

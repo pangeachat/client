@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-01 17:05:22.614089",
+    "@@last_modified": "2026-09-02 11:41:24.470593",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2248,5 +2248,6 @@
     "archivedChat": "আর্কাইভ তৌখিবা চ্যাট",
     "activityReview": "এক্টিভিটি রিকন",
     "activityPanel": "এক্টিভিটি",
-    "coursePage": "কোর্স পেজ"
+    "coursePage": "কোর্স পেজ",
+    "suggestedActivities": "খঙহনবা থবকশিং"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-01 17:05:12.665489",
+    "@@last_modified": "2026-09-02 11:41:19.744598",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2248,5 +2248,6 @@
     "archivedChat": "আৰ্কাইভ কৰা চাট",
     "activityReview": "কাৰ্যকলাপ পৰ্যালোচনা",
     "activityPanel": "কাৰ্যকলাপ",
-    "coursePage": "পাঠ্যক্ৰমৰ পৃষ্ঠা"
+    "coursePage": "পাঠ্যক্ৰমৰ পৃষ্ঠা",
+    "suggestedActivities": "পৰামৰ্শ দিয়া কাৰ্য্যকলাপসমূহ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-01 17:05:13.121552",
+    "@@last_modified": "2026-09-02 11:41:19.504016",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10150,5 +10150,6 @@
     "archivedChat": "الدردشة المؤرشفة",
     "activityReview": "مراجعة النشاط",
     "activityPanel": "النشاط",
-    "coursePage": "صفحة الدورة التدريبية"
+    "coursePage": "صفحة الدورة التدريبية",
+    "suggestedActivities": "الأنشطة المقترحة"
 }

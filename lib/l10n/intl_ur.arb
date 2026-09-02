@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-01 17:05:30.051081",
+    "@@last_modified": "2026-09-02 11:41:30.489266",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2248,5 +2248,6 @@
     "archivedChat": "آرکائیو شدہ چیٹ",
     "activityReview": "سرگرمی کا جائزہ",
     "activityPanel": "سرگرمی",
-    "coursePage": "کورس کا صفحہ"
+    "coursePage": "کورس کا صفحہ",
+    "suggestedActivities": "تجویز کردہ سرگرمیاں"
 }

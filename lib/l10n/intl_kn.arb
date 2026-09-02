@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-01 17:05:19.950917",
+    "@@last_modified": "2026-09-02 11:41:22.947375",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "ಆರ್ಕೈವ್ ಮಾಡಿದ ಚಾಟ್",
     "activityReview": "ಚಟುವಟಿಕೆ ವಿಮರ್ಶೆ",
     "activityPanel": "ಚಟುವಟಿಕೆ",
-    "coursePage": "ಕೋರ್ಸ್ ಪುಟ"
+    "coursePage": "ಕೋರ್ಸ್ ಪುಟ",
+    "suggestedActivities": "ಸೂಚಿಸಿದ ಚಟುವಟಿಕೆಗಳು"
 }

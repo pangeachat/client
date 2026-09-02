@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-01 17:05:13.399910",
+    "@@last_modified": "2026-09-02 11:41:20.417375",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Sgwrs wedi'i harchifo",
     "activityReview": "Adolygiad gweithgaredd",
     "activityPanel": "Gweithgaredd",
-    "coursePage": "Tudalen cwrs"
+    "coursePage": "Tudalen cwrs",
+    "suggestedActivities": "Gweithgareddau Awgrymedig"
 }

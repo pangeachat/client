@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-01 17:05:20.763929",
+    "@@last_modified": "2026-09-02 11:41:32.547945",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Chat we dɛn kip",
     "activityReview": "Luk bak na wetin yu dɔn du",
     "activityPanel": "Wetin yu dɔn du",
-    "coursePage": "Di pej fɔ di kos"
+    "coursePage": "Di pej fɔ di kos",
+    "suggestedActivities": "Sɔm Tin Dɛn We Yu Fɔ Du"
 }

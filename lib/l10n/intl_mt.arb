@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-01 17:05:23.788714",
+    "@@last_modified": "2026-09-02 11:41:25.060902",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Chat arkivjata",
     "activityReview": "Reviżjoni tal-attività",
     "activityPanel": "Attività",
-    "coursePage": "Paġna tal-kors"
+    "coursePage": "Paġna tal-kors",
+    "suggestedActivities": "Attivitajiet Suġġeriti"
 }

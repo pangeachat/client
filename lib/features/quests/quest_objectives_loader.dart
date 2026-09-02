@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
@@ -25,16 +24,6 @@ List<QuestObjectiveGroup> objectiveGroupsWithActivities(
 ) => (groups ?? const <QuestObjectiveGroup>[])
     .where((g) => g.activities.isNotEmpty)
     .toList();
-
-/// The "Up next" Mission among the rendered [groups]: the one matching
-/// [anchorMissionId] (the shared resolver's anchor), or the first group while
-/// the anchor is unresolved / not in this outline. Null for an empty outline.
-QuestObjectiveGroup? upNextObjectiveGroup(
-  List<QuestObjectiveGroup> groups,
-  String? anchorMissionId,
-) =>
-    groups.firstWhereOrNull((g) => g.objective.id == anchorMissionId) ??
-    groups.firstOrNull;
 
 class QuestObjectivesLoader {
   final Client client;
@@ -88,13 +77,17 @@ class QuestObjectivesLoader {
   /// resolution lands. Callers fall back to the first Mission in the outline.
   String? get anchorMissionId => _scopedQuest?.anchorMissionId;
 
-  /// The Mission the course page's Course-plan section highlights: the anchor's
-  /// group, or the first rendered Mission until resolution lands (null when the
-  /// outline hasn't loaded or has no Missions with activities). The one answer
-  /// shared by the highlight itself and anything deciding what it can't show
-  /// (e.g. the pinged-activity badge on "See full course plan", #8454).
-  QuestObjectiveGroup? get upNextGroup =>
-      upNextObjectiveGroup(filteredObjectiveGroups, anchorMissionId);
+  /// The next-Mission gradient (0..[kBandCeiling]) for an activity satisfying
+  /// [missionRefs], scoped to THIS course — the relevance band the course
+  /// page's Suggested Activities row ranks toward. Deliberately not the shared
+  /// resolution's cross-quest sum: a course surface reads only its own course's
+  /// progress (#7771). 0 until the resolution lands, so ranking degrades to
+  /// plain live-session order rather than to a wall.
+  double missionGradient(Set<String> missionRefs) =>
+      (_scopedQuest?.missionGradient(missionRefs) ?? 0).clamp(
+        0.0,
+        kBandCeiling,
+      );
 
   /// This course's rollup for [missionId]. Null means "not resolved", never
   /// "zero" — the caller renders no star display rather than a false 0.

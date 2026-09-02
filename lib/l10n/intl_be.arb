@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-01 17:05:12.240385",
+    "@@last_modified": "2026-09-02 11:41:19.521771",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9858,5 +9858,6 @@
     "archivedChat": "Заархіваваны чат",
     "activityReview": "Агляд дзейнасці",
     "activityPanel": "Дзейнасць",
-    "coursePage": "Старонка курса"
+    "coursePage": "Старонка курса",
+    "suggestedActivities": "Прапанаваныя заняткі"
 }

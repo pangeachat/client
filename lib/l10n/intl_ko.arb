@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 17:05:20.487637",
+    "@@last_modified": "2026-09-02 11:41:22.853299",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10037,5 +10037,6 @@
     "archivedChat": "보관된 채팅",
     "activityReview": "활동 검토",
     "activityPanel": "활동",
-    "coursePage": "코스 페이지"
+    "coursePage": "코스 페이지",
+    "suggestedActivities": "추천 활동"
 }

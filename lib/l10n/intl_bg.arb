@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-01 17:05:13.863954",
+    "@@last_modified": "2026-09-02 11:41:19.539547",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Архивиран чат",
     "activityReview": "Преглед на активността",
     "activityPanel": "Активност",
-    "coursePage": "Страница на курса"
+    "coursePage": "Страница на курса",
+    "suggestedActivities": "Предложени дейности"
 }

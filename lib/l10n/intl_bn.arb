@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 17:05:12.257793",
+    "@@last_modified": "2026-09-02 11:41:19.878389",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10472,5 +10472,6 @@
     "archivedChat": "আর্কাইভ করা চ্যাট",
     "activityReview": "ক্রিয়াকলাপ পর্যালোচনা",
     "activityPanel": "ক্রিয়াকলাপ",
-    "coursePage": "কোর্স পৃষ্ঠা"
+    "coursePage": "কোর্স পৃষ্ঠা",
+    "suggestedActivities": "প্রস্তাবিত কার্যকলাপ"
 }

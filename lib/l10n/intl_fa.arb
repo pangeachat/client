@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 17:05:15.663571",
+    "@@last_modified": "2026-09-02 11:41:20.822195",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9932,5 +9932,6 @@
     "archivedChat": "گفتگوی بایگانی‌شده",
     "activityReview": "بازبینی فعالیت",
     "activityPanel": "فعالیت",
-    "coursePage": "صفحهٔ دوره"
+    "coursePage": "صفحهٔ دوره",
+    "suggestedActivities": "فعالیت‌های پیشنهادی"
 }

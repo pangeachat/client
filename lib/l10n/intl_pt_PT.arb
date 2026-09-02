@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-01 17:05:26.230431",
+    "@@last_modified": "2026-09-02 11:41:26.556456",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10761,5 +10761,6 @@
     "archivedChat": "Conversa arquivada",
     "activityReview": "Revisão da atividade",
     "activityPanel": "Atividade",
-    "coursePage": "Página do curso"
+    "coursePage": "Página do curso",
+    "suggestedActivities": "Atividades Sugeridas"
 }

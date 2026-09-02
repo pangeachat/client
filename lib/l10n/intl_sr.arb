@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 17:05:29.900287",
+    "@@last_modified": "2026-09-02 11:41:28.206082",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10793,5 +10793,6 @@
     "archivedChat": "Arhivirani razgovor",
     "activityReview": "Pregled aktivnosti",
     "activityPanel": "Aktivnost",
-    "coursePage": "Stranica kursa"
+    "coursePage": "Stranica kursa",
+    "suggestedActivities": "Predložene aktivnosti"
 }

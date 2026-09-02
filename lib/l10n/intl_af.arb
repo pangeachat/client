@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-01 17:05:12.522995",
+    "@@last_modified": "2026-09-02 11:41:19.600775",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Gearchiveerde klets",
     "activityReview": "Aktiwiteitsoorsig",
     "activityPanel": "Aktiwiteit",
-    "coursePage": "Kursusbladsy"
+    "coursePage": "Kursusbladsy",
+    "suggestedActivities": "Voorgestelde Aktiwiteite"
 }

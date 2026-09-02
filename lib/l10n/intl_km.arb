@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-09-01 17:05:20.698625",
+    "@@last_modified": "2026-09-02 11:41:28.010752",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2248,5 +2248,6 @@
     "archivedChat": "ការជជែកដែលបានទុកក្នុងប័ណ្ណសារ",
     "activityReview": "ការពិនិត្យសកម្មភាព",
     "activityPanel": "សកម្មភាព",
-    "coursePage": "ទំព័រវគ្គសិក្សា"
+    "coursePage": "ទំព័រវគ្គសិក្សា",
+    "suggestedActivities": "សកម្មភាពដែលបានណែនាំ"
 }

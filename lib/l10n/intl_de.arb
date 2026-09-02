@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-01 17:05:13.495751",
+    "@@last_modified": "2026-09-02 11:41:20.294396",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9831,5 +9831,6 @@
     "archivedChat": "Archivierter Chat",
     "activityReview": "Aktivitätsprüfung",
     "activityPanel": "Aktivität",
-    "coursePage": "Kursseite"
+    "coursePage": "Kursseite",
+    "suggestedActivities": "Vorgeschlagene Aktivitäten"
 }

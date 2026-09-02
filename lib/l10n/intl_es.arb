@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-01 17:05:13.659312",
+    "@@last_modified": "2026-09-02 11:41:20.506859",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8063,5 +8063,6 @@
     "archivedChat": "Chat archivado",
     "activityReview": "Revisión de actividad",
     "activityPanel": "Actividad",
-    "coursePage": "Página del curso"
+    "coursePage": "Página del curso",
+    "suggestedActivities": "Actividades sugeridas"
 }

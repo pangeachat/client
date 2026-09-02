@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-01 17:05:12.834036",
+    "@@last_modified": "2026-09-02 11:41:20.329592",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Chat archivatu",
     "activityReview": "Revisione di l'attività",
     "activityPanel": "Attività",
-    "coursePage": "Pagina di u corsu"
+    "coursePage": "Pagina di u corsu",
+    "suggestedActivities": "Attività suggerite"
 }

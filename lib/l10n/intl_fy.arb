@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-01 17:05:17.338753",
+    "@@last_modified": "2026-09-02 11:41:21.418632",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Argivearre petear",
     "activityReview": "Aktiviteitsbeoardieling",
     "activityPanel": "Aktiviteit",
-    "coursePage": "Kurcusside"
+    "coursePage": "Kurcusside",
+    "suggestedActivities": "Foarstelde aktiviteiten"
 }

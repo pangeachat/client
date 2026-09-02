@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-01 17:05:21.468714",
+    "@@last_modified": "2026-09-02 11:41:23.455354",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Archivéierte Chat",
     "activityReview": "Aktivitéitsiwwerbléck",
     "activityPanel": "Aktivitéit",
-    "coursePage": "Cours Säit"
+    "coursePage": "Cours Säit",
+    "suggestedActivities": "Virgeschloe Aktivitéiten"
 }

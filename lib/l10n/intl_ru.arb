@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-01 17:05:26.170530",
+    "@@last_modified": "2026-09-02 11:41:26.876530",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10816,5 +10816,6 @@
     "archivedChat": "Архивированный чат",
     "activityReview": "Обзор активности",
     "activityPanel": "Активность",
-    "coursePage": "Страница курса"
+    "coursePage": "Страница курса",
+    "suggestedActivities": "Предлагаемые действия"
 }

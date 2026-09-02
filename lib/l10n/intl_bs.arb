@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-01 17:05:12.203660",
+    "@@last_modified": "2026-09-02 11:41:19.652931",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Arhivirani razgovor",
     "activityReview": "Pregled aktivnosti",
     "activityPanel": "Aktivnost",
-    "coursePage": "Stranica kursa"
+    "coursePage": "Stranica kursa",
+    "suggestedActivities": "Predložene aktivnosti"
 }
