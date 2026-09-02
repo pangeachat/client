@@ -6,6 +6,8 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_session_filled_extension.dart';
 import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
@@ -72,6 +74,10 @@ class PlayWithBotLoadingDialogState extends State<PlayWithBotLoadingDialog> {
         }
       }
       await future.timeout(const Duration(seconds: 5));
+      // Announce before the mounted check: the bot joined either way, and
+      // coursemates' course pages need the tick whether or not this dialog is
+      // still up.
+      _announceIfFilled();
       // The learner may have dismissed the dialog while waiting (CLIENT-EJY);
       // the bot still joins and the start page moves on without this pop.
       if (!mounted) return;
@@ -88,9 +94,18 @@ class PlayWithBotLoadingDialogState extends State<PlayWithBotLoadingDialog> {
 
     if (timeout) {
       await future;
+      _announceIfFilled();
       if (!mounted) return;
       Navigator.of(context).pop();
     }
+  }
+
+  /// The bot claims its seats server-side, so the client that asked it to play
+  /// is the one that knows the session just filled (#8735). Fire-and-forget:
+  /// the announcement is best-effort and must not hold this dialog open.
+  void _announceIfFilled() {
+    if (widget.room.numRemainingRoles > 0) return;
+    unawaited(widget.room.announceActivitySessionFilled());
   }
 
   @override
