@@ -17,6 +17,7 @@ import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_details_subpage.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_subpage.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
 /// Renders one left-column panel token (the chat list, a live room, a course,
@@ -139,6 +140,9 @@ class WorkspaceLeftPanel extends StatelessWidget {
         context,
       ).pageLabel(token.type.displayName(L10n.of(context))),
       container: true,
+      // Browse-order key on the group itself (#8755): a wrapper annotation
+      // formed an extra unlabeled node VoiceOver reordered heuristically.
+      sortKey: BrowseOrder.leftPanels,
       // Keep descendants as their own nodes so loose text without a container
       // never merges into the panel's name (see WorkspaceRightPanel).
       explicitChildNodes: true,

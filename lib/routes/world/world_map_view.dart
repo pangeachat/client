@@ -41,6 +41,7 @@ import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The per-frame pin draw model resolved by [_WorldMapViewState._resolvePinRender]:
@@ -1171,6 +1172,9 @@ class _WorldMapViewState extends State<WorldMapView> {
     );
     return Semantics(
       label: L10n.of(context).activityMapLabel,
+      // The backdrop reads LAST in the workspace browse order (#8755); the
+      // key lives on this labeled container, not a shell wrapper.
+      sortKey: BrowseOrder.map,
       container: true,
       child: Stack(
         children: [

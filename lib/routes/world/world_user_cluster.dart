@@ -19,6 +19,7 @@ import 'package:fluffychat/routes/world/user_cluster_view_model_builder.dart';
 import 'package:fluffychat/routes/world/xp_border_painter.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
 /// The persistent top-right cluster over the world map (world_v2): the user's
@@ -70,6 +71,7 @@ class WorldUserClusterInternal extends StatelessWidget {
         final l2 = viewModel.userL2;
         return Semantics(
           label: L10n.of(context).analyticsAndSettingsLabel,
+          sortKey: BrowseOrder.cluster,
           container: true,
           child: FocusTraversalGroup(
             policy: OrderedTraversalPolicy(),
