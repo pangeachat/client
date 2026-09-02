@@ -23,10 +23,26 @@ A local stack with the two test accounts on it, and the web build being served:
     flutter build web --release && cp .env build/web/.env
     python3 ../local-dev/spa_server.py build/web 8091
 
+**Run those from the worktree you are testing.** Before it opens a browser, the
+harness fetches `main.dart.js` and `flutter_bootstrap.js` from `APP_URL` and
+compares them byte for byte against this worktree's `build/web`; a mismatch ends
+the run before any check is asked. This is not defensive tidiness -- servers on
+8090 and 8091 were once left running against a DIFFERENT worktree's build, and a
+run against them tests code nobody is looking at: green proves nothing, and red
+sends somebody to debug a product that was never loaded. A version string cannot
+catch it, since two worktrees of one branch share one.
+
+What that gate does NOT settle: whether `build/web` is current with `lib/`. A
+bundle built an hour ago from this worktree passes, because it IS this
+worktree's build -- running `flutter build web --release` before the suite is
+still your step, and nothing here can stand in for it. Nor does it cover
+`/.env`, which the app fetches at runtime and which is configuration, not code.
+
 The harness expects, on that stack:
 
 - Synapse answering at `PROBE_HS` (default `http://localhost:8008`).
-- The app served at `APP_URL` (default `http://localhost:8091`).
+- The app served at `APP_URL` (default `http://localhost:8091`), from THIS
+  worktree's `build/web` -- see above.
 - Two accounts, `learner` and `calltester`, that already exist and already
   share a room. `transcript_two_devices.js` signs `learner` in TWICE, in two
   Chrome profiles -- one account, two Matrix devices -- and needs a third wav
@@ -361,6 +377,16 @@ Not a scenario:
   abandoned attempt's ring and scope the entire run to the wrong call key -- so
   that file reads through its own `sinceScoped`, which throws instead. Worth the
   same care anywhere else a scenario marks and reads back.
+- **Clearing a cache does not fix the wrong build.** `openParticipant` purges
+  the Flutter service worker from each Chrome profile, which handles a browser
+  serving a build it cached earlier. It does nothing about the bundle on the
+  SERVER being another branch's, and the two look identical from inside a run.
+  The only thing that separates two worktrees is the bundle's BYTES: a stamp
+  answers "what does this build say it is", and two worktrees of one branch say
+  the same thing. So the gate compares the served bytes against `build/web` in
+  the worktree the harness file itself is running from -- an anchor taken from
+  `__dirname` rather than from a setting, because an identity read out of
+  configuration is satisfied by whatever the configuration points at.
 - **A Chrome profile's login is per ORIGIN.** Serving a second build on another
   port and pointing `APP_URL` at it does not reuse the session: the profile
   signs in again and Synapse mints NEW devices. Fine, and worth knowing before
