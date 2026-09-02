@@ -81,6 +81,21 @@ abstract class AppConfig {
   static Color goldByTheme(BuildContext context) =>
       Theme.of(context).brightness == Brightness.light ? gold : goldLight;
 
+  /// [gold] pulled 40% toward black. Only for [goldMarkByTheme] — decorative
+  /// gold stays [gold].
+  static const Color goldDeep = Color(0xFF987301);
+
+  /// The gold a **solid mark carrying meaning** wears — an earned activity
+  /// star, where the fill itself is the information rather than decoration.
+  ///
+  /// [gold] is 1.58:1 on the light theme's surface and 1.28:1 on its cards,
+  /// far under the 3:1 WCAG 1.4.11 asks of a graphic the user has to read, so
+  /// light gets [goldDeep] (4.17:1 / 3.38:1). Dark keeps [gold], already
+  /// 11.18:1 / 7.39:1 there. One gold cannot serve both: [goldDeep] drops to
+  /// 2.80:1 on a dark card (#8760).
+  static Color goldMarkByTheme(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.light ? goldDeep : gold;
+
   /// Readable ink on top of [goldByTheme], which is a light fill in both
   /// brightnesses — so both branches resolve to a dark tone.
   static Color onGoldByTheme(BuildContext context) {
