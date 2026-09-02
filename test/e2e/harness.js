@@ -402,6 +402,23 @@ function skipped(scenario, name, why) {
   console.log(`   SKIP  ${name}  -> ${why}`);
 }
 
+/// The summary, and the RESULT.
+///
+/// NOT KNOWING IS NOT SUCCESS, and for a long time only one scenario in this
+/// folder acted like it. A check that could not be asked has not passed -- it
+/// has not happened -- so the count returned here is every result that is not a
+/// pass, failures and inconclusive alike. `transcript_two_devices.js` worked
+/// this out for itself and added the arithmetic locally; every other file went
+/// on exiting 0 on a run whose only statement about its central claim had stood
+/// aside. It belongs here, where all of them read it.
+///
+/// AND `process.exitCode` BESIDE THE RETURN VALUE, because half the callers
+/// throw the return value away: nine files in this folder call this and then
+/// fall off the end of `main`, which exits 0 however many checks failed. Set
+/// here, it holds for a process that ends naturally and is overridden by any
+/// explicit `process.exit(n)` -- so a caller that already computes its own code
+/// keeps it, and a caller that computes none stops reporting green over a red
+/// run.
 function report() {
   const failed = results.filter((r) => !r.pass);
   console.log('\n================ SUMMARY ================');
@@ -411,7 +428,9 @@ function report() {
     console.log(`INCONCLUSIVE: ${inconclusive.length} -- these proved nothing this run`);
     inconclusive.forEach((s) => console.log(`  SKIP [${s.scenario}] ${s.name}: ${s.why}`));
   }
-  return failed.length;
+  const unproven = failed.length + inconclusive.length;
+  if (unproven > 0) process.exitCode = 1;
+  return unproven;
 }
 
 module.exports = {

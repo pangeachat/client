@@ -2344,22 +2344,24 @@ async function main() {
 
   // The exit code is the result, and NOT KNOWING IS NOT SUCCESS.
   //
-  // `h.report()` counts the failures. It does not count the inconclusive
-  // checks, and for anything reading an exit code that made a skip free: a run
+  // The arithmetic used to be here, because `h.report()` counted only the
+  // failures and for anything reading an exit code that made a skip free: a run
   // in which the only reader-level check stood aside, having established
   // nothing about the merge this file exists to prove, exited 0 and read as
-  // green. A check that could not be asked has not passed -- it has not
-  // happened -- so both columns are counted here.
+  // green. It is `h.report()`'s own rule now -- every file in this folder had
+  // the same hole, and a rule one scenario keeps for itself is a rule the next
+  // scenario is written without.
   //
-  // Scoped to this scenario's own results because `h.inconclusive` is the
-  // harness's, shared with every other file that imports it.
-  const failed = h.report();
+  // The count below is still scoped to THIS scenario, for the sentence printed
+  // about it: `h.inconclusive` is the harness's, shared with every other file
+  // that imports it.
+  const notPassed = h.report();
   const unproven = h.inconclusive.filter((i) => i.scenario === s).length;
   if (unproven) {
     console.log(`\n${unproven} check(s) proved nothing this run, and this run ` +
       'is therefore not green');
   }
-  await finish([A1, A2, B], failed === 0 && unproven === 0 ? 0 : 1);
+  await finish([A1, A2, B], notPassed === 0 ? 0 : 1);
 }
 
 // Nothing runs on `require`. The predicates below are exported so the decisions

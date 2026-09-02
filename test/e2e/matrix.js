@@ -262,21 +262,39 @@ function countType(events, type) {
 /// raise is not "how many" but "which two" -- a transcript half names the device
 /// that wrote it, and that name only means something next to the devices that
 /// were actually in the call.
+///
+/// AN ERROR IS NOT AN ANSWER, and this used to return `[]` for every one of
+/// them. A 500 from the homeserver, a token the server has expired, a room the
+/// harness is not in, a hostname that does not resolve -- all of them came back
+/// as "this account has no device in a call", which is a real answer to a
+/// question that was never asked. What rests on it is not small: a scenario's
+/// opening gate reads this and passes on an empty list, and hangup drivers stop
+/// clicking on one.
+///
+/// ONLY A 404 IS EMPTINESS, and it is the server ANSWERING: Synapse returns
+/// M_NOT_FOUND for a state event that was never written, which is exactly a
+/// room this account has never held a call membership in. Everything else is
+/// the read failing, and it throws -- a harness that cannot see is a fact about
+/// the rig, and reporting it as a product state is how a check comes to pass
+/// for a reason nobody can act on. [api] attaches the status for this, and
+/// [eventById] draws the same line.
 async function liveMembershipDevices(token, roomId, userId) {
+  let st;
   try {
-    const st = await api(
+    st = await api(
       `/_matrix/client/v3/rooms/${encodeURIComponent(roomId)}/state/com.famedly.call.member/${encodeURIComponent(userId)}`,
       { token },
     );
-    const mems = Array.isArray(st.memberships) ? st.memberships : [];
-    const now = Date.now();
-    return mems
-      .filter((m) => typeof m.expires_ts === 'number' && m.expires_ts > now)
-      .map((m) => (typeof m.device_id === 'string' ? m.device_id : ''))
-      .filter((id) => id.length > 0);
-  } catch (_) {
-    return [];
+  } catch (e) {
+    if (e && e.status === 404) return [];
+    throw e;
   }
+  const mems = Array.isArray(st.memberships) ? st.memberships : [];
+  const now = Date.now();
+  return mems
+    .filter((m) => typeof m.expires_ts === 'number' && m.expires_ts > now)
+    .map((m) => (typeof m.device_id === 'string' ? m.device_id : ''))
+    .filter((id) => id.length > 0);
 }
 
 /// How many LIVE call memberships this account has in the room.
