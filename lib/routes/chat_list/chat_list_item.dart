@@ -89,9 +89,27 @@ class ChatListItem extends StatelessWidget {
     final space = this.space;
 
     // #Pangea
-    final String chatSemanticsLabel = unread
-        ? '$displayname, ${L10n.of(context).unread}, '
-        : '$displayname, ';
+    // The row's accessible name, composed once for every row shape: only the
+    // non-empty parts, joined with no trailing separator (#8745). The visible
+    // texts it covers are excluded from semantics below so no row reads them
+    // a second time.
+    final timestampText = !room.isSpace && room.membership != Membership.invite
+        ? room.latestEventReceivedTime.localizedTimeShort(context)
+        : null;
+    final isThreadPreview =
+        typingText.isEmpty &&
+        room.lastEvent?.relationshipType == RelationshipTypes.thread;
+    final previewText = ChatListItemSubtitle.semanticText(context, room);
+    // When there are notifications, the count bubble at the row's end already
+    // announces "Unread: N" — the bare word is only for a room marked unread
+    // without a count.
+    final String chatSemanticsLabel = [
+      displayname,
+      if (unread && !hasNotifications) L10n.of(context).unread,
+      ?timestampText,
+      if (isThreadPreview) L10n.of(context).thread,
+      if (previewText != null && previewText.isNotEmpty) previewText,
+    ].join(', ');
 
     final isPendingInvite = room.isPendingInvite;
     // Pangea#
@@ -312,36 +330,38 @@ class ChatListItem extends StatelessWidget {
                           )
                         : room.lastEvent?.relationshipType ==
                               RelationshipTypes.thread
-                        ? Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: theme.colorScheme.outline,
-                              ),
-                              borderRadius: BorderRadius.circular(
-                                AppConfig.borderRadius,
-                              ),
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
-                            ),
-                            margin: const EdgeInsets.only(right: 4.0),
-                            child: Row(
-                              mainAxisSize: .min,
-                              children: [
-                                Icon(
-                                  Icons.message_outlined,
-                                  size: 12,
+                        ? ExcludeSemantics(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
                                   color: theme.colorScheme.outline,
                                 ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  L10n.of(context).thread,
-                                  style: TextStyle(
-                                    fontSize: 12,
+                                borderRadius: BorderRadius.circular(
+                                  AppConfig.borderRadius,
+                                ),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0,
+                              ),
+                              margin: const EdgeInsets.only(right: 4.0),
+                              child: Row(
+                                mainAxisSize: .min,
+                                children: [
+                                  Icon(
+                                    Icons.message_outlined,
+                                    size: 12,
                                     color: theme.colorScheme.outline,
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    L10n.of(context).thread,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: theme.colorScheme.outline,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           )
                         : const SizedBox.shrink(),
@@ -358,31 +378,35 @@ class ChatListItem extends StatelessWidget {
                     child: isPendingInvite
                         ? const Align(
                             alignment: Alignment.centerLeft,
-                            child: InvitedChip(),
+                            child: ExcludeSemantics(child: InvitedChip()),
                           )
                         // Pangea#
                         : room.isSpace && room.membership == Membership.join
-                        ? Text(
-                            // #Pangea
-                            // L10n.of(
-                            //   context,
-                            // ).countChats(room.spaceChildren.length),
-                            L10n.of(context).countChats(room.spaceChildCount),
-                            // Pangea#
-                            style: TextStyle(
-                              fontSize: subtitleFontSize,
-                              color: theme.colorScheme.outline,
+                        ? ExcludeSemantics(
+                            child: Text(
+                              // #Pangea
+                              // L10n.of(
+                              //   context,
+                              // ).countChats(room.spaceChildren.length),
+                              L10n.of(context).countChats(room.spaceChildCount),
+                              // Pangea#
+                              style: TextStyle(
+                                fontSize: subtitleFontSize,
+                                color: theme.colorScheme.outline,
+                              ),
                             ),
                           )
                         : typingText.isNotEmpty
-                        ? Text(
-                            typingText,
-                            style: TextStyle(
-                              fontSize: subtitleFontSize,
-                              color: theme.colorScheme.primary,
+                        ? ExcludeSemantics(
+                            child: Text(
+                              typingText,
+                              style: TextStyle(
+                                fontSize: subtitleFontSize,
+                                color: theme.colorScheme.primary,
+                              ),
+                              maxLines: 1,
+                              softWrap: false,
                             ),
-                            maxLines: 1,
-                            softWrap: false,
                           )
                         // #Pangea
                         : room.lastEvent != null
@@ -425,34 +449,36 @@ class ChatListItem extends StatelessWidget {
                                   directChatMatrixId !=
                                       room.lastEvent?.senderId),
                             ),
-                            builder: (context, snapshot) => Text(
-                              room.membership == Membership.invite
-                                  ? room
-                                            .getState(
-                                              EventTypes.RoomMember,
-                                              room.client.userID!,
-                                            )
-                                            ?.content
-                                            .tryGet<String>('reason') ??
-                                        (isDirectChat
-                                            ? L10n.of(context).newChatRequest
-                                            // #Pangea
-                                            // : L10n.of(context).inviteGroupChat)
-                                            : L10n.of(context).inviteChat)
-                                  // Pangea#
-                                  : snapshot.data ??
-                                        L10n.of(context).noMessagesYet,
-                              softWrap: false,
-                              maxLines: room.notificationCount >= 1 ? 2 : 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: subtitleFontSize,
-                                color: unread || room.hasNewMessages
-                                    ? theme.colorScheme.onSurface
-                                    : theme.colorScheme.outline,
-                                decoration: room.lastEvent?.redacted == true
-                                    ? TextDecoration.lineThrough
-                                    : null,
+                            builder: (context, snapshot) => ExcludeSemantics(
+                              child: Text(
+                                room.membership == Membership.invite
+                                    ? room
+                                              .getState(
+                                                EventTypes.RoomMember,
+                                                room.client.userID!,
+                                              )
+                                              ?.content
+                                              .tryGet<String>('reason') ??
+                                          (isDirectChat
+                                              ? L10n.of(context).newChatRequest
+                                              // #Pangea
+                                              // : L10n.of(context).inviteGroupChat)
+                                              : L10n.of(context).inviteChat)
+                                    // Pangea#
+                                    : snapshot.data ??
+                                          L10n.of(context).noMessagesYet,
+                                softWrap: false,
+                                maxLines: room.notificationCount >= 1 ? 2 : 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: subtitleFontSize,
+                                  color: unread || room.hasNewMessages
+                                      ? theme.colorScheme.onSurface
+                                      : theme.colorScheme.outline,
+                                  decoration: room.lastEvent?.redacted == true
+                                      ? TextDecoration.lineThrough
+                                      : null,
+                                ),
                               ),
                             ),
                           ),
