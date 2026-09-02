@@ -26,7 +26,7 @@ Every surface that preferences by progression reads the *same* shared resolver, 
 
 - the [world map](world-map.instructions.md) — the Priority matrix raises activities carrying the anchor Mission to the top of the relevance band, decaying for Missions further along; per-activity star progress renders as a fill (see its pin-display section);
 - the **activity start page** — opens directly into play for every activity (nothing is gated), showing star progress and, where relevant, that this is a next-Mission activity;
-- the **course page's Suggested Activities row** — the same Priority matrix, scored over the course's own activities (below);
+- the **course page's Activities row** — the same Priority matrix, scored over the course's own activities (below);
 - the **course panel's star display** (below);
 - the course/quest list and the powerups cluster, as they are built for v3.
 
@@ -54,9 +54,9 @@ The participant card is roughly one avatar wide and has no room for a label, so 
 
 The participant card shows the member's total for **the course's language** beside their level, which is already a per-language number, so both values on the card share one scope.
 
-## Suggested Activities on the course page
+## The Activities row on the course page
 
-The course page opens on a shortlist: one row of activity cards headed **Suggested Activities**, answering "what should I do in this course right now?" ([client#8741](https://github.com/pangeachat/client/issues/8741)). It names no Mission. The Mission-by-Mission plan — every Mission with its can-do statement, star count and activities — sits one tap below it behind "See full course plan", and is where a learner reads the course's shape.
+The course page opens on a shortlist: one row of activity cards headed **Activities**, answering "what should I do in this course right now?" ([client#8741](https://github.com/pangeachat/client/issues/8741)). It names no Mission. The header names the section, not the shortlist — that a ranked row is a suggestion is what a ranked row already means, so "Suggested" only added a word ([client#8744](https://github.com/pangeachat/client/issues/8744)). The Mission-by-Mission plan — every Mission with its can-do statement, star count and activities — sits one tap away behind the section header's "See all", and is where a learner reads the course's shape.
 
 The row is ranked by the **same [Priority matrix](world-map.instructions.md#priority-matrix) the world map ranks pins by**, scored over the course's own activities: an open session a coursemate can be joined in leads, a recruiting ping raises one further, then whatever the course's next Mission points at, and a finished activity sinks without disappearing. One shared score means the course page and the map cannot drift apart as its weights are tuned.
 

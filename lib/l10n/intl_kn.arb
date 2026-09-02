@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-02 13:00:16.241514",
+    "@@last_modified": "2026-09-02 14:37:10.998678",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2248,12 +2248,13 @@
     "activityReview": "ಚಟುವಟಿಕೆ ವಿಮರ್ಶೆ",
     "activityPanel": "ಚಟುವಟಿಕೆ",
     "coursePage": "ಕೋರ್ಸ್ ಪುಟ",
-    "suggestedActivities": "ಸೂಚಿಸಿದ ಚಟುವಟಿಕೆಗಳು",
     "constructLevelSeeds": "ಬೀಜಗಳು, ಹೊಸ ಪದಗಳು",
     "constructLevelGreens": "ಸಸಿಗಳು, ಬೆಳೆಯುತ್ತಿರುವ ಪದಗಳು",
     "constructLevelFlowers": "ಹೂವುಗಳು, ಕರಗತವಾದ ಪದಗಳು",
     "filterAndSearch": "ಫಿಲ್ಟರ್ ಮಾಡಿ ಮತ್ತು ಹುಡುಕಿ",
     "participantsOfTotal": "{total} ಆಟಗಾರರಲ್ಲಿ {filled}",
     "mapAttributionLabel": "ಓಪನ್‌ಸ್ಟ್ರೀಟ್‌ಮ್ಯಾಪ್ ಕೊಡುಗೆದಾರರು, ಹಕ್ಕುಸ್ವಾಮ್ಯ ಮತ್ತು ಪರವಾನಗಿ",
-    "availableLabel": "ಇನ್ನೂ ಪ್ರಾರಂಭವಾಗಿಲ್ಲ"
+    "availableLabel": "ಇನ್ನೂ ಪ್ರಾರಂಭವಾಗಿಲ್ಲ",
+    "seeAll": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ",
+    "seeAllSection": "ಎಲ್ಲವನ್ನೂ ನೋಡಿ {section}"
 }

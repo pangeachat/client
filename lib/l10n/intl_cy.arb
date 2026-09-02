@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-02 13:00:12.654475",
+    "@@last_modified": "2026-09-02 14:37:07.939768",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Adolygiad gweithgaredd",
     "activityPanel": "Gweithgaredd",
     "coursePage": "Tudalen cwrs",
-    "suggestedActivities": "Gweithgareddau Awgrymedig",
     "constructLevelSeeds": "Hadau, geiriau newydd",
     "constructLevelGreens": "Gwyrddion, geiriau sy'n tyfu",
     "constructLevelFlowers": "Blodau, geiriau wedi'u meistroli",
     "filterAndSearch": "Hidlo a chwilio",
     "participantsOfTotal": "{filled} o {total} chwaraewr",
     "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
-    "availableLabel": "Heb ddechrau eto"
+    "availableLabel": "Heb ddechrau eto",
+    "seeAll": "Gweld y cyfan",
+    "seeAllSection": "Gweld pob {section}"
 }

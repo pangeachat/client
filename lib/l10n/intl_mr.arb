@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-02 13:00:17.848681",
+    "@@last_modified": "2026-09-02 14:37:11.951172",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2248,12 +2248,13 @@
     "activityReview": "गतिविधी पुनरावलोकन",
     "activityPanel": "गतिविधी",
     "coursePage": "अभ्यासक्रम पृष्ठ",
-    "suggestedActivities": "सुचवलेले उपक्रम",
     "constructLevelSeeds": "सीड्स, नवीन शब्द",
     "constructLevelGreens": "ग्रीन्स, वाढणारे शब्द",
     "constructLevelFlowers": "फ्लॉवर्स, पारंगत शब्द",
     "filterAndSearch": "फिल्टर करा आणि शोधा",
     "participantsOfTotal": "{total} पैकी {filled} खेळाडू",
     "mapAttributionLabel": "ओपनस्ट्रीटमॅप योगदानकर्ते, कॉपीराइट आणि परवाना",
-    "availableLabel": "अद्याप सुरू झाले नाही"
+    "availableLabel": "अद्याप सुरू झाले नाही",
+    "seeAll": "सर्व पहा",
+    "seeAllSection": "सर्व {section} पहा"
 }

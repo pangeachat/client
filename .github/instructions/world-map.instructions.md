@@ -144,7 +144,7 @@ Re-ranking is debounced on pan and zoom (as the working-set re-fetch already is)
 
 **Weights are levers, learned later.** The weights are hand-set starting points, tuned by observation: at our scale there isn't the engagement data to learn them from, and hand-set weights stay predictable and editable here — raising `joinable` / `ongoing` or `pinged` pushes the map harder toward live, social practice (and the `joinable` − `ongoing` gap sets how much the map favours joining _others_ over resuming your own session); deepening the band's decay sharpens the pull toward the next Mission. A learned value-model — predicting join / complete / return — is the upgrade once the data exists. **Interests** become a term once captured (not tracked today).
 
-**The same score ranks the course page's Suggested Activities row** ([quests.instructions.md](quests.instructions.md)), scored over one course's activities instead of a viewport — so a weight changed here moves both surfaces. Its three deliberate departures (a session the learner already holds a role in is dropped rather than ranked, the band is that course's own, and the first-map, dismissal and recency terms do not apply) are recorded there.
+**The same score ranks the course page's Activities row** ([quests.instructions.md](quests.instructions.md)), scored over one course's activities instead of a viewport — so a weight changed here moves both surfaces. Its three deliberate departures (a session the learner already holds a role in is dropped rather than ranked, the band is that course's own, and the first-map, dismissal and recency terms do not apply) are recorded there.
 
 ## Search
 

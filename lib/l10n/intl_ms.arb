@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-02 13:00:17.751648",
+    "@@last_modified": "2026-09-02 14:37:12.072285",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Semakan aktiviti",
     "activityPanel": "Aktiviti",
     "coursePage": "Halaman kursus",
-    "suggestedActivities": "Aktiviti yang Dicadangkan",
     "constructLevelSeeds": "Benih, perkataan baharu",
     "constructLevelGreens": "Hijau, perkataan yang berkembang",
     "constructLevelFlowers": "Bunga, perkataan yang dikuasai",
     "filterAndSearch": "Tapis dan cari",
     "participantsOfTotal": "{filled} daripada {total} pemain",
     "mapAttributionLabel": "Penyumbang OpenStreetMap, hak cipta dan lesen",
-    "availableLabel": "Belum bermula"
+    "availableLabel": "Belum bermula",
+    "seeAll": "Lihat semua",
+    "seeAllSection": "Lihat semua {section}"
 }

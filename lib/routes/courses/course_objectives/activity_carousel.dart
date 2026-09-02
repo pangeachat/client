@@ -11,7 +11,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// A horizontal row of activity cards, in the order it is given them. Shared by
 /// the Missions of the full course plan ([ObjectiveSection], which orders by
-/// party size) and the course page's Suggested Activities row (ordered by the
+/// party size) and the course page's Activities row (ordered by the
 /// Priority matrix), so both draw the same card, dimming, completion overlay
 /// and ping bell.
 class ActivityCarousel extends StatefulWidget {

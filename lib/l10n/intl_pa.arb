@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-02 13:00:18.833406",
+    "@@last_modified": "2026-09-02 14:37:12.862338",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2248,12 +2248,13 @@
     "activityReview": "ਗਤੀਵਿਧੀ ਸਮੀਖਿਆ",
     "activityPanel": "ਗਤੀਵਿਧੀ",
     "coursePage": "ਕੋਰਸ ਪੰਨਾ",
-    "suggestedActivities": "ਸੁਝਾਈਆਂ ਗਈਆਂ ਗਤੀਵਿਧੀਆਂ",
     "constructLevelSeeds": "ਬੀਜ, ਨਵੇਂ ਸ਼ਬਦ",
     "constructLevelGreens": "ਹਰੇ, ਵਧ ਰਹੇ ਸ਼ਬਦ",
     "constructLevelFlowers": "ਫੁੱਲ, ਮੁਹਾਰਤ ਵਾਲੇ ਸ਼ਬਦ",
     "filterAndSearch": "ਫਿਲਟਰ ਕਰੋ ਅਤੇ ਖੋਜੋ",
     "participantsOfTotal": "{total} ਖਿਡਾਰੀਆਂ ਵਿੱਚੋਂ {filled}",
     "mapAttributionLabel": "ਓਪਨਸਟ੍ਰੀਟਮੈਪ ਯੋਗਦਾਨੀ, ਕਾਪੀਰਾਈਟ ਅਤੇ ਲਾਇਸੰਸ",
-    "availableLabel": "ਅਜੇ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋਇਆ"
+    "availableLabel": "ਅਜੇ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋਇਆ",
+    "seeAll": "ਸਾਰੇ ਦੇਖੋ",
+    "seeAllSection": "ਸਾਰੇ {section} ਦੇਖੋ"
 }

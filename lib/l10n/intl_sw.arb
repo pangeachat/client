@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-02 13:00:20.958478",
+    "@@last_modified": "2026-09-02 14:37:13.754814",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Mapitio ya shughuli",
     "activityPanel": "Shughuli",
     "coursePage": "Ukurasa wa kozi",
-    "suggestedActivities": "Shughuli Zilizopendekezwa",
     "constructLevelSeeds": "Mbegu, maneno mapya",
     "constructLevelGreens": "Kijani, maneno yanayokua",
     "constructLevelFlowers": "Maua, maneno yaliyobobea",
     "filterAndSearch": "Chuja na utafute",
     "participantsOfTotal": "{filled} kati ya wachezaji {total}",
     "mapAttributionLabel": "Wachangiaji wa OpenStreetMap, hakimiliki na leseni",
-    "availableLabel": "Bado haijaanza"
+    "availableLabel": "Bado haijaanza",
+    "seeAll": "Tazama zote",
+    "seeAllSection": "Tazama {section} zote"
 }

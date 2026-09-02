@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-02 13:00:17.188697",
+    "@@last_modified": "2026-09-02 14:37:11.454573",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Famerenana ny asa",
     "activityPanel": "Asa",
     "coursePage": "Pejy fampianarana",
-    "suggestedActivities": "Hetsika atolotra",
     "constructLevelSeeds": "Voa, teny vaovao",
     "constructLevelGreens": "Zavamaniry, teny mitombo",
     "constructLevelFlowers": "Voninkazo, teny efa mahay",
     "filterAndSearch": "Sivana sy karoka",
     "participantsOfTotal": "{filled} amin'ny mpilalao {total}",
     "mapAttributionLabel": "Mpanome anjara OpenStreetMap, zon'ny mpamorona ary fahazoan-dàlana",
-    "availableLabel": "Mbola tsy nanomboka"
+    "availableLabel": "Mbola tsy nanomboka",
+    "seeAll": "Jereo daholo",
+    "seeAllSection": "Jereo daholo ny {section}"
 }

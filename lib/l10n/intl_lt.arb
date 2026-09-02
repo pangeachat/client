@@ -2968,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-02 13:00:17.233727",
+    "@@last_modified": "2026-09-02 14:37:11.495352",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10625,12 +10625,13 @@
     "activityReview": "Veiklos apžvalga",
     "activityPanel": "Veikla",
     "coursePage": "Kurso puslapis",
-    "suggestedActivities": "Siūlomos veiklos",
     "constructLevelSeeds": "Sėklos, nauji žodžiai",
     "constructLevelGreens": "Žalumynai, augantys žodžiai",
     "constructLevelFlowers": "Gėlės, įvaldyti žodžiai",
     "filterAndSearch": "Filtruoti ir ieškoti",
     "participantsOfTotal": "{filled} iš {total} žaidėjų",
     "mapAttributionLabel": "„OpenStreetMap“ bendradarbiai, autorių teisės ir licencija",
-    "availableLabel": "Dar neprasidėjo"
+    "availableLabel": "Dar neprasidėjo",
+    "seeAll": "Žr. visus",
+    "seeAllSection": "Žr. visus {section}"
 }

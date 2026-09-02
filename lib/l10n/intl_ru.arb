@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-02 13:00:19.373333",
+    "@@last_modified": "2026-09-02 14:37:13.123057",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10816,12 +10816,13 @@
     "activityReview": "Обзор активности",
     "activityPanel": "Активность",
     "coursePage": "Страница курса",
-    "suggestedActivities": "Предлагаемые действия",
     "constructLevelSeeds": "Семена, новые слова",
     "constructLevelGreens": "Всходы, растущие слова",
     "constructLevelFlowers": "Цветы, освоенные слова",
     "filterAndSearch": "Фильтр и поиск",
     "participantsOfTotal": "{filled} из {total} игроков",
     "mapAttributionLabel": "Участники OpenStreetMap, авторские права и лицензия",
-    "availableLabel": "Еще не началось"
+    "availableLabel": "Еще не началось",
+    "seeAll": "Посмотреть все",
+    "seeAllSection": "Посмотреть все {section}"
 }

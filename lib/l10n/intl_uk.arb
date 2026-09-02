@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-02 13:00:21.826630",
+    "@@last_modified": "2026-09-02 14:37:14.119724",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9844,12 +9844,13 @@
     "activityReview": "Огляд активності",
     "activityPanel": "Активність",
     "coursePage": "Сторінка курсу",
-    "suggestedActivities": "Пропоновані заняття",
     "constructLevelSeeds": "Насіння, нові слова",
     "constructLevelGreens": "Зелень, слова, що ростуть",
     "constructLevelFlowers": "Квіти, опановані слова",
     "filterAndSearch": "Фільтрувати та шукати",
     "participantsOfTotal": "{filled} з {total} гравців",
     "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
-    "availableLabel": "Ще не розпочато"
+    "availableLabel": "Ще не розпочато",
+    "seeAll": "Переглянути всі",
+    "seeAllSection": "Переглянути всі {section}"
 }

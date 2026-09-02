@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-02 13:00:14.951005",
+    "@@last_modified": "2026-09-02 14:37:09.506601",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Rov saib dua tej yam ua",
     "activityPanel": "Kev ua ub no",
     "coursePage": "Nplooj ntawv kawm",
-    "suggestedActivities": "Cov Kev Ua Si Pom Zoo",
     "constructLevelSeeds": "Noob, cov lus tshiab",
     "constructLevelGreens": "Ntsuab, cov lus loj hlob",
     "constructLevelFlowers": "Paj, cov lus kawm tiav",
     "filterAndSearch": "Lim thiab tshawb",
     "participantsOfTotal": "{filled} ntawm {total} tus neeg ua si",
     "mapAttributionLabel": "OpenStreetMap cov neeg koom tes, txoj cai luam tawm thiab daim ntawv tso cai",
-    "availableLabel": "Tsis tau pib"
+    "availableLabel": "Tsis tau pib",
+    "seeAll": "Saib tag nrho",
+    "seeAllSection": "Saib tag nrho {section}"
 }

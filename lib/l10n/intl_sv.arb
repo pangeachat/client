@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:20.938665",
+    "@@last_modified": "2026-09-02 14:37:13.614416",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10362,12 +10362,13 @@
     "activityReview": "Aktivitetsöversikt",
     "activityPanel": "Aktivitet",
     "coursePage": "Kurssida",
-    "suggestedActivities": "Föreslagna aktiviteter",
     "constructLevelSeeds": "Frön, nya ord",
     "constructLevelGreens": "Grönska, växande ord",
     "constructLevelFlowers": "Blommor, ord du kan",
     "filterAndSearch": "Filtrera och sök",
     "participantsOfTotal": "{filled} av {total} spelare",
     "mapAttributionLabel": "OpenStreetMap-bidragsgivare, upphovsrätt och licens",
-    "availableLabel": "Ej påbörjad"
+    "availableLabel": "Ej påbörjad",
+    "seeAll": "Visa alla",
+    "seeAllSection": "Visa alla {section}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-02 13:00:18.636893",
+    "@@last_modified": "2026-09-02 14:37:12.016850",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2248,12 +2248,13 @@
     "activityReview": "गतिविधि समीक्षा",
     "activityPanel": "गतिविधि",
     "coursePage": "पाठ्यक्रम पृष्ठ",
-    "suggestedActivities": "सुझाएका गतिविधिहरू",
     "constructLevelSeeds": "बीउ, नयाँ शब्दहरू",
     "constructLevelGreens": "हरियाली, बढ्दो शब्दहरू",
     "constructLevelFlowers": "फूलहरू, निपुण शब्दहरू",
     "filterAndSearch": "फिल्टर गर्नुहोस् र खोज्नुहोस्",
     "participantsOfTotal": "{total} खेलाडीहरू मध्ये {filled}",
     "mapAttributionLabel": "OpenStreetMap योगदानकर्ताहरू, प्रतिलिपि अधिकार र इजाजतपत्र",
-    "availableLabel": "अहिलेसम्म सुरु भएको छैन"
+    "availableLabel": "अहिलेसम्म सुरु भएको छैन",
+    "seeAll": "सबै हेर्नुहोस्",
+    "seeAllSection": "सबै हेर्नुहोस् {section}"
 }

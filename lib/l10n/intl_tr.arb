@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-02 13:00:21.587601",
+    "@@last_modified": "2026-09-02 14:37:14.104482",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10145,12 +10145,13 @@
     "activityReview": "Etkinlik incelemesi",
     "activityPanel": "Etkinlik",
     "coursePage": "Kurs sayfası",
-    "suggestedActivities": "Önerilen Aktiviteler",
     "constructLevelSeeds": "Tohumlar, yeni kelimeler",
     "constructLevelGreens": "Yeşiller, gelişen kelimeler",
     "constructLevelFlowers": "Çiçekler, ustalaşmış kelimeler",
     "filterAndSearch": "Filtrele ve ara",
     "participantsOfTotal": "{total} oyuncudan {filled} tanesi",
     "mapAttributionLabel": "OpenStreetMap katılımcıları, telif hakkı ve lisans",
-    "availableLabel": "Henüz başlamadı"
+    "availableLabel": "Henüz başlamadı",
+    "seeAll": "Tümünü gör",
+    "seeAllSection": "Tüm {section} bölümünü gör"
 }

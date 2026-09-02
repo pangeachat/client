@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:11.792700",
+    "@@last_modified": "2026-09-02 14:37:07.127240",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10472,12 +10472,13 @@
     "activityReview": "ক্রিয়াকলাপ পর্যালোচনা",
     "activityPanel": "ক্রিয়াকলাপ",
     "coursePage": "কোর্স পৃষ্ঠা",
-    "suggestedActivities": "প্রস্তাবিত কার্যকলাপ",
     "constructLevelSeeds": "বীজ, নতুন শব্দ",
     "constructLevelGreens": "সবুজ, ক্রমবর্ধমান শব্দ",
     "constructLevelFlowers": "ফুল, আয়ত্ত করা শব্দ",
     "filterAndSearch": "ফিল্টার এবং অনুসন্ধান",
     "participantsOfTotal": "{total} জন খেলোয়াড়ের মধ্যে {filled} জন",
     "mapAttributionLabel": "OpenStreetMap অবদানকারী, কপিরাইট এবং লাইসেন্স",
-    "availableLabel": "এখনো শুরু হয়নি"
+    "availableLabel": "এখনো শুরু হয়নি",
+    "seeAll": "সব দেখুন",
+    "seeAllSection": "সব দেখুন {section}"
 }

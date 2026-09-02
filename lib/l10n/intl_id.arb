@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:15.423397",
+    "@@last_modified": "2026-09-02 14:37:10.027721",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9917,12 +9917,13 @@
     "activityReview": "Tinjauan aktivitas",
     "activityPanel": "Aktivitas",
     "coursePage": "Halaman kursus",
-    "suggestedActivities": "Aktivitas yang Disarankan",
     "constructLevelSeeds": "Benih, kata-kata baru",
     "constructLevelGreens": "Tunas, kata-kata yang berkembang",
     "constructLevelFlowers": "Bunga, kata-kata yang dikuasai",
     "filterAndSearch": "Filter dan cari",
     "participantsOfTotal": "{filled} dari {total} pemain",
     "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta, dan lisensi",
-    "availableLabel": "Belum dimulai"
+    "availableLabel": "Belum dimulai",
+    "seeAll": "Lihat semua",
+    "seeAllSection": "Lihat semua {section}"
 }

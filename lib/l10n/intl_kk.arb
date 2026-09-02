@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-02 13:00:16.357667",
+    "@@last_modified": "2026-09-02 14:37:10.948950",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Әрекетті шолу",
     "activityPanel": "Әрекет",
     "coursePage": "Курс беті",
-    "suggestedActivities": "Ұсынылған әрекеттер",
     "constructLevelSeeds": "Тұқымдар, жаңа сөздер",
     "constructLevelGreens": "Көктер, өсіп келе жатқан сөздер",
     "constructLevelFlowers": "Гүлдер, меңгерілген сөздер",
     "filterAndSearch": "Сүзгілеу және іздеу",
     "participantsOfTotal": "{total} ойыншының {filled}-і",
     "mapAttributionLabel": "OpenStreetMap қатысушылары, авторлық құқық және лицензия",
-    "availableLabel": "Әлі басталған жоқ"
+    "availableLabel": "Әлі басталған жоқ",
+    "seeAll": "Барлығын қарау",
+    "seeAllSection": "Барлық {section} қарау"
 }

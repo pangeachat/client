@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:13.258862",
+    "@@last_modified": "2026-09-02 14:37:08.765578",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9932,12 +9932,13 @@
     "activityReview": "بازبینی فعالیت",
     "activityPanel": "فعالیت",
     "coursePage": "صفحهٔ دوره",
-    "suggestedActivities": "فعالیت‌های پیشنهادی",
     "constructLevelSeeds": "دانه‌ها، کلمات جدید",
     "constructLevelGreens": "جوانه‌ها، کلمات در حال رشد",
     "constructLevelFlowers": "گل‌ها، کلمات تسلط یافته",
     "filterAndSearch": "فیلتر و جستجو",
     "participantsOfTotal": "{filled} از {total} بازیکن",
     "mapAttributionLabel": "مشارکت‌کنندگان OpenStreetMap، حق تکثیر و مجوز",
-    "availableLabel": "هنوز شروع نشده است"
+    "availableLabel": "هنوز شروع نشده است",
+    "seeAll": "مشاهده همه",
+    "seeAllSection": "مشاهده همه {section}"
 }

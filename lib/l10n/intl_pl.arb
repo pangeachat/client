@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-02 13:00:18.815418",
+    "@@last_modified": "2026-09-02 14:37:12.522150",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9929,12 +9929,13 @@
     "activityReview": "Przegląd aktywności",
     "activityPanel": "Aktywność",
     "coursePage": "Strona kursu",
-    "suggestedActivities": "Sugerowane aktywności",
     "constructLevelSeeds": "Nasiona, nowe słowa",
     "constructLevelGreens": "Kiełki, rosnące słowa",
     "constructLevelFlowers": "Kwiaty, opanowane słowa",
     "filterAndSearch": "Filtruj i szukaj",
     "participantsOfTotal": "{filled} z {total} graczy",
     "mapAttributionLabel": "Współtwórcy OpenStreetMap, prawa autorskie i licencja",
-    "availableLabel": "Jeszcze nie rozpoczęto"
+    "availableLabel": "Jeszcze nie rozpoczęto",
+    "seeAll": "Zobacz wszystkie",
+    "seeAllSection": "Zobacz wszystkie {section}"
 }

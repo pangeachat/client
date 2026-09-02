@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-02 13:00:16.594080",
+    "@@last_modified": "2026-09-02 14:37:11.446620",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Aktivitéitsiwwerbléck",
     "activityPanel": "Aktivitéit",
     "coursePage": "Cours Säit",
-    "suggestedActivities": "Virgeschloe Aktivitéiten",
     "constructLevelSeeds": "Somen, nei Wierder",
     "constructLevelGreens": "Gréngs, wuessend Wierder",
     "constructLevelFlowers": "Blummen, beherrschte Wierder",
     "filterAndSearch": "Filteren a sichen",
     "participantsOfTotal": "{filled} vun {total} Spiller",
     "mapAttributionLabel": "OpenStreetMap Mataarbechter, Copyright a Lizenz",
-    "availableLabel": "Nach net ugefaangen"
+    "availableLabel": "Nach net ugefaangen",
+    "seeAll": "Alles gesinn",
+    "seeAllSection": "Alles gesinn {section}"
 }

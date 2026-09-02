@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-02 13:00:11.797997",
+    "@@last_modified": "2026-09-02 14:37:07.369700",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9858,12 +9858,13 @@
     "activityReview": "Агляд дзейнасці",
     "activityPanel": "Дзейнасць",
     "coursePage": "Старонка курса",
-    "suggestedActivities": "Прапанаваныя заняткі",
     "constructLevelSeeds": "Насенне, новыя словы",
     "constructLevelGreens": "Парасткі, словы ў росце",
     "constructLevelFlowers": "Кветкі, засвоеныя словы",
     "filterAndSearch": "Фільтраваць і шукаць",
     "participantsOfTotal": "{filled} з {total} гульцоў",
     "mapAttributionLabel": "Удзельнікі OpenStreetMap, аўтарскія правы і ліцэнзія",
-    "availableLabel": "Пакуль не пачалося"
+    "availableLabel": "Пакуль не пачалося",
+    "seeAll": "Глядзець усё",
+    "seeAllSection": "Глядзець усё: {section}"
 }

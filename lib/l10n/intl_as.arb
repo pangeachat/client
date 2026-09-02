@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-02 13:00:12.317298",
+    "@@last_modified": "2026-09-02 14:37:07.290162",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2248,12 +2248,13 @@
     "activityReview": "কাৰ্যকলাপ পৰ্যালোচনা",
     "activityPanel": "কাৰ্যকলাপ",
     "coursePage": "পাঠ্যক্ৰমৰ পৃষ্ঠা",
-    "suggestedActivities": "পৰামৰ্শ দিয়া কাৰ্য্যকলাপসমূহ",
     "constructLevelSeeds": "বীজ, নতুন শব্দ",
     "constructLevelGreens": "সেউজীয়া, বৰ্ধিত শব্দ",
     "constructLevelFlowers": "ফুল, আয়ত্ত কৰা শব্দ",
     "filterAndSearch": "ফিল্টাৰ আৰু সন্ধান কৰক",
     "participantsOfTotal": "{total} জন খেলুৱৈৰ ভিতৰত {filled} জন",
     "mapAttributionLabel": "OpenStreetMap অৱদানকাৰী, স্বত্বাধিকাৰ আৰু অনুজ্ঞাপত্ৰ",
-    "availableLabel": "এতিয়াও আৰম্ভ হোৱা নাই"
+    "availableLabel": "এতিয়াও আৰম্ভ হোৱা নাই",
+    "seeAll": "সকলো চাওক",
+    "seeAllSection": "সকলো চাওক {section}"
 }

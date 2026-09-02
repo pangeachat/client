@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-02 13:00:16.737012",
+    "@@last_modified": "2026-09-02 14:37:11.077305",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Actio recognita",
     "activityPanel": "Actio",
     "coursePage": "Pagina cursus",
-    "suggestedActivities": "Actiones Suasoriae",
     "constructLevelSeeds": "Semina, verba nova",
     "constructLevelGreens": "Virentia, verba crescentia",
     "constructLevelFlowers": "Flores, verba perfecta",
     "filterAndSearch": "Spargere et quaerere",
     "participantsOfTotal": "{filled} ex {total} lusoribus",
     "mapAttributionLabel": "OpenStreetMap contributores, ius auctoris et licentia",
-    "availableLabel": "Nondum inceptum"
+    "availableLabel": "Nondum inceptum",
+    "seeAll": "Omnia vide",
+    "seeAllSection": "Omnia {section} vide"
 }

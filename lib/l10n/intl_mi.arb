@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-02 13:00:17.510312",
+    "@@last_modified": "2026-09-02 14:37:11.455736",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Arotake Mahi",
     "activityPanel": "Mahi",
     "coursePage": "Whārangi Akoranga",
-    "suggestedActivities": "Ngā Mahi Kua Tūtohunga",
     "constructLevelSeeds": "Kākano, kupu hou",
     "constructLevelGreens": "Kākāriki, kupu e tupu ana",
     "constructLevelFlowers": "Puawai, kupu kua rangatira",
     "filterAndSearch": "Tātari me te rapu",
     "participantsOfTotal": "{filled} o te {total} ngā kaitākaro",
     "mapAttributionLabel": "Ngā kaituku OpenStreetMap, te mana pupuri me te raihana",
-    "availableLabel": "Kāore anō kia tīmata"
+    "availableLabel": "Kāore anō kia tīmata",
+    "seeAll": "Tirohia katoa",
+    "seeAllSection": "Tirohia katoa {section}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-02 13:00:13.366056",
+    "@@last_modified": "2026-09-02 14:37:08.521555",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9841,12 +9841,13 @@
     "activityReview": "Tegevuste ülevaade",
     "activityPanel": "Tegevus",
     "coursePage": "Kursuse leht",
-    "suggestedActivities": "Soovitatud tegevused",
     "constructLevelSeeds": "Seemned, uued sõnad",
     "constructLevelGreens": "Rohelised, kasvavad sõnad",
     "constructLevelFlowers": "Lilled, omandatud sõnad",
     "filterAndSearch": "Filtreeri ja otsi",
     "participantsOfTotal": "{filled}/{total} mängijat",
     "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
-    "availableLabel": "Pole veel alanud"
+    "availableLabel": "Pole veel alanud",
+    "seeAll": "Vaata kõiki",
+    "seeAllSection": "Vaata kõiki {section}"
 }

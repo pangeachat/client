@@ -1938,7 +1938,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-09-02 13:00:15.996198",
+    "@@last_modified": "2026-09-02 14:37:10.991340",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10744,12 +10744,13 @@
     "activityReview": "აქტივობის მიმოხილვა",
     "activityPanel": "აქტივობა",
     "coursePage": "კურსის გვერდი",
-    "suggestedActivities": "შემოთავაზებული აქტივობები",
     "constructLevelSeeds": "თესლები, ახალი სიტყვები",
     "constructLevelGreens": "ნერგები, მზარდი სიტყვები",
     "constructLevelFlowers": "ყვავილები, ათვისებული სიტყვები",
     "filterAndSearch": "გაფილტვრა და ძიება",
     "participantsOfTotal": "{filled} / {total} მოთამაშე",
     "mapAttributionLabel": "OpenStreetMap-ის კონტრიბუტორები, საავტორო უფლებები და ლიცენზია",
-    "availableLabel": "ჯერ არ დაწყებულა"
+    "availableLabel": "ჯერ არ დაწყებულა",
+    "seeAll": "ყველას ნახვა",
+    "seeAllSection": "ყველა {section}-ის ნახვა"
 }

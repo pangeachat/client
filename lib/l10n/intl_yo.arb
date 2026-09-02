@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-02 13:00:23.373148",
+    "@@last_modified": "2026-09-02 14:37:14.360671",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Àtúnyẹ̀wò ìṣesí",
     "activityPanel": "Ìṣesí",
     "coursePage": "Ojúewé ẹ̀kọ́",
-    "suggestedActivities": "Àwọn Iṣẹ́ Àbá",
     "constructLevelSeeds": "Àwọn irúgbìn, àwọn ọ̀rọ̀ tuntun",
     "constructLevelGreens": "Àwọn ewéko, àwọn ọ̀rọ̀ tí ń dàgbà",
     "constructLevelFlowers": "Àwọn òdòdó, àwọn ọ̀rọ̀ tí a ti kọ́ dáradára",
     "filterAndSearch": "Ṣe àlàyé àti wá",
     "participantsOfTotal": "Àwọn agbábọ́ọ̀lù {filled} nínú {total}",
     "mapAttributionLabel": "Àwọn olùkópa OpenStreetMap, àṣẹ àti ìwé-àṣẹ",
-    "availableLabel": "Kò tíì bẹ̀rẹ̀"
+    "availableLabel": "Kò tíì bẹ̀rẹ̀",
+    "seeAll": "Wo gbogbo rẹ",
+    "seeAllSection": "Wo gbogbo {section}"
 }

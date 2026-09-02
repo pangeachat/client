@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-02 13:00:13.859056",
+    "@@last_modified": "2026-09-02 14:37:08.508485",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10199,12 +10199,13 @@
     "activityReview": "Bilan d'activité",
     "activityPanel": "Activité",
     "coursePage": "Page du cours",
-    "suggestedActivities": "Activités suggérées",
     "constructLevelSeeds": "Graines, nouveaux mots",
     "constructLevelGreens": "Pousses, mots en croissance",
     "constructLevelFlowers": "Fleurs, mots maîtrisés",
     "filterAndSearch": "Filtrer et rechercher",
     "participantsOfTotal": "{filled} sur {total} joueurs",
     "mapAttributionLabel": "Contributeurs OpenStreetMap, droits d'auteur et licence",
-    "availableLabel": "Pas encore commencé"
+    "availableLabel": "Pas encore commencé",
+    "seeAll": "Tout voir",
+    "seeAllSection": "Voir tout {section}"
 }

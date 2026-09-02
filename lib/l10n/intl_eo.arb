@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:13.269297",
+    "@@last_modified": "2026-09-02 14:37:07.991782",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10789,12 +10789,13 @@
     "activityReview": "Agada revizio",
     "activityPanel": "Agado",
     "coursePage": "Kurso-paĝo",
-    "suggestedActivities": "Sugestitaj Agadoj",
     "constructLevelSeeds": "Semoj, novaj vortoj",
     "constructLevelGreens": "Verdaĵoj, kreskantaj vortoj",
     "constructLevelFlowers": "Floroj, regataj vortoj",
     "filterAndSearch": "Filtri kaj serĉi",
     "participantsOfTotal": "{filled} el {total} ludantoj",
     "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
-    "availableLabel": "Ankoraŭ ne komencita"
+    "availableLabel": "Ankoraŭ ne komencita",
+    "seeAll": "Vidi ĉion",
+    "seeAllSection": "Vidi ĉion en {section}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:22.239502",
+    "@@last_modified": "2026-09-02 14:37:14.217686",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7136,12 +7136,13 @@
     "activityReview": "Xem lại hoạt động",
     "activityPanel": "Hoạt động",
     "coursePage": "Trang khóa học",
-    "suggestedActivities": "Hoạt động gợi ý",
     "constructLevelSeeds": "Hạt giống, từ mới",
     "constructLevelGreens": "Cây non, từ đang học",
     "constructLevelFlowers": "Hoa, từ đã thành thạo",
     "filterAndSearch": "Lọc và tìm kiếm",
     "participantsOfTotal": "{filled} trên {total} người chơi",
     "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
-    "availableLabel": "Chưa bắt đầu"
+    "availableLabel": "Chưa bắt đầu",
+    "seeAll": "Xem tất cả",
+    "seeAllSection": "Xem tất cả {section}"
 }

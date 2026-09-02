@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-02 13:00:12.525744",
+    "@@last_modified": "2026-09-02 14:37:07.904145",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10338,12 +10338,13 @@
     "activityReview": "Přehled aktivit",
     "activityPanel": "Aktivita",
     "coursePage": "Stránka kurzu",
-    "suggestedActivities": "Navrhované aktivity",
     "constructLevelSeeds": "Semínka, nová slova",
     "constructLevelGreens": "Zelené, rostoucí slova",
     "constructLevelFlowers": "Květy, zvládnutá slova",
     "filterAndSearch": "Filtrovat a hledat",
     "participantsOfTotal": "{filled} z {total} hráčů",
     "mapAttributionLabel": "Přispěvatelé OpenStreetMap, autorská práva a licence",
-    "availableLabel": "Ještě nezačalo"
+    "availableLabel": "Ještě nezačalo",
+    "seeAll": "Zobrazit vše",
+    "seeAllSection": "Zobrazit vše {section}"
 }

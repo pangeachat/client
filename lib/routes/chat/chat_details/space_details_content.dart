@@ -42,8 +42,11 @@ enum SpaceSettingsTabs {
     return SpaceSettingsTabs.values.firstWhereOrNull((e) => e.name == value);
   }
 
-  /// The section's display title — shared by the course page's section
-  /// headers and the pushed subpage's header title, so the two can't drift.
+  /// The section's display title — the pushed subpage's header title, and the
+  /// course page's section header wherever the two say the same thing, so
+  /// they can't drift. The one section they don't share is the course plan:
+  /// its subpage is the plan, while the course page heads that section
+  /// "Activities" after the row it actually shows (#8744).
   String title(BuildContext context) => switch (this) {
     SpaceSettingsTabs.course => L10n.of(context).coursePlan,
     SpaceSettingsTabs.chat => L10n.of(context).chats,

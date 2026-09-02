@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:30.946909",
+    "@@last_modified": "2026-09-02 14:37:10.895152",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10037,12 +10037,13 @@
     "activityReview": "활동 검토",
     "activityPanel": "활동",
     "coursePage": "코스 페이지",
-    "suggestedActivities": "추천 활동",
     "constructLevelSeeds": "씨앗, 새로운 단어",
     "constructLevelGreens": "새싹, 성장하는 단어",
     "constructLevelFlowers": "꽃, 마스터한 단어",
     "filterAndSearch": "필터 및 검색",
     "participantsOfTotal": "{total}명 중 {filled}명",
     "mapAttributionLabel": "OpenStreetMap 기여자, 저작권 및 라이선스",
-    "availableLabel": "아직 시작 안 함"
+    "availableLabel": "아직 시작 안 함",
+    "seeAll": "모두 보기",
+    "seeAllSection": "{section} 모두 보기"
 }

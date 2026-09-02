@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-02 13:00:18.896002",
+    "@@last_modified": "2026-09-02 14:37:12.533099",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2248,12 +2248,13 @@
     "activityReview": "କାର୍ଯ୍ୟକଳାପ ସମୀକ୍ଷା",
     "activityPanel": "କାର୍ଯ୍ୟକଳାପ",
     "coursePage": "କୋର୍ସ ପୃଷ୍ଠା",
-    "suggestedActivities": "ପରାମର୍ଶିତ କାର୍ଯ୍ୟକଳାପ",
     "constructLevelSeeds": "ସିଡ୍ସ, ନୂଆ ଶବ୍ଦ",
     "constructLevelGreens": "ଗ୍ରୀନ୍ସ, ବଢୁଥିବା ଶବ୍ଦ",
     "constructLevelFlowers": "ଫୁଲ, ଆୟତ୍ତ ଶବ୍ଦ",
     "filterAndSearch": "ଫିଲ୍ଟର୍ ଏବଂ ସନ୍ଧାନ କରନ୍ତୁ",
     "participantsOfTotal": "{total} ଖେଳାଳିଙ୍କ ମଧ୍ୟରୁ {filled}",
     "mapAttributionLabel": "OpenStreetMap ଯୋଗଦାନକାରୀ, କପିରାଇଟ୍ ଏବଂ ଲାଇସେନ୍ସ",
-    "availableLabel": "ଏପର୍ଯ୍ୟନ୍ତ ଆରମ୍ଭ ହୋଇନାହିଁ"
+    "availableLabel": "ଏପର୍ଯ୍ୟନ୍ତ ଆରମ୍ଭ ହୋଇନାହିଁ",
+    "seeAll": "ସବୁ ଦେଖନ୍ତୁ",
+    "seeAllSection": "ସବୁ {section} ଦେଖନ୍ତୁ"
 }

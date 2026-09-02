@@ -79,7 +79,7 @@ class QuestObjectivesLoader {
 
   /// The next-Mission gradient (0..[kBandCeiling]) for an activity satisfying
   /// [missionRefs], scoped to THIS course — the relevance band the course
-  /// page's Suggested Activities row ranks toward. Deliberately not the shared
+  /// page's Activities row ranks toward. Deliberately not the shared
   /// resolution's cross-quest sum: a course surface reads only its own course's
   /// progress (#7771). 0 until the resolution lands, so ranking degrades to
   /// plain live-session order rather than to a wall.

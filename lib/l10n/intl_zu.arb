@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-02 13:00:23.273123",
+    "@@last_modified": "2026-09-02 14:37:15.174284",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Ukubuyekeza umsebenzi",
     "activityPanel": "Umsebenzi",
     "coursePage": "Ikhasi lesifundo",
-    "suggestedActivities": "Imisebenzi Ephakanyisiwe",
     "constructLevelSeeds": "Imbewu, amagama amasha",
     "constructLevelGreens": "Okuluhlaza, amagama akhulayo",
     "constructLevelFlowers": "Izimbali, amagama asezingeni eliphezulu",
     "filterAndSearch": "Hlunga bese usesha",
     "participantsOfTotal": "{filled} kwabangu-{total} abadlali",
     "mapAttributionLabel": "Abanikeli be-OpenStreetMap, i-copyright nelayisense",
-    "availableLabel": "Ayikaqali"
+    "availableLabel": "Ayikaqali",
+    "seeAll": "Buka konke",
+    "seeAllSection": "Buka konke {section}"
 }

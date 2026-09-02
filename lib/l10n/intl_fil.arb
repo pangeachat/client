@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-02 13:00:13.349251",
+    "@@last_modified": "2026-09-02 14:37:08.544140",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10704,12 +10704,13 @@
     "activityReview": "Pagsusuri ng aktibidad",
     "activityPanel": "Aktibidad",
     "coursePage": "Pahina ng kurso",
-    "suggestedActivities": "Mga Iminungkahing Aktibidad",
     "constructLevelSeeds": "Buto, mga bagong salita",
     "constructLevelGreens": "Mga Gulay, lumalagong salita",
     "constructLevelFlowers": "Mga Bulaklak, mga salitang bihasa",
     "filterAndSearch": "I-filter at hanapin",
     "participantsOfTotal": "{filled} sa {total} na manlalaro",
     "mapAttributionLabel": "Mga contributor ng OpenStreetMap, copyright at lisensya",
-    "availableLabel": "Hindi pa nagsisimula"
+    "availableLabel": "Hindi pa nagsisimula",
+    "seeAll": "Tingnan lahat",
+    "seeAllSection": "Tingnan lahat ng {section}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-02 13:00:17.996953",
+    "@@last_modified": "2026-09-02 14:37:11.494170",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2248,12 +2248,13 @@
     "activityReview": "പ്രവർത്തന അവലോകനം",
     "activityPanel": "പ്രവർത്തനം",
     "coursePage": "കോഴ്‌സ് പേജ്",
-    "suggestedActivities": "നിർദ്ദേശിച്ച പ്രവർത്തനങ്ങൾ",
     "constructLevelSeeds": "വിത്തുകൾ, പുതിയ വാക്കുകൾ",
     "constructLevelGreens": "ചെടികൾ, വളരുന്ന വാക്കുകൾ",
     "constructLevelFlowers": "പൂക്കൾ, പഠിച്ചെടുത്ത വാക്കുകൾ",
     "filterAndSearch": "ഫിൽട്ടർ ചെയ്ത് തിരയുക",
     "participantsOfTotal": "{total} കളിക്കാരിൽ {filled} പേർ",
     "mapAttributionLabel": "OpenStreetMap സംഭാവന ചെയ്യുന്നവർ, പകർപ്പവകാശം, ലൈസൻസ്",
-    "availableLabel": "ഇതുവരെ ആരംഭിച്ചിട്ടില്ല"
+    "availableLabel": "ഇതുവരെ ആരംഭിച്ചിട്ടില്ല",
+    "seeAll": "എല്ലാം കാണുക",
+    "seeAllSection": "എല്ലാം കാണുക {section}"
 }

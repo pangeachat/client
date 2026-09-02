@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-02 13:00:45.860058",
+    "@@last_modified": "2026-09-02 14:37:13.270053",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Dib u eegista hawsha",
     "activityPanel": "Hawsha",
     "coursePage": "Bogga koorsada",
-    "suggestedActivities": "Hawlaha La Soo Jeediyay",
     "constructLevelSeeds": "Abuur, ereyo cusub",
     "constructLevelGreens": "Cagaar, ereyo koraya",
     "constructLevelFlowers": "Ubax, ereyo la bartay",
     "filterAndSearch": "Shaandhee oo raadi",
     "participantsOfTotal": "{filled} ka mid ah {total} ciyaartoy",
     "mapAttributionLabel": "Kuwa wax ku darsaday OpenStreetMap, xuquuqda daabacaadda iyo shatiga",
-    "availableLabel": "Weli ma bilaaban"
+    "availableLabel": "Weli ma bilaaban",
+    "seeAll": "Arag dhammaan",
+    "seeAllSection": "Arag dhammaan {section}"
 }

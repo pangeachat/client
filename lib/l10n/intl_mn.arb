@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-02 13:00:18.461719",
+    "@@last_modified": "2026-09-02 14:37:11.673405",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Үйл ажиллагааны тойм",
     "activityPanel": "Үйл ажиллагаа",
     "coursePage": "Хичээлийн хуудас",
-    "suggestedActivities": "Санал болгож буй үйл ажиллагаанууд",
     "constructLevelSeeds": "Үр, шинэ үгс",
     "constructLevelGreens": "Ногоон, ургаж буй үгс",
     "constructLevelFlowers": "Цэцэг, эзэмшсэн үгс",
     "filterAndSearch": "Шүүж хайх",
     "participantsOfTotal": "{total} тоглогчоос {filled} нь",
     "mapAttributionLabel": "OpenStreetMap-ийн хувь нэмэр оруулагчид, зохиогчийн эрх, лиценз",
-    "availableLabel": "Эхлээгүй байна"
+    "availableLabel": "Эхлээгүй байна",
+    "seeAll": "Бүгдийг харах",
+    "seeAllSection": "Бүх {section}-г харах"
 }

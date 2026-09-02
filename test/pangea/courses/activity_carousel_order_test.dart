@@ -14,7 +14,7 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 /// The row's contract after #8741 pulled it out of [ObjectiveSection]: it draws
 /// the activities it is handed, in the order it is handed them, and nothing
 /// else. A Mission's row supplies its own party-size order; the course page's
-/// Suggested Activities row supplies the Priority matrix's order — neither can
+/// Activities row supplies the Priority matrix's order — neither can
 /// work if the row re-sorts, and the course page must show no Mission text.
 void main() {
   setUp(() {

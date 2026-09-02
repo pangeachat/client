@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-02 13:00:21.956538",
+    "@@last_modified": "2026-09-02 14:37:13.871101",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2248,12 +2248,13 @@
     "activityReview": "Баррасии фаъолият",
     "activityPanel": "Фаъолият",
     "coursePage": "Саҳифаи курс",
-    "suggestedActivities": "Фаъолиятҳои пешниҳодшуда",
     "constructLevelSeeds": "Тухмҳо, калимаҳои нав",
     "constructLevelGreens": "Сабзавот, калимаҳои рӯёнанда",
     "constructLevelFlowers": "Гулҳо, калимаҳои азхудшуда",
     "filterAndSearch": "Филтр ва ҷустуҷӯ",
     "participantsOfTotal": "{filled} аз {total} бозигар",
     "mapAttributionLabel": "Мусоидаткунандагони OpenStreetMap, ҳуқуқи муаллифӣ ва иҷозатнома",
-    "availableLabel": "Ҳанӯз оғоз нашудааст"
+    "availableLabel": "Ҳанӯз оғоз нашудааст",
+    "seeAll": "Ҳамаро бинед",
+    "seeAllSection": "Ҳамаи {section}-ро бинед"
 }

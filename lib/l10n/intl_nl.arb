@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:18.457348",
+    "@@last_modified": "2026-09-02 14:37:12.102807",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9844,12 +9844,13 @@
     "activityReview": "Activiteitenoverzicht",
     "activityPanel": "Activiteit",
     "coursePage": "Cursuspagina",
-    "suggestedActivities": "Voorgestelde activiteiten",
     "constructLevelSeeds": "Zaden, nieuwe woorden",
     "constructLevelGreens": "Groenten, groeiende woorden",
     "constructLevelFlowers": "Bloemen, beheerste woorden",
     "filterAndSearch": "Filteren en zoeken",
     "participantsOfTotal": "{filled} van de {total} spelers",
     "mapAttributionLabel": "OpenStreetMap-medewerkers, auteursrecht en licentie",
-    "availableLabel": "Nog niet gestart"
+    "availableLabel": "Nog niet gestart",
+    "seeAll": "Alles weergeven",
+    "seeAllSection": "Alle {section} weergeven"
 }

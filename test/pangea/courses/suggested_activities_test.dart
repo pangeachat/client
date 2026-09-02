@@ -9,7 +9,7 @@ import 'package:fluffychat/routes/courses/course_objectives/suggested_activities
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
-/// Coverage for #8741: the course page's Suggested Activities row ranks the
+/// Coverage for #8741: the course page's Activities row ranks the
 /// course plan's activities by the world map's Priority matrix, drops the
 /// sessions the learner is already in, and caps to a shortlist.
 void main() {

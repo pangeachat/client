@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 13:00:12.387332",
+    "@@last_modified": "2026-09-02 14:37:08.005165",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9971,12 +9971,13 @@
     "activityReview": "Revisió d'activitat",
     "activityPanel": "Activitat",
     "coursePage": "Pàgina del curs",
-    "suggestedActivities": "Activitats suggerides",
     "constructLevelSeeds": "Llavors, paraules noves",
     "constructLevelGreens": "Brots, paraules en creixement",
     "constructLevelFlowers": "Flors, paraules dominades",
     "filterAndSearch": "Filtra i cerca",
     "participantsOfTotal": "{filled} de {total} jugadors",
     "mapAttributionLabel": "Col·laboradors d'OpenStreetMap, drets d'autor i llicència",
-    "availableLabel": "Encara no ha començat"
+    "availableLabel": "Encara no ha començat",
+    "seeAll": "Veure-ho tot",
+    "seeAllSection": "Veure-ho tot a {section}"
 }
