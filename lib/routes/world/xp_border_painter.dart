@@ -22,6 +22,17 @@ class XpBorderPainter extends CustomPainter {
   final double progress;
   final Color trackColor;
   final Color progressColor;
+
+  /// Painted as a slightly wider stroke *beneath* the ring, so the ring has a
+  /// defined edge against whatever map tile happens to be behind it.
+  ///
+  /// The ring is drawn outside the pill's opaque fill, straight onto raw OSM
+  /// tiles. Against light-mode cartography the gold measured 1.04–1.66:1 and
+  /// filled-vs-unfilled 1.07–1.42:1 — the progress could not be read at all
+  /// (#8763). Pass the theme's `onSurface`: dark in light mode, where the
+  /// tiles are pale and the arc needs separating from them; light in dark
+  /// mode, where the tiles invert and it is the grey track that goes faint.
+  final Color casingColor;
   final double stroke;
   final double radius;
   final XpBorderAnchor anchor;
@@ -30,6 +41,7 @@ class XpBorderPainter extends CustomPainter {
     required this.progress,
     required this.trackColor,
     required this.progressColor,
+    required this.casingColor,
     required this.stroke,
     required this.radius,
     this.anchor = XpBorderAnchor.bottomCenter,
@@ -116,6 +128,13 @@ class XpBorderPainter extends CustomPainter {
       path,
       Paint()
         ..style = PaintingStyle.stroke
+        ..strokeWidth = stroke + _casingWidth * 2
+        ..color = casingColor,
+    );
+    canvas.drawPath(
+      path,
+      Paint()
+        ..style = PaintingStyle.stroke
         ..strokeWidth = stroke
         ..color = trackColor,
     );
@@ -133,11 +152,16 @@ class XpBorderPainter extends CustomPainter {
     );
   }
 
+  /// How far the casing shows on each side of the ring. One logical pixel is
+  /// enough to define the edge and keeps the ring's weight visually unchanged.
+  static const double _casingWidth = 1.0;
+
   @override
   bool shouldRepaint(XpBorderPainter old) =>
       old.progress != progress ||
       old.progressColor != progressColor ||
       old.trackColor != trackColor ||
+      old.casingColor != casingColor ||
       old.stroke != stroke ||
       old.radius != radius ||
       old.anchor != anchor;

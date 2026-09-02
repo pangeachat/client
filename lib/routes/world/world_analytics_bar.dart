@@ -233,8 +233,12 @@ class _PowerupsRow extends StatelessWidget {
                       child: CustomPaint(
                         painter: XpBorderPainter(
                           progress: progress,
-                          trackColor: const Color.fromARGB(130, 135, 135, 135),
+                          // Opaque, not the old 130 alpha: the casing behind it is dark in
+                          // light mode, and a translucent track composited over that
+                          // read as near-black instead of the grey the design calls for.
+                          trackColor: const Color(0xFF878787),
                           progressColor: AppConfig.goldByTheme(context),
+                          casingColor: Theme.of(context).colorScheme.onSurface,
                           stroke: _xpStroke,
                           radius: _innerRadius + _xpStroke / 2,
                           anchor: XpBorderAnchor.leftCenter,
