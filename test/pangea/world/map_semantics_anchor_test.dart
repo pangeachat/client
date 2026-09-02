@@ -3,20 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/world/world_map_view.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 
 /// #8755 — the map's semantic container is a thin strip anchored at the far
 /// right edge: VoiceOver sorts overlapping positioned siblings by horizontal
 /// center (verified by live DOM mutation), so a full-bleed container always
-/// read mid-sweep. The fix leans on two pieces of framework semantics
-/// geometry this test pins as a canary: the strip container's own semantics
-/// rect stays strip-sized (the box VO sorts by), while a child overflowing
-/// it through a right-aligned OverflowBox lands at its true on-screen
-/// position.
+/// read mid-sweep. [MapSemanticsAnchor] carries three contracts this pins:
+/// the group node's own rect stays strip-sized (the box VO sorts by),
+/// children keep their true on-screen positions, and clickable children
+/// beyond the strip's bounds still receive pointer hits — the part a chain
+/// of framework proxies (Semantics + OverflowBox) cannot deliver.
 void main() {
-  testWidgets('anchored strip: container rect is the strip, child rect true', (
+  testWidgets('anchor: strip-sized group, true child rects, live pointers', (
     tester,
   ) async {
     final semantics = tester.ensureSemantics();
+    var tapped = false;
 
     await tester.pumpWidget(
       MaterialApp(
@@ -27,30 +29,25 @@ void main() {
               bottom: 0,
               right: 0,
               width: semanticsAnchorWidth,
-              child: Semantics(
+              child: MapSemanticsAnchor(
                 label: 'map-region',
-                container: true,
-                child: OverflowBox(
-                  alignment: Alignment.centerRight,
-                  minWidth: 800,
-                  maxWidth: 800,
-                  minHeight: 600,
-                  maxHeight: 600,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 20,
-                        top: 20,
-                        width: 120,
-                        height: 40,
-                        child: Semantics(
-                          label: 'far-left pin',
-                          container: true,
-                          child: const SizedBox.expand(),
-                        ),
+                sortKey: BrowseOrder.map,
+                // The default test surface size, so full-size overflow puts
+                // children at their true screen coordinates.
+                fullSize: const Size(800, 600),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      left: 20,
+                      top: 20,
+                      width: 120,
+                      height: 40,
+                      child: TextButton(
+                        onPressed: () => tapped = true,
+                        child: const Text('far-left control'),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -64,16 +61,23 @@ void main() {
     expect(
       region.rect.width,
       semanticsAnchorWidth,
-      reason: "the container's own rect is the strip — the box VO sorts by",
+      reason: "the group's own rect is the strip — the box VO sorts by",
     );
 
-    // The default test surface is 800x600, so overflow at full surface size
-    // puts children at their true screen coordinates.
-    final pin = tester.getRect(find.bySemanticsLabel('far-left pin'));
     expect(
-      pin,
+      tester.getRect(find.byType(TextButton)),
       const Rect.fromLTWH(20, 20, 120, 40),
       reason: 'children overflowing the strip keep their true positions',
+    );
+
+    await tester.tapAt(const Offset(80, 40));
+    await tester.pumpAndSettle();
+    expect(
+      tapped,
+      isTrue,
+      reason:
+          'clickable children beyond the strip bounds must still receive '
+          'pointer hits (#8755 — the zoom controls live inside the group)',
     );
 
     semantics.dispose();

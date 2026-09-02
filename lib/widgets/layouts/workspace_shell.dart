@@ -239,12 +239,12 @@ class BrowseOrder {
   static const rightPanels = OrdinalSortKey(3);
   static const cluster = OrdinalSortKey(4);
 
-  /// The map's own chrome — search/context slot, zoom controls, empty-view
-  /// card — reads after the cluster and before the map backdrop. These are
-  /// separate top-level nodes (not children of the map group) because the
-  /// map group is anchored to a right-edge strip for VoiceOver ordering
-  /// (#8755, see WorldMapView.build) and content inside a strip-sized
-  /// container would be unreachable by pointer.
+  /// The map's search/context slot (and its empty-view card) reads after
+  /// the cluster and before the map group. It is a separate top-level node,
+  /// not a child of the map group, which is anchored to a right-edge strip
+  /// for VoiceOver ordering (#8755, see WorldMapView.build); everything
+  /// else on the map — pins, attribution, zoom controls — lives inside
+  /// that group.
   static const mapChrome = OrdinalSortKey(5);
   static const map = OrdinalSortKey(6);
 }
