@@ -2720,11 +2720,17 @@ void main() {
     /// REPLACES this one and takes a fresh event id. That is what lets the id
     /// identify a call at all, and it is exactly what a read taken before the
     /// replacement has echoed throws away.
+    /// [stampedAt] is when the DEVICE wrote it. The SDK stamps every membership
+    /// it publishes with `now + expireTsBumpDuration` off this device's own
+    /// clock, so the stamp says when the write was issued -- which is how a
+    /// write belonging to an earlier call is told from this call's own, however
+    /// late it arrives.
     Future<void> publishMembership(
       Client client,
       String roomId,
-      String eventId,
-    ) => client.handleSync(
+      String eventId, {
+      DateTime? stampedAt,
+    }) => client.handleSync(
       SyncUpdate(
         nextBatch: 'batch-$eventId',
         rooms: RoomsUpdate(
@@ -2747,8 +2753,8 @@ void main() {
                           },
                         ],
                         'device_id': 'GHTYAJCE',
-                        'expires_ts': DateTime.now()
-                            .add(const Duration(minutes: 10))
+                        'expires_ts': (stampedAt ?? DateTime.now())
+                            .add(CallTimeouts().expireTsBumpDuration)
                             .millisecondsSinceEpoch,
                         'membershipID': 'ours',
                       },
@@ -2766,6 +2772,12 @@ void main() {
       ),
     );
 
+    /// When the CALL BEFORE this one stamped its writes: a moment ago, so its
+    /// membership is nowhere near expiring and is refused on what it says about
+    /// itself rather than on age.
+    DateTime beforeThisCall() =>
+        DateTime.now().subtract(const Duration(seconds: 5));
+
     /// A service about to place a call into a room where the PREVIOUS call's
     /// membership is still standing -- a redial whose hangup has been written
     /// but whose echo has not come back.
@@ -2778,12 +2790,33 @@ void main() {
         identifier: AuthenticationUserIdentifier(user: me),
         deviceId: 'GHTYAJCE',
       );
-      await publishMembership(client, roomId, r'$earlier-call');
+      await publishMembership(
+        client,
+        roomId,
+        r'$earlier-call',
+        stampedAt: beforeThisCall(),
+      );
       return (
         _JoinSteps(client, focusDiscovery: _FixedFocus()),
         client.getRoomById(roomId)!,
       );
     }
+
+    /// A session for [room] that publishes nothing of its own, so what
+    /// `announce` is looking at is only ever what the test put in state.
+    _LeavingSession sessionFor(_JoinSteps calls, Room room) => _LeavingSession(
+      client: calls.client,
+      room: room,
+      voip: calls.voip,
+      backend: LiveKitBackend(
+        livekitServiceUrl: 'http://sfu:7980',
+        livekitAlias: 'alias',
+        e2eeEnabled: false,
+      ),
+      groupCallId: 'call-id',
+      application: 'm.call',
+      scope: 'm.room',
+    );
 
     test('is never the one an earlier call left standing', () async {
       final (calls, room) = await redialing();
@@ -2800,32 +2833,133 @@ void main() {
 
     test('is the one this call published, once its echo lands', () async {
       final (calls, room) = await redialing();
-      await calls.join(room);
+      calls.adoptSessionForTest(sessionFor(calls, room));
+      final announcing = calls.announce();
+      await pumpEventQueue();
       await publishMembership(calls.client, room.id, r'$this-call');
+      await announcing;
+
       expect(
         calls.membershipEventIdIn(room),
         r'$this-call',
         reason:
-            'refusing the stale id must not amount to refusing every id: a '
-            'call with no anchor never rings and is never written',
+            'refusing what this call did not publish must not amount to '
+            'refusing everything: a call with no anchor never rings and is '
+            'never written. This is the read the late-anchor watch and a '
+            "device that merely JOINED take, not announce's own return",
       );
     });
 
+    // A membership state event is ONE slot per account and device: every write
+    // replaces the last and takes a new event id. So the call before this one
+    // can still have a write in flight -- its refresh, issued before the hangup
+    // cancelled the timer -- and that write echoes back AFTER this call has
+    // begun, carrying an event id this call has never seen. Anything that
+    // decides by "was this here when I started" accepts it.
+    test('is never a late write from the call before it', () async {
+      final (calls, room) = await redialing();
+      calls.adoptSessionForTest(sessionFor(calls, room));
+
+      final announcing = calls.announce();
+      await pumpEventQueue();
+      await publishMembership(calls.client, room.id, r'$this-call');
+      expect(await announcing, r'$this-call', reason: 'precondition');
+
+      // The previous call's refresh, in flight when the hangup ran, echoing
+      // back only now. A fresh event id, unexpired, same call id -- and this
+      // device stamped it before this call ever asked to publish.
+      await publishMembership(
+        calls.client,
+        room.id,
+        r'$earlier-call-refreshed',
+        stampedAt: beforeThisCall(),
+      );
+
+      expect(
+        calls.membershipEventIdIn(room),
+        isNull,
+        reason:
+            'a write this device made before this call asked to publish is the '
+            'previous call\'s, whenever it arrives. Adopting it keys this '
+            "call's transcript and card to the call before it -- the very "
+            'collision this refuses, reached by a later road',
+      );
+    });
+
+    test(
+      'is never a late write that lands while announce is waiting',
+      () async {
+        final (calls, room) = await redialing();
+        calls.adoptSessionForTest(sessionFor(calls, room));
+
+        final announcing = calls.announce();
+        await pumpEventQueue();
+        // The late refresh arrives first, while the wait is still running.
+        await publishMembership(
+          calls.client,
+          room.id,
+          r'$earlier-call-refreshed',
+          stampedAt: beforeThisCall(),
+        );
+        // Long enough for the wait to have looked at it more than once, so this
+        // is the poll seeing it rather than the poll missing it.
+        await Future.delayed(const Duration(milliseconds: 500));
+        // Only now does this call's own membership echo back.
+        await publishMembership(calls.client, room.id, r'$this-call');
+
+        expect(
+          await announcing,
+          r'$this-call',
+          reason:
+              'announce returns the id every writer in this call keys on. The '
+              'refresh that landed first belongs to the call before it, so the '
+              'wait is not over when it arrives',
+        );
+      },
+    );
+
+    // And the line is drawn at the PUBLISH, not at the start of the call. The
+    // two are not the same instant: announce parks until every leave the
+    // previous call is still issuing has finished, and that call's refresh
+    // timer can put another write out inside that wait. A line drawn when this
+    // call BEGAN sits before such a write and lets it through.
+    test(
+      'is never a write the call before it made while this one waited',
+      () async {
+        final (calls, room) = await redialing();
+        calls.adoptSessionForTest(sessionFor(calls, room));
+        // The previous call's leave, still running: announce holds here.
+        final lastCallsLeave = Completer<void>();
+        calls.setPendingLeaveForTest(lastCallsLeave.future);
+
+        final announcing = calls.announce();
+        await pumpEventQueue();
+        // Its refresh, issued NOW -- after this call began, and still before this
+        // call has asked to publish anything of its own.
+        await publishMembership(
+          calls.client,
+          room.id,
+          r'$earlier-call-refreshed',
+        );
+        await Future.delayed(const Duration(milliseconds: 50));
+
+        lastCallsLeave.complete();
+        await pumpEventQueue();
+        await publishMembership(calls.client, room.id, r'$this-call');
+
+        expect(
+          await announcing,
+          r'$this-call',
+          reason:
+              'the question is what THIS call published, and it had published '
+              'nothing while it was still waiting for the last one to let go',
+        );
+      },
+    );
+
     test('is what announce waits for, not what is already there', () async {
       final (calls, room) = await redialing();
-      final session = _LeavingSession(
-        client: calls.client,
-        room: room,
-        voip: calls.voip,
-        backend: LiveKitBackend(
-          livekitServiceUrl: 'http://sfu:7980',
-          livekitAlias: 'alias',
-          e2eeEnabled: false,
-        ),
-        groupCallId: 'call-id',
-        application: 'm.call',
-        scope: 'm.room',
-      );
+      final session = sessionFor(calls, room);
       calls.adoptSessionForTest(session);
 
       // The enter writes nothing here, which is the honest model of the window:

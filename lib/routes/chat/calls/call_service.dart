@@ -735,9 +735,9 @@ class CallService {
   /// ended.
   List<CallMembership> _myMembershipsIn(Room room) {
     // An account with no user or device id of its own holds no memberships,
-    // which is the honest answer rather than a crash. It is reachable: this is
-    // now asked at the moment a call BEGINS, where a logged-out client used to
-    // be unreachable because every earlier caller was guarded on a live call.
+    // which is the honest answer rather than a crash. The bangs this replaces
+    // were never load-bearing: nothing about a logged-out client makes it own
+    // a membership, so there is no case where throwing said more than this.
     final userId = client.userID;
     final deviceId = client.deviceID;
     if (userId == null || deviceId == null) return const [];
@@ -759,33 +759,57 @@ class CallService {
   }
 
   /// The membership THIS call published, never one it merely found.
+  ///
+  /// Identified by what the publish STAMPED ON IT, which is the only thing in
+  /// the room that speaks for the write rather than for the moment it was
+  /// read. Anything weaker is a guess: see [_anchorStampFloor].
   String? _thisCallsMembershipEventId(Room room) {
+    final floor = _anchorStampFloor;
+    if (floor == null) return null;
     for (final m in _myMembershipsIn(room)) {
-      final id = m.eventId;
-      if (id != null && !_membershipsStandingBefore.contains(id)) return id;
+      if (m.eventId != null && m.expiresTs >= floor) return m.eventId;
     }
     return null;
   }
 
-  /// The membership event ids that were already in this room's state when the
-  /// call in hand began. They belong to calls that are OVER.
+  /// The earliest `expires_ts` a membership can carry and still be one THIS
+  /// call published. Null until this call has asked to publish one, which is
+  /// the honest answer then: it has no identity yet.
   ///
   /// THE ROOM CANNOT BE ASKED WHICH CALL A MEMBERSHIP BELONGS TO. The group
   /// call id IS the room id (one direct message holds at most one call, and
   /// both clients derive the same id without coordinating), so every membership
-  /// of ours in this room matches the current call; a leave rewrites the state
-  /// event rather than removing it, and the rewrite reaches local state only
-  /// when its echo comes back down /sync. So for as long as that echo is
-  /// outstanding — which a redial can easily beat — the previous call's
-  /// membership sits in state looking exactly like this call's, and reading it
-  /// hands the new call the key the old one already wrote its transcript under.
+  /// of ours in this room matches the current call. There is ONE membership
+  /// state event per account and device, so every write replaces the last and
+  /// takes a fresh event id, and local state learns of it only when its echo
+  /// comes back down /sync.
   ///
-  /// A snapshot taken at the one instant when the answer is free: a call that
-  /// has just become current has published nothing, so anything standing then
-  /// is somebody else's by construction. Clock-free deliberately — the
-  /// timestamps in state are the server's and the only clock to compare them
-  /// against is this device's, which is the mistake [ActiveCall] already
-  /// records having made about a call's own start time.
+  /// SO THE EVENT ID SAYS NOTHING ON ITS OWN, AND NEITHER DOES WHEN IT ARRIVED.
+  /// The call before this one can still have a write in flight when this one
+  /// begins — its refresh, issued before the hangup cancelled the timer — and
+  /// that write echoes back afterwards under an id this call has never seen.
+  /// Deciding by "was it here when I started" adopts it, and this call's
+  /// transcript and card are then keyed to the call before it: the collision
+  /// this whole read exists to refuse, reached by a later road.
+  ///
+  /// What does speak for the write is the stamp the write puts on itself. The
+  /// SDK publishes every membership with `expires_ts` set to this DEVICE's
+  /// clock plus [CallTimeouts.expireTsBumpDuration] — the same bump this
+  /// service configured the SDK with — so the stamp says when the write was
+  /// ISSUED. A write issued before this call asked to publish carries an
+  /// earlier stamp however late it lands, and no arrival can disguise it.
+  ///
+  /// The stamp is a millisecond, so two writes inside one millisecond are
+  /// indistinguishable here and the earlier one would be accepted. That is the
+  /// limit of the resolution the protocol gives, and it is not a window
+  /// anything reaches: between the previous call's last write and this one's
+  /// enter sit a leave, a join and their round trips.
+  ///
+  /// ONE CLOCK, DELIBERATELY. Floor and stamp are both this device's, so
+  /// nothing here compares a local clock against the server's — the mistake
+  /// [ActiveCall] already records having made about a call's own start time.
+  /// A clock that steps backwards makes this refuse OUR OWN membership, which
+  /// is a stated failure (below), never a wrong key.
   ///
   /// The same rule [peerPresenceInCurrentCall] applies to the PEER's
   /// memberships ("state older than this call cannot speak for it"), applied at
@@ -796,15 +820,17 @@ class CallService {
   /// reusing the standing membership — that is what re-enters the RTC session
   /// and renews the delayed leave — and the identity of the call it returned
   /// to is carried separately, as `ActiveCall._rejoinAnchorId`.
-  Set<String> _membershipsStandingBefore = const {};
+  int? _anchorStampFloor;
 
-  /// Notes what was already standing, so this call's own membership can be told
-  /// from it. Called at the instant a session becomes the current one.
+  /// The stamp a membership published at [issuedAt] carries.
+  int _membershipStampFor(DateTime issuedAt) =>
+      issuedAt.add(timeouts.expireTsBumpDuration).millisecondsSinceEpoch;
+
+  /// A call becomes the current one. It has published nothing yet, so it has
+  /// no membership of its own to be found and no anchor to answer with.
   void _markCallBegun(GroupCallSession session) {
     _current = session;
-    _membershipsStandingBefore = {
-      for (final m in _myMembershipsIn(session.room)) ?m.eventId,
-    };
+    _anchorStampFloor = null;
   }
 
   /// Calls arriving for this account, decided from the notification event.
@@ -1709,6 +1735,12 @@ class CallService {
       // still in flight let that write land afterwards, advertising a
       // membership with nothing left tracking it — and this SDK's memberships
       // stand for minutes.
+
+      // Taken BEFORE the write, so it is a true lower bound on what the write
+      // stamps itself with: the SDK reads its own `DateTime.now()` inside.
+      // This is the moment this call acquires an identity at all — every read
+      // before it honestly has none.
+      _anchorStampFloor = _membershipStampFor(DateTime.now());
       final entering = _entering = session.enter();
       // Released when the enter itself finishes, NOT when this stops waiting
       // for it. Clearing it on the way out of a timeout let a retract go ahead
