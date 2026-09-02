@@ -2690,6 +2690,171 @@ void main() {
       expect(service.answeredOnAnotherDevice(room, ringAt), isFalse);
     });
   });
+
+  /// The identity every writer in a call agrees on is this device's membership
+  /// event id -- the caller holds it as its own echo, the callee reads it off
+  /// the ring it answered. Two calls that derive the SAME one are two calls of
+  /// which only the first is ever written: the transcript's transaction id is
+  /// built from that key, a homeserver collapses a repeated transaction id from
+  /// the same device, and the second call's speech is absorbed as a duplicate
+  /// of a call that had already ended -- reaching the room as nothing at all,
+  /// with success returned to every writer. The card lands under the shared key
+  /// too, and the reader keeps the first, so the second call is drawn with the
+  /// first one's duration.
+  ///
+  /// Room state cannot answer which membership belongs to which call. The group
+  /// call id IS the room id, so every membership of ours in this room matches
+  /// the current call; a membership stands for minutes; and a leave leaves
+  /// state only when its echo arrives. A call that reads state before its own
+  /// membership has echoed therefore reads the PREVIOUS call's. What these pin
+  /// is that the anchor read applies to our OWN memberships the rule
+  /// `peerPresenceInCurrentCall` already applies to the peer's: state older
+  /// than this call cannot speak for it.
+  group('the membership that identifies a call', () {
+    const me = '@test:fakeServer.notExisting';
+    var seq = 0;
+
+    /// Puts one membership of ours into [roomId]'s state under [eventId].
+    ///
+    /// There is ONE state event per account and device, so a later membership
+    /// REPLACES this one and takes a fresh event id. That is what lets the id
+    /// identify a call at all, and it is exactly what a read taken before the
+    /// replacement has echoed throws away.
+    Future<void> publishMembership(
+      Client client,
+      String roomId,
+      String eventId,
+    ) => client.handleSync(
+      SyncUpdate(
+        nextBatch: 'batch-$eventId',
+        rooms: RoomsUpdate(
+          join: {
+            roomId: JoinedRoomUpdate(
+              state: [
+                MatrixEvent(
+                  type: EventTypes.GroupCallMember,
+                  content: {
+                    'memberships': [
+                      {
+                        'call_id': 'call-id',
+                        'application': 'm.call',
+                        'scope': 'm.room',
+                        'foci_active': [
+                          {
+                            'type': 'livekit',
+                            'livekit_alias': 'alias',
+                            'livekit_service_url': 'http://sfu:7980',
+                          },
+                        ],
+                        'device_id': 'GHTYAJCE',
+                        'expires_ts': DateTime.now()
+                            .add(const Duration(minutes: 10))
+                            .millisecondsSinceEpoch,
+                        'membershipID': 'ours',
+                      },
+                    ],
+                  },
+                  senderId: me,
+                  eventId: eventId,
+                  originServerTs: DateTime.now(),
+                  stateKey: me,
+                ),
+              ],
+            ),
+          },
+        ),
+      ),
+    );
+
+    /// A service about to place a call into a room where the PREVIOUS call's
+    /// membership is still standing -- a redial whose hangup has been written
+    /// but whose echo has not come back.
+    Future<(_JoinSteps, Room)> redialing() async {
+      final roomId = '!anchor${seq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      await publishMembership(client, roomId, r'$earlier-call');
+      return (
+        _JoinSteps(client, focusDiscovery: _FixedFocus()),
+        client.getRoomById(roomId)!,
+      );
+    }
+
+    test('is never the one an earlier call left standing', () async {
+      final (calls, room) = await redialing();
+      await calls.join(room);
+      expect(
+        calls.membershipEventIdIn(room),
+        isNull,
+        reason:
+            'this call has published nothing yet, so it has no identity yet. '
+            'Answering with the earlier call\'s membership hands the redial '
+            'the very key that call already wrote its transcript under',
+      );
+    });
+
+    test('is the one this call published, once its echo lands', () async {
+      final (calls, room) = await redialing();
+      await calls.join(room);
+      await publishMembership(calls.client, room.id, r'$this-call');
+      expect(
+        calls.membershipEventIdIn(room),
+        r'$this-call',
+        reason:
+            'refusing the stale id must not amount to refusing every id: a '
+            'call with no anchor never rings and is never written',
+      );
+    });
+
+    test('is what announce waits for, not what is already there', () async {
+      final (calls, room) = await redialing();
+      final session = _LeavingSession(
+        client: calls.client,
+        room: room,
+        voip: calls.voip,
+        backend: LiveKitBackend(
+          livekitServiceUrl: 'http://sfu:7980',
+          livekitAlias: 'alias',
+          e2eeEnabled: false,
+        ),
+        groupCallId: 'call-id',
+        application: 'm.call',
+        scope: 'm.room',
+      );
+      calls.adoptSessionForTest(session);
+
+      // The enter writes nothing here, which is the honest model of the window:
+      // a real one writes the membership and the id only appears in state when
+      // the write echoes back. So the announce below starts polling with only
+      // the earlier call's membership in front of it.
+      final announcing = calls.announce();
+      await pumpEventQueue();
+      // The echo, arriving between two polls.
+      await publishMembership(calls.client, room.id, r'$this-call');
+
+      expect(
+        session.enters,
+        1,
+        reason:
+            'precondition: this call really did publish a membership of its '
+            'own, so the id below is a wait that was satisfied rather than a '
+            'question that was never asked',
+      );
+      expect(
+        await announcing,
+        r'$this-call',
+        reason:
+            'announce returns the id every writer in this call will key on; '
+            'returning the one already in state gives the redial the previous '
+            "call's key and silently destroys this call's transcript",
+      );
+    });
+  });
 }
 
 /// A room that accepts any send and remembers the transaction ids used.

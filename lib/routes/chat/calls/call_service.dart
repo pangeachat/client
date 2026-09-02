@@ -539,7 +539,7 @@ class CallService {
     }
     await _stopIfSuperseded(attempt, session: session);
 
-    _current = session;
+    _markCallBegun(session);
     return grant;
   }
 
@@ -700,30 +700,111 @@ class CallService {
     return null;
   }
 
-  /// Our own membership's event id in [room]'s current call, or null.
+  /// The membership event id that IDENTIFIES the call in hand, or null.
   ///
   /// Read again at the end of a call by a device that had none: the wait when
   /// announcing is deliberately short so a caller is never left hanging, and a
   /// device that joined a call already under way has nothing else to anchor its
   /// analytics to.
+  ///
+  /// A CALL'S ANCHOR MUST BE A MEMBERSHIP THAT CALL ITSELF PUBLISHED. Every
+  /// writer keys on it — the transcript's transaction id is built from it, and
+  /// so is the card — and both of those jobs assume it is unique per call. It
+  /// is unique only because each publish takes a fresh event id; two calls that
+  /// derive the SAME one are two calls of which only the FIRST is ever written,
+  /// because a homeserver collapses a repeated transaction id from one device
+  /// and hands back the earlier event. Nothing fails: the later call's whole
+  /// transcript is absorbed as a duplicate of a call that had already ended,
+  /// and its card is drawn with that call's duration.
+  ///
+  /// Room state on its own cannot say which membership belongs to which call —
+  /// see [_membershipsStandingBefore].
   String? membershipEventIdIn(Room room) {
     // Answered only while the machinery that tracked the call is still here.
     // Reading a membership goes through the SDK's VoIP instance, and asking
     // after teardown would BUILD one — listeners and all — to answer a question
     // about a call that no longer exists.
     if (_disposed || _voip == null || _current == null) return null;
-    return _myMembershipEventId(room);
+    return _thisCallsMembershipEventId(room);
   }
 
+  /// Every membership of ours the room is holding for the call in hand.
+  ///
+  /// Expiry is the only thing state itself can rule out, and it rules out very
+  /// little: a membership stands for minutes after the call it belonged to has
+  /// ended.
+  List<CallMembership> _myMembershipsIn(Room room) {
+    // An account with no user or device id of its own holds no memberships,
+    // which is the honest answer rather than a crash. It is reachable: this is
+    // now asked at the moment a call BEGINS, where a logged-out client used to
+    // be unreachable because every earlier caller was guarded on a live call.
+    final userId = client.userID;
+    final deviceId = client.deviceID;
+    if (userId == null || deviceId == null) return const [];
+    return [
+      for (final m in room.getCallMembershipsForUser(userId, deviceId, voip))
+        if (m.callId == _current?.groupCallId && !m.isExpired) m,
+    ];
+  }
+
+  /// Any membership of ours still standing, a leftover of an earlier call
+  /// included.
+  ///
+  /// The question a RETRACT asks on its way out — is there anything of ours
+  /// left in this room to take back? — where a leftover counts like any other,
+  /// which is why this one is deliberately not filtered.
   String? _myMembershipEventId(Room room) {
-    for (final m in room.getCallMembershipsForUser(
-      client.userID!,
-      client.deviceID!,
-      voip,
-    )) {
-      if (m.callId == _current?.groupCallId && !m.isExpired) return m.eventId;
+    final mine = _myMembershipsIn(room);
+    return mine.isEmpty ? null : mine.first.eventId;
+  }
+
+  /// The membership THIS call published, never one it merely found.
+  String? _thisCallsMembershipEventId(Room room) {
+    for (final m in _myMembershipsIn(room)) {
+      final id = m.eventId;
+      if (id != null && !_membershipsStandingBefore.contains(id)) return id;
     }
     return null;
+  }
+
+  /// The membership event ids that were already in this room's state when the
+  /// call in hand began. They belong to calls that are OVER.
+  ///
+  /// THE ROOM CANNOT BE ASKED WHICH CALL A MEMBERSHIP BELONGS TO. The group
+  /// call id IS the room id (one direct message holds at most one call, and
+  /// both clients derive the same id without coordinating), so every membership
+  /// of ours in this room matches the current call; a leave rewrites the state
+  /// event rather than removing it, and the rewrite reaches local state only
+  /// when its echo comes back down /sync. So for as long as that echo is
+  /// outstanding — which a redial can easily beat — the previous call's
+  /// membership sits in state looking exactly like this call's, and reading it
+  /// hands the new call the key the old one already wrote its transcript under.
+  ///
+  /// A snapshot taken at the one instant when the answer is free: a call that
+  /// has just become current has published nothing, so anything standing then
+  /// is somebody else's by construction. Clock-free deliberately — the
+  /// timestamps in state are the server's and the only clock to compare them
+  /// against is this device's, which is the mistake [ActiveCall] already
+  /// records having made about a call's own start time.
+  ///
+  /// The same rule [peerPresenceInCurrentCall] applies to the PEER's
+  /// memberships ("state older than this call cannot speak for it"), applied at
+  /// last to our own — where it matters more, because our own membership is
+  /// not merely read, it is PUBLISHED as the call's identity.
+  ///
+  /// A rejoin is not an exception. It announces itself afresh rather than
+  /// reusing the standing membership — that is what re-enters the RTC session
+  /// and renews the delayed leave — and the identity of the call it returned
+  /// to is carried separately, as `ActiveCall._rejoinAnchorId`.
+  Set<String> _membershipsStandingBefore = const {};
+
+  /// Notes what was already standing, so this call's own membership can be told
+  /// from it. Called at the instant a session becomes the current one.
+  void _markCallBegun(GroupCallSession session) {
+    _current = session;
+    _membershipsStandingBefore = {
+      for (final m in _myMembershipsIn(session.room)) ?m.eventId,
+    };
   }
 
   /// Calls arriving for this account, decided from the notification event.
@@ -1695,7 +1776,10 @@ class CallService {
       // read here reaches through the VoIP getter — which would rebuild the
       // instance dispose had just dropped.
       _stopIfDisposed();
-      final id = _myMembershipEventId(room);
+      // The filtered read: what is being waited for is the echo of the write
+      // `enter()` just made, and a membership already in state is by definition
+      // not that.
+      final id = _thisCallsMembershipEventId(room);
       if (id != null) return id;
       await Future.delayed(const Duration(milliseconds: 200));
     }
@@ -1905,7 +1989,7 @@ class CallService {
   /// Installs a joined session without going through the network join, so a
   /// test can exercise what retract does with one.
   @visibleForTesting
-  void adoptSessionForTest(GroupCallSession session) => _current = session;
+  void adoptSessionForTest(GroupCallSession session) => _markCallBegun(session);
 
   @visibleForTesting
   bool get voipConstructed => _voip != null;
