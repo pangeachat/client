@@ -5,7 +5,9 @@ Worktree: `.claude/worktrees/txn-keying`. Branch cut from
 
 A cold review of the full production diff (no framing, no per-commit summary)
 returned RED on three findings that four earlier scoped gates had passed. All
-three were real. The earlier gates were each given one commit plus a written
+three were real. A cold RE-RUN on the fixed branch returned RED once more, on a
+fourth that only became visible once the empty-half path was correct. Also
+real. The earlier gates were each given one commit plus a written
 summary, which told the reviewer where to look — the findings all live in the
 seams *between* commits.
 
@@ -16,6 +18,7 @@ seams *between* commits.
 | `discardExplainsEmptiness` too broad, ranked above `chunksLost` | yes | `2b52c593dd` |
 | `HalfIssue.audioDroppedAtCapture` reaches no sentence | yes | `2b52c593dd` |
 | The transcript txn id is re-read per retry attempt | yes | `f7493e671c` |
+| A partial discard whose sibling never wrote reads as COMPLETE | yes | `6d62dd6fe0` |
 
 Findings 1 and 2 are one class and got one fix. Finding 3 is its own.
 
@@ -49,6 +52,46 @@ through to `callTranscriptNothingRead`, telling a learner their words could not
 be READ when nothing had been sent to a reader at all. Two new l10n strings:
 `callTranscriptAudioDropped`, `callTranscriptHeldByOtherDevice`.
 
+## Finding 4 — the discard's excuse was never checked
+
+`chunksDiscarded` is excluded from `writerAdmitsGaps` because "a correct discard
+loses nothing". That is an assumption about a **different device**, made at
+capture time by a device that could not see it, and nothing checked it. A half
+that transcribed its early chunks and deferred its tail to a sibling that then
+crashed cleared every test — the count is not in `writerAdmitsGaps`, and
+`discardExplainsEmptiness` asks for an EMPTY half — and read `present` /
+`HalfIssue.none`, with no note on the screen.
+
+Same class as finding 1, one level up: there an explanation displaced a truer
+one, here an explanation was **assumed** rather than established.
+
+`EmptinessCause` became `MissingAudio`: one inventory, two exhaustive switches
+over it (`amountEmptiedBy`, `leavesAGap`). `leavesAGap` takes `aSiblingWrote` as
+a **required** argument, so the question cannot be asked anywhere that cannot
+answer it. Assembly answers it with `deviceCount > 1`.
+
+**What coverage can honestly establish:** that another device of this account
+published a half for this call and the reader holds it. Nothing more. It cannot
+establish that the half spans the discarded stretch — a discarded chunk carries
+a count and no position, duration or index; chunk indices do not line up across
+devices; and "the sibling's words run past mine" is wrong both ways (a sibling
+that recorded the stretch and heard silence writes no segment there; one that
+recorded past it may still have lost the chunk that mattered). A sibling that
+admits its own gaps needs no test — `_mergeAccounting` ANDs completeness — so
+presence is exactly the residual.
+
+**The test that was encoding the bug.** `'a half that still carries words is
+complete'` said *"an ordinary handover defers one tail"* and set up ONE device,
+which is the opposite of a handover. Its fixture now has the sibling it was
+describing; its counterpart is the case that was missing.
+
+**Corner left alone, deliberately.** An EMPTY half with a *covered* discard
+(both devices published, both empty) still reports `audioHeldByAnotherDevice`,
+whose sentence says the words are on a device that is in fact right here and
+also empty. Not false, not maximally informative, and tightening it risks the
+`present` → "you did not say anything" regression that mutation 4 caught. Named
+rather than fixed.
+
 ## Finding 3
 
 `room.client.userID` and `.deviceID` were read inside the publisher closure,
@@ -72,14 +115,24 @@ over the room and the clock anchor.
 | 4 | widen the guard to blanket exclusivity | yes | `{heldForASibling, suppressedByUs} must not read as silence` — `Expected: false / Actual: <true>` |
 | 5 | let the two causes fall through again | yes | `Expected: not 'Nothing could be read from what Ana said' / Actual: 'Nothing could be read from what Ana said'` |
 | 6 | read the identity off the live client per attempt | yes | two ids on the wire: `…:@test:…:GHTYAJCE` and `pangea.call_transcript:$anchor:server::` |
+| 7 | add a value to `MissingAudio` | yes | compile: BOTH switches fail — `amountEmptiedBy` (:139) and `leavesAGap` (:265) |
+| 8 | restore the unconditional discard exclusion | yes | `heldForASibling is a gap must turn on a sibling only for a deferred stretch`; on screen, `Found 0 widgets with text containing may be missing` |
+| 9 | drop the read-time check from the state | yes | `heldForASibling leaves a gap with sibling=false, so the half may not claim to be everything that was said` — `Expected: incomplete / Actual: present` |
+| 10 | make EVERY discard a gap | yes | the ordinary two-device handover goes `Expected: present / Actual: incomplete` — the other wrong answer |
+| 11 | let the new note fall through | yes | `Expected: 'Part of what Ana said was left to another…' / Actual: 'Nothing could be read from what Ana said'` |
 
 ## Gates
 
 All four green on the final tree: `flutter analyze` (whole repo, no issues),
-`flutter test test/pangea` (4837 pass, 10 skipped), `dart format lib/ test/
+`flutter test test/pangea` (4844 pass, 10 skipped), `dart format lib/ test/
 --set-exit-if-changed` (0 changed), `import_sorter:main --no-comments
 --exit-if-changed` (0 sorted). Toolchain `~/fvm/versions/3.41.4` throughout.
-Calls subset went 1271 → 1278: seven new tests, no fixture edits.
+Calls subset went 1271 → 1285: fourteen new tests. One existing fixture was
+CORRECTED (the one-device "handover"), no assertion weakened, no gate touched.
+
+**Adding the new `HalfIssue` refused to compile until the screen had a sentence
+for it** — the exhaustive switch from `2b52c593dd` earning its keep in real
+work rather than in a mutation.
 
 ## Open for the owner
 
