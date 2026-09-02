@@ -5,6 +5,7 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
 import 'package:fluffychat/features/subscription/widgets/star_backdrop.dart';
+import 'package:fluffychat/features/subscription/widgets/star_characters.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -58,6 +59,7 @@ class SelectedSubscriptionPageState extends State<SelectedSubscriptionPage>
             titleSpacing: 0,
           ),
           body: StarBackdrop(
+            showCharacters: false,
             child: SingleChildScrollView(
               child: Container(
                 alignment: Alignment.topCenter,
@@ -68,39 +70,48 @@ class SelectedSubscriptionPageState extends State<SelectedSubscriptionPage>
                     bottom: 16.0,
                   ),
                   constraints: BoxConstraints(maxWidth: 400),
-                  child: switch (productsState) {
-                    AsyncLoading() || AsyncIdle() => Center(
-                      child: CircularProgressIndicator.adaptive(),
-                    ),
-                    AsyncError() => Center(
-                      child: ErrorIndicator(
-                        message: L10n.of(context).oopsSomethingWentWrong,
-                      ),
-                    ),
-                    AsyncLoaded(value: final products) => () {
-                      final plan = products.firstWhereOrNull(
-                        (p) => p.planId == widget.planId,
-                      );
-
-                      if (plan == null) {
-                        return Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 16.0,
+                    children: [
+                      switch (productsState) {
+                        AsyncLoading() || AsyncIdle() => Center(
+                          child: CircularProgressIndicator.adaptive(),
+                        ),
+                        AsyncError() => Center(
                           child: ErrorIndicator(
                             message: L10n.of(context).oopsSomethingWentWrong,
                           ),
-                        );
-                      }
-
-                      return SelectedSubscriptionView(
-                        plan,
-                        onSubscribe: () => processCheckoutRequest(
-                          CheckoutRequest(
-                            userID: Matrix.of(context).client.userID!,
-                            planId: widget.planId,
-                          ),
                         ),
-                      );
-                    }(),
-                  },
+                        AsyncLoaded(value: final products) => () {
+                          final plan = products.firstWhereOrNull(
+                            (p) => p.planId == widget.planId,
+                          );
+
+                          if (plan == null) {
+                            return Center(
+                              child: ErrorIndicator(
+                                message: L10n.of(
+                                  context,
+                                ).oopsSomethingWentWrong,
+                              ),
+                            );
+                          }
+
+                          return SelectedSubscriptionView(
+                            plan,
+                            onSubscribe: () => processCheckoutRequest(
+                              CheckoutRequest(
+                                userID: Matrix.of(context).client.userID!,
+                                planId: widget.planId,
+                              ),
+                            ),
+                          );
+                        }(),
+                      },
+                      const StarCharacters(),
+                    ],
+                  ),
                 ),
               ),
             ),

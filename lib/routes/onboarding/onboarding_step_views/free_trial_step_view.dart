@@ -48,7 +48,6 @@ class FreeTrialStepView extends StatelessWidget {
           automaticallyImplyLeading: false,
         ),
         body: StarBackdrop(
-          reserveStarBand: false,
           child: Center(
             child: Container(
               // Matches the wizard shell in onboarding_page.dart.

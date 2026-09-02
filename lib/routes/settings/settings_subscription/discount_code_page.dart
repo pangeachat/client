@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/widgets/star_backdrop.dart';
+import 'package:fluffychat/features/subscription/widgets/star_characters.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_content.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_title.dart';
@@ -46,15 +47,23 @@ class DiscountCodePageState extends State<DiscountCodePage>
         titleSpacing: 0,
       ),
       body: StarBackdrop(
+        showCharacters: false,
         child: SingleChildScrollView(
           child: Container(
             alignment: Alignment.topCenter,
             child: Container(
               padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
               constraints: BoxConstraints(maxWidth: 400),
-              child: DiscountCodeViewContent(
-                viewModel: _viewModel,
-                onSubscribe: processCheckoutRequest,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                spacing: 16.0,
+                children: [
+                  DiscountCodeViewContent(
+                    viewModel: _viewModel,
+                    onSubscribe: processCheckoutRequest,
+                  ),
+                  const StarCharacters(),
+                ],
               ),
             ),
           ),

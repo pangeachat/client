@@ -4,10 +4,12 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/star_backdrop.dart';
+import 'package:fluffychat/features/subscription/widgets/star_characters.dart';
+import 'package:fluffychat/features/subscription/widgets/star_field.dart';
 
 /// Covers #8751: the subscription surfaces used to lay an opaque
-/// `colorScheme.surface` sheet over the star art, hiding it. The sheet is
-/// gone, which leaves two things for the backdrop itself to guarantee.
+/// `colorScheme.surface` sheet over the star art, hiding it. Removing the
+/// sheet left two things for these widgets to guarantee.
 ///
 /// **Readability.** Body text now sits directly on the art. The asset's pixels
 /// top out at 64% alpha, and composited over both themes' surfaces the worst
@@ -18,19 +20,22 @@ import 'package:fluffychat/features/subscription/widgets/star_backdrop.dart';
 ///   opacity 0.5 -> 4.23 (light) / 4.03 (dark)   fails
 ///   opacity 0.4 -> 4.99 (light) / 5.04 (dark)   passes WCAG AA
 ///
-/// **Not covering the characters.** `BoxFit.cover` scales the art to the
-/// viewport height exactly on any portrait screen, which pins the star
-/// carrying the two characters to 74.2%-93.3% of the body whatever the screen
-/// size. Content height varies independently, so the only way the two stop
-/// competing is to keep content out of that slice.
+/// **One set of characters, where the surface puts them.** Painted to cover,
+/// the art drops the characters wherever the viewport happens to and content
+/// lands on top of them. The surfaces now draw them as their own element in
+/// the scroll flow, which only works if the ambient field stops above them.
 void main() {
-  const bodyHeight = 500.0;
+  const surface = Size(400, 500);
 
-  Future<void> pump(WidgetTester tester, Widget backdrop) async {
+  Future<void> pump(WidgetTester tester, Widget child) async {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: SizedBox(width: 400, height: bodyHeight, child: backdrop),
+          body: SizedBox(
+            width: surface.width,
+            height: surface.height,
+            child: child,
+          ),
         ),
       ),
     );
@@ -55,58 +60,81 @@ void main() {
     );
   });
 
-  testWidgets('reserves enough height that content clears the characters', (
+  testWidgets('ambient field stops above the characters when asked', (
     tester,
   ) async {
-    // The topmost the character star ever reaches under `BoxFit.cover`.
-    const starTopFraction = 0.742;
-
-    expect(
-      1 - SubscriptionConstants.starBandFraction,
-      lessThanOrEqualTo(starTopFraction),
-      reason: 'content would reach into the star and cover the characters',
+    await pump(
+      tester,
+      const StarBackdrop(showCharacters: false, child: SizedBox.expand()),
     );
 
-    const key = Key('content');
-    await pump(tester, const StarBackdrop(child: SizedBox.expand(key: key)));
-
+    // Painted into a box this much taller than the surface and clipped back to
+    // it, so everything from the characters down is off screen and they cannot
+    // appear twice.
     expect(
-      tester.getSize(find.byKey(key)).height,
+      tester.getSize(find.byType(StarField)).height,
       moreOrLessEquals(
-        bodyHeight * (1 - SubscriptionConstants.starBandFraction),
+        surface.height / SubscriptionConstants.starCharactersTop,
         epsilon: 0.5,
       ),
     );
   });
 
-  testWidgets('gives the whole body to content when the band is waived', (
+  testWidgets('ambient field is whole where the surface places nothing', (
     tester,
   ) async {
-    const key = Key('content');
+    await pump(tester, const StarBackdrop(child: SizedBox.expand()));
+
+    expect(tester.getSize(find.byType(StarField)).height, surface.height);
+  });
+
+  testWidgets('characters are cut from the art at the documented rect', (
+    tester,
+  ) async {
+    const width = 180.0;
+    await pump(tester, const Center(child: StarCharacters(width: width)));
+
+    // Measured off the asset: the star with the two characters sits at
+    // x 1885..2330, y 1780..2240 of its 4320x2400.
+    final crop = tester.widget<OverflowBox>(
+      find.descendant(
+        of: find.byType(StarCharacters),
+        matching: find.byType(OverflowBox),
+      ),
+    );
+    expect(
+      (crop.alignment as Alignment).x,
+      moreOrLessEquals(-0.0271, epsilon: 1e-4),
+    );
+    expect(
+      (crop.alignment as Alignment).y,
+      moreOrLessEquals(0.8350, epsilon: 1e-4),
+    );
+
+    final size = tester.getSize(find.byType(StarCharacters));
+    expect(size.width, moreOrLessEquals(width, epsilon: 0.5));
+    expect(size.height, moreOrLessEquals(width * 1.0326, epsilon: 0.5));
+  });
+
+  testWidgets('the art is decorative and reports no semantics', (tester) async {
+    final handle = tester.ensureSemantics();
+
     await pump(
       tester,
       const StarBackdrop(
-        reserveStarBand: false,
-        child: SizedBox.expand(key: key),
+        showCharacters: false,
+        child: Center(child: StarCharacters()),
       ),
     );
 
-    expect(tester.getSize(find.byKey(key)).height, bodyHeight);
-  });
-
-  testWidgets('is decorative and reports no semantics', (tester) async {
-    final handle = tester.ensureSemantics();
-
-    await pump(tester, const StarBackdrop(child: SizedBox.expand()));
-
+    expect(tester.getSemantics(find.byType(StarBackdrop)).label, isEmpty);
     expect(
       find.descendant(
-        of: find.byType(StarBackdrop),
+        of: find.byType(StarCharacters),
         matching: find.byType(ExcludeSemantics),
       ),
       findsOneWidget,
     );
-    expect(tester.getSemantics(find.byType(StarBackdrop)).label, isEmpty);
 
     handle.dispose();
   });

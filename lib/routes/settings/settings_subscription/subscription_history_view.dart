@@ -6,6 +6,7 @@ import 'package:fluffychat/features/subscription/repo_v2/invoice_history_respons
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
 import 'package:fluffychat/features/subscription/widgets/star_backdrop.dart';
+import 'package:fluffychat/features/subscription/widgets/star_characters.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/date_formatter.dart';
@@ -56,6 +57,7 @@ class SubscriptionHistoryView extends StatelessWidget {
         titleSpacing: 0,
       ),
       body: StarBackdrop(
+        showCharacters: false,
         child: SingleChildScrollView(
           child: Container(
             alignment: Alignment.topCenter,
@@ -158,6 +160,7 @@ class SubscriptionHistoryView extends StatelessWidget {
                                 : _InvoiceHistoryList(invoices),
                         },
                   ),
+                  const StarCharacters(),
                 ],
               ),
             ),

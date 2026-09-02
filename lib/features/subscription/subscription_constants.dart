@@ -9,14 +9,21 @@ class SubscriptionConstants {
   /// `onSurface` and `onSurfaceVariant` in both themes.
   static const double starBackgroundOpacity = 0.4;
 
-  /// The share of a surface's height kept clear so content cannot cover the
-  /// star carrying the two characters.
+  /// Where the star carrying the two characters sits within [starBackground],
+  /// as fractions of the asset's 4320x2400.
   ///
-  /// The art is painted with `BoxFit.cover`, which on any portrait viewport
-  /// scales it to the height exactly. That pins the character star to a fixed
-  /// slice of the body — 74.2% to 93.3% of its height — whatever the screen
-  /// size, while content height varies independently. Reserving the bottom
-  /// slice is what makes the two stop competing, at every width, scroll
-  /// position and text scale.
-  static const double starBandFraction = 0.26;
+  /// The asset is really two things at once: a confetti field that wants to be
+  /// ambient, and one subject that wants to be placed. These bounds are what
+  /// lets the two be drawn separately — the field is cropped to stop above
+  /// [starCharactersTop], and the subject is cropped out of the same file.
+  static const double starCharactersLeft = 1885 / 4320;
+  static const double starCharactersTop = 1780 / 2400;
+  static const double starCharactersWidth = (2330 - 1885) / 4320;
+  static const double starCharactersHeight = (2240 - 1780) / 2400;
+
+  /// The asset's aspect ratio, 4320x2400.
+  static const double starBackgroundAspect = 4320 / 2400;
+
+  /// How wide the characters are drawn where they are placed as a subject.
+  static const double starCharactersDisplayWidth = 180.0;
 }

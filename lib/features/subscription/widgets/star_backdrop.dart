@@ -1,62 +1,59 @@
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
-
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
+import 'package:fluffychat/features/subscription/widgets/star_field.dart';
 
 /// The star field that fills a subscription surface behind [child].
 ///
 /// Held at [SubscriptionConstants.starBackgroundOpacity] because the surfaces
 /// place body text directly on it.
 ///
-/// When [reserveStarBand] is set, [child] is confined to the top of the body
-/// so it can never cover the star carrying the two characters. See
-/// [SubscriptionConstants.starBandFraction].
+/// A surface that draws the two characters itself sets [showCharacters] to
+/// false, and the field is cropped to stop above them so they are never
+/// painted twice.
 class StarBackdrop extends StatelessWidget {
   final Widget child;
-  final bool reserveStarBand;
+  final bool showCharacters;
 
   const StarBackdrop({
     super.key,
     required this.child,
-    this.reserveStarBand = true,
+    this.showCharacters = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SizedBox.expand(
+        Positioned.fill(
           child: ExcludeSemantics(
             child: Opacity(
               opacity: SubscriptionConstants.starBackgroundOpacity,
-              child: CachedNetworkImage(
-                imageUrl:
-                    "${AppConfig.assetsBaseURL}/${SubscriptionConstants.starBackground}",
-                fit: BoxFit.cover,
-                alignment: Alignment.center,
-                placeholder: (context, url) => const SizedBox(),
-                errorWidget: (context, url, error) => const SizedBox(),
-              ),
+              child: showCharacters
+                  ? const StarField()
+                  : ClipRect(
+                      child: LayoutBuilder(
+                        builder: (context, constraints) => OverflowBox(
+                          alignment: Alignment.topCenter,
+                          maxHeight: double.infinity,
+                          child: SizedBox(
+                            width: constraints.maxWidth,
+                            // Painting the field into a box this much taller
+                            // than the surface and then clipping back to the
+                            // surface leaves only the part of the art above
+                            // the characters on screen.
+                            height:
+                                constraints.maxHeight /
+                                SubscriptionConstants.starCharactersTop,
+                            child: const StarField(),
+                          ),
+                        ),
+                      ),
+                    ),
             ),
           ),
         ),
-        if (!reserveStarBand)
-          child
-        else
-          LayoutBuilder(
-            builder: (context, constraints) => Column(
-              children: [
-                Expanded(child: child),
-                SizedBox(
-                  height:
-                      constraints.maxHeight *
-                      SubscriptionConstants.starBandFraction,
-                ),
-              ],
-            ),
-          ),
+        child,
       ],
     );
   }
