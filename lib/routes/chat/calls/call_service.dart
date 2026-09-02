@@ -758,11 +758,10 @@ class CallService {
     return mine.isEmpty ? null : mine.first.eventId;
   }
 
-  /// The membership THIS call published, never one it merely found.
+  /// The membership this call is willing to treat as its own.
   ///
-  /// Identified by what the publish STAMPED ON IT, which is the only thing in
-  /// the room that speaks for the write rather than for the moment it was
-  /// read. Anything weaker is a guess: see [_anchorStampFloor].
+  /// NARROWED, NOT ESTABLISHED. [_anchorStampFloor] says what this rules out
+  /// and what it still cannot, and the second half is not a detail.
   String? _thisCallsMembershipEventId(Room room) {
     final floor = _anchorStampFloor;
     if (floor == null) return null;
@@ -772,9 +771,9 @@ class CallService {
     return null;
   }
 
-  /// The earliest `expires_ts` a membership can carry and still be one THIS
-  /// call published. Null until this call has asked to publish one, which is
-  /// the honest answer then: it has no identity yet.
+  /// The earliest `expires_ts` a membership can carry and still be treated as
+  /// one THIS call published. Null until this call has asked to publish one,
+  /// which is the honest answer then: it has no identity yet.
   ///
   /// THE ROOM CANNOT BE ASKED WHICH CALL A MEMBERSHIP BELONGS TO. The group
   /// call id IS the room id (one direct message holds at most one call, and
@@ -805,11 +804,38 @@ class CallService {
   /// anything reaches: between the previous call's last write and this one's
   /// enter sit a leave, a join and their round trips.
   ///
-  /// ONE CLOCK, DELIBERATELY. Floor and stamp are both this device's, so
-  /// nothing here compares a local clock against the server's — the mistake
-  /// [ActiveCall] already records having made about a call's own start time.
-  /// A clock that steps backwards makes this refuse OUR OWN membership, which
-  /// is a stated failure (below), never a wrong key.
+  /// Floor and stamp are both this device's, so nothing here compares a local
+  /// clock against the server's — the mistake [ActiveCall] already records
+  /// having made about a call's own start time.
+  ///
+  /// WHAT THIS DOES NOT ESTABLISH, AND WHY NOTHING HERE SHOULD TRY. The device
+  /// wall clock is not monotonic across calls. A backward step BETWEEN the
+  /// previous call's write and this call's publish leaves that older
+  /// membership stamped LATER than this floor, unexpired, and accepted — the
+  /// original defect exactly, reached along a third road.
+  ///
+  /// A GUARD FOR IT DOES NOT BELONG HERE, because this whole read is a proxy
+  /// for a question the client cannot answer: WHICH CALL PUBLISHED THIS
+  /// MEMBERSHIP. Nothing witnesses it. Every field the write emits —
+  /// `call_id` (the room id), `application`, `scope`, `foci_active`,
+  /// `device_id`, `membershipID` (`VoIP.currentSessionId`, minted once per
+  /// VoIP instance, not per call) — is identical across two calls in one
+  /// process, `feeds` is not emitted at all on this backend, and the SDK
+  /// receives the new event id in `GroupCallSession.sendMemberStateEvent` and
+  /// discards it behind a `Future<void>`. So each proxy is defeated by its own
+  /// sequence, and adding another only moves the sequence.
+  ///
+  /// The answer is not here. A call's identity has to come from something that
+  /// IS unique per call and known to both sides — the ring notification's own
+  /// event id is one, returned to the caller by its own send and read off the
+  /// timeline by the callee, and already this record's anchor on the answering
+  /// side. Moving the key there is a change to the design this file
+  /// implements, not a change to this read, and it is raised as such.
+  ///
+  /// Until then this stays because it is a real narrowing: it closes the
+  /// ordinary redial, where the previous call's membership is simply still in
+  /// state, and the late-refresh sequence, where that call's write echoes back
+  /// after this one began. Both are common. The backward step is not.
   ///
   /// The same rule [peerPresenceInCurrentCall] applies to the PEER's
   /// memberships ("state older than this call cannot speak for it"), applied at
