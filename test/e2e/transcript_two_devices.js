@@ -134,7 +134,8 @@ const MEMBER = 'com.famedly.call.member';
 /// devices' requests, would land two events this recomputes two distinct ids
 /// from -- and the check would pass while the product was doing the one thing
 /// this file exists to catch. The check named after this function says exactly
-/// that much and no more; [transcriptSendsOf] is what witnesses the real ids.
+/// that much and no more; [transcriptSendsForCall] is what witnesses the real
+/// ids.
 ///
 /// `usableDeviceId` in the app refuses an empty id and anything past 255
 /// characters; absent, empty and over-long all key ALIKE, which is the whole
@@ -291,9 +292,41 @@ async function sentBy(page) {
   return JSON.parse(raw);
 }
 
-/// The transcript sends among them, newest last.
-const transcriptSendsOf = (sends) =>
-  (Array.isArray(sends) ? sends : []).filter((r) => r && r.type === TRANSCRIPT);
+/// The transcript sends THIS CALL's, newest last.
+///
+/// SCOPED, and the scope is what this used to be missing. The page's send log
+/// runs for the whole process and the retry loop can place and tear down calls
+/// before the winning one -- a torn-down call writes its halves too, as the
+/// mark taken after the race says in as many words. So an abandoned attempt's
+/// send sits in the same log as the winning call's, and every question asked of
+/// the log downstream ("was this device seen sending a half", "were the two
+/// sends under different ids") was being answered partly out of a call the
+/// check has no business considering. The SERVER-side reads are scoped with
+/// `mCall`; this is the same scope, applied to the wire.
+///
+/// THE SEND DECLARES ITS OWN CALL, so nothing has to be marked browser-side and
+/// nothing has to be known at the moment of the send. The transaction id is
+/// `pangea.call_transcript:{call key}:{sender}:{device}` -- the call key is IN
+/// the id, in the PUT path, which is the only place the id exists at all. That
+/// makes this the exact counterpart of `content.call_key` on the events, which
+/// is how [oneCallKeyAcross] scopes the server side.
+///
+/// Matched as a PREFIX rather than by splitting on the colon, because two of
+/// the four fields can contain one: a user id is `@user:server`, and a v1 event
+/// id is `$random:server`. Comparing against the key this run already holds
+/// sidesteps the parse entirely.
+///
+/// A key of the wrong shape, or a format the app has moved on from, yields NO
+/// sends rather than all of them -- so the drift shows up as "this device was
+/// not seen sending" and is caught, never as a widened comparison that passes.
+const transcriptSendsForCall = (sends, callKey) =>
+  (typeof callKey === 'string' && callKey.length > 0)
+    ? (Array.isArray(sends) ? sends : []).filter(
+      (r) => r && r.type === TRANSCRIPT
+        && typeof r.txnId === 'string'
+        && r.txnId.startsWith(`${TRANSCRIPT}:${callKey}:`),
+    )
+    : [];
 
 /// Which Matrix DEVICE a browser is.
 ///
@@ -450,11 +483,59 @@ function refuseIfTheDevicesShareAWav() {
   );
 }
 
+/// How far back a since-a-mark read in this file looks.
+///
+/// Wider than the harness's own 80 because this scenario's retry loop can put
+/// four calls' worth of events between a mark and the read that uses it.
+const SINCE_WINDOW = 200;
+
+/// Everything in the room since a mark -- or NOTHING, loudly.
+///
+/// `h.since` reads a window of the timeline, finds the marker in it, and
+/// returns what follows. When the marker has aged OUT of that window it returns
+/// the whole window instead: `findIndex` answers -1 and the guard reads
+/// `i === -1 ? evs : ...`. Every caller here asked "what has happened since I
+/// marked", and that fallback quietly answers "the last eighty events" -- a
+/// wider set, in the permissive direction, with no sign that the question
+/// changed.
+///
+/// It is the same fault the scoping of the browser-side sends had, one layer
+/// down, and it reaches further: the ring lookup would take an ABANDONED
+/// attempt's ring and scope the whole run to the wrong call key; the devices
+/// seen joining would gain devices from a call already torn down, widening the
+/// set a half's device id is checked against.
+///
+/// THROWS rather than narrowing, on the terms [sentBy] throws: "nothing has
+/// happened since the mark" and "the harness cannot see back to the mark" are
+/// opposite findings, and the second dressed as the first is how a check comes
+/// to pass about a call nobody was asking about. It is a fact about the RIG --
+/// the window is too small for the room's traffic -- so it ends the run with
+/// its own message rather than colouring a check that names the product.
+async function sinceScoped(token, mark) {
+  const events = await mx.timeline(token, ROOM_ID, SINCE_WINDOW);
+  if (!mark) {
+    throw new Error(
+      'a since-a-mark read was asked with no mark, so it would have answered '
+      + 'with the whole window and called it the delta',
+    );
+  }
+  const i = events.findIndex((e) => e.event_id === mark);
+  if (i === -1) {
+    throw new Error(
+      `the mark ${mark} is no longer within the last ${SINCE_WINDOW} events of `
+      + `${ROOM_ID}, so "since the mark" cannot be answered -- and the window `
+      + 'itself is a wider set than the question asked for. Raise '
+      + 'SINCE_WINDOW, or run against a quieter room',
+    );
+  }
+  return events.slice(i + 1);
+}
+
 /// The transcript halves written since a mark. Read from the SERVER, and
 /// identified by the harness's own since-a-mark mechanism rather than by
 /// counting -- see `transcript.js` for why counting was wrong.
 async function halvesSince(token, mark) {
-  const events = await h.since(token, ROOM_ID, mark);
+  const events = await sinceScoped(token, mark);
   return events.filter((e) => e.type === TRANSCRIPT);
 }
 
@@ -556,7 +637,7 @@ async function halvesUnder(token, callKey, before) {
 /// timeline.
 async function joinedDevices(token, userId, mark) {
   const ids = new Set();
-  for (const e of await h.since(token, ROOM_ID, mark)) {
+  for (const e of await sinceScoped(token, mark)) {
     if (e.type !== MEMBER || e.sender !== userId) continue;
     for (const m of e.content?.memberships ?? []) {
       if (typeof m?.device_id === 'string' && m.device_id) ids.add(m.device_id);
@@ -904,6 +985,23 @@ const recordingLinesIn = (lines, from = 0) =>
 /// learned that three was the wrong number -- it has learned nothing.
 const allHalvesArrived = (written, expected = 3) => written.length >= expected;
 
+/// Whether the account's halves are TWO different events.
+///
+/// EXACTLY two, and the count is the half of it that was missing. `length > 0`
+/// beside distinct ids is satisfied by ONE half -- a single event is trivially
+/// distinct from itself -- so a check named for two passed on the precise shape
+/// this whole file exists to catch: one of the learner's halves in the room and
+/// the other destroyed on the way to it. Other checks go red on such a run, and
+/// that is not the point: this one's NAME said two and its predicate did not
+/// ask for two, which is the fault being hunted everywhere else here.
+///
+/// The predicate was what was wrong rather than the name. The claim it makes --
+/// two halves, landing as two separate events rather than one counted twice --
+/// is the outcome a person would notice, and it is reachable.
+const twoDistinctEvents = (halves) =>
+  halves.length === 2
+  && new Set(halves.map((e) => e.event_id)).size === 2;
+
 /// Whether the two devices were SEEN sending under different transaction ids.
 ///
 /// One distinct id each. A device with several has sent the same speech twice
@@ -1238,7 +1336,7 @@ async function main() {
         await h.ensureRoom(B, ROOM);
         await ui.clickControl(B.page, 'call').catch(() => {});
       },
-      async () => (await h.since(B.token, ROOM_ID, markRing)).some(
+      async () => (await sinceScoped(B.token, markRing)).some(
         (e) => e.type === mx.RING && e.sender === B.userId,
       ),
       { tries: 4, gap: 4000 },
@@ -1252,7 +1350,7 @@ async function main() {
     // knowable the moment the call starts, rather than only once a half has
     // been written under it. Everything this scenario reads later is scoped to
     // it.
-    const ring = (await h.since(B.token, ROOM_ID, markRing))
+    const ring = (await sinceScoped(B.token, markRing))
       .find((e) => e.type === mx.RING && e.sender === B.userId);
     callKey = ring?.content?.['m.relates_to']?.event_id ?? null;
 
@@ -1717,13 +1815,28 @@ async function main() {
   // recomputation derives two distinct ids from -- and the check passes at the
   // exact moment the product is doing the thing this file exists to catch. The
   // recomputation is still asked, below, under a name that says what it is.
-  let sends = { one: [], two: [], error: null };
+  //
+  // AND SCOPED TO THIS CALL, which it was not. The page's log runs for the
+  // whole process, and the race above can place and tear down calls before the
+  // winning one -- each of which writes its halves. An abandoned attempt's send
+  // was therefore in the same list, and a device that never wrote a half for
+  // THIS call but had written one for an abandoned attempt read as a device
+  // seen sending exactly one. The call key is in the transaction id, so the
+  // scope comes off the send itself; see [transcriptSendsForCall].
+  let sends = { one: [], two: [], other: 0, error: null };
   try {
+    const raw = { one: await sentBy(A1.page), two: await sentBy(A2.page) };
+    const all = [...raw.one, ...raw.two].filter((r) => r && r.type === TRANSCRIPT);
     sends = {
-      one: transcriptSendsOf(await sentBy(A1.page)),
-      two: transcriptSendsOf(await sentBy(A2.page)),
+      one: transcriptSendsForCall(raw.one, callKey),
+      two: transcriptSendsForCall(raw.two, callKey),
+      other: 0,
       error: null,
     };
+    // Counted and printed rather than checked: a send belonging to a call this
+    // run abandoned is not a finding about the product, and the number is what
+    // tells a reader why the log holds more than two entries.
+    sends.other = all.length - sends.one.length - sends.two.length;
   } catch (e) {
     sends.error = e && e.message ? e.message : String(e);
   }
@@ -1731,8 +1844,9 @@ async function main() {
     one: [...new Set(sends.one.map((r) => r.txnId))],
     two: [...new Set(sends.two.map((r) => r.txnId))],
   };
-  console.log(`   (transcript sends seen on the wire: one ` +
-    `${JSON.stringify(sentIds.one)}, two ${JSON.stringify(sentIds.two)})`);
+  console.log(`   (transcript sends seen on the wire for ${callKey}: one ` +
+    `${JSON.stringify(sentIds.one)}, two ${JSON.stringify(sentIds.two)}` +
+    `${sends.other ? `; ${sends.other} more for calls this run abandoned` : ''})`);
 
   // A device that sent no half at all cannot be compared, and saying so here
   // rather than further down keeps "the harness saw nothing" apart from "the
@@ -1807,13 +1921,14 @@ async function main() {
   // And they are two events, not one. The distinct ids above are a statement
   // about the KEY; this is the outcome, and the two are worth asking
   // separately because only the second is what a person would notice.
-  // Guarded on there BEING halves, and the guard is not decoration: a run that
-  // produced none passed this check, because no events are trivially distinct.
-  // That is a check that passes hardest when the feature is most broken, which
-  // is the one shape this suite refuses.
+  // COUNTED, and the count is the whole of the fix. The guard here read
+  // `mine.length > 0`, which a single half satisfies -- one event is trivially
+  // distinct from itself -- so the check named for TWO went green on exactly
+  // the shape this file exists to catch. See [twoDistinctEvents].
   h.check(s, 'the two halves are two distinct events',
-    mine.length > 0 && new Set(mine.map((e) => e.event_id)).size === mine.length,
-    `event ids: ${JSON.stringify(mine.map((e) => e.event_id))}`);
+    twoDistinctEvents(mine),
+    `event ids: ${JSON.stringify(mine.map((e) => e.event_id))} -- ` +
+      `${mine.length} half/halves, and this check is named for two`);
 
   // NOTHING HERE ASKS THE SURVIVOR'S HALF WHEN IT RECORDED, and the absence is
   // deliberate. A check stood here that read `chunks_captured > 0` -- a
@@ -2054,6 +2169,18 @@ async function main() {
     // numbers. A reader that keeps one of an account's halves is short by
     // exactly the turns of the half it dropped, and that is what a floor
     // catches.
+    //
+    // AND IT IS THE ONE SET IN THIS FILE THAT CANNOT BE SCOPED TO THIS CALL.
+    // Every other reading is tied to the call key -- the halves carry it, the
+    // sends carry it inside the transaction id, the reader's log line prints
+    // it -- but a drawn turn is a timestamp in the semantics tree and carries
+    // nothing. [openNewestTranscript] picks the lowest card on a bottom-anchored
+    // timeline, which is a position rather than an identity, so a panel opened
+    // on an older call would be counted here; and an older, longer call has MORE
+    // turns, which is the permissive direction. Nothing observable closes it.
+    // What catches it is the merge check below: its count comes from a log line
+    // scoped to THIS call key, so a panel showing a different call leaves that
+    // line absent and the run goes red there.
     h.check(s, 'the panel drew at least as many turns as the halves carry',
       turnsDrawn >= segmentsWritten,
       `${turnsDrawn} turn(s) drawn for ${segmentsWritten} written ` +
@@ -2133,7 +2260,9 @@ if (require.main === module) {
 
 module.exports = {
   txnIdOf,
-  transcriptSendsOf,
+  transcriptSendsForCall,
+  twoDistinctEvents,
+  sinceScoped,
   halvesUnder,
   KEY_SEARCH_PAGES,
   recorderAmong,
