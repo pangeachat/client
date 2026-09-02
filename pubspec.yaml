@@ -216,3 +216,16 @@ dependency_overrides:
       ref: master
   fcm_shared_isolate:
     path: pangea_packages/fcm_shared_isolate
+  # TEMPORARY, AND NOT TO BE MERGED AS IT STANDS. A local checkout, so this
+  # resolves only on the machine that has one — CI and every other clone
+  # would fail `pub get` on it.
+  #
+  # `GroupCallSession.enter()` returns the event id of the membership the join
+  # published, which is the only thing that identifies a call in this process
+  # (see `CallService.membershipEventIdIn`). That change is committed on the
+  # SDK's `feat/publish-membership-event-id` branch and has NOT been pushed,
+  # so there is no ref for the pin above to move to yet. Replace this with a
+  # bumped `ref:` on the `matrix` dependency the moment the SDK lands, and
+  # delete these lines.
+  matrix:
+    path: ../../../../matrix-dart-sdk
