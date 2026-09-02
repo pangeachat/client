@@ -49,7 +49,7 @@ them:
 | `CALL_WORK_DIR` | `$TMPDIR/callweb` | Chrome profiles and fake-microphone audio |
 | `CALL_SHOT_DIR` | `$CALL_WORK_DIR/shots` | every screenshot and captured log |
 | `CALL_CALLER_WAV` / `CALL_CALLEE_WAV` | `$CALL_WORK_DIR/caller.wav`, `callee.wav` | what the fake microphones play |
-| `CALL_CALLER2_WAV` | `$CALL_WORK_DIR/caller2.wav` | what the learner's SECOND device plays (`transcript_two_devices.js` only) |
+| `CALL_LEARNER_ONE_WAV` / `CALL_LEARNER_TWO_WAV` | `$CALL_WORK_DIR/learner_one.wav`, `learner_two.wav` | what the learner's two devices play (`transcript_two_devices.js` only) |
 | `CHROME` | the macOS app bundle path | the browser to drive |
 | `PHONE_SERIAL` | *none -- throws* | which phone (`adb devices`) |
 | `PHONE_PKG` | `com.talktolearn.chat` | add the suffix if your build carries one |
@@ -57,20 +57,45 @@ them:
 
 The wav files are optional: without them Chrome uses a generated tone and says
 so once. Point them at real speech before judging anything that transcribes a
-call. `caller.wav` and `callee.wav` are in `fixtures/`; the third is not, and
-`transcript_two_devices.js` refuses to start without it rather than running two
-devices on one voice, which is the one fixture mistake that would make its
-central check pass while the feature was broken. Any twenty seconds of English
-containing `lantern`, `bicycle`, `harbor` and `November` will do -- on macOS:
+call. `caller.wav` and `callee.wav` are in `fixtures/`; the learner's two are
+not, and `transcript_two_devices.js` refuses to start without them rather than
+running two devices on one file, which is the fixture mistake that would make its
+central check pass while the feature was broken.
 
-    say -v Samantha -r 150 -o /tmp/second.aiff \
-      'I left the lantern burning by the window all night. [[slnc 900]] My
-       bicycle is still chained to the railing outside the front door. [[slnc
-       900]] We walked all the way down to the harbor before the rain started.
-       [[slnc 900]] Nothing very much has happened around here since November.'
-    afconvert -f WAVE -d LEI16@48000 -c 1 /tmp/second.aiff "$CALL_WORK_DIR/caller2.wav"
+That refusal compares the two wavs BYTE for byte and can see nothing else -- a
+second wav of different bytes carrying the same sentences would pass it -- so the
+run also checks the OUTCOME: each half has to carry the words of one fixture and
+none of the other's, and the half naming the device a browser signs in as has to
+carry the wav THAT browser plays. Two things follow for whoever makes these
+files. Each wav's distinctive words have to be the ones its side of
+`DEVICE_ONE_SAYS` / `DEVICE_TWO_SAYS` lists, and neither wav may contain a word
+from the other's list. And each has to run about TWO MINUTES with its sentences
+repeated, because Chrome is told `%noloop` and the recording changes hands
+mid-call: a fixture that has played to the end hands the device that takes over
+silence, and a half with no words in it fails checks that are about the product.
+On macOS, for the second device:
 
-If the words change, `DEVICE_TWO_SAYS` in that file changes with them.
+    BLOCK='I left the lantern burning by the window all night. [[slnc 900]]
+      My bicycle is still chained to the railing outside the front door.
+      [[slnc 900]] We walked all the way down to the harbor before the rain
+      started. [[slnc 900]] Nothing much has happened around here since
+      November. [[slnc 900]] There is cinnamon and walnut in the tin on the
+      top shelf. [[slnc 900]] The ferry leaves from the far end of the meadow
+      road. [[slnc 900]]'
+    say -v Samantha -r 150 -o /tmp/second.aiff "$BLOCK $BLOCK $BLOCK"
+    afconvert -f WAVE -d LEI16@48000 -c 1 /tmp/second.aiff \
+      "$CALL_WORK_DIR/learner_two.wav"
+
+The block is passed to `say` three times over rather than the file being
+concatenated three times: an AIFF header states its own length, so three copies
+end to end are not one longer recording.
+
+The first device's wav is made the same way from `DEVICE_ONE_SAYS` -- `compass`,
+`orchard`, `trumpet`, `glacier`, `pelican`, `saffron`, `marble`, `thunder` --
+into `$CALL_WORK_DIR/learner_one.wav`.
+
+If the words change, `DEVICE_ONE_SAYS` / `DEVICE_TWO_SAYS` in that file change
+with them.
 
 ## Running
 
@@ -141,7 +166,7 @@ Browser only:
 | `rejoin_ui.js` | The four review fixes browser-to-browser: a rejoined clock continues rather than restarting, nothing still claims "reconnecting" after the other side ends, the Return banner's red end ends the call for both, and the chat list previews the call. |
 | `grey_hover.js` | The CanvasKit grey box: hovers every control on a live ring and fails if a large flat grey block appears that was not there before. |
 | `transcript.js` | What the two people can READ afterwards: the consent notice, each speaker's own words under their own name, turn positions on the wire, and nobody who spoke reported as silent. |
-| `transcript_two_devices.js` | ONE account signed in TWICE in one call. Both devices write a half, the halves name different devices, the two devices are SEEN sending under different transaction ids (read off their own outgoing requests -- see below), the reader says it assembled the account's half from both, and no word either device heard is missing from the screen. It also refuses a call whose key an earlier call already used -- see below. |
+| `transcript_two_devices.js` | ONE account signed in TWICE in one call. Both devices write a half, the halves name different devices, each half carries the fixture its own browser played and the transaction id that browser was SEEN sending (read off its own outgoing requests -- see below), the reader says it assembled the account's half from both, and the panel draws at least as many turns as the halves carry. It also refuses a call whose key an earlier call already used -- see below. |
 
 Physical Android phone required (all of these; each needs `PHONE_SERIAL`):
 
@@ -211,7 +236,10 @@ Not a scenario:
   screenshot by eye, the way the phone scenarios already do. A check written on
   the words can only ever fail, and one written on their absence -- "nobody who
   spoke is reported as silent" -- can only ever pass. `transcript.js` still has
-  the second of those.
+  the second of those. A count cannot match a drawn turn to a written one
+  either, only their numbers, so the check in `transcript_two_devices.js` is
+  named for the floor it establishes -- the panel drew at least as many turns as
+  the halves carry -- rather than for the per-turn claim it cannot reach.
 - **A drawn-turn count cannot prove a MERGE on its own.** It catches a reader
   that dropped a half with turns in it; it cannot catch one that dropped an
   EMPTY half, because both draw the same screen -- and an empty half is the
@@ -231,7 +259,13 @@ Not a scenario:
   accepted both devices' requests, lands two events a recomputation derives two
   distinct ids from. `transcript_two_devices.js` therefore wraps `fetch` and
   `XMLHttpRequest` on each learner page before the app loads and reads the id out
-  of the PUT path (`.../send/{type}/{txnId}`). The same hook lifts the session's
+  of the PUT path (`.../send/{type}/{txnId}`). Comparing the ids seen against the
+  ids derived as SETS gives that observation away again: two sets that match
+  prove two valid device ids exist at both ends and nothing about which browser
+  sent which, so a build with the two ids swapped over passes. The comparison is
+  therefore per browser -- the id this page was seen sending, the arrived half
+  the formula derives it from, and that half's device id against the device this
+  page's own token belongs to. The same hook lifts the session's
   bearer token, which is the only way to ask which Matrix device a browser is --
   nothing the app puts on the page carries the id, and `/devices` cannot tell two
   Chrome profiles on one laptop apart. Scope the token capture to
@@ -326,4 +360,11 @@ is inside the engine.
   itself prints before acting on it: this stack's LiveKit token lacks
   `CanUpdateOwnMetadata`, so the capability layer the election leans on is dead
   here and the app says so in its own log on every run -- which is either the
-  cause or the thing that has to be ruled out first.
+  cause or the thing that has to be ruled out first. The check that found it
+  reads the survivor half's segment POSITIONS against the moment the hangup was
+  asked for, not its `chunks_captured` total: a device that is not the recorder
+  still captures and then discards, and the join race hands both devices a
+  roster that momentarily lacks the other, so a survivor that recorded nothing
+  after the handover can still publish a positive capture count. It proves the
+  survivor recorded AFTER the handover; that it recorded ALL of the tail is not
+  something the halves on the wire can be asked.
