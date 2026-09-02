@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-01 12:28:03.103453",
+    "@@last_modified": "2026-09-01 22:27:16.758808",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2249,5 +2249,7 @@
     "callTranscriptMicrophoneRefused": "Sesebediswa sa {name} ha sea ka sa bula maekrofounu bakeng sa mohala ona, kahoo ha ho letho leo ba le buileng le ileng la rekota mme seo ho ileng sa buuwa ha se tsejwe.",
     "callTranscriptAudioLost": "Seo {name} a se buileng se ile sa rekota empa sa lahleha pele se ka ngolwa, kahoo seo ho ileng sa buuwa ha se tsejwe.",
     "mapPinsKeyboardHint": "Sebelisa metsu ho tsamaea lipakeng tsa mesebetsi 'mapeng, 'me u tobetse Enter ho bula o mong.",
-    "selectMessageLabel": "Kgetha molaetsa"
+    "selectMessageLabel": "Kgetha molaetsa",
+    "callTranscriptAudioDropped": "Seo {name} a se buileng se lahlilwe ke sesebediswa sa bona pele se ka rekota, kahoo ha ho tsejwe hore na ho ne ho builwe eng.",
+    "callTranscriptHeldByOtherDevice": "Seo {name} a se buileng se sietswe sesebediswa se seng sa bona hore se rekote, kahoo ha ho letho le rometsweng ho tswa ho sena mme ha ho tsejwe hore na ho ne ho builwe eng mona."
 }

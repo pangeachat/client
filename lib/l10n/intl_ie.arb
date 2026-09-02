@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-01 12:27:59.220859",
+    "@@last_modified": "2026-09-01 22:27:04.049547",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10477,5 +10477,7 @@
     "callTranscriptMicrophoneRefused": "Níor osclaíodh micreafón ar ghléas {name} don ghlao seo, mar sin níor taifeadadh aon rud a dúirt siad agus ní fios cad a dúradh.",
     "callTranscriptAudioLost": "Taifeadadh an méid a dúirt {name} ach cailleadh é sular féidir é a thrascríobh, mar sin ní fios cad a dúradh.",
     "mapPinsKeyboardHint": "Bain úsáid as na heochracha saighde chun bogadh idir gníomhaíochtaí ar an léarscáil, agus brúigh Iontráil chun ceann a oscailt.",
-    "selectMessageLabel": "Roghnaigh teachtaireacht"
+    "selectMessageLabel": "Roghnaigh teachtaireacht",
+    "callTranscriptAudioDropped": "Quo {name} dit esset perdit per su apparate ante que it posset esser registrat, do quo esset dit ne es conosset.",
+    "callTranscriptHeldByOtherDevice": "Quo {name} dit esset lassat a un altri de su apparates por registrar, do necos de it esset inviat de ti-ci e quo esset dit ne es conosset ci."
 }

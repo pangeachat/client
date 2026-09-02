@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-01 12:28:03.807244",
+    "@@last_modified": "2026-09-01 22:27:20.573278",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9849,5 +9849,7 @@
     "callTranscriptMicrophoneRefused": "{name} qurilmasi bu qo‘ng‘iroq uchun mikrofonni hech qachon ochmagan, shuning uchun ular aytgan hech narsa yozib olinmagan va nima deyilgani noma’lum.",
     "callTranscriptAudioLost": "{name} aytganlari yozib olingan, ammo transkripsiya qilinmasdan oldin yo‘qolgan, shuning uchun nima deyilgani noma’lum.",
     "mapPinsKeyboardHint": "Xaritadagi mashg'ulotlar orasida harakatlanish uchun o'q tugmalaridan foydalaning va birini ochish uchun Enter tugmasini bosing.",
-    "selectMessageLabel": "Xabarni tanlang"
+    "selectMessageLabel": "Xabarni tanlang",
+    "callTranscriptAudioDropped": "{name} nima degani yozib olinmasdan oldin uning qurilmasida yoʻqoldi, shuning uchun nima deyilgani nomaʼlum.",
+    "callTranscriptHeldByOtherDevice": "{name} nima deganini yozib olish uning boshqa qurilmasiga qoldirildi, shuning uchun bu qurilmadan hech narsa yuborilmadi va nima deyilgani bu yerda nomaʼlum."
 }

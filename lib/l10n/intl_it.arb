@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:27:59.109765",
+    "@@last_modified": "2026-09-01 22:27:03.834175",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9918,5 +9918,7 @@
     "callTranscriptMicrophoneRefused": "Il dispositivo di {name} non ha mai aperto un microfono per questa chiamata, quindi nulla di ciò che ha detto è stato registrato e ciò che è stato detto non è noto.",
     "callTranscriptAudioLost": "Ciò che {name} ha detto è stato registrato ma perso prima che potesse essere trascritto, quindi ciò che è stato detto non è noto.",
     "mapPinsKeyboardHint": "Usa i tasti freccia per spostarti tra le attività sulla mappa e premi Invio per aprirne una.",
-    "selectMessageLabel": "Seleziona messaggio"
+    "selectMessageLabel": "Seleziona messaggio",
+    "callTranscriptAudioDropped": "Ciò che {name} ha detto è andato perso dal suo dispositivo prima ancora di poter essere registrato, quindi non si sa cosa sia stato detto.",
+    "callTranscriptHeldByOtherDevice": "La registrazione di ciò che {name} ha detto è stata affidata a un altro dei suoi dispositivi, quindi nulla è stato inviato da questo e non si sa cosa sia stato detto qui."
 }

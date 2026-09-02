@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-01 12:27:56.202016",
+    "@@last_modified": "2026-09-01 22:26:53.254845",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2249,5 +2249,7 @@
     "callTranscriptMicrophoneRefused": "የ{name} መሳሪያ ለዚህ ጥሪ ማይክሮፎን አልከፈተም፣ ስለዚህ የተናገሩት ነገር አልተቀዳም እና ምን እንደተባለ አይታወቅም።",
     "callTranscriptAudioLost": "የ{name} የተናገሩት ነገር ተመዝግቧል ነገር ግን ከመተየቡ በፊት ጠፍቷል፣ ስለዚህ ምን እንደተባለ አይታወቅም።",
     "mapPinsKeyboardHint": "በካርታው ላይ ባሉ እንቅስቃሴዎች መካከል ለመንቀሳቀስ የቀስት ቁልፎችን ይጠቀሙ እና አንዱን ለመክፈት አስገባን ይጫኑ።",
-    "selectMessageLabel": "መልዕክት ምረጥ"
+    "selectMessageLabel": "መልዕክት ምረጥ",
+    "callTranscriptAudioDropped": "{name} የተናገረው ነገር ከመቀረጹ በፊት በመሳሪያቸው ጠፍቷል፣ ስለዚህ የተናገሩት ነገር አይታወቅም።",
+    "callTranscriptHeldByOtherDevice": "{name} የተናገረው ነገር እንዲቀረጽ ለሌላ መሳሪያቸው ተላልፏል፣ ስለዚህ ከዚህ ምንም አልተላከም እና እዚህ የተነገረው ነገር አይታወቅም።"
 }

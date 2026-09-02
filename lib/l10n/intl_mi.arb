@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-01 12:28:00.385287",
+    "@@last_modified": "2026-09-01 22:27:09.132904",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2249,5 +2249,7 @@
     "callTranscriptMicrophoneRefused": "Kāore rawa te pūrere a {name} i whakatuwhera i te hopuoro mō tēnei waea, nō reira kāore i hopukina āna kōrero, ā, kāore e mōhiotia ana ngā kōrero i kōrerotia.",
     "callTranscriptAudioLost": "I hopukina ngā kōrero a {name} engari i ngaro i mua i te tuhi, nō reira kāore e mōhiotia ana ngā kōrero i kōrerotia.",
     "mapPinsKeyboardHint": "Whakamahia ngā kī pere hei neke i waenga i ngā mahi i runga i te mahere, ka pēhi i te Enter hei whakatuwhera i tētahi.",
-    "selectMessageLabel": "Tīpakohia te karere"
+    "selectMessageLabel": "Tīpakohia te karere",
+    "callTranscriptAudioDropped": "I ngaro te kōrero a {name} i tōna pūrere i mua i te hopunga, nō reira kāore i te mōhiotia he aha te kōrero.",
+    "callTranscriptHeldByOtherDevice": "I waiho te kōrero a {name} mā tētahi atu o āna pūrere e hopu, nō reira kāore he wāhanga i tukuna mai i tēnei, ā, kāore i te mōhiotia i konei he aha te kōrero."
 }

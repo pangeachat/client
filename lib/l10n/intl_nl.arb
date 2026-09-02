@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:28:01.156073",
+    "@@last_modified": "2026-09-01 22:27:11.391495",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9845,5 +9845,7 @@
     "callTranscriptMicrophoneRefused": "Het apparaat van {name} heeft geen microfoon geopend voor dit gesprek, dus er is niets opgenomen van wat er gezegd is en wat er gezegd is, is onbekend.",
     "callTranscriptAudioLost": "Wat {name} zei, is opgenomen, maar is verloren gegaan voordat het kon worden getranscribeerd, dus wat er gezegd is, is onbekend.",
     "mapPinsKeyboardHint": "Gebruik de pijltjestoetsen om tussen activiteiten op de kaart te bewegen en druk op Enter om er een te openen.",
-    "selectMessageLabel": "Bericht selecteren"
+    "selectMessageLabel": "Bericht selecteren",
+    "callTranscriptAudioDropped": "Wat {name} zei, ging verloren op hun apparaat voordat het kon worden opgenomen, dus het is niet bekend wat er werd gezegd.",
+    "callTranscriptHeldByOtherDevice": "Wat {name} zei, werd door een ander apparaat van hen opgenomen, dus er is niets vanaf dit apparaat verzonden en het is hier niet bekend wat er werd gezegd."
 }

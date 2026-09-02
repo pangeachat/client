@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-01 12:27:58.547481",
+    "@@last_modified": "2026-09-01 22:27:01.281149",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10281,5 +10281,7 @@
     "callTranscriptMicrophoneRefused": "Uređaj korisnika {name} nikada nije otvorio mikrofon za ovaj poziv, tako da ništa što je rečeno nije snimljeno i ono što je rečeno nije poznato.",
     "callTranscriptAudioLost": "Ono što je {name} rekao je snimljeno, ali je izgubljeno prije nego što je moglo biti transkribirano, tako da ono što je rečeno nije poznato.",
     "mapPinsKeyboardHint": "Koristite tipke sa strelicama za kretanje između aktivnosti na karti, a pritisnite Enter za otvaranje jedne.",
-    "selectMessageLabel": "Odaberi poruku"
+    "selectMessageLabel": "Odaberi poruku",
+    "callTranscriptAudioDropped": "Ono što je {name} rekao/rekla izgubljeno je na njihovom uređaju prije nego što je snimljeno, stoga se ne zna što je rečeno.",
+    "callTranscriptHeldByOtherDevice": "Ono što je {name} rekao/rekla prepušteno je snimanju na drugom njihovom uređaju, stoga s ovog uređaja ništa nije poslano i ovdje se ne zna što je rečeno."
 }

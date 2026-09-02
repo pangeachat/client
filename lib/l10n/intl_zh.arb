@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-01 12:28:04.583613",
+    "@@last_modified": "2026-09-01 22:27:22.511931",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9845,5 +9845,7 @@
     "callTranscriptMicrophoneRefused": "{name}的设备未在此通话中打开麦克风，因此未录制任何内容，也无法得知他们说了什么。",
     "callTranscriptAudioLost": "{name}说的话已被录音，但在转录前丢失，因此无法得知他们说了什么。",
     "mapPinsKeyboardHint": "使用方向键在地图上的活动之间移动，然后按 Enter 键打开一个活动。",
-    "selectMessageLabel": "选择消息"
+    "selectMessageLabel": "选择消息",
+    "callTranscriptAudioDropped": "{name} 的设备在录制前丢失了音频，因此无法知道其所说的内容。",
+    "callTranscriptHeldByOtherDevice": "{name} 的发言已由其另一台设备录制，因此此设备未发送任何内容，也无法在此处获知其所说的内容。"
 }

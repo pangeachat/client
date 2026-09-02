@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-01 12:28:04.465677",
+    "@@last_modified": "2026-09-01 22:27:23.922431",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2249,5 +2249,7 @@
     "callTranscriptMicrophoneRefused": "Idivayisi ka-{name} ayizange ivule imakrofoni kulolu lwazi, ngakho-ke akukho abakushilo okwarekhodwa futhi okwashiwo akwaziwa.",
     "callTranscriptAudioLost": "Okushiwo ngu-{name} kwarekhodwa kodwa kwalahleka ngaphambi kokuba kubhalwe, ngakho-ke okwashiwo akwaziwa.",
     "mapPinsKeyboardHint": "Sebenzisa izinkinobho zemicibisholo ukuze uhambe phakathi kwemisebenzi kumephu, bese ucindezela u-Enter ukuze uvule eyodwa.",
-    "selectMessageLabel": "Khetha umlayezo"
+    "selectMessageLabel": "Khetha umlayezo",
+    "callTranscriptAudioDropped": "Lokho okushiwo u-{name} kulahlekile kudivayisi yakhe ngaphambi kokuthi kuqoshwe, ngakho-ke akwaziwa ukuthi utheni.",
+    "callTranscriptHeldByOtherDevice": "Lokho okushiwo u-{name} kushiyelwe enye yamadivayisi akhe ukuthi ikuqophe, ngakho-ke akukho okuthunyelwe kusuka kule divayisi futhi akwaziwa ukuthi utheni lapha."
 }

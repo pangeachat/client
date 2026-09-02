@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-01 12:27:56.874503",
+    "@@last_modified": "2026-09-01 22:26:56.183195",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9832,5 +9832,7 @@
     "callTranscriptMicrophoneRefused": "{name}s Gerät hat für diesen Anruf kein Mikrofon geöffnet, daher wurde nichts, was {name} gesagt hat, aufgezeichnet und der Inhalt ist unbekannt.",
     "callTranscriptAudioLost": "Was {name} gesagt hat, wurde aufgezeichnet, ging aber verloren, bevor es transkribiert werden konnte, daher ist der Inhalt unbekannt.",
     "mapPinsKeyboardHint": "Verwenden Sie die Pfeiltasten, um zwischen den Aktivitäten auf der Karte zu wechseln, und drücken Sie die Eingabetaste, um eine zu öffnen.",
-    "selectMessageLabel": "Nachricht auswählen"
+    "selectMessageLabel": "Nachricht auswählen",
+    "callTranscriptAudioDropped": "Was {name} gesagt hat, ging auf dem Gerät verloren, bevor es überhaupt aufgezeichnet werden konnte. Was gesagt wurde, ist also nicht bekannt.",
+    "callTranscriptHeldByOtherDevice": "Was {name} gesagt hat, wurde einem anderen ihrer Geräte zur Aufzeichnung überlassen, daher wurde von diesem Gerät nichts gesendet und was gesagt wurde, ist hier nicht bekannt."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-01 12:27:58.407059",
+    "@@last_modified": "2026-09-01 22:26:59.266850",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2249,5 +2249,7 @@
     "callTranscriptMicrophoneRefused": "Cha do dh’fhosgail inneal {name} microfòn a-riamh airson a’ ghairm seo, mar sin cha deach dad a thuirt iad a chlàradh agus chan eil fios dè chaidh a ràdh.",
     "callTranscriptAudioLost": "Chaidh na thuirt {name} a chlàradh ach chaidh a chall mus b’ urrainn a thras-sgrìobhadh, mar sin chan eil fios dè chaidh a ràdh.",
     "mapPinsKeyboardHint": "Cleachd na saigheadan gus gluasad eadar gnìomhan air a’ mhapa, agus brùth Enter gus fear fhosgladh.",
-    "selectMessageLabel": "Tagh teachdaireachd"
+    "selectMessageLabel": "Tagh teachdaireachd",
+    "callTranscriptAudioDropped": "Chaidh na thuirt {name} a chall leis an inneal aca mus deach a chlàradh, mar sin chan eil fhios dè a chaidh a ràdh.",
+    "callTranscriptHeldByOtherDevice": "Chaidh na thuirt {name} fhàgail gu inneal eile aca airson a chlàradh, mar sin cha deach dad a chur bhon fhear seo agus chan eil fhios an seo dè a chaidh a ràdh."
 }

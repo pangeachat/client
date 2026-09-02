@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:28:02.395164",
+    "@@last_modified": "2026-09-01 22:27:14.059071",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10577,5 +10577,7 @@
     "callTranscriptMicrophoneRefused": "Dispozitivul lui {name} nu a deschis niciodată un microfon pentru acest apel, așa că nimic din ce a spus nu a fost înregistrat și ce a fost spus nu este cunoscut.",
     "callTranscriptAudioLost": "Ceea ce a spus {name} a fost înregistrat, dar s-a pierdut înainte de a putea fi transcris, așa că ce a fost spus nu este cunoscut.",
     "mapPinsKeyboardHint": "Folosește tastele săgeți pentru a te deplasa între activitățile de pe hartă și apasă Enter pentru a deschide una.",
-    "selectMessageLabel": "Selectează mesajul"
+    "selectMessageLabel": "Selectează mesajul",
+    "callTranscriptAudioDropped": "Ceea ce a spus {name} a fost pierdut de dispozitivul său înainte de a putea fi înregistrat, deci nu se știe ce s-a spus.",
+    "callTranscriptHeldByOtherDevice": "Ceea ce a spus {name} a fost lăsat pentru a fi înregistrat de un alt dispozitiv al său, deci nimic nu a fost trimis de pe acesta și nu se știe aici ce s-a spus."
 }

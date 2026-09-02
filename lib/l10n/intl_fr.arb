@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-01 12:27:57.436297",
+    "@@last_modified": "2026-09-01 22:26:58.209208",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10200,5 +10200,7 @@
     "callTranscriptMicrophoneRefused": "L'appareil de {name} n'a pas ouvert de microphone pour cet appel, donc rien de ce qu'il a dit n'a été enregistré et ce qui a été dit n'est pas connu.",
     "callTranscriptAudioLost": "Ce que {name} a dit a été enregistré mais perdu avant de pouvoir être transcrit, donc ce qui a été dit n'est pas connu.",
     "mapPinsKeyboardHint": "Utilisez les touches fléchées pour vous déplacer entre les activités sur la carte, et appuyez sur Entrée pour en ouvrir une.",
-    "selectMessageLabel": "Sélectionner le message"
+    "selectMessageLabel": "Sélectionner le message",
+    "callTranscriptAudioDropped": "Ce que {name} a dit a été perdu par son appareil avant même de pouvoir être enregistré, donc ce qui a été dit est inconnu.",
+    "callTranscriptHeldByOtherDevice": "Ce que {name} a dit a été laissé à un autre de ses appareils pour l'enregistrement, donc rien n'a été envoyé depuis celui-ci et ce qui a été dit est inconnu ici."
 }

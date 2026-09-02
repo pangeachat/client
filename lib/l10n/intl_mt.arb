@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-01 12:28:01.359254",
+    "@@last_modified": "2026-09-01 22:27:11.298449",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2249,5 +2249,7 @@
     "callTranscriptMicrophoneRefused": "L-apparat ta' {name} qatt ma fetaħ mikrofonu għal din is-sejħa, għalhekk xejn minn dak li qalu ma ġie rreġistrat u dak li ntqal mhuwiex magħruf.",
     "callTranscriptAudioLost": "Dak li qal {name} ġie rreġistrat iżda ntilef qabel ma seta' jiġi traskritt, għalhekk dak li ntqal mhuwiex magħruf.",
     "mapPinsKeyboardHint": "Uża l-vleġeġ biex tiċċaqlaq bejn l-attivitajiet fuq il-mappa, u agħfas Enter biex tiftaħ waħda.",
-    "selectMessageLabel": "Agħżel messaġġ"
+    "selectMessageLabel": "Agħżel messaġġ",
+    "callTranscriptAudioDropped": "Dak li qal/qalet {name} intilef mill-apparat tagħhom qabel ma seta' jiġi rrekordjat, għalhekk dak li ntqal mhuwiex magħruf.",
+    "callTranscriptHeldByOtherDevice": "Dak li qal/qalet {name} tħalla f'idejn apparat ieħor tagħhom biex jirrekordjah, għalhekk xejn minnu ma ntbagħat minn dan l-apparat u dak li ntqal mhuwiex magħruf hawnhekk."
 }

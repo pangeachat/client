@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-01 12:27:58.898937",
+    "@@last_modified": "2026-09-01 22:27:01.130268",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2249,5 +2249,7 @@
     "callTranscriptMicrophoneRefused": "{name} lub cuab yeej tsis tau qhib lub microphone rau qhov kev hu no, yog li tsis muaj dab tsi lawv hais tau raug kaw tseg thiab tsis paub tias lawv hais dab tsi.",
     "callTranscriptAudioLost": "Qhov {name} hais tau raug kaw tseg tab sis ploj ua ntej yuav muab sau ua ntawv, yog li tsis paub tias lawv hais dab tsi.",
     "mapPinsKeyboardHint": "Siv cov yuam sij xub kom txav mus los ntawm cov haujlwm hauv daim ntawv qhia, thiab nias Enter kom qhib ib qho.",
-    "selectMessageLabel": "Xaiv lus"
+    "selectMessageLabel": "Xaiv lus",
+    "callTranscriptAudioDropped": "Lub suab uas {name} hais tau poob ntawm lawv lub cuab yeej ua ntej nws yuav kaw tau, yog li ntawd tsis paub tias lawv hais dab tsi.",
+    "callTranscriptHeldByOtherDevice": "Lub suab uas {name} hais tau muab rau lwm lub cuab yeej ntawm lawv los kaw, yog li ntawd tsis muaj dab tsi raug xa los ntawm lub no thiab tsis paub tias lawv hais dab tsi ntawm no."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:28:03.612251",
+    "@@last_modified": "2026-09-01 22:27:20.636030",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7137,5 +7137,7 @@
     "callTranscriptMicrophoneRefused": "Thiết bị của {name} chưa bao giờ mở micrô cho cuộc gọi này, vì vậy không có gì họ nói được ghi lại và những gì đã nói không được biết.",
     "callTranscriptAudioLost": "Những gì {name} nói đã được ghi lại nhưng bị mất trước khi có thể chép lại, vì vậy những gì đã nói không được biết.",
     "mapPinsKeyboardHint": "Sử dụng các phím mũi tên để di chuyển giữa các hoạt động trên bản đồ và nhấn Enter để mở một hoạt động.",
-    "selectMessageLabel": "Chọn tin nhắn"
+    "selectMessageLabel": "Chọn tin nhắn",
+    "callTranscriptAudioDropped": "Những gì {name} nói đã bị mất bởi thiết bị của họ trước khi có thể được ghi lại, vì vậy không rõ họ đã nói gì.",
+    "callTranscriptHeldByOtherDevice": "Những gì {name} nói đã được để cho một thiết bị khác của họ ghi lại, vì vậy không có nội dung nào được gửi từ thiết bị này và không rõ họ đã nói gì ở đây."
 }

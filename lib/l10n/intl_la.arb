@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-01 12:28:00.198823",
+    "@@last_modified": "2026-09-01 22:27:06.390041",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2249,5 +2249,7 @@
     "callTranscriptMicrophoneRefused": "Instrumentum {name} microphonum huic vocationi numquam aperuit, itaque nihil ab eo dictum est relatum et quid dictum sit nescitur.",
     "callTranscriptAudioLost": "Quod {name} dixit relatum est sed amissum antequam transcribi posset, itaque quid dictum sit nescitur.",
     "mapPinsKeyboardHint": "Sagittis utere ad movendum inter actiones in tabula, et preme Intro ut unam aperias.",
-    "selectMessageLabel": "Nuntium elige"
+    "selectMessageLabel": "Nuntium elige",
+    "callTranscriptAudioDropped": "Quod {name} dixit, ab eius instrumento amissum est antequam notari posset, ergo quod dictum est nescitur.",
+    "callTranscriptHeldByOtherDevice": "Quod {name} dixit, alteri eius instrumentorum notandum relictum est, ergo nihil hinc missum est et quod dictum est hic nescitur."
 }

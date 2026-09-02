@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-01 12:28:02.346132",
+    "@@last_modified": "2026-09-01 22:27:15.535790",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10790,5 +10790,7 @@
     "callTranscriptMicrophoneRefused": "Naprava uporabnika {name} ni nikoli odprla mikrofona za ta klic, zato ni bilo posneto nič, kar je rekel, in ni znano, kaj je bilo rečeno.",
     "callTranscriptAudioLost": "Kar je rekel {name}, je bilo posneto, vendar izgubljeno, preden je bilo mogoče prepisati, zato ni znano, kaj je bilo rečeno.",
     "mapPinsKeyboardHint": "Z uporabo puščičnih tipk se premikajte med aktivnostmi na zemljevidu in pritisnite Enter, da odprete eno.",
-    "selectMessageLabel": "Izberite sporočilo"
+    "selectMessageLabel": "Izberite sporočilo",
+    "callTranscriptAudioDropped": "Kar je rekel/-a {name}, je njegova/njena naprava izgubila, preden je bilo mogoče posneti, zato ni znano, kaj je bilo rečeno.",
+    "callTranscriptHeldByOtherDevice": "Kar je rekel/-a {name}, je bilo prepuščeno snemanju drugi njegovi/njeni napravi, zato s te naprave ni bilo nič poslano in tukaj ni znano, kaj je bilo rečeno."
 }

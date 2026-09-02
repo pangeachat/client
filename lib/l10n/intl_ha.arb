@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-09-01 12:27:58.287286",
+    "@@last_modified": "2026-09-01 22:27:00.436281",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2249,5 +2249,7 @@
     "callTranscriptMicrophoneRefused": "Na'urar {name} ba ta taɓa buɗe makirufo don wannan kiran ba, don haka ba a yi rikodin abin da suka faɗa ba kuma ba a san abin da aka faɗa ba.",
     "callTranscriptAudioLost": "An yi rikodin abin da {name} ya faɗa amma ya ɓace kafin a iya rubuta shi, don haka ba a san abin da aka faɗa ba.",
     "mapPinsKeyboardHint": "Yi amfani da maɓallan kibiya don motsawa tsakanin ayyuka akan taswira, kuma danna Shigar don buɗe ɗaya.",
-    "selectMessageLabel": "Zaɓi saƙo"
+    "selectMessageLabel": "Zaɓi saƙo",
+    "callTranscriptAudioDropped": "Abin da {name} ya faɗa ya ɓace daga na'urarsu kafin a iya yin rikodi, don haka ba a san abin da aka faɗa ba.",
+    "callTranscriptHeldByOtherDevice": "An bar abin da {name} ya faɗa ga wata na'urarsu don yin rikodi, don haka ba a aiko da komai daga wannan ba kuma ba a san abin da aka faɗa a nan ba."
 }

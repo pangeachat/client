@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-01 12:28:01.919126",
+    "@@last_modified": "2026-09-01 22:27:13.820591",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10762,5 +10762,7 @@
     "callTranscriptMicrophoneRefused": "O dispositivo de {name} nunca abriu um microfone para esta chamada, por isso nada do que disseram foi gravado e o que foi dito não é conhecido.",
     "callTranscriptAudioLost": "O que {name} disse foi gravado, mas perdeu-se antes de poder ser transcrito, por isso o que foi dito não é conhecido.",
     "mapPinsKeyboardHint": "Use as teclas de seta para se mover entre as atividades no mapa e prima Enter para abrir uma.",
-    "selectMessageLabel": "Selecionar mensagem"
+    "selectMessageLabel": "Selecionar mensagem",
+    "callTranscriptAudioDropped": "O que {name} disse foi perdido pelo seu dispositivo antes de poder ser gravado, pelo que não se sabe o que foi dito.",
+    "callTranscriptHeldByOtherDevice": "O que {name} disse foi deixado para outro dos seus dispositivos gravar, pelo que nada foi enviado a partir deste e não se sabe aqui o que foi dito."
 }

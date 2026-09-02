@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-01 12:27:57.445753",
+    "@@last_modified": "2026-09-01 22:26:56.044148",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8064,5 +8064,7 @@
     "callTranscriptMicrophoneRefused": "El dispositivo de {name} nunca abrió un micrófono para esta llamada, por lo que no se grabó nada de lo que dijo y se desconoce lo que se dijo.",
     "callTranscriptAudioLost": "Lo que dijo {name} fue grabado pero se perdió antes de que pudiera transcribirse, por lo que se desconoce lo que se dijo.",
     "mapPinsKeyboardHint": "Usa las teclas de flecha para moverte entre las actividades del mapa y presiona Enter para abrir una.",
-    "selectMessageLabel": "Seleccionar mensaje"
+    "selectMessageLabel": "Seleccionar mensaje",
+    "callTranscriptAudioDropped": "Lo que dijo {name} se perdió en su dispositivo antes de que pudiera grabarse, por lo que no se sabe qué dijo.",
+    "callTranscriptHeldByOtherDevice": "Lo que dijo {name} se dejó para que lo grabara otro de sus dispositivos, por lo que no se envió nada desde este y no se sabe qué se dijo aquí."
 }

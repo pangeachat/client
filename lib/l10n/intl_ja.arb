@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-01 12:27:59.567630",
+    "@@last_modified": "2026-09-01 22:27:03.636858",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10614,5 +10614,7 @@
     "callTranscriptMicrophoneRefused": "{name}さんのデバイスでこの通話のマイクが開かれなかったため、発言は録音されず、内容も不明です。",
     "callTranscriptAudioLost": "{name}さんの発言は録音されましたが、書き起こされる前に失われたため、内容も不明です。",
     "mapPinsKeyboardHint": "矢印キーでマップ上のアクティビティ間を移動し、Enterキーを押して開きます。",
-    "selectMessageLabel": "メッセージを選択"
+    "selectMessageLabel": "メッセージを選択",
+    "callTranscriptAudioDropped": "{name}さんの発言は、録音される前にデバイスで失われたため、内容は不明です。",
+    "callTranscriptHeldByOtherDevice": "{name}さんの発言は、別のデバイスで録音されることになったため、このデバイスからは何も送信されておらず、内容は不明です。"
 }

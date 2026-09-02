@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:27:57.418108",
+    "@@last_modified": "2026-09-01 22:26:56.021940",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10790,5 +10790,7 @@
     "callTranscriptMicrophoneRefused": "La aparato de {name} neniam malfermis mikrofonon por ĉi tiu voko, do nenio dirita de ili estis registrita kaj kio estis dirita ne estas konata.",
     "callTranscriptAudioLost": "Kion diris {name} estis registrita sed perdiĝis antaŭ ol ĝi povus esti transskribita, do kio estis dirita ne estas konata.",
     "mapPinsKeyboardHint": "Uzu la sagoklavojn por moviĝi inter agadoj sur la mapo, kaj premu Enigi por malfermi unu.",
-    "selectMessageLabel": "Elektu mesaĝon"
+    "selectMessageLabel": "Elektu mesaĝon",
+    "callTranscriptAudioDropped": "Tio, kion {name} diris, perdiĝis en ties aparato antaŭ ol ĝi povis esti registrita, do tio, kio estis dirita, ne estas konata.",
+    "callTranscriptHeldByOtherDevice": "Tio, kion {name} diris, estis lasita al alia el ties aparatoj por registrado, do neniom el ĝi estis sendita de ĉi tiu aparato kaj tio, kio estis dirita, ne estas konata ĉi tie."
 }

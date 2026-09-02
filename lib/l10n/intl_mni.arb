@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-01 12:28:01.240090",
+    "@@last_modified": "2026-09-01 22:27:10.695404",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2249,5 +2249,7 @@
     "callTranscriptMicrophoneRefused": "{name}gi device na hairiba call asida microphone amata hangkhide, aduna mahakna haikhiba khudingmak record toukhide aduga kari haikhibano haibasi khangdre.",
     "callTranscriptAudioLost": "{name}na haikhiba adu record toukhre adubu transcribe touba ngamdringei makhei mangkhre, aduna kari haikhibano haibasi khangdre.",
     "mapPinsKeyboardHint": "Map ta chatnaba activities singgi marakta saronba hotnabagidamak arrow keys sing adu sijinbiyu, aduga amabu hangdoknaba Enter thinbiyu.",
-    "selectMessageLabel": "মেসেজ খল্লু"
+    "selectMessageLabel": "মেসেজ খল্লু",
+    "callTranscriptAudioDropped": "{name} na hai-ba adu record tou-naba matamda mangkhre, aduna karamna haikhibage haibadu khangba ngamkhidre.",
+    "callTranscriptHeldByOtherDevice": "{name} na hai-ba adu record tou-naba makhoigi atop-pa device amada thamlambani, aduna karisu tharakkhide amadi karamna haikhibage haibadu khangba ngamkhidre."
 }

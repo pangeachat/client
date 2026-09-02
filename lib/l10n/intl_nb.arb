@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:28:01.023057",
+    "@@last_modified": "2026-09-01 22:27:10.327355",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9902,5 +9902,7 @@
     "callTranscriptMicrophoneRefused": "{name}s enhet åpnet aldri en mikrofon for denne samtalen, så ingenting de sa ble tatt opp, og hva som ble sagt er ukjent.",
     "callTranscriptAudioLost": "Det {name} sa ble tatt opp, men gikk tapt før det kunne transkriberes, så hva som ble sagt er ukjent.",
     "mapPinsKeyboardHint": "Bruk piltastene til å flytte mellom aktiviteter på kartet, og trykk Enter for å åpne en.",
-    "selectMessageLabel": "Velg melding"
+    "selectMessageLabel": "Velg melding",
+    "callTranscriptAudioDropped": "Det {name} sa, gikk tapt på enheten før det kunne tas opp, så det er ikke kjent hva som ble sagt.",
+    "callTranscriptHeldByOtherDevice": "Det {name} sa, ble overlatt til en av de andre enhetene deres for opptak, så ingenting ble sendt fra denne, og det er ikke kjent her hva som ble sagt."
 }

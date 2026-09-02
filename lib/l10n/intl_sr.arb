@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 12:28:02.730034",
+    "@@last_modified": "2026-09-01 22:27:21.163252",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10794,5 +10794,7 @@
     "callTranscriptMicrophoneRefused": "Uređaj korisnika {name} nikada nije otvorio mikrofon za ovaj poziv, tako da ništa što je rečeno nije snimljeno i ono što je rečeno nije poznato.",
     "callTranscriptAudioLost": "Ono što je {name} rekao/rekla je snimljeno, ali je izgubljeno pre nego što je moglo biti transkribovano, tako da ono što je rečeno nije poznato.",
     "mapPinsKeyboardHint": "Koristite tastere sa strelicama za kretanje između aktivnosti na mapi, a pritisnite Enter da biste otvorili jednu.",
-    "selectMessageLabel": "Izaberite poruku"
+    "selectMessageLabel": "Izaberite poruku",
+    "callTranscriptAudioDropped": "Ono što je {name} rekao/la izgubljeno je na njegovom/njenom uređaju pre nego što je moglo da se snimi, tako da se ne zna šta je rečeno.",
+    "callTranscriptHeldByOtherDevice": "Ono što je {name} rekao/la prepušteno je drugom njegovom/njenom uređaju da snimi, tako da ništa od toga nije poslato sa ovog uređaja i ovde se ne zna šta je rečeno."
 }

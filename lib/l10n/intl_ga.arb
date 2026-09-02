@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-01 12:27:58.320938",
+    "@@last_modified": "2026-09-01 22:26:59.066164",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9856,5 +9856,7 @@
     "callTranscriptMicrophoneRefused": "Níor osclaíodh micreafón riamh do {name} don ghlao seo, mar sin níor taifeadadh aon rud a dúirt siad agus ní fios cad a dúradh.",
     "callTranscriptAudioLost": "Taifeadadh an méid a dúirt {name} ach cailleadh é sular féadadh é a thras-scríobh, mar sin ní fios cad a dúradh.",
     "mapPinsKeyboardHint": "Bain úsáid as na heochracha saighde chun bogadh idir gníomhaíochtaí ar an léarscáil, agus brúigh Iontráil chun ceann a oscailt.",
-    "selectMessageLabel": "Roghnaigh teachtaireacht"
+    "selectMessageLabel": "Roghnaigh teachtaireacht",
+    "callTranscriptAudioDropped": "Chaill an gléas an méid a dúirt {name} sular éirigh leis é a thaifeadadh, mar sin ní fios cad a dúradh.",
+    "callTranscriptHeldByOtherDevice": "Fágadh faoi ghléas eile de chuid {name} an méid a dúirt siad a thaifeadadh, mar sin níor seoladh aon chuid de ón ngléas seo agus ní fios anseo cad a dúradh."
 }
