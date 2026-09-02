@@ -19,27 +19,33 @@
 // this ran a second real client, on a real homeserver, and asked whether two
 // halves are what actually reaches the room.
 //
-// FOUR THINGS, and each is asked of the SERVER, of the WIRE, or of the SCREEN,
+// FIVE THINGS, and each is asked of the SERVER, of the WIRE, or of the SCREEN,
 // never of the click that was supposed to cause it.
 //
 //   1. BOTH HALVES SURVIVE. Two `pangea.call_transcript` events from the ONE
 //      account, carrying DIFFERENT device ids -- and those two ids are the two
 //      devices the server itself says were in the call.
-//   2. THE TRANSACTION IDS DIFFER, AND THE PRODUCT'S OWN IDS ARE THE ONES
-//      COMPARED. Matrix never sends a transaction id back down, so this is
-//      taken from the OUTGOING request each browser made -- the PUT path the
-//      app itself built -- and only then checked against the id the app's
-//      formula derives from the event that arrived. A recomputation on its own
-//      would prove the events carry enough to derive two ids and nothing about
-//      what was sent, which is a weaker sentence than this file needs.
-//   3. THE READER MERGED THEM. Read off the app's own read-time log, which
+//   2. THE TWO DEVICES SAID DIFFERENT THINGS. Each half carries the words of
+//      one fixture and none of the other's, and the half naming the device a
+//      browser authenticates as carries the wav THAT browser plays. Without
+//      this the rest is arithmetic about two events that might hold the same
+//      speech -- which is the shape of the very bug being tested for.
+//   3. THE TRANSACTION IDS DIFFER, EACH HALF NAMES ITS OWN WRITER, AND THE
+//      PRODUCT'S OWN IDS ARE THE ONES COMPARED. Matrix never sends a
+//      transaction id back down, so it is taken from the OUTGOING request each
+//      browser made -- the PUT path the app itself built -- and matched, PER
+//      BROWSER, to the arrived half the app's formula derives it from and to
+//      the device the homeserver says that browser is. Compared as sets instead
+//      it proves two valid ids exist and nothing about which browser sent
+//      which, and a build with the two ids swapped over passes.
+//   4. THE READER MERGED THEM. Read off the app's own read-time log, which
 //      states how many devices a half was assembled from -- the one place the
 //      count is visible, and the only proof that survives the ordinary case
 //      where `CaptureElection` left one of the two halves empty. A drawn-turn
 //      count cannot tell a merge from a reader that dropped an empty half;
 //      this can, so it is the check the merge rests on rather than the screen.
-//   4. NOTHING IS LOST. Every word any half carries is on the screen
-//      afterwards, and nobody who spoke is reported as having said nothing.
+//   5. NOTHING IS LOST. The panel draws at least as many turns as the halves
+//      carry, and none of the peer's words end up under the learner.
 //
 // AND EVERY ONE OF THEM FAILS WHEN IT CANNOT BE ASKED. A check that reports
 // SKIP, and a wait that runs out and carries on, are both ways of not knowing,
@@ -47,6 +53,16 @@
 // exactly as it counts a failed one (see the end of [main]). This file exited 0
 // once while its central claim -- that the reader merges -- had proved nothing
 // at all, because the only check that spoke to it skipped.
+//
+// AND EVERY CHECK PROVES THE CLAIM IN ITS OWN NAME. The failure this file keeps
+// finding in itself is not a check that is wrong -- it is a check that is
+// WEAKER than its name, which reads as the stronger claim in a green run and
+// costs nothing until the day the stronger claim is false. A count of segments
+// under a name about speech; a whole-call capture total under a name about the
+// stretch after a handover; a set comparison under a name about a particular
+// half; a distinct-key count that a set of `undefined` satisfies. Where a claim
+// cannot be reached with the observables here, the NAME is narrowed to what is
+// reached and the comment says what is left over -- never the other way round.
 //
 // WHAT THE PRODUCT DOES THAT SHAPES THIS FILE.
 //
@@ -320,6 +336,14 @@ function words(text) {
 /// sentences three times over, so whichever stretch it held carries some of
 /// these. One is enough.
 ///
+/// ASSERTED, not printed. These were computed into a log line and left there,
+/// which meant the file stated the premise every other check rests on and never
+/// asked it: a run whose second wav held the wrong speech, or a Chrome feeding
+/// one profile's audio to both, produced two halves nobody could tell apart and
+/// passed everything. [differentFixturesVerdict] is where they are spent now,
+/// and [fixtureMatchesDeviceVerdict] is what turns them into a statement about
+/// which BROWSER wrote which half.
+///
 /// They move with the wavs. `config.js` says where those come from and the
 /// README says how to make them; replace a fixture and this list moves with it,
 /// or a run passes on a transcript of different audio.
@@ -375,14 +399,21 @@ async function refuseIfNotLearning(names) {
   }
 }
 
-/// Refuses two devices that would say the same thing.
+/// Refuses two devices pointed at the SAME BYTES.
 ///
 /// Two microphones playing one file write two halves nobody can tell apart --
 /// which is the exact shape of the merge failure this file exists to catch, so
 /// every check would pass hardest at the moment the feature was most broken.
 /// A refusal rather than a check, on the terms `browser.js` refuses a missing
 /// wav: it is a fact about the rig, and naming the app for it would be a lie.
-function refuseIfTheDevicesShareAVoice() {
+///
+/// WHAT IT CANNOT SEE, and the name is narrowed to say so. It compares two
+/// files byte for byte, which is not the same question as whether the two
+/// devices SAY different things: a second wav of different bytes carrying the
+/// same sentences, a wav of the wrong speech entirely, or a Chrome that fed one
+/// profile's audio to both, all pass it. That question can only be asked of the
+/// transcript the run produces, and [differentFixturesVerdict] is where it is.
+function refuseIfTheDevicesShareAWav() {
   const fs = require('fs');
   const one = accounts.learnerFirstDevice.wav;
   const two = accounts.learnerSecondDevice.wav;
@@ -511,14 +542,241 @@ function mergeCountsIn(lines, callKey, role = 'self') {
 const provesTwoDeviceMerge = (counts) =>
   counts.length > 0 && Math.max(...counts) === 2;
 
-/// Whether both of the account's halves carry speech.
+/// Whether both of the account's halves carry READABLE SPEECH.
 ///
 /// The state the handover exists to reach. Without it the drawn-turn count
 /// cannot tell a merge from a reader that dropped the empty half, so a run that
 /// does not reach it has not tested what it says it tests.
+///
+/// COUNTED IN WORDS RATHER THAN IN SEGMENTS, and the difference is the whole of
+/// it. A segment is a container: a device that opened a recorder, captured
+/// silence and published one entry of empty text has a segment and has
+/// transcribed nothing. Under the segment count that half read as a device that
+/// SPOKE -- the merge log still says `devices 2`, the turn count still sees a
+/// timestamp, and the run goes green having never reached the two-speaking-halves
+/// state this check is named for. The same measure `halvesWithWords` uses, so
+/// the two cannot disagree about what a half carrying speech is.
 const bothDevicesSpoke = (halves) =>
   halves.length === 2
-  && halves.every((e) => (e.content?.segments?.length ?? 0) > 0);
+  && halves.every((e) => words(spoken(e)).size > 0);
+
+/// Which of the two FIXTURES a set of words came from.
+///
+/// The two lists are disjoint by construction and each belongs to exactly one
+/// wav, so this is the whole of what makes a half's words traceable to a
+/// MICROPHONE.
+const fixtureIn = (wordSet) => ({
+  one: DEVICE_ONE_SAYS.filter((w) => wordSet.has(w)),
+  two: DEVICE_TWO_SAYS.filter((w) => wordSet.has(w)),
+});
+
+/// Whether the two halves carry the two DIFFERENT fixtures, one each.
+///
+/// THE PREMISE THE WHOLE MERGE RESTS ON, and for a long time it was only
+/// PRINTED. [refuseIfTheDevicesShareAWav] compares the two wavs BYTE for
+/// byte, which catches one fixture pointed at twice and nothing else: a second
+/// wav of different bytes carrying the same sentences, a wav of the wrong
+/// speech, or a Chrome that fed one profile's audio to both, all walk past it.
+/// And then two halves nobody can tell apart pass every check in this file --
+/// the exact shape of the bug it exists to catch, passing hardest at the moment
+/// the feature is most broken.
+///
+/// So the OUTCOME is asked rather than the rig. Each half must carry words from
+/// ONE fixture and none from the other, and the two halves must not carry the
+/// same one.
+///
+/// "NONE OF THE OTHER'S" is a demand a healthy run meets rather than a
+/// strictness this invents. Capture taps the track this device PUBLISHES --
+/// `call_capture.dart` says so in as many words -- so a half holds its own
+/// microphone and nothing else. It is the same property the peer-crossing check
+/// at the end of the file already rests on, asked one layer in.
+function differentFixturesVerdict(halves) {
+  if (halves.length !== 2) {
+    return {
+      ok: false,
+      why: `${halves.length} half/halves from the learner, not 2 -- there is `
+        + 'no pair to tell apart',
+    };
+  }
+  const read = halves.map((e) => {
+    const w = words(spoken(e));
+    return {
+      device: e.content?.device_id ?? '<none>',
+      size: w.size,
+      ...fixtureIn(w),
+    };
+  });
+  const say = (r) => `${r.device} (${r.size} word(s)) carries `
+    + `${JSON.stringify(r.one)} of fixture one and ${JSON.stringify(r.two)} of `
+    + 'fixture two';
+  const both = read.filter((r) => r.one.length > 0 && r.two.length > 0);
+  if (both.length) {
+    return {
+      ok: false,
+      why: `${both.map(say).join('; ')} -- one half carries BOTH fixtures, so `
+        + 'the two microphones are not separate: either both devices are '
+        + "playing the same audio, or one browser's capture reached the other's "
+        + 'half',
+    };
+  }
+  // TWO DIFFERENT FINDINGS, and they want different fixes. A half with no words
+  // at all is a device that recorded nothing, which the check above already
+  // says in red; a half with words but none of either fixture's is a microphone
+  // that played something this file does not recognise.
+  const wordless = read.filter((r) => r.size === 0);
+  if (wordless.length) {
+    return {
+      ok: false,
+      why: `${wordless.map((r) => r.device).join(', ')} carried no words at `
+        + 'all, so which fixture it played cannot be asked of it -- the check '
+        + 'that both devices transcribed a stretch of the call is the one that '
+        + 'names that failure',
+    };
+  }
+  const silent = read.filter((r) => r.one.length === 0 && r.two.length === 0);
+  if (silent.length) {
+    return {
+      ok: false,
+      why: `${silent.map(say).join('; ')} -- words, but not one of EITHER `
+        + "fixture's, so what that microphone played is not what this file's "
+        + 'word lists describe. The lists move with the wavs: replace a fixture '
+        + 'and DEVICE_ONE_SAYS/DEVICE_TWO_SAYS move with it, or a run passes on '
+        + 'a transcript of different audio',
+    };
+  }
+  const one = read.filter((r) => r.one.length > 0);
+  const two = read.filter((r) => r.two.length > 0);
+  if (one.length !== 1 || two.length !== 1) {
+    return {
+      ok: false,
+      why: `${read.map(say).join('; ')} -- both halves carry the SAME fixture, `
+        + 'so the two devices said the same thing and a reader that kept one of '
+        + 'them draws the screen a reader that merged both draws',
+    };
+  }
+  return { ok: true, why: '', one: one[0], two: two[0] };
+}
+
+/// Whether each half carries the fixture the BROWSER that is that device played.
+///
+/// [differentFixturesVerdict] says the two halves hold two different voices; it
+/// cannot say which browser's voice is in which half, because a fixture is a
+/// fact about a Chrome profile and a half names a MATRIX DEVICE. [deviceOfPage]
+/// is what joins the two, and this is the check that spends it: the half naming
+/// the device browser one authenticates as has to carry the wav browser one was
+/// started with.
+///
+/// It is the strongest statement of attribution the rig can make. A half is
+/// written by the device whose microphone it holds, so a half that names the
+/// OTHER device is a half attributed to a device that did not write it -- and
+/// two halves swapped over satisfy every check that only counts distinct ids.
+///
+/// The pairing missing is a FAILURE and not an abstention: without it the file
+/// knows the halves carry different fixtures and nothing at all about which
+/// device played which, which is the weaker sentence this exists to stop
+/// standing in for the stronger one.
+function fixtureMatchesDeviceVerdict(fixtures, deviceIds) {
+  if (!fixtures.ok) {
+    return {
+      ok: false,
+      why: `the two halves do not carry two different fixtures at all: ${fixtures.why}`,
+    };
+  }
+  if (!deviceIds.one || !deviceIds.two) {
+    return {
+      ok: false,
+      why: 'no half can be tied to a BROWSER: the harness paired device one '
+        + `with ${JSON.stringify(deviceIds.one)} and device two with `
+        + `${JSON.stringify(deviceIds.two)}, and that pairing -- asked of the `
+        + "homeserver with each page's own token -- is the only thing that says "
+        + 'which Matrix device a Chrome profile is. Without it the halves are '
+        + 'known to carry different fixtures and nothing says which device '
+        + 'played which',
+    };
+  }
+  const ok = fixtures.one.device === deviceIds.one
+    && fixtures.two.device === deviceIds.two;
+  return {
+    ok,
+    why: ok
+      ? ''
+      : `the half naming ${fixtures.one.device} carries the fixture browser ONE `
+        + `plays, and browser one is device ${deviceIds.one}; the half naming `
+        + `${fixtures.two.device} carries browser TWO's, and browser two is `
+        + `device ${deviceIds.two}. A half holds the microphone of the device `
+        + 'that wrote it, so a half whose words came from the other browser is '
+        + 'a half attributed to a device that did not write it',
+  };
+}
+
+/// Whether a half holds speech recorded AFTER a moment.
+///
+/// `chunks_captured` is a WHOLE-HALF total and cannot answer this. A device
+/// that is not the recorder still captures and then DISCARDS --
+/// `CallAudioSink.discarded` exists for exactly that -- and the join race hands
+/// both devices a roster that momentarily lacks the other, so a survivor can
+/// hold a positive capture count made entirely of chunks it took BEFORE the
+/// handover and threw away. A survivor that then recorded nothing at all for
+/// the tail is the one real failure a run of this file has found, and the count
+/// passes it.
+///
+/// SEGMENT POSITIONS are what can answer it. `at_ms` is on the wire, one per
+/// segment, and only for audio that was delivered and transcribed -- a
+/// discarded chunk produces none. It is the WRITER'S OWN wall clock,
+/// uncorrected: the reader's `ClockAnchor` correction is applied at read time
+/// and is not in the event, and every browser here runs on the one laptop, so
+/// it is the same clock the moment passed in was read from.
+///
+/// WHAT IT DOES NOT PROVE, and the check is named accordingly: that the
+/// survivor recorded ALL of the tail. It proves speech was recorded after the
+/// handover was asked for. A survivor that took over, captured four seconds and
+/// stopped passes this; the accounting it publishes alongside -- lost chunks,
+/// dropped milliseconds, an incomplete drain -- is what would say so, and no
+/// check here reads it yet.
+///
+/// A half whose segments carry no position at all FAILS rather than falling
+/// back on the count: a run cannot say WHEN a half recorded if nothing in it
+/// says when.
+function recordedAfterVerdict(half, sinceMs) {
+  const c = half?.content ?? {};
+  const captured = c.chunks_captured ?? 0;
+  const segs = Array.isArray(c.segments) ? c.segments : [];
+  const at = segs
+    .map((seg) => (seg && typeof seg.at_ms === 'number' ? seg.at_ms : null))
+    .filter((ms) => ms !== null);
+  if (!(captured > 0)) {
+    return { ok: false, why: `captured ${captured} chunk(s) in the whole call` };
+  }
+  if (!segs.length) {
+    return {
+      ok: false,
+      why: `captured ${captured} chunk(s) and published no segment at all, so `
+        + 'none of what it heard was transcribed',
+    };
+  }
+  if (!at.length) {
+    return {
+      ok: false,
+      why: `published ${segs.length} segment(s) and not one of them carries an `
+        + 'at_ms, so WHEN this half recorded cannot be asked of it -- and a '
+        + 'capture count cannot answer it, because a device that stood aside '
+        + 'captures and discards',
+    };
+  }
+  const after = at.filter((ms) => ms >= sinceMs);
+  const latest = Math.max(...at);
+  return {
+    ok: after.length > 0,
+    after: after.length,
+    total: at.length,
+    why: after.length
+      ? ''
+      : `published ${at.length} positioned segment(s) and every one of them is `
+        + `from BEFORE the handover was asked for -- the last at `
+        + `${new Date(latest).toISOString()}, `
+        + `${Math.round((sinceMs - latest) / 1000)}s before it`,
+  };
+}
 
 /// Whether every half the call should produce actually arrived.
 ///
@@ -542,6 +800,107 @@ const sentUnderDifferentIds = (one, two) =>
 const idsSentMatchDerived = (observed, derived) =>
   observed.length > 0 && derived.length > 0
   && JSON.stringify([...observed].sort()) === JSON.stringify([...derived].sort());
+
+/// Whether each browser SENT the half that names the device that browser IS.
+///
+/// SET EQUALITY PROVES NO ATTRIBUTION, and set equality is what stood here.
+/// Observed {D1,D2} against derived {D1,D2} passes whether or not browser D1
+/// sent the half naming D1: a build that swapped the two device ids over --
+/// a worse bug than the one this file exists to catch, because every half then
+/// names a device that did not write it -- satisfies it exactly. The per-page
+/// wire observation was built to say WHICH browser made which send, and
+/// comparing the two as sets throws that away.
+///
+/// So it is asked per browser, and it takes three observables to answer: the
+/// transaction id THIS page was seen PUTting, the arrived half the app's own
+/// formula derives that id from, and the device id that half carries -- checked
+/// against the device the homeserver says this page's token belongs to. A side
+/// passes only when all three name one device.
+///
+/// THE PAIRING IS REQUIRED, and its absence is a failure rather than a skip:
+/// without the third term there is no attribution to be had, and "two valid
+/// device ids exist somewhere" is precisely the sentence this replaced.
+function sendAttributionVerdict({ sent, devices, halves }) {
+  for (const side of ['one', 'two']) {
+    const ids = sent[side] || [];
+    if (ids.length !== 1) {
+      return {
+        ok: false,
+        why: `browser ${side} was seen sending under ${ids.length} distinct `
+          + `transaction id(s) ${JSON.stringify(ids)}, and tying a send to a `
+          + 'half needs exactly one',
+      };
+    }
+    if (!devices[side]) {
+      return {
+        ok: false,
+        why: `the harness could not pair browser ${side} with a Matrix device `
+          + `(one ${JSON.stringify(devices.one)}, two `
+          + `${JSON.stringify(devices.two)}), so there is nothing to check the `
+          + 'half it sent AGAINST. The pairing is asked of the homeserver with '
+          + "the page's own token (see [deviceOfPage]); without it this run can "
+          + 'say two device ids exist and not that either half names its own '
+          + 'writer',
+      };
+    }
+  }
+  const matched = {};
+  for (const side of ['one', 'two']) {
+    const id = sent[side][0];
+    const half = halves.find((e) => txnIdOf(e) === id);
+    if (!half) {
+      return {
+        ok: false,
+        why: `browser ${side} was seen sending under ${JSON.stringify(id)} and `
+          + 'no half that arrived derives that id '
+          + `(${JSON.stringify(halves.map(txnIdOf))}) -- so the send this page `
+          + 'made is not among the halves in the room',
+      };
+    }
+    if (half.content?.device_id !== devices[side]) {
+      return {
+        ok: false,
+        why: `browser ${side} IS device ${JSON.stringify(devices[side])}, and `
+          + 'the half it was seen sending names '
+          + `${JSON.stringify(half.content?.device_id)} -- a half attributed to `
+          + 'a device that did not write it',
+      };
+    }
+    matched[side] = half;
+  }
+  if (matched.one.event_id === matched.two.event_id) {
+    return {
+      ok: false,
+      why: `both browsers' sends resolve to the one event `
+        + `${matched.one.event_id}, so only one half is accounted for`,
+    };
+  }
+  return { ok: true, why: '' };
+}
+
+/// Whether this call's key is one no earlier call already wrote a half under.
+///
+/// A key that could NOT BE READ is not a fresh key. `reusedKey` is only ever
+/// set when there was a key to look an earlier call up by, so `reusedKey ===
+/// null` on its own reads a ring whose key never arrived as a clean call -- and
+/// a build emitting no call key at all would walk straight past the one check
+/// standing between it and a call whose whole transcript the homeserver
+/// silently discards.
+const freshCallKey = (callKey, reused) =>
+  typeof callKey === 'string' && callKey.length > 0 && reused === null;
+
+/// Whether every half belongs to THE call this run placed.
+///
+/// Counting distinct keys is a different sentence from this one.
+/// `new Set(...).size === 1` is satisfied by a set holding `undefined` -- every
+/// half missing its key entirely -- and by any single key at all, including one
+/// a different call wrote. So the key is compared against the one the RING
+/// carried, which is knowable from the moment the call starts and is what
+/// everything else in the file is already scoped to.
+const oneCallKeyAcross = (halves, callKey) =>
+  halves.length > 0
+  && typeof callKey === 'string' && callKey.length > 0
+  && halves.every((e) => e.content?.call_key === callKey);
 
 /// Whether the server recorded a HANDOVER: one device gone, the other still in.
 ///
@@ -721,7 +1080,7 @@ async function main() {
   const s = 'transcript-two-devices';
   console.log('[1] three browsers: the learner TWICE, and the other person');
   h.refuseIfAnotherRunIsLive();
-  refuseIfTheDevicesShareAVoice();
+  refuseIfTheDevicesShareAWav();
   await refuseIfNotLearning(['learner', 'calltester']);
 
   // ALL THREE opened before anything rings, and that ordering is not
@@ -759,9 +1118,15 @@ async function main() {
     if (deviceIds.one && deviceIds.two) break;
     await wait(1500);
   }
-  // Not a check, and deliberately not one. It is a fact about the RIG, and the
-  // run is still worth having without it -- everything after this either uses
-  // the pairing or says out loud that it could not.
+  // Printed rather than checked HERE, because the pairing is a fact about the
+  // rig and this is the wrong place to judge it: the checks that spend it are
+  // where its absence is a finding, and they say so themselves in red rather
+  // than standing aside. Two of them cannot be asked at all without it -- the
+  // half each browser SENT naming that browser's own device, and each half
+  // carrying the fixture its own browser played -- because both need a third
+  // term joining a Chrome profile to a Matrix device, and nothing else in the
+  // run can supply it. The handover pick uses it too, and there the fallback is
+  // CALL_HANDOVER_DEVICE.
   console.log(`   (device one is ${deviceIds.one || 'unidentified'}, ` +
     `device two is ${deviceIds.two || 'unidentified'})`);
 
@@ -882,7 +1247,13 @@ async function main() {
     await wait(10000);
   }
 
-  h.check(s, 'BOTH of the learner devices are in the one call',
+  // AFTER THIS RING, which is as far as the membership state can be scoped.
+  // `com.famedly.call.member` carries no call key for its entries, so nothing
+  // here ties a device's membership to the call the ring placed -- only to the
+  // window after it, which the teardown-and-settle between attempts is what
+  // keeps clean. "The ONE call" is proved further down instead, where every
+  // half is required to carry the RING'S own key.
+  h.check(s, 'BOTH of the learner devices joined a call after this ring',
     inCall.length >= 2,
     `the server saw ${inCall.length} of the learner's devices join ` +
       `(${inCall.join(', ') || 'none'}) across ${attemptsUsed} attempt(s). ` +
@@ -905,15 +1276,27 @@ async function main() {
   // PREVIOUS call's membership event id. Reported as a failure rather than
   // retried away, because a scenario that quietly re-rolls until it gets a clean
   // call would hide exactly the thing a real-stack run is for.
+  //
+  // AND A RING WITH NO KEY ON IT FAILS THE SAME CHECK. The lookup below is
+  // conditional -- there is nothing to look an earlier call up BY without a key
+  // -- so for as long as the check read `reusedKey === null` a build that
+  // emitted no call key passed it by never being asked. That is the check
+  // passing hardest at the moment it is least able to speak, and it is the one
+  // shape this file refuses. See [freshCallKey].
   h.check(s, 'this call has a call key no earlier call already wrote under',
-    reusedKey === null,
+    freshCallKey(callKey, reusedKey),
     reusedKey
       ? `attempt ${reusedKey.attempt} rang with call key ${reusedKey.callKey}, ` +
         `which ${reusedKey.earlier} earlier half/halves in this room already ` +
         'carry. Every writer in that call computes the transaction id it ' +
         'already used, the homeserver hands back the earlier event, and the ' +
         'whole of that call\'s transcript is lost with nothing logged'
-      : '');
+      : `the ring carried no call key (${JSON.stringify(callKey)}), so this ` +
+        'was never asked at all: the room was never searched for an earlier ' +
+        'call under this key, and nothing below can be scoped to this call ' +
+        'either -- the halves\' keys, the reader\'s log line and the ' +
+        'transaction ids all name it. A ring whose `m.relates_to` carries no ' +
+        'event id is the finding');
 
   if (inCall.length < 2) {
     await A1.page.screenshot({ path: shot('two-devices-nojoin-one.png') }).catch(() => {});
@@ -1023,6 +1406,20 @@ async function main() {
     joined: inCall,
     baseline,
   });
+  // WHEN THE HANDOVER WAS ASKED FOR, on the clock a half's segments are
+  // positioned on. Read here rather than derived from the membership event the
+  // hangup causes, and the reason is which way an anchor may be wrong: the
+  // survivor takes over on the LiveKit roster change, which can land before the
+  // server writes the membership, so anchoring on the server's record could
+  // sit AFTER the survivor's first chunk and fail a handover that worked. The
+  // click cannot: nothing the leaver's departure caused happened before it was
+  // asked for. So this anchor is at or before the true departure -- it can only
+  // let a little pre-departure audio count, never reject post-handover audio.
+  //
+  // A LOCAL clock reading, which is what makes it comparable at all. `at_ms` is
+  // the writing browser's own wall clock, uncorrected on the wire, and every
+  // browser here is a Chrome on this laptop.
+  const askedAt = Date.now();
   const handed = await h.actUntil(
     `device ${leaverName} leaves mid-call`,
     () => ui.clickPanel(leaver.page, 'hangup').then(() => {}, () => {}),
@@ -1128,7 +1525,12 @@ async function main() {
   // that arrived; a run that gave up waiting for one of them is reading a
   // partial call, and each check that then passes passes about less than it
   // names.
-  h.check(s, 'all three halves reached the room before the wait ran out',
+  // NAMED FOR WHAT IT COUNTS. `written.length >= 3` is "three or more halves
+  // arrived", and it is not the same sentence as "the three this call should
+  // produce arrived": three halves from three learner devices satisfy it. The
+  // composition is proved by the two checks below, which is where it belongs --
+  // this one is the WAIT'S own result and is named as that.
+  h.check(s, 'three or more halves reached the room before the wait ran out',
     allHalvesArrived(written),
     `${written.length} half/half(s) after ${Math.round(rounds * roundMs / 1000)}s ` +
       `of waiting for three (${mine.length} learner, ${theirs.length} peer). ` +
@@ -1145,15 +1547,28 @@ async function main() {
   // guarantee it, and this is what says so out loud: a half from an earlier,
   // abandoned attempt would otherwise stand in for the second device's, and
   // the check below would read a keying failure as a success.
+  //
+  // COMPARED AGAINST THE RING'S KEY, not merely counted. One distinct key is
+  // not the same claim as the right key: a set of size one is satisfied by
+  // `{undefined}` -- every half arriving with no key on it, which is a build
+  // whose halves the reader cannot group at all -- and by any single key,
+  // including one an entirely different call wrote. See [oneCallKeyAcross].
   const keys = new Set(written.map((e) => e.content?.call_key));
-  h.check(s, 'every half belongs to the one call', keys.size === 1,
-    `${keys.size} call key(s) among ${written.length} half/halves: ` +
-      `${JSON.stringify([...keys])}`);
+  h.check(s, 'every half belongs to the call this run placed',
+    oneCallKeyAcross(written, callKey),
+    `${written.length} half/halves carrying call key(s) ` +
+      `${JSON.stringify([...keys])}; the ring for this call carried ` +
+      `${JSON.stringify(callKey)}`);
 
   // ONE. This is the assertion the whole file is for. Under the keying this
   // replaced there was one half per ACCOUNT, and the second device's speech
   // was destroyed on the way to the screen.
-  h.check(s, 'the account wrote a half from EACH of its two devices',
+  // COUNTED, and named for the count. "From EACH of its two devices" is a
+  // claim about the two halves naming two different devices, and this predicate
+  // does not look at a device id at all -- the two checks below are where that
+  // is established, and the fixture checks in [6] are where each half is tied
+  // to the browser whose microphone it holds.
+  h.check(s, 'the account wrote TWO halves, not one',
     mine.length === 2,
     `${mine.length} half/halves from the learner, not 2` +
       (mine.length
@@ -1162,7 +1577,12 @@ async function main() {
 
   const ids = mine.map((e) => e.content?.device_id);
   const named = ids.filter((d) => typeof d === 'string' && d.length > 0);
-  h.check(s, 'each half NAMES the device that wrote it',
+  // A DEVICE, and not yet the device that WROTE it. All this reads is that the
+  // field is present and usable; whether the name is the writer's is a
+  // different question with different observables, and it is asked twice below
+  // -- once off the wire, against the transaction id each browser was seen
+  // sending, and once off the audio, against the fixture each browser plays.
+  h.check(s, 'each half NAMES a device',
     named.length === mine.length && mine.length > 0,
     `device ids on the wire: ${JSON.stringify(ids)} -- a half that names no ` +
       'device keys alike with every other half that named none, which is the ' +
@@ -1225,7 +1645,7 @@ async function main() {
         'speech twice under keys that do not collide, and a device with none ' +
         'either never wrote or wrote through a transport this does not watch');
 
-  h.check(s, 'the two halves were SENT under DIFFERENT transaction ids',
+  h.check(s, 'the two transcript sends carried DIFFERENT transaction ids',
     sentUnderDifferentIds(sentIds.one, sentIds.two),
     `device one sent under ${JSON.stringify(sentIds.one)}, device two under ` +
       `${JSON.stringify(sentIds.two)} -- one key for two devices, so a resend ` +
@@ -1241,13 +1661,35 @@ async function main() {
   // product no longer uses.
   const txns = mine.map(txnIdOf);
   const observed = [...sentIds.one, ...sentIds.two].sort();
-  h.check(s, 'each id sent is the one the app\'s formula makes for that half',
+  h.check(s, 'the ids sent are the same SET the formula derives from the events',
     idsSentMatchDerived(observed, txns),
     `sent ${JSON.stringify(observed)}; derived from the events that arrived ` +
       `${JSON.stringify([...txns].sort())}. They have to be the same set: if ` +
       'they are not, either a half arrived from a device that sent under a ' +
       'different key, or this file\'s copy of the formula has fallen behind ' +
       'the app\'s');
+
+  // AND WHICH BROWSER SENT WHICH HALF, which the set above cannot say.
+  //
+  // Two sets that match prove two valid device ids exist at both ends of the
+  // comparison and nothing about their ARRANGEMENT: browser one sending the
+  // half that names device two, and browser two sending the half that names
+  // device one, satisfies it exactly -- and that is a worse bug than the one
+  // this file exists to catch, because then every half on the screen is
+  // attributed to a device that did not write it.
+  //
+  // The wire observation was built to answer this and the set comparison threw
+  // the answer away. Asked per browser now: the id THIS page was seen PUTting,
+  // the half the formula derives it from, and that half's device id against the
+  // device the homeserver says this page's own token is. See
+  // [sendAttributionVerdict].
+  const attribution = sendAttributionVerdict({
+    sent: sentIds,
+    devices: deviceIds,
+    halves: mine,
+  });
+  h.check(s, 'the half each browser SENT names that browser\'s own device',
+    attribution.ok, attribution.why);
 
   // And the weaker sentence, kept and NAMED as the weaker sentence. It is about
   // the events, not about the sends: it fails when a half reaches the room with
@@ -1270,23 +1712,35 @@ async function main() {
     mine.length > 0 && new Set(mine.map((e) => e.event_id)).size === mine.length,
     `event ids: ${JSON.stringify(mine.map((e) => e.event_id))}`);
 
-  // AND THE SURVIVOR RECORDED THE REST OF IT.
+  // AND THE SURVIVOR RECORDED WHAT CAME AFTER.
   //
   // The handover is only a handover if the device that stayed picked the
   // recording up: `CaptureElection` re-runs whenever the roster changes, and
   // with its only sibling gone the survivor ranks first and records. A survivor
-  // that captured NOTHING means the learner went on talking into a call that
-  // nobody was recording, for as long as the call lasted.
+  // that recorded nothing after it means the learner went on talking into a
+  // call nobody was recording, for as long as the call lasted.
   //
-  // Asked only when a device really did leave one behind, and asked of the
-  // COUNTS rather than of the words: a survivor that captured chunks and could
-  // not transcribe them is a different failure from one that never opened a
-  // recorder at all, and only the counts tell them apart.
+  // A WHOLE-HALF CAPTURE COUNT CANNOT SAY THIS, and it is what stood here.
+  // `chunks_captured > 0` is a total over the entire call, and a device that is
+  // not the recorder still captures and then DISCARDS -- the join race hands
+  // both devices a roster that momentarily lacks the other, so the survivor
+  // routinely holds a positive count from BEFORE the handover. A survivor that
+  // took those chunks, stood aside, and then never took the recording over
+  // passed the check meant to catch exactly that -- which is the one real
+  // failure a run of this file has found.
+  //
+  // So it is asked of the segment POSITIONS, which exist only for audio that
+  // was delivered and transcribed, against the moment the hangup was asked for.
+  // See [recordedAfterVerdict], including what this still does not prove: that
+  // the survivor recorded ALL of the tail rather than some of it. The name says
+  // AFTER for that reason.
+  //
+  // Asked only when a device really did leave one behind.
   const survivorHalf = handed
     ? mine.find((e) => stillIn.includes(e.content?.device_id))
     : null;
   if (!handed) {
-    h.skipped(s, 'the device that stayed recorded the rest of the call',
+    h.skipped(s, 'the device that stayed recorded the call AFTER the handover',
       'no handover happened, so no device was left to take the recording over');
   } else if (!survivorHalf) {
     // A FAILURE, not a shrug. Every fact this needs is proved above by a check
@@ -1296,21 +1750,22 @@ async function main() {
     // those checks is lying or the device that stayed wrote nothing, and both
     // are findings. It used to skip here, which reported the pre-keying world
     // (a half naming no device) as a question rather than as the answer.
-    h.check(s, 'the device that stayed recorded the rest of the call', false,
+    h.check(s, 'the device that stayed recorded the call AFTER the handover',
+      false,
       `a device stayed (${stillIn.join(', ')}) but no half names it ` +
         `(${JSON.stringify(mine.map((e) => e.content?.device_id))}). The ` +
         'survivor either wrote no half at all, or wrote one that names a ' +
         'device the server never saw in this call');
   } else {
-    const captured = survivorHalf.content?.chunks_captured ?? 0;
-    h.check(s, 'the device that stayed recorded the rest of the call',
-      captured > 0,
-      `the surviving device ${survivorHalf.content?.device_id} captured ` +
-        `${captured} chunk(s) in the ${HANDOVER_TAIL_MS / 1000}s it held the ` +
-        'call alone, and refused nothing (captureRefused ' +
-        `${survivorHalf.content?.capture_refused}, lost ` +
+    const rest = recordedAfterVerdict(survivorHalf, askedAt);
+    h.check(s, 'the device that stayed recorded the call AFTER the handover',
+      rest.ok,
+      `the surviving device ${survivorHalf.content?.device_id} ${rest.why}, ` +
+        `over the ${HANDOVER_TAIL_MS / 1000}s it held the call alone. Its own ` +
+        `accounting: captured ${survivorHalf.content?.chunks_captured}, ` +
+        `refused ${survivorHalf.content?.capture_refused}, lost ` +
         `${survivorHalf.content?.chunks_lost}, dropped ` +
-        `${survivorHalf.content?.capture_dropped_ms}ms). Everything said after ` +
+        `${survivorHalf.content?.capture_dropped_ms}ms. Everything said after ` +
         'the other device left went unrecorded. NOTE the one local condition ' +
         'that could explain it: this stack\'s LiveKit token lacks ' +
         'CanUpdateOwnMetadata, and the app says so itself -- "the recorder ' +
@@ -1328,11 +1783,16 @@ async function main() {
   // Which device's fixture ended up where. The two learner devices play
   // DIFFERENT audio precisely so this is answerable at all -- without it, a
   // half from the wrong device and a half from the right one are the same
-  // event.
-  const spokeOne = DEVICE_ONE_SAYS.filter((w) => allMine.has(w));
-  const spokeTwo = DEVICE_TWO_SAYS.filter((w) => allMine.has(w));
-  console.log(`   device one's fixture: ${JSON.stringify(spokeOne)}; ` +
-    `device two's: ${JSON.stringify(spokeTwo)}`);
+  // event. ASSERTED below rather than printed: for as long as these two lists
+  // were only logged, a run whose second wav held the wrong speech, or a Chrome
+  // that fed one profile's audio to both, went green on two halves nobody could
+  // tell apart -- the premise the whole merge rests on, unchecked.
+  for (const e of mine) {
+    const hit = fixtureIn(words(spoken(e)));
+    console.log(`   ${e.content?.device_id}: fixture one ` +
+      `${JSON.stringify(hit.one)}, fixture two ${JSON.stringify(hit.two)}`);
+  }
+  const fixtures = differentFixturesVerdict(mine);
   const halvesWithWords = mine.filter((e) => words(spoken(e)).size > 0);
 
   // A run where NEITHER learner device transcribed anything cannot judge the
@@ -1359,9 +1819,12 @@ async function main() {
   // came down the other way -- and then the message says which knob to turn.
   h.check(s, 'BOTH of the learner devices transcribed a stretch of the call',
     bothDevicesSpoke(mine),
-    `turns per half: ${mine
-      .map((e) => `${e.content?.device_id}=${e.content?.segments?.length ?? 0}`)
-      .join(', ') || 'none'}. CaptureElection lets only the device holding the ` +
+    `per half: ${mine
+      .map((e) => `${e.content?.device_id}=${e.content?.segments?.length ?? 0} ` +
+        `segment(s)/${words(spoken(e)).size} word(s)`)
+      .join(', ') || 'none'}. COUNTED IN WORDS: a half with a segment carrying ` +
+      'no readable text has published a container and transcribed nothing, and ' +
+      'it used to pass this. CaptureElection lets only the device holding the ' +
       'recording capture, so speech in both halves takes the RECORDER leaving ' +
       `at the handover -- device ${leaverName} left, and the recorder is the ` +
       `lower of ${JSON.stringify([...inCall].sort())}, which is ${predicted}. ` +
@@ -1372,6 +1835,31 @@ async function main() {
           'a guess: set CALL_HANDOVER_DEVICE to the other one and run again') +
       '. Until both halves carry speech the drawn-turn check below cannot tell ' +
       'a merge from a reader that dropped the empty half');
+
+  // AND THAT THE TWO DEVICES SAID DIFFERENT THINGS, which is the premise every
+  // check above rests on and none of them asks.
+  //
+  // [refuseIfTheDevicesShareAWav] compares the two wavs BYTE for byte before
+  // anything opens, and that catches one fixture pointed at twice and nothing
+  // else. A second wav of different bytes carrying the same sentences, a wav of
+  // the wrong speech, a Chrome that handed one profile's audio to both -- all
+  // pass the refusal, and then two halves nobody can tell apart pass every
+  // check in this file, hardest at the moment the feature is most broken.
+  h.check(s, 'the two halves carry the two DIFFERENT fixtures',
+    fixtures.ok,
+    `${fixtures.why}. The two devices play different wavs so that a half from ` +
+      'the wrong device and a half from the right one are not the same event; ' +
+      'CALL_LEARNER_ONE_WAV and CALL_LEARNER_TWO_WAV are what point at them, ' +
+      'and DEVICE_ONE_SAYS/DEVICE_TWO_SAYS are what this file recognises them by');
+
+  // AND WHICH BROWSER PLAYED WHICH, which is the sentence that ties a half to
+  // its writer through the audio rather than through the id it carries. A half
+  // holds the track its own device published, so the half naming the device
+  // browser one authenticates as has to carry browser one's wav -- and two
+  // halves swapped over satisfy every check that only counts distinct ids.
+  const owned = fixtureMatchesDeviceVerdict(fixtures, deviceIds);
+  h.check(s, 'each half carries the fixture its OWN browser played',
+    owned.ok, owned.why);
 
   console.log('[7] and what the screen says about it');
   // WHAT CAN BE READ OFF THIS SCREEN, AND WHAT CANNOT.
@@ -1492,11 +1980,18 @@ async function main() {
     0,
   );
   if (!dialogOpen) {
-    h.skipped(s, 'every turn either device wrote is drawn',
+    h.skipped(s, 'the panel drew at least as many turns as the halves carry',
       'the panel never opened, so what it drew says nothing -- and the check ' +
         'above says that in red');
   } else {
-    h.check(s, 'every turn either device wrote is drawn',
+    // NAMED FOR THE COUNT, because a count is all the screen offers. The words
+    // are drawn by CanvasKit and reach neither the page text nor the semantics
+    // tree, so "every turn either device wrote is drawn" is not a sentence this
+    // can establish: it cannot match a drawn turn to a written one, only their
+    // numbers. A reader that keeps one of an account's halves is short by
+    // exactly the turns of the half it dropped, and that is what a floor
+    // catches.
+    h.check(s, 'the panel drew at least as many turns as the halves carry',
       turnsDrawn >= segmentsWritten,
       `${turnsDrawn} turn(s) drawn for ${segmentsWritten} written ` +
         `(${learnerSegments} of them the learner's, across ` +
@@ -1584,8 +2079,17 @@ module.exports = {
   allHalvesArrived,
   sentUnderDifferentIds,
   idsSentMatchDerived,
+  sendAttributionVerdict,
+  freshCallKey,
+  oneCallKeyAcross,
+  fixtureIn,
+  differentFixturesVerdict,
+  fixtureMatchesDeviceVerdict,
+  recordedAfterVerdict,
   handoverVerdict,
   countTurns,
   spoken,
   words,
+  DEVICE_ONE_SAYS,
+  DEVICE_TWO_SAYS,
 };
