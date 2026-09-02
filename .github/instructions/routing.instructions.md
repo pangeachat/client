@@ -154,7 +154,13 @@ token over the course-scoped map.
 **Context persists, and navigation never consumes it.** Opening, closing, and
 switching panels — closing the course card itself, tapping an activity pin,
 moving to Chats or Settings — all leave `?c=` untouched; closing panels is
-precisely how you get a clear look at the scoped map (#7087). The context
+precisely how you get a clear look at the scoped map (#7087). What the learner
+then sees in the map's search slot is the **course context bar** — the closed
+card's header, saying which course the map is scoped to and leading back into
+the card
+([world-map.instructions.md](world-map.instructions.md#the-course-context-bar));
+it is chrome, not a panel, and carries no close control, because `?c=` is
+cleared by the World control below, never by dismissing its indicator. The context
 changes in three ways: selecting another **course** replaces it; the
 **World/home** control clears it; and **leaving or deleting the course you are
 in** clears it. The latter two are the same deliberate full reset — dropping
@@ -681,21 +687,28 @@ section's content — the chat list ("Search All chats"), the courses list
 ("Search Courses") — per the Figma states. One persistent bar, contextual
 scope: on narrow the bar **subsumes** a section's own search field (the chat
 list's inline search hides; the floating bar drives it), so two search fields
-never show at once. An expanded section always wins over the course-scoped
-minimize below — the bar minimizes only over the bare scoped map.
+never show at once.
 
 **Default (visible).** The search bar is visible above the nav widget at all
 section roots while the map is not being actively scrolled.
 [Default component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44560&t=NJSsG23tsR9Kdwlz-0)
 
-**Scroll / course-scoped minimized.** When the user begins scrolling the map with
-the nav widget collapsed, or while the workspace is course-scoped (`?c=` set),
-the search bar and its active filters **minimize to a compact search icon
-button** pinned to the left side just above the nav rail. Tapping it restores
-the full bar. **Once the course card itself is pulled to full height it covers
-the map, so the bar hides entirely** — its reserved strip is handed to the
-course content, and the compact button reappears when the sheet is dragged back
-below full (#7697).
+**Course-scoped: the slot belongs to the course.** While the workspace is
+course-scoped (`?c=` set) and no cavity is open, the strip above the nav widget
+carries the **course context bar** instead of the search bar — the narrow twin
+of the web slot's behaviour
+([world-map.instructions.md](world-map.instructions.md#the-course-context-bar)).
+It replaces the compact search-icon minimize the bar used to rest at in course
+scope (#8736): search is unreachable under a course scope on either width, and
+the scoped map says which course it is scoped to instead. With the course card
+itself open in the cavity, neither rides above it — the cavity's own header
+already names the course, and the strip is handed to the course content
+(#7697, which the same rule now covers at every cavity height).
+
+**Scroll minimized.** When the user begins scrolling the map with the nav widget
+collapsed, the search bar and its active filters **minimize to a compact search
+icon button** pinned to the left side just above the nav rail. Tapping it
+restores the full bar.
 [Minimized component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44562&t=NJSsG23tsR9Kdwlz-0)
 
 **Keyboard behavior.** When the search bar is active and the software keyboard
