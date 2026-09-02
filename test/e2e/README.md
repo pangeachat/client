@@ -131,7 +131,9 @@ device (see below) -- and hangs that one up, so speech lands in both halves by
 construction rather than by luck. Set it only to force the other device. A run
 that ends with one half empty FAILS on `BOTH of the learner devices
 transcribed`, naming this knob; it does not quietly report the merge check as
-inconclusive, which is what it used to do.
+inconclusive, which is what it used to do. Hanging up the wrong device also
+fails `the device that stayed says it took the recording over`, since no
+election flips when the device that was already standing aside leaves.
 
 The whole browser set, sequentially, stopping at the first failure:
 
@@ -166,7 +168,7 @@ Browser only:
 | `rejoin_ui.js` | The four review fixes browser-to-browser: a rejoined clock continues rather than restarting, nothing still claims "reconnecting" after the other side ends, the Return banner's red end ends the call for both, and the chat list previews the call. |
 | `grey_hover.js` | The CanvasKit grey box: hovers every control on a live ring and fails if a large flat grey block appears that was not there before. |
 | `transcript.js` | What the two people can READ afterwards: the consent notice, each speaker's own words under their own name, turn positions on the wire, and nobody who spoke reported as silent. |
-| `transcript_two_devices.js` | ONE account signed in TWICE in one call. Both devices write a half, the halves name different devices, each half carries the fixture its own browser played and the transaction id that browser was SEEN sending (read off its own outgoing requests -- see below), the reader says it assembled the account's half from both, and the panel draws at least as many turns as the halves carry. It also refuses a call whose key an earlier call already used -- see below. |
+| `transcript_two_devices.js` | ONE account signed in TWICE in one call. Both devices write a half, the halves name different devices, each half carries the fixture its own browser played and the transaction id that browser was SEEN sending (read off its own outgoing requests -- see below), the device that stays says in its own log that it took the recording over, the reader says it assembled the account's half from both, and the panel draws at least as many turns as the halves carry. It also refuses a call whose key an earlier call already used, searching back to the event that IS the key -- see below. It does NOT claim to know when a device left the call, or how much of the tail the survivor recorded; neither is observable here. |
 
 Physical Android phone required (all of these; each needs `PHONE_SERIAL`):
 
@@ -250,6 +252,37 @@ Not a scenario:
   from more than one. The turn count is still asked every run, and a run that
   did not reach two speaking halves FAILS rather than standing the count aside:
   a scenario that could not reach the state it tests has not passed.
+- **Nothing in this stack witnesses the MOMENT a device left a call.** The
+  membership state is one event per account written by whichever device wrote
+  last, holding that writer's view of the roster -- so a device's absence from
+  it is an opinion, and the product means it to be (see the under-reporting note
+  above). A transcript half arrives after a drain of no fixed length, so it
+  cannot date the leave it followed. And the harness's own hangup click is a
+  request, not a departure. Two checks in `transcript_two_devices.js` were
+  written on that instant and each rewrite reached for a different proxy for it;
+  every proxy had a sequence that defeated it, which is the tell that the
+  problem was the claim rather than the measurement. Both are deleted. What is
+  asked instead is what the surviving device SAYS: `ActiveCall` logs "Recording
+  this call on this device" when the election flips it into recording, guarded
+  on the state actually changing and printed after reading the recorder back, so
+  the device the handover is for announces it from the roster it can see. Scope
+  any such search by position in the page's own log -- the device holding the
+  recording says the same sentence at the join.
+- **How much of a tail was recorded cannot be read off a half.** `PcmChunker`
+  targets 45-second chunks, so the 40-second stretch after the handover is ONE
+  chunk and its segment positions sit at its start. Nothing separates a survivor
+  that recorded two seconds from one that recorded forty, and `chunks_captured`
+  is worse than useless for it: a device that is standing aside still captures
+  and discards, so the count includes audio it threw away.
+- **A crossing test is only as good as the words it is written on.** The
+  cross-account check looks for `PEER_SAYS` under the learner; if the peer's wav
+  changed, or speech-to-text missed those sentinels while catching other words,
+  the search runs over words nobody spoke and comes back empty for a reason that
+  has nothing to do with the product -- while a merge that put the peer's REAL
+  words under the learner goes unnoticed. The peer's own half has to carry the
+  sentinels before their absence elsewhere means anything. The same applies to
+  any fixture-word check: verify the detector against the half that should
+  contain it first.
 - **A transaction id exists only in the request that carried it.** Matrix
   returns `unsigned.transaction_id` to the sending DEVICE's own sync and to
   nobody else, and the harness holds a different device's token -- so the id a
@@ -350,7 +383,12 @@ is inside the engine.
   first's key, so the renderer's first-per-key rule drew a 48-second call as an
   11.8-second one. `transcript_two_devices.js` refuses a call whose key an
   earlier half already used, which is what turned this from silence into a
-  failure.
+  failure. The search walks the room back to the event that IS the key -- a call
+  key is the caller's own membership event id, and nothing can have been written
+  under a key before it -- rather than reading a fixed window. A window answers
+  "no earlier half in the last N events", which is a different sentence from the
+  one the check is named for, and a run that cannot reach the boundary reports
+  an unfinished search rather than a clean call.
 - **A call that stops being recorded when one of an account's devices leaves.**
   Two of the learner's devices in one call; the one holding the recording hung
   up at thirty-five seconds; the survivor held the call alone for another forty
@@ -360,11 +398,9 @@ is inside the engine.
   itself prints before acting on it: this stack's LiveKit token lacks
   `CanUpdateOwnMetadata`, so the capability layer the election leans on is dead
   here and the app says so in its own log on every run -- which is either the
-  cause or the thing that has to be ruled out first. The check that found it
-  reads the survivor half's segment POSITIONS against the moment the hangup was
-  asked for, not its `chunks_captured` total: a device that is not the recorder
-  still captures and then discards, and the join race hands both devices a
-  roster that momentarily lacks the other, so a survivor that recorded nothing
-  after the handover can still publish a positive capture count. It proves the
-  survivor recorded AFTER the handover; that it recorded ALL of the tail is not
-  something the halves on the wire can be asked.
+  cause or the thing that has to be ruled out first. What catches it now is the
+  surviving device's OWN log line -- `ActiveCall` says "Recording this call on
+  this device" when the election flips it into recording -- plus the three
+  checks that read the halves: both carrying words, each carrying its own
+  fixture, and the reader assembling from two devices. A survivor that recorded
+  nothing fails all four.
