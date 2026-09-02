@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 22:27:03.834175",
+    "@@last_modified": "2026-09-01 23:37:10.405662",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9920,5 +9920,6 @@
     "mapPinsKeyboardHint": "Usa i tasti freccia per spostarti tra le attività sulla mappa e premi Invio per aprirne una.",
     "selectMessageLabel": "Seleziona messaggio",
     "callTranscriptAudioDropped": "Ciò che {name} ha detto è andato perso dal suo dispositivo prima ancora di poter essere registrato, quindi non si sa cosa sia stato detto.",
-    "callTranscriptHeldByOtherDevice": "La registrazione di ciò che {name} ha detto è stata affidata a un altro dei suoi dispositivi, quindi nulla è stato inviato da questo e non si sa cosa sia stato detto qui."
+    "callTranscriptHeldByOtherDevice": "La registrazione di ciò che {name} ha detto è stata affidata a un altro dei suoi dispositivi, quindi nulla è stato inviato da questo e non si sa cosa sia stato detto qui.",
+    "callTranscriptDeviceNeverWrote": "Parte di ciò che ha detto {name} è stata lasciata a un altro dei suoi dispositivi per la registrazione, ma non è arrivato nulla da quel dispositivo, quindi quella parte non è nota."
 }

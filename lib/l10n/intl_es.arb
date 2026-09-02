@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-09-01 22:26:56.044148",
+    "@@last_modified": "2026-09-01 23:37:04.112614",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8066,5 +8066,6 @@
     "mapPinsKeyboardHint": "Usa las teclas de flecha para moverte entre las actividades del mapa y presiona Enter para abrir una.",
     "selectMessageLabel": "Seleccionar mensaje",
     "callTranscriptAudioDropped": "Lo que dijo {name} se perdió en su dispositivo antes de que pudiera grabarse, por lo que no se sabe qué dijo.",
-    "callTranscriptHeldByOtherDevice": "Lo que dijo {name} se dejó para que lo grabara otro de sus dispositivos, por lo que no se envió nada desde este y no se sabe qué se dijo aquí."
+    "callTranscriptHeldByOtherDevice": "Lo que dijo {name} se dejó para que lo grabara otro de sus dispositivos, por lo que no se envió nada desde este y no se sabe qué se dijo aquí.",
+    "callTranscriptDeviceNeverWrote": "Parte de lo que dijo {name} se dejó para que lo grabara otro de sus dispositivos, y no llegó nada de ese dispositivo, por lo que esa parte no se conoce."
 }

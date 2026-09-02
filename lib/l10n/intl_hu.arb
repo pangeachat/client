@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-01 22:27:01.353226",
+    "@@last_modified": "2026-09-01 23:37:09.571507",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9950,5 +9950,6 @@
     "mapPinsKeyboardHint": "A térképen lévő tevékenységek közötti mozgáshoz használja a nyílbillentyűket, a megnyitáshoz pedig nyomja meg az Entert.",
     "selectMessageLabel": "Üzenet kiválasztása",
     "callTranscriptAudioDropped": "Amit {name} mondott, azt az eszköze elvesztette, még mielőtt rögzíthette volna, így nem tudni, mit mondott.",
-    "callTranscriptHeldByOtherDevice": "Amit {name} mondott, azt egy másik eszköze rögzítette, így erről az eszközről semmi sem lett elküldve, és itt nem tudni, mit mondott."
+    "callTranscriptHeldByOtherDevice": "Amit {name} mondott, azt egy másik eszköze rögzítette, így erről az eszközről semmi sem lett elküldve, és itt nem tudni, mit mondott.",
+    "callTranscriptDeviceNeverWrote": "Annak a résznek a rögzítése, amit {name} mondott, egy másik eszközére maradt, de arról az eszközről semmi sem érkezett, így az a rész nem ismert."
 }

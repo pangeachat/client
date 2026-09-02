@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 22:27:14.059071",
+    "@@last_modified": "2026-09-01 23:37:19.678739",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10579,5 +10579,6 @@
     "mapPinsKeyboardHint": "Folosește tastele săgeți pentru a te deplasa între activitățile de pe hartă și apasă Enter pentru a deschide una.",
     "selectMessageLabel": "Selectează mesajul",
     "callTranscriptAudioDropped": "Ceea ce a spus {name} a fost pierdut de dispozitivul său înainte de a putea fi înregistrat, deci nu se știe ce s-a spus.",
-    "callTranscriptHeldByOtherDevice": "Ceea ce a spus {name} a fost lăsat pentru a fi înregistrat de un alt dispozitiv al său, deci nimic nu a fost trimis de pe acesta și nu se știe aici ce s-a spus."
+    "callTranscriptHeldByOtherDevice": "Ceea ce a spus {name} a fost lăsat pentru a fi înregistrat de un alt dispozitiv al său, deci nimic nu a fost trimis de pe acesta și nu se știe aici ce s-a spus.",
+    "callTranscriptDeviceNeverWrote": "O parte din ceea ce a spus {name} a fost lăsată pentru a fi înregistrată pe un alt dispozitiv al său, iar de la acel dispozitiv nu a sosit nimic, deci acea parte nu este cunoscută."
 }

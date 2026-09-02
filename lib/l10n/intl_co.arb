@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-01 22:26:55.565253",
+    "@@last_modified": "2026-09-01 23:37:03.677874",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2251,5 +2251,6 @@
     "mapPinsKeyboardHint": "Aduprate e chjave di freccia per spustà trà l'attività nantu à a carta, è premete Enter per apre una.",
     "selectMessageLabel": "Selezziunà u messagiu",
     "callTranscriptAudioDropped": "Ciò ch'hà dettu {name} hè statu persu da u so apparechju prima di pudè esse arregistratu, dunque ùn si sà ciò ch'hè statu dettu.",
-    "callTranscriptHeldByOtherDevice": "Ciò ch'hà dettu {name} hè statu lasciatu à un altru di i so apparechji per arregistrà, dunque nunda hè statu mandatu da questu è ùn si sà quì ciò ch'hè statu dettu."
+    "callTranscriptHeldByOtherDevice": "Ciò ch'hà dettu {name} hè statu lasciatu à un altru di i so apparechji per arregistrà, dunque nunda hè statu mandatu da questu è ùn si sà quì ciò ch'hè statu dettu.",
+    "callTranscriptDeviceNeverWrote": "Una parte di ciò ch'hà dettu {name} hè stata lasciata à un altru di i so apparechji per arregistrà, è nunda da quellu apparechju hè ghjuntu, dunque quella parte ùn hè micca cunnisciuta."
 }

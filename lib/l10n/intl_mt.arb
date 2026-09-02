@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-01 22:27:11.298449",
+    "@@last_modified": "2026-09-01 23:37:16.866656",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2251,5 +2251,6 @@
     "mapPinsKeyboardHint": "Uża l-vleġeġ biex tiċċaqlaq bejn l-attivitajiet fuq il-mappa, u agħfas Enter biex tiftaħ waħda.",
     "selectMessageLabel": "Agħżel messaġġ",
     "callTranscriptAudioDropped": "Dak li qal/qalet {name} intilef mill-apparat tagħhom qabel ma seta' jiġi rrekordjat, għalhekk dak li ntqal mhuwiex magħruf.",
-    "callTranscriptHeldByOtherDevice": "Dak li qal/qalet {name} tħalla f'idejn apparat ieħor tagħhom biex jirrekordjah, għalhekk xejn minnu ma ntbagħat minn dan l-apparat u dak li ntqal mhuwiex magħruf hawnhekk."
+    "callTranscriptHeldByOtherDevice": "Dak li qal/qalet {name} tħalla f'idejn apparat ieħor tagħhom biex jirrekordjah, għalhekk xejn minnu ma ntbagħat minn dan l-apparat u dak li ntqal mhuwiex magħruf hawnhekk.",
+    "callTranscriptDeviceNeverWrote": "Parti minn dak li qal {name} tħalliet għal wieħed mill-apparati l-oħra tagħhom biex jirreġistra, u ma wasal xejn minn dak l-apparat, għalhekk dik il-parti mhix magħrufa."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-01 22:26:57.481497",
+    "@@last_modified": "2026-09-01 23:37:05.199731",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9844,5 +9844,6 @@
     "mapPinsKeyboardHint": "Kasutage nooleklahve kaardil tegevuste vahel liikumiseks ja vajutage sisestusklahvi, et avada üks.",
     "selectMessageLabel": "Vali sõnum",
     "callTranscriptAudioDropped": "See, mida {name} ütles, läks tema seadmes kaduma enne, kui seda jõuti salvestada, seega pole teada, mida öeldi.",
-    "callTranscriptHeldByOtherDevice": "See, mida {name} ütles, jäeti salvestamiseks tema teise seadmesse, seega ei saadetud sellest seadmest midagi ja siin pole teada, mida öeldi."
+    "callTranscriptHeldByOtherDevice": "See, mida {name} ütles, jäeti salvestamiseks tema teise seadmesse, seega ei saadetud sellest seadmest midagi ja siin pole teada, mida öeldi.",
+    "callTranscriptDeviceNeverWrote": "Osa sellest, mida {name} ütles, jäeti salvestamiseks teise tema seadmesse ja sellest seadmest ei tulnud midagi, seega see osa pole teada."
 }

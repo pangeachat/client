@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 22:27:11.391495",
+    "@@last_modified": "2026-09-01 23:37:17.122221",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9847,5 +9847,6 @@
     "mapPinsKeyboardHint": "Gebruik de pijltjestoetsen om tussen activiteiten op de kaart te bewegen en druk op Enter om er een te openen.",
     "selectMessageLabel": "Bericht selecteren",
     "callTranscriptAudioDropped": "Wat {name} zei, ging verloren op hun apparaat voordat het kon worden opgenomen, dus het is niet bekend wat er werd gezegd.",
-    "callTranscriptHeldByOtherDevice": "Wat {name} zei, werd door een ander apparaat van hen opgenomen, dus er is niets vanaf dit apparaat verzonden en het is hier niet bekend wat er werd gezegd."
+    "callTranscriptHeldByOtherDevice": "Wat {name} zei, werd door een ander apparaat van hen opgenomen, dus er is niets vanaf dit apparaat verzonden en het is hier niet bekend wat er werd gezegd.",
+    "callTranscriptDeviceNeverWrote": "Een deel van wat {name} zei, werd door een ander van hun apparaten opgenomen, maar er is niets van dat apparaat ontvangen, dus dat deel is niet bekend."
 }

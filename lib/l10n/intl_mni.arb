@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-01 22:27:10.695404",
+    "@@last_modified": "2026-09-01 23:37:16.955252",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2251,5 +2251,6 @@
     "mapPinsKeyboardHint": "Map ta chatnaba activities singgi marakta saronba hotnabagidamak arrow keys sing adu sijinbiyu, aduga amabu hangdoknaba Enter thinbiyu.",
     "selectMessageLabel": "মেসেজ খল্লু",
     "callTranscriptAudioDropped": "{name} na hai-ba adu record tou-naba matamda mangkhre, aduna karamna haikhibage haibadu khangba ngamkhidre.",
-    "callTranscriptHeldByOtherDevice": "{name} na hai-ba adu record tou-naba makhoigi atop-pa device amada thamlambani, aduna karisu tharakkhide amadi karamna haikhibage haibadu khangba ngamkhidre."
+    "callTranscriptHeldByOtherDevice": "{name} na hai-ba adu record tou-naba makhoigi atop-pa device amada thamlambani, aduna karisu tharakkhide amadi karamna haikhibage haibadu khangba ngamkhidre.",
+    "callTranscriptDeviceNeverWrote": "{name}ꯅꯥ ꯍꯥꯌꯈꯤꯕꯒꯤ ꯁꯔꯨꯛ ꯑꯃꯗꯤ ꯃꯈꯣꯌꯒꯤ ꯑꯇꯣꯞꯄꯥ ꯗꯤꯚꯥꯏꯁ ꯑꯃꯗꯥ ꯔꯤꯀꯣꯔꯗ ꯇꯧꯅꯕꯥ ꯊꯝꯂꯝꯃꯤ, ꯑꯃꯁꯨꯡ ꯃꯗꯨꯒꯤ ꯗꯤꯚꯥꯏꯁꯇꯒꯤ ꯀꯔꯤꯝꯇꯥ ꯂꯥꯛꯈꯤꯗꯦ, ꯑꯗꯨꯅꯥ ꯃꯗꯨꯒꯤ ꯁꯔꯨꯛ ꯑꯗꯨ ꯈꯪꯗ꯭ꯔꯦ꯫"
 }

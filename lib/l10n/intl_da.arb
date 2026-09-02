@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-01 22:26:55.826640",
+    "@@last_modified": "2026-09-01 23:37:04.042083",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10767,5 +10767,6 @@
     "mapPinsKeyboardHint": "Brug piletasterne til at flytte mellem aktiviteter på kortet, og tryk på Enter for at åbne en.",
     "selectMessageLabel": "Vælg besked",
     "callTranscriptAudioDropped": "Hvad {name} sagde, gik tabt på deres enhed, før det kunne optages, så det vides ikke, hvad der blev sagt.",
-    "callTranscriptHeldByOtherDevice": "Hvad {name} sagde, blev overladt til en af deres andre enheder at optage, så intet af det blev sendt fra denne, og det vides ikke her, hvad der blev sagt."
+    "callTranscriptHeldByOtherDevice": "Hvad {name} sagde, blev overladt til en af deres andre enheder at optage, så intet af det blev sendt fra denne, og det vides ikke her, hvad der blev sagt.",
+    "callTranscriptDeviceNeverWrote": "En del af, hvad {name} sagde, blev overladt til en af deres andre enheder at optage, og der ankom intet fra den enhed, så den del er ukendt."
 }

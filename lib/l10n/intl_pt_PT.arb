@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-01 22:27:13.820591",
+    "@@last_modified": "2026-09-01 23:37:19.476464",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10764,5 +10764,6 @@
     "mapPinsKeyboardHint": "Use as teclas de seta para se mover entre as atividades no mapa e prima Enter para abrir uma.",
     "selectMessageLabel": "Selecionar mensagem",
     "callTranscriptAudioDropped": "O que {name} disse foi perdido pelo seu dispositivo antes de poder ser gravado, pelo que não se sabe o que foi dito.",
-    "callTranscriptHeldByOtherDevice": "O que {name} disse foi deixado para outro dos seus dispositivos gravar, pelo que nada foi enviado a partir deste e não se sabe aqui o que foi dito."
+    "callTranscriptHeldByOtherDevice": "O que {name} disse foi deixado para outro dos seus dispositivos gravar, pelo que nada foi enviado a partir deste e não se sabe aqui o que foi dito.",
+    "callTranscriptDeviceNeverWrote": "Parte do que {name} disse ficou para ser gravado por outro dos seus dispositivos, e nada desse dispositivo chegou, por isso essa parte é desconhecida."
 }

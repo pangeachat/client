@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-01 22:27:01.130268",
+    "@@last_modified": "2026-09-01 23:37:08.709857",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2251,5 +2251,6 @@
     "mapPinsKeyboardHint": "Siv cov yuam sij xub kom txav mus los ntawm cov haujlwm hauv daim ntawv qhia, thiab nias Enter kom qhib ib qho.",
     "selectMessageLabel": "Xaiv lus",
     "callTranscriptAudioDropped": "Lub suab uas {name} hais tau poob ntawm lawv lub cuab yeej ua ntej nws yuav kaw tau, yog li ntawd tsis paub tias lawv hais dab tsi.",
-    "callTranscriptHeldByOtherDevice": "Lub suab uas {name} hais tau muab rau lwm lub cuab yeej ntawm lawv los kaw, yog li ntawd tsis muaj dab tsi raug xa los ntawm lub no thiab tsis paub tias lawv hais dab tsi ntawm no."
+    "callTranscriptHeldByOtherDevice": "Lub suab uas {name} hais tau muab rau lwm lub cuab yeej ntawm lawv los kaw, yog li ntawd tsis muaj dab tsi raug xa los ntawm lub no thiab tsis paub tias lawv hais dab tsi ntawm no.",
+    "callTranscriptDeviceNeverWrote": "Ib feem ntawm qhov {name} tau hais raug muab rau lwm lub cuab yeej los kaw, thiab tsis muaj dab tsi los ntawm lub cuab yeej ntawd tuaj txog, yog li ntawd thiaj tsis paub txog feem ntawd."
 }

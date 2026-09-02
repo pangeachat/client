@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-01 22:27:12.478055",
+    "@@last_modified": "2026-09-01 23:37:18.007813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2251,5 +2251,6 @@
     "mapPinsKeyboardHint": "Gwiritsani ntchito mivi yoyenda pakati pa zochitika pa mapu, ndikusindikiza Enter kuti mutsegule imodzi.",
     "selectMessageLabel": "Sankhani uthenga",
     "callTranscriptAudioDropped": "Zimene {name} ananena zinatayika pa chipangizo chawo zisanajambulidwe, choncho sizikudziwika kuti anati chiyani.",
-    "callTranscriptHeldByOtherDevice": "Zimene {name} ananena zinasiyidwa kuti zijambulidwe ndi chipangizo chawo china, choncho palibe chomwe chinatumizidwa kuchokera ku ichi ndipo sizikudziwika kuti anati chiyani."
+    "callTranscriptHeldByOtherDevice": "Zimene {name} ananena zinasiyidwa kuti zijambulidwe ndi chipangizo chawo china, choncho palibe chomwe chinatumizidwa kuchokera ku ichi ndipo sizikudziwika kuti anati chiyani.",
+    "callTranscriptDeviceNeverWrote": "Gawo lina la zomwe {name} ananena linasiyidwa kuti lijambulidwe ndi chipangizo china, ndipo palibe chomwe chinafika kuchokera ku chipangizocho, choncho gawolo silikudziwika."
 }

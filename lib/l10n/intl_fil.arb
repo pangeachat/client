@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-01 22:26:58.429311",
+    "@@last_modified": "2026-09-01 23:37:05.931990",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10707,5 +10707,6 @@
     "mapPinsKeyboardHint": "Gamitin ang mga arrow key para lumipat sa pagitan ng mga aktibidad sa mapa, at pindutin ang Enter para buksan ang isa.",
     "selectMessageLabel": "Pumili ng mensahe",
     "callTranscriptAudioDropped": "Nawala sa device ni {name} ang kanyang sinabi bago pa man ito ma-record, kaya hindi alam kung ano ang sinabi.",
-    "callTranscriptHeldByOtherDevice": "Ipinasa ni {name} sa isa pa niyang device ang pag-record ng kanyang sinabi, kaya walang naipadala mula rito at hindi alam kung ano ang sinabi."
+    "callTranscriptHeldByOtherDevice": "Ipinasa ni {name} sa isa pa niyang device ang pag-record ng kanyang sinabi, kaya walang naipadala mula rito at hindi alam kung ano ang sinabi.",
+    "callTranscriptDeviceNeverWrote": "Ang bahagi ng sinabi ni {name} ay iniwan sa isa pa nilang device para i-record, at walang dumating mula sa device na iyon, kaya hindi alam ang bahaging iyon."
 }

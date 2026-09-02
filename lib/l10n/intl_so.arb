@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-01 22:27:16.505210",
+    "@@last_modified": "2026-09-01 23:37:22.335091",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2251,5 +2251,6 @@
     "mapPinsKeyboardHint": "Isticmaal furayaasha fallaadha si aad ugu kala guurto hawlaha khariidada, oo taabo Gelida si aad u furto mid ka mid ah.",
     "selectMessageLabel": "Dooro fariin",
     "callTranscriptAudioDropped": "Wixii {name} yiri waxaa lumiyay qalabkooda intaan la duubin, marka lama oga wixii la yiri.",
-    "callTranscriptHeldByOtherDevice": "Wixii {name} yiri waxaa loo daayay inuu duubo qalab kale oo ay leeyihiin, marka waxba lagama soo dirin kan, lamana oga wixii halkan lagu yiri."
+    "callTranscriptHeldByOtherDevice": "Wixii {name} yiri waxaa loo daayay inuu duubo qalab kale oo ay leeyihiin, marka waxba lagama soo dirin kan, lamana oga wixii halkan lagu yiri.",
+    "callTranscriptDeviceNeverWrote": "Qayb ka mid ah wixii {name} yidhi waxaa loo daayay inuu duubo mid kale oo ka mid ah aaladahooda, waxna kama iman aaladaas, sidaa darteed qaybtaas lama yaqaan."
 }

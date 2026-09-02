@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 22:27:20.636030",
+    "@@last_modified": "2026-09-01 23:37:25.630439",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7139,5 +7139,6 @@
     "mapPinsKeyboardHint": "Sử dụng các phím mũi tên để di chuyển giữa các hoạt động trên bản đồ và nhấn Enter để mở một hoạt động.",
     "selectMessageLabel": "Chọn tin nhắn",
     "callTranscriptAudioDropped": "Những gì {name} nói đã bị mất bởi thiết bị của họ trước khi có thể được ghi lại, vì vậy không rõ họ đã nói gì.",
-    "callTranscriptHeldByOtherDevice": "Những gì {name} nói đã được để cho một thiết bị khác của họ ghi lại, vì vậy không có nội dung nào được gửi từ thiết bị này và không rõ họ đã nói gì ở đây."
+    "callTranscriptHeldByOtherDevice": "Những gì {name} nói đã được để cho một thiết bị khác của họ ghi lại, vì vậy không có nội dung nào được gửi từ thiết bị này và không rõ họ đã nói gì ở đây.",
+    "callTranscriptDeviceNeverWrote": "Một phần những gì {name} nói đã được ghi lại trên một thiết bị khác của họ, nhưng không có gì từ thiết bị đó được gửi đến, vì vậy phần đó không được biết."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 22:27:13.020019",
+    "@@last_modified": "2026-09-01 23:37:19.349617",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10791,5 +10791,6 @@
     "mapPinsKeyboardHint": "Use as teclas de seta para mover-se entre as atividades no mapa e pressione Enter para abrir uma.",
     "selectMessageLabel": "Selecionar mensagem",
     "callTranscriptAudioDropped": "O que {name} disse foi perdido pelo dispositivo antes de poder ser gravado, então não se sabe o que foi dito.",
-    "callTranscriptHeldByOtherDevice": "O que {name} disse foi deixado para outro dos seus dispositivos gravar, então nada foi enviado deste e não se sabe o que foi dito aqui."
+    "callTranscriptHeldByOtherDevice": "O que {name} disse foi deixado para outro dos seus dispositivos gravar, então nada foi enviado deste e não se sabe o que foi dito aqui.",
+    "callTranscriptDeviceNeverWrote": "Parte do que {name} disse foi deixado para outro dos seus dispositivos gravar, e nada desse dispositivo chegou, então essa parte não é conhecida."
 }

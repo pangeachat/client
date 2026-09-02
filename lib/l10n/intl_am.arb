@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-01 22:26:53.254845",
+    "@@last_modified": "2026-09-01 23:37:01.288428",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2251,5 +2251,6 @@
     "mapPinsKeyboardHint": "በካርታው ላይ ባሉ እንቅስቃሴዎች መካከል ለመንቀሳቀስ የቀስት ቁልፎችን ይጠቀሙ እና አንዱን ለመክፈት አስገባን ይጫኑ።",
     "selectMessageLabel": "መልዕክት ምረጥ",
     "callTranscriptAudioDropped": "{name} የተናገረው ነገር ከመቀረጹ በፊት በመሳሪያቸው ጠፍቷል፣ ስለዚህ የተናገሩት ነገር አይታወቅም።",
-    "callTranscriptHeldByOtherDevice": "{name} የተናገረው ነገር እንዲቀረጽ ለሌላ መሳሪያቸው ተላልፏል፣ ስለዚህ ከዚህ ምንም አልተላከም እና እዚህ የተነገረው ነገር አይታወቅም።"
+    "callTranscriptHeldByOtherDevice": "{name} የተናገረው ነገር እንዲቀረጽ ለሌላ መሳሪያቸው ተላልፏል፣ ስለዚህ ከዚህ ምንም አልተላከም እና እዚህ የተነገረው ነገር አይታወቅም።",
+    "callTranscriptDeviceNeverWrote": "{name} ከተናገረው ውስጥ የተወሰነው ክፍል በሌላ መሳሪያቸው እንዲቀረጽ ተደርጎ ነበር፣ እና ከዚያ መሳሪያ ምንም ነገር አልደረሰም፣ ስለዚህ ያ ክፍል አይታወቅም።"
 }

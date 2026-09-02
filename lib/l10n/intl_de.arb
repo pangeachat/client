@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-01 22:26:56.183195",
+    "@@last_modified": "2026-09-01 23:37:03.900401",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9834,5 +9834,6 @@
     "mapPinsKeyboardHint": "Verwenden Sie die Pfeiltasten, um zwischen den Aktivitäten auf der Karte zu wechseln, und drücken Sie die Eingabetaste, um eine zu öffnen.",
     "selectMessageLabel": "Nachricht auswählen",
     "callTranscriptAudioDropped": "Was {name} gesagt hat, ging auf dem Gerät verloren, bevor es überhaupt aufgezeichnet werden konnte. Was gesagt wurde, ist also nicht bekannt.",
-    "callTranscriptHeldByOtherDevice": "Was {name} gesagt hat, wurde einem anderen ihrer Geräte zur Aufzeichnung überlassen, daher wurde von diesem Gerät nichts gesendet und was gesagt wurde, ist hier nicht bekannt."
+    "callTranscriptHeldByOtherDevice": "Was {name} gesagt hat, wurde einem anderen ihrer Geräte zur Aufzeichnung überlassen, daher wurde von diesem Gerät nichts gesendet und was gesagt wurde, ist hier nicht bekannt.",
+    "callTranscriptDeviceNeverWrote": "Ein Teil dessen, was {name} gesagt hat, wurde einem anderen ihrer Geräte zur Aufzeichnung überlassen, und von diesem Gerät kam nichts an, sodass dieser Teil nicht bekannt ist."
 }

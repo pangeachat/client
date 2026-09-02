@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-01 22:27:11.471845",
+    "@@last_modified": "2026-09-01 23:37:17.220992",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2251,5 +2251,6 @@
     "mapPinsKeyboardHint": "Bruk piltastene til å flytte mellom aktiviteter på kartet, og trykk Enter for å åpne en.",
     "selectMessageLabel": "Velg melding",
     "callTranscriptAudioDropped": "Det {name} sa, gikk tapt på enheten deres før det kunne tas opp, så det er ikke kjent hva som ble sagt.",
-    "callTranscriptHeldByOtherDevice": "Det {name} sa, ble overlatt til en av de andre enhetene deres for opptak, så ingenting ble sendt fra denne enheten, og det er ikke kjent her hva som ble sagt."
+    "callTranscriptHeldByOtherDevice": "Det {name} sa, ble overlatt til en av de andre enhetene deres for opptak, så ingenting ble sendt fra denne enheten, og det er ikke kjent her hva som ble sagt.",
+    "callTranscriptDeviceNeverWrote": "En del av det {name} sa ble overlatt til en av deres andre enheter for opptak, og ingenting fra den enheten kom frem, så den delen er ikke kjent."
 }

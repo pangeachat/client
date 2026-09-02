@@ -3536,7 +3536,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-09-01 22:27:08.191406",
+    "@@last_modified": "2026-09-01 23:37:14.954694",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9847,5 +9847,6 @@
     "mapPinsKeyboardHint": "Izmantojiet bulttaustiņus, lai pārvietotos starp aktivitātēm kartē, un nospiediet taustiņu Enter, lai atvērtu kādu no tām.",
     "selectMessageLabel": "Atlasīt ziņojumu",
     "callTranscriptAudioDropped": "Tas, ko teica {name}, tika pazaudēts viņa ierīcē, pirms to varēja ierakstīt, tāpēc nav zināms, kas tika teikts.",
-    "callTranscriptHeldByOtherDevice": "Tas, ko teica {name}, tika atstāts ierakstīšanai citai viņa ierīcei, tāpēc no šīs ierīces nekas netika nosūtīts un šeit nav zināms, kas tika teikts."
+    "callTranscriptHeldByOtherDevice": "Tas, ko teica {name}, tika atstāts ierakstīšanai citai viņa ierīcei, tāpēc no šīs ierīces nekas netika nosūtīts un šeit nav zināms, kas tika teikts.",
+    "callTranscriptDeviceNeverWrote": "Daļa no tā, ko teica {name}, tika atstāta ierakstīšanai citā viņa/viņas ierīcē, un no šīs ierīces nekas netika saņemts, tāpēc šī daļa nav zināma."
 }

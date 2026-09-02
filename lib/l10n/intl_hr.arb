@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-01 22:27:01.281149",
+    "@@last_modified": "2026-09-01 23:37:08.486096",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10283,5 +10283,6 @@
     "mapPinsKeyboardHint": "Koristite tipke sa strelicama za kretanje između aktivnosti na karti, a pritisnite Enter za otvaranje jedne.",
     "selectMessageLabel": "Odaberi poruku",
     "callTranscriptAudioDropped": "Ono što je {name} rekao/rekla izgubljeno je na njihovom uređaju prije nego što je snimljeno, stoga se ne zna što je rečeno.",
-    "callTranscriptHeldByOtherDevice": "Ono što je {name} rekao/rekla prepušteno je snimanju na drugom njihovom uređaju, stoga s ovog uređaja ništa nije poslano i ovdje se ne zna što je rečeno."
+    "callTranscriptHeldByOtherDevice": "Ono što je {name} rekao/rekla prepušteno je snimanju na drugom njihovom uređaju, stoga s ovog uređaja ništa nije poslano i ovdje se ne zna što je rečeno.",
+    "callTranscriptDeviceNeverWrote": "Dio onoga što je {name} rekao/rekla prepušten je drugom uređaju da snimi, a s tog uređaja ništa nije stiglo, tako da taj dio nije poznat."
 }

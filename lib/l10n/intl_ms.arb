@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-01 22:27:09.974150",
+    "@@last_modified": "2026-09-01 23:37:18.235190",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2251,5 +2251,6 @@
     "mapPinsKeyboardHint": "Gunakan kekunci anak panah untuk bergerak antara aktiviti pada peta, dan tekan Enter untuk membuka satu.",
     "selectMessageLabel": "Pilih mesej",
     "callTranscriptAudioDropped": "Apa yang {name} katakan telah hilang oleh peranti mereka sebelum ia sempat dirakam, jadi apa yang dikatakan tidak diketahui.",
-    "callTranscriptHeldByOtherDevice": "Apa yang {name} katakan telah diserahkan kepada peranti mereka yang lain untuk dirakam, jadi tiada apa-apa yang dihantar dari peranti ini dan apa yang dikatakan tidak diketahui di sini."
+    "callTranscriptHeldByOtherDevice": "Apa yang {name} katakan telah diserahkan kepada peranti mereka yang lain untuk dirakam, jadi tiada apa-apa yang dihantar dari peranti ini dan apa yang dikatakan tidak diketahui di sini.",
+    "callTranscriptDeviceNeverWrote": "Sebahagian daripada apa yang {name} katakan telah diserahkan kepada peranti mereka yang lain untuk dirakam, dan tiada apa-apa daripada peranti itu yang tiba, jadi bahagian itu tidak diketahui."
 }

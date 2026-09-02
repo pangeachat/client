@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-01 22:26:58.627497",
+    "@@last_modified": "2026-09-01 23:37:05.861794",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2251,5 +2251,6 @@
     "mapPinsKeyboardHint": "Brûk de pylkestoetsen om te bewegen tusken aktiviteiten op de kaart, en druk op Enter om ien te iepenjen.",
     "selectMessageLabel": "Berjocht selektearje",
     "callTranscriptAudioDropped": "Wat {name} sei is troch harren apparaat ferlern gien foardat it opnommen wurde koe, dus wat der sein is, is net bekend.",
-    "callTranscriptHeldByOtherDevice": "Wat {name} sei is oerlitten oan in oar fan harren apparaten om op te nimmen, dus neat dêrfan is fan dit apparaat ferstjoerd en wat der sein is, is hjir net bekend."
+    "callTranscriptHeldByOtherDevice": "Wat {name} sei is oerlitten oan in oar fan harren apparaten om op te nimmen, dus neat dêrfan is fan dit apparaat ferstjoerd en wat der sein is, is hjir net bekend.",
+    "callTranscriptDeviceNeverWrote": "In part fan wat {name} sei, waard oerlitten oan in oar fan harren apparaten om op te nimmen, en neat fan dat apparaat is oankommen, dus dat part is net bekend."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-01 22:27:16.481722",
+    "@@last_modified": "2026-09-01 23:37:21.830625",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2251,5 +2251,6 @@
     "mapPinsKeyboardHint": "Shandisa miseve kufamba pakati pezviitiko pamepu, wobva wadzvanya Enter kuti uvhure chimwe.",
     "selectMessageLabel": "Sarudza meseji",
     "callTranscriptAudioDropped": "Zvakataurwa na{name} zvakarasika pachigadzirwa chavo zvisati zvanyorwa, saka hazvizivikanwe kuti chii chakataurwa.",
-    "callTranscriptHeldByOtherDevice": "Zvakataurwa na{name} zvakasiyirwa chimwe chigadzirwa chavo kuti zvinyorwe, saka hapana chakatumirwa kubva pane ichi uye hazvizivikanwe kuti chii chakataurwa pano."
+    "callTranscriptHeldByOtherDevice": "Zvakataurwa na{name} zvakasiyirwa chimwe chigadzirwa chavo kuti zvinyorwe, saka hapana chakatumirwa kubva pane ichi uye hazvizivikanwe kuti chii chakataurwa pano.",
+    "callTranscriptDeviceNeverWrote": "Chikamu chezvakataurwa na{name} chakasiiwa kuti chirekodhwe nechimwe chishandiso chavo, uye hapana chakasvika kubva pachishandiso ichocho, saka chikamu ichocho hachizivikanwe."
 }

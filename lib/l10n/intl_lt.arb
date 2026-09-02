@@ -2968,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-09-01 22:27:08.152023",
+    "@@last_modified": "2026-09-01 23:37:14.522762",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10628,5 +10628,6 @@
     "mapPinsKeyboardHint": "Naudokite rodyklių klavišus norėdami judėti tarp veiklų žemėlapyje, ir paspauskite Enter norėdami atidaryti vieną.",
     "selectMessageLabel": "Pasirinkti pranešimą",
     "callTranscriptAudioDropped": "Tai, ką pasakė {name}, buvo prarasta jo įrenginyje dar prieš įrašant, todėl nežinoma, kas buvo pasakyta.",
-    "callTranscriptHeldByOtherDevice": "Tai, ką pasakė {name}, buvo palikta įrašyti kitam jo įrenginiui, todėl iš šio įrenginio niekas nebuvo išsiųsta ir čia nežinoma, kas buvo pasakyta."
+    "callTranscriptHeldByOtherDevice": "Tai, ką pasakė {name}, buvo palikta įrašyti kitam jo įrenginiui, todėl iš šio įrenginio niekas nebuvo išsiųsta ir čia nežinoma, kas buvo pasakyta.",
+    "callTranscriptDeviceNeverWrote": "Dalis to, ką pasakė {name}, buvo palikta įrašyti kitam jo įrenginiui, tačiau iš to įrenginio nieko nebuvo gauta, todėl ta dalis nežinoma."
 }

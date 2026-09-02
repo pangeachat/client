@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-01 22:27:04.211301",
+    "@@last_modified": "2026-09-01 23:37:10.996540",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2251,5 +2251,6 @@
     "mapPinsKeyboardHint": "Gunakake tombol panah kanggo mindhah antarane aktivitas ing peta, banjur pencet Enter kanggo mbukak salah siji.",
     "selectMessageLabel": "Pilih pesen",
     "callTranscriptAudioDropped": "Omongané {name} ilang saka pirantiné sadurungé bisa direkam, dadi ora dingertèni apa sing diomongaké.",
-    "callTranscriptHeldByOtherDevice": "Omongané {name} direkam déning piranti liyané, dadi ora ana sing dikirim saka piranti iki lan ora dingertèni apa sing diomongaké ing kéné."
+    "callTranscriptHeldByOtherDevice": "Omongané {name} direkam déning piranti liyané, dadi ora ana sing dikirim saka piranti iki lan ora dingertèni apa sing diomongaké ing kéné.",
+    "callTranscriptDeviceNeverWrote": "Bagéan saka omongané {name} direkam ing piranti liyané, lan ora ana sing teka saka piranti kasebut, dadi bagéan kasebut ora dingerteni."
 }
