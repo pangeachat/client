@@ -1483,4 +1483,100 @@ void main() {
       );
     });
   });
+
+  group('what an empty half is told to the learner as', () {
+    // MECHANICAL over [EmptinessCause], because the defect it replaces is one
+    // of coverage rather than of logic: `audioDroppedAtCapture` and
+    // `audioHeldByAnotherDevice` were both added to [HalfIssue], both ranked in
+    // [TranscriptHalf.issue], and neither ever reached a sentence -- so a
+    // learner whose device dropped the audio at capture, or handed it to a
+    // sibling, was told their words could not be READ. Nothing had read them;
+    // nothing had been sent.
+    //
+    // Written against the enum so that a cause added to it is asserted here
+    // without anybody remembering to. The compiler already refuses a
+    // non-exhaustive [emptyHalfNote]; this is the other half of the same
+    // guarantee, that the branch somebody is forced to write is not just
+    // another way of spelling the generic answer.
+
+    late L10n l10n;
+
+    setUpAll(() async {
+      l10n = await L10n.delegate.load(const Locale('en'));
+    });
+
+    /// The half a device writes when [cause] alone emptied it.
+    TranscriptHalf emptiedBy(EmptinessCause cause) {
+      final accounting = HalfAccounting(
+        chunksCaptured: 4,
+        chunksLost: cause == EmptinessCause.lost ? 1 : 0,
+        captureDroppedMs: cause == EmptinessCause.droppedAtCapture ? 250 : 0,
+        chunksDiscarded: cause == EmptinessCause.heldForASibling ? 1 : 0,
+        chunksSuppressed: cause == EmptinessCause.suppressedByUs ? 1 : 0,
+        declared: true,
+      );
+      return assembleTranscript(
+        candidates: [
+          TranscriptCandidate(
+            senderId: _peer,
+            originServerTs: 1000,
+            segments: const [],
+            accounting: accounting,
+          ),
+        ],
+        expectedSenders: [_peer],
+      ).halves.single;
+    }
+
+    test('every cause gets a sentence of its own', () {
+      final said = <EmptinessCause, String>{
+        for (final cause in EmptinessCause.values)
+          cause: emptyHalfNote(emptiedBy(cause), 'Ana', l10n),
+      };
+
+      for (final entry in said.entries) {
+        expect(
+          entry.value,
+          isNot(l10n.callTranscriptNothingRead('Ana')),
+          reason:
+              'a half ${entry.key} emptied never reached a reader, so telling '
+              'the learner it could not be read blames the wrong device',
+        );
+        expect(
+          entry.value,
+          isNot(l10n.callTranscriptSaidNothing('Ana')),
+          reason: '${entry.key} is our doing, never the speaker being silent',
+        );
+      }
+
+      expect(
+        said.values.toSet(),
+        hasLength(EmptinessCause.values.length),
+        reason:
+            'two causes sharing a sentence sends whoever chases it to one '
+            'device for two different problems',
+      );
+    });
+
+    test('a speaker we really did record and hear nothing from is silent', () {
+      // The answer none of the above may take away. Every chunk went to a
+      // provider and came back with no words.
+      final silent = assembleTranscript(
+        candidates: const [
+          TranscriptCandidate(
+            senderId: _peer,
+            originServerTs: 1000,
+            segments: [],
+            accounting: HalfAccounting(chunksCaptured: 3, declared: true),
+          ),
+        ],
+        expectedSenders: [_peer],
+      ).halves.single;
+
+      expect(
+        emptyHalfNote(silent, 'Ana', l10n),
+        l10n.callTranscriptSaidNothing('Ana'),
+      );
+    });
+  });
 }

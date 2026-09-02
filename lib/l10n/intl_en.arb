@@ -3791,6 +3791,14 @@
   "@callTranscriptAudioLost": {
     "placeholders": { "name": { "type": "String" } }
   },
+  "callTranscriptAudioDropped": "What {name} said was lost by their device before it could even be recorded, so what was said is not known.",
+  "@callTranscriptAudioDropped": {
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "callTranscriptHeldByOtherDevice": "What {name} said was left to another of their devices to record, so none of it was sent from this one and what was said is not known here.",
+  "@callTranscriptHeldByOtherDevice": {
+    "placeholders": { "name": { "type": "String" } }
+  },
   "callTranscriptTooLongToSend": "What {name} said was too long to save with this call, so none of it is shown.",
     "@callTranscriptTooLongToSend": {
         "placeholders": {

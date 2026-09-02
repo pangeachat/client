@@ -64,56 +64,117 @@ bool segmentsArePlaceable(List<TranscriptSegment> segments) {
   return true;
 }
 
-/// Whether a half is empty because THIS APP threw its audio away, rather than
-/// because the speaker said nothing.
+/// A claim in an accounting that can leave a half with no words in it.
 ///
-/// [HalfAccounting.chunksSuppressed] counts chunks the writing device's own
-/// speech detector examined and chose not to send. That detector's thresholds
-/// are calibrated against a single recording and documented as unvalidated, so
-/// a short quiet answer inside a long chunk can fail them -- and when every
-/// chunk fails them, no request is ever issued and NO PROVIDER EVER READS THE
-/// AUDIO. The half is then empty for a reason that is entirely ours, and
-/// `present` plus no segments is [TranscriptHalf.saidNothing]: "you did not say
-/// anything", sourced from our own detector, about someone who may have talked
-/// the whole call.
+/// Each of these is OUR OWN doing rather than the speaker's, and each has a
+/// different thing to say about where the speech went -- which is why an empty
+/// half must be able to name one of them rather than fall through to
+/// [TranscriptHalf.saidNothing], "you did not say anything", said about
+/// somebody who may have talked the whole call.
 ///
-/// All three terms are load-bearing, and the first is why this is NOT a term of
-/// [HalfAccounting.writerAdmitsGaps]:
+/// **Listed WORST FIRST, and that order is load-bearing.** An explanation is
+/// only true if nothing worse also emptied the half: a half with one chunk
+/// discarded and one LOST is empty for two reasons, and naming the discard
+/// tells the learner another device is holding speech that is in fact gone. So
+/// [explainsEmptiness] reads the order rather than each rule restating it, and
+/// a cause added here takes its rank once instead of having to be remembered at
+/// every site that ranks one.
+///
+/// Worst is "nobody has this audio at all": a lost chunk and a stretch the
+/// capture path dropped are both speech with no copy anywhere. Below them sit
+/// the two that destroyed nothing -- a chunk another of this account's devices
+/// is holding, and a chunk our own detector judged silent -- because those name
+/// where the words went rather than admitting they are gone. Between the two
+/// gaps, a lost chunk comes first for the reason [TranscriptHalf.issue] already
+/// gives: dropped audio is the same failure one layer down.
+///
+/// [HalfAccounting.captureRefused] is deliberately NOT one of these. It is not
+/// a quantity of audio that went missing, it is the statement that none was
+/// ever taken, and [TranscriptHalf.issue] already ranks it above all of these.
+enum EmptinessCause {
+  /// Chunks captured and then lost -- see [HalfAccounting.chunksLost]. Audio
+  /// that might have carried words, with no copy anywhere.
+  lost,
+
+  /// Audio the capture path threw away before it was ever a chunk -- see
+  /// [HalfAccounting.captureDroppedMs]. A gap too, in milliseconds rather than
+  /// chunks because it never became one.
+  droppedAtCapture,
+
+  /// Chunks deliberately handed to another of this account's devices -- see
+  /// [HalfAccounting.chunksDiscarded]. Not a gap: the words are one event away,
+  /// unless that sibling never wrote.
+  heldForASibling,
+
+  /// Chunks this app's own speech detector held back -- see
+  /// [HalfAccounting.chunksSuppressed]. That detector's thresholds are
+  /// calibrated against a single recording and documented as unvalidated, so a
+  /// short quiet answer inside a long chunk can fail them -- and when every
+  /// chunk fails them, no request is ever issued and NO PROVIDER EVER READS THE
+  /// AUDIO. The emptiness is then entirely ours, sourced from our own detector.
+  suppressedByUs,
+}
+
+/// How much audio [cause] accounts for, in whatever unit that cause counts.
+///
+/// A `switch` with no default, deliberately: adding a value to [EmptinessCause]
+/// stops this compiling until somebody says which claim it reads, and that
+/// compile error is the whole reason the causes are an enum rather than four
+/// predicates written side by side.
+int amountEmptiedBy(EmptinessCause cause, HalfAccounting accounting) =>
+    switch (cause) {
+      EmptinessCause.lost => accounting.chunksLost,
+      EmptinessCause.droppedAtCapture => accounting.captureDroppedMs,
+      EmptinessCause.heldForASibling => accounting.chunksDiscarded,
+      EmptinessCause.suppressedByUs => accounting.chunksSuppressed,
+    };
+
+/// Whether [cause] is why this half carries no words.
+///
+/// Four terms, and every one of them is load-bearing. The first is also why
+/// none of this is a term of [HalfAccounting.writerAdmitsGaps]:
 /// * `segments.isEmpty` -- a half that still carries words was PARTIALLY
-///   suppressed, and that is ordinary. Almost every real call has a quiet
-///   stretch, so flagging those would mark nearly every transcript incomplete
-///   and leave the flag meaning nothing when it matters: the trap already
-///   recorded on [HalfAccounting.chunksSuppressed] and [HalfAccounting.chunksLost].
+///   emptied, and that is ordinary. Almost every real call has a quiet stretch,
+///   so flagging those would mark nearly every transcript incomplete and leave
+///   the flag meaning nothing when it matters: the trap already recorded on
+///   [HalfAccounting.chunksSuppressed] and [HalfAccounting.chunksLost].
 /// * `chunksTranscribed == 0` -- if any chunk came back with words, a provider
 ///   did read this speaker, and what it did not find is not ours to explain.
-/// * `chunksSuppressed > 0` -- with nothing held back there is nothing of ours
-///   in the way, and an empty half is the speaker's own answer.
-bool suppressionExplainsEmptiness(
+/// * this cause is present -- with nothing of ours in the way, an empty half is
+///   the speaker's own answer.
+/// * nothing WORSE is present -- an explanation must account for the emptiness
+///   on its own, or naming it buries a truer one. This is the term the discard
+///   rule was written without: an empty half that both lost a chunk and
+///   deferred one read as "another device is holding your speech", which is a
+///   true statement about the discard displacing a truer one about the loss.
+///   `writerAdmitsGaps` already makes such a half incomplete on `chunksLost`,
+///   so it still reads as missing words either way; what this keeps out is the
+///   WRONG EXPLANATION, which is the distinction this whole file is built to
+///   hold.
+///
+/// The ranking is read off [EmptinessCause] rather than restated here, so every
+/// explanation is the worst one that applies and no two can hold at once.
+bool explainsEmptiness(
+  EmptinessCause cause,
   List<TranscriptSegment> segments,
   HalfAccounting accounting,
 ) =>
     segments.isEmpty &&
     accounting.chunksTranscribed == 0 &&
-    accounting.chunksSuppressed > 0 &&
-    // Suppression must account for the emptiness on its OWN, or naming it as
-    // the reason buries a different one. A half with one chunk suppressed and
-    // one LOST is empty for two reasons, and only the lost chunk is audio that
-    // might have carried words -- saying "this app found no speech in it"
-    // there reports our trim's verdict over audio the trim never judged.
-    // `writerAdmitsGaps` already makes such a half incomplete on `chunksLost`,
-    // so the half still reads as missing words; what this keeps out is the
-    // WRONG EXPLANATION, which is the distinction this whole file is built to
-    // hold. Capture refused is left to `microphoneRefused` above it for the
-    // same reason.
-    accounting.chunksLost == 0 &&
-    // Both of these are audio our trim never judged, exactly like a lost
-    // chunk, so naming the trim as the reason for the emptiness would report a
-    // verdict it never gave. Dropped audio is already a gap; a discarded chunk
-    // is not, and [discardExplainsEmptiness] is what keeps an empty half that
-    // deferred to a sibling from reading as silence once this rule declines to
-    // explain it.
-    accounting.captureDroppedMs == 0 &&
-    accounting.chunksDiscarded == 0;
+    amountEmptiedBy(cause, accounting) > 0 &&
+    EmptinessCause.values
+        .takeWhile((worse) => worse != cause)
+        .every((worse) => amountEmptiedBy(worse, accounting) == 0);
+
+/// Whether a half is empty because THIS APP's speech detector threw its audio
+/// away, rather than because the speaker said nothing.
+///
+/// See [EmptinessCause.suppressedByUs] for what the count means and
+/// [explainsEmptiness] for when it is allowed to be the answer.
+bool suppressionExplainsEmptiness(
+  List<TranscriptSegment> segments,
+  HalfAccounting accounting,
+) => explainsEmptiness(EmptinessCause.suppressedByUs, segments, accounting);
 
 /// Whether an empty half is empty because this device handed the stretch to a
 /// sibling rather than because the speaker said nothing.
@@ -133,10 +194,7 @@ bool suppressionExplainsEmptiness(
 bool discardExplainsEmptiness(
   List<TranscriptSegment> segments,
   HalfAccounting accounting,
-) =>
-    segments.isEmpty &&
-    accounting.chunksTranscribed == 0 &&
-    accounting.chunksDiscarded > 0;
+) => explainsEmptiness(EmptinessCause.heldForASibling, segments, accounting);
 
 /// Where one device's wall clock sat relative to the SFU's, read at join.
 ///
@@ -960,10 +1018,16 @@ class TranscriptHalf {
     if (audioSuppressedLocally) return HalfIssue.audioSuppressedLocally;
     // Beside it, and for the same reason: both are an empty half our own
     // device produced, and both would otherwise fall through to a cause that
-    // names the reader rather than the decision that emptied the half. The two
-    // cannot both hold -- [suppressionExplainsEmptiness] declines any half
-    // that also deferred a chunk -- so the order between them decides nothing;
-    // what matters is that they sit above the writer's own admissions.
+    // names the reader rather than the decision that emptied the half.
+    //
+    // THE ORDER OF THESE TWO AGAINST THE GAPS BELOW DECIDES NOTHING, and that
+    // is deliberate rather than lucky. [EmptinessCause] ranks every way a half
+    // can be emptied, and [explainsEmptiness] refuses any cause with a worse
+    // one beside it -- so neither of these getters can be true of a half that
+    // also lost a chunk or dropped audio at capture, and neither can be true
+    // when the other is. Ranking that lived in this ladder alone is what let a
+    // half that discarded one chunk and LOST another read as "another device is
+    // holding your speech", above the branch that would have said it was gone.
     if (audioHeldByAnotherDevice) return HalfIssue.audioHeldByAnotherDevice;
     if (!accounting.declared) return HalfIssue.writerSaidNothing;
     if (accounting.chunksLost > 0) return HalfIssue.audioLost;

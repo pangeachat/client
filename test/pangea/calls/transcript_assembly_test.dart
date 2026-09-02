@@ -2165,6 +2165,133 @@ void main() {
     });
   });
 
+  group('every way an empty half can have been emptied', () {
+    // MECHANICAL over [EmptinessCause], and over every COMBINATION of them,
+    // because the defect these replaced three hand-written cases for is a
+    // combination: a half that discarded one chunk and LOST another named the
+    // discard, told the learner another device was holding speech that was in
+    // fact gone, and did it from a rule that only ever looked at one count.
+    //
+    // Written against the enum rather than a list of fixtures, so a cause added
+    // to [EmptinessCause] is immediately asserted here in every pairing with
+    // every other -- the inventory cannot drift because there is no inventory.
+
+    /// A half emptied by exactly [causes] and nothing else.
+    ///
+    /// `chunksCaptured` is generous so no combination trips [incoherent],
+    /// which would answer every question below with the same issue and hide
+    /// what is actually being asked.
+    HalfAccounting emptiedBy(Set<EmptinessCause> causes) => HalfAccounting(
+      chunksCaptured: 8,
+      chunksLost: causes.contains(EmptinessCause.lost) ? 1 : 0,
+      captureDroppedMs: causes.contains(EmptinessCause.droppedAtCapture)
+          ? 250
+          : 0,
+      chunksDiscarded: causes.contains(EmptinessCause.heldForASibling) ? 1 : 0,
+      chunksSuppressed: causes.contains(EmptinessCause.suppressedByUs) ? 1 : 0,
+      declared: true,
+    );
+
+    /// What the reader must SAY when [cause] is the worst thing that emptied a
+    /// half.
+    ///
+    /// Restated here rather than read off the production ladder: a test that
+    /// asks the code under test what it thinks the answer is asserts nothing.
+    HalfIssue issueNaming(EmptinessCause cause) => switch (cause) {
+      EmptinessCause.lost => HalfIssue.audioLost,
+      EmptinessCause.droppedAtCapture => HalfIssue.audioDroppedAtCapture,
+      EmptinessCause.heldForASibling => HalfIssue.audioHeldByAnotherDevice,
+      EmptinessCause.suppressedByUs => HalfIssue.audioSuppressedLocally,
+    };
+
+    /// Every non-empty combination of causes, built from the enum.
+    List<Set<EmptinessCause>> combinations() {
+      final all = EmptinessCause.values;
+      return [
+        for (var mask = 1; mask < 1 << all.length; mask++)
+          {
+            for (var i = 0; i < all.length; i++)
+              if (mask & (1 << i) != 0) all[i],
+          },
+      ];
+    }
+
+    TranscriptHalf assembled(HalfAccounting accounting) => _halfFor(
+      assembleTranscript(
+        candidates: [
+          _candidate(alice, segments: const [], accounting: accounting),
+        ],
+        expectedSenders: [alice],
+      ),
+      alice,
+    );
+
+    test('is never read as the speaker having said nothing', () {
+      // The single most dangerous claim this feature can make. It must not
+      // survive ANY combination of our own doings, and the exclusivity rule
+      // below is exactly the kind of narrowing that could take it away again:
+      // an explanation that declines to explain must not leave the half
+      // looking clean.
+      for (final causes in combinations()) {
+        final half = assembled(emptiedBy(causes));
+        expect(
+          half.saidNothing,
+          isFalse,
+          reason: '$causes must not read as silence',
+        );
+        expect(
+          half.state,
+          HalfState.incomplete,
+          reason: '$causes leaves a half nothing may call present',
+        );
+      }
+    });
+
+    test('is explained by the WORST cause present, and only that one', () {
+      for (final causes in combinations()) {
+        final accounting = emptiedBy(causes);
+        // [EmptinessCause] is declared worst-first, so the worst present cause
+        // is the first of the enum's own values that this half carries.
+        final worst = EmptinessCause.values.firstWhere(causes.contains);
+
+        for (final cause in EmptinessCause.values) {
+          expect(
+            explainsEmptiness(cause, const [], accounting),
+            cause == worst,
+            reason: 'of $causes, only $worst may explain the emptiness',
+          );
+        }
+      }
+    });
+
+    test('names the worst cause present to the reader', () {
+      for (final causes in combinations()) {
+        final worst = EmptinessCause.values.firstWhere(causes.contains);
+        expect(
+          assembled(emptiedBy(causes)).issue,
+          issueNaming(worst),
+          reason: 'a half emptied by $causes must report $worst',
+        );
+      }
+    });
+
+    test('explains nothing about a half that still carries words', () {
+      // The first term of the rule, asserted over the whole enum: a half that
+      // was PARTIALLY emptied is ordinary, and almost every real call has a
+      // quiet stretch in it.
+      for (final causes in combinations()) {
+        final accounting = emptiedBy(causes);
+        for (final cause in EmptinessCause.values) {
+          expect(
+            explainsEmptiness(cause, [TranscriptSegment('hola')], accounting),
+            isFalse,
+            reason: '$cause cannot explain a half that has words in it',
+          );
+        }
+      }
+    });
+  });
+
   group('two devices of one account', () {
     // The defect this whole change exists for. Both devices answered, both
     // recorded, and both wrote -- and keyed by sender alone the reader kept
