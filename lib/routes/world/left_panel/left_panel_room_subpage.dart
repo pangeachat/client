@@ -15,6 +15,7 @@ import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_search/chat_search_page.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_details_subpage.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
@@ -142,12 +143,14 @@ class LeftPanelRoomSubpage extends StatelessWidget {
         // an unnamed screen-reader stop between the panel's named group and
         // the chat. namesRoute is the framework's way to name it: on web the
         // engine derives the route element's accessible name from this
-        // descendant, using the same name source as the panel group (#8729).
+        // descendant. Named by the room's visible title (the page's actual
+        // heading), under the type-named "Chat page" group (#8729).
+        // explicitChildNodes keeps loose chat text (the activity instruction
+        // card) from being absorbed into this name.
         builder: (context) => Semantics(
           namesRoute: true,
-          label: L10n.of(
-            context,
-          ).pageLabel(tokenType.displayName(L10n.of(context))),
+          explicitChildNodes: true,
+          label: room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
           child: ChatPage(
             roomId: roomId,
             eventId: param?.eventId,

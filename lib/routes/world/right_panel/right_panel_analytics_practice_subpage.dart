@@ -44,6 +44,8 @@ class RightPanelAnalyticsPracticeSubpage extends StatelessWidget {
           // subpage, #8729) — same name source as the panel group.
           builder: (context) => Semantics(
             namesRoute: true,
+            // Keeps loose descendant text out of the route's name (#8729).
+            explicitChildNodes: true,
             label: L10n.of(
               context,
             ).pageLabel(PanelTypesEnum.practice.displayName(L10n.of(context))),
