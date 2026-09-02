@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-02 12:25:25.149079",
+    "@@last_modified": "2026-09-02 13:00:13.264272",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9666,7 +9666,6 @@
     "ongoingPendingLabel": "Odotetaan muiden liittymistä",
     "joinableLabel": "Liityttävissä",
     "inProgressLabel": "Aiemmin suoritettu",
-    "availableLabel": "Luo toiminto",
     "rateActivityTitle": "Miten tämä aktiviteetti sujui?",
     "rateActivityCommentHint": "Lisää kommentti (valinnainen)",
     "rateActivityCommentRejected": "Kommenttiasi ei voitu julkaista. Yritä muotoilla se uudelleen tai lähetä arviosi ilman kommenttia.",
@@ -9886,5 +9885,8 @@
     "constructLevelSeeds": "Siemenet, uudet sanat",
     "constructLevelGreens": "Vihreät, kasvavat sanat",
     "constructLevelFlowers": "Kukat, hallitut sanat",
-    "filterAndSearch": "Suodata ja hae"
+    "filterAndSearch": "Suodata ja hae",
+    "participantsOfTotal": "{filled}/{total} pelaajaa",
+    "mapAttributionLabel": "OpenStreetMapin tekijät, tekijänoikeudet ja lisenssi",
+    "availableLabel": "Ei vielä aloitettu"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-02 12:25:32.665192",
+    "@@last_modified": "2026-09-02 13:00:21.826630",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9629,7 +9629,6 @@
     "ongoingPendingLabel": "Очікування на приєднання інших",
     "joinableLabel": "Можна приєднатися",
     "inProgressLabel": "Раніше завершено",
-    "availableLabel": "Створити активність",
     "rateActivityTitle": "Як вам ця вправа?",
     "rateActivityCommentHint": "Додати коментар (необов’язково)",
     "rateActivityCommentRejected": "Ваш коментар не вдалося опублікувати. Спробуйте перефразувати його або надішліть свою оцінку без коментаря.",
@@ -9849,5 +9848,8 @@
     "constructLevelSeeds": "Насіння, нові слова",
     "constructLevelGreens": "Зелень, слова, що ростуть",
     "constructLevelFlowers": "Квіти, опановані слова",
-    "filterAndSearch": "Фільтрувати та шукати"
+    "filterAndSearch": "Фільтрувати та шукати",
+    "participantsOfTotal": "{filled} з {total} гравців",
+    "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
+    "availableLabel": "Ще не розпочато"
 }

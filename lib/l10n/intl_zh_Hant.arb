@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 12:25:33.705562",
+    "@@last_modified": "2026-09-02 13:00:23.003275",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9735,7 +9735,6 @@
     "ongoingPendingLabel": "正在等待其他人加入",
     "joinableLabel": "可加入",
     "inProgressLabel": "已完成",
-    "availableLabel": "建立活動",
     "rateActivityTitle": "這個活動怎麼樣？",
     "rateActivityCommentHint": "新增評論（可選）",
     "rateActivityCommentRejected": "您的評論無法發佈。請嘗試重新措辭，或不帶評論提交您的評分。",
@@ -9955,5 +9954,8 @@
     "constructLevelSeeds": "種子，新單字",
     "constructLevelGreens": "綠芽，成長中的單字",
     "constructLevelFlowers": "花朵，已掌握的單字",
-    "filterAndSearch": "篩選與搜尋"
+    "filterAndSearch": "篩選與搜尋",
+    "participantsOfTotal": "{filled} / {total} 位玩家",
+    "mapAttributionLabel": "OpenStreetMap 貢獻者、版權與許可",
+    "availableLabel": "尚未開始"
 }

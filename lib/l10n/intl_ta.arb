@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 12:25:32.355002",
+    "@@last_modified": "2026-09-02 13:00:21.048507",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9721,7 +9721,6 @@
     "ongoingPendingLabel": "மற்றவர்கள் சேர காத்திருக்கிறது",
     "joinableLabel": "சேரலாம்",
     "inProgressLabel": "முன்பு முடிக்கப்பட்டது",
-    "availableLabel": "செயல்பாட்டை உருவாக்கு",
     "rateActivityTitle": "இந்தச் செயல்பாடு எப்படி இருந்தது?",
     "rateActivityCommentHint": "கருத்தைச் சேர்க்கவும் (விரும்பினால்)",
     "rateActivityCommentRejected": "உங்கள் கருத்தைப் பதிவிட முடியவில்லை. அதை வேறு வார்த்தைகளில் கூற முயற்சிக்கவும் அல்லது கருத்து இல்லாமல் உங்கள் மதிப்பீட்டைச் சமர்ப்பிக்கவும்.",
@@ -9941,5 +9940,8 @@
     "constructLevelSeeds": "விதைகள், புதிய சொற்கள்",
     "constructLevelGreens": "கீரைகள், வளரும் சொற்கள்",
     "constructLevelFlowers": "மலர்கள், தேர்ச்சி பெற்ற சொற்கள்",
-    "filterAndSearch": "வடிகட்டி தேடு"
+    "filterAndSearch": "வடிகட்டி தேடு",
+    "participantsOfTotal": "{total} வீரர்களில் {filled} பேர்",
+    "mapAttributionLabel": "OpenStreetMap பங்களிப்பாளர்கள், பதிப்புரிமை மற்றும் உரிமம்",
+    "availableLabel": "இன்னும் தொடங்கவில்லை"
 }

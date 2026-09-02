@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-02 12:25:33.661592",
+    "@@last_modified": "2026-09-02 13:00:22.933288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "וואַרטן אויף אַנדערע צו קומען",
     "joinableLabel": "מעגלעך זיך צו באַהעפֿטן",
     "inProgressLabel": "פֿריִער פֿאַרענדיקט",
-    "availableLabel": "שאַפֿן אַקטיוויטעט",
     "rateActivityTitle": "ווי איז געווען די אַקטיוויטעט?",
     "rateActivityCommentHint": "לייג צו אַ קאָמענטאַר (אָפּציאָנעל)",
     "rateActivityCommentRejected": "אײַער קאָמענטאַר האָט ניט געקענט געפּאָסט ווערן. פּרוּווט עס איבערשרײַבן, אָדער שיקט אײַער רייטינג אָן אַ קאָמענטאַר.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "זוימען, נײַע ווערטער",
     "constructLevelGreens": "גרינסן, וואַקסנדיקע ווערטער",
     "constructLevelFlowers": "בלומען, באַהערשטע ווערטער",
-    "filterAndSearch": "פֿילטרירן און זוכן"
+    "filterAndSearch": "פֿילטרירן און זוכן",
+    "participantsOfTotal": "{filled} פֿון {total} שפּילער",
+    "mapAttributionLabel": "OpenStreetMap מיטארבעטער, קאפירעכט און ליצענץ",
+    "availableLabel": "נאָך נישט אָנגעהויבן"
 }

@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-02 12:25:32.267098",
+    "@@last_modified": "2026-09-02 13:00:21.723792",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10261,7 +10261,6 @@
     "ongoingPendingLabel": "กำลังรอผู้เข้าร่วมคนอื่น",
     "joinableLabel": "เข้าร่วมได้",
     "inProgressLabel": "เสร็จสิ้นไปแล้ว",
-    "availableLabel": "สร้างกิจกรรม",
     "rateActivityTitle": "กิจกรรมนี้เป็นอย่างไรบ้าง",
     "rateActivityCommentHint": "เพิ่มความคิดเห็น (ไม่บังคับ)",
     "rateActivityCommentRejected": "ไม่สามารถโพสต์ความคิดเห็นของคุณได้ ลองเปลี่ยนคำพูด หรือส่งการให้คะแนนของคุณโดยไม่มีความคิดเห็น",
@@ -10481,5 +10480,8 @@
     "constructLevelSeeds": "เมล็ดพันธุ์, คำศัพท์ใหม่",
     "constructLevelGreens": "ต้นอ่อน, คำศัพท์ที่กำลังเติบโต",
     "constructLevelFlowers": "ดอกไม้, คำศัพท์ที่เชี่ยวชาญแล้ว",
-    "filterAndSearch": "กรองและค้นหา"
+    "filterAndSearch": "กรองและค้นหา",
+    "participantsOfTotal": "{filled} จากผู้เล่นทั้งหมด {total} คน",
+    "mapAttributionLabel": "ผู้ร่วมให้ข้อมูล OpenStreetMap, ลิขสิทธิ์และใบอนุญาต",
+    "availableLabel": "ยังไม่เริ่ม"
 }

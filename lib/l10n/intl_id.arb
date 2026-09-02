@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 12:25:26.526864",
+    "@@last_modified": "2026-09-02 13:00:15.423397",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9702,7 +9702,6 @@
     "ongoingPendingLabel": "Menunggu yang lain bergabung",
     "joinableLabel": "Dapat bergabung",
     "inProgressLabel": "Telah selesai",
-    "availableLabel": "Buat aktivitas",
     "rateActivityTitle": "Bagaimana aktivitas ini?",
     "rateActivityCommentHint": "Tambahkan komentar (opsional)",
     "rateActivityCommentRejected": "Komentar Anda tidak dapat diposting. Coba ubah kata-katanya, atau kirim penilaian Anda tanpa komentar.",
@@ -9922,5 +9921,8 @@
     "constructLevelSeeds": "Benih, kata-kata baru",
     "constructLevelGreens": "Tunas, kata-kata yang berkembang",
     "constructLevelFlowers": "Bunga, kata-kata yang dikuasai",
-    "filterAndSearch": "Filter dan cari"
+    "filterAndSearch": "Filter dan cari",
+    "participantsOfTotal": "{filled} dari {total} pemain",
+    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta, dan lisensi",
+    "availableLabel": "Belum dimulai"
 }

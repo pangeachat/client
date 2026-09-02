@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-02 12:25:24.434096",
+    "@@last_modified": "2026-09-02 13:00:12.437215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "ሌሎች እስኪቀላቀሉ በመጠበቅ ላይ",
     "joinableLabel": "መቀላቀል የሚቻል",
     "inProgressLabel": "ቀደም ሲል የተጠናቀቀ",
-    "availableLabel": "እንቅስቃሴ ይፍጠሩ",
     "rateActivityTitle": "ይህ እንቅስቃሴ እንዴት ነበር?",
     "rateActivityCommentHint": "አስተያየት ያክሉ (አማራጭ)",
     "rateActivityCommentRejected": "አስተያየትዎ ሊለጠፍ አልቻለም። እንደገና ለመጻፍ ይሞክሩ ወይም ያለአስተያየት ደረጃዎን ያስገቡ።",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "ዘሮች፣ አዲስ ቃላት",
     "constructLevelGreens": "አረንጓዴዎች፣ እያደጉ ያሉ ቃላት",
     "constructLevelFlowers": "አበቦች፣ የተካኑ ቃላት",
-    "filterAndSearch": "አጣራ እና ፈልግ"
+    "filterAndSearch": "አጣራ እና ፈልግ",
+    "participantsOfTotal": "{filled} ከ {total} ተጫዋቾች",
+    "mapAttributionLabel": "የOpenStreetMap አስተዋፅዖ አድራጊዎች፣ የቅጂ መብት እና ፈቃድ",
+    "availableLabel": "ገና አልተጀመረም"
 }

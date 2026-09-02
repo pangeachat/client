@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-02 12:25:31.592976",
+    "@@last_modified": "2026-09-02 13:00:20.298660",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Duke pritur që të tjerët të bashkohen",
     "joinableLabel": "Mund të bashkohesh",
     "inProgressLabel": "Përfunduar më parë",
-    "availableLabel": "Krijo aktivitet",
     "rateActivityTitle": "Si ishte ky aktivitet?",
     "rateActivityCommentHint": "Shto një koment (opsionale)",
     "rateActivityCommentRejected": "Komenti juaj nuk mund të postohej. Provoni ta riformuloni, ose dërgoni vlerësimin tuaj pa koment.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Fara, fjalë të reja",
     "constructLevelGreens": "Gjelbërim, fjalë në rritje",
     "constructLevelFlowers": "Lule, fjalë të zotëruara",
-    "filterAndSearch": "Filtro dhe kërko"
+    "filterAndSearch": "Filtro dhe kërko",
+    "participantsOfTotal": "{filled} nga {total} lojtarë",
+    "mapAttributionLabel": "Kontribuesit e OpenStreetMap, të drejtat e autorit dhe licenca",
+    "availableLabel": "Ende pa filluar"
 }

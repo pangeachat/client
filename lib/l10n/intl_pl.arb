@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-02 12:25:30.343247",
+    "@@last_modified": "2026-09-02 13:00:18.815418",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9714,7 +9714,6 @@
     "ongoingPendingLabel": "Czekam, aż inni dołączą",
     "joinableLabel": "Dołączalne",
     "inProgressLabel": "Wcześniej ukończone",
-    "availableLabel": "Utwórz aktywność",
     "rateActivityTitle": "Jak oceniasz to ćwiczenie?",
     "rateActivityCommentHint": "Dodaj komentarz (opcjonalnie)",
     "rateActivityCommentRejected": "Nie udało się opublikować Twojego komentarza. Spróbuj go przeformułować lub prześlij swoją ocenę bez komentarza.",
@@ -9934,5 +9933,8 @@
     "constructLevelSeeds": "Nasiona, nowe słowa",
     "constructLevelGreens": "Kiełki, rosnące słowa",
     "constructLevelFlowers": "Kwiaty, opanowane słowa",
-    "filterAndSearch": "Filtruj i szukaj"
+    "filterAndSearch": "Filtruj i szukaj",
+    "participantsOfTotal": "{filled} z {total} graczy",
+    "mapAttributionLabel": "Współtwórcy OpenStreetMap, prawa autorskie i licencja",
+    "availableLabel": "Jeszcze nie rozpoczęto"
 }

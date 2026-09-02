@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-02 12:25:29.073736",
+    "@@last_modified": "2026-09-02 13:00:17.848681",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "इतरांच्या सामील होण्याची प्रतीक्षा करत आहे",
     "joinableLabel": "सामील होण्यायोग्य",
     "inProgressLabel": "पूर्वी पूर्ण झाले",
-    "availableLabel": "गतिविधी तयार करा",
     "rateActivityTitle": "हा उपक्रम कसा होता?",
     "rateActivityCommentHint": "एक टिप्पणी जोडा (पर्यायी)",
     "rateActivityCommentRejected": "तुमची टिप्पणी पोस्ट केली जाऊ शकली नाही. कृपया ती पुन्हा लिहा किंवा टिप्पणीशिवाय तुमचे रेटिंग सबमिट करा.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "सीड्स, नवीन शब्द",
     "constructLevelGreens": "ग्रीन्स, वाढणारे शब्द",
     "constructLevelFlowers": "फ्लॉवर्स, पारंगत शब्द",
-    "filterAndSearch": "फिल्टर करा आणि शोधा"
+    "filterAndSearch": "फिल्टर करा आणि शोधा",
+    "participantsOfTotal": "{total} पैकी {filled} खेळाडू",
+    "mapAttributionLabel": "ओपनस्ट्रीटमॅप योगदानकर्ते, कॉपीराइट आणि परवाना",
+    "availableLabel": "अद्याप सुरू झाले नाही"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-02 12:25:29.311542",
+    "@@last_modified": "2026-09-02 13:00:17.913499",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Qed tistenna li jingħaqdu oħrajn",
     "joinableLabel": "Tista' tingħaqad",
     "inProgressLabel": "Tlestiet qabel",
-    "availableLabel": "Oħloq attività",
     "rateActivityTitle": "Kif kienet din l-attività?",
     "rateActivityCommentHint": "Żid kumment (mhux obbligatorju)",
     "rateActivityCommentRejected": "Il-kumment tiegħek ma setax jitpoġġa. Ipprova ifformulah mill-ġdid, jew issottometti l-klassifikazzjoni tiegħek mingħajr kumment.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Żrieragħ, kliem ġdid",
     "constructLevelGreens": "Ħdura, kliem li qed jikber",
     "constructLevelFlowers": "Fjuri, kliem mhaddem",
-    "filterAndSearch": "Iffiltra u fittex"
+    "filterAndSearch": "Iffiltra u fittex",
+    "participantsOfTotal": "{filled} minn {total} plejers",
+    "mapAttributionLabel": "Kontributuri, drittijiet tal-awtur u liċenzja ta' OpenStreetMap",
+    "availableLabel": "Għadu ma bediex"
 }

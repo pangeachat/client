@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 12:25:24.796097",
+    "@@last_modified": "2026-09-02 13:00:13.258862",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9717,7 +9717,6 @@
     "ongoingPendingLabel": "در انتظار پیوستن دیگران",
     "joinableLabel": "قابل پیوستن",
     "inProgressLabel": "قبلاً تکمیل شده",
-    "availableLabel": "ایجاد فعالیت",
     "rateActivityTitle": "این فعالیت چطور بود؟",
     "rateActivityCommentHint": "افزودن نظر (اختیاری)",
     "rateActivityCommentRejected": "نظر شما ارسال نشد. لطفاً آن را بازنویسی کنید یا امتیاز خود را بدون نظر ثبت کنید.",
@@ -9937,5 +9936,8 @@
     "constructLevelSeeds": "دانه‌ها، کلمات جدید",
     "constructLevelGreens": "جوانه‌ها، کلمات در حال رشد",
     "constructLevelFlowers": "گل‌ها، کلمات تسلط یافته",
-    "filterAndSearch": "فیلتر و جستجو"
+    "filterAndSearch": "فیلتر و جستجو",
+    "participantsOfTotal": "{filled} از {total} بازیکن",
+    "mapAttributionLabel": "مشارکت‌کنندگان OpenStreetMap، حق تکثیر و مجوز",
+    "availableLabel": "هنوز شروع نشده است"
 }

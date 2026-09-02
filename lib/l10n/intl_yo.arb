@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-02 12:25:33.931631",
+    "@@last_modified": "2026-09-02 13:00:23.373148",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Nduro de awọn miiran lati darapọ mọ",
     "joinableLabel": "Le darapọ mọ",
     "inProgressLabel": "Ti pari tẹlẹ",
-    "availableLabel": "Ṣẹda iṣẹ́",
     "rateActivityTitle": "Báwo ni ìṣesí yìí?",
     "rateActivityCommentHint": "Fi àlàyé kún un (ìyàn)",
     "rateActivityCommentRejected": "A kò lè fi àlàyé rẹ sílẹ̀. Gbìyànjú láti tún un ṣe, tàbí fi ìwọ̀n rẹ sílẹ̀ láìsí àlàyé.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Àwọn irúgbìn, àwọn ọ̀rọ̀ tuntun",
     "constructLevelGreens": "Àwọn ewéko, àwọn ọ̀rọ̀ tí ń dàgbà",
     "constructLevelFlowers": "Àwọn òdòdó, àwọn ọ̀rọ̀ tí a ti kọ́ dáradára",
-    "filterAndSearch": "Ṣe àlàyé àti wá"
+    "filterAndSearch": "Ṣe àlàyé àti wá",
+    "participantsOfTotal": "Àwọn agbábọ́ọ̀lù {filled} nínú {total}",
+    "mapAttributionLabel": "Àwọn olùkópa OpenStreetMap, àṣẹ àti ìwé-àṣẹ",
+    "availableLabel": "Kò tíì bẹ̀rẹ̀"
 }

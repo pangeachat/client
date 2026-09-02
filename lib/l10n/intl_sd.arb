@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-02 12:25:31.194309",
+    "@@last_modified": "2026-09-02 13:00:19.640376",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "ٻين جي شامل ٿيڻ جو انتظار آهي",
     "joinableLabel": "شامل ٿيڻ جي قابل",
     "inProgressLabel": "اڳ ۾ مڪمل ٿيل",
-    "availableLabel": "سرگرمي ٺاهيو",
     "rateActivityTitle": "اها سرگرمي ڪهڙي هئي؟",
     "rateActivityCommentHint": "تبصرو شامل ڪريو (اختياري)",
     "rateActivityCommentRejected": "توهان جو تبصرو پوسٽ نه ٿي سگهيو. ان کي ٻيهر لکڻ جي ڪوشش ڪريو، يا تبصري کان سواءِ پنهنجي درجه بندي جمع ڪرايو.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "سيڊس، نوان لفظ",
     "constructLevelGreens": "گرينس، وڌندڙ لفظ",
     "constructLevelFlowers": "فلاورس، ماهر لفظ",
-    "filterAndSearch": "فلٽر ۽ ڳولا ڪريو"
+    "filterAndSearch": "فلٽر ۽ ڳولا ڪريو",
+    "participantsOfTotal": "{total} رانديگرن مان {filled}",
+    "mapAttributionLabel": "اوپن اسٽريٽ ميپ جا حصو وٺندڙ، ڪاپي رائيٽ ۽ لائسنس",
+    "availableLabel": "اڃا شروع نه ٿيو آهي"
 }

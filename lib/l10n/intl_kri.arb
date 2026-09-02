@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-02 12:25:37.992284",
+    "@@last_modified": "2026-09-02 13:00:18.627036",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "De wet ɔda pɔsin dɛn fɔ jɔyn",
     "joinableLabel": "Yu go ebul jɔyn",
     "inProgressLabel": "Dɔn dɔn bifo",
-    "availableLabel": "Mek wok",
     "rateActivityTitle": "Aw dis aktiviti bin bi?",
     "rateActivityCommentHint": "Put komɛnt (nɔ fɔs)",
     "rateActivityCommentRejected": "Yu komɛnt nɔ bin ebul fɔ post. Tray fɔ chenj di wɔd dɛn, ɔ sɛn yu reting witɔt komɛnt.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Sid dɛn, nyu wɔd dɛn",
     "constructLevelGreens": "Grin dɛn, wɔd dɛn we de gro",
     "constructLevelFlowers": "Fula dɛn, wɔd dɛn we yu dɔn sabi fayn",
-    "filterAndSearch": "Fulta ɛn Sɛch"
+    "filterAndSearch": "Fulta ɛn Sɛch",
+    "participantsOfTotal": "{filled} pan {total} pleya dem",
+    "mapAttributionLabel": "OpenStreetMap pipal wey de gi am say, in kopyrayt ɛn layɛns",
+    "availableLabel": "Nɔt yɛt stat"
 }

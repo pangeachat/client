@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 12:25:29.490129",
+    "@@last_modified": "2026-09-02 13:00:18.115187",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9686,7 +9686,6 @@
     "ongoingPendingLabel": "Venter på at andre skal bli med",
     "joinableLabel": "Kan bli med",
     "inProgressLabel": "Tidligere fullført",
-    "availableLabel": "Opprett aktivitet",
     "rateActivityTitle": "Hvordan var denne aktiviteten?",
     "rateActivityCommentHint": "Legg til en kommentar (valgfritt)",
     "rateActivityCommentRejected": "Kommentaren din kunne ikke publiseres. Prøv å omformulere den, eller send inn vurderingen din uten en kommentar.",
@@ -9906,5 +9905,8 @@
     "constructLevelSeeds": "Frø, nye ord",
     "constructLevelGreens": "Grønt, voksende ord",
     "constructLevelFlowers": "Blomster, mestret ord",
-    "filterAndSearch": "Filtrer og søk"
+    "filterAndSearch": "Filtrer og søk",
+    "participantsOfTotal": "{filled} av {total} spillere",
+    "mapAttributionLabel": "OpenStreetMap-bidragsytere, opphavsrett og lisens",
+    "availableLabel": "Ikke startet ennå"
 }

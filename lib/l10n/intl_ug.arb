@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-02 12:25:33.172897",
+    "@@last_modified": "2026-09-02 13:00:22.460662",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "باشقىلارنىڭ قاتنىشىشىنى كۈتۈۋاتىدۇ",
     "joinableLabel": "قاتنىشالايدۇ",
     "inProgressLabel": "ئىلگىرى تاماملىنىپ بولغان",
-    "availableLabel": "پائالىيەت قۇرۇش",
     "rateActivityTitle": "بۇ پائالىيەت قانداقراق بولدى؟",
     "rateActivityCommentHint": "ئىزاھات قوشۇش (ئىختىيارىي)",
     "rateActivityCommentRejected": "ئىزاھاتىڭىز يوللانمىدى. قايتا تېكىستلەپ بېقىڭ ياكى باھايىڭىزنى ئىزاھاتسىز يوللاڭ.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "ئۇرۇقلار، يېڭى سۆزلەر",
     "constructLevelGreens": "كۆكلەم، ئۆسۈۋاتقان سۆزلەر",
     "constructLevelFlowers": "گۈللەر، پىششىق سۆزلەر",
-    "filterAndSearch": "سۈزۈش ۋە ئىزدەش"
+    "filterAndSearch": "سۈزۈش ۋە ئىزدەش",
+    "participantsOfTotal": "{total} قويغۇچنىڭ {filled} ى",
+    "mapAttributionLabel": "OpenStreetMap تۆھپىكارلىرى، نەشر ھوقۇقى ۋە ئىجازەتنامىسى",
+    "availableLabel": "تېخى باشلانمىدى"
 }

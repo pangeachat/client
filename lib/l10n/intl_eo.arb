@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 12:25:24.741927",
+    "@@last_modified": "2026-09-02 13:00:13.269297",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10574,7 +10574,6 @@
     "ongoingPendingLabel": "Atendante ke aliaj aliĝu",
     "joinableLabel": "Aliĝebla",
     "inProgressLabel": "Antaŭe kompletigita",
-    "availableLabel": "Krei agadon",
     "rateActivityTitle": "Kiel estis ĉi tiu agado?",
     "rateActivityCommentHint": "Aldonu komenton (nedeviga)",
     "rateActivityCommentRejected": "Via komento ne povis esti afiŝita. Provu reformuli ĝin, aŭ sendu vian takson sen komento.",
@@ -10794,5 +10793,8 @@
     "constructLevelSeeds": "Semoj, novaj vortoj",
     "constructLevelGreens": "Verdaĵoj, kreskantaj vortoj",
     "constructLevelFlowers": "Floroj, regataj vortoj",
-    "filterAndSearch": "Filtri kaj serĉi"
+    "filterAndSearch": "Filtri kaj serĉi",
+    "participantsOfTotal": "{filled} el {total} ludantoj",
+    "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
+    "availableLabel": "Ankoraŭ ne komencita"
 }

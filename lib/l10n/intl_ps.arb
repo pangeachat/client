@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-02 12:25:30.596323",
+    "@@last_modified": "2026-09-02 13:00:34.862831",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "د نورو د شاملیدو په تمه",
     "joinableLabel": "د ګډون وړ",
     "inProgressLabel": "پخوا بشپړ شوی",
-    "availableLabel": "فعالیت جوړ کړئ",
     "rateActivityTitle": "دا فعالیت څنګه و؟",
     "rateActivityCommentHint": "یو نظر اضافه کړئ (اختیاري)",
     "rateActivityCommentRejected": "ستاسو نظر نشو خپرولی. هڅه وکړئ چې بیا یې ولیکئ، یا خپله درجه بې له کوم نظر څخه وسپارئ.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "تخمونه، نوې کلمې",
     "constructLevelGreens": "شنه، وده کوونکې کلمې",
     "constructLevelFlowers": "ګلان، ماسټر شوې کلمې",
-    "filterAndSearch": "فلټر او لټون"
+    "filterAndSearch": "فلټر او لټون",
+    "participantsOfTotal": "د {total} لوبغاړو څخه {filled}",
+    "mapAttributionLabel": "د OpenStreetMap مرسته کوونکي، د چاپ حق او جواز",
+    "availableLabel": "تر اوسه نه دی پیل شوی"
 }

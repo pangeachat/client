@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-02 12:25:30.055536",
+    "@@last_modified": "2026-09-02 13:00:18.833406",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "ਦੂਜਿਆਂ ਦੇ ਸ਼ਾਮਲ ਹੋਣ ਦੀ ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ",
     "joinableLabel": "ਸ਼ਾਮਲ ਹੋਣ ਯੋਗ",
     "inProgressLabel": "ਪਹਿਲਾਂ ਪੂਰਾ ਕੀਤਾ ਗਿਆ",
-    "availableLabel": "ਗਤੀਵਿਧੀ ਬਣਾਓ",
     "rateActivityTitle": "ਇਹ ਗਤੀਵਿਧੀ ਕਿਹੋ ਜਿਹੀ ਸੀ?",
     "rateActivityCommentHint": "ਇੱਕ ਟਿੱਪਣੀ ਸ਼ਾਮਲ ਕਰੋ (ਵਿਕਲਪਿਕ)",
     "rateActivityCommentRejected": "ਤੁਹਾਡੀ ਟਿੱਪਣੀ ਪੋਸਟ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ। ਇਸਨੂੰ ਦੁਬਾਰਾ ਲਿਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਬਿਨਾਂ ਟਿੱਪਣੀ ਦੇ ਆਪਣੀ ਰੇਟਿੰਗ ਜਮ੍ਹਾਂ ਕਰੋ।",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "ਬੀਜ, ਨਵੇਂ ਸ਼ਬਦ",
     "constructLevelGreens": "ਹਰੇ, ਵਧ ਰਹੇ ਸ਼ਬਦ",
     "constructLevelFlowers": "ਫੁੱਲ, ਮੁਹਾਰਤ ਵਾਲੇ ਸ਼ਬਦ",
-    "filterAndSearch": "ਫਿਲਟਰ ਕਰੋ ਅਤੇ ਖੋਜੋ"
+    "filterAndSearch": "ਫਿਲਟਰ ਕਰੋ ਅਤੇ ਖੋਜੋ",
+    "participantsOfTotal": "{total} ਖਿਡਾਰੀਆਂ ਵਿੱਚੋਂ {filled}",
+    "mapAttributionLabel": "ਓਪਨਸਟ੍ਰੀਟਮੈਪ ਯੋਗਦਾਨੀ, ਕਾਪੀਰਾਈਟ ਅਤੇ ਲਾਇਸੰਸ",
+    "availableLabel": "ਅਜੇ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋਇਆ"
 }

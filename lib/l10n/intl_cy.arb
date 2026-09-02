@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-02 12:25:24.176540",
+    "@@last_modified": "2026-09-02 13:00:12.654475",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Yn aros i eraill ymuno",
     "joinableLabel": "Yn agored i ymuno",
     "inProgressLabel": "Wedi'i gwblhau'n flaenorol",
-    "availableLabel": "Creu gweithgaredd",
     "rateActivityTitle": "Sut oedd y gweithgaredd hwn?",
     "rateActivityCommentHint": "Ychwanegu sylw (dewisol)",
     "rateActivityCommentRejected": "Ni ellid postio'ch sylw. Ceisiwch ei aildrefnu, neu cyflwynwch eich sgôr heb sylw.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Hadau, geiriau newydd",
     "constructLevelGreens": "Gwyrddion, geiriau sy'n tyfu",
     "constructLevelFlowers": "Blodau, geiriau wedi'u meistroli",
-    "filterAndSearch": "Hidlo a chwilio"
+    "filterAndSearch": "Hidlo a chwilio",
+    "participantsOfTotal": "{filled} o {total} chwaraewr",
+    "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
+    "availableLabel": "Heb ddechrau eto"
 }

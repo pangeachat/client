@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-02 12:25:28.592401",
+    "@@last_modified": "2026-09-02 13:00:17.188697",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Miandry ny hafa hiditra",
     "joinableLabel": "Azo idirana",
     "inProgressLabel": "Efa vita teo aloha",
-    "availableLabel": "Mamorona asa",
     "rateActivityTitle": "Ahoana ity asa ity?",
     "rateActivityCommentHint": "Ampio fanehoan-kevitra (tsy voatery)",
     "rateActivityCommentRejected": "Tsy afaka nampidirina ny fanehoan-kevitrao. Andramo ovaina ny teny, na alefaso ny naoty tsy misy fanehoan-kevitra.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Voa, teny vaovao",
     "constructLevelGreens": "Zavamaniry, teny mitombo",
     "constructLevelFlowers": "Voninkazo, teny efa mahay",
-    "filterAndSearch": "Sivana sy karoka"
+    "filterAndSearch": "Sivana sy karoka",
+    "participantsOfTotal": "{filled} amin'ny mpilalao {total}",
+    "mapAttributionLabel": "Mpanome anjara OpenStreetMap, zon'ny mpamorona ary fahazoan-dàlana",
+    "availableLabel": "Mbola tsy nanomboka"
 }

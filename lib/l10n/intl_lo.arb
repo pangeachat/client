@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-02 12:25:28.409960",
+    "@@last_modified": "2026-09-02 13:00:17.130093",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "ກຳລັງລໍຖ້າຄົນອື່ນເຂົ້າຮ່ວມ",
     "joinableLabel": "ສາມາດເຂົ້າຮ່ວມໄດ້",
     "inProgressLabel": "ສຳເລັດແລ້ວກ່ອນໜ້ານີ້",
-    "availableLabel": "ສ້າງກິດຈະກຳ",
     "rateActivityTitle": "ກິດຈະກຳນີ້ເປັນແນວໃດ?",
     "rateActivityCommentHint": "ເພີ່ມຄຳເຫັນ (ທາງເລືອກ)",
     "rateActivityCommentRejected": "ບໍ່ສາມາດໂພສຄຳເຫັນຂອງທ່ານໄດ້. ລອງປ່ຽນຄຳເວົ້າໃໝ່, ຫຼືສົ່ງການໃຫ້ຄະແນນຂອງທ່ານໂດຍບໍ່ມີຄຳເຫັນ.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "ແກ່ນ, ຄຳສັບໃໝ່",
     "constructLevelGreens": "ຕົ້ນອ່ອນ, ຄຳສັບທີ່ກຳລັງຮຽນ",
     "constructLevelFlowers": "ດອກໄມ້, ຄຳສັບທີ່ຮຽນຈົບແລ້ວ",
-    "filterAndSearch": "ກັ່ນຕອງ ແລະ ຄົ້ນຫາ"
+    "filterAndSearch": "ກັ່ນຕອງ ແລະ ຄົ້ນຫາ",
+    "participantsOfTotal": "{filled} ຈາກ {total} ຜູ້ຫຼິ້ນ",
+    "mapAttributionLabel": "ຜູ້ປະກອບສ່ວນ OpenStreetMap, ລິຂະສິດ ແລະ ໃບອະນຸຍາດ",
+    "availableLabel": "ຍັງບໍ່ທັນເລີ່ມຕົ້ນ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-02 12:25:23.505922",
+    "@@last_modified": "2026-09-02 13:00:12.317298",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "আনসকলৰ যোগদানৰ বাবে অপেক্ষা কৰি আছে",
     "joinableLabel": "যোগদান কৰিব পৰা",
     "inProgressLabel": "পূৰ্বে সম্পূৰ্ণ কৰা হৈছে",
-    "availableLabel": "কাৰ্যকলাপ সৃষ্টি কৰক",
     "rateActivityTitle": "এই কাৰ্যকলাপটো কেনেকুৱা আছিল?",
     "rateActivityCommentHint": "এটা মন্তব্য যোগ কৰক (ঐচ্ছিক)",
     "rateActivityCommentRejected": "আপোনাৰ মন্তব্য পোষ্ট কৰিব পৰা নগ'ল। ইয়াক পুনৰ লিখিবলৈ চেষ্টা কৰক, অথবা মন্তব্য অবিহনে আপোনাৰ ৰেটিং দাখিল কৰক।",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "বীজ, নতুন শব্দ",
     "constructLevelGreens": "সেউজীয়া, বৰ্ধিত শব্দ",
     "constructLevelFlowers": "ফুল, আয়ত্ত কৰা শব্দ",
-    "filterAndSearch": "ফিল্টাৰ আৰু সন্ধান কৰক"
+    "filterAndSearch": "ফিল্টাৰ আৰু সন্ধান কৰক",
+    "participantsOfTotal": "{total} জন খেলুৱৈৰ ভিতৰত {filled} জন",
+    "mapAttributionLabel": "OpenStreetMap অৱদানকাৰী, স্বত্বাধিকাৰ আৰু অনুজ্ঞাপত্ৰ",
+    "availableLabel": "এতিয়াও আৰম্ভ হোৱা নাই"
 }

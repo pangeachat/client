@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-02 12:25:27.582043",
+    "@@last_modified": "2026-09-02 13:00:16.357667",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Басқалардың қосылуын күтуде",
     "joinableLabel": "Қосылуға болады",
     "inProgressLabel": "Бұрын аяқталған",
-    "availableLabel": "Әрекет жасау",
     "rateActivityTitle": "Бұл әрекет қалай болды?",
     "rateActivityCommentHint": "Пікір қосу (міндетті емес)",
     "rateActivityCommentRejected": "Пікіріңізді жариялау мүмкін болмады. Оны қайта тұжырымдап көріңіз немесе пікірсіз бағаңызды жіберіңіз.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Тұқымдар, жаңа сөздер",
     "constructLevelGreens": "Көктер, өсіп келе жатқан сөздер",
     "constructLevelFlowers": "Гүлдер, меңгерілген сөздер",
-    "filterAndSearch": "Сүзгілеу және іздеу"
+    "filterAndSearch": "Сүзгілеу және іздеу",
+    "participantsOfTotal": "{total} ойыншының {filled}-і",
+    "mapAttributionLabel": "OpenStreetMap қатысушылары, авторлық құқық және лицензия",
+    "availableLabel": "Әлі басталған жоқ"
 }

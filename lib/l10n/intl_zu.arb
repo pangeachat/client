@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-02 12:25:34.038922",
+    "@@last_modified": "2026-09-02 13:00:23.273123",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Kulindwe abanye ukuthi bajoyine",
     "joinableLabel": "Kuyajoyineka",
     "inProgressLabel": "Kuqedwe ngaphambilini",
-    "availableLabel": "Dala umsebenzi",
     "rateActivityTitle": "Lunjani lolu hlelo?",
     "rateActivityCommentHint": "Faka amazwana (ongakukhetha)",
     "rateActivityCommentRejected": "Amazwana akho awakwazanga ukuthunyelwa. Zama ukuwashintsha, noma thumela isilinganiso sakho ngaphandle kwamazwana.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Imbewu, amagama amasha",
     "constructLevelGreens": "Okuluhlaza, amagama akhulayo",
     "constructLevelFlowers": "Izimbali, amagama asezingeni eliphezulu",
-    "filterAndSearch": "Hlunga bese usesha"
+    "filterAndSearch": "Hlunga bese usesha",
+    "participantsOfTotal": "{filled} kwabangu-{total} abadlali",
+    "mapAttributionLabel": "Abanikeli be-OpenStreetMap, i-copyright nelayisense",
+    "availableLabel": "Ayikaqali"
 }

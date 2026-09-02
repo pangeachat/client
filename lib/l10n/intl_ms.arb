@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-02 12:25:29.195935",
+    "@@last_modified": "2026-09-02 13:00:17.751648",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Menunggu orang lain untuk menyertai",
     "joinableLabel": "Boleh disertai",
     "inProgressLabel": "Selesai sebelumnya",
-    "availableLabel": "Cipta aktiviti",
     "rateActivityTitle": "Bagaimana aktiviti ini?",
     "rateActivityCommentHint": "Tambah komen (pilihan)",
     "rateActivityCommentRejected": "Komen anda tidak dapat disiarkan. Cuba ubah perkataan, atau hantar penilaian anda tanpa komen.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Benih, perkataan baharu",
     "constructLevelGreens": "Hijau, perkataan yang berkembang",
     "constructLevelFlowers": "Bunga, perkataan yang dikuasai",
-    "filterAndSearch": "Tapis dan cari"
+    "filterAndSearch": "Tapis dan cari",
+    "participantsOfTotal": "{filled} daripada {total} pemain",
+    "mapAttributionLabel": "Penyumbang OpenStreetMap, hak cipta dan lesen",
+    "availableLabel": "Belum bermula"
 }

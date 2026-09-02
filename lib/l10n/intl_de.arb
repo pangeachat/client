@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-02 12:25:24.288138",
+    "@@last_modified": "2026-09-02 13:00:12.762261",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9616,7 +9616,6 @@
     "ongoingPendingLabel": "Warten auf weitere Teilnehmer",
     "joinableLabel": "Beitretbar",
     "inProgressLabel": "Zuvor abgeschlossen",
-    "availableLabel": "Aktivität erstellen",
     "rateActivityTitle": "Wie war diese Aktivität?",
     "rateActivityCommentHint": "Kommentar hinzufügen (optional)",
     "rateActivityCommentRejected": "Ihr Kommentar konnte nicht gepostet werden. Versuchen Sie, ihn umzuformulieren, oder senden Sie Ihre Bewertung ohne Kommentar ab.",
@@ -9836,5 +9835,8 @@
     "constructLevelSeeds": "Samen, neue Wörter",
     "constructLevelGreens": "Grün, wachsende Wörter",
     "constructLevelFlowers": "Blüten, gemeisterte Wörter",
-    "filterAndSearch": "Filtern und suchen"
+    "filterAndSearch": "Filtern und suchen",
+    "participantsOfTotal": "{filled} von {total} Spielern",
+    "mapAttributionLabel": "OpenStreetMap-Mitwirkende, Copyright und Lizenz",
+    "availableLabel": "Noch nicht gestartet"
 }

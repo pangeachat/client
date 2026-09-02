@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-02 12:25:31.587212",
+    "@@last_modified": "2026-09-02 13:00:45.860058",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Waxaa la sugayaa kuwa kale inay soo biiraan",
     "joinableLabel": "La soo biiri karo",
     "inProgressLabel": "Horey loo dhammaystiray",
-    "availableLabel": "Samee hawl",
     "rateActivityTitle": "Sidee buu ahaa hawshan?",
     "rateActivityCommentHint": "Ku dar faallo (ikhtiyaari)",
     "rateActivityCommentRejected": "Faalladaada lama soo dhejin karin. Isku day inaad dib u habayso, ama soo gudbi qiimayntaada faallo la'aan.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Abuur, ereyo cusub",
     "constructLevelGreens": "Cagaar, ereyo koraya",
     "constructLevelFlowers": "Ubax, ereyo la bartay",
-    "filterAndSearch": "Shaandhee oo raadi"
+    "filterAndSearch": "Shaandhee oo raadi",
+    "participantsOfTotal": "{filled} ka mid ah {total} ciyaartoy",
+    "mapAttributionLabel": "Kuwa wax ku darsaday OpenStreetMap, xuquuqda daabacaadda iyo shatiga",
+    "availableLabel": "Weli ma bilaaban"
 }

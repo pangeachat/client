@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 12:25:32.985707",
+    "@@last_modified": "2026-09-02 13:00:22.239502",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6921,7 +6921,6 @@
     "ongoingPendingLabel": "Đang chờ những người khác tham gia",
     "joinableLabel": "Có thể tham gia",
     "inProgressLabel": "Đã hoàn thành trước đó",
-    "availableLabel": "Tạo hoạt động",
     "rateActivityTitle": "Hoạt động này thế nào?",
     "rateActivityCommentHint": "Thêm bình luận (không bắt buộc)",
     "rateActivityCommentRejected": "Không thể đăng bình luận của bạn. Hãy thử diễn đạt lại hoặc gửi đánh giá mà không có bình luận.",
@@ -7141,5 +7140,8 @@
     "constructLevelSeeds": "Hạt giống, từ mới",
     "constructLevelGreens": "Cây non, từ đang học",
     "constructLevelFlowers": "Hoa, từ đã thành thạo",
-    "filterAndSearch": "Lọc và tìm kiếm"
+    "filterAndSearch": "Lọc và tìm kiếm",
+    "participantsOfTotal": "{filled} trên {total} người chơi",
+    "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
+    "availableLabel": "Chưa bắt đầu"
 }

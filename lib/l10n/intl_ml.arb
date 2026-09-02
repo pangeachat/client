@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-02 12:25:28.861875",
+    "@@last_modified": "2026-09-02 13:00:17.996953",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "മറ്റുള്ളവർ ചേരുന്നതിനായി കാത്തിരിക്കുന്നു",
     "joinableLabel": "ചേരാവുന്നതാണ്",
     "inProgressLabel": "മുമ്പ് പൂർത്തിയാക്കിയത്",
-    "availableLabel": "പ്രവർത്തനം സൃഷ്ടിക്കുക",
     "rateActivityTitle": "ഈ പ്രവർത്തനം എങ്ങനെ ഉണ്ടായിരുന്നു?",
     "rateActivityCommentHint": "ഒരു അഭിപ്രായം ചേർക്കുക (ഓപ്ഷണൽ)",
     "rateActivityCommentRejected": "നിങ്ങളുടെ അഭിപ്രായം പോസ്റ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ദയവായി മാറ്റിയെഴുതുക, അല്ലെങ്കിൽ അഭിപ്രായമില്ലാതെ നിങ്ങളുടെ റേറ്റിംഗ് സമർപ്പിക്കുക.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "വിത്തുകൾ, പുതിയ വാക്കുകൾ",
     "constructLevelGreens": "ചെടികൾ, വളരുന്ന വാക്കുകൾ",
     "constructLevelFlowers": "പൂക്കൾ, പഠിച്ചെടുത്ത വാക്കുകൾ",
-    "filterAndSearch": "ഫിൽട്ടർ ചെയ്ത് തിരയുക"
+    "filterAndSearch": "ഫിൽട്ടർ ചെയ്ത് തിരയുക",
+    "participantsOfTotal": "{total} കളിക്കാരിൽ {filled} പേർ",
+    "mapAttributionLabel": "OpenStreetMap സംഭാവന ചെയ്യുന്നവർ, പകർപ്പവകാശം, ലൈസൻസ്",
+    "availableLabel": "ഇതുവരെ ആരംഭിച്ചിട്ടില്ല"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 12:25:23.242372",
+    "@@last_modified": "2026-09-02 13:00:11.792700",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10257,7 +10257,6 @@
     "ongoingPendingLabel": "অন্যদের যোগদানের জন্য অপেক্ষা করা হচ্ছে",
     "joinableLabel": "যোগদানযোগ্য",
     "inProgressLabel": "পূর্বে সম্পন্ন হয়েছে",
-    "availableLabel": "ক্রিয়াকলাপ তৈরি করুন",
     "rateActivityTitle": "এই কার্যকলাপটি কেমন ছিল?",
     "rateActivityCommentHint": "একটি মন্তব্য যোগ করুন (ঐচ্ছিক)",
     "rateActivityCommentRejected": "আপনার মন্তব্য পোস্ট করা যায়নি। এটি অন্যভাবে লেখার চেষ্টা করুন, অথবা মন্তব্য ছাড়াই আপনার রেটিং জমা দিন।",
@@ -10477,5 +10476,8 @@
     "constructLevelSeeds": "বীজ, নতুন শব্দ",
     "constructLevelGreens": "সবুজ, ক্রমবর্ধমান শব্দ",
     "constructLevelFlowers": "ফুল, আয়ত্ত করা শব্দ",
-    "filterAndSearch": "ফিল্টার এবং অনুসন্ধান"
+    "filterAndSearch": "ফিল্টার এবং অনুসন্ধান",
+    "participantsOfTotal": "{total} জন খেলোয়াড়ের মধ্যে {filled} জন",
+    "mapAttributionLabel": "OpenStreetMap অবদানকারী, কপিরাইট এবং লাইসেন্স",
+    "availableLabel": "এখনো শুরু হয়নি"
 }

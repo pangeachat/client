@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 12:25:30.224027",
+    "@@last_modified": "2026-09-02 13:00:19.148193",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10573,7 +10573,6 @@
     "ongoingPendingLabel": "Aguardando outros entrarem",
     "joinableLabel": "Disponível para entrar",
     "inProgressLabel": "Concluído anteriormente",
-    "availableLabel": "Criar atividade",
     "rateActivityTitle": "O que achou desta atividade?",
     "rateActivityCommentHint": "Adicione um comentário (opcional)",
     "rateActivityCommentRejected": "Não foi possível publicar seu comentário. Tente reformulá-lo ou envie sua avaliação sem um comentário.",
@@ -10793,5 +10792,8 @@
     "constructLevelSeeds": "Sementes, novas palavras",
     "constructLevelGreens": "Verdes, palavras em crescimento",
     "constructLevelFlowers": "Flores, palavras dominadas",
-    "filterAndSearch": "Filtrar e pesquisar"
+    "filterAndSearch": "Filtrar e pesquisar",
+    "participantsOfTotal": "{filled} de {total} jogadores",
+    "mapAttributionLabel": "Colaboradores do OpenStreetMap, direitos autorais e licença",
+    "availableLabel": "Ainda não começou"
 }

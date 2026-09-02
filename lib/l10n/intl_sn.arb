@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-02 12:25:31.533665",
+    "@@last_modified": "2026-09-02 13:00:20.348559",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Kwakumirirwa vamwe kuti vabatane",
     "joinableLabel": "Inobatika",
     "inProgressLabel": "Yakapedzwa kare",
-    "availableLabel": "Gadzira chiitiko",
     "rateActivityTitle": "Chiitiko ichi chaive sei?",
     "rateActivityCommentHint": "Wedzera chirevo (sarudzo)",
     "rateActivityCommentRejected": "Chirevo chako hachina kukwanisa kutumirwa. Edza kuchinyora zvakare, kana tumira chiyero chako pasina chirevo.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Mbeu, mazwi matsva",
     "constructLevelGreens": "Muriwo, mazwi ari kukura",
     "constructLevelFlowers": "Maruva, mazwi akadzidzwa",
-    "filterAndSearch": "Sefa nekutsvaga"
+    "filterAndSearch": "Sefa nekutsvaga",
+    "participantsOfTotal": "Vatambi {filled} pa {total}",
+    "mapAttributionLabel": "Vabatsiri veOpenStreetMap, kodzero yekukopa uye rezinesi",
+    "availableLabel": "Hatisati tatanga"
 }

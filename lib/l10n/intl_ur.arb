@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-02 12:25:32.761997",
+    "@@last_modified": "2026-09-02 13:00:22.258669",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "دوسروں کے شامل ہونے کا انتظار ہے",
     "joinableLabel": "شامل ہونے کے قابل",
     "inProgressLabel": "پہلے مکمل ہو چکا ہے",
-    "availableLabel": "سرگرمی بنائیں",
     "rateActivityTitle": "یہ سرگرمی کیسی تھی؟",
     "rateActivityCommentHint": "ایک تبصرہ شامل کریں (اختیاری)",
     "rateActivityCommentRejected": "آپ کا تبصرہ پوسٹ نہیں ہو سکا۔ اسے دوبارہ لکھنے کی کوشش کریں، یا تبصرے کے بغیر اپنی درجہ بندی جمع کروائیں۔",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "بیج، نئے الفاظ",
     "constructLevelGreens": "سبزیاں، بڑھتے ہوئے الفاظ",
     "constructLevelFlowers": "پھول، مہارت حاصل کیے ہوئے الفاظ",
-    "filterAndSearch": "فلٹر اور تلاش کریں"
+    "filterAndSearch": "فلٹر اور تلاش کریں",
+    "participantsOfTotal": "{total} کھلاڑیوں میں سے {filled}",
+    "mapAttributionLabel": "اوپن سٹریٹ میپ کے معاونین، کاپی رائٹ اور لائسنس",
+    "availableLabel": "ابھی شروع نہیں ہوا"
 }

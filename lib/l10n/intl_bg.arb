@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-02 12:25:23.231548",
+    "@@last_modified": "2026-09-02 13:00:12.181098",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Изчакване на други да се присъединят",
     "joinableLabel": "Може да се присъедините",
     "inProgressLabel": "Предишно завършени",
-    "availableLabel": "Създаване на дейност",
     "rateActivityTitle": "Как беше това занимание?",
     "rateActivityCommentHint": "Добавете коментар (по избор)",
     "rateActivityCommentRejected": "Коментарът ви не можа да бъде публикуван. Опитайте да го преформулирате или изпратете оценката си без коментар.",
@@ -2253,5 +2252,8 @@
     "constructLevelSeeds": "Семена, нови думи",
     "constructLevelGreens": "Кълнове, растящи думи",
     "constructLevelFlowers": "Цветя, овладени думи",
-    "filterAndSearch": "Филтриране и търсене"
+    "filterAndSearch": "Филтриране и търсене",
+    "participantsOfTotal": "{filled} от {total} играчи",
+    "mapAttributionLabel": "Сътрудници на OpenStreetMap, авторски права и лиценз",
+    "availableLabel": "Все още не е започнало"
 }
