@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-09-01 17:05:13.059676",
+    "@@last_modified": "2026-09-02 11:41:20.483847",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Na-archive nga chat",
     "activityReview": "Pagrepaso sa kalihokan",
     "activityPanel": "Kalihokan",
-    "coursePage": "Panid sa kurso"
+    "coursePage": "Panid sa kurso",
+    "suggestedActivities": "Gisugyot nga mga Kalihokan"
 }

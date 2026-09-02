@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-01 17:05:27.741894",
+    "@@last_modified": "2026-09-02 11:41:27.136334",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10789,5 +10789,6 @@
     "archivedChat": "Archivovaný chat",
     "activityReview": "Prehľad aktivity",
     "activityPanel": "Aktivita",
-    "coursePage": "Stránka kurzu"
+    "coursePage": "Stránka kurzu",
+    "suggestedActivities": "Navrhované aktivity"
 }

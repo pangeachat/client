@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-09-01 17:05:23.715557",
+    "@@last_modified": "2026-09-02 11:41:25.154130",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2248,5 +2248,6 @@
     "archivedChat": "မှတ်တမ်းတင်ထားသော ချတ်",
     "activityReview": "လုပ်ဆောင်ချက် ပြန်လည်သုံးသပ်ခြင်း",
     "activityPanel": "လုပ်ဆောင်ချက်",
-    "coursePage": "သင်တန်းစာမျက်နှာ"
+    "coursePage": "သင်တန်းစာမျက်နှာ",
+    "suggestedActivities": "အကြံပြုထားသော လှုပ်ရှားမှုများ"
 }

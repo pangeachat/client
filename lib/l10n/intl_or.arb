@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-01 17:05:25.323631",
+    "@@last_modified": "2026-09-02 11:41:26.003901",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2248,5 +2248,6 @@
     "archivedChat": "ଆର୍କାଇଭ୍ ହୋଇଥିବା ଚାଟ୍",
     "activityReview": "କାର୍ଯ୍ୟକଳାପ ସମୀକ୍ଷା",
     "activityPanel": "କାର୍ଯ୍ୟକଳାପ",
-    "coursePage": "କୋର୍ସ ପୃଷ୍ଠା"
+    "coursePage": "କୋର୍ସ ପୃଷ୍ଠା",
+    "suggestedActivities": "ପରାମର୍ଶିତ କାର୍ଯ୍ୟକଳାପ"
 }

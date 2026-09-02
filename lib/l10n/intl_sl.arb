@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-01 17:05:26.510834",
+    "@@last_modified": "2026-09-02 11:41:28.011814",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10789,5 +10789,6 @@
     "archivedChat": "Arhiviran klepet",
     "activityReview": "Pregled dejavnosti",
     "activityPanel": "Dejavnost",
-    "coursePage": "Stran tečaja"
+    "coursePage": "Stran tečaja",
+    "suggestedActivities": "Predlagane dejavnosti"
 }

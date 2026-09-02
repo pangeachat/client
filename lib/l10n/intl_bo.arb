@@ -2920,7 +2920,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-01 17:05:14.060917",
+    "@@last_modified": "2026-09-02 11:41:19.645016",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9455,5 +9455,6 @@
     "archivedChat": "ཉར་ཚགས་བྱས་པའི་སྐད་ཆ།",
     "activityReview": "བྱེད་སྒོ་བསྐྱར་ཞིབ།",
     "activityPanel": "བྱེད་སྒོ།",
-    "coursePage": "སློབ་ཚན་ཤོག་ངོས།"
+    "coursePage": "སློབ་ཚན་ཤོག་ངོས།",
+    "suggestedActivities": "བྱེད་སྒོ་འཆར་འགོད།"
 }

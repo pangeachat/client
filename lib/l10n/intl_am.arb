@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-01 17:05:12.471957",
+    "@@last_modified": "2026-09-02 11:41:19.564204",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2248,5 +2248,6 @@
     "archivedChat": "የታገደ ውይይት",
     "activityReview": "የእንቅስቃሴ ግምገማ",
     "activityPanel": "እንቅስቃሴ",
-    "coursePage": "የኮርስ ገጽ"
+    "coursePage": "የኮርስ ገጽ",
+    "suggestedActivities": "የሚመከሩ እንቅስቃሴዎች"
 }

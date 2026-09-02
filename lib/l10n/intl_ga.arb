@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-01 17:05:14.709477",
+    "@@last_modified": "2026-09-02 11:41:21.078482",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9855,5 +9855,6 @@
     "archivedChat": "Comhrá cartlainne",
     "activityReview": "Athbhreithniú gníomhaíochta",
     "activityPanel": "Gníomhaíocht",
-    "coursePage": "Leathanach cúrsa"
+    "coursePage": "Leathanach cúrsa",
+    "suggestedActivities": "Gníomhaíochtaí Molta"
 }

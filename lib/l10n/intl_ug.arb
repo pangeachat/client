@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-01 17:05:28.820054",
+    "@@last_modified": "2026-09-02 11:41:29.816342",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "ئارخىپلانغان پاراڭ",
     "activityReview": "پائالىيەت تەكشۈرۈش",
     "activityPanel": "پائالىيەت",
-    "coursePage": "كۇرس بېتى"
+    "coursePage": "كۇرس بېتى",
+    "suggestedActivities": "تەكلىپ قىلىنغان پائالىيەتلەر"
 }

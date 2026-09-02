@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-01 17:05:28.856947",
+    "@@last_modified": "2026-09-02 11:41:48.180934",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Чат бойгонӣ шуд",
     "activityReview": "Баррасии фаъолият",
     "activityPanel": "Фаъолият",
-    "coursePage": "Саҳифаи курс"
+    "coursePage": "Саҳифаи курс",
+    "suggestedActivities": "Фаъолиятҳои пешниҳодшуда"
 }

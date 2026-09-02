@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-01 17:05:19.079632",
+    "@@last_modified": "2026-09-02 11:41:33.969103",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10780,5 +10780,6 @@
     "archivedChat": "Chat archivate",
     "activityReview": "Revista de activitate",
     "activityPanel": "Activitate",
-    "coursePage": "Pagina del curso"
+    "coursePage": "Pagina del curso",
+    "suggestedActivities": "Activitates suggerite"
 }

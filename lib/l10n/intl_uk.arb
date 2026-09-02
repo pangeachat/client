@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-01 17:05:29.269700",
+    "@@last_modified": "2026-09-02 11:41:36.031450",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9844,5 +9844,6 @@
     "archivedChat": "Архівний чат",
     "activityReview": "Огляд активності",
     "activityPanel": "Активність",
-    "coursePage": "Сторінка курсу"
+    "coursePage": "Сторінка курсу",
+    "suggestedActivities": "Пропоновані заняття"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-01 17:05:24.001011",
+    "@@last_modified": "2026-09-02 11:41:25.622126",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2248,5 +2248,6 @@
     "archivedChat": "संग्रहित च्याट",
     "activityReview": "गतिविधि समीक्षा",
     "activityPanel": "गतिविधि",
-    "coursePage": "पाठ्यक्रम पृष्ठ"
+    "coursePage": "पाठ्यक्रम पृष्ठ",
+    "suggestedActivities": "सुझाएका गतिविधिहरू"
 }

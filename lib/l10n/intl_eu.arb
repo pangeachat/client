@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-01 17:05:13.901618",
+    "@@last_modified": "2026-09-02 11:41:20.961660",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9844,5 +9844,6 @@
     "archivedChat": "Artxibatutako txata",
     "activityReview": "Jardueraren berrikuspena",
     "activityPanel": "Jarduera",
-    "coursePage": "Ikastaroaren orria"
+    "coursePage": "Ikastaroaren orria",
+    "suggestedActivities": "Iradokitako jarduerak"
 }

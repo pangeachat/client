@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-01 17:05:28.540001",
+    "@@last_modified": "2026-09-02 11:41:28.689672",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Puisano e bolokilweng",
     "activityReview": "Tlhahlobo ya tshebetso",
     "activityPanel": "Tshebetso",
-    "coursePage": "Leqephe la thupelo"
+    "coursePage": "Leqephe la thupelo",
+    "suggestedActivities": "Mesebetsi e Khothalletsoang"
 }

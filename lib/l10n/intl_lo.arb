@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-01 17:05:24.396280",
+    "@@last_modified": "2026-09-02 11:41:23.814057",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "ແຊັດທີ່ເກັບໄວ້",
     "activityReview": "ກວດສອບກິດຈະກຳ",
     "activityPanel": "ກິດຈະກຳ",
-    "coursePage": "ໜ້າຫຼັກສູດ"
+    "coursePage": "ໜ້າຫຼັກສູດ",
+    "suggestedActivities": "ກິດຈະກຳທີ່ແນະນຳ"
 }

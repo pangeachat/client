@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-01 17:05:27.579023",
+    "@@last_modified": "2026-09-02 11:41:27.515010",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "සංරක්ෂිත කතාබස්",
     "activityReview": "ක්‍රියාකාරකම් සමාලෝචනය",
     "activityPanel": "ක්‍රියාකාරකම්",
-    "coursePage": "පාඨමාලා පිටුව"
+    "coursePage": "පාඨමාලා පිටුව",
+    "suggestedActivities": "යෝජිත ක්‍රියාකාරකම්"
 }

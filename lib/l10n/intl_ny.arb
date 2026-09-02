@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-01 17:05:25.635842",
+    "@@last_modified": "2026-09-02 11:41:25.870734",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Macheza osungidwa",
     "activityReview": "Kuwunika zochitika",
     "activityPanel": "Zochitika",
-    "coursePage": "Tsamba la maphunziro"
+    "coursePage": "Tsamba la maphunziro",
+    "suggestedActivities": "Zochita Zoperekedwa"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 17:05:30.061575",
+    "@@last_modified": "2026-09-02 11:41:30.360108",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7136,5 +7136,6 @@
     "archivedChat": "Trò chuyện đã lưu trữ",
     "activityReview": "Xem lại hoạt động",
     "activityPanel": "Hoạt động",
-    "coursePage": "Trang khóa học"
+    "coursePage": "Trang khóa học",
+    "suggestedActivities": "Hoạt động gợi ý"
 }

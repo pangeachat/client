@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-01 17:05:18.300228",
+    "@@last_modified": "2026-09-02 11:41:21.600634",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Kūkākūkā i waihona ʻia",
     "activityReview": "Nānā hana",
     "activityPanel": "Hana",
-    "coursePage": "ʻAoʻao papa"
+    "coursePage": "ʻAoʻao papa",
+    "suggestedActivities": "Nā Hana I Manaʻo ʻia"
 }

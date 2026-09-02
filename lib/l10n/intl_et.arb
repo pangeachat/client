@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-01 17:05:15.028157",
+    "@@last_modified": "2026-09-02 11:41:20.952321",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9841,5 +9841,6 @@
     "archivedChat": "Arhiveeritud vestlus",
     "activityReview": "Tegevuste ülevaade",
     "activityPanel": "Tegevus",
-    "coursePage": "Kursuse leht"
+    "coursePage": "Kursuse leht",
+    "suggestedActivities": "Soovitatud tegevused"
 }

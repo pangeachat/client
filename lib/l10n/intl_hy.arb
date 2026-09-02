@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-01 17:05:18.005057",
+    "@@last_modified": "2026-09-02 11:41:22.084293",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Արխիվացված զրույց",
     "activityReview": "Գործունեության վերանայում",
     "activityPanel": "Գործունեություն",
-    "coursePage": "Դասընթացի էջ"
+    "coursePage": "Դասընթացի էջ",
+    "suggestedActivities": "Առաջարկվող գործողություններ"
 }

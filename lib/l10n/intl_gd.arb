@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-01 17:05:14.624141",
+    "@@last_modified": "2026-09-02 11:41:21.278540",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Còmhradh tasgaichte",
     "activityReview": "Ath-sgrùdadh gnìomhachd",
     "activityPanel": "Gnìomhachd",
-    "coursePage": "Duilleag cùrsa"
+    "coursePage": "Duilleag cùrsa",
+    "suggestedActivities": "Gnìomhan a thathar a' moladh"
 }

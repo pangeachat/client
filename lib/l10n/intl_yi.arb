@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-01 17:05:31.155153",
+    "@@last_modified": "2026-09-02 11:41:30.885038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "אַרטשיוועד שמועס",
     "activityReview": "אַקטיוויטעט איבערבליק",
     "activityPanel": "אַקטיוויטעט",
-    "coursePage": "קורס בלאַט"
+    "coursePage": "קורס בלאַט",
+    "suggestedActivities": "פֿאָרגעלייגט אַקטיוויטעטן"
 }

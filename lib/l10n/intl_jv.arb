@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-01 17:05:19.597685",
+    "@@last_modified": "2026-09-02 11:41:22.746574",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Obrolan sing diarsipake",
     "activityReview": "Tinjauan aktivitas",
     "activityPanel": "Aktivitas",
-    "coursePage": "Kaca kursus"
+    "coursePage": "Kaca kursus",
+    "suggestedActivities": "Kegiatan sing Disaranake"
 }

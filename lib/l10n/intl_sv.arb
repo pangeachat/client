@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 17:05:28.063251",
+    "@@last_modified": "2026-09-02 11:41:28.518920",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10362,5 +10362,6 @@
     "archivedChat": "Arkiverad chatt",
     "activityReview": "Aktivitetsöversikt",
     "activityPanel": "Aktivitet",
-    "coursePage": "Kurssida"
+    "coursePage": "Kurssida",
+    "suggestedActivities": "Föreslagna aktiviteter"
 }

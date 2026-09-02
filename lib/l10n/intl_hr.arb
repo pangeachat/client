@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-01 17:05:16.608269",
+    "@@last_modified": "2026-09-02 11:41:21.531477",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10280,5 +10280,6 @@
     "archivedChat": "Arhivirani razgovor",
     "activityReview": "Pregled aktivnosti",
     "activityPanel": "Aktivnost",
-    "coursePage": "Stranica tečaja"
+    "coursePage": "Stranica tečaja",
+    "suggestedActivities": "Predložene aktivnosti"
 }

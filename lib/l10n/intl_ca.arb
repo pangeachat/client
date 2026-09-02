@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 17:05:12.985685",
+    "@@last_modified": "2026-09-02 11:41:20.281566",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9971,5 +9971,6 @@
     "archivedChat": "Xat arxivat",
     "activityReview": "Revisió d'activitat",
     "activityPanel": "Activitat",
-    "coursePage": "Pàgina del curs"
+    "coursePage": "Pàgina del curs",
+    "suggestedActivities": "Activitats suggerides"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 17:05:25.733084",
+    "@@last_modified": "2026-09-02 11:41:26.604418",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10576,5 +10576,6 @@
     "archivedChat": "Chat arhivat",
     "activityReview": "Revizuirea activității",
     "activityPanel": "Activitate",
-    "coursePage": "Pagina cursului"
+    "coursePage": "Pagina cursului",
+    "suggestedActivities": "Activități sugerate"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-01 17:05:17.039485",
+    "@@last_modified": "2026-09-02 11:41:32.625784",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Cov lus sib tham qub",
     "activityReview": "Rov saib dua tej yam ua",
     "activityPanel": "Kev ua ub no",
-    "coursePage": "Nplooj ntawv kawm"
+    "coursePage": "Nplooj ntawv kawm",
+    "suggestedActivities": "Cov Kev Ua Si Pom Zoo"
 }

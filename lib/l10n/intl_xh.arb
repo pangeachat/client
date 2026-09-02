@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-01 17:05:30.481057",
+    "@@last_modified": "2026-09-02 11:41:30.960654",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Ingxoxo egciniweyo",
     "activityReview": "Uhlaziyo lomsebenzi",
     "activityPanel": "Umsebenzi",
-    "coursePage": "Iphepha lekhosi"
+    "coursePage": "Iphepha lekhosi",
+    "suggestedActivities": "Imisebenzi Ecetywayo"
 }

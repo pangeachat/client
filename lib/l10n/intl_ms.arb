@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-01 17:05:22.810744",
+    "@@last_modified": "2026-09-02 11:41:25.133199",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "Sembang yang diarkibkan",
     "activityReview": "Semakan aktiviti",
     "activityPanel": "Aktiviti",
-    "coursePage": "Halaman kursus"
+    "coursePage": "Halaman kursus",
+    "suggestedActivities": "Aktiviti yang Dicadangkan"
 }

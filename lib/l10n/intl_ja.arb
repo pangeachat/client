@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-01 17:05:18.537447",
+    "@@last_modified": "2026-09-02 11:41:22.468268",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10613,5 +10613,6 @@
     "archivedChat": "アーカイブ済みチャット",
     "activityReview": "アクティビティレビュー",
     "activityPanel": "アクティビティ",
-    "coursePage": "コースページ"
+    "coursePage": "コースページ",
+    "suggestedActivities": "おすすめのアクティビティ"
 }

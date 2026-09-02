@@ -192,9 +192,10 @@ class _CourseOverviewState extends State<CourseOverview> {
                 key: _sectionKeys[SpaceSettingsTabs.course],
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  CourseSectionHeader(
-                    title: SpaceSettingsTabs.course.title(context),
-                  ),
+                  // The section header names what the row IS — a ranked
+                  // shortlist — not the plan it is drawn from; the plan keeps
+                  // its own name on the subpage this section links to.
+                  CourseSectionHeader(title: l10n.suggestedActivities),
                   const SizedBox(height: 8.0),
                   ListenableBuilder(
                     listenable: Listenable.merge([
@@ -216,23 +217,18 @@ class _CourseOverviewState extends State<CourseOverview> {
                         AsyncLoading() => true,
                         AsyncError() || AsyncIdle() => false,
                       };
-                      // The Up-next highlight can't show a card pinged in
-                      // another Mission, so the link carries the ping badge
-                      // to lead the learner into the full plan (#8454), where
-                      // the card badge / floating ping-bar take over.
-                      final pingLeadsToFullPlan = coursePingLeadsToFullPlan(
-                        ping: CoursePingBadgeCache.instance.value,
-                        courseId: room.id,
-                        planGroups: provider.filteredObjectiveGroups,
-                        upNextGroup: provider.upNextGroup,
-                      );
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
+                          // The shortlist draws from every Mission and ranks a
+                          // pinged activity near the front, so it carries the
+                          // ping badge on the card itself — the link below
+                          // needs none (it did while this was one Mission's
+                          // row, #8454).
                           CourseObjectivesList(
                             room: room,
                             shrinkWrap: true,
-                            upNextOnly: true,
+                            suggestedOnly: true,
                             hasCompletedActivity: (activityId) => widget
                                 .controller
                                 .roomSummariesModel
@@ -248,9 +244,6 @@ class _CourseOverviewState extends State<CourseOverview> {
                               label: l10n.seeFullCoursePlan,
                               onPressed: () =>
                                   _openSubpage(SpaceSettingsTabs.course),
-                              trailing: pingLeadsToFullPlan
-                                  ? const CoursePingBadge()
-                                  : null,
                             ),
                         ],
                       );

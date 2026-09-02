@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-01 17:05:22.135352",
+    "@@last_modified": "2026-09-02 11:41:24.398095",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2248,5 +2248,6 @@
     "archivedChat": "ആർക്കൈവ് ചെയ്ത ചാറ്റ്",
     "activityReview": "പ്രവർത്തന അവലോകനം",
     "activityPanel": "പ്രവർത്തനം",
-    "coursePage": "കോഴ്‌സ് പേജ്"
+    "coursePage": "കോഴ്‌സ് പേജ്",
+    "suggestedActivities": "നിർദ്ദേശിച്ച പ്രവർത്തനങ്ങൾ"
 }

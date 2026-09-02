@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-01 17:05:15.104320",
+    "@@last_modified": "2026-09-02 11:41:20.895384",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10199,5 +10199,6 @@
     "archivedChat": "Discussion archivée",
     "activityReview": "Bilan d'activité",
     "activityPanel": "Activité",
-    "coursePage": "Page du cours"
+    "coursePage": "Page du cours",
+    "suggestedActivities": "Activités suggérées"
 }
