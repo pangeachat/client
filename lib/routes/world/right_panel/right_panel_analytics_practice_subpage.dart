@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_practice_token.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_page.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -38,11 +40,19 @@ class RightPanelAnalyticsPracticeSubpage extends StatelessWidget {
             .layerLinkAndKey("${type.name}_analytics_practice_page")
             .key,
         onGenerateRoute: (_) => MaterialPageRoute(
-          builder: (_) => AnalyticsPractice(
-            type: type,
-            closeIcon: icon,
-            closeTooltip: tooltip,
-            close: close,
+          // Name the route's own scopesRoute semantics node (see the room
+          // subpage, #8729) — same name source as the panel group.
+          builder: (context) => Semantics(
+            namesRoute: true,
+            label: L10n.of(
+              context,
+            ).pageLabel(PanelTypesEnum.practice.displayName(L10n.of(context))),
+            child: AnalyticsPractice(
+              type: type,
+              closeIcon: icon,
+              closeTooltip: tooltip,
+              close: close,
+            ),
           ),
         ),
       ),

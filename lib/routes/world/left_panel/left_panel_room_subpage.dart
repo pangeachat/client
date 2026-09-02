@@ -7,6 +7,7 @@ import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -137,11 +138,22 @@ class LeftPanelRoomSubpage extends StatelessWidget {
           .layerLinkAndKey(chatPanelNavigatorId(tokenType, roomId))
           .key,
       onGenerateRoute: (_) => MaterialPageRoute(
-        builder: (_) => ChatPage(
-          roomId: roomId,
-          eventId: param?.eventId,
-          shareItems: shareItems,
-          backButton: closeButton,
+        // Every route publishes an unremovable scopesRoute semantics node —
+        // an unnamed screen-reader stop between the panel's named group and
+        // the chat. namesRoute is the framework's way to name it: on web the
+        // engine derives the route element's accessible name from this
+        // descendant, using the same name source as the panel group (#8729).
+        builder: (context) => Semantics(
+          namesRoute: true,
+          label: L10n.of(
+            context,
+          ).pageLabel(tokenType.displayName(L10n.of(context))),
+          child: ChatPage(
+            roomId: roomId,
+            eventId: param?.eventId,
+            shareItems: shareItems,
+            backButton: closeButton,
+          ),
         ),
       ),
     );
