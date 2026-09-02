@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
-
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/subscription/subscription_constants.dart';
+import 'package:fluffychat/features/subscription/widgets/star_backdrop.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_content.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/discount_code_view_title.dart';
@@ -33,7 +30,6 @@ class DiscountCodePageState extends State<DiscountCodePage>
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return Scaffold(
       appBar: AppBar(
@@ -51,27 +47,12 @@ class DiscountCodePageState extends State<DiscountCodePage>
       ),
       body: Stack(
         children: [
-          SizedBox.expand(
-            child: ExcludeSemantics(
-              child: CachedNetworkImage(
-                imageUrl:
-                    "${AppConfig.assetsBaseURL}/${SubscriptionConstants.starBackground}",
-                fit: BoxFit.cover,
-                alignment: Alignment.center,
-                placeholder: (context, url) => const SizedBox(),
-                errorWidget: (context, url, error) => const SizedBox(),
-              ),
-            ),
-          ),
+          const StarBackdrop(),
           SingleChildScrollView(
             child: Container(
               alignment: Alignment.topCenter,
               child: Container(
                 padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surface,
-                  borderRadius: BorderRadius.circular(24.0),
-                ),
                 constraints: BoxConstraints(maxWidth: 400),
                 child: DiscountCodeViewContent(
                   viewModel: _viewModel,

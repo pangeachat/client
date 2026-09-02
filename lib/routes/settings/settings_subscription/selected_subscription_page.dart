@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
-import 'package:fluffychat/features/subscription/subscription_constants.dart';
+import 'package:fluffychat/features/subscription/widgets/star_backdrop.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -33,7 +31,6 @@ class SelectedSubscriptionPageState extends State<SelectedSubscriptionPage>
     with PaymentPageMixin {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return ProductsBuilder(
       builder: (context, productsState) {
@@ -62,18 +59,7 @@ class SelectedSubscriptionPageState extends State<SelectedSubscriptionPage>
           ),
           body: Stack(
             children: [
-              SizedBox.expand(
-                child: ExcludeSemantics(
-                  child: CachedNetworkImage(
-                    imageUrl:
-                        "${AppConfig.assetsBaseURL}/${SubscriptionConstants.starBackground}",
-                    fit: BoxFit.cover,
-                    alignment: Alignment.center,
-                    placeholder: (context, url) => const SizedBox(),
-                    errorWidget: (context, url, error) => const SizedBox(),
-                  ),
-                ),
-              ),
+              const StarBackdrop(),
               SingleChildScrollView(
                 child: Container(
                   alignment: Alignment.topCenter,
@@ -82,10 +68,6 @@ class SelectedSubscriptionPageState extends State<SelectedSubscriptionPage>
                       left: 16.0,
                       right: 16.0,
                       bottom: 16.0,
-                    ),
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.surface,
-                      borderRadius: BorderRadius.circular(24.0),
                     ),
                     constraints: BoxConstraints(maxWidth: 400),
                     child: switch (productsState) {

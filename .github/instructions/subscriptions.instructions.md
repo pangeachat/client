@@ -17,6 +17,16 @@ The client holds no payment state. It reads entitlement status from the choreogr
 
 Which purchase surface the client renders — the plans, prices, discount field, and whether checkout is offered — is defined by the org doc's [Platform policy](../../../.github/.github/instructions/subscriptions.instructions.md). The client renders that design; it does not decide it.
 
+## Star backdrop
+
+Every subscription surface — the settings paywall, the selected-plan page, the discount-code page, the billing history, and the onboarding free-trial step — paints the same star field behind its content through [`StarBackdrop`](../../lib/features/subscription/widgets/star_backdrop.dart). One shared widget, so the surfaces cannot drift apart. It is decorative and carries no semantics.
+
+Content sits directly on the art. There is no panel behind it: an opaque panel covers the artwork the backdrop exists to show, which is what made the star and its two characters invisible (#8751). The blocks that need a reading surface already carry one — the PRO features box and the plan chips are framed cards with their own fill — and the art shows in the gaps between them.
+
+The art's opacity is a contrast budget rather than a taste setting. Body text placed on the backdrop has to clear WCAG AA in both themes, and that fixes the ceiling at `starBackgroundOpacity`. Raising it to make the art bolder puts unreadable text back on the paywall.
+
+Two kinds of content cannot clear that budget at any opacity, so they keep a surface of their own: the discount-code field, which the user types into, and the red and green status messages about an entered code. Those two colours are close to the surface's luminance whatever sits behind them.
+
 ## Purchase flow
 
 Selecting a plan requests a checkout URL from the choreographer and opens it in the system browser ([`PaymentPageMixin`](../../lib/routes/settings/settings_subscription/payment_page_mixin.dart)). A `beganPayment` flag survives the round-trip, so returning to the app is recognized as a completed purchase and the entitlement refresh runs. The discount-code field validates the code server-side before checkout, so an error surfaces in the app and the code reaches Stripe pre-applied; the field appears only where the paywall may appear.

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/pro_features_card.dart';
+import 'package:fluffychat/features/subscription/widgets/star_backdrop.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
 
@@ -51,18 +49,7 @@ class FreeTrialStepView extends StatelessWidget {
         ),
         body: Stack(
           children: [
-            SizedBox.expand(
-              child: ExcludeSemantics(
-                child: CachedNetworkImage(
-                  imageUrl:
-                      "${AppConfig.assetsBaseURL}/${SubscriptionConstants.starBackground}",
-                  fit: BoxFit.cover,
-                  alignment: Alignment.center,
-                  placeholder: (context, url) => const SizedBox(),
-                  errorWidget: (context, url, error) => const SizedBox(),
-                ),
-              ),
-            ),
+            const StarBackdrop(),
             Center(
               child: Container(
                 // Matches the wizard shell in onboarding_page.dart.

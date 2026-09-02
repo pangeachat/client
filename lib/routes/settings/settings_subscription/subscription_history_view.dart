@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
-
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/models/subscription_state.dart';
 import 'package:fluffychat/features/subscription/repo_v2/invoice_history_response.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
-import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/frame_container.dart';
+import 'package:fluffychat/features/subscription/widgets/star_backdrop.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/date_formatter.dart';
@@ -60,27 +57,12 @@ class SubscriptionHistoryView extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          SizedBox.expand(
-            child: ExcludeSemantics(
-              child: CachedNetworkImage(
-                imageUrl:
-                    "${AppConfig.assetsBaseURL}/${SubscriptionConstants.starBackground}",
-                fit: BoxFit.cover,
-                alignment: Alignment.center,
-                placeholder: (context, url) => const SizedBox(),
-                errorWidget: (context, url, error) => const SizedBox(),
-              ),
-            ),
-          ),
+          const StarBackdrop(),
           SingleChildScrollView(
             child: Container(
               alignment: Alignment.topCenter,
               child: Container(
                 padding: EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surface,
-                  borderRadius: BorderRadius.circular(24.0),
-                ),
                 constraints: BoxConstraints(maxWidth: 400),
                 child: Column(
                   spacing: 16.0,
