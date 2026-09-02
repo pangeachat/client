@@ -17,6 +17,126 @@ const cfg = require('./config');
 const APP = cfg.appUrl;
 const ACCOUNTS = cfg.accounts;
 
+/// WHICH BUILD THIS WORKTREE PRODUCED, as a filesystem path that cannot be
+/// pointed anywhere else.
+///
+/// Derived from `__dirname` -- the real location of the harness file that is
+/// RUNNING -- rather than from a setting, and that is the whole of why it can
+/// be trusted. Everything else about where the app comes from is configurable
+/// (`APP_URL` moves the server, `CALL_WORK_DIR` moves the profiles), and a
+/// build identity read from configuration would be satisfied by whatever the
+/// configuration pointed at, which is the thing being guarded against.
+const BUILD_DIR = require('path').resolve(__dirname, '..', '..', 'build', 'web');
+
+/// The files whose bytes settle it. Both are CODE: the Dart bundle that is the
+/// subject of every check in this folder, and the loader that chooses it.
+///
+/// NOT `version.json`, and not any other stamp. Two worktrees of one branch
+/// share a version, a build number and an engine revision, and two worktrees at
+/// one commit share a git SHA -- while their `build/web` directories can be
+/// from entirely different commits, which is exactly the case that has already
+/// cost a debugging session here. A stamp answers "what does this build SAY it
+/// is"; the bytes answer "is this the build".
+const BUILD_IDENTITY = ['main.dart.js', 'flutter_bootstrap.js'];
+
+let confirmingBuild = null;
+
+/// Refuses a run against a bundle this worktree did not build.
+///
+/// THE FAILURE THIS EXISTS FOR HAS ALREADY HAPPENED HERE. Two servers were left
+/// running on 8090 and 8091 serving a DIFFERENT worktree's `build/web`, and a
+/// run against them tests code nobody is looking at: green proves nothing, and
+/// red sends somebody to debug a product that was never loaded. It is the worst
+/// shape a result can have, and nothing in this folder was asking about it.
+///
+/// The service-worker purge in [openParticipant] does not cover it. That is
+/// about a browser profile serving a build it cached earlier; this is about the
+/// bundle on the SERVER being another branch's, which no amount of cache
+/// clearing touches.
+///
+/// WHAT IS COMPARED IS THE BYTES, and that is the only test that separates two
+/// worktrees. If two worktrees' bundles differ, this catches it. If they are
+/// byte-identical, they ARE the same code and there was nothing to catch --
+/// which is why byte equality is the right criterion rather than a directory
+/// name or a stamp.
+///
+/// WHAT IT DOES NOT SETTLE, so that nothing reads more into a pass than is
+/// there: whether `build/web` is itself current with `lib/`. A bundle built an
+/// hour ago from this worktree passes, because it IS this worktree's build --
+/// running `flutter build web --release` before the suite is still the
+/// operator's step, and no observable here can stand in for it. Nor does it
+/// cover `/.env`, which the app fetches at runtime and which is configuration
+/// rather than code.
+///
+/// THROWS, on the terms [sinceScoped] and `liveMembershipDevices` throw. A
+/// harness that cannot confirm what it is testing has a fact about the RIG, and
+/// reporting that as a colour on a check that names the product is how a run
+/// comes to be believed. Memoised, because every participant opens through the
+/// same door and the answer cannot change inside one process.
+async function refuseIfNotTheBuildUnderTest() {
+  if (!confirmingBuild) confirmingBuild = confirmBuildUnderTest();
+  return confirmingBuild;
+}
+
+async function confirmBuildUnderTest() {
+  const fs = require('fs');
+  const path = require('path');
+  const crypto = require('crypto');
+  const sha = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
+  const seen = [];
+  for (const name of BUILD_IDENTITY) {
+    const local = path.join(BUILD_DIR, name);
+    let want;
+    try {
+      want = fs.readFileSync(local);
+    } catch (e) {
+      throw new Error(
+        `this worktree has no ${name} to compare against (${local}: `
+        + `${e && e.code ? e.code : e}). There is nothing to identify the build `
+        + `at ${APP} as, so a run against it would be testing whatever happens `
+        + 'to be served. Build this worktree first: '
+        + '`flutter build web --release && cp .env build/web/.env`',
+      );
+    }
+    const url = `${APP}/${name}`;
+    let res;
+    try {
+      res = await fetch(url);
+    } catch (e) {
+      throw new Error(
+        `${url} did not answer (${e && e.message ? e.message : e}). The app has `
+        + 'to be served before a scenario can drive it: '
+        + '`python3 ../local-dev/spa_server.py build/web 8091` from this '
+        + 'worktree.',
+      );
+    }
+    if (!res.ok) {
+      throw new Error(
+        `${url} answered ${res.status}. Whatever is on that port is not a `
+        + 'Flutter web build of this app, so nothing below would be testing it.',
+      );
+    }
+    const got = Buffer.from(await res.arrayBuffer());
+    const wantSha = sha(want);
+    const gotSha = sha(got);
+    if (wantSha !== gotSha) {
+      throw new Error(
+        `${url} is NOT the build this worktree produced.\n`
+        + `  served:  ${gotSha} (${got.length} bytes)\n`
+        + `  on disk: ${wantSha} (${want.length} bytes) at ${local}\n`
+        + 'Some other build is on that port -- most often another worktree\'s '
+        + 'server left running, which is a thing that has happened here. A run '
+        + 'against it proves nothing when it passes and sends somebody to debug '
+        + 'code that was never loaded when it fails. Either rebuild this '
+        + 'worktree (`flutter build web --release && cp .env build/web/.env`) or '
+        + `point APP_URL at a server started from ${BUILD_DIR}.`,
+      );
+    }
+    seen.push(`${name} ${wantSha.slice(0, 12)} (${want.length} bytes)`);
+  }
+  console.log(`   (serving this worktree's build: ${seen.join(', ')})`);
+}
+
 /// One participant: a browser, a page, and an API token for assertions.
 /// Refuses to run two scenario processes at once.
 ///
@@ -69,6 +189,10 @@ function refuseIfAnotherRunIsLive() {
 /// session's own identity -- go out unwatched, and a scenario that needs to
 /// know which Matrix DEVICE a browser is would be left guessing.
 async function openParticipant(name, roomLocalpart, port, { prepare } = {}) {
+  // BEFORE THE BROWSER, and before anything a check could read. Every scenario
+  // in this folder opens its participants through here, so this is the one door
+  // that settles what is being driven -- and it settles it once per process.
+  await refuseIfNotTheBuildUnderTest();
   const a = ACCOUNTS[name];
   // The flutter service worker in a persisted profile serves the PREVIOUS
   // build on reload -- every "regression" it manufactures looks exactly like
@@ -434,7 +558,8 @@ function report() {
 }
 
 module.exports = {
-  wake, kill, showsControl, refuseIfAnotherRunIsLive, openParticipant, openRoom, ensureRoom, actUntil,
+  wake, kill, showsControl, refuseIfAnotherRunIsLive, refuseIfNotTheBuildUnderTest,
+  openParticipant, openRoom, ensureRoom, actUntil,
   recover, mark, since, compare, check, skipped, report, results, inconclusive,
   ui, mx, wait, cfg, APP,
 };
