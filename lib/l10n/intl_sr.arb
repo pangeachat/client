@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 23:37:22.115971",
+    "@@last_modified": "2026-09-02 11:49:06.648181",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10797,5 +10797,5 @@
     "selectMessageLabel": "Izaberite poruku",
     "callTranscriptAudioDropped": "Ono što je {name} rekao/la izgubljeno je na njegovom/njenom uređaju pre nego što je moglo da se snimi, tako da se ne zna šta je rečeno.",
     "callTranscriptHeldByOtherDevice": "Ono što je {name} rekao/la prepušteno je drugom njegovom/njenom uređaju da snimi, tako da ništa od toga nije poslato sa ovog uređaja i ovde se ne zna šta je rečeno.",
-    "callTranscriptDeviceNeverWrote": "Deo onoga što je {name} rekao/la je ostavljen drugom uređaju da snimi, a ništa sa tog uređaja nije stiglo, tako da je taj deo nepoznat."
+    "callTranscriptDeviceNeverWrote": "Deo onoga što je {name} rekao/la je ostavljen drugom uređaju da snimi, a taj uređaj to nije snimio, tako da je taj deo nepoznat."
 }

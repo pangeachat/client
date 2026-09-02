@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-01 23:37:27.588139",
+    "@@last_modified": "2026-09-02 11:49:13.344481",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Khetha umlayezo",
     "callTranscriptAudioDropped": "Lokho okushiwo u-{name} kulahlekile kudivayisi yakhe ngaphambi kokuthi kuqoshwe, ngakho-ke akwaziwa ukuthi utheni.",
     "callTranscriptHeldByOtherDevice": "Lokho okushiwo u-{name} kushiyelwe enye yamadivayisi akhe ukuthi ikuqophe, ngakho-ke akukho okuthunyelwe kusuka kule divayisi futhi akwaziwa ukuthi utheni lapha.",
-    "callTranscriptDeviceNeverWrote": "Ingxenye yalokho okushiwo u-{name} ishiywe kwenye yamadivayisi abo ukuthi ikurekhode, futhi akukho lutho oluvelile kuleyo divayisi, ngakho-ke leyo ngxenye ayaziwa."
+    "callTranscriptDeviceNeverWrote": "Ingxenye yalokho okushiwo u-{name} ishiywe kwenye yamadivayisi abo ukuthi ikurekhode, futhi leyo divayisi ayizange ikurekhode, ngakho-ke leyo ngxenye ayaziwa."
 }

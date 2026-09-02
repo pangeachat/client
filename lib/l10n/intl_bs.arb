@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-01 23:37:01.393217",
+    "@@last_modified": "2026-09-02 11:48:45.905870",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Odaberite poruku",
     "callTranscriptAudioDropped": "Ono što je {name} rekao/la je izgubljeno na njihovom uređaju prije nego što je snimljeno, tako da nije poznato šta je rečeno.",
     "callTranscriptHeldByOtherDevice": "Ono što je {name} rekao/la prepušteno je drugom uređaju da snimi, tako da ništa nije poslano s ovog uređaja i ovdje nije poznato šta je rečeno.",
-    "callTranscriptDeviceNeverWrote": "Dio onoga što je {name} rekao/la prepušten je drugom od njihovih uređaja da snimi, a ništa s tog uređaja nije stiglo, tako da taj dio nije poznat."
+    "callTranscriptDeviceNeverWrote": "Dio onoga što je {name} rekao/rekla je ostavljen drugom uređaju da snimi, a taj uređaj to nije snimio, tako da taj dio nije poznat."
 }

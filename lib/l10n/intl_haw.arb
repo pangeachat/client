@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-01 23:37:08.518987",
+    "@@last_modified": "2026-09-02 11:48:52.542480",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Koho i ka leka",
     "callTranscriptAudioDropped": "Ua nalowale ka mea a {name} i ʻōlelo ai ma kāna hāmeʻa ma mua o ka hoʻopaʻa ʻia ʻana, no laila ʻaʻole ʻike ʻia ka mea i ʻōlelo ʻia.",
     "callTranscriptHeldByOtherDevice": "Ua waiho ʻia ka mea a {name} i ʻōlelo ai na kekahi o kāna mau hāmeʻa ʻē aʻe e hoʻopaʻa, no laila ʻaʻohe mea i hoʻouna ʻia mai kēia a ʻaʻole ʻike ʻia ka mea i ʻōlelo ʻia ma ʻaneʻi.",
-    "callTranscriptDeviceNeverWrote": "Ua waiho ʻia kekahi ʻāpana o ka mea a {name} i ʻōlelo ai i kekahi o kā lākou mau mea hana e hoʻopaʻa ai, a ʻaʻohe mea i hiki mai mai ia mea hana, no laila ʻaʻole i ʻike ʻia kēlā ʻāpana."
+    "callTranscriptDeviceNeverWrote": "Ua waiho ʻia kekahi ʻāpana o ka mea a {name} i ʻōlelo ai i kekahi o kāna mau mea hana e hoʻopaʻa ai, a ʻaʻole i hoʻopaʻa kēlā mea hana, no laila ʻaʻole ʻike ʻia kēlā ʻāpana."
 }

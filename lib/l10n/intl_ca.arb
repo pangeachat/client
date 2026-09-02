@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 23:37:03.229003",
+    "@@last_modified": "2026-09-02 11:48:49.323497",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9975,5 +9975,5 @@
     "selectMessageLabel": "Selecciona un missatge",
     "callTranscriptAudioDropped": "El que ha dit {name} s'ha perdut al seu dispositiu abans que es pogués enregistrar, així que no se sap què ha dit.",
     "callTranscriptHeldByOtherDevice": "El que ha dit {name} s'ha deixat a un altre dels seus dispositius perquè ho enregistrés, així que no s'ha enviat res des d'aquest i no se sap què ha dit aquí.",
-    "callTranscriptDeviceNeverWrote": "Una part del que va dir {name} es va deixar perquè un altre dels seus dispositius ho enregistrés, i no ha arribat res d'aquest dispositiu, així que aquesta part no es coneix."
+    "callTranscriptDeviceNeverWrote": "Una part del que ha dit {name} s'ha deixat per a un altre dels seus dispositius per a la gravació, i aquest dispositiu no ho ha gravat, així que aquesta part no es coneix."
 }

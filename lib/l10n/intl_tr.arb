@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-01 23:37:24.261191",
+    "@@last_modified": "2026-09-02 11:49:09.368968",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10149,5 +10149,5 @@
     "selectMessageLabel": "Mesaj seç",
     "callTranscriptAudioDropped": "{name} adlı kullanıcının söyledikleri, daha kaydedilemeden cihazı tarafından kaybedildi, bu yüzden ne söylendiği bilinmiyor.",
     "callTranscriptHeldByOtherDevice": "{name} adlı kullanıcının söylediklerinin kaydedilmesi başka bir cihazına bırakıldı, bu yüzden bu cihazdan hiçbir şey gönderilmedi ve burada ne söylendiği bilinmiyor.",
-    "callTranscriptDeviceNeverWrote": "{name} adlı kullanıcının söylediklerinin bir kısmı başka bir cihazı tarafından kaydedilmek üzere bırakıldı ve o cihazdan hiçbir şey gelmedi, bu nedenle o kısım bilinmiyor."
+    "callTranscriptDeviceNeverWrote": "{name} adlı kullanıcının söylediklerinin bir kısmı başka bir cihazı tarafından kaydedilmek üzere bırakıldı ve o cihaz kaydetmedi, bu nedenle o kısım bilinmiyor."
 }

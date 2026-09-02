@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-01 23:37:06.578339",
+    "@@last_modified": "2026-09-02 11:48:52.003479",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Tagh teachdaireachd",
     "callTranscriptAudioDropped": "Chaidh na thuirt {name} a chall leis an inneal aca mus deach a chlàradh, mar sin chan eil fhios dè a chaidh a ràdh.",
     "callTranscriptHeldByOtherDevice": "Chaidh na thuirt {name} fhàgail gu inneal eile aca airson a chlàradh, mar sin cha deach dad a chur bhon fhear seo agus chan eil fhios an seo dè a chaidh a ràdh.",
-    "callTranscriptDeviceNeverWrote": "Chaidh pàirt de na thuirt {name} fhàgail gu inneal eile aca airson a chlàradh, agus cha do ràinig dad bhon inneal sin, agus mar sin chan eil fios air a' phàirt sin."
+    "callTranscriptDeviceNeverWrote": "Chaidh pàirt de na thuirt {name} fhàgail gu inneal eile aca airson a chlàradh, agus cha do chlàraich an inneal sin e, agus mar sin chan eil fios air a' phàirt sin."
 }

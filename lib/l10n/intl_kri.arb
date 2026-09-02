@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-01 23:37:13.225240",
+    "@@last_modified": "2026-09-02 11:48:58.568446",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Pik mɛsej",
     "callTranscriptAudioDropped": "Wetin {name} tɔk nɔ rekɔd na in fon bifo dɛn sɛn am, so wi nɔ no wetin dɛn bin tɔk.",
     "callTranscriptHeldByOtherDevice": "Wetin {name} tɔk, na ɔda fon we i gɛt fɔ rekɔd am, so dɛn nɔ sɛn nɔn kɔmɔt na dis wan ɛn wi nɔ no wetin dɛn bin tɔk na ya.",
-    "callTranscriptDeviceNeverWrote": "Sɔm pan wetin {name} bin tɔk, na ɔda wan pan in divays dɛn bin fɔ rekɔd am, ɛn natin nɔ kɔmɔt na da divays de, so wi nɔ no da pat de."
+    "callTranscriptDeviceNeverWrote": "Sɔm pan wetin {name} bin tɔk, na ɔda wan pan in divays dɛn bin fɔ rekɔd am, bɔt da divays de nɔ bin rekɔd am, so wi nɔ no da pat de."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-01 23:37:23.496409",
+    "@@last_modified": "2026-09-02 11:49:09.724723",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Chagua ujumbe",
     "callTranscriptAudioDropped": "Maneno aliyosema {name} yalipotea kwenye kifaa chake kabla ya kurekodiwa, kwa hivyo alichosema hakijulikani.",
     "callTranscriptHeldByOtherDevice": "Maneno aliyosema {name} yaliachwa yarekodiwe na kifaa chake kingine, kwa hivyo hakuna kilichotumwa kutoka hapa na alichosema hakijulikani hapa.",
-    "callTranscriptDeviceNeverWrote": "Sehemu ya kile {name} alisema iliachwa kwa kifaa kingine chake kurekodi, na hakuna kilichowasili kutoka kwa kifaa hicho, kwa hivyo sehemu hiyo haijulikani."
+    "callTranscriptDeviceNeverWrote": "Sehemu ya kile {name} alisema iliachwa kwa kifaa kingine chao kurekodi, na kifaa hicho hakikurekodi, kwa hivyo sehemu hiyo haijulikani."
 }

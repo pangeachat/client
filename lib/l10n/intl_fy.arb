@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-01 23:37:05.861794",
+    "@@last_modified": "2026-09-02 11:48:51.690984",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Berjocht selektearje",
     "callTranscriptAudioDropped": "Wat {name} sei is troch harren apparaat ferlern gien foardat it opnommen wurde koe, dus wat der sein is, is net bekend.",
     "callTranscriptHeldByOtherDevice": "Wat {name} sei is oerlitten oan in oar fan harren apparaten om op te nimmen, dus neat dêrfan is fan dit apparaat ferstjoerd en wat der sein is, is hjir net bekend.",
-    "callTranscriptDeviceNeverWrote": "In part fan wat {name} sei, waard oerlitten oan in oar fan harren apparaten om op te nimmen, en neat fan dat apparaat is oankommen, dus dat part is net bekend."
+    "callTranscriptDeviceNeverWrote": "In part fan wat {name} sei is oerlitten oan in oar fan harren apparaten om op te nimmen, en dat apparaat hat it net opnommen, dus dat part is net bekend."
 }

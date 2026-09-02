@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-01 23:37:15.123219",
+    "@@last_modified": "2026-09-02 11:49:00.289812",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Tīpakohia te karere",
     "callTranscriptAudioDropped": "I ngaro te kōrero a {name} i tōna pūrere i mua i te hopunga, nō reira kāore i te mōhiotia he aha te kōrero.",
     "callTranscriptHeldByOtherDevice": "I waiho te kōrero a {name} mā tētahi atu o āna pūrere e hopu, nō reira kāore he wāhanga i tukuna mai i tēnei, ā, kāore i te mōhiotia i konei he aha te kōrero.",
-    "callTranscriptDeviceNeverWrote": "Ko tētahi wāhanga o tā {name} i kōrero ai i waiho mā tētahi atu o āna pūrere e hopu, ā, kāore he mea i tae mai i taua pūrere, nō reira kāore e mōhiotia taua wāhanga."
+    "callTranscriptDeviceNeverWrote": "Ko tētahi wāhanga o tā {name} i kōrero ai i waiho mā tētahi atu o āna pūrere e hopu, ā, kāore taua pūrere i hopu, nō reira kāore e mōhiotia taua wāhanga."
 }

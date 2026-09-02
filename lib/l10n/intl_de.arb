@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-01 23:37:03.900401",
+    "@@last_modified": "2026-09-02 11:48:48.322252",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9835,5 +9835,5 @@
     "selectMessageLabel": "Nachricht auswählen",
     "callTranscriptAudioDropped": "Was {name} gesagt hat, ging auf dem Gerät verloren, bevor es überhaupt aufgezeichnet werden konnte. Was gesagt wurde, ist also nicht bekannt.",
     "callTranscriptHeldByOtherDevice": "Was {name} gesagt hat, wurde einem anderen ihrer Geräte zur Aufzeichnung überlassen, daher wurde von diesem Gerät nichts gesendet und was gesagt wurde, ist hier nicht bekannt.",
-    "callTranscriptDeviceNeverWrote": "Ein Teil dessen, was {name} gesagt hat, wurde einem anderen ihrer Geräte zur Aufzeichnung überlassen, und von diesem Gerät kam nichts an, sodass dieser Teil nicht bekannt ist."
+    "callTranscriptDeviceNeverWrote": "Ein Teil dessen, was {name} gesagt hat, wurde einem anderen ihrer Geräte zur Aufzeichnung überlassen, und dieses Gerät hat es nicht aufgezeichnet, so dass dieser Teil nicht bekannt ist."
 }

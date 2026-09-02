@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-01 23:37:08.767374",
+    "@@last_modified": "2026-09-02 11:48:53.805733",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Chwazi mesaj",
     "callTranscriptAudioDropped": "Aparèy {name} lan te pèdi sa l te di a anvan menm li te anrejistre, kidonk nou pa konnen sa k te di a.",
     "callTranscriptHeldByOtherDevice": "Sa {name} te di a te kite pou yon lòt aparèy li anrejistre, kidonk anyen pa t voye soti nan aparèy sa a e nou pa konnen sa k te di a isit la.",
-    "callTranscriptDeviceNeverWrote": "Yon pati nan sa {name} te di a te anrejistre sou yon lòt nan aparèy li yo, e pa gen anyen ki te rive soti nan aparèy sa a, kidonk pati sa a pa konnen."
+    "callTranscriptDeviceNeverWrote": "Yon pati nan sa {name} te di a te sipoze anrejistre sou yon lòt aparèy, men aparèy sa a pa t anrejistre l, kidonk pati sa a pa disponib."
 }

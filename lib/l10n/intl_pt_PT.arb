@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-01 23:37:19.476464",
+    "@@last_modified": "2026-09-02 11:49:11.050419",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10765,5 +10765,5 @@
     "selectMessageLabel": "Selecionar mensagem",
     "callTranscriptAudioDropped": "O que {name} disse foi perdido pelo seu dispositivo antes de poder ser gravado, pelo que não se sabe o que foi dito.",
     "callTranscriptHeldByOtherDevice": "O que {name} disse foi deixado para outro dos seus dispositivos gravar, pelo que nada foi enviado a partir deste e não se sabe aqui o que foi dito.",
-    "callTranscriptDeviceNeverWrote": "Parte do que {name} disse ficou para ser gravado por outro dos seus dispositivos, e nada desse dispositivo chegou, por isso essa parte é desconhecida."
+    "callTranscriptDeviceNeverWrote": "Parte do que {name} disse foi deixado para outro dos seus dispositivos gravar, e esse dispositivo não o gravou, pelo que essa parte não é conhecida."
 }

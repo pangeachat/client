@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-01 23:37:22.045580",
+    "@@last_modified": "2026-09-02 11:49:06.045845",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10793,5 +10793,5 @@
     "selectMessageLabel": "Izberite sporočilo",
     "callTranscriptAudioDropped": "Kar je rekel/-a {name}, je njegova/njena naprava izgubila, preden je bilo mogoče posneti, zato ni znano, kaj je bilo rečeno.",
     "callTranscriptHeldByOtherDevice": "Kar je rekel/-a {name}, je bilo prepuščeno snemanju drugi njegovi/njeni napravi, zato s te naprave ni bilo nič poslano in tukaj ni znano, kaj je bilo rečeno.",
-    "callTranscriptDeviceNeverWrote": "Del tega, kar je rekel/-a {name}, je bil prepuščen snemanju na drugi napravi, vendar iz te naprave ni prispelo nič, zato ta del ni znan."
+    "callTranscriptDeviceNeverWrote": "Del tega, kar je rekel/-a {name}, je bil prepuščen snemanju drugi njegovi/njeni napravi, vendar ta naprava tega ni posnela, zato ta del ni znan."
 }

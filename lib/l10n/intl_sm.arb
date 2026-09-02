@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-01 23:37:21.631924",
+    "@@last_modified": "2026-09-02 11:49:06.275931",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Filifili le feʻau",
     "callTranscriptAudioDropped": "O le mea na fai mai ai {name} na leiloa e le latou masini a'o le'i mafai ona pu'eina, o lea e le o iloa ai le mea na fai mai ai.",
     "callTranscriptHeldByOtherDevice": "O le mea na fai mai ai {name} na tu'u atu i se isi o ana masini e pu'eina, o lea e leai se mea na lafo mai i lenei masini ma e le o iloa ai iinei le mea na fai mai ai.",
-    "callTranscriptDeviceNeverWrote": "O se vaega o le tala a {name} na tu'u atu i se tasi o ana masini e pu'eina, ae leai se mea na maua mai i lena masini, o lea e le o iloa ai lena vaega."
+    "callTranscriptDeviceNeverWrote": "O se vaega o le tala a {name} na tu'u i se tasi o ana masini e pu'eina, ae e le'i pu'eina e lena masini, o lea e le o iloa ai lena vaega."
 }

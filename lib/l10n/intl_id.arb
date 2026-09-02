@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 23:37:09.944525",
+    "@@last_modified": "2026-09-02 11:48:54.592215",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9921,5 +9921,5 @@
     "selectMessageLabel": "Pilih pesan",
     "callTranscriptAudioDropped": "Apa yang dikatakan {name} hilang dari perangkatnya bahkan sebelum dapat direkam, jadi apa yang dikatakan tidak diketahui.",
     "callTranscriptHeldByOtherDevice": "Apa yang dikatakan {name} diserahkan ke perangkatnya yang lain untuk direkam, jadi tidak ada yang dikirim dari perangkat ini dan apa yang dikatakan tidak diketahui di sini.",
-    "callTranscriptDeviceNeverWrote": "Sebagian dari apa yang dikatakan {name} diserahkan ke perangkat lain untuk direkam, dan tidak ada yang diterima dari perangkat itu, jadi bagian itu tidak diketahui."
+    "callTranscriptDeviceNeverWrote": "Sebagian dari apa yang dikatakan {name} diserahkan ke perangkat lain untuk direkam, dan perangkat tersebut tidak merekamnya, jadi bagian itu tidak diketahui."
 }

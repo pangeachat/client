@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-01 23:37:17.220992",
+    "@@last_modified": "2026-09-02 11:49:02.194326",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Velg melding",
     "callTranscriptAudioDropped": "Det {name} sa, gikk tapt på enheten deres før det kunne tas opp, så det er ikke kjent hva som ble sagt.",
     "callTranscriptHeldByOtherDevice": "Det {name} sa, ble overlatt til en av de andre enhetene deres for opptak, så ingenting ble sendt fra denne enheten, og det er ikke kjent her hva som ble sagt.",
-    "callTranscriptDeviceNeverWrote": "En del av det {name} sa ble overlatt til en av deres andre enheter for opptak, og ingenting fra den enheten kom frem, så den delen er ikke kjent."
+    "callTranscriptDeviceNeverWrote": "En del av det {name} sa ble overlatt til en av de andre enhetene deres for å ta opp, og den enheten tok det ikke opp, så den delen er ikke kjent."
 }

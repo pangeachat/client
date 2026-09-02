@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-01 23:37:05.871978",
+    "@@last_modified": "2026-09-02 11:48:50.376365",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10203,5 +10203,5 @@
     "selectMessageLabel": "Sélectionner le message",
     "callTranscriptAudioDropped": "Ce que {name} a dit a été perdu par son appareil avant même de pouvoir être enregistré, donc ce qui a été dit est inconnu.",
     "callTranscriptHeldByOtherDevice": "Ce que {name} a dit a été laissé à un autre de ses appareils pour l'enregistrement, donc rien n'a été envoyé depuis celui-ci et ce qui a été dit est inconnu ici.",
-    "callTranscriptDeviceNeverWrote": "Une partie de ce que {name} a dit devait être enregistrée par un autre de ses appareils, mais rien n'a été reçu de cet appareil, donc cette partie est inconnue."
+    "callTranscriptDeviceNeverWrote": "Une partie de ce que {name} a dit devait être enregistrée par un autre de ses appareils, mais cet appareil ne l'a pas fait, donc cette partie est inconnue."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-01 23:37:05.573156",
+    "@@last_modified": "2026-09-02 11:48:50.457863",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9848,5 +9848,5 @@
     "selectMessageLabel": "Mezua hautatu",
     "callTranscriptAudioDropped": "{name} erabiltzailearen gailuak esandakoa galdu egin du grabatu aurretik; beraz, ez da jakin zer esan duen.",
     "callTranscriptHeldByOtherDevice": "{name} erabiltzaileak esandakoa bere beste gailu batek grabatu du; beraz, gailu honek ez du ezer bidali eta ez da jakin zer esan duen.",
-    "callTranscriptDeviceNeverWrote": "{name}-(e)k esandakoaren zati bat bere beste gailuetako batean grabatu behar zen, baina gailu horretatik ez da ezer iritsi; beraz, zati hori ezezaguna da."
+    "callTranscriptDeviceNeverWrote": "{name}-(e)k esandakoaren zati bat bere beste gailu batean grabatu behar zen, eta gailu horrek ez zuen grabatu; beraz, zati hori ez da ezagutzen."
 }

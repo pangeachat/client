@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-01 23:37:07.423347",
+    "@@last_modified": "2026-09-02 11:48:51.685939",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9848,5 +9848,5 @@
     "selectMessageLabel": "Seleccionar mensaxe",
     "callTranscriptAudioDropped": "O que dixo {name} perdeuse no seu dispositivo antes de que se puidese gravar, polo que non se sabe o que dixo.",
     "callTranscriptHeldByOtherDevice": "O que dixo {name} deixouse para que o gravase outro dos seus dispositivos, polo que non se enviou nada desde este e non se sabe aquí o que se dixo.",
-    "callTranscriptDeviceNeverWrote": "Parte do que dixo {name} deixouse para que o gravase outro dos seus dispositivos, e non chegou nada dese dispositivo, polo que esa parte non se coñece."
+    "callTranscriptDeviceNeverWrote": "Parte do que dixo {name} deixouse para que o gravase outro dos seus dispositivos, e ese dispositivo non o gravou, polo que esa parte non se coñece."
 }

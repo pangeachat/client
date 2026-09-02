@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 23:37:08.078566",
+    "@@last_modified": "2026-09-02 11:48:54.255509",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10762,5 +10762,5 @@
     "selectMessageLabel": "בחר הודעה",
     "callTranscriptAudioDropped": "השמע של {name} אבד במכשיר שלו לפני שהספיק להיות מוקלט, כך שלא ידוע מה נאמר.",
     "callTranscriptHeldByOtherDevice": "השמע של {name} הועבר להקלטה במכשיר אחר שלו, כך ששום דבר לא נשלח מהמכשיר הזה ולא ידוע כאן מה נאמר.",
-    "callTranscriptDeviceNeverWrote": "חלק ממה ש{name} אמר/ה נשמר במכשיר אחר שלו/שלה, ושום דבר לא הגיע מהמכשיר הזה, כך שהחלק הזה אינו ידוע."
+    "callTranscriptDeviceNeverWrote": "חלק ממה ש{name} אמר/ה נשאר להקלטה במכשיר אחר שלו/ה, והמכשיר הזה לא הקליט אותו, כך שהחלק הזה אינו ידוע."
 }

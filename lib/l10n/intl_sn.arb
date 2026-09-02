@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-01 23:37:21.830625",
+    "@@last_modified": "2026-09-02 11:49:06.569301",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Sarudza meseji",
     "callTranscriptAudioDropped": "Zvakataurwa na{name} zvakarasika pachigadzirwa chavo zvisati zvanyorwa, saka hazvizivikanwe kuti chii chakataurwa.",
     "callTranscriptHeldByOtherDevice": "Zvakataurwa na{name} zvakasiyirwa chimwe chigadzirwa chavo kuti zvinyorwe, saka hapana chakatumirwa kubva pane ichi uye hazvizivikanwe kuti chii chakataurwa pano.",
-    "callTranscriptDeviceNeverWrote": "Chikamu chezvakataurwa na{name} chakasiiwa kuti chirekodhwe nechimwe chishandiso chavo, uye hapana chakasvika kubva pachishandiso ichocho, saka chikamu ichocho hachizivikanwe."
+    "callTranscriptDeviceNeverWrote": "Chikamu chezvakataurwa na{name} chakasiiwa kuti chinyorwe nechimwe chishandiso chavo, uye chishandiso ichocho hachina kuchinyora, saka chikamu ichocho hachizivikanwe."
 }

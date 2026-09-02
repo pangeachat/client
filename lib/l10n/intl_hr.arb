@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-01 23:37:08.486096",
+    "@@last_modified": "2026-09-02 11:48:53.768384",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10284,5 +10284,5 @@
     "selectMessageLabel": "Odaberi poruku",
     "callTranscriptAudioDropped": "Ono što je {name} rekao/rekla izgubljeno je na njihovom uređaju prije nego što je snimljeno, stoga se ne zna što je rečeno.",
     "callTranscriptHeldByOtherDevice": "Ono što je {name} rekao/rekla prepušteno je snimanju na drugom njihovom uređaju, stoga s ovog uređaja ništa nije poslano i ovdje se ne zna što je rečeno.",
-    "callTranscriptDeviceNeverWrote": "Dio onoga što je {name} rekao/rekla prepušten je drugom uređaju da snimi, a s tog uređaja ništa nije stiglo, tako da taj dio nije poznat."
+    "callTranscriptDeviceNeverWrote": "Dio onoga što je {name} rekao/rekla prepušten je snimanju na drugom uređaju, a taj uređaj to nije snimio, tako da taj dio nije poznat."
 }

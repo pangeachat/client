@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-01 23:37:10.160278",
+    "@@last_modified": "2026-09-02 11:48:54.273170",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10784,5 +10784,5 @@
     "selectMessageLabel": "Selige message",
     "callTranscriptAudioDropped": "Lo que {name} diceva ha essite perdite per su apparato ante que illo poteva mesmo esser registrate, dunque lo que esseva dicite non es cognoscite.",
     "callTranscriptHeldByOtherDevice": "Lo que {name} diceva ha essite lassate a un altere de su apparatos pro registrar, dunque nihil de illo ha essite inviate desde iste e lo que esseva dicite non es cognoscite hic.",
-    "callTranscriptDeviceNeverWrote": "Un parte de lo que {name} diceva esseva lassate a un altere de lor apparatos pro registrar, e nihil de ille apparato ha arrivate, dunque ille parte non es cognoscite."
+    "callTranscriptDeviceNeverWrote": "Un parte de lo que {name} diceva esseva lassate a un altere de lor apparatos pro registrar, e ille apparato non lo registrava, dunque ille parte non es cognoscite."
 }

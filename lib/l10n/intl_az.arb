@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-01 23:37:01.917394",
+    "@@last_modified": "2026-09-02 11:48:46.051802",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Mesajı seçin",
     "callTranscriptAudioDropped": "{name} adlı istifadəçinin dedikləri cihazı tərəfindən qeydə alınmazdan əvvəl itirilib, buna görə də nə dediyi məlum deyil.",
     "callTranscriptHeldByOtherDevice": "{name} adlı istifadəçinin dedikləri qeydə alınmaq üçün onun başqa bir cihazına ötürülüb, buna görə də bu cihazdan heç nə göndərilməyib və burada nə dediyi məlum deyil.",
-    "callTranscriptDeviceNeverWrote": "{name} adlı istifadəçinin dediklərinin bir hissəsi qeyd edilməsi üçün başqa bir cihaza ötürüldü və həmin cihazdan heç bir məlumat gəlmədi, buna görə də həmin hissə məlum deyil."
+    "callTranscriptDeviceNeverWrote": "{name} adlı istifadəçinin dediklərinin bir hissəsi qeyd edilməsi üçün başqa bir cihaza ötürüldü, lakin həmin cihaz onu qeyd etmədi, buna görə də həmin hissə məlum deyil."
 }

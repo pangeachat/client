@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-01 23:37:22.702183",
+    "@@last_modified": "2026-09-02 11:49:09.703808",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2252,5 +2252,5 @@
     "selectMessageLabel": "Pilih pesen",
     "callTranscriptAudioDropped": "Omongan {name} leungit tina parangkatna saacan karékam, jadi teu kanyahoan naon nu diucapkeunana.",
     "callTranscriptHeldByOtherDevice": "Omongan {name} dirékam ku parangkatna nu séjén, jadi euweuh nu dikirim ti dieu jeung teu kanyahoan naon nu diucapkeunana di dieu.",
-    "callTranscriptDeviceNeverWrote": "Bagian tina omongan {name} disimpen di alat séjénna pikeun dirékam, tapi euweuh nu datang ti alat éta, jadi bagian éta teu dipikanyaho."
+    "callTranscriptDeviceNeverWrote": "Bagian tina omongan {name} diserahkeun ka alat séjénna pikeun dirékam, tapi alat éta henteu ngarékamna, jadi bagian éta henteu dipikanyaho."
 }
