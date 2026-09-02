@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-09-02 11:41:28.010752",
+    "@@last_modified": "2026-09-02 12:25:27.757793",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2249,5 +2249,9 @@
     "activityReview": "ការពិនិត្យសកម្មភាព",
     "activityPanel": "សកម្មភាព",
     "coursePage": "ទំព័រវគ្គសិក្សា",
-    "suggestedActivities": "សកម្មភាពដែលបានណែនាំ"
+    "suggestedActivities": "សកម្មភាពដែលបានណែនាំ",
+    "constructLevelSeeds": "គ្រាប់ពូជ ពាក្យថ្មី",
+    "constructLevelGreens": "បៃតង ពាក្យដែលកំពុងរីកចម្រើន",
+    "constructLevelFlowers": "ផ្កា ពាក្យដែលស្ទាត់ជំនាញ",
+    "filterAndSearch": "ត្រង និងស្វែងរក"
 }

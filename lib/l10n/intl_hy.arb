@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-02 11:41:22.084293",
+    "@@last_modified": "2026-09-02 12:25:26.834368",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2249,5 +2249,9 @@
     "activityReview": "Գործունեության վերանայում",
     "activityPanel": "Գործունեություն",
     "coursePage": "Դասընթացի էջ",
-    "suggestedActivities": "Առաջարկվող գործողություններ"
+    "suggestedActivities": "Առաջարկվող գործողություններ",
+    "constructLevelSeeds": "Սերմեր, նոր բառեր",
+    "constructLevelGreens": "Կանաչիներ, աճող բառեր",
+    "constructLevelFlowers": "Ծաղիկներ, յուրացված բառեր",
+    "filterAndSearch": "Զտել և որոնել"
 }

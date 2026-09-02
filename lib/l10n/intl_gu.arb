@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-02 11:41:21.604491",
+    "@@last_modified": "2026-09-02 12:25:25.672013",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2249,5 +2249,9 @@
     "activityReview": "પ્રવૃત્તિ સમીક્ષા",
     "activityPanel": "પ્રવૃત્તિ",
     "coursePage": "કોર્સ પેજ",
-    "suggestedActivities": "સૂચવેલી પ્રવૃત્તિઓ"
+    "suggestedActivities": "સૂચવેલી પ્રવૃત્તિઓ",
+    "constructLevelSeeds": "બીજ, નવા શબ્દો",
+    "constructLevelGreens": "ગ્રીન્સ, વિકસતા શબ્દો",
+    "constructLevelFlowers": "ફૂલો, નિપુણ શબ્દો",
+    "filterAndSearch": "ફિલ્ટર કરો અને શોધો"
 }

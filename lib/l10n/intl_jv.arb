@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-09-02 11:41:22.746574",
+    "@@last_modified": "2026-09-02 12:25:27.246731",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Tinjauan aktivitas",
     "activityPanel": "Aktivitas",
     "coursePage": "Kaca kursus",
-    "suggestedActivities": "Kegiatan sing Disaranake"
+    "suggestedActivities": "Kegiatan sing Disaranake",
+    "constructLevelSeeds": "Winih, tembung anyar",
+    "constructLevelGreens": "Godhong, tembung sing tuwuh",
+    "constructLevelFlowers": "Kembang, tembung sing wis dikuasai",
+    "filterAndSearch": "Saring lan goleki"
 }

@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-02 11:41:20.900550",
+    "@@last_modified": "2026-09-02 12:25:25.149079",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9882,5 +9882,9 @@
     "activityReview": "Aktiviteettikatsaus",
     "activityPanel": "Aktiviteetti",
     "coursePage": "Kurssisivu",
-    "suggestedActivities": "Ehdotetut aktiviteetit"
+    "suggestedActivities": "Ehdotetut aktiviteetit",
+    "constructLevelSeeds": "Siemenet, uudet sanat",
+    "constructLevelGreens": "Vihreät, kasvavat sanat",
+    "constructLevelFlowers": "Kukat, hallitut sanat",
+    "filterAndSearch": "Suodata ja hae"
 }

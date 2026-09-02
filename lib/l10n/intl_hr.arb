@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-02 11:41:21.531477",
+    "@@last_modified": "2026-09-02 12:25:26.186134",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10281,5 +10281,9 @@
     "activityReview": "Pregled aktivnosti",
     "activityPanel": "Aktivnost",
     "coursePage": "Stranica tečaja",
-    "suggestedActivities": "Predložene aktivnosti"
+    "suggestedActivities": "Predložene aktivnosti",
+    "constructLevelSeeds": "Sjemenke, nove riječi",
+    "constructLevelGreens": "Zelenje, riječi u nastajanju",
+    "constructLevelFlowers": "Cvijeće, usvojene riječi",
+    "filterAndSearch": "Filtriraj i pretraži"
 }

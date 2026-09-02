@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-02 11:41:26.977594",
+    "@@last_modified": "2026-09-02 12:25:31.194309",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2249,5 +2249,9 @@
     "activityReview": "سرگرمي جو جائزو",
     "activityPanel": "سرگرمي",
     "coursePage": "ڪورس جو صفحو",
-    "suggestedActivities": "تجويز ڪيل سرگرميون"
+    "suggestedActivities": "تجويز ڪيل سرگرميون",
+    "constructLevelSeeds": "سيڊس، نوان لفظ",
+    "constructLevelGreens": "گرينس، وڌندڙ لفظ",
+    "constructLevelFlowers": "فلاورس، ماهر لفظ",
+    "filterAndSearch": "فلٽر ۽ ڳولا ڪريو"
 }

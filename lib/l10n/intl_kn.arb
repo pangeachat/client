@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-09-02 11:41:22.947375",
+    "@@last_modified": "2026-09-02 12:25:27.760624",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2249,5 +2249,9 @@
     "activityReview": "ಚಟುವಟಿಕೆ ವಿಮರ್ಶೆ",
     "activityPanel": "ಚಟುವಟಿಕೆ",
     "coursePage": "ಕೋರ್ಸ್ ಪುಟ",
-    "suggestedActivities": "ಸೂಚಿಸಿದ ಚಟುವಟಿಕೆಗಳು"
+    "suggestedActivities": "ಸೂಚಿಸಿದ ಚಟುವಟಿಕೆಗಳು",
+    "constructLevelSeeds": "ಬೀಜಗಳು, ಹೊಸ ಪದಗಳು",
+    "constructLevelGreens": "ಸಸಿಗಳು, ಬೆಳೆಯುತ್ತಿರುವ ಪದಗಳು",
+    "constructLevelFlowers": "ಹೂವುಗಳು, ಕರಗತವಾದ ಪದಗಳು",
+    "filterAndSearch": "ಫಿಲ್ಟರ್ ಮಾಡಿ ಮತ್ತು ಹುಡುಕಿ"
 }

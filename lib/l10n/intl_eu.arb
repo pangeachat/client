@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-02 11:41:20.961660",
+    "@@last_modified": "2026-09-02 12:25:25.434536",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9845,5 +9845,9 @@
     "activityReview": "Jardueraren berrikuspena",
     "activityPanel": "Jarduera",
     "coursePage": "Ikastaroaren orria",
-    "suggestedActivities": "Iradokitako jarduerak"
+    "suggestedActivities": "Iradokitako jarduerak",
+    "constructLevelSeeds": "Haziak, hitz berriak",
+    "constructLevelGreens": "Landareak, hazten ari diren hitzak",
+    "constructLevelFlowers": "Loreak, menderatutako hitzak",
+    "filterAndSearch": "Iragazi eta bilatu"
 }

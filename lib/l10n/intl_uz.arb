@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-09-02 11:41:30.215819",
+    "@@last_modified": "2026-09-02 12:25:32.956198",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9849,5 +9849,9 @@
     "activityReview": "Faoliyatni ko'rib chiqish",
     "activityPanel": "Faoliyat",
     "coursePage": "Kurs sahifasi",
-    "suggestedActivities": "Tavsiya etilgan mashg'ulotlar"
+    "suggestedActivities": "Tavsiya etilgan mashg'ulotlar",
+    "constructLevelSeeds": "Urugʻlar, yangi soʻzlar",
+    "constructLevelGreens": "Koʻkatlar, oʻsayotgan soʻzlar",
+    "constructLevelFlowers": "Gullar, oʻzlashtirilgan soʻzlar",
+    "filterAndSearch": "Filtrlash va qidirish"
 }

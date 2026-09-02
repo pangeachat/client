@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-02 11:41:23.814057",
+    "@@last_modified": "2026-09-02 12:25:28.409960",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2249,5 +2249,9 @@
     "activityReview": "ກວດສອບກິດຈະກຳ",
     "activityPanel": "ກິດຈະກຳ",
     "coursePage": "ໜ້າຫຼັກສູດ",
-    "suggestedActivities": "ກິດຈະກຳທີ່ແນະນຳ"
+    "suggestedActivities": "ກິດຈະກຳທີ່ແນະນຳ",
+    "constructLevelSeeds": "ແກ່ນ, ຄຳສັບໃໝ່",
+    "constructLevelGreens": "ຕົ້ນອ່ອນ, ຄຳສັບທີ່ກຳລັງຮຽນ",
+    "constructLevelFlowers": "ດອກໄມ້, ຄຳສັບທີ່ຮຽນຈົບແລ້ວ",
+    "filterAndSearch": "ກັ່ນຕອງ ແລະ ຄົ້ນຫາ"
 }

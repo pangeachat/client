@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-02 11:41:23.145977",
+    "@@last_modified": "2026-09-02 12:25:28.149560",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2249,5 +2249,9 @@
     "activityReview": "پێداچوونەوەی چالاکی",
     "activityPanel": "چالاکی",
     "coursePage": "پەڕەی خول",
-    "suggestedActivities": "چالاکییە پێشنیارکراوەکان"
+    "suggestedActivities": "چالاکییە پێشنیارکراوەکان",
+    "constructLevelSeeds": "تۆو، وشەی نوێ",
+    "constructLevelGreens": "سەوزایی، وشە گەشەسەندووەکان",
+    "constructLevelFlowers": "گوڵەکان، وشە شارەزاکان",
+    "filterAndSearch": "پاڵاوتن و گەڕان"
 }

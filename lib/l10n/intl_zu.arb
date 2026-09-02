@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-02 11:41:31.391918",
+    "@@last_modified": "2026-09-02 12:25:34.038922",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Ukubuyekeza umsebenzi",
     "activityPanel": "Umsebenzi",
     "coursePage": "Ikhasi lesifundo",
-    "suggestedActivities": "Imisebenzi Ephakanyisiwe"
+    "suggestedActivities": "Imisebenzi Ephakanyisiwe",
+    "constructLevelSeeds": "Imbewu, amagama amasha",
+    "constructLevelGreens": "Okuluhlaza, amagama akhulayo",
+    "constructLevelFlowers": "Izimbali, amagama asezingeni eliphezulu",
+    "filterAndSearch": "Hlunga bese usesha"
 }

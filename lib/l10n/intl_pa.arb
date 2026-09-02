@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-02 11:41:26.149260",
+    "@@last_modified": "2026-09-02 12:25:30.055536",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2249,5 +2249,9 @@
     "activityReview": "ਗਤੀਵਿਧੀ ਸਮੀਖਿਆ",
     "activityPanel": "ਗਤੀਵਿਧੀ",
     "coursePage": "ਕੋਰਸ ਪੰਨਾ",
-    "suggestedActivities": "ਸੁਝਾਈਆਂ ਗਈਆਂ ਗਤੀਵਿਧੀਆਂ"
+    "suggestedActivities": "ਸੁਝਾਈਆਂ ਗਈਆਂ ਗਤੀਵਿਧੀਆਂ",
+    "constructLevelSeeds": "ਬੀਜ, ਨਵੇਂ ਸ਼ਬਦ",
+    "constructLevelGreens": "ਹਰੇ, ਵਧ ਰਹੇ ਸ਼ਬਦ",
+    "constructLevelFlowers": "ਫੁੱਲ, ਮੁਹਾਰਤ ਵਾਲੇ ਸ਼ਬਦ",
+    "filterAndSearch": "ਫਿਲਟਰ ਕਰੋ ਅਤੇ ਖੋਜੋ"
 }

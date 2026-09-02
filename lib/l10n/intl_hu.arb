@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-02 11:41:21.796554",
+    "@@last_modified": "2026-09-02 12:25:26.404439",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9948,5 +9948,9 @@
     "activityReview": "Tevékenység áttekintése",
     "activityPanel": "Tevékenység",
     "coursePage": "Tanfolyam oldal",
-    "suggestedActivities": "Javasolt tevékenységek"
+    "suggestedActivities": "Javasolt tevékenységek",
+    "constructLevelSeeds": "Magok, új szavak",
+    "constructLevelGreens": "Hajtások, fejlődő szavak",
+    "constructLevelFlowers": "Virágok, elsajátított szavak",
+    "filterAndSearch": "Szűrés és keresés"
 }

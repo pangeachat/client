@@ -3094,7 +3094,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-09-02 11:41:22.442522",
+    "@@last_modified": "2026-09-02 12:25:26.271225",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10477,5 +10477,9 @@
     "activityReview": "गतिविधि की समीक्षा",
     "activityPanel": "गतिविधि",
     "coursePage": "कोर्स पेज",
-    "suggestedActivities": "सुझाए गए कार्यकलाप"
+    "suggestedActivities": "सुझाए गए कार्यकलाप",
+    "constructLevelSeeds": "सीड्स, नए शब्द",
+    "constructLevelGreens": "ग्रीन्स, बढ़ते शब्द",
+    "constructLevelFlowers": "फ्लावर्स, सीखे हुए शब्द",
+    "filterAndSearch": "फ़िल्टर करें और खोजें"
 }

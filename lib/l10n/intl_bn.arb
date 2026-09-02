@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:41:19.878389",
+    "@@last_modified": "2026-09-02 12:25:23.242372",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10473,5 +10473,9 @@
     "activityReview": "ক্রিয়াকলাপ পর্যালোচনা",
     "activityPanel": "ক্রিয়াকলাপ",
     "coursePage": "কোর্স পৃষ্ঠা",
-    "suggestedActivities": "প্রস্তাবিত কার্যকলাপ"
+    "suggestedActivities": "প্রস্তাবিত কার্যকলাপ",
+    "constructLevelSeeds": "বীজ, নতুন শব্দ",
+    "constructLevelGreens": "সবুজ, ক্রমবর্ধমান শব্দ",
+    "constructLevelFlowers": "ফুল, আয়ত্ত করা শব্দ",
+    "filterAndSearch": "ফিল্টার এবং অনুসন্ধান"
 }

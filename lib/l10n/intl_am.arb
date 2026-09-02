@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-02 11:41:19.564204",
+    "@@last_modified": "2026-09-02 12:25:24.434096",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2249,5 +2249,9 @@
     "activityReview": "የእንቅስቃሴ ግምገማ",
     "activityPanel": "እንቅስቃሴ",
     "coursePage": "የኮርስ ገጽ",
-    "suggestedActivities": "የሚመከሩ እንቅስቃሴዎች"
+    "suggestedActivities": "የሚመከሩ እንቅስቃሴዎች",
+    "constructLevelSeeds": "ዘሮች፣ አዲስ ቃላት",
+    "constructLevelGreens": "አረንጓዴዎች፣ እያደጉ ያሉ ቃላት",
+    "constructLevelFlowers": "አበቦች፣ የተካኑ ቃላት",
+    "filterAndSearch": "አጣራ እና ፈልግ"
 }

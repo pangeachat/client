@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-02 11:41:19.744598",
+    "@@last_modified": "2026-09-02 12:25:23.505922",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2249,5 +2249,9 @@
     "activityReview": "কাৰ্যকলাপ পৰ্যালোচনা",
     "activityPanel": "কাৰ্যকলাপ",
     "coursePage": "পাঠ্যক্ৰমৰ পৃষ্ঠা",
-    "suggestedActivities": "পৰামৰ্শ দিয়া কাৰ্য্যকলাপসমূহ"
+    "suggestedActivities": "পৰামৰ্শ দিয়া কাৰ্য্যকলাপসমূহ",
+    "constructLevelSeeds": "বীজ, নতুন শব্দ",
+    "constructLevelGreens": "সেউজীয়া, বৰ্ধিত শব্দ",
+    "constructLevelFlowers": "ফুল, আয়ত্ত কৰা শব্দ",
+    "filterAndSearch": "ফিল্টাৰ আৰু সন্ধান কৰক"
 }

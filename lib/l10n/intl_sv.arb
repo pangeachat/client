@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:41:28.518920",
+    "@@last_modified": "2026-09-02 12:25:31.949300",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10363,5 +10363,9 @@
     "activityReview": "Aktivitetsöversikt",
     "activityPanel": "Aktivitet",
     "coursePage": "Kurssida",
-    "suggestedActivities": "Föreslagna aktiviteter"
+    "suggestedActivities": "Föreslagna aktiviteter",
+    "constructLevelSeeds": "Frön, nya ord",
+    "constructLevelGreens": "Grönska, växande ord",
+    "constructLevelFlowers": "Blommor, ord du kan",
+    "filterAndSearch": "Filtrera och sök"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-02 11:41:20.895384",
+    "@@last_modified": "2026-09-02 12:25:24.912542",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10200,5 +10200,9 @@
     "activityReview": "Bilan d'activité",
     "activityPanel": "Activité",
     "coursePage": "Page du cours",
-    "suggestedActivities": "Activités suggérées"
+    "suggestedActivities": "Activités suggérées",
+    "constructLevelSeeds": "Graines, nouveaux mots",
+    "constructLevelGreens": "Pousses, mots en croissance",
+    "constructLevelFlowers": "Fleurs, mots maîtrisés",
+    "filterAndSearch": "Filtrer et rechercher"
 }

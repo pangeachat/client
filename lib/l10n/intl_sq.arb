@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-02 11:41:29.554991",
+    "@@last_modified": "2026-09-02 12:25:31.592976",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Rishikimi i aktivitetit",
     "activityPanel": "Aktiviteti",
     "coursePage": "Faqja e kursit",
-    "suggestedActivities": "Aktivitete të sugjeruara"
+    "suggestedActivities": "Aktivitete të sugjeruara",
+    "constructLevelSeeds": "Fara, fjalë të reja",
+    "constructLevelGreens": "Gjelbërim, fjalë në rritje",
+    "constructLevelFlowers": "Lule, fjalë të zotëruara",
+    "filterAndSearch": "Filtro dhe kërko"
 }

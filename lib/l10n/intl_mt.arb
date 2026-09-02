@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-02 11:41:25.060902",
+    "@@last_modified": "2026-09-02 12:25:29.311542",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Reviżjoni tal-attività",
     "activityPanel": "Attività",
     "coursePage": "Paġna tal-kors",
-    "suggestedActivities": "Attivitajiet Suġġeriti"
+    "suggestedActivities": "Attivitajiet Suġġeriti",
+    "constructLevelSeeds": "Żrieragħ, kliem ġdid",
+    "constructLevelGreens": "Ħdura, kliem li qed jikber",
+    "constructLevelFlowers": "Fjuri, kliem mhaddem",
+    "filterAndSearch": "Iffiltra u fittex"
 }

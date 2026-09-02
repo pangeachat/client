@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-02 11:41:24.470593",
+    "@@last_modified": "2026-09-02 12:25:29.991870",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2249,5 +2249,9 @@
     "activityReview": "এক্টিভিটি রিকন",
     "activityPanel": "এক্টিভিটি",
     "coursePage": "কোর্স পেজ",
-    "suggestedActivities": "খঙহনবা থবকশিং"
+    "suggestedActivities": "খঙহনবা থবকশিং",
+    "constructLevelSeeds": "Seeds, অহোংবা ৱাহৈশিং",
+    "constructLevelGreens": "Greens, চাউরক্লিবা ৱাহৈশিং",
+    "constructLevelFlowers": "Flowers, থোইদোকপা ৱাহৈশিং",
+    "filterAndSearch": "Filter অমসুং search"
 }

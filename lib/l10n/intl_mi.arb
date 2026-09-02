@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-02 11:41:24.382354",
+    "@@last_modified": "2026-09-02 12:25:28.776097",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Arotake Mahi",
     "activityPanel": "Mahi",
     "coursePage": "Whārangi Akoranga",
-    "suggestedActivities": "Ngā Mahi Kua Tūtohunga"
+    "suggestedActivities": "Ngā Mahi Kua Tūtohunga",
+    "constructLevelSeeds": "Kākano, kupu hou",
+    "constructLevelGreens": "Kākāriki, kupu e tupu ana",
+    "constructLevelFlowers": "Puawai, kupu kua rangatira",
+    "filterAndSearch": "Tātari me te rapu"
 }

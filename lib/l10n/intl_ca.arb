@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:41:20.281566",
+    "@@last_modified": "2026-09-02 12:25:24.097438",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9972,5 +9972,9 @@
     "activityReview": "Revisió d'activitat",
     "activityPanel": "Activitat",
     "coursePage": "Pàgina del curs",
-    "suggestedActivities": "Activitats suggerides"
+    "suggestedActivities": "Activitats suggerides",
+    "constructLevelSeeds": "Llavors, paraules noves",
+    "constructLevelGreens": "Brots, paraules en creixement",
+    "constructLevelFlowers": "Flors, paraules dominades",
+    "filterAndSearch": "Filtra i cerca"
 }

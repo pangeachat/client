@@ -2920,7 +2920,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-02 11:41:19.645016",
+    "@@last_modified": "2026-09-02 12:25:24.254162",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9456,5 +9456,9 @@
     "activityReview": "བྱེད་སྒོ་བསྐྱར་ཞིབ།",
     "activityPanel": "བྱེད་སྒོ།",
     "coursePage": "སློབ་ཚན་ཤོག་ངོས།",
-    "suggestedActivities": "བྱེད་སྒོ་འཆར་འགོད།"
+    "suggestedActivities": "བྱེད་སྒོ་འཆར་འགོད།",
+    "constructLevelSeeds": "ས་བོན། ཚིག་གསར་པ།",
+    "constructLevelGreens": "ལྗང་མྱུག འཕེལ་བཞིན་པའི་ཚིག",
+    "constructLevelFlowers": "མེ་ཏོག བྱང་ཆུབ་པའི་ཚིག",
+    "filterAndSearch": "ཚགས་འདེམས་དང་འཚོལ་བཤེར།"
 }

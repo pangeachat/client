@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:41:30.354584",
+    "@@last_modified": "2026-09-02 12:25:32.355002",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9937,5 +9937,9 @@
     "activityReview": "செயல்பாட்டு ஆய்வு",
     "activityPanel": "செயல்பாடு",
     "coursePage": "பாடப்பக்கம்",
-    "suggestedActivities": "பரிந்துரைக்கப்பட்ட செயல்பாடுகள்"
+    "suggestedActivities": "பரிந்துரைக்கப்பட்ட செயல்பாடுகள்",
+    "constructLevelSeeds": "விதைகள், புதிய சொற்கள்",
+    "constructLevelGreens": "கீரைகள், வளரும் சொற்கள்",
+    "constructLevelFlowers": "மலர்கள், தேர்ச்சி பெற்ற சொற்கள்",
+    "filterAndSearch": "வடிகட்டி தேடு"
 }

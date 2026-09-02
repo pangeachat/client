@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-02 11:41:48.180934",
+    "@@last_modified": "2026-09-02 12:25:32.689501",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Баррасии фаъолият",
     "activityPanel": "Фаъолият",
     "coursePage": "Саҳифаи курс",
-    "suggestedActivities": "Фаъолиятҳои пешниҳодшуда"
+    "suggestedActivities": "Фаъолиятҳои пешниҳодшуда",
+    "constructLevelSeeds": "Тухмҳо, калимаҳои нав",
+    "constructLevelGreens": "Сабзавот, калимаҳои рӯёнанда",
+    "constructLevelFlowers": "Гулҳо, калимаҳои азхудшуда",
+    "filterAndSearch": "Филтр ва ҷустуҷӯ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-09-02 11:41:30.952594",
+    "@@last_modified": "2026-09-02 12:25:33.318745",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9845,5 +9845,9 @@
     "activityReview": "活动回顾",
     "activityPanel": "活动",
     "coursePage": "课程页面",
-    "suggestedActivities": "建议活动"
+    "suggestedActivities": "建议活动",
+    "constructLevelSeeds": "种子，新词",
+    "constructLevelGreens": "绿植，成长词",
+    "constructLevelFlowers": "花朵，掌握词",
+    "filterAndSearch": "筛选和搜索"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-02 11:41:20.266959",
+    "@@last_modified": "2026-09-02 12:25:23.999691",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10339,5 +10339,9 @@
     "activityReview": "Přehled aktivit",
     "activityPanel": "Aktivita",
     "coursePage": "Stránka kurzu",
-    "suggestedActivities": "Navrhované aktivity"
+    "suggestedActivities": "Navrhované aktivity",
+    "constructLevelSeeds": "Semínka, nová slova",
+    "constructLevelGreens": "Zelené, rostoucí slova",
+    "constructLevelFlowers": "Květy, zvládnutá slova",
+    "filterAndSearch": "Filtrovat a hledat"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-02 11:41:19.652931",
+    "@@last_modified": "2026-09-02 12:25:23.313736",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2249,5 +2249,9 @@
     "activityReview": "Pregled aktivnosti",
     "activityPanel": "Aktivnost",
     "coursePage": "Stranica kursa",
-    "suggestedActivities": "Predložene aktivnosti"
+    "suggestedActivities": "Predložene aktivnosti",
+    "constructLevelSeeds": "Sjemenke, nove riječi",
+    "constructLevelGreens": "Zelenilo, riječi u razvoju",
+    "constructLevelFlowers": "Cvijeće, savladane riječi",
+    "filterAndSearch": "Filtriraj i pretraži"
 }
