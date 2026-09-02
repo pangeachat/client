@@ -20,7 +20,9 @@ permissions:
   contents: read
 
 jobs:
-  code_tests:
+  # Format, lint and analyze. Split out from the test run so the two halves run
+  # side by side; the `code_tests` gate below is red if either is.
+  code_lint:
     runs-on: ubuntu-latest
     environment: staging
     steps:
@@ -58,7 +60,63 @@ jobs:
           GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
         run: ./scripts/configure-firebase-messaging.sh
       - run: flutter analyze
-      - run: flutter test --dart-define=TEST_MATRIX_USERNAME=${{ vars.TEST_MATRIX_USERNAME }} --dart-define=TEST_MATRIX_PASSWORD=${{ vars.TEST_MATRIX_PASSWORD }}
+
+  # The whole test suite, split across runners by test file. Roughly half the
+  # cost of a test run is compiling the files, not running them, so the split
+  # has to be by file — `flutter test`'s own --total-shards slices the tests
+  # *inside* each file and would leave every shard compiling all of them. See
+  # ci.instructions.md.
+  code_test_shards:
+    runs-on: ubuntu-latest
+    environment: staging
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - run: flutter pub get
+      - run: flutter gen-l10n
+      - name: Add Firebase Messaging
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+          GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
+        run: ./scripts/configure-firebase-messaging.sh
+      - name: Test shard ${{ matrix.shard }} of 4
+        # Same discovery rule a bare `flutter test` uses: every file under
+        # test/ whose name ends in _test.dart. Round-robin over the sorted
+        # list, so each shard draws from every directory instead of taking one
+        # contiguous block of the slow ones.
+        run: |
+          shard_files=()
+          while IFS= read -r f; do shard_files+=("$f"); done \
+            < <(find test -type f -name '*_test.dart' | sort | awk "NR % 4 == ${{ matrix.shard }}")
+          if [ ${#shard_files[@]} -eq 0 ]; then
+            echo "::error::Shard ${{ matrix.shard }} matched no test files. The split is broken — a bare 'flutter test' here would silently run the whole suite."
+            exit 1
+          fi
+          echo "Running ${#shard_files[@]} test files."
+          flutter test --dart-define=TEST_MATRIX_USERNAME=${{ vars.TEST_MATRIX_USERNAME }} --dart-define=TEST_MATRIX_PASSWORD=${{ vars.TEST_MATRIX_PASSWORD }} "${shard_files[@]}"
+
+  # The required status check. Branch protection asks for this name, so it stays
+  # put while the jobs it gates change shape. Skipped rather than failed on a
+  # cancelled run, which branch protection accepts.
+  code_tests:
+    runs-on: ubuntu-latest
+    needs: [code_lint, code_test_shards]
+    if: ${{ !cancelled() }}
+    steps:
+      - name: Lint and every test shard passed
+        run: |
+          echo "code_lint: ${{ needs.code_lint.result }}"
+          echo "code_test_shards: ${{ needs.code_test_shards.result }}"
+          [ "${{ needs.code_lint.result }}" = "success" ] || exit 1
+          [ "${{ needs.code_test_shards.result }}" = "success" ] || exit 1
 
 
   # Source-level accessibility gate: every interactive control and image in lib/
