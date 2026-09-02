@@ -168,7 +168,7 @@ Browser only:
 | `rejoin_ui.js` | The four review fixes browser-to-browser: a rejoined clock continues rather than restarting, nothing still claims "reconnecting" after the other side ends, the Return banner's red end ends the call for both, and the chat list previews the call. |
 | `grey_hover.js` | The CanvasKit grey box: hovers every control on a live ring and fails if a large flat grey block appears that was not there before. |
 | `transcript.js` | What the two people can READ afterwards: the consent notice, each speaker's own words under their own name, turn positions on the wire, and nobody who spoke reported as silent. |
-| `transcript_two_devices.js` | ONE account signed in TWICE in one call. Both devices write TWO distinct halves, the halves name different devices, each half carries the fixture its own browser played and the transaction id that browser was SEEN sending for THIS call (read off its own outgoing requests, scoped by the call key inside them -- see below), the device that stays says in its own log that it took the recording over, the reader says it assembled the account's half from both, and the panel draws at least as many turns as the halves carry. It also refuses a call whose key an earlier call already used, searching back to the event that IS the key -- see below. It does NOT claim to know when a device left the call, or how much of the tail the survivor recorded; neither is observable here. |
+| `transcript_two_devices.js` | ONE account signed in TWICE in one call. Both devices write TWO distinct halves, the halves name different devices, each half carries the fixture its own browser played and the transaction id that browser was SEEN sending for THIS call (read off its own outgoing requests, scoped by the call key inside them -- see below), the device that stays says in its own log that it took the recording over, the reader says it assembled the account's half from both, and the panel draws at least as many turns as the halves carry. It also refuses a call whose key an earlier call used -- searching back to the event that IS the key, and comparing the keys of every ring the run itself placed -- see below. It does NOT claim to know when any device left the call, or how much of the tail the survivor recorded; neither is observable here. |
 
 Physical Android phone required (all of these; each needs `PHONE_SERIAL`):
 
@@ -252,6 +252,29 @@ Not a scenario:
   from more than one. The turn count is still asked every run, and a run that
   did not reach two speaking halves FAILS rather than standing the count aside:
   a scenario that could not reach the state it tests has not passed.
+- **A membership read answers one of its two questions.** A device PRESENT in
+  `com.famedly.call.member` really is in the call -- nothing invents a sibling --
+  so a check that refuses on presence is on solid ground. A state that reads
+  EMPTY is one writer's view, and the product means it to be, so nothing may
+  conclude a device has LEFT from it. Three checks in
+  `transcript_two_devices.js` did: two about the handover, and later two about
+  the hangups at the end of the call, which passed when a survivor's click
+  missed and the state omitted it anyway. All are gone. What a departure was
+  really being asked for -- did this participant's call end, so that its half
+  gets written -- is answered by the half ARRIVING, which is presence, and which
+  the run already requires three times over. If you write a new scenario, grep
+  it for every membership read before you trust one: the finding names one site
+  and the class is what needs fixing.
+- **A fixed sleep proves nothing about a drain of unbounded length.** The retry
+  loop tears an abandoned attempt down and waits ten seconds before racing
+  again, which makes a reused call key less likely and says nothing about
+  whether one happened -- the abandoned call's half can land long afterwards,
+  under the same key, and be read as part of the winning call. The room search
+  cannot see it while it is still draining. What settles it is that the harness
+  watched both rings: every attempt's call key is remembered, and a winning key
+  an earlier attempt already rang with is a reuse observed rather than inferred.
+  The scenario fails on it rather than proceeding -- a run that manufactured the
+  bug it exists to detect is not a green run.
 - **Nothing in this stack witnesses the MOMENT a device left a call.** The
   membership state is one event per account written by whichever device wrote
   last, holding that writer's view of the roster -- so a device's absence from
@@ -305,6 +328,12 @@ Not a scenario:
   `/_matrix/client/` URLs if you copy this: the app also talks to the
   choreographer with a bearer of its own, and taking whichever went past last
   yields `M_UNKNOWN_TOKEN` and reads as a browser that could not be identified.
+- **Deduping a send log hides the thing worth seeing.** Two PUTs under ONE
+  transaction id collapse to a single entry, so "this device was seen sending a
+  half" can pass on a device seen sending it twice -- and a duplicate send under
+  one key is exactly what a reused call key produces, the homeserver answering
+  the second from its transaction cache and writing nothing. Count the raw sends
+  and assert that, then dedupe for the id comparison.
 - **A page's send log outlives the call, so scope it.** The watcher below
   records every transcript PUT a page makes for the life of the process, and the
   retry loop can place and tear down calls before the winning one -- a torn-down
@@ -410,7 +439,12 @@ is inside the engine.
   under a key before it -- rather than reading a fixed window. A window answers
   "no earlier half in the last N events", which is a different sentence from the
   one the check is named for, and a run that cannot reach the boundary reports
-  an unfinished search rather than a clean call.
+  an unfinished search rather than a clean call. The room search is not the
+  whole of it either: an abandoned attempt's half drains on no schedule, so a
+  key reused between two attempts of ONE run is invisible to it until that half
+  lands -- by which time the two calls' halves are in the room under one key and
+  read as a single call. The keys of every ring the run places are compared as
+  well, which catches that at the moment it happens.
 - **A call that stops being recorded when one of an account's devices leaves.**
   Two of the learner's devices in one call; the one holding the recording hung
   up at thirty-five seconds; the survivor held the call alone for another forty
