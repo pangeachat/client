@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart' show OrdinalSortKey;
 
 import 'package:badges/badges.dart' show BadgePosition;
 import 'package:go_router/go_router.dart';
@@ -224,6 +225,19 @@ int? recencyFocusHint(List<PanelToken> allTokens, List<String> recency) {
 /// side-effects, then assembles the [Stack] from the named `_…Layer` helpers
 /// below — each of which reads only from the bundle. The dense derivation all
 /// lives in [_ShellLayout.resolve].
+/// The workspace's screen-reader browse order (#8755): reading order, not
+/// paint order — the nav rail first, then the open panels, the top-right
+/// chrome, and the map (the backdrop everything overlays) last. Chosen in
+/// review; the browse-order twin of the #7219 focus-order annotations at the
+/// same mounts. See routing.instructions.md.
+class _BrowseOrder {
+  static const rail = OrdinalSortKey(1);
+  static const leftPanels = OrdinalSortKey(2);
+  static const rightPanels = OrdinalSortKey(3);
+  static const cluster = OrdinalSortKey(4);
+  static const map = OrdinalSortKey(5);
+}
+
 class WorkspaceShell extends StatelessWidget {
   // #Pangea
   final GoRouterState state;
@@ -268,18 +282,21 @@ class WorkspaceShell extends StatelessWidget {
                 /// detail; right = the panel zone.
                 FocusTraversalOrder(
                   order: const NumericFocusOrder(2),
-                  child: WorldMap(
-                    key: _persistentWorldMapKey,
-                    leftOverlayWidth: l.mapLeftOverlay,
-                    rightOverlayWidth: l.allocation.mapRightOverlay,
-                    bottomOverlayHeight: l.mapBottomOverlay,
-                    availableVisibleMapWidth: l.availableVisibleMapWidth,
-                    // The map's top-left slot: the search overlay on the world
-                    // map, the course context bar under a `?c=` scope whose
-                    // panel is closed (#8736).
-                    courseScopeSpaceId: activeSpaceIdFor(state.uri),
-                    coursePanelOpen: l.coursePanelVisible,
-                    focus: mapFocusFor(state),
+                  child: Semantics(
+                    sortKey: _BrowseOrder.map,
+                    child: WorldMap(
+                      key: _persistentWorldMapKey,
+                      leftOverlayWidth: l.mapLeftOverlay,
+                      rightOverlayWidth: l.allocation.mapRightOverlay,
+                      bottomOverlayHeight: l.mapBottomOverlay,
+                      availableVisibleMapWidth: l.availableVisibleMapWidth,
+                      // The map's top-left slot: the search overlay on the world
+                      // map, the course context bar under a `?c=` scope whose
+                      // panel is closed (#8736).
+                      courseScopeSpaceId: activeSpaceIdFor(state.uri),
+                      coursePanelOpen: l.coursePanelVisible,
+                      focus: mapFocusFor(state),
+                    ),
                   ),
                 ),
 
@@ -361,11 +378,15 @@ class WorkspaceShell extends StatelessWidget {
                             ),
                             child: FocusTraversalOrder(
                               order: const NumericFocusOrder(1),
-                              child: SpacesNavigationRail(
-                                state: state,
-                                showNavRail: l.navRail,
-                                naviRailWidth: FluffyThemes.navRailWidth + 1.0,
-                                activeSpaceId: activeSpaceIdFor(state.uri),
+                              child: Semantics(
+                                sortKey: _BrowseOrder.rail,
+                                child: SpacesNavigationRail(
+                                  state: state,
+                                  showNavRail: l.navRail,
+                                  naviRailWidth:
+                                      FluffyThemes.navRailWidth + 1.0,
+                                  activeSpaceId: activeSpaceIdFor(state.uri),
+                                ),
                               ),
                             ),
                           ),
@@ -399,14 +420,18 @@ class WorkspaceShell extends StatelessWidget {
                                 bottom: 0,
                                 left: l.allocation.left[i].left,
                                 width: l.allocation.left[i].width,
-                                child: LeftPanelLayer(
-                                  token: l.leftTokens[i],
-                                  state: state,
-                                  foldedOver: l.allocation.left[i].foldedOver,
-                                  getRoomKey: _roomKeyFor,
-                                  bare:
-                                      !l.isColumnMode &&
-                                      l.allocation.left[i].vis == PanelVis.full,
+                                child: Semantics(
+                                  sortKey: _BrowseOrder.leftPanels,
+                                  child: LeftPanelLayer(
+                                    token: l.leftTokens[i],
+                                    state: state,
+                                    foldedOver: l.allocation.left[i].foldedOver,
+                                    getRoomKey: _roomKeyFor,
+                                    bare:
+                                        !l.isColumnMode &&
+                                        l.allocation.left[i].vis ==
+                                            PanelVis.full,
+                                  ),
                                 ),
                               ),
                         ],
@@ -435,13 +460,16 @@ class WorkspaceShell extends StatelessWidget {
                                 bottom: 0,
                                 left: l.allocation.right[i].left,
                                 width: l.allocation.right[i].width,
-                                child: FocusTraversalGroup(
-                                  policy: OrderedTraversalPolicy(),
-                                  child: WorkspaceRightPanel(
-                                    token: l.rightTokens[i],
-                                    currentUri: state.uri,
-                                    foldedOver:
-                                        l.allocation.right[i].foldedOver,
+                                child: Semantics(
+                                  sortKey: _BrowseOrder.rightPanels,
+                                  child: FocusTraversalGroup(
+                                    policy: OrderedTraversalPolicy(),
+                                    child: WorkspaceRightPanel(
+                                      token: l.rightTokens[i],
+                                      currentUri: state.uri,
+                                      foldedOver:
+                                          l.allocation.right[i].foldedOver,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -461,7 +489,10 @@ class WorkspaceShell extends StatelessWidget {
                             right: _ShellLayout.chromeMargin,
                             child: FocusTraversalOrder(
                               order: const NumericFocusOrder(3),
-                              child: WorldUserCluster(key: _userClusterKey),
+                              child: Semantics(
+                                sortKey: _BrowseOrder.cluster,
+                                child: WorldUserCluster(key: _userClusterKey),
+                              ),
                             ),
                           )
                         else if (l.analyticsBarVisible)
@@ -486,7 +517,12 @@ class WorkspaceShell extends StatelessWidget {
                                   ),
                               child: FocusTraversalOrder(
                                 order: const NumericFocusOrder(3),
-                                child: WorldAnalyticsBar(key: _userClusterKey),
+                                child: Semantics(
+                                  sortKey: _BrowseOrder.cluster,
+                                  child: WorldAnalyticsBar(
+                                    key: _userClusterKey,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
