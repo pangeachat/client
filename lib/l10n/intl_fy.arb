@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Berjocht selektearje",
     "callTranscriptAudioDropped": "Wat {name} sei is troch harren apparaat ferlern gien foardat it opnommen wurde koe, dus wat der sein is, is net bekend.",
     "callTranscriptHeldByOtherDevice": "Wat {name} sei is oerlitten oan in oar fan harren apparaten om op te nimmen, dus neat dêrfan is fan dit apparaat ferstjoerd en wat der sein is, is hjir net bekend.",
-    "callTranscriptDeviceNeverWrote": "In part fan wat {name} sei is oerlitten oan in oar fan harren apparaten om op te nimmen, en dat apparaat hat it net opnommen, dus dat part is net bekend."
+    "callTranscriptDeviceNeverWrote": "In part fan wat {name} sei is oerlitten oan in oar fan harren apparaten om op te nimmen, en dat apparaat hat it net opnommen, dus dat part is net bekend.",
+    "archivedChat": "Argivearre petear",
+    "activityReview": "Aktiviteitsbeoardieling",
+    "activityPanel": "Aktiviteit",
+    "coursePage": "Kurcusside"
 }

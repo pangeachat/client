@@ -9835,5 +9835,9 @@
     "selectMessageLabel": "Nachricht auswählen",
     "callTranscriptAudioDropped": "Was {name} gesagt hat, ging auf dem Gerät verloren, bevor es überhaupt aufgezeichnet werden konnte. Was gesagt wurde, ist also nicht bekannt.",
     "callTranscriptHeldByOtherDevice": "Was {name} gesagt hat, wurde einem anderen ihrer Geräte zur Aufzeichnung überlassen, daher wurde von diesem Gerät nichts gesendet und was gesagt wurde, ist hier nicht bekannt.",
-    "callTranscriptDeviceNeverWrote": "Ein Teil dessen, was {name} gesagt hat, wurde einem anderen ihrer Geräte zur Aufzeichnung überlassen, und dieses Gerät hat es nicht aufgezeichnet, so dass dieser Teil nicht bekannt ist."
+    "callTranscriptDeviceNeverWrote": "Ein Teil dessen, was {name} gesagt hat, wurde einem anderen ihrer Geräte zur Aufzeichnung überlassen, und dieses Gerät hat es nicht aufgezeichnet, so dass dieser Teil nicht bekannt ist.",
+    "archivedChat": "Archivierter Chat",
+    "activityReview": "Aktivitätsprüfung",
+    "activityPanel": "Aktivität",
+    "coursePage": "Kursseite"
 }

@@ -10793,5 +10793,9 @@
     "selectMessageLabel": "Izberite sporočilo",
     "callTranscriptAudioDropped": "Kar je rekel/-a {name}, je njegova/njena naprava izgubila, preden je bilo mogoče posneti, zato ni znano, kaj je bilo rečeno.",
     "callTranscriptHeldByOtherDevice": "Kar je rekel/-a {name}, je bilo prepuščeno snemanju drugi njegovi/njeni napravi, zato s te naprave ni bilo nič poslano in tukaj ni znano, kaj je bilo rečeno.",
-    "callTranscriptDeviceNeverWrote": "Del tega, kar je rekel/-a {name}, je bil prepuščen snemanju drugi njegovi/njeni napravi, vendar ta naprava tega ni posnela, zato ta del ni znan."
+    "callTranscriptDeviceNeverWrote": "Del tega, kar je rekel/-a {name}, je bil prepuščen snemanju drugi njegovi/njeni napravi, vendar ta naprava tega ni posnela, zato ta del ni znan.",
+    "archivedChat": "Arhiviran klepet",
+    "activityReview": "Pregled dejavnosti",
+    "activityPanel": "Dejavnost",
+    "coursePage": "Stran tečaja"
 }

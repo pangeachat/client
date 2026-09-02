@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Pilih pesen",
     "callTranscriptAudioDropped": "Omongané {name} ilang saka pirantiné sadurungé bisa direkam, dadi ora dingertèni apa sing diomongaké.",
     "callTranscriptHeldByOtherDevice": "Omongané {name} direkam déning piranti liyané, dadi ora ana sing dikirim saka piranti iki lan ora dingertèni apa sing diomongaké ing kéné.",
-    "callTranscriptDeviceNeverWrote": "Sebagéan saka sing diomongké {name} diserahké menyang piranti liyané kanggo direkam, lan piranti kasebut ora ngrekam, mula bagéan kasebut ora dingertèni."
+    "callTranscriptDeviceNeverWrote": "Sebagéan saka sing diomongké {name} diserahké menyang piranti liyané kanggo direkam, lan piranti kasebut ora ngrekam, mula bagéan kasebut ora dingertèni.",
+    "archivedChat": "Obrolan sing diarsipake",
+    "activityReview": "Tinjauan aktivitas",
+    "activityPanel": "Aktivitas",
+    "coursePage": "Kaca kursus"
 }

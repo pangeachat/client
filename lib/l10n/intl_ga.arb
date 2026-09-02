@@ -9859,5 +9859,9 @@
     "selectMessageLabel": "Roghnaigh teachtaireacht",
     "callTranscriptAudioDropped": "Chaill an gléas an méid a dúirt {name} sular éirigh leis é a thaifeadadh, mar sin ní fios cad a dúradh.",
     "callTranscriptHeldByOtherDevice": "Fágadh faoi ghléas eile de chuid {name} an méid a dúirt siad a thaifeadadh, mar sin níor seoladh aon chuid de ón ngléas seo agus ní fios anseo cad a dúradh.",
-    "callTranscriptDeviceNeverWrote": "Fágadh cuid den méid a dúirt {name} ag gléas eile dá gcuid le taifeadadh, agus níor thaifead an gléas sin é, mar sin níl an chuid sin ar eolas."
+    "callTranscriptDeviceNeverWrote": "Fágadh cuid den méid a dúirt {name} ag gléas eile dá gcuid le taifeadadh, agus níor thaifead an gléas sin é, mar sin níl an chuid sin ar eolas.",
+    "archivedChat": "Comhrá cartlainne",
+    "activityReview": "Athbhreithniú gníomhaíochta",
+    "activityPanel": "Gníomhaíocht",
+    "coursePage": "Leathanach cúrsa"
 }

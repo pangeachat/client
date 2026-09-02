@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Chwazi mesaj",
     "callTranscriptAudioDropped": "Aparèy {name} lan te pèdi sa l te di a anvan menm li te anrejistre, kidonk nou pa konnen sa k te di a.",
     "callTranscriptHeldByOtherDevice": "Sa {name} te di a te kite pou yon lòt aparèy li anrejistre, kidonk anyen pa t voye soti nan aparèy sa a e nou pa konnen sa k te di a isit la.",
-    "callTranscriptDeviceNeverWrote": "Yon pati nan sa {name} te di a te sipoze anrejistre sou yon lòt aparèy, men aparèy sa a pa t anrejistre l, kidonk pati sa a pa disponib."
+    "callTranscriptDeviceNeverWrote": "Yon pati nan sa {name} te di a te sipoze anrejistre sou yon lòt aparèy, men aparèy sa a pa t anrejistre l, kidonk pati sa a pa disponib.",
+    "archivedChat": "Chat achive",
+    "activityReview": "Revizyon aktivite",
+    "activityPanel": "Aktivite",
+    "coursePage": "Paj kou"
 }

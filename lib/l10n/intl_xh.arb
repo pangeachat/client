@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Khetha umyalezo",
     "callTranscriptAudioDropped": "Into ethethwe ngu-{name} ilahlekile kwisixhobo sakhe phambi kokuba irekhodwe, ngoko ke into ethethiweyo ayaziwa.",
     "callTranscriptHeldByOtherDevice": "Into ethethwe ngu-{name} ishiywe kwesinye isixhobo sakhe ukuba siyirekhode, ngoko ke akukho nto ithunyelweyo kule kwaye into ethethiweyo ayaziwa apha.",
-    "callTranscriptDeviceNeverWrote": "Inxalenye yento ethethwe ngu-{name} ishiywe kwenye yezixhobo zabo ukuba iyirekhode, kwaye eso sixhobo asiyirekhodanga, ngoko ke loo nxalenye ayaziwa."
+    "callTranscriptDeviceNeverWrote": "Inxalenye yento ethethwe ngu-{name} ishiywe kwenye yezixhobo zabo ukuba iyirekhode, kwaye eso sixhobo asiyirekhodanga, ngoko ke loo nxalenye ayaziwa.",
+    "archivedChat": "Ingxoxo egciniweyo",
+    "activityReview": "Uhlaziyo lomsebenzi",
+    "activityPanel": "Umsebenzi",
+    "coursePage": "Iphepha lekhosi"
 }

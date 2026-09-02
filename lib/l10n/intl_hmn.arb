@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Xaiv lus",
     "callTranscriptAudioDropped": "Lub suab uas {name} hais tau poob ntawm lawv lub cuab yeej ua ntej nws yuav kaw tau, yog li ntawd tsis paub tias lawv hais dab tsi.",
     "callTranscriptHeldByOtherDevice": "Lub suab uas {name} hais tau muab rau lwm lub cuab yeej ntawm lawv los kaw, yog li ntawd tsis muaj dab tsi raug xa los ntawm lub no thiab tsis paub tias lawv hais dab tsi ntawm no.",
-    "callTranscriptDeviceNeverWrote": "Ib feem ntawm qhov uas {name} tau hais raug muab rau lwm lub cuab yeej ntawm lawv los kaw, thiab lub cuab yeej ntawd tsis tau kaw nws, yog li ntawd thiaj tsis paub txog feem ntawd."
+    "callTranscriptDeviceNeverWrote": "Ib feem ntawm qhov uas {name} tau hais raug muab rau lwm lub cuab yeej ntawm lawv los kaw, thiab lub cuab yeej ntawd tsis tau kaw nws, yog li ntawd thiaj tsis paub txog feem ntawd.",
+    "archivedChat": "Cov lus sib tham qub",
+    "activityReview": "Rov saib dua tej yam ua",
+    "activityPanel": "Kev ua ub no",
+    "coursePage": "Nplooj ntawv kawm"
 }

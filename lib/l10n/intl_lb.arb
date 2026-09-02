@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Message auswielen",
     "callTranscriptAudioDropped": "Dat, wat den/d' {name} gesot huet, ass vu sengem/hirem Apparat verluer gaangen, ier et iwwerhaapt konnt opgeholl ginn. Wat gesot gouf, ass also net bekannt.",
     "callTranscriptHeldByOtherDevice": "Dat, wat den/d' {name} gesot huet, gouf engem anere vu sengen/hiren Apparater iwwerlooss fir opzehuelen, dofir gouf näischt vun dësem Apparat geschéckt a wat gesot gouf, ass hei net bekannt.",
-    "callTranscriptDeviceNeverWrote": "En Deel vun deem, wat den {name} gesot huet, sollt vun engem anere vu sengen Apparater opgeholl ginn, an deen Apparat huet et net opgeholl, dofir ass deen Deel net bekannt."
+    "callTranscriptDeviceNeverWrote": "En Deel vun deem, wat den {name} gesot huet, sollt vun engem anere vu sengen Apparater opgeholl ginn, an deen Apparat huet et net opgeholl, dofir ass deen Deel net bekannt.",
+    "archivedChat": "Archivéierte Chat",
+    "activityReview": "Aktivitéitsiwwerbléck",
+    "activityPanel": "Aktivitéit",
+    "coursePage": "Cours Säit"
 }

@@ -10768,5 +10768,9 @@
     "selectMessageLabel": "Vælg besked",
     "callTranscriptAudioDropped": "Hvad {name} sagde, gik tabt på deres enhed, før det kunne optages, så det vides ikke, hvad der blev sagt.",
     "callTranscriptHeldByOtherDevice": "Hvad {name} sagde, blev overladt til en af deres andre enheder at optage, så intet af det blev sendt fra denne, og det vides ikke her, hvad der blev sagt.",
-    "callTranscriptDeviceNeverWrote": "En del af, hvad {name} sagde, blev overladt til en af deres andre enheder at optage, og den enhed optog det ikke, så den del er ukendt."
+    "callTranscriptDeviceNeverWrote": "En del af, hvad {name} sagde, blev overladt til en af deres andre enheder at optage, og den enhed optog det ikke, så den del er ukendt.",
+    "archivedChat": "Arkiveret chat",
+    "activityReview": "Aktivitetsoversigt",
+    "activityPanel": "Aktivitet",
+    "coursePage": "Kursside"
 }

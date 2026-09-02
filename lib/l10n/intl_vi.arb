@@ -7140,5 +7140,9 @@
     "selectMessageLabel": "Chọn tin nhắn",
     "callTranscriptAudioDropped": "Những gì {name} nói đã bị mất bởi thiết bị của họ trước khi có thể được ghi lại, vì vậy không rõ họ đã nói gì.",
     "callTranscriptHeldByOtherDevice": "Những gì {name} nói đã được để cho một thiết bị khác của họ ghi lại, vì vậy không có nội dung nào được gửi từ thiết bị này và không rõ họ đã nói gì ở đây.",
-    "callTranscriptDeviceNeverWrote": "Một phần những gì {name} nói đã được để cho một thiết bị khác của họ ghi lại, và thiết bị đó đã không ghi lại, vì vậy phần đó không được biết."
+    "callTranscriptDeviceNeverWrote": "Một phần những gì {name} nói đã được để cho một thiết bị khác của họ ghi lại, và thiết bị đó đã không ghi lại, vì vậy phần đó không được biết.",
+    "archivedChat": "Trò chuyện đã lưu trữ",
+    "activityReview": "Xem lại hoạt động",
+    "activityPanel": "Hoạt động",
+    "coursePage": "Trang khóa học"
 }

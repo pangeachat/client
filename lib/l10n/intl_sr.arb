@@ -10797,5 +10797,9 @@
     "selectMessageLabel": "Izaberite poruku",
     "callTranscriptAudioDropped": "Ono što je {name} rekao/la izgubljeno je na njegovom/njenom uređaju pre nego što je moglo da se snimi, tako da se ne zna šta je rečeno.",
     "callTranscriptHeldByOtherDevice": "Ono što je {name} rekao/la prepušteno je drugom njegovom/njenom uređaju da snimi, tako da ništa od toga nije poslato sa ovog uređaja i ovde se ne zna šta je rečeno.",
-    "callTranscriptDeviceNeverWrote": "Deo onoga što je {name} rekao/la je ostavljen drugom uređaju da snimi, a taj uređaj to nije snimio, tako da je taj deo nepoznat."
+    "callTranscriptDeviceNeverWrote": "Deo onoga što je {name} rekao/la je ostavljen drugom uređaju da snimi, a taj uređaj to nije snimio, tako da je taj deo nepoznat.",
+    "archivedChat": "Arhivirani razgovor",
+    "activityReview": "Pregled aktivnosti",
+    "activityPanel": "Aktivnost",
+    "coursePage": "Stranica kursa"
 }

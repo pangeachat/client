@@ -9848,5 +9848,9 @@
     "selectMessageLabel": "Mezua hautatu",
     "callTranscriptAudioDropped": "{name} erabiltzailearen gailuak esandakoa galdu egin du grabatu aurretik; beraz, ez da jakin zer esan duen.",
     "callTranscriptHeldByOtherDevice": "{name} erabiltzaileak esandakoa bere beste gailu batek grabatu du; beraz, gailu honek ez du ezer bidali eta ez da jakin zer esan duen.",
-    "callTranscriptDeviceNeverWrote": "{name}-(e)k esandakoaren zati bat bere beste gailu batean grabatu behar zen, eta gailu horrek ez zuen grabatu; beraz, zati hori ez da ezagutzen."
+    "callTranscriptDeviceNeverWrote": "{name}-(e)k esandakoaren zati bat bere beste gailu batean grabatu behar zen, eta gailu horrek ez zuen grabatu; beraz, zati hori ez da ezagutzen.",
+    "archivedChat": "Artxibatutako txata",
+    "activityReview": "Jardueraren berrikuspena",
+    "activityPanel": "Jarduera",
+    "coursePage": "Ikastaroaren orria"
 }

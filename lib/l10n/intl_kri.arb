@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Pik mɛsej",
     "callTranscriptAudioDropped": "Wetin {name} tɔk nɔ rekɔd na in fon bifo dɛn sɛn am, so wi nɔ no wetin dɛn bin tɔk.",
     "callTranscriptHeldByOtherDevice": "Wetin {name} tɔk, na ɔda fon we i gɛt fɔ rekɔd am, so dɛn nɔ sɛn nɔn kɔmɔt na dis wan ɛn wi nɔ no wetin dɛn bin tɔk na ya.",
-    "callTranscriptDeviceNeverWrote": "Sɔm pan wetin {name} bin tɔk, na ɔda wan pan in divays dɛn bin fɔ rekɔd am, bɔt da divays de nɔ bin rekɔd am, so wi nɔ no da pat de."
+    "callTranscriptDeviceNeverWrote": "Sɔm pan wetin {name} bin tɔk, na ɔda wan pan in divays dɛn bin fɔ rekɔd am, bɔt da divays de nɔ bin rekɔd am, so wi nɔ no da pat de.",
+    "archivedChat": "Chat we dɛn kip",
+    "activityReview": "Luk bak na wetin yu dɔn du",
+    "activityPanel": "Wetin yu dɔn du",
+    "coursePage": "Di pej fɔ di kos"
 }

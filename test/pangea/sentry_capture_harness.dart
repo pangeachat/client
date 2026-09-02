@@ -12,9 +12,14 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 class SentryCaptureHarness {
   Completer<SentryEvent>? _pending;
 
+  /// Every event reported since [init], for asserting that a path reports
+  /// nothing at all.
+  final events = <SentryEvent>[];
+
   Future<void> init() => Sentry.init((options) {
     options.dsn = 'https://public@sentry.invalid/1';
     options.beforeSend = (event, hint) {
+      events.add(event);
       _pending?.complete(event);
       // Dropped: the assertion is on the event, and nothing should leave
       // the test.

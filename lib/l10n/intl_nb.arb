@@ -9905,5 +9905,9 @@
     "selectMessageLabel": "Velg melding",
     "callTranscriptAudioDropped": "Det {name} sa, gikk tapt på enheten før det kunne tas opp, så det er ikke kjent hva som ble sagt.",
     "callTranscriptHeldByOtherDevice": "Det {name} sa, ble overlatt til en av de andre enhetene deres for opptak, så ingenting ble sendt fra denne, og det er ikke kjent her hva som ble sagt.",
-    "callTranscriptDeviceNeverWrote": "En del av det {name} sa ble overlatt til en av de andre enhetene deres for opptak, og den enheten tok det ikke opp, så den delen er ikke kjent."
+    "callTranscriptDeviceNeverWrote": "En del av det {name} sa ble overlatt til en av de andre enhetene deres for opptak, og den enheten tok det ikke opp, så den delen er ikke kjent.",
+    "archivedChat": "Arkivert chat",
+    "activityReview": "Aktivitetsgjennomgang",
+    "activityPanel": "Aktivitet",
+    "coursePage": "Kursside"
 }

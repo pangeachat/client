@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Agħżel messaġġ",
     "callTranscriptAudioDropped": "Dak li qal/qalet {name} intilef mill-apparat tagħhom qabel ma seta' jiġi rrekordjat, għalhekk dak li ntqal mhuwiex magħruf.",
     "callTranscriptHeldByOtherDevice": "Dak li qal/qalet {name} tħalla f'idejn apparat ieħor tagħhom biex jirrekordjah, għalhekk xejn minnu ma ntbagħat minn dan l-apparat u dak li ntqal mhuwiex magħruf hawnhekk.",
-    "callTranscriptDeviceNeverWrote": "Parti minn dak li qal {name} tħalliet biex tiġi rrekordjata minn apparat ieħor tagħhom, u dak l-apparat ma rrekordjahiex, għalhekk dik il-parti mhix magħrufa."
+    "callTranscriptDeviceNeverWrote": "Parti minn dak li qal {name} tħalliet biex tiġi rrekordjata minn apparat ieħor tagħhom, u dak l-apparat ma rrekordjahiex, għalhekk dik il-parti mhix magħrufa.",
+    "archivedChat": "Chat arkivjata",
+    "activityReview": "Reviżjoni tal-attività",
+    "activityPanel": "Attività",
+    "coursePage": "Paġna tal-kors"
 }

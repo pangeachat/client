@@ -9848,5 +9848,9 @@
     "selectMessageLabel": "Atlasīt ziņojumu",
     "callTranscriptAudioDropped": "Tas, ko teica {name}, tika pazaudēts viņa ierīcē, pirms to varēja ierakstīt, tāpēc nav zināms, kas tika teikts.",
     "callTranscriptHeldByOtherDevice": "Tas, ko teica {name}, tika atstāts ierakstīšanai citai viņa ierīcei, tāpēc no šīs ierīces nekas netika nosūtīts un šeit nav zināms, kas tika teikts.",
-    "callTranscriptDeviceNeverWrote": "Daļu no tā, ko teica {name}, bija paredzēts ierakstīt citai viņa ierīcei, taču šī ierīce to neierakstīja, tāpēc šī daļa nav zināma."
+    "callTranscriptDeviceNeverWrote": "Daļu no tā, ko teica {name}, bija paredzēts ierakstīt citai viņa ierīcei, taču šī ierīce to neierakstīja, tāpēc šī daļa nav zināma.",
+    "archivedChat": "Arhivēta tērzēšana",
+    "activityReview": "Aktivitātes pārskats",
+    "activityPanel": "Aktivitāte",
+    "coursePage": "Kursa lapa"
 }

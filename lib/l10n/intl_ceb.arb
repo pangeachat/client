@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Pagpili og mensahe",
     "callTranscriptAudioDropped": "Ang gisulti ni {name} nawala sa ilang device sa wala pa kini ma-record, mao nga wala mahibal-an kung unsa ang gisulti.",
     "callTranscriptHeldByOtherDevice": "Ang gisulti ni {name} gibilin sa lain nilang device aron i-record, mao nga walay gipadala gikan niini ug wala mahibal-an dinhi kung unsa ang gisulti.",
-    "callTranscriptDeviceNeverWrote": "Ang bahin sa gisulti ni {name} gibilin sa lain nilang device aron i-record, ug kana nga device wala kini gi-record, mao nga kana nga bahin wala mahibal-an."
+    "callTranscriptDeviceNeverWrote": "Ang bahin sa gisulti ni {name} gibilin sa lain nilang device aron i-record, ug kana nga device wala kini gi-record, mao nga kana nga bahin wala mahibal-an.",
+    "archivedChat": "Na-archive nga chat",
+    "activityReview": "Pagrepaso sa kalihokan",
+    "activityPanel": "Kalihokan",
+    "coursePage": "Panid sa kurso"
 }

@@ -72,6 +72,9 @@ class PlayWithBotLoadingDialogState extends State<PlayWithBotLoadingDialog> {
         }
       }
       await future.timeout(const Duration(seconds: 5));
+      // The learner may have dismissed the dialog while waiting (CLIENT-EJY);
+      // the bot still joins and the start page moves on without this pop.
+      if (!mounted) return;
       Navigator.of(context).pop();
     } catch (e, s) {
       if (e is TimeoutException) {
@@ -85,6 +88,7 @@ class PlayWithBotLoadingDialogState extends State<PlayWithBotLoadingDialog> {
 
     if (timeout) {
       await future;
+      if (!mounted) return;
       Navigator.of(context).pop();
     }
   }

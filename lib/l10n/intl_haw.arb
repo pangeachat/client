@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Koho i ka leka",
     "callTranscriptAudioDropped": "Ua nalowale ka mea a {name} i ʻōlelo ai ma kāna hāmeʻa ma mua o ka hoʻopaʻa ʻia ʻana, no laila ʻaʻole ʻike ʻia ka mea i ʻōlelo ʻia.",
     "callTranscriptHeldByOtherDevice": "Ua waiho ʻia ka mea a {name} i ʻōlelo ai na kekahi o kāna mau hāmeʻa ʻē aʻe e hoʻopaʻa, no laila ʻaʻohe mea i hoʻouna ʻia mai kēia a ʻaʻole ʻike ʻia ka mea i ʻōlelo ʻia ma ʻaneʻi.",
-    "callTranscriptDeviceNeverWrote": "Ua waiho ʻia kekahi ʻāpana o ka mea a {name} i ʻōlelo ai i kekahi o kāna mau mea hana e hoʻopaʻa ai, a ʻaʻole i hoʻopaʻa kēlā mea hana, no laila ʻaʻole ʻike ʻia kēlā ʻāpana."
+    "callTranscriptDeviceNeverWrote": "Ua waiho ʻia kekahi ʻāpana o ka mea a {name} i ʻōlelo ai i kekahi o kāna mau mea hana e hoʻopaʻa ai, a ʻaʻole i hoʻopaʻa kēlā mea hana, no laila ʻaʻole ʻike ʻia kēlā ʻāpana.",
+    "archivedChat": "Kūkākūkā i waihona ʻia",
+    "activityReview": "Nānā hana",
+    "activityPanel": "Hana",
+    "coursePage": "ʻAoʻao papa"
 }

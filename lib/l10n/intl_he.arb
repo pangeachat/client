@@ -10762,5 +10762,9 @@
     "selectMessageLabel": "בחר הודעה",
     "callTranscriptAudioDropped": "השמע של {name} אבד במכשיר שלו לפני שהספיק להיות מוקלט, כך שלא ידוע מה נאמר.",
     "callTranscriptHeldByOtherDevice": "השמע של {name} הועבר להקלטה במכשיר אחר שלו, כך ששום דבר לא נשלח מהמכשיר הזה ולא ידוע כאן מה נאמר.",
-    "callTranscriptDeviceNeverWrote": "חלק ממה ש{name} אמר/ה נשאר להקלטה במכשיר אחר שלו/ה, והמכשיר הזה לא הקליט אותו, כך שהחלק הזה אינו ידוע."
+    "callTranscriptDeviceNeverWrote": "חלק ממה ש{name} אמר/ה נשאר להקלטה במכשיר אחר שלו/ה, והמכשיר הזה לא הקליט אותו, כך שהחלק הזה אינו ידוע.",
+    "archivedChat": "צ'אט בארכיון",
+    "activityReview": "סקירת פעילות",
+    "activityPanel": "פעילות",
+    "coursePage": "דף קורס"
 }

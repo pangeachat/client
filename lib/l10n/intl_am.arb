@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "መልዕክት ምረጥ",
     "callTranscriptAudioDropped": "{name} የተናገረው ነገር ከመቀረጹ በፊት በመሳሪያቸው ጠፍቷል፣ ስለዚህ የተናገሩት ነገር አይታወቅም።",
     "callTranscriptHeldByOtherDevice": "{name} የተናገረው ነገር እንዲቀረጽ ለሌላ መሳሪያቸው ተላልፏል፣ ስለዚህ ከዚህ ምንም አልተላከም እና እዚህ የተነገረው ነገር አይታወቅም።",
-    "callTranscriptDeviceNeverWrote": "{name} ከተናገረው ውስጥ የተወሰነው ክፍል በሌላ መሳሪያቸው እንዲቀረፅ ተደርጎ ነበር፣ ነገር ግን ያ መሳሪያ አልቀረፀውም፣ ስለዚህ ያ ክፍል አይታወቅም።"
+    "callTranscriptDeviceNeverWrote": "{name} ከተናገረው ውስጥ የተወሰነው ክፍል በሌላ መሳሪያቸው እንዲቀረፅ ተደርጎ ነበር፣ ነገር ግን ያ መሳሪያ አልቀረፀውም፣ ስለዚህ ያ ክፍል አይታወቅም።",
+    "archivedChat": "የታገደ ውይይት",
+    "activityReview": "የእንቅስቃሴ ግምገማ",
+    "activityPanel": "እንቅስቃሴ",
+    "coursePage": "የኮርስ ገጽ"
 }

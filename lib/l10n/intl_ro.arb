@@ -10580,5 +10580,9 @@
     "selectMessageLabel": "Selectează mesajul",
     "callTranscriptAudioDropped": "Ceea ce a spus {name} a fost pierdut de dispozitivul său înainte de a putea fi înregistrat, deci nu se știe ce s-a spus.",
     "callTranscriptHeldByOtherDevice": "Ceea ce a spus {name} a fost lăsat pentru a fi înregistrat de un alt dispozitiv al său, deci nimic nu a fost trimis de pe acesta și nu se știe aici ce s-a spus.",
-    "callTranscriptDeviceNeverWrote": "O parte din ceea ce a spus {name} a fost lăsată pentru a fi înregistrată de un alt dispozitiv al său, iar acel dispozitiv nu a înregistrat-o, deci acea parte nu este cunoscută."
+    "callTranscriptDeviceNeverWrote": "O parte din ceea ce a spus {name} a fost lăsată pentru a fi înregistrată de un alt dispozitiv al său, iar acel dispozitiv nu a înregistrat-o, deci acea parte nu este cunoscută.",
+    "archivedChat": "Chat arhivat",
+    "activityReview": "Revizuirea activității",
+    "activityPanel": "Activitate",
+    "coursePage": "Pagina cursului"
 }

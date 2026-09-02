@@ -9933,5 +9933,9 @@
     "selectMessageLabel": "Wybierz wiadomość",
     "callTranscriptAudioDropped": "To, co powiedziała osoba {name}, zostało utracone przez jej urządzenie, zanim mogło zostać nagrane, więc nie wiadomo, co zostało powiedziane.",
     "callTranscriptHeldByOtherDevice": "To, co powiedziała osoba {name}, zostało przekazane do nagrania na inne jej urządzenie, więc nic nie zostało wysłane z tego urządzenia i nie wiadomo, co zostało powiedziane.",
-    "callTranscriptDeviceNeverWrote": "Część wypowiedzi {name} została pozostawiona do nagrania przez inne urządzenie, które jej nie zarejestrowało, więc ta część nie jest znana."
+    "callTranscriptDeviceNeverWrote": "Część wypowiedzi {name} została pozostawiona do nagrania przez inne urządzenie, które jej nie zarejestrowało, więc ta część nie jest znana.",
+    "archivedChat": "Archiwum czatu",
+    "activityReview": "Przegląd aktywności",
+    "activityPanel": "Aktywność",
+    "coursePage": "Strona kursu"
 }

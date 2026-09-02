@@ -10342,5 +10342,9 @@
     "selectMessageLabel": "Vybrat zprávu",
     "callTranscriptAudioDropped": "To, co řekl(a) {name}, bylo ztraceno v jeho/jejím zařízení ještě předtím, než to mohlo být nahráno, takže není známo, co bylo řečeno.",
     "callTranscriptHeldByOtherDevice": "To, co řekl(a) {name}, bylo ponecháno k nahrání jinému z jeho/jejího zařízení, takže z tohoto nebylo nic odesláno a není zde známo, co bylo řečeno.",
-    "callTranscriptDeviceNeverWrote": "Část toho, co {name} řekl(a), byla ponechána k záznamu jinému z jeho/jejích zařízení, a toto zařízení ji nezaznamenalo, takže tato část není známa."
+    "callTranscriptDeviceNeverWrote": "Část toho, co {name} řekl(a), byla ponechána k záznamu jinému z jeho/jejích zařízení, a toto zařízení ji nezaznamenalo, takže tato část není známa.",
+    "archivedChat": "Archivovaný chat",
+    "activityReview": "Přehled aktivit",
+    "activityPanel": "Aktivita",
+    "coursePage": "Stránka kurzu"
 }

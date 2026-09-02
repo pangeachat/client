@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Pilih pesen",
     "callTranscriptAudioDropped": "Omongan {name} leungit tina parangkatna saacan karékam, jadi teu kanyahoan naon nu diucapkeunana.",
     "callTranscriptHeldByOtherDevice": "Omongan {name} dirékam ku parangkatna nu séjén, jadi euweuh nu dikirim ti dieu jeung teu kanyahoan naon nu diucapkeunana di dieu.",
-    "callTranscriptDeviceNeverWrote": "Bagian tina omongan {name} diserahkeun ka alat séjénna pikeun dirékam, tapi alat éta henteu ngarékamna, jadi bagian éta henteu dipikanyaho."
+    "callTranscriptDeviceNeverWrote": "Bagian tina omongan {name} diserahkeun ka alat séjénna pikeun dirékam, tapi alat éta henteu ngarékamna, jadi bagian éta henteu dipikanyaho.",
+    "archivedChat": "Obrolan nu diarsipkeun",
+    "activityReview": "Tinjauan kagiatan",
+    "activityPanel": "Kagiatan",
+    "coursePage": "Kaca kursus"
 }

@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Zaɓi saƙo",
     "callTranscriptAudioDropped": "Abin da {name} ya faɗa ya ɓace daga na'urarsu kafin a iya yin rikodi, don haka ba a san abin da aka faɗa ba.",
     "callTranscriptHeldByOtherDevice": "An bar abin da {name} ya faɗa ga wata na'urarsu don yin rikodi, don haka ba a aiko da komai daga wannan ba kuma ba a san abin da aka faɗa a nan ba.",
-    "callTranscriptDeviceNeverWrote": "An bar wani ɓangare na abin da {name} ya faɗa ga wata na'urarsu don yin rikodi, kuma wannan na'urar ba ta yi rikodi ba, don haka ba a san wannan ɓangaren ba."
+    "callTranscriptDeviceNeverWrote": "An bar wani ɓangare na abin da {name} ya faɗa ga wata na'urarsu don yin rikodi, kuma wannan na'urar ba ta yi rikodi ba, don haka ba a san wannan ɓangaren ba.",
+    "archivedChat": "Taɗi da aka adana",
+    "activityReview": "Bita na aiki",
+    "activityPanel": "Aiki",
+    "coursePage": "Shafin kwas"
 }

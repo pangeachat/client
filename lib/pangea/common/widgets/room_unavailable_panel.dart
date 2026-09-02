@@ -17,20 +17,17 @@ class RoomUnavailablePanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      container: true,
-      child: Scaffold(
-        appBar: AppBar(
-          leading: closeButton,
-          title: Text(L10n.of(context).oopsSomethingWentWrong),
-        ),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              L10n.of(context).youAreNoLongerParticipatingInThisChat,
-              textAlign: TextAlign.center,
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        leading: closeButton,
+        title: Text(L10n.of(context).oopsSomethingWentWrong),
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Text(
+            L10n.of(context).youAreNoLongerParticipatingInThisChat,
+            textAlign: TextAlign.center,
           ),
         ),
       ),

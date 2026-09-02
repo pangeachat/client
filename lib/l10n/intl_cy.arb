@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Dewis neges",
     "callTranscriptAudioDropped": "Cafodd yr hyn ddywedodd {name} ei golli gan eu dyfais cyn y gellid hyd yn oed ei recordio, felly nid yw'n hysbys beth a ddywedwyd.",
     "callTranscriptHeldByOtherDevice": "Gadawyd yr hyn ddywedodd {name} i un arall o'u dyfeisiau ei recordio, felly ni anfonwyd dim ohono o'r un hon ac nid yw'n hysbys yma beth a ddywedwyd.",
-    "callTranscriptDeviceNeverWrote": "Cafodd rhan o'r hyn ddywedodd {name} ei adael i un arall o'u dyfeisiau ei recordio, ac ni wnaeth y ddyfais honno ei recordio, felly nid yw'r rhan honno'n hysbys."
+    "callTranscriptDeviceNeverWrote": "Cafodd rhan o'r hyn ddywedodd {name} ei adael i un arall o'u dyfeisiau ei recordio, ac ni wnaeth y ddyfais honno ei recordio, felly nid yw'r rhan honno'n hysbys.",
+    "archivedChat": "Sgwrs wedi'i harchifo",
+    "activityReview": "Adolygiad gweithgaredd",
+    "activityPanel": "Gweithgaredd",
+    "coursePage": "Tudalen cwrs"
 }

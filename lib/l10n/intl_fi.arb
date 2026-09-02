@@ -9885,5 +9885,9 @@
     "selectMessageLabel": "Valitse viesti",
     "callTranscriptAudioDropped": "Se, mitä {name} sanoi, katosi hänen laitteeltaan ennen kuin se ehdittiin nauhoittaa, joten sanottua ei tiedetä.",
     "callTranscriptHeldByOtherDevice": "Se, mitä {name} sanoi, jätettiin hänen toisen laitteensa nauhoitettavaksi, joten tältä laitteelta ei lähetetty mitään eikä sanottua tiedetä täällä.",
-    "callTranscriptDeviceNeverWrote": "Osa siitä, mitä {name} sanoi, jätettiin toisen hänen laitteensa tallennettavaksi, ja kyseinen laite ei tallentanut sitä, joten sitä osaa ei tiedetä."
+    "callTranscriptDeviceNeverWrote": "Osa siitä, mitä {name} sanoi, jätettiin toisen hänen laitteensa tallennettavaksi, ja kyseinen laite ei tallentanut sitä, joten sitä osaa ei tiedetä.",
+    "archivedChat": "Arkistoitu keskustelu",
+    "activityReview": "Aktiviteettikatsaus",
+    "activityPanel": "Aktiviteetti",
+    "coursePage": "Kurssisivu"
 }

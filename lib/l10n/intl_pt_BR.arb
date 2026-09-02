@@ -9848,5 +9848,9 @@
     "selectMessageLabel": "Selecionar mensagem",
     "callTranscriptAudioDropped": "O que {name} disse foi perdido pelo dispositivo antes que pudesse ser gravado, então não se sabe o que foi dito.",
     "callTranscriptHeldByOtherDevice": "O que {name} disse foi deixado para outro de seus dispositivos gravar, então nada foi enviado deste e não se sabe aqui o que foi dito.",
-    "callTranscriptDeviceNeverWrote": "Parte do que {name} disse foi deixada para outro de seus dispositivos gravar, e esse dispositivo não gravou, então essa parte não é conhecida."
+    "callTranscriptDeviceNeverWrote": "Parte do que {name} disse foi deixada para outro de seus dispositivos gravar, e esse dispositivo não gravou, então essa parte não é conhecida.",
+    "archivedChat": "Chat arquivado",
+    "activityReview": "Revisão de atividade",
+    "activityPanel": "Atividade",
+    "coursePage": "Página do curso"
 }

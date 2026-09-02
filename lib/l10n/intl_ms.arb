@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Pilih mesej",
     "callTranscriptAudioDropped": "Apa yang {name} katakan telah hilang oleh peranti mereka sebelum ia sempat dirakam, jadi apa yang dikatakan tidak diketahui.",
     "callTranscriptHeldByOtherDevice": "Apa yang {name} katakan telah diserahkan kepada peranti mereka yang lain untuk dirakam, jadi tiada apa-apa yang dihantar dari peranti ini dan apa yang dikatakan tidak diketahui di sini.",
-    "callTranscriptDeviceNeverWrote": "Sebahagian daripada apa yang {name} katakan telah diserahkan kepada peranti mereka yang lain untuk dirakam, dan peranti itu tidak merakamnya, jadi bahagian itu tidak diketahui."
+    "callTranscriptDeviceNeverWrote": "Sebahagian daripada apa yang {name} katakan telah diserahkan kepada peranti mereka yang lain untuk dirakam, dan peranti itu tidak merakamnya, jadi bahagian itu tidak diketahui.",
+    "archivedChat": "Sembang yang diarkibkan",
+    "activityReview": "Semakan aktiviti",
+    "activityPanel": "Aktiviti",
+    "coursePage": "Halaman kursus"
 }

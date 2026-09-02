@@ -8067,5 +8067,9 @@
     "selectMessageLabel": "Seleccionar mensaje",
     "callTranscriptAudioDropped": "Lo que dijo {name} se perdió en su dispositivo antes de que pudiera grabarse, por lo que no se sabe qué dijo.",
     "callTranscriptHeldByOtherDevice": "Lo que dijo {name} se dejó para que lo grabara otro de sus dispositivos, por lo que no se envió nada desde este y no se sabe qué se dijo aquí.",
-    "callTranscriptDeviceNeverWrote": "Parte de lo que dijo {name} se dejó para que lo grabara otro de sus dispositivos, y ese dispositivo no lo grabó, por lo que esa parte no se conoce."
+    "callTranscriptDeviceNeverWrote": "Parte de lo que dijo {name} se dejó para que lo grabara otro de sus dispositivos, y ese dispositivo no lo grabó, por lo que esa parte no se conoce.",
+    "archivedChat": "Chat archivado",
+    "activityReview": "Revisión de actividad",
+    "activityPanel": "Actividad",
+    "coursePage": "Página del curso"
 }

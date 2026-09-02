@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Zgjidh mesazhin",
     "callTranscriptAudioDropped": "Ajo që tha {name} humbi nga pajisja e tij/saj përpara se të regjistrohej, kështu që nuk dihet se çfarë u tha.",
     "callTranscriptHeldByOtherDevice": "Ajo që tha {name} iu la për t'u regjistruar një pajisjeje tjetër të tij/saj, kështu që asgjë nuk u dërgua nga kjo pajisje dhe nuk dihet se çfarë u tha këtu.",
-    "callTranscriptDeviceNeverWrote": "Një pjesë e asaj që tha {name} iu la një pajisjeje tjetër të tyre për ta regjistruar, dhe ajo pajisje nuk e regjistroi, kështu që ajo pjesë nuk dihet."
+    "callTranscriptDeviceNeverWrote": "Një pjesë e asaj që tha {name} iu la një pajisjeje tjetër të tyre për ta regjistruar, dhe ajo pajisje nuk e regjistroi, kështu që ajo pjesë nuk dihet.",
+    "archivedChat": "Bisedë e arkivuar",
+    "activityReview": "Rishikimi i aktivitetit",
+    "activityPanel": "Aktiviteti",
+    "coursePage": "Faqja e kursit"
 }

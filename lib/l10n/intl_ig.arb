@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Họrọ ozi",
     "callTranscriptAudioDropped": "Ihe {name} kwuru furu efu na ngwaọrụ ha tupu e dekọọ ya, yabụ amaghị ihe e kwuru.",
     "callTranscriptHeldByOtherDevice": "E hapụrụ ihe {name} kwuru ka ngwaọrụ ha ọzọ dekọọ ya, yabụ e ziteghị nke ọ bụla site na nke a, amaghịkwa ihe e kwuru ebe a.",
-    "callTranscriptDeviceNeverWrote": "E hapụrụ akụkụ ihe {name} kwuru ka ngwaọrụ ọzọ ha dekọọ ya, mana ngwaọrụ ahụ edekọghị ya, yabụ amaghị akụkụ ahụ."
+    "callTranscriptDeviceNeverWrote": "E hapụrụ akụkụ ihe {name} kwuru ka ngwaọrụ ọzọ ha dekọọ ya, mana ngwaọrụ ahụ edekọghị ya, yabụ amaghị akụkụ ahụ.",
+    "archivedChat": "Nkata echekwara",
+    "activityReview": "Nyocha ọrụ",
+    "activityPanel": "Ọrụ",
+    "coursePage": "Ibe ọmụmụ"
 }

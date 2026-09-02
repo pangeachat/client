@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Fidio hafatra",
     "callTranscriptAudioDropped": "Very ny fitaovan'i {name} ny zavatra nolazainy ka tsy voarakitra akory, noho izany dia tsy fantatra izay voalaza.",
     "callTranscriptHeldByOtherDevice": "Navela ho an'ny fitaovana hafa an'i {name} ny firaketana ny zavatra nolazainy, ka tsy nisy nalefa avy amin'ity fitaovana ity ary tsy fantatra eto izay voalaza.",
-    "callTranscriptDeviceNeverWrote": "Ny ampahany tamin'ny zavatra nolazain'i {name} dia navela horaketin'ny fitaovana iray hafa an'izy ireo, ary tsy nandrakitra izany ilay fitaovana, ka tsy fantatra io ampahany io."
+    "callTranscriptDeviceNeverWrote": "Ny ampahany tamin'ny zavatra nolazain'i {name} dia navela horaketin'ny fitaovana iray hafa an'izy ireo, ary tsy nandrakitra izany ilay fitaovana, ka tsy fantatra io ampahany io.",
+    "archivedChat": "Chat voatahiry",
+    "activityReview": "Famerenana ny asa",
+    "activityPanel": "Asa",
+    "coursePage": "Pejy fampianarana"
 }

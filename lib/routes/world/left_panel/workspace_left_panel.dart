@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/archive/archive.dart';
 import 'package:fluffychat/routes/new_private_chat/new_private_chat.dart';
 import 'package:fluffychat/routes/world/activity_detail_panel.dart';
@@ -128,6 +129,20 @@ class WorkspaceLeftPanel extends StatelessWidget {
 
     // The shared floating-card chrome (rounded, elevated, margin) every panel
     // uses — see [PanelCard]. Skipped when [bare] (the host supplies the surface).
-    return bare ? surface : PanelCard(child: surface);
+    //
+    // Every workspace panel is one named semantic group (#8729) — authored
+    // here, where every left-column token resolves, so a panel cannot miss it
+    // by drawing its own chrome. The group also wraps the [bare] branch: it is
+    // semantics, not visual chrome.
+    return Semantics(
+      label: L10n.of(
+        context,
+      ).pageLabel(token.type.displayName(L10n.of(context))),
+      container: true,
+      // Keep descendants as their own nodes so loose text without a container
+      // never merges into the panel's name (see WorkspaceRightPanel).
+      explicitChildNodes: true,
+      child: bare ? surface : PanelCard(child: surface),
+    );
   }
 }

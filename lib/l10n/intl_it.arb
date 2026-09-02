@@ -9921,5 +9921,9 @@
     "selectMessageLabel": "Seleziona messaggio",
     "callTranscriptAudioDropped": "Ciò che {name} ha detto è andato perso dal suo dispositivo prima ancora di poter essere registrato, quindi non si sa cosa sia stato detto.",
     "callTranscriptHeldByOtherDevice": "La registrazione di ciò che {name} ha detto è stata affidata a un altro dei suoi dispositivi, quindi nulla è stato inviato da questo e non si sa cosa sia stato detto qui.",
-    "callTranscriptDeviceNeverWrote": "Parte di ciò che {name} ha detto è stata lasciata a un altro dei suoi dispositivi per la registrazione, ma quel dispositivo non l'ha registrata, quindi quella parte non è nota."
+    "callTranscriptDeviceNeverWrote": "Parte di ciò che {name} ha detto è stata lasciata a un altro dei suoi dispositivi per la registrazione, ma quel dispositivo non l'ha registrata, quindi quella parte non è nota.",
+    "archivedChat": "Chat archiviata",
+    "activityReview": "Revisione attività",
+    "activityPanel": "Attività",
+    "coursePage": "Pagina del corso"
 }

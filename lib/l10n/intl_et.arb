@@ -9845,5 +9845,9 @@
     "selectMessageLabel": "Vali sõnum",
     "callTranscriptAudioDropped": "See, mida {name} ütles, läks tema seadmes kaduma enne, kui seda jõuti salvestada, seega pole teada, mida öeldi.",
     "callTranscriptHeldByOtherDevice": "See, mida {name} ütles, jäeti salvestamiseks tema teise seadmesse, seega ei saadetud sellest seadmest midagi ja siin pole teada, mida öeldi.",
-    "callTranscriptDeviceNeverWrote": "Osa sellest, mida {name} ütles, jäi salvestamiseks teise tema seadmesse ja see seade ei salvestanud seda, seega see osa ei ole teada."
+    "callTranscriptDeviceNeverWrote": "Osa sellest, mida {name} ütles, jäi salvestamiseks teise tema seadmesse ja see seade ei salvestanud seda, seega see osa ei ole teada.",
+    "archivedChat": "Arhiveeritud vestlus",
+    "activityReview": "Tegevuste ülevaade",
+    "activityPanel": "Tegevus",
+    "coursePage": "Kursuse leht"
 }

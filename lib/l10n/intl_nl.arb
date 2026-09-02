@@ -9848,5 +9848,9 @@
     "selectMessageLabel": "Bericht selecteren",
     "callTranscriptAudioDropped": "Wat {name} zei, ging verloren op hun apparaat voordat het kon worden opgenomen, dus het is niet bekend wat er werd gezegd.",
     "callTranscriptHeldByOtherDevice": "Wat {name} zei, werd door een ander apparaat van hen opgenomen, dus er is niets vanaf dit apparaat verzonden en het is hier niet bekend wat er werd gezegd.",
-    "callTranscriptDeviceNeverWrote": "Een deel van wat {name} zei, werd overgelaten aan een ander van hun apparaten om op te nemen, en dat apparaat heeft het niet opgenomen, dus dat deel is niet bekend."
+    "callTranscriptDeviceNeverWrote": "Een deel van wat {name} zei, werd overgelaten aan een ander van hun apparaten om op te nemen, en dat apparaat heeft het niet opgenomen, dus dat deel is niet bekend.",
+    "archivedChat": "Gearchiveerde chat",
+    "activityReview": "Activiteitenoverzicht",
+    "activityPanel": "Activiteit",
+    "coursePage": "Cursuspagina"
 }

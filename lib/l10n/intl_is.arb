@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Velja skilaboð",
     "callTranscriptAudioDropped": "Það sem {name} sagði glataðist úr tækinu þeirra áður en það náðist að taka það upp, svo það er óvitað hvað sagt var.",
     "callTranscriptHeldByOtherDevice": "Það sem {name} sagði var skilið eftir fyrir annað tæki þeirra til að taka upp, svo ekkert af því var sent úr þessu tæki og það er óvitað hér hvað sagt var.",
-    "callTranscriptDeviceNeverWrote": "Hluti af því sem {name} sagði var ætlað að vera skráð af öðru tæki þeirra, og það tæki skráði það ekki, svo sá hluti er óþekktur."
+    "callTranscriptDeviceNeverWrote": "Hluti af því sem {name} sagði var ætlað að vera skráð af öðru tæki þeirra, og það tæki skráði það ekki, svo sá hluti er óþekktur.",
+    "archivedChat": "Geymt spjall",
+    "activityReview": "Yfirlit yfir virkni",
+    "activityPanel": "Virkni",
+    "coursePage": "Námskeiðssíða"
 }

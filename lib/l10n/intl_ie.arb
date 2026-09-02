@@ -10480,5 +10480,9 @@
     "selectMessageLabel": "Roghnaigh teachtaireacht",
     "callTranscriptAudioDropped": "Quo {name} dit esset perdit per su apparate ante que it posset esser registrat, do quo esset dit ne es conosset.",
     "callTranscriptHeldByOtherDevice": "Quo {name} dit esset lassat a un altri de su apparates por registrar, do necos de it esset inviat de ti-ci e quo esset dit ne es conosset ci.",
-    "callTranscriptDeviceNeverWrote": "Un parte de to quel {name} dit esset lassat a un altri de su aparates por registrar, e ti aparate ne ha registrat it, do ti parte ne es conosset."
+    "callTranscriptDeviceNeverWrote": "Un parte de to quel {name} dit esset lassat a un altri de su aparates por registrar, e ti aparate ne ha registrat it, do ti parte ne es conosset.",
+    "archivedChat": "Comhrá cartlainne",
+    "activityReview": "Athbhreithniú gníomhaíochta",
+    "activityPanel": "Gníomhaíocht",
+    "coursePage": "Leathanach cúrsa"
 }

@@ -9848,5 +9848,9 @@
     "selectMessageLabel": "选择消息",
     "callTranscriptAudioDropped": "{name} 的设备在录制前丢失了音频，因此无法知道其所说的内容。",
     "callTranscriptHeldByOtherDevice": "{name} 的发言已由其另一台设备录制，因此此设备未发送任何内容，也无法在此处获知其所说的内容。",
-    "callTranscriptDeviceNeverWrote": "{name} 的部分发言由其另一台设备录制，但该设备未能成功录制，因此这部分内容未知。"
+    "callTranscriptDeviceNeverWrote": "{name} 的部分发言由其另一台设备录制，但该设备未能成功录制，因此这部分内容未知。",
+    "archivedChat": "已归档聊天",
+    "activityReview": "活动回顾",
+    "activityPanel": "活动",
+    "coursePage": "课程页面"
 }

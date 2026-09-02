@@ -9852,5 +9852,9 @@
     "selectMessageLabel": "Xabarni tanlang",
     "callTranscriptAudioDropped": "{name} nima degani yozib olinmasdan oldin uning qurilmasida yoʻqoldi, shuning uchun nima deyilgani nomaʼlum.",
     "callTranscriptHeldByOtherDevice": "{name} nima deganini yozib olish uning boshqa qurilmasiga qoldirildi, shuning uchun bu qurilmadan hech narsa yuborilmadi va nima deyilgani bu yerda nomaʼlum.",
-    "callTranscriptDeviceNeverWrote": "{name} aytganlarining bir qismi yozib olish uchun ularning boshqa qurilmasiga qoldirilgan va o'sha qurilma uni yozib olmagan, shuning uchun bu qism noma'lum."
+    "callTranscriptDeviceNeverWrote": "{name} aytganlarining bir qismi yozib olish uchun ularning boshqa qurilmasiga qoldirilgan va o'sha qurilma uni yozib olmagan, shuning uchun bu qism noma'lum.",
+    "archivedChat": "Arxivlangan chat",
+    "activityReview": "Faoliyatni ko'rib chiqish",
+    "activityPanel": "Faoliyat",
+    "coursePage": "Kurs sahifasi"
 }

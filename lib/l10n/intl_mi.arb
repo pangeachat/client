@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Tīpakohia te karere",
     "callTranscriptAudioDropped": "I ngaro te kōrero a {name} i tōna pūrere i mua i te hopunga, nō reira kāore i te mōhiotia he aha te kōrero.",
     "callTranscriptHeldByOtherDevice": "I waiho te kōrero a {name} mā tētahi atu o āna pūrere e hopu, nō reira kāore he wāhanga i tukuna mai i tēnei, ā, kāore i te mōhiotia i konei he aha te kōrero.",
-    "callTranscriptDeviceNeverWrote": "Ko tētahi wāhanga o tā {name} i kōrero ai i waiho mā tētahi atu o āna pūrere e hopu, ā, kāore taua pūrere i hopu, nō reira kāore e mōhiotia taua wāhanga."
+    "callTranscriptDeviceNeverWrote": "Ko tētahi wāhanga o tā {name} i kōrero ai i waiho mā tētahi atu o āna pūrere e hopu, ā, kāore taua pūrere i hopu, nō reira kāore e mōhiotia taua wāhanga.",
+    "archivedChat": "Kōrerorero i te Pūranga",
+    "activityReview": "Arotake Mahi",
+    "activityPanel": "Mahi",
+    "coursePage": "Whārangi Akoranga"
 }

@@ -10708,5 +10708,9 @@
     "selectMessageLabel": "Pumili ng mensahe",
     "callTranscriptAudioDropped": "Nawala sa device ni {name} ang kanyang sinabi bago pa man ito ma-record, kaya hindi alam kung ano ang sinabi.",
     "callTranscriptHeldByOtherDevice": "Ipinasa ni {name} sa isa pa niyang device ang pag-record ng kanyang sinabi, kaya walang naipadala mula rito at hindi alam kung ano ang sinabi.",
-    "callTranscriptDeviceNeverWrote": "Ang bahagi ng sinabi ni {name} ay iniwan sa isa pa nilang device para i-record, at hindi ito na-record ng device na iyon, kaya hindi alam ang bahaging iyon."
+    "callTranscriptDeviceNeverWrote": "Ang bahagi ng sinabi ni {name} ay iniwan sa isa pa nilang device para i-record, at hindi ito na-record ng device na iyon, kaya hindi alam ang bahaging iyon.",
+    "archivedChat": "Na-archive na chat",
+    "activityReview": "Pagsusuri ng aktibidad",
+    "activityPanel": "Aktibidad",
+    "coursePage": "Pahina ng kurso"
 }

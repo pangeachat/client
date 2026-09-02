@@ -9951,5 +9951,9 @@
     "selectMessageLabel": "Üzenet kiválasztása",
     "callTranscriptAudioDropped": "Amit {name} mondott, azt az eszköze elvesztette, még mielőtt rögzíthette volna, így nem tudni, mit mondott.",
     "callTranscriptHeldByOtherDevice": "Amit {name} mondott, azt egy másik eszköze rögzítette, így erről az eszközről semmi sem lett elküldve, és itt nem tudni, mit mondott.",
-    "callTranscriptDeviceNeverWrote": "Annak a rögzítését, amit {name} mondott, egy másik eszközére bízta, de az az eszköz nem rögzítette, így az a rész nem ismert."
+    "callTranscriptDeviceNeverWrote": "Annak a rögzítését, amit {name} mondott, egy másik eszközére bízta, de az az eszköz nem rögzítette, így az a rész nem ismert.",
+    "archivedChat": "Archivált csevegés",
+    "activityReview": "Tevékenység áttekintése",
+    "activityPanel": "Tevékenység",
+    "coursePage": "Tanfolyam oldal"
 }

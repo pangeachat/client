@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Mesajı seçin",
     "callTranscriptAudioDropped": "{name} adlı istifadəçinin dedikləri cihazı tərəfindən qeydə alınmazdan əvvəl itirilib, buna görə də nə dediyi məlum deyil.",
     "callTranscriptHeldByOtherDevice": "{name} adlı istifadəçinin dedikləri qeydə alınmaq üçün onun başqa bir cihazına ötürülüb, buna görə də bu cihazdan heç nə göndərilməyib və burada nə dediyi məlum deyil.",
-    "callTranscriptDeviceNeverWrote": "{name} adlı istifadəçinin dediklərinin bir hissəsi qeyd edilməsi üçün başqa bir cihaza ötürüldü, lakin həmin cihaz onu qeyd etmədi, buna görə də həmin hissə məlum deyil."
+    "callTranscriptDeviceNeverWrote": "{name} adlı istifadəçinin dediklərinin bir hissəsi qeyd edilməsi üçün başqa bir cihaza ötürüldü, lakin həmin cihaz onu qeyd etmədi, buna görə də həmin hissə məlum deyil.",
+    "archivedChat": "Arxivlənmiş söhbət",
+    "activityReview": "Fəaliyyətə baxış",
+    "activityPanel": "Fəaliyyət",
+    "coursePage": "Kurs səhifəsi"
 }

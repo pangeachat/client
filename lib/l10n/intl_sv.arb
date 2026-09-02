@@ -10366,5 +10366,9 @@
     "selectMessageLabel": "Välj meddelande",
     "callTranscriptAudioDropped": "Det som {name} sa förlorades av deras enhet innan det ens kunde spelas in, så det som sades är inte känt.",
     "callTranscriptHeldByOtherDevice": "Det som {name} sa lämnades över till en annan av deras enheter för inspelning, så inget av det skickades från den här enheten och det som sades är inte känt här.",
-    "callTranscriptDeviceNeverWrote": "En del av vad {name} sa lämnades över till en annan av hens enheter för att spelas in, och den enheten spelade inte in det, så den delen är inte känd."
+    "callTranscriptDeviceNeverWrote": "En del av vad {name} sa lämnades över till en annan av hens enheter för att spelas in, och den enheten spelade inte in det, så den delen är inte känd.",
+    "archivedChat": "Arkiverad chatt",
+    "activityReview": "Aktivitetsöversikt",
+    "activityPanel": "Aktivitet",
+    "coursePage": "Kurssida"
 }

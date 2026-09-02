@@ -9921,5 +9921,9 @@
     "selectMessageLabel": "Pilih pesan",
     "callTranscriptAudioDropped": "Apa yang dikatakan {name} hilang dari perangkatnya bahkan sebelum dapat direkam, jadi apa yang dikatakan tidak diketahui.",
     "callTranscriptHeldByOtherDevice": "Apa yang dikatakan {name} diserahkan ke perangkatnya yang lain untuk direkam, jadi tidak ada yang dikirim dari perangkat ini dan apa yang dikatakan tidak diketahui di sini.",
-    "callTranscriptDeviceNeverWrote": "Sebagian dari apa yang dikatakan {name} diserahkan ke perangkat lain untuk direkam, dan perangkat tersebut tidak merekamnya, jadi bagian itu tidak diketahui."
+    "callTranscriptDeviceNeverWrote": "Sebagian dari apa yang dikatakan {name} diserahkan ke perangkat lain untuk direkam, dan perangkat tersebut tidak merekamnya, jadi bagian itu tidak diketahui.",
+    "archivedChat": "Obrolan yang diarsipkan",
+    "activityReview": "Tinjauan aktivitas",
+    "activityPanel": "Aktivitas",
+    "coursePage": "Halaman kursus"
 }

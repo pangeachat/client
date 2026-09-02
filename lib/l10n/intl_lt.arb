@@ -10629,5 +10629,9 @@
     "selectMessageLabel": "Pasirinkti pranešimą",
     "callTranscriptAudioDropped": "Tai, ką pasakė {name}, buvo prarasta jo įrenginyje dar prieš įrašant, todėl nežinoma, kas buvo pasakyta.",
     "callTranscriptHeldByOtherDevice": "Tai, ką pasakė {name}, buvo palikta įrašyti kitam jo įrenginiui, todėl iš šio įrenginio niekas nebuvo išsiųsta ir čia nežinoma, kas buvo pasakyta.",
-    "callTranscriptDeviceNeverWrote": "Dalis to, ką pasakė {name}, buvo palikta įrašyti kitam jo įrenginiui, tačiau tas įrenginys to neįrašė, todėl ta dalis nežinoma."
+    "callTranscriptDeviceNeverWrote": "Dalis to, ką pasakė {name}, buvo palikta įrašyti kitam jo įrenginiui, tačiau tas įrenginys to neįrašė, todėl ta dalis nežinoma.",
+    "archivedChat": "Archyvuotas pokalbis",
+    "activityReview": "Veiklos apžvalga",
+    "activityPanel": "Veikla",
+    "coursePage": "Kurso puslapis"
 }

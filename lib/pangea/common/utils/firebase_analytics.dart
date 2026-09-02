@@ -124,9 +124,16 @@ class GoogleAnalytics {
   }
 
   static void logEvent(String name, {Map<String, Object>? parameters}) {
-    debugPrint("event: $name - parameters: $parameters");
+    // firebase_analytics only takes String or num parameter values (its debug
+    // assert fires on anything else; release hands the raw value to the
+    // platform, where a bool is undefined), so bools go out as 'true' /
+    // 'false', the same encoding the `subscribed` user property uses.
+    final params = parameters?.map(
+      (key, value) => MapEntry(key, value is bool ? '$value' : value),
+    );
+    debugPrint("event: $name - parameters: $params");
 
-    analytics?.logEvent(name: name, parameters: parameters);
+    analytics?.logEvent(name: name, parameters: params);
   }
 
   /// A GA4 screen view for a workspace screen. [screenName] is the token-derived

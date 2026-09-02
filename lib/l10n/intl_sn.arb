@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Sarudza meseji",
     "callTranscriptAudioDropped": "Zvakataurwa na{name} zvakarasika pachigadzirwa chavo zvisati zvanyorwa, saka hazvizivikanwe kuti chii chakataurwa.",
     "callTranscriptHeldByOtherDevice": "Zvakataurwa na{name} zvakasiyirwa chimwe chigadzirwa chavo kuti zvinyorwe, saka hapana chakatumirwa kubva pane ichi uye hazvizivikanwe kuti chii chakataurwa pano.",
-    "callTranscriptDeviceNeverWrote": "Chikamu chezvakataurwa na{name} chakasiiwa kuti chinyorwe nechimwe chishandiso chavo, uye chishandiso ichocho hachina kuchinyora, saka chikamu ichocho hachizivikanwe."
+    "callTranscriptDeviceNeverWrote": "Chikamu chezvakataurwa na{name} chakasiiwa kuti chinyorwe nechimwe chishandiso chavo, uye chishandiso ichocho hachina kuchinyora, saka chikamu ichocho hachizivikanwe.",
+    "archivedChat": "Chat yakachengetwa",
+    "activityReview": "Ongororo yezviitiko",
+    "activityPanel": "Zviitiko",
+    "coursePage": "Peji rekosi"
 }

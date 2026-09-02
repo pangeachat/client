@@ -10617,5 +10617,9 @@
     "selectMessageLabel": "メッセージを選択",
     "callTranscriptAudioDropped": "{name}さんの発言は、録音される前にデバイスで失われたため、内容は不明です。",
     "callTranscriptHeldByOtherDevice": "{name}さんの発言は、別のデバイスで録音されることになったため、このデバイスからは何も送信されておらず、内容は不明です。",
-    "callTranscriptDeviceNeverWrote": "{name}さんの発言の一部は、別のデバイスで録音される予定でしたが、そのデバイスが録音しなかったため、その部分は不明です。"
+    "callTranscriptDeviceNeverWrote": "{name}さんの発言の一部は、別のデバイスで録音される予定でしたが、そのデバイスが録音しなかったため、その部分は不明です。",
+    "archivedChat": "アーカイブ済みチャット",
+    "activityReview": "アクティビティレビュー",
+    "activityPanel": "アクティビティ",
+    "coursePage": "コースページ"
 }

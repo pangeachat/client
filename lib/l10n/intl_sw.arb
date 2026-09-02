@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Chagua ujumbe",
     "callTranscriptAudioDropped": "Maneno aliyosema {name} yalipotea kwenye kifaa chake kabla ya kurekodiwa, kwa hivyo alichosema hakijulikani.",
     "callTranscriptHeldByOtherDevice": "Maneno aliyosema {name} yaliachwa yarekodiwe na kifaa chake kingine, kwa hivyo hakuna kilichotumwa kutoka hapa na alichosema hakijulikani hapa.",
-    "callTranscriptDeviceNeverWrote": "Sehemu ya kile {name} alisema iliachwa kwa kifaa kingine chao kurekodi, na kifaa hicho hakikurekodi, kwa hivyo sehemu hiyo haijulikani."
+    "callTranscriptDeviceNeverWrote": "Sehemu ya kile {name} alisema iliachwa kwa kifaa kingine chao kurekodi, na kifaa hicho hakikurekodi, kwa hivyo sehemu hiyo haijulikani.",
+    "archivedChat": "Gumzo lililohifadhiwa",
+    "activityReview": "Mapitio ya shughuli",
+    "activityPanel": "Shughuli",
+    "coursePage": "Ukurasa wa kozi"
 }

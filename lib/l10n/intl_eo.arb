@@ -10793,5 +10793,9 @@
     "selectMessageLabel": "Elektu mesaĝon",
     "callTranscriptAudioDropped": "Tio, kion {name} diris, perdiĝis en ties aparato antaŭ ol ĝi povis esti registrita, do tio, kio estis dirita, ne estas konata.",
     "callTranscriptHeldByOtherDevice": "Tio, kion {name} diris, estis lasita al alia el ties aparatoj por registrado, do neniom el ĝi estis sendita de ĉi tiu aparato kaj tio, kio estis dirita, ne estas konata ĉi tie.",
-    "callTranscriptDeviceNeverWrote": "Parto de tio, kion {name} diris, estis lasita al alia el iliaj aparatoj por registri, kaj tiu aparato ne registris ĝin, do tiu parto ne estas konata."
+    "callTranscriptDeviceNeverWrote": "Parto de tio, kion {name} diris, estis lasita al alia el iliaj aparatoj por registri, kaj tiu aparato ne registris ĝin, do tiu parto ne estas konata.",
+    "archivedChat": "Arkivita babilado",
+    "activityReview": "Agada revizio",
+    "activityPanel": "Agado",
+    "coursePage": "Kurso-paĝo"
 }

@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "মেসেজ খল্লু",
     "callTranscriptAudioDropped": "{name} na hai-ba adu record tou-naba matamda mangkhre, aduna karamna haikhibage haibadu khangba ngamkhidre.",
     "callTranscriptHeldByOtherDevice": "{name} na hai-ba adu record tou-naba makhoigi atop-pa device amada thamlambani, aduna karisu tharakkhide amadi karamna haikhibage haibadu khangba ngamkhidre.",
-    "callTranscriptDeviceNeverWrote": "{name}ꯅꯥ ꯍꯥꯌꯈꯤꯕꯒꯤ ꯁꯔꯨꯛ ꯑꯃꯗꯤ ꯃꯈꯣꯌꯒꯤ ꯑꯇꯣꯞꯄꯥ ꯗꯤꯚꯥꯏꯁ ꯑꯃꯗꯥ ꯔꯦꯀꯣꯔꯗ ꯇꯧꯅꯕꯥ ꯊꯝꯂꯝꯃꯤ, ꯑꯃꯁꯨꯡ ꯗꯤꯚꯥꯏꯁ ꯑꯗꯨꯅꯥ ꯃꯗꯨ ꯔꯦꯀꯣꯔꯗ ꯇꯧꯈꯤꯗꯦ, ꯑꯗꯨꯅꯥ ꯁꯔꯨꯛ ꯑꯗꯨ ꯈꯪꯗ꯭ꯔꯦ꯫"
+    "callTranscriptDeviceNeverWrote": "{name}ꯅꯥ ꯍꯥꯌꯈꯤꯕꯒꯤ ꯁꯔꯨꯛ ꯑꯃꯗꯤ ꯃꯈꯣꯌꯒꯤ ꯑꯇꯣꯞꯄꯥ ꯗꯤꯚꯥꯏꯁ ꯑꯃꯗꯥ ꯔꯦꯀꯣꯔꯗ ꯇꯧꯅꯕꯥ ꯊꯝꯂꯝꯃꯤ, ꯑꯃꯁꯨꯡ ꯗꯤꯚꯥꯏꯁ ꯑꯗꯨꯅꯥ ꯃꯗꯨ ꯔꯦꯀꯣꯔꯗ ꯇꯧꯈꯤꯗꯦ, ꯑꯗꯨꯅꯥ ꯁꯔꯨꯛ ꯑꯗꯨ ꯈꯪꯗ꯭ꯔꯦ꯫",
+    "archivedChat": "আর্কাইভ তৌখিবা চ্যাট",
+    "activityReview": "এক্টিভিটি রিকন",
+    "activityPanel": "এক্টিভিটি",
+    "coursePage": "কোর্স পেজ"
 }

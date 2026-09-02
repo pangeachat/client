@@ -9954,5 +9954,9 @@
     "selectMessageLabel": "選擇訊息",
     "callTranscriptAudioDropped": "{name} 的裝置在錄製前遺失了他們說的內容，因此無法得知他們說了什麼。",
     "callTranscriptHeldByOtherDevice": "{name} 的發言已交由他們的另一台裝置錄製，因此這台裝置沒有傳送任何內容，也無法得知他們說了什麼。",
-    "callTranscriptDeviceNeverWrote": "{name} 的部分發言由其另一台裝置錄製，但該裝置並未錄製，因此該部分內容未知。"
+    "callTranscriptDeviceNeverWrote": "{name} 的部分發言由其另一台裝置錄製，但該裝置並未錄製，因此該部分內容未知。",
+    "archivedChat": "已封存的聊天",
+    "activityReview": "活動回顧",
+    "activityPanel": "活動",
+    "coursePage": "課程頁面"
 }

@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Yan ifiranṣẹ",
     "callTranscriptAudioDropped": "Ohun tí {name} sọ ti sọnù nípasẹ̀ ẹ̀rọ wọn kí ó tó lè gbà á sílẹ̀, nítorí náà a kò mọ ohun tí wọ́n sọ.",
     "callTranscriptHeldByOtherDevice": "Ohun tí {name} sọ ni a fi sílẹ̀ fún ẹ̀rọ wọn mìíràn láti gbà á sílẹ̀, nítorí náà kò sí èyíkéyìí tí a fi ránṣẹ́ láti orí èyí, a kò sì mọ ohun tí wọ́n sọ níbí.",
-    "callTranscriptDeviceNeverWrote": "Apá kan ohun tí {name} sọ ni a fi sílẹ̀ fún ẹ̀rọ mìíràn láti gbà sílẹ̀, ṣùgbọ́n ẹ̀rọ náà kò gbà á sílẹ̀, nítorí náà a kò mọ apá yẹn."
+    "callTranscriptDeviceNeverWrote": "Apá kan ohun tí {name} sọ ni a fi sílẹ̀ fún ẹ̀rọ mìíràn láti gbà sílẹ̀, ṣùgbọ́n ẹ̀rọ náà kò gbà á sílẹ̀, nítorí náà a kò mọ apá yẹn.",
+    "archivedChat": "Iwiregbe ti a fi pamọ",
+    "activityReview": "Àtúnyẹ̀wò ìṣesí",
+    "activityPanel": "Ìṣesí",
+    "coursePage": "Ojúewé ẹ̀kọ́"
 }

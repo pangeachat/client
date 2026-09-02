@@ -2252,5 +2252,9 @@
     "selectMessageLabel": "Odaberite poruku",
     "callTranscriptAudioDropped": "Ono što je {name} rekao/la je izgubljeno na njihovom uređaju prije nego što je snimljeno, tako da nije poznato šta je rečeno.",
     "callTranscriptHeldByOtherDevice": "Ono što je {name} rekao/la prepušteno je drugom uređaju da snimi, tako da ništa nije poslano s ovog uređaja i ovdje nije poznato šta je rečeno.",
-    "callTranscriptDeviceNeverWrote": "Dio onoga što je {name} rekao/rekla je ostavljen drugom uređaju da snimi, a taj uređaj to nije snimio, tako da taj dio nije poznat."
+    "callTranscriptDeviceNeverWrote": "Dio onoga što je {name} rekao/rekla je ostavljen drugom uređaju da snimi, a taj uređaj to nije snimio, tako da taj dio nije poznat.",
+    "archivedChat": "Arhivirani razgovor",
+    "activityReview": "Pregled aktivnosti",
+    "activityPanel": "Aktivnost",
+    "coursePage": "Stranica kursa"
 }
