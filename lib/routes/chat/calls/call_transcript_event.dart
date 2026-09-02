@@ -77,6 +77,30 @@ class CallTranscriptContent {
   /// segments it describes.
   final bool positionsMarked;
 
+  /// The stretches of the call this device captured and KEPT.
+  ///
+  /// OPTIONAL on the wire, in both directions, and empty when absent. Together
+  /// with [discardedSpans] it is what turns a discard from a claim into a
+  /// question a reader can answer: this half says which stretches it holds, the
+  /// sibling's says which it handed over, and `assembleTranscript` asks whether
+  /// one contains the other.
+  ///
+  /// ABSENT MEANS "THIS WRITER DID NOT SAY", on exactly the terms [deviceId] is
+  /// absent: every half written before the field existed carries nothing, so
+  /// does a foreign client's. It never means "this device kept nothing". What
+  /// that costs is that such a half excuses no sibling's discard, which is the
+  /// safe half of the trade — see `leavesAGap`.
+  final List<CaptureSpan> keptSpans;
+
+  /// The stretches this device captured and handed to a sibling rather than
+  /// sending. The extent behind [HalfAccounting.chunksDiscarded], which is a
+  /// count and names no stretch on its own.
+  ///
+  /// OPTIONAL on the wire in both directions, and absent means the writer did
+  /// not say. A half claiming a discard it cannot place has nothing for a
+  /// reader to test, and reads as a gap.
+  final List<CaptureSpan> discardedSpans;
+
   const CallTranscriptContent({
     required this.callKey,
     required this.segments,
@@ -85,6 +109,8 @@ class CallTranscriptContent {
     this.deviceId,
     this.clockAnchor,
     this.positionsMarked = false,
+    this.keptSpans = const [],
+    this.discardedSpans = const [],
   });
 
   /// The relation type and the event type are the same string: a transcript
@@ -132,6 +158,73 @@ class CallTranscriptContent {
       ? raw
       : null;
 
+  /// How many stretches of captured audio this reader will hold from one half.
+  ///
+  /// A ceiling on untrusted content, like [maxSegments], and it bounds the same
+  /// thing: the WORK one event can make the reader do. Coverage compares every
+  /// discarded stretch against every kept one across a sender's devices, so an
+  /// unbounded list is a quadratic bill payable by anybody who writes an event.
+  ///
+  /// Sixty-four, because a stretch is one uninterrupted run of capture, and a
+  /// run ends at a handover, a mute, or a tap that died. Sixty-four covers a
+  /// long call with the microphone toggled throughout, and past it a half
+  /// states no extents at all rather than a truncated set — see [usableSpans]
+  /// for why the answer is all or nothing.
+  static const maxSpans = 64;
+
+  /// [spans] when they are a coverage statement this reader will act on, and
+  /// null otherwise.
+  ///
+  /// ONE rule, guarding the wire in both directions — [fromJson] reads through
+  /// it and [toJson] writes through it — so a list this reader would refuse is
+  /// never written.
+  ///
+  /// ALL OR NOTHING, and past the ceiling the whole list goes rather than its
+  /// tail. Both lists mean something different when they are shortened, and one
+  /// of the two is dangerous: dropping KEPT stretches understates what a
+  /// sibling holds, which costs a discard its excuse, while dropping DISCARDED
+  /// ones hides a stretch that needed covering and lets the half read complete
+  /// over it. A truncation rule would have to be right about which list it was
+  /// truncating; refusing the statement is right about both.
+  ///
+  /// Empty is not a statement. A writer with nothing to say leaves the key off
+  /// entirely, and an empty list on the wire reads as the same silence rather
+  /// than as an assertion that this device kept nothing.
+  static List<CaptureSpan>? usableSpans(List<CaptureSpan> spans) =>
+      spans.isNotEmpty && spans.length <= maxSpans ? spans : null;
+
+  static List<Object>? _wireSpans(List<CaptureSpan> spans) {
+    final usable = usableSpans(spans);
+    return usable == null ? null : [for (final span in usable) span.toJson()];
+  }
+
+  /// The spans under [key], or null when the event stated none this reader can
+  /// use.
+  ///
+  /// The length is checked BEFORE the list is walked, for the reason
+  /// [maxRawEntries] gives: a hostile list must cost a fixed amount of work.
+  /// Deliberately NOT covered by a test, on the same terms as the early
+  /// character-length check in [fromJson]: [usableSpans] refuses an over-long
+  /// list either way, so the observable output is identical and any test would
+  /// pass with this line removed. It is cheap hygiene rather than protection.
+  static List<CaptureSpan>? _spansFrom(
+    Map<String, dynamic> content,
+    String key,
+  ) {
+    final raw = content[key];
+    if (raw is! List || raw.length > maxSpans) return null;
+    final spans = <CaptureSpan>[];
+    for (final entry in raw) {
+      final span = CaptureSpan.fromJson(entry);
+      // One unreadable entry voids the whole statement. A partially read
+      // coverage list is a DIFFERENT claim from the one the writer made, in
+      // whichever direction the missing entry pointed.
+      if (span == null) return null;
+      spans.add(span);
+    }
+    return usableSpans(List.unmodifiable(spans));
+  }
+
   Map<String, dynamic> toJson() => {
     'call_key': callKey,
     'segments': [for (final segment in segments) segment.toJson()],
@@ -139,6 +232,8 @@ class CallTranscriptContent {
     if (langCode != null) 'lang_code': langCode,
     'device_id': ?usableDeviceId(deviceId),
     if (positionsMarked) 'positions_marked': true,
+    'kept_spans': ?_wireSpans(keptSpans),
+    'discarded_spans': ?_wireSpans(discardedSpans),
     ...?clockAnchor?.toJson(),
     'm.relates_to': {'rel_type': relType, 'event_id': callKey},
   };
@@ -333,6 +428,12 @@ class CallTranscriptContent {
       // -- such a half keys alike with every other half that did not say.
       deviceId: usableDeviceId(content['device_id']),
       positionsMarked: positionsMarked,
+      // A malformed coverage statement is ABSENT, on the same terms as the two
+      // above: it decides whether a sibling's discard is excused, and refusing
+      // the event over it would cost every word to save an excuse. Absence
+      // reads as "did not say", which excuses nothing.
+      keptSpans: _spansFrom(content, 'kept_spans') ?? const [],
+      discardedSpans: _spansFrom(content, 'discarded_spans') ?? const [],
       // A malformed anchor is ABSENT, never a reason to reject the half. It
       // decides only where these words sit against the OTHER speaker's, and
       // refusing an event over it would cost every word to save an ordering.

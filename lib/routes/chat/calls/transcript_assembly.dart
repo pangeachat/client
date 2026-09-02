@@ -215,42 +215,50 @@ bool discardExplainsEmptiness(
 /// reads the accounting and nothing else, so it can only judge a claim whose
 /// meaning is settled by the accounting. One of these four is not:
 ///
-/// **A discard is only innocent while a sibling's half is actually here.** The
-/// writing device destroyed that audio on the strength of a belief about a
-/// device IT COULD NOT SEE -- that another of the account's devices was
-/// recording the same stretch and would publish it. `chunksDiscarded` is
-/// deliberately excluded from `writerAdmitsGaps` on exactly that belief, and
-/// nothing was checking it. When the sibling crashes, or is closed, or never
-/// publishes, the belief is false: the stretch is in no half in existence, and
-/// the half that deferred it went on asserting it was whole. A half that still
-/// carried WORDS never even reached [discardExplainsEmptiness], which asks for
-/// an empty one, so an ordinary handover that lost its sibling read as a clean,
-/// complete transcript over a hole.
+/// **A discard is only innocent while a sibling's half actually holds the
+/// stretch.** The writing device destroyed that audio on the strength of a
+/// belief about a device IT COULD NOT SEE -- that another of the account's
+/// devices was recording the same stretch and would publish it.
+/// `chunksDiscarded` is deliberately excluded from `writerAdmitsGaps` on
+/// exactly that belief, and nothing was checking it. When the sibling crashes,
+/// or is closed, or never publishes, the belief is false: the stretch is in no
+/// half in existence, and the half that deferred it went on asserting it was
+/// whole. A half that still carried WORDS never even reached
+/// [discardExplainsEmptiness], which asks for an empty one, so an ordinary
+/// handover that lost its sibling read as a clean, complete transcript over a
+/// hole.
 ///
-/// So the condition is supplied rather than assumed. [aSiblingWrote] can only
-/// be answered where the assembly is -- it is `deviceCount > 1`, whether
-/// another device of this account put a half in this call at all -- and making
-/// it a required argument is what stops the question being asked anywhere that
-/// cannot answer it.
+/// So the condition is supplied rather than assumed. [discardWasCovered] can
+/// only be answered where the assembly is -- every one of the sender's devices
+/// has to be in hand at once -- and making it a required argument is what stops
+/// the question being asked anywhere that cannot answer it.
 ///
-/// **WHAT [aSiblingWrote] HONESTLY ESTABLISHES, AND WHAT IT DOES NOT.** It
-/// establishes that another of this account's devices published a half for this
-/// call and the reader is holding it. It does NOT establish that the half spans
-/// the discarded stretch, and nothing available can:
-/// * a discarded chunk carries a COUNT and nothing else -- no position, no
-///   duration, no index -- so there is no stretch to compare anything against;
-/// * chunk indices do not line up across devices, so the count is not a lookup
-///   into the sibling's half either;
-/// * and the obvious temporal test, "the sibling's words run past mine", is
-///   wrong in both directions. A sibling that recorded the stretch and heard
-///   silence produces no segment there, so its absence is not evidence of a
-///   gap; and a sibling that recorded past that moment may still have lost the
-///   chunk that mattered, so its presence is not evidence of coverage.
+/// **A SIBLING WRITING IS NOT A SIBLING COVERING.** This argument was
+/// `deviceCount > 1` for one round, which asks only whether another of the
+/// account's devices published anything at all. Two devices, one discard and
+/// one clean half of some OTHER stretch cleared it, and the transcript claimed
+/// completeness with the discarded audio in nothing. The reasoning behind it
+/// was sound about the data of the day -- a discarded chunk carried a COUNT and
+/// nothing else, no position and no duration, so there was no stretch to
+/// compare and every temporal test was wrong in both directions -- and the
+/// answer was to make the discard carry its own extent rather than to keep
+/// guessing from what it did not carry. [CaptureSpan] is that extent, on both
+/// sides: what a device handed away, and what each of its siblings kept.
 ///
-/// A sibling that admits its OWN gaps needs no test here: `_mergeAccounting`
-/// ANDs every claim of completeness, so its truncation, its lost chunks and its
-/// abandoned drain are already the merged half's. Presence is exactly the
-/// residual, and it is the whole of what this can say.
+/// **WHAT COVERAGE NOW HONESTLY ESTABLISHES.** That another of this account's
+/// devices states it captured and kept a stretch of this call CONTAINING the
+/// one this device handed over -- both stretches read on the SFU's clock
+/// through the anchors the two devices published. Absent an extent on either
+/// side, or an anchor on either side, there is nothing to compare and coverage
+/// is not established. See [TranscriptHalf.discardWasCovered] for why an
+/// unanswerable question falls to "gap".
+///
+/// A sibling that admits its OWN gaps establishes nothing either, and that is
+/// why the covering half must be gap-free: a kept span is a claim about audio
+/// that reached this half, and a device that lost, dropped or truncated cannot
+/// say which part of the stretch survived. Those gaps also reach the merged
+/// half through `_mergeAccounting`, so the merged record reads short either
+/// way; what this refuses is letting a broken half EXCUSE a discard.
 ///
 /// The safe direction is refusing to claim completeness. A half wrongly marked
 /// incomplete costs a learner one honest sentence saying part may be missing; a
@@ -258,7 +266,7 @@ bool discardExplainsEmptiness(
 bool leavesAGap(
   MissingAudio claim,
   HalfAccounting accounting, {
-  required bool aSiblingWrote,
+  required bool discardWasCovered,
 }) => switch (claim) {
   // Captured and then lost, and audio that went before it was ever a chunk.
   // Both are gaps unconditionally: nothing anywhere has a copy, and no other
@@ -269,7 +277,7 @@ bool leavesAGap(
   // The conditional one. See above: the condition is the entire content of
   // this claim, and it is why the argument is required rather than defaulted.
   MissingAudio.heldForASibling =>
-    accounting.chunksDiscarded > 0 && !aSiblingWrote,
+    accounting.chunksDiscarded > 0 && !discardWasCovered,
 
   // NEVER a gap, and this is the one exclusion that needs no condition. Our
   // detector EXAMINED this audio and judged it silent; the audio was not
@@ -290,9 +298,10 @@ bool leavesAGap(
 /// hold, and the two are asked together wherever a half's state is decided.
 bool anyAudioLeftAGap(
   HalfAccounting accounting, {
-  required bool aSiblingWrote,
+  required bool discardWasCovered,
 }) => MissingAudio.values.any(
-  (claim) => leavesAGap(claim, accounting, aSiblingWrote: aSiblingWrote),
+  (claim) =>
+      leavesAGap(claim, accounting, discardWasCovered: discardWasCovered),
 );
 
 /// Where one device's wall clock sat relative to the SFU's, read at join.
@@ -478,6 +487,95 @@ class ClockAnchor {
 
   @override
   String toString() => 'ClockAnchor(sfu $sfuMs, device $deviceMs)';
+}
+
+/// One uninterrupted stretch of a call's audio, as a device's own wall clock
+/// saw it.
+///
+/// The unit both halves of the coverage question are asked in: what a device
+/// captured and KEPT, and what it captured and HANDED to a sibling. See
+/// [TranscriptCandidate.keptSpans] and [TranscriptCandidate.discardedSpans].
+///
+/// Stamped on the same clock [TranscriptSegment.atMs] is -- the writing
+/// device's own wall clock, read once per call -- and so moved onto the shared
+/// clock by exactly the correction [ClockAnchor] already describes. Nothing new
+/// is measured here: the capture path knows a run's extent from the frame count
+/// it already stamps every chunk from, and a discarded chunk knows its own
+/// start and duration at the moment it is set aside.
+///
+/// [toMs] is EXCLUSIVE-ish only in the sense that a span is a closed interval
+/// over a stretch of recorded audio: `from` is when the stretch began and `to`
+/// is when it stopped. Nothing here compares two spans for adjacency, so the
+/// distinction never decides anything -- only containment does.
+class CaptureSpan {
+  /// When this stretch began, in absolute Unix milliseconds on the writing
+  /// device's clock.
+  final int fromMs;
+
+  /// When it stopped, on the same clock. Never before [fromMs].
+  final int toMs;
+
+  const CaptureSpan({required this.fromMs, required this.toMs});
+
+  /// A span for a stretch running [fromMs] to [toMs], or null when that pair is
+  /// not a stretch of a call.
+  ///
+  /// The same rule guards the wire and the writer, exactly as [ClockAnchor.of]
+  /// does, so a span this reader would refuse is never sent in the first place.
+  ///
+  /// The ceiling is [ClockAnchor.clockCeilingMs] rather than
+  /// [TranscriptSegment.atMsCeiling], and it is the tighter of the two on
+  /// purpose. These are wall-clock instants, like an anchor's readings, so a
+  /// value outside any date a clock can hold is not a measurement; and the
+  /// coverage test SUBTRACTS a clock offset from them, which on the web -- where
+  /// an int is a double -- has to stay inside 2^53 to remain exact. A span
+  /// bounded here plus an offset bounded by the same constant cannot leave it.
+  ///
+  /// Zero-length is refused. A stretch that began and ended at the same
+  /// millisecond covers nothing, and admitting one would let a writer state a
+  /// point where the reader expects a stretch -- which either covers nothing at
+  /// all or, as a KEPT span, invites a containment test against an instant.
+  static CaptureSpan? of({required int fromMs, required int toMs}) =>
+      fromMs >= 0 && toMs > fromMs && toMs < ClockAnchor.clockCeilingMs
+      ? CaptureSpan(fromMs: fromMs, toMs: toMs)
+      : null;
+
+  /// Whether [other] lies wholly inside this stretch, once [other] has been
+  /// moved onto this span's clock by [shiftMs].
+  ///
+  /// WHOLLY, not overlapping. A sibling that recorded part of a stretch holds
+  /// part of it, and "part" is a gap -- so a partial overlap must read exactly
+  /// as no overlap does.
+  bool covers(CaptureSpan other, {required int shiftMs}) =>
+      fromMs <= other.fromMs + shiftMs && other.toMs + shiftMs <= toMs;
+
+  /// Written as a two-element list rather than an object: a half carries one of
+  /// these per run and the packer drops speech off the tail of a half that will
+  /// not fit, so two keys per span would cost words to say the same thing.
+  List<int> toJson() => [fromMs, toMs];
+
+  /// Reads one span off the wire, or null when the entry is not one.
+  ///
+  /// A null here voids the WHOLE list rather than the entry -- see
+  /// `CallTranscriptContent.spansFrom` -- because a partially read coverage
+  /// statement is a different statement from the one the writer made.
+  static CaptureSpan? fromJson(Object? raw) {
+    if (raw is! List || raw.length != 2) return null;
+    final from = raw[0];
+    final to = raw[1];
+    if (from is! int || to is! int) return null;
+    return CaptureSpan.of(fromMs: from, toMs: to);
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      other is CaptureSpan && other.fromMs == fromMs && other.toMs == toMs;
+
+  @override
+  int get hashCode => Object.hash(fromMs, toMs);
+
+  @override
+  String toString() => 'CaptureSpan($fromMs..$toMs)';
 }
 
 /// Why a speaker's half reads the way it does.
@@ -911,8 +1009,8 @@ enum HalfIssue {
   /// the recording, not about whether the speaker spoke.
   audioHeldByAnotherDevice,
 
-  /// A stretch was handed to another of the account's devices and NO half from
-  /// that device is here, so the audio is in no transcript at all.
+  /// A stretch was handed to another of the account's devices and no half here
+  /// states it holds that stretch, so the audio is in no transcript at all.
   ///
   /// The same decision as [audioHeldByAnotherDevice], reported on a half that
   /// still carries words. The discard is the one step in the capture path that
@@ -920,7 +1018,13 @@ enum HalfIssue {
   /// see; when that belief turns out false the stretch is simply gone, and the
   /// half it was cut from is otherwise a perfectly ordinary record — which is
   /// how it came to read as a complete one.
-  audioLeftToADeviceThatNeverWrote,
+  ///
+  /// NAMED FOR NOT HOLDING IT rather than for not writing. A sibling that wrote
+  /// a half of some other stretch of the call has written; it has not covered.
+  /// The value was `audioLeftToADeviceThatNeverWrote` while presence was the
+  /// whole of the test, and keeping that name once the test became containment
+  /// would have made the enum say the one thing the fix exists to stop saying.
+  audioLeftToADeviceThatDidNotHoldIt,
 
   /// Words were dropped to fit the event under the server's size limit.
   tooLongToSend,
@@ -1074,6 +1178,24 @@ class TranscriptHalf {
   /// actually said. The duplicate is kept and declared instead of guessed at.
   final int deviceCount;
 
+  /// Whether every stretch this account's devices handed to a sibling is inside
+  /// a stretch one of its OTHER halves states it kept.
+  ///
+  /// The answer [leavesAGap] cannot work out for itself, computed once by
+  /// [_assembleDevices] where all of a sender's devices are in hand at the same
+  /// time. It is the question `deviceCount > 1` used to stand in for, and the
+  /// two differ exactly where it matters: a sibling that wrote a half of some
+  /// other stretch of the call raises the count and covers nothing.
+  ///
+  /// FALSE BY DEFAULT, which is what makes an unanswerable question fall to
+  /// "gap". A half assembled from one device, an older writer that stated no
+  /// extents, a pair of devices whose clocks were never compared -- none of
+  /// those establishes coverage, and none of them may be read as having done so.
+  /// Vacuously true is not needed: the term it feeds asks for
+  /// `chunksDiscarded > 0` first, so a half that handed nothing over is never
+  /// judged on this at all.
+  final bool discardWasCovered;
+
   const TranscriptHalf({
     required this.senderId,
     required this.segments,
@@ -1084,6 +1206,7 @@ class TranscriptHalf {
     this.clockAnchor,
     this.positionsMarked = false,
     this.deviceCount = 1,
+    this.discardWasCovered = false,
     required this.arrival,
   });
 
@@ -1169,7 +1292,7 @@ class TranscriptHalf {
     // transcribed its early chunks and deferred its tail fell straight past
     // every check here and reported `none`.
     if (discardWentUncovered) {
-      return HalfIssue.audioLeftToADeviceThatNeverWrote;
+      return HalfIssue.audioLeftToADeviceThatDidNotHoldIt;
     }
     if (accounting.truncated || accounting.segmentsOmitted > 0) {
       return HalfIssue.tooLongToSend;
@@ -1231,15 +1354,14 @@ class TranscriptHalf {
 
   /// Whether a stretch this device handed to a sibling is in no half at all.
   ///
-  /// [deviceCount] is the answer to the only question [leavesAGap] cannot ask
-  /// itself: it counts the DEVICES of this account whose halves went into this
-  /// one, so more than one means a sibling did publish and the reader is
-  /// holding it. See [leavesAGap] for what that establishes and, at length, for
-  /// what it cannot.
+  /// [discardWasCovered] is the answer to the only question [leavesAGap] cannot
+  /// ask itself, and it is a containment test rather than a head-count: see
+  /// [_assembleDevices] for how it is established and [leavesAGap] for what it
+  /// does and does not mean.
   bool get discardWentUncovered => leavesAGap(
     MissingAudio.heldForASibling,
     accounting,
-    aSiblingWrote: deviceCount > 1,
+    discardWasCovered: discardWasCovered,
   );
 
   /// Whether this half is a person who was recorded and said nothing.
@@ -1305,6 +1427,39 @@ class TranscriptCandidate {
   /// field existed, and on one that declared a span this reader could not use.
   final bool positionsMarked;
 
+  /// The stretches of the call this device captured and KEPT -- the audio this
+  /// half is a record of, whether or not words came out of it.
+  ///
+  /// EMPTY MEANS THE WRITER DID NOT SAY, exactly as an absent device id does,
+  /// and never "this device kept nothing". Every half written before the field
+  /// existed carries none, so does a foreign client's, and so does one of ours
+  /// whose runs would not fit under `CallTranscriptContent.maxSpans`. What that
+  /// costs is stated where it is spent: such a half excuses no sibling's
+  /// discard, which leaves the discarding half reading incomplete -- one honest
+  /// sentence, against the silent loss the other direction costs.
+  ///
+  /// KEPT, not merely captured. A stretch this device handed to a sibling is in
+  /// [discardedSpans] and in neither list twice: the two are disjoint by
+  /// construction, because a run's discarded tail is cut off the end of the run
+  /// before its kept part is stated.
+  ///
+  /// A kept span is a claim about audio that REACHED this half, not about what
+  /// a provider made of it -- a chunk that came back silent is kept, and so is
+  /// one our own detector held back, because both were examined. What was
+  /// captured and then LOST is not, and cannot be told apart from what survived
+  /// by looking at these spans; that is why a half admitting any gap of its own
+  /// covers nothing. See [leavesAGap].
+  final List<CaptureSpan> keptSpans;
+
+  /// The stretches this device captured and deliberately did NOT send, because
+  /// another of the account's devices was recording them.
+  ///
+  /// The extent behind `HalfAccounting.chunksDiscarded`, which is a count and
+  /// says only that there is something to go and look for. Empty means the
+  /// writer did not say, and a half claiming a discard without saying WHERE
+  /// cannot have that discard excused -- there is no stretch to test.
+  final List<CaptureSpan> discardedSpans;
+
   const TranscriptCandidate({
     required this.senderId,
     required this.originServerTs,
@@ -1313,6 +1468,8 @@ class TranscriptCandidate {
     this.deviceId,
     this.clockAnchor,
     this.positionsMarked = false,
+    this.keptSpans = const [],
+    this.discardedSpans = const [],
   });
 
   /// Distinct content, so padding a half by repeating itself wins nothing:
@@ -1485,13 +1642,88 @@ class _AssembledHalf {
   /// How many devices WROTE, including any the ceiling above turned away.
   final int deviceCount;
 
+  /// Whether every discarded stretch among these devices is held by one of the
+  /// others. See [TranscriptHalf.discardWasCovered].
+  final bool discardWasCovered;
+
   const _AssembledHalf({
     required this.segments,
     required this.accounting,
     required this.clockAnchor,
     required this.positionsMarked,
     required this.deviceCount,
+    required this.discardWasCovered,
   });
+}
+
+/// Whether every stretch one of these devices handed to a sibling is inside a
+/// stretch a DIFFERENT one of them states it kept.
+///
+/// The whole of the coverage test, and the answer
+/// [TranscriptHalf.discardWasCovered] carries. Four things have to hold for one
+/// device to excuse another's discard, and each of them is a way the question
+/// goes unanswered rather than a way it is answered no:
+///
+/// * the discarding half has to SAY WHERE. A count of discarded chunks names no
+///   stretch, so a writer that sent one without an extent -- an older build, a
+///   foreign client -- leaves nothing to test.
+/// * the covering half has to say what it KEPT, for the same reason from the
+///   other side.
+/// * both have to have compared their clocks to the SFU's. Two wall clocks that
+///   were never put on one reference disagree by however much they disagree,
+///   and this codebase has already lost a bug to that; a containment test
+///   across them would be arithmetic on two different scales.
+/// * the covering half must admit no gaps of its own. A kept span says audio
+///   reached that half; a half that lost a chunk, dropped audio at capture,
+///   truncated or never declared cannot say WHICH part of the stretch survived,
+///   so it is not evidence that any particular moment did.
+///
+/// Every one of those falls to "not covered", which reads as a gap. That is the
+/// direction the whole file already argues for: a half wrongly called
+/// incomplete costs one sentence, and a half wrongly called complete costs the
+/// speech.
+///
+/// A device never covers its own discard. The stretch was handed to ANOTHER
+/// device by definition, and a run's kept span is cut off before its discarded
+/// tail precisely so the two can never overlap.
+///
+/// Overlapping or unordered spans off the wire are not refused, and that is
+/// deliberate rather than an omission. Both halves come from the SAME Matrix
+/// account, which can already write whatever it likes about its own speech; a
+/// sender that fabricated coverage would be excusing its own discard, which is
+/// the same standing `_beats` already declines to treat as a security boundary.
+/// What the ceilings in `CallTranscriptContent` bound is the WORK a hostile
+/// event can make this do, which is a different question and is bounded there.
+bool _discardsAreCovered(List<TranscriptCandidate> perDevice) {
+  for (final discarder in perDevice) {
+    if (discarder.accounting.chunksDiscarded == 0) continue;
+    // It says a stretch went and does not say which. Nothing to look for.
+    if (discarder.discardedSpans.isEmpty) return false;
+    final discarderAnchor = discarder.clockAnchor;
+    if (discarderAnchor == null) return false;
+
+    for (final handedOver in discarder.discardedSpans) {
+      var held = false;
+      for (final sibling in perDevice) {
+        if (identical(sibling, discarder)) continue;
+        if (sibling.accounting.writerAdmitsGaps) continue;
+        final siblingAnchor = sibling.clockAnchor;
+        if (siblingAnchor == null) continue;
+        // The handed-over stretch read on the SIBLING's clock: off the
+        // discarder's onto the SFU's, then onto the sibling's. Both anchors are
+        // readings of the same join, so their difference is the constant that
+        // separates the two devices' stamps -- the same correction
+        // [_assembleDevices] moves segments by.
+        final shift = siblingAnchor.offsetMs - discarderAnchor.offsetMs;
+        held = sibling.keptSpans.any(
+          (kept) => kept.covers(handedOver, shiftMs: shift),
+        );
+        if (held) break;
+      }
+      if (!held) return false;
+    }
+  }
+  return true;
 }
 
 /// Adds two counts without letting the total wrap.
@@ -1712,6 +1944,14 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
     for (final candidate in kept) candidate.accounting,
   ], readerDroppedADevice: droppedADevice);
 
+  // Asked over the devices this read actually took in, which is the same set
+  // the merged accounting is summed over: a device the ceiling turned away is
+  // not one the reader is holding, and excusing a discard with a half nobody
+  // assembled would claim coverage from content this transcript does not show.
+  // Nothing turns on it either way -- a read that dropped a device is already
+  // `readerShortened`, so the merged half reads incomplete regardless.
+  final discardWasCovered = _discardsAreCovered(kept);
+
   // The ones that put anything on the timeline. A device that wrote an empty
   // half orders nothing, so neither its anchor nor its silence about one may
   // decide whether the speaking halves can be interleaved -- the same carve-out
@@ -1739,6 +1979,7 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
           kept.map((candidate) => candidate.clockAnchor).nonNulls.firstOrNull,
       positionsMarked: only?.positionsMarked ?? false,
       deviceCount: found,
+      discardWasCovered: discardWasCovered,
     );
   }
 
@@ -1789,6 +2030,7 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
       clockAnchor: null,
       positionsMarked: false,
       deviceCount: found,
+      discardWasCovered: discardWasCovered,
     );
   }
 
@@ -1813,6 +2055,7 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
     // one writer that never made it leaves segments here nobody vouched for.
     positionsMarked: speaking.every((candidate) => candidate.positionsMarked),
     deviceCount: found,
+    discardWasCovered: discardWasCovered,
   );
 }
 
@@ -2067,7 +2310,7 @@ CallTranscript assembleTranscript({
                 // and agreeing twice is the cheapest thing here.
                 anyAudioLeftAGap(
                   candidate.accounting,
-                  aSiblingWrote: candidate.deviceCount > 1,
+                  discardWasCovered: candidate.discardWasCovered,
                 ))
             ? HalfState.incomplete
             : HalfState.present,
@@ -2086,6 +2329,11 @@ CallTranscript assembleTranscript({
         // shown, and only the copies that supplied them may make it.
         positionsMarked: candidate.positionsMarked,
         deviceCount: candidate.deviceCount,
+        // Established across this sender's devices while they were all in hand,
+        // and carried rather than re-derived: the half no longer holds the
+        // extents it was worked out from, and a second derivation from a
+        // head-count is exactly the answer this replaced.
+        discardWasCovered: candidate.discardWasCovered,
       ),
     );
   }

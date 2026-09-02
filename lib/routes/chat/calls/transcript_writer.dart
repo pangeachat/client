@@ -62,6 +62,18 @@ Future<bool> writeCallTranscript({
   required int chunksSuppressed,
   required int chunksDiscarded,
 
+  /// The stretches this device captured and KEPT, and the stretches it handed
+  /// to a sibling instead of sending.
+  ///
+  /// Required rather than defaulted, like every count beside them, and for a
+  /// sharper reason than most: a caller that omitted the second would publish a
+  /// discard nothing can test, and one that omitted the first would leave a
+  /// sibling's discard unexcusable. Empty is a first-class answer for a device
+  /// with nothing to state — the fields are then simply left off the event, and
+  /// read back as a writer that did not say.
+  required List<CaptureSpan> keptSpans,
+  required List<CaptureSpan> discardedSpans,
+
   // How much audio the capture path lost before it could become a chunk.
   // Required rather than defaulted, like every count beside it: zero is a
   // claim that nothing went, and a caller that forgot this would publish a
@@ -111,6 +123,13 @@ Future<bool> writeCallTranscript({
         ),
         langCode: langCode,
         deviceId: deviceId,
+        // Inside the closure with everything else, so the packer measures them.
+        // A coverage statement is small beside a call's speech, and it is also
+        // the one part of a half that cannot be dropped to fit: the packer
+        // trims SEGMENTS, and a half that shed its extents to make room would
+        // silently stop excusing a sibling's discard.
+        keptSpans: keptSpans,
+        discardedSpans: discardedSpans,
         // These two are inside the closure with everything else, so the packer
         // measures the event that actually goes on the wire. Sizing without a
         // field and adding it afterwards would grow a half past the budget it

@@ -7,6 +7,7 @@ import 'package:livekit_client/livekit_client.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
 class RecordingSink implements CallAudioSink {
   final List<PcmChunk> delivered = [];
@@ -1950,10 +1951,24 @@ void main() {
       expect(sink.delivered.single.duration.inMilliseconds, 200);
     });
 
-    test('a gap arriving after the stretch ended is not taken', () async {
-      // The same gate every other frame passes. Audio dropped after a hangup
-      // belongs to no stretch, and counting it would put a gap on a half for a
-      // stretch that had already been flushed and published.
+    test('a gap arriving after the stretch ended is still counted', () async {
+      // The frame's SAMPLES belong to no stretch and are refused, exactly as
+      // they always were. Its report that audio was already lost is not the
+      // audio, and it is the only evidence that a hole exists at all.
+      //
+      // This is the terminal path and it is the ordinary one, not a corner: the
+      // tap reports a drop on the frame AFTER it, so a drop near the end of a
+      // call rides out on the tail the platform hands over as it detaches --
+      // which arrives once the stop has already set the gate. Refused here, the
+      // number was read and thrown away, and the half published
+      // `capture_dropped_ms: 0` over a hole in the recording.
+      //
+      // This test asserted the opposite for a round, on the reasoning that a
+      // gap after a hangup belongs to no stretch. The window the number
+      // describes OPENS at the last frame we accepted, so it starts inside the
+      // recorded stretch; and of the two ways to be wrong about it, one costs a
+      // sentence saying part may be missing and the other costs the speech,
+      // silently.
       final tap = _DrivableTap();
       final s = service(withTap: tap);
       await s.start(track);
@@ -1962,6 +1977,49 @@ void main() {
       tap.onFrames!(speech(100), captureSampleRate, 1);
       await s.stop();
       leaked(speech(100), captureSampleRate, 1, droppedMs: 900);
+
+      expect(s.captureDroppedMs, 900);
+      expect(
+        sink.delivered.single.duration.inMilliseconds,
+        100,
+        reason: 'the post-stop SAMPLES are still refused',
+      );
+    });
+
+    test('the drop a hangup would have swallowed reaches the half', () async {
+      // The sequence end to end, through the real stop rather than a leaked
+      // callback: audio is dropped while recording, the learner hangs up, and
+      // the platform hands its tail over on the way down carrying the number.
+      // What the half publishes has to say a stretch went.
+      final tap = _DrivableTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+      final duringTeardown = tap.onFrames!;
+
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+      // The detach is where the platform flushes what it was holding, so the
+      // tail lands after the stop has set its gate and before it returns.
+      await s.stop();
+      duringTeardown(speech(20), captureSampleRate, 1, droppedMs: 640);
+      await s.finish();
+
+      expect(s.captureDroppedMs, 640);
+    });
+
+    test('audio dropped while MUTED is not a hole in the record', () async {
+      // A mute is a gap in the transcript on purpose -- frames arriving while
+      // muted are dropped by this device itself -- so audio the platform lost
+      // inside that span is audio nobody was going to record. Counting it would
+      // report a capture failure on every call where somebody muted, and leave
+      // the flag meaning nothing when it matters.
+      final tap = _DrivableTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+      s.setMuted(true);
+      tap.onFrames!(speech(100), captureSampleRate, 1, droppedMs: 700);
+      await s.stop();
 
       expect(s.captureDroppedMs, 0);
     });
@@ -1997,6 +2055,98 @@ void main() {
 
       expect(sink.delivered, hasLength(1));
       expect(sink.discardedChunks, isEmpty);
+    });
+  });
+
+  group('the stretches a half says it holds and the ones it handed over', () {
+    // The count of discarded chunks says a stretch was set aside and names no
+    // stretch, so the only question a reader could ask of it was whether some
+    // OTHER half existed -- which is not the same question. These are the
+    // extents that make coverage a real test, and they are stated here because
+    // this is where a run's extent is known exactly.
+
+    test('a run that kept everything states one stretch and no discard', () {
+      // The ordinary call. One run, nothing handed over, and the stretch it
+      // states is the audio it actually took in.
+      final capture = service();
+      return capture.start(track).then((_) async {
+        track.emit(100);
+        final runStart = clock.ms - 100;
+        await capture.stop();
+
+        expect(capture.keptSpans, [
+          CaptureSpan(fromMs: runStart, toMs: runStart + 100),
+        ]);
+        expect(capture.discardedSpans, isEmpty);
+      });
+    });
+
+    test('a handover cuts the discarded tail off what it kept', () async {
+      // The two lists describe disjoint stretches of one run: everything up to
+      // the tail is this half's record, and the tail is what a sibling was
+      // asked to hold. Stated as one span each, from the chunker's own frame
+      // arithmetic -- a sum of per-chunk durations truncates once per chunk,
+      // and a millisecond crack would read as a gap in the coverage published.
+      final capture = service();
+      await capture.start(track);
+      // Four hundred milliseconds is the fixture's hard ceiling, so the first
+      // chunk is CUT and delivered; what follows is the tail.
+      track.emit(400);
+      final runStart = clock.ms - 400;
+      track.emit(60);
+      capture.setDiscardOnStop(true);
+
+      await capture.stop();
+
+      expect(sink.delivered, hasLength(1));
+      expect(sink.discardedChunks, hasLength(1));
+      expect(capture.keptSpans, [
+        CaptureSpan(fromMs: runStart, toMs: runStart + 400),
+      ]);
+      expect(capture.discardedSpans, [
+        CaptureSpan(fromMs: runStart + 400, toMs: runStart + 460),
+      ]);
+    });
+
+    test('a run whose whole audio went to a sibling keeps nothing', () async {
+      // Nothing is stated rather than a point stated: an empty stretch covers
+      // no moment, and publishing one would put a claim on the wire that
+      // cannot be true of any audio.
+      final capture = service();
+      await capture.start(track);
+      track.emit(100);
+      final runStart = clock.ms - 100;
+      capture.setDiscardOnStop(true);
+
+      await capture.stop();
+
+      expect(capture.keptSpans, isEmpty);
+      expect(capture.discardedSpans, [
+        CaptureSpan(fromMs: runStart, toMs: runStart + 100),
+      ]);
+    });
+
+    test('every run of a call states its own stretch', () async {
+      // Recording moves between a learner's devices and comes back, so a call
+      // is several runs with real gaps between them. One span each: merging
+      // them would claim coverage across a stretch this device was not
+      // recording at all.
+      final capture = service();
+      await capture.start(track);
+      track.emit(100);
+      final firstStart = clock.ms - 100;
+      await capture.stop();
+
+      clock.pass(5000);
+      await capture.start(track);
+      track.emit(100);
+      final secondStart = clock.ms - 100;
+      await capture.stop();
+
+      expect(capture.keptSpans, [
+        CaptureSpan(fromMs: firstStart, toMs: firstStart + 100),
+        CaptureSpan(fromMs: secondStart, toMs: secondStart + 100),
+      ]);
     });
   });
 }

@@ -19,6 +19,8 @@ TranscriptCandidate _candidate(
   ClockAnchor? anchor,
   bool positionsMarked = false,
   String? deviceId,
+  List<CaptureSpan> keptSpans = const [],
+  List<CaptureSpan> discardedSpans = const [],
 }) => TranscriptCandidate(
   senderId: sender,
   originServerTs: ts,
@@ -27,6 +29,8 @@ TranscriptCandidate _candidate(
   clockAnchor: anchor,
   positionsMarked: positionsMarked,
   deviceId: deviceId,
+  keptSpans: keptSpans,
+  discardedSpans: discardedSpans,
 );
 
 /// A device whose clock ran [aheadMs] ahead of the SFU's at join.
@@ -36,6 +40,15 @@ ClockAnchor _skewed(int aheadMs) =>
 /// The SFU's clock at join. A real instant, because the reader refuses a
 /// reading that could not be one.
 const _sfuJoin = 1787994000000;
+
+/// A stretch of the call, offset from the join, on ONE device's wall clock.
+///
+/// Written relative to [_sfuJoin] so a fixture reads as seconds into the call
+/// and so the cross-device correction has something real to correct: a span
+/// written on a device skewed by [_skewed] names a different absolute instant
+/// from the same stretch written on an unskewed one.
+CaptureSpan _span(int fromMs, int toMs) =>
+    CaptureSpan(fromMs: _sfuJoin + fromMs, toMs: _sfuJoin + toMs);
 
 /// A segment that knows when it was said.
 TranscriptSegment _placed(String text, int atMs) =>
@@ -2092,7 +2105,7 @@ void main() {
     });
 
     test(
-      'a half that still carries words is complete WHEN THE SIBLING WROTE',
+      'a half that still carries words is complete WHEN A SIBLING HELD IT',
       () {
         // The point of keeping it out of `writerAdmitsGaps`. An ordinary
         // handover defers one tail, and that transcript is whole.
@@ -2100,8 +2113,9 @@ void main() {
         // The fixture said "handover" and set up ONE device, which is the
         // opposite of a handover and is the case below. A discard is only
         // innocent because another device holds the stretch; a test that asserts
-        // the innocence has to put that device in the room, or it is asserting
-        // the assumption rather than checking it.
+        // the innocence has to put that device in the room -- and, since a
+        // sibling WRITING turned out not to be a sibling COVERING, has to make
+        // that device say it held the stretch that was handed to it.
         final transcript = assembleTranscript(
           candidates: [
             _candidate(
@@ -2113,6 +2127,8 @@ void main() {
                 chunksDiscarded: 1,
                 declared: true,
               ),
+              anchor: _skewed(0),
+              discardedSpans: [_span(5000, 9000)],
             ),
             _candidate(
               alice,
@@ -2123,6 +2139,8 @@ void main() {
                 chunksTranscribed: 2,
                 declared: true,
               ),
+              anchor: _skewed(0),
+              keptSpans: [_span(0, 20000)],
             ),
           ],
           expectedSenders: [alice],
@@ -2170,7 +2188,7 @@ void main() {
       );
       expect(half.discardWentUncovered, isTrue);
       expect(half.state, HalfState.incomplete);
-      expect(half.issue, HalfIssue.audioLeftToADeviceThatNeverWrote);
+      expect(half.issue, HalfIssue.audioLeftToADeviceThatDidNotHoldIt);
     });
 
     test('an EMPTY half that deferred everything is not silence', () {
@@ -2377,15 +2395,27 @@ void main() {
       declared: true,
     );
 
-    /// The same half, assembled with or without a second device of the account.
+    /// The same half, assembled with or without a sibling that states it HELD
+    /// the stretch this one handed over.
+    ///
+    /// The sibling is not merely present. It carries a kept stretch containing
+    /// the discarded one and an anchor to read both on the SFU's clock, which
+    /// is what coverage now means — a fixture that only put a second device in
+    /// the room would assert the assumption this group exists to check.
     TranscriptHalf assembled(
       HalfAccounting accounting, {
-      required bool withASibling,
+      required bool covered,
     }) => _halfFor(
       assembleTranscript(
         candidates: [
-          _candidate(alice, deviceId: 'PHONE', accounting: accounting),
-          if (withASibling)
+          _candidate(
+            alice,
+            deviceId: 'PHONE',
+            accounting: accounting,
+            anchor: _skewed(0),
+            discardedSpans: [_span(5000, 9000)],
+          ),
+          if (covered)
             _candidate(
               alice,
               texts: const ['y despues'],
@@ -2395,6 +2425,8 @@ void main() {
                 chunksTranscribed: 2,
                 declared: true,
               ),
+              anchor: _skewed(0),
+              keptSpans: [_span(0, 20000)],
             ),
         ],
         expectedSenders: [alice],
@@ -2408,16 +2440,16 @@ void main() {
       // must not be `present` -- which is the state the screen reads as a
       // trusted, whole record of what somebody said.
       for (final claim in MissingAudio.values) {
-        for (final withASibling in [true, false]) {
+        for (final covered in [true, false]) {
           final accounting = admitting(claim);
-          if (!leavesAGap(claim, accounting, aSiblingWrote: withASibling)) {
+          if (!leavesAGap(claim, accounting, discardWasCovered: covered)) {
             continue;
           }
           expect(
-            assembled(accounting, withASibling: withASibling).state,
+            assembled(accounting, covered: covered).state,
             HalfState.incomplete,
             reason:
-                '$claim leaves a gap with sibling=$withASibling, so the half '
+                '$claim leaves a gap with covered=$covered, so the half '
                 'may not claim to be everything that was said',
           );
         }
@@ -2431,10 +2463,10 @@ void main() {
       // and needs the same read-time check this one just got.
       for (final claim in MissingAudio.values) {
         final accounting = admitting(claim);
-        final covered = leavesAGap(claim, accounting, aSiblingWrote: true);
-        final uncovered = leavesAGap(claim, accounting, aSiblingWrote: false);
+        final held = leavesAGap(claim, accounting, discardWasCovered: true);
+        final unheld = leavesAGap(claim, accounting, discardWasCovered: false);
         expect(
-          covered == uncovered,
+          held == unheld,
           claim != MissingAudio.heldForASibling,
           reason:
               'whether $claim is a gap must turn on a sibling only for a '
@@ -2451,13 +2483,320 @@ void main() {
         // whole -- flagging that would report missing speech that is present in
         // the same half, on every two-device call there is.
         final accounting = admitting(MissingAudio.heldForASibling);
-        final half = assembled(accounting, withASibling: true);
+        final half = assembled(accounting, covered: true);
 
         expect(half.deviceCount, 2);
+        expect(half.discardWasCovered, isTrue);
         expect(half.discardWentUncovered, isFalse);
         expect(half.state, HalfState.present);
       },
     );
+
+    test('a sibling that WROTE but does not hold the stretch covers it', () {
+      // The finding. `deviceCount > 1` answered this question for one round,
+      // so any second half of the account -- a device that recorded a
+      // completely different stretch, on a call with three of them -- cleared
+      // the discard and the transcript claimed to be whole over audio nothing
+      // holds.
+      //
+      // The sibling here is impeccable: it declares, it admits no gap of its
+      // own, it anchored its clock, and it states exactly which stretch it
+      // kept. It simply was not recording when the other device handed its
+      // tail over.
+      final half = _halfFor(
+        assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              deviceId: 'PHONE',
+              accounting: const HalfAccounting(
+                chunksCaptured: 3,
+                chunksTranscribed: 2,
+                chunksDiscarded: 1,
+                declared: true,
+              ),
+              anchor: _skewed(0),
+              discardedSpans: [_span(5000, 9000)],
+            ),
+            _candidate(
+              alice,
+              texts: const ['y despues'],
+              deviceId: 'LAPTOP',
+              accounting: const HalfAccounting(
+                chunksCaptured: 2,
+                chunksTranscribed: 2,
+                declared: true,
+              ),
+              anchor: _skewed(0),
+              // Later in the call, and nowhere near the handed-over stretch.
+              keptSpans: [_span(30000, 60000)],
+            ),
+          ],
+          expectedSenders: [alice],
+        ),
+        alice,
+      );
+
+      expect(half.deviceCount, 2, reason: 'a sibling did write');
+      expect(half.discardWasCovered, isFalse, reason: 'and did not hold it');
+      expect(half.state, HalfState.incomplete);
+      expect(half.issue, HalfIssue.audioLeftToADeviceThatDidNotHoldIt);
+    });
+
+    test('coverage is read on the SFU clock, not on two device clocks', () {
+      // Two devices stamp their own wall clocks, and this codebase has already
+      // lost a bug to the difference. The sibling below holds the stretch
+      // exactly -- once its span is read through the anchors. Compared raw, the
+      // two-second skew puts the handed-over stretch outside it at both ends.
+      TranscriptHalf assembleWith({required int laptopSkewMs}) => _halfFor(
+        assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              deviceId: 'PHONE',
+              accounting: const HalfAccounting(
+                chunksCaptured: 3,
+                chunksTranscribed: 2,
+                chunksDiscarded: 1,
+                declared: true,
+              ),
+              anchor: _skewed(0),
+              discardedSpans: [_span(5000, 9000)],
+            ),
+            _candidate(
+              alice,
+              texts: const ['y despues'],
+              deviceId: 'LAPTOP',
+              accounting: const HalfAccounting(
+                chunksCaptured: 2,
+                chunksTranscribed: 2,
+                declared: true,
+              ),
+              anchor: _skewed(laptopSkewMs),
+              // The SAME real stretch as the phone's 5000..9000, written on a
+              // clock that runs `laptopSkewMs` ahead.
+              keptSpans: [_span(5000 + laptopSkewMs, 9000 + laptopSkewMs)],
+            ),
+          ],
+          expectedSenders: [alice],
+        ),
+        alice,
+      );
+
+      expect(assembleWith(laptopSkewMs: 2000).discardWasCovered, isTrue);
+      expect(assembleWith(laptopSkewMs: 0).discardWasCovered, isTrue);
+    });
+
+    test('a partial overlap is not coverage', () {
+      // Part of a stretch is not the stretch. A sibling that came up two
+      // seconds into the handed-over audio holds the tail of it and nothing of
+      // the head, and the head is exactly as gone as if it held none.
+      final half = _halfFor(
+        assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              deviceId: 'PHONE',
+              accounting: const HalfAccounting(
+                chunksCaptured: 3,
+                chunksTranscribed: 2,
+                chunksDiscarded: 1,
+                declared: true,
+              ),
+              anchor: _skewed(0),
+              discardedSpans: [_span(5000, 9000)],
+            ),
+            _candidate(
+              alice,
+              texts: const ['y despues'],
+              deviceId: 'LAPTOP',
+              accounting: const HalfAccounting(
+                chunksCaptured: 2,
+                chunksTranscribed: 2,
+                declared: true,
+              ),
+              anchor: _skewed(0),
+              keptSpans: [_span(7000, 20000)],
+            ),
+          ],
+          expectedSenders: [alice],
+        ),
+        alice,
+      );
+
+      expect(half.discardWasCovered, isFalse);
+      expect(half.state, HalfState.incomplete);
+    });
+
+    test('a sibling that admits its own gap excuses nothing', () {
+      // A kept span says audio reached that half. A device that lost a chunk
+      // cannot say WHICH part of the stretch survived, so its statement is not
+      // evidence that the handed-over moment did -- and a broken half must not
+      // be able to EXCUSE a discard even though its own gaps already make the
+      // merged record read short.
+      final half = _halfFor(
+        assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              deviceId: 'PHONE',
+              accounting: const HalfAccounting(
+                chunksCaptured: 3,
+                chunksTranscribed: 2,
+                chunksDiscarded: 1,
+                declared: true,
+              ),
+              anchor: _skewed(0),
+              discardedSpans: [_span(5000, 9000)],
+            ),
+            _candidate(
+              alice,
+              texts: const ['y despues'],
+              deviceId: 'LAPTOP',
+              accounting: const HalfAccounting(
+                chunksCaptured: 4,
+                chunksTranscribed: 2,
+                chunksLost: 1,
+                declared: true,
+              ),
+              anchor: _skewed(0),
+              keptSpans: [_span(0, 20000)],
+            ),
+          ],
+          expectedSenders: [alice],
+        ),
+        alice,
+      );
+
+      expect(half.discardWasCovered, isFalse);
+      // Named for the LOST chunk, which is the worse of the two and is what
+      // [TranscriptHalf.issue] ranks first; the point here is the coverage
+      // answer above, not which sentence wins.
+      expect(half.state, HalfState.incomplete);
+    });
+
+    test('a discard that names no stretch cannot be excused', () {
+      // An older build, or a foreign client: it says a stretch was handed over
+      // and does not say which. There is nothing to test, so there is nothing
+      // to conclude -- and "cannot establish" falls to "gap", because the other
+      // direction claims completeness on no evidence at all.
+      final half = _halfFor(
+        assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              deviceId: 'PHONE',
+              accounting: const HalfAccounting(
+                chunksCaptured: 3,
+                chunksTranscribed: 2,
+                chunksDiscarded: 1,
+                declared: true,
+              ),
+              anchor: _skewed(0),
+            ),
+            _candidate(
+              alice,
+              texts: const ['y despues'],
+              deviceId: 'LAPTOP',
+              accounting: const HalfAccounting(
+                chunksCaptured: 2,
+                chunksTranscribed: 2,
+                declared: true,
+              ),
+              anchor: _skewed(0),
+              keptSpans: [_span(0, 20000)],
+            ),
+          ],
+          expectedSenders: [alice],
+        ),
+        alice,
+      );
+
+      expect(half.discardWasCovered, isFalse);
+      expect(half.issue, HalfIssue.audioLeftToADeviceThatDidNotHoldIt);
+    });
+
+    test('a device cannot excuse its own discard', () {
+      // The stretch was handed to ANOTHER device by definition. Our own writer
+      // cuts a run's kept span off before its discarded tail so the two can
+      // never overlap, but this is room content: a half is free to state a kept
+      // stretch that swallows the one it says it handed over, and it must not
+      // be allowed to clear itself with it.
+      final half = _halfFor(
+        assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              deviceId: 'PHONE',
+              accounting: const HalfAccounting(
+                chunksCaptured: 3,
+                chunksTranscribed: 2,
+                chunksDiscarded: 1,
+                declared: true,
+              ),
+              anchor: _skewed(0),
+              keptSpans: [_span(0, 20000)],
+              discardedSpans: [_span(5000, 9000)],
+            ),
+          ],
+          expectedSenders: [alice],
+        ),
+        alice,
+      );
+
+      expect(half.discardWasCovered, isFalse);
+      expect(half.issue, HalfIssue.audioLeftToADeviceThatDidNotHoldIt);
+    });
+
+    test('two clocks that were never compared establish nothing', () {
+      // Every span is on the writing device's own wall clock, and without both
+      // anchors there is no reference to read them on. Containment computed
+      // across two unreconciled clocks is arithmetic on two different scales,
+      // and this one would have come out TRUE -- the spans happen to overlap as
+      // raw numbers.
+      TranscriptHalf assembleWith({
+        bool phoneAnchored = true,
+        bool laptopAnchored = true,
+      }) => _halfFor(
+        assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              deviceId: 'PHONE',
+              accounting: const HalfAccounting(
+                chunksCaptured: 3,
+                chunksTranscribed: 2,
+                chunksDiscarded: 1,
+                declared: true,
+              ),
+              anchor: phoneAnchored ? _skewed(0) : null,
+              discardedSpans: [_span(5000, 9000)],
+            ),
+            _candidate(
+              alice,
+              texts: const ['y despues'],
+              deviceId: 'LAPTOP',
+              accounting: const HalfAccounting(
+                chunksCaptured: 2,
+                chunksTranscribed: 2,
+                declared: true,
+              ),
+              anchor: laptopAnchored ? _skewed(0) : null,
+              keptSpans: [_span(0, 20000)],
+            ),
+          ],
+          expectedSenders: [alice],
+        ),
+        alice,
+      );
+
+      expect(assembleWith().discardWasCovered, isTrue);
+      // EITHER side missing, because it takes both to name a reference. The
+      // discarding half's own silence is the easier one to leave out, and it is
+      // the one that decides against a sibling that anchored perfectly well.
+      expect(assembleWith(laptopAnchored: false).discardWasCovered, isFalse);
+      expect(assembleWith(phoneAnchored: false).discardWasCovered, isFalse);
+    });
   });
 
   group('two devices of one account', () {

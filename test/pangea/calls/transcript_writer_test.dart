@@ -40,6 +40,8 @@ Future<bool> _write(
   String? langCode = 'es',
   ClockAnchor? clockAnchor,
   String? deviceId = _device,
+  List<CaptureSpan> keptSpans = const [],
+  List<CaptureSpan> discardedSpans = const [],
   int maxBytes = kMaxHalfBytes,
 }) => writeCallTranscript(
   send: sent.call,
@@ -52,6 +54,8 @@ Future<bool> _write(
   chunksLost: chunksLost,
   chunksSuppressed: chunksSuppressed,
   chunksDiscarded: chunksDiscarded,
+  keptSpans: keptSpans,
+  discardedSpans: discardedSpans,
   captureDroppedMs: captureDroppedMs,
   captureRefused: false,
   drainComplete: drainComplete,
@@ -101,6 +105,52 @@ void main() {
       expect(parsed.accounting.chunksDiscarded, 0);
       expect(parsed.accounting.captureDroppedMs, 0);
       expect(parsed.accounting.writerAdmitsGaps, isFalse);
+    });
+  });
+
+  group('the stretches the half states', () {
+    test('reach the wire and come back', () async {
+      // Without them, the count of discarded chunks names no stretch, and the
+      // only question a reader could ask of it was whether some OTHER half
+      // existed -- which is a different question and cleared a discard whose
+      // audio nothing held.
+      const kept = CaptureSpan(fromMs: 1787994000000, toMs: 1787994020000);
+      const handed = CaptureSpan(fromMs: 1787994020000, toMs: 1787994024000);
+      final sent = _Sent();
+      await _write(
+        sent,
+        chunksDiscarded: 1,
+        keptSpans: const [kept],
+        discardedSpans: const [handed],
+      );
+
+      final parsed = CallTranscriptContent.fromJson(sent.only)!;
+      expect(parsed.keptSpans, const [kept]);
+      expect(parsed.discardedSpans, const [handed]);
+    });
+
+    test('are inside what the packer measures', () async {
+      // A half packed to the budget and then given its extents would cross the
+      // line it was just checked against, and the server rejects the WHOLE
+      // half rather than its tail -- so the coverage statement has to be on the
+      // event the packer weighs. It is also the one part a packer may not shed:
+      // it trims segments, and a half that dropped its extents to fit would
+      // silently stop excusing a sibling's discard.
+      final withSpans = _Sent();
+      final without = _Sent();
+      await _write(
+        withSpans,
+        keptSpans: const [
+          CaptureSpan(fromMs: 1787994000000, toMs: 1787994020000),
+        ],
+      );
+      await _write(without);
+
+      expect(withSpans.bytes, greaterThan(without.bytes));
+      expect(
+        CallTranscriptContent.fromJson(withSpans.only)!.keptSpans,
+        hasLength(1),
+      );
     });
   });
 
@@ -447,6 +497,8 @@ void main() {
         chunksLost: 0,
         chunksSuppressed: 0,
         chunksDiscarded: 0,
+        keptSpans: const [],
+        discardedSpans: const [],
         captureDroppedMs: 0,
         captureRefused: false,
         drainComplete: true,
@@ -482,6 +534,8 @@ void main() {
         chunksLost: 0,
         chunksSuppressed: 0,
         chunksDiscarded: 0,
+        keptSpans: const [],
+        discardedSpans: const [],
         captureDroppedMs: 0,
         captureRefused: false,
         drainComplete: true,

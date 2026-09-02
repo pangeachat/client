@@ -186,6 +186,13 @@ void main() {
     /// that is not about two devices, which is both the ordinary case and the
     /// shape of every half written before the field existed.
     String? deviceId,
+
+    /// The stretches this device says it kept, and the ones it says it handed
+    /// to a sibling. Empty in every fixture that is not about a handover, which
+    /// is both the ordinary case and the shape of every half written before the
+    /// fields existed.
+    List<CaptureSpan> keptSpans = const [],
+    List<CaptureSpan> discardedSpans = const [],
   }) => MatrixEvent(
     type: CallTranscriptContent.relType,
     eventId: '\$half-$sender-${deviceId ?? ''}',
@@ -203,6 +210,10 @@ void main() {
       ],
       'device_id': ?deviceId,
       if (positionsMarked) 'positions_marked': true,
+      if (keptSpans.isNotEmpty)
+        'kept_spans': [for (final span in keptSpans) span.toJson()],
+      if (discardedSpans.isNotEmpty)
+        'discarded_spans': [for (final span in discardedSpans) span.toJson()],
       // From the writer's own serialiser, so a fixture cannot drift out of the
       // declaration contract when a field is added to it.
       if (declared)
@@ -244,6 +255,8 @@ void main() {
       chunksLost: 0,
       chunksSuppressed: 0,
       chunksDiscarded: 0,
+      keptSpans: const [],
+      discardedSpans: const [],
       captureDroppedMs: 0,
       captureRefused: false,
       drainComplete: true,
@@ -1018,8 +1031,8 @@ void main() {
       expect(find.textContaining('may be missing'), findsOneWidget);
     });
 
-    testWidgets('and a handover whose sibling DID write says nothing of the '
-        'kind', (tester) async {
+    testWidgets('and a handover whose sibling HELD the stretch says nothing of '
+        'the kind', (tester) async {
       // The other wrong answer. Two devices, one defers its tail to the other,
       // and the transcript is whole -- telling a learner part of it may be
       // missing on every ordinary two-device call would make the note mean
@@ -1034,13 +1047,60 @@ void main() {
             transcribed: 2,
             discarded: 1,
             deviceId: 'PHONE',
+            discardedSpans: const [
+              CaptureSpan(fromMs: _callStart, toMs: _callStart + 4000),
+            ],
           ),
-          half(_me, texts: const ['y despues'], deviceId: 'LAPTOP'),
+          half(
+            _me,
+            texts: const ['y despues'],
+            deviceId: 'LAPTOP',
+            keptSpans: const [
+              CaptureSpan(fromMs: _callStart - 1000, toMs: _callStart + 20000),
+            ],
+          ),
           half(_peer, texts: const ['muy bien']),
         ]),
       );
 
       expect(find.textContaining('may be missing'), findsNothing);
+    });
+
+    testWidgets('but a sibling that wrote WITHOUT holding it still says so', (
+      tester,
+    ) async {
+      // The finding, on the screen. The same two devices, and the second one's
+      // half is impeccable -- it just recorded a different part of the call. A
+      // head-count of devices cleared the discard here and the learner was
+      // shown a clean transcript over a stretch nothing holds.
+      await pump(
+        tester,
+        serving([
+          half(
+            _me,
+            texts: const ['hola que tal'],
+            captured: 3,
+            transcribed: 2,
+            discarded: 1,
+            deviceId: 'PHONE',
+            discardedSpans: const [
+              CaptureSpan(fromMs: _callStart, toMs: _callStart + 4000),
+            ],
+          ),
+          half(
+            _me,
+            texts: const ['y despues'],
+            deviceId: 'LAPTOP',
+            keptSpans: const [
+              CaptureSpan(fromMs: _callStart + 30000, toMs: _callStart + 60000),
+            ],
+          ),
+          half(_peer, texts: const ['muy bien']),
+        ]),
+      );
+
+      expect(find.textContaining('hola que tal'), findsOneWidget);
+      expect(find.textContaining('may be missing'), findsOneWidget);
     });
 
     testWidgets('a silent speaker whose audio we DID send still reads as '
@@ -1640,7 +1700,7 @@ void main() {
         expectedSenders: [_peer],
       ).halves.single;
 
-      expect(half.issue, HalfIssue.audioLeftToADeviceThatNeverWrote);
+      expect(half.issue, HalfIssue.audioLeftToADeviceThatDidNotHoldIt);
       expect(
         emptyHalfNote(half, 'Ana', l10n),
         l10n.callTranscriptDeviceNeverWrote('Ana'),
