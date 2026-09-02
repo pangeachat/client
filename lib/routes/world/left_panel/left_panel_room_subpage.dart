@@ -126,25 +126,22 @@ class LeftPanelRoomSubpage extends StatelessWidget {
     // panel instead of over the whole app. Its MaterialPageRoute lays down a
     // ModalBarrier, and ModalBarrier renders BlockSemantics, which drops the
     // semantics of everything painted BEFORE it — the sibling panel to the
-    // left. That drop stops propagating at a semantic boundary, and a
-    // semantics container is one, so this confines the blocking to the panel.
-    // Without it the whole chat list — rows and search field alike —
-    // disappears from the accessibility tree whenever a chat is open, and
-    // the search field, having no DOM input, cannot be typed into (#8459).
-    // The empty state above carries the same wrapper.
-    return Semantics(
-      container: true,
-      child: Navigator(
-        key: MatrixState.pAnyState
-            .layerLinkAndKey(chatPanelNavigatorId(tokenType, roomId))
-            .key,
-        onGenerateRoute: (_) => MaterialPageRoute(
-          builder: (_) => ChatPage(
-            roomId: roomId,
-            eventId: param?.eventId,
-            shareItems: shareItems,
-            backButton: closeButton,
-          ),
+    // left. That drop stops propagating at a semantic boundary (#8459): the
+    // boundary is the named panel-group container every workspace panel gets
+    // from [WorkspaceLeftPanel] (#8729). No extra unlabeled container here —
+    // one used to confine the blocking, and a screen reader then stopped on
+    // it as a nameless group directly inside the named one, describing the
+    // whole chat by its children instead of announcing "Chat page".
+    return Navigator(
+      key: MatrixState.pAnyState
+          .layerLinkAndKey(chatPanelNavigatorId(tokenType, roomId))
+          .key,
+      onGenerateRoute: (_) => MaterialPageRoute(
+        builder: (_) => ChatPage(
+          roomId: roomId,
+          eventId: param?.eventId,
+          shareItems: shareItems,
+          backButton: closeButton,
         ),
       ),
     );
