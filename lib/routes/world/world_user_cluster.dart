@@ -9,6 +9,7 @@ import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_badge.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/world/compact_count.dart';
@@ -161,49 +162,6 @@ class ClusterAvatar extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-/// InkWell-backed tap target for the cluster's controls (#7219): focusable and
-/// Enter/Space-activatable where a bare GestureDetector is not, with a gold
-/// ring painted while focused — the controls' fills are opaque, so InkWell's
-/// behind-the-child focus highlight alone is invisible.
-class FocusRingTapTarget extends StatefulWidget {
-  final VoidCallback onTap;
-  final OutlinedBorder shape;
-  final Widget child;
-
-  const FocusRingTapTarget({
-    required this.onTap,
-    required this.shape,
-    required this.child,
-    super.key,
-  });
-
-  @override
-  State<FocusRingTapTarget> createState() => _FocusRingTapTargetState();
-}
-
-class _FocusRingTapTargetState extends State<FocusRingTapTarget> {
-  bool _focused = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: widget.onTap,
-      customBorder: widget.shape,
-      onFocusChange: (focused) => setState(() => _focused = focused),
-      child: DecoratedBox(
-        decoration: ShapeDecoration(
-          shape: widget.shape.copyWith(
-            side: _focused
-                ? BorderSide(color: AppConfig.goldByTheme(context), width: 3.0)
-                : BorderSide.none,
-          ),
-        ),
-        child: widget.child,
       ),
     );
   }
