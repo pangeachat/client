@@ -259,6 +259,13 @@ class WorkspaceShell extends StatelessWidget {
 
     return Semantics(
       label: L10n.of(context).home,
+      // Container + explicit children, NOT a loose label: a label-only
+      // Semantics over this multi-region subtree absorbs the regions' sort
+      // keys and the browse order (#8755) silently reverts to geometry —
+      // probe-bisected. As a proper boundary the regions keep their own
+      // keyed nodes.
+      container: true,
+      explicitChildNodes: true,
       child: ScaffoldMessenger(
         child: FocusTraversalGroup(
           // Tab order on the workspace (#7219): nav rail (1) → the map, whose

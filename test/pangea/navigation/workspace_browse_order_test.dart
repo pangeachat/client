@@ -114,4 +114,70 @@ void main() {
     );
     semantics.dispose();
   });
+
+  testWidgets('a label-only ancestor wrapper must not eat the sort keys', (
+    tester,
+  ) async {
+    // The shell's root label ("home") must be a CONTAINER with explicit
+    // children: a loose label over the multi-region subtree absorbs the
+    // regions' sort keys and the browse order silently reverts to geometry
+    // (probe-bisected during #8755). This pins the fixed shape.
+    final semantics = tester.ensureSemantics();
+
+    Widget region(String label, OrdinalSortKey key) => Semantics(
+      sortKey: key,
+      child: Semantics(
+        label: label,
+        container: true,
+        child: const SizedBox.expand(),
+      ),
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Semantics(
+          label: 'home',
+          container: true,
+          explicitChildNodes: true,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              region('map', const OrdinalSortKey(2)),
+              Positioned(
+                top: 300,
+                left: 0,
+                width: 40,
+                height: 200,
+                child: region('rail', const OrdinalSortKey(1)),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    final regions = <String>[];
+    void walk(SemanticsNode node) {
+      for (final child in node.debugListChildrenInOrder(
+        DebugSemanticsDumpOrder.traversalOrder,
+      )) {
+        final label = child.getSemanticsData().label;
+        if (label.isNotEmpty) regions.add(label);
+        walk(child);
+      }
+    }
+
+    // ignore: deprecated_member_use
+    walk(tester.binding.pipelineOwner.semanticsOwner!.rootSemanticsNode!);
+
+    expect(
+      regions,
+      ['home', 'rail', 'map'],
+      reason:
+          "the labeled root must be a boundary — as a loose label it eats "
+          'the sort keys and geometry wins again (#8755)',
+    );
+    semantics.dispose();
+  });
 }
