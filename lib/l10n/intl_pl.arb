@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-03 14:14:18.632676",
+    "@@last_modified": "2026-09-03 14:43:50.356880",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9946,5 +9946,6 @@
     "mapAttributionLabel": "Współtwórcy OpenStreetMap, prawa autorskie i licencja",
     "seeAll": "Zobacz wszystkie",
     "seeAllSection": "Zobacz wszystkie {section}",
+    "showMoreOptionsHint": "pokaż więcej opcji",
     "onboardingStepOfTotal": "Krok {step} z {total}"
 }

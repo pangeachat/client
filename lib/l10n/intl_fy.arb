@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-03 14:14:15.408426",
+    "@@last_modified": "2026-09-03 14:43:47.080894",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap-meiwurkers, copyright en lisinsje",
     "seeAll": "Alles sjen",
     "seeAllSection": "Alles sjen yn {section}",
+    "showMoreOptionsHint": "mear opsjes sjen litte",
     "onboardingStepOfTotal": "Stap {step} fan {total}"
 }

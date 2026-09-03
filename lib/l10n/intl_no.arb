@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-09-03 14:14:18.411217",
+    "@@last_modified": "2026-09-03 14:43:50.089620",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap-bidragsytere, opphavsrett og lisens",
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}",
+    "showMoreOptionsHint": "vis flere alternativer",
     "onboardingStepOfTotal": "Trinn {step} av {total}"
 }

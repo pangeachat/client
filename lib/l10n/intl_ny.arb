@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-09-03 14:14:18.491150",
+    "@@last_modified": "2026-09-03 14:43:50.134380",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "Othandizira a OpenStreetMap, umwini ndi chilolezo",
     "seeAll": "Onani zonse",
     "seeAllSection": "Onani zonse {section}",
+    "showMoreOptionsHint": "onetsani zosankha zambiri",
     "onboardingStepOfTotal": "Gawo {step} pa {total}"
 }

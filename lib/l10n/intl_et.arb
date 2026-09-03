@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-03 14:14:15.240598",
+    "@@last_modified": "2026-09-03 14:43:46.856242",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9858,5 +9858,6 @@
     "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
     "seeAll": "Vaata kõiki",
     "seeAllSection": "Vaata kõiki {section}",
+    "showMoreOptionsHint": "näita rohkem valikuid",
     "onboardingStepOfTotal": "Samm {step} / {total}"
 }

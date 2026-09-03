@@ -3094,7 +3094,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-09-03 14:14:16.759161",
+    "@@last_modified": "2026-09-03 14:43:48.410750",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10493,5 +10493,6 @@
     "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
     "seeAll": "Féach ar fad",
     "seeAllSection": "Féach ar {section} ar fad",
+    "showMoreOptionsHint": "taispeáin tuilleadh roghanna",
     "onboardingStepOfTotal": "Céim {step} de {total}"
 }

@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-03 14:14:15.528602",
+    "@@last_modified": "2026-09-03 14:43:47.026112",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9872,5 +9872,6 @@
     "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
     "seeAll": "Féach ar fad",
     "seeAllSection": "Féach ar {section} ar fad",
+    "showMoreOptionsHint": "taispeáin tuilleadh roghanna",
     "onboardingStepOfTotal": "Céim {step} de {total}"
 }

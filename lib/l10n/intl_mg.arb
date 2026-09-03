@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-03 14:14:17.818546",
+    "@@last_modified": "2026-09-03 14:43:49.436279",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "Mpanome anjara OpenStreetMap, zon'ny mpamorona ary fahazoan-dàlana",
     "seeAll": "Jereo daholo",
     "seeAllSection": "Jereo daholo ny {section}",
+    "showMoreOptionsHint": "asehoy safidy bebe kokoa",
     "onboardingStepOfTotal": "Dingana {step} amin'ny {total}"
 }

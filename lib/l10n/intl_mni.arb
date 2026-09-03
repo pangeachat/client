@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-03 14:14:18.301864",
+    "@@last_modified": "2026-09-03 14:43:49.654128",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap contributors, copyright amadi license",
     "seeAll": "পুম্নমক উ",
     "seeAllSection": "পুম্নমক উ {section}",
-    "onboardingStepOfTotal": "{total} gi manungda {step}-suba khongthang"
+    "showMoreOptionsHint": "খঙফম কয়া উৎনবা",
+    "onboardingStepOfTotal": "খোঙথাং {step} {total} দগী"
 }

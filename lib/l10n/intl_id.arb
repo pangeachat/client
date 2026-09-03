@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:14:16.833403",
+    "@@last_modified": "2026-09-03 14:43:47.872386",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9934,5 +9934,6 @@
     "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta, dan lisensi",
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
+    "showMoreOptionsHint": "tampilkan opsi lainnya",
     "onboardingStepOfTotal": "Langkah {step} dari {total}"
 }

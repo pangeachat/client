@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-03 14:14:20.317679",
+    "@@last_modified": "2026-09-03 14:43:52.075582",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap מיטארבעטער, קאפירעכט און ליצענץ",
     "seeAll": "זען אַלע",
     "seeAllSection": "זען אַלע {section}",
+    "showMoreOptionsHint": "ווייַזן מער אָפּציעס",
     "onboardingStepOfTotal": "שריט {step} פֿון {total}"
 }

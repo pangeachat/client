@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:14:19.061663",
+    "@@last_modified": "2026-09-03 14:43:50.485096",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10593,5 +10593,6 @@
     "mapAttributionLabel": "Contribuitori OpenStreetMap, drepturi de autor și licență",
     "seeAll": "Vezi tot",
     "seeAllSection": "Vezi tot {section}",
+    "showMoreOptionsHint": "afișează mai multe opțiuni",
     "onboardingStepOfTotal": "Pasul {step} din {total}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-03 14:14:20.463479",
+    "@@last_modified": "2026-09-03 14:43:52.095216",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "Abanikeli be-OpenStreetMap, ilungelo lokushicilela kunye nelayisensi",
     "seeAll": "Bona konke",
     "seeAllSection": "Bona konke {section}",
+    "showMoreOptionsHint": "bonisa iinketho ezininzi",
     "onboardingStepOfTotal": "Inyathelo {step} kwi-{total}"
 }

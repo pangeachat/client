@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:14:20.324277",
+    "@@last_modified": "2026-09-03 14:43:51.966398",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7153,5 +7153,6 @@
     "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
     "seeAll": "Xem tất cả",
     "seeAllSection": "Xem tất cả {section}",
+    "showMoreOptionsHint": "hiện thêm tùy chọn",
     "onboardingStepOfTotal": "Bước {step} trên {total}"
 }

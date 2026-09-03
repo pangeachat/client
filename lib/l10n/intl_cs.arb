@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-03 14:14:14.759821",
+    "@@last_modified": "2026-09-03 14:43:46.305611",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10355,5 +10355,6 @@
     "mapAttributionLabel": "Přispěvatelé OpenStreetMap, autorská práva a licence",
     "seeAll": "Zobrazit vše",
     "seeAllSection": "Zobrazit vše {section}",
+    "showMoreOptionsHint": "zobrazit další možnosti",
     "onboardingStepOfTotal": "Krok {step} z {total}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-03 14:14:20.862360",
+    "@@last_modified": "2026-09-03 14:43:52.519895",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "Abanikeli be-OpenStreetMap, i-copyright nelayisense",
     "seeAll": "Buka konke",
     "seeAllSection": "Buka konke {section}",
+    "showMoreOptionsHint": "bonisa izinketho eziningi",
     "onboardingStepOfTotal": "Isinyathelo {step} sokungu {total}"
 }

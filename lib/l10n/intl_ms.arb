@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-03 14:14:18.181936",
+    "@@last_modified": "2026-09-03 14:43:49.672088",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "Penyumbang OpenStreetMap, hak cipta dan lesen",
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
+    "showMoreOptionsHint": "tunjukkan pilihan lain",
     "onboardingStepOfTotal": "Langkah {step} daripada {total}"
 }

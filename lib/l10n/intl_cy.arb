@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-03 14:14:14.875733",
+    "@@last_modified": "2026-09-03 14:43:46.360884",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
     "seeAll": "Gweld y cyfan",
     "seeAllSection": "Gweld pob {section}",
+    "showMoreOptionsHint": "dangos mwy o opsiynau",
     "onboardingStepOfTotal": "Cam {step} o {total}"
 }

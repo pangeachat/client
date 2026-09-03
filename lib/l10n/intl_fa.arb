@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:14:15.263304",
+    "@@last_modified": "2026-09-03 14:43:46.845500",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9949,5 +9949,6 @@
     "mapAttributionLabel": "مشارکت‌کنندگان OpenStreetMap، حق تکثیر و مجوز",
     "seeAll": "مشاهده همه",
     "seeAllSection": "مشاهده همه {section}",
+    "showMoreOptionsHint": "نمایش گزینه‌های بیشتر",
     "onboardingStepOfTotal": "مرحله {step} از {total}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-03 14:14:19.104628",
+    "@@last_modified": "2026-09-03 14:43:50.656263",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "اوپن اسٽريٽ ميپ جا حصو وٺندڙ، ڪاپي رائيٽ ۽ لائسنس",
     "seeAll": "سڀ ڏسو",
     "seeAllSection": "سڀ ڏسو {section}",
+    "showMoreOptionsHint": "وڌيڪ آپشن ڏيکاريو",
     "onboardingStepOfTotal": "قدم {step} {total} مان"
 }

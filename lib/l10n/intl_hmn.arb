@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-03 14:14:15.870385",
+    "@@last_modified": "2026-09-03 14:43:47.492038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap cov neeg koom tes, txoj cai luam tawm thiab daim ntawv tso cai",
     "seeAll": "Saib tag nrho",
     "seeAllSection": "Saib tag nrho {section}",
+    "showMoreOptionsHint": "qhia ntau txoj kev xaiv ntxiv",
     "onboardingStepOfTotal": "Kauv {step} ntawm {total}"
 }

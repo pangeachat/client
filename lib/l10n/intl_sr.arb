@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 14:14:19.484256",
+    "@@last_modified": "2026-09-03 14:43:53.302890",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10810,5 +10810,6 @@
     "mapAttributionLabel": "OpenStreetMap saradnici, autorska prava i licenca",
     "seeAll": "Pogledaj sve",
     "seeAllSection": "Pogledaj sve {section}",
+    "showMoreOptionsHint": "prikaži više opcija",
     "onboardingStepOfTotal": "Korak {step} od {total}"
 }

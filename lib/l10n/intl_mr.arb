@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-03 14:14:18.088386",
+    "@@last_modified": "2026-09-03 14:43:49.752632",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "ओपनस्ट्रीटमॅप योगदानकर्ते, कॉपीराइट आणि परवाना",
     "seeAll": "सर्व पहा",
     "seeAllSection": "सर्व {section} पहा",
+    "showMoreOptionsHint": "अधिक पर्याय दाखवा",
     "onboardingStepOfTotal": "{total} पैकी पायरी {step}"
 }

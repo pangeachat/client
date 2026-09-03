@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-03 14:14:16.855578",
+    "@@last_modified": "2026-09-03 14:43:49.573965",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "Ndị nyere aka na OpenStreetMap, nwebisiinka na ikike",
     "seeAll": "Hụ ihe niile",
     "seeAllSection": "Hụ {section} niile",
+    "showMoreOptionsHint": "gosi nhọrọ ndị ọzọ",
     "onboardingStepOfTotal": "Nzọụkwụ {step} n'ime {total}"
 }

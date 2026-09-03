@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-03 14:14:19.963680",
+    "@@last_modified": "2026-09-03 14:43:51.455221",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10493,5 +10493,6 @@
     "mapAttributionLabel": "ผู้ร่วมให้ข้อมูล OpenStreetMap, ลิขสิทธิ์และใบอนุญาต",
     "seeAll": "ดูทั้งหมด",
     "seeAllSection": "ดูทั้งหมด {section}",
+    "showMoreOptionsHint": "แสดงตัวเลือกเพิ่มเติม",
     "onboardingStepOfTotal": "ขั้นตอนที่ {step} จาก {total}"
 }

@@ -7,6 +7,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/repo_v2/checkout_request.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
+import 'package:fluffychat/features/subscription/widgets/subscription_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -33,7 +34,6 @@ class SelectedSubscriptionPageState extends State<SelectedSubscriptionPage>
     with PaymentPageMixin {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return ProductsBuilder(
       builder: (context, productsState) {
@@ -83,18 +83,16 @@ class SelectedSubscriptionPageState extends State<SelectedSubscriptionPage>
                       right: 16.0,
                       bottom: 16.0,
                     ),
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.surface,
-                      borderRadius: BorderRadius.circular(24.0),
-                    ),
                     constraints: BoxConstraints(maxWidth: 400),
                     child: switch (productsState) {
                       AsyncLoading() || AsyncIdle() => Center(
                         child: CircularProgressIndicator.adaptive(),
                       ),
                       AsyncError() => Center(
-                        child: ErrorIndicator(
-                          message: L10n.of(context).oopsSomethingWentWrong,
+                        child: SubscriptionCard(
+                          child: ErrorIndicator(
+                            message: L10n.of(context).oopsSomethingWentWrong,
+                          ),
                         ),
                       ),
                       AsyncLoaded(value: final products) => () {
@@ -104,8 +102,12 @@ class SelectedSubscriptionPageState extends State<SelectedSubscriptionPage>
 
                         if (plan == null) {
                           return Center(
-                            child: ErrorIndicator(
-                              message: L10n.of(context).oopsSomethingWentWrong,
+                            child: SubscriptionCard(
+                              child: ErrorIndicator(
+                                message: L10n.of(
+                                  context,
+                                ).oopsSomethingWentWrong,
+                              ),
                             ),
                           );
                         }

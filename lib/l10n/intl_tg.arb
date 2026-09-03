@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-03 14:14:20.014619",
+    "@@last_modified": "2026-09-03 14:43:51.400797",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2265,5 +2265,6 @@
     "mapAttributionLabel": "Мусоидаткунандагони OpenStreetMap, ҳуқуқи муаллифӣ ва иҷозатнома",
     "seeAll": "Ҳамаро бинед",
     "seeAllSection": "Ҳамаи {section}-ро бинед",
+    "showMoreOptionsHint": "имконоти бештарро нишон диҳед",
     "onboardingStepOfTotal": "Қадами {step} аз {total}"
 }
