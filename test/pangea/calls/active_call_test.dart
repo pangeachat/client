@@ -3775,33 +3775,34 @@ void main() {
         // synchronous listeners on the roster -- they are not serialised behind
         // the handover chain the way reconciles are. So one can run start to
         // finish while the reconcile is parked, put this device back in charge,
-        // and tell the siblings it is still recording. A reconcile that resumed
-        // and stopped anyway would stop a recorder the latest election wants
-        // running, and the run it just republished would be one nobody holds.
+        // and stop-anyway would stop a recorder the latest election wants
+        // running. This is the invariant this test owns.
+        //
+        // Adapted for two-devices-one-call (doc:261-263): a sibling in the call
+        // now HOLDS this device -- the recorder is muted while the sibling is
+        // present -- so the sequence runs alone -> sibling appears (which both
+        // displaces the recorder AND holds it) -> sibling leaves (which both
+        // reinstates and RESOLVES ownership, making this device the survivor).
+        // Run CONTINUITY across the sibling's presence is deliberately gone (the
+        // hold muted this device meanwhile); the preserved invariant is that the
+        // parked reconcile obeyed the reversal and left the survivor RECORDING.
         final (call, calls, _, capture) = await build();
         calls.roster!.myJoin = (true, joinedAt);
-        calls.roster!.joins = {
-          '${calls.client.userID}:zzzzzzzzzz': (
-            true,
-            joinedAt.subtract(const Duration(seconds: 20)),
-          ),
-        };
         calls.remotePresent = true;
-        calls.devicesInCall = [calls.client.deviceID!, 'zzzzzzzzzz'];
+        // Alone: recording, and not held.
+        calls.devicesInCall = [calls.client.deviceID!];
         await call.start(roomStub(calls.client), video: false);
         await pumpEventQueue();
         expect(call.isRecording, isTrue);
-        final run = capture.captureRun;
+        expect(capture.captureRun, isNotNull, reason: 'recording, not held');
         trace.steps.clear();
 
-        // Displaced. The reconcile parks on a retraction that cannot land yet.
+        // A lower-id sibling appears: the election displaces this device (its
+        // reconcile parks on a retraction that cannot land yet) and ownership
+        // holds it.
         final held = Completer<void>();
         calls.roster!.holdAnnounce = held;
-        calls.devicesInCall = [
-          'AAAAAAAAAA',
-          calls.client.deviceID!,
-          'zzzzzzzzzz',
-        ];
+        calls.devicesInCall = ['AAAAAAAAAA', calls.client.deviceID!];
         await pumpEventQueue();
         expect(
           trace.steps,
@@ -3809,9 +3810,10 @@ void main() {
           reason: 'the premise: it is waiting on the retraction',
         );
 
-        // And put straight back in charge while it waits.
+        // And put straight back in charge while it waits: the sibling leaves,
+        // which both reinstates this device and resolves ownership.
         calls.roster!.holdAnnounce = null;
-        calls.devicesInCall = [calls.client.deviceID!, 'zzzzzzzzzz'];
+        calls.devicesInCall = [calls.client.deviceID!];
         held.complete();
         await pumpEventQueue();
 
@@ -3823,8 +3825,9 @@ void main() {
         expect(call.isRecording, isTrue);
         expect(
           capture.captureRun,
-          run,
-          reason: 'and the audio was never interrupted, so the run stands',
+          isNotNull,
+          reason:
+              'the survivor records; the parked reconcile left it recordable',
         );
       },
     );
@@ -4613,5 +4616,99 @@ void main() {
       expect(call.wasDeclined, isFalse);
       expect(call.stage, CallStage.connected);
     });
+  });
+
+  group('two devices, one call -- ownership', () {
+    // Brings a call up alone, then puts one of this account's OTHER devices in
+    // the SFU roster carrying [siblingAttrs].
+    Future<(ActiveCall, FakeCalls, FakeCapture)> upWithSibling(
+      String sibling, {
+      Map<String, String> siblingAttrs = const {},
+    }) async {
+      final (call, calls, _, capture) = await build();
+      calls.roster!.myJoin = (true, fakeJoinTime);
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      final id = '${calls.client.userID}:$sibling';
+      calls.roster!.attributes = {id: siblingAttrs};
+      calls.devicesInCall = [calls.client.deviceID!, sibling];
+      await pumpEventQueue();
+      return (call, calls, capture);
+    }
+
+    bool published(FakeCalls calls, String value) => calls.roster!.publishedMaps
+        .any((m) => m[CallRoster.chosenAttribute] == value);
+
+    test('announces pangea_chosen: no unconditionally on joining', () async {
+      final (call, calls, _, _) = await build();
+      calls.roster!.myJoin = (true, fakeJoinTime);
+      await call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      expect(
+        published(calls, 'no'),
+        isTrue,
+        reason: 'the standing no is what makes a sibling silence mean older',
+      );
+    });
+
+    test('holds the media the instant a sibling is seen', () async {
+      final (call, _, _) = await upWithSibling(
+        'SIB',
+        siblingAttrs: {CallRoster.chosenAttribute: 'no'},
+      );
+      expect(call.mediaHeld, isTrue, reason: 'mute on first sighting');
+      expect(call.carriedOn, isFalse);
+    });
+
+    test('an ordinary single-device call never holds and carries on', () async {
+      final (call, calls, _, _) = await build();
+      calls.roster!.myJoin = (true, fakeJoinTime);
+      calls.remotePresent = true;
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      expect(call.mediaHeld, isFalse);
+      expect(call.carriedOn, isTrue);
+    });
+
+    test('a sibling claim ends this device as MOVED, not ended', () async {
+      final (call, _, _) = await upWithSibling(
+        'SIB',
+        siblingAttrs: {CallRoster.chosenAttribute: 'yes'},
+      );
+      expect(
+        call.outcome,
+        CallOutcome.movedToOtherDevice,
+        reason: 'positive evidence the call continues on the sibling',
+      );
+      expect(
+        call.carriedOn,
+        isFalse,
+        reason: 'a device that did not carry on writes no half or analytics',
+      );
+    });
+
+    test(
+      'Use this device publishes the claim only through the reconcile',
+      () async {
+        final (call, calls, _) = await upWithSibling(
+          'SIB',
+          siblingAttrs: {CallRoster.chosenAttribute: 'no'},
+        );
+        expect(
+          published(calls, 'yes'),
+          isFalse,
+          reason: 'no claim from a button',
+        );
+        call.chooseThisDevice();
+        await pumpEventQueue();
+        expect(
+          published(calls, 'yes'),
+          isTrue,
+          reason: 'the reconcile is the one site that publishes a claim',
+        );
+      },
+    );
   });
 }

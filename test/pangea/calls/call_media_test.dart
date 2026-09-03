@@ -1171,4 +1171,65 @@ void main() {
       );
     });
   });
+  group('the held gate refuses opens, and wins any race with one', () {
+    // The real steps reach `setMicrophoneEnabled`, which hits a platform channel
+    // this suite has no binding for and THROWS. So a completed `false` is proof
+    // the gate returned before the publish; a throw would mean it did not.
+    test(
+      'an entry-time hold refuses the microphone open, publishing nothing',
+      () async {
+        final media = RealSteps(
+          room: RoomWithParticipant(await participantJoinedAt(1787734800)),
+        );
+        media.captureHeld = true;
+        expect(await media.mic(true), isFalse);
+      },
+    );
+
+    test('an entry-time hold refuses the camera open too', () async {
+      final media = RealSteps(
+        room: RoomWithParticipant(await participantJoinedAt(1787734800)),
+      );
+      media.captureHeld = true;
+      expect(await media.cam(true), isFalse);
+    });
+
+    test('a hold that lands MID-open still publishes nothing (TOCTOU)', () async {
+      // `enableMicrophone` suspends at `await _publishingAs`, so flipping the
+      // hold on the next synchronous line lands it after the acquire and before
+      // the publish -- exactly the window an entry-only check would miss. The
+      // re-check after the acquire must catch it and return before the publish,
+      // so no platform-channel throw escapes.
+      final media = RealSteps(
+        room: RoomWithParticipant(await participantJoinedAt(1787734800)),
+      );
+      media.captureHeld = false;
+      final open = media.mic(true);
+      media.captureHeld = true;
+      expect(await open, isFalse);
+    });
+
+    test('a hold that lands mid-open refuses the camera too', () async {
+      final media = RealSteps(
+        room: RoomWithParticipant(await participantJoinedAt(1787734800)),
+      );
+      media.captureHeld = false;
+      final open = media.cam(true);
+      media.captureHeld = true;
+      expect(await open, isFalse);
+    });
+
+    test('a hold never refuses a CLOSE', () async {
+      // Only opens are gated; closing must always be allowed, or a held device
+      // could never be muted in the first place.
+      final media = RealSteps(
+        room: RoomWithParticipant(await participantJoinedAt(1787734800)),
+      );
+      media.captureHeld = true;
+      expect(
+        await media.mic(false),
+        isFalse,
+      ); // false = nothing to stop, not refused
+    });
+  });
 }

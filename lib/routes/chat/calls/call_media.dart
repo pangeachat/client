@@ -261,6 +261,20 @@ class CallMedia {
   bool get cameraFailed => _cameraFailed;
   bool _cameraFailed = false;
 
+  /// Whether the microphone and camera are HELD closed by the two-devices-one-
+  /// call ownership arbiter (call-device-ownership.instructions.md).
+  ///
+  /// Set by [ActiveCall] from the arbiter's decision. While it is true the two
+  /// open choke points below — [enableMicrophone] and [enableCamera], which
+  /// every open passes through — refuse to leave anything published, so the
+  /// prompt's promise that "neither is sending your microphone or camera" holds
+  /// against the ordinary controls AND against any open already in flight. An
+  /// open is a sequence of awaits, so the guard is re-read after each one: an
+  /// open that began before the sibling was sighted must not complete a publish
+  /// after the hold. The forced close is re-asserted level-triggered while held,
+  /// so close is the last writer.
+  bool captureHeld = false;
+
   /// Tells the listener the microphone is live, and refuses to let that cost
   /// the call.
   ///
@@ -460,20 +474,39 @@ class CallMedia {
   // so a null is that library saying it published nothing.
   @protected
   Future<bool> enableMicrophone(bool on) async {
+    // The held gate, re-read after EVERY await. An open is acquire-then-publish
+    // and [captureHeld] can flip true across either, so an entry check alone
+    // leaves a window in which a connect-time open completes a publish after the
+    // hold. Same mid-await bail [_publishingAs] already performs for a release.
+    if (on && captureHeld) return false;
     final participant = await _publishingAs(on);
     if (participant == null) return false;
+    if (on && captureHeld) return false;
     final published = await participant.setMicrophoneEnabled(
       on,
       audioCaptureOptions: microphone,
     );
+    // The publish itself awaits, so the hold may have landed during it. Roll
+    // back rather than leave the microphone published while it is meant closed.
+    if (on && captureHeld) {
+      await participant.setMicrophoneEnabled(false);
+      return false;
+    }
     return published != null;
   }
 
   @protected
   Future<bool> enableCamera(bool on) async {
+    if (on && captureHeld) return false;
     final participant = await _publishingAs(on);
     if (participant == null) return false;
-    return await participant.setCameraEnabled(on) != null;
+    if (on && captureHeld) return false;
+    final opened = await participant.setCameraEnabled(on) != null;
+    if (on && captureHeld) {
+      await participant.setCameraEnabled(false);
+      return false;
+    }
+    return opened;
   }
 
   /// The participant a capture change acts through, or null when there is

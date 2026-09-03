@@ -10,6 +10,7 @@ import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
+import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
@@ -24,7 +25,40 @@ import 'package:pangea_call_capture/pangea_call_capture.dart'
 /// tap detach, upload settling — which is seconds. A screen that waits for the
 /// stage therefore feels dead after the button is pressed and keeps counting
 /// after the peer has hung up. The outcome is the same fact, available at once.
-enum CallOutcome { ended, declined, failed }
+enum CallOutcome {
+  ended,
+  declined,
+  failed,
+
+  /// This device left because the learner is carrying the call on another of
+  /// their devices — the two-devices-one-call ownership design. Distinct from
+  /// [ended] so the screen can say the call is continuing elsewhere rather than
+  /// that it is over, and so the finish seam writes no card, half or analytics.
+  movedToOtherDevice,
+}
+
+/// What the ownership arbiter is asking the learner, and about which device.
+///
+/// Built by [ActiveCall] from the arbiter's decision so the widget layer holds
+/// no roster logic. [otherDeviceName] is a display name the learner set where
+/// one is known, and null otherwise — the screen supplies the generic wording,
+/// which is UI copy. A raw device id is never shown: a device id is not a name.
+@immutable
+class OwnershipPrompt {
+  final OwnershipPromptKind kind;
+  final String? otherDeviceName;
+
+  const OwnershipPrompt({required this.kind, this.otherDeviceName});
+
+  @override
+  bool operator ==(Object other) =>
+      other is OwnershipPrompt &&
+      other.kind == kind &&
+      other.otherDeviceName == otherDeviceName;
+
+  @override
+  int get hashCode => Object.hash(kind, otherDeviceName);
+}
 
 enum CallStage {
   /// The other person turned the call down. Distinct from ended so the caller
@@ -107,6 +141,28 @@ class ActiveCall extends ChangeNotifier {
 
   /// What the election last decided. Read by [_reconcile] when it runs.
   bool _wanted = false;
+
+  /// The two-devices-one-call arbiter (call-device-ownership.instructions.md),
+  /// driven on every roster recompute and every presence tick.
+  final CallOwnership _ownership = CallOwnership();
+
+  /// Whether the arbiter is holding this device's microphone and camera closed.
+  bool _mediaHeld = false;
+
+  /// The learner's own microphone intent, tracked so the ownership hold can
+  /// restore it on resume rather than overwrite it: a learner who had muted
+  /// themselves stays muted, one who had not is heard again. Changed only by the
+  /// learner's own [setMuted]; the hold closes the recorder WITHOUT touching it.
+  bool _userMuted = false;
+
+  /// What the arbiter is asking the learner, or null when it is asking nothing.
+  OwnershipPrompt? _ownershipPrompt;
+
+  /// Set the moment this device is leaving BECAUSE the learner is carrying the
+  /// call on another device, so the outcome reads [CallOutcome.movedToOtherDevice]
+  /// rather than [CallOutcome.ended]. A give-up (nobody chose) leaves this false
+  /// and ends ordinarily — no positive evidence the call continues.
+  bool _leftForSwitch = false;
 
   bool _placed = false;
 
@@ -603,6 +659,7 @@ class ActiveCall extends ChangeNotifier {
   /// publishing to the peer; this stops the recorder capturing too, which on
   /// Android it otherwise would — the tap there is upstream of the publish mute.
   void setMuted(bool muted) {
+    _userMuted = muted;
     capture.setMuted(muted);
     // A mute ends the run, which is a break in what this device is holding and
     // therefore something its siblings have to be told at once rather than on
@@ -1337,8 +1394,144 @@ class ActiveCall extends ChangeNotifier {
 
   bool _wasPeerMuted = false;
 
+  /// Whether the arbiter is holding this device's microphone and camera closed.
+  bool get mediaHeld => _mediaHeld;
+
+  /// Whether this device carried on with the call. False once the arbiter has
+  /// held or ended it, which is what tells the finish seam to write no card,
+  /// half or analytics.
+  bool get carriedOn => _ownership.carriedOn;
+
+  /// What the arbiter is asking the learner, or null.
+  OwnershipPrompt? get ownershipPrompt => _ownershipPrompt;
+
+  /// This account's other devices the SFU currently names in this call.
+  Iterable<String> get siblingDeviceIds =>
+      _roster?.siblingDeviceIds ?? const <String>[];
+
+  /// The learner tapped "Use this device". Sets the intent only; the arbiter
+  /// reconciles it against the CURRENT roster on the recompute below — dropping
+  /// it if a sibling has meanwhile claimed, so a stale tap never publishes.
+  void chooseThisDevice() {
+    _ownership.chooseThisDevice();
+    _onParticipantsChanged();
+  }
+
+  /// The learner tapped "Leave the call here".
+  void leaveForOtherDevice() {
+    _ownership.leaveHere();
+    _onParticipantsChanged();
+  }
+
+  /// Drives the ownership arbiter from the current roster reading and applies
+  /// its decision. Returns true once it has begun ending this device, so the
+  /// caller stops the rest of the tick.
+  bool _driveOwnership() {
+    final roster = _roster;
+    if (roster == null) return false;
+    final me = calls.client.deviceID;
+    final present = <String>{};
+    final silent = <String>{};
+    var claim = false;
+    for (final id in roster.siblingDeviceIds) {
+      if (id == me) continue;
+      present.add(id);
+      switch (roster.siblingChosen(id)) {
+        case ChosenState.silent:
+          silent.add(id);
+        case ChosenState.chosen:
+          claim = true;
+        case ChosenState.notChosen:
+          break;
+      }
+    }
+    final decision = _ownership.update(
+      presentSiblingIds: present,
+      silentSiblingIds: silent,
+      siblingClaimObserved: claim,
+      now: DateTime.now(),
+    );
+    return _applyOwnership(decision, present);
+  }
+
+  bool _applyOwnership(OwnershipDecision d, Set<String> presentSiblings) {
+    final roster = _roster;
+    // The claim, or its retraction, rides the same announcer as capability and
+    // recording; the roster coalesces a redundant write to nothing. This is the
+    // ONLY site that ever publishes a claim — never a button.
+    unawaited(roster?.announceChosen(d.announceChosen) ?? Future<void>.value());
+
+    if (d.endSelf) {
+      // CONTINUING carries positive evidence the call goes on elsewhere; ENDED
+      // (a give-up, nobody chose) does not, so only the former reads as "moved".
+      _leftForSwitch = d.endReason == LeaveReason.continuing;
+      unawaited(hangUp());
+      return true;
+    }
+
+    final wasHeld = _mediaHeld;
+    _mediaHeld = d.holdMedia;
+    if (d.holdMedia) {
+      media.captureHeld = true;
+      // The recorder gate goes up once, on the hold edge, WITHOUT going through
+      // [setMuted] — the learner's own intent [_userMuted] is left untouched so
+      // resume can restore it. The media close is re-asserted EVERY held tick,
+      // so an open that raced the hold is closed on the next recompute and close
+      // is the last writer.
+      if (!wasHeld) {
+        capture.setMuted(true);
+        unawaited(_announceCaptureState());
+      }
+      unawaited(media.setMicrophoneEnabled(false));
+      unawaited(media.setCameraEnabled(false));
+    } else if (wasHeld) {
+      // Clear the gate BEFORE reopening, so the restore's open is allowed. The
+      // recorder gate returns to the learner's OWN intent — muted stays muted,
+      // unmuted is heard again — never a blanket unmute. The camera is the
+      // session's to restore, since the learner's camera intent lives there.
+      media.captureHeld = false;
+      capture.setMuted(_userMuted);
+      unawaited(_announceCaptureState());
+      unawaited(media.setMicrophoneEnabled(!_userMuted));
+    }
+
+    final prompt = d.prompt == OwnershipPromptKind.none
+        ? null
+        : OwnershipPrompt(
+            kind: d.prompt,
+            otherDeviceName: _siblingDeviceName(presentSiblings),
+          );
+    if (prompt != _ownershipPrompt || _mediaHeld != wasHeld) {
+      _ownershipPrompt = prompt;
+      if (!_disposed) notifyListeners();
+    }
+    return false;
+  }
+
+  /// A display name for the sibling to name in the prompt, or null when none is
+  /// known. Deterministic — the lowest device id — so the prompt names the same
+  /// device on every recompute. Never a raw device id: a device id is not a
+  /// name, and the screen supplies the generic wording when this is null.
+  String? _siblingDeviceName(Set<String> presentSiblings) {
+    if (presentSiblings.isEmpty) return null;
+    final deviceId = (presentSiblings.toList()..sort()).first;
+    final userId = calls.client.userID;
+    if (userId == null) return null;
+    final name = calls
+        .client
+        .userDeviceKeys[userId]
+        ?.deviceKeys[deviceId]
+        ?.deviceDisplayName;
+    return (name != null && name.isNotEmpty) ? name : null;
+  }
+
   void _onParticipantsChanged() {
     if (_ending) return;
+
+    // The ownership arbiter first: if it ends this device (a sibling claimed, a
+    // deliberate leave, or a give-up at the window), the rest of this tick is
+    // moot — hangUp has already begun.
+    if (_driveOwnership()) return;
 
     // The badge is presence-adjacent state: repaint on its transitions.
     final muted = _roster?.peerMuted ?? false;
@@ -1870,6 +2063,11 @@ class ActiveCall extends ChangeNotifier {
       );
       _roster = roster;
       roster.addListener(_onParticipantsChanged);
+      // Announced the moment this device joins, and unconditionally: a standing
+      // `no` is what lets a sibling read our silence as "does not speak this
+      // protocol" rather than "has not answered". Level-triggered thereafter by
+      // the arbiter, which re-affirms it or replaces it with a claim.
+      unawaited(roster.announceChosen(false));
       // And the call's own clock beside the roster's events, so no state can
       // be reached that only a missing event would have moved us out of.
       _startPresenceClock();
@@ -2118,7 +2316,7 @@ class ActiveCall extends ChangeNotifier {
     _noteTalkEnded();
     // Decided NOW: a decline that led here was recorded before this call, so
     // the outcome is already the right one, and the screen may close at once.
-    _decide(_declinedByPeer ? CallOutcome.declined : CallOutcome.ended);
+    _decide(_terminalOutcome());
     // A teardown that could not retract must not be remembered as done.
     // Memoizing it would make every later hangup return this same finished
     // future, so the membership would stay advertised until it expired with
@@ -2137,8 +2335,19 @@ class ActiveCall extends ChangeNotifier {
     });
   }
 
+  /// The outcome to latch as this call ends. A device leaving because the
+  /// learner is carrying the call on another device reads as [movedToOtherDevice]
+  /// — positive evidence, set only on a CONTINUING leave; a give-up (nobody
+  /// chose) leaves [_leftForSwitch] false and ends ordinarily.
+  CallOutcome _terminalOutcome() {
+    if (_leftForSwitch) return CallOutcome.movedToOtherDevice;
+    return _declinedByPeer ? CallOutcome.declined : CallOutcome.ended;
+  }
+
   Future<void> _endCall() async {
     await _tearDown();
+    // A moved leave is a clean local leave, so its terminal STAGE is `ended`;
+    // the moved-vs-ended distinction rides the outcome, which the screen reads.
     _to(_declinedByPeer ? CallStage.declined : CallStage.ended);
   }
 
@@ -2290,6 +2499,10 @@ class ActiveCall extends ChangeNotifier {
     // already false, so acting only when it is true would leave that stretch
     // believing it was still wanted.
     _wanted = false;
+    // The held gate is dropped as teardown begins, so nothing left of the call
+    // is refusing an open on a media object about to be released.
+    _mediaHeld = false;
+    media.captureHeld = false;
 
     // The peer stops hearing us HERE, and NOTHING in the recording teardown may
     // hold it up — not the election handover, not the tap detach, not the
