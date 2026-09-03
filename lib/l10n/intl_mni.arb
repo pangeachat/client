@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-02 14:37:13.140520",
+    "@@last_modified": "2026-09-03 10:23:34.160507",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "OpenStreetMap contributors, copyright amadi license",
     "availableLabel": "Hanna houkhidri",
     "seeAll": "পুম্নমক উ",
-    "seeAllSection": "পুম্নমক উ {section}"
+    "seeAllSection": "পুম্নমক উ {section}",
+    "showMoreOptionsHint": "খঙফম কয়া উৎনবা"
 }

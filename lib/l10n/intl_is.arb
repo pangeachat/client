@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-02 14:37:10.217502",
+    "@@last_modified": "2026-09-03 10:23:31.982965",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "OpenStreetMap þátttakendur, höfundarréttur og leyfi",
     "availableLabel": "Ekki byrjað enn",
     "seeAll": "Sjá allt",
-    "seeAllSection": "Sjá allt {section}"
+    "seeAllSection": "Sjá allt {section}",
+    "showMoreOptionsHint": "sýna fleiri valkosti"
 }

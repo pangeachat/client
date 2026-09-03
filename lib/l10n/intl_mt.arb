@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-09-02 14:37:11.975456",
+    "@@last_modified": "2026-09-03 10:23:36.321983",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "Kontributuri, drittijiet tal-awtur u liċenzja ta' OpenStreetMap",
     "availableLabel": "Għadu ma bediex",
     "seeAll": "Ara kollox",
-    "seeAllSection": "Ara kollox {section}"
+    "seeAllSection": "Ara kollox {section}",
+    "showMoreOptionsHint": "uri aktar għażliet"
 }

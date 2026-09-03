@@ -184,6 +184,43 @@ void main() {
     semantics.dispose();
   });
 
+  testWidgets('the menu is a named custom action with a long-press hint', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    var menuOpened = 0;
+    final context = await pumpItem(
+      tester,
+      makeRoom(),
+      onLongPress: (_) => menuOpened++,
+    );
+    final l10n = L10n.of(context);
+
+    final row = rowButtonNode(tester);
+    expect(
+      row.hintOverrides?.onLongPressHint,
+      l10n.showMoreOptionsHint,
+      reason: 'TalkBack names what double-tap-and-hold does',
+    );
+    // The hint override is itself encoded as a custom-action entry, so pick
+    // the named one out rather than expecting a single id.
+    final actionId = row
+        .getSemanticsData()
+        .customSemanticsActionIds!
+        .singleWhere(
+          (id) =>
+              CustomSemanticsAction.getAction(id)!.label == l10n.moreOptions,
+          orElse: () => fail(
+            'iOS ignores hint overrides, so the menu must be a named action '
+            'in the VoiceOver rotor',
+          ),
+        );
+    row.owner!.performAction(row.id, SemanticsAction.customAction, actionId);
+    await tester.pumpAndSettle();
+    expect(menuOpened, 1);
+    semantics.dispose();
+  });
+
   testWidgets('semantic long-press on the row opens the menu', (tester) async {
     final semantics = tester.ensureSemantics();
     var menuOpened = 0;

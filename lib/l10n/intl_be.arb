@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-02 14:37:07.369700",
+    "@@last_modified": "2026-09-03 10:23:29.159693",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9866,5 +9866,6 @@
     "mapAttributionLabel": "Удзельнікі OpenStreetMap, аўтарскія правы і ліцэнзія",
     "availableLabel": "Пакуль не пачалося",
     "seeAll": "Глядзець усё",
-    "seeAllSection": "Глядзець усё: {section}"
+    "seeAllSection": "Глядзець усё: {section}",
+    "showMoreOptionsHint": "паказаць больш опцый"
 }

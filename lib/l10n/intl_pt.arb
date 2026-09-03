@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 14:37:12.534207",
+    "@@last_modified": "2026-09-03 10:23:35.382861",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10796,5 +10796,6 @@
     "mapAttributionLabel": "Colaboradores do OpenStreetMap, direitos autorais e licença",
     "availableLabel": "Ainda não começou",
     "seeAll": "Ver tudo",
-    "seeAllSection": "Ver tudo em {section}"
+    "seeAllSection": "Ver tudo em {section}",
+    "showMoreOptionsHint": "mostrar mais opções"
 }

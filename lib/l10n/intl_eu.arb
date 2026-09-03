@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-02 14:37:08.592788",
+    "@@last_modified": "2026-09-03 10:23:30.129781",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9852,5 +9852,6 @@
     "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
     "availableLabel": "Oraindik ez da hasi",
     "seeAll": "Ikusi guztiak",
-    "seeAllSection": "Ikusi {section} guztiak"
+    "seeAllSection": "Ikusi {section} guztiak",
+    "showMoreOptionsHint": "aukera gehiago erakutsi"
 }

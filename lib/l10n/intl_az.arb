@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-02 14:37:07.208036",
+    "@@last_modified": "2026-09-03 10:23:29.082232",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "OpenStreetMap iştirakçıları, müəllif hüquqları və lisenziya",
     "availableLabel": "Hələ başlamayıb",
     "seeAll": "Hamısına baxın",
-    "seeAllSection": "Bütün {section} baxın"
+    "seeAllSection": "Bütün {section} baxın",
+    "showMoreOptionsHint": "daha çox seçim göstər"
 }

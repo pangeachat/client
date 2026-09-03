@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-02 14:37:13.270053",
+    "@@last_modified": "2026-09-03 10:23:36.239716",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "Kuwa wax ku darsaday OpenStreetMap, xuquuqda daabacaadda iyo shatiga",
     "availableLabel": "Weli ma bilaaban",
     "seeAll": "Arag dhammaan",
-    "seeAllSection": "Arag dhammaan {section}"
+    "seeAllSection": "Arag dhammaan {section}",
+    "showMoreOptionsHint": "muuji doorashooyin dheeraad ah"
 }

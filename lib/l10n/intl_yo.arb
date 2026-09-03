@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-09-02 14:37:14.360671",
+    "@@last_modified": "2026-09-03 10:23:37.516925",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "Àwọn olùkópa OpenStreetMap, àṣẹ àti ìwé-àṣẹ",
     "availableLabel": "Kò tíì bẹ̀rẹ̀",
     "seeAll": "Wo gbogbo rẹ",
-    "seeAllSection": "Wo gbogbo {section}"
+    "seeAllSection": "Wo gbogbo {section}",
+    "showMoreOptionsHint": "fi àwọn àṣàyàn mìíràn hàn"
 }

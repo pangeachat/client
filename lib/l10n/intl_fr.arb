@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-02 14:37:08.508485",
+    "@@last_modified": "2026-09-03 10:23:30.502851",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10207,5 +10207,6 @@
     "mapAttributionLabel": "Contributeurs OpenStreetMap, droits d'auteur et licence",
     "availableLabel": "Pas encore commencé",
     "seeAll": "Tout voir",
-    "seeAllSection": "Voir tout {section}"
+    "seeAllSection": "Voir tout {section}",
+    "showMoreOptionsHint": "afficher plus d'options"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-02 14:37:11.061297",
+    "@@last_modified": "2026-09-03 10:23:33.730369",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "بەشداربووانی OpenStreetMap، مافی لەبەرگرتنەوە و مۆڵەت",
     "availableLabel": "هێشتا دەستی پێنەکردووە",
     "seeAll": "هەمووی ببینە",
-    "seeAllSection": "هەموو {section} ببینە"
+    "seeAllSection": "هەموو {section} ببینە",
+    "showMoreOptionsHint": "پیشاندانی بژاردەی زیاتر"
 }

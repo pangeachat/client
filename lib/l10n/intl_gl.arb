@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-02 14:37:09.296161",
+    "@@last_modified": "2026-09-03 10:23:30.904505",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9852,5 +9852,6 @@
     "mapAttributionLabel": "Colaboradores de OpenStreetMap, dereitos de autor e licenza",
     "availableLabel": "Aínda sen comezar",
     "seeAll": "Ver todo",
-    "seeAllSection": "Ver todo {section}"
+    "seeAllSection": "Ver todo {section}",
+    "showMoreOptionsHint": "mostrar máis opcións"
 }

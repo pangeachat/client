@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 14:37:10.895152",
+    "@@last_modified": "2026-09-03 10:23:33.512002",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10045,5 +10045,6 @@
     "mapAttributionLabel": "OpenStreetMap 기여자, 저작권 및 라이선스",
     "availableLabel": "아직 시작 안 함",
     "seeAll": "모두 보기",
-    "seeAllSection": "{section} 모두 보기"
+    "seeAllSection": "{section} 모두 보기",
+    "showMoreOptionsHint": "더 많은 옵션 보기"
 }

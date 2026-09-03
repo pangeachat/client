@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 14:37:11.977342",
+    "@@last_modified": "2026-09-03 10:23:34.495390",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9909,5 +9909,6 @@
     "mapAttributionLabel": "OpenStreetMap-bidragsytere, opphavsrett og lisens",
     "availableLabel": "Ikke startet ennå",
     "seeAll": "Se alle",
-    "seeAllSection": "Se alle {section}"
+    "seeAllSection": "Se alle {section}",
+    "showMoreOptionsHint": "vis flere alternativer"
 }

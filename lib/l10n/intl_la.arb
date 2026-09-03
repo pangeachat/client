@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-02 14:37:11.077305",
+    "@@last_modified": "2026-09-03 10:23:33.040090",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "OpenStreetMap contributores, ius auctoris et licentia",
     "availableLabel": "Nondum inceptum",
     "seeAll": "Omnia vide",
-    "seeAllSection": "Omnia {section} vide"
+    "seeAllSection": "Omnia {section} vide",
+    "showMoreOptionsHint": "plures optiones ostende"
 }

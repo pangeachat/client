@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-02 14:37:12.496590",
+    "@@last_modified": "2026-09-03 10:23:35.278606",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "د OpenStreetMap مرسته کوونکي، د چاپ حق او جواز",
     "availableLabel": "تر اوسه نه دی پیل شوی",
     "seeAll": "ټول وګورئ",
-    "seeAllSection": "ټول {section} وګورئ"
+    "seeAllSection": "ټول {section} وګورئ",
+    "showMoreOptionsHint": "نور انتخابونه وښایاست"
 }

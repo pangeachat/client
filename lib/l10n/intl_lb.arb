@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-02 14:37:11.446620",
+    "@@last_modified": "2026-09-03 10:23:33.255864",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "OpenStreetMap Mataarbechter, Copyright a Lizenz",
     "availableLabel": "Nach net ugefaangen",
     "seeAll": "Alles gesinn",
-    "seeAllSection": "Alles gesinn {section}"
+    "seeAllSection": "Alles gesinn {section}",
+    "showMoreOptionsHint": "méi Optiounen uweisen"
 }

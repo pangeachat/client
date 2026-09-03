@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-02 14:37:10.153974",
+    "@@last_modified": "2026-09-03 10:23:31.655543",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "OpenStreetMap-ի մասնակիցներ, հեղինակային իրավունք և լիցենզիա",
     "availableLabel": "Դեռ չի սկսվել",
     "seeAll": "Տեսնել բոլորը",
-    "seeAllSection": "Տեսնել բոլոր {section}"
+    "seeAllSection": "Տեսնել բոլոր {section}",
+    "showMoreOptionsHint": "ցուցադրել այլ ընտրանքներ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-02 14:37:07.895033",
+    "@@last_modified": "2026-09-03 10:23:29.963930",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9839,5 +9839,6 @@
     "mapAttributionLabel": "OpenStreetMap-Mitwirkende, Copyright und Lizenz",
     "availableLabel": "Noch nicht gestartet",
     "seeAll": "Alle anzeigen",
-    "seeAllSection": "Alle {section} anzeigen"
+    "seeAllSection": "Alle {section} anzeigen",
+    "showMoreOptionsHint": "Weitere Optionen anzeigen"
 }

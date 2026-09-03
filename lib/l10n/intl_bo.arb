@@ -2920,7 +2920,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-02 14:37:07.255065",
+    "@@last_modified": "2026-09-03 10:23:29.303624",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9463,5 +9463,6 @@
     "mapAttributionLabel": "OpenStreetMap ལ་མཉམ་ཞུགས་བྱེད་མཁན་ཚོ། བདག་དབང་དང་ཆོག་མཆན།",
     "availableLabel": "ད་དུང་མ་འགོ་བཙུགས།",
     "seeAll": "ཚང་མ་གཟིགས།",
-    "seeAllSection": "{section} ཚང་མ་གཟིགས།"
+    "seeAllSection": "{section} ཚང་མ་གཟིགས།",
+    "showMoreOptionsHint": "འདེམས་ངོ་མང་ཙམ་བསྟན་"
 }

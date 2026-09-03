@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-02 14:37:13.130966",
+    "@@last_modified": "2026-09-03 10:23:37.891974",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "OpenStreetMap දායකයින්, ප්‍රකාශන හිමිකම සහ බලපත්‍රය",
     "availableLabel": "තවම ආරම්භ කර නැත",
     "seeAll": "සියල්ල බලන්න",
-    "seeAllSection": "සියලු {section} බලන්න"
+    "seeAllSection": "සියලු {section} බලන්න",
+    "showMoreOptionsHint": "තවත් විකල්ප පෙන්වන්න"
 }

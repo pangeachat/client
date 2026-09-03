@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-02 14:37:10.518805",
+    "@@last_modified": "2026-09-03 10:23:31.418305",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "Kontribitè OpenStreetMap, copyright ak lisans",
     "availableLabel": "Pokò kòmanse",
     "seeAll": "Gade tout",
-    "seeAllSection": "Gade tout {section}"
+    "seeAllSection": "Gade tout {section}",
+    "showMoreOptionsHint": "montre plis opsyon"
 }

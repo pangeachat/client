@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-02 14:37:09.346984",
+    "@@last_modified": "2026-09-03 10:23:31.459729",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10288,5 +10288,6 @@
     "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
     "availableLabel": "Još nije započeto",
     "seeAll": "Vidi sve",
-    "seeAllSection": "Vidi sve {section}"
+    "seeAllSection": "Vidi sve {section}",
+    "showMoreOptionsHint": "prikaži više opcija"
 }

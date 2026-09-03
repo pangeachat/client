@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 14:37:07.991782",
+    "@@last_modified": "2026-09-03 10:23:30.968936",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10797,5 +10797,6 @@
     "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
     "availableLabel": "Ankoraŭ ne komencita",
     "seeAll": "Vidi ĉion",
-    "seeAllSection": "Vidi ĉion en {section}"
+    "seeAllSection": "Vidi ĉion en {section}",
+    "showMoreOptionsHint": "montri pliajn opciojn"
 }

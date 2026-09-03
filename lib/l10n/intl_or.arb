@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-02 14:37:12.533099",
+    "@@last_modified": "2026-09-03 10:23:35.181683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "OpenStreetMap ଯୋଗଦାନକାରୀ, କପିରାଇଟ୍ ଏବଂ ଲାଇସେନ୍ସ",
     "availableLabel": "ଏପର୍ଯ୍ୟନ୍ତ ଆରମ୍ଭ ହୋଇନାହିଁ",
     "seeAll": "ସବୁ ଦେଖନ୍ତୁ",
-    "seeAllSection": "ସବୁ {section} ଦେଖନ୍ତୁ"
+    "seeAllSection": "ସବୁ {section} ଦେଖନ୍ତୁ",
+    "showMoreOptionsHint": "ଅଧିକ ବିକଳ୍ପ ଦେଖାନ୍ତୁ"
 }

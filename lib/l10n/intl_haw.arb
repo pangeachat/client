@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-02 14:37:09.411136",
+    "@@last_modified": "2026-09-03 10:23:31.162468",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "Nā mea hāʻawi OpenStreetMap, kuleana kope a me ka laikini",
     "availableLabel": "ʻAʻole i hoʻomaka",
     "seeAll": "E ʻike i nā mea a pau",
-    "seeAllSection": "E ʻike i nā mea a pau ma {section}"
+    "seeAllSection": "E ʻike i nā mea a pau ma {section}",
+    "showMoreOptionsHint": "hōʻike i nā koho hou aku"
 }

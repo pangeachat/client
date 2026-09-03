@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-09-02 14:37:11.661403",
+    "@@last_modified": "2026-09-03 10:23:34.025869",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "Соработници на OpenStreetMap, авторски права и лиценца",
     "availableLabel": "Сè уште не е започнато",
     "seeAll": "Видете ги сите",
-    "seeAllSection": "Видете ги сите {section}"
+    "seeAllSection": "Видете ги сите {section}",
+    "showMoreOptionsHint": "покажи повеќе опции"
 }

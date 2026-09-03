@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 14:37:12.723105",
+    "@@last_modified": "2026-09-03 10:23:35.407785",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9852,5 +9852,6 @@
     "mapAttributionLabel": "Colaboradores do OpenStreetMap, direitos autorais e licença",
     "availableLabel": "Ainda não começou",
     "seeAll": "Ver tudo",
-    "seeAllSection": "Ver tudo em {section}"
+    "seeAllSection": "Ver tudo em {section}",
+    "showMoreOptionsHint": "mostrar mais opções"
 }

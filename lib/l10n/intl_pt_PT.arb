@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-02 14:37:12.598608",
+    "@@last_modified": "2026-09-03 10:23:35.608299",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10769,5 +10769,6 @@
     "mapAttributionLabel": "Contribuidores do OpenStreetMap, direitos de autor e licença",
     "availableLabel": "Ainda não começou",
     "seeAll": "Ver tudo",
-    "seeAllSection": "Ver tudo em {section}"
+    "seeAllSection": "Ver tudo em {section}",
+    "showMoreOptionsHint": "mostrar mais opções"
 }

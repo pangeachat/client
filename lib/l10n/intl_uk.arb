@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-02 14:37:14.119724",
+    "@@last_modified": "2026-09-03 10:23:37.058981",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9852,5 +9852,6 @@
     "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
     "availableLabel": "Ще не розпочато",
     "seeAll": "Переглянути всі",
-    "seeAllSection": "Переглянути всі {section}"
+    "seeAllSection": "Переглянути всі {section}",
+    "showMoreOptionsHint": "показати більше опцій"
 }

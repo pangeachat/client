@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 14:37:08.005165",
+    "@@last_modified": "2026-09-03 10:23:29.619573",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9979,5 +9979,6 @@
     "mapAttributionLabel": "Col·laboradors d'OpenStreetMap, drets d'autor i llicència",
     "availableLabel": "Encara no ha començat",
     "seeAll": "Veure-ho tot",
-    "seeAllSection": "Veure-ho tot a {section}"
+    "seeAllSection": "Veure-ho tot a {section}",
+    "showMoreOptionsHint": "mostrar més opcions"
 }

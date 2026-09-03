@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-02 14:37:13.123057",
+    "@@last_modified": "2026-09-03 10:23:35.687519",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10824,5 +10824,6 @@
     "mapAttributionLabel": "Участники OpenStreetMap, авторские права и лицензия",
     "availableLabel": "Еще не началось",
     "seeAll": "Посмотреть все",
-    "seeAllSection": "Посмотреть все {section}"
+    "seeAllSection": "Посмотреть все {section}",
+    "showMoreOptionsHint": "показать больше опций"
 }

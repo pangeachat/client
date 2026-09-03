@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-02 14:37:10.962585",
+    "@@last_modified": "2026-09-03 10:23:32.978683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "OpenStreetMap салымчылары, автордук укук жана лицензия",
     "availableLabel": "Башталган жок",
     "seeAll": "Баарын көрүү",
-    "seeAllSection": "Баарын көрүү {section}"
+    "seeAllSection": "Баарын көрүү {section}",
+    "showMoreOptionsHint": "көбүрөөк параметрлерди көрсөтүү"
 }

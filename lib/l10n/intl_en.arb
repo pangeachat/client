@@ -4845,6 +4845,10 @@
     "requireAnalyticsAccessTitle": "Require analytics access to join",
     "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",
+    "showMoreOptionsHint": "show more options",
+    "@showMoreOptionsHint": {
+        "description": "Semantics hint fragment: TalkBack reads it as 'double tap and hold to <this>' on controls whose long-press opens the options menu."
+    },
     "analyticsAccessNoticeTitle": "Learning Analytics Required",
     "analyticsAccessNoticeDesc": "Admins of this course want to view your analytics to track your learning progress. Allow them access to join.",
     "shareAnalytics": "Share Analytics",

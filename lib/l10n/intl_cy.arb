@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-02 14:37:07.939768",
+    "@@last_modified": "2026-09-03 10:23:29.650262",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2256,5 +2256,6 @@
     "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
     "availableLabel": "Heb ddechrau eto",
     "seeAll": "Gweld y cyfan",
-    "seeAllSection": "Gweld pob {section}"
+    "seeAllSection": "Gweld pob {section}",
+    "showMoreOptionsHint": "dangos mwy o opsiynau"
 }
