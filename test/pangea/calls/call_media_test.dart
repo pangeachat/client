@@ -3,6 +3,7 @@ import 'package:livekit_client/livekit_client.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 import 'package:fluffychat/routes/chat/calls/sfu_join_stamp.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'livekit_fixtures.dart';
@@ -753,8 +754,22 @@ void main() {
       expect(media.sfuJoinStampsFor(sibling), isNull);
 
       handedOver([
-        (identity: mine, secondsMs: sfuSecondsMs, ms: sfuSecondsMs + 437),
-        (identity: sibling, secondsMs: sfuSecondsMs - 2000, ms: 0),
+        (
+          identity: mine,
+          secondsMs: sfuSecondsMs,
+          ms: sfuSecondsMs + 437,
+          sid: 'PA_mine',
+          version: 1,
+          hasLeft: false,
+        ),
+        (
+          identity: sibling,
+          secondsMs: sfuSecondsMs - 2000,
+          ms: 0,
+          sid: 'PA_sib',
+          version: 1,
+          hasLeft: false,
+        ),
       ]);
 
       expect(media.sfuJoinStampsFor(mine), (
@@ -776,7 +791,14 @@ void main() {
       final (media, handedOver) = mediaWatching();
 
       handedOver([
-        (identity: mine, secondsMs: sfuSecondsMs, ms: sfuSecondsMs + 437),
+        (
+          identity: mine,
+          secondsMs: sfuSecondsMs,
+          ms: sfuSecondsMs + 437,
+          sid: 'PA_mine',
+          version: 1,
+          hasLeft: false,
+        ),
       ]);
 
       expect(media.sfuJoinStampsFor(sibling), isNull);
@@ -786,15 +808,30 @@ void main() {
       // livekit_client's own `Participant.joinedAt` reads whichever
       // `ParticipantInfo` it last accepted, so keeping the first here would
       // leave this and the coarse reading every other caller takes off the
-      // participant describing different frames.
+      // participant describing different frames. Here the later statement is a
+      // fresh session for the same identity — a rejoin — with a join a minute
+      // on; its new sid means the version guard does not mistake it for the old
+      // session going backwards, so the newer join is the one held.
       final (media, handedOver) = mediaWatching();
 
-      handedOver([(identity: sibling, secondsMs: sfuSecondsMs, ms: 0)]);
+      handedOver([
+        (
+          identity: sibling,
+          secondsMs: sfuSecondsMs,
+          ms: 0,
+          sid: 'PA_first',
+          version: 3,
+          hasLeft: false,
+        ),
+      ]);
       handedOver([
         (
           identity: sibling,
           secondsMs: sfuSecondsMs + 60000,
           ms: sfuSecondsMs + 60012,
+          sid: 'PA_second',
+          version: 0,
+          hasLeft: false,
         ),
       ]);
 
@@ -817,10 +854,226 @@ void main() {
       final (media, handedOver) = mediaWatching();
 
       handedOver([
-        (identity: mine, secondsMs: sfuSecondsMs, ms: sfuSecondsMs + 437),
+        (
+          identity: mine,
+          secondsMs: sfuSecondsMs,
+          ms: sfuSecondsMs + 437,
+          sid: 'PA_mine',
+          version: 1,
+          hasLeft: false,
+        ),
       ]);
 
       expect(media.clockAnchor, isNull);
+    });
+
+    group('a superseded statement never overwrites the live join', () {
+      // The store feeds `CaptureElection`, which DESTROYS a learner's captured
+      // audio when a sibling's join sorts before this device's. A learner's
+      // device can leave a call and rejoin under the same identity, and the
+      // ended session's updates can still be in flight — so "latest wins" is
+      // wrong for exactly the frames that arrive out of order, and wrong here
+      // means audio nobody else holds is thrown away.
+      const me = '@ann:pangea.chat:MINE';
+      const sib = '@ann:pangea.chat:SIBLING';
+
+      /// Where the sibling's join sits after the store has seen [updates], read
+      /// back the way the election reads it.
+      ({int secondsMs, int ms})? siblingJoinAfter(
+        List<SfuParticipantStamps> Function() updates,
+      ) {
+        final (media, handedOver) = mediaWatching();
+        handedOver(updates());
+        return media.sfuJoinStampsFor(sib);
+      }
+
+      test('a DISCONNECTED update cannot drag a rejoin back to the old join', () {
+        // The destroying sequence at its source. The sibling rejoined at
+        // +3000ms; its earlier session's DISCONNECTED notice, carrying the join
+        // 5s before, then lands late. Applied, it would move the sibling's join
+        // back before ours and hand the election a reason to discard our tail.
+        final (media, handedOver) = mediaWatching();
+
+        // The rejoin: the current session, a join AFTER ours.
+        handedOver([
+          (
+            identity: sib,
+            secondsMs: sfuSecondsMs + 3000,
+            ms: sfuSecondsMs + 3100,
+            sid: 'PA_second',
+            version: 0,
+            hasLeft: false,
+          ),
+        ]);
+        // The delayed word from the session that ENDED: an earlier join, and
+        // marked as having left.
+        handedOver([
+          (
+            identity: sib,
+            secondsMs: sfuSecondsMs - 5000,
+            ms: sfuSecondsMs - 4900,
+            sid: 'PA_first',
+            version: 9,
+            hasLeft: true,
+          ),
+        ]);
+
+        expect(
+          media.sfuJoinStampsFor(sib),
+          (secondsMs: sfuSecondsMs + 3000, ms: sfuSecondsMs + 3100),
+          reason: 'a departed session must not overwrite the live rejoin',
+        );
+      });
+
+      test('an out-of-order frame for the SAME session is ignored', () {
+        // The KNOWN LIMIT the store used to carry: livekit_client refuses an
+        // update with a lower version for a session it already holds
+        // (participant.dart:221) and this did not. A reordered frame — same
+        // sid, lower version, an earlier join — must not walk the store back.
+        expect(
+          siblingJoinAfter(
+            () => [
+              (
+                identity: sib,
+                secondsMs: sfuSecondsMs + 3000,
+                ms: sfuSecondsMs + 3100,
+                sid: 'PA_one',
+                version: 7,
+                hasLeft: false,
+              ),
+              (
+                identity: sib,
+                secondsMs: sfuSecondsMs - 5000,
+                ms: sfuSecondsMs - 4900,
+                sid: 'PA_one',
+                version: 4,
+                hasLeft: false,
+              ),
+            ],
+          ),
+          (secondsMs: sfuSecondsMs + 3000, ms: sfuSecondsMs + 3100),
+          reason: 'a lower version for a held session is stale',
+        );
+      });
+
+      test('a fresh session with a restarted version still lands', () {
+        // The guard is gated on the sid so it cannot swallow a real rejoin: a
+        // new session restarts the version counter, and version 0 of PA_second
+        // is not version 0 of PA_first going backwards. The later join wins.
+        expect(
+          siblingJoinAfter(
+            () => [
+              (
+                identity: sib,
+                secondsMs: sfuSecondsMs,
+                ms: sfuSecondsMs + 10,
+                sid: 'PA_first',
+                version: 8,
+                hasLeft: false,
+              ),
+              (
+                identity: sib,
+                secondsMs: sfuSecondsMs + 3000,
+                ms: sfuSecondsMs + 3100,
+                sid: 'PA_second',
+                version: 0,
+                hasLeft: false,
+              ),
+            ],
+          ),
+          (secondsMs: sfuSecondsMs + 3000, ms: sfuSecondsMs + 3100),
+          reason: 'a rejoin under a fresh sid is not an out-of-order frame',
+        );
+      });
+
+      test(
+        'the stale stamp can no longer make the election discard our tail',
+        () {
+          // END TO END, through the exact wiring `ActiveCall` uses: the store is
+          // fed the rejoin then the delayed departed frame, and the election is
+          // handed the join stamps straight out of the store — the same call
+          // `discardsCapturedAudio` gets at active_call.dart. Everything else is
+          // arranged so the ONLY thing the discard can turn on is the sibling's
+          // stored join: the sibling attests a run our watch saw open and hold,
+          // and the coarse joins are withheld so the millisecond stamps decide.
+          //
+          // We recorded our tail from +0ms; the sibling truly rejoined at
+          // +3000ms, so our tail is audio the sibling was not in the room for.
+          // With the store corrupted back to -5000ms the election read the
+          // sibling as first and discarded that tail. It must now keep it.
+          final (media, handedOver) = mediaWatching();
+          handedOver([
+            (
+              identity: sib,
+              secondsMs: sfuSecondsMs + 3000,
+              ms: sfuSecondsMs + 3100,
+              sid: 'PA_second',
+              version: 0,
+              hasLeft: false,
+            ),
+          ]);
+          handedOver([
+            (
+              identity: sib,
+              secondsMs: sfuSecondsMs - 5000,
+              ms: sfuSecondsMs - 4900,
+              sid: 'PA_first',
+              version: 9,
+              hasLeft: true,
+            ),
+          ]);
+          handedOver([
+            (
+              identity: me,
+              secondsMs: sfuSecondsMs,
+              ms: sfuSecondsMs,
+              sid: 'PA_me',
+              version: 0,
+              hasLeft: false,
+            ),
+          ]);
+
+          const successor = CaptureCandidate('SIBLING');
+          final report = CaptureReport.of(
+            'SIBLING',
+            CaptureReport.published('r1'),
+          );
+
+          bool discards() => CaptureElection.discardsCapturedAudio(
+            successor: successor,
+            successorReport: report,
+            watch: CaptureWatch()..observe([report]),
+            mySfuStamps: media.sfuJoinStampsFor(me),
+            successorSfuStamps: media.sfuJoinStampsFor(sib),
+          );
+
+          expect(
+            discards(),
+            isFalse,
+            reason: 'the live rejoin is after our join, so our tail is ours',
+          );
+
+          // The tripwire the fix removed. Recorded blindly, the departed frame
+          // would leave the sibling at -4900ms and the election would take our
+          // tail — so this asserts the corrupted store IS what destroys it,
+          // which is what makes the assertion above a proof rather than a
+          // coincidence.
+          expect(
+            CaptureElection.discardsCapturedAudio(
+              successor: successor,
+              successorReport: report,
+              watch: CaptureWatch()..observe([report]),
+              mySfuStamps: media.sfuJoinStampsFor(me),
+              successorSfuStamps: (
+                secondsMs: sfuSecondsMs - 5000,
+                ms: sfuSecondsMs - 4900,
+              ),
+            ),
+            isTrue,
+            reason: 'the stale join is what the discard would have fired on',
+          );
+        },
+      );
     });
   });
 }

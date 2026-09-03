@@ -24,22 +24,34 @@ List<int> _embedded(List<int> bytes) => [..._varint(bytes.length), ...bytes];
 /// The BYTES livekit-server puts on the wire for one `ParticipantInfo`.
 ///
 /// The field numbers are the contract this whole change rests on, and building
-/// the message by hand is what puts them under test: `identity` is field 2,
-/// `joined_at` is field 6 and `joined_at_ms` is field 17. Reading the wrong one
-/// of the last two is not a compile error — both are int64 on the same message
-/// — so nothing else here would catch it.
+/// the message by hand is what puts them under test: `sid` is field 1,
+/// `identity` is field 2, `state` is field 3, `joined_at` is field 6, `version`
+/// is field 10 and `joined_at_ms` is field 17. Reading the wrong one of the two
+/// time fields is not a compile error — both are int64 on the same message — so
+/// nothing else here would catch it, and the same is true of `sid`/`version`,
+/// the pair the store orders departed and out-of-order statements by.
 ///
 /// Omitting a field is how proto3 sends a zero, so `joinedAtMs: null` is
-/// exactly what an SFU older than livekit-server v1.8.4 puts on the wire.
+/// exactly what an SFU older than livekit-server v1.8.4 puts on the wire, and
+/// an omitted `state` is the JOINING default — not DISCONNECTED.
 List<int> _participantBytes({
+  String? sid,
   String? identity,
+  int? state,
   int? joinedAtSeconds,
+  int? version,
   int? joinedAtMs,
 }) => [
+  // field 1, length-delimited: (1 << 3) | 2
+  if (sid != null) ...[0x0a, ..._embedded(sid.codeUnits)],
   // field 2, length-delimited: (2 << 3) | 2
   if (identity != null) ...[0x12, ..._embedded(identity.codeUnits)],
+  // field 3, varint: (3 << 3) | 0
+  if (state != null) ...[0x18, ..._varint(state)],
   // field 6, varint: (6 << 3) | 0
   if (joinedAtSeconds != null) ...[0x30, ..._varint(joinedAtSeconds)],
+  // field 10, varint: (10 << 3) | 0
+  if (version != null) ...[0x50, ..._varint(version)],
   // field 17, varint: (17 << 3) | 0, whose key needs two bytes
   if (joinedAtMs != null) ...[0x88, 0x01, ..._varint(joinedAtMs)],
 ];
@@ -148,13 +160,26 @@ void main() {
             identity: '@ann:pangea.chat:MINE',
             secondsMs: 1787994000000,
             ms: 1787994000437,
+            sid: '',
+            version: 0,
+            hasLeft: false,
           ),
           (
             identity: '@ann:pangea.chat:SIBLING',
             secondsMs: 1787993999000,
             ms: 1787993999012,
+            sid: '',
+            version: 0,
+            hasLeft: false,
           ),
-          (identity: '@bob:pangea.chat:PEER', secondsMs: 1787993998000, ms: 0),
+          (
+            identity: '@bob:pangea.chat:PEER',
+            secondsMs: 1787993998000,
+            ms: 0,
+            sid: '',
+            version: 0,
+            hasLeft: false,
+          ),
         ],
       );
     });
@@ -178,6 +203,9 @@ void main() {
             identity: '@ann:pangea.chat:MINE',
             secondsMs: 1787994000000,
             ms: 1787994000437,
+            sid: '',
+            version: 0,
+            hasLeft: false,
           ),
         ],
       );
@@ -208,8 +236,68 @@ void main() {
             identity: '@ann:pangea.chat:LATE',
             secondsMs: 1787994060000,
             ms: 1787994060501,
+            sid: '',
+            version: 0,
+            hasLeft: false,
           ),
-          (identity: '@bob:pangea.chat:LATER', secondsMs: 1787994061000, ms: 0),
+          (
+            identity: '@bob:pangea.chat:LATER',
+            secondsMs: 1787994061000,
+            ms: 0,
+            sid: '',
+            version: 0,
+            hasLeft: false,
+          ),
+        ],
+      );
+    });
+
+    test('carries the sid, version, and left flag the store judges by', () {
+      // These three ride beside the times so the store can tell a departed or
+      // out-of-order statement from the current one. Read straight off the
+      // frame: `sid` field 1, `state` field 3 (DISCONNECTED is 3), `version`
+      // field 7. Reading the wrong field here is not a compile error, the same
+      // trap the two time fields carry, so the wire read is put under test.
+      expect(
+        sfuParticipantStampsOfUpdate([
+          pb.ParticipantInfo.fromBuffer(
+            _participantBytes(
+              sid: 'PA_second',
+              identity: '@ann:pangea.chat:REJOINED',
+              joinedAtSeconds: 1787994060,
+              version: 4,
+              joinedAtMs: 1787994060501,
+            ),
+          ),
+          pb.ParticipantInfo.fromBuffer(
+            _participantBytes(
+              sid: 'PA_first',
+              identity: '@ann:pangea.chat:DEPARTED',
+              // DISCONNECTED.
+              state: 3,
+              joinedAtSeconds: 1787994000,
+              version: 9,
+              joinedAtMs: 1787994000012,
+            ),
+          ),
+        ]),
+        [
+          (
+            identity: '@ann:pangea.chat:REJOINED',
+            secondsMs: 1787994060000,
+            ms: 1787994060501,
+            sid: 'PA_second',
+            version: 4,
+            hasLeft: false,
+          ),
+          (
+            identity: '@ann:pangea.chat:DEPARTED',
+            secondsMs: 1787994000000,
+            ms: 1787994000012,
+            sid: 'PA_first',
+            version: 9,
+            hasLeft: true,
+          ),
         ],
       );
     });

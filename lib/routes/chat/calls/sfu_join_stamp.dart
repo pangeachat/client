@@ -132,13 +132,34 @@ CancelListenFunc watchSfuJoinStamp(
   ms: response.participant.joinedAtMs.toInt(),
 );
 
-/// ONE participant's join stamps, beside the identity the SFU named them by.
+/// ONE participant's join stamps, beside the identity the SFU named them by and
+/// the two facts that say whether the statement is still CURRENT.
 ///
 /// The identity travels with the stamps because these describe devices this
 /// code has no other handle on. [sfuJoinStampsOf] answers about US and needs no
 /// key; this answers about whoever the frame described, and a reading nobody
 /// can attribute orders nothing.
-typedef SfuParticipantStamps = ({String identity, int secondsMs, int ms});
+///
+/// [sid], [version] and [hasLeft] ride along for one reason: these stamps feed
+/// a store that another device DESTROYS captured audio on, and the same
+/// identity can hold two different joins over one call — a device that leaves
+/// and rejoins keeps its identity but takes a later join instant and a fresh
+/// [sid]. The wire says which statement supersedes which, and livekit_client's
+/// own roster reads it: it drops a participant on a `DISCONNECTED` update
+/// ([hasLeft]) and ignores an update whose [sid] matches the one it holds while
+/// carrying a lower [version] (participant.dart:221). The store this feeds owes
+/// the same two checks — see `CallMedia.recordJoinStamps` — and can only make
+/// them if the reading it is handed carries the facts they turn on. Reporting
+/// them is this layer's whole job here; ACTING on them is the store's, so the
+/// "neither is filtered" property below is kept rather than broken.
+typedef SfuParticipantStamps = ({
+  String identity,
+  int secondsMs,
+  int ms,
+  String sid,
+  int version,
+  bool hasLeft,
+});
 
 /// The shape of [watchSfuParticipantStamps], so a caller can accept it as a
 /// seam.
@@ -217,21 +238,34 @@ CancelListenFunc watchSfuParticipantStamps(
   };
 }
 
-/// One participant's stamps, as the SFU stated them.
+/// One participant's stamps, as the SFU stated them, with the currency the
+/// message carries alongside them.
 ///
-/// The same two fields [sfuJoinStampsOf] reads, off the same message type, and
-/// silently wrong in the same way if they are confused: `joined_at` (field 6,
-/// whole SECONDS) and `joined_at_ms` (field 17) are both int64 on
+/// The same two time fields [sfuJoinStampsOf] reads, off the same message type,
+/// and silently wrong in the same way if they are confused: `joined_at` (field
+/// 6, whole SECONDS) and `joined_at_ms` (field 17) are both int64 on
 /// `ParticipantInfo`. `secondsMs` is scaled the way livekit_client scales
 /// `Participant.joinedAt`, so a caller holds the reading it would otherwise get
 /// off the participant beside the finer one meant to refine it — and both out
 /// of the same frame, so one can be checked against the other without reaching
 /// for a second source.
+///
+/// [sid], [version] and [hasLeft] are read STRAIGHT off the same message, not
+/// judged here: `sid` (field 1) is the session this join belongs to, `version`
+/// (field 7) is the SFU's own monotonic counter for that session, and `hasLeft`
+/// is `state == DISCONNECTED` (field 3) — the exact fields livekit_client's
+/// roster orders and expires participants by. They are for the store that acts
+/// on them; this only states what the frame said. A default, all-zero message
+/// yields `sid` empty, `version` zero and `hasLeft` false, which is the honest
+/// reading of a frame that named nobody.
 @visibleForTesting
 SfuParticipantStamps sfuStampsOf(pb.ParticipantInfo info) => (
   identity: info.identity,
   secondsMs: info.joinedAt.toInt() * 1000,
   ms: info.joinedAtMs.toInt(),
+  sid: info.sid,
+  version: info.version,
+  hasLeft: info.state == pb.ParticipantInfo_State.DISCONNECTED,
 );
 
 /// Everyone a join response describes: this device, then everyone already in
@@ -260,9 +294,14 @@ List<SfuParticipantStamps> sfuParticipantStampsOf(JoinResponse response) => [
 ///
 /// An update also restates devices already known, and says so about ones that
 /// have LEFT — livekit_client reads `state == DISCONNECTED` off these same
-/// messages. Neither is filtered. A stamp is a statement about when the SFU saw
-/// that identity join, which is no less true for the device having gone since,
-/// and a reader that cares about presence has the roster for it.
+/// messages. Neither is filtered HERE: a departed device is reported with its
+/// [SfuParticipantStamps.hasLeft] set rather than dropped, so the statement
+/// still travels and the reader that cares — the store in
+/// `CallMedia.recordJoinStamps` — is the one that refuses to let a departed
+/// device's join overwrite a live one's. A stamp is a statement about when the
+/// SFU saw that identity join, which is no less true for the device having gone
+/// since; what changes across a leave-and-rejoin is which statement is CURRENT,
+/// and that is the store's to decide, not this layer's to hide.
 @visibleForTesting
 List<SfuParticipantStamps> sfuParticipantStampsOfUpdate(
   List<pb.ParticipantInfo> participants,

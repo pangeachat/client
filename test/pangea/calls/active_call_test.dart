@@ -3392,7 +3392,14 @@ void main() {
       calls.roster!.joins = {siblingIdentity: (true, joinedAt)};
       calls.roster!.attributes = {siblingIdentity: recording('7')};
       media.recordJoinStamps([
-        (identity: myIdentity, secondsMs: secondsMs, ms: secondsMs + mineMs),
+        (
+          identity: myIdentity,
+          secondsMs: secondsMs,
+          ms: secondsMs + mineMs,
+          sid: 'PA_mine',
+          version: 0,
+          hasLeft: false,
+        ),
         (
           identity: siblingIdentity,
           secondsMs: secondsMs,
@@ -3400,6 +3407,9 @@ void main() {
           // wire, and it is indistinguishable from one that set the field to
           // zero on purpose.
           ms: siblingSentFineField ? secondsMs + siblingMs : 0,
+          sid: 'PA_sibling',
+          version: 0,
+          hasLeft: false,
         ),
       ]);
       calls.remotePresent = true;

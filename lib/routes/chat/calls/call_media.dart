@@ -316,30 +316,80 @@ class CallMedia {
   /// over has to stay raw: the reader decides, per PAIR, whether both halves
   /// are millisecond-real, and a store that had already repaired one would have
   /// taken that decision away from it.
-  ({int secondsMs, int ms})? sfuJoinStampsFor(String identity) =>
-      _sfuJoinStamps[identity];
+  ({int secondsMs, int ms})? sfuJoinStampsFor(String identity) {
+    final held = _sfuJoinStamps[identity];
+    return held == null ? null : (secondsMs: held.secondsMs, ms: held.ms);
+  }
 
-  final Map<String, ({int secondsMs, int ms})> _sfuJoinStamps = {};
+  /// The latest CURRENT statement about each identity, plus the session and
+  /// version that decide what "current" means.
+  ///
+  /// [sfuJoinStampsFor] hands out only the two time halves, because that is all
+  /// the election orders on; the `sid` and `version` beside them never leave
+  /// this object. They are here so [recordJoinStamps] can refuse a statement
+  /// the wire itself says is superseded — a departed session's, or an
+  /// out-of-order one — rather than letting it overwrite the join a live device
+  /// actually holds.
+  final Map<String, ({int secondsMs, int ms, String sid, int version})>
+  _sfuJoinStamps = {};
 
-  /// Records what the SFU last said about each participant a frame named.
+  /// Records what the SFU last said about each participant a frame named — but
+  /// only the statements the wire itself has not already superseded.
   ///
-  /// THE LATEST STATEMENT WINS. livekit_client's own `Participant.joinedAt`
-  /// reads whichever `ParticipantInfo` it last accepted — participant.dart:92
-  /// reads the stored info and participant.dart:236 replaces it — so keeping
-  /// the first here would leave this and the coarse reading every other caller
-  /// takes off the participant describing different frames.
+  /// THE LATEST CURRENT STATEMENT WINS, which is nearly but not quite "the
+  /// latest statement wins", and the gap is where audio was being destroyed.
+  /// The election reads this store to order two devices' joins and DISCARDS a
+  /// learner's captured audio when a sibling's join sorts first. A learner's
+  /// device can leave a call and rejoin it under the SAME identity: the rejoin
+  /// takes a later join instant and a fresh `sid`, and the earlier session's
+  /// updates — its `DISCONNECTED` notice above all — can still be in flight.
+  /// Stored blindly, a delayed statement from the session that ENDED overwrites
+  /// the join the device currently holds with the earlier one, and the election
+  /// then reads the live device as having been in the room before a sibling it
+  /// in fact joined after, and throws away the sibling's tail. That tail is the
+  /// only copy; no later election brings it back.
   ///
-  /// KNOWN LIMIT: that alignment is close rather than exact. livekit_client
-  /// refuses an update carrying the same sid and a lower `version`
-  /// (participant.dart:221) and this does not, so an out-of-order update moves
-  /// this and not the reading beside it. Whoever compares the two owes that
-  /// check; this holds statements and does not adjudicate between them.
+  /// So the two checks livekit_client's own roster makes on the very same
+  /// `ParticipantInfo` are made here too, on the store it feeds — the store used
+  /// to make NEITHER, which was the KNOWN LIMIT that let this and the reading
+  /// beside it describe different frames:
+  ///
+  ///   - A participant the SFU marks DISCONNECTED has LEFT. livekit_client drops
+  ///     it rather than updating it (room.dart:798 `continue`s on that state),
+  ///     and a departed session's statement must never move a live device's
+  ///     join here either. The safe direction is explicit: a `hasLeft` frame
+  ///     never writes, so the last CURRENT join stands.
+  ///
+  ///   - An update for a session already held, carrying a lower `version`, is
+  ///     out of order. livekit_client refuses it (participant.dart:221, same
+  ///     `sid` and a lower `version`); this refuses it on the same terms, so a
+  ///     reordered frame cannot walk the store backwards while leaving the
+  ///     reading beside it untouched. Gated on the `sid`, because a rejoin's
+  ///     fresh session restarts the counter and is not the old one going
+  ///     backwards.
+  ///
+  /// What is NOT judged here is whether the numbers are believable times — a
+  /// zero millisecond half, a stamp past the clock ceiling. That stays the
+  /// reader's, because the reader decides it per PAIR; this only keeps the store
+  /// to the statement the wire says is current.
   @visibleForTesting
   void recordJoinStamps(List<SfuParticipantStamps> stamps) {
     for (final stamp in stamps) {
+      // A device that has left is not describing the join a live device holds.
+      // Never let its statement overwrite one.
+      if (stamp.hasLeft) continue;
+      final held = _sfuJoinStamps[stamp.identity];
+      // Same session, older frame: the reading already held is newer. Keep it.
+      if (held != null &&
+          held.sid == stamp.sid &&
+          held.version > stamp.version) {
+        continue;
+      }
       _sfuJoinStamps[stamp.identity] = (
         secondsMs: stamp.secondsMs,
         ms: stamp.ms,
+        sid: stamp.sid,
+        version: stamp.version,
       );
     }
   }
