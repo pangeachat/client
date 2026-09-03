@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -219,6 +220,34 @@ void main() {
     await tester.pumpAndSettle();
     expect(menuOpened, 1);
     semantics.dispose();
+  });
+
+  testWidgets('keyboard: Shift+F10 and the context-menu key open the menu', (
+    tester,
+  ) async {
+    var menuOpened = 0;
+    var rowOpened = 0;
+    await pumpItem(
+      tester,
+      makeRoom(),
+      onTap: () => rowOpened++,
+      onLongPress: (_) => menuOpened++,
+    );
+
+    // Tab lands on the row (its only focusable is the tile's InkWell).
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.pumpAndSettle();
+
+    await tester.sendKeyDownEvent(LogicalKeyboardKey.shiftLeft);
+    await tester.sendKeyEvent(LogicalKeyboardKey.f10);
+    await tester.sendKeyUpEvent(LogicalKeyboardKey.shiftLeft);
+    await tester.pumpAndSettle();
+    expect(menuOpened, 1, reason: 'Shift+F10 is the context-menu convention');
+
+    await tester.sendKeyEvent(LogicalKeyboardKey.contextMenu);
+    await tester.pumpAndSettle();
+    expect(menuOpened, 2, reason: 'so is the dedicated context-menu key');
+    expect(rowOpened, 0);
   });
 
   testWidgets('semantic long-press on the row opens the menu', (tester) async {
