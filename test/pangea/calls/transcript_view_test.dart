@@ -1054,6 +1054,10 @@ void main() {
           half(
             _me,
             texts: const ['y despues'],
+            // Placed INSIDE the handed-over stretch: coverage now needs a
+            // transcribed segment there, not just a kept span, since a kept
+            // span the sibling's detector suppressed holds no words.
+            atMs: const [_callStart + 2000],
             deviceId: 'LAPTOP',
             keptSpans: const [
               CaptureSpan(fromMs: _callStart - 1000, toMs: _callStart + 20000),

@@ -2132,7 +2132,7 @@ void main() {
             ),
             _candidate(
               alice,
-              texts: const ['y despues'],
+              segments: [_placed('y despues', _sfuJoin + 6000)],
               deviceId: 'LAPTOP',
               accounting: const HalfAccounting(
                 chunksCaptured: 2,
@@ -2418,7 +2418,7 @@ void main() {
           if (covered)
             _candidate(
               alice,
-              texts: const ['y despues'],
+              segments: [_placed('y despues', _sfuJoin + 6000)],
               deviceId: 'LAPTOP',
               accounting: const HalfAccounting(
                 chunksCaptured: 2,
@@ -2543,6 +2543,62 @@ void main() {
       expect(half.issue, HalfIssue.audioLeftToADeviceThatDidNotHoldIt);
     });
 
+    test('a sibling that KEPT but SUPPRESSED the stretch does not cover it', () {
+      // The finding. A kept span is a CAPTURE claim, not a transcript. The
+      // laptop recorded the whole handed-over stretch -- its kept span swallows
+      // it -- but its own speech detector SUPPRESSED the chunk over it, so it
+      // produced a segment only ELSEWHERE and none inside 5000..9000. The words
+      // the phone discarded are in no transcript at all. Crediting the capture
+      // as coverage read the merged half as `present` over audio nothing holds;
+      // coverage now needs a transcribed segment inside the stretch, which a
+      // suppressed one has none of.
+      final half = _halfFor(
+        assembleTranscript(
+          candidates: [
+            _candidate(
+              alice,
+              deviceId: 'PHONE',
+              accounting: const HalfAccounting(
+                chunksCaptured: 3,
+                chunksTranscribed: 2,
+                chunksDiscarded: 1,
+                declared: true,
+              ),
+              anchor: _skewed(0),
+              discardedSpans: [_span(5000, 9000)],
+            ),
+            _candidate(
+              alice,
+              // Words, but at 1000ms -- nowhere near the handed-over stretch.
+              // The chunk over 5000..9000 was suppressed, so nothing was
+              // transcribed there.
+              segments: [_placed('hola', _sfuJoin + 1000)],
+              deviceId: 'LAPTOP',
+              accounting: const HalfAccounting(
+                chunksCaptured: 4,
+                chunksTranscribed: 1,
+                chunksSuppressed: 1,
+                declared: true,
+              ),
+              anchor: _skewed(0),
+              // It DID record the whole stretch -- the capture claim is honest.
+              keptSpans: [_span(0, 20000)],
+            ),
+          ],
+          expectedSenders: [alice],
+        ),
+        alice,
+      );
+
+      expect(
+        half.discardWasCovered,
+        isFalse,
+        reason: 'a suppressed span holds no words, so it covers nothing',
+      );
+      expect(half.state, HalfState.incomplete);
+      expect(half.issue, HalfIssue.audioLeftToADeviceThatDidNotHoldIt);
+    });
+
     test('coverage is read on the SFU clock, not on two device clocks', () {
       // Two devices stamp their own wall clocks, and this codebase has already
       // lost a bug to the difference. The sibling below holds the stretch
@@ -2565,7 +2621,7 @@ void main() {
             ),
             _candidate(
               alice,
-              texts: const ['y despues'],
+              segments: [_placed('y despues', _sfuJoin + 6000 + laptopSkewMs)],
               deviceId: 'LAPTOP',
               accounting: const HalfAccounting(
                 chunksCaptured: 2,
@@ -2774,7 +2830,7 @@ void main() {
             ),
             _candidate(
               alice,
-              texts: const ['y despues'],
+              segments: [_placed('y despues', _sfuJoin + 6000)],
               deviceId: 'LAPTOP',
               accounting: const HalfAccounting(
                 chunksCaptured: 2,

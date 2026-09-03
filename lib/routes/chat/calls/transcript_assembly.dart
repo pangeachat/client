@@ -1718,10 +1718,29 @@ bool _discardsAreCovered(List<TranscriptCandidate> perDevice) {
         // separates the two devices' stamps -- the same correction
         // [_assembleDevices] moves segments by.
         final shift = siblingAnchor.offsetMs - discarderAnchor.offsetMs;
-        held = sibling.keptSpans.any(
+        final lo = handedOver.fromMs + shift;
+        final hi = handedOver.toMs + shift;
+        // Recorded the WHOLE stretch. A kept span is a CAPTURE claim, so this
+        // is necessary but not sufficient.
+        final recorded = sibling.keptSpans.any(
           (kept) => kept.covers(handedOver, shiftMs: shift),
         );
-        if (held) break;
+        // AND TRANSCRIBED it. A stretch the sibling's own detector SUPPRESSED
+        // sits inside a kept span and produced no segment, so its words are in
+        // no transcript at all -- crediting the capture as coverage is what let
+        // a discarded tail vanish while the merged half still read `present`. A
+        // placed segment inside the stretch, on the sibling's own clock, is the
+        // proof the words exist somewhere. An unplaced segment cannot be located
+        // here and so cannot answer for this stretch; it falls the safe way,
+        // toward an uncovered discard and a half that reads incomplete.
+        final transcribed = sibling.segments.any((segment) {
+          final at = segment.atMs;
+          return at != null && at >= lo && at <= hi;
+        });
+        if (recorded && transcribed) {
+          held = true;
+          break;
+        }
       }
       if (!held) return false;
     }

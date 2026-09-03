@@ -799,6 +799,17 @@ class CallCaptureService {
   /// gap in the transcript, which is what a mute should be.
   bool _muted = false;
 
+  /// The mute state as of the LAST frame this saw, muted frames included.
+  ///
+  /// A frame's `droppedMs` describes the interval BEFORE it, so whether that
+  /// dropped audio was being recorded is a question about the mute state DURING
+  /// that interval -- which is the state going into it, at the previous frame,
+  /// not this frame's, which a mute landing in between has already flipped.
+  /// Reading the current state instead discarded a drop that happened while
+  /// UNMUTED whenever the learner muted before its report arrived: real lost
+  /// audio, published as `capture_dropped_ms: 0`.
+  bool _mutedAsOfLastFrame = false;
+
   /// Gates or ungates capture to match the microphone button.
   ///
   /// The run ends HERE rather than in [_onFrames], and on the false -> true
@@ -981,7 +992,20 @@ class CallCaptureService {
     // would report a failure for a stretch nobody was ever going to record, on
     // every call where somebody muted, and leave the flag meaning nothing when
     // it matters.
-    if (droppedMs > 0 && !_muted) _captureDroppedMs += droppedMs;
+    //
+    // But the mute state that decides this is the one during the DROPPED
+    // interval, not this frame's. The tap reports a drop on the frame AFTER it,
+    // so a drop that happened while UNMUTED rides out on a frame the learner has
+    // since muted — and read against the current `_muted` it was thrown away,
+    // the same silent loss counting above the gate exists to prevent.
+    // [_mutedAsOfLastFrame] is the state going into that interval, so an unmuted
+    // drop still counts even when its report lands muted, and a drop that
+    // genuinely happened while muted still does not.
+    if (droppedMs > 0 && !_mutedAsOfLastFrame) _captureDroppedMs += droppedMs;
+    // Advanced for EVERY frame, muted ones included, and BEFORE the gate below
+    // can return: it is this frame's mute state that governs the NEXT frame's
+    // dropped interval, whether or not this frame's own samples are recorded.
+    _mutedAsOfLastFrame = _muted;
 
     if (!forThisRun) return;
 

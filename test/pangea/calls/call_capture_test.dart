@@ -2012,17 +2012,53 @@ void main() {
       // inside that span is audio nobody was going to record. Counting it would
       // report a capture failure on every call where somebody muted, and leave
       // the flag meaning nothing when it matters.
+      //
+      // GENUINELY muted: a frame arrives WHILE muted, and the drop is reported
+      // on a LATER muted frame, so the whole dropped interval was muted. This is
+      // the case the exclusion is for, and is distinct from a drop that happened
+      // while UNMUTED and merely arrives on a now-muted frame -- see below.
       final tap = _DrivableTap();
       final s = service(withTap: tap);
       await s.start(track);
 
       tap.onFrames!(speech(100), captureSampleRate, 1);
       s.setMuted(true);
+      // A muted frame first, so the interval the next frame's drop reports is
+      // one that was muted at BOTH ends.
+      tap.onFrames!(speech(100), captureSampleRate, 1);
       tap.onFrames!(speech(100), captureSampleRate, 1, droppedMs: 700);
       await s.stop();
 
       expect(s.captureDroppedMs, 0);
     });
+
+    test(
+      'audio dropped while UNMUTED counts even reported on a muted frame',
+      () async {
+        // The finding, and the exact sequence the exclusion above must NOT
+        // swallow. The learner is unmuted and speaking, the tap loses audio, and
+        // the learner mutes before the next frame -- the one carrying the report
+        // for that UNMUTED interval -- arrives. The drop describes the interval
+        // BEFORE the frame, which was unmuted, so it is real lost speech. Read
+        // against the frame's CURRENT mute state it was thrown away and the half
+        // published capture_dropped_ms: 0 over the hole.
+        final tap = _DrivableTap();
+        final s = service(withTap: tap);
+        await s.start(track);
+
+        tap.onFrames!(speech(100), captureSampleRate, 1);
+        s.setMuted(true);
+        tap.onFrames!(speech(100), captureSampleRate, 1, droppedMs: 700);
+        await s.stop();
+
+        expect(
+          s.captureDroppedMs,
+          700,
+          reason:
+              'the drop happened while unmuted; a later mute cannot erase it',
+        );
+      },
+    );
   });
 
   group('the tail of a stretch another device also recorded', () {
