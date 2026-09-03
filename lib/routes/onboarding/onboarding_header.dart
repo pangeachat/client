@@ -44,8 +44,11 @@ class OnboardingHeader extends StatelessWidget implements PreferredSizeWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Row(
                 children: [
+                  // A new Back button per step: the control a screen reader
+                  // pressed then leaves the tree like any other, so it cannot
+                  // keep a stale view of the step from the button it sat on.
                   hasPrevStep
-                      ? BackButton(onPressed: onBack)
+                      ? BackButton(key: ValueKey(step), onPressed: onBack)
                       : const SizedBox(width: 40.0),
                   Expanded(
                     child: Semantics(

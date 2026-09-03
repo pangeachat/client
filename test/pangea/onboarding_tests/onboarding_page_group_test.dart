@@ -132,11 +132,17 @@ void main() {
     await tester.pump();
     expect(choose.hasPrimaryFocus, isTrue);
 
+    final backBefore = tester.element(find.byType(BackButton));
     await tester.pumpWidget(page(step: 2, choose: choose));
     await tester.pump(const Duration(milliseconds: 300));
     await tester.pump();
 
     expect(back.hasPrimaryFocus, isFalse);
+    // The pressed Back leaves the tree with its step, like any other control.
+    expect(
+      identical(backBefore, tester.element(find.byType(BackButton))),
+      isFalse,
+    );
     final group = nodeOf(tester, find.byType(OnboardingPageGroup));
     expect(group.hasPrimaryFocus, isTrue);
     expect(
