@@ -909,14 +909,56 @@ class CallService {
   /// [announce] returns to it, not this slot — so a superseded call does not
   /// lose its own id here; the refusal below only keeps the SHARED slot from
   /// being clobbered by a call that is no longer current.
+  /// Every membership event id a call in this process has claimed as its anchor,
+  /// mapped to the join attempt that claimed it. A WRITE-TIME SAFETY ASSERTION,
+  /// not an anchor source: it never decides which id a call uses, it only
+  /// refuses to let a SECOND call key on an id a DIFFERENT call already claimed.
+  ///
+  /// Keyed by call identity so a call's own resend collapses: the same owner
+  /// re-registering the same id is a no-op, and only a different owner colliding
+  /// on it throws. Bounded — a redial can only dedup onto a RECENT still-current
+  /// membership, so the last [_maxClaimedAnchors] are more than enough, and the
+  /// oldest are evicted rather than retained for the life of the process. It is
+  /// NOT the previous call's key kept to RESOLVE an anchor (that stale past-state
+  /// is what this design removed); it is a collision alarm and nothing else.
+  final Map<String, int> _claimedAnchors = {};
+  static const _maxClaimedAnchors = 64;
+
+  /// Mirrors the current call's published id into the owner-gated service slot
+  /// that [membershipEventIdIn] reads, and asserts no two calls share an id.
+  /// The value a call keys on is what [announce] returns to it, not this slot —
+  /// so a superseded call does not lose its own id here; the owner check below
+  /// only keeps the SHARED slot from being clobbered by a call no longer current.
   void _anchorOn(int? owner, String? published) {
     if (published == null) {
       // A STATED FAILURE, NOT A GUESS. enter() returns null when it wrote no
       // membership at all — a leave already in flight on the session suppresses
-      // the write — so this call has no identity, and everything keyed on one
-      // writes nothing rather than writing under somebody else's key.
+      // the write. [announce] turns this into a loud failure; the log names it.
       Logs().w('The join published no membership; this call has no anchor');
       return;
+    }
+    if (owner != null) {
+      // FINDING 3 / Synapse identical-content dedup, made loud. If two calls'
+      // enters ever come back with the same event id — the astronomically rare
+      // case argued unreachable at [_anchorOwner] — refuse to key the second on
+      // it rather than silently overwriting the first's card and transcript. A
+      // RESEND collapses: the same call (same owner) re-claiming its own id is a
+      // no-op, so this never fires on a legitimate republish, only on a genuine
+      // cross-call collision.
+      final claimant = _claimedAnchors[published];
+      if (claimant != null && claimant != owner) {
+        Logs().e(
+          'Membership $published is already the anchor of call $claimant; '
+          'refusing to key call $owner on it (a dedup collision)',
+        );
+        throw StateError(
+          'membership event id $published is already in use by another call',
+        );
+      }
+      _claimedAnchors[published] = owner;
+      while (_claimedAnchors.length > _maxClaimedAnchors) {
+        _claimedAnchors.remove(_claimedAnchors.keys.first);
+      }
     }
     if (owner != _anchorOwner) {
       // A redial superseded this call while its enter was in flight. Its id is
@@ -1842,7 +1884,7 @@ class CallService {
       // double-write the membership, and returns the id THAT enter published.
       final published = await ourEnter.timeout(_announceWithin);
       _stopIfDisposed();
-      return published;
+      return _anchorOrThrow(published);
     }
     if (session.state == GroupCallState.entered) {
       // A prior announce for THIS call already entered and returned; hand back
@@ -1937,10 +1979,23 @@ class CallService {
     // the service slot: an enter can complete for a call a redial has
     // superseded, and this call keeps the membership IT wrote while the redial
     // keeps its own — the two calls each hold their own id, which is what makes
-    // the single shared slot unable to lose either. `null` when the enter wrote
-    // nothing (a leave in flight suppressed it), which [_anchorOn] has already
-    // logged as this call's stated failure.
-    return published;
+    // the single shared slot unable to lose either.
+    return _anchorOrThrow(published);
+  }
+
+  /// A live call's anchor, or a loud failure. NO CALL REACHES RECORDING WITHOUT
+  /// AN ANCHOR: when a call performed its own enter but that enter wrote no
+  /// membership (a leave in flight on a reused session suppressed it), the call
+  /// has no key for its transcript or card and MUST fail rather than record
+  /// keyless. The throw unwinds it through the same teardown as the
+  /// already-entered branch, which retracts. This is a stated failure made loud
+  /// — the alternative, returning null, let the call go on and record under no
+  /// key, and the transcript was then lost downstream in silence.
+  String _anchorOrThrow(String? published) {
+    if (published != null) return published;
+    throw StateError(
+      'the join published no membership; this call has no anchor',
+    );
   }
 
   /// Whether the call [announce] read before waiting is still one this service
@@ -2167,6 +2222,10 @@ class CallService {
     _voip = null;
     _focus = null;
     _resolving = null;
+    // The collision alarm is per-process state for one account's calls; a new
+    // login builds a fresh service, so nothing carries over, but clear it here
+    // too so a disposed service holds no memory of ids it will never see again.
+    _claimedAnchors.clear();
   }
 
   @visibleForTesting

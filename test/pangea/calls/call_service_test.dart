@@ -3223,25 +3223,73 @@ void main() {
       await disposing;
     });
 
-    test('is nothing when the join published no membership', () async {
+    // F1 (round 5). enter() returns null when it wrote no membership at all --
+    // a leave already in flight on a reused session suppresses the write. The
+    // call has no key for its transcript or card. It must FAIL LOUDLY, the same
+    // way the already-entered branch does, rather than return a keyless null the
+    // call goes on to record under: no call reaches recording without an anchor.
+    test('fails loudly when its own enter publishes no membership', () async {
       final (calls, room) = await redialing();
       final session = sessionFor(calls, room);
-      // What the SDK returns when it wrote nothing: a leave already in flight
-      // on the session suppresses the write without changing the state enter
-      // checks.
+      // What the SDK returns when it wrote nothing.
       session.publishes = null;
       calls.adoptSessionForTest(session);
 
-      expect(
-        await calls.announce(),
-        isNull,
+      await expectLater(
+        calls.announce(),
+        throwsA(isA<StateError>()),
         reason:
-            'a call that published no membership has no identity, and saying '
-            'so is the whole of the failure: the transcript writer logs and '
-            'writes nothing rather than writing under a key it guessed',
+            'a call that published no membership has no key; logging and '
+            'returning null let it record keyless and lose its transcript. It '
+            'must throw so the call unwinds through teardown instead',
       );
       expect(calls.membershipEventIdIn(calls.joinAttempt), isNull);
     });
+
+    // F3 (round 5). Synapse dedups a state write whose content matches the
+    // current state, returning the EXISTING event id -- so two calls' enters
+    // could, in the astronomically rare case argued unreachable elsewhere, come
+    // back with the same id. A write-time alarm turns that silent collision
+    // loud: a SECOND call keying on an id a DIFFERENT call already claimed is
+    // refused. It never changes which id a call uses; it only refuses a shared
+    // one. Keyed by call identity, so a call's OWN resend collapses.
+    test(
+      'refuses a second call that dedups onto a live one\'s membership',
+      () async {
+        final (calls, room) = await redialing();
+        // Two calls whose enters come back with the SAME event id: distinct
+        // sessions, distinct owners, one membership id.
+        final first = sessionFor(calls, room)..publishes = r'$shared';
+        calls.adoptSessionForTest(first);
+        expect(
+          await calls.announce(),
+          r'$shared',
+          reason: 'the first call claims it',
+        );
+
+        // A RESEND of the same call collapses: re-claiming the same id under the
+        // same owner is a no-op, never a false alarm.
+        expect(
+          await calls.announce(),
+          r'$shared',
+          reason:
+              'the same call re-claiming its own id must not trip the alarm',
+        );
+
+        // A DIFFERENT call deduped onto the same id is refused loudly rather than
+        // silently keying its card and transcript on a membership already in use.
+        final second = sessionFor(calls, room)..publishes = r'$shared';
+        calls.adoptSessionForTest(second);
+        await expectLater(
+          calls.announce(),
+          throwsA(isA<StateError>()),
+          reason:
+              'two calls sharing one membership event id is the collision this '
+              "exists to make loud; overwriting silently loses the first's "
+              'transcript',
+        );
+      },
+    );
 
     // The SDK writes the membership FIRST and only then runs the rest of
     // entering, so a throw from any of those later steps leaves a membership
