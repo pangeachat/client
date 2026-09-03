@@ -18,9 +18,6 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
-import 'package:fluffychat/routes/chat/chat_details/menu_a11y_focus_stub.dart'
-    if (dart.library.js_interop) 'package:fluffychat/routes/chat/chat_details/menu_a11y_focus_web.dart';
-
 extension on ChatContextAction {
   bool enabled({required Room room, required Room? space}) {
     switch (this) {
@@ -108,71 +105,32 @@ void chatContextMenuAction(
       .where((v) => v.enabled(room: room, space: space))
       .length;
 
-  // Focus lands INSIDE the menu (#8767). The web engine focuses the first
-  // item's DOM element directly (SemanticRouteBase.focusAsRouteDefault) —
-  // the only path with no intermediate hop — but ONLY when the semantics
-  // update introducing the route contains no focused node. So: release
-  // focus before opening (with the route itself claiming none), which
-  // arms that path; VoiceOver then lands straight on the first item.
-  // Anything else — a claimed-but-empty route scope, or moving framework
-  // focus while DOM focus sits outside the app — reaches the engine as a
-  // view-focus event, whose fallback focuses the flutter-view host and
-  // throws VoiceOver to the browser window (verified against the engine's
-  // view_focus_binding, and live). The 300ms focus below is the backup
-  // for platforms without the engine's route-default (and for keyboard
-  // parity); by then DOM focus is already inside the menu, so it cannot
-  // re-trigger the host fallback. On dismiss, focus returns to where it
-  // was.
-  final previousFocus = primaryFocus;
-  previousFocus?.unfocus();
-  final firstItemFocus = FocusNode(skipTraversal: true);
-  // DOM first (web): lands on the item within a frame of the menu
-  // appearing — the same flush that removes the background nodes from
-  // under the screen-reader cursor — see menu_a11y_focus_web.dart.
-  domFocusFirstMenuItemWhenReady();
-  // Framework focus for keyboard parity; by now activeElement is already
-  // inside the menu, so this cannot trigger the host-focus fallback.
-  Future.delayed(const Duration(milliseconds: 300), () {
-    if (firstItemFocus.context?.mounted ?? false) {
-      firstItemFocus.requestFocus();
-    }
-  });
   final action = await showMenu<ChatContextAction>(
     context: context,
     position: position,
-    requestFocus: false,
     items: [
       if (ChatContextAction.open.enabled(room: room, space: space))
         PopupMenuItem(
           value: ChatContextAction.open,
-          child: Focus(
-            // The delayed-focus target — see the note above showMenu.
-            // Skipped in traversal so the item doesn't become two Tab stops.
-            focusNode: firstItemFocus,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              spacing: 12.0,
-              children: [
-                // Decorative here — without this the item announces the room
-                // name twice (avatar label + text).
-                ExcludeSemantics(
-                  child: Avatar(
-                    mxContent: room.avatar,
-                    name: displayname,
-                    userId: room.directChatMatrixID,
-                  ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 12.0,
+            children: [
+              Avatar(
+                mxContent: room.avatar,
+                name: displayname,
+                userId: room.directChatMatrixID,
+              ),
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 128),
+                child: Text(
+                  displayname,
+                  style: TextStyle(color: theme.colorScheme.onSurface),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 128),
-                  child: Text(
-                    displayname,
-                    style: TextStyle(color: theme.colorScheme.onSurface),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       if (enabledCount > 1) const PopupMenuDivider(),
@@ -296,14 +254,7 @@ void chatContextMenuAction(
     ],
   );
 
-  firstItemFocus.dispose();
-  if (action == null) {
-    // Dismissed — hand focus back to the control that opened the menu.
-    if (previousFocus != null && previousFocus.context != null) {
-      previousFocus.requestFocus();
-    }
-    return;
-  }
+  if (action == null) return;
 
   switch (action) {
     case ChatContextAction.open:
