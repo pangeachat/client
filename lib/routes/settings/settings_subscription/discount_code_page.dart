@@ -33,7 +33,6 @@ class DiscountCodePageState extends State<DiscountCodePage>
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return Scaffold(
       appBar: AppBar(
@@ -68,10 +67,6 @@ class DiscountCodePageState extends State<DiscountCodePage>
               alignment: Alignment.topCenter,
               child: Container(
                 padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surface,
-                  borderRadius: BorderRadius.circular(24.0),
-                ),
                 constraints: BoxConstraints(maxWidth: 400),
                 child: DiscountCodeViewContent(
                   viewModel: _viewModel,
