@@ -46,21 +46,6 @@ async function login(user, password) {
   return { token: r.access_token, userId: r.user_id, deviceId: r.device_id };
 }
 
-/// WHICH DEVICE a token belongs to.
-///
-/// The only way to ask a running browser which Matrix device it is. Nothing the
-/// app puts on the page carries the id, and the harness's own login is a
-/// DIFFERENT device from the one the browser holds -- so a scenario that has to
-/// pair a browser with a device id has to ask the homeserver with that
-/// browser's own token.
-async function whoami(token) {
-  const r = await api('/_matrix/client/v3/account/whoami', { token });
-  return {
-    userId: r.user_id,
-    deviceId: typeof r.device_id === 'string' ? r.device_id : null,
-  };
-}
-
 /// Gives a session back.
 ///
 /// Every login creates a DEVICE, and the two fixture accounts are reused
@@ -100,47 +85,6 @@ async function timeline(token, roomId, limit = 60) {
     { token },
   );
   return (r.chunk || []).slice().reverse();
-}
-
-/// One page of the timeline, backwards, WITH the token that continues it.
-///
-/// [timeline] answers "the recent past" and throws the pagination token away,
-/// which is right for every caller that wants a window and wrong for the one
-/// that has to search until it has covered something. A check written on a
-/// fixed window cannot say "no earlier X exists" -- only "none in the last N
-/// events" -- and the two read alike right up to the moment they differ.
-///
-/// [from] is the `end` of the previous page; absent, this starts at the live
-/// end. `end` comes back null at the start of the room, which is how a caller
-/// knows it has run out of history rather than out of patience.
-async function messagesBack(token, roomId, { from = null, limit = 200 } = {}) {
-  const q = `dir=b&limit=${limit}${from ? `&from=${encodeURIComponent(from)}` : ''}`;
-  const r = await api(
-    `/_matrix/client/v3/rooms/${encodeURIComponent(roomId)}/messages?${q}`,
-    { token },
-  );
-  return { chunk: (r.chunk || []).slice().reverse(), end: r.end || null };
-}
-
-/// One event by id, or null when the room does not have it.
-///
-/// A call key IS an event id -- the caller's own membership event -- so this is
-/// how the moment a call began is knowable from the key alone, which is what
-/// bounds a search for halves written under it.
-///
-/// Null ONLY on a 404, which is the server answering. Any other failure throws:
-/// an expired token and an absent event are opposite findings, and a catch that
-/// returned null for both would report a call key this room has never seen.
-async function eventById(token, roomId, eventId) {
-  try {
-    return await api(
-      `/_matrix/client/v3/rooms/${encodeURIComponent(roomId)}/event/${encodeURIComponent(eventId)}`,
-      { token },
-    );
-  } catch (e) {
-    if (e && e.status === 404) return null;
-    throw e;
-  }
 }
 
 /// The name the APP will draw for a user.
@@ -252,51 +196,6 @@ function countType(events, type) {
   return events.filter((e) => e.type === type).length;
 }
 
-/// WHICH of this account's devices are in the call in this room, right now.
-///
-/// One entry per DEVICE, which is the shape of the state event: a leave removes
-/// only the leaving device's entry, so the account's row is a list rather than a
-/// flag. Only non-expired entries count, for the reason [liveMemberships] gives.
-///
-/// The IDS rather than a count, because the question two devices of one account
-/// raise is not "how many" but "which two" -- a transcript half names the device
-/// that wrote it, and that name only means something next to the devices that
-/// were actually in the call.
-///
-/// AN ERROR IS NOT AN ANSWER, and this used to return `[]` for every one of
-/// them. A 500 from the homeserver, a token the server has expired, a room the
-/// harness is not in, a hostname that does not resolve -- all of them came back
-/// as "this account has no device in a call", which is a real answer to a
-/// question that was never asked. What rests on it is not small: a scenario's
-/// opening gate reads this and passes on an empty list, and hangup drivers stop
-/// clicking on one.
-///
-/// ONLY A 404 IS EMPTINESS, and it is the server ANSWERING: Synapse returns
-/// M_NOT_FOUND for a state event that was never written, which is exactly a
-/// room this account has never held a call membership in. Everything else is
-/// the read failing, and it throws -- a harness that cannot see is a fact about
-/// the rig, and reporting it as a product state is how a check comes to pass
-/// for a reason nobody can act on. [api] attaches the status for this, and
-/// [eventById] draws the same line.
-async function liveMembershipDevices(token, roomId, userId) {
-  let st;
-  try {
-    st = await api(
-      `/_matrix/client/v3/rooms/${encodeURIComponent(roomId)}/state/com.famedly.call.member/${encodeURIComponent(userId)}`,
-      { token },
-    );
-  } catch (e) {
-    if (e && e.status === 404) return [];
-    throw e;
-  }
-  const mems = Array.isArray(st.memberships) ? st.memberships : [];
-  const now = Date.now();
-  return mems
-    .filter((m) => typeof m.expires_ts === 'number' && m.expires_ts > now)
-    .map((m) => (typeof m.device_id === 'string' ? m.device_id : ''))
-    .filter((id) => id.length > 0);
-}
-
 /// How many LIVE call memberships this account has in the room.
 ///
 /// Only non-expired ones count. Every login creates a new device, and a leave
@@ -304,15 +203,22 @@ async function liveMembershipDevices(token, roomId, userId) {
 /// accumulates entries from every past session. Counting them all made a
 /// perfectly good hangup look like it had failed -- the stale entries are all
 /// long expired, which is exactly how the SDK itself filters them.
-///
-/// Counted off [liveMembershipDevices] rather than beside it: an entry naming no
-/// device is not a device in the call, and two answers to one question drift.
 async function liveMemberships(token, roomId, userId) {
-  return (await liveMembershipDevices(token, roomId, userId)).length;
+  try {
+    const st = await api(
+      `/_matrix/client/v3/rooms/${encodeURIComponent(roomId)}/state/com.famedly.call.member/${encodeURIComponent(userId)}`,
+      { token },
+    );
+    const mems = Array.isArray(st.memberships) ? st.memberships : [];
+    const now = Date.now();
+    return mems.filter((m) => typeof m.expires_ts === 'number' && m.expires_ts > now).length;
+  } catch (_) {
+    return 0;
+  }
 }
 
 async function hasMembership(token, roomId, userId) {
   return (await liveMemberships(token, roomId, userId)) > 0;
 }
 
-module.exports = { api, login, logout, whoami, displayName, targetLanguage, baseLang, hasMembership, liveMemberships, liveMembershipDevices, directRoomWith, timeline, messagesBack, eventById, cardsIn, card, countType, CALL, DECLINE, RING, HS };
+module.exports = { api, login, logout, displayName, targetLanguage, baseLang, hasMembership, liveMemberships, directRoomWith, timeline, cardsIn, card, countType, CALL, DECLINE, RING, HS };
