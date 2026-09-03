@@ -313,7 +313,7 @@ class FakeCalls extends CallService {
   String? roomMembershipId = '\$membership';
 
   @override
-  String? membershipEventIdIn(matrix.Room room) =>
+  String? membershipEventIdIn(int? attempt) =>
       _retracted ? null : roomMembershipId;
 
   @override

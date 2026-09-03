@@ -80,7 +80,7 @@ class _FakeCalls extends CallService {
   Future<String?> announce() async => '\$membership';
 
   @override
-  String? membershipEventIdIn(matrix.Room room) => '\$membership';
+  String? membershipEventIdIn(int? attempt) => '\$membership';
 
   @override
   Future<bool> retract() async {
@@ -125,7 +125,7 @@ class _NeverEchoesCalls extends _FakeCalls {
   Future<String?> announce() async => null;
 
   @override
-  String? membershipEventIdIn(matrix.Room room) => null;
+  String? membershipEventIdIn(int? attempt) => null;
 }
 
 /// A call that cannot be got into at all: the SFU refuses the join, so the
