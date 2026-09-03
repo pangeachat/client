@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-02 11:49:00.561470",
+    "@@last_modified": "2026-09-03 14:14:17.971149",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{total} тоглогчоос {filled} нь",
     "mapAttributionLabel": "OpenStreetMap-ийн хувь нэмэр оруулагчид, зохиогчийн эрх, лиценз",
     "seeAll": "Бүгдийг харах",
-    "seeAllSection": "Бүх {section}-г харах"
+    "seeAllSection": "Бүх {section}-г харах",
+    "onboardingStepOfTotal": "Нийт {total}-ээс {step}-р алхам"
 }

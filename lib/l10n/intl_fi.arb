@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-02 11:48:50.601094",
+    "@@last_modified": "2026-09-03 14:14:15.351208",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9897,5 +9897,6 @@
     "participantsOfTotal": "{filled}/{total} pelaajaa",
     "mapAttributionLabel": "OpenStreetMapin tekijät, tekijänoikeudet ja lisenssi",
     "seeAll": "Näytä kaikki",
-    "seeAllSection": "Näytä kaikki {section}"
+    "seeAllSection": "Näytä kaikki {section}",
+    "onboardingStepOfTotal": "Vaihe {step}/{total}"
 }

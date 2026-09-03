@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-02 11:49:13.817217",
+    "@@last_modified": "2026-09-03 14:14:20.317679",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} פֿון {total} שפּילער",
     "mapAttributionLabel": "OpenStreetMap מיטארבעטער, קאפירעכט און ליצענץ",
     "seeAll": "זען אַלע",
-    "seeAllSection": "זען אַלע {section}"
+    "seeAllSection": "זען אַלע {section}",
+    "onboardingStepOfTotal": "שריט {step} פֿון {total}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-02 11:48:48.052898",
+    "@@last_modified": "2026-09-03 14:14:14.770601",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} di {total} ghjucadori",
     "mapAttributionLabel": "Cuntributori OpenStreetMap, copyright è licenza",
     "seeAll": "Vede tuttu",
-    "seeAllSection": "Vede tuttu {section}"
+    "seeAllSection": "Vede tuttu {section}",
+    "onboardingStepOfTotal": "Passu {step} di {total}"
 }

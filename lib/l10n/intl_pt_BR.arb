@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:49:04.202385",
+    "@@last_modified": "2026-09-03 14:14:18.854833",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9860,5 +9860,6 @@
     "participantsOfTotal": "{filled} de {total} jogadores",
     "mapAttributionLabel": "Colaboradores do OpenStreetMap, direitos autorais e licença",
     "seeAll": "Ver tudo",
-    "seeAllSection": "Ver tudo em {section}"
+    "seeAllSection": "Ver tudo em {section}",
+    "onboardingStepOfTotal": "Etapa {step} de {total}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-02 11:49:02.335804",
+    "@@last_modified": "2026-09-03 14:14:18.301864",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{total} players sing {filled} na yaore",
     "mapAttributionLabel": "OpenStreetMap contributors, copyright amadi license",
     "seeAll": "পুম্নমক উ",
-    "seeAllSection": "পুম্নমক উ {section}"
+    "seeAllSection": "পুম্নমক উ {section}",
+    "onboardingStepOfTotal": "{total} gi manungda {step}-suba khongthang"
 }

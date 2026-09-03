@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:48:48.564526",
+    "@@last_modified": "2026-09-03 14:14:14.998104",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10805,5 +10805,6 @@
     "participantsOfTotal": "{filled} el {total} ludantoj",
     "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
     "seeAll": "Vidi ĉion",
-    "seeAllSection": "Vidi ĉion en {section}"
+    "seeAllSection": "Vidi ĉion en {section}",
+    "onboardingStepOfTotal": "Paŝo {step} el {total}"
 }

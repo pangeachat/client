@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-02 11:48:53.597935",
+    "@@last_modified": "2026-09-03 14:14:16.072974",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9963,5 +9963,6 @@
     "participantsOfTotal": "{filled}/{total} játékos",
     "mapAttributionLabel": "OpenStreetMap közreműködők, szerzői jogok és licenc",
     "seeAll": "Összes megtekintése",
-    "seeAllSection": "Összes {section} megtekintése"
+    "seeAllSection": "Összes {section} megtekintése",
+    "onboardingStepOfTotal": "{step}/{total} lépés"
 }

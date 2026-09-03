@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-02 11:48:45.937798",
+    "@@last_modified": "2026-09-03 14:14:14.429648",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{total} জন খেলুৱৈৰ ভিতৰত {filled} জন",
     "mapAttributionLabel": "OpenStreetMap অৱদানকাৰী, স্বত্বাধিকাৰ আৰু অনুজ্ঞাপত্ৰ",
     "seeAll": "সকলো চাওক",
-    "seeAllSection": "সকলো চাওক {section}"
+    "seeAllSection": "সকলো চাওক {section}",
+    "onboardingStepOfTotal": "{total}টাৰ ভিতৰত {step} নং খাপ"
 }

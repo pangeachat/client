@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-02 11:49:09.368968",
+    "@@last_modified": "2026-09-03 14:14:19.929885",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10161,5 +10161,6 @@
     "participantsOfTotal": "{total} oyuncudan {filled} tanesi",
     "mapAttributionLabel": "OpenStreetMap katılımcıları, telif hakkı ve lisans",
     "seeAll": "Tümünü gör",
-    "seeAllSection": "Tüm {section} bölümünü gör"
+    "seeAllSection": "Tüm {section} bölümünü gör",
+    "onboardingStepOfTotal": "{total} adımdan {step}. adım"
 }

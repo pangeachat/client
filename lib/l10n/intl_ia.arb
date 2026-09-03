@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-02 11:48:54.273170",
+    "@@last_modified": "2026-09-03 14:14:16.839866",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10796,5 +10796,6 @@
     "participantsOfTotal": "{filled} de {total} jocatores",
     "mapAttributionLabel": "Contribuentes de OpenStreetMap, derectos de autor e licentia",
     "seeAll": "Vider tote",
-    "seeAllSection": "Vider tote {section}"
+    "seeAllSection": "Vider tote {section}",
+    "onboardingStepOfTotal": "Passo {step} de {total}"
 }

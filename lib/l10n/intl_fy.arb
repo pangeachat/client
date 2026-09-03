@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-02 11:48:51.690984",
+    "@@last_modified": "2026-09-03 14:14:15.408426",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} fan {total} spilers",
     "mapAttributionLabel": "OpenStreetMap-meiwurkers, copyright en lisinsje",
     "seeAll": "Alles sjen",
-    "seeAllSection": "Alles sjen yn {section}"
+    "seeAllSection": "Alles sjen yn {section}",
+    "onboardingStepOfTotal": "Stap {step} fan {total}"
 }

@@ -26,13 +26,9 @@ class OnboardingNavigationController {
   bool get hasNextStep => _currentStep.maxRemainingSteps > 0;
   bool get hasPrevStep => _prevSteps.isNotEmpty;
 
-  double get progress => max(
-    0.0,
-    min(
-      1.0,
-      _currentStepIndex / (_currentStepIndex + _currentStep.maxRemainingSteps),
-    ),
-  );
+  int get totalSteps => _currentStepIndex + _currentStep.maxRemainingSteps;
+
+  double get progress => max(0.0, min(1.0, _currentStepIndex / totalSteps));
 
   Future<NavigationResult> forward() async {
     try {

@@ -2081,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-09-02 11:48:50.298759",
+    "@@last_modified": "2026-09-03 14:14:15.356863",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10720,5 +10720,6 @@
     "participantsOfTotal": "{filled} sa {total} na manlalaro",
     "mapAttributionLabel": "Mga contributor ng OpenStreetMap, copyright at lisensya",
     "seeAll": "Tingnan lahat",
-    "seeAllSection": "Tingnan lahat ng {section}"
+    "seeAllSection": "Tingnan lahat ng {section}",
+    "onboardingStepOfTotal": "Hakbang {step} sa {total}"
 }

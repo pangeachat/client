@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-02 11:49:04.600394",
+    "@@last_modified": "2026-09-03 14:14:18.958079",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10832,5 +10832,6 @@
     "participantsOfTotal": "{filled} из {total} игроков",
     "mapAttributionLabel": "Участники OpenStreetMap, авторские права и лицензия",
     "seeAll": "Посмотреть все",
-    "seeAllSection": "Посмотреть все {section}"
+    "seeAllSection": "Посмотреть все {section}",
+    "onboardingStepOfTotal": "Шаг {step} из {total}"
 }

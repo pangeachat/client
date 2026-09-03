@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-02 11:48:56.224994",
+    "@@last_modified": "2026-09-03 14:14:17.088530",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{total} ойыншының {filled}-і",
     "mapAttributionLabel": "OpenStreetMap қатысушылары, авторлық құқық және лицензия",
     "seeAll": "Барлығын қарау",
-    "seeAllSection": "Барлық {section} қарау"
+    "seeAllSection": "Барлық {section} қарау",
+    "onboardingStepOfTotal": "{total} ішінен {step}-қадам"
 }

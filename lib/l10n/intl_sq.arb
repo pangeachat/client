@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-02 11:49:06.782533",
+    "@@last_modified": "2026-09-03 14:14:19.376094",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} nga {total} lojtarë",
     "mapAttributionLabel": "Kontribuesit e OpenStreetMap, të drejtat e autorit dhe licenca",
     "seeAll": "Shiko të gjitha",
-    "seeAllSection": "Shiko të gjitha {section}"
+    "seeAllSection": "Shiko të gjitha {section}",
+    "onboardingStepOfTotal": "Hapi {step} nga {total}"
 }

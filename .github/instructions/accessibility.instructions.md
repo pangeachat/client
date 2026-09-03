@@ -73,9 +73,11 @@ Author these as you build.
 
 ## Focus after an in-place content swap
 
-Some pages replace their content under chrome that stays put: the onboarding wizard swaps its step body under a persistent app bar and Back button. On the web the control that was just pressed disappears with the old content, and with nothing claiming focus the screen reader is left on the page root or on the Back button, unable to reach the new content (#7582).
+Some pages replace their content under chrome that stays put: the onboarding wizard swaps its step under a persistent header. On the web the control that was just pressed disappears with the old content, and with nothing claiming focus the screen reader is left on the page root or on the Back button, unable to reach the new content (#7582).
 
-**After an in-place swap, focus lands on the group containing the page's center content** — a named group holding everything between the chrome and the forward action, labelled with the step's visible title, which is not read a second time as a child. The page clears its focus history at the swap so no older control is restored, and the group claims focus as one discrete event once the swap has settled. The group is not a Tab stop: keyboard users still move straight to the controls inside. The shared implementation is [`OnboardingStepBody`](../../lib/routes/onboarding/onboarding_step_views/onboarding_step_body.dart).
+**After an in-place swap, focus lands on the whole step — the group holding the header, the center content and the forward button — and the screen reader announces the step by its page name.** The page clears its focus history at the swap so no older control is restored, and the group claims focus as one discrete event once the swap has settled. It is not a Tab stop: keyboard users still move straight to the controls inside.
+
+**Inside the step the header is flat and the center content is one named group.** The Back button and the progress bar, announced as "Step n of m", are direct children of the step, never wrapped in a group of their own, so one step up from the center content lands beside them with no further group to enter. The center content — the title and the choices — is a group named by the step's visible title, which is not read a second time as a child; on a step that scrolls, that group is the scroll region itself, so scrolling adds no level of its own. Shared implementation: [`OnboardingPageGroup`](../../lib/routes/onboarding/onboarding_page_group.dart), [`OnboardingHeader`](../../lib/routes/onboarding/onboarding_header.dart), [`OnboardingStepBody`](../../lib/routes/onboarding/onboarding_step_views/onboarding_step_body.dart).
 
 ## Quick habits for anyone building UI
 

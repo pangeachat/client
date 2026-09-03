@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-02 11:48:58.854164",
+    "@@last_modified": "2026-09-03 14:14:17.580014",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} vun {total} Spiller",
     "mapAttributionLabel": "OpenStreetMap Mataarbechter, Copyright a Lizenz",
     "seeAll": "Alles gesinn",
-    "seeAllSection": "Alles gesinn {section}"
+    "seeAllSection": "Alles gesinn {section}",
+    "onboardingStepOfTotal": "Schrëtt {step} vun {total}"
 }

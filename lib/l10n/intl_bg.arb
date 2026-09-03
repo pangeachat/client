@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-02 11:48:45.719576",
+    "@@last_modified": "2026-09-03 14:14:14.283043",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} от {total} играчи",
     "mapAttributionLabel": "Сътрудници на OpenStreetMap, авторски права и лиценз",
     "seeAll": "Виж всички",
-    "seeAllSection": "Виж всички {section}"
+    "seeAllSection": "Виж всички {section}",
+    "onboardingStepOfTotal": "Стъпка {step} от {total}"
 }

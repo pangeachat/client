@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-02 11:49:11.221537",
+    "@@last_modified": "2026-09-03 14:14:20.100584",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9860,5 +9860,6 @@
     "participantsOfTotal": "{filled} з {total} гравців",
     "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
     "seeAll": "Переглянути всі",
-    "seeAllSection": "Переглянути всі {section}"
+    "seeAllSection": "Переглянути всі {section}",
+    "onboardingStepOfTotal": "Крок {step} із {total}"
 }

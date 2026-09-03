@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-09-02 11:49:08.093147",
+    "@@last_modified": "2026-09-03 14:14:19.665833",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "Libapali tse {filled} ho tse {total}",
     "mapAttributionLabel": "Bafani ba OpenStreetMap, litokelo tsa ho kopitsa le laesense",
     "seeAll": "Bona kaofela",
-    "seeAllSection": "Bona {section} kaofela"
+    "seeAllSection": "Bona {section} kaofela",
+    "onboardingStepOfTotal": "Kgato {step} ho tse {total}"
 }

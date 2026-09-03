@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:49:06.648181",
+    "@@last_modified": "2026-09-03 14:14:19.484256",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10809,5 +10809,6 @@
     "participantsOfTotal": "{filled} od {total} igrača",
     "mapAttributionLabel": "OpenStreetMap saradnici, autorska prava i licenca",
     "seeAll": "Pogledaj sve",
-    "seeAllSection": "Pogledaj sve {section}"
+    "seeAllSection": "Pogledaj sve {section}",
+    "onboardingStepOfTotal": "Korak {step} od {total}"
 }

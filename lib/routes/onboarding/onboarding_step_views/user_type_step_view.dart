@@ -70,10 +70,12 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
                 spacing: 12.0,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  BotFace(
-                    expression: BotExpression.idle,
-                    useRive: true,
-                    width: 140.0,
+                  ExcludeSemantics(
+                    child: BotFace(
+                      expression: BotExpression.idle,
+                      useRive: true,
+                      width: 140.0,
+                    ),
                   ),
                   ExcludeSemantics(
                     child: Text(

@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-02 11:48:48.163948",
+    "@@last_modified": "2026-09-03 14:14:14.862651",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10780,5 +10780,6 @@
     "participantsOfTotal": "{filled} af {total} spillere",
     "mapAttributionLabel": "OpenStreetMap-bidragydere, ophavsret og licens",
     "seeAll": "Se alle",
-    "seeAllSection": "Se alle {section}"
+    "seeAllSection": "Se alle {section}",
+    "onboardingStepOfTotal": "Trin {step} af {total}"
 }

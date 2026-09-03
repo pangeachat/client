@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-02 11:48:51.540846",
+    "@@last_modified": "2026-09-03 14:14:15.240598",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9857,5 +9857,6 @@
     "participantsOfTotal": "{filled}/{total} mängijat",
     "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
     "seeAll": "Vaata kõiki",
-    "seeAllSection": "Vaata kõiki {section}"
+    "seeAllSection": "Vaata kõiki {section}",
+    "onboardingStepOfTotal": "Samm {step} / {total}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:49:08.818684",
+    "@@last_modified": "2026-09-03 14:14:19.697734",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10378,5 +10378,6 @@
     "participantsOfTotal": "{filled} av {total} spelare",
     "mapAttributionLabel": "OpenStreetMap-bidragsgivare, upphovsrätt och licens",
     "seeAll": "Visa alla",
-    "seeAllSection": "Visa alla {section}"
+    "seeAllSection": "Visa alla {section}",
+    "onboardingStepOfTotal": "Steg {step} av {total}"
 }

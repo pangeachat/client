@@ -141,120 +141,116 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
       children: [
         Expanded(
           child: Center(
-            child: SingleChildScrollView(
-              child: OnboardingStepBody(
-                label: L10n.of(context).profile,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Semantics(
-                      label: L10n.of(context).changeYourAvatar,
-                      container: true,
-                      child: ValueListenableBuilder(
-                        valueListenable: _avatarNotifier,
-                        builder: (context, _, _) {
-                          final avatarInfo = _step.state.avatarInfo;
-                          final avatarBytes = avatarInfo?.avatarBytes;
-                          final avatarUrl = avatarInfo?.avatarUrl;
+            child: OnboardingStepBody(
+              label: L10n.of(context).profile,
+              scrollable: true,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Semantics(
+                    label: L10n.of(context).changeYourAvatar,
+                    container: true,
+                    child: ValueListenableBuilder(
+                      valueListenable: _avatarNotifier,
+                      builder: (context, _, _) {
+                        final avatarInfo = _step.state.avatarInfo;
+                        final avatarBytes = avatarInfo?.avatarBytes;
+                        final avatarUrl = avatarInfo?.avatarUrl;
 
-                          return Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              SizedBox(
-                                height: 110.0,
-                                width: 110.0,
-                                child: Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(
-                                        100.0,
-                                      ),
-                                      child: ExcludeSemantics(
-                                        child: Container(
-                                          width: 100.0,
-                                          height: 100.0,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                              100.0,
-                                            ),
-                                            color: theme.disabledColor,
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(
+                              height: 110.0,
+                              width: 110.0,
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(100.0),
+                                    child: ExcludeSemantics(
+                                      child: Container(
+                                        width: 100.0,
+                                        height: 100.0,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            100.0,
                                           ),
-                                          child: avatarUrl != null
-                                              ? ImageByUrl(
-                                                  width: 100.0,
-                                                  imageUrl: avatarUrl,
-                                                )
-                                              : avatarBytes != null
-                                              ? Image.memory(
-                                                  avatarBytes,
-                                                  fit: BoxFit.cover,
-                                                  semanticLabel: L10n.of(
-                                                    context,
-                                                  ).avatarPreview,
-                                                )
-                                              : SizedBox(),
+                                          color: theme.disabledColor,
                                         ),
+                                        child: avatarUrl != null
+                                            ? ImageByUrl(
+                                                width: 100.0,
+                                                imageUrl: avatarUrl,
+                                              )
+                                            : avatarBytes != null
+                                            ? Image.memory(
+                                                avatarBytes,
+                                                fit: BoxFit.cover,
+                                                semanticLabel: L10n.of(
+                                                  context,
+                                                ).avatarPreview,
+                                              )
+                                            : SizedBox(),
                                       ),
                                     ),
-                                    Positioned(
-                                      right: 0,
-                                      bottom: 0,
-                                      child: Semantics(
-                                        label: L10n.of(
+                                  ),
+                                  Positioned(
+                                    right: 0,
+                                    bottom: 0,
+                                    child: Semantics(
+                                      label: L10n.of(
+                                        context,
+                                      ).selectImageFromDevice,
+                                      container: true,
+                                      child: IconButton.filled(
+                                        tooltip: L10n.of(
                                           context,
-                                        ).selectImageFromDevice,
-                                        container: true,
-                                        child: IconButton.filled(
-                                          tooltip: L10n.of(
-                                            context,
-                                          ).changeYourAvatar,
-                                          icon: Icon(
-                                            Icons.file_upload_outlined,
-                                          ),
-                                          onPressed: _uploadAvatarImage,
-                                          style: IconButton.styleFrom(
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                        ).changeYourAvatar,
+                                        icon: Icon(Icons.file_upload_outlined),
+                                        onPressed: _uploadAvatarImage,
+                                        style: IconButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              12.0,
                                             ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                              SizedBox(height: 20.0),
-                              PresetAvatarRow(onSelected: _setAvatarUrl),
-                            ],
-                          );
-                        },
+                            ),
+                            SizedBox(height: 20.0),
+                            PresetAvatarRow(onSelected: _setAvatarUrl),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 12.0),
+                  ExcludeSemantics(
+                    child: Text(
+                      L10n.of(context).displayName,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 12.0),
-                    ExcludeSemantics(
-                      child: Text(
-                        L10n.of(context).displayName,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                  ),
+                  SizedBox(height: 8.0),
+                  Semantics(
+                    label: L10n.of(context).displayName,
+                    container: true,
+                    child: ValueListenableBuilder(
+                      valueListenable: _displayNameController,
+                      builder: (context, text, _) => TextField(
+                        controller: _displayNameController,
+                        maxLength: 50,
                       ),
                     ),
-                    SizedBox(height: 8.0),
-                    Semantics(
-                      label: L10n.of(context).displayName,
-                      container: true,
-                      child: ValueListenableBuilder(
-                        valueListenable: _displayNameController,
-                        builder: (context, text, _) => TextField(
-                          controller: _displayNameController,
-                          maxLength: 50,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-02 11:49:01.263949",
+    "@@last_modified": "2026-09-03 14:14:18.181936",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} daripada {total} pemain",
     "mapAttributionLabel": "Penyumbang OpenStreetMap, hak cipta dan lesen",
     "seeAll": "Lihat semua",
-    "seeAllSection": "Lihat semua {section}"
+    "seeAllSection": "Lihat semua {section}",
+    "onboardingStepOfTotal": "Langkah {step} daripada {total}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-02 11:49:09.703808",
+    "@@last_modified": "2026-09-03 14:14:19.852328",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} tina {total} pamaén",
     "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta sareng lisénsi",
     "seeAll": "Tingali sadayana",
-    "seeAllSection": "Tingali sadayana {section}"
+    "seeAllSection": "Tingali sadayana {section}",
+    "onboardingStepOfTotal": "Léngkah {step} tina {total}"
 }

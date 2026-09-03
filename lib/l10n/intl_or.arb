@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-09-02 11:49:03.521906",
+    "@@last_modified": "2026-09-03 14:14:18.637282",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{total} ଖେଳାଳିଙ୍କ ମଧ୍ୟରୁ {filled}",
     "mapAttributionLabel": "OpenStreetMap ଯୋଗଦାନକାରୀ, କପିରାଇଟ୍ ଏବଂ ଲାଇସେନ୍ସ",
     "seeAll": "ସବୁ ଦେଖନ୍ତୁ",
-    "seeAllSection": "ସବୁ {section} ଦେଖନ୍ତୁ"
+    "seeAllSection": "ସବୁ {section} ଦେଖନ୍ତୁ",
+    "onboardingStepOfTotal": "{total} ରୁ {step} ସୋପାନ"
 }

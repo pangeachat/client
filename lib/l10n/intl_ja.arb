@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-02 11:48:57.529596",
+    "@@last_modified": "2026-09-03 14:14:16.931914",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10629,5 +10629,6 @@
     "participantsOfTotal": "{total}人中{filled}人",
     "mapAttributionLabel": "OpenStreetMapの寄与者、著作権とライセンス",
     "seeAll": "すべて見る",
-    "seeAllSection": "{section}をすべて見る"
+    "seeAllSection": "{section}をすべて見る",
+    "onboardingStepOfTotal": "{total}ステップ中{step}"
 }

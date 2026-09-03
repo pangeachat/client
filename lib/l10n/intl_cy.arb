@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-02 11:48:48.122704",
+    "@@last_modified": "2026-09-03 14:14:14.875733",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} o {total} chwaraewr",
     "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
     "seeAll": "Gweld y cyfan",
-    "seeAllSection": "Gweld pob {section}"
+    "seeAllSection": "Gweld pob {section}",
+    "onboardingStepOfTotal": "Cam {step} o {total}"
 }

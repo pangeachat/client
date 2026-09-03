@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-02 11:48:45.905870",
+    "@@last_modified": "2026-09-03 14:14:14.488360",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} od {total} igrača",
     "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
     "seeAll": "Pogledaj sve",
-    "seeAllSection": "Pogledaj sve {section}"
+    "seeAllSection": "Pogledaj sve {section}",
+    "onboardingStepOfTotal": "Korak {step} od {total}"
 }

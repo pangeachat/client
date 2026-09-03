@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-02 11:48:58.183357",
+    "@@last_modified": "2026-09-03 14:14:17.367535",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} / {total} оюнчу",
     "mapAttributionLabel": "OpenStreetMap салымчылары, автордук укук жана лицензия",
     "seeAll": "Баарын көрүү",
-    "seeAllSection": "Баарын көрүү {section}"
+    "seeAllSection": "Баарын көрүү {section}",
+    "onboardingStepOfTotal": "{total} ичинен {step}-кадам"
 }

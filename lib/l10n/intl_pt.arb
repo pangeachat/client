@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:49:03.962730",
+    "@@last_modified": "2026-09-03 14:14:18.793899",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10804,5 +10804,6 @@
     "participantsOfTotal": "{filled} de {total} jogadores",
     "mapAttributionLabel": "Colaboradores do OpenStreetMap, direitos autorais e licença",
     "seeAll": "Ver tudo",
-    "seeAllSection": "Ver tudo em {section}"
+    "seeAllSection": "Ver tudo em {section}",
+    "onboardingStepOfTotal": "Passo {step} de {total}"
 }

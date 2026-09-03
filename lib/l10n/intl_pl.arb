@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-02 11:49:03.928273",
+    "@@last_modified": "2026-09-03 14:14:18.632676",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9945,5 +9945,6 @@
     "participantsOfTotal": "{filled} z {total} graczy",
     "mapAttributionLabel": "Współtwórcy OpenStreetMap, prawa autorskie i licencja",
     "seeAll": "Zobacz wszystkie",
-    "seeAllSection": "Zobacz wszystkie {section}"
+    "seeAllSection": "Zobacz wszystkie {section}",
+    "onboardingStepOfTotal": "Krok {step} z {total}"
 }

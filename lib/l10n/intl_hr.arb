@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-02 11:48:53.768384",
+    "@@last_modified": "2026-09-03 14:14:16.193961",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10296,5 +10296,6 @@
     "participantsOfTotal": "{filled} od {total} igrača",
     "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
     "seeAll": "Vidi sve",
-    "seeAllSection": "Vidi sve {section}"
+    "seeAllSection": "Vidi sve {section}",
+    "onboardingStepOfTotal": "Korak {step} od {total}"
 }

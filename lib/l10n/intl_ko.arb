@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:48:57.378903",
+    "@@last_modified": "2026-09-03 14:14:17.322087",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,6 @@
     "participantsOfTotal": "{total}명 중 {filled}명",
     "mapAttributionLabel": "OpenStreetMap 기여자, 저작권 및 라이선스",
     "seeAll": "모두 보기",
-    "seeAllSection": "{section} 모두 보기"
+    "seeAllSection": "{section} 모두 보기",
+    "onboardingStepOfTotal": "{total}단계 중 {step}단계"
 }

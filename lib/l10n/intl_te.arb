@@ -1325,7 +1325,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-09-02 11:49:08.794198",
+    "@@last_modified": "2026-09-03 14:14:19.937367",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10810,5 +10810,6 @@
     "participantsOfTotal": "{total} ఆటగాళ్ళలో {filled} మంది",
     "mapAttributionLabel": "ఓపెన్‌స్ట్రీట్‌మ్యాప్ కంట్రిబ్యూటర్లు, కాపీరైట్ మరియు లైసెన్స్",
     "seeAll": "అన్నీ చూడండి",
-    "seeAllSection": "అన్నీ చూడండి {section}"
+    "seeAllSection": "అన్నీ చూడండి {section}",
+    "onboardingStepOfTotal": "{total}లో {step}వ దశ"
 }

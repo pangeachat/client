@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-02 11:48:58.568446",
+    "@@last_modified": "2026-09-03 14:14:17.269592",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} pan {total} pleya dem",
     "mapAttributionLabel": "OpenStreetMap pipal wey de gi am say, in kopyrayt ɛn layɛns",
     "seeAll": "Si ɔl",
-    "seeAllSection": "Si ɔl {section}"
+    "seeAllSection": "Si ɔl {section}",
+    "onboardingStepOfTotal": "Step {step} pan {total}"
 }

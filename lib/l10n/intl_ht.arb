@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-02 11:48:53.805733",
+    "@@last_modified": "2026-09-03 14:14:15.971489",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} sou {total} jwè",
     "mapAttributionLabel": "Kontribitè OpenStreetMap, copyright ak lisans",
     "seeAll": "Gade tout",
-    "seeAllSection": "Gade tout {section}"
+    "seeAllSection": "Gade tout {section}",
+    "onboardingStepOfTotal": "Etap {step} sou {total}"
 }

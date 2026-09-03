@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-02 11:48:54.406547",
+    "@@last_modified": "2026-09-03 14:14:16.200683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} / {total} խաղացող",
     "mapAttributionLabel": "OpenStreetMap-ի մասնակիցներ, հեղինակային իրավունք և լիցենզիա",
     "seeAll": "Տեսնել բոլորը",
-    "seeAllSection": "Տեսնել բոլոր {section}"
+    "seeAllSection": "Տեսնել բոլոր {section}",
+    "onboardingStepOfTotal": "Քայլ {step}-ը՝ {total}-ից"
 }

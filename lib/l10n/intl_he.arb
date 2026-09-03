@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:48:54.255509",
+    "@@last_modified": "2026-09-03 14:14:15.877178",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10774,5 +10774,6 @@
     "participantsOfTotal": "{filled} מתוך {total} שחקנים",
     "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
     "seeAll": "הצג הכל",
-    "seeAllSection": "הצג הכל {section}"
+    "seeAllSection": "הצג הכל {section}",
+    "onboardingStepOfTotal": "שלב {step} מתוך {total}"
 }

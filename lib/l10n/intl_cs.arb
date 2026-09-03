@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-02 11:48:48.031558",
+    "@@last_modified": "2026-09-03 14:14:14.759821",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10354,5 +10354,6 @@
     "participantsOfTotal": "{filled} z {total} hráčů",
     "mapAttributionLabel": "Přispěvatelé OpenStreetMap, autorská práva a licence",
     "seeAll": "Zobrazit vše",
-    "seeAllSection": "Zobrazit vše {section}"
+    "seeAllSection": "Zobrazit vše {section}",
+    "onboardingStepOfTotal": "Krok {step} z {total}"
 }

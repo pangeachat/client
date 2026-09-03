@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-02 11:48:45.970671",
+    "@@last_modified": "2026-09-03 14:14:15.751873",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{filled} van {total} spelers",
     "mapAttributionLabel": "OpenStreetMap bydraers, kopiereg en lisensie",
     "seeAll": "Sien alles",
-    "seeAllSection": "Sien alle {section}"
+    "seeAllSection": "Sien alle {section}",
+    "onboardingStepOfTotal": "Stap {step} van {total}"
 }

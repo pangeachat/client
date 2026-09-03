@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-02 11:48:45.669483",
+    "@@last_modified": "2026-09-03 14:14:14.374125",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10166,5 +10166,6 @@
     "participantsOfTotal": "{filled} من أصل {total} لاعبين",
     "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
     "seeAll": "مشاهدة الكل",
-    "seeAllSection": "مشاهدة كل {section}"
+    "seeAllSection": "مشاهدة كل {section}",
+    "onboardingStepOfTotal": "الخطوة {step} من {total}"
 }

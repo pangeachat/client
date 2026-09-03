@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:48:49.323497",
+    "@@last_modified": "2026-09-03 14:14:14.681823",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9987,5 +9987,6 @@
     "participantsOfTotal": "{filled} de {total} jugadors",
     "mapAttributionLabel": "Col·laboradors d'OpenStreetMap, drets d'autor i llicència",
     "seeAll": "Veure-ho tot",
-    "seeAllSection": "Veure-ho tot a {section}"
+    "seeAllSection": "Veure-ho tot a {section}",
+    "onboardingStepOfTotal": "Pas {step} de {total}"
 }

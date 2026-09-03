@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-09-02 11:49:11.623252",
+    "@@last_modified": "2026-09-03 14:14:20.153627",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2264,5 +2264,6 @@
     "participantsOfTotal": "{total} کھلاڑیوں میں سے {filled}",
     "mapAttributionLabel": "اوپن سٹریٹ میپ کے معاونین، کاپی رائٹ اور لائسنس",
     "seeAll": "سب دیکھیں",
-    "seeAllSection": "تمام {section} دیکھیں"
+    "seeAllSection": "تمام {section} دیکھیں",
+    "onboardingStepOfTotal": "{total} میں سے مرحلہ {step}"
 }

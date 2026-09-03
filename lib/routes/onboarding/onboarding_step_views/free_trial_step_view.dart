@@ -7,6 +7,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/pro_features_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_page_group.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
 
@@ -32,11 +33,7 @@ class FreeTrialStepView extends StatelessWidget {
         ? theme.textTheme.displayMedium
         : theme.textTheme.headlineMedium;
 
-    // See the note on the same wrapper in onboarding_page.dart —
-    // `explicitChildNodes` stops this page container from absorbing a
-    // descendant's semantics config.
-    return Semantics(
-      explicitChildNodes: true,
+    return OnboardingPageGroup(
       label: L10n.of(context).pageLabel(L10n.of(context).freeTrial),
       child: Scaffold(
         appBar: AppBar(
@@ -78,76 +75,71 @@ class FreeTrialStepView extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Center(
-                        child: SingleChildScrollView(
-                          child: OnboardingStepBody(
-                            label:
-                                '${L10n.of(context).thanksForSigningUp} ${L10n.of(context).sevenDaysFree}',
-                            child: Column(
-                              children: [
-                                Column(
-                                  spacing: 16.0,
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.all(2.0),
-                                      decoration: BoxDecoration(
-                                        color: theme.colorScheme.surface,
-                                        borderRadius: BorderRadius.circular(
-                                          AppConfig.borderRadius,
-                                        ),
+                        child: OnboardingStepBody(
+                          label:
+                              '${L10n.of(context).thanksForSigningUp} ${L10n.of(context).sevenDaysFree}',
+                          scrollable: true,
+                          child: Column(
+                            children: [
+                              Column(
+                                spacing: 16.0,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(2.0),
+                                    decoration: BoxDecoration(
+                                      color: theme.colorScheme.surface,
+                                      borderRadius: BorderRadius.circular(
+                                        AppConfig.borderRadius,
                                       ),
-                                      child: ExcludeSemantics(
-                                        child: Column(
-                                          spacing: 8.0,
-                                          children: [
-                                            Text(
-                                              L10n.of(
-                                                context,
-                                              ).thanksForSigningUp,
-                                              style: mediumTextStyle,
-                                              textAlign: TextAlign.center,
+                                    ),
+                                    child: ExcludeSemantics(
+                                      child: Column(
+                                        spacing: 8.0,
+                                        children: [
+                                          Text(
+                                            L10n.of(context).thanksForSigningUp,
+                                            style: mediumTextStyle,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          Text(
+                                            L10n.of(context).sevenDaysFree,
+                                            style: largeTextStyle?.copyWith(
+                                              color: gold,
+                                              fontWeight: FontWeight.w900,
                                             ),
-                                            Text(
-                                              L10n.of(context).sevenDaysFree,
-                                              style: largeTextStyle?.copyWith(
-                                                color: gold,
-                                                fontWeight: FontWeight.w900,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ],
-                                        ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    ProFeaturesCard(
-                                      titlePadding: const EdgeInsets.all(4.0),
-                                      padding: const EdgeInsets.all(12.0),
-                                      borderRadius: 12.0,
-                                      frameColor: gold,
-                                      borderWidth: 2,
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.all(2.0),
-                                      decoration: BoxDecoration(
-                                        color: theme.colorScheme.surface,
-                                        borderRadius: BorderRadius.circular(
-                                          AppConfig.borderRadius,
-                                        ),
-                                      ),
-                                      child: Semantics(
-                                        container: true,
-                                        child: Text(
-                                          L10n.of(
-                                            context,
-                                          ).manageTrialInSettings,
-                                          textAlign: TextAlign.center,
-                                          style: mediumTextStyle,
-                                        ),
+                                  ),
+                                  ProFeaturesCard(
+                                    titlePadding: const EdgeInsets.all(4.0),
+                                    padding: const EdgeInsets.all(12.0),
+                                    borderRadius: 12.0,
+                                    frameColor: gold,
+                                    borderWidth: 2,
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.all(2.0),
+                                    decoration: BoxDecoration(
+                                      color: theme.colorScheme.surface,
+                                      borderRadius: BorderRadius.circular(
+                                        AppConfig.borderRadius,
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                    child: Semantics(
+                                      container: true,
+                                      child: Text(
+                                        L10n.of(context).manageTrialInSettings,
+                                        textAlign: TextAlign.center,
+                                        style: mediumTextStyle,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ),

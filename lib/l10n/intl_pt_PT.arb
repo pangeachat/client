@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-09-02 11:49:11.050419",
+    "@@last_modified": "2026-09-03 14:14:19.026198",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10777,5 +10777,6 @@
     "participantsOfTotal": "{filled} de {total} jogadores",
     "mapAttributionLabel": "Contribuidores do OpenStreetMap, direitos de autor e licença",
     "seeAll": "Ver tudo",
-    "seeAllSection": "Ver tudo em {section}"
+    "seeAllSection": "Ver tudo em {section}",
+    "onboardingStepOfTotal": "Passo {step} de {total}"
 }

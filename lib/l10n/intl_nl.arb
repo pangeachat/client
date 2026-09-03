@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 11:49:02.231147",
+    "@@last_modified": "2026-09-03 14:14:18.346115",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9860,5 +9860,6 @@
     "participantsOfTotal": "{filled} van de {total} spelers",
     "mapAttributionLabel": "OpenStreetMap-medewerkers, auteursrecht en licentie",
     "seeAll": "Alles weergeven",
-    "seeAllSection": "Alle {section} weergeven"
+    "seeAllSection": "Alle {section} weergeven",
+    "onboardingStepOfTotal": "Stap {step} van {total}"
 }
