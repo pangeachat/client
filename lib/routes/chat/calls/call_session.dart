@@ -85,6 +85,10 @@ class CallSession extends ChangeNotifier {
 
   bool _muted = false;
   bool _camera = false;
+
+  /// The last-seen ownership hold state, so the camera can be restored exactly
+  /// once on the held->unheld edge.
+  bool _wasMediaHeld = false;
   bool _usedVideo = false;
   bool _reachedCall = false;
   bool _minimized = false;
@@ -373,8 +377,13 @@ class CallSession extends ChangeNotifier {
     _notify();
   }
 
-  bool get muted => _muted;
-  bool get cameraOn => _camera;
+  /// True while the ownership hold has the microphone closed, whatever the
+  /// learner's OWN intent -- the panel shows muted-and-disabled then, and the
+  /// intent is restored on resume.
+  bool get muted => call.mediaHeld || _muted;
+
+  /// False while the ownership hold has the camera closed, for the same reason.
+  bool get cameraOn => !call.mediaHeld && _camera;
 
   /// Whether a capture device could not be opened at all. The call is up and
   /// looks normal; the other person hears nothing.
@@ -392,6 +401,18 @@ class CallSession extends ChangeNotifier {
   bool get isReconnecting => call.isReconnecting;
   bool get peerReconnecting => call.peerReconnecting;
   bool get peerMuted => call.peerMuted;
+
+  /// Whether the ownership arbiter is holding this device's media closed.
+  bool get mediaHeld => call.mediaHeld;
+
+  /// What the two-devices-one-call arbiter is asking the learner, or null.
+  OwnershipPrompt? get ownershipPrompt => call.ownershipPrompt;
+
+  /// The learner tapped "Use this device": keep the call here.
+  void chooseThisDevice() => call.chooseThisDevice();
+
+  /// The learner tapped "Leave the call here": leave, keep it on the other one.
+  void leaveForOtherDevice() => call.leaveForOtherDevice();
   bool get peerWasBusy => call.peerWasBusy;
   bool get hadPeer => call.hadPeer;
   bool get placedCall => call.placedCall;
@@ -481,6 +502,13 @@ class CallSession extends ChangeNotifier {
   }
 
   Future<void> toggleMute() async {
+    // The ownership hold does not let the controls OPEN the microphone, on any
+    // surface -- this is also the foreground notification's mute path. The
+    // learner's own intent is preserved for resume rather than overwritten.
+    if (call.mediaHeld) {
+      Logs().i('Microphone control ignored while held by the devices prompt');
+      return;
+    }
     final next = !_muted;
     // The recorder gate goes up BEFORE muting and comes down only AFTER an
     // unmute has taken — never while the microphone is still muted. On Android
@@ -521,6 +549,10 @@ class CallSession extends ChangeNotifier {
   }
 
   Future<void> toggleCamera() async {
+    if (call.mediaHeld) {
+      Logs().i('Camera control ignored while held by the devices prompt');
+      return;
+    }
     final next = !_camera;
     final bool live;
     try {
@@ -602,6 +634,13 @@ class CallSession extends ChangeNotifier {
     // leaving the control switched on meant the first press turned OFF a
     // camera that had never come on.
     if (_camera && media.cameraFailed) _camera = false;
+    // The ownership hold has just resumed: reopen the camera to the learner's
+    // own intent (the arbiter reopened the microphone; the camera intent lives
+    // here). On the held->unheld edge, so it fires once.
+    if (_wasMediaHeld && !call.mediaHeld) {
+      unawaited(media.setCameraEnabled(_camera));
+    }
+    _wasMediaHeld = call.mediaHeld;
     // The outcome is latched the instant the call's fate is decided, seconds
     // before the stage catches up — this is what makes hanging up feel
     // immediate on both sides.
@@ -614,6 +653,23 @@ class CallSession extends ChangeNotifier {
       _tones.busy();
     }
     if (outcome != null) {
+      // A device that did NOT carry on -- held then never resumed, walked away
+      // from, or given up because nobody chose it -- leaves no trace: no card,
+      // no transcript half, no analytics, no summary (doc:236). Keyed on the
+      // FACT (carriedOn), not on which outcome fired, so an ordinary `ended`
+      // reached while held is caught alongside `movedToOtherDevice`.
+      if (!call.carriedOn) {
+        _finish();
+        // A MOVED leave still says WHY (the panel reads the outcome), so it
+        // earns a brief moment on screen; a give-up goes at once.
+        if (outcome == CallOutcome.movedToOtherDevice) {
+          _summaryHold = Timer(summaryLifetime, _handover);
+          _notify();
+        } else {
+          _handover();
+        }
+        return;
+      }
       // The card FIRST and immediately: everything it states is known now, and
       // it must not wait for teardown and transcription behind it.
       //

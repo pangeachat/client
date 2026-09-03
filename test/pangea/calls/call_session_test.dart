@@ -5,6 +5,7 @@ import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' as matrix;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
@@ -143,6 +144,10 @@ class _FakeRoster extends CallRoster {
   _FakeRoster({required super.room, required super.myUserId});
 
   Set<String> identities = {};
+
+  /// identity -> published attributes, so a test can make one of this account's
+  /// other devices publish a pangea_chosen claim.
+  Map<String, Map<String, String>> attributes = {};
   bool connected = true;
 
   @override
@@ -153,6 +158,7 @@ class _FakeRoster extends CallRoster {
           identity: id,
           described: true,
           joinedAt: DateTime.utc(2026, 8, 29, 12),
+          attributes: attributes[id] ?? const {},
         ),
     ],
   );
@@ -2045,4 +2051,58 @@ void main() {
       },
     );
   });
+  group(
+    'two devices, one call -- a leave that did not carry on writes nothing',
+    () {
+      Future<(_RecordingRoom, int Function(), CallSession)>
+      upThenSiblingClaims() async {
+        final client = await _bareClient();
+        final room = _RecordingRoom(id: '!r:server', client: client);
+        final media = _FakeMedia();
+        var analyticsCalls = 0;
+        final session = CallSession.start(
+          room: room,
+          video: false,
+          callService: _FakeCalls(client),
+          transcribe: (request) async =>
+              SpeechToTextResponseModel(results: const []),
+          userL1: 'en',
+          userL2: 'es',
+          analytics: (eventId, uses, language) async => analyticsCalls++,
+          onReleased: (_) {},
+          callerMembershipEventId: r'$caller-membership',
+          mediaOverride: media,
+          captureOverride: CallCaptureService(sink: _NullSink()),
+        );
+        await pumpEventQueue();
+        // One of THIS account's other devices publishes a claim: this device is
+        // chosen against and leaves as MOVED.
+        final roster = media.fakeRoster!;
+        final sib = '${client.userID}:SIBLINGDEV';
+        roster.identities = {sib};
+        roster.attributes = {
+          sib: {CallRoster.chosenAttribute: 'yes'},
+        };
+        roster.recompute();
+        await pumpEventQueue();
+        return (room, () => analyticsCalls, session);
+      }
+
+      test('a moved leave writes no card, no half, and no analytics', () async {
+        final (room, analytics, session) = await upThenSiblingClaims();
+        expect(
+          session.call.outcome,
+          CallOutcome.movedToOtherDevice,
+          reason: 'a sibling claim is positive evidence the call moved',
+        );
+        expect(
+          room.cards,
+          isEmpty,
+          reason: 'a device that did not carry on leaves no card',
+        );
+        expect(room.sent, isEmpty, reason: 'nor a transcript half');
+        expect(analytics(), 0, reason: 'nor any analytics (doc:236)');
+      });
+    },
+  );
 }
