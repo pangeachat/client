@@ -93,7 +93,7 @@ void main() {
           data: Uint8List.fromList([0, 0, 1, 0]),
           format: AudioFormat.Int16,
         ),
-        (samples, rate, channels) => reported = rate,
+        (samples, rate, channels, {droppedMs = 0}) => reported = rate,
       );
       expect(tap.sampleRate, 16000, reason: 'we still REQUEST 16 kHz');
       expect(reported, 48000, reason: 'but we report what actually arrived');
@@ -115,7 +115,7 @@ void main() {
           data: Uint8List.fromList([0, 0, 1, 0, 2, 0, 3, 0]),
           format: AudioFormat.Int16,
         ),
-        (samples, rate, channels) => reported = channels,
+        (samples, rate, channels, {droppedMs = 0}) => reported = channels,
       );
       expect(tap.channels, 1, reason: 'we still REQUEST mono');
       expect(reported, 2, reason: 'but we report what actually arrived');
@@ -132,7 +132,7 @@ void main() {
           data: Uint8List.fromList([0, 0]),
           format: AudioFormat.Int16,
         ),
-        (samples, rate, channels) => reported = channels,
+        (samples, rate, channels, {droppedMs = 0}) => reported = channels,
       );
       expect(reported, 1);
     });
@@ -146,7 +146,7 @@ void main() {
           data: Uint8List.fromList([0, 0]),
           format: AudioFormat.Int16,
         ),
-        (samples, rate, channels) => reported = rate,
+        (samples, rate, channels, {droppedMs = 0}) => reported = rate,
       );
       expect(reported, 16000);
     });
@@ -160,7 +160,7 @@ void main() {
 
       final detach = await tap.open(
         _noTrack,
-        (s, r, c) => got.add((s, r)),
+        (s, r, c, {droppedMs = 0}) => got.add((s, r)),
         onDead: () {},
       );
       await platform.emit([1, -1, 32767, -32768], 48000);
@@ -182,7 +182,11 @@ void main() {
         final platform = FakeCapture(attaches: false);
         final tap = PostEchoCancellationTap(capture: platform);
 
-        final detach = await tap.open(_noTrack, (_, _, _) {}, onDead: () {});
+        final detach = await tap.open(
+          _noTrack,
+          (_, _, _, {droppedMs = 0}) {},
+          onDead: () {},
+        );
 
         expect(detach, isNull);
         expect(
@@ -205,7 +209,7 @@ void main() {
         final tap = PostEchoCancellationTap(capture: platform);
 
         await expectLater(
-          tap.open(_noTrack, (_, _, _) {}, onDead: () {}),
+          tap.open(_noTrack, (_, _, _, {droppedMs = 0}) {}, onDead: () {}),
           throwsStateError,
         );
         expect(platform.starts, 3, reason: 'and it did try the whole ladder');
@@ -221,7 +225,11 @@ void main() {
       final platform = FakeCapture(attaches: false, throwsUntilAttempt: 1);
       final tap = PostEchoCancellationTap(capture: platform);
 
-      final detach = await tap.open(_noTrack, (_, _, _) {}, onDead: () {});
+      final detach = await tap.open(
+        _noTrack,
+        (_, _, _, {droppedMs = 0}) {},
+        onDead: () {},
+      );
 
       expect(detach, isNull);
       expect(platform.watching, isFalse);
@@ -236,7 +244,11 @@ void main() {
       );
       final tap = PostEchoCancellationTap(capture: platform);
 
-      final detach = await tap.open(_noTrack, (_, _, _) {}, onDead: () {});
+      final detach = await tap.open(
+        _noTrack,
+        (_, _, _, {droppedMs = 0}) {},
+        onDead: () {},
+      );
 
       expect(detach, isNull);
       expect(
@@ -254,7 +266,11 @@ void main() {
       final platform = FakeCapture();
       final tap = PostEchoCancellationTap(capture: platform);
 
-      final detach = await tap.open(_noTrack, (_, _, _) {}, onDead: () {});
+      final detach = await tap.open(
+        _noTrack,
+        (_, _, _, {droppedMs = 0}) {},
+        onDead: () {},
+      );
       await detach!.call();
 
       expect(platform.teardown.first, 'stop');
@@ -264,7 +280,11 @@ void main() {
       final platform = FakeCapture();
       final tap = PostEchoCancellationTap(capture: platform);
 
-      final detach = await tap.open(_noTrack, (_, _, _) {}, onDead: () {});
+      final detach = await tap.open(
+        _noTrack,
+        (_, _, _, {droppedMs = 0}) {},
+        onDead: () {},
+      );
       // Awaited with nothing pumped afterwards: a detach that only schedules the
       // work would leave the tap attached at the moment the caller believes the
       // recording has stopped.
@@ -287,7 +307,7 @@ void main() {
 
       await PostEchoCancellationTap(
         capture: platform,
-      ).open(_noTrack, (_, _, _) {}, onDead: () {});
+      ).open(_noTrack, (_, _, _, {droppedMs = 0}) {}, onDead: () {});
 
       expect(
         listeningWhenStarted,
@@ -305,7 +325,7 @@ void main() {
       final platform = FakeCapture(attaches: false);
       final detach = await PostEchoCancellationTap(
         capture: platform,
-      ).open(_noTrack, (_, _, _) {}, onDead: () {});
+      ).open(_noTrack, (_, _, _, {droppedMs = 0}) {}, onDead: () {});
       expect(detach, isNull);
       expect(
         platform.watching,
@@ -359,7 +379,11 @@ void main() {
       final track = _RendererTrack();
       var deaths = 0;
 
-      await watching().open(track, (_, _, _) {}, onDead: () => deaths++);
+      await watching().open(
+        track,
+        (_, _, _, {droppedMs = 0}) {},
+        onDead: () => deaths++,
+      );
       await Future<void>.delayed(wellPast);
 
       expect(deaths, 1, reason: 'the silence has to become an event');
@@ -371,7 +395,11 @@ void main() {
       final track = _RendererTrack();
       var deaths = 0;
 
-      await watching().open(track, (_, _, _) {}, onDead: () => deaths++);
+      await watching().open(
+        track,
+        (_, _, _, {droppedMs = 0}) {},
+        onDead: () => deaths++,
+      );
       track.emit();
       await Future<void>.delayed(wellPast);
 
@@ -386,7 +414,11 @@ void main() {
       final track = _RendererTrack(deliverDuringAttach: true);
       var deaths = 0;
 
-      await watching().open(track, (_, _, _) {}, onDead: () => deaths++);
+      await watching().open(
+        track,
+        (_, _, _, {droppedMs = 0}) {},
+        onDead: () => deaths++,
+      );
       await Future<void>.delayed(wellPast);
 
       expect(deaths, 0);
@@ -401,7 +433,7 @@ void main() {
 
       final detach = await watching().open(
         track,
-        (_, _, _) {},
+        (_, _, _, {droppedMs = 0}) {},
         onDead: () => deaths++,
       );
       await detach!.call();
@@ -420,7 +452,7 @@ void main() {
 
       final detach = await watching().open(
         track,
-        (_, _, _) {},
+        (_, _, _, {droppedMs = 0}) {},
         onDead: () => deaths++,
       );
       await Future<void>.delayed(wellPast);

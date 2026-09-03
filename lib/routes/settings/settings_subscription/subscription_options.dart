@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
+import 'package:fluffychat/features/subscription/widgets/subscription_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/routes/settings/settings_subscription/subscription_option_card.dart';
@@ -78,13 +79,15 @@ class SubscriptionOptionsInternal extends StatelessWidget {
         return Column(
           spacing: 12.0,
           children: [
-            Text(
-              L10n.of(context).selectYourPlan,
-              style:
-                  (isColumnMode
-                          ? theme.textTheme.titleLarge
-                          : theme.textTheme.titleMedium)
-                      ?.copyWith(fontWeight: FontWeight.bold),
+            SubscriptionCard(
+              child: Text(
+                L10n.of(context).selectYourPlan,
+                style:
+                    (isColumnMode
+                            ? theme.textTheme.titleLarge
+                            : theme.textTheme.titleMedium)
+                        ?.copyWith(fontWeight: FontWeight.bold),
+              ),
             ),
             SizedBox(
               width: rowWidth,

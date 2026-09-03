@@ -80,7 +80,7 @@ class _FakeCalls extends CallService {
   Future<String?> announce() async => '\$membership';
 
   @override
-  String? membershipEventIdIn(matrix.Room room) => '\$membership';
+  String? membershipEventIdIn(int? attempt) => '\$membership';
 
   @override
   Future<bool> retract() async {
@@ -125,7 +125,7 @@ class _NeverEchoesCalls extends _FakeCalls {
   Future<String?> announce() async => null;
 
   @override
-  String? membershipEventIdIn(matrix.Room room) => null;
+  String? membershipEventIdIn(int? attempt) => null;
 }
 
 /// A call that cannot be got into at all: the SFU refuses the join, so the
@@ -227,8 +227,10 @@ class _FakeMedia extends CallMedia {
   lk.AudioTrack? get publishedAudio => null;
 
   @override
-  CallRoster roster({required String myUserId}) =>
-      fakeRoster ??= _FakeRoster(room: room, myUserId: myUserId);
+  CallRoster roster({
+    required String myUserId,
+    MetadataGrant metadataGrant = MetadataGrant.unknown,
+  }) => fakeRoster ??= _FakeRoster(room: room, myUserId: myUserId);
 
   /// Whether a camera toggle actually ends up publishing. False is the shape
   /// the real media returns for a toggle it refused -- a call already released,
@@ -270,6 +272,14 @@ class _RecordingRoom extends matrix.Room {
   final List<Map<String, dynamic>> sent = [];
   final List<String> sentTypes = [];
 
+  /// The transaction id each event was sent under, positionally beside [sent].
+  ///
+  /// Recorded because the id is what stops the server collapsing two events
+  /// into one, and nothing else in this suite can see it: a transcript half
+  /// whose id is not scoped to the writing device is a half the homeserver may
+  /// treat as a resend of the learner's OTHER device's.
+  final List<String?> sentTxids = [];
+
   /// Only the call CARDS.
   ///
   /// A session writes more than one kind of event -- the card the conversation
@@ -294,8 +304,76 @@ class _RecordingRoom extends matrix.Room {
   }) async {
     sent.add(content);
     sentTypes.add(type);
+    sentTxids.add(txid);
     return '\$card';
   }
+}
+
+/// A room whose FIRST transcript send fails, exactly as a lost response does.
+///
+/// The half reached the server and was stored; only the reply went missing. The
+/// device cannot tell that apart from a send that never landed, which is the
+/// whole reason the transaction id has to be stable: the retry is the only
+/// thing that can collapse the two.
+class _FlakyTranscriptRoom extends _RecordingRoom {
+  _FlakyTranscriptRoom({required super.id, required super.client});
+
+  var _failedOnce = false;
+
+  @override
+  Future<String?> sendEvent(
+    Map<String, dynamic> content, {
+    String type = matrix.EventTypes.Message,
+    String? txid,
+    matrix.Event? inReplyTo,
+    String? editEventId,
+    String? threadRootEventId,
+    String? threadLastEventId,
+    bool displayPendingEvent = true,
+  }) async {
+    // Recorded before throwing: what the FIRST attempt sent under is half of
+    // what this test is about.
+    if (type == CallTranscriptContent.relType && !_failedOnce) {
+      _failedOnce = true;
+      sent.add(content);
+      sentTypes.add(type);
+      sentTxids.add(txid);
+      throw Exception('the response never came back');
+    }
+    return super.sendEvent(
+      content,
+      type: type,
+      txid: txid,
+      inReplyTo: inReplyTo,
+      editEventId: editEventId,
+      threadRootEventId: threadRootEventId,
+      threadLastEventId: threadLastEventId,
+      displayPendingEvent: displayPendingEvent,
+    );
+  }
+}
+
+/// A client that has lost its login by the time the retry runs.
+///
+/// Not contrived. The transcript is published after the last chunk has drained,
+/// which is seconds to minutes after the call ended, and a logout, a soft
+/// logout, or an access token the server stopped honouring all leave
+/// `deviceID` and `userID` null on the live client.
+class _ForgetfulClient extends matrix.Client {
+  _ForgetfulClient(
+    super.clientName, {
+    required super.database,
+    super.httpClient,
+  });
+
+  /// Set between two attempts at ONE publish.
+  bool forgotten = false;
+
+  @override
+  String? get deviceID => forgotten ? null : super.deviceID;
+
+  @override
+  String? get userID => forgotten ? null : super.userID;
 }
 
 /// Records the recorder gate, which is the half of a mute the screen never
@@ -351,19 +429,37 @@ class _NullSink implements CallAudioSink {
   Future<void> deliver(PcmChunk chunk, {Duration? within}) async {}
 
   @override
+  void discarded(PcmChunk chunk) {}
+
+  @override
   Future<bool> close() async => true;
 }
 
-Future<matrix.Client> _bareClient() async {
-  final client = matrix.Client(
+Future<matrix.Client> _bareClient() async => _signIn(
+  matrix.Client(
     'call-session-test',
     httpClient: matrix.FakeMatrixApi(),
-    database: await matrix.MatrixSdkDatabase.init(
+    database: await _scratchDatabase(),
+  ),
+);
+
+/// A signed-in client that can be made to forget which device it is.
+Future<_ForgetfulClient> _forgetfulClient() async => _signIn(
+  _ForgetfulClient(
+    'call-session-test',
+    httpClient: matrix.FakeMatrixApi(),
+    database: await _scratchDatabase(),
+  ),
+);
+
+Future<matrix.MatrixSdkDatabase> _scratchDatabase() async =>
+    matrix.MatrixSdkDatabase.init(
       'call-session-test',
       database: await databaseFactoryFfi.openDatabase(':memory:'),
       sqfliteFactory: databaseFactoryFfi,
-    ),
-  );
+    );
+
+Future<T> _signIn<T extends matrix.Client>(T client) async {
   await client.login(
     matrix.LoginType.mLoginPassword,
     token: 'abcd',
@@ -413,12 +509,15 @@ void main() {
       // connected reads as a working feature and ships a dark one.
       final client = await _bareClient();
       final room = _RecordingRoom(id: '!r:server', client: client);
-      // A device thirty seconds ahead of the SFU, latched at join exactly as
-      // the real media does when the local participant first appears.
+      // A device thirty seconds ahead of the SFU, latched exactly as the real
+      // media does when the join response arrives.
       final sfuJoin = DateTime.utc(2026, 8, 26, 9);
-      final media = _FakeMedia(
-        now: () => sfuJoin.add(const Duration(seconds: 30)),
-      )..anchorClocksTo(sfuJoin);
+      final media =
+          _FakeMedia(now: () => sfuJoin.add(const Duration(seconds: 30)))
+            ..anchorClocksTo((
+              secondsMs: sfuJoin.millisecondsSinceEpoch,
+              ms: sfuJoin.millisecondsSinceEpoch,
+            ));
       final session = CallSession.start(
         room: room,
         video: false,
@@ -477,8 +576,123 @@ void main() {
         CallTranscriptContent.fromJson(written)!.clockAnchor?.offsetMs,
         30000,
       );
+
+      // And the WRITING DEVICE, on the same terms. This is the other seam only
+      // a live session can prove: the sender is the account, and handing the
+      // account where the device belongs is exactly the defect -- two of a
+      // learner's devices then write two halves nothing can tell apart, and the
+      // reader keeps one and presents it as the whole of what they said.
+      expect(client.deviceID, isNotNull);
+      expect(written['device_id'], client.deviceID);
+
+      // Right down to the transaction id, which is what stops the homeserver
+      // reading the second device's half as a resend of the first's.
+      expect(
+        room.sentTxids[index],
+        CallTranscriptContent.txnId(
+          r'$anchor:server',
+          client.userID!,
+          client.deviceID,
+        ),
+      );
     },
   );
+
+  test('a retried half keeps the transaction id the first attempt used', () async {
+    // The transaction id IS the idempotency key, and it is built from the
+    // account and the device. `CallRecord` freezes everything else it sends
+    // before the first attempt -- segments, every count, the language -- for
+    // exactly the reason stated there: a resend only collapses server-side if
+    // it is the same event. The identity was the one part still read off the
+    // live client on every attempt.
+    //
+    // So: the first send reaches the server and is stored, its response is
+    // lost, and the client drops its login before the retry. The retry then
+    // went out under a DIFFERENT id with no device on it, the homeserver stored
+    // it as a separate event, and the reader -- which now groups an account's
+    // halves by device -- showed the learner two devices and merged the same
+    // speech twice. That is the loss the per-device keying exists to prevent,
+    // arriving through the retry path instead.
+    final client = await _forgetfulClient();
+    // The SDK's own background sync reads `userID` on every loop, and this
+    // client is about to have none. Stopped so the test's output is the test's,
+    // not a page of the SDK complaining about a state only this fixture
+    // produces.
+    client.backgroundSync = false;
+    await client.abortSync();
+    final room = _FlakyTranscriptRoom(id: '!r:server', client: client);
+    final deviceWhileRecording = client.deviceID;
+    final accountWhileRecording = client.userID;
+    expect(deviceWhileRecording, isNotNull);
+
+    final session = CallSession.start(
+      room: room,
+      video: false,
+      callService: _FakeCalls(client),
+      transcribe: (request) async =>
+          SpeechToTextResponseModel(results: const []),
+      userL1: 'en',
+      userL2: 'es',
+      analytics: (eventId, uses, language) async {},
+      onReleased: (_) {},
+      mediaOverride: _FakeMedia(),
+      captureOverride: CallCaptureService(sink: _NullSink()),
+    );
+    await pumpEventQueue();
+
+    // Between the two attempts, and nowhere else: the retry sleeps a second
+    // before it runs, which is where a logout lands in the real failure.
+    Future.delayed(const Duration(milliseconds: 200), () {
+      client.forgotten = true;
+    });
+
+    await session.record.finish(
+      duration: const Duration(seconds: 5),
+      video: false,
+      callKey: r'$anchor:server',
+    );
+
+    expect(
+      client.forgotten,
+      isTrue,
+      reason: 'the identity must actually have gone, or this proves nothing',
+    );
+
+    final txids = [
+      for (var i = 0; i < room.sentTypes.length; i++)
+        if (room.sentTypes[i] == CallTranscriptContent.relType)
+          room.sentTxids[i],
+    ];
+    expect(
+      txids,
+      hasLength(2),
+      reason: 'one failed attempt and one that landed',
+    );
+    expect(
+      txids.toSet(),
+      {
+        CallTranscriptContent.txnId(
+          r'$anchor:server',
+          accountWhileRecording!,
+          deviceWhileRecording,
+        ),
+      },
+      reason:
+          'both attempts are one publish, so both carry the id the device that '
+          'did the RECORDING gives it',
+    );
+
+    // And the half itself still names that device, so the reader groups the
+    // retry with the recording rather than with an account-wide unknown.
+    final halves = [
+      for (var i = 0; i < room.sentTypes.length; i++)
+        if (room.sentTypes[i] == CallTranscriptContent.relType) room.sent[i],
+    ];
+    expect(
+      halves.map((half) => half['device_id']),
+      everyElement(deviceWhileRecording),
+    );
+  });
 
   test('the call card is written at hangup, not after transcription', () async {
     // The card states the duration, who called and whether it was answered --

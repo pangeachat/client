@@ -3763,6 +3763,8 @@
     "callTranscriptLoadFailed": "Could not load the transcript",
     "callTranscriptRetry": "Try again",
     "callTranscriptStoppedEarly": "This call had too much to read in one go, so some of it is not shown.",
+    "callTranscriptRoomEncrypted": "This chat is encrypted and the transcript could not be unlocked here, so what was said is not shown.",
+    "callTranscriptParticipantsUnknown": "It is not known who else was on this call, so someone who spoke may be missing from this transcript altogether.",
     "callTranscriptNone": "No transcript from {name}",
     "@callTranscriptNone": {
         "placeholders": {
@@ -3789,6 +3791,54 @@
     },
     "callTranscriptNoSpeechDetected": "Nothing recorded from {name} was sent to be transcribed: this app found no speech in it and can be wrong about that, so what was said is not known.",
     "@callTranscriptNoSpeechDetected": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptMicrophoneRefused": "{name}'s device never opened a microphone for this call, so nothing they said was recorded and what was said is not known.",
+    "@callTranscriptMicrophoneRefused": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptAudioLost": "What {name} said was recorded but lost before it could be transcribed, so what was said is not known.",
+    "@callTranscriptAudioLost": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptAudioDropped": "What {name} said was lost by their device before it could even be recorded, so what was said is not known.",
+    "@callTranscriptAudioDropped": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptHeldByOtherDevice": "What {name} said was left to another of their devices to record, so none of it was sent from this one and what was said is not known here.",
+    "@callTranscriptHeldByOtherDevice": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptDeviceNeverWrote": "Part of what {name} said was left to another of their devices to record, and that device did not record it, so that part is not known.",
+    "@callTranscriptDeviceNeverWrote": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "callTranscriptTooLongToSend": "What {name} said was too long to save with this call, so none of it is shown.",
+    "@callTranscriptTooLongToSend": {
         "placeholders": {
             "name": {
                 "type": "String"

@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' show Logs;
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 
@@ -16,6 +18,18 @@ import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 /// know about who is present is derivable from it.
 @immutable
 class CallParticipant {
+  /// The identity string the SFU named them by, kept rather than rebuilt.
+  ///
+  /// [userId] and [deviceId] are what this class parsed OUT of it, and every
+  /// reader that needs the whole string back — `CallMedia`'s join-stamp store
+  /// is keyed by it — has to be handed the original. Reassembling
+  /// `'$userId:$deviceId'` at a call site would put a second copy of the
+  /// splitting rules there, in a place where getting them wrong reads
+  /// perfectly: the ambiguous cases [parse] exists for are exactly the ones a
+  /// rebuilt string gets right by accident until the day a homeserver carries
+  /// a port.
+  final String identity;
+
   final String userId;
 
   /// Null when the identity carries no device segment. Treated as a distinct
@@ -54,6 +68,7 @@ class CallParticipant {
   final CaptureReport? capturing;
 
   const CallParticipant({
+    required this.identity,
     required this.userId,
     this.deviceId,
     this.joinedAt,
@@ -71,14 +86,20 @@ class CallParticipant {
   /// when the only other participant was themselves.
   factory CallParticipant.parse(String identity, {String? myUserId}) {
     if (myUserId != null && myUserId.isNotEmpty) {
-      if (identity == myUserId) return CallParticipant(userId: myUserId);
+      if (identity == myUserId) {
+        return CallParticipant(identity: identity, userId: myUserId);
+      }
       if (identity.startsWith('$myUserId:')) {
         final rest = identity.substring(myUserId.length + 1);
         // Only when what follows is a single segment. Another user whose id
         // extends ours — ours with a port, say — would otherwise be read as one
         // of our own devices, and a real peer would not count as present.
         if (!rest.contains(':')) {
-          return CallParticipant(userId: myUserId, deviceId: rest);
+          return CallParticipant(
+            identity: identity,
+            userId: myUserId,
+            deviceId: rest,
+          );
         }
       }
     }
@@ -88,9 +109,10 @@ class CallParticipant {
     if (split <= 0 ||
         !identity.startsWith('@') ||
         identity.indexOf(':') == split) {
-      return CallParticipant(userId: identity);
+      return CallParticipant(identity: identity, userId: identity);
     }
     return CallParticipant(
+      identity: identity,
       userId: identity.substring(0, split),
       deviceId: identity.substring(split + 1),
     );
@@ -106,6 +128,7 @@ class CallParticipant {
     bool canCapture = true,
     CaptureReport? capturing,
   }) => CallParticipant(
+    identity: identity,
     userId: userId,
     deviceId: deviceId,
     joinedAt: joinedAt,
@@ -120,8 +143,8 @@ class CallParticipant {
   /// is what the roster's notify predicate is built from: a hand-maintained
   /// list of "fields worth notifying about" is how a capability change came to
   /// land in silence.
-  (String, String?, DateTime?, bool, CaptureReport?) get state =>
-      (userId, deviceId, joinedAt, canCapture, capturing);
+  (String, String, String?, DateTime?, bool, CaptureReport?) get state =>
+      (identity, userId, deviceId, joinedAt, canCapture, capturing);
 
   @override
   bool operator ==(Object other) =>
@@ -216,6 +239,21 @@ class RosterRead {
 class CallRoster extends ChangeNotifier {
   final String myUserId;
 
+  /// What this call's token said about publishing attributes, as read when it
+  /// was issued.
+  ///
+  /// Carried here so that a failed write can be told apart from an outage. From
+  /// inside [_write] the two are the same thrown error, and only one of them is
+  /// a deployment we have to change — which is exactly why the refusal read as
+  /// an ordinary flake for the life of the feature.
+  ///
+  /// NOTHING RANKS ON IT. The election reads what has actually been announced
+  /// ([announcedCanCapture]), and that stays the right input: a token WITH the
+  /// grant can still fail to write, so the observed failure is strictly better
+  /// evidence than the predicted one. This is here to say WHY, not to change
+  /// what anyone decides.
+  final MetadataGrant metadataGrant;
+
   final lk.Room _room;
 
   /// The attribute a device publishes to tell its siblings whether it can
@@ -274,7 +312,11 @@ class CallRoster extends ChangeNotifier {
   /// person leaving — which would have ended the call.
   bool _connected = false;
 
-  CallRoster({required lk.Room room, required this.myUserId}) : _room = room {
+  CallRoster({
+    required lk.Room room,
+    required this.myUserId,
+    this.metadataGrant = MetadataGrant.unknown,
+  }) : _room = room {
     _room.addListener(recompute);
     recompute();
   }
@@ -420,6 +462,18 @@ class CallRoster extends ChangeNotifier {
   /// When the SFU saw one of this account's other devices join.
   DateTime? siblingJoinTime(String deviceId) => _sibling(deviceId)?.joinedAt;
 
+  /// The identity the SFU named THIS device by, or null before it has named
+  /// one.
+  ///
+  /// The key `CallMedia`'s join-stamp store is held under, and the reason it is
+  /// read from here rather than assembled from the account and the device id:
+  /// the string is the SFU's, and only the SFU's copy of it is certain to
+  /// match the one the store was keyed with.
+  String? get myIdentity => _picture.myIdentity;
+
+  /// The identity the SFU named one of this account's other devices by.
+  String? siblingIdentity(String deviceId) => _sibling(deviceId)?.identity;
+
   /// Whether one of this account's other devices says it can record.
   ///
   /// A device this account cannot see reads as ABLE, for the same reason an
@@ -493,6 +547,11 @@ class CallRoster extends ChangeNotifier {
               described: snapshot.me!.described,
               joinedAt: snapshot.me!.joinedAt,
             ),
+      // NOT filtered by [usableJoinTime] beside it, because it is not a
+      // reading of anything: an identity is what the SFU CALLS this device,
+      // and it is exactly as true on a membership the SFU has not yet
+      // described as on one it has.
+      myIdentity: snapshot.me?.identity,
       peerMuted: _readPeerMuted(snapshot),
     );
 
@@ -760,9 +819,65 @@ class CallRoster extends ChangeNotifier {
         e,
         s,
       );
+      // AND SOMEWHERE IT CAN BE COUNTED. The sentence above was written
+      // correctly, and named the right cause, while the failure it describes ran
+      // in production for the life of the feature: [Logs] reaches the in-app log
+      // viewer and nothing else, so nobody who was not already looking at a
+      // device ever saw one.
+      //
+      // ONCE PER SESSION, because this is level-triggered rather than bounded.
+      // Every recompute re-asserts an outstanding intent, so a channel that has
+      // stopped answering fails again on every room notification for the whole
+      // call — a report per failure would be one issue per participant event.
+      // The first one carries the signal and Sentry's affected-user count
+      // carries the size.
+      //
+      // Severity is left to [ErrorHandler]'s table, which reads this as an
+      // error. That is the reading this failure was owed: it is never the
+      // learner's doing, and its safe direction — siblings that hear nothing
+      // deliver their own tails rather than drop them — is what let it look
+      // like it was working.
+      ErrorHandler.logErrorOnce(
+        key: attributesUnpublishedKey,
+        e: e,
+        s: s,
+        data: {
+          // What the throw itself does not say. See [attributesUnpublishedCost].
+          'lost': attributesUnpublishedCost,
+          // Attribute NAMES, never the values: a published run names a stretch
+          // of a learner's conversation.
+          'attributes': attributes.keys.toList()..sort(),
+          // The half that tells a refusal from an outage. See [metadataGrant].
+          'tokenGrant': metadataGrant.name,
+        },
+      );
       return false;
     }
   }
+
+  /// The session-throttle key the unpublished-attributes report is filed under.
+  ///
+  /// Named so the report and the test that pins its budget spend one string.
+  static const attributesUnpublishedKey = 'call_roster.attributes_unpublished';
+
+  /// What a write that never reached the siblings COSTS, carried on the report.
+  ///
+  /// In `data` rather than in the exception, because it belongs to neither of
+  /// the two places a report can otherwise put a sentence. The thrown `e` is
+  /// whatever the signal channel raised — a five-second timeout, a refusal —
+  /// and no shape of it says what is lost when it fails. Wrapping `e` to say so
+  /// would change the runtime type that the severity table and the fingerprint
+  /// both read, which is exactly why #8660 deleted these sentences rather than
+  /// folding them in; and handing the reporter a description it does not report
+  /// is the same #8660 defect, a string that reaches `debugPrint` and nowhere
+  /// else. `data` is on the Sentry event, so it is searchable there.
+  ///
+  /// Named, like [attributesUnpublishedKey], so the report and the test that
+  /// pins it spend one string.
+  static const attributesUnpublishedCost =
+      "This device could not tell the account's other devices what it can "
+      'do or is doing; the recorder election is running without its '
+      'capability layer';
 
   void _reassertAnnouncement() {
     for (final entry in _wanted.entries) {
@@ -806,31 +921,44 @@ class _Announcement {
 class _RosterPicture {
   final Set<CallParticipant> participants;
   final DateTime? myJoinedAt;
+
+  /// Null exactly when the SFU has given this device no membership at all,
+  /// which is a different absence from [myJoinedAt]'s: an identity is not a
+  /// time, so it survives a membership the SFU has named but not yet
+  /// described.
+  final String? myIdentity;
   final bool peerMuted;
 
   const _RosterPicture({
     required this.participants,
     required this.myJoinedAt,
+    required this.myIdentity,
     required this.peerMuted,
   });
 
   static const empty = _RosterPicture(
     participants: {},
     myJoinedAt: null,
+    myIdentity: null,
     peerMuted: false,
   );
 
-  Set<(String, String?, DateTime?, bool, CaptureReport?)> get _states =>
+  Set<(String, String, String?, DateTime?, bool, CaptureReport?)> get _states =>
       participants.map((p) => p.state).toSet();
 
   @override
   bool operator ==(Object other) =>
       other is _RosterPicture &&
       other.myJoinedAt == myJoinedAt &&
+      other.myIdentity == myIdentity &&
       other.peerMuted == peerMuted &&
       setEquals(other._states, _states);
 
   @override
-  int get hashCode =>
-      Object.hash(myJoinedAt, peerMuted, Object.hashAllUnordered(_states));
+  int get hashCode => Object.hash(
+    myJoinedAt,
+    myIdentity,
+    peerMuted,
+    Object.hashAllUnordered(_states),
+  );
 }

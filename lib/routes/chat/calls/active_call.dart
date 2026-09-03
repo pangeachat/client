@@ -271,9 +271,9 @@ class ActiveCall extends ChangeNotifier {
   /// rung — one joining a call already under way. Without it everything that
   /// device's learner said went uncredited.
   ///
-  /// Asked again if announcing did not see it in time. That wait is deliberately
-  /// short so a caller is never left hanging, but by the time a call is over the
-  /// membership has long since arrived.
+  /// Asked again when it is not already held, which costs nothing: the service
+  /// takes the id from the write that published the membership, so its answer
+  /// is the same one announcing got and does not change over the call.
   /// The membership that IDENTIFIES this call, as opposed to the one that is
   /// currently live.
   ///
@@ -291,9 +291,9 @@ class ActiveCall extends ChangeNotifier {
   String? get membershipEventId {
     final known = _membershipEventId;
     if (known != null) return known;
-    final room = _room;
-    if (room == null) return null;
-    return _membershipEventId = calls.membershipEventIdIn(room);
+    // Addressed by the attempt THIS call owns, never by room: a redial that
+    // took our place in the same room must not answer our read with its id.
+    return _membershipEventId = calls.membershipEventIdIn(_joinAttempt);
   }
 
   ActiveCall({
@@ -639,7 +639,15 @@ class ActiveCall extends ChangeNotifier {
     final track = _track;
     final roster = _roster;
 
-    final me = calls.client.deviceID ?? '';
+    // NULL, not the empty string this used to fall back to. The election breaks
+    // a tie on device id and '' sorts BEFORE every real one, so a device the SDK
+    // could not name out-ranked every sibling unconditionally and elected
+    // itself — the exact duplicate-analytics outcome the election exists to
+    // prevent. The window is narrow, because a call cannot start without a
+    // device id at all: it takes a logout landing mid-call. What it costs is
+    // not narrow, because both devices then deliver the same stretch and the
+    // learner is credited twice for saying something once.
+    final me = calls.client.deviceID;
 
     // Somewhere to record FROM and somewhere to record THROUGH, composed in the
     // one place that can see both objects, and read ONCE — so what this device
@@ -700,11 +708,21 @@ class ActiveCall extends ChangeNotifier {
     // being elected in its own view, delivered them.
     final iCanCapture = roster?.announcedCanCapture ?? true;
     final election = CaptureElection(
-      myDeviceId: me,
+      myDeviceId: me ?? '',
       siblings: siblings,
       iCanCapture: iCanCapture,
     );
-    final elected = election.shouldRecord;
+    // STANDS ASIDE, and the guard sits here rather than inside the election
+    // because namelessness is not a rank. [CaptureElection] is a total order
+    // over NAMED devices, and every device reaching the same verdict alone
+    // depends on that order being one every device can compute; a device with
+    // no id is not lower in it, it is absent from it. This is the one site that
+    // knows the SDK may have no id to give.
+    //
+    // Only when there is somebody to stand aside FOR. Alone in the call it
+    // still records: there is nobody to produce a duplicate with, and refusing
+    // would cost the call's analytics to prevent nothing.
+    final elected = (me != null || siblings.isEmpty) && election.shouldRecord;
 
     // Recorded SYNCHRONOUSLY, here, at the moment the election decides — never
     // handed to the stop as an argument. Teardown stops the recorder directly,
@@ -722,6 +740,18 @@ class ActiveCall extends ChangeNotifier {
     final successorReport = successor == null
         ? null
         : roster?.siblingCaptureReport(successor.deviceId);
+    // The SFU's own words about each join, keyed the way the SFU keys them.
+    // The identities come from the roster rather than being assembled out of
+    // the account and the device id: the store is keyed by the string the SFU
+    // used, and a second copy of the identity rules here is a second place for
+    // them to be wrong. A device the SFU has not named has no identity to look
+    // up, and an identity the store never heard of reads as absent — both land
+    // on the coarse comparison, which is where they landed before this was
+    // read at all.
+    final myIdentity = roster?.myIdentity;
+    final successorIdentity = successor == null
+        ? null
+        : roster?.siblingIdentity(successor.deviceId);
     capture.setDiscardOnStop(
       successor != null &&
           successorReport != null &&
@@ -731,6 +761,12 @@ class ActiveCall extends ChangeNotifier {
             watch: _watch,
             myJoinedAt: roster?.myJoinTime,
             successorJoinedAt: roster?.siblingJoinTime(successor.deviceId),
+            mySfuStamps: myIdentity == null
+                ? null
+                : media.sfuJoinStampsFor(myIdentity),
+            successorSfuStamps: successorIdentity == null
+                ? null
+                : media.sfuJoinStampsFor(successorIdentity),
           ),
     );
 
@@ -1229,8 +1265,8 @@ class ActiveCall extends ChangeNotifier {
 
   /// Leaves the reload trace once this is a conversation with an identity.
   ///
-  /// Retried from the announce path because the first arrival can precede
-  /// the membership echo; whichever lands second writes it.
+  /// Retried from the announce path because the first arrival can precede the
+  /// membership this call publishes; whichever lands second writes it.
   /// Whether this call asked for video, remembered for the breadcrumb.
   bool _isVideoCall = false;
 
@@ -1401,7 +1437,7 @@ class ActiveCall extends ChangeNotifier {
     _electRecorder();
   }
 
-  /// Notes this device's own membership event once the room has echoed it.
+  /// Notes this device's own membership event, if the service has one to give.
   ///
   /// It is what a device that JOINED a call — with no ring of its own to point
   /// at — anchors its speaking analytics to, and it can only be read while the
@@ -1410,16 +1446,28 @@ class ActiveCall extends ChangeNotifier {
     if (_membershipEventId != null) return;
     final room = _room;
     if (room == null) return;
-    _membershipEventId = calls.membershipEventIdIn(room);
-    // The third breadcrumb site, for the ordering the other two cannot
-    // cover: an announce whose echo timed out returns null, and the anchor
-    // only ever arrives HERE, later, from state -- with the peer long since
-    // noted. The drop fires wherever the LAST of its two facts lands.
+    // The attempt THIS call owns, not the room: a stale read at teardown, once
+    // a redial holds the room, must come back null rather than the redial's id.
+    _membershipEventId = calls.membershipEventIdIn(_joinAttempt);
+    // The third breadcrumb site, for the ordering the other two cannot cover:
+    // a device that never held the anchor picks it up HERE, with the peer long
+    // since noted. The drop fires wherever the LAST of its two facts lands.
     if (_membershipEventId != null && _peerArrived) _dropBreadcrumb();
     _ringOnceTheAnchorArrives();
   }
 
-  /// Watches for a membership whose echo was late, so the ring can still go.
+  /// Watched for an anchor that arrived after announcing gave up on it, so the
+  /// ring could still go.
+  ///
+  /// NOTHING ARRIVES THAT WAY ANY MORE, and this is left standing rather than
+  /// silently removed. The service used to derive the anchor by polling room
+  /// state for the echo of its own write, so an announce could honestly return
+  /// null and the id turn up seconds later; it now takes the id from the write
+  /// itself, so `announce` returning null means the call published no
+  /// membership at all and no later look can find one. Whether the poll and the
+  /// catch-up ring go with it is a decision about the ring path rather than
+  /// about how a call is identified, so it is raised rather than taken. Until
+  /// then this costs eight ticks and stops itself.
   Timer? _lateRing;
 
   void _watchForALateAnchor() {
@@ -1433,7 +1481,7 @@ class ActiveCall extends ChangeNotifier {
         _lateRing = null;
         return;
       }
-      _membershipEventId ??= calls.membershipEventIdIn(room);
+      _membershipEventId ??= calls.membershipEventIdIn(_joinAttempt);
       if (_membershipEventId == null) return;
       timer.cancel();
       _lateRing = null;
@@ -1446,7 +1494,7 @@ class ActiveCall extends ChangeNotifier {
   void lookForALateAnchorNow() {
     final room = _room;
     if (room == null) return;
-    _membershipEventId ??= calls.membershipEventIdIn(room);
+    _membershipEventId ??= calls.membershipEventIdIn(_joinAttempt);
     _ringOnceTheAnchorArrives();
   }
 
@@ -1813,7 +1861,13 @@ class ActiveCall extends ChangeNotifier {
       // poll. Membership is room state on a multi-minute expiry: it lags a join
       // and cannot see a crash until it lapses, which is why the poll existed
       // at all. The SFU knows immediately, so neither is needed.
-      final roster = media.roster(myUserId: calls.client.userID ?? '');
+      final roster = media.roster(
+        myUserId: calls.client.userID ?? '',
+        // What the token said about publishing attributes, carried so that a
+        // roster write that fails can say whether it was ever allowed to
+        // succeed. See [CallRoster.metadataGrant]; nothing here ranks on it.
+        metadataGrant: grant.metadataGrant,
+      );
       _roster = roster;
       roster.addListener(_onParticipantsChanged);
       // And the call's own clock beside the roster's events, so no state can
@@ -1855,10 +1909,10 @@ class ActiveCall extends ChangeNotifier {
       // running when the peer learns this device is here. Handovers are queued,
       // so without this the initial start would land a microtask later.
       await _step(() => _handover);
-      // announce returns our membership event id, waiting for the state write
-      // to echo — the ring needs it, so this is where the wait belongs. Kept,
-      // because it is also the only event a device that JOINED a call — with no
-      // ring of its own to point at — can anchor its speaking analytics to.
+      // announce returns our membership event id, taken from the write that
+      // published it — the ring needs it, so this is where that wait belongs.
+      // Kept, because it is also the only event a device that JOINED a call —
+      // with no ring of its own to point at — can anchor its analytics to.
       // NOT through the guarded step, for the same reason the ring below is
       // not: the id must be recorded even when we are giving up. Through it,
       // a hangup landing inside the announce threw after the id had come back
@@ -1926,10 +1980,11 @@ class ActiveCall extends ChangeNotifier {
       // that gap — the caller would then sit through the whole ring instead of
       // being told they were turned down.
       _declines = calls.declinesIn(room).listen(_onDeclineEvent);
-      // The echo can simply be late. Skipping the ring outright meant the
-      // callee's phone never rang and the caller waited out the answer
-      // timeout for a call nobody was told about; this keeps looking for the
-      // id and rings the moment it lands.
+      // An anchor that turned up late used to be the ordinary case, and
+      // skipping the ring outright meant the callee's phone never rang while
+      // the caller waited out the answer timeout for a call nobody was told
+      // about. It no longer arrives late — see [_lateRing] for what changed
+      // and what is left to decide about this.
       if (placing && membershipId == null) _watchForALateAnchor();
       if (placing && membershipId != null) {
         // Remembered as an ATTEMPT, separately from the id coming back. Both

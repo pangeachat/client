@@ -386,51 +386,28 @@ async function main() {
     await ui.clickControl(A.page, 'transcriptLink').catch(() => {});
     await wait(4000);
     await A.page.screenshot({ path: shot('transcript-screen.png') }).catch(() => {});
-
-    const onScreen = (await ui.labels(A.page)).join(' | ');
-
-    // Nobody is called silent who spoke. The screen has four things it can
-    // say and this is the one that would be a lie.
-    // Built, not searched for.
+    // A SCREENSHOT AND NO CHECK, and the missing check is the point.
     //
-    // The app draws `callTranscriptSaidNothing` with a name substituted in,
-    // so the exact sentence it would put on screen about a given person is
-    // computable -- "calltester did not say anything". Asking whether THAT
-    // string is present answers "is this person being called silent" with no
-    // ambiguity at all.
+    // "Nobody who spoke is reported as silent" stood here, built the exact
+    // sentence the app draws for `callTranscriptSaidNothing` with each
+    // speaker's name in it, and searched the accessibility labels for it.
+    // The panel is drawn by CanvasKit and its prose reaches neither the page
+    // text nor a semantics name -- measured in `transcript_two_devices.js`,
+    // with six sentences plainly on screen and not one of them in either. So
+    // the sentence could never be found whether or not the app drew it: the
+    // search returned nothing every run, `lied` was always empty, and the
+    // check passed on every possible screen including the one it existed to
+    // catch. That is the mirror of a check that can only fail, and it is worth
+    // exactly as little.
     //
-    // Three earlier versions of this check were wrong, each in a way the next
-    // one inherited. Matching a guessed name failed because the screen draws a
-    // display name or a localised "You", not a Matrix localpart. Counting the
-    // claims could not tell a true note about the silent speaker from a false
-    // one about the speaker who spoke. And a proximity window around each
-    // claim accused whoever happened to be printed nearby -- in a two-line
-    // transcript, that is everybody.
+    // Deleted rather than annotated. A note saying a check cannot fail does not
+    // make it honest -- it makes the suite carry a green line that means
+    // nothing, which is the one thing a green line may never do. The same pair
+    // was removed from `transcript_two_devices.js` for the same reason.
     //
-    // "Silent" is the APP's definition: a half with no segments, which is what
-    // `saidNothing` means. Counting words of four letters or more was a proxy,
-    // and it called a half carrying a couple of short words silent.
-    const templates = labels.templatesFor('callTranscriptSaidNothing');
-    const youNames = labels.labelsFor('you');
-
-    const lied = [];
-    for (const ev of [byA, byB].filter(Boolean)) {
-      const segs = ev.content?.segments;
-      if (!Array.isArray(segs) || segs.length === 0) continue;   // truly silent
-
-      const names = ev.sender === A.userId
-        ? youNames
-        : [await mx.displayName(A.token, ev.sender), ev.sender.slice(1).split(':')[0]];
-
-      const accused = templates.some((t) =>
-        names.filter(Boolean).some((n) =>
-          onScreen.includes(t.replace(/\{[^}]*\}/g, String(n)))));
-      if (accused) lied.push(ev.sender);
-    }
-
-    h.check(s, 'nobody who spoke is reported as silent', lied.length === 0,
-      `the transcript says ${lied.join(', ')} said nothing, but their half ` +
-        `carries segments`);
+    // WHAT WOULD BE NEEDED to ask it: the words on that panel, from somewhere.
+    // They are in neither tree, so nothing here can. The screenshot above is
+    // what a person reads instead, the way the phone scenarios already work.
   }
 
   console.log('[6] neither side logged an unhandled error');
@@ -439,10 +416,13 @@ async function main() {
       JSON.stringify(p.errors.slice(0, 3)));
   }
 
-  // The exit code is the result. `h.report()` returns the failure count and
-  // an earlier version of this file threw it away, so a run with four failed
-  // checks exited 0 -- which makes the header's promise that these are
-  // FAILURES and not skips worth nothing to anything that reads exit codes.
+  // The exit code is the result. `h.report()` returns every result that is not
+  // a pass -- failures AND checks that could not be asked -- and an earlier
+  // version of this file threw the number away, so a run with four failed
+  // checks exited 0. This file records two skips of its own, so the second half
+  // of that count is not hypothetical here: a run where the halves could not be
+  // compared, or carried no turn positions to check, is a run that proved less
+  // than its summary suggests and now says so in its exit code.
   process.exit(h.report() === 0 ? 0 : 1);
 }
 

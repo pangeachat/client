@@ -143,6 +143,21 @@ class PcmChunker {
   /// frame count does not drift at all, and costs one multiply per chunk.
   int _framesEmitted = 0;
 
+  /// Audio that existed inside this run and never reached this chunker, in
+  /// milliseconds.
+  ///
+  /// The frame count above is a clock only while every frame arrives. When the
+  /// capture path drops a stretch, the frames after it carry on from where the
+  /// count left off — so every position derived from it names a moment EARLIER
+  /// than the one it was spoken at, by the whole of what went, cumulatively,
+  /// for the rest of the run. Adding the gap back into the conversion is what
+  /// keeps a position a statement about when somebody spoke.
+  ///
+  /// It only ever grows through [skip], which cuts first, so no chunk ever
+  /// spans a gap: a chunk's own samples are always contiguous, and a word
+  /// timing measured from its start still lands where the word was said.
+  int _skippedMs = 0;
+
   PcmChunker({
     required this.sampleRate,
     required this.channels,
@@ -175,8 +190,15 @@ class PcmChunker {
   int get endedAtMs => _atMs(_framesEmitted + _framesBuffered);
 
   /// Absolute milliseconds [frames] into this run: the single conversion,
-  /// exact frames in and one truncation out.
-  int _atMs(int frames) => runStartedAtMs + frames * 1000 ~/ sampleRate;
+  /// exact frames in and one truncation out, plus whatever the run lost before
+  /// this point.
+  ///
+  /// The gap is added as milliseconds rather than converted to frames and
+  /// counted in with the rest. Milliseconds are what was lost: those samples
+  /// were never taken in here, and converting them would round them against a
+  /// rate that is only this run's by assumption.
+  int _atMs(int frames) =>
+      runStartedAtMs + _skippedMs + frames * 1000 ~/ sampleRate;
 
   int get _framesPerWindow => max(1, sampleRate * _windowMs ~/ 1000);
   int get _targetFrames => sampleRate * targetDuration.inMilliseconds ~/ 1000;
@@ -244,6 +266,35 @@ class PcmChunker {
   PcmChunk? flush() {
     _window.clear();
     return _cut();
+  }
+
+  /// Records [ms] of audio this run produced that never arrived here, and cuts
+  /// whatever was buffered so that no chunk spans the gap.
+  ///
+  /// Returns that cut, if there was anything to cut.
+  ///
+  /// The cut is the point, not a side effect. Merely counting the gap into the
+  /// positions would leave the chunk that straddles it holding two stretches
+  /// of speech with silence-that-never-happened between them: its own start
+  /// would be right, and every word timing after the seam — which a provider
+  /// measures from the start of the audio it was given — would be early by the
+  /// whole gap, with nothing in the chunk to say where the seam was. Cutting
+  /// makes the gap a boundary between chunks, where it can be represented.
+  ///
+  /// The cost is a short chunk, and the request that carries it, every time
+  /// the capture path drops something. That is a far cheaper wrong than a
+  /// chunk whose second half is timed from a moment that never existed.
+  PcmChunk? skip(int ms) {
+    if (ms <= 0) return null;
+    // Cleared for the same reason [flush] clears it: the quiet run either side
+    // of a gap is not one run, and a window that averaged across the boundary
+    // would be measuring audio that is not adjacent.
+    _window.clear();
+    // BEFORE the gap is counted in, so the chunk being cut is stamped from
+    // where it actually began -- which is before the gap, not after it.
+    final cut = _cut();
+    _skippedMs += ms;
+    return cut;
   }
 
   PcmChunk? _cut() {
