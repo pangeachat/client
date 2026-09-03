@@ -168,6 +168,20 @@
         "type": "String",
         "placeholders": {}
     },
+    "seeAll": "See all",
+    "@seeAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "seeAllSection": "See all {section}",
+    "@seeAllSection": {
+        "type": "String",
+        "placeholders": {
+            "section": {
+                "type": "String"
+            }
+        }
+    },
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},
     "commandHint_googly": "Send some googly eyes",
@@ -5049,6 +5063,28 @@
     "@activityPanel": {},
     "coursePage": "Course page",
     "@coursePage": {},
+    "constructLevelSeeds": "Seeds, new words",
+    "@constructLevelSeeds": {},
+    "constructLevelGreens": "Greens, growing words",
+    "@constructLevelGreens": {},
+    "constructLevelFlowers": "Flowers, mastered words",
+    "@constructLevelFlowers": {},
+    "filterAndSearch": "Filter and search",
+    "@filterAndSearch": {},
+    "participantsOfTotal": "{filled} of {total} players",
+    "@participantsOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "mapAttributionLabel": "OpenStreetMap contributors, copyright and license",
+    "@mapAttributionLabel": {},
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Greek",
@@ -5215,7 +5251,7 @@
     "ongoingPendingLabel": "Waiting for others to join",
     "joinableLabel": "Joinable",
     "inProgressLabel": "Previously completed",
-    "availableLabel": "Create activity",
+    "availableLabel": "Not yet started",
     "chatSearchPageLabel": "Chat search page",
     "selectImageLabel": "Select image",
     "userSearchTagsLabel": "Search in...",

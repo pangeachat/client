@@ -10727,5 +10727,13 @@
     "archivedChat": "Αρχειοθετημένη συνομιλία",
     "activityReview": "Ανασκόπηση δραστηριότητας",
     "activityPanel": "Δραστηριότητα",
-    "coursePage": "Σελίδα μαθήματος"
+    "coursePage": "Σελίδα μαθήματος",
+    "constructLevelSeeds": "Σπόροι, νέες λέξεις",
+    "constructLevelGreens": "Πράσινα, αναπτυσσόμενες λέξεις",
+    "constructLevelFlowers": "Λουλούδια, λέξεις που έχετε κατακτήσει",
+    "filterAndSearch": "Φιλτράρισμα και αναζήτηση",
+    "participantsOfTotal": "{filled} από {total} παίκτες",
+    "mapAttributionLabel": "Συνεισφέροντες στο OpenStreetMap, πνευματικά δικαιώματα και άδεια",
+    "seeAll": "Δείτε όλα",
+    "seeAllSection": "Δείτε όλα τα {section}"
 }

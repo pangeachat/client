@@ -2256,5 +2256,13 @@
     "archivedChat": "Архивделген чат",
     "activityReview": "Иш-аракеттерди карап чыгуу",
     "activityPanel": "Иш-аракет",
-    "coursePage": "Курс баракчасы"
+    "coursePage": "Курс баракчасы",
+    "constructLevelSeeds": "Үрөндөр, жаңы сөздөр",
+    "constructLevelGreens": "Көк чөптөр, өсүп жаткан сөздөр",
+    "constructLevelFlowers": "Гүлдөр, өздөштүрүлгөн сөздөр",
+    "filterAndSearch": "Чыпкалоо жана издөө",
+    "participantsOfTotal": "{filled} / {total} оюнчу",
+    "mapAttributionLabel": "OpenStreetMap салымчылары, автордук укук жана лицензия",
+    "seeAll": "Баарын көрүү",
+    "seeAllSection": "Баарын көрүү {section}"
 }

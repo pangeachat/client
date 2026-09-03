@@ -2256,5 +2256,13 @@
     "archivedChat": "ការជជែកដែលបានទុកក្នុងប័ណ្ណសារ",
     "activityReview": "ការពិនិត្យសកម្មភាព",
     "activityPanel": "សកម្មភាព",
-    "coursePage": "ទំព័រវគ្គសិក្សា"
+    "coursePage": "ទំព័រវគ្គសិក្សា",
+    "constructLevelSeeds": "គ្រាប់ពូជ ពាក្យថ្មី",
+    "constructLevelGreens": "បៃតង ពាក្យដែលកំពុងរីកចម្រើន",
+    "constructLevelFlowers": "ផ្កា ពាក្យដែលស្ទាត់ជំនាញ",
+    "filterAndSearch": "ត្រង និងស្វែងរក",
+    "participantsOfTotal": "អ្នកលេង {filled} នៃ {total} នាក់",
+    "mapAttributionLabel": "អ្នករួមចំណែក OpenStreetMap, ការរក្សាសិទ្ធិ និងអាជ្ញាប័ណ្ណ",
+    "seeAll": "មើលទាំងអស់",
+    "seeAllSection": "មើល {section} ទាំងអស់"
 }

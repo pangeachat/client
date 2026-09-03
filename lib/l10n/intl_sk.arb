@@ -10797,5 +10797,13 @@
     "archivedChat": "Archivovaný chat",
     "activityReview": "Prehľad aktivity",
     "activityPanel": "Aktivita",
-    "coursePage": "Stránka kurzu"
+    "coursePage": "Stránka kurzu",
+    "constructLevelSeeds": "Semienka, nové slová",
+    "constructLevelGreens": "Lístky, rastúce slová",
+    "constructLevelFlowers": "Kvety, zvládnuté slová",
+    "filterAndSearch": "Filtrovať a hľadať",
+    "participantsOfTotal": "{filled} z {total} hráčov",
+    "mapAttributionLabel": "Prispievatelia OpenStreetMap, autorské práva a licencia",
+    "seeAll": "Zobraziť všetko",
+    "seeAllSection": "Zobraziť všetko: {section}"
 }

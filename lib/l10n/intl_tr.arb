@@ -10153,5 +10153,13 @@
     "archivedChat": "Arşivlenmiş sohbet",
     "activityReview": "Etkinlik incelemesi",
     "activityPanel": "Etkinlik",
-    "coursePage": "Kurs sayfası"
+    "coursePage": "Kurs sayfası",
+    "constructLevelSeeds": "Tohumlar, yeni kelimeler",
+    "constructLevelGreens": "Yeşiller, gelişen kelimeler",
+    "constructLevelFlowers": "Çiçekler, ustalaşmış kelimeler",
+    "filterAndSearch": "Filtrele ve ara",
+    "participantsOfTotal": "{total} oyuncudan {filled} tanesi",
+    "mapAttributionLabel": "OpenStreetMap katılımcıları, telif hakkı ve lisans",
+    "seeAll": "Tümünü gör",
+    "seeAllSection": "Tüm {section} bölümünü gör"
 }

@@ -2256,5 +2256,13 @@
     "archivedChat": "Արխիվացված զրույց",
     "activityReview": "Գործունեության վերանայում",
     "activityPanel": "Գործունեություն",
-    "coursePage": "Դասընթացի էջ"
+    "coursePage": "Դասընթացի էջ",
+    "constructLevelSeeds": "Սերմեր, նոր բառեր",
+    "constructLevelGreens": "Կանաչիներ, աճող բառեր",
+    "constructLevelFlowers": "Ծաղիկներ, յուրացված բառեր",
+    "filterAndSearch": "Զտել և որոնել",
+    "participantsOfTotal": "{filled} / {total} խաղացող",
+    "mapAttributionLabel": "OpenStreetMap-ի մասնակիցներ, հեղինակային իրավունք և լիցենզիա",
+    "seeAll": "Տեսնել բոլորը",
+    "seeAllSection": "Տեսնել բոլոր {section}"
 }

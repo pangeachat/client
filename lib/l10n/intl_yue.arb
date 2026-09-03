@@ -10809,5 +10809,13 @@
     "archivedChat": "已封存嘅對話",
     "activityReview": "活動回顧",
     "activityPanel": "活動",
-    "coursePage": "課程頁面"
+    "coursePage": "課程頁面",
+    "constructLevelSeeds": "種子，新詞",
+    "constructLevelGreens": "綠葉，成長中嘅詞語",
+    "constructLevelFlowers": "花朵，已掌握嘅詞語",
+    "filterAndSearch": "篩選同搜尋",
+    "participantsOfTotal": "{filled}/{total} 位玩家",
+    "mapAttributionLabel": "OpenStreetMap 貢獻者、版權及許可",
+    "seeAll": "查看全部",
+    "seeAllSection": "查看全部{section}"
 }

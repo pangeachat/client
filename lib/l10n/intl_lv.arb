@@ -9852,5 +9852,13 @@
     "archivedChat": "Arhivēta tērzēšana",
     "activityReview": "Aktivitātes pārskats",
     "activityPanel": "Aktivitāte",
-    "coursePage": "Kursa lapa"
+    "coursePage": "Kursa lapa",
+    "constructLevelSeeds": "Sēklas, jauni vārdi",
+    "constructLevelGreens": "Zaļumi, augoši vārdi",
+    "constructLevelFlowers": "Ziedi, apgūtie vārdi",
+    "filterAndSearch": "Filtrēt un meklēt",
+    "participantsOfTotal": "{filled} no {total} spēlētājiem",
+    "mapAttributionLabel": "OpenStreetMap līdzstrādnieki, autortiesības un licence",
+    "seeAll": "Skatīt visu",
+    "seeAllSection": "Skatīt visu sadaļu {section}"
 }

@@ -140,6 +140,14 @@ void main() {
     await Future<void>.delayed(Duration.zero);
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
+    // Then give any report the chain started time to reach the harness before
+    // the caller asserts none was made. `logError` does not await
+    // `Sentry.captureException`, so `beforeSend` runs turns later: without
+    // this, "no event captured" also passes when an event simply had not
+    // landed yet. That is how these assertions stayed green on CI while
+    // failing locally, and it is a false green — the direction that hides a
+    // regression rather than inventing one.
+    await Future<void>.delayed(const Duration(milliseconds: 200));
   }
 
   testWidgets('the dialog pops itself once the bot takes its seat', (

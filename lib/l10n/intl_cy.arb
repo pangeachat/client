@@ -2256,5 +2256,13 @@
     "archivedChat": "Sgwrs wedi'i harchifo",
     "activityReview": "Adolygiad gweithgaredd",
     "activityPanel": "Gweithgaredd",
-    "coursePage": "Tudalen cwrs"
+    "coursePage": "Tudalen cwrs",
+    "constructLevelSeeds": "Hadau, geiriau newydd",
+    "constructLevelGreens": "Gwyrddion, geiriau sy'n tyfu",
+    "constructLevelFlowers": "Blodau, geiriau wedi'u meistroli",
+    "filterAndSearch": "Hidlo a chwilio",
+    "participantsOfTotal": "{filled} o {total} chwaraewr",
+    "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
+    "seeAll": "Gweld y cyfan",
+    "seeAllSection": "Gweld pob {section}"
 }

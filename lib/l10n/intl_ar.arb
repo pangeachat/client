@@ -10158,5 +10158,13 @@
     "archivedChat": "الدردشة المؤرشفة",
     "activityReview": "مراجعة النشاط",
     "activityPanel": "النشاط",
-    "coursePage": "صفحة الدورة التدريبية"
+    "coursePage": "صفحة الدورة التدريبية",
+    "constructLevelSeeds": "البذور، كلمات جديدة",
+    "constructLevelGreens": "الخضروات، كلمات متنامية",
+    "constructLevelFlowers": "الزهور، كلمات متقنة",
+    "filterAndSearch": "تصفية وبحث",
+    "participantsOfTotal": "{filled} من أصل {total} لاعبين",
+    "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
+    "seeAll": "مشاهدة الكل",
+    "seeAllSection": "مشاهدة كل {section}"
 }

@@ -10797,5 +10797,13 @@
     "archivedChat": "Arkivita babilado",
     "activityReview": "Agada revizio",
     "activityPanel": "Agado",
-    "coursePage": "Kurso-paĝo"
+    "coursePage": "Kurso-paĝo",
+    "constructLevelSeeds": "Semoj, novaj vortoj",
+    "constructLevelGreens": "Verdaĵoj, kreskantaj vortoj",
+    "constructLevelFlowers": "Floroj, regataj vortoj",
+    "filterAndSearch": "Filtri kaj serĉi",
+    "participantsOfTotal": "{filled} el {total} ludantoj",
+    "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
+    "seeAll": "Vidi ĉion",
+    "seeAllSection": "Vidi ĉion en {section}"
 }

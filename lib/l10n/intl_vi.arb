@@ -7144,5 +7144,13 @@
     "archivedChat": "Trò chuyện đã lưu trữ",
     "activityReview": "Xem lại hoạt động",
     "activityPanel": "Hoạt động",
-    "coursePage": "Trang khóa học"
+    "coursePage": "Trang khóa học",
+    "constructLevelSeeds": "Hạt giống, từ mới",
+    "constructLevelGreens": "Cây non, từ đang học",
+    "constructLevelFlowers": "Hoa, từ đã thành thạo",
+    "filterAndSearch": "Lọc và tìm kiếm",
+    "participantsOfTotal": "{filled} trên {total} người chơi",
+    "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
+    "seeAll": "Xem tất cả",
+    "seeAllSection": "Xem tất cả {section}"
 }

@@ -9958,5 +9958,13 @@
     "archivedChat": "已封存的聊天",
     "activityReview": "活動回顧",
     "activityPanel": "活動",
-    "coursePage": "課程頁面"
+    "coursePage": "課程頁面",
+    "constructLevelSeeds": "種子，新單字",
+    "constructLevelGreens": "綠芽，成長中的單字",
+    "constructLevelFlowers": "花朵，已掌握的單字",
+    "filterAndSearch": "篩選與搜尋",
+    "participantsOfTotal": "{filled} / {total} 位玩家",
+    "mapAttributionLabel": "OpenStreetMap 貢獻者、版權與許可",
+    "seeAll": "查看全部",
+    "seeAllSection": "查看全部{section}"
 }

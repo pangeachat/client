@@ -9979,5 +9979,13 @@
     "archivedChat": "Xat arxivat",
     "activityReview": "Revisió d'activitat",
     "activityPanel": "Activitat",
-    "coursePage": "Pàgina del curs"
+    "coursePage": "Pàgina del curs",
+    "constructLevelSeeds": "Llavors, paraules noves",
+    "constructLevelGreens": "Brots, paraules en creixement",
+    "constructLevelFlowers": "Flors, paraules dominades",
+    "filterAndSearch": "Filtra i cerca",
+    "participantsOfTotal": "{filled} de {total} jugadors",
+    "mapAttributionLabel": "Col·laboradors d'OpenStreetMap, drets d'autor i llicència",
+    "seeAll": "Veure-ho tot",
+    "seeAllSection": "Veure-ho tot a {section}"
 }

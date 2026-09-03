@@ -2256,5 +2256,13 @@
     "archivedChat": "Obrolan nu diarsipkeun",
     "activityReview": "Tinjauan kagiatan",
     "activityPanel": "Kagiatan",
-    "coursePage": "Kaca kursus"
+    "coursePage": "Kaca kursus",
+    "constructLevelSeeds": "Siki, kecap anyar",
+    "constructLevelGreens": "Héjo, kecap nu tumuwuh",
+    "constructLevelFlowers": "Kembang, kecap nu geus dikawasa",
+    "filterAndSearch": "Saring jeung teang",
+    "participantsOfTotal": "{filled} tina {total} pamaén",
+    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta sareng lisénsi",
+    "seeAll": "Tingali sadayana",
+    "seeAllSection": "Tingali sadayana {section}"
 }

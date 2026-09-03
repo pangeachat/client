@@ -2256,5 +2256,13 @@
     "archivedChat": "Chat arkivjata",
     "activityReview": "Reviżjoni tal-attività",
     "activityPanel": "Attività",
-    "coursePage": "Paġna tal-kors"
+    "coursePage": "Paġna tal-kors",
+    "constructLevelSeeds": "Żrieragħ, kliem ġdid",
+    "constructLevelGreens": "Ħdura, kliem li qed jikber",
+    "constructLevelFlowers": "Fjuri, kliem mhaddem",
+    "filterAndSearch": "Iffiltra u fittex",
+    "participantsOfTotal": "{filled} minn {total} plejers",
+    "mapAttributionLabel": "Kontributuri, drittijiet tal-awtur u liċenzja ta' OpenStreetMap",
+    "seeAll": "Ara kollox",
+    "seeAllSection": "Ara kollox {section}"
 }

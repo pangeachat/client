@@ -2256,5 +2256,13 @@
     "archivedChat": "Taɗi da aka adana",
     "activityReview": "Bita na aiki",
     "activityPanel": "Aiki",
-    "coursePage": "Shafin kwas"
+    "coursePage": "Shafin kwas",
+    "constructLevelSeeds": "Tsaba, sabbin kalmomi",
+    "constructLevelGreens": "Ganye, kalmomin da ke girma",
+    "constructLevelFlowers": "Fure, kalmomin da aka kware",
+    "filterAndSearch": "Tace da bincike",
+    "participantsOfTotal": "{filled} cikin {total} 'yan wasa",
+    "mapAttributionLabel": "Masu ba da gudummawa na OpenStreetMap, haƙƙin mallaka da lasisi",
+    "seeAll": "Duba duka",
+    "seeAllSection": "Duba duka {section}"
 }

@@ -9839,5 +9839,13 @@
     "archivedChat": "Archivierter Chat",
     "activityReview": "Aktivitätsprüfung",
     "activityPanel": "Aktivität",
-    "coursePage": "Kursseite"
+    "coursePage": "Kursseite",
+    "constructLevelSeeds": "Samen, neue Wörter",
+    "constructLevelGreens": "Grün, wachsende Wörter",
+    "constructLevelFlowers": "Blüten, gemeisterte Wörter",
+    "filterAndSearch": "Filtern und suchen",
+    "participantsOfTotal": "{filled} von {total} Spielern",
+    "mapAttributionLabel": "OpenStreetMap-Mitwirkende, Copyright und Lizenz",
+    "seeAll": "Alle anzeigen",
+    "seeAllSection": "Alle {section} anzeigen"
 }

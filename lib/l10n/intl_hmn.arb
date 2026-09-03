@@ -2256,5 +2256,13 @@
     "archivedChat": "Cov lus sib tham qub",
     "activityReview": "Rov saib dua tej yam ua",
     "activityPanel": "Kev ua ub no",
-    "coursePage": "Nplooj ntawv kawm"
+    "coursePage": "Nplooj ntawv kawm",
+    "constructLevelSeeds": "Noob, cov lus tshiab",
+    "constructLevelGreens": "Ntsuab, cov lus loj hlob",
+    "constructLevelFlowers": "Paj, cov lus kawm tiav",
+    "filterAndSearch": "Lim thiab tshawb",
+    "participantsOfTotal": "{filled} ntawm {total} tus neeg ua si",
+    "mapAttributionLabel": "OpenStreetMap cov neeg koom tes, txoj cai luam tawm thiab daim ntawv tso cai",
+    "seeAll": "Saib tag nrho",
+    "seeAllSection": "Saib tag nrho {section}"
 }

@@ -10484,5 +10484,13 @@
     "archivedChat": "संग्रहित चैट",
     "activityReview": "गतिविधि की समीक्षा",
     "activityPanel": "गतिविधि",
-    "coursePage": "कोर्स पेज"
+    "coursePage": "कोर्स पेज",
+    "constructLevelSeeds": "सीड्स, नए शब्द",
+    "constructLevelGreens": "ग्रीन्स, बढ़ते शब्द",
+    "constructLevelFlowers": "फ्लावर्स, सीखे हुए शब्द",
+    "filterAndSearch": "फ़िल्टर करें और खोजें",
+    "participantsOfTotal": "{total} खिलाड़ियों में से {filled}",
+    "mapAttributionLabel": "OpenStreetMap योगदानकर्ता, कॉपीराइट और लाइसेंस",
+    "seeAll": "सभी देखें",
+    "seeAllSection": "सभी {section} देखें"
 }

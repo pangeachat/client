@@ -9849,5 +9849,13 @@
     "archivedChat": "Arhiveeritud vestlus",
     "activityReview": "Tegevuste ülevaade",
     "activityPanel": "Tegevus",
-    "coursePage": "Kursuse leht"
+    "coursePage": "Kursuse leht",
+    "constructLevelSeeds": "Seemned, uued sõnad",
+    "constructLevelGreens": "Rohelised, kasvavad sõnad",
+    "constructLevelFlowers": "Lilled, omandatud sõnad",
+    "filterAndSearch": "Filtreeri ja otsi",
+    "participantsOfTotal": "{filled}/{total} mängijat",
+    "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
+    "seeAll": "Vaata kõiki",
+    "seeAllSection": "Vaata kõiki {section}"
 }

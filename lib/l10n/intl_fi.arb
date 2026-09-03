@@ -9889,5 +9889,13 @@
     "archivedChat": "Arkistoitu keskustelu",
     "activityReview": "Aktiviteettikatsaus",
     "activityPanel": "Aktiviteetti",
-    "coursePage": "Kurssisivu"
+    "coursePage": "Kurssisivu",
+    "constructLevelSeeds": "Siemenet, uudet sanat",
+    "constructLevelGreens": "Vihreät, kasvavat sanat",
+    "constructLevelFlowers": "Kukat, hallitut sanat",
+    "filterAndSearch": "Suodata ja hae",
+    "participantsOfTotal": "{filled}/{total} pelaajaa",
+    "mapAttributionLabel": "OpenStreetMapin tekijät, tekijänoikeudet ja lisenssi",
+    "seeAll": "Näytä kaikki",
+    "seeAllSection": "Näytä kaikki {section}"
 }

@@ -2256,5 +2256,13 @@
     "archivedChat": "Talanoaga fa'amaumauina",
     "activityReview": "Iloiloga o gaioiga",
     "activityPanel": "Gaioiga",
-    "coursePage": "Itulau o le kosi"
+    "coursePage": "Itulau o le kosi",
+    "constructLevelSeeds": "Fatulaau, upu fou",
+    "constructLevelGreens": "Laʻau, upu o loʻo tupu",
+    "constructLevelFlowers": "Fugalaau, upu ua atamai",
+    "filterAndSearch": "Faamama ma suʻe",
+    "participantsOfTotal": "{filled} o le {total} tagata taaalo",
+    "mapAttributionLabel": "OpenStreetMap tagata foaʻi, puletaofia ma laisene",
+    "seeAll": "Vaʻai uma",
+    "seeAllSection": "Vaʻai uma {section}"
 }

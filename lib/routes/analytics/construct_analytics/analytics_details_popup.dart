@@ -461,13 +461,19 @@ class _PracticeButton extends StatelessWidget {
     final tooltip = view.practiceButtonText(context);
 
     if (analyticsService.isInitializing) {
+      // excludeFromSemantics + semanticsLabel (both branches): the tooltip
+      // otherwise publishes "Practice vocabulary" as a node SEPARATE from the
+      // button's own "Practice", splitting the one control's name in two
+      // (#8726) — the full phrase belongs ON the button, as the comment
+      // above always intended.
       return Tooltip(
         message: tooltip,
+        excludeFromSemantics: true,
         child: FilledButton.icon(
           onPressed: () =>
               _showSnackbar(context, L10n.of(context).loadingPleaseWait),
           icon: const Icon(Symbols.fitness_center, size: 18),
-          label: Text(label),
+          label: Text(label, semanticsLabel: tooltip),
           style: FilledButton.styleFrom(
             backgroundColor: colorScheme.surface,
             foregroundColor: colorScheme.onSurface.withValues(alpha: 0.5),
@@ -481,6 +487,7 @@ class _PracticeButton extends StatelessWidget {
 
     return Tooltip(
       message: tooltip,
+      excludeFromSemantics: true,
       child: FilledButton.icon(
         onPressed: enabled
             ? () => _startPractice(context)
@@ -490,7 +497,7 @@ class _PracticeButton extends StatelessWidget {
           enabled ? Symbols.fitness_center : Icons.lock_outline,
           size: 18,
         ),
-        label: Text(label),
+        label: Text(label, semanticsLabel: tooltip),
         style: FilledButton.styleFrom(
           backgroundColor: enabled
               ? colorScheme.primaryContainer

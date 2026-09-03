@@ -2256,5 +2256,13 @@
     "archivedChat": "আৰ্কাইভ কৰা চাট",
     "activityReview": "কাৰ্যকলাপ পৰ্যালোচনা",
     "activityPanel": "কাৰ্যকলাপ",
-    "coursePage": "পাঠ্যক্ৰমৰ পৃষ্ঠা"
+    "coursePage": "পাঠ্যক্ৰমৰ পৃষ্ঠা",
+    "constructLevelSeeds": "বীজ, নতুন শব্দ",
+    "constructLevelGreens": "সেউজীয়া, বৰ্ধিত শব্দ",
+    "constructLevelFlowers": "ফুল, আয়ত্ত কৰা শব্দ",
+    "filterAndSearch": "ফিল্টাৰ আৰু সন্ধান কৰক",
+    "participantsOfTotal": "{total} জন খেলুৱৈৰ ভিতৰত {filled} জন",
+    "mapAttributionLabel": "OpenStreetMap অৱদানকাৰী, স্বত্বাধিকাৰ আৰু অনুজ্ঞাপত্ৰ",
+    "seeAll": "সকলো চাওক",
+    "seeAllSection": "সকলো চাওক {section}"
 }

@@ -2256,5 +2256,13 @@
     "archivedChat": "Chat voatahiry",
     "activityReview": "Famerenana ny asa",
     "activityPanel": "Asa",
-    "coursePage": "Pejy fampianarana"
+    "coursePage": "Pejy fampianarana",
+    "constructLevelSeeds": "Voa, teny vaovao",
+    "constructLevelGreens": "Zavamaniry, teny mitombo",
+    "constructLevelFlowers": "Voninkazo, teny efa mahay",
+    "filterAndSearch": "Sivana sy karoka",
+    "participantsOfTotal": "{filled} amin'ny mpilalao {total}",
+    "mapAttributionLabel": "Mpanome anjara OpenStreetMap, zon'ny mpamorona ary fahazoan-dàlana",
+    "seeAll": "Jereo daholo",
+    "seeAllSection": "Jereo daholo ny {section}"
 }

@@ -2256,5 +2256,13 @@
     "archivedChat": "Chat archivatu",
     "activityReview": "Revisione di l'attività",
     "activityPanel": "Attività",
-    "coursePage": "Pagina di u corsu"
+    "coursePage": "Pagina di u corsu",
+    "constructLevelSeeds": "Semi, parolle nove",
+    "constructLevelGreens": "Verdura, parolle chì crescenu",
+    "constructLevelFlowers": "Fiori, parolle ammaestrate",
+    "filterAndSearch": "Filtrà è circà",
+    "participantsOfTotal": "{filled} di {total} ghjucadori",
+    "mapAttributionLabel": "Cuntributori OpenStreetMap, copyright è licenza",
+    "seeAll": "Vede tuttu",
+    "seeAllSection": "Vede tuttu {section}"
 }

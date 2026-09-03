@@ -2256,5 +2256,13 @@
     "archivedChat": "ແຊັດທີ່ເກັບໄວ້",
     "activityReview": "ກວດສອບກິດຈະກຳ",
     "activityPanel": "ກິດຈະກຳ",
-    "coursePage": "ໜ້າຫຼັກສູດ"
+    "coursePage": "ໜ້າຫຼັກສູດ",
+    "constructLevelSeeds": "ແກ່ນ, ຄຳສັບໃໝ່",
+    "constructLevelGreens": "ຕົ້ນອ່ອນ, ຄຳສັບທີ່ກຳລັງຮຽນ",
+    "constructLevelFlowers": "ດອກໄມ້, ຄຳສັບທີ່ຮຽນຈົບແລ້ວ",
+    "filterAndSearch": "ກັ່ນຕອງ ແລະ ຄົ້ນຫາ",
+    "participantsOfTotal": "{filled} ຈາກ {total} ຜູ້ຫຼິ້ນ",
+    "mapAttributionLabel": "ຜູ້ປະກອບສ່ວນ OpenStreetMap, ລິຂະສິດ ແລະ ໃບອະນຸຍາດ",
+    "seeAll": "ເບິ່ງທັງໝົດ",
+    "seeAllSection": "ເບິ່ງທັງໝົດ {section}"
 }

@@ -2256,5 +2256,13 @@
     "archivedChat": "Geymt spjall",
     "activityReview": "Yfirlit yfir virkni",
     "activityPanel": "Virkni",
-    "coursePage": "Námskeiðssíða"
+    "coursePage": "Námskeiðssíða",
+    "constructLevelSeeds": "Fræ, ný orð",
+    "constructLevelGreens": "Grænt, vaxandi orð",
+    "constructLevelFlowers": "Blóm, orð sem hefur verið náð tökum á",
+    "filterAndSearch": "Sía og leita",
+    "participantsOfTotal": "{filled} af {total} spilurum",
+    "mapAttributionLabel": "OpenStreetMap þátttakendur, höfundarréttur og leyfi",
+    "seeAll": "Sjá allt",
+    "seeAllSection": "Sjá allt {section}"
 }

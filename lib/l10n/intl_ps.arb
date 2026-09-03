@@ -2256,5 +2256,13 @@
     "archivedChat": "آرشیف شوی چیٹ",
     "activityReview": "فعالیت بیاکتنه",
     "activityPanel": "فعالیت",
-    "coursePage": "د کورس پاڼه"
+    "coursePage": "د کورس پاڼه",
+    "constructLevelSeeds": "تخمونه، نوې کلمې",
+    "constructLevelGreens": "شنه، وده کوونکې کلمې",
+    "constructLevelFlowers": "ګلان، ماسټر شوې کلمې",
+    "filterAndSearch": "فلټر او لټون",
+    "participantsOfTotal": "د {total} لوبغاړو څخه {filled}",
+    "mapAttributionLabel": "د OpenStreetMap مرسته کوونکي، د چاپ حق او جواز",
+    "seeAll": "ټول وګورئ",
+    "seeAllSection": "ټول {section} وګورئ"
 }

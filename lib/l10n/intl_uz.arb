@@ -9856,5 +9856,13 @@
     "archivedChat": "Arxivlangan chat",
     "activityReview": "Faoliyatni ko'rib chiqish",
     "activityPanel": "Faoliyat",
-    "coursePage": "Kurs sahifasi"
+    "coursePage": "Kurs sahifasi",
+    "constructLevelSeeds": "Urugʻlar, yangi soʻzlar",
+    "constructLevelGreens": "Koʻkatlar, oʻsayotgan soʻzlar",
+    "constructLevelFlowers": "Gullar, oʻzlashtirilgan soʻzlar",
+    "filterAndSearch": "Filtrlash va qidirish",
+    "participantsOfTotal": "{total} o'yinchidan {filled} nafari",
+    "mapAttributionLabel": "OpenStreetMap ishtirokchilari, mualliflik huquqi va litsenziyasi",
+    "seeAll": "Hammasini koʻrish",
+    "seeAllSection": "Barcha {section}ni koʻrish"
 }

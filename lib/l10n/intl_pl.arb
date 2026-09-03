@@ -9937,5 +9937,13 @@
     "archivedChat": "Archiwum czatu",
     "activityReview": "Przegląd aktywności",
     "activityPanel": "Aktywność",
-    "coursePage": "Strona kursu"
+    "coursePage": "Strona kursu",
+    "constructLevelSeeds": "Nasiona, nowe słowa",
+    "constructLevelGreens": "Kiełki, rosnące słowa",
+    "constructLevelFlowers": "Kwiaty, opanowane słowa",
+    "filterAndSearch": "Filtruj i szukaj",
+    "participantsOfTotal": "{filled} z {total} graczy",
+    "mapAttributionLabel": "Współtwórcy OpenStreetMap, prawa autorskie i licencja",
+    "seeAll": "Zobacz wszystkie",
+    "seeAllSection": "Zobacz wszystkie {section}"
 }

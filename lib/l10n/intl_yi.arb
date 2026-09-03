@@ -2256,5 +2256,13 @@
     "archivedChat": "אַרטשיוועד שמועס",
     "activityReview": "אַקטיוויטעט איבערבליק",
     "activityPanel": "אַקטיוויטעט",
-    "coursePage": "קורס בלאַט"
+    "coursePage": "קורס בלאַט",
+    "constructLevelSeeds": "זוימען, נײַע ווערטער",
+    "constructLevelGreens": "גרינסן, וואַקסנדיקע ווערטער",
+    "constructLevelFlowers": "בלומען, באַהערשטע ווערטער",
+    "filterAndSearch": "פֿילטרירן און זוכן",
+    "participantsOfTotal": "{filled} פֿון {total} שפּילער",
+    "mapAttributionLabel": "OpenStreetMap מיטארבעטער, קאפירעכט און ליצענץ",
+    "seeAll": "זען אַלע",
+    "seeAllSection": "זען אַלע {section}"
 }

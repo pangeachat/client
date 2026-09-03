@@ -9852,5 +9852,13 @@
     "archivedChat": "Chat arquivado",
     "activityReview": "Revisión da actividade",
     "activityPanel": "Actividade",
-    "coursePage": "Páxina do curso"
+    "coursePage": "Páxina do curso",
+    "constructLevelSeeds": "Sementes, palabras novas",
+    "constructLevelGreens": "Verdes, palabras en crecemento",
+    "constructLevelFlowers": "Flores, palabras dominadas",
+    "filterAndSearch": "Filtrar e buscar",
+    "participantsOfTotal": "{filled} de {total} xogadores",
+    "mapAttributionLabel": "Colaboradores de OpenStreetMap, dereitos de autor e licenza",
+    "seeAll": "Ver todo",
+    "seeAllSection": "Ver todo {section}"
 }

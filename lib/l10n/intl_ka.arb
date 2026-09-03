@@ -10752,5 +10752,13 @@
     "archivedChat": "დაარქივებული ჩეთი",
     "activityReview": "აქტივობის მიმოხილვა",
     "activityPanel": "აქტივობა",
-    "coursePage": "კურსის გვერდი"
+    "coursePage": "კურსის გვერდი",
+    "constructLevelSeeds": "თესლები, ახალი სიტყვები",
+    "constructLevelGreens": "ნერგები, მზარდი სიტყვები",
+    "constructLevelFlowers": "ყვავილები, ათვისებული სიტყვები",
+    "filterAndSearch": "გაფილტვრა და ძიება",
+    "participantsOfTotal": "{filled} / {total} მოთამაშე",
+    "mapAttributionLabel": "OpenStreetMap-ის კონტრიბუტორები, საავტორო უფლებები და ლიცენზია",
+    "seeAll": "ყველას ნახვა",
+    "seeAllSection": "ყველა {section}-ის ნახვა"
 }

@@ -2256,5 +2256,13 @@
     "archivedChat": "ଆର୍କାଇଭ୍ ହୋଇଥିବା ଚାଟ୍",
     "activityReview": "କାର୍ଯ୍ୟକଳାପ ସମୀକ୍ଷା",
     "activityPanel": "କାର୍ଯ୍ୟକଳାପ",
-    "coursePage": "କୋର୍ସ ପୃଷ୍ଠା"
+    "coursePage": "କୋର୍ସ ପୃଷ୍ଠା",
+    "constructLevelSeeds": "ସିଡ୍ସ, ନୂଆ ଶବ୍ଦ",
+    "constructLevelGreens": "ଗ୍ରୀନ୍ସ, ବଢୁଥିବା ଶବ୍ଦ",
+    "constructLevelFlowers": "ଫୁଲ, ଆୟତ୍ତ ଶବ୍ଦ",
+    "filterAndSearch": "ଫିଲ୍ଟର୍ ଏବଂ ସନ୍ଧାନ କରନ୍ତୁ",
+    "participantsOfTotal": "{total} ଖେଳାଳିଙ୍କ ମଧ୍ୟରୁ {filled}",
+    "mapAttributionLabel": "OpenStreetMap ଯୋଗଦାନକାରୀ, କପିରାଇଟ୍ ଏବଂ ଲାଇସେନ୍ସ",
+    "seeAll": "ସବୁ ଦେଖନ୍ତୁ",
+    "seeAllSection": "ସବୁ {section} ଦେଖନ୍ତୁ"
 }

@@ -2256,5 +2256,13 @@
     "archivedChat": "Ingxoxo egciniwe",
     "activityReview": "Ukubuyekeza umsebenzi",
     "activityPanel": "Umsebenzi",
-    "coursePage": "Ikhasi lesifundo"
+    "coursePage": "Ikhasi lesifundo",
+    "constructLevelSeeds": "Imbewu, amagama amasha",
+    "constructLevelGreens": "Okuluhlaza, amagama akhulayo",
+    "constructLevelFlowers": "Izimbali, amagama asezingeni eliphezulu",
+    "filterAndSearch": "Hlunga bese usesha",
+    "participantsOfTotal": "{filled} kwabangu-{total} abadlali",
+    "mapAttributionLabel": "Abanikeli be-OpenStreetMap, i-copyright nelayisense",
+    "seeAll": "Buka konke",
+    "seeAllSection": "Buka konke {section}"
 }

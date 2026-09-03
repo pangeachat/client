@@ -2256,5 +2256,13 @@
     "archivedChat": "ئارخىپلانغان پاراڭ",
     "activityReview": "پائالىيەت تەكشۈرۈش",
     "activityPanel": "پائالىيەت",
-    "coursePage": "كۇرس بېتى"
+    "coursePage": "كۇرس بېتى",
+    "constructLevelSeeds": "ئۇرۇقلار، يېڭى سۆزلەر",
+    "constructLevelGreens": "كۆكلەم، ئۆسۈۋاتقان سۆزلەر",
+    "constructLevelFlowers": "گۈللەر، پىششىق سۆزلەر",
+    "filterAndSearch": "سۈزۈش ۋە ئىزدەش",
+    "participantsOfTotal": "{total} قويغۇچنىڭ {filled} ى",
+    "mapAttributionLabel": "OpenStreetMap تۆھپىكارلىرى، نەشر ھوقۇقى ۋە ئىجازەتنامىسى",
+    "seeAll": "ھەممىنى كۆرۈش",
+    "seeAllSection": "بارلىق {section}نى كۆرۈش"
 }

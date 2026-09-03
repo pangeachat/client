@@ -2256,5 +2256,13 @@
     "archivedChat": "Obrolan sing diarsipake",
     "activityReview": "Tinjauan aktivitas",
     "activityPanel": "Aktivitas",
-    "coursePage": "Kaca kursus"
+    "coursePage": "Kaca kursus",
+    "constructLevelSeeds": "Winih, tembung anyar",
+    "constructLevelGreens": "Godhong, tembung sing tuwuh",
+    "constructLevelFlowers": "Kembang, tembung sing wis dikuasai",
+    "filterAndSearch": "Saring lan goleki",
+    "participantsOfTotal": "{filled} saka {total} pemain",
+    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta lan lisensi",
+    "seeAll": "Deleng kabeh",
+    "seeAllSection": "Deleng kabeh {section}"
 }

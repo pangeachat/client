@@ -9463,5 +9463,13 @@
     "archivedChat": "ཉར་ཚགས་བྱས་པའི་སྐད་ཆ།",
     "activityReview": "བྱེད་སྒོ་བསྐྱར་ཞིབ།",
     "activityPanel": "བྱེད་སྒོ།",
-    "coursePage": "སློབ་ཚན་ཤོག་ངོས།"
+    "coursePage": "སློབ་ཚན་ཤོག་ངོས།",
+    "constructLevelSeeds": "ས་བོན། ཚིག་གསར་པ།",
+    "constructLevelGreens": "ལྗང་མྱུག འཕེལ་བཞིན་པའི་ཚིག",
+    "constructLevelFlowers": "མེ་ཏོག བྱང་ཆུབ་པའི་ཚིག",
+    "filterAndSearch": "ཚགས་འདེམས་དང་འཚོལ་བཤེར།",
+    "participantsOfTotal": "རྩེད་མཁན་ {total} ནང་ནས་ {filled}",
+    "mapAttributionLabel": "OpenStreetMap ལ་མཉམ་ཞུགས་བྱེད་མཁན་ཚོ། བདག་དབང་དང་ཆོག་མཆན།",
+    "seeAll": "ཚང་མ་གཟིགས།",
+    "seeAllSection": "{section} ཚང་མ་གཟིགས།"
 }

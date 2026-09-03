@@ -2256,5 +2256,13 @@
     "archivedChat": "ആർക്കൈവ് ചെയ്ത ചാറ്റ്",
     "activityReview": "പ്രവർത്തന അവലോകനം",
     "activityPanel": "പ്രവർത്തനം",
-    "coursePage": "കോഴ്‌സ് പേജ്"
+    "coursePage": "കോഴ്‌സ് പേജ്",
+    "constructLevelSeeds": "വിത്തുകൾ, പുതിയ വാക്കുകൾ",
+    "constructLevelGreens": "ചെടികൾ, വളരുന്ന വാക്കുകൾ",
+    "constructLevelFlowers": "പൂക്കൾ, പഠിച്ചെടുത്ത വാക്കുകൾ",
+    "filterAndSearch": "ഫിൽട്ടർ ചെയ്ത് തിരയുക",
+    "participantsOfTotal": "{total} കളിക്കാരിൽ {filled} പേർ",
+    "mapAttributionLabel": "OpenStreetMap സംഭാവന ചെയ്യുന്നവർ, പകർപ്പവകാശം, ലൈസൻസ്",
+    "seeAll": "എല്ലാം കാണുക",
+    "seeAllSection": "എല്ലാം കാണുക {section}"
 }

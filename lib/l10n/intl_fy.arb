@@ -2256,5 +2256,13 @@
     "archivedChat": "Argivearre petear",
     "activityReview": "Aktiviteitsbeoardieling",
     "activityPanel": "Aktiviteit",
-    "coursePage": "Kurcusside"
+    "coursePage": "Kurcusside",
+    "constructLevelSeeds": "Siedsjes, nije wurden",
+    "constructLevelGreens": "Griene, groeiende wurden",
+    "constructLevelFlowers": "Blommen, behearske wurden",
+    "filterAndSearch": "Filterje en sykje",
+    "participantsOfTotal": "{filled} fan {total} spilers",
+    "mapAttributionLabel": "OpenStreetMap-meiwurkers, copyright en lisinsje",
+    "seeAll": "Alles sjen",
+    "seeAllSection": "Alles sjen yn {section}"
 }

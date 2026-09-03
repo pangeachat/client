@@ -2256,5 +2256,13 @@
     "archivedChat": "Kōrerorero i te Pūranga",
     "activityReview": "Arotake Mahi",
     "activityPanel": "Mahi",
-    "coursePage": "Whārangi Akoranga"
+    "coursePage": "Whārangi Akoranga",
+    "constructLevelSeeds": "Kākano, kupu hou",
+    "constructLevelGreens": "Kākāriki, kupu e tupu ana",
+    "constructLevelFlowers": "Puawai, kupu kua rangatira",
+    "filterAndSearch": "Tātari me te rapu",
+    "participantsOfTotal": "{filled} o te {total} ngā kaitākaro",
+    "mapAttributionLabel": "Ngā kaituku OpenStreetMap, te mana pupuri me te raihana",
+    "seeAll": "Tirohia katoa",
+    "seeAllSection": "Tirohia katoa {section}"
 }

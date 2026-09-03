@@ -2256,5 +2256,13 @@
     "archivedChat": "Kūkākūkā i waihona ʻia",
     "activityReview": "Nānā hana",
     "activityPanel": "Hana",
-    "coursePage": "ʻAoʻao papa"
+    "coursePage": "ʻAoʻao papa",
+    "constructLevelSeeds": "Nā Hua, nā huaʻōlelo hou",
+    "constructLevelGreens": "Nā Meakanu, nā huaʻōlelo ulu",
+    "constructLevelFlowers": "Nā Pua, nā huaʻōlelo i aʻo ʻia",
+    "filterAndSearch": "Kānana a huli",
+    "participantsOfTotal": "{filled} o {total} mau mea pāʻani",
+    "mapAttributionLabel": "Nā mea hāʻawi OpenStreetMap, kuleana kope a me ka laikini",
+    "seeAll": "E ʻike i nā mea a pau",
+    "seeAllSection": "E ʻike i nā mea a pau ma {section}"
 }

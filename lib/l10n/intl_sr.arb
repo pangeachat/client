@@ -10801,5 +10801,13 @@
     "archivedChat": "Arhivirani razgovor",
     "activityReview": "Pregled aktivnosti",
     "activityPanel": "Aktivnost",
-    "coursePage": "Stranica kursa"
+    "coursePage": "Stranica kursa",
+    "constructLevelSeeds": "Seme, nove reči",
+    "constructLevelGreens": "Zelenilo, reči u razvoju",
+    "constructLevelFlowers": "Cveće, savladane reči",
+    "filterAndSearch": "Filtriraj i pretraži",
+    "participantsOfTotal": "{filled} od {total} igrača",
+    "mapAttributionLabel": "OpenStreetMap saradnici, autorska prava i licenca",
+    "seeAll": "Pogledaj sve",
+    "seeAllSection": "Pogledaj sve {section}"
 }

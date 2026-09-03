@@ -9944,5 +9944,13 @@
     "archivedChat": "காப்பகப்படுத்தப்பட்ட அரட்டை",
     "activityReview": "செயல்பாட்டு ஆய்வு",
     "activityPanel": "செயல்பாடு",
-    "coursePage": "பாடப்பக்கம்"
+    "coursePage": "பாடப்பக்கம்",
+    "constructLevelSeeds": "விதைகள், புதிய சொற்கள்",
+    "constructLevelGreens": "கீரைகள், வளரும் சொற்கள்",
+    "constructLevelFlowers": "மலர்கள், தேர்ச்சி பெற்ற சொற்கள்",
+    "filterAndSearch": "வடிகட்டி தேடு",
+    "participantsOfTotal": "{total} வீரர்களில் {filled} பேர்",
+    "mapAttributionLabel": "OpenStreetMap பங்களிப்பாளர்கள், பதிப்புரிமை மற்றும் உரிமம்",
+    "seeAll": "அனைத்தையும் காட்டு",
+    "seeAllSection": "அனைத்தையும் காட்டு {section}"
 }

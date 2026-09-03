@@ -2256,5 +2256,13 @@
     "archivedChat": "Sermo archivatus",
     "activityReview": "Actio recognita",
     "activityPanel": "Actio",
-    "coursePage": "Pagina cursus"
+    "coursePage": "Pagina cursus",
+    "constructLevelSeeds": "Semina, verba nova",
+    "constructLevelGreens": "Virentia, verba crescentia",
+    "constructLevelFlowers": "Flores, verba perfecta",
+    "filterAndSearch": "Spargere et quaerere",
+    "participantsOfTotal": "{filled} ex {total} lusoribus",
+    "mapAttributionLabel": "OpenStreetMap contributores, ius auctoris et licentia",
+    "seeAll": "Omnia vide",
+    "seeAllSection": "Omnia {section} vide"
 }

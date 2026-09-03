@@ -2256,5 +2256,13 @@
     "archivedChat": "Bisedë e arkivuar",
     "activityReview": "Rishikimi i aktivitetit",
     "activityPanel": "Aktiviteti",
-    "coursePage": "Faqja e kursit"
+    "coursePage": "Faqja e kursit",
+    "constructLevelSeeds": "Fara, fjalë të reja",
+    "constructLevelGreens": "Gjelbërim, fjalë në rritje",
+    "constructLevelFlowers": "Lule, fjalë të zotëruara",
+    "filterAndSearch": "Filtro dhe kërko",
+    "participantsOfTotal": "{filled} nga {total} lojtarë",
+    "mapAttributionLabel": "Kontribuesit e OpenStreetMap, të drejtat e autorit dhe licenca",
+    "seeAll": "Shiko të gjitha",
+    "seeAllSection": "Shiko të gjitha {section}"
 }

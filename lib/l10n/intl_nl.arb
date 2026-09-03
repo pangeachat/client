@@ -9852,5 +9852,13 @@
     "archivedChat": "Gearchiveerde chat",
     "activityReview": "Activiteitenoverzicht",
     "activityPanel": "Activiteit",
-    "coursePage": "Cursuspagina"
+    "coursePage": "Cursuspagina",
+    "constructLevelSeeds": "Zaden, nieuwe woorden",
+    "constructLevelGreens": "Groenten, groeiende woorden",
+    "constructLevelFlowers": "Bloemen, beheerste woorden",
+    "filterAndSearch": "Filteren en zoeken",
+    "participantsOfTotal": "{filled} van de {total} spelers",
+    "mapAttributionLabel": "OpenStreetMap-medewerkers, auteursrecht en licentie",
+    "seeAll": "Alles weergeven",
+    "seeAllSection": "Alle {section} weergeven"
 }

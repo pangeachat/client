@@ -10621,5 +10621,13 @@
     "archivedChat": "アーカイブ済みチャット",
     "activityReview": "アクティビティレビュー",
     "activityPanel": "アクティビティ",
-    "coursePage": "コースページ"
+    "coursePage": "コースページ",
+    "constructLevelSeeds": "シード、新しい単語",
+    "constructLevelGreens": "グリーン、成長中の単語",
+    "constructLevelFlowers": "フラワー、習得済みの単語",
+    "filterAndSearch": "フィルターと検索",
+    "participantsOfTotal": "{total}人中{filled}人",
+    "mapAttributionLabel": "OpenStreetMapの寄与者、著作権とライセンス",
+    "seeAll": "すべて見る",
+    "seeAllSection": "{section}をすべて見る"
 }

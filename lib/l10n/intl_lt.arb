@@ -10633,5 +10633,13 @@
     "archivedChat": "Archyvuotas pokalbis",
     "activityReview": "Veiklos apžvalga",
     "activityPanel": "Veikla",
-    "coursePage": "Kurso puslapis"
+    "coursePage": "Kurso puslapis",
+    "constructLevelSeeds": "Sėklos, nauji žodžiai",
+    "constructLevelGreens": "Žalumynai, augantys žodžiai",
+    "constructLevelFlowers": "Gėlės, įvaldyti žodžiai",
+    "filterAndSearch": "Filtruoti ir ieškoti",
+    "participantsOfTotal": "{filled} iš {total} žaidėjų",
+    "mapAttributionLabel": "„OpenStreetMap“ bendradarbiai, autorių teisės ir licencija",
+    "seeAll": "Žr. visus",
+    "seeAllSection": "Žr. visus {section}"
 }

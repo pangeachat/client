@@ -2256,5 +2256,13 @@
     "archivedChat": "Архивлагдсан чат",
     "activityReview": "Үйл ажиллагааны тойм",
     "activityPanel": "Үйл ажиллагаа",
-    "coursePage": "Хичээлийн хуудас"
+    "coursePage": "Хичээлийн хуудас",
+    "constructLevelSeeds": "Үр, шинэ үгс",
+    "constructLevelGreens": "Ногоон, ургаж буй үгс",
+    "constructLevelFlowers": "Цэцэг, эзэмшсэн үгс",
+    "filterAndSearch": "Шүүж хайх",
+    "participantsOfTotal": "{total} тоглогчоос {filled} нь",
+    "mapAttributionLabel": "OpenStreetMap-ийн хувь нэмэр оруулагчид, зохиогчийн эрх, лиценз",
+    "seeAll": "Бүгдийг харах",
+    "seeAllSection": "Бүх {section}-г харах"
 }

@@ -10797,5 +10797,13 @@
     "archivedChat": "Arhiviran klepet",
     "activityReview": "Pregled dejavnosti",
     "activityPanel": "Dejavnost",
-    "coursePage": "Stran tečaja"
+    "coursePage": "Stran tečaja",
+    "constructLevelSeeds": "Semena, nove besede",
+    "constructLevelGreens": "Zelenje, rastoče besede",
+    "constructLevelFlowers": "Rože, obvladane besede",
+    "filterAndSearch": "Filtriraj in išči",
+    "participantsOfTotal": "{filled} od {total} igralcev",
+    "mapAttributionLabel": "Sodelavci OpenStreetMap, avtorske pravice in licenca",
+    "seeAll": "Poglej vse",
+    "seeAllSection": "Poglej vse {section}"
 }

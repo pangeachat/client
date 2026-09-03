@@ -2256,5 +2256,13 @@
     "archivedChat": "Чат бойгонӣ шуд",
     "activityReview": "Баррасии фаъолият",
     "activityPanel": "Фаъолият",
-    "coursePage": "Саҳифаи курс"
+    "coursePage": "Саҳифаи курс",
+    "constructLevelSeeds": "Тухмҳо, калимаҳои нав",
+    "constructLevelGreens": "Сабзавот, калимаҳои рӯёнанда",
+    "constructLevelFlowers": "Гулҳо, калимаҳои азхудшуда",
+    "filterAndSearch": "Филтр ва ҷустуҷӯ",
+    "participantsOfTotal": "{filled} аз {total} бозигар",
+    "mapAttributionLabel": "Мусоидаткунандагони OpenStreetMap, ҳуқуқи муаллифӣ ва иҷозатнома",
+    "seeAll": "Ҳамаро бинед",
+    "seeAllSection": "Ҳамаи {section}-ро бинед"
 }

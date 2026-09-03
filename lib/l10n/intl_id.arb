@@ -9925,5 +9925,13 @@
     "archivedChat": "Obrolan yang diarsipkan",
     "activityReview": "Tinjauan aktivitas",
     "activityPanel": "Aktivitas",
-    "coursePage": "Halaman kursus"
+    "coursePage": "Halaman kursus",
+    "constructLevelSeeds": "Benih, kata-kata baru",
+    "constructLevelGreens": "Tunas, kata-kata yang berkembang",
+    "constructLevelFlowers": "Bunga, kata-kata yang dikuasai",
+    "filterAndSearch": "Filter dan cari",
+    "participantsOfTotal": "{filled} dari {total} pemain",
+    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta, dan lisensi",
+    "seeAll": "Lihat semua",
+    "seeAllSection": "Lihat semua {section}"
 }

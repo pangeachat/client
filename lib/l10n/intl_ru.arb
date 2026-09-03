@@ -10824,5 +10824,13 @@
     "archivedChat": "Архивированный чат",
     "activityReview": "Обзор активности",
     "activityPanel": "Активность",
-    "coursePage": "Страница курса"
+    "coursePage": "Страница курса",
+    "constructLevelSeeds": "Семена, новые слова",
+    "constructLevelGreens": "Всходы, растущие слова",
+    "constructLevelFlowers": "Цветы, освоенные слова",
+    "filterAndSearch": "Фильтр и поиск",
+    "participantsOfTotal": "{filled} из {total} игроков",
+    "mapAttributionLabel": "Участники OpenStreetMap, авторские права и лицензия",
+    "seeAll": "Посмотреть все",
+    "seeAllSection": "Посмотреть все {section}"
 }

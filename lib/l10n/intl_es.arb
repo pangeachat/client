@@ -8071,5 +8071,13 @@
     "archivedChat": "Chat archivado",
     "activityReview": "Revisión de actividad",
     "activityPanel": "Actividad",
-    "coursePage": "Página del curso"
+    "coursePage": "Página del curso",
+    "constructLevelSeeds": "Semillas, palabras nuevas",
+    "constructLevelGreens": "Brotes, palabras en crecimiento",
+    "constructLevelFlowers": "Flores, palabras dominadas",
+    "filterAndSearch": "Filtrar y buscar",
+    "participantsOfTotal": "{filled} de {total} jugadores",
+    "mapAttributionLabel": "Colaboradores de OpenStreetMap, derechos de autor y licencia",
+    "seeAll": "Ver todo",
+    "seeAllSection": "Ver todo {section}"
 }

@@ -2256,5 +2256,13 @@
     "archivedChat": "Архивиран разговор",
     "activityReview": "Преглед на активност",
     "activityPanel": "Активност",
-    "coursePage": "Страница на курс"
+    "coursePage": "Страница на курс",
+    "constructLevelSeeds": "Семиња, нови зборови",
+    "constructLevelGreens": "Зеленило, зборови во развој",
+    "constructLevelFlowers": "Цвеќиња, совладани зборови",
+    "filterAndSearch": "Филтрирај и пребарај",
+    "participantsOfTotal": "{filled} од {total} играчи",
+    "mapAttributionLabel": "Соработници на OpenStreetMap, авторски права и лиценца",
+    "seeAll": "Видете ги сите",
+    "seeAllSection": "Видете ги сите {section}"
 }

@@ -9863,5 +9863,13 @@
     "archivedChat": "Comhrá cartlainne",
     "activityReview": "Athbhreithniú gníomhaíochta",
     "activityPanel": "Gníomhaíocht",
-    "coursePage": "Leathanach cúrsa"
+    "coursePage": "Leathanach cúrsa",
+    "constructLevelSeeds": "Síolta, focail nua",
+    "constructLevelGreens": "Glasaigh, focail ag fás",
+    "constructLevelFlowers": "Bláthanna, focail máistrithe",
+    "filterAndSearch": "Scag agus cuardaigh",
+    "participantsOfTotal": "{filled} de {total} imreoirí",
+    "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
+    "seeAll": "Féach ar fad",
+    "seeAllSection": "Féach ar {section} ar fad"
 }

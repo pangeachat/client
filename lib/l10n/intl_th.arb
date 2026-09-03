@@ -10484,5 +10484,13 @@
     "archivedChat": "แชทที่เก็บถาวร",
     "activityReview": "รีวิวกิจกรรม",
     "activityPanel": "กิจกรรม",
-    "coursePage": "หน้าหลักสูตร"
+    "coursePage": "หน้าหลักสูตร",
+    "constructLevelSeeds": "เมล็ดพันธุ์, คำศัพท์ใหม่",
+    "constructLevelGreens": "ต้นอ่อน, คำศัพท์ที่กำลังเติบโต",
+    "constructLevelFlowers": "ดอกไม้, คำศัพท์ที่เชี่ยวชาญแล้ว",
+    "filterAndSearch": "กรองและค้นหา",
+    "participantsOfTotal": "{filled} จากผู้เล่นทั้งหมด {total} คน",
+    "mapAttributionLabel": "ผู้ร่วมให้ข้อมูล OpenStreetMap, ลิขสิทธิ์และใบอนุญาต",
+    "seeAll": "ดูทั้งหมด",
+    "seeAllSection": "ดูทั้งหมด {section}"
 }

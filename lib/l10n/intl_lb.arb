@@ -2256,5 +2256,13 @@
     "archivedChat": "Archivéierte Chat",
     "activityReview": "Aktivitéitsiwwerbléck",
     "activityPanel": "Aktivitéit",
-    "coursePage": "Cours Säit"
+    "coursePage": "Cours Säit",
+    "constructLevelSeeds": "Somen, nei Wierder",
+    "constructLevelGreens": "Gréngs, wuessend Wierder",
+    "constructLevelFlowers": "Blummen, beherrschte Wierder",
+    "filterAndSearch": "Filteren a sichen",
+    "participantsOfTotal": "{filled} vun {total} Spiller",
+    "mapAttributionLabel": "OpenStreetMap Mataarbechter, Copyright a Lizenz",
+    "seeAll": "Alles gesinn",
+    "seeAllSection": "Alles gesinn {section}"
 }

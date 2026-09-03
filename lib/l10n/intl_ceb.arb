@@ -2256,5 +2256,13 @@
     "archivedChat": "Na-archive nga chat",
     "activityReview": "Pagrepaso sa kalihokan",
     "activityPanel": "Kalihokan",
-    "coursePage": "Panid sa kurso"
+    "coursePage": "Panid sa kurso",
+    "constructLevelSeeds": "Mga liso, bag-ong mga pulong",
+    "constructLevelGreens": "Mga utanon, nagtubo nga mga pulong",
+    "constructLevelFlowers": "Mga bulak, hanas nga mga pulong",
+    "filterAndSearch": "Filter ug pangita",
+    "participantsOfTotal": "{filled} sa {total} ka magdudula",
+    "mapAttributionLabel": "Mga nag-amot sa OpenStreetMap, copyright ug lisensya",
+    "seeAll": "Tan-awa tanan",
+    "seeAllSection": "Tan-awa tanan {section}"
 }

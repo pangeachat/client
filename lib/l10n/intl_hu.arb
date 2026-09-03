@@ -9955,5 +9955,13 @@
     "archivedChat": "Archivált csevegés",
     "activityReview": "Tevékenység áttekintése",
     "activityPanel": "Tevékenység",
-    "coursePage": "Tanfolyam oldal"
+    "coursePage": "Tanfolyam oldal",
+    "constructLevelSeeds": "Magok, új szavak",
+    "constructLevelGreens": "Hajtások, fejlődő szavak",
+    "constructLevelFlowers": "Virágok, elsajátított szavak",
+    "filterAndSearch": "Szűrés és keresés",
+    "participantsOfTotal": "{filled}/{total} játékos",
+    "mapAttributionLabel": "OpenStreetMap közreműködők, szerzői jogok és licenc",
+    "seeAll": "Összes megtekintése",
+    "seeAllSection": "Összes {section} megtekintése"
 }

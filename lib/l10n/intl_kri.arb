@@ -2256,5 +2256,13 @@
     "archivedChat": "Chat we dɛn kip",
     "activityReview": "Luk bak na wetin yu dɔn du",
     "activityPanel": "Wetin yu dɔn du",
-    "coursePage": "Di pej fɔ di kos"
+    "coursePage": "Di pej fɔ di kos",
+    "constructLevelSeeds": "Sid dɛn, nyu wɔd dɛn",
+    "constructLevelGreens": "Grin dɛn, wɔd dɛn we de gro",
+    "constructLevelFlowers": "Fula dɛn, wɔd dɛn we yu dɔn sabi fayn",
+    "filterAndSearch": "Fulta ɛn Sɛch",
+    "participantsOfTotal": "{filled} pan {total} pleya dem",
+    "mapAttributionLabel": "OpenStreetMap pipal wey de gi am say, in kopyrayt ɛn layɛns",
+    "seeAll": "Si ɔl",
+    "seeAllSection": "Si ɔl {section}"
 }

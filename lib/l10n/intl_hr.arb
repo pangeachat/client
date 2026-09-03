@@ -10288,5 +10288,13 @@
     "archivedChat": "Arhivirani razgovor",
     "activityReview": "Pregled aktivnosti",
     "activityPanel": "Aktivnost",
-    "coursePage": "Stranica tečaja"
+    "coursePage": "Stranica tečaja",
+    "constructLevelSeeds": "Sjemenke, nove riječi",
+    "constructLevelGreens": "Zelenje, riječi u nastajanju",
+    "constructLevelFlowers": "Cvijeće, usvojene riječi",
+    "filterAndSearch": "Filtriraj i pretraži",
+    "participantsOfTotal": "{filled} od {total} igrača",
+    "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
+    "seeAll": "Vidi sve",
+    "seeAllSection": "Vidi sve {section}"
 }

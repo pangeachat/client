@@ -2256,5 +2256,13 @@
     "archivedChat": "Macheza osungidwa",
     "activityReview": "Kuwunika zochitika",
     "activityPanel": "Zochitika",
-    "coursePage": "Tsamba la maphunziro"
+    "coursePage": "Tsamba la maphunziro",
+    "constructLevelSeeds": "Mbeu, mawu atsopano",
+    "constructLevelGreens": "Zobiriwira, mawu akukula",
+    "constructLevelFlowers": "Maluwa, mawu odziwika bwino",
+    "filterAndSearch": "Sefa ndi kusaka",
+    "participantsOfTotal": "{filled} mwa osewera {total}",
+    "mapAttributionLabel": "Othandizira a OpenStreetMap, umwini ndi chilolezo",
+    "seeAll": "Onani zonse",
+    "seeAllSection": "Onani zonse {section}"
 }

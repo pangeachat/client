@@ -9852,5 +9852,13 @@
     "archivedChat": "Архівний чат",
     "activityReview": "Огляд активності",
     "activityPanel": "Активність",
-    "coursePage": "Сторінка курсу"
+    "coursePage": "Сторінка курсу",
+    "constructLevelSeeds": "Насіння, нові слова",
+    "constructLevelGreens": "Зелень, слова, що ростуть",
+    "constructLevelFlowers": "Квіти, опановані слова",
+    "filterAndSearch": "Фільтрувати та шукати",
+    "participantsOfTotal": "{filled} з {total} гравців",
+    "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
+    "seeAll": "Переглянути всі",
+    "seeAllSection": "Переглянути всі {section}"
 }

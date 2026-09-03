@@ -2256,5 +2256,13 @@
     "archivedChat": "Puisano e bolokilweng",
     "activityReview": "Tlhahlobo ya tshebetso",
     "activityPanel": "Tshebetso",
-    "coursePage": "Leqephe la thupelo"
+    "coursePage": "Leqephe la thupelo",
+    "constructLevelSeeds": "Peo, mantsoe a macha",
+    "constructLevelGreens": "Mahlaka, mantsoe a ntseng a hola",
+    "constructLevelFlowers": "Lipalesa, mantsoe a tsejoang hantle",
+    "filterAndSearch": "Hlotha le ho batla",
+    "participantsOfTotal": "Libapali tse {filled} ho tse {total}",
+    "mapAttributionLabel": "Bafani ba OpenStreetMap, litokelo tsa ho kopitsa le laesense",
+    "seeAll": "Bona kaofela",
+    "seeAllSection": "Bona {section} kaofela"
 }

@@ -2256,5 +2256,13 @@
     "archivedChat": "Gearchiveerde klets",
     "activityReview": "Aktiwiteitsoorsig",
     "activityPanel": "Aktiwiteit",
-    "coursePage": "Kursusbladsy"
+    "coursePage": "Kursusbladsy",
+    "constructLevelSeeds": "Sade, nuwe woorde",
+    "constructLevelGreens": "Groente, groeiende woorde",
+    "constructLevelFlowers": "Blomme, woorde bemeester",
+    "filterAndSearch": "Filtreer en soek",
+    "participantsOfTotal": "{filled} van {total} spelers",
+    "mapAttributionLabel": "OpenStreetMap bydraers, kopiereg en lisensie",
+    "seeAll": "Sien alles",
+    "seeAllSection": "Sien alle {section}"
 }

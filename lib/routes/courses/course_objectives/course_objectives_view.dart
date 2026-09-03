@@ -21,7 +21,9 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
+import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
+import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -54,13 +56,14 @@ class CourseObjectivesList extends StatefulWidget {
   /// `Expanded`).
   final bool shrinkWrap;
 
-  /// Render only the "Up next" Mission — the shared resolver's anchor (first
-  /// Mission in the outline until resolution lands). The course page's
-  /// Course-plan section highlight; the full list is its "See all" subpage.
-  final bool upNextOnly;
+  /// Render the course page's Activities row instead of the plan:
+  /// one Mission-less carousel of the plan's activities ranked by the world
+  /// map's Priority matrix (#8741). The full, Mission-by-Mission plan is its
+  /// "See all" subpage. See quests.instructions.md.
+  final bool suggestedOnly;
 
   /// Mission headers collapse/expand their carousels (the full course plan
-  /// subpage, #8357). Off in previews and the Up-next highlight.
+  /// subpage, #8357). Off in previews and the Activities row.
   final bool collapsibleMissions;
 
   final QuestObjectivesLoader objectivesProvider;
@@ -71,7 +74,7 @@ class CourseObjectivesList extends StatefulWidget {
     this.questId,
     this.hasCompletedActivity,
     this.shrinkWrap = false,
-    this.upNextOnly = false,
+    this.suggestedOnly = false,
     this.collapsibleMissions = false,
     super.key,
   });
@@ -298,10 +301,55 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
         : (state: null, openSessions: 0, participants: const [], openSlots: 0);
   }
 
+  /// The [PinSignals] the Priority matrix scores this activity on, built from
+  /// the same live state the cards render. `recency` stays 0: open sessions
+  /// reach this surface through the discovery cache, which carries no
+  /// per-session start time. See [rankSuggestedActivities].
+  PinSignals _signalsFor(String activityId) => PinSignals(
+    state: _liveStateFor(activityId).state ?? ActivityPinState.available,
+    completionFraction: (widget.hasCompletedActivity?.call(activityId) ?? false)
+        ? 1.0
+        : 0.0,
+    pinged: activityId == _pingedActivityId,
+  );
+
+  int _userStarsByActivity(String activityId) =>
+      widget.room?.client.userStarsByActivity[activityId] ?? 0;
+
+  void _openActivity(QuestActivity ref) {
+    final room = widget.room;
+    if (room == null) {
+      // Token-native open; the course context (if any) is kept, so the plan
+      // closes back to it. See routing.instructions.md.
+      context.go(
+        WorkspaceNav.openActivity(
+          GoRouterState.of(context).uri,
+          ref.activityId,
+        ),
+      );
+      return;
+    }
+    // Immersive in-course open: the token producer drops the `left=course`
+    // card (and any right panel) and keeps the `?m=course:` scope, so the plan
+    // takes the card's slot and backs out to it. A video hero autostarts
+    // (muted).
+    context.go(
+      WorkspaceNav.openCourseActivity(
+        room.id,
+        ref.activityId,
+        autoplay:
+            ref.plan.heroBlock?.isVideo == true ||
+            ref.plan.heroBlock?.isYoutube == true,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      label: L10n.of(context).coursePlan,
+      label: widget.suggestedOnly
+          ? L10n.of(context).activities
+          : L10n.of(context).coursePlan,
       container: true,
       child: ValueListenableBuilder(
         valueListenable: widget.objectivesProvider.questLoader,
@@ -318,13 +366,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             case AsyncLoaded():
               // Per-Mission stars still show once the shared rollup resolves; a
               // preview has no learner progress. (The overall quest-star bar
-              // lives in the course page's Course-plan section.)
-              final allGroups =
-                  widget.objectivesProvider.filteredObjectiveGroups;
+              // rides above this list on the course page.)
+              final groups = widget.objectivesProvider.filteredObjectiveGroups;
               final anchorId = widget.objectivesProvider.anchorMissionId;
-              final groups = widget.upNextOnly
-                  ? [?widget.objectivesProvider.upNextGroup]
-                  : allGroups;
               if (groups.isEmpty) {
                 return _QuestLoadErrorView(
                   MissingQuestException(),
@@ -335,6 +379,31 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
               return ValueListenableBuilder(
                 valueListenable: widget.objectivesProvider.progression,
                 builder: (context, progression, _) {
+                  if (widget.suggestedOnly) {
+                    // The course page's ranked shortlist: no Mission header,
+                    // ordered by the same Priority matrix the map ranks pins
+                    // by, with sessions the learner already holds a role in
+                    // dropped (#8741). Empty only when every activity in the
+                    // plan is one of those — nothing left to suggest.
+                    final suggested = rankSuggestedActivities(
+                      groups: groups,
+                      missionGradient:
+                          widget.objectivesProvider.missionGradient,
+                      signalsFor: _signalsFor,
+                    );
+                    if (suggested.isEmpty) return const SizedBox.shrink();
+                    return ActivityCarousel(
+                      activities: [
+                        for (final suggestion in suggested) suggestion.activity,
+                      ],
+                      onTap: _openActivity,
+                      userStarsByActivity: _userStarsByActivity,
+                      hasCompletedActivity: widget.hasCompletedActivity,
+                      liveStateByActivity: _liveStateFor,
+                      availableParticipants: _availableParticipants,
+                      pingedActivityId: _pingedActivityId,
+                    );
+                  }
                   // Scoped to THIS course: the shared resolution spans every
                   // joined course, and Missions are reused across quests (#7771).
                   final hasProgress =
@@ -383,39 +452,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                                 group.objective.id,
                               )
                             : null,
-                        onTap: (ref) {
-                          final room = widget.room;
-                          if (room == null) {
-                            // Token-native open; the course context (if any) is kept,
-                            // so the plan closes back to it. See routing.instructions.md.
-                            context.go(
-                              WorkspaceNav.openActivity(
-                                GoRouterState.of(context).uri,
-                                ref.activityId,
-                              ),
-                            );
-                            return;
-                          }
-                          // Immersive in-course open: the token producer drops the
-                          // `left=course` card (and any right panel) and keeps the
-                          // `?m=course:` scope, so the plan takes the card's slot and
-                          // backs out to it. A video hero autostarts (muted).
-                          context.go(
-                            WorkspaceNav.openCourseActivity(
-                              room.id,
-                              ref.activityId,
-                              autoplay:
-                                  ref.plan.heroBlock?.isVideo == true ||
-                                  ref.plan.heroBlock?.isYoutube == true,
-                            ),
-                          );
-                        },
-                        userStarsByActivity: (activityId) =>
-                            widget
-                                .room
-                                ?.client
-                                .userStarsByActivity[activityId] ??
-                            0,
+                        onTap: _openActivity,
+                        userStarsByActivity: _userStarsByActivity,
                         liveStateByActivity: _liveStateFor,
                         availableParticipants: _availableParticipants,
                       );

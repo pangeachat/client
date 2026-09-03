@@ -10045,5 +10045,13 @@
     "archivedChat": "보관된 채팅",
     "activityReview": "활동 검토",
     "activityPanel": "활동",
-    "coursePage": "코스 페이지"
+    "coursePage": "코스 페이지",
+    "constructLevelSeeds": "씨앗, 새로운 단어",
+    "constructLevelGreens": "새싹, 성장하는 단어",
+    "constructLevelFlowers": "꽃, 마스터한 단어",
+    "filterAndSearch": "필터 및 검색",
+    "participantsOfTotal": "{total}명 중 {filled}명",
+    "mapAttributionLabel": "OpenStreetMap 기여자, 저작권 및 라이선스",
+    "seeAll": "모두 보기",
+    "seeAllSection": "{section} 모두 보기"
 }

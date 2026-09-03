@@ -2256,5 +2256,13 @@
     "archivedChat": "Arxivlənmiş söhbət",
     "activityReview": "Fəaliyyətə baxış",
     "activityPanel": "Fəaliyyət",
-    "coursePage": "Kurs səhifəsi"
+    "coursePage": "Kurs səhifəsi",
+    "constructLevelSeeds": "Toxumlar, yeni sözlər",
+    "constructLevelGreens": "Yaşıllıqlar, böyüyən sözlər",
+    "constructLevelFlowers": "Güllər, mənimsənilmiş sözlər",
+    "filterAndSearch": "Filtrlə və axtar",
+    "participantsOfTotal": "{total} oyunçudan {filled} nəfəri",
+    "mapAttributionLabel": "OpenStreetMap iştirakçıları, müəllif hüquqları və lisenziya",
+    "seeAll": "Hamısına baxın",
+    "seeAllSection": "Bütün {section} baxın"
 }

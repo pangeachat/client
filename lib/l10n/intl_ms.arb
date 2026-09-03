@@ -2256,5 +2256,13 @@
     "archivedChat": "Sembang yang diarkibkan",
     "activityReview": "Semakan aktiviti",
     "activityPanel": "Aktiviti",
-    "coursePage": "Halaman kursus"
+    "coursePage": "Halaman kursus",
+    "constructLevelSeeds": "Benih, perkataan baharu",
+    "constructLevelGreens": "Hijau, perkataan yang berkembang",
+    "constructLevelFlowers": "Bunga, perkataan yang dikuasai",
+    "filterAndSearch": "Tapis dan cari",
+    "participantsOfTotal": "{filled} daripada {total} pemain",
+    "mapAttributionLabel": "Penyumbang OpenStreetMap, hak cipta dan lesen",
+    "seeAll": "Lihat semua",
+    "seeAllSection": "Lihat semua {section}"
 }

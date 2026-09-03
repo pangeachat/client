@@ -2256,5 +2256,13 @@
     "archivedChat": "আর্কাইভ তৌখিবা চ্যাট",
     "activityReview": "এক্টিভিটি রিকন",
     "activityPanel": "এক্টিভিটি",
-    "coursePage": "কোর্স পেজ"
+    "coursePage": "কোর্স পেজ",
+    "constructLevelSeeds": "Seeds, অহোংবা ৱাহৈশিং",
+    "constructLevelGreens": "Greens, চাউরক্লিবা ৱাহৈশিং",
+    "constructLevelFlowers": "Flowers, থোইদোকপা ৱাহৈশিং",
+    "filterAndSearch": "Filter অমসুং search",
+    "participantsOfTotal": "{total} players sing {filled} na yaore",
+    "mapAttributionLabel": "OpenStreetMap contributors, copyright amadi license",
+    "seeAll": "পুম্নমক উ",
+    "seeAllSection": "পুম্নমক উ {section}"
 }

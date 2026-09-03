@@ -2256,5 +2256,13 @@
     "archivedChat": "Nkata echekwara",
     "activityReview": "Nyocha ọrụ",
     "activityPanel": "Ọrụ",
-    "coursePage": "Ibe ọmụmụ"
+    "coursePage": "Ibe ọmụmụ",
+    "constructLevelSeeds": "Mkpuru osisi, okwu ọhụrụ",
+    "constructLevelGreens": "Akwụkwọ ndụ akwụkwọ ndụ, okwu na-eto eto",
+    "constructLevelFlowers": "Okooko osisi, okwu ndị a mụtara nke ọma",
+    "filterAndSearch": "Nyochaa ma chọọ",
+    "participantsOfTotal": "{filled} n'ime {total} ndị egwuregwu",
+    "mapAttributionLabel": "Ndị nyere aka na OpenStreetMap, nwebisiinka na ikike",
+    "seeAll": "Hụ ihe niile",
+    "seeAllSection": "Hụ {section} niile"
 }

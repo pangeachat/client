@@ -9852,5 +9852,13 @@
     "archivedChat": "Artxibatutako txata",
     "activityReview": "Jardueraren berrikuspena",
     "activityPanel": "Jarduera",
-    "coursePage": "Ikastaroaren orria"
+    "coursePage": "Ikastaroaren orria",
+    "constructLevelSeeds": "Haziak, hitz berriak",
+    "constructLevelGreens": "Landareak, hazten ari diren hitzak",
+    "constructLevelFlowers": "Loreak, menderatutako hitzak",
+    "filterAndSearch": "Iragazi eta bilatu",
+    "participantsOfTotal": "{total} jokalarietatik {filled}",
+    "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
+    "seeAll": "Ikusi guztiak",
+    "seeAllSection": "Ikusi {section} guztiak"
 }

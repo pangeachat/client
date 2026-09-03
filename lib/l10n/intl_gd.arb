@@ -2256,5 +2256,13 @@
     "archivedChat": "Còmhradh tasgaichte",
     "activityReview": "Ath-sgrùdadh gnìomhachd",
     "activityPanel": "Gnìomhachd",
-    "coursePage": "Duilleag cùrsa"
+    "coursePage": "Duilleag cùrsa",
+    "constructLevelSeeds": "Sìol, faclan ùra",
+    "constructLevelGreens": "Uaine, faclan a' fàs",
+    "constructLevelFlowers": "Flùraichean, faclan maighstireil",
+    "filterAndSearch": "Sìoladh is sgrùdadh",
+    "participantsOfTotal": "{filled} de {total} cluicheadairean",
+    "mapAttributionLabel": "Luchd-tabhartais OpenStreetMap, dlighe-sgrìobhaidh agus cead",
+    "seeAll": "Faic na h-uile",
+    "seeAllSection": "Faic na h-uile {section}"
 }

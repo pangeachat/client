@@ -2256,5 +2256,13 @@
     "archivedChat": "Ingxoxo egciniweyo",
     "activityReview": "Uhlaziyo lomsebenzi",
     "activityPanel": "Umsebenzi",
-    "coursePage": "Iphepha lekhosi"
+    "coursePage": "Iphepha lekhosi",
+    "constructLevelSeeds": "Imbewu, amagama amatsha",
+    "constructLevelGreens": "Izityalo, amagama akhulayo",
+    "constructLevelFlowers": "Iintyatyambo, amagama aphucukileyo",
+    "filterAndSearch": "Hluza uze ukhangele",
+    "participantsOfTotal": "{filled} kubadlali abali-{total}",
+    "mapAttributionLabel": "Abanikeli be-OpenStreetMap, ilungelo lokushicilela kunye nelayisensi",
+    "seeAll": "Bona konke",
+    "seeAllSection": "Bona konke {section}"
 }

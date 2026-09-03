@@ -2256,5 +2256,13 @@
     "archivedChat": "Chat yakachengetwa",
     "activityReview": "Ongororo yezviitiko",
     "activityPanel": "Zviitiko",
-    "coursePage": "Peji rekosi"
+    "coursePage": "Peji rekosi",
+    "constructLevelSeeds": "Mbeu, mazwi matsva",
+    "constructLevelGreens": "Muriwo, mazwi ari kukura",
+    "constructLevelFlowers": "Maruva, mazwi akadzidzwa",
+    "filterAndSearch": "Sefa nekutsvaga",
+    "participantsOfTotal": "Vatambi {filled} pa {total}",
+    "mapAttributionLabel": "Vabatsiri veOpenStreetMap, kodzero yekukopa uye rezinesi",
+    "seeAll": "Ona zvese",
+    "seeAllSection": "Ona zvese zve {section}"
 }

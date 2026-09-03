@@ -2256,5 +2256,13 @@
     "archivedChat": "Arkivert chat",
     "activityReview": "Aktivitetsoversikt",
     "activityPanel": "Aktivitet",
-    "coursePage": "Kursside"
+    "coursePage": "Kursside",
+    "constructLevelSeeds": "Frø, nye ord",
+    "constructLevelGreens": "Grønt, voksende ord",
+    "constructLevelFlowers": "Blomster, mestret ord",
+    "filterAndSearch": "Filtrer og søk",
+    "participantsOfTotal": "{filled} av {total} spillere",
+    "mapAttributionLabel": "OpenStreetMap-bidragsytere, opphavsrett og lisens",
+    "seeAll": "Se alle",
+    "seeAllSection": "Se alle {section}"
 }

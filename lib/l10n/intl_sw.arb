@@ -2256,5 +2256,13 @@
     "archivedChat": "Gumzo lililohifadhiwa",
     "activityReview": "Mapitio ya shughuli",
     "activityPanel": "Shughuli",
-    "coursePage": "Ukurasa wa kozi"
+    "coursePage": "Ukurasa wa kozi",
+    "constructLevelSeeds": "Mbegu, maneno mapya",
+    "constructLevelGreens": "Kijani, maneno yanayokua",
+    "constructLevelFlowers": "Maua, maneno yaliyobobea",
+    "filterAndSearch": "Chuja na utafute",
+    "participantsOfTotal": "{filled} kati ya wachezaji {total}",
+    "mapAttributionLabel": "Wachangiaji wa OpenStreetMap, hakimiliki na leseni",
+    "seeAll": "Tazama zote",
+    "seeAllSection": "Tazama {section} zote"
 }

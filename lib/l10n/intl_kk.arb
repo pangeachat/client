@@ -2256,5 +2256,13 @@
     "archivedChat": "Мұрағатталған чат",
     "activityReview": "Әрекетті шолу",
     "activityPanel": "Әрекет",
-    "coursePage": "Курс беті"
+    "coursePage": "Курс беті",
+    "constructLevelSeeds": "Тұқымдар, жаңа сөздер",
+    "constructLevelGreens": "Көктер, өсіп келе жатқан сөздер",
+    "constructLevelFlowers": "Гүлдер, меңгерілген сөздер",
+    "filterAndSearch": "Сүзгілеу және іздеу",
+    "participantsOfTotal": "{total} ойыншының {filled}-і",
+    "mapAttributionLabel": "OpenStreetMap қатысушылары, авторлық құқық және лицензия",
+    "seeAll": "Барлығын қарау",
+    "seeAllSection": "Барлық {section} қарау"
 }

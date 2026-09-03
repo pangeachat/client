@@ -10766,5 +10766,13 @@
     "archivedChat": "צ'אט בארכיון",
     "activityReview": "סקירת פעילות",
     "activityPanel": "פעילות",
-    "coursePage": "דף קורס"
+    "coursePage": "דף קורס",
+    "constructLevelSeeds": "זרעים, מילים חדשות",
+    "constructLevelGreens": "עלים, מילים בצמיחה",
+    "constructLevelFlowers": "פרחים, מילים שנלמדו",
+    "filterAndSearch": "סינון וחיפוש",
+    "participantsOfTotal": "{filled} מתוך {total} שחקנים",
+    "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
+    "seeAll": "הצג הכל",
+    "seeAllSection": "הצג הכל {section}"
 }

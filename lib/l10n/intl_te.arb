@@ -10802,5 +10802,13 @@
     "archivedChat": "ఆర్కైవ్ చేసిన చాట్",
     "activityReview": "కార్యకలాపాల సమీక్ష",
     "activityPanel": "కార్యకలాపం",
-    "coursePage": "కోర్సు పేజీ"
+    "coursePage": "కోర్సు పేజీ",
+    "constructLevelSeeds": "సీడ్స్, కొత్త పదాలు",
+    "constructLevelGreens": "గ్రీన్స్, పెరుగుతున్న పదాలు",
+    "constructLevelFlowers": "ఫ్లవర్స్, నేర్చుకున్న పదాలు",
+    "filterAndSearch": "ఫిల్టర్ చేసి వెతకండి",
+    "participantsOfTotal": "{total} ఆటగాళ్ళలో {filled} మంది",
+    "mapAttributionLabel": "ఓపెన్‌స్ట్రీట్‌మ్యాప్ కంట్రిబ్యూటర్లు, కాపీరైట్ మరియు లైసెన్స్",
+    "seeAll": "అన్నీ చూడండి",
+    "seeAllSection": "అన్నీ చూడండి {section}"
 }

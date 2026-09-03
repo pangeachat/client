@@ -10370,5 +10370,13 @@
     "archivedChat": "Arkiverad chatt",
     "activityReview": "Aktivitetsöversikt",
     "activityPanel": "Aktivitet",
-    "coursePage": "Kurssida"
+    "coursePage": "Kurssida",
+    "constructLevelSeeds": "Frön, nya ord",
+    "constructLevelGreens": "Grönska, växande ord",
+    "constructLevelFlowers": "Blommor, ord du kan",
+    "filterAndSearch": "Filtrera och sök",
+    "participantsOfTotal": "{filled} av {total} spelare",
+    "mapAttributionLabel": "OpenStreetMap-bidragsgivare, upphovsrätt och licens",
+    "seeAll": "Visa alla",
+    "seeAllSection": "Visa alla {section}"
 }

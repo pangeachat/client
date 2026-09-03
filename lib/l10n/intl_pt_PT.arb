@@ -10769,5 +10769,13 @@
     "archivedChat": "Conversa arquivada",
     "activityReview": "Revisão da atividade",
     "activityPanel": "Atividade",
-    "coursePage": "Página do curso"
+    "coursePage": "Página do curso",
+    "constructLevelSeeds": "Sementes, novas palavras",
+    "constructLevelGreens": "Verdes, palavras em crescimento",
+    "constructLevelFlowers": "Flores, palavras dominadas",
+    "filterAndSearch": "Filtrar e pesquisar",
+    "participantsOfTotal": "{filled} de {total} jogadores",
+    "mapAttributionLabel": "Contribuidores do OpenStreetMap, direitos de autor e licença",
+    "seeAll": "Ver tudo",
+    "seeAllSection": "Ver tudo em {section}"
 }

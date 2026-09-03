@@ -2256,5 +2256,13 @@
     "archivedChat": "සංරක්ෂිත කතාබස්",
     "activityReview": "ක්‍රියාකාරකම් සමාලෝචනය",
     "activityPanel": "ක්‍රියාකාරකම්",
-    "coursePage": "පාඨමාලා පිටුව"
+    "coursePage": "පාඨමාලා පිටුව",
+    "constructLevelSeeds": "බීජ, නව වචන",
+    "constructLevelGreens": "කොළ, වැඩෙන වචන",
+    "constructLevelFlowers": "මල්, ප්‍රගුණ කළ වචන",
+    "filterAndSearch": "පෙරහන් කර සොයන්න",
+    "participantsOfTotal": "{total} ක්‍රීඩකයන්ගෙන් {filled}ක්",
+    "mapAttributionLabel": "OpenStreetMap දායකයින්, ප්‍රකාශන හිමිකම සහ බලපත්‍රය",
+    "seeAll": "සියල්ල බලන්න",
+    "seeAllSection": "සියලු {section} බලන්න"
 }

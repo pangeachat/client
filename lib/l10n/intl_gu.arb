@@ -2256,5 +2256,13 @@
     "archivedChat": "આર્કાઇવ કરેલી ચેટ",
     "activityReview": "પ્રવૃત્તિ સમીક્ષા",
     "activityPanel": "પ્રવૃત્તિ",
-    "coursePage": "કોર્સ પેજ"
+    "coursePage": "કોર્સ પેજ",
+    "constructLevelSeeds": "બીજ, નવા શબ્દો",
+    "constructLevelGreens": "ગ્રીન્સ, વિકસતા શબ્દો",
+    "constructLevelFlowers": "ફૂલો, નિપુણ શબ્દો",
+    "filterAndSearch": "ફિલ્ટર કરો અને શોધો",
+    "participantsOfTotal": "{total} ખેલાડીઓમાંથી {filled}",
+    "mapAttributionLabel": "OpenStreetMap ફાળો આપનારાઓ, કૉપિરાઇટ અને લાઇસન્સ",
+    "seeAll": "બધા જુઓ",
+    "seeAllSection": "બધા જુઓ {section}"
 }
