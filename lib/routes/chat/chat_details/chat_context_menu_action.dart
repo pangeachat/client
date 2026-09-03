@@ -126,11 +126,14 @@ void chatContextMenuAction(
   final previousFocus = primaryFocus;
   previousFocus?.unfocus();
   final firstItemFocus = FocusNode(skipTraversal: true);
+  // DOM first (web): lands on the item within a frame of the menu
+  // appearing — the same flush that removes the background nodes from
+  // under the screen-reader cursor — see menu_a11y_focus_web.dart.
+  domFocusFirstMenuItemWhenReady();
+  // Framework focus for keyboard parity; by now activeElement is already
+  // inside the menu, so this cannot trigger the host-focus fallback.
   Future.delayed(const Duration(milliseconds: 300), () {
     if (firstItemFocus.context?.mounted ?? false) {
-      // DOM first (web): puts activeElement inside the menu so the framework
-      // move below cannot trigger the engine's flutter-view host fallback.
-      domFocusFirstMenuItem();
       firstItemFocus.requestFocus();
     }
   });
