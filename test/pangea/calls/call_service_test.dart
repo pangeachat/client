@@ -3071,15 +3071,61 @@ void main() {
       expect(sessionB.enters, 1, reason: 'B entered its OWN session');
       expect(calls.membershipEventIdIn(bAttempt), r'$b-call');
 
-      // A's own announce reports the call now current, never its own dead
-      // enter's id -- and A's late write is refused, so it cannot overwrite the
-      // live call's anchor.
+      // A's own announce, resuming after B superseded it, reports NEITHER its
+      // own dead enter's id nor -- the subtler trap -- the redial's. Its late
+      // write is refused, so it cannot overwrite the live call's anchor.
       expect(
         await aAnnouncing,
-        isNot(r'$a-call'),
-        reason: 'a superseded call never reports the id its own enter wrote',
+        isNull,
+        reason:
+            'a superseded announce returns null, never its own dead id and '
+            "never the redial's",
       );
       expect(calls.membershipEventIdIn(bAttempt), r'$b-call');
+    });
+
+    // announce() itself RETURNS the anchor, so its return is an anchor-producing
+    // path like the read and the write. A call whose announce is still awaiting
+    // its own enter when a redial supersedes it must get null back -- not the
+    // id the field now holds, which is the redial's. The enter's [_anchorOn]
+    // already refuses to STORE the dead call's id; this is the same refusal on
+    // the way OUT, and without it A and B key their card and transcript on one
+    // membership -- the collision, reached through announce's return.
+    test('announce returns null to a call a redial has superseded', () async {
+      final (calls, room) = await redialing();
+      final sessionA = sessionFor(calls, room)
+        ..publishes = r'$a-call'
+        ..enterGate = Completer<void>();
+      calls.adoptSessionForTest(sessionA);
+      final aAnnouncing = calls.announce();
+      await pumpEventQueue();
+
+      // Redial B supersedes while A's announce is still parked on its enter.
+      final sessionB = sessionFor(calls, room)..publishes = r'$b-call';
+      calls.adoptSessionForTest(sessionB);
+      final bAttempt = calls.joinAttempt;
+      expect(
+        await calls.announce(),
+        r'$b-call',
+        reason: 'precondition: B is current and anchored on its own id',
+      );
+
+      // A's enter settles now. _anchorOn refuses A's id (A no longer owns), and
+      // A's announce, resuming, must not hand back the id the field holds -- B's.
+      sessionA.enterGate!.complete();
+      expect(
+        await aAnnouncing,
+        isNull,
+        reason:
+            'a superseded announce returns null, never the redial\'s id. '
+            'Returning the field ungated hands the dead call B\'s membership, '
+            'and A and B key their transcript and card on one id',
+      );
+      expect(
+        calls.membershipEventIdIn(bAttempt),
+        r'$b-call',
+        reason: 'and the live call keeps its own',
+      );
     });
 
     test('is never the one the call before it published', () async {

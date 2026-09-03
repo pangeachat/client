@@ -751,11 +751,11 @@ class CallService {
     if (_disposed || _voip == null) return null;
     // Nothing to anchor once the live call is gone.
     if (_current == null) return null;
-    // The identity gate. Only the attempt that owns the current call gets its
-    // id; the room is not asked, because the room cannot tell a call from the
-    // redial that replaced it in it — which is the whole of the bug this closes.
-    if (attempt == null || attempt != _anchorOwner) return null;
-    return _publishedMembershipEventId;
+    // The identity gate, shared with every other anchor read: only the attempt
+    // that owns the current call gets its id. The room is not asked, because the
+    // room cannot tell a call from the redial that replaced it in it — which is
+    // the whole of the bug this closes.
+    return _anchorFor(attempt);
   }
 
   /// Every membership of ours the room is holding for the call in hand.
@@ -847,6 +847,23 @@ class CallService {
   /// and renews the delayed leave — and the identity of the call it returned
   /// to is carried separately, as `ActiveCall._rejoinAnchorId`.
   String? _publishedMembershipEventId;
+
+  /// The published anchor, but only to the call that owns it.
+  ///
+  /// THE ONE READ of [_publishedMembershipEventId] that hands it out. Every path
+  /// that produces the anchor to a caller goes through here — [membershipEventIdIn]
+  /// answering a device, and [announce] returning to the call it published for —
+  /// so an ungated read that would give a stale caller, or an [announce] a redial
+  /// has superseded, the CURRENT call's id cannot be written by accident. That
+  /// was the collision, reached a fourth way: the enter's own [_anchorOn] refuses
+  /// to STORE a dead call's id, and this is the same refusal on the way OUT.
+  ///
+  /// [owner] is the join attempt the caller belongs to; a value comes back only
+  /// while that attempt still owns the live call, and null the instant a redial
+  /// has taken it over.
+  String? _anchorFor(int? owner) => owner != null && owner == _anchorOwner
+      ? _publishedMembershipEventId
+      : null;
 
   /// The join attempt that owns the current call's anchor.
   ///
@@ -1874,7 +1891,7 @@ class CallService {
         );
         rethrow;
       }
-    } else if (_publishedMembershipEventId == null) {
+    } else if (_anchorFor(owner) == null) {
       // The session is already entered, but by an enter this call is not
       // tracking — one reused from an earlier call whose enter left it entered
       // (a leave that failed part-way leaves it in the registry). This call can
@@ -1892,11 +1909,14 @@ class CallService {
     // torn out of. This is the same check every other await in this file is
     // followed by, kept where the poll that used to make it stood.
     _stopIfDisposed();
-    // The field rather than what the enter above handed back, and the two can
-    // differ: a whole new call can begin inside the wait, and its anchor is
-    // not this one's to report. Whoever asks after that is asking about the
-    // call the service is now tracking, which is what this answers.
-    return _publishedMembershipEventId;
+    // Through the SAME owner gate as every other anchor read, keyed on the
+    // [owner] this announce captured. An enter can complete for a call a redial
+    // has already superseded — this path records the id even while giving up, so
+    // it resumes here long after — and the field then holds the REDIAL's id.
+    // Returning it ungated handed the dead call the live call's membership, and
+    // both keyed their transcript and card on one id: the collision, reached
+    // through announce's own return. A superseded announce gets null instead.
+    return _anchorFor(owner);
   }
 
   /// Whether the call [announce] read before waiting is still one this service
