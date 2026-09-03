@@ -1,5 +1,6 @@
 {
     "@@locale": "az",
+    "@@last_modified": "2026-09-03 10:23:29.082232",
     "@@last_modified": "2026-09-02 11:48:46.051802",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{total} oyunçudan {filled} nəfəri",
     "mapAttributionLabel": "OpenStreetMap iştirakçıları, müəllif hüquqları və lisenziya",
     "seeAll": "Hamısına baxın",
-    "seeAllSection": "Bütün {section} baxın"
+    "seeAllSection": "Bütün {section} baxın",
+    "showMoreOptionsHint": "daha çox seçim göstər"
 }

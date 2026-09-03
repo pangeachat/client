@@ -1,5 +1,6 @@
 {
     "@@locale": "mr",
+    "@@last_modified": "2026-09-03 10:23:35.333719",
     "@@last_modified": "2026-09-02 11:49:01.175763",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{total} पैकी {filled} खेळाडू",
     "mapAttributionLabel": "ओपनस्ट्रीटमॅप योगदानकर्ते, कॉपीराइट आणि परवाना",
     "seeAll": "सर्व पहा",
-    "seeAllSection": "सर्व {section} पहा"
+    "seeAllSection": "सर्व {section} पहा",
+    "showMoreOptionsHint": "अधिक पर्याय दाखवा"
 }

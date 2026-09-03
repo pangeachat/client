@@ -1,4 +1,5 @@
 {
+    "@@last_modified": "2026-09-03 10:23:34.495390",
     "@@last_modified": "2026-09-02 11:49:01.822874",
     "about": "Om",
     "@about": {
@@ -9917,5 +9918,6 @@
     "participantsOfTotal": "{filled} av {total} spillere",
     "mapAttributionLabel": "OpenStreetMap-bidragsytere, opphavsrett og lisens",
     "seeAll": "Se alle",
-    "seeAllSection": "Se alle {section}"
+    "seeAllSection": "Se alle {section}",
+    "showMoreOptionsHint": "vis flere alternativer"
 }

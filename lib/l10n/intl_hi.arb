@@ -3094,6 +3094,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
+    "@@last_modified": "2026-09-03 10:23:31.371466",
     "@@last_modified": "2026-09-02 11:48:52.926332",
     "@alwaysUse24HourFormat": {
         "type": "String",
@@ -10492,5 +10493,6 @@
     "participantsOfTotal": "{total} खिलाड़ियों में से {filled}",
     "mapAttributionLabel": "OpenStreetMap योगदानकर्ता, कॉपीराइट और लाइसेंस",
     "seeAll": "सभी देखें",
-    "seeAllSection": "सभी {section} देखें"
+    "seeAllSection": "सभी {section} देखें",
+    "showMoreOptionsHint": "और विकल्प दिखाएँ"
 }

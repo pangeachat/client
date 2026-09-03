@@ -1,4 +1,5 @@
 {
+    "@@last_modified": "2026-09-03 10:23:34.760146",
     "@@last_modified": "2026-09-02 11:49:02.231147",
     "about": "Over ons",
     "@about": {
@@ -9860,5 +9861,6 @@
     "participantsOfTotal": "{filled} van de {total} spelers",
     "mapAttributionLabel": "OpenStreetMap-medewerkers, auteursrecht en licentie",
     "seeAll": "Alles weergeven",
-    "seeAllSection": "Alle {section} weergeven"
+    "seeAllSection": "Alle {section} weergeven",
+    "showMoreOptionsHint": "meer opties weergeven"
 }

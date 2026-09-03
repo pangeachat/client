@@ -1,5 +1,6 @@
 {
     "@@locale": "sw",
+    "@@last_modified": "2026-09-03 10:23:36.705634",
     "@@last_modified": "2026-09-02 11:49:09.724723",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{filled} kati ya wachezaji {total}",
     "mapAttributionLabel": "Wachangiaji wa OpenStreetMap, hakimiliki na leseni",
     "seeAll": "Tazama zote",
-    "seeAllSection": "Tazama {section} zote"
+    "seeAllSection": "Tazama {section} zote",
+    "showMoreOptionsHint": "onyesha chaguo zaidi"
 }

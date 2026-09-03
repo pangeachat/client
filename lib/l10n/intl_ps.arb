@@ -1,5 +1,6 @@
 {
     "@@locale": "ps",
+    "@@last_modified": "2026-09-03 10:23:35.278606",
     "@@last_modified": "2026-09-02 11:49:04.403122",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "د {total} لوبغاړو څخه {filled}",
     "mapAttributionLabel": "د OpenStreetMap مرسته کوونکي، د چاپ حق او جواز",
     "seeAll": "ټول وګورئ",
-    "seeAllSection": "ټول {section} وګورئ"
+    "seeAllSection": "ټول {section} وګورئ",
+    "showMoreOptionsHint": "نور انتخابونه وښایاست"
 }

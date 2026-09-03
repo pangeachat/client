@@ -1,5 +1,6 @@
 {
     "@@locale": "my",
+    "@@last_modified": "2026-09-03 10:23:34.639576",
     "@@last_modified": "2026-09-02 11:49:03.223113",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{total} ကစားသမားများထဲမှ {filled}",
     "mapAttributionLabel": "OpenStreetMap ပံ့ပိုးသူများ၊ မူပိုင်ခွင့်နှင့် လိုင်စင်",
     "seeAll": "အားလုံးကြည့်ရန်",
-    "seeAllSection": "{section} အားလုံးကြည့်ရန်"
+    "seeAllSection": "{section} အားလုံးကြည့်ရန်",
+    "showMoreOptionsHint": "ရွေးချယ်စရာများ ထပ်ပြရန်"
 }

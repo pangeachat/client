@@ -1,5 +1,6 @@
 {
     "@@locale": "si",
+    "@@last_modified": "2026-09-03 10:23:37.891974",
     "@@last_modified": "2026-09-02 11:49:05.983820",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{total} ක්‍රීඩකයන්ගෙන් {filled}ක්",
     "mapAttributionLabel": "OpenStreetMap දායකයින්, ප්‍රකාශන හිමිකම සහ බලපත්‍රය",
     "seeAll": "සියල්ල බලන්න",
-    "seeAllSection": "සියලු {section} බලන්න"
+    "seeAllSection": "සියලු {section} බලන්න",
+    "showMoreOptionsHint": "තවත් විකල්ප පෙන්වන්න"
 }

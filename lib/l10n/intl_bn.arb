@@ -1,4 +1,5 @@
 {
+    "@@last_modified": "2026-09-03 10:23:29.084210",
     "@@last_modified": "2026-09-02 11:48:45.851337",
     "about": "সম্পর্কে",
     "@about": {
@@ -10488,5 +10489,6 @@
     "participantsOfTotal": "{total} জন খেলোয়াড়ের মধ্যে {filled} জন",
     "mapAttributionLabel": "OpenStreetMap অবদানকারী, কপিরাইট এবং লাইসেন্স",
     "seeAll": "সব দেখুন",
-    "seeAllSection": "সব দেখুন {section}"
+    "seeAllSection": "সব দেখুন {section}",
+    "showMoreOptionsHint": "আরও বিকল্প দেখান"
 }

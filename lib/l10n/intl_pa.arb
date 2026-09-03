@@ -1,5 +1,6 @@
 {
     "@@locale": "pa",
+    "@@last_modified": "2026-09-03 10:23:35.628883",
     "@@last_modified": "2026-09-02 11:49:03.784818",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{total} ਖਿਡਾਰੀਆਂ ਵਿੱਚੋਂ {filled}",
     "mapAttributionLabel": "ਓਪਨਸਟ੍ਰੀਟਮੈਪ ਯੋਗਦਾਨੀ, ਕਾਪੀਰਾਈਟ ਅਤੇ ਲਾਇਸੰਸ",
     "seeAll": "ਸਾਰੇ ਦੇਖੋ",
-    "seeAllSection": "ਸਾਰੇ {section} ਦੇਖੋ"
+    "seeAllSection": "ਸਾਰੇ {section} ਦੇਖੋ",
+    "showMoreOptionsHint": "ਹੋਰ ਵਿਕਲਪ ਦਿਖਾਓ"
 }

@@ -1,5 +1,6 @@
 {
     "@@locale": "sm",
+    "@@last_modified": "2026-09-03 10:23:35.953749",
     "@@last_modified": "2026-09-02 11:49:06.275931",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{filled} o le {total} tagata taaalo",
     "mapAttributionLabel": "OpenStreetMap tagata foaʻi, puletaofia ma laisene",
     "seeAll": "Vaʻai uma",
-    "seeAllSection": "Vaʻai uma {section}"
+    "seeAllSection": "Vaʻai uma {section}",
+    "showMoreOptionsHint": "fa'aali nisi filifiliga"
 }

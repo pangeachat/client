@@ -1,5 +1,6 @@
 {
     "@@locale": "ny",
+    "@@last_modified": "2026-09-03 10:23:35.186678",
     "@@last_modified": "2026-09-02 11:49:02.638896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{filled} mwa osewera {total}",
     "mapAttributionLabel": "Othandizira a OpenStreetMap, umwini ndi chilolezo",
     "seeAll": "Onani zonse",
-    "seeAllSection": "Onani zonse {section}"
+    "seeAllSection": "Onani zonse {section}",
+    "showMoreOptionsHint": "onetsani zosankha zambiri"
 }

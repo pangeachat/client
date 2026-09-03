@@ -1,5 +1,6 @@
 {
     "@@locale": "gl",
+    "@@last_modified": "2026-09-03 10:23:30.904505",
     "@@last_modified": "2026-09-02 11:48:51.685939",
     "about": "Acerca de",
     "@about": {
@@ -9860,5 +9861,6 @@
     "participantsOfTotal": "{filled} de {total} xogadores",
     "mapAttributionLabel": "Colaboradores de OpenStreetMap, dereitos de autor e licenza",
     "seeAll": "Ver todo",
-    "seeAllSection": "Ver todo {section}"
+    "seeAllSection": "Ver todo {section}",
+    "showMoreOptionsHint": "mostrar máis opcións"
 }

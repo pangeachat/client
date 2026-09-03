@@ -1,4 +1,5 @@
 {
+    "@@last_modified": "2026-09-03 10:23:30.418521",
     "@@last_modified": "2026-09-02 11:48:50.011713",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
@@ -9948,5 +9949,6 @@
     "participantsOfTotal": "{filled} از {total} بازیکن",
     "mapAttributionLabel": "مشارکت‌کنندگان OpenStreetMap، حق تکثیر و مجوز",
     "seeAll": "مشاهده همه",
-    "seeAllSection": "مشاهده همه {section}"
+    "seeAllSection": "مشاهده همه {section}",
+    "showMoreOptionsHint": "نمایش گزینه‌های بیشتر"
 }

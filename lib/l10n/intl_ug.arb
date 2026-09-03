@@ -1,5 +1,6 @@
 {
     "@@locale": "ug",
+    "@@last_modified": "2026-09-03 10:23:37.102638",
     "@@last_modified": "2026-09-02 11:49:11.025199",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{total} قويغۇچنىڭ {filled} ى",
     "mapAttributionLabel": "OpenStreetMap تۆھپىكارلىرى، نەشر ھوقۇقى ۋە ئىجازەتنامىسى",
     "seeAll": "ھەممىنى كۆرۈش",
-    "seeAllSection": "بارلىق {section}نى كۆرۈش"
+    "seeAllSection": "بارلىق {section}نى كۆرۈش",
+    "showMoreOptionsHint": "تېخىمۇ كۆپ تاللاشلارنى كۆرسەت"
 }

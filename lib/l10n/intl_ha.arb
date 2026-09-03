@@ -1,5 +1,6 @@
 {
     "@@locale": "ha",
+    "@@last_modified": "2026-09-03 10:23:31.017754",
     "@@last_modified": "2026-09-02 11:48:52.356256",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{filled} cikin {total} 'yan wasa",
     "mapAttributionLabel": "Masu ba da gudummawa na OpenStreetMap, haƙƙin mallaka da lasisi",
     "seeAll": "Duba duka",
-    "seeAllSection": "Duba duka {section}"
+    "seeAllSection": "Duba duka {section}",
+    "showMoreOptionsHint": "nuna ƙarin zaɓuɓɓuka"
 }

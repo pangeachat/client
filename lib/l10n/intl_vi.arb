@@ -1,4 +1,5 @@
 {
+    "@@last_modified": "2026-09-03 10:23:37.642866",
     "@@last_modified": "2026-09-02 11:49:10.596671",
     "about": "Giới thiệu",
     "@about": {
@@ -7152,5 +7153,6 @@
     "participantsOfTotal": "{filled} trên {total} người chơi",
     "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
     "seeAll": "Xem tất cả",
-    "seeAllSection": "Xem tất cả {section}"
+    "seeAllSection": "Xem tất cả {section}",
+    "showMoreOptionsHint": "hiện thêm tùy chọn"
 }

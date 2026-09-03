@@ -2873,6 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
+    "@@last_modified": "2026-09-03 10:23:37.205209",
     "@@last_modified": "2026-09-02 11:49:11.226510",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
@@ -9864,5 +9865,6 @@
     "participantsOfTotal": "{total} o'yinchidan {filled} nafari",
     "mapAttributionLabel": "OpenStreetMap ishtirokchilari, mualliflik huquqi va litsenziyasi",
     "seeAll": "Hammasini koʻrish",
-    "seeAllSection": "Barcha {section}ni koʻrish"
+    "seeAllSection": "Barcha {section}ni koʻrish",
+    "showMoreOptionsHint": "koʻproq variantlarni koʻrsatish"
 }

@@ -1,5 +1,6 @@
 {
     "@@locale": "zh",
+    "@@last_modified": "2026-09-03 10:23:37.595840",
     "@@last_modified": "2026-09-02 11:49:14.190904",
     "about": "关于",
     "@about": {
@@ -9860,5 +9861,6 @@
     "participantsOfTotal": "{filled}/{total} 位玩家",
     "mapAttributionLabel": "OpenStreetMap 贡献者，版权和许可",
     "seeAll": "查看全部",
-    "seeAllSection": "查看全部{section}"
+    "seeAllSection": "查看全部{section}",
+    "showMoreOptionsHint": "显示更多选项"
 }

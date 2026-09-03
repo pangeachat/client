@@ -1,5 +1,6 @@
 {
     "@@locale": "km",
+    "@@last_modified": "2026-09-03 10:23:32.678254",
     "@@last_modified": "2026-09-02 11:48:56.449317",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "អ្នកលេង {filled} នៃ {total} នាក់",
     "mapAttributionLabel": "អ្នករួមចំណែក OpenStreetMap, ការរក្សាសិទ្ធិ និងអាជ្ញាប័ណ្ណ",
     "seeAll": "មើលទាំងអស់",
-    "seeAllSection": "មើល {section} ទាំងអស់"
+    "seeAllSection": "មើល {section} ទាំងអស់",
+    "showMoreOptionsHint": "បង្ហាញជម្រើសច្រើនទៀត"
 }

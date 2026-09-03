@@ -1,5 +1,6 @@
 {
     "@@locale": "de",
+    "@@last_modified": "2026-09-03 10:23:29.963930",
     "@@last_modified": "2026-09-02 11:48:48.322252",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
@@ -9847,5 +9848,6 @@
     "participantsOfTotal": "{filled} von {total} Spielern",
     "mapAttributionLabel": "OpenStreetMap-Mitwirkende, Copyright und Lizenz",
     "seeAll": "Alle anzeigen",
-    "seeAllSection": "Alle {section} anzeigen"
+    "seeAllSection": "Alle {section} anzeigen",
+    "showMoreOptionsHint": "Weitere Optionen anzeigen"
 }

@@ -1,5 +1,6 @@
 {
     "@@locale": "la",
+    "@@last_modified": "2026-09-03 10:23:33.040090",
     "@@last_modified": "2026-09-02 11:48:58.180065",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{filled} ex {total} lusoribus",
     "mapAttributionLabel": "OpenStreetMap contributores, ius auctoris et licentia",
     "seeAll": "Omnia vide",
-    "seeAllSection": "Omnia {section} vide"
+    "seeAllSection": "Omnia {section} vide",
+    "showMoreOptionsHint": "plures optiones ostende"
 }

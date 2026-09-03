@@ -1,5 +1,6 @@
 {
     "@@locale": "mk",
+    "@@last_modified": "2026-09-03 10:23:34.025869",
     "@@last_modified": "2026-09-02 11:49:00.024863",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{filled} од {total} играчи",
     "mapAttributionLabel": "Соработници на OpenStreetMap, авторски права и лиценца",
     "seeAll": "Видете ги сите",
-    "seeAllSection": "Видете ги сите {section}"
+    "seeAllSection": "Видете ги сите {section}",
+    "showMoreOptionsHint": "покажи повеќе опции"
 }

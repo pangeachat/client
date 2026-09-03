@@ -1,5 +1,6 @@
 {
     "@@locale": "ml",
+    "@@last_modified": "2026-09-03 10:23:33.978889",
     "@@last_modified": "2026-09-02 11:49:00.256011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{total} കളിക്കാരിൽ {filled} പേർ",
     "mapAttributionLabel": "OpenStreetMap സംഭാവന ചെയ്യുന്നവർ, പകർപ്പവകാശം, ലൈസൻസ്",
     "seeAll": "എല്ലാം കാണുക",
-    "seeAllSection": "എല്ലാം കാണുക {section}"
+    "seeAllSection": "എല്ലാം കാണുക {section}",
+    "showMoreOptionsHint": "കൂടുതൽ ഓപ്ഷനുകൾ കാണിക്കുക"
 }

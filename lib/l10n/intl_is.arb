@@ -1,5 +1,6 @@
 {
     "@@locale": "is",
+    "@@last_modified": "2026-09-03 10:23:31.982965",
     "@@last_modified": "2026-09-02 11:48:55.433489",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{filled} af {total} spilurum",
     "mapAttributionLabel": "OpenStreetMap þátttakendur, höfundarréttur og leyfi",
     "seeAll": "Sjá allt",
-    "seeAllSection": "Sjá allt {section}"
+    "seeAllSection": "Sjá allt {section}",
+    "showMoreOptionsHint": "sýna fleiri valkosti"
 }

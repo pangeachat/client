@@ -1,4 +1,5 @@
 {
+    "@@last_modified": "2026-09-03 10:23:35.617732",
     "@@last_modified": "2026-09-02 11:49:04.447623",
     "about": "Despre",
     "@about": {
@@ -10592,5 +10593,6 @@
     "participantsOfTotal": "{filled} din {total} jucători",
     "mapAttributionLabel": "Contribuitori OpenStreetMap, drepturi de autor și licență",
     "seeAll": "Vezi tot",
-    "seeAllSection": "Vezi tot {section}"
+    "seeAllSection": "Vezi tot {section}",
+    "showMoreOptionsHint": "afișează mai multe opțiuni"
 }

@@ -1,5 +1,6 @@
 {
     "@@locale": "co",
+    "@@last_modified": "2026-09-03 10:23:34.361050",
     "@@last_modified": "2026-09-02 11:48:48.052898",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{filled} di {total} ghjucadori",
     "mapAttributionLabel": "Cuntributori OpenStreetMap, copyright è licenza",
     "seeAll": "Vede tuttu",
-    "seeAllSection": "Vede tuttu {section}"
+    "seeAllSection": "Vede tuttu {section}",
+    "showMoreOptionsHint": "mostra più opzioni"
 }

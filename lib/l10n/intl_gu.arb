@@ -1,5 +1,6 @@
 {
     "@@locale": "gu",
+    "@@last_modified": "2026-09-03 10:23:30.965071",
     "@@last_modified": "2026-09-02 11:48:53.782457",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{total} ખેલાડીઓમાંથી {filled}",
     "mapAttributionLabel": "OpenStreetMap ફાળો આપનારાઓ, કૉપિરાઇટ અને લાઇસન્સ",
     "seeAll": "બધા જુઓ",
-    "seeAllSection": "બધા જુઓ {section}"
+    "seeAllSection": "બધા જુઓ {section}",
+    "showMoreOptionsHint": "વધુ વિકલ્પો બતાવો"
 }

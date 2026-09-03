@@ -1,5 +1,6 @@
 {
     "@@locale": "mn",
+    "@@last_modified": "2026-09-03 10:23:35.259050",
     "@@last_modified": "2026-09-02 11:49:00.561470",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{total} тоглогчоос {filled} нь",
     "mapAttributionLabel": "OpenStreetMap-ийн хувь нэмэр оруулагчид, зохиогчийн эрх, лиценз",
     "seeAll": "Бүгдийг харах",
-    "seeAllSection": "Бүх {section}-г харах"
+    "seeAllSection": "Бүх {section}-г харах",
+    "showMoreOptionsHint": "бусад сонголтыг харах"
 }

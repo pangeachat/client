@@ -1,5 +1,6 @@
 {
     "@@locale": "sn",
+    "@@last_modified": "2026-09-03 10:23:36.590453",
     "@@last_modified": "2026-09-02 11:49:06.569301",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "Vatambi {filled} pa {total}",
     "mapAttributionLabel": "Vabatsiri veOpenStreetMap, kodzero yekukopa uye rezinesi",
     "seeAll": "Ona zvese",
-    "seeAllSection": "Ona zvese zve {section}"
+    "seeAllSection": "Ona zvese zve {section}",
+    "showMoreOptionsHint": "ratidza zvimwe zvingasarudzwa"
 }

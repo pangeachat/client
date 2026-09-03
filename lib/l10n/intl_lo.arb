@@ -1,5 +1,6 @@
 {
     "@@locale": "lo",
+    "@@last_modified": "2026-09-03 10:23:33.771955",
     "@@last_modified": "2026-09-02 11:48:59.236657",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
@@ -2264,5 +2265,6 @@
     "participantsOfTotal": "{filled} ຈາກ {total} ຜູ້ຫຼິ້ນ",
     "mapAttributionLabel": "ຜູ້ປະກອບສ່ວນ OpenStreetMap, ລິຂະສິດ ແລະ ໃບອະນຸຍາດ",
     "seeAll": "ເບິ່ງທັງໝົດ",
-    "seeAllSection": "ເບິ່ງທັງໝົດ {section}"
+    "seeAllSection": "ເບິ່ງທັງໝົດ {section}",
+    "showMoreOptionsHint": "ສະແດງຕົວເລືອກເພີ່ມເຕີມ"
 }

@@ -1938,6 +1938,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
+    "@@last_modified": "2026-09-03 10:23:32.527444",
     "@@last_modified": "2026-09-02 11:48:56.287092",
     "@alwaysUse24HourFormat": {
         "type": "String",
@@ -10760,5 +10761,6 @@
     "participantsOfTotal": "{filled} / {total} მოთამაშე",
     "mapAttributionLabel": "OpenStreetMap-ის კონტრიბუტორები, საავტორო უფლებები და ლიცენზია",
     "seeAll": "ყველას ნახვა",
-    "seeAllSection": "ყველა {section}-ის ნახვა"
+    "seeAllSection": "ყველა {section}-ის ნახვა",
+    "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება"
 }

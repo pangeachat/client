@@ -1,4 +1,5 @@
 {
+    "@@last_modified": "2026-09-03 10:23:36.168655",
     "@@last_modified": "2026-09-02 11:49:06.648181",
     "about": "О програму",
     "@about": {
@@ -10809,5 +10810,6 @@
     "participantsOfTotal": "{filled} od {total} igrača",
     "mapAttributionLabel": "OpenStreetMap saradnici, autorska prava i licenca",
     "seeAll": "Pogledaj sve",
-    "seeAllSection": "Pogledaj sve {section}"
+    "seeAllSection": "Pogledaj sve {section}",
+    "showMoreOptionsHint": "prikaži više opcija"
 }
