@@ -200,8 +200,12 @@ class CallOwnership {
     }
     if (_pending == _PendingChoice.useThis) {
       _pending = _PendingChoice.none;
-      _claimedAt ??= now;
-      // Fall through with a claim now latched.
+      // A claim is valid ONLY against participating siblings. If any sibling is
+      // SILENT, drop the tap rather than claim: a silent sibling cannot leave,
+      // so a claim would publish and seed a bounded wait that must never apply
+      // against it (doc:188). The silent-sibling exclusion below then stands
+      // with its older-version prompt, and the learner leaves by hand.
+      if (silentSiblingIds.isEmpty) _claimedAt ??= now;
     }
 
     // A silent sibling continuously present for a full tick is an older build;
@@ -230,8 +234,10 @@ class CallOwnership {
         prompt: siblingOld
             ? OwnershipPromptKind.olderVersion
             : OwnershipPromptKind.none,
-        // An existing claim persists until this device leaves; no NEW claim is
-        // started against a silent sibling.
+        // A claim is only ever latched while NO silent sibling was present (the
+        // reconcile above drops a tap made against silence), so any claim still
+        // standing here was published validly against a participating sibling.
+        // No NEW claim is started against a silent one -- doc:188.
         announceChosen: _claimedAt != null,
       );
     }

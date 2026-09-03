@@ -260,8 +260,15 @@ class _FakeMedia extends CallMedia {
   Future<bool> setMicrophoneEnabled(bool on) async =>
       on ? micTakes : muteFindsAPublication;
 
+  /// Whether the camera was ever asked to OPEN (a restore/republish). The
+  /// ownership hold must never reopen it on a device that is leaving.
+  bool cameraOpened = false;
+
   @override
-  Future<bool> setCameraEnabled(bool on) async => on && cameraTakes;
+  Future<bool> setCameraEnabled(bool on) async {
+    if (on) cameraOpened = true;
+    return on && cameraTakes;
+  }
 
   @override
   Future<void> disconnect() async {}
@@ -2105,4 +2112,67 @@ void main() {
       });
     },
   );
+  group('two devices -- the hold never reopens media on a leaving device', () {
+    // A VIDEO session (camera intent on), brought up and then HELD by a silent
+    // sibling. cameraOpened is reset after the hold so only a later reopen shows.
+    Future<(_FakeMedia, CallSession)> upVideoHeld() async {
+      final client = await _bareClient();
+      final room = _RecordingRoom(id: '!r:server', client: client);
+      final media = _FakeMedia();
+      final session = CallSession.start(
+        room: room,
+        video: true,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        callerMembershipEventId: r'$caller-membership',
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      final roster = media.fakeRoster!;
+      roster.identities = {'${roster.myUserId}:SIBLINGDEV'};
+      roster.attributes = {'${roster.myUserId}:SIBLINGDEV': const {}};
+      roster.recompute();
+      await pumpEventQueue();
+      expect(session.mediaHeld, isTrue, reason: 'a sibling holds this device');
+      media.cameraOpened = false;
+      return (media, session);
+    }
+
+    test('a MOVED leave does not reopen the camera during teardown', () async {
+      final (media, session) = await upVideoHeld();
+      final roster = media.fakeRoster!;
+      // The sibling claims: this device is chosen against and leaves as MOVED.
+      roster.attributes = {
+        '${roster.myUserId}:SIBLINGDEV': {CallRoster.chosenAttribute: 'yes'},
+      };
+      roster.recompute();
+      await pumpEventQueue();
+      expect(session.call.outcome, CallOutcome.movedToOtherDevice);
+      expect(
+        media.cameraOpened,
+        isFalse,
+        reason: 'a device on its way out must not republish its camera',
+      );
+    });
+
+    test('the SURVIVING device restores the camera on resume', () async {
+      final (media, session) = await upVideoHeld();
+      final roster = media.fakeRoster!;
+      // The sibling leaves: this device is the survivor and resumes.
+      roster.identities = {};
+      roster.recompute();
+      await pumpEventQueue();
+      expect(
+        media.cameraOpened,
+        isTrue,
+        reason: 'the survivor restores the learner camera intent',
+      );
+    });
+  });
 }

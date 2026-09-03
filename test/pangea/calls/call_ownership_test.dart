@@ -160,6 +160,47 @@ void main() {
         expect(resumed.resume, isTrue);
       },
     );
+
+    test(
+      'a useThis reconciled with a silent sibling present is DROPPED (doc:188)',
+      () {
+        // The stale/invalid tap: the learner tapped Use this device while the
+        // choice was showing, but by reconcile time a silent sibling is present
+        // (it appeared, or a participating sibling dropped its pangea_chosen). A
+        // claim would publish and seed a bounded wait against a sibling that
+        // cannot leave -- so the tap is dropped: no claim, no claimedAt.
+        final o = CallOwnership();
+        sighting(o, t0, present: const {'B', 'C'}, silent: const {'C'});
+        o.chooseThisDevice();
+        final d = sighting(
+          o,
+          t0.add(const Duration(seconds: 3)),
+          present: const {'B', 'C'},
+          silent: const {'C'},
+        );
+        expect(
+          d.announceChosen,
+          isFalse,
+          reason: 'no claim is published against a silent sibling',
+        );
+        expect(
+          o.claimedAt,
+          isNull,
+          reason: 'no bounded-wait timer seeded from an invalid claim',
+        );
+        expect(d.prompt, OwnershipPromptKind.olderVersion);
+
+        // Positive control: with only participating siblings, the SAME tap
+        // still claims -- so the drop above is the silent exclusion biting, not
+        // a blanket refusal.
+        final ok = CallOwnership();
+        sighting(ok, t0);
+        ok.chooseThisDevice();
+        final claimed = sighting(ok, t0);
+        expect(claimed.announceChosen, isTrue);
+        expect(ok.claimedAt, isNotNull);
+      },
+    );
   });
 
   group('CallOwnership — Leave the call here', () {

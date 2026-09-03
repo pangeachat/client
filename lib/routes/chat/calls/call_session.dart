@@ -641,8 +641,11 @@ class CallSession extends ChangeNotifier {
     if (_camera && media.cameraFailed) _camera = false;
     // The ownership hold has just resumed: reopen the camera to the learner's
     // own intent (the arbiter reopened the microphone; the camera intent lives
-    // here). On the held->unheld edge, so it fires once.
-    if (_wasMediaHeld && !call.mediaHeld) {
+    // here). ONLY for the SURVIVOR carrying on -- a device whose hold clears
+    // because it is LEAVING (chosen against, or a give-up) has its media torn
+    // down, and reopening the camera there would republish it on a device on
+    // its way out. Gated on carriedOn, not merely on the held->unheld edge.
+    if (_wasMediaHeld && !call.mediaHeld && call.carriedOn) {
       unawaited(media.setCameraEnabled(_camera));
     }
     _wasMediaHeld = call.mediaHeld;
