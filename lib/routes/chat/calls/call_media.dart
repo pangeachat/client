@@ -349,24 +349,31 @@ class CallMedia {
   /// in fact joined after, and throws away the sibling's tail. That tail is the
   /// only copy; no later election brings it back.
   ///
-  /// So the two checks livekit_client's own roster makes on the very same
-  /// `ParticipantInfo` are made here too, on the store it feeds — the store used
-  /// to make NEITHER, which was the KNOWN LIMIT that let this and the reading
-  /// beside it describe different frames:
+  /// Only a statement describing the SAME live session or a NEWER one may move
+  /// the held join. An older session's late word — whatever sid it carries —
+  /// cannot, because moving the store back to an earlier join is what lets the
+  /// election read a live device as present before a sibling it in fact joined
+  /// after, and throw away the sibling's only copy of the tail:
   ///
   ///   - A participant the SFU marks DISCONNECTED has LEFT. livekit_client drops
   ///     it rather than updating it (room.dart:798 `continue`s on that state),
   ///     and a departed session's statement must never move a live device's
-  ///     join here either. The safe direction is explicit: a `hasLeft` frame
-  ///     never writes, so the last CURRENT join stands.
+  ///     join here either. A `hasLeft` frame never writes, so the last CURRENT
+  ///     join stands.
   ///
-  ///   - An update for a session already held, carrying a lower `version`, is
-  ///     out of order. livekit_client refuses it (participant.dart:221, same
-  ///     `sid` and a lower `version`); this refuses it on the same terms, so a
-  ///     reordered frame cannot walk the store backwards while leaving the
-  ///     reading beside it untouched. Gated on the `sid`, because a rejoin's
-  ///     fresh session restarts the counter and is not the old one going
-  ///     backwards.
+  ///   - A statement for the SAME `sid` is the same session; it may write only
+  ///     if its `version` is not behind what is held. livekit_client refuses a
+  ///     lower version on a held session (participant.dart:221) and this refuses
+  ///     it on the same terms, so a reordered frame cannot walk the store back.
+  ///
+  ///   - A DIFFERENT `sid` is a different session under one identity — a
+  ///     leave-and-rejoin. Only a STRICTLY LATER join is a newer session; the
+  ///     SFU stamps each join from its own monotonic clock, so a rejoin always
+  ///     lands after the session it replaced. An equal or earlier join under a
+  ///     different sid is an older session's delayed statement — the gap the
+  ///     same-sid version check could not close, because a fresh sid restarts
+  ///     the counter — and it is kept out here rather than left to overwrite the
+  ///     rejoin the device actually holds.
   ///
   /// What is NOT judged here is whether the numbers are believable times — a
   /// zero millisecond half, a stamp past the clock ceiling. That stays the
@@ -379,12 +386,7 @@ class CallMedia {
       // Never let its statement overwrite one.
       if (stamp.hasLeft) continue;
       final held = _sfuJoinStamps[stamp.identity];
-      // Same session, older frame: the reading already held is newer. Keep it.
-      if (held != null &&
-          held.sid == stamp.sid &&
-          held.version > stamp.version) {
-        continue;
-      }
+      if (held != null && !_supersedesHeldJoin(stamp, held)) continue;
       _sfuJoinStamps[stamp.identity] = (
         secondsMs: stamp.secondsMs,
         ms: stamp.ms,
@@ -393,6 +395,31 @@ class CallMedia {
       );
     }
   }
+
+  /// Whether [stamp] describes the same live session already held for its
+  /// identity, or a newer one — the only statements allowed to move the join.
+  ///
+  /// Same session (same `sid`): ordered by the SFU's own monotonic `version`, so
+  /// a frame at or past the held version is the same join restated or a fresher
+  /// statement of it, and a lower one is reordered and refused. Different
+  /// session (different `sid`): ordered by the join instant, so only a strictly
+  /// later join — a genuine rejoin — supersedes, and an older session's late
+  /// statement cannot drag the store back to an earlier join.
+  static bool _supersedesHeldJoin(
+    SfuParticipantStamps stamp,
+    ({int secondsMs, int ms, String sid, int version}) held,
+  ) => stamp.sid == held.sid
+      ? stamp.version >= held.version
+      : _joinInstant(stamp.secondsMs, stamp.ms) >
+            _joinInstant(held.secondsMs, held.ms);
+
+  /// A join collapsed to one comparable instant, so two SESSIONS of one identity
+  /// can be ordered against each other. The millisecond reading when it refines
+  /// the coarse one, else the coarse second — the same rule the anchor reads by.
+  /// This orders which SESSION is newer, a coarser question than the per-pair
+  /// resolution the election discards on, so a mixed pair needs no special case.
+  static int _joinInstant(int secondsMs, int ms) =>
+      ClockAnchor.millisecondRefinement(secondsMs, ms) ?? secondsMs;
 
   // A note on a publish that fails, for both of these. Read off the pinned
   // livekit_client 2.11.0 rather than carried forward, because the two halves

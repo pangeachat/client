@@ -742,12 +742,15 @@ class HalfAccounting {
 
   /// WE dropped part of this half to stay within our own ceilings.
   ///
-  /// Distinct from [truncated], which is the writer saying it could not fit
-  /// what it had. Both set [truncated] -- the state has to read as incomplete
-  /// either way -- but only this one is ours, and reporting our ceiling as the
-  /// writer omitting segments to fit sends whoever reads it to the wrong
-  /// device. The second time `truncated` standing for two causes has cost a
-  /// wrong diagnosis here.
+  /// Distinct from [truncated], the writer's own admission that it could not fit
+  /// what it had, which [issue] reports as `tooLongToSend`. This one is OURS and
+  /// reports as `tooLongToRead`, ahead of the writer's cause: reporting our
+  /// ceiling as the writer omitting segments to fit would send whoever reads it
+  /// to the wrong device, and the second time `truncated` stood for two causes
+  /// it cost a wrong diagnosis here. So it makes the half read incomplete on its
+  /// own, in the state built in [assembleTranscript], and the merge path carries
+  /// it WITHOUT raising `truncated` (see [_mergeAccounting]) rather than seeding
+  /// a writer field with a reader cause.
   ///
   /// Reader-side, so it is not serialised and takes no part in [declared].
   final bool readerShortened;
@@ -1785,7 +1788,16 @@ HalfAccounting _mergeAccounting(
   var refused = true;
   var drained = true;
   var declared = true;
-  var truncated = readerDroppedADevice;
+  // NOT seeded from the reader drop. `truncated` is the WRITER's admission that
+  // it could not fit what it had, and `issue` reports it as `tooLongToSend`; a
+  // device this reader turned away at [kMaxDevicesPerSender] is our ceiling, not
+  // the writer's failing. It is carried by `readerShortened` alone, which
+  // `issue` reports as `tooLongToRead` and which makes the half read incomplete
+  // in its own right (see the state built in [assembleTranscript]). Seeding it
+  // here too put a reader cause in a writer field: masked in `issue` only
+  // because `readerShortened` is checked first, and a lie to every other reader
+  // of `truncated`.
+  var truncated = false;
   var incoherent = false;
   var readerShortened = readerDroppedADevice;
   var unreadable = false;
@@ -1970,13 +1982,21 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
     return _AssembledHalf(
       segments: only?.segments ?? const [],
       accounting: accounting,
-      clockAnchor:
-          only?.clockAnchor ??
-          // An empty half places nothing, so this anchor can never move a turn
-          // -- `clocksReconcilable` asks only halves that carry words. It is
-          // carried rather than dropped so a half that said what its clock read
-          // is not made to look like one that never said.
-          kept.map((candidate) => candidate.clockAnchor).nonNulls.firstOrNull,
+      clockAnchor: only != null
+          // The speaking device's OWN anchor, even when that is null. A device
+          // that wrote words but no anchor must NOT borrow another device's:
+          // its positions were stamped on ITS clock, so placing them against a
+          // different device's offset shifts every word it said. Left null, the
+          // half reads as an unanchored speaking half, which is exactly what
+          // makes `clocksReconcilable` false for the call -- its words shown on
+          // their own clock, uncorrected, rather than confidently misplaced on
+          // a clock that was never theirs.
+          ? only.clockAnchor
+          // ONLY when no device spoke at all: every kept half is empty. An
+          // empty half places nothing, so this anchor can never move a turn --
+          // it is carried rather than dropped so a half that said what its
+          // clock read is not made to look like one that never said.
+          : kept.map((candidate) => candidate.clockAnchor).nonNulls.firstOrNull,
       positionsMarked: only?.positionsMarked ?? false,
       deviceCount: found,
       discardWasCovered: discardWasCovered,
@@ -2272,6 +2292,13 @@ CallTranscript assembleTranscript({
             (!canConclude ||
                 wasUnreadable ||
                 candidate.accounting.writerAdmitsGaps ||
+                // The reader turned a device away at [kMaxDevicesPerSender].
+                // Here rather than in `writerAdmitsGaps`, which is the writer's
+                // own admission and must stay writer-only so a reader drop is
+                // never diagnosed as the writer failing to fit -- see
+                // [_mergeAccounting]. This is what keeps such a half reading
+                // incomplete now that `truncated` no longer carries the drop.
+                candidate.accounting.readerShortened ||
                 // Not folded into `writerAdmitsGaps`, which is about the
                 // ACCOUNTING alone and would then have to raise the flag on
                 // every partially suppressed half -- nearly all of them. This

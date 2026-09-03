@@ -925,6 +925,46 @@ void main() {
         );
       });
 
+      test('a departed statement is refused even when its join is LATER', () {
+        // What `hasLeft` guards that the newer-session rule cannot. The session
+        // order the store keeps is by join instant, so a departed statement
+        // carrying an EARLIER join is already refused as an older session -- but
+        // a departed statement can also carry a LATER join (a ghost session, or
+        // a leave whose own join we never saw), and by instant alone that reads
+        // as newer and would be taken. It describes a device that has LEFT, so
+        // it must not move the live join regardless of how late it claims to be.
+        final (media, handedOver) = mediaWatching();
+        // The live session.
+        handedOver([
+          (
+            identity: sib,
+            secondsMs: sfuSecondsMs + 3000,
+            ms: sfuSecondsMs + 3100,
+            sid: 'PA_live',
+            version: 0,
+            hasLeft: false,
+          ),
+        ]);
+        // A departed statement claiming a LATER join. By instant it looks like a
+        // newer session; only `hasLeft` keeps it out.
+        handedOver([
+          (
+            identity: sib,
+            secondsMs: sfuSecondsMs + 9000,
+            ms: sfuSecondsMs + 9100,
+            sid: 'PA_ghost',
+            version: 0,
+            hasLeft: true,
+          ),
+        ]);
+
+        expect(
+          media.sfuJoinStampsFor(sib),
+          (secondsMs: sfuSecondsMs + 3000, ms: sfuSecondsMs + 3100),
+          reason: 'a device that has left never moves the live join',
+        );
+      });
+
       test('an out-of-order frame for the SAME session is ignored', () {
         // The KNOWN LIMIT the store used to carry: livekit_client refuses an
         // update with a lower version for a session it already holds
@@ -983,6 +1023,61 @@ void main() {
           ),
           (secondsMs: sfuSecondsMs + 3000, ms: sfuSecondsMs + 3100),
           reason: 'a rejoin under a fresh sid is not an out-of-order frame',
+        );
+      });
+
+      test('an older session under a DIFFERENT sid cannot overwrite the '
+          'rejoin', () {
+        // The gap a same-sid version check cannot close, and the same
+        // audio-destroying move as the disconnected case through a different
+        // door. A rejoin lands under a FRESH sid, so the ended session's late
+        // word carries a different sid and slips past a version comparison
+        // entirely -- and it need not be marked disconnected. It still names an
+        // EARLIER join, and letting it overwrite moves the store back to a join
+        // the device no longer holds, which is what lets the election read a
+        // live device as present before a sibling it in fact joined after.
+        final (media, handedOver) = mediaWatching();
+        // The old session.
+        handedOver([
+          (
+            identity: sib,
+            secondsMs: sfuSecondsMs,
+            ms: sfuSecondsMs + 10,
+            sid: 'PA_old',
+            version: 1,
+            hasLeft: false,
+          ),
+        ]);
+        // The rejoin: a fresh sid, a later join.
+        handedOver([
+          (
+            identity: sib,
+            secondsMs: sfuSecondsMs + 3000,
+            ms: sfuSecondsMs + 3100,
+            sid: 'PA_new',
+            version: 0,
+            hasLeft: false,
+          ),
+        ]);
+        // The old session's delayed, NON-disconnected word: a different sid, an
+        // earlier join, and a high version a same-sid check would have deferred
+        // to.
+        handedOver([
+          (
+            identity: sib,
+            secondsMs: sfuSecondsMs,
+            ms: sfuSecondsMs + 10,
+            sid: 'PA_old',
+            version: 9,
+            hasLeft: false,
+          ),
+        ]);
+
+        expect(
+          media.sfuJoinStampsFor(sib),
+          (secondsMs: sfuSecondsMs + 3000, ms: sfuSecondsMs + 3100),
+          reason:
+              'an older session under a different sid is not a newer session',
         );
       });
 

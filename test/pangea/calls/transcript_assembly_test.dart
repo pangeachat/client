@@ -3140,6 +3140,45 @@ void main() {
       expect(half.positionsMarked, isFalse);
     });
 
+    test('a speaking device with no anchor does not borrow an empty one', () {
+      // One device wrote words but never anchored its clock; a SILENT sibling
+      // wrote an empty half WITH an anchor. The merged half keeps the speaking
+      // device's segments, so the anchor those positions were stamped against
+      // is the speaking device's -- and it has none. Adopting the empty
+      // sibling's would place the speaker's every word against a clock that was
+      // never theirs and shift all of them. The fallback to another device's
+      // anchor is only for a half NO device spoke in, where it can move
+      // nothing.
+      final transcript = assembleTranscript(
+        candidates: [
+          _candidate(
+            alice,
+            segments: [_placed('hola', 1000)],
+            positionsMarked: true,
+            deviceId: 'AAA_SPOKE',
+          ),
+          _candidate(
+            alice,
+            segments: const [],
+            anchor: _skewed(5000),
+            accounting: const HalfAccounting(declared: true),
+            deviceId: 'BBB_EMPTY',
+          ),
+        ],
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(half.segments.map((s) => s.text), ['hola']);
+      expect(
+        half.clockAnchor,
+        isNull,
+        reason:
+            "the speaker's words must not be placed on the empty device's clock",
+      );
+      expect(transcript.clocksReconcilable, isFalse);
+    });
+
     test('an unplaced segment anywhere stops the interleave', () {
       // A segment with no position cannot be ordered against the other
       // device's, and interleaving the rest around it would put a real turn
@@ -3435,6 +3474,30 @@ void main() {
       // The count of devices that WROTE, whatever the ceiling then used.
       expect(half.deviceCount, kMaxDevicesPerSender + 3);
       expect(half.accounting.readerShortened, isTrue);
+      expect(half.state, HalfState.incomplete);
+      expect(half.issue, HalfIssue.tooLongToRead);
+    });
+
+    test('the ceiling drop is not blamed on the writer', () {
+      // The drop is OURS, and its only truthful home is `readerShortened`.
+      // Seeding `truncated` from it too put a reader cause in the writer's
+      // field -- the one `issue` reports as `tooLongToSend` and every other
+      // reader takes as the writer admitting it could not fit what it had. It
+      // was masked in `issue` only because `readerShortened` is checked first,
+      // and a lie to everything else that reads the flag.
+      final transcript = assembleTranscript(
+        candidates: devices(kMaxDevicesPerSender + 3),
+        expectedSenders: [alice],
+      );
+
+      final half = _halfFor(transcript, alice);
+      expect(
+        half.accounting.truncated,
+        isFalse,
+        reason: 'a reader-ceiling drop is not the writer failing to fit',
+      );
+      // Still reads incomplete and still reports the reader cause -- now on
+      // `readerShortened`'s own account rather than by borrowing `truncated`.
       expect(half.state, HalfState.incomplete);
       expect(half.issue, HalfIssue.tooLongToRead);
     });
