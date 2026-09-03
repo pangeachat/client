@@ -105,9 +105,26 @@ void chatContextMenuAction(
       .where((v) => v.enabled(room: room, space: space))
       .length;
 
+  // Focus lands INSIDE the menu as it opens: the route's scope takes focus,
+  // then the first item is focused, so keyboard and screen-reader users
+  // start on it (Enter activates). Pointer users see no change — the focus
+  // highlight only renders in keyboard mode. Two frames, because the scope
+  // claims focus in a microtask after the push frame; the guard makes this
+  // a no-op (rather than a focus escape to a neighboring row) if focus is
+  // not on an empty scope yet. Scheduled before the await, which only
+  // returns when the menu closes.
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final scope = primaryFocus;
+      if (scope is FocusScopeNode && scope.focusedChild == null) {
+        scope.nextFocus();
+      }
+    });
+  });
   final action = await showMenu<ChatContextAction>(
     context: context,
     position: position,
+    requestFocus: true,
     items: [
       if (ChatContextAction.open.enabled(room: room, space: space))
         PopupMenuItem(

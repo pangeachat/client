@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
+import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -268,6 +271,62 @@ void main() {
     await tester.pumpAndSettle();
     expect(menuOpened, 1);
     expect(rowOpened, 2);
+  });
+
+  testWidgets('the context menu opens focused on its first item', (
+    tester,
+  ) async {
+    var rowOpened = 0;
+    final room = makeRoom();
+    // The menu's "Notifications on" row overflows by a few px under the
+    // wide test font only — cosmetic and unrelated to focus; don't let it
+    // fail this test.
+    final oldOnError = FlutterError.onError;
+    FlutterError.onError = (details) {
+      if (details.exception.toString().contains('overflowed')) return;
+      oldOnError?.call(details);
+    };
+    addTearDown(() => FlutterError.onError = oldOnError);
+    await tester.pumpWidget(
+      MaterialApp(
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Scaffold(
+          body: SizedBox(
+            width: 380,
+            child: Builder(
+              builder: (outerContext) => ChatListItem(
+                room,
+                onTap: () {},
+                onLongPress: (posContext) => chatContextMenuAction(
+                  room,
+                  posContext,
+                  outerContext,
+                  () => rowOpened++,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.longPress(find.byType(ChatListItem));
+    await tester.pumpAndSettle();
+    expect(find.byType(PopupMenuItem<ChatContextAction>), findsWidgets);
+
+    expect(
+      primaryFocus?.context
+          ?.findAncestorWidgetOfExactType<PopupMenuItem<ChatContextAction>>(),
+      isNotNull,
+      reason: 'focus moves onto the first menu item as the menu opens',
+    );
+
+    // Enter activates the focused first item — "open this chat".
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    await tester.pumpAndSettle();
+    expect(rowOpened, 1);
   });
 
   testWidgets('an archive row exposes exactly one delete control, beside '
