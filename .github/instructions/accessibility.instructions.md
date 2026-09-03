@@ -71,6 +71,12 @@ Author these as you build.
 - **Bare `GestureDetector` / `InkWell` acting as a button** → wrap in `Semantics(label: ..., button: true)`, or use a real button widget.
 - **Decorative or redundant interactive image** → `ExcludeSemantics` / `excludeFromSemantics: true` so it isn't double-announced.
 
+## Focus after an in-place content swap
+
+Some pages replace their content under chrome that stays put: the onboarding wizard swaps its step body under a persistent app bar and Back button. On the web the control that was just pressed disappears with the old content, and with nothing claiming focus the screen reader is left on the page root or on the Back button, unable to reach the new content (#7582).
+
+**After an in-place swap, focus lands on the group containing the page's center content** — a named group holding everything between the chrome and the forward action, labelled with the step's visible title, which is not read a second time as a child. The page clears its focus history at the swap so no older control is restored, and the group claims focus as one discrete event once the swap has settled. The group is not a Tab stop: keyboard users still move straight to the controls inside. The shared implementation is [`OnboardingStepBody`](../../lib/routes/onboarding/onboarding_step_views/onboarding_step_body.dart).
+
 ## Quick habits for anyone building UI
 
 1. **Every control says what it does.** If it has no visible text, it needs a `tooltip:` / label. "Send message", not "tap here".

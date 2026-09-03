@@ -8,6 +8,7 @@ import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/widgets/pro_features_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
 
 class FreeTrialStepView extends StatelessWidget {
   final VoidCallback forward;
@@ -77,11 +78,10 @@ class FreeTrialStepView extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Center(
-                        child: Semantics(
-                          label:
-                              '${L10n.of(context).thanksForSigningUp} ${L10n.of(context).sevenDaysFree}',
-                          container: true,
-                          child: SingleChildScrollView(
+                        child: SingleChildScrollView(
+                          child: OnboardingStepBody(
+                            label:
+                                '${L10n.of(context).thanksForSigningUp} ${L10n.of(context).sevenDaysFree}',
                             child: Column(
                               children: [
                                 Column(

@@ -117,6 +117,11 @@ class OnboardingController extends State<Onboarding> {
 
     switch (result) {
       case SuccessNavigationResult(step: final OnboardingStep step):
+        // Drop the focus history before the swap, or the framework hands focus
+        // to the last surviving control it remembers — the app bar's Back
+        // button once it has been pressed — and the screen reader hears it
+        // before the new step's body claims focus (#7582).
+        FocusManager.instance.primaryFocus?.unfocus();
         _step.value = step;
       case ErrorNavigationResult(error: final Object error):
         _error.value = error;

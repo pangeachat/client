@@ -13,6 +13,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/preset_avatar_picker.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -140,10 +141,9 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
       children: [
         Expanded(
           child: Center(
-            child: Semantics(
-              label: L10n.of(context).profile,
-              container: true,
-              child: SingleChildScrollView(
+            child: SingleChildScrollView(
+              child: OnboardingStepBody(
+                label: L10n.of(context).profile,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

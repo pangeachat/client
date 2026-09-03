@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 
 class CustomCourseStepView extends StatefulWidget {
@@ -103,10 +104,9 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       children: [
         Expanded(
           child: Center(
-            child: Semantics(
-              label: L10n.of(context).customCourseStepTitle,
-              container: true,
-              child: SingleChildScrollView(
+            child: SingleChildScrollView(
+              child: OnboardingStepBody(
+                label: L10n.of(context).customCourseStepTitle,
                 child: Column(
                   spacing: 8.0,
                   children: [
