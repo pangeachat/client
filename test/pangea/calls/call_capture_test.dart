@@ -2059,6 +2059,33 @@ void main() {
         );
       },
     );
+
+    test('audio dropped while UNMUTED counts even after a muted frame', () async {
+      // The other direction of the same interval, which a single mute-flag lost.
+      // A frame arrives while muted, the learner UNMUTES and speaks, and the tap
+      // loses that newly-unmuted audio and reports it on the next frame -- which
+      // is accepted, because we are unmuted again. Skipping the drop because the
+      // PREVIOUS frame was muted lost real speech and the half read complete.
+      // The interval was unmuted at its live end, so it is a hole and counts.
+      final tap = _DrivableTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+      s.setMuted(true);
+      // A muted frame, so the previous-frame end of the next interval is muted.
+      tap.onFrames!(speech(100), captureSampleRate, 1);
+      s.setMuted(false);
+      // Unmuted again; the drop reports the interval that spanned the unmute.
+      tap.onFrames!(speech(100), captureSampleRate, 1, droppedMs: 700);
+      await s.stop();
+
+      expect(
+        s.captureDroppedMs,
+        700,
+        reason: 'the interval was unmuted at its live end, so it is a hole',
+      );
+    });
   });
 
   group('the tail of a stretch another device also recorded', () {

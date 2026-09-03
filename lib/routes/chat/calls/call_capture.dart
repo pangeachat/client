@@ -801,13 +801,18 @@ class CallCaptureService {
 
   /// The mute state as of the LAST frame this saw, muted frames included.
   ///
-  /// A frame's `droppedMs` describes the interval BEFORE it, so whether that
-  /// dropped audio was being recorded is a question about the mute state DURING
-  /// that interval -- which is the state going into it, at the previous frame,
-  /// not this frame's, which a mute landing in between has already flipped.
-  /// Reading the current state instead discarded a drop that happened while
-  /// UNMUTED whenever the learner muted before its report arrived: real lost
-  /// audio, published as `capture_dropped_ms: 0`.
+  /// A frame's `droppedMs` is a duration with no timestamp, describing the
+  /// interval BEFORE it -- from the previous delivered frame to this one -- and
+  /// a mute can flip anywhere INSIDE that interval. Two facts bound it: the mute
+  /// state at each end, this field for the previous frame and `_muted` for the
+  /// current one. No single flag can place a mid-interval flip, so the drop is
+  /// counted UNLESS the interval was muted at BOTH ends; if either end was
+  /// unmuted, some of it could hold real speech and it must be counted. That
+  /// over-reports at worst a drop that was mostly muted -- a harmless
+  /// over-count on the safe side -- and never silently loses speech, which
+  /// reading a single end did: the previous frame alone lost a mute-then-unmute
+  /// drop, the current frame alone lost an unmute-then-mute one, each published
+  /// as `capture_dropped_ms: 0` over a hole in the recording.
   bool _mutedAsOfLastFrame = false;
 
   /// Gates or ungates capture to match the microphone button.
@@ -994,14 +999,19 @@ class CallCaptureService {
     // it matters.
     //
     // But the mute state that decides this is the one during the DROPPED
-    // interval, not this frame's. The tap reports a drop on the frame AFTER it,
-    // so a drop that happened while UNMUTED rides out on a frame the learner has
-    // since muted — and read against the current `_muted` it was thrown away,
-    // the same silent loss counting above the gate exists to prevent.
-    // [_mutedAsOfLastFrame] is the state going into that interval, so an unmuted
-    // drop still counts even when its report lands muted, and a drop that
-    // genuinely happened while muted still does not.
-    if (droppedMs > 0 && !_mutedAsOfLastFrame) _captureDroppedMs += droppedMs;
+    // interval, not this frame's, and a mute can flip anywhere inside it. The
+    // interval runs from the previous delivered frame ([_mutedAsOfLastFrame]) to
+    // this one (`_muted`), and a duration with no timestamp cannot say where in
+    // between a flip fell — so the only safe reading is to skip the drop ONLY
+    // when the interval was muted at BOTH ends. If either end was unmuted, some
+    // of it could be real speech and it is counted. Reading a single end lost
+    // one direction each: the current end alone dropped an UNMUTED-then-muted
+    // report, the previous end alone dropped a muted-then-UNMUTED one — both
+    // published as `capture_dropped_ms: 0` over a hole. This over-counts at worst
+    // a mostly-muted drop, which is the safe way to be wrong.
+    if (droppedMs > 0 && !(_mutedAsOfLastFrame && _muted)) {
+      _captureDroppedMs += droppedMs;
+    }
     // Advanced for EVERY frame, muted ones included, and BEFORE the gate below
     // can return: it is this frame's mute state that governs the NEXT frame's
     // dropped interval, whether or not this frame's own samples are recorded.
