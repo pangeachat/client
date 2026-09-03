@@ -1406,7 +1406,7 @@ void main() {
       () async {
         final (service, _, room) = await joinedService();
         expect(
-          service.membershipEventIdIn(room),
+          service.membershipEventIdIn(service.joinAttempt),
           isNull,
           reason: 'precondition: nothing of ours is left in the room',
         );
@@ -2834,7 +2834,7 @@ void main() {
       final (calls, room) = await redialing();
       await calls.join(room);
       expect(
-        calls.membershipEventIdIn(room),
+        calls.membershipEventIdIn(calls.joinAttempt),
         isNull,
         reason:
             'this call has published nothing yet, so it has no identity yet. '
@@ -2849,7 +2849,7 @@ void main() {
 
       expect(await calls.announce(), r'$this-call');
       expect(
-        calls.membershipEventIdIn(room),
+        calls.membershipEventIdIn(calls.joinAttempt),
         r'$this-call',
         reason:
             'refusing what this call did not publish must not amount to '
@@ -2885,7 +2885,7 @@ void main() {
       );
 
       expect(
-        calls.membershipEventIdIn(room),
+        calls.membershipEventIdIn(calls.joinAttempt),
         r'$this-call',
         reason:
             'the anchor is what this call published, and a write from the '
@@ -3018,95 +3018,139 @@ void main() {
             'was already written under',
       );
       expect(
-        calls.membershipEventIdIn(room),
+        calls.membershipEventIdIn(calls.joinAttempt),
         r'$this-call',
         reason: 'and what it has instead is the id its own publish was given',
       );
     });
 
-    // An enter outlives the call that issued it: retracting waits only so long
-    // for one and then leaves anyway, and announcing joins an enter it finds in
-    // flight rather than doubling it. So the id can come home to a service that
-    // is already tracking a DIFFERENT call.
-    test('is never one an enter from an earlier call publishes', () async {
+    // F2. An enter OUTLIVES its call: retract waits [_settleEnterWithin] for one
+    // and then leaves anyway, so a redial can begin while the previous call's
+    // enter is still settling. The redial must publish its OWN membership. The
+    // earlier structure waited on that in-flight enter and returned its result,
+    // so the redial got either the previous call's id or -- once the owner guard
+    // refused it -- no anchor at all, its whole transcript lost with no alarm.
+    test('is its own even when an earlier call\'s enter is still in flight', () async {
       final (calls, room) = await redialing();
-      final session = sessionFor(calls, room);
-      session.publishes = r'$earlier-call';
-      session.enterGate = Completer<void>();
-      calls.adoptSessionForTest(session);
-
-      final earlierAnnouncing = calls.announce();
+      // Call A's enter never settles on its own, so it is still in flight -- and
+      // still in the service's entering slot -- when the redial begins.
+      final sessionA = sessionFor(calls, room)
+        ..publishes = r'$a-call'
+        ..enterGate = Completer<void>();
+      calls.adoptSessionForTest(sessionA);
+      final aAnnouncing = calls.announce();
       await pumpEventQueue();
-      expect(session.enters, 1, reason: 'precondition: its enter is in flight');
-
-      // A new call begins on top, with that enter still out there. It finds one
-      // in flight and joins it rather than starting a second.
-      calls.adoptSessionForTest(session);
-      final announcing = calls.announce();
-      await pumpEventQueue();
-      session.enterGate!.complete();
-
       expect(
-        await announcing,
-        isNull,
-        reason:
-            'the membership that enter published belongs to the call that '
-            'issued it. Adopting it here keys this call on the one before it '
-            '-- the original collision, reached through a slow enter instead '
-            'of through room state',
-      );
-      expect(calls.membershipEventIdIn(room), isNull);
-      expect(
-        await earlierAnnouncing,
-        isNull,
-        reason:
-            'and the announce that DID issue the enter reports the call the '
-            'service is now tracking, not the id its own write came back with '
-            '-- that call is over, and handing its key out is what put the '
-            "previous call's key on the next call in the first place",
-      );
-      expect(
-        session.enters,
+        sessionA.enters,
         1,
-        reason: 'and no second membership was written to reach that answer',
+        reason: 'precondition: A\'s enter is in flight',
       );
+
+      // The redial. A fresh session, as one is once A's leave has removed A's
+      // from the registry. It begins on top while A's enter is still out.
+      final sessionB = sessionFor(calls, room)..publishes = r'$b-call';
+      calls.adoptSessionForTest(sessionB);
+      final bAttempt = calls.joinAttempt;
+
+      // B announces while A's enter is still the one in the service's slot. With
+      // the fix B ignores it and publishes its own membership at once, so B's
+      // answer does not depend on A's gate; A's enter is released here only so
+      // that, were the slot NOT owner-scoped, B's wait on it would unblock and
+      // reveal the null it was handed rather than hanging the test.
+      final bAnnouncing = calls.announce();
+      sessionA.enterGate!.complete();
+      expect(
+        await bAnnouncing,
+        r'$b-call',
+        reason:
+            'B published its own membership and anchored on the id THAT write '
+            'returned. Waiting on A\'s in-flight enter instead would give B '
+            'A\'s id, or -- once the owner guard refuses it -- no anchor at '
+            'all, and B\'s whole transcript would be lost with nothing logged',
+      );
+      expect(sessionB.enters, 1, reason: 'B entered its OWN session');
+      expect(calls.membershipEventIdIn(bAttempt), r'$b-call');
+
+      // A's own announce reports the call now current, never its own dead
+      // enter's id -- and A's late write is refused, so it cannot overwrite the
+      // live call's anchor.
+      expect(
+        await aAnnouncing,
+        isNot(r'$a-call'),
+        reason: 'a superseded call never reports the id its own enter wrote',
+      );
+      expect(calls.membershipEventIdIn(bAttempt), r'$b-call');
     });
 
     test('is never the one the call before it published', () async {
       final (calls, room) = await redialing();
-      final session = sessionFor(calls, room);
-      calls.adoptSessionForTest(session);
-      expect(await calls.announce(), r'$this-call', reason: 'precondition');
+      calls.adoptSessionForTest(
+        sessionFor(calls, room)..publishes = r'$a-call',
+      );
+      final aAttempt = calls.joinAttempt;
+      expect(await calls.announce(), r'$a-call', reason: 'precondition');
 
       // The next call in this room begins. It has published nothing of its own
-      // yet, and the id the call before it was given is not available to it.
-      calls.adoptSessionForTest(session);
+      // yet, and the id the call before it was given is not available to it --
+      // not to its own attempt, and not to the earlier call's either.
+      calls.adoptSessionForTest(sessionFor(calls, room));
+      final bAttempt = calls.joinAttempt;
 
       expect(
-        calls.membershipEventIdIn(room),
+        calls.membershipEventIdIn(bAttempt),
         isNull,
         reason:
             'an anchor is a fact about ONE call. Carrying it into the next one '
             'is the redial collision itself: two calls deriving the same key, '
             'of which only the first is ever written',
       );
+      expect(
+        calls.membershipEventIdIn(aAttempt),
+        isNull,
+        reason: 'and the call before it is gone; its attempt gets null too',
+      );
     });
 
-    test('is not answered for a room this call is not in', () async {
+    // F1. A stale ActiveCall reads at teardown for an anchor it never captured.
+    // If a redial has taken its place in the same room by then, a room-keyed
+    // read hands it the redial's id -- two calls keyed on one membership, the
+    // collision reached through the READ. Addressing the read to the attempt
+    // that owns the call is what refuses it.
+    test('is not answered to the call a redial has replaced', () async {
       final (calls, room) = await redialing();
-      calls.adoptSessionForTest(sessionFor(calls, room));
-      expect(await calls.announce(), r'$this-call', reason: 'precondition');
+      calls.adoptSessionForTest(
+        sessionFor(calls, room)..publishes = r'$a-call',
+      );
+      final aAttempt = calls.joinAttempt;
+      expect(
+        await calls.announce(),
+        r'$a-call',
+        reason: 'precondition: A live',
+      );
+
+      // Redial B in the SAME room, publishing its own id.
+      calls.adoptSessionForTest(
+        sessionFor(calls, room)..publishes = r'$b-call',
+      );
+      final bAttempt = calls.joinAttempt;
+      expect(
+        await calls.announce(),
+        r'$b-call',
+        reason: 'precondition: B live',
+      );
 
       expect(
-        calls.membershipEventIdIn(
-          Room(id: '!elsewhere:fakeServer.notExisting', client: calls.client),
-        ),
+        calls.membershipEventIdIn(aAttempt),
         isNull,
         reason:
-            'the room is the question being asked, not decoration: this call '
-            'identifies the call in ITS room, and answering for another room '
-            "would key that room's writers on a call in a different "
-            'conversation',
+            'A reads with its OWN attempt at teardown; the service holds B now, '
+            'and answering with B\'s id keys A\'s late transcript and card on '
+            'B\'s membership -- the collision, reached through the read',
+      );
+      expect(
+        calls.membershipEventIdIn(bAttempt),
+        r'$b-call',
+        reason: 'while B, the live call, still gets its own',
       );
     });
 
@@ -3154,7 +3198,7 @@ void main() {
             'so is the whole of the failure: the transcript writer logs and '
             'writes nothing rather than writing under a key it guessed',
       );
-      expect(calls.membershipEventIdIn(room), isNull);
+      expect(calls.membershipEventIdIn(calls.joinAttempt), isNull);
     });
 
     // The SDK writes the membership FIRST and only then runs the rest of
@@ -3170,7 +3214,7 @@ void main() {
 
         await expectLater(calls.announce(), throwsA(isA<StateError>()));
         expect(
-          calls.membershipEventIdIn(room),
+          calls.membershipEventIdIn(calls.joinAttempt),
           isNull,
           reason: 'the key is unknown, and a guessed one is worse than none',
         );

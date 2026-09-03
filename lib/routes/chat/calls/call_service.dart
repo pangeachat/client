@@ -82,7 +82,18 @@ class CallService {
   /// It carries the event id of the membership that enter published — and it
   /// is the future that RECORDS it, so anything that awaits this has the
   /// anchor in hand by the time the wait is over.
+  ///
+  /// Tagged with [_enteringOwner], the call that issued it, because an enter
+  /// OUTLIVES its call: a slow one can still be in flight when the next call
+  /// begins, and only its own call may adopt it. A call that finds an enter
+  /// belonging to an EARLIER call does not wait on it and does not take its id
+  /// — it publishes its own membership. See [announce].
   Future<String?>? _entering;
+
+  /// The [_anchorOwner] of the call that started [_entering], or null when no
+  /// enter is in flight. Cleared together with [_entering], the instant that
+  /// future settles.
+  int? _enteringOwner;
 
   /// Set when a leave was given up on. The session is released either way — a
   /// learner must not be locked out of calling by a failure they cannot see —
@@ -704,7 +715,7 @@ class CallService {
     return null;
   }
 
-  /// The membership event id that IDENTIFIES the call in hand, or null.
+  /// The membership event id that IDENTIFIES the call [attempt] began, or null.
   ///
   /// Read at the end of a call by a device that never held it: a device that
   /// joined a call already under way has no ring of its own to point at and
@@ -720,23 +731,30 @@ class CallService {
   /// transcript is absorbed as a duplicate of a call that had already ended,
   /// and its card is drawn with that call's duration.
   ///
-  /// ROOM STATE IS NOT ASKED, AND CANNOT BE — see
-  /// [_publishedMembershipEventId], which is what this reads instead.
+  /// ADDRESSED TO A CALL, NOT TO A ROOM. [attempt] is the [joinAttempt] the
+  /// caller's [ActiveCall] captured when it joined, and this answers only while
+  /// that attempt still owns the live call. Keying by room instead was the
+  /// collision reached through the READ: a call that is ending, and has not yet
+  /// captured its own anchor, retries this at teardown; if a REDIAL has taken
+  /// its place in the same room by then, a room-keyed read hands the ending
+  /// call the redial's id, and two calls key their transcript and card on one
+  /// membership. A stale attempt gets null and keeps whatever it already held.
+  ///
+  /// ROOM STATE IS NOT ASKED, AND CANNOT BE — see [_publishedMembershipEventId],
+  /// which is what this reads instead.
   ///
   /// SETTLED BY [announce], NEVER LATER. The id arrives with the write's own
   /// response, so there is no echo to wait for and nothing for a second look
   /// to find: once announcing has returned, a call that has no anchor is a
   /// call that published no membership, and asking again cannot change that.
-  String? membershipEventIdIn(Room room) {
-    // Answered only while the call this belongs to is still here. A call that
-    // has been torn down has no identity to give, and the anchor of the NEXT
-    // call is not this one's to hand out.
+  String? membershipEventIdIn(int? attempt) {
     if (_disposed || _voip == null) return null;
-    final session = _current;
-    // The room is the question, not a filter: this answers "what identifies
-    // the call in THAT room", and the one call this service tracks is either
-    // in it or it is not.
-    if (session == null || session.room.id != room.id) return null;
+    // Nothing to anchor once the live call is gone.
+    if (_current == null) return null;
+    // The identity gate. Only the attempt that owns the current call gets its
+    // id; the room is not asked, because the room cannot tell a call from the
+    // redial that replaced it in it — which is the whole of the bug this closes.
+    if (attempt == null || attempt != _anchorOwner) return null;
     return _publishedMembershipEventId;
   }
 
@@ -830,25 +848,35 @@ class CallService {
   /// to is carried separately, as `ActiveCall._rejoinAnchorId`.
   String? _publishedMembershipEventId;
 
-  /// Which call in this process the anchor belongs to.
+  /// The join attempt that owns the current call's anchor.
   ///
-  /// An `enter()` outlives the call that issued it: [retract] waits only
-  /// [_settleEnterWithin] for one and then leaves anyway, so a slow enter can
-  /// still be in flight when the next call begins — and [announce] joins an
-  /// enter it finds in flight rather than doubling it. Without this, the id
-  /// that enter finally hands back would be adopted by whichever call happened
-  /// to be current when it landed: the previous call's key on the new call's
-  /// transcript, which is the whole of what this change exists to stop.
+  /// ONE identity for the whole anchor, and it is the [joinAttempt] the owning
+  /// [ActiveCall] already holds. Every anchor path is addressed to a specific
+  /// call by comparing against this: the write in [_anchorOn], the read in
+  /// [membershipEventIdIn], and the entering-future scope in [announce]. There
+  /// is no second notion of call identity stacked beside it to drift.
   ///
-  /// A counter rather than the session object, because sessions are fetched BY
-  /// ROOM and a leave that failed part-way leaves the SDK's session in the
-  /// registry for the next join to reuse — so two calls can be the same object
-  /// and identity would say they were one call.
-  int _callsBegun = 0;
+  /// THE RULE THIS ENFORCES: a call reads, publishes, and awaits only its OWN
+  /// anchor. Neither a stale [ActiveCall] reading at teardown, nor a slow enter
+  /// landing late, nor a redial that reused the same room or the same SDK
+  /// session may be answered with — or hand over — a different call's identity.
+  ///
+  /// Set at [_markCallBegun], the instant a call becomes current, from
+  /// [_joinAttempt] (which [join] has already bumped for this call). An
+  /// `enter()` OUTLIVES the call that issued it — [retract] waits only
+  /// [_settleEnterWithin] and then leaves — so a slow enter, and a stale reader,
+  /// can both outlast the call; comparing their captured owner against this is
+  /// what refuses them.
+  ///
+  /// The attempt, not the session object: sessions are fetched BY ROOM and a
+  /// leave that failed part-way leaves the SDK's session in the registry for
+  /// the next join to reuse — so two calls can be the SAME object, and identity
+  /// by session would call them one.
+  int? _anchorOwner;
 
-  /// Takes the id [enter] published as this call's anchor, if it is still this
-  /// call's to take.
-  void _anchorOn(int call, String? published) {
+  /// Takes the id [enter] published as this call's anchor, if [owner] still owns
+  /// the current call.
+  void _anchorOn(int? owner, String? published) {
     if (published == null) {
       // A STATED FAILURE, NOT A GUESS. enter() returns null when it wrote no
       // membership at all — a leave already in flight on the session suppresses
@@ -857,7 +885,7 @@ class CallService {
       Logs().w('The join published no membership; this call has no anchor');
       return;
     }
-    if (call != _callsBegun) {
+    if (owner != _anchorOwner) {
       Logs().w(
         'An enter from an earlier call landed after this one began; its '
         "membership is not this call's to key on",
@@ -868,13 +896,13 @@ class CallService {
   }
 
   /// A call becomes the current one. It has published nothing yet, so it has
-  /// no membership of its own and no anchor to answer with — and it is a
-  /// different call from the last one, so nothing the last one is still
-  /// waiting on may answer for it.
+  /// no membership of its own and no anchor to answer with — and it takes a
+  /// fresh owner, so nothing the last call is still waiting on, and no stale
+  /// reader still holding the last call's attempt, may answer for it.
   void _markCallBegun(GroupCallSession session) {
     _current = session;
     _publishedMembershipEventId = null;
-    _callsBegun++;
+    _anchorOwner = _joinAttempt;
   }
 
   /// Calls arriving for this account, decided from the notification event.
@@ -1755,28 +1783,30 @@ class CallService {
       }
     }
 
-    // An enter already in flight is waited for, never doubled. The signal for
-    // "in flight" is this future, not the session's state: with the LiveKit
-    // backend enter() runs straight from an initialized state to `entered` and
-    // never publishes an intermediate `entering`, so reading the state to spot
-    // a running enter would spot nothing. Starting a second enter double-writes
-    // the membership; not waiting at all let a slow-but-fine enter land after
-    // the call had given up on it, so the call connected and never rang.
+    // A call adopts only its OWN enter. The signal for "in flight" is this
+    // future, not the session's state: with the LiveKit backend enter() runs
+    // straight from an initialized state to `entered` and never publishes an
+    // intermediate `entering`, so reading the state to spot a running enter
+    // would spot nothing.
     //
-    // The enter found here is not necessarily THIS call's. Two announces racing
-    // one session needs two live calls on this account, which the join guard
-    // refuses well before here — but an enter OUTLIVES its call, because
-    // retracting waits [_settleEnterWithin] for one and then leaves anyway, so
-    // the next call can arrive to find the last one's enter still out. Waiting
-    // for it is still right; adopting the membership it publishes is not, and
-    // [_callsBegun] is what tells the two apart.
-    final inFlight = _entering;
-    if (inFlight != null) {
-      // Awaited for the ordering, and it settles the anchor too: this IS the
-      // recording future, so when it belongs to this call the id is in hand by
-      // the time the wait is over, and when it belongs to an earlier one
-      // [_anchorOn] refuses it and this call is left with none.
-      await inFlight.timeout(_announceWithin);
+    // The enter found here is not necessarily this call's. An enter OUTLIVES
+    // its call — retracting waits [_settleEnterWithin] for one and then leaves —
+    // and sessions are fetched by room, so a REDIAL can arrive to find the
+    // previous call's enter still settling. Waiting on THAT and returning its
+    // result gave the new call the previous call's membership id, or — once
+    // [_anchorOn] refused it — no anchor at all, its whole transcript lost with
+    // nothing logged. So a foreign enter is neither awaited nor adopted: a new
+    // call publishes its OWN membership, or fails loudly. [_enteringOwner] is
+    // what tells this call's enter from an earlier one's.
+    final owner = _anchorOwner;
+    final ourEnter = (_entering != null && _enteringOwner == owner)
+        ? _entering
+        : null;
+    if (ourEnter != null) {
+      // This call's own enter is already running: a re-entrant announce, which
+      // waits for that enter rather than starting a second that would
+      // double-write the membership.
+      await ourEnter.timeout(_announceWithin);
     } else if (session.state != GroupCallState.entered) {
       // A leave that failed part-way can leave the SDK's session still entered,
       // and it is reused by the next join. Entering it again throws, which would
@@ -1789,18 +1819,14 @@ class CallService {
       // membership with nothing left tracking it — and this SDK's memberships
       // stand for minutes.
 
-      // WHICH call is entering, read before the enter is issued. The id comes
-      // back from the write and belongs to this call whenever it lands; if the
-      // call is over by then, it belongs to nobody. See [_callsBegun].
-      final call = _callsBegun;
-      // This is the moment this call acquires an identity at all — every read
-      // before it honestly has none. The recording is part of the future the
-      // service holds, so every waiter on it, here and in [retract] and in a
-      // second announce, sees the anchor rather than racing it.
+      // WHICH call is entering, captured with the write. The id comes back from
+      // it and belongs to this call whenever it lands; if a whole new call has
+      // begun by then, [_anchorOn] refuses it. See [_anchorOwner].
       final entering = _entering = session.enter().then((published) {
-        _anchorOn(call, published);
+        _anchorOn(owner, published);
         return published;
       });
+      _enteringOwner = owner;
       // Released when the enter itself finishes, NOT when this stops waiting
       // for it. Clearing it on the way out of a timeout let a retract go ahead
       // without waiting, and the leave could then be overtaken by an enter that
@@ -1809,7 +1835,10 @@ class CallService {
       unawaited(
         entering
             .whenComplete(() {
-              if (identical(_entering, entering)) _entering = null;
+              if (identical(_entering, entering)) {
+                _entering = null;
+                _enteringOwner = null;
+              }
             })
             // Null, and said out loud: a failed enter published no membership
             // this branch can name. The failure itself is not swallowed — the
@@ -1845,6 +1874,18 @@ class CallService {
         );
         rethrow;
       }
+    } else if (_publishedMembershipEventId == null) {
+      // The session is already entered, but by an enter this call is not
+      // tracking — one reused from an earlier call whose enter left it entered
+      // (a leave that failed part-way leaves it in the registry). This call can
+      // neither publish its own membership here (entering an entered session
+      // throws) nor adopt the earlier call's, so it has no anchor. Said out loud
+      // rather than returned as a silent null, per the no-silent-failures rule:
+      // a call that reaches recording keyless drops its whole transcript.
+      Logs().w(
+        'Announced into a session already entered by another call; this call '
+        'has no anchor of its own',
+      );
     }
     // A logout can land inside any of the waits above, and answering afterwards
     // would hand a call's identity to a service the account has already been
@@ -2090,7 +2131,13 @@ class CallService {
   /// Installs a joined session without going through the network join, so a
   /// test can exercise what retract does with one.
   @visibleForTesting
-  void adoptSessionForTest(GroupCallSession session) => _markCallBegun(session);
+  void adoptSessionForTest(GroupCallSession session) {
+    // A real [join] bumps the attempt before it marks the call begun; the test
+    // shortcut must too, so each adopted call takes a DISTINCT [_anchorOwner]
+    // and the per-call anchor binding is exercised rather than bypassed.
+    ++_joinAttempt;
+    _markCallBegun(session);
+  }
 
   @visibleForTesting
   bool get voipConstructed => _voip != null;

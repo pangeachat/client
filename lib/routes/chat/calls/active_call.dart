@@ -291,9 +291,9 @@ class ActiveCall extends ChangeNotifier {
   String? get membershipEventId {
     final known = _membershipEventId;
     if (known != null) return known;
-    final room = _room;
-    if (room == null) return null;
-    return _membershipEventId = calls.membershipEventIdIn(room);
+    // Addressed by the attempt THIS call owns, never by room: a redial that
+    // took our place in the same room must not answer our read with its id.
+    return _membershipEventId = calls.membershipEventIdIn(_joinAttempt);
   }
 
   ActiveCall({
@@ -1410,7 +1410,9 @@ class ActiveCall extends ChangeNotifier {
     if (_membershipEventId != null) return;
     final room = _room;
     if (room == null) return;
-    _membershipEventId = calls.membershipEventIdIn(room);
+    // The attempt THIS call owns, not the room: a stale read at teardown, once
+    // a redial holds the room, must come back null rather than the redial's id.
+    _membershipEventId = calls.membershipEventIdIn(_joinAttempt);
     // The third breadcrumb site, for the ordering the other two cannot cover:
     // a device that never held the anchor picks it up HERE, with the peer long
     // since noted. The drop fires wherever the LAST of its two facts lands.
@@ -1443,7 +1445,7 @@ class ActiveCall extends ChangeNotifier {
         _lateRing = null;
         return;
       }
-      _membershipEventId ??= calls.membershipEventIdIn(room);
+      _membershipEventId ??= calls.membershipEventIdIn(_joinAttempt);
       if (_membershipEventId == null) return;
       timer.cancel();
       _lateRing = null;
@@ -1456,7 +1458,7 @@ class ActiveCall extends ChangeNotifier {
   void lookForALateAnchorNow() {
     final room = _room;
     if (room == null) return;
-    _membershipEventId ??= calls.membershipEventIdIn(room);
+    _membershipEventId ??= calls.membershipEventIdIn(_joinAttempt);
     _ringOnceTheAnchorArrives();
   }
 
