@@ -4710,5 +4710,63 @@ void main() {
         );
       },
     );
+
+    test('a leaving device keeps captureHeld asserted through teardown, so an '
+        'in-flight open rolls back', () async {
+      final (call, calls, media, _) = await build();
+      calls.roster!.myJoin = (true, fakeJoinTime);
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      final id = '${calls.client.userID}:SIB';
+      // A participating sibling holds this device -> captureHeld true.
+      calls.roster!.attributes = {
+        id: {CallRoster.chosenAttribute: 'no'},
+      };
+      calls.devicesInCall = [calls.client.deviceID!, 'SIB'];
+      await pumpEventQueue();
+      expect(media.captureHeld, isTrue, reason: 'held by the sibling');
+      // The sibling claims: this device is chosen against and LEAVES.
+      calls.roster!.attributes = {
+        id: {CallRoster.chosenAttribute: 'yes'},
+      };
+      calls.roster!.recompute();
+      await pumpEventQueue();
+      await pumpEventQueue();
+      expect(call.outcome, CallOutcome.movedToOtherDevice);
+      expect(
+        media.captureHeld,
+        isTrue,
+        reason:
+            'a leaving device holds the gate through teardown, so a mic or '
+            'camera open in flight when the hold landed rolls back at its '
+            'post-await re-check instead of republishing on its way out',
+      );
+    });
+
+    test('the surviving device clears captureHeld on resume', () async {
+      final (call, calls, media, _) = await build();
+      calls.roster!.myJoin = (true, fakeJoinTime);
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      calls.roster!.attributes = {
+        '${calls.client.userID}:SIB': {CallRoster.chosenAttribute: 'no'},
+      };
+      calls.devicesInCall = [calls.client.deviceID!, 'SIB'];
+      await pumpEventQueue();
+      expect(media.captureHeld, isTrue, reason: 'held first');
+      // The sibling leaves: this device is the survivor and resumes.
+      calls.devicesInCall = [calls.client.deviceID!];
+      await pumpEventQueue();
+      expect(
+        media.captureHeld,
+        isFalse,
+        reason: 'only the survivor clears the gate, on its resume',
+      );
+      // The survivor is still live -- end it so its presence timer is cancelled.
+      await call.hangUp();
+      await pumpEventQueue();
+    });
   });
 }

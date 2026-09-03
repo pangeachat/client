@@ -2476,10 +2476,18 @@ class ActiveCall extends ChangeNotifier {
     // already false, so acting only when it is true would leave that stretch
     // believing it was still wanted.
     _wanted = false;
-    // The held gate is dropped as teardown begins, so nothing left of the call
-    // is refusing an open on a media object about to be released.
-    _mediaHeld = false;
-    media.captureHeld = false;
+    // The held gate is dropped ONLY for the survivor carrying on. A device that
+    // is LEAVING (chosen against, or a give-up) keeps it asserted through
+    // teardown, so a mic or camera open that was already IN FLIGHT when the hold
+    // landed still reads "held" at its post-await re-check and rolls back rather
+    // than republishing on a device on its way out -- the deeper TOCTOU the
+    // resume-path gate alone did not close. captureHeld's only reader is that
+    // open gate and the media is released moments later, so holding it has no
+    // other effect. carriedOn is false on every ownership-leave path.
+    if (carriedOn) {
+      _mediaHeld = false;
+      media.captureHeld = false;
+    }
 
     // The peer stops hearing us HERE, and NOTHING in the recording teardown may
     // hold it up — not the election handover, not the tap detach, not the
