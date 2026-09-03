@@ -18,6 +18,9 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
+import 'package:fluffychat/routes/chat/chat_details/menu_a11y_focus_stub.dart'
+    if (dart.library.js_interop) 'package:fluffychat/routes/chat/chat_details/menu_a11y_focus_web.dart';
+
 extension on ChatContextAction {
   bool enabled({required Room room, required Room? space}) {
     switch (this) {
@@ -105,19 +108,29 @@ void chatContextMenuAction(
       .where((v) => v.enabled(room: room, space: space))
       .length;
 
-  // Focus lands INSIDE the menu (#8767), via the accessible-dialog recipe:
-  // no focus moves at open at all — the route must not claim focus, since a
-  // claimed-but-empty scope reaches the web engine as a view-focus event
-  // with nothing DOM-focused, it falls back to focusing the flutter-view
-  // host, and VoiceOver latches onto the page root (verified against the
-  // engine's view_focus_binding). Then the first item is focused as one
-  // discrete, slightly delayed event, which screen readers follow
-  // reliably. Enter activates it via the enclosing item's InkWell; pointer
-  // users see no change — the focus highlight only renders in keyboard
-  // mode.
+  // Focus lands INSIDE the menu (#8767). The web engine focuses the first
+  // item's DOM element directly (SemanticRouteBase.focusAsRouteDefault) —
+  // the only path with no intermediate hop — but ONLY when the semantics
+  // update introducing the route contains no focused node. So: release
+  // focus before opening (with the route itself claiming none), which
+  // arms that path; VoiceOver then lands straight on the first item.
+  // Anything else — a claimed-but-empty route scope, or moving framework
+  // focus while DOM focus sits outside the app — reaches the engine as a
+  // view-focus event, whose fallback focuses the flutter-view host and
+  // throws VoiceOver to the browser window (verified against the engine's
+  // view_focus_binding, and live). The 300ms focus below is the backup
+  // for platforms without the engine's route-default (and for keyboard
+  // parity); by then DOM focus is already inside the menu, so it cannot
+  // re-trigger the host fallback. On dismiss, focus returns to where it
+  // was.
+  final previousFocus = primaryFocus;
+  previousFocus?.unfocus();
   final firstItemFocus = FocusNode(skipTraversal: true);
   Future.delayed(const Duration(milliseconds: 300), () {
     if (firstItemFocus.context?.mounted ?? false) {
+      // DOM first (web): puts activeElement inside the menu so the framework
+      // move below cannot trigger the engine's flutter-view host fallback.
+      domFocusFirstMenuItem();
       firstItemFocus.requestFocus();
     }
   });
@@ -281,7 +294,13 @@ void chatContextMenuAction(
   );
 
   firstItemFocus.dispose();
-  if (action == null) return;
+  if (action == null) {
+    // Dismissed — hand focus back to the control that opened the menu.
+    if (previousFocus != null && previousFocus.context != null) {
+      previousFocus.requestFocus();
+    }
+    return;
+  }
 
   switch (action) {
     case ChatContextAction.open:
