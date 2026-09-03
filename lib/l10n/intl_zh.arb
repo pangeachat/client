@@ -9862,5 +9862,6 @@
     "mapAttributionLabel": "OpenStreetMap 贡献者，版权和许可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
-    "showMoreOptionsHint": "显示更多选项"
+    "showMoreOptionsHint": "显示更多选项",
+    "readingAssistanceLabel": "阅读辅助"
 }

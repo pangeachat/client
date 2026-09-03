@@ -9862,5 +9862,6 @@
     "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
     "seeAll": "Переглянути всі",
     "seeAllSection": "Переглянути всі {section}",
-    "showMoreOptionsHint": "показати більше опцій"
+    "showMoreOptionsHint": "показати більше опцій",
+    "readingAssistanceLabel": "Допомога в читанні"
 }

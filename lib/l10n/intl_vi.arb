@@ -7154,5 +7154,6 @@
     "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
     "seeAll": "Xem tất cả",
     "seeAllSection": "Xem tất cả {section}",
-    "showMoreOptionsHint": "hiện thêm tùy chọn"
+    "showMoreOptionsHint": "hiện thêm tùy chọn",
+    "readingAssistanceLabel": "Hỗ trợ đọc"
 }

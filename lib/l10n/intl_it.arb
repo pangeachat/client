@@ -9935,5 +9935,6 @@
     "mapAttributionLabel": "Contributori OpenStreetMap, copyright e licenza",
     "seeAll": "Vedi tutto",
     "seeAllSection": "Vedi tutto {section}",
-    "showMoreOptionsHint": "mostra più opzioni"
+    "showMoreOptionsHint": "mostra più opzioni",
+    "readingAssistanceLabel": "Assistenza alla lettura"
 }

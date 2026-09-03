@@ -9989,5 +9989,6 @@
     "mapAttributionLabel": "Col·laboradors d'OpenStreetMap, drets d'autor i llicència",
     "seeAll": "Veure-ho tot",
     "seeAllSection": "Veure-ho tot a {section}",
-    "showMoreOptionsHint": "mostrar més opcions"
+    "showMoreOptionsHint": "mostrar més opcions",
+    "readingAssistanceLabel": "Ajuda a la lectura"
 }

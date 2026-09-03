@@ -9950,5 +9950,6 @@
     "mapAttributionLabel": "مشارکت‌کنندگان OpenStreetMap، حق تکثیر و مجوز",
     "seeAll": "مشاهده همه",
     "seeAllSection": "مشاهده همه {section}",
-    "showMoreOptionsHint": "نمایش گزینه‌های بیشتر"
+    "showMoreOptionsHint": "نمایش گزینه‌های بیشتر",
+    "readingAssistanceLabel": "کمک خواندن"
 }

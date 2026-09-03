@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap iştirakçıları, müəllif hüquqları və lisenziya",
     "seeAll": "Hamısına baxın",
     "seeAllSection": "Bütün {section} baxın",
-    "showMoreOptionsHint": "daha çox seçim göstər"
+    "showMoreOptionsHint": "daha çox seçim göstər",
+    "readingAssistanceLabel": "Oxumağa kömək"
 }

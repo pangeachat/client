@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Abanikeli be-OpenStreetMap, ilungelo lokushicilela kunye nelayisensi",
     "seeAll": "Bona konke",
     "seeAllSection": "Bona konke {section}",
-    "showMoreOptionsHint": "bonisa iinketho ezininzi"
+    "showMoreOptionsHint": "bonisa iinketho ezininzi",
+    "readingAssistanceLabel": "Ukuncedisa ekufundeni"
 }

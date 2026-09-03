@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Соработници на OpenStreetMap, авторски права и лиценца",
     "seeAll": "Видете ги сите",
     "seeAllSection": "Видете ги сите {section}",
-    "showMoreOptionsHint": "покажи повеќе опции"
+    "showMoreOptionsHint": "покажи повеќе опции",
+    "readingAssistanceLabel": "Помош при читање"
 }

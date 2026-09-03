@@ -9899,5 +9899,6 @@
     "mapAttributionLabel": "OpenStreetMapin tekijät, tekijänoikeudet ja lisenssi",
     "seeAll": "Näytä kaikki",
     "seeAllSection": "Näytä kaikki {section}",
-    "showMoreOptionsHint": "näytä lisää vaihtoehtoja"
+    "showMoreOptionsHint": "näytä lisää vaihtoehtoja",
+    "readingAssistanceLabel": "Lukuapu"
 }

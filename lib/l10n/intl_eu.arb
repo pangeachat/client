@@ -9862,5 +9862,6 @@
     "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
     "seeAll": "Ikusi guztiak",
     "seeAllSection": "Ikusi {section} guztiak",
-    "showMoreOptionsHint": "aukera gehiago erakutsi"
+    "showMoreOptionsHint": "aukera gehiago erakutsi",
+    "readingAssistanceLabel": "Irakurketa-laguntza"
 }

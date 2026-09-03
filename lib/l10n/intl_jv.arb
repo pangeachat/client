@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta lan lisensi",
     "seeAll": "Deleng kabeh",
     "seeAllSection": "Deleng kabeh {section}",
-    "showMoreOptionsHint": "tampilake opsi liyane"
+    "showMoreOptionsHint": "tampilake opsi liyane",
+    "readingAssistanceLabel": "Bantuan maca"
 }

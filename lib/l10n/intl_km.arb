@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "អ្នករួមចំណែក OpenStreetMap, ការរក្សាសិទ្ធិ និងអាជ្ញាប័ណ្ណ",
     "seeAll": "មើលទាំងអស់",
     "seeAllSection": "មើល {section} ទាំងអស់",
-    "showMoreOptionsHint": "បង្ហាញជម្រើសច្រើនទៀត"
+    "showMoreOptionsHint": "បង្ហាញជម្រើសច្រើនទៀត",
+    "readingAssistanceLabel": "ជំនួយការអាន"
 }

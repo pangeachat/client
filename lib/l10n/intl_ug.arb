@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap تۆھپىكارلىرى، نەشر ھوقۇقى ۋە ئىجازەتنامىسى",
     "seeAll": "ھەممىنى كۆرۈش",
     "seeAllSection": "بارلىق {section}نى كۆرۈش",
-    "showMoreOptionsHint": "تېخىمۇ كۆپ تاللاشلارنى كۆرسەت"
+    "showMoreOptionsHint": "تېخىمۇ كۆپ تاللاشلارنى كۆرسەت",
+    "readingAssistanceLabel": "ئوقۇش ياردىمى"
 }

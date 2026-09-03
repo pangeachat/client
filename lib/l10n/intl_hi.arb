@@ -10494,5 +10494,6 @@
     "mapAttributionLabel": "OpenStreetMap योगदानकर्ता, कॉपीराइट और लाइसेंस",
     "seeAll": "सभी देखें",
     "seeAllSection": "सभी {section} देखें",
-    "showMoreOptionsHint": "और विकल्प दिखाएँ"
+    "showMoreOptionsHint": "और विकल्प दिखाएँ",
+    "readingAssistanceLabel": "पठन सहायता"
 }

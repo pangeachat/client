@@ -2935,6 +2935,15 @@ class ChatController extends State<ChatPageWithRoom>
 
     inputFocus.unfocus();
 
+    final toolbarDisplayDetails = CenteredOverlayDisplayDetails(
+      onDismiss: clearSelectedEvents,
+      blurBackground: true,
+      backgroundColor: Colors.black,
+      overlayKey: "message_toolbar_overlay",
+      bypassBlockingOverlays: bypassBlockingOverlays,
+      modalSemanticsLabel: L10n.of(context).readingAssistanceLabel,
+    );
+
     if (delay != null) {
       OverlayUtil.showOverlay(
         context: context,
@@ -2961,25 +2970,13 @@ class ChatController extends State<ChatPageWithRoom>
       OverlayUtil.showOverlay(
         context: context,
         child: overlayEntry,
-        displayDetails: CenteredOverlayDisplayDetails(
-          onDismiss: clearSelectedEvents,
-          blurBackground: true,
-          backgroundColor: Colors.black,
-          overlayKey: "message_toolbar_overlay",
-          bypassBlockingOverlays: bypassBlockingOverlays,
-        ),
+        displayDetails: toolbarDisplayDetails,
       );
     } else {
       OverlayUtil.showOverlay(
         context: context,
         child: overlayEntry,
-        displayDetails: CenteredOverlayDisplayDetails(
-          onDismiss: clearSelectedEvents,
-          blurBackground: true,
-          backgroundColor: Colors.black,
-          overlayKey: "message_toolbar_overlay",
-          bypassBlockingOverlays: bypassBlockingOverlays,
-        ),
+        displayDetails: toolbarDisplayDetails,
       );
     }
 

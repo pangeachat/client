@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap þátttakendur, höfundarréttur og leyfi",
     "seeAll": "Sjá allt",
     "seeAllSection": "Sjá allt {section}",
-    "showMoreOptionsHint": "sýna fleiri valkosti"
+    "showMoreOptionsHint": "sýna fleiri valkosti",
+    "readingAssistanceLabel": "Lestraraðstoð"
 }

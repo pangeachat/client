@@ -10798,5 +10798,6 @@
     "mapAttributionLabel": "Contribuentes de OpenStreetMap, derectos de autor e licentia",
     "seeAll": "Vider tote",
     "seeAllSection": "Vider tote {section}",
-    "showMoreOptionsHint": "monstrar plus optiones"
+    "showMoreOptionsHint": "monstrar plus optiones",
+    "readingAssistanceLabel": "Assistenta de lectura"
 }

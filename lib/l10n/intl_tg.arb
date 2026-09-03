@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Мусоидаткунандагони OpenStreetMap, ҳуқуқи муаллифӣ ва иҷозатнома",
     "seeAll": "Ҳамаро бинед",
     "seeAllSection": "Ҳамаи {section}-ро бинед",
-    "showMoreOptionsHint": "имконоти бештарро нишон диҳед"
+    "showMoreOptionsHint": "имконоти бештарро нишон диҳед",
+    "readingAssistanceLabel": "Кӯмаки хониш"
 }

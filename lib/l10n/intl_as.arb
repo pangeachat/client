@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap অৱদানকাৰী, স্বত্বাধিকাৰ আৰু অনুজ্ঞাপত্ৰ",
     "seeAll": "সকলো চাওক",
     "seeAllSection": "সকলো চাওক {section}",
-    "showMoreOptionsHint": "অধিক বিকল্প দেখুৱাওক"
+    "showMoreOptionsHint": "অধিক বিকল্প দেখুৱাওক",
+    "readingAssistanceLabel": "পঢ়াত সহায়"
 }

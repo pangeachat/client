@@ -9965,5 +9965,6 @@
     "mapAttributionLabel": "OpenStreetMap közreműködők, szerzői jogok és licenc",
     "seeAll": "Összes megtekintése",
     "seeAllSection": "Összes {section} megtekintése",
-    "showMoreOptionsHint": "további lehetőségek megjelenítése"
+    "showMoreOptionsHint": "további lehetőségek megjelenítése",
+    "readingAssistanceLabel": "Olvasási segítség"
 }

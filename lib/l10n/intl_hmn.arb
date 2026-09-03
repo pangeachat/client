@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap cov neeg koom tes, txoj cai luam tawm thiab daim ntawv tso cai",
     "seeAll": "Saib tag nrho",
     "seeAllSection": "Saib tag nrho {section}",
-    "showMoreOptionsHint": "qhia ntau txoj kev xaiv ntxiv"
+    "showMoreOptionsHint": "qhia ntau txoj kev xaiv ntxiv",
+    "readingAssistanceLabel": "Kev pab nyeem ntawv"
 }

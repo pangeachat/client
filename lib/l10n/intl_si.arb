@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap දායකයින්, ප්‍රකාශන හිමිකම සහ බලපත්‍රය",
     "seeAll": "සියල්ල බලන්න",
     "seeAllSection": "සියලු {section} බලන්න",
-    "showMoreOptionsHint": "තවත් විකල්ප පෙන්වන්න"
+    "showMoreOptionsHint": "තවත් විකල්ප පෙන්වන්න",
+    "readingAssistanceLabel": "කියවීමට සහාය"
 }

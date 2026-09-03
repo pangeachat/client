@@ -9873,5 +9873,6 @@
     "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
     "seeAll": "Féach ar fad",
     "seeAllSection": "Féach ar {section} ar fad",
-    "showMoreOptionsHint": "taispeáin tuilleadh roghanna"
+    "showMoreOptionsHint": "taispeáin tuilleadh roghanna",
+    "readingAssistanceLabel": "Cúnamh léitheoireachta"
 }

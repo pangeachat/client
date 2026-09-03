@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Luchd-tabhartais OpenStreetMap, dlighe-sgrìobhaidh agus cead",
     "seeAll": "Faic na h-uile",
     "seeAllSection": "Faic na h-uile {section}",
-    "showMoreOptionsHint": "seall barrachd roghainnean"
+    "showMoreOptionsHint": "seall barrachd roghainnean",
+    "readingAssistanceLabel": "Taic leughaidh"
 }

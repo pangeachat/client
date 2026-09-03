@@ -10055,5 +10055,6 @@
     "mapAttributionLabel": "OpenStreetMap 기여자, 저작권 및 라이선스",
     "seeAll": "모두 보기",
     "seeAllSection": "{section} 모두 보기",
-    "showMoreOptionsHint": "더 많은 옵션 보기"
+    "showMoreOptionsHint": "더 많은 옵션 보기",
+    "readingAssistanceLabel": "읽기 지원"
 }

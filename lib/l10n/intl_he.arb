@@ -10776,5 +10776,6 @@
     "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
     "seeAll": "הצג הכל",
     "seeAllSection": "הצג הכל {section}",
-    "showMoreOptionsHint": "הצג אפשרויות נוספות"
+    "showMoreOptionsHint": "הצג אפשרויות נוספות",
+    "readingAssistanceLabel": "סיוע בקריאה"
 }

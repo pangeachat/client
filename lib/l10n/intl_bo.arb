@@ -9473,5 +9473,6 @@
     "mapAttributionLabel": "OpenStreetMap ལ་མཉམ་ཞུགས་བྱེད་མཁན་ཚོ། བདག་དབང་དང་ཆོག་མཆན།",
     "seeAll": "ཚང་མ་གཟིགས།",
     "seeAllSection": "{section} ཚང་མ་གཟིགས།",
-    "showMoreOptionsHint": "འདེམས་ངོ་མང་ཙམ་བསྟན་"
+    "showMoreOptionsHint": "འདེམས་ངོ་མང་ཙམ་བསྟན་",
+    "readingAssistanceLabel": "ཀློག་རོགས་"
 }

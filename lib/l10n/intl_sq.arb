@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Kontribuesit e OpenStreetMap, të drejtat e autorit dhe licenca",
     "seeAll": "Shiko të gjitha",
     "seeAllSection": "Shiko të gjitha {section}",
-    "showMoreOptionsHint": "shfaq më shumë opsione"
+    "showMoreOptionsHint": "shfaq më shumë opsione",
+    "readingAssistanceLabel": "Ndihmë për leximin"
 }

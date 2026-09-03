@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Masu ba da gudummawa na OpenStreetMap, haƙƙin mallaka da lasisi",
     "seeAll": "Duba duka",
     "seeAllSection": "Duba duka {section}",
-    "showMoreOptionsHint": "nuna ƙarin zaɓuɓɓuka"
+    "showMoreOptionsHint": "nuna ƙarin zaɓuɓɓuka",
+    "readingAssistanceLabel": "Taimakon karatu"
 }

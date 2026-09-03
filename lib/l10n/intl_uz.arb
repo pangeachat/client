@@ -9866,5 +9866,6 @@
     "mapAttributionLabel": "OpenStreetMap ishtirokchilari, mualliflik huquqi va litsenziyasi",
     "seeAll": "Hammasini koʻrish",
     "seeAllSection": "Barcha {section}ni koʻrish",
-    "showMoreOptionsHint": "koʻproq variantlarni koʻrsatish"
+    "showMoreOptionsHint": "koʻproq variantlarni koʻrsatish",
+    "readingAssistanceLabel": "O‘qishga yordam"
 }

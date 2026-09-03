@@ -8081,5 +8081,6 @@
     "mapAttributionLabel": "Colaboradores de OpenStreetMap, derechos de autor y licencia",
     "seeAll": "Ver todo",
     "seeAllSection": "Ver todo {section}",
-    "showMoreOptionsHint": "mostrar más opciones"
+    "showMoreOptionsHint": "mostrar más opciones",
+    "readingAssistanceLabel": "Ayuda de lectura"
 }

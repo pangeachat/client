@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Wachangiaji wa OpenStreetMap, hakimiliki na leseni",
     "seeAll": "Tazama zote",
     "seeAllSection": "Tazama {section} zote",
-    "showMoreOptionsHint": "onyesha chaguo zaidi"
+    "showMoreOptionsHint": "onyesha chaguo zaidi",
+    "readingAssistanceLabel": "Usaidizi wa kusoma"
 }

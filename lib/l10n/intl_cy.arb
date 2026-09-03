@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
     "seeAll": "Gweld y cyfan",
     "seeAllSection": "Gweld pob {section}",
-    "showMoreOptionsHint": "dangos mwy o opsiynau"
+    "showMoreOptionsHint": "dangos mwy o opsiynau",
+    "readingAssistanceLabel": "Cymorth darllen"
 }

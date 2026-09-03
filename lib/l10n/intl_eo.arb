@@ -10807,5 +10807,6 @@
     "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
     "seeAll": "Vidi ĉion",
     "seeAllSection": "Vidi ĉion en {section}",
-    "showMoreOptionsHint": "montri pliajn opciojn"
+    "showMoreOptionsHint": "montri pliajn opciojn",
+    "readingAssistanceLabel": "Leghelpo"
 }

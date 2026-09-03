@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Mpanome anjara OpenStreetMap, zon'ny mpamorona ary fahazoan-dàlana",
     "seeAll": "Jereo daholo",
     "seeAllSection": "Jereo daholo ny {section}",
-    "showMoreOptionsHint": "asehoy safidy bebe kokoa"
+    "showMoreOptionsHint": "asehoy safidy bebe kokoa",
+    "readingAssistanceLabel": "Fanampiana amin'ny famakiana"
 }

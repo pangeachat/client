@@ -21,6 +21,15 @@ sealed class OverlayDisplayDetails {
   /// areas and must stay click-through.
   final bool blockPointerThrough;
 
+  /// Names the overlay as a modal layer to assistive tech (#8783). Everything
+  /// painted behind it in the same panel drops out of the semantics tree, the
+  /// backdrop becomes a "Dismiss" control, and the content is a named route
+  /// scope — the shape a `ModalRoute` publishes — so a screen reader moves
+  /// into the overlay when it opens and sees nothing else until it closes.
+  /// Null (the default) for overlays that float over content the user is
+  /// still browsing: word cards, popups, animations.
+  final String? modalSemanticsLabel;
+
   final bool canPop;
 
   final VoidCallback? onDismiss;
@@ -36,6 +45,7 @@ sealed class OverlayDisplayDetails {
     this.closePrevOverlay = true,
     this.ignorePointer = false,
     this.blockPointerThrough = false,
+    this.modalSemanticsLabel,
     this.canPop = true,
     this.onDismiss,
   });
@@ -65,6 +75,7 @@ class TransformOverlayDisplayDetails extends OverlayDisplayDetails {
     super.closePrevOverlay = true,
     super.ignorePointer = false,
     super.blockPointerThrough = false,
+    super.modalSemanticsLabel,
     super.canPop = true,
     super.onDismiss,
   });
@@ -89,6 +100,7 @@ class TransformOverlayDisplayDetails extends OverlayDisplayDetails {
     closePrevOverlay: closePrevOverlay,
     ignorePointer: ignorePointer,
     blockPointerThrough: blockPointerThrough,
+    modalSemanticsLabel: modalSemanticsLabel,
     canPop: canPop,
     onDismiss: onDismiss,
   );
@@ -106,6 +118,7 @@ class CenteredOverlayDisplayDetails extends OverlayDisplayDetails {
     super.closePrevOverlay = true,
     super.ignorePointer = false,
     super.blockPointerThrough = false,
+    super.modalSemanticsLabel,
     super.canPop = true,
     super.onDismiss,
   });
@@ -123,6 +136,7 @@ class TopOverlayDisplayDetails extends OverlayDisplayDetails {
     super.closePrevOverlay = true,
     super.ignorePointer = false,
     super.blockPointerThrough = false,
+    super.modalSemanticsLabel,
     super.canPop = true,
     super.onDismiss,
   });
@@ -156,6 +170,7 @@ class PositionedOverlayDisplayDetails extends TransformOverlayDisplayDetails {
     super.closePrevOverlay = true,
     super.ignorePointer = false,
     super.blockPointerThrough = false,
+    super.modalSemanticsLabel,
     super.canPop = true,
     super.onDismiss,
   });

@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "የOpenStreetMap አስተዋፅዖ አድራጊዎች፣ የቅጂ መብት እና ፈቃድ",
     "seeAll": "ሁሉንም ይመልከቱ",
     "seeAllSection": "ሁሉንም {section} ይመልከቱ",
-    "showMoreOptionsHint": "ተጨማሪ አማራጮችን አሳይ"
+    "showMoreOptionsHint": "ተጨማሪ አማራጮችን አሳይ",
+    "readingAssistanceLabel": "የንባብ እገዛ"
 }

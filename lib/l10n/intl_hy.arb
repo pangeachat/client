@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap-ի մասնակիցներ, հեղինակային իրավունք և լիցենզիա",
     "seeAll": "Տեսնել բոլորը",
     "seeAllSection": "Տեսնել բոլոր {section}",
-    "showMoreOptionsHint": "ցուցադրել այլ ընտրանքներ"
+    "showMoreOptionsHint": "ցուցադրել այլ ընտրանքներ",
+    "readingAssistanceLabel": "Ընթերցանության աջակցություն"
 }

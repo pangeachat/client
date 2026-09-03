@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap-meiwurkers, copyright en lisinsje",
     "seeAll": "Alles sjen",
     "seeAllSection": "Alles sjen yn {section}",
-    "showMoreOptionsHint": "mear opsjes sjen litte"
+    "showMoreOptionsHint": "mear opsjes sjen litte",
+    "readingAssistanceLabel": "Lêshulp"
 }

@@ -10819,5 +10819,6 @@
     "mapAttributionLabel": "OpenStreetMap 貢獻者、版權及許可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
-    "showMoreOptionsHint": "顯示更多選項"
+    "showMoreOptionsHint": "顯示更多選項",
+    "readingAssistanceLabel": "閱讀輔助"
 }

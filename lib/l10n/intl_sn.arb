@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Vabatsiri veOpenStreetMap, kodzero yekukopa uye rezinesi",
     "seeAll": "Ona zvese",
     "seeAllSection": "Ona zvese zve {section}",
-    "showMoreOptionsHint": "ratidza zvimwe zvingasarudzwa"
+    "showMoreOptionsHint": "ratidza zvimwe zvingasarudzwa",
+    "readingAssistanceLabel": "Rubatsiro rwekuverenga"
 }

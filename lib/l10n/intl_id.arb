@@ -9935,5 +9935,6 @@
     "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta, dan lisensi",
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
-    "showMoreOptionsHint": "tampilkan opsi lainnya"
+    "showMoreOptionsHint": "tampilkan opsi lainnya",
+    "readingAssistanceLabel": "Bantuan membaca"
 }

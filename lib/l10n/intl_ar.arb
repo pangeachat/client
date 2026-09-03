@@ -10168,5 +10168,6 @@
     "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
     "seeAll": "مشاهدة الكل",
     "seeAllSection": "مشاهدة كل {section}",
-    "showMoreOptionsHint": "عرض المزيد من الخيارات"
+    "showMoreOptionsHint": "عرض المزيد من الخيارات",
+    "readingAssistanceLabel": "مساعدة القراءة"
 }

@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'dart:ui' as ui show SemanticsHitTestBehavior;
+import 'dart:ui' as ui show SemanticsHitTestBehavior, SemanticsRole;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -49,42 +49,73 @@ class OverlayUtil {
             )
           : child;
 
+      final String? modalLabel = displayDetails.modalSemanticsLabel;
       final OverlayEntry entry = OverlayEntry(
-        builder: (_) => Stack(
-          children: [
-            if (displayDetails.backDropToDismiss)
-              IgnorePointer(
-                ignoring: displayDetails.ignorePointer,
-                child: TransparentBackdrop(
-                  backgroundColor: displayDetails.backgroundColor,
-                  onDismiss: displayDetails.onDismiss,
-                  blurBackground: displayDetails.blurBackground,
+        builder: (context) {
+          final Widget layers = Stack(
+            children: [
+              if (displayDetails.backDropToDismiss)
+                IgnorePointer(
+                  ignoring: displayDetails.ignorePointer,
+                  child: TransparentBackdrop(
+                    backgroundColor: displayDetails.backgroundColor,
+                    onDismiss: displayDetails.onDismiss,
+                    blurBackground: displayDetails.blurBackground,
+                    dismissLabel: modalLabel == null
+                        ? null
+                        : MaterialLocalizations.of(
+                            context,
+                          ).modalBarrierDismissLabel,
+                  ),
                 ),
-              ),
-            switch (displayDetails) {
-              TransformOverlayDisplayDetails(
-                transformTargetId: final targetId,
-                targetAnchor: final targetAnchor,
-                followerAnchor: final followerAnchor,
-                offset: final offset,
-              ) =>
-                CompositedTransformFollower(
-                  targetAnchor: targetAnchor,
-                  followerAnchor: followerAnchor,
-                  link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
-                  showWhenUnlinked: false,
-                  offset: offset ?? Offset.zero,
+              switch (displayDetails) {
+                TransformOverlayDisplayDetails(
+                  transformTargetId: final targetId,
+                  targetAnchor: final targetAnchor,
+                  followerAnchor: final followerAnchor,
+                  offset: final offset,
+                ) =>
+                  CompositedTransformFollower(
+                    targetAnchor: targetAnchor,
+                    followerAnchor: followerAnchor,
+                    link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
+                    showWhenUnlinked: false,
+                    offset: offset ?? Offset.zero,
+                    child: positionedChild,
+                  ),
+                CenteredOverlayDisplayDetails() => CenteredOverlayWidget(
                   child: positionedChild,
                 ),
-              CenteredOverlayDisplayDetails() => CenteredOverlayWidget(
-                child: positionedChild,
-              ),
-              TopOverlayDisplayDetails() => TopOverlayWidget(
-                child: positionedChild,
-              ),
-            },
-          ],
-        ),
+                TopOverlayDisplayDetails() => TopOverlayWidget(
+                  child: positionedChild,
+                ),
+              },
+            ],
+          );
+          if (modalLabel == null) return layers;
+
+          // A modal overlay publishes what a ModalRoute does (#8783):
+          // BlockSemantics drops everything painted before it up to the
+          // panel's named group (#8459), and the whole overlay — backdrop and
+          // content — is one named dialog scope, the shape every platform's
+          // screen reader reads as "a dialog opened, move in". The backdrop
+          // sits INSIDE the scope so the named "Dismiss" control is the
+          // dialog's first stop: on web the engine lands focus on the first
+          // descendant that takes it, and the content's scroll view claims
+          // that without focusing anything. explicitChildNodes keeps the
+          // overlay's own text from being absorbed into its name.
+          return BlockSemantics(
+            child: Semantics(
+              container: true,
+              role: ui.SemanticsRole.dialog,
+              scopesRoute: true,
+              namesRoute: true,
+              explicitChildNodes: true,
+              label: modalLabel,
+              child: layers,
+            ),
+          );
+        },
       );
 
       return MatrixState.pAnyState.openOverlay(

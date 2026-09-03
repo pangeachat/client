@@ -9862,5 +9862,6 @@
     "mapAttributionLabel": "OpenStreetMap-medewerkers, auteursrecht en licentie",
     "seeAll": "Alles weergeven",
     "seeAllSection": "Alle {section} weergeven",
-    "showMoreOptionsHint": "meer opties weergeven"
+    "showMoreOptionsHint": "meer opties weergeven",
+    "readingAssistanceLabel": "Leeshulp"
 }

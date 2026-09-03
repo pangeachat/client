@@ -10811,5 +10811,6 @@
     "mapAttributionLabel": "OpenStreetMap saradnici, autorska prava i licenca",
     "seeAll": "Pogledaj sve",
     "seeAllSection": "Pogledaj sve {section}",
-    "showMoreOptionsHint": "prikaži više opcija"
+    "showMoreOptionsHint": "prikaži više opcija",
+    "readingAssistanceLabel": "Pomoć pri čitanju"
 }

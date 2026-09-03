@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Kontributuri, drittijiet tal-awtur u liċenzja ta' OpenStreetMap",
     "seeAll": "Ara kollox",
     "seeAllSection": "Ara kollox {section}",
-    "showMoreOptionsHint": "uri aktar għażliet"
+    "showMoreOptionsHint": "uri aktar għażliet",
+    "readingAssistanceLabel": "Għajnuna fil-qari"
 }

@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "د OpenStreetMap مرسته کوونکي، د چاپ حق او جواز",
     "seeAll": "ټول وګورئ",
     "seeAllSection": "ټول {section} وګورئ",
-    "showMoreOptionsHint": "نور انتخابونه وښایاست"
+    "showMoreOptionsHint": "نور انتخابونه وښایاست",
+    "readingAssistanceLabel": "د لوستلو مرسته"
 }

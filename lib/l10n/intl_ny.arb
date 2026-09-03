@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Othandizira a OpenStreetMap, umwini ndi chilolezo",
     "seeAll": "Onani zonse",
     "seeAllSection": "Onani zonse {section}",
-    "showMoreOptionsHint": "onetsani zosankha zambiri"
+    "showMoreOptionsHint": "onetsani zosankha zambiri",
+    "readingAssistanceLabel": "Thandizo lakuwerenga"
 }

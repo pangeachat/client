@@ -10643,5 +10643,6 @@
     "mapAttributionLabel": "„OpenStreetMap“ bendradarbiai, autorių teisės ir licencija",
     "seeAll": "Žr. visus",
     "seeAllSection": "Žr. visus {section}",
-    "showMoreOptionsHint": "rodyti daugiau parinkčių"
+    "showMoreOptionsHint": "rodyti daugiau parinkčių",
+    "readingAssistanceLabel": "Skaitymo pagalba"
 }

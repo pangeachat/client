@@ -9859,5 +9859,6 @@
     "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
     "seeAll": "Vaata kõiki",
     "seeAllSection": "Vaata kõiki {section}",
-    "showMoreOptionsHint": "näita rohkem valikuid"
+    "showMoreOptionsHint": "näita rohkem valikuid",
+    "readingAssistanceLabel": "Lugemisabi"
 }

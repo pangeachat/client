@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap қатысушылары, авторлық құқық және лицензия",
     "seeAll": "Барлығын қарау",
     "seeAllSection": "Барлық {section} қарау",
-    "showMoreOptionsHint": "қосымша опцияларды көрсету"
+    "showMoreOptionsHint": "қосымша опцияларды көрсету",
+    "readingAssistanceLabel": "Оқуға көмек"
 }

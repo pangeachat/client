@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "بەشداربووانی OpenStreetMap، مافی لەبەرگرتنەوە و مۆڵەت",
     "seeAll": "هەمووی ببینە",
     "seeAllSection": "هەموو {section} ببینە",
-    "showMoreOptionsHint": "پیشاندانی بژاردەی زیاتر"
+    "showMoreOptionsHint": "پیشاندانی بژاردەی زیاتر",
+    "readingAssistanceLabel": "یارمەتی خوێندنەوە"
 }

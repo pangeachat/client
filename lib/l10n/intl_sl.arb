@@ -10807,5 +10807,6 @@
     "mapAttributionLabel": "Sodelavci OpenStreetMap, avtorske pravice in licenca",
     "seeAll": "Poglej vse",
     "seeAllSection": "Poglej vse {section}",
-    "showMoreOptionsHint": "pokaži več možnosti"
+    "showMoreOptionsHint": "pokaži več možnosti",
+    "readingAssistanceLabel": "Pomoč pri branju"
 }

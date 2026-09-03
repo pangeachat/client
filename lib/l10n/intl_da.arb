@@ -10782,5 +10782,6 @@
     "mapAttributionLabel": "OpenStreetMap-bidragydere, ophavsret og licens",
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}",
-    "showMoreOptionsHint": "vis flere valgmuligheder"
+    "showMoreOptionsHint": "vis flere valgmuligheder",
+    "readingAssistanceLabel": "Læseassistance"
 }

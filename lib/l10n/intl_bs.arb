@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
     "seeAll": "Pogledaj sve",
     "seeAllSection": "Pogledaj sve {section}",
-    "showMoreOptionsHint": "prikaži više opcija"
+    "showMoreOptionsHint": "prikaži više opcija",
+    "readingAssistanceLabel": "Pomoć pri čitanju"
 }

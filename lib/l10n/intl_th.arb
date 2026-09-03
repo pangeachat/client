@@ -10494,5 +10494,6 @@
     "mapAttributionLabel": "ผู้ร่วมให้ข้อมูล OpenStreetMap, ลิขสิทธิ์และใบอนุญาต",
     "seeAll": "ดูทั้งหมด",
     "seeAllSection": "ดูทั้งหมด {section}",
-    "showMoreOptionsHint": "แสดงตัวเลือกเพิ่มเติม"
+    "showMoreOptionsHint": "แสดงตัวเลือกเพิ่มเติม",
+    "readingAssistanceLabel": "ตัวช่วยการอ่าน"
 }

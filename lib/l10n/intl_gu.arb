@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap ફાળો આપનારાઓ, કૉપિરાઇટ અને લાઇસન્સ",
     "seeAll": "બધા જુઓ",
     "seeAllSection": "બધા જુઓ {section}",
-    "showMoreOptionsHint": "વધુ વિકલ્પો બતાવો"
+    "showMoreOptionsHint": "વધુ વિકલ્પો બતાવો",
+    "readingAssistanceLabel": "વાંચન સહાય"
 }

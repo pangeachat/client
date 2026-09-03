@@ -10163,5 +10163,6 @@
     "mapAttributionLabel": "OpenStreetMap katılımcıları, telif hakkı ve lisans",
     "seeAll": "Tümünü gör",
     "seeAllSection": "Tüm {section} bölümünü gör",
-    "showMoreOptionsHint": "daha fazla seçenek göster"
+    "showMoreOptionsHint": "daha fazla seçenek göster",
+    "readingAssistanceLabel": "Okuma yardımı"
 }

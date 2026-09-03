@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Abanikeli be-OpenStreetMap, i-copyright nelayisense",
     "seeAll": "Buka konke",
     "seeAllSection": "Buka konke {section}",
-    "showMoreOptionsHint": "bonisa izinketho eziningi"
+    "showMoreOptionsHint": "bonisa izinketho eziningi",
+    "readingAssistanceLabel": "Usizo lokufunda"
 }

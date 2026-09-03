@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap contributores, ius auctoris et licentia",
     "seeAll": "Omnia vide",
     "seeAllSection": "Omnia {section} vide",
-    "showMoreOptionsHint": "plures optiones ostende"
+    "showMoreOptionsHint": "plures optiones ostende",
+    "readingAssistanceLabel": "Lectio adiuvans"
 }

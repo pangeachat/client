@@ -10762,5 +10762,6 @@
     "mapAttributionLabel": "OpenStreetMap-ის კონტრიბუტორები, საავტორო უფლებები და ლიცენზია",
     "seeAll": "ყველას ნახვა",
     "seeAllSection": "ყველა {section}-ის ნახვა",
-    "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება"
+    "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება",
+    "readingAssistanceLabel": "კითხვის დახმარება"
 }

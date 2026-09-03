@@ -10217,5 +10217,6 @@
     "mapAttributionLabel": "Contributeurs OpenStreetMap, droits d'auteur et licence",
     "seeAll": "Tout voir",
     "seeAllSection": "Voir tout {section}",
-    "showMoreOptionsHint": "afficher plus d'options"
+    "showMoreOptionsHint": "afficher plus d'options",
+    "readingAssistanceLabel": "Aide à la lecture"
 }

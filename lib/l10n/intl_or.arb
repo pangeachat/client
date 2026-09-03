@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap ଯୋଗଦାନକାରୀ, କପିରାଇଟ୍ ଏବଂ ଲାଇସେନ୍ସ",
     "seeAll": "ସବୁ ଦେଖନ୍ତୁ",
     "seeAllSection": "ସବୁ {section} ଦେଖନ୍ତୁ",
-    "showMoreOptionsHint": "ଅଧିକ ବିକଳ୍ପ ଦେଖାନ୍ତୁ"
+    "showMoreOptionsHint": "ଅଧିକ ବିକଳ୍ପ ଦେଖାନ୍ତୁ",
+    "readingAssistanceLabel": "ପଠନ ସହାୟତା"
 }

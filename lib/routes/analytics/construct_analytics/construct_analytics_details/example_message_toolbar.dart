@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/languages/language_service.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
@@ -119,6 +120,7 @@ Future<void> showAnalyticsExampleMessageToolbar({
       // The details page renders inside a clipping PanelCard; the overlay
       // must reach the root overlay to cover the whole page.
       rootOverlay: true,
+      modalSemanticsLabel: L10n.of(context).readingAssistanceLabel,
     ),
   );
 

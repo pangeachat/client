@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "ຜູ້ປະກອບສ່ວນ OpenStreetMap, ລິຂະສິດ ແລະ ໃບອະນຸຍາດ",
     "seeAll": "ເບິ່ງທັງໝົດ",
     "seeAllSection": "ເບິ່ງທັງໝົດ {section}",
-    "showMoreOptionsHint": "ສະແດງຕົວເລືອກເພີ່ມເຕີມ"
+    "showMoreOptionsHint": "ສະແດງຕົວເລືອກເພີ່ມເຕີມ",
+    "readingAssistanceLabel": "ການຊ່ວຍເຫຼືອໃນການອ່ານ"
 }

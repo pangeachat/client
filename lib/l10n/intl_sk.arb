@@ -10807,5 +10807,6 @@
     "mapAttributionLabel": "Prispievatelia OpenStreetMap, autorské práva a licencia",
     "seeAll": "Zobraziť všetko",
     "seeAllSection": "Zobraziť všetko: {section}",
-    "showMoreOptionsHint": "zobraziť viac možností"
+    "showMoreOptionsHint": "zobraziť viac možností",
+    "readingAssistanceLabel": "Pomoc s čítaním"
 }

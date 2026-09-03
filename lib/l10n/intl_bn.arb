@@ -10490,5 +10490,6 @@
     "mapAttributionLabel": "OpenStreetMap অবদানকারী, কপিরাইট এবং লাইসেন্স",
     "seeAll": "সব দেখুন",
     "seeAllSection": "সব দেখুন {section}",
-    "showMoreOptionsHint": "আরও বিকল্প দেখান"
+    "showMoreOptionsHint": "আরও বিকল্প দেখান",
+    "readingAssistanceLabel": "পড়ার সহায়তা"
 }

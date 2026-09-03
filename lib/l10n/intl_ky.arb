@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap салымчылары, автордук укук жана лицензия",
     "seeAll": "Баарын көрүү",
     "seeAllSection": "Баарын көрүү {section}",
-    "showMoreOptionsHint": "көбүрөөк параметрлерди көрсөтүү"
+    "showMoreOptionsHint": "көбүрөөк параметрлерди көрсөтүү",
+    "readingAssistanceLabel": "Окууга жардам"
 }

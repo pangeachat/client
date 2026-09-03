@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Penyumbang OpenStreetMap, hak cipta dan lesen",
     "seeAll": "Lihat semua",
     "seeAllSection": "Lihat semua {section}",
-    "showMoreOptionsHint": "tunjukkan pilihan lain"
+    "showMoreOptionsHint": "tunjukkan pilihan lain",
+    "readingAssistanceLabel": "Bantuan membaca"
 }

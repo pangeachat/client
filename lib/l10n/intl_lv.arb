@@ -9862,5 +9862,6 @@
     "mapAttributionLabel": "OpenStreetMap līdzstrādnieki, autortiesības un licence",
     "seeAll": "Skatīt visu",
     "seeAllSection": "Skatīt visu sadaļu {section}",
-    "showMoreOptionsHint": "rādīt vairāk opciju"
+    "showMoreOptionsHint": "rādīt vairāk opciju",
+    "readingAssistanceLabel": "Lasīšanas palīdzība"
 }

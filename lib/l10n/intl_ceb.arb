@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Mga nag-amot sa OpenStreetMap, copyright ug lisensya",
     "seeAll": "Tan-awa tanan",
     "seeAllSection": "Tan-awa tanan {section}",
-    "showMoreOptionsHint": "ipakita ang dugang nga kapilian"
+    "showMoreOptionsHint": "ipakita ang dugang nga kapilian",
+    "readingAssistanceLabel": "Tabang sa pagbasa"
 }

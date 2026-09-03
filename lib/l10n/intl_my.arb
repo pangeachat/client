@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "OpenStreetMap ပံ့ပိုးသူများ၊ မူပိုင်ခွင့်နှင့် လိုင်စင်",
     "seeAll": "အားလုံးကြည့်ရန်",
     "seeAllSection": "{section} အားလုံးကြည့်ရန်",
-    "showMoreOptionsHint": "ရွေးချယ်စရာများ ထပ်ပြရန်"
+    "showMoreOptionsHint": "ရွေးချယ်စရာများ ထပ်ပြရန်",
+    "readingAssistanceLabel": "စာဖတ်အကူအညီ"
 }

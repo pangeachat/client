@@ -9876,5 +9876,6 @@
     "mapAttributionLabel": "Удзельнікі OpenStreetMap, аўтарскія правы і ліцэнзія",
     "seeAll": "Глядзець усё",
     "seeAllSection": "Глядзець усё: {section}",
-    "showMoreOptionsHint": "паказаць больш опцый"
+    "showMoreOptionsHint": "паказаць больш опцый",
+    "readingAssistanceLabel": "Дапамога ў чытанні"
 }

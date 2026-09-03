@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Nā mea hāʻawi OpenStreetMap, kuleana kope a me ka laikini",
     "seeAll": "E ʻike i nā mea a pau",
     "seeAllSection": "E ʻike i nā mea a pau ma {section}",
-    "showMoreOptionsHint": "hōʻike i nā koho hou aku"
+    "showMoreOptionsHint": "hōʻike i nā koho hou aku",
+    "readingAssistanceLabel": "Kōkua heluhelu"
 }

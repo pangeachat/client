@@ -2266,5 +2266,6 @@
     "mapAttributionLabel": "Ngā kaituku OpenStreetMap, te mana pupuri me te raihana",
     "seeAll": "Tirohia katoa",
     "seeAllSection": "Tirohia katoa {section}",
-    "showMoreOptionsHint": "whakaatu atu kōwhiringa"
+    "showMoreOptionsHint": "whakaatu atu kōwhiringa",
+    "readingAssistanceLabel": "Āwhina pānui"
 }

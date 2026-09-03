@@ -10737,5 +10737,6 @@
     "mapAttributionLabel": "Συνεισφέροντες στο OpenStreetMap, πνευματικά δικαιώματα και άδεια",
     "seeAll": "Δείτε όλα",
     "seeAllSection": "Δείτε όλα τα {section}",
-    "showMoreOptionsHint": "εμφάνιση περισσότερων επιλογών"
+    "showMoreOptionsHint": "εμφάνιση περισσότερων επιλογών",
+    "readingAssistanceLabel": "Βοήθεια ανάγνωσης"
 }
