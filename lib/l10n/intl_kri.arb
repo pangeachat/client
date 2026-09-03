@@ -1,7 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-03 10:23:33.058111",
-    "@@last_modified": "2026-09-02 11:48:58.568446",
+    "@@last_modified": "2026-09-03 14:43:48.691862",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap pipal wey de gi am say, in kopyrayt ɛn layɛns",
     "seeAll": "Si ɔl",
     "seeAllSection": "Si ɔl {section}",
-    "showMoreOptionsHint": "sho ɔda ɔpshɔn dɛn"
+    "showMoreOptionsHint": "sho ɔda ɔpshɔn dɛn",
+    "onboardingStepOfTotal": "Step {step} pan {total}"
 }

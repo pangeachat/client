@@ -1,7 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-03 10:23:29.100403",
-    "@@last_modified": "2026-09-02 11:48:45.970671",
+    "@@last_modified": "2026-09-03 14:43:45.856481",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap bydraers, kopiereg en lisensie",
     "seeAll": "Sien alles",
     "seeAllSection": "Sien alle {section}",
-    "showMoreOptionsHint": "wys meer opsies"
+    "showMoreOptionsHint": "wys meer opsies",
+    "onboardingStepOfTotal": "Stap {step} van {total}"
 }

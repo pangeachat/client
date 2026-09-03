@@ -1803,8 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-03 10:23:36.211573",
-    "@@last_modified": "2026-09-02 11:49:06.045845",
+    "@@last_modified": "2026-09-03 14:43:50.823885",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10807,5 +10806,6 @@
     "mapAttributionLabel": "Sodelavci OpenStreetMap, avtorske pravice in licenca",
     "seeAll": "Poglej vse",
     "seeAllSection": "Poglej vse {section}",
-    "showMoreOptionsHint": "pokaži več možnosti"
+    "showMoreOptionsHint": "pokaži več možnosti",
+    "onboardingStepOfTotal": "Korak {step} od {total}"
 }

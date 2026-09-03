@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 
 class CustomCourseStepView extends StatefulWidget {
@@ -103,58 +104,52 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
       children: [
         Expanded(
           child: Center(
-            child: Semantics(
+            child: OnboardingStepBody(
               label: L10n.of(context).customCourseStepTitle,
-              container: true,
-              child: SingleChildScrollView(
-                child: Column(
-                  spacing: 8.0,
-                  children: [
-                    ExcludeSemantics(
-                      child: Text(
-                        L10n.of(context).customCourseStepTitle,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+              scrollable: true,
+              child: Column(
+                spacing: 8.0,
+                children: [
+                  ExcludeSemantics(
+                    child: Text(
+                      L10n.of(context).customCourseStepTitle,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Semantics(
-                      container: true,
-                      child: TextField(
-                        controller: _nameController,
-                        decoration: InputDecoration(
-                          hintText: L10n.of(context).name,
-                        ),
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(254),
-                        ],
+                  ),
+                  Semantics(
+                    container: true,
+                    child: TextField(
+                      controller: _nameController,
+                      decoration: InputDecoration(
+                        hintText: L10n.of(context).name,
                       ),
+                      inputFormatters: [LengthLimitingTextInputFormatter(254)],
                     ),
-                    Semantics(
-                      container: true,
-                      child: TextField(
-                        controller: _institutionController,
-                        decoration: InputDecoration(
-                          hintText: L10n.of(context).institution,
-                        ),
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(254),
-                        ],
+                  ),
+                  Semantics(
+                    container: true,
+                    child: TextField(
+                      controller: _institutionController,
+                      decoration: InputDecoration(
+                        hintText: L10n.of(context).institution,
                       ),
+                      inputFormatters: [LengthLimitingTextInputFormatter(254)],
                     ),
-                    Semantics(
-                      container: true,
-                      child: TextField(
-                        controller: _goalsController,
-                        decoration: InputDecoration(
-                          hintText: L10n.of(context).courseGoals,
-                        ),
-                        minLines: 10,
-                        maxLines: 10,
+                  ),
+                  Semantics(
+                    container: true,
+                    child: TextField(
+                      controller: _goalsController,
+                      decoration: InputDecoration(
+                        hintText: L10n.of(context).courseGoals,
                       ),
+                      minLines: 10,
+                      maxLines: 10,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

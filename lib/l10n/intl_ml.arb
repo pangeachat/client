@@ -1,7 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-09-03 10:23:33.978889",
-    "@@last_modified": "2026-09-02 11:49:00.256011",
+    "@@last_modified": "2026-09-03 14:43:49.906668",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap സംഭാവന ചെയ്യുന്നവർ, പകർപ്പവകാശം, ലൈസൻസ്",
     "seeAll": "എല്ലാം കാണുക",
     "seeAllSection": "എല്ലാം കാണുക {section}",
-    "showMoreOptionsHint": "കൂടുതൽ ഓപ്ഷനുകൾ കാണിക്കുക"
+    "showMoreOptionsHint": "കൂടുതൽ ഓപ്ഷനുകൾ കാണിക്കുക",
+    "onboardingStepOfTotal": "{total} എണ്ണത്തിൽ {step} പടി"
 }

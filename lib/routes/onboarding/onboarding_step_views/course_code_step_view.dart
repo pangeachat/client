@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
 
 class CourseCodeStepView extends StatefulWidget {
@@ -74,27 +75,31 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final title = widget.error != null
+        ? L10n.of(context).courseCodeStepErrorMessage
+        : L10n.of(context).courseCodeStepTitle;
     return Column(
       spacing: 32.0,
       children: [
         Expanded(
           child: Center(
-            child: SingleChildScrollView(
+            child: OnboardingStepBody(
+              label: title,
+              scrollable: true,
               child: Column(
                 spacing: 12.0,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  BotFace(
-                    expression: BotExpression.idle,
-                    useRive: true,
-                    width: 140.0,
+                  ExcludeSemantics(
+                    child: BotFace(
+                      expression: BotExpression.idle,
+                      useRive: true,
+                      width: 140.0,
+                    ),
                   ),
-                  Semantics(
-                    container: true,
+                  ExcludeSemantics(
                     child: Text(
-                      widget.error != null
-                          ? L10n.of(context).courseCodeStepErrorMessage
-                          : L10n.of(context).courseCodeStepTitle,
+                      title,
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: widget.error != null

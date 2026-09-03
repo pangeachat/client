@@ -1,7 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-03 10:23:33.255864",
-    "@@last_modified": "2026-09-02 11:48:58.854164",
+    "@@last_modified": "2026-09-03 14:43:49.120847",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap Mataarbechter, Copyright a Lizenz",
     "seeAll": "Alles gesinn",
     "seeAllSection": "Alles gesinn {section}",
-    "showMoreOptionsHint": "méi Optiounen uweisen"
+    "showMoreOptionsHint": "méi Optiounen uweisen",
+    "onboardingStepOfTotal": "Schrëtt {step} vun {total}"
 }

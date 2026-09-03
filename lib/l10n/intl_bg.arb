@@ -1,7 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-03 10:23:29.670493",
-    "@@last_modified": "2026-09-02 11:48:45.719576",
+    "@@last_modified": "2026-09-03 14:43:45.757151",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "Сътрудници на OpenStreetMap, авторски права и лиценз",
     "seeAll": "Виж всички",
     "seeAllSection": "Виж всички {section}",
-    "showMoreOptionsHint": "покажи още опции"
+    "showMoreOptionsHint": "покажи още опции",
+    "onboardingStepOfTotal": "Стъпка {step} от {total}"
 }

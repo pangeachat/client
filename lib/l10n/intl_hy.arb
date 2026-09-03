@@ -1,7 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-03 10:23:31.655543",
-    "@@last_modified": "2026-09-02 11:48:54.406547",
+    "@@last_modified": "2026-09-03 14:43:47.867889",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap-ի մասնակիցներ, հեղինակային իրավունք և լիցենզիա",
     "seeAll": "Տեսնել բոլորը",
     "seeAllSection": "Տեսնել բոլոր {section}",
-    "showMoreOptionsHint": "ցուցադրել այլ ընտրանքներ"
+    "showMoreOptionsHint": "ցուցադրել այլ ընտրանքներ",
+    "onboardingStepOfTotal": "Քայլ {step}-ը {total}-ից"
 }

@@ -1,6 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 10:23:37.572533",
-    "@@last_modified": "2026-09-02 11:49:13.821679",
+    "@@last_modified": "2026-09-03 14:43:52.422942",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9968,5 +9967,6 @@
     "mapAttributionLabel": "OpenStreetMap 貢獻者、版權與許可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
-    "showMoreOptionsHint": "顯示更多選項"
+    "showMoreOptionsHint": "顯示更多選項",
+    "onboardingStepOfTotal": "第 {step} 步，共 {total} 步"
 }

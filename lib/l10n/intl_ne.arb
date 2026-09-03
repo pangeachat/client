@@ -1,7 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-09-03 10:23:34.815664",
-    "@@last_modified": "2026-09-02 11:49:02.552281",
+    "@@last_modified": "2026-09-03 14:43:50.219925",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap योगदानकर्ताहरू, प्रतिलिपि अधिकार र इजाजतपत्र",
     "seeAll": "सबै हेर्नुहोस्",
     "seeAllSection": "सबै हेर्नुहोस् {section}",
-    "showMoreOptionsHint": "थप विकल्पहरू देखाउनुहोस्"
+    "showMoreOptionsHint": "थप विकल्पहरू देखाउनुहोस्",
+    "onboardingStepOfTotal": "{total} मध्ये चरण {step}"
 }

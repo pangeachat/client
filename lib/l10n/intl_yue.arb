@@ -1264,8 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-09-03 10:23:37.683321",
-    "@@last_modified": "2026-09-02 11:49:11.979265",
+    "@@last_modified": "2026-09-03 14:43:56.575828",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10819,5 +10818,6 @@
     "mapAttributionLabel": "OpenStreetMap 貢獻者、版權及許可",
     "seeAll": "查看全部",
     "seeAllSection": "查看全部{section}",
-    "showMoreOptionsHint": "顯示更多選項"
+    "showMoreOptionsHint": "顯示更多選項",
+    "onboardingStepOfTotal": "第 {step} 步，共 {total} 步"
 }

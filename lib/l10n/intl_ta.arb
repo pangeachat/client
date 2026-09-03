@@ -1,6 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 10:23:36.750724",
-    "@@last_modified": "2026-09-02 11:49:08.283973",
+    "@@last_modified": "2026-09-03 14:43:55.147205",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9954,5 +9953,6 @@
     "mapAttributionLabel": "OpenStreetMap பங்களிப்பாளர்கள், பதிப்புரிமை மற்றும் உரிமம்",
     "seeAll": "அனைத்தையும் காட்டு",
     "seeAllSection": "அனைத்தையும் காட்டு {section}",
-    "showMoreOptionsHint": "மேலும் விருப்பங்களைக் காட்டு"
+    "showMoreOptionsHint": "மேலும் விருப்பங்களைக் காட்டு",
+    "onboardingStepOfTotal": "{total} இல் படி {step}"
 }

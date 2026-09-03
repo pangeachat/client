@@ -1,7 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-03 10:23:35.953749",
-    "@@last_modified": "2026-09-02 11:49:06.275931",
+    "@@last_modified": "2026-09-03 14:43:50.911865",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap tagata foaʻi, puletaofia ma laisene",
     "seeAll": "Vaʻai uma",
     "seeAllSection": "Vaʻai uma {section}",
-    "showMoreOptionsHint": "fa'aali nisi filifiliga"
+    "showMoreOptionsHint": "fa'aali nisi filifiliga",
+    "onboardingStepOfTotal": "Laasaga {step} o le {total}"
 }

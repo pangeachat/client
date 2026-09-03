@@ -1,7 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-03 10:23:29.167944",
-    "@@last_modified": "2026-09-02 11:48:45.937798",
+    "@@last_modified": "2026-09-03 14:43:45.973830",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap অৱদানকাৰী, স্বত্বাধিকাৰ আৰু অনুজ্ঞাপত্ৰ",
     "seeAll": "সকলো চাওক",
     "seeAllSection": "সকলো চাওক {section}",
-    "showMoreOptionsHint": "অধিক বিকল্প দেখুৱাওক"
+    "showMoreOptionsHint": "অধিক বিকল্প দেখুৱাওক",
+    "onboardingStepOfTotal": "{total}টাৰ ভিতৰত {step} নং খাপ"
 }

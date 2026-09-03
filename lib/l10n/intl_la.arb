@@ -1,7 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-09-03 10:23:33.040090",
-    "@@last_modified": "2026-09-02 11:48:58.180065",
+    "@@last_modified": "2026-09-03 14:43:49.101650",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap contributores, ius auctoris et licentia",
     "seeAll": "Omnia vide",
     "seeAllSection": "Omnia {section} vide",
-    "showMoreOptionsHint": "plures optiones ostende"
+    "showMoreOptionsHint": "plures optiones ostende",
+    "onboardingStepOfTotal": "Gradus {step} de {total}"
 }

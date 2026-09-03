@@ -6,6 +6,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/user_type_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 
@@ -63,100 +64,108 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
       children: [
         Expanded(
           child: Center(
-            child: Column(
-              spacing: 12.0,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                BotFace(
-                  expression: BotExpression.idle,
-                  useRive: true,
-                  width: 140.0,
-                ),
-                Semantics(
-                  container: true,
-                  child: Text(
-                    L10n.of(context).userTypeTitle,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
+            child: OnboardingStepBody(
+              label: L10n.of(context).userTypeTitle,
+              child: Column(
+                spacing: 12.0,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ExcludeSemantics(
+                    child: BotFace(
+                      expression: BotExpression.idle,
+                      useRive: true,
+                      width: 140.0,
                     ),
                   ),
-                ),
-                ValueListenableBuilder(
-                  valueListenable: _selectedType,
-                  builder: (context, type, _) => Column(
-                    spacing: 12.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsGeometry.symmetric(horizontal: 16.0),
-                        child: Opacity(
-                          opacity: type != null && type != UserType.teacher
-                              ? 0.5
-                              : 1.0,
-                          child: MergeSemantics(
-                            child: Semantics(
-                              selected: type == UserType.teacher,
-                              child: ElevatedButton(
-                                onPressed: () =>
-                                    _setSelectedType(UserType.teacher),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: type == UserType.teacher
-                                      ? theme.colorScheme.primaryContainer
-                                      : theme.colorScheme.surfaceContainer,
-                                  foregroundColor: type == UserType.teacher
-                                      ? theme.colorScheme.onPrimaryContainer
-                                      : theme.colorScheme.onSurface,
-                                ),
-                                child: Row(
-                                  spacing: 8.0,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.school_outlined, size: 24.0),
-                                    Text(L10n.of(context).teach),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                  ExcludeSemantics(
+                    child: Text(
+                      L10n.of(context).userTypeTitle,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
-                      Padding(
-                        padding: EdgeInsetsGeometry.symmetric(horizontal: 16.0),
-                        child: Opacity(
-                          opacity: type != null && type != UserType.student
-                              ? 0.5
-                              : 1.0,
-                          child: MergeSemantics(
-                            child: Semantics(
-                              selected: type == UserType.student,
-                              child: ElevatedButton(
-                                onPressed: () =>
-                                    _setSelectedType(UserType.student),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: type == UserType.student
-                                      ? theme.colorScheme.primaryContainer
-                                      : theme.colorScheme.surfaceContainer,
-                                  foregroundColor: type == UserType.student
-                                      ? theme.colorScheme.onPrimaryContainer
-                                      : theme.colorScheme.onSurface,
-                                ),
-                                child: Row(
-                                  spacing: 8.0,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Symbols.dictionary, size: 24.0),
-                                    Text(L10n.of(context).learn),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                  ValueListenableBuilder(
+                    valueListenable: _selectedType,
+                    builder: (context, type, _) => Column(
+                      spacing: 12.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsGeometry.symmetric(
+                            horizontal: 16.0,
+                          ),
+                          child: Opacity(
+                            opacity: type != null && type != UserType.teacher
+                                ? 0.5
+                                : 1.0,
+                            child: MergeSemantics(
+                              child: Semantics(
+                                selected: type == UserType.teacher,
+                                child: ElevatedButton(
+                                  onPressed: () =>
+                                      _setSelectedType(UserType.teacher),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: type == UserType.teacher
+                                        ? theme.colorScheme.primaryContainer
+                                        : theme.colorScheme.surfaceContainer,
+                                    foregroundColor: type == UserType.teacher
+                                        ? theme.colorScheme.onPrimaryContainer
+                                        : theme.colorScheme.onSurface,
+                                  ),
+                                  child: Row(
+                                    spacing: 8.0,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.school_outlined, size: 24.0),
+                                      Text(L10n.of(context).teach),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsGeometry.symmetric(
+                            horizontal: 16.0,
+                          ),
+                          child: Opacity(
+                            opacity: type != null && type != UserType.student
+                                ? 0.5
+                                : 1.0,
+                            child: MergeSemantics(
+                              child: Semantics(
+                                selected: type == UserType.student,
+                                child: ElevatedButton(
+                                  onPressed: () =>
+                                      _setSelectedType(UserType.student),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: type == UserType.student
+                                        ? theme.colorScheme.primaryContainer
+                                        : theme.colorScheme.surfaceContainer,
+                                    foregroundColor: type == UserType.student
+                                        ? theme.colorScheme.onPrimaryContainer
+                                        : theme.colorScheme.onSurface,
+                                  ),
+                                  child: Row(
+                                    spacing: 8.0,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Symbols.dictionary, size: 24.0),
+                                      Text(L10n.of(context).learn),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

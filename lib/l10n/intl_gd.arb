@@ -1,7 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-09-03 10:23:30.669783",
-    "@@last_modified": "2026-09-02 11:48:52.003479",
+    "@@last_modified": "2026-09-03 14:43:47.095631",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "Luchd-tabhartais OpenStreetMap, dlighe-sgrìobhaidh agus cead",
     "seeAll": "Faic na h-uile",
     "seeAllSection": "Faic na h-uile {section}",
-    "showMoreOptionsHint": "seall barrachd roghainnean"
+    "showMoreOptionsHint": "seall barrachd roghainnean",
+    "onboardingStepOfTotal": "Ceum {step} de {total}"
 }

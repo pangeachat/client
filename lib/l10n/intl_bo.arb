@@ -2920,8 +2920,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-09-03 10:23:29.303624",
-    "@@last_modified": "2026-09-02 11:48:46.113815",
+    "@@last_modified": "2026-09-03 14:43:45.904222",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9473,5 +9472,6 @@
     "mapAttributionLabel": "OpenStreetMap ལ་མཉམ་ཞུགས་བྱེད་མཁན་ཚོ། བདག་དབང་དང་ཆོག་མཆན།",
     "seeAll": "ཚང་མ་གཟིགས།",
     "seeAllSection": "{section} ཚང་མ་གཟིགས།",
-    "showMoreOptionsHint": "འདེམས་ངོ་མང་ཙམ་བསྟན་"
+    "showMoreOptionsHint": "འདེམས་ངོ་མང་ཙམ་བསྟན་",
+    "onboardingStepOfTotal": "གོམ་པ་ {step} ཁྱོན་བསྡོམས་ {total} ནང་ནས་"
 }

@@ -1,6 +1,5 @@
 {
-    "@@last_modified": "2026-09-03 10:23:29.084210",
-    "@@last_modified": "2026-09-02 11:48:45.851337",
+    "@@last_modified": "2026-09-03 14:43:45.789879",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10490,5 +10489,6 @@
     "mapAttributionLabel": "OpenStreetMap অবদানকারী, কপিরাইট এবং লাইসেন্স",
     "seeAll": "সব দেখুন",
     "seeAllSection": "সব দেখুন {section}",
-    "showMoreOptionsHint": "আরও বিকল্প দেখান"
+    "showMoreOptionsHint": "আরও বিকল্প দেখান",
+    "onboardingStepOfTotal": "{total} এর মধ্যে ধাপ {step}"
 }

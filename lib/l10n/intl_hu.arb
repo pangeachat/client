@@ -1,7 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-03 10:23:31.514057",
-    "@@last_modified": "2026-09-02 11:48:53.597935",
+    "@@last_modified": "2026-09-03 14:43:47.806015",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9965,5 +9964,6 @@
     "mapAttributionLabel": "OpenStreetMap közreműködők, szerzői jogok és licenc",
     "seeAll": "Összes megtekintése",
     "seeAllSection": "Összes {section} megtekintése",
-    "showMoreOptionsHint": "további lehetőségek megjelenítése"
+    "showMoreOptionsHint": "további lehetőségek megjelenítése",
+    "onboardingStepOfTotal": "{step}/{total}. lépés"
 }

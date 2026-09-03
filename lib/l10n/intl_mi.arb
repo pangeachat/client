@@ -1,7 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-09-03 10:23:33.866759",
-    "@@last_modified": "2026-09-02 11:49:00.289812",
+    "@@last_modified": "2026-09-03 14:43:49.462173",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "Ngā kaituku OpenStreetMap, te mana pupuri me te raihana",
     "seeAll": "Tirohia katoa",
     "seeAllSection": "Tirohia katoa {section}",
-    "showMoreOptionsHint": "whakaatu atu kōwhiringa"
+    "showMoreOptionsHint": "whakaatu atu kōwhiringa",
+    "onboardingStepOfTotal": "Hipanga {step} o {total}"
 }

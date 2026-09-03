@@ -1,7 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-09-03 10:23:33.771955",
-    "@@last_modified": "2026-09-02 11:48:59.236657",
+    "@@last_modified": "2026-09-03 14:43:49.191332",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "ຜູ້ປະກອບສ່ວນ OpenStreetMap, ລິຂະສິດ ແລະ ໃບອະນຸຍາດ",
     "seeAll": "ເບິ່ງທັງໝົດ",
     "seeAllSection": "ເບິ່ງທັງໝົດ {section}",
-    "showMoreOptionsHint": "ສະແດງຕົວເລືອກເພີ່ມເຕີມ"
+    "showMoreOptionsHint": "ສະແດງຕົວເລືອກເພີ່ມເຕີມ",
+    "onboardingStepOfTotal": "ຂັ້ນຕອນທີ {step} ຈາກ {total}"
 }

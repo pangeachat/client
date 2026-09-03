@@ -1,7 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-03 10:23:30.965071",
-    "@@last_modified": "2026-09-02 11:48:53.782457",
+    "@@last_modified": "2026-09-03 14:43:49.769679",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "OpenStreetMap ફાળો આપનારાઓ, કૉપિરાઇટ અને લાઇસન્સ",
     "seeAll": "બધા જુઓ",
     "seeAllSection": "બધા જુઓ {section}",
-    "showMoreOptionsHint": "વધુ વિકલ્પો બતાવો"
+    "showMoreOptionsHint": "વધુ વિકલ્પો બતાવો",
+    "onboardingStepOfTotal": "{total} માંથી પગલું {step}"
 }

@@ -1,7 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-09-03 10:23:29.421628",
-    "@@last_modified": "2026-09-02 11:48:45.905870",
+    "@@last_modified": "2026-09-03 14:43:45.769672",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
     "seeAll": "Pogledaj sve",
     "seeAllSection": "Pogledaj sve {section}",
-    "showMoreOptionsHint": "prikaži više opcija"
+    "showMoreOptionsHint": "prikaži više opcija",
+    "onboardingStepOfTotal": "Korak {step} od {total}"
 }

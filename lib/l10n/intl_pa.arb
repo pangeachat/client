@@ -1,7 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-03 10:23:35.628883",
-    "@@last_modified": "2026-09-02 11:49:03.784818",
+    "@@last_modified": "2026-09-03 14:43:50.367784",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2266,5 +2265,6 @@
     "mapAttributionLabel": "ਓਪਨਸਟ੍ਰੀਟਮੈਪ ਯੋਗਦਾਨੀ, ਕਾਪੀਰਾਈਟ ਅਤੇ ਲਾਇਸੰਸ",
     "seeAll": "ਸਾਰੇ ਦੇਖੋ",
     "seeAllSection": "ਸਾਰੇ {section} ਦੇਖੋ",
-    "showMoreOptionsHint": "ਹੋਰ ਵਿਕਲਪ ਦਿਖਾਓ"
+    "showMoreOptionsHint": "ਹੋਰ ਵਿਕਲਪ ਦਿਖਾਓ",
+    "onboardingStepOfTotal": "{total} ਵਿੱਚੋਂ {step} ਕਦਮ"
 }

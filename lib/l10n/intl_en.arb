@@ -5097,6 +5097,13 @@
     "welcome": "Welcome",
     "courseRequest": "Course request",
     "onboarding": "Onboarding",
+    "onboardingStepOfTotal": "Step {step} of {total}",
+    "@onboardingStepOfTotal": {
+        "placeholders": {
+            "step": {},
+            "total": {}
+        }
+    },
     "selectImageFromDevice": "Select image from device",
     "dinoAvatarLabel": "A dinosaur with sunglasses",
     "bearAvatarLabel": "A friendly bear",

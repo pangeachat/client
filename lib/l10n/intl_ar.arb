@@ -1,7 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-03 10:23:29.109406",
-    "@@last_modified": "2026-09-02 11:48:45.669483",
+    "@@last_modified": "2026-09-03 14:43:45.867642",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10168,5 +10167,6 @@
     "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
     "seeAll": "مشاهدة الكل",
     "seeAllSection": "مشاهدة كل {section}",
-    "showMoreOptionsHint": "عرض المزيد من الخيارات"
+    "showMoreOptionsHint": "عرض المزيد من الخيارات",
+    "onboardingStepOfTotal": "الخطوة {step} من {total}"
 }

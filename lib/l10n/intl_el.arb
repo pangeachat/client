@@ -3401,8 +3401,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-09-03 10:23:30.001922",
-    "@@last_modified": "2026-09-02 11:48:47.969083",
+    "@@last_modified": "2026-09-03 14:43:46.588753",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10737,5 +10736,6 @@
     "mapAttributionLabel": "Συνεισφέροντες στο OpenStreetMap, πνευματικά δικαιώματα και άδεια",
     "seeAll": "Δείτε όλα",
     "seeAllSection": "Δείτε όλα τα {section}",
-    "showMoreOptionsHint": "εμφάνιση περισσότερων επιλογών"
+    "showMoreOptionsHint": "εμφάνιση περισσότερων επιλογών",
+    "onboardingStepOfTotal": "Βήμα {step} από {total}"
 }
