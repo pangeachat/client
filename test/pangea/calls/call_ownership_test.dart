@@ -200,6 +200,40 @@ void main() {
       );
     });
 
+    test(
+      'a tap that PUBLISHES first, then observes the rival, ends (doc:248)',
+      () {
+        // The genuinely simultaneous double-tap: this device publishes its own
+        // claim before the sibling's is visible, then sees it. Both such devices
+        // end -- the accepted redial, no doubled audio and no double credit. The
+        // stale-tap guard must NOT collapse this into a survivor: it is correct
+        // for both to end here, and for exactly one to survive when the taps are
+        // staggered (the drop-the-tap test above).
+        final o = CallOwnership();
+        sighting(o, t0);
+        o.chooseThisDevice();
+        final published = sighting(
+          o,
+          t0.add(const Duration(milliseconds: 100)),
+        );
+        expect(
+          published.announceChosen,
+          isTrue,
+          reason: 'no rival claim visible yet, so it publishes its own',
+        );
+        final ended = sighting(
+          o,
+          t0.add(const Duration(milliseconds: 200)),
+          claim: true,
+        );
+        expect(
+          ended.endSelf,
+          isTrue,
+          reason: 'then it observes the rival, ends',
+        );
+      },
+    );
+
     test('one-way visibility -> the reader ends, the other survives', () {
       // doc:249. The reader (sees the claim) ends; the other never reads a
       // claim, holds as claimed, then resumes when the reader is gone.
