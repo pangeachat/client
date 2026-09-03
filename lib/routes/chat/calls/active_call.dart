@@ -37,27 +37,24 @@ enum CallOutcome {
   movedToOtherDevice,
 }
 
-/// What the ownership arbiter is asking the learner, and about which device.
+/// What the ownership arbiter is asking the learner.
 ///
 /// Built by [ActiveCall] from the arbiter's decision so the widget layer holds
-/// no roster logic. [otherDeviceName] is a display name the learner set where
-/// one is known, and null otherwise — the screen supplies the generic wording,
-/// which is UI copy. A raw device id is never shown: a device id is not a name.
+/// no roster logic. It names NO device: the design is deliberate that a device
+/// id is not a name and guessing one would be worse than saying nothing, so the
+/// copy is "two of your devices" and "your other device".
 @immutable
 class OwnershipPrompt {
   final OwnershipPromptKind kind;
-  final String? otherDeviceName;
 
-  const OwnershipPrompt({required this.kind, this.otherDeviceName});
+  const OwnershipPrompt(this.kind);
 
   @override
   bool operator ==(Object other) =>
-      other is OwnershipPrompt &&
-      other.kind == kind &&
-      other.otherDeviceName == otherDeviceName;
+      other is OwnershipPrompt && other.kind == kind;
 
   @override
-  int get hashCode => Object.hash(kind, otherDeviceName);
+  int get hashCode => kind.hashCode;
 }
 
 enum CallStage {
@@ -1451,10 +1448,10 @@ class ActiveCall extends ChangeNotifier {
       siblingClaimObserved: claim,
       now: DateTime.now(),
     );
-    return _applyOwnership(decision, present);
+    return _applyOwnership(decision);
   }
 
-  bool _applyOwnership(OwnershipDecision d, Set<String> presentSiblings) {
+  bool _applyOwnership(OwnershipDecision d) {
     final roster = _roster;
     // The claim, or its retraction, rides the same announcer as capability and
     // recording; the roster coalesces a redundant write to nothing. This is the
@@ -1497,32 +1494,12 @@ class ActiveCall extends ChangeNotifier {
 
     final prompt = d.prompt == OwnershipPromptKind.none
         ? null
-        : OwnershipPrompt(
-            kind: d.prompt,
-            otherDeviceName: _siblingDeviceName(presentSiblings),
-          );
+        : OwnershipPrompt(d.prompt);
     if (prompt != _ownershipPrompt || _mediaHeld != wasHeld) {
       _ownershipPrompt = prompt;
       if (!_disposed) notifyListeners();
     }
     return false;
-  }
-
-  /// A display name for the sibling to name in the prompt, or null when none is
-  /// known. Deterministic — the lowest device id — so the prompt names the same
-  /// device on every recompute. Never a raw device id: a device id is not a
-  /// name, and the screen supplies the generic wording when this is null.
-  String? _siblingDeviceName(Set<String> presentSiblings) {
-    if (presentSiblings.isEmpty) return null;
-    final deviceId = (presentSiblings.toList()..sort()).first;
-    final userId = calls.client.userID;
-    if (userId == null) return null;
-    final name = calls
-        .client
-        .userDeviceKeys[userId]
-        ?.deviceKeys[deviceId]
-        ?.deviceDisplayName;
-    return (name != null && name.isNotEmpty) ? name : null;
   }
 
   void _onParticipantsChanged() {

@@ -396,6 +396,11 @@ class CallSession extends ChangeNotifier {
   /// indistinguishable from a crash — until [dismissFailed].
   bool get isFailed => call.outcome == CallOutcome.failed;
 
+  /// Whether this device left because the learner is carrying the call on
+  /// another of their devices -- the summary then says the call continues
+  /// elsewhere rather than that it ended.
+  bool get movedToOtherDevice => call.outcome == CallOutcome.movedToOtherDevice;
+
   CallStage get stage => call.stage;
   Object? get error => call.error;
   bool get isReconnecting => call.isReconnecting;

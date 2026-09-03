@@ -6,6 +6,7 @@ import 'package:livekit_client/livekit_client.dart' as lk;
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
+import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
@@ -89,6 +90,7 @@ class CallPanel extends StatelessWidget {
                             ),
                           ),
                         ),
+                      _ownershipBanner(l10n, theme),
                       if (session.isFailed)
                         _failedControls(l10n)
                       else
@@ -162,19 +164,26 @@ class CallPanel extends StatelessWidget {
                           ),
                           const SizedBox(height: 14),
                           Text(
-                            l10n.callEnded,
+                            session.movedToOtherDevice
+                                ? l10n.callContinuingElsewhere
+                                : l10n.callEnded,
+                            textAlign: TextAlign.center,
                             style: theme.textTheme.titleMedium?.copyWith(
                               color: Colors.white70,
                             ),
                           ),
-                          const SizedBox(height: 6),
-                          Text(
-                            formatCallDuration(session.callDuration),
-                            style: theme.textTheme.headlineMedium?.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
+                          // A moved call is not over for the learner, so it
+                          // shows no duration -- only that it continues.
+                          if (!session.movedToOtherDevice) ...[
+                            const SizedBox(height: 6),
+                            Text(
+                              formatCallDuration(session.callDuration),
+                              style: theme.textTheme.headlineMedium?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
+                          ],
                         ],
                       ),
                     ),
@@ -306,7 +315,7 @@ class CallPanel extends StatelessWidget {
             label: session.muted ? l10n.callUnmute : l10n.callMute,
             background: Colors.white.withValues(alpha: 0.14),
             foreground: Colors.white,
-            onPressed: live ? session.toggleMute : null,
+            onPressed: (live && !session.mediaHeld) ? session.toggleMute : null,
           ),
           const SizedBox(width: 22),
           _CallButton(
@@ -323,9 +332,70 @@ class CallPanel extends StatelessWidget {
             label: session.cameraOn ? l10n.callCameraOff : l10n.callCameraOn,
             background: Colors.white.withValues(alpha: 0.14),
             foreground: Colors.white,
-            onPressed: live ? session.toggleCamera : null,
+            onPressed: (live && !session.mediaHeld)
+                ? session.toggleCamera
+                : null,
           ),
         ],
+      ),
+    );
+  }
+
+  /// The two-devices-one-call prompt: the choice, or -- when the other device
+  /// does not speak this protocol -- the older-version prompt with only a leave.
+  /// It names no device: "two of your devices", "your other device".
+  Widget _ownershipBanner(L10n l10n, ThemeData theme) {
+    final prompt = session.ownershipPrompt;
+    if (prompt == null) return const SizedBox.shrink();
+    final isChoice = prompt.kind == OwnershipPromptKind.choice;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 8, 20, 4),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white.withValues(alpha: 0.10),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              isChoice ? l10n.callDevicesTitle : l10n.callDevicesOlderTitle,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              isChoice ? l10n.callDevicesBody : l10n.callDevicesOlderBody,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodySmall?.copyWith(color: Colors.white70),
+            ),
+            const SizedBox(height: 12),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (isChoice) ...[
+                  FilledButton(
+                    onPressed: session.chooseThisDevice,
+                    child: Text(l10n.callDevicesUseThis),
+                  ),
+                  const SizedBox(width: 12),
+                ],
+                OutlinedButton(
+                  onPressed: session.leaveForOtherDevice,
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    side: const BorderSide(color: Colors.white38),
+                  ),
+                  child: Text(l10n.callDevicesLeaveHere),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -561,7 +631,8 @@ class CallMiniTile extends StatelessWidget {
                         ),
                         onPressed:
                             session.stage == CallStage.connected &&
-                                !session.isReconnecting
+                                !session.isReconnecting &&
+                                !session.mediaHeld
                             ? session.toggleMute
                             : null,
                       ),
