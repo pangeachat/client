@@ -50,40 +50,43 @@ class OverlayUtil {
           : child;
 
       final OverlayEntry entry = OverlayEntry(
-        builder: (_) => Stack(
-          children: [
-            if (displayDetails.backDropToDismiss)
-              IgnorePointer(
-                ignoring: displayDetails.ignorePointer,
-                child: TransparentBackdrop(
-                  backgroundColor: displayDetails.backgroundColor,
-                  onDismiss: displayDetails.onDismiss,
-                  blurBackground: displayDetails.blurBackground,
+        builder: (_) => BlockSemantics(
+          blocking: displayDetails.blockSemantics,
+          child: Stack(
+            children: [
+              if (displayDetails.backDropToDismiss)
+                IgnorePointer(
+                  ignoring: displayDetails.ignorePointer,
+                  child: TransparentBackdrop(
+                    backgroundColor: displayDetails.backgroundColor,
+                    onDismiss: displayDetails.onDismiss,
+                    blurBackground: displayDetails.blurBackground,
+                  ),
                 ),
-              ),
-            switch (displayDetails) {
-              TransformOverlayDisplayDetails(
-                transformTargetId: final targetId,
-                targetAnchor: final targetAnchor,
-                followerAnchor: final followerAnchor,
-                offset: final offset,
-              ) =>
-                CompositedTransformFollower(
-                  targetAnchor: targetAnchor,
-                  followerAnchor: followerAnchor,
-                  link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
-                  showWhenUnlinked: false,
-                  offset: offset ?? Offset.zero,
+              switch (displayDetails) {
+                TransformOverlayDisplayDetails(
+                  transformTargetId: final targetId,
+                  targetAnchor: final targetAnchor,
+                  followerAnchor: final followerAnchor,
+                  offset: final offset,
+                ) =>
+                  CompositedTransformFollower(
+                    targetAnchor: targetAnchor,
+                    followerAnchor: followerAnchor,
+                    link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
+                    showWhenUnlinked: false,
+                    offset: offset ?? Offset.zero,
+                    child: positionedChild,
+                  ),
+                CenteredOverlayDisplayDetails() => CenteredOverlayWidget(
                   child: positionedChild,
                 ),
-              CenteredOverlayDisplayDetails() => CenteredOverlayWidget(
-                child: positionedChild,
-              ),
-              TopOverlayDisplayDetails() => TopOverlayWidget(
-                child: positionedChild,
-              ),
-            },
-          ],
+                TopOverlayDisplayDetails() => TopOverlayWidget(
+                  child: positionedChild,
+                ),
+              },
+            ],
+          ),
         ),
       );
 
