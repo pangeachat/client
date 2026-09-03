@@ -825,17 +825,31 @@ class CallService {
   /// for the life of the call.
   ///
   /// Synapse deduplicates a state write whose content matches the state it
-  /// would replace, returning the existing event id. THIS CALL DOES NOT DEFEND
-  /// AGAINST THAT, because two calls cannot reach it. Content differs only by
-  /// `expires_ts`, so a second call would have to write in the very same
-  /// millisecond as the first across a hang-up, a token request and media
-  /// initialisation — and it would additionally need the first call's ENTER
-  /// write to still be the current state, which means both that its retraction
-  /// never landed and that it never lived long enough to refresh. A defence
-  /// would mean keeping the previous call's key to compare against, which is
-  /// the stored claim about the past this design exists to avoid. If it were
-  /// ever reached, the fix belongs in the write — something per-call in the
-  /// content — not in a second check here.
+  /// would replace, returning the EXISTING event id rather than minting a new
+  /// one. Two calls whose enters both come back with that one id would share an
+  /// anchor. THIS CALL DOES NOT DEFEND AGAINST IT, and the reason is that the
+  /// coincidence it needs is unreachable, not merely unlikely:
+  ///
+  ///  - Every field but `expires_ts` is already identical across two calls in
+  ///    one process (established above: the room-derived call id, the constant
+  ///    application/scope/device id, `membershipID` fixed per VoIP instance,
+  ///    `feeds` unemitted). So the ONLY thing that has to collide is
+  ///    `expires_ts`, and it is `DateTime.now() + expireTsBumpDuration` off the
+  ///    DEVICE clock. For the redial's stamp to equal the first call's to the
+  ///    millisecond, the wall clock has to step BACKWARD by exactly the elapsed
+  ///    time and land on that one millisecond — across a hang-up, a token
+  ///    request and media initialisation, which are seconds of real work.
+  ///  - AND the first call's ENTER event must still be the current membership
+  ///    state for the dedup to match it: its retraction never landed, and it
+  ///    never lived the two minutes to its first refresh (which rewrites
+  ///    `expires_ts` and so mints a fresh id, breaking the match).
+  ///
+  /// A defence would have to compare the redial's id against the previous
+  /// call's — retaining the previous call's key, the stored claim about the
+  /// past this whole design exists to remove; the SDK author and an earlier
+  /// review reached the same conclusion. If it were ever reached, the fix
+  /// belongs in the write — something per-call in the content, so Synapse never
+  /// dedups two calls onto one event — not a second check here.
   ///
   /// The same rule [peerPresenceInCurrentCall] applies to the PEER's
   /// memberships ("state older than this call cannot speak for it"), applied at
@@ -848,19 +862,16 @@ class CallService {
   /// to is carried separately, as `ActiveCall._rejoinAnchorId`.
   String? _publishedMembershipEventId;
 
-  /// The published anchor, but only to the call that owns it.
+  /// The shared-slot anchor, but only to the call that owns it.
   ///
-  /// THE ONE READ of [_publishedMembershipEventId] that hands it out. Every path
-  /// that produces the anchor to a caller goes through here — [membershipEventIdIn]
-  /// answering a device, and [announce] returning to the call it published for —
-  /// so an ungated read that would give a stale caller, or an [announce] a redial
-  /// has superseded, the CURRENT call's id cannot be written by accident. That
-  /// was the collision, reached a fourth way: the enter's own [_anchorOn] refuses
-  /// to STORE a dead call's id, and this is the same refusal on the way OUT.
-  ///
-  /// [owner] is the join attempt the caller belongs to; a value comes back only
-  /// while that attempt still owns the live call, and null the instant a redial
-  /// has taken it over.
+  /// THE ONE READ of [_publishedMembershipEventId] that hands it out, and it is
+  /// no longer the source of truth: [announce] returns each call the id its OWN
+  /// enter published, held per-call on the [ActiveCall]. This slot is only a
+  /// mirror of the CURRENT call's id, read by [membershipEventIdIn] for a device
+  /// asking after an anchor it never captured, and by the re-entrant guard in
+  /// [announce]. It is owner-gated so it can never hand one call's id to
+  /// another: a value comes back only while [owner] still owns the live call,
+  /// null the instant a redial has taken it over.
   String? _anchorFor(int? owner) => owner != null && owner == _anchorOwner
       ? _publishedMembershipEventId
       : null;
@@ -893,6 +904,11 @@ class CallService {
 
   /// Takes the id [enter] published as this call's anchor, if [owner] still owns
   /// the current call.
+  /// Mirrors the current call's published id into the owner-gated service slot
+  /// that [membershipEventIdIn] reads. The value a call keys on is what
+  /// [announce] returns to it, not this slot — so a superseded call does not
+  /// lose its own id here; the refusal below only keeps the SHARED slot from
+  /// being clobbered by a call that is no longer current.
   void _anchorOn(int? owner, String? published) {
     if (published == null) {
       // A STATED FAILURE, NOT A GUESS. enter() returns null when it wrote no
@@ -903,10 +919,11 @@ class CallService {
       return;
     }
     if (owner != _anchorOwner) {
-      Logs().w(
-        'An enter from an earlier call landed after this one began; its '
-        "membership is not this call's to key on",
-      );
+      // A redial superseded this call while its enter was in flight. Its id is
+      // still ITS OWN — [announce] returns it to that call directly — but it is
+      // no longer the CURRENT call, so it must not overwrite the shared slot the
+      // current call now owns.
+      Logs().d('A superseded enter landed; leaving the current call anchor');
       return;
     }
     _publishedMembershipEventId = published;
@@ -1800,21 +1817,21 @@ class CallService {
       }
     }
 
-    // A call adopts only its OWN enter. The signal for "in flight" is this
-    // future, not the session's state: with the LiveKit backend enter() runs
-    // straight from an initialized state to `entered` and never publishes an
-    // intermediate `entering`, so reading the state to spot a running enter
+    // A call adopts only its OWN enter, and it returns the id ITS OWN enter
+    // published — never a shared service slot. The signal for "in flight" is
+    // this future, not the session's state: with the LiveKit backend enter()
+    // runs straight from an initialized state to `entered` and never publishes
+    // an intermediate `entering`, so reading the state to spot a running enter
     // would spot nothing.
     //
     // The enter found here is not necessarily this call's. An enter OUTLIVES
     // its call — retracting waits [_settleEnterWithin] for one and then leaves —
     // and sessions are fetched by room, so a REDIAL can arrive to find the
-    // previous call's enter still settling. Waiting on THAT and returning its
-    // result gave the new call the previous call's membership id, or — once
-    // [_anchorOn] refused it — no anchor at all, its whole transcript lost with
-    // nothing logged. So a foreign enter is neither awaited nor adopted: a new
-    // call publishes its OWN membership, or fails loudly. [_enteringOwner] is
-    // what tells this call's enter from an earlier one's.
+    // previous call's enter still settling. Awaiting THAT and returning its
+    // result gave the new call the previous call's membership id. So a foreign
+    // enter is neither awaited nor adopted: a new call publishes its OWN
+    // membership. [_enteringOwner] is what tells this call's enter from an
+    // earlier one's.
     final owner = _anchorOwner;
     final ourEnter = (_entering != null && _enteringOwner == owner)
         ? _entering
@@ -1822,101 +1839,108 @@ class CallService {
     if (ourEnter != null) {
       // This call's own enter is already running: a re-entrant announce, which
       // waits for that enter rather than starting a second that would
-      // double-write the membership.
-      await ourEnter.timeout(_announceWithin);
-    } else if (session.state != GroupCallState.entered) {
-      // A leave that failed part-way can leave the SDK's session still entered,
-      // and it is reused by the next join. Entering it again throws, which would
-      // make every later call in that room fail for a transient error the
-      // learner never saw. Already-entered is the state we wanted, and the check
-      // above is what skips it.
-
-      // Held so a retract cannot overtake it. Leaving while the enter write is
-      // still in flight let that write land afterwards, advertising a
-      // membership with nothing left tracking it — and this SDK's memberships
-      // stand for minutes.
-
-      // WHICH call is entering, captured with the write. The id comes back from
-      // it and belongs to this call whenever it lands; if a whole new call has
-      // begun by then, [_anchorOn] refuses it. See [_anchorOwner].
-      final entering = _entering = session.enter().then((published) {
-        _anchorOn(owner, published);
-        return published;
-      });
-      _enteringOwner = owner;
-      // Released when the enter itself finishes, NOT when this stops waiting
-      // for it. Clearing it on the way out of a timeout let a retract go ahead
-      // without waiting, and the leave could then be overtaken by an enter that
-      // landed afterwards — advertising a membership with nothing left to take
-      // it back, for the minutes it takes to expire.
-      unawaited(
-        entering
-            .whenComplete(() {
-              if (identical(_entering, entering)) {
-                _entering = null;
-                _enteringOwner = null;
-              }
-            })
-            // Null, and said out loud: a failed enter published no membership
-            // this branch can name. The failure itself is not swallowed — the
-            // await below is what reports it to the caller; this only stops it
-            // surfacing a second time as an unhandled async error.
-            .onError((Object _, StackTrace _) => null),
-      );
-      // Bounded like every other network step in a call's life. Announcing is
-      // awaited by the whole of coming up, and coming up is what the RECORD
-      // waits on — so an enter that never answered meant the call was never
-      // written and every word of it went uncredited, long after the learner
-      // had closed the screen.
-      try {
-        await entering.timeout(_announceWithin);
-      } catch (e, s) {
-        // A FAILED ENTER IS NOT "NO CALL". The SDK writes the membership FIRST
-        // and only then runs the rest of entering — the member-state fan-out,
-        // the peer setup, the delegate's own handling — so a throw from any of
-        // those, and a timeout just the same, leaves a membership that may well
-        // be live in the room with its refresh timer already armed. What is
-        // lost is only the id it was written under.
-        //
-        // Rethrown unchanged, which is what keeps that true downstream: the
-        // failure unwinds the call through its ordinary teardown, and that
-        // teardown RETRACTS. Swallowing it here would report a call that never
-        // started and leave the membership standing for the minutes it takes to
-        // expire, with the peer still watching us sit in it.
-        Logs().w(
-          'The join failed after it may already have published a membership; '
-          'this call cannot name one, and its teardown must still retract',
-          e,
-          s,
-        );
-        rethrow;
+      // double-write the membership, and returns the id THAT enter published.
+      final published = await ourEnter.timeout(_announceWithin);
+      _stopIfDisposed();
+      return published;
+    }
+    if (session.state == GroupCallState.entered) {
+      // A prior announce for THIS call already entered and returned; hand back
+      // the membership it published rather than entering again (which throws on
+      // an entered session). Reached only if announce is called twice for one
+      // call — it is not today, but the guard keeps the throw below meaning
+      // exactly one thing.
+      final existing = _anchorFor(owner);
+      if (existing != null) {
+        _stopIfDisposed();
+        return existing;
       }
-    } else if (_anchorFor(owner) == null) {
-      // The session is already entered, but by an enter this call is not
-      // tracking — one reused from an earlier call whose enter left it entered
-      // (a leave that failed part-way leaves it in the registry). This call can
-      // neither publish its own membership here (entering an entered session
-      // throws) nor adopt the earlier call's, so it has no anchor. Said out loud
-      // rather than returned as a silent null, per the no-silent-failures rule:
-      // a call that reaches recording keyless drops its whole transcript.
-      Logs().w(
-        'Announced into a session already entered by another call; this call '
-        'has no anchor of its own',
+      // F1. A redial was handed a session an EARLIER call left `entered`: that
+      // call's leave failed part-way (its backend dispose threw before the
+      // registry removal), so the session stayed in the registry with
+      // `_leaving` set. This call can publish no membership on it — entering an
+      // entered session throws, and the stuck session refuses fresh writes — so
+      // it has NO anchor of its own. FAIL LOUDLY rather than proceed keyless: a
+      // call that reaches recording with no key drops its whole transcript in
+      // silence. The throw unwinds the call through its ordinary teardown, and
+      // that teardown retracts.
+      _stopIfDisposed();
+      throw StateError(
+        'the redial was handed a session an earlier call left entered; it '
+        'cannot publish its own membership and has no anchor',
       );
     }
-    // A logout can land inside any of the waits above, and answering afterwards
-    // would hand a call's identity to a service the account has already been
-    // torn out of. This is the same check every other await in this file is
-    // followed by, kept where the poll that used to make it stood.
+
+    // This call performs its own enter and returns the id THAT write published.
+    //
+    // Held so a retract cannot overtake it. Leaving while the enter write is
+    // still in flight let that write land afterwards, advertising a membership
+    // with nothing left tracking it — and this SDK's memberships stand for
+    // minutes. [_anchorOn] mirrors the id into the service's owner-gated slot
+    // for [membershipEventIdIn]; the value THIS call keys on is the one returned
+    // below, so a redial superseding this call mid-enter cannot cost it the
+    // membership its own write published.
+    final entering = _entering = session.enter().then((id) {
+      _anchorOn(owner, id);
+      return id;
+    });
+    _enteringOwner = owner;
+    // Released when the enter itself finishes, NOT when this stops waiting for
+    // it. Clearing it on the way out of a timeout let a retract go ahead without
+    // waiting, and the leave could then be overtaken by an enter that landed
+    // afterwards — advertising a membership with nothing left to take it back,
+    // for the minutes it takes to expire.
+    unawaited(
+      entering
+          .whenComplete(() {
+            if (identical(_entering, entering)) {
+              _entering = null;
+              _enteringOwner = null;
+            }
+          })
+          .onError((Object _, StackTrace _) => null),
+    );
+    // Bounded like every other network step in a call's life. Announcing is
+    // awaited by the whole of coming up, and coming up is what the RECORD waits
+    // on — so an enter that never answered meant the call was never written and
+    // every word of it went uncredited, long after the learner had closed the
+    // screen.
+    final String? published;
+    try {
+      published = await entering.timeout(_announceWithin);
+    } catch (e, s) {
+      // A FAILED ENTER IS NOT "NO CALL". The SDK writes the membership FIRST and
+      // only then runs the rest of entering — the member-state fan-out, the peer
+      // setup, the delegate's own handling — so a throw from any of those, and a
+      // timeout just the same, leaves a membership that may well be live in the
+      // room with its refresh timer already armed. What is lost is only the id
+      // it was written under.
+      //
+      // Rethrown unchanged, which is what keeps that true downstream: the
+      // failure unwinds the call through its ordinary teardown, and that
+      // teardown RETRACTS. Swallowing it here would report a call that never
+      // started and leave the membership standing for the minutes it takes to
+      // expire, with the peer still watching us sit in it.
+      Logs().w(
+        'The join failed after it may already have published a membership; '
+        'this call cannot name one, and its teardown must still retract',
+        e,
+        s,
+      );
+      rethrow;
+    }
+    // A logout can land inside the wait above, and answering afterwards would
+    // hand a call's identity to a service the account has already been torn out
+    // of — the same check every other await in this file is followed by.
     _stopIfDisposed();
-    // Through the SAME owner gate as every other anchor read, keyed on the
-    // [owner] this announce captured. An enter can complete for a call a redial
-    // has already superseded — this path records the id even while giving up, so
-    // it resumes here long after — and the field then holds the REDIAL's id.
-    // Returning it ungated handed the dead call the live call's membership, and
-    // both keyed their transcript and card on one id: the collision, reached
-    // through announce's own return. A superseded announce gets null instead.
-    return _anchorFor(owner);
+    // The id THIS call's own enter published, held per-call by the caller. NOT
+    // the service slot: an enter can complete for a call a redial has
+    // superseded, and this call keeps the membership IT wrote while the redial
+    // keeps its own — the two calls each hold their own id, which is what makes
+    // the single shared slot unable to lose either. `null` when the enter wrote
+    // nothing (a leave in flight suppressed it), which [_anchorOn] has already
+    // logged as this call's stated failure.
+    return published;
   }
 
   /// Whether the call [announce] read before waiting is still one this service
