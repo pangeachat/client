@@ -373,51 +373,60 @@ class MessageContent extends StatelessWidget {
                 event.onlyEmotes &&
                 event.numberEmotes > 0 &&
                 event.numberEmotes <= 3;
+            // In the toolbar overlay this node is the screen reader's landing
+            // spot when the toolbar opens (#8783) — see
+            // MessageOverlayController.messageSemanticsIdentifier.
+            final Widget body = Semantics(
+              label: event.text,
+              identifier: overlayController?.messageSemanticsIdentifier,
+              child: HtmlMessage(
+                html: html,
+                textColor: textColor,
+                room: event.room,
+                fontSize: AppConfig.messageFontSize * (bigEmotes ? 5 : 1),
+                limitHeight: !selected,
+                linkStyle: TextStyle(
+                  color: linkColor,
+                  fontSize: AppConfig.messageFontSize,
+                  decoration: TextDecoration.underline,
+                  decorationColor: linkColor,
+                ),
+                onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
+                eventId: event.eventId,
+                checkboxCheckedEvents: event.aggregatedEvents(
+                  timeline,
+                  EventCheckboxRoomExtension.relationshipType,
+                ),
+                // #Pangea
+                event: event,
+                overlayController: overlayController,
+                controller: controller,
+                pangeaMessageEvent: pangeaMessageEvent,
+                nextEvent: nextEvent,
+                prevEvent: prevEvent,
+                onClick:
+                    event.isActivityMessage ||
+                        readingAssistanceMode ==
+                            ReadingAssistanceMode.practiceMode
+                    ? null
+                    : (onTokenClick ?? onClick),
+                vocabLemmas: vocabLemmas,
+                isTransitionAnimation: isTransitionAnimation,
+                isPracticeMode:
+                    readingAssistanceMode == ReadingAssistanceMode.practiceMode,
+                isAnalyticsExample: isAnalyticsExample,
+                useTokenKeys: useTokenKeys,
+                // Pangea#
+              ),
+            );
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Semantics(
-                label: event.text,
-                child: HtmlMessage(
-                  html: html,
-                  textColor: textColor,
-                  room: event.room,
-                  fontSize: AppConfig.messageFontSize * (bigEmotes ? 5 : 1),
-                  limitHeight: !selected,
-                  linkStyle: TextStyle(
-                    color: linkColor,
-                    fontSize: AppConfig.messageFontSize,
-                    decoration: TextDecoration.underline,
-                    decorationColor: linkColor,
-                  ),
-                  onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
-                  eventId: event.eventId,
-                  checkboxCheckedEvents: event.aggregatedEvents(
-                    timeline,
-                    EventCheckboxRoomExtension.relationshipType,
-                  ),
-                  // #Pangea
-                  event: event,
-                  overlayController: overlayController,
-                  controller: controller,
-                  pangeaMessageEvent: pangeaMessageEvent,
-                  nextEvent: nextEvent,
-                  prevEvent: prevEvent,
-                  onClick:
-                      event.isActivityMessage ||
-                          readingAssistanceMode ==
-                              ReadingAssistanceMode.practiceMode
-                      ? null
-                      : (onTokenClick ?? onClick),
-                  vocabLemmas: vocabLemmas,
-                  isTransitionAnimation: isTransitionAnimation,
-                  isPracticeMode:
-                      readingAssistanceMode ==
-                      ReadingAssistanceMode.practiceMode,
-                  isAnalyticsExample: isAnalyticsExample,
-                  useTokenKeys: useTokenKeys,
-                  // Pangea#
-                ),
-              ),
+              child: overlayController == null
+                  ? body
+                  : Focus(
+                      focusNode: overlayController!.messageFocusNode,
+                      child: body,
+                    ),
             );
         }
       case PollEventContent.startType:

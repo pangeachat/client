@@ -32,6 +32,9 @@ import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_bu
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+import 'package:fluffychat/features/overlay/semantics_focus/semantics_focus_stub.dart'
+    if (dart.library.js_interop) 'package:fluffychat/features/overlay/semantics_focus/semantics_focus_web.dart';
+
 /// Controls data at the top level of the toolbar (mainly token / toolbar mode selection)
 class MessageSelectionOverlay extends StatefulWidget {
   final MessageToolbarHost host;
@@ -106,6 +109,17 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   LayerLinkAndKey get overlayMessageLayerLink =>
       MatrixState.pAnyState.layerLinkAndKey(overlayMessageKey);
 
+  /// The overlay's copy of the message is where a screen reader lands when the
+  /// toolbar opens (#8783): the message the learner just selected, with its
+  /// words as the next stops. The node carries this identifier so the web
+  /// engine's element for it can be focused directly, and this focus node so
+  /// keyboard focus and the mobile accessibility bridges follow.
+  String get messageSemanticsIdentifier =>
+      'overlay_message_semantics_${widget._event.eventId}';
+  final FocusNode messageFocusNode = FocusNode(
+    debugLabel: 'reading assistance message',
+  );
+
   /////////////////////////////////////
   /// Lifecycle
   /////////////////////////////////////
@@ -116,9 +130,22 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     selectModeController = SelectModeController(pangeaMessageEvent);
     practiceController = PracticeController(pangeaMessageEvent);
     _initializeTokensAndMode();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => widget.host.setSelectedEvent(event),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.host.setSelectedEvent(event);
+      _focusMessage();
+    });
+  }
+
+  /// Web first, framework second (#8769): the semantics element is focused the
+  /// moment it exists, because VoiceOver ignores focus that lands a frame
+  /// after the chat under its cursor was removed, while the framework's
+  /// request only reaches the semantics tree on the next frame. That request
+  /// then finds focus already inside the app, so it does not hop to the host
+  /// view; on mobile it is what moves the reader.
+  void _focusMessage() {
+    if (!mounted) return;
+    focusSemanticsElement(messageSemanticsIdentifier);
+    messageFocusNode.requestFocus();
   }
 
   @override
@@ -142,6 +169,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     selectModeController.dispose();
     practiceController.dispose();
     selectedTokenNotifier.dispose();
+    messageFocusNode.dispose();
     super.dispose();
   }
 
