@@ -1550,9 +1550,11 @@ packages:
   matrix:
     dependency: "direct main"
     description:
-      path: "../../../../matrix-dart-sdk"
-      relative: true
-    source: path
+      path: "."
+      ref: c77fe893a58f65cb17688545bb275397a8e5164a
+      resolved-ref: c77fe893a58f65cb17688545bb275397a8e5164a
+      url: "https://github.com/pangeachat/matrix-dart-sdk.git"
+    source: git
     version: "4.1.0"
   meta:
     dependency: "direct main"
