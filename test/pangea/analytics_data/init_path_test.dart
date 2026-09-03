@@ -260,4 +260,21 @@ void main() {
 
     expect(service.isInitializing, isTrue);
   });
+
+  test('a send that lands after dispose is dropped, not thrown', () async {
+    // Logging out while init is in flight: dispose closes the dispatcher's
+    // streams and the store, and init's `finally` still sends. That send was
+    // an error-level report whose `isLoggedIn` datum read the analytics
+    // client, which dispose had just nulled -- so the report itself threw
+    // (#8780).
+    final service = await serviceMidInit();
+    await service.dispose();
+
+    expect(service.isLogged, isFalse);
+    expect(service.updateDispatcher.sendEmptyAnalyticsUpdate, returnsNormally);
+    expect(
+      () => service.updateDispatcher.sendActivityAnalyticsUpdate(null),
+      returnsNormally,
+    );
+  });
 }

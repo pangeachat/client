@@ -185,4 +185,51 @@ void main() {
     );
     handle.dispose();
   });
+
+  // Fullscreen puts the panel ABOVE the router: the global call tile renders
+  // it from MaterialApp's builder, where nothing has an Overlay ancestor. A
+  // Tooltip is an OverlayPortal, so `IconButton(tooltip:)` up there threw on
+  // every rebuild and the minimize / exit-fullscreen buttons rendered as error
+  // boxes (#8779). Every earlier test pumped the panel under a Scaffold, which
+  // has an Overlay, and never saw it.
+  testWidgets('the expanded panel renders above the router with no Overlay', (
+    tester,
+  ) async {
+    final handle = tester.ensureSemantics();
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        builder: (context, child) => Stack(
+          children: [
+            child ?? const SizedBox.shrink(),
+            Positioned.fill(child: CallPanel(session: session)),
+          ],
+        ),
+        home: const Scaffold(body: SizedBox.shrink()),
+      ),
+    );
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 50));
+
+    expect(
+      tester.takeException(),
+      isNull,
+      reason: 'anything that needs an Overlay takes the panel controls down',
+    );
+    expect(
+      find.descendant(
+        of: find.byType(CallPanel),
+        matching: find.byType(Tooltip),
+      ),
+      findsNothing,
+      reason: 'a Tooltip has no Overlay to render into up here',
+    );
+    // Dropping the Tooltip must not drop the name a screen reader hears.
+    final l10n = L10n.of(tester.element(find.byType(CallPanel)));
+    expect(find.bySemanticsLabel(l10n.callMinimize), findsOneWidget);
+    expect(find.bySemanticsLabel(l10n.callFullscreen), findsOneWidget);
+    handle.dispose();
+  });
 }

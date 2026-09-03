@@ -133,8 +133,8 @@ class CallPanel extends StatelessWidget {
               children: [
                 Align(
                   alignment: Alignment.topRight,
-                  child: IconButton(
-                    tooltip: l10n.close,
+                  child: _OverlayFreeIconButton(
+                    label: l10n.close,
                     icon: const Icon(Icons.close, color: Colors.white),
                     onPressed: session.dismissSummary,
                   ),
@@ -207,13 +207,13 @@ class CallPanel extends StatelessWidget {
   Widget _topBar(L10n l10n) => Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      IconButton(
-        tooltip: l10n.callMinimize,
+      _OverlayFreeIconButton(
+        label: l10n.callMinimize,
         icon: const Icon(Icons.expand_more, color: Colors.white),
         onPressed: session.minimize,
       ),
-      IconButton(
-        tooltip: session.fullscreen
+      _OverlayFreeIconButton(
+        label: session.fullscreen
             ? l10n.callExitFullscreen
             : l10n.callFullscreen,
         icon: Icon(
@@ -680,4 +680,36 @@ class _MuteBadge extends StatelessWidget {
       ),
     );
   }
+}
+
+/// An icon button whose accessible name is a Semantics label, not a Tooltip.
+///
+/// In fullscreen the global call tile renders [CallPanel] above the router,
+/// where nothing has an Overlay ancestor. A Tooltip is an OverlayPortal, so
+/// `IconButton(tooltip:)` there threw "No Overlay widget found" on every
+/// rebuild and the button rendered as an error box -- a learner in fullscreen
+/// had no minimize or exit-fullscreen control (#8779). Same rule the banner
+/// and [CallMiniTile] already keep.
+class _OverlayFreeIconButton extends StatelessWidget {
+  final Widget icon;
+  final String label;
+  final VoidCallback? onPressed;
+
+  const _OverlayFreeIconButton({
+    required this.icon,
+    required this.label,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    label: label,
+    button: true,
+    child: IconButton(
+      // a11y-ignore: named by the Semantics above -- no Overlay above the
+      // router for a Tooltip to render into.
+      icon: icon,
+      onPressed: onPressed,
+    ),
+  );
 }
