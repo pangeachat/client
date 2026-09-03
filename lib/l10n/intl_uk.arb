@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-09-01 15:39:54.422754",
+    "@@last_modified": "2026-09-02 14:37:14.119724",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9629,7 +9629,6 @@
     "ongoingPendingLabel": "Очікування на приєднання інших",
     "joinableLabel": "Можна приєднатися",
     "inProgressLabel": "Раніше завершено",
-    "availableLabel": "Створити активність",
     "rateActivityTitle": "Як вам ця вправа?",
     "rateActivityCommentHint": "Додати коментар (необов’язково)",
     "rateActivityCommentRejected": "Ваш коментар не вдалося опублікувати. Спробуйте перефразувати його або надішліть свою оцінку без коментаря.",
@@ -9840,5 +9839,18 @@
     "errorRateLimited": "Зараз ми багато завантажуємо. Зачекайте трохи та спробуйте ще раз.",
     "noPermissionToInviteUsers": "У вас немає дозволу запрошувати сюди учасників.",
     "mapPinsKeyboardHint": "Використовуйте клавіші зі стрілками для переміщення між заняттями на карті та натисніть Enter, щоб відкрити одне.",
-    "selectMessageLabel": "Вибрати повідомлення"
+    "selectMessageLabel": "Вибрати повідомлення",
+    "archivedChat": "Архівний чат",
+    "activityReview": "Огляд активності",
+    "activityPanel": "Активність",
+    "coursePage": "Сторінка курсу",
+    "constructLevelSeeds": "Насіння, нові слова",
+    "constructLevelGreens": "Зелень, слова, що ростуть",
+    "constructLevelFlowers": "Квіти, опановані слова",
+    "filterAndSearch": "Фільтрувати та шукати",
+    "participantsOfTotal": "{filled} з {total} гравців",
+    "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
+    "availableLabel": "Ще не розпочато",
+    "seeAll": "Переглянути всі",
+    "seeAllSection": "Переглянути всі {section}"
 }

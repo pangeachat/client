@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:50.980930",
+    "@@last_modified": "2026-09-02 14:37:10.027721",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9702,7 +9702,6 @@
     "ongoingPendingLabel": "Menunggu yang lain bergabung",
     "joinableLabel": "Dapat bergabung",
     "inProgressLabel": "Telah selesai",
-    "availableLabel": "Buat aktivitas",
     "rateActivityTitle": "Bagaimana aktivitas ini?",
     "rateActivityCommentHint": "Tambahkan komentar (opsional)",
     "rateActivityCommentRejected": "Komentar Anda tidak dapat diposting. Coba ubah kata-katanya, atau kirim penilaian Anda tanpa komentar.",
@@ -9913,5 +9912,18 @@
     "errorRateLimited": "Kami sedang memuat banyak data sekarang. Mohon tunggu sebentar dan coba lagi.",
     "noPermissionToInviteUsers": "Anda tidak memiliki izin untuk mengundang anggota di sini.",
     "mapPinsKeyboardHint": "Gunakan tombol panah untuk berpindah antar aktivitas di peta, dan tekan Enter untuk membuka salah satunya.",
-    "selectMessageLabel": "Pilih pesan"
+    "selectMessageLabel": "Pilih pesan",
+    "archivedChat": "Obrolan yang diarsipkan",
+    "activityReview": "Tinjauan aktivitas",
+    "activityPanel": "Aktivitas",
+    "coursePage": "Halaman kursus",
+    "constructLevelSeeds": "Benih, kata-kata baru",
+    "constructLevelGreens": "Tunas, kata-kata yang berkembang",
+    "constructLevelFlowers": "Bunga, kata-kata yang dikuasai",
+    "filterAndSearch": "Filter dan cari",
+    "participantsOfTotal": "{filled} dari {total} pemain",
+    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta, dan lisensi",
+    "availableLabel": "Belum dimulai",
+    "seeAll": "Lihat semua",
+    "seeAllSection": "Lihat semua {section}"
 }

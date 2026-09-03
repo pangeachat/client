@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-09-01 15:39:54.838663",
+    "@@last_modified": "2026-09-02 14:37:15.174284",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Kulindwe abanye ukuthi bajoyine",
     "joinableLabel": "Kuyajoyineka",
     "inProgressLabel": "Kuqedwe ngaphambilini",
-    "availableLabel": "Dala umsebenzi",
     "rateActivityTitle": "Lunjani lolu hlelo?",
     "rateActivityCommentHint": "Faka amazwana (ongakukhetha)",
     "rateActivityCommentRejected": "Amazwana akho awakwazanga ukuthunyelwa. Zama ukuwashintsha, noma thumela isilinganiso sakho ngaphandle kwamazwana.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Silayisha okuningi okwamanje. Sicela ulinde isikhashana bese uzama futhi.",
     "noPermissionToInviteUsers": "Awunayo imvume yokumema amalungu lapha.",
     "mapPinsKeyboardHint": "Sebenzisa izinkinobho zemicibisholo ukuze uhambe phakathi kwemisebenzi kumephu, bese ucindezela u-Enter ukuze uvule eyodwa.",
-    "selectMessageLabel": "Khetha umlayezo"
+    "selectMessageLabel": "Khetha umlayezo",
+    "archivedChat": "Ingxoxo egciniwe",
+    "activityReview": "Ukubuyekeza umsebenzi",
+    "activityPanel": "Umsebenzi",
+    "coursePage": "Ikhasi lesifundo",
+    "constructLevelSeeds": "Imbewu, amagama amasha",
+    "constructLevelGreens": "Okuluhlaza, amagama akhulayo",
+    "constructLevelFlowers": "Izimbali, amagama asezingeni eliphezulu",
+    "filterAndSearch": "Hlunga bese usesha",
+    "participantsOfTotal": "{filled} kwabangu-{total} abadlali",
+    "mapAttributionLabel": "Abanikeli be-OpenStreetMap, i-copyright nelayisense",
+    "availableLabel": "Ayikaqali",
+    "seeAll": "Buka konke",
+    "seeAllSection": "Buka konke {section}"
 }

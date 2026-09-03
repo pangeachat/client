@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-09-01 15:39:50.707134",
+    "@@last_modified": "2026-09-02 14:37:08.549074",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Wachtsje op oaren om mei te dwaan",
     "joinableLabel": "Meidwaanber",
     "inProgressLabel": "Earder foltôge",
-    "availableLabel": "Aktiviteit oanmeitsje",
     "rateActivityTitle": "Hoe wie dizze aktiviteit?",
     "rateActivityCommentHint": "Foegje in opmerking ta (opsjoneel)",
     "rateActivityCommentRejected": "Jo opmerking koe net pleatst wurde. Besykje it oars te formulearjen, of stjoer jo beoardieling sûnder opmerking yn.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Wy lade op it stuit in protte. Wachtsje asjebleft efkes en besykje it opnij.",
     "noPermissionToInviteUsers": "Jo hawwe hjir gjin tastimming om leden út te noegjen.",
     "mapPinsKeyboardHint": "Brûk de pylkestoetsen om te bewegen tusken aktiviteiten op de kaart, en druk op Enter om ien te iepenjen.",
-    "selectMessageLabel": "Berjocht selektearje"
+    "selectMessageLabel": "Berjocht selektearje",
+    "archivedChat": "Argivearre petear",
+    "activityReview": "Aktiviteitsbeoardieling",
+    "activityPanel": "Aktiviteit",
+    "coursePage": "Kurcusside",
+    "constructLevelSeeds": "Siedsjes, nije wurden",
+    "constructLevelGreens": "Griene, groeiende wurden",
+    "constructLevelFlowers": "Blommen, behearske wurden",
+    "filterAndSearch": "Filterje en sykje",
+    "participantsOfTotal": "{filled} fan {total} spilers",
+    "mapAttributionLabel": "OpenStreetMap-meiwurkers, copyright en lisinsje",
+    "availableLabel": "Noch net begûn",
+    "seeAll": "Alles sjen",
+    "seeAllSection": "Alles sjen yn {section}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:52.764848",
+    "@@last_modified": "2026-09-02 14:37:11.977342",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9686,7 +9686,6 @@
     "ongoingPendingLabel": "Venter på at andre skal bli med",
     "joinableLabel": "Kan bli med",
     "inProgressLabel": "Tidligere fullført",
-    "availableLabel": "Opprett aktivitet",
     "rateActivityTitle": "Hvordan var denne aktiviteten?",
     "rateActivityCommentHint": "Legg til en kommentar (valgfritt)",
     "rateActivityCommentRejected": "Kommentaren din kunne ikke publiseres. Prøv å omformulere den, eller send inn vurderingen din uten en kommentar.",
@@ -9897,5 +9896,18 @@
     "errorRateLimited": "Vi laster inn mye akkurat nå. Vent litt og prøv igjen.",
     "noPermissionToInviteUsers": "Du har ikke tillatelse til å invitere medlemmer her.",
     "mapPinsKeyboardHint": "Bruk piltastene til å flytte mellom aktiviteter på kartet, og trykk Enter for å åpne en.",
-    "selectMessageLabel": "Velg melding"
+    "selectMessageLabel": "Velg melding",
+    "archivedChat": "Arkivert chat",
+    "activityReview": "Aktivitetsgjennomgang",
+    "activityPanel": "Aktivitet",
+    "coursePage": "Kursside",
+    "constructLevelSeeds": "Frø, nye ord",
+    "constructLevelGreens": "Grønt, voksende ord",
+    "constructLevelFlowers": "Blomster, mestret ord",
+    "filterAndSearch": "Filtrer og søk",
+    "participantsOfTotal": "{filled} av {total} spillere",
+    "mapAttributionLabel": "OpenStreetMap-bidragsytere, opphavsrett og lisens",
+    "availableLabel": "Ikke startet ennå",
+    "seeAll": "Se alle",
+    "seeAllSection": "Se alle {section}"
 }

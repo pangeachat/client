@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:49.676324",
+    "@@last_modified": "2026-09-02 14:37:08.005165",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9756,7 +9756,6 @@
     "ongoingPendingLabel": "Esperant que s'uneixin els altres",
     "joinableLabel": "Unible",
     "inProgressLabel": "Completat anteriorment",
-    "availableLabel": "Crear activitat",
     "rateActivityTitle": "Què tal aquesta activitat?",
     "rateActivityCommentHint": "Afegeix un comentari (opcional)",
     "rateActivityCommentRejected": "No s'ha pogut publicar el teu comentari. Prova de reformular-lo o envia la teva valoració sense comentari.",
@@ -9967,5 +9966,18 @@
     "errorRateLimited": "Estem carregant moltes coses ara mateix. Espera un moment i torna-ho a provar.",
     "noPermissionToInviteUsers": "No tens permís per convidar membres aquí.",
     "mapPinsKeyboardHint": "Utilitza les tecles de fletxa per moure't entre les activitats del mapa i prem Retorn per obrir-ne una.",
-    "selectMessageLabel": "Selecciona un missatge"
+    "selectMessageLabel": "Selecciona un missatge",
+    "archivedChat": "Xat arxivat",
+    "activityReview": "Revisió d'activitat",
+    "activityPanel": "Activitat",
+    "coursePage": "Pàgina del curs",
+    "constructLevelSeeds": "Llavors, paraules noves",
+    "constructLevelGreens": "Brots, paraules en creixement",
+    "constructLevelFlowers": "Flors, paraules dominades",
+    "filterAndSearch": "Filtra i cerca",
+    "participantsOfTotal": "{filled} de {total} jugadors",
+    "mapAttributionLabel": "Col·laboradors d'OpenStreetMap, drets d'autor i llicència",
+    "availableLabel": "Encara no ha començat",
+    "seeAll": "Veure-ho tot",
+    "seeAllSection": "Veure-ho tot a {section}"
 }

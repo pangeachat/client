@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-09-01 15:39:50.296121",
+    "@@last_modified": "2026-09-02 14:37:08.508485",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -9984,7 +9984,6 @@
     "ongoingPendingLabel": "En attente que d'autres rejoignent",
     "joinableLabel": "Rejoignable",
     "inProgressLabel": "Précédemment terminé",
-    "availableLabel": "Créer une activité",
     "rateActivityTitle": "Comment s'est passée cette activité ?",
     "rateActivityCommentHint": "Ajouter un commentaire (facultatif)",
     "rateActivityCommentRejected": "Votre commentaire n'a pas pu être publié. Essayez de le reformuler ou soumettez votre évaluation sans commentaire.",
@@ -10195,5 +10194,18 @@
     "errorRateLimited": "Nous avons beaucoup de demandes en ce moment. Veuillez patienter un instant et réessayer.",
     "noPermissionToInviteUsers": "Vous n'avez pas la permission d'inviter des membres ici.",
     "mapPinsKeyboardHint": "Utilisez les touches fléchées pour vous déplacer entre les activités sur la carte, et appuyez sur Entrée pour en ouvrir une.",
-    "selectMessageLabel": "Sélectionner le message"
+    "selectMessageLabel": "Sélectionner le message",
+    "archivedChat": "Discussion archivée",
+    "activityReview": "Bilan d'activité",
+    "activityPanel": "Activité",
+    "coursePage": "Page du cours",
+    "constructLevelSeeds": "Graines, nouveaux mots",
+    "constructLevelGreens": "Pousses, mots en croissance",
+    "constructLevelFlowers": "Fleurs, mots maîtrisés",
+    "filterAndSearch": "Filtrer et rechercher",
+    "participantsOfTotal": "{filled} sur {total} joueurs",
+    "mapAttributionLabel": "Contributeurs OpenStreetMap, droits d'auteur et licence",
+    "availableLabel": "Pas encore commencé",
+    "seeAll": "Tout voir",
+    "seeAllSection": "Voir tout {section}"
 }

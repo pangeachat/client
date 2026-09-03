@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-09-01 15:39:53.410655",
+    "@@last_modified": "2026-09-02 14:37:13.123057",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10601,7 +10601,6 @@
     "ongoingPendingLabel": "Ожидание присоединения других",
     "joinableLabel": "Можно присоединиться",
     "inProgressLabel": "Ранее завершено",
-    "availableLabel": "Создать активность",
     "rateActivityTitle": "Как вам это занятие?",
     "rateActivityCommentHint": "Добавить комментарий (необязательно)",
     "rateActivityCommentRejected": "Ваш комментарий не удалось опубликовать. Попробуйте перефразировать его или отправьте оценку без комментария.",
@@ -10812,5 +10811,18 @@
     "errorRateLimited": "Сейчас у нас большая нагрузка. Пожалуйста, подождите немного и попробуйте снова.",
     "noPermissionToInviteUsers": "У вас нет разрешения приглашать сюда участников.",
     "mapPinsKeyboardHint": "Используйте клавиши со стрелками для перемещения между активностями на карте и нажмите Enter, чтобы открыть одну из них.",
-    "selectMessageLabel": "Выбрать сообщение"
+    "selectMessageLabel": "Выбрать сообщение",
+    "archivedChat": "Архивированный чат",
+    "activityReview": "Обзор активности",
+    "activityPanel": "Активность",
+    "coursePage": "Страница курса",
+    "constructLevelSeeds": "Семена, новые слова",
+    "constructLevelGreens": "Всходы, растущие слова",
+    "constructLevelFlowers": "Цветы, освоенные слова",
+    "filterAndSearch": "Фильтр и поиск",
+    "participantsOfTotal": "{filled} из {total} игроков",
+    "mapAttributionLabel": "Участники OpenStreetMap, авторские права и лицензия",
+    "availableLabel": "Еще не началось",
+    "seeAll": "Посмотреть все",
+    "seeAllSection": "Посмотреть все {section}"
 }

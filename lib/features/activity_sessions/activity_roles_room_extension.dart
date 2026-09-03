@@ -4,11 +4,13 @@ import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_session_filled_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -219,6 +221,26 @@ extension ActivityRolesRoomExtension on Room {
       "",
       currentRoles.toJson(),
     );
+    if (_leavesNoOpenSeat(currentRoles)) await announceActivitySessionFilled();
+  }
+
+  /// Whether [roles] — the role state just written, read from the written
+  /// model because its sync echo has not landed yet — leaves this session with
+  /// no open seat, by the same plan-role count [numRemainingRoles] uses. The
+  /// caller just picked a role off this plan, so a missing plan is a hydration
+  /// bug worth reporting, not a state to default.
+  bool _leavesNoOpenSeat(ActivityRolesModel roles) {
+    final plan = activityPlan;
+    if (plan == null) {
+      ErrorHandler.logError(
+        e: "joinActivity without a hydrated plan",
+        data: {"roomId": id},
+        level: SentryLevel.warning,
+      );
+      return false;
+    }
+    return filterAssignedRoles(roles.roles, _membershipOf).length >=
+        plan.roles.length;
   }
 
   Future<void> continueActivity() async {

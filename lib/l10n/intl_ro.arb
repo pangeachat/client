@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:53.350164",
+    "@@last_modified": "2026-09-02 14:37:12.670689",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10361,7 +10361,6 @@
     "ongoingPendingLabel": "Se așteaptă ca alții să se alăture",
     "joinableLabel": "Disponibil pentru alăturare",
     "inProgressLabel": "Finalizat anterior",
-    "availableLabel": "Creează activitate",
     "rateActivityTitle": "Cum a fost această activitate?",
     "rateActivityCommentHint": "Adaugă un comentariu (opțional)",
     "rateActivityCommentRejected": "Comentariul tău nu a putut fi postat. Încearcă să-l reformulezi sau trimite evaluarea fără un comentariu.",
@@ -10572,5 +10571,18 @@
     "errorRateLimited": "Încărcăm multe acum. Te rugăm să aștepți un moment și să încerci din nou.",
     "noPermissionToInviteUsers": "Nu ai permisiunea de a invita membri aici.",
     "mapPinsKeyboardHint": "Folosește tastele săgeți pentru a te deplasa între activitățile de pe hartă și apasă Enter pentru a deschide una.",
-    "selectMessageLabel": "Selectează mesajul"
+    "selectMessageLabel": "Selectează mesajul",
+    "archivedChat": "Chat arhivat",
+    "activityReview": "Revizuirea activității",
+    "activityPanel": "Activitate",
+    "coursePage": "Pagina cursului",
+    "constructLevelSeeds": "Semințe, cuvinte noi",
+    "constructLevelGreens": "Verdețuri, cuvinte în creștere",
+    "constructLevelFlowers": "Flori, cuvinte stăpânite",
+    "filterAndSearch": "Filtrează și caută",
+    "participantsOfTotal": "{filled} din {total} jucători",
+    "mapAttributionLabel": "Contribuitori OpenStreetMap, drepturi de autor și licență",
+    "availableLabel": "Nu a început încă",
+    "seeAll": "Vezi tot",
+    "seeAllSection": "Vezi tot {section}"
 }

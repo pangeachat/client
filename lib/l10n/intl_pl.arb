@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-09-01 15:39:52.975330",
+    "@@last_modified": "2026-09-02 14:37:12.522150",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9714,7 +9714,6 @@
     "ongoingPendingLabel": "Czekam, aż inni dołączą",
     "joinableLabel": "Dołączalne",
     "inProgressLabel": "Wcześniej ukończone",
-    "availableLabel": "Utwórz aktywność",
     "rateActivityTitle": "Jak oceniasz to ćwiczenie?",
     "rateActivityCommentHint": "Dodaj komentarz (opcjonalnie)",
     "rateActivityCommentRejected": "Nie udało się opublikować Twojego komentarza. Spróbuj go przeformułować lub prześlij swoją ocenę bez komentarza.",
@@ -9925,5 +9924,18 @@
     "errorRateLimited": "Obecnie ładujemy dużo danych. Poczekaj chwilę i spróbuj ponownie.",
     "noPermissionToInviteUsers": "Nie masz uprawnień, aby zapraszać tu członków.",
     "mapPinsKeyboardHint": "Użyj klawiszy strzałek, aby poruszać się między aktywnościami na mapie, i naciśnij Enter, aby otworzyć wybraną.",
-    "selectMessageLabel": "Wybierz wiadomość"
+    "selectMessageLabel": "Wybierz wiadomość",
+    "archivedChat": "Archiwum czatu",
+    "activityReview": "Przegląd aktywności",
+    "activityPanel": "Aktywność",
+    "coursePage": "Strona kursu",
+    "constructLevelSeeds": "Nasiona, nowe słowa",
+    "constructLevelGreens": "Kiełki, rosnące słowa",
+    "constructLevelFlowers": "Kwiaty, opanowane słowa",
+    "filterAndSearch": "Filtruj i szukaj",
+    "participantsOfTotal": "{filled} z {total} graczy",
+    "mapAttributionLabel": "Współtwórcy OpenStreetMap, prawa autorskie i licencja",
+    "availableLabel": "Jeszcze nie rozpoczęto",
+    "seeAll": "Zobacz wszystkie",
+    "seeAllSection": "Zobacz wszystkie {section}"
 }

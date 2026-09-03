@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-09-01 15:39:53.560365",
+    "@@last_modified": "2026-09-02 14:37:13.130966",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "අනෙක් අය සම්බන්ධ වන තෙක් බලා සිටීම",
     "joinableLabel": "එක්විය හැක",
     "inProgressLabel": "මීට පෙර සම්පූර්ණ කරන ලදී",
-    "availableLabel": "ක්‍රියාකාරකම් සාදන්න",
     "rateActivityTitle": "මෙම ක්‍රියාකාරකම කෙබඳුද?",
     "rateActivityCommentHint": "අදහසක් එක් කරන්න (විකල්ප)",
     "rateActivityCommentRejected": "ඔබගේ අදහස පළ කිරීමට නොහැකි විය. එය නැවත සකස් කිරීමට උත්සාහ කරන්න, නැතහොත් අදහසක් නොමැතිව ඔබගේ ශ්‍රේණිගත කිරීම ඉදිරිපත් කරන්න.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "අපි දැනට බොහෝ දේ පූරණය කරමින් සිටිමු. කරුණාකර මොහොතක් රැඳී සිට නැවත උත්සාහ කරන්න.",
     "noPermissionToInviteUsers": "ඔබට මෙහි සාමාජිකයන්ට ආරාධනා කිරීමට අවසර නැත.",
     "mapPinsKeyboardHint": "සිතියමේ ඇති ක්‍රියාකාරකම් අතර ගමන් කිරීමට ඊතල යතුරු භාවිතා කරන්න, සහ එකක් විවෘත කිරීමට Enter ඔබන්න.",
-    "selectMessageLabel": "පණිවිඩය තෝරන්න"
+    "selectMessageLabel": "පණිවිඩය තෝරන්න",
+    "archivedChat": "සංරක්ෂිත කතාබස්",
+    "activityReview": "ක්‍රියාකාරකම් සමාලෝචනය",
+    "activityPanel": "ක්‍රියාකාරකම්",
+    "coursePage": "පාඨමාලා පිටුව",
+    "constructLevelSeeds": "බීජ, නව වචන",
+    "constructLevelGreens": "කොළ, වැඩෙන වචන",
+    "constructLevelFlowers": "මල්, ප්‍රගුණ කළ වචන",
+    "filterAndSearch": "පෙරහන් කර සොයන්න",
+    "participantsOfTotal": "{total} ක්‍රීඩකයන්ගෙන් {filled}ක්",
+    "mapAttributionLabel": "OpenStreetMap දායකයින්, ප්‍රකාශන හිමිකම සහ බලපත්‍රය",
+    "availableLabel": "තවම ආරම්භ කර නැත",
+    "seeAll": "සියල්ල බලන්න",
+    "seeAllSection": "සියලු {section} බලන්න"
 }

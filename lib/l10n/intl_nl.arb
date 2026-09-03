@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:52.917148",
+    "@@last_modified": "2026-09-02 14:37:12.102807",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9629,7 +9629,6 @@
     "ongoingPendingLabel": "Wachten tot anderen meedoen",
     "joinableLabel": "Deelneembaar",
     "inProgressLabel": "Eerder voltooid",
-    "availableLabel": "Activiteit aanmaken",
     "rateActivityTitle": "Hoe was deze activiteit?",
     "rateActivityCommentHint": "Voeg een opmerking toe (optioneel)",
     "rateActivityCommentRejected": "Je opmerking kon niet worden geplaatst. Probeer het anders te formuleren, of verstuur je beoordeling zonder opmerking.",
@@ -9840,5 +9839,18 @@
     "errorRateLimited": "We laden momenteel veel. Wacht even en probeer het opnieuw.",
     "noPermissionToInviteUsers": "Je hebt hier geen toestemming om leden uit te nodigen.",
     "mapPinsKeyboardHint": "Gebruik de pijltjestoetsen om tussen activiteiten op de kaart te bewegen en druk op Enter om er een te openen.",
-    "selectMessageLabel": "Bericht selecteren"
+    "selectMessageLabel": "Bericht selecteren",
+    "archivedChat": "Gearchiveerde chat",
+    "activityReview": "Activiteitenoverzicht",
+    "activityPanel": "Activiteit",
+    "coursePage": "Cursuspagina",
+    "constructLevelSeeds": "Zaden, nieuwe woorden",
+    "constructLevelGreens": "Groenten, groeiende woorden",
+    "constructLevelFlowers": "Bloemen, beheerste woorden",
+    "filterAndSearch": "Filteren en zoeken",
+    "participantsOfTotal": "{filled} van de {total} spelers",
+    "mapAttributionLabel": "OpenStreetMap-medewerkers, auteursrecht en licentie",
+    "availableLabel": "Nog niet gestart",
+    "seeAll": "Alles weergeven",
+    "seeAllSection": "Alle {section} weergeven"
 }

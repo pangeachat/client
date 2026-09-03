@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-09-01 15:39:51.000973",
+    "@@last_modified": "2026-09-02 14:37:09.346984",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10065,7 +10065,6 @@
     "ongoingPendingLabel": "Čekanje da se drugi pridruže",
     "joinableLabel": "Pridruživo",
     "inProgressLabel": "Prethodno dovršeno",
-    "availableLabel": "Stvori aktivnost",
     "rateActivityTitle": "Kako je bilo u ovoj aktivnosti?",
     "rateActivityCommentHint": "Dodajte komentar (opcionalno)",
     "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte ga preformulirati ili pošaljite svoju ocjenu bez komentara.",
@@ -10276,5 +10275,18 @@
     "errorRateLimited": "Trenutno je veliko opterećenje. Pričekajte trenutak i pokušajte ponovno.",
     "noPermissionToInviteUsers": "Nemate dopuštenje za pozivanje članova ovdje.",
     "mapPinsKeyboardHint": "Koristite tipke sa strelicama za kretanje između aktivnosti na karti, a pritisnite Enter za otvaranje jedne.",
-    "selectMessageLabel": "Odaberi poruku"
+    "selectMessageLabel": "Odaberi poruku",
+    "archivedChat": "Arhivirani razgovor",
+    "activityReview": "Pregled aktivnosti",
+    "activityPanel": "Aktivnost",
+    "coursePage": "Stranica tečaja",
+    "constructLevelSeeds": "Sjemenke, nove riječi",
+    "constructLevelGreens": "Zelenje, riječi u nastajanju",
+    "constructLevelFlowers": "Cvijeće, usvojene riječi",
+    "filterAndSearch": "Filtriraj i pretraži",
+    "participantsOfTotal": "{filled} od {total} igrača",
+    "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
+    "availableLabel": "Još nije započeto",
+    "seeAll": "Vidi sve",
+    "seeAllSection": "Vidi sve {section}"
 }

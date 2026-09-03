@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-09-01 15:39:53.715827",
+    "@@last_modified": "2026-09-02 14:37:13.121714",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Faʻatali mo isi e auai",
     "joinableLabel": "Mafai ona auai",
     "inProgressLabel": "Ua maeʻa muamua",
-    "availableLabel": "Fausia se gaioiga",
     "rateActivityTitle": "Na fa'afefea lenei gaioiga?",
     "rateActivityCommentHint": "Fa'aopoopo se fa'amatalaga (filifiliga)",
     "rateActivityCommentRejected": "E le'i mafai ona lafo lau fa'amatalaga. Taumafai e toe fa'aleleia, pe lafo lau fua faatatau e aunoa ma se fa'amatalaga.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "O lo'o matou utaina le tele o mea i le taimi nei. Fa'amolemole fa'atali mo sina taimi ona toe taumafai lea.",
     "noPermissionToInviteUsers": "E leai sau faatagaga e valaaulia ai tagata iinei.",
     "mapPinsKeyboardHint": "Fa'aaoga ki aū e fealua'i ai i le va o gaioiga i luga o le fa'afanua, ma oomi le Enter e tatala ai se tasi.",
-    "selectMessageLabel": "Filifili le feʻau"
+    "selectMessageLabel": "Filifili le feʻau",
+    "archivedChat": "Talanoaga fa'amaumauina",
+    "activityReview": "Iloiloga o gaioiga",
+    "activityPanel": "Gaioiga",
+    "coursePage": "Itulau o le kosi",
+    "constructLevelSeeds": "Fatulaau, upu fou",
+    "constructLevelGreens": "Laʻau, upu o loʻo tupu",
+    "constructLevelFlowers": "Fugalaau, upu ua atamai",
+    "filterAndSearch": "Faamama ma suʻe",
+    "participantsOfTotal": "{filled} o le {total} tagata taaalo",
+    "mapAttributionLabel": "OpenStreetMap tagata foaʻi, puletaofia ma laisene",
+    "availableLabel": "E leʻi amataina",
+    "seeAll": "Vaʻai uma",
+    "seeAllSection": "Vaʻai uma {section}"
 }

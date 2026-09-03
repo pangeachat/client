@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-09-01 15:39:49.834112",
+    "@@last_modified": "2026-09-02 14:37:07.939768",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Yn aros i eraill ymuno",
     "joinableLabel": "Yn agored i ymuno",
     "inProgressLabel": "Wedi'i gwblhau'n flaenorol",
-    "availableLabel": "Creu gweithgaredd",
     "rateActivityTitle": "Sut oedd y gweithgaredd hwn?",
     "rateActivityCommentHint": "Ychwanegu sylw (dewisol)",
     "rateActivityCommentRejected": "Ni ellid postio'ch sylw. Ceisiwch ei aildrefnu, neu cyflwynwch eich sgôr heb sylw.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Rydym yn llwytho llawer ar hyn o bryd. Arhoswch funud a cheisiwch eto.",
     "noPermissionToInviteUsers": "Does gennych chi ddim caniatâd i wahodd aelodau yma.",
     "mapPinsKeyboardHint": "Defnyddiwch y bysellau saeth i symud rhwng gweithgareddau ar y map, a gwasgwch Enter i agor un.",
-    "selectMessageLabel": "Dewis neges"
+    "selectMessageLabel": "Dewis neges",
+    "archivedChat": "Sgwrs wedi'i harchifo",
+    "activityReview": "Adolygiad gweithgaredd",
+    "activityPanel": "Gweithgaredd",
+    "coursePage": "Tudalen cwrs",
+    "constructLevelSeeds": "Hadau, geiriau newydd",
+    "constructLevelGreens": "Gwyrddion, geiriau sy'n tyfu",
+    "constructLevelFlowers": "Blodau, geiriau wedi'u meistroli",
+    "filterAndSearch": "Hidlo a chwilio",
+    "participantsOfTotal": "{filled} o {total} chwaraewr",
+    "mapAttributionLabel": "Cyfranwyr OpenStreetMap, hawlfraint a thrwydded",
+    "availableLabel": "Heb ddechrau eto",
+    "seeAll": "Gweld y cyfan",
+    "seeAllSection": "Gweld pob {section}"
 }

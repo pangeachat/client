@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:54.504397",
+    "@@last_modified": "2026-09-02 14:37:14.217686",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6921,7 +6921,6 @@
     "ongoingPendingLabel": "Đang chờ những người khác tham gia",
     "joinableLabel": "Có thể tham gia",
     "inProgressLabel": "Đã hoàn thành trước đó",
-    "availableLabel": "Tạo hoạt động",
     "rateActivityTitle": "Hoạt động này thế nào?",
     "rateActivityCommentHint": "Thêm bình luận (không bắt buộc)",
     "rateActivityCommentRejected": "Không thể đăng bình luận của bạn. Hãy thử diễn đạt lại hoặc gửi đánh giá mà không có bình luận.",
@@ -7132,5 +7131,18 @@
     "errorRateLimited": "Chúng tôi đang tải rất nhiều dữ liệu. Vui lòng đợi một lát và thử lại.",
     "noPermissionToInviteUsers": "Bạn không có quyền mời thành viên tại đây.",
     "mapPinsKeyboardHint": "Sử dụng các phím mũi tên để di chuyển giữa các hoạt động trên bản đồ và nhấn Enter để mở một hoạt động.",
-    "selectMessageLabel": "Chọn tin nhắn"
+    "selectMessageLabel": "Chọn tin nhắn",
+    "archivedChat": "Trò chuyện đã lưu trữ",
+    "activityReview": "Xem lại hoạt động",
+    "activityPanel": "Hoạt động",
+    "coursePage": "Trang khóa học",
+    "constructLevelSeeds": "Hạt giống, từ mới",
+    "constructLevelGreens": "Cây non, từ đang học",
+    "constructLevelFlowers": "Hoa, từ đã thành thạo",
+    "filterAndSearch": "Lọc và tìm kiếm",
+    "participantsOfTotal": "{filled} trên {total} người chơi",
+    "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
+    "availableLabel": "Chưa bắt đầu",
+    "seeAll": "Xem tất cả",
+    "seeAllSection": "Xem tất cả {section}"
 }

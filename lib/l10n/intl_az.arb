@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-09-01 15:39:49.334467",
+    "@@last_modified": "2026-09-02 14:37:07.208036",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Başqalarının qoşulması gözlənilir",
     "joinableLabel": "Qoşula bilər",
     "inProgressLabel": "Əvvəllər tamamlanıb",
-    "availableLabel": "Fəaliyyət yarat",
     "rateActivityTitle": "Bu fəaliyyət necə idi?",
     "rateActivityCommentHint": "Şərh əlavə edin (könüllü)",
     "rateActivityCommentRejected": "Şərhiniz göndərilə bilmədi. Yenidən yazmağa çalışın və ya şərhi olmadan qiymətləndirmənizi göndərin.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Hazırda çoxlu məlumat yükləyirik. Zəhmət olmasa bir az gözləyin və yenidən cəhd edin.",
     "noPermissionToInviteUsers": "Bura üzv dəvət etmək icazəniz yoxdur.",
     "mapPinsKeyboardHint": "Xəritədəki fəaliyyətlər arasında hərəkət etmək üçün ox düymələrindən istifadə edin və birini açmaq üçün Enter düyməsini basın.",
-    "selectMessageLabel": "Mesajı seçin"
+    "selectMessageLabel": "Mesajı seçin",
+    "archivedChat": "Arxivlənmiş söhbət",
+    "activityReview": "Fəaliyyətə baxış",
+    "activityPanel": "Fəaliyyət",
+    "coursePage": "Kurs səhifəsi",
+    "constructLevelSeeds": "Toxumlar, yeni sözlər",
+    "constructLevelGreens": "Yaşıllıqlar, böyüyən sözlər",
+    "constructLevelFlowers": "Güllər, mənimsənilmiş sözlər",
+    "filterAndSearch": "Filtrlə və axtar",
+    "participantsOfTotal": "{total} oyunçudan {filled} nəfəri",
+    "mapAttributionLabel": "OpenStreetMap iştirakçıları, müəllif hüquqları və lisenziya",
+    "availableLabel": "Hələ başlamayıb",
+    "seeAll": "Hamısına baxın",
+    "seeAllSection": "Bütün {section} baxın"
 }

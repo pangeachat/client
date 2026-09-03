@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-01 15:39:50.385230",
+    "@@last_modified": "2026-09-02 14:37:08.597513",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9666,7 +9666,6 @@
     "ongoingPendingLabel": "Odotetaan muiden liittymistä",
     "joinableLabel": "Liityttävissä",
     "inProgressLabel": "Aiemmin suoritettu",
-    "availableLabel": "Luo toiminto",
     "rateActivityTitle": "Miten tämä aktiviteetti sujui?",
     "rateActivityCommentHint": "Lisää kommentti (valinnainen)",
     "rateActivityCommentRejected": "Kommenttiasi ei voitu julkaista. Yritä muotoilla se uudelleen tai lähetä arviosi ilman kommenttia.",
@@ -9877,5 +9876,18 @@
     "errorRateLimited": "Lataamme juuri nyt paljon. Odota hetki ja yritä uudelleen.",
     "noPermissionToInviteUsers": "Sinulla ei ole lupaa kutsua jäseniä tänne.",
     "mapPinsKeyboardHint": "Käytä nuolinäppäimiä siirtyäksesi kartan aktiviteettien välillä ja avaa aktiviteetti painamalla Enter-näppäintä.",
-    "selectMessageLabel": "Valitse viesti"
+    "selectMessageLabel": "Valitse viesti",
+    "archivedChat": "Arkistoitu keskustelu",
+    "activityReview": "Aktiviteettikatsaus",
+    "activityPanel": "Aktiviteetti",
+    "coursePage": "Kurssisivu",
+    "constructLevelSeeds": "Siemenet, uudet sanat",
+    "constructLevelGreens": "Vihreät, kasvavat sanat",
+    "constructLevelFlowers": "Kukat, hallitut sanat",
+    "filterAndSearch": "Suodata ja hae",
+    "participantsOfTotal": "{filled}/{total} pelaajaa",
+    "mapAttributionLabel": "OpenStreetMapin tekijät, tekijänoikeudet ja lisenssi",
+    "availableLabel": "Ei vielä aloitettu",
+    "seeAll": "Näytä kaikki",
+    "seeAllSection": "Näytä kaikki {section}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-09-01 15:39:50.964940",
+    "@@last_modified": "2026-09-02 14:37:10.149680",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9732,7 +9732,6 @@
     "ongoingPendingLabel": "Várakozás a többiekre",
     "joinableLabel": "Csatlakozható",
     "inProgressLabel": "Korábban befejezett",
-    "availableLabel": "Tevékenység létrehozása",
     "rateActivityTitle": "Milyen volt ez a tevékenység?",
     "rateActivityCommentHint": "Megjegyzés hozzáadása (opcionális)",
     "rateActivityCommentRejected": "A megjegyzésedet nem sikerült közzétenni. Próbáld meg átfogalmazni, vagy küldd be az értékelésedet megjegyzés nélkül.",
@@ -9943,5 +9942,18 @@
     "errorRateLimited": "Jelenleg sok adatot töltünk be. Kérjük, várjon egy pillanatot, majd próbálja újra.",
     "noPermissionToInviteUsers": "Nincs jogosultságod tagokat meghívni ide.",
     "mapPinsKeyboardHint": "A térképen lévő tevékenységek közötti mozgáshoz használja a nyílbillentyűket, a megnyitáshoz pedig nyomja meg az Entert.",
-    "selectMessageLabel": "Üzenet kiválasztása"
+    "selectMessageLabel": "Üzenet kiválasztása",
+    "archivedChat": "Archivált csevegés",
+    "activityReview": "Tevékenység áttekintése",
+    "activityPanel": "Tevékenység",
+    "coursePage": "Tanfolyam oldal",
+    "constructLevelSeeds": "Magok, új szavak",
+    "constructLevelGreens": "Hajtások, fejlődő szavak",
+    "constructLevelFlowers": "Virágok, elsajátított szavak",
+    "filterAndSearch": "Szűrés és keresés",
+    "participantsOfTotal": "{filled}/{total} játékos",
+    "mapAttributionLabel": "OpenStreetMap közreműködők, szerzői jogok és licenc",
+    "availableLabel": "Még nem kezdődött el",
+    "seeAll": "Összes megtekintése",
+    "seeAllSection": "Összes {section} megtekintése"
 }

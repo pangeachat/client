@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-09-01 15:39:53.156754",
+    "@@last_modified": "2026-09-02 14:37:12.496590",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "د نورو د شاملیدو په تمه",
     "joinableLabel": "د ګډون وړ",
     "inProgressLabel": "پخوا بشپړ شوی",
-    "availableLabel": "فعالیت جوړ کړئ",
     "rateActivityTitle": "دا فعالیت څنګه و؟",
     "rateActivityCommentHint": "یو نظر اضافه کړئ (اختیاري)",
     "rateActivityCommentRejected": "ستاسو نظر نشو خپرولی. هڅه وکړئ چې بیا یې ولیکئ، یا خپله درجه بې له کوم نظر څخه وسپارئ.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "موږ اوس مهال ډېر څه باروو. مهرباني وکړئ یوه شیبه انتظار وکړئ او بیا هڅه وکړئ.",
     "noPermissionToInviteUsers": "تاسو دلته د غړو بللو اجازه نلرئ.",
     "mapPinsKeyboardHint": "د نقشې پر فعالیتونو د تګ راتګ لپاره د غشي کیلي وکاروئ، او د یوې پرانیستلو لپاره Enter کېکاږئ.",
-    "selectMessageLabel": "پیغام وټاکئ"
+    "selectMessageLabel": "پیغام وټاکئ",
+    "archivedChat": "آرشیف شوی چیٹ",
+    "activityReview": "فعالیت بیاکتنه",
+    "activityPanel": "فعالیت",
+    "coursePage": "د کورس پاڼه",
+    "constructLevelSeeds": "تخمونه، نوې کلمې",
+    "constructLevelGreens": "شنه، وده کوونکې کلمې",
+    "constructLevelFlowers": "ګلان، ماسټر شوې کلمې",
+    "filterAndSearch": "فلټر او لټون",
+    "participantsOfTotal": "د {total} لوبغاړو څخه {filled}",
+    "mapAttributionLabel": "د OpenStreetMap مرسته کوونکي، د چاپ حق او جواز",
+    "availableLabel": "تر اوسه نه دی پیل شوی",
+    "seeAll": "ټول وګورئ",
+    "seeAllSection": "ټول {section} وګورئ"
 }

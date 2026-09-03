@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-09-01 15:39:53.014664",
+    "@@last_modified": "2026-09-02 14:37:12.862338",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "ਦੂਜਿਆਂ ਦੇ ਸ਼ਾਮਲ ਹੋਣ ਦੀ ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ",
     "joinableLabel": "ਸ਼ਾਮਲ ਹੋਣ ਯੋਗ",
     "inProgressLabel": "ਪਹਿਲਾਂ ਪੂਰਾ ਕੀਤਾ ਗਿਆ",
-    "availableLabel": "ਗਤੀਵਿਧੀ ਬਣਾਓ",
     "rateActivityTitle": "ਇਹ ਗਤੀਵਿਧੀ ਕਿਹੋ ਜਿਹੀ ਸੀ?",
     "rateActivityCommentHint": "ਇੱਕ ਟਿੱਪਣੀ ਸ਼ਾਮਲ ਕਰੋ (ਵਿਕਲਪਿਕ)",
     "rateActivityCommentRejected": "ਤੁਹਾਡੀ ਟਿੱਪਣੀ ਪੋਸਟ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ। ਇਸਨੂੰ ਦੁਬਾਰਾ ਲਿਖਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਬਿਨਾਂ ਟਿੱਪਣੀ ਦੇ ਆਪਣੀ ਰੇਟਿੰਗ ਜਮ੍ਹਾਂ ਕਰੋ।",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "ਅਸੀਂ ਇਸ ਸਮੇਂ ਬਹੁਤ ਕੁਝ ਲੋਡ ਕਰ ਰਹੇ ਹਾਂ। ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਪਲ ਉਡੀਕ ਕਰੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
     "noPermissionToInviteUsers": "ਤੁਹਾਨੂੰ ਇੱਥੇ ਮੈਂਬਰਾਂ ਨੂੰ ਸੱਦਾ ਦੇਣ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ।",
     "mapPinsKeyboardHint": "ਨਕਸ਼ੇ 'ਤੇ ਗਤੀਵਿਧੀਆਂ ਵਿਚਕਾਰ ਜਾਣ ਲਈ ਤੀਰ ਕੁੰਜੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰੋ, ਅਤੇ ਕਿਸੇ ਇੱਕ ਨੂੰ ਖੋਲ੍ਹਣ ਲਈ Enter ਦਬਾਓ।",
-    "selectMessageLabel": "ਸੁਨੇਹਾ ਚੁਣੋ"
+    "selectMessageLabel": "ਸੁਨੇਹਾ ਚੁਣੋ",
+    "archivedChat": "ਪੁਰਾਲੇਖਬੱਧ ਚੈਟ",
+    "activityReview": "ਗਤੀਵਿਧੀ ਸਮੀਖਿਆ",
+    "activityPanel": "ਗਤੀਵਿਧੀ",
+    "coursePage": "ਕੋਰਸ ਪੰਨਾ",
+    "constructLevelSeeds": "ਬੀਜ, ਨਵੇਂ ਸ਼ਬਦ",
+    "constructLevelGreens": "ਹਰੇ, ਵਧ ਰਹੇ ਸ਼ਬਦ",
+    "constructLevelFlowers": "ਫੁੱਲ, ਮੁਹਾਰਤ ਵਾਲੇ ਸ਼ਬਦ",
+    "filterAndSearch": "ਫਿਲਟਰ ਕਰੋ ਅਤੇ ਖੋਜੋ",
+    "participantsOfTotal": "{total} ਖਿਡਾਰੀਆਂ ਵਿੱਚੋਂ {filled}",
+    "mapAttributionLabel": "ਓਪਨਸਟ੍ਰੀਟਮੈਪ ਯੋਗਦਾਨੀ, ਕਾਪੀਰਾਈਟ ਅਤੇ ਲਾਇਸੰਸ",
+    "availableLabel": "ਅਜੇ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋਇਆ",
+    "seeAll": "ਸਾਰੇ ਦੇਖੋ",
+    "seeAllSection": "ਸਾਰੇ {section} ਦੇਖੋ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-09-01 15:39:49.533506",
+    "@@last_modified": "2026-09-02 14:37:07.079639",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9935,7 +9935,6 @@
     "ongoingPendingLabel": "في انتظار انضمام الآخرين",
     "joinableLabel": "قابل للانضمام",
     "inProgressLabel": "اكتمل سابقًا",
-    "availableLabel": "إنشاء نشاط",
     "rateActivityTitle": "كيف كان هذا النشاط؟",
     "rateActivityCommentHint": "أضف تعليقًا (اختياري)",
     "rateActivityCommentRejected": "تعذّر نشر تعليقك. حاول إعادة صياغته، أو أرسل تقييمك بدون تعليق.",
@@ -10146,5 +10145,18 @@
     "errorRateLimited": "نحن نحمّل الكثير حاليًا. يرجى الانتظار لحظة والمحاولة مرة أخرى.",
     "noPermissionToInviteUsers": "ليس لديك إذن لدعوة أعضاء هنا.",
     "mapPinsKeyboardHint": "استخدم مفاتيح الأسهم للتنقل بين الأنشطة على الخريطة، واضغط على Enter لفتح أحدها.",
-    "selectMessageLabel": "تحديد رسالة"
+    "selectMessageLabel": "تحديد رسالة",
+    "archivedChat": "الدردشة المؤرشفة",
+    "activityReview": "مراجعة النشاط",
+    "activityPanel": "النشاط",
+    "coursePage": "صفحة الدورة التدريبية",
+    "constructLevelSeeds": "البذور، كلمات جديدة",
+    "constructLevelGreens": "الخضروات، كلمات متنامية",
+    "constructLevelFlowers": "الزهور، كلمات متقنة",
+    "filterAndSearch": "تصفية وبحث",
+    "participantsOfTotal": "{filled} من أصل {total} لاعبين",
+    "mapAttributionLabel": "مساهمو OpenStreetMap، حقوق النشر والترخيص",
+    "availableLabel": "لم تبدأ بعد",
+    "seeAll": "مشاهدة الكل",
+    "seeAllSection": "مشاهدة كل {section}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-09-01 15:39:51.164392",
+    "@@last_modified": "2026-09-02 14:37:10.153974",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Սպասում ենք մյուսների միանալուն",
     "joinableLabel": "Միանալու հնարավորություն կա",
     "inProgressLabel": "Նախկինում ավարտված",
-    "availableLabel": "Ստեղծել գործունեություն",
     "rateActivityTitle": "Ինչպե՞ս անցավ այս ակտիվությունը։",
     "rateActivityCommentHint": "Ավելացնել մեկնաբանություն (ըստ ցանկության)",
     "rateActivityCommentRejected": "Ձեր մեկնաբանությունը չհաջողվեց հրապարակել։ Փորձեք վերաձևակերպել այն կամ ուղարկեք Ձեր գնահատականն առանց մեկնաբանության։",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Մենք հիմա շատ բան ենք բեռնում։ Խնդրում ենք մի պահ սպասել և նորից փորձել։",
     "noPermissionToInviteUsers": "Դուք թույլտվություն չունեք այստեղ անդամներ հրավիրելու համար։",
     "mapPinsKeyboardHint": "Օգտագործեք սլաքի ստեղները քարտեզի վրա գործողությունների միջև տեղաշարժվելու համար և սեղմեք Enter՝ մեկը բացելու համար:",
-    "selectMessageLabel": "Ընտրել հաղորդագրություն"
+    "selectMessageLabel": "Ընտրել հաղորդագրություն",
+    "archivedChat": "Արխիվացված զրույց",
+    "activityReview": "Գործունեության վերանայում",
+    "activityPanel": "Գործունեություն",
+    "coursePage": "Դասընթացի էջ",
+    "constructLevelSeeds": "Սերմեր, նոր բառեր",
+    "constructLevelGreens": "Կանաչիներ, աճող բառեր",
+    "constructLevelFlowers": "Ծաղիկներ, յուրացված բառեր",
+    "filterAndSearch": "Զտել և որոնել",
+    "participantsOfTotal": "{filled} / {total} խաղացող",
+    "mapAttributionLabel": "OpenStreetMap-ի մասնակիցներ, հեղինակային իրավունք և լիցենզիա",
+    "availableLabel": "Դեռ չի սկսվել",
+    "seeAll": "Տեսնել բոլորը",
+    "seeAllSection": "Տեսնել բոլոր {section}"
 }

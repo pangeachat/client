@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-09-01 15:39:49.181303",
+    "@@last_modified": "2026-09-02 14:37:07.084616",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Изчакване на други да се присъединят",
     "joinableLabel": "Може да се присъедините",
     "inProgressLabel": "Предишно завършени",
-    "availableLabel": "Създаване на дейност",
     "rateActivityTitle": "Как беше това занимание?",
     "rateActivityCommentHint": "Добавете коментар (по избор)",
     "rateActivityCommentRejected": "Коментарът ви не можа да бъде публикуван. Опитайте да го преформулирате или изпратете оценката си без коментар.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "В момента зареждаме много. Моля, изчакайте малко и опитайте отново.",
     "noPermissionToInviteUsers": "Нямате разрешение да каните членове тук.",
     "mapPinsKeyboardHint": "Използвайте клавишите със стрелки, за да се придвижвате между дейностите на картата, и натиснете Enter, за да отворите някоя.",
-    "selectMessageLabel": "Избор на съобщение"
+    "selectMessageLabel": "Избор на съобщение",
+    "archivedChat": "Архивиран чат",
+    "activityReview": "Преглед на активността",
+    "activityPanel": "Активност",
+    "coursePage": "Страница на курса",
+    "constructLevelSeeds": "Семена, нови думи",
+    "constructLevelGreens": "Кълнове, растящи думи",
+    "constructLevelFlowers": "Цветя, овладени думи",
+    "filterAndSearch": "Филтриране и търсене",
+    "participantsOfTotal": "{filled} от {total} играчи",
+    "mapAttributionLabel": "Сътрудници на OpenStreetMap, авторски права и лиценз",
+    "availableLabel": "Все още не е започнало",
+    "seeAll": "Виж всички",
+    "seeAllSection": "Виж всички {section}"
 }

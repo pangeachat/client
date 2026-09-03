@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-01 15:39:50.063017",
+    "@@last_modified": "2026-09-02 14:37:08.521555",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9626,7 +9626,6 @@
     "ongoingPendingLabel": "Ootan teiste liitumist",
     "joinableLabel": "Liitutav",
     "inProgressLabel": "Varem lõpetatud",
-    "availableLabel": "Loo tegevus",
     "rateActivityTitle": "Kuidas see tegevus oli?",
     "rateActivityCommentHint": "Lisa kommentaar (valikuline)",
     "rateActivityCommentRejected": "Sinu kommentaari ei saanud postitada. Proovi seda ümber sõnastada või esita oma hinnang ilma kommentaarita.",
@@ -9837,5 +9836,18 @@
     "errorRateLimited": "Meil on praegu palju koormust. Palun oota hetk ja proovi uuesti.",
     "noPermissionToInviteUsers": "Sul pole siia liikmete kutsumiseks luba.",
     "mapPinsKeyboardHint": "Kasutage nooleklahve kaardil tegevuste vahel liikumiseks ja vajutage sisestusklahvi, et avada üks.",
-    "selectMessageLabel": "Vali sõnum"
+    "selectMessageLabel": "Vali sõnum",
+    "archivedChat": "Arhiveeritud vestlus",
+    "activityReview": "Tegevuste ülevaade",
+    "activityPanel": "Tegevus",
+    "coursePage": "Kursuse leht",
+    "constructLevelSeeds": "Seemned, uued sõnad",
+    "constructLevelGreens": "Rohelised, kasvavad sõnad",
+    "constructLevelFlowers": "Lilled, omandatud sõnad",
+    "filterAndSearch": "Filtreeri ja otsi",
+    "participantsOfTotal": "{filled}/{total} mängijat",
+    "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
+    "availableLabel": "Pole veel alanud",
+    "seeAll": "Vaata kõiki",
+    "seeAllSection": "Vaata kõiki {section}"
 }

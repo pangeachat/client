@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-01 15:39:51.422411",
+    "@@last_modified": "2026-09-02 14:37:10.089492",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10398,7 +10398,6 @@
     "ongoingPendingLabel": "他の参加者を待っています",
     "joinableLabel": "参加可能",
     "inProgressLabel": "以前に完了しました",
-    "availableLabel": "アクティビティを作成",
     "rateActivityTitle": "このアクティビティはいかがでしたか？",
     "rateActivityCommentHint": "コメントを追加（任意）",
     "rateActivityCommentRejected": "コメントを投稿できませんでした。表現を変えるか、コメントなしで評価を送信してください。",
@@ -10609,5 +10608,18 @@
     "errorRateLimited": "現在、多くのリクエストを処理しています。しばらく待ってからもう一度お試しください。",
     "noPermissionToInviteUsers": "ここにメンバーを招待する権限がありません。",
     "mapPinsKeyboardHint": "矢印キーでマップ上のアクティビティ間を移動し、Enterキーを押して開きます。",
-    "selectMessageLabel": "メッセージを選択"
+    "selectMessageLabel": "メッセージを選択",
+    "archivedChat": "アーカイブ済みチャット",
+    "activityReview": "アクティビティレビュー",
+    "activityPanel": "アクティビティ",
+    "coursePage": "コースページ",
+    "constructLevelSeeds": "シード、新しい単語",
+    "constructLevelGreens": "グリーン、成長中の単語",
+    "constructLevelFlowers": "フラワー、習得済みの単語",
+    "filterAndSearch": "フィルターと検索",
+    "participantsOfTotal": "{total}人中{filled}人",
+    "mapAttributionLabel": "OpenStreetMapの寄与者、著作権とライセンス",
+    "availableLabel": "未開始",
+    "seeAll": "すべて見る",
+    "seeAllSection": "{section}をすべて見る"
 }

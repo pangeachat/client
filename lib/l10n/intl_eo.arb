@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:49.965578",
+    "@@last_modified": "2026-09-02 14:37:07.991782",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10574,7 +10574,6 @@
     "ongoingPendingLabel": "Atendante ke aliaj aliĝu",
     "joinableLabel": "Aliĝebla",
     "inProgressLabel": "Antaŭe kompletigita",
-    "availableLabel": "Krei agadon",
     "rateActivityTitle": "Kiel estis ĉi tiu agado?",
     "rateActivityCommentHint": "Aldonu komenton (nedeviga)",
     "rateActivityCommentRejected": "Via komento ne povis esti afiŝita. Provu reformuli ĝin, aŭ sendu vian takson sen komento.",
@@ -10785,5 +10784,18 @@
     "errorRateLimited": "Ni ŝarĝas multe nun. Bonvolu atendi momenton kaj reprovi.",
     "noPermissionToInviteUsers": "Vi ne rajtas inviti membrojn ĉi tien.",
     "mapPinsKeyboardHint": "Uzu la sagoklavojn por moviĝi inter agadoj sur la mapo, kaj premu Enigi por malfermi unu.",
-    "selectMessageLabel": "Elektu mesaĝon"
+    "selectMessageLabel": "Elektu mesaĝon",
+    "archivedChat": "Arkivita babilado",
+    "activityReview": "Agada revizio",
+    "activityPanel": "Agado",
+    "coursePage": "Kurso-paĝo",
+    "constructLevelSeeds": "Semoj, novaj vortoj",
+    "constructLevelGreens": "Verdaĵoj, kreskantaj vortoj",
+    "constructLevelFlowers": "Floroj, regataj vortoj",
+    "filterAndSearch": "Filtri kaj serĉi",
+    "participantsOfTotal": "{filled} el {total} ludantoj",
+    "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
+    "availableLabel": "Ankoraŭ ne komencita",
+    "seeAll": "Vidi ĉion",
+    "seeAllSection": "Vidi ĉion en {section}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-09-01 15:39:50.705925",
+    "@@last_modified": "2026-09-02 14:37:09.411136",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Ke kali nei i nā mea ʻē aʻe e hui pū",
     "joinableLabel": "Hiki ke hui pū",
     "inProgressLabel": "Ua hoʻopau ʻia ma mua",
-    "availableLabel": "Hana i ka hana",
     "rateActivityTitle": "Pehea kēia hana?",
     "rateActivityCommentHint": "Hoʻohui i manaʻo (koho)",
     "rateActivityCommentRejected": "ʻAʻole hiki ke kau ʻia kāu manaʻo. E hoʻāʻo e hoʻoponopono hou, a i ʻole e waiho i kāu helu me ka manaʻo ʻole.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Ke hoʻouka nei mākou i nā mea he nui i kēia manawa. E ʻoluʻolu e kali iki a hoʻāʻo hou.",
     "noPermissionToInviteUsers": "ʻAʻohe ou ʻae e kono i nā lālā ma ʻaneʻi.",
     "mapPinsKeyboardHint": "E hoʻohana i nā kī pua e neʻe ai ma waena o nā hana ma ka palapala ʻāina, a e kaomi iā Enter e wehe i kekahi.",
-    "selectMessageLabel": "Koho i ka leka"
+    "selectMessageLabel": "Koho i ka leka",
+    "archivedChat": "Kūkākūkā i waihona ʻia",
+    "activityReview": "Nānā hana",
+    "activityPanel": "Hana",
+    "coursePage": "ʻAoʻao papa",
+    "constructLevelSeeds": "Nā Hua, nā huaʻōlelo hou",
+    "constructLevelGreens": "Nā Meakanu, nā huaʻōlelo ulu",
+    "constructLevelFlowers": "Nā Pua, nā huaʻōlelo i aʻo ʻia",
+    "filterAndSearch": "Kānana a huli",
+    "participantsOfTotal": "{filled} o {total} mau mea pāʻani",
+    "mapAttributionLabel": "Nā mea hāʻawi OpenStreetMap, kuleana kope a me ka laikini",
+    "availableLabel": "ʻAʻole i hoʻomaka",
+    "seeAll": "E ʻike i nā mea a pau",
+    "seeAllSection": "E ʻike i nā mea a pau ma {section}"
 }

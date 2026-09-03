@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-09-01 15:39:51.416936",
+    "@@last_modified": "2026-09-02 14:37:10.217502",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Bíð eftir að aðrir gangi til liðs",
     "joinableLabel": "Hægt að taka þátt",
     "inProgressLabel": "Lokið áður",
-    "availableLabel": "Búa til virkni",
     "rateActivityTitle": "Hvernig fannst þér þessi æfing?",
     "rateActivityCommentHint": "Bæta við athugasemd (valfrjálst)",
     "rateActivityCommentRejected": "Ekki tókst að birta athugasemdina þína. Reyndu að orða hana upp á nýtt, eða sendu inn einkunnina þína án athugasemdar.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Við erum að hlaða mikið núna. Vinsamlegast bíddu smá stund og reyndu aftur.",
     "noPermissionToInviteUsers": "Þú hefur ekki leyfi til að bjóða meðlimum hingað.",
     "mapPinsKeyboardHint": "Notaðu örvatakkana til að færa þig á milli verkefna á kortinu og ýttu á Enter til að opna eitt.",
-    "selectMessageLabel": "Velja skilaboð"
+    "selectMessageLabel": "Velja skilaboð",
+    "archivedChat": "Geymt spjall",
+    "activityReview": "Yfirlit yfir virkni",
+    "activityPanel": "Virkni",
+    "coursePage": "Námskeiðssíða",
+    "constructLevelSeeds": "Fræ, ný orð",
+    "constructLevelGreens": "Grænt, vaxandi orð",
+    "constructLevelFlowers": "Blóm, orð sem hefur verið náð tökum á",
+    "filterAndSearch": "Sía og leita",
+    "participantsOfTotal": "{filled} af {total} spilurum",
+    "mapAttributionLabel": "OpenStreetMap þátttakendur, höfundarréttur og leyfi",
+    "availableLabel": "Ekki byrjað enn",
+    "seeAll": "Sjá allt",
+    "seeAllSection": "Sjá allt {section}"
 }

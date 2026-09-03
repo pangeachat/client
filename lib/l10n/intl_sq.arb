@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-09-01 15:39:53.764330",
+    "@@last_modified": "2026-09-02 14:37:13.370659",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Duke pritur që të tjerët të bashkohen",
     "joinableLabel": "Mund të bashkohesh",
     "inProgressLabel": "Përfunduar më parë",
-    "availableLabel": "Krijo aktivitet",
     "rateActivityTitle": "Si ishte ky aktivitet?",
     "rateActivityCommentHint": "Shto një koment (opsionale)",
     "rateActivityCommentRejected": "Komenti juaj nuk mund të postohej. Provoni ta riformuloni, ose dërgoni vlerësimin tuaj pa koment.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Po ngarkojmë shumë tani. Ju lutemi prisni një moment dhe provoni përsëri.",
     "noPermissionToInviteUsers": "Nuk keni leje të ftoni anëtarë këtu.",
     "mapPinsKeyboardHint": "Përdorni tastet me shigjeta për të lëvizur mes aktiviteteve në hartë dhe shtypni Enter për të hapur njërin.",
-    "selectMessageLabel": "Zgjidh mesazhin"
+    "selectMessageLabel": "Zgjidh mesazhin",
+    "archivedChat": "Bisedë e arkivuar",
+    "activityReview": "Rishikimi i aktivitetit",
+    "activityPanel": "Aktiviteti",
+    "coursePage": "Faqja e kursit",
+    "constructLevelSeeds": "Fara, fjalë të reja",
+    "constructLevelGreens": "Gjelbërim, fjalë në rritje",
+    "constructLevelFlowers": "Lule, fjalë të zotëruara",
+    "filterAndSearch": "Filtro dhe kërko",
+    "participantsOfTotal": "{filled} nga {total} lojtarë",
+    "mapAttributionLabel": "Kontribuesit e OpenStreetMap, të drejtat e autorit dhe licenca",
+    "availableLabel": "Ende pa filluar",
+    "seeAll": "Shiko të gjitha",
+    "seeAllSection": "Shiko të gjitha {section}"
 }

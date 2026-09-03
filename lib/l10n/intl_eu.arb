@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-09-01 15:39:50.274645",
+    "@@last_modified": "2026-09-02 14:37:08.592788",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9629,7 +9629,6 @@
     "ongoingPendingLabel": "Besteak batzeko zain",
     "joinableLabel": "Batu daiteke",
     "inProgressLabel": "Aurretik osatua",
-    "availableLabel": "Sortu jarduera",
     "rateActivityTitle": "Zer iruditu zaizu jarduera hau?",
     "rateActivityCommentHint": "Gehitu iruzkin bat (aukerakoa)",
     "rateActivityCommentRejected": "Ezin izan da zure iruzkina argitaratu. Saiatu berriro idazten, edo bidali zure balorazioa iruzkinik gabe.",
@@ -9840,5 +9839,18 @@
     "errorRateLimited": "Une honetan asko kargatzen ari gara. Mesedez, itxaron une bat eta saiatu berriro.",
     "noPermissionToInviteUsers": "Ez duzu baimenik kideak hona gonbidatzeko.",
     "mapPinsKeyboardHint": "Erabili gezi-teklak mapako jardueren artean mugitzeko, eta sakatu Sartu bat irekitzeko.",
-    "selectMessageLabel": "Mezua hautatu"
+    "selectMessageLabel": "Mezua hautatu",
+    "archivedChat": "Artxibatutako txata",
+    "activityReview": "Jardueraren berrikuspena",
+    "activityPanel": "Jarduera",
+    "coursePage": "Ikastaroaren orria",
+    "constructLevelSeeds": "Haziak, hitz berriak",
+    "constructLevelGreens": "Landareak, hazten ari diren hitzak",
+    "constructLevelFlowers": "Loreak, menderatutako hitzak",
+    "filterAndSearch": "Iragazi eta bilatu",
+    "participantsOfTotal": "{total} jokalarietatik {filled}",
+    "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
+    "availableLabel": "Oraindik ez da hasi",
+    "seeAll": "Ikusi guztiak",
+    "seeAllSection": "Ikusi {section} guztiak"
 }

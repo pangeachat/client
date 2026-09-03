@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-09-01 15:39:53.772654",
+    "@@last_modified": "2026-09-02 14:37:13.271198",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Kwakumirirwa vamwe kuti vabatane",
     "joinableLabel": "Inobatika",
     "inProgressLabel": "Yakapedzwa kare",
-    "availableLabel": "Gadzira chiitiko",
     "rateActivityTitle": "Chiitiko ichi chaive sei?",
     "rateActivityCommentHint": "Wedzera chirevo (sarudzo)",
     "rateActivityCommentRejected": "Chirevo chako hachina kukwanisa kutumirwa. Edza kuchinyora zvakare, kana tumira chiyero chako pasina chirevo.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Tiri kurodha zvakawanda izvozvi. Ndapota mirira kwekanguva woedza zvakare.",
     "noPermissionToInviteUsers": "Hauna mvumo yekukoka nhengo pano.",
     "mapPinsKeyboardHint": "Shandisa miseve kufamba pakati pezviitiko pamepu, wobva wadzvanya Enter kuti uvhure chimwe.",
-    "selectMessageLabel": "Sarudza meseji"
+    "selectMessageLabel": "Sarudza meseji",
+    "archivedChat": "Chat yakachengetwa",
+    "activityReview": "Ongororo yezviitiko",
+    "activityPanel": "Zviitiko",
+    "coursePage": "Peji rekosi",
+    "constructLevelSeeds": "Mbeu, mazwi matsva",
+    "constructLevelGreens": "Muriwo, mazwi ari kukura",
+    "constructLevelFlowers": "Maruva, mazwi akadzidzwa",
+    "filterAndSearch": "Sefa nekutsvaga",
+    "participantsOfTotal": "Vatambi {filled} pa {total}",
+    "mapAttributionLabel": "Vabatsiri veOpenStreetMap, kodzero yekukopa uye rezinesi",
+    "availableLabel": "Hatisati tatanga",
+    "seeAll": "Ona zvese",
+    "seeAllSection": "Ona zvese zve {section}"
 }

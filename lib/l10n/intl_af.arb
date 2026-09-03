@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-09-01 15:39:49.332621",
+    "@@last_modified": "2026-09-02 14:37:07.298296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Wag vir ander om aan te sluit",
     "joinableLabel": "Aansluitbaar",
     "inProgressLabel": "Voorheen voltooi",
-    "availableLabel": "Skep aktiwiteit",
     "rateActivityTitle": "Hoe was hierdie aktiwiteit?",
     "rateActivityCommentHint": "Voeg 'n opmerking by (opsioneel)",
     "rateActivityCommentRejected": "Jou opmerking kon nie geplaas word nie. Probeer dit herformuleer, of dien jou gradering sonder 'n opmerking in.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Ons laai tans baie. Wag asseblief 'n oomblik en probeer weer.",
     "noPermissionToInviteUsers": "Jy het nie toestemming om lede hierheen te nooi nie.",
     "mapPinsKeyboardHint": "Gebruik die pyltjiesleutels om tussen aktiwiteite op die kaart te beweeg, en druk Enter om een oop te maak.",
-    "selectMessageLabel": "Kies boodskap"
+    "selectMessageLabel": "Kies boodskap",
+    "archivedChat": "Gearchiveerde klets",
+    "activityReview": "Aktiwiteitsoorsig",
+    "activityPanel": "Aktiwiteit",
+    "coursePage": "Kursusbladsy",
+    "constructLevelSeeds": "Sade, nuwe woorde",
+    "constructLevelGreens": "Groente, groeiende woorde",
+    "constructLevelFlowers": "Blomme, woorde bemeester",
+    "filterAndSearch": "Filtreer en soek",
+    "participantsOfTotal": "{filled} van {total} spelers",
+    "mapAttributionLabel": "OpenStreetMap bydraers, kopiereg en lisensie",
+    "availableLabel": "Nog nie begin nie",
+    "seeAll": "Sien alles",
+    "seeAllSection": "Sien alle {section}"
 }

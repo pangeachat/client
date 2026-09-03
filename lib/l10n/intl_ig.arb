@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-09-01 15:39:51.415833",
+    "@@last_modified": "2026-09-02 14:37:10.096984",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Na-eche ka ndị ọzọ sonye",
     "joinableLabel": "Enwere ike isonye",
     "inProgressLabel": "Emechara na mbụ",
-    "availableLabel": "Mepụta ọrụ",
     "rateActivityTitle": "Kedu ka ihe omume a siri dị?",
     "rateActivityCommentHint": "Tinye okwu (nhọrọ)",
     "rateActivityCommentRejected": "Enweghị ike izipu okwu gị. Gbalịa ịgbanwe ya, ma ọ bụ ziga ọkwa gị na-enweghị okwu.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Anyị na-ebu ọtụtụ ihe ugbu a. Biko chere obere oge wee nwaa ọzọ.",
     "noPermissionToInviteUsers": "Ị nweghị ikike ịkpọ ndị otu ebe a.",
     "mapPinsKeyboardHint": "Jiri igodo akụ gaa n'etiti ihe omume dị na maapụ, wee pịa Tinye ka imepe otu.",
-    "selectMessageLabel": "Họrọ ozi"
+    "selectMessageLabel": "Họrọ ozi",
+    "archivedChat": "Nkata echekwara",
+    "activityReview": "Nyocha ọrụ",
+    "activityPanel": "Ọrụ",
+    "coursePage": "Ibe ọmụmụ",
+    "constructLevelSeeds": "Mkpuru osisi, okwu ọhụrụ",
+    "constructLevelGreens": "Akwụkwọ ndụ akwụkwọ ndụ, okwu na-eto eto",
+    "constructLevelFlowers": "Okooko osisi, okwu ndị a mụtara nke ọma",
+    "filterAndSearch": "Nyochaa ma chọọ",
+    "participantsOfTotal": "{filled} n'ime {total} ndị egwuregwu",
+    "mapAttributionLabel": "Ndị nyere aka na OpenStreetMap, nwebisiinka na ikike",
+    "availableLabel": "Ebebeghị mmalite",
+    "seeAll": "Hụ ihe niile",
+    "seeAllSection": "Hụ {section} niile"
 }

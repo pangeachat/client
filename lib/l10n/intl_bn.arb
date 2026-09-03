@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:49.288961",
+    "@@last_modified": "2026-09-02 14:37:07.127240",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10257,7 +10257,6 @@
     "ongoingPendingLabel": "অন্যদের যোগদানের জন্য অপেক্ষা করা হচ্ছে",
     "joinableLabel": "যোগদানযোগ্য",
     "inProgressLabel": "পূর্বে সম্পন্ন হয়েছে",
-    "availableLabel": "ক্রিয়াকলাপ তৈরি করুন",
     "rateActivityTitle": "এই কার্যকলাপটি কেমন ছিল?",
     "rateActivityCommentHint": "একটি মন্তব্য যোগ করুন (ঐচ্ছিক)",
     "rateActivityCommentRejected": "আপনার মন্তব্য পোস্ট করা যায়নি। এটি অন্যভাবে লেখার চেষ্টা করুন, অথবা মন্তব্য ছাড়াই আপনার রেটিং জমা দিন।",
@@ -10468,5 +10467,18 @@
     "errorRateLimited": "আমরা এই মুহূর্তে অনেক কিছু লোড করছি। অনুগ্রহ করে একটু অপেক্ষা করুন এবং আবার চেষ্টা করুন।",
     "noPermissionToInviteUsers": "এখানে সদস্য আমন্ত্রণ জানানোর অনুমতি আপনার নেই।",
     "mapPinsKeyboardHint": "ম্যাপে কার্যকলাপগুলির মধ্যে সরানোর জন্য তীরচিহ্ন কী ব্যবহার করুন এবং একটি খুলতে এন্টার চাপুন।",
-    "selectMessageLabel": "বার্তা নির্বাচন করুন"
+    "selectMessageLabel": "বার্তা নির্বাচন করুন",
+    "archivedChat": "আর্কাইভ করা চ্যাট",
+    "activityReview": "ক্রিয়াকলাপ পর্যালোচনা",
+    "activityPanel": "ক্রিয়াকলাপ",
+    "coursePage": "কোর্স পৃষ্ঠা",
+    "constructLevelSeeds": "বীজ, নতুন শব্দ",
+    "constructLevelGreens": "সবুজ, ক্রমবর্ধমান শব্দ",
+    "constructLevelFlowers": "ফুল, আয়ত্ত করা শব্দ",
+    "filterAndSearch": "ফিল্টার এবং অনুসন্ধান",
+    "participantsOfTotal": "{total} জন খেলোয়াড়ের মধ্যে {filled} জন",
+    "mapAttributionLabel": "OpenStreetMap অবদানকারী, কপিরাইট এবং লাইসেন্স",
+    "availableLabel": "এখনো শুরু হয়নি",
+    "seeAll": "সব দেখুন",
+    "seeAllSection": "সব দেখুন {section}"
 }

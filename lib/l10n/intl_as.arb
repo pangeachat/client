@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-09-01 15:39:49.304314",
+    "@@last_modified": "2026-09-02 14:37:07.290162",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "আনসকলৰ যোগদানৰ বাবে অপেক্ষা কৰি আছে",
     "joinableLabel": "যোগদান কৰিব পৰা",
     "inProgressLabel": "পূৰ্বে সম্পূৰ্ণ কৰা হৈছে",
-    "availableLabel": "কাৰ্যকলাপ সৃষ্টি কৰক",
     "rateActivityTitle": "এই কাৰ্যকলাপটো কেনেকুৱা আছিল?",
     "rateActivityCommentHint": "এটা মন্তব্য যোগ কৰক (ঐচ্ছিক)",
     "rateActivityCommentRejected": "আপোনাৰ মন্তব্য পোষ্ট কৰিব পৰা নগ'ল। ইয়াক পুনৰ লিখিবলৈ চেষ্টা কৰক, অথবা মন্তব্য অবিহনে আপোনাৰ ৰেটিং দাখিল কৰক।",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "আমি বৰ্তমান বহুত লোড কৰি আছো। অনুগ্ৰহ কৰি অলপ অপেক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক।",
     "noPermissionToInviteUsers": "আপোনাৰ ইয়াত সদস্যসকলক আমন্ত্ৰণ কৰিবলৈ অনুমতি নাই।",
     "mapPinsKeyboardHint": "মানচিত্ৰত কাৰ্য্যকলাপসমূহৰ মাজত স্থানান্তৰ কৰিবলৈ এৰো কীবোৰ্ড ব্যৱহাৰ কৰক, আৰু এটা খুলিবলৈ এণ্টাৰ টিপক।",
-    "selectMessageLabel": "বাৰ্তা বাছনি কৰক"
+    "selectMessageLabel": "বাৰ্তা বাছনি কৰক",
+    "archivedChat": "আৰ্কাইভ কৰা চাট",
+    "activityReview": "কাৰ্যকলাপ পৰ্যালোচনা",
+    "activityPanel": "কাৰ্যকলাপ",
+    "coursePage": "পাঠ্যক্ৰমৰ পৃষ্ঠা",
+    "constructLevelSeeds": "বীজ, নতুন শব্দ",
+    "constructLevelGreens": "সেউজীয়া, বৰ্ধিত শব্দ",
+    "constructLevelFlowers": "ফুল, আয়ত্ত কৰা শব্দ",
+    "filterAndSearch": "ফিল্টাৰ আৰু সন্ধান কৰক",
+    "participantsOfTotal": "{total} জন খেলুৱৈৰ ভিতৰত {filled} জন",
+    "mapAttributionLabel": "OpenStreetMap অৱদানকাৰী, স্বত্বাধিকাৰ আৰু অনুজ্ঞাপত্ৰ",
+    "availableLabel": "এতিয়াও আৰম্ভ হোৱা নাই",
+    "seeAll": "সকলো চাওক",
+    "seeAllSection": "সকলো চাওক {section}"
 }

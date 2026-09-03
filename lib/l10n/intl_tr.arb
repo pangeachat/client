@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-01 15:39:54.336848",
+    "@@last_modified": "2026-09-02 14:37:14.104482",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9930,7 +9930,6 @@
     "ongoingPendingLabel": "Diğerlerinin katılması bekleniyor",
     "joinableLabel": "Katılabilir",
     "inProgressLabel": "Daha önce tamamlandı",
-    "availableLabel": "Etkinlik oluştur",
     "rateActivityTitle": "Bu aktivite nasıldı?",
     "rateActivityCommentHint": "Yorum ekle (isteğe bağlı)",
     "rateActivityCommentRejected": "Yorumunuz gönderilemedi. Yeniden düzenlemeyi deneyin veya yorumsuz olarak puanınızı gönderin.",
@@ -10141,5 +10140,18 @@
     "errorRateLimited": "Şu anda çok fazla yükleme yapıyoruz. Lütfen bir süre bekleyip tekrar deneyin.",
     "noPermissionToInviteUsers": "Buraya üye davet etme izniniz yok.",
     "mapPinsKeyboardHint": "Haritadaki etkinlikler arasında gezinmek için ok tuşlarını kullanın ve birini açmak için Enter tuşuna basın.",
-    "selectMessageLabel": "Mesaj seç"
+    "selectMessageLabel": "Mesaj seç",
+    "archivedChat": "Arşivlenmiş sohbet",
+    "activityReview": "Etkinlik incelemesi",
+    "activityPanel": "Etkinlik",
+    "coursePage": "Kurs sayfası",
+    "constructLevelSeeds": "Tohumlar, yeni kelimeler",
+    "constructLevelGreens": "Yeşiller, gelişen kelimeler",
+    "constructLevelFlowers": "Çiçekler, ustalaşmış kelimeler",
+    "filterAndSearch": "Filtrele ve ara",
+    "participantsOfTotal": "{total} oyuncudan {filled} tanesi",
+    "mapAttributionLabel": "OpenStreetMap katılımcıları, telif hakkı ve lisans",
+    "availableLabel": "Henüz başlamadı",
+    "seeAll": "Tümünü gör",
+    "seeAllSection": "Tüm {section} bölümünü gör"
 }

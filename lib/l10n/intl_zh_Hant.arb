@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:54.979446",
+    "@@last_modified": "2026-09-02 14:37:15.164624",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9735,7 +9735,6 @@
     "ongoingPendingLabel": "正在等待其他人加入",
     "joinableLabel": "可加入",
     "inProgressLabel": "已完成",
-    "availableLabel": "建立活動",
     "rateActivityTitle": "這個活動怎麼樣？",
     "rateActivityCommentHint": "新增評論（可選）",
     "rateActivityCommentRejected": "您的評論無法發佈。請嘗試重新措辭，或不帶評論提交您的評分。",
@@ -9946,5 +9945,18 @@
     "errorRateLimited": "我們正在載入大量內容。請稍候片刻再試一次。",
     "noPermissionToInviteUsers": "您沒有權限邀請成員加入此處。",
     "mapPinsKeyboardHint": "使用方向鍵在地圖上的活動之間移動，然後按 Enter 鍵開啟活動。",
-    "selectMessageLabel": "選擇訊息"
+    "selectMessageLabel": "選擇訊息",
+    "archivedChat": "已封存的聊天",
+    "activityReview": "活動回顧",
+    "activityPanel": "活動",
+    "coursePage": "課程頁面",
+    "constructLevelSeeds": "種子，新單字",
+    "constructLevelGreens": "綠芽，成長中的單字",
+    "constructLevelFlowers": "花朵，已掌握的單字",
+    "filterAndSearch": "篩選與搜尋",
+    "participantsOfTotal": "{filled} / {total} 位玩家",
+    "mapAttributionLabel": "OpenStreetMap 貢獻者、版權與許可",
+    "availableLabel": "尚未開始",
+    "seeAll": "查看全部",
+    "seeAllSection": "查看全部{section}"
 }

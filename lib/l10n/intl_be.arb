@@ -3549,7 +3549,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-09-01 15:39:49.454480",
+    "@@last_modified": "2026-09-02 14:37:07.369700",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9643,7 +9643,6 @@
     "ongoingPendingLabel": "Чакаем, пакуль далучацца іншыя",
     "joinableLabel": "Можна далучыцца",
     "inProgressLabel": "Раней завершана",
-    "availableLabel": "Стварыць актыўнасць",
     "rateActivityTitle": "Як вам гэтае заданне?",
     "rateActivityCommentHint": "Дадаць каментарый (неабавязкова)",
     "rateActivityCommentRejected": "Ваш каментарый не быў апублікаваны. Паспрабуйце перафразаваць яго або адправіць ацэнку без каментарыя.",
@@ -9854,5 +9853,18 @@
     "errorRateLimited": "Зараз мы шмат загружаем. Калі ласка, пачакайце і паспрабуйце яшчэ раз.",
     "noPermissionToInviteUsers": "У вас няма дазволу запрашаць удзельнікаў сюды.",
     "mapPinsKeyboardHint": "Выкарыстоўвайце клавішы са стрэлкамі для перамяшчэння паміж заняткамі на карце і націсніце Enter, каб адкрыць адзін.",
-    "selectMessageLabel": "Выбраць паведамленне"
+    "selectMessageLabel": "Выбраць паведамленне",
+    "archivedChat": "Заархіваваны чат",
+    "activityReview": "Агляд дзейнасці",
+    "activityPanel": "Дзейнасць",
+    "coursePage": "Старонка курса",
+    "constructLevelSeeds": "Насенне, новыя словы",
+    "constructLevelGreens": "Парасткі, словы ў росце",
+    "constructLevelFlowers": "Кветкі, засвоеныя словы",
+    "filterAndSearch": "Фільтраваць і шукаць",
+    "participantsOfTotal": "{filled} з {total} гульцоў",
+    "mapAttributionLabel": "Удзельнікі OpenStreetMap, аўтарскія правы і ліцэнзія",
+    "availableLabel": "Пакуль не пачалося",
+    "seeAll": "Глядзець усё",
+    "seeAllSection": "Глядзець усё: {section}"
 }

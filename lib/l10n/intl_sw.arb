@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-09-01 15:39:53.932231",
+    "@@last_modified": "2026-09-02 14:37:13.754814",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Inasubiri wengine wajiunge",
     "joinableLabel": "Inaweza kujiungwa",
     "inProgressLabel": "Imekamilika hapo awali",
-    "availableLabel": "Unda shughuli",
     "rateActivityTitle": "Shughuli hii ilikuwaje?",
     "rateActivityCommentHint": "Ongeza maoni (si lazima)",
     "rateActivityCommentRejected": "Maoni yako hayakuweza kuchapishwa. Jaribu kuyarekebisha, au wasilisha ukadiriaji wako bila maoni.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Tunapakia mengi kwa sasa. Tafadhali subiri kidogo kisha ujaribu tena.",
     "noPermissionToInviteUsers": "Huna ruhusa ya kualika wanachama hapa.",
     "mapPinsKeyboardHint": "Tumia vitufe vya vishale kusogeza kati ya shughuli kwenye ramani, na ubonyeze Enter kufungua moja.",
-    "selectMessageLabel": "Chagua ujumbe"
+    "selectMessageLabel": "Chagua ujumbe",
+    "archivedChat": "Gumzo lililohifadhiwa",
+    "activityReview": "Mapitio ya shughuli",
+    "activityPanel": "Shughuli",
+    "coursePage": "Ukurasa wa kozi",
+    "constructLevelSeeds": "Mbegu, maneno mapya",
+    "constructLevelGreens": "Kijani, maneno yanayokua",
+    "constructLevelFlowers": "Maua, maneno yaliyobobea",
+    "filterAndSearch": "Chuja na utafute",
+    "participantsOfTotal": "{filled} kati ya wachezaji {total}",
+    "mapAttributionLabel": "Wachangiaji wa OpenStreetMap, hakimiliki na leseni",
+    "availableLabel": "Bado haijaanza",
+    "seeAll": "Tazama zote",
+    "seeAllSection": "Tazama {section} zote"
 }

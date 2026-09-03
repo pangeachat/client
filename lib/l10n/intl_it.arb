@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:51.843420",
+    "@@last_modified": "2026-09-02 14:37:10.043236",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9702,7 +9702,6 @@
     "ongoingPendingLabel": "In attesa che altri si uniscano",
     "joinableLabel": "Partecipabile",
     "inProgressLabel": "Completato in precedenza",
-    "availableLabel": "Crea attività",
     "rateActivityTitle": "Com'è andata questa attività?",
     "rateActivityCommentHint": "Aggiungi un commento (facoltativo)",
     "rateActivityCommentRejected": "Impossibile pubblicare il tuo commento. Prova a riformularlo o invia la tua valutazione senza un commento.",
@@ -9913,5 +9912,18 @@
     "errorRateLimited": "Stiamo caricando molti dati in questo momento. Attendi un momento e riprova.",
     "noPermissionToInviteUsers": "Non hai il permesso di invitare membri qui.",
     "mapPinsKeyboardHint": "Usa i tasti freccia per spostarti tra le attività sulla mappa e premi Invio per aprirne una.",
-    "selectMessageLabel": "Seleziona messaggio"
+    "selectMessageLabel": "Seleziona messaggio",
+    "archivedChat": "Chat archiviata",
+    "activityReview": "Revisione attività",
+    "activityPanel": "Attività",
+    "coursePage": "Pagina del corso",
+    "constructLevelSeeds": "Semi, nuove parole",
+    "constructLevelGreens": "Germogli, parole in crescita",
+    "constructLevelFlowers": "Fiori, parole padroneggiate",
+    "filterAndSearch": "Filtra e cerca",
+    "participantsOfTotal": "{filled} di {total} giocatori",
+    "mapAttributionLabel": "Contributori OpenStreetMap, copyright e licenza",
+    "availableLabel": "Non ancora iniziato",
+    "seeAll": "Vedi tutto",
+    "seeAllSection": "Vedi tutto {section}"
 }

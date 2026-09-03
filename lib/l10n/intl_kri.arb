@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-09-01 15:39:51.911141",
+    "@@last_modified": "2026-09-02 14:37:10.918666",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "De wet ɔda pɔsin dɛn fɔ jɔyn",
     "joinableLabel": "Yu go ebul jɔyn",
     "inProgressLabel": "Dɔn dɔn bifo",
-    "availableLabel": "Mek wok",
     "rateActivityTitle": "Aw dis aktiviti bin bi?",
     "rateActivityCommentHint": "Put komɛnt (nɔ fɔs)",
     "rateActivityCommentRejected": "Yu komɛnt nɔ bin ebul fɔ post. Tray fɔ chenj di wɔd dɛn, ɔ sɛn yu reting witɔt komɛnt.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Wi de lod plenti naw. Duya wet smɔl ɛn tray bak.",
     "noPermissionToInviteUsers": "Yu nɔ gɛt pɔmishɔn fɔ invayt pipul dɛn ya.",
     "mapPinsKeyboardHint": "Yuz di arrow keys fɔ muv bitwin aktivitis dɛn na di map, ɛn pres Enter fɔ opin wan.",
-    "selectMessageLabel": "Pik mɛsej"
+    "selectMessageLabel": "Pik mɛsej",
+    "archivedChat": "Chat we dɛn kip",
+    "activityReview": "Luk bak na wetin yu dɔn du",
+    "activityPanel": "Wetin yu dɔn du",
+    "coursePage": "Di pej fɔ di kos",
+    "constructLevelSeeds": "Sid dɛn, nyu wɔd dɛn",
+    "constructLevelGreens": "Grin dɛn, wɔd dɛn we de gro",
+    "constructLevelFlowers": "Fula dɛn, wɔd dɛn we yu dɔn sabi fayn",
+    "filterAndSearch": "Fulta ɛn Sɛch",
+    "participantsOfTotal": "{filled} pan {total} pleya dem",
+    "mapAttributionLabel": "OpenStreetMap pipal wey de gi am say, in kopyrayt ɛn layɛns",
+    "availableLabel": "Nɔt yɛt stat",
+    "seeAll": "Si ɔl",
+    "seeAllSection": "Si ɔl {section}"
 }

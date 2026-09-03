@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-09-01 15:39:53.949224",
+    "@@last_modified": "2026-09-02 14:37:13.270053",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Waxaa la sugayaa kuwa kale inay soo biiraan",
     "joinableLabel": "La soo biiri karo",
     "inProgressLabel": "Horey loo dhammaystiray",
-    "availableLabel": "Samee hawl",
     "rateActivityTitle": "Sidee buu ahaa hawshan?",
     "rateActivityCommentHint": "Ku dar faallo (ikhtiyaari)",
     "rateActivityCommentRejected": "Faalladaada lama soo dhejin karin. Isku day inaad dib u habayso, ama soo gudbi qiimayntaada faallo la'aan.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Waxaan hadda soo shubaynaa wax badan. Fadlan sug in yar oo isku day mar kale.",
     "noPermissionToInviteUsers": "Ma haysatid ogolaansho aad xubno ku casuunto halkan.",
     "mapPinsKeyboardHint": "Isticmaal furayaasha fallaadha si aad ugu kala guurto hawlaha khariidada, oo taabo Gelida si aad u furto mid ka mid ah.",
-    "selectMessageLabel": "Dooro fariin"
+    "selectMessageLabel": "Dooro fariin",
+    "archivedChat": "Sheeko la kaydiyay",
+    "activityReview": "Dib u eegista hawsha",
+    "activityPanel": "Hawsha",
+    "coursePage": "Bogga koorsada",
+    "constructLevelSeeds": "Abuur, ereyo cusub",
+    "constructLevelGreens": "Cagaar, ereyo koraya",
+    "constructLevelFlowers": "Ubax, ereyo la bartay",
+    "filterAndSearch": "Shaandhee oo raadi",
+    "participantsOfTotal": "{filled} ka mid ah {total} ciyaartoy",
+    "mapAttributionLabel": "Kuwa wax ku darsaday OpenStreetMap, xuquuqda daabacaadda iyo shatiga",
+    "availableLabel": "Weli ma bilaaban",
+    "seeAll": "Arag dhammaan",
+    "seeAllSection": "Arag dhammaan {section}"
 }

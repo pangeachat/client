@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:50.300680",
+    "@@last_modified": "2026-09-02 14:37:08.765578",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9717,7 +9717,6 @@
     "ongoingPendingLabel": "در انتظار پیوستن دیگران",
     "joinableLabel": "قابل پیوستن",
     "inProgressLabel": "قبلاً تکمیل شده",
-    "availableLabel": "ایجاد فعالیت",
     "rateActivityTitle": "این فعالیت چطور بود؟",
     "rateActivityCommentHint": "افزودن نظر (اختیاری)",
     "rateActivityCommentRejected": "نظر شما ارسال نشد. لطفاً آن را بازنویسی کنید یا امتیاز خود را بدون نظر ثبت کنید.",
@@ -9928,5 +9927,18 @@
     "errorRateLimited": "در حال حاضر بار زیادی را بارگذاری می‌کنیم. لطفاً لحظه‌ای صبر کنید و دوباره امتحان کنید.",
     "noPermissionToInviteUsers": "شما اجازه دعوت اعضا به اینجا را ندارید.",
     "mapPinsKeyboardHint": "برای جابه‌جایی بین فعالیت‌ها روی نقشه از کلیدهای جهت‌نما استفاده کنید و برای باز کردن یکی از آن‌ها، Enter را فشار دهید.",
-    "selectMessageLabel": "انتخاب پیام"
+    "selectMessageLabel": "انتخاب پیام",
+    "archivedChat": "گفتگوی بایگانی‌شده",
+    "activityReview": "بازبینی فعالیت",
+    "activityPanel": "فعالیت",
+    "coursePage": "صفحهٔ دوره",
+    "constructLevelSeeds": "دانه‌ها، کلمات جدید",
+    "constructLevelGreens": "جوانه‌ها، کلمات در حال رشد",
+    "constructLevelFlowers": "گل‌ها، کلمات تسلط یافته",
+    "filterAndSearch": "فیلتر و جستجو",
+    "participantsOfTotal": "{filled} از {total} بازیکن",
+    "mapAttributionLabel": "مشارکت‌کنندگان OpenStreetMap، حق تکثیر و مجوز",
+    "availableLabel": "هنوز شروع نشده است",
+    "seeAll": "مشاهده همه",
+    "seeAllSection": "مشاهده همه {section}"
 }

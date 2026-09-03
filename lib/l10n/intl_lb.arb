@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-09-01 15:39:51.964982",
+    "@@last_modified": "2026-09-02 14:37:11.446620",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Waarden op anerer fir matzemaachen",
     "joinableLabel": "Kann matgemaach ginn",
     "inProgressLabel": "Virdru fäerdeg",
-    "availableLabel": "Aktivitéit erstellen",
     "rateActivityTitle": "Wéi war dës Aktivitéit?",
     "rateActivityCommentHint": "Kommentar derbäisetzen (fakultativ)",
     "rateActivityCommentRejected": "Äre Kommentar konnt net gepost ginn. Probéiert en ëmzeschreiwen, oder schéckt Är Bewäertung ouni Kommentar of.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Mir lueden am Moment vill. Waart w.e.g. ee Moment a probéier et nach eng Kéier.",
     "noPermissionToInviteUsers": "Dir hutt keng Erlaabnis fir Memberen hei z'invitéieren.",
     "mapPinsKeyboardHint": "Benotzt d'Pfeiltasten fir tëscht den Aktivitéiten op der Kaart ze navigéieren, an dréckt Enter fir eng opzemaachen.",
-    "selectMessageLabel": "Message auswielen"
+    "selectMessageLabel": "Message auswielen",
+    "archivedChat": "Archivéierte Chat",
+    "activityReview": "Aktivitéitsiwwerbléck",
+    "activityPanel": "Aktivitéit",
+    "coursePage": "Cours Säit",
+    "constructLevelSeeds": "Somen, nei Wierder",
+    "constructLevelGreens": "Gréngs, wuessend Wierder",
+    "constructLevelFlowers": "Blummen, beherrschte Wierder",
+    "filterAndSearch": "Filteren a sichen",
+    "participantsOfTotal": "{filled} vun {total} Spiller",
+    "mapAttributionLabel": "OpenStreetMap Mataarbechter, Copyright a Lizenz",
+    "availableLabel": "Nach net ugefaangen",
+    "seeAll": "Alles gesinn",
+    "seeAllSection": "Alles gesinn {section}"
 }

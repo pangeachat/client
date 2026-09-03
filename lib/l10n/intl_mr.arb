@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-09-01 15:39:52.578481",
+    "@@last_modified": "2026-09-02 14:37:11.951172",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "इतरांच्या सामील होण्याची प्रतीक्षा करत आहे",
     "joinableLabel": "सामील होण्यायोग्य",
     "inProgressLabel": "पूर्वी पूर्ण झाले",
-    "availableLabel": "गतिविधी तयार करा",
     "rateActivityTitle": "हा उपक्रम कसा होता?",
     "rateActivityCommentHint": "एक टिप्पणी जोडा (पर्यायी)",
     "rateActivityCommentRejected": "तुमची टिप्पणी पोस्ट केली जाऊ शकली नाही. कृपया ती पुन्हा लिहा किंवा टिप्पणीशिवाय तुमचे रेटिंग सबमिट करा.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "आम्ही सध्या बरेच काही लोड करत आहोत. कृपया थोडा वेळ थांबा आणि पुन्हा प्रयत्न करा.",
     "noPermissionToInviteUsers": "तुम्हाला येथे सदस्यांना आमंत्रित करण्याची परवानगी नाही.",
     "mapPinsKeyboardHint": "नकाशावरील अ‍ॅक्टिव्हिटीमध्ये फिरण्यासाठी बाण की वापरा आणि अ‍ॅक्टिव्हिटी उघडण्यासाठी एंटर दाबा.",
-    "selectMessageLabel": "संदेश निवडा"
+    "selectMessageLabel": "संदेश निवडा",
+    "archivedChat": "संग्रहित गप्पा",
+    "activityReview": "गतिविधी पुनरावलोकन",
+    "activityPanel": "गतिविधी",
+    "coursePage": "अभ्यासक्रम पृष्ठ",
+    "constructLevelSeeds": "सीड्स, नवीन शब्द",
+    "constructLevelGreens": "ग्रीन्स, वाढणारे शब्द",
+    "constructLevelFlowers": "फ्लॉवर्स, पारंगत शब्द",
+    "filterAndSearch": "फिल्टर करा आणि शोधा",
+    "participantsOfTotal": "{total} पैकी {filled} खेळाडू",
+    "mapAttributionLabel": "ओपनस्ट्रीटमॅप योगदानकर्ते, कॉपीराइट आणि परवाना",
+    "availableLabel": "अद्याप सुरू झाले नाही",
+    "seeAll": "सर्व पहा",
+    "seeAllSection": "सर्व {section} पहा"
 }

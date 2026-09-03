@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-09-01 15:39:49.891539",
+    "@@last_modified": "2026-09-02 14:37:07.950215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Aspittendu chì l'altri si uniscenu",
     "joinableLabel": "Unibile",
     "inProgressLabel": "Cumpiitu prima",
-    "availableLabel": "Creà attività",
     "rateActivityTitle": "Cumu era sta attività?",
     "rateActivityCommentHint": "Aghjunghje un cummentu (facultativu)",
     "rateActivityCommentRejected": "U vostru cummentu ùn hà pussutu esse publicatu. Pruvate à riformulallu, o inviate a vostra valutazione senza cummentu.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Carichemu assai avà. Per piacè aspettate un mumentu è riprovate.",
     "noPermissionToInviteUsers": "Ùn avete micca permessu d'invità membri quì.",
     "mapPinsKeyboardHint": "Aduprate e chjave di freccia per spustà trà l'attività nantu à a carta, è premete Enter per apre una.",
-    "selectMessageLabel": "Selezziunà u messagiu"
+    "selectMessageLabel": "Selezziunà u messagiu",
+    "archivedChat": "Chat archivatu",
+    "activityReview": "Revisione di l'attività",
+    "activityPanel": "Attività",
+    "coursePage": "Pagina di u corsu",
+    "constructLevelSeeds": "Semi, parolle nove",
+    "constructLevelGreens": "Verdura, parolle chì crescenu",
+    "constructLevelFlowers": "Fiori, parolle ammaestrate",
+    "filterAndSearch": "Filtrà è circà",
+    "participantsOfTotal": "{filled} di {total} ghjucadori",
+    "mapAttributionLabel": "Cuntributori OpenStreetMap, copyright è licenza",
+    "availableLabel": "Micca principiatu ancu",
+    "seeAll": "Vede tuttu",
+    "seeAllSection": "Vede tuttu {section}"
 }

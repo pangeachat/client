@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-09-01 15:39:53.458582",
+    "@@last_modified": "2026-09-02 14:37:13.135369",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10574,7 +10574,6 @@
     "ongoingPendingLabel": "Čaká sa na pripojenie ostatných",
     "joinableLabel": "Dostupné na pripojenie",
     "inProgressLabel": "Predtým dokončené",
-    "availableLabel": "Vytvoriť aktivitu",
     "rateActivityTitle": "Aká bola táto aktivita?",
     "rateActivityCommentHint": "Pridať komentár (voliteľné)",
     "rateActivityCommentRejected": "Váš komentár sa nepodarilo uverejniť. Skúste ho preformulovať alebo odošlite hodnotenie bez komentára.",
@@ -10785,5 +10784,18 @@
     "errorRateLimited": "Práve teraz toho veľa načítavame. Skúste to znova o chvíľu.",
     "noPermissionToInviteUsers": "Nemáte povolenie pozývať sem členov.",
     "mapPinsKeyboardHint": "Použite klávesy so šípkami na pohyb medzi aktivitami na mape a stlačte Enter na otvorenie jednej z nich.",
-    "selectMessageLabel": "Vybrať správu"
+    "selectMessageLabel": "Vybrať správu",
+    "archivedChat": "Archivovaný chat",
+    "activityReview": "Prehľad aktivity",
+    "activityPanel": "Aktivita",
+    "coursePage": "Stránka kurzu",
+    "constructLevelSeeds": "Semienka, nové slová",
+    "constructLevelGreens": "Lístky, rastúce slová",
+    "constructLevelFlowers": "Kvety, zvládnuté slová",
+    "filterAndSearch": "Filtrovať a hľadať",
+    "participantsOfTotal": "{filled} z {total} hráčov",
+    "mapAttributionLabel": "Prispievatelia OpenStreetMap, autorské práva a licencia",
+    "availableLabel": "Ešte nezačalo",
+    "seeAll": "Zobraziť všetko",
+    "seeAllSection": "Zobraziť všetko: {section}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-01 15:39:50.071410",
+    "@@last_modified": "2026-09-02 14:37:07.895033",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9616,7 +9616,6 @@
     "ongoingPendingLabel": "Warten auf weitere Teilnehmer",
     "joinableLabel": "Beitretbar",
     "inProgressLabel": "Zuvor abgeschlossen",
-    "availableLabel": "Aktivität erstellen",
     "rateActivityTitle": "Wie war diese Aktivität?",
     "rateActivityCommentHint": "Kommentar hinzufügen (optional)",
     "rateActivityCommentRejected": "Ihr Kommentar konnte nicht gepostet werden. Versuchen Sie, ihn umzuformulieren, oder senden Sie Ihre Bewertung ohne Kommentar ab.",
@@ -9827,5 +9826,18 @@
     "errorRateLimited": "Wir laden gerade sehr viel. Bitte warten Sie einen Moment und versuchen Sie es dann erneut.",
     "noPermissionToInviteUsers": "Du hast keine Berechtigung, hier Mitglieder einzuladen.",
     "mapPinsKeyboardHint": "Verwenden Sie die Pfeiltasten, um zwischen den Aktivitäten auf der Karte zu wechseln, und drücken Sie die Eingabetaste, um eine zu öffnen.",
-    "selectMessageLabel": "Nachricht auswählen"
+    "selectMessageLabel": "Nachricht auswählen",
+    "archivedChat": "Archivierter Chat",
+    "activityReview": "Aktivitätsprüfung",
+    "activityPanel": "Aktivität",
+    "coursePage": "Kursseite",
+    "constructLevelSeeds": "Samen, neue Wörter",
+    "constructLevelGreens": "Grün, wachsende Wörter",
+    "constructLevelFlowers": "Blüten, gemeisterte Wörter",
+    "filterAndSearch": "Filtern und suchen",
+    "participantsOfTotal": "{filled} von {total} Spielern",
+    "mapAttributionLabel": "OpenStreetMap-Mitwirkende, Copyright und Lizenz",
+    "availableLabel": "Noch nicht gestartet",
+    "seeAll": "Alle anzeigen",
+    "seeAllSection": "Alle {section} anzeigen"
 }

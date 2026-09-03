@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-09-01 15:39:50.513317",
+    "@@last_modified": "2026-09-02 14:37:09.296161",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9629,7 +9629,6 @@
     "ongoingPendingLabel": "Agardando a que se unan outros",
     "joinableLabel": "Dispoñible para unirse",
     "inProgressLabel": "Completado previamente",
-    "availableLabel": "Crear actividade",
     "rateActivityTitle": "Que che pareceu esta actividade?",
     "rateActivityCommentHint": "Engadir un comentario (opcional)",
     "rateActivityCommentRejected": "Non se puido publicar o teu comentario. Tenta reformulalo ou envía a túa valoración sen un comentario.",
@@ -9840,5 +9839,18 @@
     "errorRateLimited": "Estamos cargando moito agora mesmo. Agarda un momento e téntao de novo.",
     "noPermissionToInviteUsers": "Non tes permiso para convidar membros aquí.",
     "mapPinsKeyboardHint": "Usa as teclas de frecha para moverte entre as actividades no mapa e preme Intro para abrir unha.",
-    "selectMessageLabel": "Seleccionar mensaxe"
+    "selectMessageLabel": "Seleccionar mensaxe",
+    "archivedChat": "Chat arquivado",
+    "activityReview": "Revisión da actividade",
+    "activityPanel": "Actividade",
+    "coursePage": "Páxina do curso",
+    "constructLevelSeeds": "Sementes, palabras novas",
+    "constructLevelGreens": "Verdes, palabras en crecemento",
+    "constructLevelFlowers": "Flores, palabras dominadas",
+    "filterAndSearch": "Filtrar e buscar",
+    "participantsOfTotal": "{filled} de {total} xogadores",
+    "mapAttributionLabel": "Colaboradores de OpenStreetMap, dereitos de autor e licenza",
+    "availableLabel": "Aínda sen comezar",
+    "seeAll": "Ver todo",
+    "seeAllSection": "Ver todo {section}"
 }

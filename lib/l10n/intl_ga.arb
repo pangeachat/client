@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-01 15:39:50.418913",
+    "@@last_modified": "2026-09-02 14:37:08.558023",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9640,7 +9640,6 @@
     "ongoingPendingLabel": "Ag fanacht le daoine eile a bheith páirteach",
     "joinableLabel": "Inscortha",
     "inProgressLabel": "Críochnaithe roimhe seo",
-    "availableLabel": "Cruthaigh gníomhaíocht",
     "rateActivityTitle": "Cén chaoi a raibh an ghníomhaíocht seo?",
     "rateActivityCommentHint": "Cuir trácht leis (roghnach)",
     "rateActivityCommentRejected": "Níorbh fhéidir do thrácht a phostáil. Bain triail as é a athfhocail, nó cuir isteach do rátáil gan trácht.",
@@ -9851,5 +9850,18 @@
     "errorRateLimited": "Táimid ag luchtú go leor faoi láthair. Fan nóiméad le do thoil agus bain triail eile as.",
     "noPermissionToInviteUsers": "Níl cead agat cuireadh a thabhairt do bhaill anseo.",
     "mapPinsKeyboardHint": "Bain úsáid as na heochracha saighde chun bogadh idir gníomhaíochtaí ar an léarscáil, agus brúigh Iontráil chun ceann a oscailt.",
-    "selectMessageLabel": "Roghnaigh teachtaireacht"
+    "selectMessageLabel": "Roghnaigh teachtaireacht",
+    "archivedChat": "Comhrá cartlainne",
+    "activityReview": "Athbhreithniú gníomhaíochta",
+    "activityPanel": "Gníomhaíocht",
+    "coursePage": "Leathanach cúrsa",
+    "constructLevelSeeds": "Síolta, focail nua",
+    "constructLevelGreens": "Glasaigh, focail ag fás",
+    "constructLevelFlowers": "Bláthanna, focail máistrithe",
+    "filterAndSearch": "Scag agus cuardaigh",
+    "participantsOfTotal": "{filled} de {total} imreoirí",
+    "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
+    "availableLabel": "Níl sé tosaithe fós",
+    "seeAll": "Féach ar fad",
+    "seeAllSection": "Féach ar {section} ar fad"
 }

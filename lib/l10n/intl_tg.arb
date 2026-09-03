@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-09-01 15:39:54.314486",
+    "@@last_modified": "2026-09-02 14:37:13.871101",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Интизори ҳамроҳшавии дигарон",
     "joinableLabel": "Ҳамроҳ шудан мумкин аст",
     "inProgressLabel": "Қаблан анҷом ёфтааст",
-    "availableLabel": "Фаъолият эҷод кунед",
     "rateActivityTitle": "Ин машқ чӣ гуна буд?",
     "rateActivityCommentHint": "Шарҳ илова кунед (ихтиёрӣ)",
     "rateActivityCommentRejected": "Шарҳи шумо нашр нашуд. Кӯшиш кунед, ки онро аз нав нависед ё баҳои худро бе шарҳ пешниҳод кунед.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Мо ҳоло бисёр чизҳоро бор карда истодаем. Лутфан каме интизор шавед ва бори дигар кӯшиш кунед.",
     "noPermissionToInviteUsers": "Шумо барои даъват кардани аъзоён ба ин ҷо иҷозат надоред.",
     "mapPinsKeyboardHint": "Барои ҳаракат кардан байни фаъолиятҳо дар харита тугмаҳои тирчаро истифода баред ва барои кушодани яке аз онҳо Enter-ро пахш кунед.",
-    "selectMessageLabel": "Интихоби паём"
+    "selectMessageLabel": "Интихоби паём",
+    "archivedChat": "Чат бойгонӣ шуд",
+    "activityReview": "Баррасии фаъолият",
+    "activityPanel": "Фаъолият",
+    "coursePage": "Саҳифаи курс",
+    "constructLevelSeeds": "Тухмҳо, калимаҳои нав",
+    "constructLevelGreens": "Сабзавот, калимаҳои рӯёнанда",
+    "constructLevelFlowers": "Гулҳо, калимаҳои азхудшуда",
+    "filterAndSearch": "Филтр ва ҷустуҷӯ",
+    "participantsOfTotal": "{filled} аз {total} бозигар",
+    "mapAttributionLabel": "Мусоидаткунандагони OpenStreetMap, ҳуқуқи муаллифӣ ва иҷозатнома",
+    "availableLabel": "Ҳанӯз оғоз нашудааст",
+    "seeAll": "Ҳамаро бинед",
+    "seeAllSection": "Ҳамаи {section}-ро бинед"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-09-01 15:39:51.475887",
+    "@@last_modified": "2026-09-02 14:37:10.948950",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Басқалардың қосылуын күтуде",
     "joinableLabel": "Қосылуға болады",
     "inProgressLabel": "Бұрын аяқталған",
-    "availableLabel": "Әрекет жасау",
     "rateActivityTitle": "Бұл әрекет қалай болды?",
     "rateActivityCommentHint": "Пікір қосу (міндетті емес)",
     "rateActivityCommentRejected": "Пікіріңізді жариялау мүмкін болмады. Оны қайта тұжырымдап көріңіз немесе пікірсіз бағаңызды жіберіңіз.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Қазір көп нәрсе жүктелуде. Біраз күтіп, қайталап көріңіз.",
     "noPermissionToInviteUsers": "Мұнда мүшелерді шақыруға рұқсатыңыз жоқ.",
     "mapPinsKeyboardHint": "Картадағы әрекеттер арасында жылжу үшін көрсеткі пернелерін пайдаланыңыз және оны ашу үшін Enter пернесін басыңыз.",
-    "selectMessageLabel": "Хабарды таңдау"
+    "selectMessageLabel": "Хабарды таңдау",
+    "archivedChat": "Мұрағатталған чат",
+    "activityReview": "Әрекетті шолу",
+    "activityPanel": "Әрекет",
+    "coursePage": "Курс беті",
+    "constructLevelSeeds": "Тұқымдар, жаңа сөздер",
+    "constructLevelGreens": "Көктер, өсіп келе жатқан сөздер",
+    "constructLevelFlowers": "Гүлдер, меңгерілген сөздер",
+    "filterAndSearch": "Сүзгілеу және іздеу",
+    "participantsOfTotal": "{total} ойыншының {filled}-і",
+    "mapAttributionLabel": "OpenStreetMap қатысушылары, авторлық құқық және лицензия",
+    "availableLabel": "Әлі басталған жоқ",
+    "seeAll": "Барлығын қарау",
+    "seeAllSection": "Барлық {section} қарау"
 }

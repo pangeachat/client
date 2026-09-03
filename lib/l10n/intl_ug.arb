@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-09-01 15:39:54.474113",
+    "@@last_modified": "2026-09-02 14:37:14.151423",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "باشقىلارنىڭ قاتنىشىشىنى كۈتۈۋاتىدۇ",
     "joinableLabel": "قاتنىشالايدۇ",
     "inProgressLabel": "ئىلگىرى تاماملىنىپ بولغان",
-    "availableLabel": "پائالىيەت قۇرۇش",
     "rateActivityTitle": "بۇ پائالىيەت قانداقراق بولدى؟",
     "rateActivityCommentHint": "ئىزاھات قوشۇش (ئىختىيارىي)",
     "rateActivityCommentRejected": "ئىزاھاتىڭىز يوللانمىدى. قايتا تېكىستلەپ بېقىڭ ياكى باھايىڭىزنى ئىزاھاتسىز يوللاڭ.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "ھازىر يۈكلەۋاتقان مەزمۇنلار كۆپ بولغاچقا، بىر ئاز ساقلاپ قايتا سىناپ بېقىڭ.",
     "noPermissionToInviteUsers": "بۇ يەرگە ئەزا تەكلىپ قىلىش ھوقۇقىڭىز يوق.",
     "mapPinsKeyboardHint": "خەرىتىدىكى پائالىيەتلەر ئارىسىدا يۆتكىلىش ئۈچۈن يول كۇنۇپكىلىرىنى ئىشلىتىڭ، ھەمدە بىرنى ئېچىش ئۈچۈن Enter نى بېسىڭ.",
-    "selectMessageLabel": "ئۇچۇر تاللاڭ"
+    "selectMessageLabel": "ئۇچۇر تاللاڭ",
+    "archivedChat": "ئارخىپلانغان پاراڭ",
+    "activityReview": "پائالىيەت تەكشۈرۈش",
+    "activityPanel": "پائالىيەت",
+    "coursePage": "كۇرس بېتى",
+    "constructLevelSeeds": "ئۇرۇقلار، يېڭى سۆزلەر",
+    "constructLevelGreens": "كۆكلەم، ئۆسۈۋاتقان سۆزلەر",
+    "constructLevelFlowers": "گۈللەر، پىششىق سۆزلەر",
+    "filterAndSearch": "سۈزۈش ۋە ئىزدەش",
+    "participantsOfTotal": "{total} قويغۇچنىڭ {filled} ى",
+    "mapAttributionLabel": "OpenStreetMap تۆھپىكارلىرى، نەشر ھوقۇقى ۋە ئىجازەتنامىسى",
+    "availableLabel": "تېخى باشلانمىدى",
+    "seeAll": "ھەممىنى كۆرۈش",
+    "seeAllSection": "بارلىق {section}نى كۆرۈش"
 }

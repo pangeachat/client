@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-09-01 15:39:52.535097",
+    "@@last_modified": "2026-09-02 14:37:13.140520",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "অথেনবশিং য়াওনবা ঙাইরি",
     "joinableLabel": "য়াওবা য়াবা",
     "inProgressLabel": "মমাংদা লোইশিনখ্রে",
-    "availableLabel": "থবক শেম্মু",
     "rateActivityTitle": "ꯁꯤ ꯑꯦꯛꯇꯤꯕꯤꯇꯤ ꯑꯁꯤ ꯀꯔꯝꯅ ꯂꯩꯕꯒꯦ?",
     "rateActivityCommentHint": "ꯑꯦꯗꯤꯁꯅꯦꯜ ꯀꯃꯦꯟꯇ ꯑꯃ ꯍꯥꯞꯄꯤꯌꯨ (ꯑꯣꯞꯁꯅꯦꯜ)",
     "rateActivityCommentRejected": "ꯅꯍꯥꯛꯀꯤ ꯀꯃꯦꯟꯇ ꯑꯗꯨ ꯄꯣꯁ꯭ꯠ ꯇꯧꯕ ꯉꯃꯈꯤꯗꯦ꯫ ꯑꯃꯨꯛ ꯍꯟꯅ ꯍꯥꯏꯗꯣꯛꯄ ꯍꯣꯠꯅꯧ, ꯅꯠꯠꯔꯒ ꯀꯃꯦꯟꯇ ꯂꯩꯇꯅ ꯅꯍꯥꯛꯀꯤ ꯔꯦꯇꯤꯡ ꯑꯗꯨ ꯁꯕꯃꯤꯠ ꯇꯧ꯫",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "ঐখোয়না হৌজিক কয়া লোড তৌরি। খুদক্তা ঙাইবীয়ু অমসুং অমুক হন্না হোৎনৌ।",
     "noPermissionToInviteUsers": "ꯃꯁꯤꯗ ꯃꯦꯝꯕꯔꯁꯤꯡ ꯀꯧꯅꯕꯒꯤ ꯏꯖꯥꯠ ꯅꯠꯠꯔꯒ ꯄꯔꯃꯤꯁꯟ ꯅꯠꯠꯔꯤ.",
     "mapPinsKeyboardHint": "Map ta chatnaba activities singgi marakta saronba hotnabagidamak arrow keys sing adu sijinbiyu, aduga amabu hangdoknaba Enter thinbiyu.",
-    "selectMessageLabel": "মেসেজ খল্লু"
+    "selectMessageLabel": "মেসেজ খল্লু",
+    "archivedChat": "আর্কাইভ তৌখিবা চ্যাট",
+    "activityReview": "এক্টিভিটি রিকন",
+    "activityPanel": "এক্টিভিটি",
+    "coursePage": "কোর্স পেজ",
+    "constructLevelSeeds": "Seeds, অহোংবা ৱাহৈশিং",
+    "constructLevelGreens": "Greens, চাউরক্লিবা ৱাহৈশিং",
+    "constructLevelFlowers": "Flowers, থোইদোকপা ৱাহৈশিং",
+    "filterAndSearch": "Filter অমসুং search",
+    "participantsOfTotal": "{total} players sing {filled} na yaore",
+    "mapAttributionLabel": "OpenStreetMap contributors, copyright amadi license",
+    "availableLabel": "Hanna houkhidri",
+    "seeAll": "পুম্নমক উ",
+    "seeAllSection": "পুম্নমক উ {section}"
 }

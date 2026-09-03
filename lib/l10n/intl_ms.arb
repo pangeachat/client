@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-09-01 15:39:52.519050",
+    "@@last_modified": "2026-09-02 14:37:12.072285",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Menunggu orang lain untuk menyertai",
     "joinableLabel": "Boleh disertai",
     "inProgressLabel": "Selesai sebelumnya",
-    "availableLabel": "Cipta aktiviti",
     "rateActivityTitle": "Bagaimana aktiviti ini?",
     "rateActivityCommentHint": "Tambah komen (pilihan)",
     "rateActivityCommentRejected": "Komen anda tidak dapat disiarkan. Cuba ubah perkataan, atau hantar penilaian anda tanpa komen.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Kami sedang memuat banyak data sekarang. Sila tunggu sebentar dan cuba lagi.",
     "noPermissionToInviteUsers": "Anda tidak mempunyai kebenaran untuk menjemput ahli di sini.",
     "mapPinsKeyboardHint": "Gunakan kekunci anak panah untuk bergerak antara aktiviti pada peta, dan tekan Enter untuk membuka satu.",
-    "selectMessageLabel": "Pilih mesej"
+    "selectMessageLabel": "Pilih mesej",
+    "archivedChat": "Sembang yang diarkibkan",
+    "activityReview": "Semakan aktiviti",
+    "activityPanel": "Aktiviti",
+    "coursePage": "Halaman kursus",
+    "constructLevelSeeds": "Benih, perkataan baharu",
+    "constructLevelGreens": "Hijau, perkataan yang berkembang",
+    "constructLevelFlowers": "Bunga, perkataan yang dikuasai",
+    "filterAndSearch": "Tapis dan cari",
+    "participantsOfTotal": "{filled} daripada {total} pemain",
+    "mapAttributionLabel": "Penyumbang OpenStreetMap, hak cipta dan lesen",
+    "availableLabel": "Belum bermula",
+    "seeAll": "Lihat semua",
+    "seeAllSection": "Lihat semua {section}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-09-01 15:39:52.486419",
+    "@@last_modified": "2026-09-02 14:37:11.454573",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Miandry ny hafa hiditra",
     "joinableLabel": "Azo idirana",
     "inProgressLabel": "Efa vita teo aloha",
-    "availableLabel": "Mamorona asa",
     "rateActivityTitle": "Ahoana ity asa ity?",
     "rateActivityCommentHint": "Ampio fanehoan-kevitra (tsy voatery)",
     "rateActivityCommentRejected": "Tsy afaka nampidirina ny fanehoan-kevitrao. Andramo ovaina ny teny, na alefaso ny naoty tsy misy fanehoan-kevitra.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Misy entana maro alaina izao. Andraso kely ary avereno indray.",
     "noPermissionToInviteUsers": "Tsy manana alalana hanasa mpikambana eto ianao.",
     "mapPinsKeyboardHint": "Ampiasao ny zana-tsipìka hivezivezena eo amin'ireo asa eo amin'ny sarintany, ary tsindrio ny Enter hanokafana iray.",
-    "selectMessageLabel": "Fidio hafatra"
+    "selectMessageLabel": "Fidio hafatra",
+    "archivedChat": "Chat voatahiry",
+    "activityReview": "Famerenana ny asa",
+    "activityPanel": "Asa",
+    "coursePage": "Pejy fampianarana",
+    "constructLevelSeeds": "Voa, teny vaovao",
+    "constructLevelGreens": "Zavamaniry, teny mitombo",
+    "constructLevelFlowers": "Voninkazo, teny efa mahay",
+    "filterAndSearch": "Sivana sy karoka",
+    "participantsOfTotal": "{filled} amin'ny mpilalao {total}",
+    "mapAttributionLabel": "Mpanome anjara OpenStreetMap, zon'ny mpamorona ary fahazoan-dàlana",
+    "availableLabel": "Mbola tsy nanomboka",
+    "seeAll": "Jereo daholo",
+    "seeAllSection": "Jereo daholo ny {section}"
 }

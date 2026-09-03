@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-09-01 15:39:54.595709",
+    "@@last_modified": "2026-09-02 14:37:14.359572",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Kulindwe abanye ukuba bajoyine",
     "joinableLabel": "Iyakwazi ukujoyinwa",
     "inProgressLabel": "Kugqitywe ngaphambili",
-    "availableLabel": "Yenza umsebenzi",
     "rateActivityTitle": "Injani le ngxubusho?",
     "rateActivityCommentHint": "Yongeza uluvo (onganyanzelekanga)",
     "rateActivityCommentRejected": "Uluvo lwakho alukwazanga ukuthunyelwa. Zama ukulubhala ngokutsha, okanye ungenise ireyithingi yakho ngaphandle koluvo.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Silayisha okuninzi ngoku. Nceda ulinde umzuzwana uze uzame kwakhona.",
     "noPermissionToInviteUsers": "Awunayo imvume yokumema amalungu apha.",
     "mapPinsKeyboardHint": "Sebenzisa amaqhosha otolo ukuhamba phakathi kwemisebenzi kwimephu, kwaye ucinezele u-Enter ukuze uvule enye.",
-    "selectMessageLabel": "Khetha umyalezo"
+    "selectMessageLabel": "Khetha umyalezo",
+    "archivedChat": "Ingxoxo egciniweyo",
+    "activityReview": "Uhlaziyo lomsebenzi",
+    "activityPanel": "Umsebenzi",
+    "coursePage": "Iphepha lekhosi",
+    "constructLevelSeeds": "Imbewu, amagama amatsha",
+    "constructLevelGreens": "Izityalo, amagama akhulayo",
+    "constructLevelFlowers": "Iintyatyambo, amagama aphucukileyo",
+    "filterAndSearch": "Hluza uze ukhangele",
+    "participantsOfTotal": "{filled} kubadlali abali-{total}",
+    "mapAttributionLabel": "Abanikeli be-OpenStreetMap, ilungelo lokushicilela kunye nelayisensi",
+    "availableLabel": "Ayikaqali",
+    "seeAll": "Bona konke",
+    "seeAllSection": "Bona konke {section}"
 }

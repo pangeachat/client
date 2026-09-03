@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-09-01 15:39:51.920513",
+    "@@last_modified": "2026-09-02 14:37:11.061297",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "چاوەڕێی ئەوانی تر دەکەین بۆ بەشداریکردن",
     "joinableLabel": "بەشداریکردن",
     "inProgressLabel": "پێشتر تەواوکراوە",
-    "availableLabel": "چالاکی دروست بکە",
     "rateActivityTitle": "ئەم چالاکییە چۆن بوو؟",
     "rateActivityCommentHint": "سەرنجێک زیاد بکە (بەخواستی خۆت)",
     "rateActivityCommentRejected": "سەرنجەکەت بڵاونەکرایەوە. هەوڵبدە دووبارە بینووسیتەوە، یان هەڵسەنگاندنەکەت بەبێ سەرنج بنێرە.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "ئێستا زۆر شت بار دەکەین. تکایە کەمێک چاوەڕێ بکە و دووبارە هەوڵ بدەوە.",
     "noPermissionToInviteUsers": "ڕێگەت پێنادرێت ئەندامان بانگهێشت بکەیت بۆ ئێرە.",
     "mapPinsKeyboardHint": "کلیلەکانی ئاڕاستە بەکاربهێنە بۆ جووڵانەوە لەنێوان چالاکییەکانی سەر نەخشەکە، و Enter دابگرە بۆ کردنەوەی یەکێکیان.",
-    "selectMessageLabel": "پەیام هەڵبژێرە"
+    "selectMessageLabel": "پەیام هەڵبژێرە",
+    "archivedChat": "چاتی ئەرشیفکراو",
+    "activityReview": "پێداچوونەوەی چالاکی",
+    "activityPanel": "چالاکی",
+    "coursePage": "پەڕەی خول",
+    "constructLevelSeeds": "تۆو، وشەی نوێ",
+    "constructLevelGreens": "سەوزایی، وشە گەشەسەندووەکان",
+    "constructLevelFlowers": "گوڵەکان، وشە شارەزاکان",
+    "filterAndSearch": "پاڵاوتن و گەڕان",
+    "participantsOfTotal": "{filled} لە {total} یاریزان",
+    "mapAttributionLabel": "بەشداربووانی OpenStreetMap، مافی لەبەرگرتنەوە و مۆڵەت",
+    "availableLabel": "هێشتا دەستی پێنەکردووە",
+    "seeAll": "هەمووی ببینە",
+    "seeAllSection": "هەموو {section} ببینە"
 }

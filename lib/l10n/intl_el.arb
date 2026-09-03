@@ -3401,7 +3401,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-09-01 15:39:49.816994",
+    "@@last_modified": "2026-09-02 14:37:07.899566",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10504,7 +10504,6 @@
     "ongoingPendingLabel": "Αναμονή για να συνδεθούν οι άλλοι",
     "joinableLabel": "Διαθέσιμο για συμμετοχή",
     "inProgressLabel": "Ολοκληρώθηκε προηγουμένως",
-    "availableLabel": "Δημιουργία δραστηριότητας",
     "rateActivityTitle": "Πώς ήταν αυτή η δραστηριότητα;",
     "rateActivityCommentHint": "Προσθέστε ένα σχόλιο (προαιρετικό)",
     "rateActivityCommentRejected": "Το σχόλιό σας δεν μπόρεσε να δημοσιευτεί. Δοκιμάστε να το αναδιατυπώσετε ή υποβάλετε την αξιολόγησή σας χωρίς σχόλιο.",
@@ -10715,5 +10714,18 @@
     "errorRateLimited": "Φορτώνουμε πολλά αυτή τη στιγμή. Παρακαλώ περιμένετε λίγο και δοκιμάστε ξανά.",
     "noPermissionToInviteUsers": "Δεν έχετε άδεια να προσκαλέσετε μέλη εδώ.",
     "mapPinsKeyboardHint": "Χρησιμοποιήστε τα πλήκτρα βέλους για να μετακινηθείτε μεταξύ των δραστηριοτήτων στον χάρτη και πατήστε Enter για να ανοίξετε μία.",
-    "selectMessageLabel": "Επιλογή μηνύματος"
+    "selectMessageLabel": "Επιλογή μηνύματος",
+    "archivedChat": "Αρχειοθετημένη συνομιλία",
+    "activityReview": "Ανασκόπηση δραστηριότητας",
+    "activityPanel": "Δραστηριότητα",
+    "coursePage": "Σελίδα μαθήματος",
+    "constructLevelSeeds": "Σπόροι, νέες λέξεις",
+    "constructLevelGreens": "Πράσινα, αναπτυσσόμενες λέξεις",
+    "constructLevelFlowers": "Λουλούδια, λέξεις που έχετε κατακτήσει",
+    "filterAndSearch": "Φιλτράρισμα και αναζήτηση",
+    "participantsOfTotal": "{filled} από {total} παίκτες",
+    "mapAttributionLabel": "Συνεισφέροντες στο OpenStreetMap, πνευματικά δικαιώματα και άδεια",
+    "availableLabel": "Δεν έχει ξεκινήσει ακόμα",
+    "seeAll": "Δείτε όλα",
+    "seeAllSection": "Δείτε όλα τα {section}"
 }

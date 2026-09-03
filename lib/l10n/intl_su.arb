@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-09-01 15:39:53.808265",
+    "@@last_modified": "2026-09-02 14:37:13.668183",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Ngantosan nu sanés ngagabung",
     "joinableLabel": "Bisa ngagabung",
     "inProgressLabel": "Saméméhna réngsé",
-    "availableLabel": "Jieun kagiatan",
     "rateActivityTitle": "Kumaha kagiatan ieu?",
     "rateActivityCommentHint": "Tambihkeun koméntar (opsional)",
     "rateActivityCommentRejected": "Koméntar anjeun teu tiasa dipasang. Cobi robih kecapna, atanapi kirimkeun peunteun anjeun tanpa koméntar.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Urang nuju ngamuat seueur ayeuna. Mangga antosan sakedap teras cobian deui.",
     "noPermissionToInviteUsers": "Anjeun teu gaduh idin pikeun ngajak anggota ka dieu.",
     "mapPinsKeyboardHint": "Anggo kenop panah pikeun mindahkeun antara kagiatan dina peta, teras pencét Enter pikeun muka hiji.",
-    "selectMessageLabel": "Pilih pesen"
+    "selectMessageLabel": "Pilih pesen",
+    "archivedChat": "Obrolan nu diarsipkeun",
+    "activityReview": "Tinjauan kagiatan",
+    "activityPanel": "Kagiatan",
+    "coursePage": "Kaca kursus",
+    "constructLevelSeeds": "Siki, kecap anyar",
+    "constructLevelGreens": "Héjo, kecap nu tumuwuh",
+    "constructLevelFlowers": "Kembang, kecap nu geus dikawasa",
+    "filterAndSearch": "Saring jeung teang",
+    "participantsOfTotal": "{filled} tina {total} pamaén",
+    "mapAttributionLabel": "Kontributor OpenStreetMap, hak cipta sareng lisénsi",
+    "availableLabel": "Teu acan dimimitian",
+    "seeAll": "Tingali sadayana",
+    "seeAllSection": "Tingali sadayana {section}"
 }

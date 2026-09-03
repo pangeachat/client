@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-09-01 15:39:51.014355",
+    "@@last_modified": "2026-09-02 14:37:10.518805",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Ap tann lòt moun rantre",
     "joinableLabel": "Ou ka rantre",
     "inProgressLabel": "Deja fini",
-    "availableLabel": "Kreye aktivite",
     "rateActivityTitle": "Kijan aktivite sa a te ye?",
     "rateActivityCommentHint": "Ajoute yon kòmantè (opsyonèl)",
     "rateActivityCommentRejected": "Kòmantè ou a pa t' kapab poste. Eseye reformule li, oswa soumèt evalyasyon ou san yon kòmantè.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "N ap chaje anpil kounye a. Tanpri tann yon ti moman epi eseye ankò.",
     "noPermissionToInviteUsers": "Ou pa gen pèmisyon pou envite manm isit la.",
     "mapPinsKeyboardHint": "Sèvi ak flèch yo pou w deplase ant aktivite yo sou kat la, epi peze Antre pou w ouvri youn.",
-    "selectMessageLabel": "Chwazi mesaj"
+    "selectMessageLabel": "Chwazi mesaj",
+    "archivedChat": "Chat achive",
+    "activityReview": "Revizyon aktivite",
+    "activityPanel": "Aktivite",
+    "coursePage": "Paj kou",
+    "constructLevelSeeds": "Gren, nouvo mo",
+    "constructLevelGreens": "Vèt, mo k ap grandi",
+    "constructLevelFlowers": "Flè, mo ou metrize",
+    "filterAndSearch": "Filtre epi chèche",
+    "participantsOfTotal": "{filled} sou {total} jwè",
+    "mapAttributionLabel": "Kontribitè OpenStreetMap, copyright ak lisans",
+    "availableLabel": "Pokò kòmanse",
+    "seeAll": "Gade tout",
+    "seeAllSection": "Gade tout {section}"
 }

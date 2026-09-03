@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-09-01 15:39:50.882198",
+    "@@last_modified": "2026-09-02 14:37:09.506601",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Tos lwm tus tuaj koom",
     "joinableLabel": "Koom tau",
     "inProgressLabel": "Ua tiav lawm",
-    "availableLabel": "Tsim kev ua si",
     "rateActivityTitle": "Kev ua noj ua haus no zoo li cas?",
     "rateActivityCommentHint": "Ntxiv lus (yeem)",
     "rateActivityCommentRejected": "Koj cov lus tsis tuaj yeem tshaj tawm. Sim hloov cov lus, lossis xa koj qhov kev ntsuas yam tsis muaj lus.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Tam sim no peb tab tom thauj ntau yam. Thov tos ib pliag mam sim dua.",
     "noPermissionToInviteUsers": "Koj tsis muaj cai caw lwm tus tuaj koom ntawm no.",
     "mapPinsKeyboardHint": "Siv cov yuam sij xub kom txav mus los ntawm cov haujlwm hauv daim ntawv qhia, thiab nias Enter kom qhib ib qho.",
-    "selectMessageLabel": "Xaiv lus"
+    "selectMessageLabel": "Xaiv lus",
+    "archivedChat": "Cov lus sib tham qub",
+    "activityReview": "Rov saib dua tej yam ua",
+    "activityPanel": "Kev ua ub no",
+    "coursePage": "Nplooj ntawv kawm",
+    "constructLevelSeeds": "Noob, cov lus tshiab",
+    "constructLevelGreens": "Ntsuab, cov lus loj hlob",
+    "constructLevelFlowers": "Paj, cov lus kawm tiav",
+    "filterAndSearch": "Lim thiab tshawb",
+    "participantsOfTotal": "{filled} ntawm {total} tus neeg ua si",
+    "mapAttributionLabel": "OpenStreetMap cov neeg koom tes, txoj cai luam tawm thiab daim ntawv tso cai",
+    "availableLabel": "Tsis tau pib",
+    "seeAll": "Saib tag nrho",
+    "seeAllSection": "Saib tag nrho {section}"
 }

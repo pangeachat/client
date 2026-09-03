@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-09-01 15:39:54.840149",
+    "@@last_modified": "2026-09-02 14:37:14.177861",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "וואַרטן אויף אַנדערע צו קומען",
     "joinableLabel": "מעגלעך זיך צו באַהעפֿטן",
     "inProgressLabel": "פֿריִער פֿאַרענדיקט",
-    "availableLabel": "שאַפֿן אַקטיוויטעט",
     "rateActivityTitle": "ווי איז געווען די אַקטיוויטעט?",
     "rateActivityCommentHint": "לייג צו אַ קאָמענטאַר (אָפּציאָנעל)",
     "rateActivityCommentRejected": "אײַער קאָמענטאַר האָט ניט געקענט געפּאָסט ווערן. פּרוּווט עס איבערשרײַבן, אָדער שיקט אײַער רייטינג אָן אַ קאָמענטאַר.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "מיר לאָדן איצט אַ סך. ביטע וואַרטן אַ מאָמענט און פּרוּווט ווידער.",
     "noPermissionToInviteUsers": "איר האָט נישט קיין דערלויבעניש צו פאַרבעטן מיטגלידער אַהער.",
     "mapPinsKeyboardHint": "ניצט די פֿײַל שליסלען צו רירן צווישן אַקטיוויטעטן אויף דער מאַפּע, און דרוקט אַרײַן צו עפֿענען אײנעם.",
-    "selectMessageLabel": "קלייַבן אָנזאָג"
+    "selectMessageLabel": "קלייַבן אָנזאָג",
+    "archivedChat": "אַרטשיוועד שמועס",
+    "activityReview": "אַקטיוויטעט איבערבליק",
+    "activityPanel": "אַקטיוויטעט",
+    "coursePage": "קורס בלאַט",
+    "constructLevelSeeds": "זוימען, נײַע ווערטער",
+    "constructLevelGreens": "גרינסן, וואַקסנדיקע ווערטער",
+    "constructLevelFlowers": "בלומען, באַהערשטע ווערטער",
+    "filterAndSearch": "פֿילטרירן און זוכן",
+    "participantsOfTotal": "{filled} פֿון {total} שפּילער",
+    "mapAttributionLabel": "OpenStreetMap מיטארבעטער, קאפירעכט און ליצענץ",
+    "availableLabel": "נאָך נישט אָנגעהויבן",
+    "seeAll": "זען אַלע",
+    "seeAllSection": "זען אַלע {section}"
 }

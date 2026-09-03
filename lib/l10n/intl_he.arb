@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:50.876695",
+    "@@last_modified": "2026-09-02 14:37:09.501678",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10543,7 +10543,6 @@
     "ongoingPendingLabel": "ממתין לאחרים להצטרף",
     "joinableLabel": "ניתן להצטרף",
     "inProgressLabel": "הושלם בעבר",
-    "availableLabel": "צור פעילות",
     "rateActivityTitle": "איך הייתה הפעילות?",
     "rateActivityCommentHint": "הוסף תגובה (אופציונלית)",
     "rateActivityCommentRejected": "התגובה שלך לא פורסמה. נסה לנסח אותה מחדש, או שלח את הדירוג שלך ללא תגובה.",
@@ -10754,5 +10753,18 @@
     "errorRateLimited": "אנחנו טוענים הרבה כרגע. אנא המתן רגע ונסה שוב.",
     "noPermissionToInviteUsers": "אין לך הרשאה להזמין חברים לכאן.",
     "mapPinsKeyboardHint": "השתמשו במקשי החיצים כדי לנוע בין הפעילויות על המפה, ולחצו על אנטר כדי לפתוח אחת.",
-    "selectMessageLabel": "בחר הודעה"
+    "selectMessageLabel": "בחר הודעה",
+    "archivedChat": "צ'אט בארכיון",
+    "activityReview": "סקירת פעילות",
+    "activityPanel": "פעילות",
+    "coursePage": "דף קורס",
+    "constructLevelSeeds": "זרעים, מילים חדשות",
+    "constructLevelGreens": "עלים, מילים בצמיחה",
+    "constructLevelFlowers": "פרחים, מילים שנלמדו",
+    "filterAndSearch": "סינון וחיפוש",
+    "participantsOfTotal": "{filled} מתוך {total} שחקנים",
+    "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
+    "availableLabel": "טרם התחיל",
+    "seeAll": "הצג הכל",
+    "seeAllSection": "הצג הכל {section}"
 }

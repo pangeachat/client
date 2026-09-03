@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-09-01 15:39:51.961675",
+    "@@last_modified": "2026-09-02 14:37:10.962585",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Башкалардын кошулушун күтүүдө",
     "joinableLabel": "Кошулууга болот",
     "inProgressLabel": "Буга чейин аяктаган",
-    "availableLabel": "Иш-аракет түзүү",
     "rateActivityTitle": "Бул иш-аракет кандай болду?",
     "rateActivityCommentHint": "Комментарий кошуу (милдеттүү эмес)",
     "rateActivityCommentRejected": "Комментарийиңиз жарыяланган жок. Кайра жазып көрүңүз же комментарийсиз баа бериңиз.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Учурда көп нерсе жүктөлүп жатат. Бир аз күтүп, кайра аракет кылыңыз.",
     "noPermissionToInviteUsers": "Бул жерге мүчөлөрдү чакырууга уруксатыңыз жок.",
     "mapPinsKeyboardHint": "Картадагы аракеттердин ортосунда жылдыруу үчүн жебе баскычтарын колдонуңуз жана ачуу үчүн Enter баскычын басыңыз.",
-    "selectMessageLabel": "Кабарды тандоо"
+    "selectMessageLabel": "Кабарды тандоо",
+    "archivedChat": "Архивделген чат",
+    "activityReview": "Иш-аракеттерди карап чыгуу",
+    "activityPanel": "Иш-аракет",
+    "coursePage": "Курс баракчасы",
+    "constructLevelSeeds": "Үрөндөр, жаңы сөздөр",
+    "constructLevelGreens": "Көк чөптөр, өсүп жаткан сөздөр",
+    "constructLevelFlowers": "Гүлдөр, өздөштүрүлгөн сөздөр",
+    "filterAndSearch": "Чыпкалоо жана издөө",
+    "participantsOfTotal": "{filled} / {total} оюнчу",
+    "mapAttributionLabel": "OpenStreetMap салымчылары, автордук укук жана лицензия",
+    "availableLabel": "Башталган жок",
+    "seeAll": "Баарын көрүү",
+    "seeAllSection": "Баарын көрүү {section}"
 }

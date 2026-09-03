@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-09-01 15:39:52.497420",
+    "@@last_modified": "2026-09-02 14:37:11.673405",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "Бусдыг нэгдэхийг хүлээж байна",
     "joinableLabel": "Нэгдэх боломжтой",
     "inProgressLabel": "Өмнө нь дууссан",
-    "availableLabel": "Үйлдэл үүсгэх",
     "rateActivityTitle": "Энэ дасгал ямар байсан бэ?",
     "rateActivityCommentHint": "Сэтгэгдэл нэмэх (заавал биш)",
     "rateActivityCommentRejected": "Таны сэтгэгдлийг нийтлэх боломжгүй байсан. Үгээ өөрчлөн бичих эсвэл сэтгэгдэлгүйгээр үнэлгээгээ илгээнэ үү.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "Одоогоор бид маш их ачаалж байна. Түр хүлээгээд дахин оролдоно уу.",
     "noPermissionToInviteUsers": "Та энд гишүүд урих зөвшөөрөлгүй байна.",
     "mapPinsKeyboardHint": "Газрын зураг дээрх үйл ажиллагаануудын хооронд шилжихийн тулд сумтай товчлууруудыг ашиглана уу, мөн нээхийн тулд Enter дарна уу.",
-    "selectMessageLabel": "Зурвас сонгох"
+    "selectMessageLabel": "Зурвас сонгох",
+    "archivedChat": "Архивлагдсан чат",
+    "activityReview": "Үйл ажиллагааны тойм",
+    "activityPanel": "Үйл ажиллагаа",
+    "coursePage": "Хичээлийн хуудас",
+    "constructLevelSeeds": "Үр, шинэ үгс",
+    "constructLevelGreens": "Ногоон, ургаж буй үгс",
+    "constructLevelFlowers": "Цэцэг, эзэмшсэн үгс",
+    "filterAndSearch": "Шүүж хайх",
+    "participantsOfTotal": "{total} тоглогчоос {filled} нь",
+    "mapAttributionLabel": "OpenStreetMap-ийн хувь нэмэр оруулагчид, зохиогчийн эрх, лиценз",
+    "availableLabel": "Эхлээгүй байна",
+    "seeAll": "Бүгдийг харах",
+    "seeAllSection": "Бүх {section}-г харах"
 }

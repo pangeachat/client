@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-09-01 15:39:50.598459",
+    "@@last_modified": "2026-09-02 14:37:09.380030",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "અન્ય લોકોના જોડાવાની રાહ જોવાઈ રહી છે",
     "joinableLabel": "જોડાવા યોગ્ય",
     "inProgressLabel": "અગાઉ પૂર્ણ થયેલ",
-    "availableLabel": "પ્રવૃત્તિ બનાવો",
     "rateActivityTitle": "આ પ્રવૃત્તિ કેવી હતી?",
     "rateActivityCommentHint": "ટિપ્પણી ઉમેરો (વૈકલ્પિક)",
     "rateActivityCommentRejected": "તમારી ટિપ્પણી પોસ્ટ થઈ શકી નથી. તેને ફરીથી લખવાનો પ્રયાસ કરો અથવા ટિપ્પણી વિના તમારું રેટિંગ સબમિટ કરો.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "અમે અત્યારે ઘણું લોડ કરી રહ્યા છીએ. કૃપા કરીને થોડીવાર રાહ જુઓ અને ફરી પ્રયાસ કરો.",
     "noPermissionToInviteUsers": "તમને અહીં સભ્યોને આમંત્રિત કરવાની પરવાનગી નથી.",
     "mapPinsKeyboardHint": "નકશા પરની પ્રવૃત્તિઓ વચ્ચે ખસેડવા માટે તીર કીનો ઉપયોગ કરો અને તેને ખોલવા માટે Enter દબાવો.",
-    "selectMessageLabel": "સંદેશ પસંદ કરો"
+    "selectMessageLabel": "સંદેશ પસંદ કરો",
+    "archivedChat": "આર્કાઇવ કરેલી ચેટ",
+    "activityReview": "પ્રવૃત્તિ સમીક્ષા",
+    "activityPanel": "પ્રવૃત્તિ",
+    "coursePage": "કોર્સ પેજ",
+    "constructLevelSeeds": "બીજ, નવા શબ્દો",
+    "constructLevelGreens": "ગ્રીન્સ, વિકસતા શબ્દો",
+    "constructLevelFlowers": "ફૂલો, નિપુણ શબ્દો",
+    "filterAndSearch": "ફિલ્ટર કરો અને શોધો",
+    "participantsOfTotal": "{total} ખેલાડીઓમાંથી {filled}",
+    "mapAttributionLabel": "OpenStreetMap ફાળો આપનારાઓ, કૉપિરાઇટ અને લાઇસન્સ",
+    "availableLabel": "હજુ શરૂ થયું નથી",
+    "seeAll": "બધા જુઓ",
+    "seeAllSection": "બધા જુઓ {section}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-01 15:39:53.240619",
+    "@@last_modified": "2026-09-02 14:37:12.723105",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9629,7 +9629,6 @@
     "ongoingPendingLabel": "Aguardando outros entrarem",
     "joinableLabel": "Entrar",
     "inProgressLabel": "Concluído anteriormente",
-    "availableLabel": "Criar atividade",
     "rateActivityTitle": "O que você achou desta atividade?",
     "rateActivityCommentHint": "Adicione um comentário (opcional)",
     "rateActivityCommentRejected": "Não foi possível postar seu comentário. Tente reformulá-lo ou envie sua avaliação sem um comentário.",
@@ -9840,5 +9839,18 @@
     "errorRateLimited": "Estamos carregando muita coisa agora. Por favor, aguarde um momento e tente novamente.",
     "noPermissionToInviteUsers": "Você não tem permissão para convidar membros aqui.",
     "mapPinsKeyboardHint": "Use as setas para mover entre as atividades no mapa e pressione Enter para abrir uma.",
-    "selectMessageLabel": "Selecionar mensagem"
+    "selectMessageLabel": "Selecionar mensagem",
+    "archivedChat": "Chat arquivado",
+    "activityReview": "Revisão de atividade",
+    "activityPanel": "Atividade",
+    "coursePage": "Página do curso",
+    "constructLevelSeeds": "Sementes, palavras novas",
+    "constructLevelGreens": "Verdes, palavras em crescimento",
+    "constructLevelFlowers": "Flores, palavras dominadas",
+    "filterAndSearch": "Filtrar e pesquisar",
+    "participantsOfTotal": "{filled} de {total} jogadores",
+    "mapAttributionLabel": "Colaboradores do OpenStreetMap, direitos autorais e licença",
+    "availableLabel": "Ainda não começou",
+    "seeAll": "Ver tudo",
+    "seeAllSection": "Ver tudo em {section}"
 }

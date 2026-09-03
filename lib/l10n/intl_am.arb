@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-09-01 15:39:49.312725",
+    "@@last_modified": "2026-09-02 14:37:07.206992",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "ሌሎች እስኪቀላቀሉ በመጠበቅ ላይ",
     "joinableLabel": "መቀላቀል የሚቻል",
     "inProgressLabel": "ቀደም ሲል የተጠናቀቀ",
-    "availableLabel": "እንቅስቃሴ ይፍጠሩ",
     "rateActivityTitle": "ይህ እንቅስቃሴ እንዴት ነበር?",
     "rateActivityCommentHint": "አስተያየት ያክሉ (አማራጭ)",
     "rateActivityCommentRejected": "አስተያየትዎ ሊለጠፍ አልቻለም። እንደገና ለመጻፍ ይሞክሩ ወይም ያለአስተያየት ደረጃዎን ያስገቡ።",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "በአሁኑ ጊዜ ብዙ እየጫንን ነው። እባክዎ ትንሽ ይጠብቁ እና እንደገና ይሞክሩ።",
     "noPermissionToInviteUsers": "እዚህ አባላትን ለመጋበዝ ፍቃድ የለዎትም።",
     "mapPinsKeyboardHint": "በካርታው ላይ ባሉ እንቅስቃሴዎች መካከል ለመንቀሳቀስ የቀስት ቁልፎችን ይጠቀሙ እና አንዱን ለመክፈት አስገባን ይጫኑ።",
-    "selectMessageLabel": "መልዕክት ምረጥ"
+    "selectMessageLabel": "መልዕክት ምረጥ",
+    "archivedChat": "የታገደ ውይይት",
+    "activityReview": "የእንቅስቃሴ ግምገማ",
+    "activityPanel": "እንቅስቃሴ",
+    "coursePage": "የኮርስ ገጽ",
+    "constructLevelSeeds": "ዘሮች፣ አዲስ ቃላት",
+    "constructLevelGreens": "አረንጓዴዎች፣ እያደጉ ያሉ ቃላት",
+    "constructLevelFlowers": "አበቦች፣ የተካኑ ቃላት",
+    "filterAndSearch": "አጣራ እና ፈልግ",
+    "participantsOfTotal": "{filled} ከ {total} ተጫዋቾች",
+    "mapAttributionLabel": "የOpenStreetMap አስተዋፅዖ አድራጊዎች፣ የቅጂ መብት እና ፈቃድ",
+    "availableLabel": "ገና አልተጀመረም",
+    "seeAll": "ሁሉንም ይመልከቱ",
+    "seeAllSection": "ሁሉንም {section} ይመልከቱ"
 }

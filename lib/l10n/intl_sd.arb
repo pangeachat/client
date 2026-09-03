@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-09-01 15:39:53.338107",
+    "@@last_modified": "2026-09-02 14:37:13.141668",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2033,7 +2033,6 @@
     "ongoingPendingLabel": "ٻين جي شامل ٿيڻ جو انتظار آهي",
     "joinableLabel": "شامل ٿيڻ جي قابل",
     "inProgressLabel": "اڳ ۾ مڪمل ٿيل",
-    "availableLabel": "سرگرمي ٺاهيو",
     "rateActivityTitle": "اها سرگرمي ڪهڙي هئي؟",
     "rateActivityCommentHint": "تبصرو شامل ڪريو (اختياري)",
     "rateActivityCommentRejected": "توهان جو تبصرو پوسٽ نه ٿي سگهيو. ان کي ٻيهر لکڻ جي ڪوشش ڪريو، يا تبصري کان سواءِ پنهنجي درجه بندي جمع ڪرايو.",
@@ -2244,5 +2243,18 @@
     "errorRateLimited": "اسان هن وقت گهڻو ڪجهه لوڊ ڪري رهيا آهيون. مهرباني ڪري ٿورو انتظار ڪريو ۽ وري ڪوشش ڪريو.",
     "noPermissionToInviteUsers": "توهان وٽ هتي ميمبرن کي دعوت ڏيڻ جي اجازت ناهي.",
     "mapPinsKeyboardHint": "نقشي تي سرگرمين جي وچ ۾ وڃڻ لاءِ تير واريون ڪنجيون استعمال ڪريو، ۽ ڪنهن هڪ کي کولڻ لاءِ Enter کي دٻايو.",
-    "selectMessageLabel": "پيغام چونڊيو"
+    "selectMessageLabel": "پيغام چونڊيو",
+    "archivedChat": "آرڪائيو ٿيل چيٽ",
+    "activityReview": "سرگرمي جو جائزو",
+    "activityPanel": "سرگرمي",
+    "coursePage": "ڪورس جو صفحو",
+    "constructLevelSeeds": "سيڊس، نوان لفظ",
+    "constructLevelGreens": "گرينس، وڌندڙ لفظ",
+    "constructLevelFlowers": "فلاورس، ماهر لفظ",
+    "filterAndSearch": "فلٽر ۽ ڳولا ڪريو",
+    "participantsOfTotal": "{total} رانديگرن مان {filled}",
+    "mapAttributionLabel": "اوپن اسٽريٽ ميپ جا حصو وٺندڙ، ڪاپي رائيٽ ۽ لائسنس",
+    "availableLabel": "اڃا شروع نه ٿيو آهي",
+    "seeAll": "سڀ ڏسو",
+    "seeAllSection": "سڀ ڏسو {section}"
 }
