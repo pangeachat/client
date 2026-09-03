@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 14:37:07.991782",
+    "@@last_modified": "2026-09-02 11:48:48.564526",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10574,6 +10574,7 @@
     "ongoingPendingLabel": "Atendante ke aliaj aliĝu",
     "joinableLabel": "Aliĝebla",
     "inProgressLabel": "Antaŭe kompletigita",
+    "availableLabel": "Krei agadon",
     "rateActivityTitle": "Kiel estis ĉi tiu agado?",
     "rateActivityCommentHint": "Aldonu komenton (nedeviga)",
     "rateActivityCommentRejected": "Via komento ne povis esti afiŝita. Provu reformuli ĝin, aŭ sendu vian takson sen komento.",
@@ -10783,8 +10784,16 @@
     "callTranscriptOpen": "Legu la transskribon",
     "errorRateLimited": "Ni ŝarĝas multe nun. Bonvolu atendi momenton kaj reprovi.",
     "noPermissionToInviteUsers": "Vi ne rajtas inviti membrojn ĉi tien.",
+    "callTranscriptRoomEncrypted": "Ĉi tiu babilejo estas ĉifrita kaj la transskribo ne povis esti malŝlosita ĉi tie, do tio, kio estis dirita, ne estas montrita.",
+    "callTranscriptParticipantsUnknown": "Ne estas sciate, kiu alia partoprenis en ĉi tiu voko, do iu, kiu parolis, eble tute mankas en ĉi tiu transskribo.",
+    "callTranscriptTooLongToSend": "Kion diris {name} estis tro longa por konservi kun ĉi tiu voko, do nenio el ĝi estas montrita.",
+    "callTranscriptMicrophoneRefused": "La aparato de {name} neniam malfermis mikrofonon por ĉi tiu voko, do nenio dirita de ili estis registrita kaj kio estis dirita ne estas konata.",
+    "callTranscriptAudioLost": "Kion diris {name} estis registrita sed perdiĝis antaŭ ol ĝi povus esti transskribita, do kio estis dirita ne estas konata.",
     "mapPinsKeyboardHint": "Uzu la sagoklavojn por moviĝi inter agadoj sur la mapo, kaj premu Enigi por malfermi unu.",
     "selectMessageLabel": "Elektu mesaĝon",
+    "callTranscriptAudioDropped": "Tio, kion {name} diris, perdiĝis en ties aparato antaŭ ol ĝi povis esti registrita, do tio, kio estis dirita, ne estas konata.",
+    "callTranscriptHeldByOtherDevice": "Tio, kion {name} diris, estis lasita al alia el ties aparatoj por registrado, do neniom el ĝi estis sendita de ĉi tiu aparato kaj tio, kio estis dirita, ne estas konata ĉi tie.",
+    "callTranscriptDeviceNeverWrote": "Parto de tio, kion {name} diris, estis lasita al alia el iliaj aparatoj por registri, kaj tiu aparato ne registris ĝin, do tiu parto ne estas konata.",
     "archivedChat": "Arkivita babilado",
     "activityReview": "Agada revizio",
     "activityPanel": "Agado",
@@ -10795,7 +10804,6 @@
     "filterAndSearch": "Filtri kaj serĉi",
     "participantsOfTotal": "{filled} el {total} ludantoj",
     "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
-    "availableLabel": "Ankoraŭ ne komencita",
     "seeAll": "Vidi ĉion",
     "seeAllSection": "Vidi ĉion en {section}"
 }

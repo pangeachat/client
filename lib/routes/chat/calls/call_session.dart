@@ -191,6 +191,36 @@ class CallSession extends ChangeNotifier {
       userL1: userL1,
       userL2: userL2,
     );
+    // Built here rather than inline below, because the half published at the
+    // end of the call has to state how much audio the CAPTURE PATH lost --
+    // audio that never became a chunk, so the sink has never heard of it and
+    // no count it keeps can carry it.
+    final capture = captureOverride ?? CallCaptureService(sink: transcripts);
+
+    // WHO IS WRITING THIS HALF, READ ONCE, HERE, WHILE THE CALL IS BEING SET UP.
+    //
+    // These two are not description, they are the IDENTITY the transcript
+    // half's transaction id is built from -- `(call key, sender, device)` --
+    // and an idempotency key has to be frozen for the whole operation rather
+    // than re-read per attempt. `CallRecord` retries a failed publish three
+    // times and freezes everything else it sends before the first one, for
+    // exactly this reason: a resend only collapses server-side if it is the
+    // same event. Read inside the closure below, these two were the one part
+    // of the key that could change between attempts. A send that the server
+    // accepted but whose response was lost, followed by a client that dropped
+    // its login before the retry, published the same speech under a second
+    // transaction id with no `device_id` on it -- so the homeserver stored two
+    // events and the reader, which now groups by device, showed the learner
+    // two devices and merged the duplicate speech. That is the precise loss the
+    // per-device keying exists to prevent, coming back in through the retry.
+    //
+    // Frozen at BUILD rather than at publish, because this is the device that
+    // did the recording and the recording is what the half is about. By the
+    // time the last chunk has drained, `client.deviceID` answers a different
+    // question: which device is signed in NOW.
+    final writerUserId = room.client.userID ?? '';
+    final writerDeviceId = room.client.deviceID;
+
     final record =
         recordOverride ??
         CallRecord(
@@ -220,7 +250,17 @@ class CallSession extends ChangeNotifier {
                   txid: txid,
                 ),
                 callKey: callKey,
-                senderId: room.client.userID ?? '',
+                // Both taken from the latches above, never read off the client
+                // here: this closure runs once per RETRY, and the transaction
+                // id built from these two is what makes a retry a retry.
+                senderId: writerUserId,
+                // The ACCOUNT above, and the DEVICE here, because they answer
+                // two different questions and one of them used to answer both.
+                // Two of a learner's devices in one call write two halves of
+                // what that person said; keyed by the account alone those two
+                // halves are indistinguishable, and the reader keeps one and
+                // presents it as the whole of it.
+                deviceId: writerDeviceId,
                 segments: segments,
                 chunksCaptured: chunksCaptured,
                 chunksTranscribed: chunksTranscribed,
@@ -228,6 +268,24 @@ class CallSession extends ChangeNotifier {
                 chunksSuppressed: chunksSuppressed,
                 captureRefused: captureRefused,
                 drainComplete: drainComplete,
+                // Read here rather than threaded through the record's
+                // publisher, the same seam that already closes over the
+                // clock anchor below. Both are frozen long before this can
+                // run -- the recorder ends its last run, which is the only
+                // thing that discards a chunk or counts a dropped one, and
+                // only then closes the sink the record waits on -- so the
+                // record's rule that a resend must carry the same bytes
+                // holds for them as it does for the counts it reads once.
+                chunksDiscarded: transcripts.chunksDiscarded,
+                captureDroppedMs: capture.captureDroppedMs,
+                // Read from the same seam and frozen by the same ordering: a
+                // run's extent is recorded where the run ends, and the last run
+                // has ended before the sink this record waits on is closed. The
+                // count above says a stretch was handed over; these say WHICH,
+                // which is what lets a reader ask whether the sibling that was
+                // supposed to hold it actually did.
+                keptSpans: capture.keptSpans,
+                discardedSpans: capture.discardedSpans,
                 // The room inflates what it is handed, and the server's limit
                 // applies to the inflated event.
                 encrypted: room.encrypted,
@@ -252,7 +310,7 @@ class CallSession extends ChangeNotifier {
       call: ActiveCall(
         calls: callService,
         media: media,
-        capture: captureOverride ?? CallCaptureService(sink: transcripts),
+        capture: capture,
         // Android's background survival; every other platform passes null
         // and the call behaves exactly as before.
         foreground:

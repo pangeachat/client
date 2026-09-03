@@ -2,9 +2,13 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
+import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
+import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
+import '../sentry_capture_harness.dart';
 
 /// A roster whose SFU read and connection state are supplied by the test.
 ///
@@ -12,7 +16,11 @@ import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 /// makes a join time believable, and the freeze while the connection is down —
 /// is the real implementation.
 class TestRoster extends CallRoster {
-  TestRoster({required super.room, required super.myUserId});
+  TestRoster({
+    required super.room,
+    required super.myUserId,
+    super.metadataGrant,
+  });
 
   Set<String> identities = {};
   bool connected = true;
@@ -38,6 +46,12 @@ class TestRoster extends CallRoster {
   /// This device's own join stamp. Null when the SFU has given us no local
   /// participant at all.
   DateTime? myJoin = DateTime.utc(2026, 8, 29, 12);
+
+  /// The identity the SFU names THIS device by, when a test cares which string
+  /// that is. The token service appends the device to the account id, so the
+  /// real one is never the bare user id -- and nothing downstream may assume it
+  /// is composed of parts this device holds.
+  String? myMemberIdentity;
 
   /// Whether the SFU has described THIS device.
   bool myDescribed = true;
@@ -76,7 +90,7 @@ class TestRoster extends CallRoster {
     me: myJoin == null
         ? null
         : RosterMember(
-            identity: myUserId,
+            identity: myMemberIdentity ?? myUserId,
             described: myDescribed,
             joinedAt: myDescribed ? myJoin! : _freshLocalRead,
           ),
@@ -129,7 +143,11 @@ void main() {
 
       expect(roster.hasPeer, isTrue);
       expect(roster.participants, {
-        const CallParticipant(userId: peer, deviceId: 'THEIRPHONE'),
+        const CallParticipant(
+          identity: '$peer:THEIRPHONE',
+          userId: peer,
+          deviceId: 'THEIRPHONE',
+        ),
       });
     });
 
@@ -167,6 +185,53 @@ void main() {
     });
   });
 
+  group('the identity the SFU named a device by', () {
+    test('a sibling answers with the string the SFU used', () {
+      roster.identities = {'$me:MYOTHERPHONE'};
+      roster.recompute();
+
+      expect(roster.siblingIdentity('MYOTHERPHONE'), '$me:MYOTHERPHONE');
+    });
+
+    test('a device this account cannot see has no identity', () {
+      roster.recompute();
+
+      expect(roster.siblingIdentity('MYOTHERPHONE'), isNull);
+    });
+
+    test('this device answers with the SFU string, not one composed', () {
+      // The identity is the token service's, and this device holds no rule for
+      // reproducing it. Here the SFU names us by something an account id and a
+      // device id could not be joined into, which is the case a caller that
+      // built the key itself would look up and miss.
+      roster.myMemberIdentity = '$me:PHONE:2';
+      roster.recompute();
+
+      expect(roster.myIdentity, '$me:PHONE:2');
+    });
+
+    test('an identity outlives a join stamp the SFU has not given', () {
+      // Deliberately not filtered the way the join time beside it is. An
+      // identity is what the SFU CALLS this device rather than a reading of
+      // anything, so it is exactly as true on a membership the SDK reports as
+      // undescribed -- where `joinedAt` answers with a fresh read of this
+      // device's own clock and is refused.
+      roster.myDescribed = false;
+      roster.myMemberIdentity = '$me:MYPHONE';
+      roster.recompute();
+
+      expect(roster.myJoinTime, isNull);
+      expect(roster.myIdentity, '$me:MYPHONE');
+    });
+
+    test('no membership at all means no identity', () {
+      roster.myJoin = null;
+      roster.recompute();
+
+      expect(roster.myIdentity, isNull);
+    });
+  });
+
   group('naming participants', () {
     test('splits a user id from its device', () {
       final p = CallParticipant.parse('@learner:pangea.localhost:ABCDEF');
@@ -190,11 +255,39 @@ void main() {
       const mine = '@learner:localhost:8448';
       expect(
         CallParticipant.parse(mine, myUserId: mine),
-        const CallParticipant(userId: mine),
+        const CallParticipant(identity: mine, userId: mine),
       );
       expect(
         CallParticipant.parse('$mine:PHONE', myUserId: mine),
-        const CallParticipant(userId: mine, deviceId: 'PHONE'),
+        const CallParticipant(
+          identity: '$mine:PHONE',
+          userId: mine,
+          deviceId: 'PHONE',
+        ),
+      );
+    });
+
+    test('a participant carries the identity it was parsed from', () {
+      // The whole string, kept rather than rebuilt. `CallMedia`'s join-stamp
+      // store is keyed by it, and the election destroys captured audio on what
+      // comes back out of that store -- so a reader that reassembled
+      // `'$userId:$deviceId'` at the lookup would be a second copy of the
+      // splitting rules, in the one place where being wrong reads as "the SFU
+      // never named that device" and silently costs the finer comparison.
+      for (final identity in [
+        '@learner:pangea.localhost:ABCDEF',
+        '@learner:pangea.localhost',
+        'not-an-identity',
+      ]) {
+        expect(CallParticipant.parse(identity).identity, identity);
+      }
+      // And on the two paths that only exist because our own id may carry a
+      // port, which are the paths a rebuild gets wrong.
+      const ported = '@learner:localhost:8448';
+      expect(CallParticipant.parse(ported, myUserId: ported).identity, ported);
+      expect(
+        CallParticipant.parse('$ported:PHONE', myUserId: ported).identity,
+        '$ported:PHONE',
       );
     });
 
@@ -926,6 +1019,201 @@ void main() {
         {CallRoster.canCaptureAttribute: 'no'},
         {CallRoster.canCaptureAttribute: 'yes'},
       ]);
+    });
+  });
+
+  /// The trigger bug, and the reason it ran unnoticed.
+  ///
+  /// The warning this write already logged named the right cause — a call token
+  /// without CanUpdateOwnMetadata — and named it correctly for the life of the
+  /// feature. [Logs] reaches the in-app log viewer and nothing else, so the
+  /// sentence was only ever read by someone already holding the device. These
+  /// pin that it now reaches somewhere it can be counted.
+  group('reporting a write that never reached the siblings', () {
+    setUp(ErrorHandler.resetReportedOnceKeysForTest);
+    tearDown(ErrorHandler.resetReportedOnceKeysForTest);
+
+    /// Whether the roster's report key is still unspent.
+    ///
+    /// [ErrorHandler.logErrorOnce] spends its key synchronously and answers
+    /// false once spent, which is the seam that observes a fire-and-forget
+    /// report. Sentry is uninitialised here, so nothing leaves the test.
+    Future<bool> keyUnspent() => ErrorHandler.logErrorOnce(
+      key: CallRoster.attributesUnpublishedKey,
+      e: Exception('probe'),
+      data: const {},
+    );
+
+    test('a write that failed is reported', () async {
+      roster.publishError = StateError('Signal request timed out');
+
+      await roster.announceCanCapture(false);
+
+      expect(
+        await keyUnspent(),
+        isFalse,
+        reason: 'the failed write should have spent the report',
+      );
+    });
+
+    test('a write that lands reports nothing', () async {
+      await roster.announceCanCapture(false);
+
+      expect(roster.published, hasLength(1), reason: 'it really did write');
+      expect(await keyUnspent(), isTrue);
+    });
+
+    test('a write with nobody to publish as reports nothing', () async {
+      // The REAL publish against a room with no local participant, which is
+      // what this looks like before the SFU has answered the join. It returns
+      // false rather than throwing: nothing failed, there was simply nobody to
+      // say it to yet, and the next recompute says it.
+      final unconnected = CallRoster(room: room, myUserId: me);
+      addTearDown(unconnected.dispose);
+
+      await unconnected.announceCanCapture(false);
+
+      expect(await keyUnspent(), isTrue);
+    });
+
+    group('how much of it reaches Sentry', () {
+      final counter = SentryEventCounter();
+      setUp(counter.init);
+      tearDown(counter.close);
+
+      test('one event, however many times the write fails', () async {
+        // THE WHOLE RISK OF WIRING THIS UP. Announcing is level-triggered
+        // rather than bounded: every recompute re-asserts an outstanding
+        // intent, so a signal channel that has stopped answering fails again on
+        // every room notification for the length of the call. An event per
+        // failure would be one Sentry issue per participant event, and a team
+        // that gets that learns to ignore Sentry — which is worse than never
+        // having wired it.
+        roster.publishError = StateError('Signal request timed out');
+        await roster.announceCanCapture(false);
+        for (var i = 0; i < 5; i++) {
+          roster.recompute();
+          await pumpEventQueue();
+        }
+
+        expect(
+          roster.published.length,
+          greaterThan(1),
+          reason: 'the re-asserts really did fail again',
+        );
+        expect(counter.events, 1);
+      });
+    });
+
+    group('what the report carries', () {
+      final harness = SentryCaptureHarness();
+      setUp(harness.init);
+      tearDown(harness.close);
+
+      /// The single event a failed write produces.
+      Future<SentryEvent> eventFor(TestRoster r) {
+        r.publishError = StateError('Signal request timed out');
+        return harness.capture(() => r.announceCanCapture(false));
+      }
+
+      /// Its breadcrumb data.
+      Future<Map<String, dynamic>?> dataOf(TestRoster r) async =>
+          (await eventFor(r)).breadcrumbs?.last.data;
+
+      test('an error, which is the reading this failure was owed', () async {
+        // Severity is decided at the one sink from the failure itself, never by
+        // a judgment made here -- which is what this pins: no level is passed
+        // at the call site. A signal channel we control that has stopped
+        // answering is never the learner's doing, and its SAFE direction is
+        // exactly what let it look like it was working.
+        expect((await eventFor(roster)).level, SentryLevel.error);
+      });
+
+      test(
+        'names the token grant, so a refusal is not read as an outage',
+        () async {
+          // The whole point of carrying the grant this far. From in here a
+          // refusal and an SFU that stopped answering are the same thrown error,
+          // and only one of them is a deployment we have to change.
+          final refused = TestRoster(
+            room: room,
+            myUserId: me,
+            metadataGrant: MetadataGrant.absent,
+          );
+          addTearDown(refused.dispose);
+
+          expect((await dataOf(refused))?['tokenGrant'], 'absent');
+        },
+      );
+
+      test('and says so differently when the token DID carry it', () async {
+        final granted = TestRoster(
+          room: room,
+          myUserId: me,
+          metadataGrant: MetadataGrant.granted,
+        );
+        addTearDown(granted.dispose);
+
+        expect((await dataOf(granted))?['tokenGrant'], 'granted');
+      });
+
+      test('names the attributes, and never their values', () async {
+        // A published run names a stretch of a learner's conversation. Sentry
+        // is not where that belongs, so only the keys travel.
+        roster.publishError = StateError('Signal request timed out');
+        final event = await harness.capture(
+          () => roster.announceCapturing('a-distinctive-run-id'),
+        );
+        final data = event.breadcrumbs?.last.data;
+
+        expect(data?['attributes'], [CallRoster.capturingAttribute]);
+        expect(
+          data.toString(),
+          isNot(contains('a-distinctive-run-id')),
+          reason: 'the value written must not travel with the key',
+        );
+      });
+
+      test('leaves the caught cause owning the title', () async {
+        // The thrown object arrives untouched. #8660 removed these sentences
+        // rather than folding them into `e` because wrapping changes the
+        // runtime type that the severity table and the fingerprint both read,
+        // so carrying one must not cost that.
+        final failure = StateError('Signal request timed out');
+        roster.publishError = failure;
+
+        final event = await harness.capture(
+          () => roster.announceCanCapture(false),
+        );
+
+        expect(event.throwable, same(failure));
+      });
+
+      test('and says what the failure COSTS, which the throw cannot', () async {
+        // The sentence the in-app warning has always carried, somewhere it can
+        // actually be read. It cannot ride in `e` — see above — and handing it
+        // to the reporter as a description it does not report is the #8660
+        // defect itself, a string that reaches `debugPrint` and nowhere else.
+        // `data` is on the event, so it is searchable there.
+        final event = await eventFor(roster);
+
+        expect(
+          event.breadcrumbs?.last.data?['lost'],
+          CallRoster.attributesUnpublishedCost,
+        );
+        // The reason it is carried at all: a five-second signal timeout says
+        // nothing whatever about what stops working when it fires.
+        expect(
+          event.throwable.toString(),
+          isNot(contains('recorder election')),
+        );
+        expect(
+          CallRoster.attributesUnpublishedCost,
+          contains(
+            'the recorder election is running without its capability layer',
+          ),
+        );
+      });
     });
   });
 }

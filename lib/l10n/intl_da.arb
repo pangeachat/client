@@ -1335,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-09-02 14:37:07.908776",
+    "@@last_modified": "2026-09-02 11:48:48.163948",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10549,6 +10549,7 @@
     "ongoingPendingLabel": "Venter på, at andre deltager",
     "joinableLabel": "Kan deltages i",
     "inProgressLabel": "Tidligere gennemført",
+    "availableLabel": "Opret aktivitet",
     "rateActivityTitle": "Hvordan var denne aktivitet?",
     "rateActivityCommentHint": "Tilføj en kommentar (valgfrit)",
     "rateActivityCommentRejected": "Din kommentar kunne ikke slås op. Prøv at omformulere den, eller send din vurdering uden en kommentar.",
@@ -10758,8 +10759,16 @@
     "callTranscriptOpen": "Læs transskriptionen",
     "errorRateLimited": "Vi indlæser meget lige nu. Vent venligst et øjeblik, og prøv igen.",
     "noPermissionToInviteUsers": "Du har ikke tilladelse til at invitere medlemmer her.",
+    "callTranscriptRoomEncrypted": "Denne chat er krypteret, og udskriften kunne ikke låses op her, så det, der blev sagt, vises ikke.",
+    "callTranscriptParticipantsUnknown": "Det vides ikke, hvem der ellers deltog i dette opkald, så en person, der talte, mangler muligvis helt fra denne udskrift.",
+    "callTranscriptTooLongToSend": "Det, {name} sagde, var for langt til at gemme med dette opkald, så intet af det vises.",
+    "callTranscriptMicrophoneRefused": "{name}s enhed åbnede aldrig en mikrofon til dette opkald, så intet af det, de sagde, blev optaget, og hvad der blev sagt, er ukendt.",
+    "callTranscriptAudioLost": "Hvad {name} sagde, blev optaget, men gik tabt, før det kunne transskriberes, så hvad der blev sagt, er ukendt.",
     "mapPinsKeyboardHint": "Brug piletasterne til at flytte mellem aktiviteter på kortet, og tryk på Enter for at åbne en.",
     "selectMessageLabel": "Vælg besked",
+    "callTranscriptAudioDropped": "Hvad {name} sagde, gik tabt på deres enhed, før det kunne optages, så det vides ikke, hvad der blev sagt.",
+    "callTranscriptHeldByOtherDevice": "Hvad {name} sagde, blev overladt til en af deres andre enheder at optage, så intet af det blev sendt fra denne, og det vides ikke her, hvad der blev sagt.",
+    "callTranscriptDeviceNeverWrote": "En del af, hvad {name} sagde, blev overladt til en af deres andre enheder at optage, og den enhed optog det ikke, så den del er ukendt.",
     "archivedChat": "Arkiveret chat",
     "activityReview": "Aktivitetsoversigt",
     "activityPanel": "Aktivitet",
@@ -10770,7 +10779,6 @@
     "filterAndSearch": "Filtrer og søg",
     "participantsOfTotal": "{filled} af {total} spillere",
     "mapAttributionLabel": "OpenStreetMap-bidragydere, ophavsret og licens",
-    "availableLabel": "Ikke startet endnu",
     "seeAll": "Se alle",
     "seeAllSection": "Se alle {section}"
 }

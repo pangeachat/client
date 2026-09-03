@@ -3564,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-09-02 14:37:08.558023",
+    "@@last_modified": "2026-09-02 11:48:51.414588",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9640,6 +9640,7 @@
     "ongoingPendingLabel": "Ag fanacht le daoine eile a bheith páirteach",
     "joinableLabel": "Inscortha",
     "inProgressLabel": "Críochnaithe roimhe seo",
+    "availableLabel": "Cruthaigh gníomhaíocht",
     "rateActivityTitle": "Cén chaoi a raibh an ghníomhaíocht seo?",
     "rateActivityCommentHint": "Cuir trácht leis (roghnach)",
     "rateActivityCommentRejected": "Níorbh fhéidir do thrácht a phostáil. Bain triail as é a athfhocail, nó cuir isteach do rátáil gan trácht.",
@@ -9849,8 +9850,16 @@
     "callTranscriptOpen": "Léigh an tras-scríbhinn",
     "errorRateLimited": "Táimid ag luchtú go leor faoi láthair. Fan nóiméad le do thoil agus bain triail eile as.",
     "noPermissionToInviteUsers": "Níl cead agat cuireadh a thabhairt do bhaill anseo.",
+    "callTranscriptRoomEncrypted": "Tá an comhrá seo criptithe agus níorbh fhéidir an trascríbhinn a dhíghlasáil anseo, mar sin níl an méid a dúradh á thaispeáint.",
+    "callTranscriptParticipantsUnknown": "Ní fios cé eile a bhí ar an nglao seo, mar sin seans go bhfuil duine éigin a labhair in easnamh ón trascríbhinn seo ar fad.",
+    "callTranscriptTooLongToSend": "Bhí an méid a dúirt {name} rófhada le sábháil leis an nglao seo, mar sin níl aon chuid de á thaispeáint.",
+    "callTranscriptMicrophoneRefused": "Níor osclaíodh micreafón riamh do {name} don ghlao seo, mar sin níor taifeadadh aon rud a dúirt siad agus ní fios cad a dúradh.",
+    "callTranscriptAudioLost": "Taifeadadh an méid a dúirt {name} ach cailleadh é sular féadadh é a thras-scríobh, mar sin ní fios cad a dúradh.",
     "mapPinsKeyboardHint": "Bain úsáid as na heochracha saighde chun bogadh idir gníomhaíochtaí ar an léarscáil, agus brúigh Iontráil chun ceann a oscailt.",
     "selectMessageLabel": "Roghnaigh teachtaireacht",
+    "callTranscriptAudioDropped": "Chaill an gléas an méid a dúirt {name} sular éirigh leis é a thaifeadadh, mar sin ní fios cad a dúradh.",
+    "callTranscriptHeldByOtherDevice": "Fágadh faoi ghléas eile de chuid {name} an méid a dúirt siad a thaifeadadh, mar sin níor seoladh aon chuid de ón ngléas seo agus ní fios anseo cad a dúradh.",
+    "callTranscriptDeviceNeverWrote": "Fágadh cuid den méid a dúirt {name} ag gléas eile dá gcuid le taifeadadh, agus níor thaifead an gléas sin é, mar sin níl an chuid sin ar eolas.",
     "archivedChat": "Comhrá cartlainne",
     "activityReview": "Athbhreithniú gníomhaíochta",
     "activityPanel": "Gníomhaíocht",
@@ -9861,7 +9870,6 @@
     "filterAndSearch": "Scag agus cuardaigh",
     "participantsOfTotal": "{filled} de {total} imreoirí",
     "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
-    "availableLabel": "Níl sé tosaithe fós",
     "seeAll": "Féach ar fad",
     "seeAllSection": "Féach ar {section} ar fad"
 }

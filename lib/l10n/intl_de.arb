@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-09-02 14:37:07.895033",
+    "@@last_modified": "2026-09-02 11:48:48.322252",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9616,6 +9616,7 @@
     "ongoingPendingLabel": "Warten auf weitere Teilnehmer",
     "joinableLabel": "Beitretbar",
     "inProgressLabel": "Zuvor abgeschlossen",
+    "availableLabel": "Aktivität erstellen",
     "rateActivityTitle": "Wie war diese Aktivität?",
     "rateActivityCommentHint": "Kommentar hinzufügen (optional)",
     "rateActivityCommentRejected": "Ihr Kommentar konnte nicht gepostet werden. Versuchen Sie, ihn umzuformulieren, oder senden Sie Ihre Bewertung ohne Kommentar ab.",
@@ -9825,8 +9826,16 @@
     "callTranscriptOpen": "Transkript lesen",
     "errorRateLimited": "Wir laden gerade sehr viel. Bitte warten Sie einen Moment und versuchen Sie es dann erneut.",
     "noPermissionToInviteUsers": "Du hast keine Berechtigung, hier Mitglieder einzuladen.",
+    "callTranscriptRoomEncrypted": "Dieser Chat ist verschlüsselt und das Transkript konnte hier nicht entschlüsselt werden, daher wird nicht angezeigt, was gesagt wurde.",
+    "callTranscriptParticipantsUnknown": "Es ist nicht bekannt, wer sonst noch an diesem Anruf teilgenommen hat, daher könnte jemand, der gesprochen hat, in diesem Transkript ganz fehlen.",
+    "callTranscriptTooLongToSend": "Was {name} gesagt hat, war zu lang, um mit diesem Anruf gespeichert zu werden, daher wird nichts davon angezeigt.",
+    "callTranscriptMicrophoneRefused": "{name}s Gerät hat für diesen Anruf kein Mikrofon geöffnet, daher wurde nichts, was {name} gesagt hat, aufgezeichnet und der Inhalt ist unbekannt.",
+    "callTranscriptAudioLost": "Was {name} gesagt hat, wurde aufgezeichnet, ging aber verloren, bevor es transkribiert werden konnte, daher ist der Inhalt unbekannt.",
     "mapPinsKeyboardHint": "Verwenden Sie die Pfeiltasten, um zwischen den Aktivitäten auf der Karte zu wechseln, und drücken Sie die Eingabetaste, um eine zu öffnen.",
     "selectMessageLabel": "Nachricht auswählen",
+    "callTranscriptAudioDropped": "Was {name} gesagt hat, ging auf dem Gerät verloren, bevor es überhaupt aufgezeichnet werden konnte. Was gesagt wurde, ist also nicht bekannt.",
+    "callTranscriptHeldByOtherDevice": "Was {name} gesagt hat, wurde einem anderen ihrer Geräte zur Aufzeichnung überlassen, daher wurde von diesem Gerät nichts gesendet und was gesagt wurde, ist hier nicht bekannt.",
+    "callTranscriptDeviceNeverWrote": "Ein Teil dessen, was {name} gesagt hat, wurde einem anderen ihrer Geräte zur Aufzeichnung überlassen, und dieses Gerät hat es nicht aufgezeichnet, so dass dieser Teil nicht bekannt ist.",
     "archivedChat": "Archivierter Chat",
     "activityReview": "Aktivitätsprüfung",
     "activityPanel": "Aktivität",
@@ -9837,7 +9846,6 @@
     "filterAndSearch": "Filtern und suchen",
     "participantsOfTotal": "{filled} von {total} Spielern",
     "mapAttributionLabel": "OpenStreetMap-Mitwirkende, Copyright und Lizenz",
-    "availableLabel": "Noch nicht gestartet",
     "seeAll": "Alle anzeigen",
     "seeAllSection": "Alle {section} anzeigen"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 14:37:13.672765",
+    "@@last_modified": "2026-09-02 11:49:06.648181",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10578,6 +10578,7 @@
     "ongoingPendingLabel": "Čekanje da se drugi pridruže",
     "joinableLabel": "Moguće pridruživanje",
     "inProgressLabel": "Prethodno završeno",
+    "availableLabel": "Kreiraj aktivnost",
     "rateActivityTitle": "Kako vam se svidela ova aktivnost?",
     "rateActivityCommentHint": "Dodajte komentar (opciono)",
     "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte da ga preformulišete ili pošaljite ocenu bez komentara.",
@@ -10787,8 +10788,16 @@
     "callTranscriptOpen": "Pročitajte transkript",
     "errorRateLimited": "Trenutno se mnogo toga učitava. Sačekajte trenutak i pokušajte ponovo.",
     "noPermissionToInviteUsers": "Nemate dozvolu da pozivate članove ovde.",
+    "callTranscriptRoomEncrypted": "Ovo ćaskanje je šifrovano i transkript nije mogao da se otključa ovde, tako da ono što je rečeno nije prikazano.",
+    "callTranscriptParticipantsUnknown": "Nije poznato ko je još bio u ovom pozivu, tako da neko ko je govorio možda u potpunosti nedostaje u ovom transkriptu.",
+    "callTranscriptTooLongToSend": "Ono što je {name} rekao/rekla je predugačko da bi se sačuvalo sa ovim pozivom, tako da ništa od toga nije prikazano.",
+    "callTranscriptMicrophoneRefused": "Uređaj korisnika {name} nikada nije otvorio mikrofon za ovaj poziv, tako da ništa što je rečeno nije snimljeno i ono što je rečeno nije poznato.",
+    "callTranscriptAudioLost": "Ono što je {name} rekao/rekla je snimljeno, ali je izgubljeno pre nego što je moglo biti transkribovano, tako da ono što je rečeno nije poznato.",
     "mapPinsKeyboardHint": "Koristite tastere sa strelicama za kretanje između aktivnosti na mapi, a pritisnite Enter da biste otvorili jednu.",
     "selectMessageLabel": "Izaberite poruku",
+    "callTranscriptAudioDropped": "Ono što je {name} rekao/la izgubljeno je na njegovom/njenom uređaju pre nego što je moglo da se snimi, tako da se ne zna šta je rečeno.",
+    "callTranscriptHeldByOtherDevice": "Ono što je {name} rekao/la prepušteno je drugom njegovom/njenom uređaju da snimi, tako da ništa od toga nije poslato sa ovog uređaja i ovde se ne zna šta je rečeno.",
+    "callTranscriptDeviceNeverWrote": "Deo onoga što je {name} rekao/la je ostavljen drugom uređaju da snimi, a taj uređaj to nije snimio, tako da je taj deo nepoznat.",
     "archivedChat": "Arhivirani razgovor",
     "activityReview": "Pregled aktivnosti",
     "activityPanel": "Aktivnost",
@@ -10799,7 +10808,6 @@
     "filterAndSearch": "Filtriraj i pretraži",
     "participantsOfTotal": "{filled} od {total} igrača",
     "mapAttributionLabel": "OpenStreetMap saradnici, autorska prava i licenca",
-    "availableLabel": "Još nije počelo",
     "seeAll": "Pogledaj sve",
     "seeAllSection": "Pogledaj sve {section}"
 }

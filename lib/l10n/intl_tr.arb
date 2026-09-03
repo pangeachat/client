@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-09-02 14:37:14.104482",
+    "@@last_modified": "2026-09-02 11:49:09.368968",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9930,6 +9930,7 @@
     "ongoingPendingLabel": "Diğerlerinin katılması bekleniyor",
     "joinableLabel": "Katılabilir",
     "inProgressLabel": "Daha önce tamamlandı",
+    "availableLabel": "Etkinlik oluştur",
     "rateActivityTitle": "Bu aktivite nasıldı?",
     "rateActivityCommentHint": "Yorum ekle (isteğe bağlı)",
     "rateActivityCommentRejected": "Yorumunuz gönderilemedi. Yeniden düzenlemeyi deneyin veya yorumsuz olarak puanınızı gönderin.",
@@ -10139,8 +10140,16 @@
     "callTranscriptOpen": "Dökümü oku",
     "errorRateLimited": "Şu anda çok fazla yükleme yapıyoruz. Lütfen bir süre bekleyip tekrar deneyin.",
     "noPermissionToInviteUsers": "Buraya üye davet etme izniniz yok.",
+    "callTranscriptRoomEncrypted": "Bu sohbet şifreli ve dökümün kilidi burada açılamadı, bu yüzden konuşulanlar gösterilmiyor.",
+    "callTranscriptParticipantsUnknown": "Bu aramada başka kimlerin olduğu bilinmiyor, bu nedenle konuşan biri bu dökümde tamamen eksik olabilir.",
+    "callTranscriptTooLongToSend": "{name} tarafından söylenenler bu aramayla kaydedilemeyecek kadar uzundu, bu yüzden hiçbiri gösterilmiyor.",
+    "callTranscriptMicrophoneRefused": "{name} adlı kullanıcının cihazı bu arama için hiçbir zaman mikrofon açmadığından, söyledikleri kaydedilmedi ve ne söylendiği bilinmiyor.",
+    "callTranscriptAudioLost": "{name} adlı kullanıcının söyledikleri kaydedildi ancak yazıya dökülmeden önce kayboldu, bu nedenle ne söylendiği bilinmiyor.",
     "mapPinsKeyboardHint": "Haritadaki etkinlikler arasında gezinmek için ok tuşlarını kullanın ve birini açmak için Enter tuşuna basın.",
     "selectMessageLabel": "Mesaj seç",
+    "callTranscriptAudioDropped": "{name} adlı kullanıcının söyledikleri, daha kaydedilemeden cihazı tarafından kaybedildi, bu yüzden ne söylendiği bilinmiyor.",
+    "callTranscriptHeldByOtherDevice": "{name} adlı kullanıcının söylediklerinin kaydedilmesi başka bir cihazına bırakıldı, bu yüzden bu cihazdan hiçbir şey gönderilmedi ve burada ne söylendiği bilinmiyor.",
+    "callTranscriptDeviceNeverWrote": "{name} adlı kullanıcının söylediklerinin bir kısmı başka bir cihazı tarafından kaydedilmek üzere bırakıldı ve o cihaz kaydetmedi, bu nedenle o kısım bilinmiyor.",
     "archivedChat": "Arşivlenmiş sohbet",
     "activityReview": "Etkinlik incelemesi",
     "activityPanel": "Etkinlik",
@@ -10151,7 +10160,6 @@
     "filterAndSearch": "Filtrele ve ara",
     "participantsOfTotal": "{total} oyuncudan {filled} tanesi",
     "mapAttributionLabel": "OpenStreetMap katılımcıları, telif hakkı ve lisans",
-    "availableLabel": "Henüz başlamadı",
     "seeAll": "Tümünü gör",
     "seeAllSection": "Tüm {section} bölümünü gör"
 }

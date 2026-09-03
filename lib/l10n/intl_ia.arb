@@ -1363,7 +1363,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-09-02 14:37:10.067197",
+    "@@last_modified": "2026-09-02 11:48:54.273170",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10565,6 +10565,7 @@
     "ongoingPendingLabel": "Attendente que alteres se junge",
     "joinableLabel": "Adheribile",
     "inProgressLabel": "Previemente completate",
+    "availableLabel": "Crear activitate",
     "rateActivityTitle": "Como esse activitate esseva?",
     "rateActivityCommentHint": "Adde un commento (optional)",
     "rateActivityCommentRejected": "Vostre commento non poteva esser publicate. Essaya reformular lo, o submitte tu evalutation sin un commento.",
@@ -10774,8 +10775,16 @@
     "callTranscriptOpen": "Leger le transcription",
     "errorRateLimited": "Nos carga multo nunc. Per favor, attende un momento e reproba.",
     "noPermissionToInviteUsers": "Tu non ha permission de invitar membros hic.",
+    "callTranscriptRoomEncrypted": "Iste chat es encryptate e le transcripto non poteva esser disserate hic, dunque lo que esseva dicite non es monstrate.",
+    "callTranscriptParticipantsUnknown": "Il non es cognoscite qui altere participava in iste appello, dunque alcuno qui parlava pote mancar totalmente de iste transcripto.",
+    "callTranscriptTooLongToSend": "Lo que {name} diceva esseva troppo longe pro esser salvate con iste appello, dunque nihil de illo es monstrate.",
+    "callTranscriptMicrophoneRefused": "Le apparato de {name} jammais aperiva un microphono pro iste appello, ergo nihil de lo que illes diceva esseva registrate e lo que esseva dicite non es cognoscite.",
+    "callTranscriptAudioLost": "Lo que {name} diceva esseva registrate ma perdite ante que illo poteva esser transcribite, ergo lo que esseva dicite non es cognoscite.",
     "mapPinsKeyboardHint": "Usa le sagittas pro mover inter activitates super le mappa, e preme Enter pro aperir un.",
     "selectMessageLabel": "Selige message",
+    "callTranscriptAudioDropped": "Lo que {name} diceva ha essite perdite per su apparato ante que illo poteva mesmo esser registrate, dunque lo que esseva dicite non es cognoscite.",
+    "callTranscriptHeldByOtherDevice": "Lo que {name} diceva ha essite lassate a un altere de su apparatos pro registrar, dunque nihil de illo ha essite inviate desde iste e lo que esseva dicite non es cognoscite hic.",
+    "callTranscriptDeviceNeverWrote": "Un parte de lo que {name} diceva esseva lassate a un altere de lor apparatos pro registrar, e ille apparato non lo registrava, dunque ille parte non es cognoscite.",
     "archivedChat": "Chat archivate",
     "activityReview": "Revista de activitate",
     "activityPanel": "Activitate",
@@ -10786,7 +10795,6 @@
     "filterAndSearch": "Filtrar e cercar",
     "participantsOfTotal": "{filled} de {total} jocatores",
     "mapAttributionLabel": "Contribuentes de OpenStreetMap, derectos de autor e licentia",
-    "availableLabel": "Non ancora comenciate",
     "seeAll": "Vider tote",
     "seeAllSection": "Vider tote {section}"
 }

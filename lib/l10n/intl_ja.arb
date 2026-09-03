@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-09-02 14:37:10.089492",
+    "@@last_modified": "2026-09-02 11:48:57.529596",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10398,6 +10398,7 @@
     "ongoingPendingLabel": "他の参加者を待っています",
     "joinableLabel": "参加可能",
     "inProgressLabel": "以前に完了しました",
+    "availableLabel": "アクティビティを作成",
     "rateActivityTitle": "このアクティビティはいかがでしたか？",
     "rateActivityCommentHint": "コメントを追加（任意）",
     "rateActivityCommentRejected": "コメントを投稿できませんでした。表現を変えるか、コメントなしで評価を送信してください。",
@@ -10607,8 +10608,16 @@
     "callTranscriptOpen": "書き起こしを読む",
     "errorRateLimited": "現在、多くのリクエストを処理しています。しばらく待ってからもう一度お試しください。",
     "noPermissionToInviteUsers": "ここにメンバーを招待する権限がありません。",
+    "callTranscriptRoomEncrypted": "このチャットは暗号化されているため、トランスクリプトをここでロック解除できませんでした。そのため、会話内容は表示されません。",
+    "callTranscriptParticipantsUnknown": "この通話に他に誰が参加していたか不明なため、発言した人がこのトランスクリプトから完全に欠落している可能性があります。",
+    "callTranscriptTooLongToSend": "{name}の発言が長すぎたため、この通話と一緒に保存できませんでした。そのため、何も表示されません。",
+    "callTranscriptMicrophoneRefused": "{name}さんのデバイスでこの通話のマイクが開かれなかったため、発言は録音されず、内容も不明です。",
+    "callTranscriptAudioLost": "{name}さんの発言は録音されましたが、書き起こされる前に失われたため、内容も不明です。",
     "mapPinsKeyboardHint": "矢印キーでマップ上のアクティビティ間を移動し、Enterキーを押して開きます。",
     "selectMessageLabel": "メッセージを選択",
+    "callTranscriptAudioDropped": "{name}さんの発言は、録音される前にデバイスで失われたため、内容は不明です。",
+    "callTranscriptHeldByOtherDevice": "{name}さんの発言は、別のデバイスで録音されることになったため、このデバイスからは何も送信されておらず、内容は不明です。",
+    "callTranscriptDeviceNeverWrote": "{name}さんの発言の一部は、別のデバイスで録音される予定でしたが、そのデバイスが録音しなかったため、その部分は不明です。",
     "archivedChat": "アーカイブ済みチャット",
     "activityReview": "アクティビティレビュー",
     "activityPanel": "アクティビティ",
@@ -10619,7 +10628,6 @@
     "filterAndSearch": "フィルターと検索",
     "participantsOfTotal": "{total}人中{filled}人",
     "mapAttributionLabel": "OpenStreetMapの寄与者、著作権とライセンス",
-    "availableLabel": "未開始",
     "seeAll": "すべて見る",
     "seeAllSection": "{section}をすべて見る"
 }

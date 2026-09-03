@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-09-02 14:37:08.597513",
+    "@@last_modified": "2026-09-02 11:48:50.601094",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9666,6 +9666,7 @@
     "ongoingPendingLabel": "Odotetaan muiden liittymistä",
     "joinableLabel": "Liityttävissä",
     "inProgressLabel": "Aiemmin suoritettu",
+    "availableLabel": "Luo toiminto",
     "rateActivityTitle": "Miten tämä aktiviteetti sujui?",
     "rateActivityCommentHint": "Lisää kommentti (valinnainen)",
     "rateActivityCommentRejected": "Kommenttiasi ei voitu julkaista. Yritä muotoilla se uudelleen tai lähetä arviosi ilman kommenttia.",
@@ -9875,8 +9876,16 @@
     "callTranscriptOpen": "Lue litterointi",
     "errorRateLimited": "Lataamme juuri nyt paljon. Odota hetki ja yritä uudelleen.",
     "noPermissionToInviteUsers": "Sinulla ei ole lupaa kutsua jäseniä tänne.",
+    "callTranscriptRoomEncrypted": "Tämä keskustelu on salattu, eikä tekstitystä voitu avata täällä, joten sanottua ei näytetä.",
+    "callTranscriptParticipantsUnknown": "Ei tiedetä, ketkä muut osallistuivat tähän puheluun, joten joku puhunut henkilö saattaa puuttua tästä tekstityksestä kokonaan.",
+    "callTranscriptTooLongToSend": "Se, mitä {name} sanoi, oli liian pitkä tallennettavaksi tämän puhelun yhteyteen, joten sitä ei näytetä.",
+    "callTranscriptMicrophoneRefused": "{name}-käyttäjän laite ei avannut mikrofonia tämän puhelun aikana, joten mitään sanottua ei tallennettu eikä tiedetä, mitä sanottiin.",
+    "callTranscriptAudioLost": "Mitä {name} sanoi, tallennettiin, mutta se katosi ennen kuin se voitiin litteroida, joten sanottua ei tiedetä.",
     "mapPinsKeyboardHint": "Käytä nuolinäppäimiä siirtyäksesi kartan aktiviteettien välillä ja avaa aktiviteetti painamalla Enter-näppäintä.",
     "selectMessageLabel": "Valitse viesti",
+    "callTranscriptAudioDropped": "Se, mitä {name} sanoi, katosi hänen laitteeltaan ennen kuin se ehdittiin nauhoittaa, joten sanottua ei tiedetä.",
+    "callTranscriptHeldByOtherDevice": "Se, mitä {name} sanoi, jätettiin hänen toisen laitteensa nauhoitettavaksi, joten tältä laitteelta ei lähetetty mitään eikä sanottua tiedetä täällä.",
+    "callTranscriptDeviceNeverWrote": "Osa siitä, mitä {name} sanoi, jätettiin toisen hänen laitteensa tallennettavaksi, ja kyseinen laite ei tallentanut sitä, joten sitä osaa ei tiedetä.",
     "archivedChat": "Arkistoitu keskustelu",
     "activityReview": "Aktiviteettikatsaus",
     "activityPanel": "Aktiviteetti",
@@ -9887,7 +9896,6 @@
     "filterAndSearch": "Suodata ja hae",
     "participantsOfTotal": "{filled}/{total} pelaajaa",
     "mapAttributionLabel": "OpenStreetMapin tekijät, tekijänoikeudet ja lisenssi",
-    "availableLabel": "Ei vielä aloitettu",
     "seeAll": "Näytä kaikki",
     "seeAllSection": "Näytä kaikki {section}"
 }

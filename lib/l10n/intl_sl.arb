@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-09-02 14:37:13.203177",
+    "@@last_modified": "2026-09-02 11:49:06.045845",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10574,6 +10574,7 @@
     "ongoingPendingLabel": "Čakam, da se pridružijo drugi",
     "joinableLabel": "Pridružljivo",
     "inProgressLabel": "Prej dokončano",
+    "availableLabel": "Ustvari dejavnost",
     "rateActivityTitle": "Kako je bila ta dejavnost?",
     "rateActivityCommentHint": "Dodaj komentar (neobvezno)",
     "rateActivityCommentRejected": "Vašega komentarja ni bilo mogoče objaviti. Poskusite ga preoblikovati ali oddajte svojo oceno brez komentarja.",
@@ -10783,8 +10784,16 @@
     "callTranscriptOpen": "Preberite prepis",
     "errorRateLimited": "Trenutno nalagamo veliko vsebine. Prosimo, počakajte trenutek in poskusite znova.",
     "noPermissionToInviteUsers": "Nimate dovoljenja za povabilo članov sem.",
+    "callTranscriptRoomEncrypted": "Ta klepet je šifriran in prepisa ni bilo mogoče odkleniti tukaj, zato ni prikazano, kar je bilo rečeno.",
+    "callTranscriptParticipantsUnknown": "Ni znano, kdo je bil še na tem klicu, zato morda nekdo, ki je govoril, popolnoma manjka v tem prepisu.",
+    "callTranscriptTooLongToSend": "Kar je rekel {name}, je bilo predolgo za shranjevanje s tem klicem, zato ni prikazano nič od tega.",
+    "callTranscriptMicrophoneRefused": "Naprava uporabnika {name} ni nikoli odprla mikrofona za ta klic, zato ni bilo posneto nič, kar je rekel, in ni znano, kaj je bilo rečeno.",
+    "callTranscriptAudioLost": "Kar je rekel {name}, je bilo posneto, vendar izgubljeno, preden je bilo mogoče prepisati, zato ni znano, kaj je bilo rečeno.",
     "mapPinsKeyboardHint": "Z uporabo puščičnih tipk se premikajte med aktivnostmi na zemljevidu in pritisnite Enter, da odprete eno.",
     "selectMessageLabel": "Izberite sporočilo",
+    "callTranscriptAudioDropped": "Kar je rekel/-a {name}, je njegova/njena naprava izgubila, preden je bilo mogoče posneti, zato ni znano, kaj je bilo rečeno.",
+    "callTranscriptHeldByOtherDevice": "Kar je rekel/-a {name}, je bilo prepuščeno snemanju drugi njegovi/njeni napravi, zato s te naprave ni bilo nič poslano in tukaj ni znano, kaj je bilo rečeno.",
+    "callTranscriptDeviceNeverWrote": "Del tega, kar je rekel/-a {name}, je bil prepuščen snemanju drugi njegovi/njeni napravi, vendar ta naprava tega ni posnela, zato ta del ni znan.",
     "archivedChat": "Arhiviran klepet",
     "activityReview": "Pregled dejavnosti",
     "activityPanel": "Dejavnost",
@@ -10795,7 +10804,6 @@
     "filterAndSearch": "Filtriraj in išči",
     "participantsOfTotal": "{filled} od {total} igralcev",
     "mapAttributionLabel": "Sodelavci OpenStreetMap, avtorske pravice in licenca",
-    "availableLabel": "Še ni začeto",
     "seeAll": "Poglej vse",
     "seeAllSection": "Poglej vse {section}"
 }

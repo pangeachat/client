@@ -3094,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-09-02 14:37:13.730680",
+    "@@last_modified": "2026-09-02 11:49:10.062467",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10261,6 +10261,7 @@
     "ongoingPendingLabel": "กำลังรอผู้เข้าร่วมคนอื่น",
     "joinableLabel": "เข้าร่วมได้",
     "inProgressLabel": "เสร็จสิ้นไปแล้ว",
+    "availableLabel": "สร้างกิจกรรม",
     "rateActivityTitle": "กิจกรรมนี้เป็นอย่างไรบ้าง",
     "rateActivityCommentHint": "เพิ่มความคิดเห็น (ไม่บังคับ)",
     "rateActivityCommentRejected": "ไม่สามารถโพสต์ความคิดเห็นของคุณได้ ลองเปลี่ยนคำพูด หรือส่งการให้คะแนนของคุณโดยไม่มีความคิดเห็น",
@@ -10470,8 +10471,16 @@
     "callTranscriptOpen": "อ่านบทสนทนา",
     "errorRateLimited": "ขณะนี้เรากำลังโหลดข้อมูลจำนวนมาก โปรดรอสักครู่แล้วลองอีกครั้ง",
     "noPermissionToInviteUsers": "คุณไม่มีสิทธิ์เชิญสมาชิกที่นี่",
+    "callTranscriptRoomEncrypted": "แชทนี้มีการเข้ารหัสและไม่สามารถปลดล็อกบันทึกการสนทนาได้ที่นี่ จึงไม่แสดงสิ่งที่พูดไป",
+    "callTranscriptParticipantsUnknown": "ไม่ทราบว่ามีใครอื่นอยู่ในสายนี้บ้าง ดังนั้นอาจมีบางคนที่พูดไปแล้วหายไปจากบันทึกการสนทนานี้",
+    "callTranscriptTooLongToSend": "สิ่งที่ {name} พูดนั้นยาวเกินกว่าที่จะบันทึกพร้อมกับการโทรนี้ จึงไม่มีการแสดงข้อความใดๆ",
+    "callTranscriptMicrophoneRefused": "อุปกรณ์ของ {name} ไม่ได้เปิดไมโครโฟนสำหรับการโทรนี้ ดังนั้นจึงไม่มีการบันทึกสิ่งที่พวกเขาพูด และไม่ทราบว่าพูดอะไรไปบ้าง",
+    "callTranscriptAudioLost": "สิ่งที่ {name} พูดถูกบันทึกไว้ แต่สูญหายไปก่อนที่จะสามารถถอดเสียงได้ ดังนั้นจึงไม่ทราบว่าพูดอะไรไปบ้าง",
     "mapPinsKeyboardHint": "ใช้ปุ่มลูกศรเพื่อเลื่อนไปมาระหว่างกิจกรรมบนแผนที่ และกด Enter เพื่อเปิดกิจกรรม",
     "selectMessageLabel": "เลือกข้อความ",
+    "callTranscriptAudioDropped": "สิ่งที่ {name} พูดได้หายไปจากอุปกรณ์ของพวกเขาก่อนที่จะถูกบันทึก ทำให้ไม่ทราบว่าพูดอะไรไป",
+    "callTranscriptHeldByOtherDevice": "สิ่งที่ {name} พูดถูกส่งไปบันทึกที่อุปกรณ์อื่นของพวกเขา ดังนั้นจึงไม่มีข้อมูลใดถูกส่งจากอุปกรณ์นี้และไม่ทราบว่าพูดอะไรไป",
+    "callTranscriptDeviceNeverWrote": "ส่วนหนึ่งของสิ่งที่ {name} พูดถูกส่งไปให้อุปกรณ์อื่นบันทึก และอุปกรณ์นั้นไม่ได้บันทึกไว้ ดังนั้นส่วนนั้นจึงไม่เป็นที่รู้จัก",
     "archivedChat": "แชทที่เก็บถาวร",
     "activityReview": "รีวิวกิจกรรม",
     "activityPanel": "กิจกรรม",
@@ -10482,7 +10491,6 @@
     "filterAndSearch": "กรองและค้นหา",
     "participantsOfTotal": "{filled} จากผู้เล่นทั้งหมด {total} คน",
     "mapAttributionLabel": "ผู้ร่วมให้ข้อมูล OpenStreetMap, ลิขสิทธิ์และใบอนุญาต",
-    "availableLabel": "ยังไม่เริ่ม",
     "seeAll": "ดูทั้งหมด",
     "seeAllSection": "ดูทั้งหมด {section}"
 }

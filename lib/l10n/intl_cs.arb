@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-09-02 14:37:07.904145",
+    "@@last_modified": "2026-09-02 11:48:48.031558",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10123,6 +10123,7 @@
     "ongoingPendingLabel": "Čekání na připojení ostatních",
     "joinableLabel": "Připojitelné",
     "inProgressLabel": "Dříve dokončeno",
+    "availableLabel": "Vytvořit aktivitu",
     "rateActivityTitle": "Jaká byla tato aktivita?",
     "rateActivityCommentHint": "Přidat komentář (volitelné)",
     "rateActivityCommentRejected": "Váš komentář nemohl být zveřejněn. Zkuste ho přeformulovat, nebo odešlete hodnocení bez komentáře.",
@@ -10332,8 +10333,16 @@
     "callTranscriptOpen": "Přečíst přepis",
     "errorRateLimited": "Právě teď toho hodně načítáme. Počkejte prosím chvilku a zkuste to znovu.",
     "noPermissionToInviteUsers": "Nemáte oprávnění zvát sem členy.",
+    "callTranscriptRoomEncrypted": "Tento chat je šifrovaný a přepis se zde nepodařilo odemknout, takže to, co bylo řečeno, se nezobrazuje.",
+    "callTranscriptParticipantsUnknown": "Není známo, kdo další se tohoto hovoru zúčastnil, takže někdo, kdo mluvil, může v tomto přepisu zcela chybět.",
+    "callTranscriptTooLongToSend": "To, co řekl {name}, bylo příliš dlouhé na uložení s tímto hovorem, takže se nic z toho nezobrazuje.",
+    "callTranscriptMicrophoneRefused": "Zařízení uživatele {name} nikdy neotevřelo mikrofon pro tento hovor, takže nic z toho, co řekl(a), nebylo nahráno a není známo, co bylo řečeno.",
+    "callTranscriptAudioLost": "To, co řekl(a) {name}, bylo nahráno, ale ztraceno předtím, než to mohlo být přepsáno, takže není známo, co bylo řečeno.",
     "mapPinsKeyboardHint": "Pomocí kláves se šipkami se pohybujte mezi aktivitami na mapě a stisknutím klávesy Enter jednu otevřete.",
     "selectMessageLabel": "Vybrat zprávu",
+    "callTranscriptAudioDropped": "To, co řekl(a) {name}, bylo ztraceno v jeho/jejím zařízení ještě předtím, než to mohlo být nahráno, takže není známo, co bylo řečeno.",
+    "callTranscriptHeldByOtherDevice": "To, co řekl(a) {name}, bylo ponecháno k nahrání jinému z jeho/jejího zařízení, takže z tohoto nebylo nic odesláno a není zde známo, co bylo řečeno.",
+    "callTranscriptDeviceNeverWrote": "Část toho, co {name} řekl(a), byla ponechána k záznamu jinému z jeho/jejích zařízení, a toto zařízení ji nezaznamenalo, takže tato část není známa.",
     "archivedChat": "Archivovaný chat",
     "activityReview": "Přehled aktivit",
     "activityPanel": "Aktivita",
@@ -10344,7 +10353,6 @@
     "filterAndSearch": "Filtrovat a hledat",
     "participantsOfTotal": "{filled} z {total} hráčů",
     "mapAttributionLabel": "Přispěvatelé OpenStreetMap, autorská práva a licence",
-    "availableLabel": "Ještě nezačalo",
     "seeAll": "Zobrazit vše",
     "seeAllSection": "Zobrazit vše {section}"
 }

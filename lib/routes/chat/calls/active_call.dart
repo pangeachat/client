@@ -639,7 +639,15 @@ class ActiveCall extends ChangeNotifier {
     final track = _track;
     final roster = _roster;
 
-    final me = calls.client.deviceID ?? '';
+    // NULL, not the empty string this used to fall back to. The election breaks
+    // a tie on device id and '' sorts BEFORE every real one, so a device the SDK
+    // could not name out-ranked every sibling unconditionally and elected
+    // itself — the exact duplicate-analytics outcome the election exists to
+    // prevent. The window is narrow, because a call cannot start without a
+    // device id at all: it takes a logout landing mid-call. What it costs is
+    // not narrow, because both devices then deliver the same stretch and the
+    // learner is credited twice for saying something once.
+    final me = calls.client.deviceID;
 
     // Somewhere to record FROM and somewhere to record THROUGH, composed in the
     // one place that can see both objects, and read ONCE — so what this device
@@ -700,11 +708,21 @@ class ActiveCall extends ChangeNotifier {
     // being elected in its own view, delivered them.
     final iCanCapture = roster?.announcedCanCapture ?? true;
     final election = CaptureElection(
-      myDeviceId: me,
+      myDeviceId: me ?? '',
       siblings: siblings,
       iCanCapture: iCanCapture,
     );
-    final elected = election.shouldRecord;
+    // STANDS ASIDE, and the guard sits here rather than inside the election
+    // because namelessness is not a rank. [CaptureElection] is a total order
+    // over NAMED devices, and every device reaching the same verdict alone
+    // depends on that order being one every device can compute; a device with
+    // no id is not lower in it, it is absent from it. This is the one site that
+    // knows the SDK may have no id to give.
+    //
+    // Only when there is somebody to stand aside FOR. Alone in the call it
+    // still records: there is nobody to produce a duplicate with, and refusing
+    // would cost the call's analytics to prevent nothing.
+    final elected = (me != null || siblings.isEmpty) && election.shouldRecord;
 
     // Recorded SYNCHRONOUSLY, here, at the moment the election decides — never
     // handed to the stop as an argument. Teardown stops the recorder directly,
@@ -722,6 +740,18 @@ class ActiveCall extends ChangeNotifier {
     final successorReport = successor == null
         ? null
         : roster?.siblingCaptureReport(successor.deviceId);
+    // The SFU's own words about each join, keyed the way the SFU keys them.
+    // The identities come from the roster rather than being assembled out of
+    // the account and the device id: the store is keyed by the string the SFU
+    // used, and a second copy of the identity rules here is a second place for
+    // them to be wrong. A device the SFU has not named has no identity to look
+    // up, and an identity the store never heard of reads as absent — both land
+    // on the coarse comparison, which is where they landed before this was
+    // read at all.
+    final myIdentity = roster?.myIdentity;
+    final successorIdentity = successor == null
+        ? null
+        : roster?.siblingIdentity(successor.deviceId);
     capture.setDiscardOnStop(
       successor != null &&
           successorReport != null &&
@@ -731,6 +761,12 @@ class ActiveCall extends ChangeNotifier {
             watch: _watch,
             myJoinedAt: roster?.myJoinTime,
             successorJoinedAt: roster?.siblingJoinTime(successor.deviceId),
+            mySfuStamps: myIdentity == null
+                ? null
+                : media.sfuJoinStampsFor(myIdentity),
+            successorSfuStamps: successorIdentity == null
+                ? null
+                : media.sfuJoinStampsFor(successorIdentity),
           ),
     );
 
@@ -1813,7 +1849,13 @@ class ActiveCall extends ChangeNotifier {
       // poll. Membership is room state on a multi-minute expiry: it lags a join
       // and cannot see a crash until it lapses, which is why the poll existed
       // at all. The SFU knows immediately, so neither is needed.
-      final roster = media.roster(myUserId: calls.client.userID ?? '');
+      final roster = media.roster(
+        myUserId: calls.client.userID ?? '',
+        // What the token said about publishing attributes, carried so that a
+        // roster write that fails can say whether it was ever allowed to
+        // succeed. See [CallRoster.metadataGrant]; nothing here ranks on it.
+        metadataGrant: grant.metadataGrant,
+      );
       _roster = roster;
       roster.addListener(_onParticipantsChanged);
       // And the call's own clock beside the roster's events, so no state can

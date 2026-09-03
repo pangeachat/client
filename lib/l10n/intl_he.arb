@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 14:37:09.501678",
+    "@@last_modified": "2026-09-02 11:48:54.255509",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10543,6 +10543,7 @@
     "ongoingPendingLabel": "ממתין לאחרים להצטרף",
     "joinableLabel": "ניתן להצטרף",
     "inProgressLabel": "הושלם בעבר",
+    "availableLabel": "צור פעילות",
     "rateActivityTitle": "איך הייתה הפעילות?",
     "rateActivityCommentHint": "הוסף תגובה (אופציונלית)",
     "rateActivityCommentRejected": "התגובה שלך לא פורסמה. נסה לנסח אותה מחדש, או שלח את הדירוג שלך ללא תגובה.",
@@ -10752,8 +10753,16 @@
     "callTranscriptOpen": "קרא את התמלול",
     "errorRateLimited": "אנחנו טוענים הרבה כרגע. אנא המתן רגע ונסה שוב.",
     "noPermissionToInviteUsers": "אין לך הרשאה להזמין חברים לכאן.",
+    "callTranscriptRoomEncrypted": "צ'אט זה מוצפן ולא ניתן היה לפתוח את התמליל כאן, ולכן מה שנאמר אינו מוצג.",
+    "callTranscriptParticipantsUnknown": "לא ידוע מי עוד השתתף בשיחה זו, ולכן ייתכן שמישהו שדיבר חסר לחלוטין בתמליל זה.",
+    "callTranscriptTooLongToSend": "מה ש{name} אמר היה ארוך מדי מכדי לשמור עם שיחה זו, ולכן שום דבר מזה אינו מוצג.",
+    "callTranscriptMicrophoneRefused": "המכשיר של {name} לא פתח מיקרופון לשיחה זו, ולכן שום דבר ממה שנאמר על ידו לא הוקלט ומה שנאמר אינו ידוע.",
+    "callTranscriptAudioLost": "מה ש{name} אמר הוקלט אך אבד לפני שניתן היה לתמלל אותו, ולכן מה שנאמר אינו ידוע.",
     "mapPinsKeyboardHint": "השתמשו במקשי החיצים כדי לנוע בין הפעילויות על המפה, ולחצו על אנטר כדי לפתוח אחת.",
     "selectMessageLabel": "בחר הודעה",
+    "callTranscriptAudioDropped": "השמע של {name} אבד במכשיר שלו לפני שהספיק להיות מוקלט, כך שלא ידוע מה נאמר.",
+    "callTranscriptHeldByOtherDevice": "השמע של {name} הועבר להקלטה במכשיר אחר שלו, כך ששום דבר לא נשלח מהמכשיר הזה ולא ידוע כאן מה נאמר.",
+    "callTranscriptDeviceNeverWrote": "חלק ממה ש{name} אמר/ה נשאר להקלטה במכשיר אחר שלו/ה, והמכשיר הזה לא הקליט אותו, כך שהחלק הזה אינו ידוע.",
     "archivedChat": "צ'אט בארכיון",
     "activityReview": "סקירת פעילות",
     "activityPanel": "פעילות",
@@ -10764,7 +10773,6 @@
     "filterAndSearch": "סינון וחיפוש",
     "participantsOfTotal": "{filled} מתוך {total} שחקנים",
     "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
-    "availableLabel": "טרם התחיל",
     "seeAll": "הצג הכל",
     "seeAllSection": "הצג הכל {section}"
 }

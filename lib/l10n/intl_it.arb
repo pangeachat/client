@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-09-02 14:37:10.043236",
+    "@@last_modified": "2026-09-02 11:48:55.929994",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9702,6 +9702,7 @@
     "ongoingPendingLabel": "In attesa che altri si uniscano",
     "joinableLabel": "Partecipabile",
     "inProgressLabel": "Completato in precedenza",
+    "availableLabel": "Crea attività",
     "rateActivityTitle": "Com'è andata questa attività?",
     "rateActivityCommentHint": "Aggiungi un commento (facoltativo)",
     "rateActivityCommentRejected": "Impossibile pubblicare il tuo commento. Prova a riformularlo o invia la tua valutazione senza un commento.",
@@ -9911,8 +9912,16 @@
     "callTranscriptOpen": "Leggi la trascrizione",
     "errorRateLimited": "Stiamo caricando molti dati in questo momento. Attendi un momento e riprova.",
     "noPermissionToInviteUsers": "Non hai il permesso di invitare membri qui.",
+    "callTranscriptRoomEncrypted": "Questa chat è crittografata e la trascrizione non è stata sbloccata qui, quindi ciò che è stato detto non viene mostrato.",
+    "callTranscriptParticipantsUnknown": "Non si sa chi altro abbia partecipato a questa chiamata, quindi qualcuno che ha parlato potrebbe mancare del tutto da questa trascrizione.",
+    "callTranscriptTooLongToSend": "Ciò che {name} ha detto era troppo lungo per essere salvato con questa chiamata, quindi non viene mostrato nulla.",
+    "callTranscriptMicrophoneRefused": "Il dispositivo di {name} non ha mai aperto un microfono per questa chiamata, quindi nulla di ciò che ha detto è stato registrato e ciò che è stato detto non è noto.",
+    "callTranscriptAudioLost": "Ciò che {name} ha detto è stato registrato ma perso prima che potesse essere trascritto, quindi ciò che è stato detto non è noto.",
     "mapPinsKeyboardHint": "Usa i tasti freccia per spostarti tra le attività sulla mappa e premi Invio per aprirne una.",
     "selectMessageLabel": "Seleziona messaggio",
+    "callTranscriptAudioDropped": "Ciò che {name} ha detto è andato perso dal suo dispositivo prima ancora di poter essere registrato, quindi non si sa cosa sia stato detto.",
+    "callTranscriptHeldByOtherDevice": "La registrazione di ciò che {name} ha detto è stata affidata a un altro dei suoi dispositivi, quindi nulla è stato inviato da questo e non si sa cosa sia stato detto qui.",
+    "callTranscriptDeviceNeverWrote": "Parte di ciò che {name} ha detto è stata lasciata a un altro dei suoi dispositivi per la registrazione, ma quel dispositivo non l'ha registrata, quindi quella parte non è nota.",
     "archivedChat": "Chat archiviata",
     "activityReview": "Revisione attività",
     "activityPanel": "Attività",
@@ -9923,7 +9932,6 @@
     "filterAndSearch": "Filtra e cerca",
     "participantsOfTotal": "{filled} di {total} giocatori",
     "mapAttributionLabel": "Contributori OpenStreetMap, copyright e licenza",
-    "availableLabel": "Non ancora iniziato",
     "seeAll": "Vedi tutto",
     "seeAllSection": "Vedi tutto {section}"
 }

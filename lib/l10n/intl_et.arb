@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-09-02 14:37:08.521555",
+    "@@last_modified": "2026-09-02 11:48:51.540846",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9626,6 +9626,7 @@
     "ongoingPendingLabel": "Ootan teiste liitumist",
     "joinableLabel": "Liitutav",
     "inProgressLabel": "Varem lõpetatud",
+    "availableLabel": "Loo tegevus",
     "rateActivityTitle": "Kuidas see tegevus oli?",
     "rateActivityCommentHint": "Lisa kommentaar (valikuline)",
     "rateActivityCommentRejected": "Sinu kommentaari ei saanud postitada. Proovi seda ümber sõnastada või esita oma hinnang ilma kommentaarita.",
@@ -9835,8 +9836,16 @@
     "callTranscriptOpen": "Loe transkriptsiooni",
     "errorRateLimited": "Meil on praegu palju koormust. Palun oota hetk ja proovi uuesti.",
     "noPermissionToInviteUsers": "Sul pole siia liikmete kutsumiseks luba.",
+    "callTranscriptRoomEncrypted": "See vestlus on krüpteeritud ja transkriptsiooni ei saanud siin avada, seega öeldut ei kuvata.",
+    "callTranscriptParticipantsUnknown": "Pole teada, kes veel sellel kõnel osalesid, seega võib keegi, kes rääkis, sellest transkriptsioonist täielikult puududa.",
+    "callTranscriptTooLongToSend": "See, mida {name} ütles, oli selle kõnega salvestamiseks liiga pikk, seega ei kuvata sellest midagi.",
+    "callTranscriptMicrophoneRefused": "{name} seade ei avanud selle kõne jaoks mikrofoni, seega ei salvestatud midagi, mida nad ütlesid, ja öeldu ei ole teada.",
+    "callTranscriptAudioLost": "See, mida {name} ütles, salvestati, kuid läks kaduma enne, kui seda transkribeerida sai, seega öeldu ei ole teada.",
     "mapPinsKeyboardHint": "Kasutage nooleklahve kaardil tegevuste vahel liikumiseks ja vajutage sisestusklahvi, et avada üks.",
     "selectMessageLabel": "Vali sõnum",
+    "callTranscriptAudioDropped": "See, mida {name} ütles, läks tema seadmes kaduma enne, kui seda jõuti salvestada, seega pole teada, mida öeldi.",
+    "callTranscriptHeldByOtherDevice": "See, mida {name} ütles, jäeti salvestamiseks tema teise seadmesse, seega ei saadetud sellest seadmest midagi ja siin pole teada, mida öeldi.",
+    "callTranscriptDeviceNeverWrote": "Osa sellest, mida {name} ütles, jäi salvestamiseks teise tema seadmesse ja see seade ei salvestanud seda, seega see osa ei ole teada.",
     "archivedChat": "Arhiveeritud vestlus",
     "activityReview": "Tegevuste ülevaade",
     "activityPanel": "Tegevus",
@@ -9847,7 +9856,6 @@
     "filterAndSearch": "Filtreeri ja otsi",
     "participantsOfTotal": "{filled}/{total} mängijat",
     "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
-    "availableLabel": "Pole veel alanud",
     "seeAll": "Vaata kõiki",
     "seeAllSection": "Vaata kõiki {section}"
 }
