@@ -105,49 +105,58 @@ void chatContextMenuAction(
       .where((v) => v.enabled(room: room, space: space))
       .length;
 
-  // Focus lands INSIDE the menu as it opens: the route's scope takes focus,
-  // then the first item is focused, so keyboard and screen-reader users
-  // start on it (Enter activates). Pointer users see no change — the focus
-  // highlight only renders in keyboard mode. Two frames, because the scope
-  // claims focus in a microtask after the push frame; the guard makes this
-  // a no-op (rather than a focus escape to a neighboring row) if focus is
-  // not on an empty scope yet. Scheduled before the await, which only
-  // returns when the menu closes.
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final scope = primaryFocus;
-      if (scope is FocusScopeNode && scope.focusedChild == null) {
-        scope.nextFocus();
-      }
-    });
+  // Focus lands INSIDE the menu (#8767), via the accessible-dialog recipe:
+  // no focus moves at open at all — the route must not claim focus, since a
+  // claimed-but-empty scope reaches the web engine as a view-focus event
+  // with nothing DOM-focused, it falls back to focusing the flutter-view
+  // host, and VoiceOver latches onto the page root (verified against the
+  // engine's view_focus_binding). Then the first item is focused as one
+  // discrete, slightly delayed event, which screen readers follow
+  // reliably. Enter activates it via the enclosing item's InkWell; pointer
+  // users see no change — the focus highlight only renders in keyboard
+  // mode.
+  final firstItemFocus = FocusNode(skipTraversal: true);
+  Future.delayed(const Duration(milliseconds: 300), () {
+    if (firstItemFocus.context?.mounted ?? false) {
+      firstItemFocus.requestFocus();
+    }
   });
   final action = await showMenu<ChatContextAction>(
     context: context,
     position: position,
-    requestFocus: true,
+    requestFocus: false,
     items: [
       if (ChatContextAction.open.enabled(room: room, space: space))
         PopupMenuItem(
           value: ChatContextAction.open,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            spacing: 12.0,
-            children: [
-              Avatar(
-                mxContent: room.avatar,
-                name: displayname,
-                userId: room.directChatMatrixID,
-              ),
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 128),
-                child: Text(
-                  displayname,
-                  style: TextStyle(color: theme.colorScheme.onSurface),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+          child: Focus(
+            // The delayed-focus target — see the note above showMenu.
+            // Skipped in traversal so the item doesn't become two Tab stops.
+            focusNode: firstItemFocus,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 12.0,
+              children: [
+                // Decorative here — without this the item announces the room
+                // name twice (avatar label + text).
+                ExcludeSemantics(
+                  child: Avatar(
+                    mxContent: room.avatar,
+                    name: displayname,
+                    userId: room.directChatMatrixID,
+                  ),
                 ),
-              ),
-            ],
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 128),
+                  child: Text(
+                    displayname,
+                    style: TextStyle(color: theme.colorScheme.onSurface),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       if (enabledCount > 1) const PopupMenuDivider(),
@@ -271,6 +280,7 @@ void chatContextMenuAction(
     ],
   );
 
+  firstItemFocus.dispose();
   if (action == null) return;
 
   switch (action) {
