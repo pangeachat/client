@@ -1,12 +1,13 @@
 import 'dart:async';
 
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_event.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_events.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 
 class LevelUpdate {
@@ -86,14 +87,28 @@ class AnalyticsUpdateDispatcher {
           .map((update) => update.value);
 
   void sendActivityAnalyticsUpdate(String? activityAnalytics) {
-    if (activityAnalyticsStream.isClosed) {
-      ErrorHandler.logError(
-        e: "Attempted to send activity analytics update after stream was closed",
-        data: {"isLoggedIn": dataService.isLogged},
-      );
-      return;
-    }
+    if (_dropIfDisposed(activityAnalyticsStream, 'activity analytics')) return;
     activityAnalyticsStream.add(activityAnalytics);
+  }
+
+  /// True, having left a breadcrumb, when [stream] was closed by [dispose].
+  ///
+  /// A send lands here after the account is torn down: logging out while
+  /// `_initAnalytics` is still running, or while a sync's bulk update is in
+  /// flight, closes the streams first and the late completion sends anyway.
+  /// Nothing listens by then, so the send is dropped. It used to be reported
+  /// as an error, once per user per such logout -- and the report's
+  /// `isLoggedIn` datum went through the null-asserting analytics client, so
+  /// once the store was closed the report itself threw (#8780).
+  bool _dropIfDisposed(StreamController<Object?> stream, String what) {
+    if (!stream.isClosed) return false;
+    Sentry.addBreadcrumb(
+      Breadcrumb(
+        message:
+            'AnalyticsUpdateDispatcher: dropped $what update after dispose',
+      ),
+    );
+    return true;
   }
 
   void sendLemmaInfoUpdate(
@@ -122,13 +137,7 @@ class AnalyticsUpdateDispatcher {
   }
 
   void sendEmptyAnalyticsUpdate() {
-    if (constructUpdateStream.isClosed) {
-      ErrorHandler.logError(
-        e: "Attempted to send analytics update after stream was closed",
-        data: {"isLoggedIn": dataService.isLogged},
-      );
-      return;
-    }
+    if (_dropIfDisposed(constructUpdateStream, 'analytics')) return;
     constructUpdateStream.add(AnalyticsStreamUpdate());
   }
 
