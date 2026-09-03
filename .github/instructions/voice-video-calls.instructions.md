@@ -376,6 +376,12 @@ Call buttons are built behind a MatrixRTC focus lookup, so an environment withou
 one renders nothing rather than buttons that fail. This is also what keeps calling
 dark on a deployment whose SFU is not running.
 
+They are also disabled until a second person has JOINED the room. A direct message
+whose invitee has not accepted the invite has only the caller in it, so a call
+would ring nobody and the caller would sit through a no-answer timeout with no idea
+why. The greyed button is that signal, where a silent dead call is not; it comes
+back live on the join that brings the second person in.
+
 ## Future work
 
 - [pangeachat/.github#410](https://github.com/pangeachat/.github/issues/410) — the
