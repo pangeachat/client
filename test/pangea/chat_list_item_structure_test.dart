@@ -12,11 +12,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_pangea_controller.dart';
 import 'get_test_client.dart';
 
-/// #8767 — the structural half of #8689 finding 12: a chat-list row's live
-/// controls (the "More options" avatar, the decline/delete icon button) are
-/// semantic SIBLINGS of the row's open-chat button, never its descendants.
-/// On web the row is a role=button node, and ARIA's presentational-children
-/// rule lets assistive tech flatten or skip controls nested in a button.
+/// #8767 — the structural half of #8689 finding 12: a chat-list row is ONE
+/// button with nothing interactive nested inside it. On web the row is a
+/// role=button node, and ARIA's presentational-children rule lets assistive
+/// tech flatten or skip controls nested in a button. The avatar is
+/// decorative (the context menu is the row's long-press), invite rows have
+/// no decline button (tapping the row opens the accept/decline dialog), and
+/// the archive page's delete button is a semantic sibling of the row.
 void main() {
   late Client client;
 
@@ -68,6 +70,7 @@ void main() {
     Room room, {
     void Function()? onTap,
     void Function(BuildContext)? onLongPress,
+    void Function()? onForget,
   }) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -80,6 +83,7 @@ void main() {
               room,
               onTap: onTap ?? () {},
               onLongPress: onLongPress,
+              onForget: onForget,
             ),
           ),
         ),
@@ -129,7 +133,7 @@ void main() {
     return result;
   }
 
-  testWidgets('the row button contains no interactive descendants', (
+  testWidgets('the row is one button with no interactive descendants', (
     tester,
   ) async {
     final semantics = tester.ensureSemantics();
@@ -138,54 +142,69 @@ void main() {
     final l10n = L10n.of(context);
 
     final row = rowButtonNode(tester);
-    expect(row.getSemanticsData().hasAction(SemanticsAction.tap), isTrue);
+    final data = row.getSemanticsData();
+    expect(data.hasAction(SemanticsAction.tap), isTrue);
+    expect(
+      data.hasAction(SemanticsAction.longPress),
+      isTrue,
+      reason: 'the context menu is the row node\'s long-press action',
+    );
+
     for (final control in [l10n.moreOptions, l10n.declineInvitation]) {
       expect(
         nodesNamed(tester, control),
-        hasLength(1),
-        reason: '"$control" must be reachable as its own node',
-      );
-      var inRow = false;
-      row.visitChildren((child) {
-        inRow = inRow || subtreePresents(child, control);
-        return !inRow;
-      });
-      expect(
-        inRow,
-        isFalse,
+        isEmpty,
         reason:
-            '"$control" may not be a descendant of the row button — ARIA '
-            'treats a button\'s children as presentational (#8767)',
+            '"$control" is gone (#8767): the avatar is decorative and the '
+            'decline choice lives in the tap dialog',
       );
     }
+    var interactiveInside = false;
+    void visit(SemanticsNode node) {
+      if (node.getSemanticsData().hasAction(SemanticsAction.tap)) {
+        interactiveInside = true;
+      }
+      node.visitChildren((child) {
+        visit(child);
+        return !interactiveInside;
+      });
+    }
+
+    row.visitChildren((child) {
+      visit(child);
+      return !interactiveInside;
+    });
+    expect(
+      interactiveInside,
+      isFalse,
+      reason:
+          'nothing tappable may nest inside the row button — ARIA treats a '
+          'button\'s children as presentational (#8767)',
+    );
     semantics.dispose();
   });
 
-  testWidgets('semantic activation of More options opens the row menu', (
-    tester,
-  ) async {
+  testWidgets('semantic long-press on the row opens the menu', (tester) async {
     final semantics = tester.ensureSemantics();
     var menuOpened = 0;
     var rowOpened = 0;
-    final context = await pumpItem(
+    await pumpItem(
       tester,
       makeRoom(),
       onTap: () => rowOpened++,
       onLongPress: (_) => menuOpened++,
     );
-    final l10n = L10n.of(context);
 
-    final node = nodesNamed(tester, l10n.moreOptions).single;
-    node.owner!.performAction(node.id, SemanticsAction.tap);
+    final row = rowButtonNode(tester);
+    row.owner!.performAction(row.id, SemanticsAction.longPress);
     await tester.pumpAndSettle();
     expect(menuOpened, 1);
     expect(rowOpened, 0);
     semantics.dispose();
   });
 
-  testWidgets('pointer parity: row opens the chat, avatar opens the menu', (
-    tester,
-  ) async {
+  testWidgets('pointer: the whole row — avatar included — opens the chat; '
+      'long-press opens the menu', (tester) async {
     var menuOpened = 0;
     var rowOpened = 0;
     await pumpItem(
@@ -196,40 +215,45 @@ void main() {
     );
 
     final rowRect = tester.getRect(find.byType(ChatListItem));
-    // Center of the row — clear of the avatar and any trailing control.
     await tester.tapAt(rowRect.center);
     await tester.pumpAndSettle();
     expect(rowOpened, 1);
-    expect(menuOpened, 0);
 
-    // Center of the leading avatar slot (contentPadding 8 + half the slot).
+    // The avatar is decorative: its taps fall through to the row (#8767).
     await tester.tapAt(
       Offset(rowRect.left + 8 + Avatar.defaultSize / 2, rowRect.center.dy),
     );
     await tester.pumpAndSettle();
-    expect(menuOpened, 1);
-    expect(rowOpened, 1);
+    expect(rowOpened, 2);
+    expect(menuOpened, 0);
 
-    // Long-press on the row body still opens the menu via the tile. (On the
-    // avatar itself the Tooltip's deeper long-press recognizer wins the
-    // arena and shows the tooltip — the same outcome as before #8767.)
     await tester.longPressAt(rowRect.center);
     await tester.pumpAndSettle();
-    expect(menuOpened, 2);
-    expect(rowOpened, 1);
+    expect(menuOpened, 1);
+    expect(rowOpened, 2);
   });
 
-  testWidgets('an invite row exposes exactly one live decline control', (
-    tester,
-  ) async {
+  testWidgets('an archive row exposes exactly one delete control, beside '
+      'the row', (tester) async {
     final semantics = tester.ensureSemantics();
-    final room = makeRoom(membership: Membership.invite);
-    final context = await pumpItem(tester, room);
+    final room = makeRoom(membership: Membership.leave);
+    final context = await pumpItem(tester, room, onForget: () {});
     final l10n = L10n.of(context);
 
     // The layout spacer copy must contribute neither a semantics node nor a
     // second focusable button.
-    expect(nodesNamed(tester, l10n.declineInvitation), hasLength(1));
+    expect(nodesNamed(tester, l10n.delete), hasLength(1));
+    final row = rowButtonNode(tester);
+    var inRow = false;
+    row.visitChildren((child) {
+      inRow = inRow || subtreePresents(child, l10n.delete);
+      return !inRow;
+    });
+    expect(
+      inRow,
+      isFalse,
+      reason: 'the delete button is a sibling of the row button, not inside',
+    );
     final focusableIconButtons = tester
         .binding
         .focusManager

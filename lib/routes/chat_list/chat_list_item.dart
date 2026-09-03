@@ -11,8 +11,6 @@ import 'package:fluffychat/routes/chat_list/chat_list_item_subtitle.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/room_status_extension.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import '../../config/themes.dart';
 import '../../utils/date_time_extension.dart';
@@ -124,158 +122,126 @@ class ChatListItem extends StatelessWidget {
           future: room.name.isEmpty ? room.loadHeroUsers() : null,
           builder: (context, _) => HoverBuilder(
             builder: (context, listTileHovered) {
-              // The avatar cluster and the trailing icon button are live
-              // controls, so they may not sit inside the row's tappable
-              // ListTile: on web the row is a role=button node, and ARIA's
+              // The row is ONE button (#8767): nothing interactive nests
+              // inside its semantics node, because ARIA's
               // presentational-children rule lets AT flatten or skip controls
-              // nested in a button (#8767). Both render in an overlay above
-              // the tile — semantic siblings of the row button — while
-              // same-size spacers hold their layout slots.
-              //
-              // #Pangea: the avatar/drop-down affordances are redundant unnamed
-              // menu triggers (they just re-fire onLongPress); keep them out of
-              // the semantics tree so they are not nested unnamed buttons inside
-              // the tappable tile (axe nested-interactive / aria-command-name).
-              final avatarButton = HoverBuilder(
+              // nested in a role=button. The avatar is decorative — clicking
+              // it opens the chat like the rest of the row — and the context
+              // menu is reached by long-pressing the row (with a mouse, the
+              // drop-down affordance that appears on hover, pointer-only and
+              // excluded from semantics). The one remaining live control, the
+              // archive page's delete button, renders in an overlay above the
+              // tile — a semantic sibling of the row button — while an
+              // invisible same-size copy holds its layout slot.
+              final leadingAvatar = HoverBuilder(
                 builder: (context, hovered) => AnimatedScale(
                   duration: FluffyThemes.animationDuration,
                   curve: FluffyThemes.animationCurve,
                   scale: hovered ? 1.1 : 1.0,
-                  // #Pangea
-                  child: Semantics(
-                    button: true,
-                    label: L10n.of(context).moreOptions,
-                    onTap: () => onLongPress?.call(context),
-                    container: true,
-                    child: Tooltip(
-                      // The label above is the accessible name; the tooltip
-                      // is hover-visual only, so the name isn't doubled.
-                      excludeFromSemantics: true,
-                      message: L10n.of(context).moreOptions,
-                      // Pangea#
-                      child: ExcludeSemantics(
-                        child: SizedBox(
-                          width: Avatar.defaultSize,
-                          height: Avatar.defaultSize,
-                          child: Stack(
-                            children: [
-                              if (space != null)
-                                Positioned(
-                                  top: 0,
-                                  left: 0,
-                                  child: Avatar(
-                                    border: BorderSide(
+                  child: ExcludeSemantics(
+                    child: SizedBox(
+                      width: Avatar.defaultSize,
+                      height: Avatar.defaultSize,
+                      child: Stack(
+                        children: [
+                          if (space != null)
+                            Positioned(
+                              top: 0,
+                              left: 0,
+                              child: Avatar(
+                                border: BorderSide(
+                                  width: 2,
+                                  color:
+                                      backgroundColor ??
+                                      theme.colorScheme.surface,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  AppConfig.borderRadius / 4,
+                                ),
+                                mxContent: space.avatar,
+                                size: Avatar.defaultSize * 0.75,
+                                name: space.getLocalizedDisplayname(),
+                                // #Pangea
+                                userId: space.directChatMatrixID,
+                                useRive: true,
+                                // Pangea#
+                              ),
+                            ),
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Avatar(
+                              border: space == null
+                                  ? room.isSpace
+                                        ? BorderSide(
+                                            width: 1,
+                                            color: theme.dividerColor,
+                                          )
+                                        : null
+                                  : BorderSide(
                                       width: 2,
                                       color:
                                           backgroundColor ??
                                           theme.colorScheme.surface,
                                     ),
-                                    borderRadius: BorderRadius.circular(
-                                      AppConfig.borderRadius / 4,
-                                    ),
-                                    mxContent: space.avatar,
-                                    size: Avatar.defaultSize * 0.75,
-                                    name: space.getLocalizedDisplayname(),
-                                    // #Pangea
-                                    userId: space.directChatMatrixID,
-                                    useRive: true,
-                                    // Pangea#
-                                    onTap: () => onLongPress?.call(context),
-                                  ),
-                                ),
-                              Positioned(
-                                bottom: 0,
-                                right: 0,
-                                child: Avatar(
-                                  border: space == null
-                                      ? room.isSpace
-                                            ? BorderSide(
-                                                width: 1,
-                                                color: theme.dividerColor,
-                                              )
-                                            : null
-                                      : BorderSide(
-                                          width: 2,
-                                          color:
-                                              backgroundColor ??
-                                              theme.colorScheme.surface,
-                                        ),
-                                  // #Pangea
-                                  // borderRadius: room.isSpace
-                                  //     ? BorderRadius.circular(
-                                  //         AppConfig.borderRadius / 4,
-                                  //       )
-                                  //     : null,
-                                  borderRadius:
-                                      borderRadius ??
-                                      (room.isSpace
-                                          ? BorderRadius.circular(
-                                              AppConfig.borderRadius / 4,
-                                            )
-                                          : null),
-                                  // Pangea#
-                                  mxContent: room.avatar,
-                                  size: space != null
-                                      ? Avatar.defaultSize * 0.75
-                                      : Avatar.defaultSize,
-                                  name: displayname,
-                                  presenceUserId: directChatMatrixId,
-                                  presenceBackgroundColor: backgroundColor,
-                                  onTap: () => onLongPress?.call(context),
-                                ),
-                              ),
-                              Positioned(
-                                top: 0,
-                                right: 0,
-                                child: GestureDetector(
-                                  onTap: () => onLongPress?.call(context),
-                                  child: AnimatedScale(
-                                    duration: FluffyThemes.animationDuration,
-                                    curve: FluffyThemes.animationCurve,
-                                    scale: listTileHovered ? 1.0 : 0.0,
-                                    child: Material(
-                                      color: backgroundColor,
-                                      borderRadius: BorderRadius.circular(16),
-                                      child: const Icon(
-                                        Icons.arrow_drop_down_circle_outlined,
-                                        size: 18,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                              // #Pangea
+                              // borderRadius: room.isSpace
+                              //     ? BorderRadius.circular(
+                              //         AppConfig.borderRadius / 4,
+                              //       )
+                              //     : null,
+                              borderRadius:
+                                  borderRadius ??
+                                  (room.isSpace
+                                      ? BorderRadius.circular(
+                                          AppConfig.borderRadius / 4,
+                                        )
+                                      : null),
+                              // Pangea#
+                              mxContent: room.avatar,
+                              size: space != null
+                                  ? Avatar.defaultSize * 0.75
+                                  : Avatar.defaultSize,
+                              name: displayname,
+                              presenceUserId: directChatMatrixId,
+                              presenceBackgroundColor: backgroundColor,
+                            ),
                           ),
-                        ),
+                          Positioned(
+                            top: 0,
+                            right: 0,
+                            child: Tooltip(
+                              message: L10n.of(context).moreOptions,
+                              child: GestureDetector(
+                                onTap: () => onLongPress?.call(context),
+                                child: AnimatedScale(
+                                  duration: FluffyThemes.animationDuration,
+                                  curve: FluffyThemes.animationCurve,
+                                  scale: listTileHovered ? 1.0 : 0.0,
+                                  child: Material(
+                                    color: backgroundColor,
+                                    borderRadius: BorderRadius.circular(16),
+                                    child: const Icon(
+                                      Icons.arrow_drop_down_circle_outlined,
+                                      size: 18,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
-              ); // Pangea# end ExcludeSemantics
+              );
 
+              // No decline button on invite rows: tapping the row opens the
+              // accept/decline dialog (onChatTap), so the trash icon was a
+              // second, nested path to the same choice (#8767).
               final Widget? trailingButton = onForget == null
-                  ? room.membership == Membership.invite
-                        ? IconButton(
-                            tooltip: L10n.of(context).declineInvitation,
-                            icon: const Icon(Icons.delete_forever_outlined),
-                            color: theme.colorScheme.error,
-                            onPressed: () async {
-                              final consent = await showOkCancelAlertDialog(
-                                context: context,
-                                title: L10n.of(context).declineInvitation,
-                                message: L10n.of(context).areYouSure,
-                                okLabel: L10n.of(context).yes,
-                                isDestructive: true,
-                              );
-                              if (consent != OkCancelResult.ok) return;
-                              if (!context.mounted) return;
-                              await showFutureLoadingDialog(
-                                context: context,
-                                future: room.leave,
-                              );
-                            },
-                          )
-                        : null
+                  ? null
                   : IconButton(
                       // #Pangea
                       tooltip: L10n.of(context).delete,
@@ -290,10 +256,7 @@ class ChatListItem extends StatelessWidget {
                     visualDensity: const VisualDensity(vertical: -0.5),
                     contentPadding: const EdgeInsets.symmetric(horizontal: 8),
                     onLongPress: () => onLongPress?.call(context),
-                    leading: const SizedBox(
-                      width: Avatar.defaultSize,
-                      height: Avatar.defaultSize,
-                    ),
+                    leading: leadingAvatar,
                     // An invisible copy of the overlay button reserves exactly
                     // its size, so the title/subtitle wrap as before.
                     trailing: trailingButton == null
@@ -567,20 +530,6 @@ class ChatListItem extends StatelessWidget {
                     ),
 
                     onTap: onTap,
-                  ),
-                  PositionedDirectional(
-                    start: 8,
-                    top: 0,
-                    bottom: 0,
-                    child: Center(
-                      child: GestureDetector(
-                        // Long-press on the avatar opened the row menu while
-                        // the tile owned the gesture; the overlay keeps that
-                        // path.
-                        onLongPress: () => onLongPress?.call(context),
-                        child: avatarButton,
-                      ),
-                    ),
                   ),
                   if (trailingButton != null)
                     PositionedDirectional(
