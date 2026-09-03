@@ -88,6 +88,23 @@ class ChatCallButtons extends StatelessWidget {
     // the network, so the buttons appear once the answer is in rather than
     // flickering on a guess. The future is memoized on the service, so this is
     // one request per account, not one per room opened.
+    // Offered, but inert until someone else has JOINED. A DM whose invitee has
+    // not accepted the invite has only us in it, so a call rings nobody: the
+    // recipient hears nothing and the caller sits through the no-answer timeout
+    // with no idea why (#8777). Greyed rather than hidden, so the control is
+    // visibly there and its being disabled is the signal that a call cannot
+    // connect yet. It re-enables on the state change that brings the second
+    // member in: the header rebuilds off `client.onRoomState` for this room
+    // (`chat_view.dart`), and a join is an `m.room.member` state event.
+    //
+    // `mJoinedMemberCount` is the joined count from the room summary -- the same
+    // read `CallService.couldRingHere` uses. Absent (a summary not yet synced)
+    // counts as fewer than two and stays greyed: the safe direction is refusing
+    // a call that cannot connect over offering one that rings nobody, and it
+    // corrects on the next sync. A group room never reaches here -- `_offersCalls`
+    // is direct-chats-only -- so "two joined" is the two people of the DM.
+    final canCall = (room.summary.mJoinedMemberCount ?? 0) >= 2;
+
     return FutureBuilder(
       future: Matrix.of(context).callService.resolveFocus(),
       builder: (context, snapshot) => snapshot.data == null
@@ -103,20 +120,26 @@ class ChatCallButtons extends StatelessWidget {
                 // layout change.
                 Semantics(
                   button: true,
+                  enabled: canCall,
                   label: L10n.of(context).startVideoCall,
                   child: IconButton(
                     icon: const Icon(Icons.videocam_outlined),
                     tooltip: L10n.of(context).startVideoCall,
-                    onPressed: () => _startCall(context, room, video: true),
+                    onPressed: canCall
+                        ? () => _startCall(context, room, video: true)
+                        : null,
                   ),
                 ),
                 Semantics(
                   button: true,
+                  enabled: canCall,
                   label: L10n.of(context).startCall,
                   child: IconButton(
                     icon: const Icon(Icons.call_outlined),
                     tooltip: L10n.of(context).startCall,
-                    onPressed: () => _startCall(context, room, video: false),
+                    onPressed: canCall
+                        ? () => _startCall(context, room, video: false)
+                        : null,
                   ),
                 ),
               ],

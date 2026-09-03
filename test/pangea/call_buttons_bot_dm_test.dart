@@ -107,8 +107,23 @@ void main() {
     await client.dispose();
   });
 
-  Room buildRoom({String? directChatWith, String? botMode}) {
-    final room = Room(id: roomId, client: client, membership: Membership.join);
+  Room buildRoom({
+    String? directChatWith,
+    String? botMode,
+    int joinedMembers = 2,
+  }) {
+    final room = Room(
+      id: roomId,
+      client: client,
+      membership: Membership.join,
+      // The joined count the buttons gate on. Two is an ordinary DM with both
+      // people in it; one is a DM whose invitee has not accepted yet.
+      summary: RoomSummary.fromJson({
+        'm.joined_member_count': joinedMembers,
+        'm.invited_member_count': 0,
+        'm.heroes': <String>[],
+      }),
+    );
     if (botMode != null) {
       room.setState(
         Event(
@@ -184,6 +199,13 @@ void main() {
 
   final callButton = find.byIcon(Icons.call_outlined);
   final videoButton = find.byIcon(Icons.videocam_outlined);
+  // The IconButtons themselves, so a test can read `onPressed` to tell an
+  // enabled button from a greyed one -- the icon alone renders either way.
+  final voiceIconButton = find.widgetWithIcon(IconButton, Icons.call_outlined);
+  final videoIconButton = find.widgetWithIcon(
+    IconButton,
+    Icons.videocam_outlined,
+  );
 
   testWidgets('a DM with another person is offered calls', (tester) async {
     final room = buildRoom(directChatWith: friendId);
@@ -197,6 +219,44 @@ void main() {
 
     expect(callButton, findsOneWidget);
     expect(videoButton, findsOneWidget);
+    // Both people are in the DM, so the call can connect: the buttons are live.
+    expect(
+      tester.widget<IconButton>(voiceIconButton).onPressed,
+      isNotNull,
+      reason: 'a two-person DM can place a call',
+    );
+    expect(tester.widget<IconButton>(videoIconButton).onPressed, isNotNull);
+  });
+
+  testWidgets('a DM whose invitee has not joined greys the buttons out', (
+    tester,
+  ) async {
+    // The bug: a fresh DM, the invitee has not accepted, so only the caller is
+    // joined. A call would ring nobody. The buttons must be present but inert,
+    // so the caller sees they cannot call yet rather than sitting through a
+    // silent no-answer timeout (#8777).
+    final room = buildRoom(directChatWith: friendId, joinedMembers: 1);
+    expect(
+      room.isDirectChat,
+      isTrue,
+      reason: 'the control must reach the gate',
+    );
+
+    await pumpButtons(tester, room);
+
+    // Rendered -- greyed, not hidden -- so the disabled state is the signal.
+    expect(callButton, findsOneWidget);
+    expect(videoButton, findsOneWidget);
+    expect(
+      tester.widget<IconButton>(voiceIconButton).onPressed,
+      isNull,
+      reason: 'no one else has joined, so the call button is inert',
+    );
+    expect(
+      tester.widget<IconButton>(videoIconButton).onPressed,
+      isNull,
+      reason: 'no one else has joined, so the video button is inert',
+    );
   });
 
   testWidgets('the bot DM named by m.direct is not', (tester) async {
