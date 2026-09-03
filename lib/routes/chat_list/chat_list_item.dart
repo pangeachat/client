@@ -11,7 +11,6 @@ import 'package:fluffychat/routes/chat_list/chat_list_item_subtitle.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/room_status_extension.dart';
-import 'package:fluffychat/widgets/hover_builder.dart';
 import '../../config/themes.dart';
 import '../../utils/date_time_extension.dart';
 import '../../widgets/avatar.dart';
@@ -120,348 +119,309 @@ class ChatListItem extends StatelessWidget {
         color: backgroundColor,
         child: FutureBuilder(
           future: room.name.isEmpty ? room.loadHeroUsers() : null,
-          builder: (context, _) => HoverBuilder(
-            builder: (context, listTileHovered) {
-              // The row is ONE button (#8767): nothing interactive nests
-              // inside its semantics node, because ARIA's
-              // presentational-children rule lets AT flatten or skip controls
-              // nested in a role=button. The avatar is decorative — clicking
-              // it opens the chat like the rest of the row — and the context
-              // menu is reached by long-pressing the row (with a mouse, the
-              // drop-down affordance that appears on hover, pointer-only and
-              // excluded from semantics). The one remaining live control, the
-              // archive page's delete button, renders in an overlay above the
-              // tile — a semantic sibling of the row button — while an
-              // invisible same-size copy holds its layout slot.
-              final leadingAvatar = ExcludeSemantics(
-                child: SizedBox(
-                  width: Avatar.defaultSize,
-                  height: Avatar.defaultSize,
-                  child: Stack(
-                    children: [
-                      if (space != null)
-                        Positioned(
-                          top: 0,
-                          left: 0,
-                          child: Avatar(
-                            border: BorderSide(
-                              width: 2,
-                              color:
-                                  backgroundColor ?? theme.colorScheme.surface,
-                            ),
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.borderRadius / 4,
-                            ),
-                            mxContent: space.avatar,
-                            size: Avatar.defaultSize * 0.75,
-                            name: space.getLocalizedDisplayname(),
-                            // #Pangea
-                            userId: space.directChatMatrixID,
-                            useRive: true,
-                            // Pangea#
-                          ),
-                        ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Avatar(
-                          border: space == null
-                              ? room.isSpace
-                                    ? BorderSide(
-                                        width: 1,
-                                        color: theme.dividerColor,
-                                      )
-                                    : null
-                              : BorderSide(
-                                  width: 2,
-                                  color:
-                                      backgroundColor ??
-                                      theme.colorScheme.surface,
-                                ),
-                          // #Pangea
-                          // borderRadius: room.isSpace
-                          //     ? BorderRadius.circular(
-                          //         AppConfig.borderRadius / 4,
-                          //       )
-                          //     : null,
-                          borderRadius:
-                              borderRadius ??
-                              (room.isSpace
-                                  ? BorderRadius.circular(
-                                      AppConfig.borderRadius / 4,
-                                    )
-                                  : null),
-                          // Pangea#
-                          mxContent: room.avatar,
-                          size: space != null
-                              ? Avatar.defaultSize * 0.75
-                              : Avatar.defaultSize,
-                          name: displayname,
-                          presenceUserId: directChatMatrixId,
-                          presenceBackgroundColor: backgroundColor,
-                        ),
-                      ),
+          builder: (context, _) {
+            // The row is ONE button (#8767): nothing interactive nests
+            // inside its semantics node, because ARIA's
+            // presentational-children rule lets AT flatten or skip controls
+            // nested in a role=button. The avatar is decorative — clicking
+            // it opens the chat like the rest of the row — and the context
+            // menu is reached by long-pressing the row (press-and-hold
+            // works with a mouse as well). The one remaining live control, the
+            // archive page's delete button, renders in an overlay above the
+            // tile — a semantic sibling of the row button — while an
+            // invisible same-size copy holds its layout slot.
+            final leadingAvatar = ExcludeSemantics(
+              child: SizedBox(
+                width: Avatar.defaultSize,
+                height: Avatar.defaultSize,
+                child: Stack(
+                  children: [
+                    if (space != null)
                       Positioned(
                         top: 0,
-                        right: 0,
-                        child: GestureDetector(
-                          onTap: () => onLongPress?.call(context),
-                          child: AnimatedScale(
-                            duration: FluffyThemes.animationDuration,
-                            curve: FluffyThemes.animationCurve,
-                            scale: listTileHovered ? 1.0 : 0.0,
-                            child: Material(
-                              color: backgroundColor,
-                              borderRadius: BorderRadius.circular(16),
-                              child: const Icon(
-                                Icons.arrow_drop_down_circle_outlined,
-                                size: 18,
+                        left: 0,
+                        child: Avatar(
+                          border: BorderSide(
+                            width: 2,
+                            color: backgroundColor ?? theme.colorScheme.surface,
+                          ),
+                          borderRadius: BorderRadius.circular(
+                            AppConfig.borderRadius / 4,
+                          ),
+                          mxContent: space.avatar,
+                          size: Avatar.defaultSize * 0.75,
+                          name: space.getLocalizedDisplayname(),
+                          // #Pangea
+                          userId: space.directChatMatrixID,
+                          useRive: true,
+                          // Pangea#
+                        ),
+                      ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Avatar(
+                        border: space == null
+                            ? room.isSpace
+                                  ? BorderSide(
+                                      width: 1,
+                                      color: theme.dividerColor,
+                                    )
+                                  : null
+                            : BorderSide(
+                                width: 2,
+                                color:
+                                    backgroundColor ??
+                                    theme.colorScheme.surface,
                               ),
+                        // #Pangea
+                        // borderRadius: room.isSpace
+                        //     ? BorderRadius.circular(
+                        //         AppConfig.borderRadius / 4,
+                        //       )
+                        //     : null,
+                        borderRadius:
+                            borderRadius ??
+                            (room.isSpace
+                                ? BorderRadius.circular(
+                                    AppConfig.borderRadius / 4,
+                                  )
+                                : null),
+                        // Pangea#
+                        mxContent: room.avatar,
+                        size: space != null
+                            ? Avatar.defaultSize * 0.75
+                            : Avatar.defaultSize,
+                        name: displayname,
+                        presenceUserId: directChatMatrixId,
+                        presenceBackgroundColor: backgroundColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+
+            // No decline button on invite rows: tapping the row opens the
+            // accept/decline dialog (onChatTap), so the trash icon was a
+            // second, nested path to the same choice (#8767).
+            final Widget? trailingButton = onForget == null
+                ? null
+                : IconButton(
+                    // #Pangea
+                    tooltip: L10n.of(context).delete,
+                    // Pangea#
+                    icon: const Icon(Icons.delete_outlined),
+                    onPressed: onForget,
+                  );
+
+            return Stack(
+              children: [
+                ListTile(
+                  visualDensity: const VisualDensity(vertical: -0.5),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+                  onLongPress: () => onLongPress?.call(context),
+                  leading: leadingAvatar,
+                  // An invisible copy of the overlay button reserves exactly
+                  // its size, so the title/subtitle wrap as before.
+                  trailing: trailingButton == null
+                      ? null
+                      : ExcludeFocus(
+                          child: ExcludeSemantics(
+                            child: IgnorePointer(
+                              child: Opacity(opacity: 0, child: trailingButton),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-
-              // No decline button on invite rows: tapping the row opens the
-              // accept/decline dialog (onChatTap), so the trash icon was a
-              // second, nested path to the same choice (#8767).
-              final Widget? trailingButton = onForget == null
-                  ? null
-                  : IconButton(
-                      // #Pangea
-                      tooltip: L10n.of(context).delete,
-                      // Pangea#
-                      icon: const Icon(Icons.delete_outlined),
-                      onPressed: onForget,
-                    );
-
-              return Stack(
-                children: [
-                  ListTile(
-                    visualDensity: const VisualDensity(vertical: -0.5),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-                    onLongPress: () => onLongPress?.call(context),
-                    leading: leadingAvatar,
-                    // An invisible copy of the overlay button reserves exactly
-                    // its size, so the title/subtitle wrap as before.
-                    trailing: trailingButton == null
-                        ? null
-                        : ExcludeFocus(
-                            child: ExcludeSemantics(
-                              child: IgnorePointer(
-                                child: Opacity(
-                                  opacity: 0,
-                                  child: trailingButton,
-                                ),
+                  title: Semantics(
+                    label: chatSemanticsLabel,
+                    child: ExcludeSemantics(
+                      child: Row(
+                        // Pangea#
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              displayname,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: false,
+                              style: TextStyle(
+                                fontSize: titleFontSize,
+                                fontWeight: unread || room.hasNewMessages
+                                    ? FontWeight.w500
+                                    : null,
                               ),
                             ),
                           ),
-                    title: Semantics(
-                      label: chatSemanticsLabel,
-                      child: ExcludeSemantics(
-                        child: Row(
-                          // Pangea#
-                          children: <Widget>[
-                            Expanded(
+                          if (isMuted)
+                            const Padding(
+                              padding: EdgeInsets.only(left: 4.0),
+                              child: Icon(
+                                Icons.notifications_off_outlined,
+                                size: 16,
+                              ),
+                            ),
+                          if (room.isFavourite)
+                            Padding(
+                              padding: EdgeInsets.only(
+                                right: hasNotifications ? 4.0 : 0.0,
+                              ),
+                              child: Icon(
+                                Icons.push_pin,
+                                size: 16,
+                                color: theme.colorScheme.primary,
+                              ),
+                            ),
+                          if (!room.isSpace &&
+                              room.membership != Membership.invite)
+                            Padding(
+                              padding: const EdgeInsets.only(left: 4.0),
                               child: Text(
-                                displayname,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                softWrap: false,
+                                room.latestEventReceivedTime.localizedTimeShort(
+                                  context,
+                                ),
                                 style: TextStyle(
-                                  fontSize: titleFontSize,
-                                  fontWeight: unread || room.hasNewMessages
-                                      ? FontWeight.w500
-                                      : null,
+                                  fontSize: 12,
+                                  color: theme.colorScheme.outline,
                                 ),
                               ),
                             ),
-                            if (isMuted)
-                              const Padding(
-                                padding: EdgeInsets.only(left: 4.0),
+                        ],
+                      ),
+                    ),
+                  ),
+                  // #Pangea
+                  subtitle: Row(
+                    // Pangea#
+                    crossAxisAlignment: .start,
+                    mainAxisAlignment: .center,
+                    children: <Widget>[
+                      if (typingText.isEmpty &&
+                          ownMessage &&
+                          room.lastEvent?.status.isSending == true) ...[
+                        const SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator.adaptive(
+                            strokeWidth: 2,
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                      ],
+                      AnimatedSize(
+                        clipBehavior: Clip.hardEdge,
+                        duration: FluffyThemes.animationDuration,
+                        curve: FluffyThemes.animationCurve,
+                        child: typingText.isNotEmpty
+                            ? Padding(
+                                padding: const EdgeInsets.only(right: 4.0),
                                 child: Icon(
-                                  Icons.notifications_off_outlined,
+                                  Icons.edit_outlined,
+                                  color: theme.colorScheme.secondary,
                                   size: 16,
                                 ),
-                              ),
-                            if (room.isFavourite)
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  right: hasNotifications ? 4.0 : 0.0,
+                              )
+                            : room.lastEvent?.relationshipType ==
+                                  RelationshipTypes.thread
+                            ? ExcludeSemantics(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: theme.colorScheme.outline,
+                                    ),
+                                    borderRadius: BorderRadius.circular(
+                                      AppConfig.borderRadius,
+                                    ),
+                                  ),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8.0,
+                                  ),
+                                  margin: const EdgeInsets.only(right: 4.0),
+                                  child: Row(
+                                    mainAxisSize: .min,
+                                    children: [
+                                      Icon(
+                                        Icons.message_outlined,
+                                        size: 12,
+                                        color: theme.colorScheme.outline,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        L10n.of(context).thread,
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: theme.colorScheme.outline,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                child: Icon(
-                                  Icons.push_pin,
-                                  size: 16,
-                                  color: theme.colorScheme.primary,
-                                ),
-                              ),
-                            if (!room.isSpace &&
-                                room.membership != Membership.invite)
-                              Padding(
-                                padding: const EdgeInsets.only(left: 4.0),
+                              )
+                            : const SizedBox.shrink(),
+                      ),
+                      Expanded(
+                        // #Pangea: a pending invite wears the same gold "Invited"
+                        // pill an invited course tile wears, so an activity invite
+                        // is as hard to walk past here as it is in the Courses hub
+                        // (#8191) — it replaces the grey "Invite chat" line, which
+                        // said the same thing in the colour of everything else.
+                        // `isPendingInvite`, not the raw membership: an approved
+                        // knock arrives as an invite too, and keeps the plain
+                        // subtitle rather than claiming someone invited them.
+                        child: isPendingInvite
+                            ? const Align(
+                                alignment: Alignment.centerLeft,
+                                child: ExcludeSemantics(child: InvitedChip()),
+                              )
+                            // Pangea#
+                            : room.isSpace && room.membership == Membership.join
+                            ? ExcludeSemantics(
                                 child: Text(
-                                  room.latestEventReceivedTime
-                                      .localizedTimeShort(context),
+                                  // #Pangea
+                                  // L10n.of(
+                                  //   context,
+                                  // ).countChats(room.spaceChildren.length),
+                                  L10n.of(
+                                    context,
+                                  ).countChats(room.spaceChildCount),
+                                  // Pangea#
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: subtitleFontSize,
                                     color: theme.colorScheme.outline,
                                   ),
                                 ),
-                              ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    // #Pangea
-                    subtitle: Row(
-                      // Pangea#
-                      crossAxisAlignment: .start,
-                      mainAxisAlignment: .center,
-                      children: <Widget>[
-                        if (typingText.isEmpty &&
-                            ownMessage &&
-                            room.lastEvent?.status.isSending == true) ...[
-                          const SizedBox(
-                            width: 16,
-                            height: 16,
-                            child: CircularProgressIndicator.adaptive(
-                              strokeWidth: 2,
-                            ),
-                          ),
-                          const SizedBox(width: 4),
-                        ],
-                        AnimatedSize(
-                          clipBehavior: Clip.hardEdge,
-                          duration: FluffyThemes.animationDuration,
-                          curve: FluffyThemes.animationCurve,
-                          child: typingText.isNotEmpty
-                              ? Padding(
-                                  padding: const EdgeInsets.only(right: 4.0),
-                                  child: Icon(
-                                    Icons.edit_outlined,
-                                    color: theme.colorScheme.secondary,
-                                    size: 16,
-                                  ),
-                                )
-                              : room.lastEvent?.relationshipType ==
-                                    RelationshipTypes.thread
-                              ? ExcludeSemantics(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: theme.colorScheme.outline,
-                                      ),
-                                      borderRadius: BorderRadius.circular(
-                                        AppConfig.borderRadius,
-                                      ),
-                                    ),
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8.0,
-                                    ),
-                                    margin: const EdgeInsets.only(right: 4.0),
-                                    child: Row(
-                                      mainAxisSize: .min,
-                                      children: [
-                                        Icon(
-                                          Icons.message_outlined,
-                                          size: 12,
-                                          color: theme.colorScheme.outline,
-                                        ),
-                                        const SizedBox(width: 4),
-                                        Text(
-                                          L10n.of(context).thread,
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: theme.colorScheme.outline,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              : const SizedBox.shrink(),
-                        ),
-                        Expanded(
-                          // #Pangea: a pending invite wears the same gold "Invited"
-                          // pill an invited course tile wears, so an activity invite
-                          // is as hard to walk past here as it is in the Courses hub
-                          // (#8191) — it replaces the grey "Invite chat" line, which
-                          // said the same thing in the colour of everything else.
-                          // `isPendingInvite`, not the raw membership: an approved
-                          // knock arrives as an invite too, and keeps the plain
-                          // subtitle rather than claiming someone invited them.
-                          child: isPendingInvite
-                              ? const Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: ExcludeSemantics(child: InvitedChip()),
-                                )
-                              // Pangea#
-                              : room.isSpace &&
-                                    room.membership == Membership.join
-                              ? ExcludeSemantics(
-                                  child: Text(
-                                    // #Pangea
-                                    // L10n.of(
-                                    //   context,
-                                    // ).countChats(room.spaceChildren.length),
-                                    L10n.of(
-                                      context,
-                                    ).countChats(room.spaceChildCount),
-                                    // Pangea#
-                                    style: TextStyle(
-                                      fontSize: subtitleFontSize,
-                                      color: theme.colorScheme.outline,
-                                    ),
-                                  ),
-                                )
-                              : typingText.isNotEmpty
-                              ? ExcludeSemantics(
-                                  child: Text(
-                                    typingText,
-                                    style: TextStyle(
-                                      fontSize: subtitleFontSize,
-                                      color: theme.colorScheme.primary,
-                                    ),
-                                    maxLines: 1,
-                                    softWrap: false,
-                                  ),
-                                )
-                              // #Pangea
-                              : room.lastEvent != null
-                              ? ChatListItemSubtitle(
-                                  room: room,
+                              )
+                            : typingText.isNotEmpty
+                            ? ExcludeSemantics(
+                                child: Text(
+                                  typingText,
                                   style: TextStyle(
                                     fontSize: subtitleFontSize,
-                                    fontWeight: unread || room.hasNewMessages
-                                        ? FontWeight.bold
-                                        : null,
-                                    color: theme.colorScheme.onSurfaceVariant,
+                                    color: theme.colorScheme.primary,
                                   ),
-                                )
-                              // Pangea#
-                              : FutureBuilder(
-                                  key: ValueKey(
-                                    '${lastEvent?.eventId}_${lastEvent?.type}_${lastEvent?.redacted}',
-                                  ),
-                                  future: needLastEventSender
-                                      ? lastEvent.calcLocalizedBody(
-                                          MatrixLocals(L10n.of(context)),
-                                          hideReply: true,
-                                          hideEdit: true,
-                                          plaintextBody: true,
-                                          removeMarkdown: true,
-                                          withSenderNamePrefix:
-                                              (!isDirectChat ||
-                                              directChatMatrixId !=
-                                                  room.lastEvent?.senderId),
-                                        )
+                                  maxLines: 1,
+                                  softWrap: false,
+                                ),
+                              )
+                            // #Pangea
+                            : room.lastEvent != null
+                            ? ChatListItemSubtitle(
+                                room: room,
+                                style: TextStyle(
+                                  fontSize: subtitleFontSize,
+                                  fontWeight: unread || room.hasNewMessages
+                                      ? FontWeight.bold
                                       : null,
-                                  initialData: lastEvent
-                                      ?.calcLocalizedBodyFallback(
+                                  color: theme.colorScheme.onSurfaceVariant,
+                                ),
+                              )
+                            // Pangea#
+                            : FutureBuilder(
+                                key: ValueKey(
+                                  '${lastEvent?.eventId}_${lastEvent?.type}_${lastEvent?.redacted}',
+                                ),
+                                future: needLastEventSender
+                                    ? lastEvent.calcLocalizedBody(
                                         MatrixLocals(L10n.of(context)),
                                         hideReply: true,
                                         hideEdit: true,
@@ -471,66 +431,76 @@ class ChatListItem extends StatelessWidget {
                                             (!isDirectChat ||
                                             directChatMatrixId !=
                                                 room.lastEvent?.senderId),
-                                      ),
-                                  builder: (context, snapshot) => ExcludeSemantics(
-                                    child: Text(
-                                      room.membership == Membership.invite
-                                          ? room
-                                                    .getState(
-                                                      EventTypes.RoomMember,
-                                                      room.client.userID!,
-                                                    )
-                                                    ?.content
-                                                    .tryGet<String>('reason') ??
-                                                (isDirectChat
-                                                    ? L10n.of(
-                                                        context,
-                                                      ).newChatRequest
-                                                    // #Pangea
-                                                    // : L10n.of(context).inviteGroupChat)
-                                                    : L10n.of(
-                                                        context,
-                                                      ).inviteChat)
-                                          // Pangea#
-                                          : snapshot.data ??
-                                                L10n.of(context).noMessagesYet,
-                                      softWrap: false,
-                                      maxLines: room.notificationCount >= 1
-                                          ? 2
-                                          : 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        fontSize: subtitleFontSize,
-                                        color: unread || room.hasNewMessages
-                                            ? theme.colorScheme.onSurface
-                                            : theme.colorScheme.outline,
-                                        decoration:
-                                            room.lastEvent?.redacted == true
-                                            ? TextDecoration.lineThrough
-                                            : null,
-                                      ),
+                                      )
+                                    : null,
+                                initialData: lastEvent
+                                    ?.calcLocalizedBodyFallback(
+                                      MatrixLocals(L10n.of(context)),
+                                      hideReply: true,
+                                      hideEdit: true,
+                                      plaintextBody: true,
+                                      removeMarkdown: true,
+                                      withSenderNamePrefix:
+                                          (!isDirectChat ||
+                                          directChatMatrixId !=
+                                              room.lastEvent?.senderId),
+                                    ),
+                                builder: (context, snapshot) => ExcludeSemantics(
+                                  child: Text(
+                                    room.membership == Membership.invite
+                                        ? room
+                                                  .getState(
+                                                    EventTypes.RoomMember,
+                                                    room.client.userID!,
+                                                  )
+                                                  ?.content
+                                                  .tryGet<String>('reason') ??
+                                              (isDirectChat
+                                                  ? L10n.of(
+                                                      context,
+                                                    ).newChatRequest
+                                                  // #Pangea
+                                                  // : L10n.of(context).inviteGroupChat)
+                                                  : L10n.of(context).inviteChat)
+                                        // Pangea#
+                                        : snapshot.data ??
+                                              L10n.of(context).noMessagesYet,
+                                    softWrap: false,
+                                    maxLines: room.notificationCount >= 1
+                                        ? 2
+                                        : 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: subtitleFontSize,
+                                      color: unread || room.hasNewMessages
+                                          ? theme.colorScheme.onSurface
+                                          : theme.colorScheme.outline,
+                                      decoration:
+                                          room.lastEvent?.redacted == true
+                                          ? TextDecoration.lineThrough
+                                          : null,
                                     ),
                                   ),
                                 ),
-                        ),
-                        const SizedBox(width: 8),
-                        UnreadBubble(room: room),
-                      ],
-                    ),
-
-                    onTap: onTap,
+                              ),
+                      ),
+                      const SizedBox(width: 8),
+                      UnreadBubble(room: room),
+                    ],
                   ),
-                  if (trailingButton != null)
-                    PositionedDirectional(
-                      end: 8,
-                      top: 0,
-                      bottom: 0,
-                      child: Center(child: trailingButton),
-                    ),
-                ],
-              );
-            },
-          ),
+
+                  onTap: onTap,
+                ),
+                if (trailingButton != null)
+                  PositionedDirectional(
+                    end: 8,
+                    top: 0,
+                    bottom: 0,
+                    child: Center(child: trailingButton),
+                  ),
+              ],
+            );
+          },
         ),
       ),
     );
