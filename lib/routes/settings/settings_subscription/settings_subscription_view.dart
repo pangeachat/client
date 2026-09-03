@@ -12,6 +12,7 @@ import 'package:fluffychat/features/subscription/repo_v2/products_response.dart'
 import 'package:fluffychat/features/subscription/subscription_constants.dart';
 import 'package:fluffychat/features/subscription/utils/storefront_gate.dart';
 import 'package:fluffychat/features/subscription/widgets/pro_features_card.dart';
+import 'package:fluffychat/features/subscription/widgets/subscription_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -45,7 +46,6 @@ class SettingsSubscriptionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
-    final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return Scaffold(
       appBar: AppBar(
@@ -80,29 +80,27 @@ class SettingsSubscriptionView extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: Container(
                 padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surface,
-                  borderRadius: BorderRadius.circular(24.0),
-                ),
                 constraints: BoxConstraints(maxWidth: 400),
                 child: switch (subscriptionState) {
                   SubscriptionLoading() => Center(
                     child: CircularProgressIndicator.adaptive(),
                   ),
                   SubscriptionError(error: final error) => Center(
-                    child: Row(
-                      spacing: 8.0,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        ErrorIndicator(
-                          message: error.toLocalizedString(context),
-                        ),
-                        IconButton(
-                          tooltip: L10n.of(context).refresh,
-                          icon: Icon(Icons.refresh),
-                          onPressed: reloadStatus,
-                        ),
-                      ],
+                    child: SubscriptionCard(
+                      child: Row(
+                        spacing: 8.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ErrorIndicator(
+                            message: error.toLocalizedString(context),
+                          ),
+                          IconButton(
+                            tooltip: L10n.of(context).refresh,
+                            icon: Icon(Icons.refresh),
+                            onPressed: reloadStatus,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SubscriptionActive(response: final subscriptionStatus) ||
@@ -235,11 +233,13 @@ class FullAccessContent extends StatelessWidget {
       spacing: 20.0,
       children: [
         if (showTrialInfo && trialDescription != null)
-          Text(
-            trialDescription,
-            style: isColumnMode
-                ? theme.textTheme.titleMedium
-                : theme.textTheme.titleSmall,
+          SubscriptionCard(
+            child: Text(
+              trialDescription,
+              style: isColumnMode
+                  ? theme.textTheme.titleMedium
+                  : theme.textTheme.titleSmall,
+            ),
           ),
         if (showSubscriptionCard && subscriptionTitle != null)
           UserSubscriptionPlanCard(
@@ -259,6 +259,7 @@ class FullAccessContent extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
+                color: theme.colorScheme.surface,
                 border: Border.all(
                   color: theme.colorScheme.primaryContainer,
                   width: 3.0,
@@ -300,10 +301,12 @@ class _WebPurchaseNotice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      L10n.of(context).subscribeOnTheWeb,
-      textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.bodyLarge,
+    return SubscriptionCard(
+      child: Text(
+        L10n.of(context).subscribeOnTheWeb,
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.bodyLarge,
+      ),
     );
   }
 }
@@ -314,10 +317,12 @@ class _PurchaseUnavailableNotice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      L10n.of(context).subscriptionsNotAvailableInApp,
-      textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.bodyLarge,
+    return SubscriptionCard(
+      child: Text(
+        L10n.of(context).subscriptionsNotAvailableInApp,
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.bodyLarge,
+      ),
     );
   }
 }
