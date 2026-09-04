@@ -1,8 +1,11 @@
+// Dart imports:
 import 'dart:async';
 
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+// Project imports:
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
@@ -71,12 +74,19 @@ void main() {
   /// which records only the ones that landed.
   late List<List<String>> publishAttempts;
 
+  /// Every call [publishCallAudio] received, by the call key it was handed.
+  /// [CallRecord] calls this UNCONDITIONALLY -- see `_publishCallAudio` -- so
+  /// this is what proves that, unlike [published], which only ever records a
+  /// half that actually landed.
+  late List<String?> audioPublishCalls;
+
   setUp(() {
     written = [];
     txids = [];
     recorded = [];
     published = [];
     publishAttempts = [];
+    audioPublishCalls = [];
   });
 
   Future<CallTranscriptSink> sinkWith(
@@ -102,6 +112,8 @@ void main() {
     bool withPublisher = false,
     Object? publishError,
     int publishFailures = 0,
+    bool withAudioPublisher = false,
+    Object? audioPublishError,
   }) => CallRecord(
     roomId: '!r:server',
     transcripts: transcripts,
@@ -141,6 +153,12 @@ void main() {
               lost: chunksLost,
               drained: drainComplete,
             ));
+          },
+    publishCallAudio: !withAudioPublisher
+        ? null
+        : ({required String? callKey}) async {
+            audioPublishCalls.add(callKey);
+            if (audioPublishError != null) throw audioPublishError;
           },
   );
 
@@ -584,6 +602,91 @@ void main() {
 
     expect(recorded.single.uses, single * 3);
   });
+
+  group('publishing the call-audio half', () {
+    test(
+      'is called with the call key, beside the transcript publish',
+      () async {
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withAudioPublisher: true,
+        );
+        await r.finish(
+          duration: const Duration(seconds: 30),
+          video: false,
+          callKey: '\$anchor',
+        );
+        expect(audioPublishCalls, ['\$anchor']);
+      },
+    );
+
+    test(
+      'is called UNCONDITIONALLY, even on a device that never recorded',
+      () async {
+        // `CallRecord.finish` is reached from `CallSession`'s teardown on
+        // EVERY device, whether or not it ever carried the recording -- the
+        // gate on that has to live inside the wired publisher, which is
+        // exactly what `CallAudioRecorder.finish`'s own `carriedOn` check is
+        // for. This only proves the OUTER call happens; the ownership gate
+        // itself is pinned in call_audio_recorder_test.dart.
+        final r = record(
+          await sinkWith(() => spokenWord('hola')),
+          withAudioPublisher: true,
+        );
+        await r.finish(
+          duration: const Duration(seconds: 30),
+          video: false,
+          callKey: '\$anchor',
+          answered: false,
+        );
+        expect(audioPublishCalls, ['\$anchor']);
+      },
+    );
+
+    test('is not called when the call never mattered', () async {
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withAudioPublisher: true,
+      );
+      await r.finish(
+        duration: const Duration(seconds: 30),
+        video: false,
+        callKey: '\$anchor',
+        mattered: false,
+      );
+      expect(audioPublishCalls, isEmpty);
+    });
+
+    test('a failure does not disturb the analytics credit', () async {
+      final r = record(
+        await sinkWith(() => spokenWord('hola')),
+        withAudioPublisher: true,
+        audioPublishError: StateError('upload refused'),
+      );
+      await expectLater(
+        r.finish(
+          duration: const Duration(seconds: 30),
+          video: false,
+          callKey: '\$anchor',
+        ),
+        completes,
+      );
+      expect(recorded, hasLength(1), reason: 'the credit still lands');
+    });
+
+    test('is a no-op when nothing is wired up', () async {
+      final r = record(await sinkWith(() => spokenWord('hola')));
+      await expectLater(
+        r.finish(
+          duration: const Duration(seconds: 30),
+          video: false,
+          callKey: '\$anchor',
+        ),
+        completes,
+      );
+    });
+  });
+
   group('which side writes the call', () {
     test(
       'the answering side credits its speech without posting a call',
