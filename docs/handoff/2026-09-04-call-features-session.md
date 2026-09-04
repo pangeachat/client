@@ -110,3 +110,42 @@ confirmed root cause + the cross-platform fix + the REAL gate.
 HOLD: do NOT open the recording PR until web/iOS recording works and the real
 gate is in. Card fix `c6460b66d9`, 3-cue `1925844ca5`, player `24203fd711` all
 still local; the #8797/#8807 PRs can proceed independently once cold-gated.
+
+## 2026-09-04 (III) — ROOT CAUSE FOUND + FIXED (web recording) + real gate
+
+Diagnosis workflow `wf_1543f2e3-a0e` (SURVIVED 3/3 adversarial lenses, 0 refuted)
+found it, CONSOLE-PROVEN:
+
+ROOT CAUSE: `CallAudioRecorder._newGenerationId()` minted its id with
+`_idRandom.nextInt(1 << 32)`. On web (dart2js) `1 << 32` overflows to 0, so
+`Random.nextInt(0)` throws a RangeError synchronously inside `onRunStarted` -- on
+the first audio frame, before any generation is created -- killing the recorder.
+The transcript mints no id and was undisturbed, which hid it. Verbatim in the
+captured browser console. Android/iOS run native 64-bit ints (`1<<32 == 2^32`, a
+valid bound) so they are unaffected; iOS unverified on-device (safe from THIS
+bug, but confirm separately).
+
+WHY GREEN MISSED IT (owner's question): unit tests run on the Dart VM (64-bit
+ints, no overflow) and inject frames/generations directly; the player tests feed
+synthetic `call_audio` events; the transcript E2E asserts only the transcript
+half and the recorder's throw is deliberately swallowed. Nothing ran the
+COMPILED dart2js client through a real call asserting a `call_audio` event lands.
+
+FIX (call_audio_recorder.dart + call_capture.dart):
+1. `nextInt(1 << 32)` -> `nextInt(0x40000000)` (2^30, dart2js-safe, ample beside
+   the microsecond timestamp).
+2. Defense-in-depth: latch `_audioRunFormat` only AFTER onRunStarted succeeds, so
+   a run-open throw retries on the next frame instead of permanently killing the
+   recorder after one swallowed warning (`_runStartFailed` logs once per streak).
+
+REAL GATE (test/e2e/transcript.js + harness.js): a `[4b]` assertion that a
+`pangea.call_audio` event with an mxc blob lands after a real web call (runs the
+COMPILED build, so it exercises dart2js semantics a VM test cannot), plus a
+recorder-failure console gate that turns the swallowed 'failed to start a run'
+warning RED.
+
+VERIFIED: fixed web build, 2-Chrome harness call -> 17/17, `call_audio` written +
+uploaded, no recorder failures. Mutation proof (revert id -> rebuild -> watch
+`[4b]` FAIL) IN PROGRESS to confirm the gate catches the exact bug. Then:
+cold-gate the code change, restore + rebuild the fixed build on :8091, and the
+recording work is ready for its PR (pending the iOS on-device confirmation).
