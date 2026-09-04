@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_tokens.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
 /// How well a turn's moment is known, and therefore what may be printed above
@@ -93,6 +94,11 @@ class CallTurn {
 
   final String text;
 
+  /// The language this turn was transcribed in, from the half's `lang_code`, or
+  /// null when the writer recorded none. Passed to [TranscriptTokens] so the
+  /// words can be tokenized for their word cards (#8797).
+  final String? langCode;
+
   const CallTurn({
     required this.senderId,
     required this.name,
@@ -101,6 +107,7 @@ class CallTurn {
     required this.at,
     this.time = TurnTime.exact,
     required this.text,
+    this.langCode,
   });
 }
 
@@ -320,8 +327,9 @@ class _Turn extends StatelessWidget {
             ),
             const SizedBox(height: 4),
           ],
-          SelectableText(
-            turn.text,
+          TranscriptTokens(
+            text: turn.text,
+            langCode: turn.langCode,
             style: theme.textTheme.bodyMedium?.copyWith(color: textColor),
           ),
         ],

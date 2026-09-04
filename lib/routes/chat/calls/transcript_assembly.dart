@@ -1138,6 +1138,13 @@ class TranscriptHalf {
   /// keep parsing -- an absent anchor costs the CORRECTION and never a word.
   final ClockAnchor? clockAnchor;
 
+  /// The language this half was transcribed in, or null when the writer
+  /// recorded none. Carried from the candidate beside [clockAnchor] because,
+  /// like it, the reader that needs it -- the view, to tokenize the words for
+  /// their word cards -- only exists after selection. An absent code costs the
+  /// tokenizer its language hint (it detects instead) and never a word.
+  final String? langCode;
+
   /// Whether this half's writer marks the positions it could not pin down.
   ///
   /// It asserts exactly one thing: on a marked half, a segment carrying no
@@ -1207,6 +1214,7 @@ class TranscriptHalf {
     required this.readWasCutShort,
     required this.participantsWereAGuess,
     this.clockAnchor,
+    this.langCode,
     this.positionsMarked = false,
     this.deviceCount = 1,
     this.discardWasCovered = false,
@@ -1425,6 +1433,11 @@ class TranscriptCandidate {
   /// [ClockAnchor]; absent on an event written before the field existed.
   final ClockAnchor? clockAnchor;
 
+  /// The language this half was transcribed in, from the event's `lang_code`.
+  /// Carried through to [TranscriptHalf.langCode] beside [clockAnchor], for the
+  /// view to tokenize the words in; null when the writer recorded none.
+  final String? langCode;
+
   /// Whether this event marks the positions it could not pin down. See
   /// [TranscriptHalf.positionsMarked]; false on an event written before the
   /// field existed, and on one that declared a span this reader could not use.
@@ -1470,6 +1483,7 @@ class TranscriptCandidate {
     required this.accounting,
     this.deviceId,
     this.clockAnchor,
+    this.langCode,
     this.positionsMarked = false,
     this.keptSpans = const [],
     this.discardedSpans = const [],
@@ -1640,6 +1654,12 @@ class _AssembledHalf {
   final List<TranscriptSegment> segments;
   final HalfAccounting accounting;
   final ClockAnchor? clockAnchor;
+
+  /// The language these devices transcribed in, carried to [TranscriptHalf].
+  /// Optional and defaulting to null: a site that cannot name one leaves the
+  /// view to detect it, exactly as an absent [clockAnchor] leaves the clock.
+  final String? langCode;
+
   final bool positionsMarked;
 
   /// How many devices WROTE, including any the ceiling above turned away.
@@ -1656,6 +1676,7 @@ class _AssembledHalf {
     required this.positionsMarked,
     required this.deviceCount,
     required this.discardWasCovered,
+    this.langCode,
   });
 }
 
@@ -2016,6 +2037,11 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
           // it is carried rather than dropped so a half that said what its
           // clock read is not made to look like one that never said.
           : kept.map((candidate) => candidate.clockAnchor).nonNulls.firstOrNull,
+      // The speaking device's own language, else the first any kept half named.
+      // A speaker's devices share a target language, so which one is immaterial.
+      langCode: only != null
+          ? only.langCode
+          : kept.map((candidate) => candidate.langCode).nonNulls.firstOrNull,
       positionsMarked: only?.positionsMarked ?? false,
       deviceCount: found,
       discardWasCovered: discardWasCovered,
@@ -2067,6 +2093,12 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
       // which [CallTranscript.turnsShareOneClock] would otherwise call one
       // clock on the strength of there being no second speaker.
       clockAnchor: null,
+      // The words are still these speakers'; only their ORDER is unestablished,
+      // so the language they were transcribed in is carried through unchanged.
+      langCode: kept
+          .map((candidate) => candidate.langCode)
+          .nonNulls
+          .firstOrNull,
       positionsMarked: false,
       deviceCount: found,
       discardWasCovered: discardWasCovered,
@@ -2089,6 +2121,10 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
     segments: [for (final entry in ordered) entry.segment],
     accounting: accounting,
     clockAnchor: reference,
+    langCode: speaking
+        .map((candidate) => candidate.langCode)
+        .nonNulls
+        .firstOrNull,
     // Every speaking contributor, on the same terms as [HalfAccounting.declared]
     // and for the same reason: the claim is about the segments being shown, and
     // one writer that never made it leaves segments here nobody vouched for.
@@ -2371,6 +2407,9 @@ CallTranscript assembleTranscript({
         // it is the anchor every position in this half has been moved onto, or
         // null when they could not be -- see [_assembleDevices].
         clockAnchor: candidate.clockAnchor,
+        // Carried from the assembled half beside the anchor, so the view can
+        // tokenize the words in the language they were transcribed in.
+        langCode: candidate.langCode,
         // Same rule, same reason: the claim has to describe the segments being
         // shown, and only the copies that supplied them may make it.
         positionsMarked: candidate.positionsMarked,

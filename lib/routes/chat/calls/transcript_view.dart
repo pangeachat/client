@@ -8,6 +8,7 @@ import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_tokens.dart';
 import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
 
 /// Opens the transcript of one finished call.
@@ -401,6 +402,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
             ),
             time: _timeKindOf(segment, entry.half, onOneClock),
             text: segment.text,
+            langCode: entry.half.langCode,
           ),
     ];
   }
@@ -643,8 +645,9 @@ class _HalfSection extends StatelessWidget {
       for (final segment in half.segments)
         Padding(
           padding: const EdgeInsets.only(bottom: 6),
-          child: SelectableText(
-            segment.text,
+          child: TranscriptTokens(
+            text: segment.text,
+            langCode: half.langCode,
             style: theme.textTheme.bodyMedium,
           ),
         ),
