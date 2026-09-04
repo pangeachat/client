@@ -5,6 +5,7 @@ import 'dart:typed_data';
 // Package imports:
 import 'package:flutter/foundation.dart' show SynchronousFuture;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:matrix/matrix.dart' show Logs;
 
 // Project imports:
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
@@ -39,6 +40,23 @@ class _SameTurnStore implements CallAudioUploadStateStore {
       SynchronousFuture(null);
 }
 
+/// A store whose `write` blocks on [gate], so a test can land an action
+/// (like cancelling ownership) precisely inside the window between the
+/// upload succeeding (`gen.uploadedUrl` already set) and the persisted
+/// 'uploaded' record actually landing -- which is otherwise too narrow a
+/// window to reach with `pumpEventQueue()` alone, since nothing else
+/// suspends there.
+class _GatedWriteStore implements CallAudioUploadStateStore {
+  _GatedWriteStore(this.gate);
+  final Future<void> gate;
+
+  @override
+  Future<Map<String, dynamic>?> read(String txnId) async => null;
+
+  @override
+  Future<void> write(String txnId, Map<String, dynamic> state) => gate;
+}
+
 /// [n] frames of [samplesPerFrame] mono 16-bit samples, all equal to [value]
 /// -- a fixed tone (or, at value 0, digital silence) cheap to assert on.
 Int16List _tone(int samplesPerFrame, {int value = 1000}) =>
@@ -53,6 +71,7 @@ void main() {
   late int sendFailuresLeft;
   late Object? sendError;
   late int uploadFailuresLeft;
+  late Completer<String?>? sendGate;
 
   CallAudioRecorder recorder({
     ClockAnchor? Function()? clockAnchor,
@@ -86,7 +105,14 @@ void main() {
         sendFailuresLeft--;
         throw sendError ?? StateError('transient send failure');
       }
+      // Recorded HERE, before any gate: this fake stands in for the actual
+      // network call, which -- exactly like the upload -- has no
+      // cancellation contract, so the bytes can be considered "sent" the
+      // moment this is reached, whether or not the recorder's own code
+      // ever learns the outcome.
       sent.add(content);
+      final gate = sendGate;
+      if (gate != null) return gate.future;
       return '\$event${sent.length}:example.com';
     },
   );
@@ -100,6 +126,7 @@ void main() {
     sendFailuresLeft = 0;
     sendError = null;
     uploadFailuresLeft = 0;
+    sendGate = null;
   });
 
   group('ownership gates the send', () {
@@ -394,6 +421,150 @@ void main() {
     );
   });
 
+  group('the orphan blob is traced, not silently dropped', () {
+    test('a blob that lands AFTER cancellation is logged with its url (the '
+        'upload-future observer)', () async {
+      final logsBefore = Logs().outputEvents.length;
+      final r = recorder();
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(160));
+      r.onRunEnded();
+
+      uploadGate = Completer<Uri>();
+      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      await pumpEventQueue();
+      expect(uploads, hasLength(1));
+
+      r.cancelOwnership();
+      uploadGate!.complete(Uri.parse('mxc://example.com/orphan-a'));
+      await finishing;
+      // The observer is deliberately `unawaited` in production -- `finish()`
+      // must not block on the very future it just gave up waiting for --
+      // so it can settle on its own microtask turn AFTER `finishing`
+      // already resolved. Pumped once more here so the test observes it.
+      await pumpEventQueue();
+
+      expect(sent, isEmpty);
+      final newLogs = Logs().outputEvents.skip(logsBefore);
+      expect(
+        newLogs.any((e) => e.title.contains('mxc://example.com/orphan-a')),
+        isTrue,
+        reason:
+            'the orphan\'s actual url must be traceable in the logs, not '
+            'folded into a generic "abandoned" message',
+      );
+    });
+
+    test('a blob that landed BEFORE cancellation is ALSO logged with its url '
+        '(the pre-send check)', () async {
+      // The gap the first test above does not cover: here the upload has
+      // already fully succeeded -- `gen.uploadedUrl` is set, nothing is
+      // racing anything -- and cancellation is only noticed at the
+      // separate "checked again immediately before send" guard. That
+      // guard used to log a generic "abandoned" message with no url.
+      final logsBefore = Logs().outputEvents.length;
+      final writeGate = Completer<void>();
+      final store = _GatedWriteStore(writeGate.future);
+      uploadResult = (_) => Uri.parse('mxc://example.com/orphan-b');
+
+      final r = recorder(uploadStateStore: store);
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(160));
+      r.onRunEnded();
+
+      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      // The upload itself resolves immediately (no gate); what blocks is
+      // persisting it, which lands `finish()` exactly between "uploaded"
+      // and the pre-send check.
+      await pumpEventQueue();
+      expect(uploads, hasLength(1), reason: 'the upload already landed');
+
+      r.cancelOwnership();
+      writeGate.complete();
+      await finishing;
+
+      expect(sent, isEmpty);
+      final newLogs = Logs().outputEvents.skip(logsBefore);
+      expect(
+        newLogs.any((e) => e.title.contains('mxc://example.com/orphan-b')),
+        isTrue,
+        reason:
+            'the orphan\'s actual url must be traceable here too, not '
+            'just in the mid-upload case above',
+      );
+    });
+  });
+
+  group('cancel during the send itself', () {
+    test('finish() does not hang on a send that will never resolve, once '
+        'ownership is lost', () async {
+      final r = recorder();
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(160));
+      r.onRunEnded();
+
+      sendGate = Completer<String?>(); // never completed
+      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      await pumpEventQueue();
+      expect(
+        uploads,
+        hasLength(1),
+        reason: 'the upload already landed by the time the send starts',
+      );
+
+      r.cancelOwnership();
+
+      // If the send were merely awaited (not raced), this would hang --
+      // the gate is never completed.
+      await expectLater(
+        finishing.timeout(const Duration(seconds: 2)),
+        completes,
+      );
+
+      // The underlying network call is recorded by the fake the instant
+      // it is reached (see the `send:` closure above) -- exactly the
+      // "no cancellation contract" reality this test pins: the bytes may
+      // well have reached the homeserver, even though this device gave up
+      // waiting for confirmation.
+      expect(txnIds, hasLength(1), reason: 'the send was genuinely attempted');
+    });
+
+    test('a cancellation that wins the send race leaves no persisted "sent" '
+        'record, using the store the recorder actually writes to', () async {
+      final store = InMemoryCallAudioUploadStateStore();
+      final r = recorder(uploadStateStore: store);
+      r.onRunStarted(1000, 16000, 1);
+      r.onFrame(_tone(160));
+      r.onRunEnded();
+
+      sendGate = Completer<String?>(); // never completed
+      final finishing = r.finish(carriedOn: true, callKey: _callKey);
+      await pumpEventQueue();
+
+      r.cancelOwnership();
+      // Bounded, not a bare await: if the send were merely awaited rather
+      // than raced, this would hang for the gate that never completes --
+      // a slow, unclear timeout failure rather than a fast, clear one.
+      await finishing.timeout(const Duration(seconds: 2));
+
+      expect(
+        txnIds,
+        hasLength(1),
+        reason: 'the send was raced, not skipped outright',
+      );
+
+      final txnId = CallAudioContent.txnId(_callKey, _sender, _device);
+      final persisted = await store.read(txnId);
+      expect(
+        persisted?['status'],
+        isNot('sent'),
+        reason:
+            'a cancellation that wins the send race must never be '
+            'persisted as a confirmed send',
+      );
+    });
+  });
+
   group('the frame fan-out is bounded and non-blocking', () {
     test(
       'drops frames rather than growing without bound when it falls behind',
@@ -544,20 +715,21 @@ void main() {
       () async {
         final store = InMemoryCallAudioUploadStateStore();
         final txnId = CallAudioContent.txnId(_callKey, _sender, _device);
-        await store.write(txnId, {
-          'status': 'uploaded',
-          'mxc_url': 'mxc://example.com/already-there',
-          // Matches the fresh recorder's own first (and only) generation
-          // below -- ids start at 0 -- which is exactly the fact the reuse
-          // check requires. See the "DIFFERENT generation" test for what
-          // happens when it does not match.
-          'generation_id': 0,
-        });
-
         final r = recorder(uploadStateStore: store);
         r.onRunStarted(1000, 16000, 1);
         r.onFrame(_tone(160));
         r.onRunEnded();
+        // Written with THIS generation's own real id: generation ids are
+        // minted timestamp-plus-random (see [CallAudioRecorder._newGenerationId]),
+        // never a predictable counter, so the only way to seed a record
+        // this generation will recognise as its own is to read the id back
+        // off it directly.
+        await store.write(txnId, {
+          'status': 'uploaded',
+          'mxc_url': 'mxc://example.com/already-there',
+          'generation_id': r.currentGenerationId,
+        });
+
         await r.finish(carriedOn: true, callKey: _callKey);
 
         expect(
@@ -586,11 +758,13 @@ void main() {
         await store.write(txnId, {
           'status': 'uploaded',
           'mxc_url': 'mxc://example.com/stale-generation',
-          // No generation this recorder ever creates is assigned a
-          // negative id (they start at 0 and only increase), so this can
-          // never legitimately match -- simulating exactly the earlier,
-          // superseded generation's own leftover record.
-          'generation_id': -1,
+          // A well-formed but arbitrary id: generation ids are minted
+          // timestamp-plus-random, so this can never legitimately collide
+          // with the fresh recorder's own generation below -- simulating
+          // exactly the earlier, superseded generation's own leftover
+          // record. See the RESTART test below for the specific shape of
+          // collision an in-process counter used to produce.
+          'generation_id': 'some-other-generations-id',
         });
 
         final r = recorder(uploadStateStore: store);
@@ -615,6 +789,68 @@ void main() {
       },
     );
 
+    test('a persisted record from BEFORE A RESTART never collides with a '
+        'fresh recorder\'s own generation, even though a naive in-process '
+        'counter would have', () async {
+      // The cold review's exact scenario: process 1's generation A
+      // uploads and is persisted, then loses ownership before it can
+      // send -- exactly the shape a mid-call restart leaves behind, a
+      // persisted 'uploaded' record with no matching 'sent' one. A fresh
+      // `CallAudioRecorder` -- "process 2" -- sharing the same durable
+      // store must never be handed generation A's url, however it is
+      // identified.
+      final store = InMemoryCallAudioUploadStateStore();
+      final txnId = CallAudioContent.txnId(_callKey, _sender, _device);
+
+      final processOne = recorder(uploadStateStore: store);
+      processOne.onRunStarted(1000, 16000, 1);
+      processOne.onFrame(_tone(160));
+      processOne.onRunEnded();
+      final generationAId = processOne.currentGenerationId!;
+      // A naive process-local counter (`0, 1, 2, ...`, reset by every
+      // fresh recorder) would have minted this SAME value for process
+      // one's own first generation -- which is exactly the collision
+      // this test is pinned against, on process two's side below.
+      expect(generationAId, isNot('0'), reason: 'sanity: not a bare counter');
+      await store.write(txnId, {
+        'status': 'uploaded',
+        'mxc_url': 'mxc://example.com/generation-a',
+        'generation_id': generationAId,
+      });
+
+      // "Process 2": a completely fresh recorder instance, as a restart
+      // mid-call would produce -- sharing the durable store, but with
+      // its own, independently-minted generation.
+      final processTwo = recorder(uploadStateStore: store);
+      processTwo.onRunStarted(5000, 16000, 1);
+      processTwo.onFrame(_tone(160));
+      processTwo.onRunEnded();
+      final generationBId = processTwo.currentGenerationId!;
+
+      expect(
+        generationBId,
+        isNot(generationAId),
+        reason:
+            'two independently-created recorders must never mint the '
+            'same generation id',
+      );
+
+      await processTwo.finish(carriedOn: true, callKey: _callKey);
+
+      expect(
+        uploads,
+        hasLength(1),
+        reason:
+            'process two must upload its OWN bytes, never reuse process '
+            'one\'s persisted (and by now stale/canceled) url',
+      );
+      expect(sent, hasLength(1));
+      expect(sent.single['url'], 'mxc://example.com/uploaded');
+
+      final afterProcessTwo = await store.read(txnId);
+      expect(afterProcessTwo!['generation_id'], generationBId);
+    });
+
     test(
       'a successful send persists enough for a future restart to find it',
       () async {
@@ -623,6 +859,7 @@ void main() {
         r.onRunStarted(1000, 16000, 1);
         r.onFrame(_tone(160));
         r.onRunEnded();
+        final generationId = r.currentGenerationId;
         await r.finish(carriedOn: true, callKey: _callKey);
 
         final txnId = CallAudioContent.txnId(_callKey, _sender, _device);
@@ -635,7 +872,7 @@ void main() {
         expect(persisted['sender'], _sender);
         expect(persisted['device'], _device);
         expect(persisted['txn_id'], txnId);
-        expect(persisted['generation_id'], 0);
+        expect(persisted['generation_id'], generationId);
       },
     );
 
@@ -646,16 +883,16 @@ void main() {
       // upload -- it would send an event whose url points nowhere.
       final store = InMemoryCallAudioUploadStateStore();
       final txnId = CallAudioContent.txnId(_callKey, _sender, _device);
-      await store.write(txnId, {
-        'status': 'uploaded',
-        'mxc_url': 'not-a-valid-mxc-url',
-        'generation_id': 0,
-      });
-
       final r = recorder(uploadStateStore: store);
       r.onRunStarted(1000, 16000, 1);
       r.onFrame(_tone(160));
       r.onRunEnded();
+      await store.write(txnId, {
+        'status': 'uploaded',
+        'mxc_url': 'not-a-valid-mxc-url',
+        'generation_id': r.currentGenerationId,
+      });
+
       await r.finish(carriedOn: true, callKey: _callKey);
 
       expect(
@@ -677,16 +914,16 @@ void main() {
         // or malformed one.
         final store = InMemoryCallAudioUploadStateStore();
         final txnId = CallAudioContent.txnId(_callKey, _sender, _device);
-        await store.write(txnId, {
-          'status': 'uploaded',
-          'mxc_url': 'mxc://example.com',
-          'generation_id': 0,
-        });
-
         final r = recorder(uploadStateStore: store);
         r.onRunStarted(1000, 16000, 1);
         r.onFrame(_tone(160));
         r.onRunEnded();
+        await store.write(txnId, {
+          'status': 'uploaded',
+          'mxc_url': 'mxc://example.com',
+          'generation_id': r.currentGenerationId,
+        });
+
         await r.finish(carriedOn: true, callKey: _callKey);
 
         expect(

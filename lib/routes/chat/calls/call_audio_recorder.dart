@@ -1,9 +1,11 @@
 // Dart imports:
 import 'dart:async';
 import 'dart:collection';
+import 'dart:math';
 import 'dart:typed_data';
 
 // Package imports:
+import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:matrix/matrix.dart';
 
 // Project imports:
@@ -139,15 +141,23 @@ class InMemoryCallAudioUploadStateStore implements CallAudioUploadStateStore {
 /// which is the one case [finish] has to notice mid-flight.
 class _AudioGeneration {
   /// Identifies this generation, and only this one -- across the whole
-  /// call, never reused. This is what [CallAudioRecorder.finish] ties a
-  /// persisted upload record to: the store is keyed by the call's
-  /// transaction id, which names the CALL (call key, sender, device) and is
-  /// the SAME for every generation of it, so a persisted URL from an
-  /// earlier, since-superseded generation would otherwise be indistinguishable
-  /// from one this generation itself produced. See
-  /// [CallAudioUploadStateStore]'s own docs and the `generation_id` field in
-  /// what gets persisted.
-  final int id;
+  /// call, never reused, and never reused across a RESTART either. This is
+  /// what [CallAudioRecorder.finish] ties a persisted upload record to: the
+  /// store is keyed by the call's transaction id, which names the CALL
+  /// (call key, sender, device) and is the SAME for every generation of it,
+  /// so a persisted URL from an earlier, since-superseded generation would
+  /// otherwise be indistinguishable from one this generation itself
+  /// produced. See [CallAudioUploadStateStore]'s own docs and the
+  /// `generation_id` field in what gets persisted.
+  ///
+  /// A STRING, timestamp-plus-random rather than a simple in-process
+  /// counter -- see [CallAudioRecorder._newGenerationId] for the full
+  /// argument. A counter reset to 0 by every fresh `CallAudioRecorder`
+  /// would collide EXACTLY with an earlier, still-persisted generation's id
+  /// from before a process restart, which is precisely the case this field
+  /// exists to rule out: the store survives the restart even though the
+  /// counter does not.
+  final String id;
 
   final int sampleRate;
   final int channels;
@@ -309,10 +319,39 @@ class CallAudioRecorder implements CallAudioRecordingSink {
 
   _AudioGeneration? _current;
 
-  /// Mints [_AudioGeneration.id]. Never reset, never reused within one
-  /// recorder's lifetime -- see that field's own docs for why a generation
-  /// needs an identity distinct from being "whatever `_current` is right now".
-  int _nextGenerationId = 0;
+  /// The current generation's own identity, or null when none is open.
+  /// Exposed only so a test can construct a persisted record this exact
+  /// generation would (or, for a DIFFERENT generation's id, would not)
+  /// recognise as its own -- production code never needs this, because
+  /// [finish] already has [_current] in hand directly.
+  @visibleForTesting
+  String? get currentGenerationId => _current?.id;
+
+  /// Shared rather than reseeded per call: `Random()`'s own default
+  /// constructor already seeds from the system, and one instance avoids
+  /// paying that cost -- and any risk of two seeds landing close together
+  /// on a fast platform clock -- every time a run starts.
+  static final Random _idRandom = Random();
+
+  /// Mints [_AudioGeneration.id]: the wall clock, to the microsecond, plus a
+  /// random tail, joined into one string. Never a simple in-process
+  /// counter (`0, 1, 2, ...`) -- a counter resets to 0 on every fresh
+  /// `CallAudioRecorder`, which means every process restart mid-call would
+  /// start over at exactly the value an EARLIER, still-persisted generation
+  /// from before the restart already used, and collide with it outright.
+  /// [CallAudioUploadStateStore] is deliberately durable past a restart (see
+  /// its own docs); the id naming what it stores has to survive one too.
+  ///
+  /// Not fetched from the store itself, which would be the more obviously
+  /// "globally coordinated" approach: that reads make this async, and
+  /// [onRunStarted] is called synchronously from the exact callback that
+  /// also feeds the speech-to-text chunker, which cannot be made to wait on
+  /// I/O. Timestamp-plus-random needs no coordination and is exactly as
+  /// synchronous as the call site requires; a same-microsecond collision
+  /// between two generations, in one process, is already effectively
+  /// impossible, and [_idRandom]'s own 32 bits on top make it more so.
+  static String _newGenerationId() =>
+      '${DateTime.now().microsecondsSinceEpoch}-${_idRandom.nextInt(1 << 32)}';
 
   int _capBytes(_AudioGeneration gen) {
     final byTime =
@@ -347,7 +386,7 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     // when it lands mid-upload.
     _cancelCurrent();
     _current = _AudioGeneration(
-      id: _nextGenerationId++,
+      id: _newGenerationId(),
       sampleRate: sampleRate,
       channels: channels,
       runStartedAtMs: runStartedAtMs,
@@ -729,28 +768,54 @@ class CallAudioRecorder implements CallAudioRecordingSink {
           // Checked AGAIN, immediately before the send: the step above was
           // the one genuinely slow one, and ownership can have moved on
           // while it ran.
+          //
+          // This is the OTHER half of the orphan-blob trace the class docs
+          // promise (the upload-future observer above covers the case
+          // where the upload lands AFTER this flag is already set; this is
+          // the case where it lands BEFORE, and cancellation is only
+          // noticed here) -- so the landed url is named explicitly, not
+          // folded into a generic "abandoned" message a later cleanup pass
+          // could not act on.
           if (gen.canceled) {
-            Logs().i(
-              'Call audio half abandoned: ownership was lost before it '
-              'could be sent',
+            Logs().w(
+              'Call audio half abandoned before it could be sent; the '
+              'already-uploaded blob at $url is now an orphan no event '
+              'will ever reference',
             );
             return;
           }
 
-          final eventId = await writeCallAudioEvent(
-            send: send,
-            callKey: callKey,
-            senderId: senderId,
-            deviceId: deviceId,
-            url: url.toString(),
-            mimetype: 'audio/wav',
-            size: wav.length,
-            durationMs: durationMs,
-            sampleRate: gen.sampleRate,
-            channels: gen.channels,
-            clockAnchor: anchor,
-            recordingStartedOffsetFromDeviceJoinMs: offsetMs,
-          );
+          // Raced against ownership loss on the SAME terms the upload above
+          // is: `send` -- `Room.sendEvent` in production -- offers no
+          // cancellation contract either, so this does not stop the event
+          // from reaching the homeserver. What it stops is USING the
+          // result: a cancellation that wins this race means the persisted
+          // state below is never written as `sent`, and this attempt reports
+          // itself abandoned rather than confirmed. See the class docs'
+          // "no duplicate event, ever" bullet for the one guarantee this
+          // still gives up: the deterministic transaction id means a send
+          // that DID land under the hood cannot become a second, different
+          // event later, whichever generation's `finish()` eventually
+          // notices.
+          final eventId = await Future.any<String?>([
+            writeCallAudioEvent(
+              send: send,
+              callKey: callKey,
+              senderId: senderId,
+              deviceId: deviceId,
+              url: url.toString(),
+              mimetype: 'audio/wav',
+              size: wav.length,
+              durationMs: durationMs,
+              sampleRate: gen.sampleRate,
+              channels: gen.channels,
+              clockAnchor: anchor,
+              recordingStartedOffsetFromDeviceJoinMs: offsetMs,
+            ),
+            cancelSignal.future.then(
+              (_) => throw const _AudioRecordingCanceled(),
+            ),
+          ]);
           if (eventId == null) {
             // `send` -- `Room.sendEvent` in production -- returns null
             // EXACTLY when the send did not durably succeed (a
