@@ -9859,5 +9859,17 @@
     "showMoreOptionsHint": "aukera gehiago erakutsi",
     "onboardingStepOfTotal": "{total}etik {step}. urratsa",
     "addKeyboardDialogTitle": "Gehitu zure xede-hizkuntzaren teklatua",
-    "enableAutocorrectPopupPathIntro": "Bat gehitzeko, joan hona:"
+    "enableAutocorrectPopupPathIntro": "Bat gehitzeko, joan hona:",
+    "enableAutocorrectPopupTitle": "Gehitu zure hizkuntza helburuaren teklatua honetara joanez:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Dei hau zure bi gailutan dago irekita.",
+    "callDevicesBody": "Aukeratu zeinekin jarraitu. Hori egin arte, batek ere ez du zure mikrofonoa edo kamera bidaltzen.",
+    "callDevicesUseThis": "Erabili gailu hau",
+    "callDevicesLeaveHere": "Utzi deia hemen",
+    "callDevicesOlderTitle": "Zure beste gailuak ezin du dei hau bere kabuz utzi.",
+    "callDevicesOlderBody": "Amaitu deia han, edo utzi hemen. Horrek esan nahi du bertsio zahar bat exekutatzen ari dela, eta eguneratzeak konponduko duela hau.",
+    "callContinuingElsewhere": "Dei hau zure beste gailuan jarraitzen ari da."
 }

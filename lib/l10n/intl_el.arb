@@ -10734,5 +10734,17 @@
     "showMoreOptionsHint": "εμφάνιση περισσότερων επιλογών",
     "onboardingStepOfTotal": "Βήμα {step} από {total}",
     "addKeyboardDialogTitle": "Προσθέστε το πληκτρολόγιο της γλώσσας-στόχου σας",
-    "enableAutocorrectPopupPathIntro": "Για να προσθέσετε ένα, μεταβείτε στις ρυθμίσεις:"
+    "enableAutocorrectPopupPathIntro": "Για να προσθέσετε ένα, μεταβείτε στις ρυθμίσεις:",
+    "enableAutocorrectPopupTitle": "Προσθέστε το πληκτρολόγιο της γλώσσας στόχου πηγαίνοντας στα:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Αυτή η κλήση είναι ανοιχτή σε δύο από τις συσκευές σας.",
+    "callDevicesBody": "Επιλέξτε αυτή που θέλετε να χρησιμοποιήσετε. Μέχρι να το κάνετε, καμία συσκευή δεν στέλνει τον ήχο ή την εικόνα σας.",
+    "callDevicesUseThis": "Χρησιμοποιήστε αυτήν τη συσκευή",
+    "callDevicesLeaveHere": "Αφήστε την κλήση εδώ",
+    "callDevicesOlderTitle": "Η άλλη συσκευή σας δεν μπορεί να αποχωρήσει από αυτήν την κλήση μόνη της.",
+    "callDevicesOlderBody": "Τερματίστε την κλήση εκεί ή αφήστε την εδώ. Αυτό συνήθως σημαίνει ότι εκτελεί μια παλαιότερη έκδοση και η ενημέρωσή της θα το διορθώσει.",
+    "callContinuingElsewhere": "Αυτή η κλήση συνεχίζεται στην άλλη συσκευή σας."
 }

@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "muuji doorashooyin dheeraad ah",
     "onboardingStepOfTotal": "Tallaabada {step} ee {total}",
     "addKeyboardDialogTitle": "Ku dar kiiboodhka luqadda aad bartayso",
-    "enableAutocorrectPopupPathIntro": "Si aad mid ugu darto, tag:"
+    "enableAutocorrectPopupPathIntro": "Si aad mid ugu darto, tag:",
+    "enableAutocorrectPopupTitle": "Ku dar kiiboodhka luqaddaada bartilmaameedka adigoo aadaya:",
+    "callDevicesTitle": "Wicitaankani wuxuu ka furan yahay laba ka mid ah aaladahaaga.",
+    "callDevicesBody": "Dooro midka aad ku sii wadi lahayd. Ilaa aad ka doorato, midkoodna ma dirayo makarafoonkaaga ama kamaradaada.",
+    "callDevicesUseThis": "Isticmaal aaladdan",
+    "callDevicesLeaveHere": "Halkan ka tag wicitaanka",
+    "callDevicesOlderTitle": "Aaladdaada kale iskii ugama bixi karto wicitaankan.",
+    "callDevicesOlderBody": "Halkaas ka jooji wicitaanka, ama halkan kaga tag. Taasi badanaa waxay ka dhigan tahay inay ku shaqaynayso nooc duug ah, oo cusboonaysiinteedu ay hagaajin doonto tan.",
+    "callContinuingElsewhere": "Wicitaankani wuxuu ku sii socdaa aaladdaada kale."
 }

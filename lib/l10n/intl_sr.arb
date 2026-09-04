@@ -10808,5 +10808,17 @@
     "showMoreOptionsHint": "prikaži više opcija",
     "onboardingStepOfTotal": "Korak {step} od {total}",
     "addKeyboardDialogTitle": "Dodajte tastaturu za ciljni jezik",
-    "enableAutocorrectPopupPathIntro": "Da biste je dodali, idite na:"
+    "enableAutocorrectPopupPathIntro": "Da biste je dodali, idite na:",
+    "enableAutocorrectPopupTitle": "Dodajte tastaturu za ciljni jezik tako što ćete otići na:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Ovaj poziv je otvoren na dva vaša uređaja.",
+    "callDevicesBody": "Izaberite onaj sa kojim želite da nastavite. Dok to ne učinite, nijedan ne šalje vaš mikrofon ili kameru.",
+    "callDevicesUseThis": "Koristi ovaj uređaj",
+    "callDevicesLeaveHere": "Napusti poziv ovde",
+    "callDevicesOlderTitle": "Vaš drugi uređaj ne može sam da napusti ovaj poziv.",
+    "callDevicesOlderBody": "Prekinite poziv tamo ili ga napustite ovde. To obično znači da koristi stariju verziju, a ažuriranje će to popraviti.",
+    "callContinuingElsewhere": "Ovaj poziv se nastavlja na vašem drugom uređaju."
 }

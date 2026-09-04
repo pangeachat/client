@@ -9944,5 +9944,17 @@
     "showMoreOptionsHint": "pokaż więcej opcji",
     "onboardingStepOfTotal": "Krok {step} z {total}",
     "addKeyboardDialogTitle": "Dodaj klawiaturę języka docelowego",
-    "enableAutocorrectPopupPathIntro": "Aby dodać, przejdź do:"
+    "enableAutocorrectPopupPathIntro": "Aby dodać, przejdź do:",
+    "enableAutocorrectPopupTitle": "Dodaj klawiaturę języka docelowego, przechodząc do:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Ta rozmowa jest otwarta na dwóch Twoich urządzeniach.",
+    "callDevicesBody": "Wybierz jedno, na którym chcesz kontynuować. Dopóki tego nie zrobisz, żadne z nich nie wysyła Twojego mikrofonu ani kamery.",
+    "callDevicesUseThis": "Użyj tego urządzenia",
+    "callDevicesLeaveHere": "Opuść rozmowę tutaj",
+    "callDevicesOlderTitle": "Twoje drugie urządzenie nie może samodzielnie opuścić tej rozmowy.",
+    "callDevicesOlderBody": "Zakończ rozmowę tam lub opuść ją tutaj. Zazwyczaj oznacza to, że działa na starszej wersji, a jej aktualizacja to naprawi.",
+    "callContinuingElsewhere": "Ta rozmowa jest kontynuowana na Twoim drugim urządzeniu."
 }

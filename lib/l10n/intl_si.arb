@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "තවත් විකල්ප පෙන්වන්න",
     "onboardingStepOfTotal": "{total}න් පියවර {step}",
     "addKeyboardDialogTitle": "ඔබ ඉගෙන ගන්නා භාෂාවේ යතුරුපුවරුව එක් කරන්න",
-    "enableAutocorrectPopupPathIntro": "එකක් එක් කිරීමට, මෙතැනට යන්න:"
+    "enableAutocorrectPopupPathIntro": "එකක් එක් කිරීමට, මෙතැනට යන්න:",
+    "enableAutocorrectPopupTitle": "ඔබේ ඉලක්ක භාෂා යතුරුපුවරුව එක් කිරීමට මෙතැනට යන්න:",
+    "callDevicesTitle": "මෙම ඇමතුම ඔබගේ උපාංග දෙකක විවෘතව ඇත.",
+    "callDevicesBody": "ඉදිරියට කරගෙන යාමට එකක් තෝරන්න. ඔබ එසේ කරන තුරු, කිසිවක් ඔබගේ මයික්‍රෆෝනය හෝ කැමරාව යවන්නේ නැත.",
+    "callDevicesUseThis": "මෙම උපාංගය භාවිතා කරන්න",
+    "callDevicesLeaveHere": "ඇමතුම මෙතැනින් අවසන් කරන්න",
+    "callDevicesOlderTitle": "ඔබගේ අනෙක් උපාංගයට තනිවම මෙම ඇමතුමෙන් ඉවත් විය නොහැක.",
+    "callDevicesOlderBody": "එම ඇමතුම අවසන් කරන්න, නැතහොත් එය මෙතැනින් අවසන් කරන්න. එයින් සාමාන්‍යයෙන් අදහස් වන්නේ එය පැරණි අනුවාදයක් ධාවනය කරන බවත්, එය යාවත්කාලීන කිරීමෙන් මෙය නිවැරදි වන බවත්ය.",
+    "callContinuingElsewhere": "මෙම ඇමතුම ඔබගේ අනෙක් උපාංගයේ දිගටම පවතී."
 }

@@ -10491,5 +10491,17 @@
     "showMoreOptionsHint": "और विकल्प दिखाएँ",
     "onboardingStepOfTotal": "{total} में से चरण {step}",
     "addKeyboardDialogTitle": "अपनी लक्ष्य भाषा का कीबोर्ड जोड़ें",
-    "enableAutocorrectPopupPathIntro": "जोड़ने के लिए, यहाँ जाएँ:"
+    "enableAutocorrectPopupPathIntro": "जोड़ने के लिए, यहाँ जाएँ:",
+    "enableAutocorrectPopupTitle": "अपनी लक्षित भाषा की कीबोर्ड जोड़ने के लिए जाएं:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "यह कॉल आपके दो डिवाइस पर खुली है।",
+    "callDevicesBody": "जिस डिवाइस पर आप जारी रखना चाहते हैं, उसे चुनें। जब तक आप ऐसा नहीं करते, तब तक कोई भी डिवाइस आपका माइक्रोफ़ोन या कैमरा नहीं भेज रहा है।",
+    "callDevicesUseThis": "इस डिवाइस का उपयोग करें",
+    "callDevicesLeaveHere": "कॉल यहीं छोड़ दें",
+    "callDevicesOlderTitle": "आपका दूसरा डिवाइस अपने आप इस कॉल को नहीं छोड़ सकता।",
+    "callDevicesOlderBody": "कॉल को वहीं समाप्त करें, या इसे यहीं छोड़ दें। इसका आमतौर पर मतलब है कि यह एक पुराना संस्करण चला रहा है, और इसे अपडेट करने से यह ठीक हो जाएगा।",
+    "callContinuingElsewhere": "यह कॉल आपके दूसरे डिवाइस पर जारी है।"
 }

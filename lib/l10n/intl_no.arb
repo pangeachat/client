@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "vis flere alternativer",
     "onboardingStepOfTotal": "Trinn {step} av {total}",
     "addKeyboardDialogTitle": "Legg til tastatur for målspråket ditt",
-    "enableAutocorrectPopupPathIntro": "For å legge til ett, gå til:"
+    "enableAutocorrectPopupPathIntro": "For å legge til ett, gå til:",
+    "enableAutocorrectPopupTitle": "Legg til tastaturet for målspråket ditt ved å gå til:",
+    "callDevicesTitle": "Denne samtalen er åpen på to av enhetene dine.",
+    "callDevicesBody": "Velg den du vil fortsette med. Før du gjør det, sender ingen av dem mikrofonen eller kameraet ditt.",
+    "callDevicesUseThis": "Bruk denne enheten",
+    "callDevicesLeaveHere": "Forlat samtalen her",
+    "callDevicesOlderTitle": "Den andre enheten din kan ikke forlate denne samtalen på egen hånd.",
+    "callDevicesOlderBody": "Avslutt samtalen der, eller forlat den her. Det betyr vanligvis at den kjører en eldre versjon, og en oppdatering vil fikse dette.",
+    "callContinuingElsewhere": "Denne samtalen fortsetter på den andre enheten din."
 }

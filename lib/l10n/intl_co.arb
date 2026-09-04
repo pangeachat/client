@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "mostra più opzioni",
     "onboardingStepOfTotal": "Passu {step} di {total}",
     "addKeyboardDialogTitle": "Aghjunghje a tastiera di a vostra lingua di destinazione",
-    "enableAutocorrectPopupPathIntro": "Per aghjunghje ne una, andate à:"
+    "enableAutocorrectPopupPathIntro": "Per aghjunghje ne una, andate à:",
+    "enableAutocorrectPopupTitle": "Aghjunghjite a tastiera di a vostra lingua di destinazione andendu in :",
+    "callDevicesTitle": "Sta chjama hè aperta nant'à dui di i vostri apparechji.",
+    "callDevicesBody": "Sceglite quellu da cuntinuà. Finu à tandu, nimu ùn manda u vostru microfonu o a vostra camera.",
+    "callDevicesUseThis": "Aduprà stu apparechju",
+    "callDevicesLeaveHere": "Lascià a chjama quì",
+    "callDevicesOlderTitle": "U vostru altru apparechju ùn pò micca lascià sta chjama da per ellu.",
+    "callDevicesOlderBody": "Finite a chjama quì, o lasciatela quì. Quessa significa di solitu ch'ellu usa una versione più vechja, è l'aghjurnamentu risolverà u prublema.",
+    "callContinuingElsewhere": "Sta chjama cuntinueghja nant'à u vostru altru apparechju."
 }

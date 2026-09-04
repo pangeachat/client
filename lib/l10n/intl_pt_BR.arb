@@ -9859,5 +9859,17 @@
     "showMoreOptionsHint": "mostrar mais opções",
     "onboardingStepOfTotal": "Etapa {step} de {total}",
     "addKeyboardDialogTitle": "Adicione o teclado do idioma de destino",
-    "enableAutocorrectPopupPathIntro": "Para adicionar um, vá para:"
+    "enableAutocorrectPopupPathIntro": "Para adicionar um, vá para:",
+    "enableAutocorrectPopupTitle": "Adicione seu teclado de idioma alvo indo em:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Esta chamada está aberta em dois dos seus aparelhos.",
+    "callDevicesBody": "Escolha qual usar. Até que você escolha, nenhum dos dois enviará seu microfone ou câmera.",
+    "callDevicesUseThis": "Usar este aparelho",
+    "callDevicesLeaveHere": "Sair da chamada aqui",
+    "callDevicesOlderTitle": "Seu outro aparelho não consegue sair desta chamada sozinho.",
+    "callDevicesOlderBody": "Encerre a chamada lá ou saia dela aqui. Isso geralmente significa que ele está executando uma versão mais antiga, e atualizá-lo resolverá isso.",
+    "callContinuingElsewhere": "Esta chamada está continuando no seu outro aparelho."
 }

@@ -9896,5 +9896,17 @@
     "showMoreOptionsHint": "näytä lisää vaihtoehtoja",
     "onboardingStepOfTotal": "Vaihe {step}/{total}",
     "addKeyboardDialogTitle": "Lisää kohdekielesi näppäimistö",
-    "enableAutocorrectPopupPathIntro": "Lisätäksesi sellaisen, mene kohtaan:"
+    "enableAutocorrectPopupPathIntro": "Lisätäksesi sellaisen, mene kohtaan:",
+    "enableAutocorrectPopupTitle": "Lisää kohdekielesi näppäimistö seuraavasti:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Tämä puhelu on auki kahdella laitteellasi.",
+    "callDevicesBody": "Valitse laite, jolla jatkat. Ennen sitä kumpikaan laite ei lähetä mikrofonia tai kameraa.",
+    "callDevicesUseThis": "Käytä tätä laitetta",
+    "callDevicesLeaveHere": "Poistu puhelusta tästä",
+    "callDevicesOlderTitle": "Toinen laitteesi ei voi poistua tästä puhelusta itsestään.",
+    "callDevicesOlderBody": "Lopeta puhelu siellä tai poistu siitä täällä. Tämä tarkoittaa yleensä, että siinä on vanhempi versio, ja sen päivittäminen korjaa tämän.",
+    "callContinuingElsewhere": "Tämä puhelu jatkuu toisella laitteellasi."
 }

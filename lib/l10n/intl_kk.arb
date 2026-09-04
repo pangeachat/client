@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "қосымша опцияларды көрсету",
     "onboardingStepOfTotal": "{total} ішінен {step} қадам",
     "addKeyboardDialogTitle": "Мақсатты тіл пернетақтасын қосыңыз",
-    "enableAutocorrectPopupPathIntro": "Қосу үшін мына жерге өтіңіз:"
+    "enableAutocorrectPopupPathIntro": "Қосу үшін мына жерге өтіңіз:",
+    "enableAutocorrectPopupTitle": "Мақсатты тіл пернетақтасын мына жерден қосыңыз:",
+    "callDevicesTitle": "Бұл қоңырау сіздің екі құрылғыңызда ашық.",
+    "callDevicesBody": "Жалғастыратын біреуін таңдаңыз. Таңдағанша, екеуі де микрофоныңызды немесе камераңызды жібермейді.",
+    "callDevicesUseThis": "Осы құрылғыны пайдалану",
+    "callDevicesLeaveHere": "Қоңырауды осында қалдыру",
+    "callDevicesOlderTitle": "Басқа құрылғыңыз бұл қоңырауды өздігінен қалдыра алмайды.",
+    "callDevicesOlderBody": "Қоңырауды сол жерде аяқтаңыз немесе осында қалдырыңыз. Бұл әдетте оның ескі нұсқада жұмыс істеп тұрғанын білдіреді, және оны жаңарту осы мәселені шешеді.",
+    "callContinuingElsewhere": "Бұл қоңырау басқа құрылғыңызда жалғасуда."
 }

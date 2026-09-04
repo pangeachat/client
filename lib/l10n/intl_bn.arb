@@ -10487,5 +10487,17 @@
     "showMoreOptionsHint": "আরও বিকল্প দেখান",
     "onboardingStepOfTotal": "{total} এর মধ্যে ধাপ {step}",
     "addKeyboardDialogTitle": "আপনার লক্ষ্য ভাষার কীবোর্ড যোগ করুন",
-    "enableAutocorrectPopupPathIntro": "একটি যোগ করতে, এখানে যান:"
+    "enableAutocorrectPopupPathIntro": "একটি যোগ করতে, এখানে যান:",
+    "enableAutocorrectPopupTitle": "আপনার লক্ষ্য ভাষার কীবোর্ড যোগ করুন: সেটিংসে যান",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "এই কলটি আপনার দুটি ডিভাইসে খোলা আছে।",
+    "callDevicesBody": "কোনটি দিয়ে চালিয়ে যাবেন তা বেছে নিন। যতক্ষণ না আপনি তা করছেন, কোনোটিই আপনার মাইক্রোফোন বা ক্যামেরা পাঠাচ্ছে না।",
+    "callDevicesUseThis": "এই ডিভাইসটি ব্যবহার করুন",
+    "callDevicesLeaveHere": "কলটি এখানে ছেড়ে দিন",
+    "callDevicesOlderTitle": "আপনার অন্য ডিভাইসটি নিজে থেকে এই কলটি ছেড়ে যেতে পারবে না।",
+    "callDevicesOlderBody": "সেখানে কলটি শেষ করুন, অথবা এখানে ছেড়ে দিন। এর মানে সাধারণত এটি একটি পুরোনো সংস্করণ চালাচ্ছে, এবং এটি আপডেট করলে এই সমস্যাটি ঠিক হয়ে যাবে।",
+    "callContinuingElsewhere": "এই কলটি আপনার অন্য ডিভাইসে চলছে।"
 }

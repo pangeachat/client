@@ -10377,5 +10377,17 @@
     "showMoreOptionsHint": "visa fler alternativ",
     "onboardingStepOfTotal": "Steg {step} av {total}",
     "addKeyboardDialogTitle": "Lägg till tangentbord för ditt målspråk",
-    "enableAutocorrectPopupPathIntro": "För att lägga till ett, gå till:"
+    "enableAutocorrectPopupPathIntro": "För att lägga till ett, gå till:",
+    "enableAutocorrectPopupTitle": "Lägg till ditt tangentbord för målspråket genom att gå till:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Detta samtal är öppet på två av dina enheter.",
+    "callDevicesBody": "Välj den du vill fortsätta med. Tills du gör det skickar ingen av dem din mikrofon eller kamera.",
+    "callDevicesUseThis": "Använd denna enhet",
+    "callDevicesLeaveHere": "Lämna samtalet här",
+    "callDevicesOlderTitle": "Din andra enhet kan inte lämna samtalet på egen hand.",
+    "callDevicesOlderBody": "Avsluta samtalet där, eller lämna det här. Det betyder oftast att den kör en äldre version, och en uppdatering kommer att åtgärda detta.",
+    "callContinuingElsewhere": "Detta samtal fortsätter på din andra enhet."
 }

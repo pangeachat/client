@@ -10795,5 +10795,17 @@
     "showMoreOptionsHint": "monstrar plus optiones",
     "onboardingStepOfTotal": "Passo {step} de {total}",
     "addKeyboardDialogTitle": "Adde le clavier de tu lingua de scopo",
-    "enableAutocorrectPopupPathIntro": "Pro adder un, vade a:"
+    "enableAutocorrectPopupPathIntro": "Pro adder un, vade a:",
+    "enableAutocorrectPopupTitle": "Adder tu clavier de lingua target per ir a:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Iste appello es aperte in duo de tu apparatos.",
+    "callDevicesBody": "Selige le apparato a continuar con. Usque tu lo face, necuno invia tu microphono o camera.",
+    "callDevicesUseThis": "Usa iste apparato",
+    "callDevicesLeaveHere": "Lassa le appello hic",
+    "callDevicesOlderTitle": "Tu altere apparato non pote lassar iste appello per se.",
+    "callDevicesOlderBody": "Termina le appello ibi, o lassa lo hic. Isto usualmente significa que illo executa un version plus ancian, e actualisar lo va reparar isto.",
+    "callContinuingElsewhere": "Iste appello continua in tu altere apparato."
 }

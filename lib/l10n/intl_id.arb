@@ -9932,5 +9932,17 @@
     "showMoreOptionsHint": "tampilkan opsi lainnya",
     "onboardingStepOfTotal": "Langkah {step} dari {total}",
     "addKeyboardDialogTitle": "Tambahkan papan ketik bahasa target Anda",
-    "enableAutocorrectPopupPathIntro": "Untuk menambahkannya, buka:"
+    "enableAutocorrectPopupPathIntro": "Untuk menambahkannya, buka:",
+    "enableAutocorrectPopupTitle": "Tambahkan keyboard bahasa target Anda dengan pergi ke:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Panggilan ini terbuka di dua perangkat Anda.",
+    "callDevicesBody": "Pilih salah satu untuk melanjutkan. Sampai Anda melakukannya, tidak ada yang mengirim mikrofon atau kamera Anda.",
+    "callDevicesUseThis": "Gunakan perangkat ini",
+    "callDevicesLeaveHere": "Tinggalkan panggilan di sini",
+    "callDevicesOlderTitle": "Perangkat Anda yang lain tidak dapat meninggalkan panggilan ini dengan sendirinya.",
+    "callDevicesOlderBody": "Akhiri panggilan di sana, atau tinggalkan di sini. Itu biasanya berarti perangkat tersebut menjalankan versi yang lebih lama, dan memperbaruinya akan memperbaiki masalah ini.",
+    "callContinuingElsewhere": "Panggilan ini berlanjut di perangkat Anda yang lain."
 }

@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "پیشاندانی بژاردەی زیاتر",
     "onboardingStepOfTotal": "هەنگاوی {step} لە {total}",
     "addKeyboardDialogTitle": "کیبۆردی زمانی مەبەستەکەت زیاد بکە",
-    "enableAutocorrectPopupPathIntro": "بۆ زیادکردنی یەکێک، بڕۆ بۆ:"
+    "enableAutocorrectPopupPathIntro": "بۆ زیادکردنی یەکێک، بڕۆ بۆ:",
+    "enableAutocorrectPopupTitle": "کیبۆردی زمانی ئامانجەکەت زیاد بکە بە ڕۆیشتن بۆ:",
+    "callDevicesTitle": "ئەم پەیوەندییە لەسەر دوو ئامێری تۆ کراوەیە.",
+    "callDevicesBody": "یەکێکیان هەڵبژێرە بۆ بەردەوامبوون. تا ئەوکاتەی هەڵیدەبژێریت، هیچ کامیان مایکرۆفۆن یان کامێرای تۆ نانێرن.",
+    "callDevicesUseThis": "ئەم ئامێرە بەکاربهێنە",
+    "callDevicesLeaveHere": "پەیوەندییەکە لێرە جێبهێڵە",
+    "callDevicesOlderTitle": "ئامێرەکەی دیکەت ناتوانێت بەتەنیا ئەم پەیوەندییە جێبهێڵێت.",
+    "callDevicesOlderBody": "پەیوەندییەکە لەوێ کۆتایی پێبهێنە، یان لێرە جێبهێڵە. ئەوە بەزۆری بەو واتایەیە کە وەشانی کۆنتری کارپێدەکرێت، و نوێکردنەوەی ئەمە چاک دەکات.",
+    "callContinuingElsewhere": "ئەم پەیوەندییە لەسەر ئامێرەکەی دیکەت بەردەوامە."
 }

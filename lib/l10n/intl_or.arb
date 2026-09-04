@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "ଅଧିକ ବିକଳ୍ପ ଦେଖାନ୍ତୁ",
     "onboardingStepOfTotal": "{total} ର {step} ସୋପାନ",
     "addKeyboardDialogTitle": "ଆପଣଙ୍କ ଟାର୍ଗେଟ୍ ଭାଷା କୀବୋର୍ଡ୍ ଯୋଡ଼ନ୍ତୁ",
-    "enableAutocorrectPopupPathIntro": "ଗୋଟିଏ ଯୋଡ଼ିବା ପାଇଁ, ଏଠାକୁ ଯାଆନ୍ତୁ:"
+    "enableAutocorrectPopupPathIntro": "ଗୋଟିଏ ଯୋଡ଼ିବା ପାଇଁ, ଏଠାକୁ ଯାଆନ୍ତୁ:",
+    "enableAutocorrectPopupTitle": "ଆପଣଙ୍କ ଟାର୍ଗେଟ୍ ଭାଷା କୀବୋର୍ଡ୍ ଯୋଡ଼ିବା ପାଇଁ ଏଠାକୁ ଯାଆନ୍ତୁ:",
+    "callDevicesTitle": "ଏହି କଲ୍ ଆପଣଙ୍କର ଦୁଇଟି ଡିଭାଇସରେ ଖୋଲା ଅଛି।",
+    "callDevicesBody": "ଆପଣ କେଉଁଟିରେ ଜାରି ରଖିବାକୁ ଚାହୁଁଛନ୍ତି ବାଛନ୍ତୁ। ଯେପର୍ଯ୍ୟନ୍ତ ଆପଣ ଏହା ନ କରନ୍ତି, ସେପର୍ଯ୍ୟନ୍ତ କେହି ଆପଣଙ୍କ ମାଇକ୍ରୋଫୋନ୍ କିମ୍ବା କ୍ୟାମେରା ପଠାଉ ନାହାଁନ୍ତି।",
+    "callDevicesUseThis": "ଏହି ଡିଭାଇସ୍ ବ୍ୟବହାର କରନ୍ତୁ",
+    "callDevicesLeaveHere": "କଲ୍ ଏଠାରେ ଛାଡ଼ନ୍ତୁ",
+    "callDevicesOlderTitle": "ଆପଣଙ୍କର ଅନ୍ୟ ଡିଭାଇସ୍ ନିଜେ ଏହି କଲ୍ ଛାଡ଼ିପାରିବ ନାହିଁ।",
+    "callDevicesOlderBody": "ସେଠାରେ କଲ୍ ଶେଷ କରନ୍ତୁ, କିମ୍ବା ଏହାକୁ ଏଠାରେ ଛାଡ଼ନ୍ତୁ। ଏହାର ଅର୍ଥ ହେଉଛି ଏହା ଏକ ପୁରୁଣା ସଂସ୍କରଣ ଚଳାଉଛି, ଏବଂ ଏହାକୁ ଅପଡେଟ୍ କରିବା ଦ୍ୱାରା ଏହି ସମସ୍ୟା ସମାଧାନ ହେବ।",
+    "callContinuingElsewhere": "ଏହି କଲ୍ ଆପଣଙ୍କର ଅନ୍ୟ ଡିଭାଇସରେ ଜାରି ରହିଛି।"
 }

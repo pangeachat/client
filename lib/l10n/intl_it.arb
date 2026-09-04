@@ -9932,5 +9932,17 @@
     "showMoreOptionsHint": "mostra più opzioni",
     "onboardingStepOfTotal": "Passaggio {step} di {total}",
     "addKeyboardDialogTitle": "Aggiungi la tastiera della lingua di destinazione",
-    "enableAutocorrectPopupPathIntro": "Per aggiungerne una, vai a:"
+    "enableAutocorrectPopupPathIntro": "Per aggiungerne una, vai a:",
+    "enableAutocorrectPopupTitle": "Aggiungi la tastiera della lingua di destinazione andando su:",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "Questa chiamata è aperta su due dei tuoi dispositivi.",
+    "callDevicesBody": "Scegli quello con cui continuare. Fino ad allora, nessuno dei due invierà il microfono o la fotocamera.",
+    "callDevicesUseThis": "Usa questo dispositivo",
+    "callDevicesLeaveHere": "Lascia la chiamata qui",
+    "callDevicesOlderTitle": "L'altro tuo dispositivo non può lasciare questa chiamata da solo.",
+    "callDevicesOlderBody": "Termina la chiamata lì, o lasciala qui. Di solito significa che sta eseguendo una versione precedente, e l'aggiornamento risolverà il problema.",
+    "callContinuingElsewhere": "Questa chiamata sta continuando sull'altro tuo dispositivo."
 }

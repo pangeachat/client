@@ -9859,5 +9859,17 @@
     "showMoreOptionsHint": "显示更多选项",
     "onboardingStepOfTotal": "第 {step} 步，共 {total} 步",
     "addKeyboardDialogTitle": "添加目标语言键盘",
-    "enableAutocorrectPopupPathIntro": "要添加，请前往："
+    "enableAutocorrectPopupPathIntro": "要添加，请前往：",
+    "enableAutocorrectPopupTitle": "通过以下步骤添加目标语言键盘：",
+    "@enableAutocorrectPopupTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "callDevicesTitle": "此通话已在您的两台设备上开启。",
+    "callDevicesBody": "选择一台设备继续通话。在此之前，两台设备都不会发送您的麦克风或摄像头信号。",
+    "callDevicesUseThis": "使用此设备",
+    "callDevicesLeaveHere": "在此处离开通话",
+    "callDevicesOlderTitle": "您的其他设备无法自行离开此通话。",
+    "callDevicesOlderBody": "结束那边的通话，或在此处离开。这通常意味着它正在运行旧版本，更新后即可解决此问题。",
+    "callContinuingElsewhere": "此通话正在您的其他设备上继续。"
 }

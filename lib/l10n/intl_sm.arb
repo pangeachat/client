@@ -2267,5 +2267,13 @@
     "showMoreOptionsHint": "fa'aali nisi filifiliga",
     "onboardingStepOfTotal": "Laasaga {step} o le {total}",
     "addKeyboardDialogTitle": "Fa'aopoopo lau piano feavea'i o le gagana e te mana'o ai",
-    "enableAutocorrectPopupPathIntro": "Ina ia fa'aopoopo se tasi, alu i le:"
+    "enableAutocorrectPopupPathIntro": "Ina ia fa'aopoopo se tasi, alu i le:",
+    "enableAutocorrectPopupTitle": "Faʻaopoopo lau piano gagana e aʻoaʻoina e ala i le alu i:",
+    "callDevicesTitle": "O lo'o tatala lenei vala'au i au masini e lua.",
+    "callDevicesBody": "Filifili le tasi e fa'aauau ai. Se'ia e faia, e leai se tasi o lo'o lafoina lau masini faaleotele leo po'o lau mea pu'eata.",
+    "callDevicesUseThis": "Fa'aaoga lenei masini",
+    "callDevicesLeaveHere": "Tu'u le vala'au i'i",
+    "callDevicesOlderTitle": "E le mafai e lau isi masini ona tu'ua na o ia lenei vala'au.",
+    "callDevicesOlderBody": "Fa'amuta le vala'au iina, pe tu'u i'i. E masani lava o lona uiga o lo'o fa'aaogaina se fa'asologa tuai, ma o le fa'afouina o le a fa'aleleia ai lenei mea.",
+    "callContinuingElsewhere": "O lo'o fa'aauau lenei vala'au i lau isi masini."
 }
