@@ -49,7 +49,7 @@ class MissingQuestException implements Exception {
 ///
 /// [RateLimitedException] never reaches this function: [reportCourseOutlineFailure]
 /// short-circuits on it before computing a level at all, because
-/// [activityReadPause] already reported that suppression once for this
+/// [RateLimitPause.choreo] already reported that suppression once for this
 /// activation (client#8507) — deciding a severity here would just be for a
 /// report that never happens.
 ///
@@ -267,23 +267,12 @@ class QuestRepo {
                 'en'
           : 'en');
 
-  /// Repo-wide pause after choreo rate-limits the activity reads (#8360).
-  ///
-  /// [RateLimitPause] carries the reasoning; what this instance decides is its
-  /// SCOPE. Shared with `ActivityMapRepo` because the world map fires both
-  /// reads — the course-scoped quest listing here and the viewport bbox query
-  /// there — against the same `/choreo` activities budget, so honouring a 429
-  /// on one while hammering the other honours nothing. Not shared any wider:
-  /// choreo meters `/subscription` separately, and an activity 429 must never
-  /// stall checkout. `ActivityPlanRepo` holds its own for the same reason.
-  static final RateLimitPause activityReadPause = RateLimitPause();
-
   /// The quest's activities from the choreo course listing — the
   /// membership-aware read that may include the quest owner's private
   /// activities when [courseRoomId] names a course the caller has joined.
   ///
   /// Returns a [RateLimitedException] WITHOUT asking while
-  /// [activityReadPause] is running. The 429 that started the pause was
+  /// [RateLimitPause.choreo] is running. The 429 that started the pause was
   /// already captured once, so the suppression itself reports separately
   /// at `info` via [RateLimitPause.reportSuppressionOnce] — once per
   /// activation, not once per suppressed read (client#8507).
@@ -291,8 +280,8 @@ class QuestRepo {
     String questId, {
     String? courseRoomId,
   }) async {
-    if (activityReadPause.isPaused) {
-      activityReadPause.reportSuppressionOnce({
+    if (RateLimitPause.choreo.isPaused) {
+      RateLimitPause.choreo.reportSuppressionOnce({
         'quest_id': questId,
         'course_room_id': ?courseRoomId,
       });
@@ -324,7 +313,7 @@ class QuestRepo {
       );
     } catch (e, s) {
       // Before the report, so the pause is armed even if reporting throws.
-      activityReadPause.recordFailure(e);
+      RateLimitPause.choreo.recordFailure(e);
       ErrorHandler.logError(
         e: e,
         s: s,
