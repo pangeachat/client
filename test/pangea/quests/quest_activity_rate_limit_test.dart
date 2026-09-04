@@ -29,12 +29,12 @@ void main() {
   setUp(() {
     clock = DateTime(2026, 8, 14, 12);
     RateLimitPause.now = () => clock;
-    QuestRepo.activityReadPause.reset();
+    RateLimitPause.choreo.reset();
   });
 
   tearDownAll(() {
     RateLimitPause.now = DateTime.now;
-    QuestRepo.activityReadPause.reset();
+    RateLimitPause.choreo.reset();
   });
 
   PangeaHttpException http(int status) =>
@@ -158,7 +158,7 @@ void main() {
 
   group('QuestRepo.questActivityCards', () {
     test('is suppressed while the repo is paused', () async {
-      QuestRepo.activityReadPause.recordFailure(http(429));
+      RateLimitPause.choreo.recordFailure(http(429));
 
       final result = await QuestRepo.questActivityCards('quest-1');
 
@@ -175,7 +175,7 @@ void main() {
     test('the pause is repo-wide, not per quest', () async {
       // The whole defect: K quests each backing off independently still emit
       // K/cooldown requests, which at world-map K exceeds the budget alone.
-      QuestRepo.activityReadPause.recordFailure(http(429));
+      RateLimitPause.choreo.recordFailure(http(429));
 
       for (final questId in ['q-a', 'q-b', 'q-c']) {
         final result = await QuestRepo.questActivityCards(questId);
@@ -190,7 +190,7 @@ void main() {
     test(
       'suppression is time-boxed — reads resume once the pause lapses',
       () async {
-        QuestRepo.activityReadPause.recordFailure(http(429));
+        RateLimitPause.choreo.recordFailure(http(429));
         expect(
           (await QuestRepo.questActivityCards('quest-1')).error,
           isA<RateLimitedException>(),
@@ -203,7 +203,7 @@ void main() {
         // point the read proceeds to the real network path, which a plain test
         // binding cannot serve. What matters is that the gate has reopened — a
         // 429 must throttle the client, never permanently mute a surface.
-        expect(QuestRepo.activityReadPause.isPaused, isFalse);
+        expect(RateLimitPause.choreo.isPaused, isFalse);
       },
     );
   });
@@ -216,7 +216,7 @@ void main() {
       // this viewport query. They meter against the same `/choreo` activities
       // budget, so honouring a 429 on one while hammering the other honours
       // nothing.
-      QuestRepo.activityReadPause.recordFailure(http(429));
+      RateLimitPause.choreo.recordFailure(http(429));
 
       expect(
         (await ActivityMapRepo.bboxPins(bounds: bounds)).error,
@@ -231,7 +231,7 @@ void main() {
       // against. Since #8473 the "we did not ask" answer is a typed
       // [RateLimitedException] on the Result rather than a bare null, so the
       // same distinction now rides the one channel every other repo uses.
-      QuestRepo.activityReadPause.recordFailure(http(429));
+      RateLimitPause.choreo.recordFailure(http(429));
 
       final result = await ActivityMapRepo.bboxPins(bounds: bounds);
       expect(result.error, isA<RateLimitedException>());

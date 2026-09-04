@@ -9,6 +9,7 @@ import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
@@ -68,7 +69,10 @@ abstract class BaseRepo<
       return inflight;
     }
 
-    final future = _fetch(request);
+    // The RETRYING operation is what goes in the inflight cache, not the first
+    // attempt — a concurrent caller must join the retry and see its result,
+    // not be handed the 429 the attempt it joined already returned.
+    final future = _fetchThroughRateLimit(request);
     _inflightCache[key] = future;
     final result = await future;
 
@@ -119,7 +123,72 @@ abstract class BaseRepo<
   @visibleForTesting
   String? reportOnceKey(TRequest request, Object error) => null;
 
-  Future<Result<TResponse>> _fetch(TRequest request) async {
+  /// Whether a 429 on this repo's reads is worth waiting out and retrying once
+  /// before it is surfaced.
+  ///
+  /// Opt-in, and false by default, because waiting is only free where the
+  /// caller renders a loading state for the whole await and holds no shared
+  /// resource meanwhile. `ActivityPlanRepo` is the counter-example on both
+  /// counts: it dispatches behind a 6-slot in-flight bound, so a waiting read
+  /// would hold a slot the rest of the view needs, and it deliberately PARKS a
+  /// rate-limited key rather than re-attempting it (#8160). The word card's
+  /// two reads are the opposite — one await each, straight into a shimmer
+  /// (#8794).
+  @protected
+  @visibleForTesting
+  bool get retryOnRateLimit => false;
+
+  /// The longest a [retryOnRateLimit] repo will sit on a 429 before giving up
+  /// and surfacing it.
+  ///
+  /// The surface shows a loading state for the whole wait, so this trades how
+  /// often the retry lands against how long a shimmer stays honest. Observed
+  /// throttle episodes run 2–35s (Sentry CLIENT-EB8/EB6, 14d), and choreo's
+  /// limiter is per gunicorn worker with a fresh connection per request, so a
+  /// retry seconds later can land on a worker that still has budget. 5s covers
+  /// the short end of that without the card reading as hung; the long tail
+  /// still errors, which is what #8794 asks for ("still error out if fetch
+  /// time exceeds a reasonable limit").
+  ///
+  /// Mutable only as a test seam — the wait is wall-clock, so tests would
+  /// otherwise need real delays.
+  @visibleForTesting
+  static Duration rateLimitRetryWait = const Duration(seconds: 5);
+
+  /// [_fetch], plus the one bounded retry [retryOnRateLimit] asks for.
+  Future<Result<TResponse>> _fetchThroughRateLimit(TRequest request) async {
+    final result = await _fetch(request);
+    final error = result.isError ? result.asError!.error : null;
+    if (!retryOnRateLimit || !RateLimitPause.isRateLimited(error)) {
+      return result;
+    }
+
+    // Never longer than the budget actually needs. `remaining` is the full
+    // window today, so this is the cap in practice — but it already reads the
+    // shorter answer when the pause was armed by an earlier read, and it
+    // becomes the real wait the moment choreo starts sending `Retry-After`.
+    final pause = RateLimitPause.forError(error);
+    final remaining = pause?.remaining ?? rateLimitRetryWait;
+    await Future.delayed(
+      remaining < rateLimitRetryWait ? remaining : rateLimitRetryWait,
+    );
+
+    // The retry does not report on its own: the first attempt already logged
+    // this 429, and a second event per read would double today's warning
+    // volume for no new signal. A budget that is STILL throttled is reported
+    // once per activation instead, through the same gate the suppressing repos
+    // use (client#8507).
+    final retried = await _fetch(request, report: false);
+    if (retried.isError) {
+      pause?.reportSuppressionOnce({'storage_key': request.storageKey});
+    }
+    return retried;
+  }
+
+  Future<Result<TResponse>> _fetch(
+    TRequest request, {
+    bool report = true,
+  }) async {
     try {
       final Requests req = createRequests();
 
@@ -134,7 +203,12 @@ abstract class BaseRepo<
       return Result.value(responseFromJson(json));
     } catch (e, s) {
       Logs().w("Error: $e\n$s");
-      if (e is! UnsubscribedException) {
+      // Before the report, so the budget is armed even if reporting throws.
+      // Every repo arms it, not just the ones that wait on it: a 429 is a
+      // statement about the whole budget, and the read that happens to see it
+      // is rarely the read that spent it (#8794).
+      RateLimitPause.forError(e)?.recordFailure(e);
+      if (report && e is! UnsubscribedException) {
         final onceKey = reportOnceKey(request, e);
         if (onceKey != null) {
           ErrorHandler.logErrorOnce(

@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_pangea_controller.dart';
 
@@ -61,10 +62,17 @@ void main() {
   setUp(() {
     clock = DateTime(2026, 8, 14, 17, 58);
     ActivityPlanRepo.now = () => clock;
+    // The repo's per-key backoff and the shared budget pause each have their
+    // own clock seam; a test that advances only one leaves the other on wall
+    // time, so both point at this fake clock.
+    RateLimitPause.now = () => clock;
     repo.resetBackoff();
   });
 
-  tearDownAll(() => ActivityPlanRepo.now = DateTime.now);
+  tearDownAll(() {
+    ActivityPlanRepo.now = DateTime.now;
+    RateLimitPause.now = DateTime.now;
+  });
 
   /// Lets in-flight fetches settle so the queue drains and `_inFlight` returns
   /// to zero before the next test asserts on it.
@@ -112,7 +120,7 @@ void main() {
 
       // A 429 lands while the backlog waits. Draining it anyway would spend the
       // next window the moment the pause lifts: the same burst, spread thin.
-      repo.rateLimitedForTesting(const Duration(seconds: 60));
+      RateLimitPause.choreo.armForTesting(const Duration(seconds: 60));
       await settle();
 
       expect(
@@ -141,14 +149,14 @@ void main() {
       // The pause check used to live inside `if (!doRevalidate)`, which a
       // revalidating call skips wholesale, so it walked straight through an
       // armed pause. A 429 is a statement about RATE, not about a key.
-      repo.rateLimitedForTesting(const Duration(seconds: 60));
+      RateLimitPause.choreo.armForTesting(const Duration(seconds: 60));
 
       expect(repo.ensure('reval-1', l1: 'en', revalidate: true), isFalse);
       expect(repo.inFlightCount, 0);
     });
 
     test('a suppressed revalidate does not spend its once-per-session token', () {
-      repo.rateLimitedForTesting(const Duration(seconds: 60));
+      RateLimitPause.choreo.armForTesting(const Duration(seconds: 60));
       expect(repo.ensure('reval-2', l1: 'en', revalidate: true), isFalse);
 
       clock = clock.add(const Duration(seconds: 61));
