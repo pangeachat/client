@@ -137,6 +137,17 @@ class ManualPublishMedia extends CallMedia {
   }
 }
 
+/// A room with no local participant until a test says otherwise -- unlike
+/// `RoomWithParticipant`, which always answers a fixed one. Lets a test put
+/// a call in the exact state `_publishingAs`'s retry loop exists for: a
+/// device mid-connect, with nothing yet to publish through.
+class _RoomWithNoParticipantYet extends Room {
+  LocalParticipant? participant;
+
+  @override
+  LocalParticipant? get localParticipant => participant;
+}
+
 void main() {
   // The participant-present test drives a real `setMicrophoneEnabled`, which
   // reaches a platform channel. Without a binding that fails as an assertion
@@ -1471,6 +1482,68 @@ void main() {
         reason:
             'no correction was ever issued -- a released device is never '
             'corrected back open, whatever was last wanted',
+      );
+    });
+
+    // A THIRD cold review found this gap: a call that finds no participant
+    // yet (RoomWithParticipant cannot build one, since it always answers a
+    // fixed one -- this needs a room that starts with none) bails out
+    // BEFORE the generation stamp used to be written, so it never
+    // registered its own intent at all. A sibling still waiting in
+    // `_publishingAs`'s own retry loop would then find no newer generation
+    // once a participant finally arrived, and apply an intent the other
+    // side had already superseded.
+    test('a close that finds no participant yet still registers, so a slower '
+        'open cannot clobber it once one arrives', () async {
+      final participant = await participantJoinedAt(1787734800);
+      final room = _RoomWithNoParticipantYet();
+      final media = ManualPublishMedia(room: room);
+
+      // A: open, issued while there is no participant at all -- it sits
+      // in `_publishingAs`'s retry loop.
+      final a = media.setMicrophoneEnabled(true);
+      // B: close, issued moments later, ALSO finds no participant -- and
+      // must register its own intent regardless, since it never reaches
+      // its own publish call to do so any other way.
+      final b = media.setMicrophoneEnabled(false);
+      await pumpEventQueue();
+      expect(await b, isFalse, reason: 'nothing to close yet either');
+      expect(
+        media.requestedMic,
+        isEmpty,
+        reason: 'neither has a participant to publish through yet',
+      );
+
+      // The participant arrives inside A's retry window.
+      room.participant = participant;
+      // One real retry tick (100ms) so `_publishingAs` observes it.
+      await Future<void>.delayed(const Duration(milliseconds: 150));
+      await pumpEventQueue();
+      expect(
+        media.requestedMic,
+        [true],
+        reason:
+            "A finally reaches its own publish, asking for what IT "
+            'wanted',
+      );
+      media.resolveMic(0, published: true);
+      await pumpEventQueue();
+      expect(
+        media.requestedMic,
+        [true, false],
+        reason:
+            "A discovers B's intent superseded it and corrects to closed "
+            'rather than returning open',
+      );
+      media.resolveMic(1, published: true);
+
+      expect(await a, isFalse, reason: 'A was superseded by B');
+      expect(
+        media.micState,
+        isFalse,
+        reason:
+            'the microphone ends up matching B, the true latest '
+            'intent',
       );
     });
   });

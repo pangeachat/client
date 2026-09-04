@@ -576,12 +576,22 @@ class CallMedia {
     required _CaptureTransition transition,
     required Future<bool> Function(LocalParticipant, bool) publish,
   }) async {
+    // Stamped FIRST, before any await or early return -- a THIRD cold review
+    // found that stamping it after acquiring the participant left a call
+    // that never reaches its own publish (no participant yet -- see
+    // [_publishingAs]'s retry loop below -- or refused outright by the
+    // hold) invisible to a SIBLING transition still waiting on its own
+    // participant. That sibling would then apply an intent this one had
+    // already superseded once it finally acquired one, having never once
+    // checked a generation that had not moved because this call never
+    // touched it. Every call registers its own intent regardless of how it
+    // ends, so a still-waiting sibling always finds the truth moved.
+    final gen = ++transition.generation;
+    transition.wanted = on;
     if (on && captureHeld) return false;
     final participant = await _publishingAs(on);
     if (participant == null) return false;
     if (on && captureHeld) return false;
-    final gen = ++transition.generation;
-    transition.wanted = on;
     var applying = on;
     var published = await publish(participant, applying);
     // The truth as of right now: this device closed for good, or the hold,
