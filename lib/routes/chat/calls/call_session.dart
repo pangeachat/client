@@ -1,12 +1,19 @@
+// Dart imports:
 import 'dart:async';
 import 'dart:io' show Platform;
 
+// Flutter imports:
 import 'package:flutter/foundation.dart';
 
+// Package imports:
 import 'package:matrix/matrix.dart' show Logs;
 import 'package:permission_handler/permission_handler.dart';
 
+// Project imports:
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_upload_state_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
@@ -194,11 +201,52 @@ class CallSession extends ChangeNotifier {
       userL1: userL1,
       userL2: userL2,
     );
+    // WHO IS WRITING THIS HALF, READ ONCE HERE -- shared with the transcript
+    // half's own identical latch below, and for the identical reason: the
+    // audio recording's transaction id is keyed by (call key, sender,
+    // device) exactly as the transcript's is, and both have to be frozen for
+    // the whole call rather than re-read per attempt.
+    final audioSenderId = room.client.userID ?? '';
+    final audioDeviceId = room.client.deviceID;
+
+    // Owns this device's own call-audio-recording half from first frame to
+    // upload. A plain field, never overridden in a test the way [capture] and
+    // [record] are: it does nothing unless [capture] actually feeds it a run
+    // (see [CallCaptureService.audioRecording]), so an unused instance in a
+    // test that never starts a real recording costs nothing and touches
+    // neither the network nor the room.
+    final audioRecorder = CallAudioRecorder(
+      senderId: audioSenderId,
+      deviceId: audioDeviceId,
+      // Plain upload: Pangea creates its rooms unencrypted (see
+      // `transcript_writer.dart`'s own `encrypted` parameter for the
+      // precedent), so there is no attached-file key to produce and nothing
+      // downstream ever needs to decrypt this.
+      upload: room.client.uploadContent,
+      send: (content, txid) =>
+          room.sendEvent(content, type: CallAudioContent.relType, txid: txid),
+      // Read FRESH at finish, never latched at run start: the anchor is
+      // read off the SFU's join response, which can arrive after the
+      // recording has already started, and [media] is the one place both
+      // this and the transcript's own clockAnchor read it from -- reading it
+      // any earlier could leave this half with no anchor while the
+      // transcript half, reading the same source later, had a perfectly
+      // good one.
+      clockAnchor: () => media.clockAnchor,
+      // Durable, not merely in-memory: SharedPreferences, the same store
+      // `CallBreadcrumb` uses for the same reason -- a retry that only
+      // failed at the send step, possibly in a process that has since
+      // restarted, must not re-upload a recording that already landed.
+      uploadStateStore: const SharedPreferencesCallAudioUploadStateStore(),
+    );
+
     // Built here rather than inline below, because the half published at the
     // end of the call has to state how much audio the CAPTURE PATH lost --
     // audio that never became a chunk, so the sink has never heard of it and
     // no count it keeps can carry it.
-    final capture = captureOverride ?? CallCaptureService(sink: transcripts);
+    final capture =
+        captureOverride ??
+        CallCaptureService(sink: transcripts, audioRecording: audioRecorder);
 
     // WHO IS WRITING THIS HALF, READ ONCE, HERE, WHILE THE CALL IS BEING SET UP.
     //
@@ -302,6 +350,24 @@ class CallSession extends ChangeNotifier {
                 // record is deliberately free of anything to do with media,
                 // and this is the same seam that already knows the room.
                 clockAnchor: media.clockAnchor,
+              ),
+          // Finalises and, if this device is still the one carrying the
+          // recording, uploads and sends this device's call-audio half. See
+          // `CallCaptureService.wasCarryingBeforeLastStop` for why THAT is
+          // the fact this reads rather than `capture.isRecording`: by the
+          // time `CallRecord.finish` runs, `ActiveCall.hangUp` has already
+          // called `capture.stop()` (and `capture.finish()`), so
+          // `isRecording` can never answer the question this needs asked.
+          //
+          // `carriedOn` is read HERE, fresh, on every call -- `finish` is
+          // idempotent and this closure may run again on a retried credit --
+          // never cached, because `CallAudioRecorder.finish` is what re-
+          // checks the SAME fact again through its own upload, and a stale
+          // copy handed in once would defeat that.
+          publishCallAudio: ({required String? callKey}) =>
+              audioRecorder.finish(
+                carriedOn: capture.wasCarryingBeforeLastStop,
+                callKey: callKey,
               ),
           analytics: analytics,
         );

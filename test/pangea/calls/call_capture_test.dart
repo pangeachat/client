@@ -1,9 +1,13 @@
+// Dart imports:
 import 'dart:async';
 import 'dart:typed_data';
 
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart';
 
+// Project imports:
+import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
@@ -69,6 +73,49 @@ class RecordingSink implements CallAudioSink {
   /// existing tests, which are about closing rather than completeness, read
   /// unchanged.
   bool drained = true;
+}
+
+/// Records what [CallCaptureService] fed its call-audio-recording fan-out,
+/// so a test can assert on the SECOND consumer's own view of a call without
+/// caring what the transcript sink saw.
+class RecordingAudioSink implements CallAudioRecordingSink {
+  final List<Int16List> frames = [];
+  final List<({int runStartedAtMs, int sampleRate, int channels})> runsStarted =
+      [];
+  int runsEnded = 0;
+  final List<({bool carriedOn, String? callKey})> finishCalls = [];
+
+  /// Set by a test that wants to prove a failing sink cannot disturb the
+  /// transcript path sitting beside it.
+  bool throwOnFrame = false;
+
+  @override
+  void onRunStarted(int runStartedAtMs, int sampleRate, int channels) =>
+      runsStarted.add((
+        runStartedAtMs: runStartedAtMs,
+        sampleRate: sampleRate,
+        channels: channels,
+      ));
+
+  @override
+  void onFrame(Int16List samples) {
+    if (throwOnFrame) throw StateError('the recording sink refused a frame');
+    // Copied: the caller may reuse or clear its own buffer once this returns,
+    // exactly as a real recorder's own append would need to copy rather than
+    // hold a view over samples it does not own past this call.
+    frames.add(Int16List.fromList(samples));
+  }
+
+  @override
+  void onRunEnded() => runsEnded++;
+
+  @override
+  Future<void> finish({
+    required bool carriedOn,
+    required String? callKey,
+  }) async {
+    finishCalls.add((carriedOn: carriedOn, callKey: callKey));
+  }
 }
 
 /// Stands in for a published track. [addAudioRenderer] is the only member the
@@ -169,11 +216,13 @@ void main() {
   CallCaptureService service({
     RecordingSink? withSink,
     CallAudioTap? withTap,
+    CallAudioRecordingSink? withAudioRecording,
     Duration? timeout,
     Duration? detach,
   }) => CallCaptureService(
     sink: withSink ?? sink,
     tap: withTap,
+    audioRecording: withAudioRecording,
     deliveryTimeout: timeout ?? const Duration(seconds: 30),
     detachTimeout: detach ?? const Duration(seconds: 5),
     nowMs: clock.call,
@@ -616,6 +665,396 @@ void main() {
       await s.stop();
       expect(sink.delivered, isNotEmpty, reason: 'speech after unmute records');
     });
+  });
+
+  group('the call-audio-recording fan-out', () {
+    test('is fed the same samples the transcript chunker sees', () async {
+      final audio = RecordingAudioSink();
+      final s = service(withAudioRecording: audio);
+      await s.start(track);
+      track.emit(20);
+      await s.stop();
+
+      expect(audio.frames, isNotEmpty);
+      final totalSamples = audio.frames.fold<int>(0, (n, f) => n + f.length);
+      expect(
+        totalSamples,
+        captureSampleRate * 20 ~/ 1000,
+        reason: 'the fan-out sees exactly the samples the tap delivered',
+      );
+    });
+
+    test(
+      'replaces muted samples with digital silence rather than dropping them',
+      () async {
+        // Unlike the transcript chunker, which drops a muted frame outright
+        // (see the mute group above), the recording keeps a CONTINUOUS file --
+        // so a mute has to read as silence in the bytes, not as a gap in them.
+        final audio = RecordingAudioSink();
+        final s = service(withAudioRecording: audio);
+        await s.start(track);
+        s.setMuted(true);
+        track.emit(20);
+        await pumpEventQueue();
+
+        expect(
+          audio.frames,
+          isNotEmpty,
+          reason: 'a muted frame still reaches the recording fan-out',
+        );
+        for (final frame in audio.frames) {
+          expect(
+            frame.every((sample) => sample == 0),
+            isTrue,
+            reason: 'every sample of a muted frame must be digital silence',
+          );
+        }
+      },
+    );
+
+    test(
+      'never receives the peer -- only this device\'s own outbound tap',
+      () async {
+        // There is only one tap in this whole pipeline (see [FakeTrack]) and the
+        // fan-out is fed exclusively from its callback, so there is no code path
+        // by which anything but this device's own post-AEC outbound audio could
+        // reach it. Pinned here as a straight equality with what the transcript
+        // sink -- fed from the identical callback -- itself received unmuted.
+        final audio = RecordingAudioSink();
+        final s = service(withAudioRecording: audio);
+        await s.start(track);
+        track.emit(20);
+        await s.stop();
+
+        final delivered = sink.delivered.single.pcm;
+        final fedBytes = Uint8List.view(
+          audio.frames.single.buffer,
+          audio.frames.single.offsetInBytes,
+          audio.frames.single.lengthInBytes,
+        );
+        expect(fedBytes, delivered);
+      },
+    );
+
+    test('opens a new run exactly when the transcript chunker does', () async {
+      final audio = RecordingAudioSink();
+      final s = service(withAudioRecording: audio);
+      await s.start(track);
+      track.emit(20);
+      await s.stop();
+
+      await s.start(track);
+      track.emit(20);
+      await s.stop();
+
+      expect(
+        audio.runsStarted.map((r) => r.runStartedAtMs).toList(),
+        runStarts,
+        reason: 'both consumers of one tap must agree on when each run began',
+      );
+      expect(audio.runsStarted.map((r) => r.sampleRate).toSet(), {
+        captureSampleRate,
+      });
+      expect(audio.runsStarted.map((r) => r.channels).toSet(), {
+        captureChannels,
+      });
+    });
+
+    test('ends a run exactly when the transcript chunker is flushed', () async {
+      final audio = RecordingAudioSink();
+      final s = service(withAudioRecording: audio);
+      await s.start(track);
+      track.emit(20);
+      await s.stop();
+      expect(audio.runsEnded, 1);
+
+      await s.start(track);
+      track.emit(20);
+      await s.stop();
+      expect(audio.runsEnded, 2);
+    });
+
+    test(
+      'a mute does NOT end the recording fan-out\'s run, unlike the transcript\'s',
+      () async {
+        // The transcript chunker's own run DOES end on a mute -- a mute is a
+        // gap in the transcript, which is what a mute should be. The
+        // recording wants the OPPOSITE: a CONTINUOUS file, with silence
+        // standing in for the mute (see the "replaces muted samples with
+        // digital silence" test above). An earlier version of this file tied
+        // the recording's run boundary to the transcript chunker's, so a
+        // mute quietly ended the recording's run too -- and, worse, a call
+        // that started muted (or whose first frame was muted) never opened
+        // one at all, because the chunker it was borrowed from does not
+        // exist while muted. This pins the fix: exactly ONE run, spanning
+        // the whole mute/unmute cycle.
+        final audio = RecordingAudioSink();
+        final s = service(withAudioRecording: audio);
+        await s.start(track);
+        track.emit(20);
+        s.setMuted(true);
+        await pumpEventQueue();
+        expect(
+          audio.runsEnded,
+          0,
+          reason: 'muting must not end the recording\'s own run',
+        );
+
+        s.setMuted(false);
+        track.emit(20);
+        await s.stop(settleDeliveries: false);
+        expect(
+          audio.runsStarted,
+          hasLength(1),
+          reason:
+              'the mute/unmute cycle is still the SAME run for the recording',
+        );
+        expect(audio.runsEnded, 1, reason: 'the stop itself still ends it');
+      },
+    );
+
+    test(
+      'a call whose very first frame is muted still opens a generation, silently',
+      () async {
+        // The bug this pins: the recording's run boundary used to be gated
+        // on the transcript chunker's own creation, which is itself gated on
+        // NOT being muted -- so a call muted from the start (or muted before
+        // its first unmuted frame) never called [onRunStarted] at all, and
+        // every early frame was dropped by [CallAudioRecorder.onFrame]'s own
+        // "no generation yet" guard. A recording that should have held pure
+        // silence held nothing, and if never unmuted, would send no half at
+        // all despite this device carrying the recording the whole time.
+        final audio = RecordingAudioSink();
+        final s = service(withAudioRecording: audio);
+        await s.start(track);
+        s.setMuted(true);
+        track.emit(20);
+        await pumpEventQueue();
+
+        expect(
+          audio.runsStarted,
+          hasLength(1),
+          reason: 'a run must open even though every frame so far is muted',
+        );
+        expect(audio.frames, isNotEmpty);
+        for (final frame in audio.frames) {
+          expect(frame.every((sample) => sample == 0), isTrue);
+        }
+      },
+    );
+
+    test('the FIRST frame of a run is not dropped by the fan-out', () async {
+      // A second, independent regression the SAME reordering fixed: the
+      // fan-out used to call `onFrame` before `onRunStarted` (the latter
+      // tied to the transcript chunker's own, later creation), so
+      // `CallAudioRecorder.onFrame`'s own "no generation yet" guard
+      // dropped the very first frame of EVERY run, muted or not.
+      final audio = RecordingAudioSink();
+      final s = service(withAudioRecording: audio);
+      await s.start(track);
+      track.emit(20);
+      await pumpEventQueue();
+
+      expect(audio.runsStarted, hasLength(1));
+      expect(
+        audio.frames,
+        isNotEmpty,
+        reason: 'the first frame of the run must reach the sink',
+      );
+    });
+
+    test(
+      'aligns the run start to the frame the sink actually receives first',
+      () async {
+        final audio = RecordingAudioSink();
+        final s = service(withAudioRecording: audio);
+        await s.start(track);
+        track.emit(20);
+        await s.stop(settleDeliveries: false);
+
+        expect(
+          audio.runsStarted.single.runStartedAtMs,
+          runStarts.single,
+          reason:
+              'the alignment must name the instant that frame was actually '
+              'recorded, not one dropped before the generation existed',
+        );
+      },
+    );
+
+    test(
+      'a failing sink is dropped and logged; it never disturbs the transcript',
+      () async {
+        final audio = RecordingAudioSink()..throwOnFrame = true;
+        final s = service(withAudioRecording: audio);
+        await s.start(track);
+        for (var i = 0; i < 30; i++) {
+          track.emit(20);
+        }
+        await pumpEventQueue();
+        expect(
+          sink.delivered,
+          isNotEmpty,
+          reason:
+              'a throwing second consumer must not slow or break the STT path',
+        );
+        await expectLater(s.stop(), completes);
+      },
+    );
+
+    test(
+      'receives nothing for microphone audio arriving after a hangup began',
+      () async {
+        // Mirrors "drops frames that arrive after the stop has begun" above,
+        // for the SECOND consumer of the same tap: post-hangup microphone
+        // audio must not reach the recording any more than it reaches the
+        // transcript.
+        final tap = _SlowDetachTap();
+        final audio = RecordingAudioSink();
+        final s = service(withTap: tap, withAudioRecording: audio);
+        await s.start(track);
+
+        final speech = Int16List(12000)..fillRange(0, 12000, 8000);
+        tap.onFrames!(speech, 24000, 1);
+        await pumpEventQueue();
+        final beforeHangup = audio.frames.length;
+
+        final stopping = s.stop();
+        await pumpEventQueue();
+        tap.onFrames!(speech, 24000, 1);
+        tap.onFrames!(speech, 24000, 1);
+        await pumpEventQueue();
+
+        tap.finishDetach();
+        await stopping;
+
+        expect(
+          audio.frames.length,
+          beforeHangup,
+          reason:
+              'post-hangup microphone audio must not reach the recording either',
+        );
+      },
+    );
+  });
+
+  group('wasCarryingBeforeLastStop', () {
+    test('is false before any stop has ever run', () {
+      final s = service();
+      expect(s.wasCarryingBeforeLastStop, isFalse);
+    });
+
+    test('is true when a live recording is stopped for a hangup', () async {
+      final s = service();
+      await s.start(track);
+      track.emit(20);
+      await s.stop(settleDeliveries: false);
+      expect(s.wasCarryingBeforeLastStop, isTrue);
+    });
+
+    test(
+      'is false when finish is called on a device that never recorded',
+      () async {
+        final s = service();
+        await s.finish();
+        expect(s.wasCarryingBeforeLastStop, isFalse);
+      },
+    );
+
+    test('a mid-call HANDOVER stop does not latch this at all', () async {
+      // `stop()`'s default (`settleDeliveries: true`) is what a recorder
+      // handover uses (see `stop`'s own docs) -- a device standing aside
+      // for a sibling, not the call ending. It WAS carrying a moment ago,
+      // but that is not an answer to "was it still carrying when the call
+      // ended", and a handover has no business writing it.
+      final s = service();
+      await s.start(track);
+      track.emit(20);
+      await s.stop(); // default: a handover, not a hangup
+      expect(
+        s.wasCarryingBeforeLastStop,
+        isFalse,
+        reason: 'a handover must not report this device as the carrier',
+      );
+    });
+
+    test('THE BUG: a device that lost the election and was never re-elected '
+        'must not report carrying at the true end of the call', () async {
+      // The exact defect a cold review caught. `_stop`'s real work always
+      // sets `_running` true->false, whichever kind of stop it is -- so
+      // capturing "was running before THIS stop" on every real stop, with
+      // no regard for WHICH one, latched `true` on the handover below and
+      // then had nothing left to correct it: by the time the call's own
+      // hangup-shaped stop runs, the tap is already fully released, the
+      // early-return guard fires, and the write site is never reached
+      // again. The fix gates the write on `settleDeliveries: false`
+      // (hangup-shaped) rather than on "did real work", so the handover
+      // below is IGNORED rather than latched, and the later hangup-shaped
+      // stop -- even though it is itself a no-op by the time it runs --
+      // correctly leaves the flag at its untouched, honest `false`.
+      final s = service();
+      await s.start(track);
+      track.emit(20);
+      await s.stop(); // lost the election mid-call; never restarted
+      expect(s.wasCarryingBeforeLastStop, isFalse);
+
+      // The call ends. `finish()` calls `stop(settleDeliveries: false)` as
+      // its own first act; by now there is nothing left to stop, but that
+      // must not be misread as "this device was carrying".
+      await s.finish();
+      expect(
+        s.wasCarryingBeforeLastStop,
+        isFalse,
+        reason:
+            'a device displaced mid-call and never re-elected did not '
+            'carry the recording to the end, and must not upload a '
+            'stale, superseded stretch of it',
+      );
+    });
+
+    test(
+      'carrying right up to a hangup-shaped stop is still carrying',
+      () async {
+        final s = service();
+        await s.start(track);
+        track.emit(20);
+        await s.stop(settleDeliveries: false);
+        expect(s.wasCarryingBeforeLastStop, isTrue);
+
+        // A REDUNDANT hangup-shaped stop -- exactly what `finish()` issues
+        // right after `ActiveCall.hangUp`'s own explicit one -- must not
+        // overwrite the correct `true` with a stale `false`: by the time it
+        // runs, everything is already clean and the early-return guard fires
+        // before the write site is ever reached.
+        await s.stop(settleDeliveries: false);
+        expect(s.wasCarryingBeforeLastStop, isTrue);
+
+        await s.finish();
+        expect(
+          s.wasCarryingBeforeLastStop,
+          isTrue,
+          reason: 'carrying right up to the call ending is still carrying',
+        );
+      },
+    );
+
+    test(
+      'a handoff and a handback within one call still reports correctly',
+      () async {
+        // Lost the election, regained it, and carried to the true end -- the
+        // sequence a mid-call handoff and handback actually produces.
+        final s = service();
+        await s.start(track);
+        track.emit(20);
+        await s.stop(); // handover away
+        expect(s.wasCarryingBeforeLastStop, isFalse);
+
+        await s.start(track); // re-elected
+        track.emit(20);
+        await s.finish(); // carries to the true end
+        expect(s.wasCarryingBeforeLastStop, isTrue);
+      },
+    );
   });
 
   group('a hangup that catches the tap mid-detach', () {

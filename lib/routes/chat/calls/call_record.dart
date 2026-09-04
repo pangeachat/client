@@ -1,7 +1,10 @@
+// Dart imports:
 import 'dart:convert';
 
+// Package imports:
 import 'package:matrix/matrix.dart';
 
+// Project imports:
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
@@ -57,6 +60,19 @@ typedef TranscriptPublisher =
       String? langCode,
     });
 
+/// Publishes this device's call-audio half, if it recorded one. See
+/// `call_audio_recorder.dart`'s `CallAudioRecorder.finish`, which is what a
+/// real caller wires this to.
+///
+/// Unlike [TranscriptPublisher], this carries no recording of its own to
+/// hand over -- [callKey] is the only fact [CallRecord] itself has that the
+/// recorder could not already have latched. Whether anything is actually
+/// uploaded or sent is entirely the wired closure's decision: [CallRecord]
+/// calls this UNCONDITIONALLY, on the same terms it calls
+/// [publishTranscript], and trusts the closure to gate on `carriedOn` itself.
+/// See [_publishCallAudio] for why the gate cannot live here instead.
+typedef CallAudioPublisher = Future<void> Function({required String? callKey});
+
 class CallRecord {
   final CallEventSender sendEvent;
 
@@ -66,6 +82,12 @@ class CallRecord {
   /// unchanged, and so a deployment can leave transcripts unpublished without
   /// touching this class.
   final TranscriptPublisher? publishTranscript;
+
+  /// Publishes this device's call-audio half, if the feature is wired up.
+  /// Optional for the same reason [publishTranscript] is: every existing
+  /// construction of a record keeps working unchanged, and a deployment can
+  /// leave the recording unpublished without touching this class.
+  final CallAudioPublisher? publishCallAudio;
   final CallAnalyticsSink analytics;
   final CallTranscriptSink transcripts;
   final String roomId;
@@ -101,6 +123,7 @@ class CallRecord {
     required this.transcripts,
     required this.roomId,
     this.publishTranscript,
+    this.publishCallAudio,
   });
 
   /// Writes the call and records what was said.
@@ -262,6 +285,11 @@ class CallRecord {
     // it was unreachable whenever an earlier finish had credited without a
     // call key, which is exactly the sequence the ordinary lifecycle produces.
     await _publishTranscript(callKey, captureRefused);
+    // Beside the transcript publish, on the same unconditional terms: this
+    // runs whether or not this device ever carried the recording, and
+    // whether or not the call even connected. See [_publishCallAudio] for
+    // why the gate belongs in the wired closure and not here.
+    await _publishCallAudio(callKey);
 
     if (_credited) return;
     // Concurrent callers join the in-flight attempt rather than being dropped.
@@ -573,6 +601,35 @@ class CallRecord {
       'call_record.transcript_not_published';
 
   bool _published = false;
+
+  /// Calls [publishCallAudio], swallowing any failure.
+  ///
+  /// Unconditional, on the same terms [_publishTranscript] is called
+  /// unconditionally above it: this runs on EVERY device's `finish()`,
+  /// including one that never carried the recording at all, and including
+  /// one for a call that never connected. `finish()` is reached this way
+  /// from `CallSession`'s teardown regardless -- see
+  /// `CallCaptureService.wasCarryingBeforeLastStop`'s own docs for why that
+  /// is unavoidable rather than a bug this class could fix by checking
+  /// something first.
+  ///
+  /// The gate belongs in the wired closure, never here, because ONLY the
+  /// closure -- `CallAudioRecorder.finish` -- can answer "was this device
+  /// carrying" at the one moment that answer is trustworthy, and can go on
+  /// re-checking it through an upload still in flight. A gate written here
+  /// instead would have to trust a snapshot taken earlier and handed in,
+  /// which is exactly the gap the recording feature's own design docs warn
+  /// against inheriting from this method's identical-looking transcript
+  /// sibling.
+  Future<void> _publishCallAudio(String? callKey) async {
+    final publish = publishCallAudio;
+    if (publish == null) return;
+    try {
+      await publish(callKey: callKey);
+    } catch (e, s) {
+      Logs().w('Publishing the call audio half failed', e, s);
+    }
+  }
 
   /// How long a call in the timeline lasted, read from its content.
   ///

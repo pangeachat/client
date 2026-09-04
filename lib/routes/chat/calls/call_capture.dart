@@ -1,11 +1,16 @@
+// Dart imports:
 import 'dart:async';
 import 'dart:typed_data';
 
+// Flutter imports:
 import 'package:flutter/foundation.dart';
 
+// Package imports:
 import 'package:livekit_client/livekit_client.dart';
 import 'package:matrix/matrix.dart';
 
+// Project imports:
+import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
@@ -119,6 +124,19 @@ class CallCaptureService {
   final CallAudioTap tap;
   final Duration deliveryTimeout;
 
+  /// A second, independent consumer of this device's own outbound audio: the
+  /// call-audio-recording half. Optional, so every existing construction of a
+  /// recorder keeps working unchanged and a deployment can leave the feature
+  /// unwired without touching this class.
+  ///
+  /// Fed from the exact same tap this class already owns, never a second
+  /// attach: a tap is exclusive per platform (see [PostEchoCancellationTap],
+  /// [TrackRendererTap]) and a second `tap.open` would either be refused or
+  /// double-count the learner's own audio. See [_onFrames] and [_endRun] for
+  /// where this is called, and [wasCarryingBeforeLastStop] for the one fact
+  /// about this device's own lifecycle it needs that nothing else exposes.
+  final CallAudioRecordingSink? audioRecording;
+
   /// How long a tap is given to detach. Injected so a test need not wait it out.
   final Duration detachTimeout;
 
@@ -162,6 +180,23 @@ class CallCaptureService {
 
   PcmChunker? _chunker;
   DetachTap? _detach;
+
+  /// The format the currently-open call-audio-recording run was opened with,
+  /// or null when no run is open for it right now.
+  ///
+  /// Tracked SEPARATELY from [_chunker] on purpose. The transcript chunker's
+  /// own run ends on a mute -- a mute is a gap in the transcript, which is
+  /// what a mute should be -- but the recording's run must NOT: it wants a
+  /// CONTINUOUS file with silence standing in for a mute, so gating the
+  /// recording's own run-boundary on [_chunker] (as an earlier version did)
+  /// meant a call that started muted, or was muted for its very first frame,
+  /// never opened a recording generation at all -- [_chunker] simply never
+  /// existed yet to compare against, `forThisRun` was false, and the whole
+  /// branch that would have opened one was never reached. This field is
+  /// updated independently, gated on [recorderLive] alone, so a muted call's
+  /// very first frame still opens a generation and records silence from the
+  /// first millisecond onward.
+  ({int sampleRate, int channels})? _audioRunFormat;
 
   /// Whether the current stretch has stopped taking frames.
   ///
@@ -381,6 +416,7 @@ class CallCaptureService {
   CallCaptureService({
     required this.sink,
     CallAudioTap? tap,
+    this.audioRecording,
     this.deliveryTimeout = _deliveryTimeout,
     this.detachTimeout = _detachTimeout,
     int Function()? nowMs,
@@ -421,6 +457,34 @@ class CallCaptureService {
   final List<_UnreleasedTap> _unreleased = [];
 
   bool get isRecording => _running;
+
+  /// Whether this device was still attached and recording the instant its
+  /// MOST RECENT HANGUP-SHAPED stop began (`stop(settleDeliveries: false)`)
+  /// -- captured once, inside [_stop], before that stop's own work could
+  /// change [_running]. False until such a stop actually does real work.
+  ///
+  /// This exists because [isRecording] cannot answer "was this device still
+  /// carrying the recording when the call ended": [finish] calls [stop] as
+  /// its own first act, and by the time finish's own stop has run,
+  /// [isRecording] is never true, whatever it was a moment before. Whoever
+  /// decides whether to publish [audioRecording]'s half has to read THIS
+  /// instead, and has to read it from a point that is guaranteed to run after
+  /// the call's own final stop -- see `CallRecord.finish`, which is reached
+  /// only after `ActiveCall.hangUp` (which calls [stop] and then
+  /// [CallCaptureService.finish]) has already completed.
+  ///
+  /// SETTLE-SHAPED (a mid-call handover, the default `settleDeliveries:
+  /// true`) stops are deliberately IGNORED here, not merely narrowed: a
+  /// device that lost the election and is never re-elected again would
+  /// otherwise leave this latched at a stale `true` forever, because nothing
+  /// else ever runs `_stop`'s real work a second time to correct it -- the
+  /// later hangup-shaped stop finds everything already clean and short-
+  /// circuits before reaching this line. See [_stop]'s own comment at the
+  /// write site for the full argument, and `call_capture_test.dart`'s
+  /// "reflects the LAST HANGUP-SHAPED stop" group for the mutation-proven
+  /// scenario this fixes.
+  bool get wasCarryingBeforeLastStop => _wasCarryingBeforeLastStop;
+  bool _wasCarryingBeforeLastStop = false;
 
   /// Whether audio is ACTUALLY reaching this recorder right now.
   ///
@@ -848,6 +912,16 @@ class CallCaptureService {
     _chunker = null;
     if (chunker == null) return;
 
+    // Deliberately NOT where the call-audio-recording sink's own run ends.
+    // This method is called for a MUTE too (see the five paths above), and a
+    // mute must not end that run: it wants a CONTINUOUS file with silence
+    // standing in for a mute, where the transcript wants a gap. See
+    // [_audioRunFormat] and [_endAudioRun], which fire on exactly the three
+    // paths above that ARE an absence of capture for the recording as well
+    // -- a stop, a tap that failed to open, and a format change -- and skip
+    // the two that are not: a mute, and a start that overtook a stop (which
+    // never delivered a frame to begin a run with).
+
     final tail = chunker.flush();
     // Remembered before the chunker is let go, so a later stretch of the same
     // call numbers on from here.
@@ -892,6 +966,32 @@ class CallCaptureService {
       return;
     }
     _hand(tail);
+  }
+
+  /// Ends the call-audio-recording sink's own run, if one is open.
+  ///
+  /// Deliberately NOT called from [_endRun]: that method also ends a run for
+  /// a MUTE, and this one must not, because the recording wants a CONTINUOUS
+  /// file with silence standing in for a mute rather than a break. Called
+  /// instead from the specific places that ARE an absence of capture for the
+  /// recording too -- a stop actually doing its work, and a format change
+  /// detected in [_onFrames] -- so [_audioRunFormat] and [_endRun]'s own
+  /// [_chunker] can legitimately disagree about whether a run is open right
+  /// now (muted) while never disagreeing about when one truly ends.
+  ///
+  /// Idempotent: a no-op when [_audioRunFormat] is already null, so calling
+  /// this from more than one path that might both apply to the same instant
+  /// costs nothing.
+  void _endAudioRun() {
+    if (_audioRunFormat == null) return;
+    _audioRunFormat = null;
+    final recordingSink = audioRecording;
+    if (recordingSink == null) return;
+    try {
+      recordingSink.onRunEnded();
+    } catch (e, s) {
+      Logs().w('The call audio recording sink failed to end a run', e, s);
+    }
   }
 
   /// Where a run that begins after an ABSENCE of capture sits, in absolute Unix
@@ -974,7 +1074,16 @@ class CallCaptureService {
     // because that audio arrives afterwards. A callback that carries the
     // session it was opened for can only ever feed that one, which closes a
     // hole that predates the positions below.
-    final forThisRun = session == _session && _running && !_stopping && !_muted;
+    // The narrower of two questions this callback asks about the same frame.
+    // [recorderLive] is "is there a stretch running at all" -- live, not
+    // stopping, not a stale session -- and it is ALSO what the call-audio-
+    // recording sink below is fed on, mute included. [forThisRun] narrows
+    // that once more, by mute, for the transcript chunker alone: a mute is a
+    // gap in the transcript, but not a gap in a continuous recording (see the
+    // fan-out below), so the two consumers of this tap part ways on exactly
+    // that one term.
+    final recorderLive = session == _session && _running && !_stopping;
+    final forThisRun = recorderLive && !_muted;
 
     // Counted ABOVE that gate, because a report that audio was lost is not the
     // audio. Every reason the samples are refused below — a hangup already
@@ -1016,6 +1125,84 @@ class CallCaptureService {
     // can return: it is this frame's mute state that governs the NEXT frame's
     // dropped interval, whether or not this frame's own samples are recorded.
     _mutedAsOfLastFrame = _muted;
+
+    // Fed to the call-audio-recording sink whenever this run is LIVE, mute
+    // included -- ahead of the `!forThisRun` return below, because a muted
+    // frame is exactly the case that return exists to skip for the
+    // TRANSCRIPT chunker and NOT the case this second consumer wants skipped.
+    // The samples themselves are replaced with silence while muted: the
+    // outbound track this device publishes goes silent under a mute already,
+    // and doing the same here makes a recording made by the OTHER tap
+    // implementation -- the one platform where the raw capture does not
+    // reflect the mute (see [PostEchoCancellationTap]) -- agree with it
+    // rather than leaking the muted learner's real words into a file meant to
+    // hold only what they actually sent.
+    //
+    // Never fed after a stop, a stale session, or a leaked tap's late frame:
+    // [recorderLive] excludes all three, on the same terms [forThisRun]
+    // already does for the transcript path, so the two consumers of this tap
+    // agree on where a run's audio begins and ends. A second consumer's own
+    // failure is caught here and logged rather than allowed to reach the
+    // transcript path below it in this same callback.
+    if (recorderLive) {
+      final recordingSink = audioRecording;
+      if (recordingSink != null) {
+        // The recording's OWN run boundary -- tracked in [_audioRunFormat],
+        // never in [_chunker] -- because [_chunker] does not exist while
+        // muted, and a call whose very first frame (or first several) arrive
+        // muted must still open a generation and record silence from that
+        // first millisecond, not from whenever the learner first unmutes.
+        // See [_audioRunFormat]'s own docs for the full argument.
+        //
+        // Detected and fired BEFORE [onFrame] below, never after: a
+        // generation has to exist before this frame can be appended to it. An
+        // earlier ordering fed the frame first and only opened the run
+        // afterwards (tied to the transcript chunker's own creation, further
+        // down), which silently dropped the FIRST frame of every run, muted
+        // or not, and additionally never opened anything at all for a
+        // muted-from-the-start call.
+        final currentFormat = (sampleRate: sampleRate, channels: channels);
+        if (_audioRunFormat != currentFormat) {
+          // A format change ends the OLD run before this one begins -- a WAV
+          // file is one fixed format for its whole length. A no-op when no
+          // run was open yet (the ordinary first-frame case).
+          _endAudioRun();
+          _audioRunFormat = currentFormat;
+          try {
+            recordingSink.onRunStarted(
+              // The SAME conversion the transcript chunker uses for its own
+              // `runStartedAtMs` (see [_runStartsAt]), called here directly
+              // rather than borrowed from a chunker that may not exist yet
+              // while muted. Safe to call more than once per callback: the
+              // underlying wall-clock/monotonic base latches once, on
+              // whichever call reaches it first, and every call after that --
+              // this one, or the transcript chunker's own later on an
+              // unmuted frame -- computes its own correct position from that
+              // one shared base.
+              _runStartsAt(samples.length, sampleRate, channels),
+              sampleRate,
+              channels,
+            );
+          } catch (e, s) {
+            Logs().w(
+              'The call audio recording sink failed to start a run',
+              e,
+              s,
+            );
+          }
+        }
+        try {
+          recordingSink.onFrame(_muted ? Int16List(samples.length) : samples);
+        } catch (e, s) {
+          Logs().w(
+            'The call audio recording sink failed on a frame; dropping it '
+            'rather than disturbing the transcript',
+            e,
+            s,
+          );
+        }
+      }
+    }
 
     if (!forThisRun) return;
 
@@ -1072,6 +1259,14 @@ class CallCaptureService {
       channels,
       _runStartsAt(samples.length, sampleRate, channels),
     );
+
+    // The call-audio-recording sink's own run boundary is handled entirely
+    // above, ahead of the `!forThisRun` return -- see [_audioRunFormat] and
+    // the block that opens with `if (recorderLive)`. It is deliberately NOT
+    // re-derived here from [held]/[chunker]: that pairing is mute-gated (this
+    // line is never reached while muted) and so cannot be the recording's own
+    // run boundary, which must not break on a mute.
+
     for (final chunk in chunker.add(samples)) {
       _hand(chunk);
     }
@@ -1148,7 +1343,11 @@ class CallCaptureService {
   /// and a memoised whole would have made the second caller inherit the first's
   /// choice, which is how a hangup came to wait out a handover's drain.
   Future<void> stop({bool settleDeliveries = true}) async {
-    await (_stopped ??= _stop().whenComplete(() => _stopped = null));
+    await (_stopped ??= _stop(settleDeliveries: settleDeliveries).whenComplete(
+      () {
+        _stopped = null;
+      },
+    ));
     if (settleDeliveries) await _settle(_settleDeliveriesWithin);
   }
 
@@ -1164,7 +1363,7 @@ class CallCaptureService {
     }
   }
 
-  Future<void> _stop() async {
+  Future<void> _stop({required bool settleDeliveries}) async {
     // Checked against the taps as well as the chunker: a call can be attached
     // with no chunker yet, because the chunker is not built until audio actually
     // arrives, and returning early there would leave the tap attached. A tap
@@ -1184,6 +1383,31 @@ class CallCaptureService {
         _releasing == 0) {
       return;
     }
+    // Captured HERE, before anything below can change [_running] -- see
+    // [wasCarryingBeforeLastStop] -- and ONLY for a HANGUP-shaped stop
+    // (`settleDeliveries: false`; see [stop]'s own docs: a handover wants to
+    // settle, a hangup does not, and that is precisely the fact this needs).
+    //
+    // A mid-call HANDOVER reaching this far means the device WAS carrying,
+    // but is being asked to stand aside for a sibling -- the opposite of
+    // "still carrying when the call ended" -- and if it is never re-elected,
+    // NOTHING ELSE ever runs this line again: a later hangup-shaped stop
+    // finds everything already clean and hits the early return above,
+    // without reaching this line at all. Recording the handover's `true`
+    // here would leave that stale reading standing forever, which is exactly
+    // the bug a cold review caught: a device that lost the election minutes
+    // before hangup still reported itself as the carrier at the end.
+    //
+    // A REDUNDANT hangup-shaped stop -- `finish()` calls `stop()` once more
+    // after `ActiveCall.hangUp`'s own explicit one has already run -- is safe
+    // to skip too, but for the opposite reason: by then everything is already
+    // clean, so it hits the SAME early return above and never reaches this
+    // line either. Only the FIRST call that actually does real work, with
+    // `settleDeliveries: false`, ever writes here -- which is exactly the
+    // hangup's own stop, whatever it finds `_running` to be at that instant.
+    if (!settleDeliveries) {
+      _wasCarryingBeforeLastStop = _running;
+    }
     _session++;
 
     // Stop taking frames NOW, before the detach, not after it. Detaching a tap
@@ -1196,6 +1420,11 @@ class CallCaptureService {
     // to this line is already in the chunker and is flushed below.
     _stopping = true;
     _running = false;
+    // The recording's own run ends HERE too -- no more frames are coming for
+    // this stretch, on the same terms the comment above just argued for the
+    // transcript's. See [_endAudioRun] for why this is not folded into
+    // [_endRun] itself.
+    _endAudioRun();
 
     // Taken and cleared BEFORE it is awaited. Leaving it set across the await
     // let a second stop past the guard above and detach the same tap twice.
