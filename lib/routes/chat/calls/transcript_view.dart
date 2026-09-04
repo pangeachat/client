@@ -4,6 +4,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
+import 'package:fluffychat/routes/chat/audio_player.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
@@ -102,13 +105,22 @@ class CallTranscriptView extends StatefulWidget {
 class _CallTranscriptViewState extends State<CallTranscriptView> {
   late Future<CallTranscript> _transcript;
 
+  /// The call's saved audio, fetched alongside the transcript rather than
+  /// after it -- see [_load] -- so a slow recordings read never adds its own
+  /// wait on top of the transcript's.
+  ///
+  /// Never fails: [_loadRecordings] catches and logs, because a recording is
+  /// a bonus on top of the transcript and a hiccup fetching it must not take
+  /// the (working) transcript down with it. See that method.
+  late Future<List<CallAudioRecording>> _recordings;
+
   @override
   void initState() {
     super.initState();
-    _transcript = _load();
+    _load();
   }
 
-  Future<CallTranscript> _load() {
+  void _load() {
     // Worked out ONCE and both facts carried together: who we think took part,
     // and whether that is an answer or a guess. Read separately, the second
     // one is what gets forgotten -- and a guess presented as an answer is how
@@ -120,8 +132,12 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       me: me,
       peerId: callPeerOf(widget.room),
     );
-    return fetchCallTranscript(
-      fetch: widget.fetcher ?? relationsFetcherFor(widget.room.client),
+    // ONE fetcher, reused for both relation types -- the seam is generic in
+    // `relType` (see `RelationsFetcher`), and a second one here would be a
+    // second thing a test double has to stand in for.
+    final fetch = widget.fetcher ?? relationsFetcherFor(widget.room.client);
+    _transcript = fetchCallTranscript(
+      fetch: fetch,
       roomId: widget.room.id,
       callKey: widget.callKey,
       selfId: me,
@@ -129,14 +145,38 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       participantsKnown: participants.known,
       encrypted: widget.room.encrypted,
     );
+    // Started here, alongside the transcript fetch, so the two relation
+    // types are read CONCURRENTLY rather than one after the other.
+    _recordings = _loadRecordings(fetch);
   }
 
-  // A block body, not an arrow: an arrow returns the assignment's value, and
-  // setState refuses a callback that returns a Future. Retry did nothing.
+  /// [fetchCallAudio], with a failure turned into an empty list rather than
+  /// left to propagate.
+  ///
+  /// A recording is supplementary: the transcript is the primary content of
+  /// this screen and already has its own retry path, and coupling its
+  /// fate to a second relation fetch would let a recordings-only hiccup take
+  /// a working transcript down too. So the failure is caught here rather
+  /// than at the `FutureBuilder` -- but it is never swallowed BENIGNLY: it is
+  /// logged, because "no recordings" and "could not read them" are different
+  /// facts and only the log can still tell them apart afterwards.
+  Future<List<CallAudioRecording>> _loadRecordings(
+    RelationsFetcher fetch,
+  ) async {
+    try {
+      return await fetchCallAudio(
+        fetch: fetch,
+        roomId: widget.room.id,
+        callKey: widget.callKey,
+      );
+    } catch (e, s) {
+      Logs().e('Could not load call recordings for ${widget.callKey}', e, s);
+      return const <CallAudioRecording>[];
+    }
+  }
+
   void _retry() {
-    setState(() {
-      _transcript = _load();
-    });
+    setState(_load);
   }
 
   @override
@@ -277,11 +317,94 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
               // added out here when the timeline is what is drawn.
               if (turns.isNotEmpty)
                 for (final note in notes) _Muted(text: note),
+
+              // Below everything else, on the same footing as the notes
+              // just above: a recording is a fact about the CALL, not about
+              // a moment inside it, so it earns no place inside the
+              // conversation. Its own `FutureBuilder` rather than folded into
+              // the one above, so a slow or failed recordings read can never
+              // hold up -- or take down -- the transcript this screen exists
+              // to show; see `_loadRecordings`.
+              FutureBuilder<List<CallAudioRecording>>(
+                future: _recordings,
+                builder: (context, snapshot) {
+                  final widgets = _recordingsSection(
+                    snapshot.data ?? const [],
+                    theme,
+                    l10n,
+                  );
+                  // Most calls carry no recording, and one that is still
+                  // loading has shown nothing yet either -- both read the
+                  // same as "nothing here", which is the whole of the
+                  // contract: never a header with nothing under it.
+                  if (widgets.isEmpty) return const SizedBox.shrink();
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: widgets,
+                  );
+                },
+              ),
             ],
           );
         },
       ),
     );
+  }
+
+  /// The call's saved audio, one row per device that wrote a
+  /// `pangea.call_audio` half -- or nothing at all when [recordings] is
+  /// empty, which includes both "read, and there are none" and "still
+  /// reading": the caller does not tell the two apart, and the answer is the
+  /// same screen either way. See [_recordings].
+  List<Widget> _recordingsSection(
+    List<CallAudioRecording> recordings,
+    ThemeData theme,
+    L10n l10n,
+  ) {
+    if (recordings.isEmpty) return const [];
+
+    return [
+      Text(
+        l10n.callTranscriptRecordings,
+        style: theme.textTheme.titleSmall?.copyWith(
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      const SizedBox(height: 6),
+      for (final recording in recordings) ...[
+        Padding(
+          padding: const EdgeInsets.only(bottom: 4),
+          child: Text(
+            // The SAME name the transcript itself uses for this half's
+            // sender -- "You" for our own recording, the transcript's own
+            // fallback-to-Matrix-displayname for the other side -- so one
+            // person is never called two different things on one screen.
+            _nameFor(recording.senderId, l10n),
+            style: theme.textTheme.bodyMedium?.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        AudioPlayerWidget(
+          // `AudioPlayerWidget` downloads and plays through
+          // `Event.downloadAndDecryptAttachment`, which refuses any event
+          // whose TYPE is not `m.room.message`/`m.sticker` before it looks
+          // at content -- `pangea.call_audio` is neither, so the real event
+          // cannot be handed to it directly. `_recordingEvent` relabels the
+          // same url, mimetype and size this recording already carries as
+          // an ordinary `m.audio` message; see its own doc for why that is
+          // safe.
+          _recordingEvent(recording, widget.room),
+          color: theme.colorScheme.primary,
+          linkColor: theme.colorScheme.primary,
+          fontSize: 14,
+          eventId: recording.eventId,
+          roomId: widget.room.id,
+          senderId: recording.senderId,
+        ),
+        const SizedBox(height: 12),
+      ],
+    ];
   }
 
   /// Both halves flattened into one column, in the order they were spoken.
@@ -477,6 +600,53 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   Uri? _avatarOf(String userId) =>
       widget.room.unsafeGetUserFromMemoryOrFallback(userId).avatarUrl;
 }
+
+/// Presents one saved recording as an ordinary Matrix voice message, so
+/// [AudioPlayerWidget] -- built to download and play an `m.room.message` of
+/// type `m.audio` -- can do that for a `pangea.call_audio` half without
+/// changing anything about the widget itself.
+///
+/// `pangea.call_audio`'s content is not that shape, and the mismatch is not
+/// cosmetic. [CallAudioContent.toJson] writes [url], [mimetype] and [size]
+/// at the TOP level of a `pangea.call_audio` EVENT, while the SDK's own
+/// `Event.downloadAndDecryptAttachment` -- what the player calls on tap --
+/// refuses any event whose TYPE is not `m.room.message` or `m.sticker`
+/// before it ever looks at content:
+/// ```
+/// if (![EventTypes.Message, EventTypes.Sticker].contains(type)) {
+///   throw ("This event has the type '$type' and so it can't contain an
+///   attachment.");
+/// }
+/// ```
+/// Handing the real event to the player would therefore throw on every tap,
+/// caught by the player's own `catch` and surfaced as a download-failed
+/// snackbar -- a control that renders and never plays.
+///
+/// So this relabels rather than reinvents. The mxc [url] this returns is the
+/// SAME url the recorder already uploaded to and the writer already
+/// published -- nothing is re-uploaded, re-sent, or copied -- and the
+/// `info.size`/`info.mimetype` the player reads to size and decode the
+/// download are the same facts [CallAudioContent] already carries, just
+/// nested where a normal voice message keeps them. The room is unencrypted
+/// (see [CallAudioContent]'s own docs), so there is no `file` block to
+/// forge and nothing here decrypts anything either.
+Event _recordingEvent(CallAudioRecording recording, Room room) => Event(
+  eventId: recording.eventId,
+  senderId: recording.senderId,
+  originServerTs: recording.originServerTs,
+  room: room,
+  type: EventTypes.Message,
+  content: {
+    'msgtype': MessageTypes.Audio,
+    'body': 'call_audio.wav',
+    'url': recording.content.url,
+    'info': {
+      'mimetype': recording.content.mimetype,
+      'size': recording.content.size,
+      'duration': recording.content.durationMs,
+    },
+  },
+);
 
 /// What to say about a half that carries no words.
 ///

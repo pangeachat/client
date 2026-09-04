@@ -7,8 +7,12 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/audio_player.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
@@ -17,6 +21,8 @@ import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_view.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_writer.dart';
 import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
 
 const _callKey = r'$membership:fakeServer.notExisting';
@@ -28,6 +34,30 @@ const _callKey = r'$membership:fakeServer.notExisting';
 const _callStart = 1787994000000;
 const _me = '@test:fakeServer.notExisting';
 const _peer = '@peer:fakeServer.notExisting';
+
+/// Skips `initMatrix()` — push, notification listeners and the Pangea
+/// controller wiring are all irrelevant here and none of them stand up
+/// under `flutter test`. Only needed for the recordings tests below, which
+/// render an `AudioPlayerWidget` and so need a real `Matrix.of(context)` to
+/// answer -- every other test in this file renders `CallTranscriptView`
+/// directly and never reaches for one. Same bootstrap as
+/// `incoming_call_banner_test.dart`.
+class _TestMatrixState extends MatrixState {
+  @override
+  // ignore: must_call_super
+  void initState() {}
+}
+
+class _TestMatrix extends Matrix {
+  const _TestMatrix({
+    required super.clients,
+    required super.store,
+    required super.child,
+  });
+
+  @override
+  MatrixState createState() => _TestMatrixState();
+}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -228,6 +258,33 @@ void main() {
         ).toJson(),
       ...?anchor?.toJson(),
     },
+  );
+
+  /// A `pangea.call_audio` half for [sender], built by the real model's own
+  /// serialiser -- like [half] above is not, but [packedToNothing] below is
+  /// -- so a fixture here cannot drift out of the writer's actual content
+  /// shape (`url`/`mimetype`/`size` at the top level, never nested under
+  /// `info`) when a field is added to it.
+  MatrixEvent audioEvent(
+    String sender, {
+    String? deviceId,
+    String url = 'mxc://fakeServer.notExisting/AUDIO',
+  }) => MatrixEvent(
+    type: CallAudioContent.relType,
+    eventId: '\$audio-$sender-${deviceId ?? ''}',
+    senderId: sender,
+    originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
+    content: CallAudioContent(
+      callKey: _callKey,
+      deviceId: deviceId,
+      url: url,
+      mimetype: 'audio/wav',
+      codec: kCallAudioCodec,
+      size: 12345,
+      durationMs: 4000,
+      sampleRate: 16000,
+      channels: 1,
+    ).toJson(),
   );
 
   /// A half OUR OWN writer packed down to nothing.
@@ -1189,7 +1246,13 @@ void main() {
       await tester.tap(find.text('Try again'));
       await tester.pumpAndSettle();
 
-      expect(f.calls(), 2);
+      // Four, not two: `_load` now walks TWO relation types through this
+      // same fetcher -- the transcript's and the recordings' -- so each of
+      // the two attempts below (the failed one and the retry) costs two
+      // calls rather than one. The count is still exact, not a floor: it is
+      // what proves retrying does not ALSO duplicate a call within one
+      // attempt.
+      expect(f.calls(), 4);
       expect(find.text('llego a la segunda'), findsOneWidget);
       expect(find.text('Could not load the transcript'), findsNothing);
     });
@@ -1743,5 +1806,117 @@ void main() {
         l10n.callTranscriptSaidNothing('Ana'),
       );
     });
+  });
+
+  group('call recordings', () {
+    late SharedPreferences store;
+
+    setUpAll(() async {
+      // Only the recordings tests below render an `AudioPlayerWidget`, which
+      // reaches for `Matrix.of(context)` -- nothing else in this file does.
+      SharedPreferences.setMockInitialValues({});
+      store = await SharedPreferences.getInstance();
+      MatrixState.pangeaController = FakePangeaController();
+    });
+
+    Future<void> pumpWithRecordings(
+      WidgetTester tester,
+      Room testRoom,
+      RelationsFetcher fetcher,
+    ) async {
+      await tester.pumpWidget(
+        _TestMatrix(
+          clients: [client],
+          store: store,
+          child: MaterialApp(
+            locale: const Locale('en'),
+            localizationsDelegates: L10n.localizationsDelegates,
+            supportedLocales: L10n.supportedLocales,
+            home: CallTranscriptView(
+              room: testRoom,
+              callKey: _callKey,
+              fetcher: fetcher,
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+    }
+
+    testWidgets('N recordings render N players, each labelled by its speaker', (
+      tester,
+    ) async {
+      // Three events, not two: two of this account's OWN devices each
+      // wrote their own half (see `CallAudioContent`'s docs -- one event
+      // per DEVICE), plus one from the peer. Speaker-counting would say
+      // two; this fixture is only satisfied by counting the EVENTS.
+      final testRoom = room();
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving([
+          half(_me, texts: const ['hola']),
+          half(_peer, texts: const ['que tal']),
+          audioEvent(_me, deviceId: 'PHONE'),
+          audioEvent(_me, deviceId: 'LAPTOP'),
+          audioEvent(_peer),
+        ]),
+      );
+
+      final players = tester
+          .widgetList<AudioPlayerWidget>(find.byType(AudioPlayerWidget))
+          .toList();
+      expect(
+        players,
+        hasLength(3),
+        reason: 'one player per pangea.call_audio event, not per speaker',
+      );
+      expect(
+        players.map((p) => p.senderId).toList()..sort(),
+        [_me, _me, _peer]..sort(),
+        reason: 'each player is wired to whichever device recorded it',
+      );
+
+      // The VISIBLE label, not just the wiring. No `atMs` above, so the
+      // timeline is not eligible and both halves render as their own
+      // `_HalfSection` -- one "You" header and one peer-name header from
+      // the transcript itself -- plus one label per recording row: two
+      // more "You" rows and one more peer-name row.
+      final peerName = testRoom
+          .unsafeGetUserFromMemoryOrFallback(_peer)
+          .calcDisplayname();
+      expect(find.text('You'), findsNWidgets(3));
+      expect(find.text(peerName), findsNWidgets(2));
+      // Literal, like every other string this file asserts on -- the ARB
+      // source of truth is `lib/l10n/intl_en.arb`'s `callTranscriptRecordings`.
+      expect(find.text('Recordings'), findsOneWidget);
+    });
+
+    testWidgets(
+      'a call with no pangea.call_audio events shows no Recordings section '
+      'at all',
+      (tester) async {
+        final testRoom = room();
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving([
+            half(_me, texts: const ['hola']),
+            half(_peer, texts: const ['que tal']),
+          ]),
+        );
+
+        expect(
+          find.byType(AudioPlayerWidget),
+          findsNothing,
+          reason: 'most calls carry no recording',
+        );
+        expect(
+          find.text('Recordings'),
+          findsNothing,
+          reason: 'the empty state is no header at all, not an empty one',
+        );
+      },
+    );
   });
 }
