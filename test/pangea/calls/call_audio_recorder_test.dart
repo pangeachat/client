@@ -567,7 +567,7 @@ void main() {
 
     test(
       'a blob uploaded on an earlier, exhausted finish() call is named by '
-      'the give-up path itself, not only a later call\'s pre-loop check',
+      'the give-up path itself, and the SAME orphan is never logged twice',
       () async {
         // A realistic sequel to a give-up, not a contrived one:
         // `CallRecord.finish()` -- see `_finishing`'s own docs -- can
@@ -578,7 +578,9 @@ void main() {
         // left on `gen` sits there for whichever call notices ownership is
         // gone next -- including a SECOND call that never reaches the
         // retry loop at all, because the check outside the loop catches it
-        // first.
+        // first. That second call reaches the SAME exit-guard with the
+        // SAME uploadedUrl still set and sent still false, so without a
+        // latch it would re-report the identical orphan a second time.
         uploadResult = (_) => Uri.parse('mxc://example.com/orphan-g');
         sendFailuresLeft = 3; // exhausts all 3 default delivery attempts
         final r = recorder(retryDelay: Duration.zero);
@@ -599,15 +601,18 @@ void main() {
 
         expect(uploads, hasLength(1), reason: 'the first call uploaded once');
         expect(sent, isEmpty, reason: 'every send attempt failed');
-        final logsFromFirstCall = Logs().outputEvents.skip(logsBeforeFirstCall);
+        final logsFromFirstCall = Logs().outputEvents
+            .skip(logsBeforeFirstCall)
+            .toList();
         expect(
-          logsFromFirstCall.any(
-            (e) => e.title.contains('mxc://example.com/orphan-g'),
-          ),
-          isTrue,
+          logsFromFirstCall
+              .where((e) => e.title.contains('mxc://example.com/orphan-g'))
+              .length,
+          1,
           reason:
-              'the give-up path itself must name the orphan -- true from '
-              'the FIRST call alone, before a second call ever runs',
+              'the give-up path itself must name the orphan exactly once '
+              '-- true from the FIRST call alone, before a second call '
+              'ever runs',
         );
 
         r.cancelOwnership();
@@ -620,9 +625,9 @@ void main() {
           hasLength(1),
           reason: 'the second call must not upload a second time',
         );
-        final logsFromSecondCall = Logs().outputEvents.skip(
-          logsBeforeSecondCall,
-        );
+        final logsFromSecondCall = Logs().outputEvents
+            .skip(logsBeforeSecondCall)
+            .toList();
         expect(
           logsFromSecondCall.any(
             (e) => e.title.contains(
@@ -635,6 +640,35 @@ void main() {
               'the pre-loop check a second call hits must still say why, '
               'even though the url-orphan guarantee no longer lives at '
               'this site',
+        );
+        expect(
+          logsFromSecondCall
+              .where((e) => e.title.contains('mxc://example.com/orphan-g'))
+              .length,
+          0,
+          reason:
+              'the latch must stop the SAME orphan being logged again '
+              'just because a second finish() call also reaches the '
+              'exit-guard with the same uploadedUrl still set and sent '
+              'still false',
+        );
+
+        // Stated directly, spanning both calls together, not just proven
+        // by the two windows above summing to it: the orphan url must
+        // appear EXACTLY once across any number of sequential finish()
+        // calls for this generation, however many of them re-discover the
+        // same un-sent upload.
+        final logsAcrossBothCalls = Logs().outputEvents
+            .skip(logsBeforeFirstCall)
+            .toList();
+        expect(
+          logsAcrossBothCalls
+              .where((e) => e.title.contains('mxc://example.com/orphan-g'))
+              .length,
+          1,
+          reason:
+              'exactly one orphan-url log must exist across both calls '
+              'combined',
         );
       },
     );

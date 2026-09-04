@@ -198,6 +198,19 @@ class _AudioGeneration {
   /// exit paths got there.
   bool sent = false;
 
+  /// Whether [CallAudioRecorder._logOrphan] has already reported
+  /// [uploadedUrl] once for this generation. `CallRecord.finish()` can
+  /// legitimately call [CallAudioRecorder.finish] more than once for the
+  /// same call (see `_finishing`'s own docs), and every one of those calls
+  /// reaches the SAME exit-guard with the SAME [uploadedUrl] still set and
+  /// [sent] still false -- without this, each one would re-report the
+  /// identical orphan, growing without bound the more times ownership
+  /// changes hands. Set the instant the orphan is first logged, checked
+  /// before every later attempt to log it again, by both the exit-guard
+  /// and the upload-future observer (see [CallAudioRecorder._logOrphan]
+  /// itself for why those are the only two callers).
+  bool orphanLogged = false;
+
   void append(Uint8List bytes, int maxBytes) {
     final room = maxBytes - bytesWritten;
     if (room <= 0) return;
@@ -566,9 +579,20 @@ class CallAudioRecorder implements CallAudioRecordingSink {
     Logs().i('Call audio half abandoned: $reason');
   }
 
-  /// The one message an orphaned blob is ever reported with. Called from
-  /// exactly two places, not one call per site: [_finish]'s own
-  /// exit-guard, which covers every timing where the orphan is already
+  /// The one message an orphaned blob is ever reported with -- EXACTLY
+  /// once per generation, guarded by [_AudioGeneration.orphanLogged], no
+  /// matter how many times this is called for the same [gen]. That guard
+  /// is what keeps a call_key's orphan from being re-reported every time a
+  /// LATER `finish()` call reaches the same conclusion about the same
+  /// still-un-sent upload -- `CallRecord.finish()` can legitimately call
+  /// [finish] more than once for the same call (see `_finishing`'s own
+  /// docs), and each one reaches [_finish]'s exit-guard with the identical
+  /// [_AudioGeneration.uploadedUrl] and [_AudioGeneration.sent] still
+  /// false, which without this latch would look like a brand new orphan
+  /// every time.
+  ///
+  /// Called from exactly two places, not one call per site: [_finish]'s
+  /// own exit-guard, which covers every timing where the orphan is already
   /// knowable by the moment [_finish] itself returns (a cancellation
   /// noticed at any check, every delivery attempt failing outright, or any
   /// other exit that leaves [_AudioGeneration.uploadedUrl] set without
@@ -577,8 +601,13 @@ class CallAudioRecorder implements CallAudioRecordingSink {
   /// can fire strictly AFTER [_finish] has already returned, once the
   /// `finally` that would otherwise have caught this has already run (see
   /// that callback's own docs for why [_AudioGeneration.uploadedUrl] is not
-  /// even set yet at that point either).
-  static void _logOrphan(Uri url) {
+  /// even set yet at that point either). Sharing this ONE gate between them
+  /// is what stops the exit-guard and the observer from BOTH logging the
+  /// same url, on the off chance a future change ever put them in a
+  /// position to.
+  static void _logOrphan(_AudioGeneration gen, Uri url) {
+    if (gen.orphanLogged) return;
+    gen.orphanLogged = true;
     Logs().w(
       'A call-audio blob at $url is now an orphan no event will ever '
       'reference',
@@ -794,7 +823,7 @@ class CallAudioRecorder implements CallAudioRecordingSink {
               // [_finish] itself has returned.
               unawaited(
                 uploadFuture.then((landedUrl) {
-                  if (cancelSignal.isCompleted) _logOrphan(landedUrl);
+                  if (cancelSignal.isCompleted) _logOrphan(gen, landedUrl);
                 }, onError: (Object _, StackTrace _) {}),
               );
               url = await Future.any<Uri>([
@@ -961,7 +990,7 @@ class CallAudioRecorder implements CallAudioRecordingSink {
       // becoming true; nothing else is trusted to have already reported it,
       // and nothing here needs to know WHICH exit path it was.
       final uploadedUrl = gen.uploadedUrl;
-      if (uploadedUrl != null && !gen.sent) _logOrphan(uploadedUrl);
+      if (uploadedUrl != null && !gen.sent) _logOrphan(gen, uploadedUrl);
     }
   }
 }
