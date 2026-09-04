@@ -21,10 +21,14 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_pangea_controller.dart';
 import 'get_test_client.dart';
 
-/// The call buttons were gated on `isDirectChat` alone, and a bot DM IS a
-/// direct chat -- so the Pangea Bot room offered Call and Video call. The bot
-/// has no VoIP, so tapping one rang nobody and left the caller waiting out the
-/// no-answer timeout.
+/// The call button was gated on `isDirectChat` alone, and a bot DM IS a
+/// direct chat -- so the Pangea Bot room offered a call. The bot has no VoIP,
+/// so tapping it rang nobody and left the caller waiting out the no-answer
+/// timeout.
+///
+/// The header offers ONE button, voice (#8793). It used to carry a Video call
+/// button beside the Call button; the second was removed, so every test that
+/// renders the header also asserts the video icon is gone.
 ///
 /// Asserted over what RENDERS, not over the predicate alone. A test that only
 /// calls the predicate leaves the site free to stop asking it: the gate could
@@ -283,14 +287,12 @@ void main() {
   }
 
   final callButton = find.byIcon(Icons.call_outlined);
+  // Removed with #8793. Every test that renders the header asserts this finds
+  // NOTHING -- that assertion is what pins the header to a single voice button.
   final videoButton = find.byIcon(Icons.videocam_outlined);
-  // The IconButtons themselves, so a test can read `onPressed` to tell an
-  // enabled button from a greyed one -- the icon alone renders either way.
+  // The IconButton itself, so a test can read `onPressed` to tell an enabled
+  // button from a greyed one -- the icon alone renders either way.
   final voiceIconButton = find.widgetWithIcon(IconButton, Icons.call_outlined);
-  final videoIconButton = find.widgetWithIcon(
-    IconButton,
-    Icons.videocam_outlined,
-  );
 
   testWidgets('a DM with another person is offered calls', (tester) async {
     final room = buildRoom(directChatWith: friendId);
@@ -303,14 +305,17 @@ void main() {
     await pumpButtons(tester, room);
 
     expect(callButton, findsOneWidget);
-    expect(videoButton, findsOneWidget);
-    // Both people are in the DM, so the call can connect: the buttons are live.
+    expect(
+      videoButton,
+      findsNothing,
+      reason: 'the header offers only the voice button now (#8793)',
+    );
+    // Both people are in the DM, so the call can connect: the button is live.
     expect(
       tester.widget<IconButton>(voiceIconButton).onPressed,
       isNotNull,
       reason: 'a two-person DM can place a call',
     );
-    expect(tester.widget<IconButton>(videoIconButton).onPressed, isNotNull);
   });
 
   testWidgets('a DM whose invitee has not joined greys the buttons out', (
@@ -331,16 +336,15 @@ void main() {
 
     // Rendered -- greyed, not hidden -- so the disabled state is the signal.
     expect(callButton, findsOneWidget);
-    expect(videoButton, findsOneWidget);
+    expect(
+      videoButton,
+      findsNothing,
+      reason: 'the header offers only the voice button now (#8793)',
+    );
     expect(
       tester.widget<IconButton>(voiceIconButton).onPressed,
       isNull,
       reason: 'no one else has joined, so the call button is inert',
-    );
-    expect(
-      tester.widget<IconButton>(videoIconButton).onPressed,
-      isNull,
-      reason: 'no one else has joined, so the video button is inert',
     );
   });
 
@@ -372,9 +376,10 @@ void main() {
       reason: 'the second member joined, so the call can connect now',
     );
     expect(
-      tester.widget<IconButton>(videoIconButton).onPressed,
-      isNotNull,
-      reason: 'the video button re-enables on the same change',
+      videoButton,
+      findsNothing,
+      reason:
+          'the video button is gone for good (#8793), not just at first frame',
     );
   });
 
@@ -404,9 +409,10 @@ void main() {
       reason: 'the other member left, so the call would ring nobody',
     );
     expect(
-      tester.widget<IconButton>(videoIconButton).onPressed,
-      isNull,
-      reason: 'the video button greys on the same change',
+      videoButton,
+      findsNothing,
+      reason:
+          'the video button is gone for good (#8793), not just at first frame',
     );
   });
 
@@ -442,7 +448,12 @@ void main() {
       isNull,
       reason: 'the account has left; there is no call to place from here',
     );
-    expect(tester.widget<IconButton>(videoIconButton).onPressed, isNull);
+    expect(
+      videoButton,
+      findsNothing,
+      reason:
+          'the video button is gone for good (#8793), not just at first frame',
+    );
   });
 
   testWidgets('the buttons re-read a room object swapped in for the same id', (
@@ -493,9 +504,14 @@ void main() {
       tester.widget<IconButton>(voiceIconButton).onPressed,
       isNotNull,
       reason:
-          'the swapped-in object has two joined; the buttons must re-read it',
+          'the swapped-in object has two joined; the button must re-read it',
     );
-    expect(tester.widget<IconButton>(videoIconButton).onPressed, isNotNull);
+    expect(
+      videoButton,
+      findsNothing,
+      reason:
+          'the video button is gone for good (#8793), not just at first frame',
+    );
   });
 
   testWidgets('the buttons drop when a sync reclassifies the room as a bot DM', (
@@ -579,7 +595,12 @@ void main() {
           'the server counts two joined; an unloaded member must not grey '
           'a callable DM',
     );
-    expect(tester.widget<IconButton>(videoIconButton).onPressed, isNotNull);
+    expect(
+      videoButton,
+      findsNothing,
+      reason:
+          'the video button is gone for good (#8793), not just at first frame',
+    );
   });
 
   testWidgets('the bot DM named by m.direct is not', (tester) async {
